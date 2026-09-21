@@ -87,7 +87,7 @@ def build(name: str, ctx, rtype: Optional[str]):
     if existing is not None:
         parts.append(
             f"## existing recipe: {recipe_rel}\n\n```markdown\n"
-            f"{existing.path.read_text(encoding='utf-8').rstrip()}\n```"
+            f"{existing.path.read_text(encoding='utf-8', errors='replace').rstrip()}\n```"
         )
     text = "\n\n".join(parts) + "\n"
     info = {

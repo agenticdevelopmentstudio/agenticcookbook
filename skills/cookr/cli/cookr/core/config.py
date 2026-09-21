@@ -44,7 +44,7 @@ class Config:
         return self.repo_root / self.recipes
 
     @property
-    def tiers(self) -> list:
+    def tiers(self) -> list[str]:
         seen = []
         for r in self.roots:
             if r.tier not in seen:

@@ -30,7 +30,7 @@ class CoverageReport:
     rows: list
     unmatched_recipes: list
 
-    def tally(self) -> dict:
+    def tally(self) -> dict[str, dict[str, int]]:
         out = {}
         for r in self.rows:
             for tier in r.tiers:
@@ -38,7 +38,7 @@ class CoverageReport:
                 t[r.state] += 1
         return out
 
-    def below(self, level: str) -> list:
+    def below(self, level: str) -> list[CoverageRow]:
         return [r for r in self.rows if _RANK[r.state] < _RANK[level]]
 
 

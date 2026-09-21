@@ -3,9 +3,10 @@
 A recipe is complete when:
 1. its status is `review` or `accepted`;
 2. its body carries no `NEEDS REVIEW` marker;
-3. every section in REQUIRED_SECTIONS[type] is present with at least one
+3. its `type` is one REQUIRED_SECTIONS knows;
+4. every section in REQUIRED_SECTIONS[type] is present with at least one
    non-blank body line before the next `##` heading;
-4. its Platform Notes section has a `- **WinUI 3**:` bullet with text after the colon.
+5. its Platform Notes section has a `- **WinUI 3**:` bullet with text after the colon.
 """
 
 from __future__ import annotations
@@ -33,7 +34,7 @@ _H2 = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
 _WINUI = re.compile(r"^-\s+\*\*WinUI 3\*\*:\s*(\S.*)?$", re.MULTILINE)
 
 
-def sections(body: str) -> dict:
+def sections(body: str) -> dict[str, str]:
     """Map each `## Heading` to the text up to the next `##` (or `#`) heading."""
     out = {}
     matches = list(_H2.finditer(body))
@@ -53,12 +54,16 @@ def _has_text(chunk: str) -> bool:
     return any(line.strip() for line in chunk.splitlines())
 
 
-def problems(info: RecipeInfo) -> list:
+def problems(info: RecipeInfo) -> list[str]:
     out = []
     if info.status not in COMPLETE_STATUSES:
         out.append(f"status is `{info.status or '(none)'}`, not review/accepted")
     if NEEDS_REVIEW in info.body:
         out.append(f"body carries a `{NEEDS_REVIEW}` marker")
+    if info.type not in REQUIRED_SECTIONS:
+        # Graded against the ingredient list anyway, but never silently: a typo'd
+        # type must not be able to report `complete`.
+        out.append(f"unknown type `{info.type or '(none)'}`")
     required = REQUIRED_SECTIONS.get(info.type, REQUIRED_SECTIONS["ingredient"])
     found = sections(info.body)
     for name in required:

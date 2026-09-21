@@ -47,3 +47,15 @@ def test_empty_section_is_a_problem(mini_repo):
 def test_recipe_type_uses_recipe_sections(mini_repo):
     corpus = load_corpus(mini_repo / "recipes")
     assert problems(corpus["site-menu"]) == []
+
+
+def test_unknown_type_is_a_problem_and_grades_as_ingredient(mini_repo):
+    p = mini_repo / "recipes" / "button.md"
+    p.write_text(
+        p.read_text(encoding="utf-8").replace("type: ingredient", "type: guidline", 1),
+        encoding="utf-8",
+    )
+    found = problems(load_corpus(mini_repo / "recipes")["button"])
+    # The only complaint is the type itself: the ingredient sections it already
+    # satisfies are still the list it is graded against.
+    assert found == ["unknown type `guidline`"]

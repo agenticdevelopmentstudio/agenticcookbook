@@ -1,4 +1,9 @@
-"""Read a recipe corpus (a directory of cookbook-shaped markdown files)."""
+"""Read a recipe corpus (a directory of cookbook-shaped markdown files).
+
+The corpus is keyed on file stem, and `iter_markdown` walks recursively, so two
+files with the same stem in different subdirectories are one slug with two
+sources. That is a config error, not a last-writer-wins merge: it raises.
+"""
 
 from __future__ import annotations
 
@@ -18,9 +23,13 @@ class RecipeInfo:
     body: str
 
 
-def load_corpus(recipes_dir: Path) -> dict:
+def load_corpus(recipes_dir: Path) -> dict[str, RecipeInfo]:
     corpus = {}
     for md in iter_markdown(recipes_dir):
+        if md.stem in corpus:
+            raise ValueError(
+                f"duplicate recipe slug `{md.stem}`: {corpus[md.stem].path} and {md}"
+            )
         fm = parse_file(md)
         corpus[md.stem] = RecipeInfo(
             slug=md.stem,

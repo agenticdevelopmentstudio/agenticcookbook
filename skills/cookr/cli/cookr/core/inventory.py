@@ -20,11 +20,11 @@ class Component:
     platform: str
 
 
-def _ignored(rel: str, patterns: list) -> bool:
+def _ignored(rel: str, patterns: list[str]) -> bool:
     return any(fnmatch(rel, p) or fnmatch(rel, p.replace("**/", "", 1)) for p in patterns)
 
 
-def scan(config: Config) -> list:
+def scan(config: Config) -> list[Component]:
     out = []
     for root in config.roots:
         base = config.repo_root / root.path

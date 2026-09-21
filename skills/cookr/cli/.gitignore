@@ -1,5 +1,3 @@
-references/*
-!references/.gitkeep
 __pycache__/
 *.pyc
 .pytest_cache/

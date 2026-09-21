@@ -402,11 +402,13 @@ fi
 
 # 10. Verify
 title "Verifying"
-if "${BIN_DIR}/cookbook" --version >/dev/null 2>&1; then
-    ok "$(${BIN_DIR}/cookbook --version)"
-else
-    warn "cookbook --version did not return cleanly. Check the install log above."
-fi
+for skill in "${CLI_SKILLS[@]}"; do
+    if "${BIN_DIR}/${skill}" --version >/dev/null 2>&1; then
+        ok "$("${BIN_DIR}/${skill}" --version)"
+    else
+        warn "${skill} --version did not return cleanly. Check the install log above."
+    fi
+done
 if [ -f "${PLUGIN_DIR}/.claude-plugin/plugin.json" ]; then
     ok "plugin manifest at ${PLUGIN_DIR}/.claude-plugin/plugin.json"
 else

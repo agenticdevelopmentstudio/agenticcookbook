@@ -28,12 +28,8 @@ def test_shim_coverage_on_fixture(run_cookr, mini_repo):
 def test_plugin_bundle_excludes_cli(cookr_bin):
     repo_root = Path(__file__).resolve().parents[5]
     bundled = repo_root / "plugins" / "adh" / "skills" / "cookr"
-    # install.sh always mkdir()s the per-skill bundle dir, even when the skill
-    # has no non-excluded content to copy — so an empty dir here just means
-    # skills/cookr has no SKILL.md yet (added in a later task), not that the
-    # plugin failed to assemble.
-    if not bundled.is_dir() or not any(bundled.iterdir()):
-        pytest.skip("plugin not assembled (or has no SKILL.md yet) in this checkout")
+    if not bundled.is_dir():
+        pytest.skip("plugin not assembled in this checkout")
     assert (bundled / "SKILL.md").is_file()
     assert not (bundled / "cli").exists()
     assert not (bundled / "bin").exists()

@@ -74,14 +74,13 @@ def main(argv: Optional[list] = None) -> int:
         args = parser.parse_args(argv)
         explicit = getattr(args, "path", None)
 
-        # Validate explicit -p path before checking for module
-        if explicit is not None:
-            find_repo_root(Path.cwd(), explicit)
+        # Resolve (and thereby validate) the root before checking for a module,
+        # so a bad explicit -p is an error even with no module named.
+        cwd = Path.cwd()
+        root = find_repo_root(cwd, explicit)
         if not getattr(args, "module", None):
             _print_module_table(ui, modules)
             return 0
-        cwd = Path.cwd()
-        root = find_repo_root(cwd, explicit)
         config = load_config(root / CONFIG_NAME) if root else None
         ctx = CookrContext(cwd=cwd, repo_root=root, config=config, ui=ui)
         return int(args._module.run(args, ctx) or 0)
