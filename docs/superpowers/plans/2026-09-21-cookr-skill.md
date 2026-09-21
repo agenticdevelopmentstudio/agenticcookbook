@@ -1370,7 +1370,7 @@ def register(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--json", action="store_true", help="Emit JSON rows instead of a table.")
 
 
-def _require_config(ctx) -> bool:
+def require_config(ctx) -> bool:
     if ctx.config is None:
         ctx.ui.error("No .cookr.json found. Run from inside a configured repo, or pass -p <repo-root>.")
         return False
@@ -1378,7 +1378,7 @@ def _require_config(ctx) -> bool:
 
 
 def run(args, ctx) -> int:
-    if not _require_config(ctx):
+    if not require_config(ctx):
         return 2
     rows = [c for c in scan(ctx.config) if args.tier is None or c.tier == args.tier]
     if args.json:
@@ -1403,7 +1403,7 @@ import json
 import sys
 
 from ..core.coverage import STATES, compute
-from .inventory import _require_config
+from .inventory import require_config
 
 NAME = "coverage"
 HELP = "Report each component as missing, partial or complete against the recipe corpus."
@@ -1427,7 +1427,7 @@ def _row_dict(r) -> dict:
 
 
 def run(args, ctx) -> int:
-    if not _require_config(ctx):
+    if not require_config(ctx):
         return 2
     report = compute(ctx.config, tier=args.tier)
     failing = report.below(args.require) if args.require else []
@@ -1617,12 +1617,12 @@ the acceptance bar. The sources and any existing recipe follow.
     { "src": "cookbook/ingredients/_template.md", "dst": "templates/ingredient.md", "type": "file" },
     { "src": "cookbook/recipes/_template.md",     "dst": "templates/recipe.md",     "type": "file" },
     { "src": "cookbook/guidelines/cookbook/recipe-quality", "dst": "guidelines/recipe-quality", "type": "tree", "include": "*.md" },
-    { "src": "cookbook/guidelines/ui/platform-design-languages", "dst": "guidelines/platform-design-languages", "type": "tree", "include": "*.md" }
+    { "src": "cookbook/guidelines/cookbook/ui/platform-design-languages.md", "dst": "guidelines/platform-design-languages.md", "type": "file" }
   ]
 }
 ```
 
-Before committing, confirm the fourth `src` exists: `ls cookbook/guidelines/ui/platform-design-languages`. If it is a single file rather than a directory, change that entry to `"type": "file"` with the file's path and `"dst": "guidelines/platform-design-languages.md"`.
+All four `src` paths exist in this checkout; confirm with `ls` before committing.
 
 Append to `.gitignore`:
 
@@ -1750,7 +1750,7 @@ from cookbook.modules.prompt.render import assemble_prompt
 
 from ...core.inventory import scan
 from ...core.recipes import load_corpus
-from ..inventory import _require_config
+from ..inventory import require_config
 
 NAME = "prompt"
 HELP = "Assemble the extraction prompt for one component and print it."
@@ -1820,7 +1820,7 @@ def run(args, ctx) -> int:
     if args.paction not in ACTIONS:
         ctx.ui.error(f"cookr prompt: unknown action '{args.paction}'.")
         return 2
-    if not _require_config(ctx):
+    if not require_config(ctx):
         return 2
     if not args.name:
         ctx.ui.error("cookr prompt extract: a component name is required.")
@@ -2200,22 +2200,52 @@ In the spec's Coverage section, completeness rule 3 says "every `##` section the
    Design Decisions.
 ```
 
+- [ ] **Step 1b: Align the spec's template and prompt sections with the implementation**
+
+In the spec's "Template changes in agenticcookbook" section, the two new bullets are shown with `{{platform_notes_appkit}}` / `{{platform_notes_winui}}` tokens. The templates' existing three platform bullets carry no token (the templates use `{{...}}` only for project values such as `{{bundle_id}}`), so the implementation added the bullets bare. Replace that fenced block with:
+
+```
+- **AppKit / UIKit**:
+- **WinUI 3**:
+```
+
+and change the sentence before it to end "in this order after the existing three, bare like them:".
+
+In the spec's "Prompt assembly" section, replace items 3 and 4 with:
+
+```
+3. The recipe-quality guidelines and the platform design-language guideline,
+   pulled from the cookbook references via the manifest. (These sit between
+   the module rules and the action, as `assemble_prompt` places references.)
+4. The template for the recipe's type, pulled from the same references
+   (`ingredient` by default; `--type recipe` for a composite). Only the one
+   template for the requested type is included, after the action. A missing
+   template (references not installed) is an error, not a silent omission.
+```
+
 - [ ] **Step 2: README**
 
 Run: `grep -n "cookbook" README.md | head`. If the README has a skills or CLI list, add one line: `- cookr — inventory and recipe coverage for component repos (see skills/cookr/SKILL.md)`. If it has none, skip this step and say so in the commit body.
 
 - [ ] **Step 3: Commit**
 
+The plan file carries uncommitted edits made during execution (Task 8 manifest path, Task 12 location, `require_config` rename, this step); commit them here too.
+
 ```bash
-git add docs/superpowers/specs/2026-09-21-cookr-design.md README.md
-git commit -m "docs: align cookr spec with REQUIRED_SECTIONS; mention cookr in README"
+git add docs/superpowers/specs/2026-09-21-cookr-design.md docs/superpowers/plans/2026-09-21-cookr-skill.md README.md
+git commit -m "docs: align cookr spec with the implementation; mention cookr in README"
 ```
 
 ---
 
 ### Task 12: `.cookr.json` for agenticdevelopertoolkit
 
-Runs in `~/Development/projects/fishlampdesign/agenticdevelopertoolkit` on its current branch. Do not create a branch or PR.
+Runs in the ADT checkout that is current: the zorkapp submodule at
+`/Users/mfullerton/Development/projects/fishlampdesign/zorkapp/.claude/worktrees/multiplatform/external/agenticdevelopertoolkit`,
+on its current branch `zorkapp/multiplatform`. (The standalone clone under
+`~/Development/projects/adh/agenticdevelopertoolkit` is stale and has no
+`recipes/`; do not use it.) Do not create a branch or PR. After pushing the
+submodule commit, bump the pointer in the zorkapp worktree (step 5).
 
 **Files:**
 - Create: `.cookr.json`
@@ -2286,6 +2316,18 @@ git push
 ```
 
 (`git rm` already staged the deletion.)
+
+- [ ] **Step 5: Bump the submodule pointer in zorkapp**
+
+From `/Users/mfullerton/Development/projects/fishlampdesign/zorkapp/.claude/worktrees/multiplatform`:
+
+```bash
+git add external/agenticdevelopertoolkit
+git commit -m "chore: bump agenticdevelopertoolkit (cookr config)"
+git push
+```
+
+Stage only the submodule path. If `git status` shows other modified files, leave them alone and mention them in your report.
 
 ---
 

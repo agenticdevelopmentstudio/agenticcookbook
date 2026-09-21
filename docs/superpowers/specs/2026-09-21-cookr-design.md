@@ -165,8 +165,13 @@ Completeness rules, evaluated on the recipe file:
 
 1. `status` is `review` or `accepted`.
 2. No `NEEDS REVIEW` marker in the body.
-3. Every `##` section the template defines for that `type` is present and has
-   at least one non-blank line of body before the next heading.
+3. Every section in `completeness.REQUIRED_SECTIONS[type]` is present and has
+   at least one non-blank line of body before the next heading. Ingredient:
+   Overview, Behavioral Requirements, Appearance, States, Accessibility,
+   Conformance Test Vectors, Edge Cases, Configuration, Platform Notes,
+   Design Decisions. Recipe: Overview, Ingredients, Integration Requirements,
+   Layout, Shared State, Integration Test Vectors, Edge Cases, Platform Notes,
+   Design Decisions.
 4. The Platform Notes section contains a `WinUI 3` entry with body text.
 
 Output is a table sorted by tier then name, followed by a one-line tally per
@@ -194,10 +199,13 @@ Mirrors the cookbook prompt module. It assembles, in order:
    undefined.`
 2. `prompts/extract/actions/extract.md` — the task, with parameters
    `{{name}}`, `{{recipe_path}}`, `{{type}}`, and `{{platforms}}`.
-3. The template for the recipe's type, pulled from the cookbook references
-   (`ingredient` by default; `--type recipe` for a composite).
-4. The recipe-quality guidelines, pulled from the cookbook references via the
-   manifest.
+3. The recipe-quality guidelines and the platform design-language guideline,
+   pulled from the cookbook references via the manifest. (These sit between
+   the module rules and the action, as `assemble_prompt` places references.)
+4. The template for the recipe's type, pulled from the same references
+   (`ingredient` by default; `--type recipe` for a composite). Only the one
+   template for the requested type is included, after the action. A missing
+   template (references not installed) is an error, not a silent omission.
 5. The full text of every inventory file whose `name` (or alias) is `<name>`,
    each under a heading giving its repo-relative path and platform.
 6. The existing recipe at `recipes/<slug>.md` if there is one, so the
@@ -213,11 +221,11 @@ prompt ask for the Windows note; cookr adds no per-platform prose of its own.
 
 Both `cookbook/ingredients/_template.md` and `cookbook/recipes/_template.md`
 get two new bullets under `## Platform Notes`, in this order after the
-existing three:
+existing three, bare like them:
 
 ```
-- **AppKit / UIKit**: {{platform_notes_appkit}}
-- **WinUI 3**: {{platform_notes_winui}}
+- **AppKit / UIKit**:
+- **WinUI 3**:
 ```
 
 `skills/cookbook/cli/references/conventions.md` gains one sentence under
