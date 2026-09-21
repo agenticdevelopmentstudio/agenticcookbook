@@ -9,45 +9,60 @@ def _rows(mini_repo, tier=None):
     return compute(cfg, tier=tier)
 
 
-def test_one_row_per_component_name_within_tier(mini_repo):
+def test_one_row_per_component_name_across_tiers(mini_repo):
     report = _rows(mini_repo)
-    keys = [(r.tier, r.name) for r in report.rows]
-    assert keys == [
-        ("apple", "button"),
-        ("apple", "toolbar-button"),
-        ("blocks", "stat-card"),
-        ("primitives", "button"),
-        ("primitives", "chat-composer"),
+    assert [r.name for r in report.rows] == [
+        "button", "chat-composer", "stat-card", "toolbar-button",
     ]
 
 
+def test_cross_platform_name_is_one_row(mini_repo):
+    by = {r.name: r for r in _rows(mini_repo).rows}
+    row = by["button"]
+    assert row.tiers == ("apple", "primitives")
+    assert row.platforms == ("apple", "web")
+    assert row.paths == ("apple/UI/Button.swift", "web/components/Button.tsx")
+    assert row.state == "complete"
+
+
 def test_states(mini_repo):
-    by = {(r.tier, r.name): r for r in _rows(mini_repo).rows}
-    assert by[("primitives", "button")].state == "complete"
-    assert by[("apple", "button")].state == "complete"
-    assert by[("apple", "toolbar-button")].state == "complete"      # alias → button
-    assert by[("apple", "toolbar-button")].recipe == "button"
-    assert by[("blocks", "stat-card")].state == "partial"
-    assert by[("primitives", "chat-composer")].state == "partial"
+    by = {r.name: r for r in _rows(mini_repo).rows}
+    assert by["button"].state == "complete"
+    assert by["toolbar-button"].state == "complete"      # alias → button
+    assert by["toolbar-button"].recipe == "button"
+    assert by["stat-card"].state == "partial"
+    assert by["chat-composer"].state == "partial"
 
 
 def test_missing_when_no_recipe(mini_repo):
     (mini_repo / "recipes" / "chat-composer.md").unlink()
-    by = {(r.tier, r.name): r for r in _rows(mini_repo).rows}
-    assert by[("primitives", "chat-composer")].state == "missing"
-    assert by[("primitives", "chat-composer")].recipe is None
+    by = {r.name: r for r in _rows(mini_repo).rows}
+    assert by["chat-composer"].state == "missing"
+    assert by["chat-composer"].recipe is None
 
 
-def test_tier_filter(mini_repo):
-    assert {r.tier for r in _rows(mini_repo, tier="blocks").rows} == {"blocks"}
+def test_tier_filter_keeps_rows_whose_tiers_include_it(mini_repo):
+    report = _rows(mini_repo, tier="apple")
+    assert [r.name for r in report.rows] == ["button", "toolbar-button"]
+    assert all("apple" in r.tiers for r in report.rows)
 
 
 def test_unmatched_recipes_listed(mini_repo):
     assert _rows(mini_repo).unmatched_recipes == ["site-menu"]
 
 
-def test_tally_and_below(mini_repo):
+def test_unmatched_recipes_survive_a_tier_filter(mini_repo):
+    assert _rows(mini_repo, tier="apple").unmatched_recipes == _rows(mini_repo).unmatched_recipes
+
+
+def test_tally_counts_a_row_under_each_of_its_tiers(mini_repo):
+    tally = _rows(mini_repo).tally()
+    assert tally["primitives"] == {"missing": 0, "partial": 1, "complete": 1}
+    assert tally["blocks"] == {"missing": 0, "partial": 1, "complete": 0}
+    assert tally["apple"] == {"missing": 0, "partial": 0, "complete": 2}
+
+
+def test_below(mini_repo):
     report = _rows(mini_repo)
-    assert report.tally()["primitives"] == {"missing": 0, "partial": 1, "complete": 1}
-    assert [r.name for r in report.below("complete")] == ["stat-card", "chat-composer"]
+    assert [r.name for r in report.below("complete")] == ["chat-composer", "stat-card"]
     assert report.below("partial") == []

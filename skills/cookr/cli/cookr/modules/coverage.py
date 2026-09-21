@@ -24,7 +24,7 @@ def register(parser: argparse.ArgumentParser) -> None:
 
 def _row_dict(r) -> dict:
     return {
-        "name": r.name, "tier": r.tier, "platforms": list(r.platforms),
+        "name": r.name, "tiers": list(r.tiers), "platforms": list(r.platforms),
         "paths": list(r.paths), "state": r.state, "recipe": r.recipe,
         "problems": list(r.problems),
     }
@@ -46,8 +46,9 @@ def run(args, ctx) -> int:
 
     ctx.ui.title(f"cookr coverage · {ctx.repo_root}")
     ctx.ui.table(
-        ["tier", "name", "state", "recipe", "problems"],
-        [[r.tier, r.name, r.state, r.recipe or "—", "; ".join(r.problems)] for r in report.rows],
+        ["tiers", "name", "state", "recipe", "problems"],
+        [[", ".join(r.tiers), r.name, r.state, r.recipe or "—", "; ".join(r.problems)]
+         for r in report.rows],
     )
     for tier, counts in report.tally().items():
         ctx.ui.info("  ".join([f"{tier}:"] + [f"{s}={counts[s]}" for s in STATES]))

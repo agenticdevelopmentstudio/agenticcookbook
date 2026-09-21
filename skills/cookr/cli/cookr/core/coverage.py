@@ -17,7 +17,7 @@ _RANK = {s: i for i, s in enumerate(STATES)}
 @dataclass(frozen=True)
 class CoverageRow:
     name: str
-    tier: str
+    tiers: tuple
     platforms: tuple
     paths: tuple
     state: str
@@ -33,8 +33,9 @@ class CoverageReport:
     def tally(self) -> dict:
         out = {}
         for r in self.rows:
-            t = out.setdefault(r.tier, {s: 0 for s in STATES})
-            t[r.state] += 1
+            for tier in r.tiers:
+                t = out.setdefault(tier, {s: 0 for s in STATES})
+                t[r.state] += 1
         return out
 
     def below(self, level: str) -> list:
@@ -42,16 +43,20 @@ class CoverageReport:
 
 
 def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
+    """One row per component `name`, across every tier the name appears in.
+
+    `tier` filters the rows that are returned; it never narrows the corpus the
+    rows are matched against, so `unmatched_recipes` is the same list either way.
+    """
     corpus = load_corpus(config.recipes_dir)
-    components = [c for c in scan(config) if tier is None or c.tier == tier]
 
     grouped = {}
-    for c in components:
-        grouped.setdefault((c.tier, c.name), []).append(c)
+    for c in scan(config):
+        grouped.setdefault(c.name, []).append(c)
 
     matched_slugs = set()
     rows = []
-    for (t, name), items in sorted(grouped.items()):
+    for name, items in sorted(grouped.items()):
         slug = config.aliases.get(name, name)
         info = corpus.get(slug)
         if info is None:
@@ -61,14 +66,14 @@ def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
             probs = tuple(problems(info))
             state, recipe = ("partial" if probs else "complete"), slug
         rows.append(CoverageRow(
-            name=name, tier=t,
+            name=name,
+            tiers=tuple(sorted({i.tier for i in items})),
             platforms=tuple(sorted({i.platform for i in items})),
-            paths=tuple(i.path for i in items),
+            paths=tuple(sorted(i.path for i in items)),
             state=state, recipe=recipe, problems=probs,
         ))
 
-    if tier is None:
-        unmatched = sorted(s for s in corpus if s not in matched_slugs)
-    else:
-        unmatched = []
+    unmatched = sorted(s for s in corpus if s not in matched_slugs)
+    if tier is not None:
+        rows = [r for r in rows if tier in r.tiers]
     return CoverageReport(rows=rows, unmatched_recipes=unmatched)

@@ -153,6 +153,11 @@ names `cookbook` skips (`INDEX.md`, `_template.md`, …). Each recipe's slug is
 its file stem. A component is matched to a recipe when the component `name`
 equals a recipe slug, or `aliases[name]` equals a recipe slug.
 
+Coverage groups inventory rows by `name` across every tier. A coverage row
+lists every tier and platform the name appears in; the tally counts a row once
+under each of its tiers; `--tier T` keeps only rows whose tiers include `T`;
+recipes with no inventory match are reported regardless of `--tier`.
+
 Each component gets one of three states:
 
 | State | Rule |
@@ -174,8 +179,7 @@ Completeness rules, evaluated on the recipe file:
    Design Decisions.
 4. The Platform Notes section contains a `WinUI 3` entry with body text.
 
-Output is a table sorted by tier then name, followed by a one-line tally per
-tier. `--json` emits the rows as a list of objects. `--require complete` exits
+Output is a table sorted by name, followed by a one-line tally per tier. `--json` emits the rows as a list of objects. `--require complete` exits
 1 if any component in scope is below `complete`; `--require partial` exits 1
 only on `missing`. A phase's exit gate is therefore:
 

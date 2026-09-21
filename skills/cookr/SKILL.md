@@ -40,8 +40,8 @@ Forward `-p <repo-root>` when the user supplies one; otherwise run from cwd and 
 
 ## Extraction workflow
 
-1. `cookr coverage --tier <tier> --json` — collect every row whose `state` is `missing` or `partial`.
-2. For each name, run `cookr prompt extract <name>` (add `--type recipe` for a composite) and dispatch the printed prompt verbatim to a subagent pinned to `claude-sonnet-4-6`. The subagent writes `recipes/<slug>.md`. Run up to 8 subagents at a time.
+1. `cookr coverage --tier <tier> --json` — collect every row whose `state` is `missing` or `partial`. A row is one component name and carries `tiers` (plural): the same name can appear in several tiers, and it is still one recipe.
+2. De-duplicate the work list by the row's `recipe` slug, falling back to `name` when `recipe` is null, so no two subagents in a batch write the same `recipes/<slug>.md`. Then for each remaining row, run `cookr prompt extract <name>` (add `--type recipe` for a composite) and dispatch the printed prompt verbatim to a subagent pinned to `claude-sonnet-4-6`. The subagent writes `recipes/<slug>.md`. Run up to 8 subagents at a time.
 3. `cookbook update -p recipes --author "<user>"` — fills frontmatter.
 4. `cookbook validate -p recipes` and `cookr coverage --tier <tier>`.
 5. Any row still `partial`: rerun step 2 for it. The prompt includes the existing recipe, so the subagent completes rather than restarts.
