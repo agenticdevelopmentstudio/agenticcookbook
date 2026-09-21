@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Remove everything install.sh placed on the system.
-# - Removes the cookbook CLI shim and package
+# - Removes each CLI_SKILLS shim and package
 # - Unregisters the local marketplace and disables the plugin
 # - Wipes the assembled plugins/adh/skills/ directory
 # - Removes any legacy ~/.claude/skills/cookbook/ location

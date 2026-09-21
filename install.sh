@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the `cookbook` CLI and Claude Code plugin globally for the current user.
+# Install the CLI skills listed in CLI_SKILLS and the Claude Code plugin globally for the current user.
 #
 # - Materializes skills/cookbook/cli/references/ from reference-manifest.json
 #   (bundles cookbook content into the script so it's self-contained at runtime).
