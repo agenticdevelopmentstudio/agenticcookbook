@@ -69,9 +69,29 @@ def main(argv: Optional[list] = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     ui = UI()
     try:
+        # Manually extract -p/--path argument to handle "cookr -p <path> <module>" syntax
+        explicit_path = None
+        filtered_argv = []
+        i = 0
+        while i < len(argv):
+            if argv[i] in ("-p", "--path"):
+                if i + 1 < len(argv):
+                    explicit_path = argv[i + 1]
+                    i += 2
+                else:
+                    i += 1
+            else:
+                filtered_argv.append(argv[i])
+                i += 1
+
         modules = discover()
         parser = _build_parser(modules)
-        args = parser.parse_args(argv)
+        args = parser.parse_args(filtered_argv)
+
+        # Use extracted path if it was provided
+        if explicit_path is not None:
+            args.path = Path(explicit_path)
+
         # Validate explicit -p path before checking for module
         if args.path is not None:
             find_repo_root(Path.cwd(), args.path)

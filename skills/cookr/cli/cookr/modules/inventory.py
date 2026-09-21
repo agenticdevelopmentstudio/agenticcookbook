@@ -1,0 +1,38 @@
+"""`cookr inventory` — list the component source files the config names."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+
+from ..core.inventory import scan
+
+NAME = "inventory"
+HELP = "List component source files under the configured roots."
+
+
+def register(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--tier", default=None, help="Only this tier.")
+    parser.add_argument("--json", action="store_true", help="Emit JSON rows instead of a table.")
+
+
+def _require_config(ctx) -> bool:
+    if ctx.config is None:
+        ctx.ui.error("No .cookr.json found. Run from inside a configured repo, or pass -p <repo-root>.")
+        return False
+    return True
+
+
+def run(args, ctx) -> int:
+    if not _require_config(ctx):
+        return 2
+    rows = [c for c in scan(ctx.config) if args.tier is None or c.tier == args.tier]
+    if args.json:
+        sys.stdout.write(json.dumps([c.__dict__ for c in rows], indent=2) + "\n")
+        return 0
+    ctx.ui.title(f"cookr inventory · {ctx.repo_root}")
+    ctx.ui.table(["tier", "name", "platform", "path"],
+                 [[c.tier, c.name, c.platform, c.path] for c in rows])
+    ctx.ui.info(f"{len(rows)} source file(s)")
+    return 0
