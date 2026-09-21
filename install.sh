@@ -3,8 +3,8 @@
 #
 # - Materializes skills/cookbook/cli/references/ from reference-manifest.json
 #   (bundles cookbook content into the script so it's self-contained at runtime).
-# - Copies the Python package to ~/.local/bin/_cookbook_pkg/
-# - Writes a shim at ~/.local/bin/cookbook that runs `python3 -m cookbook`
+# - Copies each CLI skill's Python package to ~/.local/bin/_<name>_pkg/ and
+#   writes a shim at ~/.local/bin/<name>
 # - Assembles ./plugins/adh/skills/ from ./skills/ (every top-level
 #   skill directory becomes a plugin-namespaced skill: invokable by Claude
 #   via the Skill tool as adh:<name> and by the user as /adh:<name>).
@@ -18,7 +18,6 @@ set -euo pipefail
 
 REPO_ROOT="$(cd -- "$(dirname -- "$0")" && pwd)"
 BIN_DIR="${HOME}/.local/bin"
-PKG_DIR="${BIN_DIR}/_cookbook_pkg"
 LEGACY_SKILL_DIR="${HOME}/.claude/skills/cookbook"
 PLUGIN_DIR="${REPO_ROOT}/plugins/adh"
 PLUGIN_SKILLS_DIR="${PLUGIN_DIR}/skills"
@@ -29,7 +28,9 @@ CLAUDE_DIR="${HOME}/.claude"
 KNOWN_MARKETPLACES="${CLAUDE_DIR}/plugins/known_marketplaces.json"
 CLAUDE_SETTINGS="${CLAUDE_DIR}/settings.json"
 MANIFEST="${REPO_ROOT}/skills/cookbook/cli/reference-manifest.json"
-PKG_SRC="${REPO_ROOT}/skills/cookbook/cli"
+# Skills that carry a CLI: each ships as ~/.local/bin/<name> + ~/.local/bin/_<name>_pkg
+# and has its cli/ and bin/ kept out of the plugin bundle.
+CLI_SKILLS=(cookbook cookr)
 
 color() { printf '\033[1;%sm%s\033[0m\n' "$1" "$2"; }
 title() { printf '\n'; color 36 "› $*"; }
@@ -133,32 +134,36 @@ ok "references materialized"
 
 # 3b. Materialize each prompt-module's reference-manifest.json
 title "Materializing prompt-module references"
-python3 - "$REPO_ROOT" <<'PY'
+python3 - "$REPO_ROOT" "${CLI_SKILLS[*]}" <<'PY'
 import json, shutil, sys
 from pathlib import Path
 
 repo_root = Path(sys.argv[1]).resolve()
-glob_root = repo_root / "skills/cookbook/cli/cookbook/modules/prompt/prompts"
-
-if not glob_root.is_dir():
+skills = sys.argv[2].split()
+glob_roots = [repo_root / f"skills/{s}/cli/{s}/modules/prompt/prompts" for s in skills]
+glob_roots = [g for g in glob_roots if g.is_dir()]
+if not glob_roots:
     print("  (no prompt modules)")
     raise SystemExit(0)
 
-# Orphan cleanup: wipe every prompts/*/references/ tree (except .gitkeep) so
-# stale references from a deleted/renamed module don't survive re-runs.
-for refs_dir in sorted(glob_root.glob("*/references")):
-    if not refs_dir.is_dir():
-        continue
-    for child in refs_dir.iterdir():
-        if child.name == ".gitkeep":
+for glob_root in glob_roots:
+    for refs_dir in sorted(glob_root.glob("*/references")):
+        if not refs_dir.is_dir():
             continue
-        if child.is_dir():
-            shutil.rmtree(child)
-        else:
-            child.unlink()
+        for child in refs_dir.iterdir():
+            if child.name == ".gitkeep":
+                continue
+            if child.is_dir():
+                shutil.rmtree(child)
+            else:
+                child.unlink()
+
+manifests = []
+for glob_root in glob_roots:
+    manifests.extend(sorted(glob_root.glob("*/reference-manifest.json")))
 
 count = 0
-for manifest_path in sorted(glob_root.glob("*/reference-manifest.json")):
+for manifest_path in manifests:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     dest = (repo_root / manifest["destination"]).resolve()
     source_root = (repo_root / manifest["source_root"]).resolve()
@@ -218,23 +223,29 @@ print(f"  materialized {count} prompt-module manifest(s)")
 PY
 ok "prompt-module references materialized"
 
-# 4. Install package to ~/.local/bin/_cookbook_pkg
-title "Installing package"
-rm -rf "${PKG_DIR}"
-mkdir -p "${PKG_DIR}"
-# Copy only what we want to ship: the cookbook package, references, manifest, README.
-cp -R "${PKG_SRC}/cookbook" "${PKG_DIR}/"
-cp -R "${PKG_SRC}/references" "${PKG_DIR}/"
-cp "${PKG_SRC}/reference-manifest.json" "${PKG_DIR}/"
-# Stamp the source path so `cookbook self update` can re-run install.sh from here.
-printf '%s\n' "${REPO_ROOT}" > "${PKG_DIR}/.install_source"
-ok "package → ${PKG_DIR}"
+# 4 + 5. Install each CLI skill's package and shim
+for skill in "${CLI_SKILLS[@]}"; do
+    pkg_src="${REPO_ROOT}/skills/${skill}/cli"
+    pkg_dir="${BIN_DIR}/_${skill}_pkg"
+    title "Installing ${skill} package"
+    rm -rf "${pkg_dir}"
+    mkdir -p "${pkg_dir}"
+    cp -R "${pkg_src}/${skill}" "${pkg_dir}/"
+    if [ -d "${pkg_src}/references" ]; then
+        cp -R "${pkg_src}/references" "${pkg_dir}/"
+    fi
+    if [ -f "${pkg_src}/reference-manifest.json" ]; then
+        cp "${pkg_src}/reference-manifest.json" "${pkg_dir}/"
+    fi
+    # Stamp the source path so `<skill> self update` can re-run install.sh from here.
+    printf '%s\n' "${REPO_ROOT}" > "${pkg_dir}/.install_source"
+    ok "package → ${pkg_dir}"
 
-# 5. Install the shim
-title "Installing shim"
-cp "${REPO_ROOT}/skills/cookbook/bin/cookbook" "${BIN_DIR}/cookbook"
-chmod +x "${BIN_DIR}/cookbook"
-ok "shim → ${BIN_DIR}/cookbook"
+    title "Installing ${skill} shim"
+    cp "${REPO_ROOT}/skills/${skill}/bin/${skill}" "${BIN_DIR}/${skill}"
+    chmod +x "${BIN_DIR}/${skill}"
+    ok "shim → ${BIN_DIR}/${skill}"
+done
 
 # 6. Install Python deps (user-level)
 #
@@ -286,13 +297,14 @@ if [ ! -d "${SKILLS_SRC}" ]; then
 fi
 rm -rf "${PLUGIN_SKILLS_DIR}"
 mkdir -p "${PLUGIN_SKILLS_DIR}"
-python3 - "$SKILLS_SRC" "$PLUGIN_SKILLS_DIR" <<'PY'
+python3 - "$SKILLS_SRC" "$PLUGIN_SKILLS_DIR" "${CLI_SKILLS[*]}" <<'PY'
 import shutil, sys
 from pathlib import Path
 
 # Per-skill excludes: keep CLI plumbing out of plugin-bundled skills so a
 # stray `cli/` or `bin/` directory in another skill ships normally.
-EXCLUDE_PER_SKILL = {"cookbook": {"cli", "bin"}}
+CLI_SKILLS = set(sys.argv[3].split())
+EXCLUDE_PER_SKILL = {name: {"cli", "bin"} for name in CLI_SKILLS}
 
 src_root = Path(sys.argv[1])
 dst_root = Path(sys.argv[2])

@@ -11,7 +11,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd -- "$(dirname -- "$0")" && pwd)"
 BIN_DIR="${HOME}/.local/bin"
-PKG_DIR="${BIN_DIR}/_cookbook_pkg"
+CLI_SKILLS=(cookbook cookr)
 LEGACY_SKILL_DIR="${HOME}/.claude/skills/cookbook"
 PLUGIN_SKILLS_DIR="${REPO_ROOT}/plugins/adh/skills"
 MARKETPLACE_NAME="agenticcookbook"
@@ -25,21 +25,23 @@ title() { printf '\n'; color 36 "› $*"; }
 ok()    { color 32 "✓ $*"; }
 skip()  { color 90 "· $*"; }
 
-title "Removing CLI shim"
-if [ -f "${BIN_DIR}/cookbook" ]; then
-    rm -f "${BIN_DIR}/cookbook"
-    ok "removed ${BIN_DIR}/cookbook"
-else
-    skip "${BIN_DIR}/cookbook (not present)"
-fi
+for skill in "${CLI_SKILLS[@]}"; do
+    title "Removing ${skill} CLI shim"
+    if [ -f "${BIN_DIR}/${skill}" ]; then
+        rm -f "${BIN_DIR}/${skill}"
+        ok "removed ${BIN_DIR}/${skill}"
+    else
+        skip "${BIN_DIR}/${skill} (not present)"
+    fi
 
-title "Removing package"
-if [ -d "${PKG_DIR}" ]; then
-    rm -rf "${PKG_DIR}"
-    ok "removed ${PKG_DIR}"
-else
-    skip "${PKG_DIR} (not present)"
-fi
+    title "Removing ${skill} package"
+    if [ -d "${BIN_DIR}/_${skill}_pkg" ]; then
+        rm -rf "${BIN_DIR}/_${skill}_pkg"
+        ok "removed ${BIN_DIR}/_${skill}_pkg"
+    else
+        skip "${BIN_DIR}/_${skill}_pkg (not present)"
+    fi
+done
 
 title "Unregistering plugin"
 if command -v python3 >/dev/null 2>&1; then
