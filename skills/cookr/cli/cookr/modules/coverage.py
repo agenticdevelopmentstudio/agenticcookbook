@@ -7,7 +7,7 @@ import json
 import sys
 
 from ..core.coverage import STATES, compute
-from .inventory import _require_config
+from .inventory import require_config
 
 NAME = "coverage"
 HELP = "Report each component as missing, partial or complete against the recipe corpus."
@@ -31,7 +31,7 @@ def _row_dict(r) -> dict:
 
 
 def run(args, ctx) -> int:
-    if not _require_config(ctx):
+    if not require_config(ctx):
         return 2
     report = compute(ctx.config, tier=args.tier)
     failing = report.below(args.require) if args.require else []

@@ -17,7 +17,7 @@ def register(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--json", action="store_true", help="Emit JSON rows instead of a table.")
 
 
-def _require_config(ctx) -> bool:
+def require_config(ctx) -> bool:
     if ctx.config is None:
         ctx.ui.error("No .cookr.json found. Run from inside a configured repo, or pass -p <repo-root>.")
         return False
@@ -25,11 +25,11 @@ def _require_config(ctx) -> bool:
 
 
 def run(args, ctx) -> int:
-    if not _require_config(ctx):
+    if not require_config(ctx):
         return 2
     rows = [c for c in scan(ctx.config) if args.tier is None or c.tier == args.tier]
     if args.json:
-        sys.stdout.write(json.dumps([c.__dict__ for c in rows], indent=2) + "\n")
+        sys.stdout.write(json.dumps([{"name": c.name, "path": c.path, "tier": c.tier, "platform": c.platform} for c in rows], indent=2) + "\n")
         return 0
     ctx.ui.title(f"cookr inventory · {ctx.repo_root}")
     ctx.ui.table(["tier", "name", "platform", "path"],
