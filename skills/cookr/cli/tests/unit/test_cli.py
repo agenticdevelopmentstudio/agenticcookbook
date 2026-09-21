@@ -25,3 +25,9 @@ def test_unknown_module_exits_nonzero():
     with pytest.raises(SystemExit) as exc:
         main(["nope"])
     assert exc.value.code != 0
+
+
+def test_explicit_path_without_config_exits_2(tmp_path, capsys):
+    rc = main(["-p", str(tmp_path)])
+    assert rc == 2
+    assert ".cookr.json" in capsys.readouterr().out

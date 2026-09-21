@@ -26,7 +26,9 @@ from .registry import discover
 def find_repo_root(start: Path, explicit: Optional[Path] = None) -> Optional[Path]:
     if explicit is not None:
         p = explicit.expanduser().resolve()
-        return p if (p / CONFIG_NAME).is_file() else None
+        if not (p / CONFIG_NAME).is_file():
+            raise ConfigError(f"no {CONFIG_NAME} at {p}")
+        return p
     start = start.resolve()
     for d in (start, *start.parents):
         if (d / CONFIG_NAME).is_file():
@@ -70,6 +72,9 @@ def main(argv: Optional[list] = None) -> int:
         modules = discover()
         parser = _build_parser(modules)
         args = parser.parse_args(argv)
+        # Validate explicit -p path before checking for module
+        if args.path is not None:
+            find_repo_root(Path.cwd(), args.path)
         if not getattr(args, "module", None):
             _print_module_table(ui, modules)
             return 0
