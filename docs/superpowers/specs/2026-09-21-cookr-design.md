@@ -181,9 +181,11 @@ Completeness rules, evaluated on the recipe file:
    Design Decisions.
 4. The Platform Notes section contains a `WinUI 3` entry with body text.
 
-Output is a table sorted by name, followed by a one-line tally per tier. `--json` emits the rows as a list of objects. `--require complete` exits
-1 if any component in scope is below `complete`; `--require partial` exits 1
-only on `missing`. A phase's exit gate is therefore:
+Output is a table sorted by name, followed by a one-line tally per tier (only
+the selected tier when `--tier` is given). `--json` emits the rows as a list
+of objects. `--require complete` exits 1 if any component in scope is below
+`complete`; `--require partial` exits 1 only on `missing`. A phase's exit gate
+is therefore:
 
 ```sh
 cookr coverage --tier ui-primitives --require complete && cookbook validate -p recipes
