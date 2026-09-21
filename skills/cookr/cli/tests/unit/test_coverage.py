@@ -62,6 +62,14 @@ def test_tally_counts_a_row_under_each_of_its_tiers(mini_repo):
     assert tally["apple"] == {"missing": 0, "partial": 0, "complete": 2}
 
 
+def test_tally_under_a_tier_filter_reports_only_that_tier(mini_repo):
+    # `button` sits in both apple and primitives; a scoped report must not
+    # leak a primitives line into the apple view.
+    assert _rows(mini_repo, tier="apple").tally() == {
+        "apple": {"missing": 0, "partial": 0, "complete": 2},
+    }
+
+
 def test_below(mini_repo):
     report = _rows(mini_repo)
     assert [r.name for r in report.below("complete")] == ["chat-composer", "stat-card"]

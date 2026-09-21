@@ -3,6 +3,7 @@ from __future__ import annotations
 import shutil
 
 import pytest
+from cookbook.core.errors import CookbookError
 
 from cookr.core.recipes import load_corpus
 
@@ -23,7 +24,7 @@ def test_duplicate_slug_in_a_subdirectory_raises(mini_repo):
     sub = mini_repo / "recipes" / "sub"
     sub.mkdir()
     shutil.copy2(mini_repo / "recipes" / "button.md", sub / "button.md")
-    with pytest.raises(ValueError, match="duplicate recipe slug `button`"):
+    with pytest.raises(CookbookError, match="duplicate recipe slug `button`"):
         load_corpus(mini_repo / "recipes")
 
 

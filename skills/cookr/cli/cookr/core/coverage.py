@@ -29,11 +29,13 @@ class CoverageRow:
 class CoverageReport:
     rows: list
     unmatched_recipes: list
+    tier: Optional[str] = None  # the `--tier` scope this report was computed for
 
     def tally(self) -> dict[str, dict[str, int]]:
+        """Count each row once under each of its tiers, or only under `tier` when scoped."""
         out = {}
         for r in self.rows:
-            for tier in r.tiers:
+            for tier in ((self.tier,) if self.tier else r.tiers):
                 t = out.setdefault(tier, {s: 0 for s in STATES})
                 t[r.state] += 1
         return out
@@ -76,4 +78,4 @@ def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
     unmatched = sorted(s for s in corpus if s not in matched_slugs)
     if tier is not None:
         rows = [r for r in rows if tier in r.tiers]
-    return CoverageReport(rows=rows, unmatched_recipes=unmatched)
+    return CoverageReport(rows=rows, unmatched_recipes=unmatched, tier=tier)

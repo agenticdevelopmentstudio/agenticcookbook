@@ -2,7 +2,8 @@
 
 The corpus is keyed on file stem, and `iter_markdown` walks recursively, so two
 files with the same stem in different subdirectories are one slug with two
-sources. That is a config error, not a last-writer-wins merge: it raises.
+sources. That is a corpus error, not a last-writer-wins merge: it raises
+CookbookError, which the CLI turns into a clean message and exit 2.
 """
 
 from __future__ import annotations
@@ -10,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from cookbook.core.errors import CookbookError
 from cookbook.core.frontmatter import parse_file
 from cookbook.core.markdown import iter_markdown
 
@@ -27,7 +29,7 @@ def load_corpus(recipes_dir: Path) -> dict[str, RecipeInfo]:
     corpus = {}
     for md in iter_markdown(recipes_dir):
         if md.stem in corpus:
-            raise ValueError(
+            raise CookbookError(
                 f"duplicate recipe slug `{md.stem}`: {corpus[md.stem].path} and {md}"
             )
         fm = parse_file(md)
