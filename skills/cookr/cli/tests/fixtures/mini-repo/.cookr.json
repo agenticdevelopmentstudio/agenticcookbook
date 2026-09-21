@@ -1,0 +1,10 @@
+{
+  "recipes": "recipes",
+  "roots": [
+    {"path": "web/components", "tier": "primitives", "platform": "web"},
+    {"path": "web/blocks", "tier": "blocks", "platform": "web"},
+    {"path": "apple/UI", "tier": "apple", "platform": "apple"}
+  ],
+  "ignore": ["**/*.stories.tsx", "**/index.ts"],
+  "aliases": {"toolbar-button": "button"}
+}
