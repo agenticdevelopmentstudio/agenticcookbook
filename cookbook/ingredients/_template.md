@@ -135,6 +135,8 @@ Subsystem: `{{bundle_id}}` | Category: `ComponentName`
 - **SwiftUI**:
 - **Compose**:
 - **React/Web**:
+- **AppKit / UIKit**:
+- **WinUI 3**:
 
 ## Design Decisions
 

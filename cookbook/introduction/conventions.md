@@ -270,6 +270,13 @@ related:
   - agenticdevelopercookbook://guidelines/testing/test-pyramid
 ```
 
+## Platform Notes
+
+An ingredient or recipe carries one bullet per platform under `## Platform Notes`:
+SwiftUI, Compose, React/Web, AppKit / UIKit, and WinUI 3. The **WinUI 3** bullet
+is required for any recipe counted by `cookr coverage`; a recipe with an empty
+WinUI 3 bullet reports as `partial`.
+
 ## RFC 2119 Keywords
 
 Use RFC 2119 keywords for all behavioral requirements:

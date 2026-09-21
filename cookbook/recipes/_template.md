@@ -67,6 +67,8 @@ Describe how ingredients are spatially or logically arranged. Use ASCII diagrams
 - **SwiftUI**:
 - **Compose**:
 - **React/Web**:
+- **AppKit / UIKit**:
+- **WinUI 3**:
 
 ## Design Decisions
 
