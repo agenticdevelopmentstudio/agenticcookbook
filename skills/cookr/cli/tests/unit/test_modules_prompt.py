@@ -59,6 +59,26 @@ def test_extract_alias_pulls_alias_sources_too(mini_repo, extract_refs, capsys):
     assert "recipes/button.md" in out          # alias resolves to the button recipe
 
 
+def test_extract_gathers_every_source_for_the_slug(mini_repo, extract_refs, capsys):
+    """One slug, one prompt, all of its sources — however they are reached."""
+    expected = [
+        "apple/UI/Button.swift",
+        "apple/UI/ToolbarButton.swift",
+        "web/components/Button.tsx",
+    ]
+    assert main(["-p", str(mini_repo), "prompt", "extract", "button", "--json"]) == 0
+    by_name = json.loads(capsys.readouterr().out)
+    assert sorted(by_name["sources"]) == expected
+
+    assert main(["-p", str(mini_repo), "prompt", "extract", "toolbar-button", "--json"]) == 0
+    by_alias = json.loads(capsys.readouterr().out)
+    assert sorted(by_alias["sources"]) == expected
+
+    assert by_name["recipe_path"] == by_alias["recipe_path"] == "recipes/button.md"
+    assert by_name["name"] == "button"          # the requested name is preserved
+    assert by_alias["name"] == "toolbar-button"
+
+
 def test_extract_missing_component_exits_2(mini_repo, extract_refs, capsys):
     assert main(["-p", str(mini_repo), "prompt", "extract", "nope"]) == 2
 

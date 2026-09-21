@@ -43,7 +43,7 @@ def build(name: str, ctx, rtype: str):
     """Return (prompt_text, info) for `name`, or raise LookupError or FileNotFoundError."""
     cfg = ctx.config
     slug = cfg.aliases.get(name, name)
-    components = [c for c in scan(cfg) if c.name == name]
+    components = [c for c in scan(cfg) if cfg.aliases.get(c.name, c.name) == slug]
     if not components:
         raise LookupError(f"no source file in the inventory is named `{name}`")
 
