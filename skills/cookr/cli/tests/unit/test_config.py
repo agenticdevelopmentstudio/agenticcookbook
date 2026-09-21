@@ -29,6 +29,20 @@ def test_loads_minimal_config(tmp_path):
     assert cfg.aliases == {}
 
 
+def test_tiers_are_ordered_and_deduplicated(tmp_path):
+    for d in ("src", "blocks", "apple", "recipes"):
+        (tmp_path / d).mkdir()
+    cfg = load_config(_write(tmp_path, {
+        "recipes": "recipes",
+        "roots": [
+            {"path": "src", "tier": "ui", "platform": "web"},
+            {"path": "blocks", "tier": "blocks", "platform": "web"},
+            {"path": "apple", "tier": "ui", "platform": "apple"},
+        ],
+    }))
+    assert cfg.tiers == ["ui", "blocks"]
+
+
 def test_missing_file_raises(tmp_path):
     with pytest.raises(ConfigError):
         load_config(tmp_path / ".cookr.json")

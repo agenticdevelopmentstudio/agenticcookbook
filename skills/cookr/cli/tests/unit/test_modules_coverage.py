@@ -35,5 +35,13 @@ def test_require_partial_fails_on_missing(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "coverage", "--require", "partial"]) == 1
 
 
+def test_unknown_tier_exits_2_even_with_require(mini_repo, capsys):
+    assert main(["-p", str(mini_repo), "coverage", "--tier", "nope", "--require", "complete"]) == 2
+    out = capsys.readouterr().out
+    assert "unknown tier `nope`" in out
+    for tier in ("primitives", "blocks", "apple"):
+        assert tier in out
+
+
 def test_tier_scoped_require(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "coverage", "--tier", "apple", "--require", "complete"]) == 0

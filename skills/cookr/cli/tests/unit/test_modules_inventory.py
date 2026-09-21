@@ -25,5 +25,13 @@ def test_inventory_tier_filter(mini_repo, capsys):
     assert [r["name"] for r in rows] == ["stat-card"]
 
 
+def test_inventory_unknown_tier_exits_2(mini_repo, capsys):
+    assert main(["-p", str(mini_repo), "inventory", "--tier", "nope"]) == 2
+    out = capsys.readouterr().out
+    assert "unknown tier `nope`" in out
+    for tier in ("primitives", "blocks", "apple"):
+        assert tier in out
+
+
 def test_inventory_without_config_exits_2(tmp_path, capsys):
     assert main(["-p", str(tmp_path), "inventory"]) == 2

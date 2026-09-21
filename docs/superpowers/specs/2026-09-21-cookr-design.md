@@ -144,6 +144,8 @@ Two files that produce the same `name` (say a web `Button.tsx` and an AppKit
 `Button.swift`) are two inventory rows and one component. Coverage treats them
 as one entry with two source platforms.
 
+An unknown `--tier` is an error (exit 2).
+
 ## Coverage
 
 `cookr coverage [--tier T] [--json] [--require partial|complete]`
@@ -186,6 +188,9 @@ only on `missing`. A phase's exit gate is therefore:
 ```sh
 cookr coverage --tier ui-primitives --require complete && cookbook validate -p recipes
 ```
+
+An unknown `--tier` is an error (exit 2), so a typo in the gate cannot report
+an empty scope as success.
 
 Recipes with no matching component (a vocabulary recipe such as ATK's
 `site-menu`, or a composite) are not an error. They are listed once at the

@@ -24,8 +24,20 @@ def require_config(ctx) -> bool:
     return True
 
 
+def require_known_tier(args, ctx) -> bool:
+    """A typo'd `--tier` must be an error, never an empty (green) result."""
+    if args.tier is not None and args.tier not in ctx.config.tiers:
+        ctx.ui.error(
+            f"unknown tier `{args.tier}`; configured tiers: {', '.join(ctx.config.tiers)}"
+        )
+        return False
+    return True
+
+
 def run(args, ctx) -> int:
     if not require_config(ctx):
+        return 2
+    if not require_known_tier(args, ctx):
         return 2
     rows = [c for c in scan(ctx.config) if args.tier is None or c.tier == args.tier]
     if args.json:
