@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Shim: run the installed cookr package with the installed cookbook package on the path.
+DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export PYTHONPATH="${DIR}/_cookr_pkg:${DIR}/_cookbook_pkg:${PYTHONPATH:-}"
+exec python3 -m cookr "$@"
