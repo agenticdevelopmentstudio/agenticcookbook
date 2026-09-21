@@ -211,10 +211,13 @@ Mirrors the cookbook prompt module. It assembles, in order:
 3. The recipe-quality guidelines and the platform design-language guideline,
    pulled from the cookbook references via the manifest. (These sit between
    the module rules and the action, as `assemble_prompt` places references.)
-4. The template for the recipe's type, pulled from the same references
-   (`ingredient` by default; `--type recipe` for a composite). Only the one
-   template for the requested type is included, after the action. A missing
-   template (references not installed) is an error, not a silent omission.
+4. The template for the recipe's type, pulled from the same references.
+   Without `--type`, the type is the existing recipe's `type` when there is one
+   (so re-running extract on a composite cannot silently convert it to an
+   ingredient), otherwise `ingredient`; `--type ingredient|recipe` overrides.
+   Only the one template for the resolved type is included, after the action. A
+   missing template (references not installed) is an error, not a silent
+   omission.
 5. The full text of every inventory file whose `name` (or alias) is `<name>`,
    each under a heading giving its repo-relative path and platform.
 6. The existing recipe at `recipes/<slug>.md` if there is one, so the

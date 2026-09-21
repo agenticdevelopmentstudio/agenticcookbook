@@ -11,9 +11,11 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import Optional
 
 from cookbook.modules.prompt.render import assemble_prompt
 
+from ...core.completeness import REQUIRED_SECTIONS
 from ...core.inventory import scan
 from ...core.recipes import load_corpus
 from ..inventory import require_config
@@ -33,14 +35,19 @@ def references_dir() -> Path:
 def register(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("paction", nargs="?", help="Action: extract. Omit to list.")
     parser.add_argument("name", nargs="?", help="Component name (kebab-case).")
-    parser.add_argument("--type", choices=("ingredient", "recipe"), default="ingredient",
-                        help="Template to write against.")
+    parser.add_argument("--type", choices=("ingredient", "recipe"), default=None,
+                        help="Template to write against "
+                             "(default: the existing recipe's type, else ingredient).")
     parser.add_argument("--json", action="store_true",
                         help="Wrap the prompt with the resolved paths as JSON.")
 
 
-def build(name: str, ctx, rtype: str):
-    """Return (prompt_text, info) for `name`, or raise LookupError or FileNotFoundError."""
+def build(name: str, ctx, rtype: Optional[str]):
+    """Return (prompt_text, info) for `name`, or raise LookupError or FileNotFoundError.
+
+    `rtype` of None means "whatever the existing recipe is", falling back to
+    `ingredient` when there is no recipe yet.
+    """
     cfg = ctx.config
     slug = cfg.aliases.get(name, name)
     components = [c for c in scan(cfg) if cfg.aliases.get(c.name, c.name) == slug]
@@ -50,6 +57,13 @@ def build(name: str, ctx, rtype: str):
     recipe_rel = f"{cfg.recipes}/{slug}.md"
     corpus = load_corpus(cfg.recipes_dir)
     existing = corpus.get(slug)
+    # Without an explicit --type, keep the existing recipe's type: re-running
+    # extract on a composite must not hand back the ingredient template and
+    # silently convert it.
+    rtype = rtype or (
+        existing.type if existing is not None and existing.type in REQUIRED_SECTIONS
+        else "ingredient"
+    )
     platforms = ", ".join(sorted({c.platform for c in components}))
 
     prompt = assemble_prompt(

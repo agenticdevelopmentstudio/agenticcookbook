@@ -91,6 +91,38 @@ def test_extract_json_reports_paths(mini_repo, extract_refs, capsys):
     assert "prompt" in data
 
 
+def _retype_stat_card(mini_repo, rtype):
+    p = mini_repo / "recipes" / "stat-card.md"
+    p.write_text(
+        p.read_text(encoding="utf-8").replace("type: ingredient", f"type: {rtype}", 1),
+        encoding="utf-8",
+    )
+
+
+def test_type_defaults_to_the_existing_recipes_type(mini_repo, extract_refs, capsys):
+    _retype_stat_card(mini_repo, "recipe")
+    assert main(["-p", str(mini_repo), "prompt", "extract", "stat-card"]) == 0
+    out = capsys.readouterr().out
+    assert "## reference: templates/recipe.md" in out
+    assert "## reference: templates/ingredient.md" not in out
+    assert "Write the **recipe** recipe" in out
+
+
+def test_explicit_type_overrides_the_existing_recipes_type(mini_repo, extract_refs, capsys):
+    _retype_stat_card(mini_repo, "recipe")
+    assert main(["-p", str(mini_repo), "prompt", "extract", "stat-card",
+                 "--type", "ingredient"]) == 0
+    out = capsys.readouterr().out
+    assert "## reference: templates/ingredient.md" in out
+    assert "## reference: templates/recipe.md" not in out
+
+
+def test_type_defaults_to_ingredient_without_an_existing_recipe(mini_repo, extract_refs, capsys):
+    (mini_repo / "recipes" / "chat-composer.md").unlink()
+    assert main(["-p", str(mini_repo), "prompt", "extract", "chat-composer", "--json"]) == 0
+    assert json.loads(capsys.readouterr().out)["type"] == "ingredient"
+
+
 def test_extract_type_recipe_uses_recipe_template(mini_repo, extract_refs, capsys):
     assert main(["-p", str(mini_repo), "prompt", "extract", "stat-card", "--type", "recipe"]) == 0
     out = capsys.readouterr().out
