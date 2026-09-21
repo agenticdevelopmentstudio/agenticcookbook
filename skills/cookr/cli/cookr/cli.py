@@ -39,7 +39,7 @@ def find_repo_root(start: Path, explicit: Optional[Path] = None) -> Optional[Pat
 def _build_parser(modules):
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument(
-        "-p", "--path", type=Path, default=None,
+        "-p", "--path", type=Path, default=argparse.SUPPRESS,
         help=f"Repo root holding {CONFIG_NAME} (defaults to discovery from cwd).",
     )
     parser = argparse.ArgumentParser(
@@ -69,37 +69,19 @@ def main(argv: Optional[list] = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     ui = UI()
     try:
-        # Manually extract -p/--path argument to handle "cookr -p <path> <module>" syntax
-        explicit_path = None
-        filtered_argv = []
-        i = 0
-        while i < len(argv):
-            if argv[i] in ("-p", "--path"):
-                if i + 1 < len(argv):
-                    explicit_path = argv[i + 1]
-                    i += 2
-                else:
-                    i += 1
-            else:
-                filtered_argv.append(argv[i])
-                i += 1
-
         modules = discover()
         parser = _build_parser(modules)
-        args = parser.parse_args(filtered_argv)
-
-        # Use extracted path if it was provided
-        if explicit_path is not None:
-            args.path = Path(explicit_path)
+        args = parser.parse_args(argv)
+        explicit = getattr(args, "path", None)
 
         # Validate explicit -p path before checking for module
-        if args.path is not None:
-            find_repo_root(Path.cwd(), args.path)
+        if explicit is not None:
+            find_repo_root(Path.cwd(), explicit)
         if not getattr(args, "module", None):
             _print_module_table(ui, modules)
             return 0
         cwd = Path.cwd()
-        root = find_repo_root(cwd, args.path)
+        root = find_repo_root(cwd, explicit)
         config = load_config(root / CONFIG_NAME) if root else None
         ctx = CookrContext(cwd=cwd, repo_root=root, config=config, ui=ui)
         return int(args._module.run(args, ctx) or 0)
