@@ -1,7 +1,7 @@
 """`cookr prompt extract <name>` — the brief for writing one component's recipe.
 
-Assembled, in order: role header + module preamble, the bundled references
-(templates and guidelines), the rendered action, then every source file for the
+Assembled, in order: role header + module preamble, the bundled guidelines,
+the selected template, the rendered action, then every source file for the
 component and the existing recipe if there is one. No LLM is called here.
 """
 
@@ -11,7 +11,6 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Optional
 
 from cookbook.modules.prompt.render import assemble_prompt
 
@@ -41,7 +40,7 @@ def register(parser: argparse.ArgumentParser) -> None:
 
 
 def build(name: str, ctx, rtype: str):
-    """Return (prompt_text, info) for `name`, or raise LookupError."""
+    """Return (prompt_text, info) for `name`, or raise LookupError or FileNotFoundError."""
     cfg = ctx.config
     slug = cfg.aliases.get(name, name)
     components = [c for c in scan(cfg) if c.name == name]
@@ -55,12 +54,19 @@ def build(name: str, ctx, rtype: str):
 
     prompt = assemble_prompt(
         module_md_path=PROMPTS_DIR / "extract" / "module.md",
-        references_dir=references_dir(),
+        references_dir=references_dir() / "guidelines",
         action_md_path=PROMPTS_DIR / "extract" / "actions" / "extract.md",
         params={"name": name, "recipe_path": recipe_rel, "type": rtype, "platforms": platforms},
         task=f"Produce `{recipe_rel}` for `{name}`.",
     )
-    parts = [prompt.rstrip()]
+
+    # Append the selected template
+    template_path = references_dir() / "templates" / f"{rtype}.md"
+    if not template_path.exists():
+        raise FileNotFoundError(f"template for `{rtype}` not installed at {template_path}; run install.sh")
+    template_text = template_path.read_text(encoding="utf-8")
+
+    parts = [prompt.rstrip(), f"## reference: templates/{rtype}.md\n\n{template_text.rstrip()}"]
     for c in components:
         body = (cfg.repo_root / c.path).read_text(encoding="utf-8", errors="replace")
         parts.append(f"## source: {c.path} ({c.platform})\n\n```\n{body.rstrip()}\n```")
@@ -73,7 +79,7 @@ def build(name: str, ctx, rtype: str):
     info = {
         "name": name, "slug": slug, "type": rtype, "recipe_path": recipe_rel,
         "sources": [c.path for c in components], "platforms": platforms.split(", "),
-        "existing": existing is not None,
+        "existing": existing is not None, "template": str(template_path),
     }
     return text, info
 
@@ -95,6 +101,9 @@ def run(args, ctx) -> int:
     try:
         text, info = build(args.name, ctx, args.type)
     except LookupError as e:
+        ctx.ui.error(f"cookr prompt extract: {e}")
+        return 2
+    except FileNotFoundError as e:
         ctx.ui.error(f"cookr prompt extract: {e}")
         return 2
     if args.json:

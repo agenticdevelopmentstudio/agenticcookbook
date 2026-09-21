@@ -44,7 +44,8 @@ def test_extract_includes_sources_and_existing_recipe(mini_repo, extract_refs, c
     out = capsys.readouterr().out
     assert "You are a UI component specification writer." in out
     assert "## reference: templates/ingredient.md" in out
-    assert "## reference: guidelines/recipe-quality/source-fidelity.md" in out
+    assert "## reference: templates/recipe.md" not in out  # recipe template must not be present
+    assert "## reference: recipe-quality/source-fidelity.md" in out
     assert "## source: web/components/Button.tsx (web)" in out
     assert "## source: apple/UI/Button.swift (apple)" in out
     assert "## existing recipe: recipes/button.md" in out
@@ -74,3 +75,5 @@ def test_extract_type_recipe_uses_recipe_template(mini_repo, extract_refs, capsy
     assert main(["-p", str(mini_repo), "prompt", "extract", "stat-card", "--type", "recipe"]) == 0
     out = capsys.readouterr().out
     assert "Write the **recipe** recipe" in out
+    assert "## reference: templates/recipe.md" in out
+    assert "## reference: templates/ingredient.md" not in out  # ingredient template must not be present
