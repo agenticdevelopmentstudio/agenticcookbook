@@ -72,6 +72,10 @@ class CheckReport:
 
 
 _MD_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+# An absolute URI: `https://…`, `mailto:…`, or a domain identifier such as
+# `agenticdevelopercookbook://…` or `<other-repo>://…` (conventions.md,
+# "URL-Based Domain Identifiers"). None of these name a file to resolve.
+_URI_RE = re.compile(r"^[a-z][a-z0-9+.-]*:")
 
 
 def _check_one(md: Path, root: Path, report: CheckReport, id_owners: dict[str, list[str]]) -> None:
@@ -113,7 +117,7 @@ def _check_one(md: Path, root: Path, report: CheckReport, id_owners: dict[str, l
     # Resolve relative markdown links (skip absolute URLs and anchors).
     for m in _MD_LINK_RE.finditer(fm.body):
         target = m.group(1).split("#", 1)[0].strip()
-        if not target or target.startswith(("http://", "https://", "mailto:", "agenticdevelopercookbook://")):
+        if not target or _URI_RE.match(target):
             continue
         if (md.parent / target).resolve().exists():
             continue

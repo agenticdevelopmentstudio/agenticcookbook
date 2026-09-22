@@ -123,7 +123,8 @@ def test_broken_link(tmp_path):
 def test_external_links_ignored(tmp_path):
     body = GOOD_FRONTMATTER.replace(
         "Body.",
-        "Links: [a](https://example.com) [b](mailto:x@y) [c](agenticdevelopercookbook://x/y).",
+        "Links: [a](https://example.com) [b](mailto:x@y) [c](agenticdevelopercookbook://x/y)"
+        " [d](agenticdevelopertoolkit://recipes/button#pressed).",
     )
     root = _cookbook_with(tmp_path, "r.md", body)
     report = phase_a(root)
