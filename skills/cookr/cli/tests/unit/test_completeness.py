@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from cookr.core.completeness import problems
 from cookr.core.recipes import load_corpus
 
@@ -59,3 +61,42 @@ def test_unknown_type_is_a_problem_and_grades_as_ingredient(mini_repo):
     # The only complaint is the type itself: the ingredient sections it already
     # satisfies are still the list it is graded against.
     assert found == ["unknown type `guidline`"]
+
+
+def _set_winui_line(mini_repo, line):
+    p = mini_repo / "recipes" / "button.md"
+    text = p.read_text(encoding="utf-8")
+    old = "- **WinUI 3**: `Microsoft.UI.Xaml.Controls.Button` with the `AccentButtonStyle` resource."
+    assert old in text
+    p.write_text(text.replace(old, line), encoding="utf-8")
+    return load_corpus(mini_repo / "recipes")["button"]
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        "- **WinUI 3** (Windows): Use `ProgressRing`.",
+        "- **WinUI 3 / C#**: Use `ProgressRing`.",
+        "- **Windows / WinUI 3:** Use `ProgressRing`.",
+        "- **WinUI 3 (C#)**: Use `ProgressRing`.",
+    ],
+)
+def test_decorated_winui_label_counts_as_filled(mini_repo, line):
+    assert problems(_set_winui_line(mini_repo, line)) == []
+
+
+def test_decorated_winui_label_with_no_text_is_empty(mini_repo):
+    info = _set_winui_line(mini_repo, "- **WinUI 3** (Windows):")
+    assert any("no filled `WinUI 3`" in p for p in problems(info))
+
+
+def test_not_applicable_winui_note_is_a_problem(mini_repo):
+    info = _set_winui_line(mini_repo, "- **WinUI 3**: Not applicable — web-only component.")
+    assert any("not applicable" in p for p in problems(info))
+
+
+def test_combined_platform_bullet_saying_not_applicable_is_a_problem(mini_repo):
+    info = _set_winui_line(
+        mini_repo, "- **SwiftUI, Compose, AppKit/UIKit, WinUI 3**: Not applicable — web-only."
+    )
+    assert any("not applicable" in p for p in problems(info))

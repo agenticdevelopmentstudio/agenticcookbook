@@ -6,7 +6,10 @@ A recipe is complete when:
 3. its `type` is one REQUIRED_SECTIONS knows;
 4. every section in REQUIRED_SECTIONS[type] is present with at least one
    non-blank body line before the next `##` heading;
-5. its Platform Notes section has a `- **WinUI 3**:` bullet with text after the colon.
+5. its Platform Notes section has a WinUI 3 bullet with translation guidance:
+   the bold label names `WinUI 3` (decoration such as `**WinUI 3** (Windows):`
+   or `**WinUI 3 / C#**:` is tolerated), text follows it, and that text is
+   not `Not applicable` — Platform Notes is translation guidance, never a gap.
 """
 
 from __future__ import annotations
@@ -31,7 +34,11 @@ REQUIRED_SECTIONS = {
 }
 
 _H2 = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
-_WINUI = re.compile(r"^-\s+\*\*WinUI 3\*\*:\s*(\S.*)?$", re.MULTILINE)
+_WINUI = re.compile(
+    r"^-\s+\*\*[^*\n]*WinUI 3[^*\n]*\*\*\s*(?:\([^)\n]*\))?\s*:?\s*(\S.*)?$",
+    re.MULTILINE,
+)
+_NOT_APPLICABLE = re.compile(r"^not applicable\b", re.IGNORECASE)
 
 
 def sections(body: str) -> dict[str, str]:
@@ -73,6 +80,9 @@ def problems(info: RecipeInfo) -> list[str]:
             out.append(f"section `{name}` is empty")
     notes = found.get("Platform Notes", "")
     m = _WINUI.search(notes)
-    if not m or not (m.group(1) or "").strip():
+    text = (m.group(1) or "").strip() if m else ""
+    if not text:
         out.append("Platform Notes has no filled `WinUI 3` bullet")
+    elif _NOT_APPLICABLE.match(text):
+        out.append("Platform Notes `WinUI 3` bullet says not applicable; it must give translation guidance")
     return out
