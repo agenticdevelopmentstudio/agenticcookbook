@@ -36,6 +36,11 @@ Operate as a specification writer producing one cookbook recipe from source code
   given; bump `version` minor and update `modified` to today. If starting fresh,
   leave `id`, `created`, `modified`, `author`, `copyright`, `license` empty —
   `cookbook update` fills them.
+- Frontmatter `platforms` lists the canonical identifiers of the source
+  platforms only: `typescript` and `web` for a web source; `swift` plus
+  `macos` and/or `ios` for an Apple source. Never the platforms the Platform
+  Notes translate to, and never `apple`. Keep `approved-by` and
+  `approved-date` as empty strings; approval is a separate step.
 - Set `status: review` when every section is filled. A `NEEDS REVIEW` marker
   is a point for the reviewer to settle, not a reason to stay `draft`; use
   `status: draft` only when a section is empty or unfinished.
