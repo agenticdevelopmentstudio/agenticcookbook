@@ -17,8 +17,11 @@ Operate as a specification writer producing one cookbook recipe from source code
   **genuine gap**: a concern the component's purpose plainly calls for that the
   source does not handle (an interactive control with no keyboard path, a text
   field with no accessible label, an async action with no error state), or a
-  behavior the source alone cannot confirm. Follow the marker with what is
-  missing and what evidence would settle it.
+  decision the source cannot make (whether a 16px target is acceptable, whether
+  a color token meets contrast). Follow the marker with what is missing and
+  what evidence would settle it. Never hedge with a marker on a question the
+  source answers: if no transition exists, say so; if the checked state is
+  shown by both color and an icon, state it as a requirement.
 - Requirements are named kebab-case bullets using RFC 2119 words
   (`- **must-render-label**: The component MUST ...`).
 - Fill every section of the template. Do not delete sections.
@@ -33,5 +36,6 @@ Operate as a specification writer producing one cookbook recipe from source code
   given; bump `version` minor and update `modified` to today. If starting fresh,
   leave `id`, `created`, `modified`, `author`, `copyright`, `license` empty —
   `cookbook update` fills them.
-- Set `status: review` when every section is filled and no `NEEDS REVIEW`
-  marker remains; otherwise `status: draft`.
+- Set `status: review` when every section is filled. A `NEEDS REVIEW` marker
+  is a point for the reviewer to settle, not a reason to stay `draft`; use
+  `status: draft` only when a section is empty or unfinished.
