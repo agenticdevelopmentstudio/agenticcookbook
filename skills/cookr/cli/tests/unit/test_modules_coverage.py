@@ -17,7 +17,8 @@ def test_coverage_json_shape(mini_repo, capsys):
     data = json.loads(capsys.readouterr().out)
     assert set(data) == {"rows", "tally", "unmatched_recipes"}
     row = data["rows"][0]
-    assert {"name", "tiers", "platforms", "paths", "state", "recipe", "problems"} <= set(row)
+    assert {"name", "slug", "tiers", "platforms", "paths", "state", "recipe", "problems"} <= set(row)
+    assert row["slug"] == "button"
     assert row["name"] == "button"
     assert row["tiers"] == ["apple", "primitives"]
 

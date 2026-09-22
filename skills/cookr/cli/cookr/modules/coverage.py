@@ -24,7 +24,7 @@ def register(parser: argparse.ArgumentParser) -> None:
 
 def _row_dict(r: CoverageRow) -> dict[str, object]:
     return {
-        "name": r.name, "tiers": list(r.tiers), "platforms": list(r.platforms),
+        "name": r.name, "slug": r.slug, "tiers": list(r.tiers), "platforms": list(r.platforms),
         "paths": list(r.paths), "state": r.state, "recipe": r.recipe,
         "problems": list(r.problems),
     }

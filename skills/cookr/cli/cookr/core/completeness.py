@@ -2,7 +2,9 @@
 
 A recipe is complete when:
 1. its status is `review` or `accepted`;
-2. its body carries no `NEEDS REVIEW` marker;
+2. its body carries no `NEEDS REVIEW` marker outside the Change History
+   section (a changelog row that says "removed the NEEDS REVIEW marker" is a
+   record of the fix, not a gap);
 3. its `type` is one REQUIRED_SECTIONS knows;
 4. every section in REQUIRED_SECTIONS[type] is present with at least one
    non-blank body line before the next `##` heading;
@@ -20,6 +22,7 @@ from .recipes import RecipeInfo
 
 COMPLETE_STATUSES = ("review", "accepted")
 NEEDS_REVIEW = "NEEDS REVIEW"
+CHANGE_HISTORY = "Change History"
 
 REQUIRED_SECTIONS = {
     "ingredient": (
@@ -65,14 +68,16 @@ def problems(info: RecipeInfo) -> list[str]:
     out = []
     if info.status not in COMPLETE_STATUSES:
         out.append(f"status is `{info.status or '(none)'}`, not review/accepted")
-    if NEEDS_REVIEW in info.body:
+    found = sections(info.body)
+    history = found.get(CHANGE_HISTORY, "")
+    graded_body = info.body.replace(history, "", 1) if history else info.body
+    if NEEDS_REVIEW in graded_body:
         out.append(f"body carries a `{NEEDS_REVIEW}` marker")
     if info.type not in REQUIRED_SECTIONS:
         # Graded against the ingredient list anyway, but never silently: a typo'd
         # type must not be able to report `complete`.
         out.append(f"unknown type `{info.type or '(none)'}`")
     required = REQUIRED_SECTIONS.get(info.type, REQUIRED_SECTIONS["ingredient"])
-    found = sections(info.body)
     for name in required:
         if name not in found:
             out.append(f"section `{name}` is missing")

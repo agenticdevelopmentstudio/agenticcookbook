@@ -74,3 +74,17 @@ def test_below(mini_repo):
     report = _rows(mini_repo)
     assert [r.name for r in report.below("complete")] == ["chat-composer", "stat-card"]
     assert report.below("partial") == []
+
+
+def test_slug_is_the_alias_resolved_recipe_stem(mini_repo):
+    by = {r.name: r for r in _rows(mini_repo).rows}
+    assert by["toolbar-button"].slug == "button"
+    assert by["button"].slug == "button"
+
+
+def test_slug_is_set_even_when_the_recipe_is_missing(mini_repo):
+    (mini_repo / "recipes" / "button.md").unlink()
+    by = {r.name: r for r in _rows(mini_repo).rows}
+    assert by["toolbar-button"].state == "missing"
+    assert by["toolbar-button"].recipe is None
+    assert by["toolbar-button"].slug == "button"

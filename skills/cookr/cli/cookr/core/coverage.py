@@ -17,6 +17,7 @@ _RANK = {s: i for i, s in enumerate(STATES)}
 @dataclass(frozen=True)
 class CoverageRow:
     name: str
+    slug: str  # the recipe stem this name resolves to (through `aliases`), matched or not
     tiers: tuple
     platforms: tuple
     paths: tuple
@@ -47,6 +48,11 @@ class CoverageReport:
 def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
     """One row per component `name`, across every tier the name appears in.
 
+    Each row carries `slug`, the recipe stem the name resolves to through
+    `aliases`, even when no recipe exists yet: two aliased names that share a
+    slug want one recipe, and a caller writing one brief per recipe needs to
+    see that before the file exists.
+
     `tier` filters the rows that are returned; it never narrows the corpus the
     rows are matched against, so `unmatched_recipes` is the same list either way.
     """
@@ -69,6 +75,7 @@ def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
             state, recipe = ("partial" if probs else "complete"), slug
         rows.append(CoverageRow(
             name=name,
+            slug=slug,
             tiers=tuple(sorted({i.tier for i in items})),
             platforms=tuple(sorted({i.platform for i in items})),
             paths=tuple(sorted(i.path for i in items)),
