@@ -28,6 +28,8 @@ def test_loads_minimal_config(tmp_path):
     assert cfg.ignore == []
     assert cfg.aliases == {}
     assert cfg.renames == {}
+    assert cfg.scheme == tmp_path.name          # defaults to the repo root's name
+    assert cfg.domain("button") == f"{tmp_path.name}://recipes/button"
 
 
 def test_tiers_are_ordered_and_deduplicated(tmp_path):
@@ -94,4 +96,27 @@ def test_renames_rejects_an_empty_name(tmp_path):
             "recipes": "recipes",
             "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
             "renames": {"src/Card.tsx": ""},
+        }))
+
+
+def test_scheme_is_configurable(tmp_path):
+    (tmp_path / "src").mkdir()
+    (tmp_path / "recipes").mkdir()
+    cfg = load_config(_write(tmp_path, {
+        "recipes": "recipes",
+        "scheme": "toolkit",
+        "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
+    }))
+    assert cfg.domain("button") == "toolkit://recipes/button"
+
+
+@pytest.mark.parametrize("bad", ["", "a/b", "x://", 3])
+def test_scheme_must_be_a_bare_name(tmp_path, bad):
+    (tmp_path / "src").mkdir()
+    (tmp_path / "recipes").mkdir()
+    with pytest.raises(ConfigError, match="`scheme`"):
+        load_config(_write(tmp_path, {
+            "recipes": "recipes",
+            "scheme": bad,
+            "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
         }))

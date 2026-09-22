@@ -36,6 +36,11 @@ Operate as a specification writer producing one cookbook recipe from source code
   given; bump `version` minor and update `modified` to today. If starting fresh,
   leave `id`, `created`, `modified`, `author`, `copyright`, `license` empty —
   `cookbook update` fills them.
+- Frontmatter `domain` is the value the task gives: `<scheme>://<recipes dir>/<slug>`,
+  where the scheme names the repo the recipe lives in and the path is the
+  recipe's path from that repo's root. Never the cookbook's own scheme for a
+  recipe that lives elsewhere. A cross-reference to a sibling recipe
+  (`depends-on`, `related`, `ingredients`) uses the same shape.
 - Frontmatter `platforms` lists the canonical identifiers of the source
   platforms only: `typescript` and `web` for a web source; `swift` plus
   `macos` and/or `ios` for an Apple source. Never the platforms the Platform

@@ -2,6 +2,7 @@
 
 {
   "recipes": "recipes",
+  "scheme": "my-repo",
   "roots": [{"path": "...", "tier": "...", "platform": "web|apple|android|windows"}],
   "ignore": ["glob", ...],
   "aliases": {"component-name": "recipe-slug"},
@@ -15,6 +16,10 @@ holding the file).
 collides with a different component elsewhere (`landing/Card.tsx` beside
 `ui/card.tsx`). `aliases` then folds *names* into a recipe slug; a rename is
 applied first, so an aliased name can be a renamed one.
+
+`scheme` is the URI scheme of this repo's recipe domains
+(`<scheme>://<recipes>/<slug>`); it defaults to the repo root's directory
+name.
 """
 
 from __future__ import annotations
@@ -46,10 +51,15 @@ class Config:
     ignore: list = field(default_factory=list)
     aliases: dict = field(default_factory=dict)
     renames: dict = field(default_factory=dict)
+    scheme: str = ""
 
     @property
     def recipes_dir(self) -> Path:
         return self.repo_root / self.recipes
+
+    def domain(self, slug: str) -> str:
+        """Path-derived domain of the recipe for `slug`."""
+        return f"{self.scheme}://{self.recipes}/{slug}"
 
     @property
     def tiers(self) -> list[str]:
@@ -115,5 +125,9 @@ def load_config(path: Path) -> Config:
         if not (repo_root / rel).is_file():
             raise ConfigError(f"{path}: renames key not found: {rel}")
 
+    scheme = data.get("scheme", repo_root.name)
+    if not isinstance(scheme, str) or not scheme or "://" in scheme or "/" in scheme:
+        raise ConfigError(f"{path}: `scheme` must be a non-empty name without `/` (got {scheme!r})")
+
     return Config(repo_root=repo_root, recipes=recipes, roots=roots, ignore=ignore,
-                  aliases=aliases, renames=renames)
+                  aliases=aliases, renames=renames, scheme=scheme)

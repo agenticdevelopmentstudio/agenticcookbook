@@ -55,6 +55,7 @@ def build(name: str, ctx, rtype: Optional[str]):
         raise LookupError(f"no source file in the inventory is named `{name}`")
 
     recipe_rel = f"{cfg.recipes}/{slug}.md"
+    domain = cfg.domain(slug)
     corpus = load_corpus(cfg.recipes_dir)
     existing = corpus.get(slug)
     # Without an explicit --type, keep the existing recipe's type: re-running
@@ -70,7 +71,8 @@ def build(name: str, ctx, rtype: Optional[str]):
         module_md_path=PROMPTS_DIR / "extract" / "module.md",
         references_dir=references_dir() / "guidelines",
         action_md_path=PROMPTS_DIR / "extract" / "actions" / "extract.md",
-        params={"name": name, "recipe_path": recipe_rel, "type": rtype, "platforms": platforms},
+        params={"name": name, "recipe_path": recipe_rel, "domain": domain, "type": rtype,
+                "platforms": platforms},
         task=f"Produce `{recipe_rel}` for `{name}`.",
     )
 
@@ -91,7 +93,7 @@ def build(name: str, ctx, rtype: Optional[str]):
         )
     text = "\n\n".join(parts) + "\n"
     info = {
-        "name": name, "slug": slug, "type": rtype, "recipe_path": recipe_rel,
+        "name": name, "slug": slug, "type": rtype, "recipe_path": recipe_rel, "domain": domain,
         "sources": [c.path for c in components], "platforms": platforms.split(", "),
         "existing": existing is not None, "template": str(template_path),
     }

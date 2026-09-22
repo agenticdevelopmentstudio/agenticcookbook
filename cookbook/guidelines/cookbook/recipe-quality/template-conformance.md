@@ -43,7 +43,7 @@ Template conformance verifies that a recipe adheres to the structural contract d
 - The frontmatter MUST include all required fields: `id`, `title`, `domain`, `type`, `version`, `status`, `language`, `created`, `modified`, `author`, and `summary`.
 - The `id` field MUST be a valid UUID v4 string in canonical hyphenated format (e.g., `550e8400-e29b-41d4-a716-446655440000`). No two recipes in the cookbook MAY share the same `id`.
 - The `title` field MUST be a non-empty string that matches the `# Title` heading in the document body.
-- The `domain` field MUST be a URI beginning with `agenticdevelopercookbook://` and MUST end with the filename stem of the recipe file (e.g., `agenticdevelopercookbook://recipes/ui/button` for `button.md`).
+- The `domain` field MUST be a URI whose scheme names the repo the file lives in (`agenticdevelopercookbook://` for this cookbook's own content) and whose path MUST end with the filename stem of the recipe file (e.g., `agenticdevelopercookbook://recipes/ui/button` for `button.md`).
 - The `type` field MUST be one of the recognized cookbook artifact types: `recipe`, `guideline`, `pattern`, or `spec`.
 - The `version` field MUST be a valid semantic version string (MAJOR.MINOR.PATCH, e.g., `1.0.0`). Pre-release labels and build metadata are NOT permitted.
 - The `status` field MUST be one of: `draft`, `review`, `accepted`, or `deprecated`.

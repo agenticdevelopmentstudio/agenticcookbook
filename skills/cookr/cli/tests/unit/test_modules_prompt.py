@@ -57,6 +57,7 @@ def test_extract_alias_pulls_alias_sources_too(mini_repo, extract_refs, capsys):
     out = capsys.readouterr().out
     assert "## source: apple/UI/ToolbarButton.swift (apple)" in out
     assert "recipes/button.md" in out          # alias resolves to the button recipe
+    assert "`mini-repo://recipes/button`" in out  # and so does the domain
 
 
 def test_extract_gathers_every_source_for_the_slug(mini_repo, extract_refs, capsys):
@@ -87,6 +88,8 @@ def test_extract_json_reports_paths(mini_repo, extract_refs, capsys):
     assert main(["-p", str(mini_repo), "prompt", "extract", "chat-composer", "--json"]) == 0
     data = json.loads(capsys.readouterr().out)
     assert data["recipe_path"] == "recipes/chat-composer.md"
+    assert data["domain"] == "mini-repo://recipes/chat-composer"
+    assert "`domain` is exactly `mini-repo://recipes/chat-composer`" in data["prompt"]
     assert data["sources"] == ["web/components/chat-composer.tsx"]
     assert "prompt" in data
 

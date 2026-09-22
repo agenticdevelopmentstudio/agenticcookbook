@@ -5,6 +5,8 @@ params:
     description: "Component name (kebab-case)."
   recipe_path:
     description: "Repo-relative path the finished recipe is written to."
+  domain:
+    description: "The recipe's frontmatter `domain`, derived from its path."
   type:
     description: "ingredient or recipe."
     default: "ingredient"
@@ -13,8 +15,8 @@ params:
 ---
 Write the **{{type}}** recipe for the component `{{name}}`.
 
-Save the result to `{{recipe_path}}` (overwrite if it exists). Source platforms
-present: {{platforms}}.
+Save the result to `{{recipe_path}}` (overwrite if it exists). Its frontmatter
+`domain` is exactly `{{domain}}`. Source platforms present: {{platforms}}.
 
 Use the `{{type}}` template under `## reference: templates/` above as the exact
 section list and order. Use the guidelines under `## reference: guidelines/` as
