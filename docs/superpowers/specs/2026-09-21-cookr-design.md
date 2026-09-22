@@ -206,8 +206,13 @@ Mirrors the cookbook prompt module. It assembles, in order:
 
 1. `prompts/extract/module.md` — the role and the extraction rules, restating
    source-fidelity in one paragraph: describe the code as it is, invent
-   nothing, mark gaps `NEEDS REVIEW: Not implemented in source. Behavior
-   undefined.`
+   nothing, mark genuine gaps `NEEDS REVIEW: Not implemented in source.
+   Behavior undefined.` A template item the component has no use for (a
+   pressed state on a static badge, analytics on a separator) is written as
+   a one-line `Not applicable: <why>` statement, never a marker; otherwise a
+   trivial component could never reach `complete`. Platform Notes is
+   translation guidance from the writer's platform knowledge, so it never
+   carries a marker.
 2. `prompts/extract/actions/extract.md` — the task, with parameters
    `{{name}}`, `{{recipe_path}}`, `{{type}}`, and `{{platforms}}`.
 3. The recipe-quality guidelines and the platform design-language guideline,

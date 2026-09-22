@@ -7,15 +7,28 @@ Operate as a specification writer producing one cookbook recipe from source code
 - Describe the code as it is. Every requirement, state, option and edge case
   you write must be traceable to a line in the sources given below. Invent
   nothing.
-- Where the template asks for something the sources do not implement, write
-  exactly: `NEEDS REVIEW: Not implemented in source. Behavior undefined.`
+- A template item the component has no use for is **not applicable**, not a
+  gap. Write one sentence saying so and why, traced to the source
+  (`Not applicable: Badge is static and has no pressed state.`). This covers
+  states an inert element never enters, and the Deep Linking, Localization,
+  Accessibility Options, Feature Flags, Analytics, Privacy, Logging and
+  Compliance sections of a component that does none of those things.
+- Reserve `NEEDS REVIEW: Not implemented in source. Behavior undefined.` for a
+  **genuine gap**: a concern the component's purpose plainly calls for that the
+  source does not handle (an interactive control with no keyboard path, a text
+  field with no accessible label, an async action with no error state), or a
+  behavior the source alone cannot confirm. Follow the marker with what is
+  missing and what evidence would settle it.
 - Requirements are named kebab-case bullets using RFC 2119 words
   (`- **must-render-label**: The component MUST ...`).
 - Fill every section of the template. Do not delete sections.
-- Platform Notes must carry all five bullets. The **WinUI 3** bullet is the
-  reason this recipe exists: name the concrete WinUI 3 control or composition
-  a Windows developer would start from, and what differs from the source
-  platform.
+- Platform Notes is translation guidance, written from your knowledge of each
+  platform, not a description of the source: it never carries a `NEEDS REVIEW`
+  marker. Carry all five bullets. For the source platform, name the files and
+  what is specific to them. For every other platform, name the native control
+  or composition a developer would start from and what differs from the
+  source. The **WinUI 3** bullet is the reason this recipe exists: be concrete
+  (control names, properties, visual states, the XAML or WinUI pattern).
 - Keep the existing recipe's frontmatter `id`, `created` and `version` if one is
   given; bump `version` minor and update `modified` to today. If starting fresh,
   leave `id`, `created`, `modified`, `author`, `copyright`, `license` empty —
