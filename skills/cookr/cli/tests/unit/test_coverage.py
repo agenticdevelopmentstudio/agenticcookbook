@@ -88,3 +88,17 @@ def test_slug_is_set_even_when_the_recipe_is_missing(mini_repo):
     assert by["toolbar-button"].state == "missing"
     assert by["toolbar-button"].recipe is None
     assert by["toolbar-button"].slug == "button"
+
+
+def test_renamed_component_gets_its_own_row(mini_repo):
+    import json
+    from cookr.core.config import load_config
+    from cookr.core.coverage import compute
+    p = mini_repo / ".cookr.json"
+    data = json.loads(p.read_text(encoding="utf-8"))
+    data["renames"] = {"web/components/Button.tsx": "web-button"}
+    p.write_text(json.dumps(data), encoding="utf-8")
+    rows = {r.name: r for r in compute(load_config(p)).rows}
+    assert rows["web-button"].paths == ("web/components/Button.tsx",)
+    assert rows["web-button"].slug == "web-button"
+    assert "web/components/Button.tsx" not in rows["button"].paths

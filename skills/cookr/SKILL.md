@@ -58,6 +58,12 @@ A recipe listed under "recipes with no inventory match" is not an error: it is
 a vocabulary or composite recipe with no single source file. Check `.cookr.json`
 `aliases` only if the name looks like a typo of a component.
 
+One row whose `paths` span two unrelated components (a landing-page `Card.tsx`
+and a primitives `card.tsx`) is a name collision, not one component. Give the
+odd one out its own name in `.cookr.json` `renames`
+(`{"packages/landing/src/blocks/Card.tsx": "landing-card"}`); coverage then
+shows two rows and `prompt extract landing-card` takes only that source.
+
 ## Behavior notes
 
 - Never edit files in `~/.local/bin/_cookr_pkg/`. Edit `skills/cookr/cli/` in agenticcookbook and re-run `./install.sh`.

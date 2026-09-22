@@ -34,5 +34,6 @@ def scan(config: Config) -> list[Component]:
             rel = f.relative_to(config.repo_root).as_posix()
             if _ignored(rel, config.ignore):
                 continue
-            out.append(Component(name=kebab(f.stem), path=rel, tier=root.tier, platform=root.platform))
+            name = config.renames.get(rel, kebab(f.stem))
+            out.append(Component(name=name, path=rel, tier=root.tier, platform=root.platform))
     return sorted(out, key=lambda c: (c.tier, c.name, c.path))

@@ -27,6 +27,7 @@ def test_loads_minimal_config(tmp_path):
     assert cfg.roots[0].tier == "ui"
     assert cfg.ignore == []
     assert cfg.aliases == {}
+    assert cfg.renames == {}
 
 
 def test_tiers_are_ordered_and_deduplicated(tmp_path):
@@ -71,3 +72,26 @@ def test_roots_required(tmp_path):
     (tmp_path / "recipes").mkdir()
     with pytest.raises(ConfigError, match="roots"):
         load_config(_write(tmp_path, {"recipes": "recipes"}))
+
+
+def test_renames_must_name_an_existing_file(tmp_path):
+    (tmp_path / "src").mkdir()
+    (tmp_path / "recipes").mkdir()
+    with pytest.raises(ConfigError, match="renames key not found: src/Card.tsx"):
+        load_config(_write(tmp_path, {
+            "recipes": "recipes",
+            "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
+            "renames": {"src/Card.tsx": "landing-card"},
+        }))
+
+
+def test_renames_rejects_an_empty_name(tmp_path):
+    (tmp_path / "src").mkdir()
+    (tmp_path / "recipes").mkdir()
+    (tmp_path / "src" / "Card.tsx").write_text("", encoding="utf-8")
+    with pytest.raises(ConfigError, match="`renames` must map source paths to non-empty names"):
+        load_config(_write(tmp_path, {
+            "recipes": "recipes",
+            "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
+            "renames": {"src/Card.tsx": ""},
+        }))

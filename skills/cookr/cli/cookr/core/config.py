@@ -4,10 +4,17 @@
   "recipes": "recipes",
   "roots": [{"path": "...", "tier": "...", "platform": "web|apple|android|windows"}],
   "ignore": ["glob", ...],
-  "aliases": {"component-name": "recipe-slug"}
+  "aliases": {"component-name": "recipe-slug"},
+  "renames": {"path/to/Source.tsx": "component-name"}
 }
 
-`path` and `ignore` are relative to the repo root (the directory holding the file).
+`path`, `ignore` and `renames` keys are relative to the repo root (the directory
+holding the file).
+
+`renames` gives one source file its own component name, for a file whose stem
+collides with a different component elsewhere (`landing/Card.tsx` beside
+`ui/card.tsx`). `aliases` then folds *names* into a recipe slug; a rename is
+applied first, so an aliased name can be a renamed one.
 """
 
 from __future__ import annotations
@@ -38,6 +45,7 @@ class Config:
     roots: list = field(default_factory=list)
     ignore: list = field(default_factory=list)
     aliases: dict = field(default_factory=dict)
+    renames: dict = field(default_factory=dict)
 
     @property
     def recipes_dir(self) -> Path:
@@ -98,4 +106,14 @@ def load_config(path: Path) -> Config:
     ):
         raise ConfigError(f"{path}: `aliases` must map strings to strings")
 
-    return Config(repo_root=repo_root, recipes=recipes, roots=roots, ignore=ignore, aliases=aliases)
+    renames = data.get("renames", {})
+    if not isinstance(renames, dict) or not all(
+        isinstance(k, str) and isinstance(v, str) and v for k, v in renames.items()
+    ):
+        raise ConfigError(f"{path}: `renames` must map source paths to non-empty names")
+    for rel in renames:
+        if not (repo_root / rel).is_file():
+            raise ConfigError(f"{path}: renames key not found: {rel}")
+
+    return Config(repo_root=repo_root, recipes=recipes, roots=roots, ignore=ignore,
+                  aliases=aliases, renames=renames)
