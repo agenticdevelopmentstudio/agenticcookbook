@@ -43,7 +43,7 @@ Operate as a specification writer producing one cookbook recipe from source code
   (`depends-on`, `related`, `ingredients`) uses the same shape.
 - Frontmatter `platforms` lists the canonical identifiers of the source
   platforms only: `typescript` and `web` for a web source; `swift` plus
-  `macos` and/or `ios` for an Apple source. Never the platforms the Platform
+  `macos` and/or `ios` for an Apple source; `python` for a Python source. Never the platforms the Platform
   Notes translate to, and never `apple`. Keep `approved-by` and
   `approved-date` as empty strings; approval is a separate step.
 - Set `status: review` when every section is filled. A `NEEDS REVIEW` marker

@@ -9,7 +9,7 @@ from pathlib import Path
 from .config import Config
 from .naming import kebab
 
-SOURCE_SUFFIXES = (".tsx", ".ts", ".swift", ".kt", ".cs", ".xaml")
+SOURCE_SUFFIXES = (".tsx", ".ts", ".swift", ".kt", ".cs", ".xaml", ".py")
 
 
 @dataclass(frozen=True)
@@ -18,6 +18,7 @@ class Component:
     path: str
     tier: str
     platform: str
+    kind: str = "ui"
 
 
 def _ignored(rel: str, patterns: list[str]) -> bool:
@@ -35,5 +36,6 @@ def scan(config: Config) -> list[Component]:
             if _ignored(rel, config.ignore):
                 continue
             name = config.renames.get(rel, kebab(f.stem))
-            out.append(Component(name=name, path=rel, tier=root.tier, platform=root.platform))
+            out.append(Component(name=name, path=rel, tier=root.tier, platform=root.platform,
+                                 kind=root.kind))
     return sorted(out, key=lambda c: (c.tier, c.name, c.path))

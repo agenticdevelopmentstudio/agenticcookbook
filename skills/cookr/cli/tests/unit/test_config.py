@@ -120,3 +120,26 @@ def test_scheme_must_be_a_bare_name(tmp_path, bad):
             "scheme": bad,
             "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
         }))
+
+
+def test_root_kind_defaults_to_ui_and_accepts_logic(tmp_path):
+    for d in ("src", "lib", "recipes"):
+        (tmp_path / d).mkdir()
+    cfg = load_config(_write(tmp_path, {
+        "recipes": "recipes",
+        "roots": [
+            {"path": "src", "tier": "ui", "platform": "web"},
+            {"path": "lib", "tier": "engine", "platform": "python", "kind": "logic"},
+        ],
+    }))
+    assert [r.kind for r in cfg.roots] == ["ui", "logic"]
+
+
+def test_root_kind_must_be_known(tmp_path):
+    (tmp_path / "src").mkdir()
+    (tmp_path / "recipes").mkdir()
+    with pytest.raises(ConfigError, match="kind"):
+        load_config(_write(tmp_path, {
+            "recipes": "recipes",
+            "roots": [{"path": "src", "tier": "ui", "platform": "web", "kind": "backend"}],
+        }))

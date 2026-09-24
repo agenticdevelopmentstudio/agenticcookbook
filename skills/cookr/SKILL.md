@@ -64,6 +64,14 @@ odd one out its own name in `.cookr.json` `renames`
 (`{"packages/landing/src/blocks/Card.tsx": "landing-card"}`); coverage then
 shows two rows and `prompt extract landing-card` takes only that source.
 
+## Non-UI code
+
+Shared code with no visual surface — models, clients, engines — goes under a
+root marked `"kind": "logic"` in `.cookr.json`. It uses the same `ingredient`
+template; `prompt extract` adds the non-UI guidance (contract, errors,
+concurrency, persistence; Appearance, States and Accessibility as one
+`Not applicable` line each). Python sources use `"platform": "python"`.
+
 ## Behavior notes
 
 - Never edit files in `~/.local/bin/_cookr_pkg/`. Edit `skills/cookr/cli/` in agenticcookbook and re-run `./install.sh`.

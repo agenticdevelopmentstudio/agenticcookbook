@@ -3,7 +3,8 @@
 {
   "recipes": "recipes",
   "scheme": "my-repo",
-  "roots": [{"path": "...", "tier": "...", "platform": "web|apple|android|windows"}],
+  "roots": [{"path": "...", "tier": "...", "platform": "web|apple|android|windows|python",
+             "kind": "ui|logic"}],
   "ignore": ["glob", ...],
   "aliases": {"component-name": "recipe-slug"},
   "renames": {"path/to/Source.tsx": "component-name"}
@@ -17,6 +18,10 @@ collides with a different component elsewhere (`landing/Card.tsx` beside
 `ui/card.tsx`). `aliases` then folds *names* into a recipe slug; a rename is
 applied first, so an aliased name can be a renamed one.
 
+`kind` says what a root's sources are: `ui` (the default) for visual
+components, `logic` for non-UI shared code — models, clients, engines. A
+`logic` component's extraction brief carries the non-UI guidance.
+
 `scheme` is the URI scheme of this repo's recipe domains
 (`<scheme>://<recipes>/<slug>`); it defaults to the repo root's directory
 name.
@@ -29,7 +34,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 CONFIG_NAME = ".cookr.json"
-PLATFORMS = ("web", "apple", "android", "windows")
+PLATFORMS = ("web", "apple", "android", "windows", "python")
+KINDS = ("ui", "logic")
 
 
 class ConfigError(Exception):
@@ -41,6 +47,7 @@ class Root:
     path: str
     tier: str
     platform: str
+    kind: str = "ui"
 
 
 @dataclass(frozen=True)
@@ -104,7 +111,10 @@ def load_config(path: Path) -> Config:
             )
         if not (repo_root / r["path"]).is_dir():
             raise ConfigError(f"{path}: roots[{i}].path not found: {r['path']}")
-        roots.append(Root(path=r["path"], tier=r["tier"], platform=r["platform"]))
+        kind = r.get("kind", "ui")
+        if kind not in KINDS:
+            raise ConfigError(f"{path}: roots[{i}].kind `{kind}` is not one of {', '.join(KINDS)}")
+        roots.append(Root(path=r["path"], tier=r["tier"], platform=r["platform"], kind=kind))
 
     ignore = data.get("ignore", [])
     if not isinstance(ignore, list) or not all(isinstance(g, str) for g in ignore):

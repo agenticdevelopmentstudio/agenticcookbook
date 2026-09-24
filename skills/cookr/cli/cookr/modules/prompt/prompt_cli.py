@@ -66,6 +66,7 @@ def build(name: str, ctx, rtype: Optional[str]):
         else "ingredient"
     )
     platforms = ", ".join(sorted({c.platform for c in components}))
+    kind = "logic" if all(c.kind == "logic" for c in components) else "ui"
 
     prompt = assemble_prompt(
         module_md_path=PROMPTS_DIR / "extract" / "module.md",
@@ -82,7 +83,10 @@ def build(name: str, ctx, rtype: Optional[str]):
         raise FileNotFoundError(f"template for `{rtype}` not installed at {template_path}; run install.sh")
     template_text = template_path.read_text(encoding="utf-8")
 
-    parts = [prompt.rstrip(), f"## reference: templates/{rtype}.md\n\n{template_text.rstrip()}"]
+    parts = [prompt.rstrip()]
+    if kind == "logic":
+        parts.append((PROMPTS_DIR / "extract" / "logic.md").read_text(encoding="utf-8").rstrip())
+    parts += [f"## reference: templates/{rtype}.md\n\n{template_text.rstrip()}"]
     for c in components:
         body = (cfg.repo_root / c.path).read_text(encoding="utf-8", errors="replace")
         parts.append(f"## source: {c.path} ({c.platform})\n\n```\n{body.rstrip()}\n```")
@@ -95,7 +99,7 @@ def build(name: str, ctx, rtype: Optional[str]):
     info = {
         "name": name, "slug": slug, "type": rtype, "recipe_path": recipe_rel, "domain": domain,
         "sources": [c.path for c in components], "platforms": platforms.split(", "),
-        "existing": existing is not None, "template": str(template_path),
+        "kind": kind, "existing": existing is not None, "template": str(template_path),
     }
     return text, info
 

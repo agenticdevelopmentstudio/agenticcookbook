@@ -132,3 +132,32 @@ def test_extract_type_recipe_uses_recipe_template(mini_repo, extract_refs, capsy
     assert "Write the **recipe** recipe" in out
     assert "## reference: templates/recipe.md" in out
     assert "## reference: templates/ingredient.md" not in out  # ingredient template must not be present
+
+
+def _add_logic_root(repo):
+    lib = repo / "python" / "lib"
+    lib.mkdir(parents=True)
+    (lib / "session_store.py").write_text("class SessionStore:\n    pass\n", encoding="utf-8")
+    cfg_path = repo / ".cookr.json"
+    cfg = json.loads(cfg_path.read_text())
+    cfg["roots"].append({"path": "python/lib", "tier": "engine", "platform": "python",
+                         "kind": "logic"})
+    cfg_path.write_text(json.dumps(cfg))
+
+
+def test_extract_logic_component_carries_non_ui_guidance(mini_repo, extract_refs, capsys):
+    _add_logic_root(mini_repo)
+    assert main(["-p", str(mini_repo), "prompt", "extract", "session-store", "--json"]) == 0
+    data = json.loads(capsys.readouterr().out)
+    assert data["kind"] == "logic"
+    assert data["platforms"] == ["python"]
+    assert "## non-UI component" in data["prompt"]
+    assert "## source: python/lib/session_store.py (python)" in data["prompt"]
+
+
+def test_extract_ui_component_omits_non_ui_guidance(mini_repo, extract_refs, capsys):
+    _add_logic_root(mini_repo)
+    assert main(["-p", str(mini_repo), "prompt", "extract", "button", "--json"]) == 0
+    data = json.loads(capsys.readouterr().out)
+    assert data["kind"] == "ui"
+    assert "## non-UI component" not in data["prompt"]
