@@ -4,7 +4,7 @@
   "recipes": "recipes",
   "scheme": "my-repo",
   "roots": [{"path": "...", "tier": "...", "platform": "web|apple|android|windows|python",
-             "kind": "ui|logic"}],
+             "kind": "ui|logic", "ignore": ["glob", ...]}],
   "ignore": ["glob", ...],
   "aliases": {"component-name": "recipe-slug"},
   "renames": {"path/to/Source.tsx": "component-name"}
@@ -21,6 +21,10 @@ applied first, so an aliased name can be a renamed one.
 `kind` says what a root's sources are: `ui` (the default) for visual
 components, `logic` for non-UI shared code — models, clients, engines. A
 `logic` component's extraction brief carries the non-UI guidance.
+
+A root's own `ignore` applies to that root only — for a directory that mixes
+views and models, where the top-level `ignore` would also drop files another
+root needs.
 
 `scheme` is the URI scheme of this repo's recipe domains
 (`<scheme>://<recipes>/<slug>`); it defaults to the repo root's directory
@@ -48,6 +52,7 @@ class Root:
     tier: str
     platform: str
     kind: str = "ui"
+    ignore: tuple = ()
 
 
 @dataclass(frozen=True)
@@ -114,7 +119,11 @@ def load_config(path: Path) -> Config:
         kind = r.get("kind", "ui")
         if kind not in KINDS:
             raise ConfigError(f"{path}: roots[{i}].kind `{kind}` is not one of {', '.join(KINDS)}")
-        roots.append(Root(path=r["path"], tier=r["tier"], platform=r["platform"], kind=kind))
+        root_ignore = r.get("ignore", [])
+        if not isinstance(root_ignore, list) or not all(isinstance(g, str) for g in root_ignore):
+            raise ConfigError(f"{path}: roots[{i}].ignore must be a list of strings")
+        roots.append(Root(path=r["path"], tier=r["tier"], platform=r["platform"], kind=kind,
+                          ignore=tuple(root_ignore)))
 
     ignore = data.get("ignore", [])
     if not isinstance(ignore, list) or not all(isinstance(g, str) for g in ignore):

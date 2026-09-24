@@ -70,7 +70,9 @@ Shared code with no visual surface — models, clients, engines — goes under a
 root marked `"kind": "logic"` in `.cookr.json`. It uses the same `ingredient`
 template; `prompt extract` adds the non-UI guidance (contract, errors,
 concurrency, persistence; Appearance, States and Accessibility as one
-`Not applicable` line each). Python sources use `"platform": "python"`.
+`Not applicable` line each). Python sources use `"platform": "python"`. A directory that mixes view and
+model files takes a root-scoped `"ignore"` list (`["**/*ViewController.swift"]`)
+so the top-level `ignore` never drops files a UI root needs.
 
 ## Behavior notes
 

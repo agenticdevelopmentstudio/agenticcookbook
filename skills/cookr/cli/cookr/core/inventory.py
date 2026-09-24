@@ -33,7 +33,7 @@ def scan(config: Config) -> list[Component]:
             if not f.is_file() or f.suffix not in SOURCE_SUFFIXES:
                 continue
             rel = f.relative_to(config.repo_root).as_posix()
-            if _ignored(rel, config.ignore):
+            if _ignored(rel, config.ignore) or _ignored(rel, list(root.ignore)):
                 continue
             name = config.renames.get(rel, kebab(f.stem))
             out.append(Component(name=name, path=rel, tier=root.tier, platform=root.platform,

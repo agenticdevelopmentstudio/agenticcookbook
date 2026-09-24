@@ -39,3 +39,17 @@ def test_scan_applies_a_rename_to_one_path(mini_repo):
     by_path = {r.path: r.name for r in rows}
     assert by_path["web/components/Button.tsx"] == "web-button"
     assert "button" in {r.name for r in rows if r.platform == "apple"}
+
+
+def test_root_ignore_applies_to_its_own_root_only(mini_repo):
+    import json
+    p = mini_repo / ".cookr.json"
+    data = json.loads(p.read_text(encoding="utf-8"))
+    for r in data["roots"]:
+        if r["path"] == "apple/UI":
+            r["ignore"] = ["**/Toolbar*.swift", "**/Button.*"]
+    p.write_text(json.dumps(data), encoding="utf-8")
+    paths = [r.path for r in scan(load_config(p))]
+    assert "apple/UI/ToolbarButton.swift" not in paths
+    assert "apple/UI/Button.swift" not in paths
+    assert "web/components/Button.tsx" in paths     # another root's Button survives
