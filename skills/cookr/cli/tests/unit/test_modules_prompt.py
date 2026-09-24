@@ -42,7 +42,7 @@ def test_prompt_lists_actions(capsys):
 def test_extract_includes_sources_and_existing_recipe(mini_repo, extract_refs, capsys):
     assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 0
     out = capsys.readouterr().out
-    assert "You are a UI component specification writer." in out
+    assert "You are a component specification writer." in out
     assert "## reference: templates/ingredient.md" in out
     assert "## reference: templates/recipe.md" not in out  # recipe template must not be present
     assert "## reference: recipe-quality/source-fidelity.md" in out
@@ -153,6 +153,9 @@ def test_extract_logic_component_carries_non_ui_guidance(mini_repo, extract_refs
     assert data["platforms"] == ["python"]
     assert "## non-UI component" in data["prompt"]
     assert "## source: python/lib/session_store.py (python)" in data["prompt"]
+    # UI design-language guidance is noise for a non-UI brief
+    assert "platform-design-languages.md" not in data["prompt"]
+    assert "behavioral-requirements.md" in data["prompt"]
 
 
 def test_extract_ui_component_omits_non_ui_guidance(mini_repo, extract_refs, capsys):
@@ -161,3 +164,10 @@ def test_extract_ui_component_omits_non_ui_guidance(mini_repo, extract_refs, cap
     data = json.loads(capsys.readouterr().out)
     assert data["kind"] == "ui"
     assert "## non-UI component" not in data["prompt"]
+    assert "## reference: platform-design-languages.md" in data["prompt"]
+
+
+def test_module_example_requirement_name_is_subject_only():
+    body = (prompt_cli.PROMPTS_DIR / "extract" / "module.md").read_text(encoding="utf-8")
+    assert "**must-" not in body
+    assert 'role: "component specification writer"' in body

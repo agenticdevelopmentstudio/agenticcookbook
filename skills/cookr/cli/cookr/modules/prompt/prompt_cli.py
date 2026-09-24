@@ -68,9 +68,12 @@ def build(name: str, ctx, rtype: Optional[str]):
     platforms = ", ".join(sorted({c.platform for c in components}))
     kind = "logic" if all(c.kind == "logic" for c in components) else "ui"
 
+    # A non-UI brief carries only the recipe-quality guidelines; the platform
+    # design-language guidance has nothing to act on without a visual surface.
+    guidelines = references_dir() / "guidelines"
     prompt = assemble_prompt(
         module_md_path=PROMPTS_DIR / "extract" / "module.md",
-        references_dir=references_dir() / "guidelines",
+        references_dir=guidelines / "recipe-quality" if kind == "logic" else guidelines,
         action_md_path=PROMPTS_DIR / "extract" / "actions" / "extract.md",
         params={"name": name, "recipe_path": recipe_rel, "domain": domain, "type": rtype,
                 "platforms": platforms},

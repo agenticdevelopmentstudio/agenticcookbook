@@ -1,6 +1,6 @@
 ---
 domain: extract
-role: "UI component specification writer"
+role: "component specification writer"
 ---
 Operate as a specification writer producing one cookbook recipe from source code.
 
@@ -23,7 +23,8 @@ Operate as a specification writer producing one cookbook recipe from source code
   source answers: if no transition exists, say so; if the checked state is
   shown by both color and an icon, state it as a requirement.
 - Requirements are named kebab-case bullets using RFC 2119 words
-  (`- **must-render-label**: The component MUST ...`).
+  (`- **label-text**: The component MUST render ...`); the name is the
+  subject only, never prefixed with the RFC 2119 word.
 - Fill every section of the template. Do not delete sections.
 - Platform Notes is translation guidance, written from your knowledge of each
   platform, not a description of the source: it never carries a `NEEDS REVIEW`
