@@ -22,10 +22,41 @@ Operate as a specification writer producing one cookbook recipe from source code
   what evidence would settle it. Never hedge with a marker on a question the
   source answers: if no transition exists, say so; if the checked state is
   shown by both color and an icon, state it as a requirement.
+- A marker lives only on the named bullet it qualifies, with the whole phrase
+  on one physical line even when the rest of the file is wrapped:
+  `- **focus-ring**: NEEDS REVIEW: Not implemented in source. <what is missing>`.
+  Never a standalone paragraph, never a reworded form (`**NEEDS REVIEW**:`),
+  never in Compliance (its rationale describes the gap in prose) and never in
+  Change History. Anywhere else, refer to it as "the open question on
+  `<name>`" rather than repeating the phrase.
+- Before writing that a helper, type or constant is "not in source", search
+  the repo for it and read it. An import from a real path is source.
+- Never cite source line numbers (`line 159`, `Store.swift:88`): they go stale
+  with the next edit and are often miscounted. Cite the type, the function or
+  a quoted comment.
 - Requirements are named kebab-case bullets using RFC 2119 words
   (`- **label-text**: The component MUST render ...`); the name is the
   subject only, never prefixed with the RFC 2119 word.
 - Fill every section of the template. Do not delete sections.
+- **Conformance Test Vectors**: at least five concrete input → expected
+  output rows. Where the source has tests beside it (`*.test.ts`,
+  `*Tests.swift`, `test_*.py`), find them and derive vectors from their
+  assertions, naming the test.
+- **Compliance** is a `| Check | Status | Category |` table of real checks
+  from the compliance check list below, each a markdown link, each `passed`,
+  `partial` or `failed`, then a rationale paragraph. Never `Not applicable`
+  and never a placeholder row; every component meets at least
+  `separation-of-concerns` and `unit-test-coverage` (`best-practices`).
+- **Design Decisions** are three bold lines each: `**Decision**:`,
+  `**Rationale**:`, `**Approved**: pending`.
+- When sources for two platforms appear (Swift and TypeScript), one recipe
+  covers both: state the shared contract once and call out every divergence
+  between the implementations as a requirement or a Platform Notes point.
+- Inside a code span or code block, never write a close-bracket immediately
+  followed by an open-paren; the validator reads it as a broken link.
+  Describe such a pattern in prose.
+- Frontmatter must stay valid YAML: double-quote any value containing `: `
+  (`title: "Hub Domain: Ecosystems"`).
 - Platform Notes is translation guidance, written from your knowledge of each
   platform, not a description of the source: it never carries a `NEEDS REVIEW`
   marker. Carry all five bullets. For the source platform, name the files and

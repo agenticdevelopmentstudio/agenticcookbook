@@ -171,3 +171,10 @@ def test_module_example_requirement_name_is_subject_only():
     body = (prompt_cli.PROMPTS_DIR / "extract" / "module.md").read_text(encoding="utf-8")
     assert "**must-" not in body
     assert 'role: "component specification writer"' in body
+
+
+def test_extract_lists_the_compliance_catalog(mini_repo, extract_refs, capsys):
+    assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 0
+    out = capsys.readouterr().out
+    assert "## reference: compliance checks" in out
+    assert "`best-practices`:" in out and "unit-test-coverage" in out

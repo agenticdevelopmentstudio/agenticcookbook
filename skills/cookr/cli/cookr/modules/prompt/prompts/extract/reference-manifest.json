@@ -6,6 +6,7 @@
     { "src": "cookbook/ingredients/_template.md", "dst": "templates/ingredient.md", "type": "file" },
     { "src": "cookbook/recipes/_template.md",     "dst": "templates/recipe.md",     "type": "file" },
     { "src": "cookbook/guidelines/cookbook/recipe-quality", "dst": "guidelines/recipe-quality", "type": "tree", "include": "*.md" },
-    { "src": "cookbook/guidelines/cookbook/ui/platform-design-languages.md", "dst": "guidelines/platform-design-languages.md", "type": "file" }
+    { "src": "cookbook/guidelines/cookbook/ui/platform-design-languages.md", "dst": "guidelines/platform-design-languages.md", "type": "file" },
+    { "src": "cookbook/compliance", "dst": "compliance", "type": "tree", "include": "*.md" }
   ]
 }

@@ -46,3 +46,18 @@ def test_unknown_tier_exits_2_even_with_require(mini_repo, capsys):
 
 def test_tier_scoped_require(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "coverage", "--tier", "apple", "--require", "complete"]) == 0
+
+
+def test_coverage_grades_compliance_citations_against_the_catalog(mini_repo, capsys, monkeypatch, tmp_path):
+    from cookr.modules import coverage as coverage_module
+
+    catalog = tmp_path / "compliance"
+    catalog.mkdir()
+    (catalog / "best-practices.md").write_text("### unit-test-coverage\n")
+    monkeypatch.setattr(coverage_module, "compliance_dir", lambda: catalog)
+    p = mini_repo / "recipes" / "button.md"
+    p.write_text(p.read_text(encoding="utf-8").rstrip()
+                 + "\n\n[x](agenticdevelopercookbook://compliance/security#made-up)\n", encoding="utf-8")
+    assert main(["-p", str(mini_repo), "coverage", "--json"]) == 0
+    row = next(r for r in json.loads(capsys.readouterr().out)["rows"] if r["name"] == "button")
+    assert row["problems"] == ["cites compliance checks not in the catalog: security#made-up"]

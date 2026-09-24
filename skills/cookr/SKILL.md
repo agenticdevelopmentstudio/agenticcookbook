@@ -45,14 +45,45 @@ Forward `-p <repo-root>` when the user supplies one; otherwise run from cwd and 
 3. `cookbook update -p recipes --author "<user>"` — fills frontmatter.
 4. `cookbook validate -p recipes` and `cookr coverage --tier <tier>`.
 5. Any row still `partial`: rerun step 2 for it. The prompt includes the existing recipe, so the subagent completes rather than restarts.
-6. `cookbook lint -p recipes --since main` before committing.
+6. Verify pass (below) on every recipe written in the batch.
+7. `cookbook lint -p recipes --since main` before committing.
+
+## Verify pass
+
+Writers assert behavior the source does not have — a MUST claiming validation
+the code never does, "may be null" where the type forbids it, a branch that
+does not exist, a helper called "not in source" when it is imported from a real
+path — and Platform Notes repeat the same errors. After each batch, dispatch one
+subagent per new recipe, pinned to `claude-sonnet-4-6`, with this brief:
+
+- Read every source file in full, and every imported helper the recipe
+  describes (search the repo for it).
+- Check each Behavioral Requirement, test vector, edge case, configuration row,
+  Platform Notes claim and Design Decision against source; fix inaccuracies in
+  place with minimal edits. Keep the section order and the `- **name**:` form.
+- Re-read every kept `NEEDS REVIEW` marker against the extract prompt's marker
+  rules; restate as fact any that name an absent feature, a caller
+  precondition, a hardcoded string, a reported lossy error, single-threaded
+  ordering, documented behavior or another owner's behavior.
+- Do not commit and do not touch any other file. Reply
+  `<slug> fixed N claims, markers M`.
+
+Then check the markers yourself before accepting them: a verify agent is still
+a writer. A kept marker names a swallowed error, an unordered race, unvalidated
+input, a declared contract the code violates, or (UI only) a contrast or target
+size the source cannot decide.
 
 ## Interpreting coverage
 
 The `problems` column names exactly what keeps a recipe at `partial`:
 a `status` below `review`, a `NEEDS REVIEW` marker, a missing or empty required
-section, or an unfilled `WinUI 3` bullet. Quote it to the subagent; do not
-re-derive it.
+section, an unfilled `WinUI 3` bullet, a malformed marker (not a one-line
+`- **name**:` bullet, or sitting in Compliance), a `must-`/`should-`/`may-`
+requirement name, a source line-number citation, or a compliance check the
+catalog does not define. Quote it to the subagent; do not re-derive it.
+
+A recipe whose only problem is `body carries a NEEDS REVIEW marker` is finished
+work waiting on a reviewer's decision, not a rewrite target.
 
 A recipe listed under "recipes with no inventory match" is not an error: it is
 a vocabulary or composite recipe with no single source file. Check `.cookr.json`

@@ -16,6 +16,7 @@ from typing import Optional
 from cookbook.modules.prompt.render import assemble_prompt
 
 from ...core.completeness import REQUIRED_SECTIONS
+from ...core.compliance import load_checks, summary
 from ...core.inventory import scan
 from ...core.recipes import load_corpus
 from ..inventory import require_config
@@ -30,6 +31,11 @@ ACTIONS = ("extract",)
 def references_dir() -> Path:
     """Materialised by install.sh from prompts/extract/reference-manifest.json."""
     return PROMPTS_DIR / "extract" / "references"
+
+
+def compliance_dir() -> Path:
+    """The compliance check catalog, materialised with the other references."""
+    return references_dir() / "compliance"
 
 
 def register(parser: argparse.ArgumentParser) -> None:
@@ -90,6 +96,14 @@ def build(name: str, ctx, rtype: Optional[str]):
     if kind == "logic":
         parts.append((PROMPTS_DIR / "extract" / "logic.md").read_text(encoding="utf-8").rstrip())
     parts += [f"## reference: templates/{rtype}.md\n\n{template_text.rstrip()}"]
+    checks = load_checks(compliance_dir())
+    if checks:
+        parts.append(
+            "## reference: compliance checks\n\n"
+            "The Compliance table cites only these checks, each as a markdown link whose target\n"
+            "is `agenticdevelopercookbook://compliance/<category>#<check>`:\n\n"
+            + summary(checks)
+        )
     for c in components:
         body = (cfg.repo_root / c.path).read_text(encoding="utf-8", errors="replace")
         parts.append(f"## source: {c.path} ({c.platform})\n\n```\n{body.rstrip()}\n```")

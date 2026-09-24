@@ -123,3 +123,67 @@ def test_marker_outside_change_history_still_a_problem_when_history_present(mini
         encoding="utf-8",
     )
     assert any("NEEDS REVIEW" in q for q in problems(load_corpus(mini_repo / "recipes")["button"]))
+
+
+def _append(mini_repo, text, checks=None):
+    p = mini_repo / "recipes" / "button.md"
+    p.write_text(p.read_text(encoding="utf-8").rstrip() + "\n\n" + text + "\n", encoding="utf-8")
+    return problems(load_corpus(mini_repo / "recipes")["button"], checks)
+
+
+def test_marker_on_a_named_one_line_bullet_is_only_the_marker_problem(mini_repo):
+    found = _append(mini_repo, "## Edge Cases 2\n\n"
+                    "- **empty-label**: NEEDS REVIEW: Not implemented in source. No empty-label rule.")
+    assert found == ["body carries a `NEEDS REVIEW` marker"]
+
+
+@pytest.mark.parametrize("text", [
+    "NEEDS REVIEW: Not implemented in source. A standalone paragraph.",
+    "- **empty-label**: **NEEDS REVIEW**: which label?",
+    "- **empty-label**: NEEDS REVIEW: Not implemented in\n  source. Wrapped mid-phrase.",
+])
+def test_malformed_marker_is_a_problem(mini_repo, text):
+    assert any("one-line" in q for q in _append(mini_repo, "## Notes\n\n" + text))
+
+
+def test_marker_in_compliance_is_a_problem(mini_repo):
+    found = _append(mini_repo, "## Compliance\n\n"
+                    "- **gap**: NEEDS REVIEW: Not implemented in source. Contrast unknown.")
+    assert any("Compliance carries" in q for q in found)
+
+
+def test_rfc_word_prefixed_requirement_name_is_a_problem(mini_repo):
+    found = _append(mini_repo, "## More\n\n- **may-accept-class**: The button MAY accept a class.")
+    assert any("RFC 2119" in q for q in found)
+
+
+@pytest.mark.parametrize("text", [
+    "The default comes from the initializer (line 42).",
+    "Derived from source lines 10-20.",
+    "See `Store.swift` behaviour at Store.swift:88.",
+])
+def test_source_line_citation_is_a_problem(mini_repo, text):
+    assert any("line numbers" in q for q in _append(mini_repo, "## More\n\n" + text))
+
+
+@pytest.mark.parametrize("text", [
+    "| v-1 | split | `'body line 1\\nbody line 2'` | two lines |",
+    "Line 1 shows the prompt; line 2 shows the listing.",
+])
+def test_line_words_in_data_are_not_a_citation(mini_repo, text):
+    assert _append(mini_repo, "## More\n\n" + text) == []
+
+
+def test_unknown_compliance_check_is_a_problem_when_catalog_given(mini_repo):
+    text = ("## Compliance\n\n| Check | Status | Category |\n|---|---|---|\n"
+            "| [unit-test-coverage](agenticdevelopercookbook://compliance/best-practices#unit-test-coverage)"
+            " | passed | best-practices |\n"
+            "| [transport-security](agenticdevelopercookbook://compliance/security#transport-security)"
+            " | passed | security |")
+    found = _append(mini_repo, text, checks=frozenset({"best-practices#unit-test-coverage"}))
+    assert found == ["cites compliance checks not in the catalog: security#transport-security"]
+
+
+def test_compliance_citations_unchecked_without_a_catalog(mini_repo):
+    text = "[x](agenticdevelopercookbook://compliance/security#transport-security)"
+    assert _append(mini_repo, "## More\n\n" + text) == []

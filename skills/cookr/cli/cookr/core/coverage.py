@@ -45,7 +45,8 @@ class CoverageReport:
         return [r for r in self.rows if _RANK[r.state] < _RANK[level]]
 
 
-def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
+def compute(config: Config, tier: Optional[str] = None,
+            checks: Optional[frozenset[str]] = None) -> CoverageReport:
     """One row per component `name`, across every tier the name appears in.
 
     Each row carries `slug`, the recipe stem the name resolves to through
@@ -55,6 +56,9 @@ def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
 
     `tier` filters the rows that are returned; it never narrows the corpus the
     rows are matched against, so `unmatched_recipes` is the same list either way.
+
+    `checks` is the compliance catalog (`compliance.load_checks`); None skips
+    the unknown-citation check.
     """
     corpus = load_corpus(config.recipes_dir)
 
@@ -71,7 +75,7 @@ def compute(config: Config, tier: Optional[str] = None) -> CoverageReport:
             state, recipe, probs = "missing", None, ()
         else:
             matched_slugs.add(slug)
-            probs = tuple(problems(info))
+            probs = tuple(problems(info, checks))
             state, recipe = ("partial" if probs else "complete"), slug
         rows.append(CoverageRow(
             name=name,
