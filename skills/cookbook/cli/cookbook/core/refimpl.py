@@ -63,3 +63,37 @@ def render(rows: list[Implementation]) -> str:
     lines = ["| Platform | Path |", "|----------|------|"]
     lines += [f"| {r.platform} | `{r.path}` |" for r in rows]
     return "\n".join(lines)
+
+
+# The template puts the section right before these, in this order of preference.
+_BEFORE = ("Design Decisions", "Compliance", "Change History")
+
+
+def _body_start(lines: list[str]) -> int:
+    """Index of the first line after the YAML frontmatter; 0 when there is none."""
+    if lines and lines[0].rstrip("\r\n") == "---":
+        for i in range(1, len(lines)):
+            if lines[i].rstrip("\r\n") in ("---", "..."):
+                return i + 1
+    return 0
+
+
+def with_section(text: str, rows: list[Implementation]) -> str:
+    """`text` (a whole spec file) with its Reference Implementations section set to `rows`.
+
+    An existing section's body is replaced and every other line keeps its
+    bytes. Without one, the section goes before Design Decisions (else
+    Compliance, else Change History), or at the end.
+    """
+    lines = history.split_lines(text)
+    spans = history.h2_spans(lines, _body_start(lines))
+    block = f"{render(rows)}\n\n"
+    found = next((s for s in spans if s.heading == SECTION), None)
+    if found is not None:
+        return "".join(lines[:found.start + 1] + ["\n", block] + lines[found.end:])
+    for heading in _BEFORE:
+        at = next((s.start for s in spans if s.heading == heading), None)
+        if at is not None:
+            return "".join(lines[:at] + [f"## {SECTION}\n\n", block] + lines[at:])
+    tail = "" if text.endswith("\n") else "\n"
+    return f"{text}{tail}\n## {SECTION}\n\n{render(rows)}\n"

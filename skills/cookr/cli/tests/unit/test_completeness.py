@@ -7,69 +7,69 @@ from cookr.core.recipes import load_corpus
 
 
 def test_complete_recipe_has_no_problems(mini_repo):
-    corpus = load_corpus(mini_repo / "recipes")
-    assert problems(corpus["button"]) == []
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert problems(corpus["components/button"]) == []
 
 
 def test_draft_status_is_a_problem(mini_repo):
-    corpus = load_corpus(mini_repo / "recipes")
-    assert any("status" in p for p in problems(corpus["stat-card"]))
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert any("status" in p for p in problems(corpus["blocks/stat-card"]))
 
 
 def test_needs_review_marker_is_a_problem(mini_repo):
-    corpus = load_corpus(mini_repo / "recipes")
-    assert any("NEEDS REVIEW" in p for p in problems(corpus["stat-card"]))
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert any("NEEDS REVIEW" in p for p in problems(corpus["blocks/stat-card"]))
 
 
 def test_empty_winui_note_is_a_problem(mini_repo):
-    corpus = load_corpus(mini_repo / "recipes")
-    assert any("WinUI 3" in p for p in problems(corpus["chat-composer"]))
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert any("WinUI 3" in p for p in problems(corpus["components/chat-composer"]))
 
 
 def test_missing_section_is_a_problem(mini_repo):
-    p = mini_repo / "recipes" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button.md"
     text = p.read_text(encoding="utf-8")
     start = text.index("## States")
     end = text.index("## Accessibility")
     p.write_text(text[:start] + text[end:], encoding="utf-8")
-    corpus = load_corpus(mini_repo / "recipes")
-    assert any("States" in q for q in problems(corpus["button"]))
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert any("States" in q for q in problems(corpus["components/button"]))
 
 
 def test_empty_section_is_a_problem(mini_repo):
-    p = mini_repo / "recipes" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button.md"
     text = p.read_text(encoding="utf-8")
     start = text.index("## States") + len("## States")
     end = text.index("## Accessibility")
     p.write_text(text[:start] + "\n\n" + text[end:], encoding="utf-8")
-    corpus = load_corpus(mini_repo / "recipes")
-    assert any("States" in q for q in problems(corpus["button"]))
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert any("States" in q for q in problems(corpus["components/button"]))
 
 
 def test_recipe_type_uses_recipe_sections(mini_repo):
-    corpus = load_corpus(mini_repo / "recipes")
+    corpus = load_corpus(mini_repo / "cookbook")
     assert problems(corpus["site-menu"]) == []
 
 
 def test_unknown_type_is_a_problem_and_grades_as_ingredient(mini_repo):
-    p = mini_repo / "recipes" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button.md"
     p.write_text(
         p.read_text(encoding="utf-8").replace("type: ingredient", "type: guidline", 1),
         encoding="utf-8",
     )
-    found = problems(load_corpus(mini_repo / "recipes")["button"])
+    found = problems(load_corpus(mini_repo / "cookbook")["components/button"])
     # The only complaint is the type itself: the ingredient sections it already
     # satisfies are still the list it is graded against.
     assert found == ["unknown type `guidline`"]
 
 
 def _set_winui_line(mini_repo, line):
-    p = mini_repo / "recipes" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button.md"
     text = p.read_text(encoding="utf-8")
     old = "- **WinUI 3**: `Microsoft.UI.Xaml.Controls.Button` with the `AccentButtonStyle` resource."
     assert old in text
     p.write_text(text.replace(old, line), encoding="utf-8")
-    return load_corpus(mini_repo / "recipes")["button"]
+    return load_corpus(mini_repo / "cookbook")["components/button"]
 
 
 @pytest.mark.parametrize(
@@ -102,12 +102,12 @@ def test_combined_platform_bullet_saying_not_applicable_is_a_problem(mini_repo):
     assert any("not applicable" in p for p in problems(info))
 
 
-def _edit(mini_repo, old, new, slug="button"):
-    p = mini_repo / "recipes" / f"{slug}.md"
+def _edit(mini_repo, old, new, slug="components/button"):
+    p = mini_repo / "cookbook" / f"{slug}.md"
     text = p.read_text(encoding="utf-8")
     assert old in text, old
     p.write_text(text.replace(old, new, 1), encoding="utf-8")
-    return load_corpus(mini_repo / "recipes")[slug]
+    return load_corpus(mini_repo / "cookbook")[slug]
 
 
 NEWEST_ROW = "| 1.1.0 | 2026-09-20 | Fixture Author | Filled every template section |"
@@ -127,9 +127,9 @@ def test_marker_outside_change_history_still_a_problem_when_history_present(mini
 
 
 def _append(mini_repo, text, checks=None):
-    p = mini_repo / "recipes" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button.md"
     p.write_text(p.read_text(encoding="utf-8").rstrip() + "\n\n" + text + "\n", encoding="utf-8")
-    return problems(load_corpus(mini_repo / "recipes")["button"], checks)
+    return problems(load_corpus(mini_repo / "cookbook")["components/button"], checks)
 
 
 def test_marker_on_a_named_one_line_bullet_is_only_the_marker_problem(mini_repo):
@@ -268,12 +268,12 @@ def test_fenced_heading_sample_does_not_replace_a_real_section(mini_repo):
 
 @pytest.mark.parametrize("section", ["Compliance", "Logging", "Deep Linking", "Change History"])
 def test_every_template_section_is_required(mini_repo, section):
-    p = mini_repo / "recipes" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button.md"
     text = p.read_text(encoding="utf-8")
     start = text.index(f"## {section}\n")
     nxt = text.find("\n## ", start + 1)
     p.write_text(text[:start] + (text[nxt + 1:] if nxt != -1 else ""), encoding="utf-8")
-    assert f"section `{section}` is missing" in problems(load_corpus(mini_repo / "recipes")["button"])
+    assert f"section `{section}` is missing" in problems(load_corpus(mini_repo / "cookbook")["components/button"])
 
 
 def test_required_sections_mapping_reads_the_templates():
@@ -314,7 +314,7 @@ def test_design_decisions_as_bullets_is_a_problem(mini_repo):
     (["android"], []),  # no known identifiers: ungraded
 ])
 def test_frontmatter_platforms_follow_the_source_platforms(mini_repo, sources, expected):
-    info = load_corpus(mini_repo / "recipes")["button"]
+    info = load_corpus(mini_repo / "cookbook")["components/button"]
     assert problems(info, source_platforms=sources) == expected
 
 
@@ -334,19 +334,24 @@ def test_mixed_order_history_is_a_problem(mini_repo):
 
 
 def test_oldest_first_history_is_fine(mini_repo):
-    info = _edit(mini_repo, NEWEST_ROW + "\n| 1.0.0 | 2026-09-01 | Fixture Author | Initial creation |",
-                 "| 1.0.0 | 2026-09-01 | Fixture Author | Initial creation |\n" + NEWEST_ROW)
+    old = ("| 1.1.1 | 2026-09-25 | Fixture | Moved into the library cookbook; "
+           "added Reference Implementations. |\n" + NEWEST_ROW +
+           "\n| 1.0.0 | 2026-09-01 | Fixture Author | Initial creation |")
+    new = ("| 1.0.0 | 2026-09-01 | Fixture Author | Initial creation |\n" + NEWEST_ROW +
+           "\n| 1.1.1 | 2026-09-25 | Fixture | Moved into the library cookbook; "
+           "added Reference Implementations. |")
+    info = _edit(mini_repo, old, new)
     assert problems(info) == []
 
 
 def test_newest_row_must_match_frontmatter_version(mini_repo):
-    info = _edit(mini_repo, "version: 1.1.0", "version: 1.0.0")
-    assert ("frontmatter `version` is `1.0.0` but the newest Change History row is 1.1.0"
+    info = _edit(mini_repo, "version: 1.1.1", "version: 1.0.0")
+    assert ("frontmatter `version` is `1.0.0` but the newest Change History row is 1.1.1"
             in problems(info))
 
 
 def test_modified_older_than_newest_row_is_a_problem(mini_repo):
-    info = _edit(mini_repo, "modified: 2026-09-20", "modified: 2026-09-10")
+    info = _edit(mini_repo, "modified: 2026-09-25", "modified: 2026-09-10")
     assert any("frontmatter `modified` (2026-09-10) is older" in q for q in problems(info))
 
 
@@ -380,17 +385,20 @@ def test_design_decision_missing_its_approved_line_is_a_problem(mini_repo):
 
 
 def test_domain_matching_its_path_is_not_a_problem(mini_repo):
-    corpus = load_corpus(mini_repo / "recipes")
-    assert problems(corpus["button"], domain="mini-repo://recipes/button") == []
+    corpus = load_corpus(mini_repo / "cookbook")
+    assert problems(corpus["components/button"], domain="mini-repo://cookbook/components/button") == []
 
 
 @pytest.mark.parametrize("line", [
-    "domain: agenticdevelopercookbook://recipes/button",  # another repo's scheme
-    "domain: mini-repo://ingredients/button",             # wrong directory
-    "domain: mini-repo://recipes/toolbar-button",         # longer slug, same suffix
+    "domain: agenticdevelopercookbook://cookbook/components/button",  # another repo's scheme
+    "domain: mini-repo://recipes/components/button",                 # wrong directory
+    "domain: mini-repo://cookbook/components/toolbar-button",        # different name, same suffix
 ])
 def test_domain_not_matching_its_path_is_a_problem(mini_repo, line):
-    path = mini_repo / "recipes" / "button.md"
-    path.write_text(path.read_text().replace("domain: mini-repo://recipes/button", line))
-    got = problems(load_corpus(mini_repo / "recipes")["button"], domain="mini-repo://recipes/button")
-    assert got == [f"frontmatter `domain` is `{line.split(': ', 1)[1]}`, not `mini-repo://recipes/button`"]
+    path = mini_repo / "cookbook" / "components" / "button.md"
+    path.write_text(path.read_text().replace(
+        "domain: mini-repo://cookbook/components/button", line))
+    got = problems(load_corpus(mini_repo / "cookbook")["components/button"],
+                   domain="mini-repo://cookbook/components/button")
+    assert got == [f"frontmatter `domain` is `{line.split(': ', 1)[1]}`, "
+                   f"not `mini-repo://cookbook/components/button`"]

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://github.com/agenticdevelopercookbook/cookbook/blob/main/cookbook/reference/cookbook.schema.json",
+  "type": "cookbook",
+  "schema_version": "1.0.0",
+  "name": "mini-repo",
+  "id": "d8069120-7274-4094-bfb9-6d03d97e8d55",
+  "version": "1.0.0",
+  "description": "Specs for mini-repo's shared code, arranged as the code is.",
+  "author": "Fixture",
+  "license": "MIT",
+  "created": "2026-09-25",
+  "modified": "2026-09-25",
+  "platforms": [
+    "apple",
+    "web"
+  ],
+  "cookbook": {
+    "repo": "https://github.com/agenticdevelopercookbook/cookbook",
+    "version": "1.1.0"
+  },
+  "structure": {
+    "name": "mini-repo",
+    "kind": "library"
+  },
+  "code": {
+    "roots": [
+      {
+        "path": "web/components",
+        "platform": "web",
+        "kind": "ui",
+        "recipes": "components"
+      },
+      {
+        "path": "web/blocks",
+        "platform": "web",
+        "kind": "ui",
+        "recipes": "blocks"
+      },
+      {
+        "path": "apple/UI",
+        "platform": "apple",
+        "kind": "ui",
+        "recipes": "ui"
+      }
+    ],
+    "ignore": [
+      "**/*.stories.tsx",
+      "**/index.ts"
+    ]
+  }
+}

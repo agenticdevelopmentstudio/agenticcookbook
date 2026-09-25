@@ -18,7 +18,8 @@ HELP = "Report each component as missing, partial or complete against the recipe
 
 
 def register(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--tier", default=None, help="Only this tier.")
+    parser.add_argument("--tier", default=None,
+                        help="Only this group of the cookbook (a directory, e.g. `ai-plugin-kit/chat`).")
     parser.add_argument("--json", action="store_true", help="Emit JSON instead of a table.")
     parser.add_argument(
         "--require", choices=("partial", "complete"), default=None,
@@ -28,7 +29,7 @@ def register(parser: argparse.ArgumentParser) -> None:
 
 def _row_dict(r: CoverageRow) -> dict[str, object]:
     return {
-        "name": r.name, "slug": r.slug, "tiers": list(r.tiers), "platforms": list(r.platforms),
+        "name": r.name, "tiers": list(r.tiers), "platforms": list(r.platforms),
         "paths": list(r.paths), "state": r.state, "problems": list(r.problems),
     }
 
@@ -52,14 +53,13 @@ def run(args, ctx) -> int:
     ctx.ui.title(f"cookr coverage · {ctx.config.repo_root}")
     # Cells are escaped: rich reads `[...]` as markup, and paths carry `[slug]` segments.
     ctx.ui.table(
-        ["tiers", "name", "state", "slug", "problems"],
-        [[escape(v) for v in (", ".join(r.tiers), r.name, r.state, r.slug, "; ".join(r.problems))]
-         for r in report.rows],
+        ["spec", "state", "problems"],
+        [[escape(v) for v in (r.name, r.state, "; ".join(r.problems))] for r in report.rows],
     )
     for tier, counts in report.tally().items():
         ctx.ui.info(escape("  ".join([f"{tier}:"] + [f"{s}={counts[s]}" for s in STATES])))
     if report.unmatched_recipes:
-        ctx.ui.section("recipes with no inventory match")
+        ctx.ui.section("specs with no source file")
         for slug in report.unmatched_recipes:
             ctx.ui.skip(escape(slug))
     if args.require:

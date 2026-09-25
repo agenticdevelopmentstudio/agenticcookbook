@@ -64,6 +64,9 @@ Operate as a specification writer producing one cookbook recipe from source code
   or composition a developer would start from and what differs from the
   source. The **WinUI 3** bullet is the reason this recipe exists: be concrete
   (control names, properties, visual states, the XAML or WinUI pattern).
+- Reference Implementations is the table the task gives you, verbatim: one
+  row per source file or directory, paths relative to the repo root. It is how
+  tooling finds this recipe's code, so never add, drop or reword a row.
 - When an existing recipe is given, keep its frontmatter `id`, `created`,
   `version` and `modified` and its Change History rows as they are. After
   saving, record the change with

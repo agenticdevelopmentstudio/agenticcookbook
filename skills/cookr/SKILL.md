@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.1.0"
-description: "Inventory, coverage and extraction prompts for component recipes in a repo that carries a .cookr.json. Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have recipes, what is left to write for a tier, or to write the recipe for a component."
-argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|prompt extract <name>|--tier <tier>> [...]"
+version: "0.2.0"
+description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to convert a .cookr.json repo into a cookbook, or to relink specs after code moved."
+argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|organize plan|apply|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(cookbook *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.1.0
+# cookr v0.2.0
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill. Recipe frontmatter,
@@ -26,41 +26,55 @@ If missing, tell the user:
 
 …and stop.
 
+## The library cookbook
+
+A repo's specs live in `<repo>/cookbook/`, arranged in directories that mirror
+the code (`cookbook/ai-plugin-kit/chat/chat-context.md`). A spec's name is its
+path there without `.md`; its `domain` is `<scheme>://cookbook/<name>`. Each
+spec lists its code in a `## Reference Implementations` table of repo-relative
+paths (a trailing `/` claims a whole directory). `cookbook/cookbook.json`'s
+`code` block lists the source roots, so a file no spec claims yet still shows
+up, named where the code's arrangement puts it. A "tier" or group is any
+directory of the cookbook (`--tier ai-plugin-kit/chat`).
+
 ## Routing
 
 | Request | Command |
 |---|---|
-| what components exist / what tiers there are | `cookr inventory [--tier <tier>]` |
-| what is left to write | `cookr coverage [--tier <tier>]` |
+| what components exist / what groups there are | `cookr inventory [--tier <group>]` |
+| what is left to write | `cookr coverage [--tier <group>]` |
 | write the recipe for X | `cookr prompt extract X --out-dir <dir>` → dispatch (below) |
-| write everything a tier still needs | extraction workflow (below) |
-| is the tier written | `cookr prompt extract --tier <tier> --out-dir <dir>` lists nothing to write |
-| is the phase done | `cookr coverage --tier <tier> --require complete` then `cookbook validate -p <recipes_dir>` |
+| write everything a group still needs | extraction workflow (below) |
+| does the cookbook still mirror the code | `cookr arrangement [--tier <group>]` |
+| code moved (`git mv`) | `cookr relink [--since <ref>] [--dry-run]` |
+| convert a `.cookr.json` repo | organize workflow (below) |
+| is the group written | `cookr prompt extract --tier <group> --out-dir <dir>` lists nothing to write |
+| is the phase done | `cookr coverage --tier <group> --require complete` then `cookbook validate -p <cookbook_dir>` |
 | no args / `--help` | `cookr --help`, present the module table verbatim |
 
 Forward `-p <repo-root>` to every `cookr` call when the user supplies one;
-otherwise run from cwd and let the CLI find `.cookr.json`. Never pass a
-cwd-relative `recipes` to `cookbook`: take `recipes_dir` (absolute) from the
-worklist JSON below, which honors `.cookr.json`'s `recipes` and repo root.
+otherwise run from cwd and let the CLI find `cookbook/cookbook.json`. Pass
+`cookbook` the absolute `cookbook_dir` from the worklist JSON below, never a
+cwd-relative path.
 
 ## Extraction workflow
 
-1. `cookr prompt extract --tier <tier> --out-dir <scratch dir> --json` — the
-   worklist. It writes one brief per recipe that still needs a writer, already
-   de-duplicated by slug (aliased names share one brief), and prints
-   `repo_root`, `recipes_dir`, `write` (one entry per brief: `slug`, `name`,
-   `recipe_file`, `domain`, `existing`, `brief`) and `awaiting_review`. Use a scratch
-   directory outside the repo, e.g. `$TMPDIR/cookr-briefs/<tier>`.
+1. `cookr prompt extract --tier <group> --out-dir <scratch dir> --json` — the
+   worklist. It writes one brief per spec that still needs a writer and prints
+   `repo_root`, `cookbook_dir`, `write` (one entry per brief: `name`,
+   `recipe_file`, `domain`, `reference_implementations`, `existing`, `brief`)
+   and `awaiting_review`. Use a scratch directory outside the repo, e.g.
+   `$TMPDIR/cookr-briefs/<group>`.
 2. For each `write` entry, dispatch a subagent pinned to `claude-sonnet-4-6`
    whose whole prompt is: ``Read `<brief>` in full and do exactly what it says.``
    Never paste the brief into the prompt. For a composite, first rebuild its
    brief with `cookr prompt extract <name> --type recipe --out-dir <scratch dir>`.
    Run up to 8 subagents at a time.
-3. `cookbook update -p <recipes_dir> --author "<user>"` — fills empty
+3. `cookbook update -p <cookbook_dir> --author "<user>"` — fills empty
    frontmatter. A writer that rewrote an existing recipe (`existing: true`)
    has already recorded it with `cookbook bump`, as its brief says; never bump
    it again, and never hand-edit `version`, `modified` or Change History.
-4. `cookbook validate -p <recipes_dir>` and `cookr coverage --tier <tier>`.
+4. `cookbook validate -p <cookbook_dir>` and `cookr coverage --tier <group>`.
    Coverage grades each recipe's `domain` against the one its path derives
    (the worklist's `domain`), so a wrong scheme or directory shows up in
    `problems` like any other gap.
@@ -68,7 +82,7 @@ worklist JSON below, which honors `.cookr.json`'s `recipes` and repo root.
    now includes the existing recipe, so the subagent completes rather than
    restarts. Stop when `write` is empty.
 6. Verify pass (below) on every recipe written in the batch.
-7. `cookbook lint -p <recipes_dir> --since main` before committing.
+7. `cookbook lint -p <cookbook_dir> --since main` before committing.
 
 `awaiting_review` lists recipes whose only problem is a `NEEDS REVIEW`
 marker: finished work waiting on a reviewer's decision, never a rewrite target.
@@ -95,7 +109,7 @@ subagent per new recipe, pinned to `claude-sonnet-4-6`, with this brief:
   `## non-UI component` section). Restate as fact every marker those rules do
   not allow; keep every one they call a genuine gap.
 - Do not commit and do not touch any other file. Reply
-  `<slug> fixed N claims, markers M`.
+  `<name> fixed N claims, markers M`.
 
 Then check the kept markers yourself against those same rules in the brief
 before accepting them: a verify agent is still a writer. The brief is the only
@@ -104,36 +118,56 @@ own.
 
 ## Interpreting coverage
 
-Rows are keyed by `slug`, the recipe stem each name resolves to through
-`aliases`; de-duplicate by `slug`. The `problems` column names exactly what
-keeps a recipe at `partial`. Quote it to the subagent; do not re-derive it.
-Every graded rule (the Compliance checks every component cites, the minimum
-test vectors, the Design Decision lines, frontmatter `platforms`) is stated
-once, in the writer rules of `modules/prompt/prompts/extract/module.md`,
-which every brief carries as its preamble; point at the brief, never restate
-the rules.
+Rows are keyed by spec name. The `problems` column names exactly what keeps a
+spec at `partial`. Quote it to the subagent; do not re-derive it. Every graded
+rule (the Compliance checks every component cites, the minimum test vectors,
+the Design Decision lines, frontmatter `platforms`, the Reference
+Implementations rows) is stated once, in the writer rules of
+`modules/prompt/prompts/extract/module.md`, which every brief carries as its
+preamble; point at the brief, never restate the rules.
 
-A recipe listed under "recipes with no inventory match" is not an error: it is
-a vocabulary or composite recipe with no single source file. Check `.cookr.json`
-`aliases` only if the name looks like a typo of a component.
+A spec listed under "specs with no source file" is not an error: it is a
+vocabulary or composite spec with no source of its own.
 
-A row whose problems include `name collision across tiers` has `paths` that
-span two unrelated components (a landing-page `Card.tsx` and a primitives
-`card.tsx`). Give the odd one out its own name in `.cookr.json` `renames`
-(`{"packages/landing/src/blocks/Card.tsx": "landing-card"}`); coverage then
-shows two rows and `prompt extract landing-card` takes only that source. When
-the two really are one component, list every path in `renames` under the
-shared name; that records the merge as deliberate and clears the problem.
+Reference Implementations problems:
 
-A `renames` key can also be a directory: `{"packages/chat/src/hooks": "chat-hooks"}`
-makes every source file below it one component, including files added later.
-Use a directory key to group a module; a file key beats it, and the longest
-directory key wins.
+- A row naming a missing path: the code moved or was deleted. After a
+  `git mv`, run `cookr relink`; otherwise fix the row.
+- A path claimed by another spec too: two specs list the same path. Keep it
+  in one; the other lists the files it really describes.
+- An unclaimed file shows up as its own row, named by where it sits. To fold
+  it into an existing spec, add its path (or its directory, with a trailing
+  `/`) to that spec's table; a file row beats a directory row, and the deepest
+  directory wins.
+- A name collision across roots: two unclaimed files from different roots
+  land on one name. Claim each in a spec, or ignore one.
+
+## Arrangement
+
+`cookr arrangement` reports each spec as `aligned` (it sits where its code's
+arrangement puts it), `drifted`, `unplaced` (no rows) or `outside` (a row
+under no root). A drifted spec either moves in the cookbook (move the spec,
+fix its `domain`, then `cookbook bump` it), or its code moves and
+`cookr relink` follows. Rearranging the code is the user's call: propose it,
+never do it unasked.
+
+## Organize workflow
+
+Converts a repo still on `.cookr.json` and a flat recipes directory.
+
+1. `cookr organize plan --out <scratch>/plan.json` proposes each recipe's
+   place and rows, and the `code` block. Show the user the group table it
+   prints; they may edit `moves[].to` or the rows before applying.
+2. `cookr organize apply --plan <scratch>/plan.json` in a clean work tree
+   moves every recipe into `cookbook/`, rewrites domains and references
+   repo-wide, writes each Reference Implementations table, patch-bumps each
+   spec, writes `cookbook/cookbook.json` and removes `.cookr.json`.
+3. `cookbook validate -p <repo>/cookbook`, `cookr coverage`, `cookr arrangement`.
 
 ## Non-UI code
 
 Shared code with no visual surface — models, clients, engines — goes under a
-root marked `"kind": "logic"` in `.cookr.json`. It uses the same `ingredient`
+root marked `"kind": "logic"` in `cookbook.json`'s `code.roots`. It uses the same `ingredient`
 template; `prompt extract` adds the non-UI guidance (contract, errors,
 concurrency, persistence; Appearance, States and Accessibility as one
 `Not applicable` line each). Python sources use `"platform": "python"`. A directory that mixes view and
@@ -144,4 +178,4 @@ so the top-level `ignore` never drops files a UI root needs.
 
 - Never edit files in `~/.local/bin/_cookr_pkg/`. Edit `skills/cookr/cli/` in agenticcookbook and re-run `./install.sh`.
 - Never `pip install` from this skill.
-- `.cookr.json` lives at the target repo's root. Add roots, ignores and aliases there; never in a recipe.
+- `cookbook/cookbook.json` holds the roots and ignores; a spec's own table holds what it claims. Never put either in the other.

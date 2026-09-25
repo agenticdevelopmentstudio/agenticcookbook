@@ -1,13 +1,25 @@
-"""Walk the configured roots and list component source files.
+"""Every component source file, and the spec that names it.
+
+A spec claims its sources in its `## Reference Implementations` table
+(`cookbook.core.refimpl`): a file path claims that file, a directory path
+(trailing `/`) every source file below it. A file path beats any directory
+path, and the deepest directory wins, so a spec for a module directory can
+leave one file inside it to another spec. A source file under a `code.roots`
+entry that no spec claims is named where the code's arrangement puts it:
+`<root.recipes>/<its directories below the root>/<its stem>`, kebab-cased
+(`naming.path_name`), with `src` and `Sources` directories dropped. A stem
+that repeats its directory's name, or is a reserved name like `index`, folds
+into the directory (`join_name`): `data/docs/Docs.swift` is `data/docs`.
 
 Ignore patterns are globs over repo-relative POSIX paths, with globstar
 semantics: `*` and `?` never cross `/`, `[...]` is a character class, and a
 `**` path segment matches zero or more whole directories (`**/x` at any depth,
 `a/**/b` with or without directories between, `a/**` everything below `a`).
+They drop a file found by walking (a root, or a claimed directory); a file a
+spec names outright is never dropped.
 
-A file's component name is its file name with every trailing source suffix
-dropped, kebab-cased: `StatCard.xaml` and its code-behind `StatCard.xaml.cs`
-are both `stat-card`.
+A file's stem is its file name with every trailing source suffix dropped:
+`StatCard.xaml` and its code-behind `StatCard.xaml.cs` are both `StatCard`.
 """
 
 from __future__ import annotations
@@ -21,10 +33,13 @@ from typing import Optional
 
 from cookbook.core.markdown import SKIP_NAMES
 
-from .config import Config, ConfigError
-from .naming import kebab
+from .config import Config, ConfigError, Root
+from .naming import path_name
+from .recipes import RecipeInfo
 
 SOURCE_SUFFIXES = (".tsx", ".ts", ".swift", ".kt", ".cs", ".xaml", ".py")
+# Directories that hold a package's sources without naming anything.
+SOURCE_DIRS = frozenset({"src", "Sources"})
 
 
 @dataclass(frozen=True)
@@ -34,6 +49,7 @@ class Component:
     tier: str
     platform: str
     kind: str = "ui"
+    claimed: bool = False  # a spec's Reference Implementations names it (or a directory above it)
 
 
 def _segment_regex(seg: str) -> str:
@@ -115,44 +131,131 @@ def component_stem(filename: str) -> str:
         stem = base
 
 
-def _reserved(slug: str) -> bool:
-    """True when `<slug>.md` is a name the recipe corpus never loads."""
-    return f"{slug}.md" in SKIP_NAMES
+def group_parts(dirs: list[str]) -> list[str]:
+    """Code directory names as cookbook directory names: kebab-cased, `src` and
+    `Sources` dropped."""
+    return [path_name(d) for d in dirs if d not in SOURCE_DIRS and path_name(d)]
 
 
-def scan(config: Config, tier: Optional[str] = None) -> list[Component]:
-    """Every component source file under the configured roots (only `tier`'s roots when given).
+def join_name(group: list[str], leaf: str) -> list[str]:
+    """`group` + `leaf`, except that a leaf repeating the group's last directory
+    (`docs/docs.ts`) or one the corpus skips (`query/index.tsx`) names the group."""
+    if group and (leaf == group[-1] or f"{leaf}.md" in SKIP_NAMES):
+        return group
+    return group + [leaf]
 
-    Raises ConfigError when a component resolves to a recipe file name the
-    corpus skips (`index`, `references`, ...): its recipe could never be
-    matched, so the config must ignore, rename or alias it.
+
+def expected_name(root: Root, rel: str) -> str:
+    """Where the code's arrangement puts the spec for `rel` under `root`: a source
+    file's own spec, or for a directory (trailing `/`) the module's."""
+    parts = _below(root, rel.rstrip("/"))
+    group = _split(root.recipes) + group_parts(parts if rel.endswith("/") else parts[:-1])
+    if rel.endswith("/"):
+        return "/".join(group)
+    return "/".join(join_name(group, path_name(component_stem(parts[-1]))))
+
+
+def _below(root: Root, rel: str) -> list[str]:
+    return _split(rel[len(root.path):])
+
+
+def _split(path: str) -> list[str]:
+    return [p for p in path.split("/") if p]
+
+
+
+def _walk(repo_root: Path, base: str, ignored: IgnoreSet):
+    """Repo-relative source files below repo-relative directory `base`."""
+    for dirpath, dirnames, filenames in os.walk(repo_root / base):
+        d = Path(dirpath)
+        drel = d.relative_to(repo_root).as_posix()
+        prefix = "" if drel == "." else f"{drel}/"
+        dirnames[:] = sorted(n for n in dirnames if not ignored.prunes(prefix + n))
+        for fn in filenames:
+            rel = prefix + fn
+            if (os.path.splitext(fn)[1] in SOURCE_SUFFIXES and not ignored.ignores(rel)
+                    and (d / fn).is_file()):
+                yield rel
+
+
+def _ignored(config: Config, root: Optional[Root]) -> IgnoreSet:
+    return ignore_set(tuple(config.ignore) + (tuple(root.ignore) if root else ()))
+
+
+Claims = dict[str, list[tuple[str, str]]]  # claimed path -> [(spec, platform)]
+
+
+def claims(corpus: dict[str, RecipeInfo]) -> Claims:
+    """Every path a spec's Reference Implementations names, with who names it."""
+    out: Claims = {}
+    for spec, info in sorted(corpus.items()):
+        for impl in info.implementations:
+            out.setdefault(impl.path, []).append((spec, impl.platform))
+    return out
+
+
+def owners(table: Claims, rel: str) -> list[tuple[str, str]]:
+    """The claims on source file `rel`: its own path's, else its deepest directory's."""
+    if rel in table:
+        return table[rel]
+    parts = rel.split("/")
+    for i in range(len(parts) - 1, 0, -1):
+        found = table.get("/".join(parts[:i]) + "/")
+        if found:
+            return found
+    return []
+
+
+def _reserved(name: str) -> bool:
+    """True when `<name>.md` is a file name the spec corpus never loads."""
+    return f"{name.rsplit('/', 1)[-1]}.md" in SKIP_NAMES
+
+
+def in_group(name: str, tier: Optional[str]) -> bool:
+    """True when spec `name` is in group `tier` (a cookbook directory; None is every group)."""
+    return tier is None or name.startswith(tier.strip("/") + "/")
+
+
+def scan(config: Config, corpus: dict[str, RecipeInfo],
+         tier: Optional[str] = None) -> list[Component]:
+    """Every component source file (only those whose spec is in group `tier` when given).
+
+    A file claimed by several specs at once is one row per spec; coverage
+    reports the clash. Raises ConfigError when an unclaimed file's name is a
+    file name the corpus skips (`index`, `references`, ...): its spec could
+    never be matched, so it must be ignored or claimed.
     """
-    out = []
+    table = claims(corpus)
+    found: dict[str, Optional[Root]] = {}  # rel -> the root holding it, if any
     for root in config.roots:
-        if tier is not None and root.tier != tier:
-            continue
-        ignored = ignore_set(tuple(config.ignore) + tuple(root.ignore))
-        base = config.repo_root / root.path
-        for dirpath, dirnames, filenames in os.walk(base):
-            d = Path(dirpath)
-            drel = d.relative_to(config.repo_root).as_posix()
-            prefix = "" if drel == "." else f"{drel}/"
-            dirnames[:] = [n for n in dirnames if not ignored.prunes(prefix + n)]
-            for fn in filenames:
-                if os.path.splitext(fn)[1] not in SOURCE_SUFFIXES:
-                    continue
-                rel = prefix + fn
-                if ignored.ignores(rel) or not (d / fn).is_file():
-                    continue
-                name = config.renamed(rel) or kebab(component_stem(fn))
-                out.append(Component(name=name, path=rel, tier=root.tier, platform=root.platform,
-                                     kind=root.kind))
-    reserved = sorted(c.path for c in out if _reserved(config.aliases.get(c.name, c.name)))
+        for rel in _walk(config.repo_root, root.path, _ignored(config, root)):
+            found.setdefault(rel, config.root_for(rel))
+    for path in table:
+        if path.endswith("/"):
+            base = path.rstrip("/")
+            if (config.repo_root / base).is_dir():
+                for rel in _walk(config.repo_root, base, _ignored(config, config.root_for(base))):
+                    found.setdefault(rel, config.root_for(rel))
+        elif (config.repo_root / path).is_file():
+            found.setdefault(path, config.root_for(path))
+
+    out = []
+    for rel, root in found.items():
+        kind = root.kind if root is not None else "ui"
+        claim = owners(table, rel)
+        if claim:
+            out += [Component(name=spec, path=rel, tier=spec.split("/", 1)[0], platform=platform,
+                              kind=kind, claimed=True) for spec, platform in claim]
+        elif root is not None:
+            name = expected_name(root, rel)
+            out.append(Component(name=name, path=rel, tier=name.split("/", 1)[0],
+                                 platform=root.platform, kind=kind))
+    reserved = sorted(c.path for c in out if not c.claimed and _reserved(c.name))
     if reserved:
         raise ConfigError(
-            "component name resolves to a file name the recipe corpus skips "
-            f"({', '.join(sorted(SKIP_NAMES))}), so its recipe could never be matched: "
-            f"{', '.join(reserved)}. Ignore these files, or give them a name in `renames` "
-            f"or `aliases`."
+            "an unclaimed source file is named with a file name the spec corpus skips "
+            f"({', '.join(sorted(SKIP_NAMES))}), so its spec could never be matched: "
+            f"{', '.join(reserved)}. Ignore these files in `code.ignore`, or claim them "
+            f"in a spec's `## Reference Implementations`."
         )
-    return sorted(out, key=lambda c: (c.tier, c.name, c.path))
+    return sorted((c for c in out if in_group(c.name, tier)), key=lambda c: (c.name, c.path))

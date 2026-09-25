@@ -8,28 +8,31 @@ from cookr.cli import main
 def test_inventory_table(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "inventory"]) == 0
     out = capsys.readouterr().out
-    assert "toolbar-button" in out
+    assert "components/button" in out
+    assert "components/chat-composer" in out
+    assert "blocks/stat-card" in out
     assert "stories" not in out
 
 
 def test_inventory_json(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "inventory", "--json"]) == 0
     rows = json.loads(capsys.readouterr().out)
-    assert {"name", "path", "tier", "platform"} <= set(rows[0])
+    assert {"name", "path", "tier", "platform", "claimed"} <= set(rows[0])
     assert len(rows) == 5
+    assert all(r["claimed"] for r in rows)
 
 
 def test_inventory_tier_filter(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "inventory", "--tier", "blocks", "--json"]) == 0
     rows = json.loads(capsys.readouterr().out)
-    assert [r["name"] for r in rows] == ["stat-card"]
+    assert [r["name"] for r in rows] == ["blocks/stat-card"]
 
 
 def test_inventory_unknown_tier_exits_2(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "inventory", "--tier", "nope"]) == 2
     out = capsys.readouterr().out
-    assert "unknown tier `nope`" in out
-    for tier in ("primitives", "blocks", "apple"):
+    assert "unknown group `nope`" in out
+    for tier in ("blocks", "components", "ui"):
         assert tier in out
 
 
@@ -42,9 +45,9 @@ def _add_bracketed_root(repo):
         d = repo / "web" / "app" / seg
         d.mkdir(parents=True)
         (d / "Page.tsx").write_text("export {}\n", encoding="utf-8")
-    p = repo / ".cookr.json"
+    p = repo / "cookbook" / "cookbook.json"
     data = json.loads(p.read_text(encoding="utf-8"))
-    data["roots"].append({"path": "web/app", "tier": "pages", "platform": "web"})
+    data["code"]["roots"].append({"path": "web/app", "platform": "web", "recipes": "pages"})
     p.write_text(json.dumps(data), encoding="utf-8")
 
 

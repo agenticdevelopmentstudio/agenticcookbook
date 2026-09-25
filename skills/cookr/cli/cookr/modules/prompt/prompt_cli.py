@@ -10,8 +10,8 @@ backtick run longer than any inside them, so their own fences stay inside.
 No LLM is called here.
 
 `extract <name>` builds one brief. `extract --tier <tier> --out-dir <dir>` is
-the extraction worklist for a tier: one brief per recipe that still needs a
-writer, de-duplicated by slug, written to `<dir>/<slug>.md`. A recipe whose only
+the extraction worklist for a group of the cookbook: one brief per spec that
+still needs a writer, written to `<dir>/<spec name>.md`. A recipe whose only
 problem is its `NEEDS REVIEW` marker is finished work waiting on a reviewer, so
 it is listed as awaiting review rather than handed back to a writer. The scan
 and the corpus are read once for the whole tier.
@@ -27,8 +27,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core.deps import require
-from cookbook.core.errors import CookbookError
+from cookbook.core import refimpl
 from cookbook.core.frontmatter import parse_file
 from cookbook.core.history import h2_sections
 from cookbook.core.markdown import iter_markdown
@@ -39,12 +38,12 @@ from ...core.compliance import load_checks, summary
 from ...core.config import Config
 from ...core.coverage import compute
 from ...core.inventory import Component, scan
-from ...core.recipes import load_corpus
+from ...core.recipes import RecipeInfo, load_corpus
 from ...core.templates import TYPES, template_path
 from ..inventory import require_config, require_known_tier
 
 NAME = "prompt"
-HELP = "Assemble the extraction prompt for one component, or every brief a tier still needs."
+HELP = "Assemble the extraction prompt for one component, or every brief a group still needs."
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 EXTRACT_DIR = PROMPTS_DIR / "extract"
@@ -53,7 +52,6 @@ TO_WRITE = ("missing", "partial")
 # The one problem that leaves a recipe finished but waiting on a reviewer.
 AWAITING_REVIEW = (f"body carries a `{NEEDS_REVIEW}` marker",)
 
-yaml = require("yaml")
 
 _BACKTICKS = re.compile(r"`+")
 
@@ -70,12 +68,13 @@ def compliance_dir() -> Path:
 
 def register(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("paction", nargs="?", choices=ACTIONS, help="Omit to list the actions.")
-    parser.add_argument("name", nargs="?", help="Component name (kebab-case).")
+    parser.add_argument("name", nargs="?",
+                        help="Spec name: its path in the cookbook, or its last segment when unique.")
     parser.add_argument("--tier", default=None,
-                        help="Every component in this tier that still needs a writer "
+                        help="Every component in this group of the cookbook that still needs a writer "
                              "(requires --out-dir).")
     parser.add_argument("--out-dir", type=Path, default=None,
-                        help="Write each brief to <dir>/<slug>.md and print where, "
+                        help="Write each brief to <dir>/<spec name>.md and print where, "
                              "instead of printing the brief.")
     parser.add_argument("--type", choices=TYPES, default=None,
                         help="Template to write against "
@@ -128,31 +127,30 @@ def _checks(catalog: Path) -> str:
 
 # ---- one brief ----------------------------------------------------------------------------
 
-def _existing_recipe(cfg: Config, slug: str) -> Optional[Path]:
-    found = sorted(cfg.recipes_dir.rglob(f"{slug}.md"))
-    if len(found) > 1:
-        raise CookbookError(f"duplicate recipe slug `{slug}`: {found[0]} and {found[1]}")
-    return found[0] if found else None
+def _implementations(existing: Optional[RecipeInfo], components: list[Component]
+                     ) -> list[refimpl.Implementation]:
+    """The existing spec's rows, then a row for each source they do not list yet."""
+    rows = list(existing.implementations) if existing is not None else []
+    for c in components:
+        if not c.claimed and all(r.path != c.path for r in rows):
+            rows.append(refimpl.Implementation(c.platform, c.path))
+    return rows
 
 
-def _brief(name: str, cfg: Config, components: list[Component], existing: Optional[Path],
-           existing_type: str, rtype: Optional[str]) -> tuple[str, dict]:
-    slug = cfg.aliases.get(name, name)
-    if existing is not None:
-        # A recipe already filed in a subdirectory is rewritten where it is.
-        recipe_path = existing.relative_to(cfg.repo_root).as_posix()
-        domain = cfg.domain(existing.relative_to(cfg.recipes_dir).with_suffix("").as_posix())
-    else:
-        recipe_path = f"{cfg.recipes}/{slug}.md"
-        domain = cfg.domain(slug)
+def _brief(name: str, cfg: Config, components: list[Component], existing: Optional[RecipeInfo],
+           rtype: Optional[str]) -> tuple[str, dict]:
+    recipe_path = f"{cfg.cookbook}/{name}.md"
+    domain = cfg.domain(name)
     # Without an explicit --type, keep the existing recipe's type: re-running
     # extract on a composite must not hand back the ingredient template and
     # silently convert it.
+    existing_type = existing.type if existing is not None else ""
     rtype = rtype or (existing_type if existing_type in TYPES else "ingredient")
     template = template_path(rtype)
     platforms = sorted({c.platform for c in components})
     kind = "logic" if all(c.kind == "logic" for c in components) else "ui"
     recipe_file = cfg.repo_root / recipe_path
+    impls = _implementations(existing, components)
 
     module = parse_file(EXTRACT_DIR / "module.md")
     action = parse_file(EXTRACT_DIR / "actions" / "extract.md")
@@ -169,74 +167,79 @@ def _brief(name: str, cfg: Config, components: list[Component], existing: Option
               render_template(action.body, {
                   "name": name, "recipe_path": recipe_path, "recipe_file": str(recipe_file),
                   "domain": domain, "type": rtype, "platforms": ", ".join(platforms),
+                  "reference_implementations": refimpl.render(impls),
               }).strip(),
               f"## Your task\n\nProduce `{recipe_file}` for `{name}`."]
     for c in components:
         body = (cfg.repo_root / c.path).read_text(encoding="utf-8", errors="replace").rstrip()
         parts.append(f"## source: {c.path} ({c.platform})\n\n{fenced(body)}")
     if existing is not None:
-        body = existing.read_text(encoding="utf-8", errors="replace").rstrip()
+        body = existing.path.read_text(encoding="utf-8", errors="replace").rstrip()
         parts.append(f"## existing recipe: {recipe_path}\n\n{fenced(body, 'markdown')}")
     text = "\n\n".join(p for p in parts if p) + "\n"
     info = {
-        "name": name, "slug": slug, "type": rtype, "recipe_path": recipe_path,
+        "name": name, "type": rtype, "recipe_path": recipe_path,
         "recipe_file": str(recipe_file), "domain": domain,
         "sources": [c.path for c in components], "platforms": platforms,
+        "reference_implementations": [{"platform": r.platform, "path": r.path} for r in impls],
         "kind": kind, "existing": existing is not None, "template": str(template),
     }
     return text, info
 
 
+def resolve_name(name: str, names: set[str]) -> str:
+    """`name` itself when it is a spec name, else the one spec name ending in `/<name>`."""
+    name = name.strip("/")
+    if name in names:
+        return name
+    found = sorted(n for n in names if n.endswith("/" + name))
+    if len(found) == 1:
+        return found[0]
+    if found:
+        raise LookupError(f"`{name}` names several components: {', '.join(found)}")
+    raise LookupError(f"no source file in the inventory is named `{name}`")
+
+
 def build(name: str, config: Config, rtype: Optional[str] = None) -> tuple[str, dict]:
     """Return (prompt_text, info) for `name`; raise LookupError or FileNotFoundError.
 
-    `rtype` of None means "whatever the existing recipe is", falling back to
-    `ingredient` when there is no recipe yet.
+    `name` is a spec's path in the cookbook, or its last segment when only one
+    spec ends with it. `rtype` of None means "whatever the existing recipe is",
+    falling back to `ingredient` when there is no recipe yet.
     """
-    slug = config.aliases.get(name, name)
-    components = [c for c in scan(config) if config.aliases.get(c.name, c.name) == slug]
-    if not components:
-        raise LookupError(f"no source file in the inventory is named `{name}`")
-    existing = _existing_recipe(config, slug)
-    existing_type = ""
-    if existing is not None:
-        try:
-            existing_type = str(parse_file(existing).data.get("type", "") or "")
-        except (yaml.YAMLError, UnicodeDecodeError) as e:
-            raise CookbookError(f"{existing}: cannot read recipe (bad YAML frontmatter "
-                                f"or not UTF-8) — {e}") from e
-    return _brief(name, config, components, existing, existing_type, rtype)
+    corpus = load_corpus(config.cookbook_dir)
+    components = scan(config, corpus)
+    name = resolve_name(name, {c.name for c in components})
+    return _brief(name, config, [c for c in components if c.name == name], corpus.get(name), rtype)
 
 
 def build_tier(config: Config, tier: str, rtype: Optional[str] = None
                ) -> tuple[list[tuple[str, dict]], list[dict]]:
-    """Every brief `tier` still needs, one per slug, and the rows awaiting review."""
-    report = compute(config, tier=tier, checks=load_checks(compliance_dir()))
-    by_slug: dict[str, list[Component]] = {}
-    for c in scan(config):
-        by_slug.setdefault(config.aliases.get(c.name, c.name), []).append(c)
-    corpus = load_corpus(config.recipes_dir)
+    """Every brief group `tier` still needs, one per spec, and the rows awaiting review."""
+    corpus = load_corpus(config.cookbook_dir)
+    report = compute(config, tier=tier, checks=load_checks(compliance_dir()), corpus=corpus)
+    by_name: dict[str, list[Component]] = {}
+    for c in scan(config, corpus, tier=tier):
+        by_name.setdefault(c.name, []).append(c)
 
-    briefs, awaiting, seen = [], [], set()
+    briefs, awaiting = [], []
     for row in report.rows:
-        if row.state not in TO_WRITE or row.slug in seen:
+        if row.state not in TO_WRITE:
             continue
-        seen.add(row.slug)
-        info = corpus.get(row.slug)
+        info = corpus.get(row.name)
         if tuple(row.problems) == AWAITING_REVIEW:
-            awaiting.append({"name": row.name, "slug": row.slug,
+            awaiting.append({"name": row.name,
                              "recipe_path": info.path.relative_to(config.repo_root).as_posix()})
             continue
-        briefs.append(_brief(row.name, config, by_slug[row.slug],
-                             info.path if info else None, info.type if info else "", rtype))
+        briefs.append(_brief(row.name, config, by_name[row.name], info, rtype))
     return briefs, awaiting
 
 
 # ---- CLI ----------------------------------------------------------------------------------
 
 def _write(out_dir: Path, text: str, info: dict) -> None:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    brief = (out_dir / f"{info['slug']}.md").resolve()
+    brief = (out_dir / f"{info['name']}.md").resolve()
+    brief.parent.mkdir(parents=True, exist_ok=True)
     brief.write_text(text, encoding="utf-8")
     info["brief"] = str(brief)
 
@@ -249,18 +252,18 @@ def _run_tier(args, ctx) -> int:
     write = [info for _, info in briefs]
     if args.json:
         sys.stdout.write(json.dumps({
-            "repo_root": str(cfg.repo_root), "recipes_dir": str(cfg.recipes_dir),
+            "repo_root": str(cfg.repo_root), "cookbook_dir": str(cfg.cookbook_dir),
             "tier": args.tier, "write": write, "awaiting_review": awaiting,
         }, indent=2) + "\n")
         return 0
     ctx.ui.title(f"cookr prompt extract · {args.tier} · {cfg.repo_root}")
-    ctx.ui.info(f"recipes: {cfg.recipes_dir}")
+    ctx.ui.info(f"cookbook: {cfg.cookbook_dir}")
     ctx.ui.section(f"to write ({len(write)})")
     for info in write:
-        ctx.ui.info(f"  {info['slug']}  {info['recipe_file']}  brief: {info['brief']}")
+        ctx.ui.info(f"  {info['name']}  {info['recipe_file']}  brief: {info['brief']}")
     ctx.ui.section(f"awaiting review ({len(awaiting)})")
     for row in awaiting:
-        ctx.ui.skip(f"{row['slug']}  {row['recipe_path']}")
+        ctx.ui.skip(f"{row['name']}  {row['recipe_path']}")
     return 0
 
 
@@ -290,7 +293,7 @@ def run(args, ctx) -> int:
     if args.out_dir:
         _write(args.out_dir, text, info)
         sys.stdout.write(json.dumps(info, indent=2) + "\n" if args.json
-                         else f"{info['slug']}  {info['recipe_file']}  brief: {info['brief']}\n")
+                         else f"{info['name']}  {info['recipe_file']}  brief: {info['brief']}\n")
     elif args.json:
         info["prompt"] = text
         sys.stdout.write(json.dumps(info, indent=2) + "\n")

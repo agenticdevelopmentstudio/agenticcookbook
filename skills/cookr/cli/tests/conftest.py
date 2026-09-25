@@ -29,9 +29,17 @@ FIXTURES = Path(__file__).resolve().parent / "fixtures"
 
 @pytest.fixture
 def mini_repo(tmp_path) -> Path:
-    """Fresh, mutable copy of fixtures/mini-repo."""
+    """Fresh, mutable copy of fixtures/mini-repo (a library cookbook)."""
     dst = tmp_path / "mini-repo"
     shutil.copytree(FIXTURES / "mini-repo", dst)
+    return dst
+
+
+@pytest.fixture
+def legacy_repo(tmp_path) -> Path:
+    """Fresh, mutable copy of fixtures/legacy-repo (a flat `.cookr.json` corpus)."""
+    dst = tmp_path / "legacy-repo"
+    shutil.copytree(FIXTURES / "legacy-repo", dst)
     return dst
 
 

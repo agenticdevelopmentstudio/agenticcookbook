@@ -1,42 +1,38 @@
-"""`.cookr.json` — the per-repo description of what cookr scans.
+"""A library cookbook's `cookbook.json`, and the `code` block cookr reads from it.
 
-{
-  "recipes": "recipes",
-  "scheme": "my-repo",
-  "roots": [{"path": "...", "tier": "...", "platform": "web|apple|android|windows|python",
-             "kind": "ui|logic", "ignore": ["glob", ...]}],
-  "ignore": ["glob", ...],
-  "aliases": {"component-name": "recipe-slug"},
-  "renames": {"path/to/Source.tsx": "component-name"}
-}
+    <repo>/
+      cookbook/
+        cookbook.json          {"structure": {"kind": "library", ...},
+                                "code": {"roots": [...], "ignore": [...]}, ...}
+        ai-plugin-kit/
+          chat/chat-context.md
+      packages/...
 
-`path`, `ignore` and `renames` keys are relative to the repo root (the directory
-holding the file). `ignore` entries are globstar globs (`cookr.core.inventory`):
-`*` stays inside one directory, so `src/*.ts` matches only files directly in
-`src/`; write `src/**/*.ts` for every depth.
+The repo root is the directory holding the cookbook directory. Every path in
+`code` and every Reference Implementations path is relative to it.
 
-`renames` names components on purpose. A key is a source file or a directory:
-a file key gives that one file its own name, for a file whose stem collides
-with a different component elsewhere (`landing/Card.tsx` beside `ui/card.tsx`);
-a directory key names every source file below it, so a module directory is one
-component and a file added to it later joins that component. A file key beats
-any directory key, and the longest directory key wins. `aliases` then folds
-*names* into a recipe slug; a rename is applied first, so an aliased name can
-be a renamed one.
+    "code": {
+      "roots": [{"path": "packages/apple/Kit/AIPluginKit", "platform": "apple",
+                 "kind": "logic", "recipes": "ai-plugin-kit", "ignore": ["glob", ...]}],
+      "ignore": ["glob", ...]
+    }
 
-`kind` says what a root's sources are: `ui` (the default) for visual
-components, `logic` for non-UI shared code — models, clients, engines. A
-`logic` component's extraction brief carries the non-UI guidance.
+A spec is named by its path in the cookbook: `ai-plugin-kit/chat/chat-context`
+is `cookbook/ai-plugin-kit/chat/chat-context.md`, and its domain is
+`<scheme>://cookbook/ai-plugin-kit/chat/chat-context`. The scheme is the one
+`cookbook validate` uses (`cookbook.core.scheme.cookbook_scheme`): the
+cookbook's index.md `domain` scheme, else the repo's name.
 
-A root's own `ignore` applies to that root only — for a directory that mixes
-views and models, where the top-level `ignore` would also drop files another
-root needs.
+The roots only find source files no spec claims yet: such a file is named
+`<recipes>/<its directories below the root>/<its stem>`, all kebab-cased
+(`naming.path_name`), so a new spec lands where the code's arrangement puts it.
+`recipes` defaults to the cookbook's top level. `kind` says what a root's
+sources are: `ui` (the default) for visual components, `logic` for non-UI
+shared code. `ignore` entries are globstar globs over repo-relative paths
+(`cookr.core.inventory`); a root's own `ignore` applies to that root only.
 
-`scheme` is the URI scheme of this repo's recipe domains
-(`<scheme>://<recipes>/<slug>`). Without it, the scheme is the repo's name
-(`cookbook.core.scheme.repo_scheme`): its `origin` remote's basename, else its
-main checkout's directory name, so a linked worktree never names it after the
-worktree or branch.
+A group is a directory of the cookbook; `--tier` names one (`ai-plugin-kit`, or
+a nested `ai-plugin-kit/chat`).
 """
 
 from __future__ import annotations
@@ -48,143 +44,148 @@ from pathlib import Path
 from typing import Optional
 
 from cookbook.core.errors import CookbookError
-from cookbook.core.scheme import repo_scheme
+from cookbook.core.scheme import cookbook_scheme
 
-CONFIG_NAME = ".cookr.json"
+MANIFEST = "cookbook.json"
+COOKBOOK_DIR = "cookbook"
 PLATFORMS = ("web", "apple", "android", "windows", "python")
 KINDS = ("ui", "logic")
 
 
 class ConfigError(CookbookError):
-    """Raised when .cookr.json is missing, malformed, or names a bad path."""
+    """Raised when cookbook.json is missing, malformed, or names a bad path."""
 
 
 @dataclass(frozen=True)
 class Root:
     path: str
-    tier: str
     platform: str
     kind: str = "ui"
+    recipes: str = ""  # cookbook-relative group for this root's unclaimed files; "" is the top
     ignore: tuple = ()
+
+    @property
+    def tier(self) -> str:
+        """The top-level group this root's new specs land in; "" for the top level."""
+        return self.recipes.split("/", 1)[0]
 
 
 @dataclass(frozen=True)
 class Config:
     repo_root: Path
-    recipes: str
+    cookbook_dir: Path
     roots: list = field(default_factory=list)
     ignore: list = field(default_factory=list)
-    aliases: dict = field(default_factory=dict)
-    renames: dict = field(default_factory=dict)
-    declared_scheme: str = ""  # `.cookr.json`'s `scheme`; "" when it has none
 
     @cached_property
     def scheme(self) -> str:
-        """The declared scheme, else the repo's name. Derived on first use, so only
-        a command that writes a domain needs git; raises SchemeError when neither
-        resolves."""
-        return self.declared_scheme or repo_scheme(self.repo_root)
+        """Derived on first use, so only a command that writes a domain needs git;
+        raises SchemeError when it cannot be derived."""
+        return cookbook_scheme(self.cookbook_dir)
 
     @property
+    def cookbook(self) -> str:
+        """The cookbook directory, relative to the repo root."""
+        return self.cookbook_dir.relative_to(self.repo_root).as_posix()
+
+    # The recipes directory is the cookbook: a spec anywhere in its tree is a recipe.
+    @property
     def recipes_dir(self) -> Path:
-        return self.repo_root / self.recipes
+        return self.cookbook_dir
 
-    def renamed(self, rel: str) -> Optional[str]:
-        """The `renames` name for repo-relative source path `rel`: its file key,
-        else its longest directory key; None when no key covers it."""
-        if rel in self.renames:
-            return self.renames[rel]
-        parts = rel.split("/")
-        for i in range(len(parts) - 1, 0, -1):
-            name = self.renames.get("/".join(parts[:i]))
-            if name is not None:
-                return name
-        return None
+    def domain(self, spec: str) -> str:
+        """Path-derived domain of the spec named `spec` (its cookbook-relative path, no `.md`)."""
+        return f"{self.scheme}://{self.cookbook}/{spec}"
 
-    def domain(self, slug: str) -> str:
-        """Path-derived domain of the recipe for `slug`."""
-        return f"{self.scheme}://{self.recipes}/{slug}"
+    def spec_path(self, spec: str) -> Path:
+        return self.cookbook_dir / f"{spec}.md"
+
+    def root_for(self, rel: str) -> Optional[Root]:
+        """The root holding repo-relative path `rel`; the deepest when roots nest."""
+        best = None
+        for r in self.roots:
+            if rel == r.path or rel.startswith(r.path.rstrip("/") + "/"):
+                if best is None or len(r.path) > len(best.path):
+                    best = r
+        return best
+
+    def is_group(self, tier: str) -> bool:
+        """True when `tier` names a directory of the cookbook or a root's `recipes`."""
+        tier = tier.strip("/")
+        return bool(tier) and ((self.cookbook_dir / tier).is_dir() or any(
+            r.recipes == tier or r.recipes.startswith(tier + "/") for r in self.roots))
 
     @property
     def tiers(self) -> list[str]:
-        seen = []
-        for r in self.roots:
-            if r.tier not in seen:
-                seen.append(r.tier)
-        return seen
+        """The top-level groups: the cookbook's directories and the roots' `recipes`."""
+        seen = {d.name for d in self.cookbook_dir.iterdir()
+                if d.is_dir() and not d.name.startswith(".")}
+        seen |= {r.tier for r in self.roots if r.tier}
+        return sorted(seen)
 
 
-def load_config(path: Path) -> Config:
-    # The repo root is the directory holding the file as found, not the parent of
-    # a symlink's target.
-    path = path.parent.resolve() / path.name
+def find_cookbook(start: Path) -> Optional[Path]:
+    """The cookbook directory for `start`: `start/cookbook` or `start` itself when
+    it holds the manifest, else the same test on each parent; None when none does."""
+    start = start.resolve()
+    for d in (start, *start.parents):
+        for c in (d / COOKBOOK_DIR, d):
+            if (c / MANIFEST).is_file():
+                return c
+    return None
+
+
+def _strings(value: object) -> bool:
+    return isinstance(value, list) and all(isinstance(g, str) for g in value)
+
+
+def load_config(cookbook_dir: Path) -> Config:
+    """The `code` block of `cookbook_dir/cookbook.json`."""
+    # The repo root is the directory holding the cookbook as found, not the
+    # parent of a symlink's target.
+    cookbook_dir = cookbook_dir.parent.resolve() / cookbook_dir.name
+    path = cookbook_dir / MANIFEST
     if not path.is_file():
-        raise ConfigError(f"no {CONFIG_NAME} at {path}")
+        raise ConfigError(f"no {MANIFEST} at {cookbook_dir}")
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
         raise ConfigError(f"{path}: invalid JSON — {e}") from e
     if not isinstance(data, dict):
         raise ConfigError(f"{path}: top level must be an object")
+    code = data.get("code")
+    if not isinstance(code, dict):
+        raise ConfigError(f"{path}: no `code` block; cookr needs `code.roots` to find source files")
 
-    repo_root = path.parent
-    recipes = data.get("recipes")
-    if not isinstance(recipes, str) or not recipes:
-        raise ConfigError(f"{path}: `recipes` must be a non-empty string")
-    if not (repo_root / recipes).is_dir():
-        raise ConfigError(f"{path}: recipes dir not found: {recipes}")
-
-    raw_roots = data.get("roots")
+    repo_root = cookbook_dir.parent
+    raw_roots = code.get("roots")
     if not isinstance(raw_roots, list) or not raw_roots:
-        raise ConfigError(f"{path}: `roots` must be a non-empty list")
+        raise ConfigError(f"{path}: `code.roots` must be a non-empty list")
     roots = []
     for i, r in enumerate(raw_roots):
+        where = f"{path}: code.roots[{i}]"
         if not isinstance(r, dict):
-            raise ConfigError(f"{path}: roots[{i}] must be an object")
-        for key in ("path", "tier", "platform"):
+            raise ConfigError(f"{where} must be an object")
+        for key in ("path", "platform"):
             if not isinstance(r.get(key), str) or not r[key]:
-                raise ConfigError(f"{path}: roots[{i}].{key} must be a non-empty string")
+                raise ConfigError(f"{where}.{key} must be a non-empty string")
         if r["platform"] not in PLATFORMS:
-            raise ConfigError(
-                f"{path}: roots[{i}].platform `{r['platform']}` is not one of {', '.join(PLATFORMS)}"
-            )
-        if not (repo_root / r["path"]).is_dir():
-            raise ConfigError(f"{path}: roots[{i}].path not found: {r['path']}")
+            raise ConfigError(f"{where}.platform `{r['platform']}` is not one of {', '.join(PLATFORMS)}")
+        rel = r["path"].strip("/")
+        if not (repo_root / rel).is_dir():
+            raise ConfigError(f"{where}.path not found: {r['path']}")
         kind = r.get("kind", "ui")
         if kind not in KINDS:
-            raise ConfigError(f"{path}: roots[{i}].kind `{kind}` is not one of {', '.join(KINDS)}")
-        root_ignore = r.get("ignore", [])
-        if not isinstance(root_ignore, list) or not all(isinstance(g, str) for g in root_ignore):
-            raise ConfigError(f"{path}: roots[{i}].ignore must be a list of strings")
-        roots.append(Root(path=r["path"], tier=r["tier"], platform=r["platform"], kind=kind,
-                          ignore=tuple(root_ignore)))
+            raise ConfigError(f"{where}.kind `{kind}` is not one of {', '.join(KINDS)}")
+        recipes = r.get("recipes", "")
+        if not isinstance(recipes, str) or ".." in recipes.split("/"):
+            raise ConfigError(f"{where}.recipes must be a directory inside the cookbook")
+        if not _strings(r.get("ignore", [])):
+            raise ConfigError(f"{where}.ignore must be a list of strings")
+        roots.append(Root(path=rel, platform=r["platform"], kind=kind, recipes=recipes.strip("/"),
+                          ignore=tuple(r.get("ignore", []))))
 
-    ignore = data.get("ignore", [])
-    if not isinstance(ignore, list) or not all(isinstance(g, str) for g in ignore):
-        raise ConfigError(f"{path}: `ignore` must be a list of strings")
-
-    aliases = data.get("aliases", {})
-    if not isinstance(aliases, dict) or not all(
-        isinstance(k, str) and isinstance(v, str) for k, v in aliases.items()
-    ):
-        raise ConfigError(f"{path}: `aliases` must map strings to strings")
-
-    raw_renames = data.get("renames", {})
-    if not isinstance(raw_renames, dict) or not all(
-        isinstance(k, str) and k.strip("/") and isinstance(v, str) and v
-        for k, v in raw_renames.items()
-    ):
-        raise ConfigError(f"{path}: `renames` must map source paths to non-empty names")
-    renames = {k.strip("/"): v for k, v in raw_renames.items()}
-    for rel in renames:
-        if not (repo_root / rel).exists():
-            raise ConfigError(f"{path}: renames key not found: {rel}")
-
-    scheme = data.get("scheme", "")
-    if "scheme" in data and (
-        not isinstance(scheme, str) or not scheme or "://" in scheme or "/" in scheme
-    ):
-        raise ConfigError(f"{path}: `scheme` must be a non-empty name without `/` (got {scheme!r})")
-
-    return Config(repo_root=repo_root, recipes=recipes, roots=roots, ignore=ignore,
-                  aliases=aliases, renames=renames, declared_scheme=scheme)
+    ignore = code.get("ignore", [])
+    if not _strings(ignore):
+        raise ConfigError(f"{path}: `code.ignore` must be a list of strings")
+    return Config(repo_root=repo_root, cookbook_dir=cookbook_dir, roots=roots, ignore=list(ignore))

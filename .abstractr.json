@@ -24,6 +24,20 @@
       "holds": "The invocable Claude Code skill wrapper: SKILL.md (routes user/agent invocations to the installed `cookbook` CLI, never duplicating its logic) and bin/cookbook (the pre-install shim). A thin shell over cookbook-cli, kept separate because the skill wrapper and the CLI package it wraps are versioned/edited independently."
     },
     {
+      "name": "cookr-cli",
+      "paths": ["skills/cookr/cli/"],
+      "depends_on": ["cookbook-cli"],
+      "shared": false,
+      "holds": "The `cookr` Python CLI package (core/{config,legacy,inventory,coverage,completeness,naming,recipes,organize,arrangement,relink}, modules/{inventory,coverage,organize,arrangement,relink,prompt/}) plus its tests/ and fixtures. Reads a repo's library cookbook (cookbook/cookbook.json and each spec's Reference Implementations) and imports cookbook-cli's refimpl, bump and frontmatter helpers."
+    },
+    {
+      "name": "cookr-skill",
+      "paths": ["skills/cookr/"],
+      "depends_on": ["cookr-cli"],
+      "shared": false,
+      "holds": "The invocable cookr skill wrapper: SKILL.md (routes to the installed `cookr` CLI) and its shim. A thin shell over cookr-cli."
+    },
+    {
       "name": "adh-plugin",
       "paths": ["plugins/adh/", ".claude-plugin/"],
       "depends_on": [],

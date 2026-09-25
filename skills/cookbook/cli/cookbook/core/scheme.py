@@ -106,8 +106,7 @@ def repo_scheme(start: Path) -> str:
         raise SchemeError(
             f"cannot derive a domain scheme for {start}: it is not in a git repo with an "
             f"`origin` remote or a main worktree. Declare one in the cookbook's "
-            f"{INDEX} frontmatter (`domain: <scheme>://index`) or cookr's `.cookr.json` "
-            f"(`\"scheme\": \"<scheme>\"`)."
+            f"{INDEX} frontmatter (`domain: <scheme>://index`)."
         )
     return name
 

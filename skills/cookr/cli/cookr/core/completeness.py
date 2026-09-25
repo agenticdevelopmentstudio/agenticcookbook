@@ -66,8 +66,8 @@ CHANGE_HISTORY = history.HEADING
 REQUIRED_CHECKS = ("best-practices#separation-of-concerns", "best-practices#unit-test-coverage")
 MIN_VECTORS = 5
 VECTORS_SECTION = "Conformance Test Vectors"
-# The frontmatter `platforms` each source platform (a `.cookr.json` root's
-# `platform`) writes, per extract/module.md. `apple` needs `swift` plus at least
+# The frontmatter `platforms` each source platform (a Reference Implementations
+# row's or a `code.roots` entry's `platform`) writes, per extract/module.md. `apple` needs `swift` plus at least
 # one of `macos`/`ios`. A source platform missing here leaves rule 13 ungraded.
 PLATFORM_IDS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
     # platform: (identifiers all required, identifiers of which at least one is required)
@@ -356,7 +356,7 @@ def problems(info: RecipeInfo, checks: Optional[frozenset[str]] = None,
     """Everything that keeps `info` from `complete`.
 
     `checks` is the compliance catalog (None skips rule 9); `source_platforms`
-    are the `.cookr.json` platforms of every component this recipe covers
+    are the source platforms of every component this recipe covers
     (None skips rule 13); `domain` is the recipe's path-derived domain (None
     skips rule 15).
     """
