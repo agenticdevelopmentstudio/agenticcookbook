@@ -42,7 +42,7 @@ CLI's job, and cookr calls it rather than duplicating it.
 ```
 skills/cookr/
   SKILL.md                    thin wrapper: routing + workflow, no logic
-  bin/cookr                   shim: PYTHONPATH=_cookr_pkg, exec python3 -m cookr
+  bin/cookr                   Python shim: PYTHONPATH=_cookr_pkg:_cookbook_pkg, exec python3 -m cookr
   cli/
     cookr/
       __init__.py
@@ -83,13 +83,13 @@ tests are untouched.
 `install.sh` today special-cases the cookbook skill three times: copy its
 package to `~/.local/bin/_cookbook_pkg`, install its shim, and exclude `cli`
 and `bin` from its plugin bundle via `EXCLUDE_PER_SKILL = {"cookbook": {"cli",
-"bin"}}`. The change is one table of skills that carry a CLI:
+"bin"}}`. The change is one table of skills that carry a CLI, and the layout
+is that table: a skill carries a CLI when it has `skills/<name>/bin/<name>` and a
+`skills/<name>/cli/<name>/` package. `install.sh` and `uninstall.sh` both derive
+the list from it, and `install.sh` records what it installed so `uninstall.sh`
+also removes a skill that has since left the layout.
 
-```
-CLI_SKILLS = (cookbook cookr)
-```
-
-For each entry: copy `skills/<name>/cli/<name>` to `~/.local/bin/_<name>_pkg`,
+For each CLI skill: copy `skills/<name>/cli/<name>` to `~/.local/bin/_<name>_pkg`,
 copy `skills/<name>/bin/<name>` to `~/.local/bin/<name>`, and exclude `cli` and
 `bin` from that skill's plugin bundle. The plugin then exposes `/adh:cookr`
 alongside `/adh:cookbook`. `install.sh` stays a shell script because

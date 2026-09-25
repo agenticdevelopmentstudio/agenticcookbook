@@ -64,13 +64,16 @@ Operate as a specification writer producing one cookbook recipe from source code
   or composition a developer would start from and what differs from the
   source. The **WinUI 3** bullet is the reason this recipe exists: be concrete
   (control names, properties, visual states, the XAML or WinUI pattern).
-- Keep the existing recipe's frontmatter `id`, `created` and `version` if one is
-  given; bump `version` minor and update `modified` to today. If starting fresh,
-  leave `id`, `created`, `modified`, `author`, `copyright`, `license` empty —
-  `cookbook update` fills them.
-- Frontmatter `domain` is the value the task gives: `<scheme>://<recipes dir>/<slug>`,
+- When an existing recipe is given, keep its frontmatter `id`, `created`,
+  `version` and `modified` and its Change History rows as they are. After
+  saving, record the change with
+  `cookbook bump <recipe file> --level minor --summary "<what changed>"`, which
+  bumps `version`, sets `modified` and adds the Change History row; never edit
+  those by hand. If starting fresh, leave `id`, `created`, `modified`,
+  `author`, `copyright`, `license` empty — `cookbook update` fills them.
+- Frontmatter `domain` is the value the task gives: `<scheme>://<path>`,
   where the scheme names the repo the recipe lives in and the path is the
-  recipe's path from that repo's root. Never the cookbook's own scheme for a
+  recipe's path from that repo's root, without `.md`. Never the cookbook's own scheme for a
   recipe that lives elsewhere. A cross-reference to a sibling recipe
   (`depends-on`, `related`, `ingredients`) uses the same shape.
 - Frontmatter `platforms` lists the canonical identifiers of the source

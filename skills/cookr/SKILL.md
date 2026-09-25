@@ -2,7 +2,7 @@
 name: cookr
 version: "0.1.0"
 description: "Inventory, coverage and extraction prompts for component recipes in a repo that carries a .cookr.json. Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have recipes, what is left to write for a tier, or to write the recipe for a component."
-argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|prompt extract <name>> [...]"
+argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|prompt extract <name>|--tier <tier>> [...]"
 allowed-tools: Bash(cookr *), Bash(cookbook *), Bash(command -v cookr)
 model: sonnet
 ---
@@ -32,21 +32,49 @@ If missing, tell the user:
 |---|---|
 | what components exist / what tiers there are | `cookr inventory [--tier <tier>]` |
 | what is left to write | `cookr coverage [--tier <tier>]` |
-| write the recipe for X | `cookr prompt extract X` → dispatch (below) |
-| is the phase done | `cookr coverage --tier <tier> --require complete` then `cookbook validate -p recipes` |
+| write the recipe for X | `cookr prompt extract X --out-dir <dir>` → dispatch (below) |
+| write everything a tier still needs | extraction workflow (below) |
+| is the tier written | `cookr prompt extract --tier <tier> --out-dir <dir>` lists nothing to write |
+| is the phase done | `cookr coverage --tier <tier> --require complete` then `cookbook validate -p <recipes_dir>` |
 | no args / `--help` | `cookr --help`, present the module table verbatim |
 
-Forward `-p <repo-root>` when the user supplies one; otherwise run from cwd and let the CLI find `.cookr.json`.
+Forward `-p <repo-root>` to every `cookr` call when the user supplies one;
+otherwise run from cwd and let the CLI find `.cookr.json`. Never pass a
+cwd-relative `recipes` to `cookbook`: take `recipes_dir` (absolute) from the
+worklist JSON below, which honors `.cookr.json`'s `recipes` and repo root.
 
 ## Extraction workflow
 
-1. `cookr coverage --tier <tier> --json` — collect every row whose `state` is `missing` or `partial`. A row is one component name and carries `tiers` (plural): the same name can appear in several tiers, and it is still one recipe.
-2. De-duplicate the work list by the row's `recipe` slug, falling back to `name` when `recipe` is null, so no two subagents in a batch write the same `recipes/<slug>.md`. Then for each remaining row, run `cookr prompt extract <name>` (add `--type recipe` for a composite) and dispatch the printed prompt verbatim to a subagent pinned to `claude-sonnet-4-6`. The subagent writes `recipes/<slug>.md`. Run up to 8 subagents at a time.
-3. `cookbook update -p recipes --author "<user>"` — fills frontmatter.
-4. `cookbook validate -p recipes` and `cookr coverage --tier <tier>`.
-5. Any row still `partial`: rerun step 2 for it. The prompt includes the existing recipe, so the subagent completes rather than restarts.
+1. `cookr prompt extract --tier <tier> --out-dir <scratch dir> --json` — the
+   worklist. It writes one brief per recipe that still needs a writer, already
+   de-duplicated by slug (aliased names share one brief), and prints
+   `repo_root`, `recipes_dir`, `write` (one entry per brief: `slug`, `name`,
+   `recipe_file`, `domain`, `existing`, `brief`) and `awaiting_review`. Use a scratch
+   directory outside the repo, e.g. `$TMPDIR/cookr-briefs/<tier>`.
+2. For each `write` entry, dispatch a subagent pinned to `claude-sonnet-4-6`
+   whose whole prompt is: ``Read `<brief>` in full and do exactly what it says.``
+   Never paste the brief into the prompt. For a composite, first rebuild its
+   brief with `cookr prompt extract <name> --type recipe --out-dir <scratch dir>`.
+   Run up to 8 subagents at a time.
+3. `cookbook update -p <recipes_dir> --author "<user>"` — fills empty
+   frontmatter. A writer that rewrote an existing recipe (`existing: true`)
+   has already recorded it with `cookbook bump`, as its brief says; never bump
+   it again, and never hand-edit `version`, `modified` or Change History.
+4. `cookbook validate -p <recipes_dir>` and `cookr coverage --tier <tier>`.
+   Coverage grades each recipe's `domain` against the one its path derives
+   (the worklist's `domain`), so a wrong scheme or directory shows up in
+   `problems` like any other gap.
+5. Rerun step 1. Every recipe still in `write` goes back to step 2; its brief
+   now includes the existing recipe, so the subagent completes rather than
+   restarts. Stop when `write` is empty.
 6. Verify pass (below) on every recipe written in the batch.
-7. `cookbook lint -p recipes --since main` before committing.
+7. `cookbook lint -p <recipes_dir> --since main` before committing.
+
+`awaiting_review` lists recipes whose only problem is a `NEEDS REVIEW`
+marker: finished work waiting on a reviewer's decision, never a rewrite target.
+Report them to the user. `cookr coverage --require complete` stays red until
+the reviewer settles each marker, so the phase is written when `write` is empty
+and done only when that gate passes.
 
 ## Verify pass
 
@@ -61,39 +89,41 @@ subagent per new recipe, pinned to `claude-sonnet-4-6`, with this brief:
 - Check each Behavioral Requirement, test vector, edge case, configuration row,
   Platform Notes claim and Design Decision against source; fix inaccuracies in
   place with minimal edits. Keep the section order and the `- **name**:` form.
-- Re-read every kept `NEEDS REVIEW` marker against the extract prompt's marker
-  rules; restate as fact any that name an absent feature, a caller
-  precondition, a hardcoded string, a reported lossy error, single-threaded
-  ordering, documented behavior or another owner's behavior.
+- Re-read every kept `NEEDS REVIEW` marker against the marker rules in
+  `<brief>` (the writer's brief from the worklist: its preamble's
+  `NEEDS REVIEW` bullets and, for a non-UI component, its
+  `## non-UI component` section). Restate as fact every marker those rules do
+  not allow; keep every one they call a genuine gap.
 - Do not commit and do not touch any other file. Reply
   `<slug> fixed N claims, markers M`.
 
-Then check the markers yourself before accepting them: a verify agent is still
-a writer. A kept marker names a swallowed error, an unordered race, unvalidated
-input, a declared contract the code violates, or (UI only) a contrast or target
-size the source cannot decide.
+Then check the kept markers yourself against those same rules in the brief
+before accepting them: a verify agent is still a writer. The brief is the only
+statement of the marker rules; never judge markers by a shorter list of your
+own.
 
 ## Interpreting coverage
 
-The `problems` column names exactly what keeps a recipe at `partial`:
-a `status` below `review`, a `NEEDS REVIEW` marker, a missing or empty required
-section, an unfilled `WinUI 3` bullet, a malformed marker (not a one-line
-`- **name**:` bullet, or sitting in Compliance), a `must-`/`should-`/`may-`
-requirement name, a source line-number citation, or a compliance check the
-catalog does not define. Quote it to the subagent; do not re-derive it.
-
-A recipe whose only problem is `body carries a NEEDS REVIEW marker` is finished
-work waiting on a reviewer's decision, not a rewrite target.
+Rows are keyed by `slug`, the recipe stem each name resolves to through
+`aliases`; de-duplicate by `slug`. The `problems` column names exactly what
+keeps a recipe at `partial`. Quote it to the subagent; do not re-derive it.
+Every graded rule (the Compliance checks every component cites, the minimum
+test vectors, the Design Decision lines, frontmatter `platforms`) is stated
+once, in the writer rules of `modules/prompt/prompts/extract/module.md`,
+which every brief carries as its preamble; point at the brief, never restate
+the rules.
 
 A recipe listed under "recipes with no inventory match" is not an error: it is
 a vocabulary or composite recipe with no single source file. Check `.cookr.json`
 `aliases` only if the name looks like a typo of a component.
 
-One row whose `paths` span two unrelated components (a landing-page `Card.tsx`
-and a primitives `card.tsx`) is a name collision, not one component. Give the
-odd one out its own name in `.cookr.json` `renames`
+A row whose problems include `name collision across tiers` has `paths` that
+span two unrelated components (a landing-page `Card.tsx` and a primitives
+`card.tsx`). Give the odd one out its own name in `.cookr.json` `renames`
 (`{"packages/landing/src/blocks/Card.tsx": "landing-card"}`); coverage then
-shows two rows and `prompt extract landing-card` takes only that source.
+shows two rows and `prompt extract landing-card` takes only that source. When
+the two really are one component, list every path in `renames` under the
+shared name; that records the merge as deliberate and clears the problem.
 
 ## Non-UI code
 

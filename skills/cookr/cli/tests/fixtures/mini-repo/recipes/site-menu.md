@@ -1,6 +1,8 @@
 ---
 type: recipe
 status: accepted
+version: 1.1.0
+modified: 2026-09-20
 ---
 
 ## Overview
@@ -25,7 +27,13 @@ Site menu shares active state with router.
 
 ## Integration Test Vectors
 
-Site menu passes navigation tests.
+| ID | Requirements | Input | Expected |
+|----|----|----|----|
+| site-menu-001 | case-1 | input 1 | output 1 |
+| site-menu-002 | case-2 | input 2 | output 2 |
+| site-menu-003 | case-3 | input 3 | output 3 |
+| site-menu-004 | case-4 | input 4 | output 4 |
+| site-menu-005 | case-5 | input 5 | output 5 |
 
 ## Edge Cases
 
@@ -41,4 +49,22 @@ Site menu handles overflow gracefully.
 
 ## Design Decisions
 
-Site menu uses consistent spacing between items.
+**Decision**: Site menu uses consistent spacing between items.
+**Rationale**: Consistency across the product.
+**Approved**: pending
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [separation-of-concerns](agenticdevelopercookbook://compliance/best-practices#separation-of-concerns) | passed | best-practices |
+| [unit-test-coverage](agenticdevelopercookbook://compliance/best-practices#unit-test-coverage) | passed | best-practices |
+
+The site menu keeps rendering and behavior apart and is covered by unit tests.
+
+## Change History
+
+| Version | Date | Author | Summary |
+|---------|------|--------|---------|
+| 1.1.0 | 2026-09-20 | Fixture Author | Filled every template section |
+| 1.0.0 | 2026-09-01 | Fixture Author | Initial creation |

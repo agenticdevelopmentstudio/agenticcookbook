@@ -33,6 +33,19 @@ FIXTURE_REPO_URL = os.environ.get(
 )
 
 
+@pytest.fixture(autouse=True)
+def tmp_path_is_a_git_repo(request):
+    """Make each test's tmp_path a git repo, as a real cookbook's checkout is.
+
+    A cookbook's domain scheme falls back to its repo's name
+    (cookbook.core.scheme.repo_scheme), which does not resolve outside git.
+    Tests of the no-git case use tmp_path_factory for a directory outside it.
+    """
+    if "tmp_path" in request.fixturenames:
+        tmp = request.getfixturevalue("tmp_path")
+        subprocess.run(["git", "init", "-q", str(tmp)], check=True, capture_output=True)
+
+
 @pytest.fixture(scope="session")
 def references_dir(tmp_path_factory) -> Path:
     src = PKG_PARENT / "references-src"

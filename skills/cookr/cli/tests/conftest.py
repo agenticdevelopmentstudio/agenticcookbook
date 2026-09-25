@@ -57,3 +57,20 @@ def run_cookr(cookr_bin):
         )
 
     return _run
+
+
+@pytest.fixture(scope="session")
+def templates_source_dir(tmp_path_factory) -> Path:
+    """The repo's own templates laid out as the install materializes them."""
+    dst = tmp_path_factory.mktemp("templates")
+    for rtype, src in (("ingredient", "ingredients"), ("recipe", "recipes")):
+        shutil.copy2(REPO_ROOT / "cookbook" / src / "_template.md", dst / f"{rtype}.md")
+    return dst
+
+
+@pytest.fixture(autouse=True)
+def _hermetic_templates(monkeypatch, templates_source_dir):
+    """Grade against the checkout's templates, never a stale or absent install."""
+    from cookr.core import templates
+
+    monkeypatch.setattr(templates, "templates_dir", lambda: templates_source_dir)

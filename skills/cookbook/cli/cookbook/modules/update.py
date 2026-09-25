@@ -6,6 +6,7 @@ the filesystem requires.
 
 from __future__ import annotations
 
+import functools
 import getpass
 from datetime import date
 from pathlib import Path
@@ -14,6 +15,7 @@ from ..core import refs
 from ..core.errors import NoCookbookRootError
 from ..core.frontmatter import dump, fill_defaults, parse_file
 from ..core.markdown import iter_markdown
+from ..core.scheme import cookbook_scheme
 from ..indexing import engine
 
 NAME = "update"
@@ -44,12 +46,13 @@ def _fill_frontmatter(root: Path, author: str, ui) -> tuple[int, int]:
     fields_added_total = 0
     today = date.today()
     cookbook_name = root.name
+    scheme = functools.cache(lambda: cookbook_scheme(root))  # only if a domain is missing
 
     for md in iter_markdown(root):
         fm = parse_file(md)
         rel = md.relative_to(root)
         new_fm, added = fill_defaults(
-            fm, rel_path=rel, cookbook_name=cookbook_name, author=author, today=today,
+            fm, rel_path=rel, cookbook_name=cookbook_name, scheme=scheme, author=author, today=today,
         )
         if added:
             md.write_text(dump(new_fm), encoding="utf-8")

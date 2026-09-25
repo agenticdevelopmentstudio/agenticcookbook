@@ -33,9 +33,9 @@ Brief description of what this component is and when to use it.
 
 ## Behavioral Requirements
 
-- **must-do-something**: Component MUST ...
-- **should-do-something**: Component SHOULD ...
-- **may-do-something**: Component MAY ...
+- **do-something**: Component MUST ...
+- **do-something-else**: Component SHOULD ...
+- **do-something-optional**: Component MAY ...
 
 ## Appearance
 
@@ -69,7 +69,7 @@ Brief description of what this component is and when to use it.
 
 | ID | Requirements | Input | Expected |
 |----|-------------|-------|----------|
-| component-001 | must-do-something | | |
+| component-001 | do-something | | |
 
 ## Edge Cases
 
@@ -148,7 +148,7 @@ Record any decisions made during implementation that affect visual or behavioral
 
 | Check | Status | Category |
 |-------|--------|----------|
-| [check-name](agenticdevelopercookbook://compliance/category#check-name) | passed | Category |
+| [check-name](agenticdevelopercookbook://compliance/document#check-name) | passed | Category |
 
 ## Change History
 

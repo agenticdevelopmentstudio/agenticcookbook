@@ -7,7 +7,7 @@ from typing import Optional
 
 from .completeness import problems
 from .config import Config
-from .inventory import scan
+from .inventory import Component, scan
 from .recipes import load_corpus
 
 STATES = ("missing", "partial", "complete")
@@ -21,8 +21,7 @@ class CoverageRow:
     tiers: tuple
     platforms: tuple
     paths: tuple
-    state: str
-    recipe: Optional[str]
+    state: str  # `missing` means no recipes/<slug>.md; otherwise that file is the recipe
     problems: tuple
 
 
@@ -45,6 +44,29 @@ class CoverageReport:
         return [r for r in self.rows if _RANK[r.state] < _RANK[level]]
 
 
+def collision(items: list[Component], renames: dict) -> Optional[str]:
+    """A name shared by same-platform sources in more than one tier, or None.
+
+    Those are almost always two unrelated components that happen to share a
+    file stem, and one recipe cannot specify both. Sources on different
+    platforms (the Swift and TypeScript button) are the intended cross-platform
+    merge, and sources in one tier (iOS and macOS twins) are one component. A
+    path listed in `renames` is named on purpose, so renaming both sides to this
+    name records a deliberate merge.
+    """
+    tiers_by_platform = {}
+    for c in items:
+        if c.path not in renames:
+            tiers_by_platform.setdefault(c.platform, set()).add(c.tier)
+    spans = [f"{p} in {', '.join(sorted(t))}" for p, t in sorted(tiers_by_platform.items())
+             if len(t) > 1]
+    if not spans:
+        return None
+    return (f"name collision across tiers ({'; '.join(spans)}): give one side its own name "
+            f"in `.cookr.json` `renames`, or list every path there under this name to merge "
+            f"them on purpose")
+
+
 def compute(config: Config, tier: Optional[str] = None,
             checks: Optional[frozenset[str]] = None) -> CoverageReport:
     """One row per component `name`, across every tier the name appears in.
@@ -54,8 +76,12 @@ def compute(config: Config, tier: Optional[str] = None,
     slug want one recipe, and a caller writing one brief per recipe needs to
     see that before the file exists.
 
-    `tier` filters the rows that are returned; it never narrows the corpus the
-    rows are matched against, so `unmatched_recipes` is the same list either way.
+    `tier` filters the rows that are returned (and graded); it never narrows
+    the corpus the rows are matched against, so `unmatched_recipes` is the same
+    list either way.
+
+    A name collision (see `collision`) is a problem on its row: a matched row
+    grades `partial` until the config resolves it.
 
     `checks` is the compliance catalog (`compliance.load_checks`); None skips
     the unknown-citation check.
@@ -66,27 +92,41 @@ def compute(config: Config, tier: Optional[str] = None,
     for c in scan(config):
         grouped.setdefault(c.name, []).append(c)
 
+    # a recipe's platforms are judged against every component it covers, aliases included
+    platforms_by_slug = {}
+    for name, items in grouped.items():
+        platforms_by_slug.setdefault(config.aliases.get(name, name), set()).update(i.platform for i in items)
+
+    graded = {}  # slug -> problems(); aliased names share one grade
     matched_slugs = set()
     rows = []
     for name, items in sorted(grouped.items()):
         slug = config.aliases.get(name, name)
         info = corpus.get(slug)
-        if info is None:
-            state, recipe, probs = "missing", None, ()
-        else:
+        if info is not None:
             matched_slugs.add(slug)
-            probs = tuple(problems(info, checks))
-            state, recipe = ("partial" if probs else "complete"), slug
+        tiers = tuple(sorted({i.tier for i in items}))
+        if tier is not None and tier not in tiers:
+            continue
+        clash = collision(items, config.renames)
+        probs = (clash,) if clash else ()
+        if info is None:
+            state = "missing"
+        else:
+            if slug not in graded:
+                stem = info.path.relative_to(config.recipes_dir).with_suffix("").as_posix()
+                graded[slug] = tuple(problems(info, checks, platforms_by_slug[slug],
+                                              config.domain(stem)))
+            probs = graded[slug] + probs
+            state = "partial" if probs else "complete"
         rows.append(CoverageRow(
             name=name,
             slug=slug,
-            tiers=tuple(sorted({i.tier for i in items})),
+            tiers=tiers,
             platforms=tuple(sorted({i.platform for i in items})),
             paths=tuple(sorted(i.path for i in items)),
-            state=state, recipe=recipe, problems=probs,
+            state=state, problems=probs,
         ))
 
     unmatched = sorted(s for s in corpus if s not in matched_slugs)
-    if tier is not None:
-        rows = [r for r in rows if tier in r.tiers]
     return CoverageReport(rows=rows, unmatched_recipes=unmatched, tier=tier)

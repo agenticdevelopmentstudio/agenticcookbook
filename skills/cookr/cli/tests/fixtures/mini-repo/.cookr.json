@@ -1,4 +1,5 @@
 {
+  "scheme": "mini-repo",
   "recipes": "recipes",
   "roots": [
     {"path": "web/components", "tier": "primitives", "platform": "web"},

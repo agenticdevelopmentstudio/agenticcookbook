@@ -11,7 +11,9 @@
 }
 
 `path`, `ignore` and `renames` keys are relative to the repo root (the directory
-holding the file).
+holding the file). `ignore` entries are globstar globs (`cookr.core.inventory`):
+`*` stays inside one directory, so `src/*.ts` matches only files directly in
+`src/`; write `src/**/*.ts` for every depth.
 
 `renames` gives one source file its own component name, for a file whose stem
 collides with a different component elsewhere (`landing/Card.tsx` beside
@@ -27,22 +29,28 @@ views and models, where the top-level `ignore` would also drop files another
 root needs.
 
 `scheme` is the URI scheme of this repo's recipe domains
-(`<scheme>://<recipes>/<slug>`); it defaults to the repo root's directory
-name.
+(`<scheme>://<recipes>/<slug>`). Without it, the scheme is the repo's name
+(`cookbook.core.scheme.repo_scheme`): its `origin` remote's basename, else its
+main checkout's directory name, so a linked worktree never names it after the
+worktree or branch.
 """
 
 from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
+from functools import cached_property
 from pathlib import Path
+
+from cookbook.core.errors import CookbookError
+from cookbook.core.scheme import repo_scheme
 
 CONFIG_NAME = ".cookr.json"
 PLATFORMS = ("web", "apple", "android", "windows", "python")
 KINDS = ("ui", "logic")
 
 
-class ConfigError(Exception):
+class ConfigError(CookbookError):
     """Raised when .cookr.json is missing, malformed, or names a bad path."""
 
 
@@ -63,7 +71,14 @@ class Config:
     ignore: list = field(default_factory=list)
     aliases: dict = field(default_factory=dict)
     renames: dict = field(default_factory=dict)
-    scheme: str = ""
+    declared_scheme: str = ""  # `.cookr.json`'s `scheme`; "" when it has none
+
+    @cached_property
+    def scheme(self) -> str:
+        """The declared scheme, else the repo's name. Derived on first use, so only
+        a command that writes a domain needs git; raises SchemeError when neither
+        resolves."""
+        return self.declared_scheme or repo_scheme(self.repo_root)
 
     @property
     def recipes_dir(self) -> Path:
@@ -83,7 +98,9 @@ class Config:
 
 
 def load_config(path: Path) -> Config:
-    path = path.resolve()
+    # The repo root is the directory holding the file as found, not the parent of
+    # a symlink's target.
+    path = path.parent.resolve() / path.name
     if not path.is_file():
         raise ConfigError(f"no {CONFIG_NAME} at {path}")
     try:
@@ -144,9 +161,11 @@ def load_config(path: Path) -> Config:
         if not (repo_root / rel).is_file():
             raise ConfigError(f"{path}: renames key not found: {rel}")
 
-    scheme = data.get("scheme", repo_root.name)
-    if not isinstance(scheme, str) or not scheme or "://" in scheme or "/" in scheme:
+    scheme = data.get("scheme", "")
+    if "scheme" in data and (
+        not isinstance(scheme, str) or not scheme or "://" in scheme or "/" in scheme
+    ):
         raise ConfigError(f"{path}: `scheme` must be a non-empty name without `/` (got {scheme!r})")
 
     return Config(repo_root=repo_root, recipes=recipes, roots=roots, ignore=ignore,
-                  aliases=aliases, renames=renames, scheme=scheme)
+                  aliases=aliases, renames=renames, declared_scheme=scheme)

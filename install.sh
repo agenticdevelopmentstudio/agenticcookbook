@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the CLI skills listed in CLI_SKILLS and the Claude Code plugin globally for the current user.
+# Install every CLI skill (skills/<name>/{bin,cli}/<name>) and the Claude Code plugin globally for the current user.
 #
 # - Materializes skills/cookbook/cli/references/ from reference-manifest.json
 #   (bundles cookbook content into the script so it's self-contained at runtime).
@@ -29,8 +29,18 @@ KNOWN_MARKETPLACES="${CLAUDE_DIR}/plugins/known_marketplaces.json"
 CLAUDE_SETTINGS="${CLAUDE_DIR}/settings.json"
 MANIFEST="${REPO_ROOT}/skills/cookbook/cli/reference-manifest.json"
 # Skills that carry a CLI: each ships as ~/.local/bin/<name> + ~/.local/bin/_<name>_pkg
-# and has its cli/ and bin/ kept out of the plugin bundle.
-CLI_SKILLS=(cookbook cookr)
+# and has its cli/ and bin/ kept out of the plugin bundle. The layout is the one
+# table: a skill carries a CLI when it has skills/<name>/bin/<name> and a
+# skills/<name>/cli/<name>/ package. uninstall.sh reads the same layout, plus the
+# record written below of what was actually installed.
+CLI_SKILLS=()
+for bin in "${SKILLS_SRC}"/*/bin/*; do
+    skill="$(basename -- "$(dirname -- "$(dirname -- "${bin}")")")"
+    if [ "$(basename -- "${bin}")" = "${skill}" ] && [ -d "${SKILLS_SRC}/${skill}/cli/${skill}" ]; then
+        CLI_SKILLS+=("${skill}")
+    fi
+done
+CLI_RECORD="${BIN_DIR}/.adh-cli-skills"
 
 color() { printf '\033[1;%sm%s\033[0m\n' "$1" "$2"; }
 title() { printf '\n'; color 36 "› $*"; }
@@ -57,170 +67,14 @@ case ":${PATH}:" in
     *) warn "${BIN_DIR} is not on \$PATH. Add it to your shell profile." ;;
 esac
 
-# 3. Materialize references/ from manifest
+# 3. Materialize references/ from manifest (cookbook.core.manifest, stdlib only)
 title "Materializing references"
-python3 - "$REPO_ROOT" "$MANIFEST" <<'PY'
-import json, shutil, sys
-from pathlib import Path
-
-repo_root = Path(sys.argv[1]).resolve()
-manifest = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
-
-dest = (repo_root / manifest["destination"]).resolve()
-source_root = (repo_root / manifest["source_root"]).resolve()
-
-if not dest.is_relative_to(repo_root):
-    print(f"  manifest destination escapes repo root: {dest}", file=sys.stderr)
-    sys.exit(1)
-
-# Wipe everything in dest except .gitkeep
-if dest.exists():
-    for child in dest.iterdir():
-        if child.name == ".gitkeep":
-            continue
-        if child.is_dir():
-            shutil.rmtree(child)
-        else:
-            child.unlink()
-else:
-    dest.mkdir(parents=True)
-
-for entry in manifest.get("files", []):
-    src = (source_root / entry["src"]).resolve()
-    dst = (dest / entry["dst"]).resolve()
-    if not src.is_relative_to(source_root):
-        print(f"  manifest src escapes source_root: {entry['src']}", file=sys.stderr)
-        sys.exit(1)
-    if not dst.is_relative_to(dest):
-        print(f"  manifest dst escapes destination: {entry['dst']}", file=sys.stderr)
-        sys.exit(1)
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    if entry["type"] == "file":
-        if not src.is_file():
-            print(f"  MISSING file: {src}", file=sys.stderr)
-            sys.exit(1)
-        shutil.copy2(src, dst)
-        print(f"  + {entry['dst']}")
-    elif entry["type"] == "tree":
-        if not src.is_dir():
-            print(f"  MISSING dir: {src}", file=sys.stderr)
-            sys.exit(1)
-        include = entry.get("include", "*")
-        dst.mkdir(parents=True, exist_ok=True)
-        for f in src.rglob(include):
-            if f.is_file():
-                rel = f.relative_to(src)
-                target = dst / rel
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(f, target)
-        print(f"  + {entry['dst']}/ (tree)")
-    else:
-        print(f"  unknown entry type: {entry['type']}", file=sys.stderr)
-        sys.exit(1)
-
-embedded = manifest.get("embedded_dir")
-if embedded:
-    embedded_src = Path(sys.argv[2]).resolve().parent / embedded
-    if embedded_src.is_dir():
-        for f in embedded_src.rglob("*"):
-            if f.is_file():
-                rel = f.relative_to(embedded_src)
-                target = dest / rel
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(f, target)
-        print(f"  + (overlay) {embedded}")
-PY
+PYTHONPATH="${REPO_ROOT}/skills/cookbook/cli" python3 -m cookbook.core.manifest "$REPO_ROOT" "$MANIFEST"
 ok "references materialized"
 
 # 3b. Materialize each prompt-module's reference-manifest.json
 title "Materializing prompt-module references"
-python3 - "$REPO_ROOT" "${CLI_SKILLS[*]}" <<'PY'
-import json, shutil, sys
-from pathlib import Path
-
-repo_root = Path(sys.argv[1]).resolve()
-skills = sys.argv[2].split()
-glob_roots = [repo_root / f"skills/{s}/cli/{s}/modules/prompt/prompts" for s in skills]
-glob_roots = [g for g in glob_roots if g.is_dir()]
-if not glob_roots:
-    print("  (no prompt modules)")
-    raise SystemExit(0)
-
-for glob_root in glob_roots:
-    for refs_dir in sorted(glob_root.glob("*/references")):
-        if not refs_dir.is_dir():
-            continue
-        for child in refs_dir.iterdir():
-            if child.name == ".gitkeep":
-                continue
-            if child.is_dir():
-                shutil.rmtree(child)
-            else:
-                child.unlink()
-
-manifests = []
-for glob_root in glob_roots:
-    manifests.extend(sorted(glob_root.glob("*/reference-manifest.json")))
-
-count = 0
-for manifest_path in manifests:
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    dest = (repo_root / manifest["destination"]).resolve()
-    source_root = (repo_root / manifest["source_root"]).resolve()
-
-    if not dest.is_relative_to(repo_root):
-        print(f"  manifest destination escapes repo root: {dest}", file=sys.stderr)
-        sys.exit(1)
-
-    # Wipe destination contents except .gitkeep.
-    if dest.exists():
-        for child in dest.iterdir():
-            if child.name == ".gitkeep":
-                continue
-            if child.is_dir():
-                shutil.rmtree(child)
-            else:
-                child.unlink()
-    else:
-        dest.mkdir(parents=True)
-
-    for entry in manifest.get("files", []):
-        src = (source_root / entry["src"]).resolve()
-        dst = (dest / entry["dst"]).resolve()
-        if not src.is_relative_to(source_root):
-            print(f"  manifest src escapes source_root: {entry['src']}", file=sys.stderr)
-            sys.exit(1)
-        if not dst.is_relative_to(dest):
-            print(f"  manifest dst escapes destination: {entry['dst']}", file=sys.stderr)
-            sys.exit(1)
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        if entry["type"] == "file":
-            if not src.is_file():
-                print(f"  MISSING file: {src}", file=sys.stderr)
-                sys.exit(1)
-            shutil.copy2(src, dst)
-        elif entry["type"] == "tree":
-            if not src.is_dir():
-                print(f"  MISSING dir: {src}", file=sys.stderr)
-                sys.exit(1)
-            include = entry.get("include", "*")
-            dst.mkdir(parents=True, exist_ok=True)
-            for f in src.rglob(include):
-                if f.is_file():
-                    rel = f.relative_to(src)
-                    target = dst / rel
-                    target.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(f, target)
-        else:
-            print(f"  unknown entry type: {entry['type']}", file=sys.stderr)
-            sys.exit(1)
-
-    rel_manifest = manifest_path.relative_to(repo_root)
-    print(f"  + {rel_manifest}")
-    count += 1
-
-print(f"  materialized {count} prompt-module manifest(s)")
-PY
+PYTHONPATH="${REPO_ROOT}/skills/cookbook/cli" python3 -m cookbook.core.manifest "$REPO_ROOT" --prompts "${CLI_SKILLS[@]}"
 ok "prompt-module references materialized"
 
 # 4 + 5. Install each CLI skill's package and shim
@@ -237,8 +91,11 @@ for skill in "${CLI_SKILLS[@]}"; do
     if [ -f "${pkg_src}/reference-manifest.json" ]; then
         cp "${pkg_src}/reference-manifest.json" "${pkg_dir}/"
     fi
-    # Stamp the source path so `<skill> self update` can re-run install.sh from here.
-    printf '%s\n' "${REPO_ROOT}" > "${pkg_dir}/.install_source"
+    # Stamp the source path so `cookbook self update` (modules/selfcmd.py, the
+    # stamp's only reader) can re-run install.sh from here.
+    if [ "${skill}" = "cookbook" ]; then
+        printf '%s\n' "${REPO_ROOT}" > "${pkg_dir}/.install_source"
+    fi
     ok "package → ${pkg_dir}"
 
     title "Installing ${skill} shim"
@@ -246,6 +103,9 @@ for skill in "${CLI_SKILLS[@]}"; do
     chmod +x "${BIN_DIR}/${skill}"
     ok "shim → ${BIN_DIR}/${skill}"
 done
+# Record what was installed, so uninstall.sh also removes a skill that has
+# since left the layout.
+printf '%s\n' "${CLI_SKILLS[@]}" > "${CLI_RECORD}"
 
 # 6. Install Python deps (user-level)
 #

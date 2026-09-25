@@ -9,6 +9,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
+from ..core.scheme import index_domain
 from ._shared import (
     cookbook_name,
     iter_artifacts,
@@ -35,7 +36,7 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
     fm_data = merge_index_frontmatter(
         output,
         title=config.get("title", f"{target.name.title()} Index"),
-        domain=f"agenticdevelopercookbook://{cookbook_name(root)}/{target.name}/index",
+        domain=index_domain(root, output, f"{cookbook_name(root)}/{target.name}/index"),
         summary=config.get("summary", f"Index of {target.name}."),
         today=today,
     )

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Remove everything install.sh placed on the system.
-# - Removes each CLI_SKILLS shim and package
+# - Removes each CLI skill's shim and package (recorded by install.sh, or in the layout)
 # - Unregisters the local marketplace and disables the plugin
 # - Wipes the assembled plugins/adh/skills/ directory
 # - Removes any legacy ~/.claude/skills/cookbook/ location
@@ -11,7 +11,26 @@ set -euo pipefail
 
 REPO_ROOT="$(cd -- "$(dirname -- "$0")" && pwd)"
 BIN_DIR="${HOME}/.local/bin"
-CLI_SKILLS=(cookbook cookr)
+SKILLS_SRC="${REPO_ROOT}/skills"
+CLI_RECORD="${BIN_DIR}/.adh-cli-skills"
+# The CLI skills to remove: those install.sh recorded installing, plus those the
+# layout carries now (skills/<name>/bin/<name> with a skills/<name>/cli/<name>/
+# package, install.sh's rule), so an install that predates the record is covered.
+CLI_SKILLS=()
+if [ -f "${CLI_RECORD}" ]; then
+    while IFS= read -r skill; do
+        [ -n "${skill}" ] && CLI_SKILLS+=("${skill}")
+    done < "${CLI_RECORD}"
+fi
+for bin in "${SKILLS_SRC}"/*/bin/*; do
+    skill="$(basename -- "$(dirname -- "$(dirname -- "${bin}")")")"
+    if [ "$(basename -- "${bin}")" = "${skill}" ] && [ -d "${SKILLS_SRC}/${skill}/cli/${skill}" ]; then
+        case " ${CLI_SKILLS[*]-} " in
+            *" ${skill} "*) ;;
+            *) CLI_SKILLS+=("${skill}") ;;
+        esac
+    fi
+done
 LEGACY_SKILL_DIR="${HOME}/.claude/skills/cookbook"
 PLUGIN_SKILLS_DIR="${REPO_ROOT}/plugins/adh/skills"
 MARKETPLACE_NAME="agenticcookbook"
@@ -25,7 +44,7 @@ title() { printf '\n'; color 36 "› $*"; }
 ok()    { color 32 "✓ $*"; }
 skip()  { color 90 "· $*"; }
 
-for skill in "${CLI_SKILLS[@]}"; do
+for skill in "${CLI_SKILLS[@]+"${CLI_SKILLS[@]}"}"; do
     title "Removing ${skill} CLI shim"
     if [ -f "${BIN_DIR}/${skill}" ]; then
         rm -f "${BIN_DIR}/${skill}"
@@ -42,6 +61,7 @@ for skill in "${CLI_SKILLS[@]}"; do
         skip "${BIN_DIR}/_${skill}_pkg (not present)"
     fi
 done
+rm -f "${CLI_RECORD}"
 
 title "Unregistering plugin"
 if command -v python3 >/dev/null 2>&1; then

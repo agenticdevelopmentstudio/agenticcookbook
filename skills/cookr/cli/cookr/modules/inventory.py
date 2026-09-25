@@ -6,6 +6,8 @@ import argparse
 import json
 import sys
 
+from rich.markup import escape
+
 from ..core.inventory import scan
 
 NAME = "inventory"
@@ -28,7 +30,7 @@ def require_known_tier(args, ctx) -> bool:
     """A typo'd `--tier` must be an error, never an empty (green) result."""
     if args.tier is not None and args.tier not in ctx.config.tiers:
         ctx.ui.error(
-            f"unknown tier `{args.tier}`; configured tiers: {', '.join(ctx.config.tiers)}"
+            escape(f"unknown tier `{args.tier}`; configured tiers: {', '.join(ctx.config.tiers)}")
         )
         return False
     return True
@@ -39,12 +41,13 @@ def run(args, ctx) -> int:
         return 2
     if not require_known_tier(args, ctx):
         return 2
-    rows = [c for c in scan(ctx.config) if args.tier is None or c.tier == args.tier]
+    rows = scan(ctx.config, tier=args.tier)
     if args.json:
         sys.stdout.write(json.dumps([{"name": c.name, "path": c.path, "tier": c.tier, "platform": c.platform} for c in rows], indent=2) + "\n")
         return 0
-    ctx.ui.title(f"cookr inventory · {ctx.repo_root}")
+    ctx.ui.title(f"cookr inventory · {ctx.config.repo_root}")
+    # Cells are escaped: rich reads `[...]` as markup, and paths carry `[slug]` segments.
     ctx.ui.table(["tier", "name", "platform", "path"],
-                 [[c.tier, c.name, c.platform, c.path] for c in rows])
+                 [[escape(v) for v in (c.tier, c.name, c.platform, c.path)] for c in rows])
     ctx.ui.info(f"{len(rows)} source file(s)")
     return 0

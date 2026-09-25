@@ -1,5 +1,13 @@
-#!/usr/bin/env bash
-# Shim: run the installed cookr package with the installed cookbook package on the path.
-DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-export PYTHONPATH="${DIR}/_cookr_pkg:${DIR}/_cookbook_pkg:${PYTHONPATH:-}"
-exec python3 -m cookr "$@"
+#!/usr/bin/env python3
+"""Shim: run the installed cookr package with the installed cookbook package on the path."""
+
+import os
+import sys
+from pathlib import Path
+
+here = Path(__file__).resolve().parent
+path = [str(here / "_cookr_pkg"), str(here / "_cookbook_pkg")]
+if os.environ.get("PYTHONPATH"):
+    path.append(os.environ["PYTHONPATH"])
+os.environ["PYTHONPATH"] = os.pathsep.join(path)
+os.execv(sys.executable, [sys.executable, "-m", "cookr", *sys.argv[1:]])

@@ -6,6 +6,8 @@ import argparse
 import json
 import sys
 
+from rich.markup import escape
+
 from ..core.compliance import load_checks
 from ..core.coverage import STATES, CoverageRow, compute
 from .inventory import require_config, require_known_tier
@@ -27,8 +29,7 @@ def register(parser: argparse.ArgumentParser) -> None:
 def _row_dict(r: CoverageRow) -> dict[str, object]:
     return {
         "name": r.name, "slug": r.slug, "tiers": list(r.tiers), "platforms": list(r.platforms),
-        "paths": list(r.paths), "state": r.state, "recipe": r.recipe,
-        "problems": list(r.problems),
+        "paths": list(r.paths), "state": r.state, "problems": list(r.problems),
     }
 
 
@@ -48,18 +49,19 @@ def run(args, ctx) -> int:
         }, indent=2) + "\n")
         return 1 if failing else 0
 
-    ctx.ui.title(f"cookr coverage · {ctx.repo_root}")
+    ctx.ui.title(f"cookr coverage · {ctx.config.repo_root}")
+    # Cells are escaped: rich reads `[...]` as markup, and paths carry `[slug]` segments.
     ctx.ui.table(
-        ["tiers", "name", "state", "recipe", "problems"],
-        [[", ".join(r.tiers), r.name, r.state, r.recipe or "—", "; ".join(r.problems)]
+        ["tiers", "name", "state", "slug", "problems"],
+        [[escape(v) for v in (", ".join(r.tiers), r.name, r.state, r.slug, "; ".join(r.problems))]
          for r in report.rows],
     )
     for tier, counts in report.tally().items():
-        ctx.ui.info("  ".join([f"{tier}:"] + [f"{s}={counts[s]}" for s in STATES]))
+        ctx.ui.info(escape("  ".join([f"{tier}:"] + [f"{s}={counts[s]}" for s in STATES])))
     if report.unmatched_recipes:
         ctx.ui.section("recipes with no inventory match")
         for slug in report.unmatched_recipes:
-            ctx.ui.skip(slug)
+            ctx.ui.skip(escape(slug))
     if args.require:
         if failing:
             ctx.ui.error(f"{len(failing)} component(s) below `{args.require}`")

@@ -41,8 +41,8 @@ Brief description of what this feature is and when to use it.
 
 ## Integration Requirements
 
-- **must-do-something**: The recipe MUST ...
-- **should-do-something**: The recipe SHOULD ...
+- **do-something**: The recipe MUST ...
+- **do-something-else**: The recipe SHOULD ...
 
 ## Layout
 
@@ -58,7 +58,7 @@ Describe how ingredients are spatially or logically arranged. Use ASCII diagrams
 
 | ID | Requirements | Input | Expected |
 |----|-------------|-------|----------|
-| recipe-001 | must-do-something | | |
+| recipe-001 | do-something | | |
 
 ## Edge Cases
 
@@ -80,7 +80,7 @@ Record any decisions made during implementation that affect integration behavior
 
 | Check | Status | Category |
 |-------|--------|----------|
-| [check-name](agenticdevelopercookbook://compliance/category#check-name) | passed | Category |
+| [check-name](agenticdevelopercookbook://compliance/document#check-name) | passed | Category |
 
 ## Change History
 

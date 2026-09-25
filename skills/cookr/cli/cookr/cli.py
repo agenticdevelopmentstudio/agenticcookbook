@@ -5,22 +5,23 @@ Usage:
 
 `-p` names the target repo root (the directory holding `.cookr.json`).
 Without it, cookr walks up from cwd to the first directory holding one.
+
+The scaffold (module discovery, `-p`, the module table, error mapping) is
+cookbook's, shared through cookbook.core.cliapp.
 """
 
 from __future__ import annotations
 
-import argparse
-import sys
 from pathlib import Path
 from typing import Optional
 
+from cookbook.core import cliapp
 from cookbook.core.errors import CookbookError
 from cookbook.core.ui import UI
 
 from . import __version__
 from .context import CookrContext
 from .core.config import CONFIG_NAME, ConfigError, load_config
-from .registry import discover
 
 
 def find_repo_root(start: Path, explicit: Optional[Path] = None) -> Optional[Path]:
@@ -36,60 +37,30 @@ def find_repo_root(start: Path, explicit: Optional[Path] = None) -> Optional[Pat
     return None
 
 
-def _build_parser(modules):
-    common = argparse.ArgumentParser(add_help=False)
-    common.add_argument(
-        "-p", "--path", type=Path, default=argparse.SUPPRESS,
-        help=f"Repo root holding {CONFIG_NAME} (defaults to discovery from cwd).",
-    )
-    parser = argparse.ArgumentParser(
-        prog="cookr",
-        description="Inventory, coverage and extraction prompts for component recipes.",
-        parents=[common],
-    )
-    parser.add_argument("--version", action="version", version=f"cookr {__version__}")
-    sub = parser.add_subparsers(dest="module", metavar="<module>", required=False)
-    for mod in modules:
-        sp = sub.add_parser(mod.NAME, help=mod.HELP, description=mod.HELP, parents=[common])
-        mod.register(sp)
-        sp.set_defaults(_module=mod)
-    return parser
+def _check_path(explicit: Optional[Path]) -> None:
+    # A bad explicit -p is an error even with no module named.
+    find_repo_root(Path.cwd(), explicit)
 
 
-def _print_module_table(ui: UI, modules) -> None:
-    ui.title(f"cookr {__version__}")
-    ui.info("Usage: cookr [-p PATH] <module> [args]")
-    ui.blank()
-    ui.table(["module", "description"], [[m.NAME, m.HELP] for m in modules], title="Modules")
-    ui.blank()
-    ui.info("Run `cookr <module> --help` for module-specific options.")
+def _context(explicit: Optional[Path], ui: UI) -> CookrContext:
+    root = find_repo_root(Path.cwd(), explicit)
+    return CookrContext(config=load_config(root / CONFIG_NAME) if root else None, ui=ui)
+
+
+APP = cliapp.CliApp(
+    prog="cookr",
+    version=__version__,
+    description="Inventory, coverage and extraction prompts for component recipes.",
+    modules_package="cookr.modules",
+    path_help=f"Repo root holding {CONFIG_NAME} (defaults to discovery from cwd).",
+    make_context=_context,
+    check_path=_check_path,
+    errors=(CookbookError, ConfigError),
+)
 
 
 def main(argv: Optional[list] = None) -> int:
-    argv = list(sys.argv[1:] if argv is None else argv)
-    ui = UI()
-    try:
-        modules = discover()
-        parser = _build_parser(modules)
-        args = parser.parse_args(argv)
-        explicit = getattr(args, "path", None)
-
-        # Resolve (and thereby validate) the root before checking for a module,
-        # so a bad explicit -p is an error even with no module named.
-        cwd = Path.cwd()
-        root = find_repo_root(cwd, explicit)
-        if not getattr(args, "module", None):
-            _print_module_table(ui, modules)
-            return 0
-        config = load_config(root / CONFIG_NAME) if root else None
-        ctx = CookrContext(cwd=cwd, repo_root=root, config=config, ui=ui)
-        return int(args._module.run(args, ctx) or 0)
-    except (CookbookError, ConfigError) as e:
-        ui.error(str(e))
-        return 2
-    except KeyboardInterrupt:
-        ui.warn("Interrupted.")
-        return 130
+    return cliapp.main(APP, argv)
 
 
 if __name__ == "__main__":

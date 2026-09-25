@@ -4,11 +4,11 @@ id: e48a04d7-c479-427d-9d8e-fe9e9b990c77
 title: "Template Conformance"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/template-conformance
 type: guideline
-version: 1.0.3
+version: 1.0.4
 status: accepted
 language: en
 created: 2026-04-07
-modified: 2026-06-09
+modified: 2026-09-25
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -87,7 +87,7 @@ A verifier MUST check each of the following items. The recipe PASSES template co
 - [ ] Frontmatter opens and closes with `---` on its own line.
 - [ ] All required frontmatter fields are present: `id`, `title`, `domain`, `type`, `version`, `status`, `language`, `created`, `modified`, `author`, `summary`, `platforms`, `tags`, `depends-on`, `related`, `references`.
 - [ ] `id` is a valid UUID v4 and is unique within the cookbook.
-- [ ] `domain` starts with `agenticdevelopercookbook://` and ends with the file's stem.
+- [ ] `domain`'s scheme names the repo the file lives in (`agenticdevelopercookbook://` for this cookbook's own content) and its path ends with the file's stem.
 - [ ] `type` is one of the recognized artifact types.
 - [ ] `version` is a valid `MAJOR.MINOR.PATCH` semver string with no prefix.
 - [ ] `status` is one of `draft`, `review`, `accepted`, `deprecated`.
@@ -105,5 +105,6 @@ A verifier MUST check each of the following items. The recipe PASSES template co
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.4 | 2026-09-25 | Mike Fullerton | Checklist domain item: the scheme names the repo the file lives in |
 | 1.0.3 | 2026-06-09 | Mike Fullerton | Add Change History table and approval metadata |
 | 1.0.0 | 2026-04-07 | Mike Fullerton | Initial creation |
