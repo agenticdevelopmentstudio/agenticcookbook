@@ -3,11 +3,11 @@ id: E10E9785-E7D9-47F9-BA8C-A85E745BF294
 title: "Ingredient Formatting Compliance"
 domain: agenticdevelopercookbook://compliance/artifact-formatting/ingredient-formatting
 type: compliance
-version: 1.0.1
+version: 1.1.0
 status: draft
 language: en
 created: 2026-04-05
-modified: 2026-06-09
+modified: 2026-09-25
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -56,9 +56,10 @@ Ingredients MUST follow this section order. Optional sections (marked MAY) can b
 16. `## Privacy` (MAY omit)
 17. `## Logging`
 18. `## Platform Notes`
-19. `## Design Decisions`
-20. `## Compliance`
-21. `## Change History`
+19. `## Reference Implementations` (MAY omit in a cookbook with no code)
+20. `## Design Decisions`
+21. `## Compliance`
+22. `## Change History`
 
 ## Checks
 
@@ -177,6 +178,17 @@ The ingredient MUST have a `## Platform Notes` section with per-platform impleme
 
 ---
 
+### if-reference-implementations
+
+The ingredient MUST have a `## Reference Implementations` section, directly after `## Platform Notes`, when its cookbook's repository implements it: a `| Platform | Path |` table with one row per implementing source file or directory. `Platform` is one of `web`, `apple`, `android`, `windows`, `python`; `Path` is a backticked path relative to the repository root, and a directory path ends with `/` and claims every source file below it. Every path MUST exist. In a cookbook with no code of its own the section MAY be omitted, or MAY be the one line `Not applicable: this cookbook carries no implementations.`
+
+**Applies when:** the cookbook's `cookbook.json` declares `code` (a library or app cookbook that lives beside its source). `cookbook validate` checks that every listed path exists.
+
+**Guidelines:**
+- [Cookbook Formatting](agenticdevelopercookbook://compliance/artifact-formatting/cookbook-formatting)
+
+---
+
 ### if-design-decisions
 
 The ingredient MUST have a `## Design Decisions` section. Each decision follows the format: **Decision**: Description. **Rationale**: Why. **Approved**: yes | pending.
@@ -209,5 +221,6 @@ The file MUST end with a `## Change History` section containing a table with col
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.0.1 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 1.0.0 | 2026-04-05 | Mike Fullerton | Initial creation |

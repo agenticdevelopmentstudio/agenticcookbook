@@ -3,11 +3,11 @@ id: 7a3e1f2c-8b4d-4e6a-9c5f-1d2e3f4a5b6c
 title: "Conventions"
 domain: agenticdevelopercookbook://introduction/conventions
 type: reference
-version: 1.5.0
+version: 1.6.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-09-25
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -243,7 +243,20 @@ Within the same document: `Validates: #requirements/ordered-list`
 
 ### Cookbook Directory Naming
 
-Cookbook directories MUST use the suffix `-cookbook`. For a source repository named `my-app`, the cookbook directory is `my-app-cookbook/`. This distinguishes cookbooks from other directories and makes the project type immediately recognizable.
+Standalone cookbook directories MUST use the suffix `-cookbook`. For a source repository named `my-app`, the cookbook directory is `my-app-cookbook/`. This distinguishes cookbooks from other directories and makes the project type immediately recognizable.
+
+A cookbook that specifies code in its own repository (a library cookbook, `structure.kind: library`) is instead that repository's `cookbook/` directory. Its directory tree mirrors the arrangement of the code, each spec is named by its file name alone, and each spec lists its implementations in `## Reference Implementations`:
+
+```
+my-repo/
+├── cookbook/
+│   ├── cookbook.json          # structure.kind: library, code.roots
+│   └── ai-plugin-kit/
+│       ├── ai-plugin.md
+│       └── models/
+│           └── model-capability.md
+└── packages/...               # the code the specs point at
+```
 
 ```
 my-app-cookbook/
@@ -315,9 +328,10 @@ Format:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
-| 1.0.0 | 2026-03-27 | Mike Fullerton | Initial consolidation from 5 separate convention files |
-| 1.2.0 | 2026-04-04 | Mike Fullerton | Add approved-by and approved-date frontmatter fields |
+| 1.6.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.5.0 | 2026-04-09 | Mike Fullerton | Add triggers field for guideline-type artifacts |
 | 1.4.0 | 2026-04-06 | Mike Fullerton | Rename concoction to cookbook; add cookbook type to enum |
 | 1.3.0 | 2026-04-05 | Mike Fullerton | Add ingredient, recipe (composition), and concoction types; rename cookbook-project to concoction |
+| 1.2.0 | 2026-04-04 | Mike Fullerton | Add approved-by and approved-date frontmatter fields |
 | 1.1.0 | 2026-04-02 | Mike Fullerton | Add cookbook project directory naming convention (-cookbook-project suffix) |
+| 1.0.0 | 2026-03-27 | Mike Fullerton | Initial consolidation from 5 separate convention files |

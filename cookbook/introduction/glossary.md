@@ -3,11 +3,11 @@ id: a7c3e1f2-9b4d-4e6a-8c5f-2d3e4f5a6b7c
 title: "Glossary"
 domain: agenticdevelopercookbook://introduction/glossary
 type: reference
-version: 1.3.0
+version: 1.4.0
 status: accepted
 language: en
 created: 2026-03-28
-modified: 2026-04-06
+modified: 2026-09-25
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -30,7 +30,7 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 
 **Conformance** — Verified match between an implementation and a recipe's requirements. Measured by a conformance checklist mapping each named requirement to its implementing code and test.
 
-**Cookbook** — Two distinct uses: (1) **Top-level cookbook** — the source repository of principles, guidelines, ingredients, and recipes (this repo, `agenticdevelopercookbook/cookbook`). (2) **Project cookbook** — a full application, plugin, or widget definition that assembles recipes and ingredients into a complete project. Defined by a `cookbook.json` manifest in a directory with a `-cookbook` suffix. Contains a hierarchical structure of structural elements, resources, and context. Replaces the former "concoction" concept.
+**Cookbook** — Two distinct uses: (1) **Top-level cookbook** — the source repository of principles, guidelines, ingredients, and recipes (this repo, `agenticdevelopercookbook/cookbook`). (2) **Project cookbook** — a full application, plugin, widget, or library definition that assembles recipes and ingredients into a complete project. Defined by a `cookbook.json` manifest in a directory with a `-cookbook` suffix. Contains a hierarchical structure of structural elements, resources, and context. Replaces the former "concoction" concept. A **library cookbook** (`structure.kind: library`) specifies reusable components and lives in its repository's `cookbook/` directory, its tree mirroring the code.
 
 **Cookbook Artifact** — A general term for any content item in the cookbook: a principle, guideline, ingredient, or recipe. Each artifact is a standalone markdown file with YAML frontmatter, named requirements, and a change history. The artifact's `type` field identifies which kind it is.
 
@@ -45,6 +45,8 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 **Principle** — A foundational engineering idea that guides all design decisions. 27 principles in `cookbook/principles/` including simplicity, YAGNI, fail-fast, dependency injection, immutability, composition over inheritance, connascence, and others.
 
 **Recipe** — A composition of configured ingredients into a coherent feature. Defines how ingredients wire together: integration requirements, layout, shared state, and integration test vectors. Recipes reference ingredients by domain and specify configuration values for each. Located in `cookbook/recipes/`.
+
+**Reference Implementation** — A source file or directory, in the cookbook's own repository, that implements an ingredient or recipe. Listed in the spec's `## Reference Implementations` table by platform and repository-relative path; a directory claims every source file below it.
 
 **Requirement** — A named, testable assertion within a recipe. Uses a descriptive kebab-case name and RFC 2119 keywords (MUST, SHOULD, MAY). Example: `**ordered-list**: The control MUST maintain an ordered list of messages.`
 
@@ -66,6 +68,7 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.4.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.3.0 | 2026-04-06 | Mike Fullerton | Rename Concoction to Cookbook; define top-level and project cookbook distinction |
 | 1.2.0 | 2026-04-05 | Mike Fullerton | Add Ingredient, Concoction, Structural Element terms; update Recipe and Cookbook Artifact definitions |
 | 1.1.0 | 2026-04-04 | Mike Fullerton | Add Cookbook Artifact term |
