@@ -41,6 +41,42 @@ def test_scan_applies_a_rename_to_one_path(mini_repo):
     assert "button" in {r.name for r in rows if r.platform == "apple"}
 
 
+def _with_renames(mini_repo, renames):
+    import json
+    p = mini_repo / ".cookr.json"
+    data = json.loads(p.read_text(encoding="utf-8"))
+    data["renames"] = renames
+    p.write_text(json.dumps(data), encoding="utf-8")
+    return {r.path: r.name for r in scan(load_config(p))}
+
+
+def test_a_directory_rename_names_every_file_below_it(mini_repo):
+    by_path = _with_renames(mini_repo, {"web/components": "web-kit"})
+    assert by_path["web/components/Button.tsx"] == "web-kit"
+    assert by_path["web/components/chat-composer.tsx"] == "web-kit"
+    assert by_path["web/blocks/StatCard.tsx"] == "stat-card"
+
+
+def test_a_file_added_to_a_renamed_directory_joins_its_component(mini_repo):
+    (mini_repo / "web" / "components" / "NewThing.tsx").write_text("", encoding="utf-8")
+    by_path = _with_renames(mini_repo, {"web/components/": "web-kit"})
+    assert by_path["web/components/NewThing.tsx"] == "web-kit"
+
+
+def test_a_file_key_beats_a_directory_key_and_the_longest_directory_wins(mini_repo):
+    (mini_repo / "web" / "components" / "inner").mkdir()
+    (mini_repo / "web" / "components" / "inner" / "Deep.tsx").write_text("", encoding="utf-8")
+    by_path = _with_renames(mini_repo, {
+        "web": "web-all",
+        "web/components/inner": "inner-kit",
+        "web/components/Button.tsx": "web-button",
+    })
+    assert by_path["web/components/Button.tsx"] == "web-button"
+    assert by_path["web/components/inner/Deep.tsx"] == "inner-kit"
+    assert by_path["web/components/chat-composer.tsx"] == "web-all"
+    assert by_path["web/blocks/StatCard.tsx"] == "web-all"
+
+
 def test_root_ignore_applies_to_its_own_root_only(mini_repo):
     import json
     p = mini_repo / ".cookr.json"

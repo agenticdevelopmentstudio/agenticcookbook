@@ -44,19 +44,19 @@ class CoverageReport:
         return [r for r in self.rows if _RANK[r.state] < _RANK[level]]
 
 
-def collision(items: list[Component], renames: dict) -> Optional[str]:
+def collision(items: list[Component], config: Config) -> Optional[str]:
     """A name shared by same-platform sources in more than one tier, or None.
 
     Those are almost always two unrelated components that happen to share a
     file stem, and one recipe cannot specify both. Sources on different
     platforms (the Swift and TypeScript button) are the intended cross-platform
     merge, and sources in one tier (iOS and macOS twins) are one component. A
-    path listed in `renames` is named on purpose, so renaming both sides to this
-    name records a deliberate merge.
+    path a `renames` key covers is named on purpose, so renaming both sides to
+    this name records a deliberate merge.
     """
     tiers_by_platform = {}
     for c in items:
-        if c.path not in renames:
+        if config.renamed(c.path) is None:
             tiers_by_platform.setdefault(c.platform, set()).add(c.tier)
     spans = [f"{p} in {', '.join(sorted(t))}" for p, t in sorted(tiers_by_platform.items())
              if len(t) > 1]
@@ -108,7 +108,7 @@ def compute(config: Config, tier: Optional[str] = None,
         tiers = tuple(sorted({i.tier for i in items}))
         if tier is not None and tier not in tiers:
             continue
-        clash = collision(items, config.renames)
+        clash = collision(items, config)
         probs = (clash,) if clash else ()
         if info is None:
             state = "missing"

@@ -15,10 +15,14 @@ holding the file). `ignore` entries are globstar globs (`cookr.core.inventory`):
 `*` stays inside one directory, so `src/*.ts` matches only files directly in
 `src/`; write `src/**/*.ts` for every depth.
 
-`renames` gives one source file its own component name, for a file whose stem
-collides with a different component elsewhere (`landing/Card.tsx` beside
-`ui/card.tsx`). `aliases` then folds *names* into a recipe slug; a rename is
-applied first, so an aliased name can be a renamed one.
+`renames` names components on purpose. A key is a source file or a directory:
+a file key gives that one file its own name, for a file whose stem collides
+with a different component elsewhere (`landing/Card.tsx` beside `ui/card.tsx`);
+a directory key names every source file below it, so a module directory is one
+component and a file added to it later joins that component. A file key beats
+any directory key, and the longest directory key wins. `aliases` then folds
+*names* into a recipe slug; a rename is applied first, so an aliased name can
+be a renamed one.
 
 `kind` says what a root's sources are: `ui` (the default) for visual
 components, `logic` for non-UI shared code — models, clients, engines. A
@@ -41,6 +45,7 @@ import json
 from dataclasses import dataclass, field
 from functools import cached_property
 from pathlib import Path
+from typing import Optional
 
 from cookbook.core.errors import CookbookError
 from cookbook.core.scheme import repo_scheme
@@ -83,6 +88,18 @@ class Config:
     @property
     def recipes_dir(self) -> Path:
         return self.repo_root / self.recipes
+
+    def renamed(self, rel: str) -> Optional[str]:
+        """The `renames` name for repo-relative source path `rel`: its file key,
+        else its longest directory key; None when no key covers it."""
+        if rel in self.renames:
+            return self.renames[rel]
+        parts = rel.split("/")
+        for i in range(len(parts) - 1, 0, -1):
+            name = self.renames.get("/".join(parts[:i]))
+            if name is not None:
+                return name
+        return None
 
     def domain(self, slug: str) -> str:
         """Path-derived domain of the recipe for `slug`."""
@@ -152,13 +169,15 @@ def load_config(path: Path) -> Config:
     ):
         raise ConfigError(f"{path}: `aliases` must map strings to strings")
 
-    renames = data.get("renames", {})
-    if not isinstance(renames, dict) or not all(
-        isinstance(k, str) and isinstance(v, str) and v for k, v in renames.items()
+    raw_renames = data.get("renames", {})
+    if not isinstance(raw_renames, dict) or not all(
+        isinstance(k, str) and k.strip("/") and isinstance(v, str) and v
+        for k, v in raw_renames.items()
     ):
         raise ConfigError(f"{path}: `renames` must map source paths to non-empty names")
+    renames = {k.strip("/"): v for k, v in raw_renames.items()}
     for rel in renames:
-        if not (repo_root / rel).is_file():
+        if not (repo_root / rel).exists():
             raise ConfigError(f"{path}: renames key not found: {rel}")
 
     scheme = data.get("scheme", "")

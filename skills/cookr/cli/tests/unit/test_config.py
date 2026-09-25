@@ -90,6 +90,31 @@ def test_renames_must_name_an_existing_file(tmp_path):
         }))
 
 
+def test_renames_accepts_a_directory_key(tmp_path):
+    (tmp_path / "src" / "hooks").mkdir(parents=True)
+    (tmp_path / "recipes").mkdir()
+    cfg = load_config(_write(tmp_path, {
+        "recipes": "recipes",
+        "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
+        "renames": {"src/hooks/": "hooks"},
+    }))
+    assert cfg.renames == {"src/hooks": "hooks"}
+    assert cfg.renamed("src/hooks/useThing.ts") == "hooks"
+    assert cfg.renamed("src/hooksish/useThing.ts") is None
+    assert cfg.renamed("src/Card.tsx") is None
+
+
+def test_renames_rejects_a_missing_directory_key(tmp_path):
+    (tmp_path / "src").mkdir()
+    (tmp_path / "recipes").mkdir()
+    with pytest.raises(ConfigError, match="renames key not found: src/hooks"):
+        load_config(_write(tmp_path, {
+            "recipes": "recipes",
+            "roots": [{"path": "src", "tier": "ui", "platform": "web"}],
+            "renames": {"src/hooks": "hooks"},
+        }))
+
+
 def test_renames_rejects_an_empty_name(tmp_path):
     (tmp_path / "src").mkdir()
     (tmp_path / "recipes").mkdir()

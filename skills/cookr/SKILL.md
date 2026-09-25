@@ -125,6 +125,11 @@ shows two rows and `prompt extract landing-card` takes only that source. When
 the two really are one component, list every path in `renames` under the
 shared name; that records the merge as deliberate and clears the problem.
 
+A `renames` key can also be a directory: `{"packages/chat/src/hooks": "chat-hooks"}`
+makes every source file below it one component, including files added later.
+Use a directory key to group a module; a file key beats it, and the longest
+directory key wins.
+
 ## Non-UI code
 
 Shared code with no visual surface — models, clients, engines — goes under a

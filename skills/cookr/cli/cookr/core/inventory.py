@@ -144,7 +144,7 @@ def scan(config: Config, tier: Optional[str] = None) -> list[Component]:
                 rel = prefix + fn
                 if ignored.ignores(rel) or not (d / fn).is_file():
                     continue
-                name = config.renames.get(rel, kebab(component_stem(fn)))
+                name = config.renamed(rel) or kebab(component_stem(fn))
                 out.append(Component(name=name, path=rel, tier=root.tier, platform=root.platform,
                                      kind=root.kind))
     reserved = sorted(c.path for c in out if _reserved(config.aliases.get(c.name, c.name)))
