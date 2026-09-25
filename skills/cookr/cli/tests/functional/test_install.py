@@ -14,9 +14,12 @@ def test_shim_runs_and_reports_version(run_cookr):
 
 
 def test_installed_package_has_references(cookr_bin):
-    pkg = Path(cookr_bin).parent / "_cookr_pkg" / "cookr" / "modules" / "prompt" / "prompts" / "extract" / "references"
-    assert (pkg / "templates" / "ingredient.md").is_file()
-    assert (pkg / "guidelines" / "recipe-quality" / "source-fidelity.md").is_file()
+    bin_dir = Path(cookr_bin).parent
+    extract = bin_dir / "_cookr_pkg" / "cookr" / "modules" / "prompt" / "prompts" / "extract" / "references"
+    assert (extract / "guidelines" / "recipe-quality" / "source-fidelity.md").is_file()
+    # Templates come from the cookbook package's references, not the extract module's.
+    assert (bin_dir / "_cookbook_pkg" / "references" / "templates" / "ingredient.md").is_file()
+    assert not (extract / "templates").exists()
 
 
 def test_shim_coverage_on_fixture(run_cookr, mini_repo):
