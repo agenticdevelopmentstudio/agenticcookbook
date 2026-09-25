@@ -248,3 +248,42 @@ def test_domain_mismatch_names_the_expected_domain_in_this_repos_scheme(tmp_path
 def test_domain_hint_does_not_prescribe_the_cookbooks_scheme():
     from cookbook.core.checks import fix_for
     assert "agenticdevelopercookbook" not in fix_for("domain-matches-path")
+
+
+# --- Reference Implementations --------------------------------------------------------
+
+_IMPL = """\
+## Reference Implementations
+
+| Platform | Path |
+|----------|------|
+| apple | `Sources/Kit/Label.swift` |
+| web | `packages/kit/label/` |
+"""
+
+
+def _impl_rules(root: Path) -> list[tuple[str, str]]:
+    return [(i.rule, i.detail) for i in phase_a(root).issues
+            if i.rule.startswith("reference-implementation")]
+
+
+def test_reference_implementations_resolve_from_the_repo_top(tmp_path):
+    root = _toolkit(tmp_path, _IMPL)
+    top = root.parent
+    (top / "Sources/Kit").mkdir(parents=True)
+    (top / "Sources/Kit/Label.swift").write_text("", encoding="utf-8")
+    (top / "packages/kit/label").mkdir(parents=True)
+    assert _impl_rules(root) == []
+
+
+def test_missing_reference_implementation_is_reported(tmp_path):
+    root = _toolkit(tmp_path, _IMPL)
+    rules = _impl_rules(root)
+    assert ("reference-implementation-exists",
+            "Reference Implementations path `Sources/Kit/Label.swift` does not exist") in rules
+    assert len(rules) == 2
+
+
+def test_unknown_reference_implementation_platform_is_reported(tmp_path):
+    root = _toolkit(tmp_path, _IMPL.replace("| apple |", "| ios |"))
+    assert "reference-implementation-platform" in {r for r, _ in _impl_rules(root)}

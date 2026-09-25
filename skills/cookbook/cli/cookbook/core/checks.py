@@ -16,7 +16,7 @@ from .frontmatter import (
     VALID_TYPES,
     parse_file,
 )
-from . import history
+from . import history, refimpl
 from .markdown import iter_markdown
 from .scheme import COOKBOOK_SCHEME, SchemeError, cookbook_scheme, up_to_repo_top
 
@@ -37,6 +37,14 @@ _FIX_ITS: dict[str, str] = {
         "Update `domain` to `<scheme>://<path>`: the scheme names the repo the file "
         "lives in (the cookbook index.md's `domain` scheme, else the repo's name) and "
         "the path is the file's path without `.md`. The issue shows the expected value."
+    ),
+    "reference-implementation-exists": (
+        "Fix the path in `## Reference Implementations` (relative to the repository root; "
+        "a directory ends with `/`), or remove the row. After moving code, `cookr relink` "
+        "rewrites the paths git recorded as renamed."
+    ),
+    "reference-implementation-platform": (
+        "Use one of: web, apple, android, windows, python."
     ),
     "link-resolves": (
         "Fix or remove the link target, or create the file it points to. A "
@@ -213,6 +221,22 @@ def _check_one(md: Path, root: Path, report: CheckReport, id_owners: dict[str, l
         if (root / target).resolve().exists():
             continue
         report.add(rel, "link-resolves", f"broken link to `{target}`")
+
+    for impl in refimpl.implementations(fm.body):
+        if impl.platform not in refimpl.PLATFORMS:
+            report.add(rel, "reference-implementation-platform",
+                       f"Reference Implementations platform `{impl.platform}` is not one of "
+                       f"{', '.join(refimpl.PLATFORMS)}")
+        if not (_repo_top(root) / impl.path).exists():
+            report.add(rel, "reference-implementation-exists",
+                       f"Reference Implementations path `{impl.path}` does not exist")
+
+
+@functools.cache
+def _repo_top(root: Path) -> Path:
+    """The top of the checkout holding `root`, which Reference Implementations
+    paths are relative to; `root` itself outside git."""
+    return up_to_repo_top(root)[-1]
 
 
 def phase_a(root: Path) -> CheckReport:

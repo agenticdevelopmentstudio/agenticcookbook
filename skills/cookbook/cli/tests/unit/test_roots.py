@@ -40,3 +40,12 @@ def test_requires_canonical_subdir(tmp_path):
     """An index.md alone isn't enough — needs a canonical subdir."""
     (tmp_path / "index.md").write_text("", encoding="utf-8")
     assert roots.resolve(tmp_path) is None
+
+
+def test_manifest_marks_a_library_cookbook(tmp_path):
+    """A library cookbook has cookbook.json and group directories, no canonical subdirs."""
+    cookbook = tmp_path / "cookbook"
+    (cookbook / "ai-plugin-kit").mkdir(parents=True)
+    (cookbook / "cookbook.json").write_text("{}", encoding="utf-8")
+    assert roots.resolve(tmp_path) == cookbook
+    assert roots.resolve(cookbook / "ai-plugin-kit") == cookbook
