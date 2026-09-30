@@ -1,0 +1,7 @@
+# plan-security — leaves
+
+- [`implement-security/authentication`](../implement-security/leaves/authentication.md) — Authentication · Use OAuth 2.0 / OpenID Connect with PKCE for all public clients. The Implicit flow is · platforms: csharp, ios, kotlin, typescript, web, windows · triggers: authentication, security-review · rules: 2 MUST
+- [`implement-security/privacy`](../implement-security/leaves/privacy.md) — Privacy and security by default · Collect only what is needed. Prefer on-device processing. · platforms: kotlin, swift, typescript · triggers: data-modeling, security-review · rules: 4 MUST 1 SHOULD
+- [`plan-security/data-privacy-regulations`](leaves/data-privacy-regulations.md) — Data privacy regulations · Identify the privacy regimes that apply and confirm a lawful basis before collecting any personal data. · triggers: data-modeling, security-review · rules: 8 MUST 2 SHOULD
+- [`plan-security/privacy-by-design`](leaves/privacy-by-design.md) — Privacy by design · Map personal-data flows, minimize collection, default to the most private setting, and run a DPIA before building high-risk processing. · triggers: data-modeling, security-review · rules: 9 MUST 5 SHOULD
+- [`plan-security/threat-modeling`](leaves/threat-modeling.md) — Threat modeling · Model trust boundaries and ask the four Manifesto questions before building so point security controls trace to a why. · triggers: security-review · rules: 3 MUST 4 SHOULD

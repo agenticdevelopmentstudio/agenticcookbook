@@ -15,6 +15,17 @@
         "email": "mike@mikefullerton.com"
       },
       "strict": false
+    },
+    {
+      "name": "cookbook",
+      "source": "./plugins/cookbook",
+      "description": "Routed rule skills generated from the cookbook by `cookbook skills build` — review, implement, verify and more, one router per domain.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Mike Fullerton",
+        "email": "mike@mikefullerton.com"
+      },
+      "strict": false
     }
   ]
 }

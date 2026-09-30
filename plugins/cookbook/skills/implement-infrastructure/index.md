@@ -1,0 +1,6 @@
+# implement-infrastructure — leaves
+
+- [`implement-infrastructure/containerization`](leaves/containerization.md) — Containerization · Build small, secure container images with multi-stage builds, pinned slim bases, non-root users, cache-ordered layers, and no baked-in secrets. · triggers: configuration, new-module · rules: 5 MUST 4 SHOULD
+- [`implement-infrastructure/kubernetes-configuration`](leaves/kubernetes-configuration.md) — Kubernetes configuration and secrets · Externalize Kubernetes config via ConfigMaps and treat Secrets as unencrypted base64 — encrypt at rest, tighten RBAC, and prefer external secret managers. · triggers: authentication, configuration · rules: 5 MUST 3 SHOULD
+- [`implement-infrastructure/kubernetes-workloads`](leaves/kubernetes-workloads.md) — Kubernetes workloads · Run Kubernetes workloads with explicit resource requests/limits, health probes, hardened pod security, and safe rollout strategies. · triggers: configuration, performance-optimization · rules: 4 MUST 9 SHOULD 1 MAY
+- [`implement-infrastructure/twelve-factor-config`](leaves/twelve-factor-config.md) — Twelve-factor configuration · Read config that varies between deploys from the environment and promote one immutable build artifact unchanged across every environment. · triggers: configuration · rules: 5 MUST 2 SHOULD

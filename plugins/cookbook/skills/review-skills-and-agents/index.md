@@ -1,0 +1,6 @@
+# review-skills-and-agents — leaves
+
+- [`cookbook-skills-and-agents/agent-checklist`](../cookbook-skills-and-agents/leaves/agent-checklist.md) — Agent Lint Checklist · Comprehensive lint checklist for validating Claude Code agent structure, content quality, and best practices · triggers: pre-pr, skill-authoring · rules: 1 MUST 1 SHOULD 1 MAY
+- [`cookbook-skills-and-agents/rule-checklist`](../cookbook-skills-and-agents/leaves/rule-checklist.md) — Rule Lint Checklist · Comprehensive lint checklist for validating Claude Code rule file content quality, best practices, and optimization · triggers: pre-pr, skill-authoring
+- [`cookbook-skills-and-agents/skill-checklist`](../cookbook-skills-and-agents/leaves/skill-checklist.md) — Skill Lint Checklist · Comprehensive lint checklist for validating Claude Code skill structure, content quality, and best practices · triggers: pre-pr, skill-authoring · rules: 1 MUST 1 SHOULD 1 MAY
+- [`implement-skills-and-agents/performance`](../implement-skills-and-agents/leaves/performance.md) — Performance: Speed and Token Efficiency · Optimize Claude Code extensions for speed and token efficiency through shell scripts, model selection, and progressive disclosure. · triggers: performance-optimization, skill-authoring · rules: 2 MUST 3 SHOULD

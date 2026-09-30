@@ -1,0 +1,17 @@
+# compliance — leaves
+
+- [`compliance/access-patterns`](leaves/access-patterns.md) — Access Patterns · Compliance checks for network communication, API design, and data access patterns. · rules: 8 MUST
+- [`compliance/accessibility`](leaves/accessibility.md) — Accessibility · Compliance checks for accessibility, assistive technology support, and inclusive design. · rules: 8 MUST
+- [`compliance/artifact-formatting-cookbook-formatting`](leaves/artifact-formatting-cookbook-formatting.md) — Cookbook Formatting Compliance · Structural formatting checks for cookbook manifests — JSON files that assemble recipes and ingredients into complete applications. · rules: 10 MUST
+- [`compliance/artifact-formatting-guideline-formatting`](leaves/artifact-formatting-guideline-formatting.md) — Guideline Formatting Compliance · Structural formatting checks for guideline artifacts — frontmatter, summary, structured guidance, RFC keywords, and change history. · rules: 9 MUST 1 MAY
+- [`compliance/artifact-formatting-ingredient-formatting`](leaves/artifact-formatting-ingredient-formatting.md) — Ingredient Formatting Compliance · Structural formatting checks for ingredient artifacts — the most detailed artifact type with ~16 required sections. · rules: 18 MUST 8 MAY
+- [`compliance/artifact-formatting-principle-formatting`](leaves/artifact-formatting-principle-formatting.md) — Principle Formatting Compliance · Structural formatting checks for principle artifacts — frontmatter, statement, guidance, and change history. · rules: 6 MUST 2 SHOULD
+- [`compliance/artifact-formatting-recipe-formatting`](leaves/artifact-formatting-recipe-formatting.md) — Recipe Formatting Compliance · Structural formatting checks for recipe artifacts — composition specs that combine configured ingredients into coherent features. · rules: 16 MUST
+- [`compliance/best-practices`](leaves/best-practices.md) — Best Practices Compliance · Compliance checks for testing, code quality, error handling, and separation of concerns. · rules: 7 MUST 1 SHOULD
+- [`compliance/internationalization`](leaves/internationalization.md) — Internationalization · Compliance checks for string externalization, RTL support, locale-aware formatting, and Unicode handling. · rules: 7 MUST
+- [`compliance/performance`](leaves/performance.md) — Performance Compliance · Compliance checks for main-thread responsiveness, frame rates, lazy loading, and resource efficiency. · rules: 7 MUST 1 SHOULD
+- [`compliance/platform-compliance`](leaves/platform-compliance.md) — Platform Compliance · Compliance checks for platform-specific design, conventions, and store policies. · rules: 7 MUST 1 SHOULD
+- [`compliance/privacy-and-data`](leaves/privacy-and-data.md) — Privacy and Data · Compliance checks for data privacy, personal data handling, and secure storage. · rules: 7 MUST 1 SHOULD
+- [`compliance/reliability`](leaves/reliability.md) — Reliability · Compliance checks for error recovery, graceful degradation, fault tolerance, state management, and operational reliability. · rules: 7 MUST 1 SHOULD
+- [`compliance/security`](leaves/security.md) — Security Compliance · Compliance checks for authentication, authorization, transport security, and secure coding practices. · rules: 12 MUST
+- [`compliance/user-safety`](leaves/user-safety.md) — User Safety Compliance · Compliance checks for content moderation, age gating, abuse prevention, and safe defaults. · rules: 5 MUST 1 SHOULD

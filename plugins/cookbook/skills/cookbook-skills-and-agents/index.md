@@ -1,0 +1,9 @@
+# cookbook-skills-and-agents — leaves
+
+- [`cookbook-skills-and-agents/agent-checklist`](leaves/agent-checklist.md) — Agent Lint Checklist · Comprehensive lint checklist for validating Claude Code agent structure, content quality, and best practices · triggers: pre-pr, skill-authoring · rules: 1 MUST 1 SHOULD 1 MAY
+- [`cookbook-skills-and-agents/agent-structure-reference`](leaves/agent-structure-reference.md) — Agent Structure Reference · Reference for Claude Code agent file format, frontmatter fields, tool access patterns, and permission modes · triggers: skill-authoring · rules: 2 MUST
+- [`cookbook-skills-and-agents/authoring-skills-and-rules`](leaves/authoring-skills-and-rules.md) — Authoring Skills and Rules · Best practices for creating Claude Code skills, agents, and rule files. · triggers: skill-authoring · rules: 7 MUST 1 SHOULD
+- [`cookbook-skills-and-agents/rule-checklist`](leaves/rule-checklist.md) — Rule Lint Checklist · Comprehensive lint checklist for validating Claude Code rule file content quality, best practices, and optimization · triggers: pre-pr, skill-authoring
+- [`cookbook-skills-and-agents/rule-structure-reference`](leaves/rule-structure-reference.md) — Rule Structure Reference · Reference for Claude Code rule file format, quality criteria, optimization guidelines, and comparison with skills and agents · triggers: skill-authoring · rules: 3 MUST
+- [`cookbook-skills-and-agents/skill-checklist`](leaves/skill-checklist.md) — Skill Lint Checklist · Comprehensive lint checklist for validating Claude Code skill structure, content quality, and best practices · triggers: pre-pr, skill-authoring · rules: 1 MUST 1 SHOULD 1 MAY
+- [`cookbook-skills-and-agents/skill-structure-reference`](leaves/skill-structure-reference.md) — Skill Structure Reference · Reference for Claude Code skill directory layout, frontmatter fields, string substitutions, and invocation control · triggers: skill-authoring · rules: 1 MUST

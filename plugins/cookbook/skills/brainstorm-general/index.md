@@ -1,0 +1,6 @@
+# brainstorm-general — leaves
+
+- [`brainstorm-general/convergent-techniques`](leaves/convergent-techniques.md) — Convergent Techniques · Techniques for the Critique and Converge phases — clustering, feasibility assessment, premortem, and user-led selection. MUST NOT be introduced until divergence is complete. · rules: 9 MUST 4 SHOULD
+- [`brainstorm-general/divergent-techniques`](leaves/divergent-techniques.md) — Divergent Techniques · Concrete generation techniques for the Diverge phase. Goal is volume, variety, and surprise — not quality or feasibility. Feasibility assessment belongs in the Critique phase. · rules: 13 MUST 3 SHOULD
+- [`brainstorm-general/facilitation-without-anchoring`](leaves/facilitation-without-anchoring.md) — Facilitation Without Anchoring · How to run a brainstorming conversation without anchoring the human's thinking: yes-and stance, open questions, reflective mirroring, explicit phase transitions, single-voice mediation, and bounded persona bursts. · rules: 13 MUST 4 SHOULD
+- [`brainstorm-general/framing-techniques`](leaves/framing-techniques.md) — Framing Techniques · Concrete techniques for surfacing and reframing the real problem before idea generation begins. Apply before any divergent phase. · rules: 6 MUST 4 SHOULD

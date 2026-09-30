@@ -1,0 +1,6 @@
+# implement-concurrency — leaves
+
+- [`implement-concurrency/concurrency`](leaves/concurrency.md) — No blocking the main thread · All lengthy work must run on background threads/tasks using platform async primitives: · platforms: csharp, kotlin, python, swift, typescript, web, windows · triggers: concurrency, performance-optimization · rules: 5 MUST
+- [`implement-concurrency/immutability`](leaves/immutability.md) — Immutability · Mutable shared state is the root cause of most concurrency bugs. Default to immutable values; introduce mutability on... · platforms: kotlin, typescript · triggers: concurrency, data-modeling · rules: 1 MUST
+- [`implement-concurrency/kotlin-flow-stateflow`](leaves/kotlin-flow-stateflow.md) — Kotlin Flow and StateFlow: lifecycle-aware state exposure · Expose UI state as StateFlow via stateIn and collect it lifecycle-aware, injecting dispatchers for testability. · platforms: kotlin · triggers: concurrency · rules: 7 MUST 3 SHOULD
+- [`implement-concurrency/swift6-strict-concurrency`](leaves/swift6-strict-concurrency.md) — Adopt Swift 6 strict concurrency incrementally · Migrate to Swift 6 data-race safety module by module, making every type that crosses an isolation boundary Sendable. · platforms: ios, macos, swift · triggers: concurrency · rules: 4 MUST 4 SHOULD 1 MAY
