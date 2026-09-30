@@ -274,9 +274,11 @@ def manifest(plugin: str, layout: str, code_roots, routers: dict[str, Router], l
 
 
 def plugin_json(plugin: str, layout: str) -> str:
+    # "the cookbook", not "the cookbook cookbook"; "the agentictoolkit recipes".
+    source = plugin if plugin == layout else f"{plugin} {layout}"
     data = {
         "name": plugin,
         "version": "1.0.0",
-        "description": f"Routed rule skills generated from the {plugin} {layout} by `{GENERATOR}`.",
+        "description": f"Routed rule skills generated from the {source} by `{GENERATOR}`.",
     }
     return json.dumps(data, indent=2) + "\n"
