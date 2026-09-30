@@ -1,0 +1,5 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "Routed rule skills generated from the cookbook cookbook by `cookbook skills build`."
+}

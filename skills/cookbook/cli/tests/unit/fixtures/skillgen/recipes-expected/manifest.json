@@ -1,0 +1,204 @@
+{
+  "generator": "cookbook skills build",
+  "schema": 1,
+  "plugin": "toolkit",
+  "layout": "recipes",
+  "code_roots": [
+    "src"
+  ],
+  "routers": {
+    "implement-general": {
+      "verb": "implement",
+      "domain": "general",
+      "skill": "skills/implement-general/SKILL.md",
+      "index": "skills/implement-general/index.md",
+      "leaves": [
+        "implement-general/notes",
+        "implement-general/tab-view"
+      ]
+    },
+    "implement-status-server": {
+      "verb": "implement",
+      "domain": "status-server",
+      "skill": "skills/implement-status-server/SKILL.md",
+      "index": "skills/implement-status-server/index.md",
+      "leaves": [
+        "implement-status-server/events",
+        "implement-status-server/health",
+        "implement-status-server/metrics",
+        "implement-status-server/sessions"
+      ]
+    }
+  },
+  "leaves": {
+    "implement-general/notes": {
+      "path": "skills/implement-general/leaves/notes.md",
+      "router": "implement-general",
+      "routers": [
+        "implement-general"
+      ],
+      "source": "notes.md",
+      "source_hash": "5c68de1111fba5ed",
+      "domain": "",
+      "type": "recipe",
+      "title": "Notes",
+      "section": "",
+      "summary": "Loose notes.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [],
+      "test_vectors": []
+    },
+    "implement-general/tab-view": {
+      "path": "skills/implement-general/leaves/tab-view.md",
+      "router": "implement-general",
+      "routers": [
+        "implement-general"
+      ],
+      "source": "tab-view.md",
+      "source_hash": "2e7c6b4cc4d1b1d4",
+      "domain": "",
+      "type": "recipe",
+      "title": "Tab view",
+      "section": "",
+      "summary": "A tab strip.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [
+        {
+          "slug": "tabs-scroll",
+          "level": "SHOULD",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "implement-status-server/events": {
+      "path": "skills/implement-status-server/leaves/events.md",
+      "router": "implement-status-server",
+      "routers": [
+        "implement-status-server"
+      ],
+      "source": "status-server-events.md",
+      "source_hash": "aa2c7d67f7d05514",
+      "domain": "",
+      "type": "recipe",
+      "title": "Status server events",
+      "section": "",
+      "summary": "The events endpoint.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [
+        "src/server/events.ts"
+      ],
+      "rules": [
+        {
+          "slug": "events-endpoint-return-json",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "implement-status-server/health": {
+      "path": "skills/implement-status-server/leaves/health.md",
+      "router": "implement-status-server",
+      "routers": [
+        "implement-status-server"
+      ],
+      "source": "status-server-health.md",
+      "source_hash": "be23a254a4bcc554",
+      "domain": "",
+      "type": "recipe",
+      "title": "Status server health",
+      "section": "",
+      "summary": "The health endpoint.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [
+        "src/server/health.ts"
+      ],
+      "rules": [
+        {
+          "slug": "health-endpoint-return-json",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "implement-status-server/metrics": {
+      "path": "skills/implement-status-server/leaves/metrics.md",
+      "router": "implement-status-server",
+      "routers": [
+        "implement-status-server"
+      ],
+      "source": "status-server-metrics.md",
+      "source_hash": "6c2d9f02315c8d26",
+      "domain": "",
+      "type": "recipe",
+      "title": "Status server metrics",
+      "section": "",
+      "summary": "The metrics endpoint.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [
+        "src/server/metrics.ts"
+      ],
+      "rules": [
+        {
+          "slug": "metrics-endpoint-return-json",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "implement-status-server/sessions": {
+      "path": "skills/implement-status-server/leaves/sessions.md",
+      "router": "implement-status-server",
+      "routers": [
+        "implement-status-server"
+      ],
+      "source": "status-server-sessions.md",
+      "source_hash": "62857af0d4048fc4",
+      "domain": "",
+      "type": "recipe",
+      "title": "Status server sessions",
+      "section": "",
+      "summary": "The sessions endpoint.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [
+        "src/server/sessions.ts"
+      ],
+      "rules": [
+        {
+          "slug": "sessions-endpoint-return-json",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    }
+  }
+}

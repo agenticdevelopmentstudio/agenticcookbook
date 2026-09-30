@@ -1,0 +1,7 @@
+{
+  "recipes": "recipes",
+  "scheme": "toolkit",
+  "roots": [
+    "src"
+  ]
+}

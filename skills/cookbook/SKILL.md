@@ -1,13 +1,13 @@
 ---
 name: cookbook
-version: "1.1.0"
-description: "Create and maintain a cookbook (recipes, reference, indexes). Wraps the `cookbook` CLI installed at ~/.local/bin/cookbook. Use when the user asks to create, update, lint, validate, plan, or self-update a cookbook-shaped repo."
-argument-hint: "[--help] [-p <path>] <create|update|lint|validate|plan|self> [...]"
+version: "1.2.0"
+description: "Create and maintain a cookbook (recipes, reference, indexes). Wraps the `cookbook` CLI installed at ~/.local/bin/cookbook. Use when the user asks to create, update, lint, validate, plan, build skills from, or self-update a cookbook-shaped repo."
+argument-hint: "[--help] [-p <path>] <create|update|lint|validate|plan|skills|self> [...]"
 allowed-tools: Bash(cookbook *), Bash(command -v cookbook), Bash(pre-commit *)
 model: sonnet
 ---
 
-# Cookbook v1.1.0
+# Cookbook v1.2.0
 
 Thin wrapper around the `cookbook` CLI at `~/.local/bin/cookbook`. All work goes
 through the CLI — never duplicate its logic in this skill.
@@ -45,6 +45,7 @@ If it is missing, tell the user:
 | `lint` | Phase A deterministic checks + Phase B `claude -p` quality pass. `--no-llm` skips Phase B. `--since <ref>` scopes Phase B to git-changed files. |
 | `validate` | Read-only: Phase A checks + index drift detection. Exit non-zero on failure (CI-friendly). |
 | `plan` | Drafts a plan for a new recipe or small project via `claude -p`. `--goal "..."` skips the interactive prompt. |
+| `skills` | `skills build --out <dir> [--source <dir>] [--check]` compiles a cookbook (or a repo with `.cookr.json`) into a plugin of routed skills: one router per use case and domain, an index per router, and leaves with rule checklists. Deterministic; no LLM. `--check` writes nothing and exits 1 if `<dir>` is stale. |
 | `self` | `cookbook self update` re-runs `install.sh` from the source path stamped at install time. |
 | `prompt` | Assembles an expert prompt (role + module preamble + bundled cookbook references + action template + free-text task) and prints it to stdout. `prompt <module> <action> [--formal-flags ...] [task ...]`. |
 

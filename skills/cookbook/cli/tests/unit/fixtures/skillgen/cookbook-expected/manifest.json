@@ -1,0 +1,286 @@
+{
+  "generator": "cookbook skills build",
+  "schema": 1,
+  "plugin": "cookbook",
+  "layout": "cookbook",
+  "code_roots": [],
+  "routers": {
+    "implement-security": {
+      "verb": "implement",
+      "domain": "security",
+      "skill": "skills/implement-security/SKILL.md",
+      "index": "skills/implement-security/index.md",
+      "leaves": [
+        "implement-security/input-validation"
+      ]
+    },
+    "principles": {
+      "verb": "principles",
+      "domain": "principles",
+      "skill": "skills/principles/SKILL.md",
+      "index": "skills/principles/index.md",
+      "leaves": [
+        "principles/simplicity"
+      ]
+    },
+    "recipes-ui": {
+      "verb": "recipes",
+      "domain": "ui",
+      "skill": "skills/recipes-ui/SKILL.md",
+      "index": "skills/recipes-ui/index.md",
+      "leaves": [
+        "recipes-ui/login-form",
+        "recipes-ui/login-form--states"
+      ]
+    },
+    "review-general": {
+      "verb": "review",
+      "domain": "general",
+      "skill": "skills/review-general/SKILL.md",
+      "index": "skills/review-general/index.md",
+      "leaves": [
+        "review-general/naming"
+      ]
+    },
+    "review-security": {
+      "verb": "review",
+      "domain": "security",
+      "skill": "skills/review-security/SKILL.md",
+      "index": "skills/review-security/index.md",
+      "leaves": [
+        "implement-security/input-validation"
+      ]
+    },
+    "test-security": {
+      "verb": "test",
+      "domain": "security",
+      "skill": "skills/test-security/SKILL.md",
+      "index": "skills/test-security/index.md",
+      "leaves": [
+        "test-security/input-validation"
+      ]
+    },
+    "verify-general": {
+      "verb": "verify",
+      "domain": "general",
+      "skill": "skills/verify-general/SKILL.md",
+      "index": "skills/review-general/index.md",
+      "leaves": [
+        "review-general/naming"
+      ]
+    },
+    "verify-security": {
+      "verb": "verify",
+      "domain": "security",
+      "skill": "skills/verify-security/SKILL.md",
+      "index": "skills/review-security/index.md",
+      "leaves": [
+        "implement-security/input-validation"
+      ]
+    }
+  },
+  "leaves": {
+    "implement-security/input-validation": {
+      "path": "skills/implement-security/leaves/input-validation.md",
+      "router": "implement-security",
+      "routers": [
+        "implement-security",
+        "review-security",
+        "verify-security"
+      ],
+      "source": "guidelines/implementing/security/input-validation.md",
+      "source_hash": "96f68a9cdc313670",
+      "domain": "",
+      "type": "guideline",
+      "title": "Input validation",
+      "section": "",
+      "summary": "Validate untrusted input at the boundary.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [
+        {
+          "slug": "validate-at-boundary",
+          "level": "MUST",
+          "explicit": true,
+          "qualifier": ""
+        },
+        {
+          "slug": "reject-unknown-fields",
+          "level": "SHOULD",
+          "explicit": true,
+          "qualifier": "api"
+        },
+        {
+          "slug": "error-messages-not-echo-raw-input-back",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": [
+        {
+          "id": "iv-1",
+          "requirements": [
+            "validate-at-boundary"
+          ]
+        },
+        {
+          "id": "iv-2",
+          "requirements": [
+            "reject-unknown-fields",
+            "validate-at-boundary"
+          ]
+        }
+      ]
+    },
+    "principles/simplicity": {
+      "path": "skills/principles/leaves/simplicity.md",
+      "router": "principles",
+      "routers": [
+        "principles"
+      ],
+      "source": "principles/simplicity.md",
+      "source_hash": "b6c4c370243164c6",
+      "domain": "",
+      "type": "principle",
+      "title": "Simplicity",
+      "section": "",
+      "summary": "Prefer fewer moving parts.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [],
+      "test_vectors": []
+    },
+    "recipes-ui/login-form": {
+      "path": "skills/recipes-ui/leaves/login-form.md",
+      "router": "recipes-ui",
+      "routers": [
+        "recipes-ui"
+      ],
+      "source": "recipes/ui/login-form.md",
+      "source_hash": "c89da21b0f613e60",
+      "domain": "",
+      "type": "recipe",
+      "title": "Login form",
+      "section": "",
+      "summary": "A sign-in form with states.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [
+        {
+          "slug": "form-submit-return",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "recipes-ui/login-form--states": {
+      "path": "skills/recipes-ui/leaves/login-form--states.md",
+      "router": "recipes-ui",
+      "routers": [
+        "recipes-ui"
+      ],
+      "source": "recipes/ui/login-form.md",
+      "source_hash": "c89da21b0f613e60",
+      "domain": "",
+      "type": "recipe",
+      "title": "Login form",
+      "section": "states",
+      "summary": "A sign-in form with states.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [
+        {
+          "slug": "empty",
+          "level": "MUST",
+          "explicit": true,
+          "qualifier": ""
+        },
+        {
+          "slug": "error",
+          "level": "SHOULD",
+          "explicit": true,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "review-general/naming": {
+      "path": "skills/review-general/leaves/naming.md",
+      "router": "review-general",
+      "routers": [
+        "review-general",
+        "verify-general"
+      ],
+      "source": "guidelines/reviewing/naming.md",
+      "source_hash": "47a18576171b17a4",
+      "domain": "",
+      "type": "guideline",
+      "title": "Naming",
+      "section": "",
+      "summary": "Names say what, not how.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [
+        {
+          "slug": "names-say-what-thing",
+          "level": "SHOULD",
+          "explicit": false,
+          "qualifier": ""
+        },
+        {
+          "slug": "abbreviations-used-universal",
+          "level": "MAY",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    },
+    "test-security/input-validation": {
+      "path": "skills/test-security/leaves/input-validation.md",
+      "router": "test-security",
+      "routers": [
+        "test-security"
+      ],
+      "source": "guidelines/testing/security/input-validation.md",
+      "source_hash": "8425f81621a45a42",
+      "domain": "",
+      "type": "guideline",
+      "title": "Input validation",
+      "section": "",
+      "summary": "Test the validation boundary.",
+      "platforms": [],
+      "triggers": [],
+      "tags": [],
+      "globs": [],
+      "files": [],
+      "rules": [
+        {
+          "slug": "tests-cover-rejected-payload",
+          "level": "MUST",
+          "explicit": false,
+          "qualifier": ""
+        }
+      ],
+      "test_vectors": []
+    }
+  }
+}
