@@ -97,6 +97,10 @@ class Leaf:
     rules: list[Rule] = field(default_factory=list)
     vectors: list[TestVector] = field(default_factory=list)
     routers: list[str] = field(default_factory=list)
+    # Other source docs whose body was identical and were folded into this
+    # leaf (a reviewing copy of an implementing guideline). A consumer that
+    # names a doc by path finds its leaf through these as well as `source`.
+    aliases: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -250,6 +254,7 @@ def manifest(plugin: str, layout: str, code_roots, routers: dict[str, Router], l
                 "router": leaf.router,
                 "routers": sorted(leaf.routers),
                 "source": leaf.source,
+                "aliases": sorted(leaf.aliases),
                 "source_hash": leaf.source_hash,
                 "domain": leaf.domain,
                 "type": leaf.doc_type,

@@ -89,6 +89,9 @@
         "verify-security"
       ],
       "source": "guidelines/implementing/security/input-validation.md",
+      "aliases": [
+        "guidelines/reviewing/security/input-validation.md"
+      ],
       "source_hash": "96f68a9cdc313670",
       "domain": "",
       "type": "guideline",
@@ -143,6 +146,7 @@
         "principles"
       ],
       "source": "principles/simplicity.md",
+      "aliases": [],
       "source_hash": "b6c4c370243164c6",
       "domain": "",
       "type": "principle",
@@ -164,6 +168,7 @@
         "recipes-ui"
       ],
       "source": "recipes/ui/login-form.md",
+      "aliases": [],
       "source_hash": "c89da21b0f613e60",
       "domain": "",
       "type": "recipe",
@@ -192,6 +197,7 @@
         "recipes-ui"
       ],
       "source": "recipes/ui/login-form.md",
+      "aliases": [],
       "source_hash": "c89da21b0f613e60",
       "domain": "",
       "type": "recipe",
@@ -227,6 +233,7 @@
         "verify-general"
       ],
       "source": "guidelines/reviewing/naming.md",
+      "aliases": [],
       "source_hash": "47a18576171b17a4",
       "domain": "",
       "type": "guideline",
@@ -261,6 +268,7 @@
         "test-security"
       ],
       "source": "guidelines/testing/security/input-validation.md",
+      "aliases": [],
       "source_hash": "8425f81621a45a42",
       "domain": "",
       "type": "guideline",

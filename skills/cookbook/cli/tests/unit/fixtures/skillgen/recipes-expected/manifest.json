@@ -38,6 +38,7 @@
         "implement-general"
       ],
       "source": "notes.md",
+      "aliases": [],
       "source_hash": "5c68de1111fba5ed",
       "domain": "",
       "type": "recipe",
@@ -59,6 +60,7 @@
         "implement-general"
       ],
       "source": "tab-view.md",
+      "aliases": [],
       "source_hash": "2e7c6b4cc4d1b1d4",
       "domain": "",
       "type": "recipe",
@@ -87,6 +89,7 @@
         "implement-status-server"
       ],
       "source": "status-server-events.md",
+      "aliases": [],
       "source_hash": "aa2c7d67f7d05514",
       "domain": "",
       "type": "recipe",
@@ -117,6 +120,7 @@
         "implement-status-server"
       ],
       "source": "status-server-health.md",
+      "aliases": [],
       "source_hash": "be23a254a4bcc554",
       "domain": "",
       "type": "recipe",
@@ -147,6 +151,7 @@
         "implement-status-server"
       ],
       "source": "status-server-metrics.md",
+      "aliases": [],
       "source_hash": "6c2d9f02315c8d26",
       "domain": "",
       "type": "recipe",
@@ -177,6 +182,7 @@
         "implement-status-server"
       ],
       "source": "status-server-sessions.md",
+      "aliases": [],
       "source_hash": "62857af0d4048fc4",
       "domain": "",
       "type": "recipe",

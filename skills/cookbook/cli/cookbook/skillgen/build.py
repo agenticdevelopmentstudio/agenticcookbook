@@ -150,6 +150,8 @@ def compile_source(src: source.Source, cap: int = leaves.DEFAULT_CAP) -> Build:
                 router.leaves.append(leaf_id)
             if place.router not in all_leaves[leaf_id].routers:
                 all_leaves[leaf_id].routers.append(place.router)
+            if rel in grouping.aliases and rel not in all_leaves[leaf_id].aliases:
+                all_leaves[leaf_id].aliases.append(rel)
 
     for name in sorted(routers):
         if routers[name].verb == "review":

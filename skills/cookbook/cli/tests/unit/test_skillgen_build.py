@@ -49,6 +49,9 @@ def test_the_cookbook_fixture_exercises_aliases_drift_skips_and_split_sections()
     # The reviewing copy is identical to the implementing one: one leaf, two routers.
     assert manifest["routers"]["review-security"]["leaves"] == ["implement-security/input-validation"]
     assert "review-security" in manifest["leaves"]["implement-security/input-validation"]["routers"]
+    # ...and the folded copy's own path is still findable on the leaf.
+    assert manifest["leaves"]["implement-security/input-validation"]["aliases"] == [
+        "guidelines/reviewing/security/input-validation.md"]
     # A verify router reuses its review router's index rather than writing its own.
     assert "skills/verify-security/index.md" not in result.files
     assert "skills/recipes-ui/leaves/login-form--states.md" in result.files
