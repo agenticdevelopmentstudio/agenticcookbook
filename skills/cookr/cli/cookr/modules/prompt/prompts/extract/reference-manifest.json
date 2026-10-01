@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "source_root": ".",
+  "destination": "skills/cookr/cli/cookr/modules/prompt/prompts/extract/references",
+  "files": [
+    { "src": "cookbook/guidelines/cookbook/recipe-quality", "dst": "guidelines/recipe-quality", "type": "tree", "include": "*.md" },
+    { "src": "cookbook/guidelines/cookbook/ui/platform-design-languages.md", "dst": "guidelines/platform-design-languages.md", "type": "file" },
+    { "src": "cookbook/compliance", "dst": "compliance", "type": "tree", "include": "*.md" }
+  ]
+}

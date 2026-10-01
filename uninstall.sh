@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Remove everything install.sh placed on the system.
-# - Removes the cookbook CLI shim and package
+# - Removes each CLI skill's shim and package (recorded by install.sh, or in the layout)
 # - Unregisters the local marketplace and disables the plugin
 # - Wipes the assembled plugins/adh/skills/ directory
 # - Removes any legacy ~/.claude/skills/cookbook/ location
@@ -11,7 +11,26 @@ set -euo pipefail
 
 REPO_ROOT="$(cd -- "$(dirname -- "$0")" && pwd)"
 BIN_DIR="${HOME}/.local/bin"
-PKG_DIR="${BIN_DIR}/_cookbook_pkg"
+SKILLS_SRC="${REPO_ROOT}/skills"
+CLI_RECORD="${BIN_DIR}/.adh-cli-skills"
+# The CLI skills to remove: those install.sh recorded installing, plus those the
+# layout carries now (skills/<name>/bin/<name> with a skills/<name>/cli/<name>/
+# package, install.sh's rule), so an install that predates the record is covered.
+CLI_SKILLS=()
+if [ -f "${CLI_RECORD}" ]; then
+    while IFS= read -r skill; do
+        [ -n "${skill}" ] && CLI_SKILLS+=("${skill}")
+    done < "${CLI_RECORD}"
+fi
+for bin in "${SKILLS_SRC}"/*/bin/*; do
+    skill="$(basename -- "$(dirname -- "$(dirname -- "${bin}")")")"
+    if [ "$(basename -- "${bin}")" = "${skill}" ] && [ -d "${SKILLS_SRC}/${skill}/cli/${skill}" ]; then
+        case " ${CLI_SKILLS[*]-} " in
+            *" ${skill} "*) ;;
+            *) CLI_SKILLS+=("${skill}") ;;
+        esac
+    fi
+done
 LEGACY_SKILL_DIR="${HOME}/.claude/skills/cookbook"
 PLUGIN_SKILLS_DIR="${REPO_ROOT}/plugins/adh/skills"
 MARKETPLACE_NAME="agenticcookbook"
@@ -25,21 +44,24 @@ title() { printf '\n'; color 36 "› $*"; }
 ok()    { color 32 "✓ $*"; }
 skip()  { color 90 "· $*"; }
 
-title "Removing CLI shim"
-if [ -f "${BIN_DIR}/cookbook" ]; then
-    rm -f "${BIN_DIR}/cookbook"
-    ok "removed ${BIN_DIR}/cookbook"
-else
-    skip "${BIN_DIR}/cookbook (not present)"
-fi
+for skill in "${CLI_SKILLS[@]+"${CLI_SKILLS[@]}"}"; do
+    title "Removing ${skill} CLI shim"
+    if [ -f "${BIN_DIR}/${skill}" ]; then
+        rm -f "${BIN_DIR}/${skill}"
+        ok "removed ${BIN_DIR}/${skill}"
+    else
+        skip "${BIN_DIR}/${skill} (not present)"
+    fi
 
-title "Removing package"
-if [ -d "${PKG_DIR}" ]; then
-    rm -rf "${PKG_DIR}"
-    ok "removed ${PKG_DIR}"
-else
-    skip "${PKG_DIR} (not present)"
-fi
+    title "Removing ${skill} package"
+    if [ -d "${BIN_DIR}/_${skill}_pkg" ]; then
+        rm -rf "${BIN_DIR}/_${skill}_pkg"
+        ok "removed ${BIN_DIR}/_${skill}_pkg"
+    else
+        skip "${BIN_DIR}/_${skill}_pkg (not present)"
+    fi
+done
+rm -f "${CLI_RECORD}"
 
 title "Unregistering plugin"
 if command -v python3 >/dev/null 2>&1; then

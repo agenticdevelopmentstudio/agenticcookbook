@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from cookbook.registry import discover
+from cookbook.core.cliapp import discover as _discover
+
+
+def discover():
+    return _discover("cookbook.modules")
 
 
 REQUIRED_ATTRS = ("NAME", "HELP", "register", "run")

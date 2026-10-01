@@ -12,6 +12,7 @@ import uuid
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
+from typing import Callable
 
 from .deps import require
 
@@ -109,9 +110,9 @@ def _infer_type(rel_path: Path) -> str:
     return mapping.get(head, "reference")
 
 
-def _domain_from_path(cookbook_name: str, rel_path: Path) -> str:
+def _domain_from_path(scheme: str, cookbook_name: str, rel_path: Path) -> str:
     stem = rel_path.with_suffix("")
-    return f"agenticdevelopercookbook://{cookbook_name}/{stem.as_posix()}"
+    return f"{scheme}://{cookbook_name}/{stem.as_posix()}"
 
 
 def fill_defaults(
@@ -119,20 +120,28 @@ def fill_defaults(
     *,
     rel_path: Path,
     cookbook_name: str,
+    scheme: str | Callable[[], str],
     author: str = "",
     today: date | None = None,
 ) -> tuple[Frontmatter, list[str]]:
     """Fill missing required fields. Never overwrites existing values.
+
+    `scheme` is the domain scheme (`cookbook.core.scheme.cookbook_scheme(root)`),
+    or a callable returning it, called only when `domain` needs filling.
 
     Returns (frontmatter, fields_added).
     """
     today = today or date.today()
     today_s = today.isoformat()
     title = _h1_title(fm.body) or rel_path.stem.replace("-", " ").replace("_", " ").title()
+    missing = lambda key: key not in fm.data or fm.data.get(key) in (None, "")  # noqa: E731
+    domain = ""
+    if missing("domain"):
+        domain = _domain_from_path(scheme() if callable(scheme) else scheme, cookbook_name, rel_path)
     defaults = {
         "id": str(uuid.uuid4()),
         "title": title,
-        "domain": _domain_from_path(cookbook_name, rel_path),
+        "domain": domain,
         "type": _infer_type(rel_path),
         "version": "1.0.0",
         "status": "draft",
@@ -151,7 +160,7 @@ def fill_defaults(
     }
     added: list[str] = []
     for key, value in defaults.items():
-        if key not in fm.data or fm.data.get(key) in (None, ""):
+        if missing(key):
             fm.data[key] = value
             added.append(key)
     if added and "modified" not in added:

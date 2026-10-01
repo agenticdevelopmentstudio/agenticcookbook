@@ -7,7 +7,8 @@ A `cookbook` subcommand is a module file under `cookbook.modules` that exposes:
     def register(subparsers): ...   # add a subparser; configure its args
     def run(args, ctx): ...         # execute; return exit code
 
-`ctx` is a CookbookContext built by cli.main.
+`ctx` is a CookbookContext built by cli._context; discovery and dispatch live
+in core/cliapp.py.
 """
 
 from __future__ import annotations
