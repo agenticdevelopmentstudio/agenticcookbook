@@ -2243,7 +2243,7 @@ git commit -m "docs: align cookr spec with the implementation; mention cookr in 
 Runs in the ADT checkout that is current: the zorkapp submodule at
 `/Users/mfullerton/Development/projects/fishlampdesign/zorkapp/.claude/worktrees/multiplatform/external/agenticdevelopertoolkit`,
 on its current branch `zorkapp/multiplatform`. (The standalone clone under
-`~/Development/projects/adh/agenticdevelopertoolkit` is stale and has no
+`~/Development/projects/adh/adtoolkit` is stale and has no
 `recipes/`; do not use it.) Do not create a branch or PR. After pushing the
 submodule commit, bump the pointer in the zorkapp worktree (step 5).
 
