@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.2.1"
+version: "0.2.2"
 description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to convert a .cookr.json repo into a cookbook, or to relink specs after code moved."
 argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|organize plan|apply|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(cookbook *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.2.1
+# cookr v0.2.2
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill. Recipe frontmatter,
@@ -22,7 +22,7 @@ command -v cookr
 
 If missing, tell the user:
 
-> The `cookr` CLI is not installed. Run `skills/cookr/setup/install.sh` (or `./install.sh` for the whole adh plugin) from the agenticcookbook repo, then re-invoke me.
+> The `cookr` CLI is not installed. Run `skills/cookr/setup/install` (or `./install.sh` for the whole adh plugin) from the agenticcookbook repo, then re-invoke me.
 
 …and stop.
 
@@ -176,6 +176,6 @@ so the top-level `ignore` never drops files a UI root needs.
 
 ## Behavior notes
 
-- Never edit files in `~/.local/bin/_cookr_pkg/`. Edit `skills/cookr/cli/` in agenticcookbook and re-run `skills/cookr/setup/install.sh` (or `./install.sh`).
+- Never edit files in `~/.local/bin/_cookr_pkg/`. Edit `skills/cookr/cli/` in agenticcookbook and re-run `skills/cookr/setup/install` (or `./install.sh`).
 - Never `pip install` from this skill.
 - `cookbook/cookbook.json` holds the roots and ignores; a spec's own table holds what it claims. Never put either in the other.

@@ -15,7 +15,7 @@
 #
 # --no-plugin installs the CLIs only (steps 1-6) and stops: no plugin assembly,
 # no marketplace registration, no legacy-skill cleanup. A standalone skill
-# installer (skills/<name>/setup/install.sh) uses it for the CLIs it wraps.
+# installer (skills/<name>/setup/install) uses it for the CLIs it wraps.
 #
 # Idempotent. Re-run to refresh after edits.
 set -euo pipefail

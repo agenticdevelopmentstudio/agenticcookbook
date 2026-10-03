@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+"""Install the cookr skill globally for the current user, without the adh plugin.
+
+- Installs the CLIs the skill drives via the repo's install.sh --no-plugin:
+  ~/.local/bin/cookr and ~/.local/bin/cookbook (cookr imports the cookbook
+  package, and the skill runs `cookbook update/validate/lint/bump`).
+- Copies SKILL.md to ~/.claude/skills/cookr/, so the skill is /cookr in every
+  project.
+
+Idempotent. Re-run to refresh after edits. Reverse with ./uninstall.
+"""
+
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+SKILL_SRC = Path(__file__).resolve().parent.parent
+REPO_ROOT = SKILL_SRC.parent.parent
+SKILL_DST = Path.home() / ".claude" / "skills" / "cookr"
+
+
+def color(code: str, text: str) -> None:
+    print(f"\033[1;{code}m{text}\033[0m", flush=True)
+
+
+def title(text: str) -> None:
+    print()
+    color("36", f"› {text}")
+
+
+def ok(text: str) -> None:
+    color("32", f"✓ {text}")
+
+
+def main() -> int:
+    cli = subprocess.run([str(REPO_ROOT / "install.sh"), "--no-plugin"])
+    if cli.returncode != 0:
+        return cli.returncode
+
+    title("Installing cookr skill")
+    shutil.rmtree(SKILL_DST, ignore_errors=True)
+    SKILL_DST.mkdir(parents=True)
+    shutil.copy2(SKILL_SRC / "SKILL.md", SKILL_DST / "SKILL.md")
+    ok(f"skill → {SKILL_DST}")
+
+    title("Done")
+    ok("Run: cookr --help")
+    ok("Restart your Claude Code session to pick up /cookr.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
