@@ -5,7 +5,7 @@ from .errors import MissingDependencyError
 _HINT = (
     "Missing Python dependency '{name}'. Install with:\n"
     "    python3 -m pip install --user {name}\n"
-    "(install.sh installs rich, questionary, pyyaml automatically.)"
+    "(./install installs rich, questionary, pyyaml automatically.)"
 )
 
 

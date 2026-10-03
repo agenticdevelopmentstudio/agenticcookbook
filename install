@@ -1,0 +1,280 @@
+#!/usr/bin/env python3
+"""Install every CLI skill (skills/<name>/{bin,cli}/<name>) and the Claude Code
+plugin globally for the current user.
+
+- Materializes skills/cookbook/cli/references/ from reference-manifest.json
+  (bundles cookbook content into the package so it's self-contained at runtime).
+- Copies each CLI skill's Python package to ~/.local/bin/_<name>_pkg/ and
+  writes a shim at ~/.local/bin/<name>.
+- Assembles ./plugins/adh/skills/ from ./skills/ (every top-level skill
+  directory becomes a plugin-namespaced skill: invokable by Claude via the
+  Skill tool as adh:<name> and by the user as /adh:<name>).
+- Registers the repo as a local directory marketplace ("agenticcookbook") with
+  Claude Code and enables the adh plugin.
+- Installs any missing Python deps (rich, questionary, pyyaml), falling back to
+  --break-system-packages on PEP 668 externally-managed pythons.
+
+--no-plugin installs the CLIs only and stops: no plugin assembly, no
+marketplace registration, no legacy-skill cleanup. A standalone skill installer
+(skills/<name>/setup/install) uses it for the CLIs it wraps.
+
+Idempotent. Re-run to refresh after edits.
+"""
+
+import sys
+
+if sys.version_info < (3, 9):
+    sys.exit("✗ Python 3.9+ required.")
+
+sys.dont_write_bytecode = True  # keep the checkout free of __pycache__/
+
+import argparse  # noqa: E402
+import json  # noqa: E402
+import os  # noqa: E402
+import shutil  # noqa: E402
+import subprocess  # noqa: E402
+from datetime import datetime, timezone  # noqa: E402
+
+from setup_support import (  # noqa: E402
+    BIN_DIR,
+    CLAUDE_SETTINGS,
+    CLI_RECORD,
+    KNOWN_MARKETPLACES,
+    LEGACY_SKILL_DIR,
+    MARKETPLACE_NAME,
+    PLUGIN_DIR,
+    PLUGIN_ID,
+    PLUGIN_NAME,
+    PLUGIN_SKILLS_DIR,
+    REPO_ROOT,
+    SKILLS_SRC,
+    cli_skills,
+    err,
+    load_json,
+    ok,
+    title,
+    warn,
+    write_json,
+)
+
+COOKBOOK_CLI = SKILLS_SRC / "cookbook" / "cli"
+MANIFEST = COOKBOOK_CLI / "reference-manifest.json"
+# import name → pip distribution. pyyaml imports as `yaml`.
+DEPS = {"rich": "rich", "questionary": "questionary", "yaml": "pyyaml"}
+
+
+def materialize(*args: str) -> None:
+    """Run the one materializer, cookbook.core.manifest (stdlib only)."""
+    env = {**os.environ, "PYTHONPATH": str(COOKBOOK_CLI)}
+    proc = subprocess.run(
+        [sys.executable, "-m", "cookbook.core.manifest", str(REPO_ROOT), *args], env=env
+    )
+    if proc.returncode != 0:
+        sys.exit(proc.returncode)
+
+
+def install_cli(skill: str) -> None:
+    pkg_src = SKILLS_SRC / skill / "cli"
+    pkg_dir = BIN_DIR / f"_{skill}_pkg"
+    title(f"Installing {skill} package")
+    shutil.rmtree(pkg_dir, ignore_errors=True)
+    pkg_dir.mkdir(parents=True)
+    shutil.copytree(pkg_src / skill, pkg_dir / skill, symlinks=True)
+    if (pkg_src / "references").is_dir():
+        shutil.copytree(pkg_src / "references", pkg_dir / "references", symlinks=True)
+    if (pkg_src / "reference-manifest.json").is_file():
+        shutil.copy2(pkg_src / "reference-manifest.json", pkg_dir)
+    # Stamp the source path so `cookbook self update` (modules/selfcmd.py, the
+    # stamp's only reader) can re-run ./install from here.
+    if skill == "cookbook":
+        (pkg_dir / ".install_source").write_text(f"{REPO_ROOT}\n", encoding="utf-8")
+    ok(f"package → {pkg_dir}")
+
+    title(f"Installing {skill} shim")
+    shim = BIN_DIR / skill
+    shutil.copy2(SKILLS_SRC / skill / "bin" / skill, shim)
+    shim.chmod(0o755)
+    ok(f"shim → {shim}")
+
+
+def missing_deps() -> list[str]:
+    """Deps the shims' python3 cannot import. Asked of a fresh interpreter, so
+    a user site-packages dir created by the pip run below is seen."""
+    probe = (
+        "import importlib.util, json, sys; "
+        "print(json.dumps([d for m, d in json.loads(sys.argv[1]).items() "
+        "if importlib.util.find_spec(m) is None]))"
+    )
+    out = subprocess.run(
+        [sys.executable, "-c", probe, json.dumps(DEPS)], capture_output=True, text=True, check=True
+    )
+    return json.loads(out.stdout)
+
+
+def pip_install(deps: list[str], *extra: str) -> bool:
+    cmd = [sys.executable, "-m", "pip", "install", "--user", "--upgrade", "--quiet", *extra, *deps]
+    return subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+
+
+def install_deps() -> None:
+    # The shims run `python3 -m <skill>`, so the deps must be importable by
+    # whichever python3 is on PATH, the one this script runs under.
+    #
+    # Homebrew/Debian pythons are PEP 668 "externally managed" and refuse
+    # `pip install --user` outright, so a plain failure here is expected on a
+    # stock macOS dev box rather than exceptional -- retry with
+    # --break-system-packages, which is what --user was meant to do anyway.
+    title("Installing Python deps")
+    deps = missing_deps()
+    if not deps:
+        ok("rich, questionary, pyyaml already present")
+        return
+    pip_ok = pip_install(deps)
+    if not pip_ok and pip_install(deps, "--break-system-packages"):
+        pip_ok = True
+        warn("python3 is externally managed (PEP 668); installed with --break-system-packages")
+    still = missing_deps()
+    if not still:
+        ok(f"{' '.join(deps)} installed")
+        return
+    names = " ".join(still)
+    if pip_ok:
+        warn(f"pip reported success but {names} is still not importable.")
+    warn(f"Could not install: {names}. Modules that need these will surface a clean error.")
+    warn(f"Retry manually:  python3 -m pip install --user --break-system-packages {names}")
+    warn(f"  or with pipx:  brew install pipx && pipx install {names}")
+
+
+def verify_clis(skills: list[str]) -> None:
+    title("Verifying CLIs")
+    for skill in skills:
+        proc = subprocess.run([str(BIN_DIR / skill), "--version"], capture_output=True, text=True)
+        if proc.returncode == 0:
+            ok(proc.stdout.strip())
+        else:
+            warn(f"{skill} --version did not return cleanly. Check the install log above.")
+
+
+def assemble_plugin(skills: list[str]) -> None:
+    """Copy ./skills/<name>/ → ./plugins/adh/skills/<name>/, keeping CLI plumbing
+    (and a skill's own standalone setup/ installer) out of CLI skills only, so a
+    stray cli/ or bin/ directory in another skill ships normally."""
+    title("Assembling plugin")
+    if not SKILLS_SRC.is_dir():
+        err(f"missing {SKILLS_SRC} — nothing to assemble.")
+        sys.exit(1)
+    shutil.rmtree(PLUGIN_SKILLS_DIR, ignore_errors=True)
+    PLUGIN_SKILLS_DIR.mkdir(parents=True)
+    assembled = 0
+    for skill_src in sorted(SKILLS_SRC.iterdir()):
+        if not skill_src.is_dir():
+            continue
+        exclude = {"cli", "bin", "setup"} if skill_src.name in skills else set()
+        skill_dst = PLUGIN_SKILLS_DIR / skill_src.name
+        skill_dst.mkdir(parents=True, exist_ok=True)
+        for child in skill_src.iterdir():
+            if child.name in exclude:
+                continue
+            if child.is_dir():
+                shutil.copytree(child, skill_dst / child.name, symlinks=True)
+            else:
+                shutil.copy2(child, skill_dst / child.name)
+        print(f"  + {skill_src.name}")
+        assembled += 1
+    print(f"  assembled {assembled} skill(s)")
+    if assembled == 0:
+        err("no skills assembled — check that ./skills/ contains skill directories.")
+        sys.exit(1)
+
+
+def load_or_refuse(path) -> dict:
+    try:
+        return load_json(path) or {}
+    except json.JSONDecodeError as e:
+        err(f"{path} is not valid JSON ({e}); refusing to overwrite.")
+        sys.exit(1)
+
+
+def register_plugin() -> None:
+    title("Registering Claude Code plugin")
+    repo = str(REPO_ROOT)
+    source = {"source": "directory", "path": repo}
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+    # known_marketplaces.json: register / refresh the directory marketplace.
+    known = load_or_refuse(KNOWN_MARKETPLACES)
+    known[MARKETPLACE_NAME] = {"source": source, "installLocation": repo, "lastUpdated": now}
+    write_json(KNOWN_MARKETPLACES, known)
+    print(f"  + known_marketplaces.json: {MARKETPLACE_NAME} → {repo}")
+
+    # settings.json: persist marketplace in extraKnownMarketplaces + enable plugin.
+    settings = load_or_refuse(CLAUDE_SETTINGS)
+    settings.setdefault("extraKnownMarketplaces", {})[MARKETPLACE_NAME] = {"source": source}
+    settings.setdefault("enabledPlugins", {})[PLUGIN_ID] = True
+    write_json(CLAUDE_SETTINGS, settings)
+    print(f"  + settings.json: enabled {PLUGIN_ID}")
+    ok(f"marketplace {MARKETPLACE_NAME} registered; plugin {PLUGIN_NAME} enabled")
+
+
+def main(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="install", description=__doc__.splitlines()[0])
+    parser.add_argument(
+        "--no-plugin", action="store_true", help="install the CLIs only; skip the plugin"
+    )
+    args = parser.parse_args(argv)
+    skills = cli_skills()
+
+    title("Checking Python")
+    ok(f"Python {sys.version.split()[0]}")
+
+    BIN_DIR.mkdir(parents=True, exist_ok=True)
+    if str(BIN_DIR) not in os.environ.get("PATH", "").split(os.pathsep):
+        warn(f"{BIN_DIR} is not on $PATH. Add it to your shell profile.")
+
+    title("Materializing references")
+    materialize(str(MANIFEST))
+    ok("references materialized")
+
+    title("Materializing prompt-module references")
+    materialize("--prompts", *skills)
+    ok("prompt-module references materialized")
+
+    for skill in skills:
+        install_cli(skill)
+    CLI_RECORD.write_text("".join(f"{s}\n" for s in skills), encoding="utf-8")
+
+    install_deps()
+    verify_clis(skills)
+
+    if args.no_plugin:
+        title("Done")
+        ok(f"CLIs installed: {' '.join(skills)} (plugin skipped: --no-plugin)")
+        warn(f"If you just added {BIN_DIR} to your PATH, open a new shell.")
+        return 0
+
+    assemble_plugin(skills)
+    register_plugin()
+
+    # The cookbook skill now comes from the plugin.
+    if LEGACY_SKILL_DIR.is_dir():
+        title("Cleaning up legacy skill location")
+        shutil.rmtree(LEGACY_SKILL_DIR)
+        ok(f"removed {LEGACY_SKILL_DIR} (now provided by the plugin)")
+
+    title("Verifying plugin")
+    manifest = PLUGIN_DIR / ".claude-plugin" / "plugin.json"
+    if not manifest.is_file():
+        err("plugin manifest missing — install did not complete cleanly.")
+        return 1
+    ok(f"plugin manifest at {manifest}")
+
+    title("Done")
+    ok("Run: cookbook --help")
+    ok("Skills available as /adh:<name> (and Skill-tool 'adh:<name>')")
+    warn(f"If you just added {BIN_DIR} to your PATH, open a new shell.")
+    warn("Restart your Claude Code session to pick up the plugin.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

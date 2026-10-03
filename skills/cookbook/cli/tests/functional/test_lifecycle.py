@@ -1,6 +1,6 @@
 """End-to-end: a fresh client cookbook goes through the full lifecycle without
 errors. Uses the installed `cookbook` shim (real subprocess, real PYTHONPATH)
-so we exercise install.sh's output, not just in-process Python."""
+so we exercise ./install's output, not just in-process Python."""
 
 from __future__ import annotations
 

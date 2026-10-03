@@ -21,5 +21,5 @@ Run from the repo root:
 
 ```bash
 python3 -m pytest skills/cookr/cli/tests/unit -q      # fast
-python3 -m pytest skills/cookr/cli/tests -q           # needs ./install.sh
+python3 -m pytest skills/cookr/cli/tests -q           # needs ./install
 ```

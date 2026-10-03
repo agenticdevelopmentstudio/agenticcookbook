@@ -16,7 +16,7 @@ plugins/adh/
 The repo root contains `.claude-plugin/marketplace.json`, which registers this
 plugin under the `agenticcookbook` local directory marketplace.
 
-`./install.sh` from the repo root:
+`./install` from the repo root:
 1. Assembles `plugins/adh/skills/` by copying every directory under
    `../../skills/` into it.
 2. Registers the marketplace with Claude Code and enables the plugin.
@@ -28,5 +28,5 @@ command.
 ## Adding a skill
 
 1. Create `./skills/<name>/SKILL.md` at the repo root with YAML frontmatter.
-2. Re-run `./install.sh` (or `cookbook self update`) — it gets picked up
+2. Re-run `./install` (or `cookbook self update`) — it gets picked up
    automatically.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Install the cookr skill globally for the current user, without the adh plugin.
 
-- Installs the CLIs the skill drives via the repo's install.sh --no-plugin:
+- Installs the CLIs the skill drives via the repo's ./install --no-plugin:
   ~/.local/bin/cookr and ~/.local/bin/cookbook (cookr imports the cookbook
   package, and the skill runs `cookbook update/validate/lint/bump`).
 - Copies SKILL.md to ~/.claude/skills/cookr/, so the skill is /cookr in every
@@ -17,24 +17,16 @@ from pathlib import Path
 
 SKILL_SRC = Path(__file__).resolve().parent.parent
 REPO_ROOT = SKILL_SRC.parent.parent
-SKILL_DST = Path.home() / ".claude" / "skills" / "cookr"
+sys.path.insert(0, str(REPO_ROOT))
+sys.dont_write_bytecode = True  # keep the checkout free of __pycache__/
 
+from setup_support import CLAUDE_DIR, ok, title  # noqa: E402
 
-def color(code: str, text: str) -> None:
-    print(f"\033[1;{code}m{text}\033[0m", flush=True)
-
-
-def title(text: str) -> None:
-    print()
-    color("36", f"› {text}")
-
-
-def ok(text: str) -> None:
-    color("32", f"✓ {text}")
+SKILL_DST = CLAUDE_DIR / "skills" / "cookr"
 
 
 def main() -> int:
-    cli = subprocess.run([str(REPO_ROOT / "install.sh"), "--no-plugin"])
+    cli = subprocess.run([sys.executable, str(REPO_ROOT / "install"), "--no-plugin"])
     if cli.returncode != 0:
         return cli.returncode
 

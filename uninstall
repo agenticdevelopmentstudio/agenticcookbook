@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+"""Remove everything ./install placed on the system.
+
+- Removes each CLI skill's shim and package (recorded by ./install, or in the layout)
+- Unregisters the local marketplace and disables the plugin
+- Wipes the assembled plugins/adh/skills/ directory
+- Removes any legacy ~/.claude/skills/cookbook/ location
+
+Does NOT uninstall pip-installed deps (rich, questionary, pyyaml) — those may
+be used by other tools.
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+
+sys.dont_write_bytecode = True  # keep the checkout free of __pycache__/
+
+from setup_support import (
+    BIN_DIR,
+    CLAUDE_SETTINGS,
+    CLI_RECORD,
+    KNOWN_MARKETPLACES,
+    LEGACY_SKILL_DIR,
+    MARKETPLACE_NAME,
+    PLUGIN_ID,
+    PLUGIN_SKILLS_DIR,
+    cli_skills,
+    load_json,
+    ok,
+    remove,
+    title,
+    write_json,
+)
+
+
+def skills_to_remove() -> list[str]:
+    """Those ./install recorded installing, plus those the layout carries now,
+    so an install that predates the record is covered."""
+    recorded = CLI_RECORD.read_text(encoding="utf-8").split() if CLI_RECORD.is_file() else []
+    return list(dict.fromkeys([*recorded, *cli_skills()]))
+
+
+def load_or_none(path) -> dict | None:
+    try:
+        return load_json(path)
+    except json.JSONDecodeError as e:
+        print(f"  ! {path} is not valid JSON ({e}); leaving unchanged.")
+        return None
+
+
+def unregister_plugin() -> None:
+    title("Unregistering plugin")
+    known = load_or_none(KNOWN_MARKETPLACES)
+    if known is not None and MARKETPLACE_NAME in known:
+        del known[MARKETPLACE_NAME]
+        write_json(KNOWN_MARKETPLACES, known)
+        print(f"  - known_marketplaces.json: removed {MARKETPLACE_NAME}")
+    else:
+        print(f"  . known_marketplaces.json: no {MARKETPLACE_NAME} entry")
+
+    settings = load_or_none(CLAUDE_SETTINGS)
+    if settings is not None:
+        changed = False
+        for key, entry, what in (
+            ("extraKnownMarketplaces", MARKETPLACE_NAME, f"removed extraKnownMarketplaces.{MARKETPLACE_NAME}"),
+            ("enabledPlugins", PLUGIN_ID, f"disabled {PLUGIN_ID}"),
+        ):
+            block = settings.get(key)
+            if isinstance(block, dict) and entry in block:
+                del block[entry]
+                if not block:
+                    del settings[key]
+                changed = True
+                print(f"  - settings.json: {what}")
+        if changed:
+            write_json(CLAUDE_SETTINGS, settings)
+        else:
+            print("  . settings.json: nothing to change")
+    ok("marketplace + plugin entries cleaned")
+
+
+def main() -> int:
+    for skill in skills_to_remove():
+        title(f"Removing {skill} CLI shim")
+        remove(BIN_DIR / skill)
+        title(f"Removing {skill} package")
+        remove(BIN_DIR / f"_{skill}_pkg")
+    CLI_RECORD.unlink(missing_ok=True)
+
+    unregister_plugin()
+    title("Removing assembled plugin skills")
+    remove(PLUGIN_SKILLS_DIR)
+    title("Removing legacy skill location")
+    remove(LEGACY_SKILL_DIR)
+
+    title("Done")
+    ok("rich / questionary / pyyaml were left installed (may be used by other tools)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

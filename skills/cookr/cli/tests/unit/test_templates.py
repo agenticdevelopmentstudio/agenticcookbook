@@ -28,7 +28,7 @@ def test_headings_inside_a_fence_are_not_sections(tmp_path, monkeypatch):
 
 def test_missing_template_names_the_install_fix(tmp_path, monkeypatch):
     monkeypatch.setattr(templates, "templates_dir", lambda: tmp_path)
-    with pytest.raises(FileNotFoundError, match="install.sh"):
+    with pytest.raises(FileNotFoundError, match="./install"):
         templates.template_path("ingredient")
 
 

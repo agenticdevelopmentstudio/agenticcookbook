@@ -1,6 +1,6 @@
 """Locate the bundled `references/` dir at runtime.
 
-The package is installed at ~/.local/bin/_cookbook_pkg/ (see install.sh).
+The package is installed at ~/.local/bin/_cookbook_pkg/ (see ./install).
 `references/` lives one level up from the `cookbook/` package dir.
 """
 
@@ -12,7 +12,7 @@ import cookbook as _pkg
 
 
 def references_dir() -> Path:
-    """Path to the bundled references dir. Created by install.sh from the manifest."""
+    """Path to the bundled references dir. Created by ./install from the manifest."""
     pkg_dir = Path(_pkg.__file__).resolve().parent
     return pkg_dir.parent / "references"
 

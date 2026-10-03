@@ -1,8 +1,9 @@
-"""self update: error paths + happy path delegates to install.sh."""
+"""self update: error paths + happy path delegates to ./install."""
 
 from __future__ import annotations
 
 import subprocess
+import sys
 from pathlib import Path
 
 from cookbook.cli import main
@@ -21,11 +22,11 @@ def test_self_update_errors_when_stamp_missing(tmp_path, monkeypatch, patch_refs
     assert rc == 1
 
 
-def test_self_update_errors_when_stamped_path_missing_install_sh(tmp_path, monkeypatch, patch_refs):
+def test_self_update_errors_when_stamped_path_missing_install(tmp_path, monkeypatch, patch_refs):
     fake_pkg = tmp_path / "pkg"
     fake_pkg.mkdir()
     fake_source = tmp_path / "moved-or-deleted"
-    fake_source.mkdir()  # exists, but no install.sh inside
+    fake_source.mkdir()  # exists, but no install inside
     (fake_pkg / ".install_source").write_text(str(fake_source), encoding="utf-8")
 
     monkeypatch.setattr(self_mod, "_pkg_dir", lambda: fake_pkg)
@@ -33,13 +34,13 @@ def test_self_update_errors_when_stamped_path_missing_install_sh(tmp_path, monke
     assert rc == 1
 
 
-def test_self_update_invokes_install_sh_from_stamped_path(tmp_path, monkeypatch, patch_refs):
+def test_self_update_invokes_install_from_stamped_path(tmp_path, monkeypatch, patch_refs):
     fake_pkg = tmp_path / "pkg"
     fake_pkg.mkdir()
     fake_source = tmp_path / "repo"
     fake_source.mkdir()
-    (fake_source / "install.sh").write_text("#!/bin/sh\necho mock\n", encoding="utf-8")
-    (fake_source / "install.sh").chmod(0o755)
+    (fake_source / "install").write_text("#!/usr/bin/env python3\nprint('mock')\n", encoding="utf-8")
+    (fake_source / "install").chmod(0o755)
     (fake_pkg / ".install_source").write_text(str(fake_source), encoding="utf-8")
 
     captured = {}
@@ -54,5 +55,5 @@ def test_self_update_invokes_install_sh_from_stamped_path(tmp_path, monkeypatch,
 
     rc = main(["self", "update"])
     assert rc == 0
-    assert captured["cmd"] == ["bash", str(fake_source / "install.sh")]
+    assert captured["cmd"] == [sys.executable, str(fake_source / "install")]
     assert captured["cwd"] == fake_source

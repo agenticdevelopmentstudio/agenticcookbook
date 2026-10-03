@@ -5,7 +5,7 @@ Layout:
     skills/cookr/cli/tests/        this suite (unit/ + functional/ + fixtures/)
 
 Both `skills/cookr/cli/` and `skills/cookbook/cli/` are pushed onto sys.path so
-`import cookr` and `import cookbook` work without running install.sh.
+`import cookr` and `import cookbook` work without running ./install.
 """
 
 from __future__ import annotations
@@ -47,7 +47,7 @@ def legacy_repo(tmp_path) -> Path:
 def cookr_bin():
     found = shutil.which("cookr")
     if not found:
-        pytest.skip("`cookr` not on PATH — run install.sh first")
+        pytest.skip("`cookr` not on PATH — run ./install first")
     return found
 
 

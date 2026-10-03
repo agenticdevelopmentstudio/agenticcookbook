@@ -9,9 +9,9 @@ recipe cites a check as `agenticdevelopercookbook://compliance/<document>#<name>
 `cookbook.core.markdown.iter_markdown`'s rule, the one every cookbook walk uses,
 so index, references and template files never define checks.
 
-install.sh materialises the catalog into the extract prompt module's references
+./install materialises the catalog into the extract prompt module's references
 (its reference-manifest.json). When it has not been materialised — a source
-checkout that never ran install.sh — `load_checks` returns None and callers skip
+checkout that never ran ./install — `load_checks` returns None and callers skip
 the check rather than report every citation unknown.
 """
 
