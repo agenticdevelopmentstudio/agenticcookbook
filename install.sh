@@ -13,8 +13,20 @@
 # - Installs any missing Python deps (rich, questionary, pyyaml), falling
 #   back to --break-system-packages on PEP 668 externally-managed pythons
 #
+# --no-plugin installs the CLIs only (steps 1-6) and stops: no plugin assembly,
+# no marketplace registration, no legacy-skill cleanup. A standalone skill
+# installer (skills/<name>/setup/install.sh) uses it for the CLIs it wraps.
+#
 # Idempotent. Re-run to refresh after edits.
 set -euo pipefail
+
+WITH_PLUGIN=1
+for arg in "$@"; do
+    case "${arg}" in
+        --no-plugin) WITH_PLUGIN=0 ;;
+        *) printf 'usage: %s [--no-plugin]\n' "$0" >&2; exit 2 ;;
+    esac
+done
 
 REPO_ROOT="$(cd -- "$(dirname -- "$0")" && pwd)"
 BIN_DIR="${HOME}/.local/bin"
@@ -149,6 +161,23 @@ else
     fi
 fi
 
+# 6b. Verify the CLIs
+title "Verifying CLIs"
+for skill in "${CLI_SKILLS[@]}"; do
+    if "${BIN_DIR}/${skill}" --version >/dev/null 2>&1; then
+        ok "$("${BIN_DIR}/${skill}" --version)"
+    else
+        warn "${skill} --version did not return cleanly. Check the install log above."
+    fi
+done
+
+if [ "${WITH_PLUGIN}" -eq 0 ]; then
+    title "Done"
+    ok "CLIs installed: ${CLI_SKILLS[*]} (plugin skipped: --no-plugin)"
+    warn "If you just added ${BIN_DIR} to your PATH, open a new shell."
+    exit 0
+fi
+
 # 7. Assemble the plugin: copy ./skills/<name>/ → ./plugins/adh/skills/<name>/
 title "Assembling plugin"
 if [ ! -d "${SKILLS_SRC}" ]; then
@@ -161,10 +190,11 @@ python3 - "$SKILLS_SRC" "$PLUGIN_SKILLS_DIR" "${CLI_SKILLS[*]}" <<'PY'
 import shutil, sys
 from pathlib import Path
 
-# Per-skill excludes: keep CLI plumbing out of plugin-bundled skills so a
+# Per-skill excludes: keep CLI plumbing (and a skill's own standalone
+# setup/ installer) out of plugin-bundled skills so a
 # stray `cli/` or `bin/` directory in another skill ships normally.
 CLI_SKILLS = set(sys.argv[3].split())
-EXCLUDE_PER_SKILL = {name: {"cli", "bin"} for name in CLI_SKILLS}
+EXCLUDE_PER_SKILL = {name: {"cli", "bin", "setup"} for name in CLI_SKILLS}
 
 src_root = Path(sys.argv[1])
 dst_root = Path(sys.argv[2])
@@ -261,14 +291,7 @@ if [ -d "${LEGACY_SKILL_DIR}" ]; then
 fi
 
 # 10. Verify
-title "Verifying"
-for skill in "${CLI_SKILLS[@]}"; do
-    if "${BIN_DIR}/${skill}" --version >/dev/null 2>&1; then
-        ok "$("${BIN_DIR}/${skill}" --version)"
-    else
-        warn "${skill} --version did not return cleanly. Check the install log above."
-    fi
-done
+title "Verifying plugin"
 if [ -f "${PLUGIN_DIR}/.claude-plugin/plugin.json" ]; then
     ok "plugin manifest at ${PLUGIN_DIR}/.claude-plugin/plugin.json"
 else
