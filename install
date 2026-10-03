@@ -8,7 +8,10 @@ plugin globally for the current user.
   writes a shim at ~/.local/bin/<name>.
 - Assembles ./plugins/adh/skills/ from ./skills/ (every top-level skill
   directory becomes a plugin-namespaced skill: invokable by Claude via the
-  Skill tool as adh:<name> and by the user as /adh:<name>).
+  Skill tool as adh:<name> and by the user as /adh:<name>). A standalone skill,
+  one with its own skills/<name>/setup/install, is left out: its installer puts
+  it in ~/.claude/skills/<name>/ instead, and ./install runs that installer
+  (with --skill-only, since the CLIs are already in place).
 - Registers the repo as a local directory marketplace ("agenticcookbook") with
   Claude Code and enables the adh plugin.
 - Installs any missing Python deps (rich, questionary, pyyaml), falling back to
@@ -52,6 +55,7 @@ from setup_support import (  # noqa: E402
     err,
     load_json,
     ok,
+    standalone_skills,
     title,
     warn,
     write_json,
@@ -156,20 +160,24 @@ def verify_clis(skills: list[str]) -> None:
 
 
 def assemble_plugin(skills: list[str]) -> None:
-    """Copy ./skills/<name>/ → ./plugins/adh/skills/<name>/, keeping CLI plumbing
-    (and a skill's own standalone setup/ installer) out of CLI skills only, so a
-    stray cli/ or bin/ directory in another skill ships normally."""
+    """Copy ./skills/<name>/ → ./plugins/adh/skills/<name>/ for every skill but
+    the standalone ones, keeping CLI plumbing out of CLI skills only, so a stray
+    cli/ or bin/ directory in another skill ships normally."""
     title("Assembling plugin")
     if not SKILLS_SRC.is_dir():
         err(f"missing {SKILLS_SRC} — nothing to assemble.")
         sys.exit(1)
     shutil.rmtree(PLUGIN_SKILLS_DIR, ignore_errors=True)
     PLUGIN_SKILLS_DIR.mkdir(parents=True)
+    standalone = standalone_skills()
     assembled = 0
     for skill_src in sorted(SKILLS_SRC.iterdir()):
         if not skill_src.is_dir():
             continue
-        exclude = {"cli", "bin", "setup"} if skill_src.name in skills else set()
+        if skill_src.name in standalone:
+            print(f"  · {skill_src.name} (standalone: skills/{skill_src.name}/setup/install)")
+            continue
+        exclude = {"cli", "bin"} if skill_src.name in skills else set()
         skill_dst = PLUGIN_SKILLS_DIR / skill_src.name
         skill_dst.mkdir(parents=True, exist_ok=True)
         for child in skill_src.iterdir():
@@ -255,6 +263,13 @@ def main(argv: list[str]) -> int:
     assemble_plugin(skills)
     register_plugin()
 
+    for skill in standalone_skills():
+        title(f"Installing standalone skill {skill}")
+        setup = SKILLS_SRC / skill / "setup" / "install"
+        if subprocess.run([sys.executable, str(setup), "--skill-only"]).returncode != 0:
+            err(f"{setup} failed.")
+            return 1
+
     # The cookbook skill now comes from the plugin.
     if LEGACY_SKILL_DIR.is_dir():
         title("Cleaning up legacy skill location")
@@ -271,6 +286,8 @@ def main(argv: list[str]) -> int:
     title("Done")
     ok("Run: cookbook --help")
     ok("Skills available as /adh:<name> (and Skill-tool 'adh:<name>')")
+    for skill in standalone_skills():
+        ok(f"Standalone skill: /{skill}")
     warn(f"If you just added {BIN_DIR} to your PATH, open a new shell.")
     warn("Restart your Claude Code session to pick up the plugin.")
     return 0

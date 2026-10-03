@@ -18,7 +18,9 @@ plugin under the `agenticcookbook` local directory marketplace.
 
 `./install` from the repo root:
 1. Assembles `plugins/adh/skills/` by copying every directory under
-   `../../skills/` into it.
+   `../../skills/` into it, except standalone skills: those with their own
+   `skills/<name>/setup/install` (e.g. `cookr`), which install themselves to
+   `~/.claude/skills/<name>/` instead.
 2. Registers the marketplace with Claude Code and enables the plugin.
 
 Each skill ships as a plugin-namespaced skill: invokable by Claude via the

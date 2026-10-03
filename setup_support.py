@@ -35,12 +35,20 @@ PLUGIN_ID = f"{PLUGIN_NAME}@{MARKETPLACE_NAME}"
 def cli_skills() -> list[str]:
     """Skills that carry a CLI: skills/<name>/bin/<name> plus a
     skills/<name>/cli/<name>/ package. Each ships as ~/.local/bin/<name> and
-    ~/.local/bin/_<name>_pkg/, and its cli/, bin/ and setup/ stay out of the
-    plugin bundle."""
+    ~/.local/bin/_<name>_pkg/, and its cli/ and bin/ stay out of the plugin
+    bundle."""
     return sorted(
         d.name
         for d in SKILLS_SRC.iterdir()
         if d.is_dir() and (d / "bin" / d.name).is_file() and (d / "cli" / d.name).is_dir()
+    )
+
+
+def standalone_skills() -> list[str]:
+    """Skills that install themselves globally with skills/<name>/setup/install
+    (and reverse it with setup/uninstall) instead of shipping in the adh plugin."""
+    return sorted(
+        d.name for d in SKILLS_SRC.iterdir() if d.is_dir() and (d / "setup" / "install").is_file()
     )
 
 
