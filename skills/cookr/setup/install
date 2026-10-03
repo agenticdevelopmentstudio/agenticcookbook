@@ -7,9 +7,13 @@
 - Copies SKILL.md to ~/.claude/skills/cookr/, so the skill is /cookr in every
   project.
 
+--skill-only skips the CLI step; the repo's ./install uses it, having just
+installed the CLIs itself.
+
 Idempotent. Re-run to refresh after edits. Reverse with ./uninstall.
 """
 
+import argparse
 import shutil
 import subprocess
 import sys
@@ -25,10 +29,15 @@ from setup_support import CLAUDE_DIR, ok, title  # noqa: E402
 SKILL_DST = CLAUDE_DIR / "skills" / "cookr"
 
 
-def main() -> int:
-    cli = subprocess.run([sys.executable, str(REPO_ROOT / "install"), "--no-plugin"])
-    if cli.returncode != 0:
-        return cli.returncode
+def main(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="install", description=__doc__.splitlines()[0])
+    parser.add_argument("--skill-only", action="store_true", help="skip installing the CLIs")
+    args = parser.parse_args(argv)
+
+    if not args.skill_only:
+        cli = subprocess.run([sys.executable, str(REPO_ROOT / "install"), "--no-plugin"])
+        if cli.returncode != 0:
+            return cli.returncode
 
     title("Installing cookr skill")
     shutil.rmtree(SKILL_DST, ignore_errors=True)
@@ -36,11 +45,12 @@ def main() -> int:
     shutil.copy2(SKILL_SRC / "SKILL.md", SKILL_DST / "SKILL.md")
     ok(f"skill → {SKILL_DST}")
 
-    title("Done")
-    ok("Run: cookr --help")
-    ok("Restart your Claude Code session to pick up /cookr.")
+    if not args.skill_only:
+        title("Done")
+        ok("Run: cookr --help")
+        ok("Restart your Claude Code session to pick up /cookr.")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))
