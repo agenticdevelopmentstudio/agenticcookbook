@@ -1,7 +1,7 @@
 """Sanity check that the install pipeline left behind a usable shim.
 
 These don't reinstall — they verify the post-install state. If a contributor
-hasn't run `./install.sh` yet, the `cookbook_bin` fixture skips them."""
+hasn't run `./install` yet, the `cookbook_bin` fixture skips them."""
 
 from __future__ import annotations
 
@@ -16,14 +16,14 @@ def test_shim_exists_and_is_executable(cookbook_bin):
 
 
 def test_shim_points_at_local_bin(cookbook_bin):
-    # install.sh writes ~/.local/bin/cookbook. We can't assert the exact
+    # ./install writes ~/.local/bin/cookbook. We can't assert the exact
     # location (CI might install elsewhere), but it must NOT live inside the
     # source tree — otherwise tests would silently use uninstalled code.
     p = Path(cookbook_bin).resolve()
     src_marker = Path(__file__).resolve().parents[4] / "scripts" / "cookbook" / "cookbook"
     assert src_marker not in p.parents, (
         f"`cookbook` resolves into the source tree at {p}; tests should run "
-        "the installed shim, not the source. Run ./install.sh first."
+        "the installed shim, not the source. Run ./install first."
     )
 
 

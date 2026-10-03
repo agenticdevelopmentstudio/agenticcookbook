@@ -6,7 +6,7 @@ Layout:
     skills/cookbook/cli/tests/           this test suite (unit/ + functional/)
 
 We push `skills/cookbook/cli/` onto sys.path so `import cookbook` works without
-running install.sh, and point `cookbook.core.refs.references_dir()` at a
+running ./install, and point `cookbook.core.refs.references_dir()` at a
 stand-in references/ built from references-src/.
 
 Functional tests additionally clone the cookbook-tests fixture repo into a
@@ -115,7 +115,7 @@ def cookbook_bin():
     """
     found = shutil.which("cookbook")
     if not found:
-        pytest.skip("`cookbook` not on PATH — run install.sh first")
+        pytest.skip("`cookbook` not on PATH — run ./install first")
     return found
 
 

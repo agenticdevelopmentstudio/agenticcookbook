@@ -21,7 +21,7 @@ MANIFEST = prompt_cli.EXTRACT_DIR / "reference-manifest.json"
 
 @pytest.fixture
 def extract_refs(monkeypatch, tmp_path):
-    """The extract manifest materialised from this checkout, as install.sh would."""
+    """The extract manifest materialised from this checkout, as ./install would."""
     dest = tmp_path / "references"
     materialize(MANIFEST, REPO_ROOT, dest)
     monkeypatch.setattr(prompt_cli, "references_dir", lambda: dest)

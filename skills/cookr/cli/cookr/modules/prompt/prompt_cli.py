@@ -57,7 +57,7 @@ _BACKTICKS = re.compile(r"`+")
 
 
 def references_dir() -> Path:
-    """Materialised by install.sh from prompts/extract/reference-manifest.json."""
+    """Materialised by ./install from prompts/extract/reference-manifest.json."""
     return EXTRACT_DIR / "references"
 
 

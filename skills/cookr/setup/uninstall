@@ -5,44 +5,20 @@
 - Removes the cookr CLI shim and package from ~/.local/bin
 
 Leaves the cookbook CLI installed: it is shared with the cookbook skill and
-the adh plugin. The repo's root uninstall.sh removes it. Also leaves the
+the adh plugin. The repo's root ./uninstall removes it. Also leaves the
 pip-installed deps (rich, questionary, pyyaml), which other tools may use.
 """
 
-import shutil
 import sys
 from pathlib import Path
 
-BIN_DIR = Path.home() / ".local" / "bin"
-SKILL_DST = Path.home() / ".claude" / "skills" / "cookr"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPO_ROOT))
+sys.dont_write_bytecode = True  # keep the checkout free of __pycache__/
 
+from setup_support import BIN_DIR, CLAUDE_DIR, ok, remove, title  # noqa: E402
 
-def color(code: str, text: str) -> None:
-    print(f"\033[1;{code}m{text}\033[0m", flush=True)
-
-
-def title(text: str) -> None:
-    print()
-    color("36", f"› {text}")
-
-
-def ok(text: str) -> None:
-    color("32", f"✓ {text}")
-
-
-def skip(text: str) -> None:
-    color("90", f"· {text}")
-
-
-def remove(path: Path) -> None:
-    if path.is_dir() and not path.is_symlink():
-        shutil.rmtree(path)
-    elif path.exists() or path.is_symlink():
-        path.unlink()
-    else:
-        skip(f"{path} (not present)")
-        return
-    ok(f"removed {path}")
+SKILL_DST = CLAUDE_DIR / "skills" / "cookr"
 
 
 def main() -> int:
@@ -54,7 +30,7 @@ def main() -> int:
     remove(BIN_DIR / "_cookr_pkg")
 
     title("Done")
-    ok("cookbook CLI and Python deps left installed (shared; the repo's uninstall.sh removes the CLI)")
+    ok("cookbook CLI and Python deps left installed (shared; the repo's ./uninstall removes the CLI)")
     return 0
 
 

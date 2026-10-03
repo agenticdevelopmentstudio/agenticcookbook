@@ -12,7 +12,7 @@ against what the indexing engine would generate now.
 
 ## Setup
 
-1. Install the CLI: clone the agenticcookbook repo and run `./install.sh`.
+1. Install the CLI: clone the agenticcookbook repo and run `./install`.
    Verify with `command -v cookbook`.
 2. In the repo that contains your cookbook, install pre-commit
    (`pip install pre-commit`) and create `.pre-commit-config.yaml`:

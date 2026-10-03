@@ -32,7 +32,7 @@ def template_path(rtype: str) -> Path:
     path = templates_dir() / f"{rtype}.md"
     if not path.is_file():
         raise FileNotFoundError(
-            f"the {rtype} template is missing: {path}. Run install.sh in the "
+            f"the {rtype} template is missing: {path}. Run ./install in the "
             f"agenticcookbook repo to materialize the cookbook package's references."
         )
     return path

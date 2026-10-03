@@ -5,9 +5,9 @@ root) and a list of `files`, each `{"src", "dst", "type": "file"|"tree"}`; a
 tree copies every file under `src` matching its `include` glob (default `*`).
 An optional `embedded_dir`, relative to the manifest, is overlaid last.
 
-This is the one materializer: install.sh runs it for the cookbook package's
+This is the one materializer: ./install runs it for the cookbook package's
 manifest and every prompt module's, and tests run it to build the same tree.
-Standard library only, since install.sh runs it before installing any deps.
+Standard library only, since ./install runs it before installing any deps.
 """
 
 from __future__ import annotations
