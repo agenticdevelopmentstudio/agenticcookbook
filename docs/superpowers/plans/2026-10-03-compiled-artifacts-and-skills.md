@@ -1,6 +1,8 @@
 # Compiled cookbook artifacts: source folders, host/model tuning, routed skills
 
-*Created:* 2026-10-03. *Status:* in progress; P1–P4 done.
+*Created:* 2026-10-03. *Status:* P1–P8 done. Merged to main 2026-10-04 as
+`226f310` (PR #64), with skill-router 0.2.0 (skill-router PR #2, `2ac4109`).
+Current state and open items: [STATUS](../../project/STATUS.md).
 
 ## Goal
 
@@ -183,7 +185,18 @@ is `install --check`, as with `compile --check`):
 - It is idempotent.
 - Each item is in one of four states: OK, MISSING, DRIFT or BROKEN.
 - A receipt records what was shipped, so stale output is pruned and nothing
-  outside the receipt is touched.
+  outside the receipt is touched. It is written atomically, under a lock.
+- It refuses anything that would destroy an installed set:
+  - no artifact folders found;
+  - a library already installed from other paths (`--replace` overrides);
+  - an always-on skill edited since it was installed (`--force`);
+  - a render the host would not load.
+- `uninstall` removes one library by default (`--every-library` for all) and
+  checks before it deletes.
+- Skill templates resolve from `$COOKR_TEMPLATES`, then the cookbook repo,
+  then the installed cookr.
+- skill-router must be 0.2.0 or later; cookr checks
+  `skill-router-registry --version`.
 
 Destinations:
 

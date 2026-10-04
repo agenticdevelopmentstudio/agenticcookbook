@@ -26,7 +26,7 @@ Active development.
 
 ## Related Projects
 
-- [Cookbook Web](../../agenticcookbookweb/docs/project/description.md) — public website at agenticcookbook.dev
-- [Dev Team](../../dev-team/docs/project/description.md) — multi-agent platform consuming the cookbook
-- [Tools](../../tools/docs/project/description.md) — installable skills and rules for cookbook workflows
-- [Roadmaps](../../roadmaps/docs/project/description.md) — feature planning and implementation system
+- Cookbook Web (now `websites/cookbook/` in the adh monorepo) — public website at agenticcookbook.dev
+- Dev Team — multi-agent platform consuming the cookbook
+- Tools — installable skills and rules for cookbook workflows
+- Roadmaps — feature planning and implementation system

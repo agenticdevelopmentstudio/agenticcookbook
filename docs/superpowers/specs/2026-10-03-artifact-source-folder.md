@@ -87,6 +87,39 @@ The folder takes the place of `<name>.md` and has the same path without the
 All 427 artifacts in `cookbook/` round-trip under test
 (`test_every_cookbook_artifact_round_trips`).
 
+## Sync record
+
+Both forms are editable: authors edit `<name>.md` and cookr writes the folder,
+and some tools write the folder directly. With nothing more, a stale side could
+silently overwrite a newer one. So `artifact.json` carries **`synced`**: the
+first 16 hex digits of the sha256 of the doc that cookr last wrote or read
+together with the folder (`doc_digest`, `record_sync` in `core/artifact.py`).
+Every write through `save_document` records it.
+
+`sync_state(folder)` compares the doc on disk, and what the folder compiles to,
+against `synced`:
+
+| State | Meaning | To reconcile |
+|---|---|---|
+| `current` | neither changed | nothing |
+| `missing` | no doc beside the folder | `cookr compile` |
+| `doc-edited` | the `.md` changed | `cookr convert --update` folds it in; `cookr compile --force` discards it |
+| `folder-edited` | the folder changed | `cookr compile` writes the `.md`; `cookr convert --update --force` discards the folder's edit |
+| `both-edited` | both changed, or no record | keep one side with `--force` on the command for the side to keep |
+
+The guards follow from the table:
+
+- `compile` refuses to overwrite a `doc-edited` or `both-edited` doc unless
+  `--force` is given.
+- `convert --update` refuses to overwrite a `folder-edited` or `both-edited`
+  folder unless `--force` is given.
+- `bump`, `update`, `relink` and `organize` edit through `edit_text(doc)`,
+  which starts from whichever side is newer, and refuse `both-edited`.
+- `organize` refuses to move a doc that has a folder, since the move would
+  orphan the folder.
+
+All 427 manifests were backfilled with `synced` when the record was added.
+
 ## Types
 
 `core/artifact_types.py` declares each type's required fields and body
