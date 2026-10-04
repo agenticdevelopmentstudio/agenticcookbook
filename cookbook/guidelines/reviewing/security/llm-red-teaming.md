@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Adversarially test LLM and agent systems against the OWASP LLM Top 10 and gate releases on a tracked attack-success-rate threshold."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://arxiv.org/abs/2302.12173
   - https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
 ---

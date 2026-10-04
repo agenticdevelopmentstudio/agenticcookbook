@@ -1,5 +1,4 @@
 ---
-
 id: c84400d9-83b3-4c4c-83d4-325dfa989202
 title: "Rate Limiting"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/rate-limiting
@@ -14,12 +13,12 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Respect server rate limits. Handle 429 responses gracefully."
 platforms: []
-tags: 
+tags:
   - networking
   - rate-limiting
 depends-on: []
 related: []
-references: 
+references:
   - https://www.rfc-editor.org/rfc/rfc6585
 approved-by: "approve-artifact v1.0.0"
 approved-date: "2026-04-04"

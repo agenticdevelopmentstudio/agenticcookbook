@@ -12,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "IDE-style four-panel project window composing file tree, editor, terminal, and inspector in split views"
-platforms: 
+platforms:
   - macos
   - swift
   - web
   - windows
-tags: 
+tags:
   - project-window
   - ui
   - window

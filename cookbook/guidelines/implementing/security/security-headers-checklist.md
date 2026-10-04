@@ -1,21 +1,20 @@
 ---
-
 id: 12d6b9fe-d1a0-4b9f-b772-41d9b4aa0b8a
 title: "Security Headers Checklist"
 domain: agenticdevelopercookbook://guidelines/implementing/security/security-headers-checklist
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Every web application should set these response headers:"
-platforms: 
+summary: "Every web application MUST set the standard security response headers: HSTS, Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, and Cache-Control."
+platforms:
   - web
-tags: 
+tags:
   - security
   - security-headers-checklist
 depends-on: []
@@ -46,6 +45,7 @@ Cache-Control: no-store  (for sensitive responses)
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d53b7623-38ee-4d9f-a99b-f54b6a64f7a6",
+    "title": "Tool-call evaluation",
+    "domain": "agenticdevelopercookbook://guidelines/testing/tool-call-evaluation",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Evaluate agent tool use for selection, argument correctness, ordering, and stopping against a fixed trajectory suite with error-recovery cases.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "agents",
+      "evals"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety",
+      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design"
+    ],
+    "references": [
+      "https://gorilla.cs.berkeley.edu/leaderboard.html",
+      "https://gorilla.cs.berkeley.edu/blogs/13_bfcl_v3_multi_turn.html",
+      "https://proceedings.mlr.press/v267/patil25a.html",
+      "https://modelcontextprotocol.io/specification/2025-06-18"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ai-api-integration",
+      "writing-tests"
+    ]
+  },
+  "synced": "58f6ca11fbcb5d9d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-to-score", "heading": "What to score"},
+    {"part": "build-a-trajectory-suite", "heading": "Build a trajectory suite"},
+    {"part": "error-recovery-cases", "heading": "Error-recovery cases"},
+    {"part": "test-long-compositions-explicitly", "heading": "Test long compositions explicitly"},
+    {"part": "practices", "heading": "Practices"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -3,17 +3,17 @@ id: 4554e680-aca3-4bb2-bc99-1ac381c428b2
 title: "Small, reversible decisions"
 domain: agenticdevelopercookbook://principles/small-reversible-decisions
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "If a decision is cheap to reverse, make it fast. If it is expensive to reverse, invest in understanding first:"
+summary: "Make decisions that are cheap to reverse quickly, and invest in understanding before those that are expensive to reverse. Prefer incremental delivery and defer binding decisions."
 platforms: []
-tags: 
+tags:
   - small-reversible-decisions
 depends-on: []
 related: []
@@ -34,4 +34,5 @@ If a decision is cheap to reverse, make it fast. If it is expensive to reverse, 
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

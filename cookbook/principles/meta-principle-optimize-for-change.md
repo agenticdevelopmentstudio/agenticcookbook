@@ -3,17 +3,17 @@ id: aadd048b-da52-415d-949f-45160b970381
 title: "Meta-Principle: Optimize for Change"
 domain: agenticdevelopercookbook://principles/meta-principle-optimize-for-change
 type: principle
-version: 1.1.1
+version: 1.1.2
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-10
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Every principle above is a strategy for making future change cheaper and safer. When evaluating any technical decisio..."
+summary: "Every principle is a strategy for making future change cheaper and safer. When evaluating any technical decision, ask whether it makes future change easier or harder."
 platforms: []
-tags: 
+tags:
   - meta-principle-optimize-for-change
 depends-on: []
 related: []
@@ -23,7 +23,7 @@ references:
   - https://kentbeck.com/summaries
   - https://martinfowler.com/bliki/TeamTopologies.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 ---
 
 # Meta-Principle: Optimize for Change
@@ -39,6 +39,7 @@ Every principle above is a strategy for making future change cheaper and safer. 
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Cite recovered Tier-1 research sources (adversarially-audited) |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Name cognitive load as the meta-metric |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

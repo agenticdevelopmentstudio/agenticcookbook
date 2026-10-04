@@ -46,6 +46,7 @@ Check and update all files that reference or are referenced by the changed artif
 Before marking the work complete, confirm:
 
 - [ ] `/approve-artifact` passed on every new or modified artifact
+- [ ] Every new or modified artifact has a source folder its `.md` matches (`cookr compile --check` passes)
 - [ ] `cookbook/index.md` reflects the current set of artifacts — no missing entries, no dead links
 - [ ] No broken `agenticdevelopercookbook://` cross-references exist in any `.md` file
 - [ ] README.md and CLAUDE.md artifact counts are accurate

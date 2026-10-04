@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d65ed7a3-6125-4c9f-b3af-f3b26ad61dfb",
+    "title": "Completeness",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/completeness",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "No section is empty without explanation, all gaps are tracked with NEEDS REVIEW, and edge cases and test vectors provide comprehensive coverage.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "a025027c264463d3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "common-violations", "heading": "Common Violations"},
+    {"part": "verification-checklist", "heading": "Verification Checklist"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

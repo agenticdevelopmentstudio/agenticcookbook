@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "06c2a767-cd24-4527-b939-df44161d7025",
+    "title": "Web services",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/web-services",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use Flask for web services. The dashboard service runs on Flask with a REST API and SSE/polling for live updates.",
+    "platforms": [
+      "python",
+      "web"
+    ],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "web-services"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "api-integration",
+      "new-module"
+    ]
+  },
+  "synced": "4b2cd9d719b6a38b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

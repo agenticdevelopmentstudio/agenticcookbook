@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Accept a client-supplied Idempotency-Key on write endpoints so retries are safe, and reject key reuse with different parameters."
 platforms: []
@@ -28,7 +28,7 @@ references:
   - https://brandur.org/idempotency-keys
   - https://httptoolkit.com/blog/idempotency-keys/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - api-integration
   - networking

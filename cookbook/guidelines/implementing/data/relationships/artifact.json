@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "246D87C8-213A-4DE1-9452-6E683D3D75E3",
+    "title": "Relationship patterns",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/relationships",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "One-to-many, many-to-many, polymorphic FKs, self-referential tables, and tree hierarchy patterns with tradeoffs and SQLite-specific guidance.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "relationships",
+      "schema-design",
+      "polymorphic",
+      "hierarchies"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/foreign-keys.md"
+    ],
+    "references": [
+      "https://teddysmith.io/sql-trees/",
+      "https://www.bytebase.com/blog/database-design-patterns/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "206c06dbc8fd55cf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "one-to-many", "heading": "One-to-many"},
+    {"part": "many-to-many", "heading": "Many-to-many"},
+    {"part": "polymorphic-foreign-keys", "heading": "Polymorphic foreign keys"},
+    {"part": "self-referential-adjacency-list", "heading": "Self-referential (adjacency list)"},
+    {"part": "tree-hierarchies", "heading": "Tree hierarchies"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

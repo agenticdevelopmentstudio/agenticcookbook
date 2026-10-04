@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d10d829f-bfff-4b8b-935f-eb30cdf66a43",
+    "title": "Cross-platform token adaptation",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/cross-platform-token-adaptation",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Share one semantic token source across platforms, then render values in each platform's native units, type scale, and idioms.",
+    "platforms": [
+      "swift",
+      "kotlin",
+      "typescript",
+      "csharp",
+      "web"
+    ],
+    "tags": [
+      "design-system",
+      "cross-platform",
+      "tokens"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/ui/design-tokens",
+      "agenticdevelopercookbook://guidelines/planning/ui/platform-design-languages"
+    ],
+    "references": [
+      "https://www.designtokens.org/",
+      "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "50a1f35656f93084",
+  "parts": [
+    {"part": "intro"},
+    {"part": "source-of-truth", "heading": "Source of truth"},
+    {"part": "unit-adaptation", "heading": "Unit adaptation"},
+    {"part": "typography-color-and-motion", "heading": "Typography, color, and motion"},
+    {"part": "respect-the-platform-design-language", "heading": "Respect the platform design language"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

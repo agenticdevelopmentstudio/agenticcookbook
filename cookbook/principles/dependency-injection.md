@@ -3,17 +3,17 @@ id: a2b79b0e-7d2c-44f5-b139-abc9cf47d1f5
 title: "Dependency injection"
 domain: agenticdevelopercookbook://principles/dependency-injection
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "A component should receive its dependencies from the outside, not construct them internally:"
+summary: "Use constructor injection via Microsoft.Extensions.DependencyInjection, depend on interface types rather than concrete types, and never inject a scoped service into a singleton."
 platforms: []
-tags: 
+tags:
   - dependency-injection
 depends-on: []
 related: []
@@ -35,4 +35,5 @@ A component should receive its dependencies from the outside, not construct them
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

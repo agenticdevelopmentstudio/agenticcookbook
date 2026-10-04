@@ -20,7 +20,7 @@ The repo root is the directory holding the cookbook directory. Every path in
 A spec is named by its path in the cookbook: `ai-plugin-kit/chat/chat-context`
 is `cookbook/ai-plugin-kit/chat/chat-context.md`, and its domain is
 `<scheme>://cookbook/ai-plugin-kit/chat/chat-context`. The scheme is the one
-`cookbook validate` uses (`cookbook.core.scheme.cookbook_scheme`): the
+`cookr validate` uses (`cookr.core.scheme.cookbook_scheme`): the
 cookbook's index.md `domain` scheme, else the repo's name.
 
 The roots only find source files no spec claims yet: such a file is named
@@ -43,8 +43,8 @@ from functools import cached_property
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core.errors import CookbookError
-from cookbook.core.scheme import cookbook_scheme
+from cookr.core.errors import CookbookError
+from cookr.core.scheme import cookbook_scheme
 
 MANIFEST = "cookbook.json"
 COOKBOOK_DIR = "cookbook"

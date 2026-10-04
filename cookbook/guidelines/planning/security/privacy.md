@@ -1,5 +1,4 @@
 ---
-
 id: e29555dd-a4e6-4973-8bde-365b8d60bf9f
 title: "Privacy and security by default"
 domain: agenticdevelopercookbook://guidelines/planning/security/privacy
@@ -13,11 +12,11 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Collect only what is needed. Prefer on-device processing."
-platforms: 
+platforms:
   - kotlin
   - swift
   - typescript
-tags: 
+tags:
   - privacy
   - security
 depends-on: []

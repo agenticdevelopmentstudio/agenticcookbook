@@ -1,27 +1,26 @@
 ---
-
 id: 42220186-4305-45cd-8e7d-a8d1172b6fbd
 title: "Comprehensive unit testing"
 domain: agenticdevelopercookbook://guidelines/implementing/testing/testing
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Prioritize unit tests over integration tests. Test state transitions, edge cases, serialization round-trips. Every im..."
-platforms: 
+summary: "Prioritize unit tests over integration tests. Test state transitions, edge cases, and serialization round-trips; every change needs tests and every bug fix a regression test."
+platforms:
   - csharp
   - python
   - typescript
-tags: 
+tags:
   - testing
 depends-on: []
 related: []
-references: 
+references:
   - https://fluentassertions.com/
   - https://nsubstitute.github.io/
   - https://playwright.dev/
@@ -85,6 +84,7 @@ public void IsValidEmail_ReturnsExpected(string input, bool expected)
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

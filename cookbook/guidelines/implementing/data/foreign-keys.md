@@ -1,5 +1,4 @@
 ---
-
 id: B16E64A4-462D-4F46-AFEB-1A06952E5E65
 title: "Foreign keys and referential integrity"
 domain: agenticdevelopercookbook://guidelines/implementing/data/foreign-keys

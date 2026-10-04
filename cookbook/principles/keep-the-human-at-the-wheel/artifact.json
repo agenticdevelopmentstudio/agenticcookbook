@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b335406d-7f59-4827-a39b-477c0fe6c907",
+    "title": "Keep the Human at the Wheel",
+    "domain": "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The facilitator serves the human's creative process, not the reverse. Guide, expand, and diversify — but never supplant the human's ownership, voice, or final call.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "human-centered",
+      "facilitation"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/human-first-ideation"
+    ],
+    "references": [
+      "Shneiderman, Human-Centered AI, Oxford University Press, 2020",
+      "Rezwana & Maher, arXiv 2411.12527, 2024",
+      "Dong et al. (HAICo), arXiv 2512.18388, 2024",
+      "Sawyer, Group Genius, 2007",
+      "Vygotsky, Mind in Society, 1978",
+      "Hatcher, Creativity and Innovation Management, 27(2), 2018"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "a72cf9dfad7ababd",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

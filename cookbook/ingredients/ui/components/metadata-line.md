@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Compact single-line label combining a leading icon with a text value for displaying metadata"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - component
   - metadata-line
   - ui

@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2212a394-68d8-4588-a587-2fc637280deb",
+    "title": "Handoff and continuity",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/handoff-and-continuity",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps available on multiple devices SHOULD support continuity features so users can start work on one device and resume on another.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "web"
+    ],
+    "tags": [
+      "handoff",
+      "continuity",
+      "platform",
+      "cross-device"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking",
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/search-integration"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "platform-integration",
+      "offline-support"
+    ]
+  },
+  "synced": "6efa193e673b9f21",
+  "parts": [
+    {"part": "intro"},
+    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
+    {"part": "android", "heading": "Android"},
+    {"part": "web", "heading": "Web"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

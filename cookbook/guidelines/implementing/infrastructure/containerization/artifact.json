@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ecf27370-3cd4-47a2-a359-7b42575ef48f",
+    "title": "Containerization",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/containerization",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Build small, secure container images with multi-stage builds, pinned slim bases, non-root users, cache-ordered layers, and no baked-in secrets.",
+    "platforms": [],
+    "tags": [
+      "docker",
+      "containers",
+      "build"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/infrastructure/twelve-factor-config",
+      "agenticdevelopercookbook://guidelines/reviewing/infrastructure/container-image-security"
+    ],
+    "references": [
+      "https://docs.docker.com/build/building/best-practices/",
+      "https://docs.docker.com/build/building/secrets/",
+      "https://github.com/GoogleContainerTools/distroless",
+      "https://github.com/opencontainers/image-spec"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "synced": "144980c108bce084",
+  "parts": [
+    {"part": "intro"},
+    {"part": "build-structure", "heading": "Build structure"},
+    {"part": "reproducibility-and-supply-chain", "heading": "Reproducibility and supply chain"},
+    {"part": "layer-caching", "heading": "Layer caching"},
+    {"part": "security", "heading": "Security"},
+    {"part": "observability", "heading": "Observability"},
+    {"part": "adopt-when-justified", "heading": "Adopt-when-justified"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

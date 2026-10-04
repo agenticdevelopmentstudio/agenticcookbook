@@ -3,19 +3,19 @@ id: a7ce3621-2fed-478f-8767-b186014c5923
 title: "Immutability by default"
 domain: agenticdevelopercookbook://principles/immutability-by-default
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Mutable shared state is the root cause of most concurrency bugs. Default to immutable values; introduce mutability on..."
-platforms: 
+summary: "Mutable shared state is the root cause of most concurrency bugs. Default to immutable values and value types; introduce mutability only where necessary, behind clear boundaries."
+platforms:
   - kotlin
   - swift
-tags: 
+tags:
   - immutability-by-default
 depends-on: []
 related: []
@@ -36,4 +36,5 @@ Mutable shared state is the root cause of most concurrency bugs. Default to immu
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

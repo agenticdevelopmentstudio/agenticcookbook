@@ -1,5 +1,4 @@
 ---
-
 id: 4b60fa16-a4cc-4376-97c3-e455681bffb6
 title: "Unit Test Patterns"
 domain: agenticdevelopercookbook://guidelines/testing/unit-test-patterns
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "**Structure — Arrange, Act, Assert (AAA):**"
 platforms: []
-tags: 
+tags:
   - testing
   - unit-test-patterns
 depends-on: []

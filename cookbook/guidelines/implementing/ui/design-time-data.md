@@ -1,5 +1,4 @@
 ---
-
 id: 497a717f-de29-4baf-b7b8-4487f672d9a8
 title: "Design-Time Data"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/design-time-data
@@ -13,10 +12,10 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "- Use `d:DataContext` and `d:DesignInstance` for XAML designer preview data"
-platforms: 
+platforms:
   - csharp
   - windows
-tags: 
+tags:
   - design-time-data
   - platform
   - windows

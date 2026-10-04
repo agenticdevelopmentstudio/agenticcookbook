@@ -1,5 +1,4 @@
 ---
-
 id: b512282a-8174-426f-95dd-4a147222584d
 title: "Search integration"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/search-integration
@@ -13,13 +12,13 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "App content SHOULD be discoverable through the platform's system search, enabling users to find content without opening the app."
-platforms: 
+platforms:
   - ios
   - macos
   - android
   - windows
   - web
-tags: 
+tags:
   - search
   - platform
   - discoverability

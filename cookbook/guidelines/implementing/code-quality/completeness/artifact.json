@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3ca81fd0-7730-4049-bb0a-91514bb0d730",
+    "title": "Completeness: finish the work, don't defer by default",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/completeness",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Deliver the full agreed scope. Don't silently mark work out of scope, declare done prematurely, or invoke YAGNI to skip required work.",
+    "platforms": [],
+    "tags": [
+      "completeness",
+      "code-quality",
+      "discipline"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/scope-discipline",
+      "agenticdevelopercookbook://principles/yagni",
+      "agenticdevelopercookbook://principles/fail-fast",
+      "agenticdevelopercookbook://principles/steel-thread-first"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "pre-pr"
+    ]
+  },
+  "synced": "60ff065bab2ccb55",
+  "parts": [
+    {"part": "intro"},
+    {"part": "finish-the-agreed-scope", "heading": "Finish the agreed scope"},
+    {"part": "don-t-prematurely-scope-out", "heading": "Don't prematurely scope out"},
+    {"part": "yagni-is-not-a-license-to-skip-required-work", "heading": "YAGNI is not a license to skip required work"},
+    {"part": "don-t-stall-on-settled-questions", "heading": "Don't stall on settled questions"},
+    {"part": "verify-before-declaring-done", "heading": "Verify before declaring done"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

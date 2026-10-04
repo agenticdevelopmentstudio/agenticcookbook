@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "183D07F2-ECFC-4DA3-9A21-96953EFEFA91",
+    "title": "Database testing",
+    "domain": "agenticdevelopercookbook://guidelines/testing/database-testing",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Prescriptive rules for testing SQLite-backed code: in-memory vs file-based databases, test isolation strategies, migration testing, sync logic testing, and conflict resolution testing.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "testing",
+      "migrations",
+      "sync",
+      "fixtures"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://sqlite.org/testing.html",
+      "https://oneuptime.com/blog/post/2026-02-02-sqlite-testing/view"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "writing-tests",
+      "database-operations"
+    ]
+  },
+  "synced": "5d54ece102ae197d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "in-memory-vs-file-based-databases", "heading": "In-memory vs file-based databases"},
+    {"part": "test-isolation-strategies", "heading": "Test isolation strategies"},
+    {"part": "test-fixtures-and-seed-data", "heading": "Test fixtures and seed data"},
+    {"part": "performance-settings-for-test-databases", "heading": "Performance settings for test databases"},
+    {"part": "migration-testing", "heading": "Migration testing"},
+    {"part": "testing-sync-logic", "heading": "Testing sync logic"},
+    {"part": "testing-conflict-resolution", "heading": "Testing conflict resolution"},
+    {"part": "cross-database-compatibility", "heading": "Cross-database compatibility"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

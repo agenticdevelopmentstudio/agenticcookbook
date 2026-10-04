@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Adopt always-on, low-overhead production profiling correlated with traces only when measured perf/cost debugging justifies the pipeline."
 platforms: []
@@ -28,7 +28,7 @@ references:
   - https://opentelemetry.io/docs/specs/status/
   - https://thenewstack.io/elastic-profiling-agent-offers-a-4th-pillar-of-observability/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - performance-optimization
   - logging

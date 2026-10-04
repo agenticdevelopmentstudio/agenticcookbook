@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Harden MCP servers against tool poisoning, rug-pulls, token passthrough, confused-deputy, session hijacking, and SSRF."
 platforms: []
@@ -29,7 +29,7 @@ references:
   - https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html
   - https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
   - ai-api-integration

@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "42220186-4305-45cd-8e7d-a8d1172b6fbd",
+    "title": "Comprehensive unit testing",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/testing/testing",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Prioritize unit tests over integration tests. Test state transitions, edge cases, and serialization round-trips; every change needs tests and every bug fix a regression test.",
+    "platforms": [
+      "csharp",
+      "python",
+      "typescript"
+    ],
+    "tags": [
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://fluentassertions.com/",
+      "https://nsubstitute.github.io/",
+      "https://playwright.dev/",
+      "https://xunit.net/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "89249466ef8ccbb0",
+  "parts": [
+    {"part": "intro"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "c", "heading": "C#"},
+    {"part": "python", "heading": "Python"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

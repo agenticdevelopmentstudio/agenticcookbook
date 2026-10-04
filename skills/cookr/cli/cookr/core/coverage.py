@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from cookbook.core import refimpl
+from cookr.core import refimpl
 
 from .completeness import problems
 from .config import Config

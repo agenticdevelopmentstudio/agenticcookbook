@@ -1,5 +1,4 @@
 ---
-
 id: af8d7c30-f595-4d2d-b780-bdcbd1cb5962
 title: "File paths"
 domain: agenticdevelopercookbook://guidelines/reviewing/code-quality/file-paths
@@ -13,11 +12,11 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use `pathlib.Path`, not `os.path`. All path manipulation should go through `pathlib`."
-platforms: 
+platforms:
   - python
 languages:
   - python
-tags: 
+tags:
   - file-paths
   - language
   - python

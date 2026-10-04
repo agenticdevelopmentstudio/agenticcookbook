@@ -1,28 +1,27 @@
 ---
-
 id: cb92603e-093b-4691-b460-19df025ab664
 title: "Secure Storage"
 domain: agenticdevelopercookbook://guidelines/reviewing/security/secure-storage
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Tokens, credentials, and any sensitive data MUST use platform secure storage. Never store secrets in plaintext config..."
-platforms: 
+summary: "Tokens, credentials, and any sensitive data MUST use platform secure storage. Never store secrets in plaintext config files, app settings, or unencrypted preference stores."
+platforms:
   - kotlin
   - swift
   - windows
-tags: 
+tags:
   - secure-storage
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets
   - https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.protecteddata
 approved-by: "approve-artifact v1.0.0"
@@ -54,6 +53,7 @@ Use `EncryptedSharedPreferences` or the Android Keystore for tokens, credentials
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

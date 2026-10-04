@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f4acb6cd-1e5b-4175-9556-327506a188fe",
+    "title": "Law of Demeter and Tell, Don't Ask",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/law-of-demeter",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Talk only to immediate collaborators and tell objects to act rather than asking for their internals, except across documented boundary, builder, and pipeline cases.",
+    "platforms": [],
+    "tags": [
+      "coupling",
+      "code-quality",
+      "design"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/connascence",
+      "agenticdevelopercookbook://principles/separation-of-concerns"
+    ],
+    "references": [
+      "https://en.wikipedia.org/wiki/Law_of_Demeter"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "synced": "4e1db4cabc843c73",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-a-method-may-talk-to", "heading": "What a method may talk to"},
+    {"part": "detecting-violations-greppable-signals", "heading": "Detecting violations (greppable signals)"},
+    {"part": "relationship-to-connascence", "heading": "Relationship to connascence"},
+    {"part": "refactoring-a-violation", "heading": "Refactoring a violation"},
+    {"part": "exceptions-do-not-flag-these-important", "heading": "Exceptions — do NOT flag these (IMPORTANT)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

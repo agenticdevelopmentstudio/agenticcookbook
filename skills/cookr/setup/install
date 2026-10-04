@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Install the cookr skill globally for the current user, without the adh plugin.
+"""Install the cookr skill globally for the current user.
 
-- Installs the CLIs the skill drives via the repo's ./install --no-plugin:
-  ~/.local/bin/cookr and ~/.local/bin/cookbook (cookr imports the cookbook
-  package, and the skill runs `cookbook update/validate/lint/bump`).
+- Installs the cookr CLI via the repo's ./install --cli-only:
+  ~/.local/bin/cookr and ~/.local/bin/_cookr_pkg/.
 - Copies SKILL.md to ~/.claude/skills/cookr/, so the skill is /cookr in every
   project.
 
@@ -35,7 +34,7 @@ def main(argv: list[str]) -> int:
     args = parser.parse_args(argv)
 
     if not args.skill_only:
-        cli = subprocess.run([sys.executable, str(REPO_ROOT / "install"), "--no-plugin"])
+        cli = subprocess.run([sys.executable, str(REPO_ROOT / "install"), "--cli-only"])
         if cli.returncode != 0:
             return cli.returncode
 

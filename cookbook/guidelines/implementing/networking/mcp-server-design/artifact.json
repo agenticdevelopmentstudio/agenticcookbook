@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "788f1c1d-69af-4570-a279-748d89fcc0e0",
+    "title": "MCP server design",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Design MCP servers by choosing the right primitive and giving each tool a precise name, output schema, and annotations.",
+    "platforms": [],
+    "tags": [
+      "mcp",
+      "api",
+      "ai"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/explicit-over-implicit",
+      "agenticdevelopercookbook://principles/fail-fast"
+    ],
+    "references": [
+      "https://modelcontextprotocol.io/",
+      "https://modelcontextprotocol.io/specification/draft/server/tools",
+      "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "https://workos.com/blog/mcp-features-guide",
+      "https://modelcontextprotocol.io/specification/2025-11-25/changelog",
+      "https://blog.modelcontextprotocol.io/posts/2026-03-16-tool-annotations/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "api-integration",
+      "ai-api-integration"
+    ]
+  },
+  "synced": "17f6a8c4109508c8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "choose-the-right-primitive", "heading": "Choose the right primitive"},
+    {"part": "tool-design", "heading": "Tool design"},
+    {"part": "structured-output", "heading": "Structured output"},
+    {"part": "error-handling", "heading": "Error handling"},
+    {"part": "annotations-untrusted-hints", "heading": "Annotations (untrusted hints)"},
+    {"part": "security-baseline", "heading": "Security baseline"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

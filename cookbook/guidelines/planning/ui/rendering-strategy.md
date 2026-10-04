@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pick a rendering strategy per route to minimize how much JavaScript reaches the client and when, treating it as an architecture decision not a framework mandate."
 platforms:
@@ -27,7 +27,7 @@ related:
 references:
   - https://react.dev/reference/rsc/server-components
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
   - performance-optimization

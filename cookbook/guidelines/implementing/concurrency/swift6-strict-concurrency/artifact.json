@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "344b69da-c901-4650-b49d-c2df0234103b",
+    "title": "Adopt Swift 6 strict concurrency incrementally",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/concurrency/swift6-strict-concurrency",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Migrate to Swift 6 data-race safety module by module, making every type that crosses an isolation boundary Sendable.",
+    "platforms": [
+      "swift",
+      "ios",
+      "macos"
+    ],
+    "tags": [
+      "swift",
+      "concurrency",
+      "ios"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency",
+      "agenticdevelopercookbook://principles/immutability-by-default"
+    ],
+    "references": [
+      "https://www.swift.org/migration/documentation/migrationguide/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "concurrency"
+    ]
+  },
+  "synced": "b4d7e73dc732719e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-model", "heading": "Core model"},
+    {"part": "making-types-sendable", "heading": "Making types Sendable"},
+    {"part": "actor-isolation-and-mainactor", "heading": "Actor isolation and @MainActor"},
+    {"part": "incremental-migration", "heading": "Incremental migration"},
+    {"part": "swift-6-2-approachable-concurrency-version-specific", "heading": "Swift 6.2 \"Approachable Concurrency\" (version-specific)"},
+    {"part": "verification", "heading": "Verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

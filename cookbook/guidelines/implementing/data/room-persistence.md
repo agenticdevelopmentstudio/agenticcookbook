@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use Room with KSP, Flow-returning observable reads, suspend writes, and @Transaction-wrapped multi-step operations on Android."
 platforms:
@@ -26,7 +26,7 @@ references:
   - https://android-developers.googleblog.com/2026/03/room-30-modernizing-room.html
   - https://developer.android.com/kotlin/multiplatform/room
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - database-operations
   - data-modeling

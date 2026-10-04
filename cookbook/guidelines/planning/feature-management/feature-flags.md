@@ -1,5 +1,4 @@
 ---
-
 id: 588b5eae-b70e-4302-a52f-9287265ad03c
 title: "Feature flags"
 domain: agenticdevelopercookbook://guidelines/planning/feature-management/feature-flags
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Plan for feature flag architecture from the start: define a FeatureFlagProvider interface, choose storage backend, and identify which features need gating."
-platforms: 
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
-tags: 
+tags:
   - feature-flags
   - feature-management
 depends-on: []

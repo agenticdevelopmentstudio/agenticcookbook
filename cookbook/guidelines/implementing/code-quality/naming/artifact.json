@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "34486fb8-8a0b-4538-a40a-13124155cd56",
+    "title": "Naming",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/naming",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "- `PascalCase` for types, methods, properties, public fields, constants, namespaces",
+    "platforms": [],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "csharp",
+      "language",
+      "naming"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "code-review",
+      "new-module"
+    ]
+  },
+  "synced": "4d694e8a5c953d70",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

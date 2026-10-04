@@ -1,5 +1,4 @@
 ---
-
 id: f26a9468-a15c-4cd2-b944-d39221e7eee2
 title: "Platform Design Languages"
 domain: agenticdevelopercookbook://guidelines/cookbook/ui/platform-design-languages
@@ -13,16 +12,16 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Canonical platform design sources that cookbook artifacts MUST reference when specifying UI behavior, spacing, and appearance."
-platforms: 
+platforms:
   - kotlin
   - web
   - windows
-tags: 
+tags:
   - platform-design-languages
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/
   - https://fluent2.microsoft.design/
   - https://m3.material.io/

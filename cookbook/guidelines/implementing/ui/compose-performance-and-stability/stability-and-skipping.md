@@ -1,0 +1,6 @@
+
+- Composable parameters of **stable** types let the runtime skip recomposition when values are unchanged. The compiler infers stability for primitives, `String`, function types, and types whose public reads are all stable `val`/`State`.
+- Pass **immutable** data into composables. Prefer `val` over `var`, `kotlinx.collections.immutable` (`ImmutableList`/`PersistentList`) over `List`, and data classes whose properties are themselves stable.
+- **Strong-skipping mode** is enabled by default in current Compose (Kotlin 2.0.20+). It lets the runtime skip composables with *unstable* parameters by comparing those parameters with referential equality (`===`), and auto-remembers lambdas. NOTE: strong skipping does **not** make a type stable — passing a fresh `ArrayList` instance each recomposition still defeats skipping. Prefer genuinely stable inputs.
+- Annotate `@Immutable` (deeply unchanging) or `@Stable` (changes only via `State`) **only** when the type is truly so and the compiler cannot infer it (e.g., a type from a module without the Compose compiler, or one using an interface field). A false annotation causes missed recompositions and stale UI — do not annotate to silence the compiler.
+

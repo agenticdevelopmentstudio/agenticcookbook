@@ -1,5 +1,4 @@
 ---
-
 id: 3416a359-e01c-40b2-8876-4a8634d4395e
 title: "Caching"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/caching
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use HTTP caching headers. The server controls cache policy; the client honors it."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - caching
   - networking
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
   - https://web.dev/articles/http-cache
   - https://www.rfc-editor.org/rfc/rfc9111
@@ -29,7 +28,7 @@ references:
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-None-Match
   - https://www.rfc-editor.org/rfc/rfc9111.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - networking
   - performance-optimization

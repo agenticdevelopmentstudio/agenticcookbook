@@ -3,11 +3,11 @@ id: 7a3e1f2c-8b4d-4e6a-9c5f-1d2e3f4a5b6c
 title: "Conventions"
 domain: agenticdevelopercookbook://introduction/conventions
 type: reference
-version: 1.6.0
+version: 1.7.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-09-25
+modified: 2026-10-03
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -92,6 +92,24 @@ triggers: []
 | `approved-by` | Yes | Approval stamp from `/approve-artifact`. Format: `"approve-artifact <version>"`. Empty string `""` if not yet approved. |
 | `approved-date` | Yes | ISO 8601 date when the artifact was last approved. Empty string `""` if not yet approved. |
 | `triggers` | Guideline only | Activity or context tags that make this guideline relevant to an AI agent. Empty list `[]` if not yet classified. Values from the canonical trigger taxonomy in `introduction/trigger-guide.md`. |
+
+### Source Folders
+
+Every principle, guideline, ingredient and recipe is stored as a source folder, and the
+single `.md` file described above is compiled from it:
+
+```
+<name>/
+  artifact.json   format, meta (the frontmatter fields above) and the ordered part list
+  intro.md        the `# Title` and its statement
+  <section>.md    one part per `## ` section
+  history.md      the Change History section
+<name>.md         compiled by `cookr compile`; committed so tools can read it
+```
+
+The folder is the source. Edit its parts and run `cookr compile`, or edit `<name>.md` and run
+`cookr convert --update <path>` to fold the edit back. `cookr validate` fails while the two disagree.
+The full format is in `docs/superpowers/specs/2026-10-03-artifact-source-folder.md`.
 
 ### Change History
 
@@ -328,6 +346,7 @@ Format:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.7.0 | 2026-10-03 | Mike Fullerton | Source folders: artifacts are stored as folders and the .md is compiled from them |
 | 1.6.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.5.0 | 2026-04-09 | Mike Fullerton | Add triggers field for guideline-type artifacts |
 | 1.4.0 | 2026-04-06 | Mike Fullerton | Rename concoction to cookbook; add cookbook type to enum |

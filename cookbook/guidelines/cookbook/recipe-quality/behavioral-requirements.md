@@ -1,5 +1,4 @@
 ---
-
 id: 04fe1298-3880-4584-8a4a-c7a538eb5193
 title: "Behavioral Requirements"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/behavioral-requirements
@@ -27,7 +26,7 @@ related: []
 references:
   - https://www.rfc-editor.org/rfc/rfc2119
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - recipe-authoring
 ---

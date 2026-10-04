@@ -1,9 +1,9 @@
 """The ingredient and recipe templates: where they live and which sections they hold.
 
-The `cookbook` package's install materializes the content repo's
+cookr's install materializes the content repo's
 `cookbook/ingredients/_template.md` and `cookbook/recipes/_template.md` into its
 references dir as `templates/ingredient.md` and `templates/recipe.md` (see
-skills/cookbook/cli/reference-manifest.json). That is the single copy cookr
+skills/cookr/cli/reference-manifest.json). That is the single copy cookr
 reads: the extract prompt embeds it, and completeness grades a recipe against
 its `## ` headings, so a section added to a template is required everywhere at
 once instead of in a second hand-kept list.
@@ -14,14 +14,14 @@ from __future__ import annotations
 import functools
 from pathlib import Path
 
-from cookbook.core import history, refs
-from cookbook.core.frontmatter import parse_file
+from cookr.core import history, refs
+from cookr.core.frontmatter import parse_file
 
 TYPES: tuple[str, ...] = ("ingredient", "recipe")
 
 
 def templates_dir() -> Path:
-    """Where the cookbook package's install put the templates."""
+    """Where cookr's install put the templates."""
     return refs.references_dir() / "templates"
 
 
@@ -33,7 +33,7 @@ def template_path(rtype: str) -> Path:
     if not path.is_file():
         raise FileNotFoundError(
             f"the {rtype} template is missing: {path}. Run ./install in the "
-            f"agenticcookbook repo to materialize the cookbook package's references."
+            f"agenticcookbook repo to materialize cookr's references."
         )
     return path
 

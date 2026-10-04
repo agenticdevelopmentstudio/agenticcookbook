@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d3cb8f40-b142-447d-8176-8055d55868b1",
+    "title": "Software supply-chain integrity",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/supply-chain-integrity",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Emit an SBOM and signed SLSA provenance per build, then verify both signatures and provenance at deploy time.",
+    "platforms": [],
+    "tags": [
+      "security",
+      "supply-chain",
+      "ci-cd"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/dependency-security"
+    ],
+    "references": [
+      "https://slsa.dev/",
+      "https://www.cisa.gov/sbom",
+      "https://owasp.org/Top10/2025/0x00_2025-Introduction/",
+      "https://slsa.dev/spec/v1.0/levels",
+      "https://cyclonedx.org/specification/overview/",
+      "https://docs.sigstore.dev/cosign/signing/overview/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "dependency-management",
+      "pre-pr"
+    ]
+  },
+  "synced": "b9ea882ad8432010",
+  "parts": [
+    {"part": "intro"},
+    {"part": "two-artifacts-per-build", "heading": "Two artifacts per build"},
+    {"part": "build-emit-sbom-provenance", "heading": "Build: emit SBOM + provenance"},
+    {"part": "deploy-verify-before-promotion", "heading": "Deploy: verify before promotion"},
+    {"part": "combine-with-pinning-and-lockfiles", "heading": "Combine with pinning and lockfiles"},
+    {"part": "regulatory-drivers-dated-treat-timelines-as-forecasts", "heading": "Regulatory drivers (dated — treat timelines as forecasts)"},
+    {"part": "must-not", "heading": "MUST NOT"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

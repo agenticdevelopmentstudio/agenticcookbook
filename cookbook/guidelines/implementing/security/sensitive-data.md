@@ -1,5 +1,4 @@
 ---
-
 id: 22f1ca04-2d1d-4faf-8bf0-c6abcd60802c
 title: "Sensitive Data"
 domain: agenticdevelopercookbook://guidelines/implementing/security/sensitive-data
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Minimize what you collect, encrypt what you keep, never log what you shouldn't."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - security
   - sensitive-data
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html
   - https://csrc.nist.gov/publications/detail/sp/800-122/final
 approved-by: "approve-artifact v1.0.0"

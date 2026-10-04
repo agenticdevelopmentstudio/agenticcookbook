@@ -1,5 +1,4 @@
 ---
-
 id: 1123eb5a-b38a-41f8-8ae9-ec899f15707f
 title: "Sync Engine Design"
 domain: agenticdevelopercookbook://guidelines/planning/data/sync-engine-design

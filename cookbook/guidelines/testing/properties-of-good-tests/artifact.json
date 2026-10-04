@@ -1,0 +1,37 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e5af9ba5-f484-40c3-9738-470090f5241c",
+    "title": "Properties of Good Tests",
+    "domain": "agenticdevelopercookbook://guidelines/testing/properties-of-good-tests",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "From Kent Beck's Test Desiderata, good tests are isolated, composable, deterministic, fast, writable, readable, behavioral, structure-insensitive, and automated.",
+    "platforms": [],
+    "tags": [
+      "properties-of-good-tests",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "code-review"
+    ]
+  },
+  "synced": "109853c706b3563e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

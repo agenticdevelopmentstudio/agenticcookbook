@@ -1,0 +1,8 @@
+
+1. **Delegation defines interface boundaries.** A component with a clean delegate protocol is designed to be replaceable — the delegate protocol IS the interface. The component and its protocol belong in the same scope group; its concrete delegate implementations may belong elsewhere.
+2. **Notification center usage is an implicit coupling signal.** For every `NotificationCenter.post`, identify all files that observe that notification — they are implicitly coupled even if they have no import relationship. High use of notifications across many files indicates missing formal interfaces.
+3. **Singletons couple everything to everything.** Any file that accesses a singleton is implicitly coupled to every other file that accesses the same singleton. Singletons accessed across many candidate groups indicate a cross-cutting dependency — flag for `cross-cutting-detection`.
+4. **DI containers define the composition boundary.** The DI container registration site is the architectural seam — it is where modules are wired together. Code on either side of the registration site belongs in separate scope groups.
+5. **Coordinators are natural scope group boundaries.** A coordinator object that manages navigation for a feature flow — and owns the child view controllers in that flow — is a natural scope group boundary. The coordinator and its owned screens form one group.
+6. **Global state (Redux, MobX, Context) makes boundaries fuzzy.** If all components read from a single global store, module boundaries are implicitly bypassed. Document which store slices each candidate group reads/writes — slices may suggest sub-boundaries.
+

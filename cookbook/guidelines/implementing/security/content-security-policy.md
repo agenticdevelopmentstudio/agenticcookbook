@@ -1,5 +1,4 @@
 ---
-
 id: 6f4cfd55-cb09-4ede-a53c-feaeb5781127
 title: "Content Security Policy"
 domain: agenticdevelopercookbook://guidelines/implementing/security/content-security-policy
@@ -13,22 +12,22 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Prevent XSS and injection with a strict CSP. Web apps only."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - content-security-policy
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
   - https://csp-evaluator.withgoogle.com/
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for
   - https://web.dev/articles/strict-csp
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
   - ui-implementation

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Favor explicit, greppable, locally-readable code so AI agents can find and modify behavior on the first pass — without sacrificing human readability."
 platforms: []
@@ -25,7 +25,7 @@ related:
 references:
   - https://simonwillison.net/2025/Mar/11/using-llms-for-code/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

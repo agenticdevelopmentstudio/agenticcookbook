@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Evaluate RAG groundedness with verified citations, calibrated LLM judges, and retrieval metrics, and abstain when context is insufficient."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
   - https://arxiv.org/abs/2309.15217
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ai-api-integration
   - writing-tests

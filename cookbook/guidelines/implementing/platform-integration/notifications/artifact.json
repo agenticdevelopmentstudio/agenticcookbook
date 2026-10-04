@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "94e8caba-da27-4bb8-8f8e-38730b8b34e0",
+    "title": "Notifications",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/notifications",
+    "type": "guideline",
+    "version": "2.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps SHOULD use the platform notification system for timely, actionable alerts that respect user preferences.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "windows",
+      "web"
+    ],
+    "tags": [
+      "notifications",
+      "platform"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://principles/support-automation"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "platform-integration",
+      "ui-implementation"
+    ]
+  },
+  "synced": "2509cf4d0fc595cf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
+    {"part": "android", "heading": "Android"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "web", "heading": "Web"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

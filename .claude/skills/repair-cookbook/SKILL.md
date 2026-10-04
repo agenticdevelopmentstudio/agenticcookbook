@@ -1,9 +1,9 @@
 ---
 name: repair-cookbook
-version: "2.0.0"
+version: "2.1.0"
 description: "Scan and repair cookbook integrity — broken cross-references, stale frontmatter, dead index links. Finds breaks, fuzzy-matches fixes, batch confirms."
 argument-hint: "[--dry-run] [--category <name>] [--version]"
-allowed-tools: Read, Glob, Grep, Edit, Write, Agent, Bash(find *), Bash(wc *), Bash(diff *), Bash(date *), AskUserQuestion
+allowed-tools: Read, Glob, Grep, Edit, Write, Agent, Bash(find *), Bash(wc *), Bash(diff *), Bash(date *), Bash(cookr *), AskUserQuestion
 context: fork
 ---
 
@@ -11,11 +11,11 @@ context: fork
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
 
-> repair-cookbook v2.0.0
+> repair-cookbook v2.1.0
 
 Then stop.
 
-Otherwise, print `repair-cookbook v2.0.0` as the first line of output, then proceed.
+Otherwise, print `repair-cookbook v2.1.0` as the first line of output, then proceed.
 
 ## Test Mode
 
@@ -212,6 +212,10 @@ These are always safe:
 - **I01 missing from index**: Add entry to `index.md` in correct section
 - **I03 stale index entry**: Remove dead link from index
 - **P07 temp files**: Delete `.bak`, `.tmp`, `.orig`, `~`, `.DS_Store` files
+
+After applying fixes, run `cookr convert --update <file>...` on every artifact `.md` you
+edited that has a source folder, so each fix lands in the folder it is compiled from.
+Never edit or scan the part files inside a source folder; the `.md` beside it is the artifact.
 
 ---
 

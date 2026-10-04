@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "source_root": ".",
+  "destination": "skills/cookr/cli/references",
+  "files": [
+    { "src": "cookbook/principles",                  "dst": "principles",            "type": "tree", "include": "*.md" },
+    { "src": "cookbook/introduction/conventions.md", "dst": "conventions.md",        "type": "file" },
+    { "src": "cookbook/introduction/glossary.md",    "dst": "glossary.md",           "type": "file" },
+    { "src": "cookbook/ingredients/_template.md",    "dst": "templates/ingredient.md", "type": "file" },
+    { "src": "cookbook/recipes/_template.md",        "dst": "templates/recipe.md",   "type": "file" }
+  ],
+  "embedded_dir": "references-src"
+}

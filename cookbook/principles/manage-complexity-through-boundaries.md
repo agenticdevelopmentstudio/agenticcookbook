@@ -3,17 +3,17 @@ id: 555ad5e1-800f-4848-8c58-6f726bdcb42b
 title: "Manage complexity through boundaries"
 domain: agenticdevelopercookbook://principles/manage-complexity-through-boundaries
 type: principle
-version: 1.1.0
+version: 1.1.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Well-defined boundaries between subsystems let each side evolve independently. Define ports (interfaces) that describ..."
+summary: "Well-defined boundaries let subsystems evolve independently. Define ports the app owns, use thin adapters to external technologies, and test the core without databases, UIs, or networks."
 platforms: []
-tags: 
+tags:
   - manage-complexity-through-boundaries
 depends-on: []
 related:
@@ -40,5 +40,6 @@ Well-defined boundaries between subsystems let each side evolve independently. D
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Fold open/closed kernel (extend behind stable ports); link composition, connascence, steel-thread-first, yagni |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c3cf9193-b6a7-493b-a531-76aa601109da",
+    "title": "Positioning",
+    "domain": "agenticdevelopercookbook://guidelines/storytelling/positioning",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "State who a project is for, what it is for, and its concrete value — grounded in the material, not hype.",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "narrative",
+      "positioning"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis",
+      "agenticdevelopercookbook://guidelines/storytelling/explanation"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "208b2dfbff427817",
+  "parts": [
+    {"part": "intro"},
+    {"part": "audience", "heading": "Audience"},
+    {"part": "purpose", "heading": "Purpose"},
+    {"part": "value-proposition", "heading": "Value Proposition"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

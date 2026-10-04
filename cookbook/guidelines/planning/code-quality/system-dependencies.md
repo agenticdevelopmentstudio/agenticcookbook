@@ -1,5 +1,4 @@
 ---
-
 id: 03539f34-3451-49d5-b90f-ba77430f2658
 title: "System Dependencies"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/system-dependencies
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - dependency-management

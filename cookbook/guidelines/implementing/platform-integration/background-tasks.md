@@ -1,5 +1,4 @@
 ---
-
 id: 433b4c9d-fe44-4fec-af0d-83bba9c51c6f
 title: "Background tasks"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/background-tasks
@@ -13,13 +12,13 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Apps that sync data, process uploads, or maintain state SHOULD use platform background execution APIs rather than relying on foreground presence."
-platforms: 
+platforms:
   - ios
   - macos
   - android
   - windows
   - web
-tags: 
+tags:
   - background-tasks
   - platform
   - sync

@@ -1,5 +1,4 @@
 ---
-
 id: 28e0fd80-be0a-4f85-ac42-1e423623b242
 title: "Bulk operation verification"
 domain: agenticdevelopercookbook://guidelines/shipping/bulk-operation-verification

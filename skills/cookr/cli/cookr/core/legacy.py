@@ -39,7 +39,7 @@ root needs.
 
 `scheme` is the URI scheme of this repo's recipe domains
 (`<scheme>://<recipes>/<slug>`). Without it, the scheme is the repo's name
-(`cookbook.core.scheme.repo_scheme`): its `origin` remote's basename, else its
+(`cookr.core.scheme.repo_scheme`): its `origin` remote's basename, else its
 main checkout's directory name, so a linked worktree never names it after the
 worktree or branch.
 """
@@ -53,8 +53,8 @@ from functools import cached_property
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core.markdown import SKIP_NAMES
-from cookbook.core.scheme import repo_scheme
+from cookr.core.markdown import SKIP_NAMES
+from cookr.core.scheme import repo_scheme
 
 from .config import KINDS, PLATFORMS, ConfigError
 from .inventory import SOURCE_SUFFIXES, Component, component_stem, ignore_set

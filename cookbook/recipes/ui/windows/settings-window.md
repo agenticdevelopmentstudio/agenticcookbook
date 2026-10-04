@@ -12,7 +12,7 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Standard desktop settings/preferences window with sidebar categories and immediate-apply controls"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
@@ -20,7 +20,7 @@ platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - settings-window
   - ui
   - window

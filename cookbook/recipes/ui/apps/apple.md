@@ -12,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "XcodeGen-generated test app suite with component catalog targets for all five Apple platforms"
-platforms: 
+platforms:
   - ios
   - macos
   - swift
   - typescript
-tags: 
+tags:
   - apple
   - apps
   - ui

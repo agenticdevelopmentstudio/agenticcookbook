@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e2a99bf0-6b25-4769-9d1e-613b58b6f097",
+    "title": "Agent evaluation and safety",
+    "domain": "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Gate every agent/LLM release on two checks: a quality eval gate and a safety gate, both run in CI on every model and prompt change.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "evals",
+      "safety"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/eval-driven-development",
+      "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security"
+    ],
+    "references": [
+      "https://developers.openai.com/api/docs/guides/evals",
+      "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "https://www.nist.gov/itl/ai-risk-management-framework"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ai-api-integration",
+      "writing-tests"
+    ]
+  },
+  "synced": "e548e6bde67a463e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "two-gates-both-required", "heading": "Two gates, both required"},
+    {"part": "defining-slos", "heading": "Defining SLOs"},
+    {"part": "run-both-gates-in-ci", "heading": "Run both gates in CI"},
+    {"part": "red-teaming-the-safety-gate", "heading": "Red-teaming the safety gate"},
+    {"part": "tracking-regressions-over-time", "heading": "Tracking regressions over time"},
+    {"part": "adopt-when-measured", "heading": "Adopt-when-measured"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

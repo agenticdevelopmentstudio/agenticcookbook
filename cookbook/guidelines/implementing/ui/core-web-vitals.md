@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Target LCP <= 2.5s, INP <= 200ms, CLS <= 0.1 at field p75, and enforce a performance budget in CI."
 platforms:
@@ -27,7 +27,7 @@ references:
   - https://web.dev/articles/inp
   - https://web.dev/articles/vitals/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
   - performance-optimization

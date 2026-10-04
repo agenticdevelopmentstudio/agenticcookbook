@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Centralized logging infrastructure with per-category static logger instances sharing one subsystem"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - infrastructure
   - logging
 depends-on: []

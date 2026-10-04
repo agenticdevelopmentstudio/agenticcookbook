@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c82c02a1-ec15-4892-94b9-0a936eaf2ba7",
+    "title": "Security Headers Checklist",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/security-headers-checklist",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Every web application MUST set the standard security response headers: HSTS, Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, and Cache-Control.",
+    "platforms": [
+      "web"
+    ],
+    "tags": [
+      "security",
+      "security-headers-checklist"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "security-review",
+      "pre-pr"
+    ]
+  },
+  "synced": "85818a0971b68b90",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,3 @@
+
+Work SHOULD be planned into small, reviewable pull requests **before** writing code, not carved down afterward. Large diffs degrade both human and AI reviewers: once a change exceeds what fits in a reviewer's working context, review collapses into shallow pattern-matching rather than reasoning about correctness. AI-generated code SHOULD receive more per-line scrutiny, not less — which makes small, frequent diffs more important for agent-authored work, not a luxury to be skipped under time pressure. When a planned unit of work looks like it will produce a large diff, it SHOULD be split into a sequence of smaller PRs.
+

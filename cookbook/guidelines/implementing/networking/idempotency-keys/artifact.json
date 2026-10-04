@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c6f45d8b-ed7e-483b-9f83-fc811635758f",
+    "title": "Idempotency keys for write APIs",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/idempotency-keys",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Accept a client-supplied Idempotency-Key on write endpoints so retries are safe, and reject key reuse with different parameters.",
+    "platforms": [],
+    "tags": [
+      "api",
+      "reliability",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/idempotency",
+      "agenticdevelopercookbook://guidelines/implementing/networking/retry-and-resilience"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+      "https://stripe.com/blog/idempotency",
+      "https://docs.stripe.com/api/idempotent_requests",
+      "https://brandur.org/idempotency-keys",
+      "https://httptoolkit.com/blog/idempotency-keys/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "api-integration",
+      "networking"
+    ]
+  },
+  "synced": "031dcb813404d099",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-use-it", "heading": "When to use it"},
+    {"part": "the-header", "heading": "The header"},
+    {"part": "server-side-algorithm", "heading": "Server-side algorithm"},
+    {"part": "persistence-and-expiry", "heading": "Persistence and expiry"},
+    {"part": "client-responsibilities", "heading": "Client responsibilities"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

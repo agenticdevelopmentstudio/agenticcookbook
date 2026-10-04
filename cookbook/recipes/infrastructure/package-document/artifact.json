@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07",
+    "title": "Package Document",
+    "domain": "agenticdevelopercookbook://recipes/infrastructure/package-document",
+    "type": "recipe",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-03-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pattern for macOS document-based apps using directory bundle packages with SQLite databases and auto-save",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift",
+      "windows"
+    ],
+    "tags": [
+      "infrastructure",
+      "package-document"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "137ec5e080677d0b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "terminology", "heading": "Terminology"},
+    {"part": "architecture", "heading": "Architecture"},
+    {"part": "uttype-registration", "heading": "UTType Registration"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

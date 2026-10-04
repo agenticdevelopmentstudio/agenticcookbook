@@ -1,5 +1,4 @@
 ---
-
 id: d73a9715-cab5-4ccd-8c14-1a941ff095d6
 title: "Touch & Click Targets"
 domain: agenticdevelopercookbook://guidelines/reviewing/ui/touch-click-targets
@@ -13,19 +12,19 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Interactive elements MUST be large enough to tap or click accurately. Defer to the platform"
-platforms: 
+platforms:
   - ios
   - kotlin
   - typescript
   - web
   - windows
-tags: 
+tags:
   - touch-click-targets
   - ui
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/reviewing/accessibility/accessibility
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/accessibility#User-interaction
   - https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting
   - https://m3.material.io/foundations/accessible-design/accessibility-basics

@@ -1,5 +1,4 @@
 ---
-
 id: 5a57e599-ca8e-44b9-9be7-109f7c176feb
 title: "Sync Schema Design"
 domain: agenticdevelopercookbook://guidelines/planning/data/sync-schema-design

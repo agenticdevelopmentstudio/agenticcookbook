@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2945503d-8e92-44ca-bc64-20285eb29296",
+    "title": "Skill Lint Checklist",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/skill-checklist",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Comprehensive lint checklist for validating Claude Code skill structure, content quality, and best practices",
+    "platforms": [],
+    "tags": [
+      "skills",
+      "linting",
+      "checklist",
+      "quality"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/authoring-skills-and-rules",
+      "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/skill-structure-reference"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "skill-authoring",
+      "pre-pr"
+    ]
+  },
+  "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
+  "synced": "52f9a279a60eebdc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "structure-format", "heading": "Structure & Format"},
+    {"part": "content-quality", "heading": "Content Quality"},
+    {"part": "best-practices", "heading": "Best Practices"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

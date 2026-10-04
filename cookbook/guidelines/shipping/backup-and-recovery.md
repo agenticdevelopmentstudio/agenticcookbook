@@ -1,5 +1,4 @@
 ---
-
 id: 04b47c8b-e076-47a0-a541-6937bdc64abb
 title: "Database backup and recovery"
 domain: agenticdevelopercookbook://guidelines/shipping/backup-and-recovery

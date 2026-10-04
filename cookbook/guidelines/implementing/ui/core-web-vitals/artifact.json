@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c8bf92be-4b7b-4ed7-a9b5-9584c1878d63",
+    "title": "Core Web Vitals and performance budgets",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/core-web-vitals",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Target LCP <= 2.5s, INP <= 200ms, CLS <= 0.1 at field p75, and enforce a performance budget in CI.",
+    "platforms": [
+      "web",
+      "typescript"
+    ],
+    "tags": [
+      "web",
+      "performance",
+      "metrics"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/tight-feedback-loops",
+      "agenticdevelopercookbook://principles/support-automation"
+    ],
+    "references": [
+      "https://web.dev/articles/inp",
+      "https://web.dev/articles/vitals/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation",
+      "performance-optimization"
+    ]
+  },
+  "synced": "55c0c9861ca5157f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-three-core-web-vitals-current-as-of-2026", "heading": "The three Core Web Vitals (current as of 2026)"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "inp-is-usually-the-hardest-to-pass", "heading": "INP is usually the hardest to pass"},
+    {"part": "lcp-and-cls-quick-wins", "heading": "LCP and CLS quick wins"},
+    {"part": "measurement-and-ci-enforcement", "heading": "Measurement and CI enforcement"},
+    {"part": "notes", "heading": "Notes"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

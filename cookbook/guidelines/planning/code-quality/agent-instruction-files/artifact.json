@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5aad79dd-4d0e-463e-8059-39da2fef63b3",
+    "title": "Agent instruction files (AGENTS.md / CLAUDE.md)",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/agent-instruction-files",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Ship a lean machine-targeted instruction file at the repo root that states build/test/run commands, conventions, and what is out of scope.",
+    "platforms": [],
+    "tags": [
+      "agents",
+      "documentation",
+      "ai-workflow"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/explicit-over-implicit",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+    ],
+    "references": [
+      "https://agents.md/",
+      "https://code.claude.com/docs/en/best-practices",
+      "https://aaif.io/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation-aaif-anchored-by-new-project-contributions-including-model-context-protocol-mcp-goose-and-agents-md/",
+      "https://arxiv.org/pdf/2602.11988"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "names_hosts": "Compares AGENTS.md with Claude Code's CLAUDE.md: both hosts' instruction files are the subject.",
+  "synced": "29458dc107c8468a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "which-file-to-ship", "heading": "Which file to ship"},
+    {"part": "what-to-include", "heading": "What to include"},
+    {"part": "monorepos-nest-per-directory-files", "heading": "Monorepos: nest per-directory files"},
+    {"part": "keep-it-lean-prune-ruthlessly", "heading": "Keep it lean — prune ruthlessly"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

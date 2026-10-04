@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "31586bfd-4403-4a11-93d4-ac1a3e001c2f",
+    "title": "Data Display",
+    "domain": "agenticdevelopercookbook://guidelines/planning/ui/data-display",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Choose the right pattern for the content type and user task.",
+    "platforms": [],
+    "tags": [
+      "data-display",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+      "https://m3.material.io/components/lists/overview",
+      "https://www.nngroup.com/articles/cards-component/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation",
+      "data-modeling"
+    ]
+  },
+  "synced": "5ed3f06afb821a20",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

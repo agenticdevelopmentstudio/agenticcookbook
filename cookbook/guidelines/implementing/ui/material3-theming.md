@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Theme Compose UIs with Material 3 color roles, ColorScheme, type and shape scales, and full dark support."
 platforms:
@@ -28,7 +28,7 @@ references:
   - https://developer.android.com/jetpack/androidx/releases/compose-material3
   - https://developer.android.com/develop/ui/compose/designsystems/material3
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ui-implementation
 ---

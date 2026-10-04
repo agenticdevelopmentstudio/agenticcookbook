@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Adopt the system Apple design language and materials over custom chrome, and version-gate brand-new design APIs like Liquid Glass."
 platforms:
@@ -27,7 +27,7 @@ related:
 references:
   - https://developer.apple.com/design/human-interface-guidelines
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
   - platform-integration

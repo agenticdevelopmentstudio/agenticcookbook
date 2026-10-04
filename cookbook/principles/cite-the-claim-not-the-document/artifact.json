@@ -1,0 +1,37 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "09947209-369f-40de-8331-c10b0d6f32c6",
+    "title": "Cite the claim, not the document",
+    "domain": "agenticdevelopercookbook://principles/cite-the-claim-not-the-document",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Every individual claim carries its own citation and the exact supporting quote — a bibliography at the end is not auditable.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "citations",
+      "provenance"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/provenance-at-generation-time",
+      "agenticdevelopercookbook://principles/independence-before-corroboration"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "fd2527965ced6d39",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

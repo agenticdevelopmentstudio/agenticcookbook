@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "db55507a-42ce-4c6d-bd8a-6ccdb6b2d152",
+    "title": "HTTP conditional requests and optimistic concurrency",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/http-conditional-requests",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use ETags with If-None-Match for efficient reads and If-Match for optimistic concurrency on writes to prevent lost updates.",
+    "platforms": [],
+    "tags": [
+      "api",
+      "http",
+      "concurrency"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/caching",
+      "agenticdevelopercookbook://guidelines/implementing/networking/idempotency-keys"
+    ],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc9110.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "api-integration",
+      "networking"
+    ]
+  },
+  "synced": "3b25f213274bbb32",
+  "parts": [
+    {"part": "intro"},
+    {"part": "etags-as-validators", "heading": "ETags as validators"},
+    {"part": "efficient-reads-if-none-match-304", "heading": "Efficient reads — If-None-Match / 304"},
+    {"part": "optimistic-concurrency-on-writes-if-match-412", "heading": "Optimistic concurrency on writes — If-Match / 412"},
+    {"part": "boundaries-and-pitfalls", "heading": "Boundaries and pitfalls"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

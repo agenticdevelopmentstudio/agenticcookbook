@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "28e0fd80-be0a-4f85-ac42-1e423623b242",
+    "title": "Bulk operation verification",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/bulk-operation-verification",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-28",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "After any operation touching 5+ files, run a verification pass for stale references before marking complete.",
+    "platforms": [],
+    "tags": [
+      "bulk-operations",
+      "verification",
+      "code-quality"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "pre-commit"
+    ]
+  },
+  "names_hosts": "Lists CLAUDE.md among the files a bulk operation must re-check.",
+  "synced": "7a8b5a4882fdbd43",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-to-verify", "heading": "What to verify"},
+    {"part": "when-to-run", "heading": "When to run"},
+    {"part": "for-cross-repo-operations", "heading": "For cross-repo operations"},
+    {"part": "the-rule", "heading": "The rule"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

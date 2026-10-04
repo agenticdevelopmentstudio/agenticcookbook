@@ -1,24 +1,23 @@
 ---
-
 id: ac616d81-16c2-4f33-9ae4-139d5c24318d
 title: "Feature flags"
 domain: agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All features MUST be gated behind feature flags from initial implementation. Define a `FeatureFlagProvider` interface..."
-platforms: 
+summary: "Gate all features behind feature flags from initial implementation. Define a FeatureFlagProvider interface with a local default, and swap in a backend implementation later via DI."
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
-tags: 
+tags:
   - feature-flags
   - feature-management
 depends-on: []
@@ -63,6 +62,7 @@ TypeScript interface + `localStorage`-backed implementation as the default.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

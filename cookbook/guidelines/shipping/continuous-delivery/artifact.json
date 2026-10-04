@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "703b1ec7-b940-46a5-8974-441b04a0bb9d",
+    "title": "Continuous delivery",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/continuous-delivery",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep main always releasable via an automated build-test-deploy pipeline; releasing is a business decision, not a manual scramble.",
+    "platforms": [],
+    "tags": [
+      "ci-cd",
+      "delivery",
+      "automation"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/trunk-based-development",
+      "agenticdevelopercookbook://principles/tight-feedback-loops",
+      "agenticdevelopercookbook://principles/small-reversible-decisions"
+    ],
+    "references": [
+      "https://dora.dev/",
+      "https://dora.dev/capabilities/continuous-delivery/",
+      "https://dora.dev/capabilities/continuous-integration/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-pr"
+    ]
+  },
+  "synced": "9ca138dab0e6dfb6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "delivery-vs-deployment", "heading": "Delivery vs. deployment"},
+    {"part": "pipeline-requirements", "heading": "Pipeline requirements"},
+    {"part": "the-j-curve-caveat", "heading": "The J-curve caveat"},
+    {"part": "pre-pr-checklist-for-agents", "heading": "Pre-PR checklist for agents"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

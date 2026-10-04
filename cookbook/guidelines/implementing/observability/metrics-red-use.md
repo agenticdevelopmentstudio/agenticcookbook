@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Instrument services with RED metrics and resources with USE so signals correlate and feed SLIs/SLOs."
 platforms: []
@@ -23,7 +23,7 @@ related:
 references:
   - https://www.brendangregg.com/usemethod.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - logging
   - performance-optimization

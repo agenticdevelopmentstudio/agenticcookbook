@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Ship a PrivacyInfo.xcprivacy manifest declaring data collection and required-reason API usage, or App Store submission is rejected."
 platforms:
@@ -29,7 +29,7 @@ references:
   - https://developer.apple.com/news/?id=pvszzano
   - https://bitrise.io/blog/post/enforcement-of-apple-privacy-manifest-starting-from-may-1-2024
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - pre-pr
   - dependency-management

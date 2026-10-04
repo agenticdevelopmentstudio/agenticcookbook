@@ -1,0 +1,8 @@
+
+- **Invented accessibility requirements.** The source code contains no VoiceOver or ARIA support. The recipe's Accessibility section includes five MUST requirements for screen reader behavior. These requirements are invented; no implementation can verify them against the source.
+- **Omitting a documented workaround.** The source code patches a race condition by debouncing a search field with a 400ms delay. The recipe describes the search behavior without mentioning the debounce, causing implementors on other platforms to miss the timing requirement.
+- **Idealizing error handling.** The source code catches a network error and logs it to the console, providing no user-facing feedback. The recipe states: `MUST display a retry prompt when the network request fails.` This is the desired behavior, not the actual behavior.
+- **Claiming silent failures don't exist.** A data write function calls a database write operation without checking the return value or catching exceptions. The recipe states the component `MUST persist data reliably`. The source provides no such guarantee.
+- **NEEDS REVIEW hiding laziness, not gaps.** Every section of the Accessibility review is marked `NEEDS REVIEW` even though the source code has extensive VoiceOver labels. The marker is used to avoid analysis, not to flag genuine gaps.
+- **Aspirational requirements presented as normative.** The source truncates long strings with an ellipsis. The recipe states: `MUST truncate with an ellipsis and provide a tooltip with the full text.` The tooltip is not implemented; the author added it because it seemed like good practice.
+

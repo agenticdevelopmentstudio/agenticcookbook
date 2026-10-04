@@ -1,5 +1,4 @@
 ---
-
 id: a7c2a089-7666-459e-b564-24cc30980936
 title: "Visual Hierarchy"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/visual-hierarchy
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Establish clear importance through size, weight, color, and spacing. Every screen should"
-platforms: 
+platforms:
   - windows
-tags: 
+tags:
   - ui
   - visual-hierarchy
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/layout
   - https://learn.microsoft.com/en-us/windows/apps/design/layout/
   - https://m3.material.io/foundations/layout/applying-layout/overview

@@ -1,5 +1,4 @@
 ---
-
 id: 1d4b2aa7-c30e-4d41-8bd8-892ff7ce7499
 title: "App Interactions"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/app-interactions
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

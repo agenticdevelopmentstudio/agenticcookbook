@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "A system's architecture mirrors the communication structure of the teams or agents that build it — so shape those boundaries to match the design you want."
 platforms: []
@@ -25,7 +25,7 @@ related:
 references:
   - https://martinfowler.com/bliki/ConwaysLaw.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 ---
 
 # Conway's Law

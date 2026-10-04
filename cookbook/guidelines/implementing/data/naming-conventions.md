@@ -1,5 +1,4 @@
 ---
-
 id: DDE1B6FD-773C-4F9F-A328-51150468BC99
 title: "Database naming conventions"
 domain: agenticdevelopercookbook://guidelines/implementing/data/naming-conventions

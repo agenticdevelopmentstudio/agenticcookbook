@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "7c2049c7-89d9-4135-b657-dbd03cdd19a0",
+    "title": "Logging",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/logging",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-05",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Centralized logging infrastructure with per-category static logger instances sharing one subsystem",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "infrastructure",
+      "logging"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "4ebd6e1b98290ba4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

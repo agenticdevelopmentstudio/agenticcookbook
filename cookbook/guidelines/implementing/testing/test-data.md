@@ -1,5 +1,4 @@
 ---
-
 id: 760b2e75-d0e4-4b20-a074-3342c2efe974
 title: "Test Data"
 domain: agenticdevelopercookbook://guidelines/implementing/testing/test-data
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "**Construct what you need, per test.** Large shared fixture files SHOULD be avoided."
 platforms: []
-tags: 
+tags:
   - test-data
   - testing
 depends-on: []

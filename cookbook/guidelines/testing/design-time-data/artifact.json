@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "73b87332-8024-4a21-95ab-1e08f1cbd1a1",
+    "title": "Design-Time Data",
+    "domain": "agenticdevelopercookbook://guidelines/testing/design-time-data",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use design-time data contexts for visual preview testing — verify UI renders correctly without running the app.",
+    "platforms": [
+      "csharp",
+      "windows"
+    ],
+    "tags": [
+      "design-time-data",
+      "platform",
+      "windows"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "480f7fae206da0a3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-to-verify", "heading": "What to verify"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

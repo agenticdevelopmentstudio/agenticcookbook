@@ -1,5 +1,4 @@
 ---
-
 id: cef41f52-bfc6-4ff0-bb67-eb52521c7391
 title: "Retry and Resilience"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/retry-and-resilience
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Not every failure is permanent. Retry transient failures with exponential backoff and jitter."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - networking
   - retry-and-resilience
 depends-on: []
 related: []
-references: 
+references:
   - https://docs.aws.amazon.com/general/latest/gr/api-retries.html
   - https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults
   - https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker

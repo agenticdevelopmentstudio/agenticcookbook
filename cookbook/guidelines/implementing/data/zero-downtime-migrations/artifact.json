@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f34f83c0-3a3e-4a94-a0e9-08ce75ac9762",
+    "title": "Zero-downtime migrations: expand and contract",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/zero-downtime-migrations",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Migrate a live database with expand-and-contract: every step backward-compatible with the running app, indexes built concurrently.",
+    "platforms": [],
+    "tags": [
+      "database",
+      "migrations",
+      "deployment"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/schema-evolution",
+      "agenticdevelopercookbook://principles/small-reversible-decisions",
+      "agenticdevelopercookbook://principles/fail-fast"
+    ],
+    "references": [
+      "https://www.postgresql.org/docs/current/sql-altertable.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "schema-design",
+      "database-operations"
+    ]
+  },
+  "synced": "f197b65c230ade38",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-core-invariant-n-n-1-compatibility", "heading": "The core invariant: N / N-1 compatibility"},
+    {"part": "expand-and-contract-parallel-change", "heading": "Expand and contract (parallel change)"},
+    {"part": "make-ddl-fail-fast-instead-of-stalling-the-app", "heading": "Make DDL fail fast instead of stalling the app"},
+    {"part": "roll-back-by-reversing-not-undoing", "heading": "Roll back by reversing, not undoing"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

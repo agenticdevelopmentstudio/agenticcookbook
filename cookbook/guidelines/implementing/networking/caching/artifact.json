@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3416a359-e01c-40b2-8876-4a8634d4395e",
+    "title": "Caching",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/caching",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use HTTP caching headers. The server controls cache policy; the client honors it.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "caching",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control",
+      "https://web.dev/articles/http-cache",
+      "https://www.rfc-editor.org/rfc/rfc9111",
+      "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-None-Match",
+      "https://www.rfc-editor.org/rfc/rfc9111.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "networking",
+      "performance-optimization"
+    ]
+  },
+  "synced": "c43101410fabc3a3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

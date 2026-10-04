@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "954e559c-e2bf-494c-a37e-de0b88bec89a",
+    "title": "Code Editor Pane",
+    "domain": "agenticdevelopercookbook://ingredients/ui/panels/code-editor-pane",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-05",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Text editor pane for source code with syntax highlighting, line numbers, minimap, dirty tracking, and auto-save",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "python",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "code-editor-pane",
+      "panel",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "883b88a836217394",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "terminology", "heading": "Terminology"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "accessibility-options", "heading": "Accessibility Options"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "privacy", "heading": "Privacy"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "0de6da80-6793-4ef5-afd3-c7663da1d952",
+    "title": "Ephemeral preview environments",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/ephemeral-environments",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Provision a disposable per-PR environment from IaC, seed it with throwaway data, test against it, and auto-destroy on merge or close.",
+    "platforms": [],
+    "tags": [
+      "ci-cd",
+      "environments",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/continuous-delivery",
+      "agenticdevelopercookbook://guidelines/testing/contract-testing"
+    ],
+    "references": [
+      "https://www.getambassador.io/docs/telepresence",
+      "https://ephemeralenvironments.io/",
+      "https://northflank.com/blog/the-what-and-why-of-ephemeral-preview-environments-on-kubernetes-sandbox-testing",
+      "https://www.uffizzi.com/preview-environments-guide",
+      "https://www.bunnyshell.com/blog/best-practices-for-end-to-end-testing-in-2025/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-pr"
+    ]
+  },
+  "synced": "bf0b56450bbf2a7f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "lifecycle-three-invariants", "heading": "Lifecycle (three invariants)"},
+    {"part": "design-for-deletion-keep-them-cattle-not-pets", "heading": "Design for deletion — keep them cattle, not pets"},
+    {"part": "test-data-disposable-never-production", "heading": "Test data — disposable, never production"},
+    {"part": "what-to-run-against-it", "heading": "What to run against it"},
+    {"part": "guardrails", "heading": "Guardrails"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

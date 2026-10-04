@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "fa2196e4-9513-4b23-b805-f5f5f099e5ff",
+    "title": "Architecture",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/architecture",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use MVVM with CommunityToolkit.Mvvm (source-generated ObservableObject, RelayCommand, messaging), with a navigation service abstraction so code-behind never manipulates Frame directly.",
+    "platforms": [],
+    "tags": [
+      "architecture",
+      "platform",
+      "windows"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://github.com/microsoft/TemplateStudio",
+      "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "3c06e1a992d9ca4e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

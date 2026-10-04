@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "10c66228-2141-484c-9286-2d62d43c7b70",
+    "title": "Data privacy regulations",
+    "domain": "agenticdevelopercookbook://guidelines/planning/security/data-privacy-regulations",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Identify the privacy regimes that apply and confirm a lawful basis before collecting any personal data.",
+    "platforms": [],
+    "tags": [
+      "privacy",
+      "compliance",
+      "gdpr"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/security/privacy",
+      "agenticdevelopercookbook://guidelines/planning/security/privacy-by-design"
+    ],
+    "references": [
+      "https://gdpr-info.eu/",
+      "https://oag.ca.gov/privacy/ccpa",
+      "https://iapp.org/resources/article/us-state-privacy-legislation-tracker/",
+      "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "security-review",
+      "data-modeling"
+    ]
+  },
+  "synced": "e32fcfb929f9e4ee",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-regimes-as-of-2026", "heading": "Core regimes (as of 2026)"},
+    {"part": "shared-principles-to-encode", "heading": "Shared principles to encode"},
+    {"part": "controller-vs-processor", "heading": "Controller vs processor"},
+    {"part": "before-you-collect", "heading": "Before you collect"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

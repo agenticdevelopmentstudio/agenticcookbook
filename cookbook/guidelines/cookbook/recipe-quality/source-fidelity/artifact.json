@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "47563e88-307b-4eef-a63c-ddc18e85a945",
+    "title": "Source Fidelity",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/source-fidelity",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Recipe accurately captures what the source code does without invention, idealization, or omission of documented quirks.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "6a4806c2e7664ebe",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "common-violations", "heading": "Common Violations"},
+    {"part": "verification-checklist", "heading": "Verification Checklist"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

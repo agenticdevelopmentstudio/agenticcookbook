@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pattern for managing desktop and mobile app startup behavior, session restore, and process cleanup on quit"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - web
   - windows
-tags: 
+tags:
   - app
   - lifecycle
 depends-on: []

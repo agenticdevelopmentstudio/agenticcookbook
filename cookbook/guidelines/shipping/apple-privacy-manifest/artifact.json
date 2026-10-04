@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "6168eb9e-50be-4b84-940d-cb97f1e374d1",
+    "title": "Ship a privacy manifest and declare required-reason APIs",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/apple-privacy-manifest",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Ship a PrivacyInfo.xcprivacy manifest declaring data collection and required-reason API usage, or App Store submission is rejected.",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift"
+    ],
+    "tags": [
+      "apple",
+      "privacy",
+      "app-store"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/security/privacy"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/bundleresources/privacy-manifest-files",
+      "https://developer.apple.com/documentation/technotes/tn3183-adding-required-reason-api-entries-to-your-privacy-manifest",
+      "https://developer.apple.com/news/?id=pvszzano",
+      "https://bitrise.io/blog/post/enforcement-of-apple-privacy-manifest-starting-from-may-1-2024"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-pr",
+      "dependency-management"
+    ]
+  },
+  "synced": "347f3968aeb42a3b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-the-manifest-is", "heading": "What the manifest is"},
+    {"part": "required-reason-api-categories", "heading": "Required-reason API categories"},
+    {"part": "required-practice", "heading": "Required practice"},
+    {"part": "finding-required-reason-usage-in-code", "heading": "Finding required-reason usage in code"},
+    {"part": "notes", "heading": "Notes"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

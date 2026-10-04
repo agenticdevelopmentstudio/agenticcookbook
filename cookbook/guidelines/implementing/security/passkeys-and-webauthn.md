@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Implement phishing-resistant passwordless auth with passkeys/WebAuthn, prefer them over passwords and SMS-OTP, and plan recovery."
 platforms: []
@@ -25,7 +25,7 @@ references:
   - https://www.w3.org/TR/webauthn-3/
   - https://fidoalliance.org/passkeys/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - authentication
 ---

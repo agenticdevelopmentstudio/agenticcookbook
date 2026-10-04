@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "05317689-de77-454c-a184-d3fb6767a543",
+    "title": "Localizability",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/internationalization/localization",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All user-facing strings MUST be localizable, with no hardcoded strings. Store them in platform-standard resource files and reference them through the platform's localization API.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "internationalization",
+      "localization"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "internationalization",
+      "ui-implementation"
+    ]
+  },
+  "synced": "8c3f8ce6fbe5e5a2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,5 +1,4 @@
 ---
-
 id: 27e5ef04-85b6-4d63-8802-0378051d6bea
 title: "Offline-First Architecture"
 domain: agenticdevelopercookbook://guidelines/planning/data/offline-first-architecture

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Treat context as a finite budget you curate: prune aggressively, isolate large subtasks to subagents, and persist what must survive across sessions."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://code.claude.com/docs/en/best-practices
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - skill-authoring
 ---

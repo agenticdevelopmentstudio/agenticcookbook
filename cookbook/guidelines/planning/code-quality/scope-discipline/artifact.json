@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e6af82e8-0142-446b-977d-2f771a90bdff",
+    "title": "Scope discipline",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/scope-discipline",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-28",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Only modify what was requested. State the goal before starting. Note but do not fix adjacent issues.",
+    "platforms": [],
+    "tags": [
+      "scope",
+      "code-quality",
+      "discipline"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits",
+      "agenticdevelopercookbook://principles/yagni",
+      "agenticdevelopercookbook://principles/simplicity"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "new-module"
+    ]
+  },
+  "synced": "bae35d7ee8f417d1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "before-starting", "heading": "Before starting"},
+    {"part": "during-work", "heading": "During work"},
+    {"part": "recognizing-scope-creep", "heading": "Recognizing scope creep"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

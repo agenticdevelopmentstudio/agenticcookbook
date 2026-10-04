@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ABF5A7D8-1FBF-419C-AD43-888D08813F09",
+    "title": "Data types and type affinity",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/data-types",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "SQLite type affinity rules, the STRING gotcha, STRICT tables, and type mapping between SQLite and PostgreSQL for cross-database compatibility.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "data-types",
+      "schema-design",
+      "type-affinity",
+      "strict-tables"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://www.sqlite.org/datatype3.html",
+      "https://www.sqlite.org/stricttables.html",
+      "https://www.sqlite.org/flextypegood.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "de19a033aa70f6ac",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-five-storage-classes", "heading": "The five storage classes"},
+    {"part": "type-affinity-rules", "heading": "Type affinity rules"},
+    {"part": "the-string-gotcha", "heading": "The STRING gotcha"},
+    {"part": "numeric-affinity-behavior", "heading": "NUMERIC affinity behavior"},
+    {"part": "practical-type-guidelines", "heading": "Practical type guidelines"},
+    {"part": "strict-tables-sqlite-3-37-0", "heading": "STRICT tables (SQLite 3.37.0+)"},
+    {"part": "type-mapping-sqlite-to-postgresql", "heading": "Type mapping: SQLite to PostgreSQL"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "04fe1298-3880-4584-8a4a-c7a538eb5193",
+    "title": "Behavioral Requirements",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/behavioral-requirements",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Requirements use RFC 2119 keywords correctly, are independently testable, and describe behavior rather than implementation.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc2119"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "e9acfd72eaf2cfab",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "common-violations", "heading": "Common Violations"},
+    {"part": "verification-checklist", "heading": "Verification Checklist"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

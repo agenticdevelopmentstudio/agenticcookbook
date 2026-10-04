@@ -1,5 +1,4 @@
 ---
-
 id: ca9874ea-07ed-4585-8692-33a29bc6411a
 title: "Feedback Patterns"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/feedback-patterns
@@ -14,12 +13,12 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Every user action should have visible feedback. The weight of the feedback should match"
 platforms: []
-tags: 
+tags:
   - feedback-patterns
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/alerts
   - https://m3.material.io/components/snackbar/overview
   - https://www.nngroup.com/articles/confirmation-dialog/

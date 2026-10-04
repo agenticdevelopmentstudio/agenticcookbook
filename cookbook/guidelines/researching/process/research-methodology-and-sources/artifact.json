@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8e204b5b-4f27-4f25-b43a-bf0b3ec3a88c",
+    "title": "Research methodology and sources",
+    "domain": "agenticdevelopercookbook://guidelines/researching/process/research-methodology-and-sources",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The agentic research workflow beyond web search, plus the authoritative source / API / MCP catalogue organized by domain.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "methodology",
+      "sources"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/provenance-at-generation-time",
+      "agenticdevelopercookbook://principles/independence-before-corroboration",
+      "agenticdevelopercookbook://guidelines/researching/process/research-type-taxonomy"
+    ],
+    "references": [
+      "https://docs.openalex.org/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+      "https://www.sec.gov/edgar/sec-api-documentation",
+      "https://www.prisma-statement.org/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27",
+    "triggers": [
+      "research"
+    ]
+  },
+  "synced": "7c1cbdb710043c25",
+  "parts": [
+    {"part": "intro"},
+    {"part": "workflow", "heading": "Workflow"},
+    {"part": "source-catalogue", "heading": "Source catalogue"},
+    {"part": "agentic-access-apis-and-mcp", "heading": "Agentic access (APIs and MCP)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

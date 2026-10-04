@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f35cf9c3-7488-4192-93fb-12d95f7244e5",
+    "title": "Choose a rendering strategy per route, minimize client JS",
+    "domain": "agenticdevelopercookbook://guidelines/planning/ui/rendering-strategy",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pick a rendering strategy per route to minimize how much JavaScript reaches the client and when, treating it as an architecture decision not a framework mandate.",
+    "platforms": [
+      "web",
+      "typescript"
+    ],
+    "tags": [
+      "web",
+      "performance",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/simplicity",
+      "agenticdevelopercookbook://principles/meta-principle-optimize-for-change",
+      "agenticdevelopercookbook://guidelines/implementing/ui/core-web-vitals"
+    ],
+    "references": [
+      "https://react.dev/reference/rsc/server-components"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation",
+      "performance-optimization"
+    ]
+  },
+  "synced": "fafd654f3fe2c4a3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-principle", "heading": "Core principle"},
+    {"part": "strategy-selection-by-route-type", "heading": "Strategy selection by route type"},
+    {"part": "react-server-components-react-specific-note", "heading": "React Server Components (React-specific note)"},
+    {"part": "decision-hygiene", "heading": "Decision hygiene"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

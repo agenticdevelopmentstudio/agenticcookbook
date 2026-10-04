@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b68ca5dd-7053-4b8b-ba49-90881de1b55a",
+    "title": "Indexing",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/indexing",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Rules for creating effective indexes in SQLite and PostgreSQL, covering B-tree fundamentals, composite ordering, covering indexes, partial and expression indexes, sync metadata indexes, and when not to index.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "indexing",
+      "performance",
+      "query-planning"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/query-optimization.md"
+    ],
+    "references": [
+      "https://sqlite.org/queryplanner.html",
+      "https://sqlite.org/partialindex.html",
+      "https://sqlite.org/expridx.html",
+      "https://www.sqlite.org/eqp.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "performance-optimization",
+      "schema-design"
+    ]
+  },
+  "synced": "c88cdbb87d2c1631",
+  "parts": [
+    {"part": "intro"},
+    {"part": "b-tree-fundamentals", "heading": "B-Tree Fundamentals"},
+    {"part": "composite-index-column-ordering", "heading": "Composite Index Column Ordering"},
+    {"part": "covering-indexes", "heading": "Covering Indexes"},
+    {"part": "partial-indexes", "heading": "Partial Indexes"},
+    {"part": "expression-indexes", "heading": "Expression Indexes"},
+    {"part": "json-indexing-via-generated-columns", "heading": "JSON Indexing via Generated Columns"},
+    {"part": "index-strategy-for-sync-metadata-columns", "heading": "Index Strategy for Sync Metadata Columns"},
+    {"part": "explain-query-plan", "heading": "EXPLAIN QUERY PLAN"},
+    {"part": "when-not-to-index", "heading": "When NOT to Index"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

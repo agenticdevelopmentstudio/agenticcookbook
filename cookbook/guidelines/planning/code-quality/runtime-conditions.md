@@ -1,5 +1,4 @@
 ---
-
 id: 7b713210-43ee-4f7f-be9e-b096edb782ba
 title: "Runtime Conditions"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/runtime-conditions
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - code-review
   - new-module

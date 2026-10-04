@@ -1,5 +1,4 @@
 ---
-
 id: 25A3B827-1DA9-4600-98EC-F5C492A162E3
 title: "Schema evolution and migrations"
 domain: agenticdevelopercookbook://guidelines/implementing/data/schema-evolution

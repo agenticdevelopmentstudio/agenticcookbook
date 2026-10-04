@@ -1,5 +1,4 @@
 ---
-
 id: 94e8caba-da27-4bb8-8f8e-38730b8b34e0
 title: "Notifications"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/notifications
@@ -13,13 +12,13 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Apps SHOULD use the platform notification system for timely, actionable alerts that respect user preferences."
-platforms: 
+platforms:
   - ios
   - macos
   - android
   - windows
   - web
-tags: 
+tags:
   - notifications
   - platform
 depends-on:

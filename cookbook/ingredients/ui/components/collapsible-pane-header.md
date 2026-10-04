@@ -12,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Clickable header bar with disclosure chevron that collapses or expands a split view section"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
-tags: 
+tags:
   - collapsible-pane-header
   - component
   - ui

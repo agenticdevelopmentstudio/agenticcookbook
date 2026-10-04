@@ -1,22 +1,21 @@
 ---
-
 id: 50ea8b39-813d-4325-be31-0ae19b8a3baf
 title: "Immutability"
 domain: agenticdevelopercookbook://guidelines/implementing/concurrency/immutability
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Mutable shared state is the root cause of most concurrency bugs. Default to immutable values; introduce mutability on..."
-platforms: 
+summary: "Mutable shared state is the root cause of most concurrency bugs. Default to immutable values; introduce mutability only where necessary and contain it behind clear boundaries."
+platforms:
   - kotlin
   - typescript
-tags: 
+tags:
   - concurrency
   - immutability
 depends-on: []
@@ -69,6 +68,7 @@ public readonly record struct Point(double X, double Y);
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

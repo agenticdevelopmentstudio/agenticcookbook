@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "14c5afdc-9c2d-444f-bffb-7514ca889481",
+    "title": "Explaining a Project",
+    "domain": "agenticdevelopercookbook://guidelines/storytelling/explanation",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Translate a project's architecture and capabilities into faithful prose for the reader — accurate to the code and docs, never aspirational.",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "narrative",
+      "explanation"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "d2607e506f07b76d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "architecture", "heading": "Architecture"},
+    {"part": "capabilities", "heading": "Capabilities"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

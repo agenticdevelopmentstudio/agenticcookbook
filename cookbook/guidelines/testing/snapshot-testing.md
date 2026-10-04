@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Keep snapshots small and deterministic, and deliberately review every snapshot diff before accepting it."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://dev.to/dorshinar/why-i-ve-stopped-writing-snapshots-tests-in-jest-376d
   - https://selleo.com/blog/when-to-use-jest-snapshots
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - writing-tests
 ---

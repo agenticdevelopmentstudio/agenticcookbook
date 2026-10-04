@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Hoist UI state to its lowest common owner or the ViewModel, keep composables stateless, and enforce state-down/events-up unidirectional flow."
 platforms:
@@ -26,7 +26,7 @@ related:
 references:
   - https://developer.android.com/develop/ui/compose/architecture
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
 ---

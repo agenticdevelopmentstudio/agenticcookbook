@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Define user-centric SLIs, set SLOs, derive an error budget, and alert on multi-window burn rate rather than resource thresholds."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://sre.google/workbook/implementing-slos/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - logging
   - performance-optimization

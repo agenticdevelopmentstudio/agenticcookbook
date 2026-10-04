@@ -1,5 +1,4 @@
 ---
-
 id: 3B9FCE69-7541-4F49-81AE-86119096A4D8
 title: "Clock Systems for Sync"
 domain: agenticdevelopercookbook://guidelines/implementing/data/clock-systems

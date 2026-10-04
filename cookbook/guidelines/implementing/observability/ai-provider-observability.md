@@ -1,5 +1,4 @@
 ---
-
 id: 3890e8fb-9d2d-42db-9753-cf60b95152cc
 title: "AI Provider Observability"
 domain: agenticdevelopercookbook://guidelines/implementing/observability/ai-provider-observability

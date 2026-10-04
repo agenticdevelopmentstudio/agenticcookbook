@@ -13,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "A module should be answerable to one and only one actor. Reason-to-change is a stakeholder, not a concern."
 platforms: []
-tags: 
+tags:
   - srp
 depends-on: []
 related: []

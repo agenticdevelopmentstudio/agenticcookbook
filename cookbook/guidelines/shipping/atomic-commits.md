@@ -1,20 +1,19 @@
 ---
-
 id: 7bf2aa67-7260-4d95-9da9-1b79ad9095c1
 title: "Small, atomic commits"
 domain: agenticdevelopercookbook://guidelines/shipping/atomic-commits
 type: guideline
-version: 1.2.1
+version: 1.2.2
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "One logical change per commit. A change may touch multiple files if they are part of the same concept. Commits should..."
+summary: "One logical change per commit. A change may touch multiple files if they are part of the same concept. Commit as work progresses; do not batch up unrelated changes."
 platforms: []
-tags: 
+tags:
   - atomic-commits
   - code-quality
 depends-on: []
@@ -69,6 +68,7 @@ Batched, uncommitted changes create compound failures that are difficult to debu
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.2.2 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.2.1 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 1.2.0 | 2026-06-09 | Mike Fullerton | Add small-diff discipline for agent-generated changes |
 | 1.1.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

@@ -1,5 +1,4 @@
 ---
-
 id: e5799ba8-98b0-4df9-9413-cdad03e76aab
 title: "AI Cost Management"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/ai-cost-management

@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "CBFA06B6-EC22-4784-9E61-C99307064B72",
+    "title": "JSON columns and generated columns",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/json-columns",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "JSON storage and extraction in SQLite, json_each for array iteration, generated columns for indexing JSON fields, and when JSON is a schema design smell.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "json",
+      "generated-columns",
+      "schema-design",
+      "indexing"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://sqlite.org/json1.html",
+      "https://sqlite.org/gencol.html",
+      "https://www.dbpro.app/blog/sqlite-json-virtual-columns-indexing",
+      "https://www.postgresql.org/docs/current/datatype-json.html",
+      "https://www.crunchydata.com/blog/indexing-jsonb-in-postgres",
+      "https://vsevolod.net/postgresql-jsonb-index/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "f36ffcb5d7b305ad",
+  "parts": [
+    {"part": "intro"},
+    {"part": "json-storage", "heading": "JSON storage"},
+    {"part": "extraction-operators", "heading": "Extraction operators"},
+    {"part": "iterating-arrays-with-json-each", "heading": "Iterating arrays with json_each"},
+    {"part": "modifying-json", "heading": "Modifying JSON"},
+    {"part": "aggregating-rows-into-json", "heading": "Aggregating rows into JSON"},
+    {"part": "generated-columns-for-indexing-json-fields", "heading": "Generated columns for indexing JSON fields"},
+    {"part": "when-json-is-a-schema-design-smell", "heading": "When JSON is a schema design smell"},
+    {"part": "postgresql-compatibility-notes", "heading": "PostgreSQL compatibility notes"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

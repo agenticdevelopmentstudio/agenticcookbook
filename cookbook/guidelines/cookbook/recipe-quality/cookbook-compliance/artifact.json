@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "0d3aaa29-0ce3-4803-8f8a-a7023713b574",
+    "title": "Cookbook Compliance",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/cookbook-compliance",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Recipe aligns with applicable cookbook guidelines and does not contradict platform-wide principles for security, accessibility, and error handling.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "triggers": [
+      "recipe-authoring"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09"
+  },
+  "synced": "0af6832af6dd776c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "common-violations", "heading": "Common Violations"},
+    {"part": "verification-checklist", "heading": "Verification Checklist"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -3,17 +3,17 @@ id: 495000e6-a1fc-4b43-8999-23089505559c
 title: "For novel components, prefer proven open-source solutions"
 domain: agenticdevelopercookbook://principles/open-source-preference
 type: principle
-version: 1.1.0
+version: 1.1.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "When no native solution exists, research battle-tested open-source libraries and present options to the user before b..."
+summary: "When no native solution exists, research battle-tested open-source libraries and present options to the user before building a custom solution, which should be a deliberate choice."
 platforms: []
-tags: 
+tags:
   - open-source-preference
 depends-on: []
 related:
@@ -39,5 +39,6 @@ When no native solution exists, research battle-tested open-source libraries and
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Add check-what-you-have-first and verify-the-package-is-real (anti-slopsquatting); link reuse-before-build |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

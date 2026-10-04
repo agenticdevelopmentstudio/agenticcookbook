@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "820b832f-6003-4fc1-b4b4-35cd2d57c2e5",
+    "title": "MCP tool",
+    "domain": "agenticdevelopercookbook://ingredients/developer-tools/mcp-tool",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A single Model Context Protocol tool — name, JSON Schema input/output, typed result, error and trust hint annotations",
+    "platforms": [
+      "typescript",
+      "python"
+    ],
+    "tags": [
+      "mcp",
+      "infrastructure",
+      "ai"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
+      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security"
+    ],
+    "references": [
+      "https://modelcontextprotocol.io/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09"
+  },
+  "names_hosts": "Names Claude as an example of a host that calls MCP tools.",
+  "synced": "ad33566adf2e69ab",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

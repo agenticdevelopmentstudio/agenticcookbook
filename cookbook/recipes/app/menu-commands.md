@@ -12,11 +12,11 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pattern for platform menu commands with keyboard shortcuts and document creation flows via file pickers"
-platforms: 
+platforms:
   - macos
   - swift
   - windows
-tags: 
+tags:
   - app
   - menu-commands
 depends-on: []

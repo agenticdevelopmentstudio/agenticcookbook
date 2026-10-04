@@ -1,26 +1,25 @@
 ---
-
 id: 4cb7c242-3ade-4d59-9c74-67c1d5f9c107
 title: "RTL layout support"
 domain: agenticdevelopercookbook://guidelines/implementing/internationalization/rtl-support
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All layouts MUST support right-to-left languages:"
-platforms: 
+summary: "All layouts MUST support right-to-left languages: use leading/trailing instead of left/right, mirror directional icons only, and test with an RTL locale enabled."
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
   - web
   - windows
-tags: 
+tags:
   - internationalization
   - rtl-support
 depends-on: []
@@ -80,6 +79,7 @@ Set `dir="rtl"` attribute on the root element for RTL locales.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

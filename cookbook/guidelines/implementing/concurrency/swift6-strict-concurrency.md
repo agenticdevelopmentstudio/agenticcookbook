@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Migrate to Swift 6 data-race safety module by module, making every type that crosses an isolation boundary Sendable."
 platforms:
@@ -27,7 +27,7 @@ related:
 references:
   - https://www.swift.org/migration/documentation/migrationguide/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - concurrency
 ---

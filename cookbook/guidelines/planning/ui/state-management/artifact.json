@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e0c6916b-4c1c-49f6-9111-69eb0ee64d2d",
+    "title": "Separate server state from client state",
+    "domain": "agenticdevelopercookbook://guidelines/planning/ui/state-management",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep remote server state in a query/cache layer and UI client state in lightweight local state; never hand-cache server data in a global store.",
+    "platforms": [
+      "web",
+      "typescript"
+    ],
+    "tags": [
+      "web",
+      "state",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/separation-of-concerns",
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+    ],
+    "references": [
+      "https://tanstack.com/query/latest/docs/framework/react/guides/does-this-replace-client-state"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "a67683bc8dc044a5",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-two-kinds-of-state", "heading": "The two kinds of state"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "how-to-choose-a-mechanism-decision-order", "heading": "How to choose a mechanism (decision order)"},
+    {"part": "example-libraries-not-mandates", "heading": "Example libraries (not mandates)"},
+    {"part": "anti-patterns-to-flag-in-review", "heading": "Anti-patterns to flag in review"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

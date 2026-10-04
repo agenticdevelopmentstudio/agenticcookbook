@@ -1,19 +1,18 @@
 ---
-
 id: 6302654b-8200-4e03-862d-4734d4960d19
 title: "No blocking the main thread"
 domain: agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency
 type: guideline
-version: 1.0.3
+version: 1.0.4
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-10
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All lengthy work must run on background threads/tasks using platform async primitives:"
-platforms: 
+summary: "Run all lengthy work on background threads or tasks using platform async primitives, never block the main/UI thread, and show progress while the UI waits."
+platforms:
   - csharp
   - kotlin
   - python
@@ -21,7 +20,7 @@ platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - concurrency
 depends-on: []
 related: []
@@ -30,7 +29,7 @@ references:
   - https://developer.android.com/topic/libraries/architecture/coroutines
   - https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - concurrency
   - performance-optimization
@@ -118,6 +117,7 @@ DispatcherQueue.TryEnqueue(() =>
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.4 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.3 | 2026-06-10 | Mike Fullerton | Cite recovered Tier-1 research sources (adversarially-audited) |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |

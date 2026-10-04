@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e8677291-1d21-484f-b562-90b8600ea380",
+    "title": "Diverge Before You Converge",
+    "domain": "agenticdevelopercookbook://principles/diverge-before-you-converge",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Generation and evaluation are neurologically antagonistic. Mixing them suppresses both. Phase transitions must be explicit, named, and jointly agreed.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "divergence",
+      "phase-gating"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/frame-before-you-generate",
+      "agenticdevelopercookbook://principles/defer-judgment-go-for-quantity"
+    ],
+    "references": [
+      "Diehl & Stroebe, Journal of Personality and Social Psychology, 1987, 1991",
+      "de Bono, Six Thinking Hats, 1985",
+      "Design Council UK, Double Diamond, 2005",
+      "Beaty et al., Trends in Cognitive Sciences, 2016"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "2642be247ee8cf83",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -28,7 +28,7 @@ references:
   - https://www.sec.gov/edgar/sec-api-documentation
   - https://www.prisma-statement.org/
 approved-by: "approve-artifact v1.0.0"
-approved-date: '2026-06-27'
+approved-date: "2026-06-27"
 triggers:
   - research
 ---

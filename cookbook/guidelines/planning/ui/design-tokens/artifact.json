@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "26d10854-c903-40c5-8bef-18337c5ac71e",
+    "title": "Design tokens",
+    "domain": "agenticdevelopercookbook://guidelines/planning/ui/design-tokens",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Express UI design decisions once as named, tiered design tokens in one platform-agnostic source; reference semantic tokens, never raw values.",
+    "platforms": [
+      "swift",
+      "kotlin",
+      "typescript",
+      "csharp",
+      "web"
+    ],
+    "tags": [
+      "design-system",
+      "tokens",
+      "theming"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/theming",
+      "agenticdevelopercookbook://guidelines/planning/ui/platform-design-languages"
+    ],
+    "references": [
+      "https://www.designtokens.org/",
+      "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "192942be2eb27efa",
+  "parts": [
+    {"part": "intro"},
+    {"part": "single-source-of-truth", "heading": "Single source of truth"},
+    {"part": "three-tiers", "heading": "Three tiers"},
+    {"part": "theming-and-modes", "heading": "Theming and modes"},
+    {"part": "accessibility-and-validation", "heading": "Accessibility and validation"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,5 +1,4 @@
 ---
-
 id: dccc22a6-94f3-4cfc-8b30-bae18c56f6f0
 title: "Authoring Skills and Rules"
 domain: agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules

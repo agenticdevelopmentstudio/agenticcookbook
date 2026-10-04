@@ -12,7 +12,7 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Invisible view modifier that persists window position and size between sessions via frame autosave"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
@@ -20,7 +20,7 @@ platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - infrastructure
   - window-frame-persistence
 depends-on: []

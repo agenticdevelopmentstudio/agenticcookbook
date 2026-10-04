@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Debug-only panel for feature flag overrides, analytics monitoring, and runtime configuration inspection"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - debug-panel
   - panel
   - ui

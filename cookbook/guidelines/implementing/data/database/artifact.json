@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+    "title": "Database",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/database",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use SQLite with WAL mode for concurrent read access. No ORM — use direct SQL via the `sqlite3` standard library module.",
+    "platforms": [
+      "python"
+    ],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "database",
+      "language",
+      "python"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "database-operations"
+    ]
+  },
+  "synced": "8c120f92e0d02741",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

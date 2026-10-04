@@ -1,5 +1,4 @@
 ---
-
 id: fe0daac0-1ba7-4c93-a47e-e42e75612cf6
 title: "Skill Structure Reference"
 domain: agenticdevelopercookbook://guidelines/implementing/skills-and-agents/skill-structure-reference

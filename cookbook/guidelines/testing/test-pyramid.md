@@ -1,5 +1,4 @@
 ---
-
 id: f3ae65a6-f51d-4e42-8f79-fa8097dd3480
 title: "Test Pyramid"
 domain: agenticdevelopercookbook://guidelines/testing/test-pyramid
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Projects SHOULD follow the Google SWE Book ratio: **80% unit / 15% integration / 5% E2E**."
 platforms: []
-tags: 
+tags:
   - test-pyramid
   - testing
 depends-on: []

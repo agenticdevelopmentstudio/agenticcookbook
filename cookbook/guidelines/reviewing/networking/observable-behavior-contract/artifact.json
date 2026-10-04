@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "beea6f0b-f329-4780-9e9d-d276f0b98823",
+    "title": "Hyrum's Law: all observable behavior becomes contract",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/networking/observable-behavior-contract",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Treat every observable behavior of an interface as a contract a consumer may depend on: document guarantees, constrain incidental behavior, and never depend on the unspecified.",
+    "platforms": [],
+    "tags": [
+      "api",
+      "contracts",
+      "coupling"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/networking/api-design",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [
+      "https://www.hyrumslaw.com/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "api-integration",
+      "code-review"
+    ]
+  },
+  "synced": "68cc125434638ff3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-counts-as-observable-behavior", "heading": "What counts as \"observable behavior\""},
+    {"part": "when-designing-an-interface", "heading": "When DESIGNING an interface"},
+    {"part": "when-consuming-an-interface-review-focus", "heading": "When CONSUMING an interface (review focus)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

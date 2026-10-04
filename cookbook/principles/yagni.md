@@ -3,17 +3,17 @@ id: 793f491f-a352-4478-876d-7c5d871488f7
 title: "YAGNI"
 domain: agenticdevelopercookbook://principles/yagni
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Build for today's known requirements. Speculative generality adds code that must be maintained but delivers no curren..."
+summary: "Build for today's known requirements. Speculative generality adds code that must be maintained but delivers no current value; add future needs when they actually arrive."
 platforms: []
-tags: 
+tags:
   - yagni
 depends-on: []
 related: []
@@ -34,4 +34,5 @@ Build for today's known requirements. Speculative generality adds code that must
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

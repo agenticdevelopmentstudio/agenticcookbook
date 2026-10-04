@@ -1,24 +1,23 @@
 ---
-
 id: 8ab7452a-09b8-4f4e-abfc-f7fd700765db
 title: "The Testing Workflow"
 domain: agenticdevelopercookbook://guidelines/testing/the-testing-workflow
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "The recommended Claude Code testing workflow, combining all tools:"
-platforms: 
+summary: "Follow the recommended testing loop: write code and unit tests, run them, validate test quality with mutation testing, kill surviving mutants, run security scans, then verify end to end."
+platforms:
   - python
   - swift
   - typescript
   - web
-tags: 
+tags:
   - testing
   - the-testing-workflow
 depends-on: []
@@ -50,6 +49,7 @@ actually catch bugs, AI writes more tests to close gaps.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

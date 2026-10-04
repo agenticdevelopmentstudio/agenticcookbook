@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Share domain and data logic broadly across platforms with KMP; choose shared vs native UI per platform maturity."
 platforms:
@@ -24,7 +24,7 @@ related:
 references:
   - https://www.jetbrains.com/kotlin-multiplatform/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
 ---

@@ -1,22 +1,21 @@
 ---
-
 id: 6e29b5a6-fa54-4d6e-a8ce-089bd800a861
 title: "YAML frontmatter"
 domain: agenticdevelopercookbook://guidelines/reviewing/code-quality/yaml-frontmatter
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Parse YAML frontmatter with the built-in frontmatter parser in `roadmap_lib`. Do not add a PyYAML dependency. The par..."
+summary: "Parse YAML frontmatter with the built-in frontmatter parser in roadmap_lib. Do not add a PyYAML dependency; the parser handles the delimited frontmatter block at the top of markdown files."
 platforms: []
 languages:
   - python
-tags: 
+tags:
   - language
   - python
   - yaml-frontmatter
@@ -38,6 +37,7 @@ The built-in frontmatter parser in `roadmap_lib` MUST be used for parsing YAML f
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

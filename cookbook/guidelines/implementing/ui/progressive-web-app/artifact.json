@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3af6830b-71c9-4e50-929d-38dec20dae24",
+    "title": "Progressive Web App installability",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/progressive-web-app",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Ship a Web App Manifest plus a service worker with an explicit caching strategy, and account for iOS install/push/storage limits.",
+    "platforms": [
+      "web",
+      "typescript"
+    ],
+    "tags": [
+      "web",
+      "pwa",
+      "offline"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/offline-and-connectivity",
+      "agenticdevelopercookbook://guidelines/implementing/ui/modern-css"
+    ],
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation",
+      "offline-support"
+    ]
+  },
+  "synced": "9e3a683fda1aa8f1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "installability-criteria", "heading": "Installability criteria"},
+    {"part": "service-worker-and-caching", "heading": "Service worker and caching"},
+    {"part": "ios-safari-constraints-version-sensitive-verify-against-current-safari", "heading": "iOS / Safari constraints (version-sensitive — verify against current Safari)"},
+    {"part": "verification", "heading": "Verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

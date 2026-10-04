@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "abdcd282-5b81-4ab2-ab1e-3ed288a4aee5",
+    "title": "Contract testing for services",
+    "domain": "agenticdevelopercookbook://guidelines/testing/contract-testing",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Verify that independently deployed services agree on the shape of their interactions before they ship.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "contracts",
+      "services"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/test-pyramid",
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+    ],
+    "references": [
+      "https://docs.pact.io/",
+      "https://docs.pact.io/consumer",
+      "https://www.gravitee.io/blog/contract-testing-microservices-strategy",
+      "https://www.sqaexperts.com/consumerdriven-contract-testing-with-pact-microservices-qa-guide-for-2026"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "writing-tests",
+      "api-integration"
+    ]
+  },
+  "synced": "265513328be7d97f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-use-which-style", "heading": "When to use which style"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "consumer-driven-flow-own-both-sides", "heading": "Consumer-driven flow (own-both-sides)"},
+    {"part": "keep-contracts-loose", "heading": "Keep contracts loose"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

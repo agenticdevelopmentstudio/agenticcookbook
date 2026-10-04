@@ -7,7 +7,7 @@ from __future__ import annotations
 import json
 
 import pytest
-from cookbook.core.errors import CookbookError
+from cookr.core.errors import CookbookError
 
 from cookr.core.config import ConfigError
 from cookr.core.legacy import CONFIG_NAME, LegacyConfig, legacy_scan, load_legacy
@@ -246,7 +246,7 @@ def test_scheme_falls_back_to_repo_scheme_when_undeclared(tmp_path):
     (tmp_path / "src").mkdir()
     _write(tmp_path, _manifest([{"path": "src", "tier": "x", "platform": "web"}]))
     cfg = load_legacy(tmp_path / CONFIG_NAME)
-    from cookbook.core.scheme import SchemeError
+    from cookr.core.scheme import SchemeError
     with pytest.raises(SchemeError):
         _ = cfg.scheme
 

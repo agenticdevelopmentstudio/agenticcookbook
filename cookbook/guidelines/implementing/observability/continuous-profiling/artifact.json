@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "967fe6f8-aa3a-4bcf-8415-7f996042c245",
+    "title": "Continuous profiling",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/continuous-profiling",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Adopt always-on, low-overhead production profiling correlated with traces only when measured perf/cost debugging justifies the pipeline.",
+    "platforms": [],
+    "tags": [
+      "observability",
+      "profiling",
+      "performance"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/observability/metrics-red-use",
+      "agenticdevelopercookbook://guidelines/implementing/observability/distributed-tracing"
+    ],
+    "references": [
+      "https://opentelemetry.io/blog/2024/profiling/",
+      "https://www.datadoghq.com/blog/continuous-profiling-fourth-pillar/",
+      "https://charity.wtf/2025/10/30/the-pillar-is-a-lie/",
+      "https://opentelemetry.io/docs/specs/status/",
+      "https://thenewstack.io/elastic-profiling-agent-offers-a-4th-pillar-of-observability/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "performance-optimization",
+      "logging"
+    ]
+  },
+  "synced": "ee9090d52802399d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-adopt-measured-need-guardrail", "heading": "When to adopt (MEASURED-NEED guardrail)"},
+    {"part": "how-to-do-it", "heading": "How to do it"},
+    {"part": "standards-status-pin-and-verify", "heading": "Standards status (pin and verify)"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

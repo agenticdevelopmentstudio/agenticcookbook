@@ -27,7 +27,7 @@ references:
   - https://blog.kinto-technologies.com/posts/2025-12-13-rust-railway-oriented-programming-en/
   - https://returns.readthedocs.io/en/latest/pages/railway.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 ---
 
 # Errors as values

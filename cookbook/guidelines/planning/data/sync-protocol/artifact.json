@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "edf1f288-9cb1-4979-8900-b69d5e33e987",
+    "title": "Sync Protocol",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/sync-protocol",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Rules for designing the sync protocol between client and server: push/pull direction, full vs incremental sync, change tracking, batching, idempotency, the outbox pattern, and retry with backoff.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "protocol",
+      "outbox",
+      "idempotency",
+      "offline-first"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/sync-schema-design.md",
+      "guidelines/data/sync-engine-design.md"
+    ],
+    "references": [
+      "https://microservices.io/patterns/data/transactional-outbox.html",
+      "https://www.milanjovanovic.tech/blog/implementing-the-outbox-pattern"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "offline-support",
+      "networking",
+      "database-operations"
+    ]
+  },
+  "synced": "ae834c4727c152f9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "sync-direction", "heading": "Sync Direction"},
+    {"part": "full-sync-vs-incremental-delta-sync", "heading": "Full Sync vs Incremental (Delta) Sync"},
+    {"part": "change-tracking", "heading": "Change Tracking"},
+    {"part": "batch-sync-with-pagination", "heading": "Batch Sync with Pagination"},
+    {"part": "idempotent-operations", "heading": "Idempotent Operations"},
+    {"part": "outbox-pattern", "heading": "Outbox Pattern"},
+    {"part": "retry-with-exponential-backoff", "heading": "Retry with Exponential Backoff"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

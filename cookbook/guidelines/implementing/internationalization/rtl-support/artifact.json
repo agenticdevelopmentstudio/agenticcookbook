@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4cb7c242-3ade-4d59-9c74-67c1d5f9c107",
+    "title": "RTL layout support",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/internationalization/rtl-support",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All layouts MUST support right-to-left languages: use leading/trailing instead of left/right, mirror directional icons only, and test with an RTL locale enabled.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "internationalization",
+      "rtl-support"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "internationalization",
+      "ui-implementation"
+    ]
+  },
+  "synced": "2ff25de43a90c99d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

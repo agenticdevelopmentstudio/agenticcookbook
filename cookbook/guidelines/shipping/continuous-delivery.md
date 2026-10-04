@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Keep main always releasable via an automated build-test-deploy pipeline; releasing is a business decision, not a manual scramble."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://dora.dev/capabilities/continuous-delivery/
   - https://dora.dev/capabilities/continuous-integration/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - pre-pr
 ---

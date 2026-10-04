@@ -1,5 +1,4 @@
 ---
-
 id: 8ea0409f-405a-4f4d-9bbf-54bf21c86d33
 title: "CORS"
 domain: agenticdevelopercookbook://guidelines/implementing/security/cors
@@ -13,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Cross-Origin Resource Sharing — get it right or don't enable it."
-platforms: 
+platforms:
   - web
-tags: 
+tags:
   - cors
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
   - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/07-Testing_Cross_Origin_Resource_Sharing
 approved-by: "approve-artifact v1.0.0"

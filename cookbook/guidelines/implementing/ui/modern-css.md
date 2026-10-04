@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Adopt modern interoperable CSS features (container queries, @layer, :has(), subgrid, nesting, view transitions) gated on Baseline status with fallbacks."
 platforms:
@@ -26,7 +26,7 @@ references:
   - https://web.dev/baseline
   - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
 ---

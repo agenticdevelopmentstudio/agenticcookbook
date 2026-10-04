@@ -1,30 +1,29 @@
 ---
-
 id: 3d970d6a-2d71-48f3-9f84-69c1d823d6e8
 title: "Accessibility from day one"
 domain: agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
 type: guideline
-version: 1.1.1
+version: 1.1.2
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-10
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All components MUST integrate with platform accessibility APIs from initial implementation:"
-platforms: 
+summary: "All components MUST integrate with platform accessibility APIs from initial implementation: semantic roles, screen reader and keyboard support, font scaling, WCAG AA contrast, and logical focus order."
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
   - web
   - windows
-tags: 
+tags:
   - accessibility
 depends-on: []
 related: []
-references: 
+references:
   - https://accessibilityinsights.io/
   - https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-uiautomationoverview
   - https://www.w3.org/TR/WCAG22/
@@ -32,7 +31,7 @@ references:
   - https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/
   - https://www.w3.org/WAI/standards-guidelines/wcag/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - accessibility
   - ui-implementation
@@ -148,6 +147,7 @@ Components MUST respond to these Windows accessibility settings:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Add recovered Tier-1 research sources (adversarially-audited) |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Update to WCAG 2.2 AA (new criteria, 24px target size); restore strayed 1.0.1 row |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

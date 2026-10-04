@@ -1,5 +1,4 @@
 ---
-
 id: 59ffd7c7-2bdc-4f7b-b6f3-07d1f24599a3
 title: "Unit Test Patterns"
 domain: agenticdevelopercookbook://guidelines/cookbook/testing/unit-test-patterns
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "How to write test vectors in cookbook artifacts — use AAA structure, one concept per vector, descriptive names."
 platforms: []
-tags: 
+tags:
   - testing
   - unit-test-patterns
 depends-on: []

@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4b58d4d6-f177-45d7-b7c1-bf50adcd13a3",
+    "title": "Jetpack Compose side effects",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/compose-side-effects",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Run side effects through the correct keyed Compose effect API, never directly inside composition.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "compose",
+      "concurrency"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf",
+      "agenticdevelopercookbook://guidelines/implementing/concurrency/kotlin-flow-stateflow"
+    ],
+    "references": [
+      "https://developer.android.com/develop/ui/compose/side-effects",
+      "https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ui-implementation",
+      "concurrency"
+    ]
+  },
+  "synced": "4e8cf21cb77bcc75",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-rule", "heading": "Core rule"},
+    {"part": "api-selection", "heading": "API selection"},
+    {"part": "keying-discipline-the-most-common-bug", "heading": "Keying discipline (the most common bug)"},
+    {"part": "must-must-not", "heading": "MUST / MUST NOT"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

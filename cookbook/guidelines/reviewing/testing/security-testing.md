@@ -1,32 +1,31 @@
 ---
-
 id: b9da0bd1-a7e4-491f-beb0-46f7b5c19d86
 title: "Security Testing"
 domain: agenticdevelopercookbook://guidelines/reviewing/testing/security-testing
 type: guideline
-version: 1.0.3
+version: 1.0.4
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Run security scans as part of post-generation verification (agenticdevelopercookbook://guidelines/testing/post-generation-verification). These a..."
-platforms: 
+summary: "Run security scans as part of post-generation verification: static analysis (SAST), dependency scanning, and dynamic analysis (DAST), using CLI tools Claude Code can invoke directly."
+platforms:
   - csharp
   - kotlin
   - python
   - swift
   - typescript
   - web
-tags: 
+tags:
   - security-testing
   - testing
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-references: 
+references:
   - https://codeql.github.com/
   - https://github.com/PyCQA/bandit
   - https://semgrep.dev/
@@ -64,6 +63,7 @@ See agenticdevelopercookbook://guidelines/implementing/security/* (Security Guid
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.4 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.3 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |

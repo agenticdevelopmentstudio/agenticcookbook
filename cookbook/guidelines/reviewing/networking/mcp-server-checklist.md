@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pre-merge checklist a reviewer runs over an MCP server's primitive design, tool contracts, and authorization."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://modelcontextprotocol.io/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - code-review
   - security-review

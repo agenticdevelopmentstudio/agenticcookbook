@@ -1,5 +1,4 @@
 ---
-
 id: 34486fb8-8a0b-4538-a40a-13124155cd56
 title: "Naming"
 domain: agenticdevelopercookbook://guidelines/implementing/code-quality/naming
@@ -16,7 +15,7 @@ summary: "- `PascalCase` for types, methods, properties, public fields, constant
 platforms: []
 languages:
   - csharp
-tags: 
+tags:
   - csharp
   - language
   - naming

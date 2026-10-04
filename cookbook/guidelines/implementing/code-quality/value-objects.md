@@ -27,7 +27,7 @@ references:
   - https://blog.ndepend.com/code-smell-primitive-obsession-and-refactoring-recipes/
   - https://www.arhohuttunen.com/primitive-obsession/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - data-modeling
   - new-module

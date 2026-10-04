@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d39543f4-e1b9-4054-afa2-2a3087742a4c",
+    "title": "Windows ARM64 and Native AOT",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/windows-arm64-and-aot",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Ship native ARM64 builds for Windows on ARM; adopt Native AOT and trimming only when a measured need justifies their constraints.",
+    "platforms": [
+      "windows",
+      "csharp"
+    ],
+    "tags": [
+      "windows",
+      "arm64",
+      "performance"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/continuous-delivery"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/arm/overview"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "pre-pr",
+      "performance-optimization"
+    ]
+  },
+  "synced": "cc04e0d2df1b2d19",
+  "parts": [
+    {"part": "intro"},
+    {"part": "ship-native-arm64", "heading": "Ship native ARM64"},
+    {"part": "native-aot-and-trimming-measured-need", "heading": "Native AOT and trimming (MEASURED-NEED)"},
+    {"part": "forecast", "heading": "FORECAST"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "338cb220-483c-4f9e-ae9d-e1dd79e59289",
+    "title": "Project Window",
+    "domain": "agenticdevelopercookbook://recipes/ui/windows/project-window",
+    "type": "recipe",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-03-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "IDE-style four-panel project window composing file tree, editor, terminal, and inspector in split views",
+    "platforms": [
+      "macos",
+      "swift",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "project-window",
+      "ui",
+      "window"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "60c46b24aad1ac95",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "terminology", "heading": "Terminology"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "project-settings", "heading": "Project Settings"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "localization", "heading": "Localization"},
+    {"part": "accessibility-options", "heading": "Accessibility Options"},
+    {"part": "feature-flags", "heading": "Feature Flags"},
+    {"part": "analytics", "heading": "Analytics"},
+    {"part": "privacy", "heading": "Privacy"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

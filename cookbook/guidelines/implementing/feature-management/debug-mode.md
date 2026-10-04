@@ -1,26 +1,25 @@
 ---
-
 id: e446ee3e-b8f2-40e7-b93d-3113e6a95e5d
 title: "Debug mode"
 domain: agenticdevelopercookbook://guidelines/implementing/feature-management/debug-mode
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Apps MUST include a debug-only configuration panel (not in release builds):"
-platforms: 
+summary: "Apps MUST include a debug-only configuration panel, excluded from release builds, with feature flag overrides, an analytics event log, an A/B variant picker, and environment info."
+platforms:
   - ios
   - kotlin
   - macos
   - typescript
   - web
   - windows
-tags: 
+tags:
   - debug-mode
   - feature-management
 depends-on: []
@@ -77,6 +76,7 @@ Dev-only settings page guarded by `#if DEBUG`:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

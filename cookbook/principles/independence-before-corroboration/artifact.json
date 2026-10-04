@@ -1,0 +1,37 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "85030572-15bc-474c-bd50-f4d9ae0435ba",
+    "title": "Independence before corroboration",
+    "domain": "agenticdevelopercookbook://principles/independence-before-corroboration",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Count sources by their independence, not their number — many pages tracing back to one origin are still one source.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "verification",
+      "corroboration"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/domain-stratified-trust",
+      "agenticdevelopercookbook://principles/cite-the-claim-not-the-document"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "f738f794c936af58",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

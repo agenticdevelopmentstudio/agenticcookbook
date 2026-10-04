@@ -1,5 +1,4 @@
 ---
-
 id: 9a60a717-a031-4c1f-bf00-d531ca211252
 title: "JSON columns and generated columns"
 domain: agenticdevelopercookbook://guidelines/planning/data/json-columns

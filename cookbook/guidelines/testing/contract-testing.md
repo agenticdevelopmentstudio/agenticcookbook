@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Verify that independently deployed services agree on the shape of their interactions before they ship."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://www.gravitee.io/blog/contract-testing-microservices-strategy
   - https://www.sqaexperts.com/consumerdriven-contract-testing-with-pact-microservices-qa-guide-for-2026
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - writing-tests
   - api-integration

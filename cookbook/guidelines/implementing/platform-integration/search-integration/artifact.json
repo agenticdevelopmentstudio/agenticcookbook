@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b512282a-8174-426f-95dd-4a147222584d",
+    "title": "Search integration",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/search-integration",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "App content SHOULD be discoverable through the platform's system search, enabling users to find content without opening the app.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "windows",
+      "web"
+    ],
+    "tags": [
+      "search",
+      "platform",
+      "discoverability"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://principles/support-automation"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "platform-integration"
+    ]
+  },
+  "synced": "7daa829d099d0a57",
+  "parts": [
+    {"part": "intro"},
+    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
+    {"part": "android", "heading": "Android"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "web", "heading": "Web"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

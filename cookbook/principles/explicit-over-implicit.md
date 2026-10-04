@@ -3,17 +3,17 @@ id: e114c41c-d203-454c-bc7c-cc128f6ebadd
 title: "Explicit over implicit"
 domain: agenticdevelopercookbook://principles/explicit-over-implicit
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Hidden behavior, magic, and implicit coupling create bugs that take days to find:"
+summary: "Hidden behavior, magic, and implicit coupling create bugs that take days to find. Make dependencies visible, name things for what they do, and prefer explicit parameters over ambient state."
 platforms: []
-tags: 
+tags:
   - explicit-over-implicit
 depends-on: []
 related: []
@@ -34,4 +34,5 @@ Hidden behavior, magic, and implicit coupling create bugs that take days to find
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -4,9 +4,8 @@
 - Removes the ~/.claude/skills/cookr/ skill
 - Removes the cookr CLI shim and package from ~/.local/bin
 
-Leaves the cookbook CLI installed: it is shared with the cookbook skill and
-the adh plugin. The repo's root ./uninstall removes it. Also leaves the
-pip-installed deps (rich, questionary, pyyaml), which other tools may use.
+Leaves the pip-installed deps (rich, questionary, pyyaml), which other tools
+may use.
 """
 
 import sys
@@ -30,7 +29,7 @@ def main() -> int:
     remove(BIN_DIR / "_cookr_pkg")
 
     title("Done")
-    ok("cookbook CLI and Python deps left installed (shared; the repo's ./uninstall removes the CLI)")
+    ok("Python deps left installed (other tools may use them)")
     return 0
 
 

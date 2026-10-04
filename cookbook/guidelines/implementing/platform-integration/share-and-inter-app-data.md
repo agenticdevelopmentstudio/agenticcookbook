@@ -1,5 +1,4 @@
 ---
-
 id: 193e5770-fd0b-45c9-91a4-6673bf6021ff
 title: "Share and inter-app data flow"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/share-and-inter-app-data
@@ -13,13 +12,13 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Apps SHOULD participate in the platform's share and inter-app data exchange mechanisms to integrate with other apps and workflows."
-platforms: 
+platforms:
   - ios
   - macos
   - android
   - windows
   - web
-tags: 
+tags:
   - sharing
   - platform
   - inter-app

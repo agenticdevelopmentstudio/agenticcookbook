@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4b85c8bc-e588-40ca-b5a5-453b7a16d710",
+    "title": "Passkeys and WebAuthn",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/passkeys-and-webauthn",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Implement phishing-resistant passwordless auth with passkeys/WebAuthn, prefer them over passwords and SMS-OTP, and plan recovery.",
+    "platforms": [],
+    "tags": [
+      "security",
+      "auth",
+      "passkeys"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/security/authentication",
+      "agenticdevelopercookbook://guidelines/implementing/security/token-handling"
+    ],
+    "references": [
+      "https://www.w3.org/TR/webauthn-3/",
+      "https://fidoalliance.org/passkeys/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "authentication"
+    ]
+  },
+  "synced": "7e07ca0d039830fc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "standards-baseline-pin-and-track", "heading": "Standards baseline (pin and track)"},
+    {"part": "registration-ceremony-navigator-credentials-create", "heading": "Registration ceremony (`navigator.credentials.create`)"},
+    {"part": "authentication-ceremony-navigator-credentials-get", "heading": "Authentication ceremony (`navigator.credentials.get`)"},
+    {"part": "authenticator-and-passkey-types", "heading": "Authenticator and passkey types"},
+    {"part": "attestation", "heading": "Attestation"},
+    {"part": "fallback-and-recovery", "heading": "Fallback and recovery"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

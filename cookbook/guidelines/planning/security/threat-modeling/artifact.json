@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "cbfc3cd1-e0a0-44af-bcd8-0aa96eb2acda",
+    "title": "Threat modeling",
+    "domain": "agenticdevelopercookbook://guidelines/planning/security/threat-modeling",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Model trust boundaries and ask the four Manifesto questions before building so point security controls trace to a why.",
+    "platforms": [],
+    "tags": [
+      "security",
+      "threat-modeling",
+      "planning"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/security/authentication",
+      "agenticdevelopercookbook://guidelines/planning/security/privacy"
+    ],
+    "references": [
+      "https://www.threatmodelingmanifesto.org/",
+      "https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats",
+      "https://owasp.org/www-community/Threat_Modeling_Process"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "security-review"
+    ]
+  },
+  "synced": "9a6cecff183b9338",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-four-questions", "heading": "The four questions"},
+    {"part": "stride-enumeration", "heading": "STRIDE enumeration"},
+    {"part": "make-it-continuous-shift-left", "heading": "Make it continuous (shift-left)"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

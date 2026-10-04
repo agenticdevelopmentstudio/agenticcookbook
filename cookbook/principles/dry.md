@@ -13,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Every piece of knowledge should have a single, authoritative representation. DRY is a rule about knowledge, not about code shape."
 platforms: []
-tags: 
+tags:
   - dry
 depends-on: []
 related: []

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Externalize Kubernetes config via ConfigMaps and treat Secrets as unencrypted base64 — encrypt at rest, tighten RBAC, and prefer external secret managers."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/
   - https://external-secrets.io/latest/introduction/overview/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - configuration
   - authentication

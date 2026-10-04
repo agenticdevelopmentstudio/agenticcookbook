@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Set strict: true on every new TypeScript project and adopt the stricter index/module flags incrementally."
 platforms:
@@ -28,7 +28,7 @@ references:
   - https://www.typescriptlang.org/tsconfig/verbatimModuleSyntax.html
   - https://github.com/microsoft/TypeScript/issues/63293
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - new-module
 ---

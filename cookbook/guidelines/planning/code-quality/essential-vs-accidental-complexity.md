@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Separate the irreducible complexity of the problem from incidental complexity, then spend agents on the incidental and design review on the essential."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://www.cs.unc.edu/techreports/86-020.pdf
   - https://thenextweb.com/news/complexity-is-the-ceiling-software-design-in-the-age-of-ai-coding
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - new-module
 ---

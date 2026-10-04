@@ -3,17 +3,17 @@ id: 2aaf1727-aa36-41d1-a660-7dd0456e1d07
 title: "Design for deletion"
 domain: agenticdevelopercookbook://principles/design-for-deletion
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Every line of code is a maintenance liability. Build disposable software, not reusable software:"
+summary: "Every line of code is a maintenance liability. Build disposable software, not reusable software: write code that is easy to throw away, avoid premature abstraction, and duplicate rather than couple."
 platforms: []
-tags: 
+tags:
   - design-for-deletion
 depends-on: []
 related: []
@@ -35,4 +35,5 @@ Every line of code is a maintenance liability. Build disposable software, not re
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

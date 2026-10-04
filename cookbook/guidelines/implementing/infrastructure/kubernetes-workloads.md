@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Run Kubernetes workloads with explicit resource requests/limits, health probes, hardened pod security, and safe rollout strategies."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://kubernetes.io/docs/concepts/security/pod-security-standards/
   - https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - configuration
   - performance-optimization

@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a61bd40e-929a-4a50-a87e-78c78e35e302",
+    "title": "Token Handling",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/token-handling",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Short-lived (5-15 min). Include only necessary claims — no PII in JWTs",
+    "platforms": [
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "security",
+      "token-handling"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html",
+      "https://datatracker.ietf.org/doc/html/rfc6750",
+      "https://datatracker.ietf.org/doc/html/rfc7519"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "authentication",
+      "security-review"
+    ]
+  },
+  "synced": "fbb06b3b26dc9c76",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

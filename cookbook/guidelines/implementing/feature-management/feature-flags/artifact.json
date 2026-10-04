@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ac616d81-16c2-4f33-9ae4-139d5c24318d",
+    "title": "Feature flags",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Gate all features behind feature flags from initial implementation. Define a FeatureFlagProvider interface with a local default, and swap in a backend implementation later via DI.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "feature-flags",
+      "feature-management"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "feature-flags",
+      "new-module"
+    ]
+  },
+  "synced": "30d5d89a237a4554",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "c", "heading": "C#"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

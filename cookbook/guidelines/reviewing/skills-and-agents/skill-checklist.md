@@ -1,5 +1,4 @@
 ---
-
 id: e761c71a-eb90-44c8-8149-3062da19ad37
 title: "Skill Lint Checklist"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist

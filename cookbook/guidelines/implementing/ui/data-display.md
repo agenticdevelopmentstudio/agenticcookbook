@@ -1,5 +1,4 @@
 ---
-
 id: 704fef7e-0e8d-480c-8019-cf84b5fd851b
 title: "Data Display"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/data-display
@@ -14,12 +13,12 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Choose the right pattern for the content type and user task."
 platforms: []
-tags: 
+tags:
   - data-display
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
   - https://m3.material.io/components/lists/overview
   - https://www.nngroup.com/articles/cards-component/

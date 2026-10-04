@@ -1,5 +1,4 @@
 ---
-
 id: 71af85de-c618-4319-8150-f2f0015921dd
 title: "Transactions and Concurrency"
 domain: agenticdevelopercookbook://guidelines/planning/data/transactions-and-concurrency

@@ -1,0 +1,3 @@
+
+Pattern for structuring platform menu commands with keyboard shortcuts, including document creation flows with file/directory pickers and validation. The app replaces the default "New" menu item with app-specific creation commands (New Project, New Session, New Workspace), each with a distinct keyboard shortcut and SF Symbol icon. Document creation commands open platform file pickers (NSOpenPanel for directory selection, NSSavePanel for file creation), validate the selection, and open the resulting document via NSDocumentController. Per-window commands use the `@FocusedObject` pattern to dispatch actions to the currently focused window's state, gracefully disabling menu items when no window is focused.
+

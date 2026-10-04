@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f0f9bc0c-7195-42fd-95eb-2405e81fb1ea",
+    "title": "Data subject rights (DSAR)",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/data-subject-rights",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Architect every personal-data store to be enumerable, exportable, and deletable by subject id so DSARs are satisfied within the legal SLA.",
+    "platforms": [],
+    "tags": [
+      "privacy",
+      "gdpr",
+      "dsar"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/data/data-retention-and-deletion",
+      "agenticdevelopercookbook://guidelines/implementing/security/pii-handling"
+    ],
+    "references": [
+      "https://gdpr-info.eu/chapter-3/",
+      "https://gdpr-info.eu/art-17-gdpr/",
+      "https://gdpr-info.eu/art-12-gdpr/",
+      "https://gdpr-info.eu/art-20-gdpr/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "authentication",
+      "data-modeling"
+    ]
+  },
+  "synced": "c81b4365f35a9562",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-rights-to-support", "heading": "The rights to support"},
+    {"part": "data-map-prerequisite", "heading": "Data map (prerequisite)"},
+    {"part": "identity-verification", "heading": "Identity verification"},
+    {"part": "erasure-propagation", "heading": "Erasure propagation"},
+    {"part": "operational-requirements", "heading": "Operational requirements"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

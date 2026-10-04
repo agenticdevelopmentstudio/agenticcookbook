@@ -1,0 +1,8 @@
+
+- **precise-names**: Tool `name` values **MUST** be unique, stable, and action-oriented; renaming a tool is a breaking change and **MUST** be called out in the PR.
+- **descriptions-grounded**: Each `description` **MUST** state what the tool does, its side effects, and when to call it — and **MUST NOT** contain hidden instructions, embedded credentials, or text that steers the model beyond the tool's function.
+- **input-schema**: Every tool **MUST** define an `inputSchema` (JSON Schema) with typed properties and a `required` list. Free-form string bags are a reject.
+- **output-schema-and-structured**: Tools returning structured data **SHOULD** declare an `outputSchema` and return `structuredContent` conforming to it; for backward compatibility the server **SHOULD** also serialize that JSON into a text content block.
+- **error-channel-correct**: Tool *execution* failures (API down, business-rule violation) **MUST** be returned in the result with `isError: true`, so the model can see and react. *Protocol* failures (unknown tool, malformed arguments) **MUST** be JSON-RPC errors. Reviewer **MUST** reject a server that swallows execution errors into a 200 with no `isError`, or that raises protocol errors for ordinary tool failures.
+- **annotations-set**: Each tool **SHOULD** set the four behavior annotations honestly: `readOnlyHint`, `destructiveHint` (default true when not read-only), `idempotentHint` (default false), `openWorldHint` (default true). These are advisory hints — clients **MUST** treat them as untrusted from untrusted servers, so they are documentation, not enforcement.
+

@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "27e5ef04-85b6-4d63-8802-0378051d6bea",
+    "title": "Offline-First Architecture",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/offline-first-architecture",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Design rules for offline-first apps: WAL as the foundation, operation queues, optimistic UI updates, rollback on rejection, offline schema migrations, data expiry, and connectivity-aware sync scheduling.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "offline-first",
+      "wal",
+      "optimistic-ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/sync-schema-design.md",
+      "guidelines/data/sync-protocol.md"
+    ],
+    "references": [
+      "https://sqlite.org/wal.html",
+      "https://www.powersync.com/blog/sqlite-optimizations-for-ultra-high-performance"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "offline-support",
+      "database-operations"
+    ]
+  },
+  "synced": "8229d3babbb1084d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "wal-mode-as-the-foundation", "heading": "WAL Mode as the Foundation"},
+    {"part": "operation-queue-pattern", "heading": "Operation Queue Pattern"},
+    {"part": "optimistic-ui-updates", "heading": "Optimistic UI Updates"},
+    {"part": "rollback-on-server-rejection", "heading": "Rollback on Server Rejection"},
+    {"part": "schema-migrations-while-offline", "heading": "Schema Migrations While Offline"},
+    {"part": "data-expiry-and-vacuum", "heading": "Data Expiry and VACUUM"},
+    {"part": "connectivity-aware-scheduling", "heading": "Connectivity-Aware Scheduling"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

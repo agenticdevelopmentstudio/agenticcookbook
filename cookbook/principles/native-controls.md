@@ -3,18 +3,18 @@ id: dec7cf4a-449b-47fa-9d6e-f7e9376383a7
 title: "Prefer native controls and libraries"
 domain: agenticdevelopercookbook://principles/native-controls
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Always use the platform's built-in frameworks before custom implementations. Swift Concurrency over raw threads. Room..."
-platforms: 
+summary: "Always use the platform's built-in frameworks and controls before custom implementations, note which native controls are used and why, and justify any third-party UI dependency."
+platforms:
   - swift
-tags: 
+tags:
   - native-controls
 depends-on: []
 related: []
@@ -37,4 +37,5 @@ When generating a component, explicitly note which native controls are being use
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

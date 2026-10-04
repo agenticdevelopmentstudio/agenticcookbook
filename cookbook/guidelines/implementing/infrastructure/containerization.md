@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Build small, secure container images with multi-stage builds, pinned slim bases, non-root users, cache-ordered layers, and no baked-in secrets."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://github.com/GoogleContainerTools/distroless
   - https://github.com/opencontainers/image-spec
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - new-module
   - configuration

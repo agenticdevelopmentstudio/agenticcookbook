@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "hosts": {
+    "claude": {
+      "skills_dir": "~/.claude/skills",
+      "instructions_file": "~/.claude/CLAUDE.md",
+      "model_prefix": "claude-",
+      "default_model": "claude-opus-5-5",
+      "families": {
+        "opus": {"match": "opus-"},
+        "sonnet": {"match": "sonnet-"},
+        "haiku": {"match": "haiku-"},
+        "fable": {"match": "fable-"}
+      },
+      "models": ["claude-opus-5", "claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-4-5", "claude-fable-5-1"],
+      "rules": {
+        "name_pattern": "^[a-z0-9-]+$",
+        "name_max": 64,
+        "description_max": 1024
+      }
+    },
+    "codex": {
+      "skills_dir": "~/.codex/skills",
+      "instructions_file": "~/.codex/AGENTS.md",
+      "model_prefix": "",
+      "default_model": "gpt-5-codex",
+      "families": {
+        "gpt-5": {"match": "gpt-5"}
+      },
+      "models": ["gpt-5", "gpt-5-codex"],
+      "rules": {
+        "frontmatter_keys": ["name", "description", "license", "allowed-tools", "metadata"],
+        "name_pattern": "^[a-z0-9-]+$",
+        "name_max": 64,
+        "description_max": 1024,
+        "description_forbid": "<>"
+      }
+    }
+  }
+}

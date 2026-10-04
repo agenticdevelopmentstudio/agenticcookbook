@@ -9,7 +9,7 @@ language: en
 created: 2026-07-23
 modified: 2026-07-23
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Know the two identifier classes, detect in layers (regex + checksum + context + NER), redact with the operation that fits, and verify with a fail-closed backstop."
 platforms: []
@@ -31,8 +31,8 @@ references:
   - https://gdpr-info.eu/art-4-gdpr/
   - https://github.com/gitleaks/gitleaks
   - https://github.com/trufflesecurity/trufflehog
-approved-by: ''
-approved-date: ''
+approved-by: ""
+approved-date: ""
 triggers:
   - data-modeling
   - logging

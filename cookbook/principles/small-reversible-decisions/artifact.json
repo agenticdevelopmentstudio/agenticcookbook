@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4554e680-aca3-4bb2-bc99-1ac381c428b2",
+    "title": "Small, reversible decisions",
+    "domain": "agenticdevelopercookbook://principles/small-reversible-decisions",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Make decisions that are cheap to reverse quickly, and invest in understanding before those that are expensive to reverse. Prefer incremental delivery and defer binding decisions.",
+    "platforms": [],
+    "tags": [
+      "small-reversible-decisions"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "3ae5f5d930d8ac29",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

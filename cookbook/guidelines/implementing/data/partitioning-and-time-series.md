@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Partition large tables only when a measured size or retention need justifies the operational cost, and apply time-series patterns deliberately."
 platforms: []
@@ -23,7 +23,7 @@ related:
 references:
   - https://www.postgresql.org/docs/current/ddl-partitioning.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - database-operations
   - schema-design

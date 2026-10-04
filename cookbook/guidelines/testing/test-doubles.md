@@ -1,31 +1,30 @@
 ---
-
 id: eec76082-a68b-4a2b-8f02-5ea3bfdc0a76
 title: "Test Doubles"
 domain: agenticdevelopercookbook://guidelines/testing/test-doubles
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Use [Martin Fowler's taxonomy](https://martinfowler.com/bliki/TestDouble.html):"
-platforms: 
+summary: "Use Martin Fowler's test double taxonomy (dummy, stub, spy, mock, fake) and prefer fakes over mocks where possible, since fakes exercise real behavior."
+platforms:
   - csharp
   - kotlin
   - python
   - swift
   - typescript
   - web
-tags: 
+tags:
   - test-doubles
   - testing
 depends-on: []
 related: []
-references: 
+references:
   - https://github.com/apple/swift-testing
   - https://github.com/cashapp/turbine
   - https://github.com/pytest-dev/pytest-mock
@@ -69,6 +68,7 @@ insulates tests from upstream API changes.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

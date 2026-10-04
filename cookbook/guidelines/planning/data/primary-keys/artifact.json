@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c90e2ebe-2fbd-4f83-994e-5db46d53f16b",
+    "title": "Primary key strategies",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/primary-keys",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Choosing between INTEGER PRIMARY KEY, AUTOINCREMENT, UUID, and WITHOUT ROWID — including sync compatibility and cross-database PK design.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "primary-keys",
+      "schema-design",
+      "uuid",
+      "autoincrement",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://www.sqlite.org/rowidtable.html",
+      "https://www.sqlite.org/autoinc.html",
+      "https://www.sqlite.org/withoutrowid.html",
+      "https://www.bytebase.com/blog/choose-primary-key-uuid-or-auto-increment/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "45514da9465b54e1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "how-sqlite-s-rowid-works", "heading": "How SQLite's rowid works"},
+    {"part": "option-1-integer-primary-key-recommended-default", "heading": "Option 1: INTEGER PRIMARY KEY (recommended default)"},
+    {"part": "option-2-integer-primary-key-autoincrement", "heading": "Option 2: INTEGER PRIMARY KEY AUTOINCREMENT"},
+    {"part": "option-3-uuid", "heading": "Option 3: UUID"},
+    {"part": "option-4-without-rowid", "heading": "Option 4: WITHOUT ROWID"},
+    {"part": "decision-table", "heading": "Decision table"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2795e06d-b081-43ac-97d9-20ff3d0a93b1",
+    "title": "Research results document",
+    "domain": "agenticdevelopercookbook://guidelines/researching/evidence/research-results-document",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "What a research results document must store — per-claim provenance and a structured container — so a later consumer can trust and reuse it.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "provenance",
+      "attribution"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/provenance-at-generation-time",
+      "agenticdevelopercookbook://principles/cite-the-claim-not-the-document",
+      "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring"
+    ],
+    "references": [
+      "https://www.w3.org/TR/prov-o/",
+      "https://www.go-fair.org/fair-principles/",
+      "https://schema.org/ClaimReview",
+      "https://nanopub.net/",
+      "https://arxiv.org/abs/1803.09010"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27",
+    "triggers": [
+      "research"
+    ]
+  },
+  "synced": "3f3b12a91e31decb",
+  "parts": [
+    {"part": "intro"},
+    {"part": "per-claim-record", "heading": "Per-claim record"},
+    {"part": "document-container", "heading": "Document container"},
+    {"part": "provenance-standards-to-align-with", "heading": "Provenance standards to align with"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

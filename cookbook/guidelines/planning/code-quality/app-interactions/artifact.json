@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "1d4b2aa7-c30e-4d41-8bd8-892ff7ce7499",
+    "title": "App Interactions",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/app-interactions",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Characterize how components communicate within the application — delegation, pub/sub, shared state, and other in-process coordination patterns.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "635b0a762407977b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

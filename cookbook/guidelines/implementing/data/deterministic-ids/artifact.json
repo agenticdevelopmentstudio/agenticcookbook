@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "acbfc5ff-4482-4982-a893-b792da0fbe4f",
+    "title": "Deterministic IDs",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/deterministic-ids",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Always use the roadmap file's own UUID from its YAML frontmatter. Never generate random UUIDs; IDs must be deterministic and reproducible.",
+    "platforms": [],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "deterministic-ids",
+      "language",
+      "python"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "data-modeling"
+    ]
+  },
+  "synced": "5c41a79ece09963f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

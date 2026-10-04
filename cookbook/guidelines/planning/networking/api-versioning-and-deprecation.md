@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Evolve APIs additively; when versioning is unavoidable pick one scheme and run a header-driven deprecation lifecycle."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://www.rfc-editor.org/rfc/rfc8594.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - api-integration
 ---

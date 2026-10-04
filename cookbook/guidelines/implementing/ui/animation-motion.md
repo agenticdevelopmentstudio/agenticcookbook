@@ -1,5 +1,4 @@
 ---
-
 id: 9f13dbec-cecb-482b-824b-f7d3e341878a
 title: "Animation & Motion"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/animation-motion
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Motion should be purposeful — guide attention, show spatial relationships, and provide"
-platforms: 
+platforms:
   - windows
-tags: 
+tags:
   - animation-motion
   - ui
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/motion
   - https://learn.microsoft.com/en-us/windows/apps/design/motion/timing-and-easing
   - https://m3.material.io/styles/motion/overview

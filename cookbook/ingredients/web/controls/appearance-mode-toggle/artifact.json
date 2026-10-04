@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e01e2c5f-32fd-49e3-8f2a-1f64411160cb",
+    "title": "Appearance Mode Toggle",
+    "domain": "agenticdevelopercookbook://ingredients/web/controls/appearance-mode-toggle",
+    "type": "ingredient",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-30",
+    "modified": "2026-04-05",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Three-mode toggle button cycling automatic, forced dark, and forced light appearance. Automatic follows the system and is the default.",
+    "platforms": [
+      "web",
+      "typescript"
+    ],
+    "tags": [
+      "appearance-mode-toggle",
+      "controls",
+      "dark-mode",
+      "web"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme",
+      "https://web.dev/articles/color-scheme"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "10a75ce4c4bf0ea6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "terminology", "heading": "Terminology"},
+    {"part": "assumptions", "heading": "Assumptions"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "icons", "heading": "Icons"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "flash-prevention", "heading": "Flash Prevention"},
+    {"part": "architecture", "heading": "Architecture"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "accessibility-options", "heading": "Accessibility Options"},
+    {"part": "privacy", "heading": "Privacy"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "implementation-anti-patterns", "heading": "Implementation Anti-Patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

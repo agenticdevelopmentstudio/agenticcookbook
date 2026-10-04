@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Evaluate agent tool use for selection, argument correctness, ordering, and stopping against a fixed trajectory suite with error-recovery cases."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://proceedings.mlr.press/v267/patil25a.html
   - https://modelcontextprotocol.io/specification/2025-06-18
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ai-api-integration
   - writing-tests

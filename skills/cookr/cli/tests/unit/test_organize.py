@@ -227,7 +227,7 @@ def test_validate_rejects_a_move_target_that_is_not_a_lowercase_path(legacy_repo
 def test_validate_rejects_a_reserved_move_target(legacy_repo):
     data = _plan(legacy_repo)
     data["moves"][0]["to"] = "index"
-    with pytest.raises(OrganizeError, match="is a file name the corpus skips"):
+    with pytest.raises(OrganizeError, match="is a file name the spec corpus skips"):
         validate(data, legacy_repo)
 
 

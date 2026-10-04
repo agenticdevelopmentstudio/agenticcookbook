@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ea5ccc72-7b6e-4aa8-a599-40837f722f38",
+    "title": "Modern CSS layout and Baseline-driven adoption",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/modern-css",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Adopt modern interoperable CSS features (container queries, @layer, :has(), subgrid, nesting, view transitions) gated on Baseline status with fallbacks.",
+    "platforms": [
+      "web"
+    ],
+    "tags": [
+      "web",
+      "css",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/layout",
+      "agenticdevelopercookbook://guidelines/implementing/ui/theming"
+    ],
+    "references": [
+      "https://web.dev/baseline",
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "1dbc08868c0b7fd4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "decide-adoption-with-baseline", "heading": "Decide adoption with Baseline"},
+    {"part": "feature-cohort-and-current-baseline-status", "heading": "Feature cohort and current Baseline status"},
+    {"part": "layout-and-structure", "heading": "Layout and structure"},
+    {"part": "cascade-control", "heading": "Cascade control"},
+    {"part": "motion-and-transitions", "heading": "Motion and transitions"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

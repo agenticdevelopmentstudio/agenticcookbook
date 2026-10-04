@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8ade0fa5-dd84-4fa2-9170-2ff30ef9691f",
+    "title": "Research type taxonomy",
+    "domain": "agenticdevelopercookbook://guidelines/researching/process/research-type-taxonomy",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Classify a topic by intent and domain before researching; each type carries its own authoritative sources, method, and validation bar.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "classification",
+      "methodology"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/type-precedes-method",
+      "agenticdevelopercookbook://principles/domain-stratified-trust",
+      "agenticdevelopercookbook://guidelines/researching/process/research-methodology-and-sources"
+    ],
+    "references": [
+      "https://dl.acm.org/doi/10.1145/792550.792552",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1904193/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27",
+    "triggers": [
+      "research"
+    ]
+  },
+  "synced": "ff1e460ef3bfc818",
+  "parts": [
+    {"part": "intro"},
+    {"part": "three-lenses", "heading": "Three lenses"},
+    {"part": "the-types", "heading": "The types"},
+    {"part": "routing-and-escalation", "heading": "Routing and escalation"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

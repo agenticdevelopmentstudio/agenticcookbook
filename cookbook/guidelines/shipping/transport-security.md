@@ -1,5 +1,4 @@
 ---
-
 id: b76e80c2-7e24-43cf-b971-5d405e80e748
 title: "Transport Security"
 domain: agenticdevelopercookbook://guidelines/shipping/transport-security
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pre-deploy transport security verification: TLS 1.2+, HSTS enabled, cipher suites audited, certificate pinning validated."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - security
   - transport-security
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html
   - https://datatracker.ietf.org/doc/html/rfc8446
   - https://hstspreload.org/

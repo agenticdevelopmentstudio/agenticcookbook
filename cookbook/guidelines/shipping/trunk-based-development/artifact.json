@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "86866beb-319a-45b2-bdfa-24f0e3f7ae58",
+    "title": "Trunk-based development",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/trunk-based-development",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Integrate to one shared trunk in small daily increments behind feature flags, keeping trunk releasable instead of trading rigor for long branches.",
+    "platforms": [],
+    "tags": [
+      "git",
+      "ci",
+      "delivery"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/atomic-commits",
+      "agenticdevelopercookbook://principles/small-reversible-decisions"
+    ],
+    "references": [
+      "https://trunkbaseddevelopment.com/",
+      "https://dora.dev/capabilities/trunk-based-development/",
+      "https://dora.dev/devops-capabilities/technical/trunk-based-development/",
+      "https://launchdarkly.com/blog/elite-performance-with-trunk-based-development/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-commit",
+      "pre-pr"
+    ]
+  },
+  "synced": "03c0f2cfa9922eba",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-practices", "heading": "Core practices"},
+    {"part": "why-frequency-beats-branch-isolation", "heading": "Why frequency beats branch isolation"},
+    {"part": "how-an-agent-should-work-on-trunk", "heading": "How an agent should work on trunk"},
+    {"part": "required-protections", "heading": "Required protections"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "caveats", "heading": "Caveats"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

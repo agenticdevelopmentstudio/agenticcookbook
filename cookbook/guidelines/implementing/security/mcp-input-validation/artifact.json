@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "355028de-c329-48dd-b609-41aba903e01c",
+    "title": "MCP tool input validation",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/mcp-input-validation",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Treat every MCP tool argument as untrusted model-supplied input: schema-validate, authorize per call, and bound resource access.",
+    "platforms": [],
+    "tags": [
+      "mcp",
+      "security",
+      "validation"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
+      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security"
+    ],
+    "references": [
+      "https://modelcontextprotocol.io/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ai-api-integration",
+      "input-handling",
+      "security-review"
+    ]
+  },
+  "synced": "b03ea89463a6441f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-rules", "heading": "Core rules"},
+    {"part": "schema-validation", "heading": "Schema validation"},
+    {"part": "authorization-per-call", "heading": "Authorization per call"},
+    {"part": "bound-resource-access", "heading": "Bound resource access"},
+    {"part": "output-and-observability", "heading": "Output and observability"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "dc9fcecf-aac5-4845-9741-9445e626d7eb",
+    "title": "SQLite Sync Tooling",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/sync-tooling",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Comparison and selection guide for SQLite sync tools: Session Extension, cr-sqlite, Litestream, ElectricSQL, PowerSync, Turso/libSQL, and sqlite-sync — with a decision matrix and selection criteria.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "tooling",
+      "sqlite",
+      "crdt",
+      "offline-first"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/sync-engine-design.md",
+      "guidelines/data/conflict-resolution.md"
+    ],
+    "references": [
+      "https://sqlite.org/sessionintro.html",
+      "https://github.com/vlcn-io/cr-sqlite",
+      "https://litestream.io",
+      "https://electric-sql.com",
+      "https://www.powersync.com",
+      "https://turso.tech",
+      "https://github.com/sqliteai/sqlite-sync"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "offline-support",
+      "dependency-management"
+    ]
+  },
+  "synced": "8eba99d2c0152569",
+  "parts": [
+    {"part": "intro"},
+    {"part": "sqlite-session-extension", "heading": "SQLite Session Extension"},
+    {"part": "cr-sqlite", "heading": "cr-sqlite"},
+    {"part": "litestream", "heading": "Litestream"},
+    {"part": "electricsql", "heading": "ElectricSQL"},
+    {"part": "powersync", "heading": "PowerSync"},
+    {"part": "turso-libsql", "heading": "Turso / libSQL"},
+    {"part": "sqlite-sync-sqlite-ai", "heading": "sqlite-sync (sqlite.ai)"},
+    {"part": "tool-comparison-matrix", "heading": "Tool Comparison Matrix"},
+    {"part": "selection-criteria", "heading": "Selection Criteria"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

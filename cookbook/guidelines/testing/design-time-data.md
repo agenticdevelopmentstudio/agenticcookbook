@@ -1,5 +1,4 @@
 ---
-
 id: 73b87332-8024-4a21-95ab-1e08f1cbd1a1
 title: "Design-Time Data"
 domain: agenticdevelopercookbook://guidelines/testing/design-time-data
@@ -13,10 +12,10 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use design-time data contexts for visual preview testing — verify UI renders correctly without running the app."
-platforms: 
+platforms:
   - csharp
   - windows
-tags: 
+tags:
   - design-time-data
   - platform
   - windows

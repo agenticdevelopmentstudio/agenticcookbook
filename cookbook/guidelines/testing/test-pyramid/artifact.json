@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f3ae65a6-f51d-4e42-8f79-fa8097dd3480",
+    "title": "Test Pyramid",
+    "domain": "agenticdevelopercookbook://guidelines/testing/test-pyramid",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Projects SHOULD follow the Google SWE Book ratio: **80% unit / 15% integration / 5% E2E**.",
+    "platforms": [],
+    "tags": [
+      "test-pyramid",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "54dc073607d5502d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-shape-is-context-dependent", "heading": "The shape is context-dependent"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

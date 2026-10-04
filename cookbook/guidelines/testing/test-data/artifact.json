@@ -1,0 +1,37 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "38969d3a-884a-4d6e-adae-5398464ee0de",
+    "title": "Test Data",
+    "domain": "agenticdevelopercookbook://guidelines/testing/test-data",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "**Construct what you need, per test.** Large shared fixture files SHOULD be avoided.",
+    "platforms": [],
+    "tags": [
+      "test-data",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "data-modeling"
+    ]
+  },
+  "synced": "87453d29f5968ba3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

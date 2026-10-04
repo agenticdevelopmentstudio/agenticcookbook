@@ -1,5 +1,4 @@
 ---
-
 id: dfe12d14-4deb-4a64-b78a-d04db713f72b
 title: "Use AppKit and UIKit, not SwiftUI"
 domain: agenticdevelopercookbook://guidelines/reviewing/platform-integration/prefer-explicit-apple-apis
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use AppKit (macOS) and UIKit (iOS) for all UI. Use SwiftUI only where Apple requires it."
-platforms: 
+platforms:
   - ios
   - macos
 languages:
   - swift
-tags: 
+tags:
   - swift
   - appkit
   - uikit

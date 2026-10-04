@@ -27,7 +27,7 @@ references:
   - https://connascence.io/pages/about.html
   - https://coupling.dev/posts/related-topics/connascence/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 ---
 
 # Connascence

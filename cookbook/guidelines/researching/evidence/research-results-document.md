@@ -29,7 +29,7 @@ references:
   - https://nanopub.net/
   - https://arxiv.org/abs/1803.09010
 approved-by: "approve-artifact v1.0.0"
-approved-date: '2026-06-27'
+approved-date: "2026-06-27"
 triggers:
   - research
 ---

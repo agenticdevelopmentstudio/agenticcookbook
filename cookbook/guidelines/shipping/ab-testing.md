@@ -1,5 +1,4 @@
 ---
-
 id: cadf17c9-e809-4324-acb3-a430c54a81b4
 title: "A/B testing"
 domain: agenticdevelopercookbook://guidelines/shipping/ab-testing
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pre-ship A/B test verification: ensure experiment variants are configured, defaults are safe, and the debug panel override works."
 platforms: []
-tags: 
+tags:
   - ab-testing
   - feature-management
 depends-on: []

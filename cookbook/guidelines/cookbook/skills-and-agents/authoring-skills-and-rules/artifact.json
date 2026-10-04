@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d4e7a91c-3f28-4b5e-a6c1-9e8d2f7b4a3c",
+    "title": "Authoring Skills and Rules",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/authoring-skills-and-rules",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-28",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Best practices for creating Claude Code skills, agents, and rule files.",
+    "platforms": [],
+    "tags": [
+      "skills",
+      "agents",
+      "rules",
+      "authoring",
+      "best-practices"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "names_hosts": "Tells authors to update the CLAUDE.md skills table, a Claude Code file.",
+  "synced": "6e50953c625b9632",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "skill-design", "heading": "Skill Design"},
+    {"part": "rule-design", "heading": "Rule Design"},
+    {"part": "agent-design", "heading": "Agent Design"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

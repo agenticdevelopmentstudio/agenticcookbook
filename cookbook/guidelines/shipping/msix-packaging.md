@@ -1,5 +1,4 @@
 ---
-
 id: 4428deb0-05a8-4b52-a78f-3dec1e7f90a4
 title: "MSIX Packaging"
 domain: agenticdevelopercookbook://guidelines/shipping/msix-packaging
@@ -13,9 +12,9 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "- Use the single-project MSIX packaging model"
-platforms: 
+platforms:
   - windows
-tags: 
+tags:
   - msix-packaging
   - platform
   - windows

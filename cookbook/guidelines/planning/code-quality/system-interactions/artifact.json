@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e8c8e3b9-64a0-4fb0-a27b-f3b733dc10c7",
+    "title": "System Interactions",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/system-interactions",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Characterize how the code communicates with the operating system — IPC, lifecycle callbacks, background execution, and OS-level integration points.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "02a3506ac41c5049",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -38,7 +38,7 @@ def test_unknown_type_is_refused():
 
 
 def test_default_dir_is_the_cookbook_references(monkeypatch):
-    from cookbook.core import refs
+    from cookr.core import refs
 
     monkeypatch.undo()  # drop the suite's hermetic override for this one check
     assert templates.templates_dir() == refs.references_dir() / "templates"

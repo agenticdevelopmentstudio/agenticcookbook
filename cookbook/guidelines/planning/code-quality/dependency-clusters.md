@@ -1,5 +1,4 @@
 ---
-
 id: 4de09db8-b6fe-4211-b7e4-c95619a12141
 title: "Dependency Clusters"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/dependency-clusters
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - code-review
   - new-module

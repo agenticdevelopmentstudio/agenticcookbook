@@ -1,5 +1,4 @@
 ---
-
 id: e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb
 title: "Database"
 domain: agenticdevelopercookbook://guidelines/planning/data/database
@@ -13,11 +12,11 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use SQLite with WAL mode for concurrent read access. No ORM — use direct SQL via the `sqlite3` standard library module."
-platforms: 
+platforms:
   - python
 languages:
   - python
-tags: 
+tags:
   - database
   - language
   - python

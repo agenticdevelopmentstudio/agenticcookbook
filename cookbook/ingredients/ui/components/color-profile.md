@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Named color palette with foreground, background, ANSI colors, and built-in presets for terminal and editor theming"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - color-profile
   - component
   - ui

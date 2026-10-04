@@ -12,11 +12,11 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Standalone terminal window with session sidebar and independent session manager for non-project terminal use"
-platforms: 
+platforms:
   - macos
   - swift
   - windows
-tags: 
+tags:
   - standalone-terminal-window
   - ui
   - window

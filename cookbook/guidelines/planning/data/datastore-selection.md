@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Default to a relational database for a server backend; adopt a specialist store only for a concrete, measured requirement."
 platforms: []
@@ -29,7 +29,7 @@ references:
   - https://www.cockroachlabs.com/blog/document-store-vs-relational-database/
   - https://aerospike.com/blog/sql-vs-nosql/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - data-modeling
   - schema-design

@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a",
+    "title": "Counteract Homogenization with Diversity",
+    "domain": "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A single AI voice is a convergence trap: it raises average individual output quality while compressing population-level variety. Counter with explicit persona diversity and low-probability idea demands.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "diversity",
+      "ai-pitfalls"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/human-first-ideation",
+      "agenticdevelopercookbook://principles/bridge-distant-domains"
+    ],
+    "references": [
+      "Anderson et al., PNAS Nexus, 2024, https://academic.oup.com/pnasnexus/article/5/3/pgag042/8529001",
+      "Meincke/Nave/Terwiesch, Nature Human Behaviour, June 2025, https://www.nature.com/articles/s41562-025-02173-x",
+      "MultiAgent Research Ideator, SIGDIAL 2025, arXiv 2507.08350"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "95011dcc035e2930",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

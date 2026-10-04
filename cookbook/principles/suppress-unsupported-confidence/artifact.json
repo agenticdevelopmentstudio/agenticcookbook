@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "7a14b9f2-0e10-456b-a103-8a887afda9f2",
+    "title": "Suppress unsupported confidence",
+    "domain": "agenticdevelopercookbook://principles/suppress-unsupported-confidence",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Confident language is not evidence — when assertive certainty rests on thin support, treat the confidence itself as a red flag.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "trust",
+      "verification"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/domain-stratified-trust",
+      "agenticdevelopercookbook://principles/independence-before-corroboration",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "8a8a6e17d9d396e4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

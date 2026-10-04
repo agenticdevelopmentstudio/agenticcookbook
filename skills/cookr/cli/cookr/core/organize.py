@@ -41,12 +41,12 @@ from datetime import date
 from pathlib import Path, PurePosixPath
 from typing import Optional
 
-from cookbook import __version__ as COOKBOOK_VERSION
-from cookbook.core import refimpl
-from cookbook.core.markdown import SKIP_NAMES
-from cookbook.core.scheme import repo_scheme
-from cookbook.modules import bump
+from cookr.core import refimpl
+from cookr.core.markdown import in_source_folder, reserved_name
+from cookr.core.scheme import repo_scheme
+from cookr.modules import bump
 
+from .artifact import edit_text, folder_for, is_folder, save_document
 from .config import COOKBOOK_DIR, KINDS, MANIFEST, PLATFORMS, ConfigError
 from .inventory import Component, component_stem, group_parts, join_name
 from .legacy import CONFIG_NAME, LegacyConfig, legacy_scan
@@ -55,6 +55,10 @@ from .recipes import load_corpus
 
 PLAN_VERSION = 1
 COOKBOOK_REPO = "https://github.com/agenticdevelopercookbook/cookbook"
+# The cookbook version a new manifest is based on (cookbook.schema.json
+# `cookbook.version`). It was read from the retired `cookbook` CLI, whose
+# last version this is.
+COOKBOOK_VERSION = "1.1.0"
 BUMP_SUMMARY = "Moved into the library cookbook; added Reference Implementations."
 
 
@@ -156,7 +160,7 @@ class _Namer:
 
 
 def _reserved(name: str) -> bool:
-    return f"{name.rsplit('/', 1)[-1]}.md" in SKIP_NAMES
+    return reserved_name(name) is not None
 
 
 def _dedupe(moves: list[Move]) -> None:
@@ -259,10 +263,13 @@ def validate(data: dict, repo_root: Path) -> None:
         src, to = m.get("from", ""), m.get("to", "")
         if not (repo_root / src).is_file():
             raise OrganizeError(f"plan move source not found: {src}")
+        if is_folder(folder_for(repo_root / src)):
+            raise OrganizeError(f"plan move source {src} has a source folder, which a move would "
+                                "strand; organize before converting")
         if not isinstance(to, str) or not _NAME.match(to) or ".." in to.split("/"):
             raise OrganizeError(f"plan move target `{to}` is not a lowercase path in the cookbook")
         if _reserved(to):
-            raise OrganizeError(f"plan move target `{to}` is a file name the corpus skips")
+            raise OrganizeError(f"plan move target `{to}`: {reserved_name(to)}")
         names[to] += 1
         for impl in m.get("implementations", []):
             if impl.get("platform") not in PLATFORMS:
@@ -386,11 +393,17 @@ def apply(data: dict, repo_root: Path, *, author: str = "", day: Optional[str] =
         path = repo_root / rel
         if not path.is_file():
             continue
-        text = path.read_text(encoding="utf-8", errors="surrogateescape")
+        if in_source_folder(path, repo_root):
+            continue   # a part: rewritten through its doc below
+        folder = is_folder(folder_for(path))
+        text = edit_text(path) if folder else path.read_text(encoding="utf-8", errors="surrogateescape")
         new_text = rewrite_references(text, old_file=back.get(rel, rel), new_file=rel,
                                       moved=moved, domains=domains, recipes=data["recipes"])
         if new_text != text:
-            path.write_text(new_text, encoding="utf-8", errors="surrogateescape")
+            if folder:
+                save_document(path, new_text)
+            else:
+                path.write_text(new_text, encoding="utf-8", errors="surrogateescape")
             result.rewritten.append(rel)
 
     for m in data["moves"]:
@@ -398,10 +411,10 @@ def apply(data: dict, repo_root: Path, *, author: str = "", day: Optional[str] =
         text = new.read_text(encoding="utf-8")
         text = _set_domain(text, f"{new_scheme}://{cookbook}/{m['to']}")
         rows = [refimpl.Implementation(i["platform"], i["path"]) for i in m.get("implementations", [])]
-        new.write_text(refimpl.with_section(text, rows), encoding="utf-8")
+        save_document(new, refimpl.with_section(text, rows))
         try:
-            new.write_text(bump.plan(new, level="patch", summary=BUMP_SUMMARY, author=author,
-                                     day=day).text, encoding="utf-8")
+            save_document(new, bump.plan(new, level="patch", summary=BUMP_SUMMARY, author=author,
+                                         day=day).text)
         except bump.BumpError as e:
             result.bump_failures.append((moved[m["from"]], str(e)))
 

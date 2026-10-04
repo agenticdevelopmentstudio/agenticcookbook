@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use Hilt with KSP and constructor injection for Android DI; scope bindings to the correct Hilt component and reserve @Singleton for app-scoped state."
 platforms:
@@ -28,7 +28,7 @@ references:
   - https://developer.android.com/training/dependency-injection/hilt-jetpack
   - https://developer.android.com/jetpack/androidx/releases/hilt
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - new-module
 ---

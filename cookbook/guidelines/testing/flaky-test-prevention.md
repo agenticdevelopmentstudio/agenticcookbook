@@ -1,5 +1,4 @@
 ---
-
 id: 05d00147-5c49-42d8-bdbd-cf8fd7dc2379
 title: "Flaky Test Prevention"
 domain: agenticdevelopercookbook://guidelines/testing/flaky-test-prevention
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Flaky tests destroy confidence. Quarantine them immediately — fix or delete, never ignore."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - flaky-test-prevention
   - testing
 depends-on: []
 related: []
-references: 
+references:
   - https://martinfowler.com/articles/nonDeterminism.html
   - https://testing.googleblog.com/
 approved-by: "approve-artifact v1.0.0"

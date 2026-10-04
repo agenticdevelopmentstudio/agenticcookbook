@@ -1,5 +1,4 @@
 ---
-
 id: 6079c539-f547-46de-9284-d404a76f6d9d
 title: "API Design"
 domain: agenticdevelopercookbook://guidelines/planning/networking/api-design
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use REST with consistent conventions. Follow the platform API guidelines (Microsoft, Google,"
 platforms: []
-tags: 
+tags:
   - api-design
   - networking
 depends-on: []
@@ -27,7 +26,7 @@ references:
   - https://www.rfc-editor.org/rfc/rfc8288.html
   - https://www.speakeasy.com/api-design/pagination
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - api-integration
   - new-module

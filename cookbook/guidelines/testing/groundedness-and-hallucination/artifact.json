@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "33c3971e-84a3-4318-8674-b0ff60e7f8f3",
+    "title": "Groundedness and hallucination checks",
+    "domain": "agenticdevelopercookbook://guidelines/testing/groundedness-and-hallucination",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Evaluate RAG groundedness with verified citations, calibrated LLM judges, and retrieval metrics, and abstain when context is insufficient.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "rag",
+      "evals"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety",
+      "agenticdevelopercookbook://guidelines/planning/data/vector-search-and-retrieval"
+    ],
+    "references": [
+      "https://arxiv.org/abs/2305.14251",
+      "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/",
+      "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "https://arxiv.org/abs/2309.15217"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ai-api-integration",
+      "writing-tests"
+    ]
+  },
+  "synced": "8662b4f41e9b7e6e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-to-measure", "heading": "What to measure"},
+    {"part": "require-and-verify-citations", "heading": "Require and verify citations"},
+    {"part": "llm-judge-calibrated-to-humans", "heading": "LLM judge, calibrated to humans"},
+    {"part": "abstain-instead-of-fabricating", "heading": "Abstain instead of fabricating"},
+    {"part": "ci-and-gating", "heading": "CI and gating"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

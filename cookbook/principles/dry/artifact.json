@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "256a827e-436e-4cde-895e-a56b9783edf2",
+    "title": "DRY",
+    "domain": "agenticdevelopercookbook://principles/dry",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-21",
+    "modified": "2026-04-21",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Every piece of knowledge should have a single, authoritative representation. DRY is a rule about knowledge, not about code shape.",
+    "platforms": [],
+    "tags": [
+      "dry"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-21"
+  },
+  "synced": "196319ea3bced021",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -12,11 +12,11 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from cookbook.core import refimpl
-from cookbook.core.deps import require
-from cookbook.core.errors import CookbookError
-from cookbook.core.frontmatter import parse_file
-from cookbook.core.markdown import iter_markdown
+from cookr.core import refimpl
+from cookr.core.deps import require
+from cookr.core.errors import CookbookError
+from cookr.core.frontmatter import parse_file
+from cookr.core.markdown import iter_markdown
 
 yaml = require("yaml")
 

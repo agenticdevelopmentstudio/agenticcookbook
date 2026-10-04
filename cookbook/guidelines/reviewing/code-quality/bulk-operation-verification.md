@@ -1,5 +1,4 @@
 ---
-
 id: b4e8d2c3-9f5a-4b0e-c7d4-3e2f1a0b9c8d
 title: "Bulk operation verification"
 domain: agenticdevelopercookbook://guidelines/reviewing/code-quality/bulk-operation-verification

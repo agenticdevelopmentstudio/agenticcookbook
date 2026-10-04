@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a1d4578f-aceb-4a87-8fa4-b57a89e80763",
+    "title": "Cross-Cutting Detection",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/cross-cutting-detection",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Distinguish concerns that span all scope groups (cross-cutting — do not isolate) from shared infrastructure that is itself a coherent group.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "new-module"
+    ]
+  },
+  "synced": "06f5e551e6290707",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

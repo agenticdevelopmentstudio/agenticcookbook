@@ -25,7 +25,7 @@ related:
   - agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: '2026-06-27'
+approved-date: "2026-06-27"
 ---
 
 # Domain-stratified trust

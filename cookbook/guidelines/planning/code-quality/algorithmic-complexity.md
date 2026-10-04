@@ -1,5 +1,4 @@
 ---
-
 id: 02301325-6676-4b89-ac9f-e2cfe99a4172
 title: "Algorithmic Complexity"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/algorithmic-complexity
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - code-review
   - performance-optimization

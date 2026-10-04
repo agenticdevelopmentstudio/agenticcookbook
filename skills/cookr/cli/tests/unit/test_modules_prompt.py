@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from cookbook.core.manifest import materialize
+from cookr.core.manifest import materialize
 
 from cookr.cli import main
 from cookr.core import templates

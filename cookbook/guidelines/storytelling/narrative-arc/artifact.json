@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "064250f4-a30a-4240-9f2c-010012419f25",
+    "title": "Narrative Arc",
+    "domain": "agenticdevelopercookbook://guidelines/storytelling/narrative-arc",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reconstruct the build journey over time from the actual record — timeline, pivots, and rough spots — grounded in git history and decisions, never a narrated guess.",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "narrative",
+      "arc"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis",
+      "agenticdevelopercookbook://guidelines/storytelling/craft"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "e2af00e058f3537c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "timeline", "heading": "Timeline"},
+    {"part": "pivots", "heading": "Pivots"},
+    {"part": "rough-spots", "heading": "Rough Spots"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

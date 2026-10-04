@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "7a942d3d-eb47-4eb2-8ed1-bebbcda6f7e6",
+    "title": "Eval-driven development for agent behavior",
+    "domain": "agenticdevelopercookbook://guidelines/testing/eval-driven-development",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "When the unit under test is agent or LLM behavior, build a calibrated eval harness instead of relying on ordinary unit tests.",
+    "platforms": [],
+    "tags": [
+      "evals",
+      "ai",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/the-testing-workflow",
+      "agenticdevelopercookbook://principles/tight-feedback-loops"
+    ],
+    "references": [
+      "https://code.claude.com/docs/en/best-practices",
+      "https://arxiv.org/abs/2411.13768",
+      "https://huggingface.co/blog/evaleval/eval-costs-bottleneck",
+      "https://www.digitalapplied.com/blog/ai-agent-evaluation-pipeline-2026-testing-methodology"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "writing-tests",
+      "ai-api-integration"
+    ]
+  },
+  "synced": "0e2a0ecd7896d458",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-evals-apply-and-when-they-do-not", "heading": "When evals apply (and when they do not)"},
+    {"part": "choosing-a-grader", "heading": "Choosing a grader"},
+    {"part": "calibrating-an-llm-judge", "heading": "Calibrating an LLM judge"},
+    {"part": "reliability-over-multiple-runs", "heading": "Reliability over multiple runs"},
+    {"part": "holding-out-a-test-set", "heading": "Holding out a test set"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

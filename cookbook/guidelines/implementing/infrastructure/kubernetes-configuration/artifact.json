@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ed639d3f-02e5-42d1-bb87-f96908986025",
+    "title": "Kubernetes configuration and secrets",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/kubernetes-configuration",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Externalize Kubernetes config via ConfigMaps and treat Secrets as unencrypted base64 — encrypt at rest, tighten RBAC, and prefer external secret managers.",
+    "platforms": [],
+    "tags": [
+      "kubernetes",
+      "config",
+      "secrets"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/infrastructure/containerization",
+      "agenticdevelopercookbook://guidelines/implementing/security/pii-handling"
+    ],
+    "references": [
+      "https://kubernetes.io/docs/concepts/configuration/secret/",
+      "https://kubernetes.io/docs/concepts/security/secrets-good-practices/",
+      "https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/",
+      "https://external-secrets.io/latest/introduction/overview/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "configuration",
+      "authentication"
+    ]
+  },
+  "synced": "a16ee12ccc5cbbe2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "separate-config-from-secrets", "heading": "Separate config from secrets"},
+    {"part": "secrets-are-not-encrypted-by-default", "heading": "Secrets are not encrypted by default"},
+    {"part": "prefer-an-external-secret-manager-production", "heading": "Prefer an external secret manager (production)"},
+    {"part": "mounting-and-rotation", "heading": "Mounting and rotation"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

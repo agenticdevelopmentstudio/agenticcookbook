@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Centered placeholder view shown when there is no content, with icon, heading, and optional action buttons"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - component
   - empty-state
   - ui

@@ -1,26 +1,25 @@
 ---
-
 id: fa8f5801-5c3f-44b3-bb51-cb04e918527f
 title: "Architecture"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/architecture
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Use MVVM with [CommunityToolkit.Mvvm](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/) — source-gener..."
+summary: "Use MVVM with CommunityToolkit.Mvvm (source-generated ObservableObject, RelayCommand, messaging), with a navigation service abstraction so code-behind never manipulates Frame directly."
 platforms: []
-tags: 
+tags:
   - architecture
   - platform
   - windows
 depends-on: []
 related: []
-references: 
+references:
   - https://github.com/microsoft/TemplateStudio
   - https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/
 approved-by: "approve-artifact v1.0.0"
@@ -59,6 +58,7 @@ public partial class MainViewModel
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

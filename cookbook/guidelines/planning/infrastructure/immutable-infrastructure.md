@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Never mutate running servers in place; build a versioned image artifact and replace instances to deploy or roll back."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://docs.docker.com/build/building/best-practices/
   - https://12factor.net/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - configuration
 ---

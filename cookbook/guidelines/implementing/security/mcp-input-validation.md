@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Treat every MCP tool argument as untrusted model-supplied input: schema-validate, authorize per call, and bound resource access."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://modelcontextprotocol.io/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ai-api-integration
   - input-handling

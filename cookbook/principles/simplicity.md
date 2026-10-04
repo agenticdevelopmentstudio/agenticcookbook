@@ -3,17 +3,17 @@ id: a61b6ede-624b-4424-bdf6-aeb153c9a3ea
 title: "Simplicity"
 domain: agenticdevelopercookbook://principles/simplicity
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Simple and easy are not synonyms. Simple means no interleaving of concerns. Easy means familiar or convenient. Optimi..."
+summary: "Simple and easy are not synonyms: simple means no interleaving of concerns. Optimize for simple, not easy, because complexity compounds and kills velocity."
 platforms: []
-tags: 
+tags:
   - simplicity
 depends-on: []
 related: []
@@ -34,4 +34,5 @@ Simple and easy are not synonyms. Simple means no interleaving of concerns. Easy
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

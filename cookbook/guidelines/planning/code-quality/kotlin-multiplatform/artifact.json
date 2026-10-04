@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3f442861-abec-4dfc-a2e2-a3761904d16d",
+    "title": "Kotlin Multiplatform",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/kotlin-multiplatform",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Share domain and data logic broadly across platforms with KMP; choose shared vs native UI per platform maturity.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "kotlin",
+      "kmp",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+    ],
+    "references": [
+      "https://www.jetbrains.com/kotlin-multiplatform/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module"
+    ]
+  },
+  "synced": "f94b8059decad93c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "layering-and-the-share-boundary", "heading": "Layering and the share boundary"},
+    {"part": "expect-actual-discipline", "heading": "expect / actual discipline"},
+    {"part": "shared-ui-compose-multiplatform-cmp", "heading": "Shared UI: Compose Multiplatform (CMP)"},
+    {"part": "interop-and-packaging", "heading": "Interop and packaging"},
+    {"part": "build-and-verification", "heading": "Build and verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

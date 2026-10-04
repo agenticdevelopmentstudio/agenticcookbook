@@ -31,7 +31,7 @@ Structured knowledge base of principles, guidelines, ingredients, recipes, and w
 │   ├── workflows/           # 6 .md files
 │   └── index.md
 ├── docs/feedback/, docs/project/, docs/superpowers/plans/, docs/superpowers/specs/
-├── skills/cookbook/cli/     # `cookbook` CLI source (installed via ./install → ~/.local/bin/)
+├── skills/cookr/cli/        # `cookr` CLI source (installed via ./install → ~/.local/bin/)
 └── README.md
 ```
 
@@ -40,7 +40,7 @@ Structured knowledge base of principles, guidelines, ingredients, recipes, and w
 - `cookbook/guidelines/` — 142 unique guidelines organized by use case (planning/implementing/testing/reviewing/shipping/cookbook); trigger-tagged for agent filtering
 - `cookbook/introduction/trigger-guide.md` — 28 canonical triggers mapping activities → guideline paths; escalating checkpoint pattern
 - `cookbook/index/triggers.yaml` (generated) — flat trigger→guideline-paths lookup for agent queries
-- `cookbook update` — fills missing frontmatter and regenerates all indexes (incl. `index/triggers.yaml`). Lives in `skills/cookbook/cli/`, installed globally via `./install`.
+- `cookr update` — fills missing frontmatter and regenerates all indexes (incl. `index/triggers.yaml`). Lives in `skills/cookr/cli/`, installed globally via `./install`.
 - `.claude/skills/lint-artifact/SKILL.md` — validates artifact structure/frontmatter against compliance specs
 - `.claude/skills/approve-artifact/SKILL.md` — runs lint, stamps `approved-by`/`approved-date`
 - `.claude/skills/repair-cookbook/SKILL.md` — scans for broken cross-references, dead index links, structural issues; parallel agents, batch fix flow
@@ -70,7 +70,7 @@ cd .claude/tests && npm test           # vitest run
 cd .claude/tests && npm run test:e2e   # longer timeout config
 
 # Regenerate indexes (incl. triggers) + fill missing frontmatter
-cookbook update
+cookr update
 ```
 
 ## Notes

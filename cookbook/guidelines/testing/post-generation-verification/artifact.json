@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "563aebde-52bf-4011-8907-ecc473fd942c",
+    "title": "Post-generation verification",
+    "domain": "agenticdevelopercookbook://guidelines/testing/post-generation-verification",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Verify every generated artifact: build for all target platforms, run the full test suite, lint, check log output, audit accessibility, and review against platform best practices.",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "typescript"
+    ],
+    "tags": [
+      "post-generation-verification",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/linting"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "pre-commit",
+      "code-review"
+    ]
+  },
+  "synced": "22389ebd8ccc2412",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

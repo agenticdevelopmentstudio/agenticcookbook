@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d374c32a-b452-47cd-9250-7b7d34a63116",
+    "title": "Kotlin Flow and StateFlow: lifecycle-aware state exposure",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/concurrency/kotlin-flow-stateflow",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Expose UI state as StateFlow via stateIn and collect it lifecycle-aware, injecting dispatchers for testability.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "kotlin",
+      "concurrency"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf"
+    ],
+    "references": [
+      "https://developer.android.com/kotlin/flow/stateflow-and-sharedflow"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "concurrency"
+    ]
+  },
+  "synced": "7eac5f69bfef7c5e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "exposing-state", "heading": "Exposing state"},
+    {"part": "collecting-lifecycle-aware-the-critical-part", "heading": "Collecting lifecycle-aware (the critical part)"},
+    {"part": "injecting-dispatchers", "heading": "Injecting dispatchers"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

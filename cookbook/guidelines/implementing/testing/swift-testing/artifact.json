@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2f199ad0-218e-41fe-b793-be7e8657f197",
+    "title": "Swift Testing",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/testing/swift-testing",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use Swift Testing (@Test, #expect/#require, parameterized arguments, suites, traits) for new Swift unit tests.",
+    "platforms": [
+      "swift"
+    ],
+    "tags": [
+      "swift",
+      "testing",
+      "apple"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/testing/unit-test-patterns"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/testing"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "writing-tests"
+    ]
+  },
+  "synced": "3f1d6947876a46ae",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-use-it", "heading": "When to use it"},
+    {"part": "core-api", "heading": "Core API"},
+    {"part": "suites-and-organization", "heading": "Suites and organization"},
+    {"part": "parameterized-tests", "heading": "Parameterized tests"},
+    {"part": "traits-and-tags", "heading": "Traits and tags"},
+    {"part": "conventions-for-this-codebase", "heading": "Conventions for this codebase"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

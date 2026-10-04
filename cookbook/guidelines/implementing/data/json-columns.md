@@ -1,5 +1,4 @@
 ---
-
 id: CBFA06B6-EC22-4784-9E61-C99307064B72
 title: "JSON columns and generated columns"
 domain: agenticdevelopercookbook://guidelines/implementing/data/json-columns
@@ -33,7 +32,7 @@ references:
   - https://www.crunchydata.com/blog/indexing-jsonb-in-postgres
   - https://vsevolod.net/postgresql-jsonb-index/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - database-operations
   - schema-design

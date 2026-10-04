@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "9f07e740-097e-4814-badf-fa3ae8d7d1e9",
+    "title": "Container image security",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/infrastructure/container-image-security",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Scan, pin, sign, and slim container images so they ship without known-exploited vulnerabilities, embedded secrets, or root runtimes.",
+    "platforms": [],
+    "tags": [
+      "security",
+      "containers",
+      "supply-chain"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/supply-chain-integrity",
+      "agenticdevelopercookbook://guidelines/reviewing/security/vulnerability-prioritization",
+      "agenticdevelopercookbook://guidelines/implementing/infrastructure/containerization"
+    ],
+    "references": [
+      "https://github.com/aquasecurity/trivy",
+      "https://docs.sigstore.dev/cosign/signing/signing_with_containers/",
+      "https://slsa.dev/spec/v1.0/provenance",
+      "https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "security-review",
+      "dependency-management"
+    ]
+  },
+  "synced": "c736104f4aad03a6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "scan-and-gate", "heading": "Scan and gate"},
+    {"part": "pin-and-slim-the-base", "heading": "Pin and slim the base"},
+    {"part": "sign-and-verify-provenance", "heading": "Sign and verify provenance"},
+    {"part": "harden-the-runtime", "heading": "Harden the runtime"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Implement themes as alternate value sets for the same semantic tokens; swap the active set, never the component code."
 platforms:
@@ -32,7 +32,7 @@ references:
   - https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/
   - https://www.w3.org/TR/WCAG22/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ui-implementation
   - accessibility

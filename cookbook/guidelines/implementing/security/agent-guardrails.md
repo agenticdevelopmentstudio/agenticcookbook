@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Wrap agents in deterministic input/output guardrails, least-privilege tool access, human confirmation for irreversible actions, and a kill switch."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://www.anthropic.com/research/building-effective-agents
   - https://modelcontextprotocol.io/specification/2025-06-18
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ai-api-integration
   - security-review

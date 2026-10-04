@@ -1,5 +1,4 @@
 ---
-
 id: 02E9042D-0D15-47AC-9361-2F16980A03CA
 title: "Indexing"
 domain: agenticdevelopercookbook://guidelines/implementing/data/indexing
@@ -34,7 +33,7 @@ references:
   - https://www.postgresql.org/docs/current/sql-createindex.html
   - https://pganalyze.com/blog/gin-index
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - database-operations
   - performance-optimization

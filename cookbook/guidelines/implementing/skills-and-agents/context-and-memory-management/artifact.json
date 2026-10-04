@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "0f999db4-956a-4124-a142-367b1a570983",
+    "title": "Context and memory management for agents",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/context-and-memory-management",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Treat context as a finite budget you curate: prune aggressively, isolate large subtasks to subagents, and persist what must survive across sessions.",
+    "platforms": [],
+    "tags": [
+      "agents",
+      "context",
+      "ai-workflow"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/simplicity",
+      "agenticdevelopercookbook://principles/tight-feedback-loops"
+    ],
+    "references": [
+      "https://code.claude.com/docs/en/best-practices"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "synced": "3637e3acbf86a5d5",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-requirements", "heading": "Core requirements"},
+    {"part": "compaction-is-lossy-protect-critical-state", "heading": "Compaction is lossy — protect critical state"},
+    {"part": "subagent-isolation", "heading": "Subagent isolation"},
+    {"part": "persistent-memory-across-sessions", "heading": "Persistent memory across sessions"},
+    {"part": "pruning-between-tasks", "heading": "Pruning between tasks"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

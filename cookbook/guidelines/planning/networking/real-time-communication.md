@@ -1,5 +1,4 @@
 ---
-
 id: 08ca2fd9-d466-4bdc-aea0-1af0c23ef09d
 title: "Real-Time Communication"
 domain: agenticdevelopercookbook://guidelines/planning/networking/real-time-communication
@@ -13,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Choose the simplest technique that meets your needs."
-platforms: 
+platforms:
   - web
-tags: 
+tags:
   - networking
   - real-time-communication
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.mozilla.org/en-US/docs/Web/API/EventSource
   - https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
   - https://www.rfc-editor.org/rfc/rfc6455

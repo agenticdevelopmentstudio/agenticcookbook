@@ -1,5 +1,4 @@
 ---
-
 id: 376daf6c-f2bd-4a33-9ab4-2a2af140e725
 title: "Fluent Design"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/fluent-design
@@ -13,16 +12,16 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use built-in WinUI 3 controls — they implement Fluent 2 natively. Never custom-draw what a standard control can do."
-platforms: 
+platforms:
   - csharp
   - windows
-tags: 
+tags:
   - fluent-design
   - platform
   - windows
 depends-on: []
 related: []
-references: 
+references:
   - https://learn.microsoft.com/en-us/windows/apps/design/
 approved-by: "approve-artifact v1.0.0"
 approved-date: "2026-04-04"

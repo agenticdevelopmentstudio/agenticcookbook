@@ -1,5 +1,4 @@
 ---
-
 id: f7d33c40-8dbd-4503-827f-92e4c3da4b8f
 title: "Performance: Speed and Token Efficiency"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/performance

@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "fad53801-59d5-4471-855a-4dc689448d48",
+    "title": "Authentication",
+    "domain": "agenticdevelopercookbook://guidelines/planning/security/authentication",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use OAuth 2.0 / OpenID Connect with PKCE for all public clients. The Implicit flow is",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "authentication",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc7636",
+      "https://datatracker.ietf.org/doc/html/rfc8252",
+      "https://openid.net/specs/openid-connect-core-1_0.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "authentication",
+      "security-review"
+    ]
+  },
+  "synced": "1765f3ed325d5da9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

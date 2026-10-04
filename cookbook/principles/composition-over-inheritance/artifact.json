@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f6679a9d-e90e-4fc6-ac4c-0696851af484",
+    "title": "Composition over inheritance",
+    "domain": "agenticdevelopercookbook://principles/composition-over-inheritance",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Default to composing behaviors from small, focused pieces. Use inheritance only for genuine is-a relationships, prefer protocols over base classes, and wrap rather than subclass.",
+    "platforms": [],
+    "tags": [
+      "composition-over-inheritance"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "0e4e785e24c85d0f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

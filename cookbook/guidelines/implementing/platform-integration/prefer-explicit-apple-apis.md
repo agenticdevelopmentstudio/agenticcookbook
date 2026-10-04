@@ -1,5 +1,4 @@
 ---
-
 id: 095b33a1-2835-4ed5-bf01-f1e492148819
 title: "Use AppKit and UIKit, not SwiftUI"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/prefer-explicit-apple-apis
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use AppKit (macOS) and UIKit (iOS) for all UI. Use SwiftUI only where Apple requires it."
-platforms: 
+platforms:
   - ios
   - macos
 languages:
   - swift
-tags: 
+tags:
   - swift
   - appkit
   - uikit
@@ -32,7 +31,7 @@ references:
   - https://www.jessesquires.com/blog/2024/09/09/swift-observable-macro/
   - https://nilcoalescing.com/blog/ObservableInSwiftUI/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - platform-integration
   - ui-implementation

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use ETags with If-None-Match for efficient reads and If-Match for optimistic concurrency on writes to prevent lost updates."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://www.rfc-editor.org/rfc/rfc9110.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - api-integration
   - networking

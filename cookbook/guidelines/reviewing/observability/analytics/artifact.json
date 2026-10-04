@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8e317295-dc45-4d96-9f03-c75e866de4ad",
+    "title": "Analytics",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/observability/analytics",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Instrument all significant user actions via an AnalyticsProvider interface (track(event, properties)) with no direct coupling to a backend; default to logging and swap in a backend later.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "analytics",
+      "logging"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "logging",
+      "ui-implementation"
+    ]
+  },
+  "synced": "aa4b38847076139c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "c", "heading": "C#"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

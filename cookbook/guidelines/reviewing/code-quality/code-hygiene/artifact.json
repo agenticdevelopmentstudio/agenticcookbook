@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "1b79f7dc-16c4-40d7-ab9d-d03449bf21dc",
+    "title": "Code hygiene: remove the old thing",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/code-hygiene",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "When you replace or refactor code, delete what it supersedes. Leave no dead code, orphaned files, or commented-out blocks behind.",
+    "platforms": [],
+    "tags": [
+      "code-quality",
+      "refactoring",
+      "hygiene"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/design-for-deletion",
+      "agenticdevelopercookbook://principles/yagni",
+      "agenticdevelopercookbook://guidelines/reviewing/code-quality/scope-discipline",
+      "agenticdevelopercookbook://principles/deliberate-prudent-debt"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "pre-commit"
+    ]
+  },
+  "synced": "e534fa1ceaf3ac44",
+  "parts": [
+    {"part": "intro"},
+    {"part": "remove-what-this-change-supersedes", "heading": "Remove what this change supersedes"},
+    {"part": "leave-no-orphans", "heading": "Leave no orphans"},
+    {"part": "stay-within-scope-while-cleaning", "heading": "Stay within scope while cleaning"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

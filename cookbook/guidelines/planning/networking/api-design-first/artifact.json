@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "0b40ebfd-823f-4283-bbeb-eb2bcf095ff8",
+    "title": "Design-first API development with OpenAPI",
+    "domain": "agenticdevelopercookbook://guidelines/planning/networking/api-design-first",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Author the OpenAPI document before implementing endpoints and treat it as the linted, machine-readable contract.",
+    "platforms": [],
+    "tags": [
+      "api",
+      "openapi",
+      "contract"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/networking/api-design",
+      "agenticdevelopercookbook://principles/support-automation"
+    ],
+    "references": [
+      "https://spec.openapis.org/oas/v3.1.0"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "api-integration",
+      "new-module"
+    ]
+  },
+  "synced": "47f5a9016f67a7ad",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-this-applies", "heading": "When this applies"},
+    {"part": "core-requirements", "heading": "Core requirements"},
+    {"part": "pin-the-version", "heading": "Pin the version"},
+    {"part": "generate-don-t-hand-write-the-derivatives", "heading": "Generate, don't hand-write, the derivatives"},
+    {"part": "lint-in-ci", "heading": "Lint in CI"},
+    {"part": "contract-checks-both-ways", "heading": "Contract checks both ways"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

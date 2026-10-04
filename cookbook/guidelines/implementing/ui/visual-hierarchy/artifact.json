@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a7c2a089-7666-459e-b564-24cc30980936",
+    "title": "Visual Hierarchy",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/visual-hierarchy",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Establish clear importance through size, weight, color, and spacing. Every screen should",
+    "platforms": [
+      "windows"
+    ],
+    "tags": [
+      "ui",
+      "visual-hierarchy"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/layout",
+      "https://learn.microsoft.com/en-us/windows/apps/design/layout/",
+      "https://m3.material.io/foundations/layout/applying-layout/overview",
+      "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "e8d21fdb1284741a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -12,19 +12,19 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Settings panel for AI/LLM provider configuration with multi-provider support"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - ai-settings-panel
   - panel
   - ui
 depends-on: []
-related: 
+related:
   - ingredient.ui.component.ai-chat-control
 references: []
 approved-by: "approve-artifact v1.0.0"

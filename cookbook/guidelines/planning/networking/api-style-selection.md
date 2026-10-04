@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Select an API style from consumer needs and traffic shape: REST for resource CRUD, gRPC for internal RPC, GraphQL for client-driven aggregation."
 platforms: []
@@ -25,7 +25,7 @@ references:
   - https://www.designgurus.io/blog/rest-graphql-grpc-system-design
   - https://blog.apilayer.com/graphql-vs-rest-vs-grpc-which-should-you-choose-and-when/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - api-integration
   - new-module

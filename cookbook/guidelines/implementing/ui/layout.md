@@ -1,5 +1,4 @@
 ---
-
 id: 26c8e7d6-dde3-48d0-bde0-8a71a51a6674
 title: "Layout"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/layout
@@ -13,16 +12,16 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Design for the content, not a fixed screen size. Layouts should adapt gracefully from"
-platforms: 
+platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - layout
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/layout
   - https://learn.microsoft.com/en-us/windows/apps/design/layout/responsive-design
   - https://m3.material.io/foundations/layout/applying-layout/overview

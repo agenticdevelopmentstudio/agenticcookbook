@@ -12,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Multi-session terminal pane with PTY-backed shell sessions, session sidebar, and terminal profiles"
-platforms: 
+platforms:
   - ios
   - macos
   - swift
   - windows
-tags: 
+tags:
   - panel
   - terminal-pane
   - ui

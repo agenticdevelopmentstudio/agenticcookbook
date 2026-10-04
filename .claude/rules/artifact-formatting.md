@@ -27,6 +27,8 @@ Before writing or modifying an artifact, read the compliance file for that artif
 3. **Follow the required section order** — ingredients and recipes have strict section orders defined in their formatting files. Principles and guidelines have fewer constraints but MUST include all MUST-level sections.
 4. **Use RFC 2119 keywords** for requirements — MUST, MUST NOT, SHOULD, SHOULD NOT, MAY.
 5. **Name requirements in kebab-case** — `**must-do-something**: Component MUST ...`, not REQ-001.
+6. **Keep the source folder in step** — after editing an artifact's `.md`, run
+   `cookr convert --update <path>`; a new artifact gets its folder from `cookr convert <path>`.
 
 ---
 

@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "1b259fdc-1aba-48c5-a89a-b9ca01dc3351",
+    "title": "Feature flags",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/feature-flags",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pre-ship feature flag verification: ensure all new features are gated, defaults are correct, and flag keys are documented.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "feature-flags",
+      "feature-management"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "feature-flags",
+      "new-module"
+    ]
+  },
+  "synced": "5a85e4ff68114596",
+  "parts": [
+    {"part": "intro"},
+    {"part": "pre-ship-verification-checklist", "heading": "Pre-ship verification checklist"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

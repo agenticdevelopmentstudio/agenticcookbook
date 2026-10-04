@@ -1,5 +1,4 @@
 ---
-
 id: 66735bd3-65de-44a9-b449-ba3df79b5373
 title: "Offline and Connectivity"
 domain: agenticdevelopercookbook://guidelines/planning/networking/offline-and-connectivity
@@ -13,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "For apps that must work offline, design for local-first with background sync."
-platforms: 
+platforms:
   - web
-tags: 
+tags:
   - networking
   - offline-and-connectivity
 depends-on: []
 related: []
-references: 
+references:
   - https://crdt.tech/
   - https://web.dev/articles/offline-cookbook
 approved-by: "approve-artifact v1.0.0"

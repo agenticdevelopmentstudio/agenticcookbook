@@ -1,5 +1,4 @@
 ---
-
 id: 43dbf61b-96ff-45f8-a11c-924e2f4359e0
 title: "Rule Structure Reference"
 domain: agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/rule-structure-reference

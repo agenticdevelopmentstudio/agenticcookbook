@@ -1,5 +1,4 @@
 ---
-
 id: 0ECFED07-C7A7-4E76-9F3E-1C5EA0A5DCE8
 title: "Primary key strategies"
 domain: agenticdevelopercookbook://guidelines/implementing/data/primary-keys

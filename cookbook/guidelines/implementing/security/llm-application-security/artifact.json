@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a8088a6a-4542-4f6c-b74a-7c7ef7dcc63d",
+    "title": "LLM and agentic application security",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Treat all model output as untrusted, defend against direct and indirect prompt injection, and constrain tool agency.",
+    "platforms": [],
+    "tags": [
+      "security",
+      "llm",
+      "ai"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/fail-fast",
+      "agenticdevelopercookbook://guidelines/implementing/security/input-validation"
+    ],
+    "references": [
+      "https://genai.owasp.org/llm-top-10/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ai-api-integration",
+      "security-review"
+    ]
+  },
+  "synced": "2fd3296794c2974b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "treat-all-model-output-as-untrusted-llm05-improper-output-handling", "heading": "Treat all model output as untrusted (LLM05: Improper Output Handling)"},
+    {"part": "defend-against-prompt-injection-llm01", "heading": "Defend against prompt injection (LLM01)"},
+    {"part": "constrain-tool-and-agent-agency-llm06-excessive-agency", "heading": "Constrain tool and agent agency (LLM06: Excessive Agency)"},
+    {"part": "protect-prompts-and-sensitive-data-llm07-llm02", "heading": "Protect prompts and sensitive data (LLM07, LLM02)"},
+    {"part": "secure-rag-vectors-and-embeddings-llm08", "heading": "Secure RAG: vectors and embeddings (LLM08)"},
+    {"part": "related-risks-to-verify", "heading": "Related risks to verify"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

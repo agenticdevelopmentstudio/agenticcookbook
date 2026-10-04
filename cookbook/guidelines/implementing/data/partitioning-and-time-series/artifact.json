@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2b9b576c-1e17-4a15-b347-febf2ea3c312",
+    "title": "Table partitioning and time-series data",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/partitioning-and-time-series",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Partition large tables only when a measured size or retention need justifies the operational cost, and apply time-series patterns deliberately.",
+    "platforms": [],
+    "tags": [
+      "database",
+      "partitioning",
+      "time-series"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/data/advanced-indexing"
+    ],
+    "references": [
+      "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "cc45273eb759a5c5",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-partition-measured-need-guardrail", "heading": "When to partition (measured-need guardrail)"},
+    {"part": "choosing-a-partition-strategy", "heading": "Choosing a partition strategy"},
+    {"part": "time-series-patterns", "heading": "Time-series patterns"},
+    {"part": "extension-vs-native-a-deliberate-decision", "heading": "Extension vs. native (a deliberate decision)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

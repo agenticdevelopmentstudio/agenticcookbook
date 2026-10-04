@@ -1,5 +1,4 @@
 ---
-
 id: 49399746-a81f-4163-8b07-0cfa11d87c2e
 title: "API Design"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/api-design
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use REST with consistent conventions. Follow the platform API guidelines (Microsoft, Google,"
 platforms: []
-tags: 
+tags:
   - api-design
   - networking
 depends-on: []

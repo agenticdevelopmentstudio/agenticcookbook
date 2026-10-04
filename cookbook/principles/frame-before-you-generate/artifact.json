@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f7961f5a-834b-4ba1-804e-8c1ddcc251a7",
+    "title": "Frame Before You Generate",
+    "domain": "agenticdevelopercookbook://principles/frame-before-you-generate",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Find the real problem before generating solutions. The stated problem is rarely the real one; reframing it first unlocks a richer solution space.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "framing",
+      "design-thinking"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/diverge-before-you-converge"
+    ],
+    "references": [
+      "https://web.stanford.edu/~mshanks/MichaelShanks/files/509554.pdf",
+      "https://www.designcouncil.org.uk/resources/framework-for-innovation/",
+      "https://www.ideou.com/blogs/inspiration/7-simple-rules-of-brainstorming"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "631215eaac06cc5b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,5 +1,4 @@
 ---
-
 id: ee92545b-9d50-4f6b-95e5-e239a2433a11
 title: "Rule Lint Checklist"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/rule-checklist

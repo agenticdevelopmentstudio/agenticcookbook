@@ -1,22 +1,21 @@
 ---
-
 id: 40ba1017-cec3-42f0-bd89-63a29eb3dd4d
 title: "Previews"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/previews
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All UI components MUST include preview declarations for rapid visual verification during development. Previews should..."
-platforms: 
+summary: "All UI components MUST include preview declarations for rapid visual verification during development, covering all significant states: default, loading, error, empty, and populated."
+platforms:
   - kotlin
   - swift
-tags: 
+tags:
   - previews
   - ui
 depends-on: []
@@ -44,6 +43,7 @@ All Compose components MUST include `@Preview` functions. Verification includes 
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

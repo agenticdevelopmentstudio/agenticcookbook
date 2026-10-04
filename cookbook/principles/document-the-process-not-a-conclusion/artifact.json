@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "10311277-24f7-473b-af0a-a98285dd74f1",
+    "title": "Document the Process, Not a Conclusion",
+    "domain": "agenticdevelopercookbook://principles/document-the-process-not-a-conclusion",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Capture the creative journey — provenance, parked branches, traversal timeline — and impose no ending. Incubation is real; resumability is essential.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "provenance",
+      "incubation"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel"
+    ],
+    "references": [
+      "Wallas, The Art of Thought, 1926",
+      "Sio & Ormerod, Psychological Bulletin, 135(1), 2009",
+      "Shneiderman, Communications of the ACM, 45(10), 2002",
+      "Shneiderman, Communications of the ACM, 50(12), 2007"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "c6f186a4910105e3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

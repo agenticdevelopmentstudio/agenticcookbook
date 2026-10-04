@@ -24,7 +24,7 @@ related:
   - agenticdevelopercookbook://guidelines/researching/evidence/research-results-document
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: '2026-06-27'
+approved-date: "2026-06-27"
 ---
 
 # Provenance at generation time

@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4de09db8-b6fe-4211-b7e4-c95619a12141",
+    "title": "Dependency Clusters",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/dependency-clusters",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Identify scope groups by measuring internal coupling density versus external coupling — files that import each other heavily belong together.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "new-module"
+    ]
+  },
+  "synced": "0ec948dfff956904",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

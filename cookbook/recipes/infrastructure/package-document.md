@@ -12,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pattern for macOS document-based apps using directory bundle packages with SQLite databases and auto-save"
-platforms: 
+platforms:
   - ios
   - macos
   - swift
   - windows
-tags: 
+tags:
   - infrastructure
   - package-document
 depends-on: []

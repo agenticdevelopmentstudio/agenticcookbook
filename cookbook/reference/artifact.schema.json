@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://agenticdevelopercookbook.com/schemas/artifact.schema.json",
+  "title": "Artifact",
+  "description": "Schema for artifact.json — the manifest of a cookbook artifact source folder. `meta` holds what the single-file form keeps in YAML frontmatter; `parts` lists, in order, the part files that compose the artifact's body. cookr's type registry (skills/cookr/cli/cookr/core/artifact_types.py) checks the per-type section rules this schema cannot express.",
+  "type": "object",
+  "required": ["format", "meta", "parts"],
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "description": "Folder format version.",
+      "const": 1
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "id", "title", "domain", "type", "version", "status", "language", "created",
+        "modified", "author", "copyright", "license", "summary", "platforms", "tags",
+        "depends-on", "related", "references", "approved-by", "approved-date"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "domain": { "type": "string", "pattern": "^agenticdevelopercookbook://" },
+        "type": { "enum": ["principle", "guideline", "ingredient", "recipe"] },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "status": { "enum": ["wip", "draft", "review", "accepted", "deprecated"] },
+        "language": { "type": "string" },
+        "created": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "modified": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "author": { "type": "string" },
+        "copyright": { "type": "string" },
+        "license": { "type": "string" },
+        "summary": { "type": "string" },
+        "platforms": { "$ref": "#/$defs/strings" },
+        "tags": { "$ref": "#/$defs/strings" },
+        "depends-on": { "$ref": "#/$defs/strings" },
+        "related": { "$ref": "#/$defs/strings" },
+        "references": { "$ref": "#/$defs/strings" },
+        "ingredients": { "$ref": "#/$defs/strings" },
+        "triggers": { "$ref": "#/$defs/strings" },
+        "approved-by": { "type": "string" },
+        "approved-date": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "recipe" } } },
+          "then": { "required": ["ingredients"] }
+        }
+      ]
+    },
+    "names_hosts": {
+      "description": "Why this artifact's shared text names a host or model family from cookr's host manifest (e.g. it documents Claude Code's file layout). Without it, naming one is a neutrality failure: host-specific wording belongs in hosts/ additions.",
+      "type": "string",
+      "minLength": 16
+    },
+    "routes": {
+      "description": "skill-router routes for the compiled `skill` target, replacing the derived ones (cookr core/skill.py). Each is tiers separated by `/`, synonyms within a tier by `,`.",
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "pattern": "^[^/,\\s][^/,]*(,[^/,]+)*(/[^/,\\s][^/,]*(,[^/,]+)*)*$"}
+    },
+    "parts": {
+      "description": "The body, in order. The intro (no heading) comes first; history (`## Change History`) comes last. Each part's text is `<part>.md` beside artifact.json, without its heading line.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["part"],
+        "additionalProperties": false,
+        "properties": {
+          "part": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "heading": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "strings": { "type": "array", "items": { "type": "string" } }
+  }
+}

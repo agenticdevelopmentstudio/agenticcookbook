@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b8aa57e0-6a85-4605-ae84-1220872294de",
+    "title": "Rule Structure Reference",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/rule-structure-reference",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reference for Claude Code rule file format, quality criteria, optimization guidelines, and comparison with skills and agents",
+    "platforms": [],
+    "tags": [
+      "rules",
+      "structure",
+      "reference",
+      "optimization"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/rule-checklist"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
+  "synced": "d9be2141c6936473",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-is-a-rule-file", "heading": "What is a Rule File?"},
+    {"part": "file-format", "heading": "File Format"},
+    {"part": "common-locations", "heading": "Common Locations"},
+    {"part": "quality-criteria", "heading": "Quality Criteria"},
+    {"part": "optimization", "heading": "Optimization"},
+    {"part": "comparison-skills-vs-agents-vs-rules", "heading": "Comparison: Skills vs Agents vs Rules"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

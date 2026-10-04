@@ -1,0 +1,9 @@
+
+- **deliberate-level**: Each transaction MUST set its isolation level explicitly (e.g. `SET TRANSACTION ISOLATION LEVEL ...` or the driver/ORM equivalent) rather than relying on an unstated global default. The choice MUST be justified by the anomaly being prevented.
+- **retry-serialization-failure**: Any transaction running at Repeatable Read or Serializable MUST be wrapped in retry logic that re-runs the whole transaction on a serialization failure. In PostgreSQL this is SQLSTATE `40001` (`could not serialize access due to ...`). MySQL/InnoDB raises deadlock (error `1213`/SQLSTATE `40001`) and lock-wait timeout (`1205`); treat both as retryable.
+- **bounded-backoff**: Retries MUST be bounded (a fixed max attempt count, e.g. 3-5) with exponential backoff plus jitter. Code MUST NOT retry unboundedly; on exhaustion it MUST surface the failure.
+- **idempotent-retry**: The retried transaction body MUST be safe to re-execute — no side effects (emails, payments, external calls, non-transactional counters) inside the retried block. See `agenticdevelopercookbook://principles/idempotency`.
+- **no-savepoint-only-retry**: Retry MUST restart from a fresh `BEGIN`. Catching `40001` and continuing in the same aborted transaction is invalid — the transaction is already doomed.
+- **explicit-locking-for-queues**: Worker/queue claim patterns MUST use explicit row locking — `SELECT ... FOR UPDATE SKIP LOCKED` to let concurrent workers grab disjoint rows, or `FOR UPDATE` (optionally `NOWAIT`) when blocking is acceptable. They SHOULD NOT rely on Serializable for queue dispatch (it serializes throughput).
+- **prefer-narrowest-level**: Transactions SHOULD use the narrowest level that prevents the anomaly that actually matters. Reach for Serializable only when write skew is a real risk (e.g. invariant across multiple rows: "at least one admin", balance checks across accounts).
+

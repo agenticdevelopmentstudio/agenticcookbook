@@ -1,5 +1,4 @@
 ---
-
 id: b153d73b-9623-4fca-be5c-c3ac2b88f439
 title: "Transport Security"
 domain: agenticdevelopercookbook://guidelines/reviewing/security/transport-security
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "**TLS 1.2 minimum**, prefer TLS 1.3. Disable TLS 1.0 and 1.1 entirely."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - security
   - transport-security
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html
   - https://datatracker.ietf.org/doc/html/rfc8446
   - https://hstspreload.org/

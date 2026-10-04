@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419",
+    "title": "Input Validation",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/input-validation",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "**Never trust client input.** Client-side validation is a UX feature, not a security control.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "input-validation",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks",
+      "https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/",
+      "https://arxiv.org/html/2508.14925v1"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "input-handling",
+      "security-review",
+      "api-integration"
+    ]
+  },
+  "synced": "b34caf3c268f46e8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "server-render-and-server-action-boundary", "heading": "Server-render and Server-Action boundary"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

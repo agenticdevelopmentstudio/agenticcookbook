@@ -1,5 +1,4 @@
 ---
-
 id: A899AEAE-D561-4FCD-ABD7-DF109FE2362C
 title: "Sync Schema Design"
 domain: agenticdevelopercookbook://guidelines/implementing/data/sync-schema-design

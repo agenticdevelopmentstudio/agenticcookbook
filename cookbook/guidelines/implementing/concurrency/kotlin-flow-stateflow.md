@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Expose UI state as StateFlow via stateIn and collect it lifecycle-aware, injecting dispatchers for testability."
 platforms:
@@ -24,7 +24,7 @@ related:
 references:
   - https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - concurrency
 ---

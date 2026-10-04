@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "85d90939-4047-4b69-a76c-716de9fd5d38",
+    "title": "Instrumented logging",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/observability/logging",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Instrument every component and flow with structured logging using the platform's best-in-class framework, at debug level for state transitions, user interactions, async tasks, and branching.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "python",
+      "swift",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "logging"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://github.com/JakeWharton/timber",
+      "https://learn.microsoft.com/en-us/visualstudio/profiling/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "logging",
+      "new-module",
+      "error-handling"
+    ]
+  },
+  "synced": "77c488fb25540b99",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "c", "heading": "C#"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "python", "heading": "Python"},
+    {"part": "opentelemetry-and-trace-correlation", "heading": "OpenTelemetry and trace correlation"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

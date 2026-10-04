@@ -29,7 +29,7 @@ references:
   - https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton
   - https://news.ycombinator.com/item?id=35090989
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 ---
 
 # Steel thread first

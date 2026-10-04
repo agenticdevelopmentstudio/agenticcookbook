@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "aa81d10d-38d1-40d4-8be4-212b043e6410",
+    "title": "Claude Rule Optimization Pipeline",
+    "domain": "agenticdevelopercookbook://recipes/developer-tools/claude/claude-rule-optimization-pipeline",
+    "type": "recipe",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-30",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Four-phase pipeline for auditing, optimizing, validating, and reporting on Claude Code rule file context efficiency.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "claude-code",
+      "rules",
+      "optimization",
+      "context-efficiency",
+      "pipeline"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://ingredients/developer-tools/claude/yolo-mode",
+      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline"
+    ],
+    "references": [
+      "https://code.claude.com/docs/en/best-practices"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "names_hosts": "Specifies a pipeline that optimizes Claude Code rule files: the host is the subject.",
+  "synced": "7ebed1ce2a182395",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "pipeline-outcomes", "heading": "Pipeline Outcomes"},
+    {"part": "metrics", "heading": "Metrics"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "deep-linking", "heading": "Deep Linking"},
+    {"part": "localization", "heading": "Localization"},
+    {"part": "accessibility-options", "heading": "Accessibility Options"},
+    {"part": "feature-flags", "heading": "Feature Flags"},
+    {"part": "analytics", "heading": "Analytics"},
+    {"part": "privacy", "heading": "Privacy"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

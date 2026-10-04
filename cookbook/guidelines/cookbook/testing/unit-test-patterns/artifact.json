@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "59ffd7c7-2bdc-4f7b-b6f3-07d1f24599a3",
+    "title": "Unit Test Patterns",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/testing/unit-test-patterns",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to write test vectors in cookbook artifacts — use AAA structure, one concept per vector, descriptive names.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "unit-test-patterns"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests"
+    ]
+  },
+  "synced": "403a713ff803cd15",
+  "parts": [
+    {"part": "intro"},
+    {"part": "test-vector-structure", "heading": "Test vector structure"},
+    {"part": "rules-for-test-vectors", "heading": "Rules for test vectors"},
+    {"part": "naming-test-vectors", "heading": "Naming test vectors"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

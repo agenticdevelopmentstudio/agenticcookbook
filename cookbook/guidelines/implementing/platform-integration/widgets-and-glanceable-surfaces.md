@@ -1,5 +1,4 @@
 ---
-
 id: e3aa9294-61cf-4a3a-9fbf-0528a1404094
 title: "Widgets and glanceable surfaces"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/widgets-and-glanceable-surfaces
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Apps with time-sensitive or frequently checked data SHOULD provide widgets and glanceable surfaces on platforms that support them."
-platforms: 
+platforms:
   - ios
   - macos
   - android
   - web
-tags: 
+tags:
   - widgets
   - platform
   - glanceable
@@ -31,7 +30,7 @@ references:
   - https://developer.apple.com/videos/play/wwdc2025/278/
   - https://developer.apple.com/documentation/widgetkit/developing-a-widgetkit-strategy
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - platform-integration
   - ui-implementation

@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "03539f34-3451-49d5-b90f-ba77430f2658",
+    "title": "System Dependencies",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/system-dependencies",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Characterize which external libraries, OS frameworks, and system services the code reaches for, and what that implies about scope boundaries.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "dependency-management"
+    ]
+  },
+  "synced": "b210ed25bbcea489",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

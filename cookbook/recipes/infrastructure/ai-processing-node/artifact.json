@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "61ca76a4-0188-488b-9ac6-1144ca8ed506",
+    "title": "AI Processing Node",
+    "domain": "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
+    "type": "recipe",
+    "version": "1.0.0",
+    "status": "review",
+    "language": "en",
+    "created": "2026-06-28",
+    "modified": "2026-06-28",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Platform-agnostic spec for a pull-model AI job worker that claims jobs from the adh backend, runs handlers, renews leases, and reports results with at-least-once idempotency.",
+    "platforms": [
+      "macos",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "infrastructure",
+      "ai-jobs",
+      "worker",
+      "polling"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/directory-sync"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc2119"
+    ],
+    "approved-by": "",
+    "approved-date": ""
+  },
+  "synced": "d03224246cf9a86a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "terminology", "heading": "Terminology"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "the-categorize-and-tag-handler", "heading": "The `categorize_and_tag` Handler"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "6f6ccc46-33fb-44ad-8dce-d65581d8dfe0",
+    "title": "Kubernetes workloads",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/kubernetes-workloads",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Run Kubernetes workloads with explicit resource requests/limits, health probes, hardened pod security, and safe rollout strategies.",
+    "platforms": [],
+    "tags": [
+      "kubernetes",
+      "workloads",
+      "deployment"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/infrastructure/kubernetes-configuration",
+      "agenticdevelopercookbook://guidelines/planning/infrastructure/immutable-infrastructure"
+    ],
+    "references": [
+      "https://kubernetes.io/docs/concepts/configuration/overview/",
+      "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+      "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+      "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "configuration",
+      "performance-optimization"
+    ]
+  },
+  "synced": "0e8c17fe196cb5d3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "adopt-only-when-the-need-is-measured", "heading": "Adopt only when the need is measured"},
+    {"part": "resources-requests-and-limits", "heading": "Resources: requests and limits"},
+    {"part": "health-probes", "heading": "Health probes"},
+    {"part": "rollout-and-availability", "heading": "Rollout and availability"},
+    {"part": "pod-security", "heading": "Pod security"},
+    {"part": "organization-and-scaling", "heading": "Organization and scaling"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

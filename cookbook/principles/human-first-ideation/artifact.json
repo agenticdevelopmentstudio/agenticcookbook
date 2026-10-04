@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "db8976c0-57e0-41a4-a7fa-67e3efef79d5",
+    "title": "Human-First Ideation",
+    "domain": "agenticdevelopercookbook://principles/human-first-ideation",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The human's ideas come before the AI's. Early AI exposure lowers originality, reduces creative self-efficacy, and diminishes ownership.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "human-centered",
+      "ai-facilitation"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel",
+      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity"
+    ],
+    "references": [
+      "Yildirim et al., arXiv 2502.06197, 2025",
+      "Dong et al. (HAICo), arXiv 2512.18388, 2024",
+      "Vygotsky, Mind in Society, 1978",
+      "Sawyer, Group Genius, 2007"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "6b5607d6086dbe48",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

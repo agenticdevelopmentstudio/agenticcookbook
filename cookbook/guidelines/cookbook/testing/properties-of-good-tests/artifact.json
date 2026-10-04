@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d2c1aaaf-3fc7-4410-ab9a-06c264aa3208",
+    "title": "Properties of Good Tests",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/testing/properties-of-good-tests",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Properties that test vectors in cookbook artifacts (ingredients, recipes) should exhibit — adapted from Kent Beck's Test Desiderata.",
+    "platforms": [],
+    "tags": [
+      "properties-of-good-tests",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "code-review"
+    ]
+  },
+  "synced": "d102a5425289420f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "for-test-vectors-in-cookbook-artifacts", "heading": "For test vectors in cookbook artifacts"},
+    {"part": "less-relevant-for-cookbook-authoring", "heading": "Less relevant for cookbook authoring"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

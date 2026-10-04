@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "A single Model Context Protocol tool — name, JSON Schema input/output, typed result, error and trust hint annotations"
 platforms:
@@ -26,7 +26,7 @@ related:
 references:
   - https://modelcontextprotocol.io/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 ---
 
 # MCP tool

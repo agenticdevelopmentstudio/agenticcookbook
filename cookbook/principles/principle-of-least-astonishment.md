@@ -3,17 +3,17 @@ id: da56ab62-98ad-4f52-b972-3ebfda5b1718
 title: "Principle of least astonishment"
 domain: agenticdevelopercookbook://principles/principle-of-least-astonishment
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "APIs, UI, and system behavior should match what users and callers expect. If a name suggests one behavior, it must de..."
+summary: "APIs, UI, and system behavior should match what users and callers expect. A name must deliver the behavior it suggests, and side effects should be obvious from the signature."
 platforms: []
-tags: 
+tags:
   - principle-of-least-astonishment
 depends-on: []
 related: []
@@ -35,4 +35,5 @@ APIs, UI, and system behavior should match what users and callers expect. If a n
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

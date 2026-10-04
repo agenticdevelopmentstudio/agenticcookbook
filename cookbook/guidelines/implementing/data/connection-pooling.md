@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Front Postgres with a transaction-mode pooler for serverless or many-instance backends, and never depend on session-scoped state."
 platforms: []
@@ -26,7 +26,7 @@ references:
   - https://www.pgbouncer.org/usage.html
   - https://devcenter.heroku.com/articles/best-practices-pgbouncer-configuration
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - database-operations
   - performance-optimization

@@ -1,5 +1,4 @@
 ---
-
 id: 49acdf9f-e4cb-4492-a620-809438eefb37
 title: "Pagination"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/pagination
@@ -14,12 +13,12 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Prefer **cursor pagination** for most APIs — stable under concurrent mutations, consistent"
 platforms: []
-tags: 
+tags:
   - networking
   - pagination
 depends-on: []
 related: []
-references: 
+references:
   - https://google.aip.dev/158
   - https://opensource.zalando.com/restful-api-guidelines/#pagination
 approved-by: "approve-artifact v1.0.0"

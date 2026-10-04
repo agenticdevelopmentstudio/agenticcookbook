@@ -1,5 +1,4 @@
 ---
-
 id: 05f1ec7d-096a-4728-9670-1330dc2ed35b
 title: "Color"
 domain: agenticdevelopercookbook://guidelines/reviewing/ui/color
@@ -13,17 +12,17 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use color with intention — never as the sole means of conveying information."
-platforms: 
+platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - color
   - ui
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/reviewing/accessibility/accessibility
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/color
   - https://learn.microsoft.com/en-us/windows/apps/design/style/color
   - https://m3.material.io/styles/color/system/how-the-system-works

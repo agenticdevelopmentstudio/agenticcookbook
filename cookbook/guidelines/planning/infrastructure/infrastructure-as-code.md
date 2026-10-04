@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Define infrastructure declaratively in version control and apply it through a reviewed plan, never by hand."
 platforms: []
@@ -28,7 +28,7 @@ references:
   - https://developer.hashicorp.com/terraform/cli/commands/plan
   - https://developer.hashicorp.com/terraform/language/state
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - configuration
   - new-module

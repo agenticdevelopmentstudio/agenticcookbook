@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b5a1b4b6-c61c-4b45-825f-730bd782d0f3",
+    "title": "CQRS and event sourcing",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/cqrs-and-event-sourcing",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Adopt CQRS or event sourcing ONLY when audit/replay or independent read/write scaling justifies their substantial complexity cost.",
+    "platforms": [],
+    "tags": [
+      "architecture",
+      "cqrs",
+      "event-sourcing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/data/datastore-selection",
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+    ],
+    "references": [
+      "https://martinfowler.com/bliki/CQRS.html",
+      "https://microservices.io/patterns/data/event-sourcing.html",
+      "https://www.usefulfunctions.co.uk/2025/11/06/cqrs-and-event-sourcing-when-to-use/",
+      "https://www.ashrafmageed.com/cqrs-eventsourcing-and-the-cost-of-tooling-constraints/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "data-modeling",
+      "schema-design"
+    ]
+  },
+  "synced": "726256b146a411d2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "measured-need-guardrail-strong", "heading": "MEASURED-NEED guardrail (strong)"},
+    {"part": "adopt-only-when-a-trigger-holds", "heading": "Adopt ONLY when a trigger holds"},
+    {"part": "costs-you-take-on-plan-for-each-before-adopting", "heading": "Costs you take on (plan for each before adopting)"},
+    {"part": "implementation-guidance-when-justified", "heading": "Implementation guidance (when justified)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

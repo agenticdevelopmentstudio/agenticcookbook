@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "6079c539-f547-46de-9284-d404a76f6d9d",
+    "title": "API Design",
+    "domain": "agenticdevelopercookbook://guidelines/planning/networking/api-design",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use REST with consistent conventions. Follow the platform API guidelines (Microsoft, Google,",
+    "platforms": [],
+    "tags": [
+      "api-design",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://restfulapi.net/versioning/",
+      "https://www.xmatters.com/blog/api-versioning-strategies",
+      "https://www.rfc-editor.org/rfc/rfc8594.html",
+      "https://restfulapi.net/richardson-maturity-model/",
+      "https://www.rfc-editor.org/rfc/rfc8288.html",
+      "https://www.speakeasy.com/api-design/pagination"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "api-integration",
+      "new-module"
+    ]
+  },
+  "synced": "0e61f38bb1373acf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

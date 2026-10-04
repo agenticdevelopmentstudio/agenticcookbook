@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Map personal-data flows, minimize collection, default to the most private setting, and run a DPIA before building high-risk processing."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://gdpr-info.eu/art-35-gdpr/
   - https://www.nist.gov/privacy-framework
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
   - data-modeling

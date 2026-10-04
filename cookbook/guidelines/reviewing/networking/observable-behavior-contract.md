@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Treat every observable behavior of an interface as a contract a consumer may depend on: document guarantees, constrain incidental behavior, and never depend on the unspecified."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://www.hyrumslaw.com/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - api-integration
   - code-review

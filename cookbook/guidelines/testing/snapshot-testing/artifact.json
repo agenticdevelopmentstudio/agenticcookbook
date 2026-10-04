@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3d9f5176-afaa-47a2-8a89-fc0402f3dff2",
+    "title": "Snapshot testing discipline",
+    "domain": "agenticdevelopercookbook://guidelines/testing/snapshot-testing",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep snapshots small and deterministic, and deliberately review every snapshot diff before accepting it.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "snapshot"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/properties-of-good-tests",
+      "agenticdevelopercookbook://guidelines/testing/test-doubles"
+    ],
+    "references": [
+      "https://kentcdodds.com/blog/effective-snapshot-testing",
+      "https://jestjs.io/docs/snapshot-testing",
+      "https://blog.stackademic.com/its-2025-stop-using-snapshot-testing-1afa6612259e",
+      "https://dev.to/dorshinar/why-i-ve-stopped-writing-snapshots-tests-in-jest-376d",
+      "https://selleo.com/blog/when-to-use-jest-snapshots"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "writing-tests"
+    ]
+  },
+  "synced": "72de1c899e2d084b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "review-every-diff-deliberately", "heading": "Review every diff deliberately"},
+    {"part": "keep-snapshots-small-and-targeted", "heading": "Keep snapshots small and targeted"},
+    {"part": "make-snapshots-deterministic", "heading": "Make snapshots deterministic"},
+    {"part": "prefer-explicit-assertions-for-logic", "heading": "Prefer explicit assertions for logic"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

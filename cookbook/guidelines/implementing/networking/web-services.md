@@ -1,5 +1,4 @@
 ---
-
 id: 06c2a767-cd24-4527-b939-df44161d7025
 title: "Web services"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/web-services
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use Flask for web services. The dashboard service runs on Flask with a REST API and SSE/polling for live updates."
-platforms: 
+platforms:
   - python
   - web
 languages:
   - python
-tags: 
+tags:
   - language
   - python
   - web-services

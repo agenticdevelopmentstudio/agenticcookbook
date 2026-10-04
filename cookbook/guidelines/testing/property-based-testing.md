@@ -1,5 +1,4 @@
 ---
-
 id: ccffa426-5556-4bbe-8dd6-b43c8e195f64
 title: "Property-Based Testing"
 domain: agenticdevelopercookbook://guidelines/testing/property-based-testing
@@ -13,18 +12,18 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "When to use: parsers, serializers, data transformers, encoders/decoders, validators — anything"
-platforms: 
+platforms:
   - csharp
   - kotlin
   - python
   - swift
   - typescript
-tags: 
+tags:
   - property-based-testing
   - testing
 depends-on: []
 related: []
-references: 
+references:
   - https://fscheck.github.io/FsCheck/
   - https://github.com/HypothesisWorks/hypothesis
   - https://github.com/dubzzz/fast-check
@@ -33,7 +32,7 @@ references:
   - http://www.natpryce.com/articles/000714.html
   - https://www.arhohuttunen.com/test-data-builders/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - writing-tests
 ---

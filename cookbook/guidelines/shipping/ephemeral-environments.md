@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Provision a disposable per-PR environment from IaC, seed it with throwaway data, test against it, and auto-destroy on merge or close."
 platforms: []
@@ -28,7 +28,7 @@ references:
   - https://www.uffizzi.com/preview-environments-guide
   - https://www.bunnyshell.com/blog/best-practices-for-end-to-end-testing-in-2025/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - pre-pr
 ---

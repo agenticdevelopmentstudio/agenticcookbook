@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4e498351-481c-4444-9a2d-0075ecdfc261",
+    "title": "Ecosystem Narration",
+    "domain": "agenticdevelopercookbook://guidelines/storytelling/ecosystem",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Narrate how projects fit together — drawing the corpus boundary correctly and grounding every cross-project link in a real reference. (Encodes the 2026-06-07 ecosystem-boundary lesson.)",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "narrative",
+      "ecosystem"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "c13f63056eba60a6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "boundaries", "heading": "Boundaries"},
+    {"part": "connections", "heading": "Connections"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

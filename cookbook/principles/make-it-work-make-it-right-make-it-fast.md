@@ -3,17 +3,17 @@ id: ffa8565d-b105-4758-b850-9d9b8119b838
 title: "Make It Work, Make It Right, Make It Fast"
 domain: agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Separate correctness, design quality, and performance into sequential phases:"
+summary: "Separate correctness, design quality, and performance into sequential phases: make it work, then refactor and handle edge cases, then optimize only what measurement proves slow."
 platforms: []
-tags: 
+tags:
   - make-it-work-make-it-right-make-it-fast
 depends-on: []
 related: []
@@ -36,4 +36,5 @@ Never skip phase 2 to jump to phase 3.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

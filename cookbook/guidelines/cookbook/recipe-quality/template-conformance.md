@@ -1,5 +1,4 @@
 ---
-
 id: e48a04d7-c479-427d-9d8e-fe9e9b990c77
 title: "Template Conformance"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/template-conformance
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - recipe-authoring
 ---

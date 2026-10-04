@@ -3,17 +3,17 @@ id: f6679a9d-e90e-4fc6-ac4c-0696851af484
 title: "Composition over inheritance"
 domain: agenticdevelopercookbook://principles/composition-over-inheritance
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Default to composing behaviors from small, focused pieces. Use inheritance only for genuine 'is-a' relationships, and..."
+summary: "Default to composing behaviors from small, focused pieces. Use inheritance only for genuine is-a relationships, prefer protocols over base classes, and wrap rather than subclass."
 platforms: []
-tags: 
+tags:
   - composition-over-inheritance
 depends-on: []
 related: []
@@ -34,4 +34,5 @@ Default to composing behaviors from small, focused pieces. Use inheritance only 
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -1,5 +1,4 @@
 ---
-
 id: a8f9c003-e970-4f28-bb7d-30a23b891b3f
 title: "Test Pyramid"
 domain: agenticdevelopercookbook://guidelines/planning/testing/test-pyramid
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Projects SHOULD follow the Google SWE Book ratio: **80% unit / 15% integration / 5% E2E**."
 platforms: []
-tags: 
+tags:
   - test-pyramid
   - testing
 depends-on: []
@@ -25,7 +24,7 @@ references:
   - https://web.dev/articles/ta-strategies
   - https://www.wiremock.io/post/rethinking-the-testing-pyramid
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - writing-tests
   - pre-pr

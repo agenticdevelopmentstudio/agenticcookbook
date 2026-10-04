@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Render Android apps edge-to-edge and consume WindowInsets so content is never hidden behind the status bar, navigation bar, or IME."
 platforms:
@@ -24,7 +24,7 @@ related:
 references:
   - https://developer.android.com/develop/ui/views/layout/edge-to-edge
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
 ---

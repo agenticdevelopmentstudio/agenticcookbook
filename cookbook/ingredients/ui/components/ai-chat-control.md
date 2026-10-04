@@ -12,7 +12,7 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Compact inline chat control for multi-turn AI conversation with scrollable history and multi-provider support"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
@@ -20,12 +20,12 @@ platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - ai-chat-control
   - component
   - ui
 depends-on: []
-related: 
+related:
   - ingredient.ui.panel.ai-settings-panel
 references: []
 approved-by: "approve-artifact v1.0.0"

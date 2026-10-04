@@ -1,5 +1,4 @@
 ---
-
 id: 775da457-30c7-47de-b179-0fae8a8b779d
 title: "Linting before the first PR"
 domain: agenticdevelopercookbook://guidelines/implementing/code-quality/linting
@@ -13,18 +12,18 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "All projects MUST have linting configured and passing before the first pull request."
-platforms: 
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
   - web
-tags: 
+tags:
   - code-quality
   - linting
 depends-on: []
 related: []
-references: 
+references:
   - https://eslint.org/
   - https://github.com/dotnet/roslynator
   - https://github.com/meziantou/Meziantou.Analyzer

@@ -1,5 +1,4 @@
 ---
-
 id: e6af82e8-0142-446b-977d-2f771a90bdff
 title: "Scope discipline"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/scope-discipline

@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2041fbd9-d210-485e-9a3a-b2d8295ed924",
+    "title": "Incident response and blameless postmortems",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/incident-response",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Run production incidents with defined command roles and severity tiers, then close them with blameless, tracked-to-completion postmortems.",
+    "platforms": [],
+    "tags": [
+      "operations",
+      "sre",
+      "reliability"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/observability/service-level-objectives"
+    ],
+    "references": [
+      "https://sre.google/sre-book/managing-incidents/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "pre-pr"
+    ]
+  },
+  "synced": "334a0c824e1f4e2b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "incident-command-roles", "heading": "Incident command roles"},
+    {"part": "severity-classification", "heading": "Severity classification"},
+    {"part": "blameless-postmortems", "heading": "Blameless postmortems"},
+    {"part": "sustainable-on-call", "heading": "Sustainable on-call"},
+    {"part": "forecast-and-caveats", "heading": "Forecast and caveats"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

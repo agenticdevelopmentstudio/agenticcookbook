@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "85d04a9b-5692-4025-a489-eac8bbb14663",
+    "title": "Window Frame Persistence",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-05",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Invisible view modifier that persists window position and size between sessions via frame autosave",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "infrastructure",
+      "window-frame-persistence"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "c824ac976e3977fc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

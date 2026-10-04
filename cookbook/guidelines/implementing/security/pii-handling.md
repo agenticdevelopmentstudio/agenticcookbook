@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-07-23
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Classify PII at the schema level, minimize collection, encrypt at rest and in transit, and never write it to logs."
 platforms: []
@@ -29,7 +29,7 @@ references:
   - https://www.iso.org/standard/27701
   - https://www.nist.gov/privacy-framework
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - data-modeling
   - logging

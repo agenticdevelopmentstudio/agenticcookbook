@@ -1,5 +1,4 @@
 ---
-
 id: 2212a394-68d8-4588-a587-2fc637280deb
 title: "Handoff and continuity"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/handoff-and-continuity
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Apps available on multiple devices SHOULD support continuity features so users can start work on one device and resume on another."
-platforms: 
+platforms:
   - ios
   - macos
   - android
   - web
-tags: 
+tags:
   - handoff
   - continuity
   - platform

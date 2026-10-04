@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "64bdf327-b4ac-4772-a3b6-cbaf7e8e5449",
+    "title": "Metrics instrumentation: RED and USE",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/metrics-red-use",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Instrument services with RED metrics and resources with USE so signals correlate and feed SLIs/SLOs.",
+    "platforms": [],
+    "tags": [
+      "observability",
+      "metrics",
+      "monitoring"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/observability/service-level-objectives"
+    ],
+    "references": [
+      "https://www.brendangregg.com/usemethod.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "logging",
+      "performance-optimization"
+    ]
+  },
+  "synced": "93c232bc788b6a78",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-use-which", "heading": "When to use which"},
+    {"part": "red-instrument-every-service", "heading": "RED — instrument every service"},
+    {"part": "use-instrument-every-resource", "heading": "USE — instrument every resource"},
+    {"part": "conventions-for-correlation", "heading": "Conventions for correlation"},
+    {"part": "relationship-to-other-methods", "heading": "Relationship to other methods"},
+    {"part": "avoid", "heading": "Avoid"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

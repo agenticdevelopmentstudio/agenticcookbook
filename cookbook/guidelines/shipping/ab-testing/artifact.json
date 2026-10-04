@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "cadf17c9-e809-4324-acb3-a430c54a81b4",
+    "title": "A/B testing",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/ab-testing",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pre-ship A/B test verification: ensure experiment variants are configured, defaults are safe, and the debug panel override works.",
+    "platforms": [],
+    "tags": [
+      "ab-testing",
+      "feature-management"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "feature-flags",
+      "logging"
+    ]
+  },
+  "synced": "7868e0a03cf6c666",
+  "parts": [
+    {"part": "intro"},
+    {"part": "pre-ship-verification", "heading": "Pre-ship verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

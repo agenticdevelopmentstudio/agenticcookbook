@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ef2d2757-132a-403b-8e98-bbeca9c42deb",
+    "title": "Framework Conventions",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/framework-conventions",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Identify the architectural patterns imposed by the chosen framework and use those conventional units as primary scope group candidates.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "98abf0de7ed1a3d1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

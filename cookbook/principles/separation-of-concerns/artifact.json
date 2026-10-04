@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "1357be12-5a58-4143-a570-849c114770c5",
+    "title": "Separation of concerns",
+    "domain": "agenticdevelopercookbook://principles/separation-of-concerns",
+    "type": "principle",
+    "version": "1.1.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A module should have one reason to change; if describing it requires 'and,' consider splitting. This applies at every scale, balanced by locality of behavior.",
+    "platforms": [],
+    "tags": [
+      "separation-of-concerns"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/srp",
+      "agenticdevelopercookbook://principles/connascence"
+    ],
+    "references": [
+      "https://htmx.org/essays/locality-of-behaviour/",
+      "https://shows.acast.com/dead-code/episodes/brutality-of-behaviour-with-carson-gross",
+      "https://wipdev.netlify.app/posts/separation-of-concerns-locality-of-behavior-and-javascript/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10"
+  },
+  "synced": "6337d2cc31d9ed99",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

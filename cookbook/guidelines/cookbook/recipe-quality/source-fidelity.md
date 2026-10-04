@@ -1,5 +1,4 @@
 ---
-
 id: 47563e88-307b-4eef-a63c-ddc18e85a945
 title: "Source Fidelity"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/source-fidelity
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - recipe-authoring
 ---

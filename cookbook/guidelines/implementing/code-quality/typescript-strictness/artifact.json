@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5662987f-fd56-4a3a-a519-672187207745",
+    "title": "TypeScript strictness configuration",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/typescript-strictness",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Set strict: true on every new TypeScript project and adopt the stricter index/module flags incrementally.",
+    "platforms": [
+      "typescript"
+    ],
+    "tags": [
+      "typescript",
+      "type-safety",
+      "config"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/fail-fast",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [
+      "https://www.typescriptlang.org/tsconfig/strict.html",
+      "https://www.typescriptlang.org/tsconfig/noUncheckedIndexedAccess.html",
+      "https://www.typescriptlang.org/tsconfig/verbatimModuleSyntax.html",
+      "https://github.com/microsoft/TypeScript/issues/63293"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module"
+    ]
+  },
+  "synced": "b47b5727ccda0c19",
+  "parts": [
+    {"part": "intro"},
+    {"part": "baseline-table-stakes", "heading": "Baseline (table stakes)"},
+    {"part": "recommended-near-defaults", "heading": "Recommended near-defaults"},
+    {"part": "optional-situational-flags", "heading": "Optional, situational flags"},
+    {"part": "adopt-incrementally-on-existing-code", "heading": "Adopt incrementally on existing code"},
+    {"part": "forecast-not-yet-relied-upon-as-shipped", "heading": "FORECAST — not yet relied upon as shipped"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

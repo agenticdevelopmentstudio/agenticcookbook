@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "793f491f-a352-4478-876d-7c5d871488f7",
+    "title": "YAGNI",
+    "domain": "agenticdevelopercookbook://principles/yagni",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Build for today's known requirements. Speculative generality adds code that must be maintained but delivers no current value; add future needs when they actually arrive.",
+    "platforms": [],
+    "tags": [
+      "yagni"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "dbb0aab67c0ab324",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

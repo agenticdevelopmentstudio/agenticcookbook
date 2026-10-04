@@ -1,30 +1,29 @@
 ---
-
 id: 162923d4-05f2-4f3a-9770-d5e656e8c7fe
 title: "Accessibility from day one"
 domain: agenticdevelopercookbook://guidelines/reviewing/accessibility/accessibility
 type: guideline
-version: 1.1.0
+version: 1.1.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All components MUST integrate with platform accessibility APIs from initial implementation:"
-platforms: 
+summary: "All components MUST integrate with platform accessibility APIs from initial implementation: semantic roles, screen reader and keyboard support, font scaling, WCAG AA contrast, and logical focus order."
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
   - web
   - windows
-tags: 
+tags:
   - accessibility
 depends-on: []
 related: []
-references: 
+references:
   - https://accessibilityinsights.io/
   - https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-uiautomationoverview
   - https://www.w3.org/TR/WCAG22/
@@ -146,6 +145,7 @@ Components MUST respond to these Windows accessibility settings:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Update to WCAG 2.2 AA (new criteria, 24px target size); restore strayed 1.0.1 row |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |

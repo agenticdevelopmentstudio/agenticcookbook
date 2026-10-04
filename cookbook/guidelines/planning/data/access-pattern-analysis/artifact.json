@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a4e2fa7e-91a7-4abe-b4c9-4b1933901e7d",
+    "title": "Access Pattern Analysis",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/access-pattern-analysis",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Rules for analyzing query access patterns to drive schema and index decisions, covering read-heavy vs write-heavy tradeoffs, designing for WHERE/JOIN/ORDER BY, identifying missing indexes, and sync-specific batch sizing and transaction patterns.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "access-patterns",
+      "performance",
+      "schema-design",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/indexing.md",
+      "guidelines/data/transactions-and-concurrency.md",
+      "guidelines/data/query-optimization.md"
+    ],
+    "references": [
+      "https://sqlite.org/queryplanner.html",
+      "https://www.sqlite.org/eqp.html",
+      "https://www.powersync.com/blog/sqlite-optimizations-for-ultra-high-performance"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design",
+      "performance-optimization"
+    ]
+  },
+  "synced": "59ed108b910d0ebb",
+  "parts": [
+    {"part": "intro"},
+    {"part": "start-with-the-queries-not-the-schema", "heading": "Start With the Queries, Not the Schema"},
+    {"part": "design-for-where-join-and-order-by", "heading": "Design for WHERE, JOIN, and ORDER BY"},
+    {"part": "read-heavy-vs-write-heavy-tradeoffs", "heading": "Read-Heavy vs Write-Heavy Tradeoffs"},
+    {"part": "identifying-missing-indexes", "heading": "Identifying Missing Indexes"},
+    {"part": "sync-specific-access-patterns", "heading": "Sync-Specific Access Patterns"},
+    {"part": "batch-size-for-sync-operations", "heading": "Batch Size for Sync Operations"},
+    {"part": "transaction-management-during-sync", "heading": "Transaction Management During Sync"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

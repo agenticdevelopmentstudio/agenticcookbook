@@ -3,17 +3,17 @@ id: 425271ea-92b6-4df6-9a83-94795f1be377
 title: "Fail fast"
 domain: agenticdevelopercookbook://principles/fail-fast
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Invalid state should be detected and surfaced immediately at the point of origin, not propagated silently:"
+summary: "Detect invalid state and surface it immediately at the point of origin instead of propagating it silently. Validate at boundaries, return typed errors, and never use empty catch blocks."
 platforms: []
-tags: 
+tags:
   - fail-fast
 depends-on: []
 related: []
@@ -36,4 +36,5 @@ Invalid state should be detected and surfaced immediately at the point of origin
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

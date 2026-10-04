@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "cef41f52-bfc6-4ff0-bb67-eb52521c7391",
+    "title": "Retry and Resilience",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/retry-and-resilience",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Not every failure is permanent. Retry transient failures with exponential backoff and jitter.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "networking",
+      "retry-and-resilience"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://docs.aws.amazon.com/general/latest/gr/api-retries.html",
+      "https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults",
+      "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "networking",
+      "error-handling"
+    ]
+  },
+  "synced": "cba29f21b1be0e37",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

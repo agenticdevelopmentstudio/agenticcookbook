@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "af911b49-ff36-439e-acb0-a08c80b87103",
+    "title": "Agent guardrails",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/agent-guardrails",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Wrap agents in deterministic input/output guardrails, least-privilege tool access, human confirmation for irreversible actions, and a kill switch.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "safety",
+      "guardrails"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security",
+      "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety"
+    ],
+    "references": [
+      "https://genai.owasp.org/llm-top-10/",
+      "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/",
+      "https://www.anthropic.com/research/building-effective-agents",
+      "https://modelcontextprotocol.io/specification/2025-06-18"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ai-api-integration",
+      "security-review"
+    ]
+  },
+  "synced": "abfadd8c7305e9db",
+  "parts": [
+    {"part": "intro"},
+    {"part": "input-guardrails", "heading": "Input guardrails"},
+    {"part": "output-guardrails", "heading": "Output guardrails"},
+    {"part": "tool-agency", "heading": "Tool agency"},
+    {"part": "stop-controls", "heading": "Stop controls"},
+    {"part": "guardrail-placement", "heading": "Guardrail placement"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

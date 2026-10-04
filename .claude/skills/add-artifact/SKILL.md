@@ -1,9 +1,9 @@
 ---
 name: add-artifact
-version: "1.0.0"
+version: "1.1.0"
 description: "Integrate a new or modified cookbook artifact — lint, approve, update indexes, sync documentation and website. Implements the after-adding-an-artifact rule."
 argument-hint: "[path-or-name]"
-allowed-tools: Read, Glob, Grep, Edit, Write, Bash(rsync *), Bash(wc *), Bash(date *), AskUserQuestion
+allowed-tools: Read, Glob, Grep, Edit, Write, Bash(rsync *), Bash(wc *), Bash(date *), Bash(cookr *), AskUserQuestion
 context: fork
 ---
 
@@ -13,16 +13,16 @@ Post-creation integration for cookbook artifacts. Takes a path to an artifact th
 
 ## Startup
 
-add-artifact v1.0.0
+add-artifact v1.1.0
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (1.0.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (1.1.0). If they differ, print:
 
-> Warning: This skill is running v1.0.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v1.1.0 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> add-artifact v1.0.0
+> add-artifact v1.1.0
 
 Then stop.
 
@@ -38,7 +38,8 @@ See `/lint-artifact` for the full resolution flow.
 
 ## Step 1: Approve
 
-Run `/approve-artifact` on the resolved file.
+If the artifact has no source folder yet (no `<name>/artifact.json` beside it), run
+`cookr convert <path>` first. Then run `/approve-artifact` on the resolved file.
 
 - If approval **fails** (lint has FAIL results), print the lint report and stop. The artifact must be fixed before it can be added.
 - If approval **succeeds**, proceed to Step 2.

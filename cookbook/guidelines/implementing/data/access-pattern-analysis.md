@@ -1,5 +1,4 @@
 ---
-
 id: AF78FFED-0E66-42BE-AB40-EF1BD6A49DD2
 title: "Access Pattern Analysis"
 domain: agenticdevelopercookbook://guidelines/implementing/data/access-pattern-analysis

@@ -27,11 +27,11 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core import refimpl
-from cookbook.core.frontmatter import parse_file
-from cookbook.core.history import h2_sections
-from cookbook.core.markdown import iter_markdown
-from cookbook.modules.prompt.render import render_template
+from cookr.core import refimpl
+from cookr.core.frontmatter import parse_file
+from cookr.core.history import h2_sections
+from cookr.core.markdown import iter_markdown
+from cookr.modules.prompt.render import render_template
 
 from ...core.completeness import CHANGE_HISTORY, NEEDS_REVIEW
 from ...core.compliance import load_checks, summary

@@ -1,5 +1,4 @@
 ---
-
 id: fdec6403-395b-4b98-b97d-b42e15cb77a6
 title: "Form Design"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/form-design
@@ -13,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Forms are where users do real work. Reduce friction at every step."
-platforms: 
+platforms:
   - web
-tags: 
+tags:
   - form-design
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/text-fields
   - https://m3.material.io/components/text-fields/guidelines
   - https://www.nngroup.com/articles/errors-forms-design-guidelines/

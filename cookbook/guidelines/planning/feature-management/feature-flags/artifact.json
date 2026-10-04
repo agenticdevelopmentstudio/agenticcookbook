@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "588b5eae-b70e-4302-a52f-9287265ad03c",
+    "title": "Feature flags",
+    "domain": "agenticdevelopercookbook://guidelines/planning/feature-management/feature-flags",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Plan for feature flag architecture from the start: define a FeatureFlagProvider interface, choose storage backend, and identify which features need gating.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "feature-flags",
+      "feature-management"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "feature-flags",
+      "new-module"
+    ]
+  },
+  "synced": "d30ecb1427760291",
+  "parts": [
+    {"part": "intro"},
+    {"part": "architecture-decisions", "heading": "Architecture decisions"},
+    {"part": "what-to-gate", "heading": "What to gate"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

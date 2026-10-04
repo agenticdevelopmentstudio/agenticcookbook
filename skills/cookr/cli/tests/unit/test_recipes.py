@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pytest
-from cookbook.core.errors import CookbookError
+from cookr.core.errors import CookbookError
 
 from cookr.core.recipes import load_corpus, spec_id
 

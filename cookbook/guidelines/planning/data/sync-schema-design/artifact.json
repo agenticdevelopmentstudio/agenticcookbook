@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5a57e599-ca8e-44b9-9be7-109f7c176feb",
+    "title": "Sync Schema Design",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/sync-schema-design",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Schema design rules for databases that sync across devices: UUID primary keys, timestamp columns, soft deletes, dirty tracking, version columns, and sync metadata tables.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "schema",
+      "offline-first",
+      "uuid",
+      "soft-delete"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/conflict-resolution.md",
+      "guidelines/data/sync-protocol.md"
+    ],
+    "references": [
+      "https://sqlite.org/datatype3.html",
+      "https://vlcn.io/docs/cr-sqlite"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "offline-support",
+      "schema-design"
+    ]
+  },
+  "synced": "94138fab1c2e2145",
+  "parts": [
+    {"part": "intro"},
+    {"part": "primary-keys-always-uuid", "heading": "Primary Keys: Always UUID"},
+    {"part": "timestamp-columns", "heading": "Timestamp Columns"},
+    {"part": "version-columns-for-optimistic-concurrency", "heading": "Version Columns for Optimistic Concurrency"},
+    {"part": "soft-deletes-tombstones", "heading": "Soft Deletes (Tombstones)"},
+    {"part": "dirty-tracking", "heading": "Dirty Tracking"},
+    {"part": "sync-metadata-tables", "heading": "Sync Metadata Tables"},
+    {"part": "type-compatibility-between-sqlite-and-postgresql", "heading": "Type Compatibility Between SQLite and PostgreSQL"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -34,14 +34,14 @@ A recipe is complete when:
     frontmatter `version`, and frontmatter `modified` is not older than the
     newest row's date;
 15. its frontmatter `domain` is exactly the one its path derives
-    (`Config.domain`), when the caller says what that is — `cookbook validate`
+    (`Config.domain`), when the caller says what that is — `cookr validate`
     checks only the path suffix, so a wrong scheme or directory passes there.
 
 Rules 6-15 are what writers got wrong repeatedly; a script can see each one,
 so the grade says so instead of a reviewer re-deriving it, and a new writer
 rule re-grades the corpus already written, not just the next recipe.
 
-Sections are found fence-aware (cookbook.core.history), so a `#` comment or a
+Sections are found fence-aware (cookr.core.history), so a `#` comment or a
 `## ` line inside a code sample never ends a section or starts one, and prose
 checks (the WinUI bullet, line citations) skip fenced code.
 """
@@ -53,7 +53,7 @@ import re
 from collections.abc import Iterable, Iterator, Mapping
 from typing import Optional
 
-from cookbook.core import history
+from cookr.core import history
 
 from . import templates
 from .compliance import CITATION, unknown_citations

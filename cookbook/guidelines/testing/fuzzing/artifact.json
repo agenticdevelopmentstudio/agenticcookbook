@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d197a1e3-eba5-4f3f-acc7-c2fabd51144f",
+    "title": "Fuzz testing",
+    "domain": "agenticdevelopercookbook://guidelines/testing/fuzzing",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Fuzz untrusted-input parsing surfaces — especially in memory-unsafe code — with coverage-guided fuzzers; adopt elsewhere only on measured need.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "fuzzing",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/property-based-testing",
+      "agenticdevelopercookbook://guidelines/testing/security-testing"
+    ],
+    "references": [
+      "https://github.com/google/oss-fuzz"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "writing-tests",
+      "security-review"
+    ]
+  },
+  "synced": "ea5cd01fc06340e6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "where-to-apply-it-measured-need-guardrail", "heading": "Where to apply it (measured-need guardrail)"},
+    {"part": "tooling-per-language", "heading": "Tooling (per language)"},
+    {"part": "writing-and-running-harnesses", "heading": "Writing and running harnesses"},
+    {"part": "triage", "heading": "Triage"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

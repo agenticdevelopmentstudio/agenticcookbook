@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "792f0b2d-c4b2-440f-9e58-33fa1e30a2c4",
+    "title": "Shell scripts",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/shell-scripts",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Shell script `main()` functions must only call other functions — no inline logic. Keep scripts composable and testable.",
+    "platforms": [],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "shell-scripts"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "synced": "ec343f2c3c45846f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

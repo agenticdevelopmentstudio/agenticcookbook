@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b56bc1c5-d9c8-42ab-87c3-7423b49c00c9",
+    "title": "Privacy and security by default",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/privacy",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Collect only what is needed. Prefer on-device processing.",
+    "platforms": [
+      "kotlin",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "privacy",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "security-review",
+      "data-modeling"
+    ]
+  },
+  "synced": "fce3cb4956a198d1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "c", "heading": "C#"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

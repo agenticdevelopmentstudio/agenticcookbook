@@ -1,5 +1,4 @@
 ---
-
 id: 51038675-205b-4752-b826-4081b3729359
 title: "Module Boundaries"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/module-boundaries
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

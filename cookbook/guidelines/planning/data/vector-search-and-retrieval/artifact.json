@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "0ce05d51-1d2b-4679-869a-fa1533be95ab",
+    "title": "Vector search and retrieval",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/vector-search-and-retrieval",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Plan RAG retrieval on pgvector with an HNSW index and hybrid dense+lexical+rerank scoring before reaching for a dedicated vector DB.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "rag",
+      "database",
+      "search"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/data/datastore-selection"
+    ],
+    "references": [
+      "https://github.com/pgvector/pgvector"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ai-api-integration",
+      "data-modeling"
+    ]
+  },
+  "synced": "c098249f74ec9acc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "default-to-pgvector-inside-postgres", "heading": "Default to pgvector inside Postgres"},
+    {"part": "indexing", "heading": "Indexing"},
+    {"part": "prefer-hybrid-retrieval-over-pure-ann", "heading": "Prefer hybrid retrieval over pure ANN"},
+    {"part": "chunking", "heading": "Chunking"},
+    {"part": "metadata-filtering", "heading": "Metadata filtering"},
+    {"part": "verification", "heading": "Verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

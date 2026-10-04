@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "6a653107-929d-418e-865d-636373a27b02",
+    "title": "Choosing a primary datastore",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/datastore-selection",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Default to a relational database for a server backend; adopt a specialist store only for a concrete, measured requirement.",
+    "platforms": [],
+    "tags": [
+      "database",
+      "architecture",
+      "backend"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/yagni",
+      "agenticdevelopercookbook://principles/simplicity",
+      "agenticdevelopercookbook://guidelines/planning/data/database"
+    ],
+    "references": [
+      "https://www.postgresql.org/docs/",
+      "https://www.tigerdata.com/blog/its-2026-just-use-postgres",
+      "https://news.ycombinator.com/item?id=46905555",
+      "https://www.cockroachlabs.com/blog/document-store-vs-relational-database/",
+      "https://aerospike.com/blog/sql-vs-nosql/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "data-modeling",
+      "schema-design"
+    ]
+  },
+  "synced": "67f31f00c03008a6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "strong-default", "heading": "Strong default"},
+    {"part": "why-relational-is-the-default", "heading": "Why relational is the default"},
+    {"part": "decision-criteria", "heading": "Decision criteria"},
+    {"part": "rules", "heading": "Rules"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

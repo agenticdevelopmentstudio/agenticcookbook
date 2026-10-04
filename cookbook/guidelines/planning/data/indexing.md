@@ -1,5 +1,4 @@
 ---
-
 id: b68ca5dd-7053-4b8b-ba49-90881de1b55a
 title: "Indexing"
 domain: agenticdevelopercookbook://guidelines/planning/data/indexing

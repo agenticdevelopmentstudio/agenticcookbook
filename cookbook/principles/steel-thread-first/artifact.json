@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b224ef56-65f5-45fd-8842-767b20df6736",
+    "title": "Steel thread first",
+    "domain": "agenticdevelopercookbook://principles/steel-thread-first",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Build the thinnest end-to-end slice through every boundary before breadth — the disciplined answer to scaffolding vs YAGNI.",
+    "platforms": [],
+    "tags": [
+      "steel-thread",
+      "walking-skeleton",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/yagni",
+      "agenticdevelopercookbook://principles/small-reversible-decisions",
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
+      "agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast"
+    ],
+    "references": [
+      "https://www.rubick.com/steel-threads/",
+      "https://bryceyork.com/steel-threads/",
+      "https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton",
+      "https://news.ycombinator.com/item?id=35090989"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10"
+  },
+  "synced": "5ed6eae1b57d682a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

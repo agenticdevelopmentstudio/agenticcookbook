@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "fdec6403-395b-4b98-b97d-b42e15cb77a6",
+    "title": "Form Design",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/form-design",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Forms are where users do real work. Reduce friction at every step.",
+    "platforms": [
+      "web"
+    ],
+    "tags": [
+      "form-design",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/text-fields",
+      "https://m3.material.io/components/text-fields/guidelines",
+      "https://www.nngroup.com/articles/errors-forms-design-guidelines/",
+      "https://www.nngroup.com/articles/web-form-design/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation",
+      "input-handling"
+    ]
+  },
+  "synced": "0ffaffc77bba0cff",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

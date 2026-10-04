@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Architect every personal-data store to be enumerable, exportable, and deletable by subject id so DSARs are satisfied within the legal SLA."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://gdpr-info.eu/art-12-gdpr/
   - https://gdpr-info.eu/art-20-gdpr/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - authentication
   - data-modeling

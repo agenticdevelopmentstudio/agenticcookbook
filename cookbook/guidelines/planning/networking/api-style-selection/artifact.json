@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d9b6e0aa-0b0e-4c88-94b1-80c305baaadd",
+    "title": "Choosing an API style (REST, gRPC, GraphQL)",
+    "domain": "agenticdevelopercookbook://guidelines/planning/networking/api-style-selection",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Select an API style from consumer needs and traffic shape: REST for resource CRUD, gRPC for internal RPC, GraphQL for client-driven aggregation.",
+    "platforms": [],
+    "tags": [
+      "api",
+      "architecture",
+      "graphql"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/networking/api-design"
+    ],
+    "references": [
+      "https://grpc.io/docs/what-is-grpc/introduction/",
+      "https://www.designgurus.io/blog/rest-graphql-grpc-system-design",
+      "https://blog.apilayer.com/graphql-vs-rest-vs-grpc-which-should-you-choose-and-when/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "api-integration",
+      "new-module"
+    ]
+  },
+  "synced": "9c5cfd27e8f5253f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "decision-factors", "heading": "Decision factors"},
+    {"part": "rest-http-json", "heading": "REST (HTTP/JSON)"},
+    {"part": "grpc-http-2-protocol-buffers", "heading": "gRPC (HTTP/2 + Protocol Buffers)"},
+    {"part": "graphql", "heading": "GraphQL"},
+    {"part": "mixing-styles", "heading": "Mixing styles"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

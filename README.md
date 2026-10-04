@@ -42,7 +42,7 @@ Code built with the Agentic Developer Cookbook is **trusted**. That means:
 
 ## What's in the Cookbook
 
-The cookbook contains four types of **cookbook artifacts** — standalone markdown files with YAML frontmatter, named requirements, and change history:
+The cookbook contains four types of **cookbook artifacts** — standalone markdown files with YAML frontmatter, named requirements, and change history. Each is stored as a source folder (`<name>/artifact.json` plus one file per section), and the `<name>.md` beside it is compiled from that folder by `cookr compile`:
 
 ### Principles (33 files)
 

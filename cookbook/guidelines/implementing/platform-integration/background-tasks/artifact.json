@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "433b4c9d-fe44-4fec-af0d-83bba9c51c6f",
+    "title": "Background tasks",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/background-tasks",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps that sync data, process uploads, or maintain state SHOULD use platform background execution APIs rather than relying on foreground presence.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "windows",
+      "web"
+    ],
+    "tags": [
+      "background-tasks",
+      "platform",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/notifications",
+      "agenticdevelopercookbook://guidelines/implementing/networking/offline-and-connectivity"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "platform-integration",
+      "concurrency"
+    ]
+  },
+  "synced": "794e9826b15ac459",
+  "parts": [
+    {"part": "intro"},
+    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
+    {"part": "android", "heading": "Android"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "web", "heading": "Web"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

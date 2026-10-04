@@ -1,26 +1,25 @@
 ---
-
 id: 05317689-de77-454c-a184-d3fb6767a543
 title: "Localizability"
 domain: agenticdevelopercookbook://guidelines/reviewing/internationalization/localization
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All user-facing strings MUST be localizable — no hardcoded strings:"
-platforms: 
+summary: "All user-facing strings MUST be localizable, with no hardcoded strings. Store them in platform-standard resource files and reference them through the platform's localization API."
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
   - web
   - windows
-tags: 
+tags:
   - internationalization
   - localization
 depends-on: []
@@ -78,6 +77,7 @@ Use MRT Core with `.resw` resource files. The `x:Uid` directive in XAML binds co
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -1,5 +1,4 @@
 ---
-
 id: e9e60a7e-4e15-40e7-b730-fc2e311df1af
 title: "Shell scripts"
 domain: agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts
@@ -16,7 +15,7 @@ summary: "Shell script `main()` functions must only call other functions — no 
 platforms: []
 languages:
   - python
-tags: 
+tags:
   - language
   - python
   - shell-scripts

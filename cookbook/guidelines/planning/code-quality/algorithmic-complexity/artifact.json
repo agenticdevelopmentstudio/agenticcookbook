@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "02301325-6676-4b89-ac9f-e2cfe99a4172",
+    "title": "Algorithmic Complexity",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/algorithmic-complexity",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Characterize the computational profile of each candidate scope group by identifying dominant algorithms, data structures, and complexity characteristics.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "performance-optimization"
+    ]
+  },
+  "synced": "1c02bddbecca5f37",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

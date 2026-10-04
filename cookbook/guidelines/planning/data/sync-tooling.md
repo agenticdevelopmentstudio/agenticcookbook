@@ -1,5 +1,4 @@
 ---
-
 id: dc9fcecf-aac5-4845-9741-9445e626d7eb
 title: "SQLite Sync Tooling"
 domain: agenticdevelopercookbook://guidelines/planning/data/sync-tooling

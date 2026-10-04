@@ -1,5 +1,4 @@
 ---
-
 id: db58f79d-1040-4bb2-a862-93ebd390ee12
 title: "Mutation Testing"
 domain: agenticdevelopercookbook://guidelines/testing/mutation-testing
@@ -13,18 +12,18 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Mutation testing validates that your tests actually catch bugs — not just achieve coverage."
-platforms: 
+platforms:
   - csharp
   - kotlin
   - python
   - swift
   - typescript
-tags: 
+tags:
   - mutation-testing
   - testing
 depends-on: []
 related: []
-references: 
+references:
   - https://github.com/boxed/mutmut
   - https://github.com/muter-mutation-testing/muter
   - https://pitest.org/

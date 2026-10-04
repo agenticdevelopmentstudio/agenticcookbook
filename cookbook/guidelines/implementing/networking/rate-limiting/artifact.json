@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c84400d9-83b3-4c4c-83d4-325dfa989202",
+    "title": "Rate Limiting",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/rate-limiting",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Respect server rate limits. Handle 429 responses gracefully.",
+    "platforms": [],
+    "tags": [
+      "networking",
+      "rate-limiting"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc6585"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "api-integration",
+      "networking"
+    ]
+  },
+  "synced": "fe2bb0bee373bdc8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

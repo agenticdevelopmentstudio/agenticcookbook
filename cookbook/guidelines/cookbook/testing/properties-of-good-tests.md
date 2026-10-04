@@ -1,5 +1,4 @@
 ---
-
 id: d2c1aaaf-3fc7-4410-ab9a-06c264aa3208
 title: "Properties of Good Tests"
 domain: agenticdevelopercookbook://guidelines/cookbook/testing/properties-of-good-tests
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Properties that test vectors in cookbook artifacts (ingredients, recipes) should exhibit — adapted from Kent Beck's Test Desiderata."
 platforms: []
-tags: 
+tags:
   - properties-of-good-tests
   - testing
 depends-on: []

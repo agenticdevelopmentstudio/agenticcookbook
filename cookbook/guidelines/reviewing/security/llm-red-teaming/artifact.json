@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "709aabb0-c305-4a23-8748-9f57c5bbe93d",
+    "title": "LLM red teaming",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/llm-red-teaming",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Adversarially test LLM and agent systems against the OWASP LLM Top 10 and gate releases on a tracked attack-success-rate threshold.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "security",
+      "red-team"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/security/agent-guardrails",
+      "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security"
+    ],
+    "references": [
+      "https://genai.owasp.org/llm-top-10/",
+      "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/",
+      "https://arxiv.org/abs/2302.12173",
+      "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "security-review"
+    ]
+  },
+  "synced": "b8d72e94876a4800",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-to-attack-owasp-llm-top-10-v2025", "heading": "What to attack (OWASP LLM Top 10, v2025)"},
+    {"part": "how-to-run-it", "heading": "How to run it"},
+    {"part": "release-gating", "heading": "Release gating"},
+    {"part": "guardrails", "heading": "Guardrails"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

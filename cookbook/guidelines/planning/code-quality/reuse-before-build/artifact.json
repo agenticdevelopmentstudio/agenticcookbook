@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2c605b36-da66-4eaf-b2d4-59ed5a3976b3",
+    "title": "Search for existing solutions before building",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/reuse-before-build",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Before writing new code, check the platform, your existing dependencies, your own codebases, and proven open source — and verify any candidate dependency is real.",
+    "platforms": [],
+    "tags": [
+      "reuse",
+      "dependencies",
+      "research"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/open-source-preference",
+      "agenticdevelopercookbook://principles/native-controls",
+      "agenticdevelopercookbook://principles/dry",
+      "agenticdevelopercookbook://guidelines/shipping/dependency-security"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "dependency-management"
+    ]
+  },
+  "synced": "41aad26b946e18f7",
+  "parts": [
+    {"part": "intro"},
+    {"part": "look-in-this-order", "heading": "Look in this order"},
+    {"part": "research-before-reinventing", "heading": "Research before reinventing"},
+    {"part": "verify-before-adopting", "heading": "Verify before adopting"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

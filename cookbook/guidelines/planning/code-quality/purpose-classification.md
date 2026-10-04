@@ -1,5 +1,4 @@
 ---
-
 id: a7192ade-023d-43b5-b68c-eb2b7024a3fd
 title: "Purpose Classification"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/purpose-classification
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

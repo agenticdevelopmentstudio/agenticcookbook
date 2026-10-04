@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "42ed78a6-eea7-4b48-8b5f-be345682ffc3",
+    "title": "Writing code for the AI reader",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/code-for-the-ai-reader",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Favor explicit, greppable, locally-readable code so AI agents can find and modify behavior on the first pass — without sacrificing human readability.",
+    "platforms": [],
+    "tags": [
+      "ai",
+      "readability",
+      "code-quality"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/explicit-over-implicit",
+      "agenticdevelopercookbook://principles/principle-of-least-astonishment",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/naming"
+    ],
+    "references": [
+      "https://simonwillison.net/2025/Mar/11/using-llms-for-code/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "238d2e5e87b992a1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "write-for-grep-not-for-cleverness", "heading": "Write for grep, not for cleverness"},
+    {"part": "make-behavior-visible-not-inferred", "heading": "Make behavior visible, not inferred"},
+    {"part": "colocate-behavior-with-its-tests", "heading": "Colocate behavior with its tests"},
+    {"part": "balance-not-dogma-important", "heading": "Balance, not dogma (IMPORTANT)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

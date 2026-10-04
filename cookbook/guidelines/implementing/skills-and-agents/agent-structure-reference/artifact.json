@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8b9def90-2153-45ba-9dcc-fa2aa3bf745e",
+    "title": "Agent Structure Reference",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/agent-structure-reference",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reference for Claude Code agent file format, frontmatter fields, tool access patterns, and permission modes",
+    "platforms": [],
+    "tags": [
+      "agents",
+      "structure",
+      "reference",
+      "frontmatter"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/agent-checklist"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
+  "synced": "6e446bb2dcf50671",
+  "parts": [
+    {"part": "intro"},
+    {"part": "file-format", "heading": "File Format"},
+    {"part": "frontmatter-fields", "heading": "Frontmatter Fields"},
+    {"part": "agent-locations-priority-order", "heading": "Agent Locations (Priority Order)"},
+    {"part": "tool-access-patterns", "heading": "Tool Access Patterns"},
+    {"part": "permission-modes", "heading": "Permission Modes"},
+    {"part": "key-differences-from-skills-and-rules", "heading": "Key Differences from Skills and Rules"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

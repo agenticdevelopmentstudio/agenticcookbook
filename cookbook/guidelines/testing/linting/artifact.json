@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "34f13883-8905-4b5c-9299-82602687e98d",
+    "title": "Linting from day one",
+    "domain": "agenticdevelopercookbook://guidelines/testing/linting",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Run linting as part of your automated test and verification suite — it catches bugs that unit tests miss.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "code-quality",
+      "linting"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://eslint.org/",
+      "https://github.com/dotnet/roslynator",
+      "https://github.com/meziantou/Meziantou.Analyzer",
+      "https://github.com/realm/SwiftLint",
+      "https://github.com/swiftlang/swift-format",
+      "https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/",
+      "https://pinterest.github.io/ktlint/",
+      "https://prettier.io/",
+      "https://stylelint.io/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "pre-commit",
+      "new-module"
+    ]
+  },
+  "synced": "9df7f974ebba8ad2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-run", "heading": "When to run"},
+    {"part": "what-linting-verifies-that-tests-don-t", "heading": "What linting verifies that tests don't"},
+    {"part": "platform-linters", "heading": "Platform linters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

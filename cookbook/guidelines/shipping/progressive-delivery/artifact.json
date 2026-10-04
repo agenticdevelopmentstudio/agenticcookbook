@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "fff733d2-42ab-4123-b280-1a30b52e54a4",
+    "title": "Progressive delivery",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/progressive-delivery",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Decouple deploy from release and limit blast radius with canary, rings, blue-green, flags, and health-based automated rollback.",
+    "platforms": [],
+    "tags": [
+      "delivery",
+      "deployment",
+      "release"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/shipping/continuous-delivery",
+      "agenticdevelopercookbook://guidelines/shipping/feature-flags"
+    ],
+    "references": [
+      "https://martinfowler.com/bliki/CanaryRelease.html",
+      "https://argo-rollouts.readthedocs.io/en/stable/concepts/",
+      "https://www.getunleash.io/blog/canary-release-vs-progressive-delivery",
+      "https://openfeature.dev/",
+      "https://www.flagsmith.com/blog/progressive-delivery"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-pr",
+      "feature-flags"
+    ]
+  },
+  "synced": "4f72a666945cfbf1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "decouple-deploy-from-release", "heading": "Decouple deploy from release"},
+    {"part": "choose-a-rollout-mechanism", "heading": "Choose a rollout mechanism"},
+    {"part": "automate-the-rollback-decision", "heading": "Automate the rollback decision"},
+    {"part": "operational-guardrails", "heading": "Operational guardrails"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

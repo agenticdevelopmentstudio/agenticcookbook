@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f7d33c40-8dbd-4503-827f-92e4c3da4b8f",
+    "title": "Performance: Speed and Token Efficiency",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/performance",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Optimize Claude Code extensions for speed and token efficiency through shell scripts, model selection, and progressive disclosure.",
+    "platforms": [],
+    "tags": [
+      "performance",
+      "tokens",
+      "context-window",
+      "progressive-disclosure",
+      "shell-scripts",
+      "model-selection"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+    ],
+    "related": [
+      "agenticdevelopercookbook://principles/simplicity",
+      "agenticdevelopercookbook://principles/yagni",
+      "agenticdevelopercookbook://principles/separation-of-concerns",
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "skill-authoring",
+      "performance-optimization"
+    ]
+  },
+  "names_hosts": "Explains Claude Code's context-loading costs (CLAUDE.md, .claude/rules/): the host is the subject.",
+  "synced": "b4923f50d8e20c14",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "1-use-shell-scripts-for-deterministic-work", "heading": "1. Use Shell Scripts for Deterministic Work"},
+    {"part": "2-model-selection-tradeoffs", "heading": "2. Model Selection Tradeoffs"},
+    {"part": "3-progressive-disclosure-of-context", "heading": "3. Progressive Disclosure of Context"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

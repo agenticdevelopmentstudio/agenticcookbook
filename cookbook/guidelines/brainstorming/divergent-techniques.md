@@ -3,11 +3,11 @@ id: 17d2fa7e-0a8e-4ce7-96a0-de417db82220
 title: "Divergent Techniques"
 domain: agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques
 type: guideline
-version: 1.0.0
+version: 1.0.1
 status: draft
 language: en
 created: 2026-06-27
-modified: 2026-06-27
+modified: 2026-10-03
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -29,14 +29,14 @@ related:
 references:
   - Osborn, Applied Imagination, 1953
   - IDEO, 7 Simple Rules of Brainstorming
-  - Eberle, SCAMPER: Games for Imagination Development, 1971
+  - "Eberle, SCAMPER: Games for Imagination Development, 1971"
   - van Gundy, Techniques of Structured Problem Solving, 1988
-  - de Bono, Lateral Thinking: Creativity Step by Step, 1970
+  - "de Bono, Lateral Thinking: Creativity Step by Step, 1970"
   - Fauconnier & Turner, The Way We Think, 2002
   - Mednick, Psychological Review, 1962
 triggers: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-06-27"
+approved-date: "2026-10-03"
 ---
 
 # Divergent Techniques
@@ -122,3 +122,4 @@ Lateral-thinking random entry.
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
 | 1.0.0 | 2026-06-27 | Mike Fullerton | Initial creation |
+| 1.0.1 | 2026-10-03 | Mike Fullerton | Quote two references whose colons made YAML read them as mappings |

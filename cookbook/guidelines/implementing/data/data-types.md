@@ -1,5 +1,4 @@
 ---
-
 id: ABF5A7D8-1FBF-419C-AD43-888D08813F09
 title: "Data types and type affinity"
 domain: agenticdevelopercookbook://guidelines/implementing/data/data-types

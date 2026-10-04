@@ -12,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Lifecycle pattern for syncing an in-memory file tree with the filesystem via cache, full sync, watch, and surgical update"
-platforms: 
+platforms:
   - ios
   - macos
   - swift
   - typescript
-tags: 
+tags:
   - directory-sync
   - infrastructure
 depends-on: []

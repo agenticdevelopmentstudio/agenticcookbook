@@ -13,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Applications should expose their capabilities through automation interfaces, not just interactive UI."
 platforms: []
-tags: 
+tags:
   - automation
   - scriptability
   - accessibility

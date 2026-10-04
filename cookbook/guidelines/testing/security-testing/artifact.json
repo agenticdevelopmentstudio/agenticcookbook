@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "cf05e36f-ea8b-4af2-8df6-c5e772dc25b5",
+    "title": "Security Testing",
+    "domain": "agenticdevelopercookbook://guidelines/testing/security-testing",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Run security scans as part of post-generation verification: static analysis (SAST), dependency scanning, and dynamic analysis (DAST), using CLI tools Claude Code can invoke directly.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "python",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "security-testing",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+    ],
+    "references": [
+      "https://codeql.github.com/",
+      "https://github.com/PyCQA/bandit",
+      "https://semgrep.dev/",
+      "https://snyk.io/",
+      "https://www.zaproxy.org/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "writing-tests",
+      "security-review"
+    ]
+  },
+  "names_hosts": "Names a security tool as one Claude Code can invoke directly.",
+  "synced": "4055d46599c594b8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d2742535-cbb8-4cda-9a22-1180a8d5966f",
+    "title": "Framing Techniques",
+    "domain": "agenticdevelopercookbook://guidelines/brainstorming/framing-techniques",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Concrete techniques for surfacing and reframing the real problem before idea generation begins. Apply before any divergent phase.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "framing",
+      "facilitation"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://principles/frame-before-you-generate"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques",
+      "agenticdevelopercookbook://guidelines/brainstorming/facilitation-without-anchoring"
+    ],
+    "references": [
+      "https://web.stanford.edu/~mshanks/MichaelShanks/files/509554.pdf",
+      "https://www.ideou.com/blogs/inspiration/7-simple-rules-of-brainstorming",
+      "https://www.designcouncil.org.uk/resources/framework-for-innovation/"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "a70b622a565cf044",
+  "parts": [
+    {"part": "intro"},
+    {"part": "how-might-we-hmw", "heading": "How Might We (HMW)"},
+    {"part": "five-whys", "heading": "Five Whys"},
+    {"part": "first-principles-thinking", "heading": "First-Principles Thinking"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

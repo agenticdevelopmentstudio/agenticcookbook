@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a4f57a3c-f909-42aa-a85f-1ac76ac3ab24",
+    "title": "Room persistence on Android",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/room-persistence",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use Room with KSP, Flow-returning observable reads, suspend writes, and @Transaction-wrapped multi-step operations on Android.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "database",
+      "persistence"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation"
+    ],
+    "references": [
+      "https://developer.android.com/training/data-storage/room",
+      "https://android-developers.googleblog.com/2026/03/room-30-modernizing-room.html",
+      "https://developer.android.com/kotlin/multiplatform/room"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "database-operations",
+      "data-modeling"
+    ]
+  },
+  "synced": "b3cebfb0e92f8659",
+  "parts": [
+    {"part": "intro"},
+    {"part": "version-landscape-as-of-2026-06", "heading": "Version landscape (as of 2026-06)"},
+    {"part": "compiler", "heading": "Compiler"},
+    {"part": "dao-async-shape", "heading": "DAO async shape"},
+    {"part": "transactions", "heading": "Transactions"},
+    {"part": "schema-and-indexing", "heading": "Schema and indexing"},
+    {"part": "migrations", "heading": "Migrations"},
+    {"part": "must-not", "heading": "MUST NOT"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

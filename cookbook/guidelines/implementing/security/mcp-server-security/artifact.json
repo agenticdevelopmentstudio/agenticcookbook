@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ab8ed68c-949d-42c8-8c07-416674795a65",
+    "title": "MCP server security",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Harden MCP servers against tool poisoning, rug-pulls, token passthrough, confused-deputy, session hijacking, and SSRF.",
+    "platforms": [],
+    "tags": [
+      "mcp",
+      "security",
+      "ai"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
+      "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security"
+    ],
+    "references": [
+      "https://modelcontextprotocol.io/",
+      "https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices",
+      "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks",
+      "https://www.descope.com/blog/post/mcp-vulnerabilities",
+      "https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html",
+      "https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "security-review",
+      "ai-api-integration"
+    ]
+  },
+  "synced": "585abc36c6ea2230",
+  "parts": [
+    {"part": "intro"},
+    {"part": "threat-classes", "heading": "Threat classes"},
+    {"part": "tool-definitions-and-output", "heading": "Tool definitions and output"},
+    {"part": "rug-pull-tool-redefinition", "heading": "Rug-pull / tool redefinition"},
+    {"part": "authorization-token-audience-and-passthrough", "heading": "Authorization: token audience and passthrough"},
+    {"part": "confused-deputy-oauth-proxy-servers", "heading": "Confused deputy (OAuth proxy servers)"},
+    {"part": "session-hijacking", "heading": "Session hijacking"},
+    {"part": "ssrf-via-oauth-discovery", "heading": "SSRF via OAuth discovery"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,19 +1,18 @@
 ---
-
 id: 0f0c1da3-1c53-417b-890d-0259d7513c65
 title: "Instrumented logging"
 domain: agenticdevelopercookbook://guidelines/implementing/observability/logging
 type: guideline
-version: 1.1.1
+version: 1.1.2
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-10
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Every component and flow must be instrumented with structured logging using the platform's best-in-class framework:"
-platforms: 
+summary: "Instrument every component and flow with structured logging using the platform's best-in-class framework, at debug level for state transitions, user interactions, async tasks, and branching."
+platforms:
   - csharp
   - kotlin
   - python
@@ -21,11 +20,11 @@ platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - logging
 depends-on: []
 related: []
-references: 
+references:
   - https://github.com/JakeWharton/timber
   - https://learn.microsoft.com/en-us/visualstudio/profiling/
   - https://opentelemetry.io/blog/2026/otel-graduates/
@@ -34,7 +33,7 @@ references:
   - https://opentelemetry.io/docs/specs/semconv/
   - https://docs.cloud.google.com/logging/docs/structured-logging
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - logging
   - new-module
@@ -143,6 +142,7 @@ See [distributed tracing](agenticdevelopercookbook://guidelines/implementing/obs
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Add recovered Tier-1 research sources (adversarially-audited) |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Add OpenTelemetry, trace correlation, semantic conventions |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

@@ -1,5 +1,4 @@
 ---
-
 id: 01fffa23-5b96-491f-9199-8878cf676683
 title: "Font Scaling"
 domain: agenticdevelopercookbook://guidelines/implementing/accessibility/font-scaling
@@ -16,7 +15,7 @@ summary: "Layouts MUST NOT break at 2x font size. Check `Configuration.fontScale
 platforms: []
 languages:
   - kotlin
-tags: 
+tags:
   - font-scaling
   - kotlin
   - language

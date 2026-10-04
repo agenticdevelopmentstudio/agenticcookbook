@@ -12,11 +12,11 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Two-pane workspace browser window for managing multiple projects with auto-discovery of project packages"
-platforms: 
+platforms:
   - macos
   - swift
   - web
-tags: 
+tags:
   - ui
   - window
   - workspace-window

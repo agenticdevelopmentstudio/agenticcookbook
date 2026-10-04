@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ad61ee7f-47cf-4c48-a17a-9d7d3d6b7116",
+    "title": "MCP server",
+    "domain": "agenticdevelopercookbook://recipes/developer-tools/mcp-server",
+    "type": "recipe",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Compose one or more MCP tools into a working Model Context Protocol server with chosen primitives, transport, capability negotiation, and OAuth resource-server auth",
+    "platforms": [
+      "typescript",
+      "python"
+    ],
+    "tags": [
+      "mcp",
+      "ai",
+      "infrastructure"
+    ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/developer-tools/mcp-tool"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
+      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security",
+      "agenticdevelopercookbook://guidelines/reviewing/networking/mcp-server-checklist"
+    ],
+    "references": [
+      "https://modelcontextprotocol.io/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09"
+  },
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

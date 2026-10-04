@@ -1,19 +1,18 @@
 ---
-
 id: 991e72d0-477b-4fd5-bdfa-08680efc0cf9
 title: "Scriptable and automatable"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/shortcuts-and-automation
 type: guideline
-version: 1.1.2
+version: 1.1.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Components and flows SHOULD be scriptable where the platform supports it:"
-platforms: 
+summary: "Components and flows SHOULD be scriptable where the platform supports it, using mechanisms such as App Intents, AppActions, API endpoints, or protocol activation."
+platforms:
   - csharp
   - ios
   - kotlin
@@ -21,7 +20,7 @@ platforms:
   - swift
   - web
   - windows
-tags: 
+tags:
   - shortcuts-and-automation
   - platform
 depends-on:
@@ -63,7 +62,8 @@ Use `AppActions` for Google Assistant integration. Support `Intent`-based automa
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.1.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
-| 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |
 | 1.1.0 | 2026-04-02 | Mike Fullerton | Moved from ui/ to platform/ — system integration, not UI design |
+| 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -48,7 +48,22 @@ def test_context_carries_config_ui_and_legacy(mini_repo, monkeypatch):
     import dataclasses
     from cookr.cli import _context
     from cookr.context import CookrContext
-    assert [f.name for f in dataclasses.fields(CookrContext)] == ["config", "ui", "legacy"]
+    assert [f.name for f in dataclasses.fields(CookrContext)] == [
+        "config", "ui", "legacy", "config_error", "cookbook_root", "references_dir", "cwd"]
     ctx = _context(mini_repo, ui=None)
     assert ctx.config.repo_root == mini_repo.resolve()
-    assert ctx.legacy is None
+    assert ctx.legacy is None and ctx.config_error is None
+
+
+def test_a_cookbook_json_with_no_code_block_stops_only_the_modules_that_need_it(tmp_path, monkeypatch,
+                                                                                capsys):
+    # A library cookbook need not map source code: compile runs; inventory
+    # says what is missing, instead of every module exiting 2.
+    book = tmp_path / "cookbook"
+    (book / "principles").mkdir(parents=True)
+    (book / "cookbook.json").write_text('{"type": "cookbook", "name": "x"}')
+    monkeypatch.chdir(tmp_path)
+    assert main(["compile", "--check", "cookbook"]) == 0
+    capsys.readouterr()
+    assert main(["inventory"]) == 2
+    assert "code.roots" in capsys.readouterr().out

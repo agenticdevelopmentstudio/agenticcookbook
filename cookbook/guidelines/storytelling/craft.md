@@ -1,28 +1,27 @@
 ---
 id: 21e9045a-1881-42bd-92d1-57a006638626
-title: Narrative Craft
+title: "Narrative Craft"
 domain: agenticdevelopercookbook://guidelines/storytelling/craft
 type: guideline
-version: 1.0.0
+version: 1.0.1
 status: draft
 language: en
 created: 2026-06-29
-modified: '2026-06-29'
+modified: 2026-10-03
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: Write story prose that is consistent in voice, signal-dense, and fitted to
-  its audience and channel.
+summary: "Write story prose that is consistent in voice, signal-dense, and fitted to its audience and channel."
 platforms: []
 tags:
-- storytelling
-- narrative
-- craft
+  - storytelling
+  - narrative
+  - craft
 related:
-- agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis
+  - agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis
 triggers: []
-approved-by: approve-artifact v1.0.0
-approved-date: '2026-06-29'
+approved-by: "approve-artifact v1.0.0"
+approved-date: "2026-10-03"
 depends-on: []
 references: []
 ---
@@ -39,3 +38,10 @@ Craft is how the grounded material is rendered into prose a reader will actually
 
 ## Audience Fit
 - **craft-audience-fit**: The register MUST match the reader — a fellow developer versus a prospective customer — with jargon calibrated to that audience.
+
+## Change History
+
+| Version | Date | Author | Summary |
+|---------|------|--------|---------|
+| 1.0.0 | 2026-06-29 | Mike Fullerton | Initial creation |
+| 1.0.1 | 2026-10-03 | Mike Fullerton | Add the missing Change History section |

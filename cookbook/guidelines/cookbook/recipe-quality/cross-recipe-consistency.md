@@ -1,5 +1,4 @@
 ---
-
 id: 19648d85-adba-4f38-b513-a38ca58e9fb0
 title: "Cross-Recipe Consistency"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/cross-recipe-consistency
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - recipe-authoring
 ---

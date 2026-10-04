@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Treat all model output as untrusted, defend against direct and indirect prompt injection, and constrain tool agency."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://genai.owasp.org/llm-top-10/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ai-api-integration
   - security-review

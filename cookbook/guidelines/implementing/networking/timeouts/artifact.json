@@ -1,0 +1,37 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c3883e6e-3bce-4bb9-a3be-61509a139288",
+    "title": "Timeouts",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/timeouts",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Always set both connection and read timeouts. Never use infinite timeouts.",
+    "platforms": [],
+    "tags": [
+      "networking",
+      "timeouts"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "networking",
+      "api-integration"
+    ]
+  },
+  "synced": "16adb2d4b34c7792",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

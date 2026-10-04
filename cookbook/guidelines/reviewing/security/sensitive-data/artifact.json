@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "074124ee-4490-40e0-aedb-9af8fbc880b5",
+    "title": "Sensitive Data",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/sensitive-data",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Minimize what you collect, encrypt what you keep, never log what you shouldn't.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "security",
+      "sensitive-data"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html",
+      "https://csrc.nist.gov/publications/detail/sp/800-122/final"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "security-review",
+      "logging"
+    ]
+  },
+  "synced": "66784bf6c11f1adf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "cd614244-bb91-411b-88b3-53d552529cd4",
+    "title": "Bridge Distant Domains",
+    "domain": "agenticdevelopercookbook://principles/bridge-distant-domains",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Import structural patterns from far-off fields. Near analogies offer practical refinement; far analogies break fixation and surface genuinely novel patterns. The AI's cross-domain knowledge is its unique asset here.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "analogy",
+      "fixation-breaking"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/break-fixation-deliberately",
+      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity"
+    ],
+    "references": [
+      "Mednick, Psychological Review, 1962",
+      "Fauconnier & Turner, The Way We Think, 2002",
+      "Gordon, Synectics, 1961",
+      "Gentner, Cognitive Science, 7(2), 1983"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "bcc948c64892a3cb",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

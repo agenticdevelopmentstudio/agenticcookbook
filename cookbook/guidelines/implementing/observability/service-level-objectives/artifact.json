@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "6b8715f1-ece0-4db6-b691-19e9d0367ef3",
+    "title": "Service-level objectives and error budgets",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/service-level-objectives",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Define user-centric SLIs, set SLOs, derive an error budget, and alert on multi-window burn rate rather than resource thresholds.",
+    "platforms": [],
+    "tags": [
+      "observability",
+      "sre",
+      "reliability"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/tight-feedback-loops",
+      "agenticdevelopercookbook://guidelines/implementing/observability/logging"
+    ],
+    "references": [
+      "https://sre.google/workbook/implementing-slos/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "logging",
+      "performance-optimization"
+    ]
+  },
+  "synced": "9e163eeba57ba2b6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "pick-slis-that-reflect-user-experience", "heading": "Pick SLIs that reflect user experience"},
+    {"part": "set-slos", "heading": "Set SLOs"},
+    {"part": "derive-and-spend-the-error-budget", "heading": "Derive and spend the error budget"},
+    {"part": "alert-on-burn-rate-not-thresholds", "heading": "Alert on burn rate, not thresholds"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

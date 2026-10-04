@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "16d3e8e5-47fc-4f79-b403-c532e4f12f07",
+    "title": "Windows 11 materials (Mica and Acrylic)",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/windows-11-materials",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apply Mica as the backdrop of long-lived windows and Acrylic for transient surfaces, honoring user theme and system settings.",
+    "platforms": [
+      "windows",
+      "csharp"
+    ],
+    "tags": [
+      "windows",
+      "fluent",
+      "theming"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/fluent-design",
+      "agenticdevelopercookbook://guidelines/implementing/ui/theming"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/apps/design/style/mica"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "0d3b18b05d1abc5c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "choosing-the-material", "heading": "Choosing the material"},
+    {"part": "applying-in-winui-3", "heading": "Applying in WinUI 3"},
+    {"part": "respecting-the-user-and-system", "heading": "Respecting the user and system"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

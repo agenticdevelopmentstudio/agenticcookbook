@@ -1,8 +1,8 @@
 """`cookr.core.config`: parsing and validating a library cookbook's `cookbook.json`,
 and the `Config`/`Root` helpers that read its `code` block.
 
-Scheme derivation itself (`cookbook.core.scheme.repo_scheme`/`cookbook_scheme`) is
-covered exhaustively by `skills/cookbook/cli/tests/unit/test_scheme.py`; the tests
+Scheme derivation itself (`cookr.core.scheme.repo_scheme`/`cookbook_scheme`) is
+covered exhaustively by `tests/unit/test_scheme.py`; the tests
 here only check that `Config.scheme` delegates to it against `cookbook_dir`.
 """
 
@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 
 import pytest
-from cookbook.core.errors import CookbookError
+from cookr.core.errors import CookbookError
 
 from cookr.core.config import Config, ConfigError, Root, find_cookbook, load_config
 
@@ -329,7 +329,7 @@ def test_domain_uses_the_scheme_cookbook_and_spec(tmp_path):
     assert cfg.domain("components/button") == "mini-repo://cookbook/components/button"
 
 
-# --- Config.scheme (delegates to cookbook.core.scheme.cookbook_scheme) --------
+# --- Config.scheme (delegates to cookr.core.scheme.cookbook_scheme) --------
 
 
 def test_scheme_falls_back_to_repo_scheme_outside_git(tmp_path):
@@ -339,7 +339,7 @@ def test_scheme_falls_back_to_repo_scheme_outside_git(tmp_path):
     ))
     cfg = load_config(cookbook_dir)
     # Outside git, repo_scheme has nothing to derive a name from and raises.
-    from cookbook.core.scheme import SchemeError
+    from cookr.core.scheme import SchemeError
     with pytest.raises(SchemeError):
         _ = cfg.scheme
 

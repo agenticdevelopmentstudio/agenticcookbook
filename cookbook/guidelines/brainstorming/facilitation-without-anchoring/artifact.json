@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "851f0bee-dab9-4ee4-8d38-1f525314563d",
+    "title": "Facilitation Without Anchoring",
+    "domain": "agenticdevelopercookbook://guidelines/brainstorming/facilitation-without-anchoring",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to run a brainstorming conversation without anchoring the human's thinking: yes-and stance, open questions, reflective mirroring, explicit phase transitions, single-voice mediation, and bounded persona bursts.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "facilitation",
+      "single-voice",
+      "persona-burst"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel",
+      "agenticdevelopercookbook://principles/human-first-ideation",
+      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques",
+      "agenticdevelopercookbook://guidelines/brainstorming/framing-techniques"
+    ],
+    "references": [
+      "Sawyer, Group Genius, 2007",
+      "Yildirim et al., arXiv 2502.06197, 2025",
+      "Rogers, Client-Centered Therapy, 1951",
+      "Vygotsky, Mind in Society, 1978",
+      "Hatcher, Creativity and Innovation Management, 27(2), 2018",
+      "Anderson et al., PNAS Nexus, 2024"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "4db1a1d1420c7bf9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "yes-and-stance", "heading": "Yes-And Stance"},
+    {"part": "open-questions-as-default-move", "heading": "Open Questions as Default Move"},
+    {"part": "reflective-mirroring", "heading": "Reflective Mirroring"},
+    {"part": "name-the-stage-explicit-phase-transitions", "heading": "Name-the-Stage (Explicit Phase Transitions)"},
+    {"part": "single-voice-mediation", "heading": "Single-Voice Mediation"},
+    {"part": "persona-burst-dispatch", "heading": "Persona-Burst Dispatch"},
+    {"part": "incubation-pause", "heading": "Incubation Pause"},
+    {"part": "no-early-suggestion-guard", "heading": "No-Early-Suggestion Guard"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

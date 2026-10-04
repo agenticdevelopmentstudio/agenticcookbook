@@ -1,5 +1,4 @@
 ---
-
 id: e8c8e3b9-64a0-4fb0-a27b-f3b733dc10c7
 title: "System Interactions"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/system-interactions
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

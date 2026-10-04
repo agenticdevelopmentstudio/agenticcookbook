@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "When the unit under test is agent or LLM behavior, build a calibrated eval harness instead of relying on ordinary unit tests."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://huggingface.co/blog/evaleval/eval-costs-bottleneck
   - https://www.digitalapplied.com/blog/ai-agent-evaluation-pipeline-2026-testing-methodology
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - writing-tests
   - ai-api-integration

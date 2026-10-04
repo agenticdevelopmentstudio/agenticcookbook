@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Design MCP servers by choosing the right primitive and giving each tool a precise name, output schema, and annotations."
 platforms: []
@@ -29,7 +29,7 @@ references:
   - https://modelcontextprotocol.io/specification/2025-11-25/changelog
   - https://blog.modelcontextprotocol.io/posts/2026-03-16-tool-annotations/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - api-integration
   - ai-api-integration

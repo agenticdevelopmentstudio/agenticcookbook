@@ -1,7 +1,7 @@
 """Every component source file, and the spec that names it.
 
 A spec claims its sources in its `## Reference Implementations` table
-(`cookbook.core.refimpl`): a file path claims that file, a directory path
+(`cookr.core.refimpl`): a file path claims that file, a directory path
 (trailing `/`) every source file below it. A file path beats any directory
 path, and the deepest directory wins, so a spec for a module directory can
 leave one file inside it to another spec. A source file under a `code.roots`
@@ -31,7 +31,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core.markdown import SKIP_NAMES
+from cookr.core.markdown import SKIP_NAMES, reserved_name
 
 from .config import Config, ConfigError, Root
 from .naming import path_name
@@ -206,11 +206,6 @@ def owners(table: Claims, rel: str) -> list[tuple[str, str]]:
     return []
 
 
-def _reserved(name: str) -> bool:
-    """True when `<name>.md` is a file name the spec corpus never loads."""
-    return f"{name.rsplit('/', 1)[-1]}.md" in SKIP_NAMES
-
-
 def in_group(name: str, tier: Optional[str]) -> bool:
     """True when spec `name` is in group `tier` (a cookbook directory; None is every group)."""
     return tier is None or name.startswith(tier.strip("/") + "/")
@@ -250,12 +245,12 @@ def scan(config: Config, corpus: dict[str, RecipeInfo],
             name = expected_name(root, rel)
             out.append(Component(name=name, path=rel, tier=name.split("/", 1)[0],
                                  platform=root.platform, kind=kind))
-    reserved = sorted(c.path for c in out if not c.claimed and _reserved(c.name))
+    reserved = sorted(f"{c.path} ({why})" for c in out if not c.claimed
+                      for why in [reserved_name(c.name, config.cookbook_dir)] if why)
     if reserved:
         raise ConfigError(
-            "an unclaimed source file is named with a file name the spec corpus skips "
-            f"({', '.join(sorted(SKIP_NAMES))}), so its spec could never be matched: "
-            f"{', '.join(reserved)}. Ignore these files in `code.ignore`, or claim them "
-            f"in a spec's `## Reference Implementations`."
+            "an unclaimed source file would get a spec name no spec can have, so its spec "
+            f"could never be matched: {'; '.join(reserved)}. Ignore these files in "
+            "`code.ignore`, or claim them in a spec's `## Reference Implementations`."
         )
     return sorted((c for c in out if in_group(c.name, tier)), key=lambda c: (c.name, c.path))

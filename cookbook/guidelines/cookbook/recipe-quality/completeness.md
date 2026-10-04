@@ -1,5 +1,4 @@
 ---
-
 id: d65ed7a3-6125-4c9f-b3af-f3b26ad61dfb
 title: "Completeness"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/completeness
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - recipe-authoring
 ---

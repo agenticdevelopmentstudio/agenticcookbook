@@ -1,5 +1,4 @@
 ---
-
 id: 631b7b61-985a-4f5d-9c44-2cfbfdb9091b
 title: "Error Responses"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/error-responses
@@ -14,12 +13,12 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use [RFC 9457 Problem Details](https://www.rfc-editor.org/rfc/rfc9457) format with"
 platforms: []
-tags: 
+tags:
   - error-responses
   - networking
 depends-on: []
 related: []
-references: 
+references:
   - https://www.rfc-editor.org/rfc/rfc9457
 approved-by: "approve-artifact v1.0.0"
 approved-date: "2026-04-04"

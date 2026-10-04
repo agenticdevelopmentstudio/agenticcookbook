@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Define a retention schedule per data category and automate deletion or anonymization that cascades to every derived store."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
   - https://www.iso.org/standard/27701
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - data-modeling
   - schema-design

@@ -23,7 +23,7 @@ related:
   - agenticdevelopercookbook://principles/cite-the-claim-not-the-document
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: '2026-06-27'
+approved-date: "2026-06-27"
 ---
 
 # Independence before corroboration

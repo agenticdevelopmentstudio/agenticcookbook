@@ -1,5 +1,4 @@
 ---
-
 id: C8B92187-7C2F-4D11-9AB3-EC806F3CDF26
 title: "Normalization and denormalization"
 domain: agenticdevelopercookbook://guidelines/implementing/data/normalization-and-denormalization

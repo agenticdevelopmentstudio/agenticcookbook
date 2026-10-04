@@ -1,5 +1,4 @@
 ---
-
 id: c3883e6e-3bce-4bb9-a3be-61509a139288
 title: "Timeouts"
 domain: agenticdevelopercookbook://guidelines/implementing/networking/timeouts
@@ -14,7 +13,7 @@ copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Always set both connection and read timeouts. Never use infinite timeouts."
 platforms: []
-tags: 
+tags:
   - networking
   - timeouts
 depends-on: []

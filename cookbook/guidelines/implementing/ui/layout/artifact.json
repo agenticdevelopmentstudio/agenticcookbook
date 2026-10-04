@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "26c8e7d6-dde3-48d0-bde0-8a71a51a6674",
+    "title": "Layout",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/layout",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Design for the content, not a fixed screen size. Layouts should adapt gracefully from",
+    "platforms": [
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "layout",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/layout",
+      "https://learn.microsoft.com/en-us/windows/apps/design/layout/responsive-design",
+      "https://m3.material.io/foundations/layout/applying-layout/overview",
+      "https://www.nngroup.com/articles/mobile-first-not-mobile-only/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "f3e17af03b6e462b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Expose key app actions and data as App Intents so Siri, Shortcuts, Spotlight, widgets, and the system can invoke them."
 platforms:
@@ -29,7 +29,7 @@ references:
   - https://developer.apple.com/videos/play/wwdc2025/275/
   - https://developer.apple.com/documentation/appintents/integrating-actions-with-siri-and-apple-intelligence
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - platform-integration
 ---

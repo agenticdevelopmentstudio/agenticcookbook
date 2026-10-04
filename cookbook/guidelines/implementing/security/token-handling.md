@@ -1,5 +1,4 @@
 ---
-
 id: 2598f495-1820-47e7-b7e7-ce548d390148
 title: "Token Handling"
 domain: agenticdevelopercookbook://guidelines/implementing/security/token-handling
@@ -13,17 +12,17 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Short-lived (5-15 min). Include only necessary claims — no PII in JWTs"
-platforms: 
+platforms:
   - kotlin
   - typescript
   - web
   - windows
-tags: 
+tags:
   - security
   - token-handling
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html
   - https://datatracker.ietf.org/doc/html/rfc6750
   - https://datatracker.ietf.org/doc/html/rfc7519

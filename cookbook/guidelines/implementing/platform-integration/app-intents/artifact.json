@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e5768eed-0f7f-41d0-bcf7-5a4c18964032",
+    "title": "App Intents",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/app-intents",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Expose key app actions and data as App Intents so Siri, Shortcuts, Spotlight, widgets, and the system can invoke them.",
+    "platforms": [
+      "swift",
+      "ios",
+      "macos"
+    ],
+    "tags": [
+      "apple",
+      "app-intents",
+      "automation"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/shortcuts-and-automation",
+      "agenticdevelopercookbook://principles/support-automation"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/appintents",
+      "https://developer.apple.com/videos/play/wwdc2025/275/",
+      "https://developer.apple.com/documentation/appintents/integrating-actions-with-siri-and-apple-intelligence"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "platform-integration"
+    ]
+  },
+  "synced": "431b3d5ee9817d77",
+  "parts": [
+    {"part": "intro"},
+    {"part": "define-an-appintent", "heading": "Define an AppIntent"},
+    {"part": "zero-config-discovery-with-appshortcuts", "heading": "Zero-config discovery with AppShortcuts"},
+    {"part": "model-app-data-with-appentity-and-entityquery", "heading": "Model app data with AppEntity and EntityQuery"},
+    {"part": "choosing-app-intents-over-legacy-sirikit", "heading": "Choosing App Intents over legacy SiriKit"},
+    {"part": "forecasts-verify-against-current-docs", "heading": "FORECASTS (verify against current docs)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

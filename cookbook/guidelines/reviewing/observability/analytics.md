@@ -1,24 +1,23 @@
 ---
-
 id: 8e317295-dc45-4d96-9f03-c75e866de4ad
 title: "Analytics"
 domain: agenticdevelopercookbook://guidelines/reviewing/observability/analytics
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "All significant user actions MUST be instrumented via an `AnalyticsProvider` interface (`track(event, properties)`). ..."
-platforms: 
+summary: "Instrument all significant user actions via an AnalyticsProvider interface (track(event, properties)) with no direct coupling to a backend; default to logging and swap in a backend later."
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
-tags: 
+tags:
   - analytics
   - logging
 depends-on: []
@@ -63,6 +62,7 @@ Interface + `ILogger`-backed implementation as the default. Same pattern as othe
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

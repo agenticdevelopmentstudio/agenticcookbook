@@ -3,11 +3,11 @@ id: ae4444c3-adac-429a-b00e-e918ba3a70b7
 title: "Break Fixation Deliberately"
 domain: agenticdevelopercookbook://principles/break-fixation-deliberately
 type: principle
-version: 1.0.0
+version: 1.0.1
 status: draft
 language: en
 created: 2026-06-27
-modified: 2026-06-27
+modified: 2026-10-03
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -22,11 +22,11 @@ related:
   - agenticdevelopercookbook://principles/bridge-distant-domains
   - agenticdevelopercookbook://principles/constraints-as-creative-fuel
 references:
-  - de Bono, Lateral Thinking: Creativity Step by Step, 1970
+  - "de Bono, Lateral Thinking: Creativity Step by Step, 1970"
   - van Gundy, Techniques of Structured Problem Solving, 1988
-  - Eberle, SCAMPER: Games for Imagination Development, 1971
+  - "Eberle, SCAMPER: Games for Imagination Development, 1971"
 approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-06-27"
+approved-date: "2026-10-03"
 ---
 
 # Break Fixation Deliberately
@@ -54,3 +54,4 @@ well-worn ones.
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
 | 1.0.0 | 2026-06-27 | Mike Fullerton | Initial creation |
+| 1.0.1 | 2026-10-03 | Mike Fullerton | Quote two references whose colons made YAML read them as mappings |

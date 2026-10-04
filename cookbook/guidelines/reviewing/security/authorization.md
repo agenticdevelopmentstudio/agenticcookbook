@@ -1,5 +1,4 @@
 ---
-
 id: 192c62b6-dec8-40e9-ae69-588f1c530dc8
 title: "Authorization"
 domain: agenticdevelopercookbook://guidelines/reviewing/security/authorization
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "**Server-side authorization is the only real authorization.** Client-side checks (hiding"
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - authorization
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html
   - https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
 approved-by: "approve-artifact v1.0.0"

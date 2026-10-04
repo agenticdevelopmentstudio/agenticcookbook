@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Propagate W3C trace context across every service hop and async boundary, and correlate logs/metrics/traces via a shared trace_id."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://opentelemetry.io/blog/2025/sampling-milestones/
   - https://uptrace.dev/opentelemetry/distributed-tracing
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - logging
   - networking

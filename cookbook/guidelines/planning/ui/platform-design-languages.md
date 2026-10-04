@@ -1,28 +1,27 @@
 ---
-
 id: 9f17b833-75ed-4c86-a6af-a4f277c23d21
 title: "Platform Design Languages"
 domain: agenticdevelopercookbook://guidelines/planning/ui/platform-design-languages
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Defer to these canonical sources before applying the defaults in this file:"
-platforms: 
+summary: "Defer to each platform's canonical design language (Apple HIG, Material Design 3, Fluent 2, WCAG) before applying the defaults here, and use the platform value when it prescribes one."
+platforms:
   - kotlin
   - web
   - windows
-tags: 
+tags:
   - platform-design-languages
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/
   - https://fluent2.microsoft.design/
   - https://m3.material.io/
@@ -51,6 +50,7 @@ baseline.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

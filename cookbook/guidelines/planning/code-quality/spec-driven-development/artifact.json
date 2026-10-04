@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "138eed2b-6b13-40ac-8c99-1f7860420b42",
+    "title": "Spec-driven development (plan before code)",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/spec-driven-development",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "For non-trivial agent work, write a self-contained spec before code, separating planning from execution and ending with a verification step.",
+    "platforms": [],
+    "tags": [
+      "planning",
+      "ai-workflow",
+      "spec"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/steel-thread-first",
+      "agenticdevelopercookbook://principles/small-reversible-decisions",
+      "agenticdevelopercookbook://guidelines/planning/code-quality/scope-discipline"
+    ],
+    "references": [
+      "https://code.claude.com/docs/en/best-practices",
+      "https://github.com/github/spec-kit",
+      "https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module"
+    ]
+  },
+  "synced": "7e2287414d564f67",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-a-spec-is-required", "heading": "When a spec is required"},
+    {"part": "what-a-good-spec-contains", "heading": "What a good spec contains"},
+    {"part": "a-staged-flow-name-the-method-not-the-tool", "heading": "A staged flow (name the method, not the tool)"},
+    {"part": "verification", "heading": "Verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

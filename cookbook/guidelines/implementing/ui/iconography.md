@@ -1,5 +1,4 @@
 ---
-
 id: 98c5c5c2-5a45-4425-97b7-31932cb6af0c
 title: "Iconography"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/iconography
@@ -13,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Icons supplement text — they do not replace it (except for universally understood symbols"
-platforms: 
+platforms:
   - windows
-tags: 
+tags:
   - iconography
   - ui
 depends-on: []
 related: []
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/sf-symbols
   - https://learn.microsoft.com/en-us/windows/apps/design/style/icons
   - https://m3.material.io/styles/icons/overview

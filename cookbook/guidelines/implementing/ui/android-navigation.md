@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use type-safe Navigation Compose with serializable routes, single-activity architecture, and hoisted nav state."
 platforms:
@@ -24,7 +24,7 @@ related:
 references:
   - https://developer.android.com/guide/navigation
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
 ---

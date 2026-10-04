@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "80915bd6-f18c-4a51-b293-50cef7ead49f",
+    "title": "Choosing a .NET target framework",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/dotnet-target-framework",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pick a .NET target framework from the documented support cadence: LTS for apps, multi-target libraries, pin the SDK.",
+    "platforms": [
+      "csharp"
+    ],
+    "tags": [
+      "dotnet",
+      "versioning",
+      "build"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/small-reversible-decisions"
+    ],
+    "references": [
+      "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "synced": "899f14b0b117ae71",
+  "parts": [
+    {"part": "intro"},
+    {"part": "support-cadence-pinned-net-support-policy-verified-2026-06-09", "heading": "Support cadence (pinned: .NET support policy, verified 2026-06-09)"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "decision-steps-for-an-agent", "heading": "Decision steps (for an agent)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

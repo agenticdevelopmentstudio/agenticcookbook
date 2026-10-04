@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "578e6d3b-f60d-42ff-964b-06b173ffaae9",
+    "title": "Domain-stratified trust",
+    "domain": "agenticdevelopercookbook://principles/domain-stratified-trust",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The bar a claim must clear is set by its domain — the cost of being wrong — not by how casually or urgently it was asked.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "trust",
+      "verification"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/type-precedes-method",
+      "agenticdevelopercookbook://principles/independence-before-corroboration",
+      "agenticdevelopercookbook://principles/suppress-unsupported-confidence",
+      "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "bd9e3d7808063d93",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

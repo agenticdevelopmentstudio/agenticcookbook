@@ -12,7 +12,7 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Text editor pane for source code with syntax highlighting, line numbers, minimap, dirty tracking, and auto-save"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
@@ -20,7 +20,7 @@ platforms:
   - swift
   - typescript
   - web
-tags: 
+tags:
   - code-editor-pane
   - panel
   - ui

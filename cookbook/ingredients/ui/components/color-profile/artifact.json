@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "bdc920ab-fde0-445a-a62a-c2f6d23da8a8",
+    "title": "Color Profile",
+    "domain": "agenticdevelopercookbook://ingredients/ui/components/color-profile",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-05",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Named color palette with foreground, background, ANSI colors, and built-in presets for terminal and editor theming",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "color-profile",
+      "component",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "8877d1516aa274c8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

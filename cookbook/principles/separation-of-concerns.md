@@ -3,17 +3,17 @@ id: 1357be12-5a58-4143-a570-849c114770c5
 title: "Separation of concerns"
 domain: agenticdevelopercookbook://principles/separation-of-concerns
 type: principle
-version: 1.1.1
+version: 1.1.2
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-10
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "A module should have one reason to change. If describing what a module does requires 'and,' consider splitting. This ..."
+summary: "A module should have one reason to change; if describing it requires 'and,' consider splitting. This applies at every scale, balanced by locality of behavior."
 platforms: []
-tags: 
+tags:
   - separation-of-concerns
 depends-on: []
 related:
@@ -24,7 +24,7 @@ references:
   - https://shows.acast.com/dead-code/episodes/brutality-of-behaviour-with-carson-gross
   - https://wipdev.netlify.app/posts/separation-of-concerns-locality-of-behavior-and-javascript/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 ---
 
 # Separation of concerns
@@ -40,6 +40,7 @@ A module should have one reason to change. If describing what a module does requ
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Cite recovered Tier-1 research sources (adversarially-audited) |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Add locality-of-behavior counterweight; link srp and connascence |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

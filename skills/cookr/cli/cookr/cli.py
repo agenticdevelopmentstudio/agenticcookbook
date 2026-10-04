@@ -6,10 +6,12 @@ Usage:
 `-p` names the target repo root (the directory holding `cookbook/cookbook.json`),
 or the cookbook directory itself. Without it, cookr walks up from cwd to the
 first directory that holds one. A repo still on `.cookr.json` is found the same
-way, for `cookr organize` to convert.
+way, for `cookr organize` to convert. The maintenance modules (update, validate,
+lint) also accept a cookbook with no `cookbook.json`, such as agenticcookbook's
+own (core/roots.py).
 
-The scaffold (module discovery, `-p`, the module table, error mapping) is
-cookbook's, shared through cookbook.core.cliapp.
+The scaffold (module discovery, `-p`, the module table, error mapping) lives
+in core/cliapp.py.
 """
 
 from __future__ import annotations
@@ -17,9 +19,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core import cliapp
-from cookbook.core.errors import CookbookError
-from cookbook.core.ui import UI
+from cookr.core import cliapp, roots
+from cookr.core.errors import CookbookError
+from cookr.core.ui import UI
 
 from . import __version__
 from .context import CookrContext
@@ -33,8 +35,8 @@ def _find(start: Path, explicit: Optional[Path]) -> tuple[Optional[Path], Option
         p = explicit.expanduser().resolve()
         cookbook = next((c for c in (p / COOKBOOK_DIR, p) if (c / MANIFEST).is_file()), None)
         legacy = p / LEGACY_NAME if (p / LEGACY_NAME).is_file() else None
-        if cookbook is None and legacy is None:
-            raise ConfigError(f"no {COOKBOOK_DIR}/{MANIFEST} or {LEGACY_NAME} at {p}")
+        if cookbook is None and legacy is None and roots.resolve(p, p) is None:
+            raise ConfigError(f"no {COOKBOOK_DIR}/{MANIFEST}, {LEGACY_NAME} or cookbook directory at {p}")
         return cookbook, legacy
     cookbook = find_cookbook(start)
     legacy = None
@@ -51,14 +53,24 @@ def _check_path(explicit: Optional[Path]) -> None:
 
 
 def _context(explicit: Optional[Path], ui: UI) -> CookrContext:
+    """A `cookbook.json` cookr cannot read (no `code` block, bad JSON) leaves
+    `config` None and says why in `config_error`: only the modules that need
+    the config refuse, never validate, lint, compile or install."""
     cookbook, legacy = _find(Path.cwd(), explicit)
-    return CookrContext(config=load_config(cookbook) if cookbook else None, ui=ui, legacy=legacy)
+    config, error = None, None
+    if cookbook:
+        try:
+            config = load_config(cookbook)
+        except ConfigError as e:
+            error = str(e)
+    return CookrContext(config=config, ui=ui, legacy=legacy, config_error=error,
+                        cookbook_root=roots.resolve(Path.cwd(), explicit))
 
 
 APP = cliapp.CliApp(
     prog="cookr",
     version=__version__,
-    description="Inventory, coverage, extraction prompts and arrangement for a library cookbook.",
+    description="Inventory, coverage, extraction prompts, arrangement and maintenance for a cookbook.",
     modules_package="cookr.modules",
     path_help=f"Repo root holding {COOKBOOK_DIR}/{MANIFEST} (defaults to discovery from cwd).",
     make_context=_context,

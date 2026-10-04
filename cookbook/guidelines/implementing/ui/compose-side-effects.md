@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Run side effects through the correct keyed Compose effect API, never directly inside composition."
 platforms:
@@ -26,7 +26,7 @@ references:
   - https://developer.android.com/develop/ui/compose/side-effects
   - https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ui-implementation
   - concurrency

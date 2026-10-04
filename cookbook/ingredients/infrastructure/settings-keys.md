@@ -12,14 +12,14 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Centralized settings key registry with dot-notation naming to prevent key duplication and scattered string literals"
-platforms: 
+platforms:
   - ios
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - infrastructure
   - settings-keys
 depends-on: []

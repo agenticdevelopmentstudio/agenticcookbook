@@ -1,5 +1,4 @@
 ---
-
 id: aec38334-67fa-4c7e-bca2-607932af3f22
 title: "Authentication"
 domain: agenticdevelopercookbook://guidelines/implementing/security/authentication
@@ -13,19 +12,19 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use OAuth 2.0 / OpenID Connect with PKCE for all public clients. The Implicit flow is"
-platforms: 
+platforms:
   - csharp
   - ios
   - kotlin
   - typescript
   - web
   - windows
-tags: 
+tags:
   - authentication
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://datatracker.ietf.org/doc/html/rfc7636
   - https://datatracker.ietf.org/doc/html/rfc8252
   - https://openid.net/specs/openid-connect-core-1_0.html
@@ -36,7 +35,7 @@ references:
   - https://pages.nist.gov/800-63-4/sp800-63b.html
   - https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-passkeys-fido2
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - authentication
   - security-review

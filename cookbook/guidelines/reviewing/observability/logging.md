@@ -1,19 +1,18 @@
 ---
-
 id: 85d90939-4047-4b69-a76c-716de9fd5d38
 title: "Instrumented logging"
 domain: agenticdevelopercookbook://guidelines/reviewing/observability/logging
 type: guideline
-version: 1.1.0
+version: 1.1.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Every component and flow must be instrumented with structured logging using the platform's best-in-class framework:"
-platforms: 
+summary: "Instrument every component and flow with structured logging using the platform's best-in-class framework, at debug level for state transitions, user interactions, async tasks, and branching."
+platforms:
   - csharp
   - kotlin
   - python
@@ -21,11 +20,11 @@ platforms:
   - typescript
   - web
   - windows
-tags: 
+tags:
   - logging
 depends-on: []
 related: []
-references: 
+references:
   - https://github.com/JakeWharton/timber
   - https://learn.microsoft.com/en-us/visualstudio/profiling/
 approved-by: "approve-artifact v1.0.0"
@@ -137,6 +136,7 @@ The per-platform frameworks above remain the local emission layer; route their o
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Add OpenTelemetry, trace correlation, semantic conventions |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |

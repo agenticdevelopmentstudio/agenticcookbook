@@ -1,20 +1,19 @@
 ---
-
 id: 8d52028b-d358-4965-93a1-030fc8405068
 title: "Always show progress"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/always-show-progress
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "When the UI is waiting on an async task:"
+summary: "When the UI waits on an async task, show determinate progress when total work is known and indeterminate progress otherwise; the UI must never appear frozen."
 platforms: []
-tags: 
+tags:
   - always-show-progress
   - ui
 depends-on: []
@@ -39,6 +38,7 @@ When the UI is waiting on an async task:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "1971d5c6-592d-4959-aa2c-33ea4ff17d0d",
+    "title": "Typography",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/typography",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use the platform's system font. Establish a type scale with clear roles — don't invent",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "typography",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/typography",
+      "https://learn.microsoft.com/en-us/windows/apps/design/style/typography",
+      "https://m3.material.io/styles/typography/type-scale-tokens",
+      "https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "2a2d3f55ec9c824c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

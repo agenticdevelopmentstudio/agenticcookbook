@@ -17,9 +17,10 @@ from datetime import date
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core import refimpl
-from cookbook.modules import bump
+from cookr.core import refimpl
+from cookr.modules import bump
 
+from .artifact import ArtifactError, edit_text, save_document
 from .config import Config, ConfigError
 from .recipes import RecipeInfo, load_corpus
 
@@ -91,11 +92,14 @@ def relink(config: Config, renames: dict[str, str], *, dry_run: bool = False, au
         out.append(change)
         if dry_run or not change.rows:
             continue
-        text = info.path.read_text(encoding="utf-8")
-        info.path.write_text(refimpl.with_section(text, rows), encoding="utf-8")
         try:
-            info.path.write_text(bump.plan(info.path, level="patch", summary=BUMP_SUMMARY,
-                                           author=author, day=day).text, encoding="utf-8")
+            save_document(info.path, refimpl.with_section(edit_text(info.path), rows))
+        except ArtifactError as e:
+            change.bump_error = str(e)
+            continue
+        try:
+            save_document(info.path, bump.plan(info.path, level="patch", summary=BUMP_SUMMARY,
+                                               author=author, day=day).text)
         except bump.BumpError as e:
             change.bump_error = str(e)
     return out

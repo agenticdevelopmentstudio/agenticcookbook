@@ -70,10 +70,10 @@ Operate as a specification writer producing one cookbook recipe from source code
 - When an existing recipe is given, keep its frontmatter `id`, `created`,
   `version` and `modified` and its Change History rows as they are. After
   saving, record the change with
-  `cookbook bump <recipe file> --level minor --summary "<what changed>"`, which
+  `cookr bump <recipe file> --level minor --summary "<what changed>"`, which
   bumps `version`, sets `modified` and adds the Change History row; never edit
   those by hand. If starting fresh, leave `id`, `created`, `modified`,
-  `author`, `copyright`, `license` empty — `cookbook update` fills them.
+  `author`, `copyright`, `license` empty — `cookr update` fills them.
 - Frontmatter `domain` is the value the task gives: `<scheme>://<path>`,
   where the scheme names the repo the recipe lives in and the path is the
   recipe's path from that repo's root, without `.md`. Never the cookbook's own scheme for a

@@ -1,5 +1,4 @@
 ---
-
 id: 246D87C8-213A-4DE1-9452-6E683D3D75E3
 title: "Relationship patterns"
 domain: agenticdevelopercookbook://guidelines/implementing/data/relationships

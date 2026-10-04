@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "71af85de-c618-4319-8150-f2f0015921dd",
+    "title": "Transactions and Concurrency",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/transactions-and-concurrency",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Rules for transaction management and concurrency in SQLite, covering WAL mode, journal mode selection, BEGIN IMMEDIATE vs DEFERRED, connection strategies, busy_timeout, PRAGMA tuning, and WAL benefits for sync workloads.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "transactions",
+      "concurrency",
+      "wal",
+      "performance"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/access-pattern-analysis.md"
+    ],
+    "references": [
+      "https://sqlite.org/wal.html",
+      "https://sqlite.org/lang_transaction.html",
+      "https://sqlite.org/pragma.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "concurrency"
+    ]
+  },
+  "synced": "4b407497a4121299",
+  "parts": [
+    {"part": "intro"},
+    {"part": "use-wal-mode-by-default", "heading": "Use WAL Mode by Default"},
+    {"part": "journal-mode-selection", "heading": "Journal Mode Selection"},
+    {"part": "explicit-transactions-always", "heading": "Explicit Transactions — Always"},
+    {"part": "begin-immediate-vs-deferred", "heading": "BEGIN IMMEDIATE vs DEFERRED"},
+    {"part": "busy-timeout-always-set-it", "heading": "busy_timeout — Always Set It"},
+    {"part": "recommended-pragma-configuration", "heading": "Recommended PRAGMA Configuration"},
+    {"part": "connection-strategy", "heading": "Connection Strategy"},
+    {"part": "wal-checkpointing", "heading": "WAL Checkpointing"},
+    {"part": "wal-benefits-for-sync-workloads", "heading": "WAL Benefits for Sync Workloads"},
+    {"part": "bulk-load-configuration-reduced-safety", "heading": "Bulk Load Configuration (Reduced Safety)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

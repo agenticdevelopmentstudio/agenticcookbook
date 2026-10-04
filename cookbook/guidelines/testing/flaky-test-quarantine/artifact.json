@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4f5fe9ef-1bf8-4354-92c7-92d9e28673b8",
+    "title": "Flaky test quarantine lifecycle",
+    "domain": "agenticdevelopercookbook://guidelines/testing/flaky-test-quarantine",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Detect, quarantine with an owner and deadline, fix the root cause, then return flaky tests to the gating suite.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "flaky",
+      "ci"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/testing/flaky-test-prevention"
+    ],
+    "references": [
+      "https://www.thoughtworks.com/insights/blog/quarantine"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "171778202befc9ad",
+  "parts": [
+    {"part": "intro"},
+    {"part": "why-quarantine", "heading": "Why quarantine"},
+    {"part": "lifecycle", "heading": "Lifecycle"},
+    {"part": "detection", "heading": "Detection"},
+    {"part": "quarantine-mechanics", "heading": "Quarantine mechanics"},
+    {"part": "owner-and-deadline", "heading": "Owner and deadline"},
+    {"part": "restore-or-delete", "heading": "Restore or delete"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

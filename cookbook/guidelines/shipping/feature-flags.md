@@ -1,5 +1,4 @@
 ---
-
 id: 1b259fdc-1aba-48c5-a89a-b9ca01dc3351
 title: "Feature flags"
 domain: agenticdevelopercookbook://guidelines/shipping/feature-flags
@@ -13,12 +12,12 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Pre-ship feature flag verification: ensure all new features are gated, defaults are correct, and flag keys are documented."
-platforms: 
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
-tags: 
+tags:
   - feature-flags
   - feature-management
 depends-on: []

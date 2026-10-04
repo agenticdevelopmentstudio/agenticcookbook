@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e446ee3e-b8f2-40e7-b93d-3113e6a95e5d",
+    "title": "Debug mode",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/feature-management/debug-mode",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps MUST include a debug-only configuration panel, excluded from release builds, with feature flag overrides, an analytics event log, an A/B variant picker, and environment info.",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "debug-mode",
+      "feature-management"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "feature-flags",
+      "logging"
+    ]
+  },
+  "synced": "68671bd384b5f86d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

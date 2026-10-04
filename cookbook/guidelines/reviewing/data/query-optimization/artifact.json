@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "26a1a47f-f749-4477-ae04-c54c9a4c5117",
+    "title": "Query Optimization",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/data/query-optimization",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Query review checklist: anti-patterns to flag, EXPLAIN QUERY PLAN red flags, and common performance issues in SQLite queries.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "query-optimization",
+      "performance",
+      "query-planning"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/indexing.md"
+    ],
+    "references": [
+      "https://sqlite.org/optoverview.html",
+      "https://www.sqlite.org/eqp.html",
+      "https://sqlite.org/queryplanner.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "performance-optimization"
+    ]
+  },
+  "synced": "74b02a8a9c6b2698",
+  "parts": [
+    {"part": "intro"},
+    {"part": "explain-query-plan-red-flags", "heading": "EXPLAIN QUERY PLAN red flags"},
+    {"part": "anti-patterns-to-flag", "heading": "Anti-patterns to flag"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

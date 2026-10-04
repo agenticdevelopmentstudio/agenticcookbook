@@ -1,5 +1,4 @@
 ---
-
 id: 5cc9773e-78de-493e-891c-2a819baf9b60
 title: "Theming"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/theming
@@ -13,10 +12,10 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "WinUI 3 supports tri-state theming: Light, Dark, and High Contrast."
-platforms: 
+platforms:
   - csharp
   - windows
-tags: 
+tags:
   - platform
   - theming
   - windows

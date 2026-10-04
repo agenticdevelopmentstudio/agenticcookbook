@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "82072abf-0ece-42da-805d-3cb15ce7921d",
+    "title": "Type hints",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/type-hints",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Type hints are welcome but not required. Maintain Python 3.9 compatibility by using from __future__ import annotations or typing module forms.",
+    "platforms": [
+      "python"
+    ],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "type-hints"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "0e2053d5ce54bad4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8075b95b-2678-4893-9a5a-eb77aa9232aa",
+    "title": "Small, atomic commits",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits",
+    "type": "guideline",
+    "version": "1.2.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "One logical change per commit. A change may touch multiple files if they are part of the same concept. Commit as work progresses; do not batch up unrelated changes.",
+    "platforms": [],
+    "tags": [
+      "atomic-commits",
+      "code-quality"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/scope-discipline",
+      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "pre-commit"
+    ]
+  },
+  "synced": "dc4949f09c7082a6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "the-build-verify-commit-loop", "heading": "The build-verify-commit loop"},
+    {"part": "what-counts-as-one-logical-change", "heading": "What counts as one logical change"},
+    {"part": "small-diffs-for-agent-generated-changes", "heading": "Small diffs for agent-generated changes"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8ab7452a-09b8-4f4e-abfc-f7fd700765db",
+    "title": "The Testing Workflow",
+    "domain": "agenticdevelopercookbook://guidelines/testing/the-testing-workflow",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Follow the recommended testing loop: write code and unit tests, run them, validate test quality with mutation testing, kill surviving mutants, run security scans, then verify end to end.",
+    "platforms": [
+      "python",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "testing",
+      "the-testing-workflow"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "names_hosts": "Describes the testing workflow as run in Claude Code; a candidate to move into hosts/claude.md.",
+  "synced": "7492d9b085874a73",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

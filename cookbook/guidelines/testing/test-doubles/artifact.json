@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "eec76082-a68b-4a2b-8f02-5ea3bfdc0a76",
+    "title": "Test Doubles",
+    "domain": "agenticdevelopercookbook://guidelines/testing/test-doubles",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use Martin Fowler's test double taxonomy (dummy, stub, spy, mock, fake) and prefer fakes over mocks where possible, since fakes exercise real behavior.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "python",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "test-doubles",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://github.com/apple/swift-testing",
+      "https://github.com/cashapp/turbine",
+      "https://github.com/pytest-dev/pytest-mock",
+      "https://martinfowler.com/bliki/TestDouble.html",
+      "https://mockk.io/",
+      "https://nsubstitute.github.io/",
+      "https://vitest.dev/guide/mocking.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests"
+    ]
+  },
+  "synced": "16ef395cf759b63d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

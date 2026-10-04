@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a6bd5677-3e40-4480-942e-54c05e3bafc7",
+    "title": "Verification harnesses as agent guardrails",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/verification-harness",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Give every agent a runnable pass/fail check it can run on itself, and enforce correctness through deterministic gates rather than prompt text.",
+    "platforms": [],
+    "tags": [
+      "agents",
+      "automation",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/tight-feedback-loops",
+      "agenticdevelopercookbook://principles/support-automation",
+      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+    ],
+    "references": [
+      "https://code.claude.com/docs/en/best-practices"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "pre-commit",
+      "code-review"
+    ]
+  },
+  "names_hosts": "Cites Claude Code's best practices and CLAUDE.md as the evidence that instructions are advisory.",
+  "synced": "215309f50ab7186c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "make-the-check-runnable-and-deterministic", "heading": "Make the check runnable and deterministic"},
+    {"part": "optimize-failure-output-for-an-llm-reader", "heading": "Optimize failure output for an LLM reader"},
+    {"part": "escalate-enforcement-prompt-text-is-advisory-gates-are-deterministic", "heading": "Escalate enforcement: prompt text is advisory, gates are deterministic"},
+    {"part": "gate-on-correctness-not-taste", "heading": "Gate on correctness, not taste"},
+    {"part": "build-it-incrementally", "heading": "Build it incrementally"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

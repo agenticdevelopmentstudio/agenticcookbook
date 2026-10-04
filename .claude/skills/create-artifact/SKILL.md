@@ -1,9 +1,9 @@
 ---
 name: create-artifact
-version: "1.0.0"
+version: "1.1.0"
 description: "Guided creation of a new cookbook artifact. Walks through type selection, content authoring, and integration via /add-artifact."
 argument-hint: "[principle|guideline|recipe] [--title <title>]"
-allowed-tools: Read, Glob, Grep, Edit, Write, Bash(uuidgen), Bash(date *), Bash(wc *), Bash(rsync *), AskUserQuestion
+allowed-tools: Read, Glob, Grep, Edit, Write, Bash(uuidgen), Bash(date *), Bash(wc *), Bash(rsync *), Bash(cookr *), AskUserQuestion
 context: fork
 ---
 
@@ -13,16 +13,16 @@ Guided wizard for creating a new cookbook artifact from scratch. Asks which type
 
 ## Startup
 
-create-artifact v1.0.0
+create-artifact v1.1.0
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (1.0.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (1.1.0). If they differ, print:
 
-> Warning: This skill is running v1.0.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v1.1.0 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> create-artifact v1.0.0
+> create-artifact v1.1.0
 
 Then stop.
 
@@ -133,6 +133,10 @@ Walk through each required section defined in the compliance file, asking the us
 ## Step 5: Write the File
 
 Assemble the complete artifact and write it to the resolved path using the Write tool.
+
+Then run `cookr convert <path>`. It creates the artifact's source folder (`<name>/`) and
+rewrites `<path>` as the folder's compiled output. If it refuses the file, fix what it
+reports and run it again.
 
 Print:
 

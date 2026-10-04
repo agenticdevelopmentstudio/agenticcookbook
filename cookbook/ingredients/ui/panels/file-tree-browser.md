@@ -12,13 +12,13 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Hierarchical file browser with lazy loading, git status badges, ignore patterns, and file-type icons"
-platforms: 
+platforms:
   - ios
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - file-tree-browser
   - panel
   - ui

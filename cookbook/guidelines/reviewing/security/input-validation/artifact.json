@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d02a65e0-652f-49b9-be3b-44fccc2f7888",
+    "title": "Input Validation",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/input-validation",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "**Never trust client input.** Client-side validation is a UX feature, not a security control.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "input-validation",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "input-handling",
+      "security-review",
+      "api-integration"
+    ]
+  },
+  "synced": "4cea1ed6c5b27e4c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "server-render-and-server-action-boundary", "heading": "Server-render and Server-Action boundary"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

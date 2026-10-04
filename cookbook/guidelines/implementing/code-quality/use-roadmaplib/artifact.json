@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "faa53b44-0de6-44bc-9064-c7a06462eaa8",
+    "title": "Use roadmap_lib",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/use-roadmaplib",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use functions from roadmap_lib for all roadmap operations (reading state, parsing frontmatter, finding steps), and never reimplement functionality the library already provides.",
+    "platforms": [],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "use-roadmaplib"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "new-module"
+    ]
+  },
+  "synced": "084b14856aadae80",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8a1d8274-cc46-4449-a824-7c7a79c0b1e2",
+    "title": "Advanced database indexing",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/advanced-indexing",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Match the Postgres index type to the access pattern, build on live tables with CONCURRENTLY, and validate with EXPLAIN ANALYZE.",
+    "platforms": [],
+    "tags": [
+      "database",
+      "indexing",
+      "postgres"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation",
+      "agenticdevelopercookbook://guidelines/implementing/data/query-optimization"
+    ],
+    "references": [
+      "https://www.postgresql.org/docs/current/indexes.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "database-operations",
+      "performance-optimization"
+    ]
+  },
+  "synced": "032715630e5bc670",
+  "parts": [
+    {"part": "intro"},
+    {"part": "build-safely-on-live-tables", "heading": "Build safely on live tables"},
+    {"part": "choose-the-type-by-access-pattern", "heading": "Choose the type by access pattern"},
+    {"part": "targeted-index-shapes", "heading": "Targeted index shapes"},
+    {"part": "indexing-jsonb", "heading": "Indexing JSONB"},
+    {"part": "validate-then-keep-honest", "heading": "Validate, then keep honest"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

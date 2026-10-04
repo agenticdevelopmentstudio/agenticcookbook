@@ -1,5 +1,4 @@
 ---
-
 id: 4ca8a3d5-cdcc-4f74-a2ec-3a198608b419
 title: "Input Validation"
 domain: agenticdevelopercookbook://guidelines/implementing/security/input-validation
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "**Never trust client input.** Client-side validation is a UX feature, not a security control."
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - input-validation
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
   - https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
   - https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
@@ -29,7 +28,7 @@ references:
   - https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/
   - https://arxiv.org/html/2508.14925v1
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - input-handling
   - security-review

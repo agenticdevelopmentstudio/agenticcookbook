@@ -1,5 +1,4 @@
 ---
-
 id: b712c766-af1f-4716-b8fb-34bf0bbb13eb
 title: "Dependency Security"
 domain: agenticdevelopercookbook://guidelines/implementing/security/dependency-security
@@ -13,15 +12,15 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Your dependencies are your attack surface. Manage them actively."
-platforms: 
+platforms:
   - python
   - typescript
-tags: 
+tags:
   - dependency-security
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://owasp.org/www-project-dependency-check/
   - https://slsa.dev/
   - https://www.sigstore.dev/

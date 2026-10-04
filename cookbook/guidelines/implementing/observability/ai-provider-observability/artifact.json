@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3890e8fb-9d2d-42db-9753-cf60b95152cc",
+    "title": "AI Provider Observability",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/ai-provider-observability",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Every call to an AI provider API MUST be logged with structured metadata for cost attribution, debugging, and performance monitoring.",
+    "platforms": [],
+    "tags": [
+      "observability",
+      "ai",
+      "llm",
+      "logging"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/observability/logging"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/ai-cost-management"
+    ],
+    "references": [
+      "https://opentelemetry.io/docs/",
+      "https://docs.anthropic.com/en/api/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ai-api-integration",
+      "logging",
+      "api-integration"
+    ]
+  },
+  "synced": "012a1c7ca5c9b6f9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

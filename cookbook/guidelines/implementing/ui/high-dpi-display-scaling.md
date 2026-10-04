@@ -1,5 +1,4 @@
 ---
-
 id: 2b9e9fbb-6df8-4dc2-b02d-3b97f6e434fb
 title: "High DPI / Display Scaling"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/high-dpi-display-scaling
@@ -13,10 +12,10 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "XAML layout uses effective pixels (epx) — scaling is automatic for all XAML-rendered content."
-platforms: 
+platforms:
   - csharp
   - windows
-tags: 
+tags:
   - high-dpi-display-scaling
   - platform
   - windows

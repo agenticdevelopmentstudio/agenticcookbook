@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Model trust boundaries and ask the four Manifesto questions before building so point security controls trace to a why."
 platforms: []
@@ -26,7 +26,7 @@ references:
   - https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats
   - https://owasp.org/www-community/Threat_Modeling_Process
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
 ---

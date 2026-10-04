@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Match the Postgres index type to the access pattern, build on live tables with CONCURRENTLY, and validate with EXPLAIN ANALYZE."
 platforms: []
@@ -24,7 +24,7 @@ related:
 references:
   - https://www.postgresql.org/docs/current/indexes.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - database-operations
   - performance-optimization

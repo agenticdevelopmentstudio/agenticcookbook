@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "555d659d-6272-4ad3-90f7-3efc8ee6031e",
+    "title": "MCP server review checklist",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/networking/mcp-server-checklist",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pre-merge checklist a reviewer runs over an MCP server's primitive design, tool contracts, and authorization.",
+    "platforms": [],
+    "tags": [
+      "mcp",
+      "review",
+      "checklist"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
+      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security"
+    ],
+    "references": [
+      "https://modelcontextprotocol.io/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "security-review"
+    ]
+  },
+  "synced": "9314e448b5ece4e1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "primitive-design", "heading": "Primitive design"},
+    {"part": "tool-contracts", "heading": "Tool contracts"},
+    {"part": "security", "heading": "Security"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

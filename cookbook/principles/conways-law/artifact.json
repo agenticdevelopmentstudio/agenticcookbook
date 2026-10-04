@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "caffd78b-1ba6-42a3-8805-1d224260588b",
+    "title": "Conway's Law",
+    "domain": "agenticdevelopercookbook://principles/conways-law",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A system's architecture mirrors the communication structure of the teams or agents that build it — so shape those boundaries to match the design you want.",
+    "platforms": [],
+    "tags": [
+      "conways-law",
+      "architecture",
+      "organization"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
+      "agenticdevelopercookbook://principles/separation-of-concerns",
+      "agenticdevelopercookbook://principles/meta-principle-optimize-for-change"
+    ],
+    "references": [
+      "https://martinfowler.com/bliki/ConwaysLaw.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09"
+  },
+  "synced": "6c0effdbd554978b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

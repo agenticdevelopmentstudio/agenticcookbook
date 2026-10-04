@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Identify the privacy regimes that apply and confirm a lawful basis before collecting any personal data."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://iapp.org/resources/article/us-state-privacy-legislation-tracker/
   - https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
   - data-modeling

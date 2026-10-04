@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "536c1e46-36f9-4a44-b8f4-c9e4db94cf53",
+    "title": "Spacing",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/spacing",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use a consistent spatial scale based on a **4px base unit** (8px primary grid). All spacing,",
+    "platforms": [
+      "windows"
+    ],
+    "tags": [
+      "spacing",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/layout",
+      "https://learn.microsoft.com/en-us/windows/apps/design/layout/",
+      "https://m3.material.io/foundations/layout/overview"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "727797305b93e892",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -12,13 +12,13 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Right-side sliding panel that shows metadata for the currently selected item in the workspace"
-platforms: 
+platforms:
   - kotlin
   - macos
   - swift
   - typescript
   - web
-tags: 
+tags:
   - inspector-panel
   - panel
   - ui

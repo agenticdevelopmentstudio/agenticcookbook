@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2054b522-fd98-4320-95df-3d95d1a07d98",
+    "title": "Deep linking",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/platform-integration/deep-linking",
+    "type": "guideline",
+    "version": "1.1.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Make all significant feature points and views deep linkable using the platform's native URL or deep link mechanism, and define URL patterns in each spec.",
+    "platforms": [
+      "kotlin",
+      "swift",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "deep-linking",
+      "platform"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "platform-integration",
+      "configuration"
+    ]
+  },
+  "synced": "1b396ec2da8995b9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

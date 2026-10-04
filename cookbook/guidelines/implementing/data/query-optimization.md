@@ -1,5 +1,4 @@
 ---
-
 id: 7FD21483-AD0B-407E-8A7F-103992403D36
 title: "Query Optimization"
 domain: agenticdevelopercookbook://guidelines/implementing/data/query-optimization

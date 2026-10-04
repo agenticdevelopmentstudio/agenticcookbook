@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "40ba1017-cec3-42f0-bd89-63a29eb3dd4d",
+    "title": "Previews",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/previews",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All UI components MUST include preview declarations for rapid visual verification during development, covering all significant states: default, loading, error, empty, and populated.",
+    "platforms": [
+      "kotlin",
+      "swift"
+    ],
+    "tags": [
+      "previews",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "062beb17bfde4683",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

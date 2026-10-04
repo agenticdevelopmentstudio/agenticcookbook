@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "60b3f760-f397-4762-b2d5-5aba80fd51f8",
+    "title": "Immutable infrastructure",
+    "domain": "agenticdevelopercookbook://guidelines/planning/infrastructure/immutable-infrastructure",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Never mutate running servers in place; build a versioned image artifact and replace instances to deploy or roll back.",
+    "platforms": [],
+    "tags": [
+      "infrastructure",
+      "deployment",
+      "immutability"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/immutability-by-default",
+      "agenticdevelopercookbook://principles/design-for-deletion",
+      "agenticdevelopercookbook://guidelines/planning/infrastructure/infrastructure-as-code"
+    ],
+    "references": [
+      "https://martinfowler.com/bliki/ImmutableServer.html",
+      "https://docs.docker.com/build/building/best-practices/",
+      "https://12factor.net/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "configuration"
+    ]
+  },
+  "synced": "02e385e55f94c0f4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-rule", "heading": "Core rule"},
+    {"part": "rebuild-and-redeploy-over-patch-in-place", "heading": "Rebuild-and-redeploy over patch-in-place"},
+    {"part": "rollback-is-a-redeploy", "heading": "Rollback is a redeploy"},
+    {"part": "pairs-with-iac-and-containerization", "heading": "Pairs with IaC and containerization"},
+    {"part": "build-vs-runtime-state", "heading": "Build vs. runtime state"},
+    {"part": "scope-and-trade-offs-yagni", "heading": "Scope and trade-offs (YAGNI)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

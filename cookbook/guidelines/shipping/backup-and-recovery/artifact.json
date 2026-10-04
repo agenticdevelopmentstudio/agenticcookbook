@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "04b47c8b-e076-47a0-a541-6937bdc64abb",
+    "title": "Database backup and recovery",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/backup-and-recovery",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pre-deployment backup verification: ensure backups run before migrations, WAL files are handled during restore, and integrity checks pass before shipping.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "backup",
+      "recovery",
+      "operations",
+      "litestream",
+      "wal"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://sqlite.org/backup.html",
+      "https://sqlite.org/howtocorrupt.html",
+      "https://sqlite.org/recovery.html",
+      "https://litestream.io/how-it-works/",
+      "https://sqlite.org/wal.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "configuration"
+    ]
+  },
+  "synced": "c9f797f0eba10ee3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "pre-deploy-backup-checklist", "heading": "Pre-deploy backup checklist"},
+    {"part": "wal-files-during-restore", "heading": "WAL files during restore"},
+    {"part": "pre-deploy-integrity-check", "heading": "Pre-deploy integrity check"},
+    {"part": "post-deploy-verification", "heading": "Post-deploy verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

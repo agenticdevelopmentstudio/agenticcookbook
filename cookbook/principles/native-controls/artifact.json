@@ -1,0 +1,34 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "dec7cf4a-449b-47fa-9d6e-f7e9376383a7",
+    "title": "Prefer native controls and libraries",
+    "domain": "agenticdevelopercookbook://principles/native-controls",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Always use the platform's built-in frameworks and controls before custom implementations, note which native controls are used and why, and justify any third-party UI dependency.",
+    "platforms": [
+      "swift"
+    ],
+    "tags": [
+      "native-controls"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "526fc37c446c36f8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,5 +1,4 @@
 ---
-
 id: a1d4578f-aceb-4a87-8fa4-b57a89e80763
 title: "Cross-Cutting Detection"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/cross-cutting-detection
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - code-review
   - new-module

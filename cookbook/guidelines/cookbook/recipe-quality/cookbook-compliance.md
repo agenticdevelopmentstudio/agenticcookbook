@@ -1,5 +1,4 @@
 ---
-
 id: 0d3aaa29-0ce3-4803-8f8a-a7023713b574
 title: "Cookbook Compliance"
 domain: agenticdevelopercookbook://guidelines/cookbook/recipe-quality/cookbook-compliance

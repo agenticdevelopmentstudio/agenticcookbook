@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "918c4cec-0bc5-45bf-86d0-5a795053400f",
+    "title": "Lifecycle Patterns",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/lifecycle-patterns",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Identify scope group boundaries by finding groups of objects that are created, owned, and destroyed together as a unit.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "c0363e40a4201986",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

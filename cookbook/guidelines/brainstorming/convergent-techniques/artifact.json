@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "bcd71537-a14e-449d-863a-b32ee9625838",
+    "title": "Convergent Techniques",
+    "domain": "agenticdevelopercookbook://guidelines/brainstorming/convergent-techniques",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Techniques for the Critique and Converge phases — clustering, feasibility assessment, premortem, and user-led selection. MUST NOT be introduced until divergence is complete.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "convergence",
+      "critique",
+      "selection"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://principles/critique-without-killing",
+      "agenticdevelopercookbook://principles/diverge-before-you-converge"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques"
+    ],
+    "references": [
+      "Kawakita, KJ Method, 1967",
+      "Klein, Performing a Project Premortem, Harvard Business Review, 2007",
+      "Mitchell et al., Organizational Behavior and Human Decision Processes, 1989",
+      "Nemeth & Rogers, British Journal of Social Psychology, 1996",
+      "Kelley, The Ten Faces of Innovation, 2005"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "939813569697d4cc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "affinity-clustering-kj-method", "heading": "Affinity Clustering (KJ Method)"},
+    {"part": "what-would-have-to-be-true-wwhtbt", "heading": "What Would Have to Be True (WWHTBT)"},
+    {"part": "premortem", "heading": "Premortem"},
+    {"part": "feasibility-check", "heading": "Feasibility Check"},
+    {"part": "idea-selection-user-led", "heading": "Idea Selection (user-led)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

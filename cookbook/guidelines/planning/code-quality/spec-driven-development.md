@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "For non-trivial agent work, write a self-contained spec before code, separating planning from execution and ending with a verification step."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://github.com/github/spec-kit
   - https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - new-module
 ---

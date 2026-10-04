@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2fd49a5f-4be1-4b0d-b2e7-41cbcbab66ee",
+    "title": "Choosing a Windows UI framework and deployment model",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/windows-ui-framework-and-deployment",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Decide a Windows UI framework and deployment model deliberately and early; package identity is mandatory for notifications and background tasks.",
+    "platforms": [
+      "windows",
+      "csharp"
+    ],
+    "tags": [
+      "windows",
+      "architecture",
+      "packaging"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/small-reversible-decisions",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/apps/get-started/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "synced": "a6be79c3eccea8e9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "decision-1-ui-framework", "heading": "Decision 1: UI framework"},
+    {"part": "decision-2-deployment-model", "heading": "Decision 2: Deployment model"},
+    {"part": "make-it-reversible-where-you-can", "heading": "Make it reversible where you can"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

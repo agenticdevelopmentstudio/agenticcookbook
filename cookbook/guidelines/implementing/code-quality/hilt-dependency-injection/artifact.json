@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "808fa004-9148-41f6-bc32-dae7ba23dcf1",
+    "title": "Hilt dependency injection for Android",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/hilt-dependency-injection",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use Hilt with KSP and constructor injection for Android DI; scope bindings to the correct Hilt component and reserve @Singleton for app-scoped state.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "dependency-injection",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/dependency-injection",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/dependency-injection"
+    ],
+    "references": [
+      "https://dagger.dev/hilt/",
+      "https://developer.android.com/training/dependency-injection/hilt-android",
+      "https://developer.android.com/training/dependency-injection/hilt-jetpack",
+      "https://developer.android.com/jetpack/androidx/releases/hilt"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module"
+    ]
+  },
+  "synced": "635c4c7215cae20a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "setup", "heading": "Setup"},
+    {"part": "prefer-constructor-injection", "heading": "Prefer constructor injection"},
+    {"part": "scope-to-the-right-component", "heading": "Scope to the right component"},
+    {"part": "jetpack-integration", "heading": "Jetpack integration"},
+    {"part": "testing", "heading": "Testing"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

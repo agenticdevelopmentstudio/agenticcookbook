@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "36d29fae-0929-46ef-98d6-d7e8f67aa040",
+    "title": "Transaction isolation and serialization-failure retry",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Choose an isolation level per transaction and retry serialization failures with bounded, idempotent backoff.",
+    "platforms": [],
+    "tags": [
+      "database",
+      "transactions",
+      "concurrency"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/data/transactions-and-concurrency",
+      "agenticdevelopercookbook://principles/idempotency"
+    ],
+    "references": [
+      "https://www.postgresql.org/docs/current/transaction-iso.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "database-operations",
+      "concurrency"
+    ]
+  },
+  "synced": "336e17d32a4dd247",
+  "parts": [
+    {"part": "intro"},
+    {"part": "isolation-levels-and-what-they-prevent", "heading": "Isolation levels and what they prevent"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "choosing-a-level", "heading": "Choosing a level"},
+    {"part": "retry-pattern-pseudocode", "heading": "Retry pattern (pseudocode)"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

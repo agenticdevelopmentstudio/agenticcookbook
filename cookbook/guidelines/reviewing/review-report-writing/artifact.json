@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "22640534-3a5b-4f8a-9f22-500a2dabc7ca",
+    "title": "Writing the Review Report",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/review-report-writing",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Write a review report that leads with a short executive summary, gives each issue a file:line + failure + one-line fix, and prizes precision over volume.",
+    "platforms": [],
+    "tags": [
+      "reviewing",
+      "code-review",
+      "reporting"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/reviewing/conformance-criterion-walk"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "df2e36bd8f40c512",
+  "parts": [
+    {"part": "intro"},
+    {"part": "executive-summary", "heading": "Executive Summary"},
+    {"part": "per-issue-entries", "heading": "Per-Issue Entries"},
+    {"part": "precision-over-volume", "heading": "Precision Over Volume"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

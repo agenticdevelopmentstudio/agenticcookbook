@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "647b7d54-41fc-4f31-96e4-3d23ae49f92b",
+    "title": "PII handling and classification",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/pii-handling",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-07-23",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Classify PII at the schema level, minimize collection, encrypt at rest and in transit, and never write it to logs.",
+    "platforms": [],
+    "tags": [
+      "privacy",
+      "pii",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/security/pii-detection-and-redaction",
+      "agenticdevelopercookbook://guidelines/implementing/security/sensitive-data",
+      "agenticdevelopercookbook://guidelines/implementing/security/secure-storage",
+      "agenticdevelopercookbook://guidelines/implementing/data/data-retention-and-deletion"
+    ],
+    "references": [
+      "https://gdpr-info.eu/art-9-gdpr/",
+      "https://gdpr-info.eu/art-4-gdpr/",
+      "https://www.iso.org/standard/27701",
+      "https://www.nist.gov/privacy-framework"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "data-modeling",
+      "logging",
+      "security-review"
+    ]
+  },
+  "synced": "b438dc16cc58122d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "classify-at-the-schema-level", "heading": "Classify at the schema level"},
+    {"part": "minimize-and-isolate", "heading": "Minimize and isolate"},
+    {"part": "protect-at-rest-and-in-transit", "heading": "Protect at rest and in transit"},
+    {"part": "keep-pii-out-of-logs-and-lower-environments", "heading": "Keep PII out of logs and lower environments"},
+    {"part": "retention-and-deletion", "heading": "Retention and deletion"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "926dff1a-dc12-46a4-b8c1-bdedbc142afd",
+    "title": "Secure Storage",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/security/secure-storage",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Tokens, credentials, and any sensitive data MUST use platform secure storage. Never store secrets in plaintext config files, app settings, or unencrypted preference stores.",
+    "platforms": [
+      "kotlin",
+      "swift",
+      "windows"
+    ],
+    "tags": [
+      "secure-storage",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets",
+      "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.protecteddata"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "security-review",
+      "data-modeling"
+    ]
+  },
+  "synced": "4ac85c08ee6d98c8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "c", "heading": "C#"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

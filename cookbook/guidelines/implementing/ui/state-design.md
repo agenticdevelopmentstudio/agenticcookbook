@@ -1,5 +1,4 @@
 ---
-
 id: 0935bc69-88a9-483e-a3c9-38447d880f45
 title: "State Design"
 domain: agenticdevelopercookbook://guidelines/implementing/ui/state-design
@@ -13,16 +12,16 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Every view that loads data or can be empty must handle all four states explicitly. Never"
-platforms: 
+platforms:
   - typescript
   - web
-tags: 
+tags:
   - state-design
   - ui
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/implementing/ui/always-show-progress
-references: 
+references:
   - https://developer.apple.com/design/human-interface-guidelines/empty-states
   - https://material.io/design/communication/empty-states.html
   - https://www.nngroup.com/articles/empty-state-interface-design/

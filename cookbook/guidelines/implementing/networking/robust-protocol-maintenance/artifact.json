@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8445807b-5d0f-46f7-8024-b02586627779",
+    "title": "Be strict and maintain: Postel reconsidered (RFC 9413)",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/robust-protocol-maintenance",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Parse protocol and API inputs strictly, reject violations loudly, and actively co-evolve spec and implementation instead of tolerating drift.",
+    "platforms": [],
+    "tags": [
+      "protocols",
+      "robustness",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/fail-fast",
+      "agenticdevelopercookbook://principles/parse-dont-validate",
+      "agenticdevelopercookbook://guidelines/implementing/security/input-validation"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc9413"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "api-integration",
+      "input-handling"
+    ]
+  },
+  "synced": "fdee51254f23b756",
+  "parts": [
+    {"part": "intro"},
+    {"part": "why-naive-tolerance-fails-rfc-9413-2023", "heading": "Why naive tolerance fails (RFC 9413, 2023)"},
+    {"part": "rules", "heading": "Rules"},
+    {"part": "strict-core-forgiving-edge-do-not-over-rotate", "heading": "Strict core, forgiving edge — do not over-rotate"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

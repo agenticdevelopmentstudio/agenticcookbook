@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a5228bfe-3caa-444b-9952-52ca5244f829",
+    "title": "Schema evolution and migrations",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/schema-evolution",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pre-deploy migration verification: ensure version tracking, idempotency, sync compatibility, and rollback strategy before shipping schema changes.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "migrations",
+      "schema-evolution",
+      "schema-design",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://sqlite.org/lang_altertable.html",
+      "https://david.rothlis.net/declarative-schema-migration-for-sqlite/",
+      "https://levlaz.org/sqlite-db-migrations-with-pragma-user_version/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "56123181465582e0",
+  "parts": [
+    {"part": "intro"},
+    {"part": "pre-deploy-migration-checklist", "heading": "Pre-deploy migration checklist"},
+    {"part": "backward-compatibility-check", "heading": "Backward compatibility check"},
+    {"part": "sync-compatibility-verification", "heading": "Sync compatibility verification"},
+    {"part": "rollback-strategy", "heading": "Rollback strategy"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

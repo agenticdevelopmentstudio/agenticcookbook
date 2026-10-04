@@ -1,5 +1,4 @@
 ---
-
 id: edf1f288-9cb1-4979-8900-b69d5e33e987
 title: "Sync Protocol"
 domain: agenticdevelopercookbook://guidelines/planning/data/sync-protocol

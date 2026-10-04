@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "2a996577-d417-4b1b-b468-6e93bf1a9b4f",
+    "title": "Skill Structure Reference",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/skill-structure-reference",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reference for Claude Code skill directory layout, frontmatter fields, string substitutions, and invocation control",
+    "platforms": [],
+    "tags": [
+      "skills",
+      "structure",
+      "reference",
+      "frontmatter"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/authoring-skills-and-rules",
+      "agenticdevelopercookbook://guidelines/cookbook/skills-and-agents/skill-checklist"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
+  "synced": "ca1cc3895ddb13fa",
+  "parts": [
+    {"part": "intro"},
+    {"part": "directory-layout", "heading": "Directory Layout"},
+    {"part": "frontmatter-fields", "heading": "Frontmatter Fields"},
+    {"part": "string-substitutions", "heading": "String Substitutions"},
+    {"part": "invocation-control-matrix", "heading": "Invocation Control Matrix"},
+    {"part": "skill-locations-priority-order", "heading": "Skill Locations (Priority Order)"},
+    {"part": "content-types", "heading": "Content Types"},
+    {"part": "key-guidelines", "heading": "Key Guidelines"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

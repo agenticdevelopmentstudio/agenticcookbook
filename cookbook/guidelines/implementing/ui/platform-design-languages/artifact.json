@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3741ed5e-0b67-48f2-b227-36ae152c0f4b",
+    "title": "Platform Design Languages",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/platform-design-languages",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Defer to each platform's canonical design language (Apple HIG, Material Design 3, Fluent 2, WCAG) before applying the defaults here, and use the platform value when it prescribes one.",
+    "platforms": [
+      "kotlin",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "platform-design-languages",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/",
+      "https://fluent2.microsoft.design/",
+      "https://m3.material.io/",
+      "https://www.w3.org/TR/WCAG21/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation",
+      "platform-integration"
+    ]
+  },
+  "synced": "7868675ca3563953",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

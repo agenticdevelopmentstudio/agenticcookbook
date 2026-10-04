@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Run production incidents with defined command roles and severity tiers, then close them with blameless, tracked-to-completion postmortems."
 platforms: []
@@ -23,7 +23,7 @@ related:
 references:
   - https://sre.google/sre-book/managing-incidents/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - pre-pr
 ---

@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "775da457-30c7-47de-b179-0fae8a8b779d",
+    "title": "Linting before the first PR",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/linting",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All projects MUST have linting configured and passing before the first pull request.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "code-quality",
+      "linting"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://eslint.org/",
+      "https://github.com/dotnet/roslynator",
+      "https://github.com/meziantou/Meziantou.Analyzer",
+      "https://github.com/realm/SwiftLint",
+      "https://github.com/swiftlang/swift-format",
+      "https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/",
+      "https://pinterest.github.io/ktlint/",
+      "https://prettier.io/",
+      "https://stylelint.io/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "pre-commit",
+      "new-module"
+    ]
+  },
+  "synced": "ce0f08db0f60d361",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "c", "heading": "C#"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

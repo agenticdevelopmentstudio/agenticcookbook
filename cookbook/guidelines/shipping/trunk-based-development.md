@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Integrate to one shared trunk in small daily increments behind feature flags, keeping trunk releasable instead of trading rigor for long branches."
 platforms: []
@@ -27,7 +27,7 @@ references:
   - https://dora.dev/devops-capabilities/technical/trunk-based-development/
   - https://launchdarkly.com/blog/elite-performance-with-trunk-based-development/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - pre-commit
   - pre-pr

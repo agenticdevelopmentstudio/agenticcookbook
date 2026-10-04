@@ -1,5 +1,4 @@
 ---
-
 id: c90e2ebe-2fbd-4f83-994e-5db46d53f16b
 title: "Primary key strategies"
 domain: agenticdevelopercookbook://guidelines/planning/data/primary-keys

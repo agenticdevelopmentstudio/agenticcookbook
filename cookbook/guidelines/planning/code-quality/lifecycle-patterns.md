@@ -1,5 +1,4 @@
 ---
-
 id: 918c4cec-0bc5-45bf-86d0-5a795053400f
 title: "Lifecycle Patterns"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/lifecycle-patterns
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

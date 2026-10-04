@@ -1,5 +1,4 @@
 ---
-
 id: 5e6161cd-6bab-46b5-a2c5-14de3527b035
 title: "Conflict Resolution"
 domain: agenticdevelopercookbook://guidelines/planning/data/conflict-resolution
@@ -35,7 +34,7 @@ references:
   - https://powersync.com/blog/why-cinapse-moved-away-from-crdts-for-sync
   - https://stack.convex.dev/automerge-and-convex
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - offline-support
   - database-operations

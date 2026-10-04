@@ -1,0 +1,37 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "aadd048b-da52-415d-949f-45160b970381",
+    "title": "Meta-Principle: Optimize for Change",
+    "domain": "agenticdevelopercookbook://principles/meta-principle-optimize-for-change",
+    "type": "principle",
+    "version": "1.1.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Every principle is a strategy for making future change cheaper and safer. When evaluating any technical decision, ask whether it makes future change easier or harder.",
+    "platforms": [],
+    "tags": [
+      "meta-principle-optimize-for-change"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://teamtopologies.com/",
+      "https://teamtopologies.com/news-blogs-newsletters/when-teams-grow-too-large-solving-cognitive-load-issues",
+      "https://kentbeck.com/summaries",
+      "https://martinfowler.com/bliki/TeamTopologies.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10"
+  },
+  "synced": "25d668028b149ba7",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

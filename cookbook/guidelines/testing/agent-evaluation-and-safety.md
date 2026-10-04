@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Gate every agent/LLM release on two checks: a quality eval gate and a safety gate, both run in CI on every model and prompt change."
 platforms: []
@@ -26,7 +26,7 @@ references:
   - https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
   - https://www.nist.gov/itl/ai-risk-management-framework
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - ai-api-integration
   - writing-tests

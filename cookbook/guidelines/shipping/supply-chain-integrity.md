@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Emit an SBOM and signed SLSA provenance per build, then verify both signatures and provenance at deploy time."
 platforms: []
@@ -28,7 +28,7 @@ references:
   - https://cyclonedx.org/specification/overview/
   - https://docs.sigstore.dev/cosign/signing/overview/
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - dependency-management
   - pre-pr

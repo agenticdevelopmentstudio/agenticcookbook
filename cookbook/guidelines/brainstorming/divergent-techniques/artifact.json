@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "17d2fa7e-0a8e-4ce7-96a0-de417db82220",
+    "title": "Divergent Techniques",
+    "domain": "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Concrete generation techniques for the Diverge phase. Goal is volume, variety, and surprise — not quality or feasibility. Feasibility assessment belongs in the Critique phase.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "divergence",
+      "ideation"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://principles/defer-judgment-go-for-quantity",
+      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity",
+      "agenticdevelopercookbook://principles/bridge-distant-domains",
+      "agenticdevelopercookbook://principles/constraints-as-creative-fuel",
+      "agenticdevelopercookbook://principles/break-fixation-deliberately"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/brainstorming/framing-techniques",
+      "agenticdevelopercookbook://guidelines/brainstorming/facilitation-without-anchoring"
+    ],
+    "references": [
+      "Osborn, Applied Imagination, 1953",
+      "IDEO, 7 Simple Rules of Brainstorming",
+      "Eberle, SCAMPER: Games for Imagination Development, 1971",
+      "van Gundy, Techniques of Structured Problem Solving, 1988",
+      "de Bono, Lateral Thinking: Creativity Step by Step, 1970",
+      "Fauconnier & Turner, The Way We Think, 2002",
+      "Mednick, Psychological Review, 1962"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03"
+  },
+  "synced": "baf844df5c1bfaff",
+  "parts": [
+    {"part": "intro"},
+    {"part": "wild-ideation", "heading": "Wild Ideation"},
+    {"part": "distant-analogy", "heading": "Distant Analogy"},
+    {"part": "conceptual-blending", "heading": "Conceptual Blending"},
+    {"part": "surprising-inversion", "heading": "Surprising Inversion"},
+    {"part": "constraint-injection", "heading": "Constraint Injection"},
+    {"part": "reverse-brainstorm", "heading": "Reverse Brainstorm"},
+    {"part": "scamper", "heading": "SCAMPER"},
+    {"part": "random-stimulus", "heading": "Random Stimulus"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

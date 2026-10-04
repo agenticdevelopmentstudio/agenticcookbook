@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "58252326-3716-4bf4-92b9-e678b879f910",
+    "title": "Android navigation in Compose",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/android-navigation",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use type-safe Navigation Compose with serializable routes, single-activity architecture, and hoisted nav state.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "navigation",
+      "compose"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf"
+    ],
+    "references": [
+      "https://developer.android.com/guide/navigation"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "43f501e9c55f8451",
+  "parts": [
+    {"part": "intro"},
+    {"part": "architecture", "heading": "Architecture"},
+    {"part": "default-type-safe-navigation-compose-nav2", "heading": "Default: type-safe Navigation Compose (Nav2)"},
+    {"part": "navigation-3-nav3-newer-option-adopt-deliberately", "heading": "Navigation 3 (Nav3) — newer option, adopt deliberately"},
+    {"part": "state-and-lifecycle", "heading": "State and lifecycle"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

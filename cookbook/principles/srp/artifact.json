@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "9096c8f4-5f89-41cf-b06c-954861117d69",
+    "title": "SRP",
+    "domain": "agenticdevelopercookbook://principles/srp",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-21",
+    "modified": "2026-04-21",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A module should be answerable to one and only one actor. Reason-to-change is a stakeholder, not a concern.",
+    "platforms": [],
+    "tags": [
+      "srp"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-21"
+  },
+  "synced": "ef9a8c8a203f8ac2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

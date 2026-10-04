@@ -28,7 +28,7 @@ references:
   - https://github.com/langchain-ai/open_deep_research
   - https://huggingface.co/blog/open-deep-research
 approved-by: "approve-artifact v1.0.0"
-approved-date: '2026-06-27'
+approved-date: "2026-06-27"
 triggers:
   - research
 ---

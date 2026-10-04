@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "9dae85c5-85ff-4dd1-9bc4-5e923452dba8",
+    "title": "Dynamic Type",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/accessibility/dynamic-type",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Layouts MUST NOT break at larger text sizes. Use Dynamic Type throughout, avoid fixed font sizes, and make custom fonts respond to the bold text accessibility setting.",
+    "platforms": [],
+    "languages": [
+      "swift"
+    ],
+    "tags": [
+      "dynamic-type",
+      "language",
+      "swift"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "accessibility",
+      "ui-implementation"
+    ]
+  },
+  "synced": "43a87679b9be0bde",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

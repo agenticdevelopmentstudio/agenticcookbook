@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Detect, quarantine with an owner and deadline, fix the root cause, then return flaky tests to the gating suite."
 platforms: []
@@ -23,7 +23,7 @@ related:
 references:
   - https://www.thoughtworks.com/insights/blog/quarantine
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - writing-tests
   - pre-pr

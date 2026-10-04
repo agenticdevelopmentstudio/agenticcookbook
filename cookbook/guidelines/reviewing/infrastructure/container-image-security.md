@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-10
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Scan, pin, sign, and slim container images so they ship without known-exploited vulnerabilities, embedded secrets, or root runtimes."
 platforms: []
@@ -28,7 +28,7 @@ references:
   - https://slsa.dev/spec/v1.0/provenance
   - https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-10
+approved-date: "2026-06-10"
 triggers:
   - security-review
   - dependency-management

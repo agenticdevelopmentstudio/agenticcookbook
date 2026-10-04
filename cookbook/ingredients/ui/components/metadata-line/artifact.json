@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d4b2fbc3-d814-44f7-a1cf-b59bd5eeb757",
+    "title": "Metadata Line",
+    "domain": "agenticdevelopercookbook://ingredients/ui/components/metadata-line",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-05",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Compact single-line label combining a leading icon with a text value for displaying metadata",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "component",
+      "metadata-line",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "afe9b831d3fea1e0",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

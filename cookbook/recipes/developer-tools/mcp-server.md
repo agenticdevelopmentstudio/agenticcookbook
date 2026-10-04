@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Compose one or more MCP tools into a working Model Context Protocol server with chosen primitives, transport, capability negotiation, and OAuth resource-server auth"
 platforms:

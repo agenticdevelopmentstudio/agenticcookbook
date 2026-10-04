@@ -1,5 +1,4 @@
 ---
-
 id: 8b9def90-2153-45ba-9dcc-fa2aa3bf745e
 title: "Agent Structure Reference"
 domain: agenticdevelopercookbook://guidelines/implementing/skills-and-agents/agent-structure-reference

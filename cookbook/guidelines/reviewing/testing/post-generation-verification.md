@@ -1,27 +1,26 @@
 ---
-
 id: e45d49c6-f753-4aea-8496-b3bf70297a7d
 title: "Post-generation verification"
 domain: agenticdevelopercookbook://guidelines/reviewing/testing/post-generation-verification
 type: guideline
-version: 1.0.3
+version: 1.0.4
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Every generated artifact MUST be verified:"
-platforms: 
+summary: "Verify every generated artifact: build for all target platforms, run the full test suite, lint, check log output, audit accessibility, and review against platform best practices."
+platforms:
   - ios
   - kotlin
   - typescript
-tags: 
+tags:
   - post-generation-verification
   - testing
 depends-on: []
-related: 
+related:
   - agenticdevelopercookbook://guidelines/implementing/code-quality/linting
 references: []
 approved-by: "approve-artifact v1.0.0"
@@ -48,6 +47,7 @@ If any step fails, the issue MUST be fixed before considering the work complete.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.4 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.3 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |

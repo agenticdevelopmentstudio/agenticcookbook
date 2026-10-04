@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5e6161cd-6bab-46b5-a2c5-14de3527b035",
+    "title": "Conflict Resolution",
+    "domain": "agenticdevelopercookbook://guidelines/planning/data/conflict-resolution",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to choose and implement a conflict resolution strategy for sync: LWW, server-wins, field-level merge, CRDTs, Operational Transformation, and manual conflict queues.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "conflict-resolution",
+      "crdt",
+      "offline-first"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/sync-schema-design.md",
+      "guidelines/data/clock-systems.md"
+    ],
+    "references": [
+      "https://crdt.tech/implementations",
+      "https://thom.ee/blog/crdt-vs-operational-transformation/",
+      "https://github.com/vlcn-io/cr-sqlite",
+      "https://www.pkgpulse.com/guides/yjs-vs-automerge-vs-loro-crdt-libraries-2026",
+      "https://powersync.com/blog/why-cinapse-moved-away-from-crdts-for-sync",
+      "https://stack.convex.dev/automerge-and-convex"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "offline-support",
+      "database-operations"
+    ]
+  },
+  "synced": "823b162f57850a8c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "choose-a-strategy-per-data-type", "heading": "Choose a Strategy Per Data Type"},
+    {"part": "last-write-wins-lww", "heading": "Last-Write-Wins (LWW)"},
+    {"part": "server-wins-vs-client-wins", "heading": "Server-Wins vs Client-Wins"},
+    {"part": "field-level-merge-three-way-merge", "heading": "Field-Level Merge (Three-Way Merge)"},
+    {"part": "crdts-conflict-free-replicated-data-types", "heading": "CRDTs (Conflict-Free Replicated Data Types)"},
+    {"part": "operational-transformation-ot", "heading": "Operational Transformation (OT)"},
+    {"part": "conflict-queues-for-manual-resolution", "heading": "Conflict Queues for Manual Resolution"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

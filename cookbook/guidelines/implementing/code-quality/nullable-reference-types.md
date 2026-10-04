@@ -1,22 +1,21 @@
 ---
-
 id: af8a4221-90b7-434f-b2a4-64c86a072386
 title: "Nullable Reference Types"
 domain: agenticdevelopercookbook://guidelines/implementing/code-quality/nullable-reference-types
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Enable `<Nullable>enable</Nullable>` in all projects. Treat warnings as design signals — `string` means non-null, `st..."
+summary: "Enable nullable reference types in all projects and treat warnings as design signals: string means non-null, string? means nullable. Avoid the null-forgiving operator."
 platforms: []
 languages:
   - csharp
-tags: 
+tags:
   - csharp
   - language
   - nullable-reference-types
@@ -53,6 +52,7 @@ public void Process(string? input)
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

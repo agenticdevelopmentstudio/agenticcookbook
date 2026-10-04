@@ -1,5 +1,4 @@
 ---
-
 id: 746b6b5e-11b9-48f7-a304-4b6755fd7f75
 title: "Interface Cohesion"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/interface-cohesion
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - code-review
   - new-module

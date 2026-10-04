@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b76e80c2-7e24-43cf-b971-5d405e80e748",
+    "title": "Transport Security",
+    "domain": "agenticdevelopercookbook://guidelines/shipping/transport-security",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pre-deploy transport security verification: TLS 1.2+, HSTS enabled, cipher suites audited, certificate pinning validated.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "security",
+      "transport-security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html",
+      "https://datatracker.ietf.org/doc/html/rfc8446",
+      "https://hstspreload.org/",
+      "https://wiki.mozilla.org/Security/Server_Side_TLS"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "networking",
+      "security-review"
+    ]
+  },
+  "synced": "873936291a42d9f0",
+  "parts": [
+    {"part": "intro"},
+    {"part": "pre-deploy-checklist", "heading": "Pre-deploy checklist"},
+    {"part": "verification-tools", "heading": "Verification tools"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

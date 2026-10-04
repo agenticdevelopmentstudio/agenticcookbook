@@ -1,22 +1,21 @@
 ---
-
 id: dca53225-bd2b-4a11-8abb-5226e05de4a7
 title: "No external dependencies in core libraries"
 domain: agenticdevelopercookbook://guidelines/implementing/code-quality/no-external-dependencies-in-core-librari
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "`roadmap_lib` uses the standard library only. Do not add PyYAML, requests, or other third-party packages to core libr..."
+summary: "roadmap_lib uses the standard library only. Do not add PyYAML, requests, or other third-party packages to core library code, so it stays portable and easy to install."
 platforms: []
 languages:
   - python
-tags: 
+tags:
   - language
   - no-external-dependencies-in-core-librari
   - python
@@ -38,6 +37,7 @@ triggers:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

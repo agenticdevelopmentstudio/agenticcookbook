@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Give every agent a runnable pass/fail check it can run on itself, and enforce correctness through deterministic gates rather than prompt text."
 platforms: []
@@ -25,7 +25,7 @@ related:
 references:
   - https://code.claude.com/docs/en/best-practices
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - pre-commit
   - code-review

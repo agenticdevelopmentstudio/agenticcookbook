@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "c4273664-4d26-477b-b778-ac1e9b51f385",
+    "title": "API versioning and deprecation",
+    "domain": "agenticdevelopercookbook://guidelines/planning/networking/api-versioning-and-deprecation",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Evolve APIs additively; when versioning is unavoidable pick one scheme and run a header-driven deprecation lifecycle.",
+    "platforms": [],
+    "tags": [
+      "api",
+      "versioning",
+      "lifecycle"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/planning/networking/api-design",
+      "agenticdevelopercookbook://guidelines/reviewing/networking/observable-behavior-contract"
+    ],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc8594.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "api-integration"
+    ]
+  },
+  "synced": "4e7a35a66f7e7b52",
+  "parts": [
+    {"part": "intro"},
+    {"part": "evolve-additively-first", "heading": "Evolve additively first"},
+    {"part": "choosing-a-versioning-scheme-a-decision-not-a-mandate", "heading": "Choosing a versioning scheme (a decision, not a mandate)"},
+    {"part": "deprecation-lifecycle", "heading": "Deprecation lifecycle"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Keep remote server state in a query/cache layer and UI client state in lightweight local state; never hand-cache server data in a global store."
 platforms:
@@ -26,7 +26,7 @@ related:
 references:
   - https://tanstack.com/query/latest/docs/framework/react/guides/does-this-replace-client-state
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
 ---

@@ -1,5 +1,4 @@
 ---
-
 id: DB63C086-D082-4E20-AACA-154448C42D1D
 title: "SQLite Sync Tooling"
 domain: agenticdevelopercookbook://guidelines/implementing/data/sync-tooling

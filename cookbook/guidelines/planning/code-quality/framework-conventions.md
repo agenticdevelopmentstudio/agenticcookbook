@@ -1,5 +1,4 @@
 ---
-
 id: ef2d2757-132a-403b-8e98-bbeca9c42deb
 title: "Framework Conventions"
 domain: agenticdevelopercookbook://guidelines/planning/code-quality/framework-conventions
@@ -26,7 +25,7 @@ depends-on: []
 related: []
 references: []
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - new-module
   - code-review

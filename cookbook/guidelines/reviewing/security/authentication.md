@@ -1,5 +1,4 @@
 ---
-
 id: 6f1ec998-a286-4177-ac0a-97aa53eccb7e
 title: "Authentication"
 domain: agenticdevelopercookbook://guidelines/reviewing/security/authentication
@@ -13,19 +12,19 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Use OAuth 2.0 / OpenID Connect with PKCE for all public clients. The Implicit flow is"
-platforms: 
+platforms:
   - csharp
   - ios
   - kotlin
   - typescript
   - web
   - windows
-tags: 
+tags:
   - authentication
   - security
 depends-on: []
 related: []
-references: 
+references:
   - https://datatracker.ietf.org/doc/html/rfc7636
   - https://datatracker.ietf.org/doc/html/rfc8252
   - https://openid.net/specs/openid-connect-core-1_0.html

@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "25A3B827-1DA9-4600-98EC-F5C492A162E3",
+    "title": "Schema evolution and migrations",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/schema-evolution",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Migration strategies for SQLite: PRAGMA user_version, ALTER TABLE limitations, the 12-step recreate procedure, and sync-compatible migration rules.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "migrations",
+      "schema-evolution",
+      "schema-design",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md"
+    ],
+    "references": [
+      "https://sqlite.org/lang_altertable.html",
+      "https://david.rothlis.net/declarative-schema-migration-for-sqlite/",
+      "https://levlaz.org/sqlite-db-migrations-with-pragma-user_version/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "78ec6b61b5fe42df",
+  "parts": [
+    {"part": "intro"},
+    {"part": "track-schema-version-with-pragma-user-version", "heading": "Track schema version with PRAGMA user_version"},
+    {"part": "alter-table-limitations", "heading": "ALTER TABLE limitations"},
+    {"part": "the-12-step-recreate-procedure", "heading": "The 12-step recreate procedure"},
+    {"part": "sync-compatible-migration-rules", "heading": "Sync-compatible migration rules"},
+    {"part": "declarative-migration-approach", "heading": "Declarative migration approach"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

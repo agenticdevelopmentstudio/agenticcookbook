@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
+    "title": "Simplicity",
+    "domain": "agenticdevelopercookbook://principles/simplicity",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Simple and easy are not synonyms: simple means no interleaving of concerns. Optimize for simple, not easy, because complexity compounds and kills velocity.",
+    "platforms": [],
+    "tags": [
+      "simplicity"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "a6e254fb33f40ae1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

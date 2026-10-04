@@ -1,22 +1,21 @@
 ---
-
 id: 9dae85c5-85ff-4dd1-9bc4-5e923452dba8
 title: "Dynamic Type"
 domain: agenticdevelopercookbook://guidelines/implementing/accessibility/dynamic-type
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
-summary: "Layouts MUST NOT break at larger text sizes. Use Dynamic Type throughout — avoid fixed font sizes. Custom fonts must ..."
+summary: "Layouts MUST NOT break at larger text sizes. Use Dynamic Type throughout, avoid fixed font sizes, and make custom fonts respond to the bold text accessibility setting."
 platforms: []
 languages:
   - swift
-tags: 
+tags:
   - dynamic-type
   - language
   - swift
@@ -38,6 +37,7 @@ Layouts MUST NOT break at larger text sizes. Use Dynamic Type throughout — avo
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

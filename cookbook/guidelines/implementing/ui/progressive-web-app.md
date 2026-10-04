@@ -9,7 +9,7 @@ language: en
 created: 2026-06-09
 modified: 2026-06-09
 author: Mike Fullerton
-copyright: "2026 Mike Fullerton"
+copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Ship a Web App Manifest plus a service worker with an explicit caching strategy, and account for iOS install/push/storage limits."
 platforms:
@@ -26,7 +26,7 @@ related:
 references:
   - https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
 approved-by: "approve-artifact v1.0.0"
-approved-date: 2026-06-09
+approved-date: "2026-06-09"
 triggers:
   - ui-implementation
   - offline-support

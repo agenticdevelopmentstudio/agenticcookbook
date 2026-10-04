@@ -1,0 +1,35 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a7ce3621-2fed-478f-8767-b186014c5923",
+    "title": "Immutability by default",
+    "domain": "agenticdevelopercookbook://principles/immutability-by-default",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Mutable shared state is the root cause of most concurrency bugs. Default to immutable values and value types; introduce mutability only where necessary, behind clear boundaries.",
+    "platforms": [
+      "kotlin",
+      "swift"
+    ],
+    "tags": [
+      "immutability-by-default"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04"
+  },
+  "synced": "ad4577b4945393bf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

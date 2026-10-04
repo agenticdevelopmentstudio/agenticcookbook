@@ -1,5 +1,4 @@
 ---
-
 id: 34f13883-8905-4b5c-9299-82602687e98d
 title: "Linting from day one"
 domain: agenticdevelopercookbook://guidelines/testing/linting
@@ -13,18 +12,18 @@ author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
 summary: "Run linting as part of your automated test and verification suite — it catches bugs that unit tests miss."
-platforms: 
+platforms:
   - csharp
   - kotlin
   - swift
   - typescript
   - web
-tags: 
+tags:
   - code-quality
   - linting
 depends-on: []
 related: []
-references: 
+references:
   - https://eslint.org/
   - https://github.com/dotnet/roslynator
   - https://github.com/meziantou/Meziantou.Analyzer

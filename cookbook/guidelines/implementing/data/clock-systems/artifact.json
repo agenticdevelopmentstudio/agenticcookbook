@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "3B9FCE69-7541-4F49-81AE-86119096A4D8",
+    "title": "Clock Systems for Sync",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/data/clock-systems",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to choose the right clock system for distributed sync: physical clocks, Lamport timestamps, vector clocks, Hybrid Logical Clocks, and server-assigned monotonic versions.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "clocks",
+      "hlc",
+      "distributed-systems"
+    ],
+    "depends-on": [],
+    "related": [
+      "guidelines/data/sqlite-best-practices.md",
+      "guidelines/data/conflict-resolution.md",
+      "guidelines/data/sync-schema-design.md"
+    ],
+    "references": [
+      "https://sergeiturukin.com/2017/06/26/hybrid-logical-clocks.html",
+      "https://en.wikipedia.org/wiki/Vector_clock",
+      "https://www.yugabyte.com/blog/evolving-clock-sync-for-distributed-databases/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "offline-support",
+      "schema-design"
+    ]
+  },
+  "synced": "903aee45c2d8e3eb",
+  "parts": [
+    {"part": "intro"},
+    {"part": "physical-clocks-wall-time", "heading": "Physical Clocks (Wall Time)"},
+    {"part": "lamport-timestamps", "heading": "Lamport Timestamps"},
+    {"part": "vector-clocks", "heading": "Vector Clocks"},
+    {"part": "hybrid-logical-clocks-hlc", "heading": "Hybrid Logical Clocks (HLC)"},
+    {"part": "server-assigned-monotonic-versions", "heading": "Server-Assigned Monotonic Versions"},
+    {"part": "choosing-the-right-clock", "heading": "Choosing the Right Clock"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

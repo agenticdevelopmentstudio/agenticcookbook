@@ -6,7 +6,7 @@ recipe cites a check as `agenticdevelopercookbook://compliance/<document>#<name>
 `compliance/security#secure-storage` for `security.md`, and
 `compliance/artifact-formatting/recipe-formatting#has-frontmatter` for
 `artifact-formatting/recipe-formatting.md`. Which files count is
-`cookbook.core.markdown.iter_markdown`'s rule, the one every cookbook walk uses,
+`cookr.core.markdown.iter_markdown`'s rule, the one every cookbook walk uses,
 so index, references and template files never define checks.
 
 ./install materialises the catalog into the extract prompt module's references
@@ -21,7 +21,7 @@ import re
 from pathlib import Path
 from typing import Optional
 
-from cookbook.core.markdown import iter_markdown
+from cookr.core.markdown import iter_markdown
 
 CITATION = re.compile(r"agenticdevelopercookbook://compliance/([a-z0-9-]+(?:/[a-z0-9-]+)*)#([a-z0-9-]+)")
 _CHECK = re.compile(r"^###\s+([a-z0-9-]+)\s*$", re.MULTILINE)

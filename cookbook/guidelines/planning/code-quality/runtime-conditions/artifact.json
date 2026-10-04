@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "7b713210-43ee-4f7f-be9e-b096edb782ba",
+    "title": "Runtime Conditions",
+    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/runtime-conditions",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Identify permissions, entitlements, environment checks, and configuration prerequisites that constrain when and where code can execute.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "code-review",
+      "new-module"
+    ]
+  },
+  "synced": "5d93033b99561d35",
+  "parts": [
+    {"part": "intro"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
+    {"part": "boundary-detection", "heading": "Boundary Detection"},
+    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
