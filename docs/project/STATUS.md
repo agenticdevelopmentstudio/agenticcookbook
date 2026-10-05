@@ -75,7 +75,10 @@ zero failing). In particular:
 
 ## Not done — each needs Mike's explicit OK
 
-- **skill-router install and CI** — none done.
+- **skill-router CI** — the repo has no `.github/workflows/`, so its test
+  suite runs on no push or PR. (Install is done: skill-router 0.2.0 is a uv
+  tool installed editable from its main, and its `./install --dry-run` reports
+  nothing to change for Claude and Codex.)
 - **Registering adtoolkit** with the live skill-router registry.
 
 ## Done — adtoolkit recipe conformance (2026-10-04)
