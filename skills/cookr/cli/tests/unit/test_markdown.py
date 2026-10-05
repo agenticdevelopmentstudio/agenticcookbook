@@ -67,6 +67,22 @@ def test_a_child_specs_doc_in_its_parents_folder_is_a_doc(tmp_path):
         "telemetry.md", "telemetry/sources.md", "telemetry/sources/files.md"]
 
 
+def test_an_artifact_doc_grouped_under_a_parents_folder_is_a_doc(tmp_path):
+    folder = tmp_path / "vscode-api"
+    (folder / "languages").mkdir(parents=True)
+    (folder / "hosts").mkdir()
+    (folder / "examples").mkdir()
+    (folder / "artifact.json").write_text('{"parts": [{"part": "intro"}]}', encoding="utf-8")
+    doc = "---\ntype: ingredient\n---\n# Diagnostic Types\n"
+    (folder / "intro.md").write_text("x\n", encoding="utf-8")
+    (folder / "languages" / "diagnostic-types.md").write_text(doc, encoding="utf-8")
+    (folder / "hosts" / "claude.add.md").write_text(doc, encoding="utf-8")
+    (folder / "examples" / "good.md").write_text("x\n", encoding="utf-8")
+    (tmp_path / "vscode-api.md").write_text(doc, encoding="utf-8")
+    assert sorted(f.relative_to(tmp_path).as_posix() for f in iter_markdown(tmp_path)) == [
+        "vscode-api.md", "vscode-api/languages/diagnostic-types.md"]
+
+
 def test_reserved_names(tmp_path):
     assert "skips" in reserved_name("ui/index")
     assert "host additions" in reserved_name("ui/hosts")

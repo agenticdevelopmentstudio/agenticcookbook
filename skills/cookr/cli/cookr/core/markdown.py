@@ -29,16 +29,22 @@ def part_files(folder: Path) -> Optional[set[str]]:
 def in_source_folder(path: Path, root: Path) -> bool:
     """True when `path` is a source folder's own file: a part its manifest
     lists (every `.md` in it, when the manifest is unreadable), or anything in
-    a subdirectory of it that is no spec's, such as `hosts/`. A child spec's
-    doc kept in its parent's folder (`telemetry/sources.md`, and below it
-    `telemetry/sources/…` once `sources.md` exists) is a doc, not a part."""
+    a subdirectory of it that is no spec's, such as `hosts/` or `examples/`. A
+    child spec's doc kept in its parent's folder (`telemetry/sources.md`, and
+    below it `telemetry/sources/…` once `sources.md` exists) is a doc, not a
+    part, and so is an artifact doc grouped in a plain subdirectory of it
+    (`vscode-api/languages/diagnostic-types.md`, with no `languages.md`)."""
     d = path.parent
     if (d / ARTIFACT_FILE).is_file():
         parts = part_files(d)
         return parts is None or path.name in parts
     while d == root or root in d.parents:
         if (d / ARTIFACT_FILE).is_file():
-            return True                       # in a source folder's non-spec subdirectory
+            # In a source folder's non-spec subdirectory: the folder's own
+            # files, unless it is an artifact doc outside `hosts/`.
+            from .artifact import artifact_type_of  # artifact imports this module
+            return (path.relative_to(d).parts[0] == HOSTS_DIR
+                    or artifact_type_of(path) is None)
         if d == root or (d.parent / f"{d.name}.md").is_file():
             return False                      # in a spec's own directory, or nothing's
         d = d.parent
