@@ -44,13 +44,13 @@ Code built with the Agentic Developer Cookbook is **trusted**. That means:
 
 The cookbook contains four types of **cookbook artifacts** — standalone markdown files with YAML frontmatter, named requirements, and change history. Each is stored as a source folder (`<name>/artifact.json` plus one file per section), and the `<name>.md` beside it is compiled from that folder by `cookr compile`:
 
-### Principles (33 files)
+### Principles (44 files)
 
 *How to think about engineering.* Foundational ideas that guide all technical decisions.
 
-Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition over Inheritance, Separation of Concerns, SRP, Connascence, Conway's Law, Design for Deletion, DRY, Explicit over Implicit, Make Illegal States Unrepresentable, Errors as Values, Small Reversible Decisions, Tight Feedback Loops, Manage Complexity Through Boundaries, Least Astonishment, Idempotency, Native Controls, Open Source Preference, Make It Work/Right/Fast, Steel Thread First, Deliberate Prudent Technical Debt, Optimize for Change, Type Precedes Method, Domain-Stratified Trust, Independence Before Corroboration, Provenance at Generation Time, Cite the Claim Not the Document, Suppress Unsupported Confidence.
+Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition over Inheritance, Separation of Concerns, SRP, Connascence, Conway's Law, Design for Deletion, DRY, Explicit over Implicit, Make Illegal States Unrepresentable, Errors as Values, Small Reversible Decisions, Tight Feedback Loops, Manage Complexity Through Boundaries, Least Astonishment, Idempotency, Native Controls, Open Source Preference, Make It Work/Right/Fast, Steel Thread First, Deliberate Prudent Technical Debt, Optimize for Change, Type Precedes Method, Domain-Stratified Trust, Independence Before Corroboration, Provenance at Generation Time, Cite the Claim Not the Document, Suppress Unsupported Confidence; and for ideation, Frame Before You Generate, Diverge Before You Converge, Defer Judgment and Go for Quantity, Human-First Ideation, Keep the Human at the Wheel, Break Fixation Deliberately, Bridge Distant Domains, Constraints as Creative Fuel, Counteract Homogenization with Diversity, Critique Without Killing, Document the Process Not a Conclusion.
 
-### Guidelines (258 unique, 341 with use-case duplicates)
+### Guidelines (258 unique, 351 with use-case duplicates)
 
 *What rules apply when building.* Organized by **use case** — the phase of work where they apply, with [trigger-based filtering](cookbook/introduction/trigger-guide.md) for AI agents:
 
@@ -63,14 +63,16 @@ Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition ov
 | Shipping | 17 | Pre-commit, pre-PR, packaging |
 | Cookbook | 16 | Writing cookbook content (recipes, skills, agents) |
 | Researching | 5 | Gathering, verifying, and recording trustworthy research |
+| Brainstorming | 4 | Running ideation sessions with AI assistance |
+| Storytelling | 6 | Writing narrative and explanatory content |
 
 Guidelines that apply to multiple use cases are duplicated so each use-case directory is self-contained.
 
-### Ingredients (19 files)
+### Ingredients (48 files)
 
 *The building blocks.* Atomic component specs defining individual UI components, panels, or infrastructure patterns with full detail: behavioral requirements, appearance, states, accessibility, configuration options, test vectors, and platform notes. Located in `cookbook/ingredients/`.
 
-### Recipes (12 files)
+### Recipes (13 files)
 
 *How things combine.* Compositions of configured ingredients into coherent features. Define how ingredients wire together: integration requirements, layout, shared state, and integration test vectors. Located in `cookbook/recipes/`.
 
@@ -137,7 +139,7 @@ The cookbook's public-facing website (React 19, TypeScript, Tailwind CSS 4) and 
 ```
 cookbook/                # cookbook content root
   introduction/          # getting started, conventions, glossary
-  principles/            # 33 engineering principles
+  principles/            # 44 engineering principles
   guidelines/            # 258 use-case-organized guidelines
   ingredients/           # atomic component specs (building blocks)
   recipes/               # compositions of ingredients into features

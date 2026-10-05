@@ -11,15 +11,11 @@
 **Rationale**: Phase 1 fixes content before Phase 2 analyzes it (better to compare clean content). Phase 3 needs findings from both prior phases. Running all phases on content that fails basic structural checks wastes resources.
 **Approved**: yes
 
-**Decision**: LLM readability over human readability (no Flesch-Kincaid).
-**Rationale**: Cookbook content is consumed by LLMs, not casual human readers. LLM readability means: explicit, unambiguous, no hedging, consistent terminology, self-contained sections. Traditional readability metrics penalize the precision that LLMs need.
-**Approved**: yes
-
-**Decision**: Fix preference asked before PR submission, default auto-fix.
-**Rationale**: Most contributors want hands-off after submission. Power users who want control can opt into review-each. The choice is per-PR, stored as PR metadata.
-**Approved**: yes
-
 **Decision**: Contributor can appeal rejections by commenting on the PR.
 **Rationale**: Automated review can be wrong. A simple appeal process (comment → human reviews) prevents valid contributions from being permanently blocked by false positives.
+**Approved**: yes
+
+**Decision**: LLM readability over human readability (no Flesch-Kincaid), and fix preference asked before PR submission with a default of auto-fix.
+**Rationale**: These two decisions apply to a single ingredient each and are recorded in full in the PR review phase ingredient (LLM readability) and the PR fix agent ingredient (fix preference).
 **Approved**: yes
 

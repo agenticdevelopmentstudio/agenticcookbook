@@ -3,11 +3,11 @@ id: f9f12465-9f73-40ef-b9f6-d124090781f5
 title: "AI Chat Control"
 domain: agenticdevelopercookbook://ingredients/ui/components/ai-chat-control
 type: ingredient
-version: 1.0.0
+version: 1.1.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -28,8 +28,8 @@ depends-on: []
 related:
   - ingredient.ui.panel.ai-settings-panel
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # AI Chat Control
@@ -40,7 +40,7 @@ A compact, inline chat control for conversing with a configured AI provider. Sup
 
 This spec covers the chat control only — provider configuration (API key, model, endpoint) is managed externally via the AI settings panel (see `ingredient.ui.panel.ai-settings-panel`).
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -297,8 +297,20 @@ Subsystem: `{{bundle_id}}` | Category: `AIChatControl`
 **Rationale**: The primary use case is quick verification of AI configuration. Persistent history adds storage and privacy concerns without matching the use case.
 **Approved**: pending
 
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [screen-reader-support](agenticdevelopercookbook://compliance/accessibility#screen-reader-support) | partial | Accessibility |
+| [string-externalization](agenticdevelopercookbook://compliance/internationalization#string-externalization) | partial | Internationalization |
+| [no-pii-in-logs](agenticdevelopercookbook://compliance/privacy-and-data#no-pii-in-logs) | partial | Privacy |
+| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | partial | Security |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
+
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

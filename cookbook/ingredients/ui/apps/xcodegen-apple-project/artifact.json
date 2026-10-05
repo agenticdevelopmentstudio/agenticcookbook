@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "7DE8CD27-E532-4992-9296-0A6DC1AD1816",
+    "title": "XcodeGen Apple Project",
+    "domain": "agenticdevelopercookbook://ingredients/ui/apps/xcodegen-apple-project",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "XcodeGen-generated project with five standalone SwiftUI app targets and a shared local Swift package",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift"
+    ],
+    "tags": [
+      "apple",
+      "build",
+      "xcodegen"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://ingredients/ui/apps/component-catalog",
+      "agenticdevelopercookbook://recipes/ui/apps/apple"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "380443c0e4f57cf1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

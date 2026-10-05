@@ -1,7 +1,6 @@
 
-- **No categories defined**: The window SHOULD display an empty state message rather than crashing.
-- **Category with no settings**: The content panel SHOULD show a message like "No settings available" rather than a blank panel.
-- **Extremely long category name**: Sidebar SHOULD truncate with ellipsis rather than expanding width.
-- **Many settings in one category**: Content panel scrolls (content-vertical-scroll); performance SHOULD remain smooth with 50+ settings.
-- **Rapid category switching**: Content panel MUST update without flicker or stale content.
+- **Window open while app quits**: The window MUST NOT reopen on next launch, and the saved frame MUST still be available if the user opens it manually (no-auto-reopen, persist-frame-position).
+- **Frame restored off-screen**: If the saved frame is on a display that is no longer attached, the window SHOULD open on a visible display at its saved size, honoring the minimum size.
+- **Shortcut during category switch**: Triggering the shortcut while the content panel is updating MUST bring the existing window to front without resetting the selected category.
+- **Per-document settings open**: The per-document settings sheet MUST NOT be reachable from, or merged into, this window; opening the main settings window MUST NOT dismiss the sheet.
 

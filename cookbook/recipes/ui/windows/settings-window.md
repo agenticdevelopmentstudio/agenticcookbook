@@ -3,11 +3,11 @@ id: 31f97683-8d2e-4203-a155-48cebc1bfb13
 title: "Settings Window"
 domain: agenticdevelopercookbook://recipes/ui/windows/settings-window
 type: recipe
-version: 1.0.0
+version: 2.0.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -24,28 +24,36 @@ tags:
   - settings-window
   - ui
   - window
+ingredients:
+  - agenticdevelopercookbook://ingredients/ui/windows/settings-category-browser
+  - agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence
+  - agenticdevelopercookbook://ingredients/infrastructure/settings-keys
+  - agenticdevelopercookbook://ingredients/infrastructure/logging
+  - agenticdevelopercookbook://ingredients/ui/components/empty-state
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Settings Window
 
 ## Overview
 
-A standard desktop application settings/preferences window. Opens from the conventional menu location via platform-standard keyboard shortcut. Displays setting categories in a sidebar with the corresponding settings panel on the right. Changes apply immediately — no save/apply button.
+The standard desktop settings or preferences window. It opens from the conventional menu location through the platform keyboard shortcut, is single-instance and non-modal, remembers its frame, and never reopens on launch. The Settings Category Browser supplies the sidebar and content panel; window frame persistence, logging, and the settings-keys registry are composed alongside it. Changes apply immediately, with no save or apply button.
 
-## Terminology
+## Ingredients
 
-| Term | Definition |
-|------|-----------|
-| Category | A named group of related settings displayed in the sidebar |
-| Content panel | The right-side area showing settings for the selected category |
-| Frame autosave | Platform mechanism for persisting window position and size between sessions |
+| Name | Domain | Role | Required | Configuration |
+|------|--------|------|----------|---------------|
+| Settings Category Browser | `agenticdevelopercookbook://ingredients/ui/windows/settings-category-browser` | Sidebar categories, content panel, immediate apply, persistence abstraction | Yes | Layout variant per app; first category selected by default |
+| Window Frame Persistence | `agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence` | Remembers window size and position between sessions | Yes | Minimum size 500x400pt |
+| Settings Keys | `agenticdevelopercookbook://ingredients/infrastructure/settings-keys` | Central registry of setting keys | Yes | Keys in an enum or struct of static constants |
+| Logging | `agenticdevelopercookbook://ingredients/infrastructure/logging` | Logger for window-level events | Yes | Category `SettingsWindow` |
+| Empty State | `agenticdevelopercookbook://ingredients/ui/components/empty-state` | Message shown when no categories are defined | No | Strings `settings.no_categories`, `settings.no_settings` |
 
-## Behavioral Requirements
+## Integration Requirements
 
 - **platform-keyboard-open**: The window MUST open via the platform-standard keyboard shortcut:
   - macOS: `⌘,` from the app menu (app name menu), labeled "Settings…" (macOS 13+) or "Preferences…" (older)
@@ -56,144 +64,94 @@ A standard desktop application settings/preferences window. Opens from the conve
 - **no-auto-reopen**: The window MUST NOT reopen automatically on app launch, even if it was open when the app was last quit.
 - **persist-frame-position**: The window MUST remember its size and position between sessions using the platform's standard frame autosave mechanism.
 - **resizable-min-size**: The window MUST be resizable with a minimum size of 500×400pt.
-- **immediate-apply**: Setting changes MUST take effect immediately when the user interacts with the control. There MUST NOT be an "Apply" or "Save" button.
-- **sidebar-category-list**: The sidebar MUST display a vertical list of category names. The first category MUST be selected by default.
-- **category-content-update**: Selecting a category MUST update the content panel to show that category's settings.
-- **content-vertical-scroll**: The content panel MUST scroll vertically if its content exceeds the panel height.
-- **abstract-persistence**: Settings MUST be read from and written to a persistence layer. The storage backend SHOULD be abstracted behind an interface so it can be swapped without changing consumers. Common backends:
-  - macOS/iOS: `UserDefaults` / `@AppStorage` (default), or SQLite for apps that need migration-safe structured storage
-  - Windows: Registry or app config file
-  - Web/Electron: `localStorage` or `electron-store`
-  - Note: apps MAY migrate from one backend to another (e.g., UserDefaults → SQLite) — see `settings-keys.md` for key preservation during migration
 - **centralized-keys**: Settings keys MUST be centralized in an enum or struct of static constants (e.g., `SettingsKeys.general.startupBehavior`). This prevents key duplication and typos across the app.
 - **per-document-settings**: Apps with documents or projects SHOULD support per-document settings in addition to app-wide settings. Per-document settings MUST be presented as a sheet (not mixed into the main settings window), typically triggered by a toolbar gear button.
-- **form-section-layout**: The content panel SHOULD use `Form` with `Section` blocks for grouping related settings with clear section headers.
+- **browser-fills-window**: The Settings Category Browser MUST fill the window content area, and the window MUST NOT add controls outside it, so the window stays free of Apply or Save buttons.
+- **keys-through-registry**: The browser's persistence layer MUST read and write setting keys declared through the `settings-keys` ingredient.
+- **frame-through-ingredient**: Frame saving and restoring MUST be performed by the `window-frame-persistence` ingredient, keyed to the settings window, and MUST NOT depend on any category selection.
+- **log-window-events**: Window open, front, close, and frame-saved events MUST use the `logging` ingredient with category `SettingsWindow`.
 
-## Appearance
+## Layout
 
 ```
+ App menu > Settings...  (platform shortcut)
+        |
+        v
 ┌──────────────────────────────────────────────┐
-│ Settings                                     │
+│ Settings                         (min 500×400)│
 ├────────────┬─────────────────────────────────┤
-│            │                                 │
+│ Sidebar    │  Content panel                  │
 │ General    │  Setting Label         [control]│
 │ Appearance │  Setting Label         [control]│
 │ Advanced   │  Setting Label         [control]│
-│            │                                 │
-│            │                                 │
-│            │                                 │
-│            │                                 │
 ├────────────┴─────────────────────────────────┤
 ```
 
-- **Layout variant — Sidebar** (default, for 4+ categories): Horizontal split view — sidebar on left, content panel on right
-- **Layout variant — Tab bar** (for fewer categories or per platform convention): Horizontal tab bar at top, content panel below. Use when there are fewer than 5 categories or when the platform convention prefers tabs (e.g., macOS System Settings pre-Ventura). This is a **Design Decision** — document which variant is chosen.
-- **Sidebar width**: Fixed or narrow resizable range (150–220pt)
-- **Sidebar selection**: Platform-native selection highlight
-- **Content layout**: Labeled rows — label on left, control on right. Group related settings with section headers.
-- **Controls**: Native controls only — toggles, dropdowns/pickers, sliders, text fields, steppers
-- **Category icons**: Optional — whether to show icons alongside category names is a **Design Decision** that MUST be approved by the user
+The sidebar and content panel are the Settings Category Browser; the title bar, frame, and instance behavior belong to the window. The sidebar and content layout variants are defined by the browser's Appearance section.
 
-## States
+### Composed states
 
 | State | Behavior |
 |-------|----------|
 | No window open | Menu item and keyboard shortcut are enabled |
 | Window open, shortcut triggered | Existing window brought to front (single-instance-enforce) |
-| Category selected | Content panel updates to show that category's settings (category-content-update) |
 | Window resized | Frame saved automatically for next open (persist-frame-position) |
 | App quit with window open | Window does not reopen on next launch (no-auto-reopen) |
-| Setting changed | Change persisted and applied immediately (immediate-apply) |
 
-## Accessibility
+## Shared State
 
-- **keyboard-sidebar-nav**: The sidebar list MUST be navigable via keyboard (arrow keys to move selection, Return/Space to confirm).
-- **tab-focus-transfer**: Tab key MUST move focus between the sidebar and content panel controls.
-- **control-accessible-labels**: All setting controls MUST have accessible labels.
-- **announce-category-name**: VoiceOver/screen reader MUST announce the selected category name when selection changes.
+| State | Source | Consumer | Direction | Mechanism |
+|---|---|---|---|---|
+| Setting values | Settings Category Browser controls | Persistence layer, rest of the app | two-way | Written immediately through settings-keys constants |
+| Window frame | Window | Window Frame Persistence | two-way | Platform frame autosave |
+| Window instance | Window controller | Menu item and shortcut handler | one-way | Existing instance is brought to front instead of creating another |
+| Selected category | Settings Category Browser | Content panel | one-way | Not persisted across launches |
 
-## Conformance Test Vectors
+## Integration Test Vectors
 
 | ID | Requirements | Input | Expected |
 |----|-------------|-------|----------|
 | settings-001 | single-instance-enforce | Open settings window, trigger shortcut again | Window count remains 1, existing window is key/front |
 | settings-002 | no-auto-reopen | Open settings, quit app, relaunch | Settings window is not visible after relaunch |
 | settings-003 | persist-frame-position | Open settings, resize to 600×500 at (100,200), close, reopen | Window opens at 600×500 at (100,200) |
-| settings-004 | immediate-apply | Toggle a boolean setting | Setting value in persistence layer matches new state immediately |
-| settings-005 | sidebar-category-list | Open settings window | First category in list is selected, content panel shows its settings |
-| settings-006 | category-content-update | Select second category | Content panel updates to show second category's settings |
 | settings-007 | resizable-min-size | Attempt to resize window below 500×400 | Window does not shrink below minimum |
-| settings-008 | keyboard-sidebar-nav | Focus sidebar, press Down arrow | Selection moves to next category |
-| settings-009 | tab-focus-transfer | Press Tab from sidebar | Focus moves to first control in content panel |
+| settings-010 | log-window-events, single-instance-enforce | Trigger the shortcut while the window is open | Log contains `SettingsWindow: already open, brought to front` |
+| settings-011 | keys-through-registry, immediate-apply | Toggle a setting | The value is written under the key declared in the settings-keys registry |
+| settings-012 | browser-fills-window | Inspect the open window | No Apply or Save control is present anywhere in the window |
 
 ## Edge Cases
 
-- **No categories defined**: The window SHOULD display an empty state message rather than crashing.
-- **Category with no settings**: The content panel SHOULD show a message like "No settings available" rather than a blank panel.
-- **Extremely long category name**: Sidebar SHOULD truncate with ellipsis rather than expanding width.
-- **Many settings in one category**: Content panel scrolls (content-vertical-scroll); performance SHOULD remain smooth with 50+ settings.
-- **Rapid category switching**: Content panel MUST update without flicker or stale content.
-
-## Logging
-
-Subsystem: `{{bundle_id}}` | Category: `SettingsWindow`
-
-| Event | Level | Message |
-|-------|-------|---------|
-| Window opened | debug | `SettingsWindow: opened` |
-| Window brought to front | debug | `SettingsWindow: already open, brought to front` |
-| Window closed | debug | `SettingsWindow: closed` |
-| Category selected | debug | `SettingsWindow: selected category "{{name}}"` |
-| Setting changed | debug | `SettingsWindow: changed "{{key}}" from "{{oldValue}}" to "{{newValue}}"` |
-| Frame saved | debug | `SettingsWindow: frame saved ({{x}}, {{y}}, {{width}}×{{height}})` |
-
-## Deep Linking
-
-| Platform | URL Pattern | Behavior |
-|----------|-------------|----------|
-| Apple | `{{app_scheme}}://settings` or `{{app_scheme}}://settings/{{category}}` | Opens settings window, optionally navigates to a specific category |
-| Windows | Command-line flag `--settings` or `--settings={{category}}` | Opens settings on launch |
-| Web/Electron | `/settings` or `/settings/{{category}}` | Routes to settings view |
-
-## Localization
-
-| String Key | Default (en) | Context |
-|-----------|-------------|---------|
-| `settings.window_title` | Settings | Window title bar |
-| `settings.no_categories` | No settings categories available | Empty state when no categories defined |
-| `settings.no_settings` | No settings available | Empty state when a category has no settings |
-| `settings.select_category` | Select a Category | Placeholder in detail panel before selection |
-
-All category names and setting labels MUST also be localizable — they are app-specific and defined at implementation time.
-
-## Accessibility Options
-
-| Option | Behavior |
-|--------|----------|
-| Reduce Motion | Sidebar selection change updates content panel instantly (no slide transition) |
-| Reduce Transparency | Sidebar and content panel use opaque backgrounds |
-| Increase Contrast | Sidebar selection highlight and control borders use higher-contrast colors |
-| VoiceOver / TalkBack | Category list announces selection, setting labels and values announced, state changes announced |
-
-## Privacy
-
-- **Data collected**: User preferences (setting values only)
-- **Storage**: Platform standard persistence (`UserDefaults`, registry, `localStorage`) — on-device only
-- **Transmission**: None — settings do not leave the device
-- **Retention**: Persisted until user changes or app is uninstalled
+- **Window open while app quits**: The window MUST NOT reopen on next launch, and the saved frame MUST still be available if the user opens it manually (no-auto-reopen, persist-frame-position).
+- **Frame restored off-screen**: If the saved frame is on a display that is no longer attached, the window SHOULD open on a visible display at its saved size, honoring the minimum size.
+- **Shortcut during category switch**: Triggering the shortcut while the content panel is updating MUST bring the existing window to front without resetting the selected category.
+- **Per-document settings open**: The per-document settings sheet MUST NOT be reachable from, or merged into, this window; opening the main settings window MUST NOT dismiss the sheet.
 
 ## Platform Notes
 
-- **SwiftUI (macOS)**: Use `NavigationSplitView` with `.navigationSplitViewStyle(.balanced)`. Register `⌘,` via `Settings` scene (preferred) or `.commands` modifier with `CommandGroup(replacing: .appSettings)`. For single-instance enforcement, use `Window` scene with `defaultPosition` and `handlesExternalEvents`. Use `@AppStorage` with centralized `SettingsKeys` constants for binding settings. Use `Form { Section("Header") { ... } }` for content panel layout. Frame autosave via `SceneStorage` or `WindowGroup(id:)`. For per-document settings, present `ProjectSettingsView` as `.sheet(isPresented:)` from a toolbar gear button.
-- **Compose (Windows)**: Use `Window` with `rememberWindowState()` for position/size persistence. Use a `Row` with a `LazyColumn` sidebar and content panel. Store settings in a preferences file. Register `Ctrl+,` via `MenuBar` and keyboard shortcut handler.
-- **React/Electron (Desktop)**: Use a `BrowserWindow` with `show: false` initially. Track instance to prevent duplicates. Use CSS Grid or Flexbox for the split layout. Persist settings in `electron-store` or `localStorage`. Register shortcut via `globalShortcut` or menu accelerator.
+- **SwiftUI (macOS)**: Register `⌘,` via the `Settings` scene (preferred) or the `.commands` modifier with `CommandGroup(replacing: .appSettings)`. For single-instance enforcement, use a `Window` scene with `defaultPosition` and `handlesExternalEvents`. Frame autosave via `SceneStorage` or `WindowGroup(id:)`. For per-document settings, present `ProjectSettingsView` as `.sheet(isPresented:)` from a toolbar gear button.
+- **Compose (Windows)**: Use `Window` with `rememberWindowState()` for position and size persistence. Register `Ctrl+,` via `MenuBar` and a keyboard shortcut handler.
+- **React/Electron (Desktop)**: Use a `BrowserWindow` with `show: false` initially. Track the instance to prevent duplicates. Register the shortcut via `globalShortcut` or a menu accelerator.
 
 ## Design Decisions
 
-_None yet — decisions made during implementation should be recorded here._
+**Decision**: Compose the window from a dedicated category-browser ingredient plus frame persistence, settings keys, and logging, rather than one monolithic window spec.
+**Rationale**: The browser is reusable inside other hosts (sheets, inspectors); window-level concerns stay separate.
+**Approved**: pending
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility) | partial | Accessibility |
+| [structured-logging](agenticdevelopercookbook://guidelines/implementing/observability/logging) | partial | Observability |
+| [state-design](agenticdevelopercookbook://guidelines/implementing/ui/state-design) | partial | Best Practices |
+| [lifecycle-patterns](agenticdevelopercookbook://guidelines/planning/code-quality/lifecycle-patterns) | partial | Best Practices |
+
+> Status is `partial`: this recipe specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the recipe level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-10-04 | Mike Fullerton | Restructured into recipe shape: composes settings-category-browser with frame persistence, settings keys, and logging |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

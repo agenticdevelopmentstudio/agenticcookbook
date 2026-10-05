@@ -5,11 +5,11 @@
     "title": "Settings Keys",
     "domain": "agenticdevelopercookbook://ingredients/infrastructure/settings-keys",
     "type": "ingredient",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-05",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,16 +29,14 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "bc984bf3f4aff3ee",
+  "synced": "e2845b2170bddf0d",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "terminology", "heading": "Terminology"},
     {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "reference-key-set", "heading": "Reference Key Set"},
     {"part": "appearance", "heading": "Appearance"},
     {"part": "states", "heading": "States"},
     {"part": "accessibility", "heading": "Accessibility"},
@@ -48,6 +46,7 @@
     {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -5,11 +5,11 @@
     "title": "Schema evolution and migrations",
     "domain": "agenticdevelopercookbook://guidelines/implementing/data/schema-evolution",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,14 +34,14 @@
       "https://david.rothlis.net/declarative-schema-migration-for-sqlite/",
       "https://levlaz.org/sqlite-db-migrations-with-pragma-user_version/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "78ec6b61b5fe42df",
+  "synced": "0e09cfd28c1e4085",
   "parts": [
     {"part": "intro"},
     {"part": "track-schema-version-with-pragma-user-version", "heading": "Track schema version with PRAGMA user_version"},

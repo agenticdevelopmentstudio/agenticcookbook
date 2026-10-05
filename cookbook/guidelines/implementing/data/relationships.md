@@ -3,11 +3,11 @@ id: 246D87C8-213A-4DE1-9452-6E683D3D75E3
 title: "Relationship patterns"
 domain: agenticdevelopercookbook://guidelines/implementing/data/relationships
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-04-06
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -28,14 +28,16 @@ related:
 references:
   - https://teddysmith.io/sql-trees/
   - https://www.bytebase.com/blog/database-design-patterns/
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-06"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 triggers:
   - database-operations
   - schema-design
 ---
 
 # Relationship patterns
+
+Model one-to-many, many-to-many, polymorphic, self-referential and tree relationships with the pattern whose tradeoffs fit the data, using SQLite's foreign keys deliberately.
 
 ## One-to-many
 
@@ -209,6 +211,7 @@ Tradeoff: O(n²) worst-case storage and complex insert/delete maintenance.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Add the statement under the title (or align the title line) that the guideline format requires |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-04-06 | Mike Fullerton | Initial version |

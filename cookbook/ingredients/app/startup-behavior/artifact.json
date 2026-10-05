@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "EE72734E-2CFF-41BE-9D1A-813B64AA0FD2",
+    "title": "Startup Behavior",
+    "domain": "agenticdevelopercookbook://ingredients/app/startup-behavior",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "User-configurable startup behavior (new window, restore session, or nothing) with untitled-window suppression",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "app",
+      "lifecycle",
+      "startup"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://ingredients/app/session-restore",
+      "agenticdevelopercookbook://recipes/app/lifecycle"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "1365cf6aeca64f91",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

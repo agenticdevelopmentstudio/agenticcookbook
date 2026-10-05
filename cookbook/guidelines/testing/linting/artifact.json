@@ -5,11 +5,11 @@
     "title": "Linting from day one",
     "domain": "agenticdevelopercookbook://guidelines/testing/linting",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,14 +38,14 @@
       "https://prettier.io/",
       "https://stylelint.io/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04",
     "triggers": [
       "pre-commit",
       "new-module"
     ]
   },
-  "synced": "9df7f974ebba8ad2",
+  "synced": "22ed7b44c6ad66f6",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-run", "heading": "When to run"},

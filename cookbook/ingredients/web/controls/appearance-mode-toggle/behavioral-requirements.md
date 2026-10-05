@@ -37,3 +37,7 @@
 - **sync-on-toggle**: When the user clicks the toggle, the CSS class (e.g., `dark` on `<html>`) MUST be applied synchronously — before the framework re-renders. This prevents a visible flash between the old and new appearance. Do NOT rely on a state change triggering a separate effect to update the class; apply it in the same function that handles the click.
 - **sync-on-system-change**: When the always-on listener fires a system appearance change (and the mode is `auto`), the CSS class MUST also be applied synchronously in the listener callback, not deferred to an effect.
 
+### Flash Prevention
+
+- **no-fouc**: The page MUST NOT flash the wrong appearance on load. An inline `<script>` in `<head>` (before any stylesheet or framework code) MUST read the stored forced mode from site settings and apply the appropriate CSS class to `<html>` synchronously. If no forced mode is stored, it MUST check `prefers-color-scheme` and apply the matching class. This script MUST be wrapped in try/catch so a settings read failure defaults to no class (light mode).
+

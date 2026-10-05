@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5546B9AD-B8B4-4973-817E-B3BC4F090618",
+    "title": "Child Process Cleanup",
+    "domain": "agenticdevelopercookbook://ingredients/app/child-process-cleanup",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Tracks child process handles and terminates them on quit with SIGHUP to the process group and a SIGKILL timeout fallback",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "app",
+      "lifecycle",
+      "processes"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://ingredients/app/startup-behavior",
+      "agenticdevelopercookbook://recipes/app/lifecycle"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "25ebe8962ad0a3f1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

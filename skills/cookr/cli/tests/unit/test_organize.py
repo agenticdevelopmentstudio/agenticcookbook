@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+from pathlib import Path
 
 import pytest
 
@@ -26,6 +27,10 @@ from cookr.core.organize import (
     rewrite_references,
     validate,
 )
+
+
+# cookbook.schema.json in this repo: tests/unit -> tests -> cli -> cookr -> skills -> root
+SCHEMA = Path(__file__).resolve().parents[5] / "cookbook" / "reference" / "cookbook.schema.json"
 
 
 def _cfg(repo):
@@ -308,6 +313,16 @@ def test_apply_moves_rewrites_and_writes_the_manifest(legacy_repo):
     assert manifest["type"] == "cookbook"
     assert manifest["code"] == data["code"]
     assert sorted(manifest["platforms"]) == ["apple", "web"]
+
+
+def test_apply_writes_a_structure_the_schema_allows(legacy_repo):
+    _init_git(legacy_repo)
+    apply(_plan(legacy_repo), legacy_repo, author="Test Author <test@example.com>", day="2026-09-25")
+    manifest = json.loads((legacy_repo / "cookbook" / "cookbook.json").read_text(encoding="utf-8"))
+    schema = json.loads((SCHEMA).read_text(encoding="utf-8"))
+    allowed = set(schema["$defs"]["structural-element"]["properties"])
+    assert manifest["structure"] == {"kind": "library"}
+    assert set(manifest["structure"]) <= allowed
 
 
 def test_apply_bumps_a_moved_recipe_that_already_has_a_version(legacy_repo):

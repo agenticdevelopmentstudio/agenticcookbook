@@ -1,13 +1,6 @@
 
-- **Last session closed by user**: When the user closes the last session, the empty state is displayed. A new session is NOT automatically created — auto-creation only occurs on initial `onAppear` when the session list is empty. The user must click the "+" button or "New Session" to create a new session.
 - **Profile deleted while in use**: If the active profile is a custom profile that gets deleted while a standalone terminal window is open, the window MUST fall back to Solarized Dark immediately (per color-profile fallback-to-default). Terminal colors update without reparenting.
-- **Multiple standalone terminal windows**: Each window has its own `SessionManager` instance. Opening N standalone terminal windows results in N independent session managers. Menu commands dispatch to the focused window's session manager via `.focusedObject()`.
 - **Standalone window and project window open simultaneously**: Both function independently. Changing the active color profile affects all terminal views across both window types (since profile ID is stored in `@AppStorage`, a global setting).
-- **Window restored after crash**: Session manager MUST NOT attempt to restore PTY sessions from a previous run. Sessions are ephemeral. On relaunch, the window opens with no sessions, and the `onAppear` auto-creation logic creates a fresh default session.
-- **Rapid window open/close**: `terminateAll()` MUST complete cleanly. PTY file descriptors MUST be closed. No zombie processes should remain.
-- **Window opened with no shell available**: Falls back to `/bin/zsh` per terminal-pane edge case (shell not found). The standalone terminal window does not add additional fallback logic beyond what terminal-pane provides.
-- **Very many sessions in one window (50+)**: Session list MUST remain scrollable and performant (delegated to terminal-pane edge case handling).
 - **Frame persistence for multiple standalone windows**: All standalone terminal windows share the autosave name `"terminal-window"`. This means only one window's frame is persisted. If multiple standalone windows are needed with independent frame persistence, a future revision MAY introduce per-window identifiers.
 - **visionOS window placement**: On visionOS, the system manages window placement. Frame persistence (persist-window-frame) is a no-op on visionOS. Minimum size constraints still apply.
-- **focusedObject not set**: If menu commands fire before any standalone terminal window is focused, the system's `FocusedValues` will not contain a session manager. Menu commands MUST be disabled when no session manager is available in the focused values.
 

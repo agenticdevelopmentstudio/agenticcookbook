@@ -5,11 +5,11 @@
     "title": "Relationship patterns",
     "domain": "agenticdevelopercookbook://guidelines/planning/data/relationships",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,14 +34,14 @@
       "https://teddysmith.io/sql-trees/",
       "https://www.bytebase.com/blog/database-design-patterns/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "b61734b7352b9ca9",
+  "synced": "7a4840c9628b76d6",
   "parts": [
     {"part": "intro"},
     {"part": "one-to-many", "heading": "One-to-many"},

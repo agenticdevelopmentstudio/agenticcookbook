@@ -3,11 +3,11 @@ id: 24eb3821-0f66-4acf-bff0-5797982bb60d
 title: "AI Settings Panel"
 domain: agenticdevelopercookbook://ingredients/ui/panels/ai-settings-panel
 type: ingredient
-version: 1.0.0
+version: 1.1.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -27,21 +27,21 @@ depends-on: []
 related:
   - ingredient.ui.component.ai-chat-control
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # AI Settings Panel
 
 ## Overview
 
-A settings panel for configuring AI/LLM provider integration. Appears as a category within the settings window (see `settings-window.md`). This spec covers both the settings UI and the provider interface pattern.
+A settings panel for configuring AI/LLM provider integration. Appears as a category within the settings window (see the Settings Window recipe, `agenticdevelopercookbook://recipes/ui/windows/settings-window`). This spec covers both the settings UI and the provider interface pattern.
 
 The panel follows the interface-first pattern (Rules 17-19): settings are stored locally, the actual AI provider is injected via protocol/interface. The settings panel configures which provider, model, and credentials to use. The application consumes AI capabilities exclusively through the `AIProvider` protocol — the settings panel is the configuration surface, not the integration point.
 
 This is BOTH a settings UI spec AND an interface design for AI integration. The UI configures preferences; the interface abstracts the provider. They are decoupled by design — the panel writes configuration, and the provider factory reads it to construct the active provider.
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -81,7 +81,7 @@ This is BOTH a settings UI spec AND an interface design for AI integration. The 
 - **non-sensitive-storage-tiers**: Non-sensitive AI settings (provider, model, endpoint URL, timeout, enable toggle) follow the settings window storage tier:
   - **Simple**: `UserDefaults` / `@AppStorage` (macOS/iOS), `SharedPreferences` / `DataStore` (Android), `localStorage` (Web)
   - **Complex**: SQLite or equivalent structured database — appropriate for apps that already use SQLite for other persistence, need migration-safe schema changes, or store settings alongside relational data
-  - Either tier is conformant. The choice SHOULD be consistent with the app's overall settings storage strategy (see `settings-window.md` abstract-persistence).
+  - Either tier is conformant. The choice SHOULD be consistent with the app's overall settings storage strategy (see the `abstract-persistence` requirement of `agenticdevelopercookbook://ingredients/ui/windows/settings-category-browser`).
 - **no-key-in-logs**: API keys MUST NOT appear in any log output, crash reports, analytics events, or debug panel displays — even at debug level.
 - **masked-key-display**: The API key field MUST NOT be pre-populated with the full key value when revisiting the panel. It SHOULD display a masked placeholder (e.g., "••••••••••••abcd" showing only the last 4 characters) if a key is stored, or be empty if no key is stored.
 
@@ -121,9 +121,9 @@ This is BOTH a settings UI spec AND an interface design for AI integration. The 
 - **auto-test-debounce**: The panel SHOULD automatically trigger a connection test when the provider, API key, or endpoint changes — with a debounce of 2 seconds after the last change. Implementations MAY defer this to a manual "Test" action.
 - **async-connection-test**: The connection test MUST NOT block the UI. It MUST run asynchronously.
 
-## AI Provider Interface Pattern
+### AI Provider Interface Pattern
 
-### Protocol definition
+#### Protocol definition
 
 The `AIProvider` protocol defines the contract for all AI provider implementations. The settings panel configures WHICH provider is active and supplies credentials. Application code consumes AI capabilities exclusively through this interface.
 
@@ -144,7 +144,7 @@ CompletionOptions {
 }
 ```
 
-### Implementations
+#### Implementations
 
 - **claude-provider-impl**: A `ClaudeProvider` implementation MUST exist for the Anthropic API.
 - **openai-provider-impl**: An `OpenAIProvider` implementation MUST exist for the OpenAI API.
@@ -295,6 +295,37 @@ With Custom provider selected, the Endpoint section appears above Quick Chat:
 
 This ingredient has no configurable options.
 
+## Accessibility Options
+
+| Option | Behavior |
+|--------|----------|
+| Reduce Motion | Connection test spinner uses a static "testing..." label instead of animation |
+| Reduce Transparency | Section backgrounds use opaque fills |
+| Increase Contrast | Status dots use higher-contrast colors; disabled controls use 0.3 opacity instead of 0.4 |
+| Differentiate Without Color | Status indicator includes an icon alongside the dot: checkmark (connected), xmark (disconnected), minus (untested) |
+| VoiceOver / TalkBack | All controls announced with labels and states; secure field announced as password field; status announced with full context |
+| Bold Text | Labels respond to Dynamic Type bold setting |
+
+## Feature Flags
+
+| Flag Key | Default | Description |
+|----------|---------|-------------|
+| `ai.enabled` | `false` | Master gate for all AI features across the app |
+| `ai.dynamic_models` | `true` | Whether to attempt dynamic model list fetching |
+| `ai.custom_provider` | `true` | Whether the Custom provider option is available |
+
+## Privacy
+
+- **Data collected**: Provider selection, model selection, endpoint URL, timeout preference, connection status. API key (credential).
+- **Sensitive data**: API keys are classified as sensitive credentials.
+- **Storage**:
+  - API keys: Platform secure storage ONLY (Keychain, EncryptedSharedPreferences, HttpOnly cookies). See secure-key-storage, no-insecure-key-storage.
+  - Non-sensitive preferences (provider, model, endpoint URL, timeout, enable toggle): Either simple tier (UserDefaults / SharedPreferences / localStorage) or complex tier (SQLite) — see non-sensitive-storage-tiers.
+  - Connection status: In-memory only, not persisted.
+- **Transmission**: API keys are transmitted only to the configured provider endpoint over TLS/HTTPS. They are never sent to analytics, crash reporting, or any other service.
+- **Retention**: Preferences persist until the user changes them or the app is uninstalled. API keys persist in secure storage until explicitly removed by the user or app uninstall.
+- **Logging**: API keys MUST NOT appear in any log output (no-key-in-logs). Provider names and connection results are logged at debug level.
+
 ## Logging
 
 Subsystem: `{{bundle_id}}` | Category: `AISettingsPanel`
@@ -322,49 +353,31 @@ Subsystem: `{{bundle_id}}` | Category: `AISettingsPanel`
 
 **Critical logging rule**: API key values MUST NEVER appear in log output at any level. Log messages reference the provider name or key existence, never the key value.
 
-## Accessibility Options
-
-| Option | Behavior |
-|--------|----------|
-| Reduce Motion | Connection test spinner uses a static "testing..." label instead of animation |
-| Reduce Transparency | Section backgrounds use opaque fills |
-| Increase Contrast | Status dots use higher-contrast colors; disabled controls use 0.3 opacity instead of 0.4 |
-| Differentiate Without Color | Status indicator includes an icon alongside the dot: checkmark (connected), xmark (disconnected), minus (untested) |
-| VoiceOver / TalkBack | All controls announced with labels and states; secure field announced as password field; status announced with full context |
-| Bold Text | Labels respond to Dynamic Type bold setting |
-
-## Privacy
-
-- **Data collected**: Provider selection, model selection, endpoint URL, timeout preference, connection status. API key (credential).
-- **Sensitive data**: API keys are classified as sensitive credentials.
-- **Storage**:
-  - API keys: Platform secure storage ONLY (Keychain, EncryptedSharedPreferences, HttpOnly cookies). See secure-key-storage, no-insecure-key-storage.
-  - Non-sensitive preferences (provider, model, endpoint URL, timeout, enable toggle): Either simple tier (UserDefaults / SharedPreferences / localStorage) or complex tier (SQLite) — see non-sensitive-storage-tiers.
-  - Connection status: In-memory only, not persisted.
-- **Transmission**: API keys are transmitted only to the configured provider endpoint over TLS/HTTPS. They are never sent to analytics, crash reporting, or any other service.
-- **Retention**: Preferences persist until the user changes them or the app is uninstalled. API keys persist in secure storage until explicitly removed by the user or app uninstall.
-- **Logging**: API keys MUST NOT appear in any log output (no-key-in-logs). Provider names and connection results are logged at debug level.
-
 ## Platform Notes
 
 - **SwiftUI (macOS / iOS / visionOS)**: Implement as a `Form` with `Section` groups inside the settings window's content panel. Use `SecureField` for the API key. Store the API key via `KeychainAccess` or direct Security framework calls (`SecItemAdd`, `SecItemCopyMatching`). Non-sensitive settings use either `@AppStorage` (simple tier) or SQLite via the app's database manager (complex tier) — see non-sensitive-storage-tiers. For the provider picker, use `Picker` with `.pickerStyle(.menu)`. Status dot: `Circle().fill(color).frame(width: 8, height: 8)`. Connection test: use `async/await` with `Task` and `withTaskCancellationHandler` for debounce. Dynamic model fetch: `URLSession` with `JSONDecoder`. Timeout: use `URLRequest.timeoutInterval`. For the enable/disable dimming, apply `.disabled(!isAIEnabled)` and `.opacity(isAIEnabled ? 1.0 : 0.4)` to the sections below the toggle.
 - **Compose (Android)**: Use `Column` with `Card` sections. API key field: `OutlinedTextField` with `visualTransformation = PasswordVisualTransformation()`. Store key via `EncryptedSharedPreferences` from `androidx.security.crypto`. Non-sensitive settings in `DataStore` or `SharedPreferences`. Provider picker: `ExposedDropdownMenuBox`. Status dot: `Canvas` with `drawCircle`. Connection test: `viewModelScope.launch` with `withTimeout`. Debounce with `Flow.debounce(2000)`. Disable controls via `enabled = isAIEnabled` parameter and alpha modifier.
 - **React / Web**: Use a form with `<select>` for pickers, `<input type="password">` for API key. API key storage: send to a server endpoint that stores in an HttpOnly secure cookie or server-side encrypted store — NEVER use `localStorage` or `sessionStorage` for API keys. Non-sensitive settings: `localStorage`. Status dot: `<span>` with CSS `border-radius: 50%` and background color. Connection test: `fetch` with `AbortController` for timeout and cancellation. Debounce: `setTimeout`/`clearTimeout` or a utility like `lodash.debounce`.
 
-## Feature Flags
-
-| Flag Key | Default | Description |
-|----------|---------|-------------|
-| `ai.enabled` | `false` | Master gate for all AI features across the app |
-| `ai.dynamic_models` | `true` | Whether to attempt dynamic model list fetching |
-| `ai.custom_provider` | `true` | Whether the Custom provider option is available |
-
 ## Design Decisions
 
 **UI-stub implementation**: The initial implementation from scratching-post is UI-only — settings are stored via `@AppStorage` but no actual AI provider calls are wired up. The `AIProvider` protocol, concrete provider implementations (Claude, OpenAI, Local), connection testing, and dynamic model fetching are all spec-only requirements awaiting implementation. The settings UI is functional and persists values, but the values are not consumed by any AI integration code yet.
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [secure-storage](agenticdevelopercookbook://compliance/security#secure-storage) | partial | Security |
+| [secure-transport](agenticdevelopercookbook://compliance/security#secure-transport) | partial | Security |
+| [consent-before-collection](agenticdevelopercookbook://compliance/privacy-and-data#consent-before-collection) | partial | Privacy |
+| [keyboard-navigable](agenticdevelopercookbook://compliance/accessibility#keyboard-navigable) | partial | Accessibility |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-10-04 | Mike Fullerton | Retarget settings-window reference to the settings-category-browser ingredient |
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -5,11 +5,11 @@
     "title": "Normalization and denormalization",
     "domain": "agenticdevelopercookbook://guidelines/planning/data/normalization-and-denormalization",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,14 +34,14 @@
       "https://blog.bytebytego.com/p/database-schema-design-simplified",
       "https://maximeblanc.fr/blog/sqlite-json-and-denormalization"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "9441ef719eef5d28",
+  "synced": "cb39bb18d76b6144",
   "parts": [
     {"part": "intro"},
     {"part": "default-start-normalized-3nf", "heading": "Default: start normalized (3NF)"},

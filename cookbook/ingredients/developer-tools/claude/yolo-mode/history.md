@@ -1,4 +1,5 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-30 | Mike Fullerton | Initial creation |

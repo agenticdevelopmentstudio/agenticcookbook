@@ -5,11 +5,11 @@
     "title": "Claude Rule Optimization Pipeline",
     "domain": "agenticdevelopercookbook://recipes/developer-tools/claude/claude-rule-optimization-pipeline",
     "type": "recipe",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-30",
-    "modified": "2026-06-09",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,6 +26,11 @@
       "context-efficiency",
       "pipeline"
     ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-audit",
+      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-optimizer",
+      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-validation-report"
+    ],
     "depends-on": [],
     "related": [
       "agenticdevelopercookbook://ingredients/developer-tools/claude/yolo-mode",
@@ -34,29 +39,20 @@
     "references": [
       "https://code.claude.com/docs/en/best-practices"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
   "names_hosts": "Specifies a pipeline that optimizes Claude Code rule files: the host is the subject.",
-  "synced": "7ebed1ce2a182395",
+  "synced": "4a27d51dd429a8f1",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "pipeline-outcomes", "heading": "Pipeline Outcomes"},
-    {"part": "metrics", "heading": "Metrics"},
-    {"part": "appearance", "heading": "Appearance"},
-    {"part": "states", "heading": "States"},
-    {"part": "accessibility", "heading": "Accessibility"},
-    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
-    {"part": "deep-linking", "heading": "Deep Linking"},
-    {"part": "localization", "heading": "Localization"},
-    {"part": "accessibility-options", "heading": "Accessibility Options"},
-    {"part": "feature-flags", "heading": "Feature Flags"},
-    {"part": "analytics", "heading": "Analytics"},
-    {"part": "privacy", "heading": "Privacy"},
-    {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
     {"part": "compliance", "heading": "Compliance"},

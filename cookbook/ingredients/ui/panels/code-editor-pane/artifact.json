@@ -5,11 +5,11 @@
     "title": "Code Editor Pane",
     "domain": "agenticdevelopercookbook://ingredients/ui/panels/code-editor-pane",
     "type": "ingredient",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-05",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,14 +31,13 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "883b88a836217394",
+  "synced": "70965929f6b66120",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "terminology", "heading": "Terminology"},
     {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
     {"part": "appearance", "heading": "Appearance"},
     {"part": "states", "heading": "States"},
@@ -46,11 +45,12 @@
     {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
     {"part": "configuration", "heading": "Configuration"},
-    {"part": "logging", "heading": "Logging"},
     {"part": "accessibility-options", "heading": "Accessibility Options"},
-    {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "privacy", "heading": "Privacy"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

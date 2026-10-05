@@ -3,11 +3,11 @@ id: C8B92187-7C2F-4D11-9AB3-EC806F3CDF26
 title: "Normalization and denormalization"
 domain: agenticdevelopercookbook://guidelines/implementing/data/normalization-and-denormalization
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-04-06
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -28,14 +28,16 @@ references:
   - https://sqleditor.online/blog/sqlite-schema-design-patterns
   - https://blog.bytebytego.com/p/database-schema-design-simplified
   - https://maximeblanc.fr/blog/sqlite-json-and-denormalization
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-06"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 triggers:
   - database-operations
   - schema-design
 ---
 
 # Normalization and denormalization
+
+Start every schema normalized (3NF) and denormalize only the hotspots you have measured, keeping any denormalized copy safe to sync.
 
 ## Default: start normalized (3NF)
 
@@ -136,6 +138,7 @@ END;
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Add the statement under the title (or align the title line) that the guideline format requires |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-04-06 | Mike Fullerton | Initial version |

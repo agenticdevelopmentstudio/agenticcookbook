@@ -3,11 +3,11 @@ id: 00000000-0000-0000-0000-000000000001
 title: "Agentic Developer Cookbook"
 domain: agenticdevelopercookbook://index
 type: reference
-version: 4.2.0
+version: 4.3.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-21
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -110,8 +110,12 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 |----------|-------------|
 | [UI Components](ingredients/ui/components/) | Leaf building blocks — ai-chat-control, collapsible-pane-header, color-profile, empty-state, git-status-indicator, metadata-line, status-bar |
 | [Panels](ingredients/ui/panels/) | Content panes — ai-settings-panel, code-editor-pane, debug-panel, file-tree-browser, inspector-panel, terminal-pane |
-| [Infrastructure](ingredients/infrastructure/) | Non-visual patterns — logging, settings-keys, window-frame-persistence |
-| [Developer Tools](ingredients/developer-tools/) | Claude Code workarounds — yolo-mode; MCP building blocks — mcp-tool |
+| [Windows](ingredients/ui/windows/) | Window bodies — project-split-layout, settings-category-browser, terminal-window-shell, workspace-browser, workspace-document |
+| [Apps](ingredients/ui/apps/) | App scaffolding — xcodegen-apple-project, component-catalog |
+| [App-Level](ingredients/app/) | Lifecycle and menus — startup-behavior, session-restore, child-process-cleanup, creation-menu-commands, document-creation-flow |
+| [Infrastructure](ingredients/infrastructure/) | Non-visual patterns — logging, settings-keys, window-frame-persistence; directory sync — directory-tree-cache, directory-tree-scanner, filesystem-watcher, directory-watch-coordinator; package documents — package-document-type, package-document-storage, sqlite-helpers; AI processing — job-worker, llm-backend, categorize-and-tag-handler |
+| [Autonomous Dev Bots](ingredients/autonomous-dev-bots/) | PR review phases — pr-review-phase, pr-scope-phase, pr-evaluate-phase, pr-fix-agent |
+| [Developer Tools](ingredients/developer-tools/) | Claude Code workarounds — yolo-mode; rule optimization — rule-audit, rule-optimizer, rule-validation-report; MCP building blocks — mcp-tool |
 | [Web Controls](ingredients/web/) | Web UI controls — appearance-mode-toggle |
 
 ## Recipes
@@ -188,6 +192,7 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 4.3.0 | 2026-10-04 | Mike Fullerton | List the 29 ingredients extracted when recipes became ingredient compositions |
 | 4.2.0 | 2026-04-21 | Mike Fullerton | Add DRY and SRP principles |
 | 4.1.0 | 2026-04-09 | Mike Fullerton | Add trigger system, top-10 shortlist, AI guidelines; recategorize 20→12 |
 | 4.0.0 | 2026-04-09 | Mike Fullerton | Reorganize guidelines by use case (planning, implementing, testing, reviewing, shipping, cookbook) |

@@ -5,11 +5,11 @@
     "title": "Workspace Window",
     "domain": "agenticdevelopercookbook://recipes/ui/windows/workspace-window",
     "type": "recipe",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-03-27",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -24,27 +24,34 @@
       "window",
       "workspace-window"
     ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/ui/windows/workspace-browser",
+      "agenticdevelopercookbook://ingredients/ui/windows/workspace-document",
+      "agenticdevelopercookbook://ingredients/ui/components/empty-state",
+      "agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence",
+      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+    ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/directory-sync"
+    ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "8f8b026b7eef0bbd",
+  "synced": "bb295915dd052c9b",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "terminology", "heading": "Terminology"},
-    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "appearance", "heading": "Appearance"},
-    {"part": "states", "heading": "States"},
-    {"part": "accessibility", "heading": "Accessibility"},
-    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
-    {"part": "logging", "heading": "Logging"},
-    {"part": "accessibility-options", "heading": "Accessibility Options"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

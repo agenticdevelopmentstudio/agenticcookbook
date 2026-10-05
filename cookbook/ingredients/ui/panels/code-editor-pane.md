@@ -3,11 +3,11 @@ id: 954e559c-e2bf-494c-a37e-de0b88bec89a
 title: "Code Editor Pane"
 domain: agenticdevelopercookbook://ingredients/ui/panels/code-editor-pane
 type: ingredient
-version: 1.0.0
+version: 1.1.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -27,8 +27,8 @@ tags:
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Code Editor Pane
@@ -37,7 +37,7 @@ approved-date: "2026-04-04"
 
 A text editor pane for viewing and editing source code files with syntax highlighting, line numbers, minimap, dirty state tracking, and auto-save. Loads file contents asynchronously and provides language-aware editing via CodeEditSourceEditor on Apple platforms. Derived from scratching-post FileEditorView and EditorState.
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -273,6 +273,23 @@ A text editor pane for viewing and editing source code files with syntax highlig
 
 This ingredient has no configurable options.
 
+## Accessibility Options
+
+| Option | Behavior |
+|--------|----------|
+| Reduce Motion | Pane collapse/expand transitions are instant (per collapsible-pane-header) |
+| Increase Contrast | Editor uses higher-contrast syntax theme variant; gutter separator more prominent |
+| Differentiate Without Color | Syntax highlighting uses bold/italic/underline styles in addition to color to differentiate token types |
+| VoiceOver | Editor text navigable by character/word/line; header announces filename, modified state, and collapse state; placeholders announced per empty-state requirements |
+| Dynamic Type | Editor font size SHOULD respect the system font size preference while maintaining monospaced rendering |
+
+## Privacy
+
+- **Data collected**: File contents are loaded into memory for editing. No content is transmitted off-device.
+- **Storage**: File contents are persisted only to their original file path on save. No copies or caches are created.
+- **Transmission**: None — file content never leaves the device.
+- **Retention**: Editor content exists in memory only for the lifetime of the editing session. Closing the file releases memory.
+
 ## Logging
 
 Subsystem: `{{bundle_id}}` | Category: `CodeEditorPane`
@@ -298,16 +315,6 @@ Subsystem: `{{bundle_id}}` | Category: `CodeEditorPane`
 | Editor recreated | debug | `CodeEditorPane: editor recreated (loadGeneration={{generation}})` |
 | Large file warning | warning | `CodeEditorPane: "{{filename}}" is {{size}}MB — may impact performance` |
 
-## Accessibility Options
-
-| Option | Behavior |
-|--------|----------|
-| Reduce Motion | Pane collapse/expand transitions are instant (per collapsible-pane-header) |
-| Increase Contrast | Editor uses higher-contrast syntax theme variant; gutter separator more prominent |
-| Differentiate Without Color | Syntax highlighting uses bold/italic/underline styles in addition to color to differentiate token types |
-| VoiceOver | Editor text navigable by character/word/line; header announces filename, modified state, and collapse state; placeholders announced per empty-state requirements |
-| Dynamic Type | Editor font size SHOULD respect the system font size preference while maintaining monospaced rendering |
-
 ## Platform Notes
 
 - **SwiftUI (macOS)**: Use `CodeEditSourceEditor` (from the CodeEditSourceEditor package) as the primary editor component, wrapped in an `NSViewRepresentable` if needed. Set language via `CodeLanguage` enum mapped from file extension. Configure: `lineNumbers: true`, `minimap: true`, `wrapLines: false`, font: `NSFont.monospacedSystemFont(ofSize: 13, weight: .regular)` or `NSFont(name: "Menlo", size: 13)`. Theme: use `EditorTheme` conforming types — CatnipDark and CatnipLight — switching based on `@Environment(\.colorScheme)`. Bind editor text to `EditorState.content` as a `Binding<String>`. Use `.id(editorState.loadGeneration)` on the editor view to force recreation when a new file loads. Dirty state tracking: subscribe to `editorState.$content` via Combine, debounce 0.3s, compare to `lastSavedContent` snapshot. Save: use `Data(content.utf8).write(to: fileURL, options: .atomic)` or `String.write(to:atomically:encoding:)`. Auto-save: in the file-selection `onChange` handler, call `save()` if `isModified` before loading the new file. Cmd+S: register via `.keyboardShortcut("s", modifiers: .command)` on a hidden button or via the `commands` modifier on the scene. Pane header: use collapsible-pane-header with the filename as title and a file-type SF Symbol as the icon.
@@ -315,19 +322,24 @@ Subsystem: `{{bundle_id}}` | Category: `CodeEditorPane`
 - **Compose (Android)**: Use a code editor library such as CodeView or Sora Editor. Configure syntax highlighting via language grammars. Line numbers and minimap depend on library capabilities. Dirty state tracking via `MutableState<String>` observation. Save with `File.writeText()` using `createTempFile` + `renameTo` for atomic writes. Auto-save triggered in `onDispose` or selection-change callback.
 - **Web (React)**: Use Monaco Editor or CodeMirror 6. Monaco provides built-in language support, minimap, line numbers, and theme switching. Bind editor value to React state. Dirty tracking via `onChange` callback comparing to saved snapshot. Save via backend API or File System Access API. Cmd+S / Ctrl+S intercepted via `editor.addCommand` or `onKeyDown` handler. Theme: configure `vs-dark` / `vs` based on `prefers-color-scheme` media query.
 
-## Privacy
-
-- **Data collected**: File contents are loaded into memory for editing. No content is transmitted off-device.
-- **Storage**: File contents are persisted only to their original file path on save. No copies or caches are created.
-- **Transmission**: None — file content never leaves the device.
-- **Retention**: Editor content exists in memory only for the lifetime of the editing session. Closing the file releases memory.
-
 ## Design Decisions
 
 _None yet — decisions made during implementation should be recorded here._
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [main-thread-freedom](agenticdevelopercookbook://compliance/performance#main-thread-freedom) | partial | Performance |
+| [data-integrity](agenticdevelopercookbook://compliance/reliability#data-integrity) | partial | Reliability |
+| [keyboard-navigable](agenticdevelopercookbook://compliance/accessibility#keyboard-navigable) | partial | Accessibility |
+| [screen-reader-support](agenticdevelopercookbook://compliance/accessibility#screen-reader-support) | partial | Accessibility |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

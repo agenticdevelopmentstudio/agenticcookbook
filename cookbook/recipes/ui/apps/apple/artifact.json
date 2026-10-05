@@ -5,11 +5,11 @@
     "title": "Apple Test App Suite",
     "domain": "agenticdevelopercookbook://recipes/ui/apps/apple",
     "type": "recipe",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-03-27",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -25,29 +25,30 @@
       "apps",
       "ui"
     ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/ui/apps/xcodegen-apple-project",
+      "agenticdevelopercookbook://ingredients/ui/apps/component-catalog",
+      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+    ],
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "2714b2bc93c2ed38",
+  "synced": "73062adc6af179e4",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "terminology", "heading": "Terminology"},
-    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "data-structures", "heading": "Data Structures"},
-    {"part": "appearance", "heading": "Appearance"},
-    {"part": "states", "heading": "States"},
-    {"part": "accessibility", "heading": "Accessibility"},
-    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
-    {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
-    {"part": "build-run-and-verify", "heading": "Build, Run, and Verify"},
-    {"part": "prerequisites", "heading": "Prerequisites"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

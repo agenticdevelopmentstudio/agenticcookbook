@@ -3,11 +3,11 @@ id: 39676af7-b0b9-48f2-8056-f0c8e8754ffc
 title: "Settings Keys"
 domain: agenticdevelopercookbook://ingredients/infrastructure/settings-keys
 type: ingredient
-version: 1.0.0
+version: 1.1.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -25,17 +25,17 @@ tags:
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Settings Keys
 
 ## Overview
 
-A centralized settings key registry that prevents key duplication, typos, and scattered string literals. All UserDefaults/SharedPreferences/localStorage keys are defined in one place with a structured naming convention. Every setting read or written anywhere in the app MUST reference a constant from this registry rather than an inline string. This is the implementation pattern for settings-window.md centralized-keys.
+A centralized settings key registry that prevents key duplication, typos, and scattered string literals. All UserDefaults/SharedPreferences/localStorage keys are defined in one place with a structured naming convention. Every setting read or written anywhere in the app MUST reference a constant from this registry rather than an inline string. This is the implementation pattern for the `centralized-keys` requirement of the Settings Window recipe (`agenticdevelopercookbook://recipes/ui/windows/settings-window`).
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -68,42 +68,6 @@ A centralized settings key registry that prevents key duplication, typos, and sc
 
 - **use-registry-constants**: All reads and writes to the persistence layer MUST use a constant from the key registry. Code review SHOULD reject any raw string literal used as a settings key.
 - **importable-from-modules**: The key registry MUST be importable from any module that needs to read or write settings.
-
-## Reference Key Set
-
-The following keys are extracted from the scratching-post reference implementation and represent the minimum initial key set:
-
-### general
-
-| Constant Name | Key String | Type | Description |
-|--------------|-----------|------|-------------|
-| `startupBehavior` | `general.startupBehavior` | String | What to show on app launch (e.g., welcome, last project) |
-| `defaultShellPath` | `general.defaultShellPath` | String | Path to the default shell executable |
-| `newSessionDefault` | `general.newSessionDefault` | String | Default session type for new terminals |
-| `reopenProjectsOnLaunch` | `general.reopenProjectsOnLaunch` | Bool | Whether to restore open projects on launch |
-| `openProjectURLs` | `general.openProjectURLs` | [String] | List of project URLs to reopen |
-| `maxScanWorkers` | `general.maxScanWorkers` | Int | Maximum concurrent file scan workers |
-
-### ai
-
-| Constant Name | Key String | Type | Description |
-|--------------|-----------|------|-------------|
-| `enabled` | `ai.enabled` | Bool | Whether AI features are enabled |
-| `provider` | `ai.provider` | String | AI service provider identifier |
-| `apiKey` | `ai.apiKey` | String | API key for the AI provider |
-| `model` | `ai.model` | String | AI model name/identifier |
-
-### profiles
-
-| Constant Name | Key String | Type | Description |
-|--------------|-----------|------|-------------|
-| `activeProfileID` | `profiles.activeProfileID` | String (UUID) | ID of the currently active color profile |
-
-### settings
-
-| Constant Name | Key String | Type | Description |
-|--------------|-----------|------|-------------|
-| `sidebarWidth` | `settings.sidebarWidth` | Double | Width of the settings window sidebar in points |
 
 ## Appearance
 
@@ -142,6 +106,42 @@ Not applicable — this component has no visual or interactive surface.
 ## Configuration
 
 This ingredient has no configurable options.
+
+### Reference Key Set
+
+The following keys are extracted from the scratching-post reference implementation and represent the minimum initial key set:
+
+#### general
+
+| Constant Name | Key String | Type | Description |
+|--------------|-----------|------|-------------|
+| `startupBehavior` | `general.startupBehavior` | String | What to show on app launch (e.g., welcome, last project) |
+| `defaultShellPath` | `general.defaultShellPath` | String | Path to the default shell executable |
+| `newSessionDefault` | `general.newSessionDefault` | String | Default session type for new terminals |
+| `reopenProjectsOnLaunch` | `general.reopenProjectsOnLaunch` | Bool | Whether to restore open projects on launch |
+| `openProjectURLs` | `general.openProjectURLs` | [String] | List of project URLs to reopen |
+| `maxScanWorkers` | `general.maxScanWorkers` | Int | Maximum concurrent file scan workers |
+
+#### ai
+
+| Constant Name | Key String | Type | Description |
+|--------------|-----------|------|-------------|
+| `enabled` | `ai.enabled` | Bool | Whether AI features are enabled |
+| `provider` | `ai.provider` | String | AI service provider identifier |
+| `apiKey` | `ai.apiKey` | String | API key for the AI provider |
+| `model` | `ai.model` | String | AI model name/identifier |
+
+#### profiles
+
+| Constant Name | Key String | Type | Description |
+|--------------|-----------|------|-------------|
+| `activeProfileID` | `profiles.activeProfileID` | String (UUID) | ID of the currently active color profile |
+
+#### settings
+
+| Constant Name | Key String | Type | Description |
+|--------------|-----------|------|-------------|
+| `sidebarWidth` | `settings.sidebarWidth` | Double | Width of the settings window sidebar in points |
 
 ## Logging
 
@@ -206,8 +206,19 @@ Subsystem: `{{bundle_id}}` | Category: `SettingsKeys`
 
 _None yet — decisions made during implementation should be recorded here._
 
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [separation-of-concerns](agenticdevelopercookbook://compliance/best-practices#separation-of-concerns) | partial | Best Practices |
+| [state-recovery](agenticdevelopercookbook://compliance/reliability#state-recovery) | partial | Reliability |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
+
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-10-04 | Mike Fullerton | Retarget centralized-keys reference to the settings-window recipe URI |
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

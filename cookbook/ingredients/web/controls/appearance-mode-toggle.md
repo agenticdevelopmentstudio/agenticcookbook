@@ -3,11 +3,11 @@ id: e01e2c5f-32fd-49e3-8f2a-1f64411160cb
 title: "Appearance Mode Toggle"
 domain: agenticdevelopercookbook://ingredients/web/controls/appearance-mode-toggle
 type: ingredient
-version: 1.1.0
+version: 1.2.0
 status: accepted
 language: en
 created: 2026-03-30
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -25,8 +25,8 @@ related: []
 references:
   - https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
   - https://web.dev/articles/color-scheme
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Appearance Mode Toggle
@@ -37,7 +37,7 @@ A three-mode toggle button that cycles between automatic, forced dark, and force
 
 This recipe is intentionally agnostic about how site settings are stored. The consuming site provides its own persistence mechanism ("site settings") — localStorage, cookies, a database, or any other store. The recipe specifies what to read, write, and clear, but not where.
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -48,10 +48,42 @@ This recipe is intentionally agnostic about how site settings are stored. The co
 | Forced mode | Either `dark` or `light` — an explicit override of the system appearance |
 | System theme state | A cached copy of the current system appearance, kept in sync by an always-on listener |
 
-## Assumptions
+### Assumptions
 
 - **site-settings-exist**: The site has a mechanism for storing user settings. This recipe does not specify what that mechanism is — only what values to store and when to clear them.
 - **css-class-driven**: The site applies appearance via a CSS class (e.g., `dark` on `<html>`) or equivalent mechanism. This recipe does not specify the CSS architecture.
+
+### Architecture
+
+The implementation consists of three layers:
+
+#### 1. Inline script (`<head>`)
+
+Runs before any CSS or JS framework loads. Reads the forced mode from site settings, applies the `dark` class if needed. Prevents FOUC.
+
+#### 2. System theme tracker (always-on)
+
+A `matchMedia` listener that runs from mount until unmount, regardless of mode. It maintains a `systemTheme` state variable (`'dark'` or `'light'`). This is the single source of truth for what the OS is currently set to.
+
+#### 3. Mode state + resolver
+
+The `mode` state (`'auto'` | `'dark'` | `'light'`) determines which appearance to apply:
+- `auto` → use `systemTheme`
+- `dark` → use `'dark'`
+- `light` → use `'light'`
+
+The resolved theme is a derived value, not independent state. When `mode` or `systemTheme` changes, the resolved theme updates automatically.
+
+```
+matchMedia listener ──► systemTheme (always current)
+                              │
+mode === 'auto' ──────────────┤──► resolved = systemTheme
+mode === 'dark' ──────────────┤──► resolved = 'dark'
+mode === 'light' ─────────────┘──► resolved = 'light'
+                                        │
+                                        ▼
+                              document.classList.toggle('dark')
+```
 
 ## Behavioral Requirements
 
@@ -93,14 +125,9 @@ This recipe is intentionally agnostic about how site settings are stored. The co
 - **sync-on-toggle**: When the user clicks the toggle, the CSS class (e.g., `dark` on `<html>`) MUST be applied synchronously — before the framework re-renders. This prevents a visible flash between the old and new appearance. Do NOT rely on a state change triggering a separate effect to update the class; apply it in the same function that handles the click.
 - **sync-on-system-change**: When the always-on listener fires a system appearance change (and the mode is `auto`), the CSS class MUST also be applied synchronously in the listener callback, not deferred to an effect.
 
-## Icons
+### Flash Prevention
 
-- **dark-mode-icon**: The forced dark mode MUST display a moon icon.
-- **light-mode-icon**: The forced light mode MUST display a sun icon.
-- **auto-mode-icon-base**: In `auto` mode, the icon MUST be the same sun or moon icon that matches the current system appearance (moon if system is dark, sun if system is light).
-- **auto-mode-indicator**: In `auto` mode, a small sync/refresh badge (circular arrows) MUST appear in the bottom-right corner of the button, overlapping the base icon slightly. The badge MUST be roughly half the size of the base icon (e.g., if the icon is 20px, the badge is ~10px). It MUST be tinted in the site's highlight/accent color. The base icon underneath MUST remain fully visible and unchanged — the badge is a corner annotation, not a full overlay.
-- **auto-indicator-no-full-overlay**: The auto indicator MUST NOT be rendered at the same size as the base icon or centered over it. A full-size overlay obscures the sun/moon and makes the mode unreadable. The indicator is a small corner badge only.
-- **icon-size-consistent**: All three modes MUST render their base icons at the same size. The auto indicator badge MUST NOT cause the button to grow or shift layout.
+- **no-fouc**: The page MUST NOT flash the wrong appearance on load. An inline `<script>` in `<head>` (before any stylesheet or framework code) MUST read the stored forced mode from site settings and apply the appropriate CSS class to `<html>` synchronously. If no forced mode is stored, it MUST check `prefers-color-scheme` and apply the matching class. This script MUST be wrapped in try/catch so a settings read failure defaults to no class (light mode).
 
 ## Appearance
 
@@ -108,6 +135,15 @@ This recipe is intentionally agnostic about how site settings are stored. The co
 - **Icon size**: Match the site's standard icon size for header controls
 - **Hover**: Text/icon transitions to primary color
 - **Auto indicator**: Small badge (~half icon size) in the bottom-right corner, accent/highlight color, not a full overlay
+
+### Icons
+
+- **dark-mode-icon**: The forced dark mode MUST display a moon icon.
+- **light-mode-icon**: The forced light mode MUST display a sun icon.
+- **auto-mode-icon-base**: In `auto` mode, the icon MUST be the same sun or moon icon that matches the current system appearance (moon if system is dark, sun if system is light).
+- **auto-mode-indicator**: In `auto` mode, a small sync/refresh badge (circular arrows) MUST appear in the bottom-right corner of the button, overlapping the base icon slightly. The badge MUST be roughly half the size of the base icon (e.g., if the icon is 20px, the badge is ~10px). It MUST be tinted in the site's highlight/accent color. The base icon underneath MUST remain fully visible and unchanged — the badge is a corner annotation, not a full overlay.
+- **auto-indicator-no-full-overlay**: The auto indicator MUST NOT be rendered at the same size as the base icon or centered over it. A full-size overlay obscures the sun/moon and makes the mode unreadable. The indicator is a small corner badge only.
+- **icon-size-consistent**: All three modes MUST render their base icons at the same size. The auto indicator badge MUST NOT cause the button to grow or shift layout.
 
 ## States
 
@@ -133,42 +169,6 @@ This recipe is intentionally agnostic about how site settings are stored. The co
   - Light: `"Light mode — click for auto"`
 - **no-color-only**: The mode MUST NOT be conveyed by color alone. The icon shape (sun vs moon) and the presence/absence of the badge indicator distinguish the three modes.
 - **focus-ring**: The button MUST show a visible focus ring when focused via keyboard (`focus-visible`). Use the site's accent color for the ring.
-
-## Flash Prevention
-
-- **no-fouc**: The page MUST NOT flash the wrong appearance on load. An inline `<script>` in `<head>` (before any stylesheet or framework code) MUST read the stored forced mode from site settings and apply the appropriate CSS class to `<html>` synchronously. If no forced mode is stored, it MUST check `prefers-color-scheme` and apply the matching class. This script MUST be wrapped in try/catch so a settings read failure defaults to no class (light mode).
-
-## Architecture
-
-The implementation consists of three layers:
-
-### 1. Inline script (`<head>`)
-
-Runs before any CSS or JS framework loads. Reads the forced mode from site settings, applies the `dark` class if needed. Prevents FOUC.
-
-### 2. System theme tracker (always-on)
-
-A `matchMedia` listener that runs from mount until unmount, regardless of mode. It maintains a `systemTheme` state variable (`'dark'` or `'light'`). This is the single source of truth for what the OS is currently set to.
-
-### 3. Mode state + resolver
-
-The `mode` state (`'auto'` | `'dark'` | `'light'`) determines which appearance to apply:
-- `auto` → use `systemTheme`
-- `dark` → use `'dark'`
-- `light` → use `'light'`
-
-The resolved theme is a derived value, not independent state. When `mode` or `systemTheme` changes, the resolved theme updates automatically.
-
-```
-matchMedia listener ──► systemTheme (always current)
-                              │
-mode === 'auto' ──────────────┤──► resolved = systemTheme
-mode === 'dark' ──────────────┤──► resolved = 'dark'
-mode === 'light' ─────────────┘──► resolved = 'light'
-                                        │
-                                        ▼
-                              document.classList.toggle('dark')
-```
 
 ## Conformance Test Vectors
 
@@ -238,7 +238,9 @@ Subsystem: `{{bundle_id}}` | Category: `AppearanceModeToggle`
 - **Vanilla JS**: Create the `matchMedia` object once. Attach listener immediately. Store `systemTheme` in a module-level variable. `toggle()` reads from this variable for auto resolution. Apply class synchronously.
 - **CSS**: The toggle applies a class (e.g., `dark`) to `<html>`. All theme-aware styles use CSS custom properties scoped to the presence/absence of that class. Example: `:root { --bg: white; } .dark { --bg: #0c0c0f; }`.
 
-## Implementation Anti-Patterns
+## Design Decisions
+
+### Implementation Anti-Patterns
 
 These patterns were discovered during development and MUST be avoided:
 
@@ -251,9 +253,21 @@ These patterns were discovered during development and MUST be avoided:
 | Listener only active in auto mode | `systemTheme` is stale when switching back to auto | Always-on listener regardless of mode |
 | Relying on `resolveTheme()` function that queries `matchMedia` | Introduces the stale-query bug at every call site | Derive resolved theme from `mode` + `systemTheme` state |
 
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [contrast-ratio](agenticdevelopercookbook://compliance/accessibility#contrast-ratio) | partial | Accessibility |
+| [keyboard-navigable](agenticdevelopercookbook://compliance/accessibility#keyboard-navigable) | partial | Accessibility |
+| [platform-theming](agenticdevelopercookbook://compliance/platform-compliance#platform-theming) | partial | Platform |
+| [reduced-motion](agenticdevelopercookbook://compliance/accessibility#reduced-motion) | partial | Accessibility |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
+
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
 | 1.0.0 | 2026-03-30 | Mike Fullerton | Initial creation |
 | 1.1.0 | 2026-03-30 | Mike Fullerton | Add always-on listener architecture, synchronous class application, anti-patterns table, architecture diagram, settings error handling, focus ring, 5 new test vectors |
+| 1.2.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |

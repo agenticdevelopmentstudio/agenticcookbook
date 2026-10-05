@@ -1,0 +1,6 @@
+
+- **SwiftUI (macOS) with AppDelegate**: Use `NSApp.windows` to enumerate open document windows and collect their file URLs before quit. Use `NSDocumentController.shared.recentDocumentURLs` as a reference but maintain the restore list separately in `UserDefaults`.
+- **UIKit (iOS/visionOS) with SceneDelegate**: Use `NSUserActivity` or `UserDefaults` to persist and restore the document URL list. In `sceneDidDisconnect(_:)`, save the current document state.
+- **Android (Activity lifecycle, Compose)**: Store the document URL list in `SharedPreferences`. In `onStop` or `onDestroy`, save the current state. Use `ProcessLifecycleOwner` to detect app-level lifecycle events. Android's activity back stack provides some built-in restore behavior, but explicit URL list management is needed for document-centric apps.
+- **Web (SPA with beforeunload)**: Use the `beforeunload` event to save the document URL list to `localStorage`. On page load, check `localStorage` for saved URLs and restore them. Use `navigator.sendBeacon` or synchronous `localStorage` writes in the `beforeunload` handler to ensure data is saved. The `visibilitychange` event with `document.visibilityState === 'hidden'` is more reliable than `beforeunload` on mobile browsers.
+

@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "63C5A406-6356-417F-B549-B97E40385BA5",
+    "title": "PR Scope Phase",
+    "domain": "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-scope-phase",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "wip",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Phase 2 of the PR review pipeline: placement, granularity, overlap detection against all cookbook content, ecosystem fit, and per-requirement refactoring proposals",
+    "platforms": [
+      "macos"
+    ],
+    "tags": [
+      "automation",
+      "review",
+      "scoping",
+      "github"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline",
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-fix-agent"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "0a4e99dd3656f74d",
+  "parts": [
+    {
+      "part": "intro"
+    },
+    {
+      "part": "overview",
+      "heading": "Overview"
+    },
+    {
+      "part": "behavioral-requirements",
+      "heading": "Behavioral Requirements"
+    },
+    {
+      "part": "appearance",
+      "heading": "Appearance"
+    },
+    {
+      "part": "states",
+      "heading": "States"
+    },
+    {
+      "part": "accessibility",
+      "heading": "Accessibility"
+    },
+    {
+      "part": "conformance-test-vectors",
+      "heading": "Conformance Test Vectors"
+    },
+    {
+      "part": "edge-cases",
+      "heading": "Edge Cases"
+    },
+    {
+      "part": "configuration",
+      "heading": "Configuration"
+    },
+    {
+      "part": "logging",
+      "heading": "Logging"
+    },
+    {
+      "part": "platform-notes",
+      "heading": "Platform Notes"
+    },
+    {
+      "part": "design-decisions",
+      "heading": "Design Decisions"
+    },
+    {
+      "part": "compliance",
+      "heading": "Compliance"
+    },
+    {
+      "part": "history",
+      "heading": "Change History"
+    }
+  ],
+  "names_hosts": "Specifies which Claude model runs the scope phase."
+}

@@ -1,0 +1,3 @@
+
+The persisted workspace model and the directory-watching pool behind it. A workspace is a `.catnip-workspace` package containing a `workspace.db` SQLite database of entries (project and directory references), auto-discovered projects, and settings. A `WorkspaceDirectoryManager` owns one `DirectoryWatchCoordinator` per directory entry, aggregates their sync state, and reports discovered `.catnip-proj` packages. Entry validation prevents duplicates and self-reference. This ingredient has no visual presentation; terms such as Workspace, Entry, and Discovered project are defined in the Workspace Browser ingredient's Terminology.
+

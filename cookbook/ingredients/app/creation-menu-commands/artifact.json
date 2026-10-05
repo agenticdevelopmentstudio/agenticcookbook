@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "18FDFDAD-E9DA-4B84-80DB-23B00FEF5D77",
+    "title": "Creation Menu Commands",
+    "domain": "agenticdevelopercookbook://ingredients/app/creation-menu-commands",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Replaces the default New menu item with New Project, New Session, and New Workspace commands with shortcuts, icons, and focused-window dispatch",
+    "platforms": [
+      "macos",
+      "swift",
+      "windows"
+    ],
+    "tags": [
+      "app",
+      "commands",
+      "menu"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://ingredients/app/document-creation-flow",
+      "agenticdevelopercookbook://recipes/app/menu-commands"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "f2e4a437012fa7ea",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "22FBF585-C5A3-425A-94F1-BA9B570EBFDE",
+    "title": "Job Worker",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/job-worker",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "review",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pull-model job worker loop that claims typed jobs from a backend, renews leases with heartbeats, dispatches to handlers, and reports results with at-least-once idempotency",
+    "platforms": [
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "infrastructure",
+      "ai-jobs",
+      "worker",
+      "polling"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
+      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc2119"
+    ],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "c98bb293f43f45b9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

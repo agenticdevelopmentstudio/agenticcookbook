@@ -3,11 +3,11 @@ id: 34f13883-8905-4b5c-9299-82602687e98d
 title: "Linting from day one"
 domain: agenticdevelopercookbook://guidelines/testing/linting
 type: guideline
-version: 1.1.1
+version: 1.1.2
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -33,14 +33,14 @@ references:
   - https://pinterest.github.io/ktlint/
   - https://prettier.io/
   - https://stylelint.io/
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 triggers:
   - pre-commit
   - new-module
 ---
 
-# Linting as automated verification
+# Linting from day one
 
 Linting is part of your test suite — it catches categories of bugs that unit tests miss (unused imports, unreachable code, security anti-patterns, style violations that affect readability).
 
@@ -73,6 +73,7 @@ See the implementing copy of this guideline for platform-specific setup details.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-10-04 | Mike Fullerton | Add the statement under the title (or align the title line) that the guideline format requires |
 | 1.1.0 | 2026-04-09 | Mike Fullerton | Tailor for testing use case — reframe as automated verification tool |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

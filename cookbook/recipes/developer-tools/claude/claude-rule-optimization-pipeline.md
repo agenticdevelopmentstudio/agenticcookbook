@@ -3,11 +3,11 @@ id: aa81d10d-38d1-40d4-8be4-212b043e6410
 title: "Claude Rule Optimization Pipeline"
 domain: agenticdevelopercookbook://recipes/developer-tools/claude/claude-rule-optimization-pipeline
 type: recipe
-version: 1.0.0
+version: 2.0.0
 status: accepted
 language: en
 created: 2026-03-30
-modified: 2026-06-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -22,14 +22,18 @@ tags:
   - optimization
   - context-efficiency
   - pipeline
+ingredients:
+  - agenticdevelopercookbook://ingredients/developer-tools/claude/rule-audit
+  - agenticdevelopercookbook://ingredients/developer-tools/claude/rule-optimizer
+  - agenticdevelopercookbook://ingredients/developer-tools/claude/rule-validation-report
 depends-on: []
 related:
   - agenticdevelopercookbook://ingredients/developer-tools/claude/yolo-mode
   - agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline
 references:
   - https://code.claude.com/docs/en/best-practices
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Claude Rule Optimization Pipeline
@@ -38,51 +42,16 @@ approved-date: "2026-04-04"
 
 Claude Code rule files in `.claude/rules/` are injected into the system prompt on every turn — not just at session start. A 200-line rule costs 200 lines × N turns per session. The agenticdevelopercookbook's own rules went from 381 lines / 17,689 bytes per turn to 10 lines / 358 bytes — a 97% reduction — by applying a systematic optimization pipeline.
 
-This recipe codifies that pipeline into four repeatable phases:
+This recipe codifies that pipeline into four repeatable phases, composed from three ingredients:
 
-1. **Audit** — inventory rules, measure per-turn cost, detect waste
-2. **Optimize** — propose and apply context-reduction strategies
-3. **Validate** — verify behavioral preservation and run lint checks
-4. **Report** — produce before/after metrics
+1. **Audit** — inventory rules, measure per-turn cost, detect waste (rule audit)
+2. **Optimize** — propose and apply context-reduction strategies (rule optimizer)
+3. **Validate** — verify behavioral preservation and run lint checks (rule validation and report)
+4. **Report** — produce before/after metrics (rule validation and report)
 
 The pipeline is sequential: each phase gates the next. Phase 2 (Optimize) requires explicit user confirmation before modifying any files — rule files are behavioral guardrails and MUST NOT be changed autonomously.
 
-## Behavioral Requirements
-
-### Phase 1: Audit
-
-- **audit-inventory-all-rules**: The pipeline MUST inventory every `.md` file in `.claude/rules/` (and `rules/` if present), recording the file path, line count, and byte size of each.
-- **audit-measure-per-turn-cost**: The pipeline MUST calculate the aggregate per-turn cost: the sum of lines and bytes across all rule files that load without `globs` restrictions. Rules with `globs` frontmatter that would not match a generic file context MUST be excluded from the per-turn total.
-- **audit-detect-duplication**: The pipeline MUST compare all rule files pairwise and identify paragraphs, list items, or sections that express the same constraint. A finding MUST include the overlapping text and both file locations.
-- **audit-detect-ungated-rules**: The pipeline MUST flag any rule file that applies only to a specific file pattern (identifiable by content referencing specific directories or file types) but lacks `globs` frontmatter.
-- **audit-detect-mandatory-reads**: The pipeline MUST identify every instruction in rule files that mandates reading external files (patterns: "read", "load", "review", "check" followed by a file path or glob). Each finding MUST record the rule file, the instruction, and the referenced file paths.
-
-### Phase 2: Optimize
-
-- **optimize-propose-before-apply**: The pipeline MUST present all proposed optimizations to the user and wait for explicit confirmation before modifying any files. Each proposal MUST state what will change, the expected per-turn cost reduction, and any behavioral impact.
-- **optimize-consolidate-overlaps**: When audit-detect-duplication found overlapping content, the pipeline MUST propose consolidating into a single rule file or extracting shared content to a referenced file. The proposal MUST specify which file retains the content and which files get trimmed.
-- **optimize-add-globs-scoping**: For each rule flagged by audit-detect-ungated-rules, the pipeline MUST propose adding `globs` frontmatter with the narrowest pattern that covers the rule's intended scope.
-- **optimize-extract-to-skills**: When a rule file exceeds 200 lines or contains workflow content (multi-step procedures, checklists, evaluation criteria), the pipeline SHOULD propose extracting that content to an on-demand skill, replacing it with a one-line skill pointer in the rule.
-- **optimize-deduplicate-must-nots**: The pipeline MUST scan each rule's MUST NOT section and flag items that restate constraints already expressed imperatively in the rule body. The proposal MUST list each redundant item with the body line it duplicates.
-- **optimize-inline-summaries**: When audit-detect-mandatory-reads found external files with a frontmatter-to-content ratio exceeding 50%, the pipeline SHOULD propose replacing the mandatory read with an inline summary and an optional file path for reference.
-
-### Phase 3: Validate
-
-- **validate-behavioral-preservation**: After optimizations are applied, the pipeline MUST verify that every behavioral constraint from the original rules is present in the optimized output. The pipeline MUST enumerate each original MUST, MUST NOT, and SHOULD constraint and confirm its presence (exact or equivalent) in the optimized files.
-- **validate-lint-each-rule**: The pipeline MUST run the lint-rule checklist (all C-series, B-series, R-series, and O-series checks) against each optimized rule file. Any FAIL result MUST block the pipeline from proceeding to Phase 4 until resolved.
-- **validate-measure-reduction**: The pipeline MUST re-measure per-turn cost using the same method as audit-measure-per-turn-cost and calculate the percentage reduction from the audit baseline.
-
-### Phase 4: Report
-
-- **report-produce-artifact**: The pipeline MUST produce a report file at `.claude/rule-optimization-report.md` containing: timestamp, before metrics (from Phase 1), after metrics (from Phase 3), percentage reduction, list of changes applied, lint results per file, and any constraints that could not be optimized further.
-- **report-idempotent**: Running the pipeline again on already-optimized rules MUST produce a report showing no changes needed rather than making unnecessary modifications.
-
-### Cross-Phase
-
-- **sequential-gating**: Phases MUST execute in order: 1 → 2 → 3 → 4. A phase MUST NOT start until the previous phase completes successfully.
-- **human-gate-before-writes**: The pipeline MUST NOT modify any rule file without explicit user confirmation. Phases 1 and 4 are read-only. Phase 2 requires confirmation. Phase 3 re-validates after writes.
-
-## Pipeline Outcomes
+### Pipeline Outcomes
 
 | Outcome | Description | Next Action |
 |---------|-------------|-------------|
@@ -91,7 +60,7 @@ The pipeline is sequential: each phase gates the next. Phase 2 (Optimize) requir
 | Partially Optimized | Some optimizations applied, others declined or infeasible | Report lists applied and skipped items |
 | Validation Failed | Optimizations broke a behavioral constraint or lint check | Pipeline halts; user must fix or revert |
 
-## Metrics
+### Metrics
 
 | Metric | ID | Unit | Collected In |
 |--------|----|------|-------------|
@@ -105,16 +74,19 @@ The pipeline is sequential: each phase gates the next. Phase 2 (Optimize) requir
 | Frontmatter-heavy refs | `high-metadata-refs` | integer | Audit |
 | Reduction percentage | `reduction-pct` | percentage | Validate |
 
-## Appearance
+### Sections that do not apply
 
-The pipeline's visible output is the report file at `.claude/rule-optimization-report.md`:
+The original recipe recorded these sections as not applicable, and the statements still hold for the composition: Deep Linking (CLI pipeline, not a navigable resource), Localization (no user-facing strings), Accessibility Options (CLI pipeline), Feature Flags (the pipeline is invoked explicitly, not gated), Analytics (local CLI pipeline, no telemetry), Accessibility (CLI pipeline, no visual UI), and Logging (output is produced through the report file, not log messages).
 
-- **Heading structure**: H1 title, H2 per section (Timestamp, Before Metrics, After Metrics, Reduction, Changes Applied, Lint Results, Notes)
-- **Metrics tables**: Markdown tables with columns: Metric | Before | After | Change
-- **Changes list**: Bulleted list, one item per optimization applied, with file path and description
-- **Lint results**: One H3 per rule file, followed by the lint-rule checklist results (PASS/WARN/FAIL per check)
+### Privacy
 
-## States
+The Privacy statement lives in the rule validation and report ingredient, which writes the only artifact: no data is collected, the report is stored locally at `.claude/rule-optimization-report.md`, no data leaves the device, and the report persists until manually deleted or overwritten by the next run.
+
+### Appearance of the report
+
+The pipeline's visible output is the report file; its heading structure, metrics tables, changes list, and lint results are specified in the rule validation and report ingredient's Appearance section.
+
+### States
 
 | State | How to detect | Behavior |
 |-------|---------------|----------|
@@ -126,33 +98,65 @@ The pipeline's visible output is the report file at `.claude/rule-optimization-r
 | Complete | Report file exists; pipeline finished | No further action; user reviews report |
 | Failed | Validation found missing constraint or lint FAIL | Pipeline halted; user must fix or revert before re-running |
 
-## Accessibility
+## Ingredients
 
-Not applicable — CLI pipeline, no visual UI.
+| Name | Domain | Role | Required | Configuration |
+|------|--------|------|----------|---------------|
+| Rule audit | `agenticdevelopercookbook://ingredients/developer-tools/claude/rule-audit` | Phase 1: inventory, per-turn cost, duplication, ungated rules, mandatory external reads | Yes | Optional additional rule paths beyond `.claude/rules/` and `rules/` |
+| Rule optimizer | `agenticdevelopercookbook://ingredients/developer-tools/claude/rule-optimizer` | Phase 2: proposals for consolidation, `globs` scoping, skill extraction, MUST NOT deduplication, inline summaries; applies only after confirmation | Yes | Extraction threshold (200 lines), frontmatter ratio threshold (50%) |
+| Rule validation and report | `agenticdevelopercookbook://ingredients/developer-tools/claude/rule-validation-report` | Phases 3 and 4: behavioral preservation, lint of each rule, reduction measurement, report file | Yes | Report path `.claude/rule-optimization-report.md` |
 
-## Conformance Test Vectors
+## Integration Requirements
+
+- **sequential-gating**: Phases MUST execute in order: 1 → 2 → 3 → 4. A phase MUST NOT start until the previous phase completes successfully.
+- **human-gate-before-writes**: The pipeline MUST NOT modify any rule file without explicit user confirmation. Phases 1 and 4 are read-only. Phase 2 requires confirmation. Phase 3 re-validates after writes.
+- **audit-findings-drive-proposals**: The rule optimizer MUST build its proposals only from the rule audit's findings (duplication, ungated rules, mandatory reads), and every proposal MUST cite the finding that motivated it.
+- **same-measurement-method**: The validation phase MUST measure per-turn cost with the same method as the audit so the before and after numbers in the report are comparable.
+- **baseline-carried-to-report**: The audit's before metrics MUST be carried unchanged to the report, even when the user declines every optimization.
+- **validation-failure-halts**: A behavioral-preservation failure or a lint FAIL in the validation phase MUST halt the pipeline before the report phase writes an "optimized" outcome, and the pipeline outcome MUST be recorded as Validation Failed.
+
+## Layout
+
+This is a CLI pipeline with no visual UI, so the layout is the order of the phases and which of them may write.
+
+```
+ ┌───────────────┐   findings   ┌────────────────┐  confirmed edits  ┌───────────────────────────┐
+ │ 1 Rule audit  │ ───────────▶ │ 2 Rule         │ ────────────────▶ │ 3 Validate (rule          │
+ │ read-only     │              │ optimizer      │   (human gate)    │   validation and report)  │
+ └───────────────┘              │ proposes, then │                   │ re-measure + lint         │
+                                │ writes if OK'd │                   └─────────────┬─────────────┘
+                                └────────────────┘                                 │ pass
+                                                                      ┌────────────▼────────────┐
+                                                                      │ 4 Report (read-only)    │
+                                                                      │ .claude/rule-           │
+                                                                      │   optimization-report.md│
+                                                                      └─────────────────────────┘
+```
+
+## Shared State
+
+| State | Source | Consumer | Direction | Mechanism |
+|-------|--------|----------|-----------|-----------|
+| Rule inventory and baseline metrics | Rule audit | Rule optimizer, report | one-way | Held in conversation context for the run |
+| Audit findings | Rule audit | Rule optimizer | one-way | Duplication, ungated, and mandatory-read findings listed with file locations |
+| Approved proposals | User via the rule optimizer | Rule optimizer write step | one-way | Explicit confirmation of each proposal, or a decline of all |
+| Original constraint list | Rule files before edits | Validation | one-way | The enumerated MUST, MUST NOT, and SHOULD constraints captured before writes |
+| After metrics and reduction percentage | Validation | Report | one-way | Re-measurement by the same method as the audit |
+| Report file | Report phase | The user | one-way | Written to `.claude/rule-optimization-report.md` |
+
+Pipeline state lives in conversation context, not on disk (see Design Decisions): an interrupted run restarts from Phase 1.
+
+## Integration Test Vectors
 
 | ID | Requirements | Input | Expected |
 |----|-------------|-------|----------|
-| rop-001 | audit-inventory-all-rules | `.claude/rules/` with 3 files (50, 100, 200 lines) | Inventory lists all 3 with correct line/byte counts |
-| rop-002 | audit-measure-per-turn-cost | 2 ungated rules (100 lines each), 1 globs-scoped rule (50 lines) | Per-turn cost = 200 lines (only ungated rules counted) |
-| rop-003 | audit-detect-duplication | 2 rules with identical "Do not skip testing" paragraph | Finding identifies the duplicate with both file paths and matching text |
-| rop-004 | audit-detect-ungated-rules | Rule containing "When editing files in `.claude/skills/`" but no globs frontmatter | Flagged as ungated; suggested glob: `.claude/**` |
-| rop-005 | audit-detect-mandatory-reads | Rule with "Read ALL 18 principle files before planning" | Finding lists the instruction and identifies 18 referenced files |
-| rop-006 | optimize-propose-before-apply | Phase 2 with 3 optimization proposals | All 3 presented to user; no files modified until user confirms |
-| rop-007 | optimize-consolidate-overlaps | 2 rules with 40% overlapping content | Proposal specifies which rule retains content, which gets trimmed, expected line reduction |
-| rop-008 | optimize-add-globs-scoping | Rule for skill authoring without globs | Proposal adds `globs: .claude/skills/**` frontmatter |
-| rop-009 | optimize-extract-to-skills | Rule with 250 lines including a 150-line evaluation checklist | Proposal extracts checklist to a skill, replaces with 1-line pointer |
-| rop-010 | optimize-deduplicate-must-nots | Rule body says "You MUST NOT skip Phase 2"; MUST NOT section repeats "Do not skip Phase 2" | Redundant MUST NOT item flagged with body line reference |
-| rop-011 | optimize-inline-summaries | Rule mandating read of file that is 65% frontmatter | Proposal replaces mandatory read with inline summary |
-| rop-012 | validate-behavioral-preservation | Original has 8 MUST constraints; optimized has 8 equivalent constraints | All 8 mapped and confirmed |
-| rop-013 | validate-behavioral-preservation | Original has 8 MUST constraints; optimized has 7 | Validation fails; missing constraint identified |
-| rop-014 | validate-lint-each-rule | Optimized rule with vague directive "handle errors appropriately" | Lint FAIL on R04; pipeline blocks until fixed |
-| rop-015 | validate-measure-reduction | Before: 381 lines / 17,689 bytes; After: 10 lines / 358 bytes | Reduction: 97.4% lines, 98.0% bytes |
-| rop-016 | report-produce-artifact | Completed pipeline run | `.claude/rule-optimization-report.md` exists with all required sections |
-| rop-017 | report-idempotent | Pipeline run on rules that already pass all checks | Report says "No optimizations needed"; zero files modified |
 | rop-018 | sequential-gating | Attempt to run Phase 3 before Phase 2 completes | Pipeline refuses; error indicates Phase 2 must complete first |
 | rop-019 | human-gate-before-writes | Phase 2 with proposals; user declines all | Zero files modified; pipeline proceeds to Phase 4 with "no changes applied" report |
+| rop-020 | audit-findings-drive-proposals | Audit finds one duplicate paragraph and one ungated rule | The optimizer presents a consolidation proposal and a `globs` proposal, each citing its finding |
+| rop-021 | same-measurement-method, baseline-carried-to-report | Run the full pipeline on rules that lose 100 lines | The report's before and after use the same method and its before values equal the audit's output |
+| rop-022 | validation-failure-halts | An optimization drops one MUST constraint | Validation fails, no report claims "Optimized", and the outcome is Validation Failed |
+
+Vectors rop-001 to rop-005 (audit), rop-006 to rop-011 (optimizer), and rop-012 to rop-017 (validation and report) are single-ingredient vectors and appear in the ingredients under their original IDs.
 
 ## Edge Cases
 
@@ -167,41 +171,11 @@ Not applicable — CLI pipeline, no visual UI.
 - **User declines all optimizations**: Phase 2 proposes changes, user declines everything. Pipeline MUST proceed to Phase 4 with a report documenting the proposals and the decision to decline.
 - **Sensitive content in rules**: The report MUST NOT include literal file content that might expose credentials or internal paths beyond what is necessary to describe the optimization.
 
-## Deep Linking
-
-Not applicable — CLI pipeline, not a navigable resource.
-
-## Localization
-
-Not applicable — CLI pipeline with no user-facing strings.
-
-## Accessibility Options
-
-Not applicable — CLI pipeline.
-
-## Feature Flags
-
-Not applicable — the pipeline is invoked explicitly, not gated.
-
-## Analytics
-
-Not applicable — local CLI pipeline, no telemetry.
-
-## Privacy
-
-- **Data collected**: None
-- **Storage**: Report file stored locally at `.claude/rule-optimization-report.md`
-- **Transmission**: No data leaves the device
-- **Retention**: Report persists until manually deleted or overwritten by next pipeline run
-
-## Logging
-
-Not applicable — the pipeline produces its output via the report file, not log messages.
-
 ## Platform Notes
 
 - **macOS/Linux**: Rule files in `.claude/rules/` follow standard POSIX paths. File size measured with `wc -c`, line count with `wc -l`.
 - **Windows**: Rule files use the same `.claude/rules/` path relative to the project root. File operations work via Git Bash, WSL, or any POSIX-compatible shell.
+- **SwiftUI / Compose / React/Web**: Not applicable — the pipeline is a CLI workflow with no UI framework.
 
 ## Design Decisions
 
@@ -216,14 +190,17 @@ Not applicable — the pipeline produces its output via the report file, not log
 
 | Check | Status | Category |
 |-------|--------|----------|
-| [safe-defaults](agenticdevelopercookbook://compliance/user-safety#safe-defaults) | passed | User Safety — pipeline defaults to confirmation before modifying rules |
-| [data-minimization](agenticdevelopercookbook://compliance/privacy-and-data#data-minimization) | passed | Privacy — report contains only metrics and optimization descriptions, no PII |
-| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | passed | Security — report does not include sensitive rule content verbatim |
-| [idempotent-operations](agenticdevelopercookbook://compliance/reliability#idempotent-operations) | passed | Reliability — re-running on optimized rules produces same result |
-| [fault-tolerance](agenticdevelopercookbook://compliance/reliability#fault-tolerance) | passed | Reliability — handles missing directories, empty rules, malformed frontmatter |
+| [safe-defaults](agenticdevelopercookbook://compliance/user-safety#safe-defaults) | partial | User Safety |
+| [data-minimization](agenticdevelopercookbook://compliance/privacy-and-data#data-minimization) | partial | Privacy |
+| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | partial | Security |
+| [idempotent-operations](agenticdevelopercookbook://compliance/reliability#idempotent-operations) | partial | Reliability |
+| [fault-tolerance](agenticdevelopercookbook://compliance/reliability#fault-tolerance) | partial | Reliability |
+
+> Status is `partial`: this recipe specifies the integration-level requirements that satisfy these checks, but compliance is verified per concrete pipeline run, not at the recipe level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-10-04 | Mike Fullerton | Restructure into recipe shape; extract component behavior into ingredients |
 | 1.0.0 | 2026-03-30 | Mike Fullerton | Initial creation |

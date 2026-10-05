@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "E53B1FD3-3E7A-490D-BC5D-83EE9C5CE351",
+    "title": "Document Creation Flow",
+    "domain": "agenticdevelopercookbook://ingredients/app/document-creation-flow",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "New Project and New Workspace flows: file pickers, Git validation, package creation, document opening, and error alerts",
+    "platforms": [
+      "macos",
+      "swift",
+      "windows"
+    ],
+    "tags": [
+      "app",
+      "documents",
+      "file-picker"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://ingredients/app/creation-menu-commands",
+      "agenticdevelopercookbook://recipes/app/menu-commands",
+      "agenticdevelopercookbook://recipes/infrastructure/package-document"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "6fc1f0a03347a7cb",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "privacy", "heading": "Privacy"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

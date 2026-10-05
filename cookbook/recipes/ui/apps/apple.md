@@ -3,11 +3,11 @@ id: c5778e2d-2f3b-4cbd-809b-39ed4b57ff57
 title: "Apple Test App Suite"
 domain: agenticdevelopercookbook://recipes/ui/apps/apple
 type: recipe
-version: 1.0.0
+version: 2.0.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -21,252 +21,101 @@ tags:
   - apple
   - apps
   - ui
+ingredients:
+  - agenticdevelopercookbook://ingredients/ui/apps/xcodegen-apple-project
+  - agenticdevelopercookbook://ingredients/ui/apps/component-catalog
+  - agenticdevelopercookbook://ingredients/infrastructure/logging
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Apple Test App Suite
 
 ## Overview
 
-An XcodeGen-generated Xcode project with app targets for all five Apple platforms. Each app displays a component catalog — a navigable list of every UI component implemented from `ui/` specs, showing all states for visual testing and snapshot verification.
+An XcodeGen-generated Xcode project with app targets for all five Apple platforms, each displaying a component catalog: a navigable list of every UI component implemented from `ui/` specs, showing all states for visual testing and snapshot verification. The XcodeGen Apple Project ingredient provides the targets, shared package, and source layout; the Component Catalog ingredient provides what each app shows. The recipe wires them together through a shared source directory and per-platform entry points.
 
-## Terminology
+## Ingredients
 
-| Term | Definition |
-|------|-----------|
-| Catalog | A navigable list of all implemented components, each showing every state from its spec |
-| Catalog entry | A single view showing one component in all its states |
-| TestSharedKit | Local SPM package containing code shared across all five platform targets |
+| Name | Domain | Role | Required | Configuration |
+|------|--------|------|----------|---------------|
+| XcodeGen Apple Project | `agenticdevelopercookbook://ingredients/ui/apps/xcodegen-apple-project` | Five app targets, TestSharedKit package, project.yml, source layout | Yes | Output `Tests/Projects/Apple/` |
+| Component Catalog | `agenticdevelopercookbook://ingredients/ui/apps/component-catalog` | Root catalog view, adaptive navigation, per-component state entries | Yes | Navigation style per platform |
+| Logging | `agenticdevelopercookbook://ingredients/infrastructure/logging` | Logger used for catalog events | Yes | Category `ComponentCatalog` |
 
-## Behavioral Requirements
+## Integration Requirements
 
-### Project structure
-
-- **xcodegen-project**: The project MUST be generated using XcodeGen from a `project.yml` file.
-- **output-directory**: The generated project MUST be output to `Tests/Projects/Apple/`.
-- **five-platform-targets**: The project MUST contain five app targets, one per Apple platform:
-
-  | Target | Platform | Deployment Target | Bundle ID |
-  |--------|----------|-------------------|-----------|
-  | LitterboxTestiOS | iOS | 17.0 | com.litterbox.test.ios |
-  | LitterboxTestMac | macOS | 14.0 | com.litterbox.test.mac |
-  | LitterboxTestWatch | watchOS | 10.0 | com.litterbox.test.watch |
-  | LitterboxTestTV | tvOS | 17.0 | com.litterbox.test.tv |
-  | LitterboxTestVision | visionOS | 1.0 | com.litterbox.test.vision |
-
-- **standalone-swiftui-apps**: Each target MUST be a standalone SwiftUI app. watchOS MUST use independent app mode (no WatchKit companion).
-- **test-shared-kit-package**: A local Swift package `TestSharedKit` MUST exist at `Tests/Projects/Apple/TestSharedKit/` and MUST target all five platforms at the deployment versions in five-platform-targets.
-- **depend-on-shared-kit**: All five app targets MUST depend on `TestSharedKit`.
-
-### Source layout
-
-- **per-platform-source-dir**: Each target MUST have its own source directory under `Sources/{platform}/` containing the app entry point.
 - **shared-source-directory**: A `Shared/` directory MUST be added as a source directory to all targets. It contains:
   - `Shared/Components/` — component implementations from `ui/` specs
   - `Shared/Catalog/` — catalog views showing all states per component
 - **os-compilation-conditions**: Platform-specific adaptations within shared code MUST use `#if os(...)` compilation conditions.
+- **entry-point-shows-catalog**: Each platform's app entry point (the file under `Sources/{platform}/`) MUST present the Component Catalog's `ComponentCatalogView` as its root view.
+- **catalog-in-shared-dir**: The catalog implementation MUST live in `Shared/Catalog/` and component implementations in `Shared/Components/`, so all five targets compile the same catalog source.
+- **catalog-logging-via-shared-logger**: Catalog events MUST be logged through the `logging` ingredient with category `ComponentCatalog`.
 
-### Catalog behavior
-
-- **catalog-root-view**: Each app's entry point MUST display a `ComponentCatalogView` as its root view.
-- **adaptive-navigation**: `ComponentCatalogView` MUST use `NavigationSplitView` on macOS, iPadOS, and visionOS, and `NavigationStack` on iPhone, watchOS, and tvOS.
-- **navigable-component-list**: The catalog MUST list all implemented components by name. Selecting a component MUST navigate to its catalog entry view.
-- **all-states-per-component**: Each catalog entry view MUST display the component in every state defined in its spec (default, pressed, disabled, focused, loading, etc.), each in its own labeled section.
-- **preview-per-entry**: Each catalog entry view MUST include a `#Preview` block.
-
-### Adding a component
-
-- **adding-component-steps**: When adding a new component, the implementer MUST:
-  1. Read the component spec from `ui/`
-  2. Implement the component in `Shared/Components/`
-  3. Create a catalog entry view in `Shared/Catalog/` showing all states
-  4. Register the entry in `ComponentCatalogView`
-  5. Build all five targets to verify cross-platform compatibility
-
-## Data Structures
-
-### project.yml
-
-```yaml
-name: LitterboxTests
-settings:
-  base:
-    GENERATE_INFOPLIST_FILE: YES
-options:
-  bundleIdPrefix: com.litterbox.test
-  deploymentTarget:
-    iOS: "17.0"
-    macOS: "14.0"
-    watchOS: "10.0"
-    tvOS: "17.0"
-    visionOS: "1.0"
-packages:
-  TestSharedKit:
-    path: TestSharedKit
-targets:
-  LitterboxTestiOS:
-    type: application
-    platform: iOS
-    sources:
-      - Sources/iOS
-      - Shared
-    dependencies:
-      - package: TestSharedKit
-  LitterboxTestMac:
-    type: application
-    platform: macOS
-    sources:
-      - Sources/macOS
-      - Shared
-    dependencies:
-      - package: TestSharedKit
-  LitterboxTestWatch:
-    type: application
-    platform: watchOS
-    sources:
-      - Sources/watchOS
-      - Shared
-    dependencies:
-      - package: TestSharedKit
-  LitterboxTestTV:
-    type: application
-    platform: tvOS
-    sources:
-      - Sources/tvOS
-      - Shared
-    dependencies:
-      - package: TestSharedKit
-  LitterboxTestVision:
-    type: application
-    platform: visionOS
-    sources:
-      - Sources/visionOS
-      - Shared
-    dependencies:
-      - package: TestSharedKit
-```
-
-### Source file layout
+## Layout
 
 ```
-Tests/Projects/Apple/
+Tests/Projects/Apple/              <- XcodeGen Apple Project
 ├── project.yml
 ├── TestSharedKit/
-│   ├── Package.swift
-│   └── Sources/
-│       └── TestSharedKit/
-│           └── ComponentCatalog.swift
-├── Sources/
-│   ├── iOS/
-│   │   └── LitterboxTestiOSApp.swift
-│   ├── macOS/
-│   │   └── LitterboxTestMacApp.swift
-│   ├── watchOS/
-│   │   └── LitterboxTestWatchApp.swift
-│   ├── tvOS/
-│   │   └── LitterboxTestTVApp.swift
-│   └── visionOS/
-│       └── LitterboxTestVisionApp.swift
-└── Shared/
-    ├── Components/          ← component implementations from ui/ specs
-    └── Catalog/             ← catalog entry views showing all states
+├── Sources/{iOS,macOS,watchOS,tvOS,visionOS}/   <- entry point per platform
+└── Shared/                        <- compiled into every target
+    ├── Components/                <- component implementations
+    └── Catalog/                   <- Component Catalog entries
+
+ App entry point -> ComponentCatalogView -> catalog entry -> component in each state
 ```
 
-### Catalog entry pattern
+Not a visual layout: the diagram shows how the project structure and catalog compose. Navigation layout per platform is defined by the Component Catalog ingredient.
 
-```swift
-struct PrimaryButtonCatalog: View {
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                Text("PrimaryButton").font(.title)
+## Shared State
 
-                Section("Default") {
-                    PrimaryButton("Label", action: {})
-                }
-                Section("Disabled") {
-                    PrimaryButton("Label", action: {}).disabled(true)
-                }
-                Section("Loading") {
-                    PrimaryButton("Label", isLoading: true, action: {})
-                }
-            }
-            .padding()
-        }
-    }
-}
+| State | Source | Consumer | Direction | Mechanism |
+|---|---|---|---|---|
+| Component registry | `Shared/Components/` implementations | Component Catalog entries | one-way | Entries registered in `ComponentCatalogView` |
+| Platform conditions | Compilation (`#if os(...)`) | Catalog registration | one-way | Entries for unsupported platforms are excluded at compile time |
+| Deployment versions | `project.yml` | TestSharedKit and all targets | one-way | One version table applied to every target and the package |
 
-#Preview {
-    PrimaryButtonCatalog()
-}
-```
-
-## Appearance
-
-Not applicable — this recipe defines app-level structure and build configuration. Visual appearance is defined by window and component recipes.
-
-## States
-
-Not applicable — app-level states (launching, active, background, terminated) are defined by the platform, not this recipe. See `recipes/app/lifecycle.md` for app state management.
-
-## Accessibility
-
-Not applicable — this recipe defines project structure and build configuration. Accessibility requirements are defined per-component in the UI recipes.
-
-## Conformance Test Vectors
+## Integration Test Vectors
 
 | ID | Requirements | Input | Expected |
 |----|-------------|-------|----------|
-| apple-001 | xcodegen-project | Run `xcodegen generate` in project dir | `LitterboxTests.xcodeproj` is created |
-| apple-002 | five-platform-targets | Open generated project | 5 app targets exist with correct names and platforms |
 | apple-003 | standalone-swiftui-apps, depend-on-shared-kit | Build LitterboxTestiOS | Build succeeds, app launches with catalog |
 | apple-004 | standalone-swiftui-apps, depend-on-shared-kit | Build LitterboxTestMac | Build succeeds, app launches with catalog |
 | apple-005 | standalone-swiftui-apps, depend-on-shared-kit | Build LitterboxTestWatch | Build succeeds, app launches with catalog |
 | apple-006 | standalone-swiftui-apps, depend-on-shared-kit | Build LitterboxTestTV | Build succeeds, app launches with catalog |
 | apple-007 | standalone-swiftui-apps, depend-on-shared-kit | Build LitterboxTestVision | Build succeeds, app launches with catalog |
-| apple-008 | adaptive-navigation | Run LitterboxTestMac | Root view is NavigationSplitView |
-| apple-009 | adaptive-navigation | Run LitterboxTestiOS on iPhone | Root view is NavigationStack |
-| apple-010 | navigable-component-list | Launch any target with components registered | Catalog lists all components, selecting one navigates to detail |
-| apple-011 | all-states-per-component | View a catalog entry | All states from spec are displayed in labeled sections |
 | apple-012 | os-compilation-conditions | Build Shared/ code for all 5 platforms | No compilation errors from platform-specific API usage |
+| apple-013 | entry-point-shows-catalog, catalog-in-shared-dir | Launch any target after adding a component through the adding-component-steps | The catalog lists the component and its entry view displays all spec states |
+| apple-014 | catalog-logging-via-shared-logger | Launch LitterboxTestMac and select a component | Logs show `ComponentCatalog: launched with N components` and `ComponentCatalog: selected "ComponentName"` |
 
 ## Edge Cases
 
-- **No components implemented yet**: Catalog SHOULD show an empty state message (e.g., "No components yet") rather than a blank screen.
-- **Component only valid on some platforms**: Use `#if os(...)` around the catalog entry registration. The catalog on excluded platforms SHOULD NOT show that component.
-- **XcodeGen not installed**: Build commands SHOULD fail with a clear error. Prerequisites section documents the install step.
-- **visionOS SDK not installed**: The visionOS target will fail to build. This is acceptable — the other four targets SHOULD still build independently.
-
-## Logging
-
-Subsystem: `{{bundle_id}}` | Category: `ComponentCatalog`
-
-| Event | Level | Message |
-|-------|-------|---------|
-| Catalog launched | debug | `ComponentCatalog: launched with {{count}} components` |
-| Component selected | debug | `ComponentCatalog: selected "{{name}}"` |
-| Component not available on platform | debug | `ComponentCatalog: "{{name}}" excluded on {{platform}}` |
+- **Component added on one platform only**: When a component is registered under `#if os(...)`, the project MUST still build for the other four targets, and the catalog on the excluded platforms MUST omit it.
+- **Missing visionOS SDK with new components**: Adding a component while the visionOS SDK is absent MUST NOT block building and verifying the other four targets.
+- **Empty `Shared/Catalog/`**: With no catalog entries, every target MUST still build and show the catalog's empty state rather than a blank screen.
 
 ## Platform Notes
 
-- **SwiftUI**: This spec is Apple-only. All five targets use SwiftUI exclusively.
+- **SwiftUI**: This recipe is Apple-only. All five targets use SwiftUI exclusively.
 - **XcodeGen**: Required for project generation. Install via `brew install xcodegen`. Run `xcodegen generate` from the project directory.
 - **Xcode 16+**: Required for visionOS 1.0+ support and latest Swift features.
 - **visionOS SDK**: Must be installed separately via Xcode > Settings > Platforms.
+- **Compose and React/Web**: Not applicable — this recipe generates an Xcode project for Apple platforms only.
 
-## Build, Run, and Verify
+### Build, Run, and Verify
 
-### Step 1: Generate
+#### Step 1: Generate
 
 ```bash
 cd Tests/Projects/Apple && xcodegen generate
 ```
 
-### Step 2: Build all targets
+#### Step 2: Build all targets
 
 ```bash
 xcodebuild -project LitterboxTests.xcodeproj -scheme LitterboxTestiOS -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
@@ -276,7 +125,7 @@ xcodebuild -project LitterboxTests.xcodeproj -scheme LitterboxTestTV -destinatio
 xcodebuild -project LitterboxTests.xcodeproj -scheme LitterboxTestVision -destination 'platform=visionOS Simulator,name=Apple Vision Pro' build
 ```
 
-### Step 3: Run and verify logs
+#### Step 3: Run and verify logs
 
 Launch the macOS app (fastest for iteration) and stream logs to verify spec-defined messages:
 
@@ -300,7 +149,7 @@ xcrun simctl boot "iPhone 17 Pro"
 xcrun simctl launch --console-pty booted com.litterbox.test.ios
 ```
 
-### Step 4: Test accessibility options
+#### Step 4: Test accessibility options
 
 After verifying basic functionality, test with accessibility options toggled:
 
@@ -320,7 +169,7 @@ xcrun simctl spawn booted defaults delete com.litterbox.test.ios UIPreferredCont
 
 On macOS, toggle Reduce Motion and other options in System Settings > Accessibility to verify component responses.
 
-## Prerequisites
+### Prerequisites
 
 - Xcode 16+
 - xcodegen (`brew install xcodegen`)
@@ -328,10 +177,23 @@ On macOS, toggle Reduce Motion and other options in System Settings > Accessibil
 
 ## Design Decisions
 
-_None yet — decisions made during generation should be recorded here._
+**Decision**: Split the suite into a project ingredient and a catalog ingredient.
+**Rationale**: Build configuration and catalog behavior change independently; the catalog can be reused in a differently built project.
+**Approved**: pending
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [post-generation-verification](agenticdevelopercookbook://guidelines/testing/post-generation-verification) | partial | Testing |
+| [previews](agenticdevelopercookbook://guidelines/testing/previews) | partial | Testing |
+| [snapshot-testing](agenticdevelopercookbook://guidelines/testing/snapshot-testing) | partial | Testing |
+
+> Status is `partial`: this recipe specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the recipe level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-10-04 | Mike Fullerton | Restructured into recipe shape: composes xcodegen-apple-project and component-catalog |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

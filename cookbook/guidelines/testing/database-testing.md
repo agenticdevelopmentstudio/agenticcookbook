@@ -3,11 +3,11 @@ id: 183D07F2-ECFC-4DA3-9A21-96953EFEFA91
 title: "Database testing"
 domain: agenticdevelopercookbook://guidelines/testing/database-testing
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-04-06
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -27,14 +27,16 @@ related:
 references:
   - https://sqlite.org/testing.html
   - https://oneuptime.com/blog/post/2026-02-02-sqlite-testing/view
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-06"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 triggers:
   - writing-tests
   - database-operations
 ---
 
 # Database testing
+
+Test SQLite-backed code against real databases: in-memory for isolated unit tests, file-based where behavior depends on the file, with migrations, sync and conflict resolution covered explicitly.
 
 ## In-memory vs file-based databases
 
@@ -222,6 +224,7 @@ Use SQLite for unit tests where dialect differences do not affect the logic unde
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Add the statement under the title (or align the title line) that the guideline format requires |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-04-06 | Mike Fullerton | Initial version |

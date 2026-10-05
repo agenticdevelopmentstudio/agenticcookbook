@@ -1,0 +1,7 @@
+
+- **macOS (SwiftUI)**: Use `ReferenceFileDocument` with `DocumentGroup(newDocument:)` for each document type. The `@Published var model` pattern drives auto-save through `objectWillChange`. For file creation outside the standard `DocumentGroup` flow (e.g., "New Project" menu items), use `NSSavePanel` to choose a location and then programmatically create the package directory and initial database. `NSWorkspace` file coordination applies automatically to `DocumentGroup`-managed documents. UTType declarations go in the target's Info.plist under `UTExportedTypeDeclarations`.
+- **macOS (AppKit)**: Use an `NSDocument` subclass with `override class var readableTypes` and `override class var writableTypes`. `NSDocument` provides auto-save for free when `autosavesInPlace` returns `true`. Package document support is enabled by returning `true` from `class var isNativeType(_:)` for the custom UTType.
+- **iOS**: `ReferenceFileDocument` works on iOS with `DocumentGroup`. The package is stored in the app's container or iCloud Drive. `NSSavePanel` and `NSOpenPanel` are not available — use `.fileImporter()` and `.fileExporter()` modifiers instead. iOS sandboxing requires security-scoped URL access for user-selected documents.
+- **visionOS**: Same as iOS. `DocumentGroup` renders document management UI in the visionOS window style.
+- **Compose / React/Web**: Not applicable — UTType, `DocumentGroup`, and `FileWrapper` are Apple frameworks.
+

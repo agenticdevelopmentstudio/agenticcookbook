@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "32EB5FA7-31BA-49D2-8223-A530D8CC7092",
+    "title": "PR Review Phase",
+    "domain": "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-review-phase",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "wip",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Phase 1 of the PR review pipeline: structural validation, markdownlint, Vale prose style, LLM clarity pass, completeness and convention checks with a bounded fix loop",
+    "platforms": [
+      "macos"
+    ],
+    "tags": [
+      "automation",
+      "review",
+      "ci",
+      "github",
+      "vale",
+      "markdownlint"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline",
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-fix-agent"
+    ],
+    "references": [
+      "https://vale.sh",
+      "https://github.com/DavidAnson/markdownlint-cli2"
+    ],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "ae64d6b13cd82b5f",
+  "parts": [
+    {
+      "part": "intro"
+    },
+    {
+      "part": "overview",
+      "heading": "Overview"
+    },
+    {
+      "part": "behavioral-requirements",
+      "heading": "Behavioral Requirements"
+    },
+    {
+      "part": "appearance",
+      "heading": "Appearance"
+    },
+    {
+      "part": "states",
+      "heading": "States"
+    },
+    {
+      "part": "accessibility",
+      "heading": "Accessibility"
+    },
+    {
+      "part": "conformance-test-vectors",
+      "heading": "Conformance Test Vectors"
+    },
+    {
+      "part": "edge-cases",
+      "heading": "Edge Cases"
+    },
+    {
+      "part": "configuration",
+      "heading": "Configuration"
+    },
+    {
+      "part": "logging",
+      "heading": "Logging"
+    },
+    {
+      "part": "platform-notes",
+      "heading": "Platform Notes"
+    },
+    {
+      "part": "design-decisions",
+      "heading": "Design Decisions"
+    },
+    {
+      "part": "compliance",
+      "heading": "Compliance"
+    },
+    {
+      "part": "history",
+      "heading": "Change History"
+    }
+  ],
+  "names_hosts": "Specifies which Claude model runs the review phase."
+}

@@ -5,11 +5,11 @@
     "title": "Logging",
     "domain": "agenticdevelopercookbook://ingredients/infrastructure/logging",
     "type": "ingredient",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-05",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,10 +29,10 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "4ebd6e1b98290ba4",
+  "synced": "9b094c2f474b689f",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
@@ -46,6 +46,7 @@
     {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

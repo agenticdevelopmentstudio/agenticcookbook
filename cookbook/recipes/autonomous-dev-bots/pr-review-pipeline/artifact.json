@@ -5,21 +5,29 @@
     "title": "PR Review Pipeline",
     "domain": "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline",
     "type": "recipe",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "status": "wip",
     "language": "en",
     "created": "2026-03-28",
-    "modified": "2026-03-28",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
     "summary": "Three-phase automated review pipeline for cookbook contributions — review, refactoring, evaluate — running on OpenClaw with GitHub App bot personas.",
-    "platforms": [],
+    "platforms": [
+      "macos"
+    ],
     "tags": [
       "automation",
       "review",
       "ci",
       "github"
+    ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-review-phase",
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-scope-phase",
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-evaluate-phase",
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-fix-agent"
     ],
     "depends-on": [],
     "related": [
@@ -33,28 +41,23 @@
       "https://github.com/DavidAnson/markdownlint-cli2",
       "https://docs.openclaw.ai"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
   "names_hosts": "Specifies which Claude models run each pipeline phase.",
-  "synced": "27ae37a71ecca6b0",
+  "synced": "1023f1b740cbe5c3",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "pipeline-outcomes", "heading": "Pipeline Outcomes"},
-    {"part": "github-apps", "heading": "GitHub Apps"},
-    {"part": "execution-platform", "heading": "Execution Platform"},
-    {"part": "custom-vale-style-cookbook", "heading": "Custom Vale Style: Cookbook"},
-    {"part": "llm-clarity-pass", "heading": "LLM Clarity Pass"},
-    {"part": "appearance", "heading": "Appearance"},
-    {"part": "states", "heading": "States"},
-    {"part": "accessibility", "heading": "Accessibility"},
-    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
-    {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

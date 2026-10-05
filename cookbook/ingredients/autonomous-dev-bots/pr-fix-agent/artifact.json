@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "FE3522F2-1B94-494E-8136-C8A5EEA876CF",
+    "title": "PR Fix Agent",
+    "domain": "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-fix-agent",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "wip",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Dedicated refactoring agent identity that applies automated fixes by commit or suggested change according to the contributor's stored fix preference",
+    "platforms": [
+      "macos"
+    ],
+    "tags": [
+      "automation",
+      "review",
+      "github",
+      "fix-bot"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline",
+      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-review-phase"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "de721e537375099a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

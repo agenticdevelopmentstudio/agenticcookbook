@@ -26,7 +26,7 @@
 - **non-sensitive-storage-tiers**: Non-sensitive AI settings (provider, model, endpoint URL, timeout, enable toggle) follow the settings window storage tier:
   - **Simple**: `UserDefaults` / `@AppStorage` (macOS/iOS), `SharedPreferences` / `DataStore` (Android), `localStorage` (Web)
   - **Complex**: SQLite or equivalent structured database — appropriate for apps that already use SQLite for other persistence, need migration-safe schema changes, or store settings alongside relational data
-  - Either tier is conformant. The choice SHOULD be consistent with the app's overall settings storage strategy (see `settings-window.md` abstract-persistence).
+  - Either tier is conformant. The choice SHOULD be consistent with the app's overall settings storage strategy (see the `abstract-persistence` requirement of `agenticdevelopercookbook://ingredients/ui/windows/settings-category-browser`).
 - **no-key-in-logs**: API keys MUST NOT appear in any log output, crash reports, analytics events, or debug panel displays — even at debug level.
 - **masked-key-display**: The API key field MUST NOT be pre-populated with the full key value when revisiting the panel. It SHOULD display a masked placeholder (e.g., "••••••••••••abcd" showing only the last 4 characters) if a key is stored, or be empty if no key is stored.
 
@@ -65,4 +65,37 @@
   5. On failure, display the provider's error message (e.g., "Authentication failed", "invalid x-api-key")
 - **auto-test-debounce**: The panel SHOULD automatically trigger a connection test when the provider, API key, or endpoint changes — with a debounce of 2 seconds after the last change. Implementations MAY defer this to a manual "Test" action.
 - **async-connection-test**: The connection test MUST NOT block the UI. It MUST run asynchronously.
+
+### AI Provider Interface Pattern
+
+#### Protocol definition
+
+The `AIProvider` protocol defines the contract for all AI provider implementations. The settings panel configures WHICH provider is active and supplies credentials. Application code consumes AI capabilities exclusively through this interface.
+
+```
+AIProvider {
+  func complete(prompt: String, options: CompletionOptions) async throws -> String
+  func stream(prompt: String, options: CompletionOptions) -> AsyncStream<String>
+  var isConfigured: Bool { get }
+  var providerName: String { get }
+  var supportedModels: [String] { get async }
+}
+
+CompletionOptions {
+  model: String
+  maxTokens: Int?
+  temperature: Double?
+  systemPrompt: String?
+}
+```
+
+#### Implementations
+
+- **claude-provider-impl**: A `ClaudeProvider` implementation MUST exist for the Anthropic API.
+- **openai-provider-impl**: An `OpenAIProvider` implementation MUST exist for the OpenAI API.
+- **google-custom-provider-impl**: A `GoogleProvider` implementation MUST exist for the Google Gemini API. A `CustomProvider` implementation MUST exist for OpenAI-compatible endpoints (e.g., Ollama, LM Studio).
+- **mock-provider-impl**: A `MockProvider` implementation MUST exist for testing. It MUST return deterministic canned responses and MUST NOT make network calls.
+- **runtime-provider-resolution**: The active provider MUST be resolved at runtime based on the settings panel configuration, using a factory or dependency injection container.
+- **tls-required**: All providers MUST use TLS/HTTPS for network communication. The `CustomProvider` MAY allow HTTP for `localhost` addresses only.
+- **no-cached-keys-in-providers**: Provider implementations MUST NOT store or cache API keys internally. They MUST retrieve credentials from secure storage on each use or accept them via injection at construction time.
 

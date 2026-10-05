@@ -3,11 +3,11 @@ id: be66e9aa-6c54-4c6c-8026-050eb2286abb
 title: "Debug Panel"
 domain: agenticdevelopercookbook://ingredients/ui/panels/debug-panel
 type: ingredient
-version: 1.0.0
+version: 1.1.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -26,8 +26,8 @@ tags:
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Debug Panel
@@ -149,6 +149,13 @@ The debug panel uses platform-native styling — no custom theming. It should lo
 
 This ingredient has no configurable options.
 
+## Privacy
+
+- **Data collected**: Feature flag overrides, experiment variant selections, analytics event log (in-memory only)
+- **Storage**: Overrides in platform local storage (UserDefaults / SharedPreferences / localStorage). Event log is in-memory only.
+- **Transmission**: None — debug panel data never leaves the device
+- **Retention**: Overrides persist until cleared. Event log cleared on app restart.
+
 ## Logging
 
 Subsystem: `{{bundle_id}}` | Category: `DebugPanel`
@@ -170,19 +177,23 @@ Subsystem: `{{bundle_id}}` | Category: `DebugPanel`
 - **Compose (Android)**: Present as a `ModalBottomSheet` or `Dialog`. Trigger via `ShakeDetector` (accelerometer). Guard with `if (BuildConfig.DEBUG)`.
 - **React (Web)**: Render as a slide-in overlay panel. Route to `/debug` in dev mode only. Guard with `process.env.NODE_ENV === 'development'`.
 
-## Privacy
-
-- **Data collected**: Feature flag overrides, experiment variant selections, analytics event log (in-memory only)
-- **Storage**: Overrides in platform local storage (UserDefaults / SharedPreferences / localStorage). Event log is in-memory only.
-- **Transmission**: None — debug panel data never leaves the device
-- **Retention**: Overrides persist until cleared. Event log cleared on app restart.
-
 ## Design Decisions
 
 _None yet — decisions made during implementation should be recorded here._
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [no-pii-in-logs](agenticdevelopercookbook://compliance/privacy-and-data#no-pii-in-logs) | partial | Privacy |
+| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | partial | Security |
+| [screen-reader-support](agenticdevelopercookbook://compliance/accessibility#screen-reader-support) | partial | Accessibility |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

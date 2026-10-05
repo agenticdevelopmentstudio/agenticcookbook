@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "03DF8FFB-476C-49F5-B104-33AD3C52BBE4",
+    "title": "SQLite Helpers",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Small SQLite utility layer with parameterized exec, row queries, last-insert id, temp database URLs, and a dedicated error type",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift"
+    ],
+    "tags": [
+      "infrastructure",
+      "sqlite",
+      "helpers"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/package-document",
+      "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "2e9c4ce311889b6a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

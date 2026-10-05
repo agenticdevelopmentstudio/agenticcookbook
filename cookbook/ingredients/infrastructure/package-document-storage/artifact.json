@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "AD558F24-29FA-430F-9EBD-0EC42F1AA9D1",
+    "title": "Package Document Storage",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "SQLite-in-a-package storage format with schema versioning, legacy JSON migration, atomic temp-database writes, and migration-safe Codable models",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift",
+      "windows"
+    ],
+    "tags": [
+      "infrastructure",
+      "package-document",
+      "sqlite",
+      "migration"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers"
+    ],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/package-document",
+      "agenticdevelopercookbook://ingredients/infrastructure/package-document-type"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "4f8a983ede3eaff4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

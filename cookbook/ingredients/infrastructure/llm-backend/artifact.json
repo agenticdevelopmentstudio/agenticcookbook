@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "597E9CD0-453A-42B8-A464-8BA8D31A6EFC",
+    "title": "LLM Backend",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/llm-backend",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "review",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Configuration-selected inference backend (OpenAI-compatible HTTP endpoint or CLI subprocess) that returns schema-constrained structured output to job handlers",
+    "platforms": [
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "infrastructure",
+      "ai-jobs",
+      "llm",
+      "structured-output"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
+      "agenticdevelopercookbook://ingredients/infrastructure/job-worker"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc2119"
+    ],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "24750364034bcf77",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

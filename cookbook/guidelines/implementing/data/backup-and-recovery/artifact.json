@@ -5,11 +5,11 @@
     "title": "Database backup and recovery",
     "domain": "agenticdevelopercookbook://guidelines/implementing/data/backup-and-recovery",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,14 +37,14 @@
       "https://litestream.io/how-it-works/",
       "https://sqlite.org/wal.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04",
     "triggers": [
       "database-operations",
       "configuration"
     ]
   },
-  "synced": "1822fff3c9569eca",
+  "synced": "621d06ede25f375b",
   "parts": [
     {"part": "intro"},
     {"part": "backup-methods", "heading": "Backup methods"},

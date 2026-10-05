@@ -3,11 +3,11 @@ id: 63659e2c-215a-44ed-b330-2bca8d88bd9a
 title: "Directory Sync / Watch Lifecycle"
 domain: agenticdevelopercookbook://recipes/infrastructure/directory-sync
 type: recipe
-version: 1.0.0
+version: 2.0.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-03-27
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -20,11 +20,16 @@ platforms:
 tags:
   - directory-sync
   - infrastructure
+ingredients:
+  - agenticdevelopercookbook://ingredients/infrastructure/directory-tree-cache
+  - agenticdevelopercookbook://ingredients/infrastructure/directory-tree-scanner
+  - agenticdevelopercookbook://ingredients/infrastructure/filesystem-watcher
+  - agenticdevelopercookbook://ingredients/infrastructure/directory-watch-coordinator
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Directory Sync / Watch Lifecycle
@@ -33,7 +38,9 @@ approved-date: "2026-04-04"
 
 A lifecycle pattern for synchronizing an in-memory file tree with the filesystem. The coordinator drives four sequential phases: cache load (instant display) followed by full sync (accurate rebuild) followed by watch (live updates) followed by surgical update (efficient patching). This ensures the UI displays a file tree immediately on launch while converging to an accurate, live-updated representation as quickly as possible.
 
-## Terminology
+The recipe composes four ingredients. The directory tree cache owns Phase 1 and the cache format. The directory tree scanner owns Phase 2 and the surgical reload of Phase 4. The filesystem watcher owns Phase 3. The directory watch coordinator owns the lifecycle, published state, and the workspace variant.
+
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -46,172 +53,119 @@ A lifecycle pattern for synchronizing an in-memory file tree with the filesystem
 | Package | A directory that the OS treats as a single opaque file (e.g., `.app`, `.playground`, `.catnip-proj`) |
 | Workspace | A collection of directory entries, each managed by its own coordinator via `WorkspaceDirectoryManager` |
 
-## Behavioral Requirements
+### Logging
 
-### Phase 1 — Cache Load
+Logging is specified per ingredient. The full event set under subsystem `{{bundle_id}}` and category `DirectorySync` is distributed as follows: cache load, cache save, and cache not found events are in the directory tree cache ingredient; full sync, surgical update, permission-skipped, and scan worker events are in the directory tree scanner ingredient; watch started, watch stopped, change received, and excluded-path events are in the filesystem watcher ingredient; the workspace coordinator, workspace syncing state, and project auto-discovery events are in the directory watch coordinator ingredient.
 
-- **load-cached-tree**: On startup, the coordinator MUST attempt to load a cached tree from the JSON file `file-tree-cache.json` for instant display.
-- **background-cache-load**: The cache MUST be loaded synchronously on a background queue so the main thread is never blocked.
-- **handle-missing-cache**: If no cache file exists or the file cannot be read, the coordinator MUST present an empty or loading state. It MUST NOT crash or block.
-- **publish-before-sync**: The loaded cache MUST be published to the UI before Phase 2 begins, so users see an instant tree.
+## Ingredients
 
-### Phase 2 — Full Sync
+| Name | Domain | Role | Required | Configuration |
+|------|--------|------|----------|---------------|
+| Directory tree cache | `agenticdevelopercookbook://ingredients/infrastructure/directory-tree-cache` | Phase 1: loads the JSON cache for instant display and writes it atomically after every change | Yes | Cache directory (a dedicated `cache-{entryID}` directory per workspace entry) |
+| Directory tree scanner | `agenticdevelopercookbook://ingredients/infrastructure/directory-tree-scanner` | Phase 2 and Phase 4: full rebuild and surgical reload of affected directories | Yes | `maxScanWorkers` (default 3, clamped to 1-8) |
+| Filesystem watcher | `agenticdevelopercookbook://ingredients/infrastructure/filesystem-watcher` | Phase 3: file-level change notifications, debounced and filtered | Yes | Debounce latency (0.5 seconds), excluded path prefixes (default `.git` and package directories) |
+| Directory watch coordinator | `agenticdevelopercookbook://ingredients/infrastructure/directory-watch-coordinator` | Owns the lifecycle, publishes the tree and `isSyncing`, applies updates on the main thread; the workspace manager pools one per entry | Yes | Entry ID for workspace use |
 
-- **rebuild-from-filesystem**: The coordinator MUST rebuild the entire file tree from the filesystem on a background queue.
-- **parallel-top-level-scan**: Top-level directories MUST be scanned in parallel via an `OperationQueue`.
-- **configurable-scan-workers**: Parallel scan concurrency MUST be controlled by a configurable `maxScanWorkers` property. The default value MUST be `3`. Valid range MUST be `1` to `8` inclusive. Values outside this range MUST be clamped.
-- **file-tree-node-fields**: Each file tree node MUST contain the following fields:
-  - `path` — absolute filesystem path (`String`)
-  - `name` — display name (`String`)
-  - `isDirectory` — whether the node is a directory (`Bool`)
-  - `isPackage` — whether the node is a package directory (`Bool`)
-  - `fileSize` — size in bytes (`Int?`, nil for directories)
-  - `modificationDate` — last modification timestamp (`Date?`)
-  - `children` — ordered child nodes (`[FileTreeNode]?`, nil for files)
-- **save-cache-after-sync**: After the full sync completes, the coordinator MUST save the updated cache to disk as a fire-and-forget operation on a background queue. A save failure MUST NOT block or crash the coordinator.
-- **publish-syncing-state**: The coordinator MUST publish an `isSyncing` boolean state that is `true` during Phase 2 and `false` after it completes. The UI SHOULD use this to display a status bar indicator.
+## Integration Requirements
 
-### Phase 3 — Watch
+- **phase-ordering**: The coordinator MUST run the phases in this order: cache load, full sync, watch, surgical update. Watch MUST NOT start before the full sync completes, and a surgical update MUST NOT run before the watch has delivered a change.
+- **cache-feeds-first-publish**: The tree produced by the directory tree cache MUST be handed to the coordinator and published before the scanner begins its full sync, so a valid cache always displays before the scan finishes.
+- **sync-result-replaces-cache-tree**: When the scanner completes its full sync, the coordinator MUST replace the published tree with the scanned tree and then trigger a cache save of that tree.
+- **watch-events-drive-surgical-update**: The changed paths the filesystem watcher delivers (after debounce and exclusion filtering) MUST be passed to the scanner's path index so only the affected directories are reloaded, and the coordinator MUST then apply the result and trigger a cache save.
+- **shared-exclusion-policy**: The watcher's excluded prefixes and the scanner's treatment of package directories MUST agree: a path the watcher excludes MUST NOT cause a surgical update, and a package directory the scanner treats as opaque MUST NOT have its children reported as changed nodes.
+- **failure-isolation**: A cache load failure, a cache save failure, or a permission-denied directory MUST NOT prevent the remaining phases from running; the coordinator MUST continue from the next phase.
+- **main-thread-boundary**: Cache load, scanning, and cache saves MUST run off the main thread; only the application of updated nodes to the published tree and the `isSyncing` publication MUST occur on the main thread.
 
-- **start-fsevents-watch**: After full sync completes, the coordinator MUST start filesystem monitoring using FSEvents (macOS) with file-level granularity.
-- **debounce-latency**: The FSEvents stream MUST use a debounce latency of `0.5` seconds to coalesce rapid changes.
-- **exclude-path-prefixes**: The coordinator MUST exclude paths matching configurable prefixes from change processing. The default excluded prefixes MUST include `.git` and package directories.
-- **dispatch-to-main-thread**: Change events from the FSEvents callback MUST be dispatched to the main thread for UI updates.
+## Layout
 
-### Phase 4 — Surgical Update
+The four phases are a pipeline around one owner. This is a non-UI recipe, so the layout is the logical arrangement of the components and the order of the data flow.
 
-- **surgical-reload-affected**: On receiving filesystem change events, the coordinator MUST only reload the children of the affected directories — not rebuild the full tree.
-- **build-path-index**: The coordinator MUST build a path index from the changed file paths to identify the set of affected parent directories.
-- **background-load-children**: New children for affected directories MUST be loaded on a background queue.
-- **apply-on-main-thread**: The updated children MUST be applied to the in-memory tree on the main thread.
-- **save-cache-after-update**: After a surgical update, the coordinator MUST save the updated cache to disk (fire-and-forget on a background queue).
+```
+ launch
+   │
+   ▼
+ ┌──────────────────────┐   cached tree   ┌──────────────────────────┐
+ │ Directory tree cache │ ───────────────▶│                          │──▶ published tree (UI)
+ └──────────────────────┘                  │ Directory watch          │──▶ isSyncing (UI)
+ ┌──────────────────────┐   scanned tree  │ coordinator              │
+ │ Directory tree       │ ───────────────▶│  (one per directory;     │
+ │ scanner              │ ◀───────────────│   workspace manager      │
+ └──────────────────────┘  changed paths  │   pools one per entry)   │
+ ┌──────────────────────┐ ───────────────▶│                          │
+ │ Filesystem watcher   │                 └─────────────┬────────────┘
+ └──────────────────────┘                               │ save after sync / update
+                                                        ▼
+                                              Directory tree cache (atomic write)
+```
 
-### Cache Format
+## Shared State
 
-- **json-cache-format**: The cache MUST be stored as a JSON file using the following entry structure:
-  ```
-  FileTreeCacheEntry {
-    path: String
-    parentPath: String?   // nil for root
-    name: String
-    isDirectory: Bool
-    isPackage: Bool
-    fileSize: Int?
-    modificationDate: Date?   // ISO 8601 encoded
-  }
-  ```
-- **flattened-cache-array**: The cache MUST be a flattened array of `FileTreeCacheEntry` values. Parent-child relationships MUST be reconstructed from `path` / `parentPath` on load.
-- **atomic-cache-writes**: Cache writes MUST be atomic — write to a temporary file first, then rename into place. This prevents corruption from interrupted writes.
+| State | Source | Consumer | Direction | Mechanism |
+|-------|--------|----------|-----------|-----------|
+| In-memory file tree | Directory tree scanner (full sync, surgical reload) and directory tree cache (initial load) | Coordinator, then the UI | one-way | The coordinator publishes the tree; updates are applied on the main thread |
+| `isSyncing` | Coordinator | UI status bar, workspace manager | one-way | Published boolean; `true` only during the full sync; the workspace manager aggregates it with logical OR |
+| Cache file (`file-tree-cache.json`) | Coordinator after sync or update | Directory tree cache on the next launch | one-way | Atomic write to a temporary file followed by a rename |
+| Changed paths | Filesystem watcher | Scanner path index via the coordinator | one-way | Debounced, exclusion-filtered batch delivered on the main thread |
+| Excluded path prefixes | Configuration | Filesystem watcher | one-way | Configurable list, default `.git` and package directories |
+| Scan concurrency | Configuration | Scanner | one-way | `maxScanWorkers`, default 3, clamped to 1-8 |
 
-### FSEvents Configuration (macOS)
-
-- **file-level-granularity**: The FSEvents stream MUST be created with `kFSEventStreamCreateFlagFileEvents` for file-level granularity.
-- **utility-qos-queue**: The FSEvents dispatch queue MUST use utility QoS.
-- **configurable-exclusions**: Excluded path prefixes MUST be configurable.
-- **filter-excluded-paths**: The FSEvents callback MUST filter changed paths against the excluded prefixes before dispatching.
-
-### Workspace Variant
-
-- **coordinator-per-entry**: `WorkspaceDirectoryManager` MUST manage a pool of coordinators, one per workspace directory entry.
-- **aggregate-syncing-state**: `WorkspaceDirectoryManager` MUST aggregate the `isSyncing` state across all coordinators. The workspace-level `isSyncing` MUST be `true` if any coordinator is syncing.
-- **auto-discover-packages**: `WorkspaceDirectoryManager` MUST additionally scan for `.catnip-proj` packages for auto-discovery of projects.
-- **dedicated-cache-directory**: Each coordinator in the workspace MUST use a dedicated cache directory named `cache-{entryID}`.
-
-## States
-
-| State | Behavior |
-|-------|----------|
-| No cache, first launch | Coordinator loads empty state, begins full sync immediately |
-| Cache available | Coordinator displays cached tree instantly, then begins full sync in background |
-| Full sync in progress | `isSyncing` is `true`, UI shows sync indicator |
-| Full sync complete | `isSyncing` is `false`, watch phase starts, cache saved |
-| Watch active, no changes | Coordinator idle, FSEvents stream listening |
-| Filesystem change detected | Surgical update runs on affected directories only |
-| Surgical update in progress | Affected directory children reloaded, tree patched, cache saved |
-| Watch stopped (e.g., directory deleted) | Coordinator publishes empty tree, stops FSEvents stream |
-
-## Accessibility
-
-Not applicable — directory sync is an infrastructure component with no direct user-facing UI. UI presentation of the synced directory tree is handled by the file-tree-browser recipe.
-
-## Conformance Test Vectors
+## Integration Test Vectors
 
 | ID | Requirements | Input | Expected |
 |----|-------------|-------|----------|
-| dirsync-001 | load-cached-tree, publish-before-sync | Launch with valid `file-tree-cache.json` on disk | Cached tree is published to UI before full sync begins |
-| dirsync-002 | handle-missing-cache | Launch with no cache file on disk | Empty/loading state shown, full sync begins without error |
-| dirsync-003 | handle-missing-cache | Launch with corrupt (invalid JSON) cache file | Empty/loading state shown, full sync begins without error |
-| dirsync-004 | rebuild-from-filesystem, parallel-top-level-scan | Full sync on directory with 5 top-level subdirectories | All 5 subdirectories scanned, tree matches filesystem |
-| dirsync-005 | configurable-scan-workers | Set `maxScanWorkers` to 0 | Value clamped to 1, scan proceeds with 1 worker |
-| dirsync-006 | configurable-scan-workers | Set `maxScanWorkers` to 10 | Value clamped to 8, scan proceeds with 8 workers |
-| dirsync-007 | file-tree-node-fields | Scan a directory containing a file (100 bytes, modified 2026-01-15) and a subdirectory | File node has correct `fileSize`, `modificationDate`, `isDirectory: false`; directory node has `isDirectory: true`, `children` populated |
-| dirsync-008 | save-cache-after-sync | Full sync completes | `file-tree-cache.json` exists on disk with valid JSON content |
+| dirsync-001 | load-cached-tree, publish-before-sync, cache-feeds-first-publish | Launch with valid `file-tree-cache.json` on disk | Cached tree is published to UI before full sync begins |
+| dirsync-002 | handle-missing-cache, failure-isolation | Launch with no cache file on disk | Empty/loading state shown, full sync begins without error |
+| dirsync-003 | handle-missing-cache, failure-isolation | Launch with corrupt (invalid JSON) cache file | Empty/loading state shown, full sync begins without error |
+| dirsync-008 | save-cache-after-sync, sync-result-replaces-cache-tree | Full sync completes | `file-tree-cache.json` exists on disk with valid JSON content |
 | dirsync-009 | publish-syncing-state | Observe `isSyncing` during full sync | Value is `true` during scan, `false` after completion |
-| dirsync-010 | debounce-latency | Create 10 files within 0.3 seconds | Single coalesced change event delivered after 0.5s debounce |
-| dirsync-011 | exclude-path-prefixes | Create a file inside `.git/` | No surgical update triggered, tree unchanged |
-| dirsync-012 | surgical-reload-affected, build-path-index | Create a new file in subdirectory `src/` | Only `src/` children are reloaded; sibling directories untouched |
-| dirsync-013 | apply-on-main-thread | Surgical update completes | Updated nodes visible in UI on main thread |
+| dirsync-011 | exclude-path-prefixes, shared-exclusion-policy | Create a file inside `.git/` | No surgical update triggered, tree unchanged |
+| dirsync-012 | surgical-reload-affected, build-path-index, watch-events-drive-surgical-update | Create a new file in subdirectory `src/` | Only `src/` children are reloaded; sibling directories untouched |
+| dirsync-013 | apply-on-main-thread, main-thread-boundary | Surgical update completes | Updated nodes visible in UI on main thread |
 | dirsync-014 | save-cache-after-update | Surgical update completes | Cache file on disk reflects the new file |
-| dirsync-015 | atomic-cache-writes | Kill process during cache write | On next launch, cache file is either the old valid version or the new valid version — never partial/corrupt |
-| dirsync-016 | coordinator-per-entry | Workspace with 3 directory entries | 3 coordinators created, one per entry |
-| dirsync-017 | aggregate-syncing-state | 1 of 3 workspace coordinators is syncing | Workspace-level `isSyncing` is `true` |
-| dirsync-018 | aggregate-syncing-state | All 3 workspace coordinators finish syncing | Workspace-level `isSyncing` is `false` |
-| dirsync-019 | auto-discover-packages | Workspace directory contains a `.catnip-proj` package | Package is auto-discovered and reported |
-| dirsync-020 | dedicated-cache-directory | Two workspace entries with IDs "abc" and "def" | Cache directories are `cache-abc` and `cache-def` respectively |
-| dirsync-021 | flattened-cache-array | Load cache with 100 entries, verify parent-child wiring | All entries with `parentPath` matching another entry's `path` are wired as children |
+| dirsync-022 | phase-ordering | Launch and observe the phase sequence | Cache load, then full sync, then watch start; no watch event is processed before the full sync completes |
+| dirsync-023 | failure-isolation | Scan a tree where one subdirectory is permission-denied | That directory is skipped with a warning; the remaining directories are scanned and the watch phase still starts |
+
+Vectors dirsync-004 to dirsync-007, dirsync-010, dirsync-015 to dirsync-021 are single-ingredient vectors and appear in the ingredients under their new IDs: scanner vectors (dirsync-004, -005, -006, -007) in the directory tree scanner; watcher vector (dirsync-010) in the filesystem watcher; cache vectors (dirsync-015, -021) in the directory tree cache; and workspace vectors (dirsync-016 to dirsync-020) in the directory watch coordinator.
 
 ## Edge Cases
 
-- **Large repository (100k+ files)**: Full sync SHOULD complete within a reasonable time. Parallel scanning (parallel-top-level-scan) and configurable concurrency (configurable-scan-workers) mitigate this. The UI MUST remain responsive during sync — all scanning is off the main thread.
-- **Rapid filesystem changes**: The 0.5s debounce (debounce-latency) coalesces rapid changes into a single surgical update. If changes arrive faster than the update cycle, the coordinator SHOULD batch them rather than queueing unbounded updates.
-- **Corrupt cache file**: The coordinator MUST handle malformed JSON gracefully (handle-missing-cache) — log a warning and proceed with full sync as if no cache exists.
-- **Cache file missing or unreadable**: Same behavior as corrupt cache — empty/loading state, then full sync.
+- **Large repository (100k+ files)**: Full sync SHOULD complete within a reasonable time. Parallel scanning and configurable concurrency mitigate this. The UI MUST remain responsive during sync — all scanning is off the main thread (main-thread-boundary).
+- **Rapid filesystem changes**: The debounce coalesces rapid changes into a single surgical update. If changes arrive faster than the update cycle, the coordinator SHOULD batch them rather than queueing unbounded updates.
+- **Corrupt or missing cache file**: Handled as in the directory tree cache ingredient: log a warning and proceed with full sync as if no cache exists (failure-isolation).
 - **Network/remote drives**: FSEvents may not work reliably on network-mounted volumes. The coordinator SHOULD fall back to periodic polling or disable watch mode for non-local filesystems. Implementors SHOULD detect volume type and adapt.
 - **Directory deleted while watching**: The coordinator MUST handle the root directory being deleted or unmounted. It SHOULD publish an empty tree and stop the FSEvents stream.
 - **Permission denied on subdirectory**: The coordinator MUST skip inaccessible directories during scan and log a warning. It MUST NOT crash or abort the entire sync.
 - **Symlink cycles**: The coordinator MUST NOT follow symlinks recursively into cycles. It SHOULD detect symlinks and either skip or represent them as leaf nodes.
-- **Package directories**: Directories identified as packages (file-tree-node-fields `isPackage`) SHOULD NOT have their children scanned by default. They are treated as opaque files.
+- **Package directories**: Directories identified as packages (`isPackage`) SHOULD NOT have their children scanned by default. They are treated as opaque files (shared-exclusion-policy).
 - **Concurrent cache writes**: If a surgical update triggers a cache save while a previous save is still in progress, the coordinator SHOULD coalesce or serialize writes to avoid conflicts.
 - **Empty directory**: A directory with no children MUST be represented as a node with an empty `children` array, not `nil`.
-
-## Logging
-
-Subsystem: `{{bundle_id}}` | Category: `DirectorySync`
-
-| Event | Level | Message |
-|-------|-------|---------|
-| Cache load started | debug | `DirectorySync: loading cache from "{{path}}"` |
-| Cache load succeeded | debug | `DirectorySync: cache loaded, {{count}} entries` |
-| Cache load failed | warning | `DirectorySync: cache load failed: {{error}}` |
-| Cache not found | debug | `DirectorySync: no cache file found, starting fresh` |
-| Full sync started | info | `DirectorySync: full sync started for "{{rootPath}}"` |
-| Full sync completed | info | `DirectorySync: full sync completed, {{nodeCount}} nodes in {{duration}}s` |
-| Cache save started | debug | `DirectorySync: saving cache ({{count}} entries)` |
-| Cache save succeeded | debug | `DirectorySync: cache saved to "{{path}}"` |
-| Cache save failed | warning | `DirectorySync: cache save failed: {{error}}` |
-| Watch started | info | `DirectorySync: FSEvents watch started for "{{rootPath}}"` |
-| Watch stopped | info | `DirectorySync: FSEvents watch stopped` |
-| Change event received | debug | `DirectorySync: {{changeCount}} changes received, {{affectedDirCount}} directories affected` |
-| Surgical update started | debug | `DirectorySync: surgical update for {{dirCount}} directories` |
-| Surgical update completed | debug | `DirectorySync: surgical update completed in {{duration}}s` |
-| Directory skipped (permission) | warning | `DirectorySync: skipped "{{path}}" — permission denied` |
-| Excluded path filtered | debug | `DirectorySync: filtered {{count}} excluded paths` |
-| Workspace coordinator created | debug | `DirectorySync: workspace coordinator created for entry "{{entryID}}"` |
-| Workspace syncing state changed | debug | `DirectorySync: workspace isSyncing={{value}}` |
-| Project auto-discovered | info | `DirectorySync: discovered .catnip-proj at "{{path}}"` |
-| Scan worker count | debug | `DirectorySync: maxScanWorkers={{count}}` |
 
 ## Platform Notes
 
 - **SwiftUI (macOS)**: Use `FSEventStreamCreate` with `kFSEventStreamCreateFlagFileEvents` and `kFSEventStreamCreateFlagUseCFTypes`. Schedule on a `DispatchQueue` with `.utility` QoS. Use `FileManager` for directory enumeration. Publish `isSyncing` via `@Published` on an `@Observable` or `ObservableObject` coordinator. For atomic cache writes, write to a `.tmp` file in the same directory then use `FileManager.moveItem(at:to:)` which is atomic on APFS/HFS+. Use `OperationQueue` with `maxConcurrentOperationCount` for parallel scanning.
 - **SwiftUI (iOS / visionOS)**: FSEvents is not available on iOS or visionOS. Use `DispatchSource.makeFileSystemObjectSource` for directory-level monitoring on individual directories, or poll on a timer. File-level granularity is limited — surgical updates may need to rescan entire directories. Consider using `NSFilePresenter` / `NSFileCoordinator` for coordinated file access. On visionOS, the same iOS limitations apply. Cache loading and saving work identically via `FileManager`.
+- **Compose**: Not applicable as written — FSEvents and `FileManager` are Apple frameworks. An Android implementation would use `FileObserver` for watching and expose `isSyncing` and the tree as `StateFlow` values; the integration requirements apply unchanged.
+- **React/Web**: Not applicable to browser runtimes, which have no general filesystem watching. A Node.js (TypeScript) implementation would use a native watcher such as `fs.watch` or chokidar behind the same requirements.
 
 ## Design Decisions
 
-_None yet — decisions made during implementation should be recorded here._
+**Decision**: Split the lifecycle into a cache, a scanner, a watcher, and a thin coordinator instead of one monolithic coordinator.
+**Rationale**: Each component has independent requirements and can be reused or replaced without touching the others; the coordinator owns only ordering, published state, and main-thread application. This replaces the earlier note that no design decisions had been recorded yet.
+**Approved**: pending
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [main-thread-freedom](agenticdevelopercookbook://compliance/performance#main-thread-freedom) | partial | Performance |
+| [graceful-degradation](agenticdevelopercookbook://compliance/reliability#graceful-degradation) | partial | Reliability |
+| [data-integrity](agenticdevelopercookbook://compliance/reliability#data-integrity) | partial | Reliability |
+
+> Status is `partial`: this recipe specifies the integration-level requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the recipe level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-10-04 | Mike Fullerton | Restructure into recipe shape; extract component behavior into ingredients |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

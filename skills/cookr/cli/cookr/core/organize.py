@@ -360,7 +360,7 @@ def _manifest(data: dict, repo_root: Path, author: str, day: str) -> dict:
         "modified": day,
         "platforms": platforms,
         "cookbook": {"repo": COOKBOOK_REPO, "version": COOKBOOK_VERSION},
-        "structure": {"name": name, "kind": "library"},
+        "structure": {"kind": "library"},
         "code": data["code"],
     }
 

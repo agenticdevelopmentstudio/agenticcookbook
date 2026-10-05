@@ -5,11 +5,11 @@
     "title": "App Lifecycle",
     "domain": "agenticdevelopercookbook://recipes/app/lifecycle",
     "type": "recipe",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-03-27",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,26 +26,32 @@
       "app",
       "lifecycle"
     ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/app/startup-behavior",
+      "agenticdevelopercookbook://ingredients/app/session-restore",
+      "agenticdevelopercookbook://ingredients/app/child-process-cleanup",
+      "agenticdevelopercookbook://ingredients/infrastructure/settings-keys",
+      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+    ],
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "050dada47b561975",
+  "synced": "aa954783b773e1f3",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "terminology", "heading": "Terminology"},
-    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "appearance", "heading": "Appearance"},
-    {"part": "states", "heading": "States"},
-    {"part": "accessibility", "heading": "Accessibility"},
-    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
-    {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }

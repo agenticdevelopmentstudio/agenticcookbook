@@ -3,11 +3,11 @@ id: a1845427-a2cd-4744-96bf-f6c6f2380982
 title: "File Tree Browser"
 domain: agenticdevelopercookbook://ingredients/ui/panels/file-tree-browser
 type: ingredient
-version: 1.0.0
+version: 1.1.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -25,8 +25,8 @@ tags:
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # File Tree Browser
@@ -35,7 +35,7 @@ approved-date: "2026-04-04"
 
 A hierarchical file browser that displays a project's directory structure using OutlineGroup/List with lazy child loading, git status badges, configurable ignore patterns, and SF Symbol icons themed by file type. Serves as the primary navigation sidebar for project-based workflows.
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -204,7 +204,7 @@ A hierarchical file browser that displays a project's directory structure using 
 
 This ingredient has no configurable options.
 
-## Project Settings
+### Project Settings
 
 | Setting | Type | Default | Constraints | Description |
 |---------|------|---------|-------------|-------------|
@@ -213,6 +213,15 @@ This ingredient has no configurable options.
 
 - **per-project-settings**: Both settings MUST be configured per-project.
 - **setting-change-resync**: Changing either setting MUST trigger a full resync of the file tree.
+
+## Accessibility Options
+
+| Option | Behavior |
+|--------|----------|
+| Reduce Motion | Expand/collapse transitions are instant (no rotation animation on disclosure indicator) |
+| Increase Contrast | Selection highlight and icon colors use higher-contrast values |
+| Differentiate Without Color | Distinct SF Symbol shapes already differentiate file types without relying on color (icon-shape-not-color) |
+| VoiceOver | Row labels include entry name, type, and git status; expand/collapse state announced |
 
 ## Logging
 
@@ -231,15 +240,6 @@ Subsystem: `{{bundle_id}}` | Category: `FileTreeBrowser`
 | Settings changed | debug | `FileTreeBrowser: settings changed, triggering full resync` |
 | Git status refresh | debug | `FileTreeBrowser: git status refresh (debounced)` |
 
-## Accessibility Options
-
-| Option | Behavior |
-|--------|----------|
-| Reduce Motion | Expand/collapse transitions are instant (no rotation animation on disclosure indicator) |
-| Increase Contrast | Selection highlight and icon colors use higher-contrast values |
-| Differentiate Without Color | Distinct SF Symbol shapes already differentiate file types without relying on color (icon-shape-not-color) |
-| VoiceOver | Row labels include entry name, type, and git status; expand/collapse state announced |
-
 ## Platform Notes
 
 - **SwiftUI**: Use `List` with `OutlineGroup` and `.listStyle(.sidebar)`. Model `FileTreeNode` as an `ObservableObject` with `@Published children: [FileTreeNode]?` (nil = not yet loaded, empty = loaded but empty). Load children on `OutlineGroup`'s `children` keypath access. Git status fetched via a separate provider running on a background `DispatchQueue`. Parallel scanning via `OperationQueue` with `maxConcurrentOperationCount` set to `maxScanWorkers`. Ignore patterns evaluated using `fnmatch()` from Darwin. Icons via `Image(systemName:)` with `.foregroundStyle()` for theming. Tooltips via `.help()` modifier (macOS).
@@ -250,8 +250,19 @@ Subsystem: `{{bundle_id}}` | Category: `FileTreeBrowser`
 
 _None yet -- decisions made during implementation should be recorded here._
 
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [keyboard-navigable](agenticdevelopercookbook://compliance/accessibility#keyboard-navigable) | partial | Accessibility |
+| [screen-reader-support](agenticdevelopercookbook://compliance/accessibility#screen-reader-support) | partial | Accessibility |
+| [lazy-loading](agenticdevelopercookbook://compliance/performance#lazy-loading) | partial | Performance |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
+
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

@@ -3,11 +3,11 @@ id: 25A3B827-1DA9-4600-98EC-F5C492A162E3
 title: "Schema evolution and migrations"
 domain: agenticdevelopercookbook://guidelines/implementing/data/schema-evolution
 type: guideline
-version: 1.0.2
+version: 1.0.3
 status: accepted
 language: en
 created: 2026-04-06
-modified: 2026-04-09
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -28,14 +28,16 @@ references:
   - https://sqlite.org/lang_altertable.html
   - https://david.rothlis.net/declarative-schema-migration-for-sqlite/
   - https://levlaz.org/sqlite-db-migrations-with-pragma-user_version/
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-06"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 triggers:
   - database-operations
   - schema-design
 ---
 
 # Schema evolution and migrations
+
+Version every SQLite schema with `PRAGMA user_version` and evolve it through ordered, tested migrations that respect ALTER TABLE's limits and stay sync-compatible.
 
 ## Track schema version with PRAGMA user_version
 
@@ -177,6 +179,7 @@ This works well for additive changes and eliminates the need to write explicit `
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.3 | 2026-10-04 | Mike Fullerton | Add the statement under the title (or align the title line) that the guideline format requires |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |
 | 1.0.1 | 2026-04-09 | Mike Fullerton | Reorganize into use-case directory |
 | 1.0.0 | 2026-04-06 | Mike Fullerton | Initial version |

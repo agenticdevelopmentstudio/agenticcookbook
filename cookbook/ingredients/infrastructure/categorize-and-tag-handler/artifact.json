@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "7C0B4381-0A41-4D8C-8B90-1614038B1A94",
+    "title": "Categorize and Tag Handler",
+    "domain": "agenticdevelopercookbook://ingredients/infrastructure/categorize-and-tag-handler",
+    "type": "ingredient",
+    "version": "1.0.0",
+    "status": "review",
+    "language": "en",
+    "created": "2026-10-04",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Job handler that categorizes and tags a title and body with schema-constrained LLM output, idempotent per job ID",
+    "platforms": [
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "infrastructure",
+      "ai-jobs",
+      "handler",
+      "categorization"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://ingredients/infrastructure/llm-backend"
+    ],
+    "related": [
+      "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
+      "agenticdevelopercookbook://ingredients/infrastructure/job-worker"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc2119"
+    ],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "8a3337b190d69ed6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

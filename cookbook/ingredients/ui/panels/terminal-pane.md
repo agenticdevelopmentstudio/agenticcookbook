@@ -3,11 +3,11 @@ id: 4a2898cf-34ed-4153-8d06-c795f80c19cd
 title: "Terminal Pane"
 domain: agenticdevelopercookbook://ingredients/ui/panels/terminal-pane
 type: ingredient
-version: 1.0.0
+version: 1.1.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -24,8 +24,8 @@ tags:
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Terminal Pane
@@ -34,7 +34,7 @@ approved-date: "2026-04-04"
 
 A multi-session terminal pane that provides PTY-backed shell sessions within the workspace. Bundles five cooperating parts: terminal sessions (PTY lifecycle and state), a session manager (per-window session orchestration), a terminal view (SwiftTerm rendering with reparenting), a session list sidebar (selection and metadata display), and terminal profiles (shell and project-level settings). Derived from scratching-post terminal subsystem.
 
-## Terminology
+### Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -272,6 +272,13 @@ A multi-session terminal pane that provides PTY-backed shell sessions within the
 
 This ingredient has no configurable options.
 
+## Privacy
+
+- **Data collected**: Terminal output is rendered in-memory by SwiftTerm. Custom subtitles and dot colors are session-ephemeral.
+- **Storage**: No terminal content is persisted to disk. Project settings (defaultShell, autoOpenTerminal) are stored in the project's settings file.
+- **Transmission**: None — terminal content never leaves the device.
+- **Retention**: Session data exists only for the lifetime of the session. Settings persist until changed.
+
 ## Logging
 
 Subsystem: `{{bundle_id}}` | Category: `TerminalPane`
@@ -306,19 +313,23 @@ Subsystem: `{{bundle_id}}` | Category: `TerminalPane`
 - **SwiftUI (iOS / visionOS)**: Use `UIViewRepresentable` wrapping a container `UIView`. SwiftTerm provides `TerminalView` as a `UIView` subclass. Reparenting approach is identical. On iOS, the session list may be presented as a sheet or popover rather than a persistent sidebar, depending on size class. On visionOS, use a `NavigationSplitView` with the session list in the sidebar column. PTY APIs (`forkpty`, `tcgetpgrp`) are available on iOS but sandboxing restrictions may limit shell execution to developer/enterprise contexts.
 - **General**: The terminal emulator library (SwiftTerm) handles VT100/xterm escape sequence parsing, scrollback buffer management, and text rendering. The session layer is responsible for PTY lifecycle, environment setup, OSC dispatch, and process monitoring. The view layer is responsible for reparenting and profile application.
 
-## Privacy
-
-- **Data collected**: Terminal output is rendered in-memory by SwiftTerm. Custom subtitles and dot colors are session-ephemeral.
-- **Storage**: No terminal content is persisted to disk. Project settings (defaultShell, autoOpenTerminal) are stored in the project's settings file.
-- **Transmission**: None — terminal content never leaves the device.
-- **Retention**: Session data exists only for the lifetime of the session. Settings persist until changed.
-
 ## Design Decisions
 
 _None yet — decisions made during implementation should be recorded here._
+
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [keyboard-navigable](agenticdevelopercookbook://compliance/accessibility#keyboard-navigable) | partial | Accessibility |
+| [main-thread-freedom](agenticdevelopercookbook://compliance/performance#main-thread-freedom) | partial | Performance |
+| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | partial | Security |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

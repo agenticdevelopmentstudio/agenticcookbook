@@ -3,11 +3,11 @@ id: 7c2049c7-89d9-4135-b657-dbd03cdd19a0
 title: "Logging"
 domain: agenticdevelopercookbook://ingredients/infrastructure/logging
 type: ingredient
-version: 1.0.0
+version: 1.1.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-04-05
+modified: 2026-10-04
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -25,8 +25,8 @@ tags:
 depends-on: []
 related: []
 references: []
-approved-by: "approve-artifact v1.0.0"
-approved-date: "2026-04-04"
+approved-by: "approve-artifact v1.1.0"
+approved-date: "2026-10-04"
 ---
 
 # Logging
@@ -228,8 +228,20 @@ In production builds, `debug()` calls are no-ops. For server-side rendering, rep
 
 _None yet._
 
+## Compliance
+
+| Check | Status | Category |
+|-------|--------|----------|
+| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | partial | Security |
+| [no-pii-in-logs](agenticdevelopercookbook://compliance/privacy-and-data#no-pii-in-logs) | partial | Privacy |
+| [health-observability](agenticdevelopercookbook://compliance/reliability#health-observability) | partial | Reliability |
+| [separation-of-concerns](agenticdevelopercookbook://compliance/best-practices#separation-of-concerns) | partial | Best Practices |
+
+> Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
+
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-10-04 | Mike Fullerton | Conform to the ingredient format: section order, non-standard sections folded into allowed ones, Compliance added |
 | 1.0.0 | 2026-03-27 | Mike Fullerton | Initial creation |

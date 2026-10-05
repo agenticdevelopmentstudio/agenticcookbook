@@ -1,0 +1,6 @@
+
+- **SwiftUI (macOS)**: Inside the shell view, create a `@StateObject var sessionManager = SessionManager()`. Use `HSplitView` with the session list sidebar (per terminal-pane sidebar-session-list through row-context-menu) on the left and the terminal view (per terminal-pane nsview-representable through palette-color-structure) on the right. Apply `.frame(minWidth: 150, maxWidth: 200)` on the sidebar and `.frame(maxWidth: .infinity)` on the terminal view. Publish the session manager via `.focusedObject(sessionManager)` so menu commands dispatch correctly. On `onAppear`, check `sessionManager.sessions.isEmpty` and call `sessionManager.addSession()` if true.
+- **SwiftUI (visionOS)**: Same view structure. `HSplitView` renders within the window. The session sidebar may use `NavigationSplitView` with the session list in the sidebar column for better visionOS integration, as noted in terminal-pane platform notes.
+- **Compose**: Use a `Row` with a fixed-range sidebar `Column` of sessions and a terminal surface. Hold the session manager in a `remember`ed holder scoped to the window and call terminate-all in `DisposableEffect`'s `onDispose`.
+- **React/Web**: Use a two-column layout with the session list in a resizable sidebar. Create the session manager in a window-scoped context provider; terminate all sessions on unmount or `beforeunload`.
+

@@ -5,11 +5,11 @@
     "title": "Package Document",
     "domain": "agenticdevelopercookbook://recipes/infrastructure/package-document",
     "type": "recipe",
-    "version": "1.0.0",
+    "version": "2.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-03-27",
+    "modified": "2026-10-04",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -24,28 +24,30 @@
       "infrastructure",
       "package-document"
     ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/infrastructure/package-document-type",
+      "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage",
+      "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers"
+    ],
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04"
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
   },
-  "synced": "137ec5e080677d0b",
+  "synced": "37e1b0c3a4281b51",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
-    {"part": "terminology", "heading": "Terminology"},
-    {"part": "architecture", "heading": "Architecture"},
-    {"part": "uttype-registration", "heading": "UTType Registration"},
-    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
-    {"part": "appearance", "heading": "Appearance"},
-    {"part": "states", "heading": "States"},
-    {"part": "accessibility", "heading": "Accessibility"},
-    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
     {"part": "edge-cases", "heading": "Edge Cases"},
-    {"part": "logging", "heading": "Logging"},
     {"part": "platform-notes", "heading": "Platform Notes"},
     {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
     {"part": "history", "heading": "Change History"}
   ]
 }
