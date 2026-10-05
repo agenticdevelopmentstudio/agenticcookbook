@@ -78,9 +78,16 @@ zero failing). In particular:
 - **skill-router install and CI** — none done.
 - **Registering adtoolkit** with the live skill-router registry.
 
-## In progress
+## Done — adtoolkit recipe conformance (2026-10-04)
 
-- adtoolkit 100% recipe conformance, branch `recipe-conformance` in an
-  adtoolkit worktree: every spec under its `cookbook/` must grade `complete` in
-  `cookr coverage`, and the specs with empty Reference Implementations must
-  name their code. Work proceeds in batches, one commit per batch.
+- adtoolkit main is 100% recipe conformant. The work landed as adtoolkit
+  PR #13 (`95f9f187a`) and a follow-up (`661425b16`).
+- On adtoolkit main, all three cookr gates pass:
+  - `cookr coverage -p . --require complete`: 443 complete, 0 unmatched;
+  - `cookr validate -p .`;
+  - `cookr compile -p . --check`: 443 of 443 current.
+- Every spec is a source folder. Fifteen record `names_hosts` reasons.
+- Every known defect from the 2026-09-29 review is fixed. adtoolkit's
+  `docs/project/cookbook-organization.md` maps each defect to its commits.
+- This needed one cookr fix, PR #68: child specs grouped under a plain
+  subdirectory of a parent's source folder stay in the corpus.
