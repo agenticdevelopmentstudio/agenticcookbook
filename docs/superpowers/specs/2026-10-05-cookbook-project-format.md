@@ -115,6 +115,21 @@ Every artifact type may vary along two axes:
   shorter `description`). The file name is the vendor's model id. The path, not a filename
   marker, says what it is, and no file is ever named `claude.md` (which a case-insensitive
   filesystem would make `CLAUDE.md`). Replaces cookr's `hosts/*.add.md|yaml`.
+- **Group files** cover more than one model, marked by an `-all` suffix so they never collide
+  with a model id: `claude-all.md` (every Claude model), `claude-opus-all.md` (every Opus).
+  cookr stacks what exists, broadest first — for Opus 5.5:
+  `claude-all.md` + `claude-opus-all.md` + `claude-opus-5-5.md`. Every level is optional.
+
+  ```
+  ai/
+    anthropic/
+      claude-all.md
+      claude-opus-all.md
+      claude-opus-5-5.md
+      claude-haiku-all.md
+    openai/
+      gpt-5-codex.md
+  ```
 
 cookr compiles one skill per target: shared content + the consumer's platform file + the model
 addition. Both folders are optional; an artifact with no variation has neither.
