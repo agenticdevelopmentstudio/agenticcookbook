@@ -134,8 +134,8 @@ Every artifact type may vary along two axes:
 cookr compiles one skill per target: shared content + the consumer's platform file + the model
 addition. Both folders are optional; an artifact with no variation has neither.
 
-**Open:** whether the axes ever combine (a note for Swift *and* Haiku), or are always
-independent.
+The axes are **independent**: there is no combined platform × model file. A Swift skill for
+Haiku is the shared content + `platforms/swift.md` + the Haiku `ai/` files.
 
 ## Principle
 
