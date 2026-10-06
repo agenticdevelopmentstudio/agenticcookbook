@@ -99,8 +99,8 @@ Every artifact directory, whatever its type:
   history.md         Change History: | Version | Date | Summary |
   platforms/         optional: how the content is applied per target platform
     swift.md  kotlin.md  typescript.md  windows.md …
-  hosts/             optional: wording additions per agent host / model
-    claude.add.md  claude.haiku.add.md  codex.add.md  claude.opus.add.yaml …
+  ai/                optional: wording additions per AI vendor and model
+    anthropic/claude-opus-5-5.md  openai/gpt-5-codex.md …
 ```
 
 ### Platform and host tuning
@@ -109,12 +109,15 @@ Every artifact type may vary along two axes:
 
 - **Platform** — the same content applied to a target: SwiftUI's
   `\.accessibilityReduceMotion` vs Android's `animator_duration_scale`. `platforms/<name>.md`.
-- **Agent host / model** — the same instruction worded for the agent that reads it. cookr's
-  existing layered additions (`core/tuning.py`): `hosts/<host>[.<family>[.<version>]].add.md`
-  is appended to the body, `.add.yaml` merges frontmatter keys; most specific last.
+- **AI vendor / model** — the same instruction worded for the model that reads it:
+  `ai/<vendor>/<model>.md`, e.g. `ai/anthropic/claude-opus-5-5.md`. Its body is appended to the
+  shared content; an optional YAML frontmatter block overrides skill frontmatter keys (e.g. a
+  shorter `description`). The file name is the vendor's model id. The path, not a filename
+  marker, says what it is, and no file is ever named `claude.md` (which a case-insensitive
+  filesystem would make `CLAUDE.md`). Replaces cookr's `hosts/*.add.md|yaml`.
 
-cookr compiles one skill per target: shared content + the consumer's platform file + the host
-and model additions. Both folders are optional; an artifact with no variation has neither.
+cookr compiles one skill per target: shared content + the consumer's platform file + the model
+addition. Both folders are optional; an artifact with no variation has neither.
 
 **Open:** whether the axes ever combine (a note for Swift *and* Haiku), or are always
 independent.
