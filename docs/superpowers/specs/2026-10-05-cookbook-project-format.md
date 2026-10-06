@@ -63,6 +63,7 @@ Every artifact directory has one. Only what is unique to the artifact:
 |---|---|
 | `id` | local rdid; its first segment is the type, so there is no separate `type` field |
 | `title`, `summary` | |
+| `when` | the skill trigger: when an agent should load this; becomes the skill's description |
 | `version`, `status`, `created`, `modified` | |
 | `platforms`, `tags` | |
 | `depends-on`, `related` | ids, resolved through the project index |
@@ -84,18 +85,15 @@ An array. Each entry is either a source or a pointer into the project's `researc
 ]
 ```
 
-### Content layout
+### One format for every artifact
 
-`artifact.json` sits at the top of the directory. Where a type has several content files,
-they go in descriptive category folders, so the directory reads as one artifact at a glance
-and never as a collection of siblings.
-
-Every artifact directory, whatever its type:
+Principles, guidelines, ingredients and recipes all use the same directory format. The type is
+the id's first segment; it changes what the content says, never how the directory is laid out.
 
 ```
 <artifact>/
-  artifact.json      common fields (+ the type's own)
-  <type>.md          the shared, neutral content: principle.md, guideline.md, …
+  artifact.json      the fields above
+  artifact.md        the content, written once as skill instructions for an agent
   history.md         Change History: | Version | Date | Summary |
   platforms/         optional: how the content is applied per target platform
     swift.md  kotlin.md  typescript.md  windows.md …
@@ -137,44 +135,25 @@ addition. Both folders are optional; an artifact with no variation has neither.
 The axes are **independent**: there is no combined platform × model file. A Swift skill for
 Haiku is the shared content + `platforms/swift.md` + the Haiku `ai/` files.
 
-## Principle
+Rules for the content:
 
-```
-simplicity/
-  artifact.json      common fields + `when`
-  principle.md       the principle, written as skill instructions for an agent
-  history.md         Change History
-```
+- **Written for agents.** Everything in the cookbook is for agents, so content is written once,
+  in skill wording: `when` is the trigger; `artifact.md` tells the agent when it applies, what to
+  check, and what to do.
+- **One content file.** Supporting sections — requirements, common violations, a verification
+  checklist, states, appearance, test vectors — are headings inside `artifact.md`, never sibling
+  files. Only `platforms/` and `ai/` split content out, because cookr selects among them per
+  target. The directory reads as one artifact at a glance, never as a collection.
+- **Composition is by id.** A recipe's recipes and ingredients are listed in `depends-on` and
+  live elsewhere in the project; nothing is nested inside the recipe.
+- **History** is its own file, with no author column (attribution is the project's).
 
-- **Written for agents.** Everything in the cookbook is for agents, so a principle is written
-  once, in skill wording: `when` (in `artifact.json`) is the trigger that becomes the skill's
-  description; `principle.md` tells the agent when it applies, what to check, and what to do.
-- **References:** MUST have at least one, SHOULD have several.
-- **History** stays its own file: `| Version | Date | Summary |` (attribution is the
-  project's, so there is no author column).
+## Per-type rules
 
-## Guideline
+What differs by type is which headings `artifact.md` must contain, checked by cookr's type
+registry, plus:
 
-Proposed, not yet settled:
-
-```
-accessibility/
-  artifact.json      common fields + `when`
-  guideline.md       the guideline as skill instructions; supporting sections
-                     (requirements, common violations, checklist, review signals…) are headings
-  history.md
-  platforms/         when it has platform-specific application
-```
-
-- Written once in skill wording, like a principle.
-- Today's layout spreads one guideline across sibling files (`intro.md`, `swift.md`,
-  `kotlin.md`, …) that read as a collection; under this layout they become `guideline.md` and
-  `platforms/`.
-
-## Ingredient
-
-To be settled.
-
-## Recipe
-
-To be settled.
+- **Principle:** MUST have at least one reference, SHOULD have several.
+- **Guideline:** to be settled.
+- **Ingredient:** to be settled.
+- **Recipe:** `depends-on` lists its recipes and ingredients; the rest to be settled.
