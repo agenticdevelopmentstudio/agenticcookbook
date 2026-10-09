@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "56394d2f-b784-4771-92a4-faacc037c609",
+    "title": "Shared components and tiers",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/shared-components-and-tiers",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Search for what already exists, put code in the lowest tier that can hold it, point dependencies downward, keep features in shared tiers with apps as thin shells, and organize files into encapsulated directories.",
+    "platforms": [],
+    "tags": [
+      "architecture",
+      "reuse",
+      "tiers",
+      "code-quality"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://principles/dry",
+      "agenticdevelopercookbook://principles/separation-of-concerns",
+      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/architecture",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/dependency-injection"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "e367a6ef269e02d0",
+  "parts": [
+    {"part": "intro"},
+    {"part": "search-before-you-write", "heading": "Search before you write"},
+    {"part": "the-lowest-tier-that-can-hold-it", "heading": "The lowest tier that can hold it"},
+    {"part": "dependencies-point-downward", "heading": "Dependencies point downward"},
+    {"part": "features-live-in-shared-tiers-apps-are-shells", "heading": "Features live in shared tiers, apps are shells"},
+    {"part": "organize-into-encapsulated-directories", "heading": "Organize into encapsulated directories"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

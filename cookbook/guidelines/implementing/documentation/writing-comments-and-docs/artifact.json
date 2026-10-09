@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8238bdf2-432b-4c34-9050-742a1f16d107",
+    "title": "Writing comments and docs",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/documentation/writing-comments-and-docs",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Comment the why rather than the what, update docs in the same change, write for human and AI readers, and keep the prose plain and free of machine-sounding filler.",
+    "platforms": [],
+    "tags": [
+      "documentation",
+      "writing",
+      "comments",
+      "ai"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/code-for-the-ai-reader",
+      "agenticdevelopercookbook://guidelines/reviewing/documentation/docs-match-code",
+      "agenticdevelopercookbook://principles/explicit-over-implicit",
+      "agenticdevelopercookbook://principles/principle-of-least-astonishment"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "1508a9f82b6fe5e9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "comment-the-why-not-the-what", "heading": "Comment the why, not the what"},
+    {"part": "update-docs-in-the-same-change", "heading": "Update docs in the same change"},
+    {"part": "write-for-the-ai-and-human-reader", "heading": "Write for the AI and human reader"},
+    {"part": "plain-language-rules", "heading": "Plain-language rules"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

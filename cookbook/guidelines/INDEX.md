@@ -7,7 +7,7 @@ version: 2.7.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: '2026-10-03'
+modified: '2026-10-09'
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -28,14 +28,14 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
 | [Planning](#planning-63-guidelines) | 63 | Architecture, data modeling, choosing patterns |
-| [Implementing](#implementing-166-guidelines) | 166 | Writing new code |
+| [Implementing](#implementing-169-guidelines) | 169 | Writing new code |
 | [Testing](#testing-24-guidelines) | 24 | Writing and structuring tests |
-| [Reviewing](#reviewing-50-guidelines) | 50 | Checking code quality, security, accessibility |
+| [Reviewing](#reviewing-51-guidelines) | 51 | Checking code quality, security, accessibility |
 | [Shipping](#shipping-17-guidelines) | 17 | Pre-commit, pre-PR, packaging |
 | [Cookbook](#cookbook-16-guidelines) | 16 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](#researching-5-guidelines) | 5 | Gathering, verifying, and recording trustworthy research |
 
-258 unique guidelines, 341 total (with duplicates across use cases).
+262 unique guidelines, 345 total (with duplicates across use cases).
 
 ---
 
@@ -123,7 +123,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Implementing (166 guidelines)
+### Implementing (169 guidelines)
 
 
 **accessibility**
@@ -136,6 +136,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Small, atomic commits](implementing/code-quality/atomic-commits.md)
 - [Writing code for the AI reader](implementing/code-quality/code-for-the-ai-reader.md)
 - [Completeness: finish the work, don't defer by default](implementing/code-quality/completeness.md)
+- [Delete what you supersede](implementing/code-quality/delete-what-you-supersede.md)
 - [Dependency Injection](implementing/code-quality/dependency-injection.md)
 - [File paths](implementing/code-quality/file-paths.md)
 - [Hilt dependency injection for Android](implementing/code-quality/hilt-dependency-injection.md)
@@ -144,6 +145,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [No external dependencies in core libraries](implementing/code-quality/no-external-dependencies-in-core-librari.md)
 - [Nullable Reference Types](implementing/code-quality/nullable-reference-types.md)
 - [Scope discipline](implementing/code-quality/scope-discipline.md)
+- [Shared components and tiers](implementing/code-quality/shared-components-and-tiers.md)
 - [Shell scripts](implementing/code-quality/shell-scripts.md)
 - [Type hints](implementing/code-quality/type-hints.md)
 - [TypeScript strictness configuration](implementing/code-quality/typescript-strictness.md)
@@ -189,6 +191,9 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Transaction isolation and serialization-failure retry](implementing/data/transaction-isolation.md)
 - [Transactions and Concurrency](implementing/data/transactions-and-concurrency.md)
 - [Zero-downtime migrations: expand and contract](implementing/data/zero-downtime-migrations.md)
+
+**documentation**
+- [Writing comments and docs](implementing/documentation/writing-comments-and-docs.md)
 
 **feature-management**
 - [A/B testing](implementing/feature-management/ab-testing.md)
@@ -351,7 +356,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Reviewing (50 guidelines)
+### Reviewing (51 guidelines)
 
 - [Conformance: The Criterion Walk](reviewing/conformance-criterion-walk.md)
 - [Writing the Review Report](reviewing/review-report-writing.md)
@@ -375,6 +380,9 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 **data**
 - [Query Optimization](reviewing/data/query-optimization.md)
+
+**documentation**
+- [Docs match the code](reviewing/documentation/docs-match-code.md)
 
 **infrastructure**
 - [Container image security](reviewing/infrastructure/container-image-security.md)

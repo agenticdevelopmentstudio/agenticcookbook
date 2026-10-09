@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "744c30a2-5dfa-41c6-8746-37372ba6465c",
+    "title": "Docs match the code",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/documentation/docs-match-code",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review that comments, docstrings, READMEs and instruction files describe what the code does now, that examples run, and that nothing documents behavior that was removed.",
+    "platforms": [],
+    "tags": [
+      "documentation",
+      "review",
+      "accuracy"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/documentation/writing-comments-and-docs",
+      "agenticdevelopercookbook://guidelines/reviewing/code-quality/code-hygiene",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/code-for-the-ai-reader",
+      "agenticdevelopercookbook://principles/dry"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "pre-commit"
+    ]
+  },
+  "synced": "26d88b365b43a0aa",
+  "parts": [
+    {"part": "intro"},
+    {"part": "comments-and-docstrings-describe-current-behavior", "heading": "Comments and docstrings describe current behavior"},
+    {"part": "readmes-and-instruction-files-match-what-exists", "heading": "READMEs and instruction files match what exists"},
+    {"part": "examples-run", "heading": "Examples run"},
+    {"part": "no-docs-remain-for-removed-behavior", "heading": "No docs remain for removed behavior"},
+    {"part": "stale-claim-smells", "heading": "Stale-claim smells"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
