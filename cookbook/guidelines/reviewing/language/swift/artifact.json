@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "1471cab8-cdd2-444d-84da-8e4e70eb2453",
+    "title": "Swift",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/swift",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Swift for value types, optional handling, error handling and access control, then follow the links to the concurrency, testing and lint reviews.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift"
+    ],
+    "tags": [
+      "language",
+      "swift",
+      "review"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/swift",
+      "agenticdevelopercookbook://guidelines/reviewing/platform-integration/prefer-explicit-apple-apis",
+      "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
+      "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/swift/choosing-between-structures-and-classes",
+      "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling/",
+      "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/accesscontrol/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "synced": "3dc2993a53d558e4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "types", "heading": "Types"},
+    {"part": "optionals", "heading": "Optionals"},
+    {"part": "errors", "heading": "Errors"},
+    {"part": "access-control", "heading": "Access control"},
+    {"part": "linked-reviews", "heading": "Linked reviews"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

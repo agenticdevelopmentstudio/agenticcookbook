@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "d7079751-71c5-49a6-9c1d-505921e4cee9",
+    "title": "Python",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/python",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Python for pyproject packaging, strict typing, shell-free subprocess calls, pathlib use, specific chained exceptions and isolated mode on untrusted directories.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "review",
+      "subprocess",
+      "exceptions"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/python",
+      "agenticdevelopercookbook://guidelines/reviewing/code-quality/type-hints",
+      "agenticdevelopercookbook://guidelines/reviewing/code-quality/shell-scripts"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/subprocess.html",
+      "https://docs.python.org/3/using/cmdline.html",
+      "https://docs.python.org/3/library/pathlib.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "security-review"
+    ]
+  },
+  "synced": "1236241b27e28d51",
+  "parts": [
+    {"part": "intro"},
+    {"part": "packaging", "heading": "Packaging"},
+    {"part": "typing", "heading": "Typing"},
+    {"part": "subprocesses", "heading": "Subprocesses"},
+    {"part": "paths", "heading": "Paths"},
+    {"part": "exceptions", "heading": "Exceptions"},
+    {"part": "untrusted-directories", "heading": "Untrusted directories"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

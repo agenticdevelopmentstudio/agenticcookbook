@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "544b36cb-2778-4b60-a31e-b55ff789eada",
+    "title": "Xcode project hygiene",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/xcode-project-hygiene",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Xcode project changes for settings kept in xcconfig files, shared schemes, justified entitlements, privacy keys, signing material and generator drift.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift",
+      "objective-c"
+    ],
+    "tags": [
+      "xcode",
+      "xcconfig",
+      "review",
+      "entitlements",
+      "signing"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/xcode-project-hygiene"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project",
+      "https://developer.apple.com/documentation/bundleresources/entitlements",
+      "https://developer.apple.com/documentation/bundleresources/information-property-list"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "pre-commit"
+    ]
+  },
+  "synced": "4b8eff69e1a0d40f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "build-settings", "heading": "Build settings"},
+    {"part": "schemes-and-targets", "heading": "Schemes and targets"},
+    {"part": "entitlements", "heading": "Entitlements"},
+    {"part": "info-plist", "heading": "Info.plist"},
+    {"part": "signing", "heading": "Signing"},
+    {"part": "generated-projects", "heading": "Generated projects"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

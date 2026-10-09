@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "a48af237-db64-40ae-9574-e579c107de83",
+    "title": "AppKit and UIKit patterns",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review AppKit and UIKit code for responder-chain use, weak delegates, main-thread discipline, paired lifecycle setup and teardown, and deliberate state restoration.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift",
+      "objective-c"
+    ],
+    "tags": [
+      "appkit",
+      "uikit",
+      "review",
+      "lifecycle",
+      "responder-chain"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
+      "agenticdevelopercookbook://guidelines/reviewing/platform-integration/prefer-explicit-apple-apis"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/uikit/using-responders-and-the-responder-chain-to-handle-events",
+      "https://developer.apple.com/documentation/uikit/preserving-your-app-s-ui-across-launches"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "synced": "1559f48fde5410a3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "responder-chain", "heading": "Responder chain"},
+    {"part": "delegates", "heading": "Delegates"},
+    {"part": "main-thread", "heading": "Main thread"},
+    {"part": "lifecycle", "heading": "Lifecycle"},
+    {"part": "state-restoration", "heading": "State restoration"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "65367d27-1d4e-41e5-9e8c-e9adb08ddc90",
+    "title": "Objective-C",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Objective-C for ARC ownership, retain cycles, Core Foundation bridging, nullability on public headers and clean Swift import.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "objective-c"
+    ],
+    "tags": [
+      "language",
+      "objective-c",
+      "arc",
+      "nullability",
+      "review"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/objective-c",
+      "agenticdevelopercookbook://guidelines/reviewing/language/swift"
+    ],
+    "references": [
+      "https://clang.llvm.org/docs/AutomaticReferenceCounting.html",
+      "https://developer.apple.com/documentation/swift/designating-nullability-in-objective-c-apis"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "synced": "7c37df477ac35bec",
+  "parts": [
+    {"part": "intro"},
+    {"part": "ownership", "heading": "Ownership"},
+    {"part": "retain-cycles", "heading": "Retain cycles"},
+    {"part": "core-foundation-bridging", "heading": "Core Foundation bridging"},
+    {"part": "nullability", "heading": "Nullability"},
+    {"part": "swift-import", "heading": "Swift import"},
+    {"part": "errors-and-naming", "heading": "Errors and naming"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

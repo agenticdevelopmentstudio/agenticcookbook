@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8aa22a6b-2328-4a2d-8fe3-53c339390808",
+    "title": "AppKit and UIKit patterns",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Work with the responder chain, delegates, the main thread and the view-controller and window lifecycle instead of around them, and opt in to state restoration deliberately.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift",
+      "objective-c"
+    ],
+    "tags": [
+      "appkit",
+      "uikit",
+      "responder-chain",
+      "delegates",
+      "lifecycle",
+      "state-restoration"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/prefer-explicit-apple-apis"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/concurrency/swift6-strict-concurrency",
+      "agenticdevelopercookbook://guidelines/implementing/language/swift",
+      "agenticdevelopercookbook://guidelines/implementing/language/objective-c",
+      "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/uikit/using-responders-and-the-responder-chain-to-handle-events",
+      "https://developer.apple.com/documentation/uikit/uiviewcontroller",
+      "https://developer.apple.com/documentation/appkit/nsviewcontroller",
+      "https://developer.apple.com/documentation/uikit/preserving-your-app-s-ui-across-launches"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "ui-implementation",
+      "platform-integration"
+    ]
+  },
+  "synced": "3c632549cb619ebc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "responder-chain", "heading": "Responder chain"},
+    {"part": "delegates-and-data-sources", "heading": "Delegates and data sources"},
+    {"part": "main-thread", "heading": "Main thread"},
+    {"part": "view-controller-and-window-lifecycle", "heading": "View controller and window lifecycle"},
+    {"part": "state-restoration", "heading": "State restoration"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

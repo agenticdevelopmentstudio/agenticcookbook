@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+    "title": "Swift",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/language/swift",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The Swift language rules this cookbook expects (value types, optionals, error handling, access control) and an index of the Swift concurrency, testing, lint and preview guidelines.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift"
+    ],
+    "tags": [
+      "language",
+      "swift",
+      "value-types",
+      "optionals",
+      "errors",
+      "access-control"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/concurrency/swift6-strict-concurrency",
+      "agenticdevelopercookbook://guidelines/implementing/testing/swift-testing",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/linting",
+      "agenticdevelopercookbook://guidelines/implementing/ui/previews",
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/prefer-explicit-apple-apis",
+      "agenticdevelopercookbook://guidelines/implementing/language/objective-c",
+      "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
+      "agenticdevelopercookbook://guidelines/reviewing/language/swift",
+      "agenticdevelopercookbook://principles/immutability-by-default",
+      "agenticdevelopercookbook://principles/errors-as-values"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/swift/choosing-between-structures-and-classes",
+      "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling/",
+      "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/accesscontrol/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "refactor",
+      "error-handling"
+    ]
+  },
+  "synced": "8d937ac56a6db23d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "related-swift-guidelines", "heading": "Related Swift guidelines"},
+    {"part": "value-types-first", "heading": "Value types first"},
+    {"part": "optionals", "heading": "Optionals"},
+    {"part": "error-handling", "heading": "Error handling"},
+    {"part": "access-control", "heading": "Access control"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
