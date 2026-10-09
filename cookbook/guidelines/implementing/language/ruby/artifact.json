@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f29e82ca-611e-409a-9121-8abe1719b434",
+    "title": "Ruby",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/language/ruby",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Write Ruby with frozen string literals, shell-free process calls, immutable Data values, narrow rescue clauses, explicit keyword arguments and a pinned RuboCop and Bundler setup.",
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "languages": [
+      "ruby"
+    ],
+    "tags": [
+      "language",
+      "ruby",
+      "open3",
+      "keyword-arguments",
+      "rubocop",
+      "bundler"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/python",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/linting",
+      "agenticdevelopercookbook://guidelines/reviewing/language/ruby",
+      "agenticdevelopercookbook://principles/immutability-by-default",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [
+      "https://docs.ruby-lang.org/en/master/Open3.html",
+      "https://docs.ruby-lang.org/en/master/Process.html",
+      "https://docs.ruby-lang.org/en/master/Data.html",
+      "https://rubystyle.guide/",
+      "https://www.ruby-lang.org/en/news/2019/12/12/separation-of-positional-and-keyword-arguments-in-ruby-3-0/",
+      "https://docs.rubocop.org/rubocop/configuration.html",
+      "https://guides.rubygems.org/gemfile/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "refactor",
+      "error-handling"
+    ]
+  },
+  "synced": "11debf6e0788aadf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "file-header", "heading": "File header"},
+    {"part": "running-other-programs", "heading": "Running other programs"},
+    {"part": "values", "heading": "Values"},
+    {"part": "errors", "heading": "Errors"},
+    {"part": "keyword-arguments", "heading": "Keyword arguments"},
+    {"part": "style", "heading": "Style"},
+    {"part": "dependencies", "heading": "Dependencies"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

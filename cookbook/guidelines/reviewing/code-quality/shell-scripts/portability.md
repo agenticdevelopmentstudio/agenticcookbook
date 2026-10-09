@@ -1,0 +1,8 @@
+- The shebang names the shell the script is written for. A `#!/bin/sh` script uses no arrays, `[[ ]]`, process substitution or other extension.
+- The script does not rely on zsh-versus-bash differences: unquoted splitting, array indexing or unmatched globs.
+- No `set -m`, `fg` or `bg` in a script. Background jobs use `&` and `wait`.
+- No logic depends on `set -e` inside a condition, a pipeline, a command substitution or a non-last AND-OR command, where it is ignored. Important commands are checked explicitly.
+- Optional variables have a default so `set -u` does not abort. `pipefail` is used only where the shell supports it.
+- Every expansion is quoted. There is no `eval` of a built string.
+- Cleanup is in a `trap` on `EXIT`, plus `INT` and `TERM` when needed, and it does not trap `KILL` or `STOP`.
+- Commands that can hang have a timeout, the exit codes 124 and 137 are handled, and the script checks that `timeout` exists.

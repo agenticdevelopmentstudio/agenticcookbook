@@ -5,11 +5,11 @@
     "title": "Shell scripts",
     "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-10-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -25,7 +25,11 @@
     ],
     "depends-on": [],
     "related": [],
-    "references": [],
+    "references": [
+      "https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html",
+      "https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html",
+      "https://zsh.sourceforge.io/Doc/Release/Options.html"
+    ],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04",
     "triggers": [
@@ -33,9 +37,10 @@
       "configuration"
     ]
   },
-  "synced": "b9b24746ef131863",
+  "synced": "fff4607b4c51cee9",
   "parts": [
     {"part": "intro"},
+    {"part": "portability", "heading": "Portability"},
     {"part": "history", "heading": "Change History"}
   ]
 }

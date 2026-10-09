@@ -28,14 +28,14 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
 | [Planning](#planning-63-guidelines) | 63 | Architecture, data modeling, choosing patterns |
-| [Implementing](#implementing-169-guidelines) | 169 | Writing new code |
+| [Implementing](#implementing-175-guidelines) | 175 | Writing new code |
 | [Testing](#testing-24-guidelines) | 24 | Writing and structuring tests |
-| [Reviewing](#reviewing-51-guidelines) | 51 | Checking code quality, security, accessibility |
+| [Reviewing](#reviewing-57-guidelines) | 57 | Checking code quality, security, accessibility |
 | [Shipping](#shipping-17-guidelines) | 17 | Pre-commit, pre-PR, packaging |
 | [Cookbook](#cookbook-16-guidelines) | 16 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](#researching-5-guidelines) | 5 | Gathering, verifying, and recording trustworthy research |
 
-262 unique guidelines, 345 total (with duplicates across use cases).
+268 unique guidelines, 357 total (with duplicates across use cases).
 
 ---
 
@@ -123,7 +123,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Implementing (169 guidelines)
+### Implementing (175 guidelines)
 
 
 **accessibility**
@@ -152,6 +152,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Use roadmap_lib](implementing/code-quality/use-roadmaplib.md)
 - [Value objects over primitive obsession](implementing/code-quality/value-objects.md)
 - [Verification harnesses as agent guardrails](implementing/code-quality/verification-harness.md)
+- [Xcode project hygiene](implementing/code-quality/xcode-project-hygiene.md)
 - [YAML frontmatter](implementing/code-quality/yaml-frontmatter.md)
 
 **concurrency**
@@ -209,6 +210,12 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 **internationalization**
 - [Localizability](implementing/internationalization/localization.md)
 - [RTL layout support](implementing/internationalization/rtl-support.md)
+
+**language**
+- [Objective-C](implementing/language/objective-c.md)
+- [Python](implementing/language/python.md)
+- [Ruby](implementing/language/ruby.md)
+- [Swift](implementing/language/swift.md)
 
 **networking**
 - [AI Cost Management](implementing/networking/ai-cost-management.md)
@@ -294,6 +301,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Android navigation in Compose](implementing/ui/android-navigation.md)
 - [Android predictive back](implementing/ui/android-predictive-back.md)
 - [Animation & Motion](implementing/ui/animation-motion.md)
+- [AppKit and UIKit patterns](implementing/ui/appkit-and-uikit-patterns.md)
 - [Apple design language and widgets](implementing/ui/apple-liquid-glass-and-widgets.md)
 - [Color](implementing/ui/color.md)
 - [Jetpack Compose performance and stability](implementing/ui/compose-performance-and-stability.md)
@@ -356,7 +364,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Reviewing (51 guidelines)
+### Reviewing (57 guidelines)
 
 - [Conformance: The Criterion Walk](reviewing/conformance-criterion-walk.md)
 - [Writing the Review Report](reviewing/review-report-writing.md)
@@ -376,6 +384,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Shell scripts](reviewing/code-quality/shell-scripts.md)
 - [Type hints](reviewing/code-quality/type-hints.md)
 - [Use roadmap_lib](reviewing/code-quality/use-roadmaplib.md)
+- [Xcode project hygiene](reviewing/code-quality/xcode-project-hygiene.md)
 - [YAML frontmatter](reviewing/code-quality/yaml-frontmatter.md)
 
 **data**
@@ -390,6 +399,12 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 **internationalization**
 - [Localizability](reviewing/internationalization/localization.md)
 - [RTL layout support](reviewing/internationalization/rtl-support.md)
+
+**language**
+- [Objective-C](reviewing/language/objective-c.md)
+- [Python](reviewing/language/python.md)
+- [Ruby](reviewing/language/ruby.md)
+- [Swift](reviewing/language/swift.md)
 
 **networking**
 - [MCP server review checklist](reviewing/networking/mcp-server-checklist.md)
@@ -433,6 +448,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Security Testing](reviewing/testing/security-testing.md)
 
 **ui**
+- [AppKit and UIKit patterns](reviewing/ui/appkit-and-uikit-patterns.md)
 - [Color](reviewing/ui/color.md)
 - [Touch & Click Targets](reviewing/ui/touch-click-targets.md)
 

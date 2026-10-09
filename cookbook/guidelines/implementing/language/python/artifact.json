@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "929e96cb-2900-4386-ad4a-1a67a0568480",
+    "title": "Python",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/language/python",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Package Python with pyproject.toml, type it, run subprocesses without a shell, use pathlib, raise and chain specific exceptions, and run untrusted-directory scripts in isolated mode.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "packaging",
+      "pyproject",
+      "subprocess",
+      "pathlib",
+      "exceptions"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/type-hints",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
+      "agenticdevelopercookbook://guidelines/implementing/language/ruby",
+      "agenticdevelopercookbook://guidelines/reviewing/language/python",
+      "agenticdevelopercookbook://principles/explicit-over-implicit",
+      "agenticdevelopercookbook://principles/fail-fast"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/subprocess.html",
+      "https://docs.python.org/3/using/cmdline.html",
+      "https://docs.python.org/3/library/pathlib.html",
+      "https://docs.python.org/3/tutorial/errors.html",
+      "https://packaging.python.org/en/latest/guides/writing-pyproject-toml/",
+      "https://peps.python.org/pep-0723/",
+      "https://peps.python.org/pep-0561/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "refactor",
+      "error-handling",
+      "security-review"
+    ]
+  },
+  "synced": "1726694504f1ec60",
+  "parts": [
+    {"part": "intro"},
+    {"part": "packaging", "heading": "Packaging"},
+    {"part": "typing", "heading": "Typing"},
+    {"part": "subprocesses", "heading": "Subprocesses"},
+    {"part": "paths", "heading": "Paths"},
+    {"part": "exceptions", "heading": "Exceptions"},
+    {"part": "untrusted-directories", "heading": "Untrusted directories"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

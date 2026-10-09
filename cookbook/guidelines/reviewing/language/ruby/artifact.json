@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "f6836f90-5090-4857-bab9-74feb7c68223",
+    "title": "Ruby",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/ruby",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Ruby for the frozen-string header, shell-free process calls, Data values, narrow rescues, explicit keyword arguments and style configuration.",
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "languages": [
+      "ruby"
+    ],
+    "tags": [
+      "language",
+      "ruby",
+      "review"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/ruby",
+      "agenticdevelopercookbook://guidelines/reviewing/language/python"
+    ],
+    "references": [
+      "https://docs.ruby-lang.org/en/master/Open3.html",
+      "https://rubystyle.guide/",
+      "https://docs.rubocop.org/rubocop/configuration.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "security-review"
+    ]
+  },
+  "synced": "72e65ef075686f67",
+  "parts": [
+    {"part": "intro"},
+    {"part": "header-and-strings", "heading": "Header and strings"},
+    {"part": "processes", "heading": "Processes"},
+    {"part": "values-and-errors", "heading": "Values and errors"},
+    {"part": "keyword-arguments", "heading": "Keyword arguments"},
+    {"part": "style-and-dependencies", "heading": "Style and dependencies"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
