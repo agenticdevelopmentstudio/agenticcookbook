@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5a091e61-8331-4fa0-9214-cb0e142af94f",
+    "title": "Kimi configuration",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/kimi-configuration",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Kimi configuration changes for skill location and priority, secrets handling, AGENTS.md placement and home-directory assumptions.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "kimi",
+      "review",
+      "llm-tools"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist"
+    ],
+    "references": [
+      "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html",
+      "https://www.kimi.com/en/help/kimi-code/cli-customization"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "synced": "783412d05d9c8acf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "paths", "heading": "Paths"},
+    {"part": "secrets", "heading": "Secrets"},
+    {"part": "skills", "heading": "Skills"},
+    {"part": "instructions", "heading": "Instructions"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

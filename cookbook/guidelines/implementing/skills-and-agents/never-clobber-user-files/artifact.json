@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
+    "title": "Never overwrite a user's files",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A shipped skill, command or agent file must never replace a user's file of the same name; installs must namespace what they ship or check for an existing file first.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "skills",
+      "commands",
+      "install",
+      "shared-resources",
+      "namespacing"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/skill-structure-reference",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/agent-structure-reference",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/rule-structure-reference",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/never-clobber-user-files",
+      "agenticdevelopercookbook://principles/idempotency",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "skill-authoring",
+      "configuration"
+    ]
+  },
+  "synced": "9cc0a4c1045975e8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules"},
+    {"part": "collisions-in-names-that-merge", "heading": "Collisions in names that merge"},
+    {"part": "reporting", "heading": "Reporting"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

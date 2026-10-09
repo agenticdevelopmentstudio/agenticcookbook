@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "ce0c62c0-f2a1-4b60-b46e-844adc164d92",
+    "title": "PowerShell",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/powershell",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review PowerShell for strict mode, error preference, clean pipeline output, approved verbs and ShouldProcess on state-changing functions.",
+    "platforms": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "languages": [
+      "powershell"
+    ],
+    "tags": [
+      "language",
+      "powershell",
+      "review"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/powershell",
+      "agenticdevelopercookbook://guidelines/reviewing/code-quality/shell-scripts"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-strictmode",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables",
+      "https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useapprovedverbs"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "synced": "d9eab311da134c0f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "strict-mode-and-errors", "heading": "Strict mode and errors"},
+    {"part": "output", "heading": "Output"},
+    {"part": "naming", "heading": "Naming"},
+    {"part": "state-changing-functions", "heading": "State-changing functions"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

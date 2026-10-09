@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e858e124-8774-450f-ab7a-9b27a6965660",
+    "title": "Kimi configuration",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Configure Kimi Code through its config.toml, AGENTS.md files and skills directories, using the priority order of project, user, extra and built-in skills.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "kimi",
+      "config-toml",
+      "agents-md",
+      "skills",
+      "llm-tools"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/skill-structure-reference",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/kimi-configuration"
+    ],
+    "references": [
+      "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html",
+      "https://www.kimi.com/en/help/kimi-code/cli-customization",
+      "https://github.com/MoonshotAI/kimi-cli"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "skill-authoring",
+      "configuration"
+    ]
+  },
+  "synced": "a9fe7cc09abc80b2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "home-directory", "heading": "Home directory"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "agents-md", "heading": "AGENTS.md"},
+    {"part": "skills", "heading": "Skills"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
