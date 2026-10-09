@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "65eff0b7-14d5-4cd1-8107-1cfda65e78f3",
+    "title": "Windows Subsystem for Linux",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/platform-integration/wsl",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review WSL-aware code and configuration for file placement, wslpath use, line endings, permission and case handling, and guarded interop.",
+    "platforms": [
+      "windows",
+      "linux"
+    ],
+    "tags": [
+      "wsl",
+      "windows",
+      "review"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
+      "agenticdevelopercookbook://guidelines/reviewing/language/powershell"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/wsl/filesystems",
+      "https://learn.microsoft.com/en-us/windows/wsl/case-sensitivity",
+      "https://learn.microsoft.com/en-us/windows/dev-environment/wsl-interop"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "platform-integration"
+    ]
+  },
+  "synced": "0f2fc98e681c3f73",
+  "parts": [
+    {"part": "intro"},
+    {"part": "files-and-paths", "heading": "Files and paths"},
+    {"part": "line-endings", "heading": "Line endings"},
+    {"part": "permissions-and-case", "heading": "Permissions and case"},
+    {"part": "interop", "heading": "Interop"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

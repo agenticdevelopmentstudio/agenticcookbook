@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
+    "title": "PowerShell",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/language/powershell",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Write PowerShell with strict mode, a deliberate error preference, clean pipeline output, approved verbs and ShouldProcess support for state-changing commands.",
+    "platforms": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "languages": [
+      "powershell"
+    ],
+    "tags": [
+      "language",
+      "powershell",
+      "strict-mode",
+      "pipeline",
+      "approved-verbs",
+      "shouldprocess"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
+      "agenticdevelopercookbook://guidelines/reviewing/language/powershell",
+      "agenticdevelopercookbook://principles/fail-fast",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-strictmode",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_return",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/out-null",
+      "https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions_cmdletbindingattribute",
+      "https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useapprovedverbs",
+      "https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useshouldprocessforstatechangingfunctions"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "error-handling",
+      "configuration"
+    ]
+  },
+  "synced": "70ba101fb8fd3964",
+  "parts": [
+    {"part": "intro"},
+    {"part": "strict-mode", "heading": "Strict mode"},
+    {"part": "error-handling", "heading": "Error handling"},
+    {"part": "pipeline-output", "heading": "Pipeline output"},
+    {"part": "naming-and-verbs", "heading": "Naming and verbs"},
+    {"part": "state-changing-commands", "heading": "State-changing commands"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

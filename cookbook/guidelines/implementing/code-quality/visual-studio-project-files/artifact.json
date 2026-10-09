@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "9ed898fe-ba86-44be-9911-d24fea60dc90",
+    "title": "Visual Studio project files",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep .NET and Visual Studio projects SDK-style and small, share properties through Directory.Build.props, manage package versions centrally and keep solution files tidy.",
+    "platforms": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "visual-studio",
+      "msbuild",
+      "csproj",
+      "dotnet",
+      "nuget",
+      "solution"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/nullable-reference-types",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/linting",
+      "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
+      "agenticdevelopercookbook://guidelines/reviewing/code-quality/visual-studio-project-files",
+      "agenticdevelopercookbook://principles/dry"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/overview",
+      "https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory",
+      "https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management",
+      "https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln",
+      "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "configuration",
+      "new-module",
+      "dependency-management"
+    ]
+  },
+  "synced": "ae0353fde7a0f714",
+  "parts": [
+    {"part": "intro"},
+    {"part": "sdk-style-projects", "heading": "SDK-style projects"},
+    {"part": "shared-properties", "heading": "Shared properties"},
+    {"part": "central-package-management", "heading": "Central package management"},
+    {"part": "solution-files", "heading": "Solution files"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

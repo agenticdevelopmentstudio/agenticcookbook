@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b0ee38ef-8256-418f-95a8-495264d282fc",
+    "title": "Visual Studio project files",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/visual-studio-project-files",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review .NET project and solution changes for SDK-style structure, shared properties, central package versions and solution hygiene.",
+    "platforms": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "visual-studio",
+      "msbuild",
+      "review",
+      "nuget"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/overview",
+      "https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "pre-commit"
+    ]
+  },
+  "synced": "bb5be8d9a971a02f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "project-structure", "heading": "Project structure"},
+    {"part": "shared-properties", "heading": "Shared properties"},
+    {"part": "packages", "heading": "Packages"},
+    {"part": "solutions", "heading": "Solutions"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

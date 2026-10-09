@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "cfa4b119-d10a-4c2a-b90d-f003717792a7",
+    "title": "Never overwrite a user's files",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/never-clobber-user-files",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review installers and shipped skills, commands and agents for namespacing, existence checks, ownership markers and safe uninstall.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "skills",
+      "commands",
+      "install",
+      "review",
+      "shared-resources"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/agent-checklist"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review",
+      "pre-commit"
+    ]
+  },
+  "synced": "778eb24d1a5f5491",
+  "parts": [
+    {"part": "intro"},
+    {"part": "writes", "heading": "Writes"},
+    {"part": "names", "heading": "Names"},
+    {"part": "ownership", "heading": "Ownership"},
+    {"part": "reporting", "heading": "Reporting"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

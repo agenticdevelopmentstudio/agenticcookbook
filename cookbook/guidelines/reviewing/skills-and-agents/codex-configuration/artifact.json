@@ -1,0 +1,74 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "8017637b-8eae-4829-b5a3-85560f7f8fb8",
+    "title": "Codex configuration",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/codex-configuration",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review Codex configuration changes for the right layer, AGENTS.md size and placement, skill location and invocation policy, and removal of custom prompts.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "codex",
+      "review",
+      "llm-tools"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist"
+    ],
+    "references": [
+      "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "https://learn.chatgpt.com/docs/build-skills",
+      "https://learn.chatgpt.com/docs/config-file/config-basic"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "names_hosts": "Reviews Codex configuration files, paths and keys, so it must name the Codex host.",
+  "synced": "fd3f998da7fc01f2",
+  "parts": [
+    {
+      "part": "intro"
+    },
+    {
+      "part": "config-toml",
+      "heading": "config.toml"
+    },
+    {
+      "part": "agents-md",
+      "heading": "AGENTS.md"
+    },
+    {
+      "part": "skills",
+      "heading": "Skills"
+    },
+    {
+      "part": "prompts",
+      "heading": "Prompts"
+    },
+    {
+      "part": "why-this-matters",
+      "heading": "Why this matters"
+    },
+    {
+      "part": "history",
+      "heading": "Change History"
+    }
+  ]
+}

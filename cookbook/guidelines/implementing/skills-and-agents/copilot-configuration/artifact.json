@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "4f4ed7a2-a26f-40f2-b863-51715b5c470c",
+    "title": "GitHub Copilot configuration",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Give GitHub Copilot repository instructions through .github/copilot-instructions.md, path-specific instruction files with applyTo globs, AGENTS.md and reusable prompt files.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "copilot",
+      "instructions",
+      "prompt-files",
+      "llm-tools"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/context-and-memory-management",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration"
+    ],
+    "references": [
+      "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+      "https://code.visualstudio.com/docs/copilot/customization/prompt-files"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "skill-authoring",
+      "configuration"
+    ]
+  },
+  "names_hosts": "Describes how GitHub Copilot also reads CLAUDE.md and GEMINI.md instruction files, so it names those hosts.",
+  "synced": "efb5a642204a556c",
+  "parts": [
+    {
+      "part": "intro"
+    },
+    {
+      "part": "repository-wide-instructions",
+      "heading": "Repository-wide instructions"
+    },
+    {
+      "part": "path-specific-instructions",
+      "heading": "Path-specific instructions"
+    },
+    {
+      "part": "agent-instruction-files",
+      "heading": "Agent instruction files"
+    },
+    {
+      "part": "precedence",
+      "heading": "Precedence"
+    },
+    {
+      "part": "prompt-files",
+      "heading": "Prompt files"
+    },
+    {
+      "part": "why-this-matters",
+      "heading": "Why this matters"
+    },
+    {
+      "part": "history",
+      "heading": "Change History"
+    }
+  ]
+}

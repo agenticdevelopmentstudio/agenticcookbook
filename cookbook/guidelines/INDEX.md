@@ -28,14 +28,14 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
 | [Planning](#planning-63-guidelines) | 63 | Architecture, data modeling, choosing patterns |
-| [Implementing](#implementing-175-guidelines) | 175 | Writing new code |
+| [Implementing](#implementing-182-guidelines) | 182 | Writing new code |
 | [Testing](#testing-24-guidelines) | 24 | Writing and structuring tests |
-| [Reviewing](#reviewing-57-guidelines) | 57 | Checking code quality, security, accessibility |
+| [Reviewing](#reviewing-64-guidelines) | 64 | Checking code quality, security, accessibility |
 | [Shipping](#shipping-17-guidelines) | 17 | Pre-commit, pre-PR, packaging |
 | [Cookbook](#cookbook-16-guidelines) | 16 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](#researching-5-guidelines) | 5 | Gathering, verifying, and recording trustworthy research |
 
-268 unique guidelines, 357 total (with duplicates across use cases).
+275 unique guidelines, 371 total (with duplicates across use cases).
 
 ---
 
@@ -123,7 +123,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Implementing (175 guidelines)
+### Implementing (182 guidelines)
 
 
 **accessibility**
@@ -152,6 +152,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Use roadmap_lib](implementing/code-quality/use-roadmaplib.md)
 - [Value objects over primitive obsession](implementing/code-quality/value-objects.md)
 - [Verification harnesses as agent guardrails](implementing/code-quality/verification-harness.md)
+- [Visual Studio project files](implementing/code-quality/visual-studio-project-files.md)
 - [Xcode project hygiene](implementing/code-quality/xcode-project-hygiene.md)
 - [YAML frontmatter](implementing/code-quality/yaml-frontmatter.md)
 
@@ -213,6 +214,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 **language**
 - [Objective-C](implementing/language/objective-c.md)
+- [PowerShell](implementing/language/powershell.md)
 - [Python](implementing/language/python.md)
 - [Ruby](implementing/language/ruby.md)
 - [Swift](implementing/language/swift.md)
@@ -254,6 +256,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Share and inter-app data flow](implementing/platform-integration/share-and-inter-app-data.md)
 - [Scriptable and automatable](implementing/platform-integration/shortcuts-and-automation.md)
 - [Widgets and glanceable surfaces](implementing/platform-integration/widgets-and-glanceable-surfaces.md)
+- [Windows Subsystem for Linux](implementing/platform-integration/wsl.md)
 
 **security**
 - [Agent guardrails](implementing/security/agent-guardrails.md)
@@ -282,7 +285,11 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 **skills-and-agents**
 - [Agent Structure Reference](implementing/skills-and-agents/agent-structure-reference.md)
 - [Authoring Skills and Rules](implementing/skills-and-agents/authoring-skills-and-rules.md)
+- [Codex configuration](implementing/skills-and-agents/codex-configuration.md)
 - [Context and memory management for agents](implementing/skills-and-agents/context-and-memory-management.md)
+- [GitHub Copilot configuration](implementing/skills-and-agents/copilot-configuration.md)
+- [Kimi configuration](implementing/skills-and-agents/kimi-configuration.md)
+- [Never overwrite a user's files](implementing/skills-and-agents/never-clobber-user-files.md)
 - [Performance: Speed and Token Efficiency](implementing/skills-and-agents/performance.md)
 - [Rule Structure Reference](implementing/skills-and-agents/rule-structure-reference.md)
 - [Skill Structure Reference](implementing/skills-and-agents/skill-structure-reference.md)
@@ -364,7 +371,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Reviewing (57 guidelines)
+### Reviewing (64 guidelines)
 
 - [Conformance: The Criterion Walk](reviewing/conformance-criterion-walk.md)
 - [Writing the Review Report](reviewing/review-report-writing.md)
@@ -384,6 +391,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Shell scripts](reviewing/code-quality/shell-scripts.md)
 - [Type hints](reviewing/code-quality/type-hints.md)
 - [Use roadmap_lib](reviewing/code-quality/use-roadmaplib.md)
+- [Visual Studio project files](reviewing/code-quality/visual-studio-project-files.md)
 - [Xcode project hygiene](reviewing/code-quality/xcode-project-hygiene.md)
 - [YAML frontmatter](reviewing/code-quality/yaml-frontmatter.md)
 
@@ -402,6 +410,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 **language**
 - [Objective-C](reviewing/language/objective-c.md)
+- [PowerShell](reviewing/language/powershell.md)
 - [Python](reviewing/language/python.md)
 - [Ruby](reviewing/language/ruby.md)
 - [Swift](reviewing/language/swift.md)
@@ -419,6 +428,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 **platform-integration**
 - [Deep linking](reviewing/platform-integration/deep-linking.md)
 - [Use AppKit and UIKit, not SwiftUI](reviewing/platform-integration/prefer-explicit-apple-apis.md)
+- [Windows Subsystem for Linux](reviewing/platform-integration/wsl.md)
 
 **security**
 - [Authentication](reviewing/security/authentication.md)
@@ -438,6 +448,10 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 **skills-and-agents**
 - [Agent Lint Checklist](reviewing/skills-and-agents/agent-checklist.md)
+- [Codex configuration](reviewing/skills-and-agents/codex-configuration.md)
+- [GitHub Copilot configuration](reviewing/skills-and-agents/copilot-configuration.md)
+- [Kimi configuration](reviewing/skills-and-agents/kimi-configuration.md)
+- [Never overwrite a user's files](reviewing/skills-and-agents/never-clobber-user-files.md)
 - [Performance: Speed and Token Efficiency](reviewing/skills-and-agents/performance.md)
 - [Rule Lint Checklist](reviewing/skills-and-agents/rule-checklist.md)
 - [Skill Lint Checklist](reviewing/skills-and-agents/skill-checklist.md)

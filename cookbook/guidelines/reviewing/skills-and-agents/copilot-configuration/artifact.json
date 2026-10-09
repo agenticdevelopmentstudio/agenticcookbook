@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "706a3bf7-0fe1-4b12-b4da-0fd8d363b314",
+    "title": "GitHub Copilot configuration",
+    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Review GitHub Copilot instruction and prompt files for correct names, applyTo globs, agent exclusions and non-duplicated guidance.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "copilot",
+      "review",
+      "llm-tools"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist"
+    ],
+    "references": [
+      "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+      "https://code.visualstudio.com/docs/copilot/customization/prompt-files"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "code-review"
+    ]
+  },
+  "names_hosts": "Reviews GitHub Copilot instruction files, which can also be a CLAUDE.md or GEMINI.md file, so it names those hosts.",
+  "synced": "132c79b9ad3453c2",
+  "parts": [
+    {
+      "part": "intro"
+    },
+    {
+      "part": "files-and-names",
+      "heading": "Files and names"
+    },
+    {
+      "part": "instruction-content",
+      "heading": "Instruction content"
+    },
+    {
+      "part": "prompt-files",
+      "heading": "Prompt files"
+    },
+    {
+      "part": "why-this-matters",
+      "heading": "Why this matters"
+    },
+    {
+      "part": "history",
+      "heading": "Change History"
+    }
+  ]
+}

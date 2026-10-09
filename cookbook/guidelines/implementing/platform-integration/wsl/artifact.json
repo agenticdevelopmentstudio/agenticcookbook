@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
+    "title": "Windows Subsystem for Linux",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Work across the Windows and WSL boundary deliberately: keep Linux-tool projects in the Linux file system, convert paths with wslpath, align line endings, and respect permission, case-sensitivity and interop limits.",
+    "platforms": [
+      "windows",
+      "linux"
+    ],
+    "tags": [
+      "wsl",
+      "windows",
+      "paths",
+      "line-endings",
+      "interop",
+      "filesystem"
+    ],
+    "depends-on": [],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/language/powershell",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
+      "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
+      "agenticdevelopercookbook://guidelines/reviewing/platform-integration/wsl",
+      "agenticdevelopercookbook://principles/explicit-over-implicit"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/wsl/filesystems",
+      "https://learn.microsoft.com/en-us/windows/wsl/case-sensitivity",
+      "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
+      "https://learn.microsoft.com/en-us/windows/wsl/file-permissions",
+      "https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git",
+      "https://learn.microsoft.com/en-us/windows/dev-environment/wsl-interop"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "platform-integration",
+      "configuration"
+    ]
+  },
+  "synced": "0bd4f175dd37dc16",
+  "parts": [
+    {"part": "intro"},
+    {"part": "where-files-live", "heading": "Where files live"},
+    {"part": "path-conversion", "heading": "Path conversion"},
+    {"part": "line-endings", "heading": "Line endings"},
+    {"part": "permissions-and-case", "heading": "Permissions and case"},
+    {"part": "interop", "heading": "Interop"},
+    {"part": "configuration-scope", "heading": "Configuration scope"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

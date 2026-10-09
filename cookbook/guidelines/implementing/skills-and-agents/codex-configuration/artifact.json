@@ -1,0 +1,85 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e8870c2b-ae55-4e48-a4e7-081d65f27418",
+    "title": "Codex configuration",
+    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Configure Codex through config.toml layers, AGENTS.md discovery, skills directories and, for older setups, custom prompts, keeping repository instructions in files that travel with the repository.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "tags": [
+      "codex",
+      "config-toml",
+      "agents-md",
+      "skills",
+      "prompts",
+      "llm-tools"
+    ],
+    "depends-on": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+    ],
+    "related": [
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/skill-structure-reference",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/context-and-memory-management",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
+      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
+      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/codex-configuration"
+    ],
+    "references": [
+      "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "https://learn.chatgpt.com/docs/build-skills",
+      "https://learn.chatgpt.com/docs/config-file/config-basic",
+      "https://learn.chatgpt.com/docs/custom-prompts.md"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "skill-authoring",
+      "configuration"
+    ]
+  },
+  "names_hosts": "Describes Codex configuration files, paths and keys, so it must name the Codex host throughout.",
+  "synced": "1ba6ebcbfa71eb51",
+  "parts": [
+    {
+      "part": "intro"
+    },
+    {
+      "part": "config-toml",
+      "heading": "config.toml"
+    },
+    {
+      "part": "agents-md",
+      "heading": "AGENTS.md"
+    },
+    {
+      "part": "skills",
+      "heading": "Skills"
+    },
+    {
+      "part": "custom-prompts",
+      "heading": "Custom prompts"
+    },
+    {
+      "part": "why-this-matters",
+      "heading": "Why this matters"
+    },
+    {
+      "part": "history",
+      "heading": "Change History"
+    }
+  ]
+}
