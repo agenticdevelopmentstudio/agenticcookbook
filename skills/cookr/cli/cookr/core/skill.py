@@ -17,7 +17,7 @@ step before".
 **Names** are the artifact's path below its type directory, joined with `-`
 (`implementing-data-transactions-and-concurrency`); a one-segment path keeps its
 type (`principle-simplicity`) and a library cookbook prefixes its library
-(`adtoolkit-ui-controls-badge`). A name over the hosts' limit is cut and given
+(`adhsdk-ui-controls-badge`). A name over the hosts' limit is cut and given
 a hash of the full name, so it stays unique and stable.
 
 **Routes** are derived from the path (`derive_routes`), unless `artifact.json`
@@ -117,7 +117,7 @@ def library_name(value: Optional[str]) -> Optional[str]:
         return None
     if not _LIBRARY.fullmatch(value) or len(value) > LIBRARY_MAX:
         raise SkillError(f"library {value!r}: use lowercase letters, digits and single hyphens, "
-                         f"at most {LIBRARY_MAX} characters (e.g. `adtoolkit`)")
+                         f"at most {LIBRARY_MAX} characters (e.g. `adhsdk`)")
     return value
 
 
