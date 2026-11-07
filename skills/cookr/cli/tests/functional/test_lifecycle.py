@@ -31,6 +31,13 @@ def test_create_is_idempotent(tmp_path, run_cookr):
     assert "skipped" in r2.stdout
 
 
+def _convert(run_cookr, doc):
+    """Fold a hand-written doc into its source folder: validate fails any
+    artifact doc that has none, since the folder is the artifact's source."""
+    r = run_cookr(["convert", str(doc)])
+    assert r.returncode == 0, r.stderr or r.stdout
+
+
 def test_update_validate_lint_green(tmp_path, run_cookr):
     assert run_cookr(["create"], cwd=tmp_path).returncode == 0
     cb = tmp_path / "cookbook"
@@ -39,6 +46,7 @@ def test_update_validate_lint_green(tmp_path, run_cookr):
     upd = run_cookr(["update", "-p", str(cb), "--author", "Tester"])
     assert upd.returncode == 0, upd.stderr or upd.stdout
     assert (cb / "recipes" / "INDEX.md").is_file()
+    _convert(run_cookr, cb / "recipes" / "hello.md")
 
     val = run_cookr(["validate", "-p", str(cb)])
     assert val.returncode == 0, val.stdout
@@ -52,6 +60,7 @@ def test_update_is_idempotent_no_changes_second_run(tmp_path, run_cookr):
     cb = tmp_path / "cookbook"
     (cb / "recipes" / "x.md").write_text("# X\n", encoding="utf-8")
     assert run_cookr(["update", "-p", str(cb), "--author", "T"]).returncode == 0
+    _convert(run_cookr, cb / "recipes" / "x.md")
 
     # Capture a snapshot, run update again, expect no INDEX.md diff and validate green.
     before = (cb / "recipes" / "INDEX.md").read_text()
@@ -68,6 +77,7 @@ def test_validate_detects_drift(tmp_path, run_cookr):
     cb = tmp_path / "cookbook"
     (cb / "recipes" / "alpha.md").write_text("# Alpha\n", encoding="utf-8")
     assert run_cookr(["update", "-p", str(cb), "--author", "T"]).returncode == 0
+    _convert(run_cookr, cb / "recipes" / "alpha.md")
     assert run_cookr(["validate", "-p", str(cb)]).returncode == 0
 
     # Add a new recipe that has full frontmatter so Phase A is clean — but skip
@@ -80,6 +90,7 @@ def test_validate_detects_drift(tmp_path, run_cookr):
         "summary: x\n---\n# Gamma\n",
         encoding="utf-8",
     )
+    _convert(run_cookr, cb / "recipes" / "gamma.md")
     r = run_cookr(["validate", "-p", str(cb)])
     assert r.returncode != 0
     assert "drift" in r.stdout.lower() or "drift" in r.stderr.lower()

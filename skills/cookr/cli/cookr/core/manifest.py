@@ -1,13 +1,22 @@
 """Materialize a `reference-manifest.json`: copy content-repo files into a package.
 
 A manifest names a `destination` and a `source_root` (both relative to the repo
-root) and a list of `files`, each `{"src", "dst", "type": "file"|"tree"}`; a
-tree copies every file under `src` matching its `include` glob (default `*`).
+root) and a list of `files`, each `{"src", "dst", "type"}`:
+
+- `file` copies one file; `tree` copies every file under `src` matching its
+  `include` glob (default `*`).
+- `artifact` compiles one cookbook source folder into its doc at `dst`;
+  `artifacts` compiles every source folder under `src` into `dst/<rel>.md`.
+  Artifacts live only as source folders, so readers that want a doc get one
+  compiled here rather than a copy of the folder's section files.
+
 An optional `embedded_dir`, relative to the manifest, is overlaid last.
 
 This is the one materializer: ./install runs it for the cookr package's
 manifest and every prompt module's, and tests run it to build the same tree.
-Standard library only, since ./install runs it before installing any deps.
+`file` and `tree` need only the standard library; `artifact` and `artifacts`
+import cookr's artifact compiler (which needs PyYAML) when a manifest uses them,
+so ./install installs the deps before it materializes.
 """
 
 from __future__ import annotations
@@ -46,6 +55,24 @@ def _copy_tree(src: Path, dst: Path, include: str) -> None:
             target = dst / f.relative_to(src)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(f, target)
+
+
+def _compile(folder: Path, target: Path) -> None:
+    from .artifact import ArtifactError, compose_document, load_folder
+    try:
+        text = compose_document(load_folder(folder))
+    except ArtifactError as e:
+        raise ManifestError(str(e)) from e
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(text, encoding="utf-8")
+
+
+def _compile_tree(src: Path, dst: Path) -> int:
+    from .artifact import find_folders
+    folders = find_folders([src])
+    for folder in folders:
+        _compile(folder, dst / f"{folder.relative_to(src).as_posix()}.md")
+    return len(folders)
 
 
 def materialize(manifest_path: Path, repo_root: Path, dest: Optional[Path] = None,
@@ -87,6 +114,18 @@ def materialize(manifest_path: Path, repo_root: Path, dest: Optional[Path] = Non
                 raise ManifestError(f"MISSING dir: {src}")
             _copy_tree(src, dst, entry.get("include", "*"))
             log(f"+ {entry['dst']}/ (tree)")
+        elif kind == "artifact":
+            if not (src / "artifact.json").is_file():
+                raise ManifestError(f"MISSING source folder: {src}")
+            _compile(src, dst)
+            log(f"+ {entry['dst']} (compiled)")
+        elif kind == "artifacts":
+            if not src.is_dir():
+                raise ManifestError(f"MISSING dir: {src}")
+            count = _compile_tree(src, dst)
+            if count == 0:
+                raise ManifestError(f"no source folders under {src}")
+            log(f"+ {entry['dst']}/ ({count} compiled)")
         else:
             raise ManifestError(f"unknown entry type: {kind}")
 
@@ -123,7 +162,7 @@ def main(argv: list[str]) -> int:
             say(f"materialized {len(manifests)} prompt-module manifest(s)")
         else:
             materialize(Path(argv[1]), repo_root, log=say)
-    except ManifestError as e:
+    except (ManifestError, ImportError) as e:
         print(f"  {e}", file=sys.stderr)
         return 1
     return 0

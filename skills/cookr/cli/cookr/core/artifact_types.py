@@ -1,7 +1,7 @@
 """The artifact type registry: what each type's folder must hold, and in what order.
 
-Derived from `cookbook/compliance/artifact-formatting/<type>-formatting.md` and
-the field table in `cookbook/introduction/conventions.md`; those files stay the
+Derived from `tbd/compliance/artifact-formatting/<type>-formatting.md` and
+the field table in `guide/introduction/conventions.md`; those files stay the
 authority, and tests/unit/test_artifact_types.py fails when this drifts from them.
 
 A section is `(heading, required)`. Ingredients and recipes have a closed,
