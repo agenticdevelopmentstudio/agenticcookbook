@@ -79,6 +79,7 @@ def _skill(args, ctx, paths) -> int:
     if args.json:
         sys.stdout.write(json.dumps({"results": [r.as_json() for r in rep.results],
                                      "over_cap": rep.over_cap, "removed": rep.removed,
+                                     "long": rep.long,
                                      "unconverted": [str(r.source) for r in stray]},
                                     indent=2) + "\n")
         return 1 if rep.failed or stray else 0
@@ -90,6 +91,9 @@ def _skill(args, ctx, paths) -> int:
             ctx.ui.error(escape(f"{r.dest}: {r.status}{': ' + r.detail if r.detail else ''}"))
     for node, n in sorted(rep.over_cap.items()):
         ctx.ui.error(escape(f"route {node or '(top)'}: {n} entries, over the cap of {skill_mod.FANOUT_CAP}"))
+    for rel, n in rep.long.items():
+        ctx.ui.warn(escape(f"{rel}: {n} lines, over {skill_mod.LINES_MAX}; "
+                           "move detail into files the skill links"))
     for rel in rep.removed:
         ctx.ui.info(escape(f"removed {rel}"))
     report(ctx, rep.results, "current" if args.check else "compiled")

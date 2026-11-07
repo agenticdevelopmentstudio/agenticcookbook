@@ -82,3 +82,34 @@ def test_validate_fails_on_a_broken_addition_and_warns_on_a_stale_one(tmp_path, 
     assert "older source" in capsys.readouterr().out
     (hosts_dir / "gemini.add.md").write_text("x\n")
     assert main(["validate", "-p", str(cb)]) == 1
+
+
+def _guideline(cb, use_case, body):
+    doc = cb / "guidelines" / use_case / "logging.md"
+    doc.parent.mkdir(parents=True, exist_ok=True)
+    doc.write_text(f"# Logging\n\n{body}\n\n## Change History\n\nx\n", encoding="utf-8")
+    return doc
+
+
+def test_validate_fails_on_twins_that_drifted_and_on_a_guideline_with_no_rule(
+        tmp_path, monkeypatch, patch_refs, capsys):
+    monkeypatch.chdir(tmp_path)
+    assert main(["create"]) == 0
+    cb = tmp_path / "cookbook"
+    docs = [_guideline(cb, "implementing", "Logs MUST be JSON."),
+            _guideline(cb, "reviewing", "Check the logs.")]
+    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
+    for doc in docs:
+        assert main(["convert", str(doc)]) == 0
+    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 1
+    out = capsys.readouterr().out
+    assert "drift" in out and "no-rules" in out
+
+    manifest = cb / "guidelines" / "reviewing" / "logging" / "artifact.json"
+    manifest.write_text(manifest.read_text().replace(
+        '  "parts"', '  "twin_differs": "A review checklist of the implementing guideline.",\n'
+                     '  "informational": "A checklist; its rules are its twin\'s.",\n  "parts"'),
+        encoding="utf-8")
+    assert main(["validate", "-p", str(cb)]) == 0
