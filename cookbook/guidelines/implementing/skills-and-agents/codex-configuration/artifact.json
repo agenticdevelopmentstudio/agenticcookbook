@@ -5,11 +5,11 @@
     "title": "Codex configuration",
     "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -52,34 +52,14 @@
     ]
   },
   "names_hosts": "Describes Codex configuration files, paths and keys, so it must name the Codex host throughout.",
-  "synced": "1ba6ebcbfa71eb51",
+  "synced": "7fe5edfa362d87fd",
   "parts": [
-    {
-      "part": "intro"
-    },
-    {
-      "part": "config-toml",
-      "heading": "config.toml"
-    },
-    {
-      "part": "agents-md",
-      "heading": "AGENTS.md"
-    },
-    {
-      "part": "skills",
-      "heading": "Skills"
-    },
-    {
-      "part": "custom-prompts",
-      "heading": "Custom prompts"
-    },
-    {
-      "part": "why-this-matters",
-      "heading": "Why this matters"
-    },
-    {
-      "part": "history",
-      "heading": "Change History"
-    }
+    {"part": "intro"},
+    {"part": "config-toml", "heading": "config.toml"},
+    {"part": "agents-md", "heading": "AGENTS.md"},
+    {"part": "skills", "heading": "Skills"},
+    {"part": "custom-prompts", "heading": "Custom prompts"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
   ]
 }

@@ -38,7 +38,7 @@ import os
 import re
 import shutil
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
 from typing import Iterable, Optional
@@ -63,6 +63,10 @@ TARGETS_FILE = "targets.json"
 TYPE_DIRS = {"principles": "principle", "guidelines": "guideline",
              "ingredients": "ingredient", "recipes": "recipe"}
 FANOUT_CAP = 50
+# Skill-authoring guidance keeps a SKILL.md under 500 lines: past that, the
+# whole file loads for every use and should move detail into files it links.
+# A warning, not a failure: a longer skill still loads.
+LINES_MAX = 500
 NAME_MAX = 64
 DESCRIPTION_MAX = 1024
 DEFAULT_LIBRARY = "cookbook"
@@ -409,6 +413,7 @@ class SetReport:
     results: list            # artifact_build.Result, one per artifact
     over_cap: dict[str, int]
     removed: list[str]
+    long: dict[str, int] = field(default_factory=dict)   # rendering → lines, over LINES_MAX
 
     @property
     def failed(self) -> bool:
@@ -475,4 +480,10 @@ def compile_set(folders: list[Path], out: Path, *, library: Optional[str] = None
             p = out / rel
             if not p.is_file() or p.read_text(encoding="utf-8") != text:
                 results.append(Result(p, p, "stale" if p.is_file() else "missing"))
-    return SetReport(sorted(results, key=lambda r: str(r.source)), capped, removed)
+    return SetReport(sorted(results, key=lambda r: str(r.source)), capped, removed, too_long(built))
+
+
+def too_long(built: Iterable[Built], limit: int = LINES_MAX) -> dict[str, int]:
+    """{rendering's path in the out dir: lines} for each one over `limit`."""
+    lines = {rel: text.count("\n") for b in built for rel, text in b.files.items()}
+    return {rel: n for rel, n in sorted(lines.items()) if n > limit}

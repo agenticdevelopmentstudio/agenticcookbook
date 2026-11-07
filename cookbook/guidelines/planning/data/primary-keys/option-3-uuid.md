@@ -3,6 +3,8 @@ UUIDs enable client-side ID generation without server coordination, which is ess
 
 **Recommended: UUIDv7 (time-ordered)**
 
+Synced tables SHOULD use UUIDv7 rather than UUIDv4.
+
 UUIDv7 encodes a Unix millisecond timestamp in the first 48 bits, making IDs roughly time-ordered. This preserves B-tree locality while maintaining global uniqueness. UUIDv4 (random) scatters inserts across the entire tree, causing page splits and cache thrashing.
 
 ```sql
@@ -15,7 +17,7 @@ CREATE TABLE distributed_events (
 
 **SQLite-specific note:** Unlike PostgreSQL, SQLite's clustered index is the rowid, not the PK column. A TEXT UUID primary key creates a separate B-tree — UUID randomness therefore causes less fragmentation than in PostgreSQL.
 
-**For internal + external IDs, use a hybrid approach:**
+**For internal + external IDs, a table SHOULD use a hybrid approach:**
 
 ```sql
 CREATE TABLE resources (
@@ -25,5 +27,5 @@ CREATE TABLE resources (
 );
 ```
 
-**Never use `INTEGER PRIMARY KEY AUTOINCREMENT` for synced tables.** IDs will collide across devices.
+**Synced tables MUST NOT use `INTEGER PRIMARY KEY AUTOINCREMENT`.** IDs will collide across devices.
 

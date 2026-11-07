@@ -15,6 +15,13 @@ from cookr.core.artifact import Artifact, Part, dump_manifest, find_folders, loa
 REPO = Path(__file__).resolve().parents[5]
 
 
+def test_too_long_lists_each_rendering_over_the_line_limit():
+    s = skill.Skill(name="a", routes=(), text="", folder=Path("a"), type="recipe")
+    b = skill.Built(s, {"a/SKILL.md": "x\n" * 3, "a/targets/claude.SKILL.md": "x\n" * 5}, [])
+    assert skill.too_long([b], limit=4) == {"a/targets/claude.SKILL.md": 5}
+    assert skill.too_long([b], limit=5) == {}
+
+
 def make(root: Path, rel: str, type_: str, *, triggers=None, platforms=None, routes=None,
          summary="Does the thing.", body="Guidance.\n"):
     folder = root / rel

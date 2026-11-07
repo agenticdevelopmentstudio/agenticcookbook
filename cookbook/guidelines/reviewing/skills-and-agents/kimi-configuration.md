@@ -3,11 +3,11 @@ id: 5a091e61-8331-4fa0-9214-cb0e142af94f
 title: "Kimi configuration"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/kimi-configuration
 type: guideline
-version: 1.0.0
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-07
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -63,4 +63,6 @@ Path and priority mistakes are quiet: the configuration is accepted and ignored.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
+| 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

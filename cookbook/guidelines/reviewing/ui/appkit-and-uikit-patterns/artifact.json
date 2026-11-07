@@ -5,11 +5,11 @@
     "title": "AppKit and UIKit patterns",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -44,7 +44,9 @@
       "code-review"
     ]
   },
-  "synced": "1559f48fde5410a3",
+  "twin_differs": "A review checklist restating the implementing guideline's AppKit and UIKit rules as things to flag.",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "e198a424890891fa",
   "parts": [
     {"part": "intro"},
     {"part": "responder-chain", "heading": "Responder chain"},

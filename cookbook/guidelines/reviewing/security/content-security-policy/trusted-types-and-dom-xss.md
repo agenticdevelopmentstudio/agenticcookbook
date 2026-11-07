@@ -1,10 +1,14 @@
 
-A strict nonce-based CSP does NOT stop DOM-XSS that flows through injection sinks like `innerHTML`, `document.write`, or `eval`-style `setTimeout` arguments — these execute without inline-script gating.
+A strict nonce-based CSP does NOT stop DOM-based XSS that flows through injection sinks like `innerHTML`,
+`document.write`, or `eval`-equivalents. Harden those sinks separately:
 
-- A strict CSP SHOULD be paired with Trusted Types to lock DOM injection sinks: send `require-trusted-types-for 'script'` and declare a named policy via `trusted-types <policy-name>`.
-- The trusted-types policy SHOULD back its conversions with a documented, vetted sanitizer (e.g., DOMPurify, or the Sanitizer API `setHTML`) rather than hand-rolled escaping.
-- Trusted Types SHOULD be rolled out in report-only mode first to surface sink violations before enforcement.
-- Trusted Types is supported in Chromium and Safari (and forecast to expand), degrades safely where unsupported, and offers a polyfill — so adoption SHOULD NOT be blocked on universal native support.
+- The CSP **SHOULD** add `require-trusted-types-for 'script'` together with a named `trusted-types` policy so
+  only policy-vetted typed values can be assigned to dangerous DOM sinks; raw strings are rejected.
+- The trusted-types policy **SHOULD** be backed by a documented sanitizer — DOMPurify, or the Sanitizer API
+  (`Element.setHTML()`) — rather than ad-hoc escaping.
+- Trusted Types **SHOULD** be rolled out in report-only mode first to surface violating sinks before enforcing.
+- Trusted Types is supported in Chromium and now Safari, degrades safely (no-op) where unsupported, and has an
+  official polyfill, so it **SHOULD** be enabled as defense-in-depth even with mixed browser support.
 
 References:
 - [MDN: CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)

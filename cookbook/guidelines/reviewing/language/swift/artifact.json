@@ -5,11 +5,11 @@
     "title": "Swift",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/language/swift",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -44,7 +44,9 @@
       "code-review"
     ]
   },
-  "synced": "3dc2993a53d558e4",
+  "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "9aed53bf018300fe",
   "parts": [
     {"part": "intro"},
     {"part": "types", "heading": "Types"},

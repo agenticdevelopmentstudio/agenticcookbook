@@ -77,6 +77,12 @@ class Artifact:
     # The digest of the doc cookr last wrote from (or folded into) this folder,
     # so a doc and folder that disagree say which one changed (`sync_state`).
     synced: Optional[str] = None
+    # Why this guideline says something different from its twins under other
+    # use cases (core/twins.py). None: it must say the same.
+    twin_differs: Optional[str] = None
+    # Why this guideline states no MUST/SHOULD/MAY rule (core/twins.py).
+    # None: it must state one.
+    informational: Optional[str] = None
 
     @property
     def type(self) -> str:
@@ -263,7 +269,8 @@ def load_folder(folder: Path) -> Artifact:
             raise ArtifactError(f"{folder}: part {name!r} has no {f.name}")
         parts.append(Part(name=name, text=f.read_text(encoding="utf-8"), heading=entry.get("heading")))
     return Artifact(meta=data.get("meta", {}), parts=parts, names_hosts=data.get("names_hosts"),
-                    routes=data.get("routes"), synced=data.get("synced"))
+                    routes=data.get("routes"), synced=data.get("synced"),
+                    twin_differs=data.get("twin_differs"), informational=data.get("informational"))
 
 
 def dump_manifest(artifact: Artifact) -> str:
@@ -276,7 +283,11 @@ def dump_manifest(artifact: Artifact) -> str:
     routes = ("" if artifact.routes is None else
               f'  "routes": {json.dumps(artifact.routes, ensure_ascii=False)},\n')
     synced = "" if artifact.synced is None else f'  "synced": {json.dumps(artifact.synced)},\n'
-    return (f'{{\n  "format": {FORMAT},\n  "meta": {meta},\n{reason}{routes}{synced}'
+    reasons = "".join(f'  "{key}": {json.dumps(value, ensure_ascii=False)},\n'
+                      for key, value in (("twin_differs", artifact.twin_differs),
+                                         ("informational", artifact.informational))
+                      if value is not None)
+    return (f'{{\n  "format": {FORMAT},\n  "meta": {meta},\n{reason}{routes}{reasons}{synced}'
             f'  "parts": [\n{parts}\n  ]\n}}\n')
 
 
@@ -432,6 +443,8 @@ def save_document(doc: Path, text: str) -> None:
     current = load_folder(folder)
     artifact.names_hosts = current.names_hosts
     artifact.routes = current.routes
+    artifact.twin_differs = current.twin_differs
+    artifact.informational = current.informational
     for gone in {p.name for p in current.parts} - {p.name for p in artifact.parts}:
         (folder / f"{gone}.md").unlink()
     artifact.synced = doc_digest(compose_document(artifact))

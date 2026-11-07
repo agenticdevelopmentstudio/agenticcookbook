@@ -5,11 +5,11 @@
     "title": "Shell scripts",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/shell-scripts",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,7 +37,8 @@
       "configuration"
     ]
   },
-  "synced": "3fb816ff041272d7",
+  "twin_differs": "A review checklist restating the implementing guideline's portability rules as things to check.",
+  "synced": "020d5499d4cbaa2c",
   "parts": [
     {"part": "intro"},
     {"part": "portability", "heading": "Portability"},

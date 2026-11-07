@@ -5,11 +5,11 @@
     "title": "Ruby",
     "domain": "agenticdevelopercookbook://guidelines/implementing/language/ruby",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -55,7 +55,7 @@
       "error-handling"
     ]
   },
-  "synced": "11debf6e0788aadf",
+  "synced": "d14ddbdbbcd5a72c",
   "parts": [
     {"part": "intro"},
     {"part": "file-header", "heading": "File header"},

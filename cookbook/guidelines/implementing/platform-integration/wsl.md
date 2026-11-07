@@ -3,11 +3,11 @@ id: 6aa54d1a-1888-4107-9e8d-1c2f0ef0c320
 title: "Windows Subsystem for Linux"
 domain: agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl
 type: guideline
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-07
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -49,36 +49,36 @@ Code that runs partly in Windows and partly in a WSL distribution crosses a boun
 
 ## Where files live
 
-- Keep project files that Linux tools work on in the Linux file system (for example `/home/<user>/project`), not under `/mnt/c/...`. Cross-boundary access is slower, which shows up in builds, package installs and file watchers.
-- Files that Windows tools work on live in the Windows file system. Open a WSL directory from Windows with `explorer.exe .` or through the `\\wsl$` share.
-- Do not hardcode `/mnt/c`. The automount root is configurable in `/etc/wsl.conf` under `[automount]` (`root`).
+- Project files that Linux tools work on SHOULD live in the Linux file system (for example `/home/<user>/project`), not under `/mnt/c/...`. Cross-boundary access is slower, which shows up in builds, package installs and file watchers.
+- Files that Windows tools work on SHOULD live in the Windows file system. Open a WSL directory from Windows with `explorer.exe .` or through the `\\wsl$` share.
+- Code MUST NOT hardcode `/mnt/c`. The automount root is configurable in `/etc/wsl.conf` under `[automount]` (`root`).
 
 ## Path conversion
 
-- Convert paths with `wslpath`, never by string replacement. `wslpath "C:\Users\me"` returns the Linux path, `wslpath -w` returns the Windows path (a `\\wsl.localhost\<distro>\...` path for files inside the distribution), and `wslpath -m` returns a `C:/...` form with forward slashes.
-- The `\\wsl$` share resolves only while the distribution is running. Start it before relying on the path.
+- Code MUST convert paths with `wslpath` and MUST NOT use string replacement. `wslpath "C:\Users\me"` returns the Linux path, `wslpath -w` returns the Windows path (a `\\wsl.localhost\<distro>\...` path for files inside the distribution), and `wslpath -m` returns a `C:/...` form with forward slashes.
+- The `\\wsl$` share resolves only while the distribution is running. The distribution MUST be started before code relies on the path.
 
 ## Line endings
 
-- Use one line-ending convention across Windows, WSL and containers. Set it in `.gitattributes` per file type, not in each developer's global configuration, and keep shell scripts as LF: a script with CRLF endings fails in Linux with confusing errors.
-- Install Git in each file system you use it from, and make sure each is configured for the same convention.
+- Projects MUST use one line-ending convention across Windows, WSL and containers. It MUST be set in `.gitattributes` per file type, not in each developer's global configuration, and shell scripts MUST stay LF: a script with CRLF endings fails in Linux with confusing errors.
+- Git SHOULD be installed in each file system you use it from, and each MUST be configured for the same convention.
 
 ## Permissions and case
 
-- Linux file permissions on a Windows drive are translated from Windows permissions unless metadata is enabled. A Windows read-only attribute removes write access. With the `metadata` mount option, WSL stores Linux owner, group and mode in NTFS extended attributes, so a `chmod` persists. Set `uid`, `gid`, `umask`, `fmask` and `dmask` in `[automount] options` when the defaults do not suit.
-- Windows is case-insensitive and Linux is case-sensitive. Two files that differ only by case can exist in WSL and collide in Windows. Per-directory case sensitivity is a flag on NTFS directories, controlled with `fsutil.exe file setCaseSensitiveInfo <path> enable` (and `disable`, `queryCaseSensitiveInfo`). Windows applications may fail in a case-sensitive directory, and directories created by Windows applications are not case-sensitive.
+- Linux file permissions on a Windows drive are translated from Windows permissions unless metadata is enabled. A Windows read-only attribute removes write access. With the `metadata` mount option, WSL stores Linux owner, group and mode in NTFS extended attributes, so a `chmod` persists. Configuration SHOULD set `uid`, `gid`, `umask`, `fmask` and `dmask` in `[automount] options` when the defaults do not suit.
+- Windows is case-insensitive and Linux is case-sensitive. Two files that differ only by case can exist in WSL and collide in Windows, so names SHOULD NOT differ only by case in a tree shared with Windows. Per-directory case sensitivity is a flag on NTFS directories, controlled with `fsutil.exe file setCaseSensitiveInfo <path> enable` (and `disable`, `queryCaseSensitiveInfo`). Windows applications may fail in a case-sensitive directory, and directories created by Windows applications are not case-sensitive.
 - Directories in the WSL file system are case-sensitive by default.
 
 ## Interop
 
-- Call a Windows program from WSL by its full name including `.exe` (`explorer.exe`, `powershell.exe`). Interop and the appending of Windows `PATH` entries are on by default and can be turned off in `[interop]` (`enabled`, `appendWindowsPath`); a script must check that the program exists instead of assuming it.
-- Detect WSL before using Windows-only commands; do not run them from plain Linux.
-- Do not assume a networking mode. The Windows host and the distribution may or may not share `localhost`, so make the address configurable.
+- Code MUST call a Windows program from WSL by its full name including `.exe` (`explorer.exe`, `powershell.exe`). Interop and the appending of Windows `PATH` entries are on by default and can be turned off in `[interop]` (`enabled`, `appendWindowsPath`); a script MUST check that the program exists instead of assuming it.
+- Code MUST detect WSL before using Windows-only commands and MUST NOT run them from plain Linux.
+- Code MUST NOT assume a networking mode. The Windows host and the distribution may or may not share `localhost`, so the address MUST be configurable.
 
 ## Configuration scope
 
 - `/etc/wsl.conf` configures one distribution. `%UserProfile%\.wslconfig` configures all WSL 2 distributions.
-- A change takes effect only after the distribution has stopped. Run `wsl --terminate <distro>` or `wsl --shutdown` and wait for the distribution to exit before restarting it.
+- A change takes effect only after the distribution has stopped. You MUST run `wsl --terminate <distro>` or `wsl --shutdown` and wait for the distribution to exit before restarting it.
 
 ## Why this matters
 
@@ -88,4 +88,5 @@ WSL hides the boundary until it costs you: a build that takes ten times longer o
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-11-07 | Mike Fullerton | State the rules with RFC 2119 keywords |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

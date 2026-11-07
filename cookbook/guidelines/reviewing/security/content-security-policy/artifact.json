@@ -5,11 +5,11 @@
     "title": "Content Security Policy",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/security/content-security-policy",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -36,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "27d403fde99e884b",
+  "synced": "8d08c30e94471b61",
   "parts": [
     {"part": "intro"},
     {"part": "trusted-types-and-dom-xss", "heading": "Trusted Types and DOM-XSS"},

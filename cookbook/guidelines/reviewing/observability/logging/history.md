@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-11-07 | Mike Fullerton | Match the OpenTelemetry section to the implementing twin |
 | 1.1.1 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Add OpenTelemetry, trace correlation, semantic conventions |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

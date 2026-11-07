@@ -5,11 +5,11 @@
     "title": "Ruby",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/language/ruby",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -43,7 +43,9 @@
       "security-review"
     ]
   },
-  "synced": "72e65ef075686f67",
+  "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "a9c2c236f6899973",
   "parts": [
     {"part": "intro"},
     {"part": "header-and-strings", "heading": "Header and strings"},

@@ -5,11 +5,11 @@
     "title": "Feature flags",
     "domain": "agenticdevelopercookbook://guidelines/planning/feature-management/feature-flags",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,8 @@
       "new-module"
     ]
   },
-  "synced": "d30ecb1427760291",
+  "twin_differs": "Covers the architecture decisions and what to gate, not the implementing guideline's per-platform code.",
+  "synced": "5e63dd4b9a128ff9",
   "parts": [
     {"part": "intro"},
     {"part": "architecture-decisions", "heading": "Architecture decisions"},

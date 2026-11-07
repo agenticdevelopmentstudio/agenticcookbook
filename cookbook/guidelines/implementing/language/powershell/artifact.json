@@ -5,11 +5,11 @@
     "title": "PowerShell",
     "domain": "agenticdevelopercookbook://guidelines/implementing/language/powershell",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -58,7 +58,7 @@
       "configuration"
     ]
   },
-  "synced": "70ba101fb8fd3964",
+  "synced": "358ad56c63f40d4d",
   "parts": [
     {"part": "intro"},
     {"part": "strict-mode", "heading": "Strict mode"},

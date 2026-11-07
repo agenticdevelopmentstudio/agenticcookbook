@@ -23,5 +23,5 @@ CREATE TABLE employees (
 );
 ```
 
-There is no functional difference between column-level and table-level CHECK constraints. Use table-level only when the expression references multiple columns.
+There is no functional difference between column-level and table-level CHECK constraints. Schemas SHOULD use table-level only when the expression references multiple columns.
 
