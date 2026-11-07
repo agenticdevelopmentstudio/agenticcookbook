@@ -347,7 +347,7 @@ def _manifest(data: dict, repo_root: Path, author: str, day: str) -> dict:
     platforms = sorted({r["platform"] for r in data["code"]["roots"]})
     name = repo_scheme(repo_root)
     return {
-        "$schema": f"{COOKBOOK_REPO}/blob/main/cookbook/reference/cookbook.schema.json",
+        "$schema": f"{COOKBOOK_REPO}/blob/main/references/cookbook.schema.json",
         "type": "cookbook",
         "schema_version": "1.0.0",
         "name": name,

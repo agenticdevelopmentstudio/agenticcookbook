@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/agenticdevelopercookbook/cookbook/blob/main/cookbook/reference/cookbook.schema.json",
+  "$schema": "https://github.com/agenticdevelopercookbook/cookbook/blob/main/references/cookbook.schema.json",
   "type": "cookbook",
   "schema_version": "1.0.0",
   "name": "mini-repo",

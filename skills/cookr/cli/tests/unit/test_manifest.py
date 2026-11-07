@@ -73,3 +73,37 @@ def test_main_prompts_materializes_every_prompt_module(tmp_path, capsys):
     assert main([str(repo), "--prompts", "tool", "absent"]) == 0
     assert [p.name for p in (prompts / "act" / "references").iterdir()] == ["one.md"]
     assert "materialized 1 prompt-module manifest(s)" in capsys.readouterr().out
+
+
+def _source_folder(folder, title):
+    """A minimal source folder: one intro part under a title."""
+    folder.mkdir(parents=True)
+    (folder / "artifact.json").write_text(json.dumps({
+        "format": 1, "meta": {"title": title}, "parts": [{"part": "intro"}]}))
+    (folder / "intro.md").write_text(f"# {title}\n\nBody of {title}.\n")
+
+
+def test_artifact_entries_compile_source_folders_into_docs(tmp_path):
+    repo, manifest = _repo(tmp_path, [
+        {"src": "arts", "dst": "a", "type": "artifacts"},
+        {"src": "arts/sub/two", "dst": "single.md", "type": "artifact"},
+    ])
+    _source_folder(repo / "content" / "arts" / "one", "One")
+    _source_folder(repo / "content" / "arts" / "sub" / "two", "Two")
+    dest = materialize(manifest, repo)
+    got = sorted(p.relative_to(dest).as_posix() for p in dest.rglob("*") if p.is_file())
+    assert got == ["a/one.md", "a/sub/two.md", "single.md"]
+    one = (dest / "a" / "one.md").read_text()
+    assert one.startswith("---\n") and 'title: "One"' in one and "Body of One." in one
+    assert (dest / "single.md").read_text() == (dest / "a" / "sub" / "two.md").read_text()
+
+
+@pytest.mark.parametrize("entry, message", [
+    ({"src": "tree", "dst": "n.md", "type": "artifact"}, "MISSING source folder"),
+    ({"src": "tree", "dst": "n", "type": "artifacts"}, "no source folders"),
+    ({"src": "nope", "dst": "n", "type": "artifacts"}, "MISSING dir"),
+])
+def test_artifact_entries_refuse_what_is_not_a_source_folder(tmp_path, entry, message):
+    repo, manifest = _repo(tmp_path, [entry])
+    with pytest.raises(ManifestError, match=message):
+        materialize(manifest, repo)
