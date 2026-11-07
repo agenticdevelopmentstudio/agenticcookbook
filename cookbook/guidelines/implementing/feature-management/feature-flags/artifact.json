@@ -5,11 +5,11 @@
     "title": "Feature flags",
     "domain": "agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,7 @@
       "new-module"
     ]
   },
-  "synced": "30d5d89a237a4554",
+  "synced": "cc961e0e6e471caf",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

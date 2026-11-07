@@ -5,11 +5,11 @@
     "title": "Platform Design Languages",
     "domain": "agenticdevelopercookbook://guidelines/cookbook/ui/platform-design-languages",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,7 +38,8 @@
       "platform-integration"
     ]
   },
-  "synced": "d12c9d4c8074c272",
+  "twin_differs": "Applies the platform design sources to writing ingredients and recipes, not to building UI.",
+  "synced": "072f3178350fa805",
   "parts": [
     {"part": "intro"},
     {"part": "canonical-sources", "heading": "Canonical sources"},

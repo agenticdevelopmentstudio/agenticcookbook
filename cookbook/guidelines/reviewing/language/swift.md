@@ -3,11 +3,11 @@ id: 1471cab8-cdd2-444d-84da-8e4e70eb2453
 title: "Swift"
 domain: agenticdevelopercookbook://guidelines/reviewing/language/swift
 type: guideline
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-07
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -80,4 +80,5 @@ Most Swift review comments repeat the same four themes. Naming them lets a revie
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

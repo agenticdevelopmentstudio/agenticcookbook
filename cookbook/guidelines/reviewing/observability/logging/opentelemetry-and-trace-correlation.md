@@ -1,9 +1,10 @@
 
-Logs SHOULD be emitted through [OpenTelemetry](agenticdevelopercookbook://guidelines/implementing/observability/distributed-tracing) and exported over OTLP, the de-facto cross-vendor standard for telemetry. Prefer this over per-platform-only logging frameworks so logs, traces, and metrics share one pipeline and one backend.
+The per-platform loggers above remain the source of structured log lines; this subsection governs how those lines integrate with distributed telemetry. The PII guidance still applies — never emit personally identifiable information in any field, even at debug level.
 
-- Every log line SHOULD carry the active trace ID and span ID (a trace/correlation ID), so a log can be pivoted to its trace and vice versa. OpenTelemetry-aware logging integrations inject these automatically when a span is in scope.
-- Field names SHOULD follow OpenTelemetry semantic conventions (e.g. `service.name`, `trace_id`, `http.request.method`) rather than ad-hoc keys, so telemetry is portable across backends.
-- Production logs SHOULD be emitted as structured JSON, not free-form text, to keep them machine-parseable and aggregable.
+- Components **SHOULD** emit telemetry via [OpenTelemetry](https://opentelemetry.io/) and export over OTLP, treating it as the de-facto, CNCF-graduated standard, rather than relying on ad-hoc per-platform logging alone.
+- Every log line **SHOULD** carry a trace/correlation ID (e.g., `trace_id` and `span_id`) propagated through the request context, so logs correlate with distributed traces.
+- Log and span field names **SHOULD** follow the OpenTelemetry [semantic conventions](https://opentelemetry.io/docs/specs/semconv/) rather than ad-hoc names.
+- Production logs **SHOULD** be structured JSON to keep them machine-parseable for aggregation and trace correlation.
 
-The per-platform frameworks above remain the local emission layer; route their output through an OpenTelemetry appender/bridge rather than replacing them. PII guidance still applies — never log personally identifiable information at any level, including trace-correlated logs.
+See [distributed tracing](agenticdevelopercookbook://guidelines/implementing/observability/distributed-tracing) for span propagation and exporter configuration.
 

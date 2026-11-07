@@ -3,11 +3,11 @@ id: 65367d27-1d4e-41e5-9e8c-e9adb08ddc90
 title: "Objective-C"
 domain: agenticdevelopercookbook://guidelines/reviewing/language/objective-c
 type: guideline
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-07
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -81,4 +81,5 @@ Ownership and null mistakes in Objective-C compile cleanly and fail later, far f
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

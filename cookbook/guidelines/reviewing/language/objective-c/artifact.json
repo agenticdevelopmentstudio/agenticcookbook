@@ -5,11 +5,11 @@
     "title": "Objective-C",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -43,7 +43,8 @@
       "code-review"
     ]
   },
-  "synced": "7c37df477ac35bec",
+  "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
+  "synced": "7d4b3f9ba9634cd3",
   "parts": [
     {"part": "intro"},
     {"part": "ownership", "heading": "Ownership"},

@@ -3,11 +3,11 @@ id: 706a3bf7-0fe1-4b12-b4da-0fd8d363b314
 title: "GitHub Copilot configuration"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration
 type: guideline
-version: 1.0.0
+version: 1.0.1
 status: accepted
 language: en
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-07
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -62,4 +62,5 @@ A misnamed instruction file does nothing and gives no error. Checking names and 
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

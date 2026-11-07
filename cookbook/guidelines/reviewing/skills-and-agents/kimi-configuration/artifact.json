@@ -5,11 +5,11 @@
     "title": "Kimi configuration",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/kimi-configuration",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -39,7 +39,8 @@
       "code-review"
     ]
   },
-  "synced": "783412d05d9c8acf",
+  "twin_differs": "A review checklist restating the implementing guideline's configuration rules as things to flag.",
+  "synced": "b9cf14f4f507ee48",
   "parts": [
     {"part": "intro"},
     {"part": "paths", "heading": "Paths"},

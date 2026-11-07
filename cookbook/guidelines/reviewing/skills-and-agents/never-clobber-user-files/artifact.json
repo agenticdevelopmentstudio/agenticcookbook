@@ -5,11 +5,11 @@
     "title": "Never overwrite a user's files",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/never-clobber-user-files",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -40,7 +40,8 @@
       "pre-commit"
     ]
   },
-  "synced": "778eb24d1a5f5491",
+  "twin_differs": "A review checklist restating the implementing guideline's install rules as things to check.",
+  "synced": "415e15b15cf01ff1",
   "parts": [
     {"part": "intro"},
     {"part": "writes", "heading": "Writes"},
