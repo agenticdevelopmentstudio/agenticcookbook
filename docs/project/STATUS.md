@@ -1,7 +1,8 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-10-04. *Derives from:* `226f310` (PR #64, agenticcookbook),
-`2ac4109` (PR #2, skill-router), and PR #66 (`revise-corpus-conformance`).
+*Updated:* 2026-11-07. *Derives from:* `226f310` (PR #64, agenticcookbook),
+`2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`), and
+PR #72 (`dd2e4670`, `44c510bf`).
 
 Read this first to resume the work. The design lives in the
 [plan](../superpowers/plans/2026-10-03-compiled-artifacts-and-skills.md) and the
@@ -31,7 +32,19 @@ cookr (`skills/cookr/`, cookr 0.10.0, cookr skill 0.11.0) is the compiler:
   — register the routed set with skill-router and write the always-on
   principles skill per host, under a receipt.
 - `validate` — neutrality census, addition checks, stale docs, and the sync
-  record (doc vs. folder; see the spec's *Sync record*).
+  record (doc vs. folder; see the spec's *Sync record*). Since PR #72 it also
+  runs two guideline censuses (`cookr/core/twins.py`):
+  - **Twins**: a guideline filed under several use cases (same path below
+    `guidelines/<use-case>/`) must match its twins, ignoring history and links
+    to its own use case. A twin rewritten on purpose records why in
+    `twin_differs` in its artifact.json. Findings: `drift`, `stale` (a reason on
+    a twin that matches), `short` (reason under 16 characters).
+  - **Rules**: every guideline states at least one RFC 2119 rule
+    (MUST/SHOULD/MAY), or records `informational` in its artifact.json.
+  - Compiling warns (does not fail) on a SKILL.md over 500 lines
+    (`LINES_MAX` in `cookr/core/skill.py`).
+  These came from the abandoned `skill-based-cookbook` branch; the corpus was
+  fixed to pass them in the same PR.
 - `organize` — writes a library manifest whose `structure` is
   `{"kind": "library"}`, which `cookbook.schema.json` allows.
 
@@ -74,12 +87,21 @@ zero failing). In particular:
   still names the old `adh/agenticcookbook` checkout, so `install --check`
   reports `library:cookbook` BROKEN until `--force` rewrites it or it is kept
   as it is.
+- skill-router's hooks are installed (since skill-router `371f3b3`, `./install`
+  always writes them). The prompt hook adds a `skill-router: likely <route>`
+  hint when a prompt matches a route's keywords, which is now the main pointer
+  from a session to the routed cookbook skills. It matches by keyword only (a
+  prompt such as "write a pytest test" gets no hint). This repo has no
+  `.skill-router.json`, so enforcement is `nudge`: nothing is gated.
+- Routed lookups serve the installed set compiled from the main checkout, not a
+  worktree's edits; re-run `cookr -p <main checkout> install --replace` after
+  artifact changes merge.
 
 ## Verified
 
-- cookr unit tests: 779 passed (Python 3.9: 775 passed, 4 skipped), plus the
-  organize schema test.
-- `cookr validate` passes; `cookr compile --check` reports 456 of 456 current.
+- cookr test suite at PR #72: 814 passed, 5 skipped.
+- `cookr validate` passed on 2026-10-04; since folders became the only
+  committed form it reports every doc missing (see **Open** above).
 - adtoolkit (P8) was verified on a scratch copy: 387/387 convert and
   round-trip, compile under the cap, register beside the cookbook, and route
   correctly.

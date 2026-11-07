@@ -10,11 +10,11 @@ Each artifact type has a compliance file that defines its required structure:
 
 | Type | Compliance File | Checks |
 |------|----------------|--------|
-| Principle | `cookbook/compliance/artifact-formatting/principle-formatting.md` | 7 |
-| Guideline | `cookbook/compliance/artifact-formatting/guideline-formatting.md` | 8 |
-| Ingredient | `cookbook/compliance/artifact-formatting/ingredient-formatting.md` | 17 |
-| Recipe | `cookbook/compliance/artifact-formatting/recipe-formatting.md` | 15 |
-| Cookbook | `cookbook/compliance/artifact-formatting/cookbook-formatting.md` | 13 |
+| Principle | `tbd/compliance/artifact-formatting/principle-formatting.md` | 7 |
+| Guideline | `tbd/compliance/artifact-formatting/guideline-formatting.md` | 8 |
+| Ingredient | `tbd/compliance/artifact-formatting/ingredient-formatting.md` | 17 |
+| Recipe | `tbd/compliance/artifact-formatting/recipe-formatting.md` | 15 |
+| Cookbook | `tbd/compliance/artifact-formatting/cookbook-formatting.md` | 13 |
 
 Before writing or modifying an artifact, read the compliance file for that artifact's type. Follow every MUST check. Address every SHOULD check unless there is a documented reason to skip it.
 

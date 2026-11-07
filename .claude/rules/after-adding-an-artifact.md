@@ -37,7 +37,7 @@ Check and update all files that reference or are referenced by the changed artif
 
 - `README.md` — update artifact counts if the total changed (e.g., "18 principles" becomes "19 principles"). Update category tables if a new category was added.
 - `.claude/CLAUDE.md` — update the Cookbook Artifacts table counts if totals changed.
-- `cookbook/introduction/glossary.md` — update if the artifact introduces or changes a defined term.
+- `guide/introduction/glossary.md` — update if the artifact introduces or changes a defined term.
 
 ---
 

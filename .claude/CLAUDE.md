@@ -5,17 +5,20 @@ A structured cookbook of principles, guidelines, recipes, and workflows for AI-a
 ## Repository Structure
 
 ```
-cookbook/                # cookbook content root
-  introduction/          # getting started, conventions, glossary
+cookbook/                # cookbook artifacts (source folders)
   principles/            # engineering principles
   guidelines/            # use-case-organized guidelines
   ingredients/           # atomic component specs (building blocks)
   recipes/               # compositions of ingredients into features
+  index.md               # table of contents
+guide/
+  introduction/          # getting started, conventions, glossary
+  appendix/              # research materials
+references/              # external best-practices links, schemas, examples
+tbd/
   compliance/            # compliance categories
   workflows/             # workflow specs (plan, implement, verify, review)
-  reference/             # external best-practices links, schemas, examples
-  appendix/              # research materials
-  index.md               # table of contents
+docs/                    # project status, designs, plans, session records
 README.md                # human-facing documentation
 .claude/
   CLAUDE.md              # this file
@@ -25,7 +28,7 @@ README.md                # human-facing documentation
 
 ## Cookbook Artifacts
 
-A **cookbook artifact** is any content item in the cookbook: a principle, guideline, ingredient, or recipe. Each artifact is a standalone markdown file with YAML frontmatter, named requirements, and a change history. See `cookbook/introduction/glossary.md` for the full definition.
+A **cookbook artifact** is any content item in the cookbook: a principle, guideline, ingredient, or recipe. Each artifact is a standalone markdown file with YAML frontmatter, named requirements, and a change history. See `guide/introduction/glossary.md` for the full definition.
 
 | Type | Count | Path | Description |
 |------|-------|------|-------------|
@@ -34,7 +37,7 @@ A **cookbook artifact** is any content item in the cookbook: a principle, guidel
 | Ingredient | 48 | `cookbook/ingredients/` | Atomic component specs — the building blocks of recipes |
 | Recipe | 13 | `cookbook/recipes/` | Compositions of configured ingredients into coherent features |
 
-A **cookbook** (`cookbook.json`) assembles recipes and ingredients into a complete application, plugin, or widget. See `cookbook/reference/cookbook.schema.json` for the JSON Schema.
+A **cookbook** (`cookbook.json`) assembles recipes and ingredients into a complete application, plugin, or widget. See `references/cookbook.schema.json` for the JSON Schema.
 
 Supporting content (not artifacts): compliance checks, workflows, reference material.
 
@@ -52,7 +55,7 @@ The cookbook's public-facing website (React 19, TypeScript, Tailwind CSS 4) and 
 
 ## Conventions
 
-Read `cookbook/introduction/conventions.md` for the full format reference. See `cookbook/introduction/glossary.md` for term definitions.
+Read `guide/introduction/conventions.md` for the full format reference. See `guide/introduction/glossary.md` for term definitions.
 
 Key rules:
 - All `.md` files have YAML frontmatter (id, title, domain, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references)
@@ -86,7 +89,7 @@ Key rules:
 
 ## Writing New Content
 
-Use `cookbook/ingredients/_template.md` for new ingredients and `cookbook/recipes/_template.md` for new recipes. Follow `cookbook/introduction/conventions.md` for the frontmatter format. Every cookbook artifact needs a UUID, domain matching its path, and a Change History section.
+Use `cookbook/ingredients/_template.md` for new ingredients and `cookbook/recipes/_template.md` for new recipes. Follow `guide/introduction/conventions.md` for the frontmatter format. Every cookbook artifact needs a UUID, domain matching its path, and a Change History section.
 
 **Source folders.** Every principle, guideline, ingredient and recipe is a source folder
 (`<name>/artifact.json` plus one `.md` per section). The folder is the only committed form:
