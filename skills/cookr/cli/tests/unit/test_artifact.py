@@ -42,13 +42,20 @@ def test_sample_folder_is_what_convert_writes(doc, tmp_path):
 
 
 def test_every_cookbook_artifact_round_trips(tmp_path):
-    docs = find_documents([REPO_ROOT / "cookbook"])
-    assert len(docs) > 400
-    for doc in docs:
-        text = doc.read_text()
-        out = tmp_path / doc.relative_to(REPO_ROOT).with_suffix("")
+    # Source folders are the only form committed: compile each to its doc,
+    # split that doc back into a folder, and the folder must compose the same doc.
+    folders = find_folders([REPO_ROOT / "cookbook"])
+    assert len(folders) > 400
+    for folder in folders:
+        text = compose_document(load_folder(folder))
+        out = tmp_path / folder.relative_to(REPO_ROOT)
         write_folder(read_document(text), out)
-        assert compose_document(load_folder(out)) == normalize_document(text), doc
+        assert compose_document(load_folder(out)) == normalize_document(text), folder
+
+
+def test_no_compiled_doc_is_committed_beside_its_folder():
+    """A doc beside its folder is a stale copy of it; the folder is the source."""
+    assert find_documents([REPO_ROOT / "cookbook"]) == []
 
 
 def test_split_keeps_every_byte():
