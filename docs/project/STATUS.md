@@ -30,10 +30,12 @@ cookr (`skills/cookr/`, cookr 0.10.0, cookr skill 0.11.0) is the compiler:
 - `organize` — writes a library manifest whose `structure` is
   `{"kind": "library"}`, which `cookbook.schema.json` allows.
 
-skill-router 0.2.0 reads cookr's `metadata:` routes, picks
-`targets/<target>.SKILL.md` variants, registers whole sets with
-`register-dir --source <name> --replace`, enforces a fan-out cap of 50, and
-reports `--version`.
+skill-router reads cookr's `metadata:` routes, picks
+`targets/<target>.SKILL.md` variants, enforces a fan-out cap of 50, and
+reports `--version`. Since 0.4.0 it is one CLI (`skill-router`) that registers
+one skill at a time and keeps per-host copies under `~/.skill-router/<host>/`;
+it has no `register-dir` or `--source` sets. cookr registers each skill of a
+set and finds the set again by the skills' registered origin (2026-11-07).
 
 The old `cookbook` CLI is absorbed into cookr; the adh plugin was dropped.
 
