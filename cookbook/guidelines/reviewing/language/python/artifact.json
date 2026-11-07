@@ -5,7 +5,7 @@
     "title": "Python",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/language/python",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -48,7 +48,8 @@
     ]
   },
   "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
-  "synced": "a442b00f69b927e6",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "394afea89df6919b",
   "parts": [
     {"part": "intro"},
     {"part": "packaging", "heading": "Packaging"},

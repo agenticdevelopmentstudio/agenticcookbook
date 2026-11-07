@@ -5,11 +5,11 @@
     "title": "Primary key strategies",
     "domain": "agenticdevelopercookbook://guidelines/planning/data/primary-keys",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -43,7 +43,7 @@
       "schema-design"
     ]
   },
-  "synced": "45514da9465b54e1",
+  "synced": "d7d909334a244bf0",
   "parts": [
     {"part": "intro"},
     {"part": "how-sqlite-s-rowid-works", "heading": "How SQLite's rowid works"},

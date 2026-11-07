@@ -3,7 +3,7 @@ id: f6836f90-5090-4857-bab9-74feb7c68223
 title: "Ruby"
 domain: agenticdevelopercookbook://guidelines/reviewing/language/ruby
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -74,5 +74,6 @@ A Ruby shell-injection or swallowed error looks fine in a diff. A checklist make
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

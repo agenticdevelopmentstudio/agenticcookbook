@@ -3,7 +3,7 @@ id: a48af237-db64-40ae-9574-e579c107de83
 title: "AppKit and UIKit patterns"
 domain: agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -78,5 +78,6 @@ These are the defects that pass a quick test and fail in the field: a delegate t
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

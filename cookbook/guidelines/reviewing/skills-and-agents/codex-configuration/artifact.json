@@ -5,7 +5,7 @@
     "title": "Codex configuration",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/codex-configuration",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -42,7 +42,8 @@
   },
   "names_hosts": "Reviews Codex configuration files, paths and keys, so it must name the Codex host.",
   "twin_differs": "A review checklist restating the implementing guideline's configuration rules as things to flag.",
-  "synced": "4fd4aab7df088708",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "c51ee48136b9f2ae",
   "parts": [
     {"part": "intro"},
     {"part": "config-toml", "heading": "config.toml"},

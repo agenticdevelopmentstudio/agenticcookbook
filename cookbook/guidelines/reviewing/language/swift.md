@@ -3,7 +3,7 @@ id: 1471cab8-cdd2-444d-84da-8e4e70eb2453
 title: "Swift"
 domain: agenticdevelopercookbook://guidelines/reviewing/language/swift
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -80,5 +80,6 @@ Most Swift review comments repeat the same four themes. Naming them lets a revie
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

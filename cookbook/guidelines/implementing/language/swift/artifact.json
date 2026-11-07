@@ -5,11 +5,11 @@
     "title": "Swift",
     "domain": "agenticdevelopercookbook://guidelines/implementing/language/swift",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -55,7 +55,7 @@
       "error-handling"
     ]
   },
-  "synced": "8d937ac56a6db23d",
+  "synced": "43e5df9faba1accd",
   "parts": [
     {"part": "intro"},
     {"part": "related-swift-guidelines", "heading": "Related Swift guidelines"},

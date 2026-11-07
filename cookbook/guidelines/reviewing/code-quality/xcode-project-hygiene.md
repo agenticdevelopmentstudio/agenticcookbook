@@ -3,7 +3,7 @@ id: 544b36cb-2778-4b60-a31e-b55ff789eada
 title: "Xcode project hygiene"
 domain: agenticdevelopercookbook://guidelines/reviewing/code-quality/xcode-project-hygiene
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -81,5 +81,6 @@ The risky parts of a project change are small text edits buried in a noisy file.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

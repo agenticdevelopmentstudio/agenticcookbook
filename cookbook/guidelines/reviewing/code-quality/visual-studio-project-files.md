@@ -3,7 +3,7 @@ id: b0ee38ef-8256-418f-95a8-495264d282fc
 title: "Visual Studio project files"
 domain: agenticdevelopercookbook://guidelines/reviewing/code-quality/visual-studio-project-files
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -70,5 +70,6 @@ Project-file diffs are noisy and rarely read closely. Checking only these items 
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

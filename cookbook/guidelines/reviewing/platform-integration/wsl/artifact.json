@@ -5,7 +5,7 @@
     "title": "Windows Subsystem for Linux",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/platform-integration/wsl",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -41,7 +41,8 @@
     ]
   },
   "twin_differs": "A review checklist restating the implementing guideline's WSL rules as things to flag.",
-  "synced": "f6181cc1efd470d1",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "71224fee62e2cab2",
   "parts": [
     {"part": "intro"},
     {"part": "files-and-paths", "heading": "Files and paths"},

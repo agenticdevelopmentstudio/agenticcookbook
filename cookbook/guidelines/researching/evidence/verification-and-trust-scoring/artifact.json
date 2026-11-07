@@ -5,11 +5,11 @@
     "title": "Verification and trust scoring",
     "domain": "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,7 +38,7 @@
       "research"
     ]
   },
-  "synced": "f3b31e6814c751a9",
+  "synced": "8bf44dd23f58e39f",
   "parts": [
     {"part": "intro"},
     {"part": "verification-frameworks", "heading": "Verification frameworks"},

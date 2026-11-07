@@ -5,11 +5,11 @@
     "title": "Agentic research design lessons",
     "domain": "agenticdevelopercookbook://guidelines/researching/process/agentic-research-design-lessons",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,7 +38,8 @@
       "research"
     ]
   },
-  "synced": "0538cd28852181f8",
+  "informational": "Lessons observed in production research agents, offered as evidence for design choices rather than as rules.",
+  "synced": "568e1d24697b92e4",
   "parts": [
     {"part": "intro"},
     {"part": "orchestration", "heading": "Orchestration"},

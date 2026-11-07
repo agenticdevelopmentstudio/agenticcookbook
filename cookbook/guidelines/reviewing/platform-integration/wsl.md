@@ -3,7 +3,7 @@ id: 65eff0b7-14d5-4cd1-8107-1cfda65e78f3
 title: "Windows Subsystem for Linux"
 domain: agenticdevelopercookbook://guidelines/reviewing/platform-integration/wsl
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -71,5 +71,6 @@ Boundary bugs rarely appear on the author's machine. A checklist aimed at the bo
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

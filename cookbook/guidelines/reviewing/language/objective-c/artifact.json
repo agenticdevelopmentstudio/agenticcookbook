@@ -5,7 +5,7 @@
     "title": "Objective-C",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -44,7 +44,8 @@
     ]
   },
   "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
-  "synced": "7d4b3f9ba9634cd3",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "047b453c82f6eed9",
   "parts": [
     {"part": "intro"},
     {"part": "ownership", "heading": "Ownership"},

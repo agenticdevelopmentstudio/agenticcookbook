@@ -3,7 +3,7 @@ id: cfa4b119-d10a-4c2a-b90d-f003717792a7
 title: "Never overwrite a user's files"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/never-clobber-user-files
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -67,5 +67,6 @@ The bug is invisible on a clean test machine, where no user file exists to colli
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

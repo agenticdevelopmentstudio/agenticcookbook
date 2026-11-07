@@ -5,11 +5,11 @@
     "title": "Research methodology and sources",
     "domain": "agenticdevelopercookbook://guidelines/researching/process/research-methodology-and-sources",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,7 +38,7 @@
       "research"
     ]
   },
-  "synced": "7c1cbdb710043c25",
+  "synced": "001726b807be6b6e",
   "parts": [
     {"part": "intro"},
     {"part": "workflow", "heading": "Workflow"},

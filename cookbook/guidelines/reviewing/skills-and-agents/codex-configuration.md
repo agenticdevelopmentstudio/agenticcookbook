@@ -3,7 +3,7 @@ id: 8017637b-8eae-4829-b5a3-85560f7f8fb8
 title: "Codex configuration"
 domain: agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/codex-configuration
 type: guideline
-version: 1.0.1
+version: 1.0.2
 status: accepted
 language: en
 created: 2026-10-09
@@ -66,5 +66,6 @@ Configuration review is mostly about placement. The checklist makes the placemen
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.0.2 | 2026-11-07 | Mike Fullerton | Record that it is informational: a review checklist for the implementing twin's rules |
 | 1.0.1 | 2026-11-07 | Mike Fullerton | Record why this guideline differs from its twins |
 | 1.0.0 | 2026-10-09 | Mike Fullerton | Initial creation |

@@ -5,7 +5,7 @@
     "title": "GitHub Copilot configuration",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -41,7 +41,8 @@
   },
   "names_hosts": "Reviews GitHub Copilot instruction files, which can also be a CLAUDE.md or GEMINI.md file, so it names those hosts.",
   "twin_differs": "A review checklist restating the implementing guideline's configuration rules as things to flag.",
-  "synced": "b209299a6121f19b",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "e18910ad2c341a6a",
   "parts": [
     {"part": "intro"},
     {"part": "files-and-names", "heading": "Files and names"},
