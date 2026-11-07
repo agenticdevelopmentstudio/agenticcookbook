@@ -5,11 +5,11 @@
     "title": "Visual Studio project files",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/visual-studio-project-files",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -43,7 +43,9 @@
       "pre-commit"
     ]
   },
-  "synced": "bb5be8d9a971a02f",
+  "twin_differs": "A review checklist restating the implementing guideline's project-file rules as things to flag.",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "b74a515a98d4665a",
   "parts": [
     {"part": "intro"},
     {"part": "project-structure", "heading": "Project structure"},

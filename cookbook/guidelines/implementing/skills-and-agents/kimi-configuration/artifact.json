@@ -5,11 +5,11 @@
     "title": "Kimi configuration",
     "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -48,7 +48,7 @@
       "configuration"
     ]
   },
-  "synced": "a9fe7cc09abc80b2",
+  "synced": "22c19d359470ffed",
   "parts": [
     {"part": "intro"},
     {"part": "home-directory", "heading": "Home directory"},

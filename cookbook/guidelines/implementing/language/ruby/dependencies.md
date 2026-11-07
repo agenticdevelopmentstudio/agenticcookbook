@@ -1,4 +1,4 @@
 
-- A `Gemfile` has one global `source`, and its `Gemfile.lock` is committed.
-- Keep development and test gems in groups, and install without them where they are not needed with `bundle config set --local without <group>`.
+- A `Gemfile` MUST have one global `source`, and its `Gemfile.lock` MUST be committed.
+- Development and test gems SHOULD be kept in groups, and installs SHOULD omit them where they are not needed with `bundle config set --local without <group>`.
 

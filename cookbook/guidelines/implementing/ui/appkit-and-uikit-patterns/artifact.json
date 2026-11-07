@@ -5,11 +5,11 @@
     "title": "AppKit and UIKit patterns",
     "domain": "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -52,7 +52,7 @@
       "platform-integration"
     ]
   },
-  "synced": "3c632549cb619ebc",
+  "synced": "543ee8719b54f9da",
   "parts": [
     {"part": "intro"},
     {"part": "responder-chain", "heading": "Responder chain"},

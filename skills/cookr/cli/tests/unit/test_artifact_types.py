@@ -12,7 +12,7 @@ from cookr.core.artifact_types import COMMON_FIELDS, TYPES, validate
 
 from ..conftest import FIXTURES, REPO_ROOT
 
-FORMATTING = REPO_ROOT / "cookbook" / "compliance" / "artifact-formatting"
+FORMATTING = REPO_ROOT / "tbd" / "compliance" / "artifact-formatting"
 FOLDERS = sorted((FIXTURES / "artifacts" / "folders").iterdir())
 
 
@@ -29,7 +29,7 @@ def test_closed_sections_match_the_formatting_rules(kind):
 
 
 def test_common_fields_match_the_conventions_table():
-    text = (REPO_ROOT / "cookbook" / "introduction" / "conventions.md").read_text()
+    text = (REPO_ROOT / "guide" / "introduction" / "conventions.md").read_text()
     required = re.findall(r"^\| `([a-z-]+)` \| Yes \|", text, re.M)
     assert list(COMMON_FIELDS) == required
 
@@ -46,7 +46,7 @@ def test_samples_cover_every_type():
 @pytest.mark.parametrize("folder", FOLDERS, ids=lambda p: p.name)
 def test_samples_match_the_json_schema(folder):
     jsonschema = pytest.importorskip("jsonschema")
-    schema = json.loads((REPO_ROOT / "cookbook" / "reference" / "artifact.schema.json").read_text())
+    schema = json.loads((REPO_ROOT / "references" / "artifact.schema.json").read_text())
     jsonschema.validate(json.loads((folder / "artifact.json").read_text()), schema)
 
 

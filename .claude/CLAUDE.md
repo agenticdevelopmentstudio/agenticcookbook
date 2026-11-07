@@ -89,6 +89,7 @@ Key rules:
 Use `cookbook/ingredients/_template.md` for new ingredients and `cookbook/recipes/_template.md` for new recipes. Follow `cookbook/introduction/conventions.md` for the frontmatter format. Every cookbook artifact needs a UUID, domain matching its path, and a Change History section.
 
 **Source folders.** Every principle, guideline, ingredient and recipe is a source folder
-(`<name>/artifact.json` plus one `.md` per section), and `<name>.md` beside it is compiled from
-the folder. Edit `<name>.md` as usual, then run `cookr convert --update <path>` to fold the edit into the
-folder; `cookr validate` fails while a `.md` and its folder disagree.
+(`<name>/artifact.json` plus one `.md` per section). The folder is the only committed form:
+edit its section files directly, or compile a doc with `cookr compile`, edit it, and fold it back
+with `cookr convert --update <path>` — then delete the doc. A compiled `<name>.md` committed beside
+its folder fails cookr's tests.

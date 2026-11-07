@@ -4,7 +4,8 @@ current, and take it away again.
 Three kinds of item, each OK, MISSING, DRIFT or BROKEN:
 
     set        the routed skills, compiled into <home>/sets/<library>
-    routed     that set, registered with skill-router as source <library>
+    routed     that set's skills, each registered with skill-router; the set
+               is the skills whose registered origin is a dir of <home>/sets/<library>
     always-on  the principles skill, rendered for one target into the host's
                skills dir (`<skills_dir>/general-principles/SKILL.md`)
 
@@ -23,9 +24,10 @@ the first) would replace every skill it installed, so it is refused until
 The receipt is read, changed and written under a lock (`install.lock`), and
 written atomically, also when an install fails part way.
 
-skill-router is driven through its CLI (`skill-router-registry`, or the command
-in $COOKR_SKILL_ROUTER_REGISTRY), never imported: it is a separate tool with
-its own Python.
+skill-router is driven through its CLI (`skill-router`, or the command in
+$COOKR_SKILL_ROUTER), never imported: it is a separate tool with its own
+Python. It registers one skill dir at a time and files no sets, so cookr
+registers each skill of the set and finds them again by their origin.
 """
 
 from __future__ import annotations
@@ -56,8 +58,8 @@ OK, MISSING, DRIFT, BROKEN = "ok", "missing", "drift", "broken"
 RECEIPT = "install.json"
 LOCK = "install.lock"
 ROUTED = "routed"
-ROUTER_ENV = "COOKR_SKILL_ROUTER_REGISTRY"
-ROUTER_MIN = (0, 2, 0)          # register-dir --source/--replace/--new-keyword, unregister --source
+ROUTER_ENV = "COOKR_SKILL_ROUTER"
+ROUTER_MIN = (0, 4, 0)          # one CLI: register <dir> --new-keyword, unregister <name>, list (origin)
 
 
 class InstallError(ValueError):
@@ -185,7 +187,9 @@ class RouterError(RuntimeError):
 
 
 class Router:
-    """skill-router's registry CLI, run as a subprocess."""
+    """skill-router's CLI, run as a subprocess. A set is not something
+    skill-router knows: it is the registered skills whose origin is a dir of
+    `set_dir`, on every host that lists them."""
 
     def __init__(self, command: list[str]):
         self.command = command
@@ -196,7 +200,7 @@ class Router:
         cmd = os.environ.get(ROUTER_ENV)
         if cmd:
             return cls(shlex.split(cmd))
-        exe = shutil.which("skill-router-registry")
+        exe = shutil.which("skill-router")
         return cls([exe]) if exe else None
 
     def _exec(self, *args: str) -> subprocess.CompletedProcess:
@@ -216,31 +220,71 @@ class Router:
         if m is None or tuple(map(int, m.groups())) < ROUTER_MIN:
             found = f"is {m.group(0)}" if m else "has no --version, so predates it"
             raise RouterError(f"{shlex.join(self.command)} {found}; cookr needs skill-router "
-                              f"{need} or later (register-dir --source --replace)")
+                              f"{need} or later (register <dir>, unregister <name>)")
         self._version_ok = True
 
     def _run(self, *args: str) -> dict:
+        """The command's JSON (`{"hosts": {host: ...}}`); RouterError when
+        it fails or prints none."""
         self.require_version()
         p = self._exec(*args, "--json")
         try:
-            data = json.loads(p.stdout) if p.stdout.strip() else None
+            data = json.loads(p.stdout) if p.returncode == 0 and p.stdout.strip() else None
         except json.JSONDecodeError:
             data = None
         if data is None:
             raise RouterError((p.stderr or p.stdout).strip() or f"{args[0]} exited {p.returncode}")
         return data
 
-    def listed(self, source: str) -> list[dict]:
-        return list(self._run("list", "--source", source).get("skills", []))
+    def listed(self, set_dir: Path) -> list[dict]:
+        """Each skill registered from `set_dir`, once: {name, path (its
+        origin), hosts (those listing it)}."""
+        where = Path(set_dir).resolve()
+        found: dict[str, dict] = {}
+        for host, got in sorted(self._run("list").get("hosts", {}).items()):
+            for e in got.get("skills", []):
+                origin = Path(e.get("origin") or e["path"])
+                if origin.resolve().parent == where:
+                    rec = found.setdefault(e["name"], {"name": e["name"], "path": str(origin), "hosts": []})
+                    rec["hosts"].append(host)
+        return [found[n] for n in sorted(found)]
 
-    def register(self, set_dir: Path, source: str) -> dict:
-        """A set's keywords are its library's directory names, reviewed in
-        that repo, so near-duplicates (`service` beside `services`) are
-        accepted and reported, not refused as a hand-typed one would be."""
-        return self._run("register-dir", str(set_dir), "--source", source, "--replace", "--new-keyword")
+    def register(self, set_dir: Path) -> dict:
+        """Register every skill of `set_dir` and unregister those of its
+        skills no longer in it. A set's keywords are its library's directory
+        names, reviewed in that repo, so near-duplicates (`service` beside
+        `services`) are accepted and reported, not refused as a hand-typed
+        one would be. Returns {registered, removed, failed, warnings}."""
+        before = self.listed(set_dir)
+        dirs = sorted(p.parent for p in Path(set_dir).glob(f"*/{skill_mod.SKILL_FILE}"))
+        out: dict[str, list] = {"registered": [], "removed": [], "failed": [], "warnings": []}
+        for d in dirs:
+            try:
+                done = self._run("register", str(d), "--new-keyword")
+            except RouterError as e:
+                out["failed"].append({"path": str(d), "error": str(e)})
+                continue
+            out["registered"].append(d.name)
+            for got in done.get("hosts", {}).values():
+                out["warnings"] += got.get("warnings") or []
+        names = {d.name for d in dirs}
+        for e in before:
+            if e["name"] not in names:
+                self._unregister(e)
+                out["removed"].append(e["name"])
+        return out
 
-    def unregister(self, source: str) -> None:
-        self._run("unregister-skill", "--source", source)
+    def _unregister(self, entry: dict) -> None:
+        """Only on the hosts that list it from the set: another host may
+        hold a skill of the same name from somewhere else."""
+        self._run("unregister", entry["name"], *(a for h in entry["hosts"] for a in ("--host", h)))
+
+    def unregister(self, set_dir: Path) -> None:
+        listed = self.listed(set_dir)
+        if not listed:
+            raise RouterError(f"no skills registered from {set_dir}")
+        for e in listed:
+            self._unregister(e)
 
 
 # ── what to install ──────────────────────────────────────────────────────────
@@ -386,23 +430,19 @@ class Installer:
     def _routed_status(self, rep: skill_mod.SetReport, set_state: str, receipt: dict[str, dict]) -> Status:
         item = f"{ROUTED}:{self.source}"
         if self.router is None:
-            return Status(item, BROKEN, "skill-router-registry not found; install skill-router "
+            return Status(item, BROKEN, "skill-router not found; install skill-router "
                                         f"or set {ROUTER_ENV}")
         try:
-            listed = self.router.listed(self.source)
+            listed = self.router.listed(self.set_dir)
         except RouterError as e:
             return Status(item, BROKEN, str(e))
         if set_state == BROKEN:
             return Status(item, BROKEN, "the set does not compile")
         if not listed:
-            return Status(item, MISSING, f"no skills registered from source {self.source!r}")
+            return Status(item, MISSING, f"no skills registered from {self.set_dir}")
         want, have = self._expected_names(rep), {e["name"] for e in listed}
-        outside = [e["name"] for e in listed
-                   if Path(e["path"]).resolve().parent != self.set_dir.resolve()]
         if want != have:
             return Status(item, DRIFT, f"{len(want - have)} to register, {len(have - want)} to remove")
-        if outside:
-            return Status(item, DRIFT, f"{len(outside)} registered from outside {self.set_dir}")
         if set_state != OK:
             return Status(item, DRIFT, "registered from a set that is out of date")
         if (receipt.get(item) or {}).get("digest") != set_digest(self.set_dir):
@@ -512,7 +552,7 @@ class Installer:
             r.action = "would register"
             return [s, r]
         try:
-            done = self.router.register(self.set_dir, self.source)
+            done = self.router.register(self.set_dir)
         except RouterError as e:
             return [s, Status(r.item, BROKEN, str(e))]
         receipt[r.item] = self._routed_record()
@@ -629,14 +669,14 @@ class Installer:
 
     def _remove_routed(self, item: str, rec: dict, receipt: dict, dry_run: bool) -> Status:
         if self.router is None:
-            return Status(item, BROKEN, f"skill-router-registry not found; set {ROUTER_ENV}")
-        source = rec["source"]
+            return Status(item, BROKEN, f"skill-router not found; set {ROUTER_ENV}")
+        set_dir = Path(rec["dir"])
         try:
-            listed = self.router.listed(source)
+            listed = self.router.listed(set_dir)
             if dry_run:
                 return Status(item, OK, f"{len(listed)} skills", "would unregister" if listed else "")
             if listed:
-                self.router.unregister(source)
+                self.router.unregister(set_dir)
         except RouterError as e:
             return Status(item, BROKEN, str(e))
         del receipt[item]

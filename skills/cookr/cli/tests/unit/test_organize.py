@@ -30,7 +30,7 @@ from cookr.core.organize import (
 
 
 # cookbook.schema.json in this repo: tests/unit -> tests -> cli -> cookr -> skills -> root
-SCHEMA = Path(__file__).resolve().parents[5] / "cookbook" / "reference" / "cookbook.schema.json"
+SCHEMA = Path(__file__).resolve().parents[5] / "references" / "cookbook.schema.json"
 
 
 def _cfg(repo):

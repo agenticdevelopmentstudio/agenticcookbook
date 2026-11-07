@@ -5,11 +5,11 @@
     "title": "Unit Test Patterns",
     "domain": "agenticdevelopercookbook://guidelines/cookbook/testing/unit-test-patterns",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,7 +28,8 @@
       "writing-tests"
     ]
   },
-  "synced": "403a713ff803cd15",
+  "twin_differs": "Applies Arrange-Act-Assert to test vectors written in cookbook artifacts, not to test code.",
+  "synced": "18d66c9601df830f",
   "parts": [
     {"part": "intro"},
     {"part": "test-vector-structure", "heading": "Test vector structure"},

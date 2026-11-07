@@ -6,11 +6,11 @@ CREATE TABLE findings (
 );
 ```
 
-`INTEGER PRIMARY KEY` makes the column an alias for the rowid. There is no separate storage and no separate index — it is the fastest possible PK in SQLite.
+Tables SHOULD default to `INTEGER PRIMARY KEY`, which makes the column an alias for the rowid. There is no separate storage and no separate index — it is the fastest possible PK in SQLite.
 
 On INSERT without a value, SQLite assigns `max(finding_id) + 1`. If the maximum row is deleted, that ID can be reused.
 
-**Critical:** Only `INTEGER PRIMARY KEY` aliases rowid. `INT PRIMARY KEY` does NOT — it creates a regular column with a separate unique index, doubling storage overhead.
+**Critical:** Only `INTEGER PRIMARY KEY` aliases rowid, so a rowid-aliased key MUST be declared `INTEGER PRIMARY KEY`. `INT PRIMARY KEY` does NOT alias it — it creates a regular column with a separate unique index, doubling storage overhead.
 
 ```sql
 -- These alias rowid:

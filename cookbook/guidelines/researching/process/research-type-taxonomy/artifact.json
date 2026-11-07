@@ -5,11 +5,11 @@
     "title": "Research type taxonomy",
     "domain": "agenticdevelopercookbook://guidelines/researching/process/research-type-taxonomy",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -36,7 +36,7 @@
       "research"
     ]
   },
-  "synced": "ff1e460ef3bfc818",
+  "synced": "21f73eac21c7ccca",
   "parts": [
     {"part": "intro"},
     {"part": "three-lenses", "heading": "Three lenses"},

@@ -5,5 +5,5 @@
 4. `NULL` → **no violation** (NULL is not zero)
 5. Any other non-zero value → no violation
 
-**The NULL gotcha.** `CHECK (status IN ('active', 'inactive'))` permits NULL values because `NULL IN (...)` evaluates to NULL, which is not zero. If NULL should be prohibited, add `NOT NULL` as a separate constraint — it is not implied by CHECK.
+**The NULL gotcha.** `CHECK (status IN ('active', 'inactive'))` permits NULL values because `NULL IN (...)` evaluates to NULL, which is not zero. If NULL should be prohibited, the column MUST also declare `NOT NULL` as a separate constraint — it is not implied by CHECK.
 

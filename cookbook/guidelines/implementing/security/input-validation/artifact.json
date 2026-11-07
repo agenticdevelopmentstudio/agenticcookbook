@@ -5,11 +5,11 @@
     "title": "Input Validation",
     "domain": "agenticdevelopercookbook://guidelines/implementing/security/input-validation",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-10",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -40,7 +40,7 @@
       "api-integration"
     ]
   },
-  "synced": "b34caf3c268f46e8",
+  "synced": "c8901dc064710e4b",
   "parts": [
     {"part": "intro"},
     {"part": "server-render-and-server-action-boundary", "heading": "Server-render and Server-Action boundary"},

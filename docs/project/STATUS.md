@@ -11,9 +11,14 @@ Read this first to resume the work. The design lives in the
 
 Every cookbook artifact (456 of them: 44 principles, 351 guideline files — 258
 unique — 48 ingredients, 13 recipes) is a **source folder**
-(`<name>/artifact.json` plus one `.md` per section). The `<name>.md` beside it
-is compiled from the folder and stays committed, so readers (index, website
-sync, dev-team) are unchanged.
+(`<name>/artifact.json` plus one `.md` per section). Since `971a6490` the
+folder is the only committed form; no compiled `<name>.md` sits beside it, and
+readers that want a doc compile one (./install compiles cookr's references).
+
+**Open:** cookr's `validate` and `update` still read docs, not folders. On this
+repo, validate reports every artifact's doc `missing` and its frontmatter checks
+see 0 artifacts. `update` would rebuild the indexes from no docs, so do not run
+it here until they read folders.
 
 cookr (`skills/cookr/`, cookr 0.10.0, cookr skill 0.11.0) is the compiler:
 
@@ -30,10 +35,12 @@ cookr (`skills/cookr/`, cookr 0.10.0, cookr skill 0.11.0) is the compiler:
 - `organize` — writes a library manifest whose `structure` is
   `{"kind": "library"}`, which `cookbook.schema.json` allows.
 
-skill-router 0.2.0 reads cookr's `metadata:` routes, picks
-`targets/<target>.SKILL.md` variants, registers whole sets with
-`register-dir --source <name> --replace`, enforces a fan-out cap of 50, and
-reports `--version`.
+skill-router reads cookr's `metadata:` routes, picks
+`targets/<target>.SKILL.md` variants, enforces a fan-out cap of 50, and
+reports `--version`. Since 0.4.0 it is one CLI (`skill-router`) that registers
+one skill at a time and keeps per-host copies under `~/.skill-router/<host>/`;
+it has no `register-dir` or `--source` sets. cookr registers each skill of a
+set and finds the set again by the skills' registered origin (2026-11-07).
 
 The old `cookbook` CLI is absorbed into cookr; the adh plugin was dropped.
 
@@ -54,13 +61,19 @@ zero failing). In particular:
   `cookbook/index.md`, section INDEX files, README and CLAUDE.md counts match
   the corpus.
 
-## Installed (2026-10-04, on Mike's instruction)
+## Installed (2026-11-07, on Mike's instruction)
 
-- `./install` of cookr: `~/.local/bin/cookr` and the `cookr` skill.
-- Live `cookr install`: the routed set `cookbook` registered with skill-router
-  (`~/.cookr/sets/cookbook`), and the compiled always-on `general-principles`
-  skill written for Claude and Codex. The replaced originals are backed up
-  under `~/.cookr/backup/`; the receipt is `~/.cookr/install.json`.
+- `./install --cli-only` of cookr: `~/.local/bin/cookr`. Its references are
+  compiled from the source folders.
+- Live `cookr -p <main checkout> install --replace`: the set `cookbook`
+  (`~/.cookr/sets/cookbook`, 486 skills) is compiled from this repo's main
+  checkout and registered with skill-router 0.4.0 for Claude and Codex. The
+  receipt is `~/.cookr/install.json`.
+- The always-on `general-principles` skill for Claude and Codex was edited by
+  hand after its 2026-10-04 install, so it was not overwritten. Its receipt
+  still names the old `adh/agenticcookbook` checkout, so `install --check`
+  reports `library:cookbook` BROKEN until `--force` rewrites it or it is kept
+  as it is.
 
 ## Verified
 

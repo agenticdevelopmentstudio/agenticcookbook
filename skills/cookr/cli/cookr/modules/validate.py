@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ..core import hosts, neutrality, payload, tuning
+from ..core import hosts, neutrality, payload, tuning, twins
 from ..core.artifact import ArtifactError, find_folders, load_folder
 from ..core.artifact_build import compile_doc, unconverted_results
 from ..core.checks import fix_for, phase_a
@@ -91,8 +91,14 @@ def run(args, ctx) -> int:
     ctx.ui.section("Host additions")
     e_exit = _additions(root, folders, ctx.ui)
 
+    ctx.ui.section("Guideline twins")
+    f_exit = _twins(root, folders, ctx.ui)
+
+    ctx.ui.section("Guideline rules")
+    g_exit = _rules(root, folders, ctx.ui)
+
     ctx.ui.blank()
-    failed = a_exit or b_exit or c_exit or d_exit or e_exit
+    failed = a_exit or b_exit or c_exit or d_exit or e_exit or f_exit or g_exit
     if failed:
         ctx.ui.error("Validation failed.")
     else:
@@ -129,6 +135,31 @@ def _neutral(root: Path, folders: list[Path], ui) -> int:
     ui.table(["artifact", "finding", "names", "fix"],
              [[str(f.folder.relative_to(root)), f.kind, ", ".join(f.words), neutrality.FIX[f.kind]]
               for f in findings])
+    return 1
+
+
+def _twins(root: Path, folders: list[Path], ui) -> int:
+    """A guideline under several use cases says the same thing under each,
+    unless a twin records why it does not."""
+    findings = twins.twin_census(folders)
+    if not findings:
+        ui.ok("Every guideline matches its twins under other use cases, or says why not.")
+        return 0
+    ui.table(["guideline", "finding", "twins", "fix"],
+             [[f.key, f.kind, ", ".join(str(p.relative_to(root)) for p in f.folders), twins.TWIN_FIX[f.kind]]
+              for f in findings])
+    return 1
+
+
+def _rules(root: Path, folders: list[Path], ui) -> int:
+    """A guideline states at least one MUST/SHOULD/MAY rule, unless it records
+    that it is informational."""
+    findings = twins.rule_census(folders)
+    if not findings:
+        ui.ok("Every guideline states a rule, or says it is informational.")
+        return 0
+    ui.table(["guideline", "finding", "fix"],
+             [[str(f.folder.relative_to(root)), f.kind, twins.RULE_FIX[f.kind]] for f in findings])
     return 1
 
 

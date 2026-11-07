@@ -5,11 +5,11 @@
     "title": "GitHub Copilot configuration",
     "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -40,30 +40,15 @@
     ]
   },
   "names_hosts": "Reviews GitHub Copilot instruction files, which can also be a CLAUDE.md or GEMINI.md file, so it names those hosts.",
-  "synced": "132c79b9ad3453c2",
+  "twin_differs": "A review checklist restating the implementing guideline's configuration rules as things to flag.",
+  "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
+  "synced": "e18910ad2c341a6a",
   "parts": [
-    {
-      "part": "intro"
-    },
-    {
-      "part": "files-and-names",
-      "heading": "Files and names"
-    },
-    {
-      "part": "instruction-content",
-      "heading": "Instruction content"
-    },
-    {
-      "part": "prompt-files",
-      "heading": "Prompt files"
-    },
-    {
-      "part": "why-this-matters",
-      "heading": "Why this matters"
-    },
-    {
-      "part": "history",
-      "heading": "Change History"
-    }
+    {"part": "intro"},
+    {"part": "files-and-names", "heading": "Files and names"},
+    {"part": "instruction-content", "heading": "Instruction content"},
+    {"part": "prompt-files", "heading": "Prompt files"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
   ]
 }

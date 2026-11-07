@@ -5,11 +5,11 @@
     "title": "Visual Studio project files",
     "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -53,7 +53,7 @@
       "dependency-management"
     ]
   },
-  "synced": "ae0353fde7a0f714",
+  "synced": "ca8d1d88ff4292ce",
   "parts": [
     {"part": "intro"},
     {"part": "sdk-style-projects", "heading": "SDK-style projects"},

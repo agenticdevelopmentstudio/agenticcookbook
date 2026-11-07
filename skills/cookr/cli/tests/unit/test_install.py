@@ -15,31 +15,34 @@ from .test_skill import make
 
 
 class FakeRouter(inst.Router):
-    """skill-router's registry in memory, answering as its CLI does."""
+    """skill-router's registry in memory, answering as cookr's Router does.
+    `source` is the set dir's name: the library the skill was installed for."""
 
     def __init__(self):
         super().__init__(["fake"])
         self.skills: dict[str, dict] = {}
         self.calls: list[str] = []
 
-    def listed(self, source):
-        return [e for e in self.skills.values() if e["source"] == source]
+    def listed(self, set_dir):
+        return [e for e in self.skills.values() if e["source"] == Path(set_dir).name]
 
-    def register(self, set_dir, source):
+    def register(self, set_dir):
         self.calls.append("register")
+        source = Path(set_dir).name
         old = {n for n, e in self.skills.items() if e["source"] == source}
-        new = {p.parent.name: {"name": p.parent.name, "path": str(p.parent), "source": source}
+        new = {p.parent.name: {"name": p.parent.name, "path": str(p.parent), "source": source,
+                               "hosts": ["claude"]}
                for p in Path(set_dir).glob("*/SKILL.md")}
         for n in old - set(new):
             del self.skills[n]
         self.skills.update(new)
         return {"registered": sorted(new), "failed": [], "removed": sorted(old - set(new))}
 
-    def unregister(self, source):
+    def unregister(self, set_dir):
         self.calls.append("unregister")
-        if not self.listed(source):
-            raise inst.RouterError(f"no skills registered from source {source!r}")
-        self.skills = {n: e for n, e in self.skills.items() if e["source"] != source}
+        if not self.listed(set_dir):
+            raise inst.RouterError(f"no skills registered from {set_dir}")
+        self.skills = {n: e for n, e in self.skills.items() if e["source"] != Path(set_dir).name}
 
 
 @pytest.fixture
@@ -110,15 +113,17 @@ def test_install_check_uninstall_round_trip(env):
     assert not (env.home / ".claude/skills").exists()
 
 
-def test_a_sets_near_duplicate_keywords_are_accepted_and_reported(env, monkeypatch):
+def test_a_sets_near_duplicate_keywords_are_accepted_and_reported(env, tmp_path, monkeypatch):
     seen = []
     monkeypatch.setattr(inst.Router, "_run", lambda self, *a: seen.append(a) or {})
-    inst.Router(["x"]).register(Path("set"), "lib")
-    assert "--new-keyword" in seen[0]
+    (tmp_path / "set/one").mkdir(parents=True)
+    (tmp_path / "set/one/SKILL.md").write_text("x\n")
+    inst.Router(["x"]).register(tmp_path / "set")
+    assert seen[1][:3] == ("register", str(tmp_path / "set/one"), "--new-keyword")
     warn = "accepted new keyword 'service' looks like existing 'services'"
     real = FakeRouter.register
     monkeypatch.setattr(FakeRouter, "register",
-                        lambda self, d, s: {**real(self, d, s), "warnings": [warn, warn]})
+                        lambda self, d: {**real(self, d), "warnings": [warn, warn]})
     out = installer(env, ["routed"]).install()
     assert states(out)[out[1].item] == inst.OK
     assert out[1].detail.endswith("; accepted near-duplicate keywords: "
@@ -290,7 +295,7 @@ def test_adopt_never_writes_a_rendering_that_would_not_load(env, monkeypatch):
 
 
 def test_a_failed_install_still_writes_the_receipt(env, monkeypatch):
-    def boom(self, set_dir, source):
+    def boom(self, set_dir):
         raise RuntimeError("router crashed")
     monkeypatch.setattr(FakeRouter, "register", boom)
     with pytest.raises(RuntimeError):
@@ -323,7 +328,7 @@ def test_uninstall_restores_nothing_over_files_it_did_not_write(env):
 def test_a_set_still_registered_is_kept(env, monkeypatch):
     installer(env, ["routed"]).install()
 
-    def fail(self, source):
+    def fail(self, set_dir):
         raise inst.RouterError("registry locked")
     monkeypatch.setattr(FakeRouter, "unregister", fail)
     got = states(installer(env, ["routed"]).uninstall())
@@ -358,11 +363,64 @@ def test_a_router_too_old_for_cookr_is_refused():
 
     def router(out, code=0):
         return inst.Router([sys.executable, "-c", f"import sys; print({out!r}); sys.exit({code})"])
-    with pytest.raises(inst.RouterError, match="is 0.1.9; cookr needs skill-router 0.2.0"):
-        router("skill-router-registry 0.1.9").require_version()
+    with pytest.raises(inst.RouterError, match="is 0.2.0; cookr needs skill-router 0.4.0"):
+        router("skill-router-registry 0.2.0").require_version()
     with pytest.raises(inst.RouterError, match="has no --version"):
         router("usage: ...", 2).require_version()
-    router("skill-router-registry 0.2.0").require_version()
+    router("skill-router 0.4.0").require_version()
+
+
+FAKE_CLI = '''
+import json, sys
+from pathlib import Path
+state = Path(sys.argv[1])
+reg = json.loads(state.read_text()) if state.is_file() else {"claude": {}, "codex": {}}
+args = [a for a in sys.argv[2:] if a != "--json"]
+cmd = args[0]
+if cmd == "--version":
+    print("skill-router 0.4.0"); sys.exit(0)
+hosts = [args[i + 1] for i, a in enumerate(args) if a == "--host"] or sorted(reg)
+if cmd == "list":
+    out = {h: {"skills": [{"name": n, "path": "/copy/" + n, "origin": o} for n, o in reg[h].items()]}
+           for h in hosts}
+elif cmd == "register":
+    if args[1].endswith("bad"):
+        print("skill-router: bad skill", file=sys.stderr); sys.exit(2)
+    for h in hosts:
+        reg[h][Path(args[1]).name] = args[1]
+    out = {h: {"registered": {"name": Path(args[1]).name}, "warnings": []} for h in hosts}
+elif cmd == "unregister":
+    for h in hosts:
+        reg[h].pop(args[1])
+    out = {h: {"unregistered": args[1]} for h in hosts}
+state.write_text(json.dumps(reg))
+print(json.dumps({"hosts": out}))
+'''
+
+
+def test_the_router_drives_skill_routers_cli_by_origin(tmp_path):
+    import sys
+    cli = tmp_path / "fake_router.py"
+    cli.write_text(FAKE_CLI)
+    state = tmp_path / "registry.json"
+    state.write_text(json.dumps({"claude": {"theirs": str(tmp_path / "elsewhere/theirs")}, "codex": {}}))
+    r = inst.Router([sys.executable, str(cli), str(state)])
+    s = tmp_path / "set"
+    for n in ("a", "b", "c-bad"):
+        (s / n).mkdir(parents=True)
+        (s / n / "SKILL.md").write_text("x\n")
+    done = r.register(s)
+    assert done["registered"] == ["a", "b"] and done["removed"] == []
+    assert done["failed"][0]["path"].endswith("c-bad") and "bad skill" in done["failed"][0]["error"]
+    assert [(e["name"], e["hosts"]) for e in r.listed(s)] == [("a", ["claude", "codex"]),
+                                                              ("b", ["claude", "codex"])]
+    (s / "b/SKILL.md").unlink()
+    assert r.register(s)["removed"] == ["b"]
+    r.unregister(s)
+    assert r.listed(s) == []
+    assert json.loads(state.read_text())["claude"] == {"theirs": str(tmp_path / "elsewhere/theirs")}
+    with pytest.raises(inst.RouterError, match="no skills registered"):
+        r.unregister(s)
 
 
 def test_a_doc_with_no_source_folder_stops_install(env, monkeypatch, capsys):

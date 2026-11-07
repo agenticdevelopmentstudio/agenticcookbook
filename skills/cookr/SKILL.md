@@ -178,9 +178,10 @@ A recompile prunes only what the receipt lists. `--check` exits 1 when anything
 is stale or missing. The set fails on a duplicate name, a rendering a host would
 refuse, or a route level over 50 entries.
 
-Register the set with skill-router as one source:
-`skill-router-registry register-dir <set-dir> --source cookbook --replace`.
-`cookr install` does this for you. It passes `--new-keyword`: a set's
+skill-router (0.4.0 or later) registers one skill at a time:
+`skill-router register <set-dir>/<skill> --new-keyword`, for each skill of the set.
+`cookr install` does this for you, and unregisters the set's skills that are no
+longer in it. It passes `--new-keyword` because a set's
 keywords are its library's directory names, so a near-duplicate such as
 `service` beside `services` is accepted and listed in the `routed:` detail
 rather than refused.
@@ -191,8 +192,9 @@ rather than refused.
 puts a compiled cookbook where agents reach it. There are three items:
 - **`set:<library>`**: the routed skills, compiled into `$COOKR_HOME/sets/<library>`
   (`$COOKR_HOME` defaults to `~/.cookr`).
-- **`routed:<library>`**: that set, registered with skill-router as source `<library>`
-  through `skill-router-registry`, or the command in `$COOKR_SKILL_ROUTER_REGISTRY`.
+- **`routed:<library>`**: that set's skills, each registered with skill-router through
+  `skill-router`, or the command in `$COOKR_SKILL_ROUTER`. The set is the registered
+  skills whose origin is a dir of `$COOKR_HOME/sets/<library>`.
 - **`always-on:<host>:<name>`**: the principles skill, rendered for one target into
   the host's skills dir. It is `general-principles` for this cookbook and
   `<library>-principles` for a library. It lists every principle with its gist

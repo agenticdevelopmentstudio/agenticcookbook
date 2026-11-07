@@ -169,6 +169,9 @@ def main(argv: list[str]) -> int:
     if str(BIN_DIR) not in os.environ.get("PATH", "").split(os.pathsep):
         warn(f"{BIN_DIR} is not on $PATH. Add it to your shell profile.")
 
+    # Deps first: compiling artifact references needs PyYAML.
+    install_deps()
+
     title("Materializing references")
     materialize(str(MANIFEST))
     ok("references materialized")
@@ -182,7 +185,6 @@ def main(argv: list[str]) -> int:
         install_cli(skill)
     CLI_RECORD.write_text("".join(f"{s}\n" for s in skills), encoding="utf-8")
 
-    install_deps()
     verify_clis(skills)
 
     if args.cli_only:

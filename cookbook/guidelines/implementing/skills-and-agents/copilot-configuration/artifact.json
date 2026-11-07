@@ -5,11 +5,11 @@
     "title": "GitHub Copilot configuration",
     "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -47,38 +47,15 @@
     ]
   },
   "names_hosts": "Describes how GitHub Copilot also reads CLAUDE.md and GEMINI.md instruction files, so it names those hosts.",
-  "synced": "efb5a642204a556c",
+  "synced": "e023a4aec0ff7191",
   "parts": [
-    {
-      "part": "intro"
-    },
-    {
-      "part": "repository-wide-instructions",
-      "heading": "Repository-wide instructions"
-    },
-    {
-      "part": "path-specific-instructions",
-      "heading": "Path-specific instructions"
-    },
-    {
-      "part": "agent-instruction-files",
-      "heading": "Agent instruction files"
-    },
-    {
-      "part": "precedence",
-      "heading": "Precedence"
-    },
-    {
-      "part": "prompt-files",
-      "heading": "Prompt files"
-    },
-    {
-      "part": "why-this-matters",
-      "heading": "Why this matters"
-    },
-    {
-      "part": "history",
-      "heading": "Change History"
-    }
+    {"part": "intro"},
+    {"part": "repository-wide-instructions", "heading": "Repository-wide instructions"},
+    {"part": "path-specific-instructions", "heading": "Path-specific instructions"},
+    {"part": "agent-instruction-files", "heading": "Agent instruction files"},
+    {"part": "precedence", "heading": "Precedence"},
+    {"part": "prompt-files", "heading": "Prompt files"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
   ]
 }

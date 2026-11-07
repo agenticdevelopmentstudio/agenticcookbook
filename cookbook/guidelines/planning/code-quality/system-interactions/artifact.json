@@ -5,11 +5,11 @@
     "title": "System Interactions",
     "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/system-interactions",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
-    "modified": "2026-06-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -35,7 +35,8 @@
       "code-review"
     ]
   },
-  "synced": "02a3506ac41c5049",
+  "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
+  "synced": "f6a5073149b13254",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

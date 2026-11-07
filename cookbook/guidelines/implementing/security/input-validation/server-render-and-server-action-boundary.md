@@ -1,10 +1,17 @@
 
-The trust boundary extends to server-side deserialization. Untrusted input that crosses a
-server-side deserialization boundary — RSC Server Action arguments, the React Server Components
-Flight payload, or the equivalent boundary in any server-render framework — MUST be
-schema-validated (e.g., with Zod) before use; the boundary is a deserialization sink, not a typed
-contract. Secrets MUST NOT be embedded in components that render on the server. Server-render
-endpoints SHOULD be rate-limited. The framework SHOULD be pinned to a patched version.
+Server-side rendering and server-invoked functions create a deserialization boundary where
+client-controlled input is reconstructed and executed in a trusted context.
+
+- **Validate at the boundary** — untrusted input crossing a server-side deserialization boundary
+  (e.g., RSC Server Action arguments, the RSC Flight payload, or any equivalent serialized
+  request body) MUST be schema-validated and type-checked before use. The framework's
+  serialization layer is not a validation layer.
+- **No secrets in server-rendered components** — server-rendered output MUST NOT embed secrets,
+  credentials, or internal-only data, since the rendered payload is sent to the client.
+- **Rate-limit server-render endpoints** — render and server-action endpoints SHOULD be
+  rate-limited to bound the cost of crafted or repeated requests.
+- **Pin to a patched framework version** — the rendering framework MUST be pinned to a version
+  that includes current security patches for its serialization boundary.
 
 References:
 - [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)

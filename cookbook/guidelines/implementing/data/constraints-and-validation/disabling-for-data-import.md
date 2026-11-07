@@ -1,5 +1,5 @@
 
-When importing potentially dirty data:
+When importing potentially dirty data, a script MAY turn CHECK enforcement off:
 
 ```sql
 PRAGMA ignore_check_constraints = ON;
@@ -7,7 +7,7 @@ PRAGMA ignore_check_constraints = ON;
 PRAGMA ignore_check_constraints = OFF;
 ```
 
-After import, verify integrity:
+After import, the script MUST verify integrity:
 
 ```sql
 PRAGMA integrity_check;

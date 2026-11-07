@@ -10,5 +10,5 @@ AUTOINCREMENT guarantees IDs are strictly monotonically increasing and never reu
 
 The official SQLite docs warn: *"AUTOINCREMENT imposes extra CPU, memory, disk space, and disk I/O overhead and should be avoided if not strictly needed."*
 
-**Use AUTOINCREMENT only for:** audit logs, financial ledgers, event streams — where ID reuse is semantically wrong or a security concern. If the counter reaches `2^63 - 1`, further inserts fail with `SQLITE_FULL`.
+**AUTOINCREMENT MUST be used only for:** audit logs, financial ledgers, event streams — where ID reuse is semantically wrong or a security concern. If the counter reaches `2^63 - 1`, further inserts fail with `SQLITE_FULL`.
 

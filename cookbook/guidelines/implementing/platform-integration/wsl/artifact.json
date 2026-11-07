@@ -5,11 +5,11 @@
     "title": "Windows Subsystem for Linux",
     "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-07",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -49,7 +49,7 @@
       "configuration"
     ]
   },
-  "synced": "0bd4f175dd37dc16",
+  "synced": "b21a3db147e1745c",
   "parts": [
     {"part": "intro"},
     {"part": "where-files-live", "heading": "Where files live"},
