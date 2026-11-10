@@ -1,8 +1,8 @@
-# Session: recipes first in every repo: cookr format 2, adoption, and the ship
+# Session: recipes first in every repo: cookr format 2, adoption, the ship, and the hook fix
 
 - **Date:** 2026-11-10
 - **Session:** `3d6537c4-fa37-40ec-9a1f-0bd9225039ed`
-- **Branch:** `more-cookr` (PR #74), `docs-update-kaiser`
+- **Branch:** `more-cookr` (PR #74), `docs-update-kaiser`, `fix/cookr-hook-remind-only` (PR #76), `docs-update-unlucky`
 
 ## Orientation
 
@@ -17,8 +17,14 @@ fold back into the cookbook over time.
 This session brainstormed the design and wrote it up
 (`docs/superpowers/specs/2026-11-09-cookr-adoption-design.md`, approved). It then wrote the plan and
 ran it Subagent-Driven, and shipped it across eight repos with `/ship` in squash mode, using squashr.
-Six repos are merged. pipeline#4 and teamtesting#19 are blocked (see *Open threads*). The docs fold
-for PR #74 is this branch.
+Six repos are merged. pipeline#4 and teamtesting#19 are blocked (see *Open threads*).
+
+Then the first global install of the hook went wrong: it upgraded format-1 cookbooks on contact and
+blocked commits and turn ends until the rewrite was committed, which held up other sessions (two
+adkitchen sessions committed a 7531-file adhsdk rewrite to get unblocked). Mike had the hook
+uninstalled and its rewrites reverted, and restated the design: the hook only tells the agent to pay
+attention; the agent decides what to change and commit. PR #76 (merged as `383418b`) makes cookr
+match that. The hook is not reinstalled.
 
 ## Decisions
 
@@ -36,14 +42,19 @@ for PR #74 is this branch.
   same way, as `<cookbook-uuid>/<uuid>`. A cached rdid is there only for readability, and the index
   refreshes it when it changes. *Why:* renaming or moving an artifact must never break the projects
   that reference it.
-- **Enforcement nudges and never halts.** When source changes have no recipe to match them, the hook
-  blocks the commit or the end of the turn, and tells the agent to update the recipe. *Why:* Mike's
-  rule is "it doesn't stop the work, it just reminds the agent to also do that work."
+- **Enforcement nudges and never halts.** Mike's rule: "it doesn't stop the work, it just reminds
+  the agent to also do that work." The first implementation got this wrong (it blocked commits and
+  turn ends with exit 2). Since PR #76 the hook exits 0 on every path: a once-per-session reminder
+  (plus a format-1 line), and on a commit `cookr check --staged --hook` findings come back as advisory
+  context. No Stop entry, no `skills sync`, no writes. *Why:* "the hook is there to merely tell the
+  model to pay attention to this." 
 - **Update whatever you touch, nothing more by default.** If you change the Safari web panel, the
   web-panel abstraction and the Safari panel both become conformant. The Chrome sibling does not.
   The agent reports the minimum required set (`cookr scope`) and asks whether siblings should follow.
-- **Convert fully, and convert on contact.** adc and adhsdk were converted outright. cookr's
-  upgrader converts any format-1 cookbook it meets in a repo it works in.
+- **Convert fully, but only when asked.** adc and adhsdk were converted outright. A format-1
+  cookbook elsewhere is converted only by an explicit `cookr upgrade`, run by an agent that chose to
+  while working on that repo; other commands just print a stderr notice. *Why:* an unprompted
+  rewrite of thousands of files is exactly what the hook incident did.
 - **Recipes have a state** (`confirmed`, `pending`, `needs validating`, and so on; see
   `cookr confirm` and `cookr status`). A repo is fully conformant when all of its code has recipes
   and every recipe is confirmed. *Why:* recipes can be moved now and validated later without stalling
@@ -62,6 +73,11 @@ for PR #74 is this branch.
 - **Putting every mapped entry in `.cookr.json`.** Rejected because the cookbook project already
   describes those entries, so a second copy would drift.
 - **Paths as identity.** Rejected because any reorganization breaks every link.
+- **Upgrade on contact** (any cookr command, and the hook, converting a format-1 cookbook). Shipped
+  first, then removed in PR #76: it rewrote files nobody asked to change, and combined with a blocking
+  hook it forced other sessions to commit those rewrites.
+- **A blocking hook** (exit 2 on commit and Stop until findings were fixed). Removed in PR #76: the
+  hook must never hold up work.
 - **Moving recipes into the adh backend database now.** Out of scope for now. Mike expects this to
   happen eventually, but it is a long way off.
 
@@ -76,7 +92,9 @@ for PR #74 is this branch.
   2. Point teamtesting#19's `external/pipeline` at the merge commit.
   3. Ship teamtesting#19.
 - **Global install of the new cookr is not done.** This covers `cookr install` and skill-router's
-  `./install`, and it needs Mike's OK. Until it runs, routed lookups serve the format-1 set.
+  `./install`, and it needs Mike's OK. Until it runs, routed lookups serve the format-1 set, and the installed
+  `~/.local/bin/cookr` still has the old upgrade-on-contact: running it by hand in a format-1 repo
+  converts that repo. Reinstalling also re-registers the (now reminder-only) hook.
 - **The hand-edited `general-principles` skill** must not be adopted or replaced without Mike's OK.
 
 ## Pointers
@@ -86,6 +104,7 @@ for PR #74 is this branch.
 - Status: `docs/project/STATUS.md`, section *Format 2 and recipes-first adoption*
 - PRs:
   - agenticcookbook#74 (`689ab01`, `e75c550`)
+  - agenticcookbook#76 (`383418b`): hook reminds only, upgrade explicit
   - skill-router#4
   - adhsdk#46
   - adcookbookwebsite#21

@@ -65,7 +65,8 @@ Mike's OK.
   teamtesting#19 re-point `external/pipeline` at the merge commit and ship it.
 - **Global install** of the new cookr (`cookr install`, skill-router
   `./install`) has not run; it needs Mike's OK. Until then the installed set
-  described below is the format-1 one.
+  described below is the format-1 one, and the installed `cookr` still
+  upgrades a format-1 repo on contact (the PR #76 fix is not installed).
 
 ## Where things stand
 
