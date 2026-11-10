@@ -1,12 +1,58 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-11-07. *Derives from:* `226f310` (PR #64, agenticcookbook),
-`2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`), and
-PR #72 (`dd2e4670`, `44c510bf`).
+*Updated:* 2026-11-10. *Derives from:* `226f310` (PR #64, agenticcookbook),
+`2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`),
+PR #72 (`dd2e4670`, `44c510bf`), and PR #74 (`689ab01`, `e75c550`).
 
 Read this first to resume the work. The design lives in the
 [plan](../superpowers/plans/2026-10-03-compiled-artifacts-and-skills.md) and the
-[source folder spec](../superpowers/specs/2026-10-03-artifact-source-folder.md).
+[source folder spec](../superpowers/specs/2026-10-03-artifact-source-folder.md);
+format 2 and recipes-first adoption live in the
+[adoption design](../superpowers/specs/2026-11-09-cookr-adoption-design.md) and its
+[plan](../superpowers/plans/2026-11-09-cookr-adoption.md).
+
+## Format 2 and recipes-first adoption (PR #74, 2026-11-10)
+
+Landed on main as `689ab01` (the feature) and `e75c550` (`__pycache__/` ignored).
+
+- **Identity is a UUID.** `cookbook/index.json` (`format`, `cookbook`, `catalog`,
+  `entries`, `foreign`) maps each artifact UUID to its rdid
+  (`adc.guideline.testing.test-pyramid`) and folder path, maintained by
+  `cookr update`. The `domain` field is gone.
+- **Links store UUIDs**: `depends-on`, `related` and `ingredients` in meta
+  (`<cookbook-uuid>/<uuid>` across cookbooks), `[rdid](cookbook:uuid)` in text.
+  `cookr rename <uuid> <rdid>` and folder moves never break a link.
+- **`.cookr.json` format 2** is the per-repo config (code roots, ignores,
+  dependencies). An upgrader converts a format-1 cookbook in one pass on first
+  contact from any command.
+- **New commands:** `id`, `rename`, `implements`, `confirm`, `status`, `diff`,
+  `scope`, `create`, `adopt`. `bump` proposes the level and freezes versions in
+  `versions/`.
+- **Recipes-first enforcement:** `cookr check --hook` plus a global hook block a
+  commit or turn end that leaves source changes no recipe covers ("create a
+  recipe covering ..."). Per-cookbook skill sets compile on contact and are
+  scoped per repo through skill-router (skill-router#4, per-entry repo scope).
+- **adc is fully converted** and `cookr validate` is green on it: every meta and
+  in-text link resolves and the index matches the folders. Validate and update
+  now read folders, which closes the 2026-11-07 *Open* item.
+- cookr unit suite: 1103 passed (`cd skills/cookr/cli && python3 -m pytest tests/unit -q`).
+
+Peer repos shipped the same day: agenticdevteam#2 (dev-team readers on format 2,
+`external/agenticcookbook` at `e75c550`), adhsdk#46 (adhsdk converted),
+adkitchen#103 (cookr adopted; hook dry-run verified), adcookbookwebsite#21
+(website readers).
+
+**Still open:**
+
+- **pipeline#4** (ST06b resolves cookbook folder pointers through the reference
+  manifest) is squashed and rebased (`c58dd884`) but not merged. The pipeline
+  main checkout holds an untracked `testing/` left over from `d2f20f6f` (tests
+  moved to teamtesting), and `proj wt merge` refuses a dirty main. Deleting it
+  is Mike's call. Once it is cleared: merge with `--squash`, then in
+  teamtesting#19 re-point `external/pipeline` at the merge commit and ship it.
+- **Global install** of the new cookr (`cookr install`, skill-router
+  `./install`) has not run; it needs Mike's OK. Until then the installed set
+  described below is the format-1 one.
 
 ## Where things stand
 
@@ -16,10 +62,8 @@ unique — 48 ingredients, 13 recipes) is a **source folder**
 folder is the only committed form; no compiled `<name>.md` sits beside it, and
 readers that want a doc compile one (./install compiles cookr's references).
 
-**Open:** cookr's `validate` and `update` still read docs, not folders. On this
-repo, validate reports every artifact's doc `missing` and its frontmatter checks
-see 0 artifacts. `update` would rebuild the indexes from no docs, so do not run
-it here until they read folders.
+**Closed by PR #74:** cookr's `validate` and `update` read folders now (on
+2026-11-07 they still read docs).
 
 cookr (`skills/cookr/`, cookr 0.10.0, cookr skill 0.11.0) is the compiler:
 
