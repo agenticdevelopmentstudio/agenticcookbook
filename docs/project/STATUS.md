@@ -52,21 +52,21 @@ and both commits were reverted on `adkitchen/browser-plugins` and
 `adkitchen/browser-additions` (adhsdk reverts plus submodule-pointer commits).
 PR #76 makes the design what it was meant to be: the hook only reminds (exit 0
 everywhere, no Stop entry, no `skills sync`, no writes), and only an explicit
-`cookr upgrade` converts a cookbook. The hook is not reinstalled; that needs
-Mike's OK.
+`cookr upgrade` converts a cookbook. On Mike's OK the fixed cookr and hook were
+installed the same day (see Installed, below).
 
 **Still open:**
 
-- **pipeline#4** (ST06b resolves cookbook folder pointers through the reference
-  manifest) is squashed and rebased (`c58dd884`) but not merged. The pipeline
-  main checkout holds an untracked `testing/` left over from `d2f20f6f` (tests
-  moved to teamtesting), and `proj wt merge` refuses a dirty main. Deleting it
-  is Mike's call. Once it is cleared: merge with `--squash`, then in
-  teamtesting#19 re-point `external/pipeline` at the merge commit and ship it.
-- **Global install** of the new cookr (`cookr install`, skill-router
-  `./install`) has not run; it needs Mike's OK. Until then the installed set
-  described below is the format-1 one, and the installed `cookr` still
-  upgrades a format-1 repo on contact (the PR #76 fix is not installed).
+- **The installed skill set** (`cookr -p <main checkout> install --replace`)
+  and skill-router `./install` have not been re-run since format 2, so the
+  routed `cookbook` set described below is still compiled from the format-1
+  checkout. Each needs Mike's OK.
+
+pipeline#4 merged as `70e80366` (its subject on main reads `## Summary`: the PR
+body was passed as the merge summary, and main refuses force-pushes, so it
+stays) and teamtesting#19 as `0916aa5`, after Mike had the untracked
+`pipeline/testing/` (bytecode caches, SQLite side files, never-committed
+generated prompts) deleted.
 
 ## Where things stand
 
@@ -133,6 +133,15 @@ zero failing). In particular:
   the corpus.
 
 ## Installed (2026-11-07, on Mike's instruction)
+
+- **2026-11-10, on Mike's OK:** `skills/cookr/setup/install` from main
+  (`06f3926`). It reinstalled `~/.local/bin/cookr` with the PR #76 fix (a
+  format-1 repo gets a stderr notice and is never converted),
+  `~/.claude/skills/cookr/` (SKILL.md and the hook), and registered the
+  remind-only hook for SessionStart, UserPromptSubmit and PreToolUse:Bash, with
+  no Stop entry. A smoke test on a scratch format-1 repo: `cookr validate` and
+  `status` printed the notice and changed nothing; the hook exited 0 and wrote
+  nothing to the repo.
 
 - `./install --cli-only` of cookr: `~/.local/bin/cookr`. Its references are
   compiled from the source folders.
