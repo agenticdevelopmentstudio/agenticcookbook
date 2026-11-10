@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "c5778e2d-2f3b-4cbd-809b-39ed4b57ff57",
     "title": "Apple Test App Suite",
-    "domain": "agenticdevelopercookbook://recipes/ui/apps/apple",
     "type": "recipe",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,9 +25,9 @@
       "ui"
     ],
     "ingredients": [
-      "agenticdevelopercookbook://ingredients/ui/apps/xcodegen-apple-project",
-      "agenticdevelopercookbook://ingredients/ui/apps/component-catalog",
-      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+      "7de8cd27-e532-4992-9296-0a6dc1ad1816",
+      "e7419774-543c-4b3e-8c92-9ef6dad3bb0f",
+      "7c2049c7-89d9-4135-b657-dbd03cdd19a0"
     ],
     "depends-on": [],
     "related": [],
@@ -36,7 +35,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "73062adc6af179e4",
+  "synced": "0d5dace4adf79d47",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

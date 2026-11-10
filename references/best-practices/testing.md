@@ -1,7 +1,6 @@
 ---
 id: 9ae2206b-d67e-4034-ae00-d6e1b8483644
 title: "Testing"
-domain: agenticdevelopercookbook://reference/best-practices/testing
 type: reference
 version: 1.0.0
 status: accepted

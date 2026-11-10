@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "65367d27-1d4e-41e5-9e8c-e9adb08ddc90",
     "title": "Objective-C",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -30,8 +29,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/language/objective-c",
-      "agenticdevelopercookbook://guidelines/reviewing/language/swift"
+      "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
+      "1471cab8-cdd2-444d-84da-8e4e70eb2453"
     ],
     "references": [
       "https://clang.llvm.org/docs/AutomaticReferenceCounting.html",
@@ -45,7 +44,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "047b453c82f6eed9",
+  "synced": "99d6876034303563",
   "parts": [
     {"part": "intro"},
     {"part": "ownership", "heading": "Ownership"},

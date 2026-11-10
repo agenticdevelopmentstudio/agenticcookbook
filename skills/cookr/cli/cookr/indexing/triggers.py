@@ -1,8 +1,9 @@
 """Triggers inverted-index strategy.
 
-For every `*.md` under `target_dir`, read the `triggers:` frontmatter list and
-emit a YAML map of `trigger -> [relative paths]`. Optionally validates triggers
-against a canonical set.
+For every artifact under `target_dir`, read its `triggers:` meta list and emit a
+YAML map of `trigger -> [relative paths]`. An artifact is listed by its source
+folder (`guidelines/testing/test-pyramid/`), which a folder-only checkout holds;
+a loose doc by its file. Optionally validates triggers against a canonical set.
 
 Config shape (see references-src/index-configs/triggers.yaml):
 
@@ -21,8 +22,7 @@ from datetime import date
 from pathlib import Path
 
 from ..core.deps import require
-from ..core.frontmatter import parse
-from ._shared import iter_artifacts
+from ._shared import iter_artifacts, link_of, meta_of
 
 yaml = require("yaml")
 
@@ -38,14 +38,11 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
 
     for md in iter_artifacts(target):
         files_total += 1
-        fm = parse(md.read_text(encoding="utf-8"))
-        if not fm.had_frontmatter:
-            continue
-        triggers = fm.data.get("triggers") or []
+        triggers = meta_of(md).get("triggers") or []
         if not isinstance(triggers, list) or not triggers:
             continue
         files_with_triggers += 1
-        rel_path = str(md.relative_to(root))
+        rel_path = link_of(md, root)
         for t in triggers:
             if canonical and t not in canonical:
                 warnings.append(f"non-canonical trigger '{t}' in {rel_path}")

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "703b1ec7-b940-46a5-8974-441b04a0bb9d",
     "title": "Continuous delivery",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/continuous-delivery",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/shipping/trunk-based-development",
-      "agenticdevelopercookbook://principles/tight-feedback-loops",
-      "agenticdevelopercookbook://principles/small-reversible-decisions"
+      "86866beb-319a-45b2-bdfa-24f0e3f7ae58",
+      "b111a703-f4d7-4c1a-8206-d84e869791f4",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
     ],
     "references": [
       "https://dora.dev/",
@@ -37,7 +36,7 @@
       "pre-pr"
     ]
   },
-  "synced": "9ca138dab0e6dfb6",
+  "synced": "b5b2ed764dfa4458",
   "parts": [
     {"part": "intro"},
     {"part": "delivery-vs-deployment", "heading": "Delivery vs. deployment"},

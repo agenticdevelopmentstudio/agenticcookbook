@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "138fe669-ae87-4338-923c-c7cf7496a49d",
     "title": "No external dependencies in core libraries",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/no-external-dependencies-in-core-librari",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "new-module"
     ]
   },
-  "synced": "eb501e0310776c69",
+  "synced": "185742cd2ae30d6a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

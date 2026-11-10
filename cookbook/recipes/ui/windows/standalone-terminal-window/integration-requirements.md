@@ -17,9 +17,9 @@
 
 ### Delegation to sub-components
 
-- **delegate-session-list**: The session list sidebar MUST delegate to [terminal-pane.md](../../../ingredients/ui/panels/terminal-pane.md) sidebar-session-list through row-context-menu for session list behavior (row display, selection binding, add button, context menu).
-- **delegate-terminal-view**: The terminal view MUST delegate to [terminal-pane.md](../../../ingredients/ui/panels/terminal-pane.md) nsview-representable through palette-color-structure for terminal rendering, reparenting, and profile application.
-- **delegate-empty-state**: The empty state MUST delegate to [terminal-pane.md](../../../ingredients/ui/panels/terminal-pane.md) empty-state-no-sessions for display when no sessions exist.
+- **delegate-session-list**: The session list sidebar MUST delegate to [adc.ingredient.ui.panels.terminal-pane](cookbook:4a2898cf-34ed-4153-8d06-c795f80c19cd) sidebar-session-list through row-context-menu for session list behavior (row display, selection binding, add button, context menu).
+- **delegate-terminal-view**: The terminal view MUST delegate to [adc.ingredient.ui.panels.terminal-pane](cookbook:4a2898cf-34ed-4153-8d06-c795f80c19cd) nsview-representable through palette-color-structure for terminal rendering, reparenting, and profile application.
+- **delegate-empty-state**: The empty state MUST delegate to [adc.ingredient.ui.panels.terminal-pane](cookbook:4a2898cf-34ed-4153-8d06-c795f80c19cd) empty-state-no-sessions for display when no sessions exist.
 
 ### Wiring
 

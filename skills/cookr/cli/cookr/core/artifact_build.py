@@ -14,7 +14,6 @@ from typing import Optional
 
 from .artifact import (
     BOTH_EDITED,
-    CURRENT,
     DOC_EDITED,
     FOLDER_EDITED,
     RECONCILE,
@@ -32,9 +31,13 @@ from .artifact import (
     save_document,
     sync_state,
     unconverted,
+    with_part,
+    without_derived,
     write_folder,
 )
 from .artifact_types import validate
+from .index import IndexCache
+from .refimpl import part as implementations_part
 
 TARGETS = ("doc", "skill")
 
@@ -85,6 +88,7 @@ def convert(docs: list[Path], *, base: Path, out: Optional[Path] = None, write: 
             artifact = read_document(text)
             if compose_document(artifact) != normalize_document(text):
                 raise ArtifactError("the folder would not compose back to the source")
+            expected = compose_document(without_derived(artifact))  # derived sections never land
             if not is_folder(dest):
                 problem = occupied(artifact, dest)
                 if problem:
@@ -105,7 +109,7 @@ def convert(docs: list[Path], *, base: Path, out: Optional[Path] = None, write: 
             artifact.synced = doc_digest(compose_document(artifact))
             write_folder(artifact, dest)
             compiled = compose_document(load_folder(dest))
-            if compiled != normalize_document(text):
+            if compiled != expected:
                 raise ArtifactError(f"{dest} does not compose back to the source")
             if remove_source:
                 doc.unlink()
@@ -125,16 +129,28 @@ def unconverted_results(paths: list[Path]) -> list[Result]:
     return [Result(doc, folder_for(doc), "unconverted", UNCONVERTED) for doc in unconverted(paths)]
 
 
+def compiled_text(folder: Path, indexes: Optional[IndexCache] = None) -> tuple[str, str]:
+    """(the doc `folder` compiles to, what its folder alone composes to). The doc
+    adds the derived Reference Implementations section from the cookbook index."""
+    artifact = load_folder(folder)
+    authored = compose_document(artifact)
+    entry = (indexes or IndexCache()).entry(folder, artifact.meta.get("id"))
+    extra = implementations_part(entry.implementations) if entry else None
+    return (compose_document(with_part(artifact, extra)) if extra else authored), authored
+
+
 def compile_doc(folders: list[Path], *, base: Path, out: Optional[Path] = None,
-                write: bool = True, force: bool = False) -> list[Result]:
+                write: bool = True, force: bool = False,
+                indexes: Optional[IndexCache] = None) -> list[Result]:
     """Write each folder's `doc`, or with write=False report whether it is current.
     A doc edited since cookr wrote it is not overwritten unless `force`."""
     results = []
+    indexes = indexes or IndexCache()
     for folder in folders:
         try:
             dest = _dest(folder, base, out, doc_path(folder))
             artifact = load_folder(folder)
-            text = compose_document(artifact)
+            text, authored = compiled_text(folder, indexes)
             problems = validate(artifact)
             current = dest.read_text(encoding="utf-8") if dest.is_file() else None
             state = sync_state(folder) if out is None else None
@@ -150,7 +166,7 @@ def compile_doc(folders: list[Path], *, base: Path, out: Optional[Path] = None,
                 dest.write_text(text, encoding="utf-8")
                 status, detail = "compiled", ""
             if write and out is None:
-                record_sync(folder, text)
+                record_sync(folder, authored)
             results.append(Result(folder, dest, status, detail if status == "stale" else "",
                                   problems=problems))
         except (ArtifactError, OSError, UnicodeDecodeError) as e:

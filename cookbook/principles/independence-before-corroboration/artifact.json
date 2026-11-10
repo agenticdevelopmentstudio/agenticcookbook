@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "85030572-15bc-474c-bd50-f4d9ae0435ba",
     "title": "Independence before corroboration",
-    "domain": "agenticdevelopercookbook://principles/independence-before-corroboration",
     "type": "principle",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,14 +21,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/domain-stratified-trust",
-      "agenticdevelopercookbook://principles/cite-the-claim-not-the-document"
+      "578e6d3b-f60d-42ff-964b-06b173ffaae9",
+      "09947209-369f-40de-8331-c10b0d6f32c6"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "f738f794c936af58",
+  "synced": "178e499f4ff0c2b8",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

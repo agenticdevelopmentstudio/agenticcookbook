@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e0c6916b-4c1c-49f6-9111-69eb0ee64d2d",
     "title": "Separate server state from client state",
-    "domain": "agenticdevelopercookbook://guidelines/planning/ui/state-management",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/separation-of-concerns",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b"
     ],
     "references": [
       "https://tanstack.com/query/latest/docs/framework/react/guides/does-this-replace-client-state"
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "a67683bc8dc044a5",
+  "synced": "80a618d1c1c19058",
   "parts": [
     {"part": "intro"},
     {"part": "the-two-kinds-of-state", "heading": "The two kinds of state"},

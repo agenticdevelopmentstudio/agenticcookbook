@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ef2d2757-132a-403b-8e98-bbeca9c42deb",
     "title": "Framework Conventions",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/framework-conventions",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "99016be4e1310fa7",
+  "synced": "a67e1d8f89fbabff",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

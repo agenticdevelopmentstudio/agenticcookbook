@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "631b7b61-985a-4f5d-9c44-2cfbfdb9091b",
     "title": "Error Responses",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/error-responses",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -31,7 +30,7 @@
       "error-handling"
     ]
   },
-  "synced": "fd678992edc13a82",
+  "synced": "2a5fca019e192b85",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

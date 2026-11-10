@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1dd2111a-eb05-40e4-b469-1aecd79c5863",
     "title": "Collapsible Pane Header",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/collapsible-pane-header",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -31,7 +30,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "d8530915909077d3",
+  "synced": "fb3a515f1bf336b7",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

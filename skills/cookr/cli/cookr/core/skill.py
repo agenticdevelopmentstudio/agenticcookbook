@@ -25,7 +25,13 @@ gives `routes`. Every route node is held to FANOUT_CAP entries, so each step
 of a drill-down is a list a model can read.
 
 **Templates** (`data/templates/skill/<type>.md`) pick the parts: their
-frontmatter lists the headings to `omit`, and their text wraps `{{body}}`.
+frontmatter lists the headings to `omit`, and their text wraps `{{body}}`
+(`{{rdid}}` and `{{version}}` are filled too).
+
+**The index** (`index.json`) supplies what a format-2 folder does not hold: the
+artifact's rdid (`metadata.source`), its Reference Implementations table, the
+rdids its `depends-on` links name, and the label of every in-text
+`[<rdid>](cookbook:<uuid>)` link, so a rename shows in the next compile.
 `data/templates/skill/<type>/hosts/` holds the type's tuning additions, the
 level applied before the artifact's own `hosts/`.
 """
@@ -47,8 +53,12 @@ import yaml
 
 from . import hosts as hosts_mod
 from . import tuning
-from .artifact import ArtifactError, Artifact, load_folder
-from .roots import MANIFEST as COOKBOOK_FILE
+from .artifact import ArtifactError, Artifact, load_folder, with_part
+from .errors import CookbookError
+from .index import Index, IndexCache
+from .links import Link, format_link, in_text_links, parse_link, relabel
+from .refimpl import SECTION as RI_SECTION, part as implementations_part
+from .identity import MANIFEST as COOKBOOK_FILE
 
 PACKAGED_TEMPLATES = Path(__file__).resolve().parent.parent / "data" / "templates"
 TEMPLATES = PACKAGED_TEMPLATES / "skill"
@@ -71,7 +81,7 @@ NAME_MAX = 64
 DESCRIPTION_MAX = 1024
 DEFAULT_LIBRARY = "cookbook"
 LIBRARY_MAX = 32
-_LIBRARY = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+_LIBRARY = re.compile(r"[a-z0-9]+(?:[-.][a-z0-9]+)*")   # a cookbook rdid has dots
 
 # Hosts that forbid `<` and `>` in a description get the look-alike.
 _ANGLE = (("<=", "≤"), (">=", "≥"), ("<", "‹"), (">", "›"))
@@ -120,9 +130,23 @@ def library_name(value: Optional[str]) -> Optional[str]:
     if value is None or value == DEFAULT_LIBRARY:
         return None
     if not _LIBRARY.fullmatch(value) or len(value) > LIBRARY_MAX:
-        raise SkillError(f"library {value!r}: use lowercase letters, digits and single hyphens, "
-                         f"at most {LIBRARY_MAX} characters (e.g. `adhsdk`)")
+        raise SkillError(f"library {value!r}: use lowercase letters, digits and single hyphens "
+                         f"(dots too, in a cookbook rdid), at most {LIBRARY_MAX} characters "
+                         "(e.g. `adhsdk`)")
     return value
+
+
+def default_library(cookbook_dir: Optional[Path]) -> Optional[str]:
+    """The library a cookbook's skills are named, routed and registered as
+    when none is given: its rdid (None for the literal `cookbook`, whose skill
+    names carry no prefix, and for a directory with no cookbook.json)."""
+    if cookbook_dir is None or not (Path(cookbook_dir) / COOKBOOK_FILE).is_file():
+        return None
+    from .identity import IdentityError, read_manifest
+    try:
+        return library_name(read_manifest(Path(cookbook_dir)).rdid)
+    except IdentityError:       # a pre-format-2 manifest: `cookr upgrade` reads it, not this
+        return None
 
 
 def path_below_type(folder: Path) -> tuple[str, tuple[str, ...]]:
@@ -152,7 +176,7 @@ def path_below_type(folder: Path) -> tuple[str, tuple[str, ...]]:
 def skill_name(type_dir: str, rel: tuple[str, ...], library: Optional[str] = None) -> str:
     segments = list(rel) if len(rel) > 1 else [TYPE_DIRS[type_dir], *rel]
     if library:
-        segments.insert(0, library)
+        segments.insert(0, library.replace(".", "-"))
     name = "-".join(segments)
     if len(name) <= NAME_MAX:
         return name
@@ -241,14 +265,15 @@ def _dq(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-def frontmatter(name: str, artifact: Artifact, routes: Iterable[str]) -> str:
+def frontmatter(name: str, artifact: Artifact, routes: Iterable[str], rdid: str = "") -> str:
     """Only `name` and `description` at the top, every cookr key under
-    `metadata`, so the one rendering loads on every host."""
+    `metadata`, so the one rendering loads on every host. `source` is the
+    artifact's rdid."""
     meta = artifact.meta
     lines = ["---", f"name: {name}", f"description: {_dq(description(artifact))}", "metadata:",
              f"  version: {_dq(str(meta.get('version', '')))}",
              f"  id: {_dq(str(meta.get('id', '')))}",
-             f"  source: {_dq(str(meta.get('domain', '')))}",
+             f"  source: {_dq(rdid)}",
              f"  routes: {_dq('; '.join(routes))}", "---", ""]
     return "\n".join(lines)
 
@@ -262,24 +287,58 @@ def fill(template: str, values: dict[str, str]) -> str:
     return _PLACEHOLDER.sub(lambda m: values.get(m.group(1), m.group(0)), template)
 
 
-def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPLATES) -> Skill:
+def _label(index: Optional[Index], link: Link) -> Optional[str]:
+    """The rdid `link` names, as `index` knows it: its own entry's, or the
+    label it caches for another cookbook's artifact."""
+    if index is None:
+        return None
+    if link.cookbook is None or link.cookbook == index.cookbook.id:
+        entry = index.entries.get(link.artifact)
+        return entry.rdid if entry else None
+    return index.foreign.get(format_link(link))
+
+
+def _depends(artifact: Artifact, index: Optional[Index]) -> str:
+    """A `Depends on` line naming each `depends-on` link by its rdid."""
+    names = []
+    for value in artifact.meta.get("depends-on") or []:
+        try:
+            link = parse_link(str(value))
+        except ValueError:
+            continue
+        names.append(_label(index, link) or format_link(link))
+    return f"Depends on: {', '.join(f'`{n}`' for n in names)}.\n\n" if names else ""
+
+
+def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPLATES,
+            indexes: Optional[IndexCache] = None) -> Skill:
     library = library_name(library)
     artifact = load_folder(folder)
     type_dir, rel = path_below_type(folder)
     kind = TYPE_DIRS[type_dir]
     if artifact.type != kind:
         raise SkillError(f"{folder}: type {artifact.type!r} under {type_dir}/")
+    indexes = indexes if indexes is not None else IndexCache()
+    index = indexes.for_path(folder)
+    entry = indexes.entry(folder, artifact.meta.get("id"))
+    # Outside any cookbook there is no rdid; the folder's path names it instead.
+    rdid = entry.rdid if entry else "/".join((type_dir, *rel))
     t = template(kind, templates)
+    ri = implementations_part(entry.implementations) if entry else None
+    if ri is not None and RI_SECTION not in t.omit:
+        artifact = with_part(artifact, ri)
     body = "".join(p.text if p.heading is None else f"## {p.heading}\n{p.text}"
                    for p in artifact.parts if (p.heading or "").strip() not in t.omit)
     if not body.endswith("\n\n"):
         body = body.rstrip("\n") + "\n\n"
+    labels = {link: label for link in (lk for _, lk in in_text_links(body))
+              if (label := _label(index, link))}
+    body = relabel(body, labels) + _depends(artifact, index)
     text = fill(t.text.replace("{{body}}\n", "{{body}}"),
-                {"body": body, "domain": str(artifact.meta.get("domain", "")),
-                 "version": str(artifact.meta.get("version", ""))})
+                {"body": body, "rdid": rdid, "version": str(artifact.meta.get("version", ""))})
     name = skill_name(type_dir, rel, library)
     routes = derive_routes(artifact, type_dir, rel, library)
-    return Skill(name=name, routes=routes, text=frontmatter(name, artifact, routes) + text,
+    return Skill(name=name, routes=routes, text=frontmatter(name, artifact, routes, rdid) + text,
                  folder=folder, type=kind)
 
 
@@ -430,10 +489,11 @@ def compile_set(folders: list[Path], out: Path, *, library: Optional[str] = None
 
     library = library_name(library)
     results, skills = [], []
+    indexes = IndexCache()
     for folder in folders:
         try:
-            skills.append(compose(folder, library, templates))
-        except (ArtifactError, OSError, UnicodeDecodeError, tuning.TuningError) as e:
+            skills.append(compose(folder, library, templates, indexes))
+        except (ArtifactError, CookbookError, OSError, UnicodeDecodeError, tuning.TuningError) as e:
             results.append(Result(folder, folder, "error", str(e)))
     dups = duplicate_names(skills)
     for name, fs in dups.items():

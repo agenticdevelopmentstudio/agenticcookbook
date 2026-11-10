@@ -28,8 +28,7 @@ Check and update all files that reference or are referenced by the changed artif
 
 ### Cross-references in other artifacts
 
-- Search all `.md` files for `agenticdevelopercookbook://` URIs that reference the changed artifact's domain.
-- If the artifact was renamed or moved, update every reference to the new domain.
+- Run `cookr update` so `cookbook/index.json` holds the artifact's entry (UUID, rdid, path). Links store the UUID, so a renamed or moved artifact keeps every link; after you move its folder, `cookr update` records the new path (the rdid stays), and `cookr rename <uuid> <new-rdid>` gives it the rdid that matches, refreshing every in-text `[<rdid>](cookbook:<uuid>)` label.
 - If the artifact was removed, remove or replace every reference to it.
 - Check `depends-on` and `related` fields in other artifacts' frontmatter for stale references.
 
@@ -46,9 +45,9 @@ Check and update all files that reference or are referenced by the changed artif
 Before marking the work complete, confirm:
 
 - [ ] `/approve-artifact` passed on every new or modified artifact
-- [ ] Every new or modified artifact has a source folder its `.md` matches (`cookr compile --check` passes)
+- [ ] Every new or modified artifact is a source folder with no compiled `.md` committed beside it
 - [ ] `cookbook/index.md` reflects the current set of artifacts — no missing entries, no dead links
-- [ ] No broken `agenticdevelopercookbook://` cross-references exist in any `.md` file
+- [ ] `cookr validate` passes: every link (meta UUIDs and in-text `cookbook:` links) resolves and the index matches the folders
 - [ ] README.md and CLAUDE.md artifact counts are accurate
 
 ---

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1138183b-296d-479b-9df7-7869a006c023",
     "title": "Choose SwiftData vs Core Data",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/swiftdata-vs-core-data",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,7 +25,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/data/datastore-selection"
+      "6a653107-929d-418e-865d-636373a27b02"
     ],
     "references": [
       "https://developer.apple.com/documentation/swiftdata"
@@ -38,7 +37,7 @@
       "schema-design"
     ]
   },
-  "synced": "0884227e7f041e0e",
+  "synced": "895920e24c6d7e10",
   "parts": [
     {"part": "intro"},
     {"part": "decision-rule", "heading": "Decision Rule"},

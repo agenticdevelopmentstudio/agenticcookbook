@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "706a3bf7-0fe1-4b12-b4da-0fd8d363b314",
     "title": "GitHub Copilot configuration",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist"
+      "4f4ed7a2-a26f-40f2-b863-51715b5c470c",
+      "e761c71a-eb90-44c8-8149-3062da19ad37"
     ],
     "references": [
       "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
@@ -42,7 +41,7 @@
   "names_hosts": "Reviews GitHub Copilot instruction files, which can also be a CLAUDE.md or GEMINI.md file, so it names those hosts.",
   "twin_differs": "A review checklist restating the implementing guideline's configuration rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "e18910ad2c341a6a",
+  "synced": "91255e040fa743ef",
   "parts": [
     {"part": "intro"},
     {"part": "files-and-names", "heading": "Files and names"},

@@ -25,29 +25,31 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from ..core.scheme import index_domain
+from ..core.artifact import doc_path, is_folder
+from ..core.markdown import SKIP_NAMES
 from ._shared import (
-    SKIP_FILENAMES,
-    cookbook_name,
     extract_change_history,
     iter_artifacts,
     merge_index_frontmatter,
     render_frontmatter,
+    link_of,
     title_of,
 )
 
 
 def _collect(uc_dir: Path) -> tuple[dict[str, list[Path]], list[Path]]:
     categories: dict[str, list[Path]] = {}
-    flat: list[Path] = []
+    flat: set[Path] = set()
     for item in sorted(uc_dir.iterdir()):
-        if item.is_dir():
+        if is_folder(item):
+            flat.add(doc_path(item))  # an artifact directly in the use case
+        elif item.is_dir():
             files = iter_artifacts(item)
             if files:
                 categories[item.name] = files
-        elif item.is_file() and item.suffix == ".md" and item.name not in SKIP_FILENAMES:
-            flat.append(item)
-    return categories, flat
+        elif item.is_file() and item.suffix == ".md" and item.name not in SKIP_NAMES:
+            flat.add(item)
+    return categories, sorted(flat)
 
 
 def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
@@ -76,7 +78,6 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
     fm_data = merge_index_frontmatter(
         output,
         title=config.get("title", f"{target.name.title()} Index"),
-        domain=index_domain(root, output, f"{cookbook_name(root)}/{target.name}/index"),
         summary=config.get("summary", f"Index of {target.name}."),
         today=today,
     )
@@ -120,14 +121,14 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
         categories, flat = _collect(uc_dir)
 
         for f in flat:
-            rel = _relpath(f, output_parent)
+            rel = link_of(f, output_parent)
             lines.append(f"- [{title_of(f)}]({rel})")
 
         for cat in sorted(categories):
             lines.append("")
             lines.append(f"**{cat}**")
             for f in categories[cat]:
-                rel = _relpath(f, output_parent)
+                rel = link_of(f, output_parent)
                 lines.append(f"- [{title_of(f)}]({rel})")
         lines.append("")
 
@@ -141,8 +142,3 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
         "total_with_duplicates": total_with_dupes,
     }
     return text, counts
-
-
-def _relpath(target: Path, base: Path) -> str:
-    import os
-    return os.path.relpath(target, base)

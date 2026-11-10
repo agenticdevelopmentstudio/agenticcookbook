@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
     "title": "Simplicity",
-    "domain": "agenticdevelopercookbook://principles/simplicity",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "a6e254fb33f40ae1",
+  "synced": "2519eebe45480fed",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

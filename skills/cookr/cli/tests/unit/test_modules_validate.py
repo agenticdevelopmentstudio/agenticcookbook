@@ -2,6 +2,8 @@ import pytest
 
 from cookr.cli import main
 
+from .cookbook_helpers import add_doc, add_spec, edit_repo_config, new_repo
+
 
 # Every tmp_path here is a git repo, as a real cookbook checkout is.
 pytestmark = pytest.mark.usefixtures("git_tmp_path")
@@ -9,12 +11,9 @@ pytestmark = pytest.mark.usefixtures("git_tmp_path")
 
 def test_validate_fails_on_a_doc_edited_by_hand(tmp_path, monkeypatch, patch_refs, capsys):
     monkeypatch.chdir(tmp_path)
-    assert main(["create"]) == 0
+    new_repo(tmp_path)
     cb = tmp_path / "cookbook"
-    (cb / "recipes" / "alpha.md").write_text("# Alpha Recipe\n\n## Change History\n\nx\n", encoding="utf-8")
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
-    assert main(["convert", str(cb / "recipes" / "alpha.md")]) == 0
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
+    add_doc(tmp_path, "recipes/alpha", "# Alpha Recipe\n\n## Change History\n\nx\n")
     assert main(["validate", "-p", str(cb)]) == 0
     doc = cb / "recipes" / "alpha.md"
     doc.write_text(doc.read_text() + "Hand edit.\n", encoding="utf-8")
@@ -25,38 +24,36 @@ def test_validate_fails_on_a_doc_edited_by_hand(tmp_path, monkeypatch, patch_ref
 
 def test_validate_green_then_drift(tmp_path, monkeypatch, patch_refs):
     monkeypatch.chdir(tmp_path)
-    assert main(["create"]) == 0
+    new_repo(tmp_path)
     cb = tmp_path / "cookbook"
-    (cb / "recipes" / "alpha.md").write_text("# Alpha Recipe\n", encoding="utf-8")
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
-    assert main(["validate", "-p", str(cb)]) == 1  # a doc no folder compiles is checked by nothing
-    assert main(["convert", str(cb / "recipes" / "alpha.md")]) == 0
+    add_doc(tmp_path, "recipes/alpha", "# Alpha Recipe\n")
     assert main(["validate", "-p", str(cb)]) == 0  # green
 
-    # Induce drift by adding a new file without re-running update.
-    (cb / "recipes" / "gamma.md").write_text(
-        "---\ntitle: Gamma\nid: 22222222-3333-4444-5555-666666666666\n"
-        "domain: agenticdevelopercookbook://cookbook/recipes/gamma\ntype: recipe\n"
-        "version: 1.0.0\nstatus: draft\nlanguage: en\ncreated: 2026-05-15\n"
-        "modified: 2026-05-15\nauthor: T\ncopyright: 2026 T\nlicense: MIT\nsummary: x\n"
-        "---\n# Gamma\n",
-        encoding="utf-8",
-    )
-    assert main(["convert", str(cb / "recipes" / "gamma.md")]) == 0
+    # Induce drift: a compiled doc that no longer matches its folder.
+    doc = cb / "recipes" / "alpha.md"
+    doc.write_text(doc.read_text() + "Drift.\n", encoding="utf-8")
     rc = main(["validate", "-p", str(cb)])
     assert rc != 0  # drift detected
 
 
+def test_validate_passes_a_folder_without_its_compiled_doc(tmp_path, monkeypatch, patch_refs,
+                                                          capsys):
+    # The folder is the only committed form: a clean checkout has no docs.
+    monkeypatch.chdir(tmp_path)
+    new_repo(tmp_path)
+    cb = tmp_path / "cookbook"
+    add_doc(tmp_path, "recipes/alpha", "# Alpha Recipe\n\n## Change History\n\nx\n")
+    (cb / "recipes" / "alpha.md").unlink()
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 0
+    assert "0 compiled docs present" in capsys.readouterr().out
+
+
 def _converted(tmp_path, monkeypatch, body):
     monkeypatch.chdir(tmp_path)
-    assert main(["create"]) == 0
-    cb = tmp_path / "cookbook"
-    (cb / "recipes" / "alpha.md").write_text(f"# Alpha Recipe\n\n{body}\n\n## Change History\n\nx\n",
-                                             encoding="utf-8")
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
-    assert main(["convert", str(cb / "recipes" / "alpha.md")]) == 0
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
-    return cb
+    new_repo(tmp_path)
+    add_doc(tmp_path, "recipes/alpha", f"# Alpha Recipe\n\n{body}\n\n## Change History\n\nx\n")
+    return tmp_path / "cookbook"
 
 
 def test_validate_fails_on_shared_text_that_names_a_host(tmp_path, monkeypatch, patch_refs, capsys):
@@ -84,24 +81,18 @@ def test_validate_fails_on_a_broken_addition_and_warns_on_a_stale_one(tmp_path, 
     assert main(["validate", "-p", str(cb)]) == 1
 
 
-def _guideline(cb, use_case, body):
-    doc = cb / "guidelines" / use_case / "logging.md"
-    doc.parent.mkdir(parents=True, exist_ok=True)
-    doc.write_text(f"# Logging\n\n{body}\n\n## Change History\n\nx\n", encoding="utf-8")
-    return doc
+def _guideline(tmp_path, use_case, body):
+    return add_doc(tmp_path, f"guidelines/{use_case}/logging", f"# Logging\n\n{body}\n\n## Change History\n\nx\n",
+                   type="guideline")
 
 
 def test_validate_fails_on_twins_that_drifted_and_on_a_guideline_with_no_rule(
         tmp_path, monkeypatch, patch_refs, capsys):
     monkeypatch.chdir(tmp_path)
-    assert main(["create"]) == 0
+    new_repo(tmp_path)
     cb = tmp_path / "cookbook"
-    docs = [_guideline(cb, "implementing", "Logs MUST be JSON."),
-            _guideline(cb, "reviewing", "Check the logs.")]
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
-    for doc in docs:
-        assert main(["convert", str(doc)]) == 0
-    assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
+    _guideline(tmp_path, "implementing", "Logs MUST be JSON.")
+    _guideline(tmp_path, "reviewing", "Check the logs.")
     capsys.readouterr()
     assert main(["validate", "-p", str(cb)]) == 1
     out = capsys.readouterr().out
@@ -113,3 +104,73 @@ def test_validate_fails_on_twins_that_drifted_and_on_a_guideline_with_no_rule(
                      '  "informational": "A checklist; its rules are its twin\'s.",\n  "parts"'),
         encoding="utf-8")
     assert main(["validate", "-p", str(cb)]) == 0
+
+
+# --- UUID links: missing is an issue, unreachable a warning ---------------------------
+
+GONE = "0b0b0b0b-0000-4000-8000-000000000000"
+ELSEWHERE = "0e0e0e0e-0000-4000-8000-000000000000"
+
+
+def _format_2(tmp_path, monkeypatch, body, dependencies=None):
+    """A converted cookbook made format 2, so its UUID links resolve."""
+    cb = _converted(tmp_path, monkeypatch, body)
+    if dependencies:
+        edit_repo_config(tmp_path, lambda d: d.update(dependencies=dependencies))
+    return cb
+
+
+def test_validate_reports_missing_link(tmp_path, monkeypatch, patch_refs, capsys):
+    monkeypatch.setenv("COLUMNS", "300")
+    cb = _format_2(tmp_path, monkeypatch, f"See [gone](cookbook:{GONE}).")
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 1
+    out = capsys.readouterr().out
+    assert f"`{GONE}` names no artifact in its cookbook" in out
+
+
+def test_validate_warns_unreachable_cookbook(tmp_path, monkeypatch, patch_refs, capsys):
+    monkeypatch.setenv("COLUMNS", "300")
+    cb = _format_2(tmp_path, monkeypatch, f"See [far](cookbook:{ELSEWHERE}/{GONE}).",
+                   dependencies={ELSEWHERE: {"rdid": "elsewhere"}})
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 0  # a warning never fails validate
+    out = capsys.readouterr().out
+    assert f"cookbook {ELSEWHERE} cannot be reached here" in out
+    assert "1 warning(s)" in out
+
+
+
+# Opts out of upgrade-on-contact: validate must itself report a loose doc that no source folder
+# compiles (contact would otherwise convert it first and exit 3).
+@pytest.mark.usefixtures("legacy_no_upgrade")
+def test_validate_fails_on_a_loose_doc_with_no_source_folder(tmp_path, monkeypatch, patch_refs,
+                                                             capsys):
+    monkeypatch.chdir(tmp_path)
+    new_repo(tmp_path)
+    cb = tmp_path / "cookbook"
+    (cb / "recipes").mkdir()
+    (cb / "recipes" / "loose.md").write_text("---\ntitle: Loose\ntype: recipe\n---\n# Loose\n",
+                                             encoding="utf-8")
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 1
+    assert "recipes/loose.md" in capsys.readouterr().out
+
+
+def test_validate_finds_index_configs_in_a_source_checkout(tmp_path, monkeypatch, capsys):
+    # From source, ./install has not built references/: the embedded copy is used.
+    from cookr.core import refs
+    empty = tmp_path / "built-references"
+    empty.mkdir()
+    monkeypatch.setattr(refs, "references_dir", lambda: empty)
+    assert refs.embedded(empty, "index-configs") == refs._root() / "references-src" / "index-configs"
+    (empty / "index-configs").mkdir()
+    assert refs.embedded(empty, "index-configs") == empty / "index-configs"
+    (empty / "index-configs").rmdir()
+    monkeypatch.chdir(tmp_path)
+    new_repo(tmp_path)
+    capsys.readouterr()
+    main(["validate", "-p", str(tmp_path / "cookbook")])
+    out = capsys.readouterr().out
+    assert "No index configs found" not in out
+    assert "recipes-flat" in out

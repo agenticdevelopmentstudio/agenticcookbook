@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "0ECFED07-C7A7-4E76-9F3E-1C5EA0A5DCE8",
+    "id": "0ecfed07-c7a7-4e76-9f3e-1c5ea0a5dce8",
     "title": "Primary key strategies",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/primary-keys",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -28,7 +27,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://www.sqlite.org/rowidtable.html",
@@ -43,7 +42,7 @@
       "schema-design"
     ]
   },
-  "synced": "dc8aa903bc7f10f5",
+  "synced": "c62d65d5e92f694e",
   "parts": [
     {"part": "intro"},
     {"part": "how-sqlite-s-rowid-works", "heading": "How SQLite's rowid works"},

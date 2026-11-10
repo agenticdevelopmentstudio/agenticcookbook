@@ -1,31 +1,23 @@
-"""`cookr organize`: converting a flat `.cookr.json` corpus into a library cookbook.
-
-`plan()` proposes where each legacy recipe goes; `validate()` refuses a plan
-`apply()` cannot safely carry out; `apply()` moves the files, rewrites cross-
-references, and writes the new `cookbook.json` manifest.
-"""
+"""core/organize.plan: where each recipe of a flat `.cookr.json` corpus goes in
+a library cookbook (the upgrader's placement of legacy recipes)."""
 
 from __future__ import annotations
 
-import json
 import subprocess
 from pathlib import Path
 
 import pytest
 
-from cookr.core.config import COOKBOOK_DIR, MANIFEST
+from cookr.core.repoconfig import COOKBOOK_DIR
 from cookr.core.legacy import CONFIG_NAME, load_legacy
 from cookr.core.organize import (
     Move,
     OrganizeError,
     PLAN_VERSION,
     _dedupe,
-    apply,
     code_block,
     plan,
     platform_prefixes,
-    rewrite_references,
-    validate,
 )
 
 
@@ -154,202 +146,3 @@ def test_dedupe_sends_a_reserved_name_to_its_fallback_too():
     m = Move(slug="widget", to="index", group=["docs"])
     _dedupe([m])
     assert m.to == "docs/widget"
-
-
-# --- validate: refusals ------------------------------------------------------------------
-
-
-def test_validate_accepts_the_legacy_repos_own_plan(legacy_repo):
-    validate(_plan(legacy_repo), legacy_repo)  # must not raise
-
-
-def test_validate_rejects_a_wrong_plan_version(legacy_repo):
-    data = _plan(legacy_repo)
-    data["version"] = 2
-    with pytest.raises(OrganizeError, match=f"plan version must be {PLAN_VERSION}"):
-        validate(data, legacy_repo)
-
-
-@pytest.mark.parametrize("key", ["recipes", "scheme", "cookbook", "legacy"])
-def test_validate_rejects_a_blank_required_string(legacy_repo, key):
-    data = _plan(legacy_repo)
-    data[key] = ""
-    with pytest.raises(OrganizeError, match=f"plan `{key}` must be a non-empty string"):
-        validate(data, legacy_repo)
-
-
-def test_validate_refuses_a_repo_already_organized(legacy_repo):
-    (legacy_repo / COOKBOOK_DIR).mkdir()
-    (legacy_repo / COOKBOOK_DIR / MANIFEST).write_text("{}", encoding="utf-8")
-    data = _plan(legacy_repo)
-    with pytest.raises(OrganizeError, match="this repo is organized"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_empty_code_roots(legacy_repo):
-    data = _plan(legacy_repo)
-    data["code"]["roots"] = []
-    with pytest.raises(OrganizeError, match="plan `code.roots` must be a non-empty list"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_a_root_with_a_bad_platform_or_kind(legacy_repo):
-    data = _plan(legacy_repo)
-    data["code"]["roots"][0]["platform"] = "playstation"
-    with pytest.raises(OrganizeError, match=r"code\.roots\[0\] has a bad platform or kind"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_a_root_path_not_found(legacy_repo):
-    data = _plan(legacy_repo)
-    data["code"]["roots"][0]["path"] = "does/not/exist"
-    with pytest.raises(OrganizeError, match="code.roots\\[0\\].path not found: does/not/exist"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_a_non_list_moves(legacy_repo):
-    data = _plan(legacy_repo)
-    data["moves"] = "nope"
-    with pytest.raises(OrganizeError, match="plan `moves` must be a list"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_a_move_source_not_found(legacy_repo):
-    data = _plan(legacy_repo)
-    data["moves"][0]["from"] = "recipes/nope.md"
-    with pytest.raises(OrganizeError, match="plan move source not found: recipes/nope.md"):
-        validate(data, legacy_repo)
-
-
-@pytest.mark.parametrize("bad_to", ["Uppercase", "has space", "-leading-dash", "a/../b"])
-def test_validate_rejects_a_move_target_that_is_not_a_lowercase_path(legacy_repo, bad_to):
-    data = _plan(legacy_repo)
-    data["moves"][0]["to"] = bad_to
-    with pytest.raises(OrganizeError, match="is not a lowercase path in the cookbook"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_a_reserved_move_target(legacy_repo):
-    data = _plan(legacy_repo)
-    data["moves"][0]["to"] = "index"
-    with pytest.raises(OrganizeError, match="is a file name the spec corpus skips"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_two_moves_sharing_a_target(legacy_repo):
-    data = _plan(legacy_repo)
-    data["moves"][1]["to"] = data["moves"][0]["to"]
-    with pytest.raises(OrganizeError, match="plan moves share a target"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_an_implementation_with_a_bad_platform(legacy_repo):
-    data = _plan(legacy_repo)
-    data["moves"][0]["implementations"] = [{"platform": "playstation", "path": "web/blocks/StatCard.tsx"}]
-    with pytest.raises(OrganizeError, match="bad platform `playstation`"):
-        validate(data, legacy_repo)
-
-
-def test_validate_rejects_an_implementation_path_not_found(legacy_repo):
-    data = _plan(legacy_repo)
-    data["moves"][0]["implementations"] = [{"platform": "web", "path": "web/blocks/Nope.tsx"}]
-    with pytest.raises(OrganizeError, match="implementation not found: web/blocks/Nope.tsx"):
-        validate(data, legacy_repo)
-
-
-# --- rewrite_references (pure) ------------------------------------------------------------
-
-
-def test_rewrite_references_substitutes_a_bare_domain_mention():
-    text = "See mini-repo://recipes/button for details."
-    out = rewrite_references(text, old_file="recipes/other.md", new_file="cookbook/other.md",
-                             moved={}, domains={"mini-repo://recipes/button": "mini-repo://cookbook/ui"},
-                             recipes="recipes")
-    assert out == "See mini-repo://cookbook/ui for details."
-
-
-def test_rewrite_references_updates_a_relative_link_to_a_moved_file():
-    text = "[Button](button.md) is shared."
-    out = rewrite_references(text, old_file="recipes/site-menu.md", new_file="cookbook/site-menu.md",
-                             moved={"recipes/button.md": "cookbook/ui.md"}, domains={}, recipes="recipes")
-    assert "[Button](ui.md)" in out
-
-
-def test_rewrite_references_updates_a_bare_recipes_slash_path_mention():
-    text = "Its file is at recipes/button.md today."
-    out = rewrite_references(text, old_file="recipes/site-menu.md", new_file="cookbook/site-menu.md",
-                             moved={"recipes/button.md": "cookbook/ui.md"}, domains={}, recipes="recipes")
-    assert out == "Its file is at cookbook/ui.md today."
-
-
-def test_rewrite_references_leaves_an_unrelated_link_alone(legacy_repo):
-    text = "[Other](other.md)"
-    out = rewrite_references(text, old_file="recipes/site-menu.md", new_file="recipes/site-menu.md",
-                             moved={}, domains={}, recipes="recipes")
-    assert out == text
-
-
-# --- apply: end-to-end on a git-initialized copy ------------------------------------------
-
-
-def test_apply_moves_rewrites_and_writes_the_manifest(legacy_repo):
-    _init_git(legacy_repo)
-    data = _plan(legacy_repo)
-    validate(data, legacy_repo)
-    result = apply(data, legacy_repo, author="Test Author <test@example.com>", day="2026-09-25")
-
-    assert result.moved == 4
-    assert result.leftovers == []
-    assert result.manifest == f"{COOKBOOK_DIR}/{MANIFEST}"
-    assert not (legacy_repo / CONFIG_NAME).exists()
-    assert not (legacy_repo / "recipes").exists()
-
-    ui = (legacy_repo / "cookbook" / "ui.md").read_text(encoding="utf-8")
-    assert "domain: mini-repo://cookbook/ui" in ui
-    assert "| apple | `apple/UI/` |" in ui
-    assert "| web | `web/components/Button.tsx` |" in ui
-
-    manifest = json.loads((legacy_repo / "cookbook" / "cookbook.json").read_text(encoding="utf-8"))
-    assert manifest["type"] == "cookbook"
-    assert manifest["code"] == data["code"]
-    assert sorted(manifest["platforms"]) == ["apple", "web"]
-
-
-def test_apply_writes_a_structure_the_schema_allows(legacy_repo):
-    _init_git(legacy_repo)
-    apply(_plan(legacy_repo), legacy_repo, author="Test Author <test@example.com>", day="2026-09-25")
-    manifest = json.loads((legacy_repo / "cookbook" / "cookbook.json").read_text(encoding="utf-8"))
-    schema = json.loads((SCHEMA).read_text(encoding="utf-8"))
-    allowed = set(schema["$defs"]["structural-element"]["properties"])
-    assert manifest["structure"] == {"kind": "library"}
-    assert set(manifest["structure"]) <= allowed
-
-
-def test_apply_bumps_a_moved_recipe_that_already_has_a_version(legacy_repo):
-    _init_git(legacy_repo)
-    data = _plan(legacy_repo)
-    result = apply(data, legacy_repo, author="Test Author <test@example.com>", day="2026-09-25")
-    ui = (legacy_repo / "cookbook" / "ui.md").read_text(encoding="utf-8")
-    assert "version: 1.1.1" in ui  # button.md had version: 1.1.0; the move patch-bumps it
-    assert "Moved into the library cookbook; added Reference Implementations." in ui
-    assert not any(f == "cookbook/ui.md" for f, _ in result.bump_failures)
-
-
-def test_apply_reports_a_bump_failure_for_a_recipe_with_no_version_line(legacy_repo):
-    # stat-card.md and chat-composer.md have no `version:` line in the legacy
-    # fixture (the old flat model never required one); the patch bump can't
-    # apply to them, and apply() reports it rather than crashing.
-    _init_git(legacy_repo)
-    data = _plan(legacy_repo)
-    result = apply(data, legacy_repo, author="Test Author <test@example.com>", day="2026-09-25")
-    failed = dict(result.bump_failures)
-    assert failed["cookbook/blocks/stat-card.md"] == "the frontmatter has no plain `version:` line"
-    assert failed["cookbook/components/chat-composer.md"] == "the frontmatter has no plain `version:` line"
-
-
-def test_apply_adds_a_domain_line_to_a_recipe_that_never_had_one(legacy_repo):
-    _init_git(legacy_repo)
-    data = _plan(legacy_repo)
-    apply(data, legacy_repo, author="Test Author <test@example.com>", day="2026-09-25")
-    text = (legacy_repo / "cookbook" / "components" / "chat-composer.md").read_text(encoding="utf-8")
-    assert "domain: mini-repo://cookbook/components/chat-composer" in text

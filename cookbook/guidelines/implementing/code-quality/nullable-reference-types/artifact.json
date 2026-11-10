@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "af8a4221-90b7-434f-b2a4-64c86a072386",
     "title": "Nullable Reference Types",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/nullable-reference-types",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "code-review"
     ]
   },
-  "synced": "c9a73c8489177567",
+  "synced": "c0c15e1a8813f678",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

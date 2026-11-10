@@ -11,7 +11,7 @@ from cookr.cli import main
 from cookr.core import hosts, install as inst
 from cookr.core.artifact import find_folders
 
-from .test_skill import make
+from .test_skill import index_folders, make, manifest
 
 
 class FakeRouter(inst.Router):
@@ -26,7 +26,7 @@ class FakeRouter(inst.Router):
     def listed(self, set_dir):
         return [e for e in self.skills.values() if e["source"] == Path(set_dir).name]
 
-    def register(self, set_dir):
+    def register(self, set_dir, scopes=()):
         self.calls.append("register")
         source = Path(set_dir).name
         old = {n for n, e in self.skills.items() if e["source"] == source}
@@ -48,10 +48,10 @@ class FakeRouter(inst.Router):
 @pytest.fixture
 def env(tmp_path, monkeypatch):
     root = tmp_path / "cookbook"
-    root.mkdir()
-    (root / "index.md").write_text("# Cookbook\n")   # what makes it a cookbook cookr finds
+    manifest(root, rdid="cookbook")                 # what makes it a cookbook cookr finds
     make(root, "principles/simplicity", "principle")
     make(root, "guidelines/implementing/data/use-wal", "guideline")
+    index_folders(root)
     home = tmp_path / "home"
     (home / ".claude").mkdir(parents=True)
     monkeypatch.setenv("HOME", str(home))
@@ -123,7 +123,7 @@ def test_a_sets_near_duplicate_keywords_are_accepted_and_reported(env, tmp_path,
     warn = "accepted new keyword 'service' looks like existing 'services'"
     real = FakeRouter.register
     monkeypatch.setattr(FakeRouter, "register",
-                        lambda self, d: {**real(self, d), "warnings": [warn, warn]})
+                        lambda self, d, scopes=(): {**real(self, d, scopes), "warnings": [warn, warn]})
     out = installer(env, ["routed"]).install()
     assert states(out)[out[1].item] == inst.OK
     assert out[1].detail.endswith("; accepted near-duplicate keywords: "
@@ -295,7 +295,7 @@ def test_adopt_never_writes_a_rendering_that_would_not_load(env, monkeypatch):
 
 
 def test_a_failed_install_still_writes_the_receipt(env, monkeypatch):
-    def boom(self, set_dir):
+    def boom(self, set_dir, scopes=()):
         raise RuntimeError("router crashed")
     monkeypatch.setattr(FakeRouter, "register", boom)
     with pytest.raises(RuntimeError):
@@ -363,11 +363,11 @@ def test_a_router_too_old_for_cookr_is_refused():
 
     def router(out, code=0):
         return inst.Router([sys.executable, "-c", f"import sys; print({out!r}); sys.exit({code})"])
-    with pytest.raises(inst.RouterError, match="is 0.2.0; cookr needs skill-router 0.4.0"):
+    with pytest.raises(inst.RouterError, match="is 0.2.0; cookr needs skill-router 0.5.0"):
         router("skill-router-registry 0.2.0").require_version()
     with pytest.raises(inst.RouterError, match="has no --version"):
         router("usage: ...", 2).require_version()
-    router("skill-router 0.4.0").require_version()
+    router("skill-router 0.5.0").require_version()
 
 
 FAKE_CLI = '''
@@ -378,7 +378,7 @@ reg = json.loads(state.read_text()) if state.is_file() else {"claude": {}, "code
 args = [a for a in sys.argv[2:] if a != "--json"]
 cmd = args[0]
 if cmd == "--version":
-    print("skill-router 0.4.0"); sys.exit(0)
+    print("skill-router 0.5.0"); sys.exit(0)
 hosts = [args[i + 1] for i, a in enumerate(args) if a == "--host"] or sorted(reg)
 if cmd == "list":
     out = {h: {"skills": [{"name": n, "path": "/copy/" + n, "origin": o} for n, o in reg[h].items()]}
@@ -423,6 +423,8 @@ def test_the_router_drives_skill_routers_cli_by_origin(tmp_path):
         r.unregister(s)
 
 
+# Opts out of upgrade-on-contact: a loose doc with no source folder is the legacy shape under test.
+@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_a_doc_with_no_source_folder_stops_install(env, monkeypatch, capsys):
     # Installing without it would drop its skill unnoticed.
     (env.book / "principles" / "loose.md").write_text("---\ntype: principle\n---\n# Loose\n")

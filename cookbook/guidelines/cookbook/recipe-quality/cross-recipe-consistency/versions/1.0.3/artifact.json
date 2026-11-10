@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "19648d85-adba-4f38-b513-a38ca58e9fb0",
+    "title": "Cross-Recipe Consistency",
+    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/cross-recipe-consistency",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Naming, structure, and depth are consistent across sibling recipes so the cookbook reads as a coherent whole.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "73e9d2ea06d370b1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "common-violations", "heading": "Common Violations"},
+    {"part": "verification-checklist", "heading": "Verification Checklist"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

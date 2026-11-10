@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "01DC6100-4AA9-4B7B-9385-E056260B57B3",
+    "id": "01dc6100-4aa9-4b7b-9385-e056260b57b3",
     "title": "Directory Watch Coordinator",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/directory-watch-coordinator",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,18 +26,18 @@
       "workspace"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://ingredients/infrastructure/directory-tree-cache",
-      "agenticdevelopercookbook://ingredients/infrastructure/directory-tree-scanner",
-      "agenticdevelopercookbook://ingredients/infrastructure/filesystem-watcher"
+      "7c689b1f-37db-4422-a129-270c697d5875",
+      "13715ef0-3351-4477-8fa6-24541c65697a",
+      "7e284016-0ceb-4c5e-b3d2-52d9366685cb"
     ],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/directory-sync"
+      "63659e2c-215a-44ed-b330-2bca8d88bd9a"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "127f03b40696222b",
+  "synced": "68216d4f9aa8b7ef",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

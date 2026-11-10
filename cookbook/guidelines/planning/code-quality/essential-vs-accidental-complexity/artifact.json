@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "36bdba1b-2759-45c6-80b9-374536efb7bb",
     "title": "Essential vs accidental complexity",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/essential-vs-accidental-complexity",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/simplicity",
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://guidelines/planning/code-quality/algorithmic-complexity"
+      "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "02301325-6676-4b89-ac9f-e2cfe99a4172"
     ],
     "references": [
       "https://en.wikipedia.org/wiki/No_Silver_Bullet",
@@ -37,7 +36,7 @@
       "new-module"
     ]
   },
-  "synced": "12dd39319c910818",
+  "synced": "04f5626c7deee14d",
   "parts": [
     {"part": "intro"},
     {"part": "what-goes-in-each-bucket", "heading": "What goes in each bucket"},

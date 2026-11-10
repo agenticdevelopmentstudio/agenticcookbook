@@ -1,7 +1,6 @@
 ---
 id: ed6e3306-6de0-44be-a573-f86ab768bdf0
 title: Reference
-domain: agenticdevelopercookbook://reference/index
 type: reference
 version: 1.0.0
 status: draft

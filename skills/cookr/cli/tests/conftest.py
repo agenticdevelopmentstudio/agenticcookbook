@@ -52,6 +52,16 @@ def legacy_repo(tmp_path) -> Path:
     return dst
 
 
+@pytest.fixture(scope="session")
+def repo_v2(tmp_path_factory) -> Path:
+    """A copy of this repo's `cookbook/` (format 2) and `tbd/compliance/`, for
+    the tests that read the real corpus. Read-only: tests must not mutate it."""
+    root = tmp_path_factory.mktemp("repo-v2")
+    shutil.copytree(REPO_ROOT / "cookbook", root / "cookbook")
+    shutil.copytree(REPO_ROOT / "tbd" / "compliance", root / "tbd" / "compliance")
+    return root
+
+
 @pytest.fixture
 def cookr_bin():
     found = shutil.which("cookr")
@@ -93,12 +103,73 @@ def _hermetic_templates(monkeypatch, templates_source_dir):
     monkeypatch.setattr(templates, "templates_dir", lambda: templates_source_dir)
 
 
+# The user's real cookr home, captured before any test can repoint HOME.
+REAL_COOKR_HOME = Path("~/.cookr").expanduser().resolve()
+
+
+def real_locations() -> "bytes | None":
+    """The real ~/.cookr/locations.json as bytes (None when absent). Read only."""
+    try:
+        return (REAL_COOKR_HOME / "locations.json").read_bytes()
+    except OSError:
+        return None
+
+
+# Snapshotted when the suite is collected, before any test runs.
+REAL_LOCATIONS_AT_START = real_locations()
+
+
+def report_failure(session, message: str) -> None:
+    """Write `message` through the terminal reporter, or to stderr when there is
+    none (`-p no:terminal`), so the real failure is never hidden."""
+    reporter = session.config.pluginmanager.get_plugin("terminalreporter")
+    if reporter is not None:
+        reporter.write_line(message, red=True)
+    else:
+        sys.stderr.write(message + "\n")
+
+
+def pytest_sessionfinish(session, exitstatus):
+    """Fail the run if any test changed the user's real locations.json."""
+    if real_locations() != REAL_LOCATIONS_AT_START:
+        report_failure(session, f"FAIL: a test changed {REAL_COOKR_HOME / 'locations.json'}")
+        session.exitstatus = 1
+
+
+@pytest.fixture(autouse=True)
+def _hermetic_cookr_home(tmp_path_factory, monkeypatch):
+    """Every test runs under a scratch COOKR_HOME, so nothing a test does (an
+    upgrade remembering a location, an install receipt) can reach ~/.cookr. The
+    default path is repointed too, for a test that unsets COOKR_HOME. A test that
+    wants its own home still sets COOKR_HOME; it lands in tmp_path, not here."""
+    from cookr.core import links
+
+    home = tmp_path_factory.mktemp("cookr-home")
+    monkeypatch.setenv("COOKR_HOME", str(home))
+    monkeypatch.setattr(links, "LOCATIONS", home / "locations.json")
+    return home
+
+
+@pytest.fixture(autouse=True)
+def _outside_the_checkout(tmp_path, monkeypatch):
+    """Run from a scratch directory: a cookr command upgrades the repo it finds
+    from cwd, and cwd must never be this checkout's own (format 1) cookbook."""
+    monkeypatch.chdir(tmp_path)
+
+
+@pytest.fixture
+def legacy_no_upgrade(monkeypatch):
+    """Opt a test out of upgrade-on-contact: it deliberately builds a format-1
+    cookbook to exercise one module. Upgrade-on-contact is live by default."""
+    monkeypatch.setattr("cookr.cli.needs_upgrade", lambda repo: [])
+
+
 @pytest.fixture
 def git_tmp_path(tmp_path) -> Path:
     """tmp_path as a git repo, as a real cookbook's checkout is.
 
-    A cookbook's domain scheme falls back to its repo's name
-    (cookr.core.scheme.repo_scheme), which does not resolve outside git.
+    A format-1 cookbook's domain scheme falls back to its repo's name
+    (cookr.core.legacy.repo_scheme), which does not resolve outside git.
     """
     subprocess.run(["git", "init", "-q", str(tmp_path)], check=True, capture_output=True)
     return tmp_path

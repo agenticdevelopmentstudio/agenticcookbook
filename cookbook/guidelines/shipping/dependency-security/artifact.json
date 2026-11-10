@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "793bd9f6-b029-4c4e-aca5-d253f9fab48e",
     "title": "Dependency Security",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/dependency-security",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -39,7 +38,7 @@
       "security-review"
     ]
   },
-  "synced": "e29cb116dbb1934f",
+  "synced": "d64a61fd2f641d27",
   "parts": [
     {"part": "intro"},
     {"part": "agent-install-guardrails", "heading": "Agent install guardrails"},

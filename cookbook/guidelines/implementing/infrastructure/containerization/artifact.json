@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ecf27370-3cd4-47a2-a359-7b42575ef48f",
     "title": "Containerization",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/containerization",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/infrastructure/twelve-factor-config",
-      "agenticdevelopercookbook://guidelines/reviewing/infrastructure/container-image-security"
+      "a127f652-728b-42f0-8d60-1017fccabdf3",
+      "9f07e740-097e-4814-badf-fa3ae8d7d1e9"
     ],
     "references": [
       "https://docs.docker.com/build/building/best-practices/",
@@ -38,7 +37,7 @@
       "configuration"
     ]
   },
-  "synced": "144980c108bce084",
+  "synced": "5d4727e432be10e0",
   "parts": [
     {"part": "intro"},
     {"part": "build-structure", "heading": "Build structure"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "bcd71537-a14e-449d-863a-b32ee9625838",
     "title": "Convergent Techniques",
-    "domain": "agenticdevelopercookbook://guidelines/brainstorming/convergent-techniques",
     "type": "guideline",
     "version": "1.0.0",
     "status": "draft",
@@ -22,11 +21,11 @@
       "selection"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/critique-without-killing",
-      "agenticdevelopercookbook://principles/diverge-before-you-converge"
+      "0c1e0e24-cb7f-4af9-a114-da2f858422f8",
+      "e8677291-1d21-484f-b562-90b8600ea380"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques"
+      "17d2fa7e-0a8e-4ce7-96a0-de417db82220"
     ],
     "references": [
       "Kawakita, KJ Method, 1967",
@@ -39,7 +38,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "939813569697d4cc",
+  "synced": "b092b0ef0f7179de",
   "parts": [
     {"part": "intro"},
     {"part": "affinity-clustering-kj-method", "heading": "Affinity Clustering (KJ Method)"},

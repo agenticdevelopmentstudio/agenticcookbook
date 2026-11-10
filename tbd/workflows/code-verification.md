@@ -1,7 +1,6 @@
 ---
 id: 6a98612f-9f43-4903-87e4-40c964801bbc
 title: "Code Verification"
-domain: agenticdevelopercookbook://workflows/code-verification
 type: workflow
 version: 1.0.1
 status: accepted
@@ -25,27 +24,27 @@ tags:
   - code-verification
 depends-on: []
 related: 
-  - agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
-  - agenticdevelopercookbook://guidelines/implementing/observability/analytics
-  - agenticdevelopercookbook://guidelines/testing/testing
-  - agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking
-  - agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags
-  - agenticdevelopercookbook://guidelines/implementing/observability/logging
-  - agenticdevelopercookbook://guidelines/implementing/code-quality/linting
-  - agenticdevelopercookbook://guidelines/implementing/internationalization/localization
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://guidelines/implementing/security/privacy
-  - agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
-  - agenticdevelopercookbook://guidelines/implementing/internationalization/rtl-support
-  - agenticdevelopercookbook://guidelines/testing/mutation-testing
-  - agenticdevelopercookbook://guidelines/testing/property-based-testing
-  - agenticdevelopercookbook://guidelines/testing/security-testing
-  - agenticdevelopercookbook://guidelines/testing/test-pyramid
+  - 3d970d6a-2d71-48f3-9f84-69c1d823d6e8
+  - 17216748-46e9-4e92-af3a-f4deeb843a8d
+  - 40d630ea-4d62-4c95-9663-80b033e4adae
+  - d27c35ab-84f6-4f40-8c29-91630fdc90e7
+  - ac616d81-16c2-4f33-9ae4-139d5c24318d
+  - 0f0c1da3-1c53-417b-890d-0259d7513c65
+  - 775da457-30c7-47de-b179-0fae8a8b779d
+  - 57cbdb9d-4cf7-4a39-bdd8-99d28be983ca
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - 29057cf0-a38b-4c35-8b8b-52e12bf54784
+  - 3d970d6a-2d71-48f3-9f84-69c1d823d6e8
+  - 4cb7c242-3ade-4d59-9c74-67c1d5f9c107
+  - db58f79d-1040-4bb2-a862-93ebd390ee12
+  - ccffa426-5556-4bbe-8dd6-b43c8e195f64
+  - cf05e36f-ea8b-4af2-8df6-c5e772dc25b5
+  - f3ae65a6-f51d-4e42-8f79-fa8097dd3480
 references: []
 ---
 
@@ -70,7 +69,7 @@ dependencies:
 
 ## Overview
 
-Defines the post-implementation validation phase where Claude Code systematically verifies that all code is correct, all guidelines are followed, all tests pass and are meaningful, and the codebase is ready for review. This phase implements the six-step post-generation verification from agenticdevelopercookbook://guidelines/testing/post-generation-verification and extends it with mutation testing, security scanning, and guideline compliance checking.
+Defines the post-implementation validation phase where Claude Code systematically verifies that all code is correct, all guidelines are followed, all tests pass and are meaningful, and the codebase is ready for review. This phase implements the six-step post-generation verification from [adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c) and extends it with mutation testing, security scanning, and guideline compliance checking.
 
 This phase runs after WF-3 (Code Implementation) and before WF-5 (Code Review).
 
@@ -121,7 +120,7 @@ This phase runs after WF-3 (Code Implementation) and before WF-5 (Code Review).
 
 - **REQ-008**: Claude Code MUST run the project's linter on all new and modified files. All lint errors MUST be resolved.
 - **REQ-009**: Claude Code MUST run the project's formatter and commit any formatting changes.
-- **REQ-010**: If the project does not have a linter configured, Claude Code SHOULD note this in the PR and recommend adding one (per agenticdevelopercookbook://guidelines/implementing/code-quality/linting).
+- **REQ-010**: If the project does not have a linter configured, Claude Code SHOULD note this in the PR and recommend adding one (per [adc.guideline.implementing.code-quality.linting](cookbook:775da457-30c7-47de-b179-0fae8a8b779d)).
 
 **Exit criteria**: Zero lint errors on new and modified files.
 
@@ -129,10 +128,10 @@ This phase runs after WF-3 (Code Implementation) and before WF-5 (Code Review).
 
 **Entry criteria**: Phase 3 complete. Lint clean.
 
-- **REQ-011**: If logging was opted in during planning, Claude Code MUST verify that all components and flows include structured logging per agenticdevelopercookbook://guidelines/implementing/observability/logging
+- **REQ-011**: If logging was opted in during planning, Claude Code MUST verify that all components and flows include structured logging per [adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65)
 - **REQ-012**: Claude Code MUST build and run the application (or tests that exercise the new code) and grep the output for expected log messages from the implementation.
 - **REQ-013**: If expected log messages are missing, Claude Code MUST investigate and fix the logging.
-- **REQ-014**: Claude Code MUST verify that no PII is logged, even at debug level (agenticdevelopercookbook://guidelines/implementing/security/privacy).
+- **REQ-014**: Claude Code MUST verify that no PII is logged, even at debug level ([adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)).
 
 **Exit criteria**: All expected log messages verified in output. No PII in logs.
 
@@ -159,14 +158,14 @@ This phase runs after WF-3 (Code Implementation) and before WF-5 (Code Review).
 
   | Concern | Verification |
   |---------|-------------|
-  | Logging (agenticdevelopercookbook://guidelines/implementing/observability/logging) | All components have structured logging |
-  | Deep linking (agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking) | URL patterns implemented per spec |
-  | Accessibility (agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility) | All views accessible (Phase 5) |
-  | Localization (agenticdevelopercookbook://guidelines/implementing/internationalization/localization) | All strings use localization APIs |
-  | RTL layout (agenticdevelopercookbook://guidelines/implementing/internationalization/rtl-support) | Leading/trailing used, not left/right |
-  | Feature flags (agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags) | Feature gated behind flag |
-  | Analytics (agenticdevelopercookbook://guidelines/implementing/observability/analytics) | Events instrumented per plan |
-  | Privacy (agenticdevelopercookbook://guidelines/implementing/security/privacy) | Secure storage, no PII leaks |
+  | Logging ([adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65)) | All components have structured logging |
+  | Deep linking ([adc.guideline.implementing.platform-integration.deep-linking](cookbook:d27c35ab-84f6-4f40-8c29-91630fdc90e7)) | URL patterns implemented per spec |
+  | Accessibility ([adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)) | All views accessible (Phase 5) |
+  | Localization ([adc.guideline.implementing.internationalization.localization](cookbook:57cbdb9d-4cf7-4a39-bdd8-99d28be983ca)) | All strings use localization APIs |
+  | RTL layout ([adc.guideline.implementing.internationalization.rtl-support](cookbook:4cb7c242-3ade-4d59-9c74-67c1d5f9c107)) | Leading/trailing used, not left/right |
+  | Feature flags ([adc.guideline.implementing.feature-management.feature-flags](cookbook:ac616d81-16c2-4f33-9ae4-139d5c24318d)) | Feature gated behind flag |
+  | Analytics ([adc.guideline.implementing.observability.analytics](cookbook:17216748-46e9-4e92-af3a-f4deeb843a8d)) | Events instrumented per plan |
+  | Privacy ([adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)) | Secure storage, no PII leaks |
 
 - **REQ-019**: Claude Code MUST verify that opted-out concerns were not accidentally implemented. Unused code is a maintenance burden.
 - **REQ-020**: Claude Code MUST compile a compliance summary listing each guideline and its status (pass/fail/not-applicable).
@@ -216,13 +215,13 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 
 | Phase | Checklist Items | Notes |
 |-------|----------------|-------|
-| Phase 1 | agenticdevelopercookbook://guidelines/testing/post-generation-verification (Build) | Build all target platforms |
-| Phase 2 | agenticdevelopercookbook://guidelines/testing/post-generation-verification (Test), agenticdevelopercookbook://guidelines/testing/testing, agenticdevelopercookbook://guidelines/testing/test-pyramid | Full test suite + coverage |
-| Phase 3 | agenticdevelopercookbook://guidelines/testing/post-generation-verification (Lint), agenticdevelopercookbook://guidelines/implementing/code-quality/linting | Linter + formatter |
-| Phase 4 | agenticdevelopercookbook://guidelines/testing/post-generation-verification (Log verify), agenticdevelopercookbook://guidelines/implementing/observability/logging, agenticdevelopercookbook://guidelines/implementing/security/privacy | Log messages + no PII |
-| Phase 5 | agenticdevelopercookbook://guidelines/testing/post-generation-verification (A11y audit), agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility, agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility | Full accessibility check |
+| Phase 1 | [adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c) (Build) | Build all target platforms |
+| Phase 2 | [adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c) (Test), [adc.guideline.testing.testing](cookbook:40d630ea-4d62-4c95-9663-80b033e4adae), [adc.guideline.testing.test-pyramid](cookbook:f3ae65a6-f51d-4e42-8f79-fa8097dd3480) | Full test suite + coverage |
+| Phase 3 | [adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c) (Lint), [adc.guideline.implementing.code-quality.linting](cookbook:775da457-30c7-47de-b179-0fae8a8b779d) | Linter + formatter |
+| Phase 4 | [adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c) (Log verify), [adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65), [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784) | Log messages + no PII |
+| Phase 5 | [adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c) (A11y audit), [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8), [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8) | Full accessibility check |
 | Phase 6 | All opted-in items | Compliance verification |
-| Phase 7 | agenticdevelopercookbook://guidelines/testing/mutation-testing, agenticdevelopercookbook://guidelines/testing/security-testing, agenticdevelopercookbook://guidelines/testing/property-based-testing | Mutation, security, property testing |
+| Phase 7 | [adc.guideline.testing.mutation-testing](cookbook:db58f79d-1040-4bb2-a862-93ebd390ee12), [adc.guideline.testing.security-testing](cookbook:cf05e36f-ea8b-4af2-8df6-c5e772dc25b5), [adc.guideline.testing.property-based-testing](cookbook:ccffa426-5556-4bbe-8dd6-b43c8e195f64) | Mutation, security, property testing |
 
 ## Conformance Test Vectors
 
@@ -254,7 +253,7 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 
 - **Build tools**: `xcodebuild` (Apple), `./gradlew build` (Android), `npm run build` (Web), `dotnet build` (.NET)
 - **Test runners**: `swift test` / `xcodebuild test`, `./gradlew test`, `npm test` / `npx vitest`, `dotnet test`
-- **Linters**: SwiftLint, ktlint, ESLint, Roslyn Analyzers (see agenticdevelopercookbook://guidelines/implementing/code-quality/linting)
+- **Linters**: SwiftLint, ktlint, ESLint, Roslyn Analyzers (see [adc.guideline.implementing.code-quality.linting](cookbook:775da457-30c7-47de-b179-0fae8a8b779d))
 - **Mutation testing**: muter (Swift), Pitest (Kotlin), Stryker (TS/JS/.NET), mutmut (Python)
 - **Security scanning**: Semgrep (`semgrep scan --config=auto .`), platform-specific dependency scanners
 - **gh**: Use `gh pr comment` to post the verification summary

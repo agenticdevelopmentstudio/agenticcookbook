@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "58252326-3716-4bf4-92b9-e678b879f910",
     "title": "Android navigation in Compose",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/android-navigation",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf"
+      "736fac9a-56e0-449d-8dc0-b95cbfba7884"
     ],
     "references": [
       "https://developer.android.com/guide/navigation"
@@ -35,7 +34,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "43f501e9c55f8451",
+  "synced": "d4d5df763c7d75f4",
   "parts": [
     {"part": "intro"},
     {"part": "architecture", "heading": "Architecture"},

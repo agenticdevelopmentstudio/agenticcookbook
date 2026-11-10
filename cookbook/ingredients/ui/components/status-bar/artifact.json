@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "22729bee-7ab4-4648-aa5a-2beef067d0c3",
     "title": "Status Bar",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/status-bar",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "e6b1c9cef7a0156b",
+  "synced": "f320dc9f0928d100",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

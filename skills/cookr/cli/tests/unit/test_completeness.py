@@ -3,7 +3,11 @@ from __future__ import annotations
 import pytest
 
 from cookr.core.completeness import problems
+from cookr.core.identity import check_uuid
+from cookr.core.links import resolver_for
 from cookr.core.recipes import load_corpus
+
+from .cookbook_helpers import ADC_ID, SpecDoc, add_dependency, config
 
 
 def test_complete_recipe_has_no_problems(mini_repo):
@@ -27,7 +31,7 @@ def test_empty_winui_note_is_a_problem(mini_repo):
 
 
 def test_missing_section_is_a_problem(mini_repo):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = SpecDoc(mini_repo, "components/button")
     text = p.read_text(encoding="utf-8")
     start = text.index("## States")
     end = text.index("## Accessibility")
@@ -37,7 +41,7 @@ def test_missing_section_is_a_problem(mini_repo):
 
 
 def test_empty_section_is_a_problem(mini_repo):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = SpecDoc(mini_repo, "components/button")
     text = p.read_text(encoding="utf-8")
     start = text.index("## States") + len("## States")
     end = text.index("## Accessibility")
@@ -52,7 +56,7 @@ def test_recipe_type_uses_recipe_sections(mini_repo):
 
 
 def test_unknown_type_is_a_problem_and_grades_as_ingredient(mini_repo):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = SpecDoc(mini_repo, "components/button")
     p.write_text(
         p.read_text(encoding="utf-8").replace("type: ingredient", "type: guidline", 1),
         encoding="utf-8",
@@ -64,7 +68,7 @@ def test_unknown_type_is_a_problem_and_grades_as_ingredient(mini_repo):
 
 
 def _set_winui_line(mini_repo, line):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = SpecDoc(mini_repo, "components/button")
     text = p.read_text(encoding="utf-8")
     old = "- **WinUI 3**: `Microsoft.UI.Xaml.Controls.Button` with the `AccentButtonStyle` resource."
     assert old in text
@@ -103,7 +107,7 @@ def test_combined_platform_bullet_saying_not_applicable_is_a_problem(mini_repo):
 
 
 def _edit(mini_repo, old, new, slug="components/button"):
-    p = mini_repo / "cookbook" / f"{slug}.md"
+    p = SpecDoc(mini_repo, slug)
     text = p.read_text(encoding="utf-8")
     assert old in text, old
     p.write_text(text.replace(old, new, 1), encoding="utf-8")
@@ -127,7 +131,7 @@ def test_marker_outside_change_history_still_a_problem_when_history_present(mini
 
 
 def _append(mini_repo, text, checks=None):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = SpecDoc(mini_repo, "components/button")
     p.write_text(p.read_text(encoding="utf-8").rstrip() + "\n\n" + text + "\n", encoding="utf-8")
     return problems(load_corpus(mini_repo / "cookbook")["components/button"], checks)
 
@@ -176,18 +180,40 @@ def test_line_words_in_data_are_not_a_citation(mini_repo, text):
     assert _append(mini_repo, "## More\n\n" + text) == []
 
 
-def test_unknown_compliance_check_is_a_problem_when_catalog_given(mini_repo):
+TRANSPORT = check_uuid(ADC_ID, "security", "transport-security")
+TRANSPORT_LINK = f"[adc.check.security.transport-security](cookbook:{ADC_ID}/{TRANSPORT})"
+
+
+def _adc(mini_repo):
+    add_dependency(mini_repo, "deps/adc", checks=[("best-practices", "unit-test-coverage"),
+                                                  ("best-practices", "separation-of-concerns")])
+    return resolver_for(config(mini_repo))
+
+
+def test_complete_recipe_has_no_problems_when_its_checks_resolve(mini_repo):
+    resolver = _adc(mini_repo)
+    assert problems(load_corpus(mini_repo / "cookbook")["components/button"], resolver) == []
+
+
+def test_citing_a_check_that_does_not_exist_is_a_problem(mini_repo):
+    resolver = _adc(mini_repo)
     info = _edit(mini_repo, "The button keeps rendering",
-                 "[transport-security](agenticdevelopercookbook://compliance/security#transport-security)"
-                 "\n\nThe button keeps rendering")
-    catalog = frozenset({"best-practices#unit-test-coverage", "best-practices#separation-of-concerns"})
-    assert problems(info, catalog) == [
-        "cites compliance checks not in the catalog: security#transport-security"]
+                 TRANSPORT_LINK + "\n\nThe button keeps rendering")
+    assert problems(info, resolver) == [
+        "cites compliance checks that do not exist: "
+        f"adc.check.security.transport-security ({ADC_ID}/{TRANSPORT})"]
 
 
-def test_compliance_citations_unchecked_without_a_catalog(mini_repo):
-    text = "[x](agenticdevelopercookbook://compliance/security#transport-security)"
-    assert _append(mini_repo, "## More\n\n" + text) == []
+def test_citations_into_an_unreachable_cookbook_are_not_judged(mini_repo):
+    # mini-repo declares adc with no location: validate warns, grading does not.
+    resolver = resolver_for(config(mini_repo))
+    info = _edit(mini_repo, "The button keeps rendering",
+                 TRANSPORT_LINK + "\n\nThe button keeps rendering")
+    assert problems(info, resolver) == []
+
+
+def test_compliance_citations_unchecked_without_a_resolver(mini_repo):
+    assert _append(mini_repo, "## More\n\n" + TRANSPORT_LINK) == []
 
 
 # --- A-cookr_6 / D_5: line citations need a sign they point at source ---------
@@ -268,7 +294,7 @@ def test_fenced_heading_sample_does_not_replace_a_real_section(mini_repo):
 
 @pytest.mark.parametrize("section", ["Compliance", "Logging", "Deep Linking", "Change History"])
 def test_every_template_section_is_required(mini_repo, section):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = SpecDoc(mini_repo, "components/button")
     text = p.read_text(encoding="utf-8")
     start = text.index(f"## {section}\n")
     nxt = text.find("\n## ", start + 1)
@@ -288,8 +314,8 @@ def test_required_sections_mapping_reads_the_templates():
 # --- Altitude_3: script-visible writer rules are graded ---------------------------
 
 def test_compliance_must_cite_the_required_checks(mini_repo):
-    info = _edit(mini_repo, "| [separation-of-concerns](agenticdevelopercookbook://compliance/"
-                 "best-practices#separation-of-concerns) | passed | best-practices |\n", "")
+    info = _edit(mini_repo, "| [adc.check.best-practices.separation-of-concerns](cookbook:"
+                 f"{ADC_ID}/acb89e27-9af7-5711-a017-3e4861d23f1a) | passed | best-practices |\n", "")
     assert any("best-practices#separation-of-concerns" in q and "Compliance does not cite" in q
                for q in problems(info))
 
@@ -319,7 +345,8 @@ def test_frontmatter_platforms_follow_the_source_platforms(mini_repo, sources, e
 
 
 def test_apple_source_needs_macos_or_ios(mini_repo):
-    info = _edit(mini_repo, "platforms: [typescript, web, swift, macos]", "platforms: [swift]")
+    info = _edit(mini_repo, "platforms:\n  - typescript\n  - web\n  - swift\n  - macos\n",
+                 "platforms: [swift]\n")
     assert problems(info, source_platforms=["apple"]) == [
         "frontmatter `platforms` lacks `ios` or `macos` (sources: apple)"]
 
@@ -382,23 +409,3 @@ def test_design_decision_triples_as_list_items_are_fine(mini_repo, triple):
 def test_design_decision_missing_its_approved_line_is_a_problem(mini_repo):
     info = _edit(mini_repo, "**Approved**: pending\n", "\n")
     assert any("Design Decisions" in q for q in problems(info))
-
-
-def test_domain_matching_its_path_is_not_a_problem(mini_repo):
-    corpus = load_corpus(mini_repo / "cookbook")
-    assert problems(corpus["components/button"], domain="mini-repo://cookbook/components/button") == []
-
-
-@pytest.mark.parametrize("line", [
-    "domain: agenticdevelopercookbook://cookbook/components/button",  # another repo's scheme
-    "domain: mini-repo://recipes/components/button",                 # wrong directory
-    "domain: mini-repo://cookbook/components/toolbar-button",        # different name, same suffix
-])
-def test_domain_not_matching_its_path_is_a_problem(mini_repo, line):
-    path = mini_repo / "cookbook" / "components" / "button.md"
-    path.write_text(path.read_text().replace(
-        "domain: mini-repo://cookbook/components/button", line))
-    got = problems(load_corpus(mini_repo / "cookbook")["components/button"],
-                   domain="mini-repo://cookbook/components/button")
-    assert got == [f"frontmatter `domain` is `{line.split(': ', 1)[1]}`, "
-                   f"not `mini-repo://cookbook/components/button`"]

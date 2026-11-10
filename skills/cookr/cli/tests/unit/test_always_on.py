@@ -71,8 +71,8 @@ def test_every_host_target_loads(book):
         assert tuning.load_problems(s.render(h.chain(h.default_model)), h) == []
 
 
-def test_the_real_cookbook_renders():
-    folders = find_folders([REPO / "cookbook"])
-    s = always_on.principles_skill(folders, concerns=REPO / "cookbook" / always_on.CONCERNS)
+def test_the_real_cookbook_renders(repo_v2):
+    folders = find_folders([repo_v2 / "cookbook"])
+    s = always_on.principles_skill(folders, concerns=repo_v2 / "cookbook" / always_on.CONCERNS)
     assert s is not None and "..." not in s.text.split("## Full text")[0]
     assert "(`principle-meta-principle-optimize-for-change`)" in s.text

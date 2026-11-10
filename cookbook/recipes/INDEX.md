@@ -1,13 +1,12 @@
 ---
 id: 7ee050d1-e070-473e-ad64-9152ea25e54f
 title: Recipe Index
-domain: agenticdevelopercookbook://recipes/INDEX
 type: reference
 version: 1.0.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: '2026-10-03'
+modified: '2026-11-09'
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -43,28 +42,28 @@ Total: 13 artifacts.
 
 ## App
 
-- [App Lifecycle](app/lifecycle.md)
-- [Menu Commands](app/menu-commands.md)
+- [App Lifecycle](app/lifecycle/)
+- [Menu Commands](app/menu-commands/)
 
 ## Autonomous Dev Bots
 
-- [PR Review Pipeline](autonomous-dev-bots/pr-review-pipeline.md)
+- [PR Review Pipeline](autonomous-dev-bots/pr-review-pipeline/)
 
 ## Developer Tools
 
-- [Claude Rule Optimization Pipeline](developer-tools/claude/claude-rule-optimization-pipeline.md)
-- [MCP server](developer-tools/mcp-server.md)
+- [Claude Rule Optimization Pipeline](developer-tools/claude/claude-rule-optimization-pipeline/)
+- [MCP server](developer-tools/mcp-server/)
 
 ## Infrastructure
 
-- [AI Processing Node](infrastructure/ai-processing-node.md)
-- [Directory Sync / Watch Lifecycle](infrastructure/directory-sync.md)
-- [Package Document](infrastructure/package-document.md)
+- [AI Processing Node](infrastructure/ai-processing-node/)
+- [Directory Sync / Watch Lifecycle](infrastructure/directory-sync/)
+- [Package Document](infrastructure/package-document/)
 
 ## Ui
 
-- [Apple Test App Suite](ui/apps/apple.md)
-- [Project Window](ui/windows/project-window.md)
-- [Settings Window](ui/windows/settings-window.md)
-- [Standalone Terminal Window](ui/windows/standalone-terminal-window.md)
-- [Workspace Window](ui/windows/workspace-window.md)
+- [Apple Test App Suite](ui/apps/apple/)
+- [Project Window](ui/windows/project-window/)
+- [Settings Window](ui/windows/settings-window/)
+- [Standalone Terminal Window](ui/windows/standalone-terminal-window/)
+- [Workspace Window](ui/windows/workspace-window/)

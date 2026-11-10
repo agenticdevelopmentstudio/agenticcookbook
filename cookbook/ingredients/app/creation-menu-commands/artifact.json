@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "18FDFDAD-E9DA-4B84-80DB-23B00FEF5D77",
+    "id": "18fdfdad-e9da-4b84-80db-23b00fef5d77",
     "title": "Creation Menu Commands",
-    "domain": "agenticdevelopercookbook://ingredients/app/creation-menu-commands",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,14 +25,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/app/document-creation-flow",
-      "agenticdevelopercookbook://recipes/app/menu-commands"
+      "e53b1fd3-3e7a-490d-bc5d-83ee9c5ce351",
+      "81410d5e-e3df-4feb-a9b1-bbc97abfc798"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "f2e4a437012fa7ea",
+  "synced": "db4fe2b0bcd82803",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

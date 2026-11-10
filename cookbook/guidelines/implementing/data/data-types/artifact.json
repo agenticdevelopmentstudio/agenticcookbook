@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "ABF5A7D8-1FBF-419C-AD43-888D08813F09",
+    "id": "abf5a7d8-1fbf-419c-ad43-888d08813f09",
     "title": "Data types and type affinity",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/data-types",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://www.sqlite.org/datatype3.html",
@@ -41,7 +40,7 @@
       "schema-design"
     ]
   },
-  "synced": "de19a033aa70f6ac",
+  "synced": "9e49894985f721b0",
   "parts": [
     {"part": "intro"},
     {"part": "the-five-storage-classes", "heading": "The five storage classes"},

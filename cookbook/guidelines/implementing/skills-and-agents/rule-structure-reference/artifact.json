@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b8aa57e0-6a85-4605-ae84-1220872294de",
     "title": "Rule Structure Reference",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/rule-structure-reference",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -23,8 +22,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/rule-checklist"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "ee92545b-9d50-4f6b-95e5-e239a2433a11"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -34,7 +33,7 @@
     ]
   },
   "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
-  "synced": "d9be2141c6936473",
+  "synced": "50b84819ce633fdf",
   "parts": [
     {"part": "intro"},
     {"part": "what-is-a-rule-file", "heading": "What is a Rule File?"},

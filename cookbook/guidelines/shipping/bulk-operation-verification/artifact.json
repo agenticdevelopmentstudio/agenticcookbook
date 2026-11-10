@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "28e0fd80-be0a-4f85-ac42-1e423623b242",
     "title": "Bulk operation verification",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/bulk-operation-verification",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -21,10 +20,10 @@
       "code-quality"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits"
+      "8075b95b-2678-4893-9a5a-eb77aa9232aa"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+      "563aebde-52bf-4011-8907-ecc473fd942c"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
     ]
   },
   "names_hosts": "Lists CLAUDE.md among the files a bulk operation must re-check.",
-  "synced": "7a8b5a4882fdbd43",
+  "synced": "fa006c40f75b9d20",
   "parts": [
     {"part": "intro"},
     {"part": "what-to-verify", "heading": "What to verify"},

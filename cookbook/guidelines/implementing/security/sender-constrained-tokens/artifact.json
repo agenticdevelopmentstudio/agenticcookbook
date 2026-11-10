@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a8e6159f-0138-438c-9402-06fb346a6a09",
     "title": "Sender-constrained access tokens",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/sender-constrained-tokens",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/security/token-handling",
-      "agenticdevelopercookbook://guidelines/implementing/security/authentication"
+      "2598f495-1820-47e7-b7e7-ce548d390148",
+      "aec38334-67fa-4c7e-bca2-607932af3f22"
     ],
     "references": [
       "https://www.rfc-editor.org/rfc/rfc9700.html"
@@ -35,7 +34,7 @@
       "security-review"
     ]
   },
-  "synced": "81a1a6065c259da9",
+  "synced": "551f498ab236f95a",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-apply", "heading": "When to apply"},

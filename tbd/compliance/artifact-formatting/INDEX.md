@@ -1,13 +1,12 @@
 ---
 id: 72DAFECD-184A-4974-9EEC-3FCE8D9447A6
 title: "Artifact Formatting Compliance"
-domain: agenticdevelopercookbook://compliance/artifact-formatting/INDEX
 type: reference
-version: 1.3.0
+version: 1.4.0
 status: draft
 language: en
 created: 2026-04-04
-modified: 2026-09-25
+modified: 2026-11-09
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -18,9 +17,9 @@ tags:
   - artifact-formatting
   - index
 depends-on:
-  - agenticdevelopercookbook://introduction/conventions
+  - guide/introduction/conventions.md
 related:
-  - agenticdevelopercookbook://compliance/INDEX
+  - tbd/compliance/INDEX.md
 references: []
 ---
 
@@ -32,7 +31,7 @@ Structural formatting checks for cookbook artifacts. Each artifact type (princip
 
 ```
 /lint-artifact  →  Formatting Checks  →  Conventions  →  Frontmatter Standard
-/approve-artifact     (this category)      (introduction/conventions.md)
+/approve-artifact     (this category)      (guide/introduction/conventions.md)
 ```
 
 - **Formatting checks** define required structure per artifact type
@@ -53,6 +52,7 @@ Structural formatting checks for cookbook artifacts. Each artifact type (princip
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.4.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID identity, rdids and index.json implementations |
 | 1.3.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.2.0 | 2026-04-06 | Mike Fullerton | Rename concoction to cookbook |
 | 1.1.0 | 2026-04-05 | Mike Fullerton | Add ingredient and concoction formatting categories |

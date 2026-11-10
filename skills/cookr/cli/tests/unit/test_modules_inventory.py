@@ -4,6 +4,8 @@ import json
 
 from cookr.cli import main
 
+from .cookbook_helpers import add_root
+
 
 def test_inventory_table(mini_repo, capsys):
     assert main(["-p", str(mini_repo), "inventory"]) == 0
@@ -45,10 +47,7 @@ def _add_bracketed_root(repo):
         d = repo / "web" / "app" / seg
         d.mkdir(parents=True)
         (d / "Page.tsx").write_text("export {}\n", encoding="utf-8")
-    p = repo / "cookbook" / "cookbook.json"
-    data = json.loads(p.read_text(encoding="utf-8"))
-    data["code"]["roots"].append({"path": "web/app", "platform": "web", "recipes": "pages"})
-    p.write_text(json.dumps(data), encoding="utf-8")
+    add_root(repo, "web/app", "web", "pages")
 
 
 def test_inventory_table_prints_bracketed_paths_verbatim(mini_repo, capsys, monkeypatch):

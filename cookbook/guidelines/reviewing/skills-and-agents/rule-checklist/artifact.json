@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ee92545b-9d50-4f6b-95e5-e239a2433a11",
     "title": "Rule Lint Checklist",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/rule-checklist",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -24,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/rule-structure-reference"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "b8aa57e0-6a85-4605-ae84-1220872294de"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -36,7 +35,7 @@
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "2e272064c45c70eb",
+  "synced": "541dc77bb1e4f142",
   "parts": [
     {"part": "intro"},
     {"part": "content-quality", "heading": "Content Quality"},

@@ -6,10 +6,13 @@ import subprocess
 from pathlib import Path
 
 from ..core import refs
-from ..core.checks import fix_for, phase_a
+from ..core.checks import phase_a, show
 from ..core.errors import NoCookbookRootError
-from ..core.markdown import iter_markdown
-from ..core.shell import claude_available, claude_p, git_changed_markdown
+from ..core.artifact import ArtifactError, doc_path, find_folders, folder_for, is_folder
+from ..core.artifact_build import compiled_text
+from ..core.markdown import (ARTIFACT_FILE, SKIP_NAMES, in_source_folder, in_versions,
+                             iter_markdown)
+from ..core.shell import claude_available, claude_p, git_changed_files
 
 NAME = "lint"
 HELP = "Lint a cookbook: deterministic checks + LLM-driven recipe-quality pass."
@@ -35,39 +38,79 @@ def register(parser) -> None:
     )
 
 
-def _phase_a(root: Path, ui) -> int:
+def _phase_a(root: Path, ui, config=None) -> int:
     ui.section("Phase A: deterministic checks")
-    report = phase_a(root)
-    if report.ok:
-        ui.ok(f"All {report.files_checked} artifacts passed deterministic checks.")
-        return 0
-    rows = [[i.file, i.rule, i.detail, fix_for(i.rule)] for i in report.issues]
-    ui.table(["file", "rule", "issue", "fix"], rows)
-    ui.error(f"{len(report.issues)} issue(s) across {report.files_checked} files.")
-    return 1
+    return show(phase_a(root, config), ui)
+
+
+def _owner(p: Path, root: Path) -> Path | None:
+    """The source folder holding `p`, the nearest artifact folder at or above it under root."""
+    return next((d for d in (p, *p.parents) if (d == root or root in d.parents) and is_folder(d)),
+                None)
+
+
+def _unit_for(root: Path, p: Path) -> Path | None:
+    """The unit Phase B reviews for a changed or named path: a source folder for
+    its manifest, a part (even a deleted one), a host addition or its compiled
+    doc; the file itself for a plain markdown doc; None for anything else."""
+    if p.name == ARTIFACT_FILE:
+        return p.parent if is_folder(p.parent) else None
+    if is_folder(p):
+        return p
+    frozen = in_versions(p, root) if root in p.parents else in_versions(p)
+    if p.suffix != ".md" or p.name in SKIP_NAMES or frozen:
+        return None
+    if is_folder(folder_for(p)):
+        return folder_for(p)                      # a compiled doc: review its folder
+    if not p.exists() or in_source_folder(p, root):
+        return _owner(p.parent, root)             # a part or host addition, or a deleted one
+    return p if p.is_file() else None
+
+
+def _units(root: Path, paths: list[Path]) -> list[Path]:
+    """Each path's review unit, once however many of its files are listed."""
+    out: list[Path] = []
+    for p in paths:
+        unit = _unit_for(root, p)
+        if unit is not None and unit not in out:
+            out.append(unit)
+    return out
 
 
 def _resolve_phase_b_targets(
     root: Path, files: list[Path], since: str | None, ui
 ) -> list[Path] | None:
-    """Return the file list for Phase B, or None on a fatal error."""
+    """Return the review units for Phase B (source folders, composed in memory,
+    and plain markdown files), or None on a fatal error."""
     if files and since:
         ui.error("Pass either explicit files or --since, not both.")
         return None
     if files:
-        return files
+        return [_unit_for(root, f.resolve()) or f for f in files]
     if since:
         try:
-            changed = git_changed_markdown(root, since)
+            changed = _units(root, git_changed_files(root, since, (".md", ".json"), deleted=True))
         except subprocess.CalledProcessError as e:
             ui.error(f"git diff failed: {e.stderr.strip() or e}")
             return None
         except FileNotFoundError:
             ui.error("`git` not found on PATH; cannot resolve --since.")
             return None
-        ui.info(f"--since {since}: {len(changed)} changed markdown file(s).")
+        ui.info(f"--since {since}: {len(changed)} changed artifact(s) or markdown file(s).")
         return changed
-    return iter_markdown(root)
+    return _units(root, [*find_folders([root]), *iter_markdown(root)])
+
+
+def _review_text(root: Path, unit: Path) -> tuple[Path, str]:
+    """(the label, the text) Phase B reviews for a unit. A source folder is
+    composed in memory, as `cookr compile` would write it; nothing is written,
+    so a fresh checkout with no compiled docs is reviewed in full."""
+    if is_folder(unit):
+        label = doc_path(unit)
+        text = compiled_text(unit)[0]
+    else:
+        label, text = unit, unit.read_text(encoding="utf-8")
+    return (label.relative_to(root) if root in label.parents else label), text
 
 
 def _phase_b(root: Path, targets: list[Path], ui) -> int:
@@ -95,8 +138,12 @@ def _phase_b(root: Path, targets: list[Path], ui) -> int:
 
     failed = 0
     for f in targets:
-        rel = f.relative_to(root) if f.is_absolute() else f
-        content = (root / f if not f.is_absolute() else f).read_text(encoding="utf-8")
+        try:
+            rel, content = _review_text(root, f if f.is_absolute() else root / f)
+        except (OSError, ArtifactError) as e:
+            failed += 1
+            ui.error(f"cannot read {f}: {e}")
+            continue
         prompt = (
             template
             .replace("{{principles}}", list_principles())
@@ -123,10 +170,10 @@ def run(args, ctx) -> int:
         raise NoCookbookRootError(
             "Could not find a cookbook root. Run from inside a cookbook dir, or pass -p."
         )
-    root = ctx.cookbook_root
+    root = ctx.cookbook_root.resolve()
     ctx.ui.title(f"cookr lint · {root}")
 
-    exit_a = _phase_a(root, ctx.ui)
+    exit_a = _phase_a(root, ctx.ui, ctx.config)
     exit_b = 0
     if not args.no_llm:
         targets = _resolve_phase_b_targets(root, list(args.files or []), args.since, ctx.ui)

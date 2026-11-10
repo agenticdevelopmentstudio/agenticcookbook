@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "73b254b4-c611-434a-a9f4-67c8a7155576",
     "title": "Touch & Click Targets",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/touch-click-targets",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility"
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
     ],
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines/accessibility#User-interaction",
@@ -42,7 +41,7 @@
       "accessibility"
     ]
   },
-  "synced": "a3edb3d3e3bf873c",
+  "synced": "8a5ba2e3ac6b299b",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

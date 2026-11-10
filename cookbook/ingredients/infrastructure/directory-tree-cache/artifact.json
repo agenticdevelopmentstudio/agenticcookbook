@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "7C689B1F-37DB-4422-A129-270C697D5875",
+    "id": "7c689b1f-37db-4422-a129-270c697d5875",
     "title": "Directory Tree Cache",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/directory-tree-cache",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,14 +26,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/directory-sync",
-      "agenticdevelopercookbook://ingredients/infrastructure/directory-watch-coordinator"
+      "63659e2c-215a-44ed-b330-2bca8d88bd9a",
+      "01dc6100-4aa9-4b7b-9385-e056260b57b3"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "4620454b0a754baf",
+  "synced": "14692a6287fecced",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

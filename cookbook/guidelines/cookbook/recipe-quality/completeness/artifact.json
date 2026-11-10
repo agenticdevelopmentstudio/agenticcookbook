@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d65ed7a3-6125-4c9f-b3af-f3b26ad61dfb",
     "title": "Completeness",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/completeness",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "a025027c264463d3",
+  "synced": "b5ed3373858cb3cd",
   "parts": [
     {"part": "intro"},
     {"part": "requirements", "heading": "Requirements"},

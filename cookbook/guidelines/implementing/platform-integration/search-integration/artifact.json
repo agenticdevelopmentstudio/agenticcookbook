@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b512282a-8174-426f-95dd-4a147222584d",
     "title": "Search integration",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/search-integration",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,10 +26,10 @@
       "discoverability"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/support-automation"
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking"
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -39,7 +38,7 @@
       "platform-integration"
     ]
   },
-  "synced": "7daa829d099d0a57",
+  "synced": "d7b5c3a28bfebdf4",
   "parts": [
     {"part": "intro"},
     {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},

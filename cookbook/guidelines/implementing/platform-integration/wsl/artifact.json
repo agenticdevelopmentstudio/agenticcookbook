@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
     "title": "Windows Subsystem for Linux",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -28,11 +27,11 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/language/powershell",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
-      "agenticdevelopercookbook://guidelines/reviewing/platform-integration/wsl",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
+      "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
+      "9ed898fe-ba86-44be-9911-d24fea60dc90",
+      "65eff0b7-14d5-4cd1-8107-1cfda65e78f3",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/windows/wsl/filesystems",
@@ -49,7 +48,7 @@
       "configuration"
     ]
   },
-  "synced": "b21a3db147e1745c",
+  "synced": "357d6afdaa857e6a",
   "parts": [
     {"part": "intro"},
     {"part": "where-files-live", "heading": "Where files live"},

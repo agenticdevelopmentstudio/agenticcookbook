@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "734f7c30-8cf2-4284-8276-267d62c3c49c",
     "title": "Test Doubles",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/testing/test-doubles",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -43,7 +42,7 @@
       "writing-tests"
     ]
   },
-  "synced": "bf87e2fcb0372f6a",
+  "synced": "c9f9f6e7ee9da2e7",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

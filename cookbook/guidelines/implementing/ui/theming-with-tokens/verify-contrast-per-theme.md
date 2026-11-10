@@ -4,5 +4,5 @@
 - Contrast **MUST** be checked for each theme independently — a token pair that passes in light can
   fail in dark or high-contrast. Automate this against the value sets in CI; do not eyeball it.
 - Color **MUST NOT** be the sole signal for state (see
-  agenticdevelopercookbook://guidelines/implementing/ui/color).
+  [adc.guideline.implementing.ui.color](cookbook:e547d962-d561-4bd9-bb5a-50bdeec98335)).
 

@@ -37,7 +37,13 @@ from .skill import SkillError, path_below_type
 MIN_REASON = 16
 GUIDELINES = "guidelines"
 
-_OWN_USE_CASE = re.compile(r"(agenticdevelopercookbook://guidelines/)[a-z0-9-]+/")
+# A link to a guideline in a given use case. Each twin links the copy in its
+# own use case, so the use case (and the copy's UUID) is not shared text.
+# Format 2: `[<cookbook>.guideline.<use case>.<rest>](cookbook:<uuid>)`;
+# format 1: `agenticdevelopercookbook://guidelines/<use case>/<rest>`.
+_OWN_USE_CASE = re.compile(
+    r"\[([a-z][a-z0-9-]*\.guideline\.)[a-z0-9-]+(\.[^\]\s]+)\]\(cookbook:[^)\s]+\)")
+_OWN_USE_CASE_V1 = re.compile(r"(agenticdevelopercookbook://guidelines/)[a-z0-9-]+/")
 _FENCED = re.compile(r"^(```|~~~).*?^\1", re.S | re.M)
 _RULE = re.compile(r"(?<![A-Za-z])(MUST|SHOULD|MAY)(?![A-Za-z])")
 
@@ -72,7 +78,8 @@ def _guideline(folder: Path) -> Optional[tuple[Artifact, tuple[str, ...]]]:
 def comparable(artifact: Artifact) -> str:
     """The text twins must share: no history, links to a use case made
     use-case-neutral, trailing spaces and blank-line runs ignored."""
-    text = _OWN_USE_CASE.sub(r"\1*/", artifact.shared_body())
+    text = _OWN_USE_CASE.sub(r"[\1*\2](cookbook:*)", artifact.shared_body())
+    text = _OWN_USE_CASE_V1.sub(r"\1*/", text)
     lines = [line.rstrip() for line in text.strip().splitlines()]
     return re.sub(r"\n{3,}", "\n\n", "\n".join(lines))
 

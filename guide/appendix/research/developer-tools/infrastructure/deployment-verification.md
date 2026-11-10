@@ -1,7 +1,6 @@
 ---
 id: 45cd3ab2-836d-4db2-8ef8-f7addca69065
 title: Deployment Verification Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/infrastructure/deployment-verification
 type: reference
 version: 1.0.0
 status: draft

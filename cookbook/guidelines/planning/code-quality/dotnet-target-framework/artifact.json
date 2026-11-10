@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "80915bd6-f18c-4a51-b293-50cef7ead49f",
     "title": "Choosing a .NET target framework",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/dotnet-target-framework",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/small-reversible-decisions"
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
     ],
     "references": [
       "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core"
@@ -36,7 +35,7 @@
       "configuration"
     ]
   },
-  "synced": "899f14b0b117ae71",
+  "synced": "e4207449a517be2b",
   "parts": [
     {"part": "intro"},
     {"part": "support-cadence-pinned-net-support-policy-verified-2026-06-09", "heading": "Support cadence (pinned: .NET support policy, verified 2026-06-09)"},

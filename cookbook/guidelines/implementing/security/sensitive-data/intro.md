@@ -11,7 +11,7 @@ Minimize what you collect, encrypt what you keep, never log what you shouldn't.
   application level with a KMS (AWS KMS, Azure Key Vault, GCP KMS). Separate from database-level
   encryption.
 - **No PII in logs** — tokens, passwords, credit card numbers, or PII MUST NOT be logged. Mask/redact
-  in all log outputs, including debug level. See agenticdevelopercookbook://guidelines/implementing/security/privacy
+  in all log outputs, including debug level. See [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 - **No internals in API responses** — internal IDs, stack traces, or database
   error messages MUST NOT be exposed in production. Return generic errors with correlation IDs.
 - **Cache-Control: no-store** on responses containing sensitive data.

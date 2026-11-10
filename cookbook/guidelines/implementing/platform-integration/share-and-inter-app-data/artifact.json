@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "193e5770-fd0b-45c9-91a4-6673bf6021ff",
     "title": "Share and inter-app data flow",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/share-and-inter-app-data",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -28,10 +27,10 @@
       "drag-and-drop"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/support-automation"
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking"
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -40,7 +39,7 @@
       "platform-integration"
     ]
   },
-  "synced": "c6d820226d7842aa",
+  "synced": "8508af8a0ceb9609",
   "parts": [
     {"part": "intro"},
     {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},

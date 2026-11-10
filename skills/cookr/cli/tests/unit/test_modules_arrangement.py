@@ -9,8 +9,8 @@ from cookr.cli import main
 
 def _drift_button(mini_repo):
     # button's code is under the `components` root; filing it in `blocks/` drifts it
-    (mini_repo / "cookbook" / "components" / "button.md").rename(
-        mini_repo / "cookbook" / "blocks" / "button.md")
+    (mini_repo / "cookbook" / "components" / "button").rename(
+        mini_repo / "cookbook" / "blocks" / "button")
 
 
 def test_arrangement_default_table_hides_aligned_specs(mini_repo, capsys):

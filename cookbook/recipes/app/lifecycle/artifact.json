@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e56d4b42-9abe-47ac-bd9e-27471bd47b82",
     "title": "App Lifecycle",
-    "domain": "agenticdevelopercookbook://recipes/app/lifecycle",
     "type": "recipe",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,11 +26,11 @@
       "lifecycle"
     ],
     "ingredients": [
-      "agenticdevelopercookbook://ingredients/app/startup-behavior",
-      "agenticdevelopercookbook://ingredients/app/session-restore",
-      "agenticdevelopercookbook://ingredients/app/child-process-cleanup",
-      "agenticdevelopercookbook://ingredients/infrastructure/settings-keys",
-      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+      "ee72734e-2cff-41be-9d1a-813b64aa0fd2",
+      "a7c4168e-2f0a-40bb-b38f-0f81ad6a9cf0",
+      "5546b9ad-b8b4-4973-817e-b3bc4f090618",
+      "39676af7-b0b9-48f2-8056-f0c8e8754ffc",
+      "7c2049c7-89d9-4135-b657-dbd03cdd19a0"
     ],
     "depends-on": [],
     "related": [],
@@ -39,7 +38,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "aa954783b773e1f3",
+  "synced": "fbd2c0081f15c422",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

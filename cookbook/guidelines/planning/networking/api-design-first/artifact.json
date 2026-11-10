@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0b40ebfd-823f-4283-bbeb-eb2bcf095ff8",
     "title": "Design-first API development with OpenAPI",
-    "domain": "agenticdevelopercookbook://guidelines/planning/networking/api-design-first",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/networking/api-design",
-      "agenticdevelopercookbook://principles/support-automation"
+      "6079c539-f547-46de-9284-d404a76f6d9d",
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "references": [
       "https://spec.openapis.org/oas/v3.1.0"
@@ -35,7 +34,7 @@
       "new-module"
     ]
   },
-  "synced": "47f5a9016f67a7ad",
+  "synced": "d4af20aa4a29771d",
   "parts": [
     {"part": "intro"},
     {"part": "when-this-applies", "heading": "When this applies"},

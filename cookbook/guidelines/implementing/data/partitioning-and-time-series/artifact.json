@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2b9b576c-1e17-4a15-b347-febf2ea3c312",
     "title": "Table partitioning and time-series data",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/partitioning-and-time-series",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/data/advanced-indexing"
+      "8a1d8274-cc46-4449-a824-7c7a79c0b1e2"
     ],
     "references": [
       "https://www.postgresql.org/docs/current/ddl-partitioning.html"
@@ -34,7 +33,7 @@
       "schema-design"
     ]
   },
-  "synced": "cc45273eb759a5c5",
+  "synced": "1238c4c8975e3879",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-partition-measured-need-guardrail", "heading": "When to partition (measured-need guardrail)"},

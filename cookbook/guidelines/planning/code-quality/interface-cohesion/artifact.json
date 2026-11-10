@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "746b6b5e-11b9-48f7-a304-4b6755fd7f75",
     "title": "Interface Cohesion",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/interface-cohesion",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "b4d3c76f680ba917",
+  "synced": "8f67cc0ac00397ff",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

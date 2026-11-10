@@ -1,7 +1,6 @@
 ---
 id: 5CECB56F-B15C-42F0-BEB2-58861B33EC8B
 title: "Security Compliance"
-domain: agenticdevelopercookbook://compliance/security
 type: compliance
 version: 1.0.1
 status: draft
@@ -16,9 +15,9 @@ platforms: []
 tags: [compliance, security]
 depends-on: []
 related:
-  - agenticdevelopercookbook://compliance/privacy-and-data
-  - agenticdevelopercookbook://compliance/user-safety
-  - agenticdevelopercookbook://compliance/reliability
+  - tbd/compliance/privacy-and-data.md
+  - tbd/compliance/user-safety.md
+  - tbd/compliance/reliability.md
 references: []
 ---
 
@@ -39,7 +38,7 @@ Authentication MUST use OAuth 2.0/OIDC with PKCE for all public clients.
 **Applies when:** recipe implements or integrates an authentication flow.
 
 **Guidelines:**
-- [Authentication](agenticdevelopercookbook://guidelines/implementing/security/authentication)
+- [adc.guideline.implementing.security.authentication](cookbook:aec38334-67fa-4c7e-bca2-607932af3f22)
 
 ---
 
@@ -50,7 +49,7 @@ Authorization MUST be enforced server-side, never client-only.
 **Applies when:** recipe includes authorization logic or role-based access control.
 
 **Guidelines:**
-- [Authorization](agenticdevelopercookbook://guidelines/implementing/security/authorization)
+- [adc.guideline.implementing.security.authorization](cookbook:2609037a-fb89-4b49-88b0-7e4295e5d6f6)
 
 ---
 
@@ -61,7 +60,7 @@ Secrets and credentials MUST use platform-specific secure storage (Keychain, Enc
 **Applies when:** recipe stores tokens, passwords, API keys, or other sensitive material.
 
 **Guidelines:**
-- [Secure Storage](agenticdevelopercookbook://guidelines/implementing/security/secure-storage)
+- [adc.guideline.implementing.security.secure-storage](cookbook:926dff1a-dc12-46a4-b8c1-bdedbc142afd)
 
 ---
 
@@ -72,7 +71,7 @@ All user input MUST be validated and sanitized before processing.
 **Applies when:** recipe accepts user input in any form (text fields, file uploads, query parameters, deep links).
 
 **Guidelines:**
-- [Input Validation](agenticdevelopercookbook://guidelines/implementing/security/input-validation)
+- [adc.guideline.implementing.security.input-validation](cookbook:4ca8a3d5-cdcc-4f74-a2ec-3a198608b419)
 
 ---
 
@@ -83,7 +82,7 @@ All network communication MUST use TLS 1.2 or higher.
 **Applies when:** recipe makes or receives network requests.
 
 **Guidelines:**
-- [Transport Security](agenticdevelopercookbook://guidelines/implementing/security/transport-security)
+- [adc.guideline.implementing.security.transport-security](cookbook:5b026378-d418-406a-9aab-6e3f043901af)
 
 ---
 
@@ -94,8 +93,8 @@ Log messages MUST NOT contain credentials, tokens, or PII.
 **Applies when:** recipe produces log output or diagnostic messages.
 
 **Guidelines:**
-- [Sensitive Data](agenticdevelopercookbook://guidelines/implementing/security/sensitive-data)
-- [Logging](agenticdevelopercookbook://guidelines/implementing/observability/logging)
+- [adc.guideline.implementing.security.sensitive-data](cookbook:22f1ca04-2d1d-4faf-8bf0-c6abcd60802c)
+- [adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65)
 
 ---
 
@@ -106,7 +105,7 @@ Access tokens MUST be short-lived (5-15 min) with refresh token rotation.
 **Applies when:** recipe issues, stores, or refreshes access tokens.
 
 **Guidelines:**
-- [Token Handling](agenticdevelopercookbook://guidelines/implementing/security/token-handling)
+- [adc.guideline.implementing.security.token-handling](cookbook:2598f495-1820-47e7-b7e7-ce548d390148)
 
 ---
 
@@ -117,7 +116,7 @@ Dependencies MUST be scanned for known vulnerabilities before release.
 **Applies when:** recipe introduces or relies on third-party dependencies.
 
 **Guidelines:**
-- [Dependency Security](agenticdevelopercookbook://guidelines/implementing/security/dependency-security)
+- [adc.guideline.implementing.security.dependency-security](cookbook:b712c766-af1f-4716-b8fb-34bf0bbb13eb)
 
 ---
 
@@ -128,7 +127,7 @@ Web responses MUST include standard security headers (HSTS, CSP, X-Content-Type-
 **Applies when:** recipe serves web content or defines HTTP responses.
 
 **Guidelines:**
-- [Security Headers Checklist](agenticdevelopercookbook://guidelines/implementing/security/security-headers-checklist)
+- [adc.guideline.implementing.security.security-headers-checklist](cookbook:12d6b9fe-d1a0-4b9f-b772-41d9b4aa0b8a)
 
 ---
 
@@ -139,7 +138,7 @@ Web content MUST enforce a strict Content Security Policy.
 **Applies when:** recipe renders HTML or loads external resources in a web context.
 
 **Guidelines:**
-- [Content Security Policy](agenticdevelopercookbook://guidelines/implementing/security/content-security-policy)
+- [adc.guideline.implementing.security.content-security-policy](cookbook:6f4cfd55-cb09-4ede-a53c-feaeb5781127)
 
 ---
 
@@ -150,7 +149,7 @@ CORS MUST use explicit origin allowlists, never wildcards with credentials.
 **Applies when:** recipe configures cross-origin resource sharing.
 
 **Guidelines:**
-- [CORS](agenticdevelopercookbook://guidelines/implementing/security/cors)
+- [adc.guideline.implementing.security.cors](cookbook:8ea0409f-405a-4f4d-9bbf-54bf21c86d33)
 
 ---
 
@@ -161,7 +160,7 @@ Verification MUST include static analysis (SAST) and dependency scanning.
 **Applies when:** recipe defines a verification or CI pipeline.
 
 **Guidelines:**
-- [Security Testing](agenticdevelopercookbook://guidelines/testing/security-testing)
+- [adc.guideline.testing.security-testing](cookbook:cf05e36f-ea8b-4af2-8df6-c5e772dc25b5)
 
 ## Change History
 

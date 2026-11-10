@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d4b2fbc3-d814-44f7-a1cf-b59bd5eeb757",
     "title": "Metadata Line",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/metadata-line",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "83a4b2b7d210c7da",
+  "synced": "31ec4c40f0dd6785",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

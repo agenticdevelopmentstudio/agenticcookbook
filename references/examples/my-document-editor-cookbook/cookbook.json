@@ -1,20 +1,20 @@
 {
   "$schema": "../../cookbook.schema.json",
   "type": "cookbook",
-  "schema_version": "1.0.0",
+  "format": 2,
   "name": "My Document Editor",
   "id": "e6cf99be-cec3-4011-9cbe-a4a6f8c28524",
+  "rdid": "my-document-editor",
   "version": "0.1.0",
   "description": "A multi-platform document editor with rich text editing and a toolbar",
   "author": "Mike Fullerton",
   "license": "MIT",
   "created": "2026-04-01",
   "modified": "2026-04-05",
-  "platforms": ["ios", "macos"],
-  "cookbook": {
-    "repo": "https://github.com/agenticdevelopercookbook/cookbook",
-    "version": "1.0.0"
-  },
+  "platforms": [
+    "ios",
+    "macos"
+  ],
   "resources": {
     "app-config": {
       "type": "app-manifest",
@@ -46,7 +46,7 @@
         "spec": "app/document-window/document-window.md",
         "description": "Main document editing window",
         "source": {
-          "domain": "agenticdevelopercookbook://recipes/ui/windows/document-window",
+          "id": "00bf1936-4bb6-4ba2-ba0a-6fc9a3697cd0/3b83a80f-d170-4ef6-a608-81f3a1476679",
           "version": "1.0.0"
         },
         "structural-elements": {
@@ -57,7 +57,9 @@
           "editor": {
             "spec": "app/document-window/editor/editor.md",
             "description": "Rich text editing surface",
-            "depends-on": ["document-window.toolbar"]
+            "depends-on": [
+              "document-window.toolbar"
+            ]
           }
         }
       },

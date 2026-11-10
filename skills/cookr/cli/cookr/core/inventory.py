@@ -1,12 +1,12 @@
 """Every component source file, and the spec that names it.
 
-A spec claims its sources in its `## Reference Implementations` table
-(`cookr.core.refimpl`): a file path claims that file, a directory path
-(trailing `/`) every source file below it. A file path beats any directory
+A spec claims its sources through its implementations in the cookbook index
+(`index.json`): a file location claims that file, a directory location
+(trailing `/`) every source file below it; a URL or planned row claims none. A file path beats any directory
 path, and the deepest directory wins, so a spec for a module directory can
-leave one file inside it to another spec. A source file under a `code.roots`
-entry that no spec claims is named where the code's arrangement puts it:
-`<root.recipes>/<its directories below the root>/<its stem>`, kebab-cased
+leave one file inside it to another spec. A source file under a `.cookr.json`
+root that no spec claims is named where the code's arrangement puts it:
+`<root.group>/<its directories below the root>/<its stem>`, kebab-cased
 (`naming.path_name`), with `src` and `Sources` directories dropped. A stem
 that repeats its directory's name, or is a reserved name like `index`, folds
 into the directory (`join_name`): `data/docs/Docs.swift` is `data/docs`.
@@ -31,9 +31,9 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from cookr.core.markdown import SKIP_NAMES, reserved_name
+from cookr.core.markdown import SKIP_NAMES, prune_freezes, reserved_name
 
-from .config import Config, ConfigError, Root
+from .repoconfig import Config, ConfigError, Root
 from .naming import path_name
 from .recipes import RecipeInfo
 
@@ -49,7 +49,7 @@ class Component:
     tier: str
     platform: str
     kind: str = "ui"
-    claimed: bool = False  # a spec's Reference Implementations names it (or a directory above it)
+    claimed: bool = False  # a spec's index implementations name it (or a directory above it)
 
 
 def _segment_regex(seg: str) -> str:
@@ -149,7 +149,7 @@ def expected_name(root: Root, rel: str) -> str:
     """Where the code's arrangement puts the spec for `rel` under `root`: a source
     file's own spec, or for a directory (trailing `/`) the module's."""
     parts = _below(root, rel.rstrip("/"))
-    group = _split(root.recipes) + group_parts(parts if rel.endswith("/") else parts[:-1])
+    group = _split(root.group) + group_parts(parts if rel.endswith("/") else parts[:-1])
     if rel.endswith("/"):
         return "/".join(group)
     return "/".join(join_name(group, path_name(component_stem(parts[-1]))))
@@ -163,14 +163,14 @@ def _split(path: str) -> list[str]:
     return [p for p in path.split("/") if p]
 
 
-
 def _walk(repo_root: Path, base: str, ignored: IgnoreSet):
     """Repo-relative source files below repo-relative directory `base`."""
     for dirpath, dirnames, filenames in os.walk(repo_root / base):
         d = Path(dirpath)
         drel = d.relative_to(repo_root).as_posix()
         prefix = "" if drel == "." else f"{drel}/"
-        dirnames[:] = sorted(n for n in dirnames if not ignored.prunes(prefix + n))
+        dirnames[:] = sorted(n for n in prune_freezes(d, dirnames)
+                             if not ignored.prunes(prefix + n))
         for fn in filenames:
             rel = prefix + fn
             if (os.path.splitext(fn)[1] in SOURCE_SUFFIXES and not ignored.ignores(rel)
@@ -178,7 +178,7 @@ def _walk(repo_root: Path, base: str, ignored: IgnoreSet):
                 yield rel
 
 
-def _ignored(config: Config, root: Optional[Root]) -> IgnoreSet:
+def ignored_for(config: Config, root: Optional[Root]) -> IgnoreSet:
     return ignore_set(tuple(config.ignore) + (tuple(root.ignore) if root else ()))
 
 
@@ -186,11 +186,12 @@ Claims = dict[str, list[tuple[str, str]]]  # claimed path -> [(spec, platform)]
 
 
 def claims(corpus: dict[str, RecipeInfo]) -> Claims:
-    """Every path a spec's Reference Implementations names, with who names it."""
+    """Every repo path a spec's implementations name, with who names it."""
     out: Claims = {}
     for spec, info in sorted(corpus.items()):
         for impl in info.implementations:
-            out.setdefault(impl.path, []).append((spec, impl.platform))
+            if impl.location and "://" not in impl.location:
+                out.setdefault(impl.location, []).append((spec, impl.platform))
     return out
 
 
@@ -223,13 +224,13 @@ def scan(config: Config, corpus: dict[str, RecipeInfo],
     table = claims(corpus)
     found: dict[str, Optional[Root]] = {}  # rel -> the root holding it, if any
     for root in config.roots:
-        for rel in _walk(config.repo_root, root.path, _ignored(config, root)):
+        for rel in _walk(config.repo_root, root.path, ignored_for(config, root)):
             found.setdefault(rel, config.root_for(rel))
     for path in table:
         if path.endswith("/"):
             base = path.rstrip("/")
             if (config.repo_root / base).is_dir():
-                for rel in _walk(config.repo_root, base, _ignored(config, config.root_for(base))):
+                for rel in _walk(config.repo_root, base, ignored_for(config, config.root_for(base))):
                     found.setdefault(rel, config.root_for(rel))
         elif (config.repo_root / path).is_file():
             found.setdefault(path, config.root_for(path))
@@ -251,6 +252,6 @@ def scan(config: Config, corpus: dict[str, RecipeInfo],
         raise ConfigError(
             "an unclaimed source file would get a spec name no spec can have, so its spec "
             f"could never be matched: {'; '.join(reserved)}. Ignore these files in "
-            "`code.ignore`, or claim them in a spec's `## Reference Implementations`."
+            "`.cookr.json` `ignore`, or claim them with `cookr implements`."
         )
     return sorted((c for c in out if in_group(c.name, tier)), key=lambda c: (c.name, c.path))

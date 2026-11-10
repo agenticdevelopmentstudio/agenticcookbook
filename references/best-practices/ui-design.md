@@ -1,7 +1,6 @@
 ---
 id: 1cd02895-c9ca-4f0a-95d7-692243e7c9e7
 title: "UI Design"
-domain: agenticdevelopercookbook://reference/best-practices/ui-design
 type: reference
 version: 1.0.0
 status: accepted

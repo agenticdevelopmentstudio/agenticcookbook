@@ -11,7 +11,7 @@
 
 ### Workspace Directory Manager
 
-- **coordinator-pool-manager**: The `WorkspaceDirectoryManager` MUST manage a pool of `DirectoryWatchCoordinator` instances, one per directory entry, as specified in [directory-sync.md](../../../recipes/infrastructure/directory-sync.md) coordinator-per-entry through dedicated-cache-directory.
+- **coordinator-pool-manager**: The `WorkspaceDirectoryManager` MUST manage a pool of `DirectoryWatchCoordinator` instances, one per directory entry, as specified in [adc.recipe.infrastructure.directory-sync](cookbook:63659e2c-215a-44ed-b330-2bca8d88bd9a) coordinator-per-entry through dedicated-cache-directory.
 - **aggregate-sync-state**: The manager MUST aggregate `isSyncing` across all coordinators. The workspace-level `isSyncing` MUST be `true` if any coordinator is syncing.
 - **auto-discover-projects**: The manager MUST auto-discover `.catnip-proj` packages within each watched directory and report them via an `onDiscoveryChanged` callback for document persistence.
 - **per-entry-cache-dir**: Each coordinator MUST use a dedicated cache directory named `cache-{entryID}` within the workspace package.

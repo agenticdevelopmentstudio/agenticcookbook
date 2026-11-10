@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "acbfc5ff-4482-4982-a893-b792da0fbe4f",
     "title": "Deterministic IDs",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/deterministic-ids",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "data-modeling"
     ]
   },
-  "synced": "5c41a79ece09963f",
+  "synced": "fe0ad907e16e5e67",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

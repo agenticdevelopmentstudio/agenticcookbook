@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ..core import hosts, neutrality, payload, tuning, twins
+from ..core import hosts, neutrality, payload, refs, tuning, twins
 from ..core.artifact import ArtifactError, find_folders, load_folder
 from ..core.artifact_build import compile_doc, unconverted_results
-from ..core.checks import fix_for, phase_a
+from ..core.checks import phase_a, show
 from ..core.errors import NoCookbookRootError
 from ..core.skill import templates_root
 from ..indexing import engine
@@ -68,18 +68,10 @@ def run(args, ctx) -> int:
     ctx.ui.title(f"cookr validate · {root}")
 
     ctx.ui.section("Frontmatter & links")
-    report = phase_a(root)
-    if report.ok:
-        ctx.ui.ok(f"All {report.files_checked} artifacts passed deterministic checks.")
-        a_exit = 0
-    else:
-        rows = [[i.file, i.rule, i.detail, fix_for(i.rule)] for i in report.issues]
-        ctx.ui.table(["file", "rule", "issue", "fix"], rows)
-        ctx.ui.error(f"{len(report.issues)} issue(s) across {report.files_checked} files.")
-        a_exit = 1
+    a_exit = show(phase_a(root, ctx.config), ctx.ui)
 
     ctx.ui.section("Index drift")
-    b_exit = _drift(root, ctx.references_dir / "index-configs", ctx.ui)
+    b_exit = _drift(root, refs.embedded(ctx.references_dir, "index-configs"), ctx.ui)
 
     ctx.ui.section("Compiled docs")
     c_exit = _compiled(root, ctx.ui)
@@ -107,8 +99,9 @@ def run(args, ctx) -> int:
 
 
 def _compiled(root: Path, ui) -> int:
-    """Every source folder's doc exists and matches what the folder compiles to.
-    A doc edited by hand, not through its folder, shows here as stale."""
+    """Every source folder compiles, and any compiled doc present matches it.
+    The folder is the only committed form, so a folder without its doc is
+    normal; a doc edited by hand, not through its folder, shows as stale."""
     folders = find_folders([root])
     stray = unconverted_results([root])
     if not folders and not stray:
@@ -116,9 +109,12 @@ def _compiled(root: Path, ui) -> int:
         return 0
     results = compile_doc(folders, base=root, write=False)
     bad = ([[str(r.source.relative_to(root)), r.status, r.detail] for r in stray]
-           + [[str(r.dest.relative_to(root)), r.status, r.detail] for r in results if r.failed])
+           + [[str(r.dest.relative_to(root)), r.status, r.detail]
+              for r in results if r.failed and r.status != "missing"])
     if not bad:
-        ui.ok(f"All {len(results)} compiled docs match their source folders.")
+        present = sum(1 for r in results if r.status != "missing")
+        ui.ok(f"All {len(results)} source folders compile; "
+              f"{present} compiled docs present match their folders.")
         return 0
     ui.table(["doc", "result", "detail"], bad)
     ui.info(f"Fix: {_COMPILE_FIX}")

@@ -10,7 +10,7 @@ have one obvious focal point — the primary action or content the user came for
 - Interactive elements MUST be visually distinguishable from static content
 - Disabled elements SHOULD be visually muted but still discoverable
 
-See agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility for accessibility requirements (contrast, labels, focus order).
+See [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8) for accessibility requirements (contrast, labels, focus order).
 
 References:
 - [NNGroup: Visual Hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-definition/)

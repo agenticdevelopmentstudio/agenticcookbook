@@ -1,6 +1,6 @@
 ---
 name: repair-cookbook
-version: "2.1.0"
+version: "3.0.0"
 description: "Scan and repair cookbook integrity — broken cross-references, stale frontmatter, dead index links. Finds breaks, fuzzy-matches fixes, batch confirms."
 argument-hint: "[--dry-run] [--category <name>] [--version]"
 allowed-tools: Read, Glob, Grep, Edit, Write, Agent, Bash(find *), Bash(wc *), Bash(diff *), Bash(date *), Bash(cookr *), AskUserQuestion
@@ -11,11 +11,11 @@ context: fork
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
 
-> repair-cookbook v2.1.0
+> repair-cookbook v3.0.0
 
 Then stop.
 
-Otherwise, print `repair-cookbook v2.1.0` as the first line of output, then proceed.
+Otherwise, print `repair-cookbook v3.0.0` as the first line of output, then proceed.
 
 ## Test Mode
 
@@ -27,7 +27,7 @@ If `$ARGUMENTS` contains `--test-mode`:
 
 # Repair Cookbook
 
-Scan the cookbook for integrity issues — broken `agenticdevelopercookbook://` cross-references, stale frontmatter, dead index links, structural problems — then repair what can be fixed automatically and ask about the rest.
+Scan the cookbook for integrity issues — broken links (UUID meta links and in-text `[<rdid>](cookbook:<uuid>)`), index drift, stale meta, dead index links, structural problems — then repair what can be fixed automatically and ask about the rest.
 
 You are a librarian auditing every shelf, cross-reference card, and index entry. You find what's broken, figure out what the correct target should be, and fix it — but you always show your work before writing.
 
@@ -94,11 +94,11 @@ Launch up to 3 agents in parallel. Each agent reads the checklist, receives `$RO
 - Category 3: Cross-References (X01-X08)
 - Category 4: Indexes and Documentation (I01-I04)
 
-This agent does the most critical work. For every broken `agenticdevelopercookbook://` URI it finds, it must also:
+This agent does the most critical work. It runs `cookr validate`, which reports every link that does not resolve in `cookbook/index.json` (a meta UUID, an in-text `[<rdid>](cookbook:<uuid>)`, or a leftover format-1 URI link) and any index drift. For every broken link it must also:
 1. Record the source file and line
-2. Record the broken URI
+2. Record the broken link
 3. Attempt fuzzy-match resolution per the strategy in the checklist
-4. Report: `{source_file, line, broken_uri, match_confidence, suggested_fix, candidates[]}`
+4. Report: `{source_file, line, broken_link, match_confidence, suggested_fix, candidates[]}`
 
 **Agent 3 — File Placement**
 - Category 5: File Placement (P01-P07)
@@ -162,11 +162,11 @@ Present them as a batch:
 ```
 === PROPOSED FIXES (<N> total) ===
 
- 1. [F05] principles/foo.md — domain field mismatch
-    Fix: Update domain to "agenticdevelopercookbook://principles/foo"
+ 1. [F05] principles/foo/ — index entry out of date (folder moved)
+    Fix: Run `cookr update` to refresh the index entry's path and rdid
 
- 2. [X01] compliance/security.md:47 — broken ref "agenticdevelopercookbook://guidelines/general#post-gen"
-    Fix: Update to "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+ 2. [X01] guidelines/security/auth/requirements.md:47 — broken link "[adc.guideline.general.post-gen](cookbook:<missing-uuid>)"
+    Fix: Update to "[adc.guideline.testing.post-generation-verification](cookbook:563aebde-52bf-4011-8907-ecc473fd942c)"
 
  3. [I03] index.md:23 — dead link to "guidelines/old-file.md"
     Fix: Remove stale entry
@@ -188,13 +188,13 @@ Apply all <N> fixes? (yes / no / review individually)
 For each issue that couldn't be auto-resolved, present individually:
 
 ```
-Cannot resolve: agenticdevelopercookbook://guidelines/general#post-generation-verification
-Referenced from: compliance/best-practices.md (line 47)
-Context: "See [post-gen verification](agenticdevelopercookbook://guidelines/general#post-generation-verification)"
+Cannot resolve: cookbook:<missing-uuid> (labelled adc.guideline.general.post-generation-verification)
+Referenced from: tbd/compliance/best-practices.md (line 47)
+Context: "See [adc.guideline.general.post-generation-verification](cookbook:<missing-uuid>)"
 
 Closest matches:
-  a) guidelines/testing/post-generation-verification.md
-  b) guidelines/code-quality/scope-discipline.md
+  a) adc.guideline.testing.post-generation-verification (563aebde-…)
+  b) adc.guideline.code-quality.scope-discipline
 
 Choose: (a/b/enter path/remove/skip)
 ```
@@ -204,11 +204,11 @@ Apply chosen fixes immediately.
 ### 5c. Structural auto-fixes
 
 These are always safe:
-- **F05 domain mismatch**: Derive correct domain from file path, update frontmatter
+- **F05 index drift**: Run `cookr update`, which rewrites the index entry's path and rdid from the folder
 - **C02 missing Change History**: Append template section
 - **C01 heading mismatch**: Update H1 to match frontmatter title
 - **X06 self-references**: Remove the self-referencing entry from `depends-on`/`related`
-- **X08 internal URI in references**: Move the entry to `related` field
+- **X08 internal link in references**: Move the entry to the `related` field as the target's UUID
 - **I01 missing from index**: Add entry to `index.md` in correct section
 - **I03 stale index entry**: Remove dead link from index
 - **P07 temp files**: Delete `.bak`, `.tmp`, `.orig`, `~`, `.DS_Store` files

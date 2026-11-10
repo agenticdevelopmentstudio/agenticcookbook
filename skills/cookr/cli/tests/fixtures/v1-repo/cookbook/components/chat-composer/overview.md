@@ -1,0 +1,3 @@
+
+Chat composer component fixture.
+

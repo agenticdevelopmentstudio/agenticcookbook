@@ -1,7 +1,6 @@
 ---
 id: c4c86c98-27c6-458d-bfce-06efc8bece01
 title: "Android"
-domain: agenticdevelopercookbook://reference/best-practices/android
 type: reference
 version: 1.0.0
 status: accepted

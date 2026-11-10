@@ -1,4 +1,5 @@
-"""cookr.core.scheme — a repo's / cookbook's domain scheme."""
+"""cookr.core.legacy — the format-1 domain scheme a repo was named by, which
+only `cookr upgrade` still reads."""
 
 from __future__ import annotations
 
@@ -7,14 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from cookr.core.scheme import (
-    SchemeError,
-    cookbook_scheme,
-    declared_scheme,
-    index_domain,
-    repo_scheme,
-    scheme_of,
-)
+from cookr.core.legacy import SchemeError, repo_scheme, scheme_of
 
 
 # Every tmp_path here is a git repo, as a real cookbook checkout is.
@@ -109,62 +103,3 @@ def test_scheme_of():
     assert scheme_of("no scheme") is None
     assert scheme_of(None) is None
 
-
-# --- cookbook_scheme: the root's own index.md first, then the repo ------------------
-
-def _index(d: Path, text: str) -> None:
-    d.mkdir(parents=True, exist_ok=True)
-    (d / "index.md").write_text(text, encoding="utf-8")
-
-
-def test_declared_scheme_wins_over_the_repo_name(tmp_path):
-    repo = make_repo(tmp_path / "checkout", origin="git@github.com:org/agenticcookbook.git")
-    _index(repo / "cookbook", "---\ndomain: agenticdevelopercookbook://index\n---\n# Cookbook\n")
-    assert cookbook_scheme(repo / "cookbook") == "agenticdevelopercookbook"
-
-
-def test_a_subdirectory_root_reads_its_cookbooks_index(tmp_path):
-    """`cookr update -p recipes` roots at recipes/, below the cookbook's index.md."""
-    repo = make_repo(tmp_path / "checkout", origin="git@github.com:org/agenticcookbook.git")
-    _index(repo / "cookbook", "---\ndomain: agenticdevelopercookbook://index\n---\n")
-    (repo / "cookbook" / "recipes").mkdir()
-    assert cookbook_scheme(repo / "cookbook" / "recipes") == "agenticdevelopercookbook"
-
-
-@pytest.mark.parametrize("index_text", [None, "", "# Title only\n", "---\ntitle: x\n---\n"])
-def test_empty_or_absent_index_falls_back_to_the_repo(tmp_path, index_text):
-    repo = make_repo(tmp_path / "checkout", origin="git@github.com:org/agenticdevelopertoolkit.git")
-    (repo / "recipes").mkdir()
-    if index_text is not None:
-        _index(repo, index_text)
-    assert declared_scheme(repo / "recipes") is None
-    assert cookbook_scheme(repo / "recipes") == "agenticdevelopertoolkit"
-
-
-def test_the_walk_stops_at_the_repo_top(tmp_path):
-    _index(tmp_path, "---\ndomain: unrelated://index\n---\n")   # above the repo
-    repo = make_repo(tmp_path / "toolkit")
-    (repo / "recipes").mkdir()
-    assert cookbook_scheme(repo / "recipes") == "toolkit"
-
-
-def test_outside_git_only_the_roots_own_index_counts(tmp_path_factory):
-    base = tmp_path_factory.mktemp("nogit-walk")
-    _index(base, "---\ndomain: above://index\n---\n")
-    (base / "cb").mkdir()
-    with pytest.raises(SchemeError):
-        cookbook_scheme(base / "cb")
-    _index(base / "cb", "---\ndomain: mine://index\n---\n")
-    assert cookbook_scheme(base / "cb") == "mine"
-
-
-def test_index_domain_keeps_an_existing_domain_without_deriving_a_scheme(outside_git):
-    out = outside_git / "INDEX.md"
-    out.write_text("---\ndomain: kept://recipes/INDEX\n---\n", encoding="utf-8")
-    assert index_domain(outside_git, out, "x/recipes/index") == "kept://recipes/INDEX"
-
-
-def test_index_domain_derives_one_for_a_new_file(tmp_path):
-    repo = make_repo(tmp_path / "my-project")
-    assert index_domain(repo, repo / "INDEX.md", "my-project/recipes/index") \
-        == "my-project://my-project/recipes/index"

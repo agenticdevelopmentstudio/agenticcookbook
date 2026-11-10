@@ -2,44 +2,39 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://agenticdevelopercookbook.com/schemas/cookbook.schema.json",
   "title": "Cookbook",
-  "description": "Schema for cookbook.json — a platform-agnostic project definition format that assembles recipes and ingredients into a complete application, plugin, widget, or library",
+  "description": "Schema for cookbook.json (format 2) — a cookbook's manifest. Every cookbook carries its identity: `format`, `id` (a UUID, the cookbook's identity) and `rdid` (its readable name, the first segment of its artifacts' rdids). A project cookbook also describes the application, plugin, widget or library it assembles from recipes and ingredients. The artifacts themselves are listed in index.json (index.schema.json); where code lives and which other cookbooks this one depends on are tool configuration, in the repo's .cookr.json (cookr-config.schema.json).",
   "type": "object",
   "required": [
-    "type",
-    "schema_version",
-    "name",
+    "format",
     "id",
-    "version",
-    "description",
-    "author",
-    "license",
-    "created",
-    "modified",
-    "platforms",
-    "cookbook"
+    "rdid"
   ],
   "properties": {
     "$schema": {
       "type": "string",
       "description": "Optional JSON Schema reference for editor support"
     },
+    "format": {
+      "const": 2,
+      "description": "Manifest format version. cookr reads only format 2; `cookr upgrade` converts older manifests."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "UUID — the cookbook's identity. Foreign links name it: `<cookbook-uuid>/<artifact-uuid>`."
+    },
+    "rdid": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "The cookbook's readable name (`adc`, `adhsdk`); the first segment of every rdid in its index."
+    },
     "type": {
       "const": "cookbook",
       "description": "Identifies this file as a cookbook"
     },
-    "schema_version": {
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "description": "Version of the cookbook format itself (semver)"
-    },
     "name": {
       "type": "string",
       "description": "Human-readable cookbook name"
-    },
-    "id": {
-      "type": "string",
-      "format": "uuid",
-      "description": "UUID — stable identity even if the cookbook directory is renamed"
     },
     "version": {
       "type": "string",
@@ -75,25 +70,6 @@
       },
       "description": "Target platforms. Cookbook-level default; structural elements can override"
     },
-    "cookbook": {
-      "type": "object",
-      "required": [
-        "repo",
-        "version"
-      ],
-      "properties": {
-        "repo": {
-          "type": "string",
-          "description": "Path or URL to the agenticdevelopercookbook"
-        },
-        "version": {
-          "type": "string",
-          "pattern": "^\\d+\\.\\d+\\.\\d+$",
-          "description": "Top-level cookbook version this cookbook is based on"
-        }
-      },
-      "additionalProperties": false
-    },
     "resources": {
       "$ref": "#/$defs/resources"
     },
@@ -127,30 +103,6 @@
     "structure": {
       "$ref": "#/$defs/structural-element",
       "description": "The single top-level structure being built (an app, plugin, widget, or library)"
-    },
-    "code": {
-      "type": "object",
-      "description": "Where this cookbook's own implementations live, for a cookbook that sits beside its source. Specs name their implementations in a `## Reference Implementations` section; the roots let tooling find source files no spec claims yet",
-      "required": [
-        "roots"
-      ],
-      "properties": {
-        "roots": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/code-root"
-          }
-        },
-        "ignore": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Globstar globs over repo-relative paths, applied to every root"
-        }
-      },
-      "additionalProperties": false
     }
   },
   "additionalProperties": false,
@@ -193,18 +145,19 @@
         "source": {
           "type": "object",
           "required": [
-            "domain",
+            "id",
             "version"
           ],
           "properties": {
-            "domain": {
+            "id": {
               "type": "string",
-              "description": "Cookbook domain identifier of the source ingredient or recipe"
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/)?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "description": "The source ingredient or recipe: its UUID, or `<cookbook-uuid>/<artifact-uuid>` when it is another cookbook's"
             },
             "version": {
               "type": "string",
               "pattern": "^\\d+\\.\\d+\\.\\d+$",
-              "description": "Cookbook artifact version that was forked"
+              "description": "Artifact version that was forked"
             }
           },
           "additionalProperties": false,
@@ -275,50 +228,6 @@
         "description": {
           "type": "string",
           "description": "Short summary"
-        }
-      },
-      "additionalProperties": false
-    },
-    "code-root": {
-      "type": "object",
-      "required": [
-        "path",
-        "platform"
-      ],
-      "properties": {
-        "path": {
-          "type": "string",
-          "description": "Source directory, relative to the repository root"
-        },
-        "platform": {
-          "type": "string",
-          "enum": [
-            "web",
-            "apple",
-            "android",
-            "windows",
-            "python"
-          ]
-        },
-        "kind": {
-          "type": "string",
-          "enum": [
-            "ui",
-            "logic"
-          ],
-          "default": "ui",
-          "description": "`ui` for visual components, `logic` for non-UI shared code"
-        },
-        "recipes": {
-          "type": "string",
-          "description": "Directory, relative to the cookbook directory, where specs for this root's unclaimed source files are written"
-        },
-        "ignore": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Globstar globs over repo-relative paths, applied to this root only"
         }
       },
       "additionalProperties": false

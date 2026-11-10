@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "bdc920ab-fde0-445a-a62a-c2f6d23da8a8",
     "title": "Color Profile",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/color-profile",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "ab49dd3a4ba84ab2",
+  "synced": "2e07862a9855d1f7",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

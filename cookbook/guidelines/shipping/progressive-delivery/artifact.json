@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "fff733d2-42ab-4123-b280-1a30b52e54a4",
     "title": "Progressive delivery",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/progressive-delivery",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/shipping/continuous-delivery",
-      "agenticdevelopercookbook://guidelines/shipping/feature-flags"
+      "703b1ec7-b940-46a5-8974-441b04a0bb9d",
+      "1b259fdc-1aba-48c5-a89a-b9ca01dc3351"
     ],
     "references": [
       "https://martinfowler.com/bliki/CanaryRelease.html",
@@ -39,7 +38,7 @@
       "feature-flags"
     ]
   },
-  "synced": "4f72a666945cfbf1",
+  "synced": "5ff0b9c37838dab7",
   "parts": [
     {"part": "intro"},
     {"part": "decouple-deploy-from-release", "heading": "Decouple deploy from release"},

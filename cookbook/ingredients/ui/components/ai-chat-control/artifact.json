@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f9f12465-9f73-40ef-b9f6-d124090781f5",
     "title": "AI Chat Control",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/ai-chat-control",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -30,13 +29,13 @@
     ],
     "depends-on": [],
     "related": [
-      "ingredient.ui.panel.ai-settings-panel"
+      "24eb3821-0f66-4acf-bff0-5797982bb60d"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "68a165df81ac5431",
+  "synced": "30664719be49f534",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

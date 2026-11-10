@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a48af237-db64-40ae-9574-e579c107de83",
     "title": "AppKit and UIKit patterns",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -31,8 +30,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
-      "agenticdevelopercookbook://guidelines/reviewing/platform-integration/prefer-explicit-apple-apis"
+      "8aa22a6b-2328-4a2d-8fe3-53c339390808",
+      "dfe12d14-4deb-4a64-b78a-d04db713f72b"
     ],
     "references": [
       "https://developer.apple.com/documentation/uikit/using-responders-and-the-responder-chain-to-handle-events",
@@ -46,7 +45,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's AppKit and UIKit rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "e198a424890891fa",
+  "synced": "3b532643f0f1e1cb",
   "parts": [
     {"part": "intro"},
     {"part": "responder-chain", "heading": "Responder chain"},

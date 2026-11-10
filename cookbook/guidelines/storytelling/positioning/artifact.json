@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "c3cf9193-b6a7-493b-a531-76aa601109da",
     "title": "Positioning",
-    "domain": "agenticdevelopercookbook://guidelines/storytelling/positioning",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,8 +20,8 @@
       "positioning"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis",
-      "agenticdevelopercookbook://guidelines/storytelling/explanation"
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487",
+      "14c5afdc-9c2d-444f-bffb-7514ca889481"
     ],
     "triggers": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -30,7 +29,7 @@
     "depends-on": [],
     "references": []
   },
-  "synced": "208b2dfbff427817",
+  "synced": "7896b133928a94f9",
   "parts": [
     {"part": "intro"},
     {"part": "audience", "heading": "Audience"},

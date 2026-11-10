@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "caffd78b-1ba6-42a3-8805-1d224260588b",
     "title": "Conway's Law",
-    "domain": "agenticdevelopercookbook://principles/conways-law",
     "type": "principle",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
-      "agenticdevelopercookbook://principles/separation-of-concerns",
-      "agenticdevelopercookbook://principles/meta-principle-optimize-for-change"
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "aadd048b-da52-415d-949f-45160b970381"
     ],
     "references": [
       "https://martinfowler.com/bliki/ConwaysLaw.html"
@@ -32,7 +31,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-09"
   },
-  "synced": "6c0effdbd554978b",
+  "synced": "3345ff4a5890c930",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

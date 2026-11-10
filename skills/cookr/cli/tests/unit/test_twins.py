@@ -36,6 +36,22 @@ def test_a_link_to_the_twins_own_use_case_is_not_drift(tmp_path):
     assert drift(a, b) == []
 
 
+def test_a_uuid_link_to_the_twins_own_use_case_is_not_drift(tmp_path):
+    a = make(tmp_path, "implementing", "x",
+             "See [adc.guideline.implementing.ui.targets](cookbook:1111).")
+    b = make(tmp_path, "reviewing", "x",
+             "See [adc.guideline.reviewing.ui.targets](cookbook:2222).")
+    assert drift(a, b) == []
+
+
+def test_a_uuid_link_to_a_different_guideline_drifts(tmp_path):
+    a = make(tmp_path, "implementing", "x",
+             "See [adc.guideline.implementing.ui.targets](cookbook:1111).")
+    b = make(tmp_path, "reviewing", "x",
+             "See [adc.guideline.reviewing.ui.color](cookbook:2222).")
+    assert drift(a, b) == [("x", "drift", ("implementing", "reviewing"))]
+
+
 def test_twins_that_differ_without_a_reason_drift(tmp_path):
     a = make(tmp_path, "implementing", "logging", "Logs MUST be JSON.")
     b = make(tmp_path, "reviewing", "logging", "Logs SHOULD be JSON.")

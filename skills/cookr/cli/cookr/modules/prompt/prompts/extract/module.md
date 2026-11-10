@@ -1,5 +1,4 @@
 ---
-domain: extract
 role: "component specification writer"
 ---
 Operate as a specification writer producing one cookbook recipe from source code.
@@ -43,7 +42,8 @@ Operate as a specification writer producing one cookbook recipe from source code
   `*Tests.swift`, `test_*.py`), find them and derive vectors from their
   assertions, naming the test.
 - **Compliance** is a `| Check | Status | Category |` table of real checks
-  from the compliance check list below, each a markdown link, each `passed`,
+  from the compliance check list below, each written as the link listed there
+  (`[<check rdid>](cookbook:<cookbook-uuid>/<check-uuid>)`), each `passed`,
   `partial` or `failed`, then a rationale paragraph. Never `Not applicable`
   and never a placeholder row; every component meets at least
   `separation-of-concerns` and `unit-test-coverage` (`best-practices`).
@@ -64,9 +64,10 @@ Operate as a specification writer producing one cookbook recipe from source code
   or composition a developer would start from and what differs from the
   source. The **WinUI 3** bullet is the reason this recipe exists: be concrete
   (control names, properties, visual states, the XAML or WinUI pattern).
-- Reference Implementations is the table the task gives you, verbatim: one
-  row per source file or directory, paths relative to the repo root. It is how
-  tooling finds this recipe's code, so never add, drop or reword a row.
+- The recipe has no Reference Implementations section: the rows the task
+  gives you go into the cookbook index with `cookr implements`, one per source
+  file or directory, paths relative to the repo root. They are how tooling
+  finds this recipe's code, so never add, drop or reword a row.
 - When an existing recipe is given, keep its frontmatter `id`, `created`,
   `version` and `modified` and its Change History rows as they are. After
   saving, record the change with
@@ -74,11 +75,10 @@ Operate as a specification writer producing one cookbook recipe from source code
   bumps `version`, sets `modified` and adds the Change History row; never edit
   those by hand. If starting fresh, leave `id`, `created`, `modified`,
   `author`, `copyright`, `license` empty — `cookr update` fills them.
-- Frontmatter `domain` is the value the task gives: `<scheme>://<path>`,
-  where the scheme names the repo the recipe lives in and the path is the
-  recipe's path from that repo's root, without `.md`. Never the cookbook's own scheme for a
-  recipe that lives elsewhere. A cross-reference to a sibling recipe
-  (`depends-on`, `related`, `ingredients`) uses the same shape.
+- The recipe has no frontmatter `domain`: its identity is its `id` (a UUID).
+  A cross-reference to another artifact (`depends-on`, `related`) is that
+  artifact's UUID, `<cookbook-uuid>/<uuid>` when it lives in another cookbook;
+  one in the text is `[<rdid>](cookbook:<uuid>)`.
 - Frontmatter `platforms` lists the canonical identifiers of the source
   platforms only: `typescript` and `web` for a web source; `swift` plus
   `macos` and/or `ios` for an Apple source; `python` for a Python source. Never the platforms the Platform

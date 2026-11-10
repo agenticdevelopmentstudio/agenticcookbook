@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "808fa004-9148-41f6-bc32-dae7ba23dcf1",
     "title": "Hilt dependency injection for Android",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/hilt-dependency-injection",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/dependency-injection",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/dependency-injection"
+      "a2b79b0e-7d2c-44f5-b139-abc9cf47d1f5",
+      "e80d67b3-813f-47fb-8894-aa4e6f6479f3"
     ],
     "references": [
       "https://dagger.dev/hilt/",
@@ -39,7 +38,7 @@
       "new-module"
     ]
   },
-  "synced": "635c4c7215cae20a",
+  "synced": "26e48245c4ccfc8e",
   "parts": [
     {"part": "intro"},
     {"part": "setup", "heading": "Setup"},

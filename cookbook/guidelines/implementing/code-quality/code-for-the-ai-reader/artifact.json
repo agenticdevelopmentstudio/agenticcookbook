@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "42ed78a6-eea7-4b48-8b5f-be345682ffc3",
     "title": "Writing code for the AI reader",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/code-for-the-ai-reader",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/explicit-over-implicit",
-      "agenticdevelopercookbook://principles/principle-of-least-astonishment",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/naming"
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "da56ab62-98ad-4f52-b972-3ebfda5b1718",
+      "34486fb8-8a0b-4538-a40a-13124155cd56"
     ],
     "references": [
       "https://simonwillison.net/2025/Mar/11/using-llms-for-code/"
@@ -36,7 +35,7 @@
       "code-review"
     ]
   },
-  "synced": "238d2e5e87b992a1",
+  "synced": "db73b63836d69ce1",
   "parts": [
     {"part": "intro"},
     {"part": "write-for-grep-not-for-cleverness", "heading": "Write for grep, not for cleverness"},

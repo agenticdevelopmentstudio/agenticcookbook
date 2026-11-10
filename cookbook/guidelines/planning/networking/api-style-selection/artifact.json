@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d9b6e0aa-0b0e-4c88-94b1-80c305baaadd",
     "title": "Choosing an API style (REST, gRPC, GraphQL)",
-    "domain": "agenticdevelopercookbook://guidelines/planning/networking/api-style-selection",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/networking/api-design"
+      "6079c539-f547-46de-9284-d404a76f6d9d"
     ],
     "references": [
       "https://grpc.io/docs/what-is-grpc/introduction/",
@@ -36,7 +35,7 @@
       "new-module"
     ]
   },
-  "synced": "9c5cfd27e8f5253f",
+  "synced": "3fa21a8806e441cd",
   "parts": [
     {"part": "intro"},
     {"part": "decision-factors", "heading": "Decision factors"},

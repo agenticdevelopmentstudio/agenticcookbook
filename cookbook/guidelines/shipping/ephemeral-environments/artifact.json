@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0de6da80-6793-4ef5-afd3-c7663da1d952",
     "title": "Ephemeral preview environments",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/ephemeral-environments",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/shipping/continuous-delivery",
-      "agenticdevelopercookbook://guidelines/testing/contract-testing"
+      "703b1ec7-b940-46a5-8974-441b04a0bb9d",
+      "abdcd282-5b81-4ab2-ab1e-3ed288a4aee5"
     ],
     "references": [
       "https://www.getambassador.io/docs/telepresence",
@@ -38,7 +37,7 @@
       "pre-pr"
     ]
   },
-  "synced": "bf0b56450bbf2a7f",
+  "synced": "eb6753b04ed5de9c",
   "parts": [
     {"part": "intro"},
     {"part": "lifecycle-three-invariants", "heading": "Lifecycle (three invariants)"},

@@ -21,9 +21,11 @@ A recipe is complete when:
 7. no requirement name is prefixed with its RFC 2119 word (`**must-…**`);
 8. it cites no source line numbers (`(line 42)`, `source lines 10-20`,
    `Store.swift:88`) — they go stale with the next edit;
-9. every compliance check it cites exists in the catalog, when one is given;
+9. every compliance check it cites resolves to a check entry, when a resolver
+   is given (`compliance.unknown_citations`; a citation into a cookbook that
+   cannot be reached is left to `cookr validate`, which warns);
 10. its Compliance section cites every check each component meets
-    (REQUIRED_CHECKS);
+    (REQUIRED_CHECKS, matched by the cited check's `<document>#<name>`);
 11. its Conformance Test Vectors table has at least MIN_VECTORS rows;
 12. each Design Decision is the three bold lines `**Decision**:`,
     `**Rationale**:`, `**Approved**:`;
@@ -32,12 +34,12 @@ A recipe is complete when:
 14. its Change History table is one block of rows with a version, date and
     author each, in one version order, the newest row's version is the
     frontmatter `version`, and frontmatter `modified` is not older than the
-    newest row's date;
-15. its frontmatter `domain` is exactly the one its path derives
-    (`Config.domain`), when the caller says what that is — `cookr validate`
-    checks only the path suffix, so a wrong scheme or directory passes there.
+    newest row's date.
 
-Rules 6-15 are what writers got wrong repeatedly; a script can see each one,
+The Reference Implementations section a template lists is not required of the
+artifact: cookr derives it from the cookbook index when it compiles.
+
+Rules 6-14 are what writers got wrong repeatedly; a script can see each one,
 so the grade says so instead of a reviewer re-deriving it, and a new writer
 rule re-grades the corpus already written, not just the next recipe.
 
@@ -56,7 +58,9 @@ from typing import Optional
 from cookr.core import history
 
 from . import templates
-from .compliance import CITATION, unknown_citations
+from .artifact import DERIVED
+from .compliance import cited_checks, unknown_citations
+from .links import Resolver
 from .recipes import RecipeInfo
 
 COMPLETE_STATUSES = ("review", "accepted")
@@ -158,7 +162,7 @@ def _prose_lines(text: str) -> list[str]:
     lines = history.split_lines(text)
     # history's fence walker is the one CommonMark fence rule in the codebase;
     # this is the only place cookr reaches for it.
-    return [bare or "" for _, bare in history._unfenced(lines, 0, len(lines))]
+    return [bare or "" for _, bare in history.unfenced(lines, 0, len(lines))]
 
 
 def _has_text(chunk: str) -> bool:
@@ -230,8 +234,8 @@ def _winui_problems(notes: str) -> list[str]:
     return []
 
 
-def _compliance_problems(compliance: str) -> list[str]:
-    cited = {f"{d}#{n}" for d, n in CITATION.findall(compliance)}
+def _compliance_problems(compliance: str, resolver: Optional[Resolver]) -> list[str]:
+    cited = cited_checks(compliance, resolver)
     missing = [check for check in REQUIRED_CHECKS if check not in cited]
     if missing:
         return [f"Compliance does not cite {', '.join(f'`{c}`' for c in missing)}; "
@@ -350,15 +354,13 @@ def _frontmatter(info: RecipeInfo) -> Mapping:
     return info.data
 
 
-def problems(info: RecipeInfo, checks: Optional[frozenset[str]] = None,
-             source_platforms: Optional[Iterable[str]] = None,
-             domain: Optional[str] = None) -> list[str]:
+def problems(info: RecipeInfo, resolver: Optional[Resolver] = None,
+             source_platforms: Optional[Iterable[str]] = None) -> list[str]:
     """Everything that keeps `info` from `complete`.
 
-    `checks` is the compliance catalog (None skips rule 9); `source_platforms`
-    are the source platforms of every component this recipe covers
-    (None skips rule 13); `domain` is the recipe's path-derived domain (None
-    skips rule 15).
+    `resolver` resolves cited check links (None skips rule 9); `source_platforms`
+    are the source platforms of every component this recipe covers (None skips
+    rule 13).
     """
     out = []
     if info.status not in COMPLETE_STATUSES:
@@ -370,17 +372,17 @@ def problems(info: RecipeInfo, checks: Optional[frozenset[str]] = None,
         out.append("a requirement name starts with its RFC 2119 word (`must-`/`should-`/`may-`)")
     if cites_source_lines(_prose_lines(graded)):
         out.append("cites source line numbers; cite the type, function or quoted comment")
-    if checks is not None:
-        bad = unknown_citations(info.body, checks)
+    if resolver is not None:
+        bad = unknown_citations(info.body, resolver)
         if bad:
-            out.append(f"cites compliance checks not in the catalog: {', '.join(bad)}")
+            out.append(f"cites compliance checks that do not exist: {', '.join(bad)}")
     rtype = info.type
     if rtype not in templates.TYPES:
         # Graded against the ingredient template anyway, but never silently: a
         # typo'd type must not be able to report `complete`.
         out.append(f"unknown type `{rtype or '(none)'}`")
         rtype = "ingredient"
-    required = templates.required_sections(rtype)
+    required = [s for s in templates.required_sections(rtype) if s not in DERIVED]
     for name in required:
         if name not in found:
             out.append(f"section `{name}` is missing")
@@ -388,7 +390,7 @@ def problems(info: RecipeInfo, checks: Optional[frozenset[str]] = None,
             out.append(f"section `{name}` is empty")
     out += _winui_problems(found.get("Platform Notes", ""))
     if "Compliance" in found:
-        out += _compliance_problems(compliance)
+        out += _compliance_problems(compliance, resolver)
     if VECTORS_SECTION in found and VECTORS_SECTION in required:
         rows = _table_data_rows(found[VECTORS_SECTION])
         if rows < MIN_VECTORS:
@@ -400,9 +402,5 @@ def problems(info: RecipeInfo, checks: Optional[frozenset[str]] = None,
         declared = frontmatter.get("platforms") or []
         out += platform_problems(declared if isinstance(declared, list) else [declared],
                                  source_platforms)
-    if domain is not None:
-        actual = str(frontmatter.get("domain", "") or "").strip()
-        if actual != domain:
-            out.append(f"frontmatter `domain` is `{actual or '(none)'}`, not `{domain}`")
     out += history_problems(info.body, frontmatter)
     return out

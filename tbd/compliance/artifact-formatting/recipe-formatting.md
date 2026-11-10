@@ -1,13 +1,12 @@
 ---
 id: 328D96C6-20DE-495E-8977-733441B97F81
 title: "Recipe Formatting Compliance"
-domain: agenticdevelopercookbook://compliance/artifact-formatting/recipe-formatting
 type: compliance
-version: 2.1.0
+version: 3.0.0
 status: draft
 language: en
 created: 2026-04-04
-modified: 2026-09-25
+modified: 2026-11-09
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -18,10 +17,10 @@ tags:
   - artifact-formatting
   - recipe
 depends-on:
-  - agenticdevelopercookbook://introduction/conventions
+  - guide/introduction/conventions.md
 related:
-  - agenticdevelopercookbook://compliance/artifact-formatting/principle-formatting
-  - agenticdevelopercookbook://compliance/artifact-formatting/guideline-formatting
+  - tbd/compliance/artifact-formatting/principle-formatting.md
+  - tbd/compliance/artifact-formatting/guideline-formatting.md
 references: []
 ---
 
@@ -47,7 +46,7 @@ Recipes MUST follow this section order. Optional sections (marked MAY) can be om
 8. `## Integration Test Vectors`
 9. `## Edge Cases`
 10. `## Platform Notes`
-11. `## Reference Implementations` (MAY omit in a cookbook with no code)
+11. `## Reference Implementations` (MAY: derived from `index.json` when compiled; never authored)
 12. `## Design Decisions`
 13. `## Compliance`
 14. `## Change History`
@@ -56,14 +55,16 @@ Recipes MUST follow this section order. Optional sections (marked MAY) can be om
 
 ### rf-frontmatter-complete
 
-All required YAML frontmatter fields MUST be present per `introduction/conventions.md`. Additionally, the `ingredients` field MUST be present and list at least one ingredient domain.
+All required meta fields (the frontmatter of the compiled doc) MUST be present per `guide/introduction/conventions.md`. There is no `domain` field. Additionally, the `ingredients` field MUST be present and list at least one ingredient UUID (an rdid may be authored; `cookr update` stores the UUID).
+
+The artifact's `id` is its identity: every link to it stores that UUID. Its rdid and folder path are held in the cookbook's `index.json`, never in the artifact; `cookr validate` fails when the index and the folders disagree.
 
 **Applies when:** always.
 
-**Required fields:** id, title, domain, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, ingredients, depends-on, related, references.
+**Required fields:** id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, ingredients, depends-on, related, references.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -93,12 +94,12 @@ The recipe MUST have a `## Overview` section describing what the composition is 
 
 ### rf-ingredients
 
-The recipe MUST have a `## Ingredients` section with a table containing columns: Name, Domain, Role, Required, Configuration. Each ingredient MUST reference a valid `agenticdevelopercookbook://ingredients/` domain.
+The recipe MUST have a `## Ingredients` section with a table containing columns: Name, Ingredient, Role, Required, Configuration. The Ingredient column holds an in-text link to the ingredient, `[<rdid>](cookbook:<uuid>)`, and every ingredient MUST resolve to an ingredient entry in the cookbook's `index.json` (or, as `cookbook:<cookbook-uuid>/<uuid>`, in a dependency's). Each row's ingredient MUST also be listed in the `ingredients` meta field.
 
 **Applies when:** always.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -109,7 +110,7 @@ The recipe MUST have a `## Integration Requirements` section containing named re
 **Applies when:** always.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -155,12 +156,12 @@ The recipe MUST have a `## Platform Notes` section with per-platform integration
 
 ### rf-reference-implementations
 
-The recipe MUST have a `## Reference Implementations` section, directly after `## Platform Notes`, when its cookbook's repository implements it: a `| Platform | Path |` table with one row per implementing source file or directory. `Platform` is one of `web`, `apple`, `android`, `windows`, `python`; `Path` is a backticked path relative to the repository root, and a directory path ends with `/` and claims every source file below it. Every path MUST exist. In a cookbook with no code of its own the section MAY be omitted, or MAY be the one line `Not applicable: this cookbook carries no implementations.`
+The recipe MUST NOT carry an authored `## Reference Implementations` section. The code that implements it is recorded in its cookbook's `index.json` with `cookr implements <uuid|rdid> <location> --platform <p>` (`--remove <location>` drops a row), and `cookr confirm <uuid|rdid>` records it as conforming to the current version. A compiled doc or skill shows those rows as a derived `## Reference Implementations` section after `## Platform Notes`. `platform` is one of `macos`, `ios`, `apple`, `web`, `android`, `windows`, `linux`, `python`; a location is a repo-relative file, a directory ending with `/` (which claims every source file below it), or a URL. Every recorded location MUST exist, unless the row is `planned`.
 
-**Applies when:** the cookbook's `cookbook.json` declares `code` (a library or app cookbook that lives beside its source). `cookbook validate` checks that every listed path exists.
+**Applies when:** the repo's `.cookr.json` declares `roots` (a cookbook that lives beside its source). `cookr validate` checks that every recorded location exists.
 
 **Guidelines:**
-- [Cookbook Formatting](agenticdevelopercookbook://compliance/artifact-formatting/cookbook-formatting)
+- [Cookbook Formatting](cookbook-formatting.md)
 
 ---
 
@@ -179,7 +180,7 @@ The recipe MUST have a `## Compliance` section with a table containing columns: 
 **Applies when:** always.
 
 **Guidelines:**
-- [Compliance INDEX](agenticdevelopercookbook://compliance/INDEX)
+- [Compliance INDEX](../INDEX.md)
 
 ---
 
@@ -190,7 +191,7 @@ The file MUST end with a `## Change History` section containing a table with col
 **Applies when:** always.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ## Change History
 
@@ -199,3 +200,4 @@ The file MUST end with a `## Change History` section containing a table with col
 | 1.0.0 | 2026-04-04 | Mike Fullerton | Initial creation |
 | 2.0.0 | 2026-04-05 | Mike Fullerton | Rewrite for composition-focused recipe format |
 | 2.1.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
+| 3.0.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID identity and rdids replace `domain`; implementations live in index.json |

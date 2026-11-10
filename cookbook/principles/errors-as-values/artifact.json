@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "51e1f37a-919e-4e42-b439-ffdf0c2ef2e8",
     "title": "Errors as values",
-    "domain": "agenticdevelopercookbook://principles/errors-as-values",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -21,9 +20,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/fail-fast",
-      "agenticdevelopercookbook://principles/explicit-over-implicit",
-      "agenticdevelopercookbook://principles/parse-dont-validate"
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "2a22b563-afb5-4615-96ae-338eafd5eb81"
     ],
     "references": [
       "https://doc.rust-lang.org/book/ch09-00-error-handling.html",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-10"
   },
-  "synced": "34dcd191314cf5d7",
+  "synced": "5b3130319204a508",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

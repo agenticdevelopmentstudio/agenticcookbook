@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2212a394-68d8-4588-a587-2fc637280deb",
     "title": "Handoff and continuity",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/handoff-and-continuity",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -28,8 +27,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking",
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/search-integration"
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7",
+      "b512282a-8174-426f-95dd-4a147222584d"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -39,7 +38,7 @@
       "offline-support"
     ]
   },
-  "synced": "6efa193e673b9f21",
+  "synced": "2bcb3ae3e763225f",
   "parts": [
     {"part": "intro"},
     {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},

@@ -3,4 +3,4 @@ omit:
   - Change History
 ---
 {{body}}
-_From `{{domain}}` v{{version}}._
+_From `{{rdid}}` v{{version}}._

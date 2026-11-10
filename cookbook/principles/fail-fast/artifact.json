@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "425271ea-92b6-4df6-9a83-94795f1be377",
     "title": "Fail fast",
-    "domain": "agenticdevelopercookbook://principles/fail-fast",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "2492715090b669c2",
+  "synced": "6d3303fef7d48194",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

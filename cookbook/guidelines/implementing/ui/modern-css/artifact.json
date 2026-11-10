@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ea5ccc72-7b6e-4aa8-a599-40837f722f38",
     "title": "Modern CSS layout and Baseline-driven adoption",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/modern-css",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/layout",
-      "agenticdevelopercookbook://guidelines/implementing/ui/theming"
+      "26c8e7d6-dde3-48d0-bde0-8a71a51a6674",
+      "5cc9773e-78de-493e-891c-2a819baf9b60"
     ],
     "references": [
       "https://web.dev/baseline",
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "1dbc08868c0b7fd4",
+  "synced": "c729fdd51e3ba6d8",
   "parts": [
     {"part": "intro"},
     {"part": "decide-adoption-with-baseline", "heading": "Decide adoption with Baseline"},

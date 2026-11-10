@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "497a717f-de29-4baf-b7b8-4487f672d9a8",
     "title": "Design-Time Data",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/design-time-data",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "98ca87b504afdb4c",
+  "synced": "d2d2de97bf60688b",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

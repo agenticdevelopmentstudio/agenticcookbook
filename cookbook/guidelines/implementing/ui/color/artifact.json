@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e547d962-d561-4bd9-bb5a-50bdeec98335",
     "title": "Color",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/color",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -25,7 +24,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility"
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
     ],
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines/color",
@@ -40,7 +39,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "e1a10f10c03e0dbd",
+  "synced": "6d640b9771e6408f",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,6 +1,6 @@
 
 - **hsplit-sidebar-detail**: The window MUST use an `HSplitView` with a sidebar on the left and a detail pane on the right.
-- **persist-window-frame**: The window MUST persist its frame (position and size) between sessions using the window frame persistence mechanism described in [window-frame-persistence.md](../../../ingredients/infrastructure/window-frame-persistence.md). The autosave name MUST be derived from a hash of the workspace file path.
+- **persist-window-frame**: The window MUST persist its frame (position and size) between sessions using the window frame persistence mechanism described in [adc.ingredient.infrastructure.window-frame-persistence](cookbook:85d04a9b-5692-4025-a489-eac8bbb14663). The autosave name MUST be derived from a hash of the workspace file path.
 - **sidebar-default-30pct**: The sidebar proportion MUST default to `0.3` and MUST be persisted in the workspace document's `settings` table.
 - **resizable-min-size**: The window MUST be resizable with a minimum size sufficient to display the sidebar and detail pane without clipping content.
 - **browser-bound-to-document**: The Workspace Browser MUST render exclusively from the Workspace Document's entries, discovered projects, and aggregated `isSyncing` state, and MUST NOT read the file system directly.

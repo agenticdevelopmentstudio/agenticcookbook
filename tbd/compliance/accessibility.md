@@ -1,7 +1,6 @@
 ---
 id: 27846525-7E10-49F1-B1ED-06840FAF6120
 title: "Accessibility"
-domain: agenticdevelopercookbook://compliance/accessibility
 type: compliance
 version: 1.0.1
 status: draft
@@ -16,9 +15,9 @@ platforms: []
 tags: [compliance, accessibility]
 depends-on: []
 related:
-  - agenticdevelopercookbook://compliance/platform-compliance
-  - agenticdevelopercookbook://compliance/internationalization
-  - agenticdevelopercookbook://compliance/performance
+  - tbd/compliance/platform-compliance.md
+  - tbd/compliance/internationalization.md
+  - tbd/compliance/performance.md
 references: []
 ---
 
@@ -39,7 +38,7 @@ All interactive elements MUST be accessible to screen readers with meaningful la
 **Applies when:** a component renders interactive UI elements (buttons, links, form controls, custom widgets).
 
 **Guidelines:**
-- [Accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility)
+- [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)
 
 ---
 
@@ -50,7 +49,7 @@ All functionality MUST be operable via keyboard or equivalent non-pointer input.
 **Applies when:** a component provides interactive functionality.
 
 **Guidelines:**
-- [Accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility)
+- [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)
 
 ---
 
@@ -61,8 +60,8 @@ Text MUST scale with system font size settings on all platforms.
 **Applies when:** a component displays text content.
 
 **Guidelines:**
-- [Dynamic Type](agenticdevelopercookbook://guidelines/implementing/accessibility/dynamic-type)
-- [Font Scaling](agenticdevelopercookbook://guidelines/implementing/accessibility/font-scaling)
+- [adc.guideline.implementing.accessibility.dynamic-type](cookbook:9dae85c5-85ff-4dd1-9bc4-5e923452dba8)
+- [adc.guideline.implementing.accessibility.font-scaling](cookbook:01fffa23-5b96-491f-9199-8878cf676683)
 
 ---
 
@@ -73,7 +72,7 @@ Text and interactive elements MUST meet WCAG AA contrast ratio (4.5:1 for normal
 **Applies when:** a component renders text or interactive elements with foreground/background color combinations.
 
 **Guidelines:**
-- [Accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility)
+- [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)
 
 ---
 
@@ -84,7 +83,7 @@ Touch and click targets MUST be at least 44x44pt (Apple) or 48x48dp (Android).
 **Applies when:** a component renders tappable or clickable elements.
 
 **Guidelines:**
-- [Touch and Click Targets](agenticdevelopercookbook://guidelines/implementing/ui/touch-click-targets)
+- [adc.guideline.implementing.ui.touch-click-targets](cookbook:73b254b4-c611-434a-a9f4-67c8a7155576)
 
 ---
 
@@ -95,8 +94,8 @@ Animations MUST respect the system reduced-motion preference.
 **Applies when:** a component uses animation or motion effects.
 
 **Guidelines:**
-- [Accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility)
-- [Animation and Motion](agenticdevelopercookbook://guidelines/implementing/ui/animation-motion)
+- [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)
+- [adc.guideline.implementing.ui.animation-motion](cookbook:9f13dbec-cecb-482b-824b-f7d3e341878a)
 
 ---
 
@@ -107,7 +106,7 @@ Focus MUST be managed logically; modal content MUST trap focus appropriately.
 **Applies when:** a component manages focus order, presents modal dialogs, or uses overlays.
 
 **Guidelines:**
-- [Accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility)
+- [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)
 
 ---
 
@@ -118,7 +117,7 @@ Web components MUST use correct ARIA roles, states, and properties.
 **Applies when:** a component renders web-based UI using HTML/ARIA.
 
 **Guidelines:**
-- [Accessibility](agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility)
+- [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)
 
 ## Change History
 

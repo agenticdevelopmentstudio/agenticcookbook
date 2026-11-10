@@ -41,14 +41,14 @@ def test_sample_folder_is_what_convert_writes(doc, tmp_path):
     assert not (cmp.left_only or cmp.right_only or cmp.diff_files)
 
 
-def test_every_cookbook_artifact_round_trips(tmp_path):
+def test_every_cookbook_artifact_round_trips(tmp_path, repo_v2):
     # Source folders are the only form committed: compile each to its doc,
     # split that doc back into a folder, and the folder must compose the same doc.
-    folders = find_folders([REPO_ROOT / "cookbook"])
+    folders = find_folders([repo_v2 / "cookbook"])
     assert len(folders) > 400
     for folder in folders:
         text = compose_document(load_folder(folder))
-        out = tmp_path / folder.relative_to(REPO_ROOT)
+        out = tmp_path / folder.relative_to(repo_v2)
         write_folder(read_document(text), out)
         assert compose_document(load_folder(out)) == normalize_document(text), folder
 
@@ -125,9 +125,39 @@ def test_load_refuses_a_missing_part(tmp_path):
 
 
 def test_load_refuses_an_unknown_format(tmp_path):
-    (tmp_path / "artifact.json").write_text(json.dumps({"format": 2, "meta": {}, "parts": []}))
+    (tmp_path / "artifact.json").write_text(json.dumps({"format": 3, "meta": {}, "parts": []}))
     with pytest.raises(ArtifactError, match="format"):
         load_folder(tmp_path)
+
+
+def test_load_folder_refuses_format_1(tmp_path):
+    (tmp_path / "artifact.json").write_text(json.dumps({"format": 1, "meta": {}, "parts": []}))
+    with pytest.raises(ArtifactError, match="format 1; run `cookr upgrade`"):
+        load_folder(tmp_path)
+
+
+def test_load_folder_reads_its_manifest_once(tmp_path, monkeypatch):
+    from pathlib import Path
+
+    write_folder(read_document(DOCS[0].read_text()), tmp_path / "a")
+    reads: list = []
+    real = Path.read_text
+    monkeypatch.setattr(Path, "read_text", lambda self, *a, **k: (
+        reads.append(self.name), real(self, *a, **k))[1])
+    load_folder(tmp_path / "a")
+    assert reads.count("artifact.json") == 1
+
+
+def test_load_refuses_a_boolean_format(tmp_path):
+    (tmp_path / "artifact.json").write_text(json.dumps({"format": True, "meta": {}, "parts": []}))
+    with pytest.raises(ArtifactError, match="unsupported format True"):
+        load_folder(tmp_path)
+
+
+def test_write_folder_writes_format_2():
+    manifest = json.loads((SAMPLES / "folders" / DOCS[0].stem / "artifact.json").read_text())
+    assert manifest["format"] == 2
+    assert "domain" not in manifest["meta"]
 
 
 def test_write_replaces_a_stale_folder(tmp_path):
@@ -250,3 +280,89 @@ def test_save_document_records_what_it_wrote(tmp_path):
     save_document(doc, doc.read_text().replace("\n## ", "\nAdded.\n\n## ", 1))
     assert sync_state(folder) == "current"
     assert json.loads((folder / "artifact.json").read_text())["synced"] == doc_digest(doc.read_text())
+
+
+# --- derived sections: with_part, authored_text, without_derived ----------------------
+
+def _derived():
+    from cookr.core import refimpl
+    from cookr.core.index import Conformance, Implementation
+    rows = [Implementation("apple", "A/B.swift", Conformance("conforms")),
+            Implementation("web", None, Conformance("planned"))]
+    return refimpl.part(rows)
+
+
+_RI = ("## Reference Implementations\n\n| Platform | Location | Conformance |\n"
+       "|----------|----------|-------------|\n| apple | `A/B.swift` | conforms |\n"
+       "| web | (planned) | planned |\n\n")
+
+
+def _placed(body: str) -> str:
+    from cookr.core.artifact import Artifact, with_part
+    return with_part(Artifact(meta={}, parts=split_body(body)), _derived()).body()
+
+
+@pytest.mark.parametrize("anchor", ["Design Decisions", "Compliance", "Change History"])
+def test_with_part_goes_before_its_anchor(anchor):
+    body = f"# T\n\n## Overview\n\nx\n\n## {anchor}\n\ny\n"
+    assert _placed(body) == f"# T\n\n## Overview\n\nx\n\n{_RI}## {anchor}\n\ny\n"
+
+
+def test_with_part_prefers_design_decisions_then_compliance_then_change_history():
+    out = _placed("## Change History\n\nc\n\n## Compliance\n\nb\n\n## Design Decisions\n\na\n")
+    assert out.index("## Compliance") < out.index("## Reference Implementations") < out.index(
+        "## Design Decisions")
+    out = _placed("## Change History\n\nc\n\n## Compliance\n\nb\n")
+    assert out.index("## Change History") < out.index("## Reference Implementations") < out.index(
+        "## Compliance")
+
+
+def test_with_part_appends_when_no_anchor_exists():
+    assert _placed("# T\n\n## Overview\n\nx\n") == f"# T\n\n## Overview\n\nx\n\n{_RI}"
+
+
+def test_with_part_adds_the_missing_trailing_newline_before_appending():
+    assert _placed("# T\n\n## Overview\n\nx") == f"# T\n\n## Overview\n\nx\n\n{_RI}"
+
+
+def test_with_part_ignores_an_anchor_heading_inside_a_fence():
+    body = "# T\n\n## Notes\n\n```\n## Design Decisions\n```\n\n## Overview\n\nx\n"
+    out = _placed(body)
+    assert out == body + "\n" + _RI  # appended: the fenced heading is not a section
+    assert out.index("```\n## Design Decisions\n```") < out.index("## Reference Implementations")
+
+
+def test_with_part_leaves_the_original_artifact_unchanged():
+    from cookr.core.artifact import Artifact, with_part
+    art = Artifact(meta={}, parts=split_body("# T\n\n## Design Decisions\n\ny\n"))
+    names = [p.name for p in art.parts]
+    with_part(art, _derived())
+    assert [p.name for p in art.parts] == names
+
+
+def test_without_derived_drops_only_derived_sections():
+    from cookr.core.artifact import Artifact, derived_parts, without_derived
+    body = f"# T\n\n## Overview\n\nx\n\n{_RI}## Design Decisions\n\ny\n"
+    art = Artifact(meta={}, parts=split_body(body))
+    assert [p.heading for p in derived_parts(art)] == ["Reference Implementations"]
+    assert without_derived(art).body() == "# T\n\n## Overview\n\nx\n\n## Design Decisions\n\ny\n"
+
+
+def test_authored_text_strips_the_derived_section_and_save_document_restores_it(tmp_path):
+    from cookr.core.artifact import authored_text, doc_path, save_document
+    plain = ("---\nid: 11111111-2222-4333-8444-555555555555\ntype: ingredient\n---\n"
+             "# T\n\n## Overview\n\nx\n\n## Design Decisions\n\ny\n")
+    with_ri = plain.replace("## Design Decisions", _RI + "## Design Decisions")
+    assert authored_text(with_ri) == plain
+    assert authored_text(plain) == plain
+
+    folder = tmp_path / "t"
+    write_folder(read_document(plain), folder)
+    doc = doc_path(folder)
+    doc.write_text(with_ri, encoding="utf-8")
+    save_document(doc, with_ri.replace("\nx\n", "\nx, edited\n"))
+    assert not (folder / "reference-implementations.md").exists()
+    assert "Reference Implementations" not in load_folder(folder).body()
+    assert compose_document(load_folder(folder)) == plain.replace("\nx\n", "\nx, edited\n")
+    assert doc.read_text(encoding="utf-8") == with_ri.replace("\nx\n", "\nx, edited\n")
+

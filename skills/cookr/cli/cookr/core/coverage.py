@@ -5,10 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from cookr.core import refimpl
-
 from .completeness import problems
-from .config import Config
+from .links import Resolver, resolver_for
+from .repoconfig import PLATFORMS, Config
 from .inventory import Component, in_group, scan
 from .recipes import RecipeInfo, load_corpus
 
@@ -22,7 +21,7 @@ class CoverageRow:
     tiers: tuple
     platforms: tuple
     paths: tuple
-    state: str  # `missing` means no cookbook/<name>.md; otherwise that file is the spec
+    state: str  # `missing` means no cookbook/<name>/ folder; otherwise that folder is the spec
     problems: tuple
 
 
@@ -62,25 +61,29 @@ def collision(items: list[Component], config: Config) -> Optional[str]:
              if len(r) > 1]
     if spans:
         out.append(f"name collision across roots ({'; '.join(spans)}): write a spec for one "
-                   f"side under another name and claim its file in `## Reference Implementations`")
+                   f"side under another name and claim its file with `cookr implements`")
     return "; ".join(out) or None
 
 
 def claim_problems(info: RecipeInfo, items: list[Component], config: Config,
                    claimed_by: dict[str, list[str]]) -> list[str]:
-    """What the spec's Reference Implementations gets wrong about its sources."""
+    """What the spec's index implementations get wrong about its sources."""
     out = []
     for impl in info.implementations:
-        if impl.platform not in refimpl.PLATFORMS:
-            out.append(f"Reference Implementations platform `{impl.platform}` is not one of "
-                       f"{', '.join(refimpl.PLATFORMS)}")
-        target = config.repo_root / impl.path
-        if not (target.is_dir() if impl.is_dir else target.is_file()):
-            out.append(f"Reference Implementations path `{impl.path}` does not exist"
-                       + (" as a directory" if impl.is_dir and target.exists() else ""))
+        if impl.platform not in PLATFORMS:
+            out.append(f"implementation platform `{impl.platform}` is not one of "
+                       f"{', '.join(PLATFORMS)}")
+        loc = impl.location
+        if not loc or "://" in loc:
+            continue  # planned, or code outside the repo
+        is_dir = loc.endswith("/")
+        target = config.repo_root / loc
+        if not (target.is_dir() if is_dir else target.is_file()):
+            out.append(f"implementation location `{loc}` does not exist"
+                       + (" as a directory" if is_dir and target.exists() else ""))
     for c in items:
         if not c.claimed:
-            out.append(f"Reference Implementations does not list `{c.path}` ({c.platform})")
+            out.append(f"no implementation lists `{c.path}` ({c.platform})")
         elif len(claimed_by.get(c.path, ())) > 1:
             others = [s for s in claimed_by[c.path] if s != info.slug]
             out.append(f"`{c.path}` is also claimed by {', '.join(others)}")
@@ -88,22 +91,25 @@ def claim_problems(info: RecipeInfo, items: list[Component], config: Config,
 
 
 def compute(config: Config, tier: Optional[str] = None,
-            checks: Optional[frozenset[str]] = None,
-            corpus: Optional[dict[str, RecipeInfo]] = None) -> CoverageReport:
+            checks: bool = True,
+            corpus: Optional[dict[str, RecipeInfo]] = None,
+            resolver: Optional[Resolver] = None) -> CoverageReport:
     """One row per spec name that has sources.
 
     `tier` filters the rows that are returned (and graded) to one group of the
     cookbook; it never narrows the corpus the rows are matched against, so
     `unmatched_recipes` is the same list either way.
 
-    A matched row grades `partial` while its spec has completeness problems, a
-    Reference Implementations row that names nothing, a source it does not
-    list, or a source another spec claims too.
+    A matched row grades `partial` while its spec has completeness problems, an
+    implementation whose location names nothing, a source it does not list, or
+    a source another spec claims too.
 
-    `checks` is the compliance catalog (`compliance.load_checks`); None skips
-    the unknown-citation check.
+    `checks` False skips the unknown-citation check, which resolves each cited
+    check link (`resolver`, else one for `config`).
     """
     corpus = load_corpus(config.cookbook_dir) if corpus is None else corpus
+    if checks and resolver is None:
+        resolver = resolver_for(config)
     components = scan(config, corpus)
 
     grouped: dict[str, list[Component]] = {}
@@ -124,7 +130,7 @@ def compute(config: Config, tier: Optional[str] = None,
         if info is None:
             state = "missing"
         else:
-            probs = tuple(problems(info, checks, platforms, config.domain(name))) + tuple(
+            probs = tuple(problems(info, resolver if checks else None, platforms)) + tuple(
                 claim_problems(info, items, config, claimed_by)) + probs
             state = "partial" if probs else "complete"
         rows.append(CoverageRow(

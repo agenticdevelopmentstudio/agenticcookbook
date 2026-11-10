@@ -1,7 +1,6 @@
 ---
 id: 00000000-0000-0000-0000-000000000002
 title: "Getting Started"
-domain: agenticdevelopercookbook://introduction/getting-started
 type: reference
 version: 1.0.0
 status: draft

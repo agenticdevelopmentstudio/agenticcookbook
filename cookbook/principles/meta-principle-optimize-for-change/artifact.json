@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "aadd048b-da52-415d-949f-45160b970381",
     "title": "Meta-Principle: Optimize for Change",
-    "domain": "agenticdevelopercookbook://principles/meta-principle-optimize-for-change",
     "type": "principle",
     "version": "1.1.2",
     "status": "accepted",
@@ -29,7 +28,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-10"
   },
-  "synced": "25d668028b149ba7",
+  "synced": "f07d9fb7df64f5ea",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

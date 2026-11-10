@@ -1,0 +1,68 @@
+{
+  "cookbook": {
+    "id": "d8069120-7274-4094-bfb9-6d03d97e8d55",
+    "rdid": "mini-repo"
+  },
+  "entries": {
+    "6f1c2a4e-0b3d-4c5e-9f10-a1b2c3d4e501": {
+      "implementations": [
+        {
+          "conformance": {
+            "state": "unverified"
+          },
+          "location": "web/components/Button.tsx",
+          "platform": "web"
+        },
+        {
+          "conformance": {
+            "state": "unverified"
+          },
+          "location": "apple/UI/",
+          "platform": "apple"
+        }
+      ],
+      "kind": "ingredient",
+      "path": "components/button",
+      "rdid": "mini-repo.ingredient.components.button"
+    },
+    "6f1c2a4e-0b3d-4c5e-9f10-a1b2c3d4e502": {
+      "implementations": [
+        {
+          "conformance": {
+            "state": "unverified"
+          },
+          "location": "web/components/chat-composer.tsx",
+          "platform": "web"
+        }
+      ],
+      "kind": "ingredient",
+      "path": "components/chat-composer",
+      "rdid": "mini-repo.ingredient.components.chat-composer"
+    },
+    "6f1c2a4e-0b3d-4c5e-9f10-a1b2c3d4e503": {
+      "implementations": [
+        {
+          "conformance": {
+            "state": "unverified"
+          },
+          "location": "web/blocks/StatCard.tsx",
+          "platform": "web"
+        }
+      ],
+      "kind": "ingredient",
+      "path": "blocks/stat-card",
+      "rdid": "mini-repo.ingredient.blocks.stat-card"
+    },
+    "6f1c2a4e-0b3d-4c5e-9f10-a1b2c3d4e504": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "site-menu",
+      "rdid": "mini-repo.recipe.site-menu"
+    }
+  },
+  "foreign": {
+    "e7a40000-0000-4000-8000-000000000000/2e5f0c55-04ce-55ce-bb69-33d4902048d9": "adc.check.best-practices.unit-test-coverage",
+    "e7a40000-0000-4000-8000-000000000000/acb89e27-9af7-5711-a017-3e4861d23f1a": "adc.check.best-practices.separation-of-concerns"
+  },
+  "format": 2
+}

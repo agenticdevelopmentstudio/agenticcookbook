@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "da56ab62-98ad-4f52-b972-3ebfda5b1718",
     "title": "Principle of least astonishment",
-    "domain": "agenticdevelopercookbook://principles/principle-of-least-astonishment",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "20d7a99cc3c46339",
+  "synced": "8c7ed00d88c3bc51",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

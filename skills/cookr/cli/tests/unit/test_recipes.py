@@ -5,6 +5,8 @@ from cookr.core.errors import CookbookError
 
 from cookr.core.recipes import load_corpus, spec_id
 
+from .cookbook_helpers import add_spec
+
 
 def test_corpus_keys_are_cookbook_relative_paths(mini_repo):
     corpus = load_corpus(mini_repo / "cookbook")
@@ -31,20 +33,26 @@ def test_recipe_infos_slug_matches_its_corpus_key(mini_repo):
     assert corpus["blocks/stat-card"].slug == "blocks/stat-card"
 
 
-def test_spec_id_is_the_relative_path_without_the_md_suffix(mini_repo):
+def test_spec_id_is_the_folders_cookbook_relative_path(mini_repo):
     cookbook = mini_repo / "cookbook"
-    assert spec_id(cookbook / "components" / "button.md", cookbook) == "components/button"
-    assert spec_id(cookbook / "site-menu.md", cookbook) == "site-menu"
+    assert spec_id(cookbook / "components" / "button", cookbook) == "components/button"
+    assert spec_id(cookbook / "site-menu", cookbook) == "site-menu"
 
 
-def test_same_named_files_in_different_directories_do_not_collide(mini_repo):
-    # Corpus keys are full cookbook-relative paths, so two files that share a
-    # stem in different directories are two distinct specs, not a collision.
-    (mini_repo / "cookbook" / "components" / "sub").mkdir()
-    (mini_repo / "cookbook" / "components" / "sub" / "button.md").write_text(
-        "---\ntype: ingredient\nstatus: draft\n---\n", encoding="utf-8")
+def test_same_named_folders_in_different_directories_do_not_collide(mini_repo):
+    # Corpus keys are full cookbook-relative paths, so two folders that share a
+    # name in different directories are two distinct specs, not a collision.
+    add_spec(mini_repo, "components/sub/button")
     corpus = load_corpus(mini_repo / "cookbook")
     assert {"components/button", "components/sub/button"} <= set(corpus)
+    assert corpus["components/sub/button"].rdid == "mini-repo.ingredient.components.sub.button"
+
+
+def test_corpus_carries_each_specs_rdid_and_implementations(mini_repo):
+    info = load_corpus(mini_repo / "cookbook")["components/chat-composer"]
+    assert info.rdid == "mini-repo.ingredient.components.chat-composer"
+    assert [(i.platform, i.location) for i in info.implementations] == [
+        ("web", "web/components/chat-composer.tsx")]
 
 
 def test_corpus_skips_index_and_template(mini_repo):
@@ -55,13 +63,15 @@ def test_corpus_skips_index_and_template(mini_repo):
     assert "_template" not in corpus
 
 
-def test_invalid_yaml_frontmatter_is_a_cookbook_error_naming_the_file(mini_repo):
-    (mini_repo / "cookbook" / "extra.md").write_text("---\ntitle: a: b\n---\n# x\n", encoding="utf-8")
-    with pytest.raises(CookbookError, match="extra.md"):
+def test_unreadable_artifact_is_a_cookbook_error_naming_the_folder(mini_repo):
+    extra = mini_repo / "cookbook" / "extra"
+    extra.mkdir()
+    (extra / "artifact.json").write_text("{not json", encoding="utf-8")
+    with pytest.raises(CookbookError, match="extra"):
         load_corpus(mini_repo / "cookbook")
 
 
-def test_non_utf8_recipe_is_a_cookbook_error_naming_the_file(mini_repo):
-    (mini_repo / "cookbook" / "latin.md").write_bytes(b"---\ntitle: caf\xe9\n---\n")
-    with pytest.raises(CookbookError, match="latin.md"):
+def test_non_utf8_part_is_a_cookbook_error_naming_the_folder(mini_repo):
+    (mini_repo / "cookbook" / "site-menu" / "intro.md").write_bytes(b"# caf\xe9\n")
+    with pytest.raises(CookbookError, match="site-menu"):
         load_corpus(mini_repo / "cookbook")

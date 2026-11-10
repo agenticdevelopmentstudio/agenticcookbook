@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3890e8fb-9d2d-42db-9753-cf60b95152cc",
     "title": "AI Provider Observability",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/ai-provider-observability",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,10 +21,10 @@
       "logging"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/observability/logging"
+      "0f0c1da3-1c53-417b-890d-0259d7513c65"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/ai-cost-management"
+      "e5799ba8-98b0-4df9-9413-cdad03e76aab"
     ],
     "references": [
       "https://opentelemetry.io/docs/",
@@ -39,7 +38,7 @@
       "api-integration"
     ]
   },
-  "synced": "012a1c7ca5c9b6f9",
+  "synced": "fafb77aa2950d14a",
   "parts": [
     {"part": "intro"},
     {"part": "requirements", "heading": "Requirements"},

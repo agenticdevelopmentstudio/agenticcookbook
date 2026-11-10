@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e8c8e3b9-64a0-4fb0-a27b-f3b733dc10c7",
     "title": "System Interactions",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/system-interactions",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "f6a5073149b13254",
+  "synced": "5f5882c8ecec84bf",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

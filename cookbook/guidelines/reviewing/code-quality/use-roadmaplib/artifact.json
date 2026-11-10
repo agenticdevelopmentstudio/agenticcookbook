@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "21c0a0b9-2be4-4209-a648-083ec7272fd7",
     "title": "Use roadmap_lib",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/use-roadmaplib",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "new-module"
     ]
   },
-  "synced": "3721b9957fc4a0a6",
+  "synced": "67a572ea9b490be2",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

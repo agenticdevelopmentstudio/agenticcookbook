@@ -27,5 +27,5 @@
 - **Discovered project row**: Package icon (`shippingbox.fill`, orange) + project name, indented within disclosure group
 - **Sync indicator**: `SyncProgressBar` at the bottom of the sidebar, visible only when syncing
 - **Detail pane background**: Standard window background
-- **Empty state**: Centered per [empty-state.md](../components/empty-state.md) with folder icon, welcome heading, and action buttons
+- **Empty state**: Centered per [adc.ingredient.ui.components.empty-state](cookbook:ce2af25c-4f18-41ae-91b9-342e363449b3) with folder icon, welcome heading, and action buttons
 

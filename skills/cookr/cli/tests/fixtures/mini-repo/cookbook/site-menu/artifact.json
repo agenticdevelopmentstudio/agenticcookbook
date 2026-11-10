@@ -1,0 +1,25 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "6f1c2a4e-0b3d-4c5e-9f10-a1b2c3d4e504",
+    "type": "recipe",
+    "status": "accepted",
+    "version": "1.1.1",
+    "modified": "2026-09-25"
+  },
+  "synced": "970e9bc0f3cde33e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

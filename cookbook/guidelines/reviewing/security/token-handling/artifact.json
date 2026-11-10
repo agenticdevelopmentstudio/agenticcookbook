@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a61bd40e-929a-4a50-a87e-78c78e35e302",
     "title": "Token Handling",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/token-handling",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -38,7 +37,7 @@
       "security-review"
     ]
   },
-  "synced": "fbb06b3b26dc9c76",
+  "synced": "1c26862857170ed7",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

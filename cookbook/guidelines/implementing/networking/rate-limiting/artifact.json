@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "c84400d9-83b3-4c4c-83d4-325dfa989202",
     "title": "Rate Limiting",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/rate-limiting",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -31,7 +30,7 @@
       "networking"
     ]
   },
-  "synced": "fe2bb0bee373bdc8",
+  "synced": "dc92e9777f251f2a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

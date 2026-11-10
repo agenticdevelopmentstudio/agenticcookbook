@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "5b026378-d418-406a-9aab-6e3f043901af",
     "title": "Transport Security",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/transport-security",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -37,7 +36,7 @@
       "security-review"
     ]
   },
-  "synced": "ee55abf2aed1e7ef",
+  "synced": "5402f436dd8229bd",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

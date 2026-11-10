@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "246D87C8-213A-4DE1-9452-6E683D3D75E3",
+    "id": "246d87c8-213a-4de1-9452-6e683d3d75e3",
     "title": "Relationship patterns",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/relationships",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,8 +26,8 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/foreign-keys.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "b16e64a4-462d-4f46-afeb-1a06952e5e65"
     ],
     "references": [
       "https://teddysmith.io/sql-trees/",
@@ -41,7 +40,7 @@
       "schema-design"
     ]
   },
-  "synced": "8e4fc49879e383b4",
+  "synced": "115de8014ec475c9",
   "parts": [
     {"part": "intro"},
     {"part": "one-to-many", "heading": "One-to-many"},

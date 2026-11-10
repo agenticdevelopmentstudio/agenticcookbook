@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "7264C7B6-593E-4ED9-8974-F5EA5E4DB123",
+    "id": "7264c7b6-593e-4ed9-8974-f5ea5e4db123",
     "title": "Workspace Browser",
-    "domain": "agenticdevelopercookbook://ingredients/ui/windows/workspace-browser",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,18 +25,18 @@
       "workspace"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://ingredients/ui/components/empty-state"
+      "ce2af25c-4f18-41ae-91b9-342e363449b3"
     ],
     "related": [
-      "agenticdevelopercookbook://ingredients/ui/windows/workspace-document",
-      "agenticdevelopercookbook://recipes/ui/windows/workspace-window",
-      "agenticdevelopercookbook://recipes/infrastructure/directory-sync"
+      "cf2b27b3-199e-4779-ac15-7923a9fefc1f",
+      "3b83a80f-d170-4ef6-a608-81f3a1476679",
+      "63659e2c-215a-44ed-b330-2bca8d88bd9a"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "925692f246e0ade8",
+  "synced": "5a0579db3ab32416",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

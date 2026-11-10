@@ -1,7 +1,6 @@
 ---
 id: 5d312abc-9bf5-4766-9e85-60fdf1a0d7a8
 title: "Authoring Guide"
-domain: agenticdevelopercookbook://appendix/contributing/AUTHORING
 type: reference
 version: 1.0.0
 status: accepted

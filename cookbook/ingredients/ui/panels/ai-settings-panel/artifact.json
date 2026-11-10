@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "24eb3821-0f66-4acf-bff0-5797982bb60d",
     "title": "AI Settings Panel",
-    "domain": "agenticdevelopercookbook://ingredients/ui/panels/ai-settings-panel",
     "type": "ingredient",
     "version": "1.1.1",
     "status": "accepted",
@@ -29,14 +28,14 @@
     ],
     "depends-on": [],
     "related": [
-      "ingredient.ui.component.ai-chat-control"
+      "f9f12465-9f73-40ef-b9f6-d124090781f5"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
   "names_hosts": "Specifies a model-provider settings panel; Claude and its model names are options it lists.",
-  "synced": "1030b5ce8a3413ce",
+  "synced": "1d6ec68c95f41623",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -14,16 +14,18 @@ from cookr.cli import main
 from cookr.core import templates
 from cookr.modules.prompt import prompt_cli
 
+from .cookbook_helpers import ADC_ID, add_dependency, add_root, remove_spec
 
-REPO_ROOT = Path(__file__).resolve().parents[5]
+
 MANIFEST = prompt_cli.EXTRACT_DIR / "reference-manifest.json"
 
 
 @pytest.fixture
-def extract_refs(monkeypatch, tmp_path):
-    """The extract manifest materialised from this checkout, as ./install would."""
+def extract_refs(monkeypatch, tmp_path, repo_v2):
+    """The extract manifest materialised from this checkout's cookbook, as
+    ./install would."""
     dest = tmp_path / "references"
-    materialize(MANIFEST, REPO_ROOT, dest)
+    materialize(MANIFEST, repo_v2, dest)
     monkeypatch.setattr(prompt_cli, "references_dir", lambda: dest)
     return dest
 
@@ -50,7 +52,7 @@ def test_extract_includes_sources_and_existing_recipe(mini_repo, extract_refs, c
 def test_extract_gathers_every_source_for_a_whole_directory_claim(mini_repo, extract_refs, capsys):
     """One name, one prompt, all of its sources - however the claim reaches them.
 
-    `components/button.md` claims the whole `apple/UI/` directory, so
+    `components/button` claims the whole `apple/UI/` directory, so
     `ToolbarButton.swift` is one more source under `components/button`, not a
     separate name (the old model's aliases don't exist here).
     """
@@ -67,13 +69,9 @@ def test_extract_gathers_every_source_for_a_whole_directory_claim(mini_repo, ext
 
 
 def test_extract_ambiguous_shorthand_lists_every_candidate(mini_repo, extract_refs, capsys):
-    lib = mini_repo / "python" / "widgets"
-    lib.mkdir(parents=True)
-    (lib / "button.py").write_text("class Button:\n    pass\n", encoding="utf-8")
-    p = mini_repo / "cookbook" / "cookbook.json"
-    data = json.loads(p.read_text(encoding="utf-8"))
-    data["code"]["roots"].append({"path": "python/widgets", "platform": "python", "recipes": "engine"})
-    p.write_text(json.dumps(data), encoding="utf-8")
+    add_root(mini_repo, "python/widgets", "python", "engine")
+    (mini_repo / "python" / "widgets" / "button.py").write_text("class Button:\n    pass\n",
+                                                               encoding="utf-8")
     assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 2
     out = capsys.readouterr().out
     assert "names several components" in out
@@ -89,18 +87,21 @@ def test_extract_json_reports_paths(mini_repo, extract_refs, capsys):
     assert main(["-p", str(mini_repo), "prompt", "extract", "chat-composer", "--json"]) == 0
     data = json.loads(capsys.readouterr().out)
     assert data["recipe_path"] == "cookbook/components/chat-composer.md"
-    assert data["domain"] == "mini-repo://cookbook/components/chat-composer"
-    assert "`domain` is exactly `mini-repo://cookbook/components/chat-composer`" in data["prompt"]
+    assert data["rdid"] == "mini-repo.ingredient.components.chat-composer"
+    assert "Its rdid is `mini-repo.ingredient.components.chat-composer`." in data["prompt"]
     assert data["sources"] == ["web/components/chat-composer.tsx"]
+    assert data["reference_implementations"] == [
+        {"platform": "web", "location": "web/components/chat-composer.tsx", "state": "unverified"}]
+    assert "- web: `web/components/chat-composer.tsx` (unverified)" in data["prompt"]
+    assert "cookr implements" in data["prompt"]
     assert "prompt" in data
 
 
 def _retype_stat_card(mini_repo, rtype):
-    p = mini_repo / "cookbook" / "blocks" / "stat-card.md"
-    p.write_text(
-        p.read_text(encoding="utf-8").replace("type: ingredient", f"type: {rtype}", 1),
-        encoding="utf-8",
-    )
+    p = mini_repo / "cookbook" / "blocks" / "stat-card" / "artifact.json"
+    data = json.loads(p.read_text(encoding="utf-8"))
+    data["meta"]["type"] = rtype
+    p.write_text(json.dumps(data), encoding="utf-8")
 
 
 def test_type_defaults_to_the_existing_recipes_type(mini_repo, extract_refs, capsys):
@@ -122,9 +123,12 @@ def test_explicit_type_overrides_the_existing_recipes_type(mini_repo, extract_re
 
 
 def test_type_defaults_to_ingredient_without_an_existing_recipe(mini_repo, extract_refs, capsys):
-    (mini_repo / "cookbook" / "components" / "chat-composer.md").unlink()
+    remove_spec(mini_repo, "components/chat-composer")
     assert main(["-p", str(mini_repo), "prompt", "extract", "chat-composer", "--json"]) == 0
-    assert json.loads(capsys.readouterr().out)["type"] == "ingredient"
+    data = json.loads(capsys.readouterr().out)
+    assert data["type"] == "ingredient"
+    assert data["rdid"] == "" and data["existing"] is False
+    assert "Its rdid is `(assigned when the recipe is first indexed)`." in data["prompt"]
 
 
 def test_extract_type_recipe_uses_recipe_template(mini_repo, extract_refs, capsys):
@@ -136,14 +140,9 @@ def test_extract_type_recipe_uses_recipe_template(mini_repo, extract_refs, capsy
 
 
 def _add_logic_root(repo):
-    lib = repo / "python" / "lib"
-    lib.mkdir(parents=True)
-    (lib / "session_store.py").write_text("class SessionStore:\n    pass\n", encoding="utf-8")
-    p = repo / "cookbook" / "cookbook.json"
-    data = json.loads(p.read_text(encoding="utf-8"))
-    data["code"]["roots"].append({"path": "python/lib", "platform": "python", "kind": "logic",
-                                  "recipes": "engine"})
-    p.write_text(json.dumps(data), encoding="utf-8")
+    add_root(repo, "python/lib", "python", "engine", kind="logic")
+    (repo / "python" / "lib" / "session_store.py").write_text("class SessionStore:\n    pass\n",
+                                                             encoding="utf-8")
 
 
 def test_extract_logic_component_carries_non_ui_guidance(mini_repo, extract_refs, capsys):
@@ -177,11 +176,23 @@ def test_module_example_requirement_name_is_subject_only():
     assert 'role: "component specification writer"' in body
 
 
-def test_extract_lists_the_compliance_catalog(mini_repo, extract_refs, capsys):
+def test_extract_lists_the_compliance_checks_of_every_reachable_cookbook(
+        mini_repo, extract_refs, capsys):
+    from cookr.core.identity import check_uuid
+    add_dependency(mini_repo, "deps/adc", checks=[("best-practices", "unit-test-coverage"),
+                                                  ("best-practices", "separation-of-concerns")])
     assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 0
     out = capsys.readouterr().out
     assert "## reference: compliance checks" in out
-    assert "`best-practices`:" in out and "unit-test-coverage" in out
+    uid = check_uuid(ADC_ID, "best-practices", "unit-test-coverage")
+    assert f"- [adc.check.best-practices.unit-test-coverage](cookbook:{ADC_ID}/{uid})" in out
+
+
+def test_extract_omits_the_check_list_when_no_cookbook_defines_checks(
+        mini_repo, extract_refs, capsys):
+    # mini-repo defines no checks and its dependency is not reachable here.
+    assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 0
+    assert "## reference: compliance checks" not in capsys.readouterr().out
 
 
 # ---- review fixes -------------------------------------------------------------------------
@@ -212,9 +223,9 @@ def test_fenced_outruns_every_backtick_run_inside():
 
 
 def test_embedded_recipe_and_source_fences_stay_inside(mini_repo, extract_refs, capsys):
-    recipe = mini_repo / "cookbook" / "components" / "button.md"
+    recipe = mini_repo / "cookbook" / "components" / "button" / "platform-notes.md"
     recipe.write_text(recipe.read_text(encoding="utf-8")
-                      + "\n```\n## Not A Brief Section\n```\n", encoding="utf-8")
+                      + "\n```\n## Not A Brief Section\n```\n\n", encoding="utf-8")
     src = mini_repo / "web" / "components" / "Button.tsx"
     src.write_text(src.read_text(encoding="utf-8") + "\n/*\n```\n## Also Not\n*/\n", encoding="utf-8")
     assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 0
@@ -235,30 +246,32 @@ def test_template_and_guidelines_sit_above_the_action_that_points_at_them(
     assert not re.search(r"^## reference: (?!guidelines/|templates/|compliance checks)", out, re.M)
 
 
-def test_guidelines_keep_their_domain_and_drop_other_metadata(mini_repo, extract_refs, capsys):
+def test_guidelines_drop_their_metadata(mini_repo, extract_refs, capsys):
     assert main(["-p", str(mini_repo), "prompt", "extract", "button"]) == 0
     out = capsys.readouterr().out
     head = "## reference: guidelines/recipe-quality/source-fidelity.md\n\n"
     chunk = out[out.index(head) + len(head):]
     chunk = chunk[:chunk.index("\n## reference: ")]
-    assert chunk.startswith("Cite as `agenticdevelopercookbook://guidelines/")
-    assert "approved-by:" not in chunk and "copyright:" not in chunk
+    assert chunk.startswith("# Source Fidelity\n")
+    assert "approved-by:" not in chunk and "copyright:" not in chunk and "domain" not in chunk
     assert "## Change History" not in chunk
     assert "## " in chunk  # the guideline's own sections are still there
 
 
 def test_nested_recipe_is_rewritten_where_it_lives(mini_repo, extract_refs, capsys):
-    # Moving a spec file changes its name too: name is its cookbook-relative
-    # path without `.md`. The claim on `apple/UI/` (and the file's own
-    # `web/components/Button.tsx` row) travels with it unchanged.
+    # Moving a spec folder changes its name too: name is its cookbook-relative
+    # path. Its index entry follows it by UUID, so the claim on `apple/UI/`
+    # (and the `web/components/Button.tsx` row) and its rdid travel with it.
     (mini_repo / "cookbook" / "components" / "ui").mkdir()
-    (mini_repo / "cookbook" / "components" / "button.md").rename(
-        mini_repo / "cookbook" / "components" / "ui" / "button.md")
+    (mini_repo / "cookbook" / "components" / "button").rename(
+        mini_repo / "cookbook" / "components" / "ui" / "button")
     assert main(["-p", str(mini_repo), "prompt", "extract", "button", "--json"]) == 0
     data = json.loads(capsys.readouterr().out)
     assert data["name"] == "components/ui/button"
     assert data["recipe_path"] == "cookbook/components/ui/button.md"
-    assert data["domain"] == "mini-repo://cookbook/components/ui/button"
+    assert data["rdid"] == "mini-repo.ingredient.components.button"
+    assert sorted(data["sources"]) == [
+        "apple/UI/Button.swift", "apple/UI/ToolbarButton.swift", "web/components/Button.tsx"]
     assert Path(data["recipe_file"]) == mini_repo.resolve() / "cookbook" / "components" / "ui" / "button.md"
     assert "## existing recipe: cookbook/components/ui/button.md" in data["prompt"]
 
@@ -273,7 +286,7 @@ def test_brief_names_the_absolute_file_to_write(mini_repo, extract_refs, capsys)
 def test_extract_reads_the_resolved_components_own_recipe(mini_repo, extract_refs, capsys):
     # A single-name `extract` still needs the whole corpus once: resolving a
     # shorthand name and each spec's claims requires seeing every spec's
-    # Reference Implementations, not just the requested one. (The old model's
+    # index implementations, not just the requested one. (The old model's
     # "single-brief extract must not parse the whole corpus" optimization no
     # longer applies now that ownership is claim-based across the corpus.) The
     # invariant that still holds is that the *embedded existing recipe* is the
@@ -305,7 +318,7 @@ def test_name_and_tier_are_exclusive_and_tier_needs_out_dir(mini_repo, extract_r
 
 
 def _mark_button_for_review(mini_repo):
-    p = mini_repo / "cookbook" / "components" / "button.md"
+    p = mini_repo / "cookbook" / "components" / "button" / "behavioral-requirements.md"
     p.write_text(p.read_text(encoding="utf-8").replace(
         "Button must respond to click events.\n",
         "Button must respond to click events.\n\n"
@@ -349,7 +362,7 @@ def test_tier_worklist_splits_into_arrangement_names_once_the_spec_is_gone(
     # `apple/UI/` directory just drops the claim, so each source falls back to
     # its own arrangement-derived name under the `ui` root's group, rather than
     # being deduped into one name the way a rename-based alias used to be.
-    (mini_repo / "cookbook" / "components" / "button.md").unlink()
+    remove_spec(mini_repo, "components/button")
     data = _tier(mini_repo, "ui", tmp_path, capsys)
     assert sorted(w["name"] for w in data["write"]) == ["ui/button", "ui/toolbar-button"]
     names_and_paths = {w["name"]: w["sources"] for w in data["write"]}

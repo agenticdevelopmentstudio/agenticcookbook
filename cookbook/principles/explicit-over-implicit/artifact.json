@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e114c41c-d203-454c-bc7c-cc128f6ebadd",
     "title": "Explicit over implicit",
-    "domain": "agenticdevelopercookbook://principles/explicit-over-implicit",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "f9ebc501e1a76347",
+  "synced": "c1176dd4424e1b3a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cef41f52-bfc6-4ff0-bb67-eb52521c7391",
     "title": "Retry and Resilience",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/retry-and-resilience",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "error-handling"
     ]
   },
-  "synced": "cba29f21b1be0e37",
+  "synced": "6cb20871420acf8b",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

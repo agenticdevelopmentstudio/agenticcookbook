@@ -1,7 +1,6 @@
 ---
 id: 9edd68fb-29e3-44d6-951a-e668a2e9dfda
 title: Deployment & Hosting Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/infrastructure/deployment-hosting-tools
 type: reference
 version: 1.0.0
 status: draft

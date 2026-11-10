@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "CF2B27B3-199E-4779-AC15-7923A9FEFC1F",
+    "id": "cf2b27b3-199e-4779-ac15-7923a9fefc1f",
     "title": "Workspace Document",
-    "domain": "agenticdevelopercookbook://ingredients/ui/windows/workspace-document",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,15 +25,15 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/ui/windows/workspace-browser",
-      "agenticdevelopercookbook://recipes/ui/windows/workspace-window",
-      "agenticdevelopercookbook://recipes/infrastructure/directory-sync"
+      "7264c7b6-593e-4ed9-8974-f5ea5e4db123",
+      "3b83a80f-d170-4ef6-a608-81f3a1476679",
+      "63659e2c-215a-44ed-b330-2bca8d88bd9a"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "2d5ed2e2b4ad6bcd",
+  "synced": "4a6ddaf0410af674",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

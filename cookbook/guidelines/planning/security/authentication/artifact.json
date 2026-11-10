@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "fad53801-59d5-4471-855a-4dc689448d48",
     "title": "Authentication",
-    "domain": "agenticdevelopercookbook://guidelines/planning/security/authentication",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -40,7 +39,7 @@
       "security-review"
     ]
   },
-  "synced": "1765f3ed325d5da9",
+  "synced": "49eb10087a1921dc",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

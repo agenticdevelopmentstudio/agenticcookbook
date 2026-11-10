@@ -1,7 +1,6 @@
 ---
 id: e1707869-629b-4732-b372-9fec499f92b6
 title: Kotlin & Android Development Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/android/kotlin-tooling
 type: reference
 version: 1.0.0
 status: draft

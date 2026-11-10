@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cf9c8df3-24b7-4094-a2bd-3a10ed2da006",
     "title": "Conformance: The Criterion Walk",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/conformance-criterion-walk",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -27,7 +26,7 @@
     "related": [],
     "references": []
   },
-  "synced": "57b69ea8ad268dd1",
+  "synced": "e729e79e993384e6",
   "parts": [
     {"part": "intro"},
     {"part": "acceptance-contracts", "heading": "Acceptance Contracts"},

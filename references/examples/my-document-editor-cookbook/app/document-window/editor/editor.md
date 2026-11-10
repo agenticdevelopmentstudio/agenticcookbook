@@ -1,7 +1,6 @@
 ---
 id: c58dff06-310e-4cb0-886d-ec0929f5b1eb
 title: Editor
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/app/document-window/editor/editor
 type: reference
 version: 1.0.0
 status: draft

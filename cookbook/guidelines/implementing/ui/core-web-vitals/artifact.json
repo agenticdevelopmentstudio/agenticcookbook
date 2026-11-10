@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "c8bf92be-4b7b-4ed7-a9b5-9584c1878d63",
     "title": "Core Web Vitals and performance budgets",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/core-web-vitals",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/tight-feedback-loops",
-      "agenticdevelopercookbook://principles/support-automation"
+      "b111a703-f4d7-4c1a-8206-d84e869791f4",
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "references": [
       "https://web.dev/articles/inp",
@@ -39,7 +38,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "55c0c9861ca5157f",
+  "synced": "83400dd5445faf5c",
   "parts": [
     {"part": "intro"},
     {"part": "the-three-core-web-vitals-current-as-of-2026", "heading": "The three Core Web Vitals (current as of 2026)"},

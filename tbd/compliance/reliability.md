@@ -1,7 +1,6 @@
 ---
 id: 3182E2CF-BBFC-4933-93EC-6ACE057E0B43
 title: "Reliability"
-domain: agenticdevelopercookbook://compliance/reliability
 type: compliance
 version: 1.0.1
 status: draft
@@ -16,9 +15,9 @@ platforms: []
 tags: [compliance, reliability]
 depends-on: []
 related:
-  - agenticdevelopercookbook://compliance/access-patterns
-  - agenticdevelopercookbook://compliance/performance
-  - agenticdevelopercookbook://compliance/security
+  - tbd/compliance/access-patterns.md
+  - tbd/compliance/performance.md
+  - tbd/compliance/security.md
 references: []
 ---
 
@@ -39,7 +38,7 @@ Components MUST recover gracefully from transient errors without user interventi
 **Applies when:** recipe performs network calls, file I/O, or other operations subject to transient failure.
 
 **Guidelines:**
-- [Retry and Resilience](agenticdevelopercookbook://guidelines/implementing/networking/retry-and-resilience)
+- [adc.guideline.implementing.networking.retry-and-resilience](cookbook:cef41f52-bfc6-4ff0-bb67-eb52521c7391)
 
 ---
 
@@ -50,7 +49,7 @@ Components MUST degrade gracefully when dependencies are unavailable rather than
 **Applies when:** recipe depends on external services, APIs, or optional subsystems.
 
 **Guidelines:**
-- [Offline and Connectivity](agenticdevelopercookbook://guidelines/implementing/networking/offline-and-connectivity)
+- [adc.guideline.implementing.networking.offline-and-connectivity](cookbook:67c59594-a5dc-46f2-aa61-3436921294c7)
 
 ---
 
@@ -61,7 +60,7 @@ Components MUST handle unexpected input and states without crashing.
 **Applies when:** recipe accepts external input or operates in environments with unpredictable state.
 
 **Guidelines:**
-- [Fail Fast](agenticdevelopercookbook://principles/fail-fast)
+- [adc.principle.fail-fast](cookbook:425271ea-92b6-4df6-9a83-94795f1be377)
 
 ---
 
@@ -83,7 +82,7 @@ Retried operations MUST produce the same result regardless of repetition count.
 **Applies when:** recipe performs write operations that may be retried due to failure or timeout.
 
 **Guidelines:**
-- [Idempotency](agenticdevelopercookbook://principles/idempotency)
+- [adc.principle.idempotency](cookbook:39c2d053-006f-42c9-9db4-d991c1688024)
 
 ---
 
@@ -94,7 +93,7 @@ Operations that time out MUST leave the system in a consistent state.
 **Applies when:** recipe performs operations with configured or implicit timeouts.
 
 **Guidelines:**
-- [Timeouts](agenticdevelopercookbook://guidelines/implementing/networking/timeouts)
+- [adc.guideline.implementing.networking.timeouts](cookbook:c3883e6e-3bce-4bb9-a3be-61509a139288)
 
 ---
 
@@ -116,7 +115,7 @@ Long-running components SHOULD emit health metrics suitable for monitoring.
 **Applies when:** recipe runs as a long-lived process or background service.
 
 **Guidelines:**
-- [Logging](agenticdevelopercookbook://guidelines/implementing/observability/logging)
+- [adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65)
 
 ## Change History
 

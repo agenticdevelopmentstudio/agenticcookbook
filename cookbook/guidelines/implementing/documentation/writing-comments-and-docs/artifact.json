@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8238bdf2-432b-4c34-9050-742a1f16d107",
     "title": "Writing comments and docs",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/documentation/writing-comments-and-docs",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -23,10 +22,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/code-for-the-ai-reader",
-      "agenticdevelopercookbook://guidelines/reviewing/documentation/docs-match-code",
-      "agenticdevelopercookbook://principles/explicit-over-implicit",
-      "agenticdevelopercookbook://principles/principle-of-least-astonishment"
+      "42ed78a6-eea7-4b48-8b5f-be345682ffc3",
+      "744c30a2-5dfa-41c6-8746-37372ba6465c",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "da56ab62-98ad-4f52-b972-3ebfda5b1718"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -36,7 +35,7 @@
       "code-review"
     ]
   },
-  "synced": "1508a9f82b6fe5e9",
+  "synced": "b55cbb3f98010115",
   "parts": [
     {"part": "intro"},
     {"part": "comment-the-why-not-the-what", "heading": "Comment the why, not the what"},

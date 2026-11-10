@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d3cb8f40-b142-447d-8176-8055d55868b1",
     "title": "Software supply-chain integrity",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/supply-chain-integrity",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/shipping/dependency-security"
+      "793bd9f6-b029-4c4e-aca5-d253f9fab48e"
     ],
     "references": [
       "https://slsa.dev/",
@@ -39,7 +38,7 @@
       "pre-pr"
     ]
   },
-  "synced": "b9ea882ad8432010",
+  "synced": "6ccb8c1039f15145",
   "parts": [
     {"part": "intro"},
     {"part": "two-artifacts-per-build", "heading": "Two artifacts per build"},

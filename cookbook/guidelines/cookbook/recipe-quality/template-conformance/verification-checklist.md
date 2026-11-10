@@ -2,9 +2,9 @@
 A verifier MUST check each of the following items. The recipe PASSES template conformance only if every item is satisfied.
 
 - [ ] Frontmatter opens and closes with `---` on its own line.
-- [ ] All required frontmatter fields are present: `id`, `title`, `domain`, `type`, `version`, `status`, `language`, `created`, `modified`, `author`, `summary`, `platforms`, `tags`, `depends-on`, `related`, `references`.
+- [ ] All required frontmatter fields are present: `id`, `title`, `type`, `version`, `status`, `language`, `created`, `modified`, `author`, `summary`, `platforms`, `tags`, `depends-on`, `related`, `references`.
 - [ ] `id` is a valid UUID v4 and is unique within the cookbook.
-- [ ] `domain`'s scheme names the repo the file lives in (`agenticdevelopercookbook://` for this cookbook's own content) and its path ends with the file's stem.
+- [ ] The recipe has an entry in its cookbook's `index.json`, and its rdid ends with the recipe's folder name; there is no `domain` field.
 - [ ] `type` is one of the recognized artifact types.
 - [ ] `version` is a valid `MAJOR.MINOR.PATCH` semver string with no prefix.
 - [ ] `status` is one of `draft`, `review`, `accepted`, `deprecated`.

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6f4cfd55-cb09-4ede-a53c-feaeb5781127",
     "title": "Content Security Policy",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/content-security-policy",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -38,7 +37,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "c2e8017231740bd1",
+  "synced": "4cc596a365b9b80f",
   "parts": [
     {"part": "intro"},
     {"part": "trusted-types-and-dom-xss", "heading": "Trusted Types and DOM-XSS"},

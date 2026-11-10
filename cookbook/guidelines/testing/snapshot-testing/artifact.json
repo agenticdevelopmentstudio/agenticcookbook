@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3d9f5176-afaa-47a2-8a89-fc0402f3dff2",
     "title": "Snapshot testing discipline",
-    "domain": "agenticdevelopercookbook://guidelines/testing/snapshot-testing",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -21,8 +20,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/properties-of-good-tests",
-      "agenticdevelopercookbook://guidelines/testing/test-doubles"
+      "e5af9ba5-f484-40c3-9738-470090f5241c",
+      "eec76082-a68b-4a2b-8f02-5ea3bfdc0a76"
     ],
     "references": [
       "https://kentcdodds.com/blog/effective-snapshot-testing",
@@ -37,7 +36,7 @@
       "writing-tests"
     ]
   },
-  "synced": "72de1c899e2d084b",
+  "synced": "3392fe71cb1e73a7",
   "parts": [
     {"part": "intro"},
     {"part": "review-every-diff-deliberately", "heading": "Review every diff deliberately"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ed0b7eb6-9e33-41f7-954f-1e1a0f813462",
     "title": "Agentic research design lessons",
-    "domain": "agenticdevelopercookbook://guidelines/researching/process/agentic-research-design-lessons",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/cite-the-claim-not-the-document",
-      "agenticdevelopercookbook://principles/independence-before-corroboration",
-      "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring"
+      "09947209-369f-40de-8331-c10b0d6f32c6",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba",
+      "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a"
     ],
     "references": [
       "https://github.com/assafelovic/gpt-researcher",
@@ -39,7 +38,7 @@
     ]
   },
   "informational": "Lessons observed in production research agents, offered as evidence for design choices rather than as rules.",
-  "synced": "568e1d24697b92e4",
+  "synced": "c4bde6888bb3dabb",
   "parts": [
     {"part": "intro"},
     {"part": "orchestration", "heading": "Orchestration"},

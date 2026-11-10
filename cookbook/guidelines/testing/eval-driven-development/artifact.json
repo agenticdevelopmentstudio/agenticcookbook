@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "7a942d3d-eb47-4eb2-8ed1-bebbcda6f7e6",
     "title": "Eval-driven development for agent behavior",
-    "domain": "agenticdevelopercookbook://guidelines/testing/eval-driven-development",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/the-testing-workflow",
-      "agenticdevelopercookbook://principles/tight-feedback-loops"
+      "8ab7452a-09b8-4f4e-abfc-f7fd700765db",
+      "b111a703-f4d7-4c1a-8206-d84e869791f4"
     ],
     "references": [
       "https://code.claude.com/docs/en/best-practices",
@@ -38,7 +37,7 @@
       "ai-api-integration"
     ]
   },
-  "synced": "0e2a0ecd7896d458",
+  "synced": "7242e1991dd07927",
   "parts": [
     {"part": "intro"},
     {"part": "when-evals-apply-and-when-they-do-not", "heading": "When evals apply (and when they do not)"},

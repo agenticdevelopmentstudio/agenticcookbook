@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "82072abf-0ece-42da-805d-3cb15ce7921d",
     "title": "Type hints",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/type-hints",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "0e2053d5ce54bad4",
+  "synced": "86b7c31bb17dbe2d",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "85d04a9b-5692-4025-a489-eac8bbb14663",
     "title": "Window Frame Persistence",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "517194f6157a3a08",
+  "synced": "cd32352b903d7bca",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -20,11 +20,11 @@
 
 ### Delegation to sub-components
 
-- **delegate-file-tree**: The file tree panel MUST delegate to [file-tree-browser.md](../../../ingredients/ui/panels/file-tree-browser.md) for all file browsing behavior.
-- **delegate-terminal**: The terminal pane MUST delegate to [terminal-pane.md](../../../ingredients/ui/panels/terminal-pane.md) for all terminal behavior.
-- **delegate-inspector**: The inspector panel MUST delegate to [inspector-panel.md](../../../ingredients/ui/panels/inspector-panel.md) for all inspector behavior.
-- **delegate-editor**: The code editor pane MUST delegate to [code-editor-pane.md](../../../ingredients/ui/panels/code-editor-pane.md) for all editor behavior.
-- **delegate-pane-headers**: Collapsible pane headers MUST delegate to [collapsible-pane-header.md](../../../ingredients/ui/components/collapsible-pane-header.md) for toggle and animation behavior.
+- **delegate-file-tree**: The file tree panel MUST delegate to [adc.ingredient.ui.panels.file-tree-browser](cookbook:a1845427-a2cd-4744-96bf-f6c6f2380982) for all file browsing behavior.
+- **delegate-terminal**: The terminal pane MUST delegate to [adc.ingredient.ui.panels.terminal-pane](cookbook:4a2898cf-34ed-4153-8d06-c795f80c19cd) for all terminal behavior.
+- **delegate-inspector**: The inspector panel MUST delegate to [adc.ingredient.ui.panels.inspector-panel](cookbook:6af1d30a-c2ee-4a6d-97ec-50c67f01a243) for all inspector behavior.
+- **delegate-editor**: The code editor pane MUST delegate to [adc.ingredient.ui.panels.code-editor-pane](cookbook:954e559c-e2bf-494c-a37e-de0b88bec89a) for all editor behavior.
+- **delegate-pane-headers**: Collapsible pane headers MUST delegate to [adc.ingredient.ui.components.collapsible-pane-header](cookbook:1dd2111a-eb05-40e4-b469-1aecd79c5863) for toggle and animation behavior.
 
 - **pane-header-accessible**: Each collapsible pane header MUST follow the accessibility requirements defined by the `collapsible-pane-header` ingredient (button role, expand/collapse announcement, keyboard toggle).
 

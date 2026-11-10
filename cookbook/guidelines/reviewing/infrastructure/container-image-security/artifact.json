@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9f07e740-097e-4814-badf-fa3ae8d7d1e9",
     "title": "Container image security",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/infrastructure/container-image-security",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/shipping/supply-chain-integrity",
-      "agenticdevelopercookbook://guidelines/reviewing/security/vulnerability-prioritization",
-      "agenticdevelopercookbook://guidelines/implementing/infrastructure/containerization"
+      "d3cb8f40-b142-447d-8176-8055d55868b1",
+      "86671e07-24b3-476c-88be-91ed8f83eb30",
+      "ecf27370-3cd4-47a2-a359-7b42575ef48f"
     ],
     "references": [
       "https://github.com/aquasecurity/trivy",
@@ -39,7 +38,7 @@
       "dependency-management"
     ]
   },
-  "synced": "c736104f4aad03a6",
+  "synced": "702522edf35993b8",
   "parts": [
     {"part": "intro"},
     {"part": "scan-and-gate", "heading": "Scan and gate"},

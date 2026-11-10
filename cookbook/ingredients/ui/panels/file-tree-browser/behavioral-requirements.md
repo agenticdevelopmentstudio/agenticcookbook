@@ -26,15 +26,15 @@
 
 ### Git status integration
 
-- **git-status-badge**: Each file row MUST display a git status badge when the file has a git status. The badge MUST be right-aligned, use a monospaced font, and be colored per status type. Badge rendering MUST delegate to [git-status-indicator.md](../components/git-status-indicator.md).
+- **git-status-badge**: Each file row MUST display a git status badge when the file has a git status. The badge MUST be right-aligned, use a monospaced font, and be colored per status type. Badge rendering MUST delegate to [adc.ingredient.ui.components.git-status-indicator](cookbook:561a27f4-f019-4d3a-96eb-c18d37b16b61).
 - **git-debounce-refresh**: Git status MUST refresh with a 0.5-second debounce after file changes to prevent thrashing.
 - **git-background-fetch**: Git status MUST be fetched on a background queue and MUST NOT block the main thread.
 
 ### Status bar integration
 
-- **sync-status-bar**: During directory sync operations, a status bar overlay MUST be shown. Display MUST delegate to [status-bar.md](../components/status-bar.md).
+- **sync-status-bar**: During directory sync operations, a status bar overlay MUST be shown. Display MUST delegate to [adc.ingredient.ui.components.status-bar](cookbook:22729bee-7ab4-4648-aa5a-2beef067d0c3).
 
 ### Directory sync lifecycle
 
-- **delegate-directory-sync**: File system monitoring and sync behavior MUST delegate to [directory-sync.md](../../../recipes/infrastructure/directory-sync.md).
+- **delegate-directory-sync**: File system monitoring and sync behavior MUST delegate to [adc.recipe.infrastructure.directory-sync](cookbook:63659e2c-215a-44ed-b330-2bca8d88bd9a).
 

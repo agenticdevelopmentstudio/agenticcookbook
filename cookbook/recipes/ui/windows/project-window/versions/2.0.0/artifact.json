@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "338cb220-483c-4f9e-ae9d-e1dd79e59289",
+    "title": "Project Window",
+    "domain": "agenticdevelopercookbook://recipes/ui/windows/project-window",
+    "type": "recipe",
+    "version": "2.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "IDE-style four-panel project window composing file tree, editor, terminal, and inspector in split views",
+    "platforms": [
+      "macos",
+      "swift",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "project-window",
+      "ui",
+      "window"
+    ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/ui/windows/project-split-layout",
+      "agenticdevelopercookbook://ingredients/ui/panels/file-tree-browser",
+      "agenticdevelopercookbook://ingredients/ui/panels/code-editor-pane",
+      "agenticdevelopercookbook://ingredients/ui/panels/terminal-pane",
+      "agenticdevelopercookbook://ingredients/ui/panels/inspector-panel",
+      "agenticdevelopercookbook://ingredients/ui/components/collapsible-pane-header",
+      "agenticdevelopercookbook://ingredients/ui/components/status-bar",
+      "agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence",
+      "agenticdevelopercookbook://ingredients/infrastructure/logging",
+      "agenticdevelopercookbook://ingredients/infrastructure/settings-keys"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "6a1c8a4026e7e826",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

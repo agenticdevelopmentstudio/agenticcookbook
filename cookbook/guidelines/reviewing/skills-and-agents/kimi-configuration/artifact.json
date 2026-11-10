@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "5a091e61-8331-4fa0-9214-cb0e142af94f",
     "title": "Kimi configuration",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/kimi-configuration",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist"
+      "e858e124-8774-450f-ab7a-9b27a6965660",
+      "e761c71a-eb90-44c8-8149-3062da19ad37"
     ],
     "references": [
       "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html",
@@ -41,7 +40,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's configuration rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "f1317c5ea8998b1e",
+  "synced": "207275c18a888680",
   "parts": [
     {"part": "intro"},
     {"part": "paths", "heading": "Paths"},

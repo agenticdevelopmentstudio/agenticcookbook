@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "62d3f4a7-0310-4606-b3ee-95610dddbbb8",
     "title": "Constraints as Creative Fuel",
-    "domain": "agenticdevelopercookbook://principles/constraints-as-creative-fuel",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/break-fixation-deliberately"
+      "ae4444c3-adac-429a-b00e-e918ba3a70b7"
     ],
     "references": [
       "Acar et al., Journal of Management, 45(1), 2019",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "13e692ffdce3fc71",
+  "synced": "bf57d1b2fcd050d0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

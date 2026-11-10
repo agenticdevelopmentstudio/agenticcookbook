@@ -1,7 +1,6 @@
 ---
 id: a49ffda3-58da-40c2-87e7-0135a5894f74
 title: "Apple"
-domain: agenticdevelopercookbook://reference/best-practices/apple
 type: reference
 version: 1.0.0
 status: accepted

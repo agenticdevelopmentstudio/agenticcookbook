@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "E53B1FD3-3E7A-490D-BC5D-83EE9C5CE351",
+    "id": "e53b1fd3-3e7a-490d-bc5d-83ee9c5ce351",
     "title": "Document Creation Flow",
-    "domain": "agenticdevelopercookbook://ingredients/app/document-creation-flow",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,15 +25,15 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/app/creation-menu-commands",
-      "agenticdevelopercookbook://recipes/app/menu-commands",
-      "agenticdevelopercookbook://recipes/infrastructure/package-document"
+      "18fdfdad-e9da-4b84-80db-23b00fef5d77",
+      "81410d5e-e3df-4feb-a9b1-bbc97abfc798",
+      "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "6fc1f0a03347a7cb",
+  "synced": "d1680caee957878d",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

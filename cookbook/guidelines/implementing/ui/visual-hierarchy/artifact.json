@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a7c2a089-7666-459e-b564-24cc30980936",
     "title": "Visual Hierarchy",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/visual-hierarchy",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -23,7 +22,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility"
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
     ],
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines/layout",
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "e8d21fdb1284741a",
+  "synced": "2db6f55884b841c0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "92daec8c-4388-4a34-bc0c-d3ce0ab8c724",
     "title": "Yolo Mode (Permission Bypass Hook)",
-    "domain": "agenticdevelopercookbook://ingredients/developer-tools/claude/yolo-mode",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -37,7 +36,7 @@
     "approved-date": "2026-10-04"
   },
   "names_hosts": "Specifies a Claude Code feature: its hooks and settings files are the subject.",
-  "synced": "57a213b25541a700",
+  "synced": "8ef6e80a6250f544",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

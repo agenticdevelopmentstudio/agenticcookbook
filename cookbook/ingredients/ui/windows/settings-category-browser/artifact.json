@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "4A047375-7F4F-4BCA-84A5-62A0F70FC5C9",
+    "id": "4a047375-7f4f-4bca-84a5-62a0f70fc5c9",
     "title": "Settings Category Browser",
-    "domain": "agenticdevelopercookbook://ingredients/ui/windows/settings-category-browser",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -31,13 +30,13 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/ui/windows/settings-window"
+      "31f97683-8d2e-4203-a155-48cebc1bfb13"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "50b00e1b12c0047b",
+  "synced": "9fe1e9549f0dab93",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

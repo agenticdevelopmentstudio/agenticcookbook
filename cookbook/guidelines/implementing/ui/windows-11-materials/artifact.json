@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "16d3e8e5-47fc-4f79-b403-c532e4f12f07",
     "title": "Windows 11 materials (Mica and Acrylic)",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/windows-11-materials",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/fluent-design",
-      "agenticdevelopercookbook://guidelines/implementing/ui/theming"
+      "376daf6c-f2bd-4a33-9ab4-2a2af140e725",
+      "5cc9773e-78de-493e-891c-2a819baf9b60"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/windows/apps/design/style/mica"
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "0d3b18b05d1abc5c",
+  "synced": "dce5e125b855d2bf",
   "parts": [
     {"part": "intro"},
     {"part": "choosing-the-material", "heading": "Choosing the material"},

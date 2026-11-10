@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "192c62b6-dec8-40e9-ae69-588f1c530dc8",
     "title": "Authorization",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/authorization",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "security-review"
     ]
   },
-  "synced": "b37b9be42efd2bd5",
+  "synced": "ffbbed9810dc218a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

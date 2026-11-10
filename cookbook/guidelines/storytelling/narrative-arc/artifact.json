@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "064250f4-a30a-4240-9f2c-010012419f25",
     "title": "Narrative Arc",
-    "domain": "agenticdevelopercookbook://guidelines/storytelling/narrative-arc",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,8 +20,8 @@
       "arc"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis",
-      "agenticdevelopercookbook://guidelines/storytelling/craft"
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487",
+      "21e9045a-1881-42bd-92d1-57a006638626"
     ],
     "triggers": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -30,7 +29,7 @@
     "depends-on": [],
     "references": []
   },
-  "synced": "e2af00e058f3537c",
+  "synced": "b421f5390eb0683f",
   "parts": [
     {"part": "intro"},
     {"part": "timeline", "heading": "Timeline"},

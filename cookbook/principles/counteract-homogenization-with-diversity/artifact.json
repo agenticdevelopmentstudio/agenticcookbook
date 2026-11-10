@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a",
     "title": "Counteract Homogenization with Diversity",
-    "domain": "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/human-first-ideation",
-      "agenticdevelopercookbook://principles/bridge-distant-domains"
+      "db8976c0-57e0-41a4-a7fa-67e3efef79d5",
+      "cd614244-bb91-411b-88b3-53d552529cd4"
     ],
     "references": [
       "Anderson et al., PNAS Nexus, 2024, https://academic.oup.com/pnasnexus/article/5/3/pgag042/8529001",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "95011dcc035e2930",
+  "synced": "c95f804d15e27dc0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

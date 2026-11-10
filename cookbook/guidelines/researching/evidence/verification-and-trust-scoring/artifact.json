@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a",
     "title": "Verification and trust scoring",
-    "domain": "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/domain-stratified-trust",
-      "agenticdevelopercookbook://principles/suppress-unsupported-confidence",
-      "agenticdevelopercookbook://principles/independence-before-corroboration"
+      "578e6d3b-f60d-42ff-964b-06b173ffaae9",
+      "7a14b9f2-0e10-456b-a103-8a887afda9f2",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba"
     ],
     "references": [
       "https://hapgood.us/2019/06/19/sift-the-four-moves/",
@@ -38,7 +37,7 @@
       "research"
     ]
   },
-  "synced": "8bf44dd23f58e39f",
+  "synced": "5d60e8d40f601e20",
   "parts": [
     {"part": "intro"},
     {"part": "verification-frameworks", "heading": "Verification frameworks"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "775da457-30c7-47de-b179-0fae8a8b779d",
     "title": "Linting before the first PR",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/linting",
     "type": "guideline",
     "version": "1.1.0",
     "status": "accepted",
@@ -45,7 +44,7 @@
       "new-module"
     ]
   },
-  "synced": "ce0f08db0f60d361",
+  "synced": "6d5fa8a5a5bdbcfa",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d4875936-f6df-49b1-9b96-9c4a2147bc0d",
     "title": "Design token distribution",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/design-token-distribution",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -28,7 +27,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/ui/design-tokens"
+      "26d10854-c903-40c5-8bef-18337c5ac71e"
     ],
     "references": [
       "https://styledictionary.com/",
@@ -42,7 +41,7 @@
       "configuration"
     ]
   },
-  "synced": "7d3248da5510b5ba",
+  "synced": "fe86e289df81e30b",
   "parts": [
     {"part": "intro"},
     {"part": "one-way-flow", "heading": "One-way flow"},

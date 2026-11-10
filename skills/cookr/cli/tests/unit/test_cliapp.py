@@ -32,7 +32,7 @@ def fake_pkg(tmp_path, monkeypatch):
 
 def _app(package, seen, **kw):
     return cliapp.CliApp(prog="fake", version="0.0.1", description="d", modules_package=package,
-                         path_help="p", make_context=lambda explicit, ui: {"seen": seen}, **kw)
+                         path_help="p", make_context=lambda explicit, ui, module: {"seen": seen}, **kw)
 
 
 def test_discover_sorts_and_skips_underscore_helpers(fake_pkg):
@@ -70,7 +70,7 @@ def test_cookbook_parser_keeps_a_leading_path():
 
 
 def test_listed_errors_exit_2_with_markup_escaped(fake_pkg, capsys):
-    def boom(explicit, ui):
+    def boom(explicit, ui, module):
         raise CookbookError("bad path apps/[slug]/x.tsx and weird[/x]")
     app = cliapp.CliApp(prog="fake", version="0", description="d", modules_package=fake_pkg,
                         path_help="p", make_context=boom)
@@ -89,3 +89,31 @@ def test_no_module_prints_the_table(fake_pkg, capsys):
     assert cliapp.main(_app(fake_pkg, []), []) == 0
     out = capsys.readouterr().out
     assert "alpha" in out and "beta" in out and "Usage: fake [-p PATH]" in out
+
+
+@pytest.mark.parametrize("code, message, mark", [
+    (3, "commit the upgrade [first]", "✗"),   # nonzero: an error, markup escaped
+    (0, "nothing to do [yet]", "!"),          # zero: a warning
+    (1, "", None),                            # no message: only the code
+])
+def test_exit_with_ends_the_run_with_its_code_and_message(fake_pkg, capsys, code, message, mark):
+    def stop(explicit, ui, module):
+        raise cliapp.ExitWith(code, message)
+    app = cliapp.CliApp(prog="fake", version="0", description="d", modules_package=fake_pkg,
+                        path_help="p", make_context=stop)
+    assert cliapp.main(app, ["alpha"]) == code
+    out = capsys.readouterr().out
+    if mark:
+        assert out.strip() == f"{mark} {message}"
+    else:
+        assert out.strip() == ""
+
+
+def test_exit_with_goes_to_stderr_in_hook_mode(fake_pkg, capsys):
+    def stop(explicit, ui, module):
+        raise cliapp.ExitWith(2, "blocked")
+    app = cliapp.CliApp(prog="fake", version="0", description="d", modules_package=fake_pkg,
+                        path_help="p", make_context=stop, ui_on_stderr=lambda args: True)
+    assert cliapp.main(app, ["alpha"]) == 2
+    captured = capsys.readouterr()
+    assert "blocked" in captured.err and "blocked" not in captured.out

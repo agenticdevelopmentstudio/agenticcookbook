@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "edf1f288-9cb1-4979-8900-b69d5e33e987",
     "title": "Sync Protocol",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/sync-protocol",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -28,9 +27,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/sync-schema-design.md",
-      "guidelines/data/sync-engine-design.md"
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb",
+      "5a57e599-ca8e-44b9-9be7-109f7c176feb",
+      "1123eb5a-b38a-41f8-8ae9-ec899f15707f"
     ],
     "references": [
       "https://microservices.io/patterns/data/transactional-outbox.html",
@@ -44,7 +43,7 @@
       "database-operations"
     ]
   },
-  "synced": "ae834c4727c152f9",
+  "synced": "f81cd1f9ffb2002c",
   "parts": [
     {"part": "intro"},
     {"part": "sync-direction", "heading": "Sync Direction"},

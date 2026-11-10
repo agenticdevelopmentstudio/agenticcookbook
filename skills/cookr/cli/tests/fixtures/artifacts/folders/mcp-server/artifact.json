@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ad61ee7f-47cf-4c48-a17a-9d7d3d6b7116",
     "title": "MCP server",
-    "domain": "agenticdevelopercookbook://recipes/developer-tools/mcp-server",
     "type": "recipe",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,13 +23,13 @@
       "infrastructure"
     ],
     "ingredients": [
-      "agenticdevelopercookbook://ingredients/developer-tools/mcp-tool"
+      "820b832f-6003-4fc1-b4b4-35cd2d57c2e5"
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
-      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security",
-      "agenticdevelopercookbook://guidelines/reviewing/networking/mcp-server-checklist"
+      "788f1c1d-69af-4570-a279-748d89fcc0e0",
+      "ab8ed68c-949d-42c8-8c07-416674795a65",
+      "555d659d-6272-4ad3-90f7-3efc8ee6031e"
     ],
     "references": [
       "https://modelcontextprotocol.io/"

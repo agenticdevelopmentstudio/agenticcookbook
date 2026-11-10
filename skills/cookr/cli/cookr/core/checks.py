@@ -1,13 +1,26 @@
-"""Shared deterministic checks used by `lint` Phase A and `validate`."""
+"""Shared deterministic checks used by `lint` Phase A and `validate`.
+
+Format 2: an artifact is a source folder whose identity is its `id` (a UUID);
+its `depends-on`, `related` and in-text links (`[<rdid>](cookbook:<uuid>)`)
+are UUIDs resolved through the cookbook index (`links.Resolver`). A link the
+index does not hold is an issue; one into a cookbook that cannot be reached
+here is a warning. The code that implements an artifact is listed in the
+index (`implementations`), and each row's platform and location are checked.
+A markdown doc with no source folder is still checked for its frontmatter and
+relative links.
+"""
 
 from __future__ import annotations
 
-import functools
 import re
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Optional
 
+from . import history
+from .artifact import ArtifactError, find_folders, folder_for, is_folder, load_folder
+from .errors import CookbookError
 from .frontmatter import (
     REQUIRED_FIELDS,
     SEMVER_RE,
@@ -16,39 +29,44 @@ from .frontmatter import (
     VALID_TYPES,
     parse_file,
 )
-from . import history, refimpl
+from .identity import MANIFEST
+from .links import Resolver, in_text_links, parse_link, resolver_for
 from .markdown import iter_markdown
-from .scheme import COOKBOOK_SCHEME, SchemeError, cookbook_scheme, up_to_repo_top
+from .repoconfig import CONFIG_NAME, PLATFORMS, Config, config_for_cookbook, find_repo, load_repo_config
 
 
-# Per-rule fix-it hints. Keyed on the `rule` slug emitted by `_check_one` /
-# `phase_a` below. `required-field:<name>` is matched by prefix.
+# Per-rule fix-it hints. Keyed on the `rule` slug emitted below.
+# `required-field:<name>` is matched by prefix.
 _FIX_ITS: dict[str, str] = {
     "frontmatter-present": (
         "Add a YAML frontmatter block (between `---` lines) at the top of the file. "
         "Run `cookr update` to scaffold a minimal one."
+    ),
+    "folder-loads": (
+        "Fix the source folder's `artifact.json`; a format-1 folder is upgraded with `cookr upgrade`."
     ),
     "id-uuid": "Replace `id` with a UUID4: `python -c 'import uuid; print(uuid.uuid4())'`.",
     "id-unique": "Two artifacts share the same `id`. Regenerate one with `python -c 'import uuid; print(uuid.uuid4())'`.",
     "version-semver": "Use a semver string for `version` (e.g. `1.0.0`).",
     "type-valid": f"`type` must be one of: {', '.join(sorted(VALID_TYPES))}.",
     "status-valid": f"`status` must be one of: {', '.join(sorted(VALID_STATUSES))}.",
-    "domain-matches-path": (
-        "Update `domain` to `<scheme>://<path>`: the scheme names the repo the file "
-        "lives in (the cookbook index.md's `domain` scheme, else the repo's name) and "
-        "the path is the file's path without `.md`. The issue shows the expected value."
-    ),
+    "index-valid": "Fix the cookbook's `index.json`, or run `cookr update` to rebuild it from the folders.",
     "reference-implementation-exists": (
-        "Fix the path in `## Reference Implementations` (relative to the repository root; "
-        "a directory ends with `/`), or remove the row. After moving code, `cookr relink` "
-        "rewrites the paths git recorded as renamed."
+        "Fix the implementation's location in the cookbook index (relative to the repository "
+        "root; a directory ends with `/`) with `cookr implements`, or mark it planned. After "
+        "moving code, `cookr relink` rewrites the locations git recorded as renamed."
     ),
     "reference-implementation-platform": (
-        "Use one of: web, apple, android, windows, python."
+        f"Use one of: {', '.join(PLATFORMS)}."
     ),
     "link-resolves": (
-        "Fix or remove the link target, or create the file it points to. A "
-        "`<scheme>://<path>` link in this repo's own scheme must name a file in it."
+        "Fix or remove the link, or create what it points to. A `depends-on`/`related` entry is "
+        "a UUID (`<cookbook-uuid>/<uuid>` for another cookbook's artifact); a link in the text "
+        "is `[<rdid>](cookbook:<uuid>)`; a relative link names a file."
+    ),
+    "link-format": (
+        "Rewrite the `<scheme>://<path>` link as `[<rdid>](cookbook:<uuid>)`; "
+        "`cookr upgrade` converts a format-1 cookbook's links."
     ),
 }
 
@@ -77,6 +95,7 @@ class CheckIssue:
 class CheckReport:
     files_checked: int = 0
     issues: list[CheckIssue] = field(default_factory=list)
+    warnings: list[CheckIssue] = field(default_factory=list)
 
     @property
     def ok(self) -> bool:
@@ -85,11 +104,20 @@ class CheckReport:
     def add(self, file: Path | str, rule: str, detail: str) -> None:
         self.issues.append(CheckIssue(file=str(file), rule=rule, detail=detail))
 
+    def warn(self, file: Path | str, rule: str, detail: str) -> None:
+        self.warnings.append(CheckIssue(file=str(file), rule=rule, detail=detail))
+
 
 _MD_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 # Code shows links without making them: an inline code span (a fenced block is
 # dropped by `_prose`).
 _CODE_SPAN_RE = re.compile(r"(`+)[^`].*?(?<!`)\1(?!`)", re.S)
+# An absolute URI: `https://…`, `mailto:…`, `cookbook:…`, or a format-1 domain
+# identifier `<scheme>://<path>`.
+_URI_RE = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
+# Web and mail schemes never name a cookbook artifact.
+_WEB_SCHEMES = frozenset({"http", "https", "mailto", "ftp", "file", "data", "tel"})
+_LINK_FIELDS = ("depends-on", "related")
 
 
 def _prose(body: str) -> str:
@@ -97,160 +125,184 @@ def _prose(body: str) -> str:
     lines = history.split_lines(body)
     kept = "\n".join(bare for _, bare in history.unfenced(lines) if bare is not None)
     return _CODE_SPAN_RE.sub("", kept)
-# An absolute URI: `https://…`, `mailto:…`, or a domain identifier
-# `<scheme>://<path>` (conventions.md, "URL-Based Domain Identifiers").
-_URI_RE = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
-# Web and mail schemes never name a file in a cookbook.
-_WEB_SCHEMES = frozenset({"http", "https", "mailto", "ftp", "file", "data", "tel"})
 
 
-class _Schemes:
-    """This cookbook's own scheme, derived once and only when a check needs it.
+def _is_url(location: str) -> bool:
+    return "://" in location
 
-    None when it cannot be derived (a cookbook outside git whose index.md declares
-    none): domain links then go unresolved, as nothing says which are this repo's.
-    """
 
-    def __init__(self, root: Path) -> None:
-        self._root = root
-
-    @functools.cached_property
-    def own(self) -> str | None:
+def _config_for(root: Path) -> Optional[Config]:
+    """The repo config whose cookbook is `root`, else one for `root` alone; None
+    when `root` has no format-2 manifest (nothing to resolve UUID links with)."""
+    if not (root / MANIFEST).is_file():
+        return None
+    repo = find_repo(root)
+    if repo is not None and (repo / CONFIG_NAME).is_file():
         try:
-            return cookbook_scheme(self._root)
-        except SchemeError:
-            return None
-
-
-def _near_miss(a: str, b: str) -> bool:
-    """True when `a` is one or two edits from `b` but not `b` — a likely typo."""
-    if a == b or abs(len(a) - len(b)) > 2:
-        return False
-    prev = list(range(len(b) + 1))
-    for i, ca in enumerate(a, 1):
-        cur = [i]
-        for j, cb in enumerate(b, 1):
-            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
-        prev = cur
-    return prev[-1] <= 2
-
-
-def _domain_link_problem(target: str, root: Path, schemes: _Schemes) -> str | None:
-    """Why the domain link `target` (`<scheme>://<path>`, fragment removed) is
-    broken, or None.
-
-    A link in this cookbook's own scheme names a file: `<path>.md` or `<path>`
-    under the cookbook root, or under a parent of it up to the repo's top (a root
-    passed as `-p recipes` sits below the directory its domain paths start from).
-    Another repo's scheme cannot be checked here and passes, unless it is one or
-    two edits from this repo's scheme or the cookbook's (`agenticdevelopercookbok`),
-    which is a typo.
-    """
-    scheme, _, path = target.partition("://")
-    own = schemes.own
-    if own is None:
+            cfg = load_repo_config(repo)
+            if cfg.cookbook_dir.resolve() == root.resolve():
+                return cfg
+        except CookbookError:
+            pass
+    try:
+        return config_for_cookbook(root)
+    except CookbookError:
         return None
-    if scheme != own:
-        for known in (own, COOKBOOK_SCHEME):
-            if _near_miss(scheme, known):
-                return f"unknown scheme `{scheme}://` in `{target}`; did you mean `{known}://`?"
-        return None
-    path = path.strip("/")
-    if not path:
-        return None
-    for base in up_to_repo_top(root):
-        if (base / f"{path}.md").is_file() or (base / path).exists():
-            return None
-    return f"broken link to `{target}`: no `{path}.md` in this repo"
 
 
-def _check_one(md: Path, root: Path, report: CheckReport, id_owners: dict[str, list[str]],
-               schemes: _Schemes) -> None:
-    rel = md.relative_to(root)
-    fm = parse_file(md)
-
-    if not fm.had_frontmatter:
-        report.add(rel, "frontmatter-present", "no YAML frontmatter block found")
+def _check_link(rel, where: str, link_text: str, resolver: Optional[Resolver],
+                report: CheckReport) -> None:
+    """One UUID link: malformed or missing is an issue, unreachable a warning."""
+    try:
+        link = parse_link(link_text)
+    except ValueError:
+        report.add(rel, "link-resolves", f"{where} `{link_text}` is not a UUID link")
         return
+    if resolver is None:
+        return
+    res = resolver.resolve(link)
+    if res.state == "missing":
+        report.add(rel, "link-resolves", f"{where} `{link_text}` names no artifact in its cookbook")
+    elif res.state == "unreachable":
+        report.warn(rel, "link-resolves",
+                    f"{where} `{link_text}`: cookbook {link.cookbook} cannot be reached here")
 
+
+def _check_meta(rel, data: dict, report: CheckReport, id_owners: dict[str, list[str]]) -> None:
     for f in REQUIRED_FIELDS:
-        if f not in fm.data or fm.data.get(f) in (None, ""):
+        if f not in data or data.get(f) in (None, ""):
             report.add(rel, f"required-field:{f}", f"missing or empty `{f}`")
 
-    if isinstance(fm.data.get("id"), str) and not UUID_RE.match(fm.data["id"]):
-        report.add(rel, "id-uuid", f"`id` is not a valid UUID: {fm.data['id']}")
-    if isinstance(fm.data.get("id"), str) and UUID_RE.match(fm.data["id"]):
-        id_owners[fm.data["id"]].append(str(rel))
+    uid = data.get("id")
+    if isinstance(uid, str):
+        if UUID_RE.match(uid):
+            id_owners[uid.lower()].append(str(rel))
+        else:
+            report.add(rel, "id-uuid", f"`id` is not a valid UUID: {uid}")
 
-    if isinstance(fm.data.get("version"), str) and not SEMVER_RE.match(fm.data["version"]):
-        report.add(rel, "version-semver", f"`version` not semver: {fm.data['version']}")
+    if isinstance(data.get("version"), str) and not SEMVER_RE.match(data["version"]):
+        report.add(rel, "version-semver", f"`version` not semver: {data['version']}")
 
-    t = fm.data.get("type")
+    t = data.get("type")
     if t and t not in VALID_TYPES:
         report.add(rel, "type-valid", f"unknown `type`: {t}")
 
-    s = fm.data.get("status")
+    s = data.get("status")
     if s and s not in VALID_STATUSES:
         report.add(rel, "status-valid", f"unknown `status`: {s}")
 
-    expected_domain_suffix = rel.with_suffix("").as_posix()
-    domain = fm.data.get("domain", "")
-    if isinstance(domain, str) and not domain.endswith(expected_domain_suffix):
-        expected = f"`{schemes.own}://{expected_domain_suffix}`" if schemes.own else (
-            f"`<scheme>://{expected_domain_suffix}`")
-        report.add(
-            rel, "domain-matches-path",
-            f"domain `{domain}` does not end with `{expected_domain_suffix}`; "
-            f"expected {expected}",
-        )
 
-    # Resolve relative links and this repo's own domain links (skip web URLs and
-    # anchors).
-    for m in _MD_LINK_RE.finditer(_prose(fm.body)):
+def _check_links(rel, data: dict, body: str, base: Path, root: Path,
+                 resolver: Optional[Resolver], report: CheckReport) -> None:
+    """`depends-on`/`related` and every link in the prose. Relative links are
+    resolved from `base` (where the doc sits), then from the cookbook root."""
+    for name in _LINK_FIELDS:
+        values = data.get(name) or []
+        for value in values if isinstance(values, list) else [values]:
+            _check_link(rel, f"`{name}` entry", str(value), resolver, report)
+
+    prose = _prose(body)
+    for _, link in in_text_links(prose):
+        target = f"{link.cookbook}/{link.artifact}" if link.cookbook else link.artifact
+        _check_link(rel, "link", target, resolver, report)
+
+    for m in _MD_LINK_RE.finditer(prose):
         target = m.group(1).split("#", 1)[0].strip()
         if not target:
             continue
         if _URI_RE.match(target):
-            if "://" in target and target.split(":", 1)[0].lower() not in _WEB_SCHEMES:
-                problem = _domain_link_problem(target, root, schemes)
-                if problem:
-                    report.add(rel, "link-resolves", problem)
+            scheme = target.split(":", 1)[0].lower()
+            if scheme == "cookbook":
+                if not in_text_links(m.group(0)):
+                    report.add(rel, "link-resolves", f"`{target}` is not a `cookbook:<uuid>` link")
+            elif "://" in target and scheme not in _WEB_SCHEMES:
+                report.add(rel, "link-format", f"format-1 domain link `{target}`")
             continue
-        if (md.parent / target).resolve().exists():
-            continue
-        if (root / target).resolve().exists():
+        if (base / target).resolve().exists() or (root / target).resolve().exists():
             continue
         report.add(rel, "link-resolves", f"broken link to `{target}`")
 
-    for impl in refimpl.implementations(fm.body):
-        if impl.platform not in refimpl.PLATFORMS:
-            report.add(rel, "reference-implementation-platform",
-                       f"Reference Implementations platform `{impl.platform}` is not one of "
-                       f"{', '.join(refimpl.PLATFORMS)}")
-        if not (_repo_top(root) / impl.path).exists():
-            report.add(rel, "reference-implementation-exists",
-                       f"Reference Implementations path `{impl.path}` does not exist")
+
+def _check_implementations(config: Config, resolver: Resolver, report: CheckReport) -> None:
+    """Every index implementation row: a known platform, and a location that
+    exists in the repo unless it is a URL or the row is planned."""
+    for entry in sorted(resolver.own.entries.values(), key=lambda e: e.path):
+        rel = f"index.json ({entry.rdid})"
+        for impl in entry.implementations:
+            if impl.platform not in PLATFORMS:
+                report.add(rel, "reference-implementation-platform",
+                           f"implementation platform `{impl.platform}` is not one of "
+                           f"{', '.join(PLATFORMS)}")
+            loc = impl.location
+            if not loc or _is_url(loc) or impl.conformance.state == "planned":
+                continue
+            if not (config.repo_root / loc).exists():
+                report.add(rel, "reference-implementation-exists",
+                           f"implementation location `{loc}` does not exist")
 
 
-@functools.cache
-def _repo_top(root: Path) -> Path:
-    """The top of the checkout holding `root`, which Reference Implementations
-    paths are relative to; `root` itself outside git."""
-    return up_to_repo_top(root)[-1]
-
-
-def phase_a(root: Path) -> CheckReport:
+def phase_a(root: Path, config: Optional[Config] = None) -> CheckReport:
+    """Check every artifact under cookbook `root`. `config` is the repo config
+    whose cookbook is `root`; derived when not given."""
+    root = Path(root)
     report = CheckReport()
     id_owners: dict[str, list[str]] = defaultdict(list)
-    files = iter_markdown(root)
-    report.files_checked = len(files)
-    schemes = _Schemes(root)
-    for md in files:
-        _check_one(md, root, report, id_owners, schemes)
-    for uid, files_list in id_owners.items():
-        if len(files_list) > 1:
-            report.add(
-                ", ".join(files_list), "id-unique",
-                f"duplicate id `{uid}` across {len(files_list)} files",
-            )
+
+    if config is None or config.cookbook_dir.resolve() != root.resolve():
+        config = _config_for(root)
+    resolver: Optional[Resolver] = None
+    if config is None:
+        report.warn(f"{root.name}/{MANIFEST}", "links-unchecked",
+                    f"no readable format-2 {MANIFEST}: UUID links and index implementations "
+                    "were not checked")
+    else:
+        try:
+            resolver = resolver_for(config)
+        except CookbookError as e:
+            report.add(f"{root.name}/index.json", "index-valid", str(e))
+
+    folders = find_folders([root])
+    for folder in folders:
+        rel = f"{folder.relative_to(root).as_posix()}/"
+        try:
+            art = load_folder(folder)
+        except ArtifactError as e:
+            report.add(rel, "folder-loads", str(e))
+            continue
+        _check_meta(rel, art.meta, report, id_owners)
+        _check_links(rel, art.meta, art.body(), folder.parent, root, resolver, report)
+
+    docs = [md for md in iter_markdown(root) if not is_folder(folder_for(md))]
+    for md in docs:
+        rel = md.relative_to(root)
+        fm = parse_file(md)
+        if not fm.had_frontmatter:
+            report.add(rel, "frontmatter-present", "no YAML frontmatter block found")
+            continue
+        _check_meta(rel, fm.data, report, id_owners)
+        _check_links(rel, fm.data, fm.body, md.parent, root, resolver, report)
+
+    if config is not None and resolver is not None:
+        _check_implementations(config, resolver, report)
+
+    report.files_checked = len(folders) + len(docs)
+    for uid, owners in id_owners.items():
+        if len(owners) > 1:
+            report.add(", ".join(owners), "id-unique",
+                       f"duplicate id `{uid}` across {len(owners)} files")
     return report
+
+
+def show(report: CheckReport, ui) -> int:
+    """Print a Phase A report: warnings (never fatal), then issues. 1 on issues."""
+    if report.warnings:
+        ui.table(["file", "rule", "warning"],
+                 [[w.file, w.rule, w.detail] for w in report.warnings])
+        ui.warn(f"{len(report.warnings)} warning(s): checked as far as this checkout allows.")
+    if report.ok:
+        ui.ok(f"All {report.files_checked} artifacts passed deterministic checks.")
+        return 0
+    ui.table(["file", "rule", "issue", "fix"],
+             [[i.file, i.rule, i.detail, fix_for(i.rule)] for i in report.issues])
+    ui.error(f"{len(report.issues)} issue(s) across {report.files_checked} files.")
+    return 1

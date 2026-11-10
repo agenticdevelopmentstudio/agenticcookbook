@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6af1d30a-c2ee-4a6d-97ec-50c67f01a243",
     "title": "Inspector Panel",
-    "domain": "agenticdevelopercookbook://ingredients/ui/panels/inspector-panel",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -32,7 +31,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "3e13e0f947954921",
+  "synced": "fad6477c8670c5f8",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

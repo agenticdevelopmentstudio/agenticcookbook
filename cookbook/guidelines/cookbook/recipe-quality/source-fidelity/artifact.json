@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "47563e88-307b-4eef-a63c-ddc18e85a945",
     "title": "Source Fidelity",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/source-fidelity",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "6a4806c2e7664ebe",
+  "synced": "7b287daabf6e59ad",
   "parts": [
     {"part": "intro"},
     {"part": "requirements", "heading": "Requirements"},

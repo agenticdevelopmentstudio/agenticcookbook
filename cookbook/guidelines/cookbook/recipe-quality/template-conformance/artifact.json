@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e48a04d7-c479-427d-9d8e-fe9e9b990c77",
     "title": "Template Conformance",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/template-conformance",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
-    "modified": "2026-09-25",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "90213d31ddf9ede0",
+  "synced": "9ccebe8eaabc799c",
   "parts": [
     {"part": "intro"},
     {"part": "requirements", "heading": "Requirements"},

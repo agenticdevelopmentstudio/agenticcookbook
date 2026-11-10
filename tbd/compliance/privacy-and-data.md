@@ -1,7 +1,6 @@
 ---
 id: 8A9E6D0E-CC26-497C-867B-3171A0213F5A
 title: "Privacy and Data"
-domain: agenticdevelopercookbook://compliance/privacy-and-data
 type: compliance
 version: 1.0.1
 status: draft
@@ -16,9 +15,9 @@ platforms: []
 tags: [compliance, privacy, data]
 depends-on: []
 related:
-  - agenticdevelopercookbook://compliance/security
-  - agenticdevelopercookbook://compliance/platform-compliance
-  - agenticdevelopercookbook://compliance/user-safety
+  - tbd/compliance/security.md
+  - tbd/compliance/platform-compliance.md
+  - tbd/compliance/user-safety.md
 references: []
 ---
 
@@ -39,7 +38,7 @@ Components MUST collect only the minimum data necessary for their functionality.
 **Applies when:** a component requests, collects, or stores user data.
 
 **Guidelines:**
-- [Privacy](agenticdevelopercookbook://guidelines/implementing/security/privacy)
+- [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 
 ---
 
@@ -50,7 +49,7 @@ Personal data collection MUST be preceded by informed user consent.
 **Applies when:** a component collects personal or identifiable information from the user.
 
 **Guidelines:**
-- [Privacy](agenticdevelopercookbook://guidelines/implementing/security/privacy)
+- [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 
 ---
 
@@ -61,8 +60,8 @@ Personal and sensitive data MUST be stored using platform-specific secure storag
 **Applies when:** a component persists personal or sensitive data locally or remotely.
 
 **Guidelines:**
-- [Secure Storage](agenticdevelopercookbook://guidelines/implementing/security/secure-storage)
-- [Sensitive Data](agenticdevelopercookbook://guidelines/implementing/security/sensitive-data)
+- [adc.guideline.implementing.security.secure-storage](cookbook:926dff1a-dc12-46a4-b8c1-bdedbc142afd)
+- [adc.guideline.implementing.security.sensitive-data](cookbook:22f1ca04-2d1d-4faf-8bf0-c6abcd60802c)
 
 ---
 
@@ -73,8 +72,8 @@ Personally identifiable information MUST NOT appear in log output at any level.
 **Applies when:** a component writes log output and has access to personal data.
 
 **Guidelines:**
-- [Sensitive Data](agenticdevelopercookbook://guidelines/implementing/security/sensitive-data)
-- [Logging](agenticdevelopercookbook://guidelines/implementing/observability/logging)
+- [adc.guideline.implementing.security.sensitive-data](cookbook:22f1ca04-2d1d-4faf-8bf0-c6abcd60802c)
+- [adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65)
 
 ---
 
@@ -85,7 +84,7 @@ Components handling personal data MUST define retention duration and deletion be
 **Applies when:** a component stores personal data beyond the current session.
 
 **Guidelines:**
-- [Privacy](agenticdevelopercookbook://guidelines/implementing/security/privacy)
+- [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 
 ---
 
@@ -96,7 +95,7 @@ Users SHOULD be able to export their personal data in a standard format.
 **Applies when:** a component stores significant amounts of user-generated or personal data.
 
 **Guidelines:**
-- [Privacy](agenticdevelopercookbook://guidelines/implementing/security/privacy)
+- [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 
 ---
 
@@ -107,7 +106,7 @@ Data sharing with third parties MUST be disclosed and require user consent.
 **Applies when:** a component transmits user data to external services or analytics providers.
 
 **Guidelines:**
-- [Privacy](agenticdevelopercookbook://guidelines/implementing/security/privacy)
+- [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 
 ---
 
@@ -118,8 +117,8 @@ Sensitive data stored locally MUST be encrypted at rest.
 **Applies when:** a component persists sensitive data to the local filesystem or database.
 
 **Guidelines:**
-- [Sensitive Data](agenticdevelopercookbook://guidelines/implementing/security/sensitive-data)
-- [Secure Storage](agenticdevelopercookbook://guidelines/implementing/security/secure-storage)
+- [adc.guideline.implementing.security.sensitive-data](cookbook:22f1ca04-2d1d-4faf-8bf0-c6abcd60802c)
+- [adc.guideline.implementing.security.secure-storage](cookbook:926dff1a-dc12-46a4-b8c1-bdedbc142afd)
 
 ## Change History
 

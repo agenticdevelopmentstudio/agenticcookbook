@@ -11,7 +11,7 @@ An AI agent MUST NOT freely install packages. Constrain what it can pull:
   is added or merged.
 - **Verify existence and maintenance (anti-slopsquatting)** — before adding a candidate package,
   confirm it actually exists and is actively maintained; an agent MUST NOT install a hallucinated or
-  abandoned name. Cross-reference [reuse-before-build](agenticdevelopercookbook://guidelines/planning/code-quality/reuse-before-build).
+  abandoned name. Cross-reference [adc.guideline.planning.code-quality.reuse-before-build](cookbook:2c605b36-da66-4eaf-b2d4-59ed5a3976b3).
 
 References:
 - [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)

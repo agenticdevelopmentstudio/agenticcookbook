@@ -1,28 +1,32 @@
 """`cookr arrangement`: does each spec sit in the concept group its code's roots map to?
 
-`place()` checks a spec's name against the `recipes` group of each `code.roots`
-entry its first platform's Reference Implementations rows fall under, and
-classifies it `aligned` (inside one of those groups, at any depth), `drifted`,
-`unplaced` (no rows at all), or `outside` (a row under no `code.roots` entry). `report()` runs `place()` over a whole
+`place()` checks a spec's name against the `group` of each `.cookr.json` root
+its first platform's index implementations fall under, and classifies it
+`aligned` (inside one of those groups, at any depth), `drifted`, `unplaced` (no
+implementation in the repo), or `outside` (a row under no root). `report()` runs `place()` over a whole
 corpus, optionally scoped to one tier.
 """
 
 from __future__ import annotations
 
-import pytest
+import shutil
 
 from cookr.core.arrangement import Placement, place, report
-from cookr.core.config import load_config
 from cookr.core.recipes import RecipeInfo, load_corpus
 
-
-def _cfg(mini_repo):
-    return load_config(mini_repo / "cookbook")
+from .cookbook_helpers import config as _cfg, implementations
 
 
-def _info(mini_repo, slug, body):
-    return RecipeInfo(slug=slug, path=mini_repo / "cookbook" / f"{slug}.md",
-                       type="ingredient", status="draft", body=body, data={})
+def _info(mini_repo, slug, rows=()):
+    return RecipeInfo(slug=slug, path=mini_repo / "cookbook" / slug,
+                      type="ingredient", status="draft", body="", data={},
+                      implementations=tuple(implementations(rows)))
+
+
+def _move(mini_repo, src, dst):
+    cb = mini_repo / "cookbook"
+    (cb / dst).parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(cb / src), str(cb / dst))
 
 
 # --- place: aligned/unplaced on the fixture as-is ------------------------------------------
@@ -34,7 +38,7 @@ def test_place_reports_every_fixture_spec_as_aligned_except_the_unmatched_one(mi
     placements = {name: place(cfg, name, info) for name, info in corpus.items()}
     assert placements["blocks/stat-card"].state == "aligned"
     assert placements["components/chat-composer"].state == "aligned"
-    assert placements["site-menu"].state == "unplaced"  # site-menu.md has no source code at all
+    assert placements["site-menu"].state == "unplaced"  # site-menu has no implementation at all
     assert placements["site-menu"].expected == ""
 
 
@@ -47,7 +51,7 @@ def test_place_for_a_single_row_spec_expects_its_roots_group(mini_repo):
 
 
 def test_place_uses_only_the_first_listed_platforms_rows(mini_repo):
-    # button.md lists a `web` row before its `apple` directory row; place()
+    # button lists a `web` row before its `apple` directory row; place()
     # judges the spec purely by the web row's root group, never touching the
     # apple directory claim at all.
     cfg = _cfg(mini_repo)
@@ -61,9 +65,7 @@ def test_place_uses_only_the_first_listed_platforms_rows(mini_repo):
 
 
 def test_place_accepts_a_spec_moved_into_a_sub_group_of_its_concept(mini_repo):
-    (mini_repo / "cookbook" / "components" / "ui").mkdir()
-    (mini_repo / "cookbook" / "components" / "button.md").rename(
-        mini_repo / "cookbook" / "components" / "ui" / "button.md")
+    _move(mini_repo, "components/button", "components/ui/button")
     cfg = _cfg(mini_repo)
     corpus = load_corpus(cfg.cookbook_dir)
     p = place(cfg, "components/ui/button", corpus["components/ui/button"])
@@ -72,8 +74,7 @@ def test_place_accepts_a_spec_moved_into_a_sub_group_of_its_concept(mini_repo):
 
 
 def test_place_flags_a_spec_moved_into_another_group_as_drifted(mini_repo):
-    (mini_repo / "cookbook" / "components" / "button.md").rename(
-        mini_repo / "cookbook" / "blocks" / "button.md")
+    _move(mini_repo, "components/button", "blocks/button")
     cfg = _cfg(mini_repo)
     corpus = load_corpus(cfg.cookbook_dir)
     p = place(cfg, "blocks/button", corpus["blocks/button"])
@@ -84,14 +85,7 @@ def test_place_flags_a_spec_moved_into_another_group_as_drifted(mini_repo):
 # --- place: several rows under one root ------------------------------------------------------
 
 
-_DIR_ROWS = """
-## Reference Implementations
-
-| Platform | Path |
-|----------|------|
-| apple | `apple/UI/Button.swift` |
-| apple | `apple/UI/ToolbarButton.swift` |
-"""
+_DIR_ROWS = [("apple", "apple/UI/Button.swift"), ("apple", "apple/UI/ToolbarButton.swift")]
 
 
 def test_place_for_a_directory_group_is_aligned_when_the_name_matches_the_group(mini_repo):
@@ -117,22 +111,22 @@ def test_place_for_a_directory_group_is_aligned_with_a_leaf_under_the_group(mini
 # --- place: unplaced / outside ---------------------------------------------------------------
 
 
-def test_place_with_no_reference_implementations_is_unplaced(mini_repo):
+def test_place_with_no_implementations_is_unplaced(mini_repo):
     cfg = _cfg(mini_repo)
-    p = place(cfg, "components/nothing", _info(mini_repo, "components/nothing", "no refimpl here"))
+    p = place(cfg, "components/nothing", _info(mini_repo, "components/nothing"))
     assert p == Placement(name="components/nothing", state="unplaced", expected="")
 
 
-def test_place_with_a_row_under_no_configured_root_is_outside(mini_repo):
-    body = """
-## Reference Implementations
-
-| Platform | Path |
-|----------|------|
-| web | `docs/misc.tsx` |
-"""
+def test_place_with_only_url_implementations_is_unplaced(mini_repo):
     cfg = _cfg(mini_repo)
-    p = place(cfg, "components/misc", _info(mini_repo, "components/misc", body))
+    p = place(cfg, "components/far", _info(
+        mini_repo, "components/far", [("web", "https://example.com/far.tsx")]))
+    assert p.state == "unplaced"
+
+
+def test_place_with_a_row_under_no_configured_root_is_outside(mini_repo):
+    cfg = _cfg(mini_repo)
+    p = place(cfg, "components/misc", _info(mini_repo, "components/misc", [("web", "docs/misc.tsx")]))
     assert p.state == "outside"
     assert p.expected == ""
 

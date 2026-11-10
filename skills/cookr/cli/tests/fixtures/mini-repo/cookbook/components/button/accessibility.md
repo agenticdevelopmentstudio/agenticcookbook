@@ -1,0 +1,3 @@
+
+Button is keyboard accessible.
+

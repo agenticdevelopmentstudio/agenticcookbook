@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "03539f34-3451-49d5-b90f-ba77430f2658",
     "title": "System Dependencies",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/system-dependencies",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "d0094a0db38ef3fa",
+  "synced": "e3cad8e92d971d5f",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

@@ -1,7 +1,6 @@
 ---
 id: ba32d761-5ddd-4883-b230-dde1362a55f5
 title: Apple UI Verification Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/apple/ui-verification
 type: reference
 version: 1.0.0
 status: draft

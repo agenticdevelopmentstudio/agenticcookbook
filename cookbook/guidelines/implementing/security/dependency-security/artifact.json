@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b712c766-af1f-4716-b8fb-34bf0bbb13eb",
     "title": "Dependency Security",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/dependency-security",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "security-review"
     ]
   },
-  "synced": "ce22c8b2bfc26809",
+  "synced": "f45ea209d2c1239e",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

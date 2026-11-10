@@ -1,11 +1,13 @@
 """`cookr prompt extract` — the brief for writing one component's recipe.
 
 A brief is assembled, in order: role header + module preamble, the bundled
-guidelines (each under `## reference: guidelines/<path>`, frontmatter reduced to
-its citable `domain`, Change History dropped), the non-UI guidance for a
-component from a `logic` root, the selected template, the compliance check list,
-the rendered action and `## Your task`, then every source file for the component
-and the existing recipe if there is one. Embedded files are fenced with a
+guidelines (each under `## reference: guidelines/<path>`, frontmatter dropped,
+Change History dropped), the non-UI guidance for a component from a `logic`
+root, the selected template, the compliance check list (every check the
+cookbook and its reachable dependencies define, as the link a citation uses),
+the rendered action and `## Your task`, then every source file for the
+component and the existing recipe if there is one. The component's code is
+recorded in the cookbook index with `cookr implements`, never in the recipe. Embedded files are fenced with a
 backtick run longer than any inside them, so their own fences stay inside.
 No LLM is called here.
 
@@ -27,15 +29,15 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from cookr.core import refimpl
 from cookr.core.frontmatter import parse_file
 from cookr.core.history import h2_sections
 from cookr.core.markdown import iter_markdown
 from cookr.modules.prompt.render import render_template
 
 from ...core.completeness import CHANGE_HISTORY, NEEDS_REVIEW
-from ...core.compliance import load_checks, summary
-from ...core.config import Config
+from ...core.compliance import check_links
+from ...core.links import resolver_for
+from ...core.repoconfig import Config
 from ...core.coverage import compute
 from ...core.inventory import Component, scan
 from ...core.recipes import RecipeInfo, load_corpus
@@ -59,11 +61,6 @@ _BACKTICKS = re.compile(r"`+")
 def references_dir() -> Path:
     """Materialised by ./install from prompts/extract/reference-manifest.json."""
     return EXTRACT_DIR / "references"
-
-
-def compliance_dir() -> Path:
-    """The compliance check catalog, materialised with the other references."""
-    return references_dir() / "compliance"
 
 
 def register(parser: argparse.ArgumentParser) -> None:
@@ -103,44 +100,57 @@ def _without_change_history(body: str) -> str:
 
 @functools.cache
 def _guidelines(root: Path) -> str:
-    """Every guideline under `root`: citable domain kept, other metadata dropped."""
+    """Every guideline under `root`, metadata and Change History dropped."""
     base = references_dir() / "guidelines"
     chunks = []
     for path in iter_markdown(root):
         fm = parse_file(path)
-        domain = fm.data.get("domain")
-        cite = f"Cite as `{domain}`.\n\n" if domain else ""
         body = _without_change_history(fm.body).strip()
-        chunks.append(f"## reference: guidelines/{path.relative_to(base).as_posix()}\n\n{cite}{body}")
+        chunks.append(f"## reference: guidelines/{path.relative_to(base).as_posix()}\n\n{body}")
     return "\n\n".join(chunks)
 
 
-@functools.cache
-def _checks(catalog: Path) -> str:
-    checks = load_checks(catalog)
-    if not checks:
+def _checks(cfg: Config) -> str:
+    """The checks a Compliance table may cite: the cookbook's own and every
+    reachable dependency's, each as the in-text link a citation is written as."""
+    resolver = resolver_for(cfg)
+    links = check_links(resolver.own)
+    for dep in sorted(cfg.dependencies):
+        index = resolver.index_for(dep)
+        if index is not None:
+            links += check_links(index)
+    if not links:
         return ""
     return ("## reference: compliance checks\n\n"
-            "The Compliance table cites only these checks, each as a markdown link whose target\n"
-            "is `agenticdevelopercookbook://compliance/<document>#<check>`:\n\n" + summary(checks))
+            "The Compliance table cites only these checks, each written exactly as listed:\n\n"
+            + "\n".join(f"- {link}" for link in links))
 
 
 # ---- one brief ----------------------------------------------------------------------------
 
 def _implementations(existing: Optional[RecipeInfo], components: list[Component]
-                     ) -> list[refimpl.Implementation]:
-    """The existing spec's rows, then a row for each source they do not list yet."""
-    rows = list(existing.implementations) if existing is not None else []
+                     ) -> list[dict]:
+    """The existing spec's index rows, then a row for each source they do not list yet."""
+    rows = [{"platform": r.platform, "location": r.location, "state": r.conformance.state}
+            for r in (existing.implementations if existing is not None else ())]
     for c in components:
-        if not c.claimed and all(r.path != c.path for r in rows):
-            rows.append(refimpl.Implementation(c.platform, c.path))
+        if not c.claimed and all(r["location"] != c.path for r in rows):
+            rows.append({"platform": c.platform, "location": c.path, "state": "unverified"})
     return rows
+
+
+def _render_rows(rows: list[dict]) -> str:
+    """The rows as `cookr implements` lines the writer runs once the recipe exists."""
+    if not rows:
+        return "(none)"
+    return "\n".join(f"- {r['platform']}: `{r['location'] or '(planned)'}` ({r['state']})"
+                      for r in rows)
 
 
 def _brief(name: str, cfg: Config, components: list[Component], existing: Optional[RecipeInfo],
            rtype: Optional[str]) -> tuple[str, dict]:
     recipe_path = f"{cfg.cookbook}/{name}.md"
-    domain = cfg.domain(name)
+    rdid = existing.rdid if existing is not None and existing.rdid else ""
     # Without an explicit --type, keep the existing recipe's type: re-running
     # extract on a composite must not hand back the ingredient template and
     # silently convert it.
@@ -163,25 +173,28 @@ def _brief(name: str, cfg: Config, components: list[Component], existing: Option
         parts.append((EXTRACT_DIR / "logic.md").read_text(encoding="utf-8").strip())
     parts += [f"## reference: templates/{rtype}.md\n\n"
               f"{template.read_text(encoding='utf-8').rstrip()}",
-              _checks(compliance_dir()),
+              _checks(cfg),
               render_template(action.body, {
                   "name": name, "recipe_path": recipe_path, "recipe_file": str(recipe_file),
-                  "domain": domain, "type": rtype, "platforms": ", ".join(platforms),
-                  "reference_implementations": refimpl.render(impls),
+                  "rdid": rdid or "(assigned when the recipe is first indexed)",
+                  "type": rtype, "platforms": ", ".join(platforms),
+                  "reference_implementations": _render_rows(impls),
               }).strip(),
               f"## Your task\n\nProduce `{recipe_file}` for `{name}`."]
     for c in components:
         body = (cfg.repo_root / c.path).read_text(encoding="utf-8", errors="replace").rstrip()
         parts.append(f"## source: {c.path} ({c.platform})\n\n{fenced(body)}")
     if existing is not None:
-        body = existing.path.read_text(encoding="utf-8", errors="replace").rstrip()
+        doc = existing.path.parent / f"{existing.path.name}.md"
+        body = (doc.read_text(encoding="utf-8", errors="replace") if doc.is_file()
+                else existing.body).rstrip()
         parts.append(f"## existing recipe: {recipe_path}\n\n{fenced(body, 'markdown')}")
     text = "\n\n".join(p for p in parts if p) + "\n"
     info = {
         "name": name, "type": rtype, "recipe_path": recipe_path,
-        "recipe_file": str(recipe_file), "domain": domain,
+        "recipe_file": str(recipe_file), "rdid": rdid,
         "sources": [c.path for c in components], "platforms": platforms,
-        "reference_implementations": [{"platform": r.platform, "path": r.path} for r in impls],
+        "reference_implementations": impls,
         "kind": kind, "existing": existing is not None, "template": str(template),
     }
     return text, info
@@ -217,7 +230,7 @@ def build_tier(config: Config, tier: str, rtype: Optional[str] = None
                ) -> tuple[list[tuple[str, dict]], list[dict]]:
     """Every brief group `tier` still needs, one per spec, and the rows awaiting review."""
     corpus = load_corpus(config.cookbook_dir)
-    report = compute(config, tier=tier, checks=load_checks(compliance_dir()), corpus=corpus)
+    report = compute(config, tier=tier, corpus=corpus)
     by_name: dict[str, list[Component]] = {}
     for c in scan(config, corpus, tier=tier):
         by_name.setdefault(c.name, []).append(c)
@@ -229,7 +242,7 @@ def build_tier(config: Config, tier: str, rtype: Optional[str] = None
         info = corpus.get(row.name)
         if tuple(row.problems) == AWAITING_REVIEW:
             awaiting.append({"name": row.name,
-                             "recipe_path": info.path.relative_to(config.repo_root).as_posix()})
+                             "recipe_path": f"{info.path.relative_to(config.repo_root).as_posix()}.md"})
             continue
         briefs.append(_brief(row.name, config, by_name[row.name], info, rtype))
     return briefs, awaiting

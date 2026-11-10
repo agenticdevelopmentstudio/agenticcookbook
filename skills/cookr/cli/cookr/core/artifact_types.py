@@ -18,7 +18,7 @@ from typing import Optional
 from .artifact import HISTORY, HISTORY_HEADING, INTRO, Artifact
 
 COMMON_FIELDS = (
-    "id", "title", "domain", "type", "version", "status", "language", "created",
+    "id", "title", "type", "version", "status", "language", "created",
     "modified", "author", "copyright", "license", "summary", "platforms", "tags",
     "depends-on", "related", "references", "approved-by", "approved-date",
 )

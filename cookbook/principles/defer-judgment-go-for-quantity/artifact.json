@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "61756d9a-da97-49d1-be26-eef31de15232",
     "title": "Defer Judgment, Go for Quantity",
-    "domain": "agenticdevelopercookbook://principles/defer-judgment-go-for-quantity",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/diverge-before-you-converge"
+      "e8677291-1d21-484f-b562-90b8600ea380"
     ],
     "references": [
       "Osborn, Applied Imagination, 1953",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "b60942c7faf36273",
+  "synced": "0501efc2d337fa7d",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

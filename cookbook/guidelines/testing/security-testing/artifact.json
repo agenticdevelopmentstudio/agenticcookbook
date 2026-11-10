@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cf05e36f-ea8b-4af2-8df6-c5e772dc25b5",
     "title": "Security Testing",
-    "domain": "agenticdevelopercookbook://guidelines/testing/security-testing",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -28,7 +27,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+      "563aebde-52bf-4011-8907-ecc473fd942c"
     ],
     "references": [
       "https://codeql.github.com/",
@@ -45,7 +44,7 @@
     ]
   },
   "names_hosts": "Names a security tool as one Claude Code can invoke directly.",
-  "synced": "4055d46599c594b8",
+  "synced": "0d83f4ad41619f74",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

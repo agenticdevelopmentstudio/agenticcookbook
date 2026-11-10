@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e01e2c5f-32fd-49e3-8f2a-1f64411160cb",
     "title": "Appearance Mode Toggle",
-    "domain": "agenticdevelopercookbook://ingredients/web/controls/appearance-mode-toggle",
     "type": "ingredient",
     "version": "1.2.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "1a0ce5c8218f07d5",
+  "synced": "789b20552c54fb00",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

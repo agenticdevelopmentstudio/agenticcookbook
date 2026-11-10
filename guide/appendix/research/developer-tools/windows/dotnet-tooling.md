@@ -1,7 +1,6 @@
 ---
 id: e79fe94e-cc8a-4fb8-985c-1b9bfc4c5c12
 title: .NET & Windows Development Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/windows/dotnet-tooling
 type: reference
 version: 1.0.0
 status: draft

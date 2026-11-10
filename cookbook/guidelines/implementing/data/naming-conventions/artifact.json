@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "DDE1B6FD-773C-4F9F-A328-51150468BC99",
+    "id": "dde1b6fd-773c-4f9f-a328-51150468bc99",
     "title": "Database naming conventions",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/naming-conventions",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -26,7 +25,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://www.sqlite.org/lang_keywords.html",
@@ -40,7 +39,7 @@
       "schema-design"
     ]
   },
-  "synced": "06fad9f60799a440",
+  "synced": "fc7869bcfd3e8dd9",
   "parts": [
     {"part": "intro"},
     {"part": "use-snake-case-everywhere", "heading": "Use snake_case everywhere"},

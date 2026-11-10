@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9f17b833-75ed-4c86-a6af-a4f277c23d21",
     "title": "Platform Design Languages",
-    "domain": "agenticdevelopercookbook://guidelines/planning/ui/platform-design-languages",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -38,7 +37,7 @@
       "platform-integration"
     ]
   },
-  "synced": "0e5091e68643125d",
+  "synced": "153968de9b2bc354",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

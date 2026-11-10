@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "fa2196e4-9513-4b23-b805-f5f5f099e5ff",
     "title": "Architecture",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/architecture",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "code-review"
     ]
   },
-  "synced": "3c06e1a992d9ca4e",
+  "synced": "b508da87d777ee81",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

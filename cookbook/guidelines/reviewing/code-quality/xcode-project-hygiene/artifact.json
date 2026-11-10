@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "544b36cb-2778-4b60-a31e-b55ff789eada",
     "title": "Xcode project hygiene",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/xcode-project-hygiene",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -31,7 +30,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/xcode-project-hygiene"
+      "187a80eb-e2e5-4a6c-8d14-aa591840abe6"
     ],
     "references": [
       "https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project",
@@ -47,7 +46,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's project-file rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "2717064a6b49810f",
+  "synced": "f461ca30708b133f",
   "parts": [
     {"part": "intro"},
     {"part": "build-settings", "heading": "Build settings"},

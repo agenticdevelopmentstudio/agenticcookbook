@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e8677291-1d21-484f-b562-90b8600ea380",
     "title": "Diverge Before You Converge",
-    "domain": "agenticdevelopercookbook://principles/diverge-before-you-converge",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/frame-before-you-generate",
-      "agenticdevelopercookbook://principles/defer-judgment-go-for-quantity"
+      "f7961f5a-834b-4ba1-804e-8c1ddcc251a7",
+      "61756d9a-da97-49d1-be26-eef31de15232"
     ],
     "references": [
       "Diehl & Stroebe, Journal of Personality and Social Psychology, 1987, 1991",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "2642be247ee8cf83",
+  "synced": "89b989552e029e9a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a1845427-a2cd-4744-96bf-f6c6f2380982",
     "title": "File Tree Browser",
-    "domain": "agenticdevelopercookbook://ingredients/ui/panels/file-tree-browser",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-date": "2026-10-04"
   },
   "names_hosts": "Gives the .claude directory its own icon in the file tree.",
-  "synced": "a16debfe010abd55",
+  "synced": "4fd1323e5b22aa87",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

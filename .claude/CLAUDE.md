@@ -33,7 +33,7 @@ A **cookbook artifact** is any content item in the cookbook: a principle, guidel
 | Type | Count | Path | Description |
 |------|-------|------|-------------|
 | Principle | 44 | `cookbook/principles/` | Foundational engineering ideas that guide design decisions |
-| Guideline | 258 (351 with duplicates) | `cookbook/guidelines/` | Use-case-organized rules: planning, implementing, testing, reviewing, shipping, cookbook, researching |
+| Guideline | 275 (381 with duplicates) | `cookbook/guidelines/` | Use-case-organized rules: planning, implementing, testing, reviewing, shipping, cookbook, researching, storytelling, brainstorming |
 | Ingredient | 48 | `cookbook/ingredients/` | Atomic component specs — the building blocks of recipes |
 | Recipe | 13 | `cookbook/recipes/` | Compositions of configured ingredients into coherent features |
 
@@ -58,13 +58,14 @@ The cookbook's public-facing website (React 19, TypeScript, Tailwind CSS 4) and 
 Read `guide/introduction/conventions.md` for the full format reference. See `guide/introduction/glossary.md` for term definitions.
 
 Key rules:
-- All `.md` files have YAML frontmatter (id, title, domain, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references)
-- URL-based domain identifiers: `agenticdevelopercookbook://guidelines/testing/test-pyramid`
+- Every artifact's meta (the frontmatter of its compiled doc) has id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references)
+- Identity is the UUID `id`; the readable rdid (`adc.guideline.testing.test-pyramid`) and folder path live in `cookbook/index.json`, maintained by `cookr update`. There is no `domain` field
+- Links: `depends-on`/`related`/`ingredients` hold UUIDs (`<cookbook-uuid>/<uuid>` for another cookbook's); in text, `[adc.guideline.testing.test-pyramid](cookbook:f3ae65a6-f51d-4e42-8f79-fa8097dd3480)`. `cookr validate` checks every link resolves
 - Fragment references for within-document sections: `#requirements/ordered-list`
 - Named requirements (kebab-case, not REQ-NNN): `**ordered-list**: The control MUST...`
 - Version is semver, immutable once on main
 - MIT license on all files
-- Cross-reference with full URL or short-form `#fragment`
+- Cross-reference other artifacts by UUID link; `#fragment` only within a document
 
 ## Git Workflow
 
@@ -89,7 +90,7 @@ Key rules:
 
 ## Writing New Content
 
-Use `cookbook/ingredients/_template.md` for new ingredients and `cookbook/recipes/_template.md` for new recipes. Follow `guide/introduction/conventions.md` for the frontmatter format. Every cookbook artifact needs a UUID, domain matching its path, and a Change History section.
+Use `cookbook/ingredients/_template.md` for new ingredients and `cookbook/recipes/_template.md` for new recipes. Follow `guide/introduction/conventions.md` for the frontmatter format. Every cookbook artifact needs a UUID, an entry in `cookbook/index.json` (`cookr update`), and a Change History section.
 
 **Source folders.** Every principle, guideline, ingredient and recipe is a source folder
 (`<name>/artifact.json` plus one `.md` per section). The folder is the only committed form:

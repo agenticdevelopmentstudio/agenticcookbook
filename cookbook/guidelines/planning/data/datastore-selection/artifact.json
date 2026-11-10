@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6a653107-929d-418e-865d-636373a27b02",
     "title": "Choosing a primary datastore",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/datastore-selection",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://principles/simplicity",
-      "agenticdevelopercookbook://guidelines/planning/data/database"
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb"
     ],
     "references": [
       "https://www.postgresql.org/docs/",
@@ -40,7 +39,7 @@
       "schema-design"
     ]
   },
-  "synced": "67f31f00c03008a6",
+  "synced": "726033d55ba2b35e",
   "parts": [
     {"part": "intro"},
     {"part": "strong-default", "heading": "Strong default"},

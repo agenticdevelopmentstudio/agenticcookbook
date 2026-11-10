@@ -1,7 +1,6 @@
 ---
 id: f4f25f6d-cb87-428d-9140-f2bf97aa420a
 title: "Code Implementation"
-domain: agenticdevelopercookbook://workflows/code-implementation
 type: workflow
 version: 1.0.1
 status: accepted
@@ -17,21 +16,21 @@ tags:
   - code-implementation
 depends-on: []
 related: 
-  - agenticdevelopercookbook://guidelines/testing/testing
-  - agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency
-  - agenticdevelopercookbook://principles/native-controls
-  - agenticdevelopercookbook://principles/dependency-injection
-  - agenticdevelopercookbook://principles/explicit-over-implicit
-  - agenticdevelopercookbook://principles/fail-fast
-  - agenticdevelopercookbook://principles/immutability-by-default
-  - agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast
-  - agenticdevelopercookbook://principles/separation-of-concerns
-  - agenticdevelopercookbook://principles/tight-feedback-loops
-  - agenticdevelopercookbook://guidelines/testing/flaky-test-prevention
-  - agenticdevelopercookbook://guidelines/testing/test-data
-  - agenticdevelopercookbook://guidelines/testing/test-doubles
-  - agenticdevelopercookbook://guidelines/testing/the-testing-workflow
-  - agenticdevelopercookbook://guidelines/testing/unit-test-patterns
+  - 40d630ea-4d62-4c95-9663-80b033e4adae
+  - 6302654b-8200-4e03-862d-4734d4960d19
+  - dec7cf4a-449b-47fa-9d6e-f7e9376383a7
+  - a2b79b0e-7d2c-44f5-b139-abc9cf47d1f5
+  - e114c41c-d203-454c-bc7c-cc128f6ebadd
+  - 425271ea-92b6-4df6-9a83-94795f1be377
+  - a7ce3621-2fed-478f-8767-b186014c5923
+  - ffa8565d-b105-4758-b850-9d9b8119b838
+  - 1357be12-5a58-4143-a570-849c114770c5
+  - b111a703-f4d7-4c1a-8206-d84e869791f4
+  - 05d00147-5c49-42d8-bdbd-cf8fd7dc2379
+  - 38969d3a-884a-4d6e-adae-5398464ee0de
+  - eec76082-a68b-4a2b-8f02-5ea3bfdc0a76
+  - 8ab7452a-09b8-4f4e-abfc-f7fd700765db
+  - 4b60fa16-a4cc-4376-97c3-e455681bffb6
 references: []
 ---
 
@@ -64,7 +63,7 @@ This phase produces production-ready code that is then validated by WF-4 (Code V
 | Term | Definition |
 |------|-----------|
 | Approved plan | The plan document from WF-2 that the user has explicitly approved |
-| Phase 1/2/3 | The Make It Work / Make It Right / Make It Fast phases from agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast |
+| Phase 1/2/3 | The Make It Work / Make It Right / Make It Fast phases from [adc.principle.make-it-work-make-it-right-make-it-fast](cookbook:ffa8565d-b105-4758-b850-9d9b8119b838) |
 | Plan deviation | Any change to the implementation that differs from the approved plan |
 
 ## Inputs
@@ -96,7 +95,7 @@ This phase produces production-ready code that is then validated by WF-4 (Code V
 **Entry criteria**: Phase 1 complete. Core functionality works and tests pass.
 
 - **REQ-009**: Claude Code MUST handle edge cases identified in the plan and any new ones discovered during Phase 1 implementation.
-- **REQ-010**: Claude Code MUST refactor for clarity — apply separation of concerns (agenticdevelopercookbook://principles/separation-of-concerns), clean up naming, ensure the code is readable and maintainable.
+- **REQ-010**: Claude Code MUST refactor for clarity — apply separation of concerns ([adc.principle.separation-of-concerns](cookbook:1357be12-5a58-4143-a570-849c114770c5)), clean up naming, ensure the code is readable and maintainable.
 - **REQ-011**: Claude Code MUST add error handling appropriate to each boundary: user input validation, network error handling, missing data fallbacks.
 - **REQ-012**: Claude Code MUST add tests for edge cases and error paths added in this phase.
 - **REQ-013**: Claude Code SHOULD review the code for guideline compliance at this point — verify all opted-in concerns are addressed before moving to Phase 3.
@@ -136,11 +135,11 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 
 | Phase | Checklist Items | Notes |
 |-------|----------------|-------|
-| Phase 1 | agenticdevelopercookbook://principles/native-controls (native controls), agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency (no blocking main thread), agenticdevelopercookbook://principles/dependency-injection (DI), agenticdevelopercookbook://principles/immutability-by-default (immutability) | Core engineering during implementation |
-| Phase 1 | agenticdevelopercookbook://guidelines/testing/testing (unit testing), agenticdevelopercookbook://guidelines/testing/unit-test-patterns (test patterns), agenticdevelopercookbook://guidelines/testing/flaky-test-prevention (no flaky tests), agenticdevelopercookbook://guidelines/testing/test-data (test data) | Tests written alongside code |
+| Phase 1 | [adc.principle.native-controls](cookbook:dec7cf4a-449b-47fa-9d6e-f7e9376383a7) (native controls), [adc.guideline.implementing.concurrency.concurrency](cookbook:6302654b-8200-4e03-862d-4734d4960d19) (no blocking main thread), [adc.principle.dependency-injection](cookbook:a2b79b0e-7d2c-44f5-b139-abc9cf47d1f5) (DI), [adc.principle.immutability-by-default](cookbook:a7ce3621-2fed-478f-8767-b186014c5923) (immutability) | Core engineering during implementation |
+| Phase 1 | [adc.guideline.testing.testing](cookbook:40d630ea-4d62-4c95-9663-80b033e4adae) (unit testing), [adc.guideline.testing.unit-test-patterns](cookbook:4b60fa16-a4cc-4376-97c3-e455681bffb6) (test patterns), [adc.guideline.testing.flaky-test-prevention](cookbook:05d00147-5c49-42d8-bdbd-cf8fd7dc2379) (no flaky tests), [adc.guideline.testing.test-data](cookbook:38969d3a-884a-4d6e-adae-5398464ee0de) (test data) | Tests written alongside code |
 | Phase 1 | All opted-in items from WF-2 | Logging, accessibility, deep linking, feature flags, etc. |
-| Phase 2 | agenticdevelopercookbook://principles/fail-fast (fail fast), agenticdevelopercookbook://principles/separation-of-concerns (separation of concerns), agenticdevelopercookbook://principles/explicit-over-implicit (explicit over implicit) | Refactoring and error handling |
-| Phase 3 | agenticdevelopercookbook://principles/tight-feedback-loops (tight feedback loops) | Performance measurement and optimization |
+| Phase 2 | [adc.principle.fail-fast](cookbook:425271ea-92b6-4df6-9a83-94795f1be377) (fail fast), [adc.principle.separation-of-concerns](cookbook:1357be12-5a58-4143-a570-849c114770c5) (separation of concerns), [adc.principle.explicit-over-implicit](cookbook:e114c41c-d203-454c-bc7c-cc128f6ebadd) (explicit over implicit) | Refactoring and error handling |
+| Phase 3 | [adc.principle.tight-feedback-loops](cookbook:b111a703-f4d7-4c1a-8206-d84e869791f4) (tight feedback loops) | Performance measurement and optimization |
 
 ## Conformance Test Vectors
 
@@ -167,7 +166,7 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 - **Plan references outdated code**: If the plan references a function or file that was modified since planning, Claude Code MUST check the current state and adapt. If the change is significant, treat it as a plan deviation (REQ-018).
 - **Circular dependency discovered**: If implementing the plan creates a circular dependency, stop and raise it with the user. This is a major plan deviation.
 - **Test infrastructure missing**: If the project lacks test infrastructure (no test runner, no test directory), set it up before writing tests. This is part of delivering working code, not scope creep.
-- **External service unavailable**: If the implementation depends on an external service that is unavailable during development, use a fake/stub (agenticdevelopercookbook://guidelines/testing/test-doubles) and note this in the PR.
+- **External service unavailable**: If the implementation depends on an external service that is unavailable during development, use a fake/stub ([adc.guideline.testing.test-doubles](cookbook:eec76082-a68b-4a2b-8f02-5ea3bfdc0a76)) and note this in the PR.
 
 ## Tool Notes
 
@@ -178,11 +177,11 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 ## Design Decisions
 
 **Decision**: Tests written alongside code, not in a separate phase after implementation.
-**Rationale**: Writing tests after all implementation is done creates a temptation to skip or rush them. Writing tests alongside code catches bugs earlier, serves as design feedback (hard-to-test code = bad design), and ensures no code ships untested. Aligns with agenticdevelopercookbook://guidelines/testing/the-testing-workflow (testing workflow).
+**Rationale**: Writing tests after all implementation is done creates a temptation to skip or rush them. Writing tests alongside code catches bugs earlier, serves as design feedback (hard-to-test code = bad design), and ensures no code ships untested. Aligns with [adc.guideline.testing.the-testing-workflow](cookbook:8ab7452a-09b8-4f4e-abfc-f7fd700765db) (testing workflow).
 **Approved**: pending
 
 **Decision**: Phase 3 (Make It Fast) is conditional on evidence, not automatic.
-**Rationale**: Premature optimization wastes time and harms readability (agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast). Most code is fast enough without optimization. Phase 3 only activates when measurement proves a problem exists.
+**Rationale**: Premature optimization wastes time and harms readability ([adc.principle.make-it-work-make-it-right-make-it-fast](cookbook:ffa8565d-b105-4758-b850-9d9b8119b838)). Most code is fast enough without optimization. Phase 3 only activates when measurement proves a problem exists.
 **Approved**: pending
 
 **Decision**: Minor plan deviations can proceed; major ones require returning to WF-2.

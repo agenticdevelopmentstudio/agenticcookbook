@@ -1,9 +1,11 @@
 """A spec's `## Reference Implementations` section: the code that implements it.
 
-The section is a `| Platform | Path |` table. `Path` is a backticked path
-relative to the repository root; a path ending in `/` is a directory and claims
-every source file below it. A cookbook with no code writes one `Not applicable`
-line instead of the table, which reads as no rows.
+In format 2 the rows live in the cookbook index (`index.json`, each entry's
+`implementations`), never in the artifact. `render` draws them as the section
+a compiled doc or skill shows. `parse`/`implementations` read the format-1
+`| Platform | Path |` table, which only the upgrader still meets: `Path` is a
+backticked path relative to the repository root; a path ending in `/` is a
+directory and claims every source file below it.
 """
 
 from __future__ import annotations
@@ -13,9 +15,9 @@ from dataclasses import dataclass
 from typing import Optional
 
 from . import history
+from .artifact import Part
 
 SECTION = "Reference Implementations"
-PLATFORMS = ("web", "apple", "android", "windows", "python")
 
 _CODE = re.compile(r"`([^`]+)`")
 
@@ -58,42 +60,21 @@ def implementations(body: str) -> list[Implementation]:
     return parse(text) if text is not None else []
 
 
-def render(rows: list[Implementation]) -> str:
-    """The section's table for `rows` (without the `## ` heading)."""
-    lines = ["| Platform | Path |", "|----------|------|"]
-    lines += [f"| {r.platform} | `{r.path}` |" for r in rows]
+def render(rows) -> str:
+    """The section's table for index implementations `rows` (without the `## ` heading)."""
+    lines = ["| Platform | Location | Conformance |", "|----------|----------|-------------|"]
+    for r in rows:
+        where = f"`{r.location}`" if r.location else "(planned)"
+        state = r.conformance.state
+        if r.conformance.version:
+            state += f" ({r.conformance.version})"
+        lines.append(f"| {r.platform} | {where} | {state} |")
     return "\n".join(lines)
 
 
-# The template puts the section right before these, in this order of preference.
-_BEFORE = ("Design Decisions", "Compliance", "Change History")
-
-
-def _body_start(lines: list[str]) -> int:
-    """Index of the first line after the YAML frontmatter; 0 when there is none."""
-    if lines and lines[0].rstrip("\r\n") == "---":
-        for i in range(1, len(lines)):
-            if lines[i].rstrip("\r\n") in ("---", "..."):
-                return i + 1
-    return 0
-
-
-def with_section(text: str, rows: list[Implementation]) -> str:
-    """`text` (a whole spec file) with its Reference Implementations section set to `rows`.
-
-    An existing section's body is replaced and every other line keeps its
-    bytes. Without one, the section goes before Design Decisions (else
-    Compliance, else Change History), or at the end.
-    """
-    lines = history.split_lines(text)
-    spans = history.h2_spans(lines, _body_start(lines))
-    block = f"{render(rows)}\n\n"
-    found = next((s for s in spans if s.heading == SECTION), None)
-    if found is not None:
-        return "".join(lines[:found.start + 1] + ["\n", block] + lines[found.end:])
-    for heading in _BEFORE:
-        at = next((s.start for s in spans if s.heading == heading), None)
-        if at is not None:
-            return "".join(lines[:at] + [f"## {SECTION}\n\n", block] + lines[at:])
-    tail = "" if text.endswith("\n") else "\n"
-    return f"{text}{tail}\n## {SECTION}\n\n{render(rows)}\n"
+def part(rows):
+    """The derived `## Reference Implementations` part for a compiled doc or skill;
+    None when there are no rows."""
+    if not rows:
+        return None
+    return Part(name="reference-implementations", text=f"\n{render(rows)}\n\n", heading=SECTION)

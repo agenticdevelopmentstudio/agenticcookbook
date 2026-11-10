@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1123eb5a-b38a-41f8-8ae9-ec899f15707f",
     "title": "Sync Engine Design",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/sync-engine-design",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,9 +26,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/sync-protocol.md",
-      "guidelines/data/offline-first-architecture.md"
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb",
+      "edf1f288-9cb1-4979-8900-b69d5e33e987",
+      "27e5ef04-85b6-4d63-8802-0378051d6bea"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -39,7 +38,7 @@
       "database-operations"
     ]
   },
-  "synced": "3e4cfcb04b784942",
+  "synced": "3f500e5d5af60c7d",
   "parts": [
     {"part": "intro"},
     {"part": "architecture-layers", "heading": "Architecture Layers"},

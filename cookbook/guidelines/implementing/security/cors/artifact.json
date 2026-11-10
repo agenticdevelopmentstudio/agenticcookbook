@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8ea0409f-405a-4f4d-9bbf-54bf21c86d33",
     "title": "CORS",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/cors",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "api-integration"
     ]
   },
-  "synced": "ff29d0b0f6249f68",
+  "synced": "ccbd728750eab315",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

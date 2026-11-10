@@ -1,9 +1,9 @@
 
 | Check | Status | Category |
 |-------|--------|----------|
-| [no-pii-in-logs](agenticdevelopercookbook://compliance/privacy-and-data#no-pii-in-logs) | partial | Privacy |
-| [secure-log-output](agenticdevelopercookbook://compliance/security#secure-log-output) | partial | Security |
-| [screen-reader-support](agenticdevelopercookbook://compliance/accessibility#screen-reader-support) | partial | Accessibility |
+| [adc.check.privacy-and-data.no-pii-in-logs](cookbook:23bca2e1-dc0f-5ff4-beaf-03891ad48e6b) | partial | Privacy |
+| [adc.check.security.secure-log-output](cookbook:b258657f-bb73-5491-9c70-0d14afdfa6ce) | partial | Security |
+| [adc.check.accessibility.screen-reader-support](cookbook:0720ed85-3747-546a-b2ed-6a909f44dd43) | partial | Accessibility |
 
 > Status is `partial`: this ingredient specifies the requirements that satisfy these checks, but compliance is verified per concrete implementation, not at the ingredient level.
 

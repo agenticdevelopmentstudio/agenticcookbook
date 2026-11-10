@@ -1,7 +1,6 @@
 ---
 id: ce3ba3d5-be1d-4fa3-ab0f-166ab8a3213d
 title: 'Decision: Offline-First Architecture'
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/context/decisions/offline-first
 type: reference
 version: 1.0.0
 status: draft

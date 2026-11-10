@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "22640534-3a5b-4f8a-9f22-500a2dabc7ca",
     "title": "Writing the Review Report",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/review-report-writing",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,7 +20,7 @@
       "reporting"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/reviewing/conformance-criterion-walk"
+      "cf9c8df3-24b7-4094-a2bd-3a10ed2da006"
     ],
     "triggers": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -29,7 +28,7 @@
     "depends-on": [],
     "references": []
   },
-  "synced": "df2e36bd8f40c512",
+  "synced": "033e3d067e6120cb",
   "parts": [
     {"part": "intro"},
     {"part": "executive-summary", "heading": "Executive Summary"},

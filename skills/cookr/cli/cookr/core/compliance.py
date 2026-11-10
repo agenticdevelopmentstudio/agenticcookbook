@@ -1,18 +1,14 @@
-"""The compliance check catalog a recipe's Compliance table cites against.
+"""Compliance checks, and the citations a recipe's Compliance section makes.
 
-A check is a `### <name>` heading in a catalog document. The document's path
-under the catalog, minus `.md`, names it exactly as its `domain` does, so a
-recipe cites a check as `agenticdevelopercookbook://compliance/<document>#<name>`:
-`compliance/security#secure-storage` for `security.md`, and
-`compliance/artifact-formatting/recipe-formatting#has-frontmatter` for
-`artifact-formatting/recipe-formatting.md`. Which files count is
-`cookr.core.markdown.iter_markdown`'s rule, the one every cookbook walk uses,
-so index, references and template files never define checks.
-
-./install materialises the catalog into the extract prompt module's references
-(its reference-manifest.json). When it has not been materialised — a source
-checkout that never ran ./install — `load_checks` returns None and callers skip
-the check rather than report every citation unknown.
+A check is a `### <name>` heading in a catalog document; the catalog is the
+directory a cookbook's index names as its `catalog`. The cookbook index gives
+each check an entry of kind `check`, with a UUID derived from the cookbook and
+`<document>#<name>` (`identity.check_uuid`) and that pair as its `path`.
+A recipe cites a check as an in-text link to that entry,
+`[adc.check.best-practices.unit-test-coverage](cookbook:<cookbook-uuid>/<check-uuid>)`,
+so a citation is checked by resolving its link (`links.Resolver`), never by
+matching text. Which catalog files count is `cookr.core.markdown.iter_markdown`'s
+rule, so index, references and template files never define checks.
 """
 
 from __future__ import annotations
@@ -23,8 +19,12 @@ from typing import Optional
 
 from cookr.core.markdown import iter_markdown
 
-CITATION = re.compile(r"agenticdevelopercookbook://compliance/([a-z0-9-]+(?:/[a-z0-9-]+)*)#([a-z0-9-]+)")
+from .index import Index
+from .links import Link, Resolver, format_link, in_text_links
+
 _CHECK = re.compile(r"^###\s+([a-z0-9-]+)\s*$", re.MULTILINE)
+# A check rdid: `<cookbook>.check.<document, dotted>.<name>`.
+_CHECK_RDID = re.compile(r"^[a-z][a-z0-9-]*\.check\.([a-z0-9.-]+)\.([a-z0-9-]+)$")
 
 
 def load_checks(catalog: Path) -> Optional[frozenset[str]]:
@@ -38,15 +38,50 @@ def load_checks(catalog: Path) -> Optional[frozenset[str]]:
     return frozenset(found)
 
 
-def unknown_citations(body: str, checks: frozenset[str]) -> list[str]:
-    """Cited `<document>#<check>` pairs the catalog does not define, sorted, de-duplicated."""
-    return sorted({f"{d}#{n}" for d, n in CITATION.findall(body)} - checks)
+def is_check_label(label: str) -> bool:
+    return _CHECK_RDID.match(label.strip()) is not None
 
 
-def summary(checks: frozenset[str]) -> str:
-    """One line per document, `document: check, check, …` — the brief's citation list."""
-    by_doc: dict[str, list[str]] = {}
-    for item in checks:
-        document, name = item.split("#", 1)
-        by_doc.setdefault(document, []).append(name)
-    return "\n".join(f"- `{doc}`: {', '.join(sorted(names))}" for doc, names in sorted(by_doc.items()))
+def citations(text: str) -> list[tuple[str, Link]]:
+    """The in-text links in `text` whose label is a check rdid, in order."""
+    return [(label, link) for label, link in in_text_links(text) if is_check_label(label)]
+
+
+def _label_check(label: str) -> str:
+    """`<document dotted>.<name>` from a check rdid label, as `<document>#<name>` with
+    the document's dots read as directory separators (a best guess for a link that
+    does not resolve)."""
+    m = _CHECK_RDID.match(label.strip())
+    return f"{m.group(1).replace('.', '/')}#{m.group(2)}" if m else ""
+
+
+def cited_checks(text: str, resolver: Optional[Resolver] = None) -> set[str]:
+    """Every `<document>#<name>` a check citation in `text` names: the resolved entry's
+    path, else (unresolvable, or no `resolver`) the label's."""
+    out = set()
+    for label, link in citations(text):
+        res = resolver.resolve(link) if resolver is not None else None
+        if res is not None and res.state == "ok" and res.entry.kind == "check":
+            out.add(res.entry.path)
+        else:
+            out.add(_label_check(label))
+    return out
+
+
+def unknown_citations(text: str, resolver: Resolver) -> list[str]:
+    """Check citations in `text` that name no check: the link resolves to nothing,
+    or to an artifact that is not a check. A citation into a cookbook that cannot
+    be reached is not judged here (validate warns about it). Sorted labels."""
+    bad = set()
+    for label, link in citations(text):
+        res = resolver.resolve(link)
+        if res.state == "missing" or (res.state == "ok" and res.entry.kind != "check"):
+            bad.add(f"{label} ({format_link(link)})")
+    return sorted(bad)
+
+
+def check_links(index: Index) -> list[str]:
+    """`[rdid](cookbook:<cookbook>/<uuid>)` for every check `index` defines, by rdid."""
+    cid = index.cookbook.id
+    return [f"[{e.rdid}](cookbook:{cid}/{e.id})"
+            for e in sorted(index.entries.values(), key=lambda e: e.rdid) if e.kind == "check"]

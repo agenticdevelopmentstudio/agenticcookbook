@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8075b95b-2678-4893-9a5a-eb77aa9232aa",
     "title": "Small, atomic commits",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits",
     "type": "guideline",
     "version": "1.2.2",
     "status": "accepted",
@@ -21,8 +20,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/scope-discipline",
-      "agenticdevelopercookbook://guidelines/testing/post-generation-verification"
+      "a3f7c1d2-8e4b-4a9f-b6c3-2d1e0f9a8b7c",
+      "563aebde-52bf-4011-8907-ecc473fd942c"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -31,7 +30,7 @@
       "pre-commit"
     ]
   },
-  "synced": "dc4949f09c7082a6",
+  "synced": "17b6e10beb2ab740",
   "parts": [
     {"part": "intro"},
     {"part": "the-build-verify-commit-loop", "heading": "The build-verify-commit loop"},

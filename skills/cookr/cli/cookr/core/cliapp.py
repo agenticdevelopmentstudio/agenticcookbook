@@ -44,12 +44,29 @@ class CliApp:
     description: str
     modules_package: str  # dotted name, e.g. "cookr.modules"
     path_help: str
-    # Build the ctx handed to run() from the explicit `-p` (None when absent).
-    make_context: Callable[[Optional[Path], UI], Any]
+    # Build the ctx handed to run() from the explicit `-p` (None when absent)
+    # and the name of the module about to run.
+    make_context: Callable[[Optional[Path], UI, str], Any]
     # Validate an explicit `-p` even when no module is named (None: no check).
     check_path: Optional[Callable[[Optional[Path]], None]] = None
     # Exceptions surfaced as a clean message and exit 2.
     errors: tuple = (CookbookError,)
+    # Hand make_context the parsed args as a fourth argument (for a gate that
+    # depends on a flag, such as `check --hook`).
+    pass_args: bool = False
+    # Whether the parsed args ask for every UI line on stderr (a hook run, whose
+    # caller forwards only stderr). None: the UI writes to stdout.
+    ui_on_stderr: Optional[Callable[[argparse.Namespace], bool]] = None
+
+
+class ExitWith(Exception):
+    """Raised by make_context to end the run with `code`, printing `message` (when
+    set) as an error for a nonzero code or as a warning otherwise."""
+
+    def __init__(self, code: int, message: str = "") -> None:
+        super().__init__(message)
+        self.code = code
+        self.message = message
 
 
 def discover(package: str) -> list[ModuleType]:
@@ -98,14 +115,23 @@ def main(app: CliApp, argv: Optional[list] = None) -> int:
     try:
         modules = discover(app.modules_package)
         args = build_parser(app, modules).parse_args(argv)
+        if app.ui_on_stderr is not None and app.ui_on_stderr(args):
+            ui = UI(stderr=True)
         explicit = getattr(args, "path", None)
-        if app.check_path is not None:
+        module = getattr(args, "_module", None)
+        # A module that makes a repo (`CREATES_REPO = True`) takes a -p that holds nothing yet.
+        if app.check_path is not None and not getattr(module, "CREATES_REPO", False):
             app.check_path(explicit)
         if not getattr(args, "module", None):
             print_module_table(ui, app, modules)
             return 0
-        ctx = app.make_context(explicit, ui)
+        ctx = (app.make_context(explicit, ui, args._module.NAME, args) if app.pass_args
+               else app.make_context(explicit, ui, args._module.NAME))
         return int(args._module.run(args, ctx) or 0)
+    except ExitWith as e:
+        if e.message:
+            (ui.error if e.code else ui.warn)(escape(e.message))
+        return e.code
     except app.errors as e:
         ui.error(escape(str(e)))
         return 2

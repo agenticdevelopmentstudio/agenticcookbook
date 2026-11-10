@@ -26,7 +26,7 @@
 - **non-sensitive-storage-tiers**: Non-sensitive AI settings (provider, model, endpoint URL, timeout, enable toggle) follow the settings window storage tier:
   - **Simple**: `UserDefaults` / `@AppStorage` (macOS/iOS), `SharedPreferences` / `DataStore` (Android), `localStorage` (Web)
   - **Complex**: SQLite or equivalent structured database — appropriate for apps that already use SQLite for other persistence, need migration-safe schema changes, or store settings alongside relational data
-  - Either tier is conformant. The choice SHOULD be consistent with the app's overall settings storage strategy (see the `abstract-persistence` requirement of `agenticdevelopercookbook://ingredients/ui/windows/settings-category-browser`).
+  - Either tier is conformant. The choice SHOULD be consistent with the app's overall settings storage strategy (see the `abstract-persistence` requirement of [adc.ingredient.ui.windows.settings-category-browser](cookbook:4a047375-7f4f-4bca-84a5-62a0f70fc5c9)).
 - **no-key-in-logs**: API keys MUST NOT appear in any log output, crash reports, analytics events, or debug panel displays — even at debug level.
 - **masked-key-display**: The API key field MUST NOT be pre-populated with the full key value when revisiting the panel. It SHOULD display a masked placeholder (e.g., "••••••••••••abcd" showing only the last 4 characters) if a key is stored, or be empty if no key is stored.
 

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b335406d-7f59-4827-a39b-477c0fe6c907",
     "title": "Keep the Human at the Wheel",
-    "domain": "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/human-first-ideation"
+      "db8976c0-57e0-41a4-a7fa-67e3efef79d5"
     ],
     "references": [
       "Shneiderman, Human-Centered AI, Oxford University Press, 2020",
@@ -35,7 +34,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "a72cf9dfad7ababd",
+  "synced": "969b0080f0738bc5",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

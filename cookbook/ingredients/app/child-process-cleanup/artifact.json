@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "5546B9AD-B8B4-4973-817E-B3BC4F090618",
+    "id": "5546b9ad-b8b4-4973-817e-b3bc4f090618",
     "title": "Child Process Cleanup",
-    "domain": "agenticdevelopercookbook://ingredients/app/child-process-cleanup",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -29,14 +28,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/app/startup-behavior",
-      "agenticdevelopercookbook://recipes/app/lifecycle"
+      "ee72734e-2cff-41be-9d1a-813b64aa0fd2",
+      "e56d4b42-9abe-47ac-bd9e-27471bd47b82"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "25ebe8962ad0a3f1",
+  "synced": "58ff19005d6804f2",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "FE3522F2-1B94-494E-8136-C8A5EEA876CF",
+    "id": "fe3522f2-1b94-494e-8136-c8a5eea876cf",
     "title": "PR Fix Agent",
-    "domain": "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-fix-agent",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "wip",
@@ -25,14 +24,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline",
-      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-review-phase"
+      "c3f7a9e2-1b5d-4c8e-a2d6-9e4f1c3b7a5d",
+      "32eb5fa7-31ba-49d2-8223-a530d8cc7092"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "de721e537375099a",
+  "synced": "f0aa863da3d851b2",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

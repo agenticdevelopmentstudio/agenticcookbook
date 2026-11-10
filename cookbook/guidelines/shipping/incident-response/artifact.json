@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2041fbd9-d210-485e-9a3a-b2d8295ed924",
     "title": "Incident response and blameless postmortems",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/incident-response",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/observability/service-level-objectives"
+      "6b8715f1-ece0-4db6-b691-19e9d0367ef3"
     ],
     "references": [
       "https://sre.google/sre-book/managing-incidents/"
@@ -33,7 +32,7 @@
       "pre-pr"
     ]
   },
-  "synced": "334a0c824e1f4e2b",
+  "synced": "cc5abd142e283b38",
   "parts": [
     {"part": "intro"},
     {"part": "incident-command-roles", "heading": "Incident command roles"},

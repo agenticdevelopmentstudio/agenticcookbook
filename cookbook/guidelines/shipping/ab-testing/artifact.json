@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cadf17c9-e809-4324-acb3-a430c54a81b4",
     "title": "A/B testing",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/ab-testing",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "logging"
     ]
   },
-  "synced": "7868e0a03cf6c666",
+  "synced": "2ca43acb8dddc3e8",
   "parts": [
     {"part": "intro"},
     {"part": "pre-ship-verification", "heading": "Pre-ship verification"},

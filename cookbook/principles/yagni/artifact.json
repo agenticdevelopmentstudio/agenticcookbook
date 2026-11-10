@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "793f491f-a352-4478-876d-7c5d871488f7",
     "title": "YAGNI",
-    "domain": "agenticdevelopercookbook://principles/yagni",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "dbb0aab67c0ab324",
+  "synced": "7321d7b025e0b50b",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

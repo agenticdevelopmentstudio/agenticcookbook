@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ae4444c3-adac-429a-b00e-e918ba3a70b7",
     "title": "Break Fixation Deliberately",
-    "domain": "agenticdevelopercookbook://principles/break-fixation-deliberately",
     "type": "principle",
     "version": "1.0.1",
     "status": "draft",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/bridge-distant-domains",
-      "agenticdevelopercookbook://principles/constraints-as-creative-fuel"
+      "cd614244-bb91-411b-88b3-53d552529cd4",
+      "62d3f4a7-0310-4606-b3ee-95610dddbbb8"
     ],
     "references": [
       "de Bono, Lateral Thinking: Creativity Step by Step, 1970",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-10-03"
   },
-  "synced": "3e90092cbf62005b",
+  "synced": "13c66b97d76acfbd",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

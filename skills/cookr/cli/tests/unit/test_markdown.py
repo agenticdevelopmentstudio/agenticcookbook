@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from cookr.core.artifact import find_folders
 from cookr.core.markdown import SKIP_NAMES, iter_markdown, reserved_name
 
 
@@ -47,6 +48,22 @@ def test_skip_the_parts_of_source_folders(tmp_path):
     (tmp_path / "guidelines" / "alpha.md").write_text("# Alpha\n", encoding="utf-8")
     assert [f.relative_to(tmp_path).as_posix() for f in iter_markdown(tmp_path)] == ["guidelines/alpha.md"]
     assert iter_markdown(folder) == []  # walking a folder itself finds only parts
+
+
+def test_only_a_freeze_beside_a_manifest_is_left_out(tmp_path):
+    # `versions/` is a freeze only beside an artifact.json, as `prune_freezes`
+    # says; a plain directory named `versions` is walked like any other.
+    frozen = tmp_path / "alpha" / "versions" / "1.0.0"
+    frozen.mkdir(parents=True)
+    (tmp_path / "alpha" / "artifact.json").write_text('{"parts": []}', encoding="utf-8")
+    (frozen / "old.md").write_text("x\n", encoding="utf-8")
+    (tmp_path / "notes" / "versions").mkdir(parents=True)
+    (tmp_path / "notes" / "versions" / "history.md").write_text("x\n", encoding="utf-8")
+    assert [f.relative_to(tmp_path).as_posix() for f in iter_markdown(tmp_path)] == [
+        "notes/versions/history.md"]
+    assert [f.relative_to(tmp_path).as_posix() for f in find_folders([tmp_path])] == ["alpha"]
+    (frozen / "artifact.json").write_text('{"parts": []}', encoding="utf-8")
+    assert [f.relative_to(tmp_path).as_posix() for f in find_folders([tmp_path])] == ["alpha"]
 
 
 def test_an_unreadable_manifest_keeps_its_folder_out_of_the_walk(tmp_path):

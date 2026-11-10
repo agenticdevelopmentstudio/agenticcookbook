@@ -101,9 +101,6 @@ def unfenced(lines: Sequence[str], start: int = 0, end: int | None = None):
         yield i, bare
 
 
-_unfenced = unfenced  # the name before it was public
-
-
 @dataclass(frozen=True)
 class Section:
     """A `## ` heading outside any fence, and the lines it owns."""
@@ -339,6 +336,26 @@ def add_row(history: History, version: Version, cells: Sequence[str]) -> tuple[s
         lines[at - 1] = before + ending
         lines.insert(at, row)
     return "".join(lines), ("top" if order == NEWEST_FIRST else "bottom")
+
+
+def replace_newest_row(history: History, version: Version, cells: Sequence[str]) -> str:
+    """The text with the highest-versioned row replaced by `cells`, in place.
+
+    Every other line keeps its bytes; the row keeps its line ending. Raises
+    HistoryError when no row has a readable version, `cells` do not start with
+    `version`, or another row already has `version`.
+    """
+    newest = history.newest
+    if newest is None:
+        raise HistoryError(f"`## {HEADING}` has no row with an X.Y.Z version to replace")
+    if parse_version(cells[0] if cells else "") != version:
+        raise HistoryError(f"the replacement row's first cell is not {format_version(version)}")
+    if any(r.version == version and r is not newest for r in history.rows):
+        raise HistoryError(f"the table already has a row for {format_version(version)}")
+    lines = list(history.lines)
+    old = lines[newest.line]
+    lines[newest.line] = format_row(cells) + old[len(old.rstrip("\r\n")):]
+    return "".join(lines)
 
 
 def _ending(lines: Sequence[str]) -> str:

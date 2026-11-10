@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "F28A4638-C2AE-4A9B-817F-0F19B5712168",
+    "id": "f28a4638-c2ae-4a9b-817f-0f19b5712168",
     "title": "Constraints and validation",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/constraints-and-validation",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://www.sqlite.org/lang_createtable.html"
@@ -39,7 +38,7 @@
       "schema-design"
     ]
   },
-  "synced": "58772f735caddbd0",
+  "synced": "62d8ba5708b74657",
   "parts": [
     {"part": "intro"},
     {"part": "syntax", "heading": "Syntax"},

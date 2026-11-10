@@ -52,6 +52,21 @@ def _converted(tmp_path):
     return tmp_path / "alpha"
 
 
+def test_a_folder_only_artifact_is_bumped_without_writing_a_doc(tmp_path):
+    folder = _converted(tmp_path)
+    (tmp_path / "alpha.md").unlink()  # the committed form: the folder alone
+    assert main(["bump", str(folder), "--summary", "Fixed it", "--author", "Tester",
+                 "--date", "2026-09-25"]) == 0
+    assert '"version": "1.1.1"' in (folder / "artifact.json").read_text()
+    assert "| 1.1.1 | 2026-09-25 | Tester | Fixed it |" in (folder / "history.md").read_text()
+    assert not (tmp_path / "alpha.md").exists()
+    # Bumped again at a higher level, it re-levels in the folder and still writes no doc.
+    assert main(["bump", str(folder), "--summary", "Fixed it", "--author", "Tester",
+                 "--date", "2026-09-25", "--level", "major"]) == 0
+    assert '"version": "2.0.0"' in (folder / "artifact.json").read_text()
+    assert not (tmp_path / "alpha.md").exists()
+
+
 def test_a_folder_edited_since_its_doc_was_written_keeps_the_edit(tmp_path):
     folder = _converted(tmp_path)
     (folder / "overview.md").write_text("\nEdited in the folder.\n\n", encoding="utf-8")

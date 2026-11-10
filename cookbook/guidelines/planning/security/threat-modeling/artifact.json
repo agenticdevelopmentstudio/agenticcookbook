@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cbfc3cd1-e0a0-44af-bcd8-0aa96eb2acda",
     "title": "Threat modeling",
-    "domain": "agenticdevelopercookbook://guidelines/planning/security/threat-modeling",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/security/authentication",
-      "agenticdevelopercookbook://guidelines/planning/security/privacy"
+      "fad53801-59d5-4471-855a-4dc689448d48",
+      "e29555dd-a4e6-4973-8bde-365b8d60bf9f"
     ],
     "references": [
       "https://www.threatmodelingmanifesto.org/",
@@ -36,7 +35,7 @@
       "security-review"
     ]
   },
-  "synced": "9a6cecff183b9338",
+  "synced": "8dcdde94255907ae",
   "parts": [
     {"part": "intro"},
     {"part": "the-four-questions", "heading": "The four questions"},

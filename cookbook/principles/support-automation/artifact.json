@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cf698150-45b0-4a20-881b-7d0f04208198",
     "title": "Support Automation",
-    "domain": "agenticdevelopercookbook://principles/support-automation",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,13 +21,13 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/shortcuts-and-automation"
+      "991e72d0-477b-4fd5-bdfa-08680efc0cf9"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-09"
   },
-  "synced": "0628365d41c911c7",
+  "synced": "3f97c97b8f33be08",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

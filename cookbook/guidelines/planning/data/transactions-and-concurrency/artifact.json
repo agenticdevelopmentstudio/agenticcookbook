@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "71af85de-c618-4319-8150-f2f0015921dd",
     "title": "Transactions and Concurrency",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/transactions-and-concurrency",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,8 +26,8 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/access-pattern-analysis.md"
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb",
+      "a4e2fa7e-91a7-4abe-b4c9-4b1933901e7d"
     ],
     "references": [
       "https://sqlite.org/wal.html",
@@ -42,7 +41,7 @@
       "concurrency"
     ]
   },
-  "synced": "4b407497a4121299",
+  "synced": "55399e6b66d585cf",
   "parts": [
     {"part": "intro"},
     {"part": "use-wal-mode-by-default", "heading": "Use WAL Mode by Default"},

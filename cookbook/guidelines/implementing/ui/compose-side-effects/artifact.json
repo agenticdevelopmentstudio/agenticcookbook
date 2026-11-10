@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4b58d4d6-f177-45d7-b7c1-bf50adcd13a3",
     "title": "Jetpack Compose side effects",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/compose-side-effects",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf",
-      "agenticdevelopercookbook://guidelines/implementing/concurrency/kotlin-flow-stateflow"
+      "736fac9a-56e0-449d-8dc0-b95cbfba7884",
+      "d374c32a-b452-47cd-9250-7b7d34a63116"
     ],
     "references": [
       "https://developer.android.com/develop/ui/compose/side-effects",
@@ -38,7 +37,7 @@
       "concurrency"
     ]
   },
-  "synced": "4e8cf21cb77bcc75",
+  "synced": "fae6781bc927785f",
   "parts": [
     {"part": "intro"},
     {"part": "core-rule", "heading": "Core rule"},

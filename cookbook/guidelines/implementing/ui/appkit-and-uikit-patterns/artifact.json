@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8aa22a6b-2328-4a2d-8fe3-53c339390808",
     "title": "AppKit and UIKit patterns",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -31,13 +30,13 @@
       "state-restoration"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/prefer-explicit-apple-apis"
+      "095b33a1-2835-4ed5-bf01-f1e492148819"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/concurrency/swift6-strict-concurrency",
-      "agenticdevelopercookbook://guidelines/implementing/language/swift",
-      "agenticdevelopercookbook://guidelines/implementing/language/objective-c",
-      "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns"
+      "344b69da-c901-4650-b49d-c2df0234103b",
+      "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+      "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
+      "a48af237-db64-40ae-9574-e579c107de83"
     ],
     "references": [
       "https://developer.apple.com/documentation/uikit/using-responders-and-the-responder-chain-to-handle-events",
@@ -52,7 +51,7 @@
       "platform-integration"
     ]
   },
-  "synced": "543ee8719b54f9da",
+  "synced": "bbd5eb985d8a624d",
   "parts": [
     {"part": "intro"},
     {"part": "responder-chain", "heading": "Responder chain"},

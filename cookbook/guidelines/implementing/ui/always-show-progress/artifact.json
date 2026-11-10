@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8d52028b-d358-4965-93a1-030fc8405068",
     "title": "Always show progress",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/always-show-progress",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "networking"
     ]
   },
-  "synced": "53c5af47c529f039",
+  "synced": "c2e283a17f53616a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

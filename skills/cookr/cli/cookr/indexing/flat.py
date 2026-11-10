@@ -9,12 +9,11 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from ..core.scheme import index_domain
 from ._shared import (
-    cookbook_name,
     iter_artifacts,
     merge_index_frontmatter,
     render_frontmatter,
+    link_of,
     title_of,
 )
 
@@ -36,7 +35,6 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
     fm_data = merge_index_frontmatter(
         output,
         title=config.get("title", f"{target.name.title()} Index"),
-        domain=index_domain(root, output, f"{cookbook_name(root)}/{target.name}/index"),
         summary=config.get("summary", f"Index of {target.name}."),
         today=today,
     )
@@ -52,7 +50,7 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
 
     output_parent = output.parent
     for f in flat_files:
-        rel = _relpath(f, output_parent)
+        rel = link_of(f, output_parent)
         lines.append(f"- [{title_of(f)}]({rel})")
     if flat_files and by_subdir:
         lines.append("")
@@ -61,15 +59,10 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
         lines.append(f"## {sub.replace('-', ' ').replace('_', ' ').title()}")
         lines.append("")
         for f in sorted(by_subdir[sub]):
-            rel = _relpath(f, output_parent)
+            rel = link_of(f, output_parent)
             lines.append(f"- [{title_of(f)}]({rel})")
         lines.append("")
 
     text = "\n".join(lines).rstrip() + "\n"
     counts = {"total": len(files), "subdirs": len(by_subdir), "flat": len(flat_files)}
     return text, counts
-
-
-def _relpath(target: Path, base: Path) -> str:
-    import os
-    return os.path.relpath(target, base)

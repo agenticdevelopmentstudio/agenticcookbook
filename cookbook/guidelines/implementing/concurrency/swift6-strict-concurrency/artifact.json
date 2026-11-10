@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "344b69da-c901-4650-b49d-c2df0234103b",
     "title": "Adopt Swift 6 strict concurrency incrementally",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/concurrency/swift6-strict-concurrency",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency",
-      "agenticdevelopercookbook://principles/immutability-by-default"
+      "6302654b-8200-4e03-862d-4734d4960d19",
+      "a7ce3621-2fed-478f-8767-b186014c5923"
     ],
     "references": [
       "https://www.swift.org/migration/documentation/migrationguide/"
@@ -38,7 +37,7 @@
       "concurrency"
     ]
   },
-  "synced": "b4d7e73dc732719e",
+  "synced": "276d947849110da8",
   "parts": [
     {"part": "intro"},
     {"part": "core-model", "heading": "Core model"},

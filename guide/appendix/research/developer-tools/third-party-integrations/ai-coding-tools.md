@@ -1,7 +1,6 @@
 ---
 id: abc3f187-3935-4c94-857f-5d02c79b9041
 title: Third-Party AI Coding Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/third-party-integrations/ai-coding-tools
 type: reference
 version: 1.0.0
 status: draft

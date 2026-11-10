@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "095b33a1-2835-4ed5-bf01-f1e492148819",
     "title": "Use AppKit and UIKit, not SwiftUI",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/prefer-explicit-apple-apis",
     "type": "guideline",
     "version": "2.0.3",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "agentic"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/native-controls"
+      "dec7cf4a-449b-47fa-9d6e-f7e9376383a7"
     ],
     "related": [],
     "references": [
@@ -44,7 +43,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "de84bc7ef07a9757",
+  "synced": "11f0c799e67d8769",
   "parts": [
     {"part": "intro"},
     {"part": "macos", "heading": "macOS"},

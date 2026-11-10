@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "760b2e75-d0e4-4b20-a074-3342c2efe974",
     "title": "Test Data",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/testing/test-data",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "data-modeling"
     ]
   },
-  "synced": "66e0eaab567e4dad",
+  "synced": "3353c01cae4236dc",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

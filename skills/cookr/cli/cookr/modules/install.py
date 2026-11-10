@@ -14,7 +14,7 @@ from ..core import install as inst
 from ..core import roots
 from ..core.artifact import find_folders, unconverted
 from ..core.always_on import CONCERNS
-from ..core.skill import DEFAULT_LIBRARY, SkillError, library_name, templates_root
+from ..core.skill import DEFAULT_LIBRARY, SkillError, default_library, library_name, templates_root
 
 NAME = "install"
 HELP = ("Compile skills and install them: the routed set registered with skill-router, and "
@@ -42,7 +42,8 @@ def add_target_args(parser: argparse.ArgumentParser) -> None:
                              "at the target it was installed for.")
     parser.add_argument("--library", type=_library,
                         help=f"The library the set is named, routed and registered as "
-                             f"(default: {DEFAULT_LIBRARY}, whose skill names carry no prefix).")
+                             "(default: the cookbook's rdid; the literal "
+                             f"`{DEFAULT_LIBRARY}` carries no prefix on its skill names).")
     parser.add_argument("--dry-run", action="store_true", help="Report what would change; change nothing.")
     parser.add_argument("--json", action="store_true", help="Emit JSON instead of a report.")
 
@@ -62,16 +63,30 @@ def register(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--replace", action="store_true",
                         help="Install a library already installed from other paths, replacing "
                              "every skill it installed from them.")
+    parser.add_argument("--scope", action="append", type=Path, metavar="PATH",
+                        help="Limit the routed set to this repo root (repeatable; replaces the "
+                             "scopes it was installed with). Default: keep the installed scopes, "
+                             "else route everywhere.")
+    parser.add_argument("--scope-add", action="append", type=Path, metavar="PATH",
+                        help="Also route the set in this repo root (repeatable).")
     parser.add_argument("--concerns", type=Path,
                         help=f"The pipeline concerns list (default: <cookbook>/{CONCERNS}, the "
                              "cookbook holding the first path).")
 
 
-def installer(args, folders, concerns=None, origin=(), cookbook=None) -> inst.Installer:
-    routed, targets = inst.select(args.target, receipt=inst.read_receipt(inst.home()))
-    return inst.Installer(folders=folders, library=args.library, routed=routed, targets=targets,
+def installer(args, folders, concerns=None, origin=(), cookbook=None, library=None) -> inst.Installer:
+    """`library` (else --library) names the set. Its scopes are --scope's, else
+    those it was installed with, plus --scope-add's: skill-router clears an
+    entry's scopes when it is registered without, so the whole set goes every time."""
+    receipt = inst.read_receipt(inst.home())
+    routed, targets = inst.select(args.target, receipt=receipt)
+    library = library_name(library or args.library)
+    scopes = getattr(args, "scope", None)
+    scopes = inst.receipt_scopes(receipt, library) if scopes is None else tuple(map(str, scopes))
+    scopes = (*scopes, *map(str, getattr(args, "scope_add", None) or ()))
+    return inst.Installer(folders=folders, library=library, routed=routed, targets=targets,
                           concerns=concerns, router=inst.Router.find(), origin=origin,
-                          templates=templates_root(cookbook))
+                          templates=templates_root(cookbook), scopes=scopes)
 
 
 def show(ctx, args, title: str, statuses: list[inst.Status]) -> int:
@@ -127,8 +142,10 @@ def run(args, ctx) -> int:
             ctx.ui.error(escape(f"no artifact folders under {', '.join(map(str, paths))}; nothing to "
                                 "install (`cookr uninstall` removes an installed set)"))
             return 2
+        cookbook = _cookbook(paths[0])
         i = installer(args, folders, args.concerns or _concerns(paths[0]),
-                      origin=tuple(str(p.resolve()) for p in paths), cookbook=_cookbook(paths[0]))
+                      origin=tuple(str(p.resolve()) for p in paths), cookbook=cookbook,
+                      library=args.library or default_library(cookbook))
         if args.check:
             return show(ctx, args, "cookr install --check", i.check())
         statuses = i.install(adopt=args.adopt, force=args.force, replace=args.replace,

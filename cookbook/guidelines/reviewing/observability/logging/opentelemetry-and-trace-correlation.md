@@ -6,5 +6,5 @@ The per-platform loggers above remain the source of structured log lines; this s
 - Log and span field names **SHOULD** follow the OpenTelemetry [semantic conventions](https://opentelemetry.io/docs/specs/semconv/) rather than ad-hoc names.
 - Production logs **SHOULD** be structured JSON to keep them machine-parseable for aggregation and trace correlation.
 
-See [distributed tracing](agenticdevelopercookbook://guidelines/implementing/observability/distributed-tracing) for span propagation and exporter configuration.
+See distributed tracing ([adc.guideline.implementing.observability.distributed-tracing](cookbook:36825f6a-eedc-4cc5-a857-e107133f7ce5)) for span propagation and exporter configuration.
 

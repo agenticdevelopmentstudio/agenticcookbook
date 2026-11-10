@@ -1,13 +1,12 @@
 ---
 id: a7c3e1f2-9b4d-4e6a-8c5f-2d3e4f5a6b7c
 title: "Glossary"
-domain: agenticdevelopercookbook://introduction/glossary
 type: reference
-version: 1.4.0
+version: 2.0.0
 status: accepted
 language: en
 created: 2026-03-28
-modified: 2026-09-25
+modified: 2026-11-09
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -16,7 +15,7 @@ platforms: []
 tags: [glossary, definitions, terminology]
 depends-on: []
 related:
-  - agenticdevelopercookbook://introduction/conventions
+  - guide/introduction/conventions.md
 references: []
 ---
 
@@ -32,11 +31,11 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 
 **Cookbook** — Two distinct uses: (1) **Top-level cookbook** — the source repository of principles, guidelines, ingredients, and recipes (this repo, `agenticdevelopercookbook/cookbook`). (2) **Project cookbook** — a full application, plugin, widget, or library definition that assembles recipes and ingredients into a complete project. Defined by a `cookbook.json` manifest in a directory with a `-cookbook` suffix. Contains a hierarchical structure of structural elements, resources, and context. Replaces the former "concoction" concept. A **library cookbook** (`structure.kind: library`) specifies reusable components and lives in its repository's `cookbook/` directory, its tree mirroring the code.
 
-**Cookbook Artifact** — A general term for any content item in the cookbook: a principle, guideline, ingredient, or recipe. Each artifact is a standalone markdown file with YAML frontmatter, named requirements, and a change history. The artifact's `type` field identifies which kind it is.
+**Cookbook Artifact** — A general term for any content item in the cookbook: a principle, guideline, ingredient, or recipe. Each artifact is a source folder (`artifact.json` plus one markdown part per section) that compiles to a single markdown document with frontmatter, named requirements, and a change history. Its UUID is its identity; its rdid is its readable name. The artifact's `type` field identifies which kind it is.
 
-**Domain** — A URL-based identifier for any cookbook content. Format: `<scheme>://<path>#<fragment>`. Example: `agenticdevelopercookbook://ingredients/ui/components/empty-state#requirements/centered-layout`.
+**Fragment** — A `#section/item` reference to a specific section or item within the same document. Example: `#requirements/ordered-list`. Links between documents name a whole artifact and carry no fragment.
 
-**Fragment** — A `#section/item` reference to a specific section or item within a document. Used for within-document and cross-document references. Example: `#requirements/ordered-list`.
+**Index** — `cookbook/index.json`: one entry per artifact and compliance check, keyed by UUID, holding its kind, rdid, path and implementations, plus a `foreign` cache of the rdids of other cookbooks' artifacts this one links to. Edited only through cookr commands (`update`, `rename`, `implements`, `confirm`).
 
 **Guideline** — A topic-oriented rule that applies during planning and implementation. Covers testing, security, accessibility, internationalization, concurrency, logging, and more. Organized by topic in `cookbook/guidelines/`.
 
@@ -44,9 +43,11 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 
 **Principle** — A foundational engineering idea that guides all design decisions. 27 principles in `cookbook/principles/` including simplicity, YAGNI, fail-fast, dependency injection, immutability, composition over inheritance, connascence, and others.
 
-**Recipe** — A composition of configured ingredients into a coherent feature. Defines how ingredients wire together: integration requirements, layout, shared state, and integration test vectors. Recipes reference ingredients by domain and specify configuration values for each. Located in `cookbook/recipes/`.
+**Recipe** — A composition of configured ingredients into a coherent feature. Defines how ingredients wire together: integration requirements, layout, shared state, and integration test vectors. Recipes reference ingredients by UUID and specify configuration values for each. Located in `cookbook/recipes/`.
 
-**Reference Implementation** — A source file or directory, in the cookbook's own repository, that implements an ingredient or recipe. Listed in the spec's `## Reference Implementations` table by platform and repository-relative path; a directory claims every source file below it.
+**Reference Implementation** — A source file or directory, in the cookbook's own repository, that implements an ingredient or recipe. Recorded in the cookbook's index by platform and repository-relative path with `cookr implements`; a directory claims every source file below it.
+
+**rdid** — A readable name for an artifact, check or cookbook, held in the index next to its UUID: `<cookbook-rdid>.<type>.<path, dotted>`, e.g. `adc.recipe.ui.windows.settings-window`. A label, never an identity: `cookr rename` changes it without changing any link.
 
 **Requirement** — A named, testable assertion within a recipe. Uses a descriptive kebab-case name and RFC 2119 keywords (MUST, SHOULD, MAY). Example: `**ordered-list**: The control MUST maintain an ordered list of messages.`
 
@@ -60,6 +61,8 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 
 **Trusted** — The cookbook's core quality standard. Code is trusted when it is complete, precise, consistent, verified, secure by default, accessible from day one, tested alongside, predictable, maintainable, native, incremental, documented, observable, and performant. See the README for the full definition of each dimension.
 
+**UUID** — The identity of an artifact, compliance check or cookbook. Every link stores UUIDs: `depends-on`, `related` and `ingredients` list them, and in-text links take the form `[<rdid>](cookbook:<uuid>)` (`cookbook:<cookbook-uuid>/<uuid>` for another cookbook's artifact).
+
 **Verification** — The post-implementation validation process. Confirms builds pass, tests pass, linting is clean, logging is correct, accessibility is verified, and all applicable guidelines are met.
 
 ---
@@ -68,6 +71,7 @@ Definitions of terms used throughout the Agentic Developer Cookbook.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID, rdid and Index replace Domain |
 | 1.4.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.3.0 | 2026-04-06 | Mike Fullerton | Rename Concoction to Cookbook; define top-level and project cookbook distinction |
 | 1.2.0 | 2026-04-05 | Mike Fullerton | Add Ingredient, Concoction, Structural Element terms; update Recipe and Cookbook Artifact definitions |

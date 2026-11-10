@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "db8976c0-57e0-41a4-a7fa-67e3efef79d5",
     "title": "Human-First Ideation",
-    "domain": "agenticdevelopercookbook://principles/human-first-ideation",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel",
-      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity"
+      "b335406d-7f59-4827-a39b-477c0fe6c907",
+      "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a"
     ],
     "references": [
       "Yildirim et al., arXiv 2502.06197, 2025",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "6b5607d6086dbe48",
+  "synced": "2fee34036788c491",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

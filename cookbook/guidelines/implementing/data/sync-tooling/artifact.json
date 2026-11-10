@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "DB63C086-D082-4E20-AACA-154448C42D1D",
+    "id": "db63c086-d082-4e20-aaca-154448c42d1d",
     "title": "SQLite Sync Tooling",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/sync-tooling",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -28,9 +27,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/sync-engine-design.md",
-      "guidelines/data/conflict-resolution.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "a0cb2815-8fdd-450a-af46-8fca80ba1aba",
+      "822a0912-fda7-461f-85ab-f9c2c55f0039"
     ],
     "references": [
       "https://sqlite.org/sessionintro.html",
@@ -48,7 +47,7 @@
       "dependency-management"
     ]
   },
-  "synced": "f2e1f8da600a500d",
+  "synced": "9e290200db01e98b",
   "parts": [
     {"part": "intro"},
     {"part": "sqlite-session-extension", "heading": "SQLite Session Extension"},

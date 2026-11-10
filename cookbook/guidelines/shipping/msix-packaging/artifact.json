@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4428deb0-05a8-4b52-a78f-3dec1e7f90a4",
     "title": "MSIX Packaging",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/msix-packaging",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "pre-pr"
     ]
   },
-  "synced": "17b8e45732c8b847",
+  "synced": "c1f75bb93aa99bf2",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

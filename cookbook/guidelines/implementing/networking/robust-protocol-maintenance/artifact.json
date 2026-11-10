@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8445807b-5d0f-46f7-8024-b02586627779",
     "title": "Be strict and maintain: Postel reconsidered (RFC 9413)",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/robust-protocol-maintenance",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/fail-fast",
-      "agenticdevelopercookbook://principles/parse-dont-validate",
-      "agenticdevelopercookbook://guidelines/implementing/security/input-validation"
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "2a22b563-afb5-4615-96ae-338eafd5eb81",
+      "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419"
     ],
     "references": [
       "https://datatracker.ietf.org/doc/html/rfc9413"
@@ -36,7 +35,7 @@
       "input-handling"
     ]
   },
-  "synced": "fdee51254f23b756",
+  "synced": "23e6744fb39a765f",
   "parts": [
     {"part": "intro"},
     {"part": "why-naive-tolerance-fails-rfc-9413-2023", "heading": "Why naive tolerance fails (RFC 9413, 2023)"},

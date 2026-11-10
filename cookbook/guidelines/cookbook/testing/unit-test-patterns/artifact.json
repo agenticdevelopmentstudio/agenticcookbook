@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "59ffd7c7-2bdc-4f7b-b6f3-07d1f24599a3",
     "title": "Unit Test Patterns",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/testing/unit-test-patterns",
     "type": "guideline",
     "version": "1.1.2",
     "status": "accepted",
@@ -29,7 +28,7 @@
     ]
   },
   "twin_differs": "Applies Arrange-Act-Assert to test vectors written in cookbook artifacts, not to test code.",
-  "synced": "18d66c9601df830f",
+  "synced": "51d92abca03b9fb8",
   "parts": [
     {"part": "intro"},
     {"part": "test-vector-structure", "heading": "Test vector structure"},

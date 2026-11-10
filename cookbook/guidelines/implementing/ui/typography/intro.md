@@ -21,7 +21,7 @@ General principles:
 - Limit to 2-3 font weights per screen (regular, medium/semibold, bold)
 - All-caps SHOULD be avoided for more than a few words — harms readability and screen reader experience
 - Paragraph width: 45-75 characters for comfortable reading
-- See agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility for Dynamic Type / font scaling requirements
+- See [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8) for Dynamic Type / font scaling requirements
 
 References:
 - [Apple HIG: Typography](https://developer.apple.com/design/human-interface-guidelines/typography)

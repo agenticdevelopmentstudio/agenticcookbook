@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e8870c2b-ae55-4e48-a4e7-081d65f27418",
     "title": "Codex configuration",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -28,15 +27,15 @@
       "llm-tools"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/skill-structure-reference",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/context-and-memory-management",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/codex-configuration"
+      "fe0daac0-1ba7-4c93-a47e-e42e75612cf6",
+      "0f999db4-956a-4124-a142-367b1a570983",
+      "4f4ed7a2-a26f-40f2-b863-51715b5c470c",
+      "e858e124-8774-450f-ab7a-9b27a6965660",
+      "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
+      "8017637b-8eae-4829-b5a3-85560f7f8fb8"
     ],
     "references": [
       "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
@@ -52,7 +51,7 @@
     ]
   },
   "names_hosts": "Describes Codex configuration files, paths and keys, so it must name the Codex host throughout.",
-  "synced": "7fe5edfa362d87fd",
+  "synced": "2592e11a288764ea",
   "parts": [
     {"part": "intro"},
     {"part": "config-toml", "heading": "config.toml"},

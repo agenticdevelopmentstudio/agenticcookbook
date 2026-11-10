@@ -10,7 +10,7 @@ Use color with intention — never as the sole means of conveying information.
   success/warning/error. Avoid rainbow UIs.
 - **Not color alone** — color MUST be paired with a secondary indicator (icon, shape, text, pattern)
   for state changes, errors, and status.
-- **Contrast minimums** (WCAG AA, per agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility):
+- **Contrast minimums** (WCAG AA, per [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)):
 
 | Element | AA Minimum | AAA Enhanced |
 |---------|-----------|-------------|

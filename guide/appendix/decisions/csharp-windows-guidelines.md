@@ -1,7 +1,6 @@
 ---
 id: 023481cc-ae29-44d2-b688-e8da9f1f2b2d
 title: "Design: C# and Windows Coding Guidelines"
-domain: agenticdevelopercookbook://appendix/decisions/csharp-windows-guidelines
 type: reference
 version: 1.0.0
 status: accepted

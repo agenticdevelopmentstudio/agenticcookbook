@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "36d29fae-0929-46ef-98d6-d7e8f67aa040",
     "title": "Transaction isolation and serialization-failure retry",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/data/transactions-and-concurrency",
-      "agenticdevelopercookbook://principles/idempotency"
+      "ab416d40-2688-4531-95fb-613f0d2fa8cf",
+      "39c2d053-006f-42c9-9db4-d991c1688024"
     ],
     "references": [
       "https://www.postgresql.org/docs/current/transaction-iso.html"
@@ -35,7 +34,7 @@
       "concurrency"
     ]
   },
-  "synced": "336e17d32a4dd247",
+  "synced": "0b362f163e8e71c7",
   "parts": [
     {"part": "intro"},
     {"part": "isolation-levels-and-what-they-prevent", "heading": "Isolation levels and what they prevent"},

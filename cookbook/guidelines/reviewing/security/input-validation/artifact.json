@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d02a65e0-652f-49b9-be3b-44fccc2f7888",
     "title": "Input Validation",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/input-validation",
     "type": "guideline",
     "version": "1.1.0",
     "status": "accepted",
@@ -37,7 +36,7 @@
       "api-integration"
     ]
   },
-  "synced": "4cea1ed6c5b27e4c",
+  "synced": "6ebe1e2b1510665f",
   "parts": [
     {"part": "intro"},
     {"part": "server-render-and-server-action-boundary", "heading": "Server-render and Server-Action boundary"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a4f57a3c-f909-42aa-a85f-1ac76ac3ab24",
     "title": "Room persistence on Android",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/room-persistence",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation"
+      "36d29fae-0929-46ef-98d6-d7e8f67aa040"
     ],
     "references": [
       "https://developer.android.com/training/data-storage/room",
@@ -38,7 +37,7 @@
       "data-modeling"
     ]
   },
-  "synced": "b3cebfb0e92f8659",
+  "synced": "1997ac7fdf28344c",
   "parts": [
     {"part": "intro"},
     {"part": "version-landscape-as-of-2026-06", "heading": "Version landscape (as of 2026-06)"},

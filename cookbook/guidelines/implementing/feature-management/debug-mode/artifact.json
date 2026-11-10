@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e446ee3e-b8f2-40e7-b93d-3113e6a95e5d",
     "title": "Debug mode",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/feature-management/debug-mode",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "logging"
     ]
   },
-  "synced": "68671bd384b5f86d",
+  "synced": "b85d55711aff86ce",
   "parts": [
     {"part": "intro"},
     {"part": "typescript", "heading": "TypeScript"},

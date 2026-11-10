@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "7C0B4381-0A41-4D8C-8B90-1614038B1A94",
+    "id": "7c0b4381-0a41-4d8c-8b90-1614038b1a94",
     "title": "Categorize and Tag Handler",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/categorize-and-tag-handler",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "review",
@@ -25,11 +24,11 @@
       "categorization"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://ingredients/infrastructure/llm-backend"
+      "597e9cd0-453a-42b8-a464-8ba8d31a6efc"
     ],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
-      "agenticdevelopercookbook://ingredients/infrastructure/job-worker"
+      "61ca76a4-0188-488b-9ac6-1144ca8ed506",
+      "22fbf585-c5a3-425a-94f1-ba9b570ebfde"
     ],
     "references": [
       "https://datatracker.ietf.org/doc/html/rfc2119"
@@ -37,7 +36,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "8a3337b190d69ed6",
+  "synced": "727ddf30a05c3abc",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ae9559b5-4829-4349-b018-986e98c31d39",
     "title": "Apple design language and widgets",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/apple-liquid-glass-and-widgets",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/platform-design-languages",
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/widgets-and-glanceable-surfaces"
+      "3741ed5e-0b67-48f2-b227-36ae152c0f4b",
+      "e3aa9294-61cf-4a3a-9fbf-0528a1404094"
     ],
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines"
@@ -39,7 +38,7 @@
       "platform-integration"
     ]
   },
-  "synced": "6f6a78598f5d3c4f",
+  "synced": "4ab0dceb643a4ac8",
   "parts": [
     {"part": "intro"},
     {"part": "adopt-the-system-design-language", "heading": "Adopt the system design language"},

@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07",
     "title": "Package Document",
-    "domain": "agenticdevelopercookbook://recipes/infrastructure/package-document",
     "type": "recipe",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -25,9 +24,9 @@
       "package-document"
     ],
     "ingredients": [
-      "agenticdevelopercookbook://ingredients/infrastructure/package-document-type",
-      "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage",
-      "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers"
+      "ca56f1aa-7089-498f-8bcc-c11a0d81be3d",
+      "ad558f24-29fa-430f-9ebd-0ec42f1aa9d1",
+      "03df8ffb-476c-49f5-b104-33ad3c52bbe4"
     ],
     "depends-on": [],
     "related": [],
@@ -35,7 +34,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "37e1b0c3a4281b51",
+  "synced": "9b4452c11abe24ae",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

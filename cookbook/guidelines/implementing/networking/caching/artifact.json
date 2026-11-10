@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3416a359-e01c-40b2-8876-4a8634d4395e",
     "title": "Caching",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/caching",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -39,7 +38,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "c43101410fabc3a3",
+  "synced": "e42d3985fb63f12f",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

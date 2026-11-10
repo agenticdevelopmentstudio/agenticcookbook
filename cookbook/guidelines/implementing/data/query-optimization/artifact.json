@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "7FD21483-AD0B-407E-8A7F-103992403D36",
+    "id": "7fd21483-ad0b-407e-8a7f-103992403d36",
     "title": "Query Optimization",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/query-optimization",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/indexing.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "02e9042d-0d15-47ac-9361-2f16980a03ca"
     ],
     "references": [
       "https://sqlite.org/optoverview.html",
@@ -41,7 +40,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "9e7bfd073fcb4870",
+  "synced": "825ec4aae97fce32",
   "parts": [
     {"part": "intro"},
     {"part": "reading-explain-query-plan", "heading": "Reading EXPLAIN QUERY PLAN"},

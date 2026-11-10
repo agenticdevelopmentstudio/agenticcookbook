@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f3ae65a6-f51d-4e42-8f79-fa8097dd3480",
     "title": "Test Pyramid",
-    "domain": "agenticdevelopercookbook://guidelines/testing/test-pyramid",
     "type": "guideline",
     "version": "1.1.0",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "pre-pr"
     ]
   },
-  "synced": "54dc073607d5502d",
+  "synced": "36f557f9c702a920",
   "parts": [
     {"part": "intro"},
     {"part": "the-shape-is-context-dependent", "heading": "The shape is context-dependent"},

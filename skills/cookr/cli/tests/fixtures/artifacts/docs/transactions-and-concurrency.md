@@ -2,7 +2,6 @@
 
 id: AB416D40-2688-4531-95FB-613F0D2FA8CF
 title: "Transactions and Concurrency"
-domain: agenticdevelopercookbook://guidelines/implementing/data/transactions-and-concurrency
 type: guideline
 version: 1.0.2
 status: accepted
@@ -24,8 +23,8 @@ tags:
   - performance
 depends-on: []
 related:
-  - guidelines/data/sqlite-best-practices.md
-  - guidelines/data/access-pattern-analysis.md
+  - f68778f2-65e3-4e89-bbf8-115151efa9dc
+  - af78ffed-0e66-42be-ab40-ef1bd6a49dd2
 references:
   - https://sqlite.org/wal.html
   - https://sqlite.org/lang_transaction.html

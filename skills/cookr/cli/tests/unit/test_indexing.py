@@ -1,8 +1,11 @@
+import re
 from datetime import date
 
 import pytest
 
 from cookr.indexing import engine, flat, use_case, triggers
+
+from ..conftest import REPO_ROOT
 
 
 # Every tmp_path here is a git repo, as a real cookbook checkout is.
@@ -132,3 +135,68 @@ def test_triggers_index_is_unchanged_on_a_second_run(tmp_path):
     }
     assert engine.run_one(config, tmp_path).status == "written"
     assert engine.run_one(config, tmp_path).status == "unchanged"
+
+
+def _folder(root, rel, title, **meta):
+    from cookr.core.artifact import Artifact, Part, write_folder
+    write_folder(Artifact(meta={"id": rel, "type": "guideline", "title": title, **meta},
+                          parts=[Part("intro", f"# {title}\n")]), root / rel)
+
+
+def test_flat_strategy_lists_source_folders_without_docs(tmp_path):
+    # The folder is the only committed form: an index is built from folders.
+    root = tmp_path
+    _folder(root, "recipes/ui/alpha", "Alpha")
+    _make_recipe(root, "beta.md", "Beta")
+    config = {"name": "recipes-flat", "strategy": "flat", "target_dir": "recipes",
+              "output": "recipes/INDEX.md", "title": "Recipes", "summary": "All"}
+    text, counts = flat.generate(config, root, today=date(2026, 5, 15))
+    assert "[Alpha](ui/alpha/)" in text
+    assert "[Beta](beta.md)" in text
+    assert counts["total"] == 2
+
+
+def test_a_compiled_doc_beside_its_folder_counts_once(tmp_path):
+    root = tmp_path
+    _folder(root, "recipes/alpha", "Alpha")
+    _make_recipe(root, "alpha.md", "Stale Alpha")
+    config = {"name": "recipes-flat", "strategy": "flat", "target_dir": "recipes",
+              "output": "recipes/INDEX.md", "title": "Recipes", "summary": "All"}
+    text, counts = flat.generate(config, root, today=date(2026, 5, 15))
+    assert "[Alpha](alpha/)" in text and "Stale" not in text
+    assert counts["total"] == 1
+
+
+def test_use_case_strategy_lists_source_folders(tmp_path):
+    root = tmp_path
+    _folder(root, "guidelines/implementing/ui/color", "Color")
+    _folder(root, "guidelines/reviewing/ui/color", "Color")
+    _folder(root, "guidelines/reviewing/checklist", "Checklist")
+    config = {"name": "guidelines", "strategy": "use_case", "target_dir": "guidelines",
+              "output": "guidelines/INDEX.md",
+              "use_cases": [{"name": "implementing"}, {"name": "reviewing"}]}
+    text, counts = use_case.generate(config, root, today=date(2026, 5, 15))
+    assert counts["per_use_case"] == {"implementing": 1, "reviewing": 2}
+    assert counts["unique"] == 2
+    assert "- [Color](implementing/ui/color/)" in text
+    assert "- [Checklist](reviewing/checklist/)" in text
+
+
+def test_triggers_strategy_reads_source_folders(tmp_path):
+    root = tmp_path
+    _folder(root, "guidelines/implementing/testing/x", "X", triggers=["writing-tests"])
+    config = {"name": "triggers", "strategy": "triggers", "target_dir": "guidelines",
+              "output": "index/triggers.yaml"}
+    text, _ = triggers.generate(config, root, today=date(2026, 5, 15))
+    assert "- guidelines/implementing/testing/x/\n" in text
+    assert ".md" not in text  # a folder-only checkout has no docs to list
+
+
+def test_every_index_link_in_the_cookbook_resolves():
+    """A folder-only checkout has no <name>.md docs, so an INDEX.md links folders."""
+    link = re.compile(r"\]\(([^)#\s]+)(?:#[^)]*)?\)")
+    dead = [f"{f.relative_to(REPO_ROOT)}: {m.group(1)}"
+            for f in sorted((REPO_ROOT / "cookbook").rglob("INDEX.md")) if "versions" not in f.parts
+            for m in link.finditer(f.read_text(encoding="utf-8"))
+            if ":" not in m.group(1) and not (f.parent / m.group(1)).exists()]
+    assert dead == []

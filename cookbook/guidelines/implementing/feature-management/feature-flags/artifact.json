@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ac616d81-16c2-4f33-9ae4-139d5c24318d",
     "title": "Feature flags",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "new-module"
     ]
   },
-  "synced": "cc961e0e6e471caf",
+  "synced": "3d62e090512b41a6",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

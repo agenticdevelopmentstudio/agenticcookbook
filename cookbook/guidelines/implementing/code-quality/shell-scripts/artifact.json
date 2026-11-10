@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
     "title": "Shell scripts",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -37,7 +36,7 @@
       "configuration"
     ]
   },
-  "synced": "2f7098381829a52e",
+  "synced": "a34d475c97268f2e",
   "parts": [
     {"part": "intro"},
     {"part": "portability", "heading": "Portability"},

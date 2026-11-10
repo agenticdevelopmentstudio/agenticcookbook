@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "eeddf232-7bc1-4aa4-ab34-dbcbaebc102d",
     "title": "Dashboard service is display-only",
-    "domain": "agenticdevelopercookbook://guidelines/planning/ui/dashboard-service-is-display-only",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "new-module"
     ]
   },
-  "synced": "bfecc2abf64da301",
+  "synced": "d4901942544dc18e",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

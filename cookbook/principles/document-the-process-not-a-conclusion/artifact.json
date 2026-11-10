@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "10311277-24f7-473b-af0a-a98285dd74f1",
     "title": "Document the Process, Not a Conclusion",
-    "domain": "agenticdevelopercookbook://principles/document-the-process-not-a-conclusion",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel"
+      "b335406d-7f59-4827-a39b-477c0fe6c907"
     ],
     "references": [
       "Wallas, The Art of Thought, 1926",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "c6f186a4910105e3",
+  "synced": "7364ca0335b609f8",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

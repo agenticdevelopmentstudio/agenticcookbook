@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d2742535-cbb8-4cda-9a22-1180a8d5966f",
     "title": "Framing Techniques",
-    "domain": "agenticdevelopercookbook://guidelines/brainstorming/framing-techniques",
     "type": "guideline",
     "version": "1.0.0",
     "status": "draft",
@@ -21,11 +20,11 @@
       "facilitation"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/frame-before-you-generate"
+      "f7961f5a-834b-4ba1-804e-8c1ddcc251a7"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques",
-      "agenticdevelopercookbook://guidelines/brainstorming/facilitation-without-anchoring"
+      "17d2fa7e-0a8e-4ce7-96a0-de417db82220",
+      "851f0bee-dab9-4ee4-8d38-1f525314563d"
     ],
     "references": [
       "https://web.stanford.edu/~mshanks/MichaelShanks/files/509554.pdf",
@@ -36,7 +35,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "a70b622a565cf044",
+  "synced": "ab3a3d015e59545f",
   "parts": [
     {"part": "intro"},
     {"part": "how-might-we-hmw", "heading": "How Might We (HMW)"},

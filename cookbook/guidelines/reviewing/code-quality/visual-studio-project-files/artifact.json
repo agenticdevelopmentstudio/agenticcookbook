@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b0ee38ef-8256-418f-95a8-495264d282fc",
     "title": "Visual Studio project files",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/visual-studio-project-files",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -30,7 +29,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files"
+      "9ed898fe-ba86-44be-9911-d24fea60dc90"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/overview",
@@ -45,7 +44,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's project-file rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "b74a515a98d4665a",
+  "synced": "f5e383e73e3c5044",
   "parts": [
     {"part": "intro"},
     {"part": "project-structure", "heading": "Project structure"},

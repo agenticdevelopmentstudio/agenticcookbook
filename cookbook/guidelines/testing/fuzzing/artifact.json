@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d197a1e3-eba5-4f3f-acc7-c2fabd51144f",
     "title": "Fuzz testing",
-    "domain": "agenticdevelopercookbook://guidelines/testing/fuzzing",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/property-based-testing",
-      "agenticdevelopercookbook://guidelines/testing/security-testing"
+      "ccffa426-5556-4bbe-8dd6-b43c8e195f64",
+      "cf05e36f-ea8b-4af2-8df6-c5e772dc25b5"
     ],
     "references": [
       "https://github.com/google/oss-fuzz"
@@ -35,7 +34,7 @@
       "security-review"
     ]
   },
-  "synced": "ea5cd01fc06340e6",
+  "synced": "e289bd5f91833466",
   "parts": [
     {"part": "intro"},
     {"part": "where-to-apply-it-measured-need-guardrail", "heading": "Where to apply it (measured-need guardrail)"},

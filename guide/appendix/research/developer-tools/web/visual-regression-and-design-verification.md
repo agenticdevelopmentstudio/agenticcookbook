@@ -1,7 +1,6 @@
 ---
 id: 6445e312-9a50-44ef-809f-51e7aceb95aa
 title: Visual Regression & Design Verification Research
-domain: agenticdevelopercookbook://appendix/research/developer-tools/web/visual-regression-and-design-verification
 type: reference
 version: 1.0.0
 status: draft

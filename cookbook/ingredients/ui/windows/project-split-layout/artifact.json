@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "865679A9-6631-46E8-84AE-6EF64D2ABF3A",
+    "id": "865679a9-6631-46e8-84ae-6ef64d2abf3a",
     "title": "Project Split Layout",
-    "domain": "agenticdevelopercookbook://ingredients/ui/windows/project-split-layout",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -28,13 +27,13 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/ui/windows/project-window"
+      "338cb220-483c-4f9e-ae9d-e1dd79e59289"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "a7849a9d15d1287e",
+  "synced": "08e4882cb3613102",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

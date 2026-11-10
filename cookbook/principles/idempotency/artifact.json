@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "39c2d053-006f-42c9-9db4-d991c1688024",
     "title": "Idempotency",
-    "domain": "agenticdevelopercookbook://principles/idempotency",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "689d2cf7f6fc30b5",
+  "synced": "128d03de4cb7c9ba",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

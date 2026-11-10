@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9096c8f4-5f89-41cf-b06c-954861117d69",
     "title": "SRP",
-    "domain": "agenticdevelopercookbook://principles/srp",
     "type": "principle",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-21"
   },
-  "synced": "ef9a8c8a203f8ac2",
+  "synced": "82dc5383c9d5114c",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

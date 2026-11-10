@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8a39c784-a101-434f-afe6-c92187ccf576",
     "title": "Android predictive back",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/android-predictive-back",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/android-edge-to-edge"
+      "9ea07f7d-1a0a-4f1d-8a56-0ee6d4d49111"
     ],
     "references": [
       "https://developer.android.com/guide/navigation/custom-back/predictive-back-gesture"
@@ -35,7 +34,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "09596a745be40c06",
+  "synced": "41111da7b47b4e1a",
   "parts": [
     {"part": "intro"},
     {"part": "migrate-off-unsupported-back-handling", "heading": "Migrate off unsupported back handling"},

@@ -1,7 +1,6 @@
 ---
 id: a7bf2e35-f66d-4dd2-a900-89c4edae6ef9
 title: DevOps & Infrastructure Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/infrastructure/devops-tools
 type: reference
 version: 1.0.0
 status: draft

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b8fa0cf0-b15b-4eec-a161-7fbd6936f1d9",
     "title": "Connection pooling for server and serverless backends",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/connection-pooling",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation"
+      "36d29fae-0929-46ef-98d6-d7e8f67aa040"
     ],
     "references": [
       "https://www.pgbouncer.org/",
@@ -37,7 +36,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "6b3feccb274e856e",
+  "synced": "490aa88db286dfdb",
   "parts": [
     {"part": "intro"},
     {"part": "when-a-pooler-is-required", "heading": "When a pooler is required"},

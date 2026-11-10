@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
     "title": "Objective-C",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/language/objective-c",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -30,10 +29,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/language/swift",
-      "agenticdevelopercookbook://guidelines/implementing/ui/appkit-and-uikit-patterns",
-      "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+      "8aa22a6b-2328-4a2d-8fe3-53c339390808",
+      "65367d27-1d4e-41e5-9e8c-e9adb08ddc90",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://clang.llvm.org/docs/AutomaticReferenceCounting.html",
@@ -48,7 +47,7 @@
       "platform-integration"
     ]
   },
-  "synced": "ea48d75f1ebf5bee",
+  "synced": "e96ae820e67a1396",
   "parts": [
     {"part": "intro"},
     {"part": "arc-ownership", "heading": "ARC ownership"},

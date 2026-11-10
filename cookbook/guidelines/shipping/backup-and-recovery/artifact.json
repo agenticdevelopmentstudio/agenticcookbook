@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "04b47c8b-e076-47a0-a541-6937bdc64abb",
     "title": "Database backup and recovery",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/backup-and-recovery",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -28,7 +27,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://sqlite.org/backup.html",
@@ -44,7 +43,7 @@
       "configuration"
     ]
   },
-  "synced": "c9f797f0eba10ee3",
+  "synced": "81aaedb8b4135097",
   "parts": [
     {"part": "intro"},
     {"part": "pre-deploy-backup-checklist", "heading": "Pre-deploy backup checklist"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "26d10854-c903-40c5-8bef-18337c5ac71e",
     "title": "Design tokens",
-    "domain": "agenticdevelopercookbook://guidelines/planning/ui/design-tokens",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -28,8 +27,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/theming",
-      "agenticdevelopercookbook://guidelines/planning/ui/platform-design-languages"
+      "5cc9773e-78de-493e-891c-2a819baf9b60",
+      "9f17b833-75ed-4c86-a6af-a4f277c23d21"
     ],
     "references": [
       "https://www.designtokens.org/",
@@ -41,7 +40,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "192942be2eb27efa",
+  "synced": "af0fc09ddb7b2db8",
   "parts": [
     {"part": "intro"},
     {"part": "single-source-of-truth", "heading": "Single source of truth"},

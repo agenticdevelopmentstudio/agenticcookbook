@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0f999db4-956a-4124-a142-367b1a570983",
     "title": "Context and memory management for agents",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/context-and-memory-management",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/simplicity",
-      "agenticdevelopercookbook://principles/tight-feedback-loops"
+      "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
+      "b111a703-f4d7-4c1a-8206-d84e869791f4"
     ],
     "references": [
       "https://code.claude.com/docs/en/best-practices"
@@ -34,7 +33,7 @@
       "skill-authoring"
     ]
   },
-  "synced": "3637e3acbf86a5d5",
+  "synced": "a1e7f38922f075b2",
   "parts": [
     {"part": "intro"},
     {"part": "core-requirements", "heading": "Core requirements"},

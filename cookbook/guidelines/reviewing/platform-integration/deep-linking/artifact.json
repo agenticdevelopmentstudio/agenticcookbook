@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2054b522-fd98-4320-95df-3d95d1a07d98",
     "title": "Deep linking",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/platform-integration/deep-linking",
     "type": "guideline",
     "version": "1.1.3",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "configuration"
     ]
   },
-  "synced": "1b396ec2da8995b9",
+  "synced": "2d52331af7dbbeab",
   "parts": [
     {"part": "intro"},
     {"part": "typescript", "heading": "TypeScript"},

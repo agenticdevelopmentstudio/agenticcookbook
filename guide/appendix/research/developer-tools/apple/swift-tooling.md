@@ -1,7 +1,6 @@
 ---
 id: d465658a-3e5f-4b48-abe2-673ff3d0dba5
 title: Swift & SwiftUI Development Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/apple/swift-tooling
 type: reference
 version: 1.0.0
 status: draft

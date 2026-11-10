@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "67c59594-a5dc-46f2-aa61-3436921294c7",
     "title": "Offline and Connectivity",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/offline-and-connectivity",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "networking"
     ]
   },
-  "synced": "a5b31af48f2dba50",
+  "synced": "c3853763e0e9353c",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

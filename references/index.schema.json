@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://agenticdevelopercookbook.com/schemas/index.schema.json",
+  "title": "Cookbook Index",
+  "description": "Schema for index.json (format 2) — a cookbook's table of contents, beside cookbook.json. Each entry is keyed by UUID (the identity every link stores) and holds the readable rdid, the location and the code that implements it. Edited only through cookr, never by hand: `cookr update` writes `rdid` and `path` from the source folders, `cookr rename` changes an rdid, `cookr implements` and `cookr confirm` write `implementations`, `cookr relink` follows moved code.",
+  "type": "object",
+  "required": [
+    "format",
+    "cookbook",
+    "entries"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": 2
+    },
+    "cookbook": {
+      "type": "object",
+      "required": [
+        "id",
+        "rdid"
+      ],
+      "additionalProperties": false,
+      "description": "The cookbook's identity, as in cookbook.json",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        },
+        "rdid": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        }
+      }
+    },
+    "entries": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/entry"
+      }
+    },
+    "foreign": {
+      "type": "object",
+      "description": "The cached rdid of every foreign artifact this cookbook links to, keyed `<cookbook-uuid>/<artifact-uuid>`. cookr refreshes it.",
+      "propertyNames": {
+        "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$"
+      }
+    },
+    "catalog": {
+      "type": "string",
+      "description": "Directory, relative to the cookbook, holding the compliance documents whose `### <name>` checks are `check` entries"
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": [
+        "kind",
+        "rdid",
+        "path"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "principle",
+            "guideline",
+            "ingredient",
+            "recipe",
+            "check"
+          ]
+        },
+        "rdid": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$",
+          "description": "`<cookbook-rdid>.<kind>.<path, dotted>`; a check's is `<cookbook-rdid>.check.<document, dotted>.<name>`"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The artifact's source folder, relative to the cookbook; a check's is `<document>#<name>`, relative to `catalog`"
+        },
+        "implementations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "platform",
+              "conformance"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "platform": {
+                "$ref": "#/$defs/platform"
+              },
+              "location": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Repo-relative file or directory (a directory ends with `/` and claims every source file below it), or a URL. Absent only while the conformance state is `planned`."
+              },
+              "conformance": {
+                "type": "object",
+                "required": [
+                  "state"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "state": {
+                    "enum": [
+                      "planned",
+                      "unverified",
+                      "needs-validation",
+                      "confirmed"
+                    ],
+                    "description": "`cookr implements` writes `unverified` (`planned` with --planned); `cookr confirm` writes `confirmed`."
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "The artifact version the code was confirmed against"
+                  },
+                  "hash": {
+                    "type": "string",
+                    "description": "Digest of the code when it was confirmed, so a later change shows as drift"
+                  }
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "conformance": {
+                      "properties": {
+                        "state": {
+                          "not": {
+                            "const": "planned"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "location"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "platform": {
+      "enum": [
+        "macos",
+        "ios",
+        "apple",
+        "web",
+        "android",
+        "windows",
+        "linux",
+        "python"
+      ]
+    }
+  }
+}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3af6830b-71c9-4e50-929d-38dec20dae24",
     "title": "Progressive Web App installability",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/progressive-web-app",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/offline-and-connectivity",
-      "agenticdevelopercookbook://guidelines/implementing/ui/modern-css"
+      "67c59594-a5dc-46f2-aa61-3436921294c7",
+      "ea5ccc72-7b6e-4aa8-a599-40837f722f38"
     ],
     "references": [
       "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
@@ -38,7 +37,7 @@
       "offline-support"
     ]
   },
-  "synced": "9e3a683fda1aa8f1",
+  "synced": "876b039abb5ae647",
   "parts": [
     {"part": "intro"},
     {"part": "installability-criteria", "heading": "Installability criteria"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "56394d2f-b784-4771-92a4-faacc037c609",
     "title": "Shared components and tiers",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/shared-components-and-tiers",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -23,11 +22,11 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/dry",
-      "agenticdevelopercookbook://principles/separation-of-concerns",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/architecture",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/dependency-injection"
+      "256a827e-436e-4cde-895e-a56b9783edf2",
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+      "fa2196e4-9513-4b23-b805-f5f5f099e5ff",
+      "e80d67b3-813f-47fb-8894-aa4e6f6479f3"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -37,7 +36,7 @@
       "code-review"
     ]
   },
-  "synced": "e367a6ef269e02d0",
+  "synced": "69e853efe28d3bad",
   "parts": [
     {"part": "intro"},
     {"part": "search-before-you-write", "heading": "Search before you write"},

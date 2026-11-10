@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6f6ccc46-33fb-44ad-8dce-d65581d8dfe0",
     "title": "Kubernetes workloads",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/kubernetes-workloads",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/infrastructure/kubernetes-configuration",
-      "agenticdevelopercookbook://guidelines/planning/infrastructure/immutable-infrastructure"
+      "ed639d3f-02e5-42d1-bb87-f96908986025",
+      "60b3f760-f397-4762-b2d5-5aba80fd51f8"
     ],
     "references": [
       "https://kubernetes.io/docs/concepts/configuration/overview/",
@@ -38,7 +37,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "0e8c17fe196cb5d3",
+  "synced": "e648407d149f47d4",
   "parts": [
     {"part": "intro"},
     {"part": "adopt-only-when-the-need-is-measured", "heading": "Adopt only when the need is measured"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ce0c62c0-f2a1-4b60-b46e-844adc164d92",
     "title": "PowerShell",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/powershell",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -29,8 +28,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/language/powershell",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/shell-scripts"
+      "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
+      "792f0b2d-c4b2-440f-9e58-33fa1e30a2c4"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-strictmode",
@@ -45,7 +44,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "cc891ccf2969d642",
+  "synced": "952f810830172962",
   "parts": [
     {"part": "intro"},
     {"part": "strict-mode-and-errors", "heading": "Strict mode and errors"},

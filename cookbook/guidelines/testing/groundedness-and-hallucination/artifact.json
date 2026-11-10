@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "33c3971e-84a3-4318-8674-b0ff60e7f8f3",
     "title": "Groundedness and hallucination checks",
-    "domain": "agenticdevelopercookbook://guidelines/testing/groundedness-and-hallucination",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety",
-      "agenticdevelopercookbook://guidelines/planning/data/vector-search-and-retrieval"
+      "e2a99bf0-6b25-4769-9d1e-613b58b6f097",
+      "0ce05d51-1d2b-4679-869a-fa1533be95ab"
     ],
     "references": [
       "https://arxiv.org/abs/2305.14251",
@@ -38,7 +37,7 @@
       "writing-tests"
     ]
   },
-  "synced": "8662b4f41e9b7e6e",
+  "synced": "177bcae3b99100d5",
   "parts": [
     {"part": "intro"},
     {"part": "what-to-measure", "heading": "What to measure"},

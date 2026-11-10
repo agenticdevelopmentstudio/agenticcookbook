@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "31586bfd-4403-4a11-93d4-ac1a3e001c2f",
     "title": "Data Display",
-    "domain": "agenticdevelopercookbook://guidelines/planning/ui/data-display",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "data-modeling"
     ]
   },
-  "synced": "5ed3f06afb821a20",
+  "synced": "793b60ea3aef0058",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

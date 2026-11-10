@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "27e5ef04-85b6-4d63-8802-0378051d6bea",
     "title": "Offline-First Architecture",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/offline-first-architecture",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,9 +26,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/sync-schema-design.md",
-      "guidelines/data/sync-protocol.md"
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb",
+      "5a57e599-ca8e-44b9-9be7-109f7c176feb",
+      "edf1f288-9cb1-4979-8900-b69d5e33e987"
     ],
     "references": [
       "https://sqlite.org/wal.html",
@@ -42,7 +41,7 @@
       "database-operations"
     ]
   },
-  "synced": "8229d3babbb1084d",
+  "synced": "2b3b56dbb7ed7f58",
   "parts": [
     {"part": "intro"},
     {"part": "wal-mode-as-the-foundation", "heading": "WAL Mode as the Foundation"},

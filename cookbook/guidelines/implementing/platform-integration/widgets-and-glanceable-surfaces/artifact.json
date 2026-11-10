@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e3aa9294-61cf-4a3a-9fbf-0528a1404094",
     "title": "Widgets and glanceable surfaces",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/widgets-and-glanceable-surfaces",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -26,10 +25,10 @@
       "glanceable"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/support-automation"
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/notifications"
+      "94e8caba-da27-4bb8-8f8e-38730b8b34e0"
     ],
     "references": [
       "https://developer.apple.com/documentation/widgetkit",
@@ -43,7 +42,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "a1871e69cc42ccbf",
+  "synced": "8e2993a0e890a731",
   "parts": [
     {"part": "intro"},
     {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},

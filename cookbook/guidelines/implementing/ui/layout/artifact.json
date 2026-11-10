@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "26c8e7d6-dde3-48d0-bde0-8a71a51a6674",
     "title": "Layout",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/layout",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "f3e17af03b6e462b",
+  "synced": "e94d5c6def803937",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

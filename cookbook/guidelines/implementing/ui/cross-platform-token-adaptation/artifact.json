@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d10d829f-bfff-4b8b-935f-eb30cdf66a43",
     "title": "Cross-platform token adaptation",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/cross-platform-token-adaptation",
     "type": "guideline",
     "version": "1.1.0",
     "status": "accepted",
@@ -28,8 +27,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/ui/design-tokens",
-      "agenticdevelopercookbook://guidelines/planning/ui/platform-design-languages"
+      "26d10854-c903-40c5-8bef-18337c5ac71e",
+      "9f17b833-75ed-4c86-a6af-a4f277c23d21"
     ],
     "references": [
       "https://www.designtokens.org/",
@@ -41,7 +40,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "50a1f35656f93084",
+  "synced": "242cc87ee39952af",
   "parts": [
     {"part": "intro"},
     {"part": "source-of-truth", "heading": "Source of truth"},

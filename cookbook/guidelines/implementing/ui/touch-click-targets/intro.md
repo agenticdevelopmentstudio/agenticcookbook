@@ -18,7 +18,7 @@ HIG first — each prescribes its own minimum:
 - Inline text links in paragraphs are exempt from size minimums but should have sufficient
   line height for comfortable tapping
 
-See agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility for full accessibility requirements.
+See [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8) for full accessibility requirements.
 
 References:
 - [Apple HIG: Accessibility — User Interaction](https://developer.apple.com/design/human-interface-guidelines/accessibility#User-interaction)

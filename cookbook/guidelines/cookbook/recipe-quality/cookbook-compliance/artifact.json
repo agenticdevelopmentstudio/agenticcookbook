@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0d3aaa29-0ce3-4803-8f8a-a7023713b574",
     "title": "Cookbook Compliance",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/cookbook-compliance",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-09"
   },
-  "synced": "0af6832af6dd776c",
+  "synced": "d57c1d87bdb3876c",
   "parts": [
     {"part": "intro"},
     {"part": "requirements", "heading": "Requirements"},

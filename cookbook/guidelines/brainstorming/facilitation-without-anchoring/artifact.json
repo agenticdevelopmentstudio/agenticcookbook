@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "851f0bee-dab9-4ee4-8d38-1f525314563d",
     "title": "Facilitation Without Anchoring",
-    "domain": "agenticdevelopercookbook://guidelines/brainstorming/facilitation-without-anchoring",
     "type": "guideline",
     "version": "1.0.0",
     "status": "draft",
@@ -22,13 +21,13 @@
       "persona-burst"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/keep-the-human-at-the-wheel",
-      "agenticdevelopercookbook://principles/human-first-ideation",
-      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity"
+      "b335406d-7f59-4827-a39b-477c0fe6c907",
+      "db8976c0-57e0-41a4-a7fa-67e3efef79d5",
+      "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques",
-      "agenticdevelopercookbook://guidelines/brainstorming/framing-techniques"
+      "17d2fa7e-0a8e-4ce7-96a0-de417db82220",
+      "d2742535-cbb8-4cda-9a22-1180a8d5966f"
     ],
     "references": [
       "Sawyer, Group Genius, 2007",
@@ -42,7 +41,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "4db1a1d1420c7bf9",
+  "synced": "41c9b3330adf57d4",
   "parts": [
     {"part": "intro"},
     {"part": "yes-and-stance", "heading": "Yes-And Stance"},

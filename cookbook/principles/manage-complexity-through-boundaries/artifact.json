@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "555ad5e1-800f-4848-8c58-6f726bdcb42b",
     "title": "Manage complexity through boundaries",
-    "domain": "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
     "type": "principle",
     "version": "1.1.1",
     "status": "accepted",
@@ -20,16 +19,16 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/composition-over-inheritance",
-      "agenticdevelopercookbook://principles/connascence",
-      "agenticdevelopercookbook://principles/steel-thread-first",
-      "agenticdevelopercookbook://principles/yagni"
+      "f6679a9d-e90e-4fc6-ac4c-0696851af484",
+      "ec59e5cc-5591-4c0b-87f8-00df54394607",
+      "b224ef56-65f5-45fd-8842-767b20df6736",
+      "793f491f-a352-4478-876d-7c5d871488f7"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-09"
   },
-  "synced": "f5ac687324aca98f",
+  "synced": "c9ee5599dce44cfc",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

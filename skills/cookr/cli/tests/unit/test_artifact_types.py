@@ -34,6 +34,10 @@ def test_common_fields_match_the_conventions_table():
     assert list(COMMON_FIELDS) == required
 
 
+def _schema() -> dict:
+    return json.loads((REPO_ROOT / "references" / "artifact.schema.json").read_text())
+
+
 @pytest.mark.parametrize("folder", FOLDERS, ids=lambda p: p.name)
 def test_samples_conform(folder):
     assert validate(load_folder(folder)) == []
@@ -46,8 +50,7 @@ def test_samples_cover_every_type():
 @pytest.mark.parametrize("folder", FOLDERS, ids=lambda p: p.name)
 def test_samples_match_the_json_schema(folder):
     jsonschema = pytest.importorskip("jsonschema")
-    schema = json.loads((REPO_ROOT / "references" / "artifact.schema.json").read_text())
-    jsonschema.validate(json.loads((folder / "artifact.json").read_text()), schema)
+    jsonschema.validate(json.loads((folder / "artifact.json").read_text()), _schema())
 
 
 def _sample(name: str):

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "14c5afdc-9c2d-444f-bffb-7514ca889481",
     "title": "Explaining a Project",
-    "domain": "agenticdevelopercookbook://guidelines/storytelling/explanation",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,7 +20,7 @@
       "explanation"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis"
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487"
     ],
     "triggers": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -29,7 +28,7 @@
     "depends-on": [],
     "references": []
   },
-  "synced": "d2607e506f07b76d",
+  "synced": "bb2af690801e9f6f",
   "parts": [
     {"part": "intro"},
     {"part": "architecture", "heading": "Architecture"},

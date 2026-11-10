@@ -42,7 +42,7 @@ Code built with the Agentic Developer Cookbook is **trusted**. That means:
 
 ## What's in the Cookbook
 
-The cookbook contains four types of **cookbook artifacts** — standalone markdown files with YAML frontmatter, named requirements, and change history. Each is stored as a source folder (`<name>/artifact.json` plus one file per section), and the `<name>.md` beside it is compiled from that folder by `cookr compile`:
+The cookbook contains four types of **cookbook artifacts** — standalone markdown files with YAML frontmatter, named requirements, and change history. Each is stored as a source folder (`<name>/artifact.json` plus one file per section), the only committed form; `cookr compile` builds a doc or skill from it. Each artifact's identity is its UUID, and `cookbook/index.json` maps it to a readable rdid (`adc.principle.simplicity`) and its folder; links between artifacts store the UUID:
 
 ### Principles (44 files)
 
@@ -50,16 +50,16 @@ The cookbook contains four types of **cookbook artifacts** — standalone markdo
 
 Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition over Inheritance, Separation of Concerns, SRP, Connascence, Conway's Law, Design for Deletion, DRY, Explicit over Implicit, Make Illegal States Unrepresentable, Errors as Values, Small Reversible Decisions, Tight Feedback Loops, Manage Complexity Through Boundaries, Least Astonishment, Idempotency, Native Controls, Open Source Preference, Make It Work/Right/Fast, Steel Thread First, Deliberate Prudent Technical Debt, Optimize for Change, Type Precedes Method, Domain-Stratified Trust, Independence Before Corroboration, Provenance at Generation Time, Cite the Claim Not the Document, Suppress Unsupported Confidence; and for ideation, Frame Before You Generate, Diverge Before You Converge, Defer Judgment and Go for Quantity, Human-First Ideation, Keep the Human at the Wheel, Break Fixation Deliberately, Bridge Distant Domains, Constraints as Creative Fuel, Counteract Homogenization with Diversity, Critique Without Killing, Document the Process Not a Conclusion.
 
-### Guidelines (258 unique, 351 with use-case duplicates)
+### Guidelines (275 unique, 381 with use-case duplicates)
 
-*What rules apply when building.* Organized by **use case** — the phase of work where they apply, with [trigger-based filtering](cookbook/introduction/trigger-guide.md) for AI agents:
+*What rules apply when building.* Organized by **use case** — the phase of work where they apply, with [trigger-based filtering](guide/introduction/trigger-guide.md) for AI agents:
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
 | Planning | 63 | Architecture, data modeling, choosing patterns |
-| Implementing | 166 | Writing new code |
+| Implementing | 182 | Writing new code |
 | Testing | 24 | Writing and structuring tests |
-| Reviewing | 50 | Checking code quality, security, accessibility |
+| Reviewing | 64 | Checking code quality, security, accessibility |
 | Shipping | 17 | Pre-commit, pre-PR, packaging |
 | Cookbook | 16 | Writing cookbook content (recipes, skills, agents) |
 | Researching | 5 | Gathering, verifying, and recording trustworthy research |
@@ -108,7 +108,7 @@ my-app-cookbook/
     └── research/               # design research and evaluations
 ```
 
-See `cookbook/reference/cookbook.schema.json` for the JSON Schema. A complete example lives at `cookbook/reference/examples/my-document-editor-cookbook/`.
+See `references/cookbook.schema.json` for the manifest's JSON Schema (format 2: every manifest carries `format`, `id` and `rdid`), `references/index.schema.json` for `index.json`, `references/artifact.schema.json` for an artifact's `artifact.json`, and `references/cookr-config.schema.json` for a repo's `.cookr.json`. A complete example lives at `references/examples/my-document-editor-cookbook/`.
 
 ## Sibling Projects
 
@@ -140,7 +140,7 @@ The cookbook's public-facing website (React 19, TypeScript, Tailwind CSS 4) and 
 cookbook/                # cookbook content root
   introduction/          # getting started, conventions, glossary
   principles/            # 44 engineering principles
-  guidelines/            # 258 use-case-organized guidelines
+  guidelines/            # 275 use-case-organized guidelines (381 with duplicates)
   ingredients/           # atomic component specs (building blocks)
   recipes/               # compositions of ingredients into features
   compliance/            # 10 compliance categories (81 checks)

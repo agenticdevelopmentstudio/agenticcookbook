@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "25A3B827-1DA9-4600-98EC-F5C492A162E3",
+    "id": "25a3b827-1da9-4600-98ec-f5c492a162e3",
     "title": "Schema evolution and migrations",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/schema-evolution",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://sqlite.org/lang_altertable.html",
@@ -41,7 +40,7 @@
       "schema-design"
     ]
   },
-  "synced": "0e09cfd28c1e4085",
+  "synced": "1847ef5e2b7d279f",
   "parts": [
     {"part": "intro"},
     {"part": "track-schema-version-with-pragma-user-version", "heading": "Track schema version with PRAGMA user_version"},

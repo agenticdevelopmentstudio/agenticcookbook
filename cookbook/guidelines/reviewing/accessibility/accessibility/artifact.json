@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "162923d4-05f2-4f3a-9770-d5e656e8c7fe",
     "title": "Accessibility from day one",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/accessibility/accessibility",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -41,7 +40,7 @@
       "pre-pr"
     ]
   },
-  "synced": "16aa89a8b72033f9",
+  "synced": "1cd3c44bbe405a0c",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

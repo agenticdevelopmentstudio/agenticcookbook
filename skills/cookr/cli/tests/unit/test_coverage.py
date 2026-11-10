@@ -1,39 +1,17 @@
 from __future__ import annotations
 
 import dataclasses
-import json
 
-from cookr.core.config import load_config
 from cookr.core.coverage import CoverageRow, claim_problems, collision, compute
+from cookr.core.index import Conformance, Implementation
 from cookr.core.inventory import Component
 from cookr.core.recipes import load_corpus
 
-
-def _cfg(repo):
-    return load_config(repo / "cookbook")
+from .cookbook_helpers import add_root as _add_root, add_spec, config as _cfg, remove_spec
 
 
 def _report(repo, tier=None):
     return compute(_cfg(repo), tier=tier)
-
-
-def _manifest(repo):
-    p = repo / "cookbook" / "cookbook.json"
-    return p, json.loads(p.read_text(encoding="utf-8"))
-
-
-def _write(p, data):
-    p.write_text(json.dumps(data), encoding="utf-8")
-
-
-def _add_root(repo, path, platform, recipes, files):
-    d = repo / path
-    d.mkdir(parents=True, exist_ok=True)
-    for f in files:
-        (d / f).write_text("export {}\n", encoding="utf-8")
-    p, data = _manifest(repo)
-    data["code"]["roots"].append({"path": path, "platform": platform, "recipes": recipes})
-    _write(p, data)
 
 
 # --- rows: one per claimed/unclaimed component name ---------------------------
@@ -65,7 +43,7 @@ def test_partial_rows_carry_completeness_and_claim_problems(mini_repo):
 
 
 def test_missing_when_no_spec_claims_a_name(mini_repo):
-    (mini_repo / "cookbook" / "components" / "chat-composer.md").unlink()
+    remove_spec(mini_repo, "components/chat-composer")
     by = {r.name: r for r in _report(mini_repo).rows}
     assert by["components/chat-composer"].state == "missing"
     assert by["components/chat-composer"].paths == ("web/components/chat-composer.tsx",)
@@ -119,7 +97,7 @@ def test_below(mini_repo):
 
 
 def test_below_missing_after_deleting_a_spec(mini_repo):
-    (mini_repo / "cookbook" / "components" / "chat-composer.md").unlink()
+    remove_spec(mini_repo, "components/chat-composer")
     report = _report(mini_repo)
     assert [r.name for r in report.below("partial")] == ["components/chat-composer"]
 
@@ -137,7 +115,7 @@ def test_collision_names_the_colliding_root_paths(mini_repo):
     ]
     assert collision(items, cfg) == (
         "name collision across roots (web in web/blocks, web/components): write a spec for one "
-        "side under another name and claim its file in `## Reference Implementations`"
+        "side under another name and claim its file with `cookr implements`"
     )
 
 
@@ -171,12 +149,7 @@ def test_two_unclaimed_roots_landing_on_one_name_is_a_collision(mini_repo):
 def test_collision_survives_even_when_the_name_has_a_matched_spec(mini_repo):
     _add_root(mini_repo, "web/settings-a", "web", "settings", ["Card.tsx"])
     _add_root(mini_repo, "web/settings-b", "web", "settings", ["Card.tsx"])
-    (mini_repo / "cookbook" / "settings").mkdir()
-    (mini_repo / "cookbook" / "settings" / "card.md").write_text(
-        "---\ntype: ingredient\nstatus: accepted\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n",
-        encoding="utf-8",
-    )
+    add_spec(mini_repo, "settings/card", status="accepted")
     by = {r.name: r for r in _report(mini_repo).rows}
     row = by["settings/card"]
     assert row.state == "partial"
@@ -186,58 +159,42 @@ def test_collision_survives_even_when_the_name_has_a_matched_spec(mini_repo):
 def test_claiming_one_side_removes_it_from_the_collision(mini_repo):
     _add_root(mini_repo, "web/settings-a", "web", "settings", ["Card.tsx"])
     _add_root(mini_repo, "web/settings-b", "web", "settings", ["Card.tsx"])
-    (mini_repo / "cookbook" / "settings").mkdir()
-    (mini_repo / "cookbook" / "settings" / "card.md").write_text(
-        "---\ntype: ingredient\nstatus: accepted\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n"
-        "| web | `web/settings-a/Card.tsx` |\n",
-        encoding="utf-8",
-    )
+    add_spec(mini_repo, "settings/card", status="accepted",
+             impls=[("web", "web/settings-a/Card.tsx")])
     by = {r.name: r for r in _report(mini_repo).rows}
     row = by["settings/card"]
     # only one unclaimed root remains ("settings-b"); no collision.
     assert not any(p.startswith("name collision") for p in row.problems)
 
 
-# --- claim_problems: what a spec's Reference Implementations gets wrong -------
+# --- claim_problems: what a spec's index implementations get wrong ------------
 
 
 def test_unclaimed_source_under_a_named_spec_is_a_claim_problem(mini_repo):
     (mini_repo / "web" / "components" / "NewThing.tsx").write_text("export {}\n", encoding="utf-8")
-    (mini_repo / "cookbook" / "components" / "new-thing.md").write_text(
-        "---\ntype: ingredient\nstatus: draft\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n",
-        encoding="utf-8",
-    )
+    add_spec(mini_repo, "components/new-thing")
     by = {r.name: r for r in _report(mini_repo).rows}
     row = by["components/new-thing"]
     assert row.state == "partial"
-    assert "Reference Implementations does not list `web/components/NewThing.tsx` (web)" in row.problems
+    assert "no implementation lists `web/components/NewThing.tsx` (web)" in row.problems
 
 
 def test_two_specs_claiming_one_path_are_each_told_about_the_other(mini_repo):
-    (mini_repo / "cookbook" / "components" / "button-twin.md").write_text(
-        "---\ntype: ingredient\nstatus: draft\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n"
-        "| web | `web/components/Button.tsx` |\n",
-        encoding="utf-8",
-    )
+    add_spec(mini_repo, "components/button-twin", impls=[("web", "web/components/Button.tsx")])
     by = {r.name: r for r in _report(mini_repo).rows}
     assert "`web/components/Button.tsx` is also claimed by components/button-twin" in by["components/button"].problems
     assert "`web/components/Button.tsx` is also claimed by components/button" in by["components/button-twin"].problems
 
 
 def test_claim_problems_flags_an_unknown_platform(mini_repo):
-    # RecipeInfo.implementations is a property parsed live from `body`, so
-    # replacing `body` is enough to exercise a bad-platform Reference
-    # Implementations row without touching any file on disk.
+    # RecipeInfo carries the index's implementation rows, so replacing them
+    # exercises a bad platform without touching any file on disk.
     cfg = _cfg(mini_repo)
     corpus = load_corpus(cfg.cookbook_dir)
     info = corpus["components/button"]
     bad_info = dataclasses.replace(
-        info, body=info.body.replace(
-            "| apple | `apple/UI/` |", "| apple | `apple/UI/` |\n| playstation | `apple/UI/` |"
-        ),
+        info, implementations=info.implementations + (
+            Implementation("playstation", "apple/UI/", Conformance("unverified")),),
     )
     probs = claim_problems(bad_info, [], cfg, {})
     assert any("platform `playstation` is not one of" in p for p in probs)
@@ -248,21 +205,23 @@ def test_claim_problems_flags_a_missing_path(mini_repo):
     corpus = load_corpus(cfg.cookbook_dir)
     info = corpus["components/chat-composer"]
     bad_info = dataclasses.replace(
-        info, body=info.body.replace(
-            "web/components/chat-composer.tsx", "web/components/does-not-exist.tsx",
-        ),
+        info, implementations=(
+            Implementation("web", "web/components/does-not-exist.tsx", Conformance("unverified")),),
     )
     probs = claim_problems(bad_info, [], cfg, {})
     assert any("does not exist" in p for p in probs)
 
 
-# --- domain checks feed into completeness, not a separate check ---------------
+# --- citations feed into completeness, not a separate check -------------------
 
 
-def test_a_wrong_domain_scheme_keeps_the_row_partial(mini_repo):
-    path = mini_repo / "cookbook" / "components" / "button.md"
-    path.write_text(path.read_text().replace("mini-repo://", "agenticdevelopercookbook://"), encoding="utf-8")
+def test_a_citation_naming_no_check_keeps_the_row_partial(mini_repo):
+    path = mini_repo / "cookbook" / "components" / "button" / "compliance.md"
+    own = "d8069120-7274-4094-bfb9-6d03d97e8d55"
+    path.write_text(path.read_text() + (
+        f"\n[mini-repo.check.best-practices.nope](cookbook:{own}/"
+        "00000000-0000-4000-8000-000000000000)\n"), encoding="utf-8")
     by = {r.name: r for r in _report(mini_repo).rows}
     row = by["components/button"]
     assert row.state == "partial"
-    assert any("frontmatter `domain`" in p for p in row.problems)
+    assert any("mini-repo.check.best-practices.nope" in p for p in row.problems)

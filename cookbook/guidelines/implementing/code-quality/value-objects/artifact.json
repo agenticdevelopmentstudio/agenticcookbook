@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3a6baa24-9bd3-45f8-aa6a-b32c61169ed3",
     "title": "Value objects over primitive obsession",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/value-objects",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/parse-dont-validate",
-      "agenticdevelopercookbook://principles/immutability-by-default",
-      "agenticdevelopercookbook://guidelines/implementing/security/input-validation"
+      "2a22b563-afb5-4615-96ae-338eafd5eb81",
+      "a7ce3621-2fed-478f-8767-b186014c5923",
+      "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419"
     ],
     "references": [
       "https://blog.ploeh.dk/2011/05/25/DesignSmellPrimitiveObsession/",
@@ -38,7 +37,7 @@
       "new-module"
     ]
   },
-  "synced": "a8f98db1898ceb13",
+  "synced": "568f3c9025a5cd9f",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-introduce-one", "heading": "When to introduce one"},

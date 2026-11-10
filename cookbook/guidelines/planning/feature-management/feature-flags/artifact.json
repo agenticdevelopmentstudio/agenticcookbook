@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "588b5eae-b70e-4302-a52f-9287265ad03c",
     "title": "Feature flags",
-    "domain": "agenticdevelopercookbook://guidelines/planning/feature-management/feature-flags",
     "type": "guideline",
     "version": "1.1.2",
     "status": "accepted",
@@ -35,7 +34,7 @@
     ]
   },
   "twin_differs": "Covers the architecture decisions and what to gate, not the implementing guideline's per-platform code.",
-  "synced": "5e63dd4b9a128ff9",
+  "synced": "82f6c9eabbe3e343",
   "parts": [
     {"part": "intro"},
     {"part": "architecture-decisions", "heading": "Architecture decisions"},

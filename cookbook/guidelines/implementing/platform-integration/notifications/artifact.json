@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "94e8caba-da27-4bb8-8f8e-38730b8b34e0",
     "title": "Notifications",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/notifications",
     "type": "guideline",
     "version": "2.0.3",
     "status": "accepted",
@@ -26,10 +25,10 @@
       "platform"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/support-automation"
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking"
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -39,7 +38,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "2509cf4d0fc595cf",
+  "synced": "2c94e3663f7d96d4",
   "parts": [
     {"part": "intro"},
     {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},

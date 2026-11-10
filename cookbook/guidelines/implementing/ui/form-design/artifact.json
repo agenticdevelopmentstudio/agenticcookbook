@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "fdec6403-395b-4b98-b97d-b42e15cb77a6",
     "title": "Form Design",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/form-design",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "input-handling"
     ]
   },
-  "synced": "0ffaffc77bba0cff",
+  "synced": "387846c6f43f8c57",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

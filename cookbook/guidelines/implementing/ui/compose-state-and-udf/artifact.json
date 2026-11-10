@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "736fac9a-56e0-449d-8dc0-b95cbfba7884",
     "title": "Jetpack Compose: state hoisting and unidirectional data flow",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,9 +23,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/separation-of-concerns",
-      "agenticdevelopercookbook://principles/immutability-by-default",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "a7ce3621-2fed-478f-8767-b186014c5923",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://developer.android.com/develop/ui/compose/architecture"
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "7c5a9a858b212bdb",
+  "synced": "fc647a6026eccbdc",
   "parts": [
     {"part": "intro"},
     {"part": "hoist-state", "heading": "Hoist state"},

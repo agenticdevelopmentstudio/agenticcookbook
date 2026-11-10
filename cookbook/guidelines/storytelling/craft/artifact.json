@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "21e9045a-1881-42bd-92d1-57a006638626",
     "title": "Narrative Craft",
-    "domain": "agenticdevelopercookbook://guidelines/storytelling/craft",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,7 +20,7 @@
       "craft"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis"
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487"
     ],
     "triggers": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -29,7 +28,7 @@
     "depends-on": [],
     "references": []
   },
-  "synced": "1359e677aab0b00b",
+  "synced": "efc3f073b7d4f626",
   "parts": [
     {"part": "intro"},
     {"part": "voice", "heading": "Voice"},

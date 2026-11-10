@@ -1,7 +1,6 @@
 ---
 id: a41c2b8e-74d4-415c-9727-f58dc703a7b2
 title: Terminal Progress & Status Line Research
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/terminal-progress-and-status-line
 type: reference
 version: 1.0.0
 status: draft

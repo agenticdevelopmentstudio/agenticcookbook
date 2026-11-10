@@ -1,0 +1,6 @@
+
+- **SwiftUI (macOS)**: Compose the Project Split Layout with the panel ingredients inside one `HSplitView`/`VSplitView`. Frame persistence via `.background(WindowAccessor(name: sha256Hash(projectPath), onClose: { terminateAll(); stopWatching() }))`. Call `loadInitial` and `startWatching` from `onAppear`, and open the terminal if the auto-open setting is on. Supply the folder header and status bar overlay inside the file tree column. Use `@ObservedObject` or `@EnvironmentObject` for `ProjectSettings` bindings.
+- **SwiftUI (visionOS)**: Same composition. The window opens as a standard visionOS window; frame persistence is not applicable and pane proportions are controlled through ProjectSettings only.
+- **Compose**: Compose the layout from the panel composables in a `Row`/`Column` split. Key the window state and frame persistence by a hash of the project path. Start the file watcher in a `LaunchedEffect` and stop it (and terminate sessions) in `DisposableEffect`'s `onDispose`.
+- **React/Web**: Compose the panels in a resizable-panels layout; key persisted layout state in `localStorage` by a hash of the project path. Start file watching on mount and terminate sessions and stop watching on unmount or `beforeunload`.
+

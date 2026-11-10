@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "aa81d10d-38d1-40d4-8be4-212b043e6410",
     "title": "Claude Rule Optimization Pipeline",
-    "domain": "agenticdevelopercookbook://recipes/developer-tools/claude/claude-rule-optimization-pipeline",
     "type": "recipe",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-30",
-    "modified": "2026-10-04",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,14 +26,14 @@
       "pipeline"
     ],
     "ingredients": [
-      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-audit",
-      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-optimizer",
-      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-validation-report"
+      "d75d4274-c37b-426a-97f7-69f01e266cc5",
+      "2307a9fe-7721-4c13-bbeb-5320f3ea775d",
+      "5676e038-c4f2-49b5-a8ab-ec3e54e83afb"
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/developer-tools/claude/yolo-mode",
-      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline"
+      "92daec8c-4388-4a34-bc0c-d3ce0ab8c724",
+      "c3f7a9e2-1b5d-4c8e-a2d6-9e4f1c3b7a5d"
     ],
     "references": [
       "https://code.claude.com/docs/en/best-practices"
@@ -43,7 +42,7 @@
     "approved-date": "2026-10-04"
   },
   "names_hosts": "Specifies a pipeline that optimizes Claude Code rule files: the host is the subject.",
-  "synced": "4a27d51dd429a8f1",
+  "synced": "88c491e98595f751",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ec59e5cc-5591-4c0b-87f8-00df54394607",
     "title": "Connascence",
-    "domain": "agenticdevelopercookbook://principles/connascence",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -21,9 +20,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/separation-of-concerns",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://en.wikipedia.org/wiki/Connascence",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-10"
   },
-  "synced": "b8963f15b5f79dba",
+  "synced": "28fde5bd3bcdb270",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

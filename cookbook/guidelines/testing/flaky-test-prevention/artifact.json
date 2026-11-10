@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "05d00147-5c49-42d8-bdbd-cf8fd7dc2379",
     "title": "Flaky Test Prevention",
-    "domain": "agenticdevelopercookbook://guidelines/testing/flaky-test-prevention",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "pre-pr"
     ]
   },
-  "synced": "d5a9f27bd5556648",
+  "synced": "722bfccf36741392",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

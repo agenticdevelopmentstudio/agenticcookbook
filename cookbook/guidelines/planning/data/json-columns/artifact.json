@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9a60a717-a031-4c1f-bf00-d531ca211252",
     "title": "JSON columns and generated columns",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/json-columns",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb"
     ],
     "references": [
       "https://sqlite.org/json1.html",
@@ -41,7 +40,7 @@
       "schema-design"
     ]
   },
-  "synced": "c199e03952bec4ad",
+  "synced": "ab8d484bb76ecc5e",
   "parts": [
     {"part": "intro"},
     {"part": "json-storage", "heading": "JSON storage"},

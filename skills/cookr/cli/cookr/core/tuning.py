@@ -42,8 +42,10 @@ from typing import Iterable, Optional
 
 import yaml
 
+from . import markdown
 from .hosts import Host, host_of
-from .markdown import HOSTS_DIR
+
+HOSTS_DIR = markdown.HOSTS_DIR  # re-exported: callers name it tuning.HOSTS_DIR
 
 KINDS = (".yaml", ".md")
 MARK = ".add"

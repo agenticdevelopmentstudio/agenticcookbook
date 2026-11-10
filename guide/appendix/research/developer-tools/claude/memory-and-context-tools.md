@@ -1,7 +1,6 @@
 ---
 id: 79c1a102-a359-4371-a138-9133601a70f1
 title: Memory and Context Tools for Claude Code
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/memory-and-context-tools
 type: reference
 version: 1.0.0
 status: draft

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "607B9F71-39DD-4B10-80FD-D8FD115CCE5F",
+    "id": "607b9f71-39dd-4b10-80fd-d8fd115cce5f",
     "title": "Database backup and recovery",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/backup-and-recovery",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -28,7 +27,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://sqlite.org/backup.html",
@@ -44,7 +43,7 @@
       "configuration"
     ]
   },
-  "synced": "621d06ede25f375b",
+  "synced": "9122c636a324c889",
   "parts": [
     {"part": "intro"},
     {"part": "backup-methods", "heading": "Backup methods"},

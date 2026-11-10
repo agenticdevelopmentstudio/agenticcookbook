@@ -1,7 +1,6 @@
 ---
 id: b82b575f-673a-4d48-affb-71334d82ee47
 title: CLI & Terminal Application Development Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/cli/cli-development-tools
 type: reference
 version: 1.0.0
 status: draft

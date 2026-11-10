@@ -1,7 +1,6 @@
 ---
 id: 7f72dfc4-21aa-458d-8b3f-590b735cfc4f
 title: "Branching Strategy"
-domain: agenticdevelopercookbook://workflows/branching-strategy
 type: workflow
 version: 1.0.1
 status: accepted
@@ -17,7 +16,7 @@ tags:
   - branching-strategy
 depends-on: []
 related: 
-  - agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits
+  - 8075b95b-2678-4893-9a5a-eb77aa9232aa
 references: []
 ---
 
@@ -142,9 +141,9 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 
 | Phase | Checklist Items | Notes |
 |-------|----------------|-------|
-| Phase 2 | agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits (atomic commits) | Every commit is one logical change |
+| Phase 2 | [adc.guideline.implementing.code-quality.atomic-commits](cookbook:8075b95b-2678-4893-9a5a-eb77aa9232aa) (atomic commits) | Every commit is one logical change |
 | Phase 3 | All opted-in items from WF-2 | Review verifies compliance |
-| Phase 4 | agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits (atomic commits) | Squash merge produces one clean commit on main |
+| Phase 4 | [adc.guideline.implementing.code-quality.atomic-commits](cookbook:8075b95b-2678-4893-9a5a-eb77aa9232aa) (atomic commits) | Squash merge produces one clean commit on main |
 
 ## Conformance Test Vectors
 

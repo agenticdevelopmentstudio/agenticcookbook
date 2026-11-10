@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "A899AEAE-D561-4FCD-ABD7-DF109FE2362C",
+    "id": "a899aeae-d561-4fcd-abd7-df109fe2362c",
     "title": "Sync Schema Design",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/sync-schema-design",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -28,9 +27,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/conflict-resolution.md",
-      "guidelines/data/sync-protocol.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "822a0912-fda7-461f-85ab-f9c2c55f0039",
+      "3b88bb39-a15d-488f-a967-b7fa2dba2be7"
     ],
     "references": [
       "https://sqlite.org/datatype3.html",
@@ -43,7 +42,7 @@
       "schema-design"
     ]
   },
-  "synced": "f33b9e882606e654",
+  "synced": "a5322a68790a6a0f",
   "parts": [
     {"part": "intro"},
     {"part": "primary-keys-always-uuid", "heading": "Primary Keys: Always UUID"},

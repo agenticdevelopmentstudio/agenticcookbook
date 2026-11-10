@@ -1,7 +1,6 @@
 ---
 id: 8dcd503b-269e-4c94-886b-1ca32dcf46bd
 title: Document Window
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/app/document-window/document-window
 type: reference
 version: 1.0.0
 status: draft

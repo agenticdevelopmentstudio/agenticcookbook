@@ -1,7 +1,6 @@
 ---
 id: a9b0edec-ac60-4bcf-84d7-428d114a7b30
 title: My Document Editor — App
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/app/app
 type: reference
 version: 1.0.0
 status: draft

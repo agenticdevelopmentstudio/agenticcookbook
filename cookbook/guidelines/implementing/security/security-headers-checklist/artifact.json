@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "12d6b9fe-d1a0-4b9f-b772-41d9b4aa0b8a",
     "title": "Security Headers Checklist",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/security-headers-checklist",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -31,7 +30,7 @@
       "pre-pr"
     ]
   },
-  "synced": "455a33aaaa479c3b",
+  "synced": "0ef78b7836736dc0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

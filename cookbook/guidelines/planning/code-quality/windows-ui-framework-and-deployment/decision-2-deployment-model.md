@@ -12,5 +12,5 @@ The deployment model determines whether the app has **package identity**, which 
 - New apps **SHOULD** default to **packaged MSIX** unless a deployment constraint rules it out.
 - Existing apps that must keep their installer **SHOULD** use **packaged with external location** to gain identity without replacing the installer.
 - Unpackaged apps **MUST** install the Windows App SDK runtime (or ship self-contained) and call `Bootstrap.Initialize()` at startup; set `<WindowsPackageType>None</WindowsPackageType>` in the project. Packaged apps **MUST NOT** set that property.
-- The chosen model **MUST** be recorded in the project's planning notes (per `agenticdevelopercookbook://principles/explicit-over-implicit`) so the identity assumption is visible to every later decision.
+- The chosen model **MUST** be recorded in the project's planning notes (per [adc.principle.explicit-over-implicit](cookbook:e114c41c-d203-454c-bc7c-cc128f6ebadd)) so the identity assumption is visible to every later decision.
 

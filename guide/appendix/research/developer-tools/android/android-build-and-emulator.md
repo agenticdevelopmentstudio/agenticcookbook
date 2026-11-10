@@ -1,7 +1,6 @@
 ---
 id: 73b767b7-e870-45a9-b7ac-be09164db033
 title: Android Build & Emulator Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/android/android-build-and-emulator
 type: reference
 version: 1.0.0
 status: draft

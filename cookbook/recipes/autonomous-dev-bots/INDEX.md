@@ -1,7 +1,6 @@
 ---
 id: b8e2c4a1-7f3d-4e9b-a6c8-2d1e5f4b3a7c
 title: "Autonomous Dev Bots"
-domain: agenticdevelopercookbook://recipes/autonomous-dev-bots/INDEX
 type: reference
 version: 1.0.0
 status: accepted
@@ -20,7 +19,7 @@ tags:
   - review
 depends-on: []
 related:
-  - agenticdevelopercookbook://workflows/code-review
+  - tbd/workflows/code-review.md
 references: []
 ---
 
@@ -41,7 +40,7 @@ Recipes for long-running, event-driven agent processes that serve the developmen
 
 | Recipe | Status | Summary |
 |--------|--------|---------|
-| [PR Review Pipeline](pr-review-pipeline.md) | wip | Three-phase automated review of cookbook contributions |
+| [PR Review Pipeline](pr-review-pipeline/) | wip | Three-phase automated review of cookbook contributions |
 
 ## Change History
 

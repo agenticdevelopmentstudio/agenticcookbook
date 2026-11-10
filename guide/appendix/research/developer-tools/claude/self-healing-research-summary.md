@@ -1,7 +1,6 @@
 ---
 id: 9bf0d57b-0a3d-43fa-aa7e-33d7bdf24121
 title: Self-Healing in Agentic Coding Systems
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/self-healing-research-summary
 type: reference
 version: 1.0.0
 status: draft

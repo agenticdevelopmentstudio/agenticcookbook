@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "03DF8FFB-476C-49F5-B104-33AD3C52BBE4",
+    "id": "03df8ffb-476c-49f5-b104-33ad3c52bbe4",
     "title": "SQLite Helpers",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,14 +25,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/package-document",
-      "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage"
+      "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07",
+      "ad558f24-29fa-430f-9ebd-0ec42f1aa9d1"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "2e9c4ce311889b6a",
+  "synced": "e95024da8faaae78",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

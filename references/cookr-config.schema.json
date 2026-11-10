@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://agenticdevelopercookbook.com/schemas/cookr-config.schema.json",
+  "title": "cookr Repo Config",
+  "description": "Schema for .cookr.json (format 2), committed at a repo's root. Its presence opts the repo into cookr. It holds only what the cookbook does not: where the cookbook is, the cookbooks it links into, and the code roots every file of which must be covered by some artifact's implementations. A cookbook with no code of its own, like this repo's, needs none.",
+  "type": "object",
+  "required": [
+    "format"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": 2
+    },
+    "cookbook": {
+      "type": "string",
+      "minLength": 1,
+      "default": "cookbook",
+      "description": "The cookbook directory, relative to the repo root"
+    },
+    "dependencies": {
+      "type": "object",
+      "description": "Cookbooks this one links into, keyed by cookbook UUID",
+      "propertyNames": {
+        "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "rdid"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "rdid": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "Cached readable name; cookr refreshes it"
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1,
+            "not": {"pattern": "^[/~]"},
+            "description": "Repo-relative path to the dependency's cookbook directory (a submodule, normally, or a sibling checkout such as ../other/cookbook), or a URL, which is never read. An absolute path is refused: a path on one machine belongs in ~/.cookr/locations.json. Absent: look it up in ~/.cookr/locations.json"
+          }
+        }
+      }
+    },
+    "roots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "platform"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Source directory, relative to the repo root"
+          },
+          "platform": {
+            "enum": [
+              "macos",
+              "ios",
+              "apple",
+              "web",
+              "android",
+              "windows",
+              "linux",
+              "python"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "ui",
+              "logic"
+            ],
+            "default": "ui"
+          },
+          "group": {
+            "type": "string",
+            "description": "The cookbook folder this root's recipes belong in"
+          },
+          "ignore": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Globs excluded from this root's coverage"
+          }
+        }
+      }
+    },
+    "ignore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Root-relative or repo-relative globs excluded from coverage"
+    }
+  }
+}

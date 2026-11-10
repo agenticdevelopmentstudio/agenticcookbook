@@ -3,6 +3,8 @@ import pytest
 from cookr.cli import main
 from cookr.core.frontmatter import parse
 
+from .cookbook_helpers import add_doc
+
 
 # Every tmp_path here is a git repo, as a real cookbook checkout is.
 pytestmark = pytest.mark.usefixtures("git_tmp_path")
@@ -10,11 +12,10 @@ pytestmark = pytest.mark.usefixtures("git_tmp_path")
 
 def test_update_fills_a_converted_artifact_in_its_folder(tmp_path, monkeypatch, patch_refs):
     monkeypatch.chdir(tmp_path)
-    assert main(["create"]) == 0
+    assert main(["create", "--rdid", "testbook"]) == 0
     cb = tmp_path / "cookbook"
-    (cb / "recipes" / "alpha.md").write_text(
-        "---\ntitle: Alpha\ntype: recipe\n---\n# Alpha\n\n## Change History\n\nx\n", encoding="utf-8")
-    assert main(["convert", str(cb / "recipes" / "alpha.md")]) == 0
+    add_doc(tmp_path, "recipes/alpha", "# Alpha\n\n## Change History\n\nx\n", title="Alpha",
+            author="")
     assert main(["update", "-p", str(cb), "--author", "Tester"]) == 0
     folder = cb / "recipes" / "alpha"
     assert '"author": "Tester"' in (folder / "artifact.json").read_text()
@@ -26,8 +27,9 @@ def test_update_fills_a_converted_artifact_in_its_folder(tmp_path, monkeypatch, 
 
 def test_update_fills_frontmatter_and_regenerates_index(tmp_path, monkeypatch, patch_refs):
     monkeypatch.chdir(tmp_path)
-    assert main(["create"]) == 0
+    assert main(["create", "--rdid", "testbook"]) == 0
     cb = tmp_path / "cookbook"
+    (cb / "recipes").mkdir()
     (cb / "recipes" / "alpha.md").write_text("# Alpha Recipe\n", encoding="utf-8")
     (cb / "recipes" / "beta.md").write_text(
         "---\ntitle: Already Set\nid: 11111111-2222-3333-4444-555555555555\n---\n# Beta\n",

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "D75D4274-C37B-426A-97F7-69F01E266CC5",
+    "id": "d75d4274-c37b-426a-97f7-69f01e266cc5",
     "title": "Rule Audit",
-    "domain": "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-audit",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,8 +26,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/developer-tools/claude/claude-rule-optimization-pipeline",
-      "agenticdevelopercookbook://ingredients/developer-tools/claude/rule-optimizer"
+      "aa81d10d-38d1-40d4-8be4-212b043e6410",
+      "2307a9fe-7721-4c13-bbeb-5320f3ea775d"
     ],
     "references": [
       "https://code.claude.com/docs/en/best-practices"
@@ -36,63 +35,22 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "6c3d46ce6d998388",
+  "names_hosts": "Specifies a stage that audits Claude Code rule files: the host is the subject.",
+  "synced": "81a3c0634c42f25b",
   "parts": [
-    {
-      "part": "intro"
-    },
-    {
-      "part": "overview",
-      "heading": "Overview"
-    },
-    {
-      "part": "behavioral-requirements",
-      "heading": "Behavioral Requirements"
-    },
-    {
-      "part": "appearance",
-      "heading": "Appearance"
-    },
-    {
-      "part": "states",
-      "heading": "States"
-    },
-    {
-      "part": "accessibility",
-      "heading": "Accessibility"
-    },
-    {
-      "part": "conformance-test-vectors",
-      "heading": "Conformance Test Vectors"
-    },
-    {
-      "part": "edge-cases",
-      "heading": "Edge Cases"
-    },
-    {
-      "part": "configuration",
-      "heading": "Configuration"
-    },
-    {
-      "part": "logging",
-      "heading": "Logging"
-    },
-    {
-      "part": "platform-notes",
-      "heading": "Platform Notes"
-    },
-    {
-      "part": "design-decisions",
-      "heading": "Design Decisions"
-    },
-    {
-      "part": "compliance",
-      "heading": "Compliance"
-    },
-    {
-      "part": "history",
-      "heading": "Change History"
-    }
-  ],
-  "names_hosts": "Specifies a stage that audits Claude Code rule files: the host is the subject."
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
 }

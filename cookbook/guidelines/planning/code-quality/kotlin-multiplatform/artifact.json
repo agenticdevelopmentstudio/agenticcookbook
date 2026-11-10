@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3f442861-abec-4dfc-a2e2-a3761904d16d",
     "title": "Kotlin Multiplatform",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/kotlin-multiplatform",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b"
     ],
     "references": [
       "https://www.jetbrains.com/kotlin-multiplatform/"
@@ -35,7 +34,7 @@
       "new-module"
     ]
   },
-  "synced": "f94b8059decad93c",
+  "synced": "7b004468eace027a",
   "parts": [
     {"part": "intro"},
     {"part": "layering-and-the-share-boundary", "heading": "Layering and the share boundary"},

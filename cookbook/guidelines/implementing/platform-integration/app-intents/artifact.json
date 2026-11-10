@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e5768eed-0f7f-41d0-bcf7-5a4c18964032",
     "title": "App Intents",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/platform-integration/app-intents",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/shortcuts-and-automation",
-      "agenticdevelopercookbook://principles/support-automation"
+      "991e72d0-477b-4fd5-bdfa-08680efc0cf9",
+      "cf698150-45b0-4a20-881b-7d0f04208198"
     ],
     "references": [
       "https://developer.apple.com/documentation/appintents",
@@ -40,7 +39,7 @@
       "platform-integration"
     ]
   },
-  "synced": "431b3d5ee9817d77",
+  "synced": "4720a77faf6d43a2",
   "parts": [
     {"part": "intro"},
     {"part": "define-an-appintent", "heading": "Define an AppIntent"},

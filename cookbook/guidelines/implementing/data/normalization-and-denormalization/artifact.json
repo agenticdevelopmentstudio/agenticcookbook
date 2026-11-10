@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "C8B92187-7C2F-4D11-9AB3-EC806F3CDF26",
+    "id": "c8b92187-7c2f-4d11-9ab3-ec806f3cdf26",
     "title": "Normalization and denormalization",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/normalization-and-denormalization",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://sqleditor.online/blog/sqlite-schema-design-patterns",
@@ -41,7 +40,7 @@
       "schema-design"
     ]
   },
-  "synced": "ced14ebf2238c761",
+  "synced": "4abf60a3822e4297",
   "parts": [
     {"part": "intro"},
     {"part": "default-start-normalized-3nf", "heading": "Default: start normalized (3NF)"},

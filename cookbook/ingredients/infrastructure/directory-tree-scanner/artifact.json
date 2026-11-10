@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "13715EF0-3351-4477-8FA6-24541C65697A",
+    "id": "13715ef0-3351-4477-8fa6-24541c65697a",
     "title": "Directory Tree Scanner",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/directory-tree-scanner",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,14 +26,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/directory-sync",
-      "agenticdevelopercookbook://ingredients/infrastructure/directory-watch-coordinator"
+      "63659e2c-215a-44ed-b330-2bca8d88bd9a",
+      "01dc6100-4aa9-4b7b-9385-e056260b57b3"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "f20f201678c11987",
+  "synced": "c69efb207be92c59",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

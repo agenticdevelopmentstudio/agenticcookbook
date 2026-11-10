@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2fd49a5f-4be1-4b0d-b2e7-41cbcbab66ee",
     "title": "Choosing a Windows UI framework and deployment model",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/windows-ui-framework-and-deployment",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/small-reversible-decisions",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/windows/apps/get-started/"
@@ -38,7 +37,7 @@
       "configuration"
     ]
   },
-  "synced": "a6be79c3eccea8e9",
+  "synced": "b30eb5a27d07cd70",
   "parts": [
     {"part": "intro"},
     {"part": "decision-1-ui-framework", "heading": "Decision 1: UI framework"},

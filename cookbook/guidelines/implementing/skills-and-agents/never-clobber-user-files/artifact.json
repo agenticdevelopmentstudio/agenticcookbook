@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
     "title": "Never overwrite a user's files",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,16 +26,16 @@
       "namespacing"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/skill-structure-reference",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/agent-structure-reference",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/rule-structure-reference",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/never-clobber-user-files",
-      "agenticdevelopercookbook://principles/idempotency",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "fe0daac0-1ba7-4c93-a47e-e42e75612cf6",
+      "8b9def90-2153-45ba-9dcc-fa2aa3bf745e",
+      "b8aa57e0-6a85-4605-ae84-1220872294de",
+      "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
+      "cfa4b119-d10a-4c2a-b90d-f003717792a7",
+      "39c2d053-006f-42c9-9db4-d991c1688024",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -46,7 +45,7 @@
       "configuration"
     ]
   },
-  "synced": "9cc0a4c1045975e8",
+  "synced": "bd53d5fe6dcfde86",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules"},

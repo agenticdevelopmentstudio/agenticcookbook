@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e5af9ba5-f484-40c3-9738-470090f5241c",
     "title": "Properties of Good Tests",
-    "domain": "agenticdevelopercookbook://guidelines/testing/properties-of-good-tests",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "code-review"
     ]
   },
-  "synced": "109853c706b3563e",
+  "synced": "210d02bc4ae30ae0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

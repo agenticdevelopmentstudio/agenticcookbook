@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4e498351-481c-4444-9a2d-0075ecdfc261",
     "title": "Ecosystem Narration",
-    "domain": "agenticdevelopercookbook://guidelines/storytelling/ecosystem",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,7 +20,7 @@
       "ecosystem"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/storytelling/grounded-synthesis"
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487"
     ],
     "triggers": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -29,7 +28,7 @@
     "depends-on": [],
     "references": []
   },
-  "synced": "c13f63056eba60a6",
+  "synced": "7e4ded1de8f3cf93",
   "parts": [
     {"part": "intro"},
     {"part": "boundaries", "heading": "Boundaries"},

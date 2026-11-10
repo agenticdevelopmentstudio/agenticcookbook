@@ -1,7 +1,6 @@
 ---
 id: dadb5e63-df6f-42e2-8f58-d7265958d29a
 title: Claude Persona / Role Prompting — Research Notes
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/claude-persona-prompting
 type: reference
 version: 1.0.0
 status: draft

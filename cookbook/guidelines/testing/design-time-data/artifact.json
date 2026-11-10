@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "73b87332-8024-4a21-95ab-1e08f1cbd1a1",
     "title": "Design-Time Data",
-    "domain": "agenticdevelopercookbook://guidelines/testing/design-time-data",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "480f7fae206da0a3",
+  "synced": "6425c28ab8be1cb3",
   "parts": [
     {"part": "intro"},
     {"part": "what-to-verify", "heading": "What to verify"},

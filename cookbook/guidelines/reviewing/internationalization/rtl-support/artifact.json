@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b2d4fb89-4d75-41f6-a0bf-77738e256c87",
     "title": "RTL layout support",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/internationalization/rtl-support",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "024e2a95b707efc1",
+  "synced": "b2f525b467ea0ba4",
   "parts": [
     {"part": "intro"},
     {"part": "kotlin", "heading": "Kotlin"},

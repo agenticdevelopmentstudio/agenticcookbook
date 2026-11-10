@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d39543f4-e1b9-4054-afa2-2a3087742a4c",
     "title": "Windows ARM64 and Native AOT",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/windows-arm64-and-aot",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,7 +24,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/shipping/continuous-delivery"
+      "703b1ec7-b940-46a5-8974-441b04a0bb9d"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/windows/arm/overview"
@@ -37,7 +36,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "cc04e0d2df1b2d19",
+  "synced": "960bc7b62e73bff8",
   "parts": [
     {"part": "intro"},
     {"part": "ship-native-arm64", "heading": "Ship native ARM64"},

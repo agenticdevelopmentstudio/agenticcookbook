@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "918c4cec-0bc5-45bf-86d0-5a795053400f",
     "title": "Lifecycle Patterns",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/lifecycle-patterns",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "35747f94fb31b88d",
+  "synced": "47da7852b032739b",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

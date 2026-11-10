@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "17216748-46e9-4e92-af3a-f4deeb843a8d",
     "title": "Analytics",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/analytics",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "4b2a0602c4e85b82",
+  "synced": "185699d46ae49b73",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

@@ -43,27 +43,38 @@ def test_path_flag_before_or_after_the_module(mini_repo, tmp_path, monkeypatch, 
     assert "components/button" in capsys.readouterr().out
 
 
-def test_context_carries_config_ui_and_legacy(mini_repo, monkeypatch):
+def test_context_carries_config_and_ui(mini_repo, monkeypatch):
     # The repo root lives on config.repo_root alone (one derivation, not two).
     import dataclasses
     from cookr.cli import _context
     from cookr.context import CookrContext
     assert [f.name for f in dataclasses.fields(CookrContext)] == [
-        "config", "ui", "legacy", "config_error", "cookbook_root", "references_dir", "cwd"]
+        "config", "ui", "config_error", "cookbook_root", "references_dir", "cwd"]
     ctx = _context(mini_repo, ui=None)
     assert ctx.config.repo_root == mini_repo.resolve()
-    assert ctx.legacy is None and ctx.config_error is None
+    assert ctx.config_error is None
 
 
-def test_a_cookbook_json_with_no_code_block_stops_only_the_modules_that_need_it(tmp_path, monkeypatch,
-                                                                                capsys):
-    # A library cookbook need not map source code: compile runs; inventory
-    # says what is missing, instead of every module exiting 2.
+def test_a_library_cookbook_with_no_roots_inventories_nothing(tmp_path, monkeypatch, capsys):
+    # A library cookbook need not map source code: compile runs, and inventory
+    # finds no source files instead of failing.
+    from .cookbook_helpers import new_repo
+    new_repo(tmp_path)
+    (tmp_path / "cookbook" / "principles").mkdir()
+    monkeypatch.chdir(tmp_path)
+    assert main(["compile", "--check", "cookbook"]) == 0
+    capsys.readouterr()
+    assert main(["inventory"]) == 0
+    assert "0 source file(s)" in capsys.readouterr().out
+
+
+# Opts out of upgrade-on-contact: a format-1 cookbook.json must reach the module and be refused with exit 2 (ConfigError), which contact would otherwise pre-empt.
+@pytest.mark.usefixtures("legacy_no_upgrade")
+def test_a_format_1_cookbook_json_stops_the_modules_that_need_a_config(tmp_path, monkeypatch,
+                                                                       capsys):
     book = tmp_path / "cookbook"
     (book / "principles").mkdir(parents=True)
     (book / "cookbook.json").write_text('{"type": "cookbook", "name": "x"}')
     monkeypatch.chdir(tmp_path)
-    assert main(["compile", "--check", "cookbook"]) == 0
-    capsys.readouterr()
     assert main(["inventory"]) == 2
-    assert "code.roots" in capsys.readouterr().out
+    assert "format 2" in capsys.readouterr().out

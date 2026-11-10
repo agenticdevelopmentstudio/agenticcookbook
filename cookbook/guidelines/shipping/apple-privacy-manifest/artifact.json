@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6168eb9e-50be-4b84-940d-cb97f1e374d1",
     "title": "Ship a privacy manifest and declare required-reason APIs",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/apple-privacy-manifest",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -26,7 +25,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/security/privacy"
+      "29057cf0-a38b-4c35-8b8b-52e12bf54784"
     ],
     "references": [
       "https://developer.apple.com/documentation/bundleresources/privacy-manifest-files",
@@ -41,7 +40,7 @@
       "dependency-management"
     ]
   },
-  "synced": "347f3968aeb42a3b",
+  "synced": "0028667d304e551c",
   "parts": [
     {"part": "intro"},
     {"part": "what-the-manifest-is", "heading": "What the manifest is"},

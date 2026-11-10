@@ -1,7 +1,6 @@
 ---
 id: 844c1c91-4fbe-4a5b-a435-6282b5faf3db
 title: Claude Integration & Customization Guide
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/claude-integration-guide
 type: reference
 version: 1.0.0
 status: draft

@@ -42,13 +42,22 @@ def claude_p(prompt: str, timeout: int = 600) -> ShellResult:
 
 
 def git_changed_markdown(root: Path, since: str) -> list[Path]:
-    """Markdown files changed under `root` since `since` (a git ref).
+    """Markdown files changed under `root` since `since` (a git ref)."""
+    return git_changed_files(root, since, suffixes=(".md",))
 
-    Returns absolute paths to files that still exist on disk. Raises
-    CalledProcessError if the ref is unknown or `git` is not available.
+
+def git_changed_files(root: Path, since: str, suffixes: tuple = (),
+                      deleted: bool = False) -> list[Path]:
+    """Files changed under `root` since `since` (a git ref), limited to
+    `suffixes` when given.
+
+    Returns absolute paths to files that still exist on disk, plus the paths
+    of deleted files when `deleted` is set. Raises CalledProcessError if the
+    ref is unknown or `git` is not available.
     """
     out = subprocess.run(
-        ["git", "diff", "--name-only", "--diff-filter=AMR", f"{since}...HEAD"],
+        ["git", "diff", "--name-only", f"--diff-filter={'AMRD' if deleted else 'AMR'}",
+         f"{since}...HEAD"],
         capture_output=True,
         text=True,
         check=True,
@@ -65,13 +74,13 @@ def git_changed_markdown(root: Path, since: str) -> list[Path]:
     paths: list[Path] = []
     for line in out.stdout.splitlines():
         name = line.strip()
-        if not name.endswith(".md"):
+        if suffixes and not name.endswith(suffixes):
             continue
         abs_path = (repo_root / name).resolve()
         try:
             abs_path.relative_to(root.resolve())
         except ValueError:
             continue
-        if abs_path.is_file():
+        if abs_path.is_file() or (deleted and not abs_path.exists()):
             paths.append(abs_path)
     return paths

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "074124ee-4490-40e0-aedb-9af8fbc880b5",
     "title": "Sensitive Data",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/sensitive-data",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "logging"
     ]
   },
-  "synced": "66784bf6c11f1adf",
+  "synced": "a8424c486ad7fe59",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

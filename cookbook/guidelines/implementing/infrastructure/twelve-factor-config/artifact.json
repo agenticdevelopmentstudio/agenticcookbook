@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a127f652-728b-42f0-8d60-1017fccabdf3",
     "title": "Twelve-factor configuration",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/twelve-factor-config",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/infrastructure/infrastructure-as-code",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "cc7f5ee6-a848-490a-9a28-e4acae0855b3",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://12factor.net/config",
@@ -35,7 +34,7 @@
       "configuration"
     ]
   },
-  "synced": "d45da683d6b9deed",
+  "synced": "289c8c5866f44e45",
   "parts": [
     {"part": "intro"},
     {"part": "what-counts-as-config", "heading": "What counts as config"},

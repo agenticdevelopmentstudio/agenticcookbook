@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07",
+    "title": "Package Document",
+    "domain": "agenticdevelopercookbook://recipes/infrastructure/package-document",
+    "type": "recipe",
+    "version": "2.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pattern for macOS document-based apps using directory bundle packages with SQLite databases and auto-save",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift",
+      "windows"
+    ],
+    "tags": [
+      "infrastructure",
+      "package-document"
+    ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/infrastructure/package-document-type",
+      "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage",
+      "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "37e1b0c3a4281b51",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

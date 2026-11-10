@@ -1,7 +1,6 @@
 ---
 id: 60f8370a-6bef-4e18-aeb5-c2cea210bd5d
 title: "Library Cookbooks and Reference Implementations"
-domain: agenticdevelopercookbook://appendix/decisions/library-cookbooks
 type: reference
 version: 1.0.0
 status: draft
@@ -18,10 +17,10 @@ tags:
   - project-format
   - cookr
 depends-on:
-  - agenticdevelopercookbook://appendix/decisions/ingredient-recipe-cookbook-hierarchy
+  - guide/appendix/decisions/ingredient-recipe-cookbook-hierarchy.md
 related:
-  - agenticdevelopercookbook://compliance/artifact-formatting/cookbook-formatting
-  - agenticdevelopercookbook://introduction/conventions
+  - tbd/compliance/artifact-formatting/cookbook-formatting.md
+  - guide/introduction/conventions.md
 references: []
 ---
 

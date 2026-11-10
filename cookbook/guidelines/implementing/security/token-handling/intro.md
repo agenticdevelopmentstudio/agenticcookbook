@@ -21,7 +21,7 @@ Store server-side when possible.
 
 ### Secure storage per platform
 
-See also agenticdevelopercookbook://guidelines/implementing/security/privacy
+See also [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)
 
 - **Apple:** Keychain Services
 - **Android:** EncryptedSharedPreferences / Android Keystore

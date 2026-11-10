@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2795e06d-b081-43ac-97d9-20ff3d0a93b1",
     "title": "Research results document",
-    "domain": "agenticdevelopercookbook://guidelines/researching/evidence/research-results-document",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/provenance-at-generation-time",
-      "agenticdevelopercookbook://principles/cite-the-claim-not-the-document",
-      "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring"
+      "0131807b-548d-403a-8366-de79e215949d",
+      "09947209-369f-40de-8331-c10b0d6f32c6",
+      "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a"
     ],
     "references": [
       "https://www.w3.org/TR/prov-o/",
@@ -39,7 +38,7 @@
       "research"
     ]
   },
-  "synced": "3f3b12a91e31decb",
+  "synced": "0535f42798a88ce2",
   "parts": [
     {"part": "intro"},
     {"part": "per-claim-record", "heading": "Per-claim record"},

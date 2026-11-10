@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "B16E64A4-462D-4F46-AFEB-1A06952E5E65",
+    "id": "b16e64a4-462d-4f46-afeb-1a06952e5e65",
     "title": "Foreign keys and referential integrity",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/foreign-keys",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -26,7 +25,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://sqlite.org/foreignkeys.html"
@@ -38,7 +37,7 @@
       "schema-design"
     ]
   },
-  "synced": "c6e3eab0eea00178",
+  "synced": "998b262222207e2e",
   "parts": [
     {"part": "intro"},
     {"part": "enable-foreign-keys-on-every-connection", "heading": "Enable foreign keys on every connection"},

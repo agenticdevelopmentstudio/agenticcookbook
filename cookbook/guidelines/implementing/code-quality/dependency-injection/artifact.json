@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e80d67b3-813f-47fb-8894-aa4e6f6479f3",
     "title": "Dependency Injection",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/dependency-injection",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "code-review"
     ]
   },
-  "synced": "9f8ccead7b01e2d8",
+  "synced": "776a7a712126f201",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

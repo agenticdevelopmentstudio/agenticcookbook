@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "555d659d-6272-4ad3-90f7-3efc8ee6031e",
     "title": "MCP server review checklist",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/networking/mcp-server-checklist",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
-      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security"
+      "788f1c1d-69af-4570-a279-748d89fcc0e0",
+      "ab8ed68c-949d-42c8-8c07-416674795a65"
     ],
     "references": [
       "https://modelcontextprotocol.io/"
@@ -35,7 +34,7 @@
       "security-review"
     ]
   },
-  "synced": "9314e448b5ece4e1",
+  "synced": "eaf3ddc79e1f4540",
   "parts": [
     {"part": "intro"},
     {"part": "primitive-design", "heading": "Primitive design"},

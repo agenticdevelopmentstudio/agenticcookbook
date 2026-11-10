@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9ed898fe-ba86-44be-9911-d24fea60dc90",
     "title": "Visual Studio project files",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -32,11 +31,11 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/nullable-reference-types",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/linting",
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/visual-studio-project-files",
-      "agenticdevelopercookbook://principles/dry"
+      "af8a4221-90b7-434f-b2a4-64c86a072386",
+      "775da457-30c7-47de-b179-0fae8a8b779d",
+      "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
+      "b0ee38ef-8256-418f-95a8-495264d282fc",
+      "256a827e-436e-4cde-895e-a56b9783edf2"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/overview",
@@ -53,7 +52,7 @@
       "dependency-management"
     ]
   },
-  "synced": "ca8d1d88ff4292ce",
+  "synced": "0ea6a8899b01ddcb",
   "parts": [
     {"part": "intro"},
     {"part": "sdk-style-projects", "heading": "SDK-style projects"},

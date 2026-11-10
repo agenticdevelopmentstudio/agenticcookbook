@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "39676af7-b0b9-48f2-8056-f0c8e8754ffc",
     "title": "Settings Keys",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/settings-keys",
     "type": "ingredient",
     "version": "1.1.1",
     "status": "accepted",
@@ -32,7 +31,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "e2845b2170bddf0d",
+  "synced": "837a486d3150c680",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

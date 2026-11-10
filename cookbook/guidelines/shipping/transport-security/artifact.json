@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b76e80c2-7e24-43cf-b971-5d405e80e748",
     "title": "Transport Security",
-    "domain": "agenticdevelopercookbook://guidelines/shipping/transport-security",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -37,7 +36,7 @@
       "security-review"
     ]
   },
-  "synced": "873936291a42d9f0",
+  "synced": "f95b387194a8504b",
   "parts": [
     {"part": "intro"},
     {"part": "pre-deploy-checklist", "heading": "Pre-deploy checklist"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f6679a9d-e90e-4fc6-ac4c-0696851af484",
     "title": "Composition over inheritance",
-    "domain": "agenticdevelopercookbook://principles/composition-over-inheritance",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "0e4e785e24c85d0f",
+  "synced": "d7ab3a01ccd90bc9",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

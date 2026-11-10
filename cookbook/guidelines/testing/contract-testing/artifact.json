@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "abdcd282-5b81-4ab2-ab1e-3ed288a4aee5",
     "title": "Contract testing for services",
-    "domain": "agenticdevelopercookbook://guidelines/testing/contract-testing",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/test-pyramid",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+      "f3ae65a6-f51d-4e42-8f79-fa8097dd3480",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b"
     ],
     "references": [
       "https://docs.pact.io/",
@@ -38,7 +37,7 @@
       "api-integration"
     ]
   },
-  "synced": "265513328be7d97f",
+  "synced": "1650c46ab9ed27a2",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-use-which-style", "heading": "When to use which style"},

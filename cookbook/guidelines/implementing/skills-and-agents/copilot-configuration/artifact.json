@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4f4ed7a2-a26f-40f2-b863-51715b5c470c",
     "title": "GitHub Copilot configuration",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/copilot-configuration",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -26,14 +25,14 @@
       "llm-tools"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/codex-configuration",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/kimi-configuration",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/context-and-memory-management",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/copilot-configuration"
+      "e8870c2b-ae55-4e48-a4e7-081d65f27418",
+      "e858e124-8774-450f-ab7a-9b27a6965660",
+      "0f999db4-956a-4124-a142-367b1a570983",
+      "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
+      "706a3bf7-0fe1-4b12-b4da-0fd8d363b314"
     ],
     "references": [
       "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
@@ -47,7 +46,7 @@
     ]
   },
   "names_hosts": "Describes how GitHub Copilot also reads CLAUDE.md and GEMINI.md instruction files, so it names those hosts.",
-  "synced": "e023a4aec0ff7191",
+  "synced": "450e7e29f4dccb8a",
   "parts": [
     {"part": "intro"},
     {"part": "repository-wide-instructions", "heading": "Repository-wide instructions"},

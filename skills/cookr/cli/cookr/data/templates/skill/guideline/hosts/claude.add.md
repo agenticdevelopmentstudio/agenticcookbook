@@ -1,4 +1,4 @@
-<!-- cookr:source sha256:1877714815c3c88bae3d582781ec4c6e2421c0936e8985c344e2215c5d695c97 -->
+<!-- cookr:source sha256:a57d22debc226611d0579fdcc5ee4e6dbfc72dba00d29129473c0a075be81de2 -->
 In Claude Code, the user's `CLAUDE.md` files and the repo's `.claude/rules/`
 outrank this guideline where they conflict. When you follow one of them over a
 rule here, say which, in one line.

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0c1e0e24-cb7f-4af9-a114-da2f858422f8",
     "title": "Critique Without Killing",
-    "domain": "agenticdevelopercookbook://principles/critique-without-killing",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/diverge-before-you-converge"
+      "e8677291-1d21-484f-b562-90b8600ea380"
     ],
     "references": [
       "Klein, Performing a Project Premortem, Harvard Business Review, September 2007",
@@ -35,7 +34,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "6725e122eb2f4ca2",
+  "synced": "13ad5c2918961fb2",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

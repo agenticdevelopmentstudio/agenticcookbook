@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "3ca81fd0-7730-4049-bb0a-91514bb0d730",
     "title": "Completeness: finish the work, don't defer by default",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/completeness",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,10 +21,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/scope-discipline",
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://principles/fail-fast",
-      "agenticdevelopercookbook://principles/steel-thread-first"
+      "a3f7c1d2-8e4b-4a9f-b6c3-2d1e0f9a8b7c",
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "b224ef56-65f5-45fd-8842-767b20df6736"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
       "pre-pr"
     ]
   },
-  "synced": "60ff065bab2ccb55",
+  "synced": "3ed32dfa7083e254",
   "parts": [
     {"part": "intro"},
     {"part": "finish-the-agreed-scope", "heading": "Finish the agreed scope"},

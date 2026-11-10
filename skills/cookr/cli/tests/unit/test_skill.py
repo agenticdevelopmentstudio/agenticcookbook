@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import uuid
 from pathlib import Path
 
 import pytest
@@ -13,6 +14,7 @@ from cookr.core import hosts, skill, tuning
 from cookr.core.artifact import Artifact, Part, dump_manifest, find_folders, load_folder, save_document, unconverted, write_folder
 
 REPO = Path(__file__).resolve().parents[5]
+BOOK_ID = "b0000000-0000-4000-8000-000000000000"
 
 
 def test_too_long_lists_each_rendering_over_the_line_limit():
@@ -25,8 +27,8 @@ def test_too_long_lists_each_rendering_over_the_line_limit():
 def make(root: Path, rel: str, type_: str, *, triggers=None, platforms=None, routes=None,
          summary="Does the thing.", body="Guidance.\n"):
     folder = root / rel
-    meta = {"id": "00000000-0000-0000-0000-000000000000", "title": "T", "type": type_,
-            "domain": f"agenticdevelopercookbook://{rel}", "version": "1.2.0", "summary": summary}
+    meta = {"id": str(uuid.uuid5(uuid.UUID(BOOK_ID), rel)), "title": "T", "type": type_,
+            "version": "1.2.0", "summary": summary}
     if triggers is not None:
         meta["triggers"] = triggers
     if platforms is not None:
@@ -40,12 +42,28 @@ def make(root: Path, rel: str, type_: str, *, triggers=None, platforms=None, rou
     return folder
 
 
+def manifest(root: Path, rdid: str = "book") -> None:
+    root.mkdir(parents=True, exist_ok=True)
+    (root / "cookbook.json").write_text(json.dumps({"format": 2, "id": BOOK_ID, "rdid": rdid}))
+
+
+def index_folders(root: Path) -> None:
+    """Record every folder under `root` in its index.json, as a format-2 cookbook has."""
+    from cookr.core.identity import read_manifest
+    from cookr.core.index import Index, save_index, sync_from_folders
+    index = Index(cookbook=read_manifest(root))
+    sync_from_folders(index, root)
+    save_index(index, root)
+
+
 @pytest.fixture
 def book(tmp_path):
     root = tmp_path / "cookbook"
+    manifest(root)
     make(root, "guidelines/implementing/data/use-wal", "guideline", triggers=["database-operations"])
     make(root, "principles/simplicity", "principle")
     make(root, "ingredients/ui/components/badge", "ingredient", platforms=["macos", "ios"])
+    index_folders(root)
     return root
 
 
@@ -92,9 +110,9 @@ def test_a_folder_under_no_type_dir_and_no_cookbook_is_an_error(tmp_path):
 
 def test_placeholders_an_artifact_quotes_are_left_as_written(tmp_path):
     folder = make(tmp_path / "cookbook", "guidelines/cookbook/templates", "guideline",
-                  body="Write `{{version}}` and `{{domain}}` in a template.\n")
+                  body="Write `{{version}}` and `{{rdid}}` in a template.\n")
     text = skill.compose(folder).text
-    assert "Write `{{version}}` and `{{domain}}` in a template." in text
+    assert "Write `{{version}}` and `{{rdid}}` in a template." in text
     assert "1.2.0" in text                                          # the template's own placeholder
 
 
@@ -130,7 +148,55 @@ def test_the_template_omits_rationale_and_history_and_keeps_requirements(book):
     text = skill.compose(book / "guidelines/implementing/data/use-wal").text
     assert "## Rules\n- MUST do it." in text
     assert "Why this matters" not in text and "Change History" not in text
-    assert text.endswith("_From `agenticdevelopercookbook://guidelines/implementing/data/use-wal` v1.2.0._\n")
+    assert text.endswith("_From `book.guideline.implementing.data.use-wal` v1.2.0._\n")
+
+
+def test_skill_metadata_source_is_rdid(book):
+    s = skill.compose(book / "guidelines/implementing/data/use-wal")
+    fm, _ = tuning.split(s.text)
+    import yaml
+    assert yaml.safe_load("".join(fm))["metadata"]["source"] == "book.guideline.implementing.data.use-wal"
+
+
+def test_outside_a_cookbook_the_folder_path_names_the_skill(tmp_path):
+    folder = make(tmp_path / "loose", "principles/simplicity", "principle")
+    text = skill.compose(folder).text
+    assert text.endswith("_From `principles/simplicity` v1.2.0._\n")
+
+
+def _uid(rel):
+    return str(uuid.uuid5(uuid.UUID(BOOK_ID), rel))
+
+
+def test_the_body_renders_implementations_dependencies_and_link_labels_from_the_index(book):
+    from cookr.core.index import Conformance, Implementation, current_index, save_index
+    simplicity = _uid("principles/simplicity")
+    badge = book / "ingredients/ui/components/badge"
+    manifest_path = badge / "artifact.json"
+    data = json.loads(manifest_path.read_text())
+    data["meta"]["depends-on"] = [simplicity, "f0000000-0000-4000-8000-000000000000/" + simplicity]
+    manifest_path.write_text(json.dumps(data))
+    (badge / "intro.md").write_text(f"# T\n\nSee [stale-label](cookbook:{simplicity}).\n\n")
+    index = current_index(book)
+    index.entries[_uid("ingredients/ui/components/badge")].implementations = [
+        Implementation("macos", "Sources/Badge.swift", Conformance("confirmed", "1.2.0")),
+        Implementation("ios", None, Conformance("planned")),
+    ]
+    save_index(index, book)
+    text = skill.compose(badge).text
+    assert ("## Reference Implementations\n\n| Platform | Location | Conformance |\n"
+            "|----------|----------|-------------|\n"
+            "| macos | `Sources/Badge.swift` | confirmed (1.2.0) |\n"
+            "| ios | (planned) | planned |\n") in text
+    assert f"See [book.principle.simplicity](cookbook:{simplicity})." in text
+    assert ("Depends on: `book.principle.simplicity`, "
+            f"`f0000000-0000-4000-8000-000000000000/{simplicity}`.") in text
+    assert "_From `book.ingredient.ui.components.badge` v1.2.0._" in text
+
+
+def test_a_spec_with_no_implementations_has_no_reference_implementations_section(book):
+    text = skill.compose(book / "ingredients/ui/components/badge").text
+    assert "Reference Implementations" not in text
 
 
 def test_frontmatter_keeps_cookr_keys_under_metadata_and_loads_everywhere(book):
@@ -242,6 +308,8 @@ def test_the_cli_needs_out_and_reports_json(book, tmp_path, monkeypatch, capsys)
     assert data["over_cap"] == {} and len(data["results"]) == 3
 
 
+# Opts out of upgrade-on-contact: a loose doc with no source folder is the legacy shape under test.
+@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_a_doc_with_no_source_folder_fails_compile(book, tmp_path, monkeypatch, capsys):
     (book / "principles" / "loose.md").write_text("---\ntype: principle\n---\n# Loose\n")
     (book / "principles" / "notes.md").write_text("# Not an artifact\n")
@@ -253,11 +321,11 @@ def test_a_doc_with_no_source_folder_fails_compile(book, tmp_path, monkeypatch, 
     assert json.loads(capsys.readouterr().out)["unconverted"] == [str(book / "principles" / "loose.md")]
 
 
-def test_the_whole_cookbook_compiles_within_the_fanout_cap(tmp_path):
+def test_the_whole_cookbook_compiles_within_the_fanout_cap(tmp_path, repo_v2):
     """The plan's P5 gate: every artifact becomes a skill that loads on every
     host, names are unique, and no route node is over the cap."""
-    rep = skill.compile_set(find_folders([REPO / "cookbook"]), tmp_path / "out")
+    rep = skill.compile_set(find_folders([repo_v2 / "cookbook"]), tmp_path / "out")
     assert [r.as_json() for r in rep.results if r.failed] == []
     assert rep.over_cap == {}
-    assert len(rep.results) == len(find_folders([REPO / "cookbook"]))
+    assert len(rep.results) == len(find_folders([repo_v2 / "cookbook"]))
     assert unconverted([REPO / "cookbook"]) == []

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "af8d7c30-f595-4d2d-b780-bdcbd1cb5962",
     "title": "File paths",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/file-paths",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "new-module"
     ]
   },
-  "synced": "fb6b4479c528523e",
+  "synced": "f5ed83b5d973eb46",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

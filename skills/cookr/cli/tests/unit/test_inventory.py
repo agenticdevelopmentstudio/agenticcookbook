@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import json
 import re
 
 import pytest
 
-from cookr.core.config import ConfigError, Root, load_config
+from cookr.core.repoconfig import ConfigError, Root
 from cookr.core.inventory import (
     claims,
     component_stem,
@@ -20,22 +19,11 @@ from cookr.core.inventory import (
 )
 from cookr.core.recipes import load_corpus
 
+from .cookbook_helpers import add_root, add_spec, config as _cfg, edit_repo_config, new_repo
+
 
 def _corpus(cookbook_dir):
     return load_corpus(cookbook_dir)
-
-
-def _cfg(repo):
-    return load_config(repo / "cookbook")
-
-
-def _manifest(repo):
-    p = repo / "cookbook" / "cookbook.json"
-    return p, json.loads(p.read_text(encoding="utf-8"))
-
-
-def _write_manifest(p, data):
-    p.write_text(json.dumps(data), encoding="utf-8")
 
 
 # --- scan(): end-to-end against the mini-repo fixture -------------------------
@@ -73,11 +61,11 @@ def test_scan_paths_are_repo_relative_posix(mini_repo):
 
 
 def test_root_ignore_applies_to_its_own_root_only(mini_repo):
-    p, data = _manifest(mini_repo)
-    for r in data["code"]["roots"]:
-        if r["path"] == "apple/UI":
-            r["ignore"] = ["**/ToolbarButton.swift"]
-    _write_manifest(p, data)
+    def edit(data):
+        for r in data["roots"]:
+            if r["path"] == "apple/UI":
+                r["ignore"] = ["**/ToolbarButton.swift"]
+    edit_repo_config(mini_repo, edit)
     cfg = _cfg(mini_repo)
     paths = [r.path for r in scan(cfg, _corpus(cfg.cookbook_dir))]
     assert "apple/UI/ToolbarButton.swift" not in paths
@@ -106,21 +94,11 @@ def test_a_file_claim_beats_a_directory_claim_above_it(tmp_path):
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "Card.tsx").write_text("", encoding="utf-8")
     (tmp_path / "src" / "Other.tsx").write_text("", encoding="utf-8")
-    cookbook = tmp_path / "cookbook"
-    cookbook.mkdir()
-    _write_manifest(cookbook / "cookbook.json", {
-        "code": {"roots": [{"path": "src", "platform": "web", "recipes": "widgets"}]},
-    })
-    (cookbook / "module.md").write_text(
-        "---\ntype: ingredient\nstatus: draft\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n"
-        "| web | `src/` |\n", encoding="utf-8")
-    (cookbook / "card.md").write_text(
-        "---\ntype: ingredient\nstatus: draft\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n"
-        "| web | `src/Card.tsx` |\n", encoding="utf-8")
-    cfg = load_config(cookbook)
-    rows = {r.path: r.name for r in scan(cfg, _corpus(cookbook))}
+    new_repo(tmp_path, [{"path": "src", "platform": "web", "group": "widgets"}])
+    add_spec(tmp_path, "module", impls=[("web", "src/")])
+    add_spec(tmp_path, "card", impls=[("web", "src/Card.tsx")])
+    cfg = _cfg(tmp_path)
+    rows = {r.path: r.name for r in scan(cfg, _corpus(cfg.cookbook_dir))}
     assert rows["src/Card.tsx"] == "card"       # its own file claim wins
     assert rows["src/Other.tsx"] == "module"    # falls back to the directory claim
 
@@ -129,32 +107,32 @@ def test_a_file_claim_beats_a_directory_claim_above_it(tmp_path):
 
 
 def test_expected_name_for_a_file():
-    root = Root(path="web/components", platform="web", recipes="components")
+    root = Root(path="web/components", platform="web", group="components")
     assert expected_name(root, "web/components/ChatComposer.tsx") == "components/chat-composer"
 
 
 def test_expected_name_for_a_directory_uses_its_whole_path():
-    root = Root(path="web", platform="web", recipes="components")
+    root = Root(path="web", platform="web", group="components")
     assert expected_name(root, "web/blocks/") == "components/blocks"
 
 
 def test_expected_name_folds_a_stem_repeating_its_directory():
-    root = Root(path="src", platform="web", recipes="data")
+    root = Root(path="src", platform="web", group="data")
     assert expected_name(root, "src/docs/Docs.swift") == "data/docs"
 
 
 def test_expected_name_folds_a_reserved_stem_into_the_group():
-    root = Root(path="src", platform="web", recipes="widgets")
+    root = Root(path="src", platform="web", group="widgets")
     assert expected_name(root, "src/Index.tsx") == "widgets"
 
 
 def test_expected_name_top_level_reserved_stem_has_no_group_to_fold_into():
-    root = Root(path="src", platform="web", recipes="")
+    root = Root(path="src", platform="web", group="")
     assert expected_name(root, "src/Index.tsx") == "index"
 
 
 def test_expected_name_drops_a_source_dir_segment():
-    root = Root(path="pkg", platform="web", recipes="widgets")
+    root = Root(path="pkg", platform="web", group="widgets")
     assert expected_name(root, "pkg/src/Card.tsx") == "widgets/card"
 
 
@@ -173,7 +151,7 @@ def test_join_name(group, leaf, expected):
     assert join_name(group, leaf) == expected
 
 
-# --- claims / owners: how a spec's Reference Implementations names a source --
+# --- claims / owners: how a spec's index implementations name a source -----
 
 
 def test_claims_builds_a_path_to_spec_platform_table(mini_repo):
@@ -275,10 +253,7 @@ def test_ignore_set_prunes_only_wholly_ignored_directories():
 
 
 def _set_ignore(repo, patterns):
-    p, data = _manifest(repo)
-    data["code"]["ignore"] = patterns
-    _write_manifest(p, data)
-    return p
+    edit_repo_config(repo, lambda data: data.__setitem__("ignore", patterns))
 
 
 def test_star_ignore_keeps_nested_files(mini_repo):
@@ -344,10 +319,7 @@ def test_xaml_code_behind_is_one_unclaimed_component(mini_repo):
     win.mkdir(parents=True)
     (win / "StatCard.xaml").write_text("<UserControl/>\n", encoding="utf-8")
     (win / "StatCard.xaml.cs").write_text("class StatCard {}\n", encoding="utf-8")
-    p, data = _manifest(mini_repo)
-    data["code"]["roots"].append(
-        {"path": "win/Controls", "platform": "windows", "recipes": "windows"})
-    _write_manifest(p, data)
+    add_root(mini_repo, "win/Controls", "windows", "windows")
     cfg = _cfg(mini_repo)
     rows = [r for r in scan(cfg, _corpus(cfg.cookbook_dir)) if r.name == "windows/stat-card"]
     assert {r.path for r in rows} == {"win/Controls/StatCard.xaml", "win/Controls/StatCard.xaml.cs"}
@@ -360,9 +332,7 @@ def test_xaml_code_behind_is_one_unclaimed_component(mini_repo):
 def test_unclaimed_reserved_stem_at_the_cookbooks_top_level_is_a_config_error(mini_repo):
     (mini_repo / "web" / "misc").mkdir()
     (mini_repo / "web" / "misc" / "index.tsx").write_text("export {}\n", encoding="utf-8")
-    p, data = _manifest(mini_repo)
-    data["code"]["roots"].append({"path": "web/misc", "platform": "web"})  # recipes="" (top level)
-    _write_manifest(p, data)
+    add_root(mini_repo, "web/misc", "web", "")  # group="" (top level)
     cfg = _cfg(mini_repo)
     with pytest.raises(ConfigError, match=re.escape("web/misc/index.tsx")):
         scan(cfg, _corpus(cfg.cookbook_dir))
@@ -371,13 +341,8 @@ def test_unclaimed_reserved_stem_at_the_cookbooks_top_level_is_a_config_error(mi
 def test_reserved_stem_is_fine_once_a_spec_claims_it_directly(mini_repo):
     (mini_repo / "web" / "misc").mkdir()
     (mini_repo / "web" / "misc" / "index.tsx").write_text("export {}\n", encoding="utf-8")
-    p, data = _manifest(mini_repo)
-    data["code"]["roots"].append({"path": "web/misc", "platform": "web"})
-    _write_manifest(p, data)
-    (mini_repo / "cookbook" / "entry-point.md").write_text(
-        "---\ntype: ingredient\nstatus: draft\n---\n\n"
-        "## Reference Implementations\n\n| Platform | Path |\n| --- | --- |\n"
-        "| web | `web/misc/index.tsx` |\n", encoding="utf-8")
+    add_root(mini_repo, "web/misc", "web", "")
+    add_spec(mini_repo, "entry-point", impls=[("web", "web/misc/index.tsx")])
     cfg = _cfg(mini_repo)
     rows = scan(cfg, _corpus(cfg.cookbook_dir))
     row = next(r for r in rows if r.path == "web/misc/index.tsx")

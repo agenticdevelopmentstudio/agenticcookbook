@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "22FBF585-C5A3-425A-94F1-BA9B570EBFDE",
+    "id": "22fbf585-c5a3-425a-94f1-ba9b570ebfde",
     "title": "Job Worker",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/job-worker",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "review",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
-      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+      "61ca76a4-0188-488b-9ac6-1144ca8ed506",
+      "7c2049c7-89d9-4135-b657-dbd03cdd19a0"
     ],
     "references": [
       "https://datatracker.ietf.org/doc/html/rfc2119"
@@ -35,7 +34,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "c98bb293f43f45b9",
+  "synced": "8966e8ccc66c2d18",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

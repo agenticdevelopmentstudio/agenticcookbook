@@ -1,13 +1,12 @@
 ---
 id: E10E9785-E7D9-47F9-BA8C-A85E745BF294
 title: "Ingredient Formatting Compliance"
-domain: agenticdevelopercookbook://compliance/artifact-formatting/ingredient-formatting
 type: compliance
-version: 1.1.0
+version: 2.0.0
 status: draft
 language: en
 created: 2026-04-05
-modified: 2026-09-25
+modified: 2026-11-09
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -18,11 +17,11 @@ tags:
   - artifact-formatting
   - ingredient
 depends-on:
-  - agenticdevelopercookbook://introduction/conventions
+  - guide/introduction/conventions.md
 related:
-  - agenticdevelopercookbook://compliance/artifact-formatting/principle-formatting
-  - agenticdevelopercookbook://compliance/artifact-formatting/guideline-formatting
-  - agenticdevelopercookbook://compliance/artifact-formatting/recipe-formatting
+  - tbd/compliance/artifact-formatting/principle-formatting.md
+  - tbd/compliance/artifact-formatting/guideline-formatting.md
+  - tbd/compliance/artifact-formatting/recipe-formatting.md
 references: []
 ---
 
@@ -56,7 +55,7 @@ Ingredients MUST follow this section order. Optional sections (marked MAY) can b
 16. `## Privacy` (MAY omit)
 17. `## Logging`
 18. `## Platform Notes`
-19. `## Reference Implementations` (MAY omit in a cookbook with no code)
+19. `## Reference Implementations` (MAY: derived from `index.json` when compiled; never authored)
 20. `## Design Decisions`
 21. `## Compliance`
 22. `## Change History`
@@ -65,14 +64,16 @@ Ingredients MUST follow this section order. Optional sections (marked MAY) can b
 
 ### if-frontmatter-complete
 
-All required YAML frontmatter fields MUST be present per `introduction/conventions.md`.
+All required meta fields (the frontmatter of the compiled doc) MUST be present per `guide/introduction/conventions.md`. There is no `domain` field.
+
+The artifact's `id` is its identity: every link to it stores that UUID. Its rdid and folder path are held in the cookbook's `index.json`, never in the artifact; `cookr validate` fails when the index and the folders disagree.
 
 **Applies when:** always.
 
-**Required fields:** id, title, domain, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references.
+**Required fields:** id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -107,7 +108,7 @@ The ingredient MUST have a `## Behavioral Requirements` section containing named
 **Applies when:** always.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -166,7 +167,7 @@ The ingredient MUST have a `## Logging` section defining: subsystem, category, a
 **Applies when:** always.
 
 **Guidelines:**
-- [Structured Logging](agenticdevelopercookbook://guidelines/implementing/observability/logging)
+- [adc.guideline.implementing.observability.logging](cookbook:0f0c1da3-1c53-417b-890d-0259d7513c65)
 
 ---
 
@@ -180,12 +181,12 @@ The ingredient MUST have a `## Platform Notes` section with per-platform impleme
 
 ### if-reference-implementations
 
-The ingredient MUST have a `## Reference Implementations` section, directly after `## Platform Notes`, when its cookbook's repository implements it: a `| Platform | Path |` table with one row per implementing source file or directory. `Platform` is one of `web`, `apple`, `android`, `windows`, `python`; `Path` is a backticked path relative to the repository root, and a directory path ends with `/` and claims every source file below it. Every path MUST exist. In a cookbook with no code of its own the section MAY be omitted, or MAY be the one line `Not applicable: this cookbook carries no implementations.`
+The ingredient MUST NOT carry an authored `## Reference Implementations` section. The code that implements it is recorded in its cookbook's `index.json` with `cookr implements <uuid|rdid> <location> --platform <p>` (`--remove <location>` drops a row), and `cookr confirm <uuid|rdid>` records it as conforming to the current version. A compiled doc or skill shows those rows as a derived `## Reference Implementations` section after `## Platform Notes`. `platform` is one of `macos`, `ios`, `apple`, `web`, `android`, `windows`, `linux`, `python`; a location is a repo-relative file, a directory ending with `/` (which claims every source file below it), or a URL. Every recorded location MUST exist, unless the row is `planned`.
 
-**Applies when:** the cookbook's `cookbook.json` declares `code` (a library or app cookbook that lives beside its source). `cookbook validate` checks that every listed path exists.
+**Applies when:** the repo's `.cookr.json` declares `roots` (a cookbook that lives beside its source). `cookr validate` checks that every recorded location exists.
 
 **Guidelines:**
-- [Cookbook Formatting](agenticdevelopercookbook://compliance/artifact-formatting/cookbook-formatting)
+- [Cookbook Formatting](cookbook-formatting.md)
 
 ---
 
@@ -204,7 +205,7 @@ The ingredient MUST have a `## Compliance` section with a table containing colum
 **Applies when:** always.
 
 **Guidelines:**
-- [Compliance INDEX](agenticdevelopercookbook://compliance/INDEX)
+- [Compliance INDEX](../INDEX.md)
 
 ---
 
@@ -215,12 +216,13 @@ The file MUST end with a `## Change History` section containing a table with col
 **Applies when:** always.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID identity and rdids replace `domain`; implementations live in index.json |
 | 1.1.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |
 | 1.0.1 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 1.0.0 | 2026-04-05 | Mike Fullerton | Initial creation |

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "60b3f760-f397-4762-b2d5-5aba80fd51f8",
     "title": "Immutable infrastructure",
-    "domain": "agenticdevelopercookbook://guidelines/planning/infrastructure/immutable-infrastructure",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/immutability-by-default",
-      "agenticdevelopercookbook://principles/design-for-deletion",
-      "agenticdevelopercookbook://guidelines/planning/infrastructure/infrastructure-as-code"
+      "a7ce3621-2fed-478f-8767-b186014c5923",
+      "2aaf1727-aa36-41d1-a660-7dd0456e1d07",
+      "cc7f5ee6-a848-490a-9a28-e4acae0855b3"
     ],
     "references": [
       "https://martinfowler.com/bliki/ImmutableServer.html",
@@ -37,7 +36,7 @@
       "configuration"
     ]
   },
-  "synced": "02e385e55f94c0f4",
+  "synced": "abdb7059e8059fa4",
   "parts": [
     {"part": "intro"},
     {"part": "core-rule", "heading": "Core rule"},

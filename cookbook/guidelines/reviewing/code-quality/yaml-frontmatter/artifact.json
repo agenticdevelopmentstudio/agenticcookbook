@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6e29b5a6-fa54-4d6e-a8ce-089bd800a861",
     "title": "YAML frontmatter",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/yaml-frontmatter",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "configuration"
     ]
   },
-  "synced": "443ae12b0e8de749",
+  "synced": "944ce6f3b2484a18",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

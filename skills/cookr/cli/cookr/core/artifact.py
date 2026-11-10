@@ -3,7 +3,7 @@
 A single-file artifact (`<name>.md`: YAML frontmatter + markdown body) becomes
 
     <name>/
-      artifact.json    {"format": 1, "meta": {...frontmatter...}, "parts": [...]}
+      artifact.json    {"format": 2, "meta": {...frontmatter...}, "parts": [...]}
       intro.md         the body before its first `## ` heading (H1 + statement)
       <slug>.md        one file per `## ` section, heading line excluded
       history.md       the `## Change History` section
@@ -31,9 +31,10 @@ from typing import Any, Optional
 
 import yaml
 
-from .markdown import ARTIFACT_FILE, HOSTS_DIR
+from .markdown import ARTIFACT_FILE, HOSTS_DIR, in_versions
 
-FORMAT = 1
+FORMAT = 2
+FORMATS = (1, 2)  # what _load_any reads; only the upgrader reads format 1
 ARTIFACT_TYPES = ("principle", "guideline", "ingredient", "recipe")
 INTRO = "intro"
 HISTORY = "history"
@@ -228,6 +229,55 @@ def compose_document(artifact: Artifact) -> str:
     return f"---\n{emit_frontmatter(artifact.meta)}---\n{artifact.body()}"
 
 
+# Sections cookr renders from the cookbook index into a compiled doc: never
+# authored, so a folder never holds one, and reading a doc drops them.
+DERIVED = ("Reference Implementations",)
+# A derived section goes right before these, in this order of preference.
+_DERIVED_BEFORE = ("Design Decisions", "Compliance", "Change History")
+
+
+def _is_derived(part: Part) -> bool:
+    return part.heading is not None and part.heading.strip() in DERIVED
+
+
+def without_derived(artifact: Artifact) -> Artifact:
+    """`artifact` with every derived section removed (in place; returned for chaining)."""
+    artifact.parts = [p for p in artifact.parts if not _is_derived(p)]
+    return artifact
+
+
+def derived_parts(artifact: Artifact) -> list[Part]:
+    return [p for p in artifact.parts if _is_derived(p)]
+
+
+def with_part(artifact: Artifact, part: Part) -> Artifact:
+    """A copy of `artifact` with `part` placed before Design Decisions (else
+    Compliance, else Change History), or at the end."""
+    parts = list(artifact.parts)
+    for heading in _DERIVED_BEFORE:
+        at = next((i for i, p in enumerate(parts) if p.heading and p.heading.strip() == heading), None)
+        if at is not None:
+            parts.insert(at, part)
+            break
+    else:
+        if parts and not parts[-1].text.endswith("\n\n"):
+            parts[-1] = Part(parts[-1].name, parts[-1].text.rstrip("\n") + "\n\n", parts[-1].heading)
+        parts.append(part)
+    return Artifact(meta=artifact.meta, parts=parts, names_hosts=artifact.names_hosts,
+                    routes=artifact.routes, synced=artifact.synced,
+                    twin_differs=artifact.twin_differs, informational=artifact.informational)
+
+
+def authored_text(text: str) -> str:
+    """A doc's text without its derived sections: what its folder composes to."""
+    if not any(f"## {h}" in text for h in DERIVED):
+        return text
+    artifact = read_document(text)
+    if not derived_parts(artifact):
+        return text
+    return compose_document(without_derived(artifact))
+
+
 def normalize_document(text: str) -> str:
     """`text` with only its frontmatter rewritten canonically: what a lossless
     convert-then-compile must reproduce."""
@@ -254,13 +304,26 @@ def is_folder(path: Path) -> bool:
     return (path / ARTIFACT_FILE).is_file()
 
 
-def load_folder(folder: Path) -> Artifact:
+def _manifest(folder: Path) -> tuple[dict, object]:
+    """The folder's artifact.json, parsed once, and its `format`. ArtifactError
+    when it cannot be read or is no format cookr has written (FORMATS)."""
     try:
         data = json.loads((folder / ARTIFACT_FILE).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as e:
         raise ArtifactError(f"{folder / ARTIFACT_FILE}: {e}") from e
-    if data.get("format") != FORMAT:
-        raise ArtifactError(f"{folder / ARTIFACT_FILE}: unsupported format {data.get('format')!r}")
+    fmt = data.get("format") if isinstance(data, dict) else None
+    if type(fmt) is not int or fmt not in FORMATS:  # `true` == 1, so check the type too
+        raise ArtifactError(f"{folder / ARTIFACT_FILE}: unsupported format {fmt!r}")
+    return data, fmt
+
+
+def _load_any(folder: Path) -> Artifact:
+    """A source folder in any format cookr has written (FORMATS). Only the
+    upgrader reads an older one; everything else goes through load_folder."""
+    return _artifact_from(folder, _manifest(folder)[0])
+
+
+def _artifact_from(folder: Path, data: dict) -> Artifact:
     parts = []
     for entry in data.get("parts", []):
         name = entry["part"]
@@ -268,9 +331,18 @@ def load_folder(folder: Path) -> Artifact:
         if not f.is_file():
             raise ArtifactError(f"{folder}: part {name!r} has no {f.name}")
         parts.append(Part(name=name, text=f.read_text(encoding="utf-8"), heading=entry.get("heading")))
-    return Artifact(meta=data.get("meta", {}), parts=parts, names_hosts=data.get("names_hosts"),
-                    routes=data.get("routes"), synced=data.get("synced"),
-                    twin_differs=data.get("twin_differs"), informational=data.get("informational"))
+    return Artifact(meta=dict(data.get("meta", {})), parts=parts,
+                    names_hosts=data.get("names_hosts"), routes=data.get("routes"),
+                    synced=data.get("synced"), twin_differs=data.get("twin_differs"),
+                    informational=data.get("informational"))
+
+
+def load_folder(folder: Path) -> Artifact:
+    """A format-FORMAT source folder; an older one says to run `cookr upgrade`."""
+    data, fmt = _manifest(folder)
+    if fmt != FORMAT:
+        raise ArtifactError(f"{folder / ARTIFACT_FILE}: format {fmt}; run `cookr upgrade`")
+    return _artifact_from(folder, data)
 
 
 def dump_manifest(artifact: Artifact) -> str:
@@ -307,7 +379,8 @@ def _shared(folder: Path) -> bool:
         return False
     if not is_folder(folder):
         return any(folder.iterdir())
-    return any(f.parent != folder for f in folder.rglob(ARTIFACT_FILE)) or any(
+    return any(f.parent != folder for f in folder.rglob(ARTIFACT_FILE)
+               if not in_versions(f, folder)) or any(
         f.suffix == ".md" and f.name not in _owned(folder) and artifact_type_of(f)
         for f in folder.iterdir() if f.is_file())
 
@@ -354,6 +427,14 @@ def write_folder(artifact: Artifact, folder: Path) -> None:
         (folder / f"{p.name}.md").write_text(p.text, encoding="utf-8")
 
 
+def save_folder(artifact: Artifact, folder: Path) -> None:
+    """Rewrite an existing source folder's manifest and parts in place, keeping
+    every other file there (attribution, examples, `hosts/`)."""
+    (folder / ARTIFACT_FILE).write_text(dump_manifest(artifact), encoding="utf-8")
+    for p in artifact.parts:
+        (folder / f"{p.name}.md").write_text(p.text, encoding="utf-8")
+
+
 def folder_for(md: Path) -> Path:
     return md.with_suffix("")
 
@@ -385,7 +466,7 @@ def sync_state(folder: Path) -> str:
     doc = doc_path(folder)
     if not doc.is_file():
         return MISSING
-    text = doc.read_text(encoding="utf-8")
+    text = authored_text(doc.read_text(encoding="utf-8"))
     artifact = load_folder(folder)
     composed = compose_document(artifact)
     if text == composed:
@@ -429,7 +510,9 @@ def save_document(doc: Path, text: str) -> None:
     its manifest and parts are rewritten from `text`, parts `text` no longer
     has are removed, and every other file there (attribution, examples,
     `hosts/`) is kept. `doc` is then recompiled from the folder, so a tool that
-    edits the doc form edits the source, and the two never disagree.
+    edits the doc form edits the source, and the two never disagree. In a
+    folder-only checkout (no doc beside the folder) the folder is all that is
+    written: a doc is recompiled only where one already was.
     """
     folder = folder_for(doc)
     if not is_folder(folder):
@@ -437,9 +520,12 @@ def save_document(doc: Path, text: str) -> None:
             f.write(text)
         return
     artifact = read_document(text)
+    derived = derived_parts(artifact)
+    without_derived(artifact)
     problem = occupied(artifact, folder)
     if problem:
         raise ArtifactError(problem)
+    had_doc = doc.is_file()
     current = load_folder(folder)
     artifact.names_hosts = current.names_hosts
     artifact.routes = current.routes
@@ -451,8 +537,12 @@ def save_document(doc: Path, text: str) -> None:
     (folder / ARTIFACT_FILE).write_text(dump_manifest(artifact), encoding="utf-8")
     for p in artifact.parts:
         (folder / f"{p.name}.md").write_text(p.text, encoding="utf-8")
-    composed = compose_document(load_folder(folder))
-    doc.write_text(composed, encoding="utf-8")
+    saved = load_folder(folder)
+    composed = compose_document(saved)
+    if had_doc:
+        for part in derived:  # the doc keeps the derived sections it came with
+            saved = with_part(saved, part)
+        doc.write_text(compose_document(saved), encoding="utf-8")
     record_sync(folder, composed)
 
 
@@ -463,6 +553,8 @@ def find_documents(paths: list[Path]) -> list[Path]:
         candidates = [p] if p.is_file() else p.rglob("*.md")
         for c in candidates:
             if c.name.startswith("_") or c.name == "INDEX.md":
+                continue
+            if p.is_dir() and in_versions(c, p):
                 continue
             if artifact_type_of(c):
                 found.add(c)
@@ -482,5 +574,5 @@ def find_folders(paths: list[Path]) -> list[Path]:
         if is_folder(p):
             found.add(p)
         elif p.is_dir():
-            found.update(f.parent for f in p.rglob(ARTIFACT_FILE))
+            found.update(f.parent for f in p.rglob(ARTIFACT_FILE) if not in_versions(f, p))
     return sorted(found)

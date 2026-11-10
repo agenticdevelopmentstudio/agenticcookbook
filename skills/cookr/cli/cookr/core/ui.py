@@ -15,8 +15,8 @@ from rich.text import Text
 
 
 class UI:
-    def __init__(self) -> None:
-        self.console = Console()
+    def __init__(self, stderr: bool = False) -> None:
+        self.console = Console(stderr=stderr)
 
     def title(self, text: str) -> None:
         self.console.print()

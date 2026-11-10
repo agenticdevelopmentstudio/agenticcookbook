@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cd614244-bb91-411b-88b3-53d552529cd4",
     "title": "Bridge Distant Domains",
-    "domain": "agenticdevelopercookbook://principles/bridge-distant-domains",
     "type": "principle",
     "version": "1.0.0",
     "status": "draft",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/break-fixation-deliberately",
-      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity"
+      "ae4444c3-adac-429a-b00e-e918ba3a70b7",
+      "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a"
     ],
     "references": [
       "Mednick, Psychological Review, 1962",
@@ -34,7 +33,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "bcc948c64892a3cb",
+  "synced": "15b31d5816d2900a",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f35cf9c3-7488-4192-93fb-12d95f7244e5",
     "title": "Choose a rendering strategy per route, minimize client JS",
-    "domain": "agenticdevelopercookbook://guidelines/planning/ui/rendering-strategy",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,9 +24,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/simplicity",
-      "agenticdevelopercookbook://principles/meta-principle-optimize-for-change",
-      "agenticdevelopercookbook://guidelines/implementing/ui/core-web-vitals"
+      "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
+      "aadd048b-da52-415d-949f-45160b970381",
+      "c8bf92be-4b7b-4ed7-a9b5-9584c1878d63"
     ],
     "references": [
       "https://react.dev/reference/rsc/server-components"
@@ -39,7 +38,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "fafd654f3fe2c4a3",
+  "synced": "8dbae039d81c6fdf",
   "parts": [
     {"part": "intro"},
     {"part": "core-principle", "heading": "Core principle"},

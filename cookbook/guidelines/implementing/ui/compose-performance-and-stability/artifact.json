@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9f2ef6d5-c1a0-499b-855c-b8742c8efe62",
     "title": "Jetpack Compose performance and stability",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/compose-performance-and-stability",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf"
+      "736fac9a-56e0-449d-8dc0-b95cbfba7884"
     ],
     "references": [
       "https://developer.android.com/develop/ui/compose/performance"
@@ -36,7 +35,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "f3256134f0c4b8ba",
+  "synced": "c8de19e36f7c624f",
   "parts": [
     {"part": "intro"},
     {"part": "stability-and-skipping", "heading": "Stability and skipping"},

@@ -1,0 +1,3 @@
+
+Stat card component fixture.
+

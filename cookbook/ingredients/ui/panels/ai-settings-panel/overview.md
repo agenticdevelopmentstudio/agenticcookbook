@@ -1,5 +1,5 @@
 
-A settings panel for configuring AI/LLM provider integration. Appears as a category within the settings window (see the Settings Window recipe, `agenticdevelopercookbook://recipes/ui/windows/settings-window`). This spec covers both the settings UI and the provider interface pattern.
+A settings panel for configuring AI/LLM provider integration. Appears as a category within the settings window (see the Settings Window recipe, [adc.recipe.ui.windows.settings-window](cookbook:31f97683-8d2e-4203-a155-48cebc1bfb13)). This spec covers both the settings UI and the provider interface pattern.
 
 The panel follows the interface-first pattern (Rules 17-19): settings are stored locally, the actual AI provider is injected via protocol/interface. The settings panel configures which provider, model, and credentials to use. The application consumes AI capabilities exclusively through the `AIProvider` protocol — the settings panel is the configuration surface, not the integration point.
 

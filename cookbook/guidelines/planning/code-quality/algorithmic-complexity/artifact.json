@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "02301325-6676-4b89-ac9f-e2cfe99a4172",
     "title": "Algorithmic Complexity",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/algorithmic-complexity",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "8c93a130d3a88371",
+  "synced": "d53dab141bfa9841",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

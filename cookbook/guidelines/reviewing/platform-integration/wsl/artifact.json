@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "65eff0b7-14d5-4cd1-8107-1cfda65e78f3",
     "title": "Windows Subsystem for Linux",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/platform-integration/wsl",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
-      "agenticdevelopercookbook://guidelines/reviewing/language/powershell"
+      "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
+      "ce0c62c0-f2a1-4b60-b46e-844adc164d92"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/windows/wsl/filesystems",
@@ -42,7 +41,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's WSL rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "71224fee62e2cab2",
+  "synced": "31089bb871f8dabb",
   "parts": [
     {"part": "intro"},
     {"part": "files-and-paths", "heading": "Files and paths"},

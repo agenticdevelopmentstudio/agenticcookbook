@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "49399746-a81f-4163-8b07-0cfa11d87c2e",
     "title": "API Design",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/api-design",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "new-module"
     ]
   },
-  "synced": "7a335cfdbaf77b2b",
+  "synced": "ea5ef3149becbbc4",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

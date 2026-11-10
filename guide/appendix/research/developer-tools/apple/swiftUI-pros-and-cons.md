@@ -1,7 +1,6 @@
 ---
 id: 1b79426d-d01d-477a-95fa-ea5aaf03ba05
 title: 'SwiftUI: Pros, Cons, and the Agentic Development Question'
-domain: agenticdevelopercookbook://appendix/research/developer-tools/apple/swiftUI-pros-and-cons
 type: reference
 version: 1.0.0
 status: draft

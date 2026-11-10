@@ -226,3 +226,26 @@ def test_force_flags_refuse_what_they_do_not_apply_to(work):
     assert main(["convert", "--force"]) == 2
     assert main(["compile", "--check", "--force"]) == 2
     assert main(["compile", "--target", "skill", "--force", "--out", "x"]) == 2
+
+
+def test_compile_doc_renders_implementations_from_index(tmp_path):
+    # The Reference Implementations section is derived: the folder holds no
+    # such part; the compiled doc renders the spec's index implementations.
+    from cookr.core.artifact import doc_path
+    from cookr.core.artifact_build import compile_doc
+
+    from .cookbook_helpers import add_spec, new_repo
+
+    new_repo(tmp_path, [{"path": "web", "platform": "web", "group": "blocks"}])
+    (tmp_path / "web" / "Card.tsx").write_text("export {}\n", encoding="utf-8")
+    add_spec(tmp_path, "blocks/card", impls=[("web", "web/Card.tsx", "confirmed"),
+                                            ("ios", None, "planned")])
+    folder = tmp_path / "cookbook" / "blocks" / "card"
+    assert not any("implementation" in f.name for f in folder.iterdir())
+    [result] = compile_doc([folder], base=tmp_path / "cookbook")
+    assert result.status == "compiled"
+    text = doc_path(folder).read_text(encoding="utf-8")
+    assert "## Reference Implementations" in text
+    assert "| Platform | Location | Conformance |" in text
+    assert "| web | `web/Card.tsx` | confirmed |" in text
+    assert "| ios | (planned) | planned |" in text

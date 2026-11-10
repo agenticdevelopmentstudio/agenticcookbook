@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6302654b-8200-4e03-862d-4734d4960d19",
     "title": "No blocking the main thread",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -40,7 +39,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "cdff56e07bbb1e46",
+  "synced": "022f70caff5f54ca",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

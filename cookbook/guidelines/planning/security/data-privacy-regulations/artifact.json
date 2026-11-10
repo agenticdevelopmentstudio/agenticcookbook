@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "10c66228-2141-484c-9286-2d62d43c7b70",
     "title": "Data privacy regulations",
-    "domain": "agenticdevelopercookbook://guidelines/planning/security/data-privacy-regulations",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/security/privacy",
-      "agenticdevelopercookbook://guidelines/planning/security/privacy-by-design"
+      "e29555dd-a4e6-4973-8bde-365b8d60bf9f",
+      "09b063bd-74e7-4636-baa6-23ee82ec224b"
     ],
     "references": [
       "https://gdpr-info.eu/",
@@ -38,7 +37,7 @@
       "data-modeling"
     ]
   },
-  "synced": "e32fcfb929f9e4ee",
+  "synced": "7cbf2a9cdc6cd42e",
   "parts": [
     {"part": "intro"},
     {"part": "core-regimes-as-of-2026", "heading": "Core regimes (as of 2026)"},

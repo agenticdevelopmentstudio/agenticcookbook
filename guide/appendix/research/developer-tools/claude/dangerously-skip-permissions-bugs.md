@@ -1,7 +1,6 @@
 ---
 id: 06366dd1-63fb-4b89-86c8-31feff8bc2c4
 title: --dangerously-skip-permissions Known Bugs & Workaround
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/dangerously-skip-permissions-bugs
 type: reference
 version: 1.0.0
 status: draft

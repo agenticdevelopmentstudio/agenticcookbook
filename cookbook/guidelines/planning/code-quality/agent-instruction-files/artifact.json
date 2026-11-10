@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "5aad79dd-4d0e-463e-8059-39da2fef63b3",
     "title": "Agent instruction files (AGENTS.md / CLAUDE.md)",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/agent-instruction-files",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/explicit-over-implicit",
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0"
     ],
     "references": [
       "https://agents.md/",
@@ -39,7 +38,7 @@
     ]
   },
   "names_hosts": "Compares AGENTS.md with Claude Code's CLAUDE.md: both hosts' instruction files are the subject.",
-  "synced": "29458dc107c8468a",
+  "synced": "88f5a4247a4e3d0b",
   "parts": [
     {"part": "intro"},
     {"part": "which-file-to-ship", "heading": "Which file to ship"},

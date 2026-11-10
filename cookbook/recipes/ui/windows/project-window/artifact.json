@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "338cb220-483c-4f9e-ae9d-e1dd79e59289",
     "title": "Project Window",
-    "domain": "agenticdevelopercookbook://recipes/ui/windows/project-window",
     "type": "recipe",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,16 +25,16 @@
       "window"
     ],
     "ingredients": [
-      "agenticdevelopercookbook://ingredients/ui/windows/project-split-layout",
-      "agenticdevelopercookbook://ingredients/ui/panels/file-tree-browser",
-      "agenticdevelopercookbook://ingredients/ui/panels/code-editor-pane",
-      "agenticdevelopercookbook://ingredients/ui/panels/terminal-pane",
-      "agenticdevelopercookbook://ingredients/ui/panels/inspector-panel",
-      "agenticdevelopercookbook://ingredients/ui/components/collapsible-pane-header",
-      "agenticdevelopercookbook://ingredients/ui/components/status-bar",
-      "agenticdevelopercookbook://ingredients/infrastructure/window-frame-persistence",
-      "agenticdevelopercookbook://ingredients/infrastructure/logging",
-      "agenticdevelopercookbook://ingredients/infrastructure/settings-keys"
+      "865679a9-6631-46e8-84ae-6ef64d2abf3a",
+      "a1845427-a2cd-4744-96bf-f6c6f2380982",
+      "954e559c-e2bf-494c-a37e-de0b88bec89a",
+      "4a2898cf-34ed-4153-8d06-c795f80c19cd",
+      "6af1d30a-c2ee-4a6d-97ec-50c67f01a243",
+      "1dd2111a-eb05-40e4-b469-1aecd79c5863",
+      "22729bee-7ab4-4648-aa5a-2beef067d0c3",
+      "85d04a9b-5692-4025-a489-eac8bbb14663",
+      "7c2049c7-89d9-4135-b657-dbd03cdd19a0",
+      "39676af7-b0b9-48f2-8056-f0c8e8754ffc"
     ],
     "depends-on": [],
     "related": [],
@@ -43,7 +42,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "6a1c8a4026e7e826",
+  "synced": "5fb3aa5890cefa77",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -16,7 +16,7 @@ feedback. Never animate for decoration.
 
 - Under 100ms feels instant. Over 500ms feels sluggish.
 - Platform-native spring/easing curves SHOULD be preferred over linear or custom beziers
-- **Reduced-motion preferences MUST be respected** — see agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility and each platform
+- **Reduced-motion preferences MUST be respected** — see [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8) and each platform
   file's accessibility settings table. When reduced motion is enabled, replace animations
   with instant state changes or simple cross-fades.
 - Motion SHOULD NOT cover large distances, loop continuously, or flash

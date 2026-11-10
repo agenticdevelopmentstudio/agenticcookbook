@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2f199ad0-218e-41fe-b793-be7e8657f197",
     "title": "Swift Testing",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/testing/swift-testing",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/testing/unit-test-patterns"
+      "7df29f51-703a-4fc8-992d-64591ffd9e61"
     ],
     "references": [
       "https://developer.apple.com/documentation/testing"
@@ -35,7 +34,7 @@
       "writing-tests"
     ]
   },
-  "synced": "3f1d6947876a46ae",
+  "synced": "f1a4a363d5c915d2",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-use-it", "heading": "When to use it"},

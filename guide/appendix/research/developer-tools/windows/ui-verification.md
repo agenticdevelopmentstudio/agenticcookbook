@@ -1,7 +1,6 @@
 ---
 id: dddcffe6-5366-4f03-9218-73da330877e1
 title: Windows UI Verification Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/windows/ui-verification
 type: reference
 version: 1.0.0
 status: draft

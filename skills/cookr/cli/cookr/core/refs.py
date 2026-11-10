@@ -11,14 +11,32 @@ from pathlib import Path
 import cookr as _pkg
 
 
+# What cookr embeds in its own source (reference-manifest.json's `embedded_dir`).
+# ./install copies it into `references/`; a source checkout has only this.
+EMBEDDED_DIR = "references-src"
+
+
+def _root() -> Path:
+    return Path(_pkg.__file__).resolve().parent.parent
+
+
 def references_dir() -> Path:
     """Path to the bundled references dir. Created by ./install from the manifest."""
-    pkg_dir = Path(_pkg.__file__).resolve().parent
-    return pkg_dir.parent / "references"
+    return _root() / "references"
+
+
+def embedded(base: Path, name: str) -> Path:
+    """`base/name`, or, when `base` lacks it because cookr runs from a source
+    checkout that ./install has not built, cookr's embedded copy."""
+    path = base / name
+    if path.exists():
+        return path
+    src = _root() / EMBEDDED_DIR / name
+    return src if src.exists() else path
 
 
 def index_configs_dir() -> Path:
-    return references_dir() / "index-configs"
+    return embedded(references_dir(), "index-configs")
 
 
 def prompts_dir() -> Path:

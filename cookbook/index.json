@@ -1,0 +1,3779 @@
+{
+  "catalog": "../tbd/compliance",
+  "cookbook": {
+    "id": "00bf1936-4bb6-4ba2-ba0a-6fc9a3697cd0",
+    "rdid": "adc"
+  },
+  "entries": {
+    "0131807b-548d-403a-8366-de79e215949d": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/provenance-at-generation-time",
+      "rdid": "adc.principle.provenance-at-generation-time"
+    },
+    "01dc6100-4aa9-4b7b-9385-e056260b57b3": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/directory-watch-coordinator",
+      "rdid": "adc.ingredient.infrastructure.directory-watch-coordinator"
+    },
+    "01fffa23-5b96-491f-9199-8878cf676683": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/accessibility/font-scaling",
+      "rdid": "adc.guideline.implementing.accessibility.font-scaling"
+    },
+    "02301325-6676-4b89-ac9f-e2cfe99a4172": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/algorithmic-complexity",
+      "rdid": "adc.guideline.planning.code-quality.algorithmic-complexity"
+    },
+    "02e9042d-0d15-47ac-9361-2f16980a03ca": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/indexing",
+      "rdid": "adc.guideline.implementing.data.indexing"
+    },
+    "02eb7d39-cdd4-4c2e-a304-7442f3d98ff7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/networking/timeouts",
+      "rdid": "adc.guideline.reviewing.networking.timeouts"
+    },
+    "03539f34-3451-49d5-b90f-ba77430f2658": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/system-dependencies",
+      "rdid": "adc.guideline.planning.code-quality.system-dependencies"
+    },
+    "036c9768-1c60-543d-b692-4adb3d3c884f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#third-party-disclosure",
+      "rdid": "adc.check.privacy-and-data.third-party-disclosure"
+    },
+    "03df8ffb-476c-49f5-b104-33ad3c52bbe4": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/sqlite-helpers",
+      "rdid": "adc.ingredient.infrastructure.sqlite-helpers"
+    },
+    "04b47c8b-e076-47a0-a541-6937bdc64abb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/backup-and-recovery",
+      "rdid": "adc.guideline.shipping.backup-and-recovery"
+    },
+    "04fe1298-3880-4584-8a4a-c7a538eb5193": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/recipe-quality/behavioral-requirements",
+      "rdid": "adc.guideline.cookbook.recipe-quality.behavioral-requirements"
+    },
+    "05317689-de77-454c-a184-d3fb6767a543": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/internationalization/localization",
+      "rdid": "adc.guideline.reviewing.internationalization.localization"
+    },
+    "0578821f-3745-5e9c-b3f5-362fddf603c8": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-layout",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-layout"
+    },
+    "05d00147-5c49-42d8-bdbd-cf8fd7dc2379": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/flaky-test-prevention",
+      "rdid": "adc.guideline.testing.flaky-test-prevention"
+    },
+    "05f1ec7d-096a-4728-9670-1330dc2ed35b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/ui/color",
+      "rdid": "adc.guideline.reviewing.ui.color"
+    },
+    "064250f4-a30a-4240-9f2c-010012419f25": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/storytelling/narrative-arc",
+      "rdid": "adc.guideline.storytelling.narrative-arc"
+    },
+    "064273f4-c09b-56ec-b1d2-a9ad1015b5ef": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#error-response-handling",
+      "rdid": "adc.check.access-patterns.error-response-handling"
+    },
+    "06956930-278f-424f-80e9-612a4db301e8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/pagination",
+      "rdid": "adc.guideline.planning.networking.pagination"
+    },
+    "06c2a767-cd24-4527-b939-df44161d7025": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/web-services",
+      "rdid": "adc.guideline.implementing.networking.web-services"
+    },
+    "0720ed85-3747-546a-b2ed-6a909f44dd43": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#screen-reader-support",
+      "rdid": "adc.check.accessibility.screen-reader-support"
+    },
+    "074124ee-4490-40e0-aedb-9af8fbc880b5": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/sensitive-data",
+      "rdid": "adc.guideline.reviewing.security.sensitive-data"
+    },
+    "0813f93d-65e6-5559-8d81-422b37af430a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#explicit-error-handling",
+      "rdid": "adc.check.best-practices.explicit-error-handling"
+    },
+    "083aeeb8-a2fa-5fbc-a3e6-82df9a653872": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-frontmatter-complete",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-frontmatter-complete"
+    },
+    "08ca2fd9-d466-4bdc-aea0-1af0c23ef09d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/real-time-communication",
+      "rdid": "adc.guideline.planning.networking.real-time-communication"
+    },
+    "08f87323-4043-432f-8f29-936cfb4ed2e2": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/ui/windows/standalone-terminal-window",
+      "rdid": "adc.recipe.ui.windows.standalone-terminal-window"
+    },
+    "0935bc69-88a9-483e-a3c9-38447d880f45": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/state-design",
+      "rdid": "adc.guideline.implementing.ui.state-design"
+    },
+    "095b33a1-2835-4ed5-bf01-f1e492148819": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/prefer-explicit-apple-apis",
+      "rdid": "adc.guideline.implementing.platform-integration.prefer-explicit-apple-apis"
+    },
+    "098af491-bb61-48b2-b98b-4a4cf4099c1d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/testing/flaky-test-prevention",
+      "rdid": "adc.guideline.reviewing.testing.flaky-test-prevention"
+    },
+    "09947209-369f-40de-8331-c10b0d6f32c6": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/cite-the-claim-not-the-document",
+      "rdid": "adc.principle.cite-the-claim-not-the-document"
+    },
+    "09b063bd-74e7-4636-baa6-23ee82ec224b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/security/privacy-by-design",
+      "rdid": "adc.guideline.planning.security.privacy-by-design"
+    },
+    "0a75f61f-9508-506e-b92e-0f5b29a91c95": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#secure-transport",
+      "rdid": "adc.check.security.secure-transport"
+    },
+    "0b40ebfd-823f-4283-bbeb-eb2bcf095ff8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/api-design-first",
+      "rdid": "adc.guideline.planning.networking.api-design-first"
+    },
+    "0ba78b76-8359-58e4-b507-2d5a61848d33": {
+      "implementations": [],
+      "kind": "check",
+      "path": "user-safety#harmful-content-filtering",
+      "rdid": "adc.check.user-safety.harmful-content-filtering"
+    },
+    "0bfc8dc6-94ac-4bf4-8601-621ee9086487": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/storytelling/grounded-synthesis",
+      "rdid": "adc.guideline.storytelling.grounded-synthesis"
+    },
+    "0c1e0e24-cb7f-4af9-a114-da2f858422f8": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/critique-without-killing",
+      "rdid": "adc.principle.critique-without-killing"
+    },
+    "0c9cc813-244a-5dc1-8914-fd4710bb4943": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#data-retention-policy",
+      "rdid": "adc.check.privacy-and-data.data-retention-policy"
+    },
+    "0ce05d51-1d2b-4679-869a-fa1533be95ab": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/vector-search-and-retrieval",
+      "rdid": "adc.guideline.planning.data.vector-search-and-retrieval"
+    },
+    "0d3aaa29-0ce3-4803-8f8a-a7023713b574": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/recipe-quality/cookbook-compliance",
+      "rdid": "adc.guideline.cookbook.recipe-quality.cookbook-compliance"
+    },
+    "0d3e2d97-22d4-4781-a6c4-fa297b38030f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/offline-first-architecture",
+      "rdid": "adc.guideline.implementing.data.offline-first-architecture"
+    },
+    "0de6da80-6793-4ef5-afd3-c7663da1d952": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/ephemeral-environments",
+      "rdid": "adc.guideline.shipping.ephemeral-environments"
+    },
+    "0ecfed07-c7a7-4e76-9f3e-1c5ea0a5dce8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/primary-keys",
+      "rdid": "adc.guideline.implementing.data.primary-keys"
+    },
+    "0f0c1da3-1c53-417b-890d-0259d7513c65": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/logging",
+      "rdid": "adc.guideline.implementing.observability.logging"
+    },
+    "0f999db4-956a-4124-a142-367b1a570983": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/context-and-memory-management",
+      "rdid": "adc.guideline.implementing.skills-and-agents.context-and-memory-management"
+    },
+    "10311277-24f7-473b-af0a-a98285dd74f1": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/document-the-process-not-a-conclusion",
+      "rdid": "adc.principle.document-the-process-not-a-conclusion"
+    },
+    "10c66228-2141-484c-9286-2d62d43c7b70": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/security/data-privacy-regulations",
+      "rdid": "adc.guideline.planning.security.data-privacy-regulations"
+    },
+    "1123eb5a-b38a-41f8-8ae9-ec899f15707f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/sync-engine-design",
+      "rdid": "adc.guideline.planning.data.sync-engine-design"
+    },
+    "1138183b-296d-479b-9df7-7869a006c023": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/swiftdata-vs-core-data",
+      "rdid": "adc.guideline.planning.data.swiftdata-vs-core-data"
+    },
+    "128b2ee7-8226-562c-95b2-f0be25c41aee": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-type-field",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-type-field"
+    },
+    "12d6b9fe-d1a0-4b9f-b772-41d9b4aa0b8a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/security-headers-checklist",
+      "rdid": "adc.guideline.implementing.security.security-headers-checklist"
+    },
+    "1357be12-5a58-4143-a570-849c114770c5": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/separation-of-concerns",
+      "rdid": "adc.principle.separation-of-concerns"
+    },
+    "13715ef0-3351-4477-8fa6-24541c65697a": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/directory-tree-scanner",
+      "rdid": "adc.ingredient.infrastructure.directory-tree-scanner"
+    },
+    "13785c4f-b4c5-5017-bb90-069232beb6b7": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-reference-implementations",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-reference-implementations"
+    },
+    "138eed2b-6b13-40ac-8c99-1f7860420b42": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/spec-driven-development",
+      "rdid": "adc.guideline.planning.code-quality.spec-driven-development"
+    },
+    "138fe669-ae87-4338-923c-c7cf7496a49d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/no-external-dependencies-in-core-librari",
+      "rdid": "adc.guideline.reviewing.code-quality.no-external-dependencies-in-core-librari"
+    },
+    "1392a9ad-22f1-5344-bdb4-fefeeb9b26d6": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-compliance-section",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-compliance-section"
+    },
+    "1471cab8-cdd2-444d-84da-8e4e70eb2453": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/language/swift",
+      "rdid": "adc.guideline.reviewing.language.swift"
+    },
+    "14bf2d1d-875b-5e58-b43d-be492c9f941a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-change-history",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-change-history"
+    },
+    "14c5afdc-9c2d-444f-bffb-7514ca889481": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/storytelling/explanation",
+      "rdid": "adc.guideline.storytelling.explanation"
+    },
+    "1569c175-c689-55bc-a13e-a08bdb7e91c6": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#semantic-markup",
+      "rdid": "adc.check.accessibility.semantic-markup"
+    },
+    "162923d4-05f2-4f3a-9770-d5e656e8c7fe": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/accessibility/accessibility",
+      "rdid": "adc.guideline.reviewing.accessibility.accessibility"
+    },
+    "16d3e8e5-47fc-4f79-b403-c532e4f12f07": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/windows-11-materials",
+      "rdid": "adc.guideline.implementing.ui.windows-11-materials"
+    },
+    "17216748-46e9-4e92-af3a-f4deeb843a8d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/analytics",
+      "rdid": "adc.guideline.implementing.observability.analytics"
+    },
+    "17d2fa7e-0a8e-4ce7-96a0-de417db82220": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/brainstorming/divergent-techniques",
+      "rdid": "adc.guideline.brainstorming.divergent-techniques"
+    },
+    "183d07f2-ecfc-4da3-9a21-96953efefa91": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/database-testing",
+      "rdid": "adc.guideline.testing.database-testing"
+    },
+    "187a80eb-e2e5-4a6c-8d14-aa591840abe6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/xcode-project-hygiene",
+      "rdid": "adc.guideline.implementing.code-quality.xcode-project-hygiene"
+    },
+    "1887090b-e4a6-59ce-a34c-39df8777acd7": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-uuid-format",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-uuid-format"
+    },
+    "1888cb38-9583-5657-a76f-c9685d296d6c": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-compliance",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-compliance"
+    },
+    "18c82e11-2f4b-5a6e-a7cc-20f5055e0b7f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-logging",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-logging"
+    },
+    "18fdfdad-e9da-4b84-80db-23b00fef5d77": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/app/creation-menu-commands",
+      "rdid": "adc.ingredient.app.creation-menu-commands"
+    },
+    "192770a1-b6b6-5782-bc29-251a8a941272": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-behavioral-requirements",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-behavioral-requirements"
+    },
+    "192c62b6-dec8-40e9-ae69-588f1c530dc8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/authorization",
+      "rdid": "adc.guideline.reviewing.security.authorization"
+    },
+    "193e5770-fd0b-45c9-91a4-6673bf6021ff": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/share-and-inter-app-data",
+      "rdid": "adc.guideline.implementing.platform-integration.share-and-inter-app-data"
+    },
+    "19648d85-adba-4f38-b513-a38ca58e9fb0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/recipe-quality/cross-recipe-consistency",
+      "rdid": "adc.guideline.cookbook.recipe-quality.cross-recipe-consistency"
+    },
+    "1971d5c6-592d-4959-aa2c-33ea4ff17d0d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/typography",
+      "rdid": "adc.guideline.implementing.ui.typography"
+    },
+    "19f3efb0-cd98-507f-91a0-e87e93095022": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-title-heading",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-title-heading"
+    },
+    "1a167689-4afd-57c4-a5f3-96eec11aa05b": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-type-field",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-type-field"
+    },
+    "1aef5b69-c5d5-4b9f-907e-285ee03cb079": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/file-paths",
+      "rdid": "adc.guideline.implementing.code-quality.file-paths"
+    },
+    "1b259fdc-1aba-48c5-a89a-b9ca01dc3351": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/feature-flags",
+      "rdid": "adc.guideline.shipping.feature-flags"
+    },
+    "1b79f7dc-16c4-40d7-ab9d-d03449bf21dc": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/code-hygiene",
+      "rdid": "adc.guideline.reviewing.code-quality.code-hygiene"
+    },
+    "1bf8364a-064b-52fe-9db8-5eb2e862bbac": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-brevity",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-brevity"
+    },
+    "1d375109-2473-5047-a0d5-93e95f04cc7f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-title-heading",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-title-heading"
+    },
+    "1d4b2aa7-c30e-4d41-8bd8-892ff7ce7499": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/app-interactions",
+      "rdid": "adc.guideline.planning.code-quality.app-interactions"
+    },
+    "1d5c23d5-9a26-57fb-a23d-358271e4204a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#secure-authentication",
+      "rdid": "adc.check.security.secure-authentication"
+    },
+    "1dd2111a-eb05-40e4-b469-1aecd79c5863": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/collapsible-pane-header",
+      "rdid": "adc.ingredient.ui.components.collapsible-pane-header"
+    },
+    "1e7f8c3d-ece9-4c5c-b7ca-7703391995dd": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/material3-theming",
+      "rdid": "adc.guideline.implementing.ui.material3-theming"
+    },
+    "203de556-83a8-5211-acaf-155c49da0eb3": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#test-pyramid",
+      "rdid": "adc.check.best-practices.test-pyramid"
+    },
+    "2041fbd9-d210-485e-9a3a-b2d8295ed924": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/incident-response",
+      "rdid": "adc.guideline.shipping.incident-response"
+    },
+    "2054b522-fd98-4320-95df-3d95d1a07d98": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/platform-integration/deep-linking",
+      "rdid": "adc.guideline.reviewing.platform-integration.deep-linking"
+    },
+    "211d79ad-73a9-5890-9c79-a390f34e06d9": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#code-linting",
+      "rdid": "adc.check.best-practices.code-linting"
+    },
+    "21c0a0b9-2be4-4209-a648-083ec7272fd7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/use-roadmaplib",
+      "rdid": "adc.guideline.reviewing.code-quality.use-roadmaplib"
+    },
+    "21cb4d4f-43d0-5873-8cd1-c7c3333eefdd": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-accessibility",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-accessibility"
+    },
+    "21e9045a-1881-42bd-92d1-57a006638626": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/storytelling/craft",
+      "rdid": "adc.guideline.storytelling.craft"
+    },
+    "2212a394-68d8-4588-a587-2fc637280deb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/handoff-and-continuity",
+      "rdid": "adc.guideline.implementing.platform-integration.handoff-and-continuity"
+    },
+    "22640534-3a5b-4f8a-9f22-500a2dabc7ca": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/review-report-writing",
+      "rdid": "adc.guideline.reviewing.review-report-writing"
+    },
+    "22729bee-7ab4-4648-aa5a-2beef067d0c3": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/status-bar",
+      "rdid": "adc.ingredient.ui.components.status-bar"
+    },
+    "22f1ca04-2d1d-4faf-8bf0-c6abcd60802c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/sensitive-data",
+      "rdid": "adc.guideline.implementing.security.sensitive-data"
+    },
+    "22fbf585-c5a3-425a-94f1-ba9b570ebfde": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/job-worker",
+      "rdid": "adc.ingredient.infrastructure.job-worker"
+    },
+    "2307a9fe-7721-4c13-bbeb-5320f3ea775d": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/developer-tools/claude/rule-optimizer",
+      "rdid": "adc.ingredient.developer-tools.claude.rule-optimizer"
+    },
+    "2325df50-baef-4a59-8276-0e99282d74d6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/cors",
+      "rdid": "adc.guideline.reviewing.security.cors"
+    },
+    "23bca2e1-dc0f-5ff4-beaf-03891ad48e6b": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#no-pii-in-logs",
+      "rdid": "adc.check.privacy-and-data.no-pii-in-logs"
+    },
+    "246d87c8-213a-4de1-9452-6e683d3d75e3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/relationships",
+      "rdid": "adc.guideline.implementing.data.relationships"
+    },
+    "24eb3821-0f66-4acf-bff0-5797982bb60d": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/panels/ai-settings-panel",
+      "rdid": "adc.ingredient.ui.panels.ai-settings-panel"
+    },
+    "252b9112-8a14-5fc8-9601-bf99249468eb": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-type-field",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-type-field"
+    },
+    "256a827e-436e-4cde-895e-a56b9783edf2": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/dry",
+      "rdid": "adc.principle.dry"
+    },
+    "2575d546-fbd4-46a6-a143-b886c7d04f01": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/delete-what-you-supersede",
+      "rdid": "adc.guideline.implementing.code-quality.delete-what-you-supersede"
+    },
+    "2598f495-1820-47e7-b7e7-ce548d390148": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/token-handling",
+      "rdid": "adc.guideline.implementing.security.token-handling"
+    },
+    "25a3b827-1da9-4600-98ec-f5c492a162e3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/schema-evolution",
+      "rdid": "adc.guideline.implementing.data.schema-evolution"
+    },
+    "2609037a-fb89-4b49-88b0-7e4295e5d6f6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/authorization",
+      "rdid": "adc.guideline.implementing.security.authorization"
+    },
+    "26a1a47f-f749-4477-ae04-c54c9a4c5117": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/data/query-optimization",
+      "rdid": "adc.guideline.reviewing.data.query-optimization"
+    },
+    "26c8e7d6-dde3-48d0-bde0-8a71a51a6674": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/layout",
+      "rdid": "adc.guideline.implementing.ui.layout"
+    },
+    "26d10854-c903-40c5-8bef-18337c5ac71e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/ui/design-tokens",
+      "rdid": "adc.guideline.planning.ui.design-tokens"
+    },
+    "2795e06d-b081-43ac-97d9-20ff3d0a93b1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/researching/evidence/research-results-document",
+      "rdid": "adc.guideline.researching.evidence.research-results-document"
+    },
+    "27e5ef04-85b6-4d63-8802-0378051d6bea": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/offline-first-architecture",
+      "rdid": "adc.guideline.planning.data.offline-first-architecture"
+    },
+    "27f0e59e-6080-435a-865d-79ed95a0b9ae": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/agent-checklist",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.agent-checklist"
+    },
+    "28e0fd80-be0a-4f85-ac42-1e423623b242": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/bulk-operation-verification",
+      "rdid": "adc.guideline.shipping.bulk-operation-verification"
+    },
+    "29057cf0-a38b-4c35-8b8b-52e12bf54784": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/privacy",
+      "rdid": "adc.guideline.implementing.security.privacy"
+    },
+    "2945503d-8e92-44ca-bc64-20285eb29296": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/skill-checklist",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.skill-checklist"
+    },
+    "2a22b563-afb5-4615-96ae-338eafd5eb81": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/parse-dont-validate",
+      "rdid": "adc.principle.parse-dont-validate"
+    },
+    "2a7c7781-df82-568d-b408-c3bfc73968d4": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-shared-state",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-shared-state"
+    },
+    "2a8a8918-3e9d-5e0f-a154-106b4f34ca17": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#encryption-at-rest",
+      "rdid": "adc.check.privacy-and-data.encryption-at-rest"
+    },
+    "2a996577-d417-4b1b-b468-6e93bf1a9b4f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/skill-structure-reference",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.skill-structure-reference"
+    },
+    "2aaf1727-aa36-41d1-a660-7dd0456e1d07": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/design-for-deletion",
+      "rdid": "adc.principle.design-for-deletion"
+    },
+    "2b7a1e5f-80b0-4837-ab7e-5b6151450d4a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/dependency-injection",
+      "rdid": "adc.guideline.reviewing.code-quality.dependency-injection"
+    },
+    "2b9b576c-1e17-4a15-b347-febf2ea3c312": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/partitioning-and-time-series",
+      "rdid": "adc.guideline.implementing.data.partitioning-and-time-series"
+    },
+    "2b9e9fbb-6df8-4dc2-b02d-3b97f6e434fb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/high-dpi-display-scaling",
+      "rdid": "adc.guideline.implementing.ui.high-dpi-display-scaling"
+    },
+    "2c605b36-da66-4eaf-b2d4-59ed5a3976b3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/reuse-before-build",
+      "rdid": "adc.guideline.planning.code-quality.reuse-before-build"
+    },
+    "2e317c68-384d-46b8-b3b3-0bcc6602e545": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/real-time-communication",
+      "rdid": "adc.guideline.implementing.networking.real-time-communication"
+    },
+    "2f199ad0-218e-41fe-b793-be7e8657f197": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/testing/swift-testing",
+      "rdid": "adc.guideline.implementing.testing.swift-testing"
+    },
+    "2fd49a5f-4be1-4b0d-b2e7-41cbcbab66ee": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/windows-ui-framework-and-deployment",
+      "rdid": "adc.guideline.planning.code-quality.windows-ui-framework-and-deployment"
+    },
+    "31586bfd-4403-4a11-93d4-ac1a3e001c2f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/ui/data-display",
+      "rdid": "adc.guideline.planning.ui.data-display"
+    },
+    "31f97683-8d2e-4203-a155-48cebc1bfb13": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/ui/windows/settings-window",
+      "rdid": "adc.recipe.ui.windows.settings-window"
+    },
+    "3266a780-2feb-5cf0-8eec-25397b561d32": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#security-testing",
+      "rdid": "adc.check.security.security-testing"
+    },
+    "32eb5fa7-31ba-49d2-8223-a530d8cc7092": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/autonomous-dev-bots/pr-review-phase",
+      "rdid": "adc.ingredient.autonomous-dev-bots.pr-review-phase"
+    },
+    "338cb220-483c-4f9e-ae9d-e1dd79e59289": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/ui/windows/project-window",
+      "rdid": "adc.recipe.ui.windows.project-window"
+    },
+    "33c3971e-84a3-4318-8674-b0ff60e7f8f3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/groundedness-and-hallucination",
+      "rdid": "adc.guideline.testing.groundedness-and-hallucination"
+    },
+    "3416a359-e01c-40b2-8876-4a8634d4395e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/caching",
+      "rdid": "adc.guideline.implementing.networking.caching"
+    },
+    "342ea2ea-fb37-5746-9ccd-e81d3d593996": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#content-security-policy",
+      "rdid": "adc.check.security.content-security-policy"
+    },
+    "34486fb8-8a0b-4538-a40a-13124155cd56": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/naming",
+      "rdid": "adc.guideline.implementing.code-quality.naming"
+    },
+    "344b69da-c901-4650-b49d-c2df0234103b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/concurrency/swift6-strict-concurrency",
+      "rdid": "adc.guideline.implementing.concurrency.swift6-strict-concurrency"
+    },
+    "3473a495-4e73-5bfe-a2d4-fa9200936645": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-overview",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-overview"
+    },
+    "34f13883-8905-4b5c-9299-82602687e98d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/linting",
+      "rdid": "adc.guideline.testing.linting"
+    },
+    "355028de-c329-48dd-b609-41aba903e01c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/mcp-input-validation",
+      "rdid": "adc.guideline.implementing.security.mcp-input-validation"
+    },
+    "36825f6a-eedc-4cc5-a857-e107133f7ce5": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/distributed-tracing",
+      "rdid": "adc.guideline.implementing.observability.distributed-tracing"
+    },
+    "36bdba1b-2759-45c6-80b9-374536efb7bb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/essential-vs-accidental-complexity",
+      "rdid": "adc.guideline.planning.code-quality.essential-vs-accidental-complexity"
+    },
+    "36d29fae-0929-46ef-98d6-d7e8f67aa040": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/transaction-isolation",
+      "rdid": "adc.guideline.implementing.data.transaction-isolation"
+    },
+    "3741ed5e-0b67-48f2-b227-36ae152c0f4b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/platform-design-languages",
+      "rdid": "adc.guideline.implementing.ui.platform-design-languages"
+    },
+    "376daf6c-f2bd-4a33-9ab4-2a2af140e725": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/fluent-design",
+      "rdid": "adc.guideline.implementing.ui.fluent-design"
+    },
+    "3889317c-e8c5-518f-a029-7d0288112772": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-structure-kind",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-structure-kind"
+    },
+    "3890e8fb-9d2d-42db-9753-cf60b95152cc": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/ai-provider-observability",
+      "rdid": "adc.guideline.implementing.observability.ai-provider-observability"
+    },
+    "38969d3a-884a-4d6e-adae-5398464ee0de": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/test-data",
+      "rdid": "adc.guideline.testing.test-data"
+    },
+    "392d9205-6a50-4815-80a0-7d148880d43b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/rule-checklist",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.rule-checklist"
+    },
+    "39676af7-b0b9-48f2-8056-f0c8e8754ffc": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/settings-keys",
+      "rdid": "adc.ingredient.infrastructure.settings-keys"
+    },
+    "39c2d053-006f-42c9-9db4-d991c1688024": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/idempotency",
+      "rdid": "adc.principle.idempotency"
+    },
+    "3a6baa24-9bd3-45f8-aa6a-b32c61169ed3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/value-objects",
+      "rdid": "adc.guideline.implementing.code-quality.value-objects"
+    },
+    "3af6830b-71c9-4e50-929d-38dec20dae24": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/progressive-web-app",
+      "rdid": "adc.guideline.implementing.ui.progressive-web-app"
+    },
+    "3b773606-ab90-5e7d-8e96-093777dcf070": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#caching-strategy",
+      "rdid": "adc.check.performance.caching-strategy"
+    },
+    "3b83a80f-d170-4ef6-a608-81f3a1476679": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/ui/windows/workspace-window",
+      "rdid": "adc.recipe.ui.windows.workspace-window"
+    },
+    "3b88bb39-a15d-488f-a967-b7fa2dba2be7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/sync-protocol",
+      "rdid": "adc.guideline.implementing.data.sync-protocol"
+    },
+    "3b9fce69-7541-4f49-81ae-86119096a4d8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/clock-systems",
+      "rdid": "adc.guideline.implementing.data.clock-systems"
+    },
+    "3bdab1a4-d111-5411-92a3-6200c9578c02": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-change-history",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-change-history"
+    },
+    "3ca81fd0-7730-4049-bb0a-91514bb0d730": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/completeness",
+      "rdid": "adc.guideline.implementing.code-quality.completeness"
+    },
+    "3d970d6a-2d71-48f3-9f84-69c1d823d6e8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/accessibility/accessibility",
+      "rdid": "adc.guideline.implementing.accessibility.accessibility"
+    },
+    "3d9f5176-afaa-47a2-8a89-fc0402f3dff2": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/snapshot-testing",
+      "rdid": "adc.guideline.testing.snapshot-testing"
+    },
+    "3f30b4e0-f8aa-51ae-832b-0298537fa85f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-spec-paths-valid",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-spec-paths-valid"
+    },
+    "3f442861-abec-4dfc-a2e2-a3761904d16d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/kotlin-multiplatform",
+      "rdid": "adc.guideline.planning.code-quality.kotlin-multiplatform"
+    },
+    "40ba1017-cec3-42f0-bd89-63a29eb3dd4d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/previews",
+      "rdid": "adc.guideline.implementing.ui.previews"
+    },
+    "40d630ea-4d62-4c95-9663-80b033e4adae": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/testing",
+      "rdid": "adc.guideline.testing.testing"
+    },
+    "412a8e85-ad91-5e53-b3ee-ae938dda2538": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#reduced-motion",
+      "rdid": "adc.check.accessibility.reduced-motion"
+    },
+    "41800299-4489-5305-ad2f-a7888dcd5e55": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#play-store-policies",
+      "rdid": "adc.check.platform-compliance.play-store-policies"
+    },
+    "41f11fb7-abed-5c62-ae13-456da5874bb0": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#startup-impact",
+      "rdid": "adc.check.performance.startup-impact"
+    },
+    "42220186-4305-45cd-8e7d-a8d1172b6fbd": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/testing/testing",
+      "rdid": "adc.guideline.implementing.testing.testing"
+    },
+    "425271ea-92b6-4df6-9a83-94795f1be377": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/fail-fast",
+      "rdid": "adc.principle.fail-fast"
+    },
+    "42ed78a6-eea7-4b48-8b5f-be345682ffc3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/code-for-the-ai-reader",
+      "rdid": "adc.guideline.implementing.code-quality.code-for-the-ai-reader"
+    },
+    "433b4c9d-fe44-4fec-af0d-83bba9c51c6f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/background-tasks",
+      "rdid": "adc.guideline.implementing.platform-integration.background-tasks"
+    },
+    "433c7317-4c29-5100-8524-ef3e34ac5588": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#image-optimization",
+      "rdid": "adc.check.performance.image-optimization"
+    },
+    "43dbf61b-96ff-45f8-a11c-924e2f4359e0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/rule-structure-reference",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.rule-structure-reference"
+    },
+    "4428deb0-05a8-4b52-a78f-3dec1e7f90a4": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/msix-packaging",
+      "rdid": "adc.guideline.shipping.msix-packaging"
+    },
+    "4554e680-aca3-4bb2-bc99-1ac381c428b2": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/small-reversible-decisions",
+      "rdid": "adc.principle.small-reversible-decisions"
+    },
+    "47563e88-307b-4eef-a63c-ddc18e85a945": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/recipe-quality/source-fidelity",
+      "rdid": "adc.guideline.cookbook.recipe-quality.source-fidelity"
+    },
+    "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/language/powershell",
+      "rdid": "adc.guideline.implementing.language.powershell"
+    },
+    "4870c831-6dc5-5797-8d40-bbcf4c2bc1fe": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-design-decisions",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-design-decisions"
+    },
+    "48aca967-1050-58d3-830d-df3831066fce": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-valid-json",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-valid-json"
+    },
+    "49399746-a81f-4163-8b07-0cfa11d87c2e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/api-design",
+      "rdid": "adc.guideline.implementing.networking.api-design"
+    },
+    "495000e6-a1fc-4b43-8999-23089505559c": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/open-source-preference",
+      "rdid": "adc.principle.open-source-preference"
+    },
+    "497a717f-de29-4baf-b7b8-4487f672d9a8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/design-time-data",
+      "rdid": "adc.guideline.implementing.ui.design-time-data"
+    },
+    "49acdf9f-e4cb-4492-a620-809438eefb37": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/pagination",
+      "rdid": "adc.guideline.implementing.networking.pagination"
+    },
+    "4a047375-7f4f-4bca-84a5-62a0f70fc5c9": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/windows/settings-category-browser",
+      "rdid": "adc.ingredient.ui.windows.settings-category-browser"
+    },
+    "4a2898cf-34ed-4153-8d06-c795f80c19cd": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/panels/terminal-pane",
+      "rdid": "adc.ingredient.ui.panels.terminal-pane"
+    },
+    "4b58d4d6-f177-45d7-b7c1-bf50adcd13a3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/compose-side-effects",
+      "rdid": "adc.guideline.implementing.ui.compose-side-effects"
+    },
+    "4b60fa16-a4cc-4376-97c3-e455681bffb6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/unit-test-patterns",
+      "rdid": "adc.guideline.testing.unit-test-patterns"
+    },
+    "4b85c8bc-e588-40ca-b5a5-453b7a16d710": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/passkeys-and-webauthn",
+      "rdid": "adc.guideline.implementing.security.passkeys-and-webauthn"
+    },
+    "4c070e8f-332c-4831-95a1-d0776e7b7ce8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/yaml-frontmatter",
+      "rdid": "adc.guideline.implementing.code-quality.yaml-frontmatter"
+    },
+    "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/input-validation",
+      "rdid": "adc.guideline.implementing.security.input-validation"
+    },
+    "4cb7c242-3ade-4d59-9c74-67c1d5f9c107": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/internationalization/rtl-support",
+      "rdid": "adc.guideline.implementing.internationalization.rtl-support"
+    },
+    "4de09db8-b6fe-4211-b7e4-c95619a12141": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/dependency-clusters",
+      "rdid": "adc.guideline.planning.code-quality.dependency-clusters"
+    },
+    "4e498351-481c-4444-9a2d-0075ecdfc261": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/storytelling/ecosystem",
+      "rdid": "adc.guideline.storytelling.ecosystem"
+    },
+    "4e8480d3-9a6c-566b-bb85-d1c16a6827f3": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-edge-cases",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-edge-cases"
+    },
+    "4f4ed7a2-a26f-40f2-b863-51715b5c470c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/copilot-configuration",
+      "rdid": "adc.guideline.implementing.skills-and-agents.copilot-configuration"
+    },
+    "4f5fe9ef-1bf8-4354-92c7-92d9e28673b8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/flaky-test-quarantine",
+      "rdid": "adc.guideline.testing.flaky-test-quarantine"
+    },
+    "50ea8b39-813d-4325-be31-0ae19b8a3baf": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/concurrency/immutability",
+      "rdid": "adc.guideline.implementing.concurrency.immutability"
+    },
+    "51038675-205b-4752-b826-4081b3729359": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/module-boundaries",
+      "rdid": "adc.guideline.planning.code-quality.module-boundaries"
+    },
+    "51e1f37a-919e-4e42-b439-ffdf0c2ef2e8": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/errors-as-values",
+      "rdid": "adc.principle.errors-as-values"
+    },
+    "5354ca72-dc1d-5ab2-821b-2245cf39b139": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-triggers-field",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-triggers-field"
+    },
+    "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/never-clobber-user-files",
+      "rdid": "adc.guideline.implementing.skills-and-agents.never-clobber-user-files"
+    },
+    "536c1e46-36f9-4a44-b8f4-c9e4db94cf53": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/spacing",
+      "rdid": "adc.guideline.implementing.ui.spacing"
+    },
+    "54317850-9536-4b9e-ac3a-a2ac5bc13ec6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/dashboard-service-is-display-only",
+      "rdid": "adc.guideline.implementing.ui.dashboard-service-is-display-only"
+    },
+    "544b36cb-2778-4b60-a31e-b55ff789eada": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/xcode-project-hygiene",
+      "rdid": "adc.guideline.reviewing.code-quality.xcode-project-hygiene"
+    },
+    "5546b9ad-b8b4-4973-817e-b3bc4f090618": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/app/child-process-cleanup",
+      "rdid": "adc.ingredient.app.child-process-cleanup"
+    },
+    "555ad5e1-800f-4848-8c58-6f726bdcb42b": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/manage-complexity-through-boundaries",
+      "rdid": "adc.principle.manage-complexity-through-boundaries"
+    },
+    "555d659d-6272-4ad3-90f7-3efc8ee6031e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/networking/mcp-server-checklist",
+      "rdid": "adc.guideline.reviewing.networking.mcp-server-checklist"
+    },
+    "55c65fc6-aa2b-4410-99ab-4bb037313e05": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/content-security-policy",
+      "rdid": "adc.guideline.reviewing.security.content-security-policy"
+    },
+    "55f00387-840c-508a-a01b-38b1f5091e9d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#post-generation-verification",
+      "rdid": "adc.check.best-practices.post-generation-verification"
+    },
+    "561a27f4-f019-4d3a-96eb-c18d37b16b61": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/git-status-indicator",
+      "rdid": "adc.ingredient.ui.components.git-status-indicator"
+    },
+    "5637ea7d-fe23-5602-854e-69078d59f7fc": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#data-portability",
+      "rdid": "adc.check.privacy-and-data.data-portability"
+    },
+    "56394d2f-b784-4771-92a4-faacc037c609": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/shared-components-and-tiers",
+      "rdid": "adc.guideline.implementing.code-quality.shared-components-and-tiers"
+    },
+    "563aebde-52bf-4011-8907-ecc473fd942c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/post-generation-verification",
+      "rdid": "adc.guideline.testing.post-generation-verification"
+    },
+    "5662987f-fd56-4a3a-a519-672187207745": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/typescript-strictness",
+      "rdid": "adc.guideline.implementing.code-quality.typescript-strictness"
+    },
+    "56755f54-b31f-59aa-a77d-eeb0cd87731a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#keyboard-navigable",
+      "rdid": "adc.check.accessibility.keyboard-navigable"
+    },
+    "5676e038-c4f2-49b5-a8ab-ec3e54e83afb": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/developer-tools/claude/rule-validation-report",
+      "rdid": "adc.ingredient.developer-tools.claude.rule-validation-report"
+    },
+    "578e6d3b-f60d-42ff-964b-06b173ffaae9": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/domain-stratified-trust",
+      "rdid": "adc.principle.domain-stratified-trust"
+    },
+    "57cbdb9d-4cf7-4a39-bdd8-99d28be983ca": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/internationalization/localization",
+      "rdid": "adc.guideline.implementing.internationalization.localization"
+    },
+    "57ece0cf-b285-4cb2-ab7a-c0b6dd148695": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/dependency-security",
+      "rdid": "adc.guideline.reviewing.security.dependency-security"
+    },
+    "58252326-3716-4bf4-92b9-e678b879f910": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/android-navigation",
+      "rdid": "adc.guideline.implementing.ui.android-navigation"
+    },
+    "588b5eae-b70e-4302-a52f-9287265ad03c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/feature-management/feature-flags",
+      "rdid": "adc.guideline.planning.feature-management.feature-flags"
+    },
+    "589c0733-68b0-59dc-b63e-8eb6138a7517": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-frontmatter-complete",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-frontmatter-complete"
+    },
+    "597e9cd0-453a-42b8-a464-8ba8d31a6efc": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/llm-backend",
+      "rdid": "adc.ingredient.infrastructure.llm-backend"
+    },
+    "59fadf7a-6af8-579a-9d57-e690d357e222": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-source-domains",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-source-domains"
+    },
+    "59ffd7c7-2bdc-4f7b-b6f3-07d1f24599a3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/testing/unit-test-patterns",
+      "rdid": "adc.guideline.cookbook.testing.unit-test-patterns"
+    },
+    "5a091e61-8331-4fa0-9214-cb0e142af94f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/kimi-configuration",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.kimi-configuration"
+    },
+    "5a57e599-ca8e-44b9-9be7-109f7c176feb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/sync-schema-design",
+      "rdid": "adc.guideline.planning.data.sync-schema-design"
+    },
+    "5aad79dd-4d0e-463e-8059-39da2fef63b3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/agent-instruction-files",
+      "rdid": "adc.guideline.planning.code-quality.agent-instruction-files"
+    },
+    "5b026378-d418-406a-9aab-6e3f043901af": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/transport-security",
+      "rdid": "adc.guideline.implementing.security.transport-security"
+    },
+    "5b4e41dc-8362-5dad-aa80-f1b5500ed1f2": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#touch-target-size",
+      "rdid": "adc.check.accessibility.touch-target-size"
+    },
+    "5cc9773e-78de-493e-891c-2a819baf9b60": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/theming",
+      "rdid": "adc.guideline.implementing.ui.theming"
+    },
+    "5e074131-c8e2-5222-b8dd-c38c43c66f26": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-actionable-guidance",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-actionable-guidance"
+    },
+    "5e6161cd-6bab-46b5-a2c5-14de3527b035": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/conflict-resolution",
+      "rdid": "adc.guideline.planning.data.conflict-resolution"
+    },
+    "5fe32fd6-0917-5741-b923-e76c07f8f72d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-statement",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-statement"
+    },
+    "5ff14706-ab76-5c69-8a69-109919512b76": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#separation-of-concerns",
+      "rdid": "adc.check.best-practices.separation-of-concerns"
+    },
+    "6079c539-f547-46de-9284-d404a76f6d9d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/api-design",
+      "rdid": "adc.guideline.planning.networking.api-design"
+    },
+    "607b9f71-39dd-4b10-80fd-d8fd115cce5f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/backup-and-recovery",
+      "rdid": "adc.guideline.implementing.data.backup-and-recovery"
+    },
+    "60b3f760-f397-4762-b2d5-5aba80fd51f8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/infrastructure/immutable-infrastructure",
+      "rdid": "adc.guideline.planning.infrastructure.immutable-infrastructure"
+    },
+    "6168eb9e-50be-4b84-940d-cb97f1e374d1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/apple-privacy-manifest",
+      "rdid": "adc.guideline.shipping.apple-privacy-manifest"
+    },
+    "61756d9a-da97-49d1-be26-eef31de15232": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/defer-judgment-go-for-quantity",
+      "rdid": "adc.principle.defer-judgment-go-for-quantity"
+    },
+    "61ca76a4-0188-488b-9ac6-1144ca8ed506": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/infrastructure/ai-processing-node",
+      "rdid": "adc.recipe.infrastructure.ai-processing-node"
+    },
+    "61edfc73-f26a-5cfa-8c09-d1011eb8b7cd": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#token-lifecycle",
+      "rdid": "adc.check.security.token-lifecycle"
+    },
+    "62d3f4a7-0310-4606-b3ee-95610dddbbb8": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/constraints-as-creative-fuel",
+      "rdid": "adc.principle.constraints-as-creative-fuel"
+    },
+    "62d4533e-4c45-5076-8620-079005218c14": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-overview",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-overview"
+    },
+    "6302654b-8200-4e03-862d-4734d4960d19": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/concurrency/concurrency",
+      "rdid": "adc.guideline.implementing.concurrency.concurrency"
+    },
+    "631b7b61-985a-4f5d-9c44-2cfbfdb9091b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/error-responses",
+      "rdid": "adc.guideline.implementing.networking.error-responses"
+    },
+    "63659e2c-215a-44ed-b330-2bca8d88bd9a": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/infrastructure/directory-sync",
+      "rdid": "adc.recipe.infrastructure.directory-sync"
+    },
+    "63c5a406-6356-417f-b549-b97e40385ba5": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/autonomous-dev-bots/pr-scope-phase",
+      "rdid": "adc.ingredient.autonomous-dev-bots.pr-scope-phase"
+    },
+    "647b7d54-41fc-4f31-96e4-3d23ae49f92b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/pii-handling",
+      "rdid": "adc.guideline.implementing.security.pii-handling"
+    },
+    "6493422b-b843-5a83-85ce-bbbde1ccb576": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-frontmatter-complete",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-frontmatter-complete"
+    },
+    "64bdf327-b4ac-4772-a3b6-cbaf7e8e5449": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/metrics-red-use",
+      "rdid": "adc.guideline.implementing.observability.metrics-red-use"
+    },
+    "65367d27-1d4e-41e5-9e8c-e9adb08ddc90": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/language/objective-c",
+      "rdid": "adc.guideline.reviewing.language.objective-c"
+    },
+    "65be477d-c1ec-5a78-a8c6-aa6883e5d5cb": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-change-history",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-change-history"
+    },
+    "65eff0b7-14d5-4cd1-8107-1cfda65e78f3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/platform-integration/wsl",
+      "rdid": "adc.guideline.reviewing.platform-integration.wsl"
+    },
+    "66735bd3-65de-44a9-b449-ba3df79b5373": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/offline-and-connectivity",
+      "rdid": "adc.guideline.planning.networking.offline-and-connectivity"
+    },
+    "67c59594-a5dc-46f2-aa61-3436921294c7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/offline-and-connectivity",
+      "rdid": "adc.guideline.implementing.networking.offline-and-connectivity"
+    },
+    "67dbf22d-1092-556a-b6eb-90cff54a20d1": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-title-heading",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-title-heading"
+    },
+    "694a971d-282d-501b-8861-c4ece3b01edd": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#error-recovery",
+      "rdid": "adc.check.reliability.error-recovery"
+    },
+    "6a653107-929d-418e-865d-636373a27b02": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/datastore-selection",
+      "rdid": "adc.guideline.planning.data.datastore-selection"
+    },
+    "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/wsl",
+      "rdid": "adc.guideline.implementing.platform-integration.wsl"
+    },
+    "6af1d30a-c2ee-4a6d-97ec-50c67f01a243": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/panels/inspector-panel",
+      "rdid": "adc.ingredient.ui.panels.inspector-panel"
+    },
+    "6b8715f1-ece0-4db6-b691-19e9d0367ef3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/service-level-objectives",
+      "rdid": "adc.guideline.implementing.observability.service-level-objectives"
+    },
+    "6ba6685b-9d35-5eb2-96e7-afbccd1e5848": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#progress-indication",
+      "rdid": "adc.check.performance.progress-indication"
+    },
+    "6c725e1e-7447-5625-9931-b1c9085f1f9e": {
+      "implementations": [],
+      "kind": "check",
+      "path": "user-safety#age-appropriate-content",
+      "rdid": "adc.check.user-safety.age-appropriate-content"
+    },
+    "6d8ae093-8610-468b-932a-be2fb19eb260": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/data-retention-and-deletion",
+      "rdid": "adc.guideline.implementing.data.data-retention-and-deletion"
+    },
+    "6e29b5a6-fa54-4d6e-a8ce-089bd800a861": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/yaml-frontmatter",
+      "rdid": "adc.guideline.reviewing.code-quality.yaml-frontmatter"
+    },
+    "6e64e2f2-28ad-55d5-a8ed-cee075366674": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#state-recovery",
+      "rdid": "adc.check.reliability.state-recovery"
+    },
+    "6f1ec998-a286-4177-ac0a-97aa53eccb7e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/authentication",
+      "rdid": "adc.guideline.reviewing.security.authentication"
+    },
+    "6f4cfd55-cb09-4ede-a53c-feaeb5781127": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/content-security-policy",
+      "rdid": "adc.guideline.implementing.security.content-security-policy"
+    },
+    "6f6ccc46-33fb-44ad-8dce-d65581d8dfe0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/infrastructure/kubernetes-workloads",
+      "rdid": "adc.guideline.implementing.infrastructure.kubernetes-workloads"
+    },
+    "703b1ec7-b940-46a5-8974-441b04a0bb9d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/continuous-delivery",
+      "rdid": "adc.guideline.shipping.continuous-delivery"
+    },
+    "704fef7e-0e8d-480c-8019-cf84b5fd851b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/data-display",
+      "rdid": "adc.guideline.implementing.ui.data-display"
+    },
+    "706a3bf7-0fe1-4b12-b4da-0fd8d363b314": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/copilot-configuration",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.copilot-configuration"
+    },
+    "709aabb0-c305-4a23-8748-9f57c5bbe93d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/llm-red-teaming",
+      "rdid": "adc.guideline.reviewing.security.llm-red-teaming"
+    },
+    "70f2ab2f-a05f-4981-9fea-e9d169fc1753": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/theming-with-tokens",
+      "rdid": "adc.guideline.implementing.ui.theming-with-tokens"
+    },
+    "71af85de-c618-4319-8150-f2f0015921dd": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/transactions-and-concurrency",
+      "rdid": "adc.guideline.planning.data.transactions-and-concurrency"
+    },
+    "7264c7b6-593e-4ed9-8974-f5ea5e4db123": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/windows/workspace-browser",
+      "rdid": "adc.ingredient.ui.windows.workspace-browser"
+    },
+    "734f7c30-8cf2-4284-8276-267d62c3c49c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/testing/test-doubles",
+      "rdid": "adc.guideline.implementing.testing.test-doubles"
+    },
+    "736fac9a-56e0-449d-8dc0-b95cbfba7884": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/compose-state-and-udf",
+      "rdid": "adc.guideline.implementing.ui.compose-state-and-udf"
+    },
+    "73b254b4-c611-434a-a9f4-67c8a7155576": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/touch-click-targets",
+      "rdid": "adc.guideline.implementing.ui.touch-click-targets"
+    },
+    "73b87332-8024-4a21-95ab-1e08f1cbd1a1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/design-time-data",
+      "rdid": "adc.guideline.testing.design-time-data"
+    },
+    "744c30a2-5dfa-41c6-8746-37372ba6465c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/documentation/docs-match-code",
+      "rdid": "adc.guideline.reviewing.documentation.docs-match-code"
+    },
+    "746b6b5e-11b9-48f7-a304-4b6755fd7f75": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/interface-cohesion",
+      "rdid": "adc.guideline.planning.code-quality.interface-cohesion"
+    },
+    "760b2e75-d0e4-4b20-a074-3342c2efe974": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/testing/test-data",
+      "rdid": "adc.guideline.implementing.testing.test-data"
+    },
+    "7680d0cd-dfd8-5a10-ad69-e7dd014d6b5e": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#dependency-scanning",
+      "rdid": "adc.check.security.dependency-scanning"
+    },
+    "76f66741-2d13-5262-973f-13bc373d2701": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-change-history",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-change-history"
+    },
+    "775da457-30c7-47de-b179-0fae8a8b779d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/linting",
+      "rdid": "adc.guideline.implementing.code-quality.linting"
+    },
+    "788f1c1d-69af-4570-a279-748d89fcc0e0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/mcp-server-design",
+      "rdid": "adc.guideline.implementing.networking.mcp-server-design"
+    },
+    "792f0b2d-c4b2-440f-9e58-33fa1e30a2c4": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/shell-scripts",
+      "rdid": "adc.guideline.reviewing.code-quality.shell-scripts"
+    },
+    "793bd9f6-b029-4c4e-aca5-d253f9fab48e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/dependency-security",
+      "rdid": "adc.guideline.shipping.dependency-security"
+    },
+    "793f491f-a352-4478-876d-7c5d871488f7": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/yagni",
+      "rdid": "adc.principle.yagni"
+    },
+    "79990a17-72ea-581d-b216-c50d6419e978": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#string-externalization",
+      "rdid": "adc.check.internationalization.string-externalization"
+    },
+    "7a14b9f2-0e10-456b-a103-8a887afda9f2": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/suppress-unsupported-confidence",
+      "rdid": "adc.principle.suppress-unsupported-confidence"
+    },
+    "7a1571f1-021e-4e5e-8247-ae8c79fef5fe": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/type-precedes-method",
+      "rdid": "adc.principle.type-precedes-method"
+    },
+    "7a942d3d-eb47-4eb2-8ed1-bebbcda6f7e6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/eval-driven-development",
+      "rdid": "adc.guideline.testing.eval-driven-development"
+    },
+    "7b3e2f91-a84c-4d6e-b1f5-c9a8d3e6f2b7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/performance",
+      "rdid": "adc.guideline.implementing.skills-and-agents.performance"
+    },
+    "7b713210-43ee-4f7f-be9e-b096edb782ba": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/runtime-conditions",
+      "rdid": "adc.guideline.planning.code-quality.runtime-conditions"
+    },
+    "7bf2aa67-7260-4d95-9da9-1b79ad9095c1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/atomic-commits",
+      "rdid": "adc.guideline.shipping.atomic-commits"
+    },
+    "7c0b4381-0a41-4d8c-8b90-1614038b1a94": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/categorize-and-tag-handler",
+      "rdid": "adc.ingredient.infrastructure.categorize-and-tag-handler"
+    },
+    "7c2049c7-89d9-4135-b657-dbd03cdd19a0": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/logging",
+      "rdid": "adc.ingredient.infrastructure.logging"
+    },
+    "7c689b1f-37db-4422-a129-270c697d5875": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/directory-tree-cache",
+      "rdid": "adc.ingredient.infrastructure.directory-tree-cache"
+    },
+    "7c8d5c06-af21-41f1-86db-ed5809c2d38d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/language/objective-c",
+      "rdid": "adc.guideline.implementing.language.objective-c"
+    },
+    "7d9c729f-aee9-5d1f-a6d4-e4c7b2937389": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-states",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-states"
+    },
+    "7de8cd27-e532-4992-9296-0a6dc1ad1816": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/apps/xcodegen-apple-project",
+      "rdid": "adc.ingredient.ui.apps.xcodegen-apple-project"
+    },
+    "7df29f51-703a-4fc8-992d-64591ffd9e61": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/testing/unit-test-patterns",
+      "rdid": "adc.guideline.implementing.testing.unit-test-patterns"
+    },
+    "7e284016-0ceb-4c5e-b3d2-52d9366685cb": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/filesystem-watcher",
+      "rdid": "adc.ingredient.infrastructure.filesystem-watcher"
+    },
+    "7f948bd2-a0b7-580c-ae8a-338ca39339d4": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#cors-allowlist",
+      "rdid": "adc.check.security.cors-allowlist"
+    },
+    "7fd21483-ad0b-407e-8a7f-103992403d36": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/query-optimization",
+      "rdid": "adc.guideline.implementing.data.query-optimization"
+    },
+    "8007859b-a974-5b8a-88f7-162624b0c056": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#text-expansion-tolerance",
+      "rdid": "adc.check.internationalization.text-expansion-tolerance"
+    },
+    "8017637b-8eae-4829-b5a3-85560f7f8fb8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/codex-configuration",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.codex-configuration"
+    },
+    "8075b95b-2678-4893-9a5a-eb77aa9232aa": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/atomic-commits",
+      "rdid": "adc.guideline.implementing.code-quality.atomic-commits"
+    },
+    "808fa004-9148-41f6-bc32-dae7ba23dcf1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/hilt-dependency-injection",
+      "rdid": "adc.guideline.implementing.code-quality.hilt-dependency-injection"
+    },
+    "80915bd6-f18c-4a51-b293-50cef7ead49f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/dotnet-target-framework",
+      "rdid": "adc.guideline.planning.code-quality.dotnet-target-framework"
+    },
+    "81410d5e-e3df-4feb-a9b1-bbc97abfc798": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/app/menu-commands",
+      "rdid": "adc.recipe.app.menu-commands"
+    },
+    "82072abf-0ece-42da-805d-3cb15ce7921d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/type-hints",
+      "rdid": "adc.guideline.implementing.code-quality.type-hints"
+    },
+    "820b832f-6003-4fc1-b4b4-35cd2d57c2e5": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/developer-tools/mcp-tool",
+      "rdid": "adc.ingredient.developer-tools.mcp-tool"
+    },
+    "822a0912-fda7-461f-85ab-f9c2c55f0039": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/conflict-resolution",
+      "rdid": "adc.guideline.implementing.data.conflict-resolution"
+    },
+    "8238bdf2-432b-4c34-9050-742a1f16d107": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/documentation/writing-comments-and-docs",
+      "rdid": "adc.guideline.implementing.documentation.writing-comments-and-docs"
+    },
+    "827ee710-0ce6-4c9b-b63e-e4584e94cece": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/caching",
+      "rdid": "adc.guideline.planning.networking.caching"
+    },
+    "8445807b-5d0f-46f7-8024-b02586627779": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/robust-protocol-maintenance",
+      "rdid": "adc.guideline.implementing.networking.robust-protocol-maintenance"
+    },
+    "85030572-15bc-474c-bd50-f4d9ae0435ba": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/independence-before-corroboration",
+      "rdid": "adc.principle.independence-before-corroboration"
+    },
+    "851f0bee-dab9-4ee4-8d38-1f525314563d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/brainstorming/facilitation-without-anchoring",
+      "rdid": "adc.guideline.brainstorming.facilitation-without-anchoring"
+    },
+    "85d04a9b-5692-4025-a489-eac8bbb14663": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/window-frame-persistence",
+      "rdid": "adc.ingredient.infrastructure.window-frame-persistence"
+    },
+    "85d90939-4047-4b69-a76c-716de9fd5d38": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/observability/logging",
+      "rdid": "adc.guideline.reviewing.observability.logging"
+    },
+    "865679a9-6631-46e8-84ae-6ef64d2abf3a": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/windows/project-split-layout",
+      "rdid": "adc.ingredient.ui.windows.project-split-layout"
+    },
+    "86671e07-24b3-476c-88be-91ed8f83eb30": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/vulnerability-prioritization",
+      "rdid": "adc.guideline.reviewing.security.vulnerability-prioritization"
+    },
+    "86866beb-319a-45b2-bdfa-24f0e3f7ae58": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/trunk-based-development",
+      "rdid": "adc.guideline.shipping.trunk-based-development"
+    },
+    "86dd71d6-1ab1-5d59-8c85-b9d469fbae0d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#main-thread-freedom",
+      "rdid": "adc.check.performance.main-thread-freedom"
+    },
+    "87a35f08-4896-485e-8bb2-4683b916aaa1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/clock-systems",
+      "rdid": "adc.guideline.planning.data.clock-systems"
+    },
+    "8a1d8274-cc46-4449-a824-7c7a79c0b1e2": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/advanced-indexing",
+      "rdid": "adc.guideline.implementing.data.advanced-indexing"
+    },
+    "8a39c784-a101-434f-afe6-c92187ccf576": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/android-predictive-back",
+      "rdid": "adc.guideline.implementing.ui.android-predictive-back"
+    },
+    "8aa22a6b-2328-4a2d-8fe3-53c339390808": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/appkit-and-uikit-patterns",
+      "rdid": "adc.guideline.implementing.ui.appkit-and-uikit-patterns"
+    },
+    "8ab7452a-09b8-4f4e-abfc-f7fd700765db": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/the-testing-workflow",
+      "rdid": "adc.guideline.testing.the-testing-workflow"
+    },
+    "8ade0fa5-dd84-4fa2-9170-2ff30ef9691f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/researching/process/research-type-taxonomy",
+      "rdid": "adc.guideline.researching.process.research-type-taxonomy"
+    },
+    "8b9def90-2153-45ba-9dcc-fa2aa3bf745e": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/agent-structure-reference",
+      "rdid": "adc.guideline.implementing.skills-and-agents.agent-structure-reference"
+    },
+    "8c0c971b-350f-55ee-90ef-78b3863de437": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#unit-test-coverage",
+      "rdid": "adc.check.best-practices.unit-test-coverage"
+    },
+    "8c9edf40-88bf-5034-8042-a8092c0cb8da": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-ingredients",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-ingredients"
+    },
+    "8d52028b-d358-4965-93a1-030fc8405068": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/always-show-progress",
+      "rdid": "adc.guideline.implementing.ui.always-show-progress"
+    },
+    "8e204b5b-4f27-4f25-b43a-bf0b3ec3a88c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/researching/process/research-methodology-and-sources",
+      "rdid": "adc.guideline.researching.process.research-methodology-and-sources"
+    },
+    "8e317295-dc45-4d96-9f03-c75e866de4ad": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/observability/analytics",
+      "rdid": "adc.guideline.reviewing.observability.analytics"
+    },
+    "8ea0409f-405a-4f4d-9bbf-54bf21c86d33": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/cors",
+      "rdid": "adc.guideline.implementing.security.cors"
+    },
+    "8f194b40-3ffd-5afc-b853-ebf77670b72c": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-library-layout",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-library-layout"
+    },
+    "9096c8f4-5f89-41cf-b06c-954861117d69": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/srp",
+      "rdid": "adc.principle.srp"
+    },
+    "90c2d8c2-cf79-5465-bffd-54f9fb1453bc": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-platform-notes",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-platform-notes"
+    },
+    "90cb6a83-7544-53ea-8d2c-30851b253122": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#platform-permissions",
+      "rdid": "adc.check.platform-compliance.platform-permissions"
+    },
+    "90e085e3-5112-5c02-9c10-4a2e324eeca1": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#server-side-authorization",
+      "rdid": "adc.check.security.server-side-authorization"
+    },
+    "9144e220-ad70-51db-ba81-cdb0cc1b66c8": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#good-test-properties",
+      "rdid": "adc.check.best-practices.good-test-properties"
+    },
+    "918c4cec-0bc5-45bf-86d0-5a795053400f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/lifecycle-patterns",
+      "rdid": "adc.guideline.planning.code-quality.lifecycle-patterns"
+    },
+    "919f1022-57a4-5a37-9847-091858cf0633": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-rfc-keywords",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-rfc-keywords"
+    },
+    "91ba975a-1f6a-5a85-8652-26e76cf324f4": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-test-vectors",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-test-vectors"
+    },
+    "9200a653-2bfd-5ea2-adbe-758243dc9228": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#reconnection-strategy",
+      "rdid": "adc.check.access-patterns.reconnection-strategy"
+    },
+    "926dff1a-dc12-46a4-b8c1-bdedbc142afd": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/secure-storage",
+      "rdid": "adc.guideline.implementing.security.secure-storage"
+    },
+    "926e51bd-4558-59bb-95da-3ab768b74655": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-summary-statement",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-summary-statement"
+    },
+    "929e96cb-2900-4386-ad4a-1a67a0568480": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/language/python",
+      "rdid": "adc.guideline.implementing.language.python"
+    },
+    "92daec8c-4388-4a34-bc0c-d3ce0ab8c724": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/developer-tools/claude/yolo-mode",
+      "rdid": "adc.ingredient.developer-tools.claude.yolo-mode"
+    },
+    "93049d53-e8e2-5ea3-8a3a-9eb07e60d0e2": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#lazy-loading",
+      "rdid": "adc.check.performance.lazy-loading"
+    },
+    "9392776b-2f00-5519-869a-dce90d9ee468": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#consent-before-collection",
+      "rdid": "adc.check.privacy-and-data.consent-before-collection"
+    },
+    "94e8caba-da27-4bb8-8f8e-38730b8b34e0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/notifications",
+      "rdid": "adc.guideline.implementing.platform-integration.notifications"
+    },
+    "954e559c-e2bf-494c-a37e-de0b88bec89a": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/panels/code-editor-pane",
+      "rdid": "adc.ingredient.ui.panels.code-editor-pane"
+    },
+    "967fe6f8-aa3a-4bcf-8415-7f996042c245": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/observability/continuous-profiling",
+      "rdid": "adc.guideline.implementing.observability.continuous-profiling"
+    },
+    "96ee76d6-3d8d-5293-87c9-af3666bee301": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#platform-touch-targets",
+      "rdid": "adc.check.platform-compliance.platform-touch-targets"
+    },
+    "97bba3fe-a9b2-5421-83b5-a59cbbe5460d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "best-practices#atomic-commits",
+      "rdid": "adc.check.best-practices.atomic-commits"
+    },
+    "98c5c5c2-5a45-4425-97b7-31932cb6af0c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/iconography",
+      "rdid": "adc.guideline.implementing.ui.iconography"
+    },
+    "991d2adb-3f9a-524d-8218-529592614159": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#data-minimization",
+      "rdid": "adc.check.privacy-and-data.data-minimization"
+    },
+    "991e72d0-477b-4fd5-bdfa-08680efc0cf9": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/shortcuts-and-automation",
+      "rdid": "adc.guideline.implementing.platform-integration.shortcuts-and-automation"
+    },
+    "9a48f093-91f5-5cf6-b97f-6a868dd33030": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-configuration",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-configuration"
+    },
+    "9a57e6ff-2e53-5163-8cce-6783d44f6b9f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#graceful-degradation",
+      "rdid": "adc.check.reliability.graceful-degradation"
+    },
+    "9a60a717-a031-4c1f-bf00-d531ca211252": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/json-columns",
+      "rdid": "adc.guideline.planning.data.json-columns"
+    },
+    "9ab8dd2d-c543-4490-af0e-e83c101fc28b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/normalization-and-denormalization",
+      "rdid": "adc.guideline.planning.data.normalization-and-denormalization"
+    },
+    "9d865cfa-ff98-5b90-b5da-58a611d3535b": {
+      "implementations": [],
+      "kind": "check",
+      "path": "privacy-and-data#secure-data-storage",
+      "rdid": "adc.check.privacy-and-data.secure-data-storage"
+    },
+    "9dae85c5-85ff-4dd1-9bc4-5e923452dba8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/accessibility/dynamic-type",
+      "rdid": "adc.guideline.implementing.accessibility.dynamic-type"
+    },
+    "9e2f6a0b-d074-4ab2-b5f3-19a313bb75cc": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/naming",
+      "rdid": "adc.guideline.reviewing.code-quality.naming"
+    },
+    "9ea07f7d-1a0a-4f1d-8a56-0ee6d4d49111": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/android-edge-to-edge",
+      "rdid": "adc.guideline.implementing.ui.android-edge-to-edge"
+    },
+    "9eb9b4fc-2e44-5391-9445-d6e78caa874e": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#animation-frame-rate",
+      "rdid": "adc.check.performance.animation-frame-rate"
+    },
+    "9ed898fe-ba86-44be-9911-d24fea60dc90": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/visual-studio-project-files",
+      "rdid": "adc.guideline.implementing.code-quality.visual-studio-project-files"
+    },
+    "9f07e740-097e-4814-badf-fa3ae8d7d1e9": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/infrastructure/container-image-security",
+      "rdid": "adc.guideline.reviewing.infrastructure.container-image-security"
+    },
+    "9f13dbec-cecb-482b-824b-f7d3e341878a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/animation-motion",
+      "rdid": "adc.guideline.implementing.ui.animation-motion"
+    },
+    "9f17b833-75ed-4c86-a6af-a4f277c23d21": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/ui/platform-design-languages",
+      "rdid": "adc.guideline.planning.ui.platform-design-languages"
+    },
+    "9f2ef6d5-c1a0-499b-855c-b8742c8efe62": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/compose-performance-and-stability",
+      "rdid": "adc.guideline.implementing.ui.compose-performance-and-stability"
+    },
+    "a033cf50-1e72-437a-8ed8-5c0ff64883d2": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/previews",
+      "rdid": "adc.guideline.testing.previews"
+    },
+    "a0cb2815-8fdd-450a-af46-8fca80ba1aba": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/sync-engine-design",
+      "rdid": "adc.guideline.implementing.data.sync-engine-design"
+    },
+    "a127f652-728b-42f0-8d60-1017fccabdf3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/infrastructure/twelve-factor-config",
+      "rdid": "adc.guideline.implementing.infrastructure.twelve-factor-config"
+    },
+    "a1845427-a2cd-4744-96bf-f6c6f2380982": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/panels/file-tree-browser",
+      "rdid": "adc.ingredient.ui.panels.file-tree-browser"
+    },
+    "a1d4578f-aceb-4a87-8fa4-b57a89e80763": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/cross-cutting-detection",
+      "rdid": "adc.guideline.planning.code-quality.cross-cutting-detection"
+    },
+    "a210da8a-b820-5997-8ddc-05ef7134d56f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#security-headers",
+      "rdid": "adc.check.security.security-headers"
+    },
+    "a2b79b0e-7d2c-44f5-b139-abc9cf47d1f5": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/dependency-injection",
+      "rdid": "adc.principle.dependency-injection"
+    },
+    "a344a531-d87a-5c07-9e1d-747f8105bafa": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#contrast-ratio",
+      "rdid": "adc.check.accessibility.contrast-ratio"
+    },
+    "a34c92a2-7dd0-4641-a126-418102b8b031": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/testing/property-based-testing",
+      "rdid": "adc.guideline.implementing.testing.property-based-testing"
+    },
+    "a3f7c1d2-8e4b-4a9f-b6c3-2d1e0f9a8b7c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/scope-discipline",
+      "rdid": "adc.guideline.implementing.code-quality.scope-discipline"
+    },
+    "a48af237-db64-40ae-9574-e579c107de83": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/ui/appkit-and-uikit-patterns",
+      "rdid": "adc.guideline.reviewing.ui.appkit-and-uikit-patterns"
+    },
+    "a49431db-843d-5293-b796-75744ba11801": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-required-fields",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-required-fields"
+    },
+    "a4e2fa7e-91a7-4abe-b4c9-4b1933901e7d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/access-pattern-analysis",
+      "rdid": "adc.guideline.planning.data.access-pattern-analysis"
+    },
+    "a4f57a3c-f909-42aa-a85f-1ac76ac3ab24": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/room-persistence",
+      "rdid": "adc.guideline.implementing.data.room-persistence"
+    },
+    "a5228bfe-3caa-444b-9952-52ca5244f829": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/schema-evolution",
+      "rdid": "adc.guideline.shipping.schema-evolution"
+    },
+    "a61b6ede-624b-4424-bdf6-aeb153c9a3ea": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/simplicity",
+      "rdid": "adc.principle.simplicity"
+    },
+    "a61bd40e-929a-4a50-a87e-78c78e35e302": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/token-handling",
+      "rdid": "adc.guideline.reviewing.security.token-handling"
+    },
+    "a6bd5677-3e40-4480-942e-54c05e3bafc7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/verification-harness",
+      "rdid": "adc.guideline.implementing.code-quality.verification-harness"
+    },
+    "a7192ade-023d-43b5-b68c-eb2b7024a3fd": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/purpose-classification",
+      "rdid": "adc.guideline.planning.code-quality.purpose-classification"
+    },
+    "a7c2a089-7666-459e-b564-24cc30980936": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/visual-hierarchy",
+      "rdid": "adc.guideline.implementing.ui.visual-hierarchy"
+    },
+    "a7c4168e-2f0a-40bb-b38f-0f81ad6a9cf0": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/app/session-restore",
+      "rdid": "adc.ingredient.app.session-restore"
+    },
+    "a7ce3621-2fed-478f-8767-b186014c5923": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/immutability-by-default",
+      "rdid": "adc.principle.immutability-by-default"
+    },
+    "a8088a6a-4542-4f6c-b74a-7c7ef7dcc63d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/llm-application-security",
+      "rdid": "adc.guideline.implementing.security.llm-application-security"
+    },
+    "a8528088-d1e0-5783-9e96-dbd5b914267d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/principle-formatting#pf-frontmatter-complete",
+      "rdid": "adc.check.artifact-formatting.principle-formatting.pf-frontmatter-complete"
+    },
+    "a899aeae-d561-4fcd-abd7-df109fe2362c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/sync-schema-design",
+      "rdid": "adc.guideline.implementing.data.sync-schema-design"
+    },
+    "a8e6159f-0138-438c-9402-06fb346a6a09": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/sender-constrained-tokens",
+      "rdid": "adc.guideline.implementing.security.sender-constrained-tokens"
+    },
+    "a8f9c003-e970-4f28-bb7d-30a23b891b3f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/testing/test-pyramid",
+      "rdid": "adc.guideline.planning.testing.test-pyramid"
+    },
+    "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/researching/evidence/verification-and-trust-scoring",
+      "rdid": "adc.guideline.researching.evidence.verification-and-trust-scoring"
+    },
+    "aa1377c5-ab99-5a0b-a340-0c3f6392236e": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-type-field",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-type-field"
+    },
+    "aa81d10d-38d1-40d4-8be4-212b043e6410": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/developer-tools/claude/claude-rule-optimization-pipeline",
+      "rdid": "adc.recipe.developer-tools.claude.claude-rule-optimization-pipeline"
+    },
+    "aadd048b-da52-415d-949f-45160b970381": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/meta-principle-optimize-for-change",
+      "rdid": "adc.principle.meta-principle-optimize-for-change"
+    },
+    "ab416d40-2688-4531-95fb-613f0d2fa8cf": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/transactions-and-concurrency",
+      "rdid": "adc.guideline.implementing.data.transactions-and-concurrency"
+    },
+    "ab8ed68c-949d-42c8-8c07-416674795a65": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/mcp-server-security",
+      "rdid": "adc.guideline.implementing.security.mcp-server-security"
+    },
+    "abdcd282-5b81-4ab2-ab1e-3ed288a4aee5": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/contract-testing",
+      "rdid": "adc.guideline.testing.contract-testing"
+    },
+    "abf5a7d8-1fbf-419c-ad43-888d08813f09": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/data-types",
+      "rdid": "adc.guideline.implementing.data.data-types"
+    },
+    "ac616d81-16c2-4f33-9ae4-139d5c24318d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/feature-management/feature-flags",
+      "rdid": "adc.guideline.implementing.feature-management.feature-flags"
+    },
+    "acbfc5ff-4482-4982-a893-b792da0fbe4f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/deterministic-ids",
+      "rdid": "adc.guideline.implementing.data.deterministic-ids"
+    },
+    "ad558f24-29fa-430f-9ebd-0ec42f1aa9d1": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/package-document-storage",
+      "rdid": "adc.ingredient.infrastructure.package-document-storage"
+    },
+    "ad61ee7f-47cf-4c48-a17a-9d7d3d6b7116": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/developer-tools/mcp-server",
+      "rdid": "adc.recipe.developer-tools.mcp-server"
+    },
+    "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/counteract-homogenization-with-diversity",
+      "rdid": "adc.principle.counteract-homogenization-with-diversity"
+    },
+    "ae4444c3-adac-429a-b00e-e918ba3a70b7": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/break-fixation-deliberately",
+      "rdid": "adc.principle.break-fixation-deliberately"
+    },
+    "ae9559b5-4829-4349-b018-986e98c31d39": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/apple-liquid-glass-and-widgets",
+      "rdid": "adc.guideline.implementing.ui.apple-liquid-glass-and-widgets"
+    },
+    "aec38334-67fa-4c7e-bca2-607932af3f22": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/authentication",
+      "rdid": "adc.guideline.implementing.security.authentication"
+    },
+    "aed555ee-66e3-5f99-88ab-24674ed5c789": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#rate-limit-handling",
+      "rdid": "adc.check.access-patterns.rate-limit-handling"
+    },
+    "af78ffed-0e66-42be-ab40-ef1bd6a49dd2": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/access-pattern-analysis",
+      "rdid": "adc.guideline.implementing.data.access-pattern-analysis"
+    },
+    "af8a4221-90b7-434f-b2a4-64c86a072386": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/nullable-reference-types",
+      "rdid": "adc.guideline.implementing.code-quality.nullable-reference-types"
+    },
+    "af8d7c30-f595-4d2d-b780-bdcbd1cb5962": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/file-paths",
+      "rdid": "adc.guideline.reviewing.code-quality.file-paths"
+    },
+    "af911b49-ff36-439e-acb0-a08c80b87103": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/agent-guardrails",
+      "rdid": "adc.guideline.implementing.security.agent-guardrails"
+    },
+    "b0ee38ef-8256-418f-95a8-495264d282fc": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/visual-studio-project-files",
+      "rdid": "adc.guideline.reviewing.code-quality.visual-studio-project-files"
+    },
+    "b111a703-f4d7-4c1a-8206-d84e869791f4": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/tight-feedback-loops",
+      "rdid": "adc.principle.tight-feedback-loops"
+    },
+    "b153d73b-9623-4fca-be5c-c3ac2b88f439": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/transport-security",
+      "rdid": "adc.guideline.reviewing.security.transport-security"
+    },
+    "b16e64a4-462d-4f46-afeb-1a06952e5e65": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/foreign-keys",
+      "rdid": "adc.guideline.implementing.data.foreign-keys"
+    },
+    "b224ef56-65f5-45fd-8842-767b20df6736": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/steel-thread-first",
+      "rdid": "adc.principle.steel-thread-first"
+    },
+    "b258657f-bb73-5491-9c70-0d14afdfa6ce": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#secure-log-output",
+      "rdid": "adc.check.security.secure-log-output"
+    },
+    "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/infrastructure/package-document",
+      "rdid": "adc.recipe.infrastructure.package-document"
+    },
+    "b2d4fb89-4d75-41f6-a0bf-77738e256c87": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/internationalization/rtl-support",
+      "rdid": "adc.guideline.reviewing.internationalization.rtl-support"
+    },
+    "b335406d-7f59-4827-a39b-477c0fe6c907": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/keep-the-human-at-the-wheel",
+      "rdid": "adc.principle.keep-the-human-at-the-wheel"
+    },
+    "b476dbc7-de81-5f6b-8d9e-de6d319e631b": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#idempotent-operations",
+      "rdid": "adc.check.reliability.idempotent-operations"
+    },
+    "b4e8d2c3-9f5a-4b0e-c7d4-3e2f1a0b9c8d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/bulk-operation-verification",
+      "rdid": "adc.guideline.reviewing.code-quality.bulk-operation-verification"
+    },
+    "b512282a-8174-426f-95dd-4a147222584d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/search-integration",
+      "rdid": "adc.guideline.implementing.platform-integration.search-integration"
+    },
+    "b5685271-fbb7-5160-aeb5-9884034fc2d4": {
+      "implementations": [],
+      "kind": "check",
+      "path": "user-safety#abuse-prevention",
+      "rdid": "adc.check.user-safety.abuse-prevention"
+    },
+    "b56bc1c5-d9c8-42ab-87c3-7423b49c00c9": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/privacy",
+      "rdid": "adc.guideline.reviewing.security.privacy"
+    },
+    "b5a1b4b6-c61c-4b45-825f-730bd782d0f3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/cqrs-and-event-sourcing",
+      "rdid": "adc.guideline.planning.data.cqrs-and-event-sourcing"
+    },
+    "b6745c95-4ef2-5ab4-8791-00ffc1d7b82d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#api-design-conventions",
+      "rdid": "adc.check.access-patterns.api-design-conventions"
+    },
+    "b68ca5dd-7053-4b8b-ba49-90881de1b55a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/indexing",
+      "rdid": "adc.guideline.planning.data.indexing"
+    },
+    "b712c766-af1f-4716-b8fb-34bf0bbb13eb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/dependency-security",
+      "rdid": "adc.guideline.implementing.security.dependency-security"
+    },
+    "b76e80c2-7e24-43cf-b971-5d405e80e748": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/transport-security",
+      "rdid": "adc.guideline.shipping.transport-security"
+    },
+    "b8aa57e0-6a85-4605-ae84-1220872294de": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/rule-structure-reference",
+      "rdid": "adc.guideline.implementing.skills-and-agents.rule-structure-reference"
+    },
+    "b8fa0cf0-b15b-4eec-a161-7fbd6936f1d9": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/connection-pooling",
+      "rdid": "adc.guideline.implementing.data.connection-pooling"
+    },
+    "b9da0bd1-a7e4-491f-beb0-46f7b5c19d86": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/testing/security-testing",
+      "rdid": "adc.guideline.reviewing.testing.security-testing"
+    },
+    "bb5dfc9b-c5b0-54fa-882f-007ae7dad0e9": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#secure-storage",
+      "rdid": "adc.check.security.secure-storage"
+    },
+    "bbc7a685-fb6e-4723-a4f3-90df45bfe401": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/pii-detection-and-redaction",
+      "rdid": "adc.guideline.implementing.security.pii-detection-and-redaction"
+    },
+    "bc98f7fa-39c6-5f18-81b0-cc133ac8f529": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-integration-test-vectors",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-integration-test-vectors"
+    },
+    "bcb17bfe-d2d6-53f3-b2af-06b7eea3da61": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#retry-with-backoff",
+      "rdid": "adc.check.access-patterns.retry-with-backoff"
+    },
+    "bcd71537-a14e-449d-863a-b32ee9625838": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/brainstorming/convergent-techniques",
+      "rdid": "adc.guideline.brainstorming.convergent-techniques"
+    },
+    "bdc920ab-fde0-445a-a62a-c2f6d23da8a8": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/color-profile",
+      "rdid": "adc.ingredient.ui.components.color-profile"
+    },
+    "be66e9aa-6c54-4c6c-8026-050eb2286abb": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/panels/debug-panel",
+      "rdid": "adc.ingredient.ui.panels.debug-panel"
+    },
+    "becd68d0-3275-4da9-a703-7cf361fbfb8c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/relationships",
+      "rdid": "adc.guideline.planning.data.relationships"
+    },
+    "beea6f0b-f329-4780-9e9d-d276f0b98823": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/networking/observable-behavior-contract",
+      "rdid": "adc.guideline.reviewing.networking.observable-behavior-contract"
+    },
+    "bf4a77b6-6936-57d3-9f3e-4ce9ae7c89a2": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-title-heading",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-title-heading"
+    },
+    "bf974abf-71df-5370-9d43-fa7e563fc353": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#fault-tolerance",
+      "rdid": "adc.check.reliability.fault-tolerance"
+    },
+    "c1e89b64-7e8a-5691-8c8d-3bc3f981802e": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-schema-valid",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-schema-valid"
+    },
+    "c2a477a7-bd42-5e3f-9ebd-5a64b4b63de4": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#deep-linking-support",
+      "rdid": "adc.check.platform-compliance.deep-linking-support"
+    },
+    "c2b5f651-0e7b-5791-896b-7297a33f8d30": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-edge-cases",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-edge-cases"
+    },
+    "c2fc1edc-4bb8-44e3-b5d9-338cd146c22d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/scope-discipline",
+      "rdid": "adc.guideline.reviewing.code-quality.scope-discipline"
+    },
+    "c3883e6e-3bce-4bb9-a3be-61509a139288": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/timeouts",
+      "rdid": "adc.guideline.implementing.networking.timeouts"
+    },
+    "c3cf9193-b6a7-493b-a531-76aa601109da": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/storytelling/positioning",
+      "rdid": "adc.guideline.storytelling.positioning"
+    },
+    "c3f7a9e2-1b5d-4c8e-a2d6-9e4f1c3b7a5d": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/autonomous-dev-bots/pr-review-pipeline",
+      "rdid": "adc.recipe.autonomous-dev-bots.pr-review-pipeline"
+    },
+    "c41a4778-69df-4142-9b36-bafe28a6d363": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/deliberate-prudent-debt",
+      "rdid": "adc.principle.deliberate-prudent-debt"
+    },
+    "c4273664-4d26-477b-b778-ac1e9b51f385": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/api-versioning-and-deprecation",
+      "rdid": "adc.guideline.planning.networking.api-versioning-and-deprecation"
+    },
+    "c4527208-bf56-54ed-99ca-a451ab2d29e1": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-code-roots",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-code-roots"
+    },
+    "c5778e2d-2f3b-4cbd-809b-39ed4b57ff57": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/ui/apps/apple",
+      "rdid": "adc.recipe.ui.apps.apple"
+    },
+    "c6f45d8b-ed7e-483b-9f83-fc811635758f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/idempotency-keys",
+      "rdid": "adc.guideline.implementing.networking.idempotency-keys"
+    },
+    "c82c02a1-ec15-4892-94b9-0a936eaf2ba7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/security-headers-checklist",
+      "rdid": "adc.guideline.reviewing.security.security-headers-checklist"
+    },
+    "c84400d9-83b3-4c4c-83d4-325dfa989202": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/rate-limiting",
+      "rdid": "adc.guideline.implementing.networking.rate-limiting"
+    },
+    "c87ff1f1-9d77-5167-b0c4-f13f2aae5acb": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#locale-aware-formatting",
+      "rdid": "adc.check.internationalization.locale-aware-formatting"
+    },
+    "c8b92187-7c2f-4d11-9ab3-ec806f3cdf26": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/normalization-and-denormalization",
+      "rdid": "adc.guideline.implementing.data.normalization-and-denormalization"
+    },
+    "c8bf92be-4b7b-4ed7-a9b5-9584c1878d63": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/core-web-vitals",
+      "rdid": "adc.guideline.implementing.ui.core-web-vitals"
+    },
+    "c8f9f270-e8cb-57b9-a48f-296d6f260b3a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#no-hardcoded-strings",
+      "rdid": "adc.check.internationalization.no-hardcoded-strings"
+    },
+    "c90e2ebe-2fbd-4f83-994e-5db46d53f16b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/primary-keys",
+      "rdid": "adc.guideline.planning.data.primary-keys"
+    },
+    "c9244374-53cf-5267-9395-5710a9b2b92b": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-semver-fields",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-semver-fields"
+    },
+    "c9af3d7b-6c9d-5cc6-b749-b8deaf8a9a86": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-structure-present",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-structure-present"
+    },
+    "ca56f1aa-7089-498f-8bcc-c11a0d81be3d": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/infrastructure/package-document-type",
+      "rdid": "adc.ingredient.infrastructure.package-document-type"
+    },
+    "ca9874ea-07ed-4585-8692-33a29bc6411a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/feedback-patterns",
+      "rdid": "adc.guideline.implementing.ui.feedback-patterns"
+    },
+    "cadf17c9-e809-4324-acb3-a430c54a81b4": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/ab-testing",
+      "rdid": "adc.guideline.shipping.ab-testing"
+    },
+    "caffd78b-1ba6-42a3-8805-1d224260588b": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/conways-law",
+      "rdid": "adc.principle.conways-law"
+    },
+    "cb1fa87d-c59d-58fe-bf95-7983dfae516e": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#app-store-guidelines",
+      "rdid": "adc.check.platform-compliance.app-store-guidelines"
+    },
+    "cb92603e-093b-4691-b460-19df025ab664": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/secure-storage",
+      "rdid": "adc.guideline.reviewing.security.secure-storage"
+    },
+    "cbd07fee-ca18-58a8-bb2f-0f8a6b83ac1c": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#platform-design-language",
+      "rdid": "adc.check.platform-compliance.platform-design-language"
+    },
+    "cbfa06b6-ec22-4784-9e61-c99307064b72": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/json-columns",
+      "rdid": "adc.guideline.implementing.data.json-columns"
+    },
+    "cbfc3cd1-e0a0-44af-bcd8-0aa96eb2acda": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/security/threat-modeling",
+      "rdid": "adc.guideline.planning.security.threat-modeling"
+    },
+    "cc7f5ee6-a848-490a-9a28-e4acae0855b3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/infrastructure/infrastructure-as-code",
+      "rdid": "adc.guideline.planning.infrastructure.infrastructure-as-code"
+    },
+    "ccffa426-5556-4bbe-8dd6-b43c8e195f64": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/property-based-testing",
+      "rdid": "adc.guideline.testing.property-based-testing"
+    },
+    "cd614244-bb91-411b-88b3-53d552529cd4": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/bridge-distant-domains",
+      "rdid": "adc.principle.bridge-distant-domains"
+    },
+    "ce09e474-bb65-4449-a357-6d58be514622": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/agent-structure-reference",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.agent-structure-reference"
+    },
+    "ce0c62c0-f2a1-4b60-b46e-844adc164d92": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/language/powershell",
+      "rdid": "adc.guideline.reviewing.language.powershell"
+    },
+    "ce2af25c-4f18-41ae-91b9-342e363449b3": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/empty-state",
+      "rdid": "adc.ingredient.ui.components.empty-state"
+    },
+    "cef41f52-bfc6-4ff0-bb67-eb52521c7391": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/retry-and-resilience",
+      "rdid": "adc.guideline.implementing.networking.retry-and-resilience"
+    },
+    "cf05e36f-ea8b-4af2-8df6-c5e772dc25b5": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/security-testing",
+      "rdid": "adc.guideline.testing.security-testing"
+    },
+    "cf2b27b3-199e-4779-ac15-7923a9fefc1f": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/windows/workspace-document",
+      "rdid": "adc.ingredient.ui.windows.workspace-document"
+    },
+    "cf698150-45b0-4a20-881b-7d0f04208198": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/support-automation",
+      "rdid": "adc.principle.support-automation"
+    },
+    "cf9c8df3-24b7-4094-a2bd-3a10ed2da006": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/conformance-criterion-walk",
+      "rdid": "adc.guideline.reviewing.conformance-criterion-walk"
+    },
+    "cfa4b119-d10a-4c2a-b90d-f003717792a7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/never-clobber-user-files",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.never-clobber-user-files"
+    },
+    "d02a65e0-652f-49b9-be3b-44fccc2f7888": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/security/input-validation",
+      "rdid": "adc.guideline.reviewing.security.input-validation"
+    },
+    "d10d829f-bfff-4b8b-935f-eb30cdf66a43": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/cross-platform-token-adaptation",
+      "rdid": "adc.guideline.implementing.ui.cross-platform-token-adaptation"
+    },
+    "d197a1e3-eba5-4f3f-acc7-c2fabd51144f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/fuzzing",
+      "rdid": "adc.guideline.testing.fuzzing"
+    },
+    "d24616b8-d1af-593d-ba01-f51ee4a91ea4": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#plural-forms",
+      "rdid": "adc.check.internationalization.plural-forms"
+    },
+    "d255b8aa-7379-52ef-b4e8-b08386ba6aac": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#unicode-support",
+      "rdid": "adc.check.internationalization.unicode-support"
+    },
+    "d2742535-cbb8-4cda-9a22-1180a8d5966f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/brainstorming/framing-techniques",
+      "rdid": "adc.guideline.brainstorming.framing-techniques"
+    },
+    "d27c35ab-84f6-4f40-8c29-91630fdc90e7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/deep-linking",
+      "rdid": "adc.guideline.implementing.platform-integration.deep-linking"
+    },
+    "d2b685fd-b481-5d38-bd70-403bd202b5c6": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#platform-theming",
+      "rdid": "adc.check.platform-compliance.platform-theming"
+    },
+    "d2c1aaaf-3fc7-4410-ab9a-06c264aa3208": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/testing/properties-of-good-tests",
+      "rdid": "adc.guideline.cookbook.testing.properties-of-good-tests"
+    },
+    "d374c32a-b452-47cd-9250-7b7d34a63116": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/concurrency/kotlin-flow-stateflow",
+      "rdid": "adc.guideline.implementing.concurrency.kotlin-flow-stateflow"
+    },
+    "d39543f4-e1b9-4054-afa2-2a3087742a4c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/windows-arm64-and-aot",
+      "rdid": "adc.guideline.shipping.windows-arm64-and-aot"
+    },
+    "d3983b8a-4ff3-54a2-a682-0c70c9d92cab": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-integration-requirements",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-integration-requirements"
+    },
+    "d3cb8f40-b142-447d-8176-8055d55868b1": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/supply-chain-integrity",
+      "rdid": "adc.guideline.shipping.supply-chain-integrity"
+    },
+    "d4875936-f6df-49b1-9b96-9c4a2147bc0d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/design-token-distribution",
+      "rdid": "adc.guideline.implementing.ui.design-token-distribution"
+    },
+    "d49de883-3811-54ed-b227-c2d807cac551": {
+      "implementations": [],
+      "kind": "check",
+      "path": "platform-compliance#native-controls-preference",
+      "rdid": "adc.check.platform-compliance.native-controls-preference"
+    },
+    "d4b2fbc3-d814-44f7-a1cf-b59bd5eeb757": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/metadata-line",
+      "rdid": "adc.ingredient.ui.components.metadata-line"
+    },
+    "d4e7a91c-3f28-4b5e-a6c1-9e8d2f7b4a3c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/authoring-skills-and-rules",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.authoring-skills-and-rules"
+    },
+    "d4ece88d-eeff-5e3f-8823-d8c2929a35e0": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#health-observability",
+      "rdid": "adc.check.reliability.health-observability"
+    },
+    "d504d699-ec44-4195-bdd7-628e475eb313": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/type-hints",
+      "rdid": "adc.guideline.reviewing.code-quality.type-hints"
+    },
+    "d53b7623-38ee-4d9f-a99b-f54b6a64f7a6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/tool-call-evaluation",
+      "rdid": "adc.guideline.testing.tool-call-evaluation"
+    },
+    "d5fe7b8e-1051-5581-b2c5-1adae8fdd5fc": {
+      "implementations": [],
+      "kind": "check",
+      "path": "performance#resource-efficiency",
+      "rdid": "adc.check.performance.resource-efficiency"
+    },
+    "d65ed7a3-6125-4c9f-b3af-f3b26ad61dfb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/recipe-quality/completeness",
+      "rdid": "adc.guideline.cookbook.recipe-quality.completeness"
+    },
+    "d7079751-71c5-49a6-9c1d-505921e4cee9": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/language/python",
+      "rdid": "adc.guideline.reviewing.language.python"
+    },
+    "d7127c04-8ad0-5cdd-82f8-74e851f234b7": {
+      "implementations": [],
+      "kind": "check",
+      "path": "user-safety#reporting-mechanism",
+      "rdid": "adc.check.user-safety.reporting-mechanism"
+    },
+    "d73a9715-cab5-4ccd-8c14-1a941ff095d6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/ui/touch-click-targets",
+      "rdid": "adc.guideline.reviewing.ui.touch-click-targets"
+    },
+    "d75d4274-c37b-426a-97f7-69f01e266cc5": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/developer-tools/claude/rule-audit",
+      "rdid": "adc.ingredient.developer-tools.claude.rule-audit"
+    },
+    "d7621464-161d-543c-ae57-ba62836d1a9f": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-appearance",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-appearance"
+    },
+    "d773e5db-bb22-5da8-a6f1-953c35a3798d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#data-integrity",
+      "rdid": "adc.check.reliability.data-integrity"
+    },
+    "d7d737e1-b124-5f9a-b1c2-0ca1b96eeb8a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "security#input-sanitization",
+      "rdid": "adc.check.security.input-sanitization"
+    },
+    "d80a8afb-4bce-4994-ab39-90be28d4527a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/networking/rate-limiting",
+      "rdid": "adc.guideline.reviewing.networking.rate-limiting"
+    },
+    "d991b992-07aa-47b9-9d36-4fd1ca81435f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/feature-management/ab-testing",
+      "rdid": "adc.guideline.implementing.feature-management.ab-testing"
+    },
+    "d9b6e0aa-0b0e-4c88-94b1-80c305baaadd": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/networking/api-style-selection",
+      "rdid": "adc.guideline.planning.networking.api-style-selection"
+    },
+    "da53a140-ce5c-5536-bb04-12db292556b6": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-reference-implementations",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-reference-implementations"
+    },
+    "da56ab62-98ad-4f52-b972-3ebfda5b1718": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/principle-of-least-astonishment",
+      "rdid": "adc.principle.principle-of-least-astonishment"
+    },
+    "db55507a-42ce-4c6d-bd8a-6ccdb6b2d152": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/http-conditional-requests",
+      "rdid": "adc.guideline.implementing.networking.http-conditional-requests"
+    },
+    "db58f79d-1040-4bb2-a862-93ebd390ee12": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/mutation-testing",
+      "rdid": "adc.guideline.testing.mutation-testing"
+    },
+    "db63c086-d082-4e20-aaca-154448c42d1d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/sync-tooling",
+      "rdid": "adc.guideline.implementing.data.sync-tooling"
+    },
+    "db8976c0-57e0-41a4-a7fa-67e3efef79d5": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/human-first-ideation",
+      "rdid": "adc.principle.human-first-ideation"
+    },
+    "dbf80496-0968-5612-bcf7-16c1dbf60d5d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-compliance",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-compliance"
+    },
+    "dc15eb62-a72c-5b09-b9e7-c1bed983f499": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#timeout-configuration",
+      "rdid": "adc.check.access-patterns.timeout-configuration"
+    },
+    "dc9fcecf-aac5-4845-9741-9445e626d7eb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/sync-tooling",
+      "rdid": "adc.guideline.planning.data.sync-tooling"
+    },
+    "dca53225-bd2b-4a11-8abb-5226e05de4a7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/no-external-dependencies-in-core-librari",
+      "rdid": "adc.guideline.implementing.code-quality.no-external-dependencies-in-core-librari"
+    },
+    "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
+      "rdid": "adc.guideline.implementing.skills-and-agents.authoring-skills-and-rules"
+    },
+    "dd43bec7-e292-559a-81e3-c0cf59156abe": {
+      "implementations": [],
+      "kind": "check",
+      "path": "user-safety#safe-defaults",
+      "rdid": "adc.check.user-safety.safe-defaults"
+    },
+    "dde1b6fd-773c-4f9f-a328-51150468bc99": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/naming-conventions",
+      "rdid": "adc.guideline.implementing.data.naming-conventions"
+    },
+    "de88e58f-7260-4089-b0e3-9485d6b4bc79": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/windows/terminal-window-shell",
+      "rdid": "adc.ingredient.ui.windows.terminal-window-shell"
+    },
+    "dec7cf4a-449b-47fa-9d6e-f7e9376383a7": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/native-controls",
+      "rdid": "adc.principle.native-controls"
+    },
+    "dee58e49-84e7-4ba5-b0f0-a308b2568327": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/consent-management",
+      "rdid": "adc.guideline.implementing.security.consent-management"
+    },
+    "df7f401a-39be-5c60-bab4-85dd95bd1ab1": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#offline-behavior",
+      "rdid": "adc.check.access-patterns.offline-behavior"
+    },
+    "dfe12d14-4deb-4a64-b78a-d04db713f72b": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/platform-integration/prefer-explicit-apple-apis",
+      "rdid": "adc.guideline.reviewing.platform-integration.prefer-explicit-apple-apis"
+    },
+    "e01e2c5f-32fd-49e3-8f2a-1f64411160cb": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/web/controls/appearance-mode-toggle",
+      "rdid": "adc.ingredient.web.controls.appearance-mode-toggle"
+    },
+    "e0c6916b-4c1c-49f6-9111-69eb0ee64d2d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/ui/state-management",
+      "rdid": "adc.guideline.planning.ui.state-management"
+    },
+    "e0fa9d85-2143-4869-bea9-e085bc4c2f9d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/language/swift",
+      "rdid": "adc.guideline.implementing.language.swift"
+    },
+    "e114c41c-d203-454c-bc7c-cc128f6ebadd": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/explicit-over-implicit",
+      "rdid": "adc.principle.explicit-over-implicit"
+    },
+    "e29555dd-a4e6-4973-8bde-365b8d60bf9f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/security/privacy",
+      "rdid": "adc.guideline.planning.security.privacy"
+    },
+    "e29ce31a-67cb-5690-b2ca-b1065ccdaf1a": {
+      "implementations": [],
+      "kind": "check",
+      "path": "access-patterns#pagination-support",
+      "rdid": "adc.check.access-patterns.pagination-support"
+    },
+    "e2a99bf0-6b25-4769-9d1e-613b58b6f097": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/agent-evaluation-and-safety",
+      "rdid": "adc.guideline.testing.agent-evaluation-and-safety"
+    },
+    "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/database",
+      "rdid": "adc.guideline.planning.data.database"
+    },
+    "e3aa9294-61cf-4a3a-9fbf-0528a1404094": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/widgets-and-glanceable-surfaces",
+      "rdid": "adc.guideline.implementing.platform-integration.widgets-and-glanceable-surfaces"
+    },
+    "e446ee3e-b8f2-40e7-b93d-3113e6a95e5d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/feature-management/debug-mode",
+      "rdid": "adc.guideline.implementing.feature-management.debug-mode"
+    },
+    "e45d49c6-f753-4aea-8496-b3bf70297a7d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/testing/post-generation-verification",
+      "rdid": "adc.guideline.reviewing.testing.post-generation-verification"
+    },
+    "e48a04d7-c479-427d-9d8e-fe9e9b990c77": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/recipe-quality/template-conformance",
+      "rdid": "adc.guideline.cookbook.recipe-quality.template-conformance"
+    },
+    "e53b1fd3-3e7a-490d-bc5d-83ee9c5ce351": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/app/document-creation-flow",
+      "rdid": "adc.ingredient.app.document-creation-flow"
+    },
+    "e547d962-d561-4bd9-bb5a-50bdeec98335": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/color",
+      "rdid": "adc.guideline.implementing.ui.color"
+    },
+    "e56d4b42-9abe-47ac-bd9e-27471bd47b82": {
+      "implementations": [],
+      "kind": "recipe",
+      "path": "recipes/app/lifecycle",
+      "rdid": "adc.recipe.app.lifecycle"
+    },
+    "e5768eed-0f7f-41d0-bcf7-5a4c18964032": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/platform-integration/app-intents",
+      "rdid": "adc.guideline.implementing.platform-integration.app-intents"
+    },
+    "e5799ba8-98b0-4df9-9413-cdad03e76aab": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/networking/ai-cost-management",
+      "rdid": "adc.guideline.implementing.networking.ai-cost-management"
+    },
+    "e5af9ba5-f484-40c3-9738-470090f5241c": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/properties-of-good-tests",
+      "rdid": "adc.guideline.testing.properties-of-good-tests"
+    },
+    "e6af82e8-0142-446b-977d-2f771a90bdff": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/scope-discipline",
+      "rdid": "adc.guideline.planning.code-quality.scope-discipline"
+    },
+    "e7419774-543c-4b3e-8c92-9ef6dad3bb0f": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/apps/component-catalog",
+      "rdid": "adc.ingredient.ui.apps.component-catalog"
+    },
+    "e761c71a-eb90-44c8-8149-3062da19ad37": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/skill-checklist",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.skill-checklist"
+    },
+    "e80d67b3-813f-47fb-8894-aa4e6f6479f3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/dependency-injection",
+      "rdid": "adc.guideline.implementing.code-quality.dependency-injection"
+    },
+    "e858e124-8774-450f-ab7a-9b27a6965660": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/kimi-configuration",
+      "rdid": "adc.guideline.implementing.skills-and-agents.kimi-configuration"
+    },
+    "e8677291-1d21-484f-b562-90b8600ea380": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/diverge-before-you-converge",
+      "rdid": "adc.principle.diverge-before-you-converge"
+    },
+    "e8870c2b-ae55-4e48-a4e7-081d65f27418": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/codex-configuration",
+      "rdid": "adc.guideline.implementing.skills-and-agents.codex-configuration"
+    },
+    "e8c8e3b9-64a0-4fb0-a27b-f3b733dc10c7": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/system-interactions",
+      "rdid": "adc.guideline.planning.code-quality.system-interactions"
+    },
+    "e94ed12a-3c1b-5c57-a765-9cb8f3569054": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-type-field",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-type-field"
+    },
+    "e9e60a7e-4e15-40e7-b730-fc2e311df1af": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/shell-scripts",
+      "rdid": "adc.guideline.implementing.code-quality.shell-scripts"
+    },
+    "ea5ccc72-7b6e-4aa8-a599-40837f722f38": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/modern-css",
+      "rdid": "adc.guideline.implementing.ui.modern-css"
+    },
+    "ec59e5cc-5591-4c0b-87f8-00df54394607": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/connascence",
+      "rdid": "adc.principle.connascence"
+    },
+    "ecf27370-3cd4-47a2-a359-7b42575ef48f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/infrastructure/containerization",
+      "rdid": "adc.guideline.implementing.infrastructure.containerization"
+    },
+    "ed0b7eb6-9e33-41f7-954f-1e1a0f813462": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/researching/process/agentic-research-design-lessons",
+      "rdid": "adc.guideline.researching.process.agentic-research-design-lessons"
+    },
+    "ed639d3f-02e5-42d1-bb87-f96908986025": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/infrastructure/kubernetes-configuration",
+      "rdid": "adc.guideline.implementing.infrastructure.kubernetes-configuration"
+    },
+    "edf1f288-9cb1-4979-8900-b69d5e33e987": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/data/sync-protocol",
+      "rdid": "adc.guideline.planning.data.sync-protocol"
+    },
+    "ee72734e-2cff-41be-9d1a-813b64aa0fd2": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/app/startup-behavior",
+      "rdid": "adc.ingredient.app.startup-behavior"
+    },
+    "ee92545b-9d50-4f6b-95e5-e239a2433a11": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/rule-checklist",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.rule-checklist"
+    },
+    "eec52703-a32a-5dee-b763-59a3bac826ea": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#focus-management",
+      "rdid": "adc.check.accessibility.focus-management"
+    },
+    "eec76082-a68b-4a2b-8f02-5ea3bfdc0a76": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/test-doubles",
+      "rdid": "adc.guideline.testing.test-doubles"
+    },
+    "eeddf232-7bc1-4aa4-ab34-dbcbaebc102d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/ui/dashboard-service-is-display-only",
+      "rdid": "adc.guideline.planning.ui.dashboard-service-is-display-only"
+    },
+    "ef2d2757-132a-403b-8e98-bbeca9c42deb": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/framework-conventions",
+      "rdid": "adc.guideline.planning.code-quality.framework-conventions"
+    },
+    "ef7e17ea-a4c1-4946-aff7-a81cb27885a0": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/skills-and-agents/agent-checklist",
+      "rdid": "adc.guideline.cookbook.skills-and-agents.agent-checklist"
+    },
+    "f0f9bc0c-7195-42fd-95eb-2405e81fb1ea": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/security/data-subject-rights",
+      "rdid": "adc.guideline.implementing.security.data-subject-rights"
+    },
+    "f1e3ffdc-3e47-54d5-82c8-a1c266284959": {
+      "implementations": [],
+      "kind": "check",
+      "path": "user-safety#content-moderation",
+      "rdid": "adc.check.user-safety.content-moderation"
+    },
+    "f26a9468-a15c-4cd2-b944-d39221e7eee2": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/ui/platform-design-languages",
+      "rdid": "adc.guideline.cookbook.ui.platform-design-languages"
+    },
+    "f28a4638-c2ae-4a9b-817f-0f19b5712168": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/constraints-and-validation",
+      "rdid": "adc.guideline.implementing.data.constraints-and-validation"
+    },
+    "f29e82ca-611e-409a-9121-8abe1719b434": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/language/ruby",
+      "rdid": "adc.guideline.implementing.language.ruby"
+    },
+    "f34f83c0-3a3e-4a94-a0e9-08ce75ac9762": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/zero-downtime-migrations",
+      "rdid": "adc.guideline.implementing.data.zero-downtime-migrations"
+    },
+    "f35cf9c3-7488-4192-93fb-12d95f7244e5": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/ui/rendering-strategy",
+      "rdid": "adc.guideline.planning.ui.rendering-strategy"
+    },
+    "f3a7739d-bbc8-54b5-a58b-5a38e43954da": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/guideline-formatting#gf-structured-guidance",
+      "rdid": "adc.check.artifact-formatting.guideline-formatting.gf-structured-guidance"
+    },
+    "f3ae65a6-f51d-4e42-8f79-fa8097dd3480": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/test-pyramid",
+      "rdid": "adc.guideline.testing.test-pyramid"
+    },
+    "f3dbcab7-ac3d-5043-9379-0da07ceaa32b": {
+      "implementations": [],
+      "kind": "check",
+      "path": "accessibility#dynamic-type-support",
+      "rdid": "adc.check.accessibility.dynamic-type-support"
+    },
+    "f48198bb-f5ad-49dd-9342-945af89a3ab4": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/autonomous-dev-bots/pr-evaluate-phase",
+      "rdid": "adc.ingredient.autonomous-dev-bots.pr-evaluate-phase"
+    },
+    "f4acb6cd-1e5b-4175-9556-327506a188fe": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/code-quality/law-of-demeter",
+      "rdid": "adc.guideline.reviewing.code-quality.law-of-demeter"
+    },
+    "f4d73297-4002-5b4d-91c2-74a20866ab61": {
+      "implementations": [],
+      "kind": "check",
+      "path": "reliability#timeout-handling",
+      "rdid": "adc.check.reliability.timeout-handling"
+    },
+    "f5b5cbe6-22e8-5954-a18d-0362ee387941": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/ingredient-formatting#if-design-decisions",
+      "rdid": "adc.check.artifact-formatting.ingredient-formatting.if-design-decisions"
+    },
+    "f6679a9d-e90e-4fc6-ac4c-0696851af484": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/composition-over-inheritance",
+      "rdid": "adc.principle.composition-over-inheritance"
+    },
+    "f6836f90-5090-4857-bab9-74feb7c68223": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/language/ruby",
+      "rdid": "adc.guideline.reviewing.language.ruby"
+    },
+    "f68778f2-65e3-4e89-bbf8-115151efa9dc": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/data/database",
+      "rdid": "adc.guideline.implementing.data.database"
+    },
+    "f7961f5a-834b-4ba1-804e-8c1ddcc251a7": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/frame-before-you-generate",
+      "rdid": "adc.principle.frame-before-you-generate"
+    },
+    "f7d33c40-8dbd-4503-827f-92e4c3da4b8f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/reviewing/skills-and-agents/performance",
+      "rdid": "adc.guideline.reviewing.skills-and-agents.performance"
+    },
+    "f81d57a5-fd2a-5088-9fea-37703287698d": {
+      "implementations": [],
+      "kind": "check",
+      "path": "internationalization#rtl-layout-support",
+      "rdid": "adc.check.internationalization.rtl-layout-support"
+    },
+    "f9a29acc-e1a3-5fd1-8545-768aee186111": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/cookbook-formatting#cf-no-circular-deps",
+      "rdid": "adc.check.artifact-formatting.cookbook-formatting.cf-no-circular-deps"
+    },
+    "f9f12465-9f73-40ef-b9f6-d124090781f5": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/ui/components/ai-chat-control",
+      "rdid": "adc.ingredient.ui.components.ai-chat-control"
+    },
+    "fa2196e4-9513-4b23-b805-f5f5f099e5ff": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/architecture",
+      "rdid": "adc.guideline.implementing.code-quality.architecture"
+    },
+    "fa8f5801-5c3f-44b3-bb51-cb04e918527f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/code-quality/architecture",
+      "rdid": "adc.guideline.planning.code-quality.architecture"
+    },
+    "fa9b7e65-b0ee-5dd0-9f69-e2c349c5ca62": {
+      "implementations": [],
+      "kind": "check",
+      "path": "artifact-formatting/recipe-formatting#rf-platform-notes",
+      "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-platform-notes"
+    },
+    "faa53b44-0de6-44bc-9064-c7a06462eaa8": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/code-quality/use-roadmaplib",
+      "rdid": "adc.guideline.implementing.code-quality.use-roadmaplib"
+    },
+    "fad53801-59d5-4471-855a-4dc689448d48": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/security/authentication",
+      "rdid": "adc.guideline.planning.security.authentication"
+    },
+    "fdec6403-395b-4b98-b97d-b42e15cb77a6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/ui/form-design",
+      "rdid": "adc.guideline.implementing.ui.form-design"
+    },
+    "fe0daac0-1ba7-4c93-a47e-e42e75612cf6": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/implementing/skills-and-agents/skill-structure-reference",
+      "rdid": "adc.guideline.implementing.skills-and-agents.skill-structure-reference"
+    },
+    "fe3522f2-1b94-494e-8136-c8a5eea876cf": {
+      "implementations": [],
+      "kind": "ingredient",
+      "path": "ingredients/autonomous-dev-bots/pr-fix-agent",
+      "rdid": "adc.ingredient.autonomous-dev-bots.pr-fix-agent"
+    },
+    "ffa8565d-b105-4758-b850-9d9b8119b838": {
+      "implementations": [],
+      "kind": "principle",
+      "path": "principles/make-it-work-make-it-right-make-it-fast",
+      "rdid": "adc.principle.make-it-work-make-it-right-make-it-fast"
+    },
+    "fff733d2-42ab-4123-b280-1a30b52e54a4": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/shipping/progressive-delivery",
+      "rdid": "adc.guideline.shipping.progressive-delivery"
+    }
+  },
+  "foreign": {},
+  "format": 2
+}

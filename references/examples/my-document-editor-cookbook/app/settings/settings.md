@@ -1,7 +1,6 @@
 ---
 id: d8cc0b48-76dd-4304-b571-43ad1f87929e
 title: Settings
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/app/settings/settings
 type: reference
 version: 1.0.0
 status: draft

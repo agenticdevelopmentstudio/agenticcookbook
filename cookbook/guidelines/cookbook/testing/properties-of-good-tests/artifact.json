@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d2c1aaaf-3fc7-4410-ab9a-06c264aa3208",
     "title": "Properties of Good Tests",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/testing/properties-of-good-tests",
     "type": "guideline",
     "version": "1.1.1",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "code-review"
     ]
   },
-  "synced": "d102a5425289420f",
+  "synced": "c541bd342e616cee",
   "parts": [
     {"part": "intro"},
     {"part": "for-test-vectors-in-cookbook-artifacts", "heading": "For test vectors in cookbook artifacts"},

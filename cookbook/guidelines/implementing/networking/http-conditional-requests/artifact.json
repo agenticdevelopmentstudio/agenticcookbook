@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "db55507a-42ce-4c6d-bd8a-6ccdb6b2d152",
     "title": "HTTP conditional requests and optimistic concurrency",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/http-conditional-requests",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/caching",
-      "agenticdevelopercookbook://guidelines/implementing/networking/idempotency-keys"
+      "3416a359-e01c-40b2-8876-4a8634d4395e",
+      "c6f45d8b-ed7e-483b-9f83-fc811635758f"
     ],
     "references": [
       "https://www.rfc-editor.org/rfc/rfc9110.html"
@@ -35,7 +34,7 @@
       "networking"
     ]
   },
-  "synced": "3b25f213274bbb32",
+  "synced": "09b400e0f723e4ce",
   "parts": [
     {"part": "intro"},
     {"part": "etags-as-validators", "heading": "ETags as validators"},

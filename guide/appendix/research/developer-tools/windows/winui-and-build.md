@@ -1,7 +1,6 @@
 ---
 id: 0abbafa8-9bbb-4f52-996d-9069ffd4c5d6
 title: WinUI, WPF & MAUI Build Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/windows/winui-and-build
 type: reference
 version: 1.0.0
 status: draft

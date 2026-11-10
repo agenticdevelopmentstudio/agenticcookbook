@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2b9e9fbb-6df8-4dc2-b02d-3b97f6e434fb",
     "title": "High DPI / Display Scaling",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/high-dpi-display-scaling",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "accessibility"
     ]
   },
-  "synced": "6342f44f5e51c98e",
+  "synced": "8c10e29cf42d1b94",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

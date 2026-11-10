@@ -2,6 +2,7 @@
 """Remove what ./install placed for cookr.
 
 - Removes the ~/.claude/skills/cookr/ skill
+- Removes the cookr hook's entries from ~/.claude/settings.json (others untouched)
 - Removes the cookr CLI shim and package from ~/.local/bin
 
 Leaves the pip-installed deps (rich, questionary, pyyaml), which other tools
@@ -15,12 +16,23 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
 sys.dont_write_bytecode = True  # keep the checkout free of __pycache__/
 
-from setup_support import BIN_DIR, CLAUDE_DIR, ok, remove, title  # noqa: E402
+from setup_support import BIN_DIR, CLAUDE_DIR, CLAUDE_SETTINGS, ok, remove, title, warn  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from hook_registration import unregister  # noqa: E402
 
 SKILL_DST = CLAUDE_DIR / "skills" / "cookr"
 
 
 def main() -> int:
+    title("Removing cookr hook")
+    try:
+        changed = unregister(CLAUDE_SETTINGS)
+    except (OSError, ValueError) as e:  # json.JSONDecodeError is a ValueError
+        warn(f"{CLAUDE_SETTINGS} not updated ({e}); remove the hook by hand.")
+    else:
+        ok(f"hook unregistered from: {', '.join(changed)}" if changed else "hook not registered")
+
     title("Removing cookr skill")
     remove(SKILL_DST)
 

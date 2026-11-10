@@ -1,28 +1,28 @@
 ---
 name: create-artifact
-version: "1.1.0"
+version: "2.0.0"
 description: "Guided creation of a new cookbook artifact. Walks through type selection, content authoring, and integration via /add-artifact."
 argument-hint: "[principle|guideline|recipe] [--title <title>]"
-allowed-tools: Read, Glob, Grep, Edit, Write, Bash(uuidgen), Bash(date *), Bash(wc *), Bash(rsync *), Bash(cookr *), AskUserQuestion
+allowed-tools: Read, Glob, Grep, Edit, Write, Bash(uuidgen), Bash(date *), Bash(wc *), Bash(rsync *), Bash(cookr *), Bash(rm *), AskUserQuestion
 context: fork
 ---
 
-# Create Artifact v1.0.0
+# Create Artifact v2.0.0
 
 Guided wizard for creating a new cookbook artifact from scratch. Asks which type (principle, guideline, recipe), walks through content authoring using the formatting compliance spec for that type, then invokes `/add-artifact` to integrate.
 
 ## Startup
 
-create-artifact v1.1.0
+create-artifact v2.0.0
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (1.1.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.0). If they differ, print:
 
-> Warning: This skill is running v1.1.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.0.0 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> create-artifact v1.1.0
+> create-artifact v2.0.0
 
 Then stop.
 
@@ -73,7 +73,6 @@ Generate the YAML frontmatter:
 ---
 id: <generate with uuidgen>
 title: "<title>"
-domain: agenticdevelopercookbook://<path-without-.md>
 type: <type>
 version: 1.0.0
 status: draft
@@ -94,15 +93,22 @@ approved-date: ""
 ---
 ```
 
+There is no `domain` field. The `id` is the artifact's identity; its readable rdid
+(`adc.<type>.<path, dotted>`, e.g. `adc.guideline.testing.test-pyramid`) is derived from the
+folder path and written to `cookbook/index.json` by `cookr update` in Step 5. In `depends-on`,
+`related` and `ingredients`, write the rdids of the artifacts linked (`cookr id <rdid>` confirms
+one exists); `cookr update` stores them as UUIDs. In body text, link another artifact as
+`[<rdid>](cookbook:<uuid>)`.
+
 ## Step 4: Author Content
 
 Read the compliance file for the artifact type:
 
 | Type | Compliance File |
 |------|----------------|
-| Principle | `cookbook/compliance/artifact-formatting/principle-formatting.md` |
-| Guideline | `cookbook/compliance/artifact-formatting/guideline-formatting.md` |
-| Recipe | `cookbook/compliance/artifact-formatting/recipe-formatting.md` |
+| Principle | `tbd/compliance/artifact-formatting/principle-formatting.md` |
+| Guideline | `tbd/compliance/artifact-formatting/guideline-formatting.md` |
+| Recipe | `tbd/compliance/artifact-formatting/recipe-formatting.md` |
 
 Walk through each required section defined in the compliance file, asking the user for content. For each section:
 
@@ -134,23 +140,27 @@ Walk through each required section defined in the compliance file, asking the us
 
 Assemble the complete artifact and write it to the resolved path using the Write tool.
 
-Then run `cookr convert <path>`. It creates the artifact's source folder (`<name>/`) and
-rewrites `<path>` as the folder's compiled output. If it refuses the file, fix what it
-reports and run it again.
+Then run `cookr convert <path>`. It creates the artifact's source folder (`<name>/`). If it
+refuses the file, fix what it reports and run it again. The folder is the only committed
+form: delete `<path>` once the folder exists.
+
+Run `cookr update`. It adds the artifact's entry (UUID, rdid, path) to `cookbook/index.json`,
+replaces any rdids in `depends-on`, `related` and `ingredients` with UUIDs, and regenerates
+the INDEX pages. Then `cookr id <id>` prints the artifact's rdid.
 
 Print:
 
 ```
-Artifact written to: <path>
+Artifact written to: <folder>/
+rdid: <rdid>
 ```
 
 ## Step 6: Integrate
 
-Run `/add-artifact <path>` to execute the full integration flow:
+Run `/add-artifact <folder>` to execute the full integration flow:
 - Lint and approve
 - Update indexes
 - Update documentation counts
-- Sync to website
 
 If `/add-artifact` reports failures, help the user fix them and re-run.
 
@@ -162,7 +172,8 @@ Print:
 === ARTIFACT CREATED ===
 Title: <title>
 Type: <type>
-Path: <path>
+Folder: <folder>/
+rdid: <rdid>
 Status: draft (approved)
 ```
 

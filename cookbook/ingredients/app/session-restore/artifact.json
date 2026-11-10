@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "A7C4168E-2F0A-40BB-B38F-0F81AD6A9CF0",
+    "id": "a7c4168e-2f0a-40bb-b38f-0f81ad6a9cf0",
     "title": "Session Restore",
-    "domain": "agenticdevelopercookbook://ingredients/app/session-restore",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -29,14 +28,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/app/startup-behavior",
-      "agenticdevelopercookbook://recipes/app/lifecycle"
+      "ee72734e-2cff-41be-9d1a-813b64aa0fd2",
+      "e56d4b42-9abe-47ac-bd9e-27471bd47b82"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "93144eb4c5de4c90",
+  "synced": "6f38adced5d0b743",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

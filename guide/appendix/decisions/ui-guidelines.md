@@ -1,7 +1,6 @@
 ---
 id: 959a1eea-52c9-4ee7-9e0a-74f716fbf72b
 title: "Design: UI Design Guidelines"
-domain: agenticdevelopercookbook://appendix/decisions/ui-guidelines
 type: reference
 version: 1.0.0
 status: accepted

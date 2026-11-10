@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2c605b36-da66-4eaf-b2d4-59ed5a3976b3",
     "title": "Search for existing solutions before building",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/reuse-before-build",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,10 +21,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/open-source-preference",
-      "agenticdevelopercookbook://principles/native-controls",
-      "agenticdevelopercookbook://principles/dry",
-      "agenticdevelopercookbook://guidelines/shipping/dependency-security"
+      "495000e6-a1fc-4b43-8999-23089505559c",
+      "dec7cf4a-449b-47fa-9d6e-f7e9376383a7",
+      "256a827e-436e-4cde-895e-a56b9783edf2",
+      "793bd9f6-b029-4c4e-aca5-d253f9fab48e"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
       "dependency-management"
     ]
   },
-  "synced": "41aad26b946e18f7",
+  "synced": "55ae3b45ee40a7f8",
   "parts": [
     {"part": "intro"},
     {"part": "look-in-this-order", "heading": "Look in this order"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "820b832f-6003-4fc1-b4b4-35cd2d57c2e5",
     "title": "MCP tool",
-    "domain": "agenticdevelopercookbook://ingredients/developer-tools/mcp-tool",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -25,8 +24,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
-      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security"
+      "788f1c1d-69af-4570-a279-748d89fcc0e0",
+      "ab8ed68c-949d-42c8-8c07-416674795a65"
     ],
     "references": [
       "https://modelcontextprotocol.io/"
@@ -35,7 +34,7 @@
     "approved-date": "2026-06-09"
   },
   "names_hosts": "Names Claude as an example of a host that calls MCP tools.",
-  "synced": "ad33566adf2e69ab",
+  "synced": "6c821886a932112f",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "40d630ea-4d62-4c95-9663-80b033e4adae",
     "title": "Comprehensive unit testing",
-    "domain": "agenticdevelopercookbook://guidelines/testing/testing",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -37,7 +36,7 @@
       "pre-pr"
     ]
   },
-  "synced": "20a15c7250cf97f5",
+  "synced": "f8c16602a6ede83c",
   "parts": [
     {"part": "intro"},
     {"part": "typescript", "heading": "TypeScript"},

@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "63659e2c-215a-44ed-b330-2bca8d88bd9a",
+    "title": "Directory Sync / Watch Lifecycle",
+    "domain": "agenticdevelopercookbook://recipes/infrastructure/directory-sync",
+    "type": "recipe",
+    "version": "2.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Lifecycle pattern for syncing an in-memory file tree with the filesystem via cache, full sync, watch, and surgical update",
+    "platforms": [
+      "ios",
+      "macos",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "directory-sync",
+      "infrastructure"
+    ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/infrastructure/directory-tree-cache",
+      "agenticdevelopercookbook://ingredients/infrastructure/directory-tree-scanner",
+      "agenticdevelopercookbook://ingredients/infrastructure/filesystem-watcher",
+      "agenticdevelopercookbook://ingredients/infrastructure/directory-watch-coordinator"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "b380b30d3a9dffbf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "be66e9aa-6c54-4c6c-8026-050eb2286abb",
     "title": "Debug Panel",
-    "domain": "agenticdevelopercookbook://ingredients/ui/panels/debug-panel",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "3eabbb24bd9e11e1",
+  "synced": "e25fbbef4de52630",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

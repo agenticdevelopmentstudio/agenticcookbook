@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f26a9468-a15c-4cd2-b944-d39221e7eee2",
     "title": "Platform Design Languages",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/ui/platform-design-languages",
     "type": "guideline",
     "version": "1.1.2",
     "status": "accepted",
@@ -39,7 +38,7 @@
     ]
   },
   "twin_differs": "Applies the platform design sources to writing ingredients and recipes, not to building UI.",
-  "synced": "072f3178350fa805",
+  "synced": "86d167bd4c6c3304",
   "parts": [
     {"part": "intro"},
     {"part": "canonical-sources", "heading": "Canonical sources"},

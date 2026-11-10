@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0935bc69-88a9-483e-a3c9-38447d880f45",
     "title": "State Design",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/state-design",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/always-show-progress"
+      "8d52028b-d358-4965-93a1-030fc8405068"
     ],
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines/empty-states",
@@ -39,7 +38,7 @@
       "data-modeling"
     ]
   },
-  "synced": "955da5b4a27dca9f",
+  "synced": "e7b60e4a76abfc10",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

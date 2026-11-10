@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "70f2ab2f-a05f-4981-9fea-e9d169fc1753",
     "title": "Theming with tokens",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/theming-with-tokens",
     "type": "guideline",
     "version": "1.1.0",
     "status": "accepted",
@@ -28,9 +27,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/theming",
-      "agenticdevelopercookbook://guidelines/implementing/ui/color",
-      "agenticdevelopercookbook://guidelines/planning/ui/design-tokens"
+      "5cc9773e-78de-493e-891c-2a819baf9b60",
+      "e547d962-d561-4bd9-bb5a-50bdeec98335",
+      "26d10854-c903-40c5-8bef-18337c5ac71e"
     ],
     "references": [
       "https://www.designtokens.org/",
@@ -44,7 +43,7 @@
       "accessibility"
     ]
   },
-  "synced": "de0ec9e47784a167",
+  "synced": "dc0026dca0656404",
   "parts": [
     {"part": "intro"},
     {"part": "the-token-layering-model", "heading": "The token layering model"},

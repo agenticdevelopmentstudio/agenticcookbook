@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb",
     "title": "Database",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/database",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "database-operations"
     ]
   },
-  "synced": "4626dd6e22df2f1d",
+  "synced": "a29c116524292888",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

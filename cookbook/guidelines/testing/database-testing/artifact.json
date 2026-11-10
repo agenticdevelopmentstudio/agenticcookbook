@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "183D07F2-ECFC-4DA3-9A21-96953EFEFA91",
+    "id": "183d07f2-ecfc-4da3-9a21-96953efefa91",
     "title": "Database testing",
-    "domain": "agenticdevelopercookbook://guidelines/testing/database-testing",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,7 +26,7 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
     ],
     "references": [
       "https://sqlite.org/testing.html",
@@ -40,7 +39,7 @@
       "database-operations"
     ]
   },
-  "synced": "9e8fec5971e37514",
+  "synced": "9a5ae47f7a3e7a1a",
   "parts": [
     {"part": "intro"},
     {"part": "in-memory-vs-file-based-databases", "heading": "In-memory vs file-based databases"},

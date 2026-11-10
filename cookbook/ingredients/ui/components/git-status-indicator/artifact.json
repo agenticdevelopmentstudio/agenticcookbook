@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "561a27f4-f019-4d3a-96eb-c18d37b16b61",
     "title": "Git Status Indicator",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/git-status-indicator",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "c746601102d6e612",
+  "synced": "3e33de19801f59d1",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

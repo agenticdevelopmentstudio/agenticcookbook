@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "50ea8b39-813d-4325-be31-0ae19b8a3baf",
     "title": "Immutability",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/concurrency/immutability",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "data-modeling"
     ]
   },
-  "synced": "34ddc337706f9ace",
+  "synced": "c93d70750e60559e",
   "parts": [
     {"part": "intro"},
     {"part": "kotlin", "heading": "Kotlin"},

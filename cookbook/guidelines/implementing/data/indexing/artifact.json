@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "02E9042D-0D15-47AC-9361-2F16980A03CA",
+    "id": "02e9042d-0d15-47ac-9361-2f16980a03ca",
     "title": "Indexing",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/indexing",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/query-optimization.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "7fd21483-ad0b-407e-8a7f-103992403d36"
     ],
     "references": [
       "https://sqlite.org/queryplanner.html",
@@ -46,7 +45,7 @@
       "schema-design"
     ]
   },
-  "synced": "cd231d62ea17bee1",
+  "synced": "c07cf224de352f16",
   "parts": [
     {"part": "intro"},
     {"part": "b-tree-fundamentals", "heading": "B-Tree Fundamentals"},

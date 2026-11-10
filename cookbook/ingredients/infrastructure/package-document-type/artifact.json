@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "CA56F1AA-7089-498F-8BCC-C11A0D81BE3D",
+    "id": "ca56f1aa-7089-498f-8bcc-c11a0d81be3d",
     "title": "Package Document Type",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/package-document-type",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,14 +26,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/package-document",
-      "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage"
+      "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07",
+      "ad558f24-29fa-430f-9ebd-0ec42f1aa9d1"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "f0636099999dc5b1",
+  "synced": "edf8bed5ee54b0bd",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

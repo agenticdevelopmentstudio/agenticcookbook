@@ -1,8 +1,9 @@
-"""Convert a flat `.cookr.json` corpus into a library cookbook, in two steps.
+"""Place a flat `.cookr.json` corpus's recipes in a library cookbook.
 
-`plan` reads `.cookr.json` and its flat recipes directory and proposes where
-each recipe goes: a path in `cookbook/` that mirrors the code it describes.
-The plan is JSON, meant to be read and edited before `apply` carries it out.
+`plan` reads a legacy `.cookr.json` and its flat recipes directory and proposes
+where each recipe goes: a path in `cookbook/` that mirrors the code it
+describes. Only the upgrader (core/upgrade.py) uses it, to move a legacy
+corpus into the format-2 cookbook.
 
 Where a recipe goes, from its sources (the old scan's files for it):
 
@@ -20,50 +21,29 @@ Where a recipe goes, from its sources (the old scan's files for it):
 - A recipe with no sources goes to the top level, named by its old slug
   without its tier. A name two recipes share, or one the corpus skips
   (`index`), becomes `<group>/<old slug>`.
-
-`apply` moves each recipe with `git mv`, points its `domain` at its new path,
-writes its Reference Implementations, rewrites every reference to its old
-domain or path across the repo's tracked markdown, patch-bumps it, writes
-`cookbook/cookbook.json` from the plan's `code` block, and removes
-`.cookr.json`.
 """
 
 from __future__ import annotations
 
-import json
-import os
-import re
-import subprocess
-import uuid
 from collections import Counter
 from dataclasses import dataclass, field
-from datetime import date
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 from typing import Optional
 
 from cookr.core import refimpl
-from cookr.core.markdown import in_source_folder, reserved_name
-from cookr.core.scheme import repo_scheme
-from cookr.modules import bump
+from cookr.core.markdown import iter_markdown, reserved_name
 
-from .artifact import edit_text, folder_for, is_folder, save_document
-from .config import COOKBOOK_DIR, KINDS, MANIFEST, PLATFORMS, ConfigError
 from .inventory import Component, component_stem, group_parts, join_name
 from .legacy import CONFIG_NAME, LegacyConfig, legacy_scan
 from .naming import path_name
-from .recipes import load_corpus
+from .repoconfig import COOKBOOK_DIR, PLATFORMS, ConfigError
+
 
 PLAN_VERSION = 1
-COOKBOOK_REPO = "https://github.com/agenticdevelopercookbook/cookbook"
-# The cookbook version a new manifest is based on (cookbook.schema.json
-# `cookbook.version`). It was read from the retired `cookbook` CLI, whose
-# last version this is.
-COOKBOOK_VERSION = "1.1.0"
-BUMP_SUMMARY = "Moved into the library cookbook; added Reference Implementations."
 
 
 class OrganizeError(ConfigError):
-    """Raised when a plan cannot be made or applied."""
+    """Raised when a plan cannot be made."""
 
 
 # ---- plan -----------------------------------------------------------------------------------
@@ -158,7 +138,6 @@ class _Namer:
         return Move(slug, "/".join(name), rows, name[:-1])
 
 
-
 def _reserved(name: str) -> bool:
     return reserved_name(name) is not None
 
@@ -191,10 +170,16 @@ def code_block(config: LegacyConfig) -> dict:
     return {"roots": roots, "ignore": list(config.ignore)}
 
 
+def _legacy_recipes(recipes_dir: Path) -> dict[str, Path]:
+    """Every flat recipe doc, keyed by its path below `recipes_dir` without `.md`."""
+    return {md.relative_to(recipes_dir).with_suffix("").as_posix(): md
+            for md in iter_markdown(recipes_dir)}
+
+
 def plan(config: LegacyConfig) -> dict:
     """The proposed conversion of `config`'s repo, as editable JSON."""
     comps = legacy_scan(config)
-    corpus = load_corpus(config.recipes_dir)
+    corpus = _legacy_recipes(config.recipes_dir)
     by_recipe: dict[str, list[Component]] = {}
     for c in comps:
         by_recipe.setdefault(config.aliases.get(c.name, c.name), []).append(c)
@@ -208,235 +193,10 @@ def plan(config: LegacyConfig) -> dict:
         "scheme": config.scheme,
         "cookbook": COOKBOOK_DIR,
         "code": code_block(config),
-        "moves": [{"from": corpus[m.slug].path.relative_to(config.repo_root).as_posix(),
+        "moves": [{"from": corpus[m.slug].relative_to(config.repo_root).as_posix(),
                    "to": m.to,
                    "implementations": [{"platform": r.platform, "path": r.path}
                                        for r in m.implementations]}
                   for m in sorted(moves, key=lambda m: m.to)],
         "unmatched": sorted(m.slug for m in moves if not m.implementations),
     }
-
-
-# ---- apply ----------------------------------------------------------------------------------
-
-@dataclass
-class Applied:
-    moved: int = 0
-    rewritten: list = field(default_factory=list)  # repo-relative files whose references changed
-    bump_failures: list = field(default_factory=list)  # (file, reason)
-    manifest: str = ""
-    leftovers: list = field(default_factory=list)  # files left in the old recipes directory
-
-
-def _git(repo: Path, *args: str) -> str:
-    proc = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
-    if proc.returncode != 0:
-        raise OrganizeError(f"git {' '.join(args)} failed: {proc.stderr.strip()}")
-    return proc.stdout
-
-
-_NAME = re.compile(r"^[a-z0-9][a-z0-9._-]*(/[a-z0-9][a-z0-9._-]*)*$")
-
-
-def validate(data: dict, repo_root: Path) -> None:
-    """Refuse a plan `apply` cannot carry out, before anything is touched."""
-    if data.get("version") != PLAN_VERSION:
-        raise OrganizeError(f"plan version must be {PLAN_VERSION}")
-    for key in ("recipes", "scheme", "cookbook", "legacy"):
-        if not isinstance(data.get(key), str) or not data[key]:
-            raise OrganizeError(f"plan `{key}` must be a non-empty string")
-    if (repo_root / data["cookbook"] / MANIFEST).exists():
-        raise OrganizeError(f"{data['cookbook']}/{MANIFEST} already exists; this repo is organized")
-    code = data.get("code")
-    if not isinstance(code, dict) or not isinstance(code.get("roots"), list) or not code["roots"]:
-        raise OrganizeError("plan `code.roots` must be a non-empty list")
-    for i, r in enumerate(code["roots"]):
-        if r.get("platform") not in PLATFORMS or r.get("kind", "ui") not in KINDS:
-            raise OrganizeError(f"plan code.roots[{i}] has a bad platform or kind")
-        if not (repo_root / str(r.get("path", ""))).is_dir():
-            raise OrganizeError(f"plan code.roots[{i}].path not found: {r.get('path')}")
-    moves = data.get("moves")
-    if not isinstance(moves, list):
-        raise OrganizeError("plan `moves` must be a list")
-    names = Counter()
-    for m in moves:
-        src, to = m.get("from", ""), m.get("to", "")
-        if not (repo_root / src).is_file():
-            raise OrganizeError(f"plan move source not found: {src}")
-        if is_folder(folder_for(repo_root / src)):
-            raise OrganizeError(f"plan move source {src} has a source folder, which a move would "
-                                "strand; organize before converting")
-        if not isinstance(to, str) or not _NAME.match(to) or ".." in to.split("/"):
-            raise OrganizeError(f"plan move target `{to}` is not a lowercase path in the cookbook")
-        if _reserved(to):
-            raise OrganizeError(f"plan move target `{to}`: {reserved_name(to)}")
-        names[to] += 1
-        for impl in m.get("implementations", []):
-            if impl.get("platform") not in PLATFORMS:
-                raise OrganizeError(f"{to}: bad platform `{impl.get('platform')}`")
-            if not (repo_root / impl.get("path", "")).exists():
-                raise OrganizeError(f"{to}: implementation not found: {impl.get('path')}")
-    clash = sorted(n for n, k in names.items() if k > 1)
-    if clash:
-        raise OrganizeError(f"plan moves share a target: {', '.join(clash)}")
-
-
-def _set_domain(text: str, domain: str) -> str:
-    """`text` with its frontmatter `domain` set, the line added (after `id`) when absent."""
-    line = f"domain: {domain}"
-    if not text.startswith("---\n"):
-        return text
-    end = text.find("\n---", 3)
-    if end < 0:
-        return text
-    head, rest = text[:end], text[end:]
-    if re.search(r"(?m)^domain:", head):
-        return re.sub(r"(?m)^domain:.*$", lambda _: line, head, count=1) + rest
-    after_id = re.search(r"(?m)^id:.*$", head)
-    at = after_id.end() if after_id else len("---")
-    return head[:at] + "\n" + line + head[at:] + rest
-
-
-_LINK = re.compile(r"\]\(([^)\s#]+\.md)(#[^)\s]*)?\)")
-
-
-def _rel(target: PurePosixPath, start: PurePosixPath) -> str:
-    return PurePosixPath(os.path.relpath(target.as_posix(), start.as_posix() or ".")).as_posix()
-
-
-def _normal(path: PurePosixPath) -> PurePosixPath:
-    return PurePosixPath(os.path.normpath(path.as_posix()))
-
-
-def rewrite_references(text: str, *, old_file: str, new_file: str,
-                       moved: dict[str, str], domains: dict[str, str], recipes: str) -> str:
-    """`text` (the file `old_file`, now at `new_file`) with every reference to a
-    moved recipe pointing at its new place: old domains, relative `.md` links
-    (and the same string anywhere else in the file, such as a link's backticked
-    text), and bare repo-relative `<recipes>/<slug>.md` mentions."""
-    if domains:
-        pattern = re.compile("(" + "|".join(re.escape(d) for d in
-                                            sorted(domains, key=len, reverse=True)) + r")(?![\w-])")
-        text = pattern.sub(lambda m: domains[m.group(1)], text)
-
-    old_dir, new_dir = PurePosixPath(old_file).parent, PurePosixPath(new_file).parent
-    swaps: dict[str, str] = {}
-    for m in _LINK.finditer(text):
-        ref = m.group(1)
-        if "://" in ref or ref.startswith("/"):
-            continue
-        target = _normal(old_dir / ref).as_posix()
-        dest = moved.get(target, target)
-        if dest == target and old_dir == new_dir:
-            continue
-        new_ref = _rel(PurePosixPath(dest), new_dir)
-        if new_ref != ref:
-            swaps[ref] = new_ref
-    for ref in sorted(swaps, key=len, reverse=True):
-        text = re.sub(rf"(?<![\w./-]){re.escape(ref)}", lambda _, r=ref: swaps[r], text)
-
-    bare = {k: v for k, v in moved.items() if k.startswith(recipes + "/")}
-    if bare:
-        pattern = re.compile(r"(?<![\w./-])(" + "|".join(re.escape(k) for k in
-                                                          sorted(bare, key=len, reverse=True)) + r")(?![\w-])")
-        text = pattern.sub(lambda m: bare[m.group(1)], text)
-    return text
-
-
-def _manifest(data: dict, repo_root: Path, author: str, day: str) -> dict:
-    platforms = sorted({r["platform"] for r in data["code"]["roots"]})
-    name = repo_scheme(repo_root)
-    return {
-        "$schema": f"{COOKBOOK_REPO}/blob/main/references/cookbook.schema.json",
-        "type": "cookbook",
-        "schema_version": "1.0.0",
-        "name": name,
-        "id": str(uuid.uuid4()),
-        "version": "1.0.0",
-        "description": f"Specs for {name}'s shared code, grouped by concept.",
-        "author": author,
-        "license": "MIT",
-        "created": day,
-        "modified": day,
-        "platforms": platforms,
-        "cookbook": {"repo": COOKBOOK_REPO, "version": COOKBOOK_VERSION},
-        "structure": {"kind": "library"},
-        "code": data["code"],
-    }
-
-
-def apply(data: dict, repo_root: Path, *, author: str = "", day: Optional[str] = None) -> Applied:
-    """Carry out plan `data` in the git work tree at `repo_root`."""
-    validate(data, repo_root)
-    day = day or date.today().isoformat()
-    author = author or bump._git_user(repo_root)
-    cookbook = data["cookbook"].strip("/")
-    new_scheme = data["scheme"]
-    result = Applied()
-
-    moved: dict[str, str] = {}  # old repo-relative file -> new
-    domains: dict[str, str] = {}  # old domain -> new
-    for m in data["moves"]:
-        new = f"{cookbook}/{m['to']}.md"
-        moved[m["from"]] = new
-        slug = PurePosixPath(m["from"]).with_suffix("").as_posix()
-        domains[f"{data['scheme']}://{slug}"] = f"{new_scheme}://{cookbook}/{m['to']}"
-
-    for old, new in moved.items():
-        (repo_root / new).parent.mkdir(parents=True, exist_ok=True)
-        _git(repo_root, "mv", old, new)
-        result.moved += 1
-    back = {new: old for old, new in moved.items()}
-
-    tracked = [p for p in _git(repo_root, "ls-files", "-z", "--", "*.md").split("\0") if p]
-    for rel in tracked:
-        path = repo_root / rel
-        if not path.is_file():
-            continue
-        if in_source_folder(path, repo_root):
-            continue   # a part: rewritten through its doc below
-        folder = is_folder(folder_for(path))
-        text = edit_text(path) if folder else path.read_text(encoding="utf-8", errors="surrogateescape")
-        new_text = rewrite_references(text, old_file=back.get(rel, rel), new_file=rel,
-                                      moved=moved, domains=domains, recipes=data["recipes"])
-        if new_text != text:
-            if folder:
-                save_document(path, new_text)
-            else:
-                path.write_text(new_text, encoding="utf-8", errors="surrogateescape")
-            result.rewritten.append(rel)
-
-    for m in data["moves"]:
-        new = repo_root / moved[m["from"]]
-        text = new.read_text(encoding="utf-8")
-        text = _set_domain(text, f"{new_scheme}://{cookbook}/{m['to']}")
-        rows = [refimpl.Implementation(i["platform"], i["path"]) for i in m.get("implementations", [])]
-        save_document(new, refimpl.with_section(text, rows))
-        try:
-            save_document(new, bump.plan(new, level="patch", summary=BUMP_SUMMARY, author=author,
-                                         day=day).text)
-        except bump.BumpError as e:
-            result.bump_failures.append((moved[m["from"]], str(e)))
-
-    manifest = repo_root / cookbook / MANIFEST
-    manifest.parent.mkdir(parents=True, exist_ok=True)
-    manifest.write_text(json.dumps(_manifest(data, repo_root, author, day), indent=2) + "\n",
-                        encoding="utf-8")
-    result.manifest = manifest.relative_to(repo_root).as_posix()
-    if new_scheme != repo_scheme(repo_root):
-        # The cookbook's scheme is its index.md's, else the repo's name.
-        (repo_root / cookbook / "index.md").write_text(
-            f"---\ndomain: {new_scheme}://index\n---\n", encoding="utf-8")
-
-    _git(repo_root, "rm", "-q", data["legacy"])
-    recipes_dir = repo_root / data["recipes"]
-    if (recipes_dir / ".gitkeep").is_file():
-        _git(repo_root, "rm", "-q", f"{data['recipes']}/.gitkeep")
-    if recipes_dir.is_dir():
-        result.leftovers = sorted(p.relative_to(repo_root).as_posix()
-                                  for p in recipes_dir.rglob("*") if p.is_file())
-        if not result.leftovers:
-            for d in sorted(recipes_dir.rglob("*"), reverse=True):
-                d.rmdir()
-            recipes_dir.rmdir()
-    return result

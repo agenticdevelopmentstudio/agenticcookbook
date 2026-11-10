@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1b79f7dc-16c4-40d7-ab9d-d03449bf21dc",
     "title": "Code hygiene: remove the old thing",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/code-hygiene",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,10 +21,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/design-for-deletion",
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/scope-discipline",
-      "agenticdevelopercookbook://principles/deliberate-prudent-debt"
+      "2aaf1727-aa36-41d1-a660-7dd0456e1d07",
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "c2fc1edc-4bb8-44e3-b5d9-338cd146c22d",
+      "c41a4778-69df-4142-9b36-bafe28a6d363"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
       "pre-commit"
     ]
   },
-  "synced": "e534fa1ceaf3ac44",
+  "synced": "ff7f8dc0e4656e18",
   "parts": [
     {"part": "intro"},
     {"part": "remove-what-this-change-supersedes", "heading": "Remove what this change supersedes"},

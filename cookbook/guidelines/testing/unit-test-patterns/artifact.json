@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4b60fa16-a4cc-4376-97c3-e455681bffb6",
     "title": "Unit Test Patterns",
-    "domain": "agenticdevelopercookbook://guidelines/testing/unit-test-patterns",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -28,7 +27,7 @@
       "writing-tests"
     ]
   },
-  "synced": "de072ba68c6df17e",
+  "synced": "7bfb359f17ce0ab2",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

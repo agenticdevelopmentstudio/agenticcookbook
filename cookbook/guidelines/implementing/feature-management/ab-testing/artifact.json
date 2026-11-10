@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d991b992-07aa-47b9-9d36-4fd1ca81435f",
     "title": "A/B testing",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/feature-management/ab-testing",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "logging"
     ]
   },
-  "synced": "7bd206f553618ac9",
+  "synced": "dff03303f46588ea",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

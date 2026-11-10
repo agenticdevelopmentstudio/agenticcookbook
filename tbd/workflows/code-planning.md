@@ -1,7 +1,6 @@
 ---
 id: 6fba028d-fe54-48cc-9868-538b36916d72
 title: "Code Planning"
-domain: agenticdevelopercookbook://workflows/code-planning
 type: workflow
 version: 1.0.0
 status: accepted
@@ -17,9 +16,9 @@ tags:
   - code-planning
 depends-on: []
 related: 
-  - agenticdevelopercookbook://principles/simplicity
-  - agenticdevelopercookbook://principles/small-reversible-decisions
-  - agenticdevelopercookbook://principles/yagni
+  - a61b6ede-624b-4424-bdf6-aeb153c9a3ea
+  - 4554e680-aca3-4bb2-bc99-1ac381c428b2
+  - 793f491f-a352-4478-876d-7c5d871488f7
 references: []
 ---
 
@@ -143,7 +142,7 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 | Phase | Checklist Items | Notes |
 |-------|----------------|-------|
 | Phase 3 | All items | Full checklist scan — this is the primary phase for checklist evaluation |
-| Phase 5 | agenticdevelopercookbook://principles/simplicity (Simplicity), agenticdevelopercookbook://principles/yagni (YAGNI) | Plan should reflect simplest viable approach |
+| Phase 5 | [adc.principle.simplicity](cookbook:a61b6ede-624b-4424-bdf6-aeb153c9a3ea) (Simplicity), [adc.principle.yagni](cookbook:793f491f-a352-4478-876d-7c5d871488f7) (YAGNI) | Plan should reflect simplest viable approach |
 
 ## Conformance Test Vectors
 
@@ -186,7 +185,7 @@ This workflow references the shared [guideline-checklist.md](guideline-checklist
 **Approved**: pending
 
 **Decision**: Planning is strictly read-only — no code or file modifications.
-**Rationale**: Separating planning from implementation prevents premature commitment to an approach. It's cheaper to change a plan than to rewrite code. This mirrors the principle of small, reversible decisions (agenticdevelopercookbook://principles/small-reversible-decisions).
+**Rationale**: Separating planning from implementation prevents premature commitment to an approach. It's cheaper to change a plan than to rewrite code. This mirrors the principle of small, reversible decisions ([adc.principle.small-reversible-decisions](cookbook:4554e680-aca3-4bb2-bc99-1ac381c428b2)).
 **Approved**: pending
 
 **Decision**: Plan must be approved before implementation begins.

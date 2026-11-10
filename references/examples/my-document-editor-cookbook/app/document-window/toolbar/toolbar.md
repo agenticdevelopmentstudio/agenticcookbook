@@ -1,7 +1,6 @@
 ---
 id: 1d3708de-d6b8-47bb-aee3-671570a41338
 title: Toolbar
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/app/document-window/toolbar/toolbar
 type: reference
 version: 1.0.0
 status: draft

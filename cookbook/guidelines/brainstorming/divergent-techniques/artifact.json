@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "17d2fa7e-0a8e-4ce7-96a0-de417db82220",
     "title": "Divergent Techniques",
-    "domain": "agenticdevelopercookbook://guidelines/brainstorming/divergent-techniques",
     "type": "guideline",
     "version": "1.0.1",
     "status": "draft",
@@ -21,15 +20,15 @@
       "ideation"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://principles/defer-judgment-go-for-quantity",
-      "agenticdevelopercookbook://principles/counteract-homogenization-with-diversity",
-      "agenticdevelopercookbook://principles/bridge-distant-domains",
-      "agenticdevelopercookbook://principles/constraints-as-creative-fuel",
-      "agenticdevelopercookbook://principles/break-fixation-deliberately"
+      "61756d9a-da97-49d1-be26-eef31de15232",
+      "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a",
+      "cd614244-bb91-411b-88b3-53d552529cd4",
+      "62d3f4a7-0310-4606-b3ee-95610dddbbb8",
+      "ae4444c3-adac-429a-b00e-e918ba3a70b7"
     ],
     "related": [
-      "agenticdevelopercookbook://guidelines/brainstorming/framing-techniques",
-      "agenticdevelopercookbook://guidelines/brainstorming/facilitation-without-anchoring"
+      "d2742535-cbb8-4cda-9a22-1180a8d5966f",
+      "851f0bee-dab9-4ee4-8d38-1f525314563d"
     ],
     "references": [
       "Osborn, Applied Imagination, 1953",
@@ -44,7 +43,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-10-03"
   },
-  "synced": "baf844df5c1bfaff",
+  "synced": "2f5323777c3170ed",
   "parts": [
     {"part": "intro"},
     {"part": "wild-ideation", "heading": "Wild Ideation"},

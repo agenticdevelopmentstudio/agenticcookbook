@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "09b063bd-74e7-4636-baa6-23ee82ec224b",
     "title": "Privacy by design",
-    "domain": "agenticdevelopercookbook://guidelines/planning/security/privacy-by-design",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/security/threat-modeling",
-      "agenticdevelopercookbook://guidelines/planning/security/data-privacy-regulations"
+      "cbfc3cd1-e0a0-44af-bcd8-0aa96eb2acda",
+      "10c66228-2141-484c-9286-2d62d43c7b70"
     ],
     "references": [
       "https://gdpr-info.eu/art-25-gdpr/",
@@ -38,7 +37,7 @@
       "data-modeling"
     ]
   },
-  "synced": "5c3abbe46e91f1fe",
+  "synced": "1ce8d407b3953c4c",
   "parts": [
     {"part": "intro"},
     {"part": "make-the-data-flow-map-a-first-class-artifact", "heading": "Make the data-flow map a first-class artifact"},

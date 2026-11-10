@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1e7f8c3d-ece9-4c5c-b7ca-7703391995dd",
     "title": "Material 3 theming on Android",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/material3-theming",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/theming",
-      "agenticdevelopercookbook://guidelines/implementing/ui/color"
+      "5cc9773e-78de-493e-891c-2a819baf9b60",
+      "e547d962-d561-4bd9-bb5a-50bdeec98335"
     ],
     "references": [
       "https://m3.material.io/",
@@ -39,7 +38,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "3176c0744ec03974",
+  "synced": "faa00a03d773f95f",
   "parts": [
     {"part": "intro"},
     {"part": "color-roles-and-colorscheme", "heading": "Color roles and ColorScheme"},

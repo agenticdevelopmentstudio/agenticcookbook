@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f7d33c40-8dbd-4503-827f-92e4c3da4b8f",
     "title": "Performance: Speed and Token Efficiency",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/performance",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -24,13 +23,13 @@
       "model-selection"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0"
     ],
     "related": [
-      "agenticdevelopercookbook://principles/simplicity",
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://principles/separation-of-concerns",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+      "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -41,7 +40,7 @@
     ]
   },
   "names_hosts": "Explains Claude Code's context-loading costs (CLAUDE.md, .claude/rules/): the host is the subject.",
-  "synced": "b4923f50d8e20c14",
+  "synced": "f5f4362366a14f92",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

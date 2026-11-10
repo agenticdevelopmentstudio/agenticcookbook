@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ce2af25c-4f18-41ae-91b9-342e363449b3",
     "title": "Empty State",
-    "domain": "agenticdevelopercookbook://ingredients/ui/components/empty-state",
     "type": "ingredient",
     "version": "1.1.0",
     "status": "accepted",
@@ -33,7 +32,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "1e92ce574caf5cef",
+  "synced": "7f373eb5b275411d",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

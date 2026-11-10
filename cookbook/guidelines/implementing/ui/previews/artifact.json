@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "40ba1017-cec3-42f0-bd89-63a29eb3dd4d",
     "title": "Previews",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/previews",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -31,7 +30,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "062beb17bfde4683",
+  "synced": "2bb329dc98d660f3",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

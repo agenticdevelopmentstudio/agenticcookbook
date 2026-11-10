@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "138eed2b-6b13-40ac-8c99-1f7860420b42",
     "title": "Spec-driven development (plan before code)",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/spec-driven-development",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/steel-thread-first",
-      "agenticdevelopercookbook://principles/small-reversible-decisions",
-      "agenticdevelopercookbook://guidelines/planning/code-quality/scope-discipline"
+      "b224ef56-65f5-45fd-8842-767b20df6736",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2",
+      "e6af82e8-0142-446b-977d-2f771a90bdff"
     ],
     "references": [
       "https://code.claude.com/docs/en/best-practices",
@@ -37,7 +36,7 @@
       "new-module"
     ]
   },
-  "synced": "7e2287414d564f67",
+  "synced": "375f7b53055b0a85",
   "parts": [
     {"part": "intro"},
     {"part": "when-a-spec-is-required", "heading": "When a spec is required"},

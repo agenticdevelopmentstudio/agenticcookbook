@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
     "title": "Authoring Skills and Rules",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -32,7 +31,7 @@
     ]
   },
   "names_hosts": "Tells authors to update the CLAUDE.md skills table, a Claude Code file.",
-  "synced": "5cdbb191f60f15a4",
+  "synced": "e2e04573559011ff",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

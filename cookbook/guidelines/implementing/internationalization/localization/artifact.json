@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "57cbdb9d-4cf7-4a39-bdd8-99d28be983ca",
     "title": "Localizability",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/internationalization/localization",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "167d7337567e6f1a",
+  "synced": "f403cbbe90514171",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

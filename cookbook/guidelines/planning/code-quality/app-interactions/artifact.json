@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1d4b2aa7-c30e-4d41-8bd8-892ff7ce7499",
     "title": "App Interactions",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/app-interactions",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "701d351cbb9dd60a",
+  "synced": "086feb6f5bedb7f6",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

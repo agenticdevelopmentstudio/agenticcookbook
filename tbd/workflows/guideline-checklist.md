@@ -1,7 +1,6 @@
 ---
 id: 6b29562c-4185-4411-aa66-092206d6bfa5
 title: "Guideline Applicability Checklist"
-domain: agenticdevelopercookbook://workflows/guideline-checklist
 type: workflow
 version: 1.1.1
 status: accepted
@@ -17,45 +16,45 @@ tags:
   - guideline-checklist
 depends-on: []
 related: 
-  - agenticdevelopercookbook://guidelines/implementing/feature-management/ab-testing
-  - agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
-  - agenticdevelopercookbook://guidelines/implementing/ui/always-show-progress
-  - agenticdevelopercookbook://guidelines/implementing/observability/analytics
-  - agenticdevelopercookbook://guidelines/testing/testing
-  - agenticdevelopercookbook://guidelines/implementing/feature-management/debug-mode
-  - agenticdevelopercookbook://guidelines/implementing/platform-integration/deep-linking
-  - agenticdevelopercookbook://guidelines/implementing/feature-management/feature-flags
-  - agenticdevelopercookbook://guidelines/implementing/observability/logging
-  - agenticdevelopercookbook://guidelines/implementing/code-quality/linting
-  - agenticdevelopercookbook://guidelines/implementing/internationalization/localization
-  - agenticdevelopercookbook://guidelines/implementing/concurrency/concurrency
-  - agenticdevelopercookbook://guidelines/testing/post-generation-verification
-  - agenticdevelopercookbook://principles/native-controls
-  - agenticdevelopercookbook://guidelines/implementing/security/privacy
-  - agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility
-  - agenticdevelopercookbook://guidelines/implementing/internationalization/rtl-support
-  - agenticdevelopercookbook://guidelines/implementing/platform-integration/shortcuts-and-automation
-  - agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits
-  - agenticdevelopercookbook://introduction/conventions
-  - agenticdevelopercookbook://principles/dependency-injection
-  - agenticdevelopercookbook://principles/design-for-deletion
-  - agenticdevelopercookbook://principles/explicit-over-implicit
-  - agenticdevelopercookbook://principles/fail-fast
-  - agenticdevelopercookbook://principles/immutability-by-default
-  - agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast
-  - agenticdevelopercookbook://principles/separation-of-concerns
-  - agenticdevelopercookbook://principles/simplicity
-  - agenticdevelopercookbook://principles/yagni
-  - agenticdevelopercookbook://guidelines/testing/flaky-test-prevention
-  - agenticdevelopercookbook://guidelines/testing/mutation-testing
-  - agenticdevelopercookbook://guidelines/testing/properties-of-good-tests
-  - agenticdevelopercookbook://guidelines/testing/property-based-testing
-  - agenticdevelopercookbook://guidelines/testing/security-testing
-  - agenticdevelopercookbook://guidelines/testing/test-data
-  - agenticdevelopercookbook://guidelines/testing/test-pyramid
-  - agenticdevelopercookbook://guidelines/testing/the-testing-workflow
-  - agenticdevelopercookbook://guidelines/testing/unit-test-patterns
-  - agenticdevelopercookbook://guidelines/implementing/data/database
+  - d991b992-07aa-47b9-9d36-4fd1ca81435f
+  - 3d970d6a-2d71-48f3-9f84-69c1d823d6e8
+  - 8d52028b-d358-4965-93a1-030fc8405068
+  - 17216748-46e9-4e92-af3a-f4deeb843a8d
+  - 40d630ea-4d62-4c95-9663-80b033e4adae
+  - e446ee3e-b8f2-40e7-b93d-3113e6a95e5d
+  - d27c35ab-84f6-4f40-8c29-91630fdc90e7
+  - ac616d81-16c2-4f33-9ae4-139d5c24318d
+  - 0f0c1da3-1c53-417b-890d-0259d7513c65
+  - 775da457-30c7-47de-b179-0fae8a8b779d
+  - 57cbdb9d-4cf7-4a39-bdd8-99d28be983ca
+  - 6302654b-8200-4e03-862d-4734d4960d19
+  - 563aebde-52bf-4011-8907-ecc473fd942c
+  - dec7cf4a-449b-47fa-9d6e-f7e9376383a7
+  - 29057cf0-a38b-4c35-8b8b-52e12bf54784
+  - 3d970d6a-2d71-48f3-9f84-69c1d823d6e8
+  - 4cb7c242-3ade-4d59-9c74-67c1d5f9c107
+  - 991e72d0-477b-4fd5-bdfa-08680efc0cf9
+  - 8075b95b-2678-4893-9a5a-eb77aa9232aa
+  - guide/introduction/conventions.md
+  - a2b79b0e-7d2c-44f5-b139-abc9cf47d1f5
+  - 2aaf1727-aa36-41d1-a660-7dd0456e1d07
+  - e114c41c-d203-454c-bc7c-cc128f6ebadd
+  - 425271ea-92b6-4df6-9a83-94795f1be377
+  - a7ce3621-2fed-478f-8767-b186014c5923
+  - ffa8565d-b105-4758-b850-9d9b8119b838
+  - 1357be12-5a58-4143-a570-849c114770c5
+  - a61b6ede-624b-4424-bdf6-aeb153c9a3ea
+  - 793f491f-a352-4478-876d-7c5d871488f7
+  - 05d00147-5c49-42d8-bdbd-cf8fd7dc2379
+  - db58f79d-1040-4bb2-a862-93ebd390ee12
+  - e5af9ba5-f484-40c3-9738-470090f5241c
+  - ccffa426-5556-4bbe-8dd6-b43c8e195f64
+  - cf05e36f-ea8b-4af2-8df6-c5e772dc25b5
+  - 38969d3a-884a-4d6e-adae-5398464ee0de
+  - f3ae65a6-f51d-4e42-8f79-fa8097dd3480
+  - 8ab7452a-09b8-4f4e-abfc-f7fd700765db
+  - 4b60fa16-a4cc-4376-97c3-e455681bffb6
+  - f68778f2-65e3-4e89-bbf8-115151efa9dc
 references: []
 ---
 

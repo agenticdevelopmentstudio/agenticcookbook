@@ -1,7 +1,6 @@
 ---
 id: e7f0ce0c-e57d-4394-902e-cdfaef1a99b4
 title: "Web"
-domain: agenticdevelopercookbook://reference/best-practices/web
 type: reference
 version: 1.0.0
 status: accepted

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "578e6d3b-f60d-42ff-964b-06b173ffaae9",
     "title": "Domain-stratified trust",
-    "domain": "agenticdevelopercookbook://principles/domain-stratified-trust",
     "type": "principle",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,16 +21,16 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/type-precedes-method",
-      "agenticdevelopercookbook://principles/independence-before-corroboration",
-      "agenticdevelopercookbook://principles/suppress-unsupported-confidence",
-      "agenticdevelopercookbook://guidelines/researching/evidence/verification-and-trust-scoring"
+      "7a1571f1-021e-4e5e-8247-ae8c79fef5fe",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba",
+      "7a14b9f2-0e10-456b-a103-8a887afda9f2",
+      "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "bd9e3d7808063d93",
+  "synced": "86ef17a102878ca3",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

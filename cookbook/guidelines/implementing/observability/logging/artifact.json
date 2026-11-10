@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0f0c1da3-1c53-417b-890d-0259d7513c65",
     "title": "Instrumented logging",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/logging",
     "type": "guideline",
     "version": "1.1.2",
     "status": "accepted",
@@ -45,7 +44,7 @@
       "error-handling"
     ]
   },
-  "synced": "3b6adaf8357ccf9d",
+  "synced": "16cea23d8b3271f0",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

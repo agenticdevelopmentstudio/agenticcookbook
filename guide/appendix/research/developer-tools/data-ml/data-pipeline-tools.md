@@ -1,7 +1,6 @@
 ---
 id: b3432143-1a99-4dda-9971-da3d411a9568
 title: Data & ML Pipeline Development Tools
-domain: agenticdevelopercookbook://appendix/research/developer-tools/data-ml/data-pipeline-tools
 type: reference
 version: 1.0.0
 status: draft

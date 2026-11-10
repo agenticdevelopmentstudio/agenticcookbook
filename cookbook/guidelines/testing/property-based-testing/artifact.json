@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ccffa426-5556-4bbe-8dd6-b43c8e195f64",
     "title": "Property-Based Testing",
-    "domain": "agenticdevelopercookbook://guidelines/testing/property-based-testing",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -42,7 +41,7 @@
       "writing-tests"
     ]
   },
-  "synced": "f277b7faf8bbc808",
+  "synced": "2e9f0265cca72f63",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.11.0"
-description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to convert a .cookr.json repo into a cookbook, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
-argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|convert|compile|install|uninstall|payload|stamp|organize plan|apply|prompt extract <name>|--tier <group>> [...]"
+version: "0.12.0"
+description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to scope a change to the recipes it touches, to check what recipe work a change still owes, to record which code implements a recipe and confirm it, to rename or look up a recipe's id, to upgrade a cookbook to format 2, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
+argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.11.0
+# cookr v0.12.0
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill, including recipe
@@ -29,13 +29,30 @@ If missing, tell the user:
 ## The library cookbook
 
 A repo's specs live in `<repo>/cookbook/`, grouped by concept, general to
-specific (`cookbook/ai/chat/chat-context.md`), never by platform. A spec's name is its
-path there without `.md`; its `domain` is `<scheme>://cookbook/<name>`. Each
-spec lists its code in a `## Reference Implementations` table of repo-relative
-paths (a trailing `/` claims a whole directory). `cookbook/cookbook.json`'s
-`code` block lists the source roots, so a file no spec claims yet still shows
-up, named inside its root's `recipes` group. A "tier" or group is any
-directory of the cookbook (`--tier ai-plugin-kit/chat`).
+specific (`cookbook/ai/chat/chat-context/`), never by platform. Every spec is a
+source folder (below). Its identity is its UUID; its rdid
+(`<cookbook-rdid>.<type>.<folder path>`) is a label held in
+`cookbook/index.json`, which only cookr writes (`format: 2`, like
+`cookbook.json`, `artifact.json` and `.cookr.json`). Specs link to each other
+by UUID (`[<rdid>](cookbook:<uuid>)` in text).
+
+The index also holds each spec's **implementations**: repo-relative paths of
+the code (a trailing `/` claims a whole directory), each with a platform and a
+conformance state (`planned`, `unverified`, `needs-validation`, `confirmed`).
+Record them with `cookr implements`, never by hand. `cookbook/cookbook.json`'s
+`code` block lists the source roots, so a file no spec claims yet still shows up
+in `cookr status` and `cookr inventory`, named inside its root's `recipes`
+group. A "tier" or group is any directory of the cookbook
+(`--tier ai-plugin-kit/chat`).
+
+A cookbook still on format 1 or the legacy layout upgrades on contact (any
+cookr command, and the hook) or with `cookr upgrade [--dry-run]`; commit the
+upgrade before other work. The upgrade needs a clean work tree: commit your
+work first (a WIP commit is fine; the commit hook lets that commit through),
+then rerun. A format-2 `.cookr.json` is kept whole (its
+`cookbook` dir, roots, dependencies and ignore); one whose `cookbook` names a
+directory outside the repo, or one holding no cookbook, is refused (exit 2),
+never answered with a new cookbook.
 
 ## Routing
 
@@ -46,8 +63,17 @@ directory of the cookbook (`--tier ai-plugin-kit/chat`).
 | write the recipe for X | `cookr prompt extract X --out-dir <dir>` → dispatch (below) |
 | write everything a group still needs | extraction workflow (below) |
 | is every spec in its code's concept group | `cookr arrangement [--tier <group>]` |
-| code moved (`git mv`) | `cookr relink [--since <ref>] [--dry-run]` |
-| convert a `.cookr.json` repo | organize workflow (below) |
+| code moved (renamed in version control) | `cookr relink [--since <ref>] [--dry-run]` |
+| which recipes does this change touch (minimum, siblings) | `cookr scope [paths\|ids] [--since REF] [--json]` |
+| what recipe work a change still owes | `cookr check [--staged\|--branch] [--json]` |
+| uncovered files and each implementation's conformance | `cookr status [--json]` |
+| record the code implementing a recipe | `cookr implements <id> <location> [--platform P] [--planned] [--remove LOC]` |
+| implementation matches the recipe's current version | `cookr confirm <id> [--platform P] [--location L]` |
+| look up an artifact's uuid, rdid, path | `cookr id <uuid\|rdid> [--json]` |
+| rename a recipe's rdid | `cookr rename <uuid\|rdid> <new-rdid>` |
+| what changed between two versions of a recipe | `cookr diff <id> <from> [<to>]` |
+| upgrade a repo or cookbook to format 2 | `cookr upgrade [--rdid R] [--dry-run]` |
+| compile and register this repo's skill sets | `cookr skills sync` |
 | turn `.md` artifacts into source folders | `cookr convert [paths] [--dry-run] [--out <dir>] [--remove-source]` |
 | fold an edited `.md` back into its folder | `cookr convert --update [--force] <paths>` |
 | build the single-file docs from source folders | `cookr compile --target doc [paths] [--out <dir>] [--check] [--force]` |
@@ -62,6 +88,26 @@ Forward `-p <repo-root>` to every `cookr` call when the user supplies one;
 otherwise run from cwd and let the CLI find `cookbook/cookbook.json`. Pass
 `cookr` the absolute `cookbook_dir` from the worklist JSON below, never a
 cwd-relative path.
+
+## Working in a cookr repo
+
+A repo with `.cookr.json` is recipes-first. The cookr hook (installed by
+`skills/cookr/setup/install`) reminds you once per session, runs
+`cookr skills sync`, and on every commit and at the end of a turn runs
+`cookr check`; any finding blocks with a list of recipe work to do by rdid.
+Do that work and carry on; never stop to ask Mike about it. `CC_ALLOW_COOKR=1`
+in the command skips the check and is for Mike's use only.
+
+1. During planning, run `cookr scope` on the planned files and give Mike the
+   minimum and the siblings; record his answer in the plan.
+2. Write or update the recipes in the worktree **before** the code, as the shared
+   design.
+3. Keep them updated as the code changes; a missing recipe is written with the
+   existing `prompt extract` brief and verify pass (below). Claim the code with
+   `cookr implements`.
+4. When an implementation matches its recipe, `cookr confirm` it.
+5. `cookr bump` each recipe you changed, then `cookr validate` before the work is
+   done.
 
 ## Source folders
 
@@ -85,9 +131,9 @@ cookr knows which side changed when a doc and its folder disagree:
 - **Both edited** (or no record and they differ): both refuse. Keep one side
   with `convert --update --force` (the doc) or `compile --force` (the folder).
 
-`bump`, `update`, `relink` and `organize` edit from the newer side, write
+`bump`, `update` and `relink` edit from the newer side, write
 through the folder and record the sync; they refuse an artifact edited on both
-sides. `organize` refuses to move a doc that already has a folder.
+sides.
 
 A spec with child specs (`telemetry.md` beside `telemetry/sources.md`) shares
 its folder with them: `telemetry/` holds the parent's `artifact.json` and parts
@@ -174,6 +220,12 @@ A model tunes the cookbook for itself. Nobody can tune for a model they are not.
   `targets/<target>.SKILL.md`. `targets.json` (the host table) sits at the set's root,
   next to `skills.json` (the receipt).
 
+In a cookr repo each cookbook (this repo's and its dependencies') has its own set
+in `$COOKR_HOME/sets/<cookbook-rdid>`, registered with skill-router under that
+cookbook's rdid and scoped to the repos that use it. `cookr skills sync [-p REPO]`
+compiles and registers whatever is stale or missing; the hook runs it at the
+start of each session, so you rarely run it yourself.
+
 A recompile prunes only what the receipt lists. `--check` exits 1 when anything
 is stale or missing. The set fails on a duplicate name, a rendering a host would
 refuse, or a route level over 50 entries.
@@ -230,7 +282,7 @@ Never adopt or replace the user's live `general-principles` without their OK.
 1. `cookr prompt extract --tier <group> --out-dir <scratch dir> --json` — the
    worklist. It writes one brief per spec that still needs a writer and prints
    `repo_root`, `cookbook_dir`, `write` (one entry per brief: `name`,
-   `recipe_file`, `domain`, `reference_implementations`, `existing`, `brief`)
+   `recipe_file`, `reference_implementations`, `existing`, `brief`)
    and `awaiting_review`. Use a scratch directory outside the repo, e.g.
    `$TMPDIR/cookr-briefs/<group>`.
 2. For each `write` entry, dispatch a subagent pinned to `claude-sonnet-4-6`
@@ -243,9 +295,7 @@ Never adopt or replace the user's live `general-principles` without their OK.
    has already recorded it with `cookr bump`, as its brief says; never bump
    it again, and never hand-edit `version`, `modified` or Change History.
 4. `cookr validate -p <cookbook_dir>` and `cookr coverage --tier <group>`.
-   Coverage grades each recipe's `domain` against the one its path derives
-   (the worklist's `domain`), so a wrong scheme or directory shows up in
-   `problems` like any other gap.
+   Run `cookr implements` for the recipe's code, then `cookr status`.
 5. Rerun step 1. Every recipe still in `write` goes back to step 2; its brief
    now includes the existing recipe, so the subagent completes rather than
    restarts. Stop when `write` is empty.
@@ -289,23 +339,23 @@ own.
 Rows are keyed by spec name. The `problems` column names exactly what keeps a
 spec at `partial`. Quote it to the subagent; do not re-derive it. Every graded
 rule (the Compliance checks every component cites, the minimum test vectors,
-the Design Decision lines, frontmatter `platforms`, the Reference
-Implementations rows) is stated once, in the writer rules of
+the Design Decision lines, frontmatter `platforms`, the
+implementations in the index) is stated once, in the writer rules of
 `modules/prompt/prompts/extract/module.md`, which every brief carries as its
 preamble; point at the brief, never restate the rules.
 
 A spec listed under "specs with no source file" is not an error: it is a
 vocabulary or composite spec with no source of its own.
 
-Reference Implementations problems:
+Implementation problems:
 
-- A row naming a missing path: the code moved or was deleted. After a
-  `git mv`, run `cookr relink`; otherwise fix the row.
-- A path claimed by another spec too: two specs list the same path. Keep it
-  in one; the other lists the files it really describes.
+- An implementation naming a missing path: the code moved or was deleted. After
+  a move, run `cookr relink`; otherwise `cookr implements <id> --remove <location>`.
+- A path claimed by another spec too: two specs record the same path. Keep it
+  in one (`cookr implements --remove` on the other).
 - An unclaimed file shows up as its own row, named by where it sits. To fold
-  it into an existing spec, add its path (or its directory, with a trailing
-  `/`) to that spec's table; a file row beats a directory row, and the deepest
+  it into an existing spec, `cookr implements <id> <path>` (or its directory,
+  with a trailing `/`); a file row beats a directory row, and the deepest
   directory wins.
 - A name collision across roots: two unclaimed files from different roots
   land on one name. Claim each in a spec, or ignore one.
@@ -314,23 +364,10 @@ Reference Implementations problems:
 
 `cookr arrangement` reports each spec as `aligned` (it sits in, or anywhere
 below, the `recipes` group of the root its code is under), `drifted`,
-`unplaced` (no rows) or `outside` (a row under no root). A drifted spec either
-moves into its group in the cookbook (move the spec, fix its `domain`, then
-`cookr bump` it), or its root's `recipes` changes. Rearranging the code is the user's call: propose it,
+`unplaced` (no implementations) or `outside` (a row under no root). A drifted spec either
+moves into its group in the cookbook (move the spec's folder, `cookr relink`
+and `cookr rename` it to match, then `cookr bump` it), or its root's `recipes` changes. Rearranging the code is the user's call: propose it,
 never do it unasked.
-
-## Organize workflow
-
-Converts a repo still on `.cookr.json` and a flat recipes directory.
-
-1. `cookr organize plan --out <scratch>/plan.json` proposes each recipe's
-   place and rows, and the `code` block. Show the user the group table it
-   prints; they may edit `moves[].to` or the rows before applying.
-2. `cookr organize apply --plan <scratch>/plan.json` in a clean work tree
-   moves every recipe into `cookbook/`, rewrites domains and references
-   repo-wide, writes each Reference Implementations table, patch-bumps each
-   spec, writes `cookbook/cookbook.json` and removes `.cookr.json`.
-3. `cookr validate -p <repo>/cookbook`, `cookr coverage`, `cookr arrangement`.
 
 ## Non-UI code
 
@@ -346,4 +383,4 @@ so the top-level `ignore` never drops files a UI root needs.
 
 - Never edit files in `~/.local/bin/_cookr_pkg/`. Edit `skills/cookr/cli/` in agenticcookbook and re-run `skills/cookr/setup/install`.
 - Never `pip install` from this skill.
-- `cookbook/cookbook.json` holds the roots and ignores; a spec's own table holds what it claims. Never put either in the other.
+- `cookbook/cookbook.json` holds the roots and ignores; `cookbook/index.json` holds what each spec implements. Never put either in the other, and never edit `index.json` by hand.

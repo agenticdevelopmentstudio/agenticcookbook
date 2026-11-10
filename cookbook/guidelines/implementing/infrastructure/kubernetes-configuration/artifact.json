@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ed639d3f-02e5-42d1-bb87-f96908986025",
     "title": "Kubernetes configuration and secrets",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/infrastructure/kubernetes-configuration",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/infrastructure/containerization",
-      "agenticdevelopercookbook://guidelines/implementing/security/pii-handling"
+      "ecf27370-3cd4-47a2-a359-7b42575ef48f",
+      "647b7d54-41fc-4f31-96e4-3d23ae49f92b"
     ],
     "references": [
       "https://kubernetes.io/docs/concepts/configuration/secret/",
@@ -38,7 +37,7 @@
       "authentication"
     ]
   },
-  "synced": "a16ee12ccc5cbbe2",
+  "synced": "8cb5ac8008c65f89",
   "parts": [
     {"part": "intro"},
     {"part": "separate-config-from-secrets", "heading": "Separate config from secrets"},

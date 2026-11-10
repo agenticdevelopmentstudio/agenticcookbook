@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9f13dbec-cecb-482b-824b-f7d3e341878a",
     "title": "Animation & Motion",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/animation-motion",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -23,7 +22,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/accessibility/accessibility"
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
     ],
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines/motion",
@@ -37,7 +36,7 @@
       "accessibility"
     ]
   },
-  "synced": "a1b708dfdcd92be8",
+  "synced": "d8c8bd0ed82c9ccf",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

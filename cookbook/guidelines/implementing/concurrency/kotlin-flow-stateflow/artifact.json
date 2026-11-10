@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d374c32a-b452-47cd-9250-7b7d34a63116",
     "title": "Kotlin Flow and StateFlow: lifecycle-aware state exposure",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/concurrency/kotlin-flow-stateflow",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -24,7 +23,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/ui/compose-state-and-udf"
+      "736fac9a-56e0-449d-8dc0-b95cbfba7884"
     ],
     "references": [
       "https://developer.android.com/kotlin/flow/stateflow-and-sharedflow"
@@ -35,7 +34,7 @@
       "concurrency"
     ]
   },
-  "synced": "7eac5f69bfef7c5e",
+  "synced": "0d341ea80becb245",
   "parts": [
     {"part": "intro"},
     {"part": "exposing-state", "heading": "Exposing state"},

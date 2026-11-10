@@ -5,6 +5,9 @@
   ~/.local/bin/cookr and ~/.local/bin/_cookr_pkg/.
 - Copies SKILL.md to ~/.claude/skills/cookr/, so the skill is /cookr in every
   project.
+- Copies hooks/ to ~/.claude/skills/cookr/hooks/ and registers the recipes-first
+  hook in ~/.claude/settings.json (SessionStart, UserPromptSubmit, PreToolUse:Bash,
+  Stop), without duplicating an entry that is already there.
 
 --skill-only skips the CLI step; the repo's ./install uses it, having just
 installed the CLIs itself.
@@ -23,7 +26,10 @@ REPO_ROOT = SKILL_SRC.parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 sys.dont_write_bytecode = True  # keep the checkout free of __pycache__/
 
-from setup_support import CLAUDE_DIR, ok, title  # noqa: E402
+from setup_support import CLAUDE_DIR, CLAUDE_SETTINGS, ok, title, warn  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from hook_registration import hook_command, register  # noqa: E402
 
 SKILL_DST = CLAUDE_DIR / "skills" / "cookr"
 
@@ -42,7 +48,17 @@ def main(argv: list[str]) -> int:
     shutil.rmtree(SKILL_DST, ignore_errors=True)
     SKILL_DST.mkdir(parents=True)
     shutil.copy2(SKILL_SRC / "SKILL.md", SKILL_DST / "SKILL.md")
+    shutil.copytree(
+        SKILL_SRC / "hooks", SKILL_DST / "hooks", ignore=shutil.ignore_patterns("__pycache__")
+    )
     ok(f"skill → {SKILL_DST}")
+
+    try:
+        changed = register(CLAUDE_SETTINGS, hook_command(Path.home()))
+    except (OSError, ValueError) as e:  # json.JSONDecodeError is a ValueError
+        warn(f"{CLAUDE_SETTINGS} not updated ({e}); register the hook by hand.")
+    else:
+        ok(f"hook registered for: {', '.join(changed)}" if changed else "hook already registered")
 
     if not args.skill_only:
         title("Done")

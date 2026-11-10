@@ -22,3 +22,7 @@ use_cases:
     description: "Writing cookbook content (recipes, skills, agents)"
   - name: researching
     description: "Gathering, verifying, and recording trustworthy research"
+  - name: storytelling
+    description: "Telling a project's story: positioning, explanation, narrative, grounded in the record"
+  - name: brainstorming
+    description: "Framing a problem, generating ideas and converging, without anchoring"

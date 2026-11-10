@@ -26,9 +26,9 @@ def require_config(ctx) -> bool:
         ctx.ui.error(escape(ctx.config_error))
         return False
     if ctx.config is None:
-        ctx.ui.error("No cookbook/cookbook.json found. Run from inside a repo with a library "
-                     "cookbook, or pass -p <repo-root>. A repo still on .cookr.json converts "
-                     "with `cookr organize`.")
+        ctx.ui.error("No .cookr.json or cookbook/cookbook.json found. Run from inside a repo "
+                     "with a library cookbook, or pass -p <repo-root>. A repo on an older "
+                     "format converts with `cookr upgrade`.")
         return False
     return True
 

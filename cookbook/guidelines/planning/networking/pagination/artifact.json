@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "06956930-278f-424f-80e9-612a4db301e8",
     "title": "Pagination",
-    "domain": "agenticdevelopercookbook://guidelines/planning/networking/pagination",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -32,7 +31,7 @@
       "data-modeling"
     ]
   },
-  "synced": "7a07321fc12c56c7",
+  "synced": "3fce2acbfd12b67c",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

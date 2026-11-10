@@ -6,5 +6,5 @@
 - **sync-voiceover-announce**: The sync progress indicator MUST be announced by VoiceOver when its visibility changes (e.g., "Syncing directories" when it appears, "Sync complete" when it disappears).
 - **context-menu-labels**: Context menu items MUST have descriptive accessibility labels matching their visible text.
 - **tab-focus-transfer**: Tab key MUST move focus between the sidebar and detail pane.
-- **empty-state-accessible**: The empty-state action buttons MUST be accessible per [empty-state.md](../components/empty-state.md) heading-first-announce through decorative-icon.
+- **empty-state-accessible**: The empty-state action buttons MUST be accessible per [adc.ingredient.ui.components.empty-state](cookbook:ce2af25c-4f18-41ae-91b9-342e363449b3) heading-first-announce through decorative-icon.
 

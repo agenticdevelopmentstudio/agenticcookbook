@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "beea6f0b-f329-4780-9e9d-d276f0b98823",
     "title": "Hyrum's Law: all observable behavior becomes contract",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/networking/observable-behavior-contract",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/networking/api-design",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "6079c539-f547-46de-9284-d404a76f6d9d",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://www.hyrumslaw.com/"
@@ -35,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "68cc125434638ff3",
+  "synced": "649e7e39896a486f",
   "parts": [
     {"part": "intro"},
     {"part": "what-counts-as-observable-behavior", "heading": "What counts as \"observable behavior\""},

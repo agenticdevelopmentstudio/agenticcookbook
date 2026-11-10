@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b5a1b4b6-c61c-4b45-825f-730bd782d0f3",
     "title": "CQRS and event sourcing",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/cqrs-and-event-sourcing",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/data/datastore-selection",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries"
+      "6a653107-929d-418e-865d-636373a27b02",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b"
     ],
     "references": [
       "https://martinfowler.com/bliki/CQRS.html",
@@ -38,7 +37,7 @@
       "schema-design"
     ]
   },
-  "synced": "726256b146a411d2",
+  "synced": "cfa8ac642fd37afe",
   "parts": [
     {"part": "intro"},
     {"part": "measured-need-guardrail-strong", "heading": "MEASURED-NEED guardrail (strong)"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "788f1c1d-69af-4570-a279-748d89fcc0e0",
     "title": "MCP server design",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/explicit-over-implicit",
-      "agenticdevelopercookbook://principles/fail-fast"
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "425271ea-92b6-4df6-9a83-94795f1be377"
     ],
     "references": [
       "https://modelcontextprotocol.io/",
@@ -40,7 +39,7 @@
       "ai-api-integration"
     ]
   },
-  "synced": "17f6a8c4109508c8",
+  "synced": "8215f8a81f0567d4",
   "parts": [
     {"part": "intro"},
     {"part": "choose-the-right-primitive", "heading": "Choose the right primitive"},

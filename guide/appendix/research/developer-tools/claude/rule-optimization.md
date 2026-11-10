@@ -1,7 +1,6 @@
 ---
 id: fb333cb6-b3b9-494e-b133-d75124461778
 title: Claude Code Rule Optimization
-domain: agenticdevelopercookbook://appendix/research/developer-tools/claude/rule-optimization
 type: reference
 version: 1.0.0
 status: draft

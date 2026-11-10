@@ -6,5 +6,5 @@ These appear across GDPR and most US state laws, so build to them once:
 - **purpose limitation**: You **MUST** use data only for the purposes disclosed at collection. New purpose requires new basis/notice.
 - **storage limitation**: You **MUST** define retention per data type and delete or anonymize when it expires.
 - **transparency**: You **MUST** disclose what is collected, why, and with whom it is shared, in plain language at the point of collection.
-- **data subject rights**: You **SHOULD** design for access, correction, deletion, and opt-out from the start (see `agenticdevelopercookbook://guidelines/planning/security/privacy-by-design`).
+- **data subject rights**: You **SHOULD** design for access, correction, deletion, and opt-out from the start (see [adc.guideline.planning.security.privacy-by-design](cookbook:09b063bd-74e7-4636-baa6-23ee82ec224b)).
 

@@ -1,7 +1,6 @@
 ---
 id: 69fa9ac7-5612-4c59-800b-2362d712d6c7
 title: "Security"
-domain: agenticdevelopercookbook://reference/best-practices/security
 type: reference
 version: 1.0.0
 status: accepted

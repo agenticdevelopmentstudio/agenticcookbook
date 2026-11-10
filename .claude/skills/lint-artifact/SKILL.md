@@ -1,6 +1,6 @@
 ---
 name: lint-artifact
-version: "1.0.0"
+version: "2.0.0"
 description: "Lint a cookbook artifact (principle, guideline, or recipe) against its type's formatting compliance checks. Auto-detects type from frontmatter."
 argument-hint: "[path-or-name]"
 allowed-tools: Read, Glob, Grep, Bash(wc *), AskUserQuestion
@@ -8,36 +8,40 @@ context: fork
 model: sonnet
 ---
 
-# Lint Artifact v1.0.0
+# Lint Artifact v2.0.0
 
-Validate a cookbook artifact for structural completeness, frontmatter correctness, and convention compliance. Auto-detects the artifact type from the `type` frontmatter field and runs the corresponding checks from `cookbook/compliance/artifact-formatting/`.
+Validate a cookbook artifact for structural completeness, frontmatter correctness, and convention compliance. Auto-detects the artifact type from the `type` frontmatter field and runs the corresponding checks from `tbd/compliance/artifact-formatting/`.
 
 ## Startup
 
-lint-artifact v1.0.0
+lint-artifact v2.0.0
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (1.0.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.0). If they differ, print:
 
-> Warning: This skill is running v1.0.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.0.0 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> lint-artifact v1.0.0
+> lint-artifact v2.0.0
 
 Then stop.
 
 ## Argument Resolution
 
-Resolve `$ARGUMENTS` to an artifact `.md` file path using this flow:
+Resolve `$ARGUMENTS` to an artifact. An artifact is a source folder (`<name>/artifact.json` plus
+one `.md` per section); lint its compiled doc, written to the scratchpad with
+`cookr compile <folder> --out <scratch>`, never committed. Resolve using this flow:
 
 ### If `$ARGUMENTS` is provided:
 
-1. **Path check**: If `$ARGUMENTS` contains `/` or ends with `.md`, treat it as a file path.
-   - If the file exists, use it.
+1. **Path check**: If `$ARGUMENTS` contains `/` or ends with `.md`, treat it as a path.
+   - If it is a source folder (or a `.md` whose folder exists), use that folder.
    - If not, print "File not found: <path>" and stop.
 
-2. **Search string**: Otherwise, treat `$ARGUMENTS` as a search string. Use Glob to find all `.md` files under `cookbook/principles/`, `cookbook/guidelines/`, and `cookbook/recipes/` (excluding `_template.md` and `INDEX.md`). Filter to files whose name contains the search string (case-insensitive).
+2. **UUID or rdid**: If `$ARGUMENTS` is a UUID or an rdid (`adc.guideline.testing.test-pyramid`), run `cookr id <arg>`, which prints the folder path.
+
+3. **Search string**: Otherwise, treat `$ARGUMENTS` as a search string. Use Glob to find all source folders (`*/artifact.json`) under `cookbook/principles/`, `cookbook/guidelines/`, `cookbook/ingredients/` and `cookbook/recipes/`. Filter to files whose name contains the search string (case-insensitive).
    - **1 match** -> Use it. Print: "Found: <path>"
    - **Multiple matches** -> Show up to 4 matches with AskUserQuestion. Each option label is the filename, description is the relative path. The user picks one.
    - **0 matches** -> Print "No artifacts matching '<string>'" and stop.
@@ -56,9 +60,9 @@ Read the target file's YAML frontmatter. Extract the `type` field.
 
 | Type | Compliance File |
 |------|----------------|
-| `principle` | `cookbook/compliance/artifact-formatting/principle-formatting.md` |
-| `guideline` | `cookbook/compliance/artifact-formatting/guideline-formatting.md` |
-| `recipe` | `cookbook/compliance/artifact-formatting/recipe-formatting.md` |
+| `principle` | `tbd/compliance/artifact-formatting/principle-formatting.md` |
+| `guideline` | `tbd/compliance/artifact-formatting/guideline-formatting.md` |
+| `recipe` | `tbd/compliance/artifact-formatting/recipe-formatting.md` |
 
 If the `type` field is missing or not one of the three artifact types, print:
 
@@ -72,7 +76,7 @@ Print: `Type: <type> | Compliance: <compliance-file>`
 
 Before running checks, read:
 1. The compliance file for the detected type (from table above)
-2. `cookbook/introduction/conventions.md` — format and frontmatter rules
+2. `guide/introduction/conventions.md` — format and frontmatter rules
 
 If either is missing, warn but continue with what's available.
 
@@ -98,15 +102,16 @@ These checks apply to every artifact regardless of type:
 |----|-------|------|------|
 | FM-01 | YAML frontmatter block present | `---` delimiters found | No frontmatter |
 | FM-02 | `id` field is a valid UUID | UUID format | Missing or malformed |
-| FM-03 | `domain` matches file path | Domain derived from path matches `domain:` value | Mismatch |
+| FM-03 | Index entry matches folder | `cookbook/index.json` has an entry for `id` whose `path` is this folder and whose rdid is `<cookbook-rdid>.<type>.<path, dotted>` (`cookr validate` reports drift) | Missing entry, wrong path, or a `domain:` field present |
 | FM-04 | `type` matches expected type | Matches the detected type | Wrong value |
 | FM-05 | `version` is valid semver | Matches `X.Y.Z` pattern | Missing or malformed |
-| FM-06 | All required fields present | id, title, domain, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references, approved-by, approved-date | Any missing |
+| FM-06 | All required fields present | id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references, approved-by, approved-date | Any missing |
 | FM-07 | `license` is `MIT` | Exactly `MIT` | Other value |
 | FM-08 | `copyright` includes year and name | Contains 4-digit year and a name | Missing or malformed |
 | FM-09 | `created` and `modified` are valid dates | ISO 8601 date format | Invalid format |
 | FM-10 | `summary` is non-empty | At least 10 characters | Empty or too short |
 | FM-11 | H1 heading matches `title` | First `# ` heading matches frontmatter `title` | Mismatch |
+| FM-11a | Links resolve | Every `depends-on`, `related`, `ingredients` value is a UUID (or `<cookbook-uuid>/<uuid>`) and every in-text `[<rdid>](cookbook:<uuid>)` resolves (`cookr validate`) | Unresolved link, or a format-1 URI link |
 | FM-12 | Change History section present | `## Change History` exists with at least one table row | Missing or empty |
 | FM-13 | No TODO/placeholder text | No `TODO`, `TBD`, `FIXME`, `placeholder`, `fill in` | Found placeholder text |
 

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cfa4b119-d10a-4c2a-b90d-f003717792a7",
     "title": "Never overwrite a user's files",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/never-clobber-user-files",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -28,9 +27,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/never-clobber-user-files",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/skill-checklist",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/agent-checklist"
+      "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
+      "e761c71a-eb90-44c8-8149-3062da19ad37",
+      "27f0e59e-6080-435a-865d-79ed95a0b9ae"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -42,7 +41,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's install rules as things to check.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "3c6ce10b06b2403b",
+  "synced": "14be7d5b405a1852",
   "parts": [
     {"part": "intro"},
     {"part": "writes", "heading": "Writes"},

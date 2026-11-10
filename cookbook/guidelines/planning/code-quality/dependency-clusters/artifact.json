@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4de09db8-b6fe-4211-b7e4-c95619a12141",
     "title": "Dependency Clusters",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/dependency-clusters",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "d9fb8cfea9312e86",
+  "synced": "64a06ec0898159cb",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

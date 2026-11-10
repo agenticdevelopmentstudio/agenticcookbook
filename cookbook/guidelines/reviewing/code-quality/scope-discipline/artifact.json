@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "c2fc1edc-4bb8-44e3-b5d9-338cd146c22d",
     "title": "Scope discipline",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/scope-discipline",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/atomic-commits",
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://principles/simplicity"
+      "8075b95b-2678-4893-9a5a-eb77aa9232aa",
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "a61b6ede-624b-4424-bdf6-aeb153c9a3ea"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -34,7 +33,7 @@
       "new-module"
     ]
   },
-  "synced": "a3d9ece4ef7bc856",
+  "synced": "1b525b8f75219999",
   "parts": [
     {"part": "intro"},
     {"part": "before-starting", "heading": "Before starting"},

@@ -7,7 +7,7 @@
 - **directory-row-icon**: Each directory entry row MUST display a folder icon (`folder.fill`) and the directory name.
 - **discovered-project-row**: Discovered projects within a directory `DisclosureGroup` MUST display a package icon (`shippingbox.fill`, orange) and the project name.
 - **double-click-open**: Double-tapping (or double-clicking) a project entry or a discovered project MUST open that project via `NSDocumentController.shared.openDocument(withContentsOf:display:)`.
-- **sync-progress-indicator**: A sync progress indicator MUST be displayed at the bottom of the sidebar when any directory coordinator is syncing. Display MUST follow the pattern in [directory-sync.md](../../../recipes/infrastructure/directory-sync.md) (aggregated `isSyncing` state).
+- **sync-progress-indicator**: A sync progress indicator MUST be displayed at the bottom of the sidebar when any directory coordinator is syncing. Display MUST follow the pattern in [adc.recipe.infrastructure.directory-sync](cookbook:63659e2c-215a-44ed-b330-2bca8d88bd9a) (aggregated `isSyncing` state).
 
 ### Context Menus
 
@@ -20,7 +20,7 @@
 ### Detail Pane
 
 - **detail-pane-metadata**: When an entry is selected in the sidebar, the detail pane MUST display an entry detail view showing metadata or project information for the selected entry.
-- **welcome-empty-state**: When no entry is selected, the detail pane MUST display an empty-state/welcome view as described in [empty-state.md](../components/empty-state.md), with the following action buttons:
+- **welcome-empty-state**: When no entry is selected, the detail pane MUST display an empty-state/welcome view as described in [adc.ingredient.ui.components.empty-state](cookbook:ce2af25c-4f18-41ae-91b9-342e363449b3), with the following action buttons:
   - "Add Directory" — opens a directory picker to add a new directory entry
   - "Add Project" — opens a file picker (filtered to `.catnip-proj`) to add a new project entry
 

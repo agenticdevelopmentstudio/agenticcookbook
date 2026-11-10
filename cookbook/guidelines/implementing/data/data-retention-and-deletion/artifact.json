@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "6d8ae093-8610-468b-932a-be2fb19eb260",
     "title": "Data retention and deletion",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/data-retention-and-deletion",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/security/data-subject-rights",
-      "agenticdevelopercookbook://guidelines/shipping/schema-evolution"
+      "f0f9bc0c-7195-42fd-95eb-2405e81fb1ea",
+      "a5228bfe-3caa-444b-9952-52ca5244f829"
     ],
     "references": [
       "https://gdpr-info.eu/art-5-gdpr/",
@@ -38,7 +37,7 @@
       "schema-design"
     ]
   },
-  "synced": "542d73d44c0b4c9f",
+  "synced": "98f55ca5fc945693",
   "parts": [
     {"part": "intro"},
     {"part": "retention-schedule", "heading": "Retention schedule"},

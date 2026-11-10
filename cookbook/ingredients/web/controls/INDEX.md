@@ -4,4 +4,4 @@ Atomic specs for individual web UI controls.
 
 | File | Description |
 |------|-------------|
-| [appearance-mode-toggle.md](appearance-mode-toggle.md) | Three-mode toggle button cycling automatic, forced dark, and forced light appearance |
+| [appearance-mode-toggle/](appearance-mode-toggle/) | Three-mode toggle button cycling automatic, forced dark, and forced light appearance |

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
     "title": "PowerShell",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/language/powershell",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -32,12 +31,12 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/platform-integration/wsl",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/shell-scripts",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/visual-studio-project-files",
-      "agenticdevelopercookbook://guidelines/reviewing/language/powershell",
-      "agenticdevelopercookbook://principles/fail-fast",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
+      "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
+      "9ed898fe-ba86-44be-9911-d24fea60dc90",
+      "ce0c62c0-f2a1-4b60-b46e-844adc164d92",
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-strictmode",
@@ -58,7 +57,7 @@
       "configuration"
     ]
   },
-  "synced": "358ad56c63f40d4d",
+  "synced": "403e40483310b06c",
   "parts": [
     {"part": "intro"},
     {"part": "strict-mode", "heading": "Strict mode"},

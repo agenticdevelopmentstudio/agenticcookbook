@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "0ce05d51-1d2b-4679-869a-fa1533be95ab",
     "title": "Vector search and retrieval",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/vector-search-and-retrieval",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -23,7 +22,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/data/datastore-selection"
+      "6a653107-929d-418e-865d-636373a27b02"
     ],
     "references": [
       "https://github.com/pgvector/pgvector"
@@ -35,7 +34,7 @@
       "data-modeling"
     ]
   },
-  "synced": "c098249f74ec9acc",
+  "synced": "079c1c80ed9006f2",
   "parts": [
     {"part": "intro"},
     {"part": "default-to-pgvector-inside-postgres", "heading": "Default to pgvector inside Postgres"},

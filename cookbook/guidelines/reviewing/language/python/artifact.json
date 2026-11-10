@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "d7079751-71c5-49a6-9c1d-505921e4cee9",
     "title": "Python",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/python",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -31,9 +30,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/language/python",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/type-hints",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/shell-scripts"
+      "929e96cb-2900-4386-ad4a-1a67a0568480",
+      "d504d699-ec44-4195-bdd7-628e475eb313",
+      "792f0b2d-c4b2-440f-9e58-33fa1e30a2c4"
     ],
     "references": [
       "https://docs.python.org/3/library/subprocess.html",
@@ -49,7 +48,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "394afea89df6919b",
+  "synced": "37fb3e5aba305a1e",
   "parts": [
     {"part": "intro"},
     {"part": "packaging", "heading": "Packaging"},

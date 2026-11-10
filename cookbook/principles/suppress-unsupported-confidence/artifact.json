@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "7a14b9f2-0e10-456b-a103-8a887afda9f2",
     "title": "Suppress unsupported confidence",
-    "domain": "agenticdevelopercookbook://principles/suppress-unsupported-confidence",
     "type": "principle",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,15 +21,15 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/domain-stratified-trust",
-      "agenticdevelopercookbook://principles/independence-before-corroboration",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "578e6d3b-f60d-42ff-964b-06b173ffaae9",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "8a8a6e17d9d396e4",
+  "synced": "e1ff76781bfb59a7",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

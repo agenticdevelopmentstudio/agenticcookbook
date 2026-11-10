@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "1471cab8-cdd2-444d-84da-8e4e70eb2453",
     "title": "Swift",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/language/swift",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -28,10 +27,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/language/swift",
-      "agenticdevelopercookbook://guidelines/reviewing/platform-integration/prefer-explicit-apple-apis",
-      "agenticdevelopercookbook://guidelines/reviewing/language/objective-c",
-      "agenticdevelopercookbook://guidelines/reviewing/ui/appkit-and-uikit-patterns"
+      "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+      "dfe12d14-4deb-4a64-b78a-d04db713f72b",
+      "65367d27-1d4e-41e5-9e8c-e9adb08ddc90",
+      "a48af237-db64-40ae-9574-e579c107de83"
     ],
     "references": [
       "https://developer.apple.com/documentation/swift/choosing-between-structures-and-classes",
@@ -46,7 +45,7 @@
   },
   "twin_differs": "A review checklist restating the implementing guideline's language rules as things to flag.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "9aed53bf018300fe",
+  "synced": "4fd34f1972678d8f",
   "parts": [
     {"part": "intro"},
     {"part": "types", "heading": "Types"},

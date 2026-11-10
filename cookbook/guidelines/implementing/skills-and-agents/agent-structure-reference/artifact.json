@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8b9def90-2153-45ba-9dcc-fa2aa3bf745e",
     "title": "Agent Structure Reference",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/agent-structure-reference",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -23,8 +22,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/skills-and-agents/authoring-skills-and-rules",
-      "agenticdevelopercookbook://guidelines/reviewing/skills-and-agents/agent-checklist"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "27f0e59e-6080-435a-865d-79ed95a0b9ae"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -34,7 +33,7 @@
     ]
   },
   "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
-  "synced": "6e446bb2dcf50671",
+  "synced": "f355cd7f0802f9e6",
   "parts": [
     {"part": "intro"},
     {"part": "file-format", "heading": "File Format"},

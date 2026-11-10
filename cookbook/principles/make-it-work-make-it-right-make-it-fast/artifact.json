@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ffa8565d-b105-4758-b850-9d9b8119b838",
     "title": "Make It Work, Make It Right, Make It Fast",
-    "domain": "agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,7 +23,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "5ee4dc182c718da4",
+  "synced": "6b3f5d62dd9a8fb0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "26a1a47f-f749-4477-ae04-c54c9a4c5117",
     "title": "Query Optimization",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/data/query-optimization",
     "type": "guideline",
     "version": "1.1.3",
     "status": "accepted",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/indexing.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "02e9042d-0d15-47ac-9361-2f16980a03ca"
     ],
     "references": [
       "https://sqlite.org/optoverview.html",
@@ -43,7 +42,7 @@
   },
   "twin_differs": "A review checklist of query-plan red flags, condensed from the implementing guideline's worked examples.",
   "informational": "A review checklist; the rules it checks are stated with RFC 2119 keywords in the implementing guideline.",
-  "synced": "1b4a3cb4a7edd6dd",
+  "synced": "31aa0c05da72a5ea",
   "parts": [
     {"part": "intro"},
     {"part": "explain-query-plan-red-flags", "heading": "EXPLAIN QUERY PLAN red flags"},

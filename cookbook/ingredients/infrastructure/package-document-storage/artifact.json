@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "AD558F24-29FA-430F-9EBD-0EC42F1AA9D1",
+    "id": "ad558f24-29fa-430f-9ebd-0ec42f1aa9d1",
     "title": "Package Document Storage",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/package-document-storage",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -27,17 +26,17 @@
       "migration"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://ingredients/infrastructure/sqlite-helpers"
+      "03df8ffb-476c-49f5-b104-33ad3c52bbe4"
     ],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/package-document",
-      "agenticdevelopercookbook://ingredients/infrastructure/package-document-type"
+      "b2ba3ab9-743f-4c86-a75f-cc2e93fd3b07",
+      "ca56f1aa-7089-498f-8bcc-c11a0d81be3d"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "4f8a983ede3eaff4",
+  "synced": "8b785a01fe7a1bec",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

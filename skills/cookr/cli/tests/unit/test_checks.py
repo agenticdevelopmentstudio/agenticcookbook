@@ -21,7 +21,6 @@ GOOD_FRONTMATTER = """\
 ---
 id: 11111111-2222-3333-4444-555555555555
 title: T
-domain: agenticdevelopercookbook://cookbook/recipes/r
 type: recipe
 version: 1.0.0
 status: draft
@@ -50,6 +49,18 @@ def test_clean_baseline_passes(tmp_path):
     root = _cookbook_with(tmp_path, "r.md", GOOD_FRONTMATTER)
     report = phase_a(root)
     assert report.ok, report.issues
+
+
+def test_no_format_2_manifest_warns_once_that_links_went_unchecked(tmp_path):
+    body = GOOD_FRONTMATTER.replace("Body.", "See [a](cookbook:0b0b0b0b-0000-4000-8000-000000000000) "
+                                             "and [b](cookbook:0c0c0c0c-0000-4000-8000-000000000000).")
+    root = _cookbook_with(tmp_path, "r.md", body)
+    report = phase_a(root)
+    assert report.ok, report.issues
+    [warning] = report.warnings
+    assert warning.rule == "links-unchecked"
+    assert warning.file == "cookbook/cookbook.json"
+    assert "UUID links and index implementations were not checked" in warning.detail
 
 
 def test_missing_frontmatter(tmp_path):
@@ -102,17 +113,6 @@ def test_bad_status(tmp_path):
     assert "status-valid" in rules
 
 
-def test_domain_mismatch(tmp_path):
-    body = GOOD_FRONTMATTER.replace(
-        "domain: agenticdevelopercookbook://cookbook/recipes/r",
-        "domain: agenticdevelopercookbook://cookbook/recipes/wrong",
-    )
-    root = _cookbook_with(tmp_path, "r.md", body)
-    report = phase_a(root)
-    rules = {i.rule for i in report.issues}
-    assert "domain-matches-path" in rules
-
-
 def test_broken_link(tmp_path):
     root = _cookbook_with(
         tmp_path,
@@ -124,34 +124,26 @@ def test_broken_link(tmp_path):
     assert "link-resolves" in rules
 
 
-def test_external_links_ignored(tmp_path):
-    body = GOOD_FRONTMATTER.replace(
-        "Body.",
-        "Links: [a](https://example.com) [b](mailto:x@y) [c](agenticdevelopercookbook://x/y)"
-        " [d](adhsdk://recipes/button#pressed).",
-    )
+def test_web_and_mail_links_pass(tmp_path):
+    body = GOOD_FRONTMATTER.replace("Body.", "Links: [a](https://example.com) [b](mailto:x@y).")
     root = _cookbook_with(tmp_path, "r.md", body)
     report = phase_a(root)
     assert report.ok, report.issues
 
 
+@pytest.mark.parametrize("link", ["agenticdevelopercookbook://x/y", "adhsdk://recipes/button#pressed"])
+def test_format_1_domain_links_are_link_format_issues(tmp_path, link):
+    body = GOOD_FRONTMATTER.replace("Body.", f"See [x]({link}).")
+    root = _cookbook_with(tmp_path, "r.md", body)
+    [issue] = phase_a(root).issues
+    assert issue.rule == "link-format" and link.split("#")[0] in issue.detail
+
+
 def test_duplicate_id(tmp_path):
     root = tmp_path / "cookbook"
     (root / "recipes").mkdir(parents=True)
-    (root / "recipes" / "a.md").write_text(
-        GOOD_FRONTMATTER.replace(
-            "domain: agenticdevelopercookbook://cookbook/recipes/r",
-            "domain: agenticdevelopercookbook://cookbook/recipes/a",
-        ),
-        encoding="utf-8",
-    )
-    (root / "recipes" / "b.md").write_text(
-        GOOD_FRONTMATTER.replace(
-            "domain: agenticdevelopercookbook://cookbook/recipes/r",
-            "domain: agenticdevelopercookbook://cookbook/recipes/b",
-        ),
-        encoding="utf-8",
-    )
+    (root / "recipes" / "a.md").write_text(GOOD_FRONTMATTER, encoding="utf-8")
+    (root / "recipes" / "b.md").write_text(GOOD_FRONTMATTER, encoding="utf-8")
     report = phase_a(root)
     rules = {i.rule for i in report.issues}
     assert "id-unique" in rules
@@ -178,116 +170,114 @@ def test_fix_for_unknown_rule_returns_empty():
     assert fix_for("not-a-real-rule") == ""
 
 
-# --- domain links and the repo's scheme (K09, B_3) -----------------------------------
+# --- UUID links resolve through the index ---------------------------------------------
 
-def _toolkit(tmp_path: Path, body: str) -> Path:
-    """An SDK-like repo: origin `adhsdk`, no index.md, recipes/ at
-    the top; returns recipes/ as the root, as `cookr validate -p recipes` does."""
-    import subprocess
-    repo = tmp_path / "checkout"
-    (repo / "recipes").mkdir(parents=True)
-    subprocess.run(["git", "init", "-q", str(repo)], check=True)
-    subprocess.run(["git", "-C", str(repo), "remote", "add", "origin",
-                    "git@github.com:org/adhsdk.git"], check=True)
-    fm = GOOD_FRONTMATTER.replace(
-        "domain: agenticdevelopercookbook://cookbook/recipes/r",
-        "domain: adhsdk://recipes/r",
-    )
-    (repo / "recipes" / "r.md").write_text(fm.replace("Body.", body), encoding="utf-8")
-    (repo / "recipes" / "label.md").write_text(
-        fm.replace("recipes/r", "recipes/label").replace("555555555555", "555555555556"),
-        encoding="utf-8")
-    return repo / "recipes"
+FULL_META = {
+    "title": "T", "version": "1.0.0", "language": "en", "created": "2026-05-15",
+    "modified": "2026-05-15", "author": "T", "copyright": "2026 T", "license": "MIT",
+    "summary": "x",
+}
+GONE = "0b0b0b0b-0000-4000-8000-000000000000"
+ELSEWHERE = "0e0e0e0e-0000-4000-8000-000000000000"
 
 
-def _link_issues(root: Path) -> list[str]:
-    return [i.detail for i in phase_a(root).issues if i.rule == "link-resolves"]
+def _repo(tmp_path: Path, body: str = "# T\n\nBody.\n", meta=None, impls=(), roots=()):
+    """A format-2 repo holding recipes/r (with `body`) and recipes/label;
+    returns its cookbook dir and label's id."""
+    from .cookbook_helpers import add_spec, new_repo
+    new_repo(tmp_path, roots)
+    label = add_spec(tmp_path, "recipes/label", type="recipe", meta=FULL_META)
+    add_spec(tmp_path, "recipes/r", type="recipe", body=body.replace("LABEL", label),
+             meta={**FULL_META, **(meta or {})}, impls=impls)
+    return tmp_path / "cookbook", label
 
 
-def test_same_repo_domain_link_resolves(tmp_path):
-    root = _toolkit(tmp_path, "See [label](adhsdk://recipes/label#pressed).")
-    assert phase_a(root).ok, phase_a(root).issues
+def _rules(report, prefix: str) -> list[tuple[str, str]]:
+    return [(i.rule, i.detail) for i in report.issues if i.rule.startswith(prefix)]
 
 
-def test_dangling_same_repo_domain_link_fails(tmp_path):
-    root = _toolkit(tmp_path, "See [themed](adhsdk://recipes/themed-label).")
-    issues = _link_issues(root)
-    assert len(issues) == 1 and "adhsdk://recipes/themed-label" in issues[0]
+def test_format_2_baseline_passes(tmp_path):
+    root, _ = _repo(tmp_path, "# T\n\nSee [label](cookbook:LABEL).\n")
+    report = phase_a(root)
+    assert report.ok and not report.warnings, (report.issues, report.warnings)
 
 
-@pytest.mark.parametrize("scheme", ["agenticdevelopercookbok", "adhsdkk"])
-def test_near_miss_scheme_is_a_typo(tmp_path, scheme):
-    root = _toolkit(tmp_path, f"See [x]({scheme}://compliance/security#secure-log-output).")
-    issues = _link_issues(root)
-    assert len(issues) == 1 and "did you mean" in issues[0]
+def test_depends_on_a_local_uuid_resolves(tmp_path):
+    from .cookbook_helpers import add_spec, new_repo
+    new_repo(tmp_path)
+    label = add_spec(tmp_path, "recipes/label", type="recipe", meta=FULL_META)
+    add_spec(tmp_path, "recipes/r", type="recipe", meta={**FULL_META, "depends-on": [label]})
+    report = phase_a(tmp_path / "cookbook")
+    assert report.ok, report.issues
 
 
-def test_other_repos_and_the_cookbooks_schemes_pass(tmp_path):
-    root = _toolkit(
-        tmp_path,
-        "See [a](agenticdevelopercookbook://compliance/security#secure-log-output) "
-        "[b](temporal://docs/workers) [c](https://example.com/x).",
-    )
-    assert _link_issues(root) == []
+def test_missing_link_is_an_issue(tmp_path):
+    root, _ = _repo(tmp_path, f"# T\n\nSee [gone](cookbook:{GONE}).\n")
+    [(rule, detail)] = _rules(phase_a(root), "link")
+    assert rule == "link-resolves" and "names no artifact in its cookbook" in detail
+
+
+def test_missing_depends_on_entry_is_an_issue(tmp_path):
+    root, _ = _repo(tmp_path, meta={"depends-on": [GONE]})
+    [(rule, detail)] = _rules(phase_a(root), "link")
+    assert rule == "link-resolves" and detail.startswith("`depends-on` entry")
+
+
+def test_depends_on_entry_that_is_not_a_uuid_is_an_issue(tmp_path):
+    root, _ = _repo(tmp_path, meta={"related": ["recipes/label"]})
+    [(rule, detail)] = _rules(phase_a(root), "link")
+    assert rule == "link-resolves" and "is not a UUID link" in detail
+
+
+def test_link_into_an_unreachable_cookbook_is_a_warning(tmp_path):
+    from .cookbook_helpers import edit_repo_config
+    root, _ = _repo(tmp_path, f"# T\n\nSee [far](cookbook:{ELSEWHERE}/{GONE}).\n")
+    edit_repo_config(tmp_path, lambda d: d.update(dependencies={ELSEWHERE: {"rdid": "far"}}))
+    report = phase_a(root)
+    assert report.ok, report.issues
+    [warning] = report.warnings
+    assert warning.rule == "link-resolves" and f"cookbook {ELSEWHERE} cannot be reached here" in warning.detail
 
 
 def test_links_inside_code_are_examples_not_links(tmp_path):
-    root = _toolkit(
+    root, _ = _repo(
         tmp_path,
-        "Write `[Button](adhsdk://recipes/nope)` like this.\n\n"
-        "```markdown\n[Button](adhsdk://recipes/nope-either)\n"
-        "[rel](./nope.md)\n```\n",
+        f"# T\n\nWrite `[Button](cookbook:{GONE})` like this.\n\n"
+        f"```markdown\n[Button](cookbook:{GONE})\n[rel](./nope.md)\n```\n",
     )
-    assert _link_issues(root) == []
+    assert _rules(phase_a(root), "link") == []
 
 
-def test_domain_mismatch_names_the_expected_domain_in_this_repos_scheme(tmp_path):
-    root = _toolkit(tmp_path, "Body.")
-    md = root / "r.md"
-    md.write_text(md.read_text().replace("recipes/r\n", "recipes/xyz\n"), encoding="utf-8")
-    [issue] = [i for i in phase_a(root).issues if i.rule == "domain-matches-path"]
-    assert "expected `adhsdk://r`" in issue.detail
-
-
-def test_domain_hint_does_not_prescribe_the_cookbooks_scheme():
-    from cookr.core.checks import fix_for
-    assert "agenticdevelopercookbook" not in fix_for("domain-matches-path")
-
-
-# --- Reference Implementations --------------------------------------------------------
-
-_IMPL = """\
-## Reference Implementations
-
-| Platform | Path |
-|----------|------|
-| apple | `Sources/Kit/Label.swift` |
-| web | `packages/kit/label/` |
-"""
-
+# --- index implementations -------------------------------------------------------------
 
 def _impl_rules(root: Path) -> list[tuple[str, str]]:
-    return [(i.rule, i.detail) for i in phase_a(root).issues
-            if i.rule.startswith("reference-implementation")]
+    return _rules(phase_a(root), "reference-implementation")
 
 
-def test_reference_implementations_resolve_from_the_repo_top(tmp_path):
-    root = _toolkit(tmp_path, _IMPL)
-    top = root.parent
-    (top / "Sources/Kit").mkdir(parents=True)
-    (top / "Sources/Kit/Label.swift").write_text("", encoding="utf-8")
-    (top / "packages/kit/label").mkdir(parents=True)
+def test_implementations_resolve_from_the_repo_top(tmp_path):
+    (tmp_path / "Sources/Kit").mkdir(parents=True)
+    (tmp_path / "Sources/Kit/Label.swift").write_text("", encoding="utf-8")
+    (tmp_path / "packages/kit/label").mkdir(parents=True)
+    root, _ = _repo(tmp_path, impls=[("apple", "Sources/Kit/Label.swift"),
+                                     ("web", "packages/kit/label/")])
     assert _impl_rules(root) == []
 
 
-def test_missing_reference_implementation_is_reported(tmp_path):
-    root = _toolkit(tmp_path, _IMPL)
-    rules = _impl_rules(root)
-    assert ("reference-implementation-exists",
-            "Reference Implementations path `Sources/Kit/Label.swift` does not exist") in rules
-    assert len(rules) == 2
+def test_missing_implementation_location_is_reported(tmp_path):
+    root, _ = _repo(tmp_path, impls=[("apple", "Sources/Kit/Label.swift")])
+    assert _impl_rules(root) == [("reference-implementation-exists",
+                                  "implementation location `Sources/Kit/Label.swift` does not exist")]
 
 
-def test_unknown_reference_implementation_platform_is_reported(tmp_path):
-    root = _toolkit(tmp_path, _IMPL.replace("| apple |", "| ios |"))
-    assert "reference-implementation-platform" in {r for r, _ in _impl_rules(root)}
+def test_url_and_planned_implementations_are_not_looked_for(tmp_path):
+    root, _ = _repo(tmp_path, impls=[("web", "https://example.com/kit/label"),
+                                     ("android", "app/Label.kt", "planned"),
+                                     ("ios", None, "planned")])
+    assert _impl_rules(root) == []
+
+
+def test_unknown_implementation_platform_is_reported(tmp_path):
+    (tmp_path / "x.swift").write_text("", encoding="utf-8")
+    root, _ = _repo(tmp_path, impls=[("visionos", "x.swift")])
+    [(rule, detail)] = _impl_rules(root)
+    assert rule == "reference-implementation-platform" and "`visionos`" in detail

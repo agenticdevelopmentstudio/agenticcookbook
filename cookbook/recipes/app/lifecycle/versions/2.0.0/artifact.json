@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "meta": {
+    "id": "e56d4b42-9abe-47ac-bd9e-27471bd47b82",
+    "title": "App Lifecycle",
+    "domain": "agenticdevelopercookbook://recipes/app/lifecycle",
+    "type": "recipe",
+    "version": "2.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pattern for managing desktop and mobile app startup behavior, session restore, and process cleanup on quit",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "swift",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "app",
+      "lifecycle"
+    ],
+    "ingredients": [
+      "agenticdevelopercookbook://ingredients/app/startup-behavior",
+      "agenticdevelopercookbook://ingredients/app/session-restore",
+      "agenticdevelopercookbook://ingredients/app/child-process-cleanup",
+      "agenticdevelopercookbook://ingredients/infrastructure/settings-keys",
+      "agenticdevelopercookbook://ingredients/infrastructure/logging"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04"
+  },
+  "synced": "aa954783b773e1f3",
+  "parts": [
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "ingredients", "heading": "Ingredients"},
+    {"part": "integration-requirements", "heading": "Integration Requirements"},
+    {"part": "layout", "heading": "Layout"},
+    {"part": "shared-state", "heading": "Shared State"},
+    {"part": "integration-test-vectors", "heading": "Integration Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

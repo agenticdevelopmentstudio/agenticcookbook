@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "f4acb6cd-1e5b-4175-9556-327506a188fe",
     "title": "Law of Demeter and Tell, Don't Ask",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/code-quality/law-of-demeter",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/connascence",
-      "agenticdevelopercookbook://principles/separation-of-concerns"
+      "ec59e5cc-5591-4c0b-87f8-00df54394607",
+      "1357be12-5a58-4143-a570-849c114770c5"
     ],
     "references": [
       "https://en.wikipedia.org/wiki/Law_of_Demeter"
@@ -34,7 +33,7 @@
       "code-review"
     ]
   },
-  "synced": "4e1db4cabc843c73",
+  "synced": "51825b51bf71d6a6",
   "parts": [
     {"part": "intro"},
     {"part": "what-a-method-may-talk-to", "heading": "What a method may talk to"},

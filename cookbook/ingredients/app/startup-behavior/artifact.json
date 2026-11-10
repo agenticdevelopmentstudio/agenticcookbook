@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "EE72734E-2CFF-41BE-9D1A-813B64AA0FD2",
+    "id": "ee72734e-2cff-41be-9d1a-813b64aa0fd2",
     "title": "Startup Behavior",
-    "domain": "agenticdevelopercookbook://ingredients/app/startup-behavior",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -29,14 +28,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/app/session-restore",
-      "agenticdevelopercookbook://recipes/app/lifecycle"
+      "a7c4168e-2f0a-40bb-b38f-0f81ad6a9cf0",
+      "e56d4b42-9abe-47ac-bd9e-27471bd47b82"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "1365cf6aeca64f91",
+  "synced": "4abc025fd723c183",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

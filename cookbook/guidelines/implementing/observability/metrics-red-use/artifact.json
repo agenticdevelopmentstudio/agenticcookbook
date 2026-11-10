@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "64bdf327-b4ac-4772-a3b6-cbaf7e8e5449",
     "title": "Metrics instrumentation: RED and USE",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/observability/metrics-red-use",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/observability/service-level-objectives"
+      "6b8715f1-ece0-4db6-b691-19e9d0367ef3"
     ],
     "references": [
       "https://www.brendangregg.com/usemethod.html"
@@ -34,7 +33,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "93c232bc788b6a78",
+  "synced": "f1afc51320a10848",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-use-which", "heading": "When to use which"},

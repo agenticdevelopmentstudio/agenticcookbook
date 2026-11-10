@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "495000e6-a1fc-4b43-8999-23089505559c",
     "title": "For novel components, prefer proven open-source solutions",
-    "domain": "agenticdevelopercookbook://principles/open-source-preference",
     "type": "principle",
     "version": "1.1.1",
     "status": "accepted",
@@ -20,15 +19,15 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/native-controls",
-      "agenticdevelopercookbook://principles/dry",
-      "agenticdevelopercookbook://guidelines/planning/code-quality/reuse-before-build"
+      "dec7cf4a-449b-47fa-9d6e-f7e9376383a7",
+      "256a827e-436e-4cde-895e-a56b9783edf2",
+      "2c605b36-da66-4eaf-b2d4-59ed5a3976b3"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-09"
   },
-  "synced": "caf0f07bb36ee23a",
+  "synced": "2b68c4d073d987d8",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

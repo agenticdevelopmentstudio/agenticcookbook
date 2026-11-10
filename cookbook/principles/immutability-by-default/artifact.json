@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a7ce3621-2fed-478f-8767-b186014c5923",
     "title": "Immutability by default",
-    "domain": "agenticdevelopercookbook://principles/immutability-by-default",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -27,7 +26,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "ad4577b4945393bf",
+  "synced": "941fc620e94e2e28",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "51038675-205b-4752-b826-4081b3729359",
     "title": "Module Boundaries",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/module-boundaries",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "fd4ea35511a51c9a",
+  "synced": "51179f383dd4b370",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

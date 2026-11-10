@@ -59,7 +59,7 @@ RECEIPT = "install.json"
 LOCK = "install.lock"
 ROUTED = "routed"
 ROUTER_ENV = "COOKR_SKILL_ROUTER"
-ROUTER_MIN = (0, 4, 0)          # one CLI: register <dir> --new-keyword, unregister <name>, list (origin)
+ROUTER_MIN = (0, 5, 0)          # one CLI: register <dir> --new-keyword [--scope PATH], unregister <name>, list (origin)
 
 
 class InstallError(ValueError):
@@ -220,7 +220,7 @@ class Router:
         if m is None or tuple(map(int, m.groups())) < ROUTER_MIN:
             found = f"is {m.group(0)}" if m else "has no --version, so predates it"
             raise RouterError(f"{shlex.join(self.command)} {found}; cookr needs skill-router "
-                              f"{need} or later (register <dir>, unregister <name>)")
+                              f"{need} or later (register <dir> --scope, unregister <name>)")
         self._version_ok = True
 
     def _run(self, *args: str) -> dict:
@@ -249,18 +249,22 @@ class Router:
                     rec["hosts"].append(host)
         return [found[n] for n in sorted(found)]
 
-    def register(self, set_dir: Path) -> dict:
-        """Register every skill of `set_dir` and unregister those of its
+    def register(self, set_dir: Path, scopes: Iterable[str] = ()) -> dict:
+        """Register every skill of `set_dir`, each limited to the repo roots
+        `scopes` (none: routed everywhere; skill-router clears an entry's scopes
+        when it is registered without, so every call passes the whole set),
+        and unregister those of its
         skills no longer in it. A set's keywords are its library's directory
         names, reviewed in that repo, so near-duplicates (`service` beside
         `services`) are accepted and reported, not refused as a hand-typed
         one would be. Returns {registered, removed, failed, warnings}."""
         before = self.listed(set_dir)
+        scope_args = [a for s in scopes for a in ("--scope", str(s))]
         dirs = sorted(p.parent for p in Path(set_dir).glob(f"*/{skill_mod.SKILL_FILE}"))
         out: dict[str, list] = {"registered": [], "removed": [], "failed": [], "warnings": []}
         for d in dirs:
             try:
-                done = self._run("register", str(d), "--new-keyword")
+                done = self._run("register", str(d), "--new-keyword", *scope_args)
             except RouterError as e:
                 out["failed"].append({"path": str(d), "error": str(e)})
                 continue
@@ -285,6 +289,13 @@ class Router:
             raise RouterError(f"no skills registered from {set_dir}")
         for e in listed:
             self._unregister(e)
+
+
+def receipt_scopes(receipt: dict[str, dict], library: Optional[str]) -> tuple[str, ...]:
+    """The repo roots the receipt says `library`'s routed set is limited to."""
+    source = library or skill_mod.DEFAULT_LIBRARY
+    rec = receipt.get(f"{ROUTED}:{source}") or {}
+    return tuple(rec.get("scopes") or ())
 
 
 # ── what to install ──────────────────────────────────────────────────────────
@@ -347,10 +358,12 @@ class Installer:
     root: Path = field(default_factory=home)
     origin: tuple[str, ...] = ()    # the paths installed from; () checks no origin
     templates: Path = skill_mod.PACKAGED_TEMPLATES   # holding skill/ and always/
+    scopes: tuple[str, ...] = ()    # repo roots the routed set is limited to; () = everywhere
 
     def __post_init__(self):
         self.library = skill_mod.library_name(self.library)
         self.origin = tuple(self.origin)
+        self.scopes = tuple(sorted({str(Path(s).resolve()) for s in self.scopes}))
 
     @property
     def source(self) -> str:
@@ -445,6 +458,8 @@ class Installer:
             return Status(item, DRIFT, f"{len(want - have)} to register, {len(have - want)} to remove")
         if set_state != OK:
             return Status(item, DRIFT, "registered from a set that is out of date")
+        if tuple((receipt.get(item) or {}).get("scopes") or ()) != self.scopes:
+            return Status(item, DRIFT, "registered with other scopes")
         if (receipt.get(item) or {}).get("digest") != set_digest(self.set_dir):
             return Status(item, DRIFT, "the set was compiled again since it was registered")
         return Status(item, OK, f"{len(have)} skills")
@@ -552,7 +567,7 @@ class Installer:
             r.action = "would register"
             return [s, r]
         try:
-            done = self.router.register(self.set_dir)
+            done = self.router.register(self.set_dir, self.scopes)
         except RouterError as e:
             return [s, Status(r.item, BROKEN, str(e))]
         receipt[r.item] = self._routed_record()
@@ -570,8 +585,9 @@ class Installer:
         return [s, Status(r.item, OK, detail, "registered")]
 
     def _routed_record(self) -> dict:
+        extra = {"scopes": list(self.scopes)} if self.scopes else {}
         return self._record(ROUTED, source=self.source, dir=str(self.set_dir),
-                            digest=set_digest(self.set_dir))
+                            digest=set_digest(self.set_dir), **extra)
 
     def _install_always(self, t: HostTarget, skill: always_on.AlwaysOn, receipt: dict[str, dict],
                         adopt: bool, force: bool, dry_run: bool) -> Status:

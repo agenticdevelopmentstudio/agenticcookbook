@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b224ef56-65f5-45fd-8842-767b20df6736",
     "title": "Steel thread first",
-    "domain": "agenticdevelopercookbook://principles/steel-thread-first",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,10 +21,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/yagni",
-      "agenticdevelopercookbook://principles/small-reversible-decisions",
-      "agenticdevelopercookbook://principles/manage-complexity-through-boundaries",
-      "agenticdevelopercookbook://principles/make-it-work-make-it-right-make-it-fast"
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+      "ffa8565d-b105-4758-b850-9d9b8119b838"
     ],
     "references": [
       "https://www.rubick.com/steel-threads/",
@@ -36,7 +35,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-10"
   },
-  "synced": "5ed6eae1b57d682a",
+  "synced": "2fd22a72eca12920",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

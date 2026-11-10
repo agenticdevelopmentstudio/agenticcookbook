@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "597E9CD0-453A-42B8-A464-8BA8D31A6EFC",
+    "id": "597e9cd0-453a-42b8-a464-8ba8d31a6efc",
     "title": "LLM Backend",
-    "domain": "agenticdevelopercookbook://ingredients/infrastructure/llm-backend",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "review",
@@ -26,8 +25,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/infrastructure/ai-processing-node",
-      "agenticdevelopercookbook://ingredients/infrastructure/job-worker"
+      "61ca76a4-0188-488b-9ac6-1144ca8ed506",
+      "22fbf585-c5a3-425a-94f1-ba9b570ebfde"
     ],
     "references": [
       "https://datatracker.ietf.org/doc/html/rfc2119"
@@ -35,7 +34,7 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "24750364034bcf77",
+  "synced": "826fa5152818d738",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "b56bc1c5-d9c8-42ab-87c3-7423b49c00c9",
     "title": "Privacy and security by default",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/privacy",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "data-modeling"
     ]
   },
-  "synced": "fce3cb4956a198d1",
+  "synced": "8c84f98168532053",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

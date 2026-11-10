@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8ade0fa5-dd84-4fa2-9170-2ff30ef9691f",
     "title": "Research type taxonomy",
-    "domain": "agenticdevelopercookbook://guidelines/researching/process/research-type-taxonomy",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/type-precedes-method",
-      "agenticdevelopercookbook://principles/domain-stratified-trust",
-      "agenticdevelopercookbook://guidelines/researching/process/research-methodology-and-sources"
+      "7a1571f1-021e-4e5e-8247-ae8c79fef5fe",
+      "578e6d3b-f60d-42ff-964b-06b173ffaae9",
+      "8e204b5b-4f27-4f25-b43a-bf0b3ec3a88c"
     ],
     "references": [
       "https://dl.acm.org/doi/10.1145/792550.792552",
@@ -36,7 +35,7 @@
       "research"
     ]
   },
-  "synced": "21f73eac21c7ccca",
+  "synced": "25a0d8501c5b75fa",
   "parts": [
     {"part": "intro"},
     {"part": "three-lenses", "heading": "Three lenses"},

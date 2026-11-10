@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "dee58e49-84e7-4ba5-b0f0-a308b2568327",
     "title": "Consent management",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/consent-management",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/planning/security/data-privacy-regulations"
+      "10c66228-2141-484c-9286-2d62d43c7b70"
     ],
     "references": [
       "https://gdpr-info.eu/art-7-gdpr/",
@@ -37,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "345d134cc8e4d064",
+  "synced": "abdd69215837e671",
   "parts": [
     {"part": "intro"},
     {"part": "conditions-for-valid-consent", "heading": "Conditions for valid consent"},

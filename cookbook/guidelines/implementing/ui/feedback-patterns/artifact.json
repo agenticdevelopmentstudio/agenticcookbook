@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "ca9874ea-07ed-4585-8692-33a29bc6411a",
     "title": "Feedback Patterns",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/ui/feedback-patterns",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -34,7 +33,7 @@
       "error-handling"
     ]
   },
-  "synced": "cce84426e836d919",
+  "synced": "bb3359234a43e8aa",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

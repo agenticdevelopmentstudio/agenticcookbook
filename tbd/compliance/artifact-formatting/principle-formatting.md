@@ -1,13 +1,12 @@
 ---
 id: 4814B42B-B202-41C5-A3C8-FCEF6F99F39D
 title: "Principle Formatting Compliance"
-domain: agenticdevelopercookbook://compliance/artifact-formatting/principle-formatting
 type: compliance
-version: 1.0.0
+version: 2.0.0
 status: draft
 language: en
 created: 2026-04-04
-modified: 2026-04-04
+modified: 2026-11-09
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -18,10 +17,10 @@ tags:
   - artifact-formatting
   - principle
 depends-on:
-  - agenticdevelopercookbook://introduction/conventions
+  - guide/introduction/conventions.md
 related:
-  - agenticdevelopercookbook://compliance/artifact-formatting/guideline-formatting
-  - agenticdevelopercookbook://compliance/artifact-formatting/recipe-formatting
+  - tbd/compliance/artifact-formatting/guideline-formatting.md
+  - tbd/compliance/artifact-formatting/recipe-formatting.md
 references: []
 ---
 
@@ -37,14 +36,16 @@ This category applies to any file with `type: principle` in its frontmatter. All
 
 ### pf-frontmatter-complete
 
-All required YAML frontmatter fields MUST be present per `introduction/conventions.md`.
+All required meta fields (the frontmatter of the compiled doc) MUST be present per `guide/introduction/conventions.md`. There is no `domain` field.
+
+The artifact's `id` is its identity: every link to it stores that UUID. Its rdid and folder path are held in the cookbook's `index.json`, never in the artifact; `cookr validate` fails when the index and the folders disagree.
 
 **Applies when:** always.
 
-**Required fields:** id, title, domain, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references.
+**Required fields:** id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -87,7 +88,7 @@ The file MUST end with a `## Change History` section containing a table with col
 **Applies when:** always.
 
 **Guidelines:**
-- [Conventions](agenticdevelopercookbook://introduction/conventions)
+- [Conventions](../../../guide/introduction/conventions.md)
 
 ---
 
@@ -101,4 +102,5 @@ Principles SHOULD be concise. The body (excluding frontmatter and Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.0.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID identity and rdids replace `domain`; implementations live in index.json |
 | 1.0.0 | 2026-04-04 | Mike Fullerton | Initial creation |

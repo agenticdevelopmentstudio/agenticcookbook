@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "563aebde-52bf-4011-8907-ecc473fd942c",
     "title": "Post-generation verification",
-    "domain": "agenticdevelopercookbook://guidelines/testing/post-generation-verification",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -25,7 +24,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/linting"
+      "775da457-30c7-47de-b179-0fae8a8b779d"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "22389ebd8ccc2412",
+  "synced": "8954a6a0c0e828f5",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

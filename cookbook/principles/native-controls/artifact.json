@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "dec7cf4a-449b-47fa-9d6e-f7e9376383a7",
     "title": "Prefer native controls and libraries",
-    "domain": "agenticdevelopercookbook://principles/native-controls",
     "type": "principle",
     "version": "1.0.1",
     "status": "accepted",
@@ -26,7 +25,7 @@
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-04-04"
   },
-  "synced": "526fc37c446c36f8",
+  "synced": "c594ee485ac40be1",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

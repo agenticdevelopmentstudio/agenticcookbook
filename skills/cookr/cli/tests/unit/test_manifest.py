@@ -79,7 +79,7 @@ def _source_folder(folder, title):
     """A minimal source folder: one intro part under a title."""
     folder.mkdir(parents=True)
     (folder / "artifact.json").write_text(json.dumps({
-        "format": 1, "meta": {"title": title}, "parts": [{"part": "intro"}]}))
+        "format": 2, "meta": {"title": title}, "parts": [{"part": "intro"}]}))
     (folder / "intro.md").write_text(f"# {title}\n\nBody of {title}.\n")
 
 

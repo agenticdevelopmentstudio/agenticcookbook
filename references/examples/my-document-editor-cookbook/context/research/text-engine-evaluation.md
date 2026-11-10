@@ -1,7 +1,6 @@
 ---
 id: c0c71331-7ea4-4452-b08c-9fa367deb6e5
 title: 'Research: Text Engine Evaluation'
-domain: agenticdevelopercookbook://reference/examples/my-document-editor-cookbook/context/research/text-engine-evaluation
 type: reference
 version: 1.0.0
 status: draft

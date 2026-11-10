@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "7b713210-43ee-4f7f-be9e-b096edb782ba",
     "title": "Runtime Conditions",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/runtime-conditions",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "070649cfb5a470cc",
+  "synced": "7ebcd90c91a4dfdb",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

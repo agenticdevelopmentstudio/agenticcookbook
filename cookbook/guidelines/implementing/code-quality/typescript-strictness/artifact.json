@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "5662987f-fd56-4a3a-a519-672187207745",
     "title": "TypeScript strictness configuration",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/typescript-strictness",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -24,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/fail-fast",
-      "agenticdevelopercookbook://principles/explicit-over-implicit"
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
       "https://www.typescriptlang.org/tsconfig/strict.html",
@@ -39,7 +38,7 @@
       "new-module"
     ]
   },
-  "synced": "b47b5727ccda0c19",
+  "synced": "94ba2b6fb7480d60",
   "parts": [
     {"part": "intro"},
     {"part": "baseline-table-stakes", "heading": "Baseline (table stakes)"},

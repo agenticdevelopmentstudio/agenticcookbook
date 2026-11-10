@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cb92603e-093b-4691-b460-19df025ab664",
     "title": "Secure Storage",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/security/secure-storage",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -36,7 +35,7 @@
       "data-modeling"
     ]
   },
-  "synced": "d6ef0e623db5908f",
+  "synced": "2ff2020762adfdd0",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

@@ -1,7 +1,6 @@
 ---
 id: 00000000-0000-0000-0000-000000000001
 title: "Agentic Developer Cookbook"
-domain: agenticdevelopercookbook://index
 type: reference
 version: 4.3.0
 status: accepted
@@ -30,11 +29,11 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Topic | Description |
 |-------|-------------|
-| [Getting Started](introduction/getting-started.md) | Setup and first steps |
-| [Conventions](introduction/conventions.md) | File format, naming, cross-referencing |
-| [Glossary](introduction/glossary.md) | Term definitions |
-| [Trigger Guide](introduction/trigger-guide.md) | Activity-based trigger system for AI agents |
-| [Top 10 Guidelines](introduction/top-10-guidelines.md) | Highest-signal guidelines shortlist |
+| [Getting Started](../guide/introduction/getting-started.md) | Setup and first steps |
+| [Conventions](../guide/introduction/conventions.md) | File format, naming, cross-referencing |
+| [Glossary](../guide/introduction/glossary.md) | Term definitions |
+| [Trigger Guide](../guide/introduction/trigger-guide.md) | Activity-based trigger system for AI agents |
+| [Top 10 Guidelines](../guide/introduction/top-10-guidelines.md) | Highest-signal guidelines shortlist |
 
 ## Principles
 
@@ -42,54 +41,54 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Principle | Summary |
 |-----------|---------|
-| [Simplicity](principles/simplicity.md) | No interleaving of concerns. Simple beats easy. |
-| [Make It Work, Make It Right, Make It Fast](principles/make-it-work-make-it-right-make-it-fast.md) | Three sequential phases — never skip phase 2. |
-| [YAGNI](principles/yagni.md) | Build for today's known requirements. |
-| [Steel Thread First](principles/steel-thread-first.md) | Build the thinnest end-to-end slice through every boundary before breadth. |
-| [Deliberate, Prudent Technical Debt](principles/deliberate-prudent-debt.md) | Trade rigor for speed only as a deliberate, recorded choice with a payback trigger. |
-| [Fail Fast](principles/fail-fast.md) | Detect invalid state at the point of origin. |
-| [Make Illegal States Unrepresentable](principles/parse-dont-validate.md) | Parse untrusted input once into a type that proves its validity. |
-| [Errors as Values](principles/errors-as-values.md) | Recoverable failures are values in signatures, not hidden throws. |
-| [Dependency Injection](principles/dependency-injection.md) | Receive dependencies from outside. |
-| [Immutability by Default](principles/immutability-by-default.md) | Default to immutable values; mutate only when necessary. |
-| [Composition over Inheritance](principles/composition-over-inheritance.md) | Compose small pieces over deep hierarchies. |
-| [Separation of Concerns](principles/separation-of-concerns.md) | One reason to change per module. |
-| [SRP](principles/srp.md) | A module should be answerable to one and only one actor. |
-| [Connascence](principles/connascence.md) | Coupling has a rankable strength; weaken strong forms, especially as distance grows. |
-| [Conway's Law](principles/conways-law.md) | Architecture mirrors the communication structure — or agent topology — that builds it. |
-| [Design for Deletion](principles/design-for-deletion.md) | Build disposable software, not reusable software. |
-| [DRY](principles/dry.md) | Every piece of knowledge has a single, authoritative representation. |
-| [Explicit over Implicit](principles/explicit-over-implicit.md) | Visible dependencies, clear intent. |
-| [Small, Reversible Decisions](principles/small-reversible-decisions.md) | Cheap to reverse? Decide fast. Expensive? Invest in understanding. |
-| [Tight Feedback Loops](principles/tight-feedback-loops.md) | The speed of your feedback loop is the speed of your learning. |
-| [Manage Complexity Through Boundaries](principles/manage-complexity-through-boundaries.md) | Well-defined interfaces let each side evolve independently. |
-| [Principle of Least Astonishment](principles/principle-of-least-astonishment.md) | Behavior matches what the name promises. |
-| [Idempotency](principles/idempotency.md) | Safe to repeat without duplicate side effects. |
-| [Native Controls](principles/native-controls.md) | Prefer platform built-in frameworks. |
-| [Open Source Preference](principles/open-source-preference.md) | Prefer proven libraries over custom solutions. |
-| [Support Automation](principles/support-automation.md) | Expose capabilities through automation interfaces, not just interactive UI. |
-| [Optimize for Change](principles/meta-principle-optimize-for-change.md) | Every principle is a strategy for making future change cheaper. |
-| [Type Precedes Method](principles/type-precedes-method.md) | Classify what you're researching before deciding how. |
-| [Domain-Stratified Trust](principles/domain-stratified-trust.md) | The bar scales with the cost of being wrong, by domain. |
-| [Independence Before Corroboration](principles/independence-before-corroboration.md) | Many sources tracing to one origin are still one source. |
-| [Provenance at Generation Time](principles/provenance-at-generation-time.md) | Capture source, quote, and date as you gather — never after. |
-| [Cite the Claim, Not the Document](principles/cite-the-claim-not-the-document.md) | Claim-level citations with the supporting quote; bibliographies aren't auditable. |
-| [Suppress Unsupported Confidence](principles/suppress-unsupported-confidence.md) | Confident language over thin evidence is a red flag. |
-| [Frame Before You Generate](principles/frame-before-you-generate.md) | Find the real problem before generating solutions. |
-| [Diverge Before You Converge](principles/diverge-before-you-converge.md) | Open the solution space wide before narrowing it. |
-| [Human-First Ideation](principles/human-first-ideation.md) | The human contributes before the AI injects ideas. |
-| [Defer Judgment, Go for Quantity](principles/defer-judgment-go-for-quantity.md) | Suspend evaluation during generation; volume unlocks quality. |
-| [Counteract Homogenization with Diversity](principles/counteract-homogenization-with-diversity.md) | Use structural diversity to escape the AI's mean. |
-| [Bridge Distant Domains](principles/bridge-distant-domains.md) | Import solution patterns from structurally similar but distant fields. |
-| [Constraints as Creative Fuel](principles/constraints-as-creative-fuel.md) | Deliberate constraints break fixation and spark novel directions. |
-| [Break Fixation Deliberately](principles/break-fixation-deliberately.md) | Interrupt mental lock-in with a structured break before continuing. |
-| [Critique Without Killing](principles/critique-without-killing.md) | Interrogate ideas productively without verdicts. |
-| [Keep the Human at the Wheel](principles/keep-the-human-at-the-wheel.md) | Selection, judgment, and direction belong to the human. |
-| [Document the Process, Not a Conclusion](principles/document-the-process-not-a-conclusion.md) | Record the journey, not just the destination. |
+| [Simplicity](principles/simplicity/) | No interleaving of concerns. Simple beats easy. |
+| [Make It Work, Make It Right, Make It Fast](principles/make-it-work-make-it-right-make-it-fast/) | Three sequential phases — never skip phase 2. |
+| [YAGNI](principles/yagni/) | Build for today's known requirements. |
+| [Steel Thread First](principles/steel-thread-first/) | Build the thinnest end-to-end slice through every boundary before breadth. |
+| [Deliberate, Prudent Technical Debt](principles/deliberate-prudent-debt/) | Trade rigor for speed only as a deliberate, recorded choice with a payback trigger. |
+| [Fail Fast](principles/fail-fast/) | Detect invalid state at the point of origin. |
+| [Make Illegal States Unrepresentable](principles/parse-dont-validate/) | Parse untrusted input once into a type that proves its validity. |
+| [Errors as Values](principles/errors-as-values/) | Recoverable failures are values in signatures, not hidden throws. |
+| [Dependency Injection](principles/dependency-injection/) | Receive dependencies from outside. |
+| [Immutability by Default](principles/immutability-by-default/) | Default to immutable values; mutate only when necessary. |
+| [Composition over Inheritance](principles/composition-over-inheritance/) | Compose small pieces over deep hierarchies. |
+| [Separation of Concerns](principles/separation-of-concerns/) | One reason to change per module. |
+| [SRP](principles/srp/) | A module should be answerable to one and only one actor. |
+| [Connascence](principles/connascence/) | Coupling has a rankable strength; weaken strong forms, especially as distance grows. |
+| [Conway's Law](principles/conways-law/) | Architecture mirrors the communication structure — or agent topology — that builds it. |
+| [Design for Deletion](principles/design-for-deletion/) | Build disposable software, not reusable software. |
+| [DRY](principles/dry/) | Every piece of knowledge has a single, authoritative representation. |
+| [Explicit over Implicit](principles/explicit-over-implicit/) | Visible dependencies, clear intent. |
+| [Small, Reversible Decisions](principles/small-reversible-decisions/) | Cheap to reverse? Decide fast. Expensive? Invest in understanding. |
+| [Tight Feedback Loops](principles/tight-feedback-loops/) | The speed of your feedback loop is the speed of your learning. |
+| [Manage Complexity Through Boundaries](principles/manage-complexity-through-boundaries/) | Well-defined interfaces let each side evolve independently. |
+| [Principle of Least Astonishment](principles/principle-of-least-astonishment/) | Behavior matches what the name promises. |
+| [Idempotency](principles/idempotency/) | Safe to repeat without duplicate side effects. |
+| [Native Controls](principles/native-controls/) | Prefer platform built-in frameworks. |
+| [Open Source Preference](principles/open-source-preference/) | Prefer proven libraries over custom solutions. |
+| [Support Automation](principles/support-automation/) | Expose capabilities through automation interfaces, not just interactive UI. |
+| [Optimize for Change](principles/meta-principle-optimize-for-change/) | Every principle is a strategy for making future change cheaper. |
+| [Type Precedes Method](principles/type-precedes-method/) | Classify what you're researching before deciding how. |
+| [Domain-Stratified Trust](principles/domain-stratified-trust/) | The bar scales with the cost of being wrong, by domain. |
+| [Independence Before Corroboration](principles/independence-before-corroboration/) | Many sources tracing to one origin are still one source. |
+| [Provenance at Generation Time](principles/provenance-at-generation-time/) | Capture source, quote, and date as you gather — never after. |
+| [Cite the Claim, Not the Document](principles/cite-the-claim-not-the-document/) | Claim-level citations with the supporting quote; bibliographies aren't auditable. |
+| [Suppress Unsupported Confidence](principles/suppress-unsupported-confidence/) | Confident language over thin evidence is a red flag. |
+| [Frame Before You Generate](principles/frame-before-you-generate/) | Find the real problem before generating solutions. |
+| [Diverge Before You Converge](principles/diverge-before-you-converge/) | Open the solution space wide before narrowing it. |
+| [Human-First Ideation](principles/human-first-ideation/) | The human contributes before the AI injects ideas. |
+| [Defer Judgment, Go for Quantity](principles/defer-judgment-go-for-quantity/) | Suspend evaluation during generation; volume unlocks quality. |
+| [Counteract Homogenization with Diversity](principles/counteract-homogenization-with-diversity/) | Use structural diversity to escape the AI's mean. |
+| [Bridge Distant Domains](principles/bridge-distant-domains/) | Import solution patterns from structurally similar but distant fields. |
+| [Constraints as Creative Fuel](principles/constraints-as-creative-fuel/) | Deliberate constraints break fixation and spark novel directions. |
+| [Break Fixation Deliberately](principles/break-fixation-deliberately/) | Interrupt mental lock-in with a structured break before continuing. |
+| [Critique Without Killing](principles/critique-without-killing/) | Interrogate ideas productively without verdicts. |
+| [Keep the Human at the Wheel](principles/keep-the-human-at-the-wheel/) | Selection, judgment, and direction belong to the human. |
+| [Document the Process, Not a Conclusion](principles/document-the-process-not-a-conclusion/) | Record the journey, not just the destination. |
 
 ## Guidelines
 
-*What rules apply when building.* Organized by **use case** — the phase of work where they apply. [Trigger-based filtering](introduction/trigger-guide.md) lets AI agents load only relevant guidelines. See the [full index](guidelines/INDEX.md) for every guideline.
+*What rules apply when building.* Organized by **use case** — the phase of work where they apply. [Trigger-based filtering](../guide/introduction/trigger-guide.md) lets AI agents load only relevant guidelines. See the [full index](guidelines/INDEX.md) for every guideline.
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
@@ -137,11 +136,11 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Workflow | Description |
 |----------|-------------|
-| [Branching Strategy](workflows/branching-strategy.md) | Worktree + draft PR lifecycle |
-| [Code Planning](workflows/code-planning.md) | Pre-implementation decision-making |
-| [Code Implementation](workflows/code-implementation.md) | Disciplined phased execution |
-| [Code Verification](workflows/code-verification.md) | Post-implementation validation |
-| [Code Review](workflows/code-review.md) | Structured review process |
+| [Branching Strategy](../tbd/workflows/branching-strategy.md) | Worktree + draft PR lifecycle |
+| [Code Planning](../tbd/workflows/code-planning.md) | Pre-implementation decision-making |
+| [Code Implementation](../tbd/workflows/code-implementation.md) | Disciplined phased execution |
+| [Code Verification](../tbd/workflows/code-verification.md) | Post-implementation validation |
+| [Code Review](../tbd/workflows/code-review.md) | Structured review process |
 
 ## Compliance
 
@@ -149,16 +148,16 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Category | Checks | Scope |
 |----------|--------|-------|
-| [Security](compliance/security.md) | 12 | Auth, storage, input, transport, logging, dependencies |
-| [User Safety](compliance/user-safety.md) | 6 | Content moderation, age-gating, abuse prevention |
-| [Performance](compliance/performance.md) | 8 | Render time, animation, resources, caching |
-| [Best Practices](compliance/best-practices.md) | 8 | Testing, linting, error handling, code quality |
-| [Access Patterns](compliance/access-patterns.md) | 8 | Client-server, offline, retry, pagination |
-| [Accessibility](compliance/accessibility.md) | 8 | Screen readers, keyboard, contrast, motion |
-| [Privacy & Data](compliance/privacy-and-data.md) | 8 | Collection, storage, retention, consent |
-| [Platform Compliance](compliance/platform-compliance.md) | 8 | App Store, Google Play, design language |
-| [Reliability](compliance/reliability.md) | 8 | Error recovery, degradation, state, idempotency |
-| [Internationalization](compliance/internationalization.md) | 7 | Strings, RTL, locale formatting, Unicode |
+| [Security](../tbd/compliance/security.md) | 12 | Auth, storage, input, transport, logging, dependencies |
+| [User Safety](../tbd/compliance/user-safety.md) | 6 | Content moderation, age-gating, abuse prevention |
+| [Performance](../tbd/compliance/performance.md) | 8 | Render time, animation, resources, caching |
+| [Best Practices](../tbd/compliance/best-practices.md) | 8 | Testing, linting, error handling, code quality |
+| [Access Patterns](../tbd/compliance/access-patterns.md) | 8 | Client-server, offline, retry, pagination |
+| [Accessibility](../tbd/compliance/accessibility.md) | 8 | Screen readers, keyboard, contrast, motion |
+| [Privacy & Data](../tbd/compliance/privacy-and-data.md) | 8 | Collection, storage, retention, consent |
+| [Platform Compliance](../tbd/compliance/platform-compliance.md) | 8 | App Store, Google Play, design language |
+| [Reliability](../tbd/compliance/reliability.md) | 8 | Error recovery, degradation, state, idempotency |
+| [Internationalization](../tbd/compliance/internationalization.md) | 7 | Strings, RTL, locale formatting, Unicode |
 
 ## Reference
 
@@ -166,17 +165,17 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Platform | Link |
 |----------|------|
-| [Apple](reference/best-practices/apple.md) | HIG, Swift API Guidelines, App Store Review |
-| [Android](reference/best-practices/android.md) | Material Design, Kotlin style, Play policies |
-| [Web](reference/best-practices/web.md) | MDN, WCAG, web.dev |
-| [Windows](reference/best-practices/windows-net.md) | .NET guidelines, WinUI, Fluent |
-| [UI Design](reference/best-practices/ui-design.md) | NNGroup, Apple HIG, Material Design |
-| [Networking](reference/best-practices/networking.md) | REST guidelines, RFC references |
-| [Security](reference/best-practices/security.md) | OWASP, CWE, Mozilla |
-| [Testing](reference/best-practices/testing.md) | Google SWE Book, Fowler, Kent Beck |
-| [Cross-Platform](reference/best-practices/cross-platform.md) | Nielsen Norman, MASVS, MASTG |
-| [References](reference/references.md) | Additional reference materials |
-| [Example Cookbook](reference/examples/) | My Document Editor — complete cookbook example |
+| [Apple](../references/best-practices/apple.md) | HIG, Swift API Guidelines, App Store Review |
+| [Android](../references/best-practices/android.md) | Material Design, Kotlin style, Play policies |
+| [Web](../references/best-practices/web.md) | MDN, WCAG, web.dev |
+| [Windows](../references/best-practices/windows-net.md) | .NET guidelines, WinUI, Fluent |
+| [UI Design](../references/best-practices/ui-design.md) | NNGroup, Apple HIG, Material Design |
+| [Networking](../references/best-practices/networking.md) | REST guidelines, RFC references |
+| [Security](../references/best-practices/security.md) | OWASP, CWE, Mozilla |
+| [Testing](../references/best-practices/testing.md) | Google SWE Book, Fowler, Kent Beck |
+| [Cross-Platform](../references/best-practices/cross-platform.md) | Nielsen Norman, MASVS, MASTG |
+| [References](../references/references.md) | Additional reference materials |
+| [Example Cookbook](../references/examples/) | My Document Editor — complete cookbook example |
 
 ## Appendix
 
@@ -184,9 +183,9 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Section | Description |
 |---------|-------------|
-| [Contributing](appendix/contributing/) | How to author and contribute content |
-| [Decisions](appendix/decisions/) | Architecture decision records |
-| [Research](appendix/research/) | Platform and tooling research notes |
+| [Contributing](../guide/appendix/contributing/) | How to author and contribute content |
+| [Decisions](../guide/appendix/decisions/) | Architecture decision records |
+| [Research](../guide/appendix/research/) | Platform and tooling research notes |
 
 ## Change History
 

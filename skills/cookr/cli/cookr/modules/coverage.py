@@ -8,10 +8,8 @@ import sys
 
 from rich.markup import escape
 
-from ..core.compliance import load_checks
 from ..core.coverage import STATES, CoverageRow, compute
 from .inventory import require_config, require_known_tier
-from .prompt.prompt_cli import compliance_dir
 
 NAME = "coverage"
 HELP = "Report each component as missing, partial or complete against the recipe corpus."
@@ -39,7 +37,7 @@ def run(args, ctx) -> int:
         return 2
     if not require_known_tier(args, ctx):
         return 2
-    report = compute(ctx.config, tier=args.tier, checks=load_checks(compliance_dir()))
+    report = compute(ctx.config, tier=args.tier)
     failing = report.below(args.require) if args.require else []
 
     if args.json:

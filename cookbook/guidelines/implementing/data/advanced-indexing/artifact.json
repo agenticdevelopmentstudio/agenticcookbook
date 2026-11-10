@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8a1d8274-cc46-4449-a824-7c7a79c0b1e2",
     "title": "Advanced database indexing",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/advanced-indexing",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/data/transaction-isolation",
-      "agenticdevelopercookbook://guidelines/implementing/data/query-optimization"
+      "36d29fae-0929-46ef-98d6-d7e8f67aa040",
+      "7fd21483-ad0b-407e-8a7f-103992403d36"
     ],
     "references": [
       "https://www.postgresql.org/docs/current/indexes.html"
@@ -35,7 +34,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "032715630e5bc670",
+  "synced": "2c5e77d39b084665",
   "parts": [
     {"part": "intro"},
     {"part": "build-safely-on-live-tables", "heading": "Build safely on live tables"},

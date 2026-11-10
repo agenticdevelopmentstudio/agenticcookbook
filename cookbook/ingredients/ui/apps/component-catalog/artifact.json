@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "E7419774-543C-4B3E-8C92-9EF6DAD3BB0F",
+    "id": "e7419774-543c-4b3e-8c92-9ef6dad3bb0f",
     "title": "Component Catalog",
-    "domain": "agenticdevelopercookbook://ingredients/ui/apps/component-catalog",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,14 +25,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://ingredients/ui/apps/xcodegen-apple-project",
-      "agenticdevelopercookbook://recipes/ui/apps/apple"
+      "7de8cd27-e532-4992-9296-0a6dc1ad1816",
+      "c5778e2d-2f3b-4cbd-809b-39ed4b57ff57"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "5ccc75e1f4c853a7",
+  "synced": "9baa77e82e412c8b",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

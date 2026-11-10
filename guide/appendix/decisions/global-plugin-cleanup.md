@@ -1,7 +1,6 @@
 ---
 id: a7f3c1d2-8e4b-4f9a-b5c6-2d1e8f3a4b7c
 title: "Infrastructure: Global Plugin Cleanup — Move Project-Specific Plugins to Per-Project"
-domain: agenticdevelopercookbook://appendix/decisions/global-plugin-cleanup
 type: reference
 version: 1.0.0
 status: accepted

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "09947209-369f-40de-8331-c10b0d6f32c6",
     "title": "Cite the claim, not the document",
-    "domain": "agenticdevelopercookbook://principles/cite-the-claim-not-the-document",
     "type": "principle",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,14 +21,14 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/provenance-at-generation-time",
-      "agenticdevelopercookbook://principles/independence-before-corroboration"
+      "0131807b-548d-403a-8366-de79e215949d",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
     "approved-date": "2026-06-27"
   },
-  "synced": "fd2527965ced6d39",
+  "synced": "d9f6b6a927c24fc4",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

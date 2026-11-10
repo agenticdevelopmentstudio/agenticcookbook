@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "e2a99bf0-6b25-4769-9d1e-613b58b6f097",
     "title": "Agent evaluation and safety",
-    "domain": "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/eval-driven-development",
-      "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security"
+      "7a942d3d-eb47-4eb2-8ed1-bebbcda6f7e6",
+      "a8088a6a-4542-4f6c-b74a-7c7ef7dcc63d"
     ],
     "references": [
       "https://developers.openai.com/api/docs/guides/evals",
@@ -37,7 +36,7 @@
       "writing-tests"
     ]
   },
-  "synced": "e548e6bde67a463e",
+  "synced": "008889862e82e41e",
   "parts": [
     {"part": "intro"},
     {"part": "two-gates-both-required", "heading": "Two gates, both required"},

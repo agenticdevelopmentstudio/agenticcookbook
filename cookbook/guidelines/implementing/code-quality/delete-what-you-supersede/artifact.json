@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2575d546-fbd4-46a6-a143-b886c7d04f01",
     "title": "Delete what you supersede",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/code-quality/delete-what-you-supersede",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,10 +21,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/design-for-deletion",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/code-hygiene",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/scope-discipline",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/naming"
+      "2aaf1727-aa36-41d1-a660-7dd0456e1d07",
+      "1b79f7dc-16c4-40d7-ab9d-d03449bf21dc",
+      "a3f7c1d2-8e4b-4a9f-b6c3-2d1e0f9a8b7c",
+      "34486fb8-8a0b-4538-a40a-13124155cd56"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
       "refactor"
     ]
   },
-  "synced": "ab3cf1bb7c36b28d",
+  "synced": "69c40a467ed8f913",
   "parts": [
     {"part": "intro"},
     {"part": "remove-the-old-path-in-the-same-change", "heading": "Remove the old path in the same change"},

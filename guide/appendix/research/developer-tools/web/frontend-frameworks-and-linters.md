@@ -1,7 +1,6 @@
 ---
 id: 26092dc2-6338-4ab5-9bc4-2e22b8f31a00
 title: Web Frontend Frameworks & Linters
-domain: agenticdevelopercookbook://appendix/research/developer-tools/web/frontend-frameworks-and-linters
 type: reference
 version: 1.0.0
 status: draft

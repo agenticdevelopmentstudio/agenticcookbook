@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "02eb7d39-cdd4-4c2e-a304-7442f3d98ff7",
     "title": "Timeouts",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/networking/timeouts",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -29,7 +28,7 @@
       "api-integration"
     ]
   },
-  "synced": "1a79a37b3c774c26",
+  "synced": "339678fdfbb6ee20",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

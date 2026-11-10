@@ -1,0 +1,33 @@
+{
+  "format": 2,
+  "cookbook": "cookbook",
+  "dependencies": {
+    "e7a40000-0000-4000-8000-000000000000": {
+      "rdid": "adc"
+    }
+  },
+  "roots": [
+    {
+      "path": "web/components",
+      "platform": "web",
+      "kind": "ui",
+      "group": "components"
+    },
+    {
+      "path": "web/blocks",
+      "platform": "web",
+      "kind": "ui",
+      "group": "blocks"
+    },
+    {
+      "path": "apple/UI",
+      "platform": "apple",
+      "kind": "ui",
+      "group": "ui"
+    }
+  ],
+  "ignore": [
+    "**/*.stories.tsx",
+    "**/index.ts"
+  ]
+}

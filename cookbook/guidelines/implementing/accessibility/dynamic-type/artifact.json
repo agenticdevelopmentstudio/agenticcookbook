@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "9dae85c5-85ff-4dd1-9bc4-5e923452dba8",
     "title": "Dynamic Type",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/accessibility/dynamic-type",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -33,7 +32,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "43a87679b9be0bde",
+  "synced": "520981c7c3ed39de",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

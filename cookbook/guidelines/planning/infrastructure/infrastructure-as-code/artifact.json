@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "cc7f5ee6-a848-490a-9a28-e4acae0855b3",
     "title": "Infrastructure as code",
-    "domain": "agenticdevelopercookbook://guidelines/planning/infrastructure/infrastructure-as-code",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,9 +21,9 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://principles/explicit-over-implicit",
-      "agenticdevelopercookbook://principles/idempotency",
-      "agenticdevelopercookbook://principles/small-reversible-decisions"
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "39c2d053-006f-42c9-9db4-d991c1688024",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
     ],
     "references": [
       "https://opentofu.org/docs/",
@@ -39,7 +38,7 @@
       "new-module"
     ]
   },
-  "synced": "ea535bfc274a2152",
+  "synced": "6535334438b6b1a9",
   "parts": [
     {"part": "intro"},
     {"part": "declarative-idempotent-definitions", "heading": "Declarative, idempotent definitions"},

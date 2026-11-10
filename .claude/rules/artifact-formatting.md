@@ -27,8 +27,14 @@ Before writing or modifying an artifact, read the compliance file for that artif
 3. **Follow the required section order** — ingredients and recipes have strict section orders defined in their formatting files. Principles and guidelines have fewer constraints but MUST include all MUST-level sections.
 4. **Use RFC 2119 keywords** for requirements — MUST, MUST NOT, SHOULD, SHOULD NOT, MAY.
 5. **Name requirements in kebab-case** — `**must-do-something**: Component MUST ...`, not REQ-001.
-6. **Keep the source folder in step** — after editing an artifact's `.md`, run
-   `cookr convert --update <path>`; a new artifact gets its folder from `cookr convert <path>`.
+6. **Edit the source folder** — the folder (`<name>/artifact.json` plus one `.md` per section) is
+   the only committed form. Edit its section files directly, or compile a doc with `cookr compile`,
+   edit it, fold it back with `cookr convert --update <doc>`, and delete the doc. A new artifact gets
+   its folder from `cookr convert <path>` (then delete `<path>`), and `cookr update` adds it to
+   `cookbook/index.json`. Record a version change with `cookr bump <folder> --summary "..."`.
+7. **Link by UUID** — `depends-on`, `related` and `ingredients` hold UUIDs (`<cookbook-uuid>/<uuid>`
+   for another cookbook's artifact); in body text write `[<rdid>](cookbook:<uuid>)`. There is no
+   `domain` field.
 
 ---
 

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "4f5fe9ef-1bf8-4354-92c7-92d9e28673b8",
     "title": "Flaky test quarantine lifecycle",
-    "domain": "agenticdevelopercookbook://guidelines/testing/flaky-test-quarantine",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,7 +21,7 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/testing/flaky-test-prevention"
+      "05d00147-5c49-42d8-bdbd-cf8fd7dc2379"
     ],
     "references": [
       "https://www.thoughtworks.com/insights/blog/quarantine"
@@ -34,7 +33,7 @@
       "pre-pr"
     ]
   },
-  "synced": "171778202befc9ad",
+  "synced": "5e04b651fa363ddd",
   "parts": [
     {"part": "intro"},
     {"part": "why-quarantine", "heading": "Why quarantine"},

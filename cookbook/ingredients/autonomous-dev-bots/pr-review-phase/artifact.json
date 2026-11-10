@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "32EB5FA7-31BA-49D2-8223-A530D8CC7092",
+    "id": "32eb5fa7-31ba-49d2-8223-a530d8cc7092",
     "title": "PR Review Phase",
-    "domain": "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-review-phase",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "wip",
@@ -27,8 +26,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://recipes/autonomous-dev-bots/pr-review-pipeline",
-      "agenticdevelopercookbook://ingredients/autonomous-dev-bots/pr-fix-agent"
+      "c3f7a9e2-1b5d-4c8e-a2d6-9e4f1c3b7a5d",
+      "fe3522f2-1b94-494e-8136-c8a5eea876cf"
     ],
     "references": [
       "https://vale.sh",
@@ -37,63 +36,22 @@
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "ae64d6b13cd82b5f",
+  "names_hosts": "Specifies which Claude model runs the review phase.",
+  "synced": "9e641feeab516b93",
   "parts": [
-    {
-      "part": "intro"
-    },
-    {
-      "part": "overview",
-      "heading": "Overview"
-    },
-    {
-      "part": "behavioral-requirements",
-      "heading": "Behavioral Requirements"
-    },
-    {
-      "part": "appearance",
-      "heading": "Appearance"
-    },
-    {
-      "part": "states",
-      "heading": "States"
-    },
-    {
-      "part": "accessibility",
-      "heading": "Accessibility"
-    },
-    {
-      "part": "conformance-test-vectors",
-      "heading": "Conformance Test Vectors"
-    },
-    {
-      "part": "edge-cases",
-      "heading": "Edge Cases"
-    },
-    {
-      "part": "configuration",
-      "heading": "Configuration"
-    },
-    {
-      "part": "logging",
-      "heading": "Logging"
-    },
-    {
-      "part": "platform-notes",
-      "heading": "Platform Notes"
-    },
-    {
-      "part": "design-decisions",
-      "heading": "Design Decisions"
-    },
-    {
-      "part": "compliance",
-      "heading": "Compliance"
-    },
-    {
-      "part": "history",
-      "heading": "Change History"
-    }
-  ],
-  "names_hosts": "Specifies which Claude model runs the review phase."
+    {"part": "intro"},
+    {"part": "overview", "heading": "Overview"},
+    {"part": "behavioral-requirements", "heading": "Behavioral Requirements"},
+    {"part": "appearance", "heading": "Appearance"},
+    {"part": "states", "heading": "States"},
+    {"part": "accessibility", "heading": "Accessibility"},
+    {"part": "conformance-test-vectors", "heading": "Conformance Test Vectors"},
+    {"part": "edge-cases", "heading": "Edge Cases"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "logging", "heading": "Logging"},
+    {"part": "platform-notes", "heading": "Platform Notes"},
+    {"part": "design-decisions", "heading": "Design Decisions"},
+    {"part": "compliance", "heading": "Compliance"},
+    {"part": "history", "heading": "Change History"}
+  ]
 }

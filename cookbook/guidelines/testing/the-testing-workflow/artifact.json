@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "8ab7452a-09b8-4f4e-abfc-f7fd700765db",
     "title": "The Testing Workflow",
-    "domain": "agenticdevelopercookbook://guidelines/testing/the-testing-workflow",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -35,7 +34,7 @@
     ]
   },
   "names_hosts": "Describes the testing workflow as run in Claude Code; a candidate to move into hosts/claude.md.",
-  "synced": "7492d9b085874a73",
+  "synced": "b938800d597ad683",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -6,7 +6,7 @@ screen with no explanation MUST NOT be shown.
 
 **The four states:**
 
-1. **Loading** — show progress (see agenticdevelopercookbook://guidelines/implementing/ui/always-show-progress). Use skeleton screens for content-heavy
+1. **Loading** — show progress (see [adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068)). Use skeleton screens for content-heavy
    views, spinners for actions. Never block the entire screen for a partial load.
 2. **Empty** — explain what belongs here, why it's empty, and provide a single clear action to
    populate it. Use an icon or illustration, a brief message, and a CTA button.

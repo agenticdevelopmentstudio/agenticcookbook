@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "3B9FCE69-7541-4F49-81AE-86119096A4D8",
+    "id": "3b9fce69-7541-4f49-81ae-86119096a4d8",
     "title": "Clock Systems for Sync",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/clock-systems",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,9 +26,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/conflict-resolution.md",
-      "guidelines/data/sync-schema-design.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "822a0912-fda7-461f-85ab-f9c2c55f0039",
+      "a899aeae-d561-4fcd-abd7-df109fe2362c"
     ],
     "references": [
       "https://sergeiturukin.com/2017/06/26/hybrid-logical-clocks.html",
@@ -44,7 +43,7 @@
       "schema-design"
     ]
   },
-  "synced": "903aee45c2d8e3eb",
+  "synced": "ecbb230227841cb6",
   "parts": [
     {"part": "intro"},
     {"part": "physical-clocks-wall-time", "heading": "Physical Clocks (Wall Time)"},

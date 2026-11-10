@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "a1d4578f-aceb-4a87-8fa4-b57a89e80763",
     "title": "Cross-Cutting Detection",
-    "domain": "agenticdevelopercookbook://guidelines/planning/code-quality/cross-cutting-detection",
     "type": "guideline",
     "version": "1.0.4",
     "status": "accepted",
@@ -36,7 +35,7 @@
     ]
   },
   "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "0ff7775565e85883",
+  "synced": "77ee67d71729e317",
   "parts": [
     {"part": "intro"},
     {"part": "signals-and-indicators", "heading": "Signals and Indicators"},

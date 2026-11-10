@@ -1,15 +1,14 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "19648d85-adba-4f38-b513-a38ca58e9fb0",
     "title": "Cross-Recipe Consistency",
-    "domain": "agenticdevelopercookbook://guidelines/cookbook/recipe-quality/cross-recipe-consistency",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
-    "modified": "2026-06-09",
+    "modified": "2026-11-09",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "73e9d2ea06d370b1",
+  "synced": "4017afef9fbb660e",
   "parts": [
     {"part": "intro"},
     {"part": "requirements", "heading": "Requirements"},

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "2e317c68-384d-46b8-b3b3-0bcc6602e545",
     "title": "Real-Time Communication",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/networking/real-time-communication",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -35,7 +34,7 @@
       "concurrency"
     ]
   },
-  "synced": "702132fa03509d8b",
+  "synced": "12135478eedadeef",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

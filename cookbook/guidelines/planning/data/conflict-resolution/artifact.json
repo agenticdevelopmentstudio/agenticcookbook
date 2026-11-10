@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "5e6161cd-6bab-46b5-a2c5-14de3527b035",
     "title": "Conflict Resolution",
-    "domain": "agenticdevelopercookbook://guidelines/planning/data/conflict-resolution",
     "type": "guideline",
     "version": "1.0.3",
     "status": "accepted",
@@ -27,9 +26,9 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/sync-schema-design.md",
-      "guidelines/data/clock-systems.md"
+      "e3a209f8-1b89-4d6e-bf7f-78a8aecf69cb",
+      "5a57e599-ca8e-44b9-9be7-109f7c176feb",
+      "87a35f08-4896-485e-8bb2-4683b916aaa1"
     ],
     "references": [
       "https://crdt.tech/implementations",
@@ -46,7 +45,7 @@
       "database-operations"
     ]
   },
-  "synced": "823b162f57850a8c",
+  "synced": "6736b791b1fb03a4",
   "parts": [
     {"part": "intro"},
     {"part": "choose-a-strategy-per-data-type", "heading": "Choose a Strategy Per Data Type"},

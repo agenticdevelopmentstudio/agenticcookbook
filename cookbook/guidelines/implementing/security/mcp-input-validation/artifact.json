@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "355028de-c329-48dd-b609-41aba903e01c",
     "title": "MCP tool input validation",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/mcp-input-validation",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/networking/mcp-server-design",
-      "agenticdevelopercookbook://guidelines/implementing/security/mcp-server-security"
+      "788f1c1d-69af-4570-a279-748d89fcc0e0",
+      "ab8ed68c-949d-42c8-8c07-416674795a65"
     ],
     "references": [
       "https://modelcontextprotocol.io/"
@@ -36,7 +35,7 @@
       "security-review"
     ]
   },
-  "synced": "b03ea89463a6441f",
+  "synced": "8400ad2a46171659",
   "parts": [
     {"part": "intro"},
     {"part": "core-rules", "heading": "Core rules"},

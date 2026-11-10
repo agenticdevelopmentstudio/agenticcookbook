@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "AF78FFED-0E66-42BE-AB40-EF1BD6A49DD2",
+    "id": "af78ffed-0e66-42be-ab40-ef1bd6a49dd2",
     "title": "Access Pattern Analysis",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/data/access-pattern-analysis",
     "type": "guideline",
     "version": "1.0.2",
     "status": "accepted",
@@ -27,10 +26,10 @@
     ],
     "depends-on": [],
     "related": [
-      "guidelines/data/sqlite-best-practices.md",
-      "guidelines/data/indexing.md",
-      "guidelines/data/transactions-and-concurrency.md",
-      "guidelines/data/query-optimization.md"
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "02e9042d-0d15-47ac-9361-2f16980a03ca",
+      "ab416d40-2688-4531-95fb-613f0d2fa8cf",
+      "7fd21483-ad0b-407e-8a7f-103992403d36"
     ],
     "references": [
       "https://sqlite.org/queryplanner.html",
@@ -45,7 +44,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "694ad9cc7f28fe5f",
+  "synced": "312b6e58eb419bbf",
   "parts": [
     {"part": "intro"},
     {"part": "start-with-the-queries-not-the-schema", "heading": "Start With the Queries, Not the Schema"},

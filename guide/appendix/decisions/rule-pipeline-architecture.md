@@ -1,7 +1,6 @@
 ---
 id: 29faa7e6-7925-4db9-af90-81dcc80f4a03
 title: "Perf Deep Dive: Rule Pipelines"
-domain: agenticdevelopercookbook://appendix/decisions/rule-pipeline-architecture
 type: reference
 version: 1.0.0
 status: accepted
@@ -20,7 +19,7 @@ tags:
   - architecture
 depends-on: []
 related:
-  - agenticdevelopercookbook://workflows/guideline-checklist
+  - tbd/workflows/guideline-checklist.md
 references: []
 ---
 
@@ -178,7 +177,7 @@ When planning or implementing features, use /cookbook-start.
 
 ### Phase 2 Additional Changes
 
-- Guideline checklist (`cookbook/workflow/guideline-checklist.md`) updated to use file paths instead of `agenticdevelopercookbook://` domain URLs
+- Guideline checklist (`cookbook/workflow/guideline-checklist.md`) updated to use file paths instead of the then-current domain URLs
 - `code-verification.md` removed from reference table (inline checks are sufficient)
 - `/install-cookbook` simplified (v8.0.0) — generates ~10-line rule, no longer produces principles table or pipeline sections
 - `/configure-cookbook` simplified (v4.0.0) — preferences managed via JSON, rule rarely needs regeneration

@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "34f13883-8905-4b5c-9299-82602687e98d",
     "title": "Linting from day one",
-    "domain": "agenticdevelopercookbook://guidelines/testing/linting",
     "type": "guideline",
     "version": "1.1.2",
     "status": "accepted",
@@ -45,7 +44,7 @@
       "new-module"
     ]
   },
-  "synced": "22ed7b44c6ad66f6",
+  "synced": "2f40e5929415ac88",
   "parts": [
     {"part": "intro"},
     {"part": "when-to-run", "heading": "When to run"},

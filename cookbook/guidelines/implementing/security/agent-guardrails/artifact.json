@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "af911b49-ff36-439e-acb0-a08c80b87103",
     "title": "Agent guardrails",
-    "domain": "agenticdevelopercookbook://guidelines/implementing/security/agent-guardrails",
     "type": "guideline",
     "version": "1.0.1",
     "status": "accepted",
@@ -22,8 +21,8 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/security/llm-application-security",
-      "agenticdevelopercookbook://guidelines/testing/agent-evaluation-and-safety"
+      "a8088a6a-4542-4f6c-b74a-7c7ef7dcc63d",
+      "e2a99bf0-6b25-4769-9d1e-613b58b6f097"
     ],
     "references": [
       "https://genai.owasp.org/llm-top-10/",
@@ -38,7 +37,7 @@
       "security-review"
     ]
   },
-  "synced": "abfadd8c7305e9db",
+  "synced": "45a49b492572277d",
   "parts": [
     {"part": "intro"},
     {"part": "input-guardrails", "heading": "Input guardrails"},

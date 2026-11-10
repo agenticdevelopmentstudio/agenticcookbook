@@ -1,7 +1,6 @@
 ---
 id: 9566fd08-3e83-4c58-a7b1-5acf77d8c163
 title: "Windows / .NET"
-domain: agenticdevelopercookbook://reference/best-practices/windows-net
 type: reference
 version: 1.0.0
 status: accepted

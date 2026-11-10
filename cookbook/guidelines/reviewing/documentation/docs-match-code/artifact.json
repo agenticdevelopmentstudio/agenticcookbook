@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
     "id": "744c30a2-5dfa-41c6-8746-37372ba6465c",
     "title": "Docs match the code",
-    "domain": "agenticdevelopercookbook://guidelines/reviewing/documentation/docs-match-code",
     "type": "guideline",
     "version": "1.0.0",
     "status": "accepted",
@@ -22,10 +21,10 @@
     ],
     "depends-on": [],
     "related": [
-      "agenticdevelopercookbook://guidelines/implementing/documentation/writing-comments-and-docs",
-      "agenticdevelopercookbook://guidelines/reviewing/code-quality/code-hygiene",
-      "agenticdevelopercookbook://guidelines/implementing/code-quality/code-for-the-ai-reader",
-      "agenticdevelopercookbook://principles/dry"
+      "8238bdf2-432b-4c34-9050-742a1f16d107",
+      "1b79f7dc-16c4-40d7-ab9d-d03449bf21dc",
+      "42ed78a6-eea7-4b48-8b5f-be345682ffc3",
+      "256a827e-436e-4cde-895e-a56b9783edf2"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +34,7 @@
       "pre-commit"
     ]
   },
-  "synced": "26d88b365b43a0aa",
+  "synced": "6697df8598a96968",
   "parts": [
     {"part": "intro"},
     {"part": "comments-and-docstrings-describe-current-behavior", "heading": "Comments and docstrings describe current behavior"},

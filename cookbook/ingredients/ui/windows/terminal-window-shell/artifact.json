@@ -1,9 +1,8 @@
 {
-  "format": 1,
+  "format": 2,
   "meta": {
-    "id": "DE88E58F-7260-4089-B0E3-9485D6B4BC79",
+    "id": "de88e58f-7260-4089-b0e3-9485d6b4bc79",
     "title": "Terminal Window Shell",
-    "domain": "agenticdevelopercookbook://ingredients/ui/windows/terminal-window-shell",
     "type": "ingredient",
     "version": "1.0.0",
     "status": "accepted",
@@ -26,16 +25,16 @@
       "window"
     ],
     "depends-on": [
-      "agenticdevelopercookbook://ingredients/ui/panels/terminal-pane"
+      "4a2898cf-34ed-4153-8d06-c795f80c19cd"
     ],
     "related": [
-      "agenticdevelopercookbook://recipes/ui/windows/standalone-terminal-window"
+      "08f87323-4043-432f-8f29-936cfb4ed2e2"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.1.0",
     "approved-date": "2026-10-04"
   },
-  "synced": "d51d67aa50809b0b",
+  "synced": "2deb481acd60b989",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
