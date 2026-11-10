@@ -4,6 +4,9 @@ Tests/Projects/
 # macOS
 .DS_Store
 
+# Python bytecode (tests import the hook and setup scripts)
+__pycache__/
+
 # Editors
 *.swp
 *.swo
