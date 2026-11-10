@@ -423,8 +423,6 @@ def test_the_router_drives_skill_routers_cli_by_origin(tmp_path):
         r.unregister(s)
 
 
-# Opts out of upgrade-on-contact: a loose doc with no source folder is the legacy shape under test.
-@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_a_doc_with_no_source_folder_stops_install(env, monkeypatch, capsys):
     # Installing without it would drop its skill unnoticed.
     (env.book / "principles" / "loose.md").write_text("---\ntype: principle\n---\n# Loose\n")

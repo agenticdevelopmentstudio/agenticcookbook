@@ -64,11 +64,19 @@ def bash(cmd, cwd, **more):
             "cwd": str(cwd), **more}
 
 
+def advice(r) -> str:
+    """The advisory context a commit check handed the agent ("" when none)."""
+    if not r.stdout.strip():
+        return ""
+    out = json.loads(r.stdout)["hookSpecificOutput"]
+    assert out["hookEventName"] == "PreToolUse"
+    return out["additionalContext"]
+
+
 def test_non_cookr_repo_exits_0(tmp_path, env):
     plain = tmp_path / "plain"
     plain.mkdir()
     for payload in (bash("git commit -m x", plain),
-                    {"hook_event_name": "Stop", "cwd": str(plain)},
                     {"hook_event_name": "SessionStart", "session_id": "s", "cwd": str(plain)}):
         r = run_hook(payload, env, FAKE_EXIT="2")
         assert r.returncode == 0 and r.stdout == ""
@@ -82,42 +90,36 @@ def test_non_commit_bash_exits_0(repo, env):
     assert run_hook({"hook_event_name": "PreToolUse", "tool_name": "Edit", "cwd": str(repo)}, env).returncode == 0
 
 
-def test_commit_with_findings_blocks(repo, env):
+def test_commit_with_findings_advises_and_never_blocks(repo, env):
     r = run_hook(bash("git commit -m x", repo / "sub"), env, FAKE_EXIT="2", FAKE_STDERR="update X\n")
-    assert r.returncode == 2
-    assert "update X" in r.stderr
+    assert r.returncode == 0
+    ctx = advice(r)
+    assert "not blocked" in ctx and "update X" in ctx
     assert calls(env) == [f"check --staged --hook -p {repo.resolve()}"]
 
 
-def test_commit_clean_and_state_refusal_do_not_block(repo, env):
-    assert run_hook(bash("git commit -m x", repo), env).returncode == 0
-    r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT="1", FAKE_STDERR="not a git repo\n")
-    assert r.returncode == 0 and "not a git repo" in r.stderr
+def test_a_clean_commit_says_nothing(repo, env):
+    r = run_hook(bash("git commit -m x", repo), env)
+    assert r.returncode == 0 and r.stdout == "" and r.stderr == ""
 
 
-def test_upgrade_exit_3_blocks_with_its_message(repo, env):
-    r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT="3",
-                 FAKE_STDERR="cookr: commit the cookr upgrade first\n")
-    assert r.returncode == 2 and "commit the cookr upgrade first" in r.stderr
+@pytest.mark.parametrize("code", ["1", "2", "3"])
+def test_no_exit_code_from_cookr_blocks(repo, env, code):
+    r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT=code, FAKE_STDERR="why\n")
+    assert r.returncode == 0 and "why" in advice(r)
 
 
-def test_a_block_with_empty_stderr_forwards_stdout(repo, env):
-    """A cookr that printed its reason on stdout must never block with no reason."""
+def test_stdout_is_the_advice_when_stderr_is_empty(repo, env):
     r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT="2", FAKE_STDOUT="bad roots\n")
-    assert r.returncode == 2 and "bad roots" in r.stderr
+    assert r.returncode == 0 and "bad roots" in advice(r)
     r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT="2")
-    assert r.returncode == 2 and "cookr check exited 2" in r.stderr
-    # Stdout is a backstop only: a non-blocking run, or one with stderr, never echoes it.
-    r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT="1", FAKE_STDOUT="table\n")
-    assert r.returncode == 0 and "table" not in r.stderr
-    r = run_hook(bash("git commit -m x", repo), env, FAKE_EXIT="2", FAKE_STDERR="why\n",
-                 FAKE_STDOUT="table\n")
-    assert "why" in r.stderr and "table" not in r.stderr
+    assert r.returncode == 0 and r.stdout == ""
 
 
 def test_commit_in_other_dir_via_dash_C(tmp_path, repo, env):
     r = run_hook(bash(f"git -C {repo} commit -m x", tmp_path), env, FAKE_EXIT="2", FAKE_STDERR="e\n")
-    assert r.returncode == 2
+    assert r.returncode == 0 and "e" in advice(r)
+    assert calls(env) == [f"check --staged --hook -p {repo.resolve()}"]
 
 
 @pytest.mark.parametrize("cmd", [
@@ -129,9 +131,9 @@ def test_commit_in_other_dir_via_dash_C(tmp_path, repo, env):
     "cd {tmp} && git -C repo commit -m x",          # -C relative to the cd
 ])
 def test_commit_in_other_dir_via_cd(tmp_path, repo, env, cmd):
-    r =run_hook(bash(cmd.format(repo=repo, tmp=tmp_path), tmp_path), env,
+    r = run_hook(bash(cmd.format(repo=repo, tmp=tmp_path), tmp_path), env,
                  FAKE_EXIT="2", FAKE_STDERR="e\n")
-    assert r.returncode == 2
+    assert r.returncode == 0
     assert calls(env) == [f"check --staged --hook -p {repo.resolve()}"]
 
 
@@ -142,38 +144,43 @@ def test_a_cd_out_of_the_repo_is_not_checked(tmp_path, repo, env):
     assert r.returncode == 0 and calls(env) == []
 
 
-def test_override_env_in_command_allows(repo, env):
+def test_override_env_in_command_quiets_the_advice(repo, env):
     r = run_hook(bash("CC_ALLOW_COOKR=1 git commit -m x", repo), env, FAKE_EXIT="2")
     assert r.returncode == 0 and calls(env) == []
     # Mentioning the override in a message is not setting it.
-    r = run_hook(bash("git commit -m 'CC_ALLOW_COOKR=1'", repo), env, FAKE_EXIT="2")
-    assert r.returncode == 2
+    r = run_hook(bash("git commit -m 'CC_ALLOW_COOKR=1'", repo), env, FAKE_EXIT="2", FAKE_STDERR="e\n")
+    assert r.returncode == 0 and len(calls(env)) == 1
 
 
-def test_stop_checks_branch_and_blocks(repo, env):
+def test_stop_is_not_handled(repo, env):
     r = run_hook({"hook_event_name": "Stop", "cwd": str(repo)}, env, FAKE_EXIT="2", FAKE_STDERR="bump X\n")
-    assert r.returncode == 2 and "bump X" in r.stderr
-    assert calls(env) == [f"check --branch --hook -p {repo.resolve()}"]
+    assert r.returncode == 0 and r.stdout == "" and r.stderr == ""
+    assert calls(env) == []
 
 
-def test_stop_hook_active_does_not_loop(repo, env):
-    r = run_hook({"hook_event_name": "Stop", "cwd": str(repo), "stop_hook_active": True}, env, FAKE_EXIT="2")
-    assert r.returncode == 0 and calls(env) == []
-
-
-def test_session_reminder_once(repo, env):
+def test_session_reminder_once_and_runs_no_cookr(repo, env):
     payload = {"hook_event_name": "SessionStart", "session_id": "abc", "cwd": str(repo)}
     first = run_hook(payload, env)
     assert first.returncode == 0
     out = json.loads(first.stdout)["hookSpecificOutput"]
     assert out["hookEventName"] == "SessionStart"
-    assert "cookr scope" in out["additionalContext"] and "cookr skill" in out["additionalContext"]
-    assert calls(env) == [f"skills sync -p {repo.resolve()}"]
+    ctx = out["additionalContext"]
+    assert "cookr scope" in ctx and "cookr skill" in ctx and "not a gate" in ctx
+    assert calls(env) == []  # no `skills sync`, nothing that writes
     assert (Path(env["COOKR_HOME"]) / "sessions" / "abc").exists()
 
     again = run_hook({**payload, "hook_event_name": "UserPromptSubmit"}, env)
     assert again.returncode == 0 and again.stdout == ""
-    assert len(calls(env)) == 1
+
+
+def test_reminder_names_the_upgrade_only_for_a_format_1_repo(repo, env):
+    payload = {"hook_event_name": "UserPromptSubmit", "session_id": "f1", "cwd": str(repo)}
+    ctx = json.loads(run_hook(payload, env).stdout)["hookSpecificOutput"]["additionalContext"]
+    assert "format 1" in ctx and "cookr upgrade" in ctx and "Nothing converts it automatically" in ctx
+    (repo / ".cookr.json").write_text(json.dumps({"format": 2}))
+    payload["session_id"] = "f2"
+    ctx = json.loads(run_hook(payload, env).stdout)["hookSpecificOutput"]["additionalContext"]
+    assert "format 1" not in ctx
 
 
 def test_marker_written_only_after_reminder_printed(repo, env):
@@ -192,14 +199,6 @@ def test_marker_written_only_after_reminder_printed(repo, env):
     assert not marker.exists()
     assert "additionalContext" in run_hook(payload, env).stdout
     assert marker.exists()
-
-
-def test_sync_failure_is_one_context_line_not_a_block(repo, env):
-    r = run_hook({"hook_event_name": "UserPromptSubmit", "session_id": "z", "cwd": str(repo)}, env,
-                 FAKE_EXIT="1", FAKE_STDERR="cookr: cannot compile\n")
-    assert r.returncode == 0
-    ctx = json.loads(r.stdout)["hookSpecificOutput"]["additionalContext"].splitlines()
-    assert ctx[-1] == "cookr skills sync failed: cookr: cannot compile"
 
 
 def test_missing_cookr_and_bad_input_exit_0(repo, env, tmp_path):

@@ -158,13 +158,6 @@ def _outside_the_checkout(tmp_path, monkeypatch):
 
 
 @pytest.fixture
-def legacy_no_upgrade(monkeypatch):
-    """Opt a test out of upgrade-on-contact: it deliberately builds a format-1
-    cookbook to exercise one module. Upgrade-on-contact is live by default."""
-    monkeypatch.setattr("cookr.cli.needs_upgrade", lambda repo: [])
-
-
-@pytest.fixture
 def git_tmp_path(tmp_path) -> Path:
     """tmp_path as a git repo, as a real cookbook's checkout is.
 

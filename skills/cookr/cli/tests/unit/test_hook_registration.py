@@ -26,13 +26,22 @@ def test_command_uses_absolute_home():
     assert CMD == "/usr/bin/python3 /home/u/.claude/skills/cookr/hooks/cc-cookr-hook.py"
 
 
-def test_register_creates_all_four_events(tmp_path):
+def test_register_creates_the_three_reminder_events(tmp_path):
     p = tmp_path / "settings.json"
-    assert sorted(reg.register(p, CMD)) == ["PreToolUse", "SessionStart", "Stop", "UserPromptSubmit"]
+    assert sorted(reg.register(p, CMD)) == ["PreToolUse", "SessionStart", "UserPromptSubmit"]
     hooks = read(p)["hooks"]
     assert hooks["PreToolUse"] == [{"matcher": "Bash", "hooks": [{"type": "command", "command": CMD}]}]
-    for ev in ("SessionStart", "UserPromptSubmit", "Stop"):
+    for ev in ("SessionStart", "UserPromptSubmit"):
         assert hooks[ev] == [{"hooks": [{"type": "command", "command": CMD}]}]
+    assert "Stop" not in hooks
+
+
+def test_register_drops_an_older_installs_stop_entry(tmp_path):
+    p = tmp_path / "settings.json"
+    p.write_text(json.dumps({"hooks": {"Stop": [
+        {"hooks": [{"type": "command", "command": CMD}]}, {"hooks": [OTHER]}]}}))
+    assert "Stop" in reg.register(p, CMD)
+    assert read(p)["hooks"]["Stop"] == [{"hooks": [OTHER]}]
 
 
 def test_register_is_idempotent(tmp_path):
@@ -49,8 +58,7 @@ def test_register_keeps_other_settings_and_hooks(tmp_path):
     reg.register(p, CMD)
     data = read(p)
     assert data["model"] == "x"
-    assert data["hooks"]["Stop"][0] == {"hooks": [OTHER]}
-    assert len(data["hooks"]["Stop"]) == 2
+    assert data["hooks"]["Stop"] == [{"hooks": [OTHER]}]
 
 
 def test_unregister_removes_only_ours(tmp_path):
@@ -60,7 +68,7 @@ def test_unregister_removes_only_ours(tmp_path):
         "PreToolUse": [{"matcher": "Bash", "hooks": [OTHER]}],
     }}))
     reg.register(p, CMD)
-    assert sorted(reg.unregister(p)) == ["PreToolUse", "SessionStart", "Stop", "UserPromptSubmit"]
+    assert sorted(reg.unregister(p)) == ["PreToolUse", "SessionStart", "UserPromptSubmit"]
     assert read(p) == {"hooks": {"Stop": [{"hooks": [OTHER]}],
                                  "PreToolUse": [{"matcher": "Bash", "hooks": [OTHER]}]}}
     assert reg.unregister(p) == []

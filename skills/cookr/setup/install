@@ -6,8 +6,8 @@
 - Copies SKILL.md to ~/.claude/skills/cookr/, so the skill is /cookr in every
   project.
 - Copies hooks/ to ~/.claude/skills/cookr/hooks/ and registers the recipes-first
-  hook in ~/.claude/settings.json (SessionStart, UserPromptSubmit, PreToolUse:Bash,
-  Stop), without duplicating an entry that is already there.
+  reminder hook in ~/.claude/settings.json (SessionStart, UserPromptSubmit,
+  PreToolUse:Bash; it never blocks or writes), without duplicating an entry that is already there.
 
 --skill-only skips the CLI step; the repo's ./install uses it, having just
 installed the CLIs itself.

@@ -308,8 +308,6 @@ def test_the_cli_needs_out_and_reports_json(book, tmp_path, monkeypatch, capsys)
     assert data["over_cap"] == {} and len(data["results"]) == 3
 
 
-# Opts out of upgrade-on-contact: a loose doc with no source folder is the legacy shape under test.
-@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_a_doc_with_no_source_folder_fails_compile(book, tmp_path, monkeypatch, capsys):
     (book / "principles" / "loose.md").write_text("---\ntype: principle\n---\n# Loose\n")
     (book / "principles" / "notes.md").write_text("# Not an artifact\n")

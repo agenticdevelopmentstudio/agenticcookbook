@@ -19,7 +19,7 @@ ROOT = {"path": "web", "platform": "web", "kind": "ui", "group": "ui"}
 X = "test-repo.ingredient.ui.x"
 MISSING = "a0000000-0000-4000-8000-0000000000ff"
 FOREIGN = "f0000000-0000-4000-8000-000000000000/a0000000-0000-4000-8000-0000000000aa"
-HELP = "Do this work now and continue; do not stop to ask. (cookr scope shows the full picture.)"
+HELP = "Whether and when to do it is your call while you work on these files. (cookr scope shows the full picture.)"
 ART = "cookbook/ui/x/artifact.json"
 PART = "cookbook/ui/x/spec.md"
 
@@ -256,7 +256,7 @@ def test_hook_output_capped_at_15(tmp_path, capsys):
     capsys.readouterr()
     assert main(["-p", str(repo), "check", "--hook"]) == 2
     lines = capsys.readouterr().err.splitlines()
-    assert lines[0] == "cookr: recipe work to do before this lands:"
+    assert lines[0] == "cookr: recipe work this change may owe:"
     assert len([ln for ln in lines if ln.startswith("  - ")]) == 15
     assert lines[16] == "  … and 5 more"
     assert lines[-1] == HELP and len(lines) == 18

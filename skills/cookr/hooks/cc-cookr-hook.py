@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
-"""The recipes-first hook for repos that carry a `.cookr.json`.
+"""The recipes-first reminder for repos that carry a `.cookr.json`.
 
-One script, four events (spec section 7). The logic lives in cookr; this only
-decides whether the event applies and shells out:
+This hook only tells the agent to pay attention. It never blocks, never writes
+a file, and never converts anything: what to change, and whether to commit it,
+is the agent's call while it works on the files.
 
   SessionStart / UserPromptSubmit  once per session: a reminder naming
-                                   `cookr scope` and the cookr skill, after
-                                   `cookr skills sync` (a failure is one more
-                                   context line; it never blocks)
+                                   `cookr scope` and the cookr skill, plus a
+                                   line when the repo is still format 1 that
+                                   `cookr upgrade` converts it if the agent
+                                   chooses to
   PreToolUse:Bash on a commit      `cookr check --staged --hook`, in the repo
                                    the commit runs in (`git -C <dir>` and
-                                   `cd <dir> &&` are followed)
-  Stop                             `cookr check --branch --hook`
+                                   `cd <dir> &&` are followed); any findings
+                                   come back as advisory context, and the
+                                   commit goes ahead
 
-Exit 2 blocks and its stderr goes back to the agent; a block always carries a
-reason (cookr's stderr, else its stdout, else a line naming the check to rerun).
-Everything else is exit 0:
-a repo without `.cookr.json`, a missing cookr, a state refusal (cookr exit 1),
-and any unexpected exception -- this hook must never break a session.
+Every path exits 0, including a missing cookr and any unexpected exception --
+this hook must never break or hold up a session.
 
-Escape hatch: `CC_ALLOW_COOKR=1` as an environment assignment on the commit
-command itself (hook input does not reliably carry the parent environment).
+Quiet a commit's advisory: `CC_ALLOW_COOKR=1` as an environment assignment on
+the commit command itself.
 
 Environment: COOKR_BIN (command line that runs cookr, default `cookr` on PATH),
 COOKR_HOME (default ~/.cookr; holds the once-per-session markers).
@@ -40,7 +40,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from hook_payload import session_cwd  # noqa: E402
 
 OVERRIDE = "CC_ALLOW_COOKR=1"
-SYNC_TIMEOUT = 300
 CHECK_TIMEOUT = 120
 
 REMINDER = (
@@ -48,8 +47,15 @@ REMINDER = (
     "`cookr scope` on the planned files and give Mike the minimum and the siblings; "
     "write or update the recipes in the worktree before the code, keep them current, "
     "`cookr confirm` an implementation that matches, then `cookr bump` each changed "
-    "recipe and `cookr validate`. Procedure: the cookr skill, \"Working in a cookr repo\"."
+    "recipe and `cookr validate`. Procedure: the cookr skill, \"Working in a cookr repo\". "
+    "This is a reminder to pay attention, not a gate: nothing blocks."
 )
+FORMAT_1 = (
+    "This repo's cookbook is still format 1. `cookr upgrade` converts it to format 2 if you "
+    "choose to while working on it; it rewrites many files, so review the result and commit "
+    "it on its own. Nothing converts it automatically."
+)
+ADVISORY = "cookr (advisory; this commit is not blocked):"
 
 _COMMIT_RE = re.compile(r"\bgit\s+commit(?![\w-])")
 _GLOBAL_ARG_OPTS = frozenset({"-C", "-c", "--git-dir", "--work-tree", "--namespace"})
@@ -156,26 +162,37 @@ def _marker(session_id: str) -> Path:
     return home / "sessions" / safe
 
 
-def on_session(event: str, data: dict, repo: Path, argv: list[str]) -> int:
+def is_format_1(repo: Path) -> bool:
+    """Whether the repo's `.cookr.json` predates format 2 (no integer `format: 2`)."""
+    try:
+        data = json.loads((repo / ".cookr.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    return isinstance(data, dict) and data.get("format") != 2
+
+
+def emit_context(event: str, text: str) -> bool:
+    """Hand `text` to the agent as additional context; False when it could not be sent."""
+    try:
+        print(json.dumps({"hookSpecificOutput": {
+            "hookEventName": event, "additionalContext": text}}), flush=True)
+    except OSError:
+        # Point stdout away so interpreter shutdown does not fail on the flush.
+        sys.stdout = open(os.devnull, "w")
+        return False
+    return True
+
+
+def on_session(event: str, data: dict, repo: Path) -> int:
     session_id = data.get("session_id")
     marker = _marker(session_id if isinstance(session_id, str) else "")
     if marker.exists():
         return 0
     lines = [REMINDER]
-    sync = run_cookr(argv, ["skills", "sync", "-p", str(repo)], SYNC_TIMEOUT)
-    if sync is None:
-        lines.append("cookr skills sync failed: could not run cookr")
-    elif sync.returncode != 0:
-        detail = (sync.stderr or sync.stdout).strip().splitlines()
-        lines.append("cookr skills sync failed: " + (detail[-1] if detail else "exit %d" % sync.returncode))
-    try:
-        print(json.dumps({"hookSpecificOutput": {
-            "hookEventName": event, "additionalContext": "\n".join(lines)}}), flush=True)
-    except OSError:
-        # Undeliverable: leave no marker so the next prompt sends it again, and
-        # point stdout away so interpreter shutdown does not fail on the flush.
-        sys.stdout = open(os.devnull, "w")
-        return 0
+    if is_format_1(repo):
+        lines.append(FORMAT_1)
+    if not emit_context(event, "\n".join(lines)):
+        return 0  # undelivered: leave no marker so the next prompt sends it again
     # Only now: a reminder that was never delivered must be sent again.
     try:
         marker.parent.mkdir(parents=True, exist_ok=True)
@@ -185,22 +202,15 @@ def on_session(event: str, data: dict, repo: Path, argv: list[str]) -> int:
     return 0
 
 
-def run_check(argv: list[str], scope: str, repo: Path) -> int:
-    proc = run_cookr(argv, ["check", scope, "--hook", "-p", str(repo)], CHECK_TIMEOUT)
-    if proc is None:
-        print("cookr: check could not run", file=sys.stderr)
+def advise_on_commit(argv: list[str], repo: Path) -> int:
+    """Run the staged check and pass any findings to the agent as context. Never blocks."""
+    proc = run_cookr(argv, ["check", "--staged", "--hook", "-p", str(repo)], CHECK_TIMEOUT)
+    if proc is None or proc.returncode == 0:
         return 0
-    blocks = proc.returncode in (2, 3)  # 3 (an upgrade happened) blocks like findings
-    # A block always carries a reason: stdout when cookr put nothing on stderr.
-    text = proc.stderr.strip() or (proc.stdout.strip() if blocks else "")
-    if blocks and not text:
-        text = f"cookr: cookr check exited {proc.returncode} and gave no reason; run " \
-               f"`cookr check {scope}` to see it"
+    text = proc.stderr.strip() or proc.stdout.strip()
     if text:
-        sys.stderr.write(text + "\n")
-    if blocks:
-        return 2
-    return 0  # 0 clean; 1 is a state refusal, a warning only
+        emit_context("PreToolUse", f"{ADVISORY}\n{text}")
+    return 0
 
 
 def main() -> int:
@@ -226,9 +236,7 @@ def main() -> int:
         where = Path(target) if target else Path(cwd)
         if not where.is_absolute():
             where = Path(cwd) / where
-    elif event in ("SessionStart", "UserPromptSubmit", "Stop"):
-        if event == "Stop" and data.get("stop_hook_active") is True:
-            return 0
+    elif event in ("SessionStart", "UserPromptSubmit"):
         where = Path(cwd)
     else:
         return 0
@@ -241,10 +249,8 @@ def main() -> int:
         return 0
 
     if event == "PreToolUse":
-        return run_check(argv, "--staged", repo)
-    if event == "Stop":
-        return run_check(argv, "--branch", repo)
-    return on_session(event, data, repo, argv)
+        return advise_on_commit(argv, repo)
+    return on_session(event, data, repo)
 
 
 if __name__ == "__main__":

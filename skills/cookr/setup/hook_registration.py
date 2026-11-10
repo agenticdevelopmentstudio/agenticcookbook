@@ -3,8 +3,9 @@
 Importable by `install` and `uninstall` (which sit beside this file) and by the
 tests, which pass a tmp settings path. Standard library only.
 
-The hook is one command registered for four events: SessionStart and
-UserPromptSubmit with no matcher, PreToolUse with matcher `Bash`, and Stop.
+The hook is one command registered for three events: SessionStart and
+UserPromptSubmit with no matcher, and PreToolUse with matcher `Bash`. It only
+reminds, so it has no Stop entry; registering removes one an older install left.
 Registering twice adds nothing; unregistering removes only entries running the
 cookr hook script and leaves every other hook alone.
 """
@@ -23,7 +24,6 @@ EVENTS: dict[str, str | None] = {
     "SessionStart": None,
     "UserPromptSubmit": None,
     "PreToolUse": "Bash",
-    "Stop": None,
 }
 
 
@@ -76,6 +76,27 @@ def _is_ours(hook: object) -> bool:
     return isinstance(hook, dict) and HOOK_SCRIPT in str(hook.get("command", ""))
 
 
+def _drop_ours(hooks: dict, event: str) -> bool:
+    """Remove the cookr hook's entries under `event`, dropping groups and the event
+    when left empty; True when anything was removed."""
+    kept, touched = [], False
+    for group in hooks[event]:
+        inner = group["hooks"]
+        if not any(_is_ours(h) for h in inner):
+            kept.append(group)
+            continue
+        touched = True
+        rest = [h for h in inner if not _is_ours(h)]
+        if rest:
+            kept.append({**group, "hooks": rest})
+    if touched:
+        if kept:
+            hooks[event] = kept
+        else:
+            del hooks[event]
+    return touched
+
+
 def register(settings_path: Path, command: str) -> list[str]:
     """Add the hook for each event that lacks it; returns the events changed.
 
@@ -86,6 +107,10 @@ def register(settings_path: Path, command: str) -> list[str]:
     if hooks is None:
         hooks = data["hooks"] = {}
     changed: list[str] = []
+    for event in [e for e in hooks if e not in EVENTS]:
+        # An older install's entry for an event the hook no longer handles (Stop).
+        if _drop_ours(hooks, event):
+            changed.append(event)
     for event, matcher in EVENTS.items():
         groups = hooks.setdefault(event, [])
         present = any(
@@ -115,26 +140,7 @@ def unregister(settings_path: Path) -> list[str]:
     hooks = _shaped(data, settings_path)
     if hooks is None:
         return []
-    changed: list[str] = []
-    for event in list(hooks):
-        groups = hooks[event]
-        kept, touched = [], False
-        for group in groups:
-            inner = group["hooks"]
-            if not any(_is_ours(h) for h in inner):
-                kept.append(group)
-                continue
-            touched = True
-            rest = [h for h in inner if not _is_ours(h)]
-            if rest:
-                kept.append({**group, "hooks": rest})
-        if not touched:
-            continue
-        changed.append(event)
-        if kept:
-            hooks[event] = kept
-        else:
-            del hooks[event]
+    changed = [event for event in list(hooks) if _drop_ours(hooks, event)]
     if changed:
         if not hooks:
             del data["hooks"]

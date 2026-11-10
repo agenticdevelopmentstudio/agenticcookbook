@@ -141,9 +141,6 @@ def test_validate_warns_unreachable_cookbook(tmp_path, monkeypatch, patch_refs, 
 
 
 
-# Opts out of upgrade-on-contact: validate must itself report a loose doc that no source folder
-# compiles (contact would otherwise convert it first and exit 3).
-@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_validate_fails_on_a_loose_doc_with_no_source_folder(tmp_path, monkeypatch, patch_refs,
                                                              capsys):
     monkeypatch.chdir(tmp_path)

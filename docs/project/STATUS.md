@@ -23,15 +23,16 @@ Landed on main as `689ab01` (the feature) and `e75c550` (`__pycache__/` ignored)
   (`<cookbook-uuid>/<uuid>` across cookbooks), `[rdid](cookbook:uuid)` in text.
   `cookr rename <uuid> <rdid>` and folder moves never break a link.
 - **`.cookr.json` format 2** is the per-repo config (code roots, ignores,
-  dependencies). An upgrader converts a format-1 cookbook in one pass on first
-  contact from any command.
+  dependencies). `cookr upgrade` converts a format-1 cookbook in one pass, only
+  when run explicitly (PR #76 removed the upgrade-on-contact; see below).
 - **New commands:** `id`, `rename`, `implements`, `confirm`, `status`, `diff`,
   `scope`, `create`, `adopt`. `bump` proposes the level and freezes versions in
   `versions/`.
-- **Recipes-first enforcement:** `cookr check --hook` plus a global hook block a
-  commit or turn end that leaves source changes no recipe covers ("create a
-  recipe covering ..."). Per-cookbook skill sets compile on contact and are
-  scoped per repo through skill-router (skill-router#4, per-entry repo scope).
+- **Recipes-first reminders:** a global hook reminds the agent once per
+  session and, on a commit, passes on what `cookr check --hook` finds ("create a
+  recipe covering ...") as advice. It never blocks (PR #76). Per-cookbook skill
+  sets compile through `cookr skills sync` and are scoped per repo through
+  skill-router (skill-router#4, per-entry repo scope).
 - **adc is fully converted** and `cookr validate` is green on it: every meta and
   in-text link resolves and the index matches the folders. Validate and update
   now read folders, which closes the 2026-11-07 *Open* item.
@@ -41,6 +42,18 @@ Peer repos shipped the same day: agenticdevteam#2 (dev-team readers on format 2,
 `external/agenticcookbook` at `e75c550`), adhsdk#46 (adhsdk converted),
 adkitchen#103 (cookr adopted; hook dry-run verified), adcookbookwebsite#21
 (website readers).
+
+**The hook incident, 2026-11-10 (PR #76).** The first global install of the hook
+(09:46) upgraded format-1 cookbooks on contact and then blocked commits and turn
+ends until the rewrite was committed; in adhsdk that was 7531 files. Two
+adkitchen sessions committed the rewrites to get unblocked. The hook was
+uninstalled from `~/.claude/settings.json` and `~/.claude/skills/cookr/hooks/`,
+and both commits were reverted on `adkitchen/browser-plugins` and
+`adkitchen/browser-additions` (adhsdk reverts plus submodule-pointer commits).
+PR #76 makes the design what it was meant to be: the hook only reminds (exit 0
+everywhere, no Stop entry, no `skills sync`, no writes), and only an explicit
+`cookr upgrade` converts a cookbook. The hook is not reinstalled; that needs
+Mike's OK.
 
 **Still open:**
 

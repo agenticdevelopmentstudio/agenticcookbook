@@ -45,11 +45,12 @@ in `cookr status` and `cookr inventory`, named inside its root's `recipes`
 group. A "tier" or group is any directory of the cookbook
 (`--tier ai-plugin-kit/chat`).
 
-A cookbook still on format 1 or the legacy layout upgrades on contact (any
-cookr command, and the hook) or with `cookr upgrade [--dry-run]`; commit the
-upgrade before other work. The upgrade needs a clean work tree: commit your
-work first (a WIP commit is fine; the commit hook lets that commit through),
-then rerun. A format-2 `.cookr.json` is kept whole (its
+A cookbook still on format 1 or the legacy layout is converted only by
+`cookr upgrade [--dry-run]`, and only when you choose to run it while working on
+that repo. No other command and not the hook ever converts it; they say on
+stderr that the upgrade is available and carry on. The upgrade rewrites many
+files and needs a clean work tree: look at `--dry-run` first, and commit the
+result on its own. A format-2 `.cookr.json` is kept whole (its
 `cookbook` dir, roots, dependencies and ignore); one whose `cookbook` names a
 directory outside the repo, or one holding no cookbook, is refused (exit 2),
 never answered with a new cookbook.
@@ -92,11 +93,12 @@ cwd-relative path.
 ## Working in a cookr repo
 
 A repo with `.cookr.json` is recipes-first. The cookr hook (installed by
-`skills/cookr/setup/install`) reminds you once per session, runs
-`cookr skills sync`, and on every commit and at the end of a turn runs
-`cookr check`; any finding blocks with a list of recipe work to do by rdid.
-Do that work and carry on; never stop to ask Mike about it. `CC_ALLOW_COOKR=1`
-in the command skips the check and is for Mike's use only.
+`skills/cookr/setup/install`) only tells you to pay attention: it reminds you
+once per session (and says when the repo is still format 1), and on a commit
+runs `cookr check` and hands you any recipe work it finds, by rdid, as advice.
+It never blocks, never writes a file and never converts anything. What to
+change and whether to commit it is your call while you work on the files.
+`CC_ALLOW_COOKR=1` in the commit command quiets the advice.
 
 1. During planning, run `cookr scope` on the planned files and give Mike the
    minimum and the siblings; record his answer in the plan.

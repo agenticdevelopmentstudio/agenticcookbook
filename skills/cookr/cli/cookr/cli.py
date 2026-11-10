@@ -6,7 +6,8 @@ Usage:
 `-p` names the target repo root (the directory holding `.cookr.json` or
 `cookbook/cookbook.json`), or the cookbook directory itself. Without it, cookr
 walks up from cwd to the first directory that holds one (core/repoconfig.py).
-A repo on an older format leaves the config unread with a `cookr upgrade` hint.
+A repo on an older format leaves the config unread with a `cookr upgrade` hint;
+cookr never upgrades it unasked.
 The maintenance modules (update, validate, lint) also accept a cookbook with no
 `cookbook.json`, such as agenticcookbook's own (core/roots.py).
 
@@ -20,11 +21,10 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from rich.markup import escape
 
 from cookr.core import cliapp, roots
 from cookr.core.repo import repo_top
-from cookr.core.upgrade import DirtyTree, UpgradeError, needs_upgrade, upgrade
+from cookr.core.upgrade import needs_upgrade
 from cookr.core.errors import CookbookError
 from cookr.core.ui import UI
 
@@ -71,79 +71,19 @@ def _check_path(explicit: Optional[Path]) -> None:
     _find(Path.cwd(), explicit)
 
 
-def _upgrade_paths(repo: Path, reports) -> list[str]:
-    """The pathspec that stages every change the upgrade made, and nothing that
-    does not exist in the tree or the index: each cookbook dir, the legacy recipes
-    dir it emptied, and any other file it wrote or removed (`.cookr.json`)."""
-    out: list[str] = []
-    for r in reports:
-        dirs = [d for d in (r.cookbook_dir, r.legacy_dir) if d is not None]
-        for f in r.files:
-            owner = next((d for d in dirs if f == d or d in f.parents), f)
-            rel = owner.relative_to(repo).as_posix()
-            if rel not in out:
-                out.append(rel)
-    return out
-
-
-_DIRTY_STEPS = ("commit all your work now (stage every change; a WIP commit is fine), then "
-                "run `cookr upgrade`, commit its changes on their own, and continue")
-
-
-def _upgrade_on_contact(explicit: Optional[Path], ui: UI, hook: Optional[str] = None) -> None:
-    """Upgrade a format-1 repo found from `-p` or cwd, then end the run with 3 so
-    the upgrade is committed on its own. Same discovery as `cookr upgrade`. A repo
-    that cannot be upgraded ends the run with 1, never runs the command against
-    format 1. Outside any cookbook this does nothing.
-
-    `hook` is "commit" for `check --staged --hook`, "stop" for the branch check;
-    every message then goes to stderr. An upgrade that ran blocks (2) with "cookr:
-    commit the cookr upgrade first". A dirty tree, which the upgrade refuses, does
-    not block the commit (1, a warning): that commit is how the agent sets its work
-    aside, and the message says the steps. On stop it blocks (2) with the same
-    steps. Any other refusal blocks (2) with why. Nothing here ever stashes or
-    commits the agent's work."""
+def _format1_notice(explicit: Optional[Path], hook: bool) -> None:
+    """Say, on stderr, that a format-1 repo found from `-p` or cwd can be upgraded.
+    Never writes anything: converting a cookbook rewrites many files, so it runs
+    only when the agent chooses to run `cookr upgrade` and then commits it itself.
+    The command carries on against the repo as it is. Silent in the hook's check,
+    whose output is the hook's own message, and outside any cookbook."""
+    if hook:
+        return
     start = (explicit or Path.cwd()).expanduser().resolve()
     repo = repo_top(start) or start
-    if not needs_upgrade(repo):
-        return
-    try:
-        reports = upgrade(repo)
-    except DirtyTree as e:
-        if hook:
-            paths = "\n  ".join(e.paths)
-            let_through = ("This commit is not checked: " if hook == "commit"
-                           else "The WIP commit is let through: ")
-            sys.stderr.write(f"cookr: the cookbook needs the format 2 upgrade, which needs a "
-                             f"clean work tree. {let_through}{_DIRTY_STEPS}. Uncommitted:\n"
-                             f"  {paths}\n")
-            raise cliapp.ExitWith(1 if hook == "commit" else 2)
-        raise cliapp.ExitWith(1, f"cookr: this cookbook needs the format 2 upgrade, which "
-                                 f"cannot run yet: {e}")
-    except UpgradeError as e:
-        if hook:
-            sys.stderr.write(f"cookr: the cookbook needs the format 2 upgrade, which "
-                             f"cannot run yet: {e}\n")
-            raise cliapp.ExitWith(2)
-        raise cliapp.ExitWith(1, f"cookr: this cookbook needs the format 2 upgrade, which "
-                                 f"cannot run yet: {e}")
-    if hook:
-        sys.stderr.write("cookr: commit the cookr upgrade first\n")
-        raise cliapp.ExitWith(2)
-    for r in reports:
-        ui.table(["", ""], [
-            ["cookbook", escape(f"{r.cookbook_dir.relative_to(repo).as_posix()} ({r.identity.rdid})")],
-            ["artifacts", str(r.artifacts)],
-            ["links rewritten", str(r.links_rewritten)],
-            ["files changed", str(len(r.files))],
-        ])
-        for item in r.needs_review:
-            ui.warn(escape(item))
-    cookbook = ", ".join(r.cookbook_dir.relative_to(repo).as_posix() for r in reports)
-    paths = " ".join(_upgrade_paths(repo, reports))
-    raise cliapp.ExitWith(3, f"cookr upgraded {cookbook}: commit the upgrade on its own "
-                             f"(`git add -A {paths} && git commit -m "
-                             f"'chore: cookr format 2 upgrade'`), then rerun")
+    if needs_upgrade(repo):
+        sys.stderr.write("cookr: this cookbook is format 1. `cookr upgrade` converts it to "
+                         "format 2 when you choose to; review and commit that on its own.\n")
 
 
 def _hook_run(args) -> bool:
@@ -152,19 +92,12 @@ def _hook_run(args) -> bool:
     return getattr(module, "NAME", None) == "check" and bool(getattr(args, "hook", False))
 
 
-def _hook_mode(args) -> Optional[str]:
-    """"commit" for the hook's staged check, "stop" for its branch check, else None."""
-    if not _hook_run(args):
-        return None
-    return "commit" if getattr(args, "staged", False) else "stop"
-
-
 def _context(explicit: Optional[Path], ui: UI, module: str = "", args=None) -> CookrContext:
     """A config cookr cannot read (bad JSON, an older format) leaves `config`
     None and says why in `config_error`: only the modules that need the config
     refuse, never validate, lint, compile or install."""
     if module != "upgrade":
-        _upgrade_on_contact(explicit, ui, hook=_hook_mode(args))
+        _format1_notice(explicit, hook=_hook_run(args))
     if getattr(getattr(args, "_module", None), "CREATES_REPO", False):
         # `adopt` makes the repo -p names, so -p need only be a directory.
         target = (explicit or Path.cwd()).expanduser().resolve()

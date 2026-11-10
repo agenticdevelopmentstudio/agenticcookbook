@@ -3,8 +3,9 @@
 `--staged` checks the staged set, `--branch` (the default) the branch diff from
 its merge base plus the working tree. With no base branch it checks the
 uncommitted changes and skips the version-bump rule. `--hook` is what the Claude
-Code hook runs: findings print as one message and exit 2; a clean check is
-silent, exit 0. Without `--hook` it prints a table and exits 1 on findings.
+Code hook runs: findings print as one message on stderr and exit 2, which the
+hook passes to the agent as advice (it never blocks); a clean check is silent,
+exit 0. Without `--hook` it prints a table and exits 1 on findings.
 """
 
 from __future__ import annotations
@@ -27,8 +28,8 @@ NAME = "check"
 HELP = "List the recipe work a change set still owes (the check behind the cookr hook)."
 
 CAP = 15
-HEADER = "cookr: recipe work to do before this lands:"
-PROCEDURE = ("Do this work now and continue; do not stop to ask. "
+HEADER = "cookr: recipe work this change may owe:"
+PROCEDURE = ("Whether and when to do it is your call while you work on these files. "
              "(cookr scope shows the full picture.)")
 
 
@@ -38,7 +39,7 @@ def register(parser: argparse.ArgumentParser) -> None:
     mode.add_argument("--branch", action="store_true",
                       help="Check the branch diff plus the working tree (the default).")
     parser.add_argument("--hook", action="store_true",
-                        help="Hook output: one message, exit 2 on findings, silent when clean.")
+                        help="Hook output: one message on stderr, exit 2 on findings, silent when clean.")
     parser.add_argument("--json", action="store_true", help="Emit the findings as JSON.")
 
 

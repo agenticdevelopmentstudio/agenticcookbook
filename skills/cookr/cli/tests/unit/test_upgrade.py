@@ -971,10 +971,9 @@ def test_upgrade_refuses_a_config_naming_no_cookbook(git_tmp_path, name, capsys)
     with pytest.raises(CookbookError) as e:
         up.upgrade(repo)
     assert "`cookbook`" in str(e.value)
-    assert main(["-p", str(repo), "validate"]) == 2  # upgrade-on-contact refuses too
-    assert "`cookbook`" in " ".join(capsys.readouterr().out.split())
+    # Other commands never upgrade: they refuse the bad config and write nothing.
+    assert main(["-p", str(repo), "validate"]) == 2
     assert main(["-p", str(repo), "check", "--staged", "--hook"]) == 2  # the hook's run
-    assert "`cookbook`" in " ".join(capsys.readouterr().err.split())
     assert (repo / ".cookr.json").read_text() == before
     assert not (repo / "nope").exists() and not (repo.parent / "outside").exists()
     assert _status(repo) == ""

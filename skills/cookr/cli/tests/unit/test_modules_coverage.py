@@ -85,8 +85,6 @@ def test_missing_row_falls_back_to_the_codes_arrangement_when_unclaimed(mini_rep
         assert "missing" in line
 
 
-# Opts out of upgrade-on-contact: an unparseable artifact.json cannot be upgraded, only reported.
-@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_unreadable_artifact_is_a_clean_exit_2(mini_repo, capsys):
     extra = mini_repo / "cookbook" / "extra"
     extra.mkdir()

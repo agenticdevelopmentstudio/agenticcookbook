@@ -39,8 +39,6 @@ def test_create_refuses_a_different_rdid(tmp_path, monkeypatch, capsys):
     assert (tmp_path / "cookbook" / "cookbook.json").read_text() == before
 
 
-# Opts out of upgrade-on-contact: create must itself refuse an existing format-1 cookbook and point at `cookr upgrade`, which contact would otherwise run first.
-@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_create_refuses_a_format_1_cookbook_and_points_at_upgrade(tmp_path, monkeypatch, capsys):
     monkeypatch.chdir(tmp_path)
     (tmp_path / "cookbook").mkdir()

@@ -68,8 +68,6 @@ def test_a_library_cookbook_with_no_roots_inventories_nothing(tmp_path, monkeypa
     assert "0 source file(s)" in capsys.readouterr().out
 
 
-# Opts out of upgrade-on-contact: a format-1 cookbook.json must reach the module and be refused with exit 2 (ConfigError), which contact would otherwise pre-empt.
-@pytest.mark.usefixtures("legacy_no_upgrade")
 def test_a_format_1_cookbook_json_stops_the_modules_that_need_a_config(tmp_path, monkeypatch,
                                                                        capsys):
     book = tmp_path / "cookbook"
