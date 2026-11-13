@@ -1,8 +1,10 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-11-10. *Derives from:* `226f310` (PR #64, agenticcookbook),
+*Updated:* 2026-11-13. *Derives from:* `226f310` (PR #64, agenticcookbook),
 `2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`),
-PR #72 (`dd2e4670`, `44c510bf`), and PR #74 (`689ab01`, `e75c550`).
+PR #72 (`dd2e4670`, `44c510bf`), PR #74 (`689ab01`, `e75c550`), PR #78
+(`48d460aa`, `40c02a7f`, `63522f3f`), `52df843b` (cookr 0.13.1), and
+skill-router `a7a9177` (0.6.0), `262439a` (0.7.0), `cb1207a`.
 
 Read this first to resume the work. The design lives in the
 [plan](../superpowers/plans/2026-10-03-compiled-artifacts-and-skills.md) and the
@@ -10,6 +12,57 @@ Read this first to resume the work. The design lives in the
 format 2 and recipes-first adoption live in the
 [adoption design](../superpowers/specs/2026-11-09-cookr-adoption-design.md) and its
 [plan](../superpowers/plans/2026-11-09-cookr-adoption.md).
+
+## Concise compiled skills and the recompile (PR #78, 2026-11-13)
+
+PR #78 landed as three commits on main:
+
+- `48d460aa` repaired 23 artifact summaries that a line wrap had cut off.
+- `40c02a7f`, cookr skill 0.13.0: compiled skills follow **progressive
+  disclosure**. SKILL.md keeps what doing the task needs (rules, edge cases,
+  accessibility). Each type template's `refer` list moves rationale into
+  `<name>/references/<file>.md`, and SKILL.md ends with a `## More` list that
+  links each file with a line saying when to read it. History is dropped.
+  Skills carry the artifact's platforms as `metadata.platforms`, and
+  descriptions lose their bold markers. A `cookr skills build` command that
+  generated rule-skill plugins was built and dropped before merge, because
+  skill-router already routes skills. The unused `cookr/core/rules.py` and its
+  test were deleted.
+- `63522f3f`: `cookbook/index/triggers.yaml` is deterministic, so it is now
+  committed instead of gitignored. Without it on a fresh checkout, `cookr
+  validate` failed.
+
+skill-router, on its main: 0.6.0 (`a7a9177`) filters routes on
+`metadata.platforms`. 0.7.0 (`262439a`) serves a skill's `references/` beside
+its SKILL.md. `cb1207a` fixed the frontmatter parser so a nested mapping is
+read as a mapping, which lets a malformed `platforms` be rejected (259 tests
+pass). `./install` put 0.7.0 and its hooks in place for Claude and Codex.
+
+`52df843b`, cookr 0.13.1: an explicit `--library cookbook` is honoured. The
+argument parser had turned the literal `cookbook` into None, so `cookr
+install` fell back to the cookbook's rdid (`adc`), and the unprefixed set
+could not be rebuilt. The CLI still reports `cookr 0.10.0`, its own version.
+
+**Recompiled and registered on 2026-11-13** (cookr installed from `52df843b`):
+
+| Set | Skills | With references | Median lines | Max | Over 500 |
+|---|---|---|---|---|---|
+| `adc` (scoped to adhsdk) | 486 | 98 | 51 | 255 | 0 |
+| `cookbook` (unprefixed, global) | 486 | 98 | 51 | 255 | 0 |
+| `adhsdk` | 699 | 699 | 139 | 856 | 12 |
+
+`adc` and `cookbook` are the same 486 artifacts twice, once prefixed and
+scoped to adhsdk and once unprefixed and routed everywhere.
+
+**Skills over 500 lines.** Compiling only warns about them (`LINES_MAX` in
+`cookr/core/skill.py`). On 2026-11-13 the 12 routed ones were all adhsdk
+artifacts, and their length is core content rather than rationale: Behavioral
+Requirements of 340 to 520 lines, plus a 421-line Overview in
+hierarchical-topic-detail (856). Shrinking them means splitting those adhsdk
+artifacts, not changing the compiler. Nine skills installed directly in
+`~/.claude/skills` are also over 500 lines (slack-bot, humanize, webinitor,
+feishu-lark, ship, discord-bot, telegram-bot, release, extract-to-new-repo),
+plus three in `~/.codex/skills`. None of them comes from a cookbook.
 
 ## Format 2 and recipes-first adoption (PR #74, 2026-11-10)
 
@@ -55,12 +108,8 @@ everywhere, no Stop entry, no `skills sync`, no writes), and only an explicit
 `cookr upgrade` converts a cookbook. On Mike's OK the fixed cookr and hook were
 installed the same day (see Installed, below).
 
-**Still open:**
-
-- **The installed skill set** (`cookr -p <main checkout> install --replace`)
-  and skill-router `./install` have not been re-run since format 2, so the
-  routed `cookbook` set described below is still compiled from the format-1
-  checkout. Each needs Mike's OK.
+**Closed 2026-11-13:** the installed skill sets and skill-router were
+re-run since format 2 (see the recompile above).
 
 pipeline#4 merged as `70e80366` (its subject on main reads `## Summary`: the PR
 body was passed as the merge summary, and main refuses force-pushes, so it
@@ -101,7 +150,7 @@ cookr (`skills/cookr/`, cookr 0.10.0, cookr skill 0.11.0) is the compiler:
     (MUST/SHOULD/MAY), or records `informational` in its artifact.json.
   - Compiling warns (does not fail) on a SKILL.md over 500 lines
     (`LINES_MAX` in `cookr/core/skill.py`).
-  These came from the abandoned `skill-based-cookbook` branch; the corpus was
+  These came from an earlier `skill-based-cookbook` branch; the corpus was
   fixed to pass them in the same PR.
 - `organize` — writes a library manifest whose `structure` is
   `{"kind": "library"}`, which `cookbook.schema.json` allows.
@@ -145,10 +194,10 @@ zero failing). In particular:
 
 - `./install --cli-only` of cookr: `~/.local/bin/cookr`. Its references are
   compiled from the source folders.
-- Live `cookr -p <main checkout> install --replace`: the set `cookbook`
-  (`~/.cookr/sets/cookbook`, 486 skills) is compiled from this repo's main
-  checkout and registered with skill-router 0.4.0 for Claude and Codex. The
-  receipt is `~/.cookr/install.json`.
+- The routed sets `adc`, `adhsdk` and `cookbook` (`~/.cookr/sets/<library>`)
+  were recompiled on 2026-11-13 and registered with skill-router 0.7.0 for
+  Claude and Codex. The `cookbook` set needs `--library cookbook`, because this
+  cookbook's rdid is `adc`. The receipt is `~/.cookr/install.json`.
 - The always-on `general-principles` skill for Claude and Codex was edited by
   hand after its 2026-10-04 install, so it was not overwritten. Its receipt
   still names the old `adh/agenticcookbook` checkout, so `install --check`
@@ -161,8 +210,9 @@ zero failing). In particular:
   prompt such as "write a pytest test" gets no hint). This repo has no
   `.skill-router.json`, so enforcement is `nudge`: nothing is gated.
 - Routed lookups serve the installed set compiled from the main checkout, not a
-  worktree's edits; re-run `cookr -p <main checkout> install --replace` after
-  artifact changes merge.
+  worktree's edits. After artifact changes merge, re-run
+  `cookr install --library cookbook --target routed --replace <main>/cookbook`
+  and the same without `--library` for `adc`.
 
 ## Verified
 
