@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.12.0"
+version: "0.13.0"
 description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to scope a change to the recipes it touches, to check what recipe work a change still owes, to record which code implements a recipe and confirm it, to rename or look up a recipe's id, to upgrade a cookbook to format 2, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
 argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.12.0
+# cookr v0.13.0
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill, including recipe
@@ -212,7 +212,11 @@ A model tunes the cookbook for itself. Nobody can tune for a model they are not.
   - ingredients and recipes: `components/<library>/...`, plus a platform branch.
   `routes` in `artifact.json` overrides them.
 - **Text:** the type's template in `cookr/data/templates/skill/` decides which
-  sections stay. Rationale and history are left out. Templates are read from
+  sections stay. History is left out. SKILL.md keeps only what doing the task
+  needs: the template's `refer` list moves rationale, test vectors, platform
+  notes and cross-cutting checks into `<name>/references/<file>.md`, and SKILL.md
+  ends with a `## More` list linking each file with a line saying when to read it
+  (progressive disclosure, as skill-router 0.7.0 expects). Templates are read from
   `$COOKR_TEMPLATES` when set, else from the cookbook's own repo
   (`skills/cookr/cli/cookr/data/templates/`) when it has one, else from the
   installed cookr.
@@ -227,6 +231,10 @@ in `$COOKR_HOME/sets/<cookbook-rdid>`, registered with skill-router under that
 cookbook's rdid and scoped to the repos that use it. `cookr skills sync [-p REPO]`
 compiles and registers whatever is stale or missing; the hook runs it at the
 start of each session, so you rarely run it yourself.
+
+A compiled skill's description is the artifact's summary as plain text (bold
+markers dropped), and when the artifact names platforms they go under
+`metadata.platforms`, which skill-router's `--platform` filters on.
 
 A recompile prunes only what the receipt lists. `--check` exits 1 when anything
 is stale or missing. The set fails on a duplicate name, a rendering a host would

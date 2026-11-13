@@ -28,6 +28,18 @@ of a drill-down is a list a model can read.
 frontmatter lists the headings to `omit`, and their text wraps `{{body}}`
 (`{{rdid}}` and `{{version}}` are filled too).
 
+**Progressive disclosure.** SKILL.md holds only what doing the task needs. A
+template's `refer` list moves the other sections (rationale, test vectors,
+platform notes, cross-cutting checks) into `<name>/references/<file>.md`, and
+SKILL.md ends with a `## More` list linking each file with a line saying when
+to read it, so a model opens one only when the task calls for it:
+
+    refer:
+      - file: rationale
+        title: Rationale
+        when: why it is built this way; read before changing a requirement
+        sections: [Design Decisions]
+
 **The index** (`index.json`) supplies what a format-2 folder does not hold: the
 artifact's rdid (`metadata.source`), its Reference Implementations table, the
 rdids its `depends-on` links name, and the label of every in-text
@@ -67,6 +79,7 @@ SOURCE_TEMPLATES = Path("skills") / "cookr" / "cli" / "cookr" / "data" / "templa
 TEMPLATES_ENV = "COOKR_TEMPLATES"
 SKILL_FILE = "SKILL.md"
 VARIANTS_DIR = "targets"
+REFERENCES_DIR = "references"
 VARIANT_SUFFIX = ".SKILL.md"    # never <target>.md: claude.md is CLAUDE.md case-insensitively
 RECEIPT = "skills.json"
 TARGETS_FILE = "targets.json"
@@ -85,6 +98,8 @@ _LIBRARY = re.compile(r"[a-z0-9]+(?:[-.][a-z0-9]+)*")   # a cookbook rdid has do
 
 # Hosts that forbid `<` and `>` in a description get the look-alike.
 _ANGLE = (("<=", "≤"), (">=", "≥"), ("<", "‹"), (">", "›"))
+# A description is plain text in every listing: `**bold**` and `__bold__` lose their markers.
+_EMPHASIS = re.compile(r"(\*\*|__)(.+?)\1")
 
 
 class SkillError(ArtifactError):
@@ -92,9 +107,23 @@ class SkillError(ArtifactError):
 
 
 @dataclass(frozen=True)
+class Refer:
+    """Sections a template moves out of SKILL.md into one linked file."""
+    file: str                   # references/<file>.md
+    title: str
+    when: str                   # the line SKILL.md shows beside the link
+    sections: frozenset[str]
+
+
+@dataclass(frozen=True)
 class Template:
     omit: frozenset[str]
     text: str
+    refer: tuple[Refer, ...] = ()
+
+    def refer_for(self, heading: Optional[str]) -> Optional[Refer]:
+        h = (heading or "").strip()
+        return next((r for r in self.refer if h in r.sections), None)
 
 
 @dataclass(frozen=True)
@@ -104,6 +133,7 @@ class Skill:
     text: str                   # the shared SKILL.md
     folder: Path
     type: str
+    references: dict[str, str] = field(default_factory=dict)   # file name under references/ → text
 
 
 def templates_root(cookbook_root: Optional[Path] = None) -> Path:
@@ -242,7 +272,28 @@ def template(kind: str, root: Path = TEMPLATES) -> Template:
     except OSError as e:
         raise SkillError(f"no skill template for {kind!r}: {e}") from e
     meta = yaml.safe_load("".join(fm or [])) or {}
-    return Template(omit=frozenset(meta.get("omit") or ()), text=text)
+    return Template(omit=frozenset(meta.get("omit") or ()), text=text,
+                    refer=_refers(meta.get("refer") or [], path))
+
+
+_REFER_FILE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+
+
+def _refers(items: list, path: Path) -> tuple[Refer, ...]:
+    out, seen = [], set()
+    for item in items:
+        if not isinstance(item, dict) or not all(item.get(k) for k in ("file", "title", "when", "sections")):
+            raise SkillError(f"{path}: each `refer` entry needs file, title, when and sections")
+        file = str(item["file"])
+        if not _REFER_FILE.match(file) or file in seen:
+            raise SkillError(f"{path}: bad or repeated refer file {file!r}")
+        seen.add(file)
+        out.append(Refer(file, str(item["title"]), str(item["when"]),
+                         frozenset(str(s) for s in item["sections"])))
+    taken = [s for r in out for s in r.sections]
+    if len(taken) != len(set(taken)):
+        raise SkillError(f"{path}: a section is referred to more than one file")
+    return tuple(out)
 
 
 def template_hosts(kind: str, root: Path = TEMPLATES) -> Path:
@@ -251,6 +302,7 @@ def template_hosts(kind: str, root: Path = TEMPLATES) -> Path:
 
 def description(artifact: Artifact) -> str:
     text = " ".join(str(artifact.meta.get("summary") or artifact.meta.get("title") or "").split())
+    text = _EMPHASIS.sub(r"\2", text)
     triggers = artifact.meta.get("triggers") or []
     if triggers:
         text = f"{text.rstrip('.')}. Use when: {', '.join(map(str, triggers))}."
@@ -268,14 +320,18 @@ def _dq(s: str) -> str:
 def frontmatter(name: str, artifact: Artifact, routes: Iterable[str], rdid: str = "") -> str:
     """Only `name` and `description` at the top, every cookr key under
     `metadata`, so the one rendering loads on every host. `source` is the
-    artifact's rdid."""
+    artifact's rdid; `platforms`, written only when the artifact names some,
+    is what skill-router's `--platform` filters on."""
     meta = artifact.meta
     lines = ["---", f"name: {name}", f"description: {_dq(description(artifact))}", "metadata:",
              f"  version: {_dq(str(meta.get('version', '')))}",
              f"  id: {_dq(str(meta.get('id', '')))}",
              f"  source: {_dq(rdid)}",
-             f"  routes: {_dq('; '.join(routes))}", "---", ""]
-    return "\n".join(lines)
+             f"  routes: {_dq('; '.join(routes))}"]
+    platforms = [str(p) for p in meta.get("platforms") or []]
+    if platforms:
+        lines.append(f"  platforms: {_dq(', '.join(platforms))}")
+    return "\n".join(lines + ["---", ""])
 
 
 _PLACEHOLDER = re.compile(r"\{\{(\w+)\}\}")
@@ -327,19 +383,44 @@ def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPL
     ri = implementations_part(entry.implementations) if entry else None
     if ri is not None and RI_SECTION not in t.omit:
         artifact = with_part(artifact, ri)
-    body = "".join(p.text if p.heading is None else f"## {p.heading}\n{p.text}"
-                   for p in artifact.parts if (p.heading or "").strip() not in t.omit)
-    if not body.endswith("\n\n"):
-        body = body.rstrip("\n") + "\n\n"
-    labels = {link: label for link in (lk for _, lk in in_text_links(body))
-              if (label := _label(index, link))}
-    body = relabel(body, labels) + _depends(artifact, index)
-    text = fill(t.text.replace("{{body}}\n", "{{body}}"),
-                {"body": body, "rdid": rdid, "version": str(artifact.meta.get("version", ""))})
+    version = str(artifact.meta.get("version", ""))
     name = skill_name(type_dir, rel, library)
+    kept = [p for p in artifact.parts if (p.heading or "").strip() not in t.omit]
+    body = _join(p for p in kept if t.refer_for(p.heading) is None)
+    referred = {r: _join(p for p in kept if t.refer_for(p.heading) is r) for r in t.refer}
+    referred = {r: text for r, text in referred.items() if text.strip()}
+    labels = {link: label for text in (body, *referred.values())
+              for link in (lk for _, lk in in_text_links(text)) if (label := _label(index, link))}
+    body = relabel(body, labels) + _depends(artifact, index) + _more(referred)
+    references = {f"{r.file}.md": _reference(r, relabel(text, labels), artifact, name, rdid, version)
+                  for r, text in referred.items()}
+    text = fill(t.text.replace("{{body}}\n", "{{body}}"),
+                {"body": body, "rdid": rdid, "version": version})
     routes = derive_routes(artifact, type_dir, rel, library)
     return Skill(name=name, routes=routes, text=frontmatter(name, artifact, routes, rdid) + text,
-                 folder=folder, type=kind)
+                 folder=folder, type=kind, references=references)
+
+
+def _join(parts: Iterable) -> str:
+    """Parts as markdown, `## heading` above each headed one, ending in a blank line."""
+    text = "".join(p.text if p.heading is None else f"## {p.heading}\n{p.text}" for p in parts)
+    if not text.strip():
+        return ""
+    return text if text.endswith("\n\n") else text.rstrip("\n") + "\n\n"
+
+
+def _more(referred: dict[Refer, str]) -> str:
+    """SKILL.md's closing list of the files it links, each with when to read it."""
+    if not referred:
+        return ""
+    lines = [f"- [{r.title}]({REFERENCES_DIR}/{r.file}.md): {r.when.rstrip('.')}." for r in referred]
+    return ("## More\n\nRead one of these only when its line applies to what you are doing:\n\n"
+            + "\n".join(lines) + "\n\n")
+
+
+def _reference(r: Refer, text: str, artifact: Artifact, name: str, rdid: str, version: str) -> str:
+    title = artifact.meta.get("title") or name
+    return f"# {title}: {r.title}\n\nPart of the `{name}` skill, from `{rdid}` v{version}.\n\n{text.rstrip()}\n"
 
 
 def target_chains(hosts: Optional[dict] = None) -> dict[str, tuple[str, ...]]:
@@ -403,6 +484,7 @@ class Built:
 def build(skill: Skill, templates: Path = TEMPLATES, hosts: Optional[dict] = None) -> Built:
     vs, problems = variants(skill, templates, hosts)
     files = {f"{skill.name}/{SKILL_FILE}": skill.text}
+    files.update({f"{skill.name}/{REFERENCES_DIR}/{f}": text for f, text in skill.references.items()})
     files.update({f"{skill.name}/{VARIANTS_DIR}/{t}{VARIANT_SUFFIX}": text for t, text in vs.items()})
     return Built(skill, files, problems)
 
@@ -426,7 +508,7 @@ def receipt(built: list[Built], library: Optional[str]) -> dict:
 
 def remove_stale(out: Path, old: dict[str, dict], built: list[Built]) -> list[str]:
     """Delete what the last compile wrote and this one does not: whole skills
-    that are gone, and variant files no longer needed. Nothing the receipt
+    that are gone, and variant or reference files no longer needed. Nothing the receipt
     does not list is touched."""
     keep = {f for b in built for f in b.files}
     removed = []
@@ -435,7 +517,7 @@ def remove_stale(out: Path, old: dict[str, dict], built: list[Built]) -> list[st
             if rel not in keep and (out / rel).is_file():
                 (out / rel).unlink()
                 removed.append(rel)
-        for d in (out / name / VARIANTS_DIR, out / name):
+        for d in (out / name / VARIANTS_DIR, out / name / REFERENCES_DIR, out / name):
             if d.is_dir() and not any(d.iterdir()):
                 shutil.rmtree(d)
     return removed
@@ -545,5 +627,6 @@ def compile_set(folders: list[Path], out: Path, *, library: Optional[str] = None
 
 def too_long(built: Iterable[Built], limit: int = LINES_MAX) -> dict[str, int]:
     """{rendering's path in the out dir: lines} for each one over `limit`."""
-    lines = {rel: text.count("\n") for b in built for rel, text in b.files.items()}
+    lines = {rel: text.count("\n") for b in built for rel, text in b.files.items()
+             if f"/{REFERENCES_DIR}/" not in rel}   # a reference loads only when asked for
     return {rel: n for rel, n in sorted(lines.items()) if n > limit}

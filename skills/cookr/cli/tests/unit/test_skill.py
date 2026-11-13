@@ -19,8 +19,9 @@ BOOK_ID = "b0000000-0000-4000-8000-000000000000"
 
 def test_too_long_lists_each_rendering_over_the_line_limit():
     s = skill.Skill(name="a", routes=(), text="", folder=Path("a"), type="recipe")
-    b = skill.Built(s, {"a/SKILL.md": "x\n" * 3, "a/targets/claude.SKILL.md": "x\n" * 5}, [])
-    assert skill.too_long([b], limit=4) == {"a/targets/claude.SKILL.md": 5}
+    b = skill.Built(s, {"a/SKILL.md": "x\n" * 3, "a/targets/claude.SKILL.md": "x\n" * 5,
+                        "a/references/testing.md": "x\n" * 9}, [])
+    assert skill.too_long([b], limit=4) == {"a/targets/claude.SKILL.md": 5}   # references load on demand
     assert skill.too_long([b], limit=5) == {}
 
 
@@ -144,11 +145,37 @@ def test_routes_in_artifact_json_override_and_survive_a_doc_edit(tmp_path):
     assert load_folder(folder).routes == ["testing/flaky"]
 
 
-def test_the_template_omits_rationale_and_history_and_keeps_requirements(book):
-    text = skill.compose(book / "guidelines/implementing/data/use-wal").text
-    assert "## Rules\n- MUST do it." in text
-    assert "Why this matters" not in text and "Change History" not in text
-    assert text.endswith("_From `book.guideline.implementing.data.use-wal` v1.2.0._\n")
+def test_the_template_keeps_requirements_drops_history_and_refers_rationale(book):
+    s = skill.compose(book / "guidelines/implementing/data/use-wal")
+    assert "## Rules\n- MUST do it." in s.text
+    assert "Why this matters" not in s.text and "Change History" not in s.text
+    assert s.text.endswith("_From `book.guideline.implementing.data.use-wal` v1.2.0._\n")
+
+
+def test_referred_sections_move_to_a_linked_file_named_with_when_to_read_it(book):
+    s = skill.compose(book / "guidelines/implementing/data/use-wal")
+    assert ("## More\n\nRead one of these only when its line applies to what you are doing:\n\n"
+            "- [Rationale](references/rationale.md): why this guideline exists; read when you need "
+            "to justify it or weigh an exception.\n\n_From ") in s.text
+    assert s.references == {"rationale.md": (
+        "# T: Rationale\n\nPart of the `implementing-data-use-wal` skill, from "
+        "`book.guideline.implementing.data.use-wal` v1.2.0.\n\n## Why this matters\nBecause.\n")}
+
+
+def test_a_skill_with_nothing_to_refer_has_no_more_section_and_no_references(book):
+    s = skill.compose(book / "principles/simplicity")
+    assert "## More" not in s.text and s.references == {}
+
+
+def test_a_section_referred_to_two_files_is_a_template_error(tmp_path):
+    (tmp_path / "principle.md").write_text(
+        "---\nrefer:\n  - {file: a, title: A, when: w, sections: [X]}\n"
+        "  - {file: b, title: B, when: w, sections: [X]}\n---\n{{body}}\n")
+    with pytest.raises(skill.SkillError, match="more than one file"):
+        skill.template("principle", tmp_path)
+    (tmp_path / "recipe.md").write_text("---\nrefer:\n  - {file: a, title: A}\n---\n{{body}}\n")
+    with pytest.raises(skill.SkillError, match="needs file, title, when and sections"):
+        skill.template("recipe", tmp_path)
 
 
 def test_skill_metadata_source_is_rdid(book):
@@ -209,6 +236,22 @@ def test_frontmatter_keeps_cookr_keys_under_metadata_and_loads_everywhere(book):
     assert data["description"] == "Does the thing. Use when: database-operations."
     for h in hosts.manifest().values():
         assert tuning.load_problems(s.text, h) == []
+
+
+def test_platforms_go_under_metadata_only_when_the_artifact_names_some(book):
+    import yaml
+    badge = skill.compose(book / "ingredients/ui/components/badge")
+    data = yaml.safe_load("".join(tuning.split(badge.text)[0]))
+    assert data["metadata"]["platforms"] == "macos, ios"
+    for h in hosts.manifest().values():
+        assert tuning.load_problems(badge.text, h) == []
+    wal = skill.compose(book / "guidelines/implementing/data/use-wal")
+    assert "platforms" not in yaml.safe_load("".join(tuning.split(wal.text)[0]))["metadata"]
+
+
+def test_bold_markers_leave_the_description():
+    a = Artifact(meta={"summary": "**Never trust input.** Validate __everything__ on the server."})
+    assert skill.description(a) == "Never trust input. Validate everything on the server."
 
 
 def test_angle_brackets_leave_the_description():
@@ -275,6 +318,23 @@ def test_compile_set_writes_checks_and_prunes(book, tmp_path):
     rep = skill.compile_set(find_folders([book]), out)
     assert not (out / "principle-simplicity").exists() and (out / "mine.txt").exists()
     assert rep.removed == ["principle-simplicity/SKILL.md"]
+
+
+def test_references_are_written_and_pruned_with_their_section(book, tmp_path):
+    out = tmp_path / "out"
+    skill.compile_set(find_folders([book]), out)
+    ref = out / "implementing-data-use-wal" / "references" / "rationale.md"
+    assert ref.is_file()
+    receipt = json.loads((out / "skills.json").read_text())["skills"]["implementing-data-use-wal"]
+    assert "implementing-data-use-wal/references/rationale.md" in receipt["files"]
+    folder = book / "guidelines/implementing/data/use-wal"
+    a = load_folder(folder)
+    write_folder(Artifact(meta=a.meta, routes=a.routes,
+                          parts=[pt for pt in a.parts if pt.heading != "Why this matters"]), folder)
+    assert skill.compile_set(find_folders([book]), out, write=False).failed
+    skill.compile_set(find_folders([book]), out)
+    assert not ref.parent.exists()
+    assert "## More" not in (out / "implementing-data-use-wal" / "SKILL.md").read_text()
 
 
 def test_a_variant_no_longer_needed_is_removed(book, tmp_path):
