@@ -18,9 +18,6 @@ __pycache__/
 # Playwright MCP
 .playwright-mcp/
 
-# Generated trigger index
-cookbook/index/triggers.yaml
-
 # graphify output (generated)
 graphify-out/
 
