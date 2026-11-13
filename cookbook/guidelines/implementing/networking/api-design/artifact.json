@@ -4,15 +4,15 @@
     "id": "49399746-a81f-4163-8b07-0cfa11d87c2e",
     "title": "API Design",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Use REST with consistent conventions. Follow the platform API guidelines (Microsoft, Google,",
+    "summary": "Use REST with consistent conventions. Follow the platform API guidelines (Microsoft, Google, Zalando) for details — the essentials below are consensus across all three.",
     "platforms": [],
     "tags": [
       "api-design",
@@ -28,7 +28,7 @@
       "new-module"
     ]
   },
-  "synced": "ea5ef3149becbbc4",
+  "synced": "9d035af28ec214d6",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

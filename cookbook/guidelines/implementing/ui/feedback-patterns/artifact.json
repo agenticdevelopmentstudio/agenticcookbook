@@ -4,15 +4,15 @@
     "id": "ca9874ea-07ed-4585-8692-33a29bc6411a",
     "title": "Feedback Patterns",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Every user action should have visible feedback. The weight of the feedback should match",
+    "summary": "Every user action should have visible feedback. The weight of the feedback should match the weight of the action.",
     "platforms": [],
     "tags": [
       "feedback-patterns",
@@ -33,7 +33,7 @@
       "error-handling"
     ]
   },
-  "synced": "bb3359234a43e8aa",
+  "synced": "2dd32a67adcbc3e0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

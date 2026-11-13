@@ -1,0 +1,39 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "497a717f-de29-4baf-b7b8-4487f672d9a8",
+    "title": "Design-Time Data",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "- Use `d:DataContext` and `d:DesignInstance` for XAML designer preview data",
+    "platforms": [
+      "csharp",
+      "windows"
+    ],
+    "tags": [
+      "design-time-data",
+      "platform",
+      "windows"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "d2d2de97bf60688b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

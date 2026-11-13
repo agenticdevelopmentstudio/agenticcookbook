@@ -4,15 +4,15 @@
     "id": "98c5c5c2-5a45-4425-97b7-31932cb6af0c",
     "title": "Iconography",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Icons supplement text — they do not replace it (except for universally understood symbols",
+    "summary": "Icons supplement text — they do not replace it (except for universally understood symbols like play, pause, close, and search).",
     "platforms": [
       "windows"
     ],
@@ -33,7 +33,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "4ba8cc330d193aa6",
+  "synced": "03684fe208c47d6d",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

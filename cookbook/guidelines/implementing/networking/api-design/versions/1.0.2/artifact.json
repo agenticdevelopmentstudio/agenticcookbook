@@ -1,0 +1,36 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "49399746-a81f-4163-8b07-0cfa11d87c2e",
+    "title": "API Design",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use REST with consistent conventions. Follow the platform API guidelines (Microsoft, Google,",
+    "platforms": [],
+    "tags": [
+      "api-design",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "api-integration",
+      "new-module"
+    ]
+  },
+  "synced": "ea5ef3149becbbc4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

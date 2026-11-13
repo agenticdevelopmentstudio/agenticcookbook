@@ -4,15 +4,15 @@
     "id": "9f13dbec-cecb-482b-824b-f7d3e341878a",
     "title": "Animation & Motion",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Motion should be purposeful — guide attention, show spatial relationships, and provide",
+    "summary": "Motion should be purposeful — guide attention, show spatial relationships, and provide feedback. Never animate for decoration.",
     "platforms": [
       "windows"
     ],
@@ -36,7 +36,7 @@
       "accessibility"
     ]
   },
-  "synced": "d8c8bd0ed82c9ccf",
+  "synced": "b6f9d7be63c57a36",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

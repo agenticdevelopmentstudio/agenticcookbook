@@ -4,15 +4,15 @@
     "id": "536c1e46-36f9-4a44-b8f4-c9e4db94cf53",
     "title": "Spacing",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Use a consistent spatial scale based on a **4px base unit** (8px primary grid). All spacing,",
+    "summary": "Use a consistent spatial scale based on a **4px base unit** (8px primary grid). All spacing, padding, and margin values MUST be multiples of 4. This aligns with Apple HIG, Material Design, and Fluent Design.",
     "platforms": [
       "windows"
     ],
@@ -33,7 +33,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "edf3e0383f9c20a9",
+  "synced": "ae397edbd26c4947",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

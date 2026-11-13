@@ -4,15 +4,15 @@
     "id": "192c62b6-dec8-40e9-ae69-588f1c530dc8",
     "title": "Authorization",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "**Server-side authorization is the only real authorization.** Client-side checks (hiding",
+    "summary": "**Server-side authorization is the only real authorization.** Client-side checks (hiding buttons, disabling fields) are UX conveniences — never security controls.",
     "platforms": [
       "typescript",
       "web"
@@ -34,7 +34,7 @@
       "security-review"
     ]
   },
-  "synced": "ffbbed9810dc218a",
+  "synced": "77831a3e9d28b3b0",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

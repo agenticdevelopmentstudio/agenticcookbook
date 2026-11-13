@@ -4,15 +4,15 @@
     "id": "a61bd40e-929a-4a50-a87e-78c78e35e302",
     "title": "Token Handling",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Short-lived (5-15 min). Include only necessary claims — no PII in JWTs",
+    "summary": "Short-lived (5-15 min). Include only necessary claims — no PII in JWTs that transit untrusted parties.",
     "platforms": [
       "kotlin",
       "typescript",
@@ -37,7 +37,7 @@
       "security-review"
     ]
   },
-  "synced": "1c26862857170ed7",
+  "synced": "95e54f3e93230bb7",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

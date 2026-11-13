@@ -4,15 +4,15 @@
     "id": "4428deb0-05a8-4b52-a78f-3dec1e7f90a4",
     "title": "MSIX Packaging",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "- Use the single-project MSIX packaging model",
+    "summary": "Package Windows apps with the single-project MSIX model, declare minimal capabilities, and sign with a trusted certificate.",
     "platforms": [
       "windows"
     ],
@@ -31,7 +31,7 @@
       "pre-pr"
     ]
   },
-  "synced": "c1f75bb93aa99bf2",
+  "synced": "7185ed75e0b03517",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

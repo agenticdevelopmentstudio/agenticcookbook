@@ -4,15 +4,15 @@
     "id": "ccffa426-5556-4bbe-8dd6-b43c8e195f64",
     "title": "Property-Based Testing",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-10",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "When to use: parsers, serializers, data transformers, encoders/decoders, validators — anything",
+    "summary": "When to use: parsers, serializers, data transformers, encoders/decoders, validators — anything where \"for all valid inputs X, property Y holds.\"",
     "platforms": [
       "csharp",
       "kotlin",
@@ -41,7 +41,7 @@
       "writing-tests"
     ]
   },
-  "synced": "2e9f0265cca72f63",
+  "synced": "42274d2219a59593",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

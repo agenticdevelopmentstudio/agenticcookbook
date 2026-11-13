@@ -4,15 +4,15 @@
     "id": "fad53801-59d5-4471-855a-4dc689448d48",
     "title": "Authentication",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Use OAuth 2.0 / OpenID Connect with PKCE for all public clients. The Implicit flow is",
+    "summary": "Use OAuth 2.0 / OpenID Connect with PKCE for all public clients. The Implicit flow is deprecated — OAuth 2.1 removes it entirely.",
     "platforms": [
       "csharp",
       "ios",
@@ -39,7 +39,7 @@
       "security-review"
     ]
   },
-  "synced": "49eb10087a1921dc",
+  "synced": "dd047681f56efdd2",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

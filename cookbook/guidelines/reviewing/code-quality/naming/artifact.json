@@ -4,15 +4,15 @@
     "id": "9e2f6a0b-d074-4ab2-b5f3-19a313bb75cc",
     "title": "Naming",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "- `PascalCase` for types, methods, properties, public fields, constants, namespaces",
+    "summary": "Use .NET's established casing conventions consistently: `PascalCase` for public symbols, `camelCase` for locals, and `_camelCase` for private fields.",
     "platforms": [],
     "languages": [
       "csharp"
@@ -32,7 +32,7 @@
       "new-module"
     ]
   },
-  "synced": "ce8d29a336c69736",
+  "synced": "9e72118ef6291d6b",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

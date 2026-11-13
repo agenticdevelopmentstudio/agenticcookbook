@@ -4,15 +4,15 @@
     "id": "497a717f-de29-4baf-b7b8-4487f672d9a8",
     "title": "Design-Time Data",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "- Use `d:DataContext` and `d:DesignInstance` for XAML designer preview data",
+    "summary": "Wire up design-time data contexts so the XAML designer always shows realistic preview content, not empty surfaces.",
     "platforms": [
       "csharp",
       "windows"
@@ -31,7 +31,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "d2d2de97bf60688b",
+  "synced": "c98d16c8c9f160be",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

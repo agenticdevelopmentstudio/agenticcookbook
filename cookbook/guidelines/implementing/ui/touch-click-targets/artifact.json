@@ -4,15 +4,15 @@
     "id": "73b254b4-c611-434a-a9f4-67c8a7155576",
     "title": "Touch & Click Targets",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Interactive elements MUST be large enough to tap or click accurately. Defer to the platform",
+    "summary": "Interactive elements MUST be large enough to tap or click accurately.",
     "platforms": [
       "ios",
       "kotlin",
@@ -41,7 +41,7 @@
       "accessibility"
     ]
   },
-  "synced": "8a5ba2e3ac6b299b",
+  "synced": "e6632cc6a86e35ee",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

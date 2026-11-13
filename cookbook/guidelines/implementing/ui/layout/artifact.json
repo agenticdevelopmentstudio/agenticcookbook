@@ -4,15 +4,15 @@
     "id": "26c8e7d6-dde3-48d0-bde0-8a71a51a6674",
     "title": "Layout",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-13",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Design for the content, not a fixed screen size. Layouts should adapt gracefully from",
+    "summary": "Design for the content, not a fixed screen size. Layouts should adapt gracefully from compact to expanded contexts.",
     "platforms": [
       "typescript",
       "web",
@@ -36,7 +36,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "e94d5c6def803937",
+  "synced": "c9b7391298c01c76",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}
