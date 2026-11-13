@@ -262,6 +262,19 @@ def test_library_names_are_checked_and_the_default_is_unprefixed(env, monkeypatc
         main(["install", "--library", "MyLib"])
 
 
+def test_an_explicit_default_library_beats_the_cookbook_rdid(env, monkeypatch):
+    """`--library cookbook` names the unprefixed set even in a cookbook whose
+    rdid would otherwise name it: the rdid is only the default."""
+    manifest(env.book, rdid="adc")
+    monkeypatch.chdir(env.book.parent)
+    assert main(["install", "--target", "routed", "cookbook"]) == 0
+    assert "adc-principle-simplicity" in env.router.skills
+    assert main(["install", "--target", "routed", "--library", "cookbook", "cookbook"]) == 0
+    assert "principle-simplicity" in env.router.skills
+    receipt = inst.read_receipt(env.cookr)
+    assert {"set:adc", "set:cookbook"} <= set(receipt)
+
+
 def test_uninstall_takes_the_default_library_unless_told_every_library(env, monkeypatch):
     installer(env, ["routed"]).install()
     installer(env, ["routed"], library="adtoolkit").install()

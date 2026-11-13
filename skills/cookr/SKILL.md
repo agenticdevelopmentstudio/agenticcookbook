@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.13.0"
+version: "0.13.1"
 description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to scope a change to the recipes it touches, to check what recipe work a change still owes, to record which code implements a recipe and confirm it, to rename or look up a recipe's id, to upgrade a cookbook to format 2, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
 argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.13.0
+# cookr v0.13.1
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill, including recipe

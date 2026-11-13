@@ -27,9 +27,13 @@ _STYLE = {inst.OK: "ok", inst.MISSING: "warn", inst.DRIFT: "warn", inst.BROKEN: 
 ERRORS = (ValueError, inst.RouterError, OSError)
 
 
-def _library(value: str) -> Optional[str]:
+def _library(value: str) -> str:
+    """A checked --library, kept as given: the literal default must stay
+    truthy, or `args.library or default_library(...)` would trade it for the
+    cookbook's rdid. The Installer turns it into the unprefixed None."""
     try:
-        return library_name(value)
+        library_name(value)
+        return value
     except SkillError as e:
         raise argparse.ArgumentTypeError(str(e)) from e
 
