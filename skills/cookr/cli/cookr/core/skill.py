@@ -71,6 +71,7 @@ from .index import Index, IndexCache
 from .links import Link, format_link, in_text_links, parse_link, relabel
 from .refimpl import SECTION as RI_SECTION, part as implementations_part
 from .identity import MANIFEST as COOKBOOK_FILE
+from .completeness import CHANGE_HISTORY, NEEDS_REVIEW
 
 PACKAGED_TEMPLATES = Path(__file__).resolve().parent.parent / "data" / "templates"
 TEMPLATES = PACKAGED_TEMPLATES / "skill"
@@ -391,7 +392,8 @@ def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPL
     referred = {r: text for r, text in referred.items() if text.strip()}
     labels = {link: label for text in (body, *referred.values())
               for link in (lk for _, lk in in_text_links(text)) if (label := _label(index, link))}
-    body = relabel(body, labels) + _depends(artifact, index) + _more(referred)
+    body = _open_questions(relabel(body, labels), artifact, bool(referred))
+    body += _depends(artifact, index) + _more(referred)
     references = {f"{r.file}.md": _reference(r, relabel(text, labels), artifact, name, rdid, version)
                   for r, text in referred.items()}
     text = fill(t.text.replace("{{body}}\n", "{{body}}"),
@@ -399,6 +401,33 @@ def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPL
     routes = derive_routes(artifact, type_dir, rel, library)
     return Skill(name=name, routes=routes, text=frontmatter(name, artifact, routes, rdid) + text,
                  folder=folder, type=kind, references=references)
+
+
+OPEN_QUESTIONS_HEADING = "## Open questions: settle them before you build"
+
+
+def _open_questions(body: str, artifact: Artifact, has_references: bool) -> str:
+    """`body` with a notice after its untitled opening when the artifact still
+    holds `NEEDS REVIEW` markers outside Change History: decisions its writer
+    could not settle from the code. A model building from the skill must not
+    guess them, so the notice tells it to stop, ask, and write the answer back
+    into the recipe, where the next reader finds it settled."""
+    if not any(NEEDS_REVIEW in p.text for p in artifact.parts
+               if (p.heading or "").strip() != CHANGE_HISTORY):
+        return body
+    where = (f" Some may be in `{REFERENCES_DIR}/` (the files under More); search them too."
+             if has_references else "")
+    notice = (f"{OPEN_QUESTIONS_HEADING}\n\n"
+              f"This recipe still has `{NEEDS_REVIEW}` markers: decisions its writer could not "
+              f"settle from the code.{where} Before you build, find each marker that bears on "
+              "what you are making, stop, and ask the user to settle it, one question at a time. "
+              "Then write the answer into the recipe's source folder in place of the marker "
+              "(restated as fact, or as a requirement to build), run `cookr bump` on it, and "
+              "build to the settled text. Markers that do not touch your work stay as they are.\n\n")
+    head, sep, rest = body.partition("\n## ")
+    if not sep:
+        return body + notice
+    return head.rstrip("\n") + "\n\n" + notice + "## " + rest
 
 
 def _join(parts: Iterable) -> str:

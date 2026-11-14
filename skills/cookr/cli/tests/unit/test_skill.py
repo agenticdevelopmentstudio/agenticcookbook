@@ -387,3 +387,41 @@ def test_the_whole_cookbook_compiles_within_the_fanout_cap(tmp_path, repo_v2):
     assert rep.over_cap == {}
     assert len(rep.results) == len(find_folders([repo_v2 / "cookbook"]))
     assert unconverted([REPO / "cookbook"]) == []
+
+
+def _recipe_with(tmp_path, rules: str, platforms_note: str = "- **macos**: Built.\n\n"):
+    root = tmp_path / "cookbook"
+    manifest(root)
+    folder = root / "recipes/ui/menu"
+    write_folder(Artifact(meta={"id": str(uuid.uuid5(uuid.UUID(BOOK_ID), "menu")), "title": "Menu",
+                                "type": "recipe", "version": "1.0.0", "summary": "A menu."}, parts=[
+        Part("intro", "# Menu\n\nThe menu.\n\n"),
+        Part("rules", rules, "Behavioral Requirements"),
+        Part("platform-notes", platforms_note, "Platform Notes"),
+        Part("history", "| 1.0.0 | removed a NEEDS REVIEW marker |\n\n", "Change History"),
+    ]), folder)
+    index_folders(root)
+    return folder
+
+
+def test_a_recipe_with_open_markers_tells_the_builder_to_stop_and_settle_them(tmp_path):
+    folder = _recipe_with(tmp_path, "- **delete**: NEEDS REVIEW: Not implemented in source. "
+                                    "Is Option-only delete wanted?\n\n")
+    text = skill.compose(folder).text
+    body = text.split("---\n", 2)[2]
+    assert body.index("# Menu") < body.index(skill.OPEN_QUESTIONS_HEADING) < body.index("## Behavioral Requirements")
+    notice = body.split(skill.OPEN_QUESTIONS_HEADING, 1)[1].split("\n## ", 1)[0]
+    assert "stop" in notice and "ask the user" in notice and "cookr bump" in notice
+
+
+def test_a_marker_only_in_a_referred_section_still_raises_the_notice(tmp_path):
+    folder = _recipe_with(tmp_path, "- **open**: MUST open.\n\n",
+                          "- **ios**: NEEDS REVIEW: Not implemented in source. Which gesture?\n\n")
+    text = skill.compose(folder).text
+    assert skill.OPEN_QUESTIONS_HEADING in text
+    assert "references/" in text.split(skill.OPEN_QUESTIONS_HEADING, 1)[1].split("\n## ", 1)[0]
+
+
+def test_a_settled_recipe_carries_no_notice_even_when_its_history_mentions_markers(tmp_path):
+    folder = _recipe_with(tmp_path, "- **open**: MUST open.\n\n")
+    assert skill.OPEN_QUESTIONS_HEADING not in skill.compose(folder).text

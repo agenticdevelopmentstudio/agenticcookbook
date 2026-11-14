@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.13.1"
+version: "0.14.0"
 description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to scope a change to the recipes it touches, to check what recipe work a change still owes, to record which code implements a recipe and confirm it, to rename or look up a recipe's id, to upgrade a cookbook to format 2, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
 argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.13.1
+# cookr v0.14.0
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill, including recipe
@@ -110,6 +110,33 @@ change and whether to commit it is your call while you work on the files.
 4. When an implementation matches its recipe, `cookr confirm` it.
 5. `cookr bump` each recipe you changed, then `cookr validate` before the work is
    done.
+
+### Building from a recipe: settle its open questions first
+
+A `NEEDS REVIEW` marker is a decision the recipe's writer could not settle from
+the code. Building past one means guessing, and the guess spreads to every
+platform that copies the code. So whenever you read a recipe in order to build
+from it (a new feature, a port to another platform, a change to code it
+claims):
+
+1. Search the recipe for `NEEDS REVIEW`, in its source folder's parts or its
+   compiled skill and that skill's `references/`. A compiled skill that has
+   markers opens with an *Open questions* notice that says so.
+2. For each marker that bears on what you are about to make, **stop and ask
+   the user to settle it**, one question at a time. Give what the code does
+   today, what the marker leaves open, and what each answer would mean for the
+   build. Never settle a product decision yourself. A marker you can settle
+   with evidence, such as measuring a contrast ratio, you settle yourself and
+   report.
+3. Write the answer into the recipe's source folder in place of the marker,
+   either restated as fact or as a requirement to build. Then run
+   `cookr compile --target doc` and `cookr bump`, and build to the settled text.
+4. Leave markers that don't touch your work as they are. They wait for whoever
+   next builds that part.
+
+The phase gate (`cookr coverage --require complete`) stays red while markers
+remain. That is expected: markers are settled as their recipes are used, not
+in a review pass of their own.
 
 ## Source folders
 
@@ -225,6 +252,11 @@ A model tunes the cookbook for itself. Nobody can tune for a model they are not.
 - **Variants:** a host or model that reads differently gets
   `targets/<target>.SKILL.md`. `targets.json` (the host table) sits at the set's root,
   next to `skills.json` (the receipt).
+- **Open questions:** an artifact that still holds `NEEDS REVIEW` markers
+  (outside Change History) gets a `## Open questions: settle them before you
+  build` notice after its opening. The notice tells the model building from the
+  skill to stop and settle the markers its work touches, as in *Building from a
+  recipe* above. A settled artifact gets no notice.
 
 In a cookr repo each cookbook (this repo's and its dependencies') has its own set
 in `$COOKR_HOME/sets/<cookbook-rdid>`, registered with skill-router under that
@@ -314,9 +346,11 @@ Never adopt or replace the user's live `general-principles` without their OK.
 
 `awaiting_review` lists recipes whose only problem is a `NEEDS REVIEW`
 marker: finished work waiting on a reviewer's decision, never a rewrite target.
-Report them to the user. `cookr coverage --require complete` stays red until
-the reviewer settles each marker, so the phase is written when `write` is empty
-and done only when that gate passes.
+Report how many there are; don't walk the user through them. Each one is
+settled when its recipe is next used to build something (*Building from a
+recipe*, above). The phase is done when `write` is empty and validate passes.
+`cookr coverage --require complete` stays red until the last marker is
+settled.
 
 ## Verify pass
 
