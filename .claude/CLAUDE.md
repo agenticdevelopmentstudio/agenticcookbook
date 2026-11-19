@@ -90,7 +90,13 @@ Key rules:
 
 ## Writing New Content
 
-**Researched content.** A guideline is written from research on its topic, kept in its folder's `research/`, with each named rule citing a claim of it (`guide/introduction/conventions.md`, *Research*). Run `/grow-cookbook` to plan an area, research each topic, write, review and integrate it.
+**The standard** (`guide/introduction/conventions.md`, *The Standard*). Every guideline and principle is written with roled parts, named rules, one source per topic and its research:
+- **Roled parts**: each part has a role, so the topic compiles to a builder, a reviewer and their two verifiers (*Roles*).
+- **Named rules**: `- **kebab-name**: … MUST …`, one rule to a bullet, each citing the claims it stands on (*Research*).
+- **One source per topic**: a topic has one folder; a copy under another use case is folded into its survivor with `cookr fold` (*One Source Per Topic*).
+- **Research**: the topic's research is kept in its folder's `research/`. `cookbook/research-exempt.json` lists the topics written before research-first whose research is still owed; nothing joins it, and `cookr validate` requires `research/` on every other artifact.
+
+Run `/grow-cookbook` to plan an area, research each topic, write, review and integrate it.
 
 The repo's skills (`.claude/skills/`):
 

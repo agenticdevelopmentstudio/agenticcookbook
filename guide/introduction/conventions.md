@@ -2,11 +2,11 @@
 id: 7a3e1f2c-8b4d-4e6a-9c5f-1d2e3f4a5b6c
 title: "Conventions"
 type: reference
-version: 2.3.3
+version: 2.4.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-11-16
+modified: 2026-11-19
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -109,6 +109,27 @@ directly, or compile a doc with `cookr compile`, edit it, fold it back with
 present beside its folder disagrees with it, and a committed compiled doc fails cookr's tests.
 The full format is in `docs/superpowers/specs/2026-10-03-artifact-source-folder.md`.
 
+### The Standard
+
+Every artifact this cookbook adds or rewrites is written to one design, and the
+artifacts written before it are being brought to it:
+
+- **Roled parts.** A guideline or a principle gives each part a role (below), so
+  it compiles to a builder, a reviewer and their two verifiers.
+- **Named rules.** Each rule is a bullet of a `rules` part,
+  `- **kebab-name**: … MUST|SHOULD|MAY …`, one rule to a bullet (see *Named
+  Requirements*).
+- **One source per topic.** A topic is written once, in one folder (see *One
+  Source Per Topic*).
+- **Research.** The topic is written from research kept in its `research/`
+  folder, and each named rule cites the claims it stands on (see *Research*).
+
+An artifact written before this design keeps working as it is: an unroled
+artifact compiles as it always did, and one with no research is listed in
+`cookbook/research-exempt.json` until its research is written. `/grow-cookbook`
+writes new topics to the standard; `cookr roles set` and `cookr roles lossless`
+convert an existing one without losing a word.
+
 ### Roles
 
 A part may carry a `role` in `artifact.json`: `rules`, `how-to`, `examples`,
@@ -182,6 +203,20 @@ research-first was ruled whose research is still to come. Each topic leaves the
 list in the commit that adds its research, and nothing joins it: a topic written
 now is written from its research. A listed topic that has its `research/`, that
 is no artifact, or that is listed twice, is refused by name.
+
+### One Source Per Topic
+
+A topic has one folder. The same guideline written again under another use case
+(`implementing/x/t` and `reviewing/x/t`) is a copy, and a copy is folded into
+its surviving topic with `cookr fold <copy> --into <topic>`: the copy's text the
+topic lacks becomes new parts of the topic, the fold is recorded in the topic's
+Change History, every link to the copy is redirected to the topic, and the copy
+is deleted. The survivor is the topic under `implementing/`, then `planning/`,
+`testing/`, `shipping/`, the other use cases, and `reviewing/` last; a topic
+held only under `reviewing/<area>/` moves to `implementing/<area>/`.
+`cookr roles worklist` lists every topic with its survivor and its copies. The
+reviewer a topic needs comes from its own `review-focus` and `review-bar` parts,
+never from a second copy of the topic.
 
 ### Change History
 
@@ -440,6 +475,7 @@ Format:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.4.0 | 2026-11-19 | Mike Fullerton | The standard: roled parts, named rules, one source per topic and research; copies are folded with `cookr fold`; a cookbook with `research-exempt.json` is research-first, and that file lists every topic still owed research |
 | 2.3.3 | 2026-11-16 | Mike Fullerton | `approved-by` and `approved-date` are written by /approve-artifact after lint, so lint does not check them |
 | 2.3.2 | 2026-11-16 | Mike Fullerton | Research: every verdict names a claim; a rule the research cannot support cites itself as a claim and is warned for the owner; `validate --research` checks research alone |
 | 2.3.1 | 2026-11-16 | Mike Fullerton | Research: the citation ends its rule, is left out of skills and ignored by `roles lossless`; every cited claim has a verdict; the exemption list only shrinks |
