@@ -1,0 +1,45 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "ac616d81-16c2-4f33-9ae4-139d5c24318d",
+    "title": "Feature flags",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-07",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Gate all features behind feature flags from initial implementation. Define a FeatureFlagProvider interface with a local default, and swap in a backend implementation later via DI.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript"
+    ],
+    "tags": [
+      "feature-flags",
+      "feature-management"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "feature-flags",
+      "new-module"
+    ]
+  },
+  "synced": "3d62e090512b41a6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "typescript", "heading": "TypeScript"},
+    {"part": "c", "heading": "C#"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

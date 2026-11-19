@@ -4,11 +4,11 @@
     "id": "b16e64a4-462d-4f46-afeb-1a06952e5e65",
     "title": "Foreign keys and referential integrity",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-15",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,22 +30,27 @@
     "references": [
       "https://sqlite.org/foreignkeys.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "998b262222207e2e",
+  "synced": "76610c09e0feb4dc",
   "parts": [
     {"part": "intro"},
-    {"part": "enable-foreign-keys-on-every-connection", "heading": "Enable foreign keys on every connection"},
-    {"part": "declaring-foreign-keys", "heading": "Declaring foreign keys"},
-    {"part": "on-delete-on-update-actions", "heading": "ON DELETE / ON UPDATE actions"},
-    {"part": "deferred-constraints", "heading": "Deferred constraints"},
-    {"part": "index-every-fk-column", "heading": "Index every FK column"},
-    {"part": "common-pitfalls", "heading": "Common pitfalls"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "enable-foreign-keys-on-every-connection", "heading": "Enable foreign keys on every connection", "role": "how-to"},
+    {"part": "declaring-foreign-keys", "heading": "Declaring foreign keys", "role": "examples"},
+    {"part": "on-delete-on-update-actions", "heading": "ON DELETE / ON UPDATE actions", "role": "how-to"},
+    {"part": "deferred-constraints", "heading": "Deferred constraints", "role": "how-to"},
+    {"part": "index-every-fk-column", "heading": "Index every FK column", "role": "how-to"},
+    {"part": "common-pitfalls", "heading": "Common pitfalls", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

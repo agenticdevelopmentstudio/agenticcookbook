@@ -55,10 +55,14 @@ class Level:
 def template_levels(skill_templates: Path = skill_mod.TEMPLATES,
                     always_templates: Path = always_on.TEMPLATES) -> list[Level]:
     """Every template as a tuning level. A command run on a cookbook passes
-    `skill_mod.templates_root(cookbook)`'s `skill/` and `always/`: see there."""
+    `skill_mod.templates_root(cookbook)`'s `skill/` and `always/`: see there.
+    A roled artifact's templates (`<type>.<kind>.md`) are none: its skills are
+    not tuned."""
     out = []
     for kind, root in ((TEMPLATE, skill_templates), (ALWAYS, always_templates)):
         for p in sorted(root.glob("*.md")):
+            if "." in p.stem:
+                continue
             out.append(Level(f"{kind}:{p.stem}", kind, p, root / p.stem / tuning.HOSTS_DIR))
     return out
 
@@ -100,6 +104,21 @@ def describe(level: Level, chain: tuple[str, ...], *, text: bool = False) -> dic
     return out
 
 
+def tunable(folders: Iterable[Path]) -> list[Path]:
+    """The folders a model may tune: all but roled artifacts, whose four
+    skills take no tuning yet (`roles` reports a `hosts/` beside one). A folder
+    too broken to read is kept, so the error that names it still shows."""
+    out = []
+    for f in folders:
+        try:
+            if load_folder(f).roled:
+                continue
+        except ArtifactError:
+            pass
+        out.append(f)
+    return out
+
+
 def survey(chain: tuple[str, ...], folders: list[Path], *, templates: Iterable[Level] = (),
            template_text: bool = True) -> dict:
     """The tuning picture for one target chain: templates first (with their
@@ -108,17 +127,17 @@ def survey(chain: tuple[str, ...], folders: list[Path], *, templates: Iterable[L
     return {
         "chain": list(chain),
         "templates": [describe(lv, chain, text=template_text) for lv in templates],
-        "artifacts": [describe(artifact_level(f), chain) for f in folders],
+        "artifacts": [describe(artifact_level(f), chain) for f in tunable(folders)],
     }
 
 
 def worklist(chain: tuple[str, ...], folders: list[Path], library: Optional[str] = None,
              templates: Path = skill_mod.TEMPLATES) -> list[dict]:
-    """One entry per artifact: the skill as `chain` receives it today (its
-    template's and its own additions applied), and where an addition for the
-    most specific target would go."""
+    """One entry per tunable artifact: the skill as `chain` receives it today
+    (its template's and its own additions applied), and where an addition for
+    the most specific target would go."""
     out = []
-    for f in folders:
+    for f in tunable(folders):
         s = skill_mod.compose(f, library, templates)
         levels = [skill_mod.template_hosts(s.type, templates), f / tuning.HOSTS_DIR]
         lv = artifact_level(f)

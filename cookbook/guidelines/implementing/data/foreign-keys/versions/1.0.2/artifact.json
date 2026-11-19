@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "b16e64a4-462d-4f46-afeb-1a06952e5e65",
+    "title": "Foreign keys and referential integrity",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Enabling and declaring foreign keys in SQLite, ON DELETE/UPDATE actions, deferred constraints, indexing FK columns, and common pitfalls.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "foreign-keys",
+      "referential-integrity",
+      "schema-design"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://sqlite.org/foreignkeys.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "998b262222207e2e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "enable-foreign-keys-on-every-connection", "heading": "Enable foreign keys on every connection"},
+    {"part": "declaring-foreign-keys", "heading": "Declaring foreign keys"},
+    {"part": "on-delete-on-update-actions", "heading": "ON DELETE / ON UPDATE actions"},
+    {"part": "deferred-constraints", "heading": "Deferred constraints"},
+    {"part": "index-every-fk-column", "heading": "Index every FK column"},
+    {"part": "common-pitfalls", "heading": "Common pitfalls"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -140,3 +140,9 @@ def test_reasons_round_trip_and_survive_a_doc_edit(tmp_path):
 def test_no_reason_writes_no_key(tmp_path):
     text = dump_manifest(load_folder(make(tmp_path, "implementing", "x", "Plain.")))
     assert "twin_differs" not in text and "informational" not in text
+
+
+def test_a_keyword_inside_a_long_fence_holding_a_short_one_states_no_rule():
+    from cookr.core.artifact import Artifact, Part
+    text = "# T\n\n````md\n```\nCode MUST x.\n```\n````\n"
+    assert not twins.states_a_rule(Artifact(meta={}, parts=[Part("intro", text)]))

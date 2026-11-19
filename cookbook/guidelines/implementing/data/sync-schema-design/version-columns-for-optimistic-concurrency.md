@@ -1,6 +1,4 @@
 
-MUST add a `version INTEGER NOT NULL DEFAULT 1` column to every synced table. The version column is the authoritative signal for conflict detection.
-
 On update: increment the version. On sync, the server applies the write only if the client's base version matches the server's current version. A mismatch signals a conflict.
 
 ```sql

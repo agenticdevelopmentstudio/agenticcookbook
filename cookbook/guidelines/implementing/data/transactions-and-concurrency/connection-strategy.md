@@ -17,5 +17,3 @@ def apply_sync_batch(changes, db):
         raise
 ```
 
-MUST NOT open the write lock and then wait on external I/O (network requests, user input). Keep write transactions short.
-

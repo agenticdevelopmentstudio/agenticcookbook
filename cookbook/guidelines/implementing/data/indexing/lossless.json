@@ -1,0 +1,166 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "**MUST follow:**",
+      "to": [
+        "must-put-equality-columns-first",
+        "must-put-inequality-columns-last"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The MUST lead-in reaches both ordering rules, each at MUST, and its third bullet (columns right of an inequality are not used for filtering) is the inequality rule's sub-bullet.",
+        "pin": "dd5ca56303620409541f469e73c92d8fe216baca5923b6a3dcc702b7fd5aa627"
+      }
+    },
+    {
+      "sentence": "Equality columns (`=`, `IN`, `IS`) go first.",
+      "to": "must-put-equality-columns-first",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Equality columns (`=`, `IN`, `IS`) first, at the MUST of the source's lead-in, scoped to composite indexes as in the source's section.",
+        "pin": "7f1ccdbe9de718b1b65bfb8ef9efa17b96915b0edb876c92d28625f9bec375f9"
+      }
+    },
+    {
+      "sentence": "Inequality columns (`<`, `>`, `<=`, `>=`, `BETWEEN`) go last — only the rightmost used column can use a range constraint.",
+      "to": "must-put-inequality-columns-last",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Inequality columns (`<`, `>`, `<=`, `>=`, `BETWEEN`) last at MUST, with the reason (only the rightmost used column can use a range constraint) kept.",
+        "pin": "83838257c0b61dabc744924d94b548795e3f7b3fdc6fcbd7a3d3ebd313e55ece"
+      }
+    },
+    {
+      "sentence": "**MUST NOT** create an index that is a prefix of an existing index.",
+      "to": "must-not-duplicate-index-prefix"
+    },
+    {
+      "sentence": "Aim for covering indexes on hot read paths where the query shape is stable.",
+      "to": "should-use-covering-indexes-on-hot-paths",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Covering indexes on hot read paths, limited to where the query shape is stable, are kept at SHOULD.",
+        "pin": "f49a237c1202382d246c189d8c0da8228c40a47080ac78a16a2df244f46c697b"
+      }
+    },
+    {
+      "sentence": "**MUST:** The expression in the query must match the index definition exactly — the planner does no algebra.",
+      "to": "must-match-index-expression-exactly",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST, the exact-match requirement and the reason (the planner does no algebra) are all kept.",
+        "pin": "d55dd0055546e61f0f465f55cb0bbf266d6e9a013a9792ee8f6e601e5e402255"
+      }
+    },
+    {
+      "sentence": "Index for them explicitly.",
+      "to": "should-index-sync-queries",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Them\" is named (sync queries, which follow predictable patterns) and indexing for them explicitly is kept at SHOULD.",
+        "pin": "54a7f95c31781bb72c964153f4ef1d14e56378432d0516a8bdf1b81823dbb059"
+      }
+    },
+    {
+      "sentence": "Always verify with `EXPLAIN QUERY PLAN` that sync queries show `SEARCH ...",
+      "to": "must-verify-sync-queries-use-indexes",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Always\" verifying with `EXPLAIN QUERY PLAN` that sync queries show `SEARCH ... USING INDEX`, not `SCAN`, is kept, now at MUST.",
+        "pin": "d7fa16931a92382326881ab0cff17f7a12361db169fa092622d57d98a97e5565"
+      }
+    },
+    {
+      "sentence": "Use VIRTUAL (not STORED) unless reads vastly outnumber writes.",
+      "to": "should-use-virtual-generated-columns",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "VIRTUAL over STORED and the one exception (reads vastly outnumber writes) are kept at SHOULD.",
+        "pin": "b8b45e18ab0afa374f0b7570d6e156f072b6de47beed1c0b4fd53033d7031927"
+      }
+    },
+    {
+      "sentence": "**MUST:** The query WHERE clause must include the partial index WHERE clause terms (literally or by implication) for the planner to use the index.",
+      "to": "must-match-partial-index-predicate",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST, the inclusion requirement, \"literally or by implication\" and the purpose (so the planner uses the index) are kept, along with the source's example.",
+        "pin": "1b2f43459f346e4b333eb233e8bc36e45b7ee5c8af65a9302a4c7e0dc140dd6a"
+      }
+    },
+    {
+      "sentence": "**SHOULD NOT index:**",
+      "to": [
+        "should-not-index-unqueried-columns",
+        "should-not-index-low-cardinality-columns",
+        "should-not-index-write-heavy-tables"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The lead-in's SHOULD NOT reaches all three items it now names, each held at SHOULD NOT by its own rule: never-queried columns, low-cardinality columns (with the example and the full-scan reason), and write-only or insert-heavy tables with infrequent reads.",
+        "pin": "443a1d8c9020846589b7997c300bbf934e92b7f6bab8d8cceb669652b2776e8e"
+      }
+    },
+    {
+      "sentence": "Columns that are never in a WHERE, JOIN, or ORDER BY clause.",
+      "to": "should-not-index-unqueried-columns",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Columns never in a WHERE, JOIN, or ORDER BY clause are kept as a SHOULD NOT index, matching the lead-in.",
+        "pin": "48fe2f0b86d22b5e20d39d711c4954defece3a9c7cf2080466c19e2a31667a88"
+      }
+    },
+    {
+      "sentence": "Low-cardinality columns (e.g., a boolean `is_active` on a table where 99% of rows are active) — a full table scan is often faster.",
+      "to": "should-not-index-low-cardinality-columns",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Low-cardinality columns are kept at SHOULD NOT index, along with the example and the reason (a full scan is often faster).",
+        "pin": "37dd08f520deae1522a8a8ba964e17a2cbeccbf56523d42d8cf88986872bdfeb"
+      }
+    },
+    {
+      "sentence": "Tables that are write-only or insert-heavy with infrequent reads.",
+      "to": "should-not-index-write-heavy-tables",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Write-only or insert-heavy tables with infrequent reads are kept at SHOULD NOT index, matching the lead-in.",
+        "pin": "5c3d17064b250cb3209e811c99d5153f46254c3989ba8f5258c590627cc2eec8"
+      }
+    },
+    {
+      "sentence": "Run `PRAGMA optimize` periodically to keep query planner statistics current.",
+      "to": "should-run-pragma-optimize-periodically",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Running `PRAGMA optimize` periodically and its reason (keep planner statistics current) are kept at SHOULD.",
+        "pin": "5e24dd7409b9cbe5321cbe99d456f175e3ffef8e961ca3b70ae37c2f4af80552"
+      }
+    },
+    {
+      "sentence": "Monitor with `SELECT * FROM sqlite_stat1;` (populated by `ANALYZE`) to see which indexes the planner is actually using.",
+      "to": "should-monitor-index-usage",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Monitoring with `SELECT * FROM sqlite_stat1;` (populated by `ANALYZE`) and its purpose are kept at SHOULD.",
+        "pin": "975eeb1e774a577a32e3698bdac9521570d5a7090ab4745672e143fc4e06bc50"
+      }
+    }
+  ]
+}

@@ -16,5 +16,5 @@ ANALYZE;
 SELECT * FROM sqlite_stat1;
 ```
 
-SHOULD run `PRAGMA optimize` on connection open for long-lived connections. SHOULD run `ANALYZE` after bulk inserts or major schema changes. Statistics are stored in `sqlite_stat1` and used on subsequent connections.
+Statistics are stored in `sqlite_stat1` and used on subsequent connections.
 

@@ -1,5 +1,5 @@
 
-MUST use `<table_name>_id`, not bare `id`. Self-documenting PKs make JOIN bugs immediately visible:
+Self-documenting PKs make JOIN bugs immediately visible:
 
 ```sql
 -- Correct: mismatch is obvious

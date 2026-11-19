@@ -1,0 +1,25 @@
+
+- **must-be-correct-under-network-failure**: The protocol MUST be correct under network failure — retries, partial delivery, and out-of-order arrival are the norm, not the exception.
+- **should-combine-push-and-pull**: SHOULD combine push and pull into a single HTTP request.
+- **should-use-shoulder-tap**: Rather than polling, SHOULD have the server send a lightweight notification (push notification, WebSocket message, or SSE event) that new data is available, after which the client pulls the actual data.
+- **must-use-incremental-sync**: MUST use incremental sync in production; full sync (transfer everything every time) is only acceptable for initial bootstrap or recovery after database corruption.
+- **should-prefer-version-cursor-over-timestamps**: Incremental sync SHOULD use a version number, preferred over timestamp-based.
+- **should-use-hlc-for-timestamp-sync**: If using timestamps, SHOULD use Hybrid Logical Clocks (HLC) rather than wall-clock time.
+- **must-set-dirty-on-every-local-write**: With flag columns, `is_dirty` MUST be set to `1` on every local write.
+- **should-clear-dirty-after-server-confirms**: With flag columns, `is_dirty` SHOULD be cleared to `0` after the server confirms the change.
+- **must-build-sqlite-with-session-flags**: Wherever the SQLite Session Extension is used, SQLite MUST be compiled with `-DSQLITE_ENABLE_SESSION` and `-DSQLITE_ENABLE_PREUPDATE_HOOK`.
+- **must-paginate-sync-results**: MUST paginate sync results; never request or deliver unbounded result sets.
+- **must-paginate-by-sync-version-cursor**: MUST use the server-assigned sync version as the cursor — not an offset.
+- **should-size-batches-by-context**: SHOULD use the recommended batch sizes: mobile (unstable network) 50–100 records, desktop (stable network) 500–1000, initial bootstrap 1000–5000, background sync 100–500.
+- **must-make-sync-operations-replayable**: Every sync operation MUST be safe to replay.
+- **must-guard-upserts-with-version**: MUST use UPSERT with a version guard so replaying an older batch never downgrades a record.
+- **must-use-idempotency-keys**: MUST use deterministic idempotency keys (e.g., `insert:tasks:<id>`) in the outbox to prevent duplicate processing on the server.
+- **must-deduplicate-on-server**: The server MUST also deduplicate on idempotency key and return success (not an error) for already-processed requests.
+- **must-write-data-and-queue-atomically**: MUST write to the local data table and the sync queue in a single transaction.
+- **must-back-off-with-jitter**: MUST implement exponential backoff with jitter for failed sync attempts; never retry in a tight loop.
+- **should-classify-errors-before-retrying**: SHOULD classify errors before retrying.
+- **must-not-retry-client-errors**: A client error (400, 401, 403) MUST NOT be retried — surface it to the user.
+- **must-not-retry-conflicts-blindly**: A conflict (409) MUST NOT be retried blindly — apply the conflict resolution strategy.
+- **should-retry-server-errors-with-longer-backoff**: A server error (500) SHOULD be retried with longer backoff.
+- **should-enter-circuit-breaker**: After N consecutive failures, SHOULD enter a circuit-breaker state: stop attempting sync and resume only after a cooldown period or explicit user action.
+

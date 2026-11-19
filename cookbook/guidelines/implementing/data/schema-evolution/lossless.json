@@ -1,0 +1,140 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "When SQLite databases sync with a server or between devices, schema migrations must be compatible across all participants — including devices that may be offline during rollout.",
+      "to": "must-keep-migrations-compatible-across-participants",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (syncing with a server or between devices), MUST compatibility across all participants and the offline-during-rollout inclusion are all kept.",
+        "pin": "f0cc2de5aa73f023a4591bb3650bac5b71588a7c000f1113aaa4c1de39576fde"
+      }
+    },
+    {
+      "sentence": "MUST follow these rules for any migration in a sync-capable schema:",
+      "to": [
+        "must-only-add-columns-in-sync-schemas",
+        "must-default-new-columns-in-sync-schemas",
+        "must-make-migrations-idempotent",
+        "must-wrap-each-migration-in-transaction",
+        "must-test-migrations-from-every-version",
+        "must-back-up-before-server-migration"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The MUST lead-in reaches all six listed rules at MUST; the scope is sync-capable schemas or wider (idempotent and transaction rules apply to every migration), which keeps every obligation.",
+        "pin": "4fa6c5b63029aa60737f1bb8ddff0f3dc5e024475c39183cccea1957fc9df666"
+      }
+    },
+    {
+      "sentence": "**Only add columns — never remove or rename without a migration path.** A device on the old schema must be able to sync with the server on the new schema.",
+      "to": [
+        "must-only-add-columns-in-sync-schemas",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST only add columns, with the migration-path exception, is in the rule, and the reason (old-schema device syncs with new-schema server) is in its rationale entry.",
+        "pin": "b592a4f7588f4dfc3f1588f4875267dea7b321a91438303e3753a16c93f2388b"
+      }
+    },
+    {
+      "sentence": "**New columns MUST have DEFAULT values.** CRDTs and merge logic require all columns to have a known value for all rows, including those written before the migration.",
+      "to": [
+        "must-default-new-columns-in-sync-schemas",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST DEFAULT values on new columns in sync-capable schemas is kept, and the CRDT/merge-logic reason is in its rationale entry.",
+        "pin": "c8d5ae92241d96e40889a4eb31c1e2e706c8b08507ae256c8def664388613380"
+      }
+    },
+    {
+      "sentence": "**Migrations MUST be idempotent.** A device may apply the same migration more than once if it reconnects after a partial sync.",
+      "to": [
+        "must-make-migrations-idempotent",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST idempotent is kept (it now covers every migration), and the reason (re-applied after a partial sync) is in its rationale entry.",
+        "pin": "4082fe44bd34ff224bd099af631eaf728988271b1cc9720e414da870819c1c63"
+      }
+    },
+    {
+      "sentence": "**Wrap each migration in a transaction.** A failed migration must leave the database unchanged.",
+      "to": [
+        "must-wrap-each-migration-in-transaction",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Wrapping each migration in a transaction is kept at MUST, and the reason (a failed migration leaves the database unchanged) is in its rationale entry.",
+        "pin": "390972b45435cb6aefe04318129871c62eee88b1ee374b44fcb939d62d158844"
+      }
+    },
+    {
+      "sentence": "**Test migrations against databases at every previous version.** An offline device may skip multiple versions and apply them in sequence on reconnect.",
+      "to": [
+        "must-test-migrations-from-every-version",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Testing against every previous version is kept at MUST with the sync-capable scope, and the reason (offline devices skip versions) is in its rationale entry.",
+        "pin": "202303e6c844d009a9251e8b7d41ee7667c44dad4f880b3c5f0e4aab56871590"
+      }
+    },
+    {
+      "sentence": "**Always back up before migrating on the server side.**",
+      "to": "must-back-up-before-server-migration",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Always back up before migrating on the server side\" becomes MUST always, under the sync-capable-schema scope of the source's MUST list.",
+        "pin": "95ae8aa0863d0fa81aecbc6ad22ff86df67f2470e6c816b671a993d013ca0217"
+      }
+    },
+    {
+      "sentence": "**Critical:** Disable foreign keys before the recreate and re-enable after.",
+      "to": "must-disable-foreign-keys-during-recreate",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The \"Critical\" requirement becomes MUST, and both halves (disable before the recreate, re-enable after) are kept.",
+        "pin": "ac71f282c91a4186adb2f6ab8726a59d1bfbe8ba9d6113e8150553e74a353dc1"
+      }
+    },
+    {
+      "sentence": "Run `foreign_key_check` before committing to catch any broken references.",
+      "to": "must-run-foreign-key-check-before-commit",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Running `foreign_key_check` before committing, with its reason (catch broken references), becomes MUST under the source's Critical label, scoped to the table recreate.",
+        "pin": "2a0b2adabfc0c84987ef3d1c1fe627b8e3b46936d1969ccdb1d75c1e2d5a6263"
+      }
+    },
+    {
+      "sentence": "Each migration MUST be wrapped in a transaction and MUST be idempotent (safe to run twice).",
+      "to": [
+        "must-make-migrations-idempotent",
+        "must-wrap-each-migration-in-transaction"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both MUSTs, each migration wrapped in a transaction and idempotent (safe to run twice), are kept, one per rule.",
+        "pin": "b8a6aab694fb395369af87a64a4ccf2f136cc29505c5c4019140f11404153c21"
+      }
+    }
+  ]
+}

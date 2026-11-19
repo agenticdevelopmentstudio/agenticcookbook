@@ -1,6 +1,4 @@
 
-MUST implement rollback when the server rejects an optimistic write. Silently ignoring rejections causes local and server state to diverge permanently.
-
 ```python
 def handle_rejection(outbox_entry, server_response):
     db.execute("BEGIN TRANSACTION")

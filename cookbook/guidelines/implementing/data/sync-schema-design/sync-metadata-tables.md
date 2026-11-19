@@ -8,5 +8,3 @@ CREATE TABLE sync_state (
 );
 ```
 
-Store the last server-assigned sync version here after each successful sync. Use it as the `since_version` parameter on the next pull.
-

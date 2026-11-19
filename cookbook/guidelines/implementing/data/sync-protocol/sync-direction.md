@@ -13,7 +13,5 @@
 5. Checkpoint — store the server's current sync version
 ```
 
-SHOULD combine push and pull into a single HTTP request. Separate push and pull calls double the round trips, which is costly on high-latency mobile networks.
-
 **Shoulder-tap optimization:** Rather than polling, have the server send a lightweight notification (push notification, WebSocket message, or SSE event) that new data is available. The client then pulls the actual data. This achieves low latency without a persistent connection for data transfer.
 

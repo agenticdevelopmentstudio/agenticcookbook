@@ -1,0 +1,23 @@
+
+- `must-put-equality-columns-first`: every composite index lists its equality columns (`=`, `IN`, `IS`) before any other column
+- `must-put-inequality-columns-last`: every composite index lists its inequality (range) columns last
+- `must-not-duplicate-index-prefix`: no index is a left prefix of another index on the same table
+- `must-match-partial-index-predicate`: every query meant to use a partial index carries that index's WHERE terms, literally or by implication
+- `must-match-index-expression-exactly`: every query meant to use an expression index writes the expression exactly as the index defines it
+- `must-explain-before-schema-deploy`: `EXPLAIN QUERY PLAN` was run to confirm index usage for each schema change before it ships
+- `should-not-index-unqueried-columns`: no index covers a column that no WHERE, JOIN or ORDER BY uses, or the code says why
+- `should-not-index-low-cardinality-columns`: no index is on a low-cardinality column, or the code says why
+- `should-not-index-write-heavy-tables`: write-only or insert-heavy tables with infrequent reads carry no secondary index, or the code says why
+- `should-use-covering-indexes-on-hot-paths`: every hot read path with a stable query shape is served by a covering index (`USING COVERING INDEX`), or the code says why not
+- `must-not-use-partial-indexes-below-3-8-0`: every database with a partial index is only read by SQLite 3.8.0+
+- `must-keep-index-expressions-deterministic`: every expression index uses only deterministic functions, no subqueries, and only columns of its own table
+- `must-not-use-expression-indexes-below-3-9-0`: every database with an expression index is only read by SQLite 3.9.0+
+- `should-index-json-via-generated-columns`: every JSON field queried on a hot path is extracted into an indexed virtual generated column, or the code says why not
+- `should-use-virtual-generated-columns`: every generated column is VIRTUAL unless reads vastly outnumber writes, or the code says why it is STORED
+- `should-index-sync-queries`: every sync query (unsynced rows, unsynced changes, soft-delete filter) has an index built for it, or the code says why not
+- `must-verify-sync-queries-use-indexes`: `EXPLAIN QUERY PLAN` for every sync query shows `SEARCH ... USING INDEX`, not `SCAN`
+- `should-check-index-for-scans`: every `SCAN table` in a query plan on a non-trivial table was checked for a helpful index, or the code says why not
+- `should-rewrite-correlated-subqueries-as-joins`: no query plan shows `CORRELATED SCALAR SUBQUERY`, or the code says why the subquery stays
+- `should-run-pragma-optimize-periodically`: the application runs `PRAGMA optimize` periodically, or the code says why not
+- `should-monitor-index-usage`: index usage is checked against `sqlite_stat1`, or the code says why not
+

@@ -1,0 +1,105 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "**NULL bypasses FK checks.** `NULL` in any FK column means no parent row is required — the constraint is not evaluated.",
+      "to": "must-declare-required-fk-columns-not-null",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both facts, NULL in any FK column needs no parent row and the constraint is not evaluated, are kept verbatim as the rule's reason clause.",
+        "pin": "a63d78ca1f8d99d5e22c943c95b5bddce8128f09c9580cac3b5d701881e79fba"
+      }
+    },
+    {
+      "sentence": "If a FK column must always have a parent, declare it `NOT NULL`.",
+      "to": "must-declare-required-fk-columns-not-null",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (FK column must always have a parent) and the action (declare it `NOT NULL`) are kept, at MUST.",
+        "pin": "0203edc97c547f2cff02de8169e92683d51b2075d2de9f8cf39158575caa990a"
+      }
+    },
+    {
+      "sentence": "**Composite FKs must match exactly.** Column count, types, and collation must match the parent's PRIMARY KEY or UNIQUE constraint precisely.",
+      "to": "must-match-composite-fks-exactly",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST plus all three matched properties (column count, types, collation) against the parent's PRIMARY KEY or UNIQUE constraint are kept.",
+        "pin": "d455f36c4681b5721ec11b4c81c17daac65402f7222dcab6a30a9e2af300e61f"
+      }
+    },
+    {
+      "sentence": "**ALTER TABLE restrictions.** You cannot add a column with a FK constraint and a non-NULL default:",
+      "to": "must-not-add-fk-column-with-non-null-default",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"You cannot add\" a column with an FK constraint and a non-NULL default becomes MUST NOT with the same scope, plus the source's note that it fails and a NULL default is allowed.",
+        "pin": "f8a80b377ecc56506c88479415d1e66e8216251ce8d8c8a38d71033bd01d00b0"
+      }
+    },
+    {
+      "sentence": "**Cross-schema FKs are not supported.** Foreign keys cannot reference tables in attached databases.",
+      "to": "must-not-reference-attached-databases",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The fact that FKs cannot reference tables in attached databases becomes MUST NOT, and the rule keeps \"cross-schema FKs are not supported\" as its reason.",
+        "pin": "a45e13647c64f82e47424490d479ca9f018318ff292997777a7c46bb707112a5"
+      }
+    },
+    {
+      "sentence": "This MUST be executed on every database connection before any DML.",
+      "to": "must-enable-foreign-keys-per-connection",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST, every connection and before any DML are kept; the rule only names the pragma that the source's \"This\" refers to.",
+        "pin": "309b0f7a051c7395542eb3ab8fc375920558b1994945e56ef9c9f32209a3ee4c"
+      }
+    },
+    {
+      "sentence": "It does not persist in the database file.",
+      "to": "rationale",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The fact that the setting does not persist in the database file is kept in the rationale entry for must-enable-foreign-keys-per-connection.",
+        "pin": "2060c26c5a2b563776c0a4bbfe193e238a6dc36dc286889abadeccfef45c80cf"
+      }
+    },
+    {
+      "sentence": "It cannot be changed mid-transaction.",
+      "to": "must-set-foreign-keys-outside-transactions",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The fact that `PRAGMA foreign_keys` cannot be changed mid-transaction is kept verbatim as the reason, and the rule makes it a MUST to issue it outside a transaction.",
+        "pin": "2ac62a6e6e8dd1088b47846afe599176f0a5cf52746d2d09be40ad79db6420cf"
+      }
+    },
+    {
+      "sentence": "When using `SET DEFAULT`, ensure a row with the default value is always present.",
+      "to": "must-keep-set-default-parent-row",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (using `SET DEFAULT`) and the always-present default row are kept at MUST, along with the reason (it fails at runtime otherwise).",
+        "pin": "fc4dedfb4c888a33d540d6f421fd5f449405b3e4e8d9ed0b45ee5f521b76a5b0"
+      }
+    },
+    {
+      "sentence": "`SET DEFAULT` will fail at runtime if the default value does not exist in the parent table.",
+      "to": "must-keep-set-default-parent-row",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The runtime failure of `SET DEFAULT` when the default value is missing from the parent table is kept verbatim as the rule's reason clause.",
+        "pin": "df6caed69707aa382d6edea63c2660096bb05dead34f8b51db749c625a33ba0d"
+      }
+    }
+  ]
+}

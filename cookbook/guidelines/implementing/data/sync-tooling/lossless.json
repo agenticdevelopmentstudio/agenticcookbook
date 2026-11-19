@@ -1,0 +1,15 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Prefer the Session Extension or PowerSync for production systems where stability and custom logic are priorities.",
+      "to": "should-prefer-session-or-powersync-for-production",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The preference for the Session Extension or PowerSync, limited to production systems where stability and custom logic are priorities, is kept at SHOULD.",
+        "pin": "777aa777b20817ddd5eae032c6388136e21884fcea50b56ca29d804ae4ac970f"
+      }
+    }
+  ]
+}

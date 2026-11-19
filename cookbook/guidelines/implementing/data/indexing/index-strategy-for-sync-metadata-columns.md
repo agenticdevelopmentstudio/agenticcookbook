@@ -1,5 +1,5 @@
 
-Sync queries follow predictable patterns. Index for them explicitly.
+Sync queries follow predictable patterns.
 
 ```sql
 -- Find unsynced records (the most important sync query)
@@ -14,6 +14,4 @@ CREATE INDEX idx_changelog_unsynced ON change_log(synced, changed_at)
 CREATE INDEX idx_tasks_active ON tasks(updated_at)
   WHERE is_deleted = 0;
 ```
-
-Always verify with `EXPLAIN QUERY PLAN` that sync queries show `SEARCH ... USING INDEX`, not `SCAN`.
 

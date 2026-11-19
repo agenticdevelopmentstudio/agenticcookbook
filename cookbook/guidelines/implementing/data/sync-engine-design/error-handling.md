@@ -18,5 +18,3 @@ Typical values: `BASE_DELAY = 1s`, `MAX_DELAY = 15min`, `JITTER = 0–1s`.
 
 **Circuit breaker:** After N consecutive sync failures (e.g., 5), stop retrying automatically. Enter a degraded mode: the app continues to work offline, changes queue locally. Resume sync only after a cooldown period (e.g., 30 minutes) or explicit user action. Log the failure reason for diagnostics.
 
-MUST surface persistent sync failures to the user — never silently fail. A status indicator showing "Sync paused — check connection" is acceptable; silently losing changes is not.
-

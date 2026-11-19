@@ -1,5 +1,5 @@
 
-CRDTs are data structures that converge automatically across replicas with no coordination required. Use them when devices may be offline for extended periods or when there is no reliable central server.
+CRDTs are data structures that converge automatically across replicas with no coordination required.
 
 CRDT types for sync:
 
@@ -24,6 +24,4 @@ SELECT * FROM crsql_changes WHERE db_version > ?;
 -- Import changes from another device
 INSERT INTO crsql_changes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 ```
-
-SHOULD NOT use CRDTs when business-logic validation must happen before a write is accepted — CRDTs converge by definition and cannot reject writes after the fact.
 

@@ -1,31 +1,47 @@
 ---
 name: lint-artifact
-version: "2.0.0"
+version: "2.0.1"
 description: "Lint a cookbook artifact (principle, guideline, or recipe) against its type's formatting compliance checks. Auto-detects type from frontmatter."
 argument-hint: "[path-or-name]"
-allowed-tools: Read, Glob, Grep, Bash(wc *), AskUserQuestion
+allowed-tools: Read, Glob, Grep, Bash(wc *), Bash(git rev-parse *), Bash(PYTHONPATH=*), AskUserQuestion
 context: fork
 model: sonnet
 ---
 
-# Lint Artifact v2.0.0
+# Lint Artifact v2.0.1
 
 Validate a cookbook artifact for structural completeness, frontmatter correctness, and convention compliance. Auto-detects the artifact type from the `type` frontmatter field and runs the corresponding checks from `tbd/compliance/artifact-formatting/`.
 
 ## Startup
 
-lint-artifact v2.0.0
+lint-artifact v2.0.1
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.1). If they differ, print:
 
-> Warning: This skill is running v2.0.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.0.1 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> lint-artifact v2.0.0
+> lint-artifact v2.0.1
 
 Then stop.
+
+## Running cookr
+
+`cookr` below always means this checkout's own cookr, run exactly as:
+
+```
+PYTHONPATH=<repo>/skills/cookr/cli $COOKR_PY -m cookr -p <repo> <command>
+```
+
+`<repo>` is this checkout's root (`git rev-parse --show-toplevel`). `$COOKR_PY`
+is a Python 3.11 or later that imports `rich`, `questionary` and `yaml`:
+`python3` when `python3 -c "import rich, questionary, yaml"` exits 0, else
+`~/.cache/grow-cookbook/cookr-venv/bin/python` (see `/grow-cookbook`, *COOKR_PY*);
+a caller that names one, such as `/grow-cookbook`, passes its own. Write the
+path itself into each command. Never an installed `cookr` on PATH, and never
+the `skills/cookr/bin/cookr` shim.
 
 ## Argument Resolution
 
@@ -105,7 +121,7 @@ These checks apply to every artifact regardless of type:
 | FM-03 | Index entry matches folder | `cookbook/index.json` has an entry for `id` whose `path` is this folder and whose rdid is `<cookbook-rdid>.<type>.<path, dotted>` (`cookr validate` reports drift) | Missing entry, wrong path, or a `domain:` field present |
 | FM-04 | `type` matches expected type | Matches the detected type | Wrong value |
 | FM-05 | `version` is valid semver | Matches `X.Y.Z` pattern | Missing or malformed |
-| FM-06 | All required fields present | id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references, approved-by, approved-date | Any missing |
+| FM-06 | All required fields present | id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references: the guideline compliance file's gf-frontmatter-complete list. `approved-by` and `approved-date` are `/approve-artifact`'s stamp, written after lint, and are not checked here | A field of that list missing; never fail on a field that is present |
 | FM-07 | `license` is `MIT` | Exactly `MIT` | Other value |
 | FM-08 | `copyright` includes year and name | Contains 4-digit year and a name | Missing or malformed |
 | FM-09 | `created` and `modified` are valid dates | ISO 8601 date format | Invalid format |

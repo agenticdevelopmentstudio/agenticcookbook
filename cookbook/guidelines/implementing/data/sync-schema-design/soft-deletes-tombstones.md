@@ -1,6 +1,4 @@
 
-MUST NOT hard-delete records from synced tables. Hard deletes cannot be propagated — there is nothing left to sync.
-
 Use `is_deleted INTEGER NOT NULL DEFAULT 0` (SQLite) / `is_deleted BOOLEAN NOT NULL DEFAULT FALSE` (PostgreSQL). All normal queries filter on `is_deleted = 0`; sync queries include deleted records.
 
 ```sql

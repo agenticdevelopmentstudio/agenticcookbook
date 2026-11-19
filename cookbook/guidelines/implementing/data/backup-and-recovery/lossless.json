@@ -1,0 +1,115 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Choose the backup method that matches your durability requirements and operational constraints.",
+      "to": "should-choose-backup-method-by-durability-needs",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Choosing the method by durability requirements and operational constraints is kept at SHOULD, and the rule adds the per-method choices.",
+        "pin": "41d5353ed29c0cfc5fcb6fc77ce62c2ce869de59681d4f21724efd9aefcf1d49"
+      }
+    },
+    {
+      "sentence": "Use this when you need progress monitoring or integration into application code.",
+      "to": "should-choose-backup-method-by-durability-needs",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The rule names the Online Backup API for exactly the source's two conditions, progress monitoring or integration into application code, at SHOULD for an unkeyed recommendation.",
+        "pin": "479f930782e93263243b9e1c18a007f55bc2edd004ac99f0dcb129855f3073a8"
+      }
+    },
+    {
+      "sentence": "Do not use it to synchronize multiple writers.",
+      "to": "must-not-sync-writers-with-litestream",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Do not use it\" (it being Litestream) becomes MUST NOT use Litestream to synchronize multiple writers, with the same prohibition and a stronger level.",
+        "pin": "d872163312d0210710f5f41fe9f68a4dbbd653134ae0b9263ff157cddbc1073b"
+      }
+    },
+    {
+      "sentence": "Monitor database size so you can detect unexpected growth and decide when to VACUUM.",
+      "to": "should-monitor-database-size",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Monitoring database size and both purposes (detect unexpected growth, decide when to VACUUM) are kept at SHOULD.",
+        "pin": "513b99a390140f7b397f20116fade97765b5b05c0edfc8e9cf67dfadc0867b04"
+      }
+    },
+    {
+      "sentence": "Alert when `free_bytes / total_bytes` exceeds 25% — that is a signal to VACUUM.",
+      "to": "should-alert-on-free-page-ratio",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The 25% `free_bytes / total_bytes` alert threshold and its meaning (a signal to VACUUM) are kept at SHOULD.",
+        "pin": "38f1c2d579737032132e0eab5821e2231da3b39199eba81cbbb33a79a9c76969"
+      }
+    },
+    {
+      "sentence": "Run integrity checks on a schedule or after any suspect event (disk errors, process kills, power loss).",
+      "to": "should-check-integrity-on-schedule",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both triggers (on a schedule, after a suspect event) and all three example events are kept at SHOULD.",
+        "pin": "2a14338a339d3fac90864ae309cc936315cf080b58264531de20147f1154a39e"
+      }
+    },
+    {
+      "sentence": "Schedule `quick_check` on startup for databases that are critical to the application.",
+      "to": "should-quick-check-critical-databases-on-startup",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "`quick_check` on startup, limited to databases critical to the application, is kept at SHOULD.",
+        "pin": "7fa6aa2f2f33ef4bbd8ae584d0317c394dd16dc1036ca71b40ac5c52e9f37ccb"
+      }
+    },
+    {
+      "sentence": "Reserve `integrity_check` for periodic offline audits.",
+      "to": "should-reserve-integrity-check-for-offline-audits",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Reserving `integrity_check` for periodic offline audits is kept at SHOULD with the same limit.",
+        "pin": "0f2a420899f57a2d7f7735a99638ef35043c9cbcb17def28808698ba483c5546"
+      }
+    },
+    {
+      "sentence": "Define retention windows from the start.",
+      "to": "should-define-retention-windows-from-the-start",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Defining retention windows from the start is kept at SHOULD, along with its context (tombstones and outbox entries accumulate without a purge strategy).",
+        "pin": "45ac470e8ed11368b28074279088e5997e548b92fb6db9ecd41f0dff12246de6"
+      }
+    },
+    {
+      "sentence": "Only purge tombstones after confirming all sync targets have consumed them.",
+      "to": "must-purge-tombstones-only-after-all-targets-sync",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Only purge tombstones after confirming all sync targets have consumed them\" becomes MUST, with the \"only\" ordering limit and \"all sync targets\" kept.",
+        "pin": "7f0e7f3247c34cd5b87e97713a9f7cb2709de913175fcbd9e33dad607bc9a791"
+      }
+    },
+    {
+      "sentence": "After large purges, run `PRAGMA incremental_vacuum` to reclaim the freed pages.",
+      "to": "should-incremental-vacuum-after-large-purges",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (after large purges), the action (`PRAGMA incremental_vacuum`) and the reason (reclaim the freed pages) are all kept, at SHOULD.",
+        "pin": "f6a61e298ffe994af8aa5fe914292cff2c016d623e50946e1947ef562ad67cdd"
+      }
+    }
+  ]
+}

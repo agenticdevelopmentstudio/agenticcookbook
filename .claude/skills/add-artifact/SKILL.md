@@ -1,30 +1,46 @@
 ---
 name: add-artifact
-version: "2.0.0"
+version: "2.0.1"
 description: "Integrate a new or modified cookbook artifact — lint, approve, update the index and indexes, sync documentation. Implements the after-adding-an-artifact rule."
 argument-hint: "[path-or-name]"
-allowed-tools: Read, Glob, Grep, Edit, Write, Bash(rsync *), Bash(wc *), Bash(date *), Bash(cookr *), AskUserQuestion
+allowed-tools: Read, Glob, Grep, Edit, Write, Bash(rsync *), Bash(wc *), Bash(date *), Bash(cookr *), Bash(PYTHONPATH=*), AskUserQuestion
 context: fork
 ---
 
-# Add Artifact v2.0.0
+# Add Artifact v2.0.1
 
 Post-creation integration for cookbook artifacts. Takes a path to an artifact that already exists and executes the full `after-adding-an-artifact` rule: lint, approve, update the cookbook index and INDEX pages, update documentation.
 
 ## Startup
 
-add-artifact v2.0.0
+add-artifact v2.0.1
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.1). If they differ, print:
 
-> Warning: This skill is running v2.0.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.0.1 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> add-artifact v2.0.0
+> add-artifact v2.0.1
 
 Then stop.
+
+## Running cookr
+
+`cookr` below always means this checkout's own cookr, run exactly as:
+
+```
+PYTHONPATH=<repo>/skills/cookr/cli $COOKR_PY -m cookr -p <repo> <command>
+```
+
+`<repo>` is this checkout's root (`git rev-parse --show-toplevel`). `$COOKR_PY`
+is a Python 3.11 or later that imports `rich`, `questionary` and `yaml`:
+`python3` when `python3 -c "import rich, questionary, yaml"` exits 0, else
+`~/.cache/grow-cookbook/cookr-venv/bin/python` (see `/grow-cookbook`, *COOKR_PY*);
+a caller that names one, such as `/grow-cookbook`, passes its own. Write the
+path itself into each command. Never an installed `cookr` on PATH, and never
+the `skills/cookr/bin/cookr` shim.
 
 ## Argument Resolution
 

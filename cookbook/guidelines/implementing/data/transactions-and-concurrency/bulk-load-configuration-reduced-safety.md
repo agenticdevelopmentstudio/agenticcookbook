@@ -9,5 +9,3 @@ PRAGMA locking_mode = EXCLUSIVE;
 PRAGMA temp_store = MEMORY;
 ```
 
-Restore safe settings immediately after the bulk load completes. MUST NOT use these settings in production code paths.
-

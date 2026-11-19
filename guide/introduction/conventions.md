@@ -2,11 +2,11 @@
 id: 7a3e1f2c-8b4d-4e6a-9c5f-1d2e3f4a5b6c
 title: "Conventions"
 type: reference
-version: 2.0.0
+version: 2.3.3
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-11-09
+modified: 2026-11-16
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -86,8 +86,8 @@ triggers: []
 | `related` | Yes | UUIDs of related content ("see also"). Empty list `[]` if none. |
 | `references` | Yes | External URLs referenced by this content. Empty list `[]` if none. |
 | `ingredients` | Recipe only | UUIDs of the ingredients this recipe composes. Required when `type` is `recipe`. |
-| `approved-by` | Yes | Approval stamp from `/approve-artifact`. Format: `"approve-artifact <version>"`. Empty string `""` if not yet approved. |
-| `approved-date` | Yes | ISO 8601 date when the artifact was last approved. Empty string `""` if not yet approved. |
+| `approved-by` | Yes | Approval stamp from `/approve-artifact`. Format: `"approve-artifact <version>"`. Empty string `""` if not yet approved. (Written by /approve-artifact; not linted.) |
+| `approved-date` | Yes | ISO 8601 date when the artifact was last approved. Empty string `""` if not yet approved. (Written by /approve-artifact; not linted.) |
 | `triggers` | Guideline only | Activity or context tags that make this guideline relevant to an AI agent. Empty list `[]` if not yet classified. Values from the canonical trigger taxonomy in `guide/introduction/trigger-guide.md`. |
 
 ### Source Folders
@@ -108,6 +108,83 @@ directly, or compile a doc with `cookr compile`, edit it, fold it back with
 `cookr convert --update <path>`, then delete the doc. `cookr validate` fails while a compiled doc
 present beside its folder disagrees with it, and a committed compiled doc fails cookr's tests.
 The full format is in `docs/superpowers/specs/2026-10-03-artifact-source-folder.md`.
+
+### Roles
+
+A part may carry a `role` in `artifact.json`: `rules`, `how-to`, `examples`,
+`review-focus`, `review-bar`, `build-bar`, `rationale` or `references`. The
+intro and the history never carry one. An artifact with no role is compiled as
+it always was. A guideline with roles may live under any use-case folder but
+`guidelines/reviewing/`, which is folded into each topic and never roled; a
+principle may carry roles too, an ingredient or a recipe never. A roled artifact
+gives every other part a role, names each rule in its `rules` parts
+(`- **kebab-name**: … MUST|SHOULD|MAY …`), and sets no `routes` and no `hosts/`.
+`cookr validate` lists what is wrong.
+
+It compiles to four skills, each the intro plus the parts of its roles:
+
+| Skill | Roles | Name |
+|---|---|---|
+| builder | `rules`, `how-to`, `examples` | `<use-case>-<tail>` |
+| build-verifier | `build-bar` | `verifying-build-<tail>` |
+| reviewer | `rules`, `review-focus` | `reviewing-<tail>` |
+| review-verifier | `review-bar` | `verifying-review-<tail>` |
+
+The builder keeps the name the artifact would have unroled; the other three
+replace only its use case: `guidelines/planning/data/t` gives `planning-data-t`
+and `reviewing-data-t`, and `principles/t`, which has no use case, keeps its
+type: `principle-t` and `reviewing-principle-t`. Two artifacts whose skills would share a name, after a long name
+is cut to the hosts' limit, are refused, each naming the other.
+
+`rationale` and `references` go to each skill's linked reference files, never
+its SKILL.md. Each skill has its own description and routes under its own use
+case. A builder writes the code, a reviewer reviews it, and each
+verifier grades the other's work against its bar.
+
+### Research
+
+Every artifact is written from research on its topic, and the research is kept
+in the artifact's folder, in `research/`:
+
+- `research/research.json`: the research-results document
+  (`guidelines/researching/evidence/research-results-document`). Its `claims`
+  list holds one record per claim: `id` (kebab-case, unique), `question` (one of
+  `best-practices`, `known-solutions`, `platform-guidelines`, `experts-view`),
+  `claim`, `citations` (each with `title`, `author`, `publisher`, `date`, `url`,
+  `accessed`), `source_type`, `quote`, `generated_by`, `query`, `trust`
+  (`{"score": 0-100, "basis"}`) and `independence` (`multi-independent`,
+  `single` or `uncorroborated`). Its `verdicts` list gives each rule
+  checked its verdict, one of `supported`, `contradicted`, `unsupported` or
+  `new`, with the claims it rests on (at least one); every claim a rule
+  cites is named by a verdict. 
+  A rule the research cannot support is recorded as a claim itself, its source the cookbook's own text at the topic's base commit, with an `unsupported` verdict (`contradicted` when the research finds against it) naming that claim; a rule kept for the owner cites it, and `cookr validate` passes it with an `owner-decides` warning naming the rule and the claim.
+- `research/research.md`: the same, readable, under four headings in this
+  order: `## Best practices`, `## Known solutions`, `## Platform guidelines`,
+  `## The expert's view`.
+
+Each named rule cites the claims it stands on, once, at the end of its bullet:
+`- **kebab-name**: … MUST … (claim: <id>)`, or `(claims: <id>, <id>)`. The
+citation is provenance, not content: the compiled skills leave it out, and
+`cookr roles lossless` reads a rule without it, so a rule that gains its
+citation is still verbatim.
+
+`cookr validate --research <folder>` checks one folder's research alone,
+without its rules' citations: the check at the end of research, before any
+rule cites it.
+
+Nothing compiles, walks or reads `research/` as a spec, so it never reaches a
+doc or a skill. `/grow-cookbook` is the procedure that writes it.
+
+**What `cookr validate` checks, for now.** The research check is enforced only
+for the artifacts the finish-the-cookbook-roles plan touches: every roled
+artifact and every artifact that has a `research/` folder. Every other artifact
+is left alone until Task 8b of that plan brings the rest in. A roled artifact
+with no `research/` is refused, unless it is named in
+`cookbook/research-exempt.json`. That file lists the roled data topics
+converted before research-first was ruled. Each topic leaves the list in the
+commit that adds its research (Task P2), and a listed topic that has its
+`research/`, that is no roled artifact, or that is not one of those 21 data
+topics, is refused by name: the list only shrinks.
 
 ### Change History
 
@@ -366,6 +443,12 @@ Format:
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.3.3 | 2026-11-16 | Mike Fullerton | `approved-by` and `approved-date` are written by /approve-artifact after lint, so lint does not check them |
+| 2.3.2 | 2026-11-16 | Mike Fullerton | Research: every verdict names a claim; a rule the research cannot support cites itself as a claim and is warned for the owner; `validate --research` checks research alone |
+| 2.3.1 | 2026-11-16 | Mike Fullerton | Research: the citation ends its rule, is left out of skills and ignored by `roles lossless`; every cited claim has a verdict; the exemption list only shrinks |
+| 2.3.0 | 2026-11-16 | Mike Fullerton | Research: each artifact keeps its research in `research/`, each named rule cites a claim of it, and `cookr validate` checks every roled or researched artifact until Task 8b brings in the rest |
+| 2.2.0 | 2026-11-16 | Mike Fullerton | Roles: a roled guideline may live under any use case but reviewing, and a principle may be roled; the builder keeps its name and two topics whose skill names collide are refused |
+| 2.1.0 | 2026-11-15 | Mike Fullerton | Roles: a part may carry a role, and a roled guideline compiles to a builder, a reviewer and their two verifiers |
 | 2.0.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID identity, rdids and index.json replace `domain`; implementations live in index.json and code roots in `.cookr.json`; compiled docs are not committed |
 | 1.7.0 | 2026-10-03 | Mike Fullerton | Source folders: artifacts are stored as folders and the .md is compiled from them |
 | 1.6.0 | 2026-09-25 | Mike Fullerton | Library cookbooks: Reference Implementations section and cookbook.json code block |

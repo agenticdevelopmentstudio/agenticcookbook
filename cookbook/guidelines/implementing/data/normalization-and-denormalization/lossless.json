@@ -1,0 +1,70 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "**Storing computed values.** Do not store counts, totals, or derived booleans as columns.",
+      "to": "must-not-store-computed-values",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Do not store counts, totals, or derived booleans as columns\" becomes MUST NOT with all three kinds kept, along with the source's \"query the rows\" alternative.",
+        "pin": "da0cc1fabf9599a0f6e15fdba550ae2ad383af746917499a99cde9bc3d28b6af"
+      }
+    },
+    {
+      "sentence": "Rules for denormalization in sync-capable schemas:",
+      "to": [
+        "must-maintain-denormalized-column-via-trigger",
+        "must-include-denormalized-column-in-sync-payloads",
+        "should-treat-normalized-source-as-authoritative",
+        "should-prefer-denormalizing-stable-data"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The lead-in's sync-capable-schema scope is on all four rules, and each bullet keeps its level (two MUST, one SHOULD) with its reason; the unkeyed \"Prefer\" bullet becomes SHOULD.",
+        "pin": "1a919b7167b99ef75ea02702563cf74f9cd6801a962f090bc198a2ebe3423ff0"
+      }
+    },
+    {
+      "sentence": "Prefer denormalizing immutable or rarely-changing data (names, labels) over frequently-changing values",
+      "to": "should-prefer-denormalizing-stable-data",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The unkeyed \"Prefer\" becomes SHOULD prefer, keeping immutable/rarely-changing over frequently-changing data, with its examples and the sync-capable-schema scope.",
+        "pin": "7feed95ae90f01b18474c814ccf0b92ffce133c3ed13e248af8f5e5d76bee295"
+      }
+    },
+    {
+      "sentence": "MUST maintain the denormalized column via trigger so it stays in sync within the local database",
+      "to": "must-maintain-denormalized-column-via-trigger",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST maintain via trigger, with its reason (stays in sync locally), is kept under the source list's sync-capable-schema scope.",
+        "pin": "7db5f7f1fa8fc0ccdbb457b427bdf0fcee22e0291179f07c5934d588f89946b9"
+      }
+    },
+    {
+      "sentence": "MUST include the denormalized column in sync payloads so the server stays consistent",
+      "to": "must-include-denormalized-column-in-sync-payloads",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST include in sync payloads, with its reason (server stays consistent), is kept under the sync-capable-schema scope.",
+        "pin": "912fe7799591bdf84d04033ceff43cbdf14753793f191b33326cc0ccea6bcda0"
+      }
+    },
+    {
+      "sentence": "SHOULD treat the authoritative value as the normalized source; the denormalized copy is derived",
+      "to": "should-treat-normalized-source-as-authoritative",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD treat the normalized source as authoritative, with the derived-copy clause, is kept under the sync-capable-schema scope.",
+        "pin": "2b4e86c52409628c289bc238a7fdf5d6ea76f399501f6af629010693ca77bd07"
+      }
+    }
+  ]
+}

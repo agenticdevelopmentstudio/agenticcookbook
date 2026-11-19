@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.14.0"
+version: "0.22.0"
 description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to scope a change to the recipes it touches, to check what recipe work a change still owes, to record which code implements a recipe and confirm it, to rename or look up a recipe's id, to upgrade a cookbook to format 2, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
-argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
+argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|roles set|roles check|roles lossless|roles worklist|roles gaps|fold|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.14.0
+# cookr v0.22.0
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill, including recipe
@@ -267,6 +267,218 @@ start of each session, so you rarely run it yourself.
 A compiled skill's description is the artifact's summary as plain text (bold
 markers dropped), and when the artifact names platforms they go under
 `metadata.platforms`, which skill-router's `--platform` filters on.
+
+**Roles.** A guideline or principle whose parts carry roles (`role` in
+`artifact.json`) compiles to four skills instead of one, each the intro plus the parts of its
+roles, in part order:
+
+| Skill | Roles | Name |
+|---|---|---|
+| builder | `rules`, `how-to`, `examples` | `<use-case>-<tail>` (the name it has today) |
+| build-verifier | `build-bar` | `verifying-build-<tail>` |
+| reviewer | `rules`, `review-focus` | `reviewing-<tail>` |
+| review-verifier | `review-bar` | `verifying-review-<tail>` |
+
+Each routes under its own use case (`coding/verifying-build/...`) and carries
+`metadata.skill: <kind>`; the receipt records its `kind`. The builder keeps the
+artifact's description; the other three say what they are for ("Review code
+against this guideline: ..."). `rationale` and `references` parts go to each
+skill's `references/`. Only the builder shows the Reference Implementations. A
+verifier ends its bar with the line it grades by. The templates are
+`<type>.<kind>.md`. A roled guideline may live under any use case but
+`guidelines/reviewing/` (folded, never roled); a principle `principles/t`
+keeps its type segment: `principle-t`, `reviewing-principle-t`,
+`verifying-build-principle-t` and `verifying-review-principle-t`. An ingredient or
+recipe is never roled. One `cookr validate` faults (a missing role, an unnamed
+rule, a `hosts/` directory, its own `routes`, a skill name another artifact
+also derives) is refused. Its skills
+get no variants, and `payload` does not offer it for tuning. An artifact with
+no role compiles as before.
+
+**Research.** An artifact's research lives in its folder's `research/`
+(`research.json`, the research-results document, and `research.md`, under the
+four question headings `## Best practices`, `## Known solutions`,
+`## Platform guidelines` and `## The expert's view`, in that order). Nothing
+compiles, walks or reads `research/` as a spec. `cookr validate`'s Research
+section checks every roled artifact and every artifact that has a `research/`
+folder, and leaves the rest alone until Task 8b of the roles plan brings them
+in. It refuses a roled artifact with no `research/`, a claim missing a field of
+its record, a rule that cites no claim or an unknown one, a citation that
+does not end its rule, and a cited claim no verdict names. A rule cites claims
+once, at the end of its named bullet, as `(claim: <id>)` or
+`(claims: <id>, <id>)`; the skill compile leaves the citation out, and
+`roles lossless` reads a rule without it. `research` is a reserved spec name,
+like `hosts` and `versions`. A roled topic whose research is still to come is
+named in the cookbook's `research-exempt.json`, which may name only the 21
+data topics roled before research began and is emptied as research lands. A
+listed topic that has its `research/`, that is no roled artifact, or that is
+not one of the 21, is refused by name. Every verdict names a claim. A rule the research cannot support is recorded as a claim itself, its source the cookbook's own text at the topic's base commit, with an `unsupported` verdict (`contradicted` when the research finds against it) naming that claim; a rule kept for the owner cites it, and `cookr validate` passes it with an `owner-decides` warning naming the rule and the claim. Only a rule citing such a prior-cookbook-text claim is warned of; a rule citing a research claim that shares the verdict is not the owner's.
+`cookr validate --research <folder>` checks that folder's research alone,
+without its rules' citations, as research ends; a path that is no artifact
+source folder (a typo) exits 2 naming it, never `no-research`.
+`/grow-cookbook` in the agenticcookbook repo is the procedure that writes the
+research.
+
+**Converting a topic to roles.** Six commands, each printing JSON (`roles gaps` with `--json`):
+
+- `cookr roles set <folder> --part <name>=<role>... [--twin-differs TEXT]` gives the
+  named parts roles (`<name>=none` clears one) and prints the parts with the
+  census findings left. A part the folder lacks, a role not in the list, or a
+  role on the intro or history is refused and nothing is written.
+- `cookr roles check <folder>` runs the census (name collisions judged against
+  the whole cookbook) and, when it is clean, composes the four skills: their
+  names, sizes and the rule count. Exit 1 on any finding.
+- `cookr roles lossless <folder> --base <rev> [--copy <folder>]... [--draft]`
+  lists every sentence the folder (and each copy folded into it, at its
+  `--base` path) had at `<rev>` that is no whole sentence of its parts now
+  (`~~struck~~` text and `<!-- comments -->` removed, across lines). A
+  sentence is a line split after `.`, `!` or `?` before a capital, a backtick
+  or `*`, list markers and whitespace normalized; one moved between parts still
+  counts, and so does one that now follows a rule's or a rationale bullet's
+  label. A markdown-only line of the base — a thematic break (`---`) or a
+  heading that only restates the title — is not read. Every other one is
+  accounted for in the folder's `lossless.json`,
+  `{"base": "<rev>", "copies": ["<copy folded in, its path at rev>"], "moved":
+  [{"sentence": "<base text verbatim>", "to": "<target>" | [targets],
+  "judged": {"by", "verdict": "pass" | "fail", "note", "pin"},
+  "retargeted": {"from", "to", "judged", "seal"}}], "obsolete":
+  [{"sentence", "reason", "judged"}], "retargets": ["<sentence>"]}` (named
+  copies are read as `--copy`; `judged`, `retargeted` and `retargets` are
+  optional, the last two written only by `--retarget`; a sentence named twice
+  is refused). The gate does not
+  prove meaning: it is an accounting, tripwires, and a judge's recorded,
+  pinned verdict.
+  A target is a rule, or a non-rule part judged by its one item or line
+  (code lines included) that holds most of the sentence. A moved sentence
+  passes when its targets (at most 3) exist, together hold at least 80% of its
+  content words (function words dropped, light suffixes stemmed), each holds at
+  least one, and the tripwires hold: the targets are split into clauses (lines,
+  sentences, `;`, `:`, an em dash or a spaced en dash, a parenthesis, a comma,
+  ` or `, ` while `; struck-through text dropped; a clause of only RFC
+  keywords and negations, such as "Never", joined to its neighbour), and each
+  clause of the
+  sentence is matched to the one target clause that holds most of it, which
+  must keep its negations (as many; `without` never stands in for `never`),
+  every RFC 2119 level it states (`required` counts as MUST; MAY and OPTIONAL
+  only in capitals), every number (number words such as "three", "twice",
+  "half" count; unit spellings are unified) and every meaning word (avoid,
+  only, at least, at most, before, after, until, unless, except, without,
+  instead, prefer, minimum, maximum, more than, less than, fewer than). A
+  parenthetical gloss holding no meaning word of its own is read with the
+  before, after or until that opens the clause it glosses ("After applying
+  server records (step 5 of the sync cycle)" keeps "after step 5"), and
+  nothing else. A rule's name lends a moved sentence nothing (a
+  bare lead-in aside): it is judged on its text. A bare lead-in (ends in `:`, at most 8 content words, no
+  RFC keyword, no negation) maps to the rules it introduced, marked
+  `"lead_in": true`, when those rules, their names (split at the hyphens:
+  "Access methods:" is held by `platform-access-methods`) and their rationale
+  bullets hold its own words (generic ones such as "rules", "following",
+  "three" left out) and its numbers. A framing lead-in (ends in `:`, an RFC level, a word such as
+  "follow", "rules" or "these") maps to rules that all carry that level,
+  marked `"framing": true`, when they hold every one of its other words
+  ("migration", say), one rule holding them all, and its numbers. A lead-in
+  may name every rule it introduced.
+  A moved sentence is verbatim, marked `"verbatim": true` and needing no
+  judge, only when it equals one whole sentence of a target once both are
+  normalised (list markers, paired emphasis markers around words and code
+  span backticks dropped, whitespace collapsed outside code, `~~struck~~` text
+  and comments removed; the text of a code span, and a `_` or `*` inside a
+  word, is kept as written); one inside a longer sentence, or only in struck
+  text, is reworded. Every reworded entry (lead-ins included) and every
+  `obsolete` entry needs a judged pass whose `pin` matches; a `judged` fail
+  always fails. A moved entry whose judged fail named content carried by a
+  rule or part outside its `to` may be retargeted once, by `--retarget`
+  (below), and a fresh judge rules on the new targets. A second retarget fails
+  the entry by name, "a second retarget is refused": a `retargeted` record
+  whose `seal` does not match (one written by hand), a `to` other than the
+  record's `to`, or a sentence in `retargets` with no record. Otherwise a
+  retargeted entry is judged like any other: a fail whose pin matches fails it,
+  marked "after its one retarget"; once the targets' text is rewritten that
+  fail is stale and the entry is re-judged; a pass clears it. A retargeted
+  entry prints `"retargeted": true`; an obsolete entry never has a record. The pin is the sha256 of the JSON `[sentence, sorted to-list,
+  the normalised full text of each target]` for a moved entry and `[sentence,
+  the copy it came from, reason, the normalised full text of the topic]` for
+  an obsolete one, so a verdict whose sentence, targets, target text, topic
+  text or reason has changed, or that has no pin, is `stale`: it counts as
+  unjudged, and stderr names it. The judge writes the pin with its verdict;
+  nothing stamps one. `--draft` passes unjudged and stale
+  entries (the JSON says `"draft": true` and stderr says DRAFT);
+  `--require-judged`, the default, is accepted and ignored.
+  An `obsolete` entry, printed on stderr, is for a folded copy's sentence that
+  only pointed at the topic; a sentence of the topic's own base, or one stating
+  an RFC keyword, a negation or a meaning word, is refused. Every copy folded
+  since `--base` is read: a "Fold <path> into this topic" Change History row
+  added since `--base`, and an artifact folder at `--base` with the topic's
+  folder name that is gone now, must each be in `copies` or `--copy`, and a
+  listed copy that still exists fails. Prints `{checked, draft, missing,
+  failures, obsolete, moved, unused, counts}`, `counts` being `verbatim`,
+  `reworded_judged`, `reworded_unjudged`, `judged_fail`, `stale`,
+  `obsolete_judged` and `obsolete_unjudged` (also on stderr); exit 1 on any
+  missing sentence, failed account or unused entry (each printed on stderr),
+  or when the file's base is another commit than `--base`. The file never
+  reaches a compiled doc or skill.
+- `cookr roles lossless --pin-for <folder> --entry <n>` prints `{folder, entry,
+  kind, sentence, pin}` for entry `n` (from 1: `moved` in order, then
+  `obsolete`) of the folder's `lossless.json`, the pin its judge writes beside
+  the verdict. It writes nothing; an entry that does not exist, or whose target
+  or copy is gone, is refused.
+- `cookr roles lossless --retarget <folder> --entry <n> --to <name>
+  [--to <name>]...` retargets moved entry `n` once: its `to` and its judged
+  fail move into `"retargeted": {"from", "to", "judged", "seal"}` (`seal` the
+  sha256 of the sentence, `from`, `to` and the fail), `to` becomes the new
+  targets, `judged` goes, and the sentence joins the file's `retargets`
+  ledger. Prints `{folder, entry, sentence, from, to}`. It refuses, writing
+  nothing, an obsolete or missing entry, an entry already retargeted or in the
+  ledger (a second retarget), one with no judged fail whose pin matches its
+  targets now, and new targets that do not exist, number more than 3, equal
+  the old ones, or fail the 80% bar or a tripwire (the check `--draft` runs),
+  so a bad target never spends the one retarget. The seal is taken over
+  canonical JSON (sorted keys, fixed separators): re-serialising the file
+  keeps it. `from` is therefore the targets the fail was pinned on.
+- `cookr fold <copy> --into <topic> [--author A] [--date D]` appends each part of
+  the unroled copy holding a sentence the topic lacks as a new unroled part (the
+  census then names it until it gets a role), records the fold in the topic's
+  Change History as `cookr bump` would, redirects every link to it across the
+  cookbook to the topic (the topic's own links to it become plain text), then
+  deletes the copy. A cookbook folder that cannot be read stops it before
+  anything is written. Prints
+  `{"redirected": [paths], "parts_added": [names], "identical": bool}`. A roled
+  copy is refused. Approve the topic afterwards with `/approve-artifact`.
+- `cookr roles worklist --map <file> --batches <file> --new-rows <file>
+  [--cookbook <dir>] [--json] [--out <file>]` lists every guideline topic (a
+  distinct folder name) to convert: its survivor (`implementing/`, then
+  `planning/`, `testing/`, `shipping/`, the other use cases, `reviewing/` last;
+  a topic held only under `reviewing/<area>/` gets `new_home`
+  `implementing/<area>/`), its copies to fold, each flagged `identical` when its
+  line similarity to the survivor's twin text is at least 0.9 (`exact` when
+  byte-equal) and `fold_check` when below 0.2 or listed in `--batches`, the
+  specialities standing on it with their case, or `authored` when none does,
+  and `roled`. cookr inventories the cookbook; the rest is the caller's, in
+  three JSON files. `--map`: `{"specialities": [all], "assignments":
+  [{"speciality", "case", "specialists", "topic"}], "covers": [{"speciality",
+  "specialist", "via"}]}` (a cover makes a building row: the speciality builds
+  whatever `via` stands on). `--batches`: `{"labels": {key: name}, "areas":
+  {area: key}, "default": key, "overrides": {path: {"batch", "new_home"}},
+  "fold_check": [copy]}`. `--new-rows`: `{"rows": [{"path", "kind",
+  "specialities", "owner_decision", "note"}]}`, topics still to write; a
+  speciality a new row claims is listed there alone. Every declared speciality
+  must stand on a topic or a new row and every topic named must exist; a
+  missing or malformed file, or any offender, is an error that names them.
+  Without `--json` it prints the counts.
+- `cookr roles gaps <folder> --against <file> [--against <file>]... [--json]`
+  measures each reference file against the topic's own text (every `*.md`
+  in `<folder>`, never `research/`). A reference file is plain text the
+  caller extracts; cookr knows no team. Each sentence of 6 words or more
+  (fenced code dropped; split after `. ! ? ; :`, at a blank line, before a
+  list item and around a heading or a table row; a wrapped line within a paragraph joins
+  the next, never ending a sentence) is held when
+  its normalised form (lowercase, every run of non `[a-z0-9]` one space) is a
+  substring of the topic's, or 80% of its words are among the topic's words;
+  otherwise the topic lacks it. Prints, per file, its sentence, held and
+  lacking counts and each lacking sentence in its original wording; `--json`
+  prints `{"folder", "references": [{"file", "sentences", "held", "lacking",
+  "lacking_sentences"}]}`. Exit 0; 2 when `<folder>` is no artifact source
+  folder or a file cannot be read.
 
 A recompile prunes only what the receipt lists. `--check` exits 1 when anything
 is stale or missing. The set fails on a duplicate name, a rendering a host would

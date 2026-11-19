@@ -103,6 +103,8 @@ def test_an_artifact_doc_grouped_under_a_parents_folder_is_a_doc(tmp_path):
 def test_reserved_names(tmp_path):
     assert "skips" in reserved_name("ui/index")
     assert "host additions" in reserved_name("ui/hosts")
+    assert "earlier versions" in reserved_name("ui/versions")
+    assert "research" in reserved_name("ui/research")
     assert reserved_name("ui/rows") is None
     (tmp_path / "ui").mkdir()
     (tmp_path / "ui" / "artifact.json").write_text('{"parts": [{"part": "rules"}]}', encoding="utf-8")

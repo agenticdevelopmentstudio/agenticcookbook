@@ -1,6 +1,4 @@
 
-MUST write to the local data table and the sync queue in a single transaction. This guarantees the outbox always reflects local state — there is no window where a change is visible on screen but not queued for sync.
-
 ```python
 db.execute("BEGIN TRANSACTION")
 

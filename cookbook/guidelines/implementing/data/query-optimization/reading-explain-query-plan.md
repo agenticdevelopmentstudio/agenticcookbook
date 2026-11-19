@@ -1,6 +1,4 @@
 
-Always check the query plan before shipping a new query that touches large tables.
-
 ```sql
 EXPLAIN QUERY PLAN
 SELECT o.id, c.name
@@ -20,5 +18,5 @@ What each term means:
 - `MATERIALIZE` — subquery result stored in a temp table; may be avoidable
 - `CO-ROUTINE` — subquery yields rows on demand; generally fine
 
-Run `ANALYZE` (or `PRAGMA optimize`) before evaluating plans on tables with real data. Without statistics, the planner uses heuristics that may not reflect actual row counts.
+Without statistics, the planner uses heuristics that may not reflect actual row counts.
 

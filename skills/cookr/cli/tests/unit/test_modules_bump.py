@@ -140,3 +140,29 @@ def test_existing_row_for_new_version_is_refused(tmp_path):
     before = _doc(rows)
     code, out = _bump(tmp_path, before)
     assert code != 0 and out == before
+
+
+def _renamed(tmp_path):
+    """A converted artifact whose part is named apart from its heading's slug and roled,
+    its doc recompiled from the folder."""
+    import json
+    folder = _converted(tmp_path)
+    manifest = json.loads((folder / "artifact.json").read_text())
+    entry = next(e for e in manifest["parts"] if e["part"] == "overview")
+    entry.update(part="look-for", role="review-focus")
+    (folder / "artifact.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (folder / "overview.md").rename(folder / "look-for.md")
+    assert main(["compile", str(folder)]) == 0
+    return folder
+
+
+def test_bump_keeps_a_parts_name_and_role_when_its_name_is_not_its_heading_slug(tmp_path):
+    import json
+    folder = _renamed(tmp_path)
+    assert main(["bump", str(folder), "--summary", "Fixed it", "--author", "Tester",
+                 "--date", "2026-09-25"]) == 0
+    entry = next(e for e in json.loads((folder / "artifact.json").read_text())["parts"]
+                 if e.get("heading") == "Overview")
+    assert entry == {"part": "look-for", "heading": "Overview", "role": "review-focus"}
+    assert (folder / "look-for.md").is_file() and not (folder / "overview.md").exists()
+    assert main(["compile", "--check", str(folder)]) == 0

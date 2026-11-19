@@ -223,7 +223,6 @@ database-operations:
 - guidelines/planning/data/sync-engine-design/
 - guidelines/planning/data/sync-protocol/
 - guidelines/planning/data/transactions-and-concurrency/
-- guidelines/reviewing/data/query-optimization/
 - guidelines/shipping/backup-and-recovery/
 - guidelines/shipping/schema-evolution/
 - guidelines/testing/database-testing/
@@ -421,7 +420,6 @@ performance-optimization:
 - guidelines/planning/data/indexing/
 - guidelines/planning/networking/caching/
 - guidelines/planning/ui/rendering-strategy/
-- guidelines/reviewing/data/query-optimization/
 - guidelines/reviewing/skills-and-agents/performance/
 - guidelines/shipping/windows-arm64-and-aot/
 platform-integration:

@@ -1,5 +1,5 @@
 
-New schemas SHOULD start at third normal form (3NF). A normalized schema:
+A normalized schema:
 
 - Eliminates redundancy — each fact is stored once
 - Prevents update anomalies — changing one thing means changing it in one place

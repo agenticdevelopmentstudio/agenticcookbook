@@ -4,11 +4,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ..core import hosts, neutrality, payload, refs, tuning, twins
+from ..core import hosts, neutrality, payload, refs, research, roles, tuning, twins
 from ..core.artifact import ArtifactError, find_folders, load_folder
 from ..core.artifact_build import compile_doc, unconverted_results
 from ..core.checks import phase_a, show
 from ..core.errors import NoCookbookRootError
+from ..core.roots import cookbook_of
 from ..core.skill import templates_root
 from ..indexing import engine
 
@@ -22,7 +23,9 @@ _COMPILE_FIX = ("Edited the folder: run `cookr compile`. "
 
 
 def register(parser) -> None:
-    pass
+    parser.add_argument("--research", metavar="FOLDER", default=None,
+                        help="Check only this artifact folder's research/ (research.json and "
+                             "research.md), not its rules' citations: the check at the end of research.")
 
 
 def _drift(root: Path, configs_dir: Path, ui) -> int:
@@ -60,6 +63,14 @@ def _drift(root: Path, configs_dir: Path, ui) -> int:
 
 
 def run(args, ctx) -> int:
+    if getattr(args, "research", None):
+        # The artifact's own cookbook, found from the artifact, not the cwd.
+        folder = ctx.artifact(Path(args.research)).absolute()
+        root = cookbook_of(folder) or ctx.cookbook_root
+        if root is None:
+            raise NoCookbookRootError(f"{folder}: not inside a cookbook. Name the artifact's "
+                                      "folder, or pass -p.")
+        return _research_only(root, folder, ctx.ui)
     if ctx.cookbook_root is None:
         raise NoCookbookRootError(
             "Could not find a cookbook root. Run from inside a cookbook dir, or pass -p."
@@ -89,8 +100,14 @@ def run(args, ctx) -> int:
     ctx.ui.section("Guideline rules")
     g_exit = _rules(root, folders, ctx.ui)
 
+    ctx.ui.section("Roles")
+    h_exit = _roles(root, folders, ctx.ui)
+
+    ctx.ui.section("Research")
+    i_exit = _research(root, folders, ctx.ui)
+
     ctx.ui.blank()
-    failed = a_exit or b_exit or c_exit or d_exit or e_exit or f_exit or g_exit
+    failed = a_exit or b_exit or c_exit or d_exit or e_exit or f_exit or g_exit or h_exit or i_exit
     if failed:
         ctx.ui.error("Validation failed.")
     else:
@@ -157,6 +174,70 @@ def _rules(root: Path, folders: list[Path], ui) -> int:
     ui.table(["guideline", "finding", "fix"],
              [[str(f.folder.relative_to(root)), f.kind, twins.RULE_FIX[f.kind]] for f in findings])
     return 1
+
+
+def _roles(root: Path, folders: list[Path], ui) -> int:
+    """An artifact whose parts carry roles has every part it needs, with text,
+    named rules its build bar cites, no unknown role and no part without one."""
+    findings = roles.census(folders)
+    if not findings:
+        roled = sum(1 for f in folders if _roled(f))
+        ui.ok(f"No roled artifact has a missing, empty, unknown or unnamed part, and every build bar "
+              f"cites exactly its rules ({roled} roled).")
+        return 0
+    ui.table(["artifact", "finding", "detail", "fix"],
+             [[str(f.folder.relative_to(root)), f.kind, f.detail, roles.FIX[f.kind]] for f in findings])
+    return 1
+
+
+def _where(root: Path, folder: Path) -> str:
+    return str(folder.relative_to(root)) if folder.is_relative_to(root) else str(folder)
+
+
+def _owner(root: Path, folders: list[Path], ui) -> None:
+    """Rules kept that the research does not support: a warning per rule, for the owner."""
+    owed = research.owner_rules(root, folders)
+    if owed:
+        ui.warn(f"{len(owed)} rule(s) the research does not support, left for the owner to decide:")
+        ui.table(["artifact", "finding", "detail", "fix"],
+                 [[_where(root, f.folder), f.kind, f.detail, research.FIX[f.kind]] for f in owed])
+
+
+def _research_only(root: Path, folder: Path, ui) -> int:
+    ui.title(f"cookr validate --research · {_where(root, folder)}")
+    findings = research.research_only(root, folder)
+    if findings:
+        ui.table(["artifact", "finding", "detail", "fix"],
+                 [[_where(root, f.folder), f.kind, f.detail, research.FIX[f.kind]] for f in findings])
+        ui.error("Research failed.")
+        return 1
+    _owner(root, [folder], ui)
+    ui.ok("Research passed.")
+    return 0
+
+
+def _research(root: Path, folders: list[Path], ui) -> int:
+    """Every roled artifact, and every artifact with a research/ folder, has
+    research whose claims are complete, and each of its rules cites a claim of
+    it; a roled topic still to be researched is named in the exemption list."""
+    findings = research.census(root, folders)
+    _owner(root, folders, ui)
+    if not findings:
+        topics, _ = research.exemptions(root)
+        checked = sum(1 for f in folders if (f / research.RESEARCH_DIR).is_dir())
+        ui.ok(f"Every researched artifact's rules cite its research ({checked} researched; "
+              f"{len(topics)} roled topic(s) exempt until their research lands).")
+        return 0
+    ui.table(["artifact", "finding", "detail", "fix"],
+             [[_where(root, f.folder), f.kind, f.detail, research.FIX[f.kind]] for f in findings])
+    return 1
+
+
+def _roled(folder: Path) -> bool:
+    try:
+        return load_folder(folder).roled
+    except ArtifactError:
+        return False
 
 
 def _reason(folder: Path):

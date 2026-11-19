@@ -249,3 +249,26 @@ def test_compile_doc_renders_implementations_from_index(tmp_path):
     assert "| Platform | Location | Conformance |" in text
     assert "| web | `web/Card.tsx` | confirmed |" in text
     assert "| ios | (planned) | planned |" in text
+
+
+def test_convert_update_keeps_a_parts_name_and_role_when_its_name_is_not_its_heading_slug(work):
+    assert main(["convert"]) == 0
+    folder = work / "cookbook" / "transactions-and-concurrency"
+    manifest = json.loads((folder / "artifact.json").read_text())
+    entry = next(e for e in manifest["parts"] if e.get("heading") and e["part"] != "history")
+    old, heading = entry["part"], entry["heading"]
+    entry.update(part="look-for", role="review-focus")
+    (folder / "artifact.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (folder / f"{old}.md").rename(folder / "look-for.md")
+    assert main(["compile", str(folder)]) == 0
+    doc = work / "cookbook" / "transactions-and-concurrency.md"
+    doc.write_text(doc.read_text().replace(f"## {heading}\n", f"## {heading}\n\nAdded in the doc.\n", 1)
+                   + "## Brand New\n\nNew.\n")
+    assert main(["convert", "--update"]) == 0
+    parts = json.loads((folder / "artifact.json").read_text())["parts"]
+    assert next(e for e in parts if e.get("heading") == heading) == {
+        "part": "look-for", "heading": heading, "role": "review-focus"}
+    assert next(e for e in parts if e.get("heading") == "Brand New") == {"part": "brand-new", "heading": "Brand New"}
+    assert "Added in the doc." in (folder / "look-for.md").read_text()
+    assert not (folder / f"{old}.md").exists()
+    assert main(["compile", "--check"]) == 0

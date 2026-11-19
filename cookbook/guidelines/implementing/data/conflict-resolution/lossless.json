@@ -1,0 +1,78 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "When automated resolution is insufficient, queue conflicts for a human to resolve.",
+      "to": "should-queue-conflicts-automation-cannot-resolve",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (automated resolution insufficient) and the action (queue conflicts for a human to resolve) are kept, at SHOULD for an unkeyed instruction.",
+        "pin": "51b697af4b4883c7da34d7613d2012f13bf5c18cd0d2b61ebf86893b7ca3aa3f"
+      }
+    },
+    {
+      "sentence": "MUST use this approach for medical records, legal documents, and financial transactions.",
+      "to": "must-queue-conflicts-for-regulated-records",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"This approach\" is named outright as conflict queues for manual resolution, with MUST and all three domains (medical records, legal documents, financial transactions) kept.",
+        "pin": "952c8592bdbf528046edf67f99dbcea4744246e2c5ac5dd9c96d30c49241f651"
+      }
+    },
+    {
+      "sentence": "Detect conflicts by comparing the client's base version against the server's current version.",
+      "to": "should-detect-conflicts-against-base-version",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Detecting conflicts by comparing the client's base version against the server's current version is kept at SHOULD, with the source's follow-on meaning (differing means both sides changed).",
+        "pin": "666ebe7d480f0b87ed8befabc0ba09a6a83265be2db6153b55a14e9cea66e179"
+      }
+    },
+    {
+      "sentence": "Apply the server version as an interim state while the conflict is pending, and surface a notification to the user.",
+      "to": "should-apply-server-version-while-pending",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both actions (apply the server version as the interim state while pending, notify the user) are kept at SHOULD.",
+        "pin": "f9f88ce34083a11697ebfea2d5abf0fd5a02c613c8c8ee0eb86735278e91852e"
+      }
+    },
+    {
+      "sentence": "Use them when devices may be offline for extended periods or when there is no reliable central server.",
+      "to": "should-use-crdts-for-offline-or-serverless",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both conditions, extended offline periods or no reliable central server, are kept with the CRDT recommendation at SHOULD.",
+        "pin": "6e4f43da72f3f808f1edbcda44480680148ef9bf1be6683ea62f40c04a69f5ab"
+      }
+    },
+    {
+      "sentence": "Every sync system MUST have an explicit conflict resolution strategy. \"No strategy\" means silent data loss.",
+      "to": [
+        "must-have-explicit-conflict-strategy",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The MUST obligation on every sync system is in the rule, and the reason (\"No strategy\" means silent data loss) is carried by the rationale entry for the same rule.",
+        "pin": "9d07a08c84e06d9d25bc9d77486467c976abcdc4565dd6a13aa922dfe9a08e6a"
+      }
+    },
+    {
+      "sentence": "For offline-first or peer-to-peer scenarios, prefer RGA CRDTs — OT requires all operations to pass through a central coordinator for ordering.",
+      "to": "should-prefer-rga-crdts-offline",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The scope (offline-first or peer-to-peer), the preference for RGA CRDTs and the reason (OT needs a central coordinator for ordering) are all kept.",
+        "pin": "55a8a7e9451bf70aacdb2d7c31738cfb9aac460273d89a19e4ab536a703cd41b"
+      }
+    }
+  ]
+}

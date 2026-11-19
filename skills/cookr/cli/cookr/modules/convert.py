@@ -61,7 +61,7 @@ def run(args, ctx) -> int:
     if args.update and (args.out or args.remove_source):
         ctx.ui.error("--update works in place; it takes neither --out nor --remove-source")
         return 2
-    paths = args.paths or [Path("cookbook")]
+    paths = [ctx.artifact(p) for p in args.paths] or [Path("cookbook")]
     missing = [p for p in paths if not p.exists()]
     if missing:
         ctx.ui.error(escape(f"no such path: {', '.join(map(str, missing))}"))

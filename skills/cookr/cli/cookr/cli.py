@@ -24,7 +24,7 @@ from typing import Optional
 
 from cookr.core import cliapp, roots
 from cookr.core.repo import repo_top
-from cookr.core.upgrade import needs_upgrade
+from cookr.core.upgrade import stamped_format_1
 from cookr.core.errors import CookbookError
 from cookr.core.ui import UI
 
@@ -76,12 +76,14 @@ def _format1_notice(explicit: Optional[Path], hook: bool) -> None:
     Never writes anything: converting a cookbook rewrites many files, so it runs
     only when the agent chooses to run `cookr upgrade` and then commits it itself.
     The command carries on against the repo as it is. Silent in the hook's check,
-    whose output is the hook's own message, and outside any cookbook."""
+    whose output is the hook's own message, and outside any cookbook. Every
+    command asks, so it reads only the format stamps (`stamped_format_1`),
+    never every folder: `cookr upgrade` itself finds an unstamped folder."""
     if hook:
         return
     start = (explicit or Path.cwd()).expanduser().resolve()
     repo = repo_top(start) or start
-    if needs_upgrade(repo):
+    if stamped_format_1(repo):
         sys.stderr.write("cookr: this cookbook is format 1. `cookr upgrade` converts it to "
                          "format 2 when you choose to; review and commit that on its own.\n")
 

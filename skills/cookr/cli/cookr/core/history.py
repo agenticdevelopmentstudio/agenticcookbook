@@ -101,6 +101,14 @@ def unfenced(lines: Sequence[str], start: int = 0, end: int | None = None):
         yield i, bare
 
 
+def without_fences(text: str) -> str:
+    """`text` with every line of its fenced code blocks, fences included, made
+    blank, so code reads as a gap between the prose around it."""
+    lines = split_lines(text)
+    return "".join(line if bare is not None else "\n" * line.endswith("\n")
+                   for (_, bare), line in zip(unfenced(lines), lines))
+
+
 @dataclass(frozen=True)
 class Section:
     """A `## ` heading outside any fence, and the lines it owns."""

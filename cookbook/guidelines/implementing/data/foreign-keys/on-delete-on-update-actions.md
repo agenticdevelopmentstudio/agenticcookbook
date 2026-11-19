@@ -19,5 +19,3 @@ CREATE TABLE tracks (
 );
 ```
 
-`SET DEFAULT` will fail at runtime if the default value does not exist in the parent table. When using `SET DEFAULT`, ensure a row with the default value is always present.
-

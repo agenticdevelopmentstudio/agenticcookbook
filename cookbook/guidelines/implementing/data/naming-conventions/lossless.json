@@ -1,0 +1,88 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "MUST be prefixed with `is_` or `has_`:",
+      "to": "must-prefix-booleans-is-or-has",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST and both prefixes, `is_` and `has_` with their underscores, are kept; the rule names the subject (boolean columns) that the source left to its section, and the example block stays in the part.",
+        "pin": "9e8b55af68d1821b1caea6736fadcd224de236753acdbdfa7ad2f48e21b60ec2"
+      }
+    },
+    {
+      "sentence": "Pick singular or plural and be consistent within a project.",
+      "to": "should-use-one-table-number-convention",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The choice between singular and plural and the consistency within a project are kept, at SHOULD for an unkeyed instruction.",
+        "pin": "a55f20e038e08cd8ce088dfd1e50afe6280f7df34e653fb4bc737a7b8b20b397"
+      }
+    },
+    {
+      "sentence": "**Prefer singular** when compound names are common (`workflow_run` composes more naturally than `workflows_runs`).",
+      "to": "should-prefer-singular-for-compound-names",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The preference for singular, its condition (compound names are common) and the example are kept at SHOULD.",
+        "pin": "2f1333d7b4ceeb02e524e708c196d32c75dbf4f1c397677ebf49e81b319c4b8f"
+      }
+    },
+    {
+      "sentence": "**Prefer plural** when avoiding SQL reserved word collisions matters (`users` avoids the reserved word `user`).",
+      "to": "should-prefer-plural-to-avoid-reserved-words",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The preference for plural, its condition (avoiding reserved word collisions matters) and the example are kept at SHOULD.",
+        "pin": "252772b5934595c10ac7af683a07a6a9f8030e3619582d2b2b7ceb545475a943"
+      }
+    },
+    {
+      "sentence": "Whatever you choose, document it and never mix within a single schema.",
+      "to": [
+        "should-document-table-number-convention",
+        "must-not-mix-table-number-conventions"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Document it\" is kept at SHOULD, and \"never mix within a single schema\" becomes MUST NOT mix, with the same single-schema scope.",
+        "pin": "54e9eeb9a0ce57a274a4af1f764646d5900b2767ab2c2d076ca2aa7ae3877096"
+      }
+    },
+    {
+      "sentence": "MUST use descriptive event names.",
+      "to": "must-name-date-columns-by-event",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST use descriptive event names is kept; the rule names the subject (date/time columns) that the source left to its section.",
+        "pin": "b1be547f63541b87dda087f9bf81a7eb99de24d71c10aee04eae531cfccb774e"
+      }
+    },
+    {
+      "sentence": "MUST match the referenced column name when possible.",
+      "to": "must-match-foreign-key-to-referenced-column",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST match the referenced column name, with the \"when possible\" exception, is kept; the rule names the subject (foreign key columns) that the source left to its section.",
+        "pin": "7dd07ac9326b6483ef7d08c9ae899dc7f18ddd484935887fa51a5ce556e491f1"
+      }
+    },
+    {
+      "sentence": "MUST use `<table_name>_id`, not bare `id`.",
+      "to": "must-name-primary-keys-table-id",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST, the `<table_name>_id` form with its underscore and the \"not bare `id`\" prohibition are kept; the rule names the subject (primary key columns) that the source left to its section, and the reason stays in the part.",
+        "pin": "c04c2c31c71ffe060c148f8e07523b17ee91def32cef2c12b4c5d5a061b81b26"
+      }
+    }
+  ]
+}

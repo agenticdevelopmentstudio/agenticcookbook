@@ -15,5 +15,3 @@ This requires `PRAGMA auto_vacuum = INCREMENTAL` set when the database was creat
 VACUUM;
 ```
 
-SHOULD run VACUUM during application idle time (scheduled maintenance, app launch before first query). MUST NOT run VACUUM under high write load.
-

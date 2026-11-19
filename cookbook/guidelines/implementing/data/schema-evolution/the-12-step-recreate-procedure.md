@@ -32,5 +32,3 @@ PRAGMA foreign_keys = ON;
 COMMIT;
 ```
 
-**Critical:** Disable foreign keys before the recreate and re-enable after. Run `foreign_key_check` before committing to catch any broken references.
-

@@ -4,11 +4,11 @@
     "id": "abf5a7d8-1fbf-419c-ad43-888d08813f09",
     "title": "Data types and type affinity",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-15",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,23 +33,27 @@
       "https://www.sqlite.org/stricttables.html",
       "https://www.sqlite.org/flextypegood.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "9e49894985f721b0",
+  "synced": "9bcbee919b30a878",
   "parts": [
     {"part": "intro"},
-    {"part": "the-five-storage-classes", "heading": "The five storage classes"},
-    {"part": "type-affinity-rules", "heading": "Type affinity rules"},
-    {"part": "the-string-gotcha", "heading": "The STRING gotcha"},
-    {"part": "numeric-affinity-behavior", "heading": "NUMERIC affinity behavior"},
-    {"part": "practical-type-guidelines", "heading": "Practical type guidelines"},
-    {"part": "strict-tables-sqlite-3-37-0", "heading": "STRICT tables (SQLite 3.37.0+)"},
-    {"part": "type-mapping-sqlite-to-postgresql", "heading": "Type mapping: SQLite to PostgreSQL"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "the-five-storage-classes", "heading": "The five storage classes", "role": "how-to"},
+    {"part": "type-affinity-rules", "heading": "Type affinity rules", "role": "how-to"},
+    {"part": "the-string-gotcha", "heading": "The STRING gotcha", "role": "examples"},
+    {"part": "numeric-affinity-behavior", "heading": "NUMERIC affinity behavior", "role": "examples"},
+    {"part": "strict-tables-sqlite-3-37-0", "heading": "STRICT tables (SQLite 3.37.0+)", "role": "examples"},
+    {"part": "type-mapping-sqlite-to-postgresql", "heading": "Type mapping: SQLite to PostgreSQL", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

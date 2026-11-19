@@ -14,7 +14,3 @@ HLC timestamp = [48-bit physical time ms] + [16-bit logical counter]
 
 **Update rules:** When generating an event, take `max(local_physical_time, last_hlc_physical)`. If equal, increment the logical counter. When receiving a message with an HLC, merge: take the max of both physical components, then adjust the counter to avoid collision.
 
-SHOULD use HLC as the default timestamp mechanism for multi-device sync. It provides the ordering guarantees of logical clocks while remaining close to physical time and fitting in a single `INTEGER` or `TEXT` column.
-
-Store HLC values in SQLite as `INTEGER` (milliseconds + counter packed) or as `TEXT` with a fixed-width format that sorts lexicographically.
-

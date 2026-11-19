@@ -1,0 +1,26 @@
+
+- **should-choose-backup-method-by-durability-needs**: SHOULD choose the backup method that matches your durability requirements and operational constraints: `.backup` as the recommended default for most cases, `VACUUM INTO` when storage efficiency matters, and the Online Backup API when you need progress monitoring or integration into application code.
+- **must-use-litestream-for-point-in-time-recovery**: Litestream MUST be used when you need continuous, point-in-time recovery for a production server-side SQLite database.
+- **must-not-sync-writers-with-litestream**: MUST NOT use Litestream to synchronize multiple writers.
+- **must-delete-wal-and-shm-before-restore**: When restoring a backup, you MUST delete any existing `*-wal` and `*-shm` files at the destination before copying the backup file.
+- **should-have-tested-recovery-path**: SHOULD have a tested recovery path before you need one.
+- **must-not-run-on-network-filesystems**: MUST NOT run SQLite on NFS, CIFS, or any networked filesystem; file locking is unreliable.
+- **should-use-normal-or-full-synchronous**: `PRAGMA synchronous` SHOULD be `NORMAL` (safe with WAL mode) or `FULL`; `PRAGMA synchronous = OFF` allows the OS to lie about writes completing.
+- **must-not-delete-journal-files-while-open**: MUST NOT delete `*-journal` or `*-wal` while the database is open; it prevents crash recovery.
+- **must-coordinate-writers-through-sqlite-locking**: When multiple processes write directly, code MUST only allow SQLite's own locking to coordinate access.
+- **must-not-move-database-without-journal**: MUST NOT move a database without its journal/WAL; the database and its journal/WAL are a unit.
+- **must-not-disable-durability-pragmas-in-production**: These PRAGMAs MUST NOT be set in production: `PRAGMA synchronous = OFF` (risk of corruption on power loss), `PRAGMA journal_mode = OFF` (disables crash recovery entirely), `PRAGMA journal_mode = MEMORY` (same risk as OFF).
+- **should-check-integrity-on-schedule**: SHOULD run integrity checks on a schedule or after any suspect event (disk errors, process kills, power loss).
+- **should-quick-check-critical-databases-on-startup**: SHOULD schedule `quick_check` on startup for databases that are critical to the application.
+- **should-reserve-integrity-check-for-offline-audits**: SHOULD reserve `integrity_check` for periodic offline audits.
+- **should-prefer-incremental-vacuum**: SHOULD prefer incremental VACUUM for running applications.
+- **must-set-auto-vacuum-incremental-at-creation**: A database that uses `PRAGMA incremental_vacuum` MUST have `PRAGMA auto_vacuum = INCREMENTAL` set when the database was created; incremental VACUUM requires it.
+- **must-have-free-space-for-full-vacuum**: A full VACUUM MUST have approximately 2x the database size in free disk space; it rewrites the entire database and requires it.
+- **should-vacuum-during-idle-time**: SHOULD run VACUUM during application idle time (scheduled maintenance, app launch before first query).
+- **must-not-vacuum-under-write-load**: MUST NOT run VACUUM under high write load.
+- **should-monitor-database-size**: SHOULD monitor database size so you can detect unexpected growth and decide when to VACUUM.
+- **should-alert-on-free-page-ratio**: SHOULD alert when `free_bytes / total_bytes` exceeds 25% — that is a signal to VACUUM.
+- **should-define-retention-windows-from-the-start**: Soft-delete tombstones and sync outbox entries accumulate without a purge strategy; SHOULD define retention windows from the start.
+- **must-purge-tombstones-only-after-all-targets-sync**: MUST only purge tombstones after confirming all sync targets have consumed them.
+- **should-incremental-vacuum-after-large-purges**: After large purges, SHOULD run `PRAGMA incremental_vacuum` to reclaim the freed pages.
+

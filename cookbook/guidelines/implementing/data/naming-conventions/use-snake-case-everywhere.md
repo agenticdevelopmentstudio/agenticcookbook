@@ -1,6 +1,4 @@
 
-ALL identifiers MUST use `snake_case`. SQL is case-insensitive for identifiers, so `CamelCase` creates false visual distinctions (`UnderValue` and `Undervalue` are identical to the engine). Underscores are unambiguous, readable across tools, and work well for non-native English speakers.
-
 ```sql
 -- Correct
 CREATE TABLE workflow_run (

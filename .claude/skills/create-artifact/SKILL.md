@@ -1,28 +1,36 @@
 ---
 name: create-artifact
-version: "2.0.0"
+version: "2.1.0"
 description: "Guided creation of a new cookbook artifact. Walks through type selection, content authoring, and integration via /add-artifact."
 argument-hint: "[principle|guideline|recipe] [--title <title>]"
 allowed-tools: Read, Glob, Grep, Edit, Write, Bash(uuidgen), Bash(date *), Bash(wc *), Bash(rsync *), Bash(cookr *), Bash(rm *), AskUserQuestion
 context: fork
 ---
 
-# Create Artifact v2.0.0
+# Create Artifact v2.1.0
 
 Guided wizard for creating a new cookbook artifact from scratch. Asks which type (principle, guideline, recipe), walks through content authoring using the formatting compliance spec for that type, then invokes `/add-artifact` to integrate.
 
+**Anything researched goes through `/grow-cookbook`.** A guideline written
+from research (every roled guideline, and anything replacing a researched
+artifact) is planned, researched, written, reviewed and integrated by
+`/grow-cookbook`, which keeps the research in the artifact's `research/` and
+has each rule cite it. This wizard drafts one artifact from what the user
+tells it, with no research: if the user wants the artifact researched or
+roled, stop and point them to `/grow-cookbook <stage> <area>`.
+
 ## Startup
 
-create-artifact v2.0.0
+create-artifact v2.1.0
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.1.0). If they differ, print:
 
-> Warning: This skill is running v2.0.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.1.0 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> create-artifact v2.0.0
+> create-artifact v2.1.0
 
 Then stop.
 
@@ -127,6 +135,17 @@ Walk through each required section defined in the compliance file, asking the us
 - Ask for the summary statement.
 - Ask for structured guidance (rules, recommendations, patterns).
 - Ask about RFC 2119 keywords — which items are MUST vs SHOULD vs MAY.
+- A roled guideline (one compiled to a builder, a reviewer and their two
+  verifiers) has these parts, each with its role (gf-roled-parts in
+  `guideline-formatting.md`): `intro` (no role); `rules` (`rules`), every
+  bullet a named rule `- **kebab-name**: … MUST|SHOULD|MAY …`; any `how-to`
+  and `examples` parts; `look-for` (`review-focus`);
+  `a-complete-review-must-establish` (`review-bar`); `a-build-must-establish`
+  (`build-bar`), each line citing its rule as `` - `rule-name`: … ``; any
+  `rationale` and `references` parts; `history` (no role). Each named rule
+  cites its research (gf-rule-cites-research), so a roled guideline is
+  written with `/grow-cookbook`, never here; this list is for recognising
+  one, and for editing one by hand.
 
 **Recipes:**
 - Follow the section order from `recipe-formatting.md` strictly.

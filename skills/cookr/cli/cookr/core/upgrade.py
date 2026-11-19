@@ -89,7 +89,7 @@ from .repoconfig import (
 )
 from .versions import requirements
 
-__all__ = ["UpgradeReport", "UpgradeError", "DirtyTree", "NeedsUpgrade", "needs_upgrade", "derive_index",
+__all__ = ["UpgradeReport", "UpgradeError", "DirtyTree", "NeedsUpgrade", "needs_upgrade", "stamped_format_1", "derive_index",
            "upgrade"]
 
 FORMAT_2 = 2
@@ -1032,9 +1032,10 @@ def _cookbook_dir(repo_root: Path) -> Optional[Path]:
     return None
 
 
-def needs_upgrade(repo_root: Path) -> list[Path]:
-    """The repo's own cookbook dir when anything in it (or the repo config) is
-    not format 2, or the repo still has a legacy `.cookr.json` or recipes dir."""
+def stamped_format_1(repo_root: Path) -> list[Path]:
+    """The repo's own cookbook dir when its manifest, its index or the repo
+    config is not stamped format 2: what `needs_upgrade` reads without walking
+    the cookbook, so every command can ask it."""
     repo_root = Path(repo_root)
     cb = _cookbook_dir(repo_root)
     if cb is None:
@@ -1044,6 +1045,19 @@ def needs_upgrade(repo_root: Path) -> list[Path]:
         _format(cb / MANIFEST) != FORMAT_2
         or _format(cb / INDEX_FILE) != FORMAT_2
         or (raw is not None and raw.get("format") != FORMAT_2)
+    )
+    return [cb] if stale else []
+
+
+def needs_upgrade(repo_root: Path) -> list[Path]:
+    """The repo's own cookbook dir when anything in it (or the repo config) is
+    not format 2, or the repo still has a legacy `.cookr.json` or recipes dir."""
+    repo_root = Path(repo_root)
+    cb = _cookbook_dir(repo_root)
+    if cb is None:
+        return []
+    stale = (
+        bool(stamped_format_1(repo_root))
         or (cb.is_dir() and any(_format(f / ARTIFACT_FILE) != FORMAT_2
                                 for f in find_folders([cb])))
         or (cb.is_dir() and any(not (folder_for(d) / ARTIFACT_FILE).is_file()

@@ -26,8 +26,6 @@ SELECT * FROM documents WHERE doc_type = 'report' AND author = 'alice';
 - `VIRTUAL`: computed on read, no disk space, can be added with `ALTER TABLE`
 - `STORED`: computed on write, uses disk space, cannot be added with `ALTER TABLE`
 
-SHOULD prefer `VIRTUAL` unless reads vastly outnumber writes and the extraction expression is expensive.
-
 You can also index JSON fields directly without generated columns:
 
 ```sql

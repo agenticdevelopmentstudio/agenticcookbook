@@ -1,0 +1,75 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "SHOULD start with `isDirty` flag columns — simple, low overhead, works everywhere:",
+      "to": "should-start-with-is-dirty-flags",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD start with `isDirty` flags is kept with its three reasons; the example block stays in the part.",
+        "pin": "d721004e287334b9e5f8f5c664159ded9b8bbd52bea0953a68ebd7cd348f61ce"
+      }
+    },
+    {
+      "sentence": "Upgrade to a **change-log table** (populated via triggers) only if you need operation-type awareness (INSERT vs UPDATE vs DELETE) or ordered change history for field-level merge.",
+      "to": "should-use-change-log-only-for-operation-awareness",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Upgrading to a change-log table \"only if\" either condition holds (operation-type awareness or ordered change history for field-level merge) is kept at SHOULD.",
+        "pin": "39e920c09643bf7a3a97d3d3231ba9264cdf35ec376b343374e426df94df67c1"
+      }
+    },
+    {
+      "sentence": "Upgrade to an **edit operations table** (field-level deltas with timestamps and device IDs) only if the server needs to perform three-way field merges.",
+      "to": "should-use-edit-operations-only-for-three-way-merge",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Upgrading to an edit operations table \"only if\" the server needs three-way field merges is kept with its description at SHOULD.",
+        "pin": "0111d38ab3e01514598ef67a58ec66b80ac60dba8a62419f875bf45e1189bf99"
+      }
+    },
+    {
+      "sentence": "SHOULD design the engine so every synced entity implements a common interface:",
+      "to": "should-implement-syncable-interface",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD design every synced entity to a common interface is kept; the interface definition stays in the part.",
+        "pin": "777b06346fdecebf508e9d029f264c3d9f4d51ccb9e341d06b536841badd27fe"
+      }
+    },
+    {
+      "sentence": "SHOULD implement at least two scheduling modes:",
+      "to": "should-implement-two-scheduling-modes",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD implement at least two scheduling modes is kept with the \"at least two\" number; the modes stay in the part.",
+        "pin": "60f60ba5d685d2780db5554520c012533c11039d4d48ebcd4c5aae11a4982b5f"
+      }
+    },
+    {
+      "sentence": "A standard bidirectional sync cycle SHOULD complete in a single server round trip:",
+      "to": "should-complete-cycle-in-one-round-trip",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD complete a standard bidirectional cycle in a single server round trip is kept; the step list stays in the part.",
+        "pin": "e6687fc32aa0b2e9701736a4d567f8731797b9189523043a78dd2db084c8123b"
+      }
+    },
+    {
+      "sentence": "After step 5, rebuild any derived views or computed state that depends on the synced entities before notifying the UI of changes.",
+      "to": "should-rebuild-derived-state-before-notifying-ui",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The timing (after step 5, which the rule spells out as applying server records), the derived views or computed state scope and \"before notifying the UI\" are kept, at SHOULD.",
+        "pin": "9ba2f77d7114685445a71b923657a0247a0356eeb415dfa539c2dbdcd4cb872d"
+      }
+    }
+  ]
+}

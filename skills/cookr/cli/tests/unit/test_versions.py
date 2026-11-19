@@ -262,3 +262,17 @@ def test_not_a_repo_is_an_error(tmp_path, capsys):
 def test_versions_is_not_a_spec_name():
     from cookr.core.markdown import reserved_name
     assert "versions" in reserved_name("ui/versions")
+
+
+# ── without_fences: code made blank, by CommonMark's fence rule ──────────────
+
+def test_without_fences_blanks_each_fenced_line_and_keeps_the_rest():
+    from cookr.core.history import without_fences
+    text = "a\n````md\n```\nMUST\n```\n````\nb\n~~~\n```\n~~~\nc"
+    assert without_fences(text) == "a\n\n\n\n\n\nb\n\n\n\nc"
+
+
+def test_without_fences_keeps_text_with_no_fence_byte_for_byte():
+    from cookr.core.history import without_fences
+    assert without_fences("a `x` b\n\n```` not closed? no: opened\n") == "a `x` b\n\n\n"
+    assert without_fences("plain\r\ntext") == "plain\r\ntext"

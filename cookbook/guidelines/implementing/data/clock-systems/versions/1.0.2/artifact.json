@@ -1,0 +1,57 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "3b9fce69-7541-4f49-81ae-86119096a4d8",
+    "title": "Clock Systems for Sync",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to choose the right clock system for distributed sync: physical clocks, Lamport timestamps, vector clocks, Hybrid Logical Clocks, and server-assigned monotonic versions.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "clocks",
+      "hlc",
+      "distributed-systems"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "822a0912-fda7-461f-85ab-f9c2c55f0039",
+      "a899aeae-d561-4fcd-abd7-df109fe2362c"
+    ],
+    "references": [
+      "https://sergeiturukin.com/2017/06/26/hybrid-logical-clocks.html",
+      "https://en.wikipedia.org/wiki/Vector_clock",
+      "https://www.yugabyte.com/blog/evolving-clock-sync-for-distributed-databases/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "offline-support",
+      "schema-design"
+    ]
+  },
+  "synced": "ecbb230227841cb6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "physical-clocks-wall-time", "heading": "Physical Clocks (Wall Time)"},
+    {"part": "lamport-timestamps", "heading": "Lamport Timestamps"},
+    {"part": "vector-clocks", "heading": "Vector Clocks"},
+    {"part": "hybrid-logical-clocks-hlc", "heading": "Hybrid Logical Clocks (HLC)"},
+    {"part": "server-assigned-monotonic-versions", "heading": "Server-Assigned Monotonic Versions"},
+    {"part": "choosing-the-right-clock", "heading": "Choosing the Right Clock"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

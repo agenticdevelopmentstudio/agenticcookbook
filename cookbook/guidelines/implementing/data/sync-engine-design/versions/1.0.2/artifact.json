@@ -1,0 +1,53 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a0cb2815-8fdd-450a-af46-8fca80ba1aba",
+    "title": "Sync Engine Design",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to design a client-side sync engine: layered architecture, entity-agnostic Syncable interface, the six-step sync cycle, scheduling strategies, snapshot rebuilding, and error handling with circuit breakers.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "architecture",
+      "engine",
+      "error-handling"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "3b88bb39-a15d-488f-a967-b7fa2dba2be7",
+      "0d3e2d97-22d4-4781-a6c4-fa297b38030f"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "offline-support",
+      "database-operations"
+    ]
+  },
+  "synced": "c6d3c9b576023799",
+  "parts": [
+    {"part": "intro"},
+    {"part": "architecture-layers", "heading": "Architecture Layers"},
+    {"part": "entity-agnostic-syncable-interface", "heading": "Entity-Agnostic Syncable Interface"},
+    {"part": "the-sync-cycle", "heading": "The Sync Cycle"},
+    {"part": "dirty-tracking-strategies", "heading": "Dirty Tracking Strategies"},
+    {"part": "sync-scheduling", "heading": "Sync Scheduling"},
+    {"part": "snapshot-rebuilding", "heading": "Snapshot Rebuilding"},
+    {"part": "error-handling", "heading": "Error Handling"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

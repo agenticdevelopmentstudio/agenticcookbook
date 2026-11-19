@@ -1,5 +1,5 @@
 
-Declare a JSON column as `TEXT`. Validate at insert time if needed:
+Validate at insert time if needed:
 
 ```sql
 CREATE TABLE documents (
@@ -8,5 +8,5 @@ CREATE TABLE documents (
 );
 ```
 
-`json_valid()` returns 1 for valid JSON, 0 for invalid. Use this CHECK constraint when data integrity matters.
+`json_valid()` returns 1 for valid JSON, 0 for invalid.
 

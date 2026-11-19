@@ -12,7 +12,7 @@ from cookr.cli import main
 from cookr.core import always_on, hosts, payload, skill, tuning
 from cookr.core.artifact import find_folders
 
-from .test_skill import make
+from .test_skill import make, make_roled
 
 
 @pytest.fixture
@@ -113,3 +113,14 @@ def test_the_cli_surveys_writes_worklists_and_stamps(book, tmp_path, monkeypatch
     assert (wal / "hosts/codex.add.md").read_text().startswith("<!-- cookr:source sha256:")
     assert main(["stamp", str(wal / "hosts/nope.add.md")]) == 1
     assert main(["stamp", str(wal / "hosts/missing.md")]) == 1
+
+
+def test_a_roled_artifact_is_offered_for_no_tuning(book):
+    roled = make_roled(book)
+    chain = hosts.parse_target("claude")
+    folders = find_folders([book])
+    assert roled in folders
+    assert str(roled) not in [a["level"] for a in payload.survey(chain, folders)["artifacts"]]
+    assert len(payload.survey(chain, folders)["artifacts"]) == 2
+    assert [i["artifact"] for i in payload.worklist(chain, folders)] == [
+        str(f) for f in folders if f != roled]

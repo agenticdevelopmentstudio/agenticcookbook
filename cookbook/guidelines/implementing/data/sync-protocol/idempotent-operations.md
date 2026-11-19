@@ -1,6 +1,4 @@
 
-Every sync operation MUST be safe to replay. Network failures mean the same batch may be delivered multiple times.
-
 Use UPSERT with a version guard so replaying an older batch never downgrades a record:
 
 ```sql
@@ -34,6 +32,4 @@ CREATE TABLE sync_queue (
 INSERT OR IGNORE INTO sync_queue (id, idempotency_key, operation, table_name, record_id, payload)
 VALUES (?, ?, ?, ?, ?, ?);
 ```
-
-The server MUST also deduplicate on idempotency key and return success (not an error) for already-processed requests.
 

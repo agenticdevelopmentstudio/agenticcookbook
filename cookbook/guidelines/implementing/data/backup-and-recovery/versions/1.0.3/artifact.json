@@ -1,0 +1,59 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "607b9f71-39dd-4b10-80fd-d8fd115cce5f",
+    "title": "Database backup and recovery",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-10-04",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Prescriptive rules for SQLite backup methods, corruption prevention, integrity checking, recovery procedures, VACUUM strategy, and database size management.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "backup",
+      "recovery",
+      "operations",
+      "litestream",
+      "wal"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://sqlite.org/backup.html",
+      "https://sqlite.org/howtocorrupt.html",
+      "https://sqlite.org/recovery.html",
+      "https://litestream.io/how-it-works/",
+      "https://sqlite.org/wal.html"
+    ],
+    "approved-by": "approve-artifact v1.1.0",
+    "approved-date": "2026-10-04",
+    "triggers": [
+      "database-operations",
+      "configuration"
+    ]
+  },
+  "synced": "9122c636a324c889",
+  "parts": [
+    {"part": "intro"},
+    {"part": "backup-methods", "heading": "Backup methods"},
+    {"part": "wal-files-during-restore", "heading": "WAL files during restore"},
+    {"part": "corruption-prevention", "heading": "Corruption prevention"},
+    {"part": "integrity-checking", "heading": "Integrity checking"},
+    {"part": "recovery-from-corruption", "heading": "Recovery from corruption"},
+    {"part": "vacuum-strategy", "heading": "VACUUM strategy"},
+    {"part": "database-size-monitoring", "heading": "Database size monitoring"},
+    {"part": "tombstone-and-outbox-pruning", "heading": "Tombstone and outbox pruning"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

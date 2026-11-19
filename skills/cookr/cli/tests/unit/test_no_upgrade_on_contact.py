@@ -79,8 +79,8 @@ def test_outside_any_cookbook_nothing_is_attempted(tmp_path, monkeypatch):
     import cookr.cli as cli
 
     found: list = []
-    real = cli.needs_upgrade
-    monkeypatch.setattr(cli, "needs_upgrade", lambda repo: found.extend(real(repo)) or found)
+    real = cli.stamped_format_1
+    monkeypatch.setattr(cli, "stamped_format_1", lambda repo: found.extend(real(repo)) or found)
     monkeypatch.chdir(tmp_path)
     assert main(["inventory"]) == 2  # exactly as before: no repo, no config
     assert found == []

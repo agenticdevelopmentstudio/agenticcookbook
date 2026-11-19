@@ -1,0 +1,25 @@
+
+- `must-use-uuid-primary-keys`: every synced table has a UUID primary key
+- `should-use-uuidv7`: synced-table UUIDs are UUIDv7, or the code says why not
+- `must-have-three-timestamp-columns`: every synced table has `created_at`, `updated_at` and `last_synced_at`
+- `must-not-update-created-at`: no update writes `created_at`
+- `must-update-updated-at-on-every-change`: every change to a synced row updates `updated_at`
+- `should-store-timestamps-as-iso-8601-utc`: every timestamp is an ISO-8601 UTC `TEXT` string in SQLite and a `TIMESTAMPTZ` in PostgreSQL, or the code says why not
+- `must-not-mix-timestamp-formats`: every timestamp column holds a single format
+- `should-maintain-updated-at-by-trigger`: a trigger keeps `updated_at` current, or the code says why not
+- `must-add-version-column`: every synced table has `version INTEGER NOT NULL DEFAULT 1`
+- `must-increment-version-on-update`: every update of a synced row increments `version`
+- `must-check-changes-after-versioned-update`: every version-guarded update checks that one row changed and treats zero as a conflict
+- `must-not-hard-delete`: no code hard-deletes a record from a synced table
+- `should-use-is-deleted-column`: soft deletes use an `is_deleted` column (`INTEGER NOT NULL DEFAULT 0` in SQLite, `BOOLEAN NOT NULL DEFAULT FALSE` in PostgreSQL) or, for a high-volume table, a separate tombstone table, or the code says why not
+- `must-filter-deleted-in-normal-queries`: with an `is_deleted` column, every normal query filters on `is_deleted = 0`
+- `must-include-deleted-in-sync-queries`: with an `is_deleted` column, every sync query includes deleted records
+- `should-add-dirty-tracking`: every synced table has an `is_dirty` column or feeds a central change-log table through triggers, or the code says why not
+- `must-set-dirty-on-every-local-write`: with an `is_dirty` column, every local insert and update sets it to `1`
+- `should-clear-dirty-after-server-accepts`: with an `is_dirty` column, it is cleared to `0` after the sync worker confirms the server accepted the change, or the code says why not
+- `should-use-change-log-for-operation-awareness`: where operation-type awareness is needed, a change-log table fed by triggers replaces the flag column, or the code says why not
+- `should-add-sync-state-table`: per-device checkpoint information lives in a `sync_state` table or equivalent, or the code says why not
+- `should-store-sync-version-checkpoint`: the last server-assigned sync version is stored after each successful sync and sent as `since_version` on the next pull, or the code says why not
+- `should-map-types-cleanly-across-databases`: every synced column uses the SQLite and PostgreSQL type pair of the mapping table, or the code says why not
+- `should-convert-to-local-time-only-for-display`: conversion to local time happens only in the display layer, or the code says why not
+

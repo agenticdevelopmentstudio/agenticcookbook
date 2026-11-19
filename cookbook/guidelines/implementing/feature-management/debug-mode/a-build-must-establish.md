@@ -1,0 +1,23 @@
+
+- `debug-only-config-panel`: the app has a debug-only configuration panel, absent from release builds, with feature flag overrides, an analytics event log, an A/B test variant picker and environment info (version, build, OS, device)
+- `platform-access-methods`: each platform reaches and guards the panel by its named method (iOS shake with `#if DEBUG`, macOS Debug menu item with `#if DEBUG`, Android shake with its code in the debug source set, web client-side `/debug` route with a bundler-replaced `NODE_ENV === 'development'`, Windows debug-only settings page with `#if DEBUG`), or the code says why not
+- `typescript-debug-access`: in TypeScript, the panel is reached by the `/debug` route or the `Ctrl+Shift+D` shortcut, guarded by `process.env.NODE_ENV === 'development'`, or the code says why not
+- `windows-debug-settings-page`: on Windows, the panel is a dev-only settings page guarded by `#if DEBUG` (any `[Conditional("DEBUG")]` helper keeping its panel references inside `#if DEBUG`), holding flag overrides, an analytics event log and environment info, reached through a navigation item visible only in debug builds, or the code says why not
+- `release-exclusion-guard`: every panel code path is behind a compile-time guard that removes it from release builds (Swift or C# `#if DEBUG`, Android's debug source set and `debugImplementation`, Vite's or webpack's build-time constant), and no runtime check stands in for one
+- `compile-out-not-hide`: the release binary contains no debug or test code, panel or debug library; nothing relies on runtime hiding; the Android panel's code is in the debug source set and its libraries in `debugImplementation`
+- `release-no-op-artifact`: where an Android debug library ships a no-op release artifact, it is declared under `releaseImplementation`, or the code says why not
+- `panel-in-internal-builds`: any internal or staging build that carries the panel goes only to developers and testers and is not the production build
+- `internal-build-not-on-the-store`: on Apple platforms, a test or internal build carrying the panel goes to testers through TestFlight and is never submitted to the App Store
+- `release-build-not-debuggable`: the Android release build type is non-debuggable, WebView debugging is off and `Log` and `Debug` tracing calls are removed in it, or the code says why not
+- `debug-logging-off-and-redacted`: debug and verbose logging, the panel's event log among it, are disabled in release, and sensitive values are redacted from what the panel records, shows or shares
+- `network-inspector-redacts-headers`: any in-app network inspector is absent from release builds, and redacts Authorization and Cookie headers or the code says why not
+- `sdk-dev-modes-off-in-production`: SDK and framework developer modes are off in production builds and environments, or the code says why not
+- `no-secrets-in-debug-panel`: no secret is compiled into client-side debug configuration, the panel's environment section included
+- `exclude-debug-traffic-from-analytics`: development and test traffic is filtered out of analytics reports and exports, or the code (or analytics configuration) says why not
+- `production-overrides-are-guarded`: every override reachable in production is signed or authenticated and recorded as added attack surface, or the code says why not
+- `access-gesture-avoids-system-gestures`: no access gesture or shortcut beyond the named access methods redefines a system or browser one, and Android shake detection uses the accelerometer, or the code says why not
+- `android-guard-needs-buildconfig`: no Android panel code is in `src/main/`; a `BuildConfig.DEBUG` check there wraps only the call into the panel's entry point; on AGP 8+ every module reading `BuildConfig.DEBUG` enables `buildConfig`
+- `node-env-production-on-servers`: Node.js servers run with `NODE_ENV=production` in every deployed environment, `NODE_ENV` guards only bundled client code, and server-side debug endpoints are left out of the production deploy, or the code says why not
+- `debug-impact-scales-with-permissions`: no debug feature bypasses payment, subscription or authentication, or reads system or user data, unless a test needs it, or the code says why not
+- `complement-platform-devtools`: the panel shows app-specific state the platform's developer tools do not, and a React Native panel does not depend on Flipper's native integration, or the code says why not
+

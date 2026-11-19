@@ -1,0 +1,45 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Use this inventory to verify that every index earns its place, and that every frequent query has index support.",
+      "to": "should-verify-indexes-against-query-inventory",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The SHOULD-level use of the query inventory (from the surrounding SHOULD paragraph) and both checks, every index earns its place and every frequent query has index support, are carried by the rule.",
+        "pin": "06dab10222714f7b9148ef78a2b20c68c04c76116b9fda8fbff4d7a9ca5a7ce0"
+      }
+    },
+    {
+      "sentence": "Also monitor `sqlite_stat1` after running `ANALYZE` to see actual row counts per index.",
+      "to": "should-monitor-sqlite-stat1",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The unkeyed instruction to monitor `sqlite_stat1` after `ANALYZE` to see actual row counts per index is carried whole at SHOULD.",
+        "pin": "5a9845dff6d834025658e46ec986cec81ce78f6c8d58e8350606b119c332ce8d"
+      }
+    },
+    {
+      "sentence": "Design for them explicitly.",
+      "to": "should-design-for-sync-query-shapes",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Them\" is named (sync workloads' predictable query shapes) and designing for them explicitly is kept at SHOULD.",
+        "pin": "c6bbe4ac4b503f4e527874da013b66d12dc9dac9a807d59aefa371711ad578d6"
+      }
+    },
+    {
+      "sentence": "Verify with `EXPLAIN QUERY PLAN` that this shows `SEARCH ...",
+      "to": "should-verify-unsynced-query-uses-index",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"this\" is the unsynced-record query in the source's section, which the rule names; `EXPLAIN QUERY PLAN`, `SEARCH ... USING INDEX` and \"not `SCAN`\" are all kept, at SHOULD for an unkeyed instruction.",
+        "pin": "8db10b71d7606e8a64582d28b0bdf89f4b5a8bc18d029645ceb26ef98ee2693c"
+      }
+    }
+  ]
+}

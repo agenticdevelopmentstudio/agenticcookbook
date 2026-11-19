@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Iterable, Optional
 
@@ -17,6 +18,19 @@ HOSTS_DIR = "hosts"
 # Where a source folder keeps its earlier versions (cookr.core.versions): never
 # compiled, walked or read as a spec.
 VERSIONS_DIR = "versions"
+# Where a source folder keeps the research it was written from
+# (cookr.core.research): never compiled, walked or read as a spec.
+RESEARCH_DIR = "research"
+# A rule's citation of the research claims it stands on, ending its bullet:
+# `(claim: <id>)` or `(claims: <id>, <id>)`, with the space before it. Group 1
+# is the ids. It is provenance, not content: the skill compile and the lossless
+# check both read a rule without it (`uncited`).
+CITATION = re.compile(r"[ \t]*\(claims?:[ \t]*([^)\n]*)\)")
+
+
+def uncited(text: str) -> str:
+    """`text` with every research citation (`CITATION`) removed."""
+    return CITATION.sub("", text)
 
 
 def part_files(folder: Path) -> Optional[set[str]]:
@@ -39,6 +53,16 @@ def in_versions(path: Path, root: Optional[Path] = None) -> bool:
                for i, name in enumerate(rel.parts[:-1]))
 
 
+def in_research(path: Path, root: Optional[Path] = None) -> bool:
+    """True when `path` lies in a source folder's research (below `root`, when
+    given): a `research/` directory beside an `artifact.json`. A directory
+    merely named `research` is not one."""
+    rel = path.relative_to(root) if root is not None else path
+    base = Path(root) if root is not None else Path()
+    return any(name == RESEARCH_DIR and (base.joinpath(*rel.parts[:i]) / ARTIFACT_FILE).is_file()
+               for i, name in enumerate(rel.parts[:-1]))
+
+
 def prune_freezes(dirpath, dirnames: list[str]) -> list[str]:
     """`dirnames` (an `os.walk` step in `dirpath`) without a cookbook freeze: a
     `versions/` directory beside an `artifact.json`. A code directory that is
@@ -51,8 +75,8 @@ def prune_freezes(dirpath, dirnames: list[str]) -> list[str]:
 def in_source_folder(path: Path, root: Path) -> bool:
     """True when `path` is a source folder's own file: a part its manifest
     lists (every `.md` in it, when the manifest is unreadable), or anything in
-    a subdirectory of it that is no spec's, such as `hosts/` or `examples/`. A
-    child spec's doc kept in its parent's folder (`telemetry/sources.md`, and
+    a subdirectory of it that is no spec's, such as `hosts/`, `research/` or
+    `examples/`. A child spec's doc kept in its parent's folder (`telemetry/sources.md`, and
     below it `telemetry/sources/…` once `sources.md` exists) is a doc, not a
     part, and so is an artifact doc grouped in a plain subdirectory of it
     (`vscode-api/languages/diagnostic-types.md`, with no `languages.md`)."""
@@ -65,7 +89,7 @@ def in_source_folder(path: Path, root: Path) -> bool:
             # In a source folder's non-spec subdirectory: the folder's own
             # files, unless it is an artifact doc outside `hosts/`.
             from .artifact import artifact_type_of  # artifact imports this module
-            return (path.relative_to(d).parts[0] == HOSTS_DIR
+            return (path.relative_to(d).parts[0] in (HOSTS_DIR, RESEARCH_DIR)
                     or artifact_type_of(path) is None)
         if d == root or (d.parent / f"{d.name}.md").is_file():
             return False                      # in a spec's own directory, or nothing's
@@ -75,8 +99,8 @@ def in_source_folder(path: Path, root: Path) -> bool:
 
 def reserved_name(name: str, cookbook: Optional[Path] = None) -> Optional[str]:
     """Why spec `name` (cookbook-relative, no `.md`) can name no spec, or None:
-    its file name is one the corpus skips; it is `hosts`, a source folder's
-    additions directory; or its doc would be a part of the parent spec's
+    its file name is one the corpus skips; it is `hosts`, `versions` or
+    `research`, a directory a source folder keeps beside its parts; or its doc would be a part of the parent spec's
     source folder under `cookbook`."""
     parent, _, leaf = name.rpartition("/")
     if f"{leaf}.md" in SKIP_NAMES:
@@ -85,6 +109,8 @@ def reserved_name(name: str, cookbook: Optional[Path] = None) -> Optional[str]:
         return f"`{HOSTS_DIR}/` is where a source folder keeps its host additions"
     if leaf == VERSIONS_DIR:
         return f"`{VERSIONS_DIR}/` is where a source folder keeps its earlier versions"
+    if leaf == RESEARCH_DIR:
+        return f"`{RESEARCH_DIR}/` is where a source folder keeps the research it was written from"
     if cookbook is not None and parent and f"{leaf}.md" in (part_files(cookbook / parent) or ()):
         return f"`{parent}/{leaf}.md` is a part of the `{parent}` source folder"
     return None

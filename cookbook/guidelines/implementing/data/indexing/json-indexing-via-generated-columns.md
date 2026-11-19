@@ -11,5 +11,3 @@ CREATE INDEX idx_event_type ON events(event_type);
 SELECT * FROM events WHERE event_type = 'click';
 ```
 
-Use VIRTUAL (not STORED) unless reads vastly outnumber writes. VIRTUAL columns are computed on read, carry no storage cost, and can be added with `ALTER TABLE`.
-

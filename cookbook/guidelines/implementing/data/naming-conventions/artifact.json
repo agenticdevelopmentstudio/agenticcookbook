@@ -4,11 +4,11 @@
     "id": "dde1b6fd-773c-4f9f-a328-51150468bc99",
     "title": "Database naming conventions",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-15",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,24 +32,28 @@
       "https://dev.to/ovid/database-naming-standards-2061",
       "https://www.bbkane.com/blog/sql-naming-conventions/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "fc7869bcfd3e8dd9",
+  "synced": "3993d1b7092597ff",
   "parts": [
     {"part": "intro"},
-    {"part": "use-snake-case-everywhere", "heading": "Use snake_case everywhere"},
-    {"part": "table-names", "heading": "Table names"},
-    {"part": "primary-key-columns", "heading": "Primary key columns"},
-    {"part": "foreign-key-columns", "heading": "Foreign key columns"},
-    {"part": "boolean-columns", "heading": "Boolean columns"},
-    {"part": "date-time-columns", "heading": "Date/time columns"},
-    {"part": "reserved-words-to-avoid", "heading": "Reserved words to avoid"},
-    {"part": "indexes-constraints-and-triggers", "heading": "Indexes, constraints, and triggers"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "use-snake-case-everywhere", "heading": "Use snake_case everywhere", "role": "examples"},
+    {"part": "primary-key-columns", "heading": "Primary key columns", "role": "examples"},
+    {"part": "foreign-key-columns", "heading": "Foreign key columns", "role": "examples"},
+    {"part": "boolean-columns", "heading": "Boolean columns", "role": "examples"},
+    {"part": "date-time-columns", "heading": "Date/time columns", "role": "examples"},
+    {"part": "reserved-words-to-avoid", "heading": "Reserved words to avoid", "role": "how-to"},
+    {"part": "indexes-constraints-and-triggers", "heading": "Indexes, constraints, and triggers", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

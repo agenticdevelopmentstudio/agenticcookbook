@@ -12,7 +12,3 @@ ON CONFLICT (id) DO UPDATE SET
 WHERE EXCLUDED.updated_at > tasks.updated_at;
 ```
 
-SHOULD use Hybrid Logical Clock (HLC) timestamps rather than wall-clock time to avoid clock-skew errors. Physical clocks on different devices can diverge by seconds or more, causing the wrong write to win.
-
-MUST NOT use LWW for collaborative editing, financial records, or inventory — silent overwrites are destructive in those domains.
-

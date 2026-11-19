@@ -1,6 +1,4 @@
 
-Choose the backup method that matches your durability requirements and operational constraints.
-
 **`.backup` command** is the recommended default for most cases. It performs a page-by-page replica without locking the database for the duration — other connections can continue writing, though their changes will not appear in the backup.
 
 ```bash
@@ -13,7 +11,7 @@ sqlite3 mydb.db ".backup backup.db"
 VACUUM INTO '/path/to/backup.db';
 ```
 
-**Online Backup API** (programmatic) copies pages incrementally, acquiring a read lock only during each step rather than the entire backup. Use this when you need progress monitoring or integration into application code.
+**Online Backup API** (programmatic) copies pages incrementally, acquiring a read lock only during each step rather than the entire backup.
 
 ```python
 source = sqlite3.connect('mydb.db')
@@ -35,5 +33,5 @@ dbs:
         retention: 72h
 ```
 
-Litestream is a disaster-recovery tool, not a sync tool. It replicates one database to one storage destination. Do not use it to synchronize multiple writers.
+Litestream is a disaster-recovery tool, not a sync tool. It replicates one database to one storage destination.
 

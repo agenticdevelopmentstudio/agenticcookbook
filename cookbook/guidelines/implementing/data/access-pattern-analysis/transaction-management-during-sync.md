@@ -1,6 +1,4 @@
 
-MUST use `BEGIN IMMEDIATE` for sync write transactions (not `BEGIN DEFERRED`). `IMMEDIATE` acquires the write lock at transaction start, preventing mid-batch lock failures that would require rolling back the entire batch.
-
 ```python
 def apply_sync_batch(changes, db):
     db.execute("BEGIN IMMEDIATE")
@@ -13,7 +11,7 @@ def apply_sync_batch(changes, db):
         raise
 ```
 
-MUST NOT hold the write lock open while waiting for network responses. The pattern is: fetch the batch from the server, then open the transaction, apply all changes, commit. Network I/O happens outside the transaction boundary.
+The pattern is: fetch the batch from the server, then open the transaction, apply all changes, commit. Network I/O happens outside the transaction boundary.
 
 **Connection separation for sync:**
 - One dedicated write connection for sync writes (prevents `SQLITE_BUSY` from competing writers)

@@ -9,5 +9,3 @@
 
 5. **Do you need peer-to-peer (no central server)?** cr-sqlite is the strongest choice. Session Extension with manual changeset exchange also works.
 
-MUST evaluate maturity and support model before committing to a Beta tool in production. Prefer the Session Extension or PowerSync for production systems where stability and custom logic are priorities.
-

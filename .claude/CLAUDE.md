@@ -33,7 +33,7 @@ A **cookbook artifact** is any content item in the cookbook: a principle, guidel
 | Type | Count | Path | Description |
 |------|-------|------|-------------|
 | Principle | 44 | `cookbook/principles/` | Foundational engineering ideas that guide design decisions |
-| Guideline | 275 (381 with duplicates) | `cookbook/guidelines/` | Use-case-organized rules: planning, implementing, testing, reviewing, shipping, cookbook, researching, storytelling, brainstorming |
+| Guideline | 275 (380 with duplicates) | `cookbook/guidelines/` | Use-case-organized rules: planning, implementing, testing, reviewing, shipping, cookbook, researching, storytelling, brainstorming |
 | Ingredient | 48 | `cookbook/ingredients/` | Atomic component specs — the building blocks of recipes |
 | Recipe | 13 | `cookbook/recipes/` | Compositions of configured ingredients into coherent features |
 
@@ -89,6 +89,20 @@ Key rules:
 **Fork-based contributions**: External contributors who don't have push access use a fork. The workflow is the same (worktree, branch, commit, push, PR), but `origin` points to the fork and the PR targets `agenticdevelopercookbook/cookbook` via `--head <user>:<branch>`. The `/contribute-to-cookbook` skill (in dev-team) detects this automatically.
 
 ## Writing New Content
+
+**Researched content.** A guideline is written from research on its topic, kept in its folder's `research/`, with each named rule citing a claim of it (`guide/introduction/conventions.md`, *Research*). Run `/grow-cookbook` to plan an area, research each topic, write, review and integrate it.
+
+The repo's skills (`.claude/skills/`):
+
+| Skill | Purpose |
+|-------|---------|
+| `/grow-cookbook` | Grow the cookbook an area at a time: plan the area, research each topic, write it roled with each rule citing its research, review it, integrate it |
+| `/create-artifact` | Draft one artifact interactively, section by section (no research; use `/grow-cookbook` for anything researched) |
+| `/add-artifact` | Integrate a new or changed artifact: lint, approve, index, documentation counts |
+| `/approve-artifact` | Lint an artifact and stamp its approval |
+| `/lint-artifact` | Lint an artifact against its type's formatting checks |
+| `/repair-cookbook` | Find and repair broken cross-references, stale frontmatter and dead index links |
+| `/install-cookbook-global` | Install `/install-cookbook` into `~/.claude/skills/` |
 
 Use `cookbook/ingredients/_template.md` for new ingredients and `cookbook/recipes/_template.md` for new recipes. Follow `guide/introduction/conventions.md` for the frontmatter format. Every cookbook artifact needs a UUID, an entry in `cookbook/index.json` (`cookr update`), and a Change History section.
 

@@ -1,6 +1,4 @@
 
-MUST use `EXPLAIN QUERY PLAN` to validate index usage before deploying schema changes.
-
 ```sql
 EXPLAIN QUERY PLAN SELECT * FROM orders WHERE customer_id = 42;
 ```

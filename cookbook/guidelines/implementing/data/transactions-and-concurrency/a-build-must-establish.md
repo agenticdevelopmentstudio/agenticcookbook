@@ -1,0 +1,25 @@
+
+- `must-enable-wal-mode`: an application with concurrent reads, or where write latency matters, runs in WAL mode
+- `should-set-wal-on-connection-open`: every connection open sets WAL mode, or the code says why not
+- `must-keep-wal-processes-on-one-machine`: every process using a WAL database runs on the same physical machine
+- `must-not-use-wal-on-network-file-systems`: no WAL database lives on a network file system
+- `must-not-change-page-size-after-wal`: no code changes `page_size` after WAL is enabled
+- `must-not-use-memory-or-off-journal-in-production`: no production database where data loss on crash is unacceptable uses the `MEMORY` or `OFF` journal mode
+- `must-wrap-write-batches-in-transactions`: every batch of writes runs in an explicit transaction
+- `must-use-begin-immediate-for-writes`: every transaction that writes starts with `BEGIN IMMEDIATE`
+- `must-set-busy-timeout`: in any multi-connection or concurrent access scenario, every connection sets `busy_timeout`
+- `should-lower-busy-timeout-for-interactive-ui`: interactive UI operations where a 5-second wait would be visible use a `busy_timeout` of 500–1000ms, or the code says why not
+- `should-set-recommended-pragmas-on-every-connection`: every new connection sets the recommended PRAGMA configuration, or the code says why not
+- `should-use-single-writer-many-readers`: writes go through one dedicated write connection with an application-level queue, and reads through multiple read connections, or the code says why not
+- `must-not-hold-write-lock-during-external-io`: no write lock is held while waiting on network requests or user input
+- `should-keep-write-transactions-short`: write transactions are short, or the code says why not
+- `should-run-passive-checkpoints-periodically`: a `PRAGMA wal_checkpoint(PASSIVE)` runs periodically during normal operation, or the code says why not
+- `should-truncate-checkpoint-after-large-batches`: a `TRUNCATE` checkpoint follows each large sync batch, or the code says why not
+- `should-cap-wal-size`: WAL file size is capped, or the code says why not
+- `should-not-disable-auto-checkpoint-without-replacement`: auto-checkpointing is not disabled without a manual replacement, or the code says why not
+- `should-not-hold-long-read-transactions`: no long-running read transaction prevents checkpoint completion, or the code says why not
+- `should-not-run-very-large-write-transactions`: no very large write transaction blocks the checkpoint, or the code says why not
+- `should-checkpoint-off-the-foreground`: checkpoints run in a separate thread or connection, or the code says why not
+- `must-restore-safe-settings-after-bulk-load`: every bulk load with reduced-safety settings restores safe settings as soon as it completes
+- `must-not-use-bulk-load-settings-in-production`: no production code path uses the bulk load settings
+

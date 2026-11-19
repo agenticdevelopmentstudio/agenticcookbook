@@ -1,0 +1,52 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "f28a4638-c2ae-4a9b-817f-0f19b5712168",
+    "title": "Constraints and validation",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-07",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "CHECK constraints for SQLite: evaluation rules, enum-like constraints, boolean enforcement, range and pattern validation, NULL truthiness, and limitations.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "constraints",
+      "validation",
+      "schema-design",
+      "check-constraints"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://www.sqlite.org/lang_createtable.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "62d8ba5708b74657",
+  "parts": [
+    {"part": "intro"},
+    {"part": "syntax", "heading": "Syntax"},
+    {"part": "how-check-evaluation-works", "heading": "How CHECK evaluation works"},
+    {"part": "common-validation-patterns", "heading": "Common validation patterns"},
+    {"part": "what-is-not-allowed-in-check-expressions", "heading": "What is NOT allowed in CHECK expressions"},
+    {"part": "limitations", "heading": "Limitations"},
+    {"part": "disabling-for-data-import", "heading": "Disabling for data import"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

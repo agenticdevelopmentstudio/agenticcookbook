@@ -26,5 +26,3 @@ Tradeoff: O(n²) worst-case storage and complex insert/delete maintenance.
 
 **Nested sets** encode hierarchy as left/right boundary integers. Excellent read performance but inserting or moving a node requires renumbering all boundaries — impractical for frequently-modified trees.
 
-**Start with adjacency list.** Migrate to closure table only if recursive queries become a measured performance problem.
-

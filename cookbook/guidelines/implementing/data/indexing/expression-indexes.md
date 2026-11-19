@@ -6,8 +6,6 @@ CREATE INDEX idx_upper_last ON employees(UPPER(last_name));
 CREATE INDEX idx_event_date ON events(date(created_at));
 ```
 
-**MUST:** The expression in the query must match the index definition exactly — the planner does no algebra.
-
 ```sql
 -- Given: CREATE INDEX idx_xy ON t(x + y);
 WHERE x + y > 10   -- uses the index

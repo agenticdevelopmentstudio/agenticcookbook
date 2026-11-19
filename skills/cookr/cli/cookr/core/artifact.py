@@ -31,7 +31,7 @@ from typing import Any, Optional
 
 import yaml
 
-from .markdown import ARTIFACT_FILE, HOSTS_DIR, in_versions
+from .markdown import ARTIFACT_FILE, HOSTS_DIR, in_research, in_versions
 
 FORMAT = 2
 FORMATS = (1, 2)  # what _load_any reads; only the upgrader reads format 1
@@ -40,6 +40,10 @@ INTRO = "intro"
 HISTORY = "history"
 HISTORY_HEADING = "Change History"
 RESERVED = frozenset({INTRO, HISTORY, "artifact"})
+# What a part is for, so the skills compiled from an artifact can pick their
+# parts by role. Optional: a part with no role is compiled as it always was.
+ROLES = ("rules", "review-focus", "review-bar", "build-bar", "how-to", "examples",
+         "rationale", "references")
 
 _FRONTMATTER = re.compile(r"\A---\n(.*?)\n?---\n", re.S)
 _FENCE = re.compile(r"^(```|~~~)")
@@ -60,9 +64,13 @@ class Part:
     name: str
     text: str
     heading: Optional[str] = None  # None only for the intro
+    role: Optional[str] = None  # one of ROLES; None: the part has none
 
     def entry(self) -> dict:
-        return {"part": self.name} if self.heading is None else {"part": self.name, "heading": self.heading}
+        entry = {"part": self.name} if self.heading is None else {"part": self.name, "heading": self.heading}
+        if self.role is not None:
+            entry["role"] = self.role
+        return entry
 
 
 @dataclass
@@ -88,6 +96,11 @@ class Artifact:
     @property
     def type(self) -> str:
         return str(self.meta.get("type", ""))
+
+    @property
+    def roled(self) -> bool:
+        """Whether any part carries a role."""
+        return any(p.role is not None for p in self.parts)
 
     def part(self, name: str) -> Optional[Part]:
         return next((p for p in self.parts if p.name == name), None)
@@ -261,7 +274,8 @@ def with_part(artifact: Artifact, part: Part) -> Artifact:
             break
     else:
         if parts and not parts[-1].text.endswith("\n\n"):
-            parts[-1] = Part(parts[-1].name, parts[-1].text.rstrip("\n") + "\n\n", parts[-1].heading)
+            parts[-1] = Part(parts[-1].name, parts[-1].text.rstrip("\n") + "\n\n", parts[-1].heading,
+                             parts[-1].role)
         parts.append(part)
     return Artifact(meta=artifact.meta, parts=parts, names_hosts=artifact.names_hosts,
                     routes=artifact.routes, synced=artifact.synced,
@@ -330,7 +344,8 @@ def _artifact_from(folder: Path, data: dict) -> Artifact:
         f = folder / f"{name}.md"
         if not f.is_file():
             raise ArtifactError(f"{folder}: part {name!r} has no {f.name}")
-        parts.append(Part(name=name, text=f.read_text(encoding="utf-8"), heading=entry.get("heading")))
+        parts.append(Part(name=name, text=f.read_text(encoding="utf-8"), heading=entry.get("heading"),
+                          role=entry.get("role")))
     return Artifact(meta=dict(data.get("meta", {})), parts=parts,
                     names_hosts=data.get("names_hosts"), routes=data.get("routes"),
                     synced=data.get("synced"), twin_differs=data.get("twin_differs"),
@@ -502,6 +517,34 @@ def edit_text(doc: Path) -> str:
     return doc.read_text(encoding="utf-8")
 
 
+def keep_part_names(artifact: Artifact, current: Artifact) -> None:
+    """Name `artifact`'s parts (read from a doc) as `current`'s (its folder).
+    A doc names a part by its heading's slug and has no roles, but a folder
+    part may be named otherwise, so a part whose heading the folder has takes
+    that part's name and role. A heading the folder lacks keeps its slug,
+    numbered past any name a matched part took, and has no role, even where
+    its slug is an old part's name: only a heading match carries a role."""
+    fixed = (INTRO, HISTORY)
+    claimed: set[str] = set()
+    unmatched: list[Part] = []
+    for p in artifact.parts:
+        if p.name in fixed:
+            continue
+        kept = next((c for c in current.parts
+                     if c.name not in fixed and c.name not in claimed and c.heading == p.heading), None)
+        if kept is None:
+            unmatched.append(p)
+        else:
+            p.name, p.role = kept.name, kept.role
+            claimed.add(kept.name)
+    for p in unmatched:
+        base, n = p.name, 2
+        while p.name in claimed:
+            p.name = f"{base}-{n}"
+            n += 1
+        claimed.add(p.name)
+
+
 def save_document(doc: Path, text: str) -> None:
     """Write `text` (a whole single-file artifact) as `doc`. Read the text to
     edit with `edit_text`, which knows whether the doc or its folder is newer.
@@ -531,6 +574,7 @@ def save_document(doc: Path, text: str) -> None:
     artifact.routes = current.routes
     artifact.twin_differs = current.twin_differs
     artifact.informational = current.informational
+    keep_part_names(artifact, current)
     for gone in {p.name for p in current.parts} - {p.name for p in artifact.parts}:
         (folder / f"{gone}.md").unlink()
     artifact.synced = doc_digest(compose_document(artifact))
@@ -554,7 +598,7 @@ def find_documents(paths: list[Path]) -> list[Path]:
         for c in candidates:
             if c.name.startswith("_") or c.name == "INDEX.md":
                 continue
-            if p.is_dir() and in_versions(c, p):
+            if p.is_dir() and (in_versions(c, p) or in_research(c, p)):
                 continue
             if artifact_type_of(c):
                 found.add(c)
@@ -574,5 +618,6 @@ def find_folders(paths: list[Path]) -> list[Path]:
         if is_folder(p):
             found.add(p)
         elif p.is_dir():
-            found.update(f.parent for f in p.rglob(ARTIFACT_FILE) if not in_versions(f, p))
+            found.update(f.parent for f in p.rglob(ARTIFACT_FILE)
+                         if not in_versions(f, p) and not in_research(f, p))
     return sorted(found)

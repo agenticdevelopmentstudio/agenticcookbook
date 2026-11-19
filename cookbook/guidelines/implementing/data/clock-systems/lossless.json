@@ -1,0 +1,29 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Store HLC values in SQLite as `INTEGER` (milliseconds + counter packed) or as `TEXT` with a fixed-width format that sorts lexicographically.",
+      "to": "should-store-hlc-as-sortable-value",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both storage forms (packed `INTEGER` milliseconds + counter, or fixed-width lexicographically sorting `TEXT`) are kept at SHOULD.",
+        "pin": "6dacddabca2d8e43e6b662207f97fd0425d1eb53a3814b874d612864807e80df"
+      }
+    },
+    {
+      "sentence": "**MUST NOT use raw wall-clock time** as the sole ordering mechanism in multi-device collaborative apps.",
+      "to": "must-not-order-by-wall-clock-alone"
+    },
+    {
+      "sentence": "SHOULD be the default choice for centralized sync.",
+      "to": "should-use-server-versions-for-centralized-sync",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD and the centralized-sync scope are kept; the rule names the subject (server-assigned monotonic versions) that the source sentence left to its section heading.",
+        "pin": "0407f840bb749b863d4173b91946b6549a47e0f2babec85947d04400c93bf97f"
+      }
+    }
+  ]
+}

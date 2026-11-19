@@ -4,33 +4,44 @@
     "id": "d991b992-07aa-47b9-9d36-4fd1ca81435f",
     "title": "A/B testing",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-16",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Features that may need experimentation SHOULD support variant assignment via an ExperimentProvider interface (variant(key) returns a string), with a local default and a debug panel override.",
+    "summary": "Experiments SHOULD use an ExperimentProvider (e.g. variant(key, default)) with a control default; apps need a debug variant picker, never in release builds.",
     "platforms": [],
     "tags": [
       "ab-testing",
       "feature-management"
     ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "ac616d81-16c2-4f33-9ae4-139d5c24318d",
+      "e446ee3e-b8f2-40e7-b93d-3113e6a95e5d"
+    ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-16",
     "triggers": [
       "feature-flags",
       "logging"
     ]
   },
-  "synced": "dff03303f46588ea",
+  "synced": "b495cc7244ad7b65",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-to-keep-the-rules", "heading": "How to keep the rules", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

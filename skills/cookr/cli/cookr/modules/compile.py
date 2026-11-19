@@ -38,7 +38,8 @@ def register(parser: argparse.ArgumentParser) -> None:
 
 
 def run(args, ctx) -> int:
-    paths = args.paths or ([ctx.cookbook_root] if ctx.cookbook_root else [Path("cookbook")])
+    paths = ([ctx.artifact(p) for p in args.paths]
+             or ([ctx.cookbook_root] if ctx.cookbook_root else [Path("cookbook")]))
     missing = [p for p in paths if not p.exists()]
     if missing:
         ctx.ui.error(escape(f"no such path: {', '.join(map(str, missing))}"))

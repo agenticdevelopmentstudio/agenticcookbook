@@ -1,0 +1,72 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "**Critical:** Only `INTEGER PRIMARY KEY` aliases rowid, so a rowid-aliased key MUST be declared `INTEGER PRIMARY KEY`.",
+      "to": "must-declare-rowid-alias-as-integer",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The fact (only `INTEGER PRIMARY KEY` aliases rowid) and the MUST are kept word for word; only the \"Critical:\" label is dropped.",
+        "pin": "b64cd2715c1a0c67a4c7a17e0df741312c01fa2fb3adb4862389f4a2769b38ba"
+      }
+    },
+    {
+      "sentence": "**AUTOINCREMENT MUST be used only for:** audit logs, financial ledgers, event streams — where ID reuse is semantically wrong or a security concern.",
+      "to": "must-limit-autoincrement",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST ... only, all three uses (audit logs, financial ledgers, event streams) and the reason (ID reuse is semantically wrong or a security concern) are kept.",
+        "pin": "4de7a01b7263d1cb542c0a91e54ee659a4a213cd99ea2a2581fb9dd79aae427d"
+      }
+    },
+    {
+      "sentence": "**For internal + external IDs, a table SHOULD use a hybrid approach:**",
+      "to": "should-use-hybrid-ids",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD and the internal + external IDs condition are kept, and the rule spells out the hybrid approach that the source's example showed (integer PK internally, unique UUID column externally).",
+        "pin": "3958330353e940a337696babd1bd88ae6d07298c8668d60b1e49add2fceee866"
+      }
+    },
+    {
+      "sentence": "**Synced tables MUST NOT use `INTEGER PRIMARY KEY AUTOINCREMENT`.** IDs will collide across devices.",
+      "to": [
+        "must-not-autoincrement-synced-tables",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The MUST NOT on synced tables is in the rule, and the reason (IDs collide across devices) is carried by its rationale entry.",
+        "pin": "2e6dbffdf060c32434b10e539aefaff48b026787f8899b52f01d0269f0cc2d4f"
+      }
+    },
+    {
+      "sentence": "**A table SHOULD use WITHOUT ROWID when:**",
+      "to": "should-use-without-rowid-when-it-fits"
+    },
+    {
+      "sentence": "MUST have an explicit PRIMARY KEY",
+      "to": "must-declare-primary-key-without-rowid",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST have an explicit PRIMARY KEY is kept and scoped to `WITHOUT ROWID` tables, as in the source's restrictions list.",
+        "pin": "922e316921861e6570b46df6833c7e64b03b63272712a64618c339c39ed2430b"
+      }
+    },
+    {
+      "sentence": "MUST NOT use AUTOINCREMENT",
+      "to": "must-not-autoincrement-without-rowid",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST NOT use AUTOINCREMENT is kept and scoped to `WITHOUT ROWID` tables, as in the source's restrictions list.",
+        "pin": "7d7356ed28a3fa67b69ec6f8431de260a54c7e65543399bc16a35f2555c16fad"
+      }
+    }
+  ]
+}

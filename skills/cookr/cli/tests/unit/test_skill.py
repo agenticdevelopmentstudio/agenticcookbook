@@ -382,12 +382,315 @@ def test_a_doc_with_no_source_folder_fails_compile(book, tmp_path, monkeypatch, 
 def test_the_whole_cookbook_compiles_within_the_fanout_cap(tmp_path, repo_v2):
     """The plan's P5 gate: every artifact becomes a skill that loads on every
     host, names are unique, and no route node is over the cap."""
-    rep = skill.compile_set(find_folders([repo_v2 / "cookbook"]), tmp_path / "out")
+    folders = find_folders([repo_v2 / "cookbook"])
+    rep = skill.compile_set(folders, tmp_path / "out")
     assert [r.as_json() for r in rep.results if r.failed] == []
     assert rep.over_cap == {}
-    assert len(rep.results) == len(find_folders([repo_v2 / "cookbook"]))
+    assert len(rep.results) == sum(4 if load_folder(f).roled else 1 for f in folders)
     assert unconverted([REPO / "cookbook"]) == []
 
+
+# ── a roled artifact: a builder, a reviewer and their two verifiers ──────────
+
+ROLED = "guidelines/implementing/data/t"
+
+
+def make_roled(root: Path, rel: str = ROLED, *, drop=(), triggers=None, summary="Does the thing.",
+               routes=None, type_: str = "guideline") -> Path:
+    """A roled artifact (a guideline unless `type_` says) with a part for
+    every role, less the roles in `drop`."""
+    folder = root / rel
+    meta = {"id": str(uuid.uuid5(uuid.UUID(BOOK_ID), rel)), "title": "T", "type": type_,
+            "version": "1.2.0", "summary": summary}
+    if triggers is not None:
+        meta["triggers"] = triggers
+    parts = [
+        Part("rules", "- **must-do-it**: Code MUST do it.\n\n", "Rules", "rules"),
+        Part("how-to", "How to do it.\n\n", "How to", "how-to"),
+        Part("examples", "An example.\n\n", "Examples", "examples"),
+        Part("review-focus", "Look for the thing.\n\n", "Review focus", "review-focus"),
+        Part("build-bar", "- `must-do-it`: it is done.\n\n", "Build bar", "build-bar"),
+        Part("review-bar", "- The review names it.\n\n", "Review bar", "review-bar"),
+        Part("rationale", "Because.\n\n", "Why this matters", "rationale"),
+        Part("references", "- A source.\n\n", "References", "references"),
+    ]
+    write_folder(Artifact(meta=meta, routes=routes, parts=[Part("intro", "# T\n\nGuidance.\n\n")]
+                          + [p for p in parts if p.role not in drop]
+                          + [Part("history", "| Version | Date | Author | Summary |\n", "Change History")]),
+                 folder)
+    return folder
+
+
+@pytest.fixture
+def roled(book):
+    folder = make_roled(book, triggers=["database-operations"])
+    index_folders(book)
+    return folder
+
+
+def _fm(text):
+    import yaml
+    return yaml.safe_load("".join(tuning.split(text)[0]))
+
+
+def test_a_roled_artifact_compiles_to_four_skills(roled):
+    names = {s.name: s for s in skill.compose_all(roled)}
+    assert set(names) == {"implementing-data-t", "verifying-build-data-t",
+                          "reviewing-data-t", "verifying-review-data-t"}
+    assert "How to" in names["implementing-data-t"].text and "Look for" not in names["implementing-data-t"].text
+    assert "Look for" in names["reviewing-data-t"].text and "How to" not in names["reviewing-data-t"].text
+    assert "**must-do-it**" in names["implementing-data-t"].text and "**must-do-it**" in names["reviewing-data-t"].text
+    assert "**must-do-it**" not in names["verifying-review-data-t"].text
+    assert names["verifying-review-data-t"].kind == "review-verifier"
+    assert [s.kind for s in names.values()] == ["builder", "build-verifier", "reviewer", "review-verifier"]
+    for s in names.values():
+        assert s.text.split("---\n", 2)[2].startswith("# T\n\nGuidance.\n")    # the intro opens each
+        assert "Change History" not in s.text
+
+
+def test_the_verifiers_end_their_bar_with_the_line_they_grade_by(roled):
+    by = {s.kind: s for s in skill.compose_all(roled)}
+    assert ("## Build bar\n- `must-do-it`: it is done.\n\nA build passes when every item above holds.\n\n## More"
+            in by["build-verifier"].text)
+    assert ("## Review bar\n- The review names it.\n\nA review passes when it establishes every item "
+            "above.\n\n## More" in by["review-verifier"].text)
+    assert "passes when" not in by["builder"].text + by["reviewer"].text
+
+
+def test_each_of_the_four_names_its_source_and_kind(roled):
+    fms = [_fm(s.text) for s in skill.compose_all(roled)]
+    assert {f["metadata"]["source"] for f in fms} == {"book.guideline.implementing.data.t"}
+    assert [f["metadata"]["skill"] for f in fms] == ["builder", "build-verifier", "reviewer", "review-verifier"]
+    assert [f["name"] for f in fms] == ["implementing-data-t", "verifying-build-data-t",
+                                        "reviewing-data-t", "verifying-review-data-t"]
+    for s in skill.compose_all(roled):
+        for h in hosts.manifest().values():
+            assert tuning.load_problems(s.text, h) == []
+
+
+def test_the_four_route_by_their_use_case_with_the_same_tail(roled):
+    routes = {s.kind: s.routes for s in skill.compose_all(roled)}
+    assert routes == {
+        "builder": ("coding/implementing/data", "coding/when/database-operations/implementing/data"),
+        "build-verifier": ("coding/verifying-build/data",
+                           "coding/when/database-operations/verifying-build/data"),
+        "reviewer": ("coding/reviewing/data", "coding/when/database-operations/reviewing/data"),
+        "review-verifier": ("coding/verifying-review/data",
+                            "coding/when/database-operations/verifying-review/data"),
+    }
+
+
+def test_rationale_is_linked_never_inlined(roled):
+    for s in skill.compose_all(roled):
+        assert "Because." not in s.text and "A source." not in s.text
+        assert set(s.references) == {"rationale.md", "references.md"}
+        assert "Because." in s.references["rationale.md"]
+        assert "A source." in s.references["references.md"]
+        assert f"Part of the `{s.name}` skill" in s.references["rationale.md"]
+        assert "- [Rationale](references/rationale.md): " in s.text
+        assert "- [References](references/references.md): " in s.text
+
+
+def test_an_unroled_artifact_still_compiles_to_its_one_skill_unchanged(book):
+    for rel in ("guidelines/implementing/data/use-wal", "principles/simplicity",
+                "ingredients/ui/components/badge"):
+        [only] = skill.compose_all(book / rel)
+        assert only == skill.compose(book / rel)
+        assert only.kind == "" and "skill:" not in only.text
+
+
+def test_a_roled_artifact_missing_a_role_is_refused_by_name(book):
+    folder = make_roled(book, drop=("build-bar",))
+    with pytest.raises(skill.SkillError, match="missing-role.*build-verifier"):
+        skill.compose_all(folder)
+
+
+@pytest.mark.parametrize("part", ["review-focus", "rationale"])
+def test_a_roled_part_headed_like_an_omitted_section_is_refused_by_name(roled, part):
+    meta = json.loads((roled / "artifact.json").read_text())
+    for p in meta["parts"]:
+        if p["part"] == part:
+            p["heading"] = "Change History"
+    (roled / "artifact.json").write_text(json.dumps(meta, indent=2))
+    with pytest.raises(skill.SkillError, match=f"part '{part}' .*'Change History'"):
+        skill.compose_all(roled)
+
+
+def test_a_blank_review_bar_is_refused_by_name(book):
+    folder = make_roled(book)
+    (folder / "review-bar.md").write_text("\n", encoding="utf-8")
+    with pytest.raises(skill.SkillError, match=r"data/t: .*empty-part: part 'review-bar' with role "
+                                               r"'review-bar' has no text, so no review-verifier skill"):
+        skill.compose_all(folder)
+
+
+@pytest.mark.parametrize("prose", ["These rules may be applied in any order.",
+                                   "> Note: you should read the how-to."])
+def test_lower_case_words_in_rules_prose_compile(book, prose):
+    folder = make_roled(book)
+    (folder / "rules.md").write_text(f"{prose}\n\n- **must-do-it**: Code MUST do it.\n\n", encoding="utf-8")
+    assert prose in {s.kind: s for s in skill.compose_all(folder)}["builder"].text
+
+
+def test_an_upper_case_requirement_in_rules_prose_is_refused(book):
+    folder = make_roled(book)
+    (folder / "rules.md").write_text("Code MUST x.\n\n- **must-do-it**: Code MUST do it.\n\n", encoding="utf-8")
+    with pytest.raises(skill.SkillError, match=r"unnamed-rule: part 'rules': 'Code MUST x\.'"):
+        skill.compose_all(folder)
+
+
+def test_a_tuned_roled_artifact_is_refused(roled):
+    (roled / "hosts").mkdir()
+    (roled / "hosts" / "claude.add.md").write_text("Host.\n")
+    with pytest.raises(skill.SkillError, match="tuned"):
+        skill.compose_all(roled)
+
+
+def test_a_roled_planning_topic_compiles_four_skills_named_by_its_tail(book):
+    folder = make_roled(book, "guidelines/planning/data/t", triggers=["database-operations"])
+    by = {s.kind: s for s in skill.compose_all(folder)}
+    assert {k: s.name for k, s in by.items()} == {
+        "builder": "planning-data-t", "build-verifier": "verifying-build-data-t",
+        "reviewer": "reviewing-data-t", "review-verifier": "verifying-review-data-t"}
+    assert by["builder"].name == skill.skill_name("guidelines", ("planning", "data", "t"))
+    assert by["builder"].routes == ("coding/planning/data", "coding/when/database-operations/planning/data")
+    assert by["reviewer"].routes == ("coding/reviewing/data", "coding/when/database-operations/reviewing/data")
+    assert "How to" in by["builder"].text and "Look for" in by["reviewer"].text
+
+
+def test_a_roled_principle_compiles_four_skills(book):
+    folder = make_roled(book, "principles/t", type_="principle")
+    by = {s.kind: s for s in skill.compose_all(folder)}
+    assert {k: s.name for k, s in by.items()} == {
+        "builder": "principle-t", "build-verifier": "verifying-build-principle-t",
+        "reviewer": "reviewing-principle-t", "review-verifier": "verifying-review-principle-t"}
+    assert all(s.routes == ("principles",) for s in by.values())
+    assert "How to" in by["builder"].text and "Look for" in by["reviewer"].text
+
+
+def test_a_roled_guideline_under_reviewing_is_refused(tmp_path):
+    root = tmp_path / "cookbook"
+    manifest(root)
+    folder = make_roled(root, "guidelines/reviewing/data/t")
+    with pytest.raises(skill.SkillError, match="reviewing-folder: it lives under guidelines/reviewing/"):
+        skill.compose_all(folder)
+
+
+def test_a_roled_ingredient_is_refused(tmp_path):
+    root = tmp_path / "cookbook"
+    manifest(root)
+    folder = make_roled(root, "ingredients/ui/t", type_="ingredient")
+    with pytest.raises(skill.SkillError, match="unroled-type: an ingredient is never roled"):
+        skill.compose_all(folder)
+
+
+def test_two_roled_topics_whose_cut_names_collide_are_refused_naming_both(tmp_path):
+    root = tmp_path / "cookbook"
+    manifest(root)
+    tail = "code-quality/no-external-dependencies-in-core-libraries-ever"
+    a = make_roled(root, f"guidelines/implementing/{tail}")
+    b = make_roled(root, f"guidelines/planning/{tail}")
+    rep = skill.compile_set([a, b], tmp_path / "out")
+    assert rep.failed
+    errors = [r for r in rep.results if r.failed]
+    shared = {s.name for s in skill.compose_all(a)} & {s.name for s in skill.compose_all(b)}
+    assert len(shared) == 3 and all(len(n) <= skill.NAME_MAX for n in shared)
+    assert len("reviewing-" + tail.replace("/", "-")) > skill.NAME_MAX   # so each name is cut
+    assert len(errors) == 6 and {r.status for r in errors} == {"error"}
+    for mine, other in ((a, b), (b, a)):
+        assert sum(1 for r in errors if r.source == mine and str(other) in r.detail) == 3
+
+
+def test_a_roled_artifact_has_no_variants(roled):
+    for s in skill.compose_all(roled):
+        assert skill.variants(s) == ({}, [])          # not even the guideline template's own
+    [plain] = skill.compose_all(roled.parent / "use-wal")
+    assert set(skill.variants(plain)[0]) == {"claude"}
+
+
+def test_the_set_receipt_records_all_four_and_prunes_them_together(roled, book, tmp_path):
+    out = tmp_path / "out"
+    rep = skill.compile_set(find_folders([book]), out)
+    assert not rep.failed
+    receipt = json.loads((out / "skills.json").read_text())["skills"]
+    four = {"implementing-data-t": "builder", "verifying-build-data-t": "build-verifier",
+            "reviewing-data-t": "reviewer", "verifying-review-data-t": "review-verifier"}
+    for name, kind in four.items():
+        assert receipt[name]["kind"] == kind and receipt[name]["source"] == str(roled)
+        assert f"{name}/references/rationale.md" in receipt[name]["files"]
+        assert (out / name / "SKILL.md").is_file()
+    assert "kind" not in receipt["implementing-data-use-wal"]
+    shutil.rmtree(roled)
+    rep = skill.compile_set(find_folders([book]), out)
+    assert not any((out / name).exists() for name in four)
+    assert set(json.loads((out / "skills.json").read_text())["skills"]) == {
+        "implementing-data-use-wal", "principle-simplicity", "ui-components-badge"}
+
+
+def test_four_long_names_stay_distinct_within_the_limit(tmp_path):
+    root = tmp_path / "cookbook"
+    manifest(root)
+    long = "guidelines/implementing/code-quality/no-external-dependencies-in-core-libraries-ever"
+    names = [s.name for s in skill.compose_all(make_roled(root, long))]
+    assert len(names) == 4 and len(set(names)) == 4
+    assert all(len(n) <= skill.NAME_MAX for n in names)
+    assert names[0] == skill.skill_name("guidelines", tuple(long.split("/")[1:]))
+
+
+def test_each_of_the_four_has_its_own_description_and_the_builder_keeps_todays(roled):
+    by = {s.kind: _fm(s.text)["description"] for s in skill.compose_all(roled)}
+    assert by["builder"] == skill.description(load_folder(roled)) == "Does the thing. Use when: database-operations."
+    assert len(set(by.values())) == 4
+    assert by["reviewer"].startswith("Review code against")
+    assert by["build-verifier"].startswith("Check that a build meets")
+    assert by["review-verifier"].startswith("Check that a review")
+    assert all(v.endswith("Does the thing. Use when: database-operations.") for v in by.values())
+
+
+def test_a_long_description_stays_within_the_limit_on_all_four(book):
+    folder = make_roled(book, summary="Word " * 300)
+    for s in skill.compose_all(folder):
+        d = _fm(s.text)["description"]
+        assert len(d) <= skill.DESCRIPTION_MAX and d.endswith("…")
+
+
+def test_a_roled_artifact_with_its_own_routes_is_refused(book):
+    folder = make_roled(book, routes=["coding/data"])
+    with pytest.raises(skill.SkillError, match="routed"):
+        skill.compose_all(folder)
+
+
+def test_only_the_builder_shows_the_reference_implementations(roled, book):
+    from cookr.core.index import Conformance, Implementation, current_index, save_index
+    index = current_index(book)
+    index.entries[_uid(ROLED)].implementations = [
+        Implementation("macos", "Sources/T.swift", Conformance("confirmed", "1.2.0"))]
+    save_index(index, book)
+    by = {s.kind: s for s in skill.compose_all(roled)}
+    assert "## Reference Implementations\n\n| Platform | Location | Conformance |" in by["builder"].text
+    assert "| macos | `Sources/T.swift` | confirmed (1.2.0) |" in by["builder"].text
+    assert all("Reference Implementations" not in by[k].text
+               for k in ("build-verifier", "reviewer", "review-verifier"))
+
+
+def test_the_cli_counts_each_skill_of_a_set_with_a_roled_artifact(tmp_path, monkeypatch, capsys):
+    root = tmp_path / "cookbook"
+    manifest(root)
+    make_roled(root)
+    make(root, "principles/simplicity", "principle")
+    index_folders(root)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("COLUMNS", "300")
+    assert main(["compile", "--target", "skill", str(root), "--out", "out", "--json"]) == 0
+    results = json.loads(capsys.readouterr().out)["results"]
+    assert sorted(Path(r["dest"]).name for r in results) == [
+        "implementing-data-t", "principle-simplicity", "reviewing-data-t",
+        "verifying-build-data-t", "verifying-review-data-t"]
+    assert main(["compile", "--target", "skill", str(root), "--out", "out2"]) == 0
+    assert "5 of 5 compiled" in capsys.readouterr().out
+
+
+# ── NEEDS REVIEW markers: the builder is told to settle them (main 0.14.0) ──
 
 def _recipe_with(tmp_path, rules: str, platforms_note: str = "- **macos**: Built.\n\n"):
     root = tmp_path / "cookbook"
@@ -425,3 +728,14 @@ def test_a_marker_only_in_a_referred_section_still_raises_the_notice(tmp_path):
 def test_a_settled_recipe_carries_no_notice_even_when_its_history_mentions_markers(tmp_path):
     folder = _recipe_with(tmp_path, "- **open**: MUST open.\n\n")
     assert skill.OPEN_QUESTIONS_HEADING not in skill.compose(folder).text
+
+
+def test_only_the_builder_of_a_roled_artifact_carries_the_open_questions_notice(book):
+    # 0.22.0: the notice tells whoever builds to settle the markers first; the reviewer and the two verifiers
+    # do not build from the artifact, so theirs carry none.
+    folder = make_roled(book)
+    (folder / "how-to.md").write_text("NEEDS REVIEW: Which order?\n\n", encoding="utf-8")
+    by = {s.kind: s for s in skill.compose_all(folder)}
+    assert skill.OPEN_QUESTIONS_HEADING in by["builder"].text
+    for kind in ("build-verifier", "reviewer", "review-verifier"):
+        assert skill.OPEN_QUESTIONS_HEADING not in by[kind].text, kind

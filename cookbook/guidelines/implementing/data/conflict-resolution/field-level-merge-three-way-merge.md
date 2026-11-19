@@ -23,7 +23,5 @@ def field_level_merge(client, server, base):
     return merged
 ```
 
-MUST identify fields that form semantic groups and resolve them atomically — for example, `quantity` and `unit_price` should not be independently merged if `total` depends on both.
-
 cr-sqlite implements per-column CRDTs that achieve field-level merge automatically, falling back to LWW only when the same field is concurrently modified.
 

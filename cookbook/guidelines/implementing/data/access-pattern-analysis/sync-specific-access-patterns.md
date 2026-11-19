@@ -1,5 +1,5 @@
 
-Sync workloads have predictable query shapes. Design for them explicitly.
+Sync workloads have predictable query shapes.
 
 ### Unsynced record queries
 
@@ -17,8 +17,6 @@ This query runs on every sync cycle. MUST have an index that covers it:
 CREATE INDEX idx_tasks_sync_status ON tasks(last_synced_at, updated_at)
   WHERE last_synced_at IS NULL OR updated_at > last_synced_at;
 ```
-
-Verify with `EXPLAIN QUERY PLAN` that this shows `SEARCH ... USING INDEX`, not `SCAN`.
 
 ### Outbox and change log queries
 

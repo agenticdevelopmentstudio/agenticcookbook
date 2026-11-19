@@ -1,0 +1,1684 @@
+{
+  "topic": "feature-flags",
+  "artifact": "cookbook/guidelines/implementing/feature-management/feature-flags",
+  "scope": "Feature flags in client apps and services: when to flag, flag types and lifecycle, removal, defaults on evaluation failure versus fail-fast config, naming and documenting keys, testing both paths, the provider-interface pattern and its standard (OpenFeature), vendor SDKs (LaunchDarkly, Unleash, Flagsmith, ConfigCat, Firebase Remote Config, Microsoft.FeatureManagement / Azure App Configuration), local stores (UserDefaults, SharedPreferences/DataStore, localStorage, JSON), and platform-owner rules (Apple App Review, Google Play, Android, Microsoft, web).",
+  "base_commit": "2071c94e51a8c517e11178fdee54e0ec033064c2",
+  "research_type": "Technology / software (Technical MEDIUM bar; one regulatory finding used as a case record)",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to authoritative sources (OpenFeature specification, platform-owner documentation and policy, vendors' docs for their own SDKs, the canonical expert article), chain citations, corroborate across independent sources, record provenance at generation time.",
+    "search_strategy": "WebSearch for vendor and platform documentation on flag defaults, lifecycle, naming and local storage; WebFetch of every cited page; every quote then re-checked verbatim against the page text with curl (OpenFeature spec and Microsoft.FeatureManagement source fetched raw from GitHub; Apple UserDefaults read from its documentation JSON; the SEC order PDF converted with pdftotext).",
+    "inclusion": "Primary sources first: the OpenFeature specification, Apple, Google/Android/Play, Microsoft documentation and source, vendor documentation for each vendor's own SDK, a government regulatory order. Expert secondary sources (Hodgson, Fowler on martinfowler.com) for the expert's-view question, which no primary source covers.",
+    "exclusion": "Search-result snippets, third-party SEO blogs and governance listicles, mirrors of vendor docs, pages that could not be fetched (an Unleash unique-names page returned 404), and any quote not found verbatim in the fetched page.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy 20 + Currency 10 + Transparency 15, capped by the Technical MEDIUM domain bar (official current docs)."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://configcat.com/docs/targeting/feature-flag-evaluation/",
+    "https://developer.android.com/reference/android/content/SharedPreferences",
+    "https://developer.android.com/topic/libraries/architecture/datastore",
+    "https://developer.apple.com/app-store/review/guidelines/",
+    "https://developer.apple.com/documentation/foundation/userdefaults",
+    "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+    "https://docs.flagsmith.com/best-practices/defensive-coding",
+    "https://docs.getunleash.io/concepts/feature-flags",
+    "https://docs.getunleash.io/reference/technical-debt",
+    "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+    "https://firebase.google.com/docs/remote-config/loading",
+    "https://launchdarkly.com/docs/guides/flags/technical-debt",
+    "https://launchdarkly.com/docs/guides/sdk/resilience",
+    "https://launchdarkly.com/docs/home/flags/archive",
+    "https://launchdarkly.com/docs/sdk/features/evaluating",
+    "https://launchdarkly.com/docs/sdk/features/local-storage",
+    "https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-dotnet-reference",
+    "https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-overview",
+    "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+    "https://martinfowler.com/articles/feature-toggles.html",
+    "https://martinfowler.com/bliki/FeatureFlag.html",
+    "https://openfeature.dev/docs/reference/intro",
+    "https://openfeature.dev/specification/sections/flag-evaluation",
+    "https://openfeature.dev/specification/sections/providers",
+    "https://raw.githubusercontent.com/microsoft/FeatureManagement-Dotnet/main/src/Microsoft.FeatureManagement/FeatureManagementOptions.cs",
+    "https://raw.githubusercontent.com/microsoft/FeatureManagement-Dotnet/main/src/Microsoft.FeatureManagement/IFeatureManager.cs",
+    "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+    "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/02-providers.md",
+    "https://support.google.com/googleplay/android-developer/answer/16273414",
+    "https://www.sec.gov/files/litigation/admin/2013/34-70694.pdf"
+  ],
+  "dates": {
+    "researched": "2026-11-16",
+    "accessed": "2026-11-16"
+  },
+  "summary": "Four of the eight rules hold: the injected provider interface (OpenFeature's provider model and Microsoft.FeatureManagement's DI both have this shape), UserDefaults on Apple, localStorage on web (vendor SDKs cache flags there; it is per-origin, string-only and can throw) and Microsoft.FeatureManagement with appsettings.json then Azure App Configuration (IFeatureManager still ships, though the docs now lead with IVariantFeatureManager). Three are contradicted: gating every feature (Microsoft says not every change needs a flag; Fowler calls release flags the last choice), SharedPreferences on Android (the Android team strongly recommends against it for new storage; DataStore instead), and fail-fast applied to flag evaluation (OpenFeature and every vendor SDK return the caller's default and never throw; failure belongs at setup, and flags are not config). 'Each spec lists flag keys' is unsupported: no source covers specs; the nearest practice is naming conventions, descriptions and a planned removal. The topic misses: a call-site default and no-throw evaluation, typed values, off means existing behaviour, no runtime dependency on the flag service, flag types with lifetimes, removing flags when done, unique never-reused names (Knight Capital), testing both states, decoupled toggle points, App Store 2.5.19/2.3.1 and the store bans on downloaded code, the local store as untrusted, no mid-session UI flips, monitoring rollouts, static config preferred, and a standard API (OpenFeature).",
+  "open_questions": [
+    "Whether the provider interface should keep `isEnabled(key) -> Bool` or take a call-site default and typed values as OpenFeature does; the owner decides the rule's signature.",
+    "Whether to keep a 'spec lists flag keys' rule as a house convention; no external source supports or contradicts it.",
+    "Whether Apple App Review treats a feature already in the binary but switched off during review as 'hidden' under 2.5.19; no Apple text addresses feature flags directly.",
+    "Whether the fail-fast rule should be scoped to deploy configuration (where Unleash's config/flag split supports it) with flags explicitly excluded, or whether flag provider setup should fail fast as OpenFeature allows.",
+    "Whether the Swift guidance should name OpenFeature's iOS SDK or a vendor SDK as the 'backend later', and whether Kotlin should name Preferences DataStore or Proto DataStore."
+  ],
+  "limitations": [
+    "The brief's 'App Store guideline 2.3.1 on hidden features' is out of date: the current hidden-features rule is 2.5.19; 2.3.1 now covers describing new features for review.",
+    "No Windows desktop (Microsoft Store) guidance on feature flags was found; Microsoft coverage is Microsoft.FeatureManagement, Azure App Configuration and Azure DevOps guidance.",
+    "No primary source speaks to documenting flag keys in a specification; the naming and description practice comes from vendors.",
+    "The web platform claim cites MDN rather than the WHATWG HTML standard.",
+    "Several Microsoft DevOps claims come from a 2022 page; currency was scored down.",
+    "The Unleash unique-names topic page returned 404; its point was taken from the Unleash best-practices page instead."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "off-is-existing-behaviour",
+      "question": "best-practices",
+      "claim": "A flag's off state (and its fallback value) should be the existing, known-working behaviour; on is the new behaviour.",
+      "quote": "a good convention is to enable existing or legacy behavior when a Feature Flag is Off and new or future behavior when it's On. | As a general rule, consider setting your fallback values to stable behavior matching your application's current working state. Essentially, use values that keep things running.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Resilient architecture patterns for LaunchDarkly SDKs",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/sdk/resilience",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "feature toggles Hodgson testing toggle configurations; LaunchDarkly SDK resilience fallback values",
+      "trust": {
+        "score": 80,
+        "basis": "Expert article (Hodgson on martinfowler.com) independently corroborated by LaunchDarkly's own resilience guide; stable practice, currency not critical; Technical MEDIUM bar met by vendor docs."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "restrictive-fallback-for-security",
+      "question": "best-practices",
+      "claim": "For security- or compliance-sensitive flags, the fallback should be the more restrictive behaviour rather than the current one.",
+      "quote": "For high-security or compliance-related areas, falling back to more restrictive behavior instead is a good practice.",
+      "citations": [
+        {
+          "title": "Resilient architecture patterns for LaunchDarkly SDKs",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/sdk/resilience",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly SDK resilience fallback values",
+      "trust": {
+        "score": 62,
+        "basis": "One vendor's guide; plausible and consistent with fail-safe principles but not corroborated by an independent source found here."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "default-at-every-evaluation",
+      "question": "best-practices",
+      "claim": "Every flag read should carry an in-code default so the app behaves correctly without the flag service.",
+      "quote": "Don't rely on network connectivity to obtain Remote Config values. Do set in-app default parameter values so that your app always behaves as expected. | We strongly recommend setting defaults for all of your flags as a matter of routine.",
+      "citations": [
+        {
+          "title": "Firebase Remote Config loading strategies",
+          "author": "Google",
+          "publisher": "Firebase Documentation",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/remote-config/loading",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Defensive Coding and Designing for Failure",
+          "author": "Flagsmith",
+          "publisher": "Flagsmith Docs",
+          "date": "n.d.",
+          "url": "https://docs.flagsmith.com/best-practices/defensive-coding",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Flag variation evaluation",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/sdk/features/evaluating",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firebase Remote Config loading strategies defaults; Flagsmith default flag handler; LaunchDarkly fallback value",
+      "trust": {
+        "score": 86,
+        "basis": "Three independent vendors (Google Firebase, Flagsmith, LaunchDarkly) state the same practice in their own current docs."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "no-dependency-on-flag-service",
+      "question": "best-practices",
+      "claim": "The application must keep working when the flag service is unavailable, using cached last-known values or in-code defaults.",
+      "quote": "Your application shouldn't have any dependency on the availability of your feature flag system. | Our client-side SDKs will always remember their last known flags and use these in the event that they cannot reach our API",
+      "citations": [
+        {
+          "title": "11 feature flag best practices for scale",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Defensive Coding and Designing for Failure",
+          "author": "Flagsmith",
+          "publisher": "Flagsmith Docs",
+          "date": "n.d.",
+          "url": "https://docs.flagsmith.com/best-practices/defensive-coding",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Unleash feature flag best practices; Flagsmith defensive coding",
+      "trust": {
+        "score": 78,
+        "basis": "Two independent vendors (Unleash, Flagsmith); corroborated in mechanism by LaunchDarkly's local-storage cache claim."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "flags-short-lived-removed",
+      "question": "best-practices",
+      "claim": "Release flags are temporary: once the rollout is complete, remove the flag and its old code path from the codebase.",
+      "quote": "Once a rollout is complete, you should remove the feature flag from your code and archive it. | Once the flag has fulfilled its business purpose, remove it from the codebase. | Most feature flags can be retired once a feature has been rolled out to everyone. At that point, the team can delete all references to the flag in code and configuration.",
+      "citations": [
+        {
+          "title": "11 feature flag best practices for scale",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Reducing technical debt from feature flags",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/flags/technical-debt",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Progressive experimentation with feature flags",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn (Azure DevOps resource center)",
+          "date": "2022-08-18",
+          "url": "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "remove feature flags after rollout technical debt",
+      "trust": {
+        "score": 88,
+        "basis": "Unleash, LaunchDarkly and Microsoft independently say the same; also Fowler ('retire release flags')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "remove-code-before-archive",
+      "question": "best-practices",
+      "claim": "Remove a flag from code before retiring it in the flag service, because a retired flag serves the in-code fallback.",
+      "quote": "Before you archive a flag in LaunchDarkly, remove the flag from your code. If your application evaluates an archived flag, LaunchDarkly serves the flag's fallback value , which is the value you defined in code.",
+      "citations": [
+        {
+          "title": "Archiving and restoring flags",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/home/flags/archive",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly archive flags remove from code",
+      "trust": {
+        "score": 64,
+        "basis": "Single vendor; follows from the default-at-evaluation behaviour every SDK shares."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "removal-planned-at-creation",
+      "question": "best-practices",
+      "claim": "Plan a flag's removal when it is created: a removal pull request, a backlog item or an expiration date.",
+      "quote": "When creating a pull request to add a flag into your code, you can also create a second pull request which removes the flag. | Other teams put “expiration dates” on their toggles.",
+      "citations": [
+        {
+          "title": "Reducing technical debt from feature flags",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/flags/technical-debt",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly technical debt plan removal; Hodgson expiration dates",
+      "trust": {
+        "score": 76,
+        "basis": "Vendor doc and independent expert article agree on planning removal at creation."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "regular-flag-review",
+      "question": "best-practices",
+      "claim": "Review the set of live flags on a regular cadence, such as every sprint.",
+      "quote": "It's a good practice to include a feature flag review, such as at the beginning of each sprint.",
+      "citations": [
+        {
+          "title": "Progressive experimentation with feature flags",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn (Azure DevOps resource center)",
+          "date": "2022-08-18",
+          "url": "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft progressive experimentation feature flags",
+      "trust": {
+        "score": 58,
+        "basis": "Single Microsoft page, dated 2022; LaunchDarkly also recommends 'regular flag cleanup days' (resilience guide) but that is a weaker match."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "naming-and-descriptions",
+      "question": "best-practices",
+      "claim": "Use a shared naming convention, unique names across the whole system, and a description for each flag.",
+      "quote": "A shared naming convention for your organization's flags is an effective way to eliminate debt. | Use descriptions to add more context to the flag. | Ensure that all flags within the same Feature Flag Control Service have unique names across your entire system.",
+      "citations": [
+        {
+          "title": "Reducing technical debt from feature flags",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/flags/technical-debt",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "11 feature flag best practices for scale",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly naming conventions descriptions; Unleash unique flag names",
+      "trust": {
+        "score": 72,
+        "basis": "Two independent vendors; no standards body speaks to naming."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "test-both-states",
+      "question": "best-practices",
+      "claim": "Test both states of each flag, and keep testing a long-lived flag's off path while it can still be switched.",
+      "quote": "we must perform test our artifact in both states: with the toggle flipped On and flipped Off. | it needs to be tested and maintained until the option is removed. | Periodically test the fallback values for permanent flags to ensure that they still deliver working experiences.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Progressive experimentation with feature flags",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn (Azure DevOps resource center)",
+          "date": "2022-08-18",
+          "url": "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Resilient architecture patterns for LaunchDarkly SDKs",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/sdk/resilience",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article; official platform documentation; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "testing feature toggles both states",
+      "trust": {
+        "score": 82,
+        "basis": "Expert article, Microsoft and LaunchDarkly independently agree."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "not-every-change-needs-a-flag",
+      "question": "best-practices",
+      "claim": "Not every change needs a flag; splitting a feature into safe increments is preferred, with a release flag as the last resort.",
+      "quote": "Not every change requires one, so it's a judgment call for a developer when they choose make a given change. | However they should be your last choice when you're dealing with putting features into production. Your first choice should be to break the feature down so you can safely introduce parts of the feature into the product.",
+      "citations": [
+        {
+          "title": "Progressive experimentation with feature flags",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn (Azure DevOps resource center)",
+          "date": "2022-08-18",
+          "url": "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "FeatureFlag (bliki)",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2010-10-29 (revised 2023)",
+          "url": "https://martinfowler.com/bliki/FeatureFlag.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft how to decide whether to use a feature flag; Fowler FeatureFlag bliki",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's DevOps guidance and Fowler independently reject flagging everything; no source found recommends gating every feature."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "monitor-flag-rollout",
+      "question": "best-practices",
+      "claim": "Watch usage and system-health metrics while a flag widens exposure.",
+      "quote": "teams must continuously monitor the right metrics to gauge readiness for broader exposure. These metrics should include usage behavior, as well as the impact of the updates on the health of the system.",
+      "citations": [
+        {
+          "title": "Progressive experimentation with feature flags",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn (Azure DevOps resource center)",
+          "date": "2022-08-18",
+          "url": "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft progressive experimentation feature flags telemetry",
+      "trust": {
+        "score": 60,
+        "basis": "Single Microsoft page (2022); Microsoft.FeatureManagement ships flag telemetry, consistent with it."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "flags-are-not-config",
+      "question": "best-practices",
+      "claim": "Feature flags are not application configuration: configuration is static and loaded at startup, flags are short-lived, change at runtime and favour availability.",
+      "quote": "Avoid using feature flags for static application configuration. Application configuration should be consistent, long-lived, and loaded during application startup. In contrast, feature flags should be short-lived, dynamic, and updated at runtime . They prioritize availability over consistency and can be modified frequently.",
+      "citations": [
+        {
+          "title": "11 feature flag best practices for scale",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Unleash feature flag best practices static configuration",
+      "trust": {
+        "score": 66,
+        "basis": "Single vendor; Hodgson's category model (static vs dynamic toggles) is consistent but does not say this directly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "openfeature-vendor-agnostic",
+      "question": "known-solutions",
+      "claim": "OpenFeature is a CNCF open specification giving one vendor-agnostic flag evaluation API, with client SDKs for iOS, Kotlin and Web and a server SDK for .NET.",
+      "quote": "OpenFeature is an open specification that provides a vendor-agnostic, community-driven API for feature flagging that works with your favorite feature flag management tool. | OpenFeature is a Cloud Native Computing Foundation incubating project",
+      "citations": [
+        {
+          "title": "Introduction | OpenFeature",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://openfeature.dev/docs/reference/intro",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification (CNCF project)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature introduction vendor-agnostic API",
+      "trust": {
+        "score": 65,
+        "basis": "Primary source for itself; CNCF governance; SDK list read from the same page's navigation. Second check 2026-11-16: supports-claim partly (the SDK list (iOS/Swift, Kotlin, Web, .NET) is from the page's navigation, not the quote); lowered 82->65."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "openfeature-provider-abstraction",
+      "question": "known-solutions",
+      "claim": "OpenFeature separates the evaluation API from a swappable provider set at startup; a provider may wrap a vendor SDK or read flags from a local file.",
+      "quote": "Providers are the \"translator\" between the flag evaluation calls made in application code, and the flag management system that stores flags and in some cases evaluates flags. ... Hypothetical provider implementations might wrap a vendor SDK, embed an REST client, or read flags from a local file. | The `API` **MUST** define a `provider mutator`, a function to set the default `provider`, which accepts an API-conformant `provider` implementation.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 2. Provider",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://openfeature.dev/specification/sections/providers",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "OpenFeature Specification, 02-providers.md (source)",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "GitHub open-feature/spec",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/02-providers.md",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "OpenFeature Specification, 01-flag-evaluation.md (source)",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "GitHub open-feature/spec",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification (CNCF project)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature specification providers",
+      "trust": {
+        "score": 88,
+        "basis": "Normative specification text; the same injected-provider shape appears independently in Microsoft.FeatureManagement (DI, IFeatureDefinitionProvider)."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "openfeature-noop-provider",
+      "question": "known-solutions",
+      "claim": "With no provider set, OpenFeature uses a no-op provider that returns the caller's default, and the API can be reset to it for testing.",
+      "quote": "In the absence of a [provider](./02-providers.md) the `evaluation API` uses the \"No-op provider\", which simply returns the supplied default flag value.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 01-flag-evaluation.md (source)",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "GitHub open-feature/spec",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification (CNCF project)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature specification no-op provider",
+      "trust": {
+        "score": 84,
+        "basis": "Normative spec text, fetched from source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "openfeature-default-required-no-throw",
+      "question": "known-solutions",
+      "claim": "OpenFeature evaluation takes a required default value and must never throw; on any abnormal execution it returns the default with an error code.",
+      "quote": "Methods, functions, or operations on the client **MUST NOT** throw exceptions, or otherwise abnormally terminate. Flag evaluation calls must always return the `default value` in the event of abnormal execution. Exceptions include functions or methods for the purposes for configuration or setup.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 1. Flag Evaluation API",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://openfeature.dev/specification/sections/flag-evaluation",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "OpenFeature Specification, 01-flag-evaluation.md (source)",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "GitHub open-feature/spec",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification (CNCF project)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature flag evaluation default value must not throw",
+      "trust": {
+        "score": 72,
+        "basis": "Normative requirement 1.4.10, corroborated independently by LaunchDarkly, ConfigCat and Flagsmith SDK behaviour. Second check 2026-11-16: supports-claim partly (the quote covers only no-throw and return-the-default; the required default (1.3.1) and error code (1.4.8) are not in the quote); lowered 92->72."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "openfeature-typed-evaluation",
+      "question": "known-solutions",
+      "claim": "The standard evaluation API is typed (boolean, number, string, structure), not boolean-only.",
+      "quote": "The `client` **MUST** provide methods for typed flag evaluation, including boolean, numeric, string, and structure,",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 1. Flag Evaluation API",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://openfeature.dev/specification/sections/flag-evaluation",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification (CNCF project)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature typed flag evaluation",
+      "trust": {
+        "score": 84,
+        "basis": "Normative spec text; Microsoft.FeatureManagement's variant flags corroborate non-boolean values."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "setup-may-fail-evaluation-may-not",
+      "question": "known-solutions",
+      "claim": "OpenFeature puts failure at setup (provider registration) and keeps evaluation non-failing; Microsoft.FeatureManagement treats a missing flag as off by default but can be set to throw.",
+      "quote": "Abnormal execution in initialization should instead occur during provider registration. | If missing features are not ignored an exception will be thrown when attempting to evaluate them. | The default value is true.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 01-flag-evaluation.md (source)",
+          "author": "OpenFeature (CNCF)",
+          "publisher": "GitHub open-feature/spec",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "FeatureManagementOptions.cs (FeatureManagement-Dotnet, main)",
+          "author": "Microsoft",
+          "publisher": "GitHub microsoft/FeatureManagement-Dotnet",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/microsoft/FeatureManagement-Dotnet/main/src/Microsoft.FeatureManagement/FeatureManagementOptions.cs",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification (CNCF project); vendor source code",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature client creation must not throw; FeatureManagementOptions IgnoreMissingFeatures",
+      "trust": {
+        "score": 60,
+        "basis": "Normative spec plus Microsoft's shipped source; two independent projects. Second check 2026-11-16: supports-claim partly (IgnoreMissingFeatures defaults to true and can be set to throw; that an ignored flag evaluates as off is inferred, not stated); lowered 80->60."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "vendor-sdks-default-on-error",
+      "question": "known-solutions",
+      "claim": "LaunchDarkly, ConfigCat and Flagsmith all return the caller-supplied default when the service is unreachable, the key is missing, or evaluation errors.",
+      "quote": "the SDK serves the fallback value if LaunchDarkly is unreachable, the feature flag key doesn't exist, or the context or user doesn't have a key specified. | In the event of an unexpected error during evaluation, the SDK returns the default value passed to the GetValue function. | In the event that the SDKs aren't able to contact the API at all, they will time out and resort to Default flags .",
+      "citations": [
+        {
+          "title": "Flag variation evaluation",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/sdk/features/evaluating",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Feature Flag Evaluation",
+          "author": "ConfigCat",
+          "publisher": "ConfigCat Docs",
+          "date": "n.d.",
+          "url": "https://configcat.com/docs/targeting/feature-flag-evaluation/",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Defensive Coding and Designing for Failure",
+          "author": "Flagsmith",
+          "publisher": "Flagsmith Docs",
+          "date": "n.d.",
+          "url": "https://docs.flagsmith.com/best-practices/defensive-coding",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly fallback value; ConfigCat default value error; Flagsmith default flags",
+      "trust": {
+        "score": 68,
+        "basis": "Three independent vendors' own SDK documentation. Second check 2026-11-16: supports-claim partly (each vendor documents a different trigger (LaunchDarkly: unreachable/missing key/context; ConfigCat: unexpected error; Flagsmith: API unreachable); no single source states all three for every vendor); lowered 88->68."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "ms-featuremanager-interface",
+      "question": "known-solutions",
+      "claim": "Microsoft.FeatureManagement still ships IFeatureManager with IsEnabledAsync(string); its docs now lead with IVariantFeatureManager.",
+      "quote": "Task<bool> IsEnabledAsync(string feature); | This check is done through the `IsEnabledAsync` method of `IVariantFeatureManager`.",
+      "citations": [
+        {
+          "title": "IFeatureManager.cs (FeatureManagement-Dotnet, main)",
+          "author": "Microsoft",
+          "publisher": "GitHub microsoft/FeatureManagement-Dotnet",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/microsoft/FeatureManagement-Dotnet/main/src/Microsoft.FeatureManagement/IFeatureManager.cs",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": ".NET Feature Flag Management - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-06-18",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-dotnet-reference",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor source code; official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft.FeatureManagement IFeatureManager IsEnabledAsync",
+      "trust": {
+        "score": 86,
+        "basis": "Microsoft's own shipped source and current Learn reference; owner is the platform."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ms-json-to-app-configuration",
+      "question": "known-solutions",
+      "claim": "Microsoft.FeatureManagement reads flags through IConfiguration, from appsettings.json up to Azure App Configuration, and is registered through .NET dependency injection.",
+      "quote": "This system supports scenarios ranging from the *appsettings.json* configuration file to Azure App Configuration. | Feature management relies on .NET Core dependency injection.",
+      "citations": [
+        {
+          "title": ".NET Feature Flag Management - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-06-18",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-dotnet-reference",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Feature Management Overview - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-02-04",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-overview",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft.FeatureManagement appsettings.json Azure App Configuration",
+      "trust": {
+        "score": 88,
+        "basis": "Microsoft Learn reference, current (2026); platform owner."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ms-feature-gate",
+      "question": "known-solutions",
+      "claim": "ASP.NET Core can gate whole controllers, actions and Razor pages on a flag with FeatureGateAttribute.",
+      "quote": "An MVC controller and actions can require that a given feature, or one of any list of features, be enabled in order to run. You can fulfill this requirement by using a `FeatureGateAttribute` object.",
+      "citations": [
+        {
+          "title": ".NET Feature Flag Management - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-06-18",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-dotnet-reference",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft.FeatureManagement FeatureGate attribute",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft Learn reference; platform owner."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "flag-types-and-lifetimes",
+      "question": "known-solutions",
+      "claim": "Vendors classify flags by type with expected lifetimes: temporary (release, experiment, operational) versus permanent (kill switch, permission/entitlement).",
+      "quote": "Release | Manage the release of new or incomplete features. | 40 days ... Kill switch | Gracefully degrade system functionality. | Permanent | A temporary flag has a limited lifespan. ... Permanent flags provide control for an extended time after the release of a feature.",
+      "citations": [
+        {
+          "title": "Feature flags",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/concepts/feature-flags",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Reducing technical debt from feature flags",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/flags/technical-debt",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Unleash feature flag types expected lifetime; LaunchDarkly temporary permanent flags",
+      "trust": {
+        "score": 82,
+        "basis": "Unleash and LaunchDarkly independently; matches Hodgson's categories."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "stale-flag-detection",
+      "question": "known-solutions",
+      "claim": "Tools flag stale flags automatically once a flag outlives its type's expected lifetime.",
+      "quote": "Unleash marks all flags as potentially stale automatically once they pass their expected lifetime.",
+      "citations": [
+        {
+          "title": "Technical debt",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/reference/technical-debt",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Unleash technical debt stale flags",
+      "trust": {
+        "score": 72,
+        "basis": "Single vendor feature; LaunchDarkly's lifecycle statuses are similar but not quoted here."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "sdks-cache-in-local-storage",
+      "question": "known-solutions",
+      "claim": "Vendor client SDKs persist flag values locally (localStorage on web, SharedPreferences on Android) and read them on launch before the network.",
+      "quote": "Most newer client SDKs use local storage to cache flag values for unique contexts by default. On subsequent launches, the SDK reads the cached values before any network connection is established. | The JavaScript client SDK v4.x stores flag values for unique contexts in local storage by default | The Android SDK stores flag values for unique contexts in SharedPreferences by default",
+      "citations": [
+        {
+          "title": "Caching contexts to local storage",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/sdk/features/local-storage",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Defensive Coding and Designing for Failure",
+          "author": "Flagsmith",
+          "publisher": "Flagsmith Docs",
+          "date": "n.d.",
+          "url": "https://docs.flagsmith.com/best-practices/defensive-coding",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly client SDK local storage cache flag values",
+      "trust": {
+        "score": 55,
+        "basis": "LaunchDarkly docs, with Flagsmith independently describing last-known-flag caching; neither is a platform owner. Second check 2026-11-16: supports-claim partly (the localStorage/SharedPreferences/cache-first lines are LaunchDarkly's only; Flagsmith says only that client SDKs remember last known flags, so 'vendor client SDKs' generalizes beyond the sources); lowered 74->55."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "firebase-activate-next-start",
+      "question": "known-solutions",
+      "claim": "Firebase Remote Config advises not switching UI while the user is using it, and can activate fetched values on the next app start.",
+      "quote": "Don't update or switch aspects of the UI while the user is viewing or interacting with it | Your app will keep the downloaded values until you activate them the next time the app starts.",
+      "citations": [
+        {
+          "title": "Firebase Remote Config loading strategies",
+          "author": "Google",
+          "publisher": "Firebase Documentation",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/remote-config/loading",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firebase Remote Config loading strategies",
+      "trust": {
+        "score": 70,
+        "basis": "Google's own product docs; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "build-vs-buy",
+      "question": "known-solutions",
+      "claim": "Microsoft recommends adopting an existing flag platform over building one.",
+      "quote": "While it's possible to build your own feature flag infrastructure, adopting a platform like [LaunchDarkly](https://launchdarkly.com) or [Split](https://marketplace.visualstudio.com/items?itemName=SplitSoftware.split-for-azuredevops) is generally recommended.",
+      "citations": [
+        {
+          "title": "Progressive experimentation with feature flags",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn (Azure DevOps resource center)",
+          "date": "2022-08-18",
+          "url": "https://learn.microsoft.com/en-us/devops/operate/progressive-experimentation-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft progressive experimentation build vs buy",
+      "trust": {
+        "score": 55,
+        "basis": "Single 2022 page; predates OpenFeature's maturity, so currency is weak."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-no-hidden-features",
+      "question": "platform-guidelines",
+      "claim": "Apple forbids hidden, dormant or undocumented features (guideline 2.5.19); the hidden-features rule is not 2.3.1.",
+      "quote": "Don't include any hidden, dormant, or undocumented features in your app; your app's functionality should be clear to end users and App Review.",
+      "citations": [
+        {
+          "title": "App Review Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "App Store Review Guidelines hidden dormant undocumented features",
+      "trust": {
+        "score": 90,
+        "basis": "Apple's own current guidelines; platform owner, primary."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-features-accessible-for-review",
+      "question": "platform-guidelines",
+      "claim": "Apple requires every new feature to be described in Notes for Review and accessible for review (2.3.1(a)).",
+      "quote": "All new features, functionality, and product changes must be described with specificity in the Notes for Review section of App Store Connect (generic descriptions will be rejected) and accessible for review.",
+      "citations": [
+        {
+          "title": "App Review Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "App Store Review Guidelines 2.3.1",
+      "trust": {
+        "score": 90,
+        "basis": "Apple's own current guidelines; primary."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "store-no-downloaded-code",
+      "question": "platform-guidelines",
+      "claim": "Apple and Google Play both forbid downloading code that changes app features, so a flag may only switch code already in the reviewed binary.",
+      "quote": "nor may they download, install, or execute code which introduces or changes features or functionality of the app | An app distributed via Google Play may not modify, replace, or update itself using any method other than Google Play's update mechanism. Likewise, an app may not download executable code (such as dex, JAR, .so files) from a source other than Google Play.",
+      "citations": [
+        {
+          "title": "App Review Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Device and Network Abuse - Play Console Help",
+          "author": "Google",
+          "publisher": "Google Play Console Help",
+          "date": "n.d.",
+          "url": "https://support.google.com/googleplay/android-developer/answer/16273414",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "App Store guideline 2.5.2; Google Play device and network abuse policy",
+      "trust": {
+        "score": 70,
+        "basis": "Two platform owners independently, current policy. Second check 2026-11-16: supports-claim partly (Google's Device and Network Abuse policy exempts interpreted code such as JavaScript in a webview, so 'flags may only switch code in the binary' is stronger than Google states); lowered 90->70."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "apple-userdefaults-for-config",
+      "question": "platform-guidelines",
+      "claim": "Apple describes UserDefaults as the store for nonsensitive app configuration, including temporary overrides to test a feature.",
+      "quote": "You use this system to store nonsensitive information, such as app-specific configuration details. | Similarly, you might choose to override a specific setting temporarily to test one of your app’s features.",
+      "citations": [
+        {
+          "title": "UserDefaults",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/foundation/userdefaults",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple UserDefaults documentation",
+      "trust": {
+        "score": 84,
+        "basis": "Apple's own API reference (fetched as the documentation JSON); platform owner."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-userdefaults-not-sensitive",
+      "question": "platform-guidelines",
+      "claim": "UserDefaults is unencrypted on disk, so nothing sensitive belongs in it.",
+      "quote": "Don’t store personal or sensitive information as settings. The defaults system stores information on disk in an unencrypted format. Store personal or sensitive information in the person’s Keychain instead.",
+      "citations": [
+        {
+          "title": "UserDefaults",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/foundation/userdefaults",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple UserDefaults documentation",
+      "trust": {
+        "score": 88,
+        "basis": "Apple's own API reference; primary."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-sharedpreferences-not-for-new",
+      "question": "platform-guidelines",
+      "claim": "The Android team strongly recommends against SharedPreferences for new storage and points to Jetpack DataStore.",
+      "quote": "**Note: The Android team strongly recommends against using `SharedPreferences` for new data storage needs.** Instead, consider using [Jetpack DataStore](https://d.android.com/datastore) for storing small amounts of data | If you're using SharedPreferences to store data, consider migrating to DataStore instead.",
+      "citations": [
+        {
+          "title": "SharedPreferences (API reference)",
+          "author": "Google",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/reference/android/content/SharedPreferences",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "DataStore (App Architecture: Data Layer)",
+          "author": "Google",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/topic/libraries/architecture/datastore",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Android SharedPreferences reference; Jetpack DataStore",
+      "trust": {
+        "score": 93,
+        "basis": "Two current Android Developers pages from the platform owner, both explicit."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-datastore-holds-feature-flags",
+      "question": "platform-guidelines",
+      "claim": "Android's DataStore guide names feature flags as non-sensitive preferences to keep in their own DataStore file.",
+      "quote": "If your DataStore contains non-sensitive preferences (such as user theme or feature flags) alongside sensitive data, separate them into distinct DataStore files",
+      "citations": [
+        {
+          "title": "DataStore (App Architecture: Data Layer)",
+          "author": "Google",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/topic/libraries/architecture/datastore",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jetpack DataStore backup feature flags",
+      "trust": {
+        "score": 82,
+        "basis": "Android Developers page; platform owner."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "web-localstorage-semantics",
+      "question": "platform-guidelines",
+      "claim": "localStorage is per-origin, persists across sessions, stores only strings, and can throw SecurityError when storage is blocked.",
+      "quote": "allows you to access a Storage object for the Document's origin; the stored data is saved across browser sessions. | The keys and the values stored with localStorage are in the UTF-16 string format. | The request violates a policy decision. For example, the user has configured the browsers to prevent the page from persisting data.",
+      "citations": [
+        {
+          "title": "Window: localStorage property",
+          "author": "Mozilla Developer Network contributors",
+          "publisher": "MDN Web Docs",
+          "date": "n.d.",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "reference documentation (MDN)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "MDN localStorage",
+      "trust": {
+        "score": 78,
+        "basis": "MDN is the de facto web platform reference but not the WHATWG standard itself; scored below platform-owner docs."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "categories-managed-differently",
+      "question": "experts-view",
+      "claim": "Toggle categories (release, experiment, ops, permissioning) differ in longevity and dynamism and must be implemented and managed differently.",
+      "quote": "It can be tempting to lump all feature toggles into the same bucket, but this is a dangerous path. The design forces at play for different categories of toggles are quite different",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Hodgson feature toggles categories",
+      "trust": {
+        "score": 80,
+        "basis": "The canonical expert article; corroborated by Unleash and LaunchDarkly type models."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "decouple-decision-point-from-logic",
+      "question": "experts-view",
+      "claim": "Keep the toggle point apart from the decision logic: inject the decision into the code rather than having it query the flag system.",
+      "quote": "One common mistake with Feature Toggles is to couple the place where a toggling decision is made (the Toggle Point) with the logic behind the decision (the Toggle Router). | it has those decisions injected into it at construction time via a config object. InvoiceEmailler now has no knowledge whatsoever about feature flagging.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Hodgson decoupling decision points from decision logic",
+      "trust": {
+        "score": 76,
+        "basis": "Expert article; the OpenFeature provider split is a related but not identical corroboration."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "strategy-over-conditionals",
+      "question": "experts-view",
+      "claim": "Avoid scattered if-statements for long-lived or multi-point toggles; select alternative code paths through a Strategy.",
+      "quote": "However point conditionals are not advised anywhere where a feature will require several Toggle Points, or where you expect the Toggle Point to be long-lived.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Hodgson toggle points strategy pattern",
+      "trust": {
+        "score": 70,
+        "basis": "Single expert article."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "toggles-are-inventory",
+      "question": "experts-view",
+      "claim": "Flags carry a carrying cost; keep the count low with expiration dates or a hard limit on live flags.",
+      "quote": "Savvy teams view their Feature Toggles as inventory which comes with a carrying cost, and work to keep that inventory as low as possible. | placing a limit on the number of feature flags a system is allowed to have at any one time.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Reducing technical debt from feature flags",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly Docs",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/guides/flags/technical-debt",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Hodgson toggle inventory carrying cost",
+      "trust": {
+        "score": 80,
+        "basis": "Expert article; LaunchDarkly independently calls unremoved flags 'a form of technical debt'."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "test-the-release-combinations",
+      "question": "experts-view",
+      "claim": "Do not test every flag combination; test the configuration going live and the fallback with the new flags off.",
+      "quote": "In general there's no need to test all combinations of features. | It's most important to test the toggle configuration which you expect to become live in production, which means the current production toggle configuration plus any toggles which you intend to release flipped On. It's also wise to test the fall-back configuration where those toggles you intend to release are also flipped Off.",
+      "citations": [
+        {
+          "title": "FeatureFlag (bliki)",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2010-10-29 (revised 2023)",
+          "url": "https://martinfowler.com/bliki/FeatureFlag.html",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Fowler feature flag combinatorial testing",
+      "trust": {
+        "score": 74,
+        "basis": "Fowler and Hodgson are separate authors but share one venue; treated as single."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "static-config-preferred",
+      "question": "experts-view",
+      "claim": "Prefer static, source-controlled toggle configuration; reach for dynamic configuration only where needed (ops toggles).",
+      "quote": "While static configuration is preferable there are cases such as Ops Toggles where a more dynamic approach is required.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Hodgson managing toggle configuration",
+      "trust": {
+        "score": 68,
+        "basis": "Single expert article."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "client-side-override-risk",
+      "question": "experts-view",
+      "claim": "Client-side or per-request flag overrides let users change flag state, and flag systems should not hold PII.",
+      "quote": "it introduces a risk that curious or malicious end-users may modify feature toggle state themselves. | ensuring that all Personally Identifiable Information (PII) remains confined to your application.",
+      "citations": [
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "publisher": "martinfowler.com",
+          "date": "2017-10-09",
+          "url": "https://martinfowler.com/articles/feature-toggles.html",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "11 feature flag best practices for scale",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Hodgson per-request override; Unleash PII",
+      "trust": {
+        "score": 70,
+        "basis": "Expert article plus vendor; the two make related, not identical, points."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "never-repurpose-a-flag",
+      "question": "experts-view",
+      "claim": "Reusing an old flag for new code, with the dead code still deployed, caused Knight Capital's $460 million loss; flag names must never be reused.",
+      "quote": "The new RLP code also repurposed a flag that was formerly used to activate the Power Peg code. ... However, orders sent with the repurposed flag to the eighth server triggered the defective Power Peg code still present on that server. | Unique naming prevents the reuse of old flag names, reducing the risk of accidentally re-enabling outdated features with the same name.",
+      "citations": [
+        {
+          "title": "In the Matter of Knight Capital Americas LLC, Release No. 34-70694 (Order Instituting Administrative and Cease-and-Desist Proceedings)",
+          "author": "U.S. Securities and Exchange Commission",
+          "publisher": "U.S. Securities and Exchange Commission",
+          "date": "2013-10-16",
+          "url": "https://www.sec.gov/files/litigation/admin/2013/34-70694.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "11 feature flag best practices for scale",
+          "author": "Unleash",
+          "publisher": "Unleash Docs",
+          "date": "n.d.",
+          "url": "https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "government regulatory finding; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "SEC Knight Capital order repurposed flag Power Peg",
+      "trust": {
+        "score": 90,
+        "basis": "SEC order is a primary government finding of fact; Unleash independently draws the naming lesson."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "gate-all-features-prior",
+      "question": "best-practices",
+      "claim": "All features MUST be gated behind feature flags from initial implementation.",
+      "quote": "All features MUST be gated behind feature flags from initial implementation.",
+      "citations": [
+        {
+          "title": "feature-flags (intro.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:2071c94e51a8c517e11178fdee54e0ec033064c2:cookbook/guidelines/implementing/feature-management/feature-flags/intro.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by claims not-every-change-needs-a-flag, toggles-are-inventory"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "spec-lists-flag-keys-prior",
+      "question": "best-practices",
+      "claim": "Each spec SHOULD list flag keys in a **Feature Flags** section.",
+      "quote": "Each spec SHOULD list flag keys in a **Feature Flags** section.",
+      "citations": [
+        {
+          "title": "feature-flags (intro.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:2071c94e51a8c517e11178fdee54e0ec033064c2:cookbook/guidelines/implementing/feature-management/feature-flags/intro.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "kotlin-sharedpreferences-default-prior",
+      "question": "platform-guidelines",
+      "claim": "Interface + `SharedPreferences`-backed implementation as the default.",
+      "quote": "Interface + `SharedPreferences`-backed implementation as the default.",
+      "citations": [
+        {
+          "title": "feature-flags (kotlin.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:2071c94e51a8c517e11178fdee54e0ec033064c2:cookbook/guidelines/implementing/feature-management/feature-flags/kotlin.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by claim android-sharedpreferences-not-for-new"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "fail-fast-on-missing-config-prior",
+      "question": "best-practices",
+      "claim": "Read every value that varies per deploy from the environment, coerce all required config into a typed object once at startup, and halt on a missing or malformed value rather than falling back to a silent default (fail-fast).",
+      "quote": "Read every value that varies per deploy from the environment, coerce all required config into a typed object once at startup, and halt on a missing or malformed value rather than falling back to a silent default (fail-fast).",
+      "citations": [
+        {
+          "title": "feature-flags (reference/building--devops-observability.txt)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:2071c94e51a8c517e11178fdee54e0ec033064c2:reference/building--devops-observability.txt",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted for flag evaluation by claims openfeature-default-required-no-throw, vendor-sdks-default-on-error, default-at-every-evaluation, flags-are-not-config"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "gate-all-features",
+      "verdict": "contradicted",
+      "claims": [
+        "gate-all-features-prior",
+        "not-every-change-needs-a-flag",
+        "toggles-are-inventory"
+      ]
+    },
+    {
+      "rule": "feature-flag-provider-interface",
+      "verdict": "supported",
+      "claims": [
+        "openfeature-provider-abstraction",
+        "openfeature-noop-provider",
+        "ms-json-to-app-configuration",
+        "decouple-decision-point-from-logic"
+      ]
+    },
+    {
+      "rule": "spec-lists-flag-keys",
+      "verdict": "unsupported",
+      "claims": [
+        "spec-lists-flag-keys-prior"
+      ]
+    },
+    {
+      "rule": "swift-userdefaults-default",
+      "verdict": "supported",
+      "claims": [
+        "apple-userdefaults-for-config",
+        "apple-userdefaults-not-sensitive"
+      ]
+    },
+    {
+      "rule": "kotlin-sharedpreferences-default",
+      "verdict": "contradicted",
+      "claims": [
+        "kotlin-sharedpreferences-default-prior",
+        "android-sharedpreferences-not-for-new"
+      ]
+    },
+    {
+      "rule": "typescript-localstorage-default",
+      "verdict": "supported",
+      "claims": [
+        "sdks-cache-in-local-storage",
+        "web-localstorage-semantics"
+      ]
+    },
+    {
+      "rule": "csharp-feature-management",
+      "verdict": "supported",
+      "claims": [
+        "ms-featuremanager-interface",
+        "ms-json-to-app-configuration",
+        "ms-feature-gate"
+      ]
+    },
+    {
+      "rule": "fail-fast-on-missing-config",
+      "verdict": "contradicted",
+      "claims": [
+        "fail-fast-on-missing-config-prior",
+        "openfeature-default-required-no-throw",
+        "vendor-sdks-default-on-error",
+        "default-at-every-evaluation",
+        "flags-are-not-config"
+      ]
+    },
+    {
+      "rule": "evaluation-takes-a-default-and-never-throws",
+      "verdict": "new",
+      "claims": [
+        "openfeature-default-required-no-throw",
+        "vendor-sdks-default-on-error",
+        "default-at-every-evaluation"
+      ]
+    },
+    {
+      "rule": "fail-at-setup-not-at-evaluation",
+      "verdict": "new",
+      "claims": [
+        "setup-may-fail-evaluation-may-not",
+        "flags-are-not-config"
+      ]
+    },
+    {
+      "rule": "typed-flag-evaluation",
+      "verdict": "new",
+      "claims": [
+        "openfeature-typed-evaluation",
+        "openfeature-vendor-agnostic"
+      ]
+    },
+    {
+      "rule": "off-means-existing-behaviour",
+      "verdict": "new",
+      "claims": [
+        "off-is-existing-behaviour",
+        "restrictive-fallback-for-security"
+      ]
+    },
+    {
+      "rule": "no-dependency-on-flag-service",
+      "verdict": "new",
+      "claims": [
+        "no-dependency-on-flag-service",
+        "sdks-cache-in-local-storage"
+      ]
+    },
+    {
+      "rule": "flag-has-a-type-and-lifetime",
+      "verdict": "new",
+      "claims": [
+        "categories-managed-differently",
+        "flag-types-and-lifetimes",
+        "stale-flag-detection"
+      ]
+    },
+    {
+      "rule": "remove-flags-when-done",
+      "verdict": "new",
+      "claims": [
+        "flags-short-lived-removed",
+        "remove-code-before-archive",
+        "removal-planned-at-creation",
+        "regular-flag-review",
+        "toggles-are-inventory"
+      ]
+    },
+    {
+      "rule": "unique-never-reused-flag-names",
+      "verdict": "new",
+      "claims": [
+        "naming-and-descriptions",
+        "never-repurpose-a-flag"
+      ]
+    },
+    {
+      "rule": "test-both-flag-states",
+      "verdict": "new",
+      "claims": [
+        "test-both-states",
+        "test-the-release-combinations"
+      ]
+    },
+    {
+      "rule": "decouple-toggle-points",
+      "verdict": "new",
+      "claims": [
+        "decouple-decision-point-from-logic",
+        "strategy-over-conditionals"
+      ]
+    },
+    {
+      "rule": "flag-only-when-needed",
+      "verdict": "new",
+      "claims": [
+        "not-every-change-needs-a-flag",
+        "toggles-are-inventory"
+      ]
+    },
+    {
+      "rule": "flags-never-hide-features-from-review",
+      "verdict": "new",
+      "claims": [
+        "apple-no-hidden-features",
+        "apple-features-accessible-for-review"
+      ]
+    },
+    {
+      "rule": "flags-switch-only-shipped-code",
+      "verdict": "new",
+      "claims": [
+        "store-no-downloaded-code"
+      ]
+    },
+    {
+      "rule": "kotlin-datastore-default",
+      "verdict": "new",
+      "claims": [
+        "android-sharedpreferences-not-for-new",
+        "android-datastore-holds-feature-flags"
+      ]
+    },
+    {
+      "rule": "local-flag-store-is-untrusted",
+      "verdict": "new",
+      "claims": [
+        "apple-userdefaults-not-sensitive",
+        "client-side-override-risk",
+        "web-localstorage-semantics"
+      ]
+    },
+    {
+      "rule": "no-mid-session-ui-flip",
+      "verdict": "new",
+      "claims": [
+        "firebase-activate-next-start"
+      ]
+    },
+    {
+      "rule": "monitor-flag-rollout",
+      "verdict": "new",
+      "claims": [
+        "monitor-flag-rollout"
+      ]
+    },
+    {
+      "rule": "prefer-static-flag-configuration",
+      "verdict": "new",
+      "claims": [
+        "static-config-preferred"
+      ]
+    },
+    {
+      "rule": "prefer-a-standard-flag-api",
+      "verdict": "new",
+      "claims": [
+        "openfeature-vendor-agnostic",
+        "build-vs-buy"
+      ]
+    }
+  ]
+}

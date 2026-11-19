@@ -13,7 +13,3 @@ SELECT body -> '$.tags' FROM documents;
 SELECT json_extract(body, '$.author') FROM documents;
 ```
 
-MUST use `->>`  when you want the value for comparison or filtering. Use `->` when you need the JSON text of a nested object or array.
-
-`->>` requires SQLite 3.38.0+. For older SQLite, use `json_extract()`.
-

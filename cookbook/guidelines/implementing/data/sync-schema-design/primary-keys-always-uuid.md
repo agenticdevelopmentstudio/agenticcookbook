@@ -1,8 +1,4 @@
 
-MUST use UUID primary keys for all synced tables. Never use `INTEGER PRIMARY KEY AUTOINCREMENT` for synced tables — auto-incremented integers are generated locally by each device and will collide across devices when syncing.
-
-Use **UUIDv7** (time-ordered) where possible. UUIDv7 embeds a timestamp prefix, preserving roughly-chronological insert ordering while guaranteeing global uniqueness. PostgreSQL 17+ supports `gen_random_uuid()` or `uuid_generate_v7()`.
-
 ```sql
 -- SQLite: sync-ready table
 CREATE TABLE tasks (
@@ -28,4 +24,6 @@ CREATE TABLE tasks (
     last_synced_at TIMESTAMPTZ
 );
 ```
+
+PostgreSQL 17+ supports `gen_random_uuid()` or `uuid_generate_v7()`.
 

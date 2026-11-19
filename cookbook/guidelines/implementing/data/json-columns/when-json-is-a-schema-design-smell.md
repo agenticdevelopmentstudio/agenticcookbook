@@ -9,5 +9,3 @@ JSON is NOT appropriate for:
 - One-to-many relationships — use a separate table
 - Data that needs referential integrity or type enforcement
 
-**The rule:** if a JSON field is queried in more than occasional ad-hoc queries, promote it to a real column. Add a generated column + index as the intermediate step before full promotion.
-

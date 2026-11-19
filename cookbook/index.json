@@ -653,12 +653,6 @@
       "path": "guidelines/implementing/security/authorization",
       "rdid": "adc.guideline.implementing.security.authorization"
     },
-    "26a1a47f-f749-4477-ae04-c54c9a4c5117": {
-      "implementations": [],
-      "kind": "guideline",
-      "path": "guidelines/reviewing/data/query-optimization",
-      "rdid": "adc.guideline.reviewing.data.query-optimization"
-    },
     "26c8e7d6-dde3-48d0-bde0-8a71a51a6674": {
       "implementations": [],
       "kind": "guideline",

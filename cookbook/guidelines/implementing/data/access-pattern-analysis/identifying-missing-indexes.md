@@ -16,5 +16,5 @@ Signals to act on:
 .eqp on
 ```
 
-Also monitor `sqlite_stat1` after running `ANALYZE` to see actual row counts per index. If an index covers a column with very low cardinality on a large table, it may not help — the planner may prefer a full scan.
+If an index covers a column with very low cardinality on a large table, it may not help — the planner may prefer a full scan.
 

@@ -6,7 +6,7 @@ version: 2.7.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: '2026-11-09'
+modified: '2026-11-15'
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -29,14 +29,14 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | [Planning](#planning-63-guidelines) | 63 | Architecture, data modeling, choosing patterns |
 | [Implementing](#implementing-182-guidelines) | 182 | Writing new code |
 | [Testing](#testing-24-guidelines) | 24 | Writing and structuring tests |
-| [Reviewing](#reviewing-64-guidelines) | 64 | Checking code quality, security, accessibility |
+| [Reviewing](#reviewing-63-guidelines) | 63 | Checking code quality, security, accessibility |
 | [Shipping](#shipping-17-guidelines) | 17 | Pre-commit, pre-PR, packaging |
 | [Cookbook](#cookbook-16-guidelines) | 16 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](#researching-5-guidelines) | 5 | Gathering, verifying, and recording trustworthy research |
 | [Storytelling](#storytelling-6-guidelines) | 6 | Telling a project's story: positioning, explanation, narrative, grounded in the record |
 | [Brainstorming](#brainstorming-4-guidelines) | 4 | Framing a problem, generating ideas and converging, without anchoring |
 
-275 unique guidelines, 381 total (with duplicates across use cases).
+275 unique guidelines, 380 total (with duplicates across use cases).
 
 ---
 
@@ -372,7 +372,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Reviewing (64 guidelines)
+### Reviewing (63 guidelines)
 
 - [Conformance: The Criterion Walk](reviewing/conformance-criterion-walk/)
 - [Writing the Review Report](reviewing/review-report-writing/)
@@ -395,9 +395,6 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Visual Studio project files](reviewing/code-quality/visual-studio-project-files/)
 - [Xcode project hygiene](reviewing/code-quality/xcode-project-hygiene/)
 - [YAML frontmatter](reviewing/code-quality/yaml-frontmatter/)
-
-**data**
-- [Query Optimization](reviewing/data/query-optimization/)
 
 **documentation**
 - [Docs match the code](reviewing/documentation/docs-match-code/)

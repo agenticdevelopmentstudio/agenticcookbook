@@ -1,6 +1,4 @@
 
-MUST enable WAL mode for any application with concurrent reads, or where write latency matters.
-
 ```sql
 PRAGMA journal_mode = WAL;
 ```
@@ -24,5 +22,5 @@ WAL (Write-Ahead Log) changes the write mechanism: instead of modifying the data
 - Adds `-wal` and `-shm` files alongside the database
 - Cannot use on network file systems
 
-WAL mode persists in the database header — it survives reconnects. Set it once per database, but re-setting it on connection open is safe and recommended.
+WAL mode persists in the database header — it survives reconnects.
 

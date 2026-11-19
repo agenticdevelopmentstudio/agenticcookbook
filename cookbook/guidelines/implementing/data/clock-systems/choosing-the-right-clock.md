@@ -8,5 +8,3 @@
 | Simple causal ordering, low overhead | Lamport timestamps |
 | Peer-to-peer, no central server | HLC or CRDTs (which embed their own ordering) |
 
-MUST NOT rely on SQLite's `datetime('now')` for conflict ordering in multi-device scenarios. Device clocks diverge. Use HLC or server-assigned versions instead.
-

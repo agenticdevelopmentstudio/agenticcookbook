@@ -17,5 +17,3 @@ SELECT * FROM (
 ) WHERE customer_id = 42;
 ```
 
-SHOULD use CTEs for clarity. SHOULD switch to subqueries if `EXPLAIN QUERY PLAN` shows the CTE is being materialized and causing a performance problem.
-

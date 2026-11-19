@@ -1,6 +1,4 @@
 
-Use a junction table with FKs to both parent tables. The junction table's PK SHOULD be a composite of both FKs:
-
 ```sql
 CREATE TABLE students (
     student_id INTEGER PRIMARY KEY,

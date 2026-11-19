@@ -1,0 +1,24 @@
+
+- `must-enable-wal-for-synced-databases`: every SQLite database that participates in sync is opened with `PRAGMA journal_mode = WAL`
+- `should-use-synchronous-full-only-for-power-loss-safety`: `PRAGMA synchronous = FULL` is set only where power-loss safety is needed, or the code says why not
+- `should-use-one-writer-many-readers`: writes go through one writer connection, serialized by an application-level queue, and reads use separate reader connections, or the code says why not
+- `must-not-hold-write-transaction-during-network-io`: no write transaction stays open while the code waits on network I/O
+- `must-write-mutation-and-outbox-atomically`: every user mutation writes its data row and its outbox entry in the same transaction
+- `must-read-ui-from-local-sqlite`: every UI read comes from local SQLite and none from the network
+- `should-design-ui-for-server-rejection`: the UI handles a write the server rejects, or the code says why not
+- `must-roll-back-on-server-rejection`: every server rejection of an optimistic write rolls back the local change
+- `must-run-migrations-regardless-of-network`: no migration step depends on network state to succeed
+- `should-track-schema-version-with-user-version`: the applied schema version is tracked with `PRAGMA user_version`, or the code says why not
+- `should-recreate-table-for-complex-migrations`: a complex schema change creates a new table, copies the data and drops the old table, or the code says why not
+- `must-only-add-columns`: no sync-compatible migration removes or renames a column without a migration path
+- `must-give-new-columns-defaults`: every column a sync-compatible migration adds has a DEFAULT value
+- `must-make-migrations-idempotent`: every sync-compatible migration is safe to run twice
+- `must-wrap-migration-steps-in-transactions`: every step of a sync-compatible migration runs inside a transaction
+- `must-test-migrations-from-every-version`: sync-compatible migrations are tested against databases at every previous schema version
+- `should-prune-sync-metadata-on-schedule`: outbox entries, change logs and tombstones are pruned on a schedule, or the code says why not
+- `should-incremental-vacuum-after-significant-deletions`: significant deletions are followed by an incremental vacuum, or the code says why not
+- `should-trigger-periodic-full-sync`: a full sync runs when `last_full_sync` is older than a threshold, or the code says why not
+- `must-adjust-sync-to-connectivity`: the code monitors network reachability; offline it queues writes and does not attempt sync, on reconnection it triggers an immediate sync cycle, online it syncs periodically, and backgrounded it uses the platform's background sync API
+- `must-not-retry-sync-in-tight-loop`: no reconnection path retries sync in a tight loop
+- `should-back-off-from-first-failure`: sync retries apply exponential backoff from the first failure, also after connectivity returns, or the code says why not
+

@@ -1,0 +1,1575 @@
+{
+  "topic": "ab-testing",
+  "artifact": "cookbook/guidelines/implementing/feature-management/ab-testing",
+  "scope": "Implementing A/B tests in client apps and web: assignment (deterministic hashing, stickiness), exposure logging at the point of use, control as the safe default, local override for testing, the experiment-design minimums an implementer must honour (pre-registered metric, sample size, no peeking, SRM check), the evaluation-API shape across vendors, and platform-owner rules (Apple, Google Play/Firebase, Microsoft Azure, Google Search). Out of scope: statistical analysis engines and multi-armed bandits beyond what an implementer must honour.",
+  "base_commit": "2071c94e51a8c517e11178fdee54e0ec033064c2",
+  "research_type": "Technology / software, with Statistical / data claims (MED-HIGH bar)",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to authoritative sources (specifications, platform-owner and vendor docs first; peer-reviewed practitioner papers for the statistical claims), chain citations from the exp-platform.com index, corroborate across independent sources, record provenance at generation time.",
+    "search_strategy": "WebSearch for each vendor and platform's own documentation and for the canonical experimentation literature (Kohavi et al. 2009 survey; Dmitriev et al. KDD 2017; Fabijan et al. KDD 2019; Microsoft ExP articles); every cited page fetched with WebFetch or curl (OpenFeature spec fetched raw from its repository; PDFs read directly).",
+    "inclusion": "Primary sources: open specifications (OpenFeature), platform-owner documentation and policy (Apple, Google, Microsoft), vendor documentation for their own SDKs, peer-reviewed practitioner papers. Secondary sources only where no primary covered the point (Statsig engineering blog; Evan Miller's article), flagged in trust basis.",
+    "exclusion": "Search-result snippets, third-party SEO/CRO blogs, pages that could not be fetched (Statsig FAQ 404, Optimizely forced-decision pages redirected), and any claim not backed by a fetched quote.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy 20 + Currency 10 + Transparency 15, capped by the domain bar (Technical MEDIUM; Statistical MED-HIGH for experiment-design claims)."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://developer.apple.com/app-store/product-page-optimization/",
+    "https://developer.apple.com/app-store/review/guidelines/",
+    "https://developers.google.com/search/docs/crawling-indexing/website-testing",
+    "https://docs.growthbook.io/lib/js",
+    "https://docs.optimizely.com/feature-experimentation/docs/how-bucketing-works",
+    "https://docs.optimizely.com/web-experimentation/docs/6P2o-fix-flashing-or-flickering-variation-content",
+    "https://docs.statsig.com/api/content/server-core/node-core",
+    "https://exp-platform.com/Documents/2019_KDDFabijanGupchupFuptaOmhoverVermeerDmitriev.pdf",
+    "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+    "https://firebase.google.com/docs/ab-testing/abtest-config",
+    "https://launchdarkly.com/docs/home/experimentation/traffic-assignment",
+    "https://launchdarkly.com/docs/sdk/features/experimentation",
+    "https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-variant-feature-flags",
+    "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+    "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/06-tracking.md",
+    "https://statsig.com/blog/when-allocation-point-and-exposure-point-differ",
+    "https://support.google.com/googleplay/android-developer/answer/6227309",
+    "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+    "https://www.microsoft.com/en-us/research/?p=680556",
+    "https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/",
+    "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf"
+  ],
+  "dates": {
+    "researched": "2026-11-16",
+    "accessed": "2026-11-16"
+  },
+  "summary": "Both existing rules hold. A variant-by-key evaluation interface is the common shape (OpenFeature, LaunchDarkly, GrowthBook, Azure), but every standard and SDK makes the caller pass a default value and never throws; control is the abort/kill-switch state; forced variants for QA are a standard property of experimentation systems and dev tooling should be off in production. The topic is missing the implementer's core duties: deterministic hash of user+experiment ID with stable assignment through ramp-ups, exposure logged where the variant is actually seen, pre-registered metric and minimum sample size, no peeking, an SRM check on every experiment, A/A tests, ramp-up with auto-abort, data-quality guards (client telemetry loss, bots, Twyman's law), novelty effects, web flicker, Google Search rules (no cloaking, 302, canonical, end tests), Apple's rules (variants in the reviewed binary, described in review notes, no downloaded code) and store-page tests through Apple product page optimization and Google Play store listing experiments.",
+  "open_questions": [
+    "Whether the interface should return a variant name (String) or a typed value: OpenFeature returns typed values and exposes the variant name only in evaluation details; the owner decides which the rule names.",
+    "Whether Apple App Review treats server-switched UI variants already in the binary as 'hidden features' under 2.5.19: no Apple text addresses A/B tests inside apps directly.",
+    "Cross-device stickiness: the sources establish stickiness only for the same user identifier; no primary source establishes a general mechanism across anonymous devices."
+  ],
+  "limitations": [
+    "Windows desktop (Microsoft Store) has no fetched first-party A/B guidance; Microsoft coverage is Azure App Configuration and Microsoft ExP research.",
+    "Several vendor quotes (Optimizely bucketing, Firebase, Play, Statsig, LaunchDarkly) came through a fetch summariser that returns quoted sentences rather than whole pages; trust scores account for this.",
+    "Statsig's FAQ on one-sided manual exposure imbalance returned 404 and is not cited; Optimizely forced-decision pages redirected and are not cited.",
+    "Kohavi et al.'s book 'Trustworthy Online Controlled Experiments' (2020) was not accessible; its authors' peer-reviewed papers stand in for it.",
+    "Evan Miller's article and the Statsig blog are secondary sources, used only where corroborated."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "hash-user-and-experiment-id",
+      "question": "best-practices",
+      "claim": "Assign variants by hashing the user identifier together with the experiment identifier and partitioning the hash range among variants, so assignment needs no stored state.",
+      "quote": "A hash function is applied to the combination of the user identifier and the experiment identifier (e.g. by concatenating them together) to obtain an integer that is uniformly distributed on a range of values. The range is then partitioned, with each variant represented by a partition.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "How bucketing works (Feature Experimentation)",
+          "author": "Optimizely",
+          "publisher": "Optimizely",
+          "date": "n.d.",
+          "url": "https://docs.optimizely.com/feature-experimentation/docs/how-bucketing-works",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Experiment traffic assignment",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/home/experimentation/traffic-assignment",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi controlled experiments on the web survey practical guide randomization hash",
+      "trust": {
+        "score": 86,
+        "basis": "Peer-reviewed survey by Microsoft/Amazon experimentation leads (authority), corroborated independently by Optimizely ('The SDK uses the MurmurHash function to hash the user ID and experiment ID into an integer.') and LaunchDarkly ('combines the iteration's seed with the context's key, hashes the result'); stable technique, currency not critical."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "consistent-assignment-across-visits",
+      "question": "best-practices",
+      "claim": "A user must get the same variant on every visit for the length of the experiment.",
+      "quote": "Repeat assignments of a single end user must be consistent; the end user should be assigned to the same variant on each successive visit to the site.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Product page optimization",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/product-page-optimization/",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "How bucketing works (Feature Experimentation)",
+          "author": "Optimizely",
+          "publisher": "Optimizely",
+          "date": "n.d.",
+          "url": "https://docs.optimizely.com/feature-experimentation/docs/how-bucketing-works",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi randomization algorithm properties consistent assignment",
+      "trust": {
+        "score": 86,
+        "basis": "Stated as a required property in the peer-reviewed survey; Apple's own store experiments follow it ('People will see the same treatment whenever they visit the App Store throughout the duration of the test.') and Optimizely docs state 'A returning user always sees the same variation across sessions and devices.'"
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "no-correlation-between-experiments",
+      "question": "best-practices",
+      "claim": "Assignment in one experiment must be independent of assignment in any other concurrent experiment, which is why the experiment identifier is part of the hash input and the hash function must be sound.",
+      "quote": "When multiple experiments are run, there must be no correlation between experiments. An end user's assignment to a variant in one experiment must have no effect on the probability of being assigned to a variant in any other experiment.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi randomization algorithm properties correlation between experiments",
+      "trust": {
+        "score": 72,
+        "basis": "Single peer-reviewed source (high authority, empirical testing of hash functions reported in the same section); no independent fetched corroboration."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "monotonic-ramp-up-keeps-assignments",
+      "question": "best-practices",
+      "claim": "Raising a treatment's percentage should add new users without moving users already assigned.",
+      "quote": "The algorithm may support monotonic ramp-up, meaning that the percentage of users who see a Treatment can be slowly increased without changing the assignments of users who were previously assigned to that Treatment.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Experiment traffic assignment",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/home/experimentation/traffic-assignment",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi monotonic ramp-up randomization; LaunchDarkly experiment traffic assignment",
+      "trust": {
+        "score": 65,
+        "basis": "Second check: Kohavi lists monotonic ramp-up as an optional 'desirable' property ('may support'), weaker than the claim's 'should'; LaunchDarkly confirms the behaviour in practice. Lowered from 82."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "reallocation-reshuffles-users",
+      "question": "best-practices",
+      "claim": "Reducing and re-raising allocation, or changing the bucketing seed or rule configuration, can reassign users to other variants and cause a sample ratio mismatch; persist assignments if the configuration must change mid-test.",
+      "quote": "Optimizely resets the bucket ranges and users may be reassigned to different variations. This can cause a sample ratio mismatch and invalidate your experiment results.",
+      "citations": [
+        {
+          "title": "How bucketing works (Feature Experimentation)",
+          "author": "Optimizely",
+          "publisher": "Optimizely",
+          "date": "n.d.",
+          "url": "https://docs.optimizely.com/feature-experimentation/docs/how-bucketing-works",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Experiment traffic assignment",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/home/experimentation/traffic-assignment",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Optimizely feature experimentation how bucketing works; LaunchDarkly traffic assignment seed",
+      "trust": {
+        "score": 76,
+        "basis": "Two independent vendor docs agree (LaunchDarkly: 'If the seed changes, every context maps to a new bucket, and contexts move between variations.'); Optimizely quote obtained through a fetch summariser, so verbatim fidelity is slightly less certain."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "sticky-bucketing-persists-assignment",
+      "question": "best-practices",
+      "claim": "Platforms offer persisted ('sticky') assignment so a user keeps a variant when targeting, allocation or login state change.",
+      "quote": "Sticky bucketing ensures that users see the same experiment variant",
+      "citations": [
+        {
+          "title": "GrowthBook JavaScript SDK",
+          "author": "GrowthBook",
+          "publisher": "GrowthBook",
+          "date": "n.d.",
+          "url": "https://docs.growthbook.io/lib/js",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "How bucketing works (Feature Experimentation)",
+          "author": "Optimizely",
+          "publisher": "Optimizely",
+          "date": "n.d.",
+          "url": "https://docs.optimizely.com/feature-experimentation/docs/how-bucketing-works",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GrowthBook sticky bucketing; Optimizely user profile service",
+      "trust": {
+        "score": 70,
+        "basis": "Two vendors document the mechanism (Optimizely: 'To prevent this, implement a user profile service.'); vendor docs only, no standard."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "log-exposure-when-variant-is-seen",
+      "question": "best-practices",
+      "claim": "Record the exposure at the moment the user first encounters the varied experience, and analyse only exposed users; assignment alone is not exposure.",
+      "quote": "Event-triggered filtering is implemented by tracking the time at which each user first saw content that was affected by the experiment. This data can be collected directly (by recording an event when a user sees experimental content)",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Node Core server SDK",
+          "author": "Statsig",
+          "publisher": "Statsig",
+          "date": "n.d.",
+          "url": "https://docs.statsig.com/api/content/server-core/node-core",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Create Firebase Remote Config experiments with A/B Testing",
+          "author": "Google (Firebase)",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/ab-testing/abtest-config",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi event-triggered filtering; Statsig exposure logging manual exposures; Firebase activation event",
+      "trust": {
+        "score": 68,
+        "basis": "Second check: Kohavi presents recording first exposure (event-triggered filtering) as a variance-reduction technique, not a mandate; Statsig and Firebase support 'assignment alone is not exposure'. Lowered from 84."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "control-is-the-abort-state",
+      "question": "best-practices",
+      "claim": "Control is the safe state: when a variant misbehaves the experiment is stopped and everyone gets control.",
+      "quote": "In case of a bug, for example, the experiment is aborted and all users should see the Control variant.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Use variant feature flags - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-02-10",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-variant-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi control variant abort; Azure App Configuration kill switch DefaultWhenDisabled",
+      "trust": {
+        "score": 84,
+        "basis": "Peer-reviewed survey, corroborated by Microsoft's product docs (kill switch: 'All users now are given the DefaultWhenDisabled variant')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "evaluation-returns-default-on-error",
+      "question": "best-practices",
+      "claim": "Flag/variant evaluation must never throw and must return the caller-supplied default on any failure.",
+      "quote": "Methods, functions, or operations on the client **MUST NOT** throw exceptions, or otherwise abnormally terminate. Flag evaluation calls must always return the `default value` in the event of abnormal execution.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 1. Flag Evaluation API",
+          "author": "OpenFeature (CNCF project)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature specification flag evaluation default value",
+      "trust": {
+        "score": 80,
+        "basis": "Normative open specification (CNCF) with RFC 2119 keywords; single source but it is the vendor-neutral standard."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pre-register-hypothesis-and-metrics",
+      "question": "best-practices",
+      "claim": "Define the hypothesis and the metrics that will judge it before the experiment starts; platforms make the goal metric a creation-time choice.",
+      "quote": "The hypothesis should also include a set of metrics to measure the impact of the change introduced on the product.",
+      "citations": [
+        {
+          "title": "Patterns of Trustworthy Experimentation: Pre-Experiment Stage",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "2020-07-31",
+          "url": "https://www.microsoft.com/en-us/research/?p=680556",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Create Firebase Remote Config experiments with A/B Testing",
+          "author": "Google (Firebase)",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/ab-testing/abtest-config",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official practitioner guidance (Microsoft Research ExP)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft ExP patterns of trustworthy experimentation pre-experiment stage",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft ExP guidance, independently matched by Firebase ('When you create your experiment, you choose a primary, or goal metric, that is used to determine the winning variant.')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "compute-minimum-sample-size",
+      "question": "best-practices",
+      "claim": "Before starting, choose power and the effect to detect, estimate variance, and compute the minimum sample size and hence run time.",
+      "quote": "Decide on the statistical power, the effect you would like to detect, and estimate the variability of the OEC through an A/A test. Based on this data you can compute the minimum sample size needed for the experiment and hence the running time for your web site.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Patterns of Trustworthy Experimentation: Pre-Experiment Stage",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "2020-07-31",
+          "url": "https://www.microsoft.com/en-us/research/?p=680556",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi determine the minimum sample size power",
+      "trust": {
+        "score": 87,
+        "basis": "Peer-reviewed survey corroborated by Dmitriev et al. ('We recommend to have at least 80% power to detect small enough changes in success and guardrail metrics') and Microsoft ExP ('power calculation sets a lower bound on the number of randomization units'). Statistical bar met."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "check-sample-ratio-mismatch",
+      "question": "best-practices",
+      "claim": "Every experiment's analysis should test the observed split against the configured split (chi-square) and flag a sample ratio mismatch.",
+      "quote": "If the actual ratio is different than the expected (a chi-square test can be used), it means something is wrong with the sampling process. We call this situation Sample Ratio Mismatch (SRM).",
+      "citations": [
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Diagnosing Sample Ratio Mismatch in Online Controlled Experiments: A Taxonomy and Rules of Thumb for Practitioners (KDD '19)",
+          "author": "Aleksander Fabijan, Jayant Gupchup, Somit Gupta, Jeff Omhover, Wen Qin, Lukas Vermeer, Pavel Dmitriev",
+          "publisher": "ACM KDD 2019; author copy at exp-platform.com",
+          "date": "2019",
+          "url": "https://exp-platform.com/Documents/2019_KDDFabijanGupchupFuptaOmhoverVermeerDmitriev.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Diagnosing Sample Ratio Mismatch in A/B Testing",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "n.d.",
+          "url": "https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "sample ratio mismatch chi-square experiment Dmitriev Fabijan",
+      "trust": {
+        "score": 88,
+        "basis": "Two peer-reviewed papers plus Microsoft ExP article; statistical method disclosed (chi-square)."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "run-aa-tests",
+      "question": "best-practices",
+      "claim": "Run A/A tests to validate the split, data fidelity and false-positive rate of the experimentation system itself.",
+      "quote": "Run A/A tests (see Sect. 3.1) and validate the following. 1. Are users split according to the planned percentages? 2. Is the data collected matching the system of record? 3. Are the results showing non-significant results 95% of the time?",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Patterns of Trustworthy Experimentation: Pre-Experiment Stage",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "2020-07-31",
+          "url": "https://www.microsoft.com/en-us/research/?p=680556",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi run continuous A/A tests",
+      "trust": {
+        "score": 76,
+        "basis": "Peer-reviewed survey; Microsoft ExP describes the related Retrospective-AA analysis ('This analysis computes the same metric for the treatment and control group in the period before the experiment start.')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "ramp-up-and-auto-abort",
+      "question": "best-practices",
+      "claim": "Start a treatment on a small percentage, ramp it up in steps, and stop a treatment automatically if it significantly underperforms control.",
+      "quote": "An experimentation system that analyses the experiment data in near-real-time can automatically shut-down a Treatment if it is significantly underperforming relative to the Control.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi automate ramp-up and abort",
+      "trust": {
+        "score": 80,
+        "basis": "Peer-reviewed survey; Dmitriev et al. confirm at Microsoft 'we have configured automated alerts and auto-shutdown of the experiments if we detect unexpected large metrics movements'."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "openfeature-typed-evaluation-with-default",
+      "question": "known-solutions",
+      "claim": "The vendor-neutral evaluation API (OpenFeature) evaluates a flag by key through typed methods, string included, and every call takes a required default value.",
+      "quote": "The `client` **MUST** provide methods for typed flag evaluation, including boolean, numeric, string, and structure, with parameters `flag key` (string, required), `default value` (boolean | number | string | structure, required), `evaluation context` (optional), and `evaluation options` (optional), which returns the flag value.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 1. Flag Evaluation API",
+          "author": "OpenFeature (CNCF project)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature specification flag evaluation string variant",
+      "trust": {
+        "score": 85,
+        "basis": "Normative open standard text, fetched raw from the specification repository."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "openfeature-variant-field",
+      "question": "known-solutions",
+      "claim": "OpenFeature's detailed evaluation reports the variant name the provider resolved, alongside the value.",
+      "quote": "In cases of normal execution, the `evaluation details` structure's `variant` field **MUST** contain the value of the `variant` field in the `flag resolution` structure returned by the configured `provider`, if the field is set.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 1. Flag Evaluation API",
+          "author": "OpenFeature (CNCF project)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature evaluation details variant field",
+      "trust": {
+        "score": 82,
+        "basis": "Normative open standard text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "openfeature-tracking-api",
+      "question": "known-solutions",
+      "claim": "OpenFeature adds an experimental tracking API to tie flag evaluations to later user actions for experimentation.",
+      "quote": "The `tracking API` enables the association of feature flag evaluations with subsequent actions or application states, in order to facilitate experimentation and analysis of the impact of feature flags on business objectives.",
+      "citations": [
+        {
+          "title": "OpenFeature Specification, 6. Tracking",
+          "author": "OpenFeature (CNCF project)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/06-tracking.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "open specification",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature specification tracking API experimentation",
+      "trust": {
+        "score": 65,
+        "basis": "Normative spec text, but the section is marked experimental, so currency/stability is lower."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "sdks-take-call-site-default",
+      "question": "known-solutions",
+      "claim": "Commercial SDKs share the evaluate-by-key-with-a-fallback shape: the caller supplies the default at each call site.",
+      "quote": "return a typed value with a per-call-site default",
+      "citations": [
+        {
+          "title": "Experimentation (SDK features)",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/sdk/features/experimentation",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "GrowthBook JavaScript SDK",
+          "author": "GrowthBook",
+          "publisher": "GrowthBook",
+          "date": "n.d.",
+          "url": "https://docs.growthbook.io/lib/js",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "OpenFeature Specification, 1. Flag Evaluation API",
+          "author": "OpenFeature (CNCF project)",
+          "publisher": "OpenFeature",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/open-feature/spec/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly SDK experimentation variation default; GrowthBook getFeatureValue fallback",
+      "trust": {
+        "score": 80,
+        "basis": "LaunchDarkly docs, GrowthBook docs ('Get the value of a string/JSON/number feature with a fallback', e.g. gb.getFeatureValue(\"button-color\", \"blue\")) and the OpenFeature standard agree independently."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "launchdarkly-variation-records-exposure",
+      "question": "known-solutions",
+      "claim": "In LaunchDarkly, calling the variation method is what records the exposure; metrics come from separate track calls.",
+      "quote": "Variation methods also record an exposure event so LaunchDarkly knows this context was part of the experiment.",
+      "citations": [
+        {
+          "title": "Experimentation (SDK features)",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/sdk/features/experimentation",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly experimentation exposure events variation",
+      "trust": {
+        "score": 72,
+        "basis": "Official vendor documentation for its own SDK; single source by nature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "launchdarkly-recomputes-assignment",
+      "question": "known-solutions",
+      "claim": "LaunchDarkly stores no assignment record; it recomputes the bucket from seed and context key on every evaluation.",
+      "quote": "LaunchDarkly does not need to store a record of which variation each context received",
+      "citations": [
+        {
+          "title": "Experiment traffic assignment",
+          "author": "LaunchDarkly",
+          "publisher": "LaunchDarkly",
+          "date": "n.d.",
+          "url": "https://launchdarkly.com/docs/home/experimentation/traffic-assignment",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "LaunchDarkly experiment traffic assignment hashing seed",
+      "trust": {
+        "score": 72,
+        "basis": "Official vendor documentation; describes its own system."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "growthbook-hash-and-tracking-callback",
+      "question": "known-solutions",
+      "claim": "GrowthBook assigns by deterministic hashing and fires a tracking callback when evaluation enrolls the user, which the app wires to its analytics.",
+      "quote": "Evaluating the feature is what enrolls a user and fires `trackingCallback`.",
+      "citations": [
+        {
+          "title": "GrowthBook JavaScript SDK",
+          "author": "GrowthBook",
+          "publisher": "GrowthBook",
+          "date": "n.d.",
+          "url": "https://docs.growthbook.io/lib/js",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GrowthBook JS SDK deterministic hashing trackingCallback",
+      "trust": {
+        "score": 72,
+        "basis": "Official vendor documentation ('We use deterministic hashing to assign a variation to a user.'); single vendor."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "statsig-disable-exposure-logging",
+      "question": "known-solutions",
+      "claim": "Statsig logs exposure on evaluation by default and lets a call disable it, so the app can log the exposure manually later.",
+      "quote": "When set to `true`, the SDK doesn't automatically log an exposure.",
+      "citations": [
+        {
+          "title": "Node Core server SDK",
+          "author": "Statsig",
+          "publisher": "Statsig",
+          "date": "n.d.",
+          "url": "https://docs.statsig.com/api/content/server-core/node-core",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Statsig docs exposure logging getExperiment disable exposure logging manual",
+      "trust": {
+        "score": 70,
+        "basis": "Official vendor documentation; single vendor."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "optimizely-murmurhash-bucketing",
+      "question": "known-solutions",
+      "claim": "Optimizely buckets with MurmurHash over user ID and experiment ID.",
+      "quote": "The SDK uses the MurmurHash function to hash the user ID and experiment ID into an integer.",
+      "citations": [
+        {
+          "title": "How bucketing works (Feature Experimentation)",
+          "author": "Optimizely",
+          "publisher": "Optimizely",
+          "date": "n.d.",
+          "url": "https://docs.optimizely.com/feature-experimentation/docs/how-bucketing-works",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Optimizely feature experimentation how bucketing works MurmurHash",
+      "trust": {
+        "score": 68,
+        "basis": "Official vendor documentation; quote obtained through a fetch summariser."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-variant-flags",
+      "question": "known-solutions",
+      "claim": "Azure App Configuration models experiments as variant feature flags: named variants with optional configuration values, percentile allocation, and user/group overrides.",
+      "quote": "A variant is defined with a *Name* and an optional *Configuration Value*.",
+      "citations": [
+        {
+          "title": "Use variant feature flags - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-02-10",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-variant-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure App Configuration variant feature flags allocation seed experimentation",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's own current documentation (ms.date 2026-02-10)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "forced-variants-for-qa",
+      "question": "known-solutions",
+      "claim": "Experimentation systems let testers force a user or device into a chosen variant, bypassing allocation, to test each variant.",
+      "quote": "The algorithm may support external control, meaning that users can be manually forced into and out of variants. This property makes it easier to test the experimental site.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Use variant feature flags - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-02-10",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-variant-feature-flags",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Create Firebase Remote Config experiments with A/B Testing",
+          "author": "Google (Firebase)",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/ab-testing/abtest-config",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi external control forced variants; Azure overrides; Firebase test devices",
+      "trust": {
+        "score": 82,
+        "basis": "Peer-reviewed survey, corroborated by Azure ('You can assign variants to specific groups or users irrespective of the percentage allocation.') and Firebase ('Target specific test devices or client instances using their Firebase Installation IDs (FIDs)')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "dev-override-off-in-production",
+      "question": "known-solutions",
+      "claim": "Developer override tooling should be disabled in production builds so internal flags and experiments are not exposed.",
+      "quote": "To avoid exposing all of your internal feature flags and experiments to users",
+      "citations": [
+        {
+          "title": "GrowthBook JavaScript SDK",
+          "author": "GrowthBook",
+          "publisher": "GrowthBook",
+          "date": "n.d.",
+          "url": "https://docs.growthbook.io/lib/js",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GrowthBook enableDevMode production",
+      "trust": {
+        "score": 58,
+        "basis": "Single vendor recommendation ('we recommend setting this to `false` in production in most cases.'); sensible but uncorroborated by an independent source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "google-search-no-cloaking",
+      "question": "platform-guidelines",
+      "claim": "Web A/B tests must not serve Googlebot different URLs or content than humans (cloaking).",
+      "quote": "Don't show one set of URLs to Googlebot, and a different set to humans.",
+      "citations": [
+        {
+          "title": "Minimize A/B testing impact in Google Search",
+          "author": "Google Search Central",
+          "publisher": "Google",
+          "date": "n.d.",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/website-testing",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Search Central A/B testing cloaking rel canonical 302 website testing",
+      "trust": {
+        "score": 90,
+        "basis": "Google's own Search Central guidance about its own crawler; authoritative primary source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "google-search-302-and-canonical",
+      "question": "platform-guidelines",
+      "claim": "When a web test redirects to or serves alternate URLs, use 302 (temporary) redirects and rel=canonical on the alternates pointing to the original.",
+      "quote": "use a 302 (temporary) redirect, not a 301 (permanent) redirect.",
+      "citations": [
+        {
+          "title": "Minimize A/B testing impact in Google Search",
+          "author": "Google Search Central",
+          "publisher": "Google",
+          "date": "n.d.",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/website-testing",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Search Central website testing 302 canonical",
+      "trust": {
+        "score": 90,
+        "basis": "Google's own Search Central guidance ('you can use the rel=\"canonical\" link attribute on all of your alternate URLs')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "google-search-end-tests-promptly",
+      "question": "platform-guidelines",
+      "claim": "Run a web test only as long as needed and remove its code afterwards.",
+      "quote": "Run the experiment only as long as necessary",
+      "citations": [
+        {
+          "title": "Minimize A/B testing impact in Google Search",
+          "author": "Google Search Central",
+          "publisher": "Google",
+          "date": "n.d.",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/website-testing",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Search Central website testing duration",
+      "trust": {
+        "score": 85,
+        "basis": "Google's own guidance ('remove all elements of the test as soon as possible')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-product-page-optimization",
+      "question": "platform-guidelines",
+      "claim": "Apple's sanctioned A/B test surface for App Store pages is product page optimization: up to three treatments of icon, screenshots and previews, metadata approved by App Review, icons shipped in the binary, up to 90 days.",
+      "quote": "Before you can publish your test, any new metadata that you'd like to include in your treatments must be approved by App Review.",
+      "citations": [
+        {
+          "title": "Product page optimization",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/product-page-optimization/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "App Store Connect product page optimization test treatments App Review",
+      "trust": {
+        "score": 85,
+        "basis": "Apple's own developer page ('A test can include up to three treatments'; 'you'll need to include all variants of your icon in the binary'; 'run for up to 90 days')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-review-notes-describe-changes",
+      "question": "platform-guidelines",
+      "claim": "Apple requires every new feature and product change to be described specifically in the review notes and be accessible for review, which covers in-app variants.",
+      "quote": "All new features, functionality, and product changes must be described with specificity in the Notes for Review section of App Store Connect (generic descriptions will be rejected) and accessible for review.",
+      "citations": [
+        {
+          "title": "App Review Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple App Review Guidelines 2.3.1 hidden features",
+      "trust": {
+        "score": 55,
+        "basis": "Second check: guideline 2.3.1(a) is verbatim, but it does not mention A/B tests or variants; that it covers in-app variants is the researcher's inference. Lowered from 74."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-no-hidden-features",
+      "question": "platform-guidelines",
+      "claim": "Apple forbids hidden, dormant or undocumented features, so variants must be visible to App Review, not concealed.",
+      "quote": "Don't include any hidden, dormant, or undocumented features in your app; your app's functionality should be clear to end users and App Review.",
+      "citations": [
+        {
+          "title": "App Review Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple App Review Guidelines hidden dormant undocumented features",
+      "trust": {
+        "score": 72,
+        "basis": "Apple's binding guideline 2.5.19; its application to remotely switched variants is an inference."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-no-downloaded-code",
+      "question": "platform-guidelines",
+      "claim": "On iOS, variants must ship in the reviewed binary and be selected by configuration; downloading code that changes functionality is not allowed.",
+      "quote": "nor may they download, install, or execute code which introduces or changes features or functionality of the app",
+      "citations": [
+        {
+          "title": "App Review Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple App Review Guidelines 2.5.2 download code",
+      "trust": {
+        "score": 60,
+        "basis": "Second check: 2.5.2 supports 'no downloaded code that changes functionality'; 'ship variants in the binary, select by configuration' is a design conclusion, not Apple text, and 2.5.2 has an educational-apps exception. Lowered from 78."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "google-play-store-listing-experiments",
+      "question": "platform-guidelines",
+      "claim": "Google Play offers store listing experiments for icon, feature graphic, screenshots and (localized) descriptions, with configurable confidence level and minimum detectable effect.",
+      "quote": "You can include variants of your app's icon, feature graphic, and screenshots.",
+      "citations": [
+        {
+          "title": "Run A/B tests on your store listing (store listing experiments)",
+          "author": "Google",
+          "publisher": "Play Console Help",
+          "date": "n.d.",
+          "url": "https://support.google.com/googleplay/android-developer/answer/6227309",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Play store listing experiments",
+      "trust": {
+        "score": 80,
+        "basis": "Google's own Play Console Help ('Increasing the confidence level decreases the likelihood of a false positive.')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "firebase-activation-event",
+      "question": "platform-guidelines",
+      "claim": "Firebase A/B Testing counts only users who trigger the configured activation event, so the event must fire where the variant is used.",
+      "quote": "only those who trigger an activation event will be included in your experiment results.",
+      "citations": [
+        {
+          "title": "Create Firebase Remote Config experiments with A/B Testing",
+          "author": "Google (Firebase)",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/ab-testing/abtest-config",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firebase A/B testing Remote Config activation event",
+      "trust": {
+        "score": 65,
+        "basis": "Second check: the page's constraint is that the activation event fires after the app activates the fetched config; 'where the variant is used' is a stronger reading. Activation events are not supported for web. Lowered from 80."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-kill-switch-default-variant",
+      "question": "platform-guidelines",
+      "claim": "Azure variant flags define a DefaultWhenDisabled variant everyone gets when the flag is disabled (kill switch), and a DefaultWhenEnabled variant for unallocated users.",
+      "quote": "All users now are given the **DefaultWhenDisabled** variant, regardless of which percentiles or overridden users/groups they were a part of.",
+      "citations": [
+        {
+          "title": "Use variant feature flags - Azure App Configuration",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-02-10",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-variant-feature-flags",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure App Configuration variant feature flags kill switch",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's own current documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "peeking-inflates-false-positives",
+      "question": "experts-view",
+      "claim": "Repeatedly checking significance and stopping when it is reached inflates false positives; fix the sample size in advance or use a sequential or Bayesian design.",
+      "quote": "Repeated significance testing always increases the rate of false positives",
+      "citations": [
+        {
+          "title": "How Not To Run An A/B Test",
+          "author": "Evan Miller",
+          "publisher": "evanmiller.org",
+          "date": "n.d.",
+          "url": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "expert practitioner article + peer-reviewed paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Evan Miller how not to run an A/B test peeking",
+      "trust": {
+        "score": 85,
+        "basis": "Expert article ('Decide on a sample size in advance and wait until the experiment is over') independently corroborated by Dmitriev et al. ('Continuously checking the results and stopping as soon as statistical significance is achieved leads to an increase in Type-I error')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "stopping-or-extending-is-common-mistake",
+      "question": "experts-view",
+      "claim": "Microsoft's experimenters report that stopping early or extending experiments are very common mistakes.",
+      "quote": "In our experience, stopping early or extending the experiment are both very common mistakes experiment owners make.",
+      "citations": [
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Dmitriev dirty dozen continuous monitoring early stopping",
+      "trust": {
+        "score": 72,
+        "basis": "Peer-reviewed practitioner paper from a large experimentation team; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "srm-invalidates-results",
+      "question": "experts-view",
+      "claim": "A sample ratio mismatch usually means the results cannot be trusted until its cause is found.",
+      "quote": "Sample Ratio Mismatch in most cases completely invalidates experiment results.",
+      "citations": [
+        {
+          "title": "Diagnosing Sample Ratio Mismatch in Online Controlled Experiments: A Taxonomy and Rules of Thumb for Practitioners (KDD '19)",
+          "author": "Aleksander Fabijan, Jayant Gupchup, Somit Gupta, Jeff Omhover, Wen Qin, Lukas Vermeer, Pavel Dmitriev",
+          "publisher": "ACM KDD 2019; author copy at exp-platform.com",
+          "date": "2019",
+          "url": "https://exp-platform.com/Documents/2019_KDDFabijanGupchupFuptaOmhoverVermeerDmitriev.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Diagnosing Sample Ratio Mismatch in A/B Testing",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "n.d.",
+          "url": "https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Fabijan Kohavi Diagnosing Sample Ratio Mismatch KDD 2019",
+      "trust": {
+        "score": 88,
+        "basis": "Two peer-reviewed papers ('Most of the time SRM implies a severe selection bias, enough to render the experiment results invalid') and Microsoft ExP ('Don't trust the results of A/B tests with an SRM until you diagnose the root cause.')."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "srm-is-common",
+      "question": "experts-view",
+      "claim": "SRMs are not rare: about 6% of A/B tests at Microsoft had one.",
+      "quote": "about 6% of A/B tests have an SRM",
+      "citations": [
+        {
+          "title": "Diagnosing Sample Ratio Mismatch in A/B Testing",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "n.d.",
+          "url": "https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official practitioner guidance (Microsoft Research ExP)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft Research diagnosing sample ratio mismatch",
+      "trust": {
+        "score": 65,
+        "basis": "Single organisation's internal figure; undated article."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "assignment-without-exposure-dilutes",
+      "question": "experts-view",
+      "claim": "Users assigned but never exposed behave like control and dilute the measured effect; tag the exposure point accurately.",
+      "quote": "not everyone assigned to the test group may actually be exposed to the test version",
+      "citations": [
+        {
+          "title": "When allocation point and exposure point differ",
+          "author": "Statsig",
+          "publisher": "Statsig",
+          "date": "n.d.",
+          "url": "https://statsig.com/blog/when-allocation-point-and-exposure-point-differ",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "vendor engineering blog + peer-reviewed survey",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Statsig when allocation point and exposure point differ",
+      "trust": {
+        "score": 76,
+        "basis": "Vendor blog (secondary, Statsig) corroborated by Kohavi's peer-reviewed rationale for restricting analysis 'to only those users who were impacted by the experiment'."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "novelty-and-primacy-effects",
+      "question": "experts-view",
+      "claim": "Short-term effects can fade (novelty) or grow (primacy); segment the effect by day and consider longer runs before trusting a lift.",
+      "quote": "the change appeared positive in the short period but it was flat in the long term. This is a novelty effect.",
+      "citations": [
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Dmitriev dirty dozen novelty primacy effects",
+      "trust": {
+        "score": 70,
+        "basis": "Peer-reviewed practitioner paper with a worked example; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "web-flicker",
+      "question": "experts-view",
+      "claim": "Client-side web tests can flash the original page before the variant renders; apply visual changes early (synchronously, via CSS).",
+      "quote": "when the original page appears briefly before your variation.",
+      "citations": [
+        {
+          "title": "Fix flashing or flickering variation content (Web Experimentation)",
+          "author": "Optimizely",
+          "publisher": "Optimizely",
+          "date": "n.d.",
+          "url": "https://docs.optimizely.com/web-experimentation/docs/6P2o-fix-flashing-or-flickering-variation-content",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Optimizely web experimentation flashing flicker",
+      "trust": {
+        "score": 62,
+        "basis": "Single vendor's documentation ('One way to streamline your visual changes and reduce flashing is to move the visual changes to CSS.')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "client-telemetry-loss-biases-results",
+      "question": "experts-view",
+      "claim": "Mobile client telemetry is lossy and a variant can change the loss rate, biasing results; measure event loss per variant.",
+      "quote": "An unavoidable aspect of analyzing mobile app experiments is that a substantial fraction of telemetry coming from mobile clients gets lost.",
+      "citations": [
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Dmitriev dirty dozen telemetry loss bias",
+      "trust": {
+        "score": 72,
+        "basis": "Peer-reviewed practitioner paper with Skype example; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "robots-skew-results",
+      "question": "experts-view",
+      "claim": "Bots can skew experiment metrics enough to invalidate tests and should be filtered.",
+      "quote": "Robots can introduce significant skew into estimates, enough to render assumptions invalid.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "Diagnosing Sample Ratio Mismatch in A/B Testing",
+          "author": "Microsoft Experimentation Platform (ExP)",
+          "publisher": "Microsoft Research",
+          "date": "n.d.",
+          "url": "https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi effect of robots on experimental results",
+      "trust": {
+        "score": 72,
+        "basis": "Peer-reviewed survey; Microsoft ExP's SRM article gives a bot-filtering SRM example."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "twymans-law",
+      "question": "experts-view",
+      "claim": "Surprising results, positive or negative, usually signal a bug and should be investigated before shipping.",
+      "quote": "any unexpected metric movement, positive or negative, usually means there is an issue.",
+      "citations": [
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Dmitriev dirty dozen Twyman's law",
+      "trust": {
+        "score": 66,
+        "basis": "Peer-reviewed practitioner paper; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "underpowered-experiments-common-mistake",
+      "question": "experts-view",
+      "claim": "Running underpowered experiments is a common mistake.",
+      "quote": "A common mistake is to run experiments that are underpowered.",
+      "citations": [
+        {
+          "title": "Controlled Experiments on the Web: Survey and Practical Guide (Data Mining and Knowledge Discovery 18(1):140-181)",
+          "author": "Ron Kohavi, Roger Longbotham, Dan Sommerfield, Randal M. Henne",
+          "publisher": "Springer (Data Mining and Knowledge Discovery); author copy at exp-platform.com",
+          "date": "2009",
+          "url": "https://exp-platform.com/Documents/controlledExperimentDMKD.pdf",
+          "accessed": "2026-11-16"
+        },
+        {
+          "title": "A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments (KDD '17)",
+          "author": "Pavel Dmitriev, Somit Gupta, Dong Woo Kim, Garnet Vaz",
+          "publisher": "ACM KDD 2017; author copy at Microsoft Research",
+          "date": "2017",
+          "url": "https://www.microsoft.com/en-us/research/uploads/prod/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf",
+          "accessed": "2026-11-16"
+        }
+      ],
+      "source_type": "peer-reviewed journal / conference paper (practitioner research)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kohavi minimum sample size underpowered",
+      "trust": {
+        "score": 82,
+        "basis": "Peer-reviewed survey; Dmitriev et al. show an underpowered metric misread as 'no change'."
+      },
+      "independence": "multi-independent"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "experiment-provider-interface",
+      "verdict": "supported",
+      "claims": [
+        "openfeature-typed-evaluation-with-default",
+        "openfeature-variant-field",
+        "azure-variant-flags",
+        "sdks-take-call-site-default"
+      ]
+    },
+    {
+      "rule": "local-default-with-debug-override",
+      "verdict": "supported",
+      "claims": [
+        "control-is-the-abort-state",
+        "azure-kill-switch-default-variant",
+        "forced-variants-for-qa",
+        "dev-override-off-in-production"
+      ]
+    },
+    {
+      "rule": "deterministic-hash-assignment",
+      "verdict": "new",
+      "claims": [
+        "hash-user-and-experiment-id",
+        "consistent-assignment-across-visits",
+        "no-correlation-between-experiments",
+        "optimizely-murmurhash-bucketing",
+        "launchdarkly-recomputes-assignment",
+        "growthbook-hash-and-tracking-callback"
+      ]
+    },
+    {
+      "rule": "stable-assignment-when-allocation-changes",
+      "verdict": "new",
+      "claims": [
+        "monotonic-ramp-up-keeps-assignments",
+        "reallocation-reshuffles-users",
+        "sticky-bucketing-persists-assignment"
+      ]
+    },
+    {
+      "rule": "evaluation-never-fails-returns-default",
+      "verdict": "new",
+      "claims": [
+        "evaluation-returns-default-on-error",
+        "sdks-take-call-site-default"
+      ]
+    },
+    {
+      "rule": "log-exposure-at-point-of-use",
+      "verdict": "new",
+      "claims": [
+        "log-exposure-when-variant-is-seen",
+        "launchdarkly-variation-records-exposure",
+        "statsig-disable-exposure-logging",
+        "growthbook-hash-and-tracking-callback",
+        "firebase-activation-event",
+        "assignment-without-exposure-dilutes",
+        "openfeature-tracking-api"
+      ]
+    },
+    {
+      "rule": "pre-register-metric-and-sample-size",
+      "verdict": "new",
+      "claims": [
+        "pre-register-hypothesis-and-metrics",
+        "compute-minimum-sample-size",
+        "underpowered-experiments-common-mistake"
+      ]
+    },
+    {
+      "rule": "no-peeking",
+      "verdict": "new",
+      "claims": [
+        "peeking-inflates-false-positives",
+        "stopping-or-extending-is-common-mistake"
+      ]
+    },
+    {
+      "rule": "check-sample-ratio-mismatch",
+      "verdict": "new",
+      "claims": [
+        "check-sample-ratio-mismatch",
+        "srm-invalidates-results",
+        "srm-is-common"
+      ]
+    },
+    {
+      "rule": "validate-with-aa-tests",
+      "verdict": "new",
+      "claims": [
+        "run-aa-tests"
+      ]
+    },
+    {
+      "rule": "ramp-up-with-auto-abort",
+      "verdict": "new",
+      "claims": [
+        "ramp-up-and-auto-abort"
+      ]
+    },
+    {
+      "rule": "guard-data-quality",
+      "verdict": "new",
+      "claims": [
+        "client-telemetry-loss-biases-results",
+        "robots-skew-results",
+        "twymans-law"
+      ]
+    },
+    {
+      "rule": "watch-novelty-effects",
+      "verdict": "new",
+      "claims": [
+        "novelty-and-primacy-effects"
+      ]
+    },
+    {
+      "rule": "avoid-web-flicker",
+      "verdict": "new",
+      "claims": [
+        "web-flicker"
+      ]
+    },
+    {
+      "rule": "web-tests-follow-search-guidance",
+      "verdict": "new",
+      "claims": [
+        "google-search-no-cloaking",
+        "google-search-302-and-canonical",
+        "google-search-end-tests-promptly"
+      ]
+    },
+    {
+      "rule": "app-variants-ship-in-reviewed-binary",
+      "verdict": "new",
+      "claims": [
+        "apple-review-notes-describe-changes",
+        "apple-no-hidden-features",
+        "apple-no-downloaded-code"
+      ]
+    },
+    {
+      "rule": "store-page-tests-use-store-tools",
+      "verdict": "new",
+      "claims": [
+        "apple-product-page-optimization",
+        "google-play-store-listing-experiments"
+      ]
+    }
+  ]
+}

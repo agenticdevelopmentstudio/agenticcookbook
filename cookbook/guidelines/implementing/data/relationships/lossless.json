@@ -1,0 +1,38 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Use a junction table with FKs to both parent tables.",
+      "to": "should-use-junction-table-for-many-to-many",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The junction table with FKs to both parent tables is kept at SHOULD, scoped to many-to-many relationships as in the source's section.",
+        "pin": "1708c46081bca74c169e30bc7c59e6f1b7304bddba53f1d69253b89f4113cfc5"
+      }
+    },
+    {
+      "sentence": "The junction table's PK SHOULD be a composite of both FKs:",
+      "to": "should-use-composite-junction-pk",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD composite PK of both FKs on the junction table is kept.",
+        "pin": "14b4b5f3c0eeaf96dbce652092b3786e8d658b130d590fc5cdfe41c68550ba73"
+      }
+    },
+    {
+      "sentence": "**Start with adjacency list.** Migrate to closure table only if recursive queries become a measured performance problem.",
+      "to": [
+        "should-start-with-adjacency-list",
+        "should-migrate-to-closure-table-only-when-measured"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Starting tree hierarchies with an adjacency list (the source's section scope) and migrating to a closure table \"only if\" a measured performance problem appears are both kept, at SHOULD for unkeyed instructions.",
+        "pin": "bf5e9da4b9356ac596d84b1511db5b4d7edeed0744b89f1772ed2d91cd564c54"
+      }
+    }
+  ]
+}

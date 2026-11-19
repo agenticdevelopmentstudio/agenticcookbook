@@ -1,0 +1,200 @@
+{
+  "base": "2071c94e51a8c517e11178fdee54e0ec033064c2",
+  "copies": [],
+  "moved": [
+    {
+      "sentence": "Apps MUST include a debug-only configuration panel (not in release builds):",
+      "to": [
+        "debug-only-config-panel"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "debug-only-config-panel keeps the MUST for a debug-only configuration panel that is absent from release builds.",
+        "pin": "f2ec8452dafac2a756bdccddb3932655858e9d618d2e135254f31c1337087c08"
+      }
+    },
+    {
+      "sentence": "Feature flag overrides",
+      "to": [
+        "debug-only-config-panel"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "debug-only-config-panel keeps feature flag overrides as a required panel item at MUST.",
+        "pin": "1a0d8b6bebfc3cea33f8f31c5fafd23114c6840faeebebaa6b0b2e6104ac4de1"
+      }
+    },
+    {
+      "sentence": "Analytics event log",
+      "to": [
+        "debug-only-config-panel"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "debug-only-config-panel keeps the analytics event log as a required panel item at MUST.",
+        "pin": "ece62417d93559f6b3bb778f1c0444582db6d472be1e9806274797309a13d3c8"
+      }
+    },
+    {
+      "sentence": "A/B test variant picker",
+      "to": [
+        "debug-only-config-panel"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "debug-only-config-panel keeps the A/B test variant picker as a required panel item at MUST.",
+        "pin": "9fa90c5ffe747e08ece2fcfb6d3337027ef4e9ec83bed750ccfaff437684e1b6"
+      }
+    },
+    {
+      "sentence": "Environment info (version, build, OS, device)",
+      "to": [
+        "debug-only-config-panel"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "debug-only-config-panel keeps environment info with all four fields (version, build, OS, device) at MUST.",
+        "pin": "a9ae0a3f3026986f3d2a344c181f83426b5ae9ea7a9ab00110d18a0cbc419eea"
+      }
+    },
+    {
+      "sentence": "Access methods:",
+      "to": [
+        "platform-access-methods"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed per-platform access-method list is kept as platform-access-methods at SHOULD, reached and guarded per platform.",
+        "pin": "f9998caae2432b48d4adab5ed00496227368b7f3b804907050068422e8fad611"
+      }
+    },
+    {
+      "sentence": "**Apple (iOS)**: Shake gesture, guarded by `#if DEBUG`",
+      "to": [
+        "platform-access-methods"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "platform-access-methods keeps iOS access by shake gesture guarded by #if DEBUG, at SHOULD for an unkeyed instruction.",
+        "pin": "c7aa457fc49d7a8fe49ea8e05fe5d900b16fa7b26cedfcb51d600da7a6dbb564"
+      }
+    },
+    {
+      "sentence": "**Apple (macOS)**: Debug menu item, guarded by `#if DEBUG`",
+      "to": [
+        "platform-access-methods"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "platform-access-methods keeps macOS access by a Debug menu item guarded by #if DEBUG.",
+        "pin": "367d58c21dc3e86d9760254e682d367bc9d882015d8cedf280e4fd6d232408e1"
+      }
+    },
+    {
+      "sentence": "**Android**: Shake gesture, guarded by `BuildConfig.DEBUG`",
+      "to": [
+        "platform-access-methods"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "platform-access-methods keeps Android shake access and replaces the BuildConfig.DEBUG guard with placing the code in the debug source set, which is a stronger guard because the code is left out of the release build instead of being skipped at runtime.",
+        "pin": "d27afa76da1ac5e4ca23401a9976fbfeeea23a6e16914223debbba8856fa8910"
+      }
+    },
+    {
+      "sentence": "**Web**: `/debug` route, guarded by `NODE_ENV === 'development'`",
+      "to": [
+        "platform-access-methods"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "platform-access-methods keeps web access by a /debug route guarded by NODE_ENV === 'development'; saying 'client-side, bundler-replaced' only clarifies where the panel route lives and how the guard is applied.",
+        "pin": "e2875b74c04eedc1ff93b46360ba0d1ffb67d8b561867de5f98036aeefb22f77"
+      }
+    },
+    {
+      "sentence": "**Windows**: Debug-only settings page, guarded by `#if DEBUG`",
+      "to": [
+        "platform-access-methods"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "platform-access-methods keeps Windows access by a debug-only settings page guarded by #if DEBUG.",
+        "pin": "fae77c2c24b27c6908d68e69510d2048376e4466066cdec7a02a6aa36fffb0fe"
+      }
+    },
+    {
+      "sentence": "Apps MUST include a debug-only configuration panel (not in release builds) with:",
+      "to": [
+        "debug-only-config-panel"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "debug-only-config-panel keeps the MUST for a debug-only panel not in release builds, with the same four listed items.",
+        "pin": "72e76205d3ec27822ff9fb25ed51d540e56918e0ef62dadacfa8250df13442b0"
+      }
+    },
+    {
+      "sentence": "Access via `/debug` route or keyboard shortcut (`Ctrl+Shift+D`), guarded by `process.env.NODE_ENV === 'development'`.",
+      "to": [
+        "typescript-debug-access"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "typescript-debug-access carries the sentence verbatim at SHOULD (it was unkeyed): the /debug route or Ctrl+Shift+D, guarded by process.env.NODE_ENV === 'development'.",
+        "pin": "f43769787625967ce42d2630b8bb0acb85b6cf728a4702081ed27ed3991f0691"
+      }
+    },
+    {
+      "sentence": "Dev-only settings page guarded by `#if DEBUG`:",
+      "to": [
+        "windows-debug-settings-page"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-debug-settings-page keeps a dev-only settings page guarded by #if DEBUG holding the listed items, at SHOULD for an unkeyed instruction.",
+        "pin": "5d13a403af3de3b7be754c62ab2f9d59f83df577723d4ba3b996d9be87a9953e"
+      }
+    },
+    {
+      "sentence": "Environment info (app version, OS version, device)",
+      "to": [
+        "windows-debug-settings-page"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-debug-settings-page keeps environment info with app version, OS version and device.",
+        "pin": "a97c0324e08b5a3aa26e9301270e889618348df805f693bc21e1812a65ee94cb"
+      }
+    },
+    {
+      "sentence": "Access via navigation menu item visible only in debug builds",
+      "to": [
+        "windows-debug-settings-page",
+        "a-complete-review-must-establish"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-debug-settings-page keeps access through a navigation menu item visible only in debug builds, and a-complete-review-must-establish checks it.",
+        "pin": "3de298fac077f3f9155d483b7e012c6665ea1131acfb3b4ca3240ed1e4cbe6b6"
+      }
+    }
+  ],
+  "obsolete": []
+}

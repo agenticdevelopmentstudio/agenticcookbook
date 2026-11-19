@@ -1,0 +1,55 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "dde1b6fd-773c-4f9f-a328-51150468bc99",
+    "title": "Database naming conventions",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Snake_case naming rules for tables, columns, primary keys, foreign keys, indexes, constraints, and triggers — including reserved word avoidance.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "naming",
+      "schema-design",
+      "conventions"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://www.sqlite.org/lang_keywords.html",
+      "https://dev.to/ovid/database-naming-standards-2061",
+      "https://www.bbkane.com/blog/sql-naming-conventions/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "fc7869bcfd3e8dd9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "use-snake-case-everywhere", "heading": "Use snake_case everywhere"},
+    {"part": "table-names", "heading": "Table names"},
+    {"part": "primary-key-columns", "heading": "Primary key columns"},
+    {"part": "foreign-key-columns", "heading": "Foreign key columns"},
+    {"part": "boolean-columns", "heading": "Boolean columns"},
+    {"part": "date-time-columns", "heading": "Date/time columns"},
+    {"part": "reserved-words-to-avoid", "heading": "Reserved words to avoid"},
+    {"part": "indexes-constraints-and-triggers", "heading": "Indexes, constraints, and triggers"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

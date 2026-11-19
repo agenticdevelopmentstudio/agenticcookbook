@@ -1,0 +1,19 @@
+{
+  "base": "cd4a714fdfb16f5ed65924ee0198db63232a54c1",
+  "copies": [],
+  "moved": [
+    {
+      "sentence": "Define a `FeatureFlagProvider` interface (`isEnabled(key) -> Bool`), provide a local default implementation (UserDefaults/SharedPreferences/localStorage), swap in a backend implementation later via DI.",
+      "to": [
+        "how-to-keep-the-rules"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "how-to-keep-the-rules keeps the whole instruction: the FeatureFlagProvider interface with isEnabled(key) -> Bool, a local default backed by UserDefaults/SharedPreferences/localStorage per language, and a later backend swap via DI, carried at SHOULD by the rules it cites. The unsettled DataStore alternative adds an option but drops neither the SharedPreferences rule nor its level.",
+        "pin": "c99f8258bfa52973786e58c3693148d371514a1a0dfbd4be6dac49c56ce0bc3e"
+      }
+    }
+  ],
+  "obsolete": []
+}

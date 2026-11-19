@@ -9,5 +9,5 @@ SELECT price FROM fruitsforsale WHERE fruit = 'Orange' AND state = 'CA';
 CREATE INDEX idx_fruit_state_price ON fruitsforsale(fruit, state, price);
 ```
 
-`EXPLAIN QUERY PLAN` confirms with `USING COVERING INDEX`. Aim for covering indexes on hot read paths where the query shape is stable.
+`EXPLAIN QUERY PLAN` confirms with `USING COVERING INDEX`.
 

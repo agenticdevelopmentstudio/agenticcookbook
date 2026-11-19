@@ -21,5 +21,3 @@ CREATE TABLE songs (
 );
 ```
 
-The referenced column(s) MUST be the PRIMARY KEY or have a UNIQUE index. Otherwise, table creation fails.
-

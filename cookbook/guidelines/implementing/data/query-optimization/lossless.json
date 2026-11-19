@@ -1,0 +1,60 @@
+{
+  "base": "1a179b2",
+  "copies": [
+    "cookbook/guidelines/reviewing/data/query-optimization"
+  ],
+  "moved": [
+    {
+      "sentence": "Use `UNION ALL` when the result sets are known to be disjoint, or when duplicates are acceptable.",
+      "to": "should-use-union-all",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "`UNION ALL` and both conditions (result sets known disjoint, or duplicates acceptable) are kept at SHOULD.",
+        "pin": "e4b76c2267cf1a4ab8f819be68b55f1393222a3799443cb11b5a1eb10544a434"
+      }
+    },
+    {
+      "sentence": "Either index both columns or restructure as a `UNION ALL`.",
+      "to": "should-index-both-sides-of-or",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Both remedies (index both columns, or restructure as `UNION ALL`) are kept at SHOULD, and the rule names the OR-across-columns case the source's context set up.",
+        "pin": "2334b8dc02fa70911a1ea88fabd27683c21e615ff3ad7ea6980d19da96ce1462"
+      }
+    },
+    {
+      "sentence": "Always check the query plan before shipping a new query that touches large tables.",
+      "to": "must-check-query-plan-before-shipping",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Always\" checking the plan before shipping a new query that touches large tables becomes MUST always, with the same scope and timing.",
+        "pin": "6b19e745908f8864f170d9c1b7c537321fbb76e617b4de5deccfc2d7ae2c5652"
+      }
+    },
+    {
+      "sentence": "Run `ANALYZE` (or `PRAGMA optimize`) before evaluating plans on tables with real data.",
+      "to": "should-analyze-before-evaluating-plans",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Running `ANALYZE` (or `PRAGMA optimize`) before evaluating plans on tables with real data is kept at SHOULD with the same condition.",
+        "pin": "c0b5590e5fb8474194e82d87e6cded7360efd720cc3d044ab3d7514535c2c19b"
+      }
+    }
+  ],
+  "obsolete": [
+    {
+      "sentence": "See the implementing copy of this guideline for detailed examples and fix patterns.",
+      "reason": "the reviewing copy's pointer to this topic; the copy is folded into this topic, so the pointer would point at itself",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The sentence only points the reviewing copy at the implementing copy and states no rule; this topic now holds the folded copy's six anti-patterns (look-for.md) and examples and fixes for each (anti-patterns-that-cause-full-table-scans.md), so the pointer would point at itself.",
+        "pin": "431793a1fb62755f9679cb3efbda35f34a02906f35e37afa5947727cde6ed648"
+      }
+    }
+  ]
+}

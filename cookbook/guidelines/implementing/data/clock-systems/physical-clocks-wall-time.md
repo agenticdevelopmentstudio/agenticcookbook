@@ -8,5 +8,3 @@ Wall-clock timestamps (`datetime('now')`, `Date.now()`, `System.currentTimeMilli
 - The server assigns all timestamps (client clocks are never trusted for ordering)
 - Ordering accuracy within a few seconds is sufficient
 
-**MUST NOT use raw wall-clock time** as the sole ordering mechanism in multi-device collaborative apps.
-

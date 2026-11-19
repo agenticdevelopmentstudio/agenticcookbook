@@ -1,13 +1,9 @@
 
-Every synced table MUST have three timestamp columns:
-
 | Column | Purpose |
 |--------|---------|
 | `created_at` | Record creation time (set once, never updated) |
 | `updated_at` | Last modification time (updated on every change) |
 | `last_synced_at` | Last successful server sync (NULL until first sync) |
-
-Store all timestamps as **ISO-8601 UTC strings** in SQLite (`TEXT`), and as `TIMESTAMPTZ` in PostgreSQL. Never mix formats within a column.
 
 Use a trigger to keep `updated_at` current automatically:
 

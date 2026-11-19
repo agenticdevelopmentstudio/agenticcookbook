@@ -17,5 +17,5 @@ WHERE id = ?;
 - Easy to reason about and debug
 - Requires server connectivity to assign versions — not suitable for pure peer-to-peer
 
-**When to use:** Client-server architectures where all writes are validated by the server. This is the most common pattern in production sync systems (Linear, Figma, and most mobile apps use variants of this). SHOULD be the default choice for centralized sync.
+**When to use:** Client-server architectures where all writes are validated by the server. This is the most common pattern in production sync systems (Linear, Figma, and most mobile apps use variants of this).
 

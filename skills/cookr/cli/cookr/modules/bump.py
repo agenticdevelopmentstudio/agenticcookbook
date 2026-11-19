@@ -75,7 +75,7 @@ def run(args, ctx) -> int:
     freezes: list[Freeze] = []
     failures: list[list[str]] = []
     for f in args.files:
-        path = f if f.is_absolute() else ctx.cwd / f
+        path = ctx.artifact(f)
         if is_folder(path):
             path = doc_path(path)
         try:

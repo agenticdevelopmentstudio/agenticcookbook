@@ -1,6 +1,4 @@
 
-MUST use `PRAGMA user_version` to track schema version. It is a built-in 32-bit integer stored in the database file header — available immediately without querying any table.
-
 ```sql
 -- Read current version
 PRAGMA user_version;
@@ -8,8 +6,6 @@ PRAGMA user_version;
 -- Set version after applying a migration
 PRAGMA user_version = 3;
 ```
-
-Each migration file MUST end with the appropriate `PRAGMA user_version = N;` statement.
 
 **Migration file structure:**
 
@@ -29,6 +25,4 @@ for migration_file in sorted(migration_files):
     if version > current:
         db.executescript(open(migration_file).read())
 ```
-
-Each migration MUST be wrapped in a transaction and MUST be idempotent (safe to run twice).
 

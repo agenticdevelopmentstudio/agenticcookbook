@@ -11,7 +11,7 @@ Each artifact type has a compliance file that defines its required structure:
 | Type | Compliance File | Checks |
 |------|----------------|--------|
 | Principle | `tbd/compliance/artifact-formatting/principle-formatting.md` | 7 |
-| Guideline | `tbd/compliance/artifact-formatting/guideline-formatting.md` | 8 |
+| Guideline | `tbd/compliance/artifact-formatting/guideline-formatting.md` | 13 |
 | Ingredient | `tbd/compliance/artifact-formatting/ingredient-formatting.md` | 17 |
 | Recipe | `tbd/compliance/artifact-formatting/recipe-formatting.md` | 15 |
 | Cookbook | `tbd/compliance/artifact-formatting/cookbook-formatting.md` | 13 |

@@ -1,0 +1,58 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "3b88bb39-a15d-488f-a967-b7fa2dba2be7",
+    "title": "Sync Protocol",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-04-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Rules for designing the sync protocol between client and server: push/pull direction, full vs incremental sync, change tracking, batching, idempotency, the outbox pattern, and retry with backoff.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "protocol",
+      "outbox",
+      "idempotency",
+      "offline-first"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "a899aeae-d561-4fcd-abd7-df109fe2362c",
+      "a0cb2815-8fdd-450a-af46-8fca80ba1aba"
+    ],
+    "references": [
+      "https://microservices.io/patterns/data/transactional-outbox.html",
+      "https://www.milanjovanovic.tech/blog/implementing-the-outbox-pattern"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-06",
+    "triggers": [
+      "offline-support",
+      "networking",
+      "database-operations"
+    ]
+  },
+  "synced": "f7899f5dd436364a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "sync-direction", "heading": "Sync Direction"},
+    {"part": "full-sync-vs-incremental-delta-sync", "heading": "Full Sync vs Incremental (Delta) Sync"},
+    {"part": "change-tracking", "heading": "Change Tracking"},
+    {"part": "batch-sync-with-pagination", "heading": "Batch Sync with Pagination"},
+    {"part": "idempotent-operations", "heading": "Idempotent Operations"},
+    {"part": "outbox-pattern", "heading": "Outbox Pattern"},
+    {"part": "retry-with-exponential-backoff", "heading": "Retry with Exponential Backoff"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

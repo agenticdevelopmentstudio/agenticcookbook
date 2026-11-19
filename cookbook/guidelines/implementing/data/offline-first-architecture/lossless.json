@@ -1,0 +1,121 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Never retry sync in a tight loop on reconnection.",
+      "to": "must-not-retry-sync-in-tight-loop",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Never retry sync in a tight loop on reconnection\" becomes MUST NOT, with the same condition (on reconnection).",
+        "pin": "ced3871e22f60822a8e43a1b5ed5104bb3ede7a83543a9f554597316b0584e90"
+      }
+    },
+    {
+      "sentence": "Apply exponential backoff starting from the first failure, even after regaining connectivity, in case the server is under load.",
+      "to": "should-back-off-from-first-failure",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Exponential backoff from the first failure, \"even after regaining connectivity\", and the reason (server under load) are kept at SHOULD.",
+        "pin": "01c23aadc6270a0650c0307e11bc79bdd493efa92c9d1f6d68bb46a357562538"
+      }
+    },
+    {
+      "sentence": "Design the UI to handle the rare case where the server rejects a write.",
+      "to": "should-design-ui-for-server-rejection",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The UI must handle the rare case of a server rejecting a write; kept at SHOULD for an unkeyed instruction.",
+        "pin": "9c0bb22e7e778f196632c50c25886a5d09d32da65cb06a2d287f8044476732c7"
+      }
+    },
+    {
+      "sentence": "Rules for sync-compatible migrations:",
+      "to": [
+        "must-only-add-columns",
+        "must-give-new-columns-defaults",
+        "must-make-migrations-idempotent",
+        "must-wrap-migration-steps-in-transactions",
+        "must-test-migrations-from-every-version"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "All five listed rules carry the sync-compatible-migration scope at MUST, each with its exception or reason (migration path, CRDTs and outbox replay, safe to run twice, each step, every previous version).",
+        "pin": "d9920fd165952fb1c3ccf06f103b454a726e08aadc993ca89d8277cfeca04545"
+      }
+    },
+    {
+      "sentence": "New columns MUST have DEFAULT values (required by CRDTs and outbox replay)",
+      "to": "must-give-new-columns-defaults",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST DEFAULT values on new columns, with the reason (CRDTs and outbox replay), is kept and scoped to sync-compatible migrations.",
+        "pin": "44af8943ad3723a86e243526499b9d44df93db9dd4ac92bca6945d19670ee342"
+      }
+    },
+    {
+      "sentence": "Migrations MUST be idempotent (safe to run twice)",
+      "to": "must-make-migrations-idempotent",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST idempotent, with the \"safe to run twice\" gloss, scoped to sync-compatible migrations as in the source's list.",
+        "pin": "960072d39373deccf93ee0552f242682191322dd5b5e3967f2c06a215ef343fb"
+      }
+    },
+    {
+      "sentence": "MUST test migrations against databases at every previous schema version",
+      "to": "must-test-migrations-from-every-version",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST test against databases at every previous schema version, scoped to sync-compatible migrations as in the source's list.",
+        "pin": "0ab2ce0c07d149bc9d35352667ccd930e9563976c443317852e90c419b3cbb73"
+      }
+    },
+    {
+      "sentence": "MUST enable WAL mode on every SQLite database that participates in sync:",
+      "to": "must-enable-wal-for-synced-databases",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST enable WAL mode on every SQLite database that participates in sync is kept; the pragma block follows in the part.",
+        "pin": "d7952612d2948f712e041bc0fc3c9a5e46c3ba7455c65bb981ab58130db70136"
+      }
+    },
+    {
+      "sentence": "Never hold a write transaction open while waiting on network I/O.",
+      "to": "must-not-hold-write-transaction-during-network-io",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Never hold a write transaction open while waiting on network I/O\" becomes MUST NOT with the same condition.",
+        "pin": "c4d779cafe48d26f7b7f209e7bb28e9feea16c41bd2c752c03323941fa6b7730"
+      }
+    },
+    {
+      "sentence": "MUST only add columns — never remove or rename without a migration path",
+      "to": "must-only-add-columns",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST only add columns, with the migration-path exception, is kept and scoped to sync-compatible migrations as in the source list.",
+        "pin": "23daf93d2e84e45a69eb9ae81ba38ee8745f58c989cb4faa003caa265ac8a6dd"
+      }
+    },
+    {
+      "sentence": "MUST wrap each migration step in a transaction",
+      "to": "must-wrap-migration-steps-in-transactions",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST wrap each migration step in a transaction is kept, with the per-step granularity, and scoped to sync-compatible migrations.",
+        "pin": "ca8a2642f35e4a4a901f70cb46b0713d387c46a230ab55916c46e6b0e85910c1"
+      }
+    }
+  ]
+}

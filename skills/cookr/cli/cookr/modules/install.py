@@ -121,7 +121,7 @@ def _concerns(path: Path) -> Optional[Path]:
 
 
 def run(args, ctx) -> int:
-    paths = args.paths or ([ctx.cookbook_root] if ctx.cookbook_root else [])
+    paths = [ctx.artifact(p) for p in args.paths] or ([ctx.cookbook_root] if ctx.cookbook_root else [])
     if not paths:
         ctx.ui.error("no cookbook found: run inside one, pass -p <repo-root>, or name the paths to install")
         return 2

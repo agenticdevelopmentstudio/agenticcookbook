@@ -106,6 +106,50 @@ def test_validate_fails_on_twins_that_drifted_and_on_a_guideline_with_no_rule(
     assert main(["validate", "-p", str(cb)]) == 0
 
 
+def test_validate_fails_on_a_roled_artifact_with_a_missing_role(tmp_path, monkeypatch, patch_refs,
+                                                                 capsys):
+    from cookr.core import roles
+    monkeypatch.setenv("COLUMNS", "300")
+    cb = _converted(tmp_path, monkeypatch, "Plain.")
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 0
+    assert "every build bar cites exactly its rules" in capsys.readouterr().out
+
+    # Give it a rules part and nothing else roled; drop the compiled doc so
+    # only the role census can fail.
+    (cb / "recipes" / "alpha.md").unlink()
+    manifest = cb / "recipes" / "alpha" / "artifact.json"
+    (cb / "recipes" / "alpha" / "rules.md").write_text("- **plain**: It MUST be plain.\n", encoding="utf-8")
+    manifest.write_text(manifest.read_text().replace(
+        '{"part": "history"',
+        '{"part": "rules", "heading": "Rules", "role": "rules"},\n    {"part": "history"'),
+        encoding="utf-8")
+    assert main(["validate", "-p", str(cb)]) == 1
+    out = capsys.readouterr().out
+    assert "missing-role" in out and "no build-verifier skill" in out
+    assert roles.FIX["missing-role"] in out
+
+
+def test_validate_fails_on_a_roled_artifact_that_sets_its_routes(tmp_path, monkeypatch, patch_refs,
+                                                                   capsys):
+    import json
+    from cookr.core import roles
+    monkeypatch.setenv("COLUMNS", "300")
+    cb = _converted(tmp_path, monkeypatch, "Plain.")
+    (cb / "recipes" / "alpha.md").unlink()
+    folder = cb / "recipes" / "alpha"
+    (folder / "rules.md").write_text("- **plain**: It MUST be plain.\n", encoding="utf-8")
+    data = json.loads((folder / "artifact.json").read_text())
+    data["parts"].insert(-1, {"part": "rules", "heading": "Rules", "role": "rules"})
+    data["routes"] = ["components/alpha"]
+    (folder / "artifact.json").write_text(json.dumps(data), encoding="utf-8")
+    capsys.readouterr()
+    assert main(["validate", "-p", str(cb)]) == 1
+    out = capsys.readouterr().out
+    assert "routed" in out and "derives its routes" in out
+    assert roles.FIX["routed"] in out
+
+
 # --- UUID links: missing is an issue, unreachable a warning ---------------------------
 
 GONE = "0b0b0b0b-0000-4000-8000-000000000000"

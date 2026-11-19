@@ -1,7 +1,9 @@
 """Rewrite the links inside a cookbook's artifacts, through their source folders.
 
 `edit_links` applies one function to every `depends-on`/`related` value and
-another to every part's text, in each artifact folder. A folder with a doc
+another to every part's text, in each artifact folder. With `dedupe`, a link
+list the value function changed keeps each value once (two links redirected
+to one artifact). A folder with a doc
 compiled beside it is edited through the doc (`save_document`) so the two stay
 in step. Nothing is bumped: a link edit is not a content change.
 """
@@ -20,12 +22,14 @@ LINK_FIELDS = ("depends-on", "related")
 
 
 def _apply(art: Artifact, value_fn: Callable[[str], str],
-           text_fn: Callable[[str], str]) -> tuple[bool, set[str]]:
+           text_fn: Callable[[str], str], dedupe: bool = False) -> tuple[bool, set[str]]:
     meta_changed = False
     for name in LINK_FIELDS:
         values = art.meta.get(name)
         if isinstance(values, list):
             new = [value_fn(v) if isinstance(v, str) else v for v in values]
+            if dedupe and new != values:
+                new = [v for i, v in enumerate(new) if v not in new[:i]]
             if new != values:
                 art.meta[name] = new
                 meta_changed = True
@@ -39,7 +43,7 @@ def _apply(art: Artifact, value_fn: Callable[[str], str],
 
 
 def edit_links(cookbook_dir: Path, value_fn: Callable[[str], str],
-               text_fn: Callable[[str], str]) -> list[Path]:
+               text_fn: Callable[[str], str], dedupe: bool = False) -> list[Path]:
     """Apply the functions across every artifact folder under `cookbook_dir`;
     the folders that changed."""
     changed = []
@@ -47,13 +51,13 @@ def edit_links(cookbook_dir: Path, value_fn: Callable[[str], str],
         doc = doc_path(folder)
         if doc.is_file():
             art = read_document(edit_text(doc))
-            meta_changed, parts = _apply(art, value_fn, text_fn)
+            meta_changed, parts = _apply(art, value_fn, text_fn, dedupe)
             if meta_changed or parts:
                 save_document(doc, compose_document(art))
                 changed.append(folder)
             continue
         art = load_folder(folder)
-        meta_changed, parts = _apply(art, value_fn, text_fn)
+        meta_changed, parts = _apply(art, value_fn, text_fn, dedupe)
         if not (meta_changed or parts):
             continue
         save_folder(art, folder)

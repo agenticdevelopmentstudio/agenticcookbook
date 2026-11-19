@@ -8,7 +8,9 @@ import json
 import pytest
 
 from cookr.core.artifact import (
+    Artifact,
     ArtifactError,
+    Part,
     compose_document,
     emit_frontmatter,
     find_documents,
@@ -282,6 +284,41 @@ def test_save_document_records_what_it_wrote(tmp_path):
     assert json.loads((folder / "artifact.json").read_text())["synced"] == doc_digest(doc.read_text())
 
 
+# --- roles ----------------------------------------------------------------------------
+
+def test_a_part_role_round_trips_through_the_folder(tmp_path):
+    a = Artifact(meta={"id": "x", "type": "guideline"}, parts=[
+        Part("intro", "# T\n"), Part("rules", "- **a-b**: MUST.\n", "Rules", role="rules")])
+    write_folder(a, tmp_path / "t")
+    data = json.loads((tmp_path / "t" / "artifact.json").read_text())
+    assert data["parts"][1] == {"part": "rules", "heading": "Rules", "role": "rules"}
+    assert load_folder(tmp_path / "t").parts[1].role == "rules"
+    assert load_folder(tmp_path / "t").roled
+
+
+def test_a_folder_with_no_role_is_written_as_before(tmp_path):
+    a = Artifact(meta={"id": "x", "type": "guideline"}, parts=[Part("intro", "# T\n"), Part("rules", "x\n", "Rules")])
+    write_folder(a, tmp_path / "t")
+    assert '"role"' not in (tmp_path / "t" / "artifact.json").read_text()
+    assert not load_folder(tmp_path / "t").roled
+
+
+def test_saving_the_doc_form_keeps_each_parts_role(tmp_path):
+    from cookr.core.artifact import doc_path, save_document
+    folder = tmp_path / "t"
+    write_folder(Artifact(meta={"id": "x", "type": "guideline"}, parts=[
+        Part("intro", "# T\n\n"), Part("rules", "\n- **a-b**: MUST.\n\n", "Rules", role="rules")]), folder)
+    doc = doc_path(folder)
+    doc.write_text(compose_document(load_folder(folder)))
+    edited = doc.read_text().replace("MUST.", "MUST, reworded.") + "## Added\n\nNew.\n"
+    save_document(doc, edited)
+    saved = load_folder(folder)
+    assert saved.part("rules").text == "\n- **a-b**: MUST, reworded.\n\n"
+    assert saved.part("rules").role == "rules"
+    assert saved.part("added").role is None
+    assert saved.roled
+
+
 # --- derived sections: with_part, authored_text, without_derived ----------------------
 
 def _derived():
@@ -366,3 +403,68 @@ def test_authored_text_strips_the_derived_section_and_save_document_restores_it(
     assert compose_document(load_folder(folder)) == plain.replace("\nx\n", "\nx, edited\n")
     assert doc.read_text(encoding="utf-8") == with_ri.replace("\nx\n", "\nx, edited\n")
 
+
+def test_saving_the_doc_form_keeps_a_part_named_apart_from_its_heading(tmp_path):
+    from cookr.core.artifact import doc_path, save_document
+    folder = tmp_path / "t"
+    write_folder(Artifact(meta={"id": "x", "type": "guideline"}, parts=[
+        Part("intro", "# T\n\n"),
+        Part("look-for", "\nFocus.\n\n", "What a reviewer looks for", role="review-focus")]), folder)
+    doc = doc_path(folder)
+    doc.write_text(compose_document(load_folder(folder)))
+    # A new heading whose slug is the kept part's name is numbered past it.
+    save_document(doc, doc.read_text() + "## Look For\n\nNew.\n")
+    saved = load_folder(folder)
+    assert [(p.name, p.heading, p.role) for p in saved.parts] == [
+        ("intro", None, None), ("look-for", "What a reviewer looks for", "review-focus"),
+        ("look-for-2", "Look For", None)]
+    assert sorted(f.name for f in folder.iterdir()) == ["artifact.json", "intro.md", "look-for-2.md", "look-for.md"]
+
+
+def test_load_folder_names_the_part_and_file_a_manifest_lists_but_lacks(tmp_path):
+    a = Artifact(meta={"id": "x", "type": "guideline"}, parts=[Part("intro", "# T\n"), Part("rules", "x\n", "Rules")])
+    write_folder(a, tmp_path / "t")
+    (tmp_path / "t" / "rules.md").unlink()
+    with pytest.raises(ArtifactError, match=r"part 'rules' has no rules\.md"):
+        load_folder(tmp_path / "t")
+
+
+def _roled_doc(folder, parts):
+    from cookr.core.artifact import doc_path
+    write_folder(Artifact(meta={"id": "x", "type": "guideline"}, parts=[Part("intro", "# T\n\n"), *parts]), folder)
+    doc = doc_path(folder)
+    doc.write_text(compose_document(load_folder(folder)))
+    return doc
+
+
+def test_a_renamed_heading_whose_slug_is_the_parts_name_does_not_keep_its_role(tmp_path):
+    from cookr.core.artifact import save_document
+    folder = tmp_path / "t"
+    doc = _roled_doc(folder, [Part("look-for", "\nFocus.\n\n", "What a reviewer looks for", role="review-focus")])
+    save_document(doc, doc.read_text().replace("## What a reviewer looks for\n", "## Look For\n"))
+    saved = load_folder(folder)
+    assert [(p.name, p.heading, p.role) for p in saved.parts] == [
+        ("intro", None, None), ("look-for", "Look For", None)]
+
+
+def test_a_renamed_heading_with_another_slug_drops_the_role_and_the_old_file(tmp_path):
+    from cookr.core.artifact import save_document
+    folder = tmp_path / "t"
+    doc = _roled_doc(folder, [Part("look-for", "\nFocus.\n\n", "What a reviewer looks for", role="review-focus")])
+    save_document(doc, doc.read_text().replace("## What a reviewer looks for\n", "## Focus\n"))
+    saved = load_folder(folder)
+    assert [(p.name, p.heading, p.role) for p in saved.parts] == [
+        ("intro", None, None), ("focus", "Focus", None)]
+    assert not (folder / "look-for.md").exists()
+    assert not saved.roled
+
+
+def test_duplicate_headings_keep_their_names_and_roles_in_order(tmp_path):
+    from cookr.core.artifact import save_document
+    folder = tmp_path / "t"
+    doc = _roled_doc(folder, [Part("first", "\nA.\n\n", "Notes", role="how-to"),
+                              Part("second", "\nB.\n\n", "Notes", role="examples")])
+    save_document(doc, doc.read_text().replace("\nB.\n", "\nB, edited.\n"))
+    saved = load_folder(folder)
+    assert [(p.name, p.heading, p.role, p.text) for p in saved.parts[1:]] == [
+        ("first", "Notes", "how-to", "\nA.\n\n"), ("second", "Notes", "examples", "\nB, edited.\n\n")]

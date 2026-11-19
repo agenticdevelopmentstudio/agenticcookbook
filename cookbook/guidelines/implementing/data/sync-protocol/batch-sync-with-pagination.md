@@ -1,8 +1,4 @@
 
-MUST paginate sync results. Never request or deliver unbounded result sets.
-
-Use the server-assigned sync version as the cursor — not an offset. Offset-based pagination skips records if new changes arrive during sync.
-
 Recommended batch sizes:
 
 | Context | Batch Size |

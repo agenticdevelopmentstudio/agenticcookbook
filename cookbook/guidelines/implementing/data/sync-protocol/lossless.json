@@ -1,0 +1,95 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "MUST paginate sync results.",
+      "to": "must-paginate-sync-results",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST paginate sync results is kept, joined with the never-unbounded prohibition.",
+        "pin": "4ca106cd6051ca4b446ef4bc37d58ab540e236654e47575f2ecb6f298be05652"
+      }
+    },
+    {
+      "sentence": "Never request or deliver unbounded result sets.",
+      "to": "must-paginate-sync-results",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Never request or deliver unbounded result sets\" is kept word for word under the MUST rule.",
+        "pin": "9e479dceffe5c755c0c68ec7d09c866b1bd66cb26db349755b3c6c68ae8089ca"
+      }
+    },
+    {
+      "sentence": "Use the server-assigned sync version as the cursor — not an offset.",
+      "to": "must-paginate-by-sync-version-cursor",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The sync-version cursor, \"not an offset\", is kept and becomes MUST.",
+        "pin": "82ebb2b5fe9be0cee6ee67c0935328d8ea60fcd3faa351d975f2cb16ac064540"
+      }
+    },
+    {
+      "sentence": "MUST use incremental sync in production.",
+      "to": "must-use-incremental-sync",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST use incremental sync in production is kept, together with its two exceptions.",
+        "pin": "88ef89c18b4720eff327c387cb142b62b3f267db6c356d00712abde5e277da3f"
+      }
+    },
+    {
+      "sentence": "Full sync (transfer everything every time) is only acceptable for initial bootstrap or recovery after database corruption.",
+      "to": "must-use-incremental-sync",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Full sync is \"only acceptable\" for the two cases (initial bootstrap, recovery after corruption), kept word for word in the MUST rule.",
+        "pin": "4ef47d79eeaaa72899d963671b37d6065f86f1e53cf2c887a43a6d260b6325f6"
+      }
+    },
+    {
+      "sentence": "If using timestamps, use Hybrid Logical Clocks (HLC) rather than wall-clock time.",
+      "to": "should-use-hlc-for-timestamp-sync",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (if using timestamps) and HLC over wall-clock time are kept at SHOULD.",
+        "pin": "d152b63080707206d5d2e9b10dedbe46f0d609f51d2f2216f328c577e43d95b2"
+      }
+    },
+    {
+      "sentence": "MUST implement exponential backoff with jitter for failed sync attempts.",
+      "to": "must-back-off-with-jitter",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST exponential backoff with jitter for failed sync attempts is kept, joined with the tight-loop prohibition.",
+        "pin": "0e6b503752360f8e2f6e001e5752051846f3092a03e9f8414ea446949db3d14f"
+      }
+    },
+    {
+      "sentence": "Never retry in a tight loop.",
+      "to": "must-back-off-with-jitter",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Never retry in a tight loop\" is kept word for word under the MUST rule.",
+        "pin": "84722e867b1bd22b1ffeccb31c63cfbc0771238fdca0121cd5aae2c201cf036d"
+      }
+    },
+    {
+      "sentence": "After N consecutive failures, enter a circuit-breaker state: stop attempting sync and resume only after a cooldown period or explicit user action.",
+      "to": "should-enter-circuit-breaker",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "N consecutive failures, the circuit-breaker state, stopping sync attempts and both resume conditions (cooldown or explicit user action) are kept, at SHOULD.",
+        "pin": "1e2b5c551bfec57de4b35a48c61c01e4f29f24e40f4537a2e7d7c27aca7791dc"
+      }
+    }
+  ]
+}

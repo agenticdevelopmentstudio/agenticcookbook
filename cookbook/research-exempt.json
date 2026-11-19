@@ -1,0 +1,26 @@
+{
+  "why": "These roled topics were converted before research-first (R10) was ruled. Their research is Task P2 of the finish-the-cookbook-roles plan (teamtesting: docs/superpowers/plans/2026-11-16-finish-the-cookbook-roles.md). Each topic leaves this list in the commit that adds its research/ folder, and cookr validate refuses a listed topic that has one. Every other roled artifact needs research/ now. Task 8b brings in the unroled rest.",
+  "topics": [
+    "guidelines/implementing/data/access-pattern-analysis",
+    "guidelines/implementing/data/backup-and-recovery",
+    "guidelines/implementing/data/clock-systems",
+    "guidelines/implementing/data/conflict-resolution",
+    "guidelines/implementing/data/constraints-and-validation",
+    "guidelines/implementing/data/data-types",
+    "guidelines/implementing/data/foreign-keys",
+    "guidelines/implementing/data/indexing",
+    "guidelines/implementing/data/json-columns",
+    "guidelines/implementing/data/naming-conventions",
+    "guidelines/implementing/data/normalization-and-denormalization",
+    "guidelines/implementing/data/offline-first-architecture",
+    "guidelines/implementing/data/primary-keys",
+    "guidelines/implementing/data/query-optimization",
+    "guidelines/implementing/data/relationships",
+    "guidelines/implementing/data/schema-evolution",
+    "guidelines/implementing/data/sync-engine-design",
+    "guidelines/implementing/data/sync-protocol",
+    "guidelines/implementing/data/sync-schema-design",
+    "guidelines/implementing/data/sync-tooling",
+    "guidelines/implementing/data/transactions-and-concurrency"
+  ]
+}

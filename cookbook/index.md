@@ -2,11 +2,11 @@
 id: 00000000-0000-0000-0000-000000000001
 title: "Agentic Developer Cookbook"
 type: reference
-version: 4.3.0
+version: 4.3.1
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-10-04
+modified: 2026-11-15
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -93,13 +93,14 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
 | [Planning](guidelines/planning/) | 63 | Architecture, data modeling, choosing patterns |
-| [Implementing](guidelines/implementing/) | 165 | Writing new code |
+| [Implementing](guidelines/implementing/) | 182 | Writing new code |
 | [Testing](guidelines/testing/) | 24 | Writing and structuring tests |
-| [Reviewing](guidelines/reviewing/) | 48 | Checking code quality, security, accessibility |
+| [Reviewing](guidelines/reviewing/) | 63 | Checking code quality, security, accessibility |
 | [Shipping](guidelines/shipping/) | 17 | Pre-commit, pre-PR, packaging |
 | [Cookbook](guidelines/cookbook/) | 16 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](guidelines/researching/) | 5 | Gathering, verifying, and recording trustworthy research |
 | [Brainstorming](guidelines/brainstorming/) | 4 | Facilitating idea generation sessions with framing-techniques, divergent-techniques, convergent-techniques, and facilitation-without-anchoring |
+| [Storytelling](guidelines/storytelling/) | 6 | Writing narrative and explanatory content |
 
 ## Ingredients
 
@@ -191,6 +192,7 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 4.3.1 | 2026-11-15 | Mike Fullerton | Guideline counts match the tree: Implementing 182, Reviewing 63; list Storytelling (6). The reviewer query-optimization twin was folded into its implementing topic |
 | 4.3.0 | 2026-10-04 | Mike Fullerton | List the 29 ingredients extracted when recipes became ingredient compositions |
 | 4.2.0 | 2026-04-21 | Mike Fullerton | Add DRY and SRP principles |
 | 4.1.0 | 2026-04-09 | Mike Fullerton | Add trigger system, top-10 shortlist, AI guidelines; recategorize 20→12 |

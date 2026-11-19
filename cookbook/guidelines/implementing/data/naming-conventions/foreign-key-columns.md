@@ -1,5 +1,5 @@
 
-MUST match the referenced column name when possible. When a table references the same parent table more than once, add a descriptive qualifier:
+When a table references the same parent table more than once, add a descriptive qualifier:
 
 ```sql
 -- Single reference: match parent PK name

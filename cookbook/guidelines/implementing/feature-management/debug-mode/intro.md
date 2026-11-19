@@ -1,28 +1,5 @@
 
 # Debug mode
 
-Apps MUST include a debug-only configuration panel (not in release builds):
-
-- Feature flag overrides
-- Analytics event log
-- A/B test variant picker
-- Environment info (version, build, OS, device)
-
-Access methods:
-- **Apple (iOS)**: Shake gesture, guarded by `#if DEBUG`
-- **Apple (macOS)**: Debug menu item, guarded by `#if DEBUG`
-- **Android**: Shake gesture, guarded by `BuildConfig.DEBUG`
-- **Web**: `/debug` route, guarded by `NODE_ENV === 'development'`
-- **Windows**: Debug-only settings page, guarded by `#if DEBUG`
-
----
-
-# Debug Mode
-
-Apps MUST include a debug-only configuration panel (not in release builds) with:
-
-- Feature flag overrides
-- Analytics event log
-- A/B test variant picker
-- Environment info (version, build, OS, device)
+Apps include a debug-only configuration panel, holding feature flag overrides, an analytics event log, an A/B test variant picker and environment info, that is compiled out of release builds, not hidden in them: guard it at compile time (`#if DEBUG`, Android's debug source set and `debugImplementation`, a bundler-replaced constant), and keep release builds non-debuggable, their debug logging off and redacted, SDK developer modes off, secrets out of the client, debug traffic out of analytics and any production override guarded. Reach the panel by each platform's access method, choose new access gestures that do not redefine system or browser ones, and add only what the platform's own developer tools do not already show.
 

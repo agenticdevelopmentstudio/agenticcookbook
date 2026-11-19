@@ -1,6 +1,4 @@
 
-The UI MUST read exclusively from local SQLite, never from the network. Changes appear instantly after the local write — the user does not wait for the server.
-
 ```
 User action
   → Write to local SQLite + enqueue to outbox (one transaction)
@@ -10,5 +8,5 @@ User action
       → If server rejects: roll back local change, notify user
 ```
 
-This means every write the user sees is "optimistic" — it is applied locally before the server confirms it. Design the UI to handle the rare case where the server rejects a write.
+This means every write the user sees is "optimistic" — it is applied locally before the server confirms it.
 

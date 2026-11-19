@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Optional
 
 from .artifact import find_folders
+from .markdown import in_research, in_versions
 from .errors import CookbookError
 from .identity import (MANIFEST, TYPE_DIRS, CookbookIdentity, IdentityError, artifact_rdid,
                        read_manifest)
@@ -253,12 +254,51 @@ def cookbook_dir_of(path: Path) -> Optional[Path]:
     return next((d for d in (path, *path.parents) if (d / MANIFEST).is_file()), None)
 
 
+class _CheckedEntries(dict):
+    """`index.json`'s entries, each checked against its folder when first
+    looked up, for a command on one folder: an entry whose folder still holds
+    its id is what `sync_from_folders` would keep. Any other lookup (an id the
+    file lacks, a folder moved or gone) answers from the synced index, built
+    once, so every answer is `current_index`'s."""
+
+    def __init__(self, entries: dict, cookbook_dir: Path) -> None:
+        super().__init__(entries)
+        self._dir = cookbook_dir
+        self._checked: set[str] = set()
+        self._synced: Optional[dict] = None
+
+    def get(self, key, default=None):
+        if key in self._checked:
+            return dict.get(self, key, default)
+        entry = dict.get(self, key)
+        if entry is not None and (entry.kind == "check" or self._holds(entry)):
+            self._checked.add(key)
+            return entry
+        if self._synced is None:
+            try:
+                self._synced = current_index(self._dir).entries
+            except CookbookError:      # what makes IndexCache give no index at all
+                self._synced = {}
+        return self._synced.get(key, default)
+
+    def _holds(self, entry: "Entry") -> bool:
+        folder = self._dir / entry.path
+        marker = folder / "artifact.json"
+        if "#" in entry.path or in_versions(marker, self._dir) or in_research(marker, self._dir):
+            return False
+        ident = _folder_identity(folder)
+        return ident is not None and ident[0] == entry.id
+
+
 class IndexCache:
     """Each cookbook's current index (`current_index`), read once, for whatever
-    folders a command walks."""
+    folders a command walks. `one_folder` is for a command on one folder: it
+    reads `index.json` and checks only the entries looked up (`_CheckedEntries`)
+    instead of syncing it with every folder of the cookbook."""
 
-    def __init__(self) -> None:
+    def __init__(self, one_folder: bool = False) -> None:
         self._by_dir: dict[Path, Optional[Index]] = {}
+        self._one_folder = one_folder
 
     def for_path(self, path: Path) -> Optional[Index]:
         """The current index of the cookbook holding `path`; None when there is no
@@ -268,7 +308,12 @@ class IndexCache:
             return None
         if cookbook not in self._by_dir:
             try:
-                self._by_dir[cookbook] = current_index(cookbook)
+                if self._one_folder and (cookbook / INDEX_FILE).is_file():
+                    index = load_index(cookbook)
+                    index.entries = _CheckedEntries(index.entries, cookbook)
+                    self._by_dir[cookbook] = index
+                else:
+                    self._by_dir[cookbook] = current_index(cookbook)
             except CookbookError:
                 self._by_dir[cookbook] = None
         return self._by_dir[cookbook]

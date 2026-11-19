@@ -1,6 +1,4 @@
 
-SHOULD design the engine so every synced entity implements a common interface:
-
 ```
 interface Syncable<T> {
     collectDirty(): List<T>           // query local records where isDirty = true
@@ -10,7 +8,5 @@ interface Syncable<T> {
 }
 ```
 
-The orchestrator iterates over all registered content types without knowing their entity-specific details. Conflict handling MAY be customized per content type while sharing a common transport and scheduling layer.
-
-Benefits: sync logic is tested once in the orchestrator; adding a new entity is a single interface implementation; entity-specific quirks are contained.
+The orchestrator iterates over all registered content types without knowing their entity-specific details.
 

@@ -1,0 +1,132 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Restore safe settings immediately after the bulk load completes.",
+      "to": "must-restore-safe-settings-after-bulk-load",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Restoring safe settings immediately after the bulk load completes becomes MUST, and \"immediately\" is kept.",
+        "pin": "e13816630080f140c72008b7504c9f939f75fb860ca0e3844758811ddac521c1"
+      }
+    },
+    {
+      "sentence": "MUST NOT use these settings in production code paths.",
+      "to": "must-not-use-bulk-load-settings-in-production",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST NOT and the production-code-paths scope are kept; \"these settings\" becomes \"the bulk load settings\", which the topic's bulk-load part lists exactly.",
+        "pin": "ad976eca1af8724f80c0134ad7eaa060e06ed35f2bb8f7800f934ac5ab370606"
+      }
+    },
+    {
+      "sentence": "Set it lower (500–1000ms) for interactive UI operations where a 5-second wait would be visible to the user.",
+      "to": "should-lower-busy-timeout-for-interactive-ui",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The 500–1000ms range, the interactive-UI condition and the reason (a visible 5-second wait) are kept, at SHOULD for an unkeyed instruction.",
+        "pin": "3499042bdecb49638d8b1b4ab6ac05572dff1ee08f01b74649fb65118460727d"
+      }
+    },
+    {
+      "sentence": "Keep write transactions short.",
+      "to": "should-keep-write-transactions-short",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Keeping write transactions short is kept at SHOULD; the neighbouring MUST NOT (no write lock held across external I/O) is its own entry.",
+        "pin": "ea878c3871b7c18f1e23c58f4cb287b01c6dac95e6b75df0189b45ba4e09e3c9"
+      }
+    },
+    {
+      "sentence": "Set it once per database, but re-setting it on connection open is safe and recommended.",
+      "to": [
+        "should-set-wal-on-connection-open",
+        "rationale"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Recommended\" re-setting on connection open becomes SHOULD, and \"set once per database\" plus \"safe\" are carried by the rule's rationale entry.",
+        "pin": "14bc8cb85b52592e90ff51735a59413b00b76504bffa1ed14e2b2a865515b647"
+      }
+    },
+    {
+      "sentence": "After large sync batches, use `TRUNCATE` to reclaim WAL disk space.",
+      "to": "should-truncate-checkpoint-after-large-batches",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (after large sync batches), `TRUNCATE` and the reason (reclaim WAL disk space) are kept at SHOULD.",
+        "pin": "3ad0cc6cfd6c3617b02ca7df1ae20101b0d2c28ff503a2272b19b841a0e303a7"
+      }
+    },
+    {
+      "sentence": "SHOULD cap WAL file size to prevent unbounded growth:",
+      "to": "should-cap-wal-size",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD cap WAL file size, with its reason (prevent unbounded growth), is kept; the pragma example stays in the part.",
+        "pin": "a83b06c474cc000297567fa06ff416e56028d20a4fa10b3b614c193db924f9e6"
+      }
+    },
+    {
+      "sentence": "Three causes of WAL growth to avoid:",
+      "to": [
+        "should-not-disable-auto-checkpoint-without-replacement",
+        "should-not-hold-long-read-transactions",
+        "should-not-run-very-large-write-transactions"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"To avoid\" reaches all three causes as three SHOULD NOT rules, and the rationale gives the shared reason (each keeps the checkpoint from resetting the WAL).",
+        "pin": "126dcd08ddf8d4995aedf5528bf46914d39b71aed89815e34cfb8f8aec1720ef"
+      }
+    },
+    {
+      "sentence": "Auto-checkpointing disabled without a manual replacement",
+      "to": "should-not-disable-auto-checkpoint-without-replacement",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The cause, auto-checkpointing disabled without a manual replacement, is avoided at SHOULD NOT with the \"without a manual replacement\" exception kept.",
+        "pin": "6447c9e2f5e2f58248ab8fbb5be02416151da3925466f814fae6dfe208c3dd3f"
+      }
+    },
+    {
+      "sentence": "Long-running read transactions that prevent checkpoint completion",
+      "to": "should-not-hold-long-read-transactions",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Long-running read transactions that prevent checkpoint completion are kept as a cause to avoid at SHOULD NOT, under the \"to avoid\" lead-in.",
+        "pin": "abaeb3a76656ef9325dba0bab7ea693b050cd8651daf51c7ced51142419553ba"
+      }
+    },
+    {
+      "sentence": "Very large write transactions that block the checkpoint",
+      "to": "should-not-run-very-large-write-transactions",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Very large write transactions that block the checkpoint are kept as a cause to avoid at SHOULD NOT, under the \"to avoid\" lead-in.",
+        "pin": "cb28ff937292e2c74f82163372f8d4d8caf1c1ca0e8ca1de91e38422c2e6862d"
+      }
+    },
+    {
+      "sentence": "Run checkpoints in a separate thread or connection so they do not block foreground reads.",
+      "to": "should-checkpoint-off-the-foreground",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Checkpointing in a separate thread or connection, and its reason (do not block foreground reads), are kept at SHOULD.",
+        "pin": "9de129ae99dfb3c33f4da3e291d22d435a91b0544a5b918147a130a0dd5b7555"
+      }
+    }
+  ]
+}

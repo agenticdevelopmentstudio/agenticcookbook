@@ -1,0 +1,31 @@
+
+- `must-base-schema-on-query-patterns`: every schema and index decision follows from actual query patterns; each added column, index or table has identified queries that use it, and the design was verified to support them efficiently
+- `must-answer-access-questions-before-schema`: the schema's most frequent and most expensive queries, read-to-write ratio, latency or throughput sensitivity, and expected row count (today and at 10x) are answered before it is final
+- `must-not-add-speculative-indexes`: every index is used by at least one known query
+- `should-maintain-query-inventory`: each table has a query inventory listing its significant queries, their frequency and their filter columns, or the code says why not
+- `should-verify-indexes-against-query-inventory`: every index is matched to a query in the inventory and every frequent query in it has index support, or the code says why not
+- `should-order-composite-columns-by-query-pattern`: every composite index lists equality columns first, range columns last, and ORDER BY columns last when there is no range filter, or the code says why not
+- `should-add-covering-indexes-on-read-heavy-tables`: the hottest queries on each read-heavy table have a covering index, or the code says why not
+- `should-keep-read-heavy-working-set-in-memory`: databases holding read-heavy tables set `mmap_size` and a larger `cache_size`, or the code says why not
+- `should-select-specific-columns`: queries on read-heavy tables name their columns instead of `SELECT *`, or the code says why not
+- `should-run-analyze-regularly`: `ANALYZE` runs regularly on databases with read-heavy tables, or the code says why not
+- `should-minimize-indexes-on-write-heavy-tables`: write-heavy tables carry only the indexes their queries need, or the code says why not
+- `should-use-partial-indexes-on-write-heavy-tables`: write-heavy tables use partial indexes to limit index size to the rows that matter, or the code says why not
+- `should-batch-writes-in-transactions`: writes to write-heavy tables are batched in explicit transactions of about 100–1,000 rows, or the code says why not
+- `should-profile-before-indexing-mixed-tables`: each index added to a mixed-workload table follows a profile of its read/write ratio that showed the need, or the code says why not
+- `should-act-on-missing-index-signals`: every `SCAN`, `AUTOMATIC INDEX` or `USE TEMP B-TREE FOR ORDER BY` in a query plan was checked for a permanent index, or the code says why not
+- `should-restructure-correlated-subqueries-as-joins`: no query plan shows `CORRELATED SCALAR SUBQUERY`, or the code says why not
+- `should-monitor-sqlite-stat1`: `sqlite_stat1` is checked after `ANALYZE` for row counts per index, or the code says why not
+- `should-design-for-sync-query-shapes`: each sync query shape has an index designed for it, or the code says why not
+- `must-index-unsynced-record-query`: the unsynced-record query has an index that covers it
+- `should-verify-unsynced-query-uses-index`: the unsynced-record query's plan shows `SEARCH ... USING INDEX`, not `SCAN`, or the code says why not
+- `should-partial-index-outbox-and-change-log-tables`: the outbox and change-log tables have partial indexes on their pending/unsynced filter condition, or the code says why not
+- `should-account-for-soft-delete-in-indexes`: where most queries filter `is_deleted = 0`, indexes include `is_deleted` or are partial on the active subset, or the code says why not
+- `should-size-sync-batches-by-context`: each sync batch size falls in the recommended range for its context (mobile 50–100, desktop 500–1,000, bootstrap 1,000–5,000, background 100–500), or the code says why not
+- `must-wrap-sync-batch-in-one-transaction`: every sync batch is applied inside one transaction
+- `should-use-json-bulk-operations-for-bulk-ingestion`: initial sync and large imports insert through JSON bulk operations (`json_each`), or the code says why not
+- `must-begin-immediate-for-sync-writes`: every sync write transaction opens with `BEGIN IMMEDIATE`
+- `must-not-hold-write-lock-during-network-io`: no network request is awaited between a sync write transaction's `BEGIN` and its `COMMIT` or `ROLLBACK`
+- `should-separate-sync-write-and-ui-read-connections`: sync writes go through one dedicated write connection and UI queries through separate read connections, or the code says why not
+- `should-set-busy-timeout-on-all-connections`: every connection sets `busy_timeout = 5000`, or the code says why not
+

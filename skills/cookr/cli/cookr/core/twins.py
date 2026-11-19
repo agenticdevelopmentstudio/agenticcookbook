@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Iterable, Optional
 
 from .artifact import HISTORY, Artifact, ArtifactError, load_folder
+from .history import without_fences
 from .skill import SkillError, path_below_type
 
 MIN_REASON = 16
@@ -44,7 +45,6 @@ GUIDELINES = "guidelines"
 _OWN_USE_CASE = re.compile(
     r"\[([a-z][a-z0-9-]*\.guideline\.)[a-z0-9-]+(\.[^\]\s]+)\]\(cookbook:[^)\s]+\)")
 _OWN_USE_CASE_V1 = re.compile(r"(agenticdevelopercookbook://guidelines/)[a-z0-9-]+/")
-_FENCED = re.compile(r"^(```|~~~).*?^\1", re.S | re.M)
 _RULE = re.compile(r"(?<![A-Za-z])(MUST|SHOULD|MAY)(?![A-Za-z])")
 
 
@@ -113,7 +113,7 @@ def twin_census(folders: Iterable[Path]) -> list[TwinFinding]:
 
 def states_a_rule(artifact: Artifact) -> bool:
     text = "".join(p.text for p in artifact.parts if p.name != HISTORY)
-    return bool(_RULE.search(_FENCED.sub("", text)))
+    return bool(_RULE.search(without_fences(text)))
 
 
 def rule_census(folders: Iterable[Path]) -> list[RuleFinding]:

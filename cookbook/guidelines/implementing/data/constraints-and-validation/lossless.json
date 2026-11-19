@@ -1,0 +1,15 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Schemas SHOULD use table-level only when the expression references multiple columns.",
+      "to": "should-use-table-level-checks-only-for-multi-column",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "SHOULD, the \"only\" limit and the multi-column condition are kept; the rule only adds the word CHECK, which the source's context implies.",
+        "pin": "1b3f82e445a871b208bb7f27b34d63e155ab6f359743012e990e9cad98a07094"
+      }
+    }
+  ]
+}

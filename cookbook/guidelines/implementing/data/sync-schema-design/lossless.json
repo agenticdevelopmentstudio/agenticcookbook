@@ -1,0 +1,88 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Set to `1` on every local insert or update; clear to `0` after the sync worker confirms the server accepted the change.",
+      "to": [
+        "must-set-dirty-on-every-local-write",
+        "should-clear-dirty-after-server-accepts"
+      ],
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Setting the flag on every local insert or update becomes MUST, and clearing it only after the server confirms acceptance is kept at SHOULD; both are scoped to the `is_dirty` column.",
+        "pin": "788b9ce1be313bd8decd7251be59130b0df5406d5f43146b90a4fa213a53bc33"
+      }
+    },
+    {
+      "sentence": "For apps needing operation-type awareness (INSERT vs UPDATE vs DELETE), use a change-log table with triggers instead of the flag column.",
+      "to": "should-use-change-log-for-operation-awareness",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (needs operation-type awareness: INSERT vs UPDATE vs DELETE) and the change-log table with triggers in place of the flag are kept, at SHOULD.",
+        "pin": "5507754cba9f94aa252acaa07b2efb99f6d066a429efd46418919d9fd9254798"
+      }
+    },
+    {
+      "sentence": "Use **UUIDv7** (time-ordered) where possible.",
+      "to": "should-use-uuidv7",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "UUIDv7 (time-ordered) and \"where possible\" are kept at SHOULD.",
+        "pin": "4ba164e9510a632bf7c56b3607e3d655ca967c7d5637b297484ba850a6fab620"
+      }
+    },
+    {
+      "sentence": "Store the last server-assigned sync version here after each successful sync.",
+      "to": "should-store-sync-version-checkpoint",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Storing the last server-assigned sync version after each successful sync, in the sync state (the source's \"here\"), is kept at SHOULD with its use as `since_version`.",
+        "pin": "750736015bda017b66edf52166021a97378383b22deeea045bc8d227ccab0953"
+      }
+    },
+    {
+      "sentence": "Use it as the `since_version` parameter on the next pull.",
+      "to": "should-store-sync-version-checkpoint",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"It\" (the stored last server-assigned sync version) as the `since_version` parameter on the next pull is kept at SHOULD in the checkpoint rule.",
+        "pin": "9e80a1dcd5ab3e7327826d8415e537440d7462e9c747e5a7bc1c064a2b16bd23"
+      }
+    },
+    {
+      "sentence": "Store all timestamps as **ISO-8601 UTC strings** in SQLite (`TEXT`), and as `TIMESTAMPTZ` in PostgreSQL.",
+      "to": "should-store-timestamps-as-iso-8601-utc",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "ISO-8601 UTC `TEXT` in SQLite and `TIMESTAMPTZ` in PostgreSQL for all timestamps are kept at SHOULD.",
+        "pin": "f1960897c6edd2c305f3a0c2cd2ae17e1192e9c5346d7f6bd101e85610e6a35e"
+      }
+    },
+    {
+      "sentence": "Never mix formats within a column.",
+      "to": "must-not-mix-timestamp-formats",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "\"Never mix formats within a column\" becomes MUST NOT; the rule names timestamp formats, which is the source's own scope (its timestamp-columns section).",
+        "pin": "da9ea1a62b21ec6a88d64efdfb193b637a9984acf4cf66b3d98e07a0015f0439"
+      }
+    },
+    {
+      "sentence": "Every synced table MUST have three timestamp columns:",
+      "to": "must-have-three-timestamp-columns",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "MUST three timestamp columns on every synced table is kept, and the rule names the three from the source's table.",
+        "pin": "783bbb75786db99c31fc37c7c1009ba93bcfb4ac548062f1ab577e460d4c4f6a"
+      }
+    }
+  ]
+}

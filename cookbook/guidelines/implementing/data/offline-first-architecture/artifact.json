@@ -4,11 +4,11 @@
     "id": "0d3e2d97-22d4-4781-a6c4-fa297b38030f",
     "title": "Offline-First Architecture",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-15",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,23 +34,28 @@
       "https://sqlite.org/wal.html",
       "https://www.powersync.com/blog/sqlite-optimizations-for-ultra-high-performance"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
     "triggers": [
       "offline-support",
       "database-operations"
     ]
   },
-  "synced": "a00c623d91146cf7",
+  "twin_differs": "The implementing copy carries roles: named rules, a build bar, and the devteam's review focus and review bar; the planning copy keeps the original text.",
+  "synced": "d0b522d06287ef2d",
   "parts": [
     {"part": "intro"},
-    {"part": "wal-mode-as-the-foundation", "heading": "WAL Mode as the Foundation"},
-    {"part": "operation-queue-pattern", "heading": "Operation Queue Pattern"},
-    {"part": "optimistic-ui-updates", "heading": "Optimistic UI Updates"},
-    {"part": "rollback-on-server-rejection", "heading": "Rollback on Server Rejection"},
-    {"part": "schema-migrations-while-offline", "heading": "Schema Migrations While Offline"},
-    {"part": "data-expiry-and-vacuum", "heading": "Data Expiry and VACUUM"},
-    {"part": "connectivity-aware-scheduling", "heading": "Connectivity-Aware Scheduling"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "wal-mode-as-the-foundation", "heading": "WAL Mode as the Foundation", "role": "examples"},
+    {"part": "operation-queue-pattern", "heading": "Operation Queue Pattern", "role": "examples"},
+    {"part": "optimistic-ui-updates", "heading": "Optimistic UI Updates", "role": "how-to"},
+    {"part": "rollback-on-server-rejection", "heading": "Rollback on Server Rejection", "role": "examples"},
+    {"part": "schema-migrations-while-offline", "heading": "Schema Migrations While Offline", "role": "examples"},
+    {"part": "data-expiry-and-vacuum", "heading": "Data Expiry and VACUUM", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

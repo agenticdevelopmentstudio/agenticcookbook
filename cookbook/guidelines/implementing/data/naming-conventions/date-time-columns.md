@@ -1,5 +1,5 @@
 
-MUST use descriptive event names. Avoid vague suffixes like `_at`:
+Avoid vague suffixes like `_at`:
 
 ```sql
 -- Correct

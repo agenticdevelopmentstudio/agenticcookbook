@@ -11,7 +11,5 @@ CREATE UNIQUE INDEX idx_team_leader ON person(team_id)
   WHERE is_team_leader;
 ```
 
-**MUST:** The query WHERE clause must include the partial index WHERE clause terms (literally or by implication) for the planner to use the index. A partial index on `status = 'pending'` is not used by a query without `status = 'pending'` in its filter.
-
 Partial indexes require SQLite 3.8.0+. Databases with partial indexes cannot be read by older SQLite versions.
 

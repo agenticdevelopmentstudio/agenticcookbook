@@ -1,0 +1,55 @@
+{
+  "base": "1a179b2",
+  "moved": [
+    {
+      "sentence": "Use `->` when you need the JSON text of a nested object or array.",
+      "to": "should-use-arrow-for-nested-json-text",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Using `->` when the JSON text of a nested object or array is needed is kept with the same condition at SHOULD.",
+        "pin": "c616d04392e8e48053b4ffaad14c3acbcaf2cf94f5bfcf6c47dbd04f58928b18"
+      }
+    },
+    {
+      "sentence": "For older SQLite, use `json_extract()`.",
+      "to": "must-use-json-extract-below-3-38-0",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Below SQLite 3.38.0, use `json_extract()` in place of `->>`: the version bound and the replacement are kept, at a stronger level (MUST).",
+        "pin": "07d5a84df6a69bfa9ae7586eb76aacb57ed83d9833d2db70ea30029a7fb0c354"
+      }
+    },
+    {
+      "sentence": "Declare a JSON column as `TEXT`.",
+      "to": "should-declare-json-columns-as-text",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "Declaring a JSON column as `TEXT` is kept at SHOULD.",
+        "pin": "7ee7d01f2a1c4daccf1a36c71aef427195fc818bcb3be44bf9f8f4069da8a558"
+      }
+    },
+    {
+      "sentence": "Use this CHECK constraint when data integrity matters.",
+      "to": "should-check-json-valid-when-integrity-matters",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The json_valid CHECK constraint and the condition (when data integrity matters) are kept at SHOULD; the source's \"validate at insert time\" is added explicitly.",
+        "pin": "bcfa29255d64f4a115f21bcd55e88377e10bd50fdca4596780c5eebe3f832432"
+      }
+    },
+    {
+      "sentence": "**The rule:** if a JSON field is queried in more than occasional ad-hoc queries, promote it to a real column.",
+      "to": "should-promote-queried-json-fields",
+      "judged": {
+        "by": "judge-opus-5.5-2026-11-16",
+        "verdict": "pass",
+        "note": "The condition (queried in more than occasional ad-hoc queries), the promotion to a real column and the follow-on intermediate step are kept; the source has no RFC keyword, so SHOULD keeps its force.",
+        "pin": "d0ed8dea3c52e325cb6a60d6d5ca542687eaa00db6911b0913415640196b0dba"
+      }
+    }
+  ]
+}

@@ -4,11 +4,11 @@
     "id": "a0cb2815-8fdd-450a-af46-8fca80ba1aba",
     "title": "Sync Engine Design",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-15",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,23 +31,29 @@
       "0d3e2d97-22d4-4781-a6c4-fa297b38030f"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-16",
     "triggers": [
       "offline-support",
       "database-operations"
     ]
   },
-  "synced": "c6d3c9b576023799",
+  "twin_differs": "The implementing copy carries roles: named rules, a build bar, and the devteam's review focus and review bar; the planning copy keeps the original text.",
+  "synced": "f3de85a7dad22500",
   "parts": [
     {"part": "intro"},
-    {"part": "architecture-layers", "heading": "Architecture Layers"},
-    {"part": "entity-agnostic-syncable-interface", "heading": "Entity-Agnostic Syncable Interface"},
-    {"part": "the-sync-cycle", "heading": "The Sync Cycle"},
-    {"part": "dirty-tracking-strategies", "heading": "Dirty Tracking Strategies"},
-    {"part": "sync-scheduling", "heading": "Sync Scheduling"},
-    {"part": "snapshot-rebuilding", "heading": "Snapshot Rebuilding"},
-    {"part": "error-handling", "heading": "Error Handling"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "architecture-layers", "heading": "Architecture Layers", "role": "how-to"},
+    {"part": "entity-agnostic-syncable-interface", "heading": "Entity-Agnostic Syncable Interface", "role": "examples"},
+    {"part": "the-sync-cycle", "heading": "The Sync Cycle", "role": "how-to"},
+    {"part": "dirty-tracking-strategies", "heading": "Dirty Tracking Strategies", "role": "examples"},
+    {"part": "sync-scheduling", "heading": "Sync Scheduling", "role": "how-to"},
+    {"part": "snapshot-rebuilding", "heading": "Snapshot Rebuilding", "role": "how-to"},
+    {"part": "error-handling", "heading": "Error Handling", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

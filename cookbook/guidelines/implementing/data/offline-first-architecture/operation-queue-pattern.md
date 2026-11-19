@@ -1,6 +1,4 @@
 
-Every user mutation MUST be written to both the data table and an outbox queue in a single atomic transaction. This guarantees that whatever is visible on screen is queued for sync.
-
 ```python
 db.execute("BEGIN TRANSACTION")
 db.execute(

@@ -4,11 +4,11 @@
     "id": "7fd21483-ad0b-407e-8a7f-103992403d36",
     "title": "Query Optimization",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-04-09",
+    "modified": "2026-11-15",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,21 +33,26 @@
       "https://www.sqlite.org/eqp.html",
       "https://sqlite.org/queryplanner.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-06",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
     "triggers": [
       "database-operations",
       "performance-optimization"
     ]
   },
-  "synced": "825ec4aae97fce32",
+  "synced": "6407e2d938adb721",
   "parts": [
     {"part": "intro"},
-    {"part": "reading-explain-query-plan", "heading": "Reading EXPLAIN QUERY PLAN"},
-    {"part": "anti-patterns-that-cause-full-table-scans", "heading": "Anti-Patterns That Cause Full Table Scans"},
-    {"part": "query-planner-optimizations-to-leverage", "heading": "Query Planner Optimizations to Leverage"},
-    {"part": "ctes-vs-subqueries", "heading": "CTEs vs Subqueries"},
-    {"part": "running-analyze", "heading": "Running ANALYZE"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "reading-explain-query-plan", "heading": "Reading EXPLAIN QUERY PLAN", "role": "how-to"},
+    {"part": "anti-patterns-that-cause-full-table-scans", "heading": "Anti-Patterns That Cause Full Table Scans", "role": "examples"},
+    {"part": "query-planner-optimizations-to-leverage", "heading": "Query Planner Optimizations to Leverage", "role": "how-to"},
+    {"part": "ctes-vs-subqueries", "heading": "CTEs vs Subqueries", "role": "how-to"},
+    {"part": "running-analyze", "heading": "Running ANALYZE", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

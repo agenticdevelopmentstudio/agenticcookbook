@@ -1,6 +1,4 @@
 
-When automated resolution is insufficient, queue conflicts for a human to resolve. MUST use this approach for medical records, legal documents, and financial transactions.
-
 ```sql
 CREATE TABLE sync_conflicts (
     id            TEXT PRIMARY KEY NOT NULL,
@@ -19,8 +17,4 @@ CREATE TABLE sync_conflicts (
 CREATE INDEX idx_conflicts_unresolved
 ON sync_conflicts(resolved_at) WHERE resolved_at IS NULL;
 ```
-
-Detect conflicts by comparing the client's base version against the server's current version. If they differ, both sides changed since the last sync.
-
-Apply the server version as an interim state while the conflict is pending, and surface a notification to the user.
 

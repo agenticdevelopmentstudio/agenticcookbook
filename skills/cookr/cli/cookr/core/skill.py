@@ -46,6 +46,20 @@ rdids its `depends-on` links name, and the label of every in-text
 `[<rdid>](cookbook:<uuid>)` link, so a rename shows in the next compile.
 `data/templates/skill/<type>/hosts/` holds the type's tuning additions, the
 level applied before the artifact's own `hosts/`.
+
+**Roles.** An artifact whose parts carry roles (`roles.py`) compiles to four
+skills (`compose_all`), one per kind in `roles.SKILL_ROLES`: each is the intro
+plus the parts carrying the kind's roles, in part order, rendered with
+`<type>.<kind>.md`. The builder keeps the name and routes the artifact would
+have unroled (`<use-case>-<tail>`); each other skill is named and routed with
+the artifact's use case replaced by its kind's (USE_CASES), so
+`guidelines/planning/data/t` gives `planning-data-t` and `reviewing-data-t`,
+and `principles/t` gives `principle-t` and `reviewing-principle-t` (`roled_paths`). Each
+carries `metadata.skill: <kind>`, and has no tuning, so no variants. A template's
+`refer` entry may name `roles` instead of `sections`, and its `description`
+places the artifact's (`{{description}}`) in the skill's own. Only the
+builder shows the Reference Implementations. An artifact with no role
+compiles to its one skill (`compose`) exactly as before.
 """
 
 from __future__ import annotations
@@ -65,9 +79,10 @@ import yaml
 
 from . import hosts as hosts_mod
 from . import tuning
-from .artifact import ArtifactError, Artifact, load_folder, with_part
+from .artifact import INTRO, ArtifactError, Artifact, Part, load_folder, with_part
 from .errors import CookbookError
 from .index import Index, IndexCache
+from .markdown import uncited
 from .links import Link, format_link, in_text_links, parse_link, relabel
 from .refimpl import SECTION as RI_SECTION, part as implementations_part
 from .identity import MANIFEST as COOKBOOK_FILE
@@ -94,6 +109,11 @@ LINES_MAX = 500
 NAME_MAX = 64
 DESCRIPTION_MAX = 1024
 DEFAULT_LIBRARY = "cookbook"
+BUILDER = "builder"
+# The use case each of a roled artifact's other skills is named and routed
+# under in place of the artifact's own; the builder keeps the artifact's.
+USE_CASES = {"build-verifier": "verifying-build", "reviewer": "reviewing",
+             "review-verifier": "verifying-review"}
 LIBRARY_MAX = 32
 _LIBRARY = re.compile(r"[a-z0-9]+(?:[-.][a-z0-9]+)*")   # a cookbook rdid has dots
 
@@ -113,7 +133,8 @@ class Refer:
     file: str                   # references/<file>.md
     title: str
     when: str                   # the line SKILL.md shows beside the link
-    sections: frozenset[str]
+    sections: frozenset[str]    # by heading
+    roles: frozenset[str] = frozenset()   # by role
 
 
 @dataclass(frozen=True)
@@ -121,10 +142,11 @@ class Template:
     omit: frozenset[str]
     text: str
     refer: tuple[Refer, ...] = ()
+    description: str = "{{description}}"   # the skill's description; `{{description}}` is the artifact's
 
-    def refer_for(self, heading: Optional[str]) -> Optional[Refer]:
-        h = (heading or "").strip()
-        return next((r for r in self.refer if h in r.sections), None)
+    def refer_for(self, part: Part) -> Optional[Refer]:
+        h = (part.heading or "").strip()
+        return next((r for r in self.refer if h in r.sections or part.role in r.roles), None)
 
 
 @dataclass(frozen=True)
@@ -135,6 +157,7 @@ class Skill:
     folder: Path
     type: str
     references: dict[str, str] = field(default_factory=dict)   # file name under references/ → text
+    kind: str = ""              # a roled artifact's skill: a key of roles.SKILL_ROLES; else ""
 
 
 def templates_root(cookbook_root: Optional[Path] = None) -> Path:
@@ -215,6 +238,16 @@ def skill_name(type_dir: str, rel: tuple[str, ...], library: Optional[str] = Non
     return f"{name[:NAME_MAX - 7].rstrip('-')}-{digest}"
 
 
+def roled_paths(type_dir: str, rel: tuple[str, ...]) -> dict[str, tuple[str, ...]]:
+    """{skill kind: the path below the type dir it is named and routed by} for
+    a roled artifact at `rel` under `type_dir`. The builder keeps `rel`; the
+    others replace its use case (the first segment) with their own. A
+    one-segment path (a principle) has no use case: its name's type segment
+    stays, after theirs (`reviewing-principle-t`)."""
+    tail = rel[1:] if len(rel) > 1 else (TYPE_DIRS[type_dir], *rel)
+    return {BUILDER: rel, **{kind: (use_case, *tail) for kind, use_case in USE_CASES.items()}}
+
+
 def derive_routes(artifact: Artifact, type_dir: str, rel: tuple[str, ...],
                   library: Optional[str] = None) -> tuple[str, ...]:
     """The routes for an artifact with no `routes` of its own:
@@ -274,7 +307,8 @@ def template(kind: str, root: Path = TEMPLATES) -> Template:
         raise SkillError(f"no skill template for {kind!r}: {e}") from e
     meta = yaml.safe_load("".join(fm or [])) or {}
     return Template(omit=frozenset(meta.get("omit") or ()), text=text,
-                    refer=_refers(meta.get("refer") or [], path))
+                    refer=_refers(meta.get("refer") or [], path),
+                    description=str(meta.get("description") or "{{description}}"))
 
 
 _REFER_FILE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
@@ -283,17 +317,20 @@ _REFER_FILE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 def _refers(items: list, path: Path) -> tuple[Refer, ...]:
     out, seen = [], set()
     for item in items:
-        if not isinstance(item, dict) or not all(item.get(k) for k in ("file", "title", "when", "sections")):
-            raise SkillError(f"{path}: each `refer` entry needs file, title, when and sections")
+        if (not isinstance(item, dict) or not all(item.get(k) for k in ("file", "title", "when"))
+                or not (item.get("sections") or item.get("roles"))):
+            raise SkillError(f"{path}: each `refer` entry needs file, title, when and sections (or roles)")
         file = str(item["file"])
         if not _REFER_FILE.match(file) or file in seen:
             raise SkillError(f"{path}: bad or repeated refer file {file!r}")
         seen.add(file)
         out.append(Refer(file, str(item["title"]), str(item["when"]),
-                         frozenset(str(s) for s in item["sections"])))
-    taken = [s for r in out for s in r.sections]
-    if len(taken) != len(set(taken)):
-        raise SkillError(f"{path}: a section is referred to more than one file")
+                         frozenset(str(s) for s in item.get("sections") or ()),
+                         frozenset(str(s) for s in item.get("roles") or ())))
+    for what in ("sections", "roles"):
+        taken = [s for r in out for s in getattr(r, what)]
+        if len(taken) != len(set(taken)):
+            raise SkillError(f"{path}: a {what[:-1]} is referred to more than one file")
     return tuple(out)
 
 
@@ -301,12 +338,15 @@ def template_hosts(kind: str, root: Path = TEMPLATES) -> Path:
     return root / kind / tuning.HOSTS_DIR
 
 
-def description(artifact: Artifact) -> str:
+def description(artifact: Artifact, form: str = "{{description}}") -> str:
+    """The artifact's summary as plain text, with its triggers, placed in
+    `form` (a template's `description`), cut to DESCRIPTION_MAX."""
     text = " ".join(str(artifact.meta.get("summary") or artifact.meta.get("title") or "").split())
     text = _EMPHASIS.sub(r"\2", text)
     triggers = artifact.meta.get("triggers") or []
     if triggers:
         text = f"{text.rstrip('.')}. Use when: {', '.join(map(str, triggers))}."
+    text = fill(form, {"description": text})
     for a, b in _ANGLE:
         text = text.replace(a, b)
     if len(text) > DESCRIPTION_MAX:
@@ -318,16 +358,19 @@ def _dq(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-def frontmatter(name: str, artifact: Artifact, routes: Iterable[str], rdid: str = "") -> str:
+def frontmatter(name: str, artifact: Artifact, routes: Iterable[str], rdid: str = "",
+                kind: str = "", form: str = "{{description}}") -> str:
     """Only `name` and `description` at the top, every cookr key under
     `metadata`, so the one rendering loads on every host. `source` is the
-    artifact's rdid; `platforms`, written only when the artifact names some,
-    is what skill-router's `--platform` filters on."""
+    artifact's rdid; `skill`, written only for a roled artifact's skill, is
+    its kind; `platforms`, written only when the artifact names some, is what
+    skill-router's `--platform` filters on."""
     meta = artifact.meta
-    lines = ["---", f"name: {name}", f"description: {_dq(description(artifact))}", "metadata:",
+    lines = ["---", f"name: {name}", f"description: {_dq(description(artifact, form))}", "metadata:",
              f"  version: {_dq(str(meta.get('version', '')))}",
              f"  id: {_dq(str(meta.get('id', '')))}",
              f"  source: {_dq(rdid)}",
+             *([f"  skill: {_dq(kind)}"] if kind else []),
              f"  routes: {_dq('; '.join(routes))}"]
     platforms = [str(p) for p in meta.get("platforms") or []]
     if platforms:
@@ -367,40 +410,122 @@ def _depends(artifact: Artifact, index: Optional[Index]) -> str:
     return f"Depends on: {', '.join(f'`{n}`' for n in names)}.\n\n" if names else ""
 
 
-def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPLATES,
-            indexes: Optional[IndexCache] = None) -> Skill:
+@dataclass(frozen=True)
+class _Source:
+    """What every skill compiled from one folder shares."""
+    folder: Path
+    artifact: Artifact
+    type_dir: str
+    rel: tuple[str, ...]
+    kind: str                   # the artifact type
+    library: Optional[str]
+    index: Optional[Index]
+    entry: object               # its index entry, or None outside a cookbook
+    rdid: str
+
+
+def _source(folder: Path, library: Optional[str], indexes: Optional[IndexCache],
+            artifact: Optional[Artifact] = None) -> _Source:
     library = library_name(library)
-    artifact = load_folder(folder)
+    artifact = artifact if artifact is not None else load_folder(folder)
     type_dir, rel = path_below_type(folder)
     kind = TYPE_DIRS[type_dir]
     if artifact.type != kind:
         raise SkillError(f"{folder}: type {artifact.type!r} under {type_dir}/")
     indexes = indexes if indexes is not None else IndexCache()
-    index = indexes.for_path(folder)
     entry = indexes.entry(folder, artifact.meta.get("id"))
     # Outside any cookbook there is no rdid; the folder's path names it instead.
     rdid = entry.rdid if entry else "/".join((type_dir, *rel))
-    t = template(kind, templates)
-    ri = implementations_part(entry.implementations) if entry else None
-    if ri is not None and RI_SECTION not in t.omit:
-        artifact = with_part(artifact, ri)
+    return _Source(folder, artifact, type_dir, rel, kind, library, indexes.for_path(folder), entry, rdid)
+
+
+def compose(folder: Path, library: Optional[str] = None, templates: Path = TEMPLATES,
+            indexes: Optional[IndexCache] = None) -> Skill:
+    """The one skill of `folder`, every part picked by heading. A roled
+    artifact compiles through `compose_all` instead."""
+    return _compose_one(_source(folder, library, indexes), templates)
+
+
+def _compose_one(src: _Source, templates: Path) -> Skill:
+    t = template(src.kind, templates)
+    artifact, _ = _with_implementations(src, t)
+    name = skill_name(src.type_dir, src.rel, src.library)
+    routes = derive_routes(artifact, src.type_dir, src.rel, src.library)
+    return _render(src, artifact, t, name, routes, artifact.parts)
+
+
+def _with_implementations(src: _Source, t: Template) -> tuple[Artifact, Optional[Part]]:
+    """The artifact with its index entry's Reference Implementations part
+    placed, unless `t` omits it; and that part (None when not placed)."""
+    ri = implementations_part(src.entry.implementations) if src.entry else None
+    if ri is None or RI_SECTION in t.omit:
+        return src.artifact, None
+    return with_part(src.artifact, ri), ri
+
+
+def compose_all(folder: Path, library: Optional[str] = None, templates: Path = TEMPLATES,
+                indexes: Optional[IndexCache] = None) -> list[Skill]:
+    """Every skill `folder` compiles to: its one skill (`compose`) when no
+    part carries a role, else a builder, a build-verifier, a reviewer and a
+    review-verifier. A roled artifact the role census faults is refused, and
+    so is one with a roled part under a heading a skill's template omits."""
+    from .roles import SKILL_ROLES, census
+
+    artifact = load_folder(folder)
+    if not artifact.roled:
+        return [_compose_one(_source(folder, library, indexes, artifact), templates)]
+    findings = census([folder])
+    if findings:
+        raise SkillError(f"{folder}: " + "; ".join(f"{f.kind}: {f.detail}" for f in findings))
+    src = _source(folder, library, indexes, artifact)
+    paths = roled_paths(src.type_dir, src.rel)
+    skills = []
+    for kind, carried in SKILL_ROLES.items():
+        t = template(f"{src.kind}.{kind}", templates)
+        rel = paths[kind]
+        name = skill_name(src.type_dir, rel, src.library)
+        routes = derive_routes(src.artifact, src.type_dir, rel, src.library)
+        # The code that implements it is the builder's concern alone.
+        art, ri = _with_implementations(src, t) if kind == BUILDER else (src.artifact, None)
+        parts = [p for p in art.parts
+                 if p.name == INTRO or p is ri or p.role in carried or t.refer_for(p) is not None]
+        # A part picked by its role is never lost to a heading the template omits.
+        for p in parts:
+            if p.role is not None and (p.heading or "").strip() in t.omit:
+                raise SkillError(f"{folder}: part '{p.name}' (role '{p.role}') is headed "
+                                 f"'{p.heading.strip()}', which the {kind} skill omits; rename its heading")
+        skills.append(_render(src, art, t, name, routes, parts, kind))
+    if len({s.name for s in skills}) != len(skills):
+        raise SkillError(f"{folder}: its skills' names collide: {', '.join(s.name for s in skills)}")
+    return skills
+
+
+def _render(src: _Source, artifact: Artifact, t: Template, name: str, routes: tuple[str, ...],
+            parts: Iterable[Part], kind: str = "") -> Skill:
+    """The skill made of `parts` (less the template's `omit`) rendered with `t`:
+    referred parts go to references/, the rest to SKILL.md. The `Depends on`
+    line and the `## More` list close the body, or fill `{{more}}` when the
+    template places them."""
     version = str(artifact.meta.get("version", ""))
-    name = skill_name(type_dir, rel, library)
-    kept = [p for p in artifact.parts if (p.heading or "").strip() not in t.omit]
-    body = _join(p for p in kept if t.refer_for(p.heading) is None)
-    referred = {r: _join(p for p in kept if t.refer_for(p.heading) is r) for r in t.refer}
+    kept = [p for p in parts if (p.heading or "").strip() not in t.omit]
+    body = _join(p for p in kept if t.refer_for(p) is None)
+    referred = {r: _join(p for p in kept if t.refer_for(p) is r) for r in t.refer}
     referred = {r: text for r, text in referred.items() if text.strip()}
     labels = {link: label for text in (body, *referred.values())
-              for link in (lk for _, lk in in_text_links(text)) if (label := _label(index, link))}
-    body = _open_questions(relabel(body, labels), artifact, bool(referred))
-    body += _depends(artifact, index) + _more(referred)
-    references = {f"{r.file}.md": _reference(r, relabel(text, labels), artifact, name, rdid, version)
+              for link in (lk for _, lk in in_text_links(text)) if (label := _label(src.index, link))}
+    more = _depends(artifact, src.index) + _more(referred)
+    body = relabel(body, labels)
+    if kind in ("", BUILDER):      # the open-questions notice is for whoever builds from the artifact
+        body = _open_questions(body, artifact, bool(referred))
+    if "{{more}}" not in t.text:
+        body, more = body + more, ""
+    references = {f"{r.file}.md": _reference(r, relabel(text, labels), artifact, name, src.rdid, version)
                   for r, text in referred.items()}
-    text = fill(t.text.replace("{{body}}\n", "{{body}}"),
-                {"body": body, "rdid": rdid, "version": version})
-    routes = derive_routes(artifact, type_dir, rel, library)
-    return Skill(name=name, routes=routes, text=frontmatter(name, artifact, routes, rdid) + text,
-                 folder=folder, type=kind, references=references)
+    text = fill(t.text.replace("{{body}}\n", "{{body}}").replace("{{more}}\n", "{{more}}"),
+                {"body": body, "more": more, "rdid": src.rdid, "version": version})
+    return Skill(name=name, routes=routes,
+                 text=frontmatter(name, artifact, routes, src.rdid, kind, t.description) + text,
+                 folder=src.folder, type=src.kind, references=references, kind=kind)
 
 
 OPEN_QUESTIONS_HEADING = "## Open questions: settle them before you build"
@@ -431,8 +556,10 @@ def _open_questions(body: str, artifact: Artifact, has_references: bool) -> str:
 
 
 def _join(parts: Iterable) -> str:
-    """Parts as markdown, `## heading` above each headed one, ending in a blank line."""
-    text = "".join(p.text if p.heading is None else f"## {p.heading}\n{p.text}" for p in parts)
+    """Parts as markdown, `## heading` above each headed one, ending in a blank
+    line, with each rule's research citation left out (`uncited`): a skill
+    carries what a rule says, not where it came from."""
+    text = uncited("".join(p.text if p.heading is None else f"## {p.heading}\n{p.text}" for p in parts))
     if not text.strip():
         return ""
     return text if text.endswith("\n\n") else text.rstrip("\n") + "\n\n"
@@ -471,7 +598,8 @@ def variants(skill: Skill, templates: Path = TEMPLATES,
     """({target: text} for each target whose text differs from the step less
     specific, [load-rule problems on any host])."""
     hosts = hosts_mod.manifest() if hosts is None else hosts
-    levels = [template_hosts(skill.type, templates), skill.folder / tuning.HOSTS_DIR]
+    # A roled artifact's skills are not tuned yet: not even by their type's template.
+    levels = [] if skill.kind else [template_hosts(skill.type, templates), skill.folder / tuning.HOSTS_DIR]
     rendered: dict[tuple[str, ...], str] = {(): skill.text}
     out: dict[str, str] = {}
     problems: list[str] = []
@@ -532,6 +660,7 @@ def read_receipt(out: Path) -> dict[str, dict]:
 def receipt(built: list[Built], library: Optional[str]) -> dict:
     return {"format": 1, "library": library or DEFAULT_LIBRARY, "skills": {
         b.skill.name: {"source": str(b.skill.folder), "routes": list(b.skill.routes),
+                       **({"kind": b.skill.kind} if b.skill.kind else {}),
                        "files": sorted(b.files)} for b in built}}
 
 
@@ -603,7 +732,7 @@ def compile_set(folders: list[Path], out: Path, *, library: Optional[str] = None
     indexes = IndexCache()
     for folder in folders:
         try:
-            skills.append(compose(folder, library, templates, indexes))
+            skills.extend(compose_all(folder, library, templates, indexes))
         except (ArtifactError, CookbookError, OSError, UnicodeDecodeError, tuning.TuningError) as e:
             results.append(Result(folder, folder, "error", str(e)))
     dups = duplicate_names(skills)

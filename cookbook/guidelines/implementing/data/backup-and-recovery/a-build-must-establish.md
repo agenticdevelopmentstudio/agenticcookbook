@@ -1,0 +1,26 @@
+
+- `should-choose-backup-method-by-durability-needs`: the backup method is `.backup` by default, `VACUUM INTO` where storage efficiency matters, or the Online Backup API where progress monitoring or application integration is needed, or the code says why not
+- `must-use-litestream-for-point-in-time-recovery`: every production server-side SQLite database that needs continuous point-in-time recovery is replicated by Litestream
+- `must-not-sync-writers-with-litestream`: Litestream is not used to synchronize multiple writers
+- `must-delete-wal-and-shm-before-restore`: every restore path deletes the destination's `*-wal` and `*-shm` files before copying the backup file in
+- `should-have-tested-recovery-path`: a recovery path exists and has been tested, or the code says why not
+- `must-not-run-on-network-filesystems`: no database file lives on NFS, CIFS or any other networked filesystem
+- `should-use-normal-or-full-synchronous`: every connection runs with `PRAGMA synchronous` set to `NORMAL` (with WAL) or `FULL`, or the code says why not
+- `must-not-delete-journal-files-while-open`: no code deletes a `*-journal` or `*-wal` file while its database is open
+- `must-coordinate-writers-through-sqlite-locking`: processes writing the same database coordinate only through SQLite's own locking
+- `must-not-move-database-without-journal`: every move of a database moves its journal/WAL with it
+- `must-not-disable-durability-pragmas-in-production`: production code sets none of `PRAGMA synchronous = OFF`, `PRAGMA journal_mode = OFF` or `PRAGMA journal_mode = MEMORY`
+- `should-check-integrity-on-schedule`: integrity checks run on a schedule and after suspect events (disk errors, process kills, power loss), or the code says why not
+- `should-quick-check-critical-databases-on-startup`: each application-critical database runs `PRAGMA quick_check` on startup, or the code says why not
+- `should-reserve-integrity-check-for-offline-audits`: `PRAGMA integrity_check` runs only in periodic offline audits, or the code says why not
+- `should-prefer-incremental-vacuum`: running applications reclaim space with `PRAGMA incremental_vacuum`, not full VACUUM, or the code says why not
+- `must-set-auto-vacuum-incremental-at-creation`: every database that runs `PRAGMA incremental_vacuum` set `PRAGMA auto_vacuum = INCREMENTAL` when it was created
+- `must-have-free-space-for-full-vacuum`: every full VACUUM runs only where about twice the database size is free on disk
+- `should-vacuum-during-idle-time`: VACUUM runs only in application idle time (scheduled maintenance, or at launch before the first query), or the code says why not
+- `must-not-vacuum-under-write-load`: no VACUUM runs while the database is under high write load
+- `should-monitor-database-size`: database size (total and free bytes) is monitored, or the code says why not
+- `should-alert-on-free-page-ratio`: an alert fires when free bytes exceed 25% of total bytes, or the code says why not
+- `should-define-retention-windows-from-the-start`: tombstones and outbox entries each have a defined retention window, or the code says why not
+- `must-purge-tombstones-only-after-all-targets-sync`: every tombstone purge first confirms that all sync targets have consumed the tombstones it deletes
+- `should-incremental-vacuum-after-large-purges`: large purges are followed by `PRAGMA incremental_vacuum`, or the code says why not
+
