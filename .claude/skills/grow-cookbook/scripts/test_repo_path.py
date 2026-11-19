@@ -142,7 +142,7 @@ def test_a_refusal_that_is_no_argparse_error_prints_no_hint(capsys, monkeypatch)
     assert e.value.code == 2 and "one word" not in capsys.readouterr().err
 
 
-@pytest.mark.parametrize("script", ["apply_second_check.py", "check_cookr_python.py", "copy_check.py", "mark.py", "owner_list.py", "paraphrase_hints.py", "plan_skeleton.py", "quote_building.py", "r9_stamp.py", "review_findings.py", "run_gaps.py", "stage_status.py", "team_probe.py", "unmeasured.py", "write_brief.py", "write_on_success.py"])
+@pytest.mark.parametrize("script", ["apply_second_check.py", "check_cookr_python.py", "copy_check.py", "devteam_checkout.py", "mark.py", "owner_list.py", "paraphrase_hints.py", "plan_skeleton.py", "quote_building.py", "r9_stamp.py", "review_findings.py", "run_gaps.py", "stage_status.py", "team_probe.py", "unmeasured.py", "write_brief.py", "write_on_success.py"])
 def test_every_script_exits_cleanly_on_a_closed_pipe(script):
     import subprocess
     p = subprocess.Popen([sys.executable, str(Path(repo_path.__file__).parent / script), "--help"],

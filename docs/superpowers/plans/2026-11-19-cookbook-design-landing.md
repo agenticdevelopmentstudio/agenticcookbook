@@ -15,7 +15,7 @@ Tooling
 - ⬜ the conventions guide describes roled parts, named rules, one source per topic and `research/` as the standard
 - ✅ `cookr validate` requires `research/` on every topic not listed in `research-exempt.json`
 - ✅ `research-exempt.json` explains itself with no path outside this repo
-- ⬜ grow-cookbook stage 1 without a devteam checkout exits with a plain message naming what it needs
+- ✅ grow-cookbook stage 1 without a devteam checkout exits with a plain message naming what it needs
 
 Content
 - ⬜ the 105 copies folded into their surviving topics; every link and UUID redirected; flagged pairs ruled by the owner

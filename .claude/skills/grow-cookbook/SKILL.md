@@ -1,12 +1,12 @@
 ---
 name: grow-cookbook
-version: "1.4.44"
+version: "1.4.45"
 description: "Add or rewrite cookbook guidelines from research, one area at a time: plan the area, research each topic, write it with cited rules, review, integrate."
 argument-hint: "<plan|research|write|review|integrate> <area> [--workspace <dir>] [--topic <name>]"
 allowed-tools: Read, Glob, Grep, Edit, Write, Agent, Skill, Bash(PYTHONPATH=*), Bash(myteams *), Bash(git *), Bash(python3 *), Bash(~/.cache/grow-cookbook/cookr-venv/bin/python *), Bash(date *), Bash(mkdir *), Bash(cat *), Bash(cp *), Bash(mv *), Bash(rm *)
 ---
 
-# Grow Cookbook v1.4.44
+# Grow Cookbook v1.4.45
 
 The procedure for adding to the cookbook: an area is planned, each topic in it
 is researched, written as a roled guideline whose every rule cites its
@@ -39,14 +39,17 @@ the path itself, wherever a command below says `$COOKR_PY`. Every cookr command
 and every example below runs under it. The helper scripts in
 `${CLAUDE_SKILL_DIR}/scripts/` need only the standard library and run under it too. `speciality_reference.py` is
 not one of them: it is the devteam's, at `<devteam>/speciality_reference.py` (`<devteam>`: the agenticdevteam
-checkout two folders above `<repo>`, run_gaps.py's `--devteam` default; 1.4.43, G274). One python, `$COOKR_PY`,
+checkout two folders above `<repo>`, run_gaps.py's `--devteam` default; 1.4.43, G274). Stage 1 starts with
+`devteam_checkout.py --repo <repo>`, which prints `<devteam>`, or, with no such checkout, exits 2 with one
+plain message naming what stage 1 needs; pass `--devteam <checkout>` to it and to `run_gaps.py` for a
+checkout elsewhere (1.4.45). Stages 2 to 5 need no devteam checkout. One python, `$COOKR_PY`,
 runs every script, the devteam's included; a brief naming another venv for it changes nothing (G278); a plain `python3` without cookr fails `run_gaps.py` with "Unknown option: -P" or "No module named", and each script then names `$COOKR_PY` (1.4.42, G269).
 
 ## Startup
 
-grow-cookbook v1.4.44
+grow-cookbook v1.4.45
 
-If `$ARGUMENTS` is `--version`, respond with exactly `grow-cookbook v1.4.44` and stop.
+If `$ARGUMENTS` is `--version`, respond with exactly `grow-cookbook v1.4.45` and stop.
 
 1. Check `$COOKR_PY`:
    ```
@@ -149,6 +152,7 @@ Measure what the area lacks against the devteam's specialities and propose its t
 1. Measure the gaps. Every command that writes a file runs under `write_on_success.py`, never a `>` redirect, except a script that writes its own files: `run_gaps.py`, `mark.py`, `stage_status.py --first-check` and `--record-others --write` (G267).
    1. The area's reference files, once per area:
       ```
+      $COOKR_PY ${CLAUDE_SKILL_DIR}/scripts/devteam_checkout.py --repo <repo>
       mkdir -p A/reference A/gaps
       $COOKR_PY ${CLAUDE_SKILL_DIR}/scripts/write_on_success.py A/reference.json -- $COOKR_PY <devteam>/speciality_reference.py --area <area> --worklist <workspace>/worklist.json --workspace <workspace> --out A/reference
       ```
