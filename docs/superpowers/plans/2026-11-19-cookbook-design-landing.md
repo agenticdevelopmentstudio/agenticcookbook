@@ -21,11 +21,12 @@ Content
 - ✅ the copies folded into their surviving topics (95 unflagged + 7 of the 10 flagged pairs, by the owner's ruling;
   completeness, unit-test-patterns and properties-of-good-tests kept as separate topics); every link and UUID redirected
 - ✅ every topic still owed research listed in `research-exempt.json` (380; `OWED_CEILING = 380`)
-- 🔄 ab-testing, debug-mode and feature-flags pass `cookr roles lossless --require-judged` (✅) and `cookr validate` (at the gate)
+- ✅ ab-testing, debug-mode and feature-flags pass `cookr roles lossless --require-judged` and `cookr validate`
 - ✅ `cookr update` run; README and CLAUDE.md counts current
 
 Gates (each asked for before it runs)
-- ⬜ cookr and skill suites, full `validate` and lint pass
+- ✅ cookr and skill suites, full `validate` and lint pass (cookr unit + functional, grow-cookbook 696; validate and
+  `lint --no-llm` over 383 artifacts)
 - ⬜ whole-branch review (`--skip devteam`) has no unrefuted finding open
 - ⬜ landed with `/ship no-squash`
 
