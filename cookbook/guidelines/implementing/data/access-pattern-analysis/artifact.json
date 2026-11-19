@@ -44,8 +44,7 @@
       "performance-optimization"
     ]
   },
-  "twin_differs": "The implementing copy carries roles: named rules, a build bar, and the devteam's review focus and review bar; the planning copy keeps the original text.",
-  "synced": "b9f02c433c5e79cb",
+  "synced": "cd682f5cc074a653",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -74,5 +74,8 @@
         "pin": "55a8a7e9451bf70aacdb2d7c31738cfb9aac460273d89a19e4ab536a703cd41b"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/conflict-resolution"
   ]
 }

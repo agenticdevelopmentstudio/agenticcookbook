@@ -117,5 +117,8 @@
         "pin": "ca8a2642f35e4a4a901f70cb46b0713d387c46a230ab55916c46e6b0e85910c1"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/offline-first-architecture"
   ]
 }

@@ -32,8 +32,6 @@
     ],
     "depends-on": [],
     "related": [
-      "588b5eae-b70e-4302-a52f-9287265ad03c",
-      "1b259fdc-1aba-48c5-a89a-b9ca01dc3351",
       "d991b992-07aa-47b9-9d36-4fd1ca81435f",
       "e446ee3e-b8f2-40e7-b93d-3113e6a95e5d",
       "e80d67b3-813f-47fb-8894-aa4e6f6479f3",
@@ -77,7 +75,7 @@
       "new-module"
     ]
   },
-  "synced": "0f55f5cb91a76f18",
+  "synced": "eed2195b87db5313",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
@@ -88,6 +86,9 @@
     {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "references", "heading": "References", "role": "references"},
+    {"part": "architecture-decisions", "heading": "Architecture decisions", "role": "how-to"},
+    {"part": "what-to-gate", "heading": "What to gate", "role": "how-to"},
+    {"part": "pre-ship-verification-checklist", "heading": "Pre-ship verification checklist", "role": "how-to"},
     {"part": "history", "heading": "Change History"}
   ]
 }

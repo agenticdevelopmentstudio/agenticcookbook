@@ -1,27 +1,29 @@
 {
- "base": "2071c94e51a8c517e11178fdee54e0ec033064c2",
- "copies": [],
- "moved": [
-  {
-   "sentence": "Features that may need experimentation SHOULD support variant assignment via an `ExperimentProvider` interface (`variant(key) -> String`).",
-   "to": "experiment-provider-interface",
-   "judged": {
-    "by": "independent judge (opus)",
-    "verdict": "pass",
-    "note": "The rule keeps the same SHOULD, the same scope (features that may need experimentation) and the named ExperimentProvider interface returning a String variant by key. The signature now adds a caller-supplied default and is marked as an example, but the old parenthetical was illustrative too, so nothing is weakened.",
-    "pin": "386d7c742569ade8f29532cbda944bf9d82fa34afd29be875f9b37a6e686476b"
-   }
-  },
-  {
-   "sentence": "Local default with debug panel override.",
-   "to": "local-default-with-debug-override",
-   "judged": {
-    "by": "independent judge (opus)",
-    "verdict": "pass",
-    "note": "The old fragment carried no requirement keyword. The rule makes the local default a MUST and, in an app, requires the override to be the debug panel's variant picker, so it says at least as much as before.",
-    "pin": "75c7695c672bffb009b9adc9d5ec56c27d19278b2a84663732dec3a1a7938ad8"
-   }
-  }
- ],
- "obsolete": []
+  "base": "2071c94e51a8c517e11178fdee54e0ec033064c2",
+  "copies": [
+    "cookbook/guidelines/shipping/ab-testing"
+  ],
+  "moved": [
+    {
+      "sentence": "Features that may need experimentation SHOULD support variant assignment via an `ExperimentProvider` interface (`variant(key) -> String`).",
+      "to": "experiment-provider-interface",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the same SHOULD, the same scope (features that may need experimentation) and the named ExperimentProvider interface returning a String variant by key. The signature now adds a caller-supplied default and is marked as an example, but the old parenthetical was illustrative too, so nothing is weakened.",
+        "pin": "386d7c742569ade8f29532cbda944bf9d82fa34afd29be875f9b37a6e686476b"
+      }
+    },
+    {
+      "sentence": "Local default with debug panel override.",
+      "to": "local-default-with-debug-override",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The old fragment carried no requirement keyword. The rule makes the local default a MUST and, in an app, requires the override to be the debug panel's variant picker, so it says at least as much as before.",
+        "pin": "75c7695c672bffb009b9adc9d5ec56c27d19278b2a84663732dec3a1a7938ad8"
+      }
+    }
+  ],
+  "obsolete": []
 }

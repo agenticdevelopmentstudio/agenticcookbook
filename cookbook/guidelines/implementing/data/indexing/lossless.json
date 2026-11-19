@@ -162,5 +162,8 @@
         "pin": "975eeb1e774a577a32e3698bdac9521570d5a7090ab4745672e143fc4e06bc50"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/indexing"
   ]
 }

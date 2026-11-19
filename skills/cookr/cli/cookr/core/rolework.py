@@ -100,6 +100,7 @@ from .roles import RULES as RULES_ROLE, census_of, part_units, rationale_texts, 
 from .skill import (
     TYPE_DIRS, SkillError, build, compose_all, templates_root, too_long,
 )
+from .twins import twins_of
 from .versions import conflict, freeze
 
 NONE = "none"   # `--part name=none` clears a part's role
@@ -1307,10 +1308,19 @@ def _unique(name: str, taken: set[str]) -> str:
     return name
 
 
-def _lacking(copy: Artifact, topic: Artifact) -> list[Part]:
+def _accounted(folder: Path) -> set[str]:
+    """The sentences the topic's lossless.json already accounts for, moved or
+    obsolete: a judged account of a copy's sentence means the topic carries it,
+    in other words."""
+    acc = read_accounting(folder) or {}
+    return {normalize(m["sentence"]) for m in [*acc.get("moved", []), *acc.get("obsolete", [])]}
+
+
+def _lacking(copy: Artifact, topic: Artifact, accounted: set[str] = frozenset()) -> list[Part]:
     """The copy's parts (history aside) holding a sentence the topic lacks,
-    as new unroled parts named like a doc would name them."""
-    now = now_sentences(topic)
+    as new unroled parts named like a doc would name them. A sentence the
+    topic's lossless.json accounts for (`accounted`) is not lacking."""
+    now = now_sentences(topic) | set(accounted)
     taken = {p.name for p in topic.parts}
     added = []
     for p in copy.parts:
@@ -1376,6 +1386,56 @@ def _readable(cookbook: Path) -> None:
                                 f"({e}); nothing was written") from e
 
 
+def _snapshot(topic: Path) -> dict[Path, Optional[bytes]]:
+    """Every file of the topic's folder, its doc and its versions/ (None for
+    one that does not exist yet), so `_restore` can put the topic back."""
+    files: dict[Path, Optional[bytes]] = {f: f.read_bytes() for f in topic.rglob("*") if f.is_file()}
+    doc = doc_path(topic)
+    files[doc] = doc.read_bytes() if doc.is_file() else None
+    return files
+
+
+def _restore(topic: Path, saved: dict[Path, Optional[bytes]]) -> None:
+    """Put the topic back as `_snapshot` saw it: files it wrote since are
+    removed, files it changed get their old bytes."""
+    for f in [f for f in topic.rglob("*") if f.is_file() and f not in saved]:
+        f.unlink()
+    for f, data in saved.items():
+        if data is None:
+            if f.is_file():
+                f.unlink()
+        else:
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_bytes(data)
+    for d in sorted((d for d in topic.rglob("*") if d.is_dir()), key=lambda d: len(d.parts), reverse=True):
+        if not any(d.iterdir()):
+            d.rmdir()
+
+
+def clear_twin_differs(folder: Path) -> None:
+    """Drop `twin_differs` from the folder's artifact.json. `save_document`
+    keeps the manifest's reason, so this rewrites the manifest itself; the
+    reason is no part of the doc, so `synced` stays true."""
+    artifact = load_folder(folder)
+    artifact.twin_differs = None
+    (folder / ARTIFACT_FILE).write_text(dump_manifest(artifact), encoding="utf-8")
+
+
+def _note_copy(topic: Path, copy: Path, top: Path) -> None:
+    """A topic with a lossless.json lists the folded copy in its `copies`, so
+    `lossless` reads the copy's text at the base and every sentence of it must
+    be accounted for."""
+    path = topic / ACCOUNTING
+    if not path.is_file():
+        return
+    data = json.loads(path.read_text(encoding="utf-8"))
+    rel = copy.resolve().relative_to(top.resolve()).as_posix()
+    copies = data.setdefault("copies", [])
+    if rel not in copies:
+        copies.append(rel)
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
     """Fold `copy` into `topic`: the copy's text the topic lacks becomes new
     unroled parts (so the census names them until each gets a role), the fold
@@ -1408,22 +1468,35 @@ def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
     in_text = re.compile(r"(\[([^\]]+)\]\()?cookbook:((?:[0-9A-Fa-f-]{36}/)?)" + re.escape(copy_id)
                          + r"(?![0-9A-Fa-f-])(\))?", re.I)
 
-    added = _lacking(copy_art, topic_art)
+    added = _lacking(copy_art, topic_art, _accounted(topic))
+    identical = not _lacking(copy_art, topic_art)   # word for word, before lossless.json is read
     at = next((i for i, p in enumerate(topic_art.parts) if p.name == HISTORY), len(topic_art.parts))
     topic_art.parts[at:at] = added
     for key in ("depends-on", "related"):   # its link to the copy would be a link to itself
         values = topic_art.meta.get(key)
         if isinstance(values, list):
             topic_art.meta[key] = [v for v in values if not (isinstance(v, str) and _is(v, copy_id))]
+    lone = topic_art.twin_differs is not None and not [   # the reason was about a twin: none is left
+        f for f in twins_of(topic, find_folders([cookbook])) if f.resolve() != copy.resolve()]
     for p in topic_art.parts:   # ...and so would an in-text one: its label stays as plain text
         p.text = in_text.sub(lambda m: m.group(2) if m.group(1) and m.group(4) else m.group(0), p.text)
-    save_document(doc_path(topic), compose_document(topic_art))
-
     names = [p.name for p in added]
     summary = (f"Fold {copy_rel} into this topic; its text this lacked added unroled as "
                f"{', '.join(names)}" if added else
-               f"Fold {copy_rel} into this topic (identical text); links to it redirected here")
-    _record(topic, summary, None if added else "patch", author, day)
+               f"Fold {copy_rel} into this topic (identical text); links to it redirected here"
+               if identical else
+               f"Fold {copy_rel} into this topic (its text is carried here, as lossless.json "
+               f"accounts); links to it redirected here")
+    saved = _snapshot(topic)   # the topic is written, then recorded: a failed record restores it
+    try:
+        save_document(doc_path(topic), compose_document(topic_art))
+        if lone:
+            clear_twin_differs(topic)
+        _note_copy(topic, copy, _top(topic))
+        _record(topic, summary, None if added else "patch", author, day)
+    except BaseException:
+        _restore(topic, saved)
+        raise
 
     def text_fn(text: str) -> str:
         def sub(m: re.Match) -> str:
@@ -1450,4 +1523,4 @@ def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
         save_index(index, cookbook)
     return FoldReport(
         redirected=sorted(f.resolve().relative_to(base.resolve()).as_posix() for f in changed),
-        parts_added=names, identical=not added)
+        parts_added=names, identical=identical)

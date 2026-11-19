@@ -4,11 +4,11 @@
     "id": "49acdf9f-e4cb-4492-a620-809438eefb37",
     "title": "Pagination",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,7 +31,7 @@
       "data-modeling"
     ]
   },
-  "synced": "eb2d4e6a90fbc9f6",
+  "synced": "c08a103b796aad68",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

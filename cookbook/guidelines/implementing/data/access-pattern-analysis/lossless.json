@@ -41,5 +41,8 @@
         "pin": "8db10b71d7606e8a64582d28b0bdf89f4b5a8bc18d029645ceb26ef98ee2693c"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/access-pattern-analysis"
   ]
 }

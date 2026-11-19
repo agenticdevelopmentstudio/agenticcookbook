@@ -4,11 +4,11 @@
     "id": "5b026378-d418-406a-9aab-6e3f043901af",
     "title": "Transport Security",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -36,9 +36,12 @@
       "security-review"
     ]
   },
-  "synced": "5402f436dd8229bd",
+  "synced": "d75d69668fa90898",
   "parts": [
     {"part": "intro"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "pre-deploy-checklist", "heading": "Pre-deploy checklist"},
+    {"part": "verification-tools", "heading": "Verification tools"},
     {"part": "history", "heading": "Change History"}
   ]
 }

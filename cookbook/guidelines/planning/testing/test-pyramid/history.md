@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-11-19 | Mike Fullerton | Fold guidelines/testing/test-pyramid into this topic; its text this lacked added unroled as the-shape-is-context-dependent-2 |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Cite recovered Tier-1 research sources (adversarially-audited) |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Reframe as context-dependent shape (incl. testing trophy + static analysis) |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

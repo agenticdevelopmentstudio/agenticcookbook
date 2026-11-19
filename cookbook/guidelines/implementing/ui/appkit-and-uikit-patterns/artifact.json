@@ -4,11 +4,11 @@
     "id": "8aa22a6b-2328-4a2d-8fe3-53c339390808",
     "title": "AppKit and UIKit patterns",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -35,8 +35,7 @@
     "related": [
       "344b69da-c901-4650-b49d-c2df0234103b",
       "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
-      "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
-      "a48af237-db64-40ae-9574-e579c107de83"
+      "7c8d5c06-af21-41f1-86db-ed5809c2d38d"
     ],
     "references": [
       "https://developer.apple.com/documentation/uikit/using-responders-and-the-responder-chain-to-handle-events",
@@ -51,7 +50,7 @@
       "platform-integration"
     ]
   },
-  "synced": "bbd5eb985d8a624d",
+  "synced": "33856ea5c9dedce8",
   "parts": [
     {"part": "intro"},
     {"part": "responder-chain", "heading": "Responder chain"},
@@ -60,6 +59,13 @@
     {"part": "view-controller-and-window-lifecycle", "heading": "View controller and window lifecycle"},
     {"part": "state-restoration", "heading": "State restoration"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "responder-chain-2", "heading": "Responder chain"},
+    {"part": "delegates", "heading": "Delegates"},
+    {"part": "main-thread-2", "heading": "Main thread"},
+    {"part": "lifecycle", "heading": "Lifecycle"},
+    {"part": "state-restoration-2", "heading": "State restoration"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

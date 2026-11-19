@@ -4,11 +4,11 @@
     "id": "926dff1a-dc12-46a4-b8c1-bdedbc142afd",
     "title": "Secure Storage",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -35,7 +35,7 @@
       "data-modeling"
     ]
   },
-  "synced": "31b1ccf459e8b7b4",
+  "synced": "f91213e99db0d659",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

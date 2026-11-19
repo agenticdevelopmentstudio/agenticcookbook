@@ -128,5 +128,8 @@
         "pin": "9de129ae99dfb3c33f4da3e291d22d435a91b0544a5b918147a130a0dd5b7555"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/transactions-and-concurrency"
   ]
 }

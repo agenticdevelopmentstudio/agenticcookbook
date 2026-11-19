@@ -4,11 +4,11 @@
     "id": "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
     "title": "Objective-C",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,7 +31,6 @@
     "related": [
       "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
       "8aa22a6b-2328-4a2d-8fe3-53c339390808",
-      "65367d27-1d4e-41e5-9e8c-e9adb08ddc90",
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
@@ -47,7 +46,7 @@
       "platform-integration"
     ]
   },
-  "synced": "e96ae820e67a1396",
+  "synced": "6bcccad370af4699",
   "parts": [
     {"part": "intro"},
     {"part": "arc-ownership", "heading": "ARC ownership"},
@@ -56,6 +55,14 @@
     {"part": "bridging-to-swift", "heading": "Bridging to Swift"},
     {"part": "api-design", "heading": "API design"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "ownership", "heading": "Ownership"},
+    {"part": "retain-cycles", "heading": "Retain cycles"},
+    {"part": "core-foundation-bridging", "heading": "Core Foundation bridging"},
+    {"part": "nullability-2", "heading": "Nullability"},
+    {"part": "swift-import", "heading": "Swift import"},
+    {"part": "errors-and-naming", "heading": "Errors and naming"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

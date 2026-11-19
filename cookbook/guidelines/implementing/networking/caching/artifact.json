@@ -4,11 +4,11 @@
     "id": "3416a359-e01c-40b2-8876-4a8634d4395e",
     "title": "Caching",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,7 +38,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "e42d3985fb63f12f",
+  "synced": "33636e01ed99d666",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

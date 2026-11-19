@@ -278,7 +278,7 @@ form `<cookbook-rdid>.<type>.<path, dotted>`:
 | Source folder | rdid |
 |---------------|------|
 | `cookbook/principles/simplicity/` | `adc.principle.simplicity` |
-| `cookbook/guidelines/testing/test-pyramid/` | `adc.guideline.testing.test-pyramid` |
+| `cookbook/guidelines/planning/testing/test-pyramid/` | `adc.guideline.testing.test-pyramid` |
 | `cookbook/ingredients/ui/components/empty-state/` | `adc.ingredient.ui.components.empty-state` |
 | `cookbook/recipes/ui/windows/settings-window/` | `adc.recipe.ui.windows.settings-window` |
 | `tbd/compliance/security.md`, `### secure-log-output` | `adc.check.security.secure-log-output` |

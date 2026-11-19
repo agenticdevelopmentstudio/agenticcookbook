@@ -1,0 +1,45 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
+    "title": "Shell scripts",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-07",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Shell script `main()` functions must only call other functions — no inline logic. Keep scripts composable and testable.",
+    "platforms": [],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "shell-scripts"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html",
+      "https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html",
+      "https://zsh.sourceforge.io/Doc/Release/Options.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "synced": "a34d475c97268f2e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "portability", "heading": "Portability"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

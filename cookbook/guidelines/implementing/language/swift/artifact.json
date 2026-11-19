@@ -4,11 +4,11 @@
     "id": "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
     "title": "Swift",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,7 +37,6 @@
       "095b33a1-2835-4ed5-bf01-f1e492148819",
       "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
       "8aa22a6b-2328-4a2d-8fe3-53c339390808",
-      "1471cab8-cdd2-444d-84da-8e4e70eb2453",
       "a7ce3621-2fed-478f-8767-b186014c5923",
       "51e1f37a-919e-4e42-b439-ffdf0c2ef2e8"
     ],
@@ -54,7 +53,7 @@
       "error-handling"
     ]
   },
-  "synced": "4543fa66d8d57c6f",
+  "synced": "dc899b9737792f4c",
   "parts": [
     {"part": "intro"},
     {"part": "related-swift-guidelines", "heading": "Related Swift guidelines"},
@@ -63,6 +62,13 @@
     {"part": "error-handling", "heading": "Error handling"},
     {"part": "access-control", "heading": "Access control"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "types", "heading": "Types"},
+    {"part": "optionals-2", "heading": "Optionals"},
+    {"part": "errors", "heading": "Errors"},
+    {"part": "access-control-2", "heading": "Access control"},
+    {"part": "linked-reviews", "heading": "Linked reviews"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

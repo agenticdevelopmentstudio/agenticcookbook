@@ -4,11 +4,11 @@
     "id": "775da457-30c7-47de-b179-0fae8a8b779d",
     "title": "Linting before the first PR",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -44,13 +44,17 @@
       "new-module"
     ]
   },
-  "synced": "6d5fa8a5a5bdbcfa",
+  "synced": "f03e50d7fa67a993",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},
     {"part": "kotlin", "heading": "Kotlin"},
     {"part": "typescript", "heading": "TypeScript"},
     {"part": "c", "heading": "C#"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "when-to-run", "heading": "When to run"},
+    {"part": "what-linting-verifies-that-tests-don-t", "heading": "What linting verifies that tests don't"},
+    {"part": "platform-linters", "heading": "Platform linters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -2,7 +2,7 @@
 
 **Twins.** One guideline often appears under several use cases, so
 `guidelines/implementing/security/input-validation` and
-`guidelines/reviewing/security/input-validation` are twins: the same path below
+`guidelines/implementing/security/input-validation` are twins: the same path below
 their use case. Twins are meant to say the same thing. When one is edited and
 the other is not, they contradict each other quietly. Twins are compared by
 their shared text, which leaves out the change history and treats a link to the
@@ -15,6 +15,7 @@ Findings:
 - `drift`: twins with no reason that do not match.
 - `stale`: a reason on a twin that matches all of its twins.
 - `short`: a reason under MIN_REASON characters, which explains nothing.
+- `lone`: a reason on a guideline with no twin (its twins were folded away).
 
 **Rules.** A guideline states its requirements with RFC 2119 keywords in
 capitals (MUST, SHOULD, MAY). One that states none, outside code and its
@@ -51,7 +52,7 @@ _RULE = re.compile(r"(?<![A-Za-z])(MUST|SHOULD|MAY)(?![A-Za-z])")
 @dataclass
 class TwinFinding:
     key: str                  # the path below the use case, e.g. "security/input-validation"
-    kind: str                 # "drift" | "stale" | "short"
+    kind: str                 # "drift" | "stale" | "short" | "lone"
     folders: list[Path]
 
 
@@ -75,6 +76,21 @@ def _guideline(folder: Path) -> Optional[tuple[Artifact, tuple[str, ...]]]:
     return artifact, rel
 
 
+def twins_of(folder: Path, folders: Iterable[Path]) -> list[Path]:
+    """The guidelines among `folders` that are twins of `folder`: the same
+    path below another use case."""
+    mine = _guideline(folder)
+    if mine is None or len(mine[1]) < 2:
+        return []
+    out = []
+    for other in folders:
+        found = _guideline(other)
+        if (found and len(found[1]) >= 2 and found[1][1:] == mine[1][1:]
+                and Path(other).resolve() != Path(folder).resolve()):
+            out.append(other)
+    return out
+
+
 def comparable(artifact: Artifact) -> str:
     """The text twins must share: no history, links to a use case made
     use-case-neutral, trailing spaces and blank-line runs ignored."""
@@ -96,6 +112,7 @@ def twin_census(folders: Iterable[Path]) -> list[TwinFinding]:
     findings = []
     for key, members in sorted(groups.items()):
         if len(members) < 2:
+            findings += [TwinFinding(key, "lone", [f]) for f, a in members if a.twin_differs is not None]
             continue
         texts = {folder: comparable(a) for folder, a in members}
         plain = [f for f, a in members if a.twin_differs is None]
@@ -138,6 +155,7 @@ TWIN_FIX = {
              "checklist, say), set `twin_differs` in its artifact.json to the reason.",
     "stale": "It matches its twins now: remove `twin_differs` from its artifact.json.",
     "short": f"Say why in at least {MIN_REASON} characters.",
+    "lone": "It has no twin now: remove `twin_differs` from its artifact.json.",
 }
 
 RULE_FIX = {

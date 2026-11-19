@@ -177,7 +177,8 @@ def test_use_case_strategy_lists_source_folders(tmp_path):
               "use_cases": [{"name": "implementing"}, {"name": "reviewing"}]}
     text, counts = use_case.generate(config, root, today=date(2026, 5, 15))
     assert counts["per_use_case"] == {"implementing": 1, "reviewing": 2}
-    assert counts["unique"] == 2
+    assert counts["total"] == 3      # two topics named color are two topics: one source each
+    assert "3 guidelines." in text and "duplicates" not in text
     assert "- [Color](implementing/ui/color/)" in text
     assert "- [Checklist](reviewing/checklist/)" in text
 

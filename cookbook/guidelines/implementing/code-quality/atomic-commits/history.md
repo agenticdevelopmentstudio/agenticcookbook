@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.2.3 | 2026-11-19 | Mike Fullerton | Fold guidelines/shipping/atomic-commits into this topic; its text this lacked added unroled as small-diffs-for-agent-generated-changes-2 |
 | 1.2.2 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.2.1 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 1.2.0 | 2026-06-09 | Mike Fullerton | Add small-diff discipline for agent-generated changes |

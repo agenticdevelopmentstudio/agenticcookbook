@@ -11,5 +11,8 @@
         "pin": "777aa777b20817ddd5eae032c6388136e21884fcea50b56ca29d804ae4ac970f"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/sync-tooling"
   ]
 }

@@ -4,11 +4,11 @@
     "id": "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
     "title": "Shell scripts",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -36,10 +36,11 @@
       "configuration"
     ]
   },
-  "synced": "a34d475c97268f2e",
+  "synced": "819789ec51d28d37",
   "parts": [
     {"part": "intro"},
     {"part": "portability", "heading": "Portability"},
+    {"part": "portability-2", "heading": "Portability"},
     {"part": "history", "heading": "Change History"}
   ]
 }

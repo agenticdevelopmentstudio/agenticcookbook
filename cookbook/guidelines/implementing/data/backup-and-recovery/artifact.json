@@ -43,7 +43,7 @@
       "configuration"
     ]
   },
-  "synced": "9b7e946c231db6b0",
+  "synced": "cc285b319e8b02d2",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
@@ -59,6 +59,9 @@
     {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
     {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "pre-deploy-backup-checklist", "heading": "Pre-deploy backup checklist", "role": "how-to"},
+    {"part": "pre-deploy-integrity-check", "heading": "Pre-deploy integrity check", "role": "how-to"},
+    {"part": "post-deploy-verification", "heading": "Post-deploy verification", "role": "how-to"},
     {"part": "history", "heading": "Change History"}
   ]
 }

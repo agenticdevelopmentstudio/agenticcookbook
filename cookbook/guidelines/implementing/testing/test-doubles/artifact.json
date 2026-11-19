@@ -4,11 +4,11 @@
     "id": "734f7c30-8cf2-4284-8276-267d62c3c49c",
     "title": "Test Doubles",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -42,7 +42,7 @@
       "writing-tests"
     ]
   },
-  "synced": "c9f9f6e7ee9da2e7",
+  "synced": "db10ef9091d23322",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

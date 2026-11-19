@@ -4,11 +4,11 @@
     "id": "fa2196e4-9513-4b23-b805-f5f5f099e5ff",
     "title": "Architecture",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,7 +32,7 @@
       "code-review"
     ]
   },
-  "synced": "b508da87d777ee81",
+  "synced": "06ec9f110e6ce265",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

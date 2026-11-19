@@ -4,11 +4,11 @@
     "id": "12d6b9fe-d1a0-4b9f-b772-41d9b4aa0b8a",
     "title": "Security Headers Checklist",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,7 +30,7 @@
       "pre-pr"
     ]
   },
-  "synced": "0ef78b7836736dc0",
+  "synced": "1cfb4721a6d987c3",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

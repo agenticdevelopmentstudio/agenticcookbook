@@ -117,12 +117,12 @@ Testing guidelines are always applicable when writing code. The scope and depth 
 
 | File | Guideline | Summary | Workflow Phases |
 |------|-----------|---------|-----------------|
-| `../agenticdevelopercookbook/cookbook/guidelines/testing/testing.md` | Comprehensive unit testing | Prioritize unit tests, test state transitions and edge cases | WF-3, WF-4 |
-| `../agenticdevelopercookbook/cookbook/guidelines/testing/test-pyramid.md` | Test pyramid | 80% unit / 15% integration / 5% E2E | WF-2, WF-3 |
+| `../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/testing/` | Comprehensive unit testing | Prioritize unit tests, test state transitions and edge cases | WF-3, WF-4 |
+| `../agenticdevelopercookbook/cookbook/guidelines/planning/testing/test-pyramid/` | Test pyramid | 80% unit / 15% integration / 5% E2E | WF-2, WF-3 |
 | `../agenticdevelopercookbook/cookbook/guidelines/testing/properties-of-good-tests.md` | Properties of good tests | Isolated, deterministic, fast, behavioral, readable | WF-3, WF-4 |
-| `../agenticdevelopercookbook/cookbook/guidelines/testing/unit-test-patterns.md` | Unit test patterns | Arrange-Act-Assert, one concept per test | WF-3 |
+| `../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/unit-test-patterns/` | Unit test patterns | Arrange-Act-Assert, one concept per test | WF-3 |
 | `../agenticdevelopercookbook/cookbook/guidelines/testing/flaky-test-prevention.md` | Flaky test prevention | No shared state, no timing, no real network in unit tests | WF-3 |
-| `../agenticdevelopercookbook/cookbook/guidelines/testing/test-data.md` | Test data | Builder pattern, no magic fixtures | WF-3 |
+| `../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/test-data/` | Test data | Builder pattern, no magic fixtures | WF-3 |
 | `../agenticdevelopercookbook/cookbook/guidelines/testing/the-testing-workflow.md` | Testing workflow | Write tests alongside code, validate with mutation testing | WF-3, WF-4 |
 
 ### Opt-In Concerns (Ask the User)
@@ -144,7 +144,7 @@ These concerns apply to many but not all features. Claude Code MUST ask the user
 | `../agenticdevelopercookbook/cookbook/guidelines/observability/analytics.md` | Analytics | Significant user actions instrumented | Ask | "Which user actions in this feature should be tracked for analytics?" | WF-2, WF-3 |
 | `../agenticdevelopercookbook/cookbook/guidelines/feature-management/ab-testing.md` | A/B testing | Variant assignment support | Opt-out | "Does this feature need A/B testing / experimentation support?" | WF-2, WF-3 |
 | `../agenticdevelopercookbook/cookbook/guidelines/feature-management/debug-mode.md` | Debug mode | Debug panel entries for flags, analytics, experiments | Opt-in | "This feature will include debug panel entries. Confirm or opt out." | WF-2, WF-3 |
-| `../agenticdevelopercookbook/cookbook/guidelines/testing/property-based-testing.md` | Property-based testing | For parsers, serializers, data transformers | Ask | "Does this feature include data transformations that would benefit from property-based testing?" | WF-2, WF-3 |
+| `../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/property-based-testing/` | Property-based testing | For parsers, serializers, data transformers | Ask | "Does this feature include data transformations that would benefit from property-based testing?" | WF-2, WF-3 |
 | `../agenticdevelopercookbook/cookbook/guidelines/testing/mutation-testing.md` | Mutation testing | Validate tests catch bugs | Ask | "Should we run mutation testing to validate test quality?" | WF-4 |
 | `../agenticdevelopercookbook/cookbook/guidelines/testing/security-testing.md` | Security testing | SAST, dependency scanning | Ask | "Should we run security scans (Semgrep, dependency audit)?" | WF-4 |
 | `../agenticdevelopercookbook/cookbook/guidelines/implementing/data/database.md` | Database | Schema design, performance, sync, PRAGMA settings | Ask | "Does this feature use a database? The database guideline covers schema design, performance, sync, and operations." | WF-2, WF-3 |

@@ -111,5 +111,8 @@
         "pin": "f6a61e298ffe994af8aa5fe914292cff2c016d623e50946e1947ef562ad67cdd"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/shipping/backup-and-recovery"
   ]
 }

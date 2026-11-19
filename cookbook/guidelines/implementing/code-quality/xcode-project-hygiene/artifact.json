@@ -4,11 +4,11 @@
     "id": "187a80eb-e2e5-4a6c-8d14-aa591840abe6",
     "title": "Xcode project hygiene",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,7 +33,6 @@
     "depends-on": [],
     "related": [
       "775da457-30c7-47de-b179-0fae8a8b779d",
-      "544b36cb-2778-4b60-a31e-b55ff789eada",
       "e114c41c-d203-454c-bc7c-cc128f6ebadd",
       "256a827e-436e-4cde-895e-a56b9783edf2"
     ],
@@ -52,7 +51,7 @@
       "pre-commit"
     ]
   },
-  "synced": "f0646f4659986a31",
+  "synced": "3a71a5e38467edff",
   "parts": [
     {"part": "intro"},
     {"part": "build-settings-live-in-xcconfig-files", "heading": "Build settings live in xcconfig files"},
@@ -62,6 +61,14 @@
     {"part": "signing", "heading": "Signing"},
     {"part": "project-generators", "heading": "Project generators"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "build-settings", "heading": "Build settings"},
+    {"part": "schemes-and-targets", "heading": "Schemes and targets"},
+    {"part": "entitlements-2", "heading": "Entitlements"},
+    {"part": "info-plist-2", "heading": "Info.plist"},
+    {"part": "signing-2", "heading": "Signing"},
+    {"part": "generated-projects", "heading": "Generated projects"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

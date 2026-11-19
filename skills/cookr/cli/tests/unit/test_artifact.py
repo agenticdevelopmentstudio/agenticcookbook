@@ -47,7 +47,7 @@ def test_every_cookbook_artifact_round_trips(tmp_path, repo_v2):
     # Source folders are the only form committed: compile each to its doc,
     # split that doc back into a folder, and the folder must compose the same doc.
     folders = find_folders([repo_v2 / "cookbook"])
-    assert len(folders) > 400
+    assert len(folders) >= 380   # 383 after the folds: a floor against an empty walk, not a target
     for folder in folders:
         text = compose_document(load_folder(folder))
         out = tmp_path / folder.relative_to(repo_v2)

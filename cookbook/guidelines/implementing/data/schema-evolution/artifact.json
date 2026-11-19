@@ -40,7 +40,7 @@
       "schema-design"
     ]
   },
-  "synced": "ba06afe2f2aff1ef",
+  "synced": "0a44d2c6504e4660",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
@@ -53,6 +53,10 @@
     {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
     {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "pre-deploy-migration-checklist", "heading": "Pre-deploy migration checklist", "role": "how-to"},
+    {"part": "backward-compatibility-check", "heading": "Backward compatibility check", "role": "how-to"},
+    {"part": "sync-compatibility-verification", "heading": "Sync compatibility verification", "role": "how-to"},
+    {"part": "rollback-strategy", "heading": "Rollback strategy", "role": "how-to"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -140,7 +140,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "Prioritize unit tests, test state transitions and edge cases",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/testing.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/testing/",
     "prompt": null
   },
   {
@@ -149,7 +149,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "80% unit / 15% integration / 5% E2E",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/test-pyramid.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/planning/testing/test-pyramid/",
     "prompt": null
   },
   {
@@ -167,7 +167,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "Arrange-Act-Assert, one concept per test",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/unit-test-patterns.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/unit-test-patterns/",
     "prompt": null
   },
   {
@@ -185,7 +185,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "Builder pattern, no magic fixtures",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/test-data.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/test-data/",
     "prompt": null
   },
   {
@@ -334,7 +334,7 @@
     "apply": "ask",
     "default": "ask",
     "summary": "For parsers, serializers, data transformers",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/property-based-testing.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/testing/property-based-testing/",
     "prompt": "Does this feature include data transformations that would benefit from property-based testing?"
   },
   {

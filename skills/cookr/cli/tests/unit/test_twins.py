@@ -84,9 +84,9 @@ def test_a_short_reason_is_flagged(tmp_path):
     assert drift(a, b) == [("x", "short", ("reviewing",))]
 
 
-def test_a_guideline_with_no_twin_is_not_checked(tmp_path):
-    assert drift(make(tmp_path, "implementing", "solo", "Anything.",
-                      differs="A reason with nothing to differ from.")) == []
+def test_a_guideline_with_no_twin_and_no_reason_is_not_checked(tmp_path):
+    # With a reason it is `lone` (test_a_reason_on_a_guideline_with_no_twin_is_lone); without one, nothing.
+    assert drift(make(tmp_path, "implementing", "solo", "Anything.")) == []
 
 
 def test_non_guidelines_are_ignored(tmp_path):
@@ -146,3 +146,11 @@ def test_a_keyword_inside_a_long_fence_holding_a_short_one_states_no_rule():
     from cookr.core.artifact import Artifact, Part
     text = "# T\n\n````md\n```\nCode MUST x.\n```\n````\n"
     assert not twins.states_a_rule(Artifact(meta={}, parts=[Part("intro", text)]))
+
+
+def test_a_reason_on_a_guideline_with_no_twin_is_lone(tmp_path):
+    # Its twins were folded away: the reason explains a difference from nothing.
+    a = make(tmp_path, "implementing", "x", "Checklist.", differs="A review checklist of the guideline.")
+    b = make(tmp_path, "implementing", "y", "Other.")
+    assert drift(a, b) == [("x", "lone", ("implementing",))]
+    assert twins.twins_of(a, [a, b]) == []

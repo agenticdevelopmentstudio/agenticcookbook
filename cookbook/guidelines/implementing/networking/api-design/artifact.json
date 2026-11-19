@@ -4,11 +4,11 @@
     "id": "49399746-a81f-4163-8b07-0cfa11d87c2e",
     "title": "API Design",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,7 +28,7 @@
       "new-module"
     ]
   },
-  "synced": "9d035af28ec214d6",
+  "synced": "77ac4c2576a93cc3",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

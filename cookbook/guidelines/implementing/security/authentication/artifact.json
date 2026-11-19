@@ -4,11 +4,11 @@
     "id": "aec38334-67fa-4c7e-bca2-607932af3f22",
     "title": "Authentication",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -45,7 +45,7 @@
       "security-review"
     ]
   },
-  "synced": "0fac488a7738ba6b",
+  "synced": "20f513cbf469a474",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

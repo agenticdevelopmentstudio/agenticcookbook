@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.3 | 2026-11-19 | Mike Fullerton | Fold guidelines/reviewing/security/input-validation into this topic (identical text); links to it redirected here |
 | 1.1.2 | 2026-11-07 | Mike Fullerton | Match the server-render boundary section to the reviewing twin; pinning a patched framework is now MUST |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Add recovered Tier-1 research sources (adversarially-audited) |
 | 1.1.0 | 2026-06-09 | Mike Fullerton | Extend validation to the server-render / server-action boundary |

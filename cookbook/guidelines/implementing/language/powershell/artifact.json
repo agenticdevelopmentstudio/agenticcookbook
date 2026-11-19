@@ -4,11 +4,11 @@
     "id": "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
     "title": "PowerShell",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,6 @@
       "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
       "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
       "9ed898fe-ba86-44be-9911-d24fea60dc90",
-      "ce0c62c0-f2a1-4b60-b46e-844adc164d92",
       "425271ea-92b6-4df6-9a83-94795f1be377",
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
@@ -57,7 +56,7 @@
       "configuration"
     ]
   },
-  "synced": "403e40483310b06c",
+  "synced": "4b8140d3bc08ff7b",
   "parts": [
     {"part": "intro"},
     {"part": "strict-mode", "heading": "Strict mode"},
@@ -66,6 +65,12 @@
     {"part": "naming-and-verbs", "heading": "Naming and verbs"},
     {"part": "state-changing-commands", "heading": "State-changing commands"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "strict-mode-and-errors", "heading": "Strict mode and errors"},
+    {"part": "output", "heading": "Output"},
+    {"part": "naming", "heading": "Naming"},
+    {"part": "state-changing-functions", "heading": "State-changing functions"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

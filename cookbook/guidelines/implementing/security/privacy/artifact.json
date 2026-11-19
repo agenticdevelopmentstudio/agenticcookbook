@@ -4,11 +4,11 @@
     "id": "29057cf0-a38b-4c35-8b8b-52e12bf54784",
     "title": "Privacy and security by default",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,7 +32,7 @@
       "data-modeling"
     ]
   },
-  "synced": "365cff3bbf2df1c1",
+  "synced": "ea1a28c5f8b6f8e7",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

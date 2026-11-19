@@ -1,0 +1,67 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "187a80eb-e2e5-4a6c-8d14-aa591840abe6",
+    "title": "Xcode project hygiene",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep Xcode build settings in xcconfig files, targets and schemes shared and minimal, entitlements and Info.plist keys deliberate, and signing reproducible, using a project generator where the repository already has one.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift",
+      "objective-c"
+    ],
+    "tags": [
+      "xcode",
+      "xcconfig",
+      "schemes",
+      "entitlements",
+      "info-plist",
+      "signing",
+      "xcodegen"
+    ],
+    "depends-on": [],
+    "related": [
+      "775da457-30c7-47de-b179-0fae8a8b779d",
+      "544b36cb-2778-4b60-a31e-b55ff789eada",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "256a827e-436e-4cde-895e-a56b9783edf2"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project",
+      "https://developer.apple.com/documentation/xcode/build-settings-reference",
+      "https://developer.apple.com/documentation/bundleresources/entitlements",
+      "https://developer.apple.com/documentation/bundleresources/information-property-list",
+      "https://raw.githubusercontent.com/yonaskolb/XcodeGen/master/Docs/ProjectSpec.md"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "configuration",
+      "new-module",
+      "pre-commit"
+    ]
+  },
+  "synced": "f0646f4659986a31",
+  "parts": [
+    {"part": "intro"},
+    {"part": "build-settings-live-in-xcconfig-files", "heading": "Build settings live in xcconfig files"},
+    {"part": "targets-and-schemes", "heading": "Targets and schemes"},
+    {"part": "entitlements", "heading": "Entitlements"},
+    {"part": "info-plist", "heading": "Info.plist"},
+    {"part": "signing", "heading": "Signing"},
+    {"part": "project-generators", "heading": "Project generators"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

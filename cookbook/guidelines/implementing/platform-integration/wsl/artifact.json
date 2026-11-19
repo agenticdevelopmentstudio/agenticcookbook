@@ -4,11 +4,11 @@
     "id": "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
     "title": "Windows Subsystem for Linux",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,7 +30,6 @@
       "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
       "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
       "9ed898fe-ba86-44be-9911-d24fea60dc90",
-      "65eff0b7-14d5-4cd1-8107-1cfda65e78f3",
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [
@@ -48,7 +47,7 @@
       "configuration"
     ]
   },
-  "synced": "357d6afdaa857e6a",
+  "synced": "095f23726d9a3d89",
   "parts": [
     {"part": "intro"},
     {"part": "where-files-live", "heading": "Where files live"},
@@ -58,6 +57,13 @@
     {"part": "interop", "heading": "Interop"},
     {"part": "configuration-scope", "heading": "Configuration scope"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "files-and-paths", "heading": "Files and paths"},
+    {"part": "line-endings-2", "heading": "Line endings"},
+    {"part": "permissions-and-case-2", "heading": "Permissions and case"},
+    {"part": "interop-2", "heading": "Interop"},
+    {"part": "configuration", "heading": "Configuration"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

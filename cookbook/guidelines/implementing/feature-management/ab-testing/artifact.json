@@ -31,7 +31,7 @@
       "logging"
     ]
   },
-  "synced": "b495cc7244ad7b65",
+  "synced": "eaec4c391903189d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
@@ -42,6 +42,7 @@
     {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "references", "heading": "References", "role": "references"},
+    {"part": "pre-ship-verification", "heading": "Pre-ship verification", "role": "how-to"},
     {"part": "history", "heading": "Change History"}
   ]
 }

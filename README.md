@@ -50,23 +50,23 @@ The cookbook contains four types of **cookbook artifacts** — standalone markdo
 
 Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition over Inheritance, Separation of Concerns, SRP, Connascence, Conway's Law, Design for Deletion, DRY, Explicit over Implicit, Make Illegal States Unrepresentable, Errors as Values, Small Reversible Decisions, Tight Feedback Loops, Manage Complexity Through Boundaries, Least Astonishment, Idempotency, Native Controls, Open Source Preference, Make It Work/Right/Fast, Steel Thread First, Deliberate Prudent Technical Debt, Optimize for Change, Type Precedes Method, Domain-Stratified Trust, Independence Before Corroboration, Provenance at Generation Time, Cite the Claim Not the Document, Suppress Unsupported Confidence; and for ideation, Frame Before You Generate, Diverge Before You Converge, Defer Judgment and Go for Quantity, Human-First Ideation, Keep the Human at the Wheel, Break Fixation Deliberately, Bridge Distant Domains, Constraints as Creative Fuel, Counteract Homogenization with Diversity, Critique Without Killing, Document the Process Not a Conclusion.
 
-### Guidelines (275 unique, 380 with use-case duplicates)
+### Guidelines (278 files)
 
 *What rules apply when building.* Organized by **use case** — the phase of work where they apply, with [trigger-based filtering](guide/introduction/trigger-guide.md) for AI agents:
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
-| Planning | 63 | Architecture, data modeling, choosing patterns |
+| Planning | 35 | Architecture, data modeling, choosing patterns |
 | Implementing | 182 | Writing new code |
-| Testing | 24 | Writing and structuring tests |
-| Reviewing | 63 | Checking code quality, security, accessibility |
-| Shipping | 17 | Pre-commit, pre-PR, packaging |
-| Cookbook | 16 | Writing cookbook content (recipes, skills, agents) |
+| Testing | 15 | Writing and structuring tests |
+| Reviewing | 10 | Checking code quality, security, accessibility |
+| Shipping | 10 | Pre-commit, pre-PR, packaging |
+| Cookbook | 11 | Writing cookbook content (recipes, skills, agents) |
 | Researching | 5 | Gathering, verifying, and recording trustworthy research |
 | Brainstorming | 4 | Running ideation sessions with AI assistance |
 | Storytelling | 6 | Writing narrative and explanatory content |
 
-Guidelines that apply to multiple use cases are duplicated so each use-case directory is self-contained.
+Each guideline has one source, under the use case it belongs to; a guideline that serves several use cases is reached from the others by link and trigger, never copied.
 
 ### Ingredients (48 files)
 
@@ -140,7 +140,7 @@ The cookbook's public-facing website (React 19, TypeScript, Tailwind CSS 4) and 
 cookbook/                # cookbook content root
   introduction/          # getting started, conventions, glossary
   principles/            # 44 engineering principles
-  guidelines/            # 275 use-case-organized guidelines (380 with duplicates)
+  guidelines/            # 278 use-case-organized guidelines
   ingredients/           # atomic component specs (building blocks)
   recipes/               # compositions of ingredients into features
   compliance/            # 10 compliance categories (81 checks)

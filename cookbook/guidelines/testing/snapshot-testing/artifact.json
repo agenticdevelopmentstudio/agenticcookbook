@@ -21,7 +21,7 @@
     "depends-on": [],
     "related": [
       "e5af9ba5-f484-40c3-9738-470090f5241c",
-      "eec76082-a68b-4a2b-8f02-5ea3bfdc0a76"
+      "734f7c30-8cf2-4284-8276-267d62c3c49c"
     ],
     "references": [
       "https://kentcdodds.com/blog/effective-snapshot-testing",

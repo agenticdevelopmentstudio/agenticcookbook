@@ -4,11 +4,11 @@
     "id": "73b254b4-c611-434a-a9f4-67c8a7155576",
     "title": "Touch & Click Targets",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -41,7 +41,7 @@
       "accessibility"
     ]
   },
-  "synced": "e6632cc6a86e35ee",
+  "synced": "e4e7bbdbec84b9b1",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

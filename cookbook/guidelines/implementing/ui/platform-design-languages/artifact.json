@@ -4,11 +4,11 @@
     "id": "3741ed5e-0b67-48f2-b227-36ae152c0f4b",
     "title": "Platform Design Languages",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,9 +37,11 @@
       "platform-integration"
     ]
   },
-  "synced": "67aa07a01df84571",
+  "synced": "30bb71dabd626893",
   "parts": [
     {"part": "intro"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "how-this-applies-to-cookbook-authoring", "heading": "How this applies to cookbook authoring"},
     {"part": "history", "heading": "Change History"}
   ]
 }

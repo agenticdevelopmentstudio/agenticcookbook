@@ -66,5 +66,8 @@
         "pin": "2b4e86c52409628c289bc238a7fdf5d6ea76f399501f6af629010693ca77bd07"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/normalization-and-denormalization"
   ]
 }

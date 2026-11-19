@@ -4,11 +4,11 @@
     "id": "392d9205-6a50-4815-80a0-7d148880d43b",
     "title": "Rule Lint Checklist",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -23,8 +23,8 @@
     ],
     "depends-on": [],
     "related": [
-      "d4e7a91c-3f28-4b5e-a6c1-9e8d2f7b4a3c",
-      "43dbf61b-96ff-45f8-a11c-924e2f4359e0"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "b8aa57e0-6a85-4605-ae84-1220872294de"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -35,7 +35,7 @@
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "00d3701847b48223",
+  "synced": "95436374a153e18c",
   "parts": [
     {"part": "intro"},
     {"part": "content-quality", "heading": "Content Quality"},

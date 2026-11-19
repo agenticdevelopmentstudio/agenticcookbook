@@ -4,11 +4,11 @@
     "id": "2e317c68-384d-46b8-b3b3-0bcc6602e545",
     "title": "Real-Time Communication",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,7 @@
       "concurrency"
     ]
   },
-  "synced": "12135478eedadeef",
+  "synced": "e64164076667ab50",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

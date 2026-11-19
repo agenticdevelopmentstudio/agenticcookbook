@@ -4,11 +4,11 @@
     "id": "17216748-46e9-4e92-af3a-f4deeb843a8d",
     "title": "Analytics",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,7 +33,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "185699d46ae49b73",
+  "synced": "f8e658afe6358ad3",
   "parts": [
     {"part": "intro"},
     {"part": "swift", "heading": "Swift"},

@@ -1,0 +1,68 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+    "title": "Swift",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-11-07",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The Swift language rules this cookbook expects (value types, optionals, error handling, access control) and an index of the Swift concurrency, testing, lint and preview guidelines.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift"
+    ],
+    "tags": [
+      "language",
+      "swift",
+      "value-types",
+      "optionals",
+      "errors",
+      "access-control"
+    ],
+    "depends-on": [],
+    "related": [
+      "344b69da-c901-4650-b49d-c2df0234103b",
+      "2f199ad0-218e-41fe-b793-be7e8657f197",
+      "775da457-30c7-47de-b179-0fae8a8b779d",
+      "40ba1017-cec3-42f0-bd89-63a29eb3dd4d",
+      "095b33a1-2835-4ed5-bf01-f1e492148819",
+      "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
+      "8aa22a6b-2328-4a2d-8fe3-53c339390808",
+      "1471cab8-cdd2-444d-84da-8e4e70eb2453",
+      "a7ce3621-2fed-478f-8767-b186014c5923",
+      "51e1f37a-919e-4e42-b439-ffdf0c2ef2e8"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/swift/choosing-between-structures-and-classes",
+      "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling/",
+      "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/accesscontrol/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "refactor",
+      "error-handling"
+    ]
+  },
+  "synced": "4543fa66d8d57c6f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "related-swift-guidelines", "heading": "Related Swift guidelines"},
+    {"part": "value-types-first", "heading": "Value types first"},
+    {"part": "optionals", "heading": "Optionals"},
+    {"part": "error-handling", "heading": "Error handling"},
+    {"part": "access-control", "heading": "Access control"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

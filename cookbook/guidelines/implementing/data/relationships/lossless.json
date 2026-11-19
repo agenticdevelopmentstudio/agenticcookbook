@@ -34,5 +34,8 @@
         "pin": "bf5e9da4b9356ac596d84b1511db5b4d7edeed0744b89f1772ed2d91cd564c54"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/relationships"
   ]
 }

@@ -4,11 +4,11 @@
     "id": "82072abf-0ece-42da-805d-3cb15ce7921d",
     "title": "Type hints",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "86b7c31bb17dbe2d",
+  "synced": "b1a7833681cf1bad",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

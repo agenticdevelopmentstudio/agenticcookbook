@@ -4,11 +4,11 @@
     "id": "2609037a-fb89-4b49-88b0-7e4295e5d6f6",
     "title": "Authorization",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,7 @@
       "security-review"
     ]
   },
-  "synced": "2e22c46ef5de7ac4",
+  "synced": "59824a2b015d3d8b",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

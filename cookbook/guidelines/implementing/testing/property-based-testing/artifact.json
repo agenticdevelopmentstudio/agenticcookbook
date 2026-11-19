@@ -4,11 +4,11 @@
     "id": "a34c92a2-7dd0-4641-a126-418102b8b031",
     "title": "Property-Based Testing",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,7 +38,7 @@
       "writing-tests"
     ]
   },
-  "synced": "a0de66eb4b849399",
+  "synced": "c53264cf1231d3a2",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

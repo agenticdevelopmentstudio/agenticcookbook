@@ -4,11 +4,11 @@
     "id": "c84400d9-83b3-4c4c-83d4-325dfa989202",
     "title": "Rate Limiting",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,7 +30,7 @@
       "networking"
     ]
   },
-  "synced": "dc92e9777f251f2a",
+  "synced": "1d58cb8378932e67",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

@@ -71,5 +71,8 @@
         "pin": "9ba2f77d7114685445a71b923657a0247a0356eeb415dfa539c2dbdcd4cb872d"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/sync-engine-design"
   ]
 }

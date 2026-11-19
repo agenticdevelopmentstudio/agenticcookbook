@@ -57,9 +57,10 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
     output = root / config["output"]
     use_cases: list[dict] = config.get("use_cases", [])
 
-    # Per-use-case counts + global counts
+    # Per-use-case counts + the total: each topic has one source, so a folder
+    # is one topic, and two topics sharing a name are still two
     per_uc_counts: dict[str, int] = {}
-    total_with_dupes = 0
+    total = 0
     for uc in use_cases:
         d = target / uc["name"]
         if not d.is_dir():
@@ -67,13 +68,7 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
             continue
         n = len(iter_artifacts(d))
         per_uc_counts[uc["name"]] = n
-        total_with_dupes += n
-
-    # Unique (by filename across the entire target tree)
-    unique_names = {
-        f.name for f in iter_artifacts(target)
-    }
-    unique = len(unique_names)
+        total += n
 
     fm_data = merge_index_frontmatter(
         output,
@@ -99,10 +94,7 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
         desc = uc.get("description", "")
         lines.append(f"| [{name.title()}](#{anchor}) | {c} | {desc} |")
     lines.append("")
-    lines.append(
-        f"{unique} unique {target.name}, {total_with_dupes} total "
-        "(with duplicates across use cases)."
-    )
+    lines.append(f"{total} {target.name}.")
     lines.append("")
 
     # Per-use-case sections
@@ -138,7 +130,6 @@ def generate(config: dict, root: Path, today: date) -> tuple[str, dict]:
         text += "\n---\n\n" + history
     counts = {
         "per_use_case": per_uc_counts,
-        "unique": unique,
-        "total_with_duplicates": total_with_dupes,
+        "total": total,
     }
     return text, counts

@@ -4,11 +4,11 @@
     "id": "095b33a1-2835-4ed5-bf01-f1e492148819",
     "title": "Use AppKit and UIKit, not SwiftUI",
     "type": "guideline",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -43,7 +43,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "11f0c799e67d8769",
+  "synced": "f5d8df63d5d083de",
   "parts": [
     {"part": "intro"},
     {"part": "macos", "heading": "macOS"},

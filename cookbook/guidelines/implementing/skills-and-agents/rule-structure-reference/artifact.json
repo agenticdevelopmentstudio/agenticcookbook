@@ -4,11 +4,11 @@
     "id": "b8aa57e0-6a85-4605-ae84-1220872294de",
     "title": "Rule Structure Reference",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -23,7 +23,7 @@
     "depends-on": [],
     "related": [
       "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
-      "ee92545b-9d50-4f6b-95e5-e239a2433a11"
+      "392d9205-6a50-4815-80a0-7d148880d43b"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -33,7 +33,7 @@
     ]
   },
   "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
-  "synced": "50b84819ce633fdf",
+  "synced": "251eff3af801b73b",
   "parts": [
     {"part": "intro"},
     {"part": "what-is-a-rule-file", "heading": "What is a Rule File?"},

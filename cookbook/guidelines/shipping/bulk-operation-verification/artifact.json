@@ -4,11 +4,11 @@
     "id": "28e0fd80-be0a-4f85-ac42-1e423623b242",
     "title": "Bulk operation verification",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-28",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,7 +34,7 @@
     ]
   },
   "names_hosts": "Lists CLAUDE.md among the files a bulk operation must re-check.",
-  "synced": "fa006c40f75b9d20",
+  "synced": "03f96fa98ddf3798",
   "parts": [
     {"part": "intro"},
     {"part": "what-to-verify", "heading": "What to verify"},

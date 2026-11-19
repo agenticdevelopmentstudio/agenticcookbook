@@ -68,5 +68,8 @@
         "pin": "7d7356ed28a3fa67b69ec6f8431de260a54c7e65543399bc16a35f2555c16fad"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/primary-keys"
   ]
 }

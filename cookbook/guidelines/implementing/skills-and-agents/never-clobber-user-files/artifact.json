@@ -4,11 +4,11 @@
     "id": "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
     "title": "Never overwrite a user's files",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,7 +33,6 @@
       "8b9def90-2153-45ba-9dcc-fa2aa3bf745e",
       "b8aa57e0-6a85-4605-ae84-1220872294de",
       "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
-      "cfa4b119-d10a-4c2a-b90d-f003717792a7",
       "39c2d053-006f-42c9-9db4-d991c1688024",
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
@@ -45,13 +44,19 @@
       "configuration"
     ]
   },
-  "synced": "bd53d5fe6dcfde86",
+  "synced": "fb74bee085e085c1",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules"},
     {"part": "collisions-in-names-that-merge", "heading": "Collisions in names that merge"},
     {"part": "reporting", "heading": "Reporting"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "writes", "heading": "Writes"},
+    {"part": "names", "heading": "Names"},
+    {"part": "ownership", "heading": "Ownership"},
+    {"part": "reporting-2", "heading": "Reporting"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

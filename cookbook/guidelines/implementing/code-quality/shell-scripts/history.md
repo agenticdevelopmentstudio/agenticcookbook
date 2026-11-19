@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-11-19 | Mike Fullerton | Fold guidelines/reviewing/code-quality/shell-scripts into this topic; its text this lacked added unroled as portability-2 |
 | 1.1.1 | 2026-11-07 | Mike Fullerton | Sort the change history newest-first |
 | 1.1.0 | 2026-10-09 | Mike Fullerton | Add a portability section: POSIX sh versus bash and zsh, job control, set -e/-u/pipefail caveats, quoting, trap and timeouts |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

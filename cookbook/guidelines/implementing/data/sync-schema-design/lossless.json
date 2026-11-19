@@ -84,5 +84,8 @@
         "pin": "783bbb75786db99c31fc37c7c1009ba93bcfb4ac548062f1ab577e460d4c4f6a"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/sync-schema-design"
   ]
 }

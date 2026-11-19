@@ -4,11 +4,11 @@
     "id": "67c59594-a5dc-46f2-aa61-3436921294c7",
     "title": "Offline and Connectivity",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,7 +33,7 @@
       "networking"
     ]
   },
-  "synced": "c3853763e0e9353c",
+  "synced": "ce32883812062b38",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

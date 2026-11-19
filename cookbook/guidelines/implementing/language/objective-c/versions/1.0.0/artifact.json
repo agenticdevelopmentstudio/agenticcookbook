@@ -1,0 +1,61 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
+    "title": "Objective-C",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Write Objective-C under ARC with nullability annotations on every public header, so the code is safe on its own and imports into Swift without implicitly unwrapped optionals.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "objective-c"
+    ],
+    "tags": [
+      "language",
+      "objective-c",
+      "arc",
+      "nullability",
+      "swift-interop"
+    ],
+    "depends-on": [],
+    "related": [
+      "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+      "8aa22a6b-2328-4a2d-8fe3-53c339390808",
+      "65367d27-1d4e-41e5-9e8c-e9adb08ddc90",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
+    ],
+    "references": [
+      "https://clang.llvm.org/docs/AutomaticReferenceCounting.html",
+      "https://developer.apple.com/documentation/swift/designating-nullability-in-objective-c-apis",
+      "https://developer.apple.com/documentation/swift/improving-objective-c-api-declarations-for-swift"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "refactor",
+      "platform-integration"
+    ]
+  },
+  "synced": "e96ae820e67a1396",
+  "parts": [
+    {"part": "intro"},
+    {"part": "arc-ownership", "heading": "ARC ownership"},
+    {"part": "bridging-core-foundation", "heading": "Bridging Core Foundation"},
+    {"part": "nullability", "heading": "Nullability"},
+    {"part": "bridging-to-swift", "heading": "Bridging to Swift"},
+    {"part": "api-design", "heading": "API design"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

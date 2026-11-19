@@ -91,5 +91,8 @@
         "pin": "1e2b5c551bfec57de4b35a48c61c01e4f29f24e40f4537a2e7d7c27aca7791dc"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/sync-protocol"
   ]
 }

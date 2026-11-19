@@ -4,11 +4,11 @@
     "id": "a8f9c003-e970-4f28-bb7d-30a23b891b3f",
     "title": "Test Pyramid",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,10 +33,11 @@
       "pre-pr"
     ]
   },
-  "synced": "6faf58ee8ff4d75c",
+  "synced": "8f9de13142a67c13",
   "parts": [
     {"part": "intro"},
     {"part": "the-shape-is-context-dependent", "heading": "The shape is context-dependent"},
+    {"part": "the-shape-is-context-dependent-2", "heading": "The shape is context-dependent"},
     {"part": "history", "heading": "Change History"}
   ]
 }

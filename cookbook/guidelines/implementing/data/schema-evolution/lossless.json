@@ -136,5 +136,20 @@
         "pin": "b8a6aab694fb395369af87a64a4ccf2f136cc29505c5c4019140f11404153c21"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/shipping/schema-evolution"
+  ],
+  "obsolete": [
+    {
+      "sentence": "See the implementing copy of this guideline for the procedure.",
+      "reason": "the shipping copy's pointer to this topic; the copy is folded into this topic, so the pointer would point at itself (the 12-step recreate procedure is this topic's own part)",
+      "judged": {
+        "by": "judge-sonnet-2026-11-19",
+        "verdict": "pass",
+        "note": "The sentence only pointed to a procedure, and the topic's own the-12-step-recreate-procedure.md part holds that procedure in full. backward-compatibility-check.md already cites 'the 12-step recreate procedure' for breaking changes, so the pointer would only refer back to the topic and nothing is lost.",
+        "pin": "c43f746a210e3fe8412b1460cc383fa4f22d881710a9b98eef2fef946c9123d9"
+      }
+    }
   ]
 }

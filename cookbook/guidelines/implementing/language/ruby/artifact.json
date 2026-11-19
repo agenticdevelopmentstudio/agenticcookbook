@@ -4,11 +4,11 @@
     "id": "f29e82ca-611e-409a-9121-8abe1719b434",
     "title": "Ruby",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,7 +33,6 @@
       "929e96cb-2900-4386-ad4a-1a67a0568480",
       "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
       "775da457-30c7-47de-b179-0fae8a8b779d",
-      "f6836f90-5090-4857-bab9-74feb7c68223",
       "a7ce3621-2fed-478f-8767-b186014c5923",
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
@@ -54,7 +53,7 @@
       "error-handling"
     ]
   },
-  "synced": "4870d3a9dce853e5",
+  "synced": "a31ce83ec137bc03",
   "parts": [
     {"part": "intro"},
     {"part": "file-header", "heading": "File header"},
@@ -65,6 +64,13 @@
     {"part": "style", "heading": "Style"},
     {"part": "dependencies", "heading": "Dependencies"},
     {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "header-and-strings", "heading": "Header and strings"},
+    {"part": "processes", "heading": "Processes"},
+    {"part": "values-and-errors", "heading": "Values and errors"},
+    {"part": "keyword-arguments-2", "heading": "Keyword arguments"},
+    {"part": "style-and-dependencies", "heading": "Style and dependencies"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
     {"part": "history", "heading": "Change History"}
   ]
 }

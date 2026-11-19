@@ -4,11 +4,11 @@
     "id": "e547d962-d561-4bd9-bb5a-50bdeec98335",
     "title": "Color",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -39,7 +39,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "6d640b9771e6408f",
+  "synced": "2ad2dfbc4c0dcda7",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

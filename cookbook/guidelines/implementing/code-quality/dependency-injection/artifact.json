@@ -4,11 +4,11 @@
     "id": "e80d67b3-813f-47fb-8894-aa4e6f6479f3",
     "title": "Dependency Injection",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,7 +32,7 @@
       "code-review"
     ]
   },
-  "synced": "776a7a712126f201",
+  "synced": "85b2a8fe29a46eac",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

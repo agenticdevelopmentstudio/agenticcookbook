@@ -4,11 +4,11 @@
     "id": "7df29f51-703a-4fc8-992d-64591ffd9e61",
     "title": "Unit Test Patterns",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,7 +27,7 @@
       "writing-tests"
     ]
   },
-  "synced": "cfbfe9714529466d",
+  "synced": "6de7cda0e4d78213",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

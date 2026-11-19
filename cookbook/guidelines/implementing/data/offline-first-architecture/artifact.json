@@ -41,8 +41,7 @@
       "database-operations"
     ]
   },
-  "twin_differs": "The implementing copy carries roles: named rules, a build bar, and the devteam's review focus and review bar; the planning copy keeps the original text.",
-  "synced": "d0b522d06287ef2d",
+  "synced": "7ad67a79843a97ae",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

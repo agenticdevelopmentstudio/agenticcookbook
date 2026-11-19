@@ -1,6 +1,9 @@
 {
   "base": "cd4a714fdfb16f5ed65924ee0198db63232a54c1",
-  "copies": [],
+  "copies": [
+    "cookbook/guidelines/planning/feature-management/feature-flags",
+    "cookbook/guidelines/shipping/feature-flags"
+  ],
   "moved": [
     {
       "sentence": "Define a `FeatureFlagProvider` interface (`isEnabled(key) -> Bool`), provide a local default implementation (UserDefaults/SharedPreferences/localStorage), swap in a backend implementation later via DI.",

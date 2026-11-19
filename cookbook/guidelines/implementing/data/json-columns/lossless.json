@@ -51,5 +51,8 @@
         "pin": "d0ed8dea3c52e325cb6a60d6d5ca542687eaa00db6911b0913415640196b0dba"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/json-columns"
   ]
 }

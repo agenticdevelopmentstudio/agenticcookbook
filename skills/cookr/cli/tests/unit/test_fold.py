@@ -169,3 +169,53 @@ def test_fold_writes_nothing_when_a_cookbook_folder_cannot_be_read(tmp_path, cap
     assert copy.is_dir()
     assert {f.name: f.read_text() for f in topic.iterdir() if f.is_file()} == before
     assert not (topic / "versions").exists()
+
+
+def test_fold_writes_nothing_when_the_topic_history_cannot_record_it(tmp_path, capsys):
+    # A fold that fails at recording its history row leaves the topic as it was (no part added,
+    # no version moved) and the copy in place: it is all or nothing.
+    cb = tmp_path / "cookbook"
+    topic = _topic(cb)
+    copy = _copy(cb, extra="## Planning Notes\n\nPlan the indexes before the tables.\n\n")
+    hist_file = topic / "history.md"
+    hist_file.write_text(hist_file.read_text() + "| 2.0.0 | 2026-01-02 | A | out of order |\n")
+    before = {f.relative_to(topic): f.read_bytes() for f in topic.rglob("*") if f.is_file()}
+    capsys.readouterr()
+    assert main(["fold", str(copy), "--into", str(topic), "--author", "Tester",
+                 "--date", "2026-11-16"]) != 0
+    assert copy.is_dir()
+    assert {f.relative_to(topic): f.read_bytes() for f in topic.rglob("*") if f.is_file()} == before
+
+
+def test_fold_into_a_roled_topic_counts_what_its_lossless_json_accounts_for(tmp_path, capsys):
+    # The copy's reworded sentence is accounted for in the topic's lossless.json: nothing is added,
+    # the history says so, and the copy joins "copies" so lossless reads it.
+    cb = tmp_path / "cookbook"
+    topic = _topic(cb)
+    copy = _copy(cb, extra="## Planning Notes\n\nPlan the indexes before the tables.\n\n")
+    (topic / "lossless.json").write_text(json.dumps({"base": "HEAD", "moved": [
+        {"sentence": "Plan the indexes before the tables.", "to": "must-index-foreign-keys"}]}))
+    code, out = _fold(copy, topic, capsys)
+    assert code == 0 and out["parts_added"] == [] and out["identical"] is False, out
+    assert not copy.exists()
+    assert json.loads((topic / "lossless.json").read_text())["copies"] == ["cookbook/guidelines/planning/data/t"]
+    folded = load_folder(topic)
+    assert "planning-notes" not in [p.name for p in folded.parts]
+    assert "as lossless.json accounts" in folded.part("history").text
+
+
+def test_fold_of_the_last_twin_clears_the_topics_twin_differs(tmp_path, capsys):
+    # The reason said how the topic differs from its twin; once the twin is folded away there is
+    # no twin left, so the reason goes. A remaining twin keeps it.
+    cb = tmp_path / "cookbook"
+    topic = _topic(cb)
+    art = load_folder(topic)
+    art.twin_differs = "The implementing copy carries roles; the planning copy keeps the text."
+    write_folder(art, topic)
+    third = cb / "guidelines/reviewing/data/t"
+    write_folder(Artifact(meta=_meta(OTHER_ID), parts=split_body(
+        "# T\n\nIndexes keep reads fast.\n\n## Change History\n" + HISTORY)), third)
+    code, _ = _fold(_copy(cb), topic, capsys)
+    assert code == 0 and load_folder(topic).twin_differs is not None
+    code, _ = _fold(third, topic, capsys)
+    assert code == 0 and load_folder(topic).twin_differs is None

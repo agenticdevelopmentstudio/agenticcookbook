@@ -4,11 +4,11 @@
     "id": "2598f495-1820-47e7-b7e7-ce548d390148",
     "title": "Token Handling",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,7 +37,7 @@
       "security-review"
     ]
   },
-  "synced": "8f5edd61cca63ec9",
+  "synced": "dc73b24893b064d8",
   "parts": [
     {"part": "intro"},
     {"part": "history", "heading": "Change History"}

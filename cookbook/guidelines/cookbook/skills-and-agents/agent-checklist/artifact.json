@@ -4,11 +4,11 @@
     "id": "ef7e17ea-a4c1-4946-aff7-a81cb27885a0",
     "title": "Agent Lint Checklist",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -22,8 +22,8 @@
     ],
     "depends-on": [],
     "related": [
-      "d4e7a91c-3f28-4b5e-a6c1-9e8d2f7b4a3c",
-      "ce09e474-bb65-4449-a357-6d58be514622"
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "8b9def90-2153-45ba-9dcc-fa2aa3bf745e"
     ],
     "references": [],
     "approved-by": "approve-artifact v1.0.0",
@@ -34,7 +34,7 @@
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "576cfef5c239dd2b",
+  "synced": "f7f870c403987dcd",
   "parts": [
     {"part": "intro"},
     {"part": "structure-format", "heading": "Structure & Format"},

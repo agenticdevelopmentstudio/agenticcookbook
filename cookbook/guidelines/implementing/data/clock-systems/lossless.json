@@ -25,5 +25,8 @@
         "pin": "0407f840bb749b863d4173b91946b6549a47e0f2babec85947d04400c93bf97f"
       }
     }
+  ],
+  "copies": [
+    "cookbook/guidelines/planning/data/clock-systems"
   ]
 }

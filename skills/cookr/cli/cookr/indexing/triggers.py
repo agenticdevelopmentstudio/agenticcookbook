@@ -2,7 +2,7 @@
 
 For every artifact under `target_dir`, read its `triggers:` meta list and emit a
 YAML map of `trigger -> [relative paths]`. An artifact is listed by its source
-folder (`guidelines/testing/test-pyramid/`), which a folder-only checkout holds;
+folder (`guidelines/planning/testing/test-pyramid/`), which a folder-only checkout holds;
 a loose doc by its file. Optionally validates triggers against a canonical set.
 
 Config shape (see references-src/index-configs/triggers.yaml):

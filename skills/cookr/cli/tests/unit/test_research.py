@@ -11,6 +11,7 @@ import pytest
 
 from cookr.cli import main
 from cookr.core import research
+from cookr.core.artifact import find_folders
 
 from .cookbook_helpers import add_doc, new_repo
 
@@ -23,7 +24,7 @@ NEW_TOPIC = "guidelines/implementing/data/keys"
 #: The ceiling on the cookbook's own exemption list: the topics owed research when
 #: research-first became the rule. It only falls: lower it as research lands, and
 #: never raise it, since a topic written since brings its research.
-OWED_CEILING = None
+OWED_CEILING = 380
 RULE = "- **must-index-keys**: Every foreign key MUST have an index.{cite}\n"
 BODY = """# Keys
 
@@ -379,7 +380,7 @@ def test_the_cookbooks_exemption_list_names_only_artifacts_without_research():
     topics = doc["topics"]
     assert len(topics) == len(set(topics))
     assert OWED_CEILING is not None and len(topics) <= OWED_CEILING, (len(topics), OWED_CEILING)
-    folders = sorted(p.parent for p in cb.rglob("artifact.json"))
+    folders = find_folders([cb])      # as validate reads it: versions/ snapshots are no topics
     assert [(f.kind, f.detail) for f in research.census(cb, folders) if f.kind in (
         "no-research", "stale-exemption", "duplicate-exemption", "unreadable-exemption")] == []
     assert "teamtesting" not in doc["why"] and "../" not in doc["why"], doc["why"]

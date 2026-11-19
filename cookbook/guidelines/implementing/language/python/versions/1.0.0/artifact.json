@@ -1,0 +1,72 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "929e96cb-2900-4386-ad4a-1a67a0568480",
+    "title": "Python",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Package Python with pyproject.toml, type it, run subprocesses without a shell, use pathlib, raise and chain specific exceptions, and run untrusted-directory scripts in isolated mode.",
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "python",
+      "packaging",
+      "pyproject",
+      "subprocess",
+      "pathlib",
+      "exceptions"
+    ],
+    "depends-on": [],
+    "related": [
+      "82072abf-0ece-42da-805d-3cb15ce7921d",
+      "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
+      "f29e82ca-611e-409a-9121-8abe1719b434",
+      "d7079751-71c5-49a6-9c1d-505921e4cee9",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "425271ea-92b6-4df6-9a83-94795f1be377"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/subprocess.html",
+      "https://docs.python.org/3/using/cmdline.html",
+      "https://docs.python.org/3/library/pathlib.html",
+      "https://docs.python.org/3/tutorial/errors.html",
+      "https://packaging.python.org/en/latest/guides/writing-pyproject-toml/",
+      "https://peps.python.org/pep-0723/",
+      "https://peps.python.org/pep-0561/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "refactor",
+      "error-handling",
+      "security-review"
+    ]
+  },
+  "synced": "73c06a50e49b978b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "packaging", "heading": "Packaging"},
+    {"part": "typing", "heading": "Typing"},
+    {"part": "subprocesses", "heading": "Subprocesses"},
+    {"part": "paths", "heading": "Paths"},
+    {"part": "exceptions", "heading": "Exceptions"},
+    {"part": "untrusted-directories", "heading": "Untrusted directories"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
