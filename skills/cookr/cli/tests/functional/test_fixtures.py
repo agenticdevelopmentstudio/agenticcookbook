@@ -1,11 +1,7 @@
-"""Run the CLI against the named fixture cookbooks in `cookbook-tests`.
+"""Run the CLI against the named cookbook states `fixture_cookbook` builds (conftest.py).
 
-Each fixture in `cookbook-tests/fixtures/<name>/` is a pre-shaped cookbook
-representing a realistic starting state. The test file declares the expected
-outcome of `update` / `validate` / `lint --no-llm` for each fixture.
-
-If `cookbook-tests` cannot be cloned (no network, no SSH key), the entire
-file is skipped via the `cookbook_tests_repo` fixture in conftest.py.
+Each state is a realistic starting point. The test file declares the expected
+outcome of `update` / `validate` / `lint --no-llm` for each.
 """
 
 from __future__ import annotations

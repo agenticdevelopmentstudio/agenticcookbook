@@ -14,33 +14,47 @@ pytestmark = pytest.mark.usefixtures("git_tmp_path")
 
 
 
-def test_create_scaffolds_expected_files(tmp_path, run_cookr):
-    r = run_cookr(["create"], cwd=tmp_path)
+CREATE = ["create", "--rdid", "testbook"]
+
+
+def _create(run_cookr, tmp_path):
+    """A format-2 cookbook with an empty recipes/ for the hand-written docs below."""
+    r = run_cookr(CREATE, cwd=tmp_path)
     assert r.returncode == 0, r.stderr or r.stdout
     cb = tmp_path / "cookbook"
-    assert (cb / "index.md").is_file()
-    assert (cb / "description.md").is_file()
-    assert (cb / "recipes" / ".gitkeep").is_file()
-    assert (cb / "reference" / ".gitkeep").is_file()
+    (cb / "recipes").mkdir()
+    return cb
+
+
+def test_create_scaffolds_expected_files(tmp_path, run_cookr):
+    # Format 2: create writes the manifest and an empty index, nothing else.
+    r = run_cookr(CREATE, cwd=tmp_path)
+    assert r.returncode == 0, r.stderr or r.stdout
+    cb = tmp_path / "cookbook"
+    assert sorted(p.name for p in cb.iterdir()) == ["cookbook.json", "index.json"]
 
 
 def test_create_is_idempotent(tmp_path, run_cookr):
-    assert run_cookr(["create"], cwd=tmp_path).returncode == 0
-    r2 = run_cookr(["create"], cwd=tmp_path)
+    assert run_cookr(CREATE, cwd=tmp_path).returncode == 0
+    before = (tmp_path / "cookbook" / "cookbook.json").read_text()
+    r2 = run_cookr(CREATE, cwd=tmp_path)
     assert r2.returncode == 0
-    assert "skipped" in r2.stdout
+    assert "already is the cookbook" in r2.stdout
+    assert (tmp_path / "cookbook" / "cookbook.json").read_text() == before
 
 
 def _convert(run_cookr, doc):
     """Fold a hand-written doc into its source folder: validate fails any
-    artifact doc that has none, since the folder is the artifact's source."""
+    artifact doc that has none, since the folder is the artifact's source.
+    The folder is a new artifact, so `update` indexes it, as after any change."""
     r = run_cookr(["convert", str(doc)])
+    assert r.returncode == 0, r.stderr or r.stdout
+    r = run_cookr(["update", "-p", str(doc.parent.parent), "--author", "T"])
     assert r.returncode == 0, r.stderr or r.stdout
 
 
 def test_update_validate_lint_green(tmp_path, run_cookr):
-    assert run_cookr(["create"], cwd=tmp_path).returncode == 0
-    cb = tmp_path / "cookbook"
+    cb = _create(run_cookr, tmp_path)
     (cb / "recipes" / "hello.md").write_text("# Hello\n", encoding="utf-8")
 
     upd = run_cookr(["update", "-p", str(cb), "--author", "Tester"])
@@ -56,8 +70,7 @@ def test_update_validate_lint_green(tmp_path, run_cookr):
 
 
 def test_update_is_idempotent_no_changes_second_run(tmp_path, run_cookr):
-    assert run_cookr(["create"], cwd=tmp_path).returncode == 0
-    cb = tmp_path / "cookbook"
+    cb = _create(run_cookr, tmp_path)
     (cb / "recipes" / "x.md").write_text("# X\n", encoding="utf-8")
     assert run_cookr(["update", "-p", str(cb), "--author", "T"]).returncode == 0
     _convert(run_cookr, cb / "recipes" / "x.md")
@@ -73,8 +86,7 @@ def test_update_is_idempotent_no_changes_second_run(tmp_path, run_cookr):
 
 
 def test_validate_detects_drift(tmp_path, run_cookr):
-    assert run_cookr(["create"], cwd=tmp_path).returncode == 0
-    cb = tmp_path / "cookbook"
+    cb = _create(run_cookr, tmp_path)
     (cb / "recipes" / "alpha.md").write_text("# Alpha\n", encoding="utf-8")
     assert run_cookr(["update", "-p", str(cb), "--author", "T"]).returncode == 0
     _convert(run_cookr, cb / "recipes" / "alpha.md")
@@ -90,7 +102,7 @@ def test_validate_detects_drift(tmp_path, run_cookr):
         "summary: x\n---\n# Gamma\n",
         encoding="utf-8",
     )
-    _convert(run_cookr, cb / "recipes" / "gamma.md")
+    assert run_cookr(["convert", str(cb / "recipes" / "gamma.md")]).returncode == 0  # no update: the index goes stale
     r = run_cookr(["validate", "-p", str(cb)])
     assert r.returncode != 0
     assert "drift" in r.stdout.lower() or "drift" in r.stderr.lower()

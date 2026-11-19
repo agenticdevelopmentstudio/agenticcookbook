@@ -8,14 +8,12 @@ Layout:
 running ./install, and `patch_refs` points `cookr.core.refs.references_dir()` at
 a stand-in references/ built from references-src/.
 
-The functional tests of update/validate/lint additionally clone the
-cookbook-tests fixture repo into a session tmp dir; per-test copies are made so
-tests can mutate freely.
+The functional tests of update/validate/lint build named cookbook states with
+the installed cookr from the docs in fixtures/cookbook-states/ (`fixture_cookbook`).
 """
 
 from __future__ import annotations
 
-import os
 import shutil
 import subprocess
 import sys
@@ -27,11 +25,6 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 COOKR_PKG_PARENT = REPO_ROOT / "skills" / "cookr" / "cli"
 if str(COOKR_PKG_PARENT) not in sys.path:
     sys.path.insert(0, str(COOKR_PKG_PARENT))
-
-FIXTURE_REPO_URL = os.environ.get(
-    "COOKBOOK_TESTS_REPO",
-    "git@github.com:agenticdevelopercookbook/cookbook-tests.git",
-)
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 
@@ -188,39 +181,43 @@ def patch_refs(monkeypatch, references_dir):
     return references_dir
 
 
-@pytest.fixture(scope="session")
-def cookbook_tests_repo(tmp_path_factory) -> Path:
-    """Clone the cookbook-tests fixture repo into a session tmp dir.
+COOKBOOK_STATES = FIXTURES / "cookbook-states"
 
-    Honor COOKBOOK_TESTS_REPO for overrides (CI mirror, local checkout, etc).
-    If the clone fails (no network / no SSH key), skip every test that depends
-    on this fixture rather than fail noisily.
-    """
-    dest = tmp_path_factory.mktemp("cookbook-tests-repo")
-    try:
-        subprocess.run(
-            ["git", "clone", "--depth=1", FIXTURE_REPO_URL, str(dest / "repo")],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=60,
-        )
-    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError) as e:
-        pytest.skip(f"cannot clone {FIXTURE_REPO_URL}: {e}")
-    return dest / "repo"
+# Each named state: the docs converted and indexed, then the docs added after the last
+# `update` (`late`, converted, so only the index is stale) and the docs written raw.
+STATES = {
+    "empty-client": {},
+    "recipes-only-valid": {"indexed": ["hello.md", "world.md"]},
+    "with-drift": {"late": ["added-but-not-indexed.md"]},
+    "broken-frontmatter": {"raw": ["missing-fields.md"]},
+}
 
 
 @pytest.fixture
-def fixture_cookbook(tmp_path, cookbook_tests_repo):
-    """`fixture_cookbook("empty-client")` → a fresh tmp copy of
-    `cookbook-tests/fixtures/<name>/` that the test can mutate."""
+def fixture_cookbook(tmp_path, run_cookr):
+    """`fixture_cookbook("empty-client")` -> a git repo holding that cookbook state, built
+    with the cookr under test, so a fixture is never older than the format it tests."""
 
-    def _copy(name: str) -> Path:
-        src = cookbook_tests_repo / "fixtures" / name
-        if not src.is_dir():
-            pytest.skip(f"fixture not present in cookbook-tests: {name}")
-        dst = tmp_path / name
-        shutil.copytree(src, dst)
-        return dst
+    def _build(name: str) -> Path:
+        state = STATES[name]
+        repo = tmp_path / name
+        repo.mkdir()
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        def ok(*args):
+            r = run_cookr(list(args), cwd=repo)
+            assert r.returncode == 0, f"{name}: cookr {' '.join(args)}\n{r.stdout}{r.stderr}"
+        ok("create", "--rdid", "testbook")
+        cb = repo / "cookbook"
+        (cb / "recipes").mkdir()
+        def add(group, convert):
+            for doc in state.get(group, []):
+                shutil.copy2(COOKBOOK_STATES / doc, cb / "recipes" / doc)
+                if convert:
+                    ok("convert", str(cb / "recipes" / doc))
+        add("indexed", True)
+        ok("update", "-p", str(cb), "--author", "cookbook-tests")
+        add("late", True)
+        add("raw", False)
+        return repo
 
-    return _copy
+    return _build
