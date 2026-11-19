@@ -21,15 +21,14 @@ A rule cites the claims it stands on at the end of its named bullet, once:
 unique in its research. The citation is provenance: compiled skills leave it
 out, and `cookr roles lossless` reads a rule without it.
 
-**Which artifacts are checked.** The check applies to the artifacts the
-research-first work has touched: every artifact with a `research/` folder, and
-every roled artifact, which must have one. Every other artifact is left alone
-until it gets its research. A roled topic whose research is still to come is
-named in the cookbook's EXEMPT_FILE (`{"why", "topics": [paths below the
-cookbook dir]}`). It may name only EXEMPT_TOPICS, the 21 data topics roled
-before research began; it is emptied as their research lands, and a topic on
-it that has its `research/` folder, that is no roled artifact, or that is not
-one of the 21, is refused by name.
+**Which artifacts are checked.** A cookbook with an EXEMPT_FILE
+(`{"why", "topics": [paths below the cookbook dir]}`) is research-first: every
+artifact in it needs its `research/` folder, except the topics the file lists,
+which are owed research still. The file is emptied as their research lands; a
+listed topic that has its `research/` folder, or that is no artifact, is
+refused by name (`stale-exemption`). A cookbook without the file checks only
+the artifacts the research-first work has touched: every artifact with a
+`research/` folder, and every roled artifact, which must have one.
 
 **Rules the research does not support.** Research that cannot support an
 existing rule records the rule itself as a claim, its source the cookbook's
@@ -50,7 +49,8 @@ in a roled artifact, and every named bullet stating MUST, SHOULD or MAY in any
 other part of an unroled one.
 
 Findings:
-- `no-research`: a roled artifact, not exempt, with no `research/` folder.
+- `no-research`: an artifact that needs research (above), not exempt, with no
+  `research/` folder.
 - `missing-research-file`: `research/` lacks research.json or research.md.
 - `unreadable-research`: research.json is not JSON, or not an object with a
   `claims` list of objects.
@@ -66,8 +66,8 @@ Findings:
   it has more than one.
 - `unknown-claim`: a rule cites an id that is no claim in research.json.
 - `unverdicted-claim`: a rule cites a claim no verdict names.
-- `stale-exemption`: a topic in EXEMPT_FILE has its research, or is no roled artifact.
-- `unknown-exemption`: EXEMPT_FILE names a topic outside EXEMPT_TOPICS.
+- `stale-exemption`: a topic in EXEMPT_FILE has its research, or is no artifact.
+- `duplicate-exemption`: EXEMPT_FILE lists a topic more than once.
 - `unreadable-exemption`: EXEMPT_FILE is not `{"topics": [paths]}`.
 
 Warning (`owner_rules`), never a failure:
@@ -93,16 +93,6 @@ from .roles import named_bullets, rule_texts, states_requirement
 RESEARCH_JSON = "research.json"
 RESEARCH_MD = "research.md"
 EXEMPT_FILE = "research-exempt.json"
-
-#: The only topics EXEMPT_FILE may name: the 21 roled data topics that had no
-#: research when the research-first work began. The list may only shrink; a
-#: topic written since brings its research.
-EXEMPT_TOPICS = frozenset(f"guidelines/implementing/data/{t}" for t in (
-    "access-pattern-analysis", "backup-and-recovery", "clock-systems", "conflict-resolution",
-    "constraints-and-validation", "data-types", "foreign-keys", "indexing", "json-columns",
-    "naming-conventions", "normalization-and-denormalization", "offline-first-architecture",
-    "primary-keys", "query-optimization", "relationships", "schema-evolution", "sync-engine-design",
-    "sync-protocol", "sync-schema-design", "sync-tooling", "transactions-and-concurrency"))
 
 #: The four questions every topic's research answers, and research.md's headings for them.
 QUESTIONS: tuple[tuple[str, str], ...] = (
@@ -217,11 +207,14 @@ def _headings(text: str) -> list[tuple[str, str]]:
     return []
 
 
-def _findings(folder: Path, artifact: Artifact, exempt: set[Path]) -> list[tuple[str, str]]:
+def _findings(folder: Path, artifact: Artifact, exempt: Optional[set[Path]]) -> list[tuple[str, str]]:
+    """`exempt` is None in a cookbook with no EXEMPT_FILE: only a roled artifact needs research there."""
     d = folder / RESEARCH_DIR
     if not d.is_dir():
-        if artifact.roled and folder not in exempt:
-            return [("no-research", f"a roled artifact with no {RESEARCH_DIR}/ folder")]
+        if exempt is None:
+            return [("no-research", f"a roled artifact with no {RESEARCH_DIR}/ folder")] if artifact.roled else []
+        if folder not in exempt:
+            return [("no-research", f"no {RESEARCH_DIR}/ folder, and not listed in {EXEMPT_FILE}")]
         return []
     found = [("missing-research-file", f"{RESEARCH_DIR}/ has no {name}")
              for name in (RESEARCH_JSON, RESEARCH_MD) if not (d / name).is_file()]
@@ -335,17 +328,17 @@ def research_only(root: Path, folder: Path) -> list[ResearchFinding]:
     except ArtifactError as e:
         return [ResearchFinding(folder, "unreadable-research", f"the artifact does not load: {e}")]
     _, stale = exemptions(root)
-    return ([ResearchFinding(folder, k, d) for k, d in _findings(folder, artifact, set())
+    return ([ResearchFinding(folder, k, d) for k, d in _findings(folder, artifact, None)
              if k not in RULE_KINDS]
             + [f for f in stale if f.folder.resolve() == folder.resolve()])
 
 
-def exemptions(root: Path) -> tuple[list[str], list[ResearchFinding]]:
-    """(the topics `root`'s EXEMPT_FILE exempts, below `root`; its findings).
-    A topic outside EXEMPT_TOPICS is refused and exempts nothing."""
+def exemptions(root: Path) -> tuple[Optional[list[str]], list[ResearchFinding]]:
+    """(the topics `root`'s EXEMPT_FILE lists, below `root`, or None when it
+    has no such file; its findings)."""
     path = root / EXEMPT_FILE
     if not path.is_file():
-        return [], []
+        return None, []
     try:
         topics = json.loads(path.read_text(encoding="utf-8")).get("topics")
     except (OSError, UnicodeDecodeError, ValueError, AttributeError):
@@ -353,26 +346,17 @@ def exemptions(root: Path) -> tuple[list[str], list[ResearchFinding]]:
     if not isinstance(topics, list) or not all(isinstance(t, str) for t in topics):
         return [], [ResearchFinding(root, "unreadable-exemption",
                                     f"{EXEMPT_FILE} is not {{\"topics\": [paths]}}")]
-    found = []
-    for t in topics:
+    found = [ResearchFinding(root / t, "duplicate-exemption", f"{t} is listed {k} times in {EXEMPT_FILE}")
+             for t, k in Counter(topics).items() if k > 1]
+    for t in dict.fromkeys(topics):
         folder = root / t
-        if t not in EXEMPT_TOPICS:
-            found.append(ResearchFinding(folder, "unknown-exemption",
-                                         f"{t} is listed in {EXEMPT_FILE} but is not one of the "
-                                         f"{len(EXEMPT_TOPICS)} topics exempted when research began; "
-                                         "the list may only shrink"))
-            continue
-        try:
-            roled = load_folder(folder).roled
-        except ArtifactError:
-            roled = False
-        if not roled:
+        if not is_folder(folder):
             found.append(ResearchFinding(folder, "stale-exemption",
-                                         f"{t} is listed in {EXEMPT_FILE} but is no roled artifact"))
+                                         f"{t} is listed in {EXEMPT_FILE} but is no artifact"))
         elif (folder / RESEARCH_DIR).is_dir():
             found.append(ResearchFinding(folder, "stale-exemption",
                                          f"{t} is listed in {EXEMPT_FILE} but has its {RESEARCH_DIR}/ folder"))
-    return [t for t in topics if t in EXEMPT_TOPICS], found
+    return topics, found
 
 
 def census(root: Path, folders: Iterable[Path]) -> list[ResearchFinding]:
@@ -380,7 +364,7 @@ def census(root: Path, folders: Iterable[Path]) -> list[ResearchFinding]:
     `root`), then on `root`'s exemption list. A folder too broken to read is
     skipped: the compile check reports it."""
     topics, stale = exemptions(root)
-    exempt = {(root / t) for t in topics}
+    exempt = None if topics is None else {(root / t) for t in topics}
     findings = []
     for folder in folders:
         try:
@@ -407,10 +391,10 @@ FIX = {
                            "`(claim: <id>)` or `(claims: <id>, <id>)`.",
     "unverdicted-claim": f"Give each claim a rule cites a verdict in {RESEARCH_JSON}'s 'verdicts': "
                          "one of " + ", ".join(VERDICTS) + ", naming the claim in its 'claims'.",
-    "unknown-exemption": f"Take the topic off {EXEMPT_FILE} and give it its research: the list only shrinks.",
+    "duplicate-exemption": f"List the topic once in {EXEMPT_FILE}.",
     "unknown-claim": f"Cite a claim id from {RESEARCH_JSON}, or add the claim to the research.",
     "stale-exemption": f"Remove the topic from {EXEMPT_FILE}: it has its research, which is checked now, "
-                       "or it is no roled artifact.",
+                       "or it is no artifact (moved, folded or deleted).",
     "owner-decides": "The owner decides the rule: keep it as it is, reword it, or drop it.",
     "unreadable-exemption": f"Make {EXEMPT_FILE} a JSON object: {{\"why\": …, \"topics\": [paths]}}.",
 }

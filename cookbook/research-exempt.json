@@ -1,5 +1,5 @@
 {
-  "why": "These roled topics were converted before research-first (R10) was ruled. Their research is Task P2 of the finish-the-cookbook-roles plan (teamtesting: docs/superpowers/plans/2026-11-16-finish-the-cookbook-roles.md). Each topic leaves this list in the commit that adds its research/ folder, and cookr validate refuses a listed topic that has one. Every other roled artifact needs research/ now. Task 8b brings in the unroled rest.",
+  "why": "The topics written before research-first became the rule, whose research is still to come. Every other artifact in this cookbook is written from its research, kept in its research/ folder (see guide/introduction/conventions.md, Research). A topic leaves this list in the commit that adds its research/ folder (/grow-cookbook, stage 2), and nothing joins it: a topic written now brings its research. cookr validate refuses a listed topic that has research/, that is no artifact, or that is listed twice.",
   "topics": [
     "guidelines/implementing/data/access-pattern-analysis",
     "guidelines/implementing/data/backup-and-recovery",

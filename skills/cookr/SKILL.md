@@ -300,19 +300,19 @@ no role compiles as before.
 four question headings `## Best practices`, `## Known solutions`,
 `## Platform guidelines` and `## The expert's view`, in that order). Nothing
 compiles, walks or reads `research/` as a spec. `cookr validate`'s Research
-section checks every roled artifact and every artifact that has a `research/`
-folder, and leaves the rest alone until Task 8b of the roles plan brings them
-in. It refuses a roled artifact with no `research/`, a claim missing a field of
+section makes a cookbook with a `research-exempt.json` research-first: every
+artifact in it needs `research/`, except the topics that file lists as owed
+research. A cookbook without the file checks every roled artifact and every
+artifact that has a `research/` folder, and leaves the rest alone. It refuses
+an artifact that needs research and has no `research/`, a claim missing a field of
 its record, a rule that cites no claim or an unknown one, a citation that
 does not end its rule, and a cited claim no verdict names. A rule cites claims
 once, at the end of its named bullet, as `(claim: <id>)` or
 `(claims: <id>, <id>)`; the skill compile leaves the citation out, and
 `roles lossless` reads a rule without it. `research` is a reserved spec name,
-like `hosts` and `versions`. A roled topic whose research is still to come is
-named in the cookbook's `research-exempt.json`, which may name only the 21
-data topics roled before research began and is emptied as research lands. A
-listed topic that has its `research/`, that is no roled artifact, or that is
-not one of the 21, is refused by name. Every verdict names a claim. A rule the research cannot support is recorded as a claim itself, its source the cookbook's own text at the topic's base commit, with an `unsupported` verdict (`contradicted` when the research finds against it) naming that claim; a rule kept for the owner cites it, and `cookr validate` passes it with an `owner-decides` warning naming the rule and the claim. Only a rule citing such a prior-cookbook-text claim is warned of; a rule citing a research claim that shares the verdict is not the owner's.
+like `hosts` and `versions`. `research-exempt.json` (`{"why", "topics": [paths below the cookbook
+dir]}`) is emptied as research lands. A listed topic that has its
+`research/`, that is no artifact, or that is listed twice, is refused by name. Every verdict names a claim. A rule the research cannot support is recorded as a claim itself, its source the cookbook's own text at the topic's base commit, with an `unsupported` verdict (`contradicted` when the research finds against it) naming that claim; a rule kept for the owner cites it, and `cookr validate` passes it with an `owner-decides` warning naming the rule and the claim. Only a rule citing such a prior-cookbook-text claim is warned of; a rule citing a research claim that shares the verdict is not the owner's.
 `cookr validate --research <folder>` checks that folder's research alone,
 without its rules' citations, as research ends; a path that is no artifact
 source folder (a typo) exits 2 naming it, never `no-research`.

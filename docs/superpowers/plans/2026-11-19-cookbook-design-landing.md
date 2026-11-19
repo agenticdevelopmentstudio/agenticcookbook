@@ -13,8 +13,8 @@ Tooling
 - ✅ gapfix15 committed (G303–G305); grow-cookbook 1.4.44 (G305: no time or order dependence found by reading; the repeat runs happen at the test gate)
 - ✅ main's 6d9333f (NEEDS REVIEW markers) merged; the 3 cookr conflicts resolved keeping both features; cookr 0.22.0
 - ⬜ the conventions guide describes roled parts, named rules, one source per topic and `research/` as the standard
-- ⬜ `cookr validate` requires `research/` on every topic not listed in `research-exempt.json`
-- ⬜ `research-exempt.json` explains itself with no path outside this repo
+- ✅ `cookr validate` requires `research/` on every topic not listed in `research-exempt.json`
+- ✅ `research-exempt.json` explains itself with no path outside this repo
 - ⬜ grow-cookbook stage 1 without a devteam checkout exits with a plain message naming what it needs
 
 Content

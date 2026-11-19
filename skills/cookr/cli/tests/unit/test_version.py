@@ -28,5 +28,7 @@ def test_the_version_is_pinned():
     # (nothing spent), and the seal is taken over canonical JSON.
     # 0.22.0: merges main's 0.14.0 (a builder skill tells whoever builds to
     # settle the artifact's NEEDS REVIEW markers first); a roled artifact's
-    # builder carries that notice, its reviewer and verifiers do not.
+    # builder carries that notice, its reviewer and verifiers do not. A
+    # cookbook with research-exempt.json is research-first: every artifact
+    # it does not list needs research/ (the 21-topic pin is gone).
     assert __version__ == "0.22.0"

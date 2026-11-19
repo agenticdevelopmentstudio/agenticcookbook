@@ -175,16 +175,13 @@ rule cites it.
 Nothing compiles, walks or reads `research/` as a spec, so it never reaches a
 doc or a skill. `/grow-cookbook` is the procedure that writes it.
 
-**What `cookr validate` checks, for now.** The research check is enforced only
-for the artifacts the finish-the-cookbook-roles plan touches: every roled
-artifact and every artifact that has a `research/` folder. Every other artifact
-is left alone until Task 8b of that plan brings the rest in. A roled artifact
-with no `research/` is refused, unless it is named in
-`cookbook/research-exempt.json`. That file lists the roled data topics
-converted before research-first was ruled. Each topic leaves the list in the
-commit that adds its research (Task P2), and a listed topic that has its
-`research/`, that is no roled artifact, or that is not one of those 21 data
-topics, is refused by name: the list only shrinks.
+**What `cookr validate` checks.** This cookbook is research-first: every
+artifact needs its `research/` folder, unless it is named in
+`cookbook/research-exempt.json`. That file lists the topics written before
+research-first was ruled whose research is still to come. Each topic leaves the
+list in the commit that adds its research, and nothing joins it: a topic written
+now is written from its research. A listed topic that has its `research/`, that
+is no artifact, or that is listed twice, is refused by name.
 
 ### Change History
 

@@ -217,16 +217,17 @@ def _research_only(root: Path, folder: Path, ui) -> int:
 
 
 def _research(root: Path, folders: list[Path], ui) -> int:
-    """Every roled artifact, and every artifact with a research/ folder, has
-    research whose claims are complete, and each of its rules cites a claim of
-    it; a roled topic still to be researched is named in the exemption list."""
+    """In a research-first cookbook (one with research.EXEMPT_FILE) every
+    artifact not listed there, and otherwise every roled artifact, has research
+    whose claims are complete, each of its rules citing a claim of it."""
     findings = research.census(root, folders)
     _owner(root, folders, ui)
     if not findings:
         topics, _ = research.exemptions(root)
         checked = sum(1 for f in folders if (f / research.RESEARCH_DIR).is_dir())
-        ui.ok(f"Every researched artifact's rules cite its research ({checked} researched; "
-              f"{len(topics)} roled topic(s) exempt until their research lands).")
+        owed = (f"{len(topics)} topic(s) listed as owed research" if topics is not None
+                else f"no {research.EXEMPT_FILE}, so only roled artifacts need research")
+        ui.ok(f"Every researched artifact's rules cite its research ({checked} researched; {owed}).")
         return 0
     ui.table(["artifact", "finding", "detail", "fix"],
              [[_where(root, f.folder), f.kind, f.detail, research.FIX[f.kind]] for f in findings])

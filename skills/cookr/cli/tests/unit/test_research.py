@@ -17,16 +17,13 @@ from .cookbook_helpers import add_doc, new_repo
 # Every tmp_path here is a git repo, as a real cookbook checkout is.
 pytestmark = pytest.mark.usefixtures("git_tmp_path")
 
-TOPIC = "guidelines/implementing/data/indexing"   # one of the 21 topics an exemption may name
-NEW_TOPIC = "guidelines/implementing/data/keys"   # one no exemption may name
+TOPIC = "guidelines/implementing/data/indexing"
+NEW_TOPIC = "guidelines/implementing/data/keys"
 
-#: The 21 roled data topics that had no research when the research-first work began.
-THE_21 = frozenset(f"guidelines/implementing/data/{t}" for t in (
-    "access-pattern-analysis", "backup-and-recovery", "clock-systems", "conflict-resolution",
-    "constraints-and-validation", "data-types", "foreign-keys", "indexing", "json-columns",
-    "naming-conventions", "normalization-and-denormalization", "offline-first-architecture",
-    "primary-keys", "query-optimization", "relationships", "schema-evolution", "sync-engine-design",
-    "sync-protocol", "sync-schema-design", "sync-tooling", "transactions-and-concurrency"))
+#: The ceiling on the cookbook's own exemption list: the topics owed research when
+#: research-first became the rule. It only falls: lower it as research lands, and
+#: never raise it, since a topic written since brings its research.
+OWED_CEILING = None
 RULE = "- **must-index-keys**: Every foreign key MUST have an index.{cite}\n"
 BODY = """# Keys
 
@@ -191,10 +188,26 @@ def test_validate_refuses_an_artifact_without_research(tmp_path, monkeypatch, pa
 
 
 def test_an_unroled_artifact_without_research_is_left_alone(tmp_path, monkeypatch, patch_refs):
+    # A cookbook with no exemption list has not taken up research-first: only its roled artifacts need research.
     monkeypatch.chdir(tmp_path)
     new_repo(tmp_path)
     folder = add_doc(tmp_path, "recipes/alpha", "# Alpha\n\n- **be**: Alpha MUST be.\n\n## Change History\n\nx\n")
     assert kinds(tmp_path / "cookbook", folder) == []
+
+
+def test_a_research_first_cookbook_needs_research_on_every_artifact_it_does_not_list(
+        tmp_path, monkeypatch, patch_refs, capsys):
+    # An exemption list makes the cookbook research-first: an unroled artifact needs research too, unless listed.
+    monkeypatch.chdir(tmp_path)
+    new_repo(tmp_path)
+    cb = tmp_path / "cookbook"
+    folder = add_doc(tmp_path, "recipes/alpha", "# Alpha\n\n- **be**: Alpha MUST be.\n\n## Change History\n\nx\n")
+    (cb / research.EXEMPT_FILE).write_text(json.dumps({"why": "x", "topics": []}), encoding="utf-8")
+    assert kinds(cb, folder) == [("no-research", f"no research/ folder, and not listed in {research.EXEMPT_FILE}")]
+    code, out = validate(cb, capsys, monkeypatch)
+    assert code == 1 and "no-research" in out
+    (cb / research.EXEMPT_FILE).write_text(json.dumps({"why": "x", "topics": ["recipes/alpha"]}), encoding="utf-8")
+    assert kinds(cb, folder) == []
 
 
 def test_an_exempt_topic_passes_until_its_research_lands(tmp_path, monkeypatch, patch_refs, capsys):
@@ -211,26 +224,23 @@ def test_an_exempt_topic_passes_until_its_research_lands(tmp_path, monkeypatch, 
     assert code == 1 and TOPIC in out
 
 
-def test_an_exemption_outside_the_21_is_refused(tmp_path, monkeypatch, patch_refs, capsys):
-    # The list may only shrink: a topic written since must bring its research.
+def test_any_topic_without_research_may_be_listed(tmp_path, monkeypatch, patch_refs):
+    # 0.22.0: the 21-topic pin is gone; the list names every topic owed research.
     cb, folder = roled(tmp_path, monkeypatch, rel=NEW_TOPIC)
     (cb / research.EXEMPT_FILE).write_text(json.dumps({"why": "x", "topics": [NEW_TOPIC]}), encoding="utf-8")
-    assert kinds(cb, folder) == [
-        ("no-research", "a roled artifact with no research/ folder"),
-        ("unknown-exemption", f"{NEW_TOPIC} is listed in {research.EXEMPT_FILE} but is not one of the "
-                              "21 topics exempted when research began; the list may only shrink"),
-    ]
-    code, out = validate(cb, capsys, monkeypatch)
-    assert code == 1 and "unknown-exemption" in out and research.FIX["unknown-exemption"] in out
+    assert kinds(cb, folder) == []
 
 
-def test_an_exemption_naming_no_roled_artifact_is_refused(tmp_path, monkeypatch, patch_refs):
+def test_an_exemption_naming_no_artifact_or_twice_is_refused(tmp_path, monkeypatch, patch_refs, capsys):
     cb, folder = roled(tmp_path, monkeypatch)
     write_research(folder)
-    (cb / research.EXEMPT_FILE).write_text(json.dumps({"why": "x", "topics": ["guidelines/implementing/data/sync-tooling"]}),
-                                           encoding="utf-8")
-    assert kinds(cb, folder) == [("stale-exemption", "guidelines/implementing/data/sync-tooling is listed in "
-                                                     f"{research.EXEMPT_FILE} but is no roled artifact")]
+    gone = "guidelines/implementing/data/sync-tooling"
+    (cb / research.EXEMPT_FILE).write_text(json.dumps({"why": "x", "topics": [gone, gone]}), encoding="utf-8")
+    assert kinds(cb, folder) == [
+        ("duplicate-exemption", f"{gone} is listed 2 times in {research.EXEMPT_FILE}"),
+        ("stale-exemption", f"{gone} is listed in {research.EXEMPT_FILE} but is no artifact")]
+    code, out = validate(cb, capsys, monkeypatch)
+    assert code == 1 and research.FIX["duplicate-exemption"] in out
 
 
 def test_validate_refuses_a_rule_citing_no_research_claim(tmp_path, monkeypatch, patch_refs, capsys):
@@ -357,23 +367,22 @@ def test_an_unroled_artifact_with_research_cites_each_named_rule(tmp_path, monke
     assert kinds(tmp_path / "cookbook", folder) == [("rule-cites-nothing", "rule 'stay' cites no research claim")]
 
 
-def test_the_exemptions_are_pinned_to_the_21_data_topics():
-    assert research.EXEMPT_TOPICS == THE_21
-
-
-def test_the_cookbooks_exemption_list_names_only_roled_topics_without_research():
-    """The cookbook's own list: some of the 21 data topics, each once, each
-    roled and without research yet. Task P2 empties it as each topic's
-    research lands; nothing is ever added."""
-    from pathlib import Path
+def test_the_cookbooks_exemption_list_names_only_artifacts_without_research():
+    """The cookbook's own list: each topic owed research, once, each an
+    artifact with no research yet, no more of them than OWED_CEILING, and
+    every artifact the list leaves out researched."""
     cb = Path(__file__).resolve().parents[5] / "cookbook"
     exempt = cb / research.EXEMPT_FILE
     if not exempt.is_file():
         pytest.skip("not run from the cookbook's own checkout")
-    topics = json.loads(exempt.read_text(encoding="utf-8"))["topics"]
+    doc = json.loads(exempt.read_text(encoding="utf-8"))
+    topics = doc["topics"]
     assert len(topics) == len(set(topics))
-    assert set(topics) <= THE_21, sorted(set(topics) - THE_21)
-    assert [(f.kind, f.detail) for f in research.census(cb, [cb / t for t in topics])] == []
+    assert OWED_CEILING is not None and len(topics) <= OWED_CEILING, (len(topics), OWED_CEILING)
+    folders = sorted(p.parent for p in cb.rglob("artifact.json"))
+    assert [(f.kind, f.detail) for f in research.census(cb, folders) if f.kind in (
+        "no-research", "stale-exemption", "duplicate-exemption", "unreadable-exemption")] == []
+    assert "teamtesting" not in doc["why"] and "../" not in doc["why"], doc["why"]
 
 
 # --- rules the research could not support: kept, cited, and left to the owner -------------
