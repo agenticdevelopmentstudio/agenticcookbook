@@ -11,6 +11,6 @@
 - **must-not-sacrifice-readability-for-density**: Readability MUST NOT be sacrificed for density.
 - **should-keep-one-primary-scroll-direction**: Scroll direction — SHOULD keep one primary scroll direction per view.
 - **should-avoid-nested-same-direction-scrolling**: Nested same-direction scrolling SHOULD be avoided.
-- **must-not-use-inline-style-pixel-widths**: Inline style pixel widths MUST NOT be used for layout.
-- **should-use-em-rem-or-device-class-breakpoints**: Breakpoints SHOULD use `em`/`rem` or device-class media queries.
-- **should-match-dom-order-to-reading-order**: DOM order SHOULD match visual reading order.
+- **must-not-use-inline-style-pixel-widths**: On the web, inline style pixel widths MUST NOT be used for layout.
+- **should-use-relative-unit-breakpoints-on-the-web**: On the web, breakpoints SHOULD use `em`/`rem` units, set where the content needs them.
+- **should-match-dom-order-to-reading-order**: On the web, DOM order SHOULD match visual reading order.

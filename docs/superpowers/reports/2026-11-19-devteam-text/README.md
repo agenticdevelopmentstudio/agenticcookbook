@@ -67,6 +67,10 @@ Duplicate strengths removed after review finding f5, each requirement now at one
   sentences sit under the MUST rule.
 
 Tensions the batches noted (no rule directly contradicted):
+- `guidelines/implementing/ui/layout`: devteam's "breakpoints use `em`/`rem` or device-class media queries;"
+  against the topic's `should-design-for-content-not-screen-size`. After review finding f8 the rule is
+  `should-use-relative-unit-breakpoints-on-the-web` (`em`/`rem`, set where the content needs them), and its two
+  web-only neighbours say "On the web". Devteam's sentence stays in the review bar.
 - `guidelines/implementing/ui/typography`: devteam allows a custom font with justification; the topic says "The platform's system font MUST
   be used".
 - `guidelines/implementing/networking/offline-and-connectivity`: devteam's "circuit breaker present or explicitly scoped out" against the
