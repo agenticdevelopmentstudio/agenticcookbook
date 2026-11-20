@@ -219,3 +219,58 @@ def test_fold_of_the_last_twin_clears_the_topics_twin_differs(tmp_path, capsys):
     assert code == 0 and load_folder(topic).twin_differs is not None
     code, _ = _fold(third, topic, capsys)
     assert code == 0 and load_folder(topic).twin_differs is None
+
+
+def _exempt(cb, *topics):
+    (cb / "research-exempt.json").write_text(json.dumps({"why": "w", "topics": list(topics)}, indent=2) + "\n")
+
+
+def test_fold_moves_the_copys_research_exemption_to_the_topic(tmp_path, capsys):
+    # review f1: a folded copy left in research-exempt.json is a stale-exemption validate refuses
+    cb = tmp_path / "cookbook"
+    topic, copy = _topic(cb), _copy(cb)
+    _exempt(cb, "guidelines/a/x", "guidelines/planning/data/t")
+    code, _ = _fold(copy, topic, capsys)
+    assert code == 0
+    data = json.loads((cb / "research-exempt.json").read_text())
+    assert data == {"why": "w", "topics": ["guidelines/a/x", "guidelines/implementing/data/t"]}
+
+
+def test_fold_drops_the_copys_exemption_when_the_topic_has_its_research(tmp_path, capsys):
+    cb = tmp_path / "cookbook"
+    topic, copy = _topic(cb), _copy(cb)
+    (topic / "research").mkdir()
+    (topic / "research" / "claims.json").write_text("{}")
+    _exempt(cb, "guidelines/planning/data/t")
+    code, _ = _fold(copy, topic, capsys)
+    assert code == 0
+    assert json.loads((cb / "research-exempt.json").read_text())["topics"] == []
+
+
+def test_fold_leaves_the_exemptions_alone_when_the_copy_was_not_listed(tmp_path, capsys):
+    cb = tmp_path / "cookbook"
+    topic, copy = _topic(cb), _copy(cb)
+    _exempt(cb, "guidelines/a/x")
+    before = (cb / "research-exempt.json").read_text()
+    code, _ = _fold(copy, topic, capsys)
+    assert code == 0 and (cb / "research-exempt.json").read_text() == before
+
+
+@pytest.mark.parametrize("held", ["research", "nested"])
+def test_fold_refuses_a_copy_holding_research_or_a_nested_artifact(tmp_path, capsys, held):
+    # review f2: the copy is deleted whole, so what it holds below it would go with no redirect
+    cb = tmp_path / "cookbook"
+    topic, copy = _topic(cb), _copy(cb)
+    if held == "research":
+        (copy / "research").mkdir()
+        (copy / "research" / "claims.json").write_text("{}")
+        named = "research/"
+    else:
+        _linker(cb, "guidelines/planning/data/t/child", type_="guideline")
+        named = "child/"
+    before = load_folder(topic)
+    capsys.readouterr()
+    code = main(["fold", str(copy), "--into", str(topic), "--author", "Tester", "--date", "2026-11-16"])
+    said = capsys.readouterr()
+    assert code != 0 and named in said.out + said.err, said
+    assert copy.is_dir() and load_folder(topic).parts == before.parts
