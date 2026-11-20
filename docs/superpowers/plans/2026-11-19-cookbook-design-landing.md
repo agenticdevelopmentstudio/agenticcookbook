@@ -31,7 +31,7 @@ Gates
   10 findings, each fixed in its own commit (f4, f7 and f10 in part; the refuted halves say why in their commits);
   fixes recorded with `teambench live fixes`; suites re-run after the fixes: cookr 1550, grow-cookbook 698,
   `validate` and `lint --no-llm` over 383 artifacts all pass
-- ⬜ landed with `/ship no-squash`
+- ✅ landed with `/ship no-squash` (PR #81, `c37f15c`)
 
 ## Phase 2 — convert the content (`cookbook-design-landing-phase-2`)
 

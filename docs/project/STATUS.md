@@ -1,6 +1,6 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-11-13. *Derives from:* `226f310` (PR #64, agenticcookbook),
+*Updated:* 2026-11-19 (PR #81). *Derives from:* `226f310` (PR #64, agenticcookbook),
 `2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`),
 PR #72 (`dd2e4670`, `44c510bf`), PR #74 (`689ab01`, `e75c550`), PR #78
 (`48d460aa`, `40c02a7f`, `63522f3f`), `52df843b` (cookr 0.13.1), and
@@ -12,6 +12,40 @@ Read this first to resume the work. The design lives in the
 format 2 and recipes-first adoption live in the
 [adoption design](../superpowers/specs/2026-11-09-cookr-adoption-design.md) and its
 [plan](../superpowers/plans/2026-11-09-cookr-adoption.md).
+
+## Cookbook design landing, phase 1 (PR #81, 2026-11-19)
+
+*Derives from:* PR #81, `6d9333f..c37f15c` (20 commits, landed one by one). The checklist is
+[2026-11-19-cookbook-design-landing.md](../superpowers/plans/2026-11-19-cookbook-design-landing.md).
+Phase 1 has landed. Phase 2 (converting the content) comes next.
+
+What landed and why:
+
+- **Copies folded into their surviving topics.** 95 unflagged pairs and 7 of the 10 flagged ones were folded, by the
+  owner's ruling. completeness, unit-test-patterns and properties-of-good-tests stay as separate topics. Every link
+  and UUID now points at the survivor. `cookr roles fold` (`cookr/core/rolework.py`) refuses a copy that still holds
+  `research/` or nested artifacts, because folding those would drop them. It also carries the copy's entry in
+  `research-exempt.json` over to the surviving topic, so a fold cannot make `validate` start failing.
+- **Research is the standard.** `cookr validate` requires `research/` on every topic that isn't listed in
+  `cookbook/research-exempt.json`. 380 topics are still owed research (`OWED_CEILING = 380`), so the list can only
+  shrink.
+- **Roled parts and named rules.** The design is described in the conventions guide. ab-testing, debug-mode and
+  feature-flags are the converted examples, and they pass `cookr roles lossless --require-judged`.
+- **cookr 0.22.0, grow-cookbook 1.4.45.** The NEEDS REVIEW markers from main are merged in. Other changes:
+  - gapfix15 (G303–G305);
+  - `devteam_checkout.py` runs under `python -I`;
+  - `cookr.core.gaps.pieces` is now the single cut that `run_gaps` shares;
+  - fences written with `~~~` or four backticks are recognised in gaps and `uncited`;
+  - `roots.artifact_path` respects the caller's `cwd`;
+  - `_CheckedEntries` gives the same answer to indexing as to iteration;
+  - the worklist skips folders under `research/`.
+- **Review.** `mycodereview --squashed --cr high` ran as review `2026-11-20-live-claude-claude-opus-5-5-e51c`. Each
+  of its 10 findings was fixed in its own commit with a `Review-Finding:` trailer, and the fixes were recorded with
+  `teambench live fixes`. After the fixes, the suites passed: cookr 1550, grow-cookbook 698, and `validate` and
+  `lint --no-llm` over 383 artifacts.
+
+Open: phase 2 converts about 250 guideline topics and the 44 principles into roled parts. After that, the devteam
+re-pins this cookbook (its `devteam-scope-specialists` checklist in teamtesting).
 
 ## Concise compiled skills and the recompile (PR #78, 2026-11-13)
 
