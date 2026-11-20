@@ -9,3 +9,6 @@
 - **should-verify-boundaries-without-framework-imports**: SHOULD verify boundaries by confirming core logic compiles and tests pass with no framework imports.
 - **should-extend-at-the-boundary**: Extend at the boundary, don't break the contract: once a boundary is stable and widely depended on, SHOULD add capability through new implementations behind the port rather than changing the port's existing shape.
 - **should-not-pre-generalize-unstable-boundaries**: SHOULD apply extend-at-the-boundary only to boundaries that have actually stabilized, and SHOULD NOT pre-generalize one you are still discovering (see yagni, steel-thread-first).
+- **should-test-adapter-to-port-wiring**: SHOULD have at least one integration test that verifies adapter-to-port wiring.
+- **should-expose-clear-skill-contracts**: Skills SHOULD expose clear input/output contracts — well-defined interfaces between subsystems — and their inputs and outputs SHOULD be clearly documented.
+- **should-give-agents-only-the-context-they-need**: Agents SHOULD receive only the context needed for their task, not the full session history.

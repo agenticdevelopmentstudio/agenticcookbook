@@ -4,11 +4,11 @@
     "id": "e446ee3e-b8f2-40e7-b93d-3113e6a95e5d",
     "title": "Debug mode",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-16",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -39,13 +39,13 @@
     ],
     "references": [],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-16",
+    "approved-date": "2026-11-19",
     "triggers": [
       "feature-flags",
       "logging"
     ]
   },
-  "synced": "b27df43370c87440",
+  "synced": "cc4b503584f62472",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

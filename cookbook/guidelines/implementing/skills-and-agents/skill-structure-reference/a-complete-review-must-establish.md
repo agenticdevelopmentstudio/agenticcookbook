@@ -7,3 +7,5 @@
 - `must-name-the-main-file-skill-md`: whether the main file is named exactly `SKILL.md`
 - `should-name-supporting-files-lowercase`: whether supporting files use lowercase descriptive names
 
+- `should-follow-skills-directory-layout`: Skill directory follows `.claude/skills/<name>/SKILL.md` layout;
+- `should-set-argument-hint-when-using-arguments`: `argument-hint` present when `$ARGUMENTS` used

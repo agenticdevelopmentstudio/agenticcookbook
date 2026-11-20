@@ -1,0 +1,21 @@
+
+- **provide-widgets-for-glanceable-data**: Apps with time-sensitive or frequently checked data SHOULD provide widgets and glanceable surfaces on platforms that support them.
+- **show-only-most-important-information**: You SHOULD show only the most important information — widgets are not miniature apps.
+- **support-multiple-sizes**: You SHOULD support multiple widget sizes when the platform offers them.
+- **must-deep-link-on-tap**: Tapping a widget MUST deep link to the relevant content in the app.
+- **update-on-reasonable-cadence**: You SHOULD update widget content on a reasonable cadence — balance freshness against battery and data usage.
+- **apple-use-widgetkit**: On Apple platforms, you SHOULD use WidgetKit with SwiftUI views.
+- **apple-support-widget-families**: On Apple platforms, you SHOULD support small, medium, and large widget families.
+- **ios17-support-interactive-widgets**: On iOS 17+, you SHOULD support interactive widgets with `AppIntent`-backed buttons and toggles.
+- **ios16-support-lock-screen-widgets**: On iOS 16+, you SHOULD support Lock Screen widgets.
+- **apple-use-timelineprovider-and-reload**: On Apple platforms, you SHOULD use `TimelineProvider` for scheduled updates and `WidgetCenter.shared.reloadTimelines` for event-driven refresh.
+- **apple-use-live-activities-for-realtime**: On Apple platforms, for real-time status, you SHOULD use Live Activities with `ActivityKit` and the Dynamic Island on supported devices.
+- **android-use-jetpack-glance**: On Android, you SHOULD use Jetpack Glance with Compose-style APIs for home screen widgets.
+- **android-define-appwidget-provider**: On Android, you SHOULD define widget metadata in `appwidget-provider` XML.
+- **android-support-resize-and-onupdate**: On Android, you SHOULD support resizable widgets and respond to `onUpdate` broadcasts.
+- **android-refresh-with-workmanager**: On Android, you SHOULD use `WorkManager` for background data refresh.
+- **android-follow-material-you**: On Android, you SHOULD follow Material You theming for visual consistency with the system.
+- **pwa-use-badging-api**: For a PWA, you SHOULD use the Badging API for app icon notification counts.
+- **pwa-support-periodic-background-sync**: For a PWA, you SHOULD support periodic background sync via service workers for data freshness.
+- **pwa-explore-widget-api-proposals**: For a PWA, you SHOULD explore experimental Widget API proposals where available.
+- **pwa-consider-tray-or-menu-bar**: On desktop PWAs, you SHOULD consider system tray or menu bar presence where the platform allows.

@@ -8,3 +8,4 @@
 - `should-limit-font-weights-per-screen`: whether each screen uses at most 2-3 font weights
 - `should-avoid-all-caps`: whether all-caps is kept to a few words
 - `should-keep-paragraph-width-45-75-characters`: whether paragraph width is 45-75 characters
+- `must-use-platform-system-font`: System font used (not custom fonts without justification);

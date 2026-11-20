@@ -4,7 +4,7 @@
     "id": "34486fb8-8a0b-4538-a40a-13124155cd56",
     "title": "Naming",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -32,7 +32,7 @@
       "new-module"
     ]
   },
-  "synced": "cb573b0c9a7facaf",
+  "synced": "09e5e0c3a048f71c",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

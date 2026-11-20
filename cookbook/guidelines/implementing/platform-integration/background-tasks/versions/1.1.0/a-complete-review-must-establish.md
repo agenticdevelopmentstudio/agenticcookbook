@@ -1,0 +1,21 @@
+
+- `use-platform-background-apis`: whether apps that sync, upload or maintain state use platform background execution APIs
+- `use-sanctioned-background-apis`: whether only the platform's sanctioned background APIs are used
+- `design-tasks-to-be-resumable`: whether each background task can resume after interruption
+- `minimize-resource-usage`: whether background work keeps CPU and network use minimal
+- `report-progress-through-notifications`: whether progress and completion are reported through notifications where appropriate
+- `apple-use-bgtasks-for-deferred-work`: whether deferred work on Apple platforms uses the BackgroundTasks framework
+- `apple-use-urlsession-background-transfers`: whether transfers that must survive suspension use `URLSession` background sessions
+- `macos-prevent-app-nap`: whether longer-running macOS background work uses `ProcessInfo.performActivity`
+- `macos-use-nsbackgroundactivityscheduler`: whether periodic macOS maintenance uses `NSBackgroundActivityScheduler`
+- `android-use-workmanager-for-deferrable-work`: whether all deferrable Android background work uses `WorkManager`
+- `android-use-foregroundservice-for-visible-work`: whether user-visible ongoing Android work runs in a `ForegroundService` with a persistent notification
+- `android-respect-doze-and-standby`: whether Android background work respects Doze and App Standby buckets
+- `android-avoid-alarmmanager`: whether `AlarmManager` is used for work `WorkManager` can handle
+- `windows-use-backgroundtask`: whether Windows background execution uses `BackgroundTask` with the Windows App SDK
+- `windows-register-triggers-in-manifest`: whether Windows background triggers are registered in the app manifest
+- `windows-use-extendedexecutionsession`: whether long-running Windows tasks use `ExtendedExecutionSession`
+- `web-use-service-workers`: whether web background sync and push handling run in Service Workers
+- `web-use-periodic-background-sync`: whether recurring web data refresh uses the Periodic Background Sync API
+- `web-use-web-workers-for-cpu-work`: whether CPU-intensive web work runs in Web Workers
+- `web-fall-back-to-requestidlecallback`: whether low-priority deferred web work falls back to `requestIdleCallback`

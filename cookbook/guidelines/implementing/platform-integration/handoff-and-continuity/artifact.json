@@ -4,7 +4,7 @@
     "id": "2212a394-68d8-4588-a587-2fc637280deb",
     "title": "Handoff and continuity",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -38,7 +38,7 @@
       "offline-support"
     ]
   },
-  "synced": "5bcd9a6cac8d6790",
+  "synced": "bb145f5819db01a3",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

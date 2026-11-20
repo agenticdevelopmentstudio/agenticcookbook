@@ -1,0 +1,17 @@
+
+- `should-reduce-friction-at-every-step`: the form adds no step or effort the task does not need, or the work says why
+- `should-use-single-column-layout`: the form is single-column, or the work says why not
+- `should-use-top-aligned-or-floating-labels`: every label is top-aligned or floating, or the work says why not
+- `should-group-related-fields`: related fields are grouped with spacing or section headers, or the work says why not
+- `should-place-primary-action-at-bottom`: the primary action is at the bottom, aligned with the form fields, or the work says why not
+- `should-validate-on-blur`: fields validate when the user leaves them, or the work says why not
+- `should-validate-full-form-on-submit`: submit validates the full form, or the work says why not
+- `must-not-validate-while-typing`: no validation fires while the user is actively typing in a field
+- `should-show-success-indicators-only-where-wondered`: success indicators appear only on fields such as username availability, or the work says why
+- `must-show-errors-inline`: every field error appears inline directly below its field
+- `must-not-signal-errors-by-color-alone`: every error carries an icon and text as well as color
+- `should-write-specific-actionable-errors`: each error message says what is wrong and how to fix it, or the work says why not
+- `should-not-blame-the-user`: no error message blames the user, or the work says why
+- `should-use-placeholder-for-format-hints-only`: every field has a real label and placeholder text gives format hints only, or the work says why not
+- `should-pre-fill-and-default`: fields are pre-filled or defaulted where possible, or the work says why not
+- `should-mark-optional-fields`: optional fields are marked and required ones are not, or the work says why not

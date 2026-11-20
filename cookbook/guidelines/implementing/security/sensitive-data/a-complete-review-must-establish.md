@@ -5,3 +5,4 @@
 - `must-not-log-pii`: whether any token, password, credit card number or PII reaches a log output at any level
 - `must-not-expose-internals-in-api-responses`: whether any production response exposes internal IDs, stack traces or database error messages
 - `should-set-no-store-on-sensitive-responses`: whether every response containing sensitive data sets `Cache-Control: no-store`
+- `must-return-only-needed-fields`: API responses return only needed fields via explicit DTOs rather than raw database models;

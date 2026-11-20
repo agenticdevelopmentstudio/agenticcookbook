@@ -1,0 +1,35 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "f6679a9d-e90e-4fc6-ac4c-0696851af484",
+    "title": "Composition over inheritance",
+    "type": "principle",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Default to composing behaviors from small, focused pieces. Use inheritance only for genuine is-a relationships, prefer protocols over base classes, and wrap rather than subclass.",
+    "platforms": [],
+    "tags": [
+      "composition-over-inheritance"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "98831886ecc9738e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

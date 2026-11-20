@@ -15,3 +15,4 @@
 - `should-use-placeholder-for-format-hints-only`: whether placeholder text is used only for format hints
 - `should-pre-fill-and-default`: whether fields are pre-filled or defaulted where possible
 - `should-mark-optional-fields`: whether optional fields, not required ones, are marked
+- `should-link-errors-to-fields-with-aria-describedby`: `aria-describedby` links field to error;

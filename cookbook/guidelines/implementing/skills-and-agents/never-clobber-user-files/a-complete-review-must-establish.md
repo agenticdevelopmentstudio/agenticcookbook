@@ -14,3 +14,4 @@
 - `should-print-one-line-per-skipped-file`: whether each skipped file gets one line with its path, the reason and what the user can do
 - `should-exit-non-zero-on-a-skipped-conflict`: whether the installer exits non-zero when any file was skipped for a conflict
 
+- `should-namespace-everything-shipped`: shipped names are prefixed or package-owned;

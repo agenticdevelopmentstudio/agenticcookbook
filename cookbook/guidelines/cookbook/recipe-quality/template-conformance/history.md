@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.1.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 2.1.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 2.0.0 | 2026-11-09 | Mike Fullerton | cookr format 2: UUID identity and rdid links replace the domain field |
 | 1.0.4 | 2026-09-25 | Mike Fullerton | Checklist domain item: the scheme names the repo the file lives in |

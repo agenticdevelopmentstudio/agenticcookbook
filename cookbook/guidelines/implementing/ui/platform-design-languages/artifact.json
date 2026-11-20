@@ -4,7 +4,7 @@
     "id": "3741ed5e-0b67-48f2-b227-36ae152c0f4b",
     "title": "Platform Design Languages",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -37,7 +37,7 @@
       "platform-integration"
     ]
   },
-  "synced": "fc2becfccb107eaa",
+  "synced": "9491164770f5f0da",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

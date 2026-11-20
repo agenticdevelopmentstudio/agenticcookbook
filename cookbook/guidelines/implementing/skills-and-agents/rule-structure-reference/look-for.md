@@ -24,4 +24,5 @@
 - `should-deduplicate-must-nots`: a MUST NOT item that repeats a constraint stated elsewhere in the body
 - `should-avoid-mandatory-multi-file-reads`: a rule that requires reading many files before any work begins
 - `should-inline-mostly-metadata-files`: a referenced file that is more than 50% YAML metadata
+- `should-use-an-imperative-tone`: quality criteria — imperative tone, deterministic, explicit file refs, no vague directives;
 

@@ -1,0 +1,17 @@
+
+- **should-reduce-friction-at-every-step**: Forms SHOULD reduce friction at every step.
+- **should-use-single-column-layout**: Single-column layout SHOULD be used — outperforms multi-column for completion rate.
+- **should-use-top-aligned-or-floating-labels**: Labels SHOULD be top-aligned or floating — fastest to scan and complete.
+- **should-group-related-fields**: Forms SHOULD group related fields visually with spacing or section headers.
+- **should-place-primary-action-at-bottom**: Forms SHOULD place the primary action (Submit/Save) at the bottom, aligned with the form fields.
+- **should-validate-on-blur**: Forms SHOULD validate on **blur** (when user leaves the field), not on every keystroke.
+- **should-validate-full-form-on-submit**: Forms SHOULD validate the **full form on submit** as a final safety net.
+- **must-not-validate-while-typing**: Validation MUST NOT fire while the user is still actively typing in a field.
+- **should-show-success-indicators-only-where-wondered**: Success indicators (checkmarks) SHOULD appear only for fields where the user genuinely wonders if input was accepted (e.g., username availability).
+- **must-show-errors-inline**: Errors MUST be shown **inline, directly below the field** — not only at the top of the form.
+- **must-not-signal-errors-by-color-alone**: Errors SHOULD use color + icon + text and MUST NOT rely on color alone (never color alone).
+- **should-write-specific-actionable-errors**: Error messages SHOULD be specific and actionable: "Password must be at least 8 characters" not "Invalid input".
+- **should-not-blame-the-user**: Error messages SHOULD NOT blame the user — don't blame the user.
+- **should-use-placeholder-for-format-hints-only**: Forms SHOULD use placeholder text for format hints, not as label replacement — placeholders disappear on focus.
+- **should-pre-fill-and-default**: Forms SHOULD pre-fill and default where possible to reduce effort.
+- **should-mark-optional-fields**: Forms SHOULD mark optional fields, not required ones (most fields should be required; if they're not, reconsider asking).

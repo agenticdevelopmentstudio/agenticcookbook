@@ -15,3 +15,4 @@
 - **should-use-placeholder-for-format-hints-only**: Forms SHOULD use placeholder text for format hints, not as label replacement — placeholders disappear on focus.
 - **should-pre-fill-and-default**: Forms SHOULD pre-fill and default where possible to reduce effort.
 - **should-mark-optional-fields**: Forms SHOULD mark optional fields, not required ones (most fields should be required; if they're not, reconsider asking).
+- **should-link-errors-to-fields-with-aria-describedby**: An inline error message SHOULD be linked to its field with ARIA (`aria-describedby`).

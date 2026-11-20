@@ -1,0 +1,24 @@
+
+- `must-begin-with-yaml-frontmatter`: whether the recipe begins with a valid YAML frontmatter block delimited by `---` lines
+- `must-include-required-frontmatter-fields`: whether the frontmatter has every required field
+- `must-use-unique-uuid-v4-id`: whether `id` is a canonical hyphenated UUID v4 shared by no other recipe
+- `must-match-title-to-heading`: whether `title` is non-empty and matches the `# Title` heading
+- `must-have-index-entry-and-matching-rdid`: whether the recipe has an `index.json` entry whose rdid ends with its folder name
+- `must-use-recognized-type`: whether `type` is one of `recipe`, `guideline`, `pattern` or `spec`
+- `must-use-semver-version`: whether `version` is MAJOR.MINOR.PATCH with no pre-release label or build metadata
+- `must-use-recognized-status`: whether `status` is one of `draft`, `review`, `accepted` or `deprecated`
+- `must-use-bcp-47-language`: whether `language` is a valid BCP 47 tag
+- `must-use-iso-8601-dates`: whether `created` and `modified` are `YYYY-MM-DD` dates
+- `must-make-platforms-a-sequence`: whether `platforms` is a YAML sequence of one or more canonical platform identifiers, not a scalar
+- `must-make-tags-a-sequence`: whether `tags` is a YAML sequence
+- `must-keep-summary-single-line-and-short`: whether `summary` is a single-line string of no more than 160 characters, not a block scalar
+- `must-make-link-fields-present-sequences`: whether `depends-on`, `related` and `references` are each present as YAML sequences
+- `must-open-body-with-h1`: whether the body begins with `# Title` right after the closing frontmatter delimiter
+- `must-contain-template-sections-in-order`: whether every template section is present in the prescribed order
+- `must-use-exact-section-names`: whether every section heading uses the template's exact name, with no alias
+- `must-use-level-2-section-headings`: whether every section is a level-2 heading
+- `must-not-omit-required-sections`: whether any required section is omitted, even one whose content would be `NEEDS REVIEW`
+- `may-append-extra-sections-at-end`: whether any additional section sits after the final required section
+- `must-not-insert-sections-between-required`: whether any additional section is inserted between required sections
+- `must-end-with-change-history`: whether `## Change History` is the final section
+- `may-leave-change-history-empty-initially`: whether an empty Change History body appears only at initial creation

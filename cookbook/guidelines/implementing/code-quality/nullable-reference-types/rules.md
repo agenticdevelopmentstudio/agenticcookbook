@@ -4,3 +4,4 @@
 - **should-not-use-null-forgiving-operator**: The null-forgiving operator (`!`) SHOULD NOT be used — prefer `?? throw` or guard clauses.
 - **should-use-required-for-non-null-init**: SHOULD use `required` properties and constructor parameters for non-null initialization.
 - **should-annotate-contracts-compiler-cannot-infer**: SHOULD use `[NotNull]`, `[MaybeNull]`, `[NotNullWhen]` from `System.Diagnostics.CodeAnalysis` for contracts the compiler cannot infer.
+- **should-throw-if-null-at-entry-points**: `ArgumentNullException.ThrowIfNull` SHOULD be used at entry points.

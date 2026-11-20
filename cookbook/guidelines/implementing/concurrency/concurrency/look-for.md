@@ -19,3 +19,5 @@
 - `must-not-run-cpu-work-on-ui-thread`: C# CPU-bound work run on the UI thread
 - `should-marshal-ui-work-with-dispatcherqueue`: WinUI 3 background work that updates the UI without `DispatcherQueue.TryEnqueue`
 - `must-not-access-ui-from-non-ui-threads`: a WinUI 3 UI element touched from a non-UI thread
+- `must-hold-one-lock-across-check-and-act`: shared state across threads/goroutines/tasks: when a change adds or moves a lock (mutex, semaphore, serialized queue), list every read and write of the shared state the guarded code depends on and check each is inside the same critical section — a check outside the lock with its act or mark after it (check-then-act, Has-then-Set, Stat-then-Open) is still a race;
+- `must-revalidate-state-after-waiting-on-a-lock`: then ask what a caller that now WAITS on the lock finds when it gets in (the file deleted, the entry already written, the state already changed) — a race the new lock turns into a different failure is in scope even when its lines are unchanged

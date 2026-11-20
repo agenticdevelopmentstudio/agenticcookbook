@@ -9,3 +9,4 @@
 - `should-consider-certificate-transparency-monitoring`: the build records whether Certificate Transparency monitoring was chosen over pinning
 - `should-use-mozilla-tls-configuration`: the server config matches Mozilla's "Intermediate" or "Modern" profile, or the build says why not
 - `should-prefer-aead-ciphers`: AEAD ciphers (AES-GCM, ChaCha20-Poly1305) lead the cipher order, or the build says why not
+- `must-not-expose-plain-http-endpoints`: no production domain exposes a plain-HTTP endpoint

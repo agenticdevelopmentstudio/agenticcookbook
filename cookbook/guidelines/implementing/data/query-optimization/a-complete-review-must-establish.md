@@ -11,3 +11,4 @@
 - No `NOT IN` with a subquery that may return NULL; `NOT EXISTS` is used instead
 - No `OR` across columns unless both sides are indexed
 
+- `should-index-both-sides-of-or`: A review passes when it establishes every item above.

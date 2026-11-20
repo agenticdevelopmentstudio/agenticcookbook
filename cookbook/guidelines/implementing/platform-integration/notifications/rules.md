@@ -17,3 +17,4 @@
 - **web-request-permission-contextually**: On the web, you SHOULD request permission contextually.
 - **web-support-actions-and-badges**: On the web, you SHOULD support notification actions and badges via the Badging API.
 - **web-fall-back-when-denied**: On the web, you SHOULD fall back gracefully when notifications are denied or unavailable.
+- **android-do-not-send-without-runtime-permission**: MUST NOT send notifications without runtime permission on Android 13+.

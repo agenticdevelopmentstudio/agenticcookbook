@@ -9,3 +9,8 @@
 - `should-verify-boundaries-without-framework-imports`: whether core logic compiles and its tests pass with no framework imports
 - `should-extend-at-the-boundary`: whether new capability on a stable, widely depended-on boundary came through new implementations behind the port rather than a change to its shape
 - `should-not-pre-generalize-unstable-boundaries`: whether any boundary still being discovered was pre-generalized
+- `should-test-core-without-infrastructure`: core can be unit-tested without infrastructure;
+- `should-test-adapter-to-port-wiring`: at least one integration test verifies adapter-to-port wiring
+- `should-expose-clear-skill-contracts`: Skill inputs and outputs are clearly documented;
+- `should-give-agents-only-the-context-they-need`: agents receive only the context needed for their task (not the full session history);
+- `should-use-adapters`: external tool calls wrapped behind a consistent interface rather than scattered inline

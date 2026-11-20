@@ -4,7 +4,7 @@
     "id": "563aebde-52bf-4011-8907-ecc473fd942c",
     "title": "Post-generation verification",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "72c1584332ab6a0d",
+  "synced": "1a62ee172078162f",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

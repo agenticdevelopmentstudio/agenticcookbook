@@ -1,0 +1,52 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "3416a359-e01c-40b2-8876-4a8634d4395e",
+    "title": "Caching",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use HTTP caching headers. The server controls cache policy; the client honors it.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "caching",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control",
+      "https://web.dev/articles/http-cache",
+      "https://www.rfc-editor.org/rfc/rfc9111",
+      "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-None-Match",
+      "https://www.rfc-editor.org/rfc/rfc9111.html"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "networking",
+      "performance-optimization"
+    ]
+  },
+  "synced": "2b6cdbce604229e9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-to", "heading": "How to", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

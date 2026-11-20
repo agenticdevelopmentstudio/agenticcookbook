@@ -4,7 +4,7 @@
     "id": "a61b6ede-624b-4424-bdf6-aeb153c9a3ea",
     "title": "Simplicity",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "ece26061daa7b239",
+  "synced": "2a1b36ac78628965",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

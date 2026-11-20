@@ -1,0 +1,49 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "1d4b2aa7-c30e-4d41-8bd8-892ff7ce7499",
+    "title": "App Interactions",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Characterize how components communicate within the application — delegation, pub/sub, shared state, and other in-process coordination patterns.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "codebase-decomposition"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "b29ecc8e995123f2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators", "role": "how-to"},
+    {"part": "findings-format", "heading": "Findings Format", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

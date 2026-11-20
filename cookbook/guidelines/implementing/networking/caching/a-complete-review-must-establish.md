@@ -7,3 +7,5 @@
 - `should-revalidate-with-etags`: whether unchanged data is revalidated with ETags rather than re-downloaded
 - `must-invalidate-after-mutations`: whether every mutation invalidates the related cache entries
 - `should-stale-while-revalidate`: whether the client serves cached data immediately and refreshes in the background
+- `should-cache-immutable-assets-for-a-year`: Immutable assets have long-lived `Cache-Control: immutable`;
+- `should-revalidate-with-etags`: `ETag` headers present on cacheable resources;

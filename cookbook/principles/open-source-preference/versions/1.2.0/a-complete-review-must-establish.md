@@ -1,0 +1,9 @@
+
+- `should-research-open-source-before-building`: whether battle-tested open-source libraries were researched and presented to the user before a custom solution was built
+- `should-make-custom-a-deliberate-decision`: whether any custom implementation was a deliberate decision rather than a default
+- `should-check-what-you-already-have`: whether the standard library and the project's existing dependencies were checked before anything new was added
+- `should-evaluate-candidates-before-recommending`: whether each candidate was evaluated by maintenance activity, license compatibility, and community adoption before it was recommended
+- `should-verify-candidate-is-real`: whether each adopted package was confirmed to exist, be actively maintained, and be widely used
+- `must-not-install-unverified-ai-suggested-packages`: whether any AI-suggested package name was installed without being verified
+- `should-present-at-least-two-options`: whether at least two options were presented with their trade-offs
+- `should-document-why-open-source-was-rejected`: whether a custom build documents why the available open-source options were rejected

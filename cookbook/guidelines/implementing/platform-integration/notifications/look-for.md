@@ -17,3 +17,5 @@
 - `web-request-permission-contextually`: a web `Notification.requestPermission()` on page load
 - `web-support-actions-and-badges`: web notifications with no actions, or badges set without the Badging API
 - `web-fall-back-when-denied`: web code that breaks when notifications are denied or unavailable
+- `request-permission-at-relevance`: permission requested at moment of relevance (Android 13+ requires `POST_NOTIFICATIONS`);
+- `android-do-not-send-without-runtime-permission`: a notification sent on Android 13+ without runtime permission

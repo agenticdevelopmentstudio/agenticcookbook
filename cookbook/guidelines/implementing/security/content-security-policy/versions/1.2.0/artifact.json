@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "6f4cfd55-cb09-4ede-a53c-feaeb5781127",
+    "title": "Content Security Policy",
+    "type": "guideline",
+    "version": "1.2.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Prevent XSS and injection with a strict CSP. Web apps only.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "content-security-policy",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html",
+      "https://csp-evaluator.withgoogle.com/",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for",
+      "https://web.dev/articles/strict-csp"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "security-review",
+      "ui-implementation"
+    ]
+  },
+  "synced": "612ed7ca062b70a7",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

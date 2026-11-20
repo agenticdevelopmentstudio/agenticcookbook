@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.2.0 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.1.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 1.0.4 | 2026-11-19 | Mike Fullerton | Fold guidelines/reviewing/code-quality/dependency-injection into this topic (identical text); links to it redirected here |
 | 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |

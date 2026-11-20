@@ -4,3 +4,8 @@
 - `should-treat-accessibility-tree-as-backbone`: controls missing from or mislabelled in the accessibility tree, or automation built on a separate path
 - `should-design-composable-commands`: an operation that can only be driven through clicks and taps
 - `should-provide-non-interactive-entry-points`: a workflow that needs a human in the loop for want of a CLI, URL scheme, or intent filter
+- `should-wrap-deterministic-operations-in-scripts`: a deterministic operation with no shell script wrapping it for direct invocation
+- `should-allow-chaining-without-confirmation`: a skill that needs human confirmation at each step and so cannot be chained
+- `should-emit-machine-parseable-output`: an output a program cannot parse, that is only human-readable
+- `should-expose-capabilities-through-automation`: Skills and agents should expose capabilities through scriptable interfaces — not just interactive use;
+- `should-provide-non-interactive-entry-points`: provide non-interactive entry points (shell scripts, CLI flags, batch modes) so workflows can drive the extension without human intervention

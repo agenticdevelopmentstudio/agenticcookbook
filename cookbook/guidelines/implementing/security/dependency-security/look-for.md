@@ -15,3 +15,4 @@
 - `must-require-human-approval-for-new-dependencies`: a new dependency added or merged with no explicit human approval breaks it
 - `should-verify-package-exists-and-is-maintained`: a package added with no check that it exists and is actively maintained
 - `must-not-install-hallucinated-or-abandoned-packages`: a dependency on a name that does not exist upstream, or on an abandoned package, breaks it
+- `should-manage-dependencies-actively`: Treat dependencies as attack surface and manage them actively.

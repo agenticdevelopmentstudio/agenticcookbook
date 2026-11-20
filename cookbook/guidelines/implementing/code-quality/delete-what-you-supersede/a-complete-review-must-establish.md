@@ -20,3 +20,7 @@
 - `must-not-commit-temporary-disables`: no temporary debugging disable reached a commit
 - `should-rename-when-meaning-changes`: every value, function or field whose content changed has a name that matches, or the change says why not
 - `should-reread-touching-names`: every parameter, variable, file and test name touching a changed type or behavior still describes it, or the change says why not
+- `must-update-every-caller`: Each finding names the surviving reference (file and line) and the removed or renamed symbol or path it still points at;
+- `must-update-every-caller`: every lead you dismiss was opened and judged, not skipped;
+- `must-update-every-caller`: matches that only share a substring or an unrelated name are not reported;
+- `must-update-every-caller`: the symbol's own new definition is not reported.

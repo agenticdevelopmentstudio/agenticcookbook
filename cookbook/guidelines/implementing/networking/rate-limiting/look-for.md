@@ -5,3 +5,9 @@
 - `should-back-off-without-retry-after`: a 429 without `Retry-After` retried at a fixed or immediate interval.
 - `should-track-ratelimit-remaining`: `RateLimit-Remaining` ignored until a 429 arrives.
 - `should-queue-and-batch-at-the-allowed-rate`: bursts fired at once and retried on 429 instead of queued at the allowed rate.
+- `should-track-ratelimit-remaining`: clients should proactively track the `RateLimit-Remaining` header and slow down before they hit a 429 rather than waiting to be rejected;
+- `should-queue-and-batch-at-the-allowed-rate`: outbound requests should be queued and batched to stay at the allowed rate instead of a fire-and-retry loop that hammers the server.
+- `must-honor-retry-after`: On a 429, honor the `Retry-After` header — parse it as either delay-seconds or an HTTP-date and wait accordingly before retrying;
+- `should-back-off-without-retry-after`: when no `Retry-After` is present, fall back to exponential backoff rather than retrying immediately or on a fixed interval.
+- `should-track-ratelimit-remaining`: Track `RateLimit-Remaining` response headers proactively and slow the request rate down before hitting the limit, instead of waiting to be rejected.
+- `should-queue-and-batch-at-the-allowed-rate`: Queue and batch outbound requests so they go out at the allowed rate, rather than firing them all at once and retrying on rejection (no fire-and-retry / retry storms).

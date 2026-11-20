@@ -1,0 +1,20 @@
+
+- **must-default-to-immutable-values**: Immutable values MUST be the default; introduce mutability only where necessary.
+- **should-prefer-value-types**: Value types SHOULD be preferred over reference types.
+- **must-contain-mutation-behind-boundaries**: Mutation MUST be contained behind clear boundaries.
+- **should-use-val-by-default**: In Kotlin, SHOULD use `val` by default.
+- **should-use-data-class-for-value-types**: In Kotlin, SHOULD use `data class` for value types.
+- **should-introduce-var-only-when-required**: In Kotlin, SHOULD introduce `var` only when mutation is required.
+- **should-contain-mutable-state-behind-stateflow**: In Kotlin, SHOULD contain mutable state behind `StateFlow`.
+- **should-use-const-by-default**: In TypeScript, SHOULD use `const` by default.
+- **should-use-var-or-let-only-when-required**: In TypeScript, SHOULD use `var`/`let` only when mutation is required.
+- **should-prefer-usestate-for-mutable-state**: In TypeScript, SHOULD prefer `useState` (React) for contained mutable state.
+- **should-use-readonly-by-default**: In C#, SHOULD use `readonly` fields and `readonly struct` by default, and introduce mutability only when required.
+- **should-prefer-immutable-collections**: In C#, SHOULD prefer `System.Collections.Immutable` (`ImmutableList<T>`, `ImmutableDictionary<K,V>`) for shared collections.
+- **should-use-records-for-data**: In C#, SHOULD use `record` for DTOs, API responses, domain events, value objects.
+- **should-use-record-structs-for-small-values**: In C#, SHOULD use `record struct` / `readonly record struct` for small immutable value types.
+- **should-prefer-positional-records**: In C#, SHOULD prefer positional records (`record Person(string Name, int Age)`) for simple data carriers.
+- **should-use-init-and-required**: In C#, SHOULD use `init` setters and `required` keyword for mandatory properties.
+- **should-use-with-expressions**: In C#, SHOULD use `with` expressions for non-destructive mutation.
+- **should-contain-mutable-state-behind-wrappers**: In C#, SHOULD contain mutable state behind `ObservableObject` (UI) or thread-safe wrappers.
+- **should-reserve-mutable-classes-for-entities**: In C#, SHOULD reserve `class` with mutable state for entities with identity semantics.

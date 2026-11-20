@@ -1,0 +1,22 @@
+
+- `must-build-privacy-in-from-day-one`: the first build already has its privacy and security controls
+- `should-collect-only-what-is-needed`: every collected item has a use in the feature, or the build says why not
+- `should-prefer-on-device-processing`: processing runs on-device where it can, or the code says why not
+- `should-require-opt-in-for-non-essential-data`: non-essential data collection waits for opt-in, or the code says why not
+- `must-remain-functional-when-denied`: the app works with optional data collection denied
+- `must-use-platform-secure-storage`: tokens and credentials are stored only in platform secure storage
+- `must-not-log-pii`: no log call at any level contains PII
+- `must-use-https`: every network call uses HTTPS
+- `should-sanitize-input-before-display`: user input is sanitized before display, or the code says why not
+- `should-document-privacy-in-specs`: each spec has a Privacy section, or the build says why not
+- `should-support-apple-privacy-features`: the Apple app supports App Tracking Transparency, App Privacy Report and Private Relay, or the build says why not
+- `should-include-usage-descriptions`: every permission prompt has a human-readable `NS*UsageDescription` key, or the build says why not
+- `should-respect-android-storage-language-and-denials`: the Android app uses scoped storage, supports per-app language and survives denials, or the build says why not
+- `should-show-rationale-before-permission-requests`: each Android runtime permission request follows a rationale dialog, or the code says why not
+- `should-configure-csp`: the web app sends CSP headers restricting script sources, or the build says why not
+- `should-use-httponly-cookies-for-tokens`: web authentication tokens are HttpOnly secure cookies, or the code says why not
+- `must-not-store-tokens-in-localstorage`: no token is written to `localStorage`
+- `should-minimize-third-party-scripts`: each third-party script is needed, or the build says why not
+- `should-respect-do-not-track`: tracking honors Do Not Track, or the code says why not
+- `should-declare-only-required-capabilities`: `Package.appxmanifest` declares only required capabilities, or the build says why `broadFileSystemAccess` is essential
+- `should-use-dpapi-for-local-secrets`: Windows local secrets use DPAPI, or the code says why not

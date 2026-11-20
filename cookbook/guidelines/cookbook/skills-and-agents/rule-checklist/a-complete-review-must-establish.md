@@ -25,3 +25,4 @@
 - `should-keep-must-not-items-unique`: whether check O04 holds: Each MUST NOT adds a constraint not already expressed imperatively in the body text; restating "You MUST NOT skip this phase" from line 50 in the MUST NOT section wastes per-turn context
 - `may-inline-low-ratio-external-refs`: whether check O05 holds: If an external file reference points to a file where frontmatter exceeds 50% of total lines, suggest inlining the useful content instead
 - `should-limit-unconditional-external-reads`: whether check O06 holds: Rules that mandate reading 6+ external files before any work create high entry cost; consider summaries, on-demand reads, or iterative approaches
+- `should-not-replicate-native-capabilities`: native Claude capabilities are not re-taught;

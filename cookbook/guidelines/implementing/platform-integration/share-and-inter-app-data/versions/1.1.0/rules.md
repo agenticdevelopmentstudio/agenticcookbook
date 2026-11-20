@@ -1,0 +1,25 @@
+
+- **participate-in-share-mechanisms**: Apps SHOULD participate in the platform's share and inter-app data exchange mechanisms to integrate with other apps and workflows.
+- **send-and-receive-via-share-sheet**: You SHOULD support both sending and receiving data through the platform share sheet.
+- **register-for-relevant-types**: You SHOULD register as a handler for relevant file types and UTIs/MIME types.
+- **support-drag-and-drop**: You SHOULD support drag and drop for content that makes sense in multi-window contexts.
+- **validate-received-data**: You SHOULD validate all received data — inter-app data is an untrusted input boundary.
+- **apple-share-with-system-picker**: On Apple platforms, you SHOULD implement `UIActivityViewController` (iOS) or `NSSharingServicePicker` (macOS) to share content.
+- **apple-create-share-extensions**: On Apple platforms, you SHOULD create Share Extensions to receive content from other apps.
+- **apple-register-utis**: On Apple platforms, you SHOULD register UTI declarations in `Info.plist` for file type associations.
+- **apple-drag-and-drop-with-nsitemprovider**: On Apple platforms, you SHOULD support drag and drop via `NSItemProvider` on iPadOS and macOS.
+- **macos-support-services-menu**: On macOS, you SHOULD support the Services menu via `NSServices` for system-wide text operations.
+- **android-declare-send-intent-filter**: On Android, you SHOULD declare `<intent-filter>` with `ACTION_SEND` and appropriate MIME types to receive shared content.
+- **android-send-with-createchooser**: On Android, you SHOULD use `Intent.createChooser()` to send.
+- **android-implement-direct-share**: On Android, you SHOULD implement Direct Share targets with `ChooserTargetService` for frequently shared-to contacts.
+- **android-support-contentprovider**: On Android, you SHOULD support `ContentProvider` for structured data sharing between apps.
+- **android-register-documentsprovider**: On Android, you SHOULD register as a document provider via `DocumentsProvider` for the system file picker.
+- **windows-implement-share-contract**: On Windows, you SHOULD implement the Share Contract (`DataTransferManager`) to send and receive content.
+- **windows-register-share-target**: On Windows, you SHOULD register as a share target in the app manifest.
+- **windows-support-dragdrop**: On Windows, you SHOULD support drag and drop via `DragDrop` APIs.
+- **windows-register-file-associations**: On Windows, you SHOULD register file type associations in `Package.appxmanifest` for Open With integration.
+- **windows-support-rich-clipboard**: On Windows, you SHOULD support clipboard with rich content formats.
+- **web-use-web-share-api**: On the web, you SHOULD use the Web Share API (`navigator.share()`) to invoke the native share sheet.
+- **web-register-share-target**: On the web, you SHOULD register as a share target in the Web App Manifest (`share_target`).
+- **web-support-html-drag-and-drop**: On the web, you SHOULD support drag and drop via the HTML Drag and Drop API.
+- **web-use-file-handling-api**: On the web, you SHOULD use the File Handling API to register as a handler for specific file types in PWAs.

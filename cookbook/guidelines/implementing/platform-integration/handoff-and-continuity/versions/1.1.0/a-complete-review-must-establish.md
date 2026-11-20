@@ -1,0 +1,16 @@
+
+- `support-continuity-features`: whether a multi-device app supports continuity features
+- `capture-enough-state`: whether the transferred state is enough to reconstruct the user's context
+- `continuity-must-feel-instant`: whether continuity pre-transfers only minimum viable state and fetches details on arrival
+- `fall-back-gracefully`: whether the receiver falls back gracefully when it lacks a feature
+- `use-deep-links-as-payload`: whether deep links serve as the handoff payload
+- `apple-advertise-with-nsuseractivity`: whether the current activity is advertised with `NSUserActivity`
+- `apple-enable-handoff-and-populate-userinfo`: whether activities set `isEligibleForHandoff` and carry restorable state in `userInfo`
+- `apple-implement-continue-on-receiver`: whether the receiving device implements `application(_:continue:)`
+- `apple-support-universal-clipboard`: whether Universal Clipboard works for cross-device copy/paste
+- `android-use-nearby-or-chrome-continuity`: whether Android device continuity uses Nearby Connections or Chrome's cross-device features
+- `android-use-links-that-resolve-natively-and-on-web`: whether Android-to-web links resolve in both native and web contexts
+- `android-support-clipboard-sync`: whether clipboard sync works through Google account integration
+- `web-use-shared-urls`: whether shared URLs are the primary web continuity mechanism
+- `web-support-credential-management`: whether the web app supports the Credential Management API for cross-device sign-in
+- `web-consider-realtime-sync`: whether real-time sync between active web sessions was considered

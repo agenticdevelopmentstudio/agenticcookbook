@@ -4,3 +4,6 @@
 - `must-keep-title-stable`: whether each `title` is stable across occurrences
 - `must-mirror-status`: whether `status` matches the response's HTTP status code
 - `may-add-extension-fields`: whether extra error data goes in extension fields
+- `may-add-extension-fields`: field errors from `errors[]` shown inline;
+- `must-not-show-raw-status-codes`: no raw status codes shown to user;
+- `may-add-extension-fields`: field-level errors use `errors` array;

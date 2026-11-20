@@ -5,3 +5,7 @@
 - `should-search-sdk-before-custom-control`: whether the platform SDK was searched for an existing control before a custom one was written
 - `should-customize-near-fit-native-controls`: whether native controls that almost fit were customized rather than replaced from scratch
 - `should-justify-third-party-ui-dependencies`: whether each third-party UI dependency is justified by a concrete gap the platform SDK cannot fill
+- `must-not-reimplement-standard-winui3-controls`: No custom reimplementations of standard WinUI 3 controls;
+- `should-prefer-winui3-controls-over-custom-drawn`: Windows UI prefers WinUI 3 controls over custom-drawn equivalents
+- `should-use-windows-app-sdk-for-system-integration`: system APIs used for file access, notifications, and background tasks;
+- `should-document-native-control-deviations`: deviations from native controls documented with rationale

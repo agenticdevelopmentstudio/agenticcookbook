@@ -7,3 +7,4 @@
 - `should-treat-lazy-loaded-modules-as-independent`: lazy-loaded Angular modules, Next.js dynamic imports, or Webpack split points, and whether each is its own group
 - `should-separate-plugin-registry`: the plugin or extension registry, and whether it is grouped apart from the plugins it loads
 - `should-group-mediatr-handlers-by-feature`: MediatR requests and handlers, and whether they are grouped by feature domain
+- `should-flag-convention-deviations`: In the code **this diff adds or changes**, identify the MVC/MVVM/MVP/TCA pattern, View+ViewModel pairs, Controller+Routes groupings, middleware chains, service/repository patterns, and plugin architectures it participates in — and flag where the change deviates from the surrounding convention.

@@ -4,7 +4,7 @@
     "id": "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
     "title": "Swift",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -53,7 +53,7 @@
       "error-handling"
     ]
   },
-  "synced": "9f77f13aaaaad22b",
+  "synced": "357ed78a77759821",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

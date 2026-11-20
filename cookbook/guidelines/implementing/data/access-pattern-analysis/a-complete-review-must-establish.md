@@ -5,3 +5,4 @@
 - Batch sizes specified for sync operations (e.g., pull 1000 rows per batch, push 500 rows per transaction)
 - Access patterns documented in code comments or design documentation for future maintainers
 
+- `must-base-schema-on-query-patterns`: A review passes when it establishes every item above.

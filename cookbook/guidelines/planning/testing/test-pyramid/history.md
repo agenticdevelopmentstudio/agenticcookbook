@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.2.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.2.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 1.1.2 | 2026-11-19 | Mike Fullerton | Fold guidelines/testing/test-pyramid into this topic; its text this lacked added unroled as the-shape-is-context-dependent-2 |
 | 1.1.1 | 2026-06-10 | Mike Fullerton | Cite recovered Tier-1 research sources (adversarially-audited) |

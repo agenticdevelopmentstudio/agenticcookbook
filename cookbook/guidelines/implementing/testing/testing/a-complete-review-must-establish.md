@@ -14,3 +14,7 @@
 - `should-use-pytest`: whether all Python tests use `pytest`
 - `must-not-touch-production-dashboard-data`: whether any test removes or modifies production dashboard data or uses port 8888
 
+- `should-test-new-risk-bearing-paths`: The flagged path is genuinely new in this diff (not pre-existing code);
+- `should-test-new-risk-bearing-paths`: no test added or changed in the diff exercises it and the finding does not misname an existing test that does;
+- `should-provoke-a-concrete-failure-mode`: the named failure mode is concrete and provocable (a test could actually assert it);
+- `should-test-new-risk-bearing-paths`: the finding is not disguised design criticism or generic coverage advice

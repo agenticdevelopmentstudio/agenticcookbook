@@ -12,3 +12,7 @@
 - `should-split-large-planned-units`: no planned unit of work that looked large was left as one large PR, or the PR says why
 - `should-scrutinize-agent-code-more`: agent-generated code received at least the per-line scrutiny hand-written code gets
 - `should-decompose-large-agent-changes-before-review`: every large agent-produced change was decomposed into smaller commits or PRs before review, or the PR says why not
+- `should-make-one-logical-change-per-commit`: Each commit contains exactly one logical change; no compound diffs mixing unrelated changes; commit message describes the change in isolation.
+- `must-pass-build-and-tests-before-commit`: Judge from the diff and messages only — never demand evidence that a build or test run happened before the commit.
+- `should-bump-version-in-same-change`: Every VERSION HYGIENE lead in the slice was either confirmed against a repo convention and folded into the single finding, or explicitly cleared as trivial/no-convention.
+- `should-match-version-bump-magnitude`: version fields the diff does touch move by a magnitude that matches the change (patch for fixes, minor for new behavior, major for breaking).

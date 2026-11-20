@@ -14,3 +14,5 @@
 - `web-use-shared-urls`: web continuity is carried by URLs with state parameters
 - `web-support-credential-management`: web sign-in supports the Credential Management API, or the code says why not
 - `web-consider-realtime-sync`: real-time state sync between active sessions uses WebSocket or server-sent events, or the code says why not
+- `windows-use-protocol-activation-uris`: key views have protocol activation URIs suitable for cross-device handoff, or the code says why not
+- `windows-resolve-uris-on-web-or-mobile`: handoff URLs resolve on web or mobile equivalents, or the code says why not

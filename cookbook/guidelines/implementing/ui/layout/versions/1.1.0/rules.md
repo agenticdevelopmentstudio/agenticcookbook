@@ -1,0 +1,13 @@
+
+- **should-design-for-content-not-screen-size**: SHOULD design for the content, not a fixed screen size.
+- **should-adapt-from-compact-to-expanded**: Layouts SHOULD adapt gracefully from compact to expanded contexts.
+- **should-default-to-single-column**: Single-column by default — SHOULD use multi-column only when content density justifies it and screen width supports it.
+- **should-decide-content-before-layout**: Content-first — SHOULD decide what information the user needs, then choose a layout.
+- **should-not-start-with-a-grid**: Don't start with a grid and fill it — a layout SHOULD NOT begin as a grid to be filled.
+- **should-keep-consistent-alignment**: Consistent alignment — SHOULD pick a leading edge and stick to it. Mixed alignment creates visual noise.
+- **must-use-adaptive-layout-system**: Responsive breakpoints — the platform's adaptive layout system (Size Classes, Window Size Classes, CSS media queries, VisualStateManager) MUST be used rather than hard-coded widths.
+- **should-prefer-generous-whitespace-for-consumer-uis**: Content density — generous whitespace SHOULD be preferred for consumer UIs.
+- **may-allow-denser-layouts-for-productivity-tools**: Denser layouts MAY be allowed for productivity/data-heavy tools.
+- **must-not-sacrifice-readability-for-density**: Readability MUST NOT be sacrificed for density.
+- **should-keep-one-primary-scroll-direction**: Scroll direction — SHOULD keep one primary scroll direction per view.
+- **should-avoid-nested-same-direction-scrolling**: Nested same-direction scrolling SHOULD be avoided.

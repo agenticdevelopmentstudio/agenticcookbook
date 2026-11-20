@@ -4,3 +4,9 @@
 - `should-separate-ui-logic-and-data`: whether UI rendering, business logic, and data access sit in separate layers that can change independently
 - `should-treat-cross-feature-edits-as-coupling`: whether the change forced edits in an unrelated feature, and if so whether that was treated as a coupling defect
 - `should-co-locate-by-reason-to-read`: whether splitting concerns scattered one feature's behavior across files a reader must hop between
+- `should-split-when-description-needs-and`: No module that fetches and transforms and renders in the same class;
+- `should-separate-ui-logic-and-data`: data layer contains no presentation logic;
+- `should-split-when-description-needs-and`: each module's purpose describable in a single clause without "and"
+- `should-have-one-reason-to-change`: Each skill/rule/agent has a single stated purpose;
+- `should-split-when-description-needs-and`: skill description does not contain "and" joining unrelated concerns;
+- `should-separate-workflow-steps-into-distinct-agents`: workflow steps are separated into distinct agents rather than one agent doing everything

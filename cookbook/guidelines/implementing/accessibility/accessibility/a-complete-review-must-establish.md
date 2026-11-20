@@ -23,3 +23,5 @@
 - `must-make-elements-keyboard-reachable`: every interactive element is reachable via Tab and actionable via Enter/Space
 - `should-use-40-epx-touch-targets`: whether Windows touch targets are at least 40x40 epx
 - `must-respond-to-windows-accessibility-settings`: every Windows setting in the Windows table is honored with its action
+- `must-respond-to-display-settings`: high/increased contrast uses higher-contrast colors and wider borders;
+- `should-test-with-accessibility-insights`: accessibility is validated with platform tooling (e.g., Accessibility Insights, Narrator).

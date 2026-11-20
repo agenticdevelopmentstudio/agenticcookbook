@@ -1,0 +1,24 @@
+
+- **must-put-equality-columns-first**: In a composite index, equality columns (`=`, `IN`, `IS`) MUST go first.
+- **must-put-inequality-columns-last**: In a composite index, inequality columns (`<`, `>`, `<=`, `>=`, `BETWEEN`) MUST go last — only the rightmost used column can use a range constraint.
+  - Columns to the right of an inequality are not used for filtering.
+- **must-not-duplicate-index-prefix**: MUST NOT create an index that is a prefix of an existing index. If you have `(a, b, c)`, you do not need separate indexes on `(a)` or `(a, b)`.
+- **must-match-partial-index-predicate**: The query WHERE clause MUST include the partial index WHERE clause terms (literally or by implication) for the planner to use the index. A partial index on `status = 'pending'` is not used by a query without `status = 'pending'` in its filter.
+- **must-match-index-expression-exactly**: The expression in the query MUST match the index definition exactly — the planner does no algebra.
+- **must-explain-before-schema-deploy**: MUST use `EXPLAIN QUERY PLAN` to validate index usage before deploying schema changes.
+- **should-not-index-unqueried-columns**: SHOULD NOT index columns that are never in a WHERE, JOIN, or ORDER BY clause.
+- **should-not-index-low-cardinality-columns**: SHOULD NOT index low-cardinality columns (e.g., a boolean `is_active` on a table where 99% of rows are active) — a full table scan is often faster.
+- **should-not-index-write-heavy-tables**: SHOULD NOT index tables that are write-only or insert-heavy with infrequent reads.
+- **should-use-covering-indexes-on-hot-paths**: SHOULD aim for covering indexes on hot read paths where the query shape is stable.
+- **must-not-use-partial-indexes-below-3-8-0**: Partial indexes MUST NOT be used in a database that SQLite older than 3.8.0 must read.
+- **must-keep-index-expressions-deterministic**: An expression index MUST use only deterministic functions, no subqueries, and only columns from the indexed table.
+- **must-not-use-expression-indexes-below-3-9-0**: Expression indexes MUST NOT be used in a database that SQLite older than 3.9.0 must read.
+- **should-index-json-via-generated-columns**: To query JSON fields at B-tree speed, SHOULD extract them as virtual generated columns and index those columns.
+- **should-use-virtual-generated-columns**: SHOULD use VIRTUAL (not STORED) unless reads vastly outnumber writes.
+- **should-index-sync-queries**: Sync queries follow predictable patterns; SHOULD index for them explicitly.
+- **must-verify-sync-queries-use-indexes**: MUST always verify with `EXPLAIN QUERY PLAN` that sync queries show `SEARCH ... USING INDEX`, not `SCAN`.
+- **should-check-index-for-scans**: When `EXPLAIN QUERY PLAN` shows `SCAN table` (a full table scan), SHOULD check whether an index would help.
+- **should-rewrite-correlated-subqueries-as-joins**: When `EXPLAIN QUERY PLAN` shows `CORRELATED SCALAR SUBQUERY` (runs once per outer row), SHOULD rewrite it as a JOIN.
+- **should-run-pragma-optimize-periodically**: SHOULD run `PRAGMA optimize` periodically to keep query planner statistics current.
+- **should-monitor-index-usage**: SHOULD monitor with `SELECT * FROM sqlite_stat1;` (populated by `ANALYZE`) to see which indexes the planner is actually using.
+

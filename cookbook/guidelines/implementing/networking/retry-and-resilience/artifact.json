@@ -4,7 +4,7 @@
     "id": "cef41f52-bfc6-4ff0-bb67-eb52521c7391",
     "title": "Retry and Resilience",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -35,7 +35,7 @@
       "error-handling"
     ]
   },
-  "synced": "9854422a297c5ad0",
+  "synced": "b93edee1f87c531e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

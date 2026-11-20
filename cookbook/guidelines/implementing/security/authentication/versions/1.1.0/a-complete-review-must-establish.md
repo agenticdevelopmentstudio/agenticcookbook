@@ -1,0 +1,11 @@
+
+- `should-use-oauth-oidc-with-pkce-for-public-clients`: whether every public client authenticates with OAuth 2.0 / OpenID Connect with PKCE
+- `should-use-system-browser-auth-flow-on-native-platforms`: whether native apps use Authorization Code + PKCE via the system browser
+- `must-not-embed-webview-for-auth`: whether any app embeds a WebView for auth
+- `should-use-auth-code-pkce-flow-on-spa-platforms`: whether SPAs use Authorization Code + PKCE
+- `should-consider-bff-for-spas`: whether an SPA that handles tokens directly considered a BFF that holds them server-side in HttpOnly cookies
+- `should-use-client-credentials-flow-on-server-platforms`: whether server-to-server calls use the Client Credentials flow
+- `should-use-short-lived-access-tokens-in-session-management`: whether access tokens live 5-15 minutes
+- `must-rotate-refresh-tokens`: whether each refresh-token use issues a new refresh token and invalidates the old one
+- `should-invalidate-token-family-on-refresh-reuse`: whether reuse of a revoked refresh token is detected and invalidates the entire token family
+- `should-enforce-absolute-session-timeouts`: whether sessions have absolute timeouts enforced server-side

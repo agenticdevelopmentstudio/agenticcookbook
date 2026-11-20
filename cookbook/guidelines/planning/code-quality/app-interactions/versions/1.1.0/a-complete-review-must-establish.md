@@ -1,0 +1,14 @@
+
+- `should-scope-component-with-its-delegate-protocol`: whether every component with a clean delegate protocol is grouped with that protocol
+- `may-scope-delegate-implementations-elsewhere`: whether concrete delegate implementations placed elsewhere are placed for a reason
+- `should-identify-notification-observers`: whether every notification post has all its observing files identified
+- `should-flag-cross-group-singletons`: whether every singleton used across many candidate groups is flagged for `cross-cutting-detection`
+- `should-split-scope-groups-at-di-registration`: whether code on either side of the DI registration site is in separate scope groups
+- `should-group-coordinator-with-owned-screens`: whether each feature coordinator and the screens it owns form one group
+- `should-document-store-slices-per-group`: whether each candidate group's global store slice reads and writes are documented
+- `should-note-notification-endpoints`: whether each notification's name, sender and observer registration site are noted
+- `should-note-publisher-and-subscriber-sites`: whether each reactive chain's publisher creation and subscriber attachment sites are noted
+- `should-note-isolation-boundary`: whether each piece of thread-local or actor-isolated state has its isolation boundary noted
+- `should-note-di-registration-and-resolution-sites`: whether DI registration and resolution sites are noted
+- `should-note-completion-chain-depth`: whether completion handler chain depth is noted, with 3+ level chains marked for async/await
+- `should-note-promise-chain-error-breaks`: whether each promise chain's error-handling breaks are noted

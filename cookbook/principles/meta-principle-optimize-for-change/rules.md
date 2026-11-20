@@ -5,3 +5,5 @@
 - **should-choose-easier-to-change-when-equal**: When two approaches are otherwise equal, SHOULD choose the one that is easier to change later.
 - **should-test-design-by-cognitive-load**: Treat **cognitive load** as the metric the structural principles serve: a design — or an agent workflow — **SHOULD** be tested by whether it lowers that load.
 - **should-use-cognitive-load-as-a-lens**: SHOULD use cognitive load as a lens (proxies: fan-out, file count, time-to-onboard), not a thresholded metric.
+- **should-not-take-unacknowledged-easier-now-harder-later-shortcuts**: "Easier now, harder later" shortcuts SHOULD NOT be taken without explicit acknowledgment.
+- **should-provide-extension-points-where-change-is-anticipated**: Key extension points (swappable backends, injectable services) SHOULD be present where change is anticipated.

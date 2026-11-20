@@ -4,7 +4,7 @@
     "id": "dec7cf4a-449b-47fa-9d6e-f7e9376383a7",
     "title": "Prefer native controls and libraries",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -25,7 +25,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "cb63b18dc9995192",
+  "synced": "695ddb5d5a7f6830",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

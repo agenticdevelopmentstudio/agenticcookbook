@@ -4,7 +4,7 @@
     "id": "94e8caba-da27-4bb8-8f8e-38730b8b34e0",
     "title": "Notifications",
     "type": "guideline",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -38,7 +38,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "72de4471b39a3c45",
+  "synced": "6a4319a9134a0567",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

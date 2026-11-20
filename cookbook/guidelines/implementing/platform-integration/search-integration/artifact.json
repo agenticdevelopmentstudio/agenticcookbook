@@ -4,7 +4,7 @@
     "id": "b512282a-8174-426f-95dd-4a147222584d",
     "title": "Search integration",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -38,7 +38,7 @@
       "platform-integration"
     ]
   },
-  "synced": "a3f3a0bb02ab12e7",
+  "synced": "d8dddc8374d92005",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

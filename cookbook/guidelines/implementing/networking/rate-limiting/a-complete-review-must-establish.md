@@ -5,3 +5,10 @@
 - `should-back-off-without-retry-after`: whether a 429 without `Retry-After` uses exponential backoff
 - `should-track-ratelimit-remaining`: whether the client tracks `RateLimit-Remaining` and slows down before a 429
 - `should-queue-and-batch-at-the-allowed-rate`: whether requests are queued and batched at the allowed rate
+- `must-honor-retry-after`: A 429 response causes the client to wait for the duration given by `Retry-After` (parsing both the seconds and HTTP-date forms) before retrying;
+- `should-back-off-without-retry-after`: when `Retry-After` is absent, retries use exponential backoff and never a tight immediate-retry loop;
+- `should-track-ratelimit-remaining`: the client reads `RateLimit-Remaining` and throttles ahead of the limit where the header is available;
+- `should-handle-429-gracefully`: 429 responses are handled by waiting and retrying, never by an immediate or tight-loop retry;
+- `must-honor-retry-after`: the `Retry-After` header is read and honored, parsed for both the delay-seconds and HTTP-date forms;
+- `should-back-off-without-retry-after`: when `Retry-After` is absent, retries use exponential backoff;
+- `should-track-ratelimit-remaining`: `RateLimit-Remaining` headers are tracked and used to proactively throttle before a 429 occurs;

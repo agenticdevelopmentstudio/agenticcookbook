@@ -19,3 +19,5 @@
 - `must-not-run-cpu-work-on-ui-thread`: whether any C# CPU-bound work runs on the UI thread
 - `should-marshal-ui-work-with-dispatcherqueue`: whether WinUI 3 background tasks marshal UI work with `DispatcherQueue.TryEnqueue`
 - `must-not-access-ui-from-non-ui-threads`: whether any WinUI 3 UI element is accessed from a non-UI thread
+- `must-hold-one-lock-across-check-and-act`: every check-then-act on shared state holds one lock across both the check and the act;
+- `must-revalidate-state-after-waiting-on-a-lock`: a caller that waits on a newly added lock re-validates state it read before waiting

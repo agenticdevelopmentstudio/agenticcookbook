@@ -14,3 +14,4 @@
 - `should-note-session-scope`: whether each network session is noted as per-request or long-lived
 - `should-note-valid-transitions`: whether valid state transitions are noted
 - `should-note-observer-removal`: whether observer removal is noted as explicit or token-managed
+- `should-group-owner-with-owned-objects`: co-created/co-destroyed object groups identified;

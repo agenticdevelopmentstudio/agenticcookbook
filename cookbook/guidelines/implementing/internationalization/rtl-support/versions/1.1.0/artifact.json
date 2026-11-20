@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "4cb7c242-3ade-4d59-9c74-67c1d5f9c107",
+    "title": "RTL layout support",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All layouts MUST support right-to-left languages: use leading/trailing instead of left/right, mirror directional icons only, and test with an RTL locale enabled.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "internationalization",
+      "rtl-support"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "internationalization",
+      "ui-implementation"
+    ]
+  },
+  "synced": "8c036fb5d17584d1",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "platform-notes", "heading": "Platform notes", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

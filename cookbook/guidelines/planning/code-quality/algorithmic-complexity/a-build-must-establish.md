@@ -12,3 +12,5 @@
 - `should-flag-triple-nesting-immediately`: every loop nested three or more deep is listed as a performance risk or anomaly
 - `should-note-float-precision`: every floating point accumulation found carries a precision note
 - `should-note-accelerated-matrix-libraries`: every matrix multiplication found says whether an accelerated library performs it
+- `should-classify-complexity-of-changed-algorithms`: every algorithm or data-structure choice the change introduces or changes is identified with a complexity classification and its performance-critical paths flagged, or the change is explicitly cleared
+- `must-limit-scope-to-the-change`: the scope is the change under review, not a whole-codebase inventory

@@ -4,7 +4,7 @@
     "id": "aec38334-67fa-4c7e-bca2-607932af3f22",
     "title": "Authentication",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -45,7 +45,7 @@
       "security-review"
     ]
   },
-  "synced": "f39355c74838f263",
+  "synced": "f49db0e10d8c043a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

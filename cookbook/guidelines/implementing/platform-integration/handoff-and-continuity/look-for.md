@@ -14,3 +14,5 @@
 - `web-use-shared-urls`: web continuity that depends on session-only state instead of a URL with state parameters
 - `web-support-credential-management`: web sign-in that ignores the Credential Management API
 - `web-consider-realtime-sync`: active web sessions that must share state in real time with no WebSocket or server-sent events considered
+- `windows-use-protocol-activation-uris`: protocol activation URIs as cross-device handoff mechanism;
+- `windows-resolve-uris-on-web-or-mobile`: a Windows handoff URI that resolves on no web or mobile equivalent

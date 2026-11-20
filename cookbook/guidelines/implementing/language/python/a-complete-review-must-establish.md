@@ -35,3 +35,5 @@
 - `should-not-use-m-from-untrusted-directory`: whether `-m` is used from an untrusted working directory
 - `must-not-run-interpreter-in-downloads`: whether any interpreter runs inside a directory of downloaded files
 - `should-pass-downloads-as-arguments`: whether downloaded paths are passed as arguments from the code's own directory
+- `should-check-exit-status`, `should-pass-timeout-to-hanging-commands`: return codes are checked and hangable calls have a `timeout`;
+- `should-use-pathlib`, `must-pass-utf-8-encoding`, `should-resolve-before-containment-check`: paths are `pathlib` with explicit encodings and resolved containment checks;

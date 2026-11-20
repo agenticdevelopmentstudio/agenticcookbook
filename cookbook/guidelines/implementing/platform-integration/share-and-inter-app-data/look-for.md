@@ -23,3 +23,4 @@
 - `web-register-share-target`: a PWA that should receive shares with no `share_target` in its manifest
 - `web-support-html-drag-and-drop`: web drag and drop not built on the HTML Drag and Drop API
 - `web-use-file-handling-api`: a PWA handling file types with no File Handling API registration
+- `windows-check-clipboard-format-availability`: a Windows clipboard read that does not check whether the format is available

@@ -10,3 +10,4 @@
 - `should-use-mrt-core-resw-on-windows`: whether Windows UI binds text through `x:Uid` and `.resw` with MRT Core
 - `should-follow-windows-strings-folder-structure`: whether `.resw` files follow `Strings/<language-tag>/Resources.resw`
 - `should-use-resource-loader-in-code-behind`: whether Windows code-behind uses `ResourceLoader`
+- `must-make-user-facing-strings-localizable`: No hardcoded user-facing string literals appear in source — every displayed string resolves through a resource file;

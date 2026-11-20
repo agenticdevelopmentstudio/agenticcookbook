@@ -1,0 +1,16 @@
+
+- `should-group-owner-with-owned-objects`: whether each owner sits in the same scope group as the objects it creates and destroys
+- `should-treat-subscription-owners-as-lifecycle-coupled`: whether every subscription owner was treated as lifecycle-coupled to its source
+- `should-not-split-state-machines`: whether any state machine was split across scope groups
+- `should-group-session-with-its-objects`: whether each session and its session-scoped objects form one group
+- `may-separate-weakly-referenced-objects`: whether any separation at a weak reference rests on independent lifecycles and a narrow interface
+- `should-follow-disposal-chains`: whether disposal chains were followed and their members kept as one lifecycle chain
+- `must-invalidate-timers`: whether every scheduled timer is invalidated
+- `should-note-timer-invalidation-site`: whether each timer's invalidation site is noted relative to its owner's teardown
+- `should-note-factory-assembly`: whether each factory's assembled objects are noted
+- `should-note-state-between-init-phases`: whether the state between two-phase initialization steps is noted
+- `should-note-released-resources`: whether each teardown's released resources are noted
+- `should-note-teardown-hook-cleanup`: whether each framework teardown hook's cleanup is noted
+- `should-note-session-scope`: whether each network session is noted as per-request or long-lived
+- `should-note-valid-transitions`: whether valid state transitions are noted
+- `should-note-observer-removal`: whether observer removal is noted as explicit or token-managed

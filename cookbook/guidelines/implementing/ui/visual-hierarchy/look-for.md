@@ -6,3 +6,6 @@
 - `should-group-by-proximity`: related content spread apart, or unrelated content with no whitespace between
 - `must-distinguish-interactive-elements`: an interactive element that looks like static content
 - `should-mute-disabled-elements`: a disabled element that is not muted, or is hidden rather than discoverable
+- `must-have-one-primary-action-per-screen`: Single primary CTA per screen with `type="submit"` or strong visual weight;
+- `should-distinguish-headings-by-size-and-weight`: heading hierarchy via `<h1>`–`<h6>` and font size/weight;
+- `should-mute-disabled-elements`: disabled state via `disabled` attribute + CSS

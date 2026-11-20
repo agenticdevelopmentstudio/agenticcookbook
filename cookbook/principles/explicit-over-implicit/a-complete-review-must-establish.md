@@ -2,3 +2,10 @@
 - `should-make-dependencies-visible`: whether every dependency is visible, injected rather than hidden in a global
 - `should-name-for-what-things-do`: whether names say what things do rather than how they are implemented
 - `should-prefer-parameters-over-ambient-state`: whether values are passed as parameters rather than read from ambient state
+- `should-make-dependencies-visible`: All file dependencies listed explicitly in skill steps;
+- `should-prefer-parameters-over-ambient-state`: no skills relying on undocumented ambient state;
+- `should-say-what-to-do-not-how-to-figure-it-out`: agent instructions say what to do, not how to "figure it out";
+- `should-make-dependencies-visible`: context injected explicitly rather than assumed to be present
+- `should-make-dependencies-visible`: No hidden global state accessed inside components;
+- `should-prefer-parameters-over-ambient-state`: no ambient context or service-locator lookups;
+- `must-not-hide-behavior-behind-magic-invocation`: no hidden behavior or magic invocation paths

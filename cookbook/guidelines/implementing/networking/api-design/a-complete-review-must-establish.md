@@ -11,3 +11,4 @@
 - `should-use-the-right-status-code`: whether every response uses the status code that fits its outcome
 - `should-version-in-the-url-path`: whether the version is in the URL path
 - `should-bump-major-only-for-breaking-changes`: whether each major version bump matches a breaking change
+- `should-display-field-level-errors-for-422`: 422 responses display field-level errors;

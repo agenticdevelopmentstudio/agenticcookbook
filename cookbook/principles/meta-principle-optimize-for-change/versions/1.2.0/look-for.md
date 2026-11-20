@@ -1,0 +1,7 @@
+
+- `should-ask-whether-future-change-gets-easier`: a technical decision made without weighing whether it makes future change easier or harder
+- `should-ask-reversal-cost`: an architecture committed to with no estimate of what reversing it in six months would cost
+- `should-prefer-decisions-that-keep-options-open`: a decision that locks in a technology or pattern where an option-preserving one was available
+- `should-choose-easier-to-change-when-equal`: a choice between otherwise-equal approaches that took the one harder to change later
+- `should-test-design-by-cognitive-load`: a design or agent workflow that raises the cognitive load of understanding and changing the system
+- `should-use-cognitive-load-as-a-lens`: cognitive load enforced as a numeric threshold rather than read through its proxies (fan-out, file count, time-to-onboard)

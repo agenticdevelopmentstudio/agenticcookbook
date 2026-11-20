@@ -4,7 +4,7 @@
     "id": "734f7c30-8cf2-4284-8276-267d62c3c49c",
     "title": "Test Doubles",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -42,7 +42,7 @@
       "writing-tests"
     ]
   },
-  "synced": "854872690a61cc7b",
+  "synced": "1d5e1d208598328f",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

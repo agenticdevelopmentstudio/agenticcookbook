@@ -1,0 +1,13 @@
+
+- `should-use-consistent-rest`: an endpoint that breaks the REST conventions the rest of the API keeps.
+- `should-follow-platform-api-guidelines`: a detail decided against the Microsoft, Google and Zalando API guidelines.
+- `must-use-lowercase-hyphenated-urls`: camelCase, underscores or capitals in a URL path.
+- `must-use-plural-collection-nouns`: a collection named with a singular noun.
+- `should-nest-urls-shallowly`: a path nested more than 2 levels deep.
+- `must-not-put-verbs-in-urls`: a verb in a URL (`/createUser`, `/orders/{id}/cancel`).
+- `must-not-use-trailing-slashes`: a route that ends in `/`.
+- `should-filter-and-sort-with-query-params`: filtering or sorting encoded in the path instead of query params.
+- `should-follow-http-method-semantics`: a GET that changes state, a POST that returns 200 or no `Location`, a PATCH treated as idempotent, a DELETE that returns a body.
+- `should-use-the-right-status-code`: a 200 carrying an error, or a status code that does not match the outcome.
+- `should-version-in-the-url-path`: a version carried in a header or a query param instead of the path.
+- `should-bump-major-only-for-breaking-changes`: a major version bump with no breaking change, or a breaking change with none.

@@ -4,7 +4,7 @@
     "id": "8b9def90-2153-45ba-9dcc-fa2aa3bf745e",
     "title": "Agent Structure Reference",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -33,7 +33,7 @@
     ]
   },
   "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
-  "synced": "3c65760c4d9c8b27",
+  "synced": "fd2edff912831f3b",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

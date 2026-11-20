@@ -1,0 +1,50 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "b512282a-8174-426f-95dd-4a147222584d",
+    "title": "Search integration",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "App content SHOULD be discoverable through the platform's system search, enabling users to find content without opening the app.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "windows",
+      "web"
+    ],
+    "tags": [
+      "search",
+      "platform",
+      "discoverability"
+    ],
+    "depends-on": [
+      "cf698150-45b0-4a20-881b-7d0f04208198"
+    ],
+    "related": [
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "platform-integration"
+    ]
+  },
+  "synced": "a3f3a0bb02ab12e7",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

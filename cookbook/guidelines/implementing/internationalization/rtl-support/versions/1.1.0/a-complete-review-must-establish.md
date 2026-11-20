@@ -1,0 +1,14 @@
+
+- `must-support-rtl-languages`: whether every layout supports right-to-left languages
+- `should-use-leading-trailing`: whether alignment and padding use leading/trailing
+- `should-mirror-directional-icons`: whether directional icons mirror in RTL
+- `should-not-mirror-non-directional-icons`: whether non-directional icons stay unmirrored
+- `should-test-with-rtl-locale`: whether the work was tested with an RTL locale enabled
+- `should-preview-rtl-on-apple`: whether Apple previews include a right-to-left layout direction
+- `should-set-supports-rtl-on-android`: whether the Android manifest sets `android:supportsRtl="true"`
+- `should-use-start-end-on-android`: whether Android layouts use `start`/`end`
+- `should-force-rtl-for-android-testing`: whether Android testing forced RTL in developer options
+- `should-use-css-logical-properties`: whether web styles use CSS logical properties throughout
+- `should-set-dir-rtl-on-web`: whether the web root element carries `dir="rtl"` for RTL locales
+- `should-set-flow-direction-on-windows`: whether the Windows root element sets `FlowDirection="RightToLeft"` for RTL locales
+- `should-test-with-rtl-language-packs-on-windows`: whether Windows testing ran with RTL language packs installed

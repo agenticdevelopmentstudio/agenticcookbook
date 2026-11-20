@@ -1,0 +1,10 @@
+
+- `must-use-platform-system-font`: whether text uses the platform's system font
+- `should-establish-type-scale-with-roles`: whether sizes come from a type scale with clear roles, none invented ad-hoc
+- `should-default-body-text-to-14-17pt`: with no design system, whether body text is 14-17pt
+- `must-not-go-below-minimum-readable-size`: with no design system, whether any text is smaller than 11-12pt
+- `should-set-body-line-height-1-4-to-1-5`: with no design system, whether body line height is 1.4x-1.5x the font size
+- `should-use-platform-heading-scale`: with no design system, whether headings use the platform's built-in type scale
+- `should-limit-font-weights-per-screen`: whether each screen uses at most 2-3 font weights
+- `should-avoid-all-caps`: whether all-caps is kept to a few words
+- `should-keep-paragraph-width-45-75-characters`: whether paragraph width is 45-75 characters

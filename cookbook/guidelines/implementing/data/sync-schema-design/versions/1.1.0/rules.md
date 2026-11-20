@@ -1,0 +1,25 @@
+
+- **must-use-uuid-primary-keys**: MUST use UUID primary keys for all synced tables.
+- **should-use-uuidv7**: SHOULD use UUIDv7 (time-ordered) where possible.
+- **must-have-three-timestamp-columns**: Every synced table MUST have three timestamp columns: `created_at`, `updated_at` and `last_synced_at`.
+- **must-not-update-created-at**: `created_at` MUST be set once and never updated.
+- **must-update-updated-at-on-every-change**: `updated_at` MUST be updated on every change.
+- **should-store-timestamps-as-iso-8601-utc**: SHOULD store all timestamps as ISO-8601 UTC strings in SQLite (`TEXT`), and as `TIMESTAMPTZ` in PostgreSQL.
+- **must-not-mix-timestamp-formats**: MUST NOT mix timestamp formats within a column.
+- **should-maintain-updated-at-by-trigger**: SHOULD use a trigger to keep `updated_at` current automatically.
+- **must-add-version-column**: MUST add a `version INTEGER NOT NULL DEFAULT 1` column to every synced table.
+- **must-increment-version-on-update**: Every update MUST increment the version.
+- **must-check-changes-after-versioned-update**: After a version-guarded update, MUST check `sqlite3_changes() == 1`; if 0, a conflict occurred.
+- **must-not-hard-delete**: MUST NOT hard-delete records from synced tables.
+- **should-use-is-deleted-column**: SHOULD use `is_deleted INTEGER NOT NULL DEFAULT 0` (SQLite) / `is_deleted BOOLEAN NOT NULL DEFAULT FALSE` (PostgreSQL).
+- **must-filter-deleted-in-normal-queries**: With an `is_deleted` column, all normal queries MUST filter on `is_deleted = 0`.
+- **must-include-deleted-in-sync-queries**: With an `is_deleted` column, sync queries MUST include deleted records.
+- **should-add-dirty-tracking**: SHOULD add `is_dirty INTEGER NOT NULL DEFAULT 0` to each synced table (or a central change-log table fed by triggers).
+- **must-set-dirty-on-every-local-write**: With an `is_dirty` column, the flag MUST be set to `1` on every local insert or update.
+- **should-clear-dirty-after-server-accepts**: With an `is_dirty` column, the flag SHOULD be cleared to `0` after the sync worker confirms the server accepted the change.
+- **should-use-change-log-for-operation-awareness**: For apps needing operation-type awareness (INSERT vs UPDATE vs DELETE), SHOULD use a change-log table with triggers instead of the flag column.
+- **should-add-sync-state-table**: SHOULD add a `sync_state` table (or equivalent) to store per-device checkpoint information.
+- **should-store-sync-version-checkpoint**: SHOULD store the last server-assigned sync version in the sync state after each successful sync, and use it as the `since_version` parameter on the next pull.
+- **should-map-types-cleanly-across-databases**: SHOULD design columns so the same logical value maps cleanly across both databases: UUID as `TEXT` / `UUID`, Boolean as `INTEGER` (0/1) / `BOOLEAN`, Timestamp as `TEXT` (ISO-8601 UTC) / `TIMESTAMPTZ`, JSON as `TEXT` / `JSONB` (SQLite / PostgreSQL).
+- **should-convert-to-local-time-only-for-display**: SHOULD convert to local time only at the display layer.
+

@@ -24,3 +24,5 @@
 - `should-follow-strict-concurrency-guideline`: whether isolation and `Sendable` follow the strict-concurrency guideline
 - `should-use-appkit-and-uikit`: whether new UI uses AppKit and UIKit rather than SwiftUI
 - `should-pass-repository-lint-and-tests`: whether lint and tests pass under the repository's own configuration
+- `should-start-with-value-types`: structs, enums and protocols are preferred;
+- `should-pass-repository-lint-and-tests`: concurrency, UI-framework, lint and test guidelines are satisfied.

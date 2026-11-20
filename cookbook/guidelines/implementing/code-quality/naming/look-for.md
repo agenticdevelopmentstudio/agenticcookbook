@@ -7,3 +7,6 @@
 - `must-suffix-async-methods`: an async method (returning `Task`/`ValueTask`) whose name lacks the `Async` suffix
 - `must-pascal-case-constants`: a constant in `SCREAMING_SNAKE_CASE` or any casing but `PascalCase`
 - `should-use-var-when-type-apparent`: an explicit type repeated where the right side of the assignment already makes it apparent
+- `should-use-dotnet-casing-consistently`: Hold every identifier to .NET's established casing conventions applied consistently:
+  - `should-prefix-interfaces-with-i`: interface names carrying the `I` prefix (e.g., `IDisposable`);
+  - `must-suffix-async-methods`: asynchronous methods carrying the `Async` suffix (e.g., `SaveAsync`);

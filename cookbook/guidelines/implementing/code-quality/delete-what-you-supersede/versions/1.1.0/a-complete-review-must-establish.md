@@ -1,0 +1,22 @@
+
+- `must-delete-replaced-implementation`: every replaced implementation was deleted in the same change
+- `should-not-keep-old-and-new-side-by-side`: no old path sits beside its new one or behind a permanently-off flag, or the change says why
+- `should-delete-as-you-go`: the deletion was done in the change, not left to a later cleanup pass, or the change says why
+- `should-delete-old-tests-with-old-code`: old tests went with the old code, and behavior they pinned that still matters is tested on the new path, or the change says why not
+- `must-update-every-caller`: every caller, import, export, doc reference and string naming a renamed or moved item was updated
+- `should-search-whole-repo-for-old-name`: the old name was searched across the whole repo, or the change says why not
+- `should-search-whole-identifier`: the searches used the whole identifier and covered strings, config and docs, or the change says why not
+- `should-finish-with-final-search`: a final search for the old name finds nothing but documented shims, or the change says why
+- `must-comment-compatibility-shims`: every compatibility shim has a comment naming it as one and when it goes away
+- `must-delete-unreferenced-things`: nothing the change left unreferenced remains
+- `should-remove-orphaned-flags`: every orphaned flag and the branch it guarded are gone, or the change says why not
+- `should-remove-unused-dependencies`: every dependency the change made unused left the manifest in the same change, or the change says why not
+- `should-confirm-with-reference-search`: every deletion was confirmed by a reference search, or the change says why not
+- `must-not-delete-unproven-unused`: nothing deleted is still used
+- `must-not-widen-cleanup`: no unrelated dead code was deleted, and any found is noted for the user
+- `must-delete-not-comment-out`: no code is commented out
+- `should-not-keep-old-code-for-reference`: no old block is kept with a "kept for reference" or "old approach" note, or the change says why
+- `should-record-old-reasoning-as-a-sentence`: where the old approach's reasoning matters, it is a sentence in a comment and the code is gone, or the change says why not
+- `must-not-commit-temporary-disables`: no temporary debugging disable reached a commit
+- `should-rename-when-meaning-changes`: every value, function or field whose content changed has a name that matches, or the change says why not
+- `should-reread-touching-names`: every parameter, variable, file and test name touching a changed type or behavior still describes it, or the change says why not

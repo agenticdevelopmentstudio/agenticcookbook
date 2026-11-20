@@ -4,7 +4,7 @@
     "id": "7b713210-43ee-4f7f-be9e-b096edb782ba",
     "title": "Runtime Conditions",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "new-module"
     ]
   },
-  "synced": "4c84b73c12b54517",
+  "synced": "207c40759f64ace5",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

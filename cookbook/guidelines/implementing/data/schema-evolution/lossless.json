@@ -145,10 +145,10 @@
       "sentence": "See the implementing copy of this guideline for the procedure.",
       "reason": "the shipping copy's pointer to this topic; the copy is folded into this topic, so the pointer would point at itself (the 12-step recreate procedure is this topic's own part)",
       "judged": {
-        "by": "judge-sonnet-2026-11-19",
+        "by": "independent judge (sonnet)",
         "verdict": "pass",
-        "note": "The sentence only pointed to a procedure, and the topic's own the-12-step-recreate-procedure.md part holds that procedure in full. backward-compatibility-check.md already cites 'the 12-step recreate procedure' for breaking changes, so the pointer would only refer back to the topic and nothing is lost.",
-        "pin": "c43f746a210e3fe8412b1460cc383fa4f22d881710a9b98eef2fef946c9123d9"
+        "note": "The sentence was only a pointer to the procedure; the topic now holds that procedure as its own the-12-step-recreate-procedure.md part, and backward-compatibility-check.md still names it, so the pointer would point at itself. The added line in a-complete-review-must-establish.md does not change this.",
+        "pin": "c0ba232dc10a6b9398a58a5381ab2ea728b6b9e4ba45b107415de9be9f95fd9f"
       }
     }
   ]

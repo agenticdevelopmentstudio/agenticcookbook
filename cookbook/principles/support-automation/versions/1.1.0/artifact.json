@@ -1,0 +1,40 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "cf698150-45b0-4a20-881b-7d0f04208198",
+    "title": "Support Automation",
+    "type": "principle",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Applications should expose their capabilities through automation interfaces, not just interactive UI.",
+    "platforms": [],
+    "tags": [
+      "automation",
+      "scriptability",
+      "accessibility"
+    ],
+    "depends-on": [],
+    "related": [
+      "991e72d0-477b-4fd5-bdfa-08680efc0cf9"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "ec2789df8221a4af",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

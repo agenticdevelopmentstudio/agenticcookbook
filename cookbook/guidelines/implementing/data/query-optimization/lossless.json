@@ -50,10 +50,10 @@
       "sentence": "See the implementing copy of this guideline for detailed examples and fix patterns.",
       "reason": "the reviewing copy's pointer to this topic; the copy is folded into this topic, so the pointer would point at itself",
       "judged": {
-        "by": "judge-opus-5.5-2026-11-16",
+        "by": "judge-opus-5.5-2026-11-19",
         "verdict": "pass",
-        "note": "The sentence only points the reviewing copy at the implementing copy and states no rule; this topic now holds the folded copy's six anti-patterns (look-for.md) and examples and fixes for each (anti-patterns-that-cause-full-table-scans.md), so the pointer would point at itself.",
-        "pin": "431793a1fb62755f9679cb3efbda35f34a02906f35e37afa5947727cde6ed648"
+        "note": "The sentence only points the reviewing copy at the implementing copy and states no rule; this topic holds the folded copy's anti-patterns (look-for.md) and examples and fixes for each (anti-patterns-that-cause-full-table-scans.md), so the pointer would point at itself, and the added should-index-both-sides-of-or pass line is a review criterion that leaves this unchanged.",
+        "pin": "9b709ab3e551e897cfe3d6c28d6c6ceb800358450ead668717994197c1d3f862"
       }
     }
   ]

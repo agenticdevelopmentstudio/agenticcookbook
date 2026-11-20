@@ -11,3 +11,6 @@
 - `must-not-sacrifice-readability-for-density`: text made hard to read to fit more on screen
 - `should-keep-one-primary-scroll-direction`: a view that scrolls in more than one primary direction
 - `should-avoid-nested-same-direction-scrolling`: a scroll view nested inside another that scrolls the same way
+- `must-not-use-inline-style-pixel-widths`: an inline style that sets a pixel width for layout
+- `should-use-em-rem-or-device-class-breakpoints`: a breakpoint in a unit other than `em`/`rem`, or not a device-class media query
+- `should-match-dom-order-to-reading-order`: DOM order that differs from the visual reading order

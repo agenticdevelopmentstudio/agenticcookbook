@@ -1,0 +1,47 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "22f1ca04-2d1d-4faf-8bf0-c6abcd60802c",
+    "title": "Sensitive Data",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Minimize what you collect, encrypt what you keep, never log what you shouldn't.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "security",
+      "sensitive-data"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html",
+      "https://csrc.nist.gov/publications/detail/sp/800-122/final"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "security-review",
+      "logging"
+    ]
+  },
+  "synced": "be07624d4f6be08d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

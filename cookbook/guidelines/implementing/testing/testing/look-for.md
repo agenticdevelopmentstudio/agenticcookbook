@@ -14,3 +14,8 @@
 - `should-use-pytest`: Python tests not run by `pytest`
 - `must-not-touch-production-dashboard-data`: a test that touches production port 8888 or removes or modifies production dashboard data
 
+- `should-test-new-risk-bearing-paths`: Flag NEW risk-bearing code paths this diff introduces that no test in the diff (or named existing test) exercises: retry/backoff loops, network or subprocess I/O and its failure handling, new exception handlers or error-recovery branches, concurrency primitives (locks, async tasks, shared mutable state), and boundary parsing of external input.
+- `should-provoke-a-concrete-failure-mode`: Each finding names the specific untested path and the failure mode a test would have to provoke.
+- `should-test-new-risk-bearing-paths`: if the diff adds no such path — or every risky path it adds is exercised — report zero findings;
+- `should-test-new-risk-bearing-paths`: never file blanket "add more tests" advice, never flag pre-existing untested code the diff merely touches, and never re-argue the design of the path itself (that belongs to the owning lane — cross-reference it instead).
+- `should-test-component-logic-as-unit-tests`: avoid fragile UI tests — test component logic as units instead

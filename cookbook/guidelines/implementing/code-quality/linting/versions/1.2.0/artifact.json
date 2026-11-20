@@ -1,0 +1,63 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "775da457-30c7-47de-b179-0fae8a8b779d",
+    "title": "Linting before the first PR",
+    "type": "guideline",
+    "version": "1.2.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All projects MUST have linting configured and passing before the first pull request.",
+    "platforms": [
+      "csharp",
+      "kotlin",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "code-quality",
+      "linting"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://eslint.org/",
+      "https://github.com/dotnet/roslynator",
+      "https://github.com/meziantou/Meziantou.Analyzer",
+      "https://github.com/realm/SwiftLint",
+      "https://github.com/swiftlang/swift-format",
+      "https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/",
+      "https://pinterest.github.io/ktlint/",
+      "https://prettier.io/",
+      "https://stylelint.io/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "pre-commit",
+      "new-module"
+    ]
+  },
+  "synced": "e2e56ba2122c7d61",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "platform-linters", "heading": "Platform linters", "role": "how-to"},
+    {"part": "swift", "heading": "Swift", "role": "how-to"},
+    {"part": "kotlin", "heading": "Kotlin", "role": "how-to"},
+    {"part": "typescript", "heading": "TypeScript", "role": "how-to"},
+    {"part": "c", "heading": "C#", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "what-linting-verifies-that-tests-don-t", "heading": "What linting verifies that tests don't", "role": "rationale"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

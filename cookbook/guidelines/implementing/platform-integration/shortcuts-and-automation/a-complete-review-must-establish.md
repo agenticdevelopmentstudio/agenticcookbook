@@ -4,3 +4,9 @@
 - `macos-support-applescript`: whether macOS supports AppleScript via `NSScriptCommand` where appropriate
 - `kotlin-use-appactions`: whether Kotlin Google Assistant integration uses `AppActions`
 - `kotlin-support-intent-automation`: whether Kotlin supports `Intent`-based automation
+- `windows-expose-flows-via-protocol-activation`: whether key flows are exposed via protocol activation URIs
+- `swift-provide-parameter-summaries-and-suggested-phrases`: whether intents provide parameter summaries and suggested phrases
+- `windows-handle-command-line-activation`: command-line activation handled if supported;
+- `windows-document-winui-scripting-limits`: limitations of WinUI 3 scripting acknowledged in docs
+- `swift-expose-key-actions-as-intents`: `AppIntent` conformances present for key actions;
+- `swift-use-standard-parameter-types`: parameter types use standard types where possible

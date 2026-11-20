@@ -4,7 +4,7 @@
     "id": "e8c8e3b9-64a0-4fb0-a27b-f3b733dc10c7",
     "title": "System Interactions",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "db698d25c4279dc7",
+  "synced": "68c9eaee06a20752",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

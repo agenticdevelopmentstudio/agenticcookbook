@@ -4,7 +4,7 @@
     "id": "e114c41c-d203-454c-bc7c-cc128f6ebadd",
     "title": "Explicit over implicit",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "421411b14f479dd6",
+  "synced": "b39e35a9fa7cec12",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

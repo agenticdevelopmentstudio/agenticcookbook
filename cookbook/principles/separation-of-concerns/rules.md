@@ -4,3 +4,4 @@
 - **should-separate-ui-logic-and-data**: SHOULD keep UI rendering, business logic, and data access in separate layers that can change independently.
 - **should-treat-cross-feature-edits-as-coupling**: When a change to one feature forces edits in an unrelated feature, SHOULD treat it as a coupling defect.
 - **should-co-locate-by-reason-to-read**: Counterweight — locality of behavior: SHOULD separate by *reason to change*, but co-locate by *reason to read*; choose per case rather than maximizing either.
+- **should-separate-workflow-steps-into-distinct-agents**: Workflow steps SHOULD be separated into distinct agents rather than one agent doing everything.

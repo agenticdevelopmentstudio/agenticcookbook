@@ -12,3 +12,5 @@
 
 ---
 
+
+- `should-provide-verification-method`: a verification method for confirming success;

@@ -8,3 +8,5 @@
 
 ---
 
+
+- `should-have-single-responsibility`: Read a Claude Code rule file across four lenses.

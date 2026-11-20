@@ -1,0 +1,44 @@
+
+- **must-declare-in-pyproject**: A project that is installed or imported by other code MUST declare itself in `pyproject.toml`.
+  - The file has a `[build-system]` table (`requires` and `build-backend`) and a `[project]` table with `name`, `version` (or `dynamic`), `description`, `readme`, `requires-python`, `license` (an SPDX expression), and `dependencies`.
+- **should-use-project-tables-for-extras-and-scripts**: SHOULD put optional extras in `[project.optional-dependencies]` and command-line entry points in `[project.scripts]`.
+- **should-not-write-setup-py**: SHOULD NOT write a `setup.py` for a new project.
+- **should-match-requires-python-to-oldest-tested**: SHOULD declare `requires-python` to match the oldest interpreter you test.
+- **should-carry-inline-script-metadata**: A single-file script that has dependencies SHOULD carry inline script metadata (PEP 723): a `# /// script` comment block with `requires-python` and `dependencies`, so a runner can build its environment.
+- **should-ship-py-typed**: A typed library SHOULD ship a `py.typed` marker file in the package (PEP 561) so type checkers use its annotations.
+- **should-annotate-signatures-and-public-attributes**: SHOULD annotate every function signature and every public attribute.
+- **should-type-check-strictly-in-ci**: SHOULD run a type checker in strict mode in CI (for mypy, `--strict`, which includes `--disallow-untyped-defs`).
+- **should-not-blanket-ignore-types**: SHOULD NOT silence a checker with a blanket `# type: ignore`; ignore one error code and say why.
+- **should-run-commands-as-lists**: SHOULD run external programs with `subprocess.run`, passing the command as a list: `subprocess.run(["git", "status"], check=True)`.
+- **must-not-shell-out-foreign-values**: MUST NOT use `shell=True` with a string that contains any value you did not write yourself.
+  - A list of arguments never reaches a shell, so there is nothing to escape.
+- **should-shlex-quote-when-a-shell-is-required**: If a shell is truly required, SHOULD quote each interpolated value with `shlex.quote`.
+- **should-check-exit-status**: SHOULD pass `check=True` so a non-zero exit raises `CalledProcessError`, or inspect `returncode` on purpose.
+- **should-pass-timeout-to-hanging-commands**: SHOULD pass `timeout=` for any command that could hang.
+  - On expiry the child is killed and `TimeoutExpired` is raised.
+- **should-capture-output-as-text**: SHOULD use `capture_output=True` with `text=True` to read output.
+- **should-not-mix-capture-output-and-streams**: SHOULD NOT combine `capture_output` with explicit `stdout` or `stderr` arguments.
+- **should-build-env-from-os-environ**: SHOULD build `env` from `os.environ` plus your changes unless you want a clean one.
+  - The `env` argument replaces the inherited environment.
+- **should-use-pathlib**: SHOULD use `pathlib.Path`, not string concatenation or `os.path`.
+- **should-join-read-and-write-with-path-methods**: SHOULD join with `/`, and read and write with `read_text` and `write_text`.
+- **must-pass-utf-8-encoding**: Reading and writing text MUST always pass `encoding="utf-8"`.
+- **should-make-and-search-directories-with-path**: SHOULD create directories with `mkdir(parents=True, exist_ok=True)` and search with `glob` and `rglob`.
+- **should-resolve-before-containment-check**: SHOULD resolve a path before you test whether it lies under a root.
+  - `Path.resolve()` is the only method that collapses `..` and symlinks.
+- **should-catch-narrowest-exception**: SHOULD catch the narrowest exception that you can handle.
+- **must-not-use-bare-except**: MUST NOT write a bare `except:`.
+- **should-not-catch-exception-outside-boundary**: SHOULD NOT catch `Exception` except at a process boundary that logs and exits.
+- **should-name-errors-with-error-suffix**: SHOULD define your own errors as subclasses of `Exception`, named with the suffix `Error`.
+- **should-chain-translated-exceptions**: When you translate an exception, SHOULD chain it: `raise ConfigError("...") from err`.
+- **should-use-from-none-only-on-purpose**: SHOULD use `from None` only to hide an implementation detail on purpose.
+- **should-keep-try-bodies-small**: SHOULD keep the `try` body small.
+- **should-use-else-and-finally**: SHOULD put code that runs only on success in `else`, and cleanup in `finally`.
+- **must-not-leave-finally-by-jump**: MUST NOT `return`, `break` or `continue` out of a `finally` block; the 3.14 interpreter warns about it (PEP 765).
+- **should-add-note-instead-of-wrapping**: SHOULD add context to an in-flight exception with `add_note()` instead of wrapping it where you have nothing to add.
+- **should-start-untrusted-scripts-isolated**: A script run from a directory you do not control SHOULD be started with `python -I` (isolated mode), which ignores the script directory, the user site-packages directory and every `PYTHON*` environment variable.
+  - A script run from a directory you do not control can import a file planted next to it.
+  - Isolated mode implies `-E -P -s`.
+- **should-not-use-m-from-untrusted-directory**: `-m` puts the current directory on `sys.path`, so SHOULD NOT use `-m` from an untrusted working directory.
+- **must-not-run-interpreter-in-downloads**: MUST NOT run an interpreter inside a directory of downloaded files.
+- **should-pass-downloads-as-arguments**: SHOULD run the interpreter from your own directory and pass the downloaded path as an argument.

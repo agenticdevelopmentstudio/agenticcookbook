@@ -8,3 +8,5 @@
 - `should-back-trusted-types-with-sanitizer`: a trusted-types policy that escapes by hand instead of calling DOMPurify or the Sanitizer API (`Element.setHTML()`)
 - `should-roll-out-trusted-types-report-only-first`: Trusted Types enforced without a report-only phase to surface violating sinks
 - `should-enable-trusted-types-despite-mixed-support`: Trusted Types left off because not every browser supports it
+- `must-not-allow-unsafe-inline-or-eval`: flag any `'unsafe-inline'` or `'unsafe-eval'` in `script-src` — both MUST be absent.
+- `should-require-trusted-types`: A strict nonce-based CSP does NOT stop DOM-XSS flowing through injection sinks (`innerHTML`, `document.write`, `eval`-style `setTimeout` arguments), which execute without inline-script gating, so the CSP SHOULD be paired with Trusted Types: emit `require-trusted-types-for 'script'` and declare a named policy via `trusted-types <policy-name>`;

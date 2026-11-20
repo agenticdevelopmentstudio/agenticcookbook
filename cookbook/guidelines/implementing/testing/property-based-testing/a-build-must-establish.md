@@ -3,3 +3,4 @@
 - `should-describe-properties-instead-of-examples`: the property tests state output properties and the framework generates the inputs
 - `must-write-a-property-test-per-data-transformation`: every data transformation function has at least one property test
 
+- `should-test-preservation-property-for-collection-operations`: a preservation property is tested for every collection operation, or the code says why not

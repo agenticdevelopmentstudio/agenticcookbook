@@ -8,3 +8,7 @@
 - `must-not-produce-filesystem-side-effects-in-unit-tests`: unit tests that write outside a temp directory or leave files after teardown
 - `should-not-rely-on-system-clock`: tests that read the system clock instead of an injected time source
 - `must-treat-intermittent-failure-as-p1`: an intermittently failing test with no P1 bug filed for it
+- `must-not-share-mutable-state`: Review the test changes for every source of nondeterminism: tests MUST NOT share mutable state (each test arranges its own fixtures — flag class-level, module-level, or global mutable fields reused across tests);
+- `must-not-depend-on-execution-order`: MUST NOT depend on execution order (no test relies on another having run first, no ordering-sensitive shared setup);
+- `must-not-make-real-network-calls-in-unit-tests`: unit tests MUST NOT make real network calls (require fakes/stubs/mocks at the boundary);
+- `must-not-use-sleep-or-timing-assertions`: MUST NOT use `sleep()` or timing-dependent assertions (require deterministic waits, callbacks, or condition polling instead of arbitrary delays);

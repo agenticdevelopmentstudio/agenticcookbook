@@ -1,0 +1,16 @@
+
+- `must-use-consistent-sibling-terminology`: whether every shared concept is named as its sibling recipes name it
+- `must-adopt-established-terms`: whether a term established earlier in the family is adopted unmodified, with no synonym introduced
+- `must-use-canonical-glossary-terms`: whether each glossary- or guideline-defined term is used in its canonical form, any deviation explained in Design Decisions
+- `must-name-differing-concepts-distinctly`: whether concepts that differ between siblings have distinct, consistent names
+- `should-match-sibling-section-depth`: whether section depth matches siblings of comparable complexity (behaviors, states, error conditions)
+- `must-explain-depth-disparity`: whether every depth disparity with siblings is explained
+- `no-incoherent-depth-standard`: whether any recipe's depth standard makes its sibling group incoherent to a first-time reader
+- `must-use-family-tag-vocabulary`: whether every tag is from the family's vocabulary for that concept
+- `must-use-canonical-platform-names`: whether every `platforms` entry uses the cookbook's canonical platform name and casing
+- `must-keep-author-format-consistent`: whether the `author` field format matches the family's
+- `must-keep-starting-version-consistent`: whether a new recipe's starting version follows the family convention
+- `must-reference-siblings-by-uuid`: whether every sibling reference uses the UUID (in `related`) or an `[<rdid>](cookbook:<uuid>)` link, never a filename, title or description
+- `must-format-cross-references-consistently`: whether body cross-references use the same link format as the siblings'
+- `must-verify-cross-references-resolve`: whether every cross-reference was verified to resolve to an existing recipe (`cookr validate`)
+- `should-update-existing-related-fields`: whether relevant existing recipes' `related` fields were updated to include the new recipe

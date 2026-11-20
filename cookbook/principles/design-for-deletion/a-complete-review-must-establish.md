@@ -4,3 +4,9 @@
 - `should-treat-lines-as-spent`: whether code that could be deleted was deleted
 - `should-not-abstract-prematurely-for-reuse`: whether any abstraction was introduced prematurely for reuse
 - `should-duplicate-rather-than-couple-when-in-doubt`: whether a doubtful case was resolved by duplicating rather than coupling
+- `should-write-code-easy-to-throw-away`: Each skill and rule can be deleted without breaking other skills;
+- `should-duplicate-rather-than-couple-when-in-doubt`: no cross-skill coupling via shared state;
+- `should-not-abstract-prematurely-for-reuse`: no premature abstraction layers across unrelated skills;
+- `should-delete-rules-that-no-longer-apply`: dead rules (no longer triggered) removed rather than kept "just in case"
+- `should-not-abstract-prematurely-for-reuse`: No abstractions justified solely by anticipated future reuse;
+- `should-write-code-easy-to-throw-away`: modules can be removed without cascading changes

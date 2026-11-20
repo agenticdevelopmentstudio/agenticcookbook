@@ -1,0 +1,19 @@
+
+- `must-use-rfc-keywords-for-normative-statements`: whether every normative statement uses an RFC 2119 keyword
+- `must-write-rfc-keywords-in-all-caps`: whether every keyword used with its normative meaning is in ALL CAPS
+- `must-use-keywords-with-defined-semantics`: whether each keyword is used with its defined semantics
+- `must-not-treat-lowercase-keywords-as-normative`: whether any lowercase "must", "should" or "may" carries normative meaning
+- `must-not-use-weaker-synonyms`: whether any weaker synonym ("needs to", "ought to", "has to") stands in for a keyword
+- `must-be-independently-testable`: whether every requirement can be turned into a concrete test with a clear PASS or FAIL result in isolation
+- `must-not-bundle-behaviors-into-one-requirement`: whether any requirement bundles more than one behavior
+- `must-not-be-tautological-or-circular`: whether any requirement is tautological or circular
+- `must-include-specific-values-for-measurable-constraints`: whether every numeric or measurable constraint gives a specific value
+- `should-not-use-unanchored-relative-terms`: whether any requirement uses a relative term ("adequate", "sufficient", "reasonable") with no concrete threshold
+- `must-cite-platform-standard-values`: whether each value a platform standard defines is cited explicitly
+- `must-describe-observable-behavior`: whether every requirement describes observable behavior, not implementation mechanism
+- `must-not-reference-platform-apis-unless-scoped`: whether any requirement names a platform-specific API, class or framework outside an explicitly platform-scoped recipe where it is the only conformant option
+- `must-use-platform-neutral-terms-for-shared-behavior`: whether each behavior that is the same across platforms is in platform-neutral terms
+- `should-give-measurable-values-in-must-requirements`: whether MUST requirements carry measurable values where a standard or design decision provides them
+- `must-explain-rationale-for-should-requirements`: whether every SHOULD requirement explains, inline or in a linked Design Decisions section, why deviation is allowed
+- `should-document-conditions-for-may-requirements`: whether MAY requirements document when each option is appropriate
+- `must-describe-required-outcome`: whether any requirement describes an attempt instead of the required outcome

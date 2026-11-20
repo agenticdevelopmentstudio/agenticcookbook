@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "704fef7e-0e8d-480c-8019-cf84b5fd851b",
+    "title": "Data Display",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Choose the right pattern for the content type and user task.",
+    "platforms": [],
+    "tags": [
+      "data-display",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+      "https://m3.material.io/components/lists/overview",
+      "https://www.nngroup.com/articles/cards-component/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "ui-implementation",
+      "data-modeling"
+    ]
+  },
+  "synced": "f3ecb8129dfaaae5",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-to", "heading": "Choosing a pattern", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

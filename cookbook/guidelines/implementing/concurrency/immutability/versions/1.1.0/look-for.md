@@ -1,0 +1,20 @@
+
+- `must-default-to-immutable-values`: a mutable value where an immutable one would do, with no need for mutation shown
+- `should-prefer-value-types`: a reference type used where a value type would serve
+- `must-contain-mutation-behind-boundaries`: mutable state reachable and changed from many places, with no clear boundary around it
+- `should-use-val-by-default`: a Kotlin `var` that is never reassigned
+- `should-use-data-class-for-value-types`: a Kotlin value type written as a plain class instead of a `data class`
+- `should-introduce-var-only-when-required`: a Kotlin `var` where no mutation is required
+- `should-contain-mutable-state-behind-stateflow`: Kotlin mutable state exposed directly instead of behind `StateFlow`
+- `should-use-const-by-default`: a TypeScript `let` or `var` that is never reassigned
+- `should-use-var-or-let-only-when-required`: a TypeScript `var`/`let` where no mutation is required
+- `should-prefer-usestate-for-mutable-state`: React mutable state held outside `useState`
+- `should-use-readonly-by-default`: a C# field or struct that could be `readonly` but is not
+- `should-prefer-immutable-collections`: a shared C# collection that is a mutable type instead of `System.Collections.Immutable`
+- `should-use-records-for-data`: a C# DTO, API response, domain event or value object written as a mutable class instead of a `record`
+- `should-use-record-structs-for-small-values`: a small immutable C# value type not written as `record struct` / `readonly record struct`
+- `should-prefer-positional-records`: a simple C# data carrier written as a non-positional record or class
+- `should-use-init-and-required`: a mandatory C# property with a public `set` instead of `init` and `required`
+- `should-use-with-expressions`: a C# record copied by hand or mutated in place instead of with a `with` expression
+- `should-contain-mutable-state-behind-wrappers`: C# mutable state not behind `ObservableObject` (UI) or a thread-safe wrapper
+- `should-reserve-mutable-classes-for-entities`: a C# `class` with mutable state that has no identity semantics

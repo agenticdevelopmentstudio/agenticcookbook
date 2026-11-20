@@ -1,0 +1,12 @@
+
+- `must-make-user-facing-strings-localizable`: a user-facing string literal hardcoded in UI or message code
+- `should-store-in-platform-resource-files`: strings kept outside the platform-standard resource files or read around the platform's localization API
+- `should-use-string-localized-on-apple`: Apple UI text not going through `String(localized:)` or `NSLocalizedString`
+- `should-store-apple-strings-in-xcstrings`: Apple strings stored somewhere other than `.xcstrings` or `.strings`
+- `should-use-strings-xml-on-android`: Android strings kept outside `strings.xml`
+- `should-reference-android-strings-via-resources`: Android text not referenced via `R.string.*` or `stringResource()`
+- `should-use-i18n-library-on-web`: web text rendered without an i18n library
+- `should-extract-to-message-catalogs`: web strings left inline instead of in message catalogs
+- `should-use-mrt-core-resw-on-windows`: Windows XAML text set inline instead of through `x:Uid` and `.resw`
+- `should-follow-windows-strings-folder-structure`: `.resw` files outside `Strings/<language-tag>/Resources.resw`
+- `should-use-resource-loader-in-code-behind`: Windows code-behind strings not loaded through `ResourceLoader`

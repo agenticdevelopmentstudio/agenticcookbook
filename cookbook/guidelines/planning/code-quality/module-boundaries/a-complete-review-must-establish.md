@@ -7,3 +7,4 @@
 - `should-exclude-vendor-directories`: whether vendor and third-party directories are excluded
 - `should-note-shared-directories`: whether `core`, `common`, `shared` and `util` directories are noted
 - `should-not-auto-split-shared-directories`: whether such directories were split automatically
+- `should-treat-each-declared-target-as-candidate`: Every build target has been identified;

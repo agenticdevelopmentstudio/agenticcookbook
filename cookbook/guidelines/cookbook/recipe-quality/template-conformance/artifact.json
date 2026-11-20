@@ -4,7 +4,7 @@
     "id": "e48a04d7-c479-427d-9d8e-fe9e9b990c77",
     "title": "Template Conformance",
     "type": "guideline",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -33,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "8ccbb62ff8cfd892",
+  "synced": "10ae16ced6054e02",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

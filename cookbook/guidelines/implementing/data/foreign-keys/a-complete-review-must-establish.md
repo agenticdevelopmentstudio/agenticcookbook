@@ -7,4 +7,4 @@
 - No FK constraints declared without corresponding index on the FK column
 - Bidirectional references avoided; one direction always defined, back-references via query
 - Cross-table constraints use correct syntax: `REFERENCES table(column)` with explicit column name
-
+- `must-enable-foreign-keys-per-connection`: A review passes when it establishes every item above.

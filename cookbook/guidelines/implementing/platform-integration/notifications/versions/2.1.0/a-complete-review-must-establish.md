@@ -1,0 +1,19 @@
+
+- `use-platform-notification-system`: whether timely, actionable alerts go through the platform notification system and respect user preferences
+- `request-permission-at-relevance`: whether notification permission is requested at the moment of relevance
+- `must-be-actionable`: whether every notification deep links to its relevant content
+- `support-grouping-and-categories`: whether notifications use grouping and categories
+- `respect-dnd-focus-and-quiet-hours`: whether notifications respect Do Not Disturb, Focus modes and quiet hours
+- `apple-use-unusernotificationcenter`: whether Apple local and push notifications use `UNUserNotificationCenter`
+- `apple-support-actionable-notifications`: whether actionable Apple notifications use `UNNotificationCategory` and `UNNotificationAction`
+- `ios-support-summary-and-time-sensitive`: whether iOS notifications support Notification Summary and Time Sensitive interruption levels
+- `android-use-notificationcompat`: whether Android notifications use `NotificationCompat.Builder`
+- `android-declare-channels`: whether Android declares a notification channel per category
+- `android-support-messaging-styles`: whether Android messaging notifications support Direct Reply, bubbles and conversation style
+- `windows-use-appnotification-api`: whether Windows local notifications use the `AppNotificationBuilder` fluent API
+- `windows-support-rich-content`: whether Windows notifications support text, images, buttons, progress bars and scheduled delivery where needed
+- `windows-handle-activation`: whether Windows handles notification activation alongside protocol activation
+- `web-use-notifications-api-with-service-workers`: whether web push notifications use the Notifications API with service workers
+- `web-request-permission-contextually`: whether the web app requests notification permission contextually
+- `web-support-actions-and-badges`: whether web notifications support actions and badges via the Badging API
+- `web-fall-back-when-denied`: whether the web app falls back gracefully when notifications are denied or unavailable

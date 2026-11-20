@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.1.0 | 2026-11-16 | Mike Fullerton | Rewritten from research: 21 named rules, each citing its research claims; roled parts (rules, how-to, examples, review focus, review bar, build bar, rationale, references); lossless accounting of the prior text |
 | 1.0.3 | 2026-10-04 | Mike Fullerton | Complete the summary, which was cut off |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

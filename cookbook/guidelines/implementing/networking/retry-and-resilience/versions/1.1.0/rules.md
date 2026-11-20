@@ -1,0 +1,12 @@
+
+- **should-retry-transient-failures**: Clients SHOULD retry transient failures with exponential backoff and jitter.
+- **should-back-off-with-full-jitter**: Retry delays SHOULD use **exponential backoff with full jitter**: `delay = random(0, min(max_delay, base * 2^attempt))`.
+- **should-use-the-default-retry-parameters**: Retries SHOULD use the defaults in the parameter table: base delay 1 second, max delay cap 30 seconds, max retries 3-5 (idempotent), 0 (non-idempotent unless safe).
+- **should-treat-listed-codes-as-retryable**: Clients SHOULD treat these as the **retryable status codes**: 408, 429, 500 (idempotent only), 502, 503, 504.
+- **must-respect-retry-after**: Clients MUST respect `Retry-After` header on 429 and 503.
+- **must-not-retry-deterministic-failures**: **Clients MUST NOT retry:** 400, 401, 403, 404, 409, 422 — these are deterministic failures.
+- **should-use-a-circuit-breaker**: Clients SHOULD use a **circuit breaker** for cascading failure prevention.
+  - Track failure rate over a sliding window (e.g., 10 requests)
+  - Open circuit when failure rate exceeds threshold (e.g., 50%)
+  - Stay open for a cooldown period (e.g., 30 seconds)
+  - Half-open: allow 1 probe request to test recovery

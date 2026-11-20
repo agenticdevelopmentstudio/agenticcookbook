@@ -4,7 +4,7 @@
     "id": "2575d546-fbd4-46a6-a143-b886c7d04f01",
     "title": "Delete what you supersede",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -34,7 +34,7 @@
       "refactor"
     ]
   },
-  "synced": "ec6e8a1786b376e5",
+  "synced": "9f079ad11527fa3c",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

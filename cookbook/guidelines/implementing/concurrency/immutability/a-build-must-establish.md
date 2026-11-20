@@ -18,3 +18,4 @@
 - `should-use-with-expressions`: every C# non-destructive mutation uses a `with` expression, or the code says why not
 - `should-contain-mutable-state-behind-wrappers`: C# mutable state sits behind `ObservableObject` (UI) or a thread-safe wrapper, or the code says why not
 - `should-reserve-mutable-classes-for-entities`: every C# `class` with mutable state is an entity with identity semantics, or the code says why
+- `must-not-access-shared-mutable-fields-unsynchronized`: no mutable shared field is accessed from multiple concurrent contexts without synchronization

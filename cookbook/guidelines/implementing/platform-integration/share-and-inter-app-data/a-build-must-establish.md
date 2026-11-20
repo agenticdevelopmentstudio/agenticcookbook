@@ -23,3 +23,4 @@
 - `web-register-share-target`: the Web App Manifest declares `share_target`, or the code says why not
 - `web-support-html-drag-and-drop`: web drag and drop uses the HTML Drag and Drop API, or the code says why not
 - `web-use-file-handling-api`: the PWA registers its file types through the File Handling API, or the code says why not
+- `windows-check-clipboard-format-availability`: Windows clipboard operations check format availability before reading a format, or the code says why not

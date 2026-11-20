@@ -28,3 +28,6 @@
 - `should-set-max-turns-for-bounded-tasks`: whether check A06 holds: Simple agents that should finish quickly have a turn limit
 - `may-preload-skills`: whether check A07 holds: Agent that needs domain knowledge has relevant skills preloaded
 - `may-scope-memory`: whether check A08 holds: If agent accumulates knowledge, memory is scoped correctly
+- `should-use-natural-trigger-keywords`: `description` present using natural trigger phrasing;
+- `should-not-replicate-native-capabilities`: native Claude capabilities are not re-taught;
+- `should-match-model-override-to-complexity`: any `model:` override fits the complexity;

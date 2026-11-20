@@ -7,3 +7,7 @@
 - `must-not-inject-scoped-into-singleton`: a singleton whose constructor takes a scoped service
 - `should-bind-configuration-with-ioptions`: configuration read directly from `IConfiguration` or hand-copied instead of bound through `IOptions<T>` / `IOptionsSnapshot<T>`
 - `should-register-in-add-extension-methods`: registrations made inline in startup code rather than in `Add*()` extension methods
+- `must-not-inject-scoped-into-singleton`: watch for the captive-dependency anti-pattern where a `Scoped` (or `Transient`) service is injected into a `Singleton`, capturing the shorter lifetime;
+- `should-not-inject-transient-into-singleton`: a singleton whose constructor takes a `Transient` service
+- `should-bind-configuration-with-ioptions`: confirm configuration is bound through `IOptions<T>` / `IOptionsSnapshot<T>` rather than raw config access;
+- `should-register-in-add-extension-methods`: confirm service registrations are organized into `Add*()` extension methods on `IServiceCollection` for modularity rather than scattered inline at the composition root.

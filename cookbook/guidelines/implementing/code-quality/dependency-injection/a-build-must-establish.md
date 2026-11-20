@@ -5,5 +5,6 @@
 - `should-use-scoped-for-per-request-services`: each new per-request service is registered `Scoped`, or the code says why not
 - `should-use-singleton-for-shared-state`: each new thread-safe shared state service is registered `Singleton`, or the code says why not
 - `must-not-inject-scoped-into-singleton`: no singleton the build registers depends on a scoped service (scope validation on, or the graph checked)
+- `should-not-inject-transient-into-singleton`: no singleton the build registers holds a `Transient` service, or the code says why the capture is safe
 - `should-bind-configuration-with-ioptions`: each new configuration section is bound through `IOptions<T>` / `IOptionsSnapshot<T>`, or the code says why not
 - `should-register-in-add-extension-methods`: each new registration is in an `Add*()` extension method, or the code says why not

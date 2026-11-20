@@ -19,3 +19,5 @@
 - `pwa-support-periodic-background-sync`: whether the PWA supports periodic background sync via service workers
 - `pwa-explore-widget-api-proposals`: whether experimental Widget API proposals were explored where available
 - `pwa-consider-tray-or-menu-bar`: whether desktop PWAs considered system tray or menu bar presence where the platform allows
+- `apple-support-widget-families`: Widget supports at least small and medium families;
+- `must-deep-link-on-tap`: widget tap navigates to correct content;

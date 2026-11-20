@@ -1,0 +1,10 @@
+
+- `should-defer-to-canonical-sources`: a default applied where the platform's canonical source (Apple HIG, Material Design 3, Fluent 2, WCAG 2.1) speaks to it
+- `must-use-platform-prescribed-values`: a spacing, type size or target size that differs from the value the platform HIG prescribes
+- `should-use-defaults-to-fill-gaps`: a value invented ad hoc where a default exists to fill the gap or set the cross-platform baseline
+- `should-refer-to-canonical-sources-when-writing-ui`: a UI ingredient or recipe written with no reference to the canonical platform design sources
+- `must-not-contradict-platform-hig`: a cookbook artifact value that contradicts the platform HIG
+- `should-defer-to-hig-in-appearance-sections`: spacing, type sizes or target sizes in an ingredient's Appearance section that do not defer to the platform HIG
+- `should-use-the-prescribed-value`: a platform-prescribed value replaced by another
+- `should-note-cross-platform-defaults`: a cross-platform default not noted as such, or missing where the HIG has no opinion
+- `should-list-platform-overrides-in-platform-notes`: a platform-specific override missing from the ingredient's Platform Notes, or listed without a link to its HIG section

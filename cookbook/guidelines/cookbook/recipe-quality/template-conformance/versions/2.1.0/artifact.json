@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e48a04d7-c479-427d-9d8e-fe9e9b990c77",
+    "title": "Template Conformance",
+    "type": "guideline",
+    "version": "2.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Recipe follows the standard template structure with valid frontmatter and all required sections in correct order.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "8ccbb62ff8cfd892",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "common-violations", "heading": "Common Violations", "role": "examples"},
+    {"part": "verification-checklist", "heading": "Verification Checklist", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

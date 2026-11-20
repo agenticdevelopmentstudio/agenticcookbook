@@ -4,7 +4,7 @@
     "id": "29057cf0-a38b-4c35-8b8b-52e12bf54784",
     "title": "Privacy and security by default",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -32,7 +32,7 @@
       "data-modeling"
     ]
   },
-  "synced": "b87adf9e0963290c",
+  "synced": "f4b6740e6cd3e045",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

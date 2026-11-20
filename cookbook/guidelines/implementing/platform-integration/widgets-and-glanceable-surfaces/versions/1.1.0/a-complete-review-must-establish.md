@@ -1,0 +1,21 @@
+
+- `provide-widgets-for-glanceable-data`: whether apps with time-sensitive or frequently checked data provide widgets where supported
+- `show-only-most-important-information`: whether widgets show only the most important information
+- `support-multiple-sizes`: whether widgets support multiple sizes where the platform offers them
+- `must-deep-link-on-tap`: whether every widget tap deep links to its relevant content
+- `update-on-reasonable-cadence`: whether widget refresh balances freshness against battery and data usage
+- `apple-use-widgetkit`: whether Apple widgets use WidgetKit with SwiftUI views
+- `apple-support-widget-families`: whether Apple widgets support small, medium and large families
+- `ios17-support-interactive-widgets`: whether iOS 17+ widgets support interactive `AppIntent`-backed buttons and toggles
+- `ios16-support-lock-screen-widgets`: whether iOS 16+ supports Lock Screen widgets
+- `apple-use-timelineprovider-and-reload`: whether Apple widgets schedule updates with `TimelineProvider` and refresh on events with `reloadTimelines`
+- `apple-use-live-activities-for-realtime`: whether real-time status uses Live Activities with `ActivityKit` and the Dynamic Island
+- `android-use-jetpack-glance`: whether Android home screen widgets use Jetpack Glance
+- `android-define-appwidget-provider`: whether Android widget metadata lives in `appwidget-provider` XML
+- `android-support-resize-and-onupdate`: whether Android widgets are resizable and respond to `onUpdate`
+- `android-refresh-with-workmanager`: whether Android widget background refresh uses `WorkManager`
+- `android-follow-material-you`: whether Android widgets follow Material You theming
+- `pwa-use-badging-api`: whether PWA icon notification counts use the Badging API
+- `pwa-support-periodic-background-sync`: whether the PWA supports periodic background sync via service workers
+- `pwa-explore-widget-api-proposals`: whether experimental Widget API proposals were explored where available
+- `pwa-consider-tray-or-menu-bar`: whether desktop PWAs considered system tray or menu bar presence where the platform allows

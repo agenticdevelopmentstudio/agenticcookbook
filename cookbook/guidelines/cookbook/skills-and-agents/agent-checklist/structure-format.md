@@ -12,3 +12,6 @@
 
 ---
 
+
+- `must-have-yaml-frontmatter`: Read a Claude Code agent against three lenses.
+- `must-have-yaml-frontmatter`: file opens and closes with `---` YAML frontmatter;

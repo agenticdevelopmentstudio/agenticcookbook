@@ -1,0 +1,14 @@
+
+- `should-make-one-logical-change-per-commit`: each commit the build made holds one logical change, or its message says why not
+- `may-touch-multiple-files-for-one-concept`: every file in a multi-file commit belongs to that commit's one concept
+- `should-commit-as-work-progresses`: the build committed as its work progressed, one commit per logical change, or says why not
+- `should-not-batch-unrelated-changes`: no commit batches unrelated changes, or its message says why
+- `should-build-every-logical-change`: the platform build command was run for every logical change, or the build says why not
+- `must-pass-build-and-tests-before-commit`: every commit passes the build and the existing tests
+- `should-commit-each-passing-change`: each passing change was committed with a descriptive message before the next began, or the build says why not
+- `must-not-stack-uncommitted-changes`: no two logical changes were stacked uncommitted
+- `should-fix-broken-build-before-moving-on`: every build break was fixed before another change was added, or the build says why not
+- `should-plan-small-prs-before-coding`: the work was planned as small, independently reviewable PR slices before code was written, or the build says why not
+- `should-split-large-planned-units`: every planned unit that looked large was split into smaller PRs, or the build says why not
+- `should-scrutinize-agent-code-more`: the agent-generated code was checked line by line before it was submitted
+- `should-decompose-large-agent-changes-before-review`: no large agent-produced change goes to review as one block, or the build says why

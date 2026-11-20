@@ -4,7 +4,7 @@
     "id": "e3aa9294-61cf-4a3a-9fbf-0528a1404094",
     "title": "Widgets and glanceable surfaces",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -42,7 +42,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "bb677ac08fb2f711",
+  "synced": "a9618e1c16529b30",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

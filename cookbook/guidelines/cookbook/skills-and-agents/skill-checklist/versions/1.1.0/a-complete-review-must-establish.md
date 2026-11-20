@@ -1,0 +1,37 @@
+
+- `must-have-yaml-frontmatter`: whether check S01 holds: File starts with `---`, has closing `---`
+- `should-have-name-field`: whether check S02 holds: Frontmatter contains `name:`
+- `must-use-kebab-case-name`: whether check S03 holds: Regex: `^[a-z][a-z0-9-]{0,63}$`
+- `must-have-description-field`: whether check S04 holds: Frontmatter contains `description:`
+- `should-use-natural-trigger-keywords`: whether check S05 holds: Description includes phrases users would say; not too vague ("does stuff") or too narrow ("only for X on Tuesdays")
+- `should-keep-skill-md-under-500-lines`: whether check S06 holds: `wc -l SKILL.md`
+- `should-put-supporting-files-in-subdirectories`: whether check S07 holds: Loose files (non-SKILL.md) at skill root → should be in references/, scripts/, examples/
+- `should-reference-supporting-files`: whether check S08 holds: If references/ exists, SKILL.md mentions those files or uses `${CLAUDE_SKILL_DIR}` to load them
+- `should-match-directory-to-name`: whether check S09 holds: Compare directory basename to frontmatter `name`
+- `should-have-argument-hint-when-using-arguments`: whether check S10 holds: SKILL.md uses `$ARGUMENTS` or `$1`, `$2` but frontmatter lacks `argument-hint:`
+- `should-be-in-skills-directory`: whether check S11 holds: Skill is in `.claude/skills/` or `~/.claude/skills/`
+- `should-use-only-recognized-frontmatter-fields`: whether check S12 holds: Check against known fields: name, description, argument-hint, disable-model-invocation, user-invocable, allowed-tools, model, effort, context, agent, hooks, paths, shell
+- `must-name-main-file-skill-md`: whether check S13 holds: Filename is exactly `SKILL.md`, not `skill.md` or `Skill.md` — Claude Code looks for this exact name
+- `should-use-lowercase-descriptive-supporting-names`: whether check S14 holds: Files in references/, scripts/, examples/ match `^[a-z][a-z0-9-]*(\.[a-z]+)+$`; names describe content (not `doc1.md`)
+- `should-have-single-responsibility`: whether check C01 holds: Skill has one clear purpose; not a grab-bag of unrelated instructions
+- `should-give-task-skills-step-by-step-instructions`: whether check C02 holds: If the skill performs actions (not just reference), it should have numbered steps or a clear workflow
+- `should-keep-reference-and-task-content-apart`: whether check C03 holds: Reference skills (background knowledge) should not have imperative "do X" steps; task skills should not be pure documentation
+- `should-cover-error-handling`: whether check C04 holds: Instructions address what to do when things go wrong (tool failures, missing files, bad input)
+- `should-use-arguments-when-accepting-input`: whether check C05 holds: Description implies the skill takes input but body never references `$ARGUMENTS`
+- `must-use-claude-skill-dir-for-file-references`: whether check C06 holds: Skill references its own supporting files using `${CLAUDE_SKILL_DIR}`, not hardcoded paths
+- `should-give-actionable-specific-instructions`: whether check C07 holds: Steps tell Claude what to do concretely, not vague directives like "handle errors appropriately"
+- `must-not-conflict-with-itself`: whether check C08 holds: Body does not contradict itself (e.g., "always do X" then later "never do X")
+- `should-use-well-structured-markdown`: whether check C09 holds: Uses headings, lists, code blocks; not a wall of unstructured text
+- `should-not-duplicate-supporting-files`: whether check C10 holds: SKILL.md and reference files don't duplicate large blocks of the same content
+- `should-provide-verification-method`: whether check B01 holds: Skill includes how to validate it worked (run tests, check output, verify file exists)
+- `should-not-replicate-native-capabilities`: whether check B02 holds: Skill doesn't teach Claude things it already knows (basic git, standard coding, etc.)
+- `should-disable-model-invocation-for-side-effects`: whether check B03 holds: Skills that deploy, commit, send messages, or modify external state should set `disable-model-invocation: true`
+- `may-use-context-fork-for-isolated-tasks`: whether check B04 holds: Task skills that do heavy reading/fetching and return a result benefit from fork isolation
+- `should-include-usage-examples`: whether check B05 holds: Skill body or references include at least one example invocation or expected output
+- `must-not-be-kitchen-sink`: whether check B06 holds: Skill doesn't try to do everything — stays focused on its stated purpose
+- `should-not-explore-unbounded`: whether check B07 holds: Task skills scope their investigation; don't read unbounded numbers of files
+- `should-not-be-claude-md-dump`: whether check B08 holds: Skill content is skill-appropriate, not a copy-paste of project rules that belong in CLAUDE.md
+- `may-use-allowed-tools-for-restriction`: whether check B09 holds: If the skill should only use certain tools, `allowed-tools` is set
+- `should-match-model-override-to-complexity`: whether check B10 holds: If `model:` is set, it matches the skill's complexity (don't use opus for trivial tasks)
+- `should-keep-dynamic-context-injection-safe`: whether check B11 holds: If `` !`command` `` syntax is used, the command is safe, fast, and deterministic
+- `should-keep-description-under-200-characters`: whether check B12 holds: Description is under ~200 characters to avoid consuming excessive context

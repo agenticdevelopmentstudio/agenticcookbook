@@ -1,0 +1,24 @@
+
+- `should-use-shell-scripts-for-deterministic-work`: a repeatable operation with a known outcome done by model reasoning instead of a shell script
+- `should-extract-deterministic-skill-steps-into-scripts`: a skill step that is deterministic but carried out by the model rather than a script in the skill's directory
+- `should-use-hooks-for-validation-and-formatting`: validation not in a PreToolUse hook, or formatting and linting not in a PostToolUse hook
+- `should-have-agents-call-scripts-for-deterministic-subtasks`: an agent reasoning through a known operation it could run as a shell script
+- `should-pick-the-cheapest-model-that-handles-the-task`: a model choice more expensive than the task needs
+- `should-consider-downgrading-simple-subtasks`: a subtask simple enough for a smaller model that was never considered for one
+- `should-measure-not-assume`: a downgrade made on assumption with no measurement
+- `should-verify-three-things-before-downgrading`: a downgrade without a check of token efficiency, latency and correctness
+- `should-ask-the-user-when-unclear`: an unclear downgrade decided without asking the user
+- `should-not-silently-downgrade`: a model downgrade with no notice to the user
+- `should-load-only-what-the-current-step-needs`: context loaded before the step that needs it
+- `should-keep-rule-files-under-200-lines`: a rule file of 200 lines or more, or over ~8KB
+- `should-keep-narrow-workflow-rules-under-10-lines`: a rule for a narrow workflow of 10 lines or more
+- `must-not-load-deep-reference-unconditionally`: research or the full cookbook loaded unconditionally
+- `must-keep-rules-to-the-minimum-directive`: a rule that inlines a checklist or procedure instead of a one-line pointer
+- `should-load-context-per-skill-step`: a skill that loads context for its steps at startup
+- `should-not-front-load-skill-reference-material`: a multi-step skill that front-loads all its steps' reference material
+- `must-give-agents-narrow-instructions`: an agent prompt covering more than one task or with broad instructions
+- `should-not-include-background-just-in-case`: background context in an agent prompt included in case it is needed
+- `should-keep-claude-md-to-identity-structure-and-pointers`: CLAUDE.md content beyond project identity, directory structure and workflow pointers
+- `should-move-detailed-procedures-into-skills`: a detailed procedure in CLAUDE.md
+- `should-move-enforcement-into-rules`: enforcement in CLAUDE.md
+

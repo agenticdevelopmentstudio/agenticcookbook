@@ -17,3 +17,5 @@ A verifier MUST check each of the following items. The recipe PASSES cookbook co
 - [ ] `must-not-make-required-accessibility-optional`: Accessibility is not marked MAY where law or platform policy requires it (e.g., WCAG 2.1 AA, Apple Human Interface Guidelines).
 - [ ] `should-reference-accessibility-guideline`: A UI recipe names the applicable accessibility guideline in `depends-on`.
 - [ ] `must-not-make-routine-error-handling-should`: A networking recipe does not make error handling a SHOULD where failure is a routine operating condition.
+- [ ] `must-not-contradict-applicable-guidelines`: Recipe requirements align with applicable cookbook guidelines and principles.
+- [ ] `must-include-security-section-when-security-relevant`: Security recipes address auth and data protection.

@@ -1,0 +1,25 @@
+
+- `participate-in-share-mechanisms`: an app with shareable data that neither sends nor receives through the platform's share and inter-app mechanisms
+- `send-and-receive-via-share-sheet`: share-sheet support in only one direction
+- `register-for-relevant-types`: file types the app handles with no UTI/MIME type registration
+- `support-drag-and-drop`: content usable across windows with no drag and drop
+- `validate-received-data`: shared, dropped, pasted or opened data used without validation
+- `apple-share-with-system-picker`: Apple sharing built without `UIActivityViewController` (iOS) or `NSSharingServicePicker` (macOS)
+- `apple-create-share-extensions`: an Apple app that should receive shared content but has no Share Extension
+- `apple-register-utis`: Apple file type associations with no UTI declarations in `Info.plist`
+- `apple-drag-and-drop-with-nsitemprovider`: iPadOS or macOS drag and drop not built on `NSItemProvider`
+- `macos-support-services-menu`: a macOS app with text operations and no `NSServices` entry
+- `android-declare-send-intent-filter`: no `ACTION_SEND` `<intent-filter>`, or one with missing or overbroad MIME types
+- `android-send-with-createchooser`: Android sends that start an intent without `Intent.createChooser()`
+- `android-implement-direct-share`: frequently shared-to contacts with no Direct Share targets
+- `android-support-contentprovider`: structured data shared between apps without a `ContentProvider`
+- `android-register-documentsprovider`: documents the system file picker should show with no `DocumentsProvider`
+- `windows-implement-share-contract`: Windows sharing without `DataTransferManager`
+- `windows-register-share-target`: a Windows app receiving shares with no share target in its manifest
+- `windows-support-dragdrop`: Windows drag and drop not built on the `DragDrop` APIs
+- `windows-register-file-associations`: Windows file types with no association in `Package.appxmanifest`
+- `windows-support-rich-clipboard`: Windows clipboard code that puts only plain text where rich formats apply
+- `web-use-web-share-api`: web sharing through custom links where `navigator.share()` is available
+- `web-register-share-target`: a PWA that should receive shares with no `share_target` in its manifest
+- `web-support-html-drag-and-drop`: web drag and drop not built on the HTML Drag and Drop API
+- `web-use-file-handling-api`: a PWA handling file types with no File Handling API registration

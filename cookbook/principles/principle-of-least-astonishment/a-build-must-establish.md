@@ -6,3 +6,6 @@
 - `must-make-mutation-visible`: every method that mutates state shows it in its name or signature, and no side effect is hidden
 - `should-follow-platform-naming-conventions`: names follow the platform's naming conventions, or the work says why not
 - `should-ask-would-a-new-team-member-be-surprised`: no behavior in the work would surprise a new team member, or the work says why it must
+- `must-not-give-get-endpoints-side-effects`: no GET endpoint has side effects
+- `must-make-idempotent-methods-idempotent`: every idempotent method (GET/PUT/DELETE) is actually idempotent
+- `must-not-hide-side-effects-of-primary-actions`: no primary action has a hidden side effect

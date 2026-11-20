@@ -1,0 +1,11 @@
+
+- `should-define-ports`: core code that reaches an external technology directly instead of through a port describing what the application needs
+- `should-use-adapters`: an external technology wired to the core without an adapter translating it to a port
+- `should-test-core-without-infrastructure`: core tests that need a database, UI, or network to run
+- `should-define-dependencies-as-owned-protocols`: a vendor's concrete type used directly where an app-owned protocol should stand
+- `should-keep-adapters-thin`: an adapter doing more than translating and delegating
+- `must-not-add-business-logic-to-adapters`: business logic inside an adapter
+- `should-extract-shared-contracts`: one module importing another directly just to share a type
+- `should-verify-boundaries-without-framework-imports`: framework imports in core logic, or core tests that cannot pass without them
+- `should-extend-at-the-boundary`: a stable, widely depended-on port whose existing shape was changed to add capability
+- `should-not-pre-generalize-unstable-boundaries`: extension points or generalization built into a boundary that is still being discovered

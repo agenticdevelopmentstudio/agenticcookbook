@@ -8,3 +8,4 @@
 - CHECK constraints exclude domain validation that might be partially applied (validate in application or use NOT NULL + other constraints)
 - No negation logic that silently accepts NULL: `CHECK(status != 'deleted')` will accept NULL (use explicit whitelist instead)
 
+- `should-use-table-level-checks-only-for-multi-column`: A review passes when it establishes every item above.

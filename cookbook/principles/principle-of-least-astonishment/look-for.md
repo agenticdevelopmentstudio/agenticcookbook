@@ -6,3 +6,9 @@
 - `must-make-mutation-visible`: a method that mutates state with nothing in its name or signature showing it
 - `should-follow-platform-naming-conventions`: names that break the platform's naming conventions in favour of a personal style
 - `should-ask-would-a-new-team-member-be-surprised`: behavior a new team member would be surprised by
+- `must-deliver-the-behavior-a-name-suggests`: names must deliver exactly what they suggest;
+- `must-make-mutation-visible`: no surprise mutations on read endpoints, no silent state changes
+- `should-match-caller-expectations`: UI behavior matches user expectations — names deliver the behavior they imply, side effects are obvious, no surprising outcomes from standard interactions
+- `must-not-give-get-endpoints-side-effects`: a GET endpoint with side effects
+- `must-make-idempotent-methods-idempotent`: an idempotent method (GET/PUT/DELETE) that is not actually idempotent
+- `must-not-hide-side-effects-of-primary-actions`: a primary action with a hidden side effect

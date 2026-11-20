@@ -17,3 +17,5 @@
 - `web-request-permission-contextually`: whether the web app requests notification permission contextually
 - `web-support-actions-and-badges`: whether web notifications support actions and badges via the Badging API
 - `web-fall-back-when-denied`: whether the web app falls back gracefully when notifications are denied or unavailable
+- `windows-use-appnotification-api`: `AppNotificationManager` used (not legacy toast APIs);
+- `android-do-not-send-without-runtime-permission`: no notifications sent without runtime permission on Android 13+

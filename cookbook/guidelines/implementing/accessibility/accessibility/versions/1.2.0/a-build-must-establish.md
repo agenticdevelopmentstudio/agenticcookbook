@@ -1,0 +1,25 @@
+
+- `must-integrate-accessibility-apis-from-day-one`: every component integrates with the platform accessibility APIs in its first implementation
+- `must-give-interactive-elements-semantic-roles-and-labels`: every interactive element has a semantic role and a label
+- `must-fully-support-screen-readers`: the component is fully usable with VoiceOver, TalkBack, Narrator or a web screen reader on each target platform
+- `must-support-keyboard-and-switch-control`: every interactive element works by keyboard and by switch control
+- `must-not-break-at-larger-text-sizes`: layouts hold at larger Dynamic Type and font scaling sizes
+- `must-meet-wcag-aa-contrast`: every text colour pair meets 4.5:1, and large text 3:1
+- `must-follow-visual-layout-focus-order`: focus moves in an order that follows the visual layout
+- `must-respond-to-display-settings`: the component responds to reduced motion, high contrast, color inversion, bold text and grayscale
+- `must-respond-to-swiftui-environment-values`: each SwiftUI environment value in the Swift table is read and produces the action the table gives
+- `must-respond-to-android-accessibility-settings`: each Android setting in the Kotlin table produces the action the table gives
+- `should-meet-wcag-2-2-aa`: every component meets WCAG 2.2 AA, or the gap is explained
+- `should-honor-wcag-2-2-new-aa-criteria`: the component meets each new WCAG 2.2 AA criterion, or the gap is explained
+- `should-treat-wcag-3-as-not-yet-actionable`: no requirement depends on WCAG 3.0, or the reason it does is explained
+- `should-follow-wai-aria-authoring-practices`: ARIA roles, states and properties match the WAI-ARIA Authoring Practices, or the deviation is explained
+- `must-respond-to-css-user-preferences`: each media query in the TypeScript table produces the action the table gives
+- `should-support-screen-readers-with-aria`: ARIA roles, `aria-live` regions and landmarks are in place, or their absence is explained
+- `should-set-automation-name-on-unlabeled-elements`: each interactive element without a visible text label sets `AutomationProperties.Name`, or the exception is explained
+- `should-use-labeled-by-for-form-fields`: form fields use `AutomationProperties.LabeledBy`, or the exception is explained
+- `should-use-live-setting-for-dynamic-regions`: dynamic content regions set `AutomationProperties.LiveSetting`, or the exception is explained
+- `must-not-hard-code-colors`: every color comes from a `ThemeResource`; none is hard-coded
+- `should-test-with-accessibility-insights`: the component was tested with Accessibility Insights for Windows, or the reason it was not is given
+- `must-make-elements-keyboard-reachable`: every interactive element is reachable via Tab and actionable via Enter/Space
+- `should-use-40-epx-touch-targets`: Windows touch targets are at least 40x40 epx, or the exception is explained
+- `must-respond-to-windows-accessibility-settings`: each Windows setting in the Windows table produces the action the table gives

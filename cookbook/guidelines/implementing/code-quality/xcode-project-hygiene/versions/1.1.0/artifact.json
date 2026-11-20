@@ -1,0 +1,65 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "187a80eb-e2e5-4a6c-8d14-aa591840abe6",
+    "title": "Xcode project hygiene",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep Xcode build settings in xcconfig files, targets and schemes shared and minimal, entitlements and Info.plist keys deliberate, and signing reproducible, using a project generator where the repository already has one.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift",
+      "objective-c"
+    ],
+    "tags": [
+      "xcode",
+      "xcconfig",
+      "schemes",
+      "entitlements",
+      "info-plist",
+      "signing",
+      "xcodegen"
+    ],
+    "depends-on": [],
+    "related": [
+      "775da457-30c7-47de-b179-0fae8a8b779d",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "256a827e-436e-4cde-895e-a56b9783edf2"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project",
+      "https://developer.apple.com/documentation/xcode/build-settings-reference",
+      "https://developer.apple.com/documentation/bundleresources/entitlements",
+      "https://developer.apple.com/documentation/bundleresources/information-property-list",
+      "https://raw.githubusercontent.com/yonaskolb/XcodeGen/master/Docs/ProjectSpec.md"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "configuration",
+      "new-module",
+      "pre-commit"
+    ]
+  },
+  "synced": "1667cb39893a8557",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why review checks these items", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

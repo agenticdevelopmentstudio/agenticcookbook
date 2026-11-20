@@ -4,7 +4,7 @@
     "id": "4cb7c242-3ade-4d59-9c74-67c1d5f9c107",
     "title": "RTL layout support",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -35,7 +35,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "8c036fb5d17584d1",
+  "synced": "df8711f213837226",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

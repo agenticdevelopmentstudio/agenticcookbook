@@ -4,7 +4,7 @@
     "id": "39c2d053-006f-42c9-9db4-d991c1688024",
     "title": "Idempotency",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "d926729652d01871",
+  "synced": "d8fb69bbab59ee0e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

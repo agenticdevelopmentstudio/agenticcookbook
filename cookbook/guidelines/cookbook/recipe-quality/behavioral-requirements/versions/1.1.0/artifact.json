@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "04fe1298-3880-4584-8a4a-c7a538eb5193",
+    "title": "Behavioral Requirements",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Requirements use RFC 2119 keywords correctly, are independently testable, and describe behavior rather than implementation.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc2119"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "6185b79b38e89eda",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "common-violations", "heading": "Common Violations", "role": "examples"},
+    {"part": "verification-checklist", "heading": "Verification Checklist", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

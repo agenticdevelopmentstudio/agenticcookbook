@@ -17,3 +17,4 @@
 - `web-implement-social-meta-tags`: web pages missing OpenGraph or Twitter Card meta tags
 - `web-support-web-app-manifest`: a PWA with no Web App Manifest
 - `web-ensure-crawlability`: content rendered only client-side with no server-side rendering or pre-rendering
+- `windows-deploy-property-handlers-for-custom-file-types`: a Windows custom file type with no property handler deployed

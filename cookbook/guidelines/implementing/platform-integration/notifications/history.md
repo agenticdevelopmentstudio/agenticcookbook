@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.2.0 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 2.1.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 2.0.3 | 2026-06-09 | Mike Fullerton | Repair stale cross-reference link scheme |
 | 2.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

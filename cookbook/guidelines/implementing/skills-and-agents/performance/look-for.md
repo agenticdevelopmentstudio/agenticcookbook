@@ -21,4 +21,4 @@
 - `should-keep-claude-md-to-identity-structure-and-pointers`: CLAUDE.md content beyond project identity, directory structure and workflow pointers
 - `should-move-detailed-procedures-into-skills`: a detailed procedure in CLAUDE.md
 - `should-move-enforcement-into-rules`: enforcement in CLAUDE.md
-
+- `should-use-shell-scripts-for-deterministic-work`: Judge a Claude Code extension on speed and token efficiency across three principles.

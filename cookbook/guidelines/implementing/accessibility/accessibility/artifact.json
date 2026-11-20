@@ -4,7 +4,7 @@
     "id": "3d970d6a-2d71-48f3-9f84-69c1d823d6e8",
     "title": "Accessibility from day one",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -42,7 +42,7 @@
       "pre-pr"
     ]
   },
-  "synced": "3ec1f1b6c55d281f",
+  "synced": "b548bf83ce1378f2",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

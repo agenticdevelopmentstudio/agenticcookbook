@@ -9,3 +9,4 @@
 - `should-place-configuration-with-its-components`: whether configuration sits with its components, or in a bootstrap group when app-wide
 - `should-place-test-infrastructure-with-subject`: whether test infrastructure sits with its subject or in a shared test infrastructure group
 - `must-give-build-tooling-own-group`: whether build tooling is its own scope group, excluded from runtime analysis
+- `should-classify-each-file-into-one-category`: Every code unit assigned a primary purpose;

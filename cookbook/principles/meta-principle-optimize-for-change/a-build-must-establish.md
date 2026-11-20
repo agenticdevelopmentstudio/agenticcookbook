@@ -5,3 +5,5 @@
 - `should-choose-easier-to-change-when-equal`: between otherwise-equal approaches, the one easier to change later was chosen, or the work says why not
 - `should-test-design-by-cognitive-load`: the design or agent workflow was tested by whether it lowers cognitive load, or the work says why not
 - `should-use-cognitive-load-as-a-lens`: cognitive load is used as a lens through fan-out, file count and time-to-onboard, not as a thresholded metric
+- `should-not-take-unacknowledged-easier-now-harder-later-shortcuts`: no "easier now, harder later" shortcut was taken without explicit acknowledgment, or the work says why
+- `should-provide-extension-points-where-change-is-anticipated`: key extension points are present where change is anticipated, or the work says why not

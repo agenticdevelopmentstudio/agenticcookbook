@@ -6,3 +6,7 @@
 - `must-audit-accessibility`: VoiceOver/TalkBack labels, tap target minimums (44pt iOS, 48dp Android) and contrast ratios were verified
 - `must-review-against-best-practices`: the code was checked against the platform best practices references
 - `must-fix-failures-before-complete`: no verification step was still failing when the work was called complete
+- `must-build-for-all-target-platforms`: Build passes for every target platform (not just one);
+- `must-pass-full-test-suite`: the full test suite ran and all tests pass (no subset, no skipped tests presented as green);
+- `must-verify-expected-log-messages`: the artifact was built and run and expected log messages are grep-confirmed in real output;
+- `must-audit-accessibility`: accessibility checks pass — labels present and tap targets meet minimums (44pt iOS / 48dp Android) with adequate contrast;

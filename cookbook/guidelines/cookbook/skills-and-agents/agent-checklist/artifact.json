@@ -4,7 +4,7 @@
     "id": "ef7e17ea-a4c1-4946-aff7-a81cb27885a0",
     "title": "Agent Lint Checklist",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -34,7 +34,7 @@
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "c683e7ca8340ab31",
+  "synced": "894e604956453e6a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

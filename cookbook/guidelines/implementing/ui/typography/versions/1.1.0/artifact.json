@@ -1,0 +1,55 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "1971d5c6-592d-4959-aa2c-33ea4ff17d0d",
+    "title": "Typography",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use the platform's system font. Establish a type scale with clear roles — don't invent",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "macos",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "typography",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/typography",
+      "https://learn.microsoft.com/en-us/windows/apps/design/style/typography",
+      "https://m3.material.io/styles/typography/type-scale-tokens",
+      "https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "49293b92f1368028",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "platform-system-fonts", "heading": "Platform system fonts", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

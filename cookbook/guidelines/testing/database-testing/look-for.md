@@ -30,3 +30,6 @@
 - `should-test-all-conflict-cases`: missing update-vs-update, update-vs-delete or insert-vs-insert conflict tests
 - `should-use-sqlite-where-dialect-is-irrelevant`: unit tests that run against SQLite only where dialect differences do not affect the logic
 - `must-use-production-database-for-dialect-tests`: integration tests of type enforcement, constraint behavior or database-specific SQL that run against SQLite instead of the production database
+- `should-use-memory-databases-for-unit-tests`: Verifies test database selection (in-memory for speed and isolation, file-based for fidelity and debugging).
+- `should-maintain-test-seeds-file`: Reviews test fixtures and seed data organization.
+- `must-test-sync-at-unit-and-integration-level`: Validates sync logic testing including change detection, push/pull success criteria, and conflict resolution.

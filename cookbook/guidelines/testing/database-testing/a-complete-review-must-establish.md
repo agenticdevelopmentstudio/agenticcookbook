@@ -30,3 +30,6 @@
 - `should-test-all-conflict-cases`: update-vs-update, update-vs-delete and insert-vs-insert are each tested, or the code says why a case is not
 - `should-use-sqlite-where-dialect-is-irrelevant`: SQLite unit tests cover only logic unaffected by dialect differences, or the code says why
 - `must-use-production-database-for-dialect-tests`: every integration test of type enforcement, constraint behavior or database-specific SQL runs against the production database
+- `should-use-memory-databases-for-unit-tests`: Test database strategy chosen and justified: in-memory SQLite for speed, file-based for production-like behavior, or hybrid approach
+- `should-test-change-detection`: Sync tests verify change detection (dirty flags, timestamps); push/pull operations succeed with expected state
+- `must-not-build-shared-fixtures-per-test`: Seed data organized in fixtures with clear setup/teardown for data independence

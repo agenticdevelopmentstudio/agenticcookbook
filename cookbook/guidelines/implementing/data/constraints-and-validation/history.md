@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.1.0 | 2026-11-15 | Mike Fullerton | Roles on parts; named rules; reviewer and verifier parts from the devteam |
 | 1.0.3 | 2026-11-07 | Mike Fullerton | State the rules with RFC 2119 keywords |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

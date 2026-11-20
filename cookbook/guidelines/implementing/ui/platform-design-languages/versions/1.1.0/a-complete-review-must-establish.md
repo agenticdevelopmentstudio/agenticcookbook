@@ -1,0 +1,10 @@
+
+- `should-defer-to-canonical-sources`: whether the canonical sources were consulted before any default was applied
+- `must-use-platform-prescribed-values`: whether every value the platform HIG prescribes is used as prescribed
+- `should-use-defaults-to-fill-gaps`: whether defaults are used to fill gaps or establish a cross-platform baseline
+- `should-refer-to-canonical-sources-when-writing-ui`: whether each UI ingredient or recipe refers to the canonical platform design sources
+- `must-not-contradict-platform-hig`: whether any value contradicts the platform HIG
+- `should-defer-to-hig-in-appearance-sections`: whether an ingredient's Appearance section defers to the platform HIG for spacing, type sizes and target sizes
+- `should-use-the-prescribed-value`: whether each prescribed value is used
+- `should-note-cross-platform-defaults`: whether each cross-platform default is noted as such
+- `should-list-platform-overrides-in-platform-notes`: whether every platform-specific override is listed in Platform Notes with a link to its HIG section

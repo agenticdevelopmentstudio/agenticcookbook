@@ -6,3 +6,7 @@
 - `must-audit-accessibility`: missing VoiceOver/TalkBack labels, tap targets under 44pt iOS or 48dp Android, or unchecked contrast ratios
 - `must-review-against-best-practices`: generated code never checked against the platform best practices references
 - `must-fix-failures-before-complete`: work called complete while any verification step still fails
+- `must-fix-failures-before-complete`: Every generated or changed artifact MUST clear all six verification gates before the work is considered complete — partial verification is not done.
+- `must-pass-full-test-suite`: the FULL suite runs and every test passes — not a subset, not just the touched tests.
+- `must-verify-expected-log-messages`: the code is actually built and RUN, and expected log messages are grep-confirmed in the output rather than assumed.
+- `must-fix-failures-before-complete`: treat any unverified or skipped step as a failure — if any gate fails or was never run, the change is incomplete and MUST be fixed before merge, never waved through on "should work".

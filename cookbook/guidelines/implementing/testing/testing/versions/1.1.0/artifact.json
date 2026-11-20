@@ -1,0 +1,49 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "42220186-4305-45cd-8e7d-a8d1172b6fbd",
+    "title": "Comprehensive unit testing",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Prioritize unit tests over integration tests. Test state transitions, edge cases, and serialization round-trips; every change needs tests and every bug fix a regression test.",
+    "platforms": [
+      "csharp",
+      "python",
+      "typescript"
+    ],
+    "tags": [
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://fluentassertions.com/",
+      "https://nsubstitute.github.io/",
+      "https://playwright.dev/",
+      "https://xunit.net/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "58ef3a890f2e3973",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "c", "heading": "C# example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

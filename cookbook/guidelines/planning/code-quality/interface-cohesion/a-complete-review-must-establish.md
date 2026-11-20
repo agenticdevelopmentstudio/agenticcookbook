@@ -6,3 +6,4 @@
 - `should-not-count-internal-helpers-as-interface`: whether internal helpers were kept out of the interface analysis
 - `should-attend-to-protocol-extension-pairs`: whether Swift protocol + extension pairs were examined
 - `should-treat-java-interface-triads-as-one-unit`: whether Java interface triads were treated as one unit
+- `should-place-shared-types-with-primary-consumer`: shared types traced to their consumers;

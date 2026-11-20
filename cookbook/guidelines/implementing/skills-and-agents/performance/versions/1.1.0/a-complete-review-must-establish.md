@@ -1,0 +1,24 @@
+
+- `should-use-shell-scripts-for-deterministic-work`: whether every repeatable operation with a known outcome is done by a shell script
+- `should-extract-deterministic-skill-steps-into-scripts`: whether a skill's deterministic steps are shell scripts in the skill's directory
+- `should-use-hooks-for-validation-and-formatting`: whether validation uses PreToolUse hooks and formatting and linting use PostToolUse hooks
+- `should-have-agents-call-scripts-for-deterministic-subtasks`: whether agents call shell scripts for deterministic subtasks
+- `should-pick-the-cheapest-model-that-handles-the-task`: whether each task runs on the cheapest model that handles it
+- `should-consider-downgrading-simple-subtasks`: whether simple subtasks were considered for a smaller model
+- `should-measure-not-assume`: whether each downgrade was measured rather than assumed
+- `should-verify-three-things-before-downgrading`: whether token efficiency, latency and correctness were verified before each downgrade
+- `should-ask-the-user-when-unclear`: whether unclear downgrades were put to the user with the tradeoff
+- `should-not-silently-downgrade`: whether any downgrade happened silently
+- `should-load-only-what-the-current-step-needs`: whether each step loads only what it needs
+- `should-keep-rule-files-under-200-lines`: whether every rule file is under 200 lines / ~8KB
+- `should-keep-narrow-workflow-rules-under-10-lines`: whether rules for narrow workflows are under 10 lines
+- `must-not-load-deep-reference-unconditionally`: whether any deep reference is loaded unconditionally
+- `must-keep-rules-to-the-minimum-directive`: whether every rule is kept to the minimum directive
+- `should-load-context-per-skill-step`: whether each skill step loads its own context
+- `should-not-front-load-skill-reference-material`: whether any skill front-loads reference material for later steps
+- `must-give-agents-narrow-instructions`: whether every agent receives narrow, specific instructions for one task
+- `should-not-include-background-just-in-case`: whether agent prompts include background context only in case it is needed
+- `should-keep-claude-md-to-identity-structure-and-pointers`: whether CLAUDE.md holds only project identity, directory structure and workflow pointers
+- `should-move-detailed-procedures-into-skills`: whether detailed procedures are in skills rather than CLAUDE.md
+- `should-move-enforcement-into-rules`: whether enforcement is in rules rather than CLAUDE.md
+

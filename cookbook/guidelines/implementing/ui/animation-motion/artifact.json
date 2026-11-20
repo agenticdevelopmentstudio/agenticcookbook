@@ -4,7 +4,7 @@
     "id": "9f13dbec-cecb-482b-824b-f7d3e341878a",
     "title": "Animation & Motion",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -36,7 +36,7 @@
       "accessibility"
     ]
   },
-  "synced": "e8443600b7022f5d",
+  "synced": "c728d2c592de13e2",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

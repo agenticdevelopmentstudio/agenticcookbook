@@ -4,7 +4,7 @@
     "id": "19648d85-adba-4f38-b513-a38ca58e9fb0",
     "title": "Cross-Recipe Consistency",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -33,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "02cfaafa482dddef",
+  "synced": "a4145f149d1728e0",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

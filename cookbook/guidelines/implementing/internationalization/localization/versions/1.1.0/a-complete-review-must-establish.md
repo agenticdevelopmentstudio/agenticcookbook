@@ -1,0 +1,12 @@
+
+- `must-make-user-facing-strings-localizable`: whether any user-facing string is hardcoded
+- `should-store-in-platform-resource-files`: whether strings live in platform-standard resource files reached through the localization API
+- `should-use-string-localized-on-apple`: whether Apple code uses `String(localized:)` or `NSLocalizedString`
+- `should-store-apple-strings-in-xcstrings`: whether Apple strings are stored in `.xcstrings` or `.strings`
+- `should-use-strings-xml-on-android`: whether Android strings are in `strings.xml`
+- `should-reference-android-strings-via-resources`: whether Android code references strings via `R.string.*` or `stringResource()`
+- `should-use-i18n-library-on-web`: whether web code uses an i18n library
+- `should-extract-to-message-catalogs`: whether all web user-facing strings are in message catalogs
+- `should-use-mrt-core-resw-on-windows`: whether Windows UI binds text through `x:Uid` and `.resw` with MRT Core
+- `should-follow-windows-strings-folder-structure`: whether `.resw` files follow `Strings/<language-tag>/Resources.resw`
+- `should-use-resource-loader-in-code-behind`: whether Windows code-behind uses `ResourceLoader`

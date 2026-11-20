@@ -17,3 +17,4 @@
 - `must-explain-non-obvious-constraints`: whether the Design Decisions section explains every non-obvious constraint in Behavioral Requirements
 - `must-not-leave-design-decisions-empty-with-should`: whether the Design Decisions section is non-empty when any SHOULD requirement exists
 - `must-not-submit-with-reminder-markers`: whether a recipe submitted for review carries a `NEEDS REVIEW` marker that is a work-in-progress note
+- `must-give-every-must-requirement-a-test-vector`: test vector count >= MUST requirement count.

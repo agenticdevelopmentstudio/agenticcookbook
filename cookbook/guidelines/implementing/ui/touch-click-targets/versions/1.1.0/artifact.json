@@ -1,0 +1,55 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "73b254b4-c611-434a-a9f4-67c8a7155576",
+    "title": "Touch & Click Targets",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Interactive elements MUST be large enough to tap or click accurately.",
+    "platforms": [
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "touch-click-targets",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/accessibility#User-interaction",
+      "https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting",
+      "https://m3.material.io/foundations/accessible-design/accessibility-basics",
+      "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "ui-implementation",
+      "accessibility"
+    ]
+  },
+  "synced": "b9710719ad9fbdd8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "platform-minimums", "heading": "Platform minimums", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

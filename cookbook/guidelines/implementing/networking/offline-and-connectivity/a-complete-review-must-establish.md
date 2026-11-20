@@ -9,3 +9,4 @@
 - `should-show-connectivity-status`: whether the user sees clear connectivity status
 - `must-queue-mutations-and-keep-user-work`: whether mutations are queued locally and no user work is silently discarded
 - `should-test-offline-scenarios`: whether airplane mode, flaky connections and long offline periods are tested
+- `should-roll-back-failed-optimistic-updates`: optimistic UI rolled back on server error;

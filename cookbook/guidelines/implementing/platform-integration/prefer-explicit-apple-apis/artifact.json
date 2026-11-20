@@ -4,7 +4,7 @@
     "id": "095b33a1-2835-4ed5-bf01-f1e492148819",
     "title": "Use AppKit and UIKit, not SwiftUI",
     "type": "guideline",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -43,7 +43,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "5a6ec847f34b221e",
+  "synced": "ed8da529c7a1ee10",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

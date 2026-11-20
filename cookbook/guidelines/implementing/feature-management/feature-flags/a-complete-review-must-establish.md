@@ -17,3 +17,5 @@
 - No feature in a build submitted to App Review is hidden behind a flag from review, and in an app distributed through the App Store or Google Play no flag turns on code downloaded after release
 - The change is checked against each owner-list rule as written: `gate-all-features`, `spec-lists-flag-keys`, `kotlin-sharedpreferences-default` and `fail-fast-on-missing-config`
 
+
+A review passes when it establishes every item above.

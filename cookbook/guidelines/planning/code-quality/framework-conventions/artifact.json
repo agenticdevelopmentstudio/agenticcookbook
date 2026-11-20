@@ -4,7 +4,7 @@
     "id": "ef2d2757-132a-403b-8e98-bbeca9c42deb",
     "title": "Framework Conventions",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "4a43f26b4b0c2520",
+  "synced": "55b45be9fe340e9a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

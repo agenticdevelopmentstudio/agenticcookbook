@@ -1,0 +1,8 @@
+
+- **Security recipe ignoring token handling.** A recipe for an OAuth login flow specifies the redirect URI and scope parameters but never addresses where the access token is stored, how long it lives, or what happens when it expires. The recipe appears complete but omits the most security-critical decisions.
+- **UI recipe with no accessibility section.** A recipe for a custom modal dialog defines visual appearance and animation transitions but contains no requirements for focus management, `aria` roles, or keyboard dismissal. The recipe is unusable for accessible implementations.
+- **Networking recipe with no error handling.** A recipe for a data-fetching pattern specifies only the happy path — successful response parsing — with no mention of timeouts, HTTP errors, or retry limits. Implementations built from this recipe will fail ungracefully in production.
+- **Contradicting a guideline.** A guideline requires all form submissions to display a confirmation message. A recipe for a delete-account flow specifies that the action is immediate and irreversible on tap, with no confirmation step. The recipe silently contradicts the guideline.
+- **Guideline content duplicated without reference.** A recipe copy-pastes three paragraphs from an accessibility guideline verbatim. When the guideline is updated, the recipe is now stale and provides incorrect information with no indication that it has diverged.
+- **Blanket "follow best practices" placeholder.** A security section reads: "MUST follow platform security best practices for credential storage." This is unverifiable and untestable. A verifier cannot determine which practices apply or whether the implementation complied.
+

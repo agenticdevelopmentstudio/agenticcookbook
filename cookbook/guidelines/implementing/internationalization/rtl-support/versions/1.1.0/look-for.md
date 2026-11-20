@@ -1,0 +1,14 @@
+
+- `must-support-rtl-languages`: a layout that breaks or reads wrongly under a right-to-left language
+- `should-use-leading-trailing`: alignment or padding expressed as left/right instead of leading/trailing
+- `should-mirror-directional-icons`: a forward/back arrow or other directional icon that does not mirror in RTL
+- `should-not-mirror-non-directional-icons`: a checkmark, clock or other non-directional icon that mirrors in RTL
+- `should-test-with-rtl-locale`: no test or check run with an RTL locale enabled
+- `should-preview-rtl-on-apple`: SwiftUI previews with no `.rightToLeft` layout direction
+- `should-set-supports-rtl-on-android`: a manifest missing `android:supportsRtl="true"`
+- `should-use-start-end-on-android`: Android layouts using `left`/`right` attributes
+- `should-force-rtl-for-android-testing`: Android testing with no forced-RTL run
+- `should-use-css-logical-properties`: physical CSS properties such as `margin-left`, `padding-right` or `left`
+- `should-set-dir-rtl-on-web`: an RTL locale rendered without `dir="rtl"` on the root element
+- `should-set-flow-direction-on-windows`: a Windows root element with no `FlowDirection="RightToLeft"` for RTL locales
+- `should-test-with-rtl-language-packs-on-windows`: Windows testing with no RTL language pack installed

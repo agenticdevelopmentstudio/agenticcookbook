@@ -9,3 +9,7 @@
 - `should-verify-boundaries-without-framework-imports`: framework imports in core logic, or core tests that cannot pass without them
 - `should-extend-at-the-boundary`: a stable, widely depended-on port whose existing shape was changed to add capability
 - `should-not-pre-generalize-unstable-boundaries`: extension points or generalization built into a boundary that is still being discovered
+- `should-test-adapter-to-port-wiring`: adapters whose wiring to their ports no integration test verifies.
+- `should-expose-clear-skill-contracts`: Well-defined interfaces between subsystems — skills expose clear input/output contracts;
+- `should-use-adapters`: don't let external technology details bleed across boundaries
+- `should-give-agents-only-the-context-they-need`: an agent handed the full session history instead of only the context its task needs.

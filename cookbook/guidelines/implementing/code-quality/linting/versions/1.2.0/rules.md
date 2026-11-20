@@ -1,0 +1,23 @@
+
+- **must-lint-before-first-pr**: All projects MUST have linting configured and passing before the first pull request.
+- **should-set-up-lint-early**: Linting config SHOULD be set up early in the project.
+- **may-skip-lint-gating-while-prototyping**: During rapid prototyping, committing without lint-gating every commit MAY be done; it is acceptable.
+- **must-be-lint-clean-before-any-pr**: Before any PR is opened, lint MUST be clean.
+- **must-commit-linter-config**: Linter config MUST be committed.
+- **must-run-lint-in-build-or-pre-commit**: Linting MUST run as part of the build or pre-commit process.
+- **must-auto-fix-formatting**: Formatting MUST be auto-fixable.
+- **must-run-lint-in-automated-verification**: Linting MUST run as part of the automated verification process: during development, in CI, and after code generation.
+- **must-run-lint-during-development**: During development, linting MUST run as part of the build or pre-commit hook.
+- **must-block-ci-on-lint-failures**: In CI, linting failures MUST block the build alongside test failures.
+- **must-lint-generated-code**: After code generation, AI-generated code MUST pass linting before being accepted.
+- **should-use-swiftlint-strict**: Swift SHOULD use [SwiftLint](https://github.com/realm/SwiftLint) with `.swiftlint.yml` at project root, with `strict` mode enabled, added as an SPM plugin or Xcode build phase.
+- **should-format-swift-with-swift-format**: Swift SHOULD use [swift-format](https://github.com/swiftlang/swift-format) for auto-formatting.
+- **should-use-ktlint**: Kotlin SHOULD use [ktlint](https://pinterest.github.io/ktlint/) for both linting and formatting, configured via `.editorconfig` at project root and added as a Gradle plugin (`org.jlleitschuh.gradle.ktlint`).
+- **should-use-eslint-with-prettier-config**: TypeScript SHOULD use [ESLint](https://eslint.org/) with `eslint.config.js`, and `eslint-config-prettier` to avoid conflicts with the formatter.
+- **should-format-typescript-with-prettier**: TypeScript SHOULD use [Prettier](https://prettier.io/) with `.prettierrc` for auto-formatting.
+- **should-lint-css-with-stylelint**: SHOULD use [Stylelint](https://stylelint.io/) with `.stylelintrc.json` for CSS linting.
+- **should-add-lint-scripts-and-hooks**: TypeScript linting and formatting SHOULD be added as `package.json` scripts and pre-commit hooks.
+- **should-keep-style-rules-in-editorconfig**: C# SHOULD keep all code style rules in an [`.editorconfig`](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/) at repo root.
+- **should-enable-roslyn-analyzers**: C# SHOULD enable Roslyn analyzers in `.csproj` (`EnforceCodeStyleInBuild` true, `AnalysisLevel` `latest-recommended`).
+- **should-auto-fix-with-dotnet-format**: C# SHOULD use the `dotnet format` CLI for auto-fixing.
+- **should-supplement-with-extra-analyzers**: C# SHOULD supplement with [Roslynator](https://github.com/dotnet/roslynator) or [Meziantou.Analyzer](https://github.com/meziantou/Meziantou.Analyzer) for additional rules.

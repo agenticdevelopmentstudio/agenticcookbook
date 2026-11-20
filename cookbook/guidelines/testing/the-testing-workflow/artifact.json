@@ -4,7 +4,7 @@
     "id": "8ab7452a-09b8-4f4e-abfc-f7fd700765db",
     "title": "The Testing Workflow",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -34,7 +34,7 @@
     ]
   },
   "names_hosts": "Describes the testing workflow as run in Claude Code; a candidate to move into hosts/claude.md.",
-  "synced": "0aa635e0cd3d0f30",
+  "synced": "aa849bc8ae104622",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

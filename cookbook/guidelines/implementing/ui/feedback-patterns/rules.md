@@ -9,3 +9,4 @@
 - **must-not-use-dialogs-for-success**: Dialogs MUST NOT be used for success messages — a toast or inline confirmation is sufficient.
 - **must-confirm-destructive-actions**: **Destructive actions** MUST require explicit confirmation with a clearly labeled action ("Delete", not "OK").
 - **should-default-focus-to-safe-option**: Default focus SHOULD be on the safe option (Cancel).
+- **should-implement-toasts-banners-and-dialogs**: SHOULD implement toast/snackbar (auto-dismiss 3-5s), inline alerts/banners, and modal dialogs.

@@ -5,4 +5,5 @@
 - `should-use-property-based-generators-for-coverage`: whether comprehensive input coverage uses property-based generators
 - `should-use-inline-literals-for-simple-cases`: whether simple cases use inline literals
 - `must-keep-specific-data-visible-in-the-test`: whether every test's specific data is visible in the test
-
+- `should-avoid-large-shared-fixture-files`: No single shared fixture file used across many unrelated tests;
+- `must-keep-specific-data-visible-in-the-test`: test data is visible in the test body, not loaded from an opaque external file

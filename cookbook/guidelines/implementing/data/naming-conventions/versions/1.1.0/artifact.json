@@ -1,0 +1,59 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "dde1b6fd-773c-4f9f-a328-51150468bc99",
+    "title": "Database naming conventions",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-15",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Snake_case naming rules for tables, columns, primary keys, foreign keys, indexes, constraints, and triggers — including reserved word avoidance.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "naming",
+      "schema-design",
+      "conventions"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://www.sqlite.org/lang_keywords.html",
+      "https://dev.to/ovid/database-naming-standards-2061",
+      "https://www.bbkane.com/blog/sql-naming-conventions/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "3993d1b7092597ff",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "use-snake-case-everywhere", "heading": "Use snake_case everywhere", "role": "examples"},
+    {"part": "primary-key-columns", "heading": "Primary key columns", "role": "examples"},
+    {"part": "foreign-key-columns", "heading": "Foreign key columns", "role": "examples"},
+    {"part": "boolean-columns", "heading": "Boolean columns", "role": "examples"},
+    {"part": "date-time-columns", "heading": "Date/time columns", "role": "examples"},
+    {"part": "reserved-words-to-avoid", "heading": "Reserved words to avoid", "role": "how-to"},
+    {"part": "indexes-constraints-and-triggers", "heading": "Indexes, constraints, and triggers", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

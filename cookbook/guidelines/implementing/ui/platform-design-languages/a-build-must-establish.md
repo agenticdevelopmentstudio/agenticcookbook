@@ -8,3 +8,6 @@
 - `should-use-the-prescribed-value`: every value the platform prescribes is the one used, or the artifact says why not
 - `should-note-cross-platform-defaults`: every cross-platform default is marked as one, or the artifact says why not
 - `should-list-platform-overrides-in-platform-notes`: every platform-specific override is listed in Platform Notes with a link to its HIG section, or the artifact says why not
+- `should-follow-wcag-and-conventions-on-web`: every web target meets WCAG 2.1 AA at minimum and follows browser/OS design conventions, or the artifact says why not
+- `should-use-system-font-stack-on-web`: every web target uses the system font stack (`system-ui, -apple-system, sans-serif`), or the artifact says why not
+- `must-document-rationale-for-design-deviations`: every custom design deviation from the platform has a documented rationale

@@ -9,3 +9,5 @@
 - **windows-handle-activation-in-onlaunched**: On Windows, you SHOULD handle activation via `AppInstance.GetActivatedEventArgs()` in `App.OnLaunched`.
 - **windows-parse-uri-and-navigate**: On Windows, you SHOULD parse the URI to determine the target page/state, and navigate accordingly.
 - **windows-single-instance-for-deep-links**: On Windows, you SHOULD use `AppInstance.FindOrRegisterForKey()` for single-instancing (recommended for deep links).
+- **apple-support-universal-links-and-url-schemes**: On Apple platforms, the app SHOULD support Universal Links plus custom URL schemes, with `onOpenURL` handling incoming URLs in SwiftUI and `NavigationPath` driving state restoration to the linked destination.
+- **android-declare-app-links-and-intent-filters**: On Android, the app SHOULD declare App Links and `<intent-filter>` declarations wired to the Navigation component's deep-link support so links resolve to the right destination.

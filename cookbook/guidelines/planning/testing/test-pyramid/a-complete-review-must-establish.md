@@ -8,3 +8,4 @@
 - `should-choose-the-distribution-per-system`: whether the distribution was chosen for this system's risk
 - `may-fit-the-testing-trophy`: whether any trophy shape belongs to an integration-heavy system
 - `should-prefer-the-trophy-when-risk-is-in-interactions`: whether a system whose risk is in interactions uses the trophy
+- `should-follow-the-80-15-5-ratio`: Test count ratios approximate 80/15/5;

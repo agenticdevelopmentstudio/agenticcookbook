@@ -16,3 +16,4 @@
 - `must-not-embed-secrets-in-server-rendered-output`: whether server-rendered output embeds secrets, credentials or internal-only data
 - `should-rate-limit-server-render-endpoints`: whether render and server-action endpoints are rate-limited
 - `must-pin-patched-framework-version`: whether the rendering framework is pinned to a version with current serialization-boundary security patches
+- `must-not-concatenate-input-into-queries`: database access uses parameterized queries with no user input concatenated into query strings;

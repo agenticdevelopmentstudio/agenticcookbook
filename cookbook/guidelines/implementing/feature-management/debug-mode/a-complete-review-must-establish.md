@@ -18,4 +18,5 @@
 - Node.js servers run with `NODE_ENV=production` in every deployed environment, `NODE_ENV` guards only bundled client code, and server-side debug endpoints are left out of the production deploy, or a recorded reason says why not
 - Debug features that bypass payment, subscription or authentication, or read system or user data, exist only where a test needs them, or a recorded reason says why not
 - The panel adds what the platform's developer tools do not show, and a React Native panel does not depend on Flipper's native integration, or a recorded reason says why not
+- `debug-only-config-panel`: A review passes when it establishes every item above.
 

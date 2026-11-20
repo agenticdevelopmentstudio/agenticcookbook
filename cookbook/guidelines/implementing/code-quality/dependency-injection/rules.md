@@ -5,5 +5,6 @@
 - **should-use-scoped-for-per-request-services**: `Scoped` SHOULD be used for per-request services.
 - **should-use-singleton-for-shared-state**: `Singleton` SHOULD be used for thread-safe shared state.
 - **must-not-inject-scoped-into-singleton**: A scoped service MUST NOT be injected into a singleton (captive dependency).
+- **should-not-inject-transient-into-singleton**: A `Transient` service SHOULD NOT be injected into a `Singleton`, because the singleton captures the shorter lifetime.
 - **should-bind-configuration-with-ioptions**: SHOULD use `IOptions<T>` / `IOptionsSnapshot<T>` for configuration binding.
 - **should-register-in-add-extension-methods**: SHOULD keep registrations in `Add*()` extension methods for modularity.

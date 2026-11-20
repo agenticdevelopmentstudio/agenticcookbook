@@ -1,0 +1,17 @@
+
+- `should-manage-dependencies-actively`: the build has a process that keeps dependencies updated and scanned, or says why not
+- `must-commit-lockfiles`: every package manager in use has its lockfile committed
+- `should-use-locked-installs-in-ci`: CI installs from the lockfile with `--frozen-lockfile` / `npm ci` / `dotnet restore --locked-mode`, or the code says why not
+- `must-run-dependency-scanning-in-ci`: CI runs `npm audit`, `pip-audit`, Dependabot, Snyk or `dotnet list package --vulnerable`
+- `must-fail-builds-on-critical-vulnerabilities`: a critical or high vulnerability fails the build
+- `should-pin-dependencies`: every dependency is an exact version or a narrow range, or the code says why not
+- `must-not-use-wildcard-versions`: no dependency uses `*` or an overly broad semver range
+- `should-use-sri-for-cdn-assets`: every CDN-hosted script and style has an SHA-384/SHA-512 `integrity` attribute, or the code says why not
+- `should-watch-for-supply-chain-attacks`: each new dependency was checked for typosquatting, maintainer compromise, malicious post-install scripts and dependency confusion, or the build says why not
+- `must-not-let-agents-install-freely`: an agent cannot install a package outside the constraints below
+- `should-enforce-package-allowlist-deterministically`: agent installs pass a task- or session-scoped allowlist enforced by a hook, CI check or sandbox policy, or the code says why not
+- `must-not-rely-on-prose-alone`: every agent install restriction has a deterministic control, not prose alone
+- `should-apply-registry-cooldown`: agent installs apply a cooldown window to brand-new releases, or the code says why not
+- `must-require-human-approval-for-new-dependencies`: every new dependency carries an explicit human approval before it is added or merged
+- `should-verify-package-exists-and-is-maintained`: every new package was confirmed to exist and be actively maintained, or the build says why not
+- `must-not-install-hallucinated-or-abandoned-packages`: no installed package is hallucinated or abandoned

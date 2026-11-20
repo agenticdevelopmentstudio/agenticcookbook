@@ -4,7 +4,7 @@
     "id": "0f0c1da3-1c53-417b-890d-0259d7513c65",
     "title": "Instrumented logging",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -44,7 +44,7 @@
       "error-handling"
     ]
   },
-  "synced": "3a7ae3b7429cef07",
+  "synced": "36f95340d3a1fdd6",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

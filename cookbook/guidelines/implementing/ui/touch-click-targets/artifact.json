@@ -4,7 +4,7 @@
     "id": "73b254b4-c611-434a-a9f4-67c8a7155576",
     "title": "Touch & Click Targets",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -41,7 +41,7 @@
       "accessibility"
     ]
   },
-  "synced": "b9710719ad9fbdd8",
+  "synced": "0634b9312e64b723",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

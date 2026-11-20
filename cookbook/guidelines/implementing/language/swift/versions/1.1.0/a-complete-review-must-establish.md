@@ -1,0 +1,26 @@
+
+- `should-start-with-value-types`: whether each new type starts as a `struct` or `enum` unless it needs a class feature
+- `should-use-classes-only-for-class-features`: whether each new class is there for identity, Objective-C interoperability or required inheritance
+- `should-prefer-let`: whether `let` and immutable properties are used wherever mutation is not the point
+- `should-share-behavior-with-protocols`: whether shared behavior uses protocols and extensions rather than class inheritance
+- `should-mark-classes-final`: whether every class not designed for subclassing is `final`
+- `must-model-absence-with-optional`: whether any sentinel value stands in for absence
+- `should-unwrap-safely`: whether optionals are unwrapped with `if let`, `guard let`, chaining or `??`
+- `should-guard-for-early-exit`: whether early exits use `guard`
+- `must-not-force-unwrap`: whether any `!`, `try!` or `as!` appears where failure is not a programmer error
+- `must-not-declare-implicitly-unwrapped-optionals`: whether new code declares an implicitly unwrapped optional
+- `should-keep-injected-values-private-and-documented`: whether each injected implicitly unwrapped value is `private` with its injection point documented
+- `must-mark-throws-and-try`: whether every failing function is `throws` and every call site `try`
+- `should-model-related-failures-as-an-enum`: whether related failures are an `enum` conforming to `Error`
+- `should-pick-catch-try-or-propagate`: whether each error is caught, turned into an optional only when the reason does not matter, or propagated to a better-placed caller
+- `must-make-do-catch-exhaustive`: whether every `do`/`catch` is exhaustive or sits in a throwing function
+- `should-prefer-exhaustive-enum-catches`: whether catches switch over the error enum rather than using a catch-all
+- `should-defer-cleanup`: whether cleanup that must run on every exit is in `defer`
+- `should-throw-plain-error`: whether functions throw plain `Error` by default
+- `should-limit-typed-throws`: whether each typed throw has a stable, closed error set
+- `should-state-narrowest-access-level`: whether each new declaration has the narrowest access level that works
+- `must-not-expose-more-restricted-types`: whether any declaration exposes a type more restricted than itself
+- `must-mark-only-interface-members-public`: whether every `public` or `open` member belongs to the intended interface
+- `should-follow-strict-concurrency-guideline`: whether isolation and `Sendable` follow the strict-concurrency guideline
+- `should-use-appkit-and-uikit`: whether new UI uses AppKit and UIKit rather than SwiftUI
+- `should-pass-repository-lint-and-tests`: whether lint and tests pass under the repository's own configuration

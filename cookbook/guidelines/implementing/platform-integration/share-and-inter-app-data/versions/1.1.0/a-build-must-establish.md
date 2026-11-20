@@ -1,0 +1,25 @@
+
+- `participate-in-share-mechanisms`: the app sends and receives data through the platform's share and inter-app mechanisms, or the code says why not
+- `send-and-receive-via-share-sheet`: the app both sends and receives data through the platform share sheet, or the code says why not
+- `register-for-relevant-types`: the app registers as handler for each relevant file type and UTI/MIME type
+- `support-drag-and-drop`: content that suits multi-window contexts supports drag and drop, or the code says why not
+- `validate-received-data`: every inter-app input path validates the data it receives
+- `apple-share-with-system-picker`: Apple sharing presents `UIActivityViewController` on iOS and `NSSharingServicePicker` on macOS
+- `apple-create-share-extensions`: a Share Extension receives content from other apps, or the code says why not
+- `apple-register-utis`: `Info.plist` declares the UTIs for the app's file type associations
+- `apple-drag-and-drop-with-nsitemprovider`: iPadOS and macOS drag and drop goes through `NSItemProvider`, or the code says why not
+- `macos-support-services-menu`: macOS declares `NSServices` for its system-wide text operations, or the code says why not
+- `android-declare-send-intent-filter`: Android declares `<intent-filter>` with `ACTION_SEND` and the MIME types it accepts
+- `android-send-with-createchooser`: Android sends go through `Intent.createChooser()`
+- `android-implement-direct-share`: Direct Share targets cover frequently shared-to contacts, or the code says why not
+- `android-support-contentprovider`: structured data shared between apps is served by a `ContentProvider`, or the code says why not
+- `android-register-documentsprovider`: a `DocumentsProvider` exposes the app's documents to the system file picker, or the code says why not
+- `windows-implement-share-contract`: Windows sends and receives content through `DataTransferManager`
+- `windows-register-share-target`: the Windows manifest registers the app as a share target, or the code says why not
+- `windows-support-dragdrop`: Windows drag and drop uses the `DragDrop` APIs, or the code says why not
+- `windows-register-file-associations`: `Package.appxmanifest` registers the app's file type associations
+- `windows-support-rich-clipboard`: the Windows clipboard offers rich content formats where the content has them
+- `web-use-web-share-api`: web sharing calls `navigator.share()` where it is available
+- `web-register-share-target`: the Web App Manifest declares `share_target`, or the code says why not
+- `web-support-html-drag-and-drop`: web drag and drop uses the HTML Drag and Drop API, or the code says why not
+- `web-use-file-handling-api`: the PWA registers its file types through the File Handling API, or the code says why not

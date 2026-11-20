@@ -4,7 +4,7 @@
     "id": "56394d2f-b784-4771-92a4-faacc037c609",
     "title": "Shared components and tiers",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -36,7 +36,7 @@
       "code-review"
     ]
   },
-  "synced": "2e866674af167886",
+  "synced": "107fd08ba698e4ca",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

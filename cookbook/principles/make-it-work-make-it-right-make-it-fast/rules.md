@@ -4,3 +4,10 @@
 - **should-then-make-it-right**: Phase 2 SHOULD refactor for clarity, handle edge cases, and clean up design.
 - **should-optimize-only-measured-slowness**: Phase 3 SHOULD optimize only what measurement proves is slow.
 - **must-not-skip-make-it-right**: MUST NOT skip phase 2 to jump to phase 3.
+- **must-walk-each-claimed-behavior-to-its-effect**: Each behavior a change claims to deliver MUST be stated in one sentence, what a user of the change is supposed to be able to do or observe, and MUST reach its observed effect: the path from its entry point (CLI verb, API route, event handler, config flag) through every call it makes, in the code as written, across submodule and vendored boundaries where the path crosses them.
+- **must-not-silently-remove-old-behavior**: A change MUST NOT silently remove or break what a user of the old behavior experienced, even when every new line is individually correct.
+- **must-order-every-step-on-a-path-correctly**: Every step on a path MUST run only when it should, once, and after the thing it depends on, on the first run, on a repeat run, after the user declines or cancels, and when a background or scheduled job reaches the same code.
+- **must-treat-paired-operations-alike**: Paired operations (install and uninstall, write and read, register and unregister, encode and decode, add and remove) MUST treat the same input the same way, normalizing, trimming, quoting, matching and looking up the same value alike.
+- **must-close-every-route-to-a-fixed-failure**: A fix MUST close every route to the failure it targets: other callers, other entry points, the upgrade path, and the already-broken state on disk.
+- **should-ask-no-more-than-the-use-needs**: A low-level call SHOULD NOT ask for more than its use needs: a file or lock opened read-write when it is only read, a wider permission, mode, scope or flag than the use requires, or an exclusive hold where a shared one would do.
+- **must-not-ship-a-path-that-cannot-work**: Code MUST NOT contain a path that never reaches its effect, a claimed behavior with no path at all, a condition tested twice, a check that can never be true, or a wrong index or off-by-one.

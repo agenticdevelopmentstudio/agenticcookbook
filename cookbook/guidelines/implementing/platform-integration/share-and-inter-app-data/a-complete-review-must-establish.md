@@ -23,3 +23,5 @@
 - `web-register-share-target`: whether the Web App Manifest declares `share_target`
 - `web-support-html-drag-and-drop`: whether web drag and drop uses the HTML Drag and Drop API
 - `web-use-file-handling-api`: whether the PWA registers file types through the File Handling API
+- `windows-check-clipboard-format-availability`: clipboard operations handle format availability checks
+- `android-declare-send-intent-filter`: `ACTION_SEND` intent filter present for expected MIME types;

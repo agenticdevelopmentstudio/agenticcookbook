@@ -1,0 +1,27 @@
+
+- `should-have-single-responsibility`: whether check C01 holds: Rule addresses one coherent concern — not a grab-bag of unrelated instructions
+- `should-give-actionable-specific-instructions`: whether check C07 holds: Every instruction tells the LLM what to do concretely, not vague directives like "handle errors appropriately"
+- `must-not-conflict-with-itself`: whether check C08 holds: Rule does not contradict itself (e.g., "always do X" then later "never do X")
+- `should-use-well-structured-markdown`: whether check C09 holds: Uses headings, lists, code blocks; not a wall of unstructured text
+- `should-not-replicate-native-capabilities`: whether check B02 holds: Rule doesn't teach Claude things it already knows (basic git, standard coding, etc.)
+- `must-not-be-kitchen-sink`: whether check B06 holds: Rule doesn't try to govern everything — stays focused on its stated concern
+- `should-not-be-claude-md-dump`: whether check B08 holds: Content is rule-appropriate, not project configuration that belongs in CLAUDE.md
+- `should-have-clear-title-heading`: whether check R01 holds: File starts with a heading that identifies the rule's purpose
+- `should-use-imperative-tone`: whether check R02 holds: Uses RFC 2119 keywords (MUST, MUST NOT, SHOULD, MAY); not advisory or suggestive
+- `should-number-or-separate-steps`: whether check R03 holds: If procedural, steps are in a clear sequence with headings or numbered list
+- `must-not-use-vague-directives`: whether check R04 holds: Every instruction is concrete and actionable; no "handle appropriately" or "write good code"
+- `must-list-file-references-explicitly`: whether check R05 holds: If the rule says to read files, every file path is listed explicitly — no "read the principles" without paths
+- `must-not-give-contradictory-instructions`: whether check R06 holds: Rule does not say "always do X" then later "never do X" or otherwise conflict with itself
+- `should-address-single-concern`: whether check R07 holds: Rule addresses one coherent concern (planning, implementing, reviewing) — not a grab-bag
+- `should-include-enforcement-mechanism`: whether check R08 holds: Rule includes steps to verify compliance — not just "do X" but "verify X was done"
+- `should-not-be-claude-md-dump-rule-specific`: whether check R09 holds: Content is rule-appropriate, not project configuration that belongs in CLAUDE.md
+- `should-have-reasonable-length`: whether check R10 holds: Rule is long enough to be complete but not so long it gets ignored; under ~300 lines for a single rule file
+- `should-have-must-not-section`: whether check R11 holds: Rule explicitly states what the LLM must NOT do — common mistakes and anti-patterns
+- `should-be-deterministic`: whether check R12 holds: An LLM following the rule would produce consistent behavior across sessions; no room for interpretation on critical steps
+- `should-use-lowercase-kebab-case-filename`: whether check R13 holds: Filename matches `^[a-z][a-z0-9-]*\.md$` (e.g., `testing.md`, `api-design.md`); UPPERCASE stems are reserved for identity files like `SKILL.md` and `CLAUDE.md`
+- `should-stay-under-200-lines-8kb`: whether check O01 holds: Count lines and bytes; larger rules should move content to on-demand skills or external references
+- `should-not-duplicate-another-rule`: whether check O02 holds: Compare against other `.md` files in the same `.claude/rules/` directory; overlapping instructions are processed twice per turn
+- `should-have-globs-when-scoped`: whether check O03 holds: If the rule only applies to specific file patterns (e.g., `.claude/**`, `site/**`), it should have `globs` frontmatter to prevent loading on unrelated work
+- `should-keep-must-not-items-unique`: whether check O04 holds: Each MUST NOT adds a constraint not already expressed imperatively in the body text; restating "You MUST NOT skip this phase" from line 50 in the MUST NOT section wastes per-turn context
+- `may-inline-low-ratio-external-refs`: whether check O05 holds: If an external file reference points to a file where frontmatter exceeds 50% of total lines, suggest inlining the useful content instead
+- `should-limit-unconditional-external-reads`: whether check O06 holds: Rules that mandate reading 6+ external files before any work create high entry cost; consider summaries, on-demand reads, or iterative approaches

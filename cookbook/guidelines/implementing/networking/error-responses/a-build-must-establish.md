@@ -4,3 +4,4 @@
 - `must-keep-title-stable`: each error `type` has one fixed `title`
 - `must-mirror-status`: each problem body's `status` equals the response's HTTP status code
 - `may-add-extension-fields`: any extra error data is in named extension fields (`errors`, `trace_id`)
+- `must-not-show-raw-status-codes`: no raw HTTP status code is shown to the user

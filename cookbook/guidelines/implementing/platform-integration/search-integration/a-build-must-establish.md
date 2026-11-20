@@ -17,3 +17,4 @@
 - `web-implement-social-meta-tags`: public web pages carry OpenGraph and Twitter Card meta tags
 - `web-support-web-app-manifest`: the PWA ships a Web App Manifest
 - `web-ensure-crawlability`: web content meant for search is server-side rendered or pre-rendered
+- `windows-deploy-property-handlers-for-custom-file-types`: property handlers are deployed for every custom file type, or the code says why not

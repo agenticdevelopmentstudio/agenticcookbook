@@ -1,0 +1,16 @@
+
+- **support-continuity-features**: Apps available on multiple devices SHOULD support continuity features so users can start work on one device and resume on another.
+- **capture-enough-state**: You SHOULD capture enough state to reconstruct the user's context on the receiving device.
+- **continuity-must-feel-instant**: Continuity MUST feel instant — pre-transfer the minimum viable state, fetch details on arrival.
+- **fall-back-gracefully**: You SHOULD fall back gracefully when the receiving device lacks a feature the originating device had.
+- **use-deep-links-as-payload**: You SHOULD use deep links as the universal handoff payload — every platform can resolve a URL.
+- **apple-advertise-with-nsuseractivity**: On Apple platforms, you SHOULD use `NSUserActivity` to advertise the current activity.
+- **apple-enable-handoff-and-populate-userinfo**: On Apple platforms, you SHOULD set `isEligibleForHandoff = true` and populate `userInfo` with state needed to restore context.
+- **apple-implement-continue-on-receiver**: On Apple platforms, you SHOULD implement `application(_:continue:)` on the receiving device.
+- **apple-support-universal-clipboard**: On Apple platforms, you SHOULD support Universal Clipboard for cross-device copy/paste.
+- **android-use-nearby-or-chrome-continuity**: On Android, you SHOULD use Google Play Services' Nearby Connections API or Chrome's cross-device features for continuity between Android devices.
+- **android-use-links-that-resolve-natively-and-on-web**: On Android, for Android-to-web continuity, you SHOULD use Firebase Dynamic Links or deep links that resolve in both native and web contexts.
+- **android-support-clipboard-sync**: On Android, you SHOULD support clipboard sync through Google account integration.
+- **web-use-shared-urls**: On the web, you SHOULD use shared URLs as the primary continuity mechanism — a well-constructed URL with state parameters is the most universal handoff format.
+- **web-support-credential-management**: On the web, you SHOULD support the Credential Management API for seamless sign-in across devices.
+- **web-consider-realtime-sync**: On the web, you SHOULD consider WebSocket or server-sent events for real-time state sync between active sessions.

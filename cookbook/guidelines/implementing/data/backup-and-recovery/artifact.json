@@ -4,11 +4,11 @@
     "id": "607b9f71-39dd-4b10-80fd-d8fd115cce5f",
     "title": "Database backup and recovery",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-15",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,13 +37,13 @@
       "https://sqlite.org/wal.html"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-15",
+    "approved-date": "2026-11-19",
     "triggers": [
       "database-operations",
       "configuration"
     ]
   },
-  "synced": "cc285b319e8b02d2",
+  "synced": "313307413603e2df",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -1,0 +1,25 @@
+
+- `participate-in-share-mechanisms`: whether the app participates in the platform's share and inter-app data exchange
+- `send-and-receive-via-share-sheet`: whether the app both sends and receives through the share sheet
+- `register-for-relevant-types`: whether the app registers as a handler for its relevant file types and UTIs/MIME types
+- `support-drag-and-drop`: whether drag and drop is supported for content that suits multi-window use
+- `validate-received-data`: whether all received inter-app data is validated
+- `apple-share-with-system-picker`: whether Apple sharing uses `UIActivityViewController` or `NSSharingServicePicker`
+- `apple-create-share-extensions`: whether a Share Extension receives content from other apps
+- `apple-register-utis`: whether UTI declarations are registered in `Info.plist`
+- `apple-drag-and-drop-with-nsitemprovider`: whether iPadOS and macOS drag and drop uses `NSItemProvider`
+- `macos-support-services-menu`: whether macOS supports the Services menu via `NSServices`
+- `android-declare-send-intent-filter`: whether Android declares `ACTION_SEND` intent filters with appropriate MIME types
+- `android-send-with-createchooser`: whether Android sends through `Intent.createChooser()`
+- `android-implement-direct-share`: whether Direct Share targets exist for frequently shared-to contacts
+- `android-support-contentprovider`: whether structured inter-app data goes through a `ContentProvider`
+- `android-register-documentsprovider`: whether the app registers a `DocumentsProvider` for the system file picker
+- `windows-implement-share-contract`: whether Windows sends and receives through the Share Contract
+- `windows-register-share-target`: whether the Windows manifest registers a share target
+- `windows-support-dragdrop`: whether Windows drag and drop uses the `DragDrop` APIs
+- `windows-register-file-associations`: whether file type associations are registered in `Package.appxmanifest`
+- `windows-support-rich-clipboard`: whether the Windows clipboard supports rich content formats
+- `web-use-web-share-api`: whether web sharing uses `navigator.share()`
+- `web-register-share-target`: whether the Web App Manifest declares `share_target`
+- `web-support-html-drag-and-drop`: whether web drag and drop uses the HTML Drag and Drop API
+- `web-use-file-handling-api`: whether the PWA registers file types through the File Handling API

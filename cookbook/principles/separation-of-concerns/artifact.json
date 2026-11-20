@@ -4,7 +4,7 @@
     "id": "1357be12-5a58-4143-a570-849c114770c5",
     "title": "Separation of concerns",
     "type": "principle",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -30,7 +30,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "b3196e0fdf76d4a2",
+  "synced": "71587cbf63364ccd",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

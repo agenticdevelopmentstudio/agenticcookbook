@@ -4,7 +4,7 @@
     "id": "03539f34-3451-49d5-b90f-ba77430f2658",
     "title": "System Dependencies",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "dependency-management"
     ]
   },
-  "synced": "2c6d8cacfd9806f2",
+  "synced": "d3aa9c7daa9f7d0f",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -4,7 +4,7 @@
     "id": "a8f9c003-e970-4f28-bb7d-30a23b891b3f",
     "title": "Test Pyramid",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -33,7 +33,7 @@
       "pre-pr"
     ]
   },
-  "synced": "b826081a5d7e9db0",
+  "synced": "d1a4b0c960781653",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

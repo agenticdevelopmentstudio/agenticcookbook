@@ -8,4 +8,4 @@
 - Check constraints follow `ck_<table>_<constraint_name>` convention
 - Foreign key constraints follow `fk_<table>_<referenced_table>` convention
 - Triggers follow `trg_<table>_<action>_<timing>` convention (e.g., `trg_users_update_before`)
-
+- `should-prefix-named-objects-by-type`: A review passes when it establishes every item above.

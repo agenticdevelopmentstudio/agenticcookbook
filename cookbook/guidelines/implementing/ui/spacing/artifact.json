@@ -4,7 +4,7 @@
     "id": "536c1e46-36f9-4a44-b8f4-c9e4db94cf53",
     "title": "Spacing",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -33,7 +33,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "ce2cc6df6738a3b3",
+  "synced": "b4c5ad7788433ebf",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

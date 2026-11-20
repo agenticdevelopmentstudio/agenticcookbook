@@ -1,0 +1,28 @@
+
+- **must-enable-wal-for-synced-databases**: MUST enable WAL mode on every SQLite database that participates in sync.
+- **should-use-synchronous-full-only-for-power-loss-safety**: SHOULD use `PRAGMA synchronous = FULL` only for power-loss safety; `NORMAL` is safe for app crashes.
+- **should-use-one-writer-many-readers**: SHOULD use one writer connection (writes serialized via an application-level queue) and multiple reader connections.
+- **must-not-hold-write-transaction-during-network-io**: MUST NOT hold a write transaction open while waiting on network I/O.
+- **must-write-mutation-and-outbox-atomically**: Every user mutation MUST be written to both the data table and an outbox queue in a single atomic transaction.
+- **must-read-ui-from-local-sqlite**: The UI MUST read exclusively from local SQLite, never from the network.
+- **should-design-ui-for-server-rejection**: The UI SHOULD be designed to handle the rare case where the server rejects a write.
+- **must-roll-back-on-server-rejection**: MUST implement rollback when the server rejects an optimistic write.
+- **must-run-migrations-regardless-of-network**: Migrations MUST run successfully regardless of network state.
+- **should-track-schema-version-with-user-version**: SHOULD use `PRAGMA user_version` to track the applied schema version.
+- **should-recreate-table-for-complex-migrations**: For complex changes, a migration SHOULD create a new table, copy, and drop the old one.
+- **must-only-add-columns**: A sync-compatible migration MUST only add columns — never remove or rename without a migration path.
+- **must-give-new-columns-defaults**: In a sync-compatible migration, new columns MUST have DEFAULT values (required by CRDTs and outbox replay).
+- **must-make-migrations-idempotent**: In a sync-compatible migration, the migration MUST be idempotent (safe to run twice).
+- **must-wrap-migration-steps-in-transactions**: In a sync-compatible migration, MUST wrap each migration step in a transaction.
+- **must-test-migrations-from-every-version**: In a sync-compatible migration, MUST test the migration against databases at every previous schema version.
+- **should-prune-sync-metadata-on-schedule**: SHOULD prune sync metadata — outbox entries, change logs, tombstones — on a schedule (e.g., on app launch or after sync completes).
+- **should-incremental-vacuum-after-significant-deletions**: After significant deletions, SHOULD reclaim disk space with incremental vacuum (less disruptive than full VACUUM).
+- **should-trigger-periodic-full-sync**: SHOULD trigger a full sync (not delta) if `last_full_sync` is older than a threshold (e.g., 7 days), to catch any gaps from previous sync failures.
+- **must-adjust-sync-to-connectivity**: MUST monitor network reachability and adjust sync behavior accordingly:
+  - When offline: queue writes locally, do not attempt sync
+  - On reconnection: trigger an immediate sync cycle
+  - When online: run periodic background sync (e.g., every 30 seconds while the app is active)
+  - When backgrounded: use platform-specific background sync APIs (WorkManager on Android, Background App Refresh on iOS, Service Worker Periodic Sync on web)
+- **must-not-retry-sync-in-tight-loop**: MUST NOT retry sync in a tight loop on reconnection.
+- **should-back-off-from-first-failure**: SHOULD apply exponential backoff starting from the first failure, even after regaining connectivity, in case the server is under load.
+

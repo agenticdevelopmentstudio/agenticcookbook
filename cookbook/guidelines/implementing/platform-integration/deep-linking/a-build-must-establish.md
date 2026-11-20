@@ -9,3 +9,5 @@
 - `windows-handle-activation-in-onlaunched`: `App.OnLaunched` reads `AppInstance.GetActivatedEventArgs()` to handle activation
 - `windows-parse-uri-and-navigate`: the activation URI is parsed to its target page/state and the app navigates there
 - `windows-single-instance-for-deep-links`: Windows deep links single-instance through `AppInstance.FindOrRegisterForKey()`, or the code says why not
+- `apple-support-universal-links-and-url-schemes`: Apple platforms support Universal Links and custom URL schemes, with `onOpenURL` and `NavigationPath` restoring the destination
+- `android-declare-app-links-and-intent-filters`: Android declares App Links and `<intent-filter>` entries wired to the Navigation component's deep links

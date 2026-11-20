@@ -6,3 +6,8 @@
 - `must-respect-retry-after`: whether `Retry-After` is respected on 429 and 503
 - `must-not-retry-deterministic-failures`: whether 400, 401, 403, 404, 409 and 422 are never retried
 - `should-use-a-circuit-breaker`: whether a circuit breaker with a sliding window, failure threshold, cooldown and half-open probe guards against cascading failure
+- `should-treat-listed-codes-as-retryable`: Retry logic only applies to retryable status codes;
+- `should-use-the-default-retry-parameters`: non-idempotent requests (POST) not retried by default;
+- `should-back-off-with-full-jitter`: exponential backoff with jitter implemented (no fixed-interval retry);
+- `should-use-a-circuit-breaker`: circuit breaker or similar prevents cascading
+- `should-use-a-circuit-breaker`: circuit breaker present or explicitly scoped out

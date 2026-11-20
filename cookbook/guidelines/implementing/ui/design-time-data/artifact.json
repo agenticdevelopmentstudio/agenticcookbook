@@ -4,7 +4,7 @@
     "id": "497a717f-de29-4baf-b7b8-4487f672d9a8",
     "title": "Design-Time Data",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -31,7 +31,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "9a3f1179d9591125",
+  "synced": "4fa5ce04e1aec3ff",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

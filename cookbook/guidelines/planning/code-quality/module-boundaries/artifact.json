@@ -4,7 +4,7 @@
     "id": "51038675-205b-4752-b826-4081b3729359",
     "title": "Module Boundaries",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "1eeb7ac59766ac3f",
+  "synced": "603e21d5acb7d590",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

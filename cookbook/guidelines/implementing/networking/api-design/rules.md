@@ -19,3 +19,4 @@
 **Versioning:**
 - **should-version-in-the-url-path**: APIs SHOULD use URL path versioning (`/v1/users`).
 - **should-bump-major-only-for-breaking-changes**: APIs SHOULD bump the major version only for breaking changes.
+- **should-display-field-level-errors-for-422**: Clients SHOULD display field-level errors for 422 responses.

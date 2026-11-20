@@ -7,3 +7,4 @@
 - `should-maintain-grid-aspect-ratios`: grid items with inconsistent aspect ratios
 - `should-sort-or-filter-ten-plus-items`: a collection that can hold 10 or more items without sort or filter controls
 - `must-search-fifty-plus-items`: a collection that can hold 50 or more items without search
+- `should-sort-or-filter-ten-plus-items`, `must-search-fifty-plus-items`: sort/filter at 10+ items, search at 50+

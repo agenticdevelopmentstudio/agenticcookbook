@@ -9,3 +9,4 @@
 - `should-show-connectivity-status`: no visible connectivity status, or one the user cannot read.
 - `must-queue-mutations-and-keep-user-work`: a mutation sent only directly to the network, or a path that drops user work without telling the user.
 - `should-test-offline-scenarios`: offline handling with no tests for airplane mode, flaky connections or long offline periods.
+- `should-detect-conflicts-with-versions`: conflict detection via ETags/version numbers with 409 response;

@@ -1,0 +1,32 @@
+
+- `should-use-memory-databases-for-unit-tests`: every unit test uses a `:memory:` database, or the code says why not
+- `should-use-file-databases-only-for-file-behavior`: every file-based test database belongs to an integration test of WAL behavior, file locking, concurrent connections or platform-specific I/O, or the code says why
+- `should-put-file-databases-in-temp-dir`: every file-based test database lives in a temp directory and is deleted in teardown, or the code says why not
+- `must-not-share-memory-database-across-modules`: no single in-memory database is shared across unrelated test modules
+- `should-use-named-memory-databases-only-when-intended`: every named shared in-memory database serves tests that intentionally need several connections to it, or the code says why
+- `should-default-to-fresh-database-per-test`: the default isolation is a fresh database per test, or the code says why not
+- `may-use-transaction-rollback-for-large-schemas`: where transaction rollback is used for isolation, it is for a large schema
+- `must-not-commit-under-transaction-rollback`: no test under transaction-rollback isolation commits, and its nested operations use SAVEPOINTs
+- `may-use-template-and-backup-for-seeded-data`: where a template and the backup API are used, the tests need pre-populated data and isolated writes
+- `should-maintain-test-seeds-file`: a `test_seeds.sql` file with representative fixture data exists, or the code says why not
+- `should-cover-seed-cases`: the seed data covers typical records, edge cases and records in each relevant status, or the code says why not
+- `must-not-build-shared-fixtures-per-test`: no fixture data needed across several tests is built record-by-record inside individual tests
+- `should-use-function-scoped-fixtures-for-writes`: every test that writes uses a function-scoped fixture, or the code says why not
+- `should-use-session-scoped-fixtures-for-reads`: read-only tests use session-scoped fixtures, or the code says why not
+- `should-relax-test-durability`: test databases use relaxed durability settings, or the code says why not
+- `should-apply-relaxed-settings-only-in-tests`: relaxed durability settings are applied only in test fixtures, or the code says why
+- `must-test-forward-migrations`: every migration file is covered by a forward-application test on a blank database that asserts the resulting schema
+- `should-make-migrations-idempotent`: every migration is idempotent where possible, or the code says why not
+- `should-test-migration-idempotency-twice`: idempotency is tested by applying the migration set twice, or the code says why not
+- `should-test-backward-migrations`: every migration with a rollback script is tested forward then backward against the pre-migration schema, or the code says why not
+- `must-test-migrations-with-representative-data`: migrations are tested against a database seeded with production-representative data
+- `must-test-sync-at-unit-and-integration-level`: sync logic is tested at the unit level (change detection, serialization) and the integration level (round-trip apply)
+- `should-test-change-detection`: the unsynced-records query is tested for returning the correct rows, or the code says why not
+- `should-test-sync-apply`: applying a server changeset, soft deletes included, is tested, or the code says why not
+- `should-test-outbox-round-trip`: the outbox round-trip is tested end to end, or the code says why not
+- `should-test-tombstone-propagation`: tombstone propagation between two simulated peers, with no resurrection on a later sync, is tested, or the code says why not
+- `must-test-conflicts-with-two-peers`: every conflict test uses two databases representing two peers
+- `should-assert-merge-matches-resolution-strategy`: every conflict test merges divergent changes and asserts the defined resolution outcome, or the code says why not
+- `should-test-all-conflict-cases`: update-vs-update, update-vs-delete and insert-vs-insert are each tested, or the code says why a case is not
+- `should-use-sqlite-where-dialect-is-irrelevant`: SQLite unit tests cover only logic unaffected by dialect differences, or the code says why
+- `must-use-production-database-for-dialect-tests`: every integration test of type enforcement, constraint behavior or database-specific SQL runs against the production database

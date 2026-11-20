@@ -4,7 +4,7 @@
     "id": "183d07f2-ecfc-4da3-9a21-96953efefa91",
     "title": "Database testing",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
@@ -39,7 +39,7 @@
       "database-operations"
     ]
   },
-  "synced": "07f788f547df29b9",
+  "synced": "3dfbe38cb032321d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

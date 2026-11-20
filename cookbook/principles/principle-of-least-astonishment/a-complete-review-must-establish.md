@@ -6,3 +6,9 @@
 - `must-make-mutation-visible`: whether every method that mutates state shows it in its name or signature
 - `should-follow-platform-naming-conventions`: whether names follow the platform's naming conventions
 - `should-ask-would-a-new-team-member-be-surprised`: whether a new team member would be surprised by any behavior in the change
+- `must-not-give-get-endpoints-side-effects`: No GET endpoints with side effects;
+- `must-make-idempotent-methods-idempotent`: idempotent methods (GET/PUT/DELETE) are actually idempotent;
+- `must-not-hide-side-effects-of-primary-actions`: no hidden side effects from primary actions;
+- `must-deliver-the-behavior-a-name-suggests`: endpoint names accurately describe their behavior;
+- `must-deliver-the-behavior-a-name-suggests`: Action labels accurately describe what happens;
+- `should-match-caller-expectations`: UI state after action matches what a reasonable user would predict

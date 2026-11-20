@@ -17,3 +17,6 @@
 - `should-carry-trace-id-on-log-lines`: a log line with no trace/correlation ID from the request context
 - `should-follow-otel-semantic-conventions`: log or span field names invented ad hoc where an OpenTelemetry semantic convention exists
 - `should-use-structured-json-in-production`: production logs written as unstructured text
+- `should-use-android-log-with-consistent-tags`: on Kotlin a consistent tag scheme is used when falling back to `android.util.Log`;
+- `should-emit-telemetry-via-opentelemetry`: logs should be emitted through OpenTelemetry and exported over OTLP so logs, traces, and metrics share one pipeline rather than per-platform-only frameworks (which remain the local emission layer, routed through an OTel appender/bridge rather than replaced);
+- `should-follow-otel-semantic-conventions`: field names should follow OpenTelemetry semantic conventions (`service.name`, `trace_id`, `http.request.method`) rather than ad-hoc keys;

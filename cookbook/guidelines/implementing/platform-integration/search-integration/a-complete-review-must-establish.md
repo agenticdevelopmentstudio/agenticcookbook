@@ -17,3 +17,6 @@
 - `web-implement-social-meta-tags`: whether OpenGraph and Twitter Card meta tags are implemented
 - `web-support-web-app-manifest`: whether the PWA supports a Web App Manifest
 - `web-ensure-crawlability`: whether web content is server-side rendered or pre-rendered for crawlability
+- `windows-deploy-property-handlers-for-custom-file-types`: property handlers deployed for custom file types;
+- `must-deep-link-indexed-items`: indexed items resolve via protocol activation;
+- `must-deep-link-indexed-items`: search results navigate to correct content

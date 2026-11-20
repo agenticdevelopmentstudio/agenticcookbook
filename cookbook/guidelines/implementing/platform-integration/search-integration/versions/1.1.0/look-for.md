@@ -1,0 +1,19 @@
+
+- `content-discoverable-in-system-search`: searchable app content with no path into the platform's system search
+- `index-what-users-search-for`: documents, contacts, messages or settings users would search for left out of the index
+- `keep-index-current`: create paths that never add to the index, or delete paths that leave stale index entries
+- `must-deep-link-indexed-items`: an indexed item with no deep link, or one that opens the app's root
+- `include-rich-metadata`: indexed items with only a title and no thumbnail, description or category
+- `apple-index-with-core-spotlight`: Apple content indexed without `CSSearchableItem`/`CSSearchableItemAttributeSet`
+- `ios17-conform-to-indexedentity`: an entity on iOS 17+ that is not `IndexedEntity`
+- `apple-donate-nsuseractivity`: a Handoff-eligible item with no `NSUserActivity` donation
+- `android-use-app-indexing`: Android on-device search with neither Firebase App Indexing nor `AppIndexingApi`
+- `android-declare-searchable-content`: no `searchable.xml`, or no `SearchableInfo` implementation, for Android searchable content
+- `android-support-assistant-markup`: Android content with no structured content markup for Google Assistant
+- `windows-use-search-indexer`: Windows content indexed without the Windows Search indexer, `ISearchManager` or property handlers
+- `windows-register-associations-and-protocols`: Windows content missing from Start menu search for want of file type associations or protocol handlers
+- `windows-uwp-winui-search`: a UWP/WinUI app with search that has no `SearchPane` or system-integrated in-app search
+- `web-use-structured-data`: public web pages with no JSON-LD or Schema.org structured data
+- `web-implement-social-meta-tags`: web pages missing OpenGraph or Twitter Card meta tags
+- `web-support-web-app-manifest`: a PWA with no Web App Manifest
+- `web-ensure-crawlability`: content rendered only client-side with no server-side rendering or pre-rendering

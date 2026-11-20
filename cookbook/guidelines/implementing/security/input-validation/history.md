@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.2.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.2.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 1.1.3 | 2026-11-19 | Mike Fullerton | Fold guidelines/reviewing/security/input-validation into this topic (identical text); links to it redirected here |
 | 1.1.2 | 2026-11-07 | Mike Fullerton | Match the server-render boundary section to the reviewing twin; pinning a patched framework is now MUST |

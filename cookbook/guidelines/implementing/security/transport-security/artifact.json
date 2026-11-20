@@ -4,7 +4,7 @@
     "id": "5b026378-d418-406a-9aab-6e3f043901af",
     "title": "Transport Security",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -36,7 +36,7 @@
       "security-review"
     ]
   },
-  "synced": "a8bd8892c8b612df",
+  "synced": "d17928de7e601c37",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

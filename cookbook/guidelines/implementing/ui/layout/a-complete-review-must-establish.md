@@ -11,3 +11,7 @@
 - `must-not-sacrifice-readability-for-density`: whether readability was sacrificed for density anywhere
 - `should-keep-one-primary-scroll-direction`: whether each view has one primary scroll direction
 - `should-avoid-nested-same-direction-scrolling`: whether any view nests same-direction scrolling
+- `must-not-use-inline-style-pixel-widths`: No inline style pixel widths for layout;
+- `should-use-em-rem-or-device-class-breakpoints`: breakpoints use `em`/`rem` or device-class media queries;
+- `should-avoid-nested-same-direction-scrolling`: no nested overflow-y in overflow-y containers;
+- `should-match-dom-order-to-reading-order`: DOM order matches visual reading order

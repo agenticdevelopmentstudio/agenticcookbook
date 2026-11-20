@@ -7,3 +7,6 @@
 - `should-document-feature-flags`: whether every feature flag is documented
 - `should-not-group-unenabled-code-paths`: whether any scope group is built around unenabled code paths
 - `should-note-remote-config-ordering`: whether every remote config dependency is noted as an operational ordering constraint
+- `must-identify-new-runtime-conditions-with-gated-code`: Every NEW permission/entitlement requirement, environment prerequisite, or feature-flag dependency introduced in this diff is identified with the code it gates;
+- `must-identify-new-runtime-conditions-with-gated-code`: a diff that introduces none is explicitly cleared.
+- `must-scope-to-the-change-not-the-codebase`: Scope is the change under review — NOT a whole-codebase inventory.

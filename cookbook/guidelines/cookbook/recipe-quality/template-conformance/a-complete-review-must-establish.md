@@ -22,3 +22,4 @@
 - `must-not-insert-sections-between-required`: whether any additional section is inserted between required sections
 - `must-end-with-change-history`: whether `## Change History` is the final section
 - `may-leave-change-history-empty-initially`: whether an empty Change History body appears only at initial creation
+- `must-include-required-frontmatter-fields`: All frontmatter fields present and correctly typed;

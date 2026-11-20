@@ -21,3 +21,5 @@
 - **should-enable-roslyn-analyzers**: C# SHOULD enable Roslyn analyzers in `.csproj` (`EnforceCodeStyleInBuild` true, `AnalysisLevel` `latest-recommended`).
 - **should-auto-fix-with-dotnet-format**: C# SHOULD use the `dotnet format` CLI for auto-fixing.
 - **should-supplement-with-extra-analyzers**: C# SHOULD supplement with [Roslynator](https://github.com/dotnet/roslynator) or [Meziantou.Analyzer](https://github.com/meziantou/Meziantou.Analyzer) for additional rules.
+- **must-not-suppress-lint-inline-without-justification**: Lint errors MUST NOT be suppressed inline without justification.
+- **should-document-formatter-command**: The formatter command SHOULD be documented in the README or Makefile.

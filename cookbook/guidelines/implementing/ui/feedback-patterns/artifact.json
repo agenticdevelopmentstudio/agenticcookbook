@@ -4,7 +4,7 @@
     "id": "ca9874ea-07ed-4585-8692-33a29bc6411a",
     "title": "Feedback Patterns",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -33,7 +33,7 @@
       "error-handling"
     ]
   },
-  "synced": "37da2e981a017350",
+  "synced": "d66d2161d93027cf",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

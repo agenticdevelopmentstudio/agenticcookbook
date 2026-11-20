@@ -9,3 +9,4 @@
 - `must-not-use-dialogs-for-success`: a dialog used to report success
 - `must-confirm-destructive-actions`: a destructive action with no explicit confirmation, or one confirmed by a generic "OK"
 - `should-default-focus-to-safe-option`: a confirmation whose default focus is on the destructive option
+- `should-implement-toasts-banners-and-dialogs`: Implement toast/snackbar (auto-dismiss 3-5s), inline alerts/banners, and modal dialogs;

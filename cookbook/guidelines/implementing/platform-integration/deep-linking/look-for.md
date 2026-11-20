@@ -9,3 +9,8 @@
 - `windows-handle-activation-in-onlaunched`: `App.OnLaunched` that does not read `AppInstance.GetActivatedEventArgs()`
 - `windows-parse-uri-and-navigate`: an activation URI that is ignored or not turned into a navigation to its page/state
 - `windows-single-instance-for-deep-links`: a deep link opening a second app instance with no `AppInstance.FindOrRegisterForKey()`
+- `must-deep-link-significant-views`: flag any meaningful view reachable only by in-app navigation with no addressable entry point.
+- `apple-support-universal-links-and-url-schemes`: On Apple, look for Universal Links plus custom URL schemes, with `onOpenURL` handling incoming URLs in SwiftUI and `NavigationPath` driving state restoration to the linked destination.
+- `android-declare-app-links-and-intent-filters`: On Android, look for App Links and `<intent-filter>` declarations wired to the Navigation component's deep-link support so links resolve to the right destination.
+- `web-view-should-have-shareable-url`: On the web (and TypeScript), require that every view has a unique, shareable URL backed by framework routing (React Router, Next.js routing, and the like) — flag views with no distinct route or that collapse multiple states onto one non-shareable URL.
+- `spec-defines-deep-linking`: Also check that the feature's spec carries a dedicated Deep Linking section defining its URL patterns.

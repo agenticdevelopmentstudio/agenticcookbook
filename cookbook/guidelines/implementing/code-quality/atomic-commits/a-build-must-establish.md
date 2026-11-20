@@ -12,3 +12,5 @@
 - `should-split-large-planned-units`: every planned unit that looked large was split into smaller PRs, or the build says why not
 - `should-scrutinize-agent-code-more`: the agent-generated code was checked line by line before it was submitted
 - `should-decompose-large-agent-changes-before-review`: no large agent-produced change goes to review as one block, or the build says why
+- `should-bump-version-in-same-change`: a meaningful change to a versioned artifact carries its version bump in the same change, or the build says why not
+- `should-match-version-bump-magnitude`: every version field the build touched moved by a magnitude that matches the change, or the build says why not

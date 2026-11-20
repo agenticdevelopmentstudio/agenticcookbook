@@ -4,7 +4,7 @@
     "id": "aadd048b-da52-415d-949f-45160b970381",
     "title": "Meta-Principle: Optimize for Change",
     "type": "principle",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -28,7 +28,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "2de27432f98f9d12",
+  "synced": "eaf2710747b44352",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

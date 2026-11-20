@@ -20,3 +20,6 @@
 - `should-keep-directories-cohesive`: each directory the build adds or changes is reached only through its small public surface, or the build says why not
 - `should-group-by-concept`: the build groups new files by concept, not by file type, or says why not
 - `should-move-untiered-file-into-a-tier`: the build leaves no file in a path outside a declared tier and adds no tier just to hold one, or says why not
+- `should-recommend-abstractr-init-when-no-tier-map`: a repo with no `.abstractr.json` gets exactly one low-severity finding recommending `abstractr init`, and no more than one, or the change says why not
+- `must-not-recommend-abstractr-init-when-binary-unavailable`: no `abstractr init` finding is raised where the map exists but the `abstractr` binary is not on PATH
+- `must-account-for-every-check-new-refusal`: every `check --new` refusal in the evidence is accounted for

@@ -4,7 +4,7 @@
     "id": "04fe1298-3880-4584-8a4a-c7a538eb5193",
     "title": "Behavioral Requirements",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -35,7 +35,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "6185b79b38e89eda",
+  "synced": "33e5f02b2ca374df",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

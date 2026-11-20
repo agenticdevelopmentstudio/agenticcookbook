@@ -14,3 +14,5 @@
 - **web-use-shared-urls**: On the web, you SHOULD use shared URLs as the primary continuity mechanism — a well-constructed URL with state parameters is the most universal handoff format.
 - **web-support-credential-management**: On the web, you SHOULD support the Credential Management API for seamless sign-in across devices.
 - **web-consider-realtime-sync**: On the web, you SHOULD consider WebSocket or server-sent events for real-time state sync between active sessions.
+- **windows-use-protocol-activation-uris**: On Windows, you SHOULD use protocol activation URIs as the cross-device handoff mechanism.
+- **windows-resolve-uris-on-web-or-mobile**: On Windows, handoff URIs SHOULD resolve on web or mobile equivalents.

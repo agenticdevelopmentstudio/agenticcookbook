@@ -1,0 +1,8 @@
+
+- `should-retry-transient-failures`: whether transient failures are retried with exponential backoff and jitter
+- `should-back-off-with-full-jitter`: whether retry delays follow `random(0, min(max_delay, base * 2^attempt))`
+- `should-use-the-default-retry-parameters`: whether base delay, max delay cap and max retries match the table's defaults
+- `should-treat-listed-codes-as-retryable`: whether 408, 429, 500 (idempotent only), 502, 503 and 504 are treated as retryable
+- `must-respect-retry-after`: whether `Retry-After` is respected on 429 and 503
+- `must-not-retry-deterministic-failures`: whether 400, 401, 403, 404, 409 and 422 are never retried
+- `should-use-a-circuit-breaker`: whether a circuit breaker with a sliding window, failure threshold, cooldown and half-open probe guards against cascading failure

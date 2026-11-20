@@ -1,0 +1,19 @@
+
+- `must-not-contradict-applicable-guidelines`: whether any behavioral requirement contradicts an applicable cookbook guideline
+- `must-be-at-least-as-strict-as-guideline-musts`: whether every requirement under a guideline's MUST is at least as strict, and any relaxation has an explicit documented exception approved by the maintainers
+- `must-satisfy-all-applicable-guidelines-together`: whether all applicable guidelines are satisfied at once, none traded against another
+- `should-cite-applicable-guidelines-in-frontmatter`: whether each directly applicable guideline is cited in `depends-on` or `references`
+- `should-reference-guideline-inline`: whether requirements derived from or constrained by a guideline reference it inline
+- `must-not-copy-guideline-content-without-attribution`: whether guideline content appears in the recipe without attribution
+- `must-include-security-section-when-security-relevant`: whether a recipe touching authentication, authorization, session management, token handling, credential storage or sensitive-data transmission has a dedicated security section
+- `must-address-minimum-security-concerns`: whether the security requirements state what data is sensitive, how it is stored or transmitted, and what happens on a security violation
+- `must-specify-token-lifetimes-storage-revocation`: whether token lifetimes, storage mechanisms and revocation behavior are all specified
+- `must-not-defer-security-to-best-practices`: whether any security requirement defers entirely to "follow platform best practices" without citing specific practices
+- `must-address-accessibility-in-ui-recipes`: whether every recipe with a visible UI element or interaction flow addresses accessibility
+- `must-cover-core-accessibility-requirements`: whether UI requirements cover keyboard and assistive technology navigation, minimum contrast ratios, touch/click target sizes and meaningful control labels
+- `must-not-make-required-accessibility-optional`: whether accessibility is marked MAY where law or platform policy requires it
+- `should-reference-accessibility-guideline`: whether a UI recipe names the applicable accessibility guideline in `depends-on`
+- `must-specify-network-failure-retry-and-errors`: whether a networking recipe covers failure modes, retry behavior with backoff, and user-facing error communication
+- `must-not-make-routine-error-handling-should`: whether error handling is only a SHOULD where failure is a routine operating condition
+- `must-specify-durability-guarantees`: whether a recipe writing to local storage, a database or a file system states what survives a restart, what is ephemeral, and when data may be lost
+- `must-specify-backup-and-conflict-resolution`: whether a recipe handling user-generated content states whether and how data is backed up and how conflicts are resolved

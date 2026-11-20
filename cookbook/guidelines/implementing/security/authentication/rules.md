@@ -9,3 +9,4 @@
 - **must-rotate-refresh-tokens**: Refresh token rotation MUST be used — each use issues a new refresh token and invalidates the old one.
 - **should-invalidate-token-family-on-refresh-reuse**: Reuse of a revoked refresh token **SHOULD** be detected, and the entire token family invalidated.
 - **should-enforce-absolute-session-timeouts**: Absolute session timeouts **SHOULD** be enforced server-side.
+- **must-not-use-implicit-flow**: The deprecated Implicit flow (removed in OAuth 2.1) MUST NOT appear anywhere.

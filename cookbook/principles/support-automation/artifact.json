@@ -4,7 +4,7 @@
     "id": "cf698150-45b0-4a20-881b-7d0f04208198",
     "title": "Support Automation",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -27,7 +27,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "ec2789df8221a4af",
+  "synced": "735c6d791a84eace",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

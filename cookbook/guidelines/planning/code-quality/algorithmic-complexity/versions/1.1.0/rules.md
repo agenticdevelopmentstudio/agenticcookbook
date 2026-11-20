@@ -1,0 +1,14 @@
+
+- **should-give-high-complexity-algorithms-own-scope-group**: Code implementing O(n log n) or worse algorithms on large datasets **SHOULD** get its own scope group — high-complexity algorithms warrant their own scope group.
+- **should-treat-caching-layers-as-candidates**: A caching subsystem with its own eviction policy, invalidation logic, and hit/miss tracking **SHOULD** be treated as a scope group candidate — caching layers are scope group candidates.
+- **should-not-mix-computation-with-io**: Computational code **SHOULD NOT** be mixed with I/O.
+- **should-note-mixed-io-as-design-smell**: Files that mix algorithm implementation with network calls or file system access **SHOULD** be noted as a design smell.
+- **should-not-treat-crud-as-boundary-signal**: Simple CRUD code **SHOULD NOT** be treated as a boundary signal — simple CRUD code is not a boundary signal; its boundaries come from `module-boundaries` or `purpose-classification`.
+- **must-scope-or-flag-parallel-computation**: Code using parallel execution primitives likely belongs in its own scope group, or **MUST** be flagged as a concurrency concern — parallel computation implies a concurrency concern.
+- **should-note-comparator-shape**: For explicit sort calls with custom comparators, the analysis **SHOULD** note whether the comparator is simple (field comparison) or compound (multi-key, weighted).
+- **should-note-traversal-cycle-handling**: For BFS/DFS implementations, the analysis **SHOULD** note cycle detection and visited sets.
+- **should-note-hash-map-purpose**: For hash maps / dictionaries, the analysis **SHOULD** note when they are used for frequency counting, grouping, or deduplication.
+- **should-note-set-deduplication**: For sets used for membership testing, the analysis **SHOULD** note when they are used to eliminate duplicates from a stream.
+- **should-flag-triple-nesting-immediately**: Triple or deeper loop nesting — O(n³) or worse — **SHOULD** be flagged immediately.
+- **should-note-float-precision**: For floating point accumulation patterns (summation, running averages), the analysis **SHOULD** note precision concerns.
+- **should-note-accelerated-matrix-libraries**: For matrix multiplication, the analysis **SHOULD** note whether it uses accelerated libraries (Accelerate, BLAS, NumPy).

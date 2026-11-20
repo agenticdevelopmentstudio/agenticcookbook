@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "19648d85-adba-4f38-b513-a38ca58e9fb0",
+    "title": "Cross-Recipe Consistency",
+    "type": "guideline",
+    "version": "1.2.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-07",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Naming, structure, and depth are consistent across sibling recipes so the cookbook reads as a coherent whole.",
+    "platforms": [
+      "csharp",
+      "ios",
+      "kotlin",
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "recipe-quality"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "02cfaafa482dddef",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "common-violations", "heading": "Common Violations", "role": "examples"},
+    {"part": "verification-checklist", "heading": "Verification Checklist", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

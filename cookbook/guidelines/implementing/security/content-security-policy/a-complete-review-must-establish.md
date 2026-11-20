@@ -8,3 +8,4 @@
 - `should-back-trusted-types-with-sanitizer`: whether the trusted-types policy is backed by a documented sanitizer rather than ad-hoc escaping
 - `should-roll-out-trusted-types-report-only-first`: whether Trusted Types ran in report-only mode before enforcing
 - `should-enable-trusted-types-despite-mixed-support`: whether Trusted Types is enabled as defense-in-depth despite mixed browser support
+- `should-enable-trusted-types-despite-mixed-support`: Trusted Types adoption is not gated on universal native support.

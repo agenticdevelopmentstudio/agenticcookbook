@@ -1,0 +1,14 @@
+
+- `should-give-high-complexity-algorithms-own-scope-group`: every O(n log n)-or-worse algorithm on large datasets has its own recommended scope group, or the findings say why not
+- `should-treat-caching-layers-as-candidates`: every caching subsystem with its own eviction, invalidation and hit/miss tracking appears among the scope group candidates, or the findings say why not
+- `should-not-mix-computation-with-io`: no file mixes algorithm implementation with I/O, or the findings name it
+- `should-note-mixed-io-as-design-smell`: every file mixing algorithms with network or file system access is listed as a design smell
+- `should-not-treat-crud-as-boundary-signal`: no recommended scope group rests only on simple CRUD code
+- `must-scope-or-flag-parallel-computation`: every piece of parallel computation is its own scope group candidate or is flagged as a concurrency concern
+- `should-note-comparator-shape`: every custom sort comparator found is described as simple or compound
+- `should-note-traversal-cycle-handling`: every BFS/DFS found has its cycle detection and visited sets described
+- `should-note-hash-map-purpose`: every hash map used for frequency counting, grouping or deduplication is described as such
+- `should-note-set-deduplication`: every set used to drop duplicates from a stream is described as such
+- `should-flag-triple-nesting-immediately`: every loop nested three or more deep is listed as a performance risk or anomaly
+- `should-note-float-precision`: every floating point accumulation found carries a precision note
+- `should-note-accelerated-matrix-libraries`: every matrix multiplication found says whether an accelerated library performs it

@@ -8,3 +8,7 @@
 - `should-use-the-prescribed-value`: a platform-prescribed value replaced by another
 - `should-note-cross-platform-defaults`: a cross-platform default not noted as such, or missing where the HIG has no opinion
 - `should-list-platform-overrides-in-platform-notes`: a platform-specific override missing from the ingredient's Platform Notes, or listed without a link to its HIG section
+- `should-follow-wcag-and-conventions-on-web`: Web target follows WCAG 2.1 and browser/OS design conventions;
+- `should-use-system-font-stack-on-web`: use platform-appropriate system font stack;
+- `should-use-defaults-to-fill-gaps`, `must-use-platform-prescribed-values`: fill gaps with cookbook defaults only where platform doesn't prescribe
+- `must-document-rationale-for-design-deviations`: a custom design deviation from the platform with no documented rationale

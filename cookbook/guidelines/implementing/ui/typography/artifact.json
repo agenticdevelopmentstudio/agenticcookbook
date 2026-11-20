@@ -4,7 +4,7 @@
     "id": "1971d5c6-592d-4959-aa2c-33ea4ff17d0d",
     "title": "Typography",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -41,7 +41,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "49293b92f1368028",
+  "synced": "fe06d715fe9a8dba",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

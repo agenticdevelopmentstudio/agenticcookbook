@@ -1,0 +1,22 @@
+
+- `must-build-privacy-in-from-day-one`: a feature shipped with privacy and security controls deferred to a later release breaks it
+- `should-collect-only-what-is-needed`: collected data with no use in the feature
+- `should-prefer-on-device-processing`: data sent to a server for processing that could run on the device
+- `should-require-opt-in-for-non-essential-data`: non-essential data collected by default or on an opt-out basis
+- `must-remain-functional-when-denied`: an app that blocks, degrades or nags when optional data collection is denied breaks it
+- `must-use-platform-secure-storage`: a token or credential stored outside Keychain, EncryptedSharedPreferences, DPAPI or HttpOnly cookies breaks it
+- `must-not-log-pii`: personally identifiable information in a log call at any level, debug included, breaks it
+- `must-use-https`: any `http://` endpoint or non-TLS network call breaks it
+- `should-sanitize-input-before-display`: user input displayed without sanitization
+- `should-document-privacy-in-specs`: a spec with no **Privacy** section on data collected and how it is stored
+- `should-support-apple-privacy-features`: an Apple app that does not support App Tracking Transparency, App Privacy Report or Private Relay
+- `should-include-usage-descriptions`: a permission prompt with a missing or unhelpful `NS*UsageDescription` key
+- `should-respect-android-storage-language-and-denials`: an Android app that ignores scoped storage or per-app language preferences, or handles a permission denial badly
+- `should-show-rationale-before-permission-requests`: a runtime permission requested on Android with no rationale dialog first
+- `should-configure-csp`: a web app with no CSP header restricting script sources
+- `should-use-httponly-cookies-for-tokens`: an authentication token on the web held anywhere but an HttpOnly secure cookie
+- `must-not-store-tokens-in-localstorage`: a token written to `localStorage` breaks it
+- `should-minimize-third-party-scripts`: third-party scripts loaded beyond those the page needs
+- `should-respect-do-not-track`: tracking that ignores the Do Not Track header
+- `should-declare-only-required-capabilities`: `Package.appxmanifest` capabilities beyond those required, or `broadFileSystemAccess` without need
+- `should-use-dpapi-for-local-secrets`: a local secret on Windows stored without DPAPI

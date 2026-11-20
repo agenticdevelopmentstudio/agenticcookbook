@@ -5,3 +5,5 @@
 - `should-target-public-api`: every unit test in the change targets the public API, not internals, or the code says why not
 - `must-be-independent`: every unit test in the change arranges its own state and relies on no other test
 - `should-use-specification-names`: every unit test in the change has a descriptive name that reads as a specification, or the code says why not
+- `must-not-contain-logic`: no conditional or loop logic inside test bodies;
+- `must-be-independent`: tests do not share mutable state

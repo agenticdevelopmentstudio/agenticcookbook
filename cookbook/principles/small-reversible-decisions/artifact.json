@@ -4,7 +4,7 @@
     "id": "4554e680-aca3-4bb2-bc99-1ac381c428b2",
     "title": "Small, reversible decisions",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "9119d39f65292f6e",
+  "synced": "58a74b85cec188b8",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

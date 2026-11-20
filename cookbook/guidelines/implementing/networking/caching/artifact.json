@@ -4,7 +4,7 @@
     "id": "3416a359-e01c-40b2-8876-4a8634d4395e",
     "title": "Caching",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -38,7 +38,7 @@
       "performance-optimization"
     ]
   },
-  "synced": "2b6cdbce604229e9",
+  "synced": "afa53d214a06ace0",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

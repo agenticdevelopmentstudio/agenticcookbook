@@ -1,0 +1,35 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "da56ab62-98ad-4f52-b972-3ebfda5b1718",
+    "title": "Principle of least astonishment",
+    "type": "principle",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "APIs, UI, and system behavior should match what users and callers expect. A name must deliver the behavior it suggests, and side effects should be obvious from the signature.",
+    "platforms": [],
+    "tags": [
+      "principle-of-least-astonishment"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "01b9acc1bcff6b7c",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

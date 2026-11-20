@@ -7,3 +7,5 @@
 - **should-document-feature-flags**: The analysis **SHOULD** document the feature flags in feature-flagged code.
 - **should-not-group-unenabled-code-paths**: The analysis **SHOULD NOT** create scope groups around unenabled code paths — feature-flagged code is pre-production.
 - **should-note-remote-config-ordering**: Code that requires a remote config fetch before it can function **SHOULD** be noted as an operational ordering constraint — remote config dependencies imply a network prerequisite.
+- **must-identify-new-runtime-conditions-with-gated-code**: Every NEW permission or entitlement requirement, environment prerequisite, or feature-flag dependency introduced by the change MUST be identified with the code it gates.
+- **must-scope-to-the-change-not-the-codebase**: Scope MUST be the change under review, and MUST NOT be a whole-codebase inventory.

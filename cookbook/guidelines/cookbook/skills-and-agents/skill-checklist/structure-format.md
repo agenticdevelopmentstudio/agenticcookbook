@@ -18,3 +18,5 @@
 
 ---
 
+- `must-have-yaml-frontmatter`: Read a Claude Code skill across three lenses.
+- `must-have-yaml-frontmatter`: file opens and closes with `---` YAML frontmatter;

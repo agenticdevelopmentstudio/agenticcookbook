@@ -1,0 +1,66 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "02e9042d-0d15-47ac-9361-2f16980a03ca",
+    "title": "Indexing",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-15",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Rules for creating effective indexes in SQLite and PostgreSQL, covering B-tree fundamentals, composite ordering, covering indexes, partial and expression indexes, sync metadata indexes, and when not to index.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "indexing",
+      "performance",
+      "query-planning"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "7fd21483-ad0b-407e-8a7f-103992403d36"
+    ],
+    "references": [
+      "https://sqlite.org/queryplanner.html",
+      "https://sqlite.org/partialindex.html",
+      "https://sqlite.org/expridx.html",
+      "https://www.sqlite.org/eqp.html",
+      "https://www.postgresql.org/docs/current/indexes-types.html",
+      "https://www.postgresql.org/docs/current/sql-createindex.html",
+      "https://pganalyze.com/blog/gin-index"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-16",
+    "triggers": [
+      "database-operations",
+      "performance-optimization",
+      "schema-design"
+    ]
+  },
+  "synced": "0d76e373d8b99fcf",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "b-tree-fundamentals", "heading": "B-Tree Fundamentals", "role": "rationale"},
+    {"part": "composite-index-column-ordering", "heading": "Composite Index Column Ordering", "role": "examples"},
+    {"part": "covering-indexes", "heading": "Covering Indexes", "role": "how-to"},
+    {"part": "partial-indexes", "heading": "Partial Indexes", "role": "examples"},
+    {"part": "expression-indexes", "heading": "Expression Indexes", "role": "examples"},
+    {"part": "json-indexing-via-generated-columns", "heading": "JSON Indexing via Generated Columns", "role": "how-to"},
+    {"part": "index-strategy-for-sync-metadata-columns", "heading": "Index Strategy for Sync Metadata Columns", "role": "examples"},
+    {"part": "explain-query-plan", "heading": "EXPLAIN QUERY PLAN", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

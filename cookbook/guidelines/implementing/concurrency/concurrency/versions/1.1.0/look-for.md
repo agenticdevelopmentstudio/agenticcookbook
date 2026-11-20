@@ -1,0 +1,21 @@
+
+- `must-run-lengthy-work-in-background`: lengthy work (I/O, network, heavy computation) run inline instead of on a background thread or task
+- `must-not-block-main-thread`: a synchronous wait, sleep or blocking call on the main/UI thread
+- `should-show-progress-while-waiting`: a UI that waits on an async task with no determinate or indeterminate progress shown
+- `should-use-swift-concurrency`: Swift async work done with GCD, callbacks or threads instead of `async`/`await`, `Task` or actors
+- `should-use-mainactor-for-ui-updates`: Swift UI updates not isolated to `@MainActor`
+- `should-use-kotlin-coroutines`: Kotlin async work done with raw threads, callbacks or executors instead of coroutines
+- `should-run-kotlin-io-on-dispatchers-io`: Kotlin I/O run on a dispatcher other than `Dispatchers.IO`
+- `should-use-viewmodelscope`: ViewModel coroutines launched in a scope other than `viewModelScope`
+- `should-use-promises-for-async`: TypeScript async operations written as callbacks instead of `Promise`/`async`/`await`
+- `should-use-web-workers-for-cpu-work`: CPU-intensive TypeScript work run on the main thread instead of a Web Worker
+- `should-use-async-await-in-csharp`: C# async work not written with `async`/`await`
+- `should-configure-await-false-in-library-code`: an `await` in C# library code without `ConfigureAwait(false)`
+- `must-not-use-result-or-wait`: a `.Result` or `.Wait()` on a task in C#
+- `must-not-use-async-void`: an `async void` method in C# that is not an event handler
+- `must-accept-cancellation-token`: a C# async API with no `CancellationToken` parameter
+- `should-use-valuetask-only-when-mostly-synchronous`: a `ValueTask<T>` return on a method that does not frequently complete synchronously
+- `should-use-task-run-for-cpu-work`: C# CPU-bound work not run with `Task.Run`
+- `must-not-run-cpu-work-on-ui-thread`: C# CPU-bound work run on the UI thread
+- `should-marshal-ui-work-with-dispatcherqueue`: WinUI 3 background work that updates the UI without `DispatcherQueue.TryEnqueue`
+- `must-not-access-ui-from-non-ui-threads`: a WinUI 3 UI element touched from a non-UI thread

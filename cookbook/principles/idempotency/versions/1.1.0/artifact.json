@@ -1,0 +1,35 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "39c2d053-006f-42c9-9db4-d991c1688024",
+    "title": "Idempotency",
+    "type": "principle",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "User actions and system operations should be safe to repeat without duplicate side effects: debounce async actions, use idempotency keys, and check current state before transitions.",
+    "platforms": [],
+    "tags": [
+      "idempotency"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "d926729652d01871",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

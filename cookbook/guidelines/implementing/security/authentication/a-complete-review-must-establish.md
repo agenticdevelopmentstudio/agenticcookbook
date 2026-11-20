@@ -9,3 +9,5 @@
 - `must-rotate-refresh-tokens`: whether each refresh-token use issues a new refresh token and invalidates the old one
 - `should-invalidate-token-family-on-refresh-reuse`: whether reuse of a revoked refresh token is detected and invalidates the entire token family
 - `should-enforce-absolute-session-timeouts`: whether sessions have absolute timeouts enforced server-side
+- `should-use-short-lived-access-tokens-in-session-management`: access tokens expire within 5-15 minutes;
+- `must-not-use-implicit-flow`: whether any client uses the Implicit flow

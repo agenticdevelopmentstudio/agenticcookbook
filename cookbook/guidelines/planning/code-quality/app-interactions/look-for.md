@@ -12,3 +12,4 @@
 - `should-note-di-registration-and-resolution-sites`: DI container use, and whether registration and resolution sites are both recorded
 - `should-note-completion-chain-depth`: completion handler chains, and whether their depth is recorded, with 3+ levels called out
 - `should-note-promise-chain-error-breaks`: `.then().then().catch()` chains, and whether the findings say where error handling breaks them
+- `should-note-notification-endpoints`: Map how components communicate with each other.

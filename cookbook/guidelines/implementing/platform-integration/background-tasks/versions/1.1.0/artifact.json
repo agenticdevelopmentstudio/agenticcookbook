@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "433b4c9d-fe44-4fec-af0d-83bba9c51c6f",
+    "title": "Background tasks",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps that sync data, process uploads, or maintain state SHOULD use platform background execution APIs rather than relying on foreground presence.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "windows",
+      "web"
+    ],
+    "tags": [
+      "background-tasks",
+      "platform",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "94e8caba-da27-4bb8-8f8e-38730b8b34e0",
+      "67c59594-a5dc-46f2-aa61-3436921294c7"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "platform-integration",
+      "concurrency"
+    ]
+  },
+  "synced": "62f11608101c84a5",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "windows", "heading": "Windows", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

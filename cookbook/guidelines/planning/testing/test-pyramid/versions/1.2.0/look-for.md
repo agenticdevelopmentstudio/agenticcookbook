@@ -1,0 +1,10 @@
+
+- `should-follow-the-80-15-5-ratio`: a suite far from 80% unit / 15% integration / 5% E2E with no stated reason
+- `should-use-real-dependencies-in-integration-tests`: integration tests that mock the database, file system or HTTP where the real one was practical
+- `should-use-e2e-tests-sparingly`: E2E tests covering what unit or integration tests could
+- `should-reserve-e2e-for-critical-journeys`: an E2E test for a journey that is not critical
+- `should-default-to-a-unit-test`: a higher-level test written where a unit test would cover the behavior
+- `should-escalate-to-integration-when-unit-cannot-cover`: behavior a unit test cannot cover (database queries, UI rendering) left with no integration test
+- `should-choose-the-distribution-per-system`: a fixed ratio applied with no look at where the system's risk lives
+- `may-fit-the-testing-trophy`: a trophy shape adopted for a system that is not integration-heavy
+- `should-prefer-the-trophy-when-risk-is-in-interactions`: a pyramid kept where most risk is in how components interact

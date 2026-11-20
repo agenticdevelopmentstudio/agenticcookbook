@@ -4,7 +4,7 @@
     "id": "8d52028b-d358-4965-93a1-030fc8405068",
     "title": "Always show progress",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -28,7 +28,7 @@
       "networking"
     ]
   },
-  "synced": "26a1836ce4d89b87",
+  "synced": "9045509c591d4459",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

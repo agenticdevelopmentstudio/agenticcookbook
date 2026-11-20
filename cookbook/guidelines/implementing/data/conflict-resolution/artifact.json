@@ -4,11 +4,11 @@
     "id": "822a0912-fda7-461f-85ab-f9c2c55f0039",
     "title": "Conflict Resolution",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-15",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -36,13 +36,13 @@
       "https://github.com/vlcn-io/cr-sqlite"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-16",
+    "approved-date": "2026-11-19",
     "triggers": [
       "offline-support",
       "database-operations"
     ]
   },
-  "synced": "e956f0eb4bb08d6a",
+  "synced": "0fe797be924abf3e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

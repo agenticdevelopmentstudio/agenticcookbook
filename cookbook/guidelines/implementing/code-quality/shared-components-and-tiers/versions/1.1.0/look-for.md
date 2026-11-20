@@ -1,0 +1,22 @@
+
+- `should-build-upward-from-shared-pieces`: a component built from scratch where shared pieces below it already provide its parts, or an assembly kept private when it could serve as a shared piece
+- `should-apply-by-judgment-without-declared-tiers`: in a repo with no declared tiers, code placed with no evident reasoning about tiers
+- `should-search-before-creating`: a new source file or component with no sign that the tier table, the shared exports or a several-name search were checked
+- `should-reuse-before-building-new`: a new component close to an existing one, with no stated reason the existing one cannot serve
+- `may-add-new-file-to-shared-tier`: nothing to flag in itself; a new file in a shared tier is allowed
+- `should-check-new-shared-file-for-duplicates`: a new shared-tier file that duplicates an existing component under a different name
+- `should-say-what-was-reused`: a change that does not say what it reused, or what it chose not to reuse and why
+- `should-place-in-lowest-tier`: a piece placed above the lowest tier whose dependencies it can live with, such as foundation-only code inside a feature
+- `should-not-create-tier-for-feature`: a new tier, framework or target added to hold a feature without the project owner's decision
+- `should-ask-if-cli-could-link-it`: a piece a command-line tool could not link without the application, though nothing in it needs the application
+- `should-pass-app-values-as-parameters`: a piece that reads an application settings singleton or app-only type where the value could be passed in as a parameter
+- `must-not-import-from-higher-tier`: an import in a lower tier of anything from a higher tier
+- `should-invert-upward-dependencies`: a lower tier reaching up for something instead of defining a protocol or callback the higher tier supplies
+- `should-extract-shared-part-of-cycle`: a dependency cycle between tiers left in place instead of its shared part extracted to a tier below both
+- `should-put-feature-pieces-in-shared-tiers`: a feature's models, service protocol, client, storage, logic or views kept in application code
+- `may-keep-entry-point-and-glue-in-app`: application code beyond the entry point, config files and aggregation code (menu assembly, dependency wiring, thin adapters)
+- `should-split-feature-by-need`: a feature kept whole in one place instead of split by need across foundation, storage, UI and IPC tiers
+- `should-keep-every-file-in-a-tier-directory`: a source file strewn at the top level of a repo or package, or in a directory that names no purpose or belongs to no declared tier
+- `should-keep-directories-cohesive`: a directory whose contents do not change together, or whose internals are reached from outside past its small public surface
+- `should-group-by-concept`: files grouped by file type (all models, all views) rather than by concept
+- `should-move-untiered-file-into-a-tier`: a file at a path in no declared tier, or a new tier added just to hold one

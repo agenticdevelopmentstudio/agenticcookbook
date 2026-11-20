@@ -24,3 +24,5 @@
 - `should-treat-xcodegen-spec-as-source`: where XcodeGen is used, the generated project is not hand-edited and is ignored or verified against the spec in CI, or the change says why not
 - `should-keep-real-values-in-xcconfig-with-xcodegen`: where XcodeGen is used, real values are in xcconfig files and the spec holds structure, or the change says why not
 - `should-not-introduce-generator-in-unrelated-change`: no generator was introduced into a repository without one as part of an unrelated change, or the change says why not
+- `should-leave-target-level-settings-empty`: Settings live in `.xcconfig` with no hidden target overrides;
+- `should-add-entitlements-only-for-used-capabilities`: entitlement changes are justified and match code;

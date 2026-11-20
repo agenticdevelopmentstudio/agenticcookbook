@@ -1,0 +1,64 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "cbfa06b6-ec22-4784-9e61-c99307064b72",
+    "title": "JSON columns and generated columns",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-15",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "JSON storage and extraction in SQLite, json_each for array iteration, generated columns for indexing JSON fields, and when JSON is a schema design smell.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "json",
+      "generated-columns",
+      "schema-design",
+      "indexing"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://sqlite.org/json1.html",
+      "https://sqlite.org/gencol.html",
+      "https://www.dbpro.app/blog/sqlite-json-virtual-columns-indexing",
+      "https://www.postgresql.org/docs/current/datatype-json.html",
+      "https://www.crunchydata.com/blog/indexing-jsonb-in-postgres",
+      "https://vsevolod.net/postgresql-jsonb-index/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-15",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "809142c40c840c73",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "json-storage", "heading": "JSON storage", "role": "examples"},
+    {"part": "extraction-operators", "heading": "Extraction operators", "role": "examples"},
+    {"part": "iterating-arrays-with-json-each", "heading": "Iterating arrays with json_each", "role": "examples"},
+    {"part": "modifying-json", "heading": "Modifying JSON", "role": "examples"},
+    {"part": "aggregating-rows-into-json", "heading": "Aggregating rows into JSON", "role": "examples"},
+    {"part": "generated-columns-for-indexing-json-fields", "heading": "Generated columns for indexing JSON fields", "role": "examples"},
+    {"part": "when-json-is-a-schema-design-smell", "heading": "When JSON is a schema design smell", "role": "how-to"},
+    {"part": "postgresql-compatibility-notes", "heading": "PostgreSQL compatibility notes", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

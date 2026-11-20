@@ -4,7 +4,7 @@
     "id": "193e5770-fd0b-45c9-91a4-6673bf6021ff",
     "title": "Share and inter-app data flow",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -39,7 +39,7 @@
       "platform-integration"
     ]
   },
-  "synced": "524a122a7783539d",
+  "synced": "b15bd753f03fe08c",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -11,3 +11,4 @@
 - `should-use-the-right-status-code`: every response's status code is the listed one for its outcome
 - `should-version-in-the-url-path`: the API version is the first path segment (`/v1/...`)
 - `should-bump-major-only-for-breaking-changes`: the major version changes only with a breaking change
+- `should-display-field-level-errors-for-422`: 422 responses display field-level errors

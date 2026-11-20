@@ -1,0 +1,53 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419",
+    "title": "Input Validation",
+    "type": "guideline",
+    "version": "1.2.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "**Never trust client input.** Client-side validation is a UX feature, not a security control.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "input-validation",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks",
+      "https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/",
+      "https://arxiv.org/html/2508.14925v1"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "input-handling",
+      "security-review",
+      "api-integration"
+    ]
+  },
+  "synced": "cda6738e5d830c7f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

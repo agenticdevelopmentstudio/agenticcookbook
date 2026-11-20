@@ -6,3 +6,5 @@
 - EXPLAIN QUERY PLAN shows index usage for all hot-path queries; no full table scans on large tables
 - Covering indexes reduce disk seeks for queries selecting multiple columns
 
+
+A review passes when it establishes every item above.

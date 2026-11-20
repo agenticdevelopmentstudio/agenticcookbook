@@ -21,3 +21,5 @@
 - `should-enable-roslyn-analyzers`: Roslyn analyzers are enabled in `.csproj` with `EnforceCodeStyleInBuild` and `latest-recommended`, or the project says why not
 - `should-auto-fix-with-dotnet-format`: `dotnet format` is the auto-fixer, or the project says why not
 - `should-supplement-with-extra-analyzers`: Roslynator or Meziantou.Analyzer supplements the rules, or the project says why not
+- `must-not-suppress-lint-inline-without-justification`: no lint errors suppressed inline without justification;
+- `should-document-formatter-command`: formatter command documented in README or Makefile

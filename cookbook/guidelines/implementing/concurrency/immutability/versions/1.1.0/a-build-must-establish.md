@@ -1,0 +1,20 @@
+
+- `must-default-to-immutable-values`: every value is immutable unless its mutation is necessary
+- `should-prefer-value-types`: value types are used over reference types, or the code says why not
+- `must-contain-mutation-behind-boundaries`: every piece of mutable state is changed only behind a clear boundary
+- `should-use-val-by-default`: every Kotlin binding is `val` unless it is reassigned, or the code says why
+- `should-use-data-class-for-value-types`: every Kotlin value type is a `data class`, or the code says why not
+- `should-introduce-var-only-when-required`: every Kotlin `var` is mutated, or the code says why it is a `var`
+- `should-contain-mutable-state-behind-stateflow`: Kotlin mutable state is exposed only through `StateFlow`, or the code says why not
+- `should-use-const-by-default`: every TypeScript binding is `const` unless it is reassigned, or the code says why
+- `should-use-var-or-let-only-when-required`: every TypeScript `var`/`let` is mutated, or the code says why
+- `should-prefer-usestate-for-mutable-state`: React contained mutable state lives in `useState`, or the code says why not
+- `should-use-readonly-by-default`: every C# field and struct is `readonly` unless mutation is required, or the code says why
+- `should-prefer-immutable-collections`: every shared C# collection is a `System.Collections.Immutable` type, or the code says why not
+- `should-use-records-for-data`: every C# DTO, API response, domain event and value object is a `record`, or the code says why not
+- `should-use-record-structs-for-small-values`: every small immutable C# value type is a `record struct` / `readonly record struct`, or the code says why not
+- `should-prefer-positional-records`: every simple C# data carrier is a positional record, or the code says why not
+- `should-use-init-and-required`: every mandatory C# property uses an `init` setter and `required`, or the code says why not
+- `should-use-with-expressions`: every C# non-destructive mutation uses a `with` expression, or the code says why not
+- `should-contain-mutable-state-behind-wrappers`: C# mutable state sits behind `ObservableObject` (UI) or a thread-safe wrapper, or the code says why not
+- `should-reserve-mutable-classes-for-entities`: every C# `class` with mutable state is an entity with identity semantics, or the code says why

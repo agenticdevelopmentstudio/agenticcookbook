@@ -1,0 +1,17 @@
+
+- `should-manage-dependencies-actively`: dependencies added and never revisited, with no update, scanning or review process
+- `must-commit-lockfiles`: a manifest (`package.json`, `Podfile`, `pyproject.toml`, `Cargo.toml`, …) with no committed lockfile, or a lockfile in `.gitignore`, breaks it
+- `should-use-locked-installs-in-ci`: CI installing with `npm install` or an unlocked restore instead of `--frozen-lockfile` / `npm ci` / `dotnet restore --locked-mode`
+- `must-run-dependency-scanning-in-ci`: a CI pipeline with no `npm audit`, `pip-audit`, Dependabot, Snyk or `dotnet list package --vulnerable` step breaks it
+- `must-fail-builds-on-critical-vulnerabilities`: a scan that reports critical/high vulnerabilities without failing the build breaks it
+- `should-pin-dependencies`: version specs wider than exact versions or narrow ranges
+- `must-not-use-wildcard-versions`: a `*` version or overly broad semver range breaks it
+- `should-use-sri-for-cdn-assets`: a CDN-hosted `<script>` or stylesheet with no `integrity` attribute (SHA-384/SHA-512)
+- `should-watch-for-supply-chain-attacks`: a new dependency name close to a popular one, an internal name resolvable from a public registry, or a package with post-install scripts, taken without scrutiny
+- `must-not-let-agents-install-freely`: an agent able to run package installs with no constraint breaks it
+- `should-enforce-package-allowlist-deterministically`: no task- or session-scoped package/registry allowlist enforced by a pre-install hook, CI check or sandbox policy
+- `must-not-rely-on-prose-alone`: an install restriction that exists only as prompt text breaks it
+- `should-apply-registry-cooldown`: agent installs able to pull releases published moments ago, with no cooldown window
+- `must-require-human-approval-for-new-dependencies`: a new dependency added or merged with no explicit human approval breaks it
+- `should-verify-package-exists-and-is-maintained`: a package added with no check that it exists and is actively maintained
+- `must-not-install-hallucinated-or-abandoned-packages`: a dependency on a name that does not exist upstream, or on an abandoned package, breaks it

@@ -1,0 +1,32 @@
+
+- `should-use-memory-databases-for-unit-tests`: unit-test fixtures connect to `:memory:`, or a note says why not
+- `should-use-file-databases-only-for-file-behavior`: each file-based test database is used only by an integration test of WAL, file locking, concurrent connections or platform-specific I/O, or a note says why
+- `should-put-file-databases-in-temp-dir`: each file-based test database is created in a temp directory and removed in teardown, or a note says why not
+- `must-not-share-memory-database-across-modules`: no in-memory database object or shared-cache name is used by more than one unrelated test module
+- `should-use-named-memory-databases-only-when-intended`: each `file:name?mode=memory&cache=shared` URL is used by a test that opens several connections to it, or a note says why
+- `should-default-to-fresh-database-per-test`: the default `db` fixture is function-scoped and builds a blank database with the schema, or a note says why not
+- `may-use-transaction-rollback-for-large-schemas`: any rollback fixture is used only for a large schema
+- `must-not-commit-under-transaction-rollback`: no test using a rollback fixture issues `COMMIT`, and nested operations use SAVEPOINTs
+- `may-use-template-and-backup-for-seeded-data`: any template-and-backup fixture serves tests that need pre-populated data and isolated writes
+- `should-maintain-test-seeds-file`: a `test_seeds.sql` file with representative fixture data is in the test tree, or a note says why not
+- `should-cover-seed-cases`: the seed file holds typical records, edge-case records and a record in each relevant status, or a note says why not
+- `must-not-build-shared-fixtures-per-test`: fixture data used by several tests comes from a shared seed or fixture, not per-test inserts
+- `should-use-function-scoped-fixtures-for-writes`: every fixture used by a writing test is function-scoped, or a note says why not
+- `should-use-session-scoped-fixtures-for-reads`: read-only tests use a session-scoped fixture, or a note says why not
+- `should-relax-test-durability`: test fixtures set relaxed durability pragmas, or a note says why not
+- `should-apply-relaxed-settings-only-in-tests`: the relaxed durability pragmas appear only in test fixtures, or a note says why
+- `must-test-forward-migrations`: a passing test applies every migration file in order to a blank database and asserts the schema
+- `should-make-migrations-idempotent`: the migration set applies twice without error, or a note says why a migration cannot be idempotent
+- `should-test-migration-idempotency-twice`: a passing test applies the migration set twice, or a note says why not
+- `should-test-backward-migrations`: each migration with a rollback script has a passing forward-then-backward test, or a note says why not
+- `must-test-migrations-with-representative-data`: a passing migration test runs on a database seeded with production-representative data
+- `must-test-sync-at-unit-and-integration-level`: passing unit tests of change detection and serialization and a passing round-trip integration test exist for the sync code
+- `should-test-change-detection`: a passing test checks the unsynced-records query's rows, or a note says why not
+- `should-test-sync-apply`: a passing test applies a server changeset, including a soft delete, or a note says why not
+- `should-test-outbox-round-trip`: a passing outbox round-trip test exists, or a note says why not
+- `should-test-tombstone-propagation`: a passing two-peer tombstone test, including a later sync, exists, or a note says why not
+- `must-test-conflicts-with-two-peers`: each conflict test sets up two peer databases
+- `should-assert-merge-matches-resolution-strategy`: each conflict test asserts the merged outcome against the defined strategy, or a note says why not
+- `should-test-all-conflict-cases`: passing update-vs-update, update-vs-delete and insert-vs-insert tests exist, or a note says why one is missing
+- `should-use-sqlite-where-dialect-is-irrelevant`: SQLite-backed unit tests exercise no dialect-dependent behavior, or a note says why
+- `must-use-production-database-for-dialect-tests`: integration tests of type enforcement, constraints or database-specific SQL run against the production database engine

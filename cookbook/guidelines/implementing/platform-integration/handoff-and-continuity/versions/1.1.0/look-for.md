@@ -1,0 +1,16 @@
+
+- `support-continuity-features`: a multi-device app with no way to resume on one device what was started on another
+- `capture-enough-state`: a handoff payload missing state the receiver needs to rebuild the user's context
+- `continuity-must-feel-instant`: a handoff that transfers full content up front or blocks on arrival instead of sending minimum state and fetching details after
+- `fall-back-gracefully`: a receiving path that fails or crashes when a feature from the originating device is missing
+- `use-deep-links-as-payload`: a handoff payload with no URL any platform could resolve
+- `apple-advertise-with-nsuseractivity`: an Apple activity worth resuming with no `NSUserActivity` advertising it
+- `apple-enable-handoff-and-populate-userinfo`: an `NSUserActivity` without `isEligibleForHandoff = true`, or with `userInfo` short of the state needed to restore
+- `apple-implement-continue-on-receiver`: no `application(_:continue:)` (or SwiftUI equivalent) on the receiving side
+- `apple-support-universal-clipboard`: copy/paste code that blocks or bypasses Universal Clipboard
+- `android-use-nearby-or-chrome-continuity`: Android-to-Android continuity built on neither Nearby Connections nor Chrome's cross-device features
+- `android-use-links-that-resolve-natively-and-on-web`: an Android-to-web handoff link that resolves only in the app or only on the web
+- `android-support-clipboard-sync`: copy/paste code that blocks clipboard sync through the Google account
+- `web-use-shared-urls`: web continuity that depends on session-only state instead of a URL with state parameters
+- `web-support-credential-management`: web sign-in that ignores the Credential Management API
+- `web-consider-realtime-sync`: active web sessions that must share state in real time with no WebSocket or server-sent events considered

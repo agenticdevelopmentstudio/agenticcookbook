@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "2212a394-68d8-4588-a587-2fc637280deb",
+    "title": "Handoff and continuity",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps available on multiple devices SHOULD support continuity features so users can start work on one device and resume on another.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "web"
+    ],
+    "tags": [
+      "handoff",
+      "continuity",
+      "platform",
+      "cross-device"
+    ],
+    "depends-on": [],
+    "related": [
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7",
+      "b512282a-8174-426f-95dd-4a147222584d"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "platform-integration",
+      "offline-support"
+    ]
+  },
+  "synced": "5bcd9a6cac8d6790",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

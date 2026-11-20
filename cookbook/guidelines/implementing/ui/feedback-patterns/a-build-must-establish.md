@@ -9,3 +9,4 @@
 - `must-not-use-dialogs-for-success`: success is reported by a toast or inline confirmation, never a dialog
 - `must-confirm-destructive-actions`: every destructive action asks for confirmation through a specifically labeled button such as "Delete"
 - `should-default-focus-to-safe-option`: default focus in every confirmation is on Cancel or the other safe option, or the work says why not
+- `should-implement-toasts-banners-and-dialogs`: the build implements toasts or snackbars, inline alerts or banners, and modal dialogs, or says why not

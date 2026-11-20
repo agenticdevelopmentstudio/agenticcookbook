@@ -1,0 +1,36 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "b111a703-f4d7-4c1a-8206-d84e869791f4",
+    "title": "Tight feedback loops",
+    "type": "principle",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "The speed of your feedback loop is the speed of your learning: keep tests fast, deploy small changes often, get user feedback early, and automate everything from commit to observation.",
+    "platforms": [],
+    "tags": [
+      "tight-feedback-loops"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "7cf267f056e59688",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

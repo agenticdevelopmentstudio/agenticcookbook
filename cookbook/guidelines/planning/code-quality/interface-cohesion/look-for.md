@@ -6,3 +6,4 @@
 - `should-not-count-internal-helpers-as-interface`: private, internal or file-private symbols counted as part of an interface surface
 - `should-attend-to-protocol-extension-pairs`: Swift protocol + extension pairs split across files, and whether they are kept with the protocol
 - `should-treat-java-interface-triads-as-one-unit`: Java interface + abstract class + primary implementation triads split across groups
+- `should-place-shared-types-with-primary-consumer`: Trace shared types to their consumers.

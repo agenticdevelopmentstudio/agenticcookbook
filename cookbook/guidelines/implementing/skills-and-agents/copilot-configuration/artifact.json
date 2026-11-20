@@ -4,7 +4,7 @@
     "id": "4f4ed7a2-a26f-40f2-b863-51715b5c470c",
     "title": "GitHub Copilot configuration",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -45,7 +45,7 @@
     ]
   },
   "names_hosts": "Describes how GitHub Copilot also reads CLAUDE.md and GEMINI.md instruction files, so it names those hosts.",
-  "synced": "f9b7b9aa8cf25da1",
+  "synced": "5d6b008e1dbd8897",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

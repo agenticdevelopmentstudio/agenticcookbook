@@ -4,7 +4,7 @@
     "id": "0d3aaa29-0ce3-4803-8f8a-a7023713b574",
     "title": "Cookbook Compliance",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -33,7 +33,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "162082221ef33147",
+  "synced": "2badc67d1ae73e4e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

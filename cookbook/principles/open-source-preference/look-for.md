@@ -7,3 +7,4 @@
 - `must-not-install-unverified-ai-suggested-packages`: an AI-suggested package name installed with no check that it is the real package
 - `should-present-at-least-two-options`: a single library picked silently, with no alternatives or trade-offs shown
 - `should-document-why-open-source-was-rejected`: a custom build with no record of why the open-source options were rejected
+- `should-evaluate-candidates-before-recommending`: evaluate options on maintenance health, license, and fit

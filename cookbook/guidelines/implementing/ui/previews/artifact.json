@@ -4,7 +4,7 @@
     "id": "40ba1017-cec3-42f0-bd89-63a29eb3dd4d",
     "title": "Previews",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -30,7 +30,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "5e9f6c130df19a41",
+  "synced": "d34e9dfa0ec70437",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

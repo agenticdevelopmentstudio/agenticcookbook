@@ -2,3 +2,10 @@
 - `should-ask-whether-concerns-are-braided`: whether any added abstraction braids two concerns together
 - `should-favor-single-purpose-constructs`: whether the change favors constructs that do one thing over ones that merely feel convenient
 - `should-resist-complexity-at-introduction`: whether the change introduces complexity that could have been resisted at introduction
+- `should-ask-whether-concerns-are-braided`: Skill/rule complexity reviewed before adding new abstraction;
+- `should-justify-each-new-layer-singly`: each new layer has a clear, single justification;
+- `should-ask-whether-concerns-are-braided`: skills do not mix orchestration and domain logic;
+- `should-favor-single-purpose-constructs`: no convenience helpers that obscure what is actually happening
+- `should-give-each-unit-a-single-describable-concern`: Each module or function has a single describable concern;
+- `should-favor-single-purpose-constructs`: no constructs that combine fetch + transform + render;
+- `should-favor-single-purpose-constructs`: no "convenient" abstractions that hide mixed responsibilities

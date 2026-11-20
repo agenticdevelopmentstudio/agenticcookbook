@@ -4,11 +4,11 @@
     "id": "ac616d81-16c2-4f33-9ae4-139d5c24318d",
     "title": "Feature flags",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-16",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -69,13 +69,13 @@
       "https://www.sec.gov/files/litigation/admin/2013/34-70694.pdf"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-16",
+    "approved-date": "2026-11-19",
     "triggers": [
       "feature-flags",
       "new-module"
     ]
   },
-  "synced": "eed2195b87db5313",
+  "synced": "f3bc66172a3c7e27",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

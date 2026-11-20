@@ -1,0 +1,14 @@
+
+- `should-give-high-complexity-algorithms-own-scope-group`: whether each O(n log n)-or-worse algorithm on large data got its own scope group
+- `should-treat-caching-layers-as-candidates`: whether each caching subsystem with its own eviction, invalidation and hit/miss tracking was treated as a candidate
+- `should-not-mix-computation-with-io`: whether computational code is kept apart from I/O
+- `should-note-mixed-io-as-design-smell`: whether every file mixing algorithms with network or file system access was noted as a design smell
+- `should-not-treat-crud-as-boundary-signal`: whether any simple CRUD code was treated as an algorithmic boundary signal
+- `must-scope-or-flag-parallel-computation`: whether all code using parallel execution primitives is in its own scope group or flagged as a concurrency concern
+- `should-note-comparator-shape`: whether each custom comparator was noted as simple or compound
+- `should-note-traversal-cycle-handling`: whether each BFS/DFS had its cycle detection and visited sets noted
+- `should-note-hash-map-purpose`: whether hash maps used for counting, grouping or deduplication were noted as such
+- `should-note-set-deduplication`: whether sets eliminating duplicates from a stream were noted
+- `should-flag-triple-nesting-immediately`: whether every triple-or-deeper loop nest was flagged
+- `should-note-float-precision`: whether floating point accumulation was noted with its precision concern
+- `should-note-accelerated-matrix-libraries`: whether matrix multiplication was noted with whether it uses an accelerated library

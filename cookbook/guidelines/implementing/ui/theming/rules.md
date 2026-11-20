@@ -3,3 +3,4 @@
 - **must-use-theme-resource**: Colors and brushes MUST use `ThemeResource` (not `StaticResource`) — enables runtime theme switching
 - **should-use-semantic-color-resources**: Semantic color resources (`TextFillColorPrimary`, `CardBackgroundFillColorDefault`) SHOULD be used instead of hex values
 - **should-define-theme-dictionaries**: SHOULD define custom theme-aware colors in a `ResourceDictionary` with `Default`/`Light`/`Dark` theme dictionaries
+- **should-render-in-light-dark-and-high-contrast**: The app SHOULD render correctly in Light, Dark, and High Contrast modes.

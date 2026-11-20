@@ -14,3 +14,6 @@
 - `web-use-shared-urls`: whether shared URLs are the primary web continuity mechanism
 - `web-support-credential-management`: whether the web app supports the Credential Management API for cross-device sign-in
 - `web-consider-realtime-sync`: whether real-time sync between active web sessions was considered
+- `windows-use-protocol-activation-uris`: Key views have protocol activation URIs suitable for cross-device handoff;
+- `windows-resolve-uris-on-web-or-mobile`: URLs resolve on web or mobile equivalents;
+- `capture-enough-state`: state encoded in URI is sufficient to restore context

@@ -4,7 +4,7 @@
     "id": "49acdf9f-e4cb-4492-a620-809438eefb37",
     "title": "Pagination",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -31,7 +31,7 @@
       "data-modeling"
     ]
   },
-  "synced": "d658f7958c4e479c",
+  "synced": "73d79bbc1e590b59",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

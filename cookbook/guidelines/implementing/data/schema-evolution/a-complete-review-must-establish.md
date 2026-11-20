@@ -9,3 +9,5 @@
 - Migration scripts are idempotent: re-running migration is safe even if table already modified
 - Major version changes tracked separately; deployment strategy ensures coordinated migration between client and server
 
+
+A review passes when it establishes every item above.

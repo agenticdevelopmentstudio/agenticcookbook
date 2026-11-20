@@ -1,0 +1,14 @@
+
+- **should-make-one-logical-change-per-commit**: Each commit SHOULD hold one logical change.
+- **may-touch-multiple-files-for-one-concept**: A change MAY touch multiple files if they are part of the same concept — an interface and its implementation, a component and its test file.
+- **should-commit-as-work-progresses**: Commits SHOULD happen as work progresses.
+- **should-not-batch-unrelated-changes**: Unrelated changes SHOULD NOT be batched up.
+- **should-build-every-logical-change**: For every logical change, SHOULD run the platform build command (`xcodebuild`, `./gradlew build`, `npm run build`, `dotnet build`, `cargo build`).
+- **must-pass-build-and-tests-before-commit**: The build MUST pass and existing tests MUST still pass before committing.
+- **should-commit-each-passing-change**: SHOULD commit each passing change with a descriptive message before moving to the next logical change.
+- **must-not-stack-uncommitted-changes**: Multiple uncommitted changes MUST NOT be stacked.
+- **should-fix-broken-build-before-moving-on**: If a change breaks the build, SHOULD fix it before moving on — SHOULD NOT add more changes on top of a broken state.
+- **should-plan-small-prs-before-coding**: Work SHOULD be planned into small, independently reviewable pull requests **before** writing code, not carved down afterward — plan the slices first, then implement one slice at a time.
+- **should-split-large-planned-units**: When a planned unit of work looks like it will produce a large diff, it SHOULD be split into a sequence of smaller PRs.
+- **should-scrutinize-agent-code-more**: AI-generated (agent-generated) code SHOULD receive more per-line scrutiny than hand-written code, not less.
+- **should-decompose-large-agent-changes-before-review**: When an agent produces a large change, it SHOULD be decomposed into smaller commits or PRs before review rather than reviewed as one block.

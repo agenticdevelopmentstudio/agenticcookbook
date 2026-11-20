@@ -4,7 +4,7 @@
     "id": "50ea8b39-813d-4325-be31-0ae19b8a3baf",
     "title": "Immutability",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -31,7 +31,7 @@
       "data-modeling"
     ]
   },
-  "synced": "11c9ef740fcf7725",
+  "synced": "539e62b56b76557d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

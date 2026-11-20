@@ -1,0 +1,41 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+    "title": "Manage complexity through boundaries",
+    "type": "principle",
+    "version": "1.2.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Well-defined boundaries let subsystems evolve independently. Define ports the app owns, use thin adapters to external technologies, and test the core without databases, UIs, or networks.",
+    "platforms": [],
+    "tags": [
+      "manage-complexity-through-boundaries"
+    ],
+    "depends-on": [],
+    "related": [
+      "f6679a9d-e90e-4fc6-ac4c-0696851af484",
+      "ec59e5cc-5591-4c0b-87f8-00df54394607",
+      "b224ef56-65f5-45fd-8842-767b20df6736",
+      "793f491f-a352-4478-876d-7c5d871488f7"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "81787a215a447808",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -4,7 +4,7 @@
     "id": "57cbdb9d-4cf7-4a39-bdd8-99d28be983ca",
     "title": "Localizability",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -35,7 +35,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "7973a252f5ffa828",
+  "synced": "b8f46a8c2942ec9a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

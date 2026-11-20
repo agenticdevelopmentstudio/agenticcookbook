@@ -12,3 +12,5 @@
 - `should-set-dir-rtl-on-web`: an RTL locale rendered without `dir="rtl"` on the root element
 - `should-set-flow-direction-on-windows`: a Windows root element with no `FlowDirection="RightToLeft"` for RTL locales
 - `should-test-with-rtl-language-packs-on-windows`: Windows testing with no RTL language pack installed
+- `should-mirror-directional-icons`: mirror icons that carry directional meaning (forward/back arrows) so they flip under RTL, but do NOT mirror non-directional icons (checkmarks, clocks);
+- `should-test-with-rtl-locale`: and confirm the layout has been tested with an RTL locale enabled.

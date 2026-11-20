@@ -1,0 +1,33 @@
+
+- **should-treat-project-files-as-source**: An Xcode project is source code; you SHOULD treat its settings, schemes and plists the way you treat any other file: small, reviewable in a diff, and defined once.
+- **should-put-build-settings-in-xcconfig**: You SHOULD put build settings in `.xcconfig` files, not in the project editor's Build Settings tab.
+  - A configuration file is plain text, so a setting change is a one-line diff, and the file can be edited without Xcode.
+  - The format is `SettingName = value`, one per line. If a setting appears twice in a file, the last one wins.
+- **should-keep-shared-and-per-config-xcconfigs**: You SHOULD keep one shared file for settings common to every target and one per configuration or target for the differences, and add only the settings you want to change.
+- **should-leave-target-level-settings-empty**: You SHOULD leave the target-level Build Settings tab empty for any setting an xcconfig already owns, or the target value silently wins.
+  - Xcode applies the project's settings, then the configuration file's settings, then the target's settings.
+- **should-create-xcconfig-without-targets**: You SHOULD create the file with "Configuration Settings File" and deselect all targets so Xcode does not embed it in the bundle.
+- **should-look-up-setting-names**: You SHOULD look up each setting name in the build settings reference before you use it, and SHOULD NOT guess a name; an unknown setting is ignored without an error.
+- **must-share-and-check-in-schemes**: Schemes MUST be shared (stored in the project's shared data, not in a user's private data) and checked in, so command-line builds and CI use the same schemes as the IDE.
+- **should-have-one-scheme-per-buildable-thing**: There SHOULD be one scheme per thing a person builds, runs or tests.
+- **should-delete-dead-schemes**: You SHOULD delete schemes that no longer build.
+- **should-name-targets-after-products**: You SHOULD name targets and schemes after what they produce, and SHOULD NOT leave `Untitled`, a copied target's `copy` suffix or a stale product name.
+- **should-separate-test-targets**: You SHOULD keep test targets separate from app targets.
+- **should-set-deployment-target-explicitly**: You SHOULD set each target's deployment target explicitly in the xcconfig, not by default.
+- **should-add-entitlements-only-for-used-capabilities**: You SHOULD add one entitlement only for a capability the app uses, and review every added key as a security change.
+  - Entitlements are a declaration of what the app is allowed to do.
+- **should-keep-one-entitlements-file-per-need**: You SHOULD keep one `.entitlements` file per target and configuration need (for example a sandboxed macOS app and its helper), referenced through the `CODE_SIGN_ENTITLEMENTS` setting.
+- **must-not-copy-entitlements-wholesale**: You MUST NOT copy an entitlements file from another app wholesale.
+  - A leftover key grants capability nobody remembers.
+- **should-keep-info-plist-small**: You SHOULD keep the Info.plist small.
+- **should-prefer-build-setting-substitution**: You SHOULD prefer build-setting substitution (`$(PRODUCT_NAME)`, `$(MARKETING_VERSION)`) over literals, so a version or name is set once in the xcconfig.
+- **must-include-privacy-usage-descriptions**: Every privacy usage-description key an API needs (camera, microphone, location and so on) MUST be present with text that tells the user why.
+  - A missing key crashes the app when it asks for access.
+- **should-remove-keys-for-removed-features**: You SHOULD remove Info.plist keys for features the app no longer has.
+- **should-put-team-and-signing-style-in-xcconfig**: You SHOULD put the team ID and signing style in the xcconfig.
+- **should-use-automatic-local-explicit-release-signing**: You SHOULD use automatic signing for local development and an explicit, documented identity for release builds.
+- **must-not-check-in-signing-secrets**: You MUST NOT check in a certificate, a private key or a provisioning profile.
+  - CI supplies them from its secret store.
+- **should-treat-xcodegen-spec-as-source**: Where the repository already uses XcodeGen (a `project.yml` spec), you SHOULD treat the spec as the source and the generated `.xcodeproj` as an output: regenerate it, do not hand-edit it, and either ignore it in version control or verify in CI that it matches the spec.
+- **should-keep-real-values-in-xcconfig-with-xcodegen**: XcodeGen's spec points targets at xcconfig files through its `configFiles` option and at settings through its `settings` key; you SHOULD keep real values in the xcconfig and use the spec for structure.
+- **should-not-introduce-generator-in-unrelated-change**: You SHOULD NOT introduce a generator into a repository that has none as part of an unrelated change.

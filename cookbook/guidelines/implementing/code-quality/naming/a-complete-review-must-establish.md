@@ -7,3 +7,5 @@
 - `must-suffix-async-methods`: every async method ends in `Async`
 - `must-pascal-case-constants`: every constant is `PascalCase`, none `SCREAMING_SNAKE_CASE`
 - `should-use-var-when-type-apparent`: `var` is used wherever the type is apparent from the right side, or the code says why not
+- `must-suffix-async-methods`: async methods are suffixed with `Async`;
+- `must-pascal-case-constants`: constants use `PascalCase` rather than `SCREAMING_SNAKE_CASE`;

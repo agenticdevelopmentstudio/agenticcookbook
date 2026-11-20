@@ -4,7 +4,7 @@
     "id": "555ad5e1-800f-4848-8c58-6f726bdcb42b",
     "title": "Manage complexity through boundaries",
     "type": "principle",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -28,7 +28,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "81787a215a447808",
+  "synced": "24d9b504d713c076",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

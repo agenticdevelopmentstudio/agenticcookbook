@@ -8,3 +8,6 @@
 - `should-use-the-prescribed-value`: whether each prescribed value is used
 - `should-note-cross-platform-defaults`: whether each cross-platform default is noted as such
 - `should-list-platform-overrides-in-platform-notes`: whether every platform-specific override is listed in Platform Notes with a link to its HIG section
+- `should-use-system-font-stack-on-web`: System font stack used (`system-ui, -apple-system, sans-serif`);
+- `should-follow-wcag-and-conventions-on-web`: WCAG 2.1 AA minimum followed;
+- `must-document-rationale-for-design-deviations`: no custom design deviations without documented rationale

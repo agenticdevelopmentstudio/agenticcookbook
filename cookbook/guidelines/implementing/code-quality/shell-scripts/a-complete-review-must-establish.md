@@ -12,3 +12,7 @@
 - `must-not-eval-built-strings`: no command is built in a string and run with `eval`
 - `should-trap-for-cleanup`: cleanup runs from a `trap` on `EXIT`, and on `INT` and `TERM` where needed, or the script says why not
 - `should-time-limit-hanging-commands`: every command that can hang runs under `timeout`, its exit codes are handled, and `timeout`'s presence is checked, or the script says why not
+- `should-declare-shell-in-shebang`: the shebang matches the syntax used (no bashisms under `sh`);
+- `should-check-important-commands-explicitly`: `set -e` is not relied on in conditions, pipelines or substitutions;
+- `should-default-optional-values`: `set -u` variables have defaults and `pipefail` is guarded;
+- `should-quote-every-expansion`: expansions are quoted and nothing is `eval`ed;

@@ -1,0 +1,45 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "af8a4221-90b7-434f-b2a4-64c86a072386",
+    "title": "Nullable Reference Types",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Enable nullable reference types in all projects and treat warnings as design signals: string means non-null, string? means nullable. Avoid the null-forgiving operator.",
+    "platforms": [],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "csharp",
+      "language",
+      "nullable-reference-types"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "9282a57aef9b08d7",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "examples", "heading": "Example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

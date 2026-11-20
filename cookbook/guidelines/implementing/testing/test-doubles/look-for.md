@@ -4,4 +4,4 @@
 - `must-not-mock-what-you-dont-own`: a mock of a third-party type the project does not own
 - `should-wrap-external-dependencies`: an HTTP client, database or SDK used directly with no project-owned interface in front
 - `should-mock-your-interface-not-the-third-party-api`: a mock set on the third-party API rather than the project's interface
-
+- `should-use-platform-appropriate-mock-library`: a test using a mock library that is not the platform's own

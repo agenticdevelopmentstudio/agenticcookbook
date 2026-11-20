@@ -1,0 +1,14 @@
+
+- `must-main-only-call-functions`: a `main()` that holds inline logic instead of only calling other functions
+- `must-keep-scripts-composable-and-testable`: a script whose work cannot be run or tested piece by piece, such as top-level code outside functions
+- `should-declare-shell-in-shebang`: The shebang names the shell the script is written for. A `#!/bin/sh` script uses no arrays, `[[ ]]`, process substitution or other extension.
+- `should-use-bash-or-zsh-only-when-needed`: a bash or zsh shebang on a script that uses none of their features, or such a script invoked with `sh`
+- `should-use-setopt-independent-forms`: The script does not rely on zsh-versus-bash differences: unquoted splitting, array indexing or unmatched globs.
+- `must-not-depend-on-job-control`: No `set -m`, `fg` or `bg` in a script. Background jobs use `&` and `wait`.
+- `should-check-important-commands-explicitly`: No logic depends on `set -e` inside a condition, a pipeline, a command substitution or a non-last AND-OR command, where it is ignored. Important commands are checked explicitly.
+- `should-default-optional-values`: Optional variables have a default so `set -u` does not abort.
+- `should-test-for-pipefail-or-avoid-it`: `pipefail` is used only where the shell supports it.
+- `should-quote-every-expansion`: Every expansion is quoted.
+- `must-not-eval-built-strings`: There is no `eval` of a built string.
+- `should-trap-for-cleanup`: Cleanup is in a `trap` on `EXIT`, plus `INT` and `TERM` when needed, and it does not trap `KILL` or `STOP`.
+- `should-time-limit-hanging-commands`: Commands that can hang have a timeout, the exit codes 124 and 137 are handled, and the script checks that `timeout` exists.

@@ -4,7 +4,7 @@
     "id": "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419",
     "title": "Input Validation",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -39,7 +39,7 @@
       "api-integration"
     ]
   },
-  "synced": "cda6738e5d830c7f",
+  "synced": "41c34966a8476ddd",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -1,0 +1,11 @@
+
+- `should-design-local-first`: the app reads and writes local state first and syncs in the background, or the code says why not
+- `should-roll-back-failed-optimistic-updates`: each optimistic update has a rollback path taken on server failure, or the code says why not
+- `should-keep-failed-items-queued`: a failed outbox item stays in the queue for retry, or the code says why not
+- `should-detect-conflicts-with-versions`: sync writes carry an ETag or version number that detects conflicts, or the code says why not
+- `should-return-409-with-both-versions`: a detected conflict returns 409 carrying both versions, or the code says why not
+- `should-fit-resolution-to-collaboration`: the app's conflict resolution is server-wins if simple, merge UI or CRDTs if collaborative, or the code says why not
+- `should-track-last-synced-at`: each synced entity records `last_synced_at` and sync fetches deltas from it, or the code says why not
+- `should-show-connectivity-status`: the UI shows the current connectivity status, or the code says why not
+- `must-queue-mutations-and-keep-user-work`: every mutation goes through a local queue and no path discards user work silently
+- `should-test-offline-scenarios`: tests cover airplane mode, flaky connections and long offline periods, or the code says why not

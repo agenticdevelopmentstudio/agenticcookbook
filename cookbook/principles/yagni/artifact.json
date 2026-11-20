@@ -4,7 +4,7 @@
     "id": "793f491f-a352-4478-876d-7c5d871488f7",
     "title": "YAGNI",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "8acd2e8ab58a127d",
+  "synced": "95fa7d68413aa4a5",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

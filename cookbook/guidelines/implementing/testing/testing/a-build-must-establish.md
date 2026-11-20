@@ -14,3 +14,5 @@
 - `should-use-pytest`: all Python tests run under `pytest`
 - `must-not-touch-production-dashboard-data`: tests use demo port 9888 and leave production dashboard data unchanged
 
+- `should-test-new-risk-bearing-paths`: every new risk-bearing code path (retry/backoff loop, network or subprocess I/O and its failure handling, new error handler or recovery branch, concurrency primitive, boundary parse of external input) is exercised by a test, or the code says why not
+- `should-provoke-a-concrete-failure-mode`: the test of each new risk-bearing path provokes a concrete failure mode and asserts it

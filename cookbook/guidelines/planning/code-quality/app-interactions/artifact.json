@@ -4,7 +4,7 @@
     "id": "1d4b2aa7-c30e-4d41-8bd8-892ff7ce7499",
     "title": "App Interactions",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "b29ecc8e995123f2",
+  "synced": "fdb044a000aac626",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

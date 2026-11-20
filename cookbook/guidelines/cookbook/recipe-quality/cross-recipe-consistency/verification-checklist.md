@@ -15,3 +15,4 @@ A verifier MUST check each of the following items. The recipe PASSES cross-recip
 - [ ] `must-name-differing-concepts-distinctly`: Concepts that differ between siblings carry distinct, consistent names, not context-dependent uses of one word.
 - [ ] `no-incoherent-depth-standard`: No recipe sets a depth standard so far above or below its siblings that the group is incoherent to a first-time reader.
 - [ ] `must-keep-starting-version-consistent`: A new recipe's starting version follows the family convention (`1.0.0` or `0.1.0`).
+- [ ] `must-reference-siblings-by-uuid`: Cross-references use correct scope identifiers.

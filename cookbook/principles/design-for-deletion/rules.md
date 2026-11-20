@@ -4,3 +4,4 @@
 - **should-treat-lines-as-spent**: SHOULD treat lines of code as lines spent — deleting code reduces maintenance cost.
 - **should-not-abstract-prematurely-for-reuse**: SHOULD NOT abstract prematurely in pursuit of reuse.
 - **should-duplicate-rather-than-couple-when-in-doubt**: When in doubt, SHOULD duplicate rather than couple.
+- **should-delete-rules-that-no-longer-apply**: Rules that no longer apply (no longer triggered) SHOULD be deleted rather than kept "just in case".

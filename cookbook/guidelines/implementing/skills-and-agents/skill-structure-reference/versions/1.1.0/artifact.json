@@ -1,0 +1,52 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "fe0daac0-1ba7-4c93-a47e-e42e75612cf6",
+    "title": "Skill Structure Reference",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reference for Claude Code skill directory layout, frontmatter fields, string substitutions, and invocation control",
+    "platforms": [],
+    "tags": [
+      "skills",
+      "structure",
+      "reference",
+      "frontmatter"
+    ],
+    "depends-on": [],
+    "related": [
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "2945503d-8e92-44ca-bc64-20285eb29296"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
+  "synced": "17ac3f2415621e17",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "directory-layout", "heading": "Directory Layout", "role": "how-to"},
+    {"part": "frontmatter-fields", "heading": "Frontmatter Fields", "role": "how-to"},
+    {"part": "string-substitutions", "heading": "String Substitutions", "role": "how-to"},
+    {"part": "invocation-control-matrix", "heading": "Invocation Control Matrix", "role": "how-to"},
+    {"part": "skill-locations-priority-order", "heading": "Skill Locations (Priority Order)", "role": "how-to"},
+    {"part": "content-types", "heading": "Content Types", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "key-guidelines", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

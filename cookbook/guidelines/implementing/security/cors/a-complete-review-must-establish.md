@@ -8,3 +8,4 @@
 - `should-not-match-origins-with-unanchored-regex`: whether any origin regex is unanchored
 - `should-not-allow-null-origin`: whether the `null` origin is allowed
 - `should-not-allow-broad-methods-and-headers`: whether allowed methods and headers are overly broad
+- `should-not-match-origins-with-unanchored-regex`: any dynamic/regex origin matching is anchored so it cannot match attacker-controlled superstrings;

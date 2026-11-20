@@ -18,3 +18,4 @@
 - **should-use-with-expressions**: In C#, SHOULD use `with` expressions for non-destructive mutation.
 - **should-contain-mutable-state-behind-wrappers**: In C#, SHOULD contain mutable state behind `ObservableObject` (UI) or thread-safe wrappers.
 - **should-reserve-mutable-classes-for-entities**: In C#, SHOULD reserve `class` with mutable state for entities with identity semantics.
+- **must-not-access-shared-mutable-fields-unsynchronized**: Mutable shared fields MUST NOT be accessed from multiple concurrent contexts without synchronization.

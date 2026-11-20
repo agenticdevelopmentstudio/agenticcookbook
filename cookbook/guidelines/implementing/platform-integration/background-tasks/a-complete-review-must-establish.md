@@ -19,3 +19,6 @@
 - `web-use-periodic-background-sync`: whether recurring web data refresh uses the Periodic Background Sync API
 - `web-use-web-workers-for-cpu-work`: whether CPU-intensive web work runs in Web Workers
 - `web-fall-back-to-requestidlecallback`: whether low-priority deferred web work falls back to `requestIdleCallback`
+- `windows-register-triggers-in-manifest`: Background task triggers declared in `Package.appxmanifest`;
+- `design-tasks-to-be-resumable`: tasks handle interruption and restart gracefully;
+- `use-platform-background-apis`: no reliance on foreground presence for critical sync

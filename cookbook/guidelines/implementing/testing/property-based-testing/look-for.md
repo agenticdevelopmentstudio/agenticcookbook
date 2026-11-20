@@ -3,3 +3,4 @@
 - `should-describe-properties-instead-of-examples`: tests that list specific examples where a property of the output could be stated and generated against
 - `must-write-a-property-test-per-data-transformation`: a data transformation function with no property test
 
+- `should-test-preservation-property-for-collection-operations`: a collection operation with no preservation property test

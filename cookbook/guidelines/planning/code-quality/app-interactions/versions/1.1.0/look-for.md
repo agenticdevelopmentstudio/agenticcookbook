@@ -1,0 +1,14 @@
+
+- `should-scope-component-with-its-delegate-protocol`: `*Delegate` / `*DataSource` protocols, and whether each sits in the same proposed group as the component that declares it
+- `may-scope-delegate-implementations-elsewhere`: concrete delegate implementations, and whether placing them in other groups was a deliberate choice
+- `should-identify-notification-observers`: each `NotificationCenter.post` and the full set of files observing that notification
+- `should-flag-cross-group-singletons`: `static let shared` / `static var shared` access points used from many candidate groups, and whether they are flagged for `cross-cutting-detection`
+- `should-split-scope-groups-at-di-registration`: the DI container registration site, and whether code on its two sides is in separate groups
+- `should-group-coordinator-with-owned-screens`: coordinator objects and the child view controllers they own, and whether they form one group
+- `should-document-store-slices-per-group`: a global store (Redux, MobX, Zustand, Vuex, Context), and whether the findings say which slices each group reads and writes
+- `should-note-notification-endpoints`: whether each notification is recorded with its name, sender and observer registration site
+- `should-note-publisher-and-subscriber-sites`: Combine/Rx chains, and whether the findings say where publishers are created and subscribers attach
+- `should-note-isolation-boundary`: thread-local or actor-isolated state, and whether the findings name its isolation boundary
+- `should-note-di-registration-and-resolution-sites`: DI container use, and whether registration and resolution sites are both recorded
+- `should-note-completion-chain-depth`: completion handler chains, and whether their depth is recorded, with 3+ levels called out
+- `should-note-promise-chain-error-breaks`: `.then().then().catch()` chains, and whether the findings say where error handling breaks them

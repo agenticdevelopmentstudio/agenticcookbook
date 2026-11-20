@@ -4,3 +4,5 @@
 - `must-keep-title-stable`: a `title` built from the occurrence (ids, counts, field names) so it changes between occurrences of the same error.
 - `must-mirror-status`: a `status` field that differs from the HTTP status code of the response.
 - `may-add-extension-fields`: occurrence data (such as per-field errors or a trace id) packed into `detail` or `title` instead of extension fields.
+- `may-add-extension-fields`: surface `errors[]` field for field-level validation;
+- `must-not-show-raw-status-codes`: a raw HTTP status code shown to the user.

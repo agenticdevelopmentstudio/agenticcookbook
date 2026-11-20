@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "9f13dbec-cecb-482b-824b-f7d3e341878a",
+    "title": "Animation & Motion",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Motion should be purposeful — guide attention, show spatial relationships, and provide feedback. Never animate for decoration.",
+    "platforms": [
+      "windows"
+    ],
+    "tags": [
+      "animation-motion",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/motion",
+      "https://learn.microsoft.com/en-us/windows/apps/design/motion/timing-and-easing",
+      "https://m3.material.io/styles/motion/overview"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "ui-implementation",
+      "accessibility"
+    ]
+  },
+  "synced": "e8443600b7022f5d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "duration-defaults", "heading": "Duration defaults", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

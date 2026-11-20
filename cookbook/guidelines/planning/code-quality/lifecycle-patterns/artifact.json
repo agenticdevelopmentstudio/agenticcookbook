@@ -4,7 +4,7 @@
     "id": "918c4cec-0bc5-45bf-86d0-5a795053400f",
     "title": "Lifecycle Patterns",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "d6b6f9236165c326",
+  "synced": "3f14a16a59741263",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

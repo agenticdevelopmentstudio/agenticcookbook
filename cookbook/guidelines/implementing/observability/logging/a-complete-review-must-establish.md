@@ -17,3 +17,5 @@
 - `should-carry-trace-id-on-log-lines`: whether every log line carries a trace/correlation ID
 - `should-follow-otel-semantic-conventions`: whether log and span field names follow the OpenTelemetry semantic conventions
 - `should-use-structured-json-in-production`: whether production logs are structured JSON
+- `should-emit-telemetry-via-opentelemetry`: logs are emitted through OpenTelemetry over OTLP rather than per-platform-only pipelines;
+- `must-not-log-pii`: and no personally identifiable information appears in log output at any level, including debug and trace-correlated logs.

@@ -1,0 +1,17 @@
+
+- **should-manage-dependencies-actively**: Dependencies **SHOULD** be managed actively.
+- **must-commit-lockfiles**: Lockfiles are mandatory (`package-lock.json`, `Podfile.lock`, `gradle.lockfile`, `poetry.lock`, `Cargo.lock`, `packages.lock.json`). Lockfiles MUST be committed.
+- **should-use-locked-installs-in-ci**: CI **SHOULD** use `--frozen-lockfile` / `npm ci` / `dotnet restore --locked-mode`.
+- **must-run-dependency-scanning-in-ci**: CI MUST run `npm audit`, `pip-audit`, Dependabot, Snyk, or `dotnet list package --vulnerable` (automated scanning).
+- **must-fail-builds-on-critical-vulnerabilities**: Builds MUST fail on critical/high vulnerabilities.
+- **should-pin-dependencies**: Dependencies **SHOULD** be pinned: exact versions or narrow ranges.
+- **must-not-use-wildcard-versions**: Wildcard (`*`) or overly broad semver MUST NOT be used.
+- **should-use-sri-for-cdn-assets**: For any CDN-hosted scripts/styles, `integrity` attributes with SHA-384/SHA-512 hashes **SHOULD** be used (Subresource Integrity, SRI).
+- **should-watch-for-supply-chain-attacks**: Supply chain attacks **SHOULD** be watched for — typosquatting, maintainer compromise, malicious post-install scripts, dependency confusion (internal/public name collisions).
+- **must-not-let-agents-install-freely**: An AI agent MUST NOT freely install packages.
+- **should-enforce-package-allowlist-deterministically**: An explicit package/registry allowlist **SHOULD** be scoped to the task or session and enforced through DETERMINISTIC gates (pre-install hooks, CI checks, sandbox policy), NOT prompt text.
+- **must-not-rely-on-prose-alone**: Agents can ignore prompt instructions, so prose alone MUST NOT be the only control.
+- **should-apply-registry-cooldown**: A cooldown window (e.g. pip's dependency cooldown) **SHOULD** be applied so brand-new releases are not auto-pulled, reducing exposure to freshly compromised versions.
+- **must-require-human-approval-for-new-dependencies**: Any NEW dependency MUST require explicit human approval before it is added or merged.
+- **should-verify-package-exists-and-is-maintained**: Before adding a candidate package, the agent **SHOULD** confirm it actually exists and is actively maintained (verify existence and maintenance: anti-slopsquatting).
+- **must-not-install-hallucinated-or-abandoned-packages**: An agent MUST NOT install a hallucinated or abandoned name.

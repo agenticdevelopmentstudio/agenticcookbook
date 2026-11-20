@@ -1,0 +1,17 @@
+
+- `should-reduce-friction-at-every-step`: form steps that add effort the task does not need
+- `should-use-single-column-layout`: a multi-column form layout
+- `should-use-top-aligned-or-floating-labels`: labels placed beside or inside fields rather than top-aligned or floating
+- `should-group-related-fields`: related fields not grouped by spacing or section headers
+- `should-place-primary-action-at-bottom`: a primary Submit/Save action not at the bottom or not aligned with the fields
+- `should-validate-on-blur`: field validation on every keystroke instead of on blur
+- `should-validate-full-form-on-submit`: no full-form validation on submit
+- `must-not-validate-while-typing`: validation that fires while the user is still typing in a field
+- `should-show-success-indicators-only-where-wondered`: checkmarks on fields where the user would not wonder if input was accepted
+- `must-show-errors-inline`: errors shown only at the top of the form, not directly below the field
+- `must-not-signal-errors-by-color-alone`: an error signalled by color alone, without an icon and text
+- `should-write-specific-actionable-errors`: generic error text such as "Invalid input"
+- `should-not-blame-the-user`: error text that blames the user
+- `should-use-placeholder-for-format-hints-only`: placeholder text used in place of a label
+- `should-pre-fill-and-default`: fields left empty where a pre-fill or default is possible
+- `should-mark-optional-fields`: required fields marked instead of optional ones, or many optional fields

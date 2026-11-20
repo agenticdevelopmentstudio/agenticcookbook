@@ -1,0 +1,10 @@
+
+- **should-defer-to-canonical-sources**: SHOULD defer to the canonical sources (Apple Human Interface Guidelines, Material Design 3, Fluent 2 Design System, WCAG 2.1 + platform-appropriate system) before applying the defaults in this file.
+- **must-use-platform-prescribed-values**: When the platform HIG prescribes a specific value (spacing, type size, target size), the platform value MUST be used.
+- **should-use-defaults-to-fill-gaps**: SHOULD use the defaults below to fill gaps or establish a cross-platform baseline.
+- **should-refer-to-canonical-sources-when-writing-ui**: When writing UI ingredients or recipes, SHOULD refer to these canonical platform design sources.
+- **must-not-contradict-platform-hig**: Cookbook artifacts MUST NOT specify values that contradict the platform HIG.
+- **should-defer-to-hig-in-appearance-sections**: When specifying spacing, type sizes, or target sizes in an ingredient's Appearance section, SHOULD defer to the platform HIG.
+- **should-use-the-prescribed-value**: If the platform prescribes a value, SHOULD use it.
+- **should-note-cross-platform-defaults**: When the HIG has no opinion, SHOULD specify a cross-platform default and note it as such.
+- **should-list-platform-overrides-in-platform-notes**: In the Platform Notes section of an ingredient, SHOULD list any platform-specific overrides with links to the relevant HIG section.

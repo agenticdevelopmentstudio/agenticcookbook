@@ -18,3 +18,4 @@
 - `should-use-with-expressions`: a C# record copied by hand or mutated in place instead of with a `with` expression
 - `should-contain-mutable-state-behind-wrappers`: C# mutable state not behind `ObservableObject` (UI) or a thread-safe wrapper
 - `should-reserve-mutable-classes-for-entities`: a C# `class` with mutable state that has no identity semantics
+- `must-not-access-shared-mutable-fields-unsynchronized`: a mutable shared field accessed from multiple concurrent contexts without synchronization

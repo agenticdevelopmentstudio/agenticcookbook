@@ -11,3 +11,4 @@ Before deploying, verify transport security meets these requirements.
 - `must-include-backup-pins-and-recovery-plan`: Verify backup pins are included and a recovery plan exists.
 - `should-consider-certificate-transparency-monitoring`: Consider Certificate Transparency monitoring as a lighter alternative.
 - `should-pin-only-on-mobile`: certificate pinning in a web app rather than a mobile app
+- `must-not-expose-plain-http-endpoints`: a production domain that exposes a plain-HTTP endpoint

@@ -4,7 +4,7 @@
     "id": "9dae85c5-85ff-4dd1-9bc4-5e923452dba8",
     "title": "Dynamic Type",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -32,7 +32,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "be115461b6b81986",
+  "synced": "6a32017cd17ee0cb",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

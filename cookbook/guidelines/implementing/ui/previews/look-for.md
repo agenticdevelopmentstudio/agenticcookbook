@@ -5,3 +5,4 @@
 - `should-verify-swiftui-previews-render`: verification that never renders the SwiftUI previews, or previews that crash
 - `must-include-compose-preview-functions`: a Compose component with no `@Preview` function
 - `should-verify-compose-previews-compile`: verification that never compiles the Compose preview functions, or previews that fail to compile
+- `must-include-preview-declarations`: Swift uses `#Preview`, Kotlin uses `@Preview`

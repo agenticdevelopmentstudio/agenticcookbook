@@ -4,7 +4,7 @@
     "id": "42220186-4305-45cd-8e7d-a8d1172b6fbd",
     "title": "Comprehensive unit testing",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -36,7 +36,7 @@
       "pre-pr"
     ]
   },
-  "synced": "58ef3a890f2e3973",
+  "synced": "899355116c445c66",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

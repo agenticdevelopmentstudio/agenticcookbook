@@ -35,3 +35,5 @@
 - `should-match-model-override-to-complexity`: whether check B10 holds: If `model:` is set, it matches the skill's complexity (don't use opus for trivial tasks)
 - `should-keep-dynamic-context-injection-safe`: whether check B11 holds: If `` !`command` `` syntax is used, the command is safe, fast, and deterministic
 - `should-keep-description-under-200-characters`: whether check B12 holds: Description is under ~200 characters to avoid consuming excessive context
+- `should-not-replicate-native-capabilities`: native capabilities are not re-taught;
+- `should-match-model-override-to-complexity`: any `model:` override fits the complexity;

@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "8ab7452a-09b8-4f4e-abfc-f7fd700765db",
+    "title": "The Testing Workflow",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Follow the recommended testing loop: write code and unit tests, run them, validate test quality with mutation testing, kill surviving mutants, run security scans, then verify end to end.",
+    "platforms": [
+      "python",
+      "swift",
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "testing",
+      "the-testing-workflow"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "names_hosts": "Describes the testing workflow as run in Claude Code; a candidate to move into hosts/claude.md.",
+  "synced": "0aa635e0cd3d0f30",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "workflow", "heading": "The workflow", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

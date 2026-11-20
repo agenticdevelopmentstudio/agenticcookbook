@@ -9,3 +9,4 @@
 - `must-rotate-refresh-tokens`: every refresh-token use issues a new refresh token and invalidates the old one
 - `should-invalidate-token-family-on-refresh-reuse`: reuse of a revoked refresh token invalidates the entire token family, or the code says why not
 - `should-enforce-absolute-session-timeouts`: every session has an absolute timeout enforced server-side, or the code says why not
+- `must-not-use-implicit-flow`: no client uses the Implicit flow

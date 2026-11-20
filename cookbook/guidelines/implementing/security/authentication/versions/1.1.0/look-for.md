@@ -1,0 +1,11 @@
+
+- `should-use-oauth-oidc-with-pkce-for-public-clients`: a public client signing in by anything other than OAuth 2.0 / OpenID Connect with PKCE, such as the Implicit flow or a password grant
+- `should-use-system-browser-auth-flow-on-native-platforms`: a native app's sign-in going through `ASWebAuthenticationSession`, Custom Tabs or `WebAuthenticationBroker` with Authorization Code + PKCE
+- `must-not-embed-webview-for-auth`: a WebView embedded in the app to show a sign-in page breaks it
+- `should-use-auth-code-pkce-flow-on-spa-platforms`: an SPA using a flow other than Authorization Code + PKCE
+- `should-consider-bff-for-spas`: an SPA holding tokens in browser storage or JavaScript where a BFF holding them server-side in HttpOnly cookies was not considered
+- `should-use-client-credentials-flow-on-server-platforms`: a server-to-server call authenticating by a user flow or a static secret instead of the Client Credentials flow
+- `should-use-short-lived-access-tokens-in-session-management`: access-token lifetimes; one longer than 15 minutes
+- `must-rotate-refresh-tokens`: a refresh that does not issue a new refresh token and invalidate the old one breaks it
+- `should-invalidate-token-family-on-refresh-reuse`: reuse of a revoked refresh token not detected, or detected without invalidating the whole token family
+- `should-enforce-absolute-session-timeouts`: a session with no absolute server-side timeout, kept alive indefinitely by refreshes

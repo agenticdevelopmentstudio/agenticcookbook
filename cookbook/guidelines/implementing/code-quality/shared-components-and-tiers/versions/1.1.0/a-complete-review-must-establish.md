@@ -1,0 +1,22 @@
+
+- `should-build-upward-from-shared-pieces`: the change builds upward from the most basic shared pieces and treats its assemblies as shared pieces, or says why not
+- `should-apply-by-judgment-without-declared-tiers`: where the repo declares no tiers, these rules were applied by judgment, or the change says why not
+- `should-search-before-creating`: before each new file or component, the tier table, shared exports and a several-name search were checked, or the change says why not
+- `should-reuse-before-building-new`: every new component that resembles an existing one says why the existing one cannot serve
+- `may-add-new-file-to-shared-tier`: any new file in a shared tier is there because the tier grows, not by accident
+- `should-check-new-shared-file-for-duplicates`: no new shared-tier file duplicates an existing component under a different name, or the change says why not
+- `should-say-what-was-reused`: the change says what it reused and what it chose not to reuse and why
+- `should-place-in-lowest-tier`: every piece sits in the lowest tier whose dependencies it can live with, or the change says why not
+- `should-not-create-tier-for-feature`: no new tier, framework or target was created to hold a feature, or the project owner decided it
+- `should-ask-if-cli-could-link-it`: for each piece, whether a command-line tool could link it without the application was considered, or the change says why not
+- `should-pass-app-values-as-parameters`: no piece reads an application settings singleton or app-only type that could be passed in, or the change says why not
+- `must-not-import-from-higher-tier`: no lower tier imports from a higher one
+- `should-invert-upward-dependencies`: each upward need is met by a protocol or callback in the lower tier, or the change says why not
+- `should-extract-shared-part-of-cycle`: no cycle between tiers remains, or the change says why the shared part was not extracted
+- `should-put-feature-pieces-in-shared-tiers`: the feature's models, service protocol, client, storage, logic and views live in shared tiers, or the change says why not
+- `may-keep-entry-point-and-glue-in-app`: what remains in the application is only entry point, config and aggregation code
+- `should-split-feature-by-need`: the feature is split by need across tiers with only glue in the app, or the change says why not
+- `should-keep-every-file-in-a-tier-directory`: every file is in a purpose-named directory of a declared tier and none is strewn at the top level, or the change says why not
+- `should-keep-directories-cohesive`: each directory is cohesive behind a small public surface, or the change says why not
+- `should-group-by-concept`: files are grouped by concept, not by file type, or the change says why not
+- `should-move-untiered-file-into-a-tier`: no file sits at a path in no declared tier and no tier was added just to hold one, or the change says why not

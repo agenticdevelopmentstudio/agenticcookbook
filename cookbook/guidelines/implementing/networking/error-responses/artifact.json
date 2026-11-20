@@ -4,7 +4,7 @@
     "id": "631b7b61-985a-4f5d-9c44-2cfbfdb9091b",
     "title": "Error Responses",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -30,7 +30,7 @@
       "error-handling"
     ]
   },
-  "synced": "c33bcd95b579e5f2",
+  "synced": "8a8e7f0ec6b400b5",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

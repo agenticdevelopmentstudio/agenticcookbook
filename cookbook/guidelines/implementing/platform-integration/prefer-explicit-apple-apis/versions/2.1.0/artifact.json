@@ -1,0 +1,59 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "095b33a1-2835-4ed5-bf01-f1e492148819",
+    "title": "Use AppKit and UIKit, not SwiftUI",
+    "type": "guideline",
+    "version": "2.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use AppKit (macOS) and UIKit (iOS) for all UI. Use SwiftUI only where Apple requires it.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift"
+    ],
+    "tags": [
+      "swift",
+      "appkit",
+      "uikit",
+      "swiftui",
+      "agentic"
+    ],
+    "depends-on": [
+      "dec7cf4a-449b-47fa-9d6e-f7e9376383a7"
+    ],
+    "related": [],
+    "references": [
+      "https://developer.apple.com/documentation/SwiftUI/Migrating-from-the-observable-object-protocol-to-the-observable-macro",
+      "https://www.jessesquires.com/blog/2024/09/09/swift-observable-macro/",
+      "https://nilcoalescing.com/blog/ObservableInSwiftUI/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "platform-integration",
+      "ui-implementation"
+    ]
+  },
+  "synced": "5a6ec847f34b221e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "macos", "heading": "macOS", "role": "how-to"},
+    {"part": "ios", "heading": "iOS", "role": "how-to"},
+    {"part": "when-swiftui-is-required", "heading": "When SwiftUI is required", "role": "how-to"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

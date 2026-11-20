@@ -14,3 +14,4 @@
 - `must-not-take-a-users-prompt-name`: whether any prompt file takes the name of a user's own prompt
 - `should-put-repeatable-tasks-in-prompt-files`: whether repeatable tasks are prompt files in `.github/prompts/`
 
+- `should-not-carry-conflicting-agent-files`: agent instruction files do not disagree.

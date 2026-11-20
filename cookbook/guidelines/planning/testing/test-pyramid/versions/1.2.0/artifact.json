@@ -1,0 +1,47 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a8f9c003-e970-4f28-bb7d-30a23b891b3f",
+    "title": "Test Pyramid",
+    "type": "guideline",
+    "version": "1.2.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Projects SHOULD follow the Google SWE Book ratio: **80% unit / 15% integration / 5% E2E**.",
+    "platforms": [],
+    "tags": [
+      "test-pyramid",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications",
+      "https://kentcdodds.com/blog/write-tests",
+      "https://web.dev/articles/ta-strategies",
+      "https://www.wiremock.io/post/rethinking-the-testing-pyramid"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "b826081a5d7e9db0",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "test-kinds", "heading": "Test kinds", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

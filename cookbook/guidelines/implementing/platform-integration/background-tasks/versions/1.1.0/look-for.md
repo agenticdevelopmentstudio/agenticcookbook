@@ -1,0 +1,21 @@
+
+- `use-platform-background-apis`: sync, upload or state work kept alive by foreground presence instead of a platform background API
+- `use-sanctioned-background-apis`: an unsanctioned workaround (silent audio, keep-alive loops, wake locks) holding the app awake
+- `design-tasks-to-be-resumable`: a background task that loses or corrupts work when interrupted mid-run
+- `minimize-resource-usage`: background work doing more CPU or network than its job needs
+- `report-progress-through-notifications`: long or user-relevant background work finishing with no progress or completion notification where one is appropriate
+- `apple-use-bgtasks-for-deferred-work`: deferred work on Apple platforms scheduled without `BGAppRefreshTask` or `BGProcessingTask`
+- `apple-use-urlsession-background-transfers`: an upload or download on Apple platforms using a foreground `URLSession` where it must survive suspension
+- `macos-prevent-app-nap`: longer-running macOS background work with no `ProcessInfo.performActivity` around it
+- `macos-use-nsbackgroundactivityscheduler`: periodic macOS maintenance on a hand-rolled timer instead of `NSBackgroundActivityScheduler`
+- `android-use-workmanager-for-deferrable-work`: deferrable Android work run outside `WorkManager`
+- `android-use-foregroundservice-for-visible-work`: user-visible ongoing Android work with no `ForegroundService` or no persistent notification
+- `android-respect-doze-and-standby`: Android work that bypasses or ignores Doze mode and App Standby buckets
+- `android-avoid-alarmmanager`: an `AlarmManager` schedule for work `WorkManager` can handle
+- `windows-use-backgroundtask`: Windows background execution not built on `BackgroundTask` with the Windows App SDK
+- `windows-register-triggers-in-manifest`: a Windows background trigger registered outside the app manifest
+- `windows-use-extendedexecutionsession`: a long-running Windows task without `ExtendedExecutionSession`
+- `web-use-service-workers`: web background sync or push handling outside a Service Worker
+- `web-use-periodic-background-sync`: recurring web data refresh on a page timer where the Periodic Background Sync API applies
+- `web-use-web-workers-for-cpu-work`: CPU-intensive web work on the UI thread
+- `web-fall-back-to-requestidlecallback`: low-priority deferred web work run eagerly instead of through `requestIdleCallback`

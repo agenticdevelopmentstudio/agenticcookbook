@@ -5,3 +5,4 @@
 - `should-not-mix-background-with-foreground-ui`: background-context code in the same group as foreground UI code
 - `should-group-ipc-with-infrastructure`: shared-container, XPC, `Intent`, named-pipe or `postMessage` IPC code grouped with the feature it serves
 - `should-place-composition-roots-in-bootstrap-group`: an `AppDelegate` or similar callback calling many services, placed in a feature group
+- `should-treat-each-os-integration-point-as-distinct`: In the code **this diff adds or changes**, identify OS lifecycle callbacks (didFinishLaunching, onStart, componentDidMount), IPC mechanisms, background execution, push notifications, deep links/URL schemes, file system operations, and network socket usage it introduces or alters.

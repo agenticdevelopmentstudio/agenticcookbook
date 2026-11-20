@@ -18,3 +18,4 @@ A verifier MUST check each of the following items. The recipe PASSES behavioral 
 - [ ] `should-give-measurable-values-in-must-requirements`: MUST requirements carry measurable, verifiable values wherever a standard or design decision provides them.
 - [ ] `should-document-conditions-for-may-requirements`: MAY requirements document the conditions under which each option is appropriate.
 - [ ] `must-describe-required-outcome`: No requirement describes an attempt ("MUST try to") instead of the required outcome.
+- [ ] `must-include-specific-values-for-measurable-constraints`: Specific numeric or string values where applicable rather than vague qualifiers.

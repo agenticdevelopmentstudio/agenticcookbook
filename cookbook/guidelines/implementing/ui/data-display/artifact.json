@@ -4,7 +4,7 @@
     "id": "704fef7e-0e8d-480c-8019-cf84b5fd851b",
     "title": "Data Display",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -32,7 +32,7 @@
       "data-modeling"
     ]
   },
-  "synced": "f3ecb8129dfaaae5",
+  "synced": "79c154924d03b395",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

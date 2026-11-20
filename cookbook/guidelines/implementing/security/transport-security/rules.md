@@ -9,3 +9,4 @@
 - **should-consider-certificate-transparency-monitoring**: You **SHOULD** consider Certificate Transparency monitoring as an alternative (a lighter alternative to pinning).
 - **should-use-mozilla-tls-configuration**: Cipher suites: you **SHOULD** use Mozilla's "Intermediate" or "Modern" TLS configuration.
 - **should-prefer-aead-ciphers**: You **SHOULD** prefer AEAD ciphers (AES-GCM, ChaCha20-Poly1305).
+- **must-not-expose-plain-http-endpoints**: Production domains MUST NOT expose plain-HTTP endpoints.

@@ -4,7 +4,7 @@
     "id": "cf05e36f-ea8b-4af2-8df6-c5e772dc25b5",
     "title": "Security Testing",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -44,7 +44,7 @@
     ]
   },
   "names_hosts": "Names a security tool as one Claude Code can invoke directly.",
-  "synced": "918d17bd6a3b7a15",
+  "synced": "96b64498dbf6cb33",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

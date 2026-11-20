@@ -4,7 +4,7 @@
     "id": "47563e88-307b-4eef-a63c-ddc18e85a945",
     "title": "Source Fidelity",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -33,7 +33,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "448156f43c58f037",
+  "synced": "58e918c3749c17e6",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

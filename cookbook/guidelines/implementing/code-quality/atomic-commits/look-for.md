@@ -12,3 +12,7 @@
 - `should-split-large-planned-units`: a large diff that could have been a sequence of smaller PRs
 - `should-scrutinize-agent-code-more`: agent-generated code given a lighter review than hand-written code
 - `should-decompose-large-agent-changes-before-review`: a large agent-produced change submitted for review as one block
+- `should-bump-version-in-same-change`: A meaningful change to a versioned artifact carries its version bump in the same change (one logical change includes its version metadata): frontmatter `version:` fields in skills/specialties/plugin manifests, package manifests, and any changelog the repo maintains.
+- `should-bump-version-in-same-change`: Act on the machine-raised VERSION HYGIENE leads in your slice — you are their owner: verify each against the repo's own conventions (a bump rule may not exist; confirm before filing) and file at most ONE finding listing every affected file.
+- `should-bump-version-in-same-change`: No `review_signals` gate on purpose: the leads land on any file type, so this lens rides whenever the specialist is convened.
+- `should-match-version-bump-magnitude`: a version field the change touches that moves by a magnitude that does not match the change

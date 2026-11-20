@@ -1,0 +1,31 @@
+
+- `gate-all-features`: every feature is gated behind a feature flag from its initial implementation
+- `flag-only-when-needed`: each flag added is for a change that could not ship safely in smaller increments, and the live flag count is held down by the team's recorded limit or by an expiration date on each flag
+- `spec-lists-flag-keys`: each spec lists its flag keys in a **Feature Flags** section
+- `feature-flag-provider-interface`: flags are read through a `FeatureFlagProvider` interface injected via DI, with a local default implementation that a backend implementation can replace
+- `prefer-a-standard-flag-api`: flags are evaluated through a vendor-agnostic standard API such as OpenFeature, and an existing flag platform is adopted rather than flag infrastructure built in-house; where either is not yet done, the code says why
+- `swift-userdefaults-default`: in Swift, the local default is a protocol with a `UserDefaults`-backed implementation holding only nonsensitive values
+- `kotlin-sharedpreferences-default`: in Kotlin, the local default is an interface with a `SharedPreferences`-backed implementation
+- `kotlin-datastore-default`: in Kotlin on Android, flags are stored in Jetpack DataStore, in a file separate from any sensitive data
+- `typescript-localstorage-default`: in TypeScript, the local default is an interface with a `localStorage`-backed implementation that stores strings and handles a `SecurityError`
+- `csharp-feature-management`: in C#, flags are read through `Microsoft.FeatureManagement` (`IFeatureManager` or `IVariantFeatureManager`) registered via DI, from appsettings.json, with `FeatureGateAttribute` where a whole controller, action or page is gated
+- `evaluation-takes-a-default-and-never-throws`: every flag has an in-code default, and no flag evaluation throws; on any failure it returns that default
+- `fail-fast-on-missing-config`: per-deploy values are read from the environment into a typed object once at startup, and a missing or malformed value halts startup
+- `fail-at-setup-not-at-evaluation`: flag system failures surface when the provider is registered, and no flag holds static application configuration
+- `typed-flag-evaluation`: every flag with a non-boolean value is evaluated as its own type
+- `off-means-existing-behaviour`: every flag's off state and default is the existing behaviour, or the restrictive behaviour for a security- or compliance-sensitive flag
+- `no-dependency-on-flag-service`: the app runs with the flag service unreachable, on cached last-known values or in-code defaults
+- `local-flag-store-is-untrusted`: the local flag store holds no personal or sensitive data, and no code trusts a value from it as one the user could not have changed
+- `prefer-static-flag-configuration`: flag configuration is static and source-controlled, dynamic only where needed, or the code says why
+- `flag-has-a-type-and-lifetime`: every flag has a type and an expected lifetime, and a flag past its lifetime is marked stale
+- `unique-never-reused-flag-names`: every flag name is unique and new; no old flag is repurposed
+- `name-and-describe-flags`: every flag follows the shared naming convention and has a description
+- `decouple-toggle-points`: toggle points receive their decision by injection, and toggles expected to outlive a release flag's lifetime (such as permanent flags) or needed at several points select their path through a strategy
+- `test-both-flag-states`: tests run the flagged code with the flag on and with it off, and a permanent flag's off path stays tested while the flag can be switched
+- `test-release-and-fallback-configurations`: tests cover the configuration going live and its fallback with the new flags off
+- `no-mid-session-ui-flip`: no flag value fetched at runtime switches UI the user is viewing or using
+- `monitor-flag-rollout`: usage and system-health metrics are watched while the flag's exposure widens
+- `remove-flags-when-done`: each flag has a planned removal, and a flag whose rollout is complete is removed with its old code path before it is archived
+- `flags-never-hide-features-from-review`: every new feature in an App Store build is described in the Notes for Review and reachable for review, and none is hidden
+- `flags-switch-only-shipped-code`: in an app distributed through the App Store or Google Play, every flag switches only code in the binary the store reviewed
+

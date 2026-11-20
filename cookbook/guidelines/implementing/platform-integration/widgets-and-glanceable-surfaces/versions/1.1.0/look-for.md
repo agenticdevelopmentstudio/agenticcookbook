@@ -1,0 +1,21 @@
+
+- `provide-widgets-for-glanceable-data`: time-sensitive or frequently checked data with no widget on a platform that supports one
+- `show-only-most-important-information`: a widget crowded with secondary content or app-like navigation
+- `support-multiple-sizes`: a widget offered in one size where the platform offers several
+- `must-deep-link-on-tap`: a widget tap that opens the app's root or nothing instead of its content
+- `update-on-reasonable-cadence`: a widget refresh interval far tighter than its data changes, or so loose its data goes stale
+- `apple-use-widgetkit`: Apple widgets not built on WidgetKit with SwiftUI views
+- `apple-support-widget-families`: an Apple widget missing the small, medium or large family
+- `ios17-support-interactive-widgets`: an iOS 17+ widget whose actions open the app where an `AppIntent`-backed button or toggle would do
+- `ios16-support-lock-screen-widgets`: an iOS 16+ app with widgets but no Lock Screen family
+- `apple-use-timelineprovider-and-reload`: Apple widget updates with no `TimelineProvider`, or events that change widget data without `WidgetCenter.shared.reloadTimelines`
+- `apple-use-live-activities-for-realtime`: real-time status shown only through widget timeline reloads or notifications where Live Activities apply
+- `android-use-jetpack-glance`: Android home screen widgets built with `RemoteViews` instead of Jetpack Glance
+- `android-define-appwidget-provider`: an Android widget with no `appwidget-provider` XML metadata
+- `android-support-resize-and-onupdate`: an Android widget that is not resizable, or ignores `onUpdate`
+- `android-refresh-with-workmanager`: Android widget data refreshed outside `WorkManager`
+- `android-follow-material-you`: an Android widget with hard-coded colors that ignore Material You dynamic theming
+- `pwa-use-badging-api`: PWA icon counts set without the Badging API
+- `pwa-support-periodic-background-sync`: PWA glanceable data refreshed only while the page is open
+- `pwa-explore-widget-api-proposals`: a PWA on a platform with an experimental Widget API that has not explored it
+- `pwa-consider-tray-or-menu-bar`: a desktop PWA with glanceable data and no system tray or menu bar presence considered

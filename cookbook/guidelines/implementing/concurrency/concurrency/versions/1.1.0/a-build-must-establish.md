@@ -1,0 +1,21 @@
+
+- `must-run-lengthy-work-in-background`: every lengthy operation runs on a background thread/task using the platform's async primitives
+- `must-not-block-main-thread`: no code path blocks the main/UI thread
+- `should-show-progress-while-waiting`: every UI wait on an async task shows determinate or indeterminate progress, or the code says why not
+- `should-use-swift-concurrency`: all Swift async work uses `async`/`await`, `Task` or actors, or the code says why not
+- `should-use-mainactor-for-ui-updates`: every Swift UI update runs on `@MainActor`, or the code says why not
+- `should-use-kotlin-coroutines`: all Kotlin async work uses coroutines, or the code says why not
+- `should-run-kotlin-io-on-dispatchers-io`: all Kotlin I/O runs on `Dispatchers.IO`, or the code says why not
+- `should-use-viewmodelscope`: every ViewModel-scoped coroutine is launched in `viewModelScope`, or the code says why not
+- `should-use-promises-for-async`: all TypeScript async operations use `Promise`/`async`/`await`, or the code says why not
+- `should-use-web-workers-for-cpu-work`: every CPU-intensive TypeScript task runs in a Web Worker, or the code says why not
+- `should-use-async-await-in-csharp`: all C# async work uses `async`/`await`, or the code says why not
+- `should-configure-await-false-in-library-code`: every `await` in C# library code uses `ConfigureAwait(false)`, or the code says why not
+- `must-not-use-result-or-wait`: no C# code calls `.Result` or `.Wait()`
+- `must-not-use-async-void`: every C# `async void` method is an event handler
+- `must-accept-cancellation-token`: every C# async API accepts a `CancellationToken`
+- `should-use-valuetask-only-when-mostly-synchronous`: every `ValueTask<T>` return is on a method that frequently completes synchronously, or the code says why
+- `should-use-task-run-for-cpu-work`: all C# CPU-bound work runs through `Task.Run`, or the code says why not
+- `must-not-run-cpu-work-on-ui-thread`: no C# CPU-bound work runs on the UI thread
+- `should-marshal-ui-work-with-dispatcherqueue`: every WinUI 3 UI update from a background task goes through `DispatcherQueue.TryEnqueue`, or the code says why not
+- `must-not-access-ui-from-non-ui-threads`: no WinUI 3 UI element is accessed from a non-UI thread

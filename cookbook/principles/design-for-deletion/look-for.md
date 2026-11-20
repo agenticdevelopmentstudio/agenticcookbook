@@ -4,3 +4,6 @@
 - `should-treat-lines-as-spent`: code kept that could be deleted
 - `should-not-abstract-prematurely-for-reuse`: an abstraction introduced for reuse before a second use exists
 - `should-duplicate-rather-than-couple-when-in-doubt`: two uncertain-fit pieces of code coupled through a shared dependency where duplication would do
+- `should-write-code-easy-to-throw-away`: Build skills and rules that are easy to remove without affecting others;
+- `should-delete-rules-that-no-longer-apply`: treat lines of instructions as lines spent — delete rules that no longer apply;
+- `should-not-abstract-prematurely-for-reuse`: do not abstract prematurely across skills;

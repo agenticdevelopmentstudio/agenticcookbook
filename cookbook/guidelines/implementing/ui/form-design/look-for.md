@@ -15,3 +15,5 @@
 - `should-use-placeholder-for-format-hints-only`: placeholder text used in place of a label
 - `should-pre-fill-and-default`: fields left empty where a pre-fill or default is possible
 - `should-mark-optional-fields`: required fields marked instead of optional ones, or many optional fields
+- `should-link-errors-to-fields-with-aria-describedby`: an inline error message not linked to its field with `aria-describedby`
+- `must-show-errors-inline`: Single-column layout, `<label>` top-aligned or floating, blur-event validation (not input-event), submit-event full validation, inline error messages below field using ARIA (`aria-describedby`), pre-fill defaults, mark optional not required

@@ -4,7 +4,7 @@
     "id": "6f4cfd55-cb09-4ede-a53c-feaeb5781127",
     "title": "Content Security Policy",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -37,7 +37,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "612ed7ca062b70a7",
+  "synced": "32fa91803d5e2267",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

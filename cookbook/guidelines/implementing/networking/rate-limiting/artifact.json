@@ -4,7 +4,7 @@
     "id": "c84400d9-83b3-4c4c-83d4-325dfa989202",
     "title": "Rate Limiting",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -30,7 +30,7 @@
       "networking"
     ]
   },
-  "synced": "1501df960b83be13",
+  "synced": "eb2d2f6b799a4da7",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

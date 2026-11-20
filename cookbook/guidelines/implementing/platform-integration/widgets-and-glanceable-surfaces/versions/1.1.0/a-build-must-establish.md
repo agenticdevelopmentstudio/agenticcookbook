@@ -1,0 +1,21 @@
+
+- `provide-widgets-for-glanceable-data`: each supported platform has a widget for the app's time-sensitive or frequently checked data, or the code says why not
+- `show-only-most-important-information`: each widget shows only its most important information
+- `support-multiple-sizes`: widgets support the sizes the platform offers, or the code says why not
+- `must-deep-link-on-tap`: every widget tap target deep links to its relevant content
+- `update-on-reasonable-cadence`: each widget's refresh cadence is stated and balances freshness against battery and data usage
+- `apple-use-widgetkit`: Apple widgets are WidgetKit extensions with SwiftUI views
+- `apple-support-widget-families`: Apple widgets declare the small, medium and large families, or the code says why not
+- `ios17-support-interactive-widgets`: iOS 17+ widget actions use `AppIntent`-backed buttons and toggles, or the code says why not
+- `ios16-support-lock-screen-widgets`: iOS 16+ widgets include Lock Screen families, or the code says why not
+- `apple-use-timelineprovider-and-reload`: Apple widgets schedule through `TimelineProvider` and data-changing events call `WidgetCenter.shared.reloadTimelines`
+- `apple-use-live-activities-for-realtime`: real-time status is a Live Activity through `ActivityKit`, with Dynamic Island on supported devices, or the code says why not
+- `android-use-jetpack-glance`: Android home screen widgets are built with Jetpack Glance, or the code says why not
+- `android-define-appwidget-provider`: each Android widget's metadata is defined in `appwidget-provider` XML
+- `android-support-resize-and-onupdate`: Android widgets are resizable and handle `onUpdate` broadcasts
+- `android-refresh-with-workmanager`: Android widget background data refresh is scheduled with `WorkManager`, or the code says why not
+- `android-follow-material-you`: Android widgets take Material You theming, or the code says why not
+- `pwa-use-badging-api`: PWA app icon notification counts are set through the Badging API
+- `pwa-support-periodic-background-sync`: the PWA's glanceable data refreshes by periodic background sync in a service worker, or the code says why not
+- `pwa-explore-widget-api-proposals`: the PWA uses or has assessed experimental Widget API proposals where available, or the code says why not
+- `pwa-consider-tray-or-menu-bar`: a desktop PWA has system tray or menu bar presence where the platform allows, or the code says why not

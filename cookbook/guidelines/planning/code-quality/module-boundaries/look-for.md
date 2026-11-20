@@ -7,3 +7,5 @@
 - `should-exclude-vendor-directories`: `node_modules/`, `Pods/`, `vendor/` or `.build/` content counted as scope groups
 - `should-note-shared-directories`: `core`, `common`, `shared` or `util` directories at a module root, and whether the findings note them
 - `should-not-auto-split-shared-directories`: such directories split apart with no evidence beyond their name
+- `should-treat-each-declared-target-as-candidate`: Examine build manifests, directory structure, and explicit module/package declarations to find each independently buildable unit.
+- `should-treat-each-declared-target-as-candidate`: Identify where one module ends and another begins.

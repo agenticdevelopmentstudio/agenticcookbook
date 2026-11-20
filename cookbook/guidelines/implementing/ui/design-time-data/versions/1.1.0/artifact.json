@@ -1,0 +1,44 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "497a717f-de29-4baf-b7b8-4487f672d9a8",
+    "title": "Design-Time Data",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Wire up design-time data contexts so the XAML designer always shows realistic preview content, not empty surfaces.",
+    "platforms": [
+      "csharp",
+      "windows"
+    ],
+    "tags": [
+      "design-time-data",
+      "platform",
+      "windows"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "9a3f1179d9591125",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "introduction", "heading": "Introduction", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

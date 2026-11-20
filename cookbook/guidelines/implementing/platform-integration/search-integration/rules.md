@@ -17,3 +17,4 @@
 - **web-implement-social-meta-tags**: On the web, you SHOULD implement OpenGraph and Twitter Card meta tags.
 - **web-support-web-app-manifest**: On the web, you SHOULD support the Web App Manifest for PWA search integration.
 - **web-ensure-crawlability**: On the web, you SHOULD ensure server-side rendering or pre-rendering for crawlability.
+- **windows-deploy-property-handlers-for-custom-file-types**: On Windows, you SHOULD deploy property handlers for custom file types.

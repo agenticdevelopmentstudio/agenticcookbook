@@ -4,7 +4,7 @@
     "id": "da56ab62-98ad-4f52-b972-3ebfda5b1718",
     "title": "Principle of least astonishment",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "01b9acc1bcff6b7c",
+  "synced": "3c11073a30681c04",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

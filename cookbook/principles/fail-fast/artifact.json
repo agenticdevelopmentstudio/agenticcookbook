@@ -4,7 +4,7 @@
     "id": "425271ea-92b6-4df6-9a83-94795f1be377",
     "title": "Fail fast",
     "type": "principle",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "c9a9f899919962e1",
+  "synced": "4f576f2480f5b871",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

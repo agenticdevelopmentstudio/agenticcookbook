@@ -12,3 +12,5 @@
 - **should-split-large-planned-units**: When a planned unit of work looks like it will produce a large diff, it SHOULD be split into a sequence of smaller PRs.
 - **should-scrutinize-agent-code-more**: AI-generated (agent-generated) code SHOULD receive more per-line scrutiny than hand-written code, not less.
 - **should-decompose-large-agent-changes-before-review**: When an agent produces a large change, it SHOULD be decomposed into smaller commits or PRs before review rather than reviewed as one block.
+- **should-bump-version-in-same-change**: A meaningful change to a versioned artifact SHOULD carry its version bump in the same change (one logical change includes its version metadata): frontmatter `version:` fields in skills/specialties/plugin manifests, package manifests, and any changelog the repo maintains.
+- **should-match-version-bump-magnitude**: Version fields a change touches SHOULD move by a magnitude that matches the change (patch for fixes, minor for new behavior, major for breaking).

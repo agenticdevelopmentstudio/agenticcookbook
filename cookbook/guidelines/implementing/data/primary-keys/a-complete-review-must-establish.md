@@ -8,3 +8,4 @@
 - Without ROWID tables use composite PK or TEXT/BLOB PK, never INTEGER
 - Cross-database PK mapping documented for synced tables (e.g., SQLite UUID ↔ PostgreSQL uuid type)
 
+- `should-default-to-integer-primary-key`: A review passes when it establishes every item above.

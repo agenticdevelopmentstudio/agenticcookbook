@@ -1,0 +1,26 @@
+
+- `should-start-with-value-types`: every new type is a `struct` or `enum` unless it needs a class feature
+- `should-use-classes-only-for-class-features`: every class exists for identity, Objective-C interoperability or inheritance from a framework class meant to be subclassed, and the code says which
+- `should-prefer-let`: every `var` and mutable property is mutated somewhere, or the code says why not
+- `should-share-behavior-with-protocols`: behavior shared across structures uses protocols and protocol extensions, with no base class for it
+- `should-mark-classes-final`: every class is `final` unless a subclass is part of the design
+- `must-model-absence-with-optional`: no `-1`, `""`, `NSNotFound` or other sentinel stands for absence
+- `should-unwrap-safely`: optionals are unwrapped with `if let`, `guard let`, optional chaining or `??`
+- `should-guard-for-early-exit`: early exits use `guard`
+- `must-not-force-unwrap`: every `!`, `try!` and `as!` marks a programmer error, with `preconditionFailure` and a message preferred
+- `must-not-declare-implicitly-unwrapped-optionals`: no new declaration is an implicitly unwrapped optional outside an injection point
+- `should-keep-injected-values-private-and-documented`: every injected implicitly unwrapped value is `private` and its injection point is documented
+- `must-mark-throws-and-try`: every function that can fail is `throws` and every call to it is marked `try`
+- `should-model-related-failures-as-an-enum`: related failures are cases of one `enum` conforming to `Error`
+- `should-pick-catch-try-or-propagate`: every `try?` is where the failure reason does not matter, and other errors are caught or propagated
+- `must-make-do-catch-exhaustive`: every `do`/`catch` is exhaustive or sits in a throwing function
+- `should-prefer-exhaustive-enum-catches`: catches over an error enum match its cases rather than a catch-all, or the code says why
+- `should-defer-cleanup`: cleanup that must run on every exit is in `defer`
+- `should-throw-plain-error`: functions throw plain `Error` unless the typed-throws case applies
+- `should-limit-typed-throws`: every `throws(SomeError)` is embedded code avoiding boxing, a library-internal error, or a generic closure's forwarded errors
+- `should-state-narrowest-access-level`: every declaration has the narrowest access level that works
+- `must-not-expose-more-restricted-types`: no declaration exposes a type with a more restrictive level than its own
+- `must-mark-only-interface-members-public`: every `public` member belongs to the interface and no other member is `public`
+- `should-follow-strict-concurrency-guideline`: the code builds under Swift 6 strict concurrency, following that guideline
+- `should-use-appkit-and-uikit`: UI is built with AppKit and UIKit, not SwiftUI, or the code says why
+- `should-pass-repository-lint-and-tests`: lint and tests pass under the repository's own configuration

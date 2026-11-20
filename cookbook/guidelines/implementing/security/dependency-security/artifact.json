@@ -4,7 +4,7 @@
     "id": "b712c766-af1f-4716-b8fb-34bf0bbb13eb",
     "title": "Dependency Security",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -35,7 +35,7 @@
       "security-review"
     ]
   },
-  "synced": "d291a7cc8927c305",
+  "synced": "c5afd082980d7160",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

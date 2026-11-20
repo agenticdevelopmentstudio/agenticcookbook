@@ -20,3 +20,7 @@
 - `must-not-commit-temporary-disables`: a debugging disable (a commented-out call, an `if false`) in a commit
 - `should-rename-when-meaning-changes`: a name that no longer describes what its value, function or field holds
 - `should-reread-touching-names`: parameter, variable, file or test names that describe a type or behavior the change altered
+- `must-update-every-caller`: Work through the leads in the `__evidence__/hygiene-scan` unit and confirm each one against the code.
+- `must-update-every-caller`: The scan is a list of leads, not findings: a lead is a text match, so open the file and decide whether the reference really points at the removed or renamed thing, or at something unrelated that shares the name.
+- `must-update-every-caller`: File one finding per surviving reference (or one per file when a file has several), and say which of the removed or renamed symbols it still names.
+- `must-update-every-caller`: If the unit is absent, the change removed and renamed nothing the scan could see; do not go hunting for leads of your own.

@@ -1,0 +1,11 @@
+
+- **must-require-tls-1-2-minimum**: **TLS 1.2 minimum** is REQUIRED, TLS 1.3 SHOULD be preferred.
+- **must-disable-tls-1-0-and-1-1**: TLS 1.0 and 1.1 MUST be disabled entirely.
+- **must-enable-hsts-on-production-domains**: HSTS: all production domains MUST have the header (enable on all production domains): `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`.
+- **should-submit-to-hsts-preload-list**: You **SHOULD** submit to the [HSTS preload list](https://hstspreload.org/).
+- **should-pin-to-intermediate-ca**: Certificate pinning — use with caution: you **SHOULD** pin to the intermediate CA, not the leaf (leaf certificates rotate).
+- **should-pin-only-on-mobile**: Certificate pinning is acceptable for mobile apps (mobile apps only); you **SHOULD** generally avoid it for web (HPKP is deprecated).
+- **must-include-backup-pins-and-recovery-plan**: Backup pins MUST be included along with a recovery plan.
+- **should-consider-certificate-transparency-monitoring**: You **SHOULD** consider Certificate Transparency monitoring as an alternative (a lighter alternative to pinning).
+- **should-use-mozilla-tls-configuration**: Cipher suites: you **SHOULD** use Mozilla's "Intermediate" or "Modern" TLS configuration.
+- **should-prefer-aead-ciphers**: You **SHOULD** prefer AEAD ciphers (AES-GCM, ChaCha20-Poly1305).

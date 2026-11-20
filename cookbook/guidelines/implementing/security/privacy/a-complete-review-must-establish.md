@@ -20,3 +20,5 @@
 - `should-respect-do-not-track`: whether the Do Not Track header is respected
 - `should-declare-only-required-capabilities`: whether only required Windows capabilities are declared
 - `should-use-dpapi-for-local-secrets`: whether Windows local secrets use DPAPI
+- `should-require-opt-in-for-non-essential-data`: non-essential data collection is gated behind opt-in consent, and a working fallback path exists when the user denies;
+- `should-support-apple-privacy-features`: platform-specific privacy controls are honored (Apple usage-description keys and tracking/privacy APIs; Android scoped storage and pre-request rationale; web CSP, HttpOnly cookies and Do Not Track; Windows minimal manifest capabilities and DPAPI).

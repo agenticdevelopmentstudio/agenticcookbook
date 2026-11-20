@@ -11,3 +11,5 @@
 - `should-use-the-right-status-code`: a 200 carrying an error, or a status code that does not match the outcome.
 - `should-version-in-the-url-path`: a version carried in a header or a query param instead of the path.
 - `should-bump-major-only-for-breaking-changes`: a major version bump with no breaking change, or a breaking change with none.
+- `should-use-consistent-rest`: Client calls match REST conventions — correct HTTP methods, no verb-in-URL, proper status code handling (201 for create, 204 for delete, 422 for validation);
+- `should-display-field-level-errors-for-422`: a 422 response whose field errors are not shown against their fields

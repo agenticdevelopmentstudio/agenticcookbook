@@ -4,7 +4,7 @@
     "id": "a7192ade-023d-43b5-b68c-eb2b7024a3fd",
     "title": "Purpose Classification",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
@@ -34,7 +34,7 @@
       "code-review"
     ]
   },
-  "synced": "86ca27d9da512a44",
+  "synced": "39625ae7c0577f7f",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

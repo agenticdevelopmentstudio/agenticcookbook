@@ -17,3 +17,4 @@
 - `web-request-permission-contextually`: the web app requests notification permission only in context
 - `web-support-actions-and-badges`: web notifications support actions, and badges use the Badging API, or the code says why not
 - `web-fall-back-when-denied`: the web app works with a fallback when notifications are denied or unavailable
+- `android-do-not-send-without-runtime-permission`: no notification is sent on Android 13+ without runtime permission

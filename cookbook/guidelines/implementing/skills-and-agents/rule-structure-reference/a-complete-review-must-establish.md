@@ -24,4 +24,5 @@
 - `should-deduplicate-must-nots`: whether each MUST NOT adds a unique constraint
 - `should-avoid-mandatory-multi-file-reads`: whether any rule makes multi-file reads mandatory up front
 - `should-inline-mostly-metadata-files`: whether any referenced file is >50% YAML metadata
+- `should-keep-per-turn-content-minimal`: per-turn cost reviewed (size ×turns = budget impact);
 

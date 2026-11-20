@@ -4,3 +4,13 @@
 - `should-then-make-it-right`: whether the working solution was refactored for clarity, its edge cases handled and its design cleaned up
 - `should-optimize-only-measured-slowness`: whether every optimization is backed by a measurement proving the code slow
 - `must-not-skip-make-it-right`: whether phase 2 (make it right) was done before any phase 3 optimization
+- `should-first-make-it-work`: Code handles the common case correctly before refactoring;
+- `must-not-skip-make-it-right`: edge cases and error handling addressed in phase 2 before any performance work;
+- `should-optimize-only-measured-slowness`: performance optimizations are measurement-driven, not speculative
+- `must-walk-each-claimed-behavior-to-its-effect`: Every behavior the changeset claims was stated and walked entry-to-effect through the code as written, crossing submodule/vendored boundaries where the path does; each walked behavior is either confirmed working (with the path named) or filed as a finding (with the step where the path breaks);
+- `must-not-silently-remove-old-behavior`: the before-behavior was compared for each touched entry point — via the base commit when `read_base_file` was available, otherwise via the diff's removed and context lines with that limit stated — and any silently removed or broken old behavior is filed;
+- `must-order-every-step-on-a-path-correctly`: for each walked path, what else runs on it and in what order was named for the first run, a repeat run, a declined or cancelled prompt and a background job;
+- `must-treat-paired-operations-alike`: each paired operation the change touches was compared side by side on the same input;
+- `must-close-every-route-to-a-fixed-failure`: each claimed fix was checked against every route to the failure it targets;
+- `should-ask-no-more-than-the-use-needs`: each low-level open, lock or permission was checked against what its use needs;
+- `must-not-ship-a-path-that-cannot-work`: every real defect seen on the way is filed, claimed behavior or not.

@@ -8,3 +8,4 @@
 - For synced tables: cross-database type mapping documented (SQLite ↔ PostgreSQL equivalence)
 - No reliance on implicit type coercion in queries
 
+- `must-validate-json-on-both-sides`: A review passes when it establishes every item above.

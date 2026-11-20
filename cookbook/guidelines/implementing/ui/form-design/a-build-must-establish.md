@@ -15,3 +15,4 @@
 - `should-use-placeholder-for-format-hints-only`: every field has a real label and placeholder text gives format hints only, or the work says why not
 - `should-pre-fill-and-default`: fields are pre-filled or defaulted where possible, or the work says why not
 - `should-mark-optional-fields`: optional fields are marked and required ones are not, or the work says why not
+- `should-link-errors-to-fields-with-aria-describedby`: each field is linked to its error message with `aria-describedby`, or the work says why not

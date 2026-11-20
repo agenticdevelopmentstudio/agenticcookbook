@@ -7,3 +7,5 @@
 - **must-name-the-main-file-skill-md**: The main file MUST be named `SKILL.md` (uppercase stem) — Claude Code looks for this exact filename
 - **should-name-supporting-files-lowercase**: Supporting files in references/, scripts/, examples/ SHOULD use lowercase descriptive names
 
+- **should-follow-skills-directory-layout**: A skill directory SHOULD follow the `.claude/skills/<name>/SKILL.md` layout.
+- **should-set-argument-hint-when-using-arguments**: A skill SHOULD set `argument-hint` when it uses `$ARGUMENTS`.

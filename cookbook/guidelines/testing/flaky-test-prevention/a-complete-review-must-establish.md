@@ -8,3 +8,5 @@
 - `must-not-produce-filesystem-side-effects-in-unit-tests`: no unit test leaves a filesystem side effect
 - `should-not-rely-on-system-clock`: no test relies on the system clock rather than injected time, or the code says why
 - `must-treat-intermittent-failure-as-p1`: every intermittently failing test is tracked as a P1 bug
+- `must-not-use-sleep-or-timing-assertions`: No `sleep()` or timing/delay-based assertions in test bodies (deterministic waits, callbacks, or polling used instead);
+- `must-not-make-real-network-calls-in-unit-tests`: no real network/HTTP calls in unit tests (boundaries faked or stubbed);

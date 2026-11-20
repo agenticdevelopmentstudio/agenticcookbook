@@ -8,3 +8,4 @@
 - `should-choose-the-distribution-per-system`: a fixed ratio applied with no look at where the system's risk lives
 - `may-fit-the-testing-trophy`: a trophy shape adopted for a system that is not integration-heavy
 - `should-prefer-the-trophy-when-risk-is-in-interactions`: a pyramid kept where most risk is in how components interact
+- `should-reserve-e2e-for-critical-journeys`: E2E reserved for critical user journeys only

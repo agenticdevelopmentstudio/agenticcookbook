@@ -1,0 +1,21 @@
+
+- **must-run-lengthy-work-in-background**: All lengthy work MUST run on background threads/tasks using platform async primitives.
+- **must-not-block-main-thread**: Never block the main thread: the main/UI thread MUST NOT be blocked.
+- **should-show-progress-while-waiting**: Progress SHOULD be shown (determinate or indeterminate) when the UI is waiting on an async task.
+- **should-use-swift-concurrency**: In Swift, SHOULD use Swift Concurrency (`async`/`await`, `Task`, actors) for all async work.
+- **should-use-mainactor-for-ui-updates**: In Swift, SHOULD use `@MainActor` for UI updates.
+- **should-use-kotlin-coroutines**: In Kotlin, SHOULD use Kotlin Coroutines for all async work.
+- **should-run-kotlin-io-on-dispatchers-io**: In Kotlin, SHOULD run I/O on `Dispatchers.IO`.
+- **should-use-viewmodelscope**: In Kotlin, SHOULD use `viewModelScope` for ViewModel-scoped coroutines.
+- **should-use-promises-for-async**: In TypeScript, SHOULD use `Promise`/`async`/`await` for async operations.
+- **should-use-web-workers-for-cpu-work**: In TypeScript, SHOULD use Web Workers for CPU-intensive tasks.
+- **should-use-async-await-in-csharp**: In C#, SHOULD use `async`/`await` for all async work.
+- **should-configure-await-false-in-library-code**: In C# library code, SHOULD use `ConfigureAwait(false)` to avoid capturing the synchronization context.
+- **must-not-use-result-or-wait**: In C#, `.Result` or `.Wait()` MUST NOT be used — causes deadlocks.
+- **must-not-use-async-void**: In C#, `async void` MUST NOT be used except for event handlers.
+- **must-accept-cancellation-token**: In C#, all async APIs MUST accept `CancellationToken`.
+- **should-use-valuetask-only-when-mostly-synchronous**: In C#, SHOULD use `ValueTask<T>` only when the method frequently completes synchronously.
+- **should-use-task-run-for-cpu-work**: In C#, SHOULD use `Task.Run` for CPU-bound work.
+- **must-not-run-cpu-work-on-ui-thread**: In C#, CPU-bound work MUST NOT run on the UI thread.
+- **should-marshal-ui-work-with-dispatcherqueue**: For WinUI 3 specifically, SHOULD use `DispatcherQueue.TryEnqueue` to marshal work back to the UI thread from background tasks.
+- **must-not-access-ui-from-non-ui-threads**: For WinUI 3 specifically, UI elements MUST NOT be accessed from non-UI threads.

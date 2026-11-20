@@ -1,0 +1,11 @@
+
+- `must-deep-link-significant-views`: every significant feature point and view opens from a native deep link (Universal Links, App Links, URL routing or protocol activation)
+- `spec-defines-deep-linking`: each spec defines its URL patterns in a **Deep Linking** section, or says why not
+- `web-view-should-have-shareable-url`: every web view has a unique, shareable URL, or the code says why not
+- `typescript-view-must-have-shareable-url`: every TypeScript view has a unique, shareable URL
+- `typescript-use-framework-routing`: TypeScript views are routed by framework routing, or the code says why not
+- `windows-declare-and-handle-protocol`: Windows declares its protocol handlers in `Package.appxmanifest` and handles activation through the Windows App SDK lifecycle APIs
+- `windows-declare-protocol-in-manifest`: the Windows manifest declares `<uap:Protocol Name="…"/>`
+- `windows-handle-activation-in-onlaunched`: `App.OnLaunched` reads `AppInstance.GetActivatedEventArgs()` to handle activation
+- `windows-parse-uri-and-navigate`: the activation URI is parsed to its target page/state and the app navigates there
+- `windows-single-instance-for-deep-links`: Windows deep links single-instance through `AppInstance.FindOrRegisterForKey()`, or the code says why not

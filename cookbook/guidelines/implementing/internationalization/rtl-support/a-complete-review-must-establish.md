@@ -12,3 +12,7 @@
 - `should-set-dir-rtl-on-web`: whether the web root element carries `dir="rtl"` for RTL locales
 - `should-set-flow-direction-on-windows`: whether the Windows root element sets `FlowDirection="RightToLeft"` for RTL locales
 - `should-test-with-rtl-language-packs-on-windows`: whether Windows testing ran with RTL language packs installed
+- `should-use-leading-trailing`: No `left`/`right` used for alignment or padding — only leading/trailing equivalents;
+- `should-mirror-directional-icons`: directional icons (forward/back arrows) are mirrored for RTL;
+- `should-not-mirror-non-directional-icons`: non-directional icons (checkmarks, clocks) are NOT mirrored;
+- `should-set-supports-rtl-on-android`: Android sets `android:supportsRtl="true"` and uses `start`/`end` rather than `left`/`right`;

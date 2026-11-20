@@ -1,0 +1,35 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "ffa8565d-b105-4758-b850-9d9b8119b838",
+    "title": "Make It Work, Make It Right, Make It Fast",
+    "type": "principle",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Separate correctness, design quality, and performance into sequential phases: make it work, then refactor and handle edge cases, then optimize only what measurement proves slow.",
+    "platforms": [],
+    "tags": [
+      "make-it-work-make-it-right-make-it-fast"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
+  },
+  "synced": "81f8d1e445cb9756",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -9,3 +9,6 @@
 - `must-not-use-dialogs-for-success`: whether any dialog reports a success message
 - `must-confirm-destructive-actions`: whether every destructive action requires explicit confirmation with a clearly labeled action
 - `should-default-focus-to-safe-option`: whether default focus in confirmations is on the safe option
+- `should-implement-toasts-banners-and-dialogs`: whether toast or snackbar, inline alert or banner, and modal dialog feedback are all implemented
+- `must-not-use-dialogs-for-success`: success never triggers `window.alert()` or `<dialog>`;
+- `should-default-focus-to-safe-option`: focus set to Cancel/safe button on dialog open

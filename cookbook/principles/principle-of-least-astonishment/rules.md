@@ -6,3 +6,6 @@
 - **must-make-mutation-visible**: If a method mutates state, MUST make that visible in the name or signature — never hide side effects.
 - **should-follow-platform-naming-conventions**: SHOULD follow platform naming conventions even when you prefer a different style.
 - **should-ask-would-a-new-team-member-be-surprised**: When reviewing code, SHOULD ask: "Would a new team member be surprised by this behavior?"
+- **must-not-give-get-endpoints-side-effects**: GET endpoints MUST NOT have side effects.
+- **must-make-idempotent-methods-idempotent**: Idempotent methods (GET/PUT/DELETE) MUST actually be idempotent.
+- **must-not-hide-side-effects-of-primary-actions**: Primary actions MUST NOT have hidden side effects.

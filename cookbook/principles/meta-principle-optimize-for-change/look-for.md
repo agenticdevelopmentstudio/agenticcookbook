@@ -5,3 +5,7 @@
 - `should-choose-easier-to-change-when-equal`: a choice between otherwise-equal approaches that took the one harder to change later
 - `should-test-design-by-cognitive-load`: a design or agent workflow that raises the cognitive load of understanding and changing the system
 - `should-use-cognitive-load-as-a-lens`: cognitive load enforced as a numeric threshold rather than read through its proxies (fan-out, file count, time-to-onboard)
+- `should-ask-whether-future-change-gets-easier`: all other principles (composition, DI, boundaries, SoC) are strategies for reducing change cost;
+- `should-ask-whether-future-change-gets-easier`: use this as the meta-question when tradeoffs arise
+- `should-not-take-unacknowledged-easier-now-harder-later-shortcuts`: an "easier now, harder later" shortcut taken with no explicit acknowledgment
+- `should-provide-extension-points-where-change-is-anticipated`: a place where change is anticipated with no extension point (swappable backend, injectable service)

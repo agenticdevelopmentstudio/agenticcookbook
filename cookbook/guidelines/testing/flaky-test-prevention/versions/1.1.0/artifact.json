@@ -1,0 +1,47 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "05d00147-5c49-42d8-bdbd-cf8fd7dc2379",
+    "title": "Flaky Test Prevention",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Flaky tests destroy confidence. Quarantine them immediately — fix or delete, never ignore.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "flaky-test-prevention",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://martinfowler.com/articles/nonDeterminism.html",
+      "https://testing.googleblog.com/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "e2f821836e1631f6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

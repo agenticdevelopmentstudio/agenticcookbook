@@ -1,0 +1,44 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "631b7b61-985a-4f5d-9c44-2cfbfdb9091b",
+    "title": "Error Responses",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use [RFC 9457 Problem Details](https://www.rfc-editor.org/rfc/rfc9457) format with",
+    "platforms": [],
+    "tags": [
+      "error-responses",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc9457"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "api-integration",
+      "error-handling"
+    ]
+  },
+  "synced": "c33bcd95b579e5f2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "fields", "heading": "The fields", "role": "how-to"},
+    {"part": "examples", "heading": "Example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,17 @@
+
+- `should-reduce-friction-at-every-step`: whether each step of the form avoids needless friction
+- `should-use-single-column-layout`: whether the form uses a single-column layout
+- `should-use-top-aligned-or-floating-labels`: whether labels are top-aligned or floating
+- `should-group-related-fields`: whether related fields are grouped visually
+- `should-place-primary-action-at-bottom`: whether the primary action sits at the bottom, aligned with the fields
+- `should-validate-on-blur`: whether fields validate on blur
+- `should-validate-full-form-on-submit`: whether the whole form is validated on submit
+- `must-not-validate-while-typing`: whether validation can fire during active typing
+- `should-show-success-indicators-only-where-wondered`: whether success indicators appear only where users genuinely wonder
+- `must-show-errors-inline`: whether every error is shown inline below its field
+- `must-not-signal-errors-by-color-alone`: whether errors use color, icon and text together
+- `should-write-specific-actionable-errors`: whether error messages are specific and actionable
+- `should-not-blame-the-user`: whether any error message blames the user
+- `should-use-placeholder-for-format-hints-only`: whether placeholder text is used only for format hints
+- `should-pre-fill-and-default`: whether fields are pre-filled or defaulted where possible
+- `should-mark-optional-fields`: whether optional fields, not required ones, are marked

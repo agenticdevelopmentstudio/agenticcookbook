@@ -15,3 +15,4 @@
 - `must-require-human-approval-for-new-dependencies`: whether every new dependency had explicit human approval before it was added or merged
 - `should-verify-package-exists-and-is-maintained`: whether each candidate package was confirmed to exist and be actively maintained
 - `must-not-install-hallucinated-or-abandoned-packages`: whether any installed name is hallucinated or abandoned
+- `should-watch-for-supply-chain-attacks`: the change shows no signs of supply-chain risk (typosquatted names, suspicious maintainer changes, malicious post-install scripts, or internal/public dependency-confusion collisions).

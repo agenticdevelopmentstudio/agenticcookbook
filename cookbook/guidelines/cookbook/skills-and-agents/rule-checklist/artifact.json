@@ -4,7 +4,7 @@
     "id": "392d9205-6a50-4815-80a0-7d148880d43b",
     "title": "Rule Lint Checklist",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -35,7 +35,7 @@
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "3ec3911c60eccd82",
+  "synced": "f578fafe6a5d1a3a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

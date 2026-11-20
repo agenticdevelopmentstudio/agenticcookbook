@@ -1,0 +1,17 @@
+
+- **must-support-rtl-languages**: All layouts MUST support right-to-left languages.
+- **should-use-leading-trailing**: You SHOULD use **leading/trailing** (not left/right) for alignment and padding.
+- **should-mirror-directional-icons**: You SHOULD mirror icons with directional meaning (forward/back arrows).
+- **should-not-mirror-non-directional-icons**: You SHOULD NOT mirror non-directional icons (checkmarks, clocks).
+- **should-test-with-rtl-locale**: You SHOULD test with an RTL locale enabled.
+- **should-preview-rtl-on-apple**: On the Apple platform, you SHOULD use `.environment(\.layoutDirection, .rightToLeft)` in previews.
+- **should-set-supports-rtl-on-android**: On Android, you SHOULD set `android:supportsRtl="true"` in the manifest.
+- **should-use-start-end-on-android**: You SHOULD use `start`/`end` instead of `left`/`right` in Android layouts.
+- **should-force-rtl-for-android-testing**: You SHOULD force RTL in Android developer options for testing.
+- **should-use-css-logical-properties**: On the web (TypeScript), you SHOULD use CSS logical properties throughout (`margin-inline-start` not `margin-left`):
+  - `margin-inline-start` instead of `margin-left`
+  - `padding-inline-end` instead of `padding-right`
+  - `inset-inline-start` instead of `left`
+- **should-set-dir-rtl-on-web**: On the web, you SHOULD set the `dir="rtl"` attribute on the root element for RTL locales.
+- **should-set-flow-direction-on-windows**: On Windows, you SHOULD use the `FlowDirection` property: set `FlowDirection="RightToLeft"` on the root element for RTL locales.
+- **should-test-with-rtl-language-packs-on-windows**: On Windows, you SHOULD test with RTL language packs installed.

@@ -4,3 +4,9 @@
 - **macos-support-applescript**: On macOS, you SHOULD support AppleScript via `NSScriptCommand` where appropriate.
 - **kotlin-use-appactions**: In Kotlin, you SHOULD use `AppActions` for Google Assistant integration.
 - **kotlin-support-intent-automation**: In Kotlin, you SHOULD support `Intent`-based automation.
+- **windows-expose-flows-via-protocol-activation**: On Windows, key flows SHOULD be exposed via protocol activation URIs.
+- **windows-handle-command-line-activation**: On Windows, command-line activation SHOULD be handled if the app supports it.
+- **windows-document-winui-scripting-limits**: The limitations of WinUI 3 scripting SHOULD be acknowledged in the docs.
+- **swift-expose-key-actions-as-intents**: In Swift, key app actions SHOULD be exposed as intents, with an `AppIntent` conformance for each.
+- **swift-provide-parameter-summaries-and-suggested-phrases**: In Swift, intents SHOULD provide parameter summaries and suggested phrases.
+- **swift-use-standard-parameter-types**: In Swift, intent parameter types SHOULD use standard types where possible.

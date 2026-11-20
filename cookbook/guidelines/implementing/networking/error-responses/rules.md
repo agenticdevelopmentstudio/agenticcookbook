@@ -4,3 +4,4 @@
 - **must-keep-title-stable**: **title** — the short human-readable summary MUST be stable across occurrences.
 - **must-mirror-status**: **status** — the HTTP status code MUST mirror the response.
 - **may-add-extension-fields**: Error responses MAY add extension fields (`errors`, `trace_id`) as needed.
+- **must-not-show-raw-status-codes**: Clients MUST NOT show raw HTTP status codes to the user.

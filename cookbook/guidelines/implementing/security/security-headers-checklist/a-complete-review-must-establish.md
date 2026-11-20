@@ -6,3 +6,4 @@
 - `must-set-referrer-policy`: whether every response sets `Referrer-Policy: strict-origin-when-cross-origin`
 - `must-set-permissions-policy`: whether every response sets `Permissions-Policy: camera=(), microphone=(), geolocation=()`
 - `must-set-no-store-on-sensitive-responses`: whether every sensitive response sets `Cache-Control: no-store`
+- `must-set-csp`: a strict `Content-Security-Policy` is present;

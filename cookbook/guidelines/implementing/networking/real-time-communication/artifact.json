@@ -4,7 +4,7 @@
     "id": "2e317c68-384d-46b8-b3b3-0bcc6602e545",
     "title": "Real-Time Communication",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -34,7 +34,7 @@
       "concurrency"
     ]
   },
-  "synced": "17a6c47b5f533bf2",
+  "synced": "151f66afea2e6583",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

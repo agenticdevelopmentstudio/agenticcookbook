@@ -14,3 +14,5 @@
 - **should-use-pytest**: In Python, you SHOULD use `pytest` for all tests.
 - **must-not-touch-production-dashboard-data**: Production dashboard data MUST NOT be removed or modified during testing — use demo port 9888, not production port 8888.
 
+- **should-test-new-risk-bearing-paths**: A change SHOULD include a test, in the change or a named existing test, that exercises each new risk-bearing code path it introduces: retry/backoff loops, network or subprocess I/O and its failure handling, new exception handlers or error-recovery branches, concurrency primitives (locks, async tasks, shared mutable state), and boundary parsing of external input.
+- **should-provoke-a-concrete-failure-mode**: The test of a new risk-bearing path SHOULD provoke a specific failure mode that is concrete and that a test could actually assert.

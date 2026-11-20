@@ -4,11 +4,11 @@
     "id": "25a3b827-1da9-4600-98ec-f5c492a162e3",
     "title": "Schema evolution and migrations",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-15",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,13 +34,13 @@
       "https://levlaz.org/sqlite-db-migrations-with-pragma-user_version/"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-16",
+    "approved-date": "2026-11-19",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "0a44d2c6504e4660",
+  "synced": "e6a17228b2e9cf0d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -191,8 +191,8 @@
       "judged": {
         "by": "independent judge (opus)",
         "verdict": "pass",
-        "note": "windows-debug-settings-page keeps access through a navigation menu item visible only in debug builds, and a-complete-review-must-establish checks it.",
-        "pin": "3de298fac077f3f9155d483b7e012c6665ea1131acfb3b4ca3240ed1e4cbe6b6"
+        "note": "The rule states the panel is reached through a navigation menu item visible only in debug builds, and the review part checks for a debug-only navigation item, so the meaning is kept without loss or contradiction.",
+        "pin": "e94cb9b5aabafac9ea94aa7cf6a197c3fe4b8f2de773523bc53314d64c21482d"
       }
     }
   ],

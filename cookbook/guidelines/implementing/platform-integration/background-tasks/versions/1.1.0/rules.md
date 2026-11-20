@@ -1,0 +1,21 @@
+
+- **use-platform-background-apis**: Apps that sync data, process uploads, or maintain state SHOULD use platform background execution APIs rather than relying on foreground presence.
+- **use-sanctioned-background-apis**: You SHOULD use the platform's sanctioned background APIs — unsanctioned workarounds get killed and drain battery.
+- **design-tasks-to-be-resumable**: You SHOULD design tasks to be resumable — background execution can be interrupted at any time.
+- **minimize-resource-usage**: You SHOULD minimize resource usage — the OS budgets CPU and network time strictly.
+- **report-progress-through-notifications**: You SHOULD report progress and completion through notifications when appropriate.
+- **apple-use-bgtasks-for-deferred-work**: On Apple platforms, you SHOULD use `BGAppRefreshTask` and `BGProcessingTask` via the BackgroundTasks framework for deferred work.
+- **apple-use-urlsession-background-transfers**: On Apple platforms, you SHOULD use `URLSession` background transfers for uploads and downloads that survive app suspension.
+- **macos-prevent-app-nap**: On macOS, longer-running background work is less restricted but SHOULD still use `ProcessInfo.performActivity` to prevent App Nap.
+- **macos-use-nsbackgroundactivityscheduler**: On macOS, you SHOULD use `NSBackgroundActivityScheduler` for periodic maintenance tasks.
+- **android-use-workmanager-for-deferrable-work**: On Android, you SHOULD use `WorkManager` for all deferrable background work — it handles constraints, retries, and chaining.
+- **android-use-foregroundservice-for-visible-work**: On Android, you SHOULD use `ForegroundService` with a persistent notification for user-visible ongoing work (music playback, navigation, uploads).
+- **android-respect-doze-and-standby**: On Android, you SHOULD respect Doze mode and App Standby buckets.
+- **android-avoid-alarmmanager**: On Android, you SHOULD avoid `AlarmManager` for work that `WorkManager` can handle.
+- **windows-use-backgroundtask**: On Windows, you SHOULD use `BackgroundTask` with the Windows App SDK for background execution.
+- **windows-register-triggers-in-manifest**: On Windows, you SHOULD register triggers (time, network state change, push notification) in the app manifest.
+- **windows-use-extendedexecutionsession**: On Windows, for long-running tasks, you SHOULD use `ExtendedExecutionSession`.
+- **web-use-service-workers**: On the web, you SHOULD use Service Workers for background sync (`BackgroundSyncManager`) and push notification handling.
+- **web-use-periodic-background-sync**: On the web, you SHOULD use the Periodic Background Sync API for recurring data refresh (requires PWA install and user engagement).
+- **web-use-web-workers-for-cpu-work**: On the web, you SHOULD use Web Workers for CPU-intensive tasks that shouldn't block the UI thread.
+- **web-fall-back-to-requestidlecallback**: On the web, you SHOULD fall back to `requestIdleCallback` for low-priority deferred work.

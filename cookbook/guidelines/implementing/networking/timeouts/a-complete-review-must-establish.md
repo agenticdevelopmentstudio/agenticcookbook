@@ -3,3 +3,9 @@
 - `must-not-use-infinite-timeouts`: whether any timeout is infinite
 - `should-use-the-default-timeouts`: whether the timeouts match the table's defaults
 - `should-use-202-for-long-running-operations`: whether long-running operations use 202 Accepted + polling
+- `should-use-the-default-timeouts`: Each network request sets a connection timeout (≈10s) and a read/response timeout (≈30s), with a total/request-lifecycle timeout (≈60–120s) bounding retries;
+- `must-not-use-infinite-timeouts`: no request is left with an infinite or unset timeout (e.g., a `fetch()` with no `AbortController` or equivalent);
+- `must-set-connection-and-read-timeouts`: Both a connection timeout and a read/response timeout are configured on every request (neither omitted), with the connection timeout around 10s and the read timeout around 30s;
+- `should-use-the-default-timeouts`: a total/request timeout bounding the full lifecycle including retries is present where applicable (~60-120s);
+- `must-not-use-infinite-timeouts`: no request uses an infinite, 0, null, or disabled timeout;
+- `should-use-202-for-long-running-operations`: long-running operations return 202 Accepted with a polling endpoint rather than extending or removing timeouts to wait out the work.

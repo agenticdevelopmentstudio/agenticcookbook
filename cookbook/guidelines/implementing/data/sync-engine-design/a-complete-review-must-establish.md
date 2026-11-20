@@ -7,3 +7,4 @@
 - Error classification documented (transient vs permanent) with handling strategy per type
 - Circuit breaker thresholds defined (failure count, timeout duration, reset strategy)
 
+- `should-separate-four-layers`: A review passes when it establishes every item above.

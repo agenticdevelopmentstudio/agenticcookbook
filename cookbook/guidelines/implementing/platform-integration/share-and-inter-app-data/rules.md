@@ -23,3 +23,4 @@
 - **web-register-share-target**: On the web, you SHOULD register as a share target in the Web App Manifest (`share_target`).
 - **web-support-html-drag-and-drop**: On the web, you SHOULD support drag and drop via the HTML Drag and Drop API.
 - **web-use-file-handling-api**: On the web, you SHOULD use the File Handling API to register as a handler for specific file types in PWAs.
+- **windows-check-clipboard-format-availability**: On Windows, clipboard operations SHOULD handle format availability checks.

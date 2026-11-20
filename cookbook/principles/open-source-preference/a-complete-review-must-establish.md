@@ -7,3 +7,5 @@
 - `must-not-install-unverified-ai-suggested-packages`: whether any AI-suggested package name was installed without being verified
 - `should-present-at-least-two-options`: whether at least two options were presented with their trade-offs
 - `should-document-why-open-source-was-rejected`: whether a custom build documents why the available open-source options were rejected
+- `should-make-custom-a-deliberate-decision`: Custom implementations of solved problems (parsers, serializers, HTTP clients, caches) are justified;
+- `should-evaluate-candidates-before-recommending`: chosen library has an active maintenance history and compatible license

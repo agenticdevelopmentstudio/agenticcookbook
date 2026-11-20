@@ -1,0 +1,52 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "8b9def90-2153-45ba-9dcc-fa2aa3bf745e",
+    "title": "Agent Structure Reference",
+    "type": "guideline",
+    "version": "1.1.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reference for Claude Code agent file format, frontmatter fields, tool access patterns, and permission modes",
+    "platforms": [],
+    "tags": [
+      "agents",
+      "structure",
+      "reference",
+      "frontmatter"
+    ],
+    "depends-on": [],
+    "related": [
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
+      "ef7e17ea-a4c1-4946-aff7-a81cb27885a0"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "skill-authoring"
+    ]
+  },
+  "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
+  "synced": "3c65760c4d9c8b27",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "file-format", "heading": "File Format", "role": "how-to"},
+    {"part": "frontmatter-fields", "heading": "Frontmatter Fields", "role": "how-to"},
+    {"part": "agent-locations-priority-order", "heading": "Agent Locations (Priority Order)", "role": "how-to"},
+    {"part": "tool-access-patterns", "heading": "Tool Access Patterns", "role": "how-to"},
+    {"part": "permission-modes", "heading": "Permission Modes", "role": "how-to"},
+    {"part": "key-differences-from-skills-and-rules", "heading": "Key Differences from Skills and Rules", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

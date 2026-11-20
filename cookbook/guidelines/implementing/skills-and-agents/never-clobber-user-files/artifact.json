@@ -4,7 +4,7 @@
     "id": "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
     "title": "Never overwrite a user's files",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -44,7 +44,7 @@
       "configuration"
     ]
   },
-  "synced": "769131b32f32f3c3",
+  "synced": "bd10b29772c3e8ac",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

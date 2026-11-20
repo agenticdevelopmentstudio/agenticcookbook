@@ -1,0 +1,16 @@
+
+- `should-group-owner-with-owned-objects`: objects created in another object's `init` and destroyed in its `deinit`, placed in different groups
+- `should-treat-subscription-owners-as-lifecycle-coupled`: `Set<AnyCancellable>`, `DisposeBag` or `compositeDisposable` holders, and whether the findings record them as lifecycle-coupled to the streams they subscribe to
+- `should-not-split-state-machines`: a state enum, its transition methods and the executing object spread across groups
+- `should-group-session-with-its-objects`: authentication, network or user sessions, and whether the objects living only as long as the session share its group
+- `may-separate-weakly-referenced-objects`: `weak` / `unowned` / `WeakReference` edges, and whether separating the two sides rests on independent lifecycles and a narrow interface
+- `should-follow-disposal-chains`: `Dispose()` / `cancel()` / `close()` calls, and whether the chain they form is traced
+- `must-invalidate-timers`: a `Timer.scheduledTimer()` with no `invalidate()`
+- `should-note-timer-invalidation-site`: whether the findings say where each timer is invalidated relative to its owner's teardown
+- `should-note-factory-assembly`: factory methods, and whether the findings say what each assembles
+- `should-note-state-between-init-phases`: `init()` followed by `setup()` / `configure()` / `start()`, and whether the in-between state is described
+- `should-note-released-resources`: teardown methods, and whether the findings say what they release
+- `should-note-teardown-hook-cleanup`: framework teardown hooks, and whether the findings say what cleanup they do
+- `should-note-session-scope`: `URLSession`, `OkHttpClient` or `HttpClient` objects, and whether each is described as per-request or long-lived
+- `should-note-valid-transitions`: state transition methods, and whether the valid transitions are listed
+- `should-note-observer-removal`: `NotificationCenter` observer registration, and whether removal is described as explicit or token-managed

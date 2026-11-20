@@ -4,7 +4,7 @@
     "id": "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
     "title": "Shell scripts",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -36,7 +36,7 @@
       "configuration"
     ]
   },
-  "synced": "81286cd6c628b35f",
+  "synced": "0103858c30598645",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
