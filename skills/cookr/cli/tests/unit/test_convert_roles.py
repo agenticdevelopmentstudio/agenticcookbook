@@ -1679,3 +1679,15 @@ def test_a_renamed_topic_still_checks_twins_named_after_its_old_name(tmp_path, c
     code, out, _ = _lossless(capsys, folder, base, "--draft")
     assert code == 1
     assert any("planning/data/t " in (f["reason"] or "") for f in out["failures"]), out
+
+
+def test_a_renamed_from_for_another_base_reports_the_base_mismatch(tmp_path, capsys):
+    _topic(tmp_path)
+    base = _commit(tmp_path)
+    folder = _rename(tmp_path, "cookbook/guidelines/implementing/data/t", "cookbook/guidelines/implementing/data/t2")
+    later = _commit(tmp_path)
+    (folder / "lossless.json").write_text(json.dumps(
+        {"base": base, "renamed_from": "cookbook/guidelines/implementing/data/t", "moved": []}))
+    code, out, _ = _lossless(capsys, folder, later, "--draft")
+    assert code == 1
+    assert any("not --base" in (f["reason"] or "") for f in out["failures"]), out

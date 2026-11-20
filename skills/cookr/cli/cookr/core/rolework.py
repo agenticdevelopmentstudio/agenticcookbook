@@ -1009,9 +1009,11 @@ def _artifact_id(folder: Path, rev: Optional[str] = None) -> Optional[str]:
 
 def _base_home(folder: Path, rev: str, accounting: Optional[dict]) -> Path:
     """Where `folder`'s own text lives at `rev`: itself, or the `renamed_from`
-    path its accounting names, which must be gone now and carry its id."""
+    path its accounting names, which must be gone now and carry its id. An
+    accounting for another base names no path at `rev`: it is ignored, so
+    `lossless` reports the base mismatch instead."""
     renamed = (accounting or {}).get("renamed_from")
-    if not renamed:
+    if not renamed or _commit(folder, accounting["base"]) != _commit(folder, rev):
         return Path(folder).resolve()
     top = _top(folder)
     home = (top / renamed).resolve()

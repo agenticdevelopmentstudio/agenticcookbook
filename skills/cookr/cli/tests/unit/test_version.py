@@ -42,4 +42,5 @@ def test_the_version_is_pinned():
     # under FANOUT_CAP once every topic is roled.
     # 0.23.1: roles lossless: a topic moved to another use case under the same folder name is no longer reported as its own unread twin.
     # 0.23.2: roles lossless: a renamed topic's twin check also matches folders named after its old name.
-    assert __version__ == "0.23.2"
+    # 0.23.3: roles lossless: a renamed_from for another base is ignored, so the base mismatch is reported instead of raised.
+    assert __version__ == "0.23.3"
