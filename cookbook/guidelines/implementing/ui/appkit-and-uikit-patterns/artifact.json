@@ -56,16 +56,16 @@
     {"part": "rules", "heading": "Rules", "role": "rules"},
     {"part": "responder-chain", "heading": "Responder chain", "role": "how-to"},
     {"part": "introduction", "heading": "Introduction", "role": "review-focus"},
-    {"part": "responder-chain-2", "heading": "Responder chain", "role": "review-focus"},
+    {"part": "review-responder-chain", "heading": "Responder chain review", "role": "review-focus"},
     {"part": "delegates", "heading": "Delegates", "role": "review-focus"},
-    {"part": "main-thread-2", "heading": "Main thread", "role": "review-focus"},
+    {"part": "review-main-thread", "heading": "Main thread review", "role": "review-focus"},
     {"part": "lifecycle", "heading": "Lifecycle", "role": "review-focus"},
-    {"part": "state-restoration-2", "heading": "State restoration", "role": "review-focus"},
+    {"part": "review-state-restoration", "heading": "State restoration review", "role": "review-focus"},
     {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
     {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
     {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
-    {"part": "why-this-matters-2", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-a-review-checks-these", "heading": "Why a review checks these", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }
