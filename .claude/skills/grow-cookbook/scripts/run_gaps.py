@@ -388,6 +388,10 @@ def measures(area: str, workspace: Path, repo: Path) -> dict:
 
     out = {"topics": {}, "measured_elsewhere": [], "unmeasurable": [], "missing_files": missing,
            "stale_reference": stale_reference(rows),      # R-I-1 (1.4.27)
+           # 1.4.46: the files whose text opens with the speciality's own Review focus (a format-3
+           # roled row's `copied` names it: its file starts at Build focus instead)
+           "own_review_focus": sorted(r["file"] for r in rows if r.get("file")
+                                      and "Review focus" not in (r.get("copied") or [])),
            "building": unmeasured.get("building", []), "marked_here": unmeasured.get("marked_here", []),
            "new_topics": _plan_names(plan, "new"), "r9_targets": r9_targets,
            "specialities": bool([r for r in rows if r.get("file")] or unmeasured.get("building")),
@@ -851,7 +855,7 @@ def run(area: str, workspace: Path, repo: Path, out_dir: Path, cookr_py: str, cl
     extra = _home_measures(area, a, repo, m, result, out_dir, (cookr_py, cli), mode, scratch, devteam,
                            (texts, cuts), area_words)
     result["short_sentences"], result["markers"] = _short(m, extra, result, texts, cuts, cookr_py, cli)
-    result["repeat_of"] = _repeats(result["topics"], texts)
+    result["repeat_of"] = _repeats(result["topics"], texts, set(m.get("own_review_focus", [])))
     result["held_by_wording"] = _held(m, result, listed, (texts, cuts), topic_words, (cookr_py, cli)) + \
         result["held_by_wording"]
     _resolve_marks(result, workspace, m, texts)
@@ -2007,7 +2011,7 @@ def fragment(piece: str, after_vs: bool = False) -> bool:
 REPEAT_SHARE = 0.75     # G104: the share of the shorter sentence's words the longer one holds: a restatement
 
 
-def _repeats(topics: list[dict], texts: dict) -> list[dict]:
+def _repeats(topics: list[dict], texts: dict, own_review_focus: set[str] = frozenset()) -> list[dict]:
     """G104 (1.4.33): within one speciality, each lacking sentence that
     restates an earlier lacking one (the same text, or the longer holding
     REPEAT_SHARE of the shorter's words, as "A complete review must establish
@@ -2015,7 +2019,10 @@ def _repeats(topics: list[dict], texts: dict) -> list[dict]:
     "review_focus_pair", "pieces"}], the shape of `same_text`. G146 (1.4.36):
     `review_focus_pair` is True for sentences [1, 2], the format-2 Review
     focus and its restatement (every direct speciality has it), tagged, never
-    skipped; `pieces` names each sentence's text and the topics it is counted
+    skipped, only for a file in `own_review_focus` (1.4.46: a format-3 roled
+    reference leaves its copied Review focus out, so its sentences 1 and 2 are
+    other text, and a file with no A/reference.json row is never assumed to
+    open with one); `pieces` names each sentence's text and the topics it is counted
     at. Advisory: every sentence still counts where it stands."""
     lacking: dict[tuple, dict[int, set[str]]] = {}      # (speciality, file) -> n -> topics
     for t in topics:
@@ -2044,7 +2051,8 @@ def _repeats(topics: list[dict], texts: dict) -> list[dict]:
             ns_ = sorted(set(g))
             out.append({"speciality": sp, "text": found[root - 1], "sentences": ns_,
                         "topics": sorted(set().union(*(by_n[n] for n in g))),
-                        "review_focus_pair": ns_ == [1, 2],     # G146: format 2's Review focus restated
+                        # G146: the Review focus restated; 1.4.46: only where the file opens with it
+                        "review_focus_pair": ns_ == [1, 2] and f in own_review_focus,
                         "pieces": [{"n": n, "text": found[n - 1], "topics": sorted(by_n[n])} for n in ns_]})
     return out
 

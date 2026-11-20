@@ -2247,6 +2247,25 @@ def test_the_review_focus_pair_is_tagged_and_each_sentence_named(tmp_path, capsy
     assert other and other[0]["review_focus_pair"] is False
 
 
+def test_a_roled_reference_s_first_two_sentences_are_never_a_review_focus_pair(tmp_path, capsys):
+    # 1.4.46: a format-3 roled reference leaves its copied Review focus out
+    # (its row's `copied` names it), so sentences 1 and 2 are Build focus
+    # text: a restatement there is a repeat, never review procedure.
+    repo, ws = build(tmp_path)
+    ref = ws / "areas" / AREA / "reference" / "security--shared.txt"
+    ref.write_text(ref.read_text() + "\nA complete review must establish that every authorization decision is "
+                   "logged with the subject and the resource named.\n")
+    rows_file = ws / "areas" / AREA / "reference.json"
+    rows = json.loads(rows_file.read_text())
+    for r in rows:
+        if r["speciality"] == "security/shared":
+            r["copied"] = ["Review focus", "A complete review must establish"]
+    rows_file.write_text(json.dumps(rows))
+    out = run(repo, ws, capsys)[1]
+    rows = [r for r in out["repeat_of"] if r["speciality"] == "security/shared"]
+    assert len(rows) == 1 and rows[0]["sentences"] == [1, 2] and rows[0]["review_focus_pair"] is False, rows
+
+
 def test_a_recorded_home_tags_the_row_and_a_sentence_lacking_everywhere_says_so(tmp_path, capsys):
     # G145 (N24): mark.py --home N=topic records the plan's chosen home; the
     # row stays listed, tagged home_recorded. A sentence measured and lacking

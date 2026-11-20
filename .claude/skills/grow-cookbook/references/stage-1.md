@@ -703,9 +703,13 @@ whatever a key's name says (1.4.33, G118). Each lacking piece counts where
 it stands: `repeat_of` lists, within one speciality, each lacking sentence
 that restates an earlier one (the same text, or most of its words; the
 shape of `same_text`); the plan notes it "repeat of <n>" and still counts
-it (1.4.33, G104). A row for sentences 1 and 2 (a format-2 speciality's
+it (1.4.33, G104). A row for sentences 1 and 2 (a speciality's own
 Review focus and its restatement, which every direct speciality has)
-carries `review_focus_pair: true`, tagged, never skipped; its `pieces`
+carries `review_focus_pair: true`, tagged, never skipped, only when the
+reference opens with that Review focus: a format-3 roled reference leaves
+its copied Review focus out (its `A/reference.json` row's `copied` names
+it), so its sentences 1 and 2 are other text, never tagged, and each counts
+as a gap like any other (1.4.46); its `pieces`
 name each sentence's text and the topics it is counted at, so the pair is
 judged once as review procedure (*Review-procedure sentences*; 1.4.36, G146). A sentence
 measured in part keeps its measured pieces' verdicts under `measured_pieces`
