@@ -91,7 +91,7 @@ from .artifact import (
     save_document,
 )
 from .bumping import BumpError, plan_against_base
-from .markdown import uncited
+from .markdown import RESEARCH_DIR, in_versions, uncited
 from .errors import CookbookError
 from .index import INDEX_FILE, IndexCache, current_index, load_index, save_index, sync_from_folders
 from .linkedit import edit_links
@@ -1436,6 +1436,17 @@ def _note_copy(topic: Path, copy: Path, top: Path) -> None:
         path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def _held_below(copy: Path) -> list[str]:
+    """What below `copy` a fold would delete unredirected: its `research/`
+    folder, and every artifact nested in it (its own `versions/` snapshots
+    aside, which are the copy's own history). Paths relative to `copy`."""
+    held = [RESEARCH_DIR + "/"] if (copy / RESEARCH_DIR).is_dir() else []
+    held += sorted(m.parent.relative_to(copy).as_posix() + "/" for m in copy.rglob(ARTIFACT_FILE)
+                   if m.parent != copy and not in_versions(m, copy)
+                   and RESEARCH_DIR not in m.relative_to(copy).parts)
+    return held
+
+
 def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
     """Fold `copy` into `topic`: the copy's text the topic lacks becomes new
     unroled parts (so the census names them until each gets a role), the fold
@@ -1464,6 +1475,10 @@ def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
     except CookbookError:
         pass   # no manifest: links are redirected, their labels left as written
 
+    lost = _held_below(copy)
+    if lost:
+        raise RoleworkError(f"{copy}: it holds {', '.join(lost)}, which a fold would delete with the copy; "
+                            f"move each into {topic} (or its own folder) first")
     _readable(cookbook)   # every link edit below must be able to land: check before writing
     in_text = re.compile(r"(\[([^\]]+)\]\()?cookbook:((?:[0-9A-Fa-f-]{36}/)?)" + re.escape(copy_id)
                          + r"(?![0-9A-Fa-f-])(\))?", re.I)
