@@ -776,11 +776,25 @@ def _best_unit(sentence: str, part: Part) -> str:
     return max(units, key=lambda u: overlap(sentence, u))
 
 
+def _drop_self_links(s: str, artifact: Artifact) -> str:
+    """`s` with each link to its own topic dropped, with the topic's title
+    when it names the link ("against Python ([adc…](cookbook:<own id>))"): a
+    pointer back at the topic carries none of its content."""
+    own = artifact.meta.get("id")
+    if not own:
+        return s
+    link = rf"\[[^\]]*\]\(cookbook:{re.escape(own)}\)"
+    title = artifact.meta.get("title")
+    named = rf"(?:{re.escape(title)}\s*)?" if title else ""
+    return re.sub(rf"\s*{named}\({link}\)|{link}", " ", s)
+
+
 def _judge(s: str, names: list[str], artifact: Artifact, rules: dict[str, str],
            why: dict[str, str]) -> tuple[Optional[str], Optional[str]]:
     """(why the mapping of `s` to `names` fails, or None; "lead_in" or
     "framing" when it passed as one). A lead-in may name every rule it
-    introduced; any other mapping names at most MAX_TARGETS."""
+    introduced; any other mapping names at most MAX_TARGETS. A mapping is
+    measured without the sentence's links to its own topic (`_drop_self_links`)."""
     shaped = lead_in(s) or framing(s)
     if not shaped and len(names) > MAX_TARGETS:
         return f"maps to {len(names)} targets; at most {MAX_TARGETS}", None
@@ -826,6 +840,7 @@ def _judge(s: str, names: list[str], artifact: Artifact, rules: dict[str, str],
         if wrong:
             return f"{kind.replace('_', '-')}: " + "; ".join(wrong), None
         return None, kind
+    s = _drop_self_links(s, artifact)
     texts = [rules[n] if n in rules else unlabeled(_best_unit(s, parts[n])) for n in names]
     target = "\n".join(texts)
     share = overlap(s, target)

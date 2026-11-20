@@ -1691,3 +1691,19 @@ def test_a_renamed_from_for_another_base_reports_the_base_mismatch(tmp_path, cap
     code, out, _ = _lossless(capsys, folder, later, "--draft")
     assert code == 1
     assert any("not --base" in (f["reason"] or "") for f in out["failures"]), out
+
+
+def test_a_link_to_its_own_topic_carries_none_of_a_moved_sentence(tmp_path, capsys):
+    # "Review changed T against [T](cookbook:<own id>)." rewritten to "... against the rules above.": the
+    # self-link held none of the sentence's content, so the move is measured without it.
+    folder = _topic(tmp_path)
+    own = "6f1c1e2a-0000-4000-8000-000000000001"
+    old = f"Review changed joins against T ([adc.guideline.implementing.data.t](cookbook:{own}))."
+    (folder / "focus.md").write_text(f"\nLook at the joins. {old}\n\n", encoding="utf-8")
+    base = _commit(tmp_path)
+    (folder / "focus.md").write_text("\nLook at the joins. Review changed joins against the rules above.\n\n",
+                                     encoding="utf-8")
+    (folder / "lossless.json").write_text(json.dumps({"base": base, "moved": [{"sentence": old, "to": "focus"}]}))
+    _commit(tmp_path)
+    code, out, _ = _lossless(capsys, folder, base, "--draft")
+    assert code == 0, out["failures"]
