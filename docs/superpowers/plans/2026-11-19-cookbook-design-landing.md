@@ -47,7 +47,12 @@ A fresh worktree off `main` after phase 1 lands.
 - ✅ all 44 principles converted
 - ✅ topics with no review text get reviewer and build parts written from their own rules (R3)
 - ✅ each converted topic stays in `research-exempt.json` until researched
-- 🔄 `cookr update` ✅; gates as in phase 1; landed with `/ship no-squash`
+- ✅ `cookr update` run; README and CLAUDE.md counts current
+- ✅ whole-branch review (`mycodereview --squashed --cr high`, review `2026-11-20-live-claude-claude-opus-5-5-ac2d`):
+  8 findings, each fixed in its own commit (f6 in two: the cookr fix and the 13 topics; f8 by recording why the
+  pinned bundles stay); fixes recorded with `teambench live fixes`; suites re-run after the fixes: cookr 1543,
+  grow-cookbook 698, `validate` and `lint --no-llm` over 383 artifacts all pass
+- 🔄 landed with `/ship no-squash`
 - ℹ️ Two reviewed commits bundle changes that could have stood alone (review `2026-11-20-live-claude-claude-opus-5-5-ac2d`,
   f8). They stay bundled, because they are the commits that review pinned. Splitting them now would rewrite the pinned
   commit and cut its fix commits off from it. What each one holds, for anyone reverting part of it:
