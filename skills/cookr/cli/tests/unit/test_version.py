@@ -41,4 +41,5 @@ def test_the_version_is_pinned():
     # principle's coding/reviewing/principles), so the whole cookbook stays
     # under FANOUT_CAP once every topic is roled.
     # 0.23.1: roles lossless: a topic moved to another use case under the same folder name is no longer reported as its own unread twin.
-    assert __version__ == "0.23.1"
+    # 0.23.2: roles lossless: a renamed topic's twin check also matches folders named after its old name.
+    assert __version__ == "0.23.2"

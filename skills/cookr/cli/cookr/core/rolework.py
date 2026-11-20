@@ -1073,8 +1073,8 @@ def _unread_copies(folder: Path, rev: str, read: list[Path],
                    home: Optional[Path] = None) -> list[str]:
     """Why a copy folded since `rev` would go unread, one reason each:
     a "Fold <path>" history row added since `rev` whose copy is not read; an
-    artifact folder at `rev` that is gone now and has the topic's folder name
-    (a twin) that is not read, unless another live artifact carries its id (it
+    artifact folder at `rev` that is gone now and has the topic's folder name,
+    or its `home`'s when it was renamed (a twin), that is not read, unless another live artifact carries its id (it
     was renamed, not folded) or it is `home` itself; a read copy that still exists (not folded). `home`
     is where the topic was at `rev` (`_base_home`), for its history there."""
     top = _top(folder)
@@ -1100,7 +1100,7 @@ def _unread_copies(folder: Path, rev: str, read: list[Path],
         if not line.endswith(f"/{ARTIFACT_FILE}"):
             continue
         twin = (top / line).parent.resolve()
-        if (twin.name == folder.name and twin not in (folder, home) and not twin.exists()
+        if (twin.name in {folder.name, home.name} and twin not in (folder, home) and not twin.exists()
                 and twin not in listed):
             if live is None:
                 live = _live_ids(cookbook, folder)

@@ -1662,3 +1662,20 @@ def test_a_topic_moved_to_another_use_case_is_not_its_own_twin(tmp_path, capsys)
         {"base": base, "renamed_from": "cookbook/guidelines/planning/data/t", "moved": []}))
     code, out, _ = _lossless(capsys, folder, base, "--draft")
     assert code == 0, out
+
+
+def test_a_renamed_topic_still_checks_twins_named_after_its_old_name(tmp_path, capsys):
+    _topic(tmp_path)
+    twin = _topic(tmp_path, "cookbook/guidelines/planning/data/t", roled=False)
+    manifest = twin / "artifact.json"
+    manifest.write_text(manifest.read_text().replace("6f1c1e2a-0000-4000-8000-000000000001",
+                                                     "6f1c1e2a-0000-4000-8000-0000000000dd"))
+    base = _commit(tmp_path)
+    folder = _rename(tmp_path, "cookbook/guidelines/implementing/data/t", "cookbook/guidelines/implementing/data/t2")
+    import shutil
+    shutil.rmtree(twin)
+    (folder / "lossless.json").write_text(json.dumps(
+        {"base": base, "renamed_from": "cookbook/guidelines/implementing/data/t", "moved": []}))
+    code, out, _ = _lossless(capsys, folder, base, "--draft")
+    assert code == 1
+    assert any("planning/data/t " in (f["reason"] or "") for f in out["failures"]), out
