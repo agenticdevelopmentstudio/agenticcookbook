@@ -97,7 +97,7 @@ The intro held the text twice (a fold left a second copy under `# Logging`); the
 - "Configure log levels per category via `appsettings.json`" → `should-configure-log-levels-per-category`: "In C#, code SHOULD configure log levels per category via `appsettings.json`."
 - "Use ETW tracing (`EventSource`) for system-level diagnostics and startup timing" → `should-use-etw-for-system-diagnostics`: "On Windows, code SHOULD use ETW tracing …"
 - "Use XAML Live Visual Tree in Visual Studio for debugging visual tree issues" → `should-use-xaml-live-visual-tree`: "On Windows, developers SHOULD use XAML Live Visual Tree …"
-- "Use [Visual Studio Performance Profiler](…) for CPU, memory, and UI responsiveness analysis" → `should-use-vs-performance-profiler`: "On Windows, developers SHOULD use [Visual Studio Performance Profiler](…) …"
+- "Use `[Visual Studio Performance Profiler](…)` for CPU, memory, and UI responsiveness analysis" → `should-use-vs-performance-profiler`: "On Windows, developers SHOULD use `[Visual Studio Performance Profiler](…)` …"
 - The Swift bullets "Subsystem MUST match the bundle ID" and "Category MUST be one per component or flow" kept their MUST; they are scoped "On Apple platforms" (`must-match-subsystem-to-bundle-id`, `must-use-one-category-per-component`) and are not promotions.
 **bars**: all three authored.
 **contradictions**: none.

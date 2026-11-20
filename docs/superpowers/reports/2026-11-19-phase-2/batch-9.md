@@ -231,7 +231,7 @@ Sixteen topics under `cookbook/guidelines/implementing/ui/` converted to roled p
 
 **Promoted**:
 
-- "**Loading** — show progress (see [adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068))." → `should-show-progress-while-loading`: "Loading — SHOULD show progress (see [adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068))."
+- "**Loading** — show progress (see `[adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068)`)." → `should-show-progress-while-loading`: "Loading — SHOULD show progress (see `[adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068)`)."
 - "Use skeleton screens for content-heavy views, spinners for actions." → `should-use-skeletons-and-spinners`: "SHOULD use skeleton screens for content-heavy views, spinners for actions."
 - "Never block the entire screen for a partial load." → `must-not-block-screen-for-partial-load`: "MUST NOT ever block the entire screen for a partial load."
 - "**Empty** — explain what belongs here, why it's empty, and provide a single clear action to populate it." → `should-explain-empty-state`: "Empty — SHOULD explain what belongs here, why it's empty, and provide a single clear action to populate it."

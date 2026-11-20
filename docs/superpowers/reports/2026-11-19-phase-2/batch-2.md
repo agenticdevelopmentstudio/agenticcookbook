@@ -378,7 +378,7 @@ Commit `3bc4b8fa`. 17 rules; lossless: 23 moved, 0 obsolete. The intro stays ver
 - "Turn on `strict` first; land that as its own change." → `should-turn-on-strict-first`: "On existing code, you SHOULD turn on `strict` first, and land that as its own change."
 - "Enable one stricter flag at a time (…), fixing the fallout before moving on." → `should-enable-one-stricter-flag-at-a-time`: "You SHOULD enable one stricter flag at a time (…), fixing the fallout before moving on."
 - "Treat the following as roadmap/proposed behavior. Do **not** write configs or guidance that assume it as current." → `should-not-assume-forecast-behavior-is-current`: "You SHOULD treat the forecast behavior below as roadmap/proposed behavior, and SHOULD NOT write configs or guidance that assume it as current."
-- "As of this writing, confirm actual release state against the official [TypeScript blog] and [microsoft/typescript-go] before depending on it." → `should-confirm-native-compiler-release-state`: "As of this writing, you SHOULD confirm the actual release state of the native Go compiler and the TypeScript 7.0 line against the official [TypeScript blog](…) and [microsoft/typescript-go](…) before depending on it."
+- "As of this writing, confirm actual release state against the official [TypeScript blog] and [microsoft/typescript-go] before depending on it." → `should-confirm-native-compiler-release-state`: "As of this writing, you SHOULD confirm the actual release state of the native Go compiler and the TypeScript 7.0 line against the official `[TypeScript blog](…)` and `[microsoft/typescript-go](…)` before depending on it."
 
 **bars**: `look-for` authored, `a-complete-review-must-establish` authored, `a-build-must-establish` authored.
 
