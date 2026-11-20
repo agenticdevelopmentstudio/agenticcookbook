@@ -1,5 +1,5 @@
 
-Review Codex configuration against Codex configuration ([adc.guideline.implementing.skills-and-agents.codex-configuration](cookbook:e8870c2b-ae55-4e48-a4e7-081d65f27418)).
+Review Codex configuration against the rules above.
 
 - `should-put-config-where-codex-looks`, `should-keep-shared-config-in-repo`: Each setting is in the layer that reaches the people who need it: shared settings in `.codex/config.toml`, personal ones in `~/.codex/config.toml`.
 - `must-not-depend-on-untrusted-checkout`: a setting that must apply on every machine but loads only from a project's `.codex/config.toml`, which an untrusted checkout never loads.

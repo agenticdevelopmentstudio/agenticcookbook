@@ -86,6 +86,16 @@
         "note": "The fact that only the nearest Directory.Packages.props applies is kept as the reason clause of the parent-import rule.",
         "pin": "786c97532f57b8d8cd5a3f9138b9d332b878c6e01b074382bc6fb45b5c97141e"
       }
+    },
+    {
+      "sentence": "Review project-file changes against Visual Studio project files ([adc.guideline.implementing.code-quality.visual-studio-project-files](cookbook:9ed898fe-ba86-44be-9911-d24fea60dc90)).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps the instruction to review project-file changes against this guideline; the self-link is replaced by 'the rules above', which names the same guideline's rules part, placed before look-for.",
+        "pin": "a8fd1a1bd2a63dc6ef704a72be0aa59447e89ee15601e7e2801a1c9dcb941a3c"
+      }
     }
   ],
   "obsolete": []

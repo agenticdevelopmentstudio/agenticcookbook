@@ -1,5 +1,5 @@
 
-Review changed Objective-C against [adc.guideline.implementing.language.objective-c](cookbook:7c8d5c06-af21-41f1-86db-ed5809c2d38d). Read the header and the implementation together.
+Review changed Objective-C against the rules above. Read the header and the implementation together.
 
 - `should-declare-explicit-property-ownership`: Every object property has an explicit `strong`, `weak` or `copy` attribute. Flag `assign` on an object property.
 - `should-declare-explicit-property-ownership`: `NSString`, collection and block properties that a caller could hand a mutable value to are `copy`.

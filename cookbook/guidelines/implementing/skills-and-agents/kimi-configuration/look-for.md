@@ -1,5 +1,5 @@
 
-Review Kimi configuration against Kimi configuration ([adc.guideline.implementing.skills-and-agents.kimi-configuration](cookbook:e858e124-8774-450f-ab7a-9b27a6965660)).
+Review Kimi configuration against the rules above.
 
 - `must-not-assume-a-home-directory`: No script hardcodes `~/.kimi` or `~/.kimi-code`; the location is checked or overridable.
 - `must-check-the-installed-home-directory`: code that reads or writes the home directory without checking which one the installed version uses.

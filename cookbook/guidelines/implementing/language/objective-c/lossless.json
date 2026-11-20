@@ -206,6 +206,16 @@
         "note": "Both MUST requirements kept in two rules: nil-returning methods declared nullable; never-nil parameters stated in the signature, not only a comment.",
         "pin": "f954c7c1d32e24a237bdafd91122267b9e7a29c09dccfa137846a50e40fde503"
       }
+    },
+    {
+      "sentence": "Review changed Objective-C against [adc.guideline.implementing.language.objective-c](cookbook:7c8d5c06-af21-41f1-86db-ed5809c2d38d).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps the instruction to review changed Objective-C against this guideline; the self-link becomes 'the rules above', this artifact's own rules part.",
+        "pin": "6f79008f1a2eb8d199eb09ebe1e2fcbb9ab4607176191035ca9ab3e25e984188"
+      }
     }
   ],
   "obsolete": []

@@ -1,5 +1,5 @@
 
-Review changed Ruby against [adc.guideline.implementing.language.ruby](cookbook:f29e82ca-611e-409a-9121-8abe1719b434).
+Review changed Ruby against the rules above.
 
 - `must-begin-with-frozen-string-literal`, `must-put-magic-comment-in-first-section`: Each file begins with `# frozen_string_literal: true` in the first comment section.
 - `must-copy-before-mutating-strings`: No code mutates a literal without making a copy.

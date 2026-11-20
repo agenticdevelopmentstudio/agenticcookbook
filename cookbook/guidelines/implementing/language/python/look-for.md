@@ -1,5 +1,5 @@
 
-Review changed Python against [adc.guideline.implementing.language.python](cookbook:929e96cb-2900-4386-ad4a-1a67a0568480).
+Review changed Python against the rules above.
 
 - `must-declare-in-pyproject`, `should-not-write-setup-py`: Installable code is described in `pyproject.toml` with a build system, `requires-python` and declared dependencies. No new `setup.py`.
 - `should-carry-inline-script-metadata`: A script with third-party imports carries inline script metadata or a documented environment.

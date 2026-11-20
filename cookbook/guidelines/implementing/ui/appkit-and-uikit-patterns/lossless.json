@@ -20,6 +20,16 @@
         "note": "Kept at SHOULD with the reason that the default chain is what users and the system expect.",
         "pin": "d59908be5cee2de4dc1f87155d400834768e0979886684c52adda28a738d7111"
       }
+    },
+    {
+      "sentence": "Review changed AppKit and UIKit code against AppKit and UIKit patterns ([adc.guideline.implementing.ui.appkit-and-uikit-patterns](cookbook:8aa22a6b-2328-4a2d-8fe3-53c339390808)).",
+      "to": "introduction",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The new focus line points the review at this guideline's own rules, which the old self-link also named; scope (changed AppKit and UIKit code) is unchanged and no rule is weakened. The introduction part follows the rules part, so \"above\" resolves.",
+        "pin": "3ef3089bfa89d0ed29671186abfaf52e07691f9d2baf70a8dd748c1b5980971b"
+      }
     }
   ],
   "obsolete": []

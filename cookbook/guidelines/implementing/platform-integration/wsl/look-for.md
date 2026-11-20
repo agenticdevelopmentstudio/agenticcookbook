@@ -1,5 +1,5 @@
 
-Review changes that run across Windows and WSL against Windows Subsystem for Linux ([adc.guideline.implementing.platform-integration.wsl](cookbook:6aa54d1a-1888-4107-9e8d-1c2f0ef0c320)).
+Review changes that run across Windows and WSL against the rules above.
 
 - `linux-files-in-linux-fs`: Linux-tool project files are not placed under `/mnt/c`, and no path hardcodes the automount root.
 - `windows-files-in-windows-fs`: files Windows tools work on kept inside the WSL file system

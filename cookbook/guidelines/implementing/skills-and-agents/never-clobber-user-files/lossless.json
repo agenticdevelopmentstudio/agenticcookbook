@@ -113,6 +113,16 @@
         "note": "Kept at SHOULD with the full definition of idempotent (same files, no conflict with itself).",
         "pin": "9bd5ce66b57a28e26879707050e8ec118cc572e9607389a14e5c4a400cbf6adc"
       }
+    },
+    {
+      "sentence": "Review installers and the files they ship against Never overwrite a user's files ([adc.guideline.implementing.skills-and-agents.never-clobber-user-files](cookbook:5358bc26-ea8f-4dd0-94d1-22dc1c6ad291)).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The new focus line points the review at this guideline's own rules, which the old self-link also named; scope (installers and the files they ship) is unchanged and no rule is weakened.",
+        "pin": "56c5850a431ac26756b35ab9b0b3beafc8a86b955dacc188c787df3c42d24202"
+      }
     }
   ],
   "obsolete": []

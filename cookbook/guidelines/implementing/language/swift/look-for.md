@@ -1,5 +1,5 @@
 
-Review changed Swift against [adc.guideline.implementing.language.swift](cookbook:e0fa9d85-2143-4869-bea9-e085bc4c2f9d), then against the guidelines it links for concurrency, testing and lint.
+Review changed Swift against the rules above, then against the guidelines it links for concurrency, testing and lint.
 
 - `should-start-with-value-types`, `should-use-classes-only-for-class-features`: A new class has a stated reason: identity, Objective-C interoperability or required inheritance. Otherwise it should be a struct or enum.
 - `should-mark-classes-final`: Classes are `final` unless subclassing is designed.

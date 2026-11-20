@@ -1,5 +1,16 @@
 {
   "base": "0005775",
-  "moved": [],
+  "moved": [
+    {
+      "sentence": "Review changed Swift against [adc.guideline.implementing.language.swift](cookbook:e0fa9d85-2143-4869-bea9-e085bc4c2f9d), then against the guidelines it links for concurrency, testing and lint.",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps both steps: review against this guideline (now 'the rules above'), then against the guidelines it links for concurrency, testing and lint, which this artifact still links (related-swift-guidelines and the strict-concurrency rule).",
+        "pin": "85cb9da416dee900c59db09b9b92de911b40af49ef73b00d17807caac9594c10"
+      }
+    }
+  ],
   "obsolete": []
 }

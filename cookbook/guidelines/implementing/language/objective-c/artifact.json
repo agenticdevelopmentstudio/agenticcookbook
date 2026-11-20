@@ -46,7 +46,7 @@
       "platform-integration"
     ]
   },
-  "synced": "e2404dc08c4c0203",
+  "synced": "861bb27bf490749a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

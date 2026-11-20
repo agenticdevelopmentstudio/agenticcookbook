@@ -39,6 +39,16 @@
         "note": "install-git-per-file-system keeps the SHOULD to install Git in each file system used; must-configure-git-same-convention keeps the MUST that each be configured for the same convention.",
         "pin": "29319e61de88d72fb38d2a9748349075ef9b45e908372942601b172cb76a3c6b"
       }
+    },
+    {
+      "sentence": "Review changes that run across Windows and WSL against Windows Subsystem for Linux ([adc.guideline.implementing.platform-integration.wsl](cookbook:6aa54d1a-1888-4107-9e8d-1c2f0ef0c320)).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The new focus line points the review at this guideline's own rules, which the old self-link also named; scope (changes that run across Windows and WSL) is unchanged and no rule is weakened.",
+        "pin": "48dbb17694e8bb2c4936b68ddd46ecf73bb787c414ad1a2bc9c64946a72ec20a"
+      }
     }
   ],
   "obsolete": []

@@ -243,6 +243,16 @@
         "note": "Keeping test targets separate and setting each deployment target explicitly in the xcconfig, not by default, are kept at SHOULD in two rules.",
         "pin": "365d988b9840fc6517eeeabd03ee68f6790588113d22eb8b9ca3f50b5ef8733f"
       }
+    },
+    {
+      "sentence": "Review project-file changes against Xcode project hygiene ([adc.guideline.implementing.code-quality.xcode-project-hygiene](cookbook:187a80eb-e2e5-4a6c-8d14-aa591840abe6)).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps the instruction to review project-file changes against this guideline; the self-link becomes 'the rules above', this artifact's own rules part, and the read-order sentence that followed is kept verbatim.",
+        "pin": "9baa32c470ff99bcf7a8705423b88360e199e035f110b17710b3f7fbf6a9618e"
+      }
     }
   ],
   "obsolete": []

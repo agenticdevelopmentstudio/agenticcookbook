@@ -1,5 +1,5 @@
 
-Review project-file changes against Visual Studio project files ([adc.guideline.implementing.code-quality.visual-studio-project-files](cookbook:9ed898fe-ba86-44be-9911-d24fea60dc90)).
+Review project-file changes against the rules above.
 
 - `must-use-sdk-style-csproj`: a `.csproj` whose root element is not `<Project Sdk="...">` for the project's SDK
 - `must-not-list-source-files`: Projects are SDK-style and do not enumerate source files that the SDK already includes.

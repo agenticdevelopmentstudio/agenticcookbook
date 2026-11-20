@@ -52,6 +52,16 @@
         "note": "Both SHOULDs kept in two rules: style in .rubocop.yml; TargetRubyVersion set or taken from the gemspec, .ruby-version or .tool-versions.",
         "pin": "228a818ad7494a63337c2a47550f115a5dbf50e98d97aad85218222de295ddf6"
       }
+    },
+    {
+      "sentence": "Review changed Ruby against [adc.guideline.implementing.language.ruby](cookbook:f29e82ca-611e-409a-9121-8abe1719b434).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps the instruction to review changed Ruby against this guideline; the self-link becomes 'the rules above', this artifact's own rules part.",
+        "pin": "83b9727ffbe224f19cb879a69f20d93923d4b8ba4a28623916ba5ffd8a426fde"
+      }
     }
   ],
   "obsolete": []

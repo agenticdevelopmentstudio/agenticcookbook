@@ -1,5 +1,5 @@
 
-Review changed PowerShell against [adc.guideline.implementing.language.powershell](cookbook:4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448).
+Review changed PowerShell against the rules above.
 
 - `must-set-strict-mode`, `must-not-use-strict-mode-latest`, `should-set-strict-mode-at-top`: `Set-StrictMode` is at the top of the script with a named version, not `Latest`.
 - `must-stop-on-error-when-failure-must-halt`: `$ErrorActionPreference` is set deliberately. A script that must stop on failure sets `Stop`.

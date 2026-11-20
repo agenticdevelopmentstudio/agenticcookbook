@@ -79,6 +79,16 @@
         "note": "Kept at SHOULD with 'it' resolved to PSScriptAnalyzer; the rule's note keeps what it enforces.",
         "pin": "de8b5d7b97415c3d71b4fcc1398a23d751c20d53f3bd47e5fceb58b257015be4"
       }
+    },
+    {
+      "sentence": "Review changed PowerShell against [adc.guideline.implementing.language.powershell](cookbook:4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps the instruction to review changed PowerShell against this guideline; the self-link becomes 'the rules above', this artifact's own rules part.",
+        "pin": "27c5847c1e0df8f24e72fb13d4a63a1e6a98f0dcb86531225949b65feff3c316"
+      }
     }
   ],
   "obsolete": []

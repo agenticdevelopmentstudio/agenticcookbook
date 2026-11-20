@@ -46,6 +46,16 @@
         "note": "The skills part lists every frontmatter field including type values, and the description MUST for the directory form is kept as its own rule.",
         "pin": "9d940fbd068301ec231a464fc6b0a3e0a1ac5fa3e3955d67e3a526bf06906333"
       }
+    },
+    {
+      "sentence": "Review Kimi configuration against Kimi configuration ([adc.guideline.implementing.skills-and-agents.kimi-configuration](cookbook:e858e124-8774-450f-ab7a-9b27a6965660)).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The new focus line points the review at this guideline's own rules, which the old self-link also named; scope (Kimi configuration) is unchanged and no rule is weakened.",
+        "pin": "ebd2fa05496df810a0a671842d54e68c765e39d10b67d23cc08fb574d5fb748c"
+      }
     }
   ],
   "obsolete": []

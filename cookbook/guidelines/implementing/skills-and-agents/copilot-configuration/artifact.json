@@ -45,7 +45,7 @@
     ]
   },
   "names_hosts": "Describes how GitHub Copilot also reads CLAUDE.md and GEMINI.md instruction files, so it names those hosts.",
-  "synced": "6f8c390d0f38c983",
+  "synced": "f9b7b9aa8cf25da1",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

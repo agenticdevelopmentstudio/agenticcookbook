@@ -326,6 +326,16 @@
         "note": "Kept at SHOULD: run from your own directory and pass the downloaded path as an argument.",
         "pin": "35610f04ebe59d308e943e623d87a78bd0cb377b6cf5ace6c068cb1393bdacdd"
       }
+    },
+    {
+      "sentence": "Review changed Python against [adc.guideline.implementing.language.python](cookbook:929e96cb-2900-4386-ad4a-1a67a0568480).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The look-for part keeps the instruction to review changed Python against this guideline; the self-link becomes 'the rules above', this artifact's own rules part.",
+        "pin": "0116b9225c8ad734019f1c02a183d79a1e8277e594d992b7830818c5fc867252"
+      }
     }
   ],
   "obsolete": []

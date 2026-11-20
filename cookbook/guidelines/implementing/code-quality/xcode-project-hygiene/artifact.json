@@ -51,7 +51,7 @@
       "pre-commit"
     ]
   },
-  "synced": "5228e594d55f4dde",
+  "synced": "1667cb39893a8557",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

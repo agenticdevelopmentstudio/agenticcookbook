@@ -10,6 +10,16 @@
         "note": "The rule names .github/copilot-instructions.md and keeps the SHOULD with all three listed contents: build/test commands, non-obvious conventions, what to avoid.",
         "pin": "9f0b0aed8710882bc438aac565a4f7cf4eba25d103d243c4fcca2f6a69e330f2"
       }
+    },
+    {
+      "sentence": "Review Copilot configuration against GitHub Copilot configuration ([adc.guideline.implementing.skills-and-agents.copilot-configuration](cookbook:4f4ed7a2-a26f-40f2-b863-51715b5c470c)).",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The new focus line points the review at this guideline's own rules, which the old self-link also named; scope (Copilot configuration) is unchanged and no rule is weakened.",
+        "pin": "fb34cbed15aad897315390f25f32664fa4fce6f616b3df1ce50e3fea94fc2b3c"
+      }
     }
   ],
   "obsolete": []

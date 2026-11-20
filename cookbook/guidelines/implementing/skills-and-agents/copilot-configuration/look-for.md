@@ -1,5 +1,5 @@
 
-Review Copilot configuration against GitHub Copilot configuration ([adc.guideline.implementing.skills-and-agents.copilot-configuration](cookbook:4f4ed7a2-a26f-40f2-b863-51715b5c470c)).
+Review Copilot configuration against the rules above.
 
 - `should-put-everywhere-guidance-in-one-file`: Repository-wide guidance is `.github/copilot-instructions.md`.
 - `should-keep-copilot-instructions-short`: a `.github/copilot-instructions.md` that runs beyond build and test commands, non-obvious conventions, and what to avoid.
