@@ -18,7 +18,9 @@ import os
 import sys
 from pathlib import Path
 
-from repo_path import cookbook_repo, run_main
+sys.path.insert(0, str(Path(__file__).resolve().parent))      # run with -I too
+
+from repo_path import cookbook_repo, run_main  # noqa: E402
 
 SCRIPT = "speciality_reference.py"
 

@@ -34,10 +34,12 @@ def test_a_given_checkout_is_used(tmp_path):
     assert devteam_checkout.devteam_checkout(str(tmp_path / "other"), repo) == tmp_path / "other"
 
 
+@pytest.mark.parametrize("isolated", [[], ["-I"]])
 @pytest.mark.parametrize("given", [None, "elsewhere"])
-def test_no_checkout_exits_2_with_one_plain_message(tmp_path, given):
+def test_no_checkout_exits_2_with_one_plain_message(tmp_path, given, isolated):
+    # -I (review f3): isolated mode leaves the script's folder off sys.path; the sibling import still loads
     repo = cookbook(tmp_path)
-    argv = [sys.executable, str(SCRIPT), "--repo", str(repo)] + (["--devteam", str(tmp_path / given)] if given else [])
+    argv = [sys.executable, *isolated, str(SCRIPT), "--repo", str(repo)] + (["--devteam", str(tmp_path / given)] if given else [])
     r = subprocess.run(argv, capture_output=True, text=True)
     assert r.returncode == 2 and r.stdout == "", r
     err = r.stderr.strip()
