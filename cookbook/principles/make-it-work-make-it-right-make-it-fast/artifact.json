@@ -23,7 +23,7 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-19"
   },
-  "synced": "f8c3ed523fce060b",
+  "synced": "1b8c7e9bec4a4bcb",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

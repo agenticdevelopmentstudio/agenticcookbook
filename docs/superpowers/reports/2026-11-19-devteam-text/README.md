@@ -31,7 +31,21 @@ Two follow-up fixes, after the batches:
 
 After review finding f6, a devteam sentence that contradicts a rule no longer sits under that rule, or under any
 rule: it is an untagged closing paragraph of the topic's review bar, so it still reaches the review verifier but tags
-no rule it would cancel. That holds for atomic-commits and for the four planning topics' scope sentence.
+no rule it would cancel. That holds for atomic-commits and for the five planning topics' (system-interactions too, after f10) scope sentence.
+
+Rules renamed or reworded after review finding f10, so each name and its text carry the same keyword and the rule
+can apply (the batch reports keep the names they were added under):
+- `principles/explicit-over-implicit` `must-not-hide-behavior-behind-magic-invocation` now reads "Behavior MUST NOT be
+  hidden behind implicit or magic invocation paths."
+- `guidelines/implementing/ui/platform-design-languages` `must-document-rationale-for-design-deviations` (a MUST NOT
+  rule) is now `must-not-deviate-from-platform-design-without-rationale`.
+- `principles/make-it-work-make-it-right-make-it-fast` `should-ask-no-more-than-the-use-needs` (a SHOULD NOT rule) is
+  now `should-not-ask-for-more-than-the-use-needs`.
+- `principles/composition-over-inheritance` `must-not-nest-inheritance-more-than-one-level` exempted "genuine is-a
+  relationships", which any subclass claims. Its exception now says what one is: every level's subclass can stand in
+  everywhere its parent is used. Devteam's sentence stays in the review bar.
+- `guidelines/implementing/skills-and-agents/performance`: devteam's "Judge a Claude Code extension on speed and token
+  efficiency across three principles." frames the whole look-for list, so it is now its untagged opening line.
 
 - `guidelines/implementing/code-quality/atomic-commits`: devteam's "Judge from the diff and messages only — never
   demand evidence that a build or test run happened before the commit." against the topic's

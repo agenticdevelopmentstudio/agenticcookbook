@@ -1,4 +1,6 @@
 
+Judge a Claude Code extension on speed and token efficiency across three principles.
+
 - `should-use-shell-scripts-for-deterministic-work`: a repeatable operation with a known outcome done by model reasoning instead of a shell script
 - `should-extract-deterministic-skill-steps-into-scripts`: a skill step that is deterministic but carried out by the model rather than a script in the skill's directory
 - `should-use-hooks-for-validation-and-formatting`: validation not in a PreToolUse hook, or formatting and linting not in a PostToolUse hook
@@ -21,4 +23,3 @@
 - `should-keep-claude-md-to-identity-structure-and-pointers`: CLAUDE.md content beyond project identity, directory structure and workflow pointers
 - `should-move-detailed-procedures-into-skills`: a detailed procedure in CLAUDE.md
 - `should-move-enforcement-into-rules`: enforcement in CLAUDE.md
-- `should-use-shell-scripts-for-deterministic-work`: Judge a Claude Code extension on speed and token efficiency across three principles.

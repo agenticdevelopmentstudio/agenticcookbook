@@ -10,4 +10,4 @@
 - **should-list-platform-overrides-in-platform-notes**: In the Platform Notes section of an ingredient, SHOULD list any platform-specific overrides with links to the relevant HIG section.
 - **should-follow-wcag-and-conventions-on-web**: A web target SHOULD follow WCAG 2.1 (AA minimum) and browser/OS design conventions.
 - **should-use-system-font-stack-on-web**: A web target SHOULD use the platform-appropriate system font stack (`system-ui, -apple-system, sans-serif`).
-- **must-document-rationale-for-design-deviations**: A custom design deviation MUST NOT be made without a documented rationale.
+- **must-not-deviate-from-platform-design-without-rationale**: A custom design deviation MUST NOT be made without a documented rationale.

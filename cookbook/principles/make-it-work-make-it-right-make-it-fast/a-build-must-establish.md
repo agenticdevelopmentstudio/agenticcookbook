@@ -9,5 +9,5 @@
 - `must-order-every-step-on-a-path-correctly`: every step on a path runs only when it should, once, and after what it depends on, on the first run, a repeat run, a declined or cancelled prompt and a background job
 - `must-treat-paired-operations-alike`: each pair of operations (install and uninstall, write and read, and the like) normalizes, trims, quotes, matches and looks up the same input the same way
 - `must-close-every-route-to-a-fixed-failure`: every caller, entry point, upgrade path and already-broken on-disk state that can reach a fixed failure is closed
-- `should-ask-no-more-than-the-use-needs`: no low-level open, lock, permission, mode, scope or flag is wider than its use requires, or the work says why
+- `should-not-ask-for-more-than-the-use-needs`: no low-level open, lock, permission, mode, scope or flag is wider than its use requires, or the work says why
 - `must-not-ship-a-path-that-cannot-work`: no path never reaches its effect, no claimed behavior lacks a path, and no condition is tested twice, can never be true, or indexes wrongly

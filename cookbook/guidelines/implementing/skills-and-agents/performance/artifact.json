@@ -40,7 +40,7 @@
     ]
   },
   "names_hosts": "Explains Claude Code's context-loading costs (CLAUDE.md, .claude/rules/): the host is the subject.",
-  "synced": "5aee6097fc1984f6",
+  "synced": "7ea3ab23328923a5",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

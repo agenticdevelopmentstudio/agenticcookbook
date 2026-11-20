@@ -11,4 +11,4 @@
 - `should-follow-wcag-and-conventions-on-web`: Web target follows WCAG 2.1 and browser/OS design conventions;
 - `should-use-system-font-stack-on-web`: use platform-appropriate system font stack;
 - `should-use-defaults-to-fill-gaps`, `must-use-platform-prescribed-values`: fill gaps with cookbook defaults only where platform doesn't prescribe
-- `must-document-rationale-for-design-deviations`: a custom design deviation from the platform with no documented rationale
+- `must-not-deviate-from-platform-design-without-rationale`: a custom design deviation from the platform with no documented rationale

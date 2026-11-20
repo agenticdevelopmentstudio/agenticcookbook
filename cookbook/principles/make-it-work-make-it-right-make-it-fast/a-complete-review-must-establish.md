@@ -12,5 +12,5 @@
 - `must-order-every-step-on-a-path-correctly`: for each walked path, what else runs on it and in what order was named for the first run, a repeat run, a declined or cancelled prompt and a background job;
 - `must-treat-paired-operations-alike`: each paired operation the change touches was compared side by side on the same input;
 - `must-close-every-route-to-a-fixed-failure`: each claimed fix was checked against every route to the failure it targets;
-- `should-ask-no-more-than-the-use-needs`: each low-level open, lock or permission was checked against what its use needs;
+- `should-not-ask-for-more-than-the-use-needs`: each low-level open, lock or permission was checked against what its use needs;
 - `must-not-ship-a-path-that-cannot-work`: every real defect seen on the way is filed, claimed behavior or not.
