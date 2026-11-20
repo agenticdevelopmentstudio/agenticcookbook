@@ -174,3 +174,28 @@ def test_one_folders_index_renders_as_the_synced_index(since, tmp_path, monkeypa
         (cb / "index.json").write_text(json.dumps(index), encoding="utf-8")
     full = [s.text for s in compose_all(mine, indexes=IndexCache())]
     assert [s.text for s in compose_all(mine, indexes=IndexCache(one_folder=True))] == full
+
+
+def test_every_read_of_one_folders_entries_answers_as_the_synced_index(tmp_path, monkeypatch):
+    # review f6: [], `in`, iteration and len answer as get does, never from index.json unchecked
+    from cookr.core.artifact import load_folder
+    from cookr.core.index import IndexCache, current_index
+    from .cookbook_helpers import new_repo
+
+    monkeypatch.chdir(tmp_path)
+    new_repo(tmp_path)
+    kept = add_doc(tmp_path, "guidelines/testing/unit/kept", "# Kept\n\nText.\n", type="guideline")
+    gone = add_doc(tmp_path, "guidelines/testing/unit/gone", "# Gone\n\nText.\n", type="guideline")
+    kept_id, gone_id = load_folder(kept).meta["id"], load_folder(gone).meta["id"]
+    import shutil
+    shutil.rmtree(gone)
+    cb = tmp_path / "cookbook"
+    assert gone_id in json.loads((cb / "index.json").read_text(encoding="utf-8"))["entries"]
+    entries = IndexCache(one_folder=True).for_path(kept).entries
+    synced = current_index(cb).entries
+    assert kept_id in entries and entries[kept_id] == synced[kept_id]
+    assert gone_id not in entries
+    with pytest.raises(KeyError):
+        entries[gone_id]
+    assert set(entries) == set(entries.keys()) == set(synced) and len(entries) == len(synced)
+    assert dict(entries.items()) == dict(synced.items())

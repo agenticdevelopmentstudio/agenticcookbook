@@ -254,6 +254,9 @@ def cookbook_dir_of(path: Path) -> Optional[Path]:
     return next((d for d in (path, *path.parents) if (d / MANIFEST).is_file()), None)
 
 
+_ABSENT = object()
+
+
 class _CheckedEntries(dict):
     """`index.json`'s entries, each checked against its folder when first
     looked up, for a command on one folder: an entry whose folder still holds
@@ -274,12 +277,42 @@ class _CheckedEntries(dict):
         if entry is not None and (entry.kind == "check" or self._holds(entry)):
             self._checked.add(key)
             return entry
+        return self._all().get(key, default)
+
+    # Every other way of reading the entries answers as `get` does (review f6):
+    # by key through `get`, the whole collection from the synced index.
+    def __getitem__(self, key):
+        entry = self.get(key, _ABSENT)
+        if entry is _ABSENT:
+            raise KeyError(key)
+        return entry
+
+    def __contains__(self, key) -> bool:
+        return self.get(key, _ABSENT) is not _ABSENT
+
+    def _all(self) -> dict:
+        """The synced index's entries, built once."""
         if self._synced is None:
             try:
                 self._synced = current_index(self._dir).entries
             except CookbookError:      # what makes IndexCache give no index at all
                 self._synced = {}
-        return self._synced.get(key, default)
+        return self._synced
+
+    def __iter__(self):
+        return iter(self._all())
+
+    def __len__(self) -> int:
+        return len(self._all())
+
+    def keys(self):
+        return self._all().keys()
+
+    def values(self):
+        return self._all().values()
+
+    def items(self):
+        return self._all().items()
 
     def _holds(self, entry: "Entry") -> bool:
         folder = self._dir / entry.path
