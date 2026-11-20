@@ -32,4 +32,4 @@ class CookrContext:
         if path is None:
             return None
         repo = self.config.repo_root if self.config is not None else None
-        return roots.artifact_path(path, self.cookbook_root, repo)
+        return roots.artifact_path(path, self.cookbook_root, repo, self.cwd)

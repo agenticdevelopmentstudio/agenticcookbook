@@ -68,7 +68,7 @@ def cookbook_of(path: Path) -> Path | None:
 
 
 def artifact_path(path: Path, cookbook_root: Path | None = None,
-                  repo_root: Path | None = None) -> Path:
+                  repo_root: Path | None = None, cwd: Path | None = None) -> Path:
     """`path`, an artifact named on the command line, found the same way from any
     working directory. Absolute stays as given; a relative path is tried against
     the cwd, then the repo (`cookbook/...`), then the cookbook (`guidelines/...`):
@@ -77,11 +77,15 @@ def artifact_path(path: Path, cookbook_root: Path | None = None,
     the cwd's, so its error names it there. A path found against the cwd is
     returned as it was spelled, so what a command records or prints from it
     (skills.json's `source`, a report's `folder`) is unchanged; one found
-    against the repo or the cookbook is returned absolute."""
+    against the repo or the cookbook is returned absolute. `cwd` is the working
+    directory to read from (a caller's own, e.g. CookrContext.cwd), the
+    process's when None; a path found against a `cwd` other than the process's
+    is returned absolute, since spelled relative it would name another file."""
     p = Path(path).expanduser()
     if p.is_absolute():
         return p
-    bases = [Path.cwd()]
+    here = Path(cwd).expanduser().absolute() if cwd is not None else Path.cwd()
+    bases = [here]
     if cookbook_root is not None:
         cookbook_root = Path(cookbook_root).expanduser().absolute()
         bases += [Path(repo_root).expanduser().absolute() if repo_root is not None
@@ -89,4 +93,4 @@ def artifact_path(path: Path, cookbook_root: Path | None = None,
     candidates = [b / p for b in bases]
     found = (next((c for c in candidates if c.exists()), None)
              or next((c for c in candidates if c.parent.is_dir()), candidates[0]))
-    return p if found == candidates[0] else found
+    return p if found == candidates[0] and here == Path.cwd() else found

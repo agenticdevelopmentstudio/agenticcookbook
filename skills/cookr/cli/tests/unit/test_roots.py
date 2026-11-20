@@ -49,3 +49,24 @@ def test_manifest_marks_a_library_cookbook(tmp_path):
     (cookbook / "cookbook.json").write_text("{}", encoding="utf-8")
     assert roots.resolve(tmp_path) == cookbook
     assert roots.resolve(cookbook / "ai-plugin-kit") == cookbook
+
+
+def test_artifact_path_reads_a_relative_path_against_the_given_cwd(tmp_path, monkeypatch):
+    # review f4: CookrContext.cwd, not the process's, is where a relative artifact path is read
+    there = tmp_path / "there"
+    (there / "guidelines" / "a").mkdir(parents=True)
+    (tmp_path / "elsewhere").mkdir()
+    monkeypatch.chdir(tmp_path / "elsewhere")
+    assert roots.artifact_path(Path("guidelines/a"), cwd=there) == there / "guidelines" / "a"
+    monkeypatch.chdir(there)
+    assert roots.artifact_path(Path("guidelines/a"), cwd=there) == Path("guidelines/a")
+
+
+def test_the_context_passes_its_cwd(tmp_path, monkeypatch):
+    from cookr.context import CookrContext
+    from cookr.core.ui import UI
+    there = tmp_path / "there"
+    (there / "x").mkdir(parents=True)
+    monkeypatch.chdir(tmp_path)
+    ctx = CookrContext(config=None, ui=UI(), cwd=there)
+    assert ctx.artifact(Path("x")) == there / "x"
