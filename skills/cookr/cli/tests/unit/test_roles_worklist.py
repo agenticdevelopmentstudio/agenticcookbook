@@ -147,6 +147,16 @@ def test_worklist_ignores_folders_under_versions(tmp_path, capsys):
     assert set(_topics(out)) == {"cors"} and out["counts"]["copies"] == 0
 
 
+def test_worklist_ignores_folders_under_research(tmp_path, capsys):
+    # review f10: an artifact kept in a topic's research/ is source material, never a copy of the topic
+    cookbook = tmp_path / "cookbook"
+    folder = _guideline(cookbook, "implementing/security/cors")
+    _guideline(cookbook, "implementing/security/cors/research/cors")
+    assert folder.joinpath("research", "cors", "artifact.json").is_file()
+    out = _run(tmp_path, capsys)
+    assert set(_topics(out)) == {"cors"} and out["counts"]["copies"] == 0
+
+
 # ── devteam and authored ─────────────────────────────────────────────────────
 
 def test_worklist_marks_a_topic_without_a_speciality_as_authored(tmp_path, capsys):

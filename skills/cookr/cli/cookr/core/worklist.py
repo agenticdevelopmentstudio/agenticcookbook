@@ -49,7 +49,7 @@ from typing import Any, Optional
 
 from .artifact import load_folder
 from .errors import CookbookError
-from .markdown import ARTIFACT_FILE, in_versions
+from .markdown import ARTIFACT_FILE, in_research, in_versions
 from .twins import comparable
 
 NEAR_IDENTICAL = 0.9
@@ -183,8 +183,8 @@ def inventory(cookbook: Path) -> dict[str, _Topic]:
     root = cookbook / GUIDELINES
     groups: dict[str, list[str]] = defaultdict(list)
     for manifest in root.rglob(ARTIFACT_FILE):
-        if in_versions(manifest):
-            continue
+        if in_versions(manifest, cookbook) or in_research(manifest, cookbook):
+            continue      # a freeze, or an artifact kept in a topic's research (review f10)
         groups[manifest.parent.name].append(manifest.parent.relative_to(cookbook).as_posix())
     topics = {}
     for name, folders in sorted(groups.items()):
