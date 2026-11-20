@@ -7,6 +7,8 @@ import re
 from pathlib import Path
 from typing import Iterable, Optional
 
+from .history import split_lines, unfenced
+
 SKIP_NAMES = {"index.md", "INDEX.md", "references.md", "_template.md"}
 
 # The file that marks an artifact source folder (cookr.core.artifact). Its
@@ -28,9 +30,24 @@ RESEARCH_DIR = "research"
 CITATION = re.compile(r"[ \t]*\(claims?:[ \t]*([^)\n]*)\)")
 
 
+_CODE_SPAN = re.compile(r"(`+)(?:.*?[^`])?\1(?!`)")
+
+
 def uncited(text: str) -> str:
-    """`text` with every research citation (`CITATION`) removed."""
-    return CITATION.sub("", text)
+    """`text` with every research citation (`CITATION`) removed from its prose.
+    Code keeps its text: a fenced block's lines, and an inline code span
+    (`` `f(claims: x)` ``), are shown as written, never read as a citation."""
+    lines = split_lines(text)
+    return "".join(line if bare is None else _uncited_line(line)
+                   for (_, bare), line in zip(unfenced(lines), lines))
+
+
+def _uncited_line(line: str) -> str:
+    out, at = [], 0
+    for span in _CODE_SPAN.finditer(line):
+        out += [CITATION.sub("", line[at:span.start()]), span.group(0)]
+        at = span.end()
+    return "".join(out) + CITATION.sub("", line[at:])
 
 
 def part_files(folder: Path) -> Optional[set[str]]:
