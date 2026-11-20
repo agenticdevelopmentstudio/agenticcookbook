@@ -7,7 +7,8 @@
 - JSON structure documented: schema of expected keys/values included in comment
 - No application logic relies on exact JSON string representation; always extract via `json_extract()`
 - JSON columns optional/nullable unless default JSON object provided; NULL vs empty `{}` distinction understood
-- Every rule is kept, or the change says why not: `should-declare-json-columns-as-text`, `should-check-json-valid-when-integrity-matters`, `must-extract-with-double-arrow-for-filtering`, `should-use-arrow-for-nested-json-text`, `must-use-json-extract-below-3-38-0`, `should-index-json-via-generated-columns`, `must-not-add-stored-columns-with-alter-table`, `should-prefer-virtual-generated-columns`, `should-not-store-one-to-many-in-json`, `should-not-store-integrity-data-in-json`, `should-promote-queried-json-fields`, `must-not-send-sqlite-jsonb-to-postgresql`, `must-validate-json-on-both-sides`
+- Every MUST rule is kept, with no exception: `must-extract-with-double-arrow-for-filtering`, `must-use-json-extract-below-3-38-0`, `must-not-add-stored-columns-with-alter-table`, `must-not-send-sqlite-jsonb-to-postgresql`, `must-validate-json-on-both-sides`
+- Every SHOULD rule is kept, or the change says why not: `should-declare-json-columns-as-text`, `should-check-json-valid-when-integrity-matters`, `should-use-arrow-for-nested-json-text`, `should-index-json-via-generated-columns`, `should-prefer-virtual-generated-columns`, `should-not-store-one-to-many-in-json`, `should-not-store-integrity-data-in-json`, `should-promote-queried-json-fields`
 
 
 A review passes when it establishes every item above.

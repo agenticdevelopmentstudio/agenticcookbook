@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.2.2 | 2026-11-20 | Mike Fullerton | Review bar: the job-control MUST NOT has no exception; only its SHOULD may be skipped with a reason |
 | 1.2.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.2.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 1.1.2 | 2026-11-19 | Mike Fullerton | Fold guidelines/reviewing/code-quality/shell-scripts into this topic; its text this lacked added unroled as portability-2 |

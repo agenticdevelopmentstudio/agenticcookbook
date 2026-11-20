@@ -10,7 +10,8 @@
 - No `SELECT *`; queries select only the needed columns so covering indexes can apply
 - No `NOT IN` with a subquery that may return NULL; `NOT EXISTS` is used instead
 - No `OR` across columns unless both sides are indexed
-- Every rule is kept, or the change says why not: `must-join-correlated-subqueries`, `must-not-wrap-indexed-filter-columns`, `should-select-only-needed-columns`, `must-use-not-exists-over-not-in`, `should-use-ctes-for-clarity`, `should-replace-materialized-ctes`, `should-optimize-on-connection-open`, `should-analyze-after-bulk-changes`, `must-check-query-plan-before-shipping`, `should-analyze-before-evaluating-plans`, `should-investigate-scans`, `should-check-for-materialize`, `should-use-union-all`, `should-index-both-sides-of-or`
+- Every MUST rule is kept, with no exception: `must-join-correlated-subqueries`, `must-not-wrap-indexed-filter-columns`, `must-use-not-exists-over-not-in`, `must-check-query-plan-before-shipping`
+- Every SHOULD rule is kept, or the change says why not: `should-select-only-needed-columns`, `should-use-ctes-for-clarity`, `should-replace-materialized-ctes`, `should-optimize-on-connection-open`, `should-analyze-after-bulk-changes`, `should-analyze-before-evaluating-plans`, `should-investigate-scans`, `should-check-for-materialize`, `should-use-union-all`, `should-index-both-sides-of-or`
 
 
 A review passes when it establishes every item above.

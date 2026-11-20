@@ -41,7 +41,7 @@
       "concurrency"
     ]
   },
-  "synced": "964bfdf84a211d12",
+  "synced": "ffa45bc43f54752a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

@@ -15,7 +15,8 @@
 - Web tests do not cloak; they do not flicker, use 302 and `rel=canonical` for alternate URLs, and are removed when done, or a recorded reason says why not
 - iOS variants use no downloaded code that introduces or changes features, are neither hidden from App Review nor undocumented, and are described with specificity in the Notes for Review and accessible for review; they ship in the reviewed binary, or a recorded reason says why not
 - Store-page tests use Apple product page optimization or Google Play store listing experiments, or a recorded reason says why not
-- Every rule is kept, or the change says why not: `experiment-provider-interface`, `local-default-with-debug-override`, `deterministic-hash-assignment`, `stable-assignment-when-allocation-changes`, `evaluation-never-fails-returns-default`, `log-exposure-at-point-of-use`, `pre-register-metric-and-sample-size`, `no-peeking`, `check-sample-ratio-mismatch`, `validate-with-aa-tests`, `ramp-up-with-auto-abort`, `guard-data-quality`, `watch-novelty-effects`, `avoid-web-flicker`, `web-tests-follow-search-guidance`, `app-variants-ship-in-reviewed-binary`, `store-page-tests-use-store-tools`
+- Every MUST rule is kept, with no exception: `local-default-with-debug-override`, `deterministic-hash-assignment`, `stable-assignment-when-allocation-changes`, `evaluation-never-fails-returns-default`, `check-sample-ratio-mismatch`, `web-tests-follow-search-guidance`, `app-variants-ship-in-reviewed-binary`
+- Every SHOULD rule is kept, or the change says why not: `experiment-provider-interface`, `log-exposure-at-point-of-use`, `pre-register-metric-and-sample-size`, `no-peeking`, `validate-with-aa-tests`, `ramp-up-with-auto-abort`, `guard-data-quality`, `watch-novelty-effects`, `avoid-web-flicker`, `store-page-tests-use-store-tools`
 
 
 A review passes when it establishes every item above.

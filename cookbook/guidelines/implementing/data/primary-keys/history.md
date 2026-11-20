@@ -1,7 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
-| 1.1.2 | 2026-11-20 | Mike Fullerton | Review bar cites every rule by name |
+| 1.1.2 | 2026-11-20 | Mike Fullerton | Review bar cites every rule by name; MUST rules kept with no exception, only SHOULD rules may be skipped with a reason |
 | 1.1.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.1.0 | 2026-11-15 | Mike Fullerton | Roles on parts; named rules; reviewer and verifier parts from the devteam; Fold guidelines/planning/data/primary-keys into this topic (its text is carried here, as lossless.json accounts); links to it redirected here |
 | 1.0.3 | 2026-11-07 | Mike Fullerton | State the rules with RFC 2119 keywords |

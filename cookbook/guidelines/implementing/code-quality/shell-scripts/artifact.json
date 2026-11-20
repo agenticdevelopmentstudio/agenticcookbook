@@ -4,11 +4,11 @@
     "id": "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
     "title": "Shell scripts",
     "type": "guideline",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,13 +30,13 @@
       "https://zsh.sourceforge.io/Doc/Release/Options.html"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "new-module",
       "configuration"
     ]
   },
-  "synced": "0103858c30598645",
+  "synced": "19e5b4cd746f6d42",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

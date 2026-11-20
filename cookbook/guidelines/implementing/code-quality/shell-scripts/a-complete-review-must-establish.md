@@ -4,7 +4,7 @@
 - `should-declare-shell-in-shebang`: every script's shebang names its shell and the script keeps to that shell's rules, or the script says why not
 - `should-use-bash-or-zsh-only-when-needed`: a bash or zsh shebang appears only where its features are used, and such a script is never called with `sh`, or the script says why not
 - `should-use-setopt-independent-forms`: the script behaves the same under zsh and bash, or says why not
-- `must-not-depend-on-job-control`: no script depends on `set -m`, `fg` or `bg`, and background work uses `&` and `wait`, or the script says why not
+- `must-not-depend-on-job-control`: no script depends on `set -m`, `fg` or `bg`, with no exception; background work uses `&` and `wait`, or the script says why not
 - `should-check-important-commands-explicitly`: every command that matters is checked with `|| exit` or an `if`, not left to `set -e`, or the script says why not
 - `should-default-optional-values`: every optional value has a `${name:-default}`, or the script says why not
 - `should-test-for-pipefail-or-avoid-it`: `pipefail` in a `#!/bin/sh` script is tested for or absent, or the script says why not
