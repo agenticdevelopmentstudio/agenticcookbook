@@ -36,7 +36,11 @@ says so (1.4.26; the pool has none today). A reference written before
 marker, which sits inside *Review focus*, so both later sections were lost;
 a reference file written before then is short (G69, G93). An area with no
 speciality gets `[]` and "area has no speciality; reference is empty ([])"
-(G78).
+(G78). From format 3 (1.4.46) a roled speciality's *Review focus* and
+*A complete review must establish* are left out: the devteam copies them
+whole from the topic's reviewer and review-verifier skills (no
+`_Cookbook guidance` line marks them), so they are not the speciality's own
+text, and the row's `copied` names them.
 
 ## The prompt filler
 

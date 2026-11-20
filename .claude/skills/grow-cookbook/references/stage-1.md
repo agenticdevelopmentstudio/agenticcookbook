@@ -328,7 +328,10 @@ paired (survivor and `new_home`) with one that is. Each row of `A/reference.json
 `{"speciality", "topic", "file"}`: the speciality's own text (its
 *Review focus*, *A complete review must establish* and *Build focus*,
 cut at `_Cookbook guidance`) in `file`, and the topic it stands on, or
-null. Only this area's specialities are written (1.4.24, G57): an area
+null. A roled speciality's two review sections are its topic's reviewer
+pair, copied whole, not its own text: from format 3 its reference leaves
+them out, holding only its other own sections, and its row's `copied` names
+the two left out (1.4.46). Only this area's specialities are written (1.4.24, G57): an area
 with none gets `[]`, and "area has no speciality" on stderr ("area has no
 speciality; reference is empty ([])", 1.4.25, G78), exit 0.
 `unmeasured.py` reads every other speciality with no topic from
