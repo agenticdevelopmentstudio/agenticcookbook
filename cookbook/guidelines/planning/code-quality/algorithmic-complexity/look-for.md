@@ -13,4 +13,3 @@
 - `should-note-float-precision`: floating point summation or running averages, and whether the findings note precision
 - `should-note-accelerated-matrix-libraries`: matrix multiplication, and whether the findings say if an accelerated library does it
 - `should-classify-complexity-of-changed-algorithms`: In the code **this diff adds or changes**, locate sorting, searching, graph traversal, caching strategies, data structure choices, recursion patterns, and nested loop depth.
-- `must-limit-scope-to-the-change`: a whole-codebase inventory where only the change is under review

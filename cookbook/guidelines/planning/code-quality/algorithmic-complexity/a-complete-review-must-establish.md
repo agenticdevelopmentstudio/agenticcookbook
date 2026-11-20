@@ -14,4 +14,4 @@
 - `should-note-accelerated-matrix-libraries`: whether matrix multiplication was noted with whether it uses an accelerated library
 - `should-classify-complexity-of-changed-algorithms`: Any algorithm or data-structure choice the diff introduces or changes is identified with a complexity classification, and performance-critical paths it touches are flagged;
 - `should-classify-complexity-of-changed-algorithms`: a diff that introduces none is explicitly cleared.
-- `must-limit-scope-to-the-change`: Scope is the change under review — NOT a whole-codebase inventory.
+- `should-give-high-complexity-algorithms-own-scope-group`: Scope is the change under review — NOT a whole-codebase inventory.

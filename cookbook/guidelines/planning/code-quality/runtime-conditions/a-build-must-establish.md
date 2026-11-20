@@ -8,4 +8,3 @@
 - `should-not-group-unenabled-code-paths`: no recommended group is built around an unenabled code path
 - `should-note-remote-config-ordering`: every remote config dependency appears as an ordering constraint in the findings
 - `must-identify-new-runtime-conditions-with-gated-code`: every new permission or entitlement requirement, environment prerequisite and feature-flag dependency the change introduces is identified with the code it gates
-- `must-scope-to-the-change-not-the-codebase`: the analysis covers only the change under review, not a whole-codebase inventory

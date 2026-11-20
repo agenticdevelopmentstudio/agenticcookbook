@@ -13,4 +13,3 @@
 - **should-note-float-precision**: For floating point accumulation patterns (summation, running averages), the analysis **SHOULD** note precision concerns.
 - **should-note-accelerated-matrix-libraries**: For matrix multiplication, the analysis **SHOULD** note whether it uses accelerated libraries (Accelerate, BLAS, NumPy).
 - **should-classify-complexity-of-changed-algorithms**: SHOULD identify every algorithm or data-structure choice the change introduces or changes, with a complexity classification, and flag the performance-critical paths it touches. A change that introduces none SHOULD be explicitly cleared.
-- **must-limit-scope-to-the-change**: Scope MUST be the change under review, NOT a whole-codebase inventory.

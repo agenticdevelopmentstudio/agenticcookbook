@@ -34,9 +34,12 @@ Two follow-up fixes, after the batches:
 - `guidelines/planning/code-quality/framework-conventions`: "Scope is the change under review — NOT a whole-codebase inventory." against
   `should-default-to-conventional-units`, which works over the whole codebase.
 
+- `guidelines/planning/code-quality/algorithmic-complexity`, `runtime-conditions` and `system-dependencies`: the same
+  sentence, "Scope is the change under review — NOT a whole-codebase inventory.", against topics whose rules group the
+  whole codebase into scope groups. The batches had made it a MUST rule in each; review finding f2 showed that rule
+  contradicts the topic, so it is no rule now. Devteam's sentence stays in each review bar, for the owner to rule on.
+
 Tensions the batches noted (no rule directly contradicted):
-- `guidelines/planning/code-quality/system-dependencies`: the same diff-only scope against a topic that groups the whole
-  codebase.
 - `guidelines/implementing/ui/typography`: devteam allows a custom font with justification; the topic says "The platform's system font MUST
   be used".
 - `guidelines/implementing/networking/offline-and-connectivity`: devteam's "circuit breaker present or explicitly scoped out" against the

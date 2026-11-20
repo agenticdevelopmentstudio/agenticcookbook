@@ -6,4 +6,3 @@
 - `should-identify-sdk-wrapper-groups`: every third-party SDK used in more than 2–3 files has its wrapper/adapter group named in the candidates
 - `should-not-treat-widespread-dependencies-as-boundaries`: every dependency appearing across the candidate groups is listed under cross-cutting system dependencies and drives no boundary
 - `should-identify-introduced-system-dependencies`: system dependencies introduced or changed by the change are identified with their code unit, and a change that introduces none is cleared
-- `must-scope-system-dependencies-to-the-change`: the scope is the change under review, not a whole-codebase inventory

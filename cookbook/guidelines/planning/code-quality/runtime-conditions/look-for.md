@@ -8,4 +8,3 @@
 - `should-not-group-unenabled-code-paths`: a scope group built around code paths behind a flag not yet enabled
 - `should-note-remote-config-ordering`: code that needs a remote config fetch before it works, and whether the startup ordering constraint is noted
 - `must-identify-new-runtime-conditions-with-gated-code`: a new permission or entitlement requirement, environment prerequisite or feature-flag dependency not identified with the code it gates
-- `must-scope-to-the-change-not-the-codebase`: an inventory of the whole codebase where only the change under review belongs

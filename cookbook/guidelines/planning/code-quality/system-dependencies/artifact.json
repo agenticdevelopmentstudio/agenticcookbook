@@ -34,7 +34,7 @@
       "dependency-management"
     ]
   },
-  "synced": "d3aa9c7daa9f7d0f",
+  "synced": "f86c7f8d1dbdb0f2",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
