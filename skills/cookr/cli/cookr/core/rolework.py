@@ -1075,16 +1075,17 @@ def _unread_copies(folder: Path, rev: str, read: list[Path],
     a "Fold <path>" history row added since `rev` whose copy is not read; an
     artifact folder at `rev` that is gone now and has the topic's folder name
     (a twin) that is not read, unless another live artifact carries its id (it
-    was renamed, not folded); a read copy that still exists (not folded). `home`
+    was renamed, not folded) or it is `home` itself; a read copy that still exists (not folded). `home`
     is where the topic was at `rev` (`_base_home`), for its history there."""
     top = _top(folder)
     folder = Path(folder).resolve()
+    home = Path(home).resolve() if home else folder
     listed = set(read)
     cookbook = _cookbook(folder)
     why = []
     hist_file = folder / f"{HISTORY}.md"
     now_rows = hist_file.read_text(encoding="utf-8").splitlines() if hist_file.is_file() else []
-    at_base = _git(top, "show", f"{rev}:{_rel((home or folder) / f'{HISTORY}.md', top)}")
+    at_base = _git(top, "show", f"{rev}:{_rel(home / f'{HISTORY}.md', top)}")
     base_rows = set(at_base.stdout.splitlines()) if not at_base.returncode else set()
     for row in now_rows:
         if row in base_rows:
@@ -1099,7 +1100,8 @@ def _unread_copies(folder: Path, rev: str, read: list[Path],
         if not line.endswith(f"/{ARTIFACT_FILE}"):
             continue
         twin = (top / line).parent.resolve()
-        if twin.name == folder.name and twin != folder and not twin.exists() and twin not in listed:
+        if (twin.name == folder.name and twin not in (folder, home) and not twin.exists()
+                and twin not in listed):
             if live is None:
                 live = _live_ids(cookbook, folder)
             if _artifact_id(twin, rev) in live:

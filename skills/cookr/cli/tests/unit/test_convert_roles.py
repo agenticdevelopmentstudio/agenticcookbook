@@ -1651,3 +1651,14 @@ def test_an_obsolete_entry_is_never_retargeted_and_the_ledger_is_names(tmp_path,
         (folder / "lossless.json").write_text(json.dumps(data), encoding="utf-8")
         with pytest.raises(RoleworkError):
             read_accounting(folder)
+
+
+def test_a_topic_moved_to_another_use_case_is_not_its_own_twin(tmp_path, capsys):
+    _topic(tmp_path, "cookbook/guidelines/planning/data/t")
+    base = _commit(tmp_path)
+    (tmp_path / "cookbook/guidelines/implementing/data").mkdir(parents=True)
+    folder = _rename(tmp_path, "cookbook/guidelines/planning/data/t", "cookbook/guidelines/implementing/data/t")
+    (folder / "lossless.json").write_text(json.dumps(
+        {"base": base, "renamed_from": "cookbook/guidelines/planning/data/t", "moved": []}))
+    code, out, _ = _lossless(capsys, folder, base, "--draft")
+    assert code == 0, out

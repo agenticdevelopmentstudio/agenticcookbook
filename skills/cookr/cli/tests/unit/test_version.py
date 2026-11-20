@@ -40,4 +40,5 @@ def test_the_version_is_pinned():
     # case with the artifact's below it (coding/reviewing/planning/data; a
     # principle's coding/reviewing/principles), so the whole cookbook stays
     # under FANOUT_CAP once every topic is roled.
-    assert __version__ == "0.23.0"
+    # 0.23.1: roles lossless: a topic moved to another use case under the same folder name is no longer reported as its own unread twin.
+    assert __version__ == "0.23.1"
