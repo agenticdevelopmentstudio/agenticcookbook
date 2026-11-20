@@ -1,4 +1,4 @@
 
 # File paths
 
-`pathlib.Path` MUST be used, not `os.path`. All path manipulation MUST go through `pathlib`.
+How Python code in this codebase handles file paths.

@@ -77,8 +77,8 @@
       "judged": {
         "by": "independent judge (opus)",
         "verdict": "pass",
-        "note": "The '# Accessibility' heading named a second copy of the same requirement list. The topic heading lives on in the intro's '# Accessibility from day one' (also the artifact title), and the list's content is carried by the All platforms rules.",
-        "pin": "381e307c1fe6a0d98c1a8a55db79e314092bf02de57e40909fade0e32f74a07f"
+        "note": "The '# Accessibility' heading carried no requirement; it titled a second copy of the requirement list. The intro keeps the topic heading ('# Accessibility from day one') with a framing line, and the list's content lives in the All platforms rules.",
+        "pin": "d0cbeaa916213107420a0687590936f437ccfb3ed06bab113c28270dc4fc63ca"
       }
     },
     {
@@ -278,6 +278,16 @@
         "verdict": "pass",
         "note": "Rule must-respond-to-display-settings keeps this sentence's MUST and all five settings: reduced motion, high contrast, color inversion, bold text and grayscale.",
         "pin": "d1a7daedd9c6804fe0fa9ecfa06355736ed1f0ec41b919c875b5366dfb3fc18e"
+      }
+    },
+    {
+      "sentence": "All components MUST integrate with platform accessibility APIs from initial implementation.",
+      "to": "must-integrate-accessibility-apis-from-day-one",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-integrate-accessibility-apis-from-day-one keeps the MUST, the scope (all components) and the timing (from initial implementation), and, like the old 'Requirements:' lead-in, says the rules that follow are that integration's requirements.",
+        "pin": "d5f09796ae0673c32737b16eed2e8939a1959f60e5e70b1282be6afb1373bb0e"
       }
     }
   ],

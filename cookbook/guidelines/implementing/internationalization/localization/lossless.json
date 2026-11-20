@@ -217,8 +217,38 @@
       "judged": {
         "by": "independent judge (opus)",
         "verdict": "pass",
-        "note": "The duplicate '# Localization' heading carried no requirement; the intro under the Localizability heading carries its text.",
-        "pin": "f223557a003d88c635f331d68386b10b4cb30bd9d0665fd616e6574b1877868b"
+        "note": "The duplicate '# Localization' heading carried no requirement; it titled a second copy of the rule. The intro keeps the topic heading ('# Localizability') with a framing line, and the copy's sentences live in the rules.",
+        "pin": "b35e940d37f483dd0625666b3af2a1de502db0911a0e3f30fa88ebb6a5042edf"
+      }
+    },
+    {
+      "sentence": "All user-facing strings MUST be localizable.",
+      "to": "must-make-user-facing-strings-localizable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-make-user-facing-strings-localizable keeps the MUST and the scope (all user-facing strings).",
+        "pin": "8cb355562582d5c662852f4b9c7bbfceeccca88d7793ea60cae3288dfd4cb0c5"
+      }
+    },
+    {
+      "sentence": "No hardcoded strings.",
+      "to": "must-make-user-facing-strings-localizable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-make-user-facing-strings-localizable keeps the prohibition at MUST ('no hardcoded strings', and no hardcoded user-facing strings on any platform).",
+        "pin": "03766f90b78fbc7d94c7552ab38d9a86203f777dfb9940e6c0177448dd773be2"
+      }
+    },
+    {
+      "sentence": "Store strings in platform-standard resource files and reference them through the platform's localization API.",
+      "to": "should-store-in-platform-resource-files",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-store-in-platform-resource-files keeps the unkeyed instruction at SHOULD with both halves: platform-standard resource files, referenced through the platform's localization API.",
+        "pin": "12e0e3a74a678f3bc214b477fd210e95584c9351a4d9ea9afb4603f95c4bfe61"
       }
     }
   ],

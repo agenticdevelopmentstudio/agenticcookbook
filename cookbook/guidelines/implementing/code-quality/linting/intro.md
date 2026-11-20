@@ -1,4 +1,4 @@
 
 # Linting before the first PR
 
-All projects MUST have linting configured and passing before the first pull request.
+When linting is set up and how it gates pull requests.

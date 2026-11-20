@@ -104,6 +104,36 @@
         "note": "The unkeyed paragraph width is kept at SHOULD with 45-75 characters and its reason (comfortable reading).",
         "pin": "62f022b1932ae439873378551f33a6830b7dfb78a6c444a4dbc8ccf15b5406aa"
       }
+    },
+    {
+      "sentence": "The platform's system font MUST be used.",
+      "to": "must-use-platform-system-font",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-use-platform-system-font keeps the MUST to use the platform system font and points to the platform-system-fonts list that followed it.",
+        "pin": "2deaca5067146c12187e6f9a0b7a25ed3797c1238b53ab4c36270d73a7c63fa3"
+      }
+    },
+    {
+      "sentence": "Establish a type scale with clear roles — don't invent",
+      "to": "should-establish-type-scale-with-roles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "This fragment begins \"Establish a type scale with clear roles — don't invent sizes ad-hoc\"; should-establish-type-scale-with-roles keeps both halves at SHOULD / SHOULD NOT.",
+        "pin": "a0ff4364d045dd7afd1bca8f9eb9fb3f1300b45c3563866dfc62fa7b049352b3"
+      }
+    },
+    {
+      "sentence": "sizes ad-hoc.",
+      "to": "should-establish-type-scale-with-roles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-establish-type-scale-with-roles keeps the end of the sentence, not inventing sizes ad-hoc, at SHOULD NOT alongside the SHOULD to establish a type scale with clear roles.",
+        "pin": "7c1943c774a99746e304bb0ff0f797ecaea87e8d2d023a02ccf3bb1d557195d6"
+      }
     }
   ],
   "obsolete": []

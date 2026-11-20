@@ -34,7 +34,7 @@
     ]
   },
   "names_hosts": "Lists CLAUDE.md among the files a bulk operation must re-check.",
-  "synced": "ec2d437ba5bff23e",
+  "synced": "ebd75ac26a3b636c",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

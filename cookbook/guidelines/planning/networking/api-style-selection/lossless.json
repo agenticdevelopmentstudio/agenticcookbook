@@ -90,6 +90,29 @@
         "note": "Kept at SHOULD: pin contracts to a dated OpenAPI revision and version the API (`/v1`) per `api-design`.",
         "pin": "b427e965a67b94003658d6254cca91e3673a5090bc45fe6908756b4ceb84724a"
       }
+    },
+    {
+      "sentence": "Pick the API style from who consumes the endpoint and the shape of its traffic, not from fashion.",
+      "to": "should-pick-the-style-from-consumer-and-traffic",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-pick-the-style-from-consumer-and-traffic keeps the whole instruction at SHOULD: choose by who consumes the endpoint and the shape of its traffic, not by fashion.",
+        "pin": "e3f427fbd2f0af1e10f9c20feefb5c5367fb84685c008af7c98aff7f21d23748"
+      }
+    },
+    {
+      "sentence": "REST, gRPC, and GraphQL each optimize for a different boundary; a single system MAY use more than one.",
+      "to": [
+        "may-combine-styles",
+        "intro"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The intro keeps 'REST, gRPC, and GraphQL each optimize for a different boundary' verbatim, and may-combine-styles keeps 'A single system MAY use more than one style' at MAY with no added conditions.",
+        "pin": "9b51c5b99fe716b42d574ff7ed812ba8f101fd1fc914b3a913c71d6c545a1b41"
+      }
     }
   ],
   "obsolete": []

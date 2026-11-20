@@ -28,7 +28,7 @@
       "api-integration"
     ]
   },
-  "synced": "0ef9b7f9bc12a18e",
+  "synced": "ef0eaf1c36aac29c",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

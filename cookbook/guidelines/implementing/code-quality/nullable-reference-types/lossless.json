@@ -30,6 +30,16 @@
         "note": "Using [NotNull], [MaybeNull], [NotNullWhen] from System.Diagnostics.CodeAnalysis for contracts the compiler cannot infer is kept at SHOULD with its condition.",
         "pin": "24fa9c274086ca0bd47d64de882a684316b3da7ea2e51e685b73df5ec90fbbb8"
       }
+    },
+    {
+      "sentence": "Treat warnings as design signals — `string` means non-null, `string?` means nullable.",
+      "to": "should-treat-nullable-warnings-as-design-signals",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-treat-nullable-warnings-as-design-signals keeps the unkeyed instruction at SHOULD with both meanings it gives (`string` non-null, `string?` nullable).",
+        "pin": "329bb9f2964962f53c47e759c7808f84d4bf3f55bc3a34247358339ca5b72416"
+      }
     }
   ],
   "obsolete": []

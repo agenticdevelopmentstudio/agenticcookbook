@@ -42,7 +42,7 @@
       "ui-implementation"
     ]
   },
-  "synced": "1d9025b34dd79262",
+  "synced": "bb677ac08fb2f711",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

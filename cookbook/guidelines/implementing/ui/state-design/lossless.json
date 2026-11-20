@@ -120,6 +120,26 @@
         "note": "The reason (they are often the user's first impression) is kept verbatim.",
         "pin": "8ae697887f1fd0bff3289c58e993138fa09e833c71b66aeea64fcc0304ef45a1"
       }
+    },
+    {
+      "sentence": "A blank",
+      "to": "must-not-show-unexplained-blank-screen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "This fragment begins the sentence \"A blank screen with no explanation MUST NOT be shown\", which must-not-show-unexplained-blank-screen keeps whole at MUST NOT.",
+        "pin": "dfb7b4c2aba5bb5aee8dcf49d7aef97debe7ac65d96953e2195778dc84fe585c"
+      }
+    },
+    {
+      "sentence": "screen with no explanation MUST NOT be shown.",
+      "to": "must-not-show-unexplained-blank-screen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-show-unexplained-blank-screen keeps the whole sentence at MUST NOT: a blank screen with no explanation must not be shown.",
+        "pin": "704fd8e20bf8228b92e6cc1418bb5ca365444a39583f08999ba5307fa754d944"
+      }
     }
   ],
   "obsolete": []

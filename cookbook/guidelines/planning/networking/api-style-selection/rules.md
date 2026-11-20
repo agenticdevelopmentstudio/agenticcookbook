@@ -15,5 +15,5 @@
 - **must-bound-graphql-cost**: You **MUST** mitigate the N+1 problem (e.g. batching/dataloader patterns) and **MUST** enforce query depth/complexity limits to bound cost.
 - **should-not-assume-cdn-caching-for-graphql**: GraphQL caching is field-level and client-driven, not HTTP-intermediary; you SHOULD NOT assume CDN caching applies.
 - **should-treat-the-graphql-schema-as-a-versioned-contract**: You SHOULD treat the GraphQL schema as a versioned contract, and prefer additive evolution and field deprecation over breaking changes.
-- **may-combine-styles**: A system **MAY** combine styles at different boundaries (e.g. gRPC internally, REST or GraphQL at the edge); this is a normal, deliberate choice, not a smell.
+- **may-combine-styles**: A system **MAY** combine styles at different boundaries (e.g. gRPC internally, REST or GraphQL at the edge); this is a normal, deliberate choice, not a smell. A single system **MAY** use more than one style.
 - **must-document-each-boundary-style**: Each boundary **MUST** document its own style decision and contract source.

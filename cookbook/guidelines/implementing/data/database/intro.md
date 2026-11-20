@@ -1,4 +1,4 @@
 
 # Database
 
-SQLite with WAL mode MUST be used for concurrent read access. An ORM MUST NOT be used — use direct SQL via the `sqlite3` standard library module.
+How Python services store and query persistent data.

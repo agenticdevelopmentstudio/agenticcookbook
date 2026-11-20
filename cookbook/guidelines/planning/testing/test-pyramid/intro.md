@@ -1,3 +1,3 @@
 # Test Pyramid
 
-Projects SHOULD follow the Google SWE Book ratio: **80% unit / 15% integration / 5% E2E**.
+How a project's tests are balanced across unit, integration, and end-to-end levels.

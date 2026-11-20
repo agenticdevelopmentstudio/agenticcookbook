@@ -23,8 +23,8 @@
       "judged": {
         "by": "independent judge (opus)",
         "verdict": "pass",
-        "note": "The '# Shortcuts and Automation' heading only titled a summary section of the same guideline; intro keeps the guideline's heading and that section's full text.",
-        "pin": "921ce411cacb10ffd08f8c3c24d0371e2b0c6a56cae791f415ce23c9c185bafa"
+        "note": "The '# Shortcuts and Automation' heading carried no requirement; it titled a second summary of the same guideline. The intro keeps the topic heading ('# Scriptable and automatable') and that summary's rationale sentence, and its SHOULD sentence is rule scriptable-where-supported.",
+        "pin": "df2b5a50f860452240bb202c141b8567e34f29a6c8123dec34fc2984217f8139"
       }
     },
     {

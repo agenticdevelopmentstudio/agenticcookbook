@@ -70,6 +70,16 @@
         "note": "Never storing secrets in UserDefaults or plists is kept at MUST NOT on Apple platforms.",
         "pin": "4b70025b0a4ebbbb6328bd841ca639b4f9649ff1392dea7a6baa342d7641d402"
       }
+    },
+    {
+      "sentence": "Never store secrets in plaintext configuration files, app settings, or unencrypted preference stores.",
+      "to": "must-not-store-secrets-in-plaintext",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-store-secrets-in-plaintext keeps the prohibition at MUST NOT (unkeyed \"Never\" made no weaker) over the same three stores: plaintext configuration files, app settings and unencrypted preference stores.",
+        "pin": "34086e2a6ba2d3a16efa9d984675a50f828c880e752862378aef9cc63a8f54c6"
+      }
     }
   ],
   "obsolete": []

@@ -10,6 +10,19 @@
         "note": "Rule keeps classifying by keywords and intent; the unkeyed instruction is kept at SHOULD.",
         "pin": "cd797e33e552e090425a924eac8ec4147388deebe0b92061d6e8743899c782c6"
       }
+    },
+    {
+      "sentence": "Apply three lenses — intent, domain, method — then let the type pick the sources, the method, and the bar.",
+      "to": [
+        "should-apply-three-lenses",
+        "should-let-type-pick-sources-method-and-bar"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-apply-three-lenses keeps the three lenses (intent, domain, method) at SHOULD, and should-let-type-pick-sources-method-and-bar keeps that the type then picks the sources, the method and the bar.",
+        "pin": "c8742219f55d346008a0a73c1a29aac13854b4c1bb86086c52de0c5a40c38f00"
+      }
     }
   ],
   "obsolete": []

@@ -20,6 +20,16 @@
         "note": "Kept at SHOULD with the three layers named and the reason (values change in one place, intent stays stable); the tier table stays in token-tiers.",
         "pin": "ea5682f177bb1c668d97a9d258c0cdf92ed3597e4c2e57d011acbb7582a48df5"
       }
+    },
+    {
+      "sentence": "Express every UI design decision — color, spacing, typography, radius, motion, elevation, opacity — once as a named **design token** in a single platform-agnostic source of truth, then generate platform artifacts from it.",
+      "to": "should-express-every-decision-as-a-token",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-express-every-decision-as-a-token keeps the whole instruction at SHOULD: every listed decision kind, once, as a named token in one platform-agnostic source of truth, with platform artifacts generated from it.",
+        "pin": "bba1f83267a782bae2e8c9125a44994e660766d82f5b0155e379e61b1b8fd60c"
+      }
     }
   ],
   "obsolete": []

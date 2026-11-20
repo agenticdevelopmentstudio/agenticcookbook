@@ -20,6 +20,16 @@
         "note": "The declarative verification step (previews render without crashes) is kept at SHOULD, and the rule names its SwiftUI scope, which the old sentence took from its swift.md part.",
         "pin": "5cbf26f9f2ec73342f949ac566f347611a147435b7884dfa239ee850b348aa05"
       }
+    },
+    {
+      "sentence": "Previews should cover all significant states (default, loading, error, empty, populated).",
+      "to": "should-cover-significant-states",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-cover-significant-states keeps the instruction at SHOULD with the same five states listed (default, loading, error, empty, populated).",
+        "pin": "441b798f6f6af23517f88b41a94bdbad01257080a02dd2cc3eae371b24d39eae"
+      }
     }
   ],
   "obsolete": []

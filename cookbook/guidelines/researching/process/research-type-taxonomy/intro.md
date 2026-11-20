@@ -1,5 +1,4 @@
 
 # Research type taxonomy
 
-A topic SHOULD be classified before any search. Apply three lenses — intent, domain, method — then let the type pick the sources, the method, and the bar.
-
+How a research topic is classified, and what its type decides.

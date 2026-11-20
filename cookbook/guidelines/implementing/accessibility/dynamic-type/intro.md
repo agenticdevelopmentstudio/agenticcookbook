@@ -1,4 +1,4 @@
 
 # Dynamic Type
 
-Layouts MUST NOT break at larger text sizes.
+How text and layouts respond to larger text sizes and accessibility text settings.

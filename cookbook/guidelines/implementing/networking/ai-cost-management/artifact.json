@@ -37,7 +37,7 @@
     ]
   },
   "names_hosts": "Uses Claude's Haiku, Sonnet and Opus tiers as the worked example of tiered model selection.",
-  "synced": "8f57163a95fef66d",
+  "synced": "c90476f86f620676",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

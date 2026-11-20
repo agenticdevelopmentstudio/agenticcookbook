@@ -1,4 +1,4 @@
 
 # Accessibility from day one
 
-All components MUST integrate with platform accessibility APIs from initial implementation.
+How components work with each platform's accessibility APIs.

@@ -1,4 +1,4 @@
 
 # Touch & Click Targets
 
-Interactive elements MUST be large enough to tap or click accurately.
+How large interactive elements are sized for accurate tapping and clicking.

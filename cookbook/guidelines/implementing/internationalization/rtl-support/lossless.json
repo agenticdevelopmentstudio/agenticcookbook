@@ -151,8 +151,8 @@
       "judged": {
         "by": "independent judge (opus)",
         "verdict": "pass",
-        "note": "The duplicate '# RTL Support' heading carried no requirement; the intro under the RTL layout support heading carries its paragraph whole.",
-        "pin": "b7e2d188cf66f6c02dd8de2d436ee7ce5d51cdaa3c7c5aec60d7f253abbce9fc"
+        "note": "The duplicate '# RTL Support' heading carried no requirement; it titled a second copy of the rule list. The intro keeps the topic heading ('# RTL layout support') with a framing line, and the copy's sentences live in the rules.",
+        "pin": "220bf11000061c27382e7df5761bc076774021461a46d632297d45a871dd521e"
       }
     },
     {
@@ -233,6 +233,46 @@
         "verdict": "pass",
         "note": "Testing with RTL language packs installed on Windows is kept at SHOULD.",
         "pin": "e384adf070c8fc0fe6b44fc8818152389a2bba1d93e128e58ddaeb48ca2d790b"
+      }
+    },
+    {
+      "sentence": "Use leading/trailing (not left/right) for alignment and padding.",
+      "to": "should-use-leading-trailing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-use-leading-trailing keeps the unkeyed instruction at SHOULD, with the left/right exclusion and its scope (alignment and padding).",
+        "pin": "65d68f9762445c0705f14e020654e5a18cd5a1069a5abd471fabcf07da701bee"
+      }
+    },
+    {
+      "sentence": "Mirror icons with directional meaning (forward/back arrows).",
+      "to": "should-mirror-directional-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-mirror-directional-icons keeps the unkeyed instruction at SHOULD with its scope and example (forward/back arrows).",
+        "pin": "7fef25c6f83f65b09f33341d4695630a062175991c86a5a694776ea0e819223e"
+      }
+    },
+    {
+      "sentence": "Do NOT mirror non-directional icons (checkmarks, clocks).",
+      "to": "should-not-mirror-non-directional-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-not-mirror-non-directional-icons keeps the unkeyed prohibition at SHOULD NOT with its scope and examples (checkmarks, clocks).",
+        "pin": "a54c65e3ef245b2c2993050c0ab630725aeb004d06e220747a56f1b91bd7f4fc"
+      }
+    },
+    {
+      "sentence": "Test with an RTL locale enabled.",
+      "to": "should-test-with-rtl-locale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-test-with-rtl-locale keeps the unkeyed instruction at SHOULD, testing with an RTL locale enabled.",
+        "pin": "85f75eeab49741ae78ef69895056cf71a1dce5c985b93e6fd6187acde6d345f3"
       }
     }
   ],
