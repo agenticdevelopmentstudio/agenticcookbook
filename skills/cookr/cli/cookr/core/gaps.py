@@ -25,11 +25,11 @@ from pathlib import Path
 
 from .artifact import ARTIFACT_FILE, is_folder
 from .errors import CookbookError
+from .history import without_fences
 
 MIN_WORDS = 6
 HELD_SHARE = 0.8
 
-_FENCE = re.compile(r"```.*?```", re.S)
 _SPLIT = re.compile(r"(?<=[.!?;:])\s+")
 _LIST_ITEM = re.compile(r"\s*(?:[-*+]|\d+[.)])\s")
 _HEADING = re.compile(r"\s*#{1,6}\s")
@@ -89,7 +89,7 @@ def blocks(text: str) -> list[str]:
 def sentences(text: str) -> list[tuple[str, str]]:
     """(original wording, normalised) for each counted sentence of `text`."""
     found = []
-    for block in blocks(_FENCE.sub("\n\n", text)):
+    for block in blocks(without_fences(text)):
         for piece in _SPLIT.split(block):
             norm = normalise(piece)
             if len(norm.split()) >= MIN_WORDS:

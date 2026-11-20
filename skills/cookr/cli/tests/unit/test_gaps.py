@@ -84,9 +84,11 @@ def test_gaps_ignores_a_sentence_under_six_words(tmp_path, monkeypatch, capsys):
     assert (r["sentences"], r["lacking"]) == (1, 1)
 
 
-def test_gaps_ignores_a_code_fence(tmp_path, monkeypatch, capsys):
+@pytest.mark.parametrize("fence", ["```", "~~~", "````"])
+def test_gaps_ignores_a_code_fence(tmp_path, monkeypatch, capsys, fence):
+    # ~~~ and longer fences too (review f7): a fence is what history.without_fences says it is
     folder = topic(tmp_path, monkeypatch)
-    ref = reference(tmp_path, "```sql\nCREATE INDEX child_parent_idx ON child (parent_id, created_at, x);\n```\n")
+    ref = reference(tmp_path, f"{fence}sql\nCREATE INDEX child_parent_idx ON child (parent_id, created_at, x);\n{fence}\n")
     code, out, _ = run_gaps(capsys, monkeypatch, folder, "--against", ref, "--json")
     r = only(json.loads(out))
     assert code == 0 and r["sentences"] == 0
