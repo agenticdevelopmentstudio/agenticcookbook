@@ -33,11 +33,17 @@ Two follow-up fixes, after the batches:
   committing."
 - `guidelines/planning/code-quality/framework-conventions`: "Scope is the change under review — NOT a whole-codebase inventory." against
   `should-default-to-conventional-units`, which works over the whole codebase.
-
 - `guidelines/planning/code-quality/algorithmic-complexity`, `runtime-conditions` and `system-dependencies`: the same
   sentence, "Scope is the change under review — NOT a whole-codebase inventory.", against topics whose rules group the
   whole codebase into scope groups. The batches had made it a MUST rule in each; review finding f2 showed that rule
   contradicts the topic, so it is no rule now. Devteam's sentence stays in each review bar, for the owner to rule on.
+- `principles/yagni`: devteam's "No unused abstraction layers, extension points, or generalization not required by
+  current features" against `principles/meta-principle-optimize-for-change`'s
+  `should-provide-extension-points-where-change-is-anticipated`: "Key extension points (swappable backends, injectable
+  services) SHOULD be present where change is anticipated." The batches had made devteam's sentence a MUST NOT rule;
+  review finding f3 showed it contradicts optimize-for-change and restates yagni's own SHOULD rule
+  `should-confirm-requirement-before-adding-extension-points` at a stronger strength, so it is no rule now. Devteam's
+  sentences stay in yagni's review parts.
 
 Tensions the batches noted (no rule directly contradicted):
 - `guidelines/implementing/ui/typography`: devteam allows a custom font with justification; the topic says "The platform's system font MUST
