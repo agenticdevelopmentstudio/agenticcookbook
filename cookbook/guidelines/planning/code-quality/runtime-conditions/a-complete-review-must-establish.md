@@ -9,4 +9,5 @@
 - `should-note-remote-config-ordering`: whether every remote config dependency is noted as an operational ordering constraint
 - `must-identify-new-runtime-conditions-with-gated-code`: Every NEW permission/entitlement requirement, environment prerequisite, or feature-flag dependency introduced in this diff is identified with the code it gates;
 - `must-identify-new-runtime-conditions-with-gated-code`: a diff that introduces none is explicitly cleared.
-- `should-group-permission-gated-code`: Scope is the change under review — NOT a whole-codebase inventory.
+
+Scope is the change under review — NOT a whole-codebase inventory.

@@ -6,4 +6,5 @@
 - `should-identify-sdk-wrapper-groups`: whether each third-party SDK touched by more than 2–3 files has its wrapper/adapter group identified
 - `should-not-treat-widespread-dependencies-as-boundaries`: whether dependencies appearing across all groups are treated as cross-cutting, not as boundaries
 - `should-identify-introduced-system-dependencies`: a diff that introduces none is explicitly cleared.
-- `should-place-heavy-os-framework-users-in-platform-group`: Scope is the change under review — NOT a whole-codebase inventory.
+
+Scope is the change under review — NOT a whole-codebase inventory.
