@@ -44,6 +44,12 @@ Two follow-up fixes, after the batches:
   review finding f3 showed it contradicts optimize-for-change and restates yagni's own SHOULD rule
   `should-confirm-requirement-before-adding-extension-points` at a stronger strength, so it is no rule now. Devteam's
   sentences stay in yagni's review parts.
+- `principles/immutability-by-default`: devteam's "no shared mutable state across concurrent contexts" against the
+  topic's own `should-contain-mutation-behind-boundaries` (actors, StateFlow) and the concurrency topics, which allow
+  shared mutable state behind a lock or an actor. The batches had made it the rule "There MUST be no shared mutable
+  state…"; review finding f4 showed the contradiction, so the rule now reads "Mutable state shared across concurrent
+  contexts MUST NOT be accessed without synchronization or an owning actor." Devteam's sentence stays in the review
+  bar, for the owner to rule on.
 
 Tensions the batches noted (no rule directly contradicted):
 - `guidelines/implementing/ui/typography`: devteam allows a custom font with justification; the topic says "The platform's system font MUST

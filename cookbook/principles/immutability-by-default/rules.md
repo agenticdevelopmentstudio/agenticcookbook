@@ -3,4 +3,4 @@
 - **should-use-immutable-bindings-by-default**: `let` (Swift), `val` (Kotlin), `const` (JS/TS) SHOULD be used by default.
 - **should-prefer-value-types**: SHOULD prefer value types (structs, data classes) over reference types.
 - **should-contain-mutation-behind-boundaries**: Mutation SHOULD be contained behind clear boundaries (actors, StateFlow, useState).
-- **must-not-share-mutable-state-across-concurrent-contexts**: There MUST be no shared mutable state across concurrent contexts.
+- **must-not-access-shared-mutable-state-unsynchronized**: Mutable state shared across concurrent contexts MUST NOT be accessed without synchronization or an owning actor.
