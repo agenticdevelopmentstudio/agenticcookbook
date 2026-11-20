@@ -1,0 +1,12 @@
+
+- `must-require-tls-1-2-minimum`: the server accepts no connection below TLS 1.2, and offers TLS 1.3
+- `must-disable-tls-1-0-and-1-1`: TLS 1.0 and 1.1 handshakes fail
+- `must-enable-hsts-on-production-domains`: every production domain returns `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
+- `should-submit-to-hsts-preload-list`: the domains are on the HSTS preload list, or the build says why not
+- `should-pin-to-intermediate-ca`: any pin is on the intermediate CA, not the leaf, or the code says why not
+- `should-pin-only-on-mobile`: pinning appears only in mobile apps, or the code says why the web needs it
+- `must-include-backup-pins-and-recovery-plan`: every pin set includes backup pins and has a documented recovery plan
+- `should-consider-certificate-transparency-monitoring`: the build records whether Certificate Transparency monitoring was chosen over pinning
+- `should-use-mozilla-tls-configuration`: the server config matches Mozilla's "Intermediate" or "Modern" profile, or the build says why not
+- `should-prefer-aead-ciphers`: AEAD ciphers (AES-GCM, ChaCha20-Poly1305) lead the cipher order, or the build says why not
+- `must-not-expose-plain-http-endpoints`: no production domain exposes a plain-HTTP endpoint

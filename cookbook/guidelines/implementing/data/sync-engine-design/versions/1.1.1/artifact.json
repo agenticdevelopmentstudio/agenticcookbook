@@ -1,0 +1,58 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a0cb2815-8fdd-450a-af46-8fca80ba1aba",
+    "title": "Sync Engine Design",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to design a client-side sync engine: layered architecture, entity-agnostic Syncable interface, the six-step sync cycle, scheduling strategies, snapshot rebuilding, and error handling with circuit breakers.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "architecture",
+      "engine",
+      "error-handling"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "3b88bb39-a15d-488f-a967-b7fa2dba2be7",
+      "0d3e2d97-22d4-4781-a6c4-fa297b38030f"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "offline-support",
+      "database-operations"
+    ]
+  },
+  "synced": "c443716d5796d24a",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "architecture-layers", "heading": "Architecture Layers", "role": "how-to"},
+    {"part": "entity-agnostic-syncable-interface", "heading": "Entity-Agnostic Syncable Interface", "role": "examples"},
+    {"part": "the-sync-cycle", "heading": "The Sync Cycle", "role": "how-to"},
+    {"part": "dirty-tracking-strategies", "heading": "Dirty Tracking Strategies", "role": "examples"},
+    {"part": "sync-scheduling", "heading": "Sync Scheduling", "role": "how-to"},
+    {"part": "snapshot-rebuilding", "heading": "Snapshot Rebuilding", "role": "how-to"},
+    {"part": "error-handling", "heading": "Error Handling", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

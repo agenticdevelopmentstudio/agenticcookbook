@@ -4,11 +4,11 @@
     "id": "a0cb2815-8fdd-450a-af46-8fca80ba1aba",
     "title": "Sync Engine Design",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,13 +32,13 @@
     ],
     "references": [],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "offline-support",
       "database-operations"
     ]
   },
-  "synced": "c443716d5796d24a",
+  "synced": "7ffaae9ff71ca9c0",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

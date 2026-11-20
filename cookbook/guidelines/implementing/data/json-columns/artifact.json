@@ -4,11 +4,11 @@
     "id": "cbfa06b6-ec22-4784-9e61-c99307064b72",
     "title": "JSON columns and generated columns",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -37,13 +37,13 @@
       "https://vsevolod.net/postgresql-jsonb-index/"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "bf28d627c4144d35",
+  "synced": "0a4705a76d52a31e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

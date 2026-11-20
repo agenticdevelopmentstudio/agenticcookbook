@@ -7,5 +7,7 @@
 - Self-referential FKs (e.g., `parent_id` in same table) have index on FK column and ON DELETE documented
 - Tree hierarchies approach documented: adjacency list (parent pointer), closure table, or nested sets
 - Adjacency list used for shallow trees; closure table for querying deep hierarchies; nested sets only if frequent hierarchical queries
+- Every rule is kept, or the change says why not: `must-index-fk-column`, `should-use-junction-table-for-many-to-many`, `should-use-composite-junction-pk`, `should-index-junction-for-each-query-direction`, `must-enforce-generic-fk-integrity-in-application`, `should-denormalize-display-name-onto-supertype`, `must-not-use-recursive-cte-below-3-8-3`, `should-start-with-adjacency-list`, `should-migrate-to-closure-table-only-when-measured`
+
 
 A review passes when it establishes every item above.

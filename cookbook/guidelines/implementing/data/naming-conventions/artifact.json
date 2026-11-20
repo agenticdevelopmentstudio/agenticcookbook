@@ -4,11 +4,11 @@
     "id": "dde1b6fd-773c-4f9f-a328-51150468bc99",
     "title": "Database naming conventions",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,13 +33,13 @@
       "https://www.bbkane.com/blog/sql-naming-conventions/"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "18f650f06cdc56a4",
+  "synced": "9f6428caca984527",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

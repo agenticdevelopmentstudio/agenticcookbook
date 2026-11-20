@@ -4,11 +4,11 @@
     "id": "5b026378-d418-406a-9aab-6e3f043901af",
     "title": "Transport Security",
     "type": "guideline",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,13 +30,13 @@
       "https://wiki.mozilla.org/Security/Server_Side_TLS"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "networking",
       "security-review"
     ]
   },
-  "synced": "f67be79491072201",
+  "synced": "c57fd517173330c8",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

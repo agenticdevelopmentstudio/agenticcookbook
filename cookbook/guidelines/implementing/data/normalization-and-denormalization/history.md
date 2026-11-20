@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.2 | 2026-11-20 | Mike Fullerton | Review bar cites every rule by name |
 | 1.1.1 | 2026-11-19 | Mike Fullerton | Devteam's review text moved in (R7) |
 | 1.1.0 | 2026-11-15 | Mike Fullerton | Roles on parts; named rules; reviewer and verifier parts from the devteam; Fold guidelines/planning/data/normalization-and-denormalization into this topic; its intro statement kept word for word in the intro |
 | 1.0.3 | 2026-10-04 | Mike Fullerton | Add the statement under the title (or align the title line) that the guideline format requires |

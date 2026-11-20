@@ -1,0 +1,62 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "25a3b827-1da9-4600-98ec-f5c492a162e3",
+    "title": "Schema evolution and migrations",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Migration strategies for SQLite: PRAGMA user_version, ALTER TABLE limitations, the 12-step recreate procedure, and sync-compatible migration rules.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "migrations",
+      "schema-evolution",
+      "schema-design",
+      "sync"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc"
+    ],
+    "references": [
+      "https://sqlite.org/lang_altertable.html",
+      "https://david.rothlis.net/declarative-schema-migration-for-sqlite/",
+      "https://levlaz.org/sqlite-db-migrations-with-pragma-user_version/"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "database-operations",
+      "schema-design"
+    ]
+  },
+  "synced": "e6a17228b2e9cf0d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "track-schema-version-with-pragma-user-version", "heading": "Track schema version with PRAGMA user_version", "role": "examples"},
+    {"part": "alter-table-limitations", "heading": "ALTER TABLE limitations", "role": "how-to"},
+    {"part": "the-12-step-recreate-procedure", "heading": "The 12-step recreate procedure", "role": "examples"},
+    {"part": "sync-compatible-migration-rules", "heading": "Sync-compatible migration rules", "role": "examples"},
+    {"part": "declarative-migration-approach", "heading": "Declarative migration approach", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "pre-deploy-migration-checklist", "heading": "Pre-deploy migration checklist", "role": "how-to"},
+    {"part": "backward-compatibility-check", "heading": "Backward compatibility check", "role": "how-to"},
+    {"part": "sync-compatibility-verification", "heading": "Sync compatibility verification", "role": "how-to"},
+    {"part": "rollback-strategy", "heading": "Rollback strategy", "role": "how-to"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

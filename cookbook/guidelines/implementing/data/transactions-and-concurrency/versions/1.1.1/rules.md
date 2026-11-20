@@ -1,0 +1,25 @@
+
+- **must-enable-wal-mode**: MUST enable WAL mode for any application with concurrent reads, or where write latency matters.
+- **should-set-wal-on-connection-open**: SHOULD re-set WAL mode on connection open.
+- **must-keep-wal-processes-on-one-machine**: With WAL mode, all processes MUST share the same physical machine.
+- **must-not-use-wal-on-network-file-systems**: MUST NOT use WAL mode on network file systems.
+- **must-not-change-page-size-after-wal**: MUST NOT change `page_size` after enabling WAL.
+- **must-not-use-memory-or-off-journal-in-production**: MUST NOT use `MEMORY` or `OFF` journal modes in production databases where data loss on crash is unacceptable.
+- **must-wrap-write-batches-in-transactions**: MUST wrap batches of writes in explicit transactions.
+- **must-use-begin-immediate-for-writes**: MUST use `BEGIN IMMEDIATE` for any transaction that will write.
+- **must-set-busy-timeout**: MUST set `busy_timeout` on every connection in any multi-connection or concurrent access scenario.
+- **should-lower-busy-timeout-for-interactive-ui**: SHOULD set `busy_timeout` lower (500–1000ms) for interactive UI operations where a 5-second wait would be visible to the user.
+- **should-set-recommended-pragmas-on-every-connection**: SHOULD set the recommended PRAGMA configuration on every new connection.
+- **should-use-single-writer-many-readers**: SHOULD use one dedicated write connection with an application-level queue, and multiple read connections for concurrent UI or background queries.
+- **must-not-hold-write-lock-during-external-io**: MUST NOT open the write lock and then wait on external I/O (network requests, user input).
+- **should-keep-write-transactions-short**: SHOULD keep write transactions short.
+- **should-run-passive-checkpoints-periodically**: SHOULD run `PRAGMA wal_checkpoint(PASSIVE)` periodically during normal operation.
+- **should-truncate-checkpoint-after-large-batches**: SHOULD use a `TRUNCATE` checkpoint after large sync batches to reclaim WAL disk space.
+- **should-cap-wal-size**: SHOULD cap WAL file size to prevent unbounded growth.
+- **should-not-disable-auto-checkpoint-without-replacement**: SHOULD NOT disable auto-checkpointing without a manual replacement.
+- **should-not-hold-long-read-transactions**: SHOULD NOT run long-running read transactions that prevent checkpoint completion.
+- **should-not-run-very-large-write-transactions**: SHOULD NOT run very large write transactions that block the checkpoint.
+- **should-checkpoint-off-the-foreground**: SHOULD run checkpoints in a separate thread or connection so they do not block foreground reads.
+- **must-restore-safe-settings-after-bulk-load**: MUST restore safe settings immediately after a bulk load with reduced-safety settings completes.
+- **must-not-use-bulk-load-settings-in-production**: MUST NOT use the bulk load settings in production code paths.
+

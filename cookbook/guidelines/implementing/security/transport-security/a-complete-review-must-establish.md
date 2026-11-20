@@ -2,6 +2,7 @@
 - `must-require-tls-1-2-minimum`: whether every connection requires TLS 1.2 or later, with TLS 1.3 preferred
 - `must-disable-tls-1-0-and-1-1`: whether TLS 1.0 and 1.1 are disabled entirely
 - `must-enable-hsts-on-production-domains`: whether every production domain sends `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
+- `must-not-expose-plain-http-endpoints`: whether every production domain exposes no plain-HTTP endpoint
 - `should-submit-to-hsts-preload-list`: whether the domains are submitted to the HSTS preload list
 - `should-pin-to-intermediate-ca`: whether pinning targets the intermediate CA, not the leaf
 - `should-pin-only-on-mobile`: whether pinning is limited to mobile apps and avoided for web

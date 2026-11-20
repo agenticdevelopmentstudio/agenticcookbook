@@ -7,5 +7,7 @@
 - For synced tables: denormalization strategy compatible with sync direction and frequency
 - Triggers used to maintain denormalized data are wrapped in transaction and tested
 - No "just in case" denormalization; measure the query before denormalizing
+- Every rule is kept, or the change says why not: `should-start-at-3nf`, `must-denormalize-only-when-measured-read-heavy-and-synced`, `should-prefer-normalized-unless-benchmarked`, `must-propagate-source-writes-to-denormalized-copies`, `must-maintain-denormalized-column-via-trigger`, `must-include-denormalized-column-in-sync-payloads`, `should-treat-normalized-source-as-authoritative`, `should-prefer-denormalizing-stable-data`, `must-not-store-computed-values`, `should-not-store-narratives-in-columns`, `should-not-store-lists-in-a-column`
+
 
 A review passes when it establishes every item above.

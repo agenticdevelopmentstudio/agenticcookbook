@@ -189,10 +189,10 @@
         "a-complete-review-must-establish"
       ],
       "judged": {
-        "by": "independent judge (opus)",
+        "by": "judge-opus-5.5-2026-11-20",
         "verdict": "pass",
-        "note": "The rule states the panel is reached through a navigation menu item visible only in debug builds, and the review part checks for a debug-only navigation item, so the meaning is kept without loss or contradiction.",
-        "pin": "e94cb9b5aabafac9ea94aa7cf6a197c3fe4b8f2de773523bc53314d64c21482d"
+        "note": "The rule states the panel is reached through a navigation menu item visible only in debug builds, and the review part checks for a debug-only navigation item, so the meaning is kept without loss or contradiction. Re-judged after review f3: a review-bar line now cites every rule by name, which leaves this verdict unchanged.",
+        "pin": "07fdb995dc0e58e593e657a8ecab99b3d288250b9ab1f5e317fc3bfcd1a19b40"
       }
     }
   ],

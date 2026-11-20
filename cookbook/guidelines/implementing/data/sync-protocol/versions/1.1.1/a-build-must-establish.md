@@ -1,0 +1,25 @@
+
+- `must-be-correct-under-network-failure`: the protocol stays correct under retries, partial delivery and out-of-order arrival
+- `should-combine-push-and-pull`: push and pull travel in one HTTP request, or the code says why not
+- `should-use-shoulder-tap`: the server notifies the client that new data is available and the client then pulls it, instead of polling, or the code says why not
+- `must-use-incremental-sync`: production sync is incremental; full sync runs only for initial bootstrap or recovery after database corruption
+- `should-prefer-version-cursor-over-timestamps`: incremental sync tracks a version number rather than a timestamp, or the code says why not
+- `should-use-hlc-for-timestamp-sync`: timestamp-based sync uses HLC rather than wall-clock time, or the code says why not
+- `must-set-dirty-on-every-local-write`: with flag columns, every local write sets `is_dirty = 1`
+- `should-clear-dirty-after-server-confirms`: with flag columns, `is_dirty` is cleared to `0` after the server confirms the change, or the code says why not
+- `must-build-sqlite-with-session-flags`: wherever the SQLite Session Extension is used, SQLite is compiled with `-DSQLITE_ENABLE_SESSION` and `-DSQLITE_ENABLE_PREUPDATE_HOOK`
+- `must-paginate-sync-results`: no sync request or response is unbounded
+- `must-paginate-by-sync-version-cursor`: sync pagination uses the server-assigned sync version as its cursor, never an offset
+- `should-size-batches-by-context`: batch sizes fall in the recommended range for their context, or the code says why not
+- `must-make-sync-operations-replayable`: replaying any sync operation leaves the same state
+- `must-guard-upserts-with-version`: every sync UPSERT has a version guard, so an older batch never downgrades a record
+- `must-use-idempotency-keys`: every outbox entry carries a deterministic idempotency key
+- `must-deduplicate-on-server`: the server deduplicates on idempotency key and returns success for an already-processed request
+- `must-write-data-and-queue-atomically`: every local write to a data table and its sync queue entry share one transaction
+- `must-back-off-with-jitter`: failed sync attempts are retried with exponential backoff plus jitter, never in a tight loop
+- `should-classify-errors-before-retrying`: every sync error is classified before any retry, or the code says why not
+- `must-not-retry-client-errors`: no 400, 401 or 403 is retried; each is surfaced to the user
+- `must-not-retry-conflicts-blindly`: a 409 goes through the conflict resolution strategy and is not retried blindly
+- `should-retry-server-errors-with-longer-backoff`: a 500 is retried with a longer backoff, or the code says why not
+- `should-enter-circuit-breaker`: after N consecutive failures, sync stops and resumes only after a cooldown or explicit user action, or the code says why not
+

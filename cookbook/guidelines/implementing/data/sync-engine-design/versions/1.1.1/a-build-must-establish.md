@@ -1,0 +1,23 @@
+
+- `should-separate-four-layers`: the engine keeps application, orchestrator, content type handler and transport code in separate layers, or the code says why not
+- `must-read-application-from-local-sqlite`: no application-layer code fetches data from the network; it reads local SQLite
+- `should-implement-syncable-interface`: every synced entity implements the engine's common interface, or the code says why not
+- `may-customize-conflict-handling-per-type`: where conflict handling is customized per content type, those content types still share one transport and one scheduling layer
+- `should-complete-cycle-in-one-round-trip`: a bidirectional sync cycle makes one server round trip, or the code says why not
+- `should-rebuild-derived-state-before-notifying-ui`: derived views and computed state that depend on synced entities are rebuilt before the UI is notified, or the code says why not
+- `should-start-with-is-dirty-flags`: dirty tracking uses `isDirty` flag columns, or the code says why not
+- `must-set-dirty-on-every-local-write`: where `isDirty` flags are used, every local INSERT and UPDATE sets the flag
+- `should-clear-dirty-after-successful-sync`: where `isDirty` flags are used, a successful sync clears the flag, or the code says why not
+- `should-use-change-log-only-for-operation-awareness`: a change-log table is used only where operation-type awareness or ordered change history for field-level merge is needed, or the code says why not
+- `should-use-edit-operations-only-for-three-way-merge`: an edit operations table is used only where the server performs three-way field merges, or the code says why not
+- `should-implement-two-scheduling-modes`: the engine has at least two scheduling modes, or the code says why not
+- `must-throttle-event-driven-sync`: event-driven sync enforces a minimum interval between syncs
+- `must-rebuild-snapshots-in-dependency-order`: when several entity types sync in one cycle, snapshots are rebuilt in dependency order
+- `must-back-off-with-jitter-on-transient-failures`: every transient failure is retried with exponential backoff plus jitter
+- `must-not-retry-client-errors`: no 400, 401 or 403 response is retried; each is surfaced to the user
+- `should-resolve-409-then-retry`: a 409 Conflict goes through the conflict resolution strategy before the retry, or the code says why not
+- `should-retry-500-with-longer-backoff`: a 500 is retried with a longer backoff than other transient failures, or the code says why not
+- `should-break-circuit-after-consecutive-failures`: after N consecutive failures, automatic retries stop, changes queue locally, and sync resumes only after a cooldown or explicit user action, or the code says why not
+- `should-log-sync-failure-reason`: every sync failure logs its reason, or the code says why not
+- `must-surface-persistent-sync-failures`: every persistent sync failure is shown to the user
+

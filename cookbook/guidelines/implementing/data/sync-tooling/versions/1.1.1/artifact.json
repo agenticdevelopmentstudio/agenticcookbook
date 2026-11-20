@@ -1,0 +1,68 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "db63c086-d082-4e20-aaca-154448c42d1d",
+    "title": "SQLite Sync Tooling",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Comparison and selection guide for SQLite sync tools: Session Extension, cr-sqlite, Litestream, ElectricSQL, PowerSync, Turso/libSQL, and sqlite-sync — with a decision matrix and selection criteria.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "tooling",
+      "sqlite",
+      "crdt",
+      "offline-first"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "a0cb2815-8fdd-450a-af46-8fca80ba1aba",
+      "822a0912-fda7-461f-85ab-f9c2c55f0039"
+    ],
+    "references": [
+      "https://sqlite.org/sessionintro.html",
+      "https://github.com/vlcn-io/cr-sqlite",
+      "https://litestream.io",
+      "https://electric-sql.com",
+      "https://www.powersync.com",
+      "https://turso.tech",
+      "https://github.com/sqliteai/sqlite-sync"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "offline-support",
+      "dependency-management"
+    ]
+  },
+  "synced": "fa85ccef9792d1d6",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "sqlite-session-extension", "heading": "SQLite Session Extension", "role": "rationale"},
+    {"part": "cr-sqlite", "heading": "cr-sqlite", "role": "examples"},
+    {"part": "litestream", "heading": "Litestream", "role": "rationale"},
+    {"part": "electricsql", "heading": "ElectricSQL", "role": "rationale"},
+    {"part": "powersync", "heading": "PowerSync", "role": "examples"},
+    {"part": "turso-libsql", "heading": "Turso / libSQL", "role": "examples"},
+    {"part": "sqlite-sync-sqlite-ai", "heading": "sqlite-sync (sqlite.ai)", "role": "examples"},
+    {"part": "tool-comparison-matrix", "heading": "Tool Comparison Matrix", "role": "rationale"},
+    {"part": "selection-criteria", "heading": "Selection Criteria", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

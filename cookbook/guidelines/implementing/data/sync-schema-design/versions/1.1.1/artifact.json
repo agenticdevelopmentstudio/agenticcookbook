@@ -1,0 +1,61 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a899aeae-d561-4fcd-abd7-df109fe2362c",
+    "title": "Sync Schema Design",
+    "type": "guideline",
+    "version": "1.1.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-06",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Schema design rules for databases that sync across devices: UUID primary keys, timestamp columns, soft deletes, dirty tracking, version columns, and sync metadata tables.",
+    "platforms": [
+      "sqlite",
+      "postgresql"
+    ],
+    "tags": [
+      "database",
+      "sync",
+      "schema",
+      "offline-first",
+      "uuid",
+      "soft-delete"
+    ],
+    "depends-on": [],
+    "related": [
+      "f68778f2-65e3-4e89-bbf8-115151efa9dc",
+      "822a0912-fda7-461f-85ab-f9c2c55f0039",
+      "3b88bb39-a15d-488f-a967-b7fa2dba2be7"
+    ],
+    "references": [
+      "https://sqlite.org/datatype3.html",
+      "https://vlcn.io/docs/cr-sqlite"
+    ],
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
+    "triggers": [
+      "offline-support",
+      "schema-design"
+    ]
+  },
+  "synced": "8edc773543c63ee8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "primary-keys-always-uuid", "heading": "Primary Keys: Always UUID", "role": "examples"},
+    {"part": "timestamp-columns", "heading": "Timestamp Columns", "role": "how-to"},
+    {"part": "version-columns-for-optimistic-concurrency", "heading": "Version Columns for Optimistic Concurrency", "role": "how-to"},
+    {"part": "soft-deletes-tombstones", "heading": "Soft Deletes (Tombstones)", "role": "examples"},
+    {"part": "sync-metadata-tables", "heading": "Sync Metadata Tables", "role": "examples"},
+    {"part": "type-compatibility-between-sqlite-and-postgresql", "heading": "Type Compatibility Between SQLite and PostgreSQL", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

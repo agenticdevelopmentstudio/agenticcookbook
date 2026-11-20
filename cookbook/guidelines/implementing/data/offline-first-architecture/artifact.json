@@ -4,11 +4,11 @@
     "id": "0d3e2d97-22d4-4781-a6c4-fa297b38030f",
     "title": "Offline-First Architecture",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -35,13 +35,13 @@
       "https://www.powersync.com/blog/sqlite-optimizations-for-ultra-high-performance"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "offline-support",
       "database-operations"
     ]
   },
-  "synced": "fc14ba68982ebdf9",
+  "synced": "46cab4035476dc13",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

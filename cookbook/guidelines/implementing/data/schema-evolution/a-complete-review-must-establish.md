@@ -8,6 +8,7 @@
 - Default values provided for new NOT NULL columns (schema will be readable by old code during upgrade)
 - Migration scripts are idempotent: re-running migration is safe even if table already modified
 - Major version changes tracked separately; deployment strategy ensures coordinated migration between client and server
+- Every rule is kept, or the change says why not: `must-track-schema-version-with-user-version`, `must-end-migration-file-with-user-version`, `must-wrap-each-migration-in-transaction`, `must-make-migrations-idempotent`, `must-add-columns-nullable-or-defaulted`, `must-not-rename-column-below-3-25-0`, `must-not-drop-column-below-3-35-0`, `must-not-use-alter-table-for-unsupported-changes`, `must-disable-foreign-keys-during-recreate`, `must-run-foreign-key-check-before-commit`, `must-recreate-dependent-objects`, `must-keep-migrations-compatible-across-participants`, `must-only-add-columns-in-sync-schemas`, `must-default-new-columns-in-sync-schemas`, `must-test-migrations-from-every-version`, `must-back-up-before-server-migration`, `should-flag-type-changes-for-manual-sql`
 
 
 A review passes when it establishes every item above.

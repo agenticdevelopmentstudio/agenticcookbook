@@ -4,11 +4,11 @@
     "id": "7fd21483-ad0b-407e-8a7f-103992403d36",
     "title": "Query Optimization",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-06",
-    "modified": "2026-11-19",
+    "modified": "2026-11-20",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,13 +34,13 @@
       "https://sqlite.org/queryplanner.html"
     ],
     "approved-by": "approve-artifact v2.0.0",
-    "approved-date": "2026-11-19",
+    "approved-date": "2026-11-20",
     "triggers": [
       "database-operations",
       "performance-optimization"
     ]
   },
-  "synced": "65762d23acec13aa",
+  "synced": "9cf19f997d04d69c",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

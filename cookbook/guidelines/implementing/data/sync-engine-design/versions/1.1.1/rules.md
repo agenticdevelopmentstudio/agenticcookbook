@@ -1,0 +1,23 @@
+
+- **should-separate-four-layers**: A sync engine SHOULD separate concerns into four layers: Application, Sync Orchestrator, Content Type Handlers and Sync Transport, above the local database.
+- **must-read-application-from-local-sqlite**: The Application layer MUST read from local SQLite exclusively; it never fetches from the network directly.
+- **should-implement-syncable-interface**: SHOULD design the engine so every synced entity implements a common interface.
+- **may-customize-conflict-handling-per-type**: Conflict handling MAY be customized per content type while sharing a common transport and scheduling layer.
+- **should-complete-cycle-in-one-round-trip**: A standard bidirectional sync cycle SHOULD complete in a single server round trip.
+- **should-rebuild-derived-state-before-notifying-ui**: After applying server records (step 5 of the sync cycle), SHOULD rebuild any derived views or computed state that depends on the synced entities before notifying the UI of changes.
+- **should-start-with-is-dirty-flags**: SHOULD start with `isDirty` flag columns — simple, low overhead, works everywhere.
+- **must-set-dirty-on-every-local-write**: Where `isDirty` flags are used, the flag MUST be set on every local INSERT/UPDATE.
+- **should-clear-dirty-after-successful-sync**: Where `isDirty` flags are used, the flag SHOULD be cleared after successful sync.
+- **should-use-change-log-only-for-operation-awareness**: SHOULD upgrade to a change-log table (populated via triggers) only if you need operation-type awareness (INSERT vs UPDATE vs DELETE) or ordered change history for field-level merge.
+- **should-use-edit-operations-only-for-three-way-merge**: SHOULD upgrade to an edit operations table (field-level deltas with timestamps and device IDs) only if the server needs to perform three-way field merges.
+- **should-implement-two-scheduling-modes**: SHOULD implement at least two scheduling modes.
+- **must-throttle-event-driven-sync**: Event-driven sync MUST always be throttled with a minimum interval between syncs (e.g., no more than once per 2 seconds).
+- **must-rebuild-snapshots-in-dependency-order**: MUST rebuild snapshots in the correct dependency order when multiple entity types are synced in the same cycle.
+- **must-back-off-with-jitter-on-transient-failures**: Exponential backoff with jitter MUST be applied to all transient failures.
+- **must-not-retry-client-errors**: A 400, 401 or 403 response MUST NOT be retried; it is surfaced to the user.
+- **should-resolve-409-then-retry**: On 409 Conflict, SHOULD apply the conflict resolution strategy, then retry.
+- **should-retry-500-with-longer-backoff**: On 500, SHOULD retry with longer backoff.
+- **should-break-circuit-after-consecutive-failures**: After N consecutive sync failures (e.g., 5), SHOULD stop retrying automatically, enter a degraded mode in which changes queue locally, and resume sync only after a cooldown period (e.g., 30 minutes) or explicit user action.
+- **should-log-sync-failure-reason**: SHOULD log the failure reason for diagnostics.
+- **must-surface-persistent-sync-failures**: MUST surface persistent sync failures to the user — never silently fail.
+

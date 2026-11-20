@@ -1,0 +1,12 @@
+
+- `must-require-tls-1-2-minimum`: whether every connection requires TLS 1.2 or later, with TLS 1.3 preferred
+- `must-disable-tls-1-0-and-1-1`: whether TLS 1.0 and 1.1 are disabled entirely
+- `must-enable-hsts-on-production-domains`: whether every production domain sends `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
+- `should-submit-to-hsts-preload-list`: whether the domains are submitted to the HSTS preload list
+- `should-pin-to-intermediate-ca`: whether pinning targets the intermediate CA, not the leaf
+- `should-pin-only-on-mobile`: whether pinning is limited to mobile apps and avoided for web
+- `must-include-backup-pins-and-recovery-plan`: whether backup pins and a recovery plan exist wherever pins are used
+- `should-consider-certificate-transparency-monitoring`: whether Certificate Transparency monitoring was considered as an alternative
+- `should-use-mozilla-tls-configuration`: whether the server uses Mozilla's "Intermediate" or "Modern" TLS configuration
+- `should-prefer-aead-ciphers`: whether AEAD ciphers (AES-GCM, ChaCha20-Poly1305) are preferred
+- `should-submit-to-hsts-preload-list`: HSTS is enabled on production domains with `max-age=31536000; includeSubDomains; preload` and the domain is submitted to the preload list (no plain-HTTP endpoints);

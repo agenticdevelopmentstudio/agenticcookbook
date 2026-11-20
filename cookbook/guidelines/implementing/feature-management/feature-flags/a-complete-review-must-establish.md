@@ -16,6 +16,7 @@
 - Flags whose rollout is done are removed with their old code path, before they are archived in the flag service; whether the live flags are reviewed on a regular cadence is a team practice a review cannot establish from the code, and it says so
 - No feature in a build submitted to App Review is hidden behind a flag from review, and in an app distributed through the App Store or Google Play no flag turns on code downloaded after release
 - The change is checked against each owner-list rule as written: `gate-all-features`, `spec-lists-flag-keys`, `kotlin-sharedpreferences-default` and `fail-fast-on-missing-config`
+- Each other rule is kept, or the change says why not: `flag-only-when-needed`, `feature-flag-provider-interface`, `prefer-a-standard-flag-api`, `swift-userdefaults-default`, `kotlin-datastore-default`, `typescript-localstorage-default`, `csharp-feature-management`, `evaluation-takes-a-default-and-never-throws`, `fail-at-setup-not-at-evaluation`, `typed-flag-evaluation`, `off-means-existing-behaviour`, `no-dependency-on-flag-service`, `local-flag-store-is-untrusted`, `prefer-static-flag-configuration`, `flag-has-a-type-and-lifetime`, `unique-never-reused-flag-names`, `name-and-describe-flags`, `decouple-toggle-points`, `test-both-flag-states`, `test-release-and-fallback-configurations`, `no-mid-session-ui-flip`, `monitor-flag-rollout`, `remove-flags-when-done`, `flags-never-hide-features-from-review`, `flags-switch-only-shipped-code`
 
 
 A review passes when it establishes every item above.
