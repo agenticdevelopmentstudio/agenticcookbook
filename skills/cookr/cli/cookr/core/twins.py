@@ -2,7 +2,7 @@
 
 **Twins.** One guideline often appears under several use cases, so
 `guidelines/implementing/security/input-validation` and
-`guidelines/implementing/security/input-validation` are twins: the same path below
+`guidelines/reviewing/security/input-validation` are twins: the same path below
 their use case. Twins are meant to say the same thing. When one is edited and
 the other is not, they contradict each other quietly. Twins are compared by
 their shared text, which leaves out the change history and treats a link to the
