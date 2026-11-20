@@ -1395,7 +1395,8 @@ does not repeat its `r9_stale` stderr (1.4.36, G140).
    note when any row waits on a plan (1.4.25, G75).
    `stale_reference` (1.4.27) lists each `A/reference.json` row written
    before the current reference format (`reference_format.py`; format 2
-   takes *Standing focus* and *Tidy focus*, 1.4.26): its file lacks text the
+   takes *Standing focus* and *Tidy focus*, 1.4.26; format 3 leaves out a
+   roled skill's copied review sections, 1.4.46): its file lacks text the
    measure needs, so the area is never measured against it as if current.
    `stage_status.py`, `unmeasured.py --check` and `run_gaps.py` (exit 1, a
    run and `--check` alike) list it; `stage_status.py` also lists

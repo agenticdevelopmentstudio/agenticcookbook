@@ -49,8 +49,8 @@ def test_every_prompt_is_named_with_its_fill_line():
 
 def test_versions_agree():
     m = re.search(r'^version: "([\d.]+)"', SKILL, re.M)
-    assert m and m.group(1) == "1.4.45"
-    assert SKILL.count("v1.4.45") >= 3
+    assert m and m.group(1) == "1.4.46"
+    assert SKILL.count("v1.4.46") >= 3
     assert f"at least {stage_status.MINIMUM}" in SKILL and f"cookr, {stage_status.MINIMUM} or later" in SKILL
 
 

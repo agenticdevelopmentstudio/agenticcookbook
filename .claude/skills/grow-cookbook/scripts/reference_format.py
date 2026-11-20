@@ -3,7 +3,9 @@
 
 `<devteam>/speciality_reference.py` stamps each row it writes with `format`,
 the reference format its file is written in (its FORMAT). Format 2 takes
-`## Standing focus` and `## Tidy focus` (grow-cookbook 1.4.26); a row with no
+`## Standing focus` and `## Tidy focus` (grow-cookbook 1.4.26); format 3 leaves
+out a roled skill's `## Review focus` and review bar, which the devteam copies
+whole from the topic's reviewer pair, so they are not its own text (1.4.46); a row with no
 stamp, or an older one, was written before that, its file lacking text the
 measure needs. Such a row is stale: run_gaps.py, `unmeasured.py --check` and
 stage_status.py list it in `stale_reference`, never measure it as current;
@@ -36,7 +38,7 @@ import json
 import os
 from pathlib import Path
 
-REFERENCE_FORMAT = 2
+REFERENCE_FORMAT = 3
 WHY = (f"reference text predates format {REFERENCE_FORMAT} (adds sections the measure needs): rewrite "
        "A/reference (step 1.1, then steps 1.2 and 1.3) and re-measure")
 LEGACY_NULL = "legacy_null"

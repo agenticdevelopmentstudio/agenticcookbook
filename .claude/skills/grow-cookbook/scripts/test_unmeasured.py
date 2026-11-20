@@ -10,6 +10,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from reference_format import REFERENCE_FORMAT as FORMAT  # noqa: E402
+
 SCRIPT = Path(__file__).resolve().parent / "unmeasured.py"
 AREA = "implementing/data"
 
@@ -38,7 +41,7 @@ def workspace(tmp_path, topics=(), builds=(), cases=None, references=None, map_t
         [{"speciality": s, "topic": None, "case": c} for s, c in cases.items()]
         + [{"speciality": s, "topic": t, "case": "direct"} for s, t in map_topics.items()]))
     references = references if references is not None else [
-        {"speciality": s, "topic": None, "file": f"/A/reference/{s.replace('/', '--')}.txt", "format": 2}
+        {"speciality": s, "topic": None, "file": f"/A/reference/{s.replace('/', '--')}.txt", "format": FORMAT}
         for s in cases]
     (ws / "reference.json").write_text(json.dumps(references))
     return ws
