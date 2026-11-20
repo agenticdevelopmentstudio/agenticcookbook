@@ -1,6 +1,6 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-11-19 (PR #83). *Derives from:* `226f310` (PR #64, agenticcookbook),
+*Updated:* 2026-11-20 (PR #85). *Derives from:* `226f310` (PR #64, agenticcookbook),
 `2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`),
 PR #72 (`dd2e4670`, `44c510bf`), PR #74 (`689ab01`, `e75c550`), PR #78
 (`48d460aa`, `40c02a7f`, `63522f3f`), `52df843b` (cookr 0.13.1), and
@@ -12,6 +12,26 @@ Read this first to resume the work. The design lives in the
 format 2 and recipes-first adoption live in the
 [adoption design](../superpowers/specs/2026-11-09-cookr-adoption-design.md) and its
 [plan](../superpowers/plans/2026-11-09-cookr-adoption.md).
+
+## Cookbook design landing, phase 2b (PR #85, 2026-11-20)
+
+*Derives from:* PR #85, `ca17f166..541164e7` (landed one by one). Checklist:
+[2026-11-19-cookbook-design-landing.md](../superpowers/plans/2026-11-19-cookbook-design-landing.md), Phase 2b. Reports:
+[reports/2026-11-19-devteam-text/](../superpowers/reports/2026-11-19-devteam-text/). Next, the devteam re-pins this
+cookbook and regenerates its specialities from it (phase 3, in teamtesting).
+
+- **Devteam's review text is in the topics (R7).** The 498 sentences that `cookr roles gaps` found missing in 142
+  topics were moved in verbatim, each as a bullet naming the rule it concerns. A requirement a topic lacked became a
+  new named rule, with its build-bar line. A re-run of `gaps` finds lacking text only in the 10 unroled
+  `guidelines/reviewing/` topics, for which `cookbook_skills.py` keeps devteam's own text.
+- **A sentence that would cancel a rule tags no rule.** Contradicting sentences (R4) and the process line "A review
+  passes when it establishes every item above." are untagged closing paragraphs of the review bar: they still reach
+  the review verifier, but carry no rule (review findings f6, f9).
+- **Rules the batches got wrong were fixed in review** (review `2026-11-20-live-claude-claude-opus-5-5-663e`, 10
+  findings): rules that contradicted their topic or restated another at a second strength were dropped or reworded;
+  rule names now carry their rule's keyword; layout's breakpoint rule is web-only and relative-unit.
+- **Left for the owner:** the R4 contradictions and the reader-specific sentences, listed with quotes in the
+  report's README.
 
 ## Cookbook design landing, phase 2 (PR #83, 2026-11-19)
 

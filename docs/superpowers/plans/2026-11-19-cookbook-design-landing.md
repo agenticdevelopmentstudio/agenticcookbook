@@ -62,3 +62,24 @@ A fresh worktree off `main` after phase 1 lands.
     `renamed_from`); the orphan parts removed; the `writing-comments-and-docs` content change; the regenerated
     indexes; the batch reports under `docs/superpowers/reports/2026-11-19-phase-2/`.
   For the next branch, the squash happens before the review, so a branch's logical changes land as separate commits.
+
+## Phase 2b — devteam's review text moves in (R7) (`cookbook-devteam-text`)
+
+Ruling R7: a speciality's text that its topic lacks moves into the topic, verbatim, before the speciality is
+regenerated from it.
+
+- ✅ `cookr roles gaps` run on each devteam speciality's own `Review focus` and `A complete review must establish`
+  text (agenticdevteam `7e3b0a2`): 498 lacking sentences in 142 topics, each placed verbatim as a bullet naming its
+  rule, with a new named rule for each requirement the topic lacked; batch reports and the owner's list under
+  [reports/2026-11-19-devteam-text/](../reports/2026-11-19-devteam-text/)
+- ✅ `gaps` re-run across every speciality: lacking text only in the 10 `guidelines/reviewing/` topics, which stay
+  unroled by rule
+- ✅ every touched topic passes `roles check`, `roles lossless`, `bump` and the scripted `/approve-artifact`
+- ✅ whole-branch review (`mycodereview --squashed --cr high`, review `2026-11-20-live-claude-claude-opus-5-5-663e`):
+  10 findings, each fixed in its own commit (`9c72db16`..`541164e7`); fixes recorded with `teambench live fixes`;
+  suites re-run after the fixes: cookr 1557, grow-cookbook 698, `validate` and `lint --no-llm` over 383 artifacts all
+  pass
+- ✅ landed with `/ship no-squash` (PR #85, `541164e7`)
+- ℹ️ Contradictions (R4) and reader-specific text are moved and left unfixed, for the owner to rule on; the
+  report's README lists each with both quotes.
+

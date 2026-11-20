@@ -1,8 +1,8 @@
-# Session: landing the cookbook design, tooling and content from the devteam branch
+# Session: landing the cookbook design, tooling, content and devteam's review text
 
 - **Date:** 2026-11-19
 - **Session:** `42c82725-9e4b-4ae4-aed3-3ac87a841295`
-- **Branch:** `cookbook-design-landing`, `cookbook-design-landing-phase-2`
+- **Branch:** `cookbook-design-landing`, `cookbook-design-landing-phase-2`, `cookbook-devteam-text`
 
 ## Orientation
 
@@ -12,7 +12,8 @@ moved that work to the cookbook's `main`, so that everyone using cookr gets it, 
 pins were left alone. It ran as an all-night run under the development playbook.
 
 Phase 1, tooling and design, landed as PR #81. Phase 2, converting every guideline and principle to roled parts,
-landed as PR #83 (`23deb6d`). Next, the devteam re-pins this cookbook. That is phase 3, and it runs in teamtesting.
+landed as PR #83 (`23deb6d`). Phase 2b, moving devteam's own review text into its topics (R7), landed as PR #85
+(`541164e7`). Next, the devteam re-pins this cookbook. That is phase 3, and it runs in teamtesting.
 
 ## Decisions
 
@@ -45,6 +46,15 @@ landed as PR #83 (`23deb6d`). Next, the devteam re-pins this cookbook. That is p
 - **The two pinned commits stay bundled (f8).** Splitting `fe1451b` or `508d051` would rewrite the commit the review
   pinned, and that would cut its fix commits off from it. The checklist lists what each commit holds instead.
 
+- **Devteam's text moves in verbatim, and contradictions move too (R7, R4).** Each lacking sentence became a bullet
+  naming its rule, so `gaps` can find it held. A sentence that contradicts a rule still moves, but as an untagged
+  closing paragraph of the review bar (f6), so it reaches the verifier without cancelling the rule. The owner rules
+  on each contradiction later; none was fixed.
+- **Process lines tag no rule (f9).** "A review passes when it establishes every item above." had been tagged with
+  whichever rule came last; it is now the untagged closing line in all 24 topics that have it.
+- **A rule's name carries its keyword (f10).** Renamed: `must-not-deviate-from-platform-design-without-rationale`,
+  `should-not-ask-for-more-than-the-use-needs`, `should-use-relative-unit-breakpoints-on-the-web` (f8).
+
 ## Considered and rejected
 
 - **Making `held()` in gaps match on whole words only.** This was half of finding f7, and it was refuted.
@@ -56,6 +66,8 @@ landed as PR #83 (`23deb6d`). Next, the devteam re-pins this cookbook. That is p
 ## Open threads
 
 - **Research is still owed.** Every converted topic is in `research-exempt.json` until it has been researched.
+- **R4 contradictions and reader-specific text await the owner's ruling.** Listed in
+  [reports/2026-11-19-devteam-text/README.md](../superpowers/reports/2026-11-19-devteam-text/README.md).
 - **Phase 3 (in teamtesting).** Re-pin the cookbook in agenticdevteam, then point every speciality whose
   `metadata.cookbook` names a folded topic at that topic's survivor. After that, re-pin pipeline and devteam, then
   review and ship each repo.
@@ -66,5 +78,6 @@ landed as PR #83 (`23deb6d`). Next, the devteam re-pins this cookbook. That is p
 - Status: [STATUS.md](../project/STATUS.md), the section for PR #81
 - Status: [STATUS.md](../project/STATUS.md), the section for PR #83
 - Reviews: `2026-11-20-live-claude-claude-opus-5-5-e51c` (phase 1) and `2026-11-20-live-claude-claude-opus-5-5-ac2d`
-  (phase 2), in the private reviews repo
+  (phase 2) and `2026-11-20-live-claude-claude-opus-5-5-663e` (phase 2b), in the private reviews repo
 - Phase 2 batch reports: [reports/2026-11-19-phase-2/](../superpowers/reports/2026-11-19-phase-2/)
+- Phase 2b reports: [reports/2026-11-19-devteam-text/](../superpowers/reports/2026-11-19-devteam-text/)
