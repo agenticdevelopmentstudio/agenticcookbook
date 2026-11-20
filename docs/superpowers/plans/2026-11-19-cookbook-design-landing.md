@@ -37,8 +37,13 @@ Gates
 
 A fresh worktree off `main` after phase 1 lands.
 
-- ✅ ~250 guideline topics converted to roled parts in batches of ~20; each passes `lossless` and an independent judge;
-  one commit per topic (278 guidelines; 268 roled, the 10 under `guidelines/reviewing/` stay unroled by rule)
+- ✅ ~250 guideline topics converted to roled parts in batches of ~20; each passes `roles lossless --base 0005775`, and
+  every reworded or dropped sentence has an independent judge's pass in the topic's `lossless.json` (a topic whose
+  every old sentence survives verbatim needs no `lossless.json`: six do, file-paths, no-external-dependencies-in-core-
+  libraries, type-hints, use-roadmaplib, yaml-frontmatter and data-types). The conversions were committed one per
+  topic, then squashed (`squashr`) before the review into one content commit, `508d051`, with the rename, orphan-part
+  cleanup and index regeneration that rode along (278 guidelines; 268 roled, the 10 under `guidelines/reviewing/`
+  stay unroled by rule)
 - ✅ all 44 principles converted
 - ✅ topics with no review text get reviewer and build parts written from their own rules (R3)
 - ✅ each converted topic stays in `research-exempt.json` until researched
