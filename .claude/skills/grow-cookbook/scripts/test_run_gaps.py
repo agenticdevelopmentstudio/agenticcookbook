@@ -1194,6 +1194,7 @@ def _devteam(tmp: Path) -> Path:
     d = tmp / "devteam"
     d.mkdir(exist_ok=True)
     (d / "speciality_reference.py").write_text(
+        f"FORMAT = {FORMAT}\n"
         "import json, sys, pathlib\n"
         "out = pathlib.Path(sys.argv[sys.argv.index('--out') + 1]); out.mkdir(parents=True, exist_ok=True)\n"
         "f = out / (sys.argv[1].replace('/', '--') + '.txt')\n"
@@ -1534,6 +1535,24 @@ def test_a_marked_here_reference_no_devteam_can_rewrite_is_stale(tmp_path, capsy
     (a / "reference" / "building--extra.txt").write_text(BACKUP + "\n")
     out = run(repo, ws, capsys, "--devteam", str(tmp_path / "nowhere"))[1]
     assert [(r["speciality"], r["format"]) for r in out["stale_reference"]] == [("building/extra", None)]
+
+
+def test_a_marked_here_reference_an_unpulled_devteam_would_write_is_stale(tmp_path, capsys):
+    # 1.4.46: a devteam checkout pulled before format 3 writes copied review
+    # text into the reference; it is never run, and the file there is stale.
+    repo, ws = build(tmp_path)
+    _backups(repo)
+    a = _marked_extra(ws, 1, BACKUP)
+    (a / "reference").mkdir(exist_ok=True)
+    (a / "reference" / "building--extra.txt").write_text(BACKUP + "\n")
+    d = _devteam(tmp_path)
+    script = d / "speciality_reference.py"
+    script.write_text(script.read_text().replace(f"FORMAT = {FORMAT}", f"FORMAT = {FORMAT - 1}"))
+    out = run(repo, ws, capsys, "--devteam", str(d))[1]
+    assert [(r["speciality"], r["reason"]) for r in out["stale_reference"]] == [("building/extra", "no_writer")]
+    (a / "reference" / "building--extra.txt").unlink()
+    f, why, stale = run_gaps._reference("building/extra", a, "write", None, d, sys.executable)
+    assert f is None and "pull the devteam" in why and not (a / "reference" / "building--extra.txt").exists()
 
 
 def test_an_unmeasured_numbering_row_is_judged_by_hand(tmp_path, capsys):

@@ -6,7 +6,9 @@ text the devteam's own `speciality_reference.py` writes. That script lives in
 an agenticdevteam checkout, not in this repo: by default the one two folders
 above `<repo>` (where the cookbook sits as the devteam's submodule), or the
 folder `--devteam` names. Prints that checkout's path, or exits 2 with one
-plain message naming what stage 1 needs. Stdlib only.
+plain message naming what stage 1 needs: a checkout, or (1.4.46) a newer one
+when its script writes a reference format older than REFERENCE_FORMAT, which
+would measure copied review text as the speciality's own. Stdlib only.
 
     $COOKR_PY devteam_checkout.py --repo <repo> [--devteam <checkout>]
 """
@@ -20,6 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))      # run with -I too
 
+from reference_format import REFERENCE_FORMAT, is_current, writer_format  # noqa: E402
 from repo_path import cookbook_repo, run_main  # noqa: E402
 
 SCRIPT = "speciality_reference.py"
@@ -29,7 +32,14 @@ def devteam_checkout(given: str | os.PathLike | None, repo: Path) -> Path:
     """The devteam checkout holding SCRIPT; SystemExit (the plain message) when there is none."""
     where = Path(os.path.abspath(os.path.expanduser(given))) if given else repo.parent.parent
     if (where / SCRIPT).is_file():
-        return where
+        fmt = writer_format(where / SCRIPT)
+        if is_current(fmt):
+            return where
+        raise SystemExit(
+            f"devteam_checkout.py: {where / SCRIPT} writes reference format {fmt if fmt is not None else 'unknown'}, "
+            f"older than the {REFERENCE_FORMAT} stage 1 measures: its references would count a roled skill's copied "
+            f"Review focus and review bar as the speciality's own text. Pull the devteam checkout ({where}) and run "
+            "this again.")
     how = f"--devteam {given} holds" if given else f"{where} (two folders above the cookbook repo) holds"
     raise SystemExit(
         f"devteam_checkout.py: stage 1 needs an agenticdevteam checkout: it measures the area against the devteam's "

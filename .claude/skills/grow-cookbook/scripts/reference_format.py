@@ -37,6 +37,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 
 REFERENCE_FORMAT = 3
@@ -49,7 +50,21 @@ LEGACY_NULL_WHY = (f"a row with no file, written before reference format {REFERE
 
 
 OLD_FORMAT, NO_WRITER, OLD_REPORT = "old_format", "no_writer", "old_report"
-NO_WRITER_WHY = "no speciality_reference.py to rewrite it"
+NO_WRITER_WHY = ("no current speciality_reference.py to rewrite it (none, or one whose FORMAT is older than "
+                 f"{REFERENCE_FORMAT}: pull the devteam checkout)")
+_FORMAT_LINE = re.compile(r"^FORMAT\s*=\s*(\d+)", re.MULTILINE)
+
+
+def writer_format(script: Path) -> int | None:
+    """The FORMAT a devteam's speciality_reference.py writes (1.4.46), read
+    from its `FORMAT = <n>` line, never by running it; None when the script
+    is missing, unreadable or names none. A checkout pulled before format 3
+    writes the older format, so a reference it writes is not current."""
+    try:
+        found = _FORMAT_LINE.search(Path(script).read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError):
+        return None
+    return int(found.group(1)) if found else None
 REPORT_WHY = (f"saved under an older reference format, or none: a reference it measured may predate format "
               f"{REFERENCE_FORMAT}; re-run run_gaps.py (step 1.3), which saves it again")
 REPORT_STALE_WHY = ("saved while it listed a stale row: it measured a stale reference, whatever A/reference.json "

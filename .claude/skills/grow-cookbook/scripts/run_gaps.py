@@ -143,7 +143,7 @@ plans mark is listed and measured once (1.4.27). `stale_reference` lists
 each A/reference.json row older than reference_format.REFERENCE_FORMAT
 (1.4.27); `--check` counts a non-empty one as a change. Each stale row
 names its `reason` (1.4.29): "old_format" for an A/reference.json row,
-"no_writer" for a `marked_here` reference no script could rewrite. Rows:
+"no_writer" for a `marked_here` reference no script could rewrite (none, or one whose FORMAT is older, 1.4.46). Rows:
 {"topic", "folder", "gaps_file", "specialities", "sentences": [{"speciality",
 "n", "verdict": "held" | "lacking" | "not measured"}]} ("not measured": a
 piece of it is under six words, judged by hand, or the home file holds no
@@ -250,7 +250,7 @@ from paraphrase_hints import rank, topic_sentences, words  # noqa: E402
 from paraphrase_hints import rank as nearest_rank  # noqa: E402  (G159: not the hints' advisory rank)
 from quote_building import _mark, areas_of, sentences  # noqa: E402
 from reference_format import (NO_WRITER, NO_WRITER_WHY, REFERENCE_FORMAT, WHY as STALE_WHY, blob_hash,  # noqa: E402
-                              r9_stale, stale_reference)
+                              is_current, r9_stale, stale_reference, writer_format)
 from repo_path import check_area, cookbook_repo, python_hint, skill_version  # noqa: E402
 from stage_status import _area_of, plan_rows  # noqa: E402
 from unmeasured import changes, plan_marks  # noqa: E402
@@ -2071,7 +2071,8 @@ def _reference(sp: str, a: Path, mode: str, scratch: Path | None, devteam: Path 
     `--out DIR` (never into the area), into the scratch folder under
     --check. "saved" mode reads DIR/reference, then A/reference. With no
     speciality_reference.py, an existing file is used as it is and `stale`
-    is True (its format unknown)."""
+    is True (its format unknown); so is it with a speciality_reference.py
+    whose FORMAT is older than REFERENCE_FORMAT, which is never run (1.4.46)."""
     name = sp.replace("/", "--") + ".txt"
     own = out_dir / "reference" if out_dir is not None and not _default_out(out_dir, a) else None
     here = [d / name for d in (own, a / "reference") if d is not None and (d / name).is_file()]
@@ -2084,6 +2085,11 @@ def _reference(sp: str, a: Path, mode: str, scratch: Path | None, devteam: Path 
             return here[0], "", True
         return None, (f"no A/reference/{name}, and no {script} to write it: write it with "
                       f"speciality_reference.py {sp} --out A/reference"), False
+    if not is_current(writer_format(script)):      # 1.4.46: an unpulled devteam writes an older format
+        if here:
+            return here[0], "", True
+        return None, (f"no A/reference/{name}, and {script} writes a reference format older than "
+                      f"{REFERENCE_FORMAT}: pull the devteam checkout, then run again"), False
     out = (own or a / "reference") if mode == "write" else scratch / "reference"
     try:
         r = subprocess.run([cookr_py, str(script), sp, "--out", str(out)], capture_output=True, text=True,

@@ -41,7 +41,9 @@ and every example below runs under it. The helper scripts in
 not one of them: it is the devteam's, at `<devteam>/speciality_reference.py` (`<devteam>`: the agenticdevteam
 checkout two folders above `<repo>`, run_gaps.py's `--devteam` default; 1.4.43, G274). Stage 1 starts with
 `devteam_checkout.py --repo <repo>`, which prints `<devteam>`, or, with no such checkout, exits 2 with one
-plain message naming what stage 1 needs; pass `--devteam <checkout>` to it and to `run_gaps.py` for a
+plain message naming what stage 1 needs; a checkout whose script writes a reference format older than the
+one stage 1 measures (its `FORMAT` line) exits 2 too, saying to pull it, and run_gaps.py never runs such a
+script: a reference it would write is listed in `stale_reference` (1.4.46); pass `--devteam <checkout>` to it and to `run_gaps.py` for a
 checkout elsewhere (1.4.45). Stages 2 to 5 need no devteam checkout. One python, `$COOKR_PY`,
 runs every script, the devteam's included; a brief naming another venv for it changes nothing (G278); a plain `python3` without cookr fails `run_gaps.py` with "Unknown option: -P" or "No module named", and each script then names `$COOKR_PY` (1.4.42, G269).
 
