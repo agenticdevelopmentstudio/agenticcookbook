@@ -48,3 +48,12 @@ A fresh worktree off `main` after phase 1 lands.
 - ✅ topics with no review text get reviewer and build parts written from their own rules (R3)
 - ✅ each converted topic stays in `research-exempt.json` until researched
 - 🔄 `cookr update` ✅; gates as in phase 1; landed with `/ship no-squash`
+- ℹ️ Two reviewed commits bundle changes that could have stood alone (review `2026-11-20-live-claude-claude-opus-5-5-ac2d`,
+  f8). They stay bundled, because they are the commits that review pinned. Splitting them now would rewrite the pinned
+  commit and cut its fix commits off from it. What each one holds, for anyone reverting part of it:
+  - `fe1451b`: cookr 0.22.1 (`renamed_from`, so a renamed topic is checked against its old folder), 0.22.2 (a twin
+    folded into its survivor is accounted as a copy) and 0.23.0 (per-use-case routes);
+  - `508d051`: the 312 conversions; `unit-test-patterns` renamed to `test-vector-patterns` (its `lossless.json`
+    `renamed_from`); the orphan parts removed; the `writing-comments-and-docs` content change; the regenerated
+    indexes; the batch reports under `docs/superpowers/reports/2026-11-19-phase-2/`.
+  For the next branch, the squash happens before the review, so a branch's logical changes land as separate commits.
