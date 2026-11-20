@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A recipe that claims `MUST display an error message on failure` when the source code makes no such attempt is a source fidelity failure regardless of whether the behavior is desirable.",
+      "to": "must-not-claim-unattempted-error-handling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-not-claim-unattempted-error-handling turns the statement into an explicit MUST NOT and keeps the example claim, the condition (source makes no such attempt) and the clause that it is a source fidelity failure regardless of whether the behavior is desirable.",
+        "pin": "990a18dcb4914e6569227789be1adb426371fa1dcf796bb7e405d8a7b8252180"
+      }
+    },
+    {
+      "sentence": "Requirements derived from what \"a well-implemented component would do\" rather than what the code actually does are a source fidelity violation.",
+      "to": "must-not-derive-requirements-from-an-ideal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-not-derive-requirements-from-an-ideal states it as a MUST NOT and keeps both the contrast (an ideal 'well-implemented component' versus what the code actually does) and the classification as a source fidelity violation.",
+        "pin": "17b6b355488db7fa41fcec67eb27f3e895831e467a8ebe890b92bbbb30932103"
+      }
+    }
+  ],
+  "obsolete": []
+}

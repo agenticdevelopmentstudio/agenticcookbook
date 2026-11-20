@@ -1,0 +1,16 @@
+
+- `should-not-partition-by-default`: a partitioned table where a normal indexed table would serve
+- `must-justify-partitioning-with-measured-need`: partitioning with no measured scale or retention need behind it
+- `should-confirm-win-with-explain-analyze`: partitioning with no `EXPLAIN (ANALYZE)` before and after showing pruning
+- `should-not-over-fragment-partitions`: partitions under ~10k rows, or thousands of partitions
+- `must-partition-on-hot-query-filter-columns`: a partition key absent from the WHERE clause of hot queries
+- `should-prefer-native-declarative-partitioning`: legacy inheritance + triggers used instead of declarative partitioning
+- `must-include-partition-key-in-unique-constraints`: a primary key or unique constraint on a partitioned table that omits the partition key
+- `should-range-partition-time-series-by-time`: time-series data partitioned other than by time range
+- `should-retain-by-dropping-partitions`: retention done by bulk `DELETE` on a partitioned table instead of dropping or detaching partitions
+- `should-automate-partition-lifecycle`: partitions created or dropped by hand
+- `should-evaluate-brin-for-time-ordered-partitions`: a large time-ordered partition indexed only with B-tree and no BRIN evaluation
+- `should-precompute-rollups-for-long-history`: queries spanning long history scanning raw rows instead of a precomputed rollup
+- `should-stay-on-native-partitioning-when-sufficient`: a time-series extension added where native partitioning suffices
+- `may-adopt-extension-only-on-measured-need`: an extension adopted with no measured need justifying it
+- `should-pin-and-reverify-after-upgrades`: no pinned major version, or a major upgrade with `EXPLAIN` plans not re-verified

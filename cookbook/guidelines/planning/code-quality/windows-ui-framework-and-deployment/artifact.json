@@ -4,11 +4,11 @@
     "id": "2fd49a5f-4be1-4b0d-b2e7-41cbcbab66ee",
     "title": "Choosing a Windows UI framework and deployment model",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,22 @@
     "references": [
       "https://learn.microsoft.com/en-us/windows/apps/get-started/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "configuration"
     ]
   },
-  "synced": "b30eb5a27d07cd70",
+  "synced": "306142faf33f89d8",
   "parts": [
     {"part": "intro"},
-    {"part": "decision-1-ui-framework", "heading": "Decision 1: UI framework"},
-    {"part": "decision-2-deployment-model", "heading": "Decision 2: Deployment model"},
-    {"part": "make-it-reversible-where-you-can", "heading": "Make it reversible where you can"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "decision-2-deployment-model", "heading": "Decision 2: Deployment model", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

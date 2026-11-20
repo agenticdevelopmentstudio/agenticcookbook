@@ -1,0 +1,10 @@
+
+- `should-defer-to-canonical-sources`: each default applied was checked against the canonical sources first, or the artifact says why not
+- `must-use-platform-prescribed-values`: every spacing, type size and target size the platform HIG prescribes uses the platform value
+- `should-use-defaults-to-fill-gaps`: every value with no platform prescription comes from the defaults, or the artifact says why not
+- `should-refer-to-canonical-sources-when-writing-ui`: each UI ingredient or recipe refers to the canonical platform design sources, or says why not
+- `must-not-contradict-platform-hig`: no value in the artifact contradicts the platform HIG
+- `should-defer-to-hig-in-appearance-sections`: the Appearance section's spacing, type sizes and target sizes defer to the platform HIG, or the artifact says why not
+- `should-use-the-prescribed-value`: every value the platform prescribes is the one used, or the artifact says why not
+- `should-note-cross-platform-defaults`: every cross-platform default is marked as one, or the artifact says why not
+- `should-list-platform-overrides-in-platform-notes`: every platform-specific override is listed in Platform Notes with a link to its HIG section, or the artifact says why not

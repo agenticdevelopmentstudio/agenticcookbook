@@ -1,0 +1,86 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Bake application code and dependencies **into** the image at build time.",
+      "to": "should-bake-code-and-dependencies-into-the-image",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: application code and dependencies baked into the image at build time.",
+        "pin": "25f02d2877aa38d8339a20bdf1e405167910edc6516f2ee1a0686fc3ce24d769"
+      }
+    },
+    {
+      "sentence": "Inject environment-specific config at **deploy/runtime** via environment variables or a config service — do not bake secrets or per-environment values into the image.",
+      "to": "should-inject-environment-config-at-runtime",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and SHOULD NOT (both unkeyed before): environment config injected at deploy/runtime via environment variables or a config service, and no secrets or per-environment values baked into the image.",
+        "pin": "59db297c0cdc2de9c1032d3ce6be704c3968e26fe10b72d7a2290cdbed2b20e7"
+      }
+    },
+    {
+      "sentence": "Servers are **cattle, not pets** — interchangeable and disposable, never hand-tuned and irreplaceable.",
+      "to": "must-treat-servers-as-cattle",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept and strengthened to MUST: servers are cattle, not pets, interchangeable and disposable, never hand-tuned and irreplaceable.",
+        "pin": "09174b56b9e2791f541f69678e5a4a061b6982f96ff33e5afc325a6ee8316a87"
+      }
+    },
+    {
+      "sentence": "Pair this with **infrastructure-as-code** (see related): the artifact is built from version-controlled definitions (`Dockerfile`, Packer template) so builds are reproducible and reviewable.",
+      "to": "should-build-from-version-controlled-definitions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: pair with infrastructure-as-code, artifact built from version-controlled definitions (`Dockerfile`, Packer template) so builds are reproducible and reviewable.",
+        "pin": "7b39879c02be584e5ff99dce4777c768c5b76b09f98cba06413652b3c9d5d9c8"
+      }
+    },
+    {
+      "sentence": "Keep prior image versions retained and addressable (immutable tags or digests, e.g.",
+      "to": "should-retain-addressable-prior-images",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full sentence: prior image versions retained and addressable by immutable tags or digests (`app@sha256:...`) so any past release can be restored deterministically.",
+        "pin": "f97ad56b8db82bbde86e98de9a7341270c1af8b756c893ef9d14ab911be1ef34"
+      }
+    },
+    {
+      "sentence": "Avoid mutable tags like `latest` for what is actually deployed; pin to an immutable digest or version tag.",
+      "to": "should-not-deploy-mutable-tags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: avoid mutable tags like `latest` for what is deployed, pin to an immutable digest or version tag.",
+        "pin": "c127981b2cc7dcfbd5c838f5c722c0afd9eb71682ad5c01a1d5a1d98d1f8de9c"
+      }
+    },
+    {
+      "sentence": "Adopt heavier machinery — Kubernetes, managed image pipelines, blue-green or canary rollout infrastructure — only **when a measured need justifies it** (scale, zero-downtime SLAs, fleet size), not as a default.",
+      "to": "should-adopt-heavier-machinery-only-on-measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with every example of heavier machinery, the measured-need condition and its examples, and 'not as a default'.",
+        "pin": "0a91bd698e4cf068b050c3c597909745da34e313a68de34814791caa6e32f4c2"
+      }
+    },
+    {
+      "sentence": "Faster iteration: optimize image builds (layer caching, small base images) so rebuild-to-deploy stays quick enough that no one is tempted to patch in place.",
+      "to": "should-keep-image-builds-fast",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: optimize image builds (layer caching, small base images) for faster iteration so rebuild-to-deploy stays quick enough that no one patches in place.",
+        "pin": "51ea9628a26b5ea3392e27bf2e72a6b92f75481cb0415d908d0ec6b91fce7cad"
+      }
+    }
+  ],
+  "obsolete": []
+}

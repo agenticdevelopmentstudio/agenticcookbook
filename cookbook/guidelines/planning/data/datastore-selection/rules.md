@@ -1,8 +1,12 @@
 
-- The agent **MUST** record the chosen store and the one-line requirement that justifies it (in an ADR or the plan).
-- The agent **MUST NOT** introduce a second datastore "for scale" without a measured limit on the first; YAGNI applies.
-- The agent **SHOULD** prefer a single relational store with extensions over polyglot persistence until a specific store earns its operational cost.
-- For semi-structured data, the agent **SHOULD** evaluate `jsonb` in the relational store before adopting a separate document database.
-- The agent **SHOULD** keep derived stores (search index, cache, vector index) as **secondary** projections of the relational system of record, not as the source of truth.
-- When scale is asserted as the reason for a non-relational store, the agent **MUST** cite an expected workload (writes/sec, dataset size, read pattern), not a generic claim.
-
+- **should-default-to-relational**: For a new server backend, the agent **SHOULD** default to a **relational database** (PostgreSQL is the recommended default).
+- **must-justify-a-non-relational-primary-store**: A **non-relational primary store MUST be justified by a specific, stated requirement** (a query pattern, scale ceiling, or access shape the relational option cannot meet), not by a default preference, hype, or "it scales better."
+- **should-treat-the-relational-default-as-overridable**: The agent SHOULD treat the relational default as a strong starting point that a real requirement can override — not as a universal law.
+- **should-pick-the-store-from-shape-patterns-and-scale**: The agent SHOULD pick the store from data shape, query patterns, and measured scale.
+- **should-choose-a-specialist-store-only-on-a-concrete-requirement**: The agent SHOULD choose a specialist primary store **only** when a requirement in the decision criteria below is concrete and, where possible, measured.
+- **must-record-the-store-and-its-justification**: The agent **MUST** record the chosen store and the one-line requirement that justifies it (in an ADR or the plan).
+- **must-not-add-a-second-store-without-a-measured-limit**: The agent **MUST NOT** introduce a second datastore "for scale" without a measured limit on the first; YAGNI applies.
+- **should-prefer-one-relational-store-with-extensions**: The agent **SHOULD** prefer a single relational store with extensions over polyglot persistence until a specific store earns its operational cost.
+- **should-evaluate-jsonb-before-a-document-database**: For semi-structured data, the agent **SHOULD** evaluate `jsonb` in the relational store before adopting a separate document database.
+- **should-keep-derived-stores-secondary**: The agent **SHOULD** keep derived stores (search index, cache, vector index) as **secondary** projections of the relational system of record, not as the source of truth.
+- **must-cite-an-expected-workload-for-scale**: When scale is asserted as the reason for a non-relational store, the agent **MUST** cite an expected workload (writes/sec, dataset size, read pattern), not a generic claim.

@@ -1,0 +1,17 @@
+
+- `must-measure-groundedness-and-hallucination-rate`: a RAG system with no groundedness score or hallucination rate measured against retrieved sources
+- `should-score-at-claim-granularity`: groundedness scored per whole answer rather than per atomic claim
+- `must-measure-retrieval-independently`: no separate retrieval metric (recall@k, context precision) alongside the generation metrics
+- `should-cite-specific-spans`: citations that point only at whole documents, not spans (doc id + offset/quote)
+- `must-verify-cited-spans`: citations accepted without checking that the quoted span exists in the source and entails the claim
+- `may-score-with-llm-judge`: an LLM groundedness judge, where used, given only the answer and retrieved chunks
+- `should-keep-judge-blind-to-gold-answer`: a gold answer passed into the groundedness judge's prompt
+- `must-calibrate-judge-against-gold-set`: judge scores trusted with no calibration against a human-labeled gold set or no reported agreement
+- `should-pin-one-eval-framework`: an unpinned eval framework or version, or raw scores compared across tools
+- `should-abstain-without-evidence`: answers produced from parametric memory when retrieval returned no supporting evidence
+- `must-include-unanswerable-cases`: an eval set with no "unanswerable from context" cases or no abstention score
+- `should-not-penalize-correct-abstention`: aggregate scoring that counts a correct abstention as a miss
+- `should-run-evals-in-ci-on-fixed-set`: groundedness and hallucination evals absent from CI, or run on a shifting query set
+- `must-fail-build-on-hallucination-regression`: CI with no hallucination-rate threshold that fails the build
+- `should-treat-groundedness-as-release-gate`: groundedness measured once as a benchmark rather than gating releases
+- `should-redact-pii-before-judge`: eval data with user PII sent unredacted to a judge model

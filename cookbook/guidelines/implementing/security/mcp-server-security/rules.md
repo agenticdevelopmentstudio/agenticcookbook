@@ -1,0 +1,23 @@
+
+- **should-treat-server-strings-and-tokens-as-untrusted**: You **SHOULD** treat every string the server emits as model-influencing input and every token it receives as untrusted.
+- **should-pin-mcp-spec-revision**: You **SHOULD** pin guidance to the MCP spec revision dated **2025-06-18** (Security Best Practices + Authorization), which carries the normative MUST/MUST NOT statements below.
+- **must-not-trust-own-tool-text**: The server **MUST NOT** treat its own tool descriptions, parameter schemas, or returned results as trusted instructions to the agent; an attacker who controls any of these is attempting tool poisoning or output injection.
+- **must-return-tool-results-as-delimited-data**: Tool results that contain external/user data **MUST** be returned as clearly delimited data, and the server **SHOULD** strip or neutralize embedded directives (e.g., "ignore previous instructions") before returning them.
+- **should-keep-tool-descriptions-stable**: The server **SHOULD** keep tool descriptions stable and side-effect-free; surface side effects in the schema, not in prose meant to steer the model.
+- **should-bind-approval-to-tool-hash**: When a host binds user approval to a tool, that approval **SHOULD** be bound to a hash of the tool's full content (name, description, input schema). Any change re-triggers consent.
+- **should-version-tool-definitions**: The server **SHOULD** version tool definitions and avoid silent semantic changes; changing behavior without a version bump defeats hash-bound approval.
+- **should-act-as-oauth-resource-server**: You **SHOULD** treat a remote MCP server as an OAuth 2.1 **resource server**.
+- **must-not-accept-tokens-issued-elsewhere**: The server **MUST NOT** accept any token that was not explicitly issued for it (validate the `aud`/audience per RFC 8707 resource indicators).
+- **must-not-pass-tokens-through**: The server **MUST NOT** pass a received token through to a downstream API ("token passthrough" is explicitly forbidden).
+- **should-use-token-exchange-downstream**: To call a downstream service, the server **SHOULD** use a token-exchange flow to obtain a distinct token, or act as its own client.
+- **must-validate-every-inbound-token**: The server **MUST** validate every inbound token before processing the request and reject ones lacking it in the audience.
+- **must-implement-per-client-consent**: A proxy server **MUST** implement per-client consent: maintain a registry of approved `client_id` values and check it **before** initiating the third-party flow.
+- **must-show-client-scopes-and-redirect-on-consent**: The MCP-level consent page **MUST** identify the requesting client, show the third-party scopes and the exact registered `redirect_uri`, and apply CSRF protection.
+- **must-exact-match-redirect-uri**: `redirect_uri` **MUST** be validated by exact string match (no wildcards).
+- **must-use-random-single-use-state**: The `state` value **MUST** be cryptographically random, single-use, short-lived, and set only after consent is approved.
+- **must-verify-requests-not-sessions**: Servers that implement authorization **MUST** verify all inbound requests and **MUST NOT** use sessions for authentication.
+- **must-use-non-deterministic-session-ids**: Session IDs **MUST** be non-deterministic (CSPRNG-generated, e.g. UUIDv4); avoid sequential or guessable IDs.
+- **should-key-session-data-by-user**: Session-scoped data **SHOULD** be keyed as `<user_id>:<session_id>`, binding the session to identity derived from the token (not client-supplied), so a guessed ID cannot impersonate another user.
+- **must-consider-ssrf-on-oauth-urls**: Server-side deployments **MUST** consider SSRF and apply mitigations when fetching OAuth-related URLs.
+- **should-harden-oauth-url-fetching**: Server-side deployments **SHOULD** require HTTPS (loopback excepted for dev), block private/reserved ranges (`10/8`, `172.16/12`, `192.168/16`, `169.254/16`, `127/8`, `fc00::/7`, `fe80::/10`), and validate redirect targets per hop.
+- **should-prefer-egress-proxy-and-dns-pinning**: You **SHOULD** prefer an egress proxy and DNS-pinning over hand-rolled IP parsing, which misses octal/hex/IPv4-mapped-IPv6 encodings.

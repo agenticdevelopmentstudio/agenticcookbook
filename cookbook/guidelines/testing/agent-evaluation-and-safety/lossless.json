@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Start with a small versioned dataset and CI gates; add platform weight when the gate cost or coverage demands it.",
+      "to": "should-start-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps starting with a small versioned dataset and CI gates and adding platform weight only when gate cost or coverage demands it, at SHOULD.",
+        "pin": "a42ffbf57f3f7a60ca96e957cdc80da0c07c9232ba25e41d4a810b29f81c9aa4"
+      }
+    },
+    {
+      "sentence": "> Privacy/PII leakage SLOs here are engineering guidance for measuring and constraining exposure — **not legal advice**.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale part keeps, word for word, that the privacy/PII leakage SLOs are engineering guidance for measuring and constraining exposure, not legal advice.",
+        "pin": "befc2a93643dd6990ac0b018a449adc6dba4578c3540868d86014cf51a234d24"
+      }
+    },
+    {
+      "sentence": "Confirm regulatory obligations (e.g., data-residency, consent) with qualified counsel.",
+      "to": "should-confirm-regulatory-obligations-with-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps confirming regulatory obligations, with the data-residency and consent examples, with qualified counsel; the unkeyed instruction is kept at SHOULD.",
+        "pin": "35b7b20a38c910b439c630764474c84fefd867f91477a8893dd868214619b494"
+      }
+    },
+    {
+      "sentence": "For how to build graders, calibrate an LLM judge, and report `pass@k` vs `pass^k` consistency, follow **eval-driven-development**.",
+      "to": "should-follow-eval-driven-development",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the scope (graders, LLM-judge calibration, pass@k vs pass^k reporting) and the instruction to follow eval-driven-development, at SHOULD.",
+        "pin": "816dadd77451ebf866ef91f34e57c43b4213ee344c41029f891441988ffdda18"
+      }
+    },
+    {
+      "sentence": "For prompt injection, untrusted-output handling, and tool-agency constraints, follow **llm-application-security** (mapped to the OWASP Top 10 for LLM Applications **2025** revision — pin that edition).",
+      "to": [
+        "should-follow-llm-application-security",
+        "should-pin-owasp-llm-2025-edition"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep following llm-application-security for injection, untrusted output and tool agency, its OWASP LLM 2025 mapping, and pinning that edition, at SHOULD.",
+        "pin": "c9d26216ec1b746e93410b0d572d4100578e075aab5e5c95f6995b2a88381207"
+      }
+    }
+  ],
+  "obsolete": []
+}

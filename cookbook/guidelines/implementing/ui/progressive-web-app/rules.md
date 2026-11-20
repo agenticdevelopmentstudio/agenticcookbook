@@ -1,0 +1,24 @@
+
+- **should-ship-manifest-and-service-worker**: An installable app SHOULD ship a Web App Manifest and a service worker with an explicit caching strategy.
+- **must-account-for-ios-safari-limitations**: An installable app MUST account for iOS/Safari limitations.
+- **should-not-add-service-worker-without-installability**: If installability is not a requirement, SHOULD NOT add a service worker for its own sake (YAGNI).
+- **must-serve-over-https**: To be installable an app **MUST** be served over HTTPS (or `localhost` in development).
+- **must-link-valid-manifest**: To be installable an app **MUST** link a valid Web App Manifest.
+- **must-register-service-worker-for-offline-or-push**: As of 2025, Chrome and Edge no longer require a service worker merely to surface the install prompt, but you **MUST** still register one if offline behavior or push is in scope.
+- **must-include-manifest-core-fields**: The manifest **MUST** include, at minimum, `name` (or `short_name`), `start_url`, and `display` set to `standalone`, `fullscreen`, or `minimal-ui`.
+- **must-include-192-and-512-icons**: The manifest **MUST** include `icons` with both a 192x192 and a 512x512 entry.
+- **should-include-maskable-icon**: SHOULD include a `maskable` icon for adaptive shaping.
+- **must-include-manifest-id**: The manifest **MUST** include `id` to give the install a stable identity across `start_url` changes.
+- **should-validate-installability-with-tools**: SHOULD validate against Lighthouse / DevTools Application panel before shipping, and SHOULD NOT hand-assert installability.
+- **should-register-service-worker-after-load**: SHOULD register the service worker after the page loads.
+- **should-choose-caching-strategy-per-request-class**: SHOULD choose a caching strategy per request class — **do not** apply one strategy globally.
+- **must-version-cache-and-delete-stale-caches**: You **MUST** version the cache (e.g. cache name suffix) and delete stale caches in the `activate` event so old assets do not leak.
+- **should-precache-app-shell**: SHOULD precache the app shell so navigations resolve offline.
+- **should-prefer-maintained-service-worker-library**: SHOULD prefer a maintained library (Workbox) over hand-rolled fetch handlers unless the surface is trivial — this is a deliberate trade for correctness on edge cases (range requests, opaque responses), not a mandate.
+- **should-reverify-ios-constraints-per-release**: The iOS / Safari constraints hold as of iOS 18 / Safari 18; SHOULD re-verify them per release.
+- **must-request-push-permission-after-install**: The app **MUST** request notification permission from a user gesture *after* Home Screen install — not on first page load.
+- **must-provide-in-app-install-guidance**: You **MUST** provide in-app guidance ("Share -> Add to Home Screen") rather than a programmatic install button.
+- **should-not-depend-on-background-sync**: SHOULD NOT depend on Background Sync / Periodic Background Sync.
+- **should-queue-writes-in-indexeddb**: SHOULD queue writes in IndexedDB and flush on next foreground.
+- **must-treat-client-storage-as-cache**: All client storage MUST be treated as a cache, never as the source of truth.
+- **should-confirm-push-in-target-regions**: Web Push availability has been subject to EU regulatory variation (iOS 17.4+); SHOULD confirm behavior in target regions rather than assuming uniform support.

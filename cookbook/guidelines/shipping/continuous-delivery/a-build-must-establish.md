@@ -1,0 +1,17 @@
+
+- `should-not-conflate-delivery-and-deployment`: the pipeline's docs and config name which of delivery or deployment it practises, or say why not
+- `must-keep-main-releasable`: main passes the full pipeline and is releasable after the change
+- `must-not-merge-unreleasable-change`: the change merges only with main left releasable
+- `must-automate-commit-to-artifact`: the path from commit to deployable artifact has no manual step
+- `must-trigger-pipeline-on-every-commit`: the pipeline's trigger covers every commit to main
+- `must-block-release-on-red-pipeline`: the release job requires a green pipeline, and a red pipeline halts other merges until fixed, or the team says why it does not
+- `must-build-once-deploy-many`: every environment receives the same immutable artifact, built once
+- `should-make-deployments-reversible`: the deployment has a fast rollback or roll-forward path, and risky changes are flag-gated, or the change says why not
+- `should-keep-pipeline-feedback-fast`: the pipeline completes in minutes, or the team says why not
+- `must-not-chase-deploy-frequency-alone`: any deploy-frequency target is paired with test and architecture investment
+- `should-adopt-deployment-only-when-supported`: continuous deployment is enabled only where automated tests and a decoupled architecture support it, or the team says why
+- `should-plan-for-the-j-curve-dip`: the CD adoption plan provides for the dip and the recovery, or says why not
+- `should-confirm-ci-green-before-pr-ready`: the PR's full pipeline run is green before it is marked ready, or the PR says why not
+- `should-confirm-no-manual-release-step`: the change becomes releasable with no manual step, or the PR says why not
+- `should-confirm-risky-behavior-flagged`: every risky behavior is behind a flag, or the PR says why not
+- `should-confirm-rollback-path`: the change has a stated rollback or roll-forward path, or the PR says why not

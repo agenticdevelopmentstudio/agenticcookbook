@@ -1,0 +1,16 @@
+
+- `must-use-single-activity`: one `Activity` hosts the Compose UI and every screen is a composable
+- `should-hoist-navcontroller-to-top`: the `NavHostController` is created once at the top via `rememberNavController()` and leaf composables take narrow callbacks, or the work says why not
+- `must-not-touch-back-stack-from-screens`: no screen composable reads or mutates the back stack; each emits navigation events upward
+- `should-use-stable-type-safe-navigation-apis`: navigation uses the type-safe `navigation-compose` APIs at a pinned current `2.9.x` with the `kotlinx-serialization` plugin applied, or the work says why not
+- `must-use-serializable-route-types`: every route is a `@Serializable` `object` or `data class`
+- `should-build-graph-with-type-safe-builders`: the graph is built with the type-safe builders and every navigation passes a route instance, or the work says why not
+- `must-pass-arguments-through-route-type`: every argument is passed through its route type and read with `toRoute()`; no path string is concatenated and no `arguments` bundle is hand-parsed
+- `should-read-route-arguments-from-savedstatehandle`: every ViewModel reads route arguments via `SavedStateHandle.toRoute<Route>()` and holds no `NavController`, or the work says why not
+- `should-declare-deep-links-per-destination`: every deep link is declared on its destination, or the work says why not
+- `should-pin-nav3-and-recheck-release-notes`: any `androidx.navigation3` dependency is pinned to a current `1.x` release, or the work says why not
+- `should-choose-nav3-deliberately`: any use of Nav3 is recorded as a deliberate decision with its reason, or the work says why not
+- `should-not-mix-nav2-and-nav3-in-a-flow`: no flow uses both `NavHost` and `NavDisplay`, or the work says why
+- `must-handle-process-death`: after process death, the route and the additional UI state (in `SavedStateHandle` or `rememberSaveable`) are restored
+- `should-scope-viewmodels-to-back-stack-entry`: back-stack-scoped state uses a `viewModel()` scoped to its `NavBackStackEntry`, or the work says why not
+- `should-use-single-start-destination`: the graph has one `startDestination` and no navigation clears and rebuilds it, or the work says why

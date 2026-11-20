@@ -1,0 +1,19 @@
+
+- `must-use-sdk-style-csproj`: each `.csproj` has a `<Project Sdk="...">` root element matching its project type
+- `must-not-list-source-files`: no `.csproj` has a `Compile`, `EmbeddedResource` or `None` include the glob already covers, and the build raises no NETSDK1022
+- `must-add-items-only-for-glob-misses`: each explicit item in a `.csproj` names a file outside the default globs, and each exclusion is a `Remove`
+- `must-not-hand-edit-old-style-projects`: the build leaves no old-style project format hand-edited; such a project is converted
+- `should-set-implicit-usings-explicitly`: each `.csproj` or `Directory.Build.props` sets `ImplicitUsings` explicitly, or the build says why not
+- `should-share-properties-in-directory-build-props`: a root `Directory.Build.props` sets the shared properties and no project repeats them, or the build says why not
+- `should-put-late-logic-in-directory-build-targets`: logic reading final property values is in `Directory.Build.targets`, or the build says why not
+- `must-match-directory-build-props-case`: the file is named exactly `Directory.Build.props` and the build succeeds on a case-sensitive file system
+- `should-set-continuous-integration-build`: the CI build passes `ContinuousIntegrationBuild=true`, or the build says why not
+- `must-not-set-outdir`: no project or props file sets `OutDir`
+- `should-manage-package-versions-centrally`: `Directory.Packages.props` sets `ManagePackageVersionsCentrally` with one `PackageVersion` per package, and no `PackageReference` has a `Version`, or the build says why not
+- `must-import-parent-packages-props`: each nested `Directory.Packages.props` imports its parent via `GetPathOfFileAbove`
+- `must-use-version-override-only-for-documented-exception`: each `VersionOverride` carries a documented reason
+- `may-forbid-version-override`: where `CentralPackageVersionOverrideEnabled` is `false`, the restore succeeds with no `VersionOverride`
+- `should-manage-solution-with-dotnet-sln`: the solution file is in a form `dotnet sln list` reads and was changed through `dotnet sln`, or the build says why not
+- `should-have-one-solution-per-deployable-unit`: each deployable unit has exactly one solution, or the build says why not
+- `must-list-every-project-in-solution`: `dotnet sln list` names every project, and a clean checkout builds from the solution
+- `must-not-contain-machine-specific-content`: a scan of project and solution files finds no absolute path or user folder

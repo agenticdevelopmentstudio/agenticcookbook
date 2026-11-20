@@ -1,0 +1,134 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Delegation defines interface boundaries.** A component with a clean delegate protocol is designed to be replaceable — the delegate protocol IS the interface.",
+      "to": [
+        "should-scope-component-with-its-delegate-protocol",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-scope-component-with-its-delegate-protocol keeps 'delegation defines interface boundaries'; the rationale keeps the designed-to-be-replaceable and protocol-is-the-interface reason.",
+        "pin": "5b1f4fed1822c393b7980a529ec94e662bc3204a73c0634faa5102165d8abcee"
+      }
+    },
+    {
+      "sentence": "The component and its protocol belong in the same scope group; its concrete delegate implementations may belong elsewhere.",
+      "to": [
+        "should-scope-component-with-its-delegate-protocol",
+        "may-scope-delegate-implementations-elsewhere"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep component-and-protocol in one scope group (unkeyed, now SHOULD) and concrete delegate implementations possibly elsewhere (MAY).",
+        "pin": "a833c99adef6112e2cf8116cd8ed081f3ffc261d4d8a93eaab0f7175d59546d0"
+      }
+    },
+    {
+      "sentence": "**Notification center usage is an implicit coupling signal.** For every `NotificationCenter.post`, identify all files that observe that notification — they are implicitly coupled even if they have no import relationship.",
+      "to": [
+        "should-identify-notification-observers",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-identify-notification-observers keeps identifying every observer of each NotificationCenter.post as an implicit coupling signal; the rationale keeps the coupled-without-import-relationship reason.",
+        "pin": "62151cfea0526170bce6687411ce069d83a53a79fe8756d1f01b5f2855f694ac"
+      }
+    },
+    {
+      "sentence": "**Singletons couple everything to everything.** Any file that accesses a singleton is implicitly coupled to every other file that accesses the same singleton.",
+      "to": [
+        "should-flag-cross-group-singletons",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-cross-group-singletons keeps 'singletons couple everything to everything' and the rationale keeps that every accessor is coupled to every other accessor of the same singleton.",
+        "pin": "7836ba488846c6f4f999d8fa1093823dd135e7c16862b184c35a9c0d26c24ed9"
+      }
+    },
+    {
+      "sentence": "Singletons accessed across many candidate groups indicate a cross-cutting dependency — flag for `cross-cutting-detection`.",
+      "to": "should-flag-cross-group-singletons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-cross-group-singletons keeps that cross-group singletons indicate a cross-cutting dependency and must be flagged for cross-cutting-detection, at SHOULD.",
+        "pin": "c1e4a91dd25a1420b74f5eb0fdfe4f7387d534b57fdc842c62aa368f3944f2de"
+      }
+    },
+    {
+      "sentence": "**DI containers define the composition boundary.** The DI container registration site is the architectural seam — it is where modules are wired together.",
+      "to": [
+        "should-split-scope-groups-at-di-registration",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-split-scope-groups-at-di-registration keeps 'DI containers define the composition boundary'; the rationale keeps the registration site as the seam where modules are wired.",
+        "pin": "dcd250825417860831e4c960b0127eab64b01db3041c18d8ab80c7189733d89a"
+      }
+    },
+    {
+      "sentence": "Code on either side of the registration site belongs in separate scope groups.",
+      "to": "should-split-scope-groups-at-di-registration",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-split-scope-groups-at-di-registration keeps code on either side of the registration site in separate scope groups, at SHOULD.",
+        "pin": "99703e8b2781923bb14f4dcf94d481b77e5a0e836da4b1a01c10d74daf3650b3"
+      }
+    },
+    {
+      "sentence": "**Coordinators are natural scope group boundaries.** A coordinator object that manages navigation for a feature flow — and owns the child view controllers in that flow — is a natural scope group boundary.",
+      "to": "should-group-coordinator-with-owned-screens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-coordinator-with-owned-screens keeps the coordinator managing a feature flow and owning its child view controllers as a natural scope group boundary.",
+        "pin": "ee492df881c00aff4ca249b202d3d45384db8dddc3e433694f9a5d17366e3d10"
+      }
+    },
+    {
+      "sentence": "The coordinator and its owned screens form one group.",
+      "to": "should-group-coordinator-with-owned-screens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-coordinator-with-owned-screens keeps that the coordinator and its owned screens form one group, at SHOULD.",
+        "pin": "10c03b8e1c7ecde432c14e9551c3150425362e6983b927fd2a29956c627147b9"
+      }
+    },
+    {
+      "sentence": "**Global state (Redux, MobX, Context) makes boundaries fuzzy.** If all components read from a single global store, module boundaries are implicitly bypassed.",
+      "to": [
+        "should-document-store-slices-per-group",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps both sentences: global state makes boundaries fuzzy and a single global store bypasses module boundaries; the rule scopes the action to Redux/MobX/Context.",
+        "pin": "7c64e7688f8e8327ce8bd35d54c17d8470d56beec88ffaa5d802176de6546ba9"
+      }
+    },
+    {
+      "sentence": "Document which store slices each candidate group reads/writes — slices may suggest sub-boundaries.",
+      "to": "should-document-store-slices-per-group",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-document-store-slices-per-group keeps documenting the store slices each group reads/writes and that slices may suggest sub-boundaries.",
+        "pin": "4164b6162ccbb9de2b71def9358b8a3d8ff6518fd441ab5dd2a02e2496b05a1e"
+      }
+    }
+  ],
+  "obsolete": []
+}

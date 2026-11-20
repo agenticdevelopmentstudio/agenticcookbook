@@ -1,0 +1,15 @@
+
+- `must-not-rely-on-deprecated-back-apis`: overrides of `Activity.onBackPressed()` or `Dialog.onBackPressed()`, or interception of `KeyEvent.KEYCODE_BACK`
+- `must-register-onbackpressedcallback`: custom back logic not registered as an `OnBackPressedCallback` on the `OnBackPressedDispatcher` with a `LifecycleOwner`
+- `should-prefer-androidx-back-apis`: platform `OnBackInvokedCallback` used where the AndroidX `androidx.activity` APIs are available
+- `should-use-platform-callback-only-without-androidx`: platform `OnBackInvokedCallback` used directly in an app that has an AndroidX dependency
+- `must-derive-isenabled-from-ui-state`: a callback's `isEnabled` toggled imperatively instead of derived from a `StateFlow` or Compose `State`
+- `should-keep-callbacks-single-responsibility`: one callback handling several back-consuming UI states
+- `may-override-back-flag-per-activity`: a per-`<activity>` `android:enableOnBackInvokedCallback` override used for anything but gradual rollout
+- `should-enable-back-flag-for-system-animations`: `android:enableOnBackInvokedCallback="false"` left in place, so system animations are lost
+- `should-pin-back-behavior-to-targetsdk`: code assuming a fixed predictive-back default across Android versions
+- `should-animate-with-the-gesture`: a custom sheet, drawer or multi-step transition that snaps at release instead of following the gesture
+- `should-use-predictivebackhandler-in-compose`: a Compose back animation not built on `PredictiveBackHandler`, or one that does not reset on `CancellationException`
+- `should-implement-back-progress-callbacks-in-views`: a View back animation without `handleOnBackStarted` / `handleOnBackProgressed` / `handleOnBackCancelled`
+- `should-use-observer-priority-only-for-side-effects`: `PRIORITY_SYSTEM_NAVIGATION_OBSERVER` used for anything but non-consuming side effects
+- `must-not-alter-navigation-from-observer`: an observer-priority callback that changes navigation

@@ -1,0 +1,17 @@
+
+- `pin-to-server-version`: index syntax or planner behavior assumed from PostgreSQL 16/17 without checking the server's version
+- `concurrent-build`: a `CREATE INDEX` on a large live table without `CONCURRENTLY`
+- `failed-index-cleanup`: a `CONCURRENTLY` build retried with no check for an `INVALID` index (`pg_index.indisvalid = false`) and no `DROP INDEX CONCURRENTLY`
+- `rebuild-without-lock`: a bloated index rebuilt by drop-and-recreate instead of `REINDEX INDEX CONCURRENTLY`
+- `type-matches-query`: a B-tree chosen by reflex for a column queried by containment, ranges, geometry or nearest-neighbor
+- `partial-index`: a full index where queries filter on a stable predicate
+- `expression-index`: a query filtering on a computed value (`lower(email)`, `(payload->>'tenant')`) with only a plain column index
+- `composite-column-order`: a multi-column B-tree whose leading column is not equality-and-most-selective, or is absent from the predicate
+- `covering-index`: an `INCLUDE (...)` added with no `EXPLAIN` showing `Index Only Scan`
+- `jsonb-gin`: a JSONB containment or key-existence query with no GIN index
+- `jsonb-path-ops`: a default `jsonb_ops` GIN index where only `@>` is used
+- `jsonb-write-cost`: a GIN index added to a write-heavy JSONB column with no measurement of write impact
+- `jsonb-scalar-expression-index`: a GIN index where queries only need a single extracted scalar key
+- `explain-before-after`: a new index with no `EXPLAIN (ANALYZE, BUFFERS)` showing the planner uses it and the cost drops
+- `drop-unused`: an index kept with near-zero `pg_stat_user_indexes.idx_scan` over a representative window
+- `measured-need`: BRIN, table partitioning or a custom operator class adopted with no concrete measured need

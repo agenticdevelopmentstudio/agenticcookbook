@@ -1,0 +1,9 @@
+
+- `should-group-permission-gated-code`: requests or checks for the same permission spread across different scope groups
+- `should-separate-entitlement-groups`: a group needing an entitlement the others lack, merged with them
+- `should-flag-version-gated-features`: `#available`, `@available`, `@RequiresApi`, `Build.VERSION.SDK_INT`, `ApiInformation` or web feature-detection gates, and whether each is flagged as a version-gated feature
+- `may-give-large-version-gated-code-own-group`: groups that are mostly version-gated code, and whether giving them their own group was weighed
+- `should-group-environment-specific-code`: environment variable reads, config file loading and build-time conditionals scattered across groups
+- `should-document-feature-flags`: remote config reads, flag service calls, A/B enrollment checks and killswitches, and whether each flag is documented
+- `should-not-group-unenabled-code-paths`: a scope group built around code paths behind a flag not yet enabled
+- `should-note-remote-config-ordering`: code that needs a remote config fetch before it works, and whether the startup ordering constraint is noted

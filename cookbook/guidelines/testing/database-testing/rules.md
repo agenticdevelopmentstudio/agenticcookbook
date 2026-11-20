@@ -1,0 +1,42 @@
+
+- **should-use-memory-databases-for-unit-tests**: Unit tests SHOULD use `:memory:` databases.
+- **should-use-file-databases-only-for-file-behavior**: File-based databases SHOULD be used only for integration tests that must verify WAL behavior, file locking, concurrent connections, or platform-specific I/O.
+- **should-put-file-databases-in-temp-dir**: In those cases, the test SHOULD write the database to a temp directory and delete it in teardown.
+- **must-not-share-memory-database-across-modules**: MUST NOT share a single in-memory database across unrelated test modules.
+- **should-use-named-memory-databases-only-when-intended**: Named in-memory databases (`file:name?mode=memory&cache=shared`) SHOULD be used only when multiple connections to the same in-memory database are intentionally required.
+  - The `:memory:` URL creates a new database per connection.
+- **should-default-to-fresh-database-per-test**: A fresh database per test SHOULD be the default isolation strategy; it gives perfect isolation.
+- **may-use-transaction-rollback-for-large-schemas**: Tests MAY use transaction rollback for large schemas: create the schema once and wrap each test in a transaction that is rolled back after the test.
+- **must-not-commit-under-transaction-rollback**: Under transaction-rollback isolation, tests MUST NOT commit.
+  - Nested operations need SAVEPOINTs.
+- **may-use-template-and-backup-for-seeded-data**: Tests MAY use a template and the backup API when they need pre-populated data and isolated writes: create a seeded template once per session and copy it per test.
+- **should-maintain-test-seeds-file**: SHOULD maintain a `test_seeds.sql` file with representative fixture data.
+- **should-cover-seed-cases**: Seed data SHOULD cover:
+  - Typical records (normal state)
+  - Edge cases (nulls, empty strings, boundary values)
+  - Records in each relevant status (e.g., pending, active, deleted)
+- **must-not-build-shared-fixtures-per-test**: MUST NOT build fixture data record-by-record inside individual tests when the same data is needed across multiple tests.
+- **should-use-function-scoped-fixtures-for-writes**: Tests that write SHOULD use function-scoped fixtures.
+- **should-use-session-scoped-fixtures-for-reads**: Read-only tests SHOULD use session-scoped fixtures.
+- **should-relax-test-durability**: Test databases SHOULD use relaxed durability settings.
+- **should-apply-relaxed-settings-only-in-tests**: Tests SHOULD apply relaxed durability settings only in test fixtures.
+- **must-test-forward-migrations**: Every migration file MUST be tested for forward application.
+  - Run all migrations in order on a blank database and assert the resulting schema matches expectations.
+- **should-make-migrations-idempotent**: Migrations SHOULD be idempotent where possible.
+- **should-test-migration-idempotency-twice**: Migration idempotency SHOULD be tested by applying the migration set twice.
+- **should-test-backward-migrations**: Backward migration (rollback) SHOULD be tested when rollback scripts exist.
+  - Apply forward, then backward, then verify the schema matches the pre-migration state.
+- **must-test-migrations-with-representative-data**: Migrations MUST always be tested against a database seeded with production-representative data to catch data conversion errors — type coercions, NOT NULL violations, and constraint failures that only appear with real values.
+- **must-test-sync-at-unit-and-integration-level**: Sync logic MUST be tested at the unit level (change detection, serialization) and integration level (round-trip apply); it requires both.
+- **should-test-change-detection**: Change detection SHOULD be tested: verify that the unsynced-records query returns the correct rows.
+- **should-test-sync-apply**: Sync apply SHOULD be tested: verify that applying a changeset from the server updates the local database correctly, including soft-delete propagation.
+- **should-test-outbox-round-trip**: The outbox round-trip SHOULD be tested: write a record locally, confirm it appears in the outbox, simulate a sync cycle, confirm the record is marked synced and the outbox entry is consumed.
+- **should-test-tombstone-propagation**: Tombstone propagation SHOULD be tested: delete a record on one simulated peer, apply the tombstone to a second peer, confirm the record is absent on the second peer and not resurrected by a subsequent sync.
+- **must-test-conflicts-with-two-peers**: Conflict tests MUST use two databases representing two peers; conflict tests require them.
+- **should-assert-merge-matches-resolution-strategy**: Conflict tests SHOULD apply divergent changes to each peer, then merge and assert the outcome matches the defined resolution strategy.
+- **should-test-all-conflict-cases**: SHOULD test all defined conflict cases:
+  - Update vs update (same field, different values)
+  - Update vs delete (one peer deletes while another updates)
+  - Insert vs insert (duplicate IDs from offline creation)
+- **should-use-sqlite-where-dialect-is-irrelevant**: SQLite SHOULD be used for unit tests where dialect differences do not affect the logic under test.
+- **must-use-production-database-for-dialect-tests**: MUST use the production database for integration tests that cover type enforcement, constraint behavior, or database-specific SQL features.

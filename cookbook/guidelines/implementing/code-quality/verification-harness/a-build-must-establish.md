@@ -1,0 +1,18 @@
+
+- `must-be-single-runnable-command`: one command runs the harness and exits with a machine-readable signal
+- `must-be-deterministic`: two runs of the check on the same input give the same pass/fail
+- `must-not-gate-on-flaky-checks`: the completion gate includes no flaky, time- or network-dependent check
+- `must-show-evidence`: the build's report includes the command run and its output
+- `should-wire-command-for-discovery`: a documented `verify`/`lint`/`test` entry point exists and agent-readable docs reference it, or the build says why not
+- `should-state-expected-observed-and-location`: a deliberate failure prints expected, observed and file:line, or the build says why not
+- `should-name-concrete-next-step`: a deliberate failure prints a concrete next step, or the build says why not
+- `should-keep-output-concise`: a failing run's output stays short, not thousands of lines, or the build says why not
+- `should-choose-weakest-enforcement-level-that-holds`: each check the build adds sits at the weakest enforcement level that holds, or the build says why not
+- `must-gate-correctness-deterministically`: each correctness check for unattended or merged changes runs in CI, a pre-commit hook or a stop-hook
+- `should-cap-gate-retries`: each looping gate the build adds has a retry cap and a human hand-off, or the build says why not
+- `must-fail-only-on-correctness`: each gate's failure conditions are correctness or stated requirements only
+- `must-not-block-on-style-nitpicks`: no gate fails on a style nitpick; formatting runs non-blocking
+- `should-scope-adversarial-review-to-correctness`: each adversarial or gap-finding check's instructions limit it to correctness or spec gaps, or the build says why not
+- `should-start-with-cheapest-check`: the first check the build adds is the cheapest one that catches a real failure, or the build says why not
+- `should-not-prebuild-exhaustive-suite`: each check the build adds answers a concrete failure pattern, or the build says why not
+- `should-encode-check-for-new-error-class`: for each new class of agent error met, the build adds a check, or says why not

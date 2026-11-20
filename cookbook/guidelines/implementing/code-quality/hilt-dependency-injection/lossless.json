@@ -1,0 +1,255 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Do not inject the Hilt-managed graph by passing `Context` around to build objects manually — that defeats the framework.",
+      "to": "should-not-build-objects-from-passed-context",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The prohibition on passing Context around to build objects manually in place of the Hilt graph, with its 'defeats the framework' reason, is kept at SHOULD NOT.",
+        "pin": "00a7712720e49d9fdc142de353c26a50a2715dcb3ff16dc1bdd8ec12c2268eb4"
+      }
+    },
+    {
+      "sentence": "Do not field-inject where constructor injection is possible; reserve field injection for framework-instantiated entry points.",
+      "to": "should-not-field-inject-where-constructor-possible",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not field-injecting where constructor injection is possible, and reserving field injection for framework-instantiated entry points, are both kept at SHOULD NOT/SHOULD.",
+        "pin": "a765cdfe05c654530c311ef74e114f06bfd2dea741d110062a9c840e23b690d4"
+      }
+    },
+    {
+      "sentence": "Do not create god modules.",
+      "to": "should-not-create-god-modules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not creating god modules is kept at SHOULD NOT.",
+        "pin": "5819ea294c42e3ee5350816ced1eacfbeffb844a10a640b201c4127492c54358"
+      }
+    },
+    {
+      "sentence": "Split modules by feature and install them into the narrowest applicable component.",
+      "to": "should-not-create-god-modules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Splitting modules by feature and installing them into the narrowest applicable component is kept at SHOULD in the same rule.",
+        "pin": "3f650654bc9c9b47f7c74d71a1626a660f208b69216ea15a019c42493bc2d747"
+      }
+    },
+    {
+      "sentence": "`@Singleton` **SHOULD** be reserved for genuinely app-scoped state — over-scoping is the most common Hilt mistake.",
+      "to": [
+        "should-reserve-singleton-for-app-scoped-state",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD reserving @Singleton for genuinely app-scoped state is kept verbatim, and the rationale keeps that over-scoping is the most common Hilt mistake.",
+        "pin": "d9a98d9efdee1124acc6fd51828b9545758eed8a33d61e437313023ff0a56a70"
+      }
+    },
+    {
+      "sentence": "Annotate ViewModels with `@HiltViewModel` and an `@Inject constructor`.",
+      "to": "should-annotate-viewmodels-with-hiltviewmodel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Annotating ViewModels with @HiltViewModel and an @Inject constructor is kept at SHOULD.",
+        "pin": "1083485a1f111e6ffc106f8aef10308fca7e02ef306210b3cb4c0c1d29f35716"
+      }
+    },
+    {
+      "sentence": "Hilt supplies the factory; inject `SavedStateHandle` for navigation/saved args.",
+      "to": [
+        "rationale",
+        "should-inject-savedstatehandle"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps that Hilt supplies the factory, and injecting SavedStateHandle for navigation/saved args is kept at SHOULD.",
+        "pin": "54cac94db2a67c03f0ab4a26355dea2cc0f068c53f0e68c2c8055fd6904ed954"
+      }
+    },
+    {
+      "sentence": "Do not construct these ViewModels manually.",
+      "to": "should-not-construct-hilt-viewmodels-manually",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not constructing Hilt ViewModels manually is kept at SHOULD NOT.",
+        "pin": "1651db079b02b6ef4ce55d2a8748968c9f01af41dfe395f3464f3838ba5c1269"
+      }
+    },
+    {
+      "sentence": "For Compose, retrieve them with `hiltViewModel()` (`androidx.hilt:hilt-navigation-compose`).",
+      "to": "should-use-hiltviewmodel-in-compose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Retrieving Hilt ViewModels with hiltViewModel() in Compose, with the artifact coordinate, is kept at SHOULD.",
+        "pin": "ecb01e3730ca4820afdcff5c752b011c03993011eaab9b5b37cd3977bd526d02"
+      }
+    },
+    {
+      "sentence": "Annotate `CoroutineWorker`/`Worker` subclasses with `@HiltWorker`.",
+      "to": "should-annotate-workers-with-hiltworker",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Annotating CoroutineWorker/Worker subclasses with @HiltWorker is kept at SHOULD.",
+        "pin": "8356665888d53debcdaa78ee3621c64c6f63dc6139ae6895e1f4b57d077328ea"
+      }
+    },
+    {
+      "sentence": "Inject `HiltWorkerFactory` into the `Application` and wire it through a custom `WorkManager` `Configuration` (or the `Configuration.Provider` on the `Application`).",
+      "to": "should-wire-hiltworkerfactory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Injecting HiltWorkerFactory into the Application and wiring it through a custom WorkManager Configuration or Configuration.Provider is kept at SHOULD in full.",
+        "pin": "e83a7dde93c35efd7fe370e4687cc6cd6647a34d0f1da587819cac8996259518"
+      }
+    },
+    {
+      "sentence": "Use a `@Module` with `@Provides` only for types you do not own (third-party, builders) or interfaces.",
+      "to": "should-use-provides-only-for-unowned-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Restricting @Module/@Provides to unowned types (third-party, builders) or interfaces is kept at SHOULD.",
+        "pin": "0e62c921fbcef063da856fe037209e6e2336f96d746ad115dffb11434227cf21"
+      }
+    },
+    {
+      "sentence": "Bind an interface to its implementation with `@Binds` in an `abstract` module — it generates less code than `@Provides`.",
+      "to": "should-bind-interfaces-with-binds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Binding interfaces with @Binds in an abstract module, with the less-generated-code reason, is kept at SHOULD.",
+        "pin": "9cf3bb19fed588f0d437d1202a06a90a13a1ae95bdf6ba73d4aabf64dc4c81fd"
+      }
+    },
+    {
+      "sentence": "Install every module into a component with `@InstallIn(...)`.",
+      "to": "should-install-every-module",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Installing every module into a component with @InstallIn(...) is kept at SHOULD.",
+        "pin": "b25d72a4fc67772743a86149d7580c2d11839f8c3e85ad51cef56b86d8ac8a1f"
+      }
+    },
+    {
+      "sentence": "Choose the **narrowest** component that fits the binding's lifetime.",
+      "to": "should-choose-narrowest-component",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Choosing the narrowest component that fits the binding's lifetime is kept at SHOULD.",
+        "pin": "f876233d709bb062ef5268314fdc0cacbded3852f55b24e49e8567e41d45f834"
+      }
+    },
+    {
+      "sentence": "`@Singleton` **SHOULD NOT** be applied for performance \"just in case.\" Scope only stateful, expensive-to-build, or app-shared instances.",
+      "to": "should-not-apply-singleton-just-in-case",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD NOT on 'just in case' @Singleton and the instruction to scope only stateful, expensive-to-build or app-shared instances are both kept.",
+        "pin": "29179ba937adae6e7554f03abdcf9d4b4ab7469d468cba6a00472b609912d932"
+      }
+    },
+    {
+      "sentence": "Use **KSP** (`com.google.devtools.ksp`) for the Hilt compiler, not the legacy KAPT.",
+      "to": "should-use-ksp-not-kapt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using KSP for the Hilt compiler instead of legacy KAPT is kept at SHOULD; the rationale keeps the maintenance/speed/KSP2 reason.",
+        "pin": "71d8fba1ea3e6c254d1e850da55aed8cd2f463c55dcb8f0f888f0c76fb072f64"
+      }
+    },
+    {
+      "sentence": "Apply the `com.google.dagger.hilt.android` Gradle plugin and add `hilt-android` plus the compiler via `ksp(...)`.",
+      "to": "should-apply-hilt-gradle-plugin",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Applying the Hilt Gradle plugin and adding hilt-android plus the compiler via ksp(...) is kept at SHOULD.",
+        "pin": "b8cc71caf5094a2840698dfe0d7418044932a6a7bebac0e558b301e9f42c5dbc"
+      }
+    },
+    {
+      "sentence": "Annotate the `Application` subclass with `@HiltAndroidApp`.",
+      "to": "should-annotate-application-with-hiltandroidapp",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Annotating the Application subclass with @HiltAndroidApp is kept at SHOULD.",
+        "pin": "0302e6f0aa3a9462243153b80f31847b0e7bfd9ac01fcb6805e55ad4752a4335"
+      }
+    },
+    {
+      "sentence": "This is the root of the dependency graph and **MUST** exist exactly once.",
+      "to": [
+        "must-have-exactly-one-hiltandroidapp",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST that the @HiltAndroidApp application exist exactly once is kept, and the rationale keeps that it is the root of the dependency graph.",
+        "pin": "f68702a6a8e9590847c6afee397764d5b4effb883f0834ccbdf73bd8dcdc4144"
+      }
+    },
+    {
+      "sentence": "Annotate Android entry points (`Activity`, `Fragment`, `Service`) needing field injection with `@AndroidEntryPoint`.",
+      "to": "should-annotate-entry-points-with-androidentrypoint",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Annotating Activity, Fragment and Service entry points needing field injection with @AndroidEntryPoint is kept at SHOULD with its condition.",
+        "pin": "fa948db830f6309c5462527b31fef66df3a74f9be1bce51241d29f3b495cba33"
+      }
+    },
+    {
+      "sentence": "Use `hilt-android-testing` with `kspTest`/`kspAndroidTest`.",
+      "to": "should-use-hilt-android-testing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using hilt-android-testing with kspTest/kspAndroidTest is kept at SHOULD.",
+        "pin": "9aaf375d4302f57878d0411595e2f9d9b9c959adc9b3f8b5f56c1d73eafb2d45"
+      }
+    },
+    {
+      "sentence": "Annotate tests with `@HiltAndroidTest` and drive injection with `HiltAndroidRule`.",
+      "to": "should-drive-tests-with-hiltandroidrule",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Annotating tests with @HiltAndroidTest and driving injection with HiltAndroidRule is kept at SHOULD.",
+        "pin": "07135a9354fd0cbf3f04152f7dfd0a5ab75a9a995dc7e5a871031caa8559e5eb"
+      }
+    },
+    {
+      "sentence": "Replace bindings in tests with `@TestInstallIn` or `@BindValue` rather than mutating production modules.",
+      "to": "should-replace-test-bindings-without-mutating-modules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Replacing test bindings with @TestInstallIn or @BindValue rather than mutating production modules is kept at SHOULD.",
+        "pin": "09e1f6896939f40e28e198d7cc53168d78c81780f0389af2a4a2a8b4c36cb31b"
+      }
+    }
+  ],
+  "obsolete": []
+}

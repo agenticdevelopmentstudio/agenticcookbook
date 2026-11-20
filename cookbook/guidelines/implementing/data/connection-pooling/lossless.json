@@ -1,0 +1,146 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**session-mode-fallback**: Use **session mode** only when the workload genuinely needs session-scoped features (below) and you accept near-1:1 client-to-server connection mapping.",
+      "to": "session-mode-fallback",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Session mode only when session-scoped features are genuinely needed and near-1:1 mapping is accepted is kept at SHOULD with both conditions; '(below)' now points at the transaction-mode rules.",
+        "pin": "e28a60eb960a81bb83a807f915a066a1cf465165243561538822cbf998401445"
+      }
+    },
+    {
+      "sentence": "**disable-driver-side-prepare**: When unsure of pooler support, configure the driver/ORM to avoid named server-side prepared statements (e.g. set query/plan caching off, or use a pooler-aware setting) and rely on `SET LOCAL` for per-request GUCs.",
+      "to": "disable-driver-side-prepare",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "When unsure of pooler support, avoiding named server-side prepared statements and relying on SET LOCAL is kept at SHOULD with its condition and examples.",
+        "pin": "2c557ee350371576a42dd571e1446b3be251ed55c33eb19638512b68beac3acc"
+      }
+    },
+    {
+      "sentence": "**size-the-pool**: Set the pooler's server pool (`default_pool_size`) below `max_connections` with headroom for migrations, admin, and direct connections.",
+      "to": "size-the-pool",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting default_pool_size below max_connections with headroom for migrations, admin and direct connections is kept at SHOULD with all three headroom uses.",
+        "pin": "c59dcc9e69cdb4b97132477909d5b94ed59a794c5a3d4fb0c3f332f2bdc26861"
+      }
+    },
+    {
+      "sentence": "**fail-fast-on-exhaustion**: Configure short client-side connection acquisition timeouts so an exhausted pool surfaces a fast, observable error rather than hanging requests.",
+      "to": "fail-fast-on-exhaustion",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Short client-side acquisition timeouts so an exhausted pool fails fast and observably is kept at SHOULD with its reason.",
+        "pin": "a1370d965ea34be67fd285a6140336cb6b46fa21d21e20b0f3a0b8e6ceae5cdf"
+      }
+    },
+    {
+      "sentence": "Code that runs under transaction-mode pooling **MUST NOT** depend on:",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in's MUST NOT is kept in each of the five rules it introduced, each opening 'Code that runs under transaction-mode pooling MUST NOT depend on'; rationale keeps the framing and its reason.",
+        "pin": "b94bca226e4364d189fe864bcae7cd096cad67e5fa1789d3a21363cdfb6d6c1c"
+      }
+    },
+    {
+      "sentence": "**no-session-set**: Session-level `SET` / `RESET` of GUCs (e.g.",
+      "to": "no-session-set",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No dependence on session-level SET/RESET of GUCs is kept at MUST NOT with every example and the SET LOCAL alternative.",
+        "pin": "b19d08954f511981367afdd35412bb35b59ec3f620482f8a2b026fd47856e189"
+      }
+    },
+    {
+      "sentence": "**no-listen-notify**: `LISTEN` / `NOTIFY`.",
+      "to": "no-listen-notify",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No dependence on LISTEN/NOTIFY is kept at MUST NOT with its reason and both alternatives.",
+        "pin": "3967d65f4b8e1413c0ff93d86d808c2439563005321c3f3f196fee0e9fc17593"
+      }
+    },
+    {
+      "sentence": "**no-session-advisory-locks**: Session-level advisory locks (`pg_advisory_lock`).",
+      "to": "no-session-advisory-locks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No dependence on session-level advisory locks is kept at MUST NOT with the pg_advisory_xact_lock alternative and its reason.",
+        "pin": "9cd80291c5b12cfd3fad27454760695e5d75eb8f910db051e53b8e36fecc155e"
+      }
+    },
+    {
+      "sentence": "**no-temp-tables**: Session-scoped temporary tables and `WITH HOLD` cursors that outlive a transaction.",
+      "to": "no-temp-tables",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No dependence on session temp tables and WITH HOLD cursors is kept at MUST NOT.",
+        "pin": "29fd623914afe603065c56ceedabdab3bb5bc5d35383d0d964b4238395537d59"
+      }
+    },
+    {
+      "sentence": "**prepared-statements-caveat**: Server-side `PREPARE`/`DEALLOCATE` issued as SQL text.",
+      "to": "prepared-statements-caveat",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No dependence on text-mode PREPARE/DEALLOCATE is kept at MUST NOT; the PgBouncer version nuance is kept in rationale.",
+        "pin": "522679a96202bad971880f872679dcf0a553012d7afb2dea28eecac2c028417a"
+      }
+    },
+    {
+      "sentence": "Verify your pooler version and that your driver uses the extended protocol, not text-mode `PREPARE`.",
+      "to": "verify-pooler-prepared-statement-support",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Verifying the pooler version and that the driver uses the extended protocol, not text-mode PREPARE, is kept at SHOULD.",
+        "pin": "79bff3364c40594ba53633dda3e32f7bae11b83dbd29b505b984e2c8ded17145"
+      }
+    },
+    {
+      "sentence": "Confirm against your deployed pooler's docs.",
+      "to": "verify-pooler-prepared-statement-support",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming against the deployed pooler's docs is kept at SHOULD in the same rule.",
+        "pin": "3eef6fdd06ae677dbab4625f5f6fa29afcbcbccab0c8914f3107a65cd34bbb42"
+      }
+    },
+    {
+      "sentence": "Run the app's full transaction set against a transaction-mode pooler in staging; assert no `prepared statement does not exist` / `InvalidSqlStatementName` errors under concurrency.",
+      "to": "staging-transaction-mode-run",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The staging run of the full transaction set against a transaction-mode pooler, asserting no prepared-statement errors under concurrency, is kept at SHOULD.",
+        "pin": "a1251bdad1e83b81d2da5bc1eeaf6d9f0d3d1a3be8f87dbfd9a3ad22db0bc306"
+      }
+    },
+    {
+      "sentence": "Grep the codebase for `SET ` (non-`LOCAL`), `LISTEN`, `pg_advisory_lock(` (non-`_xact_`), and session temp-table usage before deploying behind transaction pooling.",
+      "to": "grep-for-session-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The pre-deploy grep for non-LOCAL SET, LISTEN, non-xact pg_advisory_lock and session temp tables is kept at SHOULD with every pattern.",
+        "pin": "2fda00eba60768c3716a378f7c9550d8f8a6fdf88f1cbb9ffb20277c17b6707c"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,37 @@
+
+- **should-treat-ruby-as-code**: A Ruby file SHOULD be treated as code, not as a shell script with syntax.
+- **must-begin-with-frozen-string-literal**: Every file MUST begin with `# frozen_string_literal: true`.
+- **must-put-magic-comment-in-first-section**: The comment applies to that file only and MUST be in the first comment section.
+- **must-copy-before-mutating-strings**: Code MUST mutate a string only after `+""` or `String.new`, or `dup` a frozen one.
+- **should-use-open3-with-separate-arguments**: Code SHOULD use `Open3.capture2`, `capture2e` or `capture3` with separate arguments: `Open3.capture2e("git", "status")`.
+  - With an executable path plus arguments no shell is involved.
+- **must-not-build-command-strings-from-input**: A single command string is handed to the shell, so code MUST NOT build one from outside input.
+- **must-check-process-status**: These calls return the output and a `Process::Status`; code MUST check `status.success?` rather than ignoring it.
+- **should-rescue-enoent-when-absence-expected**: A missing executable raises `Errno::ENOENT`, so code SHOULD rescue that when absence is expected.
+- **should-feed-stdin-through-stdin-data**: Standard input SHOULD be fed through the `stdin_data:` option.
+- **must-pass-argument-lists-to-spawn**: Code MUST pass an argument list instead.
+  - `Process.spawn` and similar calls also route a single string that contains shell metacharacters through `/bin/sh`.
+- **should-model-records-with-data-define**: Records SHOULD be modeled as `Data.define(:name, :path)`.
+  - A `Data` instance is immutable, requires every member, and is copied with changes through `with`.
+- **should-use-struct-only-for-mutation**: Code SHOULD use `Struct` only when it needs mutation.
+- **should-serialize-with-to-h**: Code SHOULD return `to_h` when it needs to serialize.
+- **must-not-rescue-exception**: Code MUST NOT `rescue Exception`; a bare `rescue` catches `StandardError`, which is the right default.
+- **should-rescue-by-class-name**: Code SHOULD name the class it handles.
+- **must-not-use-rescue-modifier**: Code MUST NOT use the `rescue` modifier (`foo rescue nil`); it hides which error occurred.
+- **must-not-return-from-ensure**: Code MUST NOT `return` from an `ensure` block; it discards the in-flight exception.
+- **should-raise-with-raise**: Code SHOULD raise with `raise`, not `fail`.
+- **should-subclass-standard-error**: Code SHOULD define domain errors as subclasses of `StandardError`.
+- **must-pass-hashes-as-explicit-keywords**: Code MUST pass a hash as keywords with `**opts` explicitly, and accept it with `**opts`.
+  - Since Ruby 3.0 positional hashes and keyword arguments are separate.
+- **must-forward-all-argument-kinds**: A method that forwards its arguments MUST declare `*args, **kwargs, &block` or use `...`.
+- **should-limit-ruby2-keywords-to-old-rubies**: `ruby2_keywords` SHOULD be used only in code that must also run on Ruby 2.6 to 3.0.
+- **must-use-snake-case**: Methods and variables MUST be `snake_case`.
+- **must-end-predicates-in-question-mark**: A predicate MUST end in `?`.
+- **must-pair-bang-methods**: A bang method (`!`) MUST exist only when a non-bang counterpart exists too.
+- **should-configure-style-in-rubocop-yml**: Style SHOULD be configured in `.rubocop.yml`.
+- **should-set-rubocop-target-version**: The project SHOULD set `AllCops: TargetRubyVersion` or let it come from the gemspec, `.ruby-version` or `.tool-versions`.
+- **must-use-rubocop-version-env-only-in-ci**: The `RUBOCOP_TARGET_RUBY_VERSION` environment variable overrides all of them, so it MUST be used only in CI.
+- **must-have-one-global-gem-source**: A `Gemfile` MUST have one global `source`.
+- **must-commit-gemfile-lock**: A `Gemfile`'s `Gemfile.lock` MUST be committed.
+- **should-group-dev-and-test-gems**: Development and test gems SHOULD be kept in groups.
+- **should-omit-unneeded-gem-groups**: Installs SHOULD omit development and test groups where they are not needed with `bundle config set --local without <group>`.

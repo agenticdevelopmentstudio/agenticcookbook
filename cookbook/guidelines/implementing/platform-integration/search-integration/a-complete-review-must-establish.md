@@ -1,0 +1,19 @@
+
+- `content-discoverable-in-system-search`: whether app content is discoverable through system search
+- `index-what-users-search-for`: whether content users would reasonably search for is indexed
+- `keep-index-current`: whether the index adds items on create and removes them on delete
+- `must-deep-link-indexed-items`: whether each indexed item deep links back to its content
+- `include-rich-metadata`: whether indexed items include rich metadata
+- `apple-index-with-core-spotlight`: whether Apple content is indexed through Core Spotlight
+- `ios17-conform-to-indexedentity`: whether entities on iOS 17+ conform to `IndexedEntity`
+- `apple-donate-nsuseractivity`: whether Handoff-eligible items donate `NSUserActivity`
+- `android-use-app-indexing`: whether Android on-device search uses Firebase App Indexing or `AppIndexingApi`
+- `android-declare-searchable-content`: whether Android declares searchable content in `searchable.xml` and implements `SearchableInfo`
+- `android-support-assistant-markup`: whether Android supports Google Assistant via structured content markup
+- `windows-use-search-indexer`: whether Windows uses the Search indexer with `ISearchManager` and property handlers
+- `windows-register-associations-and-protocols`: whether file type associations and protocol handlers are registered
+- `windows-uwp-winui-search`: whether UWP/WinUI search uses `SearchPane` or system-integrated in-app search
+- `web-use-structured-data`: whether web pages carry structured data for search engines
+- `web-implement-social-meta-tags`: whether OpenGraph and Twitter Card meta tags are implemented
+- `web-support-web-app-manifest`: whether the PWA supports a Web App Manifest
+- `web-ensure-crawlability`: whether web content is server-side rendered or pre-rendered for crawlability

@@ -1,0 +1,37 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Quarantine them immediately — fix or delete, never ignore.",
+      "to": [
+        "should-quarantine-flaky-tests-immediately",
+        "must-not-ignore-flaky-tests"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Quarantine immediately is kept at SHOULD with fix-or-delete, and 'never ignore' is kept as a MUST NOT.",
+        "pin": "fbbb6954a360d23dd2ddcb817865e0f1db2ec81ba5b78b5aa266938007d5b658"
+      }
+    },
+    {
+      "sentence": "**Rules:**",
+      "to": [
+        "must-not-share-mutable-state",
+        "must-not-depend-on-execution-order",
+        "must-not-make-real-network-calls-in-unit-tests",
+        "must-not-use-sleep-or-timing-assertions",
+        "must-not-produce-filesystem-side-effects-in-unit-tests",
+        "should-not-rely-on-system-clock",
+        "must-treat-intermittent-failure-as-p1"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in introduced the seven rules; all seven are kept as rules with their original MUST NOT / SHOULD NOT / MUST levels, scopes (unit tests) and parenthetical remedies.",
+        "pin": "a7cb5e7615fe7db406c2d7aa0f3a08f5458be75b698c6427e1e77e3375cdc4f8"
+      }
+    }
+  ],
+  "obsolete": []
+}

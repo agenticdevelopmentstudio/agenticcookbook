@@ -1,0 +1,17 @@
+
+- `wild-ideation-human-first`: the AI contributing an idea before the user has contributed one
+- `wild-ideation-volume-target`: readiness to evaluate signalled with fewer than 10 distinct ideas
+- `distant-analogy-domain-gap`: an analogy drawn from a source domain no different in industry, domain or scale from the user's
+- `distant-analogy-mapping`: an analogy surfaced with no structural match identified between it and the user's problem
+- `blend-emergent-property`: a blend presented with no emergent property that neither input space has alone
+- `blend-invite-user`: the facilitator supplying the emergent property without first inviting the user to name it
+- `inversion-identify-assumption`: an assumption inverted without first being stated
+- `inversion-explore`: a reversed version discarded without the question of what would be valuable about it
+- `constraint-framed-as-question`: a constraint injected as a directive rather than a question
+- `constraint-user-choice`: an injected constraint imposed with no offer to accept, modify or reject it
+- `reverse-inversion-required`: a reverse brainstorm that stops at failure generation without the inversion step
+- `reverse-distinct-mechanisms`: inversion begun with fewer than 5 distinct failure mechanisms generated
+- `scamper-axis-limit`: more than 2 SCAMPER axes applied in a single turn
+- `scamper-one-idea`: a SCAMPER axis applied to the problem in general instead of one specific idea
+- `random-stimulus-forced-connection`: the facilitator suggesting connections to a random stimulus before prompting the user
+- `random-stimulus-novel`: a random stimulus related to the user's domain

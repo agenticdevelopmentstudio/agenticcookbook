@@ -1,0 +1,19 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Check `Configuration.fontScale` and test with large font settings enabled.",
+      "to": [
+        "should-check-configuration-font-scale",
+        "should-test-with-large-font-settings"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two unkeyed instructions are split into should-check-configuration-font-scale and should-test-with-large-font-settings, both at SHOULD: check Configuration.fontScale, and test with large font settings enabled.",
+        "pin": "ffce9f870206cfb6005e6acd2a20583bdb4bad78eb235369d16e36408c4d3f80"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,42 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "05d00147-5c49-42d8-bdbd-cf8fd7dc2379",
+    "title": "Flaky Test Prevention",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Flaky tests destroy confidence. Quarantine them immediately — fix or delete, never ignore.",
+    "platforms": [
+      "typescript",
+      "web"
+    ],
+    "tags": [
+      "flaky-test-prevention",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://martinfowler.com/articles/nonDeterminism.html",
+      "https://testing.googleblog.com/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "pre-pr"
+    ]
+  },
+  "synced": "99543534aa0884b2",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

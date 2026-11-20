@@ -1,0 +1,21 @@
+
+- `must-curate-context-as-finite-budget`: context kept as an append-only transcript, with nothing ever cleared, summarized or delegated, breaks it
+- `must-not-front-load-context`: files, tool output or references loaded up front "just in case" break it
+- `should-retrieve-context-just-in-time`: files, tool output and references fetched at the step that uses them keep it
+- `should-delegate-read-heavy-subtasks`: codebase exploration, multi-file investigation or log analysis run in the main context breaks it
+- `should-clear-context-between-unrelated-tasks`: stale history from an unrelated task carried into the next breaks it
+- `must-persist-state-that-outlives-the-window`: decisions, conventions or task state left only in the conversation break it
+- `must-record-modified-files-and-commands-before-compaction`: a likely compaction with the modified-file list or test/run/build commands recorded nowhere durable breaks it
+- `should-assume-compaction-loses-specifics`: reliance after compaction on exact line numbers, intermediate reasoning or raw tool output breaks it
+- `should-declare-compaction-preservation-directives`: a harness that supports compaction-preservation directives with none declared breaks it
+- `must-return-condensed-subagent-summary`: a subagent that returns raw dumps of what it read breaks it
+- `must-not-assume-subagent-context-survives`: a caller that relies on a subagent's intermediate context after it returns breaks it
+- `must-keep-cross-session-state-in-a-persistent-file`: plans, conventions or in-progress task state not in a file re-read at session start break it
+- `must-keep-memory-files-concise`: an overstuffed or low-signal memory file breaks it
+- `should-keep-only-behavior-changing-memory`: memory entries that change no behavior break it
+- `should-prune-memory-regularly`: memory files that only grow break it
+- `must-not-duplicate-rederivable-information`: file contents or standard conventions copied into memory break it
+- `should-reset-context-on-task-switch`: a switch to an unrelated task with prior files and tool output still in context breaks it
+- `should-restart-after-repeated-failed-corrections`: correction layered on correction for one problem in a polluted context breaks it
+- `should-treat-a-bigger-window-as-headroom`: curation dropped because the window is larger breaks it
+

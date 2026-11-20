@@ -1,0 +1,126 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "You **MUST** maintain a data map enumerating every place personal data lives:",
+      "to": "must-maintain-data-map",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Maintaining a data map enumerating every place personal data lives is kept at MUST.",
+        "pin": "156ba73f8359b685eb6b090fd8ea3fb75b6d6cd131a0d63243413919c182a3c1"
+      }
+    },
+    {
+      "sentence": "Deletion **MUST** reach every derived copy, not just the primary row:",
+      "to": "must-erase-every-derived-copy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deletion reaching every derived copy, not just the primary row, is kept at MUST.",
+        "pin": "6c8065732aa1e2e4541df9a9ad66fc498b6b5eeacdb3d2f83841f8ee73d17815"
+      }
+    },
+    {
+      "sentence": "Caches, search indexes, denormalized read models, and analytics aggregates.",
+      "to": "must-erase-every-derived-copy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The four derived-copy kinds (caches, search indexes, denormalized read models, analytics aggregates) are kept under the same MUST.",
+        "pin": "b1b57b8730ad5c9a2354e837c6f58727f17d3800438d506d72c8fd0109eafe71"
+      }
+    },
+    {
+      "sentence": "Third-party processors — call their deletion APIs and record completion.",
+      "to": "must-propagate-erasure-to-processors",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deletion reaching third-party processors via their deletion APIs, with completion recorded, is kept at MUST.",
+        "pin": "74f79fb23e8a167acd03ec75b1b10b44321eceb3e2ab73ba65a7d5300bb3dd2c"
+      }
+    },
+    {
+      "sentence": "Logs and event streams: prefer pseudonymization or crypto-shredding (delete the per-subject key) where immutable append-only logs make row deletion impractical.",
+      "to": "should-pseudonymize-or-crypto-shred-logs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deletion reaching logs and event streams stays MUST, and preferring pseudonymization or crypto-shredding where append-only logs make row deletion impractical is kept at SHOULD with its condition.",
+        "pin": "ccf6ba7b9088aebb4b571d63eb45e4e4d9d3ec54353d8ef3cdffd7c35d0505c0"
+      }
+    },
+    {
+      "sentence": "Backups: full purge is often infeasible; document the rotation window after which restored backups are re-scrubbed, and treat that window as part of the SLA.",
+      "to": "must-document-backup-rescrub-window",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Backups are kept: full purge often infeasible, the re-scrub rotation window documented (now explicit MUST) and treated as part of the SLA.",
+        "pin": "d9092eda38dc4cbd2a463961c5ee0163aa9cb41ae4e3fe2a7be2deb6abed84b4"
+      }
+    },
+    {
+      "sentence": "Authenticate against an existing session or a verified channel; **MUST NOT** disclose or delete data on an unverified claim, since the request itself is an attack surface for account takeover and data exfiltration.",
+      "to": [
+        "should-authenticate-against-session-or-verified-channel",
+        "must-not-act-on-unverified-claim"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Authenticating against an existing session or verified channel is kept at SHOULD, and the MUST NOT on disclosing or deleting on an unverified claim is kept with its account-takeover and exfiltration reason.",
+        "pin": "b333e173d6c562c012fc0d4fa4c899d5045cf8cd59323fcbf66edb3dfa28e293"
+      }
+    },
+    {
+      "sentence": "This is an architectural property, not a feature bolted on later: every store of personal data MUST be enumerable, exportable, and deletable keyed by a stable subject id.",
+      "to": "must-make-every-store-enumerable-exportable-deletable"
+    },
+    {
+      "sentence": "> Engineering guidance only — NOT legal advice.",
+      "to": "should-confirm-rights-with-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The engineering-only, not-legal-advice disclaimer is kept in the counsel rule.",
+        "pin": "8435d1db0fdff49c27042b1c3a6137c98f6c81ef4eb70b14f4a69ae5fd5694bc"
+      }
+    },
+    {
+      "sentence": "Confirm rights, scope, exemptions, and deadlines with counsel for your jurisdictions.",
+      "to": "should-confirm-rights-with-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming rights, scope, exemptions and deadlines with counsel for your jurisdictions is kept at SHOULD.",
+        "pin": "f372041b73e54859de233b53ad12a0d28abe4c27d9eeb51bd1f9493f418824f4"
+      }
+    },
+    {
+      "sentence": "Track per-request SLA and alert before breach.",
+      "to": "should-track-per-request-sla",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Tracking per-request SLA and alerting before breach is kept at SHOULD.",
+        "pin": "597fd9c36d1f59c9e87147718b6c85968404fa7fbf9c090ccc458b3d2833a20b"
+      }
+    },
+    {
+      "sentence": "Under GDPR Chapter 3 (and analogues such as CCPA/CPRA), an agent **MUST** be able to satisfy each request type:",
+      "to": [
+        "rationale",
+        "must-support-access-requests"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The GDPR Chapter 3 (and CCPA/CPRA) basis is kept in rationale, which names all six request-type rules, and each request type is its own MUST rule starting with access.",
+        "pin": "04c4f253e34c61cd90dece46f0516bdcd847aaa91b18707e0a71e7a35fad00f5"
+      }
+    }
+  ],
+  "obsolete": []
+}

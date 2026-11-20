@@ -1,0 +1,15 @@
+
+- **should-stay-inside-task-boundary**: Every task has a boundary. You SHOULD stay inside it.
+- **must-state-goal-in-one-sentence**: Before starting, the goal MUST be stated in one sentence.
+- **should-ask-before-assuming-broad-scope**: If the request is ambiguous or could be interpreted broadly, you SHOULD ask before assuming broad scope.
+- **should-confirm-repository-for-multi-repo-work**: For multi-repo work, you SHOULD confirm which repository before making changes.
+- **must-modify-only-what-was-requested**: During work, only what was requested MUST be modified.
+  - If asked to fix a bug, fix that bug — do not refactor surrounding code, add missing tests for unrelated functions, update documentation for other features, or "improve" adjacent components.
+- **must-note-but-not-fix-out-of-scope-issues**: If you discover issues outside the stated scope — broken imports, outdated comments, missing error handling — you SHOULD note them for the user but MUST NOT fix them.
+  - A note like "I noticed X is also broken, want me to fix that separately?" preserves the user's ability to prioritize.
+- **should-watch-for-scope-creep-signals**: You SHOULD watch for these signals that scope is expanding:
+  - Modifying files not directly related to the stated goal
+  - Adding functionality the user didn't ask for
+  - Refactoring code that works correctly but "could be better"
+  - Redesigning a component when asked to fix one behavior
+  - Touching more than the minimum files needed for the change

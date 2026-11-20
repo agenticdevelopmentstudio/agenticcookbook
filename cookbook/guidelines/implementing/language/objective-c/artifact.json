@@ -4,7 +4,7 @@
     "id": "7c8d5c06-af21-41f1-86db-ed5809c2d38d",
     "title": "Objective-C",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -38,31 +38,23 @@
       "https://developer.apple.com/documentation/swift/designating-nullability-in-objective-c-apis",
       "https://developer.apple.com/documentation/swift/improving-objective-c-api-declarations-for-swift"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "refactor",
       "platform-integration"
     ]
   },
-  "synced": "6bcccad370af4699",
+  "synced": "e2404dc08c4c0203",
   "parts": [
     {"part": "intro"},
-    {"part": "arc-ownership", "heading": "ARC ownership"},
-    {"part": "bridging-core-foundation", "heading": "Bridging Core Foundation"},
-    {"part": "nullability", "heading": "Nullability"},
-    {"part": "bridging-to-swift", "heading": "Bridging to Swift"},
-    {"part": "api-design", "heading": "API design"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "ownership", "heading": "Ownership"},
-    {"part": "retain-cycles", "heading": "Retain cycles"},
-    {"part": "core-foundation-bridging", "heading": "Core Foundation bridging"},
-    {"part": "nullability-2", "heading": "Nullability"},
-    {"part": "swift-import", "heading": "Swift import"},
-    {"part": "errors-and-naming", "heading": "Errors and naming"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why a review checklist", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

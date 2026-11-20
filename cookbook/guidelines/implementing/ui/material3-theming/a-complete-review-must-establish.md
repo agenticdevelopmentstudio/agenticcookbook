@@ -1,0 +1,19 @@
+
+- `must-consume-semantic-color-roles`: whether every component consumes semantic color roles rather than raw `Color(0xFF…)` literals or app-defined palettes
+- `must-provide-light-and-dark-schemes`: whether the theme provides both `lightColorScheme()` and `darkColorScheme()` and selects by `isSystemInDarkTheme()`
+- `should-generate-schemes-with-theme-builder`: whether schemes are generated with the Material Theme Builder rather than hand-authored role by role
+- `should-read-colors-via-color-scheme`: whether use sites read colors via `MaterialTheme.colorScheme.<role>`
+- `must-not-read-hard-coded-colors`: whether any hard-coded color is read where a role exists
+- `should-treat-dynamic-color-as-deliberate`: whether dynamic color is a deliberate opt-in where brand identity allows it, not a default
+- `should-guard-dynamic-color-api-level`: whether dynamic color is guarded by API level with a fallback to the branded scheme
+- `should-prefer-fixed-scheme-for-brand-fidelity`: whether a fixed branded scheme is used where brand color fidelity is a hard requirement
+- `should-use-m3-type-scale-roles`: whether text uses the M3 type scale roles via `MaterialTheme.typography.<role>`
+- `must-not-apply-ad-hoc-type`: whether any ad-hoc `fontSize`/`fontWeight` is applied where a scale role fits
+- `should-use-shape-scale`: whether shapes come from `MaterialTheme.shapes`
+- `should-take-corners-from-shape-scale`: whether component corner treatment comes from the shape scale
+- `must-support-dark-completely`: whether every screen is complete in dark, with no hard-coded light-only colors
+- `should-verify-contrast-when-overriding-roles`: whether every overridden role was checked against WCAG 2.1 AA
+- `should-pin-material3-dependency`: whether the material3 dependency is pinned, via the Compose BOM where possible
+- `must-not-blanket-adopt-expressive`: whether Expressive is blanket-adopted in production
+- `should-default-to-stable-m3-color-roles`: whether stable M3 color roles are the default
+- `should-adopt-expressive-only-behind-a-flag`: whether any Expressive use is behind a flag, on a pinned alpha, and justified by a concrete UX need

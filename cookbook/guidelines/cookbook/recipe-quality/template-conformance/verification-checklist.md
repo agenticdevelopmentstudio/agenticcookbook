@@ -17,4 +17,7 @@ A verifier MUST check each of the following items. The recipe PASSES template co
 - [ ] No required section is absent, even if content is `NEEDS REVIEW`.
 - [ ] `## Change History` is the final section.
 - [ ] No required sections are reordered or renamed.
-
+- [ ] `must-use-bcp-47-language`: `language` is a valid BCP 47 language tag.
+- [ ] `may-append-extra-sections-at-end`: Any additional section comes after the final required section.
+- [ ] `must-not-insert-sections-between-required`: No additional section is inserted between required sections.
+- [ ] `may-leave-change-history-empty-initially`: An empty `## Change History` body appears only at initial creation.

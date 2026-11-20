@@ -1,0 +1,31 @@
+
+- **should-start-with-value-types**: Code SHOULD start with a `struct` (or `enum`) and move to a `class` only when it needs a class feature.
+  - Apple's guidance is to choose structures by default.
+- **should-use-classes-only-for-class-features**: Code SHOULD use a class for identity (compare with `===`, one shared mutable instance such as a file handle, a connection or a hardware intermediary), for Objective-C interoperability, or for inheritance from a framework class you are expected to subclass.
+- **should-prefer-let**: Code SHOULD prefer `let` and immutable properties, and add `var` where mutation is the point.
+  - Value semantics keep a change local: a copy changed in one place is not visible elsewhere unless the code passes it back.
+- **should-share-behavior-with-protocols**: Code SHOULD share behavior across structures with protocols and protocol extensions, not with class inheritance.
+- **should-mark-classes-final**: Classes SHOULD be marked `final` unless a subclass is part of the design.
+- **must-model-absence-with-optional**: Code MUST model absence with `Optional`, not with sentinel values such as `-1`, `""` or `NSNotFound`.
+- **should-unwrap-safely**: Code SHOULD unwrap with `if let`, `guard let`, optional chaining or `??`.
+- **should-guard-for-early-exit**: Code SHOULD use `guard` for early exit so the main path is not indented.
+- **must-not-force-unwrap**: Code MUST NOT force-unwrap (`!`) or use `try!` or `as!` except where failure is a programmer error that should crash, and then SHOULD prefer `preconditionFailure` with a message.
+- **must-not-declare-implicitly-unwrapped-optionals**: New Swift code MUST NOT declare implicitly unwrapped optionals (`Type!`).
+- **should-keep-injected-values-private-and-documented**: The legitimate case is a value injected before first use, such as an outlet; it SHOULD stay `private` and the code SHOULD document the injection point.
+- **must-mark-throws-and-try**: A function that can fail MUST be marked `throws`, and each call site MUST be marked `try`.
+- **should-model-related-failures-as-an-enum**: Errors are values of a type that conforms to `Error`; related failures SHOULD be modeled as an `enum`.
+- **should-pick-catch-try-or-propagate**: Handle an error with `do`/`catch`, code SHOULD convert it to an optional with `try?` only when the reason does not matter, and let it propagate when the caller is better placed to decide.
+- **must-make-do-catch-exhaustive**: A `do`/`catch` MUST be exhaustive or sit in a throwing function.
+- **should-prefer-exhaustive-enum-catches**: A `catch` that matches every case of an enum by switch gets a compile error if a case is added later; code SHOULD prefer that to a catch-all that hides new cases.
+- **should-defer-cleanup**: Code SHOULD use `defer` for cleanup that must run on every exit, such as closing a file.
+  - Deferred blocks run in reverse order of appearance and cannot exit their scope.
+- **should-throw-plain-error**: Most functions SHOULD throw plain `Error`.
+- **should-limit-typed-throws**: Code SHOULD use typed throws (`throws(MyError)`) only where the error type is a stable, closed set: embedded code that avoids boxing, an error that is an internal detail of a library, or code that forwards the errors of a generic closure parameter.
+- **should-state-narrowest-access-level**: Code SHOULD state the narrowest level that works: `private` for the enclosing declaration and its same-file extensions, `fileprivate` for the file, `internal` for the module, `package` for the Swift package, `public` for use outside the module, and `open` only for classes designed for outside subclassing and overriding.
+  - The default is `internal`.
+- **must-not-expose-more-restricted-types**: A declaration MUST NOT expose a type with a more restrictive level than its own.
+- **must-mark-only-interface-members-public**: Code MUST mark each member that belongs to the interface and nothing else, because the public surface of a framework is an API you must keep.
+  - The members of a `public` type are `internal` unless marked.
+- **should-follow-strict-concurrency-guideline**: Isolation and `Sendable` SHOULD follow the strict-concurrency guideline ([adc.guideline.implementing.concurrency.swift6-strict-concurrency](cookbook:344b69da-c901-4650-b49d-c2df0234103b)).
+- **should-use-appkit-and-uikit**: The UI framework SHOULD be AppKit and UIKit, not SwiftUI ([adc.guideline.implementing.platform-integration.prefer-explicit-apple-apis](cookbook:095b33a1-2835-4ed5-bf01-f1e492148819)).
+- **should-pass-repository-lint-and-tests**: Lint and tests SHOULD pass under the repository's own configuration.

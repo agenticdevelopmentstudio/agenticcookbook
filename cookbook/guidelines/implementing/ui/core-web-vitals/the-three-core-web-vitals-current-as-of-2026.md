@@ -1,5 +1,5 @@
 
-INP (Interaction to Next Paint) **replaced** FID as the responsiveness Core Web Vital on **2024-03-12**. Agents MUST NOT reference FID as a current Core Web Vital.
+INP (Interaction to Next Paint) **replaced** FID as the responsiveness Core Web Vital on **2024-03-12**.
 
 | Metric | Measures | "Good" (p75 field) | "Needs improvement" | "Poor" |
 |--------|----------|--------------------|---------------------|--------|

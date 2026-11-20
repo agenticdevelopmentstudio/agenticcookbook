@@ -1,0 +1,49 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "> Security and isolation guidance here is engineering practice, not a compliance certification; validate against your own regulatory and threat-model requirements.",
+      "to": "should-validate-against-own-requirements",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The engineering-practice, not-a-compliance-certification caveat is kept, with validating against your own regulatory and threat-model requirements at SHOULD.",
+        "pin": "ba73e0da935734fdb335d872a3fcddbb328d7cbae54d73de4da3d57a00ff850d"
+      }
+    },
+    {
+      "sentence": "Set `requests.memory == limits.memory` for predictable, non-burstable memory.",
+      "to": "should-set-memory-request-equal-to-limit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting requests.memory equal to limits.memory for predictable, non-burstable memory is kept at SHOULD.",
+        "pin": "4120180b22528629b68da898886b7da6d5123af51dc79e62375c1b9f06697b23"
+      }
+    },
+    {
+      "sentence": "For CPU, **MAY** omit `limits.cpu` to avoid throttling latency-sensitive workloads, but always set `requests.cpu`.",
+      "to": [
+        "may-omit-cpu-limit",
+        "must-always-set-cpu-request"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MAY to omit limits.cpu for latency-sensitive workloads is kept with its reason, and always setting requests.cpu is kept, strengthened to MUST.",
+        "pin": "313da76a415ba6dc9b4a35e4fb9aef7d74a25a4bced2e203619f3a0cae59da81"
+      }
+    },
+    {
+      "sentence": "Set `minReadySeconds` so new pods prove healthy before old ones retire.",
+      "to": "should-set-min-ready-seconds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting minReadySeconds so new pods prove healthy before old ones retire is kept at SHOULD.",
+        "pin": "992c627fcfab19323a256916c614660faf781b206c91a1256c664a2580d57603"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -4,11 +4,11 @@
     "id": "abdcd282-5b81-4ab2-ab1e-3ed288a4aee5",
     "title": "Contract testing for services",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,22 @@
       "https://www.gravitee.io/blog/contract-testing-microservices-strategy",
       "https://www.sqaexperts.com/consumerdriven-contract-testing-with-pact-microservices-qa-guide-for-2026"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests",
       "api-integration"
     ]
   },
-  "synced": "1650c46ab9ed27a2",
+  "synced": "87e6cb0ce37f1783",
   "parts": [
     {"part": "intro"},
-    {"part": "when-to-use-which-style", "heading": "When to use which style"},
-    {"part": "requirements", "heading": "Requirements"},
-    {"part": "consumer-driven-flow-own-both-sides", "heading": "Consumer-driven flow (own-both-sides)"},
-    {"part": "keep-contracts-loose", "heading": "Keep contracts loose"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "consumer-driven-flow-own-both-sides", "heading": "Consumer-driven flow (own-both-sides)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

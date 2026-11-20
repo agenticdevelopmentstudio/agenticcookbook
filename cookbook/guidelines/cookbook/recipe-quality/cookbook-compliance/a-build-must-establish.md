@@ -1,0 +1,19 @@
+
+- `must-not-contradict-applicable-guidelines`: no behavioral requirement contradicts an applicable cookbook guideline
+- `must-be-at-least-as-strict-as-guideline-musts`: every requirement under a guideline's MUST is at least as strict, or carries a documented maintainer-approved exception
+- `must-satisfy-all-applicable-guidelines-together`: every applicable guideline is satisfied simultaneously
+- `should-cite-applicable-guidelines-in-frontmatter`: each directly applicable guideline is cited in `depends-on` or `references`, or the recipe says why not
+- `should-reference-guideline-inline`: each requirement derived from a guideline references it inline, or the recipe says why not
+- `must-not-copy-guideline-content-without-attribution`: no guideline content appears without attribution to its guideline
+- `must-include-security-section-when-security-relevant`: every security-relevant recipe has a dedicated security section or sub-section
+- `must-address-minimum-security-concerns`: the security requirements state what is sensitive, how it is stored or transmitted, and what happens on a violation
+- `must-specify-token-lifetimes-storage-revocation`: token lifetimes, storage mechanisms and revocation behavior are all specified
+- `must-not-defer-security-to-best-practices`: no security requirement defers to best practices without citing specific practices
+- `must-address-accessibility-in-ui-recipes`: every UI recipe addresses accessibility
+- `must-cover-core-accessibility-requirements`: UI requirements cover navigation, contrast, target sizes and control labels
+- `must-not-make-required-accessibility-optional`: no legally or platform-required accessibility is marked MAY
+- `should-reference-accessibility-guideline`: a UI recipe names its accessibility guideline in `depends-on`, or says why not
+- `must-specify-network-failure-retry-and-errors`: every networking recipe covers failure modes, retry with backoff, and user-facing errors
+- `must-not-make-routine-error-handling-should`: error handling is MUST wherever failure is a routine operating condition
+- `must-specify-durability-guarantees`: every persisting recipe states its durability guarantees
+- `must-specify-backup-and-conflict-resolution`: every recipe with user-generated content states its backup and conflict resolution

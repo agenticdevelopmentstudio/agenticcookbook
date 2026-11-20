@@ -1,0 +1,26 @@
+
+- `must-gate-adoption-on-baseline`: whether each adopted CSS feature was gated on its Baseline status
+- `may-use-widely-available-without-fallback`: whether only Widely available features are used without a fallback
+- `should-fallback-for-newly-available`: whether every Newly available feature has a documented fallback or progressive enhancement
+- `should-date-baseline-claims`: whether every Baseline claim is pinned to a date
+- `should-verify-baseline-status`: whether each feature's status was verified against MDN or the Baseline data
+- `should-reverify-cohort-statuses`: whether cohort statuses relied on were re-verified since 2026-06-09
+- `should-use-container-queries-for-components`: whether component responsiveness uses container queries keyed to the component's own size
+- `should-limit-viewport-media-queries-to-page-level`: whether viewport media queries are confined to page-level concerns
+- `should-use-subgrid-for-nested-alignment`: whether nested items align to ancestor grid tracks with subgrid
+- `should-fallback-subgrid-only-for-pre-cutoff`: whether any non-subgrid fallback exists only because pre-cutoff versions are targeted
+- `should-prefer-logical-properties`: whether logical properties are preferred over physical ones
+- `should-define-explicit-layer-order`: whether an explicit `@layer` order sets cascade precedence
+- `should-import-third-party-css-into-low-layer`: whether third-party CSS is imported into a low-priority layer
+- `should-use-has-for-conditional-styling`: whether conditional styling from descendant or sibling state uses `:has()` rather than JavaScript class toggling
+- `should-use-native-nesting`: whether related rules are co-located with native nesting
+- `should-not-nest-deeply`: whether any nesting is deep
+- `should-use-same-document-view-transitions`: whether SPA state and route animations use the same-document View Transitions API
+- `must-degrade-view-transitions-gracefully`: whether the DOM update still applies, unanimated, when View Transitions are unsupported
+- `should-feature-detect-view-transitions`: whether View Transitions are feature-detected with `document.startViewTransition`
+- `should-use-cross-document-transitions-only-as-enhancement`: whether cross-document View Transitions are only progressive enhancement
+- `must-not-make-navigation-depend-on-cross-document-transitions`: whether navigation depends on cross-document View Transitions
+- `should-respect-reduced-motion`: whether transitions are disabled or shortened under `prefers-reduced-motion: reduce`
+- `should-not-use-js-runtimes-native-css-covers`: whether a CSS-in-JS runtime or JS animation library is used where native CSS covers the need
+- `should-not-escalate-specificity`: whether specificity or `!important` is used to win the cascade
+- `should-not-gate-solely-on-caniuse`: whether any feature is gated on `caniuse` percentages alone

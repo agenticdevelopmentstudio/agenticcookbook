@@ -1,0 +1,79 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Specific tooling (paging vendors, ChatOps incident bots, AI-assisted triage and summarization) evolves quickly — treat any named product as an example, not a requirement.",
+      "to": "should-treat-named-tools-as-examples",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the example tooling list, the reason that it evolves quickly, and treating named products as examples, not requirements, at SHOULD.",
+        "pin": "1c514ea5a4af54729623ba572e9e147f28d66f6fc54c60d97abdfb48ffa80a76"
+      }
+    },
+    {
+      "sentence": "AI-assisted incident summarization and correlation are increasingly common as of 2026; treat their output as a draft for a human responder, not as the authority — keep a human IC accountable.",
+      "to": "should-treat-ai-output-as-draft",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the as-of-2026 observation, treating AI output as a draft for a human responder rather than the authority, and keeping a human IC accountable.",
+        "pin": "ce3e29272ebc1841bc96c830da95ca0665888381b9ed9f793180113df3db9efa"
+      }
+    },
+    {
+      "sentence": "Separate *coordinating* the response from *doing* the work so neither starves the other.",
+      "to": "should-separate-coordinating-from-doing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps separating coordinating from doing and the reason (so neither starves the other), at SHOULD.",
+        "pin": "bcd9c2a52e7af5bf9bb8307abcfd10c7f77f87b9b713b037dc62c8f480e543e6"
+      }
+    },
+    {
+      "sentence": "The roles below follow the established Incident Management At Google (IMAG) model; adapt names to your org but keep the separation.",
+      "to": "should-separate-coordinating-from-doing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps that the roles follow the IMAG model and the instruction to adapt names but keep the separation.",
+        "pin": "441f89c8f5d3d309ba23b8677eca064adf900147c98fc34c6629b937655c6d5e"
+      }
+    },
+    {
+      "sentence": "Classify severity at declaration to scale the response, and **MUST** re-evaluate as understanding changes.",
+      "to": [
+        "should-classify-severity-at-declaration",
+        "must-reevaluate-severity"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep classifying at declaration to scale the response (SHOULD for the unkeyed part) and the MUST to re-evaluate as understanding changes.",
+        "pin": "a6ddf02510804bc9ad0779f865c5f6c919405b502aa21779845f5fdc4e3b9289"
+      }
+    },
+    {
+      "sentence": "Use a small fixed ladder; exact thresholds are org-specific.",
+      "to": "should-use-small-fixed-ladder",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps a small fixed ladder at SHOULD and that exact thresholds are org-specific.",
+        "pin": "06601d506c0c70ca92eb8ad34e2f173691ad642660965048b20b790712c0d52e"
+      }
+    },
+    {
+      "sentence": "Tie thresholds to SLO error budgets where they exist (see related) rather than to gut feel.",
+      "to": "should-tie-thresholds-to-slos",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps tying thresholds to SLO error budgets where they exist, rather than gut feel, at SHOULD.",
+        "pin": "1752ae0cb14764e7c538d064da4fbb5d08e3c8b138482314d67f442a2fc3774f"
+      }
+    }
+  ],
+  "obsolete": []
+}

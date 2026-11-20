@@ -1,0 +1,13 @@
+
+- `must-read-varying-config-from-environment`: a deploy-varying value hardcoded in source instead of read from the environment or a runtime config service
+- `must-build-one-immutable-artifact`: a build that differs per environment, or a pipeline that rebuilds instead of promoting one image
+- `must-not-commit-secrets`: a credential committed to version control
+- `should-group-config-by-deploy`: checked-in `config/dev`, `config/staging` or `config/prod` buckets, or per-environment code paths
+- `must-fail-fast-on-missing-config`: a required variable read implicitly, not validated at startup, or a required secret silently defaulted
+- `should-keep-constants-in-code`: a constant that never varies between deploys pushed into environment config
+- `should-provide-env-example`: no committed `.env.example`, one holding real values, or a real `.env` that is tracked or baked into an image
+- `should-validate-config-once-at-boot`: code outside the config loader reading `process.env` or `os.environ` directly
+- `should-inject-secrets-at-runtime`: a secret baked into the build artifact
+- `should-start-with-environment-injection`: a heavyweight secrets platform adopted with no measured need
+- `should-treat-new-factor-revisions-as-forecasts`: an unpublished factor revision treated as settled guidance
+- `should-consult-counsel`: credential or personal-data handling decided without counsel on regulatory obligations

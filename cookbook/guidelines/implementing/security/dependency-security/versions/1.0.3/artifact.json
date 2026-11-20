@@ -1,0 +1,44 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "b712c766-af1f-4716-b8fb-34bf0bbb13eb",
+    "title": "Dependency Security",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Your dependencies are your attack surface. Manage them actively.",
+    "platforms": [
+      "python",
+      "typescript"
+    ],
+    "tags": [
+      "dependency-security",
+      "security"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://owasp.org/www-project-dependency-check/",
+      "https://slsa.dev/",
+      "https://www.sigstore.dev/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "dependency-management",
+      "security-review"
+    ]
+  },
+  "synced": "7bc781a0380e4747",
+  "parts": [
+    {"part": "intro"},
+    {"part": "agent-install-guardrails", "heading": "Agent install guardrails"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

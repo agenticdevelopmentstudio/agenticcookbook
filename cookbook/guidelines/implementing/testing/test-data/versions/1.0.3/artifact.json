@@ -1,0 +1,36 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "760b2e75-d0e4-4b20-a074-3342c2efe974",
+    "title": "Test Data",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "**Construct what you need, per test.** Large shared fixture files SHOULD be avoided.",
+    "platforms": [],
+    "tags": [
+      "test-data",
+      "testing"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests",
+      "data-modeling"
+    ]
+  },
+  "synced": "e16165da3061ba30",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

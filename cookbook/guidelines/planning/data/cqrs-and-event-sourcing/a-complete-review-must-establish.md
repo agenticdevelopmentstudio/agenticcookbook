@@ -1,0 +1,19 @@
+
+- `must-not-default-to-cqrs-or-event-sourcing`: whether CQRS or event sourcing was adopted by default rather than for a requirement
+- `must-justify-with-a-present-requirement`: whether the adoption rests on a concrete, present requirement and not a forecast
+- `should-default-to-a-single-model`: whether a single model (CRUD over one datastore) was the default, and any departure explained
+- `should-evaluate-an-audit-table-first`: whether, when history is the only driver, an audit/history table or change-data-capture log was evaluated first
+- `must-document-the-adoption-decision`: whether the choice is a documented decision recording the triggering requirement
+- `should-adopt-cqrs-only-on-its-triggers`: whether a CQRS trigger is concretely true
+- `should-adopt-event-sourcing-only-on-its-triggers`: whether an event-sourcing trigger is concretely true
+- `must-not-adopt-without-a-trigger`: whether anything was adopted with no trigger holding
+- `should-plan-for-each-cost-before-adopting`: whether each cost taken on was planned for before adopting
+- `must-tolerate-eventual-consistency`: whether the UI/API tolerates read-model lag
+- `must-rebuild-projections-without-downtime`: whether a documented, tested rebuild procedure exists and runs without downtime for large stores
+- `must-plan-event-versioning-before-the-first-event`: whether an upcasting/versioning plan existed before the first event shipped
+- `should-model-commands-and-events-as-named-versioned-types`: whether commands and events are named, versioned types
+- `must-not-overload-a-generic-update-event`: whether any generic "update" event is overloaded
+- `must-make-handlers-and-projectors-idempotent`: whether every command handler and projector is idempotent under redelivery
+- `should-keep-cqrs-without-event-sourcing-as-a-stopping-point`: whether CQRS without event sourcing was considered as the stopping point
+- `should-start-in-process-and-single-store`: whether separate read stores or message infrastructure are demanded by the triggering requirement
+- `should-define-the-consistency-contract-per-use-case`: whether each use case's consistency contract is defined and surfaced in the API

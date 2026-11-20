@@ -1,0 +1,23 @@
+
+- `should-give-every-pr-a-preview`: every PR gets a preview environment, or the pipeline says why it is not feasible
+- `must-provision-on-pr-event`: the provisioning job's trigger is the PR `opened`/`synchronize` event
+- `must-define-spin-up-in-iac`: the whole environment comes up from IaC alone
+- `must-own-namespaced-resources`: every service, datastore and DNS name of an environment carries its PR identifier
+- `must-not-collide-across-prs`: two concurrent PRs' environments share no resource
+- `must-tear-down-on-pr-close`: the teardown job's trigger is the PR `closed` event
+- `should-reap-orphans-by-ttl`: a scheduled reaper removes environments past their age/TTL, or the pipeline says why not
+- `must-not-outlive-pr`: no environment exists for a closed PR
+- `must-recreate-state-from-iac`: every environment's state rebuilds from IaC plus seed scripts, and none carries a manual hotfix
+- `should-keep-environments-cheap-and-short-lived`: environments use spot/preemptible compute, scale to zero and auto-shut down on a TTL, or the pipeline says why not
+- `must-remove-every-namespaced-resource`: after teardown, no compute, DB, bucket, DNS record or secret of the namespace remains
+- `should-seed-with-synthetic-fixtures`: every environment is seeded from synthetic or anonymized fixtures, or the pipeline says why not
+- `must-not-copy-production-pii`: no preview holds production PII
+- `should-default-to-fresh-provision`: the database is fresh-provisioned, or a measured spin-up bottleneck justifies branching
+- `should-include-real-backend`: the preview runs the PR's real backend, or the pipeline says why not
+- `should-run-e2e-against-live-url`: E2E/smoke and contract tests run against the live URL, or the pipeline says why not
+- `should-post-preview-link-and-results`: each PR carries a comment with the preview link and check results, or the pipeline says why not
+- `may-substitute-request-routing`: any request-routing / intercept substitute is recorded as a deliberate decision for a change too large for a full stack
+- `must-not-write-to-production`: preview credentials grant no write access to production data stores, queues or third-party prod accounts
+- `should-make-spin-up-and-teardown-idempotent`: re-running spin-up or teardown leaves no duplicate or orphaned resource, or the pipeline says why not
+- `should-verify-vendor-behavior`: each vendor guarantee relied on is checked against current vendor docs, or the pipeline says why not
+- `should-treat-vendor-claims-as-unverified`: no "instant branch" or per-PR-cost claim is relied on before it is measured in the pipeline, or the pipeline says why

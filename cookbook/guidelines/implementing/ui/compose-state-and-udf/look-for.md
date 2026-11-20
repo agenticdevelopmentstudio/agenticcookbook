@@ -1,0 +1,18 @@
+
+- `should-make-reusable-composables-stateless`: a reusable composable that owns its state instead of taking it via parameters and emitting changes via callbacks
+- `must-hoist-to-lowest-common-ancestor`: state hoisted above, or kept below, the lowest common ancestor that reads or writes it
+- `should-keep-screen-state-in-viewmodel`: screen-level or business state (repository data, navigation results, submission status) held in composition
+- `may-keep-ui-element-state-in-composition`: pure UI element state kept in `remember` that another component also needs
+- `should-use-remembersaveable-for-surviving-state`: state that should survive rotation or process death held in plain `remember`
+- `must-make-saveable-values-serializable`: a `rememberSaveable` value that is not `Bundle`-serializable and has no custom `Saver`
+- `must-not-rely-on-remember-across-config-changes`: code that expects a `remember` value to survive a configuration change
+- `must-expose-read-only-state`: a `ViewModel` exposing a `MutableStateFlow` or other mutable backing field
+- `should-keep-mutablestateflow-private`: a non-private `MutableStateFlow`, or exposed state that is not the immutable upcast
+- `must-not-mutate-hoisted-state`: a composable mutating hoisted state directly instead of calling an event callback
+- `should-collect-with-lifecycle`: `collectAsState()` on Android where `collectAsStateWithLifecycle()` fits
+- `should-confirm-lifecycle-compose-dependency`: `collectAsStateWithLifecycle()` used without the `lifecycle-runtime-compose` dependency declared
+- `should-model-screen-state-immutably`: screen state spread over mutable fields instead of one immutable `data class` or `sealed interface`
+- `should-pass-narrowest-parameters`: whole aggregate objects passed where a composable needs only a field
+- `should-prefer-stable-parameter-types`: composable parameters with `var` fields or plain `List` types
+- `should-mark-stability-only-when-contract-holds`: an `@Immutable` / `@Stable` annotation on a type whose contract does not hold
+- `should-treat-recomposition-as-performance-concern`: recomposition optimization done before the code works or without measurement by the recomposition tooling

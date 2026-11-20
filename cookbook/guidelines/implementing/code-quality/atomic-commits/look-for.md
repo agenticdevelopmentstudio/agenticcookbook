@@ -1,0 +1,14 @@
+
+- `should-make-one-logical-change-per-commit`: a commit whose message needs "and" to describe it, or that mixes a fix, a rename and a feature
+- `may-touch-multiple-files-for-one-concept`: files in one commit that share no concept (an interface with an unrelated module), as opposed to an interface and its implementation or a component and its test
+- `should-commit-as-work-progresses`: a branch whose work lands in one large commit at the end instead of commits made as it progressed
+- `should-not-batch-unrelated-changes`: unrelated changes bundled into one commit
+- `should-build-every-logical-change`: a commit that does not build when checked out on its own
+- `must-pass-build-and-tests-before-commit`: a commit at which the build fails or an existing test fails
+- `should-commit-each-passing-change`: a passing change left uncommitted while the next one starts, or a commit with a message that does not describe it
+- `must-not-stack-uncommitted-changes`: several logical changes landing together in one commit because they were stacked uncommitted
+- `should-fix-broken-build-before-moving-on`: a broken commit followed by more feature commits before the fix
+- `should-plan-small-prs-before-coding`: a pull request too large to review in one sitting, with no plan of slices behind it
+- `should-split-large-planned-units`: a large diff that could have been a sequence of smaller PRs
+- `should-scrutinize-agent-code-more`: agent-generated code given a lighter review than hand-written code
+- `should-decompose-large-agent-changes-before-review`: a large agent-produced change submitted for review as one block

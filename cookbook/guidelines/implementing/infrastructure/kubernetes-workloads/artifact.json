@@ -4,11 +4,11 @@
     "id": "6f6ccc46-33fb-44ad-8dce-d65581d8dfe0",
     "title": "Kubernetes workloads",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,22 +30,21 @@
       "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
       "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "configuration",
       "performance-optimization"
     ]
   },
-  "synced": "e648407d149f47d4",
+  "synced": "dd9a72d30c0e761e",
   "parts": [
     {"part": "intro"},
-    {"part": "adopt-only-when-the-need-is-measured", "heading": "Adopt only when the need is measured"},
-    {"part": "resources-requests-and-limits", "heading": "Resources: requests and limits"},
-    {"part": "health-probes", "heading": "Health probes"},
-    {"part": "rollout-and-availability", "heading": "Rollout and availability"},
-    {"part": "pod-security", "heading": "Pod security"},
-    {"part": "organization-and-scaling", "heading": "Organization and scaling"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "health-probes", "heading": "Health probes", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -4,11 +4,11 @@
     "id": "4428deb0-05a8-4b52-a78f-3dec1e7f90a4",
     "title": "MSIX Packaging",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-11-13",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -24,16 +24,20 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "platform-integration",
       "pre-pr"
     ]
   },
-  "synced": "7185ed75e0b03517",
+  "synced": "0c42e2438f245c4d",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

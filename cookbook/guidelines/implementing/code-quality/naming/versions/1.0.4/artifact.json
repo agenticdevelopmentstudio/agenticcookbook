@@ -1,0 +1,40 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "34486fb8-8a0b-4538-a40a-13124155cd56",
+    "title": "Naming",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use .NET's established casing conventions consistently: `PascalCase` for public symbols, `camelCase` for locals, and `_camelCase` for private fields.",
+    "platforms": [],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "csharp",
+      "language",
+      "naming"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "code-review",
+      "new-module"
+    ]
+  },
+  "synced": "e8fe49d668b36b2b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

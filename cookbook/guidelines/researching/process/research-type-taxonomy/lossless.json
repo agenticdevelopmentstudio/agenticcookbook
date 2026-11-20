@@ -1,0 +1,16 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Classify by keywords and intent.",
+      "to": "should-classify-by-keywords-and-intent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps classifying by keywords and intent; the unkeyed instruction is kept at SHOULD.",
+        "pin": "cd797e33e552e090425a924eac8ec4147388deebe0b92061d6e8743899c782c6"
+      }
+    }
+  ],
+  "obsolete": []
+}

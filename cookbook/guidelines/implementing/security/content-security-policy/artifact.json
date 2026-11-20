@@ -4,7 +4,7 @@
     "id": "6f4cfd55-cb09-4ede-a53c-feaeb5781127",
     "title": "Content Security Policy",
     "type": "guideline",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -30,17 +30,22 @@
       "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for",
       "https://web.dev/articles/strict-csp"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review",
       "ui-implementation"
     ]
   },
-  "synced": "ae2401fc34d80e83",
+  "synced": "612ed7ca062b70a7",
   "parts": [
     {"part": "intro"},
-    {"part": "trusted-types-and-dom-xss", "heading": "Trusted Types and DOM-XSS"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

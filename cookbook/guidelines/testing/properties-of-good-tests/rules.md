@@ -1,0 +1,13 @@
+
+- **must-be-isolated**: Tests are **Isolated** — tests MUST NOT share mutable state or depend on execution order.
+- **must-be-composable**: Tests are **Composable** — tests MUST be runnable in any subset and any order.
+- **must-be-deterministic**: Tests are **Deterministic** — tests MUST produce the same result every time, no flakiness.
+- **should-be-fast**: Tests SHOULD be **Fast** — milliseconds per unit test, seconds per integration test.
+- **should-be-writable**: Tests SHOULD be **Writable** — easy to author, low ceremony.
+- **should-be-readable**: Tests SHOULD be **Readable** — a failing test tells you what broke and why.
+- **should-be-behavioral**: Tests are **Behavioral** — tests SHOULD verify what the code does, not how it does it.
+- **should-be-structure-insensitive**: Tests are **Structure-insensitive** — refactoring internals SHOULD NOT break tests.
+- **should-be-automated**: Tests SHOULD be **Automated** — no manual steps, no human judgment needed.
+- **should-be-specific**: Tests SHOULD be **Specific** — a failure points to exactly one cause.
+- **should-be-predictive**: Tests SHOULD be **Predictive** — passing tests mean the code works in production.
+- **should-be-inspiring**: Tests SHOULD be **Inspiring** — confidence to refactor and ship.

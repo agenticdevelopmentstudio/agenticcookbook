@@ -1,0 +1,13 @@
+
+- `should-design-for-content-not-screen-size`: no layout assumes a fixed screen size, or the code says why
+- `should-adapt-from-compact-to-expanded`: every layout adapts from compact to expanded contexts, or the code says why not
+- `should-default-to-single-column`: every view is single-column unless content density justifies multiple columns and screen width supports them, or the code says why
+- `should-decide-content-before-layout`: each layout follows from the information the user needs, or the code says why not
+- `should-not-start-with-a-grid`: no layout is a grid filled after the fact, or the code says why
+- `should-keep-consistent-alignment`: each view aligns to one leading edge, or the code says why not
+- `must-use-adaptive-layout-system`: every breakpoint uses the platform's adaptive layout system (Size Classes, Window Size Classes, CSS media queries, VisualStateManager), with no hard-coded widths
+- `should-prefer-generous-whitespace-for-consumer-uis`: consumer UIs use generous whitespace, or the code says why not
+- `may-allow-denser-layouts-for-productivity-tools`: any denser layout is in a productivity or data-heavy tool
+- `must-not-sacrifice-readability-for-density`: no text loses readability to density
+- `should-keep-one-primary-scroll-direction`: every view has one primary scroll direction, or the code says why not
+- `should-avoid-nested-same-direction-scrolling`: no view nests same-direction scrolling, or the code says why

@@ -1,0 +1,39 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "These are distinct practices; do not conflate them.",
+      "to": "should-not-conflate-delivery-and-deployment",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule names both practices as distinct and keeps 'do not conflate' at SHOULD NOT.",
+        "pin": "992ac53c8c97873445386f936b2f28aa40beea4bdb586d1311edb5bdae80f18e"
+      }
+    },
+    {
+      "sentence": "Every commit to main **MUST** trigger the pipeline; a red pipeline **MUST** block release and **SHOULD** be treated as a stop-the-line event.",
+      "to": [
+        "must-trigger-pipeline-on-every-commit",
+        "must-block-release-on-red-pipeline"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep the MUST trigger on every commit to main, the MUST block on a red pipeline, and the SHOULD stop-the-line treatment.",
+        "pin": "0a37298bfd6a8653204ad7858ebc1afb3f49f819849705bd018a0408a8d43118"
+      }
+    },
+    {
+      "sentence": "Expect a temporary performance dip when adopting CD; plan for the recovery rather than abandoning the effort at the bottom of the curve. (Caveat: the J-curve is an observed pattern, not a guarantee; depth and duration vary by team.)",
+      "to": "should-plan-for-the-j-curve-dip",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps expecting the dip, planning for recovery rather than abandoning at the bottom, and the full caveat that the J-curve is an observed pattern varying by team.",
+        "pin": "8e61eaa5b4bddf2951920a173be8384d434c2404350bbb8d59e7a5cf4e2729cd"
+      }
+    }
+  ],
+  "obsolete": []
+}

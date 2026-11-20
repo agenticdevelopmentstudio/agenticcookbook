@@ -1,0 +1,136 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Every change MUST have tests.",
+      "to": "must-test-every-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unchanged at MUST, unscoped as in the original intro.",
+        "pin": "90df4131342b050dc4bbcbcffe859bafb4dc2890db5499c3974d5541984a59b9"
+      }
+    },
+    {
+      "sentence": "[xUnit](https://xunit.net/) with `[Fact]` for single tests and `[Theory]`/`[InlineData]` for parameterized tests.",
+      "to": "should-use-xunit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to C#, with [Fact] and [Theory]/[InlineData] usage.",
+        "pin": "52f33425bd6bee36938356c57115788eb533be32101ef2597ac6f480a2d01a3f"
+      }
+    },
+    {
+      "sentence": "[FluentAssertions](https://fluentassertions.com/) for readable assertions.",
+      "to": "should-use-fluentassertions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to C#, with the purpose (readable assertions).",
+        "pin": "29f2a0ad9c89dae5183d0548eb5b7a661dfb5d363cebfff18d8cfea149cfb7ad"
+      }
+    },
+    {
+      "sentence": "[NSubstitute](https://nsubstitute.github.io/) for mocking.",
+      "to": "should-use-nsubstitute-for-mocking",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to C#, with the purpose (mocking).",
+        "pin": "cedd6c4bc2452ba5d2dc5424afce8cad4500c4a77082f40108941f0a38bb0857"
+      }
+    },
+    {
+      "sentence": "Every change needs tests.",
+      "to": "must-test-every-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The per-platform 'needs tests' is kept as an unscoped MUST, which is broader and stronger.",
+        "pin": "beacaabfb1eb2cdd03e309b05e3f2b0c9a47ef7e8c2412ae05b3f828cdff86c1"
+      }
+    },
+    {
+      "sentence": "Every bug fix needs a regression test.",
+      "to": "must-add-a-regression-test-per-bug-fix",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Needs' is kept as a MUST: a regression test for every bug fix.",
+        "pin": "0ffa4502f42f47bb6999f4689290cb61a268d3c46ff20aaf73cc48eb3a2bef74"
+      }
+    },
+    {
+      "sentence": "UI tests are fragile — prefer testing component logic as unit tests.",
+      "to": "should-test-component-logic-as-unit-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason (UI tests are fragile).",
+        "pin": "825e7c0f41d7073d12a376eb6c8fba1b5df770d3d8a980534a306a5fb1e70509"
+      }
+    },
+    {
+      "sentence": "# Testing",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A bare section heading with no instruction; the intro still titles the guideline's testing subject ('Comprehensive unit testing'), so nothing is lost.",
+        "pin": "66352db47aa5619c940c0b371fd45515b0490f0b96890f428146d4164097bd65"
+      }
+    },
+    {
+      "sentence": "Test state transitions, edge cases, and serialization round-trips.",
+      "to": "should-test-transitions-edge-cases-and-round-trips",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three targets: state transitions, edge cases, serialization round-trips.",
+        "pin": "b41a18c12d7c430c9f2b435ea88d3d17e8ec925a36b800e3af3822e4bbf6a1af"
+      }
+    },
+    {
+      "sentence": "Use `pytest` for all tests.",
+      "to": "should-use-pytest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to Python, as in the python part: pytest for all tests.",
+        "pin": "70d27240d9c0dfea743d70dff24021c68992fed2026d30f7e074a229556f6865"
+      }
+    },
+    {
+      "sentence": "Use [Playwright](https://playwright.dev/) for end-to-end and visual regression testing.",
+      "to": "should-use-playwright-for-end-to-end-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to TypeScript: Playwright for end-to-end and visual regression testing.",
+        "pin": "db25410926c84b97ccbeb57768441db768c6edb75531b042a0667834b218949f"
+      }
+    },
+    {
+      "sentence": "Screenshot comparison for snapshot tests.",
+      "to": "should-use-screenshot-comparison-for-snapshot-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to TypeScript: screenshot comparison for snapshot tests.",
+        "pin": "8d8363c73f89930d51ac8fe34e9d42d4343288698b2280630a42aa99fc4e8ced"
+      }
+    },
+    {
+      "sentence": "Use Storybook for component catalog and visual tests where applicable.",
+      "to": "should-use-storybook-where-applicable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to TypeScript, with the 'where applicable' qualifier.",
+        "pin": "a9274ff875841b536dd758c977b9f18cbb5d7fbd6b13d0156ef98bab9000591f"
+      }
+    }
+  ],
+  "obsolete": []
+}

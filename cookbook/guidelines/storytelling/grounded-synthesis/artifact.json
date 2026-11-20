@@ -4,11 +4,11 @@
     "id": "0bfc8dc6-94ac-4bf4-8601-621ee9086487",
     "title": "Grounded Synthesis",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-06-29",
-    "modified": "2026-10-03",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -25,17 +25,19 @@
       "c3cf9193-b6a7-493b-a531-76aa601109da"
     ],
     "triggers": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-03",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "depends-on": [],
     "references": []
   },
   "names_hosts": "Lists Claude memories among the sources a narrator draws on.",
-  "synced": "1bf40d4f37f4acd8",
+  "synced": "e9383404bde4fdba",
   "parts": [
     {"part": "intro"},
-    {"part": "ground-every-claim", "heading": "Ground Every Claim"},
-    {"part": "the-dossier-is-the-lever", "heading": "The Dossier Is The Lever"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Attach the citation and the verbatim supporting quote at the moment the claim is made.",
+      "to": "should-attach-citation-when-claim-is-made",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD attaching the citation and verbatim supporting quote at the moment the claim is made.",
+        "pin": "41f4b8b25a9aaa5c7f54368e5190a34be5f16f20a574b233b795247e79670e9d"
+      }
+    },
+    {
+      "sentence": "Record what was searched and where the claim came from, not just the conclusion.",
+      "to": "should-record-search-and-origin",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD recording what was searched and where the claim came from, not just the conclusion.",
+        "pin": "a4b1b982fa457964b83bc2c44f8add3d246424dacce593ec13d21e9942c96285"
+      }
+    },
+    {
+      "sentence": "A claim whose provenance cannot be captured does not belong in the output.",
+      "to": "should-not-output-claims-without-provenance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps that a claim whose provenance cannot be captured does not belong in the output, at SHOULD NOT for the unkeyed original.",
+        "pin": "368909831440904a028b9603c2e3a9815383dcfc071f9aec7cfe42d48a29773a"
+      }
+    }
+  ],
+  "obsolete": []
+}

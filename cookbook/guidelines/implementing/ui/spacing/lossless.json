@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "All spacing,",
+      "to": "must-use-multiples-of-4",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The subject (all spacing, padding and margin values) is kept verbatim in the MUST rule.",
+        "pin": "f434a0fc0afedf80c71b88bd2754ac8f0d728b199cca6ac5c056a41444aafee2"
+      }
+    },
+    {
+      "sentence": "padding, and margin values MUST be multiples of 4.",
+      "to": "must-use-multiples-of-4",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'MUST be multiples of 4' is kept verbatim with all three value kinds.",
+        "pin": "0928a27efcc5d7778ce3d24897a86c01c14c8c5de82ff066f222561f54ddabb6"
+      }
+    },
+    {
+      "sentence": "If a value isn't on the scale, reconsider.",
+      "to": "should-reconsider-off-scale-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'reconsider' is kept at SHOULD with its off-scale condition.",
+        "pin": "d0c15c0b9e6c949f9be7c18b3a079d3c6492d9269c5f29c42a7c8a2264b6e946"
+      }
+    }
+  ],
+  "obsolete": []
+}

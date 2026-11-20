@@ -1,0 +1,20 @@
+
+- `must-enforce-guardrails-as-code`: every guardrail has a deterministic code check; none exists as a prompt instruction alone
+- `should-validate-and-moderate-model-input`: every path to the model runs input validation and moderation, or the code says why not
+- `off-band-input`: every model call is preceded by a screen for prompt injection, jailbreaks, off-topic requests and unsafe content
+- `untrusted-context`: tool, retrieval, file and other-user content enters the prompt only as labeled data, never in the instruction channel
+- `layered-defense`: input checks include deterministic rules and a moderation/classifier pass, and no prompt-level instruction is the only defense
+- `should-treat-model-output-as-untrusted`: no model output is used before it has passed checks, or the code says why
+- `deterministic-output-checks`: output schema validation, PII/secret detection and moderation run in code
+- `schema-conformance`: every structured output is validated against an explicit schema; a failing one is rejected or repaired, never forwarded
+- `no-leakage`: every output is scanned for PII, credentials and system-prompt leakage before it is returned or persisted
+- `should-constrain-agency-to-minimum`: the agent holds no tool or permission its task does not need, or the code says why
+- `allow-list-tools`: the agent can call only tools on an explicit allow-list, checked in code at the call boundary
+- `least-privilege`: every tool has its own narrowest scopes, credentials and data access; no shared admin token exists
+- `human-in-the-loop`: every payment, delete, external send and infra change waits for explicit human confirmation
+- `caps`: spending, rate and iteration caps are set on tool use
+- `kill-switch`: an operator-reachable kill switch halts the agent and revokes its tool access
+- `circuit-breakers`: a circuit breaker pauses the agent and alerts on repeated failures, guardrail trips or anomalous cost/rate, or the code says why not
+- `audit-trail`: inputs, tool calls, confirmations and guardrail decisions are logged, or the code says why not
+- `should-confirm-privacy-obligations-with-counsel`: privacy obligations the build relies on are confirmed with counsel, or the build says they are not
+- `should-start-with-in-process-checks`: guardrails are in-process deterministic checks, and any heavy control names the measured need behind it

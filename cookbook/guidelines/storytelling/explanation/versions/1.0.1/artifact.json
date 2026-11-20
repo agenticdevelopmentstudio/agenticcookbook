@@ -1,0 +1,38 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "14c5afdc-9c2d-444f-bffb-7514ca889481",
+    "title": "Explaining a Project",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Translate a project's architecture and capabilities into faithful prose for the reader — accurate to the code and docs, never aspirational.",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "narrative",
+      "explanation"
+    ],
+    "related": [
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "bb2af690801e9f6f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "architecture", "heading": "Architecture"},
+    {"part": "capabilities", "heading": "Capabilities"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

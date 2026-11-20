@@ -1,0 +1,19 @@
+
+- `should-cover-owned-integrations-with-consumer-driven-contracts`: integrations between services the team owns on both sides with consumer-driven contract tests, rather than only end-to-end tests
+- `should-use-schema-contracts-for-uncontrolled-apis`: clients of third-party or upstream APIs tested against the provider's published schema at a dated revision
+- `must-assert-contract-shape`: contracts that assert required fields, types and the key status/error codes
+- `must-not-assert-incidental-detail`: contracts that assert every field value or incidental detail
+- `should-match-presence-type-and-matchers`: exact literals that change per request where a presence, type or matcher check would do
+- `should-assert-only-branched-codes`: asserted status/error codes the consumer never inspects, or branched-on codes left unasserted
+- `should-loosen-over-strict-contracts`: contracts that would break on a backward-compatible provider change (a new optional field, a reordered list)
+- `must-verify-consumer-contracts-before-deploy`: a provider CI step that verifies outstanding consumer contracts before deploy
+- `should-gate-deploy-with-can-i-deploy`: a `can-i-deploy` (or equivalent) gate in the release path of a consumer-driven setup
+- `must-run-contract-tests-as-own-stage`: contract tests in their own CI stage, not mixed into the end-to-end stage
+- `must-version-and-tag-contracts`: published contracts carrying a version and an environment (or pacticipant version) tag
+- `must-record-pinned-schema-revision`: a recorded URL and version/date for every consumed third-party schema
+- `must-not-track-moving-latest`: a third-party schema fetched from a moving `latest` instead of a deliberate pin
+- `must-not-require-real-provider`: contract tests that need the real provider running instead of a generated stub or replayed interactions
+- `should-apply-practice-with-any-framework`: the contract practice present in the stack's own framework when Pact does not fit
+- `must-not-substitute-end-to-end-for-contract-tests`: boundaries covered only by end-to-end tests
+- `must-not-expect-third-party-contracts-to-gate-their-deploys`: a "contract" against an API neither side of which the team owns, treated as gating the provider's deploys
+- `should-not-duplicate-business-logic-in-contracts`: full business-logic assertions inside contracts

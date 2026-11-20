@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Score a claim by its evidence, not by how certain it sounds.",
+      "to": "should-score-claims-by-evidence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps scoring a claim by its evidence rather than by how certain it sounds, at SHOULD for an unkeyed instruction.",
+        "pin": "ada9315b61d06bba2b9ed8433125e5da9d4692d1e904fb16c53bf2b6f74c8479"
+      }
+    },
+    {
+      "sentence": "Words like \"proven\" or \"scientists confirm\" without a supporting citation lower trust, not raise it.",
+      "to": "should-lower-trust-for-uncited-certainty",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps that uncited certainty words such as \"proven\" or \"scientists confirm\" lower trust rather than raise it, at SHOULD, with the same examples and the no-citation condition.",
+        "pin": "10c0d31c12144ebb2c0c42ae5daf8377c95a3c3ce44d275ad77b60571b0d2929"
+      }
+    },
+    {
+      "sentence": "Surfacing a popular-but-unsupported claim and scoring it low is useful; presenting it as true is not.",
+      "to": [
+        "may-surface-unsupported-claims-scored-low",
+        "should-not-present-unsupported-claims-as-true"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MAY rule keeps that surfacing a popular-but-unsupported claim scored low is useful, and the SHOULD NOT rule keeps that presenting it as true is not.",
+        "pin": "4699d12514a023627a5859ad73adb4502eb1f0eed198a291761e96eba923604d"
+      }
+    },
+    {
+      "sentence": "Match stated confidence to the strength and independence of the sources.",
+      "to": "should-match-confidence-to-sources",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps matching stated confidence to both the strength and the independence of the sources, at SHOULD.",
+        "pin": "bc139ecef6af0d4becf406606183bbd32063f16a16ee477fb12996001fab97b9"
+      }
+    },
+    {
+      "sentence": "Urgency and emotional framing are signals to scrutinize harder, not to believe.",
+      "to": "should-scrutinize-urgency-and-emotion",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps treating urgency and emotional framing as signals to scrutinize harder, not to believe, at SHOULD.",
+        "pin": "e3b70cab3482bcc5084d2d8983c19db892670bbbf85beed13f8066df5f5948d2"
+      }
+    }
+  ],
+  "obsolete": []
+}

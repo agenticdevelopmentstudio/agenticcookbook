@@ -1,0 +1,11 @@
+
+- `must-deep-link-significant-views`: a significant feature point or view with no deep link, or one reached through a non-native mechanism
+- `spec-defines-deep-linking`: a spec with linkable views and no **Deep Linking** section
+- `web-view-should-have-shareable-url`: a web view reachable only through in-app state, with no URL of its own
+- `typescript-view-must-have-shareable-url`: a TypeScript view with no unique, shareable URL
+- `typescript-use-framework-routing`: hand-rolled URL parsing in TypeScript where the framework's router (React Router, Next.js routing) applies
+- `windows-declare-and-handle-protocol`: Windows deep links with no protocol handler in `Package.appxmanifest`, or activation handled outside the Windows App SDK lifecycle APIs
+- `windows-declare-protocol-in-manifest`: no `<uap:Protocol>` entry in the Windows manifest
+- `windows-handle-activation-in-onlaunched`: `App.OnLaunched` that does not read `AppInstance.GetActivatedEventArgs()`
+- `windows-parse-uri-and-navigate`: an activation URI that is ignored or not turned into a navigation to its page/state
+- `windows-single-instance-for-deep-links`: a deep link opening a second app instance with no `AppInstance.FindOrRegisterForKey()`

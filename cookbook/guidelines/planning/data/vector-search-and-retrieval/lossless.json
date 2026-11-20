@@ -1,0 +1,139 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Chunk documents before embedding; chunk size and overlap directly determine retrieval quality.",
+      "to": "should-chunk-before-embedding",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, including the reason that chunk size and overlap directly determine retrieval quality.",
+        "pin": "0571f36db227e8dccbdf8324d75b3e2e06198f03e2b71626cc491f394723403b"
+      }
+    },
+    {
+      "sentence": "There is no universal best size — start with a moderate window with small overlap and tune against a retrieval eval set.",
+      "to": "should-tune-the-chunk-window-against-an-eval-set",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: no universal best size, start with a moderate window and small overlap, tune against a retrieval eval set.",
+        "pin": "ccf6d75d3c9cc6be01f807e9e2776e6f2a5c75f33219497bc7af03417145e030"
+      }
+    },
+    {
+      "sentence": "Prefer chunking on semantic/structural boundaries (headings, paragraphs, code blocks) over fixed character counts where the source structure allows it.",
+      "to": "should-chunk-on-semantic-boundaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, with the structural-boundary examples and the 'where the source structure allows it' condition.",
+        "pin": "19ef1af872ff1d41dd8f6cba41744482a4ef9a93c23a5f48181144366a98e0cb"
+      }
+    },
+    {
+      "sentence": "Treat that migration as a reversible, scale-triggered decision, not a default.",
+      "to": "should-treat-the-vector-database-migration-as-reversible",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, with 'that migration' made explicit as the migration to a dedicated vector database: reversible, scale-triggered, not a default.",
+        "pin": "4cc92823654ee93a6bae6f12ebd9968c993357a0e499a21d919c27b7ad267ef1"
+      }
+    },
+    {
+      "sentence": "Use an **HNSW** index as the default.",
+      "to": "should-default-to-hnsw",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: HNSW is the default vector index.",
+        "pin": "be42e6f709c6dd27b72113ef88525f03639688f834e0a37ba1486a11bea78004"
+      }
+    },
+    {
+      "sentence": "It gives a better speed/recall tradeoff than IVFFlat and needs no training step; the cost is slower build time and higher memory. (Source: pgvector README, 2026.)",
+      "to": [
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: rationale under should-default-to-hnsw carries the speed/recall tradeoff over IVFFlat, no training step and the build-time/memory cost; references cites the pgvector README (2026) as its source.",
+        "pin": "dfb40f8b04e1c4a9697243edb50bd079fe9c820c35827cf7f0dce4bf4ea27693"
+      }
+    },
+    {
+      "sentence": "Raise `ef_search` to trade latency for recall.",
+      "to": "should-raise-ef-search-for-recall",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: raise `ef_search` to trade latency for recall; the default values it refers to stay in indexing.",
+        "pin": "0e0c910ae9be68cce601cbbcaec8880941ebbab494d28bb4bb2d078f29885d5e"
+      }
+    },
+    {
+      "sentence": "Verify current defaults against the pinned pgvector version before relying on them.",
+      "to": "should-verify-index-defaults-against-the-pinned-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: verify the current defaults against the pinned pgvector version before relying on them; the HNSW defaults it refers to stay in indexing.",
+        "pin": "5fe495d05ce3a599ecad23ca9560eecbb61d5c2f5b5e52af519dd4911828628f"
+      }
+    },
+    {
+      "sentence": "Pick the distance operator that matches how the embedding model was trained — cosine (`<=>`) for most normalized text embeddings, inner product (`<#>`) or L2 (`<->`) when the model specifies it.",
+      "to": "should-match-the-distance-operator-to-the-model",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with all three operators and when each applies.",
+        "pin": "f85c796d49741a86546f07afc91514012b47c6009665ea4684a7b93a176355ef"
+      }
+    },
+    {
+      "sentence": "**MUST** be consistent between indexing and querying.",
+      "to": "must-use-one-distance-operator-for-index-and-query",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST, with the subject (the distance operator) made explicit: consistent between indexing and querying.",
+        "pin": "d482a3ca040522d7de3c7825421b02fb17213252419f12b3cb06ef7f21b8875b"
+      }
+    },
+    {
+      "sentence": "Store filterable attributes (tenant, source, document type, timestamp, access scope) as ordinary columns alongside the vector, and filter on them in the same query.",
+      "to": "should-store-filterable-attributes-as-columns",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with the full list of filterable attributes and the same-query filter.",
+        "pin": "5c3d263b8cd462892701e78fa0c1830cc1bd80ddf23b243f48fb4323b956c29f"
+      }
+    },
+    {
+      "sentence": "Teams **SHOULD** use **hybrid retrieval**:",
+      "to": "should-use-hybrid-retrieval",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and expanded to name the four steps (dense, lexical, fusion, optional rerank), which stay listed in prefer-hybrid-retrieval-over-pure-ann; the pure-ANN reason is kept in rationale.",
+        "pin": "aef97d59caf986156bff0f3447a64db452b576a220bcede067c80f6a1f00a130"
+      }
+    },
+    {
+      "sentence": "The dense-vs-lexical balance is workload-dependent and contested — treat fusion weights and whether to rerank as things to measure on your own eval set, not as fixed constants.",
+      "to": "should-measure-fusion-weights-and-reranking",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: the dense-vs-lexical balance is workload-dependent and contested, fusion weights and reranking are measured on your own eval set, not fixed constants.",
+        "pin": "e743f89cbb3295a1139f26338da0b7817932dc1711e8f3056759be30c9700376"
+      }
+    }
+  ],
+  "obsolete": []
+}

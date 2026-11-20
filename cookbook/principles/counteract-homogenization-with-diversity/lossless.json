@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Always ask \"what would be the most *surprising* version of this?\" to reach the low-probability",
+      "to": "must-ask-for-most-surprising-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-ask-for-most-surprising-version keeps 'always ask' as MUST with the exact question.",
+        "pin": "460e5655b3e622d3451ccbe6ec63cd07cdb045a9da4091d4cd8e6af992418182"
+      }
+    },
+    {
+      "sentence": "tail of the idea distribution rather than the statistical center",
+      "to": "must-ask-for-most-surprising-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-ask-for-most-surprising-version keeps the purpose: reaching the low-probability tail of the idea distribution rather than the statistical center.",
+        "pin": "f7e749094efb7eb7f7dcc9390f3943c14d7e7a1f64679fef7bf5f673321bf8e9"
+      }
+    },
+    {
+      "sentence": "Prefer genuine multi-model diversity (different providers, different training data) over",
+      "to": "should-prefer-multi-model-diversity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-multi-model-diversity keeps the preference for genuine multi-model diversity (different providers, different training data) at SHOULD.",
+        "pin": "9cb5225642e1b2e4dedd961aa20ee82b61dcc9b14190dee996ca35ffbd8e6e38"
+      }
+    },
+    {
+      "sentence": "multi-prompt diversity within one model where feasible",
+      "to": "should-prefer-multi-model-diversity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-multi-model-diversity keeps what it is preferred over (multi-prompt diversity within one model) and the 'where feasible' condition.",
+        "pin": "68d17ea8f06ac88c330c9693163e487567bb82e2618fb80a562f7ec7eb47b1b0"
+      }
+    }
+  ],
+  "obsolete": []
+}

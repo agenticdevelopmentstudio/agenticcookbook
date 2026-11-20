@@ -1,0 +1,19 @@
+
+- `should-cover-owned-integrations-with-consumer-driven-contracts`: every service-to-service integration whose both sides the team owns is covered by consumer-driven contract tests, or the code says why not
+- `should-use-schema-contracts-for-uncontrolled-apis`: every consumed API the team does not control is tested against its pinned published schema, or the code says why not
+- `must-assert-contract-shape`: every contract asserts required fields, types and key status/error codes
+- `must-not-assert-incidental-detail`: no contract asserts every field value or incidental detail
+- `should-match-presence-type-and-matchers`: no contract matches an exact per-request literal where presence, type or a matcher fits, or the code says why
+- `should-assert-only-branched-codes`: each contract asserts the status/error codes its consumer branches on and no others, or the code says why
+- `should-loosen-over-strict-contracts`: no contract breaks on a backward-compatible provider change, or the code says why it must
+- `must-verify-consumer-contracts-before-deploy`: every provider verifies its outstanding consumer contracts in CI before deploy
+- `should-gate-deploy-with-can-i-deploy`: every consumer-driven setup gates deployment on a `can-i-deploy` check, or the code says why not
+- `must-run-contract-tests-as-own-stage`: contract tests run as a CI stage of their own, separate from end-to-end tests
+- `must-version-and-tag-contracts`: every contract is versioned and tagged with its deployment environment or pacticipant version
+- `must-record-pinned-schema-revision`: every consumed third-party API has its pinned schema revision recorded as URL plus version/date
+- `must-not-track-moving-latest`: no consumer tracks a moving `latest` schema; every new revision is re-pinned deliberately
+- `must-not-require-real-provider`: no contract test needs the real provider running
+- `should-apply-practice-with-any-framework`: the consumer-driven practice is applied with whatever framework the stack uses, or the code says why not
+- `must-not-substitute-end-to-end-for-contract-tests`: no boundary relies on end-to-end tests in place of contract tests
+- `must-not-expect-third-party-contracts-to-gate-their-deploys`: no test against an API the team owns neither side of is treated as gating that provider's deploys
+- `should-not-duplicate-business-logic-in-contracts`: no contract duplicates full business-logic assertions, or the code says why

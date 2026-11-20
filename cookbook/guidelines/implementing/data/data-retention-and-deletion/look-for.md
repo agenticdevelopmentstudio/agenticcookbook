@@ -1,0 +1,23 @@
+
+- `should-confirm-retention-periods-with-counsel`: a concrete retention period set with no sign it was confirmed with counsel
+- `should-maintain-retention-schedule`: data categories with no retention schedule in code or config mapping each to a period and a disposition
+- `must-define-retention-period`: a data category with no defined retention period
+- `must-justify-missing-retention-period`: a category kept indefinitely with no stated justification
+- `should-automate-expiry`: a category cleaned up by hand instead of a scheduled job, TTL index or partition-drop
+- `should-record-retention-timestamps`: a retained record with no `created_at` (or `expires_at` where relevant)
+- `should-cascade-deletions`: a deletion that leaves copies in replicas, caches, search indexes, warehouses, queues or object storage
+- `should-maintain-copy-inventory`: no version-controlled inventory of where each category is copied
+- `should-prefer-event-driven-cascade`: a monolithic delete that must know every downstream store
+- `should-make-cascade-idempotent`: a cascade step that cannot be safely retried
+- `must-make-failed-cascade-resumable`: a cascade whose partial failure is neither detected nor resumable
+- `must-not-count-soft-delete-as-erasure`: a privacy erasure request satisfied by a soft-delete flag
+- `must-make-anonymization-irreversible`: anonymized data with a re-identification key kept
+- `should-decide-delete-mode-per-category`: one soft-or-hard delete choice applied to every category
+- `must-resolve-erasure-to-hard-delete-or-anonymization`: an erasure that leaves identifiable data in the source or a derived store
+- `should-exclude-backups-and-document-lag`: backups cascaded into immediately, or a backup lag left undocumented
+- `should-publish-backup-purge-policy`: no published backup retention/purge policy bounding the erasure lag
+- `should-suppress-erased-data-immediately`: erased data still served by active systems after the request
+- `must-not-restore-without-reapplying-deletions`: a restore path from backup that does not re-apply pending deletions
+- `should-audit-every-deletion`: a deletion not logged to a tamper-evident, separately retained audit trail
+- `should-reconcile-expiry-periodically`: no periodic scan for records past `expires_at` that were not purged, or no alert on one
+- `should-treat-reconciliation-miss-as-defect`: a reconciliation miss logged and ignored instead of treated as a defect

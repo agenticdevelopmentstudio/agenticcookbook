@@ -1,0 +1,276 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Do not restate the line below it.",
+      "to": "should-not-restate-the-line",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A comment not restating the line below it is kept at SHOULD NOT with the increment-counter example and its reason (noise, a second thing to keep in sync).",
+        "pin": "36330bd6d60037bf99bf22023f2fb6a2a616d5ba5a2df566720994737b1153ce"
+      }
+    },
+    {
+      "sentence": "If a comment is needed to explain what a block does, first try a clearer name or a smaller function.",
+      "to": "should-try-a-clearer-name-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Trying a clearer name or a smaller function first, before a what-comment, is kept at SHOULD, with 'comment what is left'.",
+        "pin": "52ad8a39acec3857a0acc00636110520e9eb79aca37ee4565a99fc35a3240218"
+      }
+    },
+    {
+      "sentence": "Name the source of a surprising value: the spec section, the ticket, the measurement.",
+      "to": "should-name-the-source-of-surprising-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Naming the source of a surprising value is kept at SHOULD with all three example sources.",
+        "pin": "5144bf02ed7c6379cd52d4dbef5afe07c82665467f817c9c53ca7931652878fd"
+      }
+    },
+    {
+      "sentence": "These are the habits that make prose read as written by a person who knows the subject, distilled from the humanize skill's review rules.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The framing that these are the habits of prose written by a person who knows the subject, distilled from the humanize skill's review rules, is kept in rationale and scoped to the plain-language rules.",
+        "pin": "85e89c8f89fc64272799cf004c54c633561c16e8b70fa42e997bac9f4605971e"
+      }
+    },
+    {
+      "sentence": "**Specifics over abstractions.** Name the thing, the number, the file.",
+      "to": "should-prefer-specifics",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Specifics over abstractions (name the thing, the number, the file) is kept at SHOULD.",
+        "pin": "63a2c07f2d2608ca17424446c69889abc10e3cf259e2dabf44ebb49d826fbd70"
+      }
+    },
+    {
+      "sentence": "Never make up a statistic, source or quote.",
+      "to": "must-not-make-up-sources",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never making up a statistic, source or quote is kept, strengthened to MUST NOT.",
+        "pin": "21f73e8ccbfc77fcbc7ce665ca83f2ac03cb578b5d95e6d78e145e919608b60f"
+      }
+    },
+    {
+      "sentence": "**Cut throat-clearing.** Do not open by restating the title or announcing what you are about to say, and do not close by summarizing what you just said.",
+      "to": "should-cut-throat-clearing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No throat-clearing at the open or summarizing at the close is kept at SHOULD NOT, with both halves.",
+        "pin": "0cba80334254e8d3266d6e09c8bfd695dce60571aad8dff2b1fee42e91fc9715"
+      }
+    },
+    {
+      "sentence": "**Short ordinary words.** Prefer \"use\" to \"utilize\" and \"show\" to \"demonstrate\".",
+      "to": "should-use-short-ordinary-words",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring short ordinary words, with both examples, is kept at SHOULD.",
+        "pin": "abe87f5aedd7f04570f7e5b1b112cae6a3750ccef5c016c1a72bea23be2e4d03"
+      }
+    },
+    {
+      "sentence": "**Do not swap synonyms to disguise a tic.** If a word is vague, rewrite the clause so it is not needed.",
+      "to": "should-not-swap-synonyms-to-disguise-a-tic",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not swapping synonyms to disguise a tic, and rewriting the clause instead, is kept at SHOULD NOT.",
+        "pin": "42fea2453e9ee783c49e3455715d212d3d1717b4c87828826c60ee3b161b8461"
+      }
+    },
+    {
+      "sentence": "**Verbs over nominalizations.** Write \"we decide\" rather than \"we make a decision\".",
+      "to": "should-prefer-verbs-over-nominalizations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Verbs over nominalizations, with the example, is kept at SHOULD.",
+        "pin": "641df5936d548af990e85c23710d4d5e72307a31f6c7e6927c1c352cfb0848ba"
+      }
+    },
+    {
+      "sentence": "**Active voice by default.** Passive is fine when the actor does not matter.",
+      "to": "should-use-active-voice-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Active voice by default is kept at SHOULD, with the exception for when the actor does not matter.",
+        "pin": "08ab42a4f47effac16a767f89cc38eadc6d848f9e6ae5c7e79698e765cd31183"
+      }
+    },
+    {
+      "sentence": "**Hedge only real uncertainty**, and say what is uncertain.",
+      "to": "should-hedge-only-real-uncertainty",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Hedging only real uncertainty and saying what is uncertain is kept at SHOULD.",
+        "pin": "7df703dfb9fd126e22fb2a695a99334d147ac67495598ee41571be491702485c"
+      }
+    },
+    {
+      "sentence": "**Vary rhythm because the content calls for it**, not to hit a quota.",
+      "to": "should-vary-rhythm-by-content",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Varying rhythm because the content calls for it, not to hit a quota, is kept at SHOULD.",
+        "pin": "01abcb5332485e8d19aaa11f76034efe6280553160d4aca7e45a6c4ab105461b"
+      }
+    },
+    {
+      "sentence": "**Punctuation does a job.** Use a comma, colon, parentheses or a new sentence rather than a dash.",
+      "to": "should-make-punctuation-do-a-job",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using a comma, colon, parentheses or a new sentence rather than a dash is kept at SHOULD.",
+        "pin": "e98cd7e093b5efff5ca127bbb2d068e150b3714752947a7912b6c0bdc7331148"
+      }
+    },
+    {
+      "sentence": "**Keep one tense and one register** through a passage.",
+      "to": "should-keep-one-tense-and-register",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping one tense and one register through a passage is kept at SHOULD.",
+        "pin": "8d2a204af22ba481c221ea208b0ec483877454bc018584ee0b50d83d38194258"
+      }
+    },
+    {
+      "sentence": "**State the premise** behind a claim, or weaken the claim to what you can support.",
+      "to": "should-state-the-premise",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Stating the premise behind a claim, or weakening it to what can be supported, is kept at SHOULD.",
+        "pin": "87b2fbf54e58117a75e2e7fba0f1d58676272aad82ebfec5d8aab2753e60e4f1"
+      }
+    },
+    {
+      "sentence": "**Visible characters only.** Never paste look-alike or invisible Unicode characters into text.",
+      "to": "must-use-visible-characters-only",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never pasting look-alike or invisible Unicode characters is kept, at MUST NOT.",
+        "pin": "6426ac10eec90f255ac04483fa0aa29052911283e1397dc58b76a6751278eb17"
+      }
+    },
+    {
+      "sentence": "Where the host has the humanize skill, run it over prose you wrote and review its findings.",
+      "to": "should-run-humanize-where-available",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Running the humanize skill over your prose where the host has it, and reviewing its findings, is kept at SHOULD with its condition and the by-hand fallback.",
+        "pin": "7f03c9293e1f50690afa4ace25a1e1b96117a94ecac95c08ea6142bbde165623"
+      }
+    },
+    {
+      "sentence": "When a change alters behavior, update the comments, docstrings, README sections and instruction files that describe it in that same change.",
+      "to": "should-update-docs-in-the-same-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Updating the comments, docstrings, README sections and instruction files that describe changed behavior in the same change is kept at SHOULD, with all four doc kinds.",
+        "pin": "e71ed4df98943c9fa133a20a419fc8994c78625673222cc94c6556071760a107"
+      }
+    },
+    {
+      "sentence": "Search the docs for the names you changed, as you would search code.",
+      "to": "should-search-docs-for-changed-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Searching the docs for changed names as you would search code is kept at SHOULD.",
+        "pin": "190bb6ae679a444cc9ea48d7798970da03326b6512a582c392f3de42c4dc7841"
+      }
+    },
+    {
+      "sentence": "New public behavior needs a description where users will look for it.",
+      "to": "should-describe-new-public-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "New public behavior getting a description where users will look is kept at SHOULD.",
+        "pin": "a7729eb09c2a81334f9c7ecbc5f8df12938a3870ad6602ae7b047e99edac4e67"
+      }
+    },
+    {
+      "sentence": "Removed behavior needs its description removed (see `docs-match-code`).",
+      "to": "should-remove-docs-of-removed-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Removing the description of removed behavior is kept at SHOULD with the docs-match-code reference.",
+        "pin": "3ea8cb856c3dfe6b7e86cebfc2be5a8e8c8b5462aa6b25723c40f214f2cd14b1"
+      }
+    },
+    {
+      "sentence": "Both readers need the same things: exact names they can search for, the real command to run, the real path, and a statement of when a rule applies.",
+      "to": "should-give-both-readers-exact-specifics",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps, at SHOULD, that both readers (named as the AI agent and the human, as the old heading did) need the same things: exact searchable names, the real command, the real path, and when a rule applies.",
+        "pin": "fa87e5fa429f9912f02ec855b7950b0d66d8041b840e4ad093b3fc4f6ab8bb83"
+      }
+    },
+    {
+      "sentence": "Lead with the point.",
+      "to": "should-lead-with-the-point",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Leading with the point is kept at SHOULD, with its reason (an agent loads partially, a person skims).",
+        "pin": "75944f97ea5e1248ce0fd5badcaae31af8c060a0a993571154458a88dfeb2a59"
+      }
+    },
+    {
+      "sentence": "Prefer concrete examples with real values over abstract descriptions.",
+      "to": "should-prefer-concrete-examples",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring concrete examples with real values over abstract descriptions is kept at SHOULD.",
+        "pin": "9d632e201d76b77c35474103cf1c9ba3884f1fe0c9c330047036452c4d7585af"
+      }
+    },
+    {
+      "sentence": "Keep one canonical term for each concept, and use it everywhere.",
+      "to": "should-keep-one-canonical-term",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One canonical term per concept, used everywhere, is kept at SHOULD with its reason.",
+        "pin": "8b178d87e31c2606daff9ee6526beee62dd8e15d4d90dedfa3ca936a317784f7"
+      }
+    },
+    {
+      "sentence": "Say what is true now.",
+      "to": "should-say-what-is-true-now",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Saying what is true now is kept at SHOULD, with leaving out narration of how it got that way.",
+        "pin": "95ff245ee54be5fb3bb93ddf6af640bfd82776e72b946272ced0ecf01722caca"
+      }
+    }
+  ],
+  "obsolete": []
+}

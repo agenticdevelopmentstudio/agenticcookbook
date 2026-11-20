@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Defer to the platform",
+      "to": "should-defer-to-platform-hig-minimum",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Defer to the platform' is kept at SHOULD.",
+        "pin": "a688f60a3c4309201b8c03ac3ca2308cde60d85fc2e87fa3b770bdf30a902f17"
+      }
+    },
+    {
+      "sentence": "HIG first — each prescribes its own minimum:",
+      "to": "should-defer-to-platform-hig-minimum",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'HIG first' and 'each prescribes its own minimum' are kept in the rule; the table the colon introduced is kept in the platform-minimums part and cited from the rule.",
+        "pin": "07bd87eca69b44bae0d0bf3e985232793c5784114bb9ef98f7ce7eb1af85674b"
+      }
+    },
+    {
+      "sentence": "**Cross-platform default: 44x44** when no platform HIG applies.",
+      "to": "should-default-to-44x44",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 44x44 cross-platform default is kept verbatim with its 'no platform HIG applies' condition, made explicit at SHOULD.",
+        "pin": "4fdaef01a03af22d178553249af1d8e17d1f3e5a0b0b1cc1faab59414512d9d0"
+      }
+    },
+    {
+      "sentence": "The visual element (icon, text) can be smaller than the touch target — pad the hit area",
+      "to": "should-pad-hit-area-beyond-visual",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The visual element may be smaller than the target (kept as MAY), and the unkeyed 'pad the hit area' is kept at SHOULD.",
+        "pin": "c8a7fa87a2ac82c678f261b3d9dd6e3a4ce1b6b23d53249ba171b770416a5f5c"
+      }
+    },
+    {
+      "sentence": "There MUST be minimum **8px spacing** between adjacent targets to prevent mis-taps",
+      "to": "must-space-adjacent-targets-8px",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST with the 8px minimum and its reason (prevent mis-taps).",
+        "pin": "cbbe89370f3b7d823faffc51b946c997d2c60f3c7dad81177872fa723e97c3f2"
+      }
+    },
+    {
+      "sentence": "Inline text links in paragraphs are exempt from size minimums but should have sufficient",
+      "to": "should-give-inline-links-line-height",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The inline-link exemption is kept verbatim, and the lowercase 'should' is kept at SHOULD.",
+        "pin": "ba76d8abcc154cfd799658b3bfa72283c5bb22433bf0b123a81c0a040905814a"
+      }
+    },
+    {
+      "sentence": "line height for comfortable tapping",
+      "to": "should-give-inline-links-line-height",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'line height for comfortable tapping' is kept verbatim.",
+        "pin": "6e19f819fa8ecc2473355a3c8ac979f2fff58096e7984421260e38266f6a6717"
+      }
+    }
+  ],
+  "obsolete": []
+}

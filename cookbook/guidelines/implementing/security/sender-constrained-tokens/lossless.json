@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "It does not replace short token lifetimes, refresh-token rotation, audience restriction, or PKCE — combine them.",
+      "to": "should-combine-with-other-token-controls",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That sender-constraining does not replace short lifetimes, refresh rotation, audience restriction or PKCE is kept, with combining them at SHOULD.",
+        "pin": "18fe468a6c010dd1547c00204a85c89483c7630df45d5ed588285b72a81c7b04"
+      }
+    },
+    {
+      "sentence": "Pick **one** mechanism per API surface and apply it consistently; do not mix bearer and constrained acceptance on the same endpoint without an explicit migration plan.",
+      "to": "should-pick-one-mechanism-per-surface",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One mechanism per API surface applied consistently, and no mixed bearer/constrained acceptance on an endpoint without an explicit migration plan, are kept at SHOULD.",
+        "pin": "ff1f17e77f0a3ce67c33fc5d91bd4cb046bbcfe5ba10b9bae82daa8639470b8f"
+      }
+    },
+    {
+      "sentence": "Present the choice as a deliberate trade-off: DPoP needs no PKI but adds per-request signing; mTLS reuses transport identity but needs certificate provisioning and TLS termination you control.",
+      "to": "should-present-mechanism-choice-as-trade-off",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Presenting the choice as a deliberate trade-off, with both the DPoP and mTLS costs and benefits, is kept at SHOULD.",
+        "pin": "0a9520fc60e87320f548b1e14e7401db54deb2ada87b88a79e63c68204ed2119"
+      }
+    }
+  ],
+  "obsolete": []
+}

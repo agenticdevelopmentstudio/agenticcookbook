@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Views SHOULD use `d:DataContext` and `d:DesignInstance` for XAML designer preview data",
+      "to": "should-use-design-time-data-context",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: views use d:DataContext and d:DesignInstance as the XAML designer's preview data.",
+        "pin": "0900e36c95fb9c39a0ce68f6059e0baf70b518d98b9c30ef977b2bd806969506"
+      }
+    },
+    {
+      "sentence": "XAML Hot Reload SHOULD be used for live iteration during development",
+      "to": "should-use-xaml-hot-reload",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: XAML Hot Reload for live iteration during development.",
+        "pin": "1b6391705f100dd9c247563584ac71df8ccbea462fd106724d67348279d33ad3"
+      }
+    },
+    {
+      "sentence": "Views SHOULD use `d:DataContext` and `d:DesignInstance` so the designer renders realistic content, not empty surfaces",
+      "to": "should-use-design-time-data-context",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the realistic-content-not-empty-surfaces reason.",
+        "pin": "5e9bbfa62f91417b47fb7dddea70078ddcb9e79726d800dde3470e6580040d74"
+      }
+    },
+    {
+      "sentence": "Verify all significant view states are previewable: default, empty, error, loading, populated",
+      "to": "should-preview-all-significant-states",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed verification is kept at SHOULD with all five view states.",
+        "pin": "dedf088551285e0f3af1eebbee0413a425b5d60dd8e8f965486b50b3b258a7dd"
+      }
+    },
+    {
+      "sentence": "Use XAML Hot Reload for rapid visual iteration during testing",
+      "to": "should-use-xaml-hot-reload",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD: XAML Hot Reload for rapid visual iteration during testing.",
+        "pin": "394b3433319e187fcec1459c9bd4f3d1b98351b296283102baf96930d8336d2d"
+      }
+    }
+  ],
+  "obsolete": []
+}

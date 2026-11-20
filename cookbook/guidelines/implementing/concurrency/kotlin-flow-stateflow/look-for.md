@@ -1,0 +1,16 @@
+
+- `must-expose-read-only-stateflow`: a ViewModel exposing a public `MutableStateFlow` instead of a read-only `StateFlow` (or `SharedFlow` for one-shot events)
+- `should-back-with-private-mutablestateflow`: exposed state not backed by a private `MutableStateFlow` exposed through `.asStateFlow()`
+- `should-convert-cold-upstream-with-statein`: a cold upstream (Room, DataStore, repository flow) collected by hand into a `MutableStateFlow` instead of converted with `stateIn`
+- `should-start-while-subscribed-5000`: a `stateIn` whose `started` policy is not `SharingStarted.WhileSubscribed(5_000)`
+- `must-use-renderable-initial-value`: an `initialValue` that is not a real renderable state (`null`, or a value the UI cannot draw)
+- `should-use-lazily-only-when-restart-cost-unacceptable`: `SharingStarted.Lazily` with no unacceptable restart cost behind it
+- `must-collect-lifecycle-aware`: a flow collected in UI code without lifecycle awareness
+- `should-use-collectasstatewithlifecycle-in-compose`: Compose code collecting ViewModel state without `collectAsStateWithLifecycle()`
+- `should-use-repeatonlifecycle-in-views`: a View, Fragment or Activity collecting outside `repeatOnLifecycle(Lifecycle.State.STARTED)`
+- `must-not-use-bare-collectasstate`: an anti-pattern to flag and fix: a bare `collectAsState()` on a ViewModel flow in lifecycle-bound UI
+- `must-not-use-launchwhenstarted`: an anti-pattern to flag and fix: any `launchWhenStarted`, `launchWhenResumed` or `whenStarted`
+- `must-not-collect-without-repeatonlifecycle`: an anti-pattern to flag and fix: a `collect` directly inside `lifecycleScope.launch { ... }` with no `repeatOnLifecycle`
+- `should-inject-dispatchers`: thread-switching code referencing `Dispatchers.IO` / `Dispatchers.Default` directly instead of an injected dispatcher
+- `should-inject-test-dispatchers`: a coroutine test not injecting `StandardTestDispatcher` / `UnconfinedTestDispatcher` or not using `runTest`
+- `must-keep-active-collector-in-tests`: a test reading `value` of a `WhileSubscribed` `StateFlow` with no active collector

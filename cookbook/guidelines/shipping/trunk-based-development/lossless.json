@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**DO NOT** open a branch and let it diverge from trunk for a week, then attempt a large merge.",
+      "to": "must-not-let-branch-diverge",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on letting a branch diverge for a week and then attempting a large merge, at MUST NOT.",
+        "pin": "1447aef103970f553936429f55eb2098107bc45a3f2009e1498db3df020b9065"
+      }
+    },
+    {
+      "sentence": "**DO NOT** use a `develop` branch as a staging trunk that periodically merges into `main`; this is GitFlow, not trunk-based development, and reintroduces batched integration.",
+      "to": "must-not-use-develop-as-staging-trunk",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on a develop staging trunk and its reason (GitFlow, reintroduces batched integration), at MUST NOT.",
+        "pin": "eeabcf22e5519cc234da87b950528f5498233ef328d18ec04917afcce10b9dde"
+      }
+    },
+    {
+      "sentence": "**DO NOT** hold finished-but-unreleased code on a branch — merge it disabled behind a flag.",
+      "to": "must-not-park-finished-code-on-branch",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on parking finished-but-unreleased code on a branch and the merge-it-disabled-behind-a-flag remedy, at MUST NOT.",
+        "pin": "3dfef2694dcc8969cbb55162917f738fffe5b90e14e8fd0fd15c1bd76a1faebe"
+      }
+    },
+    {
+      "sentence": "**DO NOT** disable or bypass required checks to land a merge faster.",
+      "to": "must-not-bypass-required-checks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on disabling or bypassing required checks to land a merge faster, at MUST NOT.",
+        "pin": "84497b1aadece988b172b76f5c687bf385921596db5d1815ba4cf20a94a73a4e"
+      }
+    },
+    {
+      "sentence": "Establish green-trunk gating first.",
+      "to": "should-establish-green-trunk-gating-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps establishing green-trunk gating first, together with its reason about checks and fast CI; the unkeyed instruction is kept at SHOULD.",
+        "pin": "cac11bb0bcea60051892af4b662fe73a29cf51c0ba30b6abf4d3589a0e41429b"
+      }
+    }
+  ],
+  "obsolete": []
+}

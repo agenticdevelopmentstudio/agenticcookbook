@@ -1,0 +1,11 @@
+
+- `must-not-stop-at-search-results`: whether the research stops at a search-results page
+- `should-orient-and-classify-domain`: whether the topic's domain was classified first
+- `should-identify-authoritative-sources`: whether the authoritative sources for the domain were identified and used
+- `should-search-with-controlled-vocabulary`: whether searches use Boolean or controlled vocabulary
+- `should-chain-citations-to-saturation`: whether citations were chained backward and forward to saturation
+- `should-corroborate-across-independent-sources`: whether findings are corroborated across genuinely independent sources
+- `should-record-provenance-at-generation-time`: whether provenance was recorded at generation time
+- `should-use-prisma-for-systematic-rigor`: whether PRISMA is used where systematic rigor is required
+- `should-default-to-openalex`: whether OpenAlex is the default academic source
+- `should-read-full-sources`: whether full sources were read rather than snippets

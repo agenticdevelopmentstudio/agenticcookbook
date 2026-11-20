@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use the single-project MSIX packaging model",
+      "to": "should-use-single-project-msix",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the single-project MSIX packaging model; the unkeyed instruction is kept at SHOULD.",
+        "pin": "fe9f71f01706d8af690b14ad038fc672a3cd4b75e344759f3e5067926fe0be86"
+      }
+    },
+    {
+      "sentence": "Capabilities MUST be declared minimally in `Package.appxmanifest`",
+      "to": "must-declare-capabilities-minimally",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST to declare capabilities minimally in Package.appxmanifest.",
+        "pin": "77c8edefb617fc3cf8f7e2d263a58d5c7d712adb43433c26499f61df7ef31f0e"
+      }
+    },
+    {
+      "sentence": "Packages MUST be signed with a trusted certificate for sideloading",
+      "to": "must-sign-with-trusted-certificate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST to sign with a trusted certificate for sideloading.",
+        "pin": "d5b8902b277514c347197061e621a445e6dfe09b717c57bb165d0b73a2914472"
+      }
+    },
+    {
+      "sentence": "Version numbering MUST use `Major.Minor.Build.Revision`, monotonically increasing",
+      "to": "must-use-four-part-monotonic-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST for four-part Major.Minor.Build.Revision versions, monotonically increasing.",
+        "pin": "07d9dd48d71797bb77f1ff1bb49cec179d17cc30543d05b282e48a45d5d50c0d"
+      }
+    }
+  ],
+  "obsolete": []
+}

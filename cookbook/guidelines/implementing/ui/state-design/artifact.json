@@ -4,11 +4,11 @@
     "id": "0935bc69-88a9-483e-a3c9-38447d880f45",
     "title": "State Design",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,16 +31,22 @@
       "https://www.nngroup.com/articles/empty-state-interface-design/",
       "https://www.nngroup.com/articles/error-message-guidelines/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "data-modeling"
     ]
   },
-  "synced": "e7b60e4a76abfc10",
+  "synced": "0129cb0aa5e82dd2",
   "parts": [
     {"part": "intro"},
+    {"part": "the-four-states", "heading": "The four states", "role": "how-to"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

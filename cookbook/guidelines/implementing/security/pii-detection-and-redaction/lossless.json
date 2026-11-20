@@ -1,0 +1,344 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "No single technique is sufficient; combine rule-based and ML detection (the approach",
+      "to": [
+        "rationale",
+        "detect-in-layers"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That no single technique is sufficient is kept in rationale, and combining rule-based and ML detection is kept at SHOULD with the Presidio approach.",
+        "pin": "39820f9f62fff90804d549b03ce3bd08b6165451e6372922b50dc274852bbc51"
+      }
+    },
+    {
+      "sentence": "**regex-for-structured** — use anchored patterns for structured types (email, phone, SSN,",
+      "to": "regex-for-structured",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Anchored patterns for structured types (email, phone, SSN, credit-card, IBAN, IP) are kept at SHOULD.",
+        "pin": "406e62b38c9e45e92f5390c4249d48d3fe7aa140df83aa66d0be879e2babf2a6"
+      }
+    },
+    {
+      "sentence": "**validate-with-checksums** — you MUST run format-specific validators to cut false positives.",
+      "to": "validate-with-checksums",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Running format-specific validators to cut false positives is kept at MUST, with the Luhn and IBAN mod-97 examples.",
+        "pin": "afdce52dbe6c02ffa36cbdf58e9388dc5c5df2603fda7a84150f486ad03df567"
+      }
+    },
+    {
+      "sentence": "**context-words** — SHOULD gate or boost confidence on nearby lemmas (\"card\", \"ssn\", \"dob\",",
+      "to": "context-words",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Gating or boosting confidence on nearby lemmas is kept at SHOULD with the same lemmas; the reason is kept in rationale.",
+        "pin": "5a4514e3d3353b3bdf7fd03b473814e0b3e8f49db9d70f8a28d39cd9ff5c651a"
+      }
+    },
+    {
+      "sentence": "Named-Entity-Recognition model (spaCy or a transformer) for those, and register custom",
+      "to": "ner-for-unstructured",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using an NER model (spaCy or a transformer) for names, places and organizations and registering custom recognizers for domain ID formats is kept at SHOULD.",
+        "pin": "7b317a12bce4f0268c771aa82ee4f1bdfe6ec4b47401eae3fd7e5be455dd1ca7"
+      }
+    },
+    {
+      "sentence": "**favor-recall** — for PII a miss is worse than a false alarm, so tune toward **recall**",
+      "to": [
+        "rationale",
+        "favor-recall"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reason, a miss is worse than a false alarm for PII, is kept in rationale, and tuning toward recall (F2) with false positives triaged after is kept at SHOULD.",
+        "pin": "26ac11465b006a0ac9cb90766ad1f030b1fe8ef7d40d8efbaaa92b67e21b2c20"
+      }
+    },
+    {
+      "sentence": "Do not ship a detector chosen for a clean precision number.",
+      "to": "should-not-ship-precision-chosen-detector",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not shipping a detector chosen for a clean precision number is kept, the unkeyed prohibition at SHOULD NOT.",
+        "pin": "1a8728d8024a0be8eeb27ea74f7bdd9e6b873200af676216d12dda39792d4d31"
+      }
+    },
+    {
+      "sentence": "**two-identifier-classes** — you MUST treat two classes as PII.",
+      "to": "two-identifier-classes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating two classes as PII is kept at MUST, with direct identifiers and quasi-identifiers defined.",
+        "pin": "01062b09228f8611b67608cead9ee7dfad66570bedeeeed545518d1ce789fa82"
+      }
+    },
+    {
+      "sentence": "**use-a-coverage-checklist** — enumerate categories against a fixed list so you do not miss a",
+      "to": "use-a-coverage-checklist",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enumerating categories against a fixed list so no type is missed is kept at SHOULD, with the HIPAA Safe Harbor checklist.",
+        "pin": "021a7b5f5b502dd972b3c128eeb6e6a398c2127c21898d4e0544e574c62af8a7"
+      }
+    },
+    {
+      "sentence": "**linked-and-linkable** — per NIST SP 800-122, PII is anything that *distinguishes or traces*",
+      "to": "linked-and-linkable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The NIST SP 800-122 definition (distinguishes or traces, or linked or linkable) is kept.",
+        "pin": "5bda08b605315f146b148fc4285806f8c4fd3e92afae994ed1902d78f53d7626"
+      }
+    },
+    {
+      "sentence": "Rate each instance's confidentiality",
+      "to": "linked-and-linkable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rating each instance's confidentiality impact by the four factors and sizing controls to it is kept at SHOULD.",
+        "pin": "401632c487112d14847d401af36dcbdf227c388a2d44b3c1f36f47983910c9a1"
+      }
+    },
+    {
+      "sentence": "These are not interchangeable — pick by whether you need reversibility or downstream utility.",
+      "to": [
+        "rationale",
+        "pick-operation-by-need"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That the operations are not interchangeable is kept in rationale, and picking by reversibility or downstream utility is kept at SHOULD.",
+        "pin": "8387a204ebffe75d3cd85761179d265c0626c13e4bf55bfe99c79572fcb5cde5"
+      }
+    },
+    {
+      "sentence": "The default for published or exported data.",
+      "to": "redact-published-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Redaction being the default for published or exported data is kept at SHOULD.",
+        "pin": "61146ffb320958fed954f2f889a8f23539c5537d4e35ba90c9ec0762942ec6e6"
+      }
+    },
+    {
+      "sentence": "It is",
+      "to": "pseudonymized-is-not-anonymized",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fragment beginning the pseudonymization caveat is kept in the same rule.",
+        "pin": "463899b40308f45eb8357b1dd27f619f3379991a38be42fcc0cb2443575c2dc6"
+      }
+    },
+    {
+      "sentence": "**still personal data** under GDPR Article 4 when re-identification is feasible — do NOT treat",
+      "to": "pseudonymized-is-not-anonymized",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pseudonymized data being still personal data under GDPR Article 4 when re-identification is feasible is kept with its condition.",
+        "pin": "cb15735ab8e7d7719b7056f6f0d122e1edde88f35a2403aff3e6be8b2e6288bd"
+      }
+    },
+    {
+      "sentence": "pseudonymized data as anonymized.",
+      "to": "pseudonymized-is-not-anonymized",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not treating pseudonymized data as anonymized, an unkeyed do NOT, is kept at SHOULD NOT.",
+        "pin": "9bb78f1eabf28e29dab85c7d649818ca2f8dba8b26752a41b53a14079c05784c"
+      }
+    },
+    {
+      "sentence": "**generalize-and-suppress** — for quasi-identifiers, coarsen (year not date, 3-digit ZIP, age",
+      "to": "generalize-and-suppress",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Coarsening or dropping quasi-identifiers and bounding linkage risk with k-anonymity, l-diversity or t-closeness are kept at SHOULD.",
+        "pin": "69973d22d21e4daa82259c4fe6248826534709af654f761cc1a2580881e750fa"
+      }
+    },
+    {
+      "sentence": "**anonymization** — only call data anonymized when re-identification is not reasonably feasible",
+      "to": "anonymization",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Only calling data anonymized when re-identification is not reasonably feasible (de-identified and irreversible) is kept at SHOULD, with everything short of that still in scope.",
+        "pin": "cb1de0518c84832c960333ff5bb6d647c3e1c8d8af2a65f6242c67f6b8c28454"
+      }
+    },
+    {
+      "sentence": "**default-deny** — where feasible, allowlist what may leave the boundary rather than blocklist",
+      "to": "default-deny",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Allowlisting what may leave the boundary, where feasible, is kept at SHOULD; the fail-closed reason is in rationale.",
+        "pin": "91bca7a2976aee10cee8560f3f73d0878f61f2c5a1d729faef0c7595d3c4dbec"
+      }
+    },
+    {
+      "sentence": "**drop-structurally** — remove PII-bearing fields at the schema or serialization boundary, not",
+      "to": "drop-structurally",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Removing PII-bearing fields at the schema or serialization boundary rather than string-scrubbing is kept at SHOULD; the reason is in rationale.",
+        "pin": "f73b08a6e8d7100de7e8affff58e78419716c4eeafd8967c9596e38797744b50"
+      }
+    },
+    {
+      "sentence": "Treat a",
+      "to": "scan-history-not-just-the-tip",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fragment beginning the instruction to treat repo history as exposed surface is kept at SHOULD.",
+        "pin": "8444a0402dac8774e461c049e004d04e6fdb3eb7f56a1e1b09e321f1145ecfd8"
+      }
+    },
+    {
+      "sentence": "public repo's history as part of the exposed surface.",
+      "to": "scan-history-not-just-the-tip",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating a public repo's history as part of the exposed surface is kept at SHOULD.",
+        "pin": "667c1498372ab7eb4de11fcecbf32b96417d10da5f3ba265f0a63cd2784f27c6"
+      }
+    },
+    {
+      "sentence": "**remediate-then-rotate** — purge with `git filter-repo` (or BFG Repo-Cleaner), force-update",
+      "to": "remediate-then-rotate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Purging with git filter-repo or BFG and force-updating the remote are kept at SHOULD.",
+        "pin": "bbf79f3d4333d37d397242fe0343e7fea19be0808b6a6874557fedda6bd72b1f"
+      }
+    },
+    {
+      "sentence": "the remote, and **rotate** any exposed secret — a purged credential that was public must be",
+      "to": [
+        "remediate-then-rotate",
+        "assume-public-credentials-compromised"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rotating any exposed secret is kept at SHOULD, and a purged credential that was public must be assumed compromised is kept at MUST.",
+        "pin": "f4776fd0840480886b36a4e42d780009c37945c4e4188114da944c06edc6380c"
+      }
+    },
+    {
+      "sentence": "assumed compromised.",
+      "to": "assume-public-credentials-compromised",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Assuming a purged public credential compromised is kept at MUST.",
+        "pin": "a0bd7827bebc885be69eb16775e1c0cf538501a8561bb101b48b78d4b9a53f9b"
+      }
+    },
+    {
+      "sentence": "**fail-closed-backstop** — after redaction you MUST re-scan the serialized output and hard-fail",
+      "to": "fail-closed-backstop",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Re-scanning serialized output after redaction and hard-failing the emit or build on any survivor is kept at MUST.",
+        "pin": "0c4f234f3bf19621253c5d26bdf225dd623bbef62378773222f5fc3d7ff53ffb"
+      }
+    },
+    {
+      "sentence": "**defense-in-depth** — layer independent gates (surface reduction → structural drop → prose",
+      "to": "defense-in-depth",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Layering independent gates in the same sequence so one layer's miss is caught by the next is kept at SHOULD.",
+        "pin": "ac598b2e792c224e86353bf8b919c0814a8ed9fdf1fbbfc3ce9a7696daadabfc"
+      }
+    },
+    {
+      "sentence": "**golden-tests** — keep a known-leaky fixture and assert end-to-end that nothing survives.",
+      "to": "golden-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping a known-leaky fixture and asserting end-to-end that nothing survives is kept at SHOULD.",
+        "pin": "e3433d4c2c96a325e7d6444ec4d4a842bc23c39e49046dd42da8c7a46323f854"
+      }
+    },
+    {
+      "sentence": "Freeze real edge cases as regression tests — e.g. a `git@github.com:` SSH remote that looks",
+      "to": "freeze-edge-cases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Freezing real edge cases as regression tests, with both examples, is kept at SHOULD.",
+        "pin": "03904f9f77d8677e97dd7d0edf290fde22953ac27e2c3f8b9dd62e7059c2fbd1"
+      }
+    },
+    {
+      "sentence": "**ner-for-unstructured** — regex cannot find names, places, or organizations; use a",
+      "to": [
+        "rationale",
+        "ner-for-unstructured"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That regex cannot find names, places or organizations is kept in rationale, and using an NER model for them is kept at SHOULD.",
+        "pin": "79e1af976cc7761e4987b669af3d0431e866f07402a6836c369dd844d2db0d2a"
+      }
+    },
+    {
+      "sentence": "**scan-history-not-just-the-tip** — redacting the working tree does NOT purge PII or secrets",
+      "to": [
+        "rationale",
+        "scan-history-not-just-the-tip"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That redacting the working tree does not purge committed PII or secrets is kept in rationale, backing the history-scan rule.",
+        "pin": "56483cd8200c7b5d19a348b8ec11dae41dc81db74dc21a8bbfb04ca9bff0e224"
+      }
+    },
+    {
+      "sentence": "already committed; git retains them in prior commits even after the file changes.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Git retaining them in prior commits even after the file changes is kept in rationale.",
+        "pin": "4916e2bb17dbbfe360bfb454957debb3ce172884c05706b84111448ba2f2a037"
+      }
+    }
+  ],
+  "obsolete": []
+}

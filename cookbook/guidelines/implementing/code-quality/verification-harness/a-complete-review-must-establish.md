@@ -1,0 +1,18 @@
+
+- `must-be-single-runnable-command`: the harness is one command or short script returning a machine-readable signal
+- `must-be-deterministic`: the check gives the same pass/fail for the same input
+- `must-not-gate-on-flaky-checks`: no flaky, time- or network-dependent check gates completion
+- `must-show-evidence`: the agent showed the command it ran and its output
+- `should-wire-command-for-discovery`: the command is wired into the project and documented where the agent reads, or the project says why not
+- `should-state-expected-observed-and-location`: failures state expected, observed and file:line, or the harness says why not
+- `should-name-concrete-next-step`: each failure names a concrete next step, or the harness says why not
+- `should-keep-output-concise`: the harness output is concise, or the harness says why not
+- `should-choose-weakest-enforcement-level-that-holds`: each check uses the weakest enforcement level that holds, or the project says why not
+- `must-gate-correctness-deterministically`: every correctness check for unattended or merged changes is enforced by CI, pre-commit or a stop-hook
+- `should-cap-gate-retries`: every gate that can loop caps retries and surfaces to a human, or the project says why not
+- `must-fail-only-on-correctness`: every gate fails only on correctness or stated requirements
+- `must-not-block-on-style-nitpicks`: no gate blocks on style nitpicks
+- `should-scope-adversarial-review-to-correctness`: adversarial or gap-finding checks are told to flag only correctness or spec gaps, or the project says why not
+- `should-start-with-cheapest-check`: the harness began with the cheapest check that catches a real failure, or the project says why not
+- `should-not-prebuild-exhaustive-suite`: no exhaustive suite was pre-built up front, or the project says why not
+- `should-encode-check-for-new-error-class`: each new class of agent error has a check encoded for it, or the project says why not

@@ -1,0 +1,11 @@
+
+- `should-design-local-first`: an app that must work offline yet reads and writes only through the network.
+- `should-roll-back-failed-optimistic-updates`: an optimistic update left in the UI after the server rejects it.
+- `should-keep-failed-items-queued`: an outbox that drops an item when its sync fails.
+- `should-detect-conflicts-with-versions`: sync writes with no ETag or version number, so conflicts go undetected.
+- `should-return-409-with-both-versions`: a conflict answered with something other than 409, or a 409 without both versions.
+- `should-fit-resolution-to-collaboration`: a collaborative app that resolves conflicts by server-wins, or a simple app carrying merge machinery it does not need.
+- `should-track-last-synced-at`: full re-syncs where a per-entity `last_synced_at` would allow a delta.
+- `should-show-connectivity-status`: no visible connectivity status, or one the user cannot read.
+- `must-queue-mutations-and-keep-user-work`: a mutation sent only directly to the network, or a path that drops user work without telling the user.
+- `should-test-offline-scenarios`: offline handling with no tests for airplane mode, flaky connections or long offline periods.

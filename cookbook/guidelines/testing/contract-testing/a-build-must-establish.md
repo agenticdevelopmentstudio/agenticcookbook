@@ -1,0 +1,19 @@
+
+- `should-cover-owned-integrations-with-consumer-driven-contracts`: each owned service-to-service integration has a consumer-driven contract test, or a note says why not
+- `should-use-schema-contracts-for-uncontrolled-apis`: each consumed uncontrolled API has a client test against its published schema at a dated revision, or a note says why not
+- `must-assert-contract-shape`: each contract asserts required fields, types and key status/error codes
+- `must-not-assert-incidental-detail`: no contract asserts every field value or incidental detail
+- `should-match-presence-type-and-matchers`: contracts use presence, type and matcher checks rather than per-request literals, or a note says why
+- `should-assert-only-branched-codes`: each contract asserts exactly the status/error codes its consumer branches on, or a note says why
+- `should-loosen-over-strict-contracts`: adding an optional field or reordering a list in the provider response does not break any contract, or a note says why
+- `must-verify-consumer-contracts-before-deploy`: the provider's CI verifies outstanding consumer contracts before its deploy step
+- `should-gate-deploy-with-can-i-deploy`: the release pipeline of a consumer-driven setup runs `can-i-deploy` and blocks on failure, or a note says why not
+- `must-run-contract-tests-as-own-stage`: CI has a contract-test stage separate from the end-to-end stage
+- `must-version-and-tag-contracts`: each published contract carries a version and an environment or pacticipant-version tag
+- `must-record-pinned-schema-revision`: each consumed third-party schema is recorded with its URL and version/date
+- `must-not-track-moving-latest`: no third-party schema reference points at a moving `latest`
+- `must-not-require-real-provider`: the contract tests pass with the real provider not running
+- `should-apply-practice-with-any-framework`: the contract tests use a framework that fits the stack, or a note says why not
+- `must-not-substitute-end-to-end-for-contract-tests`: every service boundary has a contract test, not only end-to-end coverage
+- `must-not-expect-third-party-contracts-to-gate-their-deploys`: no test is wired to gate a third party's deploys
+- `should-not-duplicate-business-logic-in-contracts`: contracts hold no full business-logic assertions, or a note says why

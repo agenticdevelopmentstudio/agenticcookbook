@@ -1,0 +1,19 @@
+
+- `should-publish-native-arm64`: whether a native `win-arm64` build is published
+- `must-not-ship-on-x64-emulation`: whether x64 emulation is the shipping plan where native ARM64 is achievable
+- `should-ship-multi-arch`: whether distribution ships both `win-x64` and `win-arm64`
+- `must-have-arm64-native-dependencies`: whether every native dependency provides an ARM64 variant
+- `should-audit-runtimes-folders`: whether the `runtimes/` folders were audited before shipping
+- `may-use-arm64ec-for-migration`: whether any Arm64EC use is for incremental migration
+- `should-mark-arm64ec-transitional`: whether Arm64EC use is marked transitional
+- `should-adopt-aot-only-on-measured-need`: whether AOT and trimming are adopted only on a concrete measurement
+- `should-not-enable-aot-by-default`: whether Native AOT or aggressive trimming is on by default
+- `must-record-baseline-metric`: whether a baseline metric was recorded before enabling and re-measured after
+- `must-verify-reflection-and-codegen-paths`: whether reflection-heavy and dynamic-codegen paths were verified
+- `should-use-source-generators-or-aot-safe-apis`: whether those paths use source generators or AOT-safe APIs
+- `must-check-cswinrt-interop`: whether WinRT/CsWinRT interop and every dependent library are AOT-aware
+- `must-confirm-trim-compatible-dependencies`: whether each third-party dependency is confirmed trim-compatible with no blind suppression
+- `may-use-readytorun`: whether any ReadyToRun use is where only startup matters
+- `should-prefer-readytorun-for-startup-only`: whether ReadyToRun was preferred for a startup-only need
+- `must-test-aot-per-rid`: whether AOT/trimming builds are tested per RID, including `win-arm64`, in CI
+- `should-pin-and-reverify-on-upgrade`: whether .NET and CsWinRT versions are pinned and re-verified on upgrade

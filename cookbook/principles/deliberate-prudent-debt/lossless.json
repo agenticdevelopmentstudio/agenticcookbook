@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Deliberate and prudent only: \"ship the simple version now, revisit when X happens\" is fine when it's written down; an undocumented shortcut nobody chose is reckless debt.",
+      "to": "must-take-debt-only-deliberately-and-prudently",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-take-debt-only-deliberately-and-prudently makes 'deliberate and prudent only' a MUST and keeps the written-down example and the reckless-debt definition of an unchosen, undocumented shortcut.",
+        "pin": "1596560ac5486dbebc1f1cbd721096fd15502d5ec888bd93ca61f4f28df8b743"
+      }
+    },
+    {
+      "sentence": "Record it at the point of compromise: leave a tracked marker (debt register, issue, or a TODO that states the condition) naming the trigger that should prompt repayment.",
+      "to": "should-record-debt-at-point-of-compromise",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-record-debt-at-point-of-compromise restates the sentence at SHOULD, keeping recording at the point of compromise, all three marker kinds including a TODO that states the condition, and the named repayment trigger.",
+        "pin": "3ab7bae77784cab17565571b0f009c0cc993655e3370b871a6e01160a9906063"
+      }
+    },
+    {
+      "sentence": "Budget repayment: allocate capacity each iteration to pay debt down; debt with no payback plan compounds into decay.",
+      "to": "should-budget-repayment-each-iteration",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-budget-repayment-each-iteration keeps allocating capacity each iteration to pay debt down and the reason that unplanned debt compounds into decay.",
+        "pin": "75a1a8cea7bc295b7c26f8bb882cddf46cb30a4031a2aae166857e3e57d97e20"
+      }
+    },
+    {
+      "sentence": "Account for AI volume: agent-generated code can inflate duplication and churn faster than debt is repaid — size debt budgets against the volume produced, and prefer paying down before adding more.",
+      "to": "should-size-debt-budgets-against-ai-volume",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-size-debt-budgets-against-ai-volume keeps the AI-volume reason and both instructions: size budgets against volume produced, and prefer paying down before adding more.",
+        "pin": "f1abdc865b815fe4989cf0eca2dd6fb99ff1c543698e3d8384916011721ccb27"
+      }
+    }
+  ],
+  "obsolete": []
+}

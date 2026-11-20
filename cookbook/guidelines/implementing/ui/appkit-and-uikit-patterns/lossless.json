@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "To insert an object into the chain, override `nextResponder` and return it.",
+      "to": "should-override-nextresponder-sparingly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The how-to (insert an object into the chain by overriding nextResponder and returning it) is kept, now at SHOULD.",
+        "pin": "bcd56eae8a43112d055e6abe75378f051dafa02567074e9545db181004a0e75d"
+      }
+    },
+    {
+      "sentence": "Code SHOULD do this sparingly; the default chain is what users and the system expect.",
+      "to": "should-override-nextresponder-sparingly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason that the default chain is what users and the system expect.",
+        "pin": "d59908be5cee2de4dc1f87155d400834768e0979886684c52adda28a738d7111"
+      }
+    }
+  ],
+  "obsolete": []
+}

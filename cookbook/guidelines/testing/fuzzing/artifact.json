@@ -4,11 +4,11 @@
     "id": "d197a1e3-eba5-4f3f-acc7-c2fabd51144f",
     "title": "Fuzz testing",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,20 +27,22 @@
     "references": [
       "https://github.com/google/oss-fuzz"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests",
       "security-review"
     ]
   },
-  "synced": "e289bd5f91833466",
+  "synced": "183db21ffa5aa685",
   "parts": [
     {"part": "intro"},
-    {"part": "where-to-apply-it-measured-need-guardrail", "heading": "Where to apply it (measured-need guardrail)"},
-    {"part": "tooling-per-language", "heading": "Tooling (per language)"},
-    {"part": "writing-and-running-harnesses", "heading": "Writing and running harnesses"},
-    {"part": "triage", "heading": "Triage"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "tooling-per-language", "heading": "Tooling (per language)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

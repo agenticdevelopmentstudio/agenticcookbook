@@ -4,11 +4,11 @@
     "id": "3ca81fd0-7730-4049-bb0a-91514bb0d730",
     "title": "Completeness: finish the work, don't defer by default",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,21 +27,21 @@
       "b224ef56-65f5-45fd-8842-767b20df6736"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "code-review",
       "pre-pr"
     ]
   },
-  "synced": "3ed32dfa7083e254",
+  "synced": "f62a7aaa2331899f",
   "parts": [
     {"part": "intro"},
-    {"part": "finish-the-agreed-scope", "heading": "Finish the agreed scope"},
-    {"part": "don-t-prematurely-scope-out", "heading": "Don't prematurely scope out"},
-    {"part": "yagni-is-not-a-license-to-skip-required-work", "heading": "YAGNI is not a license to skip required work"},
-    {"part": "don-t-stall-on-settled-questions", "heading": "Don't stall on settled questions"},
-    {"part": "verify-before-declaring-done", "heading": "Verify before declaring done"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

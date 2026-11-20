@@ -4,11 +4,11 @@
     "id": "0131807b-548d-403a-8366-de79e215949d",
     "title": "Provenance at generation time",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,12 +26,17 @@
       "2795e06d-b081-43ac-97d9-20ff3d0a93b1"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "91ce9ec3f79d00d5",
+  "synced": "621b59347d154938",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,5 @@
+
+- `must-invite-human-ideas-first`, `must-ask-before-offering-ideas`: Yildirim et al. (2025, arXiv 2502.06197): participants who used LLMs from the start produced fewer original ideas, reported lower creative self-efficacy, and felt less ownership compared to those who ideated independently first.
+- `must-invite-human-ideas-first`, `must-ask-before-offering-ideas`: HAICo (Dong et al., 2024, arXiv 2512.18388): scaffolding divergent exploration *before* any AI artifact generation produced 42% more novel outputs and 33% greater diversity than direct chatbot use; users internalized a "brainstorm-first workflow" that transferred to other tools.
+- `must-invite-human-ideas-first`, `must-not-anchor-or-supplant`: Vygotsky's Zone of Proximal Development (1978): good scaffolding keeps the human at their creative edge; the AI taking the first move pulls the human *below* the creative work.
+- `may-add-after-human-contributes`, `must-not-anchor-or-supplant`: "Yes-and" (Sawyer, 2007) builds on the human's contribution rather than replacing it.

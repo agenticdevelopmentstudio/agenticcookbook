@@ -1,0 +1,50 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When the UI is waiting on an async task:",
+      "to": [
+        "must-show-determinate-progress-when-total-known",
+        "must-show-indeterminate-progress-when-total-unknown",
+        "must-not-appear-frozen"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The async-wait condition is carried as the opening clause of all three rules, so every requirement it introduced keeps its scope.",
+        "pin": "c25cbf9c285118b5198861a2ccba654e0f801cae7c58756c794d062f82ec4287"
+      }
+    },
+    {
+      "sentence": "**Determinate progress** (progress bar with percentage) MUST be shown when total work is known",
+      "to": "must-show-determinate-progress-when-total-known",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST, with the async-wait scope and the progress-bar-with-percentage example.",
+        "pin": "4c96589127ada1e526c214f6081c317dab40b1cbb3594b874c1bb60a8a076630"
+      }
+    },
+    {
+      "sentence": "**Indeterminate progress** (spinner, skeleton, shimmer) MUST be shown when it is not",
+      "to": "must-show-indeterminate-progress-when-total-unknown",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with the spinner/skeleton/shimmer examples; 'when it is not' is made explicit as total work not known.",
+        "pin": "fc98f28f340a17e11d10e864a1be20b7eabe3731175aa9ec2ef1a5d780a3a3aa"
+      }
+    },
+    {
+      "sentence": "The UI MUST NOT appear frozen or unresponsive",
+      "to": "must-not-appear-frozen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST NOT, scoped to the UI waiting on an async task as in the original list.",
+        "pin": "5a8b2dc4411f3d0a08e86c9df2274e5453a303d5d0329dd82969cbf8c0019b83"
+      }
+    }
+  ],
+  "obsolete": []
+}

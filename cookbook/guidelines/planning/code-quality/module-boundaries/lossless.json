@@ -1,0 +1,99 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Each independently declared build target or package is a primary scope group candidate.",
+      "to": "should-treat-each-declared-target-as-candidate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-each-declared-target-as-candidate keeps every independently declared build target or package as a primary scope group candidate.",
+        "pin": "328f8c830cfb03d36f311fb7e6a3721b80b10ec36e28b32b2dda03fee318ee13"
+      }
+    },
+    {
+      "sentence": "**One target, one candidate.** If the build system declares it separately, treat it as a candidate scope group regardless of size.",
+      "to": "should-treat-each-declared-target-as-candidate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-each-declared-target-as-candidate keeps 'one target, one candidate', the declared-separately condition and regardless-of-size.",
+        "pin": "c2029fa770a21c3441a640854def3123861f879bc83239198f04c467aea08811"
+      }
+    },
+    {
+      "sentence": "**Merge trivial wrappers.** If a target contains only re-exports of another target with no logic of its own, it may belong with the target it wraps.",
+      "to": "may-merge-trivial-wrappers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-merge-trivial-wrappers keeps the re-exports-only, no-own-logic condition and the MAY merge with the wrapped target.",
+        "pin": "5d3793c58f5d79e11865d03fb7a106d4f2c2dfc28c927d42b8bdb57bcdd09dd4"
+      }
+    },
+    {
+      "sentence": "**Split large monolithic targets.** A single build target containing 200+ files likely conflates multiple concerns.",
+      "to": [
+        "should-flag-large-monolithic-targets",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-large-monolithic-targets keeps the 200+-files threshold and split headline; the rationale keeps the likely-conflates-multiple-concerns reason.",
+        "pin": "65081d8fb89f246d49b9a379f89cb27286c3d510f62a3577f91693e2b425a744"
+      }
+    },
+    {
+      "sentence": "Flag for secondary analysis using `interface-cohesion` and `dependency-clusters` lenses.",
+      "to": "should-flag-large-monolithic-targets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-large-monolithic-targets keeps flagging for secondary analysis with the interface-cohesion and dependency-clusters lenses.",
+        "pin": "b933007e6902390e850b43e547b55fb8151c019212307763220a27e3c2427d85"
+      }
+    },
+    {
+      "sentence": "**Test targets follow their main target.** `AuthTests` belongs with `Auth` — do not create a separate scope group for test targets unless they test multiple main targets.",
+      "to": [
+        "should-group-test-targets-with-main-target",
+        "should-not-separate-test-targets"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-test-targets-with-main-target keeps AuthTests-with-Auth; should-not-separate-test-targets keeps the prohibition and its multiple-main-targets exception.",
+        "pin": "7ea012372ca2867b8cee3aa49334db00996c89aa52586c5a7925e2934bc605e2"
+      }
+    },
+    {
+      "sentence": "**Vendor/third-party directories are excluded.** `node_modules/`, `Pods/`, `vendor/`, `.build/` — these are external dependencies, not scope groups.",
+      "to": "should-exclude-vendor-directories",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-exclude-vendor-directories keeps the four vendor directories, their exclusion, and the external-dependencies reason.",
+        "pin": "4506f97832bb82a71f184b601cc5706d8b840384eace18282b783609ba13045e"
+      }
+    },
+    {
+      "sentence": "Apply these rules:",
+      "to": [
+        "should-treat-each-declared-target-as-candidate",
+        "may-merge-trivial-wrappers",
+        "should-flag-large-monolithic-targets",
+        "should-group-test-targets-with-main-target",
+        "should-not-separate-test-targets",
+        "should-exclude-vendor-directories"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The six named rules are the rules the sentence introduced, and the rationale states they apply to the declared targets and packages.",
+        "pin": "8e5d1c7143e678d3c8a2d46600b680f2782446521edd04c21c945f003291aa54"
+      }
+    }
+  ],
+  "obsolete": []
+}

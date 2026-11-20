@@ -4,11 +4,11 @@
     "id": "344b69da-c901-4650-b49d-c2df0234103b",
     "title": "Adopt Swift 6 strict concurrency incrementally",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,21 +31,22 @@
     "references": [
       "https://www.swift.org/migration/documentation/migrationguide/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "concurrency"
     ]
   },
-  "synced": "276d947849110da8",
+  "synced": "55a88b0a0e1bef12",
   "parts": [
     {"part": "intro"},
-    {"part": "core-model", "heading": "Core model"},
-    {"part": "making-types-sendable", "heading": "Making types Sendable"},
-    {"part": "actor-isolation-and-mainactor", "heading": "Actor isolation and @MainActor"},
-    {"part": "incremental-migration", "heading": "Incremental migration"},
-    {"part": "swift-6-2-approachable-concurrency-version-specific", "heading": "Swift 6.2 \"Approachable Concurrency\" (version-specific)"},
-    {"part": "verification", "heading": "Verification"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "core-model", "heading": "Core model", "role": "rationale"},
+    {"part": "swift-6-2-approachable-concurrency-version-specific", "heading": "Swift 6.2 \"Approachable Concurrency\" (version-specific)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

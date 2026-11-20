@@ -1,0 +1,72 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Components and flows SHOULD be scriptable where the platform supports it:",
+      "to": [
+        "scriptable-where-supported",
+        "automation-mechanisms"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "scriptable-where-supported keeps the SHOULD and its where-the-platform-supports-it condition; automation-mechanisms keeps the per-platform list the colon introduced.",
+        "pin": "50b752f1d5a281c2de6099e5931a3147bbc4bd8b13c64ffcbc13aa43f87c26bd"
+      }
+    },
+    {
+      "sentence": "# Shortcuts and Automation",
+      "to": [
+        "intro",
+        "swift-use-appintents"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The '# Shortcuts and Automation' heading only titled a summary section of the same guideline; intro keeps the guideline's heading and that section's full text.",
+        "pin": "921ce411cacb10ffd08f8c3c24d0371e2b0c6a56cae791f415ce23c9c185bafa"
+      }
+    },
+    {
+      "sentence": "Use `AppActions` for Google Assistant integration.",
+      "to": "kotlin-use-appactions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "kotlin-use-appactions keeps AppActions for Google Assistant integration in Kotlin, at SHOULD.",
+        "pin": "4bb79583db247842e441d908c7c12906aafe42a347bae4027f31859f2ca51e5b"
+      }
+    },
+    {
+      "sentence": "Support `Intent`-based automation.",
+      "to": "kotlin-support-intent-automation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "kotlin-support-intent-automation keeps Intent-based automation in Kotlin, at SHOULD.",
+        "pin": "1c040d45c47330283b1ac6d3d5fb5a4706137f04d64e419e2f71d4c468a49e5d"
+      }
+    },
+    {
+      "sentence": "Use the `AppIntents` framework for Shortcuts and Siri integration.",
+      "to": "swift-use-appintents",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "swift-use-appintents keeps the AppIntents framework for Shortcuts and Siri integration in Swift, at SHOULD.",
+        "pin": "97ed8e673c82be813446adfce9d343e9bab12a31ceca1695d7f8cfb6212bfce0"
+      }
+    },
+    {
+      "sentence": "On macOS, support AppleScript via `NSScriptCommand` where appropriate.",
+      "to": "macos-support-applescript",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "macos-support-applescript keeps AppleScript via NSScriptCommand on macOS with its where-appropriate condition, at SHOULD.",
+        "pin": "c16129296e3525f7e19b001610ddf12ce5a57de60907a18bdbdfc1297a648772"
+      }
+    }
+  ],
+  "obsolete": []
+}

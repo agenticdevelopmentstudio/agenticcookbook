@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "8238bdf2-432b-4c34-9050-742a1f16d107",
+    "title": "Writing comments and docs",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-10-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Comment the why rather than the what, update docs in the same change, write for human and AI readers, and keep the prose plain and free of machine-sounding filler.",
+    "platforms": [],
+    "tags": [
+      "documentation",
+      "writing",
+      "comments",
+      "ai"
+    ],
+    "depends-on": [],
+    "related": [
+      "42ed78a6-eea7-4b48-8b5f-be345682ffc3",
+      "744c30a2-5dfa-41c6-8746-37372ba6465c",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "da56ab62-98ad-4f52-b972-3ebfda5b1718"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "b55cbb3f98010115",
+  "parts": [
+    {"part": "intro"},
+    {"part": "comment-the-why-not-the-what", "heading": "Comment the why, not the what"},
+    {"part": "update-docs-in-the-same-change", "heading": "Update docs in the same change"},
+    {"part": "write-for-the-ai-and-human-reader", "heading": "Write for the AI and human reader"},
+    {"part": "plain-language-rules", "heading": "Plain-language rules"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

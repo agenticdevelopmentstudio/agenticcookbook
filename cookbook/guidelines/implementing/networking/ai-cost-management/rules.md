@@ -1,0 +1,17 @@
+
+- **must-manage-ai-calls-as-a-resource**: Systems MUST treat AI calls as a managed resource with budgets, caching, and fallback strategies.
+- **must-cache-equivalent-requests**: Identical or semantically equivalent requests MUST be cached.
+  - Cache TTL depends on the use case.
+- **should-key-cache-on-model-template-and-variables**: The cache key SHOULD include: model, prompt template ID, template variables, temperature (if 0).
+- **must-budget-per-user-and-per-request**: Every AI-powered feature MUST define a per-user and per-request cost budget.
+- **must-degrade-when-budget-exhausted**: The system MUST reject or degrade gracefully when the budget is exhausted.
+- **should-route-to-cheapest-adequate-model**: Systems SHOULD route requests to the cheapest model that meets quality requirements.
+  - Example: use Haiku for classification, Sonnet for generation, Opus for complex reasoning.
+- **should-batch-non-latency-sensitive-work**: Non-latency-sensitive work SHOULD use batch APIs (typically 50% cheaper) rather than real-time endpoints.
+- **must-record-cost-per-response**: Every API response MUST record actual cost (input tokens times price plus output tokens times price).
+- **should-aggregate-cost**: Aggregate cost SHOULD be available per feature, per user, and per time period.
+- **should-define-fallback-providers**: Systems SHOULD define fallback providers for availability and cost.
+  - If the primary provider's costs spike or availability drops, traffic can shift.
+- **should-review-prompts-for-token-efficiency**: Prompts SHOULD be reviewed for token efficiency.
+  - Prompt length directly affects cost.
+- **should-cache-system-prompts**: System prompts SHOULD be cached where the API supports it (e.g., Anthropic prompt caching).

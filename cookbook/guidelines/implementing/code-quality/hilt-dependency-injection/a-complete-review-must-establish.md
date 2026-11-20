@@ -1,0 +1,29 @@
+
+- `should-use-hilt-with-ksp-and-constructor-injection`: the app uses Hilt with KSP and prefers constructor injection, or the code says why not
+- `should-reserve-singleton-for-app-scoped-state`: every `@Singleton` holds genuinely app-scoped state, or the code says why
+- `should-use-ksp-not-kapt`: the Hilt compiler runs on KSP, not KAPT, or the build says why not
+- `should-apply-hilt-gradle-plugin`: every Hilt module applies the Hilt Gradle plugin and adds `hilt-android` and the compiler via `ksp(...)`, or the build says why not
+- `should-annotate-application-with-hiltandroidapp`: the `Application` subclass carries `@HiltAndroidApp`, or the code says why not
+- `must-have-exactly-one-hiltandroidapp`: exactly one `@HiltAndroidApp` exists
+- `should-annotate-entry-points-with-androidentrypoint`: every entry point needing field injection carries `@AndroidEntryPoint`, or the code says why not
+- `should-inject-owned-classes-via-constructor`: every owned class declares its dependencies via an `@Inject constructor`, or the code says why not
+- `should-use-provides-only-for-unowned-types`: every `@Provides` is for a type the app does not own or an interface, or the code says why
+- `should-bind-interfaces-with-binds`: every interface-to-implementation binding uses `@Binds` in an `abstract` module, or the code says why not
+- `should-install-every-module`: every module is installed with `@InstallIn(...)`, or the code says why not
+- `should-choose-narrowest-component`: every module sits in the narrowest component that fits its bindings' lifetime, or the code says why not
+- `must-assume-unscoped-binding-is-new-instance`: no code relies on an unscoped binding being shared
+- `must-not-depend-on-shorter-lived-component`: no longer-lived component depends on a shorter-lived one
+- `should-not-apply-singleton-just-in-case`: no `@Singleton` was added for performance "just in case," and every scoped binding is stateful, expensive to build, or app-shared, or the code says why
+- `should-annotate-viewmodels-with-hiltviewmodel`: every injected ViewModel has `@HiltViewModel` and an `@Inject constructor`, or the code says why not
+- `should-inject-savedstatehandle`: navigation and saved args come from an injected `SavedStateHandle`, or the code says why not
+- `should-not-construct-hilt-viewmodels-manually`: no Hilt ViewModel is constructed manually, or the code says why
+- `should-use-hiltviewmodel-in-compose`: Compose gets Hilt ViewModels with `hiltViewModel()`, or the code says why not
+- `should-annotate-workers-with-hiltworker`: every injected worker carries `@HiltWorker`, or the code says why not
+- `must-assist-inject-worker-runtime-params`: every worker's `Context` and `WorkerParameters` use `@AssistedInject` + `@Assisted`
+- `should-wire-hiltworkerfactory`: `HiltWorkerFactory` is injected into the `Application` and wired through the `WorkManager` `Configuration`, or the code says why not
+- `should-use-hilt-android-testing`: Hilt tests use `hilt-android-testing` with `kspTest`/`kspAndroidTest`, or the build says why not
+- `should-drive-tests-with-hiltandroidrule`: every injected test has `@HiltAndroidTest` and `HiltAndroidRule`, or the test says why not
+- `should-replace-test-bindings-without-mutating-modules`: test bindings are replaced with `@TestInstallIn` or `@BindValue`, never by mutating production modules, or the test says why
+- `should-not-build-objects-from-passed-context`: no object is built manually from a passed `Context` in place of injection, or the code says why
+- `should-not-field-inject-where-constructor-possible`: field injection appears only on framework-instantiated entry points, or the code says why
+- `should-not-create-god-modules`: modules are split by feature and installed in the narrowest applicable component, or the code says why not

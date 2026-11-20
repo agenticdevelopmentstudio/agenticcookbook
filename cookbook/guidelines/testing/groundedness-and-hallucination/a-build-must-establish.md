@@ -1,0 +1,17 @@
+
+- `must-measure-groundedness-and-hallucination-rate`: the eval run reports a groundedness score and a hallucination rate
+- `should-score-at-claim-granularity`: the eval output labels each atomic claim `supported` / `partial` / `unsupported`, or a note says why not
+- `must-measure-retrieval-independently`: the eval run reports recall@k or context precision separately
+- `should-cite-specific-spans`: answers carry doc id plus offset or quote for each citation, or a note says why not
+- `must-verify-cited-spans`: a check confirms each quoted span exists in its source and entails the claim
+- `may-score-with-llm-judge`: any LLM judge's input holds only the answer and retrieved chunks
+- `should-keep-judge-blind-to-gold-answer`: the judge prompt contains no gold answer, or a note says why
+- `must-calibrate-judge-against-gold-set`: a calibration result with an agreement figure against a human-labeled gold set is recorded
+- `should-pin-one-eval-framework`: the eval framework and its version are pinned in dependencies, or a note says why not
+- `should-abstain-without-evidence`: a query with no supporting retrieval returns an abstention, or a note says why not
+- `must-include-unanswerable-cases`: the eval set holds unanswerable cases and the report has an abstention score
+- `should-not-penalize-correct-abstention`: the scorer counts a correct abstention as correct, or a note says why
+- `should-run-evals-in-ci-on-fixed-set`: a CI job runs the evals on a fixed, versioned query set, or a note says why not
+- `must-fail-build-on-hallucination-regression`: the CI job fails when the hallucination rate passes its threshold
+- `should-treat-groundedness-as-release-gate`: the release checklist or pipeline includes the groundedness result, or a note says why not
+- `should-redact-pii-before-judge`: eval data sent to a judge is redacted or synthetic, or a note says why not

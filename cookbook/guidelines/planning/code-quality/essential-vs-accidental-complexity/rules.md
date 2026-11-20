@@ -1,0 +1,12 @@
+
+- **should-use-the-split-when-scoping**: You **SHOULD** use the essential/accidental split as a thinking tool when scoping a new module: it tells you where an agent can help and where human design judgment must stay in the loop.
+- **should-name-essential-complexity-first**: You **SHOULD** name the essential complexity of a module *before* writing code: what are the irreducible rules, states, and interactions?
+- **must-not-treat-boundary-as-precise-classifier**: You **MUST NOT** treat the boundary as a precise classifier.
+- **should-use-boundary-to-guide-attention**: You **SHOULD** use the boundary to guide attention, not to mechanically sort lines of code.
+- **should-remove-accidental-complexity-aggressively**: You **SHOULD** delete or generate-away accidental complexity aggressively (better abstractions, code generation, fewer moving parts).
+- **must-not-drop-essential-cases**: You **MUST NOT** "simplify" by dropping essential cases.
+- **should-isolate-essential-core**: When the two are entangled, you **SHOULD** refactor to isolate the essential core behind a thin layer so the accidental parts can change or be regenerated independently.
+- **should-route-accidental-work-to-agents**: You **SHOULD** route accidental-complexity work (boilerplate, glue, scaffolding, and syntax) to LLM coding agents and review it for correctness, not for novelty.
+- **must-keep-essential-decisions-human-owned**: You **MUST** keep design review, requirement disambiguation, and invariant definition under human ownership even when an agent writes the code.
+- **should-treat-ai-eliminates-complexity-as-a-claim**: You **SHOULD** treat "AI eliminates complexity" as a **forecast/marketing claim, not an established result**.
+- **should-spend-saved-time-on-decomposition**: You **SHOULD** spend the time saved on agents harvesting the incidental on sharper problem decomposition, not on shipping more under-specified features (see `yagni`).

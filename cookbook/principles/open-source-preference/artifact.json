@@ -4,11 +4,11 @@
     "id": "495000e6-a1fc-4b43-8999-23089505559c",
     "title": "For novel components, prefer proven open-source solutions",
     "type": "principle",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -24,12 +24,16 @@
       "2c605b36-da66-4eaf-b2d4-59ed5a3976b3"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "2b68c4d073d987d8",
+  "synced": "204948060ae92edf",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

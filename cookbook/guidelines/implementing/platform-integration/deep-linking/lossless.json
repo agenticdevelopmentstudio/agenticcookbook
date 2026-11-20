@@ -1,0 +1,99 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "All significant feature points and views MUST be deep linkable using the platform's native URL/deep link mechanism:",
+      "to": [
+        "must-deep-link-significant-views",
+        "native-mechanisms"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-deep-link-significant-views keeps the MUST that all significant feature points and views be deep linkable via the native mechanism; native-mechanisms keeps the per-platform list the colon introduced.",
+        "pin": "4c456fa9b54d1d843c97c18480e72634180a661e3562158d1542659583397dd0"
+      }
+    },
+    {
+      "sentence": "Every view should have a unique, shareable URL.",
+      "to": "web-view-should-have-shareable-url",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-view-should-have-shareable-url keeps the web-scoped unique, shareable URL per view, at SHOULD.",
+        "pin": "bc98551ec2e0543948e1da38f510bda491cbd23fb7db259a248cdf4f5930bf42"
+      }
+    },
+    {
+      "sentence": "Every view MUST have a unique, shareable URL.",
+      "to": "typescript-view-must-have-shareable-url",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "typescript-view-must-have-shareable-url keeps the TypeScript-scoped MUST for a unique, shareable URL per view.",
+        "pin": "0e199205e789d78aceebb32f3d088d819b1a50687eedc6cb46a6a16ef7c26861"
+      }
+    },
+    {
+      "sentence": "Use framework routing (React Router, Next.js routing, etc.).",
+      "to": "typescript-use-framework-routing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "typescript-use-framework-routing keeps framework routing (React Router, Next.js routing) in TypeScript, at SHOULD.",
+        "pin": "78dcbe9f3f7a8d05cd57cc08ddc53e0d3de05040b89a8ba8cccb995f023c1294"
+      }
+    },
+    {
+      "sentence": "Declare protocol handlers in `Package.appxmanifest` and handle activation through the Windows App SDK lifecycle APIs.",
+      "to": "windows-declare-and-handle-protocol",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-declare-and-handle-protocol keeps declaring protocol handlers in Package.appxmanifest and handling activation via the Windows App SDK lifecycle APIs, at SHOULD.",
+        "pin": "9d156f6d9c49a969987ee02da6f4a755fd8b36ccfeac087329239cee4cf6e094"
+      }
+    },
+    {
+      "sentence": "Declare: `<uap:Protocol Name=\"myapp\"/>` in manifest",
+      "to": "windows-declare-protocol-in-manifest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-declare-protocol-in-manifest keeps the <uap:Protocol Name=\"myapp\"/> manifest declaration on Windows, at SHOULD.",
+        "pin": "8ecf048db95d6d1c9b79bba778e60f4f735958f555cb8196e15fe391e9e7449a"
+      }
+    },
+    {
+      "sentence": "Handle via `AppInstance.GetActivatedEventArgs()` in `App.OnLaunched`",
+      "to": "windows-handle-activation-in-onlaunched",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-handle-activation-in-onlaunched keeps handling activation via AppInstance.GetActivatedEventArgs() in App.OnLaunched, at SHOULD.",
+        "pin": "f614204759d1d1c3174431bf294c3a5870d93f2468728d4cb408b2dce5537da7"
+      }
+    },
+    {
+      "sentence": "Parse URI to determine target page/state, navigate accordingly",
+      "to": "windows-parse-uri-and-navigate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-parse-uri-and-navigate keeps parsing the URI for the target page/state and navigating, at SHOULD.",
+        "pin": "491e3cc1ac74e0fc2a4b060cf509c64a41f241a54e8155ff9032901521228e63"
+      }
+    },
+    {
+      "sentence": "Use `AppInstance.FindOrRegisterForKey()` for single-instancing (recommended for deep links)",
+      "to": "windows-single-instance-for-deep-links",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-single-instance-for-deep-links keeps AppInstance.FindOrRegisterForKey() for single-instancing and the recommended-for-deep-links note, at SHOULD.",
+        "pin": "543f59032a54f2fcaf7c49dcfb829fbc8d737dbef804bf508848d2ebaf2816ff"
+      }
+    }
+  ],
+  "obsolete": []
+}

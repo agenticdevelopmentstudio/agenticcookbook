@@ -4,11 +4,11 @@
     "id": "80915bd6-f18c-4a51-b293-50cef7ead49f",
     "title": "Choosing a .NET target framework",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,19 +28,22 @@
     "references": [
       "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "configuration"
     ]
   },
-  "synced": "e4207449a517be2b",
+  "synced": "39b6165d39774212",
   "parts": [
     {"part": "intro"},
-    {"part": "support-cadence-pinned-net-support-policy-verified-2026-06-09", "heading": "Support cadence (pinned: .NET support policy, verified 2026-06-09)"},
-    {"part": "requirements", "heading": "Requirements"},
-    {"part": "decision-steps-for-an-agent", "heading": "Decision steps (for an agent)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "support-cadence-pinned-net-support-policy-verified-2026-06-09", "heading": "Support cadence (pinned: .NET support policy, verified 2026-06-09)", "role": "how-to"},
+    {"part": "decision-steps-for-an-agent", "heading": "Decision steps (for an agent)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

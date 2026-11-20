@@ -1,0 +1,22 @@
+
+- `should-write-the-spec-before-any-endpoint`: an endpoint implemented before its OpenAPI specification exists
+- `should-define-non-trivial-apis-contract-first`: a non-trivial HTTP API, or a new module exposing or consuming an HTTP surface, implemented with no agreed OpenAPI document first
+- `should-skip-the-ceremony-only-for-throwaway-prototypes`: the design-first ceremony skipped for anything other than a throwaway prototype that will be deleted
+- `must-treat-the-spec-as-the-source-of-truth`: code and spec that disagree with the spec changed to match the code
+- `must-ship-the-spec-with-the-implementation`: an API change whose spec change is missing from the same change set
+- `must-lint-the-spec-in-ci`: no CI lint of the spec, or a lint step that does not fail the build on errors
+- `should-use-openapi-3-1-as-the-baseline`: a spec on a version other than OpenAPI 3.1.x with no reason given
+- `should-adopt-openapi-3-2-only-with-full-tool-support`: OpenAPI 3.2 adopted where a generator, linter or mock server in the toolchain does not fully support it
+- `should-verify-tool-support-before-3-2-features`: 3.2-only features relied on with tool support unverified
+- `must-state-the-openapi-version-explicitly`: a spec file with no explicit `openapi:` version, or versions mixed across files
+- `should-derive-artifacts-from-the-spec`: a typed client, server stubs or route validation, mock server or docs written by hand rather than generated from the spec
+- `must-not-hand-edit-generated-code`: hand edits to generated code
+- `should-lint-with-a-spec-linter`: no spec linter with a checked-in ruleset extending the built-in OpenAPI rules with house rules
+- `should-consider-security-lint-rules`: no security-focused lint rules considered
+- `must-run-the-linter-on-every-spec-change`: a spec change that CI does not lint, lint errors not treated as failures, or warnings left to grow
+- `should-add-a-breaking-change-diff-check`: no breaking-change diff check before merge
+- `should-assert-provider-responses-conform`: provider tests that do not check responses against the spec schemas
+- `should-validate-consumers-against-the-spec`: consumers not validated against the same spec
+- `must-not-generate-the-spec-from-code`: a new API whose spec is generated from running code as the primary workflow
+- `must-not-keep-divergent-spec-copies`: more than one copy of the spec, or tooling not referencing the one canonical document
+- `must-not-merge-undescribed-behavior`: an implementation with behavior the spec does not describe

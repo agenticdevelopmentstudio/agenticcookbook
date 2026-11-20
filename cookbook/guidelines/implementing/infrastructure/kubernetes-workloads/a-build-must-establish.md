@@ -1,0 +1,22 @@
+
+- `should-not-default-to-kubernetes`: the work records the measured need for Kubernetes, or says why not
+- `should-use-managed-control-plane`: the cluster runs on a managed control plane, or the work says why not
+- `must-declare-requests-and-memory-limits`: every container spec sets `requests.cpu`, `requests.memory` and `limits.memory`
+- `should-set-memory-request-equal-to-limit`: every container's `requests.memory` equals its `limits.memory`, or the work says why not
+- `may-omit-cpu-limit`: any omitted `limits.cpu` belongs to a latency-sensitive workload
+- `must-always-set-cpu-request`: every container sets `requests.cpu`
+- `should-assign-priority-class`: each critical workload names a `priorityClass`, or the work says why not
+- `should-use-startup-probe-for-long-init`: each long-init app defines a `startupProbe`, or the work says why not
+- `must-define-readiness-probe`: every serving container defines a `readinessProbe`
+- `should-define-liveness-probe`: each container defines a cheap `livenessProbe` distinct from readiness, or the work says why not
+- `must-keep-probes-lightweight`: no probe depends on a database or other dependency, or the work says why one must
+- `should-use-rolling-update`: each Deployment uses `RollingUpdate` with explicit `maxUnavailable` and `maxSurge`, or the work says why not
+- `should-set-min-ready-seconds`: each rolling workload sets `minReadySeconds`, or the work says why not
+- `must-define-pod-disruption-budget`: every workload that needs availability during voluntary disruptions has a `PodDisruptionBudget`
+- `should-spread-replicas`: replicated workloads set `topologySpreadConstraints` across nodes and zones, or the work says why not
+- `should-harden-security-context`: each pod sets the hardened `securityContext` fields, or the work says why not
+- `should-enforce-pod-security-admission`: each namespace enforces Pod Security Admission `restricted`, or the work says why not
+- `must-not-mount-default-service-account-token`: pods that never call the API server set `automountServiceAccountToken: false`
+- `should-isolate-with-namespaces-and-labels`: workloads have their own namespaces and `app.kubernetes.io/*` labels, or the work says why not
+- `should-autoscale-stateless-with-hpa`: stateless workloads have an HPA and the cluster autoscales, or the work says why not
+- `should-validate-against-own-requirements`: the work records a check against its own regulatory and threat-model requirements, or says why not

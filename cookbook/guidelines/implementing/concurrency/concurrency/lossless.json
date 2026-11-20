@@ -1,0 +1,212 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use `async`/`await` for all async work.",
+      "to": "should-use-async-await-in-csharp",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The C# instruction to use async/await for all async work is kept at SHOULD, scoped to C# as in the old C# part.",
+        "pin": "f9acc30bc5623019fea5a710e9e6d84f69e5cdf9491d0ed88fdf5e30d480d599"
+      }
+    },
+    {
+      "sentence": "Never block the main thread.",
+      "to": "must-not-block-main-thread",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept, strengthened to MUST NOT for the main/UI thread on every platform, covering each platform part where it appeared.",
+        "pin": "d1674c0defdc3b09fdc4a49de7b3bc03a709ae4778f9ddc4750751c2df319c16"
+      }
+    },
+    {
+      "sentence": "`ConfigureAwait(false)` in library code to avoid capturing the synchronization context",
+      "to": "should-configure-await-false-in-library-code",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ConfigureAwait(false) in C# library code is kept at SHOULD with its reason (avoid capturing the synchronization context).",
+        "pin": "92c50a79a0985e09bb2229d30fb7fab899725c447fbf62b94222010609533881"
+      }
+    },
+    {
+      "sentence": "`.Result` or `.Wait()` MUST NOT be used — causes deadlocks",
+      "to": "must-not-use-result-or-wait",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The ban on .Result/.Wait() is kept at MUST NOT with its reason (deadlocks).",
+        "pin": "540ad0378d6e218af5a15277cdd12db610dfbdc6eef40c7aad22e9f49ddf834a"
+      }
+    },
+    {
+      "sentence": "`async void` MUST NOT be used except for event handlers",
+      "to": "must-not-use-async-void",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The ban on async void is kept at MUST NOT with the event-handler exception.",
+        "pin": "94a14fb448611f9bd830068332fd289a938ab6b7cb485f5fd7bfe780ade97aac"
+      }
+    },
+    {
+      "sentence": "All async APIs MUST accept `CancellationToken`",
+      "to": "must-accept-cancellation-token",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All C# async APIs accepting CancellationToken is kept at MUST.",
+        "pin": "09e8a54624d0bd0fd6afcf46df16275d5db9ab13fede964cdcc945e832946722"
+      }
+    },
+    {
+      "sentence": "Use `ValueTask<T>` only when the method frequently completes synchronously",
+      "to": "should-use-valuetask-only-when-mostly-synchronous",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ValueTask<T> only when the method frequently completes synchronously is kept at SHOULD with its condition.",
+        "pin": "ec4db2f598848a768bf4d5bc169b98cc9540169bff4467b9f2a90feae0d0e424"
+      }
+    },
+    {
+      "sentence": "Use `Task.Run` for CPU-bound work, never on the UI thread",
+      "to": [
+        "should-use-task-run-for-cpu-work",
+        "must-not-run-cpu-work-on-ui-thread"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Task.Run for CPU-bound work is kept at SHOULD, and never on the UI thread is kept, strengthened to MUST NOT.",
+        "pin": "2c59ec9920ddb04f2cd47e69c2c48b42afbc8501ebf272f1061970d9b684684c"
+      }
+    },
+    {
+      "sentence": "All lengthy work must run on background threads/tasks using platform async primitives:",
+      "to": "must-run-lengthy-work-in-background",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Lengthy work on background threads/tasks via platform async primitives is kept at MUST; the primitives list it introduced is carried by platform-async-primitives.",
+        "pin": "48ec8bd7f0b682ea4c17a65a16fbf237de5ca3eca111f3a98f9f0bb0eb6f06a9"
+      }
+    },
+    {
+      "sentence": "Use Kotlin Coroutines for all async work.",
+      "to": "should-use-kotlin-coroutines",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kotlin Coroutines for all async work is kept at SHOULD, scoped to Kotlin.",
+        "pin": "fe683d36f7ebf53907320ceee9220e0e91f714c7efb47a9083977b0ebf64f821"
+      }
+    },
+    {
+      "sentence": "Run I/O on `Dispatchers.IO`.",
+      "to": "should-run-kotlin-io-on-dispatchers-io",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kotlin I/O on Dispatchers.IO is kept at SHOULD.",
+        "pin": "43bb4d5e8b6dd442128e935cf82a490833c35fe7f0556d22c736aa0971eeff46"
+      }
+    },
+    {
+      "sentence": "Use `viewModelScope` for ViewModel-scoped coroutines.",
+      "to": "should-use-viewmodelscope",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "viewModelScope for ViewModel-scoped coroutines is kept at SHOULD.",
+        "pin": "af106148e2af2f0b27315447ffa83585c7dfcaf93e3a10cfc7cb7751a176ecbb"
+      }
+    },
+    {
+      "sentence": "Use Swift Concurrency (`async`/`await`, `Task`, actors) for all async work.",
+      "to": "should-use-swift-concurrency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Swift Concurrency (async/await, Task, actors) for all async work is kept at SHOULD with all three named primitives.",
+        "pin": "0f071fbc83c70db8fb2900dee7a2258b09907cf0c660eaeabf9f9ed8ec521e63"
+      }
+    },
+    {
+      "sentence": "Use `@MainActor` for UI updates.",
+      "to": "should-use-mainactor-for-ui-updates",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "@MainActor for UI updates in Swift is kept at SHOULD.",
+        "pin": "f061cb0d36e254268382f580333e38bb22e0a45f20e3ded5248942cf138e6910"
+      }
+    },
+    {
+      "sentence": "Use `Promise`/`async`/`await` for async operations.",
+      "to": "should-use-promises-for-async",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Promise/async/await for async operations in TypeScript is kept at SHOULD.",
+        "pin": "9e1e1cabad02b87cfab076c8a7f4186833644e11890eafb16f0a2108a1f3f8c4"
+      }
+    },
+    {
+      "sentence": "Use Web Workers for CPU-intensive tasks.",
+      "to": "should-use-web-workers-for-cpu-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Web Workers for CPU-intensive tasks is kept at SHOULD.",
+        "pin": "410da14b1ea9ee07ffad90f7907e2e233b39c6bd99a7aff59648f8c798debbba"
+      }
+    },
+    {
+      "sentence": "For WinUI 3 specifically:",
+      "to": [
+        "should-marshal-ui-work-with-dispatcherqueue",
+        "must-not-access-ui-from-non-ui-threads"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The WinUI 3 lead-in's scope is kept in both rules it introduced, each prefixed 'For WinUI 3 specifically'.",
+        "pin": "9550ab41b79e00eea045fff34948bc3780a7015ec7a1c8bc6ae67f0ce557bca2"
+      }
+    },
+    {
+      "sentence": "Use `DispatcherQueue.TryEnqueue` to marshal work back to the UI thread from background tasks",
+      "to": "should-marshal-ui-work-with-dispatcherqueue",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "DispatcherQueue.TryEnqueue to marshal work back to the UI thread from background tasks is kept at SHOULD, scoped to WinUI 3.",
+        "pin": "09a327e29820cb4fbc29849b25438c467fd27c92b9093d382e678eb51c708498"
+      }
+    },
+    {
+      "sentence": "Never access UI elements from non-UI threads",
+      "to": "must-not-access-ui-from-non-ui-threads",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never accessing UI elements from non-UI threads is kept at MUST NOT, scoped to WinUI 3.",
+        "pin": "b059d646de0afd5f45adf798ccd86ef1b2598bd4a0f214c2dab14617eb5adf1d"
+      }
+    },
+    {
+      "sentence": "# Concurrency",
+      "to": "platform-async-primitives",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The second '# Concurrency' heading carried no requirement; its topic is carried by the Platform Concurrency Primitives part, and the sentences under it are mapped by their own entries.",
+        "pin": "6d168ebddb1bacecf50495b087069354dc59db0212e6151c5fd643a931e6d626"
+      }
+    }
+  ],
+  "obsolete": []
+}

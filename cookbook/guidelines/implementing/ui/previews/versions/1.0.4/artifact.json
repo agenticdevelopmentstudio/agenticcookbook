@@ -1,0 +1,40 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "40ba1017-cec3-42f0-bd89-63a29eb3dd4d",
+    "title": "Previews",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "All UI components MUST include preview declarations for rapid visual verification during development, covering all significant states: default, loading, error, empty, and populated.",
+    "platforms": [
+      "kotlin",
+      "swift"
+    ],
+    "tags": [
+      "previews",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "e1c328d7004b840d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "swift", "heading": "Swift"},
+    {"part": "kotlin", "heading": "Kotlin"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,24 @@
+
+- `must-make-every-store-enumerable-exportable-deletable`: every store of personal data can list, export and delete a subject's data by a stable subject id
+- `should-confirm-rights-with-counsel`: the build names the counsel confirmation of its rights, scope, exemptions and deadlines, or says there was none
+- `must-support-access-requests`: an access request exports everything held about the subject, derived data included
+- `must-support-erasure-requests`: an erasure request deletes across all stores and propagates to processors
+- `must-support-rectification-requests`: a rectification corrects the data everywhere it is held and propagates
+- `must-support-portability-requests`: a portability request yields a structured, machine-readable export (e.g. JSON/CSV)
+- `must-support-restriction-requests`: a restriction marks the subject's data processing-suspended without deleting it
+- `must-support-objection-requests`: an objection stops the specified processing activity for the subject
+- `must-maintain-data-map`: a data map lists every place personal data lives, backups included
+- `must-record-data-map-entry-fields`: every data-map entry has store, subject-id key or join path, data categories, retention basis and receiving processors
+- `must-update-data-map-for-new-stores`: every new store of personal data in the build has its data-map entry
+- `must-verify-requester-identity`: no request is acted on before the requester is verified as the subject or an authorized agent
+- `should-authenticate-against-session-or-verified-channel`: requester verification uses an existing session or a verified channel, or the code says why not
+- `must-not-act-on-unverified-claim`: no code path discloses or deletes data on an unverified claim
+- `must-erase-every-derived-copy`: erasure removes the subject from caches, search indexes, denormalized read models and analytics aggregates
+- `must-propagate-erasure-to-processors`: erasure calls each processor's deletion API and records completion
+- `should-pseudonymize-or-crypto-shred-logs`: subject data in immutable logs and event streams is pseudonymized or crypto-shreddable, or the code says why not
+- `must-document-backup-rescrub-window`: the backup rotation window and re-scrub of restored backups are documented and counted in the SLA
+- `must-log-every-request`: every request is logged with subject id, request type, timestamp, verifier and completion
+- `should-drive-erasure-and-export-from-one-job`: erasure and export each run as one deterministic job keyed by subject id, or the code says why not
+- `must-complete-within-legal-deadline`: every request has a deadline set to the legal limit and completes within it
+- `should-track-per-request-sla`: each request's SLA is tracked and alerts before breach, or the code says why not
+- `should-test-erasure-leaves-no-residue`: a test creates then erases a subject and asserts no residue across mapped stores, or the code says why not

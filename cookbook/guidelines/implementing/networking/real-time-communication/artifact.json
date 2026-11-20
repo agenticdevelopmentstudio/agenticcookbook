@@ -4,7 +4,7 @@
     "id": "2e317c68-384d-46b8-b3b3-0bcc6602e545",
     "title": "Real-Time Communication",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -27,16 +27,22 @@
       "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
       "https://www.rfc-editor.org/rfc/rfc6455"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "networking",
       "concurrency"
     ]
   },
-  "synced": "e64164076667ab50",
+  "synced": "17a6c47b5f533bf2",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-to", "heading": "Choosing a technique", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

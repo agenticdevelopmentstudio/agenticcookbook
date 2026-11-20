@@ -4,7 +4,7 @@
     "id": "29057cf0-a38b-4c35-8b8b-52e12bf54784",
     "title": "Privacy and security by default",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -25,20 +25,20 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review",
       "data-modeling"
     ]
   },
-  "synced": "ea1a28c5f8b6f8e7",
+  "synced": "b87adf9e0963290c",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "c", "heading": "C#"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

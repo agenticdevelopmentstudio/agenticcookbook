@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Short-lived (5-15 min).",
+      "to": "should-keep-access-tokens-short-lived",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Access tokens being short-lived, 5-15 minutes, is kept at SHOULD.",
+        "pin": "b2e755ea2a0aa0d59887632c43c24cb47cac063642bf2935aeec8e2bf8c44098"
+      }
+    },
+    {
+      "sentence": "Include only necessary claims — no PII in JWTs",
+      "to": "should-include-only-necessary-claims",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Including only necessary claims with no PII in JWTs is kept at SHOULD.",
+        "pin": "0981b8cc31208caded5f5e6d6131b7397bc0817f0db862c74d8c8969219eb1fe"
+      }
+    },
+    {
+      "sentence": "that transit untrusted parties.",
+      "to": "should-include-only-necessary-claims",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The scope, JWTs that transit untrusted parties, is kept.",
+        "pin": "de71f2603c2d5ca91b2d497696b8eeeff656534cf2540fafea00f623361a61d4"
+      }
+    },
+    {
+      "sentence": "Longer-lived but bound to client.",
+      "to": "should-bind-refresh-tokens-to-client",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Refresh tokens being longer-lived but bound to the client is kept at SHOULD.",
+        "pin": "1d62b8916bfbd95b6391a3e3b0525645ad276aa80d4c8d3c521ac25fb8b757dd"
+      }
+    },
+    {
+      "sentence": "Use rotation (see Authentication above).",
+      "to": "should-rotate-refresh-tokens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using rotation for refresh tokens is kept at SHOULD with the same cross-reference.",
+        "pin": "98f091aaa328938937598fc55fb64ecbd09a7393bc4841fbf42e4502b47b483d"
+      }
+    },
+    {
+      "sentence": "Store server-side when possible.",
+      "to": "should-store-refresh-tokens-server-side",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Storing refresh tokens server-side when possible is kept at SHOULD with its condition.",
+        "pin": "fd382ff478f73b87e4587e1b13125caef132a9b9467886e9a3cf5a603bc3d406"
+      }
+    },
+    {
+      "sentence": "Proactive refresh before expiry (e.g., at 75% of TTL)",
+      "to": "should-refresh-proactively",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Proactive refresh before expiry, e.g. at 75% of TTL, is kept at SHOULD.",
+        "pin": "f7bf3a6c4b7d63b36e5d4a19e3581afb21f422bb792cb756451e8f1558cba82d"
+      }
+    },
+    {
+      "sentence": "Queue concurrent requests during refresh to avoid race conditions",
+      "to": "should-queue-requests-during-refresh",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Queueing concurrent requests during refresh to avoid race conditions is kept at SHOULD.",
+        "pin": "e0c1329e42902ae4c29767fdda6df34934484fe36003628aee5ce2ced6ac95c2"
+      }
+    },
+    {
+      "sentence": "Retry with backoff on refresh failure",
+      "to": "should-retry-refresh-with-backoff",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Retrying with backoff on refresh failure is kept at SHOULD.",
+        "pin": "d1a5c7c34522a8e0585695f43342190f980873a58a0308376dd8bdac20f96e52"
+      }
+    },
+    {
+      "sentence": "**Apple:** Keychain Services",
+      "to": "should-use-keychain-on-apple",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keychain Services for token storage on Apple platforms is kept at SHOULD.",
+        "pin": "558451d3f6546a9e70fb515b1208bb09e00c6f6f65459f29a625b2e701f549ec"
+      }
+    },
+    {
+      "sentence": "**Android:** EncryptedSharedPreferences / Android Keystore",
+      "to": "should-use-encrypted-storage-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "EncryptedSharedPreferences / Android Keystore on Android is kept at SHOULD.",
+        "pin": "35eda97cd58c69fb64e770aca3001618f6219a3ca8a37e430e6f8ac61ac9cb81"
+      }
+    },
+    {
+      "sentence": "**Windows:** DPAPI (`ProtectedData`)",
+      "to": "should-use-dpapi-on-windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "DPAPI (ProtectedData) on Windows is kept at SHOULD.",
+        "pin": "8786d6aaf69aa693cf9811170258fa1deee3f13fd30c7704751313340c0ce92c"
+      }
+    },
+    {
+      "sentence": "**Web:** HttpOnly Secure SameSite cookies (never localStorage)",
+      "to": "should-use-httponly-cookies-on-web",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "HttpOnly Secure SameSite cookies on the web, never localStorage, are kept; the localStorage ban is also a MUST NOT.",
+        "pin": "127d8aeada83e19174a681bd26e4332f047c00a2deb65367bb93bf978cb3b1f8"
+      }
+    },
+    {
+      "sentence": "Tokens MUST NOT be stored in `localStorage` or `sessionStorage` (XSS-accessible)",
+      "to": "must-not-store-tokens-in-web-storage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Tokens MUST NOT be stored in localStorage or sessionStorage is kept with the XSS-accessible reason.",
+        "pin": "e025202e30afa672084775718254c637f80d35b00298f6801f00e26d59d77f44"
+      }
+    },
+    {
+      "sentence": "Tokens MUST NOT be put in URL query parameters (logged in server logs, browser history, referrer headers)",
+      "to": "must-not-put-tokens-in-query-parameters",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Tokens MUST NOT be put in URL query parameters is kept with all three leak reasons.",
+        "pin": "e5841bc808522e32cb9bc7b45dbce3e73b55ad989949f9e0d86f8579691b80b0"
+      }
+    },
+    {
+      "sentence": "`alg: none` MUST NOT be used in JWTs — the `alg` header MUST be validated server-side against an allowlist",
+      "to": "must-validate-jwt-alg-against-allowlist",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "alg: none MUST NOT be used and the alg header MUST be validated server-side against an allowlist are kept.",
+        "pin": "24638c3694e9850b4b77fcc93a45dd04b638062981b1a6a4d7adc0fb70592f92"
+      }
+    },
+    {
+      "sentence": "Client-supplied JWT claims MUST NOT be trusted for authorization without server-side verification",
+      "to": "must-not-trust-client-jwt-claims",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Client-supplied JWT claims MUST NOT be trusted for authorization without server-side verification is kept.",
+        "pin": "44fbc663899cda3250e7d5319ee04bf4655934da42d788b9e0bdced8c6aaadc9"
+      }
+    }
+  ],
+  "obsolete": []
+}

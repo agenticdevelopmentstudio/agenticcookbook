@@ -1,0 +1,17 @@
+
+- `model-key-actions-as-app-intents`: whether key user-facing actions are modeled as App Intents
+- `must-conform-to-appintent`: whether every intent type conforms to `AppIntent` and implements `perform()`
+- `must-declare-title-should-set-description`: whether every intent declares a static `title` and sets `description`
+- `must-use-typed-parameters`: whether every user input is a `@Parameter` of an `IntentParameter`-supported type
+- `must-be-retry-safe-and-throw-typed-errors`: whether each `perform()` is retry-safe where needed and throws typed errors
+- `should-return-most-specific-result`: whether each intent returns the most specific `IntentResult`
+- `conform-one-type-to-appshortcutsprovider`: whether one type conforms to `AppShortcutsProvider` and returns `AppShortcut` values
+- `must-include-application-name-in-phrases`: whether every `AppShortcut` phrase set contains `\(.applicationName)`
+- `ship-high-value-actions-as-appshortcuts`: whether high-value actions ship as `AppShortcut`s
+- `must-conform-domain-types-to-appentity`: whether every domain type exposed to intents conforms to `AppEntity`
+- `provide-an-entityquery`: whether each entity has an `EntityQuery` the system can resolve with
+- `back-queries-with-real-data`: whether queries are backed by the real data layer
+- `prefer-app-intents-for-new-work`: whether new work uses the App Intents framework
+- `should-not-add-sirikit-custom-intent`: whether any new SiriKit custom intent is added for an action App Intents can express
+- `migrate-custom-intents-when-touched`: whether touched custom intents are migrated
+- `treat-other-capabilities-as-forecasts`: whether capabilities beyond the listed surfaces are treated as forecasts and confirmed against current docs

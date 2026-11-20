@@ -4,11 +4,11 @@
     "id": "7a14b9f2-0e10-456b-a103-8a887afda9f2",
     "title": "Suppress unsupported confidence",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,12 +26,16 @@
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "e1ff76781bfb59a7",
+  "synced": "8979176a725678fd",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

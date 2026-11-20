@@ -1,0 +1,106 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Support pull-to-refresh and pagination",
+      "to": "should-support-refresh-and-pagination-in-lists",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the list scope: lists support pull-to-refresh and pagination.",
+        "pin": "62797d66456ea6cace0d1522119baaaa2c6974371b64dc1131e7c4d7d09a8769"
+      }
+    },
+    {
+      "sentence": "for dynamic data.",
+      "to": "should-support-refresh-and-pagination-in-lists",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The for-dynamic-data condition is kept in should-support-refresh-and-pagination-in-lists.",
+        "pin": "56b3e62c3e960b0027318506cf7ea2ee4417fb327a4631953f3bc1851bf58933"
+      }
+    },
+    {
+      "sentence": "Tables MUST be sortable",
+      "to": "must-make-tables-sortable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: tables are sortable.",
+        "pin": "391d4b1b8e0c00616bb61151958cb4c20e64a2f792affff859ffc31ccfa87e3b"
+      }
+    },
+    {
+      "sentence": "by column.",
+      "to": "must-make-tables-sortable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The by-column scope is kept in must-make-tables-sortable.",
+        "pin": "c89f341d1db970d597a6f7160d643ff78e8dd465fd425f194c38d74f13851780"
+      }
+    },
+    {
+      "sentence": "On mobile, consider collapsing to cards or a detail-on-tap list.",
+      "to": "should-consider-collapsing-tables-on-mobile",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as SHOULD consider, with the on-mobile condition and both alternatives (cards or detail-on-tap list).",
+        "pin": "87bf549a2d89f1c88353df47817a4333f031dd3761481d942b82d1941bf5a222"
+      }
+    },
+    {
+      "sentence": "Cards should each be a single tappable unit with",
+      "to": "should-make-each-card-one-tappable-unit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'should' is kept as SHOULD: each card is a single tappable unit.",
+        "pin": "ab649889a6b8a6884d017ee3ebe45cd2ecc95bc6c0d9b17e9c1693489983f0fd"
+      }
+    },
+    {
+      "sentence": "one primary action.",
+      "to": "should-make-each-card-one-tappable-unit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The one-primary-action qualifier is kept in should-make-each-card-one-tappable-unit.",
+        "pin": "eae3d3176c8c487a742f3d03da2bb6c770c4930b54d185914e14989ef3976cdb"
+      }
+    },
+    {
+      "sentence": "Maintain consistent aspect ratios.",
+      "to": "should-maintain-grid-aspect-ratios",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the grid scope made explicit.",
+        "pin": "819a528cb20a233d07bb06a2e65da56247f794b78043f0551d32d4b5de07077e"
+      }
+    },
+    {
+      "sentence": "Collections of **50+ items**",
+      "to": "must-search-fifty-plus-items",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 50+ items threshold is kept verbatim in must-search-fifty-plus-items.",
+        "pin": "342331c3369a1cc33248ede773959d8f21d87d29e1621528d63b1a7d47dff71a"
+      }
+    },
+    {
+      "sentence": "MUST include search.",
+      "to": "must-search-fifty-plus-items",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: collections of 50+ items include search.",
+        "pin": "368d210057413e7f93b97e208898bb958cd3006030506fd45b83b8fed54ad0b8"
+      }
+    }
+  ],
+  "obsolete": []
+}

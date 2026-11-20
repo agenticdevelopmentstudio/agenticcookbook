@@ -1,0 +1,92 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Purpose-coherent groups are correctly scoped.** If every file in a candidate scope group has the same primary purpose, the group is coherent.",
+      "to": [
+        "should-keep-groups-purpose-coherent",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-groups-purpose-coherent keeps the 'purpose-coherent groups are correctly scoped' claim, and the rationale keeps that same-primary-purpose files make a coherent group.",
+        "pin": "4ba24a50eabe86cec85de5d442c3dd2b5c6482fe7b158725ff80fee962b8984e"
+      }
+    },
+    {
+      "sentence": "Different purposes within the same group indicate either misclassification or a need to split.",
+      "to": "should-keep-groups-purpose-coherent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-groups-purpose-coherent keeps that differing purposes in one group indicate misclassification or a need to split.",
+        "pin": "97cde2ee134eb0d43e200492b8ddd5f9fa3e1f31346dd076eda2f740a7c1421e"
+      }
+    },
+    {
+      "sentence": "**Each scope group should have one sentence purpose.** Test: can you complete \"This scope group exists to ___\" with a single clear answer?",
+      "to": "should-have-one-sentence-purpose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-have-one-sentence-purpose keeps the one-sentence purpose at SHOULD and its 'This scope group exists to ___' test, plus the 'and also' signal.",
+        "pin": "28c10510b9ae7b138242c912bb8385302071a4ffa5cbb8b43711c2b94b91f1be"
+      }
+    },
+    {
+      "sentence": "**Mixed-purpose files mark the fault line.** A file that mixes UI and networking is a symptom — the fault line is between those two purposes.",
+      "to": [
+        "should-split-mixed-files-along-fault-line",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-split-mixed-files-along-fault-line keeps the fault-line headline with the UI-and-networking example; the rationale keeps the symptom framing and where the fault line lies.",
+        "pin": "aaeaa58c7ba768b5f77b481ef1b9ab636d1733066b812474ec6077bd3c5744a9"
+      }
+    },
+    {
+      "sentence": "Recommend splitting the file along that line.",
+      "to": "should-split-mixed-files-along-fault-line",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-split-mixed-files-along-fault-line keeps recommending a split along the fault line (unkeyed, now SHOULD).",
+        "pin": "4f2251fa8678fc69de5484381232d05e8863e1fc1d1e35b55897ba6faf8be6cf"
+      }
+    },
+    {
+      "sentence": "**Configuration is rarely its own scope group.** Configuration files belong with the components they configure, unless they configure the entire application (in which case they belong in an application bootstrap scope group).",
+      "to": "should-place-configuration-with-its-components",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-place-configuration-with-its-components keeps placement with the configured components, the whole-application exception to a bootstrap group, and the rarely-its-own-group headline.",
+        "pin": "23fdb8f3d9f6bf89ca745edd8f7ed15ccd49ce3728ca16dd6b9a1cda040ea20a"
+      }
+    },
+    {
+      "sentence": "**Testing infrastructure belongs adjacent to its subject.** Test mocks and fakes belong in the same scope group as the types they mock, or in a shared test infrastructure scope group if used across multiple groups.",
+      "to": "should-place-test-infrastructure-with-subject",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-place-test-infrastructure-with-subject keeps mocks and fakes with the mocked types, or in shared test infrastructure when used across groups.",
+        "pin": "f27eec7ddf12dedd55a078444e9d397d16d9673a563caa3ad84391883ebb6350"
+      }
+    },
+    {
+      "sentence": "**Build tooling is always its own scope group.** Build scripts, code generators, and Gradle/Webpack configuration are not part of any runtime scope group — they form a `Build Tooling` scope group that is excluded from runtime analysis.",
+      "to": "must-give-build-tooling-own-group",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-give-build-tooling-own-group keeps 'always its own group' at MUST, the three tooling kinds, not-runtime, and the Build Tooling group excluded from runtime analysis.",
+        "pin": "315dd380e67cc2b08a6918339db5cc88b307cf7d88a459ddec106a2ce580fb8d"
+      }
+    }
+  ],
+  "obsolete": []
+}

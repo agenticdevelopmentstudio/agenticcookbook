@@ -1,0 +1,149 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Break up long tasks** — split work > 50ms into smaller chunks so the main thread can paint and handle input between them.",
+      "to": "should-break-up-long-tasks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the > 50ms threshold and the paint-and-handle-input reason.",
+        "pin": "169fb72d2329c013970cbc5af1803c4ee594a2d989daf2bb73945ee2e1e2c6a2"
+      }
+    },
+    {
+      "sentence": "**Yield to the main thread.** Prefer `scheduler.yield()` where available — note it is **Chromium-supported but NOT yet Baseline** as of 2026 (limited availability).",
+      "to": [
+        "should-yield-to-main-thread",
+        "should-prefer-scheduler-yield"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD across two rules, including the Chromium-supported-but-not-Baseline-as-of-2026 caveat.",
+        "pin": "0648f7b66bfa5803950e516bdadd35d8b617c516c655d2739d26d39f64432280"
+      }
+    },
+    {
+      "sentence": "Provide a fallback: feature-detect and degrade to `await new Promise(r => setTimeout(r))` (loses the prioritized continuation) or the `scheduler-polyfill`.",
+      "to": "should-provide-yield-fallback",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with feature detection, the setTimeout degrade (and its lost prioritized continuation) and the scheduler-polyfill alternative.",
+        "pin": "50c8adf6e90d24533651ef5a6cb94a025571789ae1b3443e65772dba26feffeb"
+      }
+    },
+    {
+      "sentence": "**Move heavy computation to a Web Worker** (parsing, diffing, crypto, image work) to keep the main thread free for rendering and input.",
+      "to": "should-move-heavy-computation-to-web-worker",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the four example workloads and the keep-the-main-thread-free reason.",
+        "pin": "9828f87258bdafba9d4877fd8ab2b1ed5bb79af2b9df02b828c07389525e66b8"
+      }
+    },
+    {
+      "sentence": "**Avoid layout thrashing** — batch DOM reads then writes; never interleave reads/writes in a loop that forces synchronous reflow.",
+      "to": "must-avoid-layout-thrashing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Avoid layout thrashing and batch reads-then-writes kept at SHOULD, and the 'never interleave' clause is kept as a MUST NOT.",
+        "pin": "9065c09ee698e9c1b15cdb3d48ddadc0dc2a0b28f3ba78b040fef45c5c473b72"
+      }
+    },
+    {
+      "sentence": "**Keep the DOM small** — oversized DOM trees (thousands of nodes) inflate style/layout cost on every interaction.",
+      "to": "should-keep-dom-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the thousands-of-nodes example and the style/layout-cost reason.",
+        "pin": "ed0c95dcac9c66c330b6eaad6d57be3bc54b3bd5fd15f8c425fa26dae45a9489"
+      }
+    },
+    {
+      "sentence": "Virtualize long lists.",
+      "to": "should-keep-dom-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD in should-keep-dom-small: virtualize long lists.",
+        "pin": "38d6e2ab11658dae0d838409e44f86fa36d951b6e8d0429525c8e159f99cba6d"
+      }
+    },
+    {
+      "sentence": "**Defer non-critical work** to idle time (`requestIdleCallback`) or post-interaction.",
+      "to": "should-defer-non-critical-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both targets: idle time via requestIdleCallback, or post-interaction.",
+        "pin": "026e3f117f2b0a41edf266df146004f2b730a4066bb2bc149146eacb91f147d1"
+      }
+    },
+    {
+      "sentence": "**LCP**: preload the LCP image/font, serve responsive images, avoid render-blocking CSS/JS, use `fetchpriority=\"high\"` on the hero image, and prefer server-side rendering for above-the-fold content.",
+      "to": "should-apply-lcp-quick-wins",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All five LCP quick wins are kept at SHOULD.",
+        "pin": "d01a42e097acdd92bc2dc4bbaf90138eae3d4612663c29fb79dfbaed55794ae6"
+      }
+    },
+    {
+      "sentence": "**CLS**: reserve space for media and dynamic content; avoid inserting content above existing content; use `font-display: optional`/`swap` deliberately and preload fonts to reduce reflow.",
+      "to": "should-apply-cls-quick-wins",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All CLS quick wins are kept at SHOULD, including deliberate font-display use and font preloading.",
+        "pin": "a1680f83ac8a524e19572d0dc35362a4a89d7548f42d2885d38e8904eabaf160"
+      }
+    },
+    {
+      "sentence": "Collect field data via the **`web-vitals` JavaScript library** (reports LCP, INP, CLS using the attribution build for debugging) or the Chrome User Experience Report (CrUX).",
+      "to": "should-collect-field-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both sources (web-vitals library with attribution build, or CrUX).",
+        "pin": "0c810345d7ce14e4f1586b6bef83c47a8f937a210ffa38e5d477536a90dad6d7"
+      }
+    },
+    {
+      "sentence": "Wire a CI gate such as **Lighthouse CI** (`lhci autorun`) with assertions on metric thresholds and resource/byte budgets defined in a `budget.json`.",
+      "to": "should-wire-a-ci-gate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with Lighthouse CI, metric-threshold assertions and budget.json resource/byte budgets.",
+        "pin": "38834e2d3bc5a7cc4384e193c5790e315d58a29c9b224f5fe5d64fbb32eb1ab6"
+      }
+    },
+    {
+      "sentence": "Express budgets as concrete limits (e.g., total JS transfer <= 170KB compressed for the critical path) and fail the build on regression — this turns performance into a `tight-feedback-loop` and a `support-automation` boundary rather than a manual review step.",
+      "to": "should-express-budgets-as-concrete-limits",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the 170KB example, fail-on-regression and the tight-feedback-loop / support-automation reason.",
+        "pin": "d7aef0fb53ea9dbe30d73c35af9dcc6440604b1366fcec9b03c2fa47825c4b5b"
+      }
+    },
+    {
+      "sentence": "Treating Core Web Vitals as a deliberate, budgeted constraint (not an after-the-fact audit) is the durable practice; specific thresholds are reviewed periodically by the Chrome team, so pin to the dated thresholds above and re-verify against `web.dev/articles/vitals/`.",
+      "to": "should-pin-dated-thresholds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: the budgeted-constraint framing, the periodic-review reason and the pin-and-re-verify instruction at SHOULD; the dated thresholds it points to remain in the three-core-web-vitals part.",
+        "pin": "b0a2f8fa7586d812df0606dff89044a8a29e9a32a1840a56a723c7c3ceb1a013"
+      }
+    }
+  ],
+  "obsolete": []
+}

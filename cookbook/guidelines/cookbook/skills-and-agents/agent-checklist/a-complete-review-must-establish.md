@@ -1,0 +1,30 @@
+
+- `must-have-yaml-frontmatter`: whether check S01 holds: File starts with `---`, has closing `---`
+- `should-have-name-field`: whether check S02 holds: Frontmatter contains `name:`
+- `must-use-kebab-case-name`: whether check S03 holds: Regex: `^[a-z][a-z0-9-]{0,63}$`
+- `must-have-description-field`: whether check S04 holds: Frontmatter contains `description:`
+- `should-use-natural-trigger-keywords`: whether check S05 holds: Description includes phrases users would say; not too vague or too narrow
+- `should-be-in-agents-directory`: whether check S11 holds: Agent is in `.claude/agents/` or `~/.claude/agents/`
+- `should-use-only-recognized-frontmatter-fields`: whether check S12 holds: Check against known fields: name, description, tools, disallowedTools, model, permissionMode, maxTurns, skills, mcpServers, hooks, memory, background, effort, isolation
+- `should-use-lowercase-kebab-case-filename`: whether check S13 holds: Filename matches `^[a-z][a-z0-9-]*\.md$`; UPPERCASE stems are reserved for identity files like `SKILL.md` and `CLAUDE.md`
+- `should-have-single-responsibility`: whether check C01 holds: Agent has one clear purpose; not a grab-bag of unrelated tasks
+- `should-cover-error-handling`: whether check C04 holds: System prompt addresses what to do when things go wrong (tool failures, missing files, bad input)
+- `should-give-actionable-specific-instructions`: whether check C07 holds: System prompt tells the agent what to do concretely
+- `must-not-conflict-with-itself`: whether check C08 holds: Body does not contradict itself
+- `should-use-well-structured-markdown`: whether check C09 holds: Uses headings, lists, code blocks; not a wall of unstructured text
+- `should-provide-verification-method`: whether check B01 holds: Agent includes how to validate it completed successfully
+- `should-not-replicate-native-capabilities`: whether check B02 holds: Agent doesn't teach Claude things it already knows
+- `should-include-usage-examples`: whether check B05 holds: Body or description includes expected usage context
+- `must-not-be-kitchen-sink`: whether check B06 holds: Agent doesn't try to do everything — stays focused on its stated purpose
+- `should-not-explore-unbounded`: whether check B07 holds: Agent scopes its investigation; doesn't read unbounded numbers of files
+- `should-not-be-claude-md-dump`: whether check B08 holds: Agent content is agent-appropriate, not a copy-paste of project rules that belong in CLAUDE.md
+- `should-match-model-override-to-complexity`: whether check B10 holds: If `model:` is set, it matches the agent's complexity
+- `should-keep-description-under-200-characters`: whether check B12 holds: Description is under ~200 characters to avoid consuming excessive context
+- `must-have-name-and-description`: whether check A01 holds: Agent .md file has both fields
+- `should-restrict-tool-access`: whether check A02 holds: `tools` or `disallowedTools` limits access for specialized agents
+- `may-specify-model`: whether check A03 holds: Agent benefits from a specific model for its task
+- `should-have-clear-focused-system-prompt`: whether check A04 holds: Markdown body gives the agent a clear role and scope
+- `should-set-permission-mode-appropriately`: whether check A05 holds: `plan` for read-only agents, `bypassPermissions` for fully automated
+- `should-set-max-turns-for-bounded-tasks`: whether check A06 holds: Simple agents that should finish quickly have a turn limit
+- `may-preload-skills`: whether check A07 holds: Agent that needs domain knowledge has relevant skills preloaded
+- `may-scope-memory`: whether check A08 holds: If agent accumulates knowledge, memory is scoped correctly

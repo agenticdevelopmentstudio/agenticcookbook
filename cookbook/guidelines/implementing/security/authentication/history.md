@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 1.0.5 | 2026-11-19 | Mike Fullerton | Fold guidelines/planning/security/authentication into this topic (identical text); links to it redirected here; Fold guidelines/reviewing/security/authentication into this topic (identical text); links to it redirected here |
 | 1.0.4 | 2026-11-13 | Mike Fullerton | Repair the summary, which was cut off at a line wrap |
 | 1.0.3 | 2026-06-10 | Mike Fullerton | Add recovered Tier-1 research sources (adversarially-audited) |

@@ -1,0 +1,19 @@
+
+- `use-platform-notification-system`: alerts delivered by a custom channel (in-app banner, email) where the platform notification system fits, or alerts that ignore user preferences
+- `request-permission-at-relevance`: a notification permission prompt at launch or onboarding, before the user meets a feature that needs it
+- `must-be-actionable`: a notification whose tap opens the app's root or nothing instead of deep linking to its content
+- `support-grouping-and-categories`: notifications sent with no group or category
+- `respect-dnd-focus-and-quiet-hours`: notifications that bypass Do Not Disturb, Focus modes or quiet hours
+- `apple-use-unusernotificationcenter`: Apple notifications scheduled or received outside `UNUserNotificationCenter`
+- `apple-support-actionable-notifications`: an Apple notification with follow-up actions but no `UNNotificationCategory`/`UNNotificationAction`
+- `ios-support-summary-and-time-sensitive`: iOS notifications with no interruption level set, or none supporting Notification Summary
+- `android-use-notificationcompat`: Android notifications built with the platform `Notification.Builder` instead of `NotificationCompat.Builder`
+- `android-declare-channels`: an Android notification posted with no `NotificationChannel` declared for its category
+- `android-support-messaging-styles`: an Android messaging app's notifications without Direct Reply, bubbles or conversation style
+- `windows-use-appnotification-api`: Windows local notifications built without `AppNotificationManager` + `AppNotificationBuilder`
+- `windows-support-rich-content`: Windows notifications that need images, buttons, progress or scheduling but use plain text
+- `windows-handle-activation`: notification activation handled apart from protocol activation, or not handled
+- `web-use-notifications-api-with-service-workers`: web push handled outside a service worker or without the Notifications API
+- `web-request-permission-contextually`: a web `Notification.requestPermission()` on page load
+- `web-support-actions-and-badges`: web notifications with no actions, or badges set without the Badging API
+- `web-fall-back-when-denied`: web code that breaks when notifications are denied or unavailable

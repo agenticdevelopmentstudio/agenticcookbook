@@ -1,0 +1,24 @@
+
+- `must-make-every-store-enumerable-exportable-deletable`: whether every store of personal data is enumerable, exportable and deletable keyed by a stable subject id
+- `should-confirm-rights-with-counsel`: whether rights, scope, exemptions and deadlines were confirmed with counsel for the jurisdictions served
+- `must-support-access-requests`: whether an access request exports everything held about the subject, including derived data
+- `must-support-erasure-requests`: whether an erasure request deletes across all stores and propagates to processors
+- `must-support-rectification-requests`: whether a rectification corrects the data and propagates the correction
+- `must-support-portability-requests`: whether a portability request yields a structured, machine-readable export
+- `must-support-restriction-requests`: whether data can be marked processing-suspended without deletion
+- `must-support-objection-requests`: whether a specified processing activity can be stopped on objection
+- `must-maintain-data-map`: whether a data map enumerates every place personal data lives
+- `must-record-data-map-entry-fields`: whether every data-map entry records store, subject-id key or join path, data categories, retention basis and receiving processors
+- `must-update-data-map-for-new-stores`: whether every new code path that persists personal data updates the data map
+- `must-verify-requester-identity`: whether every request is acted on only after verifying the requester is the subject or an authorized agent
+- `should-authenticate-against-session-or-verified-channel`: whether requesters are authenticated against an existing session or a verified channel
+- `must-not-act-on-unverified-claim`: whether any path discloses or deletes data on an unverified claim
+- `must-erase-every-derived-copy`: whether deletion reaches caches, search indexes, denormalized read models and analytics aggregates
+- `must-propagate-erasure-to-processors`: whether deletion calls third-party processors' deletion APIs and records completion
+- `should-pseudonymize-or-crypto-shred-logs`: whether logs and event streams use pseudonymization or crypto-shredding where row deletion is impractical
+- `must-document-backup-rescrub-window`: whether the backup rotation window and re-scrub of restored backups are documented and part of the SLA
+- `must-log-every-request`: whether every request is logged with subject id, request type, timestamp, verifier and completion
+- `should-drive-erasure-and-export-from-one-job`: whether erasure and export run as one deterministic job keyed by subject id
+- `must-complete-within-legal-deadline`: whether requests complete within the legal deadline
+- `should-track-per-request-sla`: whether per-request SLA is tracked with an alert before breach
+- `should-test-erasure-leaves-no-residue`: whether a test asserts a created-then-erased subject leaves no residue across mapped stores

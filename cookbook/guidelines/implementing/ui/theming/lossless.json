@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Set app-level theme via `Application.RequestedTheme`, override per-element with `FrameworkElement.RequestedTheme`",
+      "to": "should-set-theme-at-app-and-element-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD with both levels: app-level via Application.RequestedTheme, per-element override via FrameworkElement.RequestedTheme.",
+        "pin": "e9092ec16312b22312c18744606166a928d5d179d1faf65ff21530050979a1d4"
+      }
+    },
+    {
+      "sentence": "Define custom theme-aware colors in a `ResourceDictionary` with `Default`/`Light`/`Dark` theme dictionaries",
+      "to": "should-define-theme-dictionaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD with the ResourceDictionary and its Default/Light/Dark theme dictionaries.",
+        "pin": "cf90744411337ee68387a8ea14e10c5cd4e637e50cec675caa5701d2d9da7a11"
+      }
+    },
+    {
+      "sentence": "<!-- Good: semantic theme resource -->",
+      "to": "examples",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Good: semantic theme resource' comment and its TextBlock line are kept verbatim in the examples part.",
+        "pin": "d6d6f3b78f69b7dbc237fa1b3c8c123177cd6aaabeeef03d32eee9120fef593c"
+      }
+    },
+    {
+      "sentence": "<!-- Bad: hard-coded color -->",
+      "to": "examples",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Bad: hard-coded color' comment and its TextBlock line are kept verbatim in the examples part.",
+        "pin": "bd668b61e051abb712b150b337ea511fb08b8104ae7fca7cd9a43c4e95bd17aa"
+      }
+    }
+  ],
+  "obsolete": []
+}

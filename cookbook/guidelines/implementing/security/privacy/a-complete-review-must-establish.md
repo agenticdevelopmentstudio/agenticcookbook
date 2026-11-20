@@ -1,0 +1,22 @@
+
+- `must-build-privacy-in-from-day-one`: whether privacy and security are built in from the start
+- `should-collect-only-what-is-needed`: whether only needed data is collected
+- `should-prefer-on-device-processing`: whether on-device processing is preferred
+- `should-require-opt-in-for-non-essential-data`: whether non-essential data collection is opt-in
+- `must-remain-functional-when-denied`: whether the app stays functional when optional data collection is denied
+- `must-use-platform-secure-storage`: whether tokens and credentials use platform secure storage
+- `must-not-log-pii`: whether any PII is logged, at any level
+- `must-use-https`: whether all network communication uses HTTPS
+- `should-sanitize-input-before-display`: whether user input is sanitized before display
+- `should-document-privacy-in-specs`: whether each spec has a Privacy section
+- `should-support-apple-privacy-features`: whether the Apple app supports App Tracking Transparency, App Privacy Report and Private Relay
+- `should-include-usage-descriptions`: whether every permission prompt has a human-readable `NS*UsageDescription`
+- `should-respect-android-storage-language-and-denials`: whether the Android app respects scoped storage and per-app language and handles denials gracefully
+- `should-show-rationale-before-permission-requests`: whether Android shows a rationale before each runtime permission request
+- `should-configure-csp`: whether the web app sets CSP headers that restrict script sources
+- `should-use-httponly-cookies-for-tokens`: whether web authentication tokens live in HttpOnly secure cookies
+- `must-not-store-tokens-in-localstorage`: whether any token is stored in `localStorage`
+- `should-minimize-third-party-scripts`: whether third-party scripts are minimized
+- `should-respect-do-not-track`: whether the Do Not Track header is respected
+- `should-declare-only-required-capabilities`: whether only required Windows capabilities are declared
+- `should-use-dpapi-for-local-secrets`: whether Windows local secrets use DPAPI

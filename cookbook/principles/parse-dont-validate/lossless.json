@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Parse at the boundary: convert untrusted input into a domain type exactly once; the parsed value *is* the proof.",
+      "to": "should-parse-at-the-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD converting untrusted input into a domain type exactly once at the boundary, and that the parsed value is the proof.",
+        "pin": "b1c236ffb11ca67174cca8065303e852f2cb9b541c737df9e2a4a124b75c7b9f"
+      }
+    },
+    {
+      "sentence": "Don't thread raw strings and maps through the system and re-check them downstream.",
+      "to": "should-not-revalidate-downstream",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps not threading raw strings and maps through the system and re-checking them downstream, as SHOULD NOT.",
+        "pin": "bc922872dd1f0aa08c6e1bc973a9f3384a8df2329c33ae2d8e5f384f2b269d71"
+      }
+    },
+    {
+      "sentence": "Make illegal states unconstructable: model with the narrowest type that fits — sum types/enums for \"one of\", non-empty collections, bounded ranges, opaque/branded types — so a whole class of \"this should never happen\" branches disappears.",
+      "to": "should-make-illegal-states-unconstructable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD modelling with the narrowest type that fits, with every listed type kind and the reason that never-happen branches disappear.",
+        "pin": "fbaef9e9c03ce5efd4561c0a047f8d9b919277ec579aa606b39f1fecbacf8d40"
+      }
+    },
+    {
+      "sentence": "Push the burden of proof upward, but no further: validate as early as the information is available, without forcing callers to prove things they cannot yet know.",
+      "to": "should-push-proof-upward-but-no-further",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD validating as early as the information is available without forcing callers to prove what they cannot yet know.",
+        "pin": "91913ef20c04abef989edec7c46f0bd0b7bc968e50e8e8107ff0cf270ac2b533"
+      }
+    }
+  ],
+  "obsolete": []
+}

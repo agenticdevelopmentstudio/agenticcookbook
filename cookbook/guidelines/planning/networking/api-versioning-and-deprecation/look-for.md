@@ -1,0 +1,19 @@
+
+- `must-not-ship-breaking-changes-in-place`: Silently changing behavior of an existing version (breaks the observable-behavior-contract).
+- `should-set-a-removal-date-with-sunset`: Removing an endpoint with no `Sunset` date or before the announced window.
+- `should-pin-the-default-version`: Auto-upgrading unversioned clients to "latest".
+- `should-version-at-a-coarse-grain`: A new major version per trivial change, multiplying surfaces you must maintain.
+- `must-ship-additive-changes-without-a-version-bump`: a version bump for a purely additive change
+- `must-version-breaking-changes`: a removed or renamed field, changed type or units, tightened validation, changed default, altered status code, or changed pagination/auth semantics with no new version
+- `must-tolerate-unknown-fields`: a client that rejects unknown fields
+- `should-assume-consumers-depend-on-every-observable-detail`: a change to field order, error text or timing treated as safe because the spec does not mention it
+- `should-pick-one-scheme-for-the-whole-surface`: no single versioning scheme chosen for the surface
+- `must-not-mix-schemes`: two versioning schemes in one API
+- `should-run-the-deprecation-sequence`: a retirement that skips a step of the sequence, or whose timeline was not published before the first signal
+- `should-announce-with-the-deprecation-header`: deprecated responses with no `Deprecation` header
+- `should-link-migration-docs`: no `Link` header with `rel="deprecation"` and `rel="successor-version"` pointing at migration docs
+- `must-not-sunset-before-deprecation`: a `Sunset` time earlier than the `Deprecation` time
+- `should-document-the-deprecation`: no public changelog entry, or no `deprecated: true` in the spec
+- `should-honor-a-migration-window`: no published migration window, or one shortened after announcement
+- `must-pair-deprecation-headers-with-documentation`: deprecation headers with no documentation alongside them
+- `should-measure-and-notify-before-removal`: no metrics on deprecated-version traffic, or high-volume consumers not notified before removal

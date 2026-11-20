@@ -4,11 +4,11 @@
     "id": "ed0b7eb6-9e33-41f7-954f-1e1a0f813462",
     "title": "Agentic research design lessons",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,21 +31,19 @@
       "https://github.com/langchain-ai/open_deep_research",
       "https://huggingface.co/blog/open-deep-research"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "research"
     ]
   },
-  "informational": "Lessons observed in production research agents, offered as evidence for design choices rather than as rules.",
-  "synced": "c4bde6888bb3dabb",
+  "synced": "b59f883253b5f58f",
   "parts": [
     {"part": "intro"},
-    {"part": "orchestration", "heading": "Orchestration"},
-    {"part": "sourcing-and-retrieval", "heading": "Sourcing and retrieval"},
-    {"part": "citation-and-provenance", "heading": "Citation and provenance"},
-    {"part": "verification", "heading": "Verification"},
-    {"part": "reporting", "heading": "Reporting"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

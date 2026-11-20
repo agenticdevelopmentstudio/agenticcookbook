@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Reach for managed IaC platforms, Kubernetes operators, or multi-account orchestration **only when a measured need justifies the operational weight** — not as a default.",
+      "to": "should-adopt-heavy-iac-platforms-only-on-measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: managed IaC platforms, Kubernetes operators or multi-account orchestration only when a measured need justifies the operational weight, not as a default.",
+        "pin": "db7bce1c877bc60b45bbadfd23e86e308fffa71c1f69b225f64574780cf5f598"
+      }
+    },
+    {
+      "sentence": "Start with the smallest backend and module layout that works and grow deliberately (small, reversible decisions).",
+      "to": "should-start-with-the-smallest-layout-that-works",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, including growing deliberately and the small, reversible decisions reason.",
+        "pin": "92bc09e9c5e728fd37a856197b882bcbbecc9ea9098e6e0affaeda0d68f5096d"
+      }
+    },
+    {
+      "sentence": "> Privacy/compliance notes here are engineering guidance, not legal advice.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim in rationale: the privacy/compliance notes are engineering guidance, not legal advice, attached to the counsel rule it introduced.",
+        "pin": "4958d7031b298deda8fa292adc6401c52b7c9e11ca9bb8f2b13e4e5f4ab6546c"
+      }
+    },
+    {
+      "sentence": "Confirm data-residency and credential-handling obligations with qualified counsel.",
+      "to": "should-confirm-obligations-with-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: confirm data-residency and credential-handling obligations with qualified counsel.",
+        "pin": "6ad670ca6ab36f75dfd6af5c7c8d4af708aa73f726d351f404ec83a39fcb39a6"
+      }
+    },
+    {
+      "sentence": "Describe the **desired end state**, not the steps to reach it.",
+      "to": "should-describe-the-desired-end-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: describe the desired end state, not the steps to reach it.",
+        "pin": "d30481df50c987f71b0ddb108f22b2422094adb8260f86e80379283be89594cb"
+      }
+    },
+    {
+      "sentence": "Pin tool and provider versions explicitly (e.g. a `.terraform.lock.hcl` / lockfile committed to the repo).",
+      "to": "should-pin-tool-and-provider-versions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the committed `.terraform.lock.hcl` example; the 'floating versions break reproducibility' reason is in rationale.",
+        "pin": "d664739d0a03f612ab4607ad03d5e913c16e39c90658fb83a7d36522931f8b4f"
+      }
+    },
+    {
+      "sentence": "Prefer mature, declarative tooling: **OpenTofu** or **Terraform** (HCL), or **Pulumi** (general-purpose languages) when programmable abstractions justify the added surface area.",
+      "to": "should-prefer-mature-declarative-tooling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: OpenTofu or Terraform, or Pulumi when programmable abstractions justify the added surface area.",
+        "pin": "8ce9d9ea208463295db93cdd61b59ff57df65c903c976e9ef5c5fc8f2a8b071e"
+      }
+    },
+    {
+      "sentence": "Run scheduled drift detection (e.g. a periodic `plan`, `pulumi refresh` + preview, or a platform's drift feature) so manual changes are caught in hours, not at the next unrelated apply when a `destroy` appears unexpectedly.",
+      "to": "should-run-scheduled-drift-detection",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with all detection examples and the hours-not-next-apply reason.",
+        "pin": "eb7a86668bc20f56215dab30480debf6149ada384f4f6cb20aaa6636ea6eb917"
+      }
+    },
+    {
+      "sentence": "When drift is real and intended, encode it in the configuration and re-apply; do not leave the divergence in place.",
+      "to": "should-encode-intended-drift",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and SHOULD NOT (unkeyed before): when drift is real and intended, encode it and re-apply, and do not leave the divergence in place.",
+        "pin": "e47c5054fb196151d09e4e1f5b4bd1cfce14640337f306ff162ed561706d34f2"
+      }
+    },
+    {
+      "sentence": "Factor repeated patterns into **modules** with explicit inputs/outputs; pin module versions.",
+      "to": "should-factor-repeated-patterns-into-modules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: modules with explicit inputs/outputs, and pinned module versions.",
+        "pin": "b1fe704b3687dbf3edcf89d590317d6eee0448ef0a7dfdceb3b757265d88f632"
+      }
+    },
+    {
+      "sentence": "Keep environments (dev/stage/prod) as separate state with shared modules — avoid copy-paste.",
+      "to": "should-keep-environments-as-separate-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: dev/stage/prod as separate state with shared modules, avoiding copy-paste.",
+        "pin": "c2240383fd8339efc558d6b2b683b5751b7cdd9747ccfc0ef98c72291641d50d"
+      }
+    },
+    {
+      "sentence": "Do not emit secrets as outputs; write them directly to a secrets manager during apply and have apps fetch at runtime.",
+      "to": "should-not-emit-secrets-as-outputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT (unkeyed before): no secrets as outputs, write them to a secrets manager during apply and have apps fetch at runtime; the MUST NOT on plaintext state stays in must-not-expose-secrets-in-plaintext-state.",
+        "pin": "782583d828f02fa94807b25fbf7d6ef428a2f0c6ee9263c5392533675ef4a854"
+      }
+    },
+    {
+      "sentence": "Pulumi encrypts values marked `secret` in state, but restrict state read access regardless.",
+      "to": "should-restrict-state-read-access",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Pulumi encryption context: restrict state read access regardless.",
+        "pin": "11835387642d8a1cd2d2dc5def82d66ab4cdebd940064177ab76d053ca41f288"
+      }
+    },
+    {
+      "sentence": "Run `plan` in CI on every pull request and surface the diff in the PR.",
+      "to": "should-run-plan-in-ci-on-every-pull-request",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: run `plan` in CI on every pull request and surface the diff in the PR.",
+        "pin": "6f3a4539a29e2fb93b4fdda62596d3bb319df3d0fa8fa54a0797ce53dff013fe"
+      }
+    },
+    {
+      "sentence": "Be wary of resources marked for replacement — confirm the underlying cause (a deliberate change vs. drift vs. a provider upgrade) before applying.",
+      "to": "should-confirm-the-cause-of-replacements",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: be wary of replacements and confirm the cause (deliberate change, drift, provider upgrade) before applying.",
+        "pin": "1dfbf0905d59258a683cf57844d1e096f0ab627350133c6101c9ef617c45ea1d"
+      }
+    },
+    {
+      "sentence": "For the S3 backend, prefer native S3 lockfile-based locking (`use_lockfile = true`, available since 2025); a DynamoDB lock table remains valid and can run alongside it during migration.",
+      "to": "should-prefer-native-s3-lockfile-locking",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, including `use_lockfile = true`, the 2025 date and the DynamoDB lock table remaining valid alongside it during migration.",
+        "pin": "ccc7097944d2dfa349808065a33da035ad986e470e2d47ff70f5a79e580a6334"
+      }
+    },
+    {
+      "sentence": "Use a consistent state key convention (`<env>/<component>/terraform.tfstate`) so IAM policies can scope per environment.",
+      "to": "should-use-a-consistent-state-key-convention",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, including the key pattern and the IAM per-environment scoping reason.",
+        "pin": "b72e1ba39ca928976edd2c28eae7da997f1931a3754d4cef4c19a8c09134f6c4"
+      }
+    }
+  ],
+  "obsolete": []
+}

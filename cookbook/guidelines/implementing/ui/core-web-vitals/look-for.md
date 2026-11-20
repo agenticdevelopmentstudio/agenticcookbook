@@ -1,0 +1,20 @@
+
+- `must-not-reference-fid`: FID named as a current Core Web Vital
+- `must-measure-in-field-at-p75`: Core Web Vitals judged only from lab runs, or not at the field p75
+- `must-enforce-performance-budget-in-ci`: no performance budget enforced in CI, or one whose regressions do not fail the build
+- `should-use-lab-tooling-for-diagnosis`: lab results treated as the authoritative pass/fail signal, or no lab tooling for diagnosis and pre-merge gating
+- `must-reserve-space-for-shifting-elements`: images, ads, embeds or late-injected banners without explicit `width`/`height` or `aspect-ratio`
+- `should-break-up-long-tasks`: main-thread tasks over 50ms left unsplit
+- `should-yield-to-main-thread`: long-running work that never yields to the main thread
+- `should-prefer-scheduler-yield`: yielding by other means where `scheduler.yield()` is available
+- `should-provide-yield-fallback`: `scheduler.yield()` called without feature detection and a fallback
+- `should-move-heavy-computation-to-web-worker`: parsing, diffing, crypto or image work on the main thread
+- `must-avoid-layout-thrashing`: DOM reads and writes interleaved in a loop that forces synchronous reflow, or reads and writes not batched
+- `should-keep-dom-small`: DOM trees of thousands of nodes, or long lists not virtualized
+- `should-defer-non-critical-work`: non-critical work running during or before an interaction instead of in idle time
+- `should-apply-lcp-quick-wins`: an LCP image/font not preloaded, unresponsive images, render-blocking CSS/JS, a hero image without `fetchpriority="high"`, or client-only rendering of above-the-fold content
+- `should-apply-cls-quick-wins`: media or dynamic content without reserved space, content inserted above existing content, or `font-display` chosen without intent and fonts not preloaded
+- `should-collect-field-data`: no `web-vitals` library or CrUX field-data collection
+- `should-wire-a-ci-gate`: no CI gate such as Lighthouse CI asserting metric thresholds and `budget.json` budgets
+- `should-express-budgets-as-concrete-limits`: budgets stated vaguely, or not failing the build on regression
+- `should-pin-dated-thresholds`: thresholds used without a date or not re-verified against `web.dev/articles/vitals/`

@@ -1,0 +1,109 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Each test case **MUST** pin an input and the expected tool-call trajectory (tool names plus expected arguments).",
+      "to": "must-pin-input-and-expected-trajectory"
+    },
+    {
+      "sentence": "Treat this suite as a fixed, versioned regression set.",
+      "to": "should-treat-suite-as-versioned-regression-set",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: a fixed, versioned regression set.",
+        "pin": "85c3a48f5b8f26161270e85cea5ed946864dd323455f2dbb470465c296fa358f"
+      }
+    },
+    {
+      "sentence": "Argument checks **SHOULD** allow semantic equivalence where exact match is too strict (e.g., equivalent date formats), but **MUST** stay strict on identifiers, units, and destructive parameters.",
+      "to": "should-allow-semantic-argument-equivalence"
+    },
+    {
+      "sentence": "Score against the trajectory, not just the final output — an agent can reach a correct answer through an unsafe or wasteful path.",
+      "to": "should-score-against-trajectory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, with the reason about unsafe or wasteful paths to a correct answer.",
+        "pin": "d0c34e60b297381407de71c6bb3bd78ea608f5f21e5b7672d79914533d195357"
+      }
+    },
+    {
+      "sentence": "The suite **MUST** include cases where a tool returns an error, an empty result, or a timeout, and assert the agent recovers (retries sensibly, picks a fallback, or reports failure) rather than hallucinating success.",
+      "to": "must-include-error-recovery-cases"
+    },
+    {
+      "sentence": "Include cases where the correct action is to call **no** tool, to confirm the agent does not invoke tools spuriously.",
+      "to": "should-include-no-tool-cases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, with the purpose of confirming no spurious tool calls.",
+        "pin": "310079e948a63e78b0c188e2354c213aa927ee1102a1ce67a0b6d45fcdba57ef"
+      }
+    },
+    {
+      "sentence": "You **MUST** evaluate whether the agent selected the right tool, supplied correct arguments, called tools in the right order, and stopped when the task was done.",
+      "to": "must-evaluate-selection-arguments-ordering-stopping"
+    },
+    {
+      "sentence": "Run each case multiple times; tool selection is non-deterministic, so **SHOULD** report pass rates with trial counts, not a single run.",
+      "to": "should-report-pass-rates-with-trial-counts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'run each case multiple times' is kept at SHOULD, along with the non-determinism reason and the SHOULD on reporting pass rates with trial counts.",
+        "pin": "19a47847912f9b37859d764ceb55d228f3ac780e9ad18a7ff4735919044f5ac0"
+      }
+    },
+    {
+      "sentence": "Gate releases on the suite and track per-dimension scores over time so a regression in argument correctness is not masked by stable task-completion numbers.",
+      "to": "should-gate-releases-and-track-per-dimension-scores",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both actions (gate releases, track per-dimension scores) and the masking reason.",
+        "pin": "e902292e550b3eaee20c4e3281e23acff595783253b7348d280dbe76f1644a93"
+      }
+    },
+    {
+      "sentence": "Keep cases hermetic: stub or record tool responses so the eval measures the agent, not live backend flakiness.",
+      "to": "should-keep-cases-hermetic",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the stub-or-record method and the reason (measure the agent, not backend flakiness).",
+        "pin": "35a313449c8bf114c32fcd2812fbd8db67427cafa8bea9aece4a5c36bc29b349"
+      }
+    },
+    {
+      "sentence": "You **MUST NOT** assume short-chain pass rates generalize to long chains.",
+      "to": "must-not-assume-short-chains-generalize"
+    },
+    {
+      "sentence": "Add multi-step cases that exercise the realistic tool count the agent ships with, and report accuracy as a function of chain length.",
+      "to": "should-add-realistic-multi-step-cases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: realistic tool count, and accuracy reported against chain length.",
+        "pin": "1a6381966e6bda1841a94b4eff0e36d7dd5531ead4afe7617753863f2b548c5d"
+      }
+    },
+    {
+      "sentence": "A tool-call eval **SHOULD** report each dimension separately so failures are diagnosable:",
+      "to": [
+        "should-report-each-dimension-separately",
+        "what-to-score"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the diagnosability reason; the rule lists the five dimensions and the what-to-score table details them.",
+        "pin": "cceba970eb623fc018eda1c4b7585efa064d36d66ad0ede5053a16d64ee7c7c5"
+      }
+    }
+  ],
+  "obsolete": []
+}

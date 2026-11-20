@@ -4,11 +4,11 @@
     "id": "e8677291-1d21-484f-b562-90b8600ea380",
     "title": "Diverge Before You Converge",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,12 +30,17 @@
       "Design Council UK, Double Diamond, 2005",
       "Beaty et al., Trends in Cognitive Sciences, 2016"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "89b989552e029e9a",
+  "synced": "d830d291418fc9f7",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

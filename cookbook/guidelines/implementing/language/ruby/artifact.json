@@ -4,7 +4,7 @@
     "id": "f29e82ca-611e-409a-9121-8abe1719b434",
     "title": "Ruby",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -45,32 +45,23 @@
       "https://docs.rubocop.org/rubocop/configuration.html",
       "https://guides.rubygems.org/gemfile/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "refactor",
       "error-handling"
     ]
   },
-  "synced": "a31ce83ec137bc03",
+  "synced": "ff20c91f6e635b92",
   "parts": [
     {"part": "intro"},
-    {"part": "file-header", "heading": "File header"},
-    {"part": "running-other-programs", "heading": "Running other programs"},
-    {"part": "values", "heading": "Values"},
-    {"part": "errors", "heading": "Errors"},
-    {"part": "keyword-arguments", "heading": "Keyword arguments"},
-    {"part": "style", "heading": "Style"},
-    {"part": "dependencies", "heading": "Dependencies"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "header-and-strings", "heading": "Header and strings"},
-    {"part": "processes", "heading": "Processes"},
-    {"part": "values-and-errors", "heading": "Values and errors"},
-    {"part": "keyword-arguments-2", "heading": "Keyword arguments"},
-    {"part": "style-and-dependencies", "heading": "Style and dependencies"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why a review checklist", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Verification includes confirming preview functions compile.",
+      "to": "should-verify-compose-previews-compile",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The declarative verification step is kept at SHOULD, and the rule names its Compose scope, which the old sentence took from its kotlin.md part.",
+        "pin": "0ce2f7fbb65617ec46578c36cf0de23d9ac0f1fea591908c21e1ee2fa452b26d"
+      }
+    },
+    {
+      "sentence": "Verification includes confirming previews render without crashes.",
+      "to": "should-verify-swiftui-previews-render",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The declarative verification step (previews render without crashes) is kept at SHOULD, and the rule names its SwiftUI scope, which the old sentence took from its swift.md part.",
+        "pin": "5cbf26f9f2ec73342f949ac566f347611a147435b7884dfa239ee850b348aa05"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,16 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**separate-tfm-from-langversion**: Treat `<LangVersion>` as a separate decision from the TFM; raising the language version does not change the runtime or its support window.",
+      "to": "separate-tfm-from-langversion",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "separate-tfm-from-langversion keeps the instruction (unkeyed, now SHOULD) to treat LangVersion separately from the TFM, with the reason that it changes neither runtime nor support window.",
+        "pin": "67874674bd56ca3347478bd3610861b0e5874884eddc7c8efed0a04a0c75cc6d"
+      }
+    }
+  ],
+  "obsolete": []
+}

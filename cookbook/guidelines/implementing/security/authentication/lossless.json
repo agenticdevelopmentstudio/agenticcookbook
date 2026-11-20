@@ -1,0 +1,146 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Per-platform auth flow:**",
+      "to": [
+        "should-use-system-browser-auth-flow-on-native-platforms",
+        "should-use-auth-code-pkce-flow-on-spa-platforms",
+        "should-consider-bff-for-spas",
+        "should-use-client-credentials-flow-on-server-platforms"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The per-platform lead-in is carried by its four platform rules (native, SPA, BFF for SPAs, server-to-server), each scoped to its platform.",
+        "pin": "427809899b69993925c4ccc418ca18e6b8e5316c01308a2984c3fa7ebfca1c4d"
+      }
+    },
+    {
+      "sentence": "**Native apps (iOS/Android/Windows):** Authorization Code + PKCE via the system browser",
+      "to": "should-use-system-browser-auth-flow-on-native-platforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Native apps (iOS/Android/Windows) using Authorization Code + PKCE via the system browser is kept, the unkeyed instruction at SHOULD.",
+        "pin": "4985eeb7924a664460019f52efeff7b8739e84b9e9cc40bbf0e874419eb29647"
+      }
+    },
+    {
+      "sentence": "(`ASWebAuthenticationSession`, Custom Tabs, `WebAuthenticationBroker`).",
+      "to": "should-use-system-browser-auth-flow-on-native-platforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The three system-browser APIs (ASWebAuthenticationSession, Custom Tabs, WebAuthenticationBroker) are kept in the native-apps rule.",
+        "pin": "1359d7c2f5efa47cff45d64752733cc220be34b07102ef07eb869c742920612a"
+      }
+    },
+    {
+      "sentence": "Apps MUST NOT embed a",
+      "to": "must-not-embed-webview-for-auth",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT embed a WebView for auth is kept at MUST NOT.",
+        "pin": "972ce7007a761cf3ee6e27cc90fab093cbeaf6d609892abfbff7a6551af8aa8b"
+      }
+    },
+    {
+      "sentence": "WebView for auth — the app can intercept credentials.",
+      "to": "must-not-embed-webview-for-auth",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The WebView ban is kept with its reason that the app can intercept credentials.",
+        "pin": "4b67ed1cae0ea6f83909f13410a4dbe9f8434076c99f9b34a1fcbc8474cd5e27"
+      }
+    },
+    {
+      "sentence": "**SPAs:** Authorization Code + PKCE.",
+      "to": "should-use-auth-code-pkce-flow-on-spa-platforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "SPAs using Authorization Code + PKCE is kept at SHOULD.",
+        "pin": "664254b377fd76a876dae3f18ec4bcb46082ddaea38f9cbd8f6bce35017dfd35"
+      }
+    },
+    {
+      "sentence": "Consider a Backend-for-Frontend (BFF) pattern where",
+      "to": "should-consider-bff-for-spas",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Considering a BFF pattern for SPAs is kept as SHOULD consider, the same advisory strength.",
+        "pin": "06148e42e0d47851c3fd55e92d4f39e1113ddf8d6ad4eb3514971c081532f5ed"
+      }
+    },
+    {
+      "sentence": "the SPA never handles tokens directly — the BFF holds tokens server-side in HttpOnly cookies.",
+      "to": "should-consider-bff-for-spas",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The BFF definition is kept: the SPA never handles tokens and the BFF holds them server-side in HttpOnly cookies.",
+        "pin": "fc7b1f9832e458acf82ea3fafd80e6b1ed4e867ba6fc7f5a095038704815de16"
+      }
+    },
+    {
+      "sentence": "**Server-to-server:** Client Credentials flow.",
+      "to": "should-use-client-credentials-flow-on-server-platforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Server-to-server auth using the Client Credentials flow is kept at SHOULD.",
+        "pin": "bb3bb6f64c2cbafc756f10def0f3c5721280952cadf163322d8191626c4e6665"
+      }
+    },
+    {
+      "sentence": "**Session management:**",
+      "to": [
+        "should-use-short-lived-access-tokens-in-session-management",
+        "must-rotate-refresh-tokens",
+        "should-invalidate-token-family-on-refresh-reuse",
+        "should-enforce-absolute-session-timeouts"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The session-management lead-in is carried by its four rules: short-lived access tokens, refresh rotation (MUST), token-family invalidation on reuse, and absolute server-side timeouts.",
+        "pin": "ea48ff054c0ea200086ab325d35b114548cb22c4cd8eea7b0041e718709d9ce3"
+      }
+    },
+    {
+      "sentence": "Short-lived access tokens (5-15 minutes)",
+      "to": "should-use-short-lived-access-tokens-in-session-management",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Short-lived access tokens with the 5-15 minute range are kept at SHOULD.",
+        "pin": "4a843eaf68ba640e742fdac3eab52ed84a0d8f1afc56910e5c6663112e4e9378"
+      }
+    },
+    {
+      "sentence": "Detect reuse of a revoked refresh token and invalidate the entire token family.",
+      "to": "should-invalidate-token-family-on-refresh-reuse",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Detecting reuse of a revoked refresh token and invalidating the whole token family is kept at SHOULD.",
+        "pin": "f72b20be11a67d71fec8882369c30668f5f8fdce6366b3b9f4357b5fb191f499"
+      }
+    },
+    {
+      "sentence": "Absolute session timeouts server-side",
+      "to": "should-enforce-absolute-session-timeouts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Absolute session timeouts enforced server-side are kept at SHOULD.",
+        "pin": "6d12bbe0c72cd9603c5246db4d042eb2e4fecf3df627ade782e5308852c05afc"
+      }
+    }
+  ],
+  "obsolete": []
+}

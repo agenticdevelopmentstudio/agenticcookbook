@@ -1,0 +1,31 @@
+
+- `should-pin-a-dated-spec-revision`: the server declares the dated spec revision it implements, or the code says why not
+- `should-default-to-the-stable-revision`: the default revision is 2025-11-25, or the code names the host that requires an older one
+- `should-negotiate-the-revision`: the revision is chosen in the initialization handshake, not hard-coded, or the code says why not
+- `should-gate-draft-revisions`: any release-candidate or draft revision is off unless explicitly opted into
+- `should-pick-primitives-by-purpose`: each exposed capability uses the primitive its purpose calls for, or the code says why not
+- `should-prefer-resources-for-read-only-context`: read-only context the user or host selects is exposed as a resource, or the code says why not
+- `should-prefer-prompts-for-invoked-workflows`: workflows a human explicitly invokes are exposed as prompts, or the code says why not
+- `should-use-tools-only-for-model-chosen-operations`: every tool is an operation the model chooses autonomously, or the code says why not
+- `should-not-expose-read-only-context-as-tools`: no read-only context is exposed as a tool, or the code says why
+- `must-name-and-describe-tools-precisely`: every tool has an action-oriented `name` and a `description` stating what it does, when to use it and what it returns
+- `should-constrain-tool-names`: every tool name is 1–128 chars from `[A-Za-z0-9_.-]`, or the code says why not
+- `should-keep-tool-names-unique`: no two tools in the server share a name
+- `should-use-title-for-display`: human-readable labels are in `title` and `name` is unchanged as the identifier, or the code says why not
+- `should-define-a-strict-input-schema`: every tool has a strict JSON Schema `inputSchema`, or the code says why not
+- `should-close-zero-parameter-schemas`: zero-parameter tools declare `{ "type": "object", "additionalProperties": false }`, or the code says why not
+- `should-keep-the-tool-surface-small`: the tool list holds no overlapping tools, or the code says why
+- `should-declare-an-output-schema`: tools with structured results declare an `outputSchema` and return matching `structuredContent`, or the code says why not
+- `must-conform-to-the-output-schema`: when `outputSchema` is present, `structuredContent` conforms to it and has an object root, and clients validate it (or say why not)
+- `should-also-return-text-json`: each structured result is also returned as JSON in a `text` content block, or the code says why not
+- `must-not-leak-secrets-in-outputs`: no tool output carries secrets or internal identifiers the host should not see, and outputs are sanitized (or the code says why not)
+- `should-use-both-error-channels`: tool execution errors and protocol errors go out on their separate channels, or the code says why not
+- `should-return-tool-errors-in-the-result`: tool execution errors are returned in the result with `isError: true` and an actionable message, or the code says why not
+- `should-return-protocol-errors-as-json-rpc`: unknown tools and malformed requests get a JSON-RPC `error`, or the code says why not
+- `should-not-throw-protocol-errors-for-tool-failures`: recoverable tool failures never surface as protocol errors, or the code says why
+- `should-set-annotations`: every tool sets `annotations`, or the code says why not
+- `must-treat-annotations-as-untrusted`: client policy ignores or distrusts annotations from untrusted servers
+- `should-set-annotations-accurately`: each tool's annotations match what it does, or the code says why not
+- `must-not-rely-on-annotations-alone`: server-side validation, access control and rate limits exist alongside annotations
+- `must-validate-authorize-rate-limit-and-sanitize`: every tool handler validates inputs, enforces access controls, is rate-limited and sanitizes outputs
+- `should-write-for-consent`: descriptions and errors say enough for a human to decide whether to allow the call, or the code says why not

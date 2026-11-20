@@ -4,11 +4,11 @@
     "id": "1138183b-296d-479b-9df7-7869a006c023",
     "title": "Choose SwiftData vs Core Data",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,24 @@
     "references": [
       "https://developer.apple.com/documentation/swiftdata"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "schema-design"
     ]
   },
-  "synced": "895920e24c6d7e10",
+  "synced": "5c4cf63c2d46979f",
   "parts": [
     {"part": "intro"},
-    {"part": "decision-rule", "heading": "Decision Rule"},
-    {"part": "rules", "heading": "Rules"},
-    {"part": "swiftdata-notes-as-of-2026", "heading": "SwiftData Notes (as of 2026)"},
-    {"part": "core-data-notes-as-of-2026", "heading": "Core Data Notes (as of 2026)"},
-    {"part": "interoperability", "heading": "Interoperability"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "decision-rule", "heading": "Decision Rule", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "swiftdata-notes-as-of-2026", "heading": "SwiftData Notes (as of 2026)", "role": "rationale"},
+    {"part": "core-data-notes-as-of-2026", "heading": "Core Data Notes (as of 2026)", "role": "rationale"},
+    {"part": "interoperability", "heading": "Interoperability", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

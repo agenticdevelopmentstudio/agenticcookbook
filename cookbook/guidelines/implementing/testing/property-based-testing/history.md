@@ -1,6 +1,7 @@
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 1.1.0 | 2026-11-19 | Mike Fullerton | Roles on parts; named rules; reviewer and build bars written from its own rules |
 | 1.0.4 | 2026-11-19 | Mike Fullerton | Fold guidelines/testing/property-based-testing into this topic (identical text); links to it redirected here |
 | 1.0.3 | 2026-11-13 | Mike Fullerton | Repair the summary, which was cut off at a line wrap |
 | 1.0.2 | 2026-04-09 | Mike Fullerton | Add trigger tags |

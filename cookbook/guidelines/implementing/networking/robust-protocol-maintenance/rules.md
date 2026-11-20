@@ -1,8 +1,8 @@
 
-- Inputs **SHOULD** be parsed strictly against a dated, pinned version of the spec or schema, and violations **SHOULD** be rejected clearly rather than silently coerced (ties to `parse-dont-validate` and `fail-fast`).
-- Implementations **MUST NOT** silently "fix up" or guess intent for malformed protocol or API messages on machine-to-machine paths.
-- Rejections **SHOULD** emit an explicit, actionable error (what failed, which rule, expected shape) so the sending party gets visible feedback — RFC 9413 calls this "virtuous intolerance".
-- Protocols and APIs **SHOULD** carry an explicit **version** so strictness can evolve without breaking peers; pin the revision you validate against.
-- Stateless or unauthenticated endpoints **MAY** soften loud rejection where verbose errors enable amplification or DoS (RFC 9413 notes this exception) — log internally instead.
-- You **SHOULD** treat each tolerated deviation as a tracked maintenance item: file it, decide whether the spec or the sender is wrong, and close the gap — do not let it become permanent behavior.
-
+- **should-parse-strictly-and-reject-clearly**: Inputs **SHOULD** be parsed strictly against a dated, pinned version of the spec or schema, and violations **SHOULD** be rejected clearly rather than silently coerced (ties to `parse-dont-validate` and `fail-fast`).
+- **must-not-fix-up-malformed-messages**: Implementations **MUST NOT** silently "fix up" or guess intent for malformed protocol or API messages on machine-to-machine paths.
+- **should-emit-actionable-rejections**: Rejections **SHOULD** emit an explicit, actionable error (what failed, which rule, expected shape) so the sending party gets visible feedback — RFC 9413 calls this "virtuous intolerance".
+- **should-carry-an-explicit-version**: Protocols and APIs **SHOULD** carry an explicit **version** so strictness can evolve without breaking peers; pin the revision you validate against.
+- **may-soften-rejection-where-errors-amplify**: Stateless or unauthenticated endpoints **MAY** soften loud rejection where verbose errors enable amplification or DoS (RFC 9413 notes this exception) — log internally instead.
+- **should-track-tolerated-deviations**: You **SHOULD** treat each tolerated deviation as a tracked maintenance item: file it, decide whether the spec or the sender is wrong, and close the gap — do not let it become permanent behavior.
+- **should-match-posture-to-boundary**: Each boundary SHOULD take the posture the boundary table gives it: **strict** parse, reject + report on machine-to-machine paths (wire, internal API); **strict** parse, but graceful degradation for external/3rd-party input you don't control; **forgiving** — normalize then validate — at the human/UX edge (forms, CLI args, NL).

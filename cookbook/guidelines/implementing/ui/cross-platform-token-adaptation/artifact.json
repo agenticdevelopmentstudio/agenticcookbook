@@ -4,11 +4,11 @@
     "id": "d10d829f-bfff-4b8b-935f-eb30cdf66a43",
     "title": "Cross-platform token adaptation",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -34,19 +34,20 @@
       "https://www.designtokens.org/",
       "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "242cc87ee39952af",
+  "synced": "3cb4b018a41d3f07",
   "parts": [
     {"part": "intro"},
-    {"part": "source-of-truth", "heading": "Source of truth"},
-    {"part": "unit-adaptation", "heading": "Unit adaptation"},
-    {"part": "typography-color-and-motion", "heading": "Typography, color, and motion"},
-    {"part": "respect-the-platform-design-language", "heading": "Respect the platform design language"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "unit-adaptation", "heading": "Unit adaptation", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

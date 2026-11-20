@@ -4,11 +4,11 @@
     "id": "9096c8f4-5f89-41cf-b06c-954861117d69",
     "title": "SRP",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-21",
-    "modified": "2026-04-21",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -20,12 +20,16 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-21"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "82dc5383c9d5114c",
+  "synced": "627b9eb3f16a22a7",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

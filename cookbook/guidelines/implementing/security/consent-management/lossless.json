@@ -1,0 +1,119 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Per GDPR Art. 7 (and similar regimes), consent **MUST** be:",
+      "to": [
+        "rationale",
+        "must-be-freely-given"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The GDPR Art. 7 (and similar regimes) basis is kept in rationale for all four conditions, and each condition is its own MUST rule starting with must-be-freely-given.",
+        "pin": "39feb2c435402678b18fef1642b129458e4624c4420a6eb42c56ec107b27bce9"
+      }
+    },
+    {
+      "sentence": "**Freely given**: not bundled with service access; refusal **MUST NOT** degrade core functionality that does not depend on the processing.",
+      "to": "must-be-freely-given",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Freely given is kept at MUST: not bundled with service access, and refusal MUST NOT degrade core functionality that does not depend on the processing.",
+        "pin": "464a7d83c78bc76358be97c0bd5fb12a3ecdb3339a549d7382543882a9127b1b"
+      }
+    },
+    {
+      "sentence": "**Specific and granular**: each distinct purpose (analytics, marketing, personalization, third-party sharing) **MUST** have its own toggle.",
+      "to": "must-be-specific-and-granular",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Specific and granular is kept at MUST, with its own toggle per distinct purpose and the same four example purposes.",
+        "pin": "383e519865ef9feaab3c3812beff3e4cba1ff35e71344d767e9a7d9d9087704e"
+      }
+    },
+    {
+      "sentence": "**Informed**: present the purpose, controller identity, data categories, and the right to withdraw before capture.",
+      "to": "must-be-informed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Informed is kept at MUST: purpose, controller identity, data categories and right to withdraw presented before capture.",
+        "pin": "6d84080315056d52e9e79fee4a1dafe6ec3bfa5e887ba7c271f6fdb7639af53c"
+      }
+    },
+    {
+      "sentence": "**Unambiguous**: require an affirmative action (an explicit opt-in).",
+      "to": "must-be-unambiguous",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unambiguous is kept at MUST: an affirmative action, an explicit opt-in.",
+        "pin": "69cc79d9aa99308cd68829086b1a208c873d96cfaa92d9fb3a847866cb347bd0"
+      }
+    },
+    {
+      "sentence": "Re-request consent when the purpose changes, a new data category is added, or a new processor is introduced.",
+      "to": "should-re-request-consent-on-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Re-requesting consent on a purpose change, a new data category or a new processor is kept at SHOULD with all three triggers.",
+        "pin": "dbb57f755c878868a1606efcb243fff9b188b86862e818faed33d883183719f7"
+      }
+    },
+    {
+      "sentence": "Set a re-confirmation cadence for long-lived consent (commonly revisited at 12–24 months) per applicable guidance and risk.",
+      "to": "should-set-reconfirmation-cadence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A re-confirmation cadence for long-lived consent, commonly 12-24 months, per applicable guidance and risk, is kept at SHOULD.",
+        "pin": "93c4b0757cc9967881eaee42fc8009f7dae88aabb1ac980309baa6a183bd2918"
+      }
+    },
+    {
+      "sentence": "This is engineering guidance for building consent flows, not legal advice — confirm obligations with counsel for each jurisdiction.",
+      "to": "should-confirm-obligations-with-counsel-per-jurisdiction",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The engineering-not-legal-advice disclaimer and confirming obligations with counsel for each jurisdiction are kept at SHOULD.",
+        "pin": "526a1209f2d5a4ed7d2562453e25992245c6d4f01ec82a61509f5a6030a9b8d5"
+      }
+    },
+    {
+      "sentence": "Persist each decision as an **append-only, immutable** record.",
+      "to": "should-persist-decisions-append-only",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Persisting each decision as an append-only, immutable record is kept at SHOULD.",
+        "pin": "354e3a112d6a9e7ef1f9ce9819e21e25d9522c1a6201fb6026a69cd92f88ccc8"
+      }
+    },
+    {
+      "sentence": "Store the exact consent-notice text or a content hash so you can prove what the user saw.",
+      "to": "should-store-consent-notice-text-or-hash",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Storing the exact notice text or a content hash, with the reason of proving what the user saw, is kept at SHOULD.",
+        "pin": "0b4845de12ec1cd6dcc28425a1500aa2f0fba7c06782080820157e371693ef73"
+      }
+    },
+    {
+      "sentence": "Pin the policy to a dated, versioned revision.",
+      "to": "should-pin-policy-to-versioned-revision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning the policy to a dated, versioned revision is kept at SHOULD.",
+        "pin": "eacdee7717e5a8484476c14e409f02e344185d2ecd57ac4d3c7831b33b3c0651"
+      }
+    }
+  ],
+  "obsolete": []
+}

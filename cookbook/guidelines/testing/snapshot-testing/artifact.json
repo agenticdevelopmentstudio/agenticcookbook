@@ -4,11 +4,11 @@
     "id": "3d9f5176-afaa-47a2-8a89-fc0402f3dff2",
     "title": "Snapshot testing discipline",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,20 @@
       "https://dev.to/dorshinar/why-i-ve-stopped-writing-snapshots-tests-in-jest-376d",
       "https://selleo.com/blog/when-to-use-jest-snapshots"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests"
     ]
   },
-  "synced": "3392fe71cb1e73a7",
+  "synced": "9f753b79f961759a",
   "parts": [
     {"part": "intro"},
-    {"part": "review-every-diff-deliberately", "heading": "Review every diff deliberately"},
-    {"part": "keep-snapshots-small-and-targeted", "heading": "Keep snapshots small and targeted"},
-    {"part": "make-snapshots-deterministic", "heading": "Make snapshots deterministic"},
-    {"part": "prefer-explicit-assertions-for-logic", "heading": "Prefer explicit assertions for logic"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

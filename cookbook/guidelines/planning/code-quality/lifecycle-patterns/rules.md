@@ -1,0 +1,16 @@
+
+- **should-group-owner-with-owned-objects**: If object A creates object B in its `init` and destroys it in its `deinit`, A owns B and they **SHOULD** be in the same scope group — shared init/deinit = same scope group.
+- **should-treat-subscription-owners-as-lifecycle-coupled**: If object A stores a `Cancellable` / `DisposeBag` subscription to object B's stream, the analysis **SHOULD** treat A and B as lifecycle-coupled — subscription ownership defines lifecycle coupling.
+- **should-not-split-state-machines**: An explicit state machine — all states, transitions, and the object that executes them — is a single unit, and the analysis **SHOULD NOT** split state machines across scope groups — state machines are atomic.
+- **should-group-session-with-its-objects**: A session — authentication session, network session, user session — and all objects that exist only for the duration of that session **SHOULD** form one scope group — session objects define natural scope group boundaries.
+- **may-separate-weakly-referenced-objects**: If A holds a `weak` reference to B and A's lifecycle is independent of B's, they **MAY** be in separate scope groups communicating through a narrow interface — weak references mark scope group edges.
+- **should-follow-disposal-chains**: The analysis **SHOULD** follow `Dispose()` / `cancel()` / `close()` calls and treat each object that disposes another as part of the same lifecycle chain — disposal chain = lifecycle chain.
+- **must-invalidate-timers**: A `Timer.scheduledTimer()` **MUST** be invalidated.
+- **should-note-timer-invalidation-site**: The analysis **SHOULD** note where timer invalidation happens relative to the owning object's teardown.
+- **should-note-factory-assembly**: For factory methods, the analysis **SHOULD** note what the factory assembles.
+- **should-note-state-between-init-phases**: For two-phase initialization, the analysis **SHOULD** note what state exists between phases.
+- **should-note-released-resources**: For `deinit`, `finalize()`, destructors, `Dispose()` and `close()`, the analysis **SHOULD** note what resources are released.
+- **should-note-teardown-hook-cleanup**: For framework-managed teardown hooks (`onDestroy()`, `onStop()`, `viewWillDisappear()`, `componentWillUnmount()`), the analysis **SHOULD** note what cleanup is performed.
+- **should-note-session-scope**: For network session objects, the analysis **SHOULD** note whether sessions are per-request or long-lived.
+- **should-note-valid-transitions**: For state transition methods, the analysis **SHOULD** note valid transitions.
+- **should-note-observer-removal**: For `NotificationCenter` observer registration, the analysis **SHOULD** note whether removal is explicit (`removeObserver`) or managed by token disposal.

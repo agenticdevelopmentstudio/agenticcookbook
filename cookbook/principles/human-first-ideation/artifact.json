@@ -4,11 +4,11 @@
     "id": "db8976c0-57e0-41a4-a7fa-67e3efef79d5",
     "title": "Human-First Ideation",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,12 +30,18 @@
       "Vygotsky, Mind in Society, 1978",
       "Sawyer, Group Genius, 2007"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "2fee34036788c491",
+  "synced": "93fff481366e471a",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

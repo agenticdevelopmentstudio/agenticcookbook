@@ -1,0 +1,78 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**You MUST** choose a low-overhead, sampling profiler. eBPF whole-system profilers and runtime samplers commonly report well under 1% CPU overhead; **you MUST** validate overhead in your own environment rather than trusting a single vendor's published figure.",
+      "to": [
+        "must-choose-low-overhead-sampling-profiler",
+        "must-validate-overhead-in-own-environment"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-choose-low-overhead-sampling-profiler keeps the MUST to choose a low-overhead sampling profiler; must-validate-overhead-in-own-environment keeps the under-1% overhead note and the MUST to validate overhead locally rather than trust a vendor figure.",
+        "pin": "1608feb5e5284e95c9b0df0c27aa7600c0a352e5d3b295c44c4f6a23ea919159"
+      }
+    },
+    {
+      "sentence": "**You SHOULD** prefer whole-system eBPF profiling on Linux (no per-app instrumentation; supports mixed runtimes) when targets are diverse, and **MAY** use in-runtime profilers (Go `runtime/pprof`, JFR, async-profiler, .NET `dotnet-trace`) when you need language-level detail.",
+      "to": [
+        "should-prefer-ebpf-for-diverse-targets",
+        "may-use-in-runtime-profilers"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-ebpf-for-diverse-targets keeps the SHOULD with its Linux/diverse-targets condition and reasons; may-use-in-runtime-profilers keeps the MAY with its tool list and language-level-detail condition.",
+        "pin": "72b77e2ee521a08a70a1701e8b407f219cf4046b8ad6979491d91f42deed6e39"
+      }
+    },
+    {
+      "sentence": "**You SHOULD** correlate profiles with traces by recording `trace_id`/`span_id` on profile samples where the profiler and runtime support it; this lets you jump from a slow span to the code that ran inside it. (FORECAST: automatic span-level correlation is uneven across profilers/runtimes as of 2026 — verify support per language before relying on it.)",
+      "to": [
+        "should-correlate-profiles-with-traces",
+        "should-verify-span-correlation-support"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-correlate-profiles-with-traces keeps the SHOULD, the trace_id/span_id mechanism, the support condition and the reason; should-verify-span-correlation-support keeps the FORECAST and the per-language verification.",
+        "pin": "94f6b7020f178ebf29d53eddd085ddae761a559e7acf5af4eb3e26b7d255fa59"
+      }
+    },
+    {
+      "sentence": "OTLP Profiles is an independent standard inspired by `pprof`, with lossless round-trip conversion to/from `pprof`. (FORECAST: production-ready OTLP-Profiles backends are still emerging; **prefer** a profiler whose data you can convert if the backend changes.)",
+      "to": [
+        "rationale",
+        "should-prefer-convertible-profiler"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "rationale keeps the fact that OTLP Profiles is an independent pprof-inspired standard with lossless round-trip conversion; should-prefer-convertible-profiler keeps the FORECAST and the prefer at SHOULD.",
+        "pin": "1f1ea67e21ecfe2888f789bbcebd63ce582d137a17b25bf29a3525137aac28ce"
+      }
+    },
+    {
+      "sentence": "**Adopt it ONLY when** a concrete, measured need justifies the added pipeline, storage, and operational cost:",
+      "to": "must-adopt-only-on-measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-adopt-only-on-measured-need keeps 'adopt only when a concrete, measured need justifies the added pipeline, storage, and operational cost' at MUST, with the three qualifying needs listed beneath it.",
+        "pin": "b0ec0a88946d00e54c62cf7c725a568d3a04c5773dbcbfc7995b23359752f75d"
+      }
+    },
+    {
+      "sentence": "If a one-off `pprof`/perf capture or a load-test profile answers the question, **prefer that** over standing infrastructure (small-reversible-decisions).",
+      "to": "should-prefer-one-off-capture",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-one-off-capture keeps the preference for a one-off pprof/perf capture or load-test profile over standing infrastructure, its condition and the small-reversible-decisions reason, at SHOULD.",
+        "pin": "a8de424db680ab72073f9cd8813482628d9e67b53fc1426118b2b26b52c6b2ef"
+      }
+    }
+  ],
+  "obsolete": []
+}

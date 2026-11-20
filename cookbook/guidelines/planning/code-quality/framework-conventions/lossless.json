@@ -1,0 +1,72 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Framework-conventional units are the default scope group.** When the codebase follows framework conventions, those conventions define the scope groups.",
+      "to": "should-default-to-conventional-units",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-default-to-conventional-units keeps the when-the-codebase-follows-conventions condition and that conventions define the scope groups, at SHOULD.",
+        "pin": "e4c258520cbe1e6c4a5b76b4f15362b0ac4812bc56e93611d05cf99e68d66a72"
+      }
+    },
+    {
+      "sentence": "Do not decompose below the conventional unit without strong evidence from other lenses.",
+      "to": "should-not-decompose-below-conventional-unit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-decompose-below-conventional-unit keeps the prohibition and its strong-evidence-from-other-lenses exception, at SHOULD NOT.",
+        "pin": "ea66724774667f2887331600eb3e1944246038789e835a6c8080e54e5d11dcba"
+      }
+    },
+    {
+      "sentence": "**Cross-feature sharing elevates to its own scope group.** A ViewModel or service referenced by three or more feature modules is no longer feature-local — it belongs in a shared scope group.",
+      "to": "should-elevate-cross-feature-units",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-elevate-cross-feature-units keeps the three-or-more-feature-modules threshold, no-longer-feature-local claim and placement in a shared scope group.",
+        "pin": "8a061a56b5cc2806658c689bd29adce10bab8ea569c89d7f125a62709a7db6fa"
+      }
+    },
+    {
+      "sentence": "**Deviations are flagged, not respected.** If logic is placed in the wrong layer (business logic in a view), note the deviation — do not create a scope group that legitimizes the misplacement.",
+      "to": [
+        "should-flag-convention-deviations",
+        "should-not-legitimize-misplacement"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-convention-deviations keeps noting the deviation with the business-logic-in-a-view example and 'flagged, not respected'; should-not-legitimize-misplacement keeps not creating a legitimizing scope group.",
+        "pin": "e74bb6238d62a579b8c8f53f9c564b2dd20e86cc3c9f57c553652c7e06a7a3b4"
+      }
+    },
+    {
+      "sentence": "**Lazy-loaded modules are independent scope groups.** Any module configured for lazy loading in Angular, Next.js dynamic imports, or Webpack code splitting is designed to be independently loadable — treat it as an independent scope group.",
+      "to": [
+        "should-treat-lazy-loaded-modules-as-independent",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-lazy-loaded-modules-as-independent keeps the Angular / Next.js dynamic import / Webpack code-splitting scope and the independent-group call; the rationale keeps the designed-to-be-independently-loadable reason.",
+        "pin": "a39191410114c0ad9a2b714e46a74b69f7bf22b649ff5820f73141c816483847"
+      }
+    },
+    {
+      "sentence": "**Plugin/extension registries are composition roots.** The registry that loads and wires plugins is a separate scope group from the plugins themselves.",
+      "to": "should-separate-plugin-registry",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-separate-plugin-registry keeps the registry as a separate scope group from its plugins and the composition-root headline.",
+        "pin": "dd91d74a6e8ba2f1cbfdd20a3d8eaeb6818fee2b6be369527f6ca163d17535fc"
+      }
+    }
+  ],
+  "obsolete": []
+}

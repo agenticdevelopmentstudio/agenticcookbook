@@ -1,0 +1,41 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "0bfc8dc6-94ac-4bf4-8601-621ee9086487",
+    "title": "Grounded Synthesis",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Tell a project's story by synthesizing a high-signal dossier and grounding every claim in it — invent nothing; improve quality by enriching the dossier, not by loosening the grounding rule.",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "grounding",
+      "narrative"
+    ],
+    "related": [
+      "064250f4-a30a-4240-9f2c-010012419f25",
+      "4e498351-481c-4444-9a2d-0075ecdfc261",
+      "c3cf9193-b6a7-493b-a531-76aa601109da"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "names_hosts": "Lists Claude memories among the sources a narrator draws on.",
+  "synced": "1bf40d4f37f4acd8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "ground-every-claim", "heading": "Ground Every Claim"},
+    {"part": "the-dossier-is-the-lever", "heading": "The Dossier Is The Lever"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "8aa22a6b-2328-4a2d-8fe3-53c339390808",
+    "title": "AppKit and UIKit patterns",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Work with the responder chain, delegates, the main thread and the view-controller and window lifecycle instead of around them, and opt in to state restoration deliberately.",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "languages": [
+      "swift",
+      "objective-c"
+    ],
+    "tags": [
+      "appkit",
+      "uikit",
+      "responder-chain",
+      "delegates",
+      "lifecycle",
+      "state-restoration"
+    ],
+    "depends-on": [
+      "095b33a1-2835-4ed5-bf01-f1e492148819"
+    ],
+    "related": [
+      "344b69da-c901-4650-b49d-c2df0234103b",
+      "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
+      "7c8d5c06-af21-41f1-86db-ed5809c2d38d"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/uikit/using-responders-and-the-responder-chain-to-handle-events",
+      "https://developer.apple.com/documentation/uikit/uiviewcontroller",
+      "https://developer.apple.com/documentation/appkit/nsviewcontroller",
+      "https://developer.apple.com/documentation/uikit/preserving-your-app-s-ui-across-launches"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "ui-implementation",
+      "platform-integration"
+    ]
+  },
+  "synced": "33856ea5c9dedce8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "responder-chain", "heading": "Responder chain"},
+    {"part": "delegates-and-data-sources", "heading": "Delegates and data sources"},
+    {"part": "main-thread", "heading": "Main thread"},
+    {"part": "view-controller-and-window-lifecycle", "heading": "View controller and window lifecycle"},
+    {"part": "state-restoration", "heading": "State restoration"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "responder-chain-2", "heading": "Responder chain"},
+    {"part": "delegates", "heading": "Delegates"},
+    {"part": "main-thread-2", "heading": "Main thread"},
+    {"part": "lifecycle", "heading": "Lifecycle"},
+    {"part": "state-restoration-2", "heading": "State restoration"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

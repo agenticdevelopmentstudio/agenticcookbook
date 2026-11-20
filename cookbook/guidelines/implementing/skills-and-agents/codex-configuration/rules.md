@@ -1,0 +1,21 @@
+
+- **should-put-config-where-codex-looks**: Each kind of configuration (settings in `config.toml`, instructions in `AGENTS.md`, reusable procedures in skills) SHOULD be put in the place Codex looks for it.
+- **should-keep-shared-config-in-repo**: What the team shares SHOULD be kept inside the repository.
+- **must-not-depend-on-untrusted-checkout**: Codex loads a project's file only when the project is trusted, so a setting that must apply on every machine MUST NOT depend on an untrusted checkout.
+- **must-check-keys-against-reference**: You MUST check a key against the configuration reference before using it.
+- **must-not-copy-keys-from-other-tools**: You MUST NOT copy keys from another tool.
+- **must-not-check-in-secrets**: A checked-in `config.toml` MUST NOT contain secrets.
+- **should-keep-agents-md-files-short**: Each `AGENTS.md` file SHOULD be short.
+- **should-move-reference-material-into-skills**: Reference material SHOULD move into skills, which load on demand.
+- **should-write-agents-md-for-any-agent**: `AGENTS.md` SHOULD be written as instructions for any agent, not for one tool, so other tools can read the same file.
+- **should-not-repeat-parent-in-nested-agents-md**: Nested `AGENTS.md` files SHOULD add to the parent rather than repeat it.
+- **should-give-agents-override-a-reason**: An `AGENTS.override.md` SHOULD have a reason.
+- **should-write-skill-description-as-trigger**: The description is what Codex uses to decide when the skill applies, so it SHOULD be written as a trigger.
+- **should-put-repository-skills-under-agents-skills**: Repository skills SHOULD live under `.agents/skills`.
+- **should-set-allow-implicit-invocation-false**: `allow_implicit_invocation: false` stops Codex from choosing the skill on its own; a skill meant to run only on request SHOULD set it.
+- **should-disable-skills-via-skills-config**: A skill SHOULD be disabled without deleting it with a `[[skills.config]]` entry in `~/.codex/config.toml`, and Codex restarted.
+- **must-follow-skill-structure-reference**: Skills MUST follow Skill structure reference ([adc.guideline.implementing.skills-and-agents.skill-structure-reference](cookbook:fe0daac0-1ba7-4c93-a47e-e42e75612cf6)) for the contents of `SKILL.md`.
+- **must-follow-never-clobber-on-install**: Installing one skill MUST follow Never overwrite a user's files ([adc.guideline.implementing.skills-and-agents.never-clobber-user-files](cookbook:5358bc26-ea8f-4dd0-94d1-22dc1c6ad291)).
+- **must-not-write-new-custom-prompts**: You MUST NOT write new custom prompts unless a skill cannot express the need.
+- **should-migrate-team-prompts-to-skills**: A prompt that the team uses SHOULD be migrated to a repository skill so it is versioned with the code.
+

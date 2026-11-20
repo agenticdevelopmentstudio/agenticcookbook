@@ -4,11 +4,11 @@
     "id": "fff733d2-42ab-4123-b280-1a30b52e54a4",
     "title": "Progressive delivery",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,20 +31,22 @@
       "https://openfeature.dev/",
       "https://www.flagsmith.com/blog/progressive-delivery"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-pr",
       "feature-flags"
     ]
   },
-  "synced": "5ff0b9c37838dab7",
+  "synced": "8f52380493aeed0a",
   "parts": [
     {"part": "intro"},
-    {"part": "decouple-deploy-from-release", "heading": "Decouple deploy from release"},
-    {"part": "choose-a-rollout-mechanism", "heading": "Choose a rollout mechanism"},
-    {"part": "automate-the-rollback-decision", "heading": "Automate the rollback decision"},
-    {"part": "operational-guardrails", "heading": "Operational guardrails"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "choose-a-rollout-mechanism", "heading": "Rollout mechanisms", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

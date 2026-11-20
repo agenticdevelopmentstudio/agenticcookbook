@@ -4,11 +4,11 @@
     "id": "36bdba1b-2759-45c6-80b9-374536efb7bb",
     "title": "Essential vs accidental complexity",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,18 +30,21 @@
       "https://www.cs.unc.edu/techreports/86-020.pdf",
       "https://thenextweb.com/news/complexity-is-the-ceiling-software-design-in-the-age-of-ai-coding"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module"
     ]
   },
-  "synced": "04f5626c7deee14d",
+  "synced": "0bfef75ef6651d1b",
   "parts": [
     {"part": "intro"},
-    {"part": "what-goes-in-each-bucket", "heading": "What goes in each bucket"},
-    {"part": "how-to-apply-it", "heading": "How to apply it"},
-    {"part": "in-the-ai-era", "heading": "In the AI era"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "what-goes-in-each-bucket", "heading": "What goes in each bucket", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

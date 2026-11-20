@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Never animate for decoration.",
+      "to": "must-not-animate-for-decoration",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'never animate for decoration' is kept and strengthened to MUST NOT.",
+        "pin": "283d4632bd6124ccd05b8fdf699394904aa0951aee128edbbd694463b00af536"
+      }
+    },
+    {
+      "sentence": "**Duration defaults** (when no platform value exists):",
+      "to": "should-use-duration-defaults",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The when-no-platform-value-exists condition is kept, durations SHOULD follow the defaults, and the full duration table the lead-in introduced is carried in the duration-defaults part.",
+        "pin": "211153192c198afc83abd79d5370bbc929db885ab93b75c1347b845d2296e690"
+      }
+    }
+  ],
+  "obsolete": []
+}

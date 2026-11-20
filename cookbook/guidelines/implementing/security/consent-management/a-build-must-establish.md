@@ -1,0 +1,23 @@
+
+- `should-confirm-obligations-with-counsel-per-jurisdiction`: the build names, for each jurisdiction it serves, that its obligations were confirmed with counsel, or says they were not
+- `must-be-freely-given`: no service access depends on consent, and refusing leaves every feature that does not need the processing working
+- `must-be-specific-and-granular`: every distinct purpose has its own toggle; no single control grants unrelated purposes
+- `must-be-informed`: the consent surface shows purpose, controller identity, data categories and the right to withdraw before capture
+- `must-be-unambiguous`: every grant comes from an explicit opt-in action; no box is pre-ticked and no consent is implied
+- `should-persist-decisions-append-only`: every decision is stored as an append-only, immutable record, or the code says why not
+- `must-not-overwrite-consent-entries`: no code path updates or deletes a prior consent entry; withdrawal appends a new event
+- `must-capture-consent-record-fields`: every record holds subject id, purpose(s), grant/withdraw action, UTC timestamp, policy/notice version and capture mechanism
+- `should-store-consent-notice-text-or-hash`: every record links the exact notice text or its content hash, or the code says why not
+- `should-pin-policy-to-versioned-revision`: every record names a dated, versioned policy revision, or the code says why not
+- `should-keep-current-consent-queryable`: a derived current-state view answers current consent per subject and purpose, or the code says why not
+- `must-gate-non-essential-processing`: no non-essential script, tag, cookie or event fires before consent for its purpose is granted
+- `should-not-present-necessary-processing-as-optional`: strictly necessary processing has no consent toggle, or the code says why
+- `should-re-request-consent-on-change`: a changed purpose, new data category or new processor triggers a new consent request, or the code says why not
+- `should-re-consent-on-material-policy-change-only`: a policy-version bump triggers re-consent only when marked material, or the code says why
+- `should-set-reconfirmation-cadence`: long-lived consent carries a re-confirmation cadence, or the code says why not
+- `must-make-withdrawal-as-easy-as-granting`: withdrawal is on the same surface and takes no more clicks than granting
+- `must-propagate-withdrawal`: a withdrawal stops new collection, halts downstream jobs and notifies every processor and third party that received the data
+- `must-stop-further-processing-on-withdrawal`: no processing for a withdrawn purpose runs after the withdrawal
+- `must-not-infer-consent-from-inactivity`: no consent record is created from inactivity, scrolling or continued use
+- `must-not-make-reject-harder-than-accept`: "reject all" is reachable as easily as "accept all"
+- `must-not-skip-childrens-consent-paths`: children's data is processed only through the age-appropriate and verifiable-parental-consent paths the regime requires

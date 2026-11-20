@@ -1,0 +1,17 @@
+
+- `should-not-conflate-delivery-and-deployment`: whether delivery and deployment are treated as distinct
+- `must-keep-main-releasable`: whether the pipeline keeps main releasable
+- `must-not-merge-unreleasable-change`: whether the change would leave main un-releasable on merge
+- `must-automate-commit-to-artifact`: whether any manual step sits in the path from commit to a deployable artifact
+- `must-trigger-pipeline-on-every-commit`: whether every commit to main triggers the pipeline
+- `must-block-release-on-red-pipeline`: whether a red pipeline blocks release and is treated as stop-the-line
+- `must-build-once-deploy-many`: whether a single immutable artifact is promoted unchanged, with no per-environment rebuild
+- `should-make-deployments-reversible`: whether deployments are reversible and deploy is decoupled from release
+- `should-keep-pipeline-feedback-fast`: whether pipeline feedback arrives in minutes
+- `must-not-chase-deploy-frequency-alone`: whether deploy frequency is pursued without test and architecture investment
+- `should-adopt-deployment-only-when-supported`: whether continuous deployment is adopted only where tests and architecture support it
+- `should-plan-for-the-j-curve-dip`: whether the adoption plan expects the dip and plans for the recovery
+- `should-confirm-ci-green-before-pr-ready`: whether CI ran the full pipeline green before the PR was marked ready
+- `should-confirm-no-manual-release-step`: whether the change requires a manual step to become releasable
+- `should-confirm-risky-behavior-flagged`: whether risky behavior is gated behind a flag
+- `should-confirm-rollback-path`: whether a rollback or roll-forward path exists

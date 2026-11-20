@@ -4,11 +4,11 @@
     "id": "1e7f8c3d-ece9-4c5c-b7ca-7703391995dd",
     "title": "Material 3 theming on Android",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,20 +32,22 @@
       "https://developer.android.com/jetpack/androidx/releases/compose-material3",
       "https://developer.android.com/develop/ui/compose/designsystems/material3"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "faa00a03d773f95f",
+  "synced": "6fd117fbcd786c95",
   "parts": [
     {"part": "intro"},
-    {"part": "color-roles-and-colorscheme", "heading": "Color roles and ColorScheme"},
-    {"part": "dynamic-color-material-you", "heading": "Dynamic color (Material You)"},
-    {"part": "typography-and-shape-scales", "heading": "Typography and shape scales"},
-    {"part": "dark-theme-and-accessibility", "heading": "Dark theme and accessibility"},
-    {"part": "versioning-and-material-3-expressive-forecast", "heading": "Versioning and Material 3 Expressive (FORECAST)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "color-roles-and-colorscheme", "heading": "Color roles and ColorScheme", "role": "how-to"},
+    {"part": "dynamic-color-material-you", "heading": "Dynamic color (Material You)", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "versioning-and-material-3-expressive-forecast", "heading": "Versioning and Material 3 Expressive (FORECAST)", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

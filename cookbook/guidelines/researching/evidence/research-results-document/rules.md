@@ -1,0 +1,12 @@
+
+- **should-capture-provenance-not-prose**: You SHOULD capture provenance, not prose.
+- **must-carry-the-per-claim-record**: Each claim MUST carry:
+  - The claim stated as one verifiable sentence.
+  - At least one citation with: title, author or organization, publisher or venue, date, DOI or URL, and the **access date**.
+  - The resource / **source type** (peer-reviewed, official docs, government data, clinical trial, news, reference, …).
+  - The **exact supporting quote** — verbatim, never paraphrased.
+  - Who or what generated the claim, and the **query** used to find it.
+  - A trust / confidence score and the basis for it.
+  - The **independence** of its support (corroboration: multi-independent, single, uncorroborated).
+- **should-record-the-document-container**: The document SHOULD record: topic and scope; the research questions; methodology (search strategy and inclusion/exclusion); the agents and sources involved; dates; an executive summary; the findings; open questions; limitations; and license.
+- **should-align-with-provenance-standards**: The record SHOULD align with the provenance standards listed under *Provenance standards to align with*.

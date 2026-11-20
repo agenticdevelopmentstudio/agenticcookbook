@@ -1,0 +1,41 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Structure — Arrange, Act, Assert (AAA):**",
+      "to": "should-structure-tests-as-arrange-act-assert",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The AAA lead-in becomes a SHOULD rule spelling out all three phases from the old code block.",
+        "pin": "1cef7f74a8902b8f4c06651b5e7c29901524262752df9a967c296109bd358dca"
+      }
+    },
+    {
+      "sentence": "**Rules:**",
+      "to": [
+        "must-have-one-assertion-concept",
+        "must-not-contain-logic",
+        "should-target-public-api",
+        "must-be-independent"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in's four list items are each kept as rules at their original levels (three MUST, one SHOULD) with their qualifiers.",
+        "pin": "95d6d23542ca3e367eca1f77b5b5de1275c340994b6e2df814dea07886d8c828"
+      }
+    },
+    {
+      "sentence": "**Naming — use descriptive names that read as specifications:**",
+      "to": "should-use-specification-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The naming lead-in's instruction is kept at SHOULD: descriptive names that read as specifications.",
+        "pin": "ecd05978dbcf20a10d070f86a1145aebf29003fe1540b975b985a8533b72eda1"
+      }
+    }
+  ],
+  "obsolete": []
+}

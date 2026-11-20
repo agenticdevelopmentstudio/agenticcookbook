@@ -4,11 +4,11 @@
     "id": "86866beb-319a-45b2-bdfa-24f0e3f7ae58",
     "title": "Trunk-based development",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,22 +30,23 @@
       "https://dora.dev/devops-capabilities/technical/trunk-based-development/",
       "https://launchdarkly.com/blog/elite-performance-with-trunk-based-development/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-commit",
       "pre-pr"
     ]
   },
-  "synced": "ae6918de32045e57",
+  "synced": "dda550808ae30c90",
   "parts": [
     {"part": "intro"},
-    {"part": "core-practices", "heading": "Core practices"},
-    {"part": "why-frequency-beats-branch-isolation", "heading": "Why frequency beats branch isolation"},
-    {"part": "how-an-agent-should-work-on-trunk", "heading": "How an agent should work on trunk"},
-    {"part": "required-protections", "heading": "Required protections"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
-    {"part": "caveats", "heading": "Caveats"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-an-agent-should-work-on-trunk", "heading": "How an agent should work on trunk", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-frequency-beats-branch-isolation", "heading": "Why frequency beats branch isolation", "role": "rationale"},
+    {"part": "caveats", "heading": "Caveats", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

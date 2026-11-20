@@ -1,0 +1,31 @@
+
+- `should-pin-a-dated-spec-revision`: a server that targets no dated spec revision, or "latest".
+- `should-default-to-the-stable-revision`: a default revision other than the stable 2025-11-25 with no host that requires an older one.
+- `should-negotiate-the-revision`: a revision hard-coded instead of negotiated during initialization.
+- `should-gate-draft-revisions`: release-candidate or draft revision behaviour enabled without an explicit opt-in.
+- `should-pick-primitives-by-purpose`: a primitive chosen because it was easier to wire up, not by what it is for.
+- `should-prefer-resources-for-read-only-context`: read-only context the user or host selects, exposed as something other than a resource.
+- `should-prefer-prompts-for-invoked-workflows`: a human-invoked workflow exposed as a tool instead of a prompt.
+- `should-use-tools-only-for-model-chosen-operations`: a tool for something the model does not choose autonomously.
+- `should-not-expose-read-only-context-as-tools`: a read-only lookup published as a tool.
+- `must-name-and-describe-tools-precisely`: a vague tool `name`, or a `description` that omits what it does, when to use it or what it returns.
+- `should-constrain-tool-names`: a tool name with spaces, characters outside `[A-Za-z0-9_.-]`, or over 128 chars.
+- `should-keep-tool-names-unique`: two tools in one server with the same name.
+- `should-use-title-for-display`: a `name` changed to read better for humans instead of setting `title`.
+- `should-define-a-strict-input-schema`: a tool with no `inputSchema`, or a loose one that accepts anything.
+- `should-close-zero-parameter-schemas`: a zero-parameter tool whose schema is not `{ "type": "object", "additionalProperties": false }`.
+- `should-keep-the-tool-surface-small`: many overlapping tools where one parameterized tool would do.
+- `should-declare-an-output-schema`: a tool returning structured data with no `outputSchema` and `structuredContent`.
+- `must-conform-to-the-output-schema`: `structuredContent` that does not match the declared `outputSchema`, a non-object schema root, or a client that skips validation.
+- `should-also-return-text-json`: a structured result with no JSON copy in a `text` content block.
+- `must-not-leak-secrets-in-outputs`: secrets or internal identifiers in tool output, or output passed through unsanitized.
+- `should-use-both-error-channels`: all failures sent down one error channel.
+- `should-return-tool-errors-in-the-result`: an API, validation or business-logic failure returned without `isError: true`, or with a message the model cannot act on.
+- `should-return-protocol-errors-as-json-rpc`: an unknown tool or malformed request answered other than with a JSON-RPC `error`.
+- `should-not-throw-protocol-errors-for-tool-failures`: a recoverable tool failure thrown as a protocol error.
+- `should-set-annotations`: a tool with no `annotations`.
+- `must-treat-annotations-as-untrusted`: a client that trusts annotations from a server it does not trust.
+- `should-set-annotations-accurately`: a destructive tool labelled read-only, or any hint left at a default that does not fit.
+- `must-not-rely-on-annotations-alone`: annotations used as the only safety control, with no server-side validation, access control or rate limit.
+- `must-validate-authorize-rate-limit-and-sanitize`: a tool handler without input validation, access control, rate limiting or output sanitizing.
+- `should-write-for-consent`: descriptions and errors a human gating the call could not decide on.

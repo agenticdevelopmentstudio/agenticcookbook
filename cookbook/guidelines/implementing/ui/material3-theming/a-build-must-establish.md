@@ -1,0 +1,19 @@
+
+- `must-consume-semantic-color-roles`: every component consumes semantic color roles, with no raw `Color(0xFF…)` literal or app-defined palette
+- `must-provide-light-and-dark-schemes`: the theme provides `lightColorScheme()` and `darkColorScheme()` and selects between them by `isSystemInDarkTheme()`
+- `should-generate-schemes-with-theme-builder`: the schemes were generated with the Material Theme Builder, or the code says why they are hand-authored
+- `should-read-colors-via-color-scheme`: every use site reads colors via `MaterialTheme.colorScheme.<role>`, or the code says why not
+- `must-not-read-hard-coded-colors`: no hard-coded color is read where a role exists
+- `should-treat-dynamic-color-as-deliberate`: dynamic color is on only by a recorded decision that brand identity allows the OS to drive palette, or the code says why
+- `should-guard-dynamic-color-api-level`: every dynamic color call is guarded by `Build.VERSION.SDK_INT >= Build.VERSION_CODES.S` and falls back to the branded scheme, or the code says why not
+- `should-prefer-fixed-scheme-for-brand-fidelity`: where brand color fidelity is a hard requirement, a fixed branded scheme is used, or the code says why not
+- `should-use-m3-type-scale-roles`: text uses `MaterialTheme.typography.<role>`, or the code says why not
+- `must-not-apply-ad-hoc-type`: no ad-hoc `fontSize`/`fontWeight` is applied where a scale role fits
+- `should-use-shape-scale`: shapes come from `MaterialTheme.shapes`, or the code says why not
+- `should-take-corners-from-shape-scale`: no component sets its corners with a magic number, or the code says why
+- `must-support-dark-completely`: every screen reads `onSurface`/`onSurfaceVariant` for text and the matching dark scheme, with no hard-coded light-only color
+- `should-verify-contrast-when-overriding-roles`: every overridden role was verified against WCAG 2.1 AA, or the code says why not
+- `should-pin-material3-dependency`: `androidx.compose.material3` is pinned to a stable version, via the Compose BOM where possible, or the code says why not
+- `must-not-blanket-adopt-expressive`: Expressive is not blanket-adopted in production
+- `should-default-to-stable-m3-color-roles`: stable M3 color roles are the default, or the code says why not
+- `should-adopt-expressive-only-behind-a-flag`: every Expressive use is behind a flag, on a pinned alpha, with a concrete UX need recorded, or the code says why not

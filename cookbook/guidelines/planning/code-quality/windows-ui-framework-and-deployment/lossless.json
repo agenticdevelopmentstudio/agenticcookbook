@@ -1,0 +1,205 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Pick the framework from target devices and existing investment, not from hype.",
+      "to": "should-pick-framework-from-targets-and-investment",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-pick-framework-from-targets-and-investment keeps choosing from target devices and existing investment, not hype (unkeyed, now SHOULD).",
+        "pin": "70fe41650192fdffb4d9edd0b7704bf38d4019d2b49c5e1f212d455a0cef8430"
+      }
+    },
+    {
+      "sentence": "**New, Windows-only desktop app**: agents **SHOULD** default to **WinUI 3** on the **Windows App SDK** (Microsoft's current recommendation for new native apps, runs down to Windows 10 1809).",
+      "to": "should-default-new-windows-apps-to-winui3",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-default-new-windows-apps-to-winui3 keeps the SHOULD default to WinUI 3 on the Windows App SDK for new Windows-only desktop apps, with the Microsoft-recommendation and Windows 10 1809 notes.",
+        "pin": "5fffcff63c4ddcf119dcc011eca2b2070eaf629877ae1c7c61e084ff3d05656d"
+      }
+    },
+    {
+      "sentence": "Build with **Visual Studio + MSBuild** — the only officially supported toolchain.",
+      "to": "should-build-winui3-with-visual-studio-msbuild",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-build-winui3-with-visual-studio-msbuild keeps building new WinUI 3 apps with Visual Studio + MSBuild as the only officially supported toolchain.",
+        "pin": "fb69b94a6bdcd8544e35cb75f3b96cbe05b2c610ed2a884856715a592b4b00e3"
+      }
+    },
+    {
+      "sentence": "**Existing WPF app**: **MUST NOT** be told it is dead.",
+      "to": "must-not-call-wpf-dead",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-call-wpf-dead keeps the MUST NOT tell an existing WPF app it is dead.",
+        "pin": "c101ed02aa62fc7281f44ca7484fe4ddeda9cfef152d4137496782aeed0f0577"
+      }
+    },
+    {
+      "sentence": "Keep WPF and modernize in place unless there is a concrete reason to move.",
+      "to": "should-keep-wpf-and-modernize",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-wpf-and-modernize keeps keeping WPF and modernizing in place, with the concrete-reason exception.",
+        "pin": "667666a3db885eb94600dccdd877afdc10bd6af175f4b1dba171846bb05223b4"
+      }
+    },
+    {
+      "sentence": "**Existing WinForms app**: also fully supported and actively invested in (async controls, dark mode).",
+      "to": [
+        "should-keep-winforms",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-winforms scopes to existing WinForms apps and the rationale keeps that WinForms is fully supported and actively invested in (async controls, dark mode).",
+        "pin": "c09c618adb6db5ef7d0228e7835f20c05d8a73600cdd65301c4f063bf4fab4d5"
+      }
+    },
+    {
+      "sentence": "Stay unless a concrete need forces a change.",
+      "to": "should-keep-winforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-winforms keeps staying on WinForms unless a concrete need forces a change.",
+        "pin": "d54c5db0dd768325fc2474d551467e8b5da7b6636968b1cd3a9407fdb4fa5a2c"
+      }
+    },
+    {
+      "sentence": "**Existing UWP app**: agents **MUST NOT** claim \"UWP is deprecated, port to WinUI now.\" Per Microsoft's developer FAQ (revised 2026-05-28), UWP and WinUI for UWP are **NOT deprecated** — they receive bug, reliability, and security fixes — but most **new** features go to WinUI.",
+      "to": [
+        "must-not-claim-uwp-deprecated",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-claim-uwp-deprecated keeps the MUST NOT and the quoted claim; the rationale keeps the dated Microsoft FAQ, not-deprecated status, fixes received, and new features going to WinUI.",
+        "pin": "87f2a718802fd93b0f27b55d670f34c36a175cd75854ffea8f7a4401897c8559"
+      }
+    },
+    {
+      "sentence": "Treat UWP as feature-frozen, not abandoned.",
+      "to": "should-treat-uwp-as-feature-frozen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-uwp-as-feature-frozen keeps feature-frozen, not abandoned (unkeyed, now SHOULD).",
+        "pin": "b5c926f0496530f8194d58d6569b34fd6d959746f82bb963d6044506c9baa002"
+      }
+    },
+    {
+      "sentence": "**Cross-platform native**: consider **.NET MAUI** (produces a WinUI app on Windows) or **React Native for Desktop**.",
+      "to": "should-consider-maui-or-react-native-for-cross-platform",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-consider-maui-or-react-native-for-cross-platform keeps both options and the MAUI-produces-a-WinUI-app note.",
+        "pin": "3485d89ef116947b6bab5a2f6de98dc5a6273a31953c2c150bab4270f611c2bd"
+      }
+    },
+    {
+      "sentence": "You **MUST** start with these if multi-platform is a real near-term goal — you cannot start in WinUI and add MAUI later.",
+      "to": "must-start-cross-platform-when-it-is-a-goal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-start-cross-platform-when-it-is-a-goal keeps the MUST, the real-near-term-goal condition, and the cannot-add-MAUI-later reason.",
+        "pin": "34708d6cde565175dcb3c2e4106d26fc3a77c63be005ed191ae6c4d597568405"
+      }
+    },
+    {
+      "sentence": "### UWP is still the recommended choice for some targets",
+      "to": "must-recommend-uwp-for-unsupported-targets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-recommend-uwp-for-unsupported-targets carries the heading's claim that UWP is still the recommended choice for some targets.",
+        "pin": "214d2e2edd838b1ffc817a8000cf1ae158323eb6ca75c663e8c7d07e5bb7be70"
+      }
+    },
+    {
+      "sentence": "Agents **MUST** recommend **UWP** when the target is **Xbox, Surface Hub, HoloLens, or IoT** — the Windows App SDK does **not** support these platforms.",
+      "to": [
+        "must-recommend-uwp-for-unsupported-targets",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-recommend-uwp-for-unsupported-targets keeps the MUST and the four targets; the rationale keeps that the Windows App SDK does not support them.",
+        "pin": "5aa0d9905b2ba23126a399891eb86e25827857498e099b24263f62b793c8166b"
+      }
+    },
+    {
+      "sentence": "WinUI/Windows App SDK content **MUST NOT** be mixed into a UWP app, and WinUI for UWP (formerly WinUI 2) **MUST NOT** be mixed with WinUI 3 — they are incompatible.",
+      "to": [
+        "must-not-mix-winui-into-uwp",
+        "must-not-mix-winui2-with-winui3",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two MUST NOT rules keep both mixing prohibitions and the rationale keeps the incompatibility reason.",
+        "pin": "5bd6d7b2a1fa8cb14400332acf77c7597fec12fe3ee400a9d8a4fc553bed0e77"
+      }
+    },
+    {
+      "sentence": "Do not pick unpackaged for these apps.",
+      "to": "should-not-pick-unpackaged-for-identity-apps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-pick-unpackaged-for-identity-apps keeps the prohibition for identity-gated apps (unkeyed, now SHOULD NOT), and must-have-package-identity-for-gated-features still requires identity at MUST.",
+        "pin": "671210a67fdb962f85808bfa99e5f01c7d55ce60e6673a02f2a7aa226d5d2853"
+      }
+    },
+    {
+      "sentence": "Packaged apps **MUST NOT** set that property.",
+      "to": "must-not-set-package-type-when-packaged",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-set-package-type-when-packaged keeps the MUST NOT and names the WindowsPackageType None property 'that property' referred to.",
+        "pin": "e73fd2b3f74ff4a32a07c59ac0db2d50e7e0e58e7ec6c80f4d6e9bf157bd007f"
+      }
+    },
+    {
+      "sentence": "Defer the framework choice no later than the first UI module; defer the deployment choice no later than the first identity-gated feature.",
+      "to": [
+        "should-settle-framework-by-first-ui-module",
+        "should-settle-deployment-by-first-identity-feature"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep both deadlines: framework by the first UI module, deployment by the first identity-gated feature (unkeyed, now SHOULD).",
+        "pin": "80c88abc8705a47bdd252328766b9caa9305c377af36d4ca8dbd7c907c999b2f"
+      }
+    },
+    {
+      "sentence": "When requirements are uncertain, agents **SHOULD** prefer packaged MSIX — adding identity-gated features later is free, removing the identity assumption is not.",
+      "to": [
+        "should-prefer-msix-when-uncertain",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-msix-when-uncertain keeps the SHOULD and the uncertain-requirements condition; the rationale keeps the adding-is-free, removing-is-not reason.",
+        "pin": "71cd499e4726391a914824c3a1b5791d038349999ce365e50c06fe7a2e92330e"
+      }
+    }
+  ],
+  "obsolete": []
+}

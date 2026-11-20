@@ -1,0 +1,172 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A flag whose rollout is finished, or whose old branch you just removed, is an orphan.",
+      "to": "should-remove-orphaned-flags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The definition of an orphaned flag (rollout finished, or its old branch just removed) is kept in full in the rule.",
+        "pin": "bb05db7d7486d055e2988ee3337ff7bb0f8fa44ed3673383190dbee066dd8448"
+      }
+    },
+    {
+      "sentence": "Remove the flag and the branch it guarded.",
+      "to": "should-remove-orphaned-flags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Removing the orphaned flag together with the branch it guarded is kept, raised from an unkeyed instruction to SHOULD.",
+        "pin": "ea88b5948a7649cbc1aa49a2120cf33b16d42a0c39368cd99f6bab28700389ef"
+      }
+    },
+    {
+      "sentence": "Confirm with a reference search before deleting.",
+      "to": "should-confirm-with-reference-search",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming with a reference search before deleting is kept at SHOULD.",
+        "pin": "ebc2c547274d243ae3761d24b3460ac39ee80aa9ea98420a0804ee98a6fb7a38"
+      }
+    },
+    {
+      "sentence": "You MUST NOT delete what you cannot show is unused, and you MUST NOT widen the cleanup to unrelated dead code; note that for the user instead.",
+      "to": [
+        "must-not-delete-unproven-unused",
+        "must-not-widen-cleanup"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUST NOTs are kept verbatim across the two rules, including the instruction to note unrelated dead code for the user instead.",
+        "pin": "b55a3fd9ca56d5c607c5b8e591031c43197f7da8e178fb514416fb97f57c90e7"
+      }
+    },
+    {
+      "sentence": "When a change alters what a value, function or field holds, rename it to match.",
+      "to": "should-rename-when-meaning-changes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Renaming a value, function or field to match when a change alters what it holds is kept at SHOULD; the rationale keeps the isDisplayed and userList examples.",
+        "pin": "e5b325bc8e068b76eee99a95f1e3f1b8b57c7e6551539ccdc8115400fafdfdef"
+      }
+    },
+    {
+      "sentence": "After you change a type or a behavior, reread the names that touch it, including parameter names, variable names, file names and test names.",
+      "to": "should-reread-touching-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rereading the names that touch a changed type or behavior, with all four name kinds listed, is kept at SHOULD.",
+        "pin": "28e02cc6759be9e0c07e786e2da35d48b515f273deeba4496c8a19f7004ccbf5"
+      }
+    },
+    {
+      "sentence": "A rename is a change to every caller, so apply the rename rule above in the same change.",
+      "to": "must-update-every-caller",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The sub-point under must-update-every-caller keeps that a rename is a change to every caller and must be applied in the same change, explicitly including renames made because a name no longer fits.",
+        "pin": "bdc63091b5079496a4585821b14255372f0ddceb4a59c7108a87d338892dea7e"
+      }
+    },
+    {
+      "sentence": "Do not leave a block of old code with a note such as \"kept for reference\" or \"old approach\".",
+      "to": "should-not-keep-old-code-for-reference",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not leaving an old block with a 'kept for reference' or 'old approach' note is kept at SHOULD NOT with both examples.",
+        "pin": "cb5c7aa1c10a0a36f55cf82ff5185eaced6cfef6752ac58097ea49eba28c2078"
+      }
+    },
+    {
+      "sentence": "If the reasoning behind the old approach matters, write it as a sentence in a comment and delete the code.",
+      "to": "should-record-old-reasoning-as-a-sentence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The condition (reasoning matters), writing it as a comment sentence, and deleting the code are all kept at SHOULD.",
+        "pin": "51768e44ee589ba39a9e1f2a121264d1500c23bcb4202b6aa4d3996f9d8c9908"
+      }
+    },
+    {
+      "sentence": "Do not leave old and new side by side, and do not park the old one behind a flag that is permanently off.",
+      "to": "should-not-keep-old-and-new-side-by-side",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both prohibitions, old and new side by side and the old one parked behind a permanently-off flag, are kept at SHOULD NOT.",
+        "pin": "46a9dad5b392d96cdd68eee295a9f6b95c3b7cb53dc2ba7aa65e79eee7619c33"
+      }
+    },
+    {
+      "sentence": "Do the deletion as you go, not as a cleanup pass you plan to do later.",
+      "to": "should-delete-as-you-go",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deleting as you go rather than in a planned later cleanup pass is kept at SHOULD; the rationale keeps the reason that planned cleanups never happen.",
+        "pin": "0206f1cc77ea009ac65c19b2642b9ee823c0201ea9482d445734bf27970eaa67"
+      }
+    },
+    {
+      "sentence": "Delete the old tests with the old code, and move any behavior they pinned that still matters onto the new path.",
+      "to": "should-delete-old-tests-with-old-code",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deleting old tests with the old code and moving still-relevant pinned behavior onto the new path are both kept at SHOULD.",
+        "pin": "776b7f753450004f7dff81c35d866cfb576f7cc205014fd3e28d7f403d1af1ba"
+      }
+    },
+    {
+      "sentence": "Search for the old name across the whole repo, not only the files you opened.",
+      "to": "should-search-whole-repo-for-old-name",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Searching for the old name across the whole repo, not only opened files, is kept at SHOULD.",
+        "pin": "a81f24de66db7b5b23a736ac152f962e995246c03ef6dd17fb0403ecd0d8ad2b"
+      }
+    },
+    {
+      "sentence": "Search for the whole identifier, not a fragment.",
+      "to": "should-search-whole-identifier",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Searching for the whole identifier, not a fragment, is kept at SHOULD; the rationale keeps the foo/foobar and strings/config/docs reason.",
+        "pin": "2319b202d169c2bc8dfa3adb1e73a9c67e2ffc0d05bbd0bbcb9b7eafb302e559"
+      }
+    },
+    {
+      "sentence": "Finish with a final search for the old name.",
+      "to": "should-finish-with-final-search",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Finishing with a final search for the old name is kept at SHOULD.",
+        "pin": "2499c5db5926db123a2554cd1dbd13b85e3954a558829445392291f921e78da2"
+      }
+    },
+    {
+      "sentence": "Any remaining hit is either a missed caller or a deliberate compatibility shim, and a shim MUST say so in a comment that names when it goes away.",
+      "to": [
+        "should-finish-with-final-search",
+        "must-comment-compatibility-shims"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps that a remaining hit is a missed caller or a deliberate shim, and the MUST that a shim say so in a comment naming when it goes away is kept.",
+        "pin": "e60e287e2801214bc0388cb3457ea576a62cd4600d64049dc6c038f8fccbc30a"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "> Privacy and PII handling here is engineering guidance, not legal advice; confirm obligations with counsel.",
+      "to": "should-confirm-privacy-obligations-with-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The engineering-not-legal-advice disclaimer and the instruction to confirm obligations with counsel are kept, the unkeyed instruction at SHOULD.",
+        "pin": "727a18983be7cb7832b82fd48d3eafebdde4395b2c80938973ee19196a942e79"
+      }
+    },
+    {
+      "sentence": "Heavy controls (managed moderation services, dedicated policy engines, sidecar enforcement) are adopt-when-measured-need-justifies per YAGNI — start with in-process deterministic checks.",
+      "to": "should-start-with-in-process-checks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Heavy controls stay adopt-when-measured-need-justifies per YAGNI, with the same three examples, and starting with in-process deterministic checks is kept at SHOULD.",
+        "pin": "b9db9e61e69934a178012a9c915c76ceb27535e2fb10b247c2c69a85859dfda4"
+      }
+    },
+    {
+      "sentence": "Validate and moderate everything reaching the model.",
+      "to": "should-validate-and-moderate-model-input",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validating and moderating everything reaching the model is kept at SHOULD; the detailed input MUSTs remain in off-band-input, untrusted-context and layered-defense.",
+        "pin": "bcd2af64120a94ba8671b0f6b32757856ab5ac0da26024f91e8079d0e0c796a8"
+      }
+    },
+    {
+      "sentence": "They **MUST** be enforced as deterministic code, not as prompt instructions alone — a model can always be talked out of following its own prompt (OWASP LLM01:2025 Prompt Injection).",
+      "to": "must-enforce-guardrails-as-code",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Guardrails MUST be deterministic code, not prompt instructions alone, with the same reason and the OWASP LLM01:2025 citation.",
+        "pin": "dcf9f14cf06f27476936fecaa67c90eaefa6553089c13bc8786494e45365a304"
+      }
+    },
+    {
+      "sentence": "Treat all model output as untrusted until it has passed checks (see [adc.guideline.implementing.security.llm-application-security](cookbook:a8088a6a-4542-4f6c-b74a-7c7ef7dcc63d)).",
+      "to": "should-treat-model-output-as-untrusted",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating all model output as untrusted until it passes checks is kept at SHOULD with the same cross-reference to llm-application-security.",
+        "pin": "cefe299e5ddbfac4cf40501dcc992a30a5bff606b882fa2a5359539663b625d1"
+      }
+    },
+    {
+      "sentence": "Constrain agency to the minimum required (OWASP LLM06:2025 Excessive Agency).",
+      "to": "should-constrain-agency-to-minimum",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Constraining agency to the minimum required is kept at SHOULD with the OWASP LLM06:2025 citation.",
+        "pin": "b90fdf52cf305121a2418b722ace253ac2e607d67477b5ba5b3332a0f16ad4db"
+      }
+    }
+  ],
+  "obsolete": []
+}

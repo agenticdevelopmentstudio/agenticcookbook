@@ -1,0 +1,124 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**HSTS:** Enable on all production domains:",
+      "to": [
+        "must-enable-hsts-on-production-domains",
+        "should-submit-to-hsts-preload-list"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling HSTS on all production domains is kept, now at MUST with the header value, and the preload submission that followed is kept at SHOULD.",
+        "pin": "0eac090e2f9b4cafa268ff9e6522f9d8ea47df0b076ab7440edf896a20903d3d"
+      }
+    },
+    {
+      "sentence": "```",
+      "to": "must-enable-hsts-on-production-domains",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The code fence only framed the header value, which the HSTS MUST carries verbatim.",
+        "pin": "f80b8fcaa01550faca47f44d2b44a2e4ecd55f015deee20fa2145ccc8574493d"
+      }
+    },
+    {
+      "sentence": "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
+      "to": "must-enable-hsts-on-production-domains",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The exact header Strict-Transport-Security: max-age=31536000; includeSubDomains; preload is kept in the HSTS MUST.",
+        "pin": "c3b34a7122d005ba469c8a35396d3a714b8942a5f100537d9b9c2916643f6634"
+      }
+    },
+    {
+      "sentence": "**Certificate pinning — use with caution:**",
+      "to": [
+        "should-pin-to-intermediate-ca",
+        "should-pin-only-on-mobile",
+        "must-include-backup-pins-and-recovery-plan",
+        "should-consider-certificate-transparency-monitoring"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The certificate-pinning heading and its use-with-caution warning are carried by the four pinning rules, the first labelled use with caution.",
+        "pin": "2266cbc8a6b269bc6100ae7ceccfab09325e16e1382c11e3eb2558fb71b3a112"
+      }
+    },
+    {
+      "sentence": "Pin to the intermediate CA, not the leaf (leaf certificates rotate)",
+      "to": "should-pin-to-intermediate-ca",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning to the intermediate CA rather than the leaf, because leaf certificates rotate, is kept at SHOULD.",
+        "pin": "aff75275f114e0bda4d5b0f74ea87c4f5d42929aa7cd94f1db003ad18ff19e89"
+      }
+    },
+    {
+      "sentence": "Acceptable for mobile apps; generally avoid for web (HPKP is deprecated)",
+      "to": "should-pin-only-on-mobile",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning being acceptable for mobile apps and generally avoided for web because HPKP is deprecated is kept at SHOULD.",
+        "pin": "bf548ede45a3719859112d3a2f125087bb4b425265ba7bf816d8680eb6f37163"
+      }
+    },
+    {
+      "sentence": "Backup pins MUST be included along with a recovery plan",
+      "to": "must-include-backup-pins-and-recovery-plan",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Backup pins MUST be included along with a recovery plan is kept.",
+        "pin": "6890bf00cf56cc329ca2af55780ec9de1ff770b0bc2d02cce387346e40550f3d"
+      }
+    },
+    {
+      "sentence": "Consider Certificate Transparency monitoring as an alternative",
+      "to": "should-consider-certificate-transparency-monitoring",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Considering Certificate Transparency monitoring as an alternative is kept at SHOULD.",
+        "pin": "bebbf8786df5ec32adf392ee7ad7fad7c7c604b3f749fad1bb9ed60b3b8423aa"
+      }
+    },
+    {
+      "sentence": "**Cipher suites:** Use Mozilla's \"Intermediate\" or \"Modern\" TLS configuration.",
+      "to": "should-use-mozilla-tls-configuration",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using Mozilla's Intermediate or Modern TLS configuration for cipher suites is kept at SHOULD.",
+        "pin": "5df6b01f2b85d6b4d5f3603c14d84a711c941365d050f8e87b000d3711354de6"
+      }
+    },
+    {
+      "sentence": "Prefer AEAD",
+      "to": "should-prefer-aead-ciphers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring AEAD ciphers is kept at SHOULD.",
+        "pin": "fe9cbf33ec79c092ebcc2a4918beebfab62dd5ea20df6e7ff6e56a27c5e127d4"
+      }
+    },
+    {
+      "sentence": "ciphers (AES-GCM, ChaCha20-Poly1305).",
+      "to": "should-prefer-aead-ciphers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The named AEAD ciphers, AES-GCM and ChaCha20-Poly1305, are kept.",
+        "pin": "1e1eac1600d78e0174d78d7171f00f0940e186bf622ec464970864b881747fbe"
+      }
+    }
+  ],
+  "obsolete": []
+}

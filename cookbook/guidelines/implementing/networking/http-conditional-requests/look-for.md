@@ -1,0 +1,14 @@
+
+- `must-return-etags`: a resource used with `If-None-Match` or `If-Match` whose responses carry no `ETag`.
+- `should-emit-strong-etags-for-writes`: a weak `W/` ETag on a resource that takes `If-Match` writes.
+- `must-treat-etags-as-opaque`: client code that parses an ETag, compares part of it, or reads a version or timestamp out of it.
+- `should-send-if-none-match-on-repeat-reads`: a client that repeats a GET/HEAD it has an ETag for without `If-None-Match`.
+- `must-return-304-when-unchanged`: an unchanged resource answered with 200 and a body, or a 304 that drops `ETag`, `Cache-Control` or `Vary`.
+- `should-prefer-if-none-match-over-if-modified-since`: `If-Modified-Since` used where an ETag exists.
+- `should-send-if-match-on-shared-writes`: a PUT/PATCH/DELETE on a shared, mutable resource sent with no `If-Match`.
+- `must-apply-writes-only-on-matching-etag`: a server that applies a write whose `If-Match` does not match the current ETag, or uses a weak comparison, or returns anything but 412 with no change.
+- `should-support-and-may-require-if-match`: a mutating endpoint on a shared resource that ignores `If-Match`, or one that requires it but answers its absence with something other than `428 Precondition Required`.
+- `should-use-if-match-and-idempotency-keys-together`: a write that relies on `If-Match` for retry safety, or on an idempotency key for concurrency safety.
+- `must-not-default-if-match-to-star`: `If-Match` removed, or set to `*`, to stop 412 responses.
+- `should-surface-412-apart-from-409`: 412 and 409 handled by the same code path, or a 409 retried as if it were a stale precondition.
+- `should-pass-etags-through-intermediaries`: a proxy or CDN configuration that rewrites or strips `ETag`.

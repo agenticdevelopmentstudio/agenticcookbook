@@ -4,11 +4,11 @@
     "id": "8ade0fa5-dd84-4fa2-9170-2ff30ef9691f",
     "title": "Research type taxonomy",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,18 +29,21 @@
       "https://dl.acm.org/doi/10.1145/792550.792552",
       "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1904193/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "research"
     ]
   },
-  "synced": "25a0d8501c5b75fa",
+  "synced": "99717cc7d5b295f5",
   "parts": [
     {"part": "intro"},
-    {"part": "three-lenses", "heading": "Three lenses"},
-    {"part": "the-types", "heading": "The types"},
-    {"part": "routing-and-escalation", "heading": "Routing and escalation"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "three-lenses", "heading": "Three lenses", "role": "how-to"},
+    {"part": "the-types", "heading": "The types", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

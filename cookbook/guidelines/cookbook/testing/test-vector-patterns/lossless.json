@@ -1,0 +1,17 @@
+{
+  "base": "0005775",
+  "renamed_from": "cookbook/guidelines/cookbook/testing/unit-test-patterns",
+  "moved": [
+    {
+      "sentence": "Use descriptive names that read as specifications:",
+      "to": "should-use-descriptive-specification-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-use-descriptive-specification-names keeps the unkeyed instruction at SHOULD, scoped to test vectors; the examples it introduced stay in the naming-test-vectors part.",
+        "pin": "d0c2291ea53f3fe13b735dde7599e05376ec0b714bc94457c2a04f62f09bc260"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,13 @@
+
+- `should-design-for-content-not-screen-size`: a layout built around one fixed screen size rather than its content
+- `should-adapt-from-compact-to-expanded`: a layout that breaks, clips or wastes space between compact and expanded contexts
+- `should-default-to-single-column`: a multi-column layout where content density does not justify it or screen width does not support it
+- `should-decide-content-before-layout`: a layout chosen with no clear idea of what information the user needs
+- `should-not-start-with-a-grid`: a grid laid down first and then filled with content
+- `should-keep-consistent-alignment`: mixed alignment instead of one leading edge
+- `must-use-adaptive-layout-system`: hard-coded widths where the platform's adaptive layout system (Size Classes, Window Size Classes, CSS media queries, VisualStateManager) should decide
+- `should-prefer-generous-whitespace-for-consumer-uis`: a consumer UI packed tightly instead of given generous whitespace
+- `may-allow-denser-layouts-for-productivity-tools`: a dense layout outside a productivity or data-heavy tool
+- `must-not-sacrifice-readability-for-density`: text made hard to read to fit more on screen
+- `should-keep-one-primary-scroll-direction`: a view that scrolls in more than one primary direction
+- `should-avoid-nested-same-direction-scrolling`: a scroll view nested inside another that scrolls the same way

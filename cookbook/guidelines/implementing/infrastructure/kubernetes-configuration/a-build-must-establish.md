@@ -1,0 +1,15 @@
+
+- `non-sensitive-config`: feature flags, URLs and tuning values come from ConfigMaps, not the image
+- `sensitive-in-secrets`: no credential, token, TLS key or connection string is in a ConfigMap
+- `no-plaintext-in-vcs`: no plaintext secret value is in version control, an image layer or a build arg
+- `treat-secret-as-encoded-not-encrypted`: Secrets are protected at the cluster level or sourced from a secret manager, or the work says why not
+- `adopt-only-on-measured-need`: the work records the measured operational need for Kubernetes, or says why not
+- `encryption-at-rest`: etcd encryption at rest is enabled where raw Secrets are used
+- `least-privilege-rbac`: only named ServiceAccounts and subjects can `get`/`list`/`watch` Secrets, with no wildcard or namespace-wide grant
+- `etcd-protection`: access to etcd and node disks is restricted, or the work says why not
+- `prefer-managed-store`: production secrets sync from Vault, a cloud manager via CSI, or ESO, or the work says why not
+- `mount-choice`: scalars arrive as env vars and files, large or live-updating values as volumes, or the work says why not
+- `support-rotation`: a rotated credential takes effect without a redeploy, or the work says why not
+- `immutable-when-stable`: release-fixed ConfigMaps and Secrets set `immutable: true`, or the work says why not
+- `pin-and-revalidate-secret-tooling`: Helm chart and operator versions are pinned, or the work says why not
+- `consult-counsel-on-compliance`: compliance obligations were reviewed against regulations and counsel, or the work says why not

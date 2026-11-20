@@ -1,0 +1,16 @@
+
+- `should-sender-constrain-high-value-apis`: a high-value or public-client API issuing plain bearer access tokens
+- `should-sender-constrain-tokens-through-intermediaries`: a bearer token that passes through a gateway, proxy or browser code without sender-constraint
+- `may-keep-low-value-flows-bearer`: a flow left bearer by default, with no recorded threat-model or cost decision behind it
+- `should-pick-one-mechanism-per-surface`: one API surface mixing DPoP and mTLS, or an endpoint accepting both bearer and constrained tokens with no migration plan
+- `should-present-mechanism-choice-as-trade-off`: a mechanism choice with no stated trade-off between DPoP signing cost and mTLS certificate provisioning
+- `must-send-dpop-proof-on-every-request`: a token or protected resource request sent without a `DPoP` proof signed by the client's private key breaks it
+- `must-include-dpop-proof-claims`: a proof missing `htm`, `htu`, `iat` or a unique `jti`, or a resource-request proof without `ath`, breaks it
+- `must-bind-and-verify-dpop-key`: a token without `cnf.jkt`, or a resource server that does not check the proof key against it, breaks it
+- `must-reject-replayed-dpop-proofs`: a resource server with no `jti`/`iat` freshness check, or no server `nonce` where replay risk is high, breaks it
+- `must-keep-private-keys-non-exportable`: an extractable WebCrypto key, or a private key persisted where script can read it, breaks it
+- `must-bind-client-certificate-fingerprint`: an mTLS flow with no client certificate, or a token without the `cnf.x5t#S256` fingerprint, breaks it
+- `must-match-client-certificate-before-honoring`: a resource server that honors an mTLS-bound token without matching the connection's client certificate breaks it
+- `must-handle-certificate-rotation-and-revocation`: no operational handling for certificate rotation and revocation breaks it
+- `should-combine-with-other-token-controls`: sender-constraining used in place of short lifetimes, refresh-token rotation, audience restriction or PKCE
+- `may-choose-mechanism-by-topology`: a mechanism forced onto a topology (such as a TLS-terminating CDN) that blocks it

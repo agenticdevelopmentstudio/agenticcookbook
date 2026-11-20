@@ -1,0 +1,16 @@
+
+- `should-not-partition-by-default`: no table is partitioned that a normal indexed table would serve, or the work says why not
+- `must-justify-partitioning-with-measured-need`: each partitioned table has a recorded, measured scale or retention need
+- `should-confirm-win-with-explain-analyze`: `EXPLAIN (ANALYZE)` output before and after shows partition pruning, or the work says why not
+- `should-not-over-fragment-partitions`: no partition is under ~10k rows and the count stays in the dozens to hundreds, or the work says why not
+- `must-partition-on-hot-query-filter-columns`: the partition key is in the WHERE clause of every hot query
+- `should-prefer-native-declarative-partitioning`: partitioning is declarative, not inheritance + triggers, or the work says why not
+- `must-include-partition-key-in-unique-constraints`: every primary key and unique constraint includes the partition key
+- `should-range-partition-time-series-by-time`: time-series tables are range partitioned by time, or the work says why not
+- `should-retain-by-dropping-partitions`: retention runs as `DROP TABLE`/`DETACH PARTITION`, or the work says why not
+- `should-automate-partition-lifecycle`: partition creation and dropping run automatically, or the work says why not
+- `should-evaluate-brin-for-time-ordered-partitions`: BRIN was evaluated for each large time-ordered partition, or the work says why not
+- `should-precompute-rollups-for-long-history`: long-history queries read rollups or continuous aggregates, or the work says why not
+- `should-stay-on-native-partitioning-when-sufficient`: native partitioning is used where it suffices, or the work says why not
+- `may-adopt-extension-only-on-measured-need`: an adopted extension has a recorded measured need
+- `should-pin-and-reverify-after-upgrades`: the deployed major version is pinned and `EXPLAIN` plans were re-verified after the last upgrade, or the work says why not

@@ -1,0 +1,17 @@
+
+- `must-not-patch-a-running-server-in-place`: no step patches a running server in place
+- `must-ship-immutable-versioned-artifacts`: each deployment ships an immutable, versioned artifact and replaces instances
+- `must-not-modify-a-built-artifact`: no built artifact is modified; each change builds a new version
+- `must-treat-servers-as-cattle`: every server can be replaced from its image with nothing hand-tuned lost
+- `must-rebuild-to-change`: every configuration, dependency and code change ships by rebuilding the image and rolling out new instances
+- `should-treat-running-instances-as-read-only`: no manual installs, live config edits or restart-surviving hotfix scripts touch running instances, or the work says why
+- `must-roll-back-by-redeploying`: the rollback procedure redeploys the previous known-good image version
+- `should-retain-addressable-prior-images`: prior image versions are retained and addressable by immutable tag or digest, or the work says why not
+- `should-not-deploy-mutable-tags`: every deploy pins an immutable digest or version tag, or the work says why not
+- `should-build-from-version-controlled-definitions`: the artifact is built from version-controlled definitions, or the work says why not
+- `should-automate-replacement-provisioning`: replacement provisioning is automated end-to-end, or the work says why not
+- `should-bake-code-and-dependencies-into-the-image`: application code and dependencies are baked into the image at build time, or the work says why not
+- `should-inject-environment-config-at-runtime`: no secrets or per-environment values are in the image, and that config is injected at deploy/runtime, or the work says why not
+- `must-keep-persistent-data-off-the-instance`: no persistent data is on an instance's ephemeral disk
+- `should-adopt-heavier-machinery-only-on-measured-need`: any heavier machinery names the measured need behind it, or the work says why
+- `should-keep-image-builds-fast`: image builds use layer caching and small base images to stay quick, or the work says why not

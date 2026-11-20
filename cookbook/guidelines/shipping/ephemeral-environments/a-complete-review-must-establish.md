@@ -1,0 +1,23 @@
+
+- `should-give-every-pr-a-preview`: whether every PR gets a preview environment where feasible
+- `must-provision-on-pr-event`: whether provisioning fires on the PR `opened`/`synchronize` event, not by hand
+- `must-define-spin-up-in-iac`: whether spin-up is defined entirely in infrastructure-as-code
+- `must-own-namespaced-resources`: whether each environment owns its services, datastore and DNS, namespaced by the PR identifier
+- `must-not-collide-across-prs`: whether resources from different PRs can collide
+- `must-tear-down-on-pr-close`: whether teardown fires on the PR `closed` event
+- `should-reap-orphans-by-ttl`: whether a scheduled reaper sweeps orphans by age/TTL
+- `must-not-outlive-pr`: whether any environment can outlive its PR
+- `must-recreate-state-from-iac`: whether all state is recreatable from IaC plus seed scripts, with no manual hotfixes
+- `should-keep-environments-cheap-and-short-lived`: whether environments are cheap and short-lived
+- `must-remove-every-namespaced-resource`: whether teardown removes every namespaced resource
+- `should-seed-with-synthetic-fixtures`: whether seed data is synthetic or anonymized
+- `must-not-copy-production-pii`: whether production PII can reach a preview
+- `should-default-to-fresh-provision`: whether branching is used only where spin-up latency is a measured bottleneck
+- `should-include-real-backend`: whether full-stack previews include the real backend
+- `should-run-e2e-against-live-url`: whether E2E/smoke and contract tests run against the live URL
+- `should-post-preview-link-and-results`: whether the preview link and check results are posted to the PR
+- `may-substitute-request-routing`: whether any request-routing substitute is a deliberate decision, not the default
+- `must-not-write-to-production`: whether a preview has write access to any production store, queue or account
+- `should-make-spin-up-and-teardown-idempotent`: whether spin-up and teardown jobs are idempotent
+- `should-verify-vendor-behavior`: whether relied-on vendor behavior was verified against current docs
+- `should-treat-vendor-claims-as-unverified`: whether vendor "instant branch" or per-PR-cost claims are treated as unverified until measured

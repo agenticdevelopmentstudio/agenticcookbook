@@ -1,0 +1,28 @@
+
+- **should-comment-the-why**: A comment SHOULD say what the code cannot: the reason for a choice, a constraint from outside, a trap, or the alternative you rejected and why.
+- **should-not-restate-the-line**: A comment SHOULD NOT restate the line below it. `# increment counter` above `counter += 1` adds noise and a second thing to keep in sync.
+- **should-try-a-clearer-name-first**: If a comment is needed to explain what a block does, you SHOULD first try a clearer name or a smaller function. Comment what is left.
+- **should-name-the-source-of-surprising-values**: You SHOULD name the source of a surprising value: the spec section, the ticket, the measurement.
+- **should-update-docs-in-the-same-change**: When a change alters behavior, you SHOULD update the comments, docstrings, README sections and instruction files that describe it in that same change. Do not leave a doc update as a follow-up.
+- **should-search-docs-for-changed-names**: You SHOULD search the docs for the names you changed, as you would search code.
+- **should-describe-new-public-behavior**: New public behavior SHOULD get a description where users will look for it.
+- **should-remove-docs-of-removed-behavior**: Removed behavior SHOULD have its description removed (see `docs-match-code`).
+- **should-give-both-readers-exact-specifics**: Docs SHOULD give both of their readers, the AI agent and the human, the same things they need: exact names they can search for, the real command to run, the real path, and a statement of when a rule applies.
+- **should-lead-with-the-point**: You SHOULD lead with the point. An agent loads a file partially and a person skims, so put the answer first and the background after.
+- **should-prefer-concrete-examples**: You SHOULD prefer concrete examples with real values over abstract descriptions. Keep each example short enough to be correct.
+- **should-keep-one-canonical-term**: You SHOULD keep one canonical term for each concept, and use it everywhere. A synonym reads as a different thing to a literal-minded reader.
+- **should-say-what-is-true-now**: You SHOULD say what is true now. Leave out narration of how it got that way.
+- **should-prefer-specifics**: **Specifics over abstractions.** You SHOULD name the thing, the number, the file. If you do not know the specific, leave the sentence out rather than invent one.
+- **must-not-make-up-sources**: You MUST NOT make up a statistic, source or quote.
+- **should-cut-throat-clearing**: **Cut throat-clearing.** You SHOULD NOT open by restating the title or announcing what you are about to say, and do not close by summarizing what you just said. Ask of each sentence what it adds.
+- **should-use-short-ordinary-words**: **Short ordinary words.** You SHOULD prefer "use" to "utilize" and "show" to "demonstrate". Avoid stock filler vocabulary and stacked hedges.
+- **should-not-swap-synonyms-to-disguise-a-tic**: You **SHOULD NOT swap synonyms to disguise a tic.** If a word is vague, rewrite the clause so it is not needed.
+- **should-prefer-verbs-over-nominalizations**: **Verbs over nominalizations.** You SHOULD write "we decide" rather than "we make a decision".
+- **should-use-active-voice-by-default**: You SHOULD use **active voice by default.** Passive is fine when the actor does not matter.
+- **should-hedge-only-real-uncertainty**: You SHOULD **hedge only real uncertainty**, and say what is uncertain. Do not hedge by reflex.
+- **should-vary-rhythm-by-content**: You SHOULD **vary rhythm because the content calls for it**, not to hit a quota. Do not break every list into groups of three or end every paragraph on a tidy one-line moral.
+- **should-make-punctuation-do-a-job**: **Punctuation does a job.** You SHOULD use a comma, colon, parentheses or a new sentence rather than a dash. Do not run clauses together to avoid one.
+- **should-keep-one-tense-and-register**: You SHOULD **keep one tense and one register** through a passage.
+- **should-state-the-premise**: You SHOULD **state the premise** behind a claim, or weaken the claim to what you can support.
+- **must-use-visible-characters-only**: **Visible characters only.** You MUST NOT paste look-alike or invisible Unicode characters into text.
+- **should-run-humanize-where-available**: Where the host has the humanize skill, you SHOULD run it over prose you wrote and review its findings. Where it does not, apply these rules by hand.

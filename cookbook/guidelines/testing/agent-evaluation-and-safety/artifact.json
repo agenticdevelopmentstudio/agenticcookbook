@@ -4,11 +4,11 @@
     "id": "e2a99bf0-6b25-4769-9d1e-613b58b6f097",
     "title": "Agent evaluation and safety",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,22 +29,23 @@
       "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
       "https://www.nist.gov/itl/ai-risk-management-framework"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ai-api-integration",
       "writing-tests"
     ]
   },
-  "synced": "008889862e82e41e",
+  "synced": "d5aca68ec2bd1be3",
   "parts": [
     {"part": "intro"},
-    {"part": "two-gates-both-required", "heading": "Two gates, both required"},
-    {"part": "defining-slos", "heading": "Defining SLOs"},
-    {"part": "run-both-gates-in-ci", "heading": "Run both gates in CI"},
-    {"part": "red-teaming-the-safety-gate", "heading": "Red-teaming the safety gate"},
-    {"part": "tracking-regressions-over-time", "heading": "Tracking regressions over time"},
-    {"part": "adopt-when-measured", "heading": "Adopt-when-measured"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "two-gates-both-required", "heading": "The two gates", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "adopt-when-measured", "heading": "Adopt-when-measured", "role": "rationale"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

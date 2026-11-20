@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Make it immutable with value equality (two value objects with the same contents are equal).",
+      "to": "should-be-immutable-with-value-equality",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Making a value object immutable with value equality, with the same-contents-are-equal definition, is kept at SHOULD.",
+        "pin": "a6ece635dc23079e7ef5a543fc6c356b70a8064a367057c3c01a238104c029a1"
+      }
+    },
+    {
+      "sentence": "Keep it small and focused on the single concept it represents.",
+      "to": "should-keep-value-object-small-and-focused",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping a value object small and focused on its single concept is kept at SHOULD.",
+        "pin": "c6e77048949ff5057d6b0df1ed922effe5a13c05b89ae128a39c049d692d2de8"
+      }
+    },
+    {
+      "sentence": "Introduce a value object when a primitive meets any of these (and not before — see yagni):",
+      "to": "should-introduce-value-object-when-criteria-met",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Introducing a value object when a primitive meets any criterion, and not before (the yagni pointer), is kept at SHOULD with all three criteria and the no-criteria caveat as sub-points.",
+        "pin": "fb7593bf194fcfc0a930b97516adbfcbab9795c4282196200ccbdb4f884c83ac"
+      }
+    }
+  ],
+  "obsolete": []
+}

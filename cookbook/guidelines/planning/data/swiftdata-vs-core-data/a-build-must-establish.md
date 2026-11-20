@@ -1,0 +1,16 @@
+
+- `must-justify-by-os-floor-complexity-and-migrations`: the framework choice cites OS-version floor, model complexity and migration needs
+- `should-make-the-choice-deliberately`: the choice is recorded as a deliberate decision, or the work says why not
+- `should-apply-the-decision-rows-in-order`: the chosen framework is the one the first matching decision-rule row gives, or the work says why not
+- `should-default-to-swiftdata-when-no-row-forces-core-data`: new code uses SwiftData when no row forces Core Data, or the work says why not
+- `should-use-swiftdata-for-greenfield-ios-17-plus`: a greenfield app with an iOS 17+ / macOS 14+ floor uses SwiftData, or the work says why not
+- `should-use-core-data-for-controlled-migrations`: a project needing fully-controlled migrations or schema versioning uses Core Data, or the work says why not
+- `must-use-core-data-below-the-swiftdata-floor`: no code targeting OS versions below the SwiftData floor uses SwiftData
+- `must-not-rewrite-working-core-data-to-modernize`: no working Core Data stack is rewritten into SwiftData without a concrete need
+- `should-prefer-core-data-for-tuning-and-scale`: Core Data serves fine-grained fetch tuning, batch operations at scale and large datasets, or the work says why not
+- `should-define-models-with-the-model-macro`: every SwiftData model is a Swift class with `@Model`, or the work says why not
+- `should-use-modelactor-for-background-work`: SwiftData background work runs in a `@ModelActor`, or the work says why not
+- `must-verify-swiftdata-writes-persist`: tests fetch after each save to verify SwiftData writes persist, pinned to a tested OS revision
+- `should-treat-unshipped-swiftdata-features-as-unavailable`: nothing depends on shared/public CloudKit sync or dynamic predicate adjustment in SwiftData, or the work says why
+- `may-adopt-swiftdata-incrementally`: where SwiftData is introduced into a Core Data app, it is either incremental or the work says why a rewrite was chosen
+- `must-keep-the-schema-compatible-across-layers`: migration tests show the schema is compatible across both layers before shipping

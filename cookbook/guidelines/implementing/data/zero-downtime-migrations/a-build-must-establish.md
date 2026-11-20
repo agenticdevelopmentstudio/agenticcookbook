@@ -1,0 +1,21 @@
+
+- `should-split-schema-changes-into-compatible-steps`: each schema change ships as small, individually-deployable, backward-compatible steps, or the work says why not
+- `must-be-compatible-with-running-version`: the N-1 and N app versions both run against the schema after every step
+- `must-not-ship-schema-and-code-together`: the schema step ships before the code that depends on it, and cleanup ships last
+- `must-defer-destructive-changes`: no destructive change ships until no running code references the old shape
+- `should-spread-change-across-releases`: the change's expand, migrate, switch and contract phases ship in separate releases, or the work says why not
+- `must-add-columns-nullable-or-defaulted`: every added column is nullable or has a safe default, and any `NOT NULL` is added as `NOT VALID` then `VALIDATE CONSTRAINT`
+- `must-rename-by-parallel-change`: no in-place `RENAME` ships; renames run add-new, dual-write, backfill, switch, drop-old
+- `must-batch-backfills`: every backfill runs in bounded batches with a commit per batch and can resume
+- `should-make-backfills-idempotent`: re-running a backfill after partial failure gives the same result, or the work says why not
+- `should-bound-ddl-lock-wait`: every lock-taking step has a bounded wait, or the work says why not
+- `must-set-lock-timeout`: every migration that takes table locks sets `lock_timeout`
+- `should-set-statement-timeout`: every migration sets `statement_timeout`, or the work says why not
+- `should-retry-lock-timeout-aborts`: a `lock_timeout` abort is retried with bounded backoff, or the work says why not
+- `must-build-indexes-concurrently`: indexes on large live tables are created and dropped `CONCURRENTLY`
+- `must-not-wrap-concurrent-index-in-transaction`: no `CREATE INDEX CONCURRENTLY` step runs inside a transaction
+- `should-clean-up-invalid-index`: a retried concurrent build first drops any `INVALID` index, or the work says why not
+- `should-roll-back-by-redeploying`: the rollback plan is to redeploy the previous app version, or the work says why not
+- `should-avoid-dropping-down-migrations`: no incident down-migration drops just-added columns, or the work says why not
+- `must-keep-old-shape-one-deploy-cycle`: the old shape stays for at least one full deploy cycle after the switch
+- `should-confirm-engine-lock-behavior`: each clause relied on as non-blocking is confirmed in the engine's current `ALTER TABLE` docs, or the work says why not

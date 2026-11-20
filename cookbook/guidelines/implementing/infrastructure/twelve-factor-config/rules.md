@@ -1,0 +1,13 @@
+
+- **must-read-varying-config-from-environment**: Config that varies between deploys **MUST** be read from environment variables (or a runtime secrets/config service), never hardcoded in source.
+- **must-build-one-immutable-artifact**: You **MUST** build one immutable artifact and promote that same image across environments. Do **NOT** rebuild per environment — rebuilding breaks the dev/prod parity guarantee.
+- **must-not-commit-secrets**: Secrets **MUST NOT** be committed to version control. A litmus test: the repo could be made open-source at any moment without leaking credentials.
+- **should-group-config-by-deploy**: Config **SHOULD** be grouped by deploy (the running instance), not bucketed into named groups like `config/dev`, `config/staging`, `config/prod` checked into the repo. Named buckets do not scale to new deploys and tempt per-environment code paths.
+- **must-fail-fast-on-missing-config**: Behavior **MUST** be explicit: read each variable by name and fail fast at startup when a required value is missing or malformed (see explicit-over-implicit). Do **NOT** silently fall back to a default for required secrets.
+- **should-keep-constants-in-code**: Config is **NOT** internal application constants that stay the same across deploys (routing tables, fixed business rules). Those **SHOULD** live in code.
+- **should-provide-env-example**: You SHOULD provide a `.env.example` (committed, no real values) listing every variable the app reads; keep the real `.env` git-ignored and out of images.
+- **should-validate-config-once-at-boot**: You SHOULD validate and coerce config once at boot into a typed config object; the rest of the code reads that object, not `process.env`/`os.environ` directly.
+- **should-inject-secrets-at-runtime**: You SHOULD inject secrets at runtime from a managed secret store (cloud secret manager, orchestrator secret, or vault) rather than baking them into the artifact.
+- **should-start-with-environment-injection**: You SHOULD treat the choice of a heavyweight secrets platform as adopt-when-measured-need-justifies, not a default (YAGNI) — start with environment injection.
+- **should-treat-new-factor-revisions-as-forecasts**: You SHOULD treat any newer factor revisions as forecasts until officially published, and pin to the current published guidance at https://12factor.net/config.
+- **should-consult-counsel**: This is engineering guidance and is **NOT** legal advice; you SHOULD consult counsel for regulatory obligations.

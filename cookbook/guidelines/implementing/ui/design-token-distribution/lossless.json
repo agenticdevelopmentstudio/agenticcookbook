@@ -1,0 +1,96 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**MUST NOT** maintain parallel hand-written token files per platform — they drift.",
+      "to": "must-not-maintain-parallel-token-files",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT with the per-platform hand-written scope and the they-drift reason.",
+        "pin": "8afb8746c914da99c73cae7e97c74a054434bd73e6bd1d9a2670a515a7bc5815"
+      }
+    },
+    {
+      "sentence": "**MUST NOT** let a platform edit propagate \"back up\" to the source informally; change the source and regenerate.",
+      "to": "must-not-propagate-platform-edits-back",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT, with the change-the-source-and-regenerate alternative stated in the same rule.",
+        "pin": "16a6ec5a1ad451533528f2c138c49eb5748a6eb5b752f198fa0d8b98fa26b772"
+      }
+    },
+    {
+      "sentence": "**SHOULD NOT** hardcode raw values (hex colors, pixel literals) in feature code when a token exists.",
+      "to": "should-not-hardcode-raw-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the feature-code scope, the hex/pixel examples and the when-a-token-exists condition.",
+        "pin": "477bc7ac8713cb5a31d37a04c63a2874d4679ab1c2d8fccdedb6b735687eff61"
+      }
+    },
+    {
+      "sentence": "Run generation as a checked-in, reproducible step (a package script or task), not a one-off manual command.",
+      "to": "should-run-generation-as-reproducible-step",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the checked-in reproducible step (package script or task) contrasted with a one-off manual command.",
+        "pin": "dfebbfb848d8ce323aa3af4c157d8005c9603b5788719885eb30c18d2864e400"
+      }
+    },
+    {
+      "sentence": "Keep the transform configuration in version control alongside the token source.",
+      "to": "should-version-transform-config",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: transform configuration versioned alongside the token source.",
+        "pin": "e365876c7cbe520c324b32583502e39b98d272d3d3df04ed78f70cbec008af97"
+      }
+    },
+    {
+      "sentence": "Reach for a managed token pipeline or design-tool sync service only when a measured need justifies it (per YAGNI); a local build step covers most projects.",
+      "to": "should-adopt-managed-pipeline-only-on-measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the only-on-measured-need condition (per YAGNI) and the local-build-step-covers-most-projects reason.",
+        "pin": "7179e9ed2093d553a952833df66330174a98e875f94d04d931c2755b9d0c53f9"
+      }
+    },
+    {
+      "sentence": "Regenerate on **every** token change, and run generation in CI so drift fails fast (per fail-fast).",
+      "to": "should-regenerate-on-every-change-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD, including every-change emphasis and the CI drift-fails-fast reason (per fail-fast).",
+        "pin": "c80453de0e98f95329c463df3ccbf4c66535b7ea1d8e366c915cf88b23d9d795"
+      }
+    },
+    {
+      "sentence": "Version the token source.",
+      "to": "should-version-token-source",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the token source is versioned.",
+        "pin": "ea5305b2a60409ac4b63fec75162ebd8ba3d06fc1be8c5e553c2f02ab207eddf"
+      }
+    },
+    {
+      "sentence": "Treat token releases like any other versioned dependency so consumers can pin and upgrade deliberately.",
+      "to": "should-version-token-source",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the consumers-pin-and-upgrade-deliberately reason.",
+        "pin": "5b43c72f827497659850ef9329088856a14952a6ac179a48923ae081c3b022f1"
+      }
+    }
+  ],
+  "obsolete": []
+}

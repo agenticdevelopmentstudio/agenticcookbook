@@ -1,0 +1,16 @@
+
+- `must-review-every-snapshot-diff`: every changed snapshot file in the diff carries a review
+- `should-treat-unexpected-diff-as-bug`: each unexpected snapshot diff has a recorded cause, or a note says why not
+- `must-not-reflexively-accept-all`: the change history shows no accept-all run used to clear failures
+- `should-update-only-after-confirming-intent`: each updated snapshot has its intended change noted, or a note says why not
+- `must-run-ci-in-non-updating-mode`: the CI snapshot command runs with `--ci` or the tool's non-updating mode
+- `should-review-snapshot-files-like-source`: snapshot files are part of the reviewed diff, or a note says why not
+- `should-cover-one-concern`: each snapshot holds one component's or one function's output, or a note says why not
+- `should-prefer-small-inline-snapshots`: snapshots are inline where they fit, or a note says why not
+- `should-not-snapshot-unreasonable-output`: no snapshot is too large to read line by line, or a note says why
+- `must-normalize-non-deterministic-values`: repeated runs yield identical snapshots with no raw timestamps, IDs, hostnames, paths or ports
+- `must-stabilize-ordering`: collections are sorted before they are serialized
+- `should-use-property-matchers-for-dynamics`: dynamic fields use matchers, scrubbers or filters, or a note says why not
+- `should-assert-logic-explicitly`: logic tests carry explicit value assertions, or a note says why not
+- `should-reserve-snapshots-for-stable-verbose-output`: snapshotted output is verbose and structurally stable, or a note says why not
+- `should-delete-obsolete-snapshots`: the `--ci` run reports no obsolete snapshots, or a note says why not

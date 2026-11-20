@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use Firebase App Indexing or `AppIndexingApi` for on-device search integration.",
+      "to": "android-use-app-indexing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-app-indexing keeps Firebase App Indexing or AppIndexingApi for on-device search on Android, at SHOULD.",
+        "pin": "43312e0c6fe91a7b71d56ea290d41e6aec047f31e6eddeb765bf5a05f4c45376"
+      }
+    },
+    {
+      "sentence": "Declare searchable content in `searchable.xml` and implement `SearchableInfo`.",
+      "to": "android-declare-searchable-content",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-declare-searchable-content keeps searchable.xml and SearchableInfo on Android, at SHOULD.",
+        "pin": "1fcc3e2817855d13642541f160f3b34da643b6d4c77168b2166a04d2adba0b30"
+      }
+    },
+    {
+      "sentence": "Support Google Assistant via structured content markup.",
+      "to": "android-support-assistant-markup",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-support-assistant-markup keeps Google Assistant support via structured content markup, at SHOULD.",
+        "pin": "f7494da993ec33814776c1cb204c6d7429bbac45e816793390e47f78a35a99ab"
+      }
+    },
+    {
+      "sentence": "Use Core Spotlight (`CSSearchableItem`, `CSSearchableItemAttributeSet`) to index content.",
+      "to": "apple-index-with-core-spotlight",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-index-with-core-spotlight keeps Core Spotlight (CSSearchableItem, CSSearchableItemAttributeSet) for indexing on Apple platforms, at SHOULD.",
+        "pin": "6da510dc378159aaf404bb282af57e408e13113d9cf2517a8757adffa3b8b3df"
+      }
+    },
+    {
+      "sentence": "On iOS 17+, conform entities to `IndexedEntity` for semantic indexing with natural language support.",
+      "to": "ios17-conform-to-indexedentity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ios17-conform-to-indexedentity keeps the iOS 17+ condition, IndexedEntity conformance and the semantic/natural-language reason, at SHOULD.",
+        "pin": "0bbb91cdc8496dd6e6aee5811b52dc59f3eb28a33a2927afc0b42bb4fde6b9d3"
+      }
+    },
+    {
+      "sentence": "Support `NSUserActivity` donation for Handoff-eligible items to appear in Spotlight suggestions.",
+      "to": "apple-donate-nsuseractivity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-donate-nsuseractivity keeps NSUserActivity donation for Handoff-eligible items to reach Spotlight suggestions, at SHOULD.",
+        "pin": "65c74f9fa8cae5b0df1980d090759b646c9e55b4edbeb77a5a31bed6b7edca2b"
+      }
+    },
+    {
+      "sentence": "Index content that users would reasonably search for — documents, contacts, messages, settings",
+      "to": "index-what-users-search-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "index-what-users-search-for keeps indexing what users would reasonably search for, with its examples, at SHOULD.",
+        "pin": "66cdf84a282bb5956318df46bdd28e1ae097cc83d197e121478f37ea6a1781f5"
+      }
+    },
+    {
+      "sentence": "Keep the search index current — add items when created, remove when deleted",
+      "to": "keep-index-current",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "keep-index-current keeps adding items on create and removing on delete, at SHOULD.",
+        "pin": "983b4ca500a818bba03ad11926be508b10a45c43262bfe4b81ff8fc6596b03ef"
+      }
+    },
+    {
+      "sentence": "Each indexed item MUST deep link back to the relevant content",
+      "to": "must-deep-link-indexed-items",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-deep-link-indexed-items keeps the MUST that each indexed item deep link back to its content.",
+        "pin": "2f2e3d29c972205969b4db2a38ecc42c396aa9e276d2cfa22f0b283df39040f1"
+      }
+    },
+    {
+      "sentence": "Include rich metadata (thumbnails, descriptions, categories) for meaningful search results",
+      "to": "include-rich-metadata",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "include-rich-metadata keeps thumbnails, descriptions and categories for meaningful results, at SHOULD.",
+        "pin": "dabf91cc8e71cbba148a30225ecec3eef6109cfba929c5d9753a531c911618a6"
+      }
+    },
+    {
+      "sentence": "Use structured data (JSON-LD, Schema.org) for search engine discoverability.",
+      "to": "web-use-structured-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-structured-data keeps JSON-LD/Schema.org structured data for search engine discoverability, at SHOULD.",
+        "pin": "dc18cfb40e9f346090e5b96db9963daa703978fe1e36f96652d357bafaf7cdb8"
+      }
+    },
+    {
+      "sentence": "Implement OpenGraph and Twitter Card meta tags.",
+      "to": "web-implement-social-meta-tags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-implement-social-meta-tags keeps OpenGraph and Twitter Card meta tags on the web, at SHOULD.",
+        "pin": "0d0c0fa242a2a452c43f900ffb6246e3b51963a9478349f0fbe27b3affc2a0d5"
+      }
+    },
+    {
+      "sentence": "Support the Web App Manifest for PWA search integration.",
+      "to": "web-support-web-app-manifest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-support-web-app-manifest keeps the Web App Manifest for PWA search integration, at SHOULD.",
+        "pin": "e3c2dfe70b5935075b314030ab871615670e659a3815672f37d3ad2a8d7bd555"
+      }
+    },
+    {
+      "sentence": "Ensure server-side rendering or pre-rendering for crawlability.",
+      "to": "web-ensure-crawlability",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-ensure-crawlability keeps server-side rendering or pre-rendering for crawlability, at SHOULD.",
+        "pin": "2872e4b61c5a0388f7f08499fe721e7f24e1837a7be00988396b119063acb2b2"
+      }
+    },
+    {
+      "sentence": "Use the Windows Search indexer with `ISearchManager` and property handlers.",
+      "to": "windows-use-search-indexer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-use-search-indexer keeps the Windows Search indexer with ISearchManager and property handlers, at SHOULD.",
+        "pin": "8e9ec5005b8be9fd137bb9727054b7622a1b25ff08ed4ab2b648fb8da7f0b4cb"
+      }
+    },
+    {
+      "sentence": "Register file type associations and protocol handlers so content appears in Start menu search.",
+      "to": "windows-register-associations-and-protocols",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-register-associations-and-protocols keeps file type associations and protocol handlers for Start menu search, at SHOULD.",
+        "pin": "8d0e2d82451f0d4eb2cc431939d0ee8d90883188985240598c2ecb5a3241c6f5"
+      }
+    },
+    {
+      "sentence": "For UWP/WinUI, use `SearchPane` or in-app search with system integration.",
+      "to": "windows-uwp-winui-search",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-uwp-winui-search keeps the UWP/WinUI condition and SearchPane or system-integrated in-app search, at SHOULD.",
+        "pin": "028aaadcc8662afd9ccb310137c104cc1fa5a38dfd1a767548891d05bd0c1e11"
+      }
+    }
+  ],
+  "obsolete": []
+}

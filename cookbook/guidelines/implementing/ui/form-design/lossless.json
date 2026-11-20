@@ -1,0 +1,216 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "### Layout",
+      "to": "should-use-single-column-layout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The section heading carries no requirement; its layout subject is named in the target rule (single-column layout).",
+        "pin": "a1868f269b187582b76095b81c65b36c8ea7d0f6547717749f134883cb2ad32b"
+      }
+    },
+    {
+      "sentence": "Single-column layout SHOULD be used — outperforms multi-column for completion rate",
+      "to": "should-use-single-column-layout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the completion-rate reason.",
+        "pin": "708d96ca54ee34f8075a9405c0a030174d0e5b8619fe8305848454cc16549b15"
+      }
+    },
+    {
+      "sentence": "Top-aligned or floating labels — fastest to scan and complete",
+      "to": "should-use-top-aligned-or-floating-labels",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed label guidance is kept at SHOULD with the fastest-to-scan-and-complete reason.",
+        "pin": "e6122d67934f80d1f9cbe65b457760a7f9f03bc12dacffbc3a4849d20a7f1119"
+      }
+    },
+    {
+      "sentence": "Group related fields visually with spacing or section headers",
+      "to": "should-group-related-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both means (spacing or section headers).",
+        "pin": "ba34767a1477961fc056c2e60c8ae6217c33acc55021c06f3e841a4e4aa27351"
+      }
+    },
+    {
+      "sentence": "Place primary action (Submit/Save) at the bottom, aligned with the form fields",
+      "to": "should-place-primary-action-at-bottom",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Submit/Save example, bottom placement and alignment with the form fields.",
+        "pin": "3542de9983d1c867d1b849f7f93517f290c76cfb9550f98088b2b3651e79f05d"
+      }
+    },
+    {
+      "sentence": "### Validation",
+      "to": "must-not-validate-while-typing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The section heading carries no requirement; its validation subject is named in the target rule.",
+        "pin": "c10da4caee21f06994237a5d4398746860b8f35c40b04715e0719df2d06932a7"
+      }
+    },
+    {
+      "sentence": "Validate on **blur** (when user leaves the field), not on every keystroke",
+      "to": "should-validate-on-blur",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the blur definition and the not-on-every-keystroke contrast.",
+        "pin": "16f46cb6f092531b55a54899bcc19991fac6bb0ae16fa29dbb0d60bf47a9ccd7"
+      }
+    },
+    {
+      "sentence": "Validate the **full form on submit** as a final safety net",
+      "to": "should-validate-full-form-on-submit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the final-safety-net reason.",
+        "pin": "12918103ed3fa745ef70c941235a2c65c12d59a11c0fc28809c2618586b97f98"
+      }
+    },
+    {
+      "sentence": "Validation MUST NOT fire while the user is still actively typing in a field",
+      "to": "must-not-validate-while-typing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST NOT.",
+        "pin": "36fd19222152777d0c645442e7208fa88afc7f3a43d3bfd1d112282a3008cf63"
+      }
+    },
+    {
+      "sentence": "Success indicators (checkmarks) only for fields where the user genuinely wonders if",
+      "to": "should-show-success-indicators-only-where-wondered",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'only for fields where the user genuinely wonders' restriction is kept at SHOULD.",
+        "pin": "dab5a5a7b75455cba7555a9da312cdb645b8b74eddae8bc457792fea80e7bcc7"
+      }
+    },
+    {
+      "sentence": "input was accepted (e.g., username availability)",
+      "to": "should-show-success-indicators-only-where-wondered",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The input-was-accepted condition and username-availability example are kept in the same rule.",
+        "pin": "a674061a2c58ce0cb46f8427a7a87b46edcf20bc30b8e0491372987917820ef7"
+      }
+    },
+    {
+      "sentence": "### Error messages",
+      "to": "should-write-specific-actionable-errors",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The section heading carries no requirement; its error-messages subject is named in the target rule.",
+        "pin": "559a21ae963af850865a1f3cefeedbbafad01d3dad09373b4d53906fc0845a9f"
+      }
+    },
+    {
+      "sentence": "Errors MUST be shown **inline, directly below the field** — not only at the top of the form",
+      "to": "must-show-errors-inline",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST with the inline-below-the-field placement and the not-only-at-the-top contrast.",
+        "pin": "3247026a7257100fb0a7de6cd211a36d739a8b39e8a7dc1b2a5d68dd6f5d1435"
+      }
+    },
+    {
+      "sentence": "Use color + icon + text (never color alone)",
+      "to": "must-not-signal-errors-by-color-alone",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Color + icon + text is kept at SHOULD and 'never color alone' is strengthened to MUST NOT.",
+        "pin": "ac3f0fa2040159d96059309c54375580b4179a75d1e8c59e029fb660cf63a509"
+      }
+    },
+    {
+      "sentence": "Be specific and actionable: \"Password must be at least 8 characters\" not \"Invalid input\"",
+      "to": "should-write-specific-actionable-errors",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the password-length versus 'Invalid input' example.",
+        "pin": "c248b35fa592cb501ec480b6ae16856dba39896a6632fcbef2e84498ec43e2c3"
+      }
+    },
+    {
+      "sentence": "Don't blame the user",
+      "to": "should-not-blame-the-user",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Don't blame the user' is kept at SHOULD NOT, scoped to error messages.",
+        "pin": "9e72588f256909d983912e386d6f2c29d1c7ef897f237fbdab8a7d5fc6bce47e"
+      }
+    },
+    {
+      "sentence": "Use placeholder text for format hints, not as label replacement — placeholders disappear on focus",
+      "to": "should-use-placeholder-for-format-hints-only",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the not-as-label-replacement contrast and the disappear-on-focus reason.",
+        "pin": "c913440ed5a87b74be3b73b038c6bc017592745866bedc15364b4ebeecfe6776"
+      }
+    },
+    {
+      "sentence": "Pre-fill and default where possible to reduce effort",
+      "to": "should-pre-fill-and-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the where-possible condition and the reduce-effort reason.",
+        "pin": "955e1d6026b8bc370a1a09852bf23938337a514c620151cdbcaaa985134c52a2"
+      }
+    },
+    {
+      "sentence": "Mark optional fields, not required ones (most fields should be required; if they're not,",
+      "to": "should-mark-optional-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: mark optional fields, not required ones, with the most-fields-should-be-required aside.",
+        "pin": "e7c1f9c9a386cfa363b3b39f14946067a3cb2a760d4eb3a9d5bcd436453ff871"
+      }
+    },
+    {
+      "sentence": "reconsider asking)",
+      "to": "should-mark-optional-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reconsider-asking advice is kept in should-mark-optional-fields.",
+        "pin": "ec8ee21e4cf30ec06b48c570be6c1879c42eb4da38c33696e98379444405096e"
+      }
+    },
+    {
+      "sentence": "### Other principles",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The heading carries no requirement; the rationale part records that the source grouped the placeholder, pre-fill and optional-field rules as its other principles.",
+        "pin": "33407a2cac50d85a3d28983b1b72117b5e674116aba6cc91335ea0bbd48e1d96"
+      }
+    }
+  ],
+  "obsolete": []
+}

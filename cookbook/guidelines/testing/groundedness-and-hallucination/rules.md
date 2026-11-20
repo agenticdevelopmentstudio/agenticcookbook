@@ -1,0 +1,19 @@
+
+- **must-measure-groundedness-and-hallucination-rate**: You MUST measure groundedness (claim-level support) and a hallucination rate against retrieved sources.
+- **should-score-at-claim-granularity**: Groundedness SHOULD be scored at **claim granularity**, not whole-answer granularity: decompose the answer into atomic claims and label each `supported` / `partial` / `unsupported` (the FActScore decomposition approach, [arxiv.org/abs/2305.14251](https://arxiv.org/abs/2305.14251)).
+- **must-measure-retrieval-independently**: You MUST measure retrieval quality (recall@k, context precision) independently — most ungrounded answers trace to missing evidence, not generation, and fixing the generator cannot recover evidence that was never retrieved.
+- **should-cite-specific-spans**: The system SHOULD emit citations to specific source spans (doc id + offset/quote), not just document-level pointers.
+- **must-verify-cited-spans**: You MUST verify cited spans rather than trust them: re-check that each quoted span exists in the source and entails the claim.
+- **may-score-with-llm-judge**: An LLM judge MAY score groundedness by seeing only the answer + retrieved chunks and labeling each claim.
+- **should-keep-judge-blind-to-gold-answer**: The judge SHOULD be kept blind to any gold answer so it scores support, not agreement.
+- **must-calibrate-judge-against-gold-set**: You MUST calibrate the judge against a human-labeled gold set and report agreement (e.g., Cohen's kappa) before trusting its scores.
+- **should-pin-one-eval-framework**: SHOULD pin one framework + version and track trends rather than comparing raw cross-tool numbers.
+  - Frameworks such as RAGAS, DeepEval, and TruLens implement these metrics; their absolute scores diverge on the same data (forecast: still true in 2026).
+- **should-abstain-without-evidence**: The system SHOULD abstain rather than fabricate when support is missing: when retrieval returns no supporting evidence, the system SHOULD abstain ("I don't have enough information") rather than answer from parametric memory.
+- **must-include-unanswerable-cases**: You MUST include "unanswerable from context" cases in the eval set and score abstention explicitly — otherwise a model that always answers looks perfect on answerable queries while hallucinating on the rest.
+- **should-not-penalize-correct-abstention**: An abstention is a **correct** outcome when context is insufficient; it SHOULD NOT be penalized as a miss in aggregate scoring.
+- **should-run-evals-in-ci-on-fixed-set**: Groundedness and hallucination evals SHOULD run in CI on a fixed query set.
+- **must-fail-build-on-hallucination-regression**: CI MUST fail the build when the hallucination rate regresses past a set threshold.
+- **should-treat-groundedness-as-release-gate**: Groundedness SHOULD be treated as a release gate alongside latency and cost, not a one-time benchmark — retriever index drift and model swaps both move it.
+- **should-redact-pii-before-judge**: When eval sets contain user data, PII SHOULD be redacted or synthesized before sending to a judge model.
+  - This is engineering guidance, not legal advice; consult counsel for regulated data.

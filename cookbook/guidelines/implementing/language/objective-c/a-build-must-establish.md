@@ -1,0 +1,30 @@
+
+- `must-compile-with-arc`: every Objective-C file in the target compiles with `-fobjc-arc`
+- `must-declare-nullability-in-public-headers`: every public header declares nullability
+- `must-shape-for-swift-import`: the generated Swift interface of every public header reads as idiomatic Swift
+- `should-not-write-new-objective-c`: every new Objective-C file sits in an existing module, a C++ interop shim or a framework with an Objective-C public surface, or the code says why
+- `should-not-call-retain-release-by-hand`: no ARC file calls `retain`, `release` or `autorelease`
+- `should-not-mix-manual-reference-counting`: no file carries `-fno-objc-arc` without a written reason
+- `should-declare-explicit-property-ownership`: every object property is declared `strong`, `weak` or `copy`, with delegates and back-references `weak` and `NSString`, collection and block properties `copy`
+- `should-limit-unsafe-unretained`: every `__unsafe_unretained` has a comment saying why the compiler cannot express the lifetime
+- `should-name-methods-by-method-family`: every method named `alloc…`, `new…`, `copy…` or `mutableCopy…` returns an owned object, and no other does
+- `should-break-retain-cycles-in-blocks`: no block forms a retain cycle, or the code says why
+- `must-capture-weak-self-in-stored-blocks`: every block stored on `self` that captures `self` captures a `__weak` reference and takes a `__strong` local before use
+- `should-remove-observers-at-teardown`: every timer, notification observer and KVO registration is removed in `dealloc` or an earlier teardown
+- `should-wrap-temporary-heavy-loops-in-autoreleasepool`: every long-running loop that creates many temporary objects is wrapped in `@autoreleasepool { }`, or the code says why not
+- `must-state-bridge-cast-ownership`: every cast between Objective-C and Core Foundation pointers is a `__bridge`, `__bridge_retained` or `__bridge_transfer` cast
+- `should-pick-bridge-cast-by-ownership`: every `__bridge_retained` has a matching `CFRelease`, and every `__bridge_transfer` takes an object ARC then releases
+- `must-not-use-bare-bridging-casts`: no bare C cast crosses between Objective-C and Core Foundation pointers in ARC code
+- `must-wrap-public-headers-in-assume-nonnull`: every public header wraps its declarations in `NS_ASSUME_NONNULL_BEGIN` and `NS_ASSUME_NONNULL_END`
+- `should-use-nullability-qualifiers`: no public declaration is left unannotated, using `_Nullable`/`_Nonnull` where the simple forms do not fit
+- `should-annotate-each-typedef-use`: every use of a typedef'd pointer in an audited region carries its own annotation
+- `must-declare-nil-returning-methods-nullable`: every method documented to return `nil` on failure is declared `nullable`
+- `must-declare-non-nil-parameters-in-signature`: every parameter that must never receive `nil` is non-null in its signature
+- `should-need-no-swift-fix-ups`: every public collection declares its element type
+- `should-refine-for-swift-in-an-extension`: every API whose Swift form differs is marked `NS_REFINED_FOR_SWIFT` and has its Swift-facing form in a Swift extension
+- `should-keep-objective-c-as-single-source`: every refined Swift API calls the Objective-C original and reimplements none of it
+- `should-name-call-sites-as-phrases`: every method has a label for each argument after the first, and its call sites read as phrases
+- `should-follow-framework-conventions`: new names follow the vocabulary of the framework the code extends, or the code says why not
+- `should-prefix-public-symbols`: every public class, protocol, enum and constant carries the project prefix
+- `should-mark-designated-initializers`: designated initializers are marked `NS_DESIGNATED_INITIALIZER`, and inherited initializers that cannot work are `NS_UNAVAILABLE`
+- `should-report-recoverable-failure-with-nserror`: every recoverable failure is reported with a `BOOL` or object return plus an `NSError **` out-parameter, and no exception is thrown for it

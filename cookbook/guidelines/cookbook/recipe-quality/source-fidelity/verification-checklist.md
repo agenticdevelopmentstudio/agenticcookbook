@@ -10,4 +10,6 @@ A verifier MUST check each of the following items. The recipe PASSES source fide
 - [ ] No aspirational or "best practice" behavior is presented as a normative MUST requirement without being traceable to the source.
 - [ ] Technical debt affecting behavioral correctness is documented in Design Decisions.
 - [ ] Any "Recommended Improvements" content is clearly separated from normative requirements and is not written using RFC keywords.
-
+- [ ] `should-note-indirect-evidence-source`: Where traceability is indirect (inferred from a test rather than production code), the evidence source is noted in a comment or Design Decisions entry.
+- [ ] `must-mark-partially-observable-requirements`: Requirements that are only partially observable are marked `NEEDS REVIEW` with what cannot be confirmed and why.
+- [ ] `must-not-smooth-over-quirks`: No quirk is smoothed over by describing the idealized behavior and omitting the actual behavior.

@@ -1,0 +1,21 @@
+
+- `must-run-lengthy-work-in-background`: whether all lengthy work runs on background threads/tasks using platform async primitives
+- `must-not-block-main-thread`: whether anything blocks the main/UI thread
+- `should-show-progress-while-waiting`: whether progress is shown wherever the UI waits on an async task
+- `should-use-swift-concurrency`: whether Swift async work uses Swift Concurrency
+- `should-use-mainactor-for-ui-updates`: whether Swift UI updates use `@MainActor`
+- `should-use-kotlin-coroutines`: whether Kotlin async work uses coroutines
+- `should-run-kotlin-io-on-dispatchers-io`: whether Kotlin I/O runs on `Dispatchers.IO`
+- `should-use-viewmodelscope`: whether ViewModel-scoped coroutines use `viewModelScope`
+- `should-use-promises-for-async`: whether TypeScript async operations use `Promise`/`async`/`await`
+- `should-use-web-workers-for-cpu-work`: whether CPU-intensive TypeScript tasks run in Web Workers
+- `should-use-async-await-in-csharp`: whether C# async work uses `async`/`await`
+- `should-configure-await-false-in-library-code`: whether C# library code uses `ConfigureAwait(false)`
+- `must-not-use-result-or-wait`: whether any C# code uses `.Result` or `.Wait()`
+- `must-not-use-async-void`: whether any C# `async void` exists outside an event handler
+- `must-accept-cancellation-token`: whether every C# async API accepts a `CancellationToken`
+- `should-use-valuetask-only-when-mostly-synchronous`: whether each `ValueTask<T>` is on a method that frequently completes synchronously
+- `should-use-task-run-for-cpu-work`: whether C# CPU-bound work uses `Task.Run`
+- `must-not-run-cpu-work-on-ui-thread`: whether any C# CPU-bound work runs on the UI thread
+- `should-marshal-ui-work-with-dispatcherqueue`: whether WinUI 3 background tasks marshal UI work with `DispatcherQueue.TryEnqueue`
+- `must-not-access-ui-from-non-ui-threads`: whether any WinUI 3 UI element is accessed from a non-UI thread

@@ -1,0 +1,19 @@
+
+- `must-not-default-to-cqrs-or-event-sourcing`: CQRS or event sourcing chosen as a default, with no requirement named for it
+- `must-justify-with-a-present-requirement`: an adoption justified by a forecast ("might need to scale", "might want history later") rather than a concrete, present requirement
+- `should-default-to-a-single-model`: a design that departs from a single model (CRUD over one datastore) without a stated reason
+- `should-evaluate-an-audit-table-first`: event sourcing adopted for history alone, with no audit/history table or change-data-capture log evaluated first
+- `must-document-the-adoption-decision`: no recorded decision naming the triggering requirement
+- `should-adopt-cqrs-only-on-its-triggers`: CQRS with neither measured divergent read/write scaling or shape nor a read side needing independent storage or indexing
+- `should-adopt-event-sourcing-only-on-its-triggers`: event sourcing with neither a replay/audit requirement nor a need to derive new read models retroactively
+- `must-not-adopt-without-a-trigger`: CQRS or event sourcing adopted when no trigger holds
+- `should-plan-for-each-cost-before-adopting`: an adoption with no plan for eventual consistency, projection rebuilds, event versioning or the operational surface
+- `must-tolerate-eventual-consistency`: a UI or API that assumes a read model reflects a write immediately, with no optimistic update, loading state or read-your-writes routing
+- `must-rebuild-projections-without-downtime`: no documented, tested projection rebuild procedure, or one that needs downtime for a large store
+- `must-plan-event-versioning-before-the-first-event`: events shipped with no upcasting/versioning plan, or written events edited in place
+- `should-model-commands-and-events-as-named-versioned-types`: commands or events that are not named, versioned types
+- `must-not-overload-a-generic-update-event`: one generic "update" event carrying different changes
+- `must-make-handlers-and-projectors-idempotent`: a command handler or projector that does not dedupe on a stable event id
+- `should-keep-cqrs-without-event-sourcing-as-a-stopping-point`: a full event store added where separate read/write models in one database would do
+- `should-start-in-process-and-single-store`: separate read stores or message infrastructure introduced before the triggering requirement demands them
+- `should-define-the-consistency-contract-per-use-case`: no per-use-case statement of which reads may be stale and which must be strongly consistent, or none surfaced in the API

@@ -1,0 +1,26 @@
+
+- `should-pin-mcp-spec-revision`: MCP guidance or code written against an unpinned spec revision, or one other than 2025-06-18 / JSON Schema 2020-12
+- `must-validate-against-input-schema`: a tool handler that uses an argument before validating it against the declared `inputSchema`, or relies on the client or model to have validated, breaks it
+- `must-not-trust-argument-provenance`: a handler that skips a check because the argument came through the model breaks it
+- `must-authorize-every-call`: a handler that authorizes against a model-passed value (user ID, role, scope) instead of the authenticated identity, or not at all, breaks it
+- `must-sanitize-and-bound-before-side-effects`: an argument that reaches a filesystem, network, DB, shell or downstream API call unsanitized or unbounded breaks it
+- `should-define-explicit-schema-constraints`: an `inputSchema` whose fields lack `type`, `required`, `enum`, `pattern`, length or numeric bounds
+- `must-use-object-schema-root`: an `inputSchema` whose root is not `type: object` breaks it
+- `must-reject-unknown-properties`: a schema without `additionalProperties: false` where no field is intentionally open, or validation that is not JSON Schema 2020-12 at the handler boundary, breaks it
+- `must-not-auto-dereference-external-refs`: a validator configured to fetch external `$ref` URIs breaks it; one with no bound on schema depth or validation time falls short
+- `must-not-cache-authorization-across-privilege-boundary`: an authorization decision cached and reused across a privilege boundary, or a tool invocation that skips the scope/permission re-check, breaks it
+- `should-scope-downstream-to-least-privilege`: downstream actions run with more privilege than the host-process identity needs
+- `must-not-widen-privilege-from-arguments`: a tool argument that selects or raises the privilege a call runs with breaks it
+- `must-not-forward-unvalidated-tokens`: a client-supplied token passed to a downstream API without an audience check breaks it
+- `should-confine-file-paths`: a file path used without canonicalizing symlinks and `..`, or not confined to an allowlisted root
+- `should-block-ssrf`: a URL argument fetched with no scheme/host allowlist, no rejection of private, loopback and link-local IPs, or redirects left enabled to disallowed targets
+- `should-use-parameterized-queries-only`: a database call built other than with a parameterized query
+- `should-scope-queries-to-authorized-tenant`: a query not scoped to the authorized tenant/row set
+- `must-not-interpolate-arguments-into-queries`: an argument interpolated into SQL or a query path breaks it
+- `should-avoid-shell-invocation`: a shell invoked where it could be avoided, or invoked without an argv array and an allowlisted executable
+- `must-not-pass-concatenated-shell-string`: shell arguments built as a concatenated string break it
+- `should-validate-tool-results`: tool results returned into model context with no `outputSchema` validation, or fetched content not stripped or labelled as untrusted
+- `should-log-failures-and-denials`: validation failures or authorization denials not logged with tool name and caller identity, or logged with raw argument payloads
+- `must-not-log-secrets-or-tokens`: a log line that can contain a secret or a full token breaks it
+- `should-return-non-leaky-errors`: a rejection that fails open, or returns unstructured errors with no stable error code
+- `must-not-echo-internals-in-errors`: an error that echoes an internal path or stack trace breaks it

@@ -1,0 +1,51 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Default to immutable values; introduce mutability only where necessary:",
+      "to": [
+        "should-default-to-immutable-values",
+        "should-use-immutable-bindings-by-default",
+        "should-prefer-value-types",
+        "should-contain-mutation-behind-boundaries"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-default-to-immutable-values keeps defaulting to immutable values and introducing mutability only where necessary at SHOULD; the three list rules carry the items the lead-in introduced.",
+        "pin": "29688656f54083e1674bcd9de2b58f36cefc1dd59178f2303948d24ef7d9795b"
+      }
+    },
+    {
+      "sentence": "Use `let` (Swift), `val` (Kotlin), `const` (JS/TS) by default",
+      "to": "should-use-immutable-bindings-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD using let (Swift), val (Kotlin), const (JS/TS) by default.",
+        "pin": "46ed78081b6f6edaa051bad7e88386d5b513ec873444fbbbe6af02392d0abb74"
+      }
+    },
+    {
+      "sentence": "Prefer value types (structs, data classes) over reference types",
+      "to": "should-prefer-value-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD preferring value types (structs, data classes) over reference types.",
+        "pin": "de7a4f014aa6ea4fb307dc002464921608e384150b246ad4109d6c26544d37ac"
+      }
+    },
+    {
+      "sentence": "Contain mutation behind clear boundaries (actors, StateFlow, useState)",
+      "to": "should-contain-mutation-behind-boundaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD containing mutation behind clear boundaries, with the actors, StateFlow, useState examples.",
+        "pin": "0c6932374075f32afa30722d3b6c69ad7b752285ed48d18ae6ad74e585cb0cb9"
+      }
+    }
+  ],
+  "obsolete": []
+}

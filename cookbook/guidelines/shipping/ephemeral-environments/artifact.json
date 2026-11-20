@@ -4,11 +4,11 @@
     "id": "0de6da80-6793-4ef5-afd3-c7663da1d952",
     "title": "Ephemeral preview environments",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,20 +31,21 @@
       "https://www.uffizzi.com/preview-environments-guide",
       "https://www.bunnyshell.com/blog/best-practices-for-end-to-end-testing-in-2025/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-pr"
     ]
   },
-  "synced": "eb6753b04ed5de9c",
+  "synced": "3254b6c970c4e692",
   "parts": [
     {"part": "intro"},
-    {"part": "lifecycle-three-invariants", "heading": "Lifecycle (three invariants)"},
-    {"part": "design-for-deletion-keep-them-cattle-not-pets", "heading": "Design for deletion — keep them cattle, not pets"},
-    {"part": "test-data-disposable-never-production", "heading": "Test data — disposable, never production"},
-    {"part": "what-to-run-against-it", "heading": "What to run against it"},
-    {"part": "guardrails", "heading": "Guardrails"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "test-data-disposable-never-production", "heading": "Database strategy", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

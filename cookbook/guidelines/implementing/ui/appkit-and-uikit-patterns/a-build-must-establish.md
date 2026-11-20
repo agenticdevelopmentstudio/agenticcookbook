@@ -1,0 +1,18 @@
+
+- `should-use-nil-target-for-frontmost-commands`: frontmost commands use a `nil` target and one-object commands an explicit target, or the work says why not
+- `should-implement-actions-on-owning-object`: every action is implemented on the object owning the behavior, or the work says why not
+- `should-override-nextresponder-sparingly`: every `nextResponder` override has a stated reason
+- `must-make-delegates-weak`: every delegate and data-source property is `weak` (or `unowned(unsafe)` on old APIs)
+- `should-use-narrow-delegate-protocols`: every delegate protocol is narrow with named callbacks, and Swift ones use required methods plus default extensions, or the work says why not
+- `must-not-move-large-state-through-delegates`: no delegate callback moves large state between objects
+- `must-touch-ui-only-on-main-thread`: every access to views, windows, view-backing layers and view-controller state happens on the main thread
+- `should-mark-ui-types-mainactor`: every UI-facing type is marked `@MainActor`, or the work says why not
+- `must-run-slow-work-off-main-thread`: disk, network, decoding and image processing run off the main thread, hopping back only to apply the result
+- `must-not-block-main-thread`: no main-thread code blocks waiting on another queue or task
+- `must-do-one-time-setup-in-load-callbacks`: one-time setup is in the load callbacks and no initializer touches `view`
+- `must-pair-appearance-work-and-teardown`: per-appearance work is in the appear/disappear callbacks, and every observer, timer and registration is removed in the matching callback
+- `should-keep-window-content-in-view-controllers`: macOS window content lives in `NSViewController`s and `NSWindowController` holds only window-level concerns, or the work says why not
+- `must-follow-containment-sequence`: every child view controller is added (child, view, moved-to-parent) and removed in the reverse order
+- `must-implement-secure-restoration-callbacks`: the iOS app delegate implements both secure state callbacks, restoration identifiers are on the view controllers to preserve, and only rebuild data is encoded
+- `must-save-identifiers-not-model-objects`: saved state holds identifiers and small values only, and restore rebuilds the screen from the model
+- `should-version-saved-state`: saved state carries a version, and restoration refuses an incompatible one and falls back to the normal launch UI

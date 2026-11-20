@@ -4,11 +4,11 @@
     "id": "10311277-24f7-473b-af0a-a98285dd74f1",
     "title": "Document the Process, Not a Conclusion",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,12 +29,17 @@
       "Shneiderman, Communications of the ACM, 45(10), 2002",
       "Shneiderman, Communications of the ACM, 50(12), 2007"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "7364ca0335b609f8",
+  "synced": "f0cd245ea4cc8282",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

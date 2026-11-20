@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "It MUST NOT have knowledge of git, files, or roadmap structure.",
+      "to": "must-not-know-git-files-or-roadmap",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT with the referent made explicit (the dashboard service) and all three excluded knowledge areas.",
+        "pin": "215c7a2a16498879b49c5124a4b5d1936987114660dcd3c4b194913183d86f89"
+      }
+    },
+    {
+      "sentence": "Agents sync data to it; it MUST only display what it receives.",
+      "to": "must-only-display-received-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: agents sync data to the dashboard service, which MUST only display what it receives.",
+        "pin": "2143fb4007ff16cef45e7b892e6fa7b0ab234ef1cc43d1ab7262697892c057f1"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,23 @@
+
+- **should-classify-severity-at-declaration**: Severity SHOULD be classified at declaration to scale the response.
+- **must-reevaluate-severity**: Severity **MUST** be re-evaluated as understanding changes.
+- **should-use-small-fixed-ladder**: SHOULD use a small fixed severity ladder; exact thresholds are org-specific.
+- **must-map-severity-to-actions**: Severity **MUST** map to concrete actions (who is paged, who is notified, update cadence) — a label with no behavior attached is noise.
+- **should-tie-thresholds-to-slos**: Severity thresholds SHOULD be tied to SLO error budgets where they exist (see related) rather than to gut feel.
+- **should-separate-coordinating-from-doing**: SHOULD separate *coordinating* the response from *doing* the work so neither starves the other. The roles follow the established Incident Management At Google (IMAG) model; adapt names to your org but keep the separation.
+- **incident-commander**: One person **MUST** hold overall coordination of a declared incident. The IC decides, delegates, and owns the response — they do not also debug.
+- **communications-lead**: For higher-severity incidents a CL **SHOULD** own stakeholder and customer updates so the IC and responders are not interrupted.
+- **operations-lead**: One or more responders **SHOULD** own mitigation and investigation, reporting to the IC.
+- **must-split-roles-as-severity-rises**: For small incidents one person **MAY** hold all roles; as severity rises, roles **MUST** be split across people.
+- **must-hand-off-incident-commander-explicitly**: The IC role **MUST** be explicitly handed off (not implicitly dropped) at shift boundaries or when the holder steps away.
+- **should-write-postmortem-for-significant-incidents**: A significant incident (e.g., SEV1/SEV2, or any with customer impact or data loss) **SHOULD** get a written postmortem; an org **MUST** have a clear threshold defining "significant."
+- **must-keep-postmortems-blameless**: Postmortems **MUST** be blameless: focus on contributing systemic and process factors, not on naming individuals at fault. Blame suppresses the honest reporting that prevents recurrence.
+- **must-record-postmortem-contents**: Each postmortem **MUST** record: timeline, detection method, user impact, root/contributing causes, and what went well and poorly.
+- **must-track-remediation-in-backlog**: Remediation items **MUST** be concrete, owned, and tracked in the normal work backlog (issues/tickets) — **MUST NOT** live only inside the postmortem document.
+- **should-track-action-items-to-closure**: Action items **SHOULD** be tracked to closure with the same rigor as feature work; a postmortem whose items never close has no value.
+- **may-share-postmortems-widely**: A postmortem **MAY** be shared widely; circulating real ones builds the reflex and removes stigma.
+- **should-bound-on-call-load**: On-call load **SHOULD** be bounded so a single shift is not flooded; an established cap is no more than ~2 significant incidents per 12-hour on-call shift, which preserves time for careful response.
+- **must-compensate-on-call**: On-call **MUST** be compensated (time off or pay) and **SHOULD** rotate across a team large enough to avoid burnout.
+- **should-feed-toil-into-action-items**: Toil that drove paging **SHOULD** feed back into postmortem action items rather than being silently absorbed.
+- **should-treat-named-tools-as-examples**: Specific tooling (paging vendors, ChatOps incident bots, AI-assisted triage and summarization) evolves quickly — any named product SHOULD be treated as an example, not a requirement.
+- **should-treat-ai-output-as-draft**: AI-assisted incident summarization and correlation are increasingly common as of 2026; their output SHOULD be treated as a draft for a human responder, not as the authority — keep a human IC accountable.

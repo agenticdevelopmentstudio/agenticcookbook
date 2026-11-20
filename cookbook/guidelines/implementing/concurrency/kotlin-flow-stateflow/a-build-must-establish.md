@@ -1,0 +1,16 @@
+
+- `must-expose-read-only-stateflow`: no ViewModel exposes a `MutableStateFlow`; each exposes `StateFlow<UiState>` or `SharedFlow`
+- `should-back-with-private-mutablestateflow`: every exposed `StateFlow` is a private `MutableStateFlow` exposed with `.asStateFlow()`, or the code says why not
+- `should-convert-cold-upstream-with-statein`: every state derived from a cold upstream goes through `stateIn`, or the code says why not
+- `should-start-while-subscribed-5000`: every `stateIn` uses `SharingStarted.WhileSubscribed(5_000)`, or the code says why not
+- `must-use-renderable-initial-value`: every `initialValue` is a state the UI can render
+- `should-use-lazily-only-when-restart-cost-unacceptable`: every `SharingStarted.Lazily` is where restart cost is unacceptable, or the code says why
+- `must-collect-lifecycle-aware`: every UI collection stops when the lifecycle leaves `STARTED`
+- `should-use-collectasstatewithlifecycle-in-compose`: every Compose collection of ViewModel state uses `collectAsStateWithLifecycle()`, or the code says why not
+- `should-use-repeatonlifecycle-in-views`: every View, Fragment or Activity collection is inside `repeatOnLifecycle(Lifecycle.State.STARTED)`, or the code says why not
+- `must-not-use-bare-collectasstate`: no bare `collectAsState()` collects a ViewModel flow in lifecycle-bound UI
+- `must-not-use-launchwhenstarted`: no `launchWhenStarted`, `launchWhenResumed` or `whenStarted` is used
+- `must-not-collect-without-repeatonlifecycle`: no flow is collected in `lifecycleScope.launch` without `repeatOnLifecycle`
+- `should-inject-dispatchers`: every thread-switching class takes its dispatchers through its constructor, or the code says why not
+- `should-inject-test-dispatchers`: coroutine tests inject `StandardTestDispatcher` / `UnconfinedTestDispatcher` and use `runTest`, or say why not
+- `must-keep-active-collector-in-tests`: every test of a `WhileSubscribed` `StateFlow` keeps at least one active collector

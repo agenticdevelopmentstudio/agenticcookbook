@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "User actions and system operations should be safe to repeat without duplicate side effects:",
+      "to": "should-make-operations-safe-to-repeat",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD that user actions and system operations be safe to repeat without duplicate side effects.",
+        "pin": "70a02f3fc9dc980b1023533a8d620dbfe54392cd605a9f3f01b8fb9a1d0c5fa9"
+      }
+    },
+    {
+      "sentence": "Debounce or disable buttons during async operations",
+      "to": "should-debounce-buttons-during-async",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD that buttons be debounced or disabled during async operations.",
+        "pin": "e58f3d6b913863a77f9c08d01e169fe0bf4f5aac2e4c49735b13450caffc03ac"
+      }
+    },
+    {
+      "sentence": "Use idempotency keys for API calls with side effects",
+      "to": "should-use-idempotency-keys",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD that API calls with side effects use idempotency keys.",
+        "pin": "355e5348cbb29051ec820ec2e2198f160031e7733bad520460c6e065992300cf"
+      }
+    },
+    {
+      "sentence": "Database migrations must be safe to run multiple times",
+      "to": "must-make-migrations-rerunnable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at MUST that database migrations be safe to run multiple times.",
+        "pin": "7f1e5fd66373532fc61c8ecf39d5c93b87160de0ac1f18d7d4faaa3e27c52744"
+      }
+    },
+    {
+      "sentence": "Check current state before applying state transitions",
+      "to": "should-check-state-before-transitions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD that current state be checked before applying state transitions.",
+        "pin": "225992d225631f0090314edbdafc251304fb34677ae453f53a3454392c60d13c"
+      }
+    }
+  ],
+  "obsolete": []
+}

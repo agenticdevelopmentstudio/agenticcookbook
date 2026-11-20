@@ -1,0 +1,22 @@
+
+- `should-not-default-to-kubernetes`: Kubernetes chosen with no measured need for orchestration, autoscaling or multi-team self-service
+- `should-use-managed-control-plane`: a self-hosted control plane where EKS, GKE or AKS would serve
+- `must-declare-requests-and-memory-limits`: a container missing CPU or memory `requests`, or a memory `limits`
+- `should-set-memory-request-equal-to-limit`: `requests.memory` set below `limits.memory`
+- `may-omit-cpu-limit`: a `limits.cpu` throttling a latency-sensitive workload
+- `must-always-set-cpu-request`: a container with no `requests.cpu`
+- `should-assign-priority-class`: a critical workload with no `priorityClass`
+- `should-use-startup-probe-for-long-init`: a long-init app with no `startupProbe`
+- `must-define-readiness-probe`: a serving container with no `readinessProbe`
+- `should-define-liveness-probe`: no `livenessProbe`, or one identical to the readiness probe or costly to run
+- `must-keep-probes-lightweight`: a probe that calls a database or other dependency
+- `should-use-rolling-update`: a rollout strategy other than `RollingUpdate`, or one without explicit `maxUnavailable` and `maxSurge`
+- `should-set-min-ready-seconds`: no `minReadySeconds` on a rolling workload
+- `must-define-pod-disruption-budget`: a workload that needs availability during drains with no `PodDisruptionBudget`
+- `should-spread-replicas`: replicas with no `topologySpreadConstraints` across nodes and zones
+- `should-harden-security-context`: a pod missing `runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation: false`, dropped capabilities or `seccompProfile: RuntimeDefault`
+- `should-enforce-pod-security-admission`: a namespace without Pod Security Admission at the `restricted` profile
+- `must-not-mount-default-service-account-token`: a mounted default ServiceAccount token in a pod that never calls the API server
+- `should-isolate-with-namespaces-and-labels`: workloads sharing a namespace, or missing `app.kubernetes.io/*` labels
+- `should-autoscale-stateless-with-hpa`: a stateless workload with fixed replicas and no `HorizontalPodAutoscaler`, or an HPA with no cluster autoscaling
+- `should-validate-against-own-requirements`: this guidance presented as compliance without checking regulatory and threat-model requirements

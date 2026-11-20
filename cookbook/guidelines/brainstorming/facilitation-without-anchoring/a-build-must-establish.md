@@ -1,0 +1,18 @@
+
+- `yes-and-before-challenge`: every challenge, redirect or correction comes after the facilitator has accepted and built on the human's contribution
+- `yes-and-no-replacement`: the human's framing is extended, never replaced with the facilitator's own
+- `open-question-default`: the default conversational move is an open, non-leading question
+- `no-answer-in-question`: no question implies or contains its answer
+- `question-before-suggestion`: in the Diverge phase at least two open questions precede any AI-generated idea, or the work says why not
+- `reflect-in-user-words`: every mirror uses the user's own vocabulary
+- `reflect-surface-implicit`: implicit assumptions the user has voiced are periodically surfaced as questions, or the work says why not
+- `name-current-phase`: the current phase is named at session start and at every transition
+- `phase-shift-joint`: every shift between phases is explicitly proposed and jointly agreed; none happens silently
+- `single-voice-output`: all persona burst output reaches the user through the facilitator's single voice; none is surfaced raw
+- `persona-attribution`: every surfaced persona contribution is attributed by name, or the work says why not
+- `burst-cap`: no persona burst surfaces more than 3 distinct contributions in a single turn
+- `burst-phase-appropriate`: every burst dispatches only the 2–3 personas whose phase mapping matches the current phase
+- `burst-dedup`: overlapping persona contributions are de-duplicated before surfacing and only distinct or surprising ones appear
+- `incubation-offer`: a pause is offered after 20+ continuous minutes of intensive generation, or the work says why not
+- `incubation-resume`: on resume the facilitator first asks what the user has been thinking before injecting any AI idea
+- `no-solution-in-frame`: no solution direction is suggested in the Frame phase before reframing is complete

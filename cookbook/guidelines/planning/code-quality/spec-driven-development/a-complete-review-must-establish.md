@@ -1,0 +1,15 @@
+
+- `must-start-non-trivial-change-from-spec`: whether every non-trivial change started from a written spec
+- `should-implement-against-the-spec`: whether the implementation follows the spec as its source of truth
+- `should-skip-spec-for-one-sentence-diffs`: whether one-sentence diffs were done directly
+- `should-right-size-ceremony`: whether the ceremony matches the size of the change
+- `should-separate-planning-from-implementation`: whether planning and implementation ran in distinct phases
+- `must-be-self-contained`: whether the spec is readable and executable in a fresh session with no prior context
+- `must-include-required-sections`: whether the spec has a goal, files and interfaces, an out-of-scope list and a verification check
+- `should-reference-existing-patterns`: whether the spec names existing patterns to follow
+- `must-not-discard-spec`: whether the spec was kept as the artifact the implementation is reviewed against
+- `should-adopt-the-methodology`: whether the staged flow's methodology was followed
+- `should-not-hard-code-tool`: whether any specific tool, command set or vendor flow is hard-coded into the process
+- `may-interview-human-first`: whether any interview-first flow for a larger feature led to a spec and a clean-context implementation session
+- `must-run-verification-with-evidence`: whether the spec's verification step was run and its evidence shown
+- `should-review-diff-against-spec`: whether an independent reviewer checked the diff against the spec

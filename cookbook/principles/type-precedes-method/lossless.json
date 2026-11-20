@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Classify the topic's type (medical, technical, legal, financial, news, consumer, …) before searching.",
+      "to": "should-classify-topic-type-before-searching",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps classifying the topic's type before searching at SHOULD, with the same list of example types.",
+        "pin": "7f58b6ecb9653e48032d994a940263ab70c3357ad64a14a0db9b4ab3e6629583"
+      }
+    },
+    {
+      "sentence": "The type — not the user's wording or urgency — selects which sources count as authoritative.",
+      "to": "should-select-authoritative-sources-by-type",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps that the type, not the user's wording or urgency, selects which sources count as authoritative, at SHOULD.",
+        "pin": "f259612bb26b90a916953a582cbe6476d7b33fbed34635e7c3714cd3522d0605"
+      }
+    },
+    {
+      "sentence": "The type sets the evidence bar: a treatment claim and a recipe claim are not held to the same standard.",
+      "to": "should-set-evidence-bar-by-type",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps that the type sets the evidence bar, at SHOULD, with the treatment-versus-recipe example.",
+        "pin": "e529f605ab63825f16bb6c868ee0b75c143a47200e6b8861224b143212d732b4"
+      }
+    },
+    {
+      "sentence": "A method that fits one type (web consensus for a recipe) is wrong for another (clinical trials for a treatment).",
+      "to": "should-not-carry-method-across-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps that a method fitting one type is wrong for another, with both examples, and adds a SHOULD NOT against carrying it over.",
+        "pin": "83103cb53d0a8d09bf809e7e11f73c6bf7b70207d929ee27be8c60529f690d21"
+      }
+    },
+    {
+      "sentence": "When a topic spans types, classify each claim by the type it asserts.",
+      "to": "should-classify-each-claim-by-its-type",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the spans-types condition and classifying each claim by the type it asserts, at SHOULD.",
+        "pin": "d5001dda5efc6b014e8c2244b793bedd26e9316adb03e5a90bb372bd03b948ac"
+      }
+    }
+  ],
+  "obsolete": []
+}

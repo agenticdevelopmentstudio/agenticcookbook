@@ -1,0 +1,19 @@
+
+- `content-discoverable-in-system-search`: app content users search for appears in the platform's system search, or the code says why not
+- `index-what-users-search-for`: content users would reasonably search for (documents, contacts, messages, settings) is indexed
+- `keep-index-current`: every create adds its item to the search index and every delete removes it
+- `must-deep-link-indexed-items`: each indexed item carries a deep link that opens its content
+- `include-rich-metadata`: indexed items carry thumbnails, descriptions and categories where they exist, or the code says why not
+- `apple-index-with-core-spotlight`: Apple content is indexed as `CSSearchableItem` with a `CSSearchableItemAttributeSet`
+- `ios17-conform-to-indexedentity`: entities on iOS 17+ conform to `IndexedEntity`, or the code says why not
+- `apple-donate-nsuseractivity`: Handoff-eligible items donate an `NSUserActivity`, or the code says why not
+- `android-use-app-indexing`: Android on-device search uses Firebase App Indexing or `AppIndexingApi`, or the code says why not
+- `android-declare-searchable-content`: Android searchable content is declared in `searchable.xml` and `SearchableInfo` is implemented
+- `android-support-assistant-markup`: Android content carries structured markup for Google Assistant, or the code says why not
+- `windows-use-search-indexer`: Windows content is indexed through `ISearchManager` with property handlers
+- `windows-register-associations-and-protocols`: file type associations and protocol handlers are registered so content appears in Start menu search
+- `windows-uwp-winui-search`: UWP/WinUI search uses `SearchPane` or in-app search with system integration
+- `web-use-structured-data`: public web pages carry JSON-LD/Schema.org structured data, or the code says why not
+- `web-implement-social-meta-tags`: public web pages carry OpenGraph and Twitter Card meta tags
+- `web-support-web-app-manifest`: the PWA ships a Web App Manifest
+- `web-ensure-crawlability`: web content meant for search is server-side rendered or pre-rendered

@@ -1,0 +1,93 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use [Martin Fowler's taxonomy](https://martinfowler.com/bliki/TestDouble.html):",
+      "to": "should-use-fowlers-taxonomy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Fowler link, naming all five double types; the taxonomy part keeps the table.",
+        "pin": "6c169609631a57975fc30b97d217376f1887a0179f9c25402b572076026f6695"
+      }
+    },
+    {
+      "sentence": "**Fakes SHOULD be preferred over mocks** when possible.",
+      "to": "should-prefer-fakes-over-mocks"
+    },
+    {
+      "sentence": "Fakes exercise real behavior; mocks only verify",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale for should-prefer-fakes-over-mocks keeps the contrast word for word.",
+        "pin": "c66a7b2a00896b4c8b4dea30b829fa22d31218aa0b07d94caf5f0f075c284ad1"
+      }
+    },
+    {
+      "sentence": "expectations.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale completes the sentence ('mocks only verify expectations').",
+        "pin": "e5fe392fb84a2cc5264241cd8233fcbd6f48ce921bdf24b2f860764b0acf1961"
+      }
+    },
+    {
+      "sentence": "**You MUST NOT mock what you don't own.** Wrap external dependencies (HTTP clients, databases, SDKs)",
+      "to": [
+        "must-not-mock-what-you-dont-own",
+        "should-wrap-external-dependencies"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MUST NOT mock what you don't own kept verbatim; the unkeyed wrap instruction is kept at SHOULD with all three examples.",
+        "pin": "ba5407477445724123ffbbd887d7c3683fad3904225c96183180864e50bd26c9"
+      }
+    },
+    {
+      "sentence": "behind your own interface.",
+      "to": "should-wrap-external-dependencies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The wrap rule carries 'behind your own interface'.",
+        "pin": "ca5cbd3271d9abd58f5d56ed9b6762101ffc021545640fd81d077eb94038e17a"
+      }
+    },
+    {
+      "sentence": "Mock your interface, not the third-party API directly.",
+      "to": "should-mock-your-interface-not-the-third-party-api",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: mock your interface, not the third-party API.",
+        "pin": "c0ae4fb36770dd813e0d25934ae22f42d2efeb0cdb574c5ad5591f35475fc93b"
+      }
+    },
+    {
+      "sentence": "This",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale entry for should-mock-your-interface-not-the-third-party-api carries the sentence ('This insulates tests...').",
+        "pin": "9199066530721413a9813da46fb3356ad2ce52dfb6a6c3c795af362a125da430"
+      }
+    },
+    {
+      "sentence": "insulates tests from upstream API changes.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the reason word for word: insulates tests from upstream API changes.",
+        "pin": "d0fc30b914f83f2a2fd94a4ed6c9e2cc0382c26ae1b9474eb343740d87acbabe"
+      }
+    }
+  ],
+  "obsolete": []
+}

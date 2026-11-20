@@ -4,7 +4,7 @@
     "id": "775da457-30c7-47de-b179-0fae8a8b779d",
     "title": "Linting before the first PR",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -37,24 +37,27 @@
       "https://prettier.io/",
       "https://stylelint.io/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-commit",
       "new-module"
     ]
   },
-  "synced": "f03e50d7fa67a993",
+  "synced": "206d83910d456843",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "c", "heading": "C#"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "when-to-run", "heading": "When to run"},
-    {"part": "what-linting-verifies-that-tests-don-t", "heading": "What linting verifies that tests don't"},
-    {"part": "platform-linters", "heading": "Platform linters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "platform-linters", "heading": "Platform linters", "role": "how-to"},
+    {"part": "swift", "heading": "Swift", "role": "how-to"},
+    {"part": "kotlin", "heading": "Kotlin", "role": "how-to"},
+    {"part": "typescript", "heading": "TypeScript", "role": "how-to"},
+    {"part": "c", "heading": "C#", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "what-linting-verifies-that-tests-don-t", "heading": "What linting verifies that tests don't", "role": "rationale"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

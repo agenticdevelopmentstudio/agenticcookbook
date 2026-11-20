@@ -1,0 +1,20 @@
+
+- `should-treat-evals-as-test-suite`: each non-deterministic component has an eval suite run as its tests, or a note says why not
+- `must-use-deterministic-tests-for-fixed-output-logic`: each fixed-output component (parser, schema validation, tool-call arguments, retries) has passing deterministic tests
+- `should-not-wrap-deterministic-code-in-judge`: no LLM judge grades a fixed-output component, or a note says why
+- `must-use-eval-harness-for-varying-outputs`: each varying-output behavior under test is scored by an eval harness over many trials
+- `should-isolate-deterministic-and-probabilistic-layers`: the deterministic layer can be tested without calling a model, or a note says why not
+- `must-prefer-code-based-grader`: every grader for a criterion expressible in code is code-based
+- `should-grade-dimensions-with-separate-judges`: each graded quality dimension has its own judge prompt, or a note says why not
+- `should-use-different-judge-model`: the judge's model setting differs from the model under test, or a note says why not
+- `must-not-gate-on-uncalibrated-judge`: every gating model-based grader has a calibration result against a human-labeled gold set
+- `must-measure-judge-agreement-on-gold-set`: a human-labeled gold set and the judge's measured agreement on it are recorded
+- `must-recalibrate-on-judge-change`: the calibration record is newer than the current judge prompt, judge model and rubric
+- `should-let-judge-abstain`: the judge prompt allows an "Unknown" or abstain answer, or a note says why not
+- `should-read-raw-transcripts-and-grades`: raw transcripts and grades are kept where a person can read them, or a note says why not
+- `must-report-multiple-runs`: the eval report shows several runs per input
+- `should-distinguish-once-from-every-time`: the eval report names its metric (`pass@k` or `pass^k`) to match the reliability requirement, or a note says why not
+- `should-track-consistency-over-time`: the consistency metric is stored per run so it can be compared over time, or a note says why not
+- `must-keep-held-out-test-set`: a held-out test set is stored apart from the iteration set
+- `should-separate-gold-set-from-held-out-set`: the calibration gold set and held-out test set share no items, or a note says why
+- `should-version-eval-datasets`: eval datasets are committed or versioned with the code, or a note says why not

@@ -1,0 +1,18 @@
+
+- `should-use-nil-target-for-frontmost-commands`: whether frontmost commands (copy, delete, undo) use a `nil` target and one-object commands set an explicit target
+- `should-implement-actions-on-owning-object`: whether each action is implemented on the object that owns the behavior, not reached through a stored reference
+- `should-override-nextresponder-sparingly`: whether every `nextResponder` override is needed and has a stated reason
+- `must-make-delegates-weak`: whether every delegate and data-source property is `weak` (or `unowned(unsafe)` on old APIs)
+- `should-use-narrow-delegate-protocols`: whether delegate protocols are narrow, with named callbacks, and Swift ones prefer required methods plus default extensions
+- `must-not-move-large-state-through-delegates`: whether any delegate callback moves large state between objects
+- `must-touch-ui-only-on-main-thread`: whether every touch of views, windows, view-backing layers and view-controller state is on the main thread
+- `should-mark-ui-types-mainactor`: whether UI-facing types are marked `@MainActor`
+- `must-run-slow-work-off-main-thread`: whether slow work runs off the main thread and only the result is applied on it
+- `must-not-block-main-thread`: whether the main thread ever blocks waiting on another queue or task
+- `must-do-one-time-setup-in-load-callbacks`: whether one-time setup is in the load callbacks and no initializer touches `view`
+- `must-pair-appearance-work-and-teardown`: whether per-appearance work is in the appear/disappear callbacks and every setup has its teardown in the matching callback
+- `should-keep-window-content-in-view-controllers`: whether macOS window content lives in view controllers, with `NSWindowController` kept for window-level concerns
+- `must-follow-containment-sequence`: whether every child view controller is added and removed with the full containment sequence
+- `must-implement-secure-restoration-callbacks`: whether the iOS app delegate implements the secure save and restore callbacks, assigns restoration identifiers only to view controllers to preserve, and encodes only what rebuilds each
+- `must-save-identifiers-not-model-objects`: whether saved state holds identifiers and small values only and the screen is rebuilt from the model
+- `should-version-saved-state`: whether saved state is versioned and an incompatible version falls back to the normal launch UI

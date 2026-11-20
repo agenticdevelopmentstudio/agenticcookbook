@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Frame rendering as an architecture-selection decision, not a framework choice.",
+      "to": "should-frame-rendering-as-architecture-selection",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: rendering framed as an architecture-selection decision, not a framework choice; the 'how much JS reaches the client, and when' framing is in rationale.",
+        "pin": "6c26cb9b0a46853e73f6914fbced3bd352ae4c9c326e72218886d7faca0c7513"
+      }
+    },
+    {
+      "sentence": "Optimize for INP and LCP; do **not** target FID.",
+      "to": "should-optimize-for-inp-and-lcp",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and SHOULD NOT (unkeyed before): optimize for INP and LCP and do not target FID; the 2024-03-12 replacement note is in rationale.",
+        "pin": "222a78cab85b9c4fb8862c5a58121e93f3645fce1d8dc471a08277b5e27be25f"
+      }
+    },
+    {
+      "sentence": "**React Router v7 RSC support is newer and less stable** — treat it as evolving, and pin to a tested release before relying on it.",
+      "to": "should-pin-react-router-rsc-to-a-tested-release",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: React Router v7 RSC support is newer and less stable, treated as evolving and pinned to a tested release before relying on it.",
+        "pin": "00e4dac28c1d347d7ff64c88f8ee24da5bca6ff1ea6c17e4d86c39fcc10b7de0"
+      }
+    },
+    {
+      "sentence": "Adopt it deliberately, not reflexively.",
+      "to": "should-adopt-rsc-deliberately",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'it' made explicit as RSC: adopt deliberately, not reflexively; the complexity reasons are in rationale.",
+        "pin": "6ae7af14d0cb6a43825b3510957b3d5bf3d8bc3af13cf78bb862224c27c35a7d"
+      }
+    }
+  ],
+  "obsolete": []
+}

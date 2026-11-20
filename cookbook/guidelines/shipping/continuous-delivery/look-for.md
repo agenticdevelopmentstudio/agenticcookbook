@@ -1,0 +1,17 @@
+
+- `should-not-conflate-delivery-and-deployment`: the code, config and docs keep "deployable at any time" (delivery) apart from "deployed automatically" (deployment)
+- `must-keep-main-releasable`: main stays releasable after the change; anything that leaves it un-releasable breaks it
+- `must-not-merge-unreleasable-change`: no change is merged to main while it leaves main un-releasable
+- `must-automate-commit-to-artifact`: the pipeline runs build, test, package (and deploy, for deployment) with no manual step before "releasable"
+- `must-trigger-pipeline-on-every-commit`: the CI trigger fires on every commit to main, with no path or branch filter that skips any
+- `must-block-release-on-red-pipeline`: the release step depends on a green pipeline and cannot run on a red one, and a red pipeline is fixed before other work lands
+- `must-build-once-deploy-many`: one immutable artifact is built and promoted unchanged; no environment rebuilds it
+- `should-make-deployments-reversible`: a fast rollback or roll-forward path exists, and risky changes ship dark behind flags
+- `should-keep-pipeline-feedback-fast`: the pipeline reports in minutes, not hours
+- `must-not-chase-deploy-frequency-alone`: any push for more frequent deploys comes with test and architecture investment
+- `should-adopt-deployment-only-when-supported`: continuous deployment is on only where automated tests and a decoupled architecture support it; elsewhere a human release gate stays
+- `should-plan-for-the-j-curve-dip`: adoption plans allow for a temporary performance dip and the recovery after it
+- `should-confirm-ci-green-before-pr-ready`: the PR was marked ready only after the full pipeline ran on the branch and was green
+- `should-confirm-no-manual-release-step`: the change needs no manual step to become releasable
+- `should-confirm-risky-behavior-flagged`: risky behavior in the change is behind a flag, so merging does not force a release
+- `should-confirm-rollback-path`: the change has a rollback or roll-forward path

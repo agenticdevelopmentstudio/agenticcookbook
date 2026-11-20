@@ -1,0 +1,15 @@
+
+- `non-sensitive-config`: whether non-sensitive configuration lives in ConfigMaps
+- `sensitive-in-secrets`: whether every credential is a Secret or comes from an external manager
+- `no-plaintext-in-vcs`: whether any plaintext secret is committed or baked into an image
+- `treat-secret-as-encoded-not-encrypted`: whether Secrets are protected as encoded, not encrypted, data
+- `adopt-only-on-measured-need`: whether a measured operational need justifies Kubernetes
+- `encryption-at-rest`: whether etcd encryption at rest is on, preferring KMS, wherever raw Secrets are used
+- `least-privilege-rbac`: whether Secret read access is limited to the subjects that need it
+- `etcd-protection`: whether access to etcd and node disks is tightly controlled
+- `prefer-managed-store`: whether production secrets come from a managed secret store
+- `mount-choice`: whether each value is injected as an env var or a volume to fit its size and update needs
+- `support-rotation`: whether workloads tolerate rotated credentials without a redeploy
+- `immutable-when-stable`: whether release-fixed ConfigMaps and Secrets are `immutable: true`
+- `pin-and-revalidate-secret-tooling`: whether chart and operator versions are pinned and new flows re-validated against dated docs
+- `consult-counsel-on-compliance`: whether compliance obligations were checked with regulations and counsel

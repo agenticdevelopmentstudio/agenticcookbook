@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "If no `Retry-After`, use exponential backoff (see Retry section)",
+      "to": "should-back-off-without-retry-after",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for clients with the no-Retry-After condition, exponential backoff and the Retry-section pointer.",
+        "pin": "1416ef073a1781280dab35f68dd19e08152c51d2b0691000f3d4e3a40328e6ac"
+      }
+    },
+    {
+      "sentence": "Queue and batch requests at the allowed rate rather than fire-and-retry",
+      "to": "should-queue-and-batch-at-the-allowed-rate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: queue and batch at the allowed rate rather than fire-and-retry.",
+        "pin": "9bd4fd5de85678896de098985eae1e68364fe784b3da01525bd042ca14864c1a"
+      }
+    }
+  ],
+  "obsolete": []
+}

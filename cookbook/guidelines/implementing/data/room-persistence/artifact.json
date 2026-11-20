@@ -4,11 +4,11 @@
     "id": "a4f57a3c-f909-42aa-a85f-1ac76ac3ab24",
     "title": "Room persistence on Android",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,23 +30,22 @@
       "https://android-developers.googleblog.com/2026/03/room-30-modernizing-room.html",
       "https://developer.android.com/kotlin/multiplatform/room"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "database-operations",
       "data-modeling"
     ]
   },
-  "synced": "1997ac7fdf28344c",
+  "synced": "bfd981f9aa7f28cb",
   "parts": [
     {"part": "intro"},
-    {"part": "version-landscape-as-of-2026-06", "heading": "Version landscape (as of 2026-06)"},
-    {"part": "compiler", "heading": "Compiler"},
-    {"part": "dao-async-shape", "heading": "DAO async shape"},
-    {"part": "transactions", "heading": "Transactions"},
-    {"part": "schema-and-indexing", "heading": "Schema and indexing"},
-    {"part": "migrations", "heading": "Migrations"},
-    {"part": "must-not", "heading": "MUST NOT"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "version-landscape-as-of-2026-06", "heading": "Version landscape (as of 2026-06)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

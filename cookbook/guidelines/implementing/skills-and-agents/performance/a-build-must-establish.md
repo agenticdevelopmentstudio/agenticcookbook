@@ -1,0 +1,24 @@
+
+- `should-use-shell-scripts-for-deterministic-work`: every repeatable operation with a known outcome runs as a shell script
+- `should-extract-deterministic-skill-steps-into-scripts`: each deterministic skill step is a shell script in the skill's directory
+- `should-use-hooks-for-validation-and-formatting`: validation runs in PreToolUse hooks and formatting and linting in PostToolUse hooks
+- `should-have-agents-call-scripts-for-deterministic-subtasks`: each deterministic agent subtask calls a shell script
+- `should-pick-the-cheapest-model-that-handles-the-task`: each task's model is the cheapest that handles it
+- `should-consider-downgrading-simple-subtasks`: each simple subtask has been considered for a smaller model
+- `should-measure-not-assume`: each downgrade has a measurement behind it
+- `should-verify-three-things-before-downgrading`: each downgrade has token efficiency, latency and correctness verified
+- `should-ask-the-user-when-unclear`: each unclear downgrade was put to the user with the tradeoff
+- `should-not-silently-downgrade`: no downgrade happens silently
+- `should-load-only-what-the-current-step-needs`: each step loads only the context it needs
+- `should-keep-rule-files-under-200-lines`: every rule file is under 200 lines / ~8KB
+- `should-keep-narrow-workflow-rules-under-10-lines`: every narrow-workflow rule is under 10 lines
+- `must-not-load-deep-reference-unconditionally`: no deep reference is loaded unconditionally
+- `must-keep-rules-to-the-minimum-directive`: every rule is a minimum directive or pointer
+- `should-load-context-per-skill-step`: each skill step loads its own context
+- `should-not-front-load-skill-reference-material`: no skill front-loads later steps' reference material
+- `must-give-agents-narrow-instructions`: every agent prompt is narrow, specific and for one task
+- `should-not-include-background-just-in-case`: no agent prompt carries background included in case it is needed
+- `should-keep-claude-md-to-identity-structure-and-pointers`: CLAUDE.md holds only project identity, directory structure and workflow pointers
+- `should-move-detailed-procedures-into-skills`: detailed procedures live in skills
+- `should-move-enforcement-into-rules`: enforcement lives in rules
+

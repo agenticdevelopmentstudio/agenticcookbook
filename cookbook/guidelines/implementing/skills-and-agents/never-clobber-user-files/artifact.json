@@ -4,7 +4,7 @@
     "id": "5358bc26-ea8f-4dd0-94d1-22dc1c6ad291",
     "title": "Never overwrite a user's files",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -37,26 +37,22 @@
       "e114c41c-d203-454c-bc7c-cc128f6ebadd"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring",
       "configuration"
     ]
   },
-  "synced": "fb74bee085e085c1",
+  "synced": "c30075a3ddc17439",
   "parts": [
     {"part": "intro"},
-    {"part": "rules", "heading": "Rules"},
-    {"part": "collisions-in-names-that-merge", "heading": "Collisions in names that merge"},
-    {"part": "reporting", "heading": "Reporting"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "writes", "heading": "Writes"},
-    {"part": "names", "heading": "Names"},
-    {"part": "ownership", "heading": "Ownership"},
-    {"part": "reporting-2", "heading": "Reporting"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "collisions-in-names-that-merge", "heading": "Collisions in names that merge", "role": "rationale"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,26 @@
+
+- `should-pin-mcp-spec-revision`: whether guidance is pinned to MCP spec revision 2025-06-18 (JSON Schema 2020-12)
+- `must-validate-against-input-schema`: whether every handler validates every argument against `inputSchema` before use and rejects on mismatch
+- `must-not-trust-argument-provenance`: whether any argument is trusted because it arrived through the model
+- `must-authorize-every-call`: whether every call is authorized against the authenticated identity
+- `must-sanitize-and-bound-before-side-effects`: whether every argument is sanitized and bounded before it reaches a side effect
+- `should-define-explicit-schema-constraints`: whether each `inputSchema` declares explicit type, required, enum, pattern, length and numeric bounds
+- `must-use-object-schema-root`: whether every `inputSchema` root is `type: object`
+- `must-reject-unknown-properties`: whether a 2020-12 validator at the handler boundary rejects unknown properties, except intentionally open fields
+- `must-not-auto-dereference-external-refs`: whether external `$ref` URIs are auto-dereferenced, and whether schema depth and validation time are bounded
+- `must-not-cache-authorization-across-privilege-boundary`: whether scopes/permissions are re-checked on every invocation, with no decision cached across a privilege boundary
+- `should-scope-downstream-to-least-privilege`: whether downstream actions are scoped to the least privilege the host-process identity holds
+- `must-not-widen-privilege-from-arguments`: whether any tool argument widens privilege
+- `must-not-forward-unvalidated-tokens`: whether any client-supplied token is forwarded downstream without audience validation
+- `should-confine-file-paths`: whether file paths are canonicalized and confined to an allowlisted root
+- `should-block-ssrf`: whether URL arguments are protected against SSRF
+- `should-use-parameterized-queries-only`: whether database access uses parameterized queries only
+- `should-scope-queries-to-authorized-tenant`: whether every query is scoped to the authorized tenant/row set
+- `must-not-interpolate-arguments-into-queries`: whether any argument is interpolated into SQL or a query path
+- `should-avoid-shell-invocation`: whether shell invocation is avoided, or else uses an argv array and an allowlisted executable
+- `must-not-pass-concatenated-shell-string`: whether any shell arguments are a concatenated string
+- `should-validate-tool-results`: whether tool results are validated against `outputSchema` and untrusted fetched content stripped or labelled
+- `should-log-failures-and-denials`: whether validation failures and denials are logged with tool name and caller identity, without raw payloads
+- `must-not-log-secrets-or-tokens`: whether any log holds secrets or full tokens
+- `should-return-non-leaky-errors`: whether rejections fail closed with structured errors and a stable error code
+- `must-not-echo-internals-in-errors`: whether any error echoes internal paths or stack traces

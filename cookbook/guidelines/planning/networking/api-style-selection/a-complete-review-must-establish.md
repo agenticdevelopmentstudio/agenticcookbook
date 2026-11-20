@@ -1,0 +1,15 @@
+
+- `should-pick-the-style-from-consumer-and-traffic`: whether the style follows from the consumer and traffic shape
+- `must-record-the-style-decision`: whether the choice is recorded as a deliberate decision with its rationale
+- `must-weigh-the-decision-factors`: whether consumer, traffic shape, tooling and team, and caching were weighed before selection
+- `should-choose-rest-for-diverse-consumers-and-http-caching`: whether REST serves diverse/external consumers where resources map to URLs and HTTP caching adds value
+- `should-default-to-rest`: whether any non-REST style rests on a measured need (latency, streaming, fan-out)
+- `should-pin-rest-contracts-and-version-the-api`: whether REST contracts are pinned to a dated OpenAPI revision and the API is versioned
+- `should-choose-grpc-for-internal-low-latency-calls`: whether gRPC is used where internal, low-latency or streaming calls call for it
+- `should-not-expose-raw-grpc-publicly`: whether raw gRPC reaches public third-party clients without a REST/Connect façade
+- `should-choose-graphql-for-measured-aggregation-needs`: whether GraphQL rests on measured aggregation needs
+- `must-bound-graphql-cost`: whether GraphQL has N+1 mitigation and query depth/complexity limits in place
+- `should-not-assume-cdn-caching-for-graphql`: whether any GraphQL design assumes CDN caching applies
+- `should-treat-the-graphql-schema-as-a-versioned-contract`: whether the GraphQL schema evolves additively as a versioned contract
+- `may-combine-styles`: whether any combination of styles sits at distinct boundaries as a deliberate choice
+- `must-document-each-boundary-style`: whether each boundary documents its style decision and contract source

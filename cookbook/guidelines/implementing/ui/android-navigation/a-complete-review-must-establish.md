@@ -1,0 +1,16 @@
+
+- `must-use-single-activity`: whether the app uses one `Activity` hosting composable screens
+- `should-hoist-navcontroller-to-top`: whether the `NavHostController` is created once at the top via `rememberNavController()` and leaf composables stay navigation-agnostic
+- `must-not-touch-back-stack-from-screens`: whether any screen composable reads or mutates the back stack directly
+- `should-use-stable-type-safe-navigation-apis`: whether navigation uses the stable type-safe `navigation-compose` APIs at a current `2.9.x` with the `kotlinx-serialization` plugin
+- `must-use-serializable-route-types`: whether every route is a `@Serializable` Kotlin type, not a raw string
+- `should-build-graph-with-type-safe-builders`: whether the graph uses the type-safe builders and navigation passes route instances
+- `must-pass-arguments-through-route-type`: whether every argument goes through the route type and is read with `toRoute()`
+- `should-read-route-arguments-from-savedstatehandle`: whether ViewModels get route arguments via `SavedStateHandle.toRoute<Route>()` rather than a `NavController`
+- `should-declare-deep-links-per-destination`: whether deep links are declared per destination on the type-safe route
+- `should-pin-nav3-and-recheck-release-notes`: whether any Nav3 use pins a current `1.x` release and treats its surface details as evolving
+- `should-choose-nav3-deliberately`: whether any Nav3 adoption is a deliberate decision for back-stack control, adaptive layouts or custom transitions
+- `should-not-mix-nav2-and-nav3-in-a-flow`: whether any flow mixes Nav2 `NavHost` and Nav3 `NavDisplay`
+- `must-handle-process-death`: whether navigation and UI state survive process death
+- `should-scope-viewmodels-to-back-stack-entry`: whether back-stack-scoped ViewModels are scoped to their `NavBackStackEntry`
+- `should-use-single-start-destination`: whether there is a single `startDestination` and navigation avoids rebuilding the graph

@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "If something genuinely should be deferred, say so explicitly and get agreement — surface it as a note (the same way scope-discipline notes adjacent issues), do not bury it.",
+      "to": "should-surface-deferrals-for-agreement",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The genuine-deferral condition, saying so explicitly, getting agreement, surfacing it as a note like scope-discipline does, and not burying it are all kept at SHOULD/SHOULD NOT.",
+        "pin": "366691a96869498f0d9314d1df9afd07d598cf92ce650ece4f3b1e66136cc174"
+      }
+    },
+    {
+      "sentence": "\"Out of scope\" is a decision the user makes with you, not one you make on their behalf.",
+      "to": "should-leave-scoping-out-to-the-user",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed norm that 'out of scope' is the user's decision made with you, not yours on their behalf, is kept at SHOULD.",
+        "pin": "6758f854bfb7347e03457b344042fade76c8e683300919a118cca0654085334a"
+      }
+    },
+    {
+      "sentence": "Re-reading the request before pausing avoids stalling work that was meant to proceed.",
+      "to": "should-reread-request-before-pausing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Re-reading the request before pausing is kept at SHOULD, with the reason that it avoids stalling work meant to proceed.",
+        "pin": "05a98c225e4ab0a2fe1b6a75c5dd896171b5f3e2bec6a4409e6bd4cdb1e4dc31"
+      }
+    },
+    {
+      "sentence": "You MUST confirm the work actually runs and meets the request (see post-generation-verification) before reporting it complete. \"It should work\" is not \"it works.\"",
+      "to": [
+        "must-verify-before-reporting-complete",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST to confirm the work runs and meets the request before reporting it complete, with the post-generation-verification pointer, is kept verbatim; the rationale keeps \"It should work\" is not \"it works.\"",
+        "pin": "fd49d1e3c4475970d1d39b5131ce77be64430c9be819746c726ceb4d8e1e3f07"
+      }
+    },
+    {
+      "sentence": "When you invoke YAGNI to not build something, name what you are skipping and why, so the choice is visible.",
+      "to": "should-name-what-yagni-skips",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Naming what YAGNI skips and why, so the choice is visible, is kept at SHOULD with its condition.",
+        "pin": "1065bc4b1fb8657b177b473537adf51e5a92c91507626bd96ad42b28ff24e2f7"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,11 @@
+
+- `should-give-every-action-visible-feedback`: whether every user action has visible feedback
+- `should-match-feedback-weight-to-action`: whether each feedback's weight matches its action's weight
+- `should-auto-dismiss-toasts`: whether toasts auto-dismiss after 3-5 seconds
+- `must-require-no-action-on-toasts`: whether any toast requires user action
+- `must-not-use-toasts-for-errors`: whether any error is shown in a toast
+- `should-make-banners-dismissible`: whether banners and inline alerts are dismissible
+- `should-use-dialogs-sparingly`: whether dialogs are kept to the cases that need them
+- `must-not-use-dialogs-for-success`: whether any dialog reports a success message
+- `must-confirm-destructive-actions`: whether every destructive action requires explicit confirmation with a clearly labeled action
+- `should-default-focus-to-safe-option`: whether default focus in confirmations is on the safe option

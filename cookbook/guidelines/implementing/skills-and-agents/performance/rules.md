@@ -1,0 +1,24 @@
+
+- **should-use-shell-scripts-for-deterministic-work**: If the operation is repeatable and has a known outcome, you SHOULD use a shell script.
+- **should-extract-deterministic-skill-steps-into-scripts**: In skills, deterministic steps SHOULD be extracted into shell scripts in the skill's directory.
+- **should-use-hooks-for-validation-and-formatting**: You SHOULD use PreToolUse hooks for validation, PostToolUse hooks for formatting and linting.
+- **should-have-agents-call-scripts-for-deterministic-subtasks**: When an agent's task includes deterministic subtasks, it SHOULD call shell scripts rather than reasoning through known operations.
+- **should-pick-the-cheapest-model-that-handles-the-task**: You SHOULD pick the cheapest model that handles the task.
+- **should-consider-downgrading-simple-subtasks**: When a subtask is simple enough for a smaller model, you SHOULD consider downgrading.
+- **should-measure-not-assume**: But measure — don't assume: a downgrade SHOULD be measured, and its benefit SHOULD NOT be assumed.
+- **should-verify-three-things-before-downgrading**: Before selecting a smaller model for a subtask, you SHOULD verify three things: token efficiency, latency and correctness.
+- **should-ask-the-user-when-unclear**: When it is unclear whether to downgrade, you SHOULD ask the user and present the tradeoff.
+- **should-not-silently-downgrade**: You SHOULD NOT silently downgrade.
+- **should-load-only-what-the-current-step-needs**: You SHOULD load only what's needed for the current step.
+- **should-keep-rule-files-under-200-lines**: Target: rule files SHOULD be under 200 lines / ~8KB.
+- **should-keep-narrow-workflow-rules-under-10-lines**: Rules that apply to narrow workflows SHOULD be under 10 lines.
+- **must-not-load-deep-reference-unconditionally**: Deep reference (research, full cookbook) is never loaded unconditionally: it MUST NOT be.
+- **must-keep-rules-to-the-minimum-directive**: Rules MUST be kept to the minimum directive.
+- **should-load-context-per-skill-step**: Skills SHOULD structure each step to load its own context.
+- **should-not-front-load-skill-reference-material**: A five-step skill SHOULD NOT front-load all five steps' reference material.
+- **must-give-agents-narrow-instructions**: Agents MUST receive narrow, specific instructions for one task.
+- **should-not-include-background-just-in-case**: Background context SHOULD NOT be included "in case they need it." If the agent needs additional context, it can read it.
+- **should-keep-claude-md-to-identity-structure-and-pointers**: CLAUDE.md SHOULD contain only project identity, directory structure, and workflow pointers.
+- **should-move-detailed-procedures-into-skills**: Detailed procedures SHOULD be moved into skills.
+- **should-move-enforcement-into-rules**: Enforcement SHOULD be moved into rules.
+

@@ -1,0 +1,19 @@
+
+- `must-not-default-to-cqrs-or-event-sourcing`: CQRS or event sourcing is present only where a requirement calls for it
+- `must-justify-with-a-present-requirement`: each adoption names a concrete, present requirement
+- `should-default-to-a-single-model`: the system uses a single model (CRUD over one datastore), or the work says why not
+- `should-evaluate-an-audit-table-first`: where history is the only driver, an audit/history table or change-data-capture log was evaluated first, or the work says why not
+- `must-document-the-adoption-decision`: a decision record names the triggering requirement
+- `should-adopt-cqrs-only-on-its-triggers`: CQRS is adopted only where a CQRS trigger is concretely true, or the work says why
+- `should-adopt-event-sourcing-only-on-its-triggers`: event sourcing is adopted only where an event-sourcing trigger is concretely true, or the work says why
+- `must-not-adopt-without-a-trigger`: no CQRS or event sourcing exists without a trigger
+- `should-plan-for-each-cost-before-adopting`: a plan exists for eventual consistency, projection rebuilds, event versioning and the operational surface, or the work says why not
+- `must-tolerate-eventual-consistency`: every UI/API path reading a read model tolerates its lag
+- `must-rebuild-projections-without-downtime`: a documented, tested projection rebuild procedure runs without downtime for large stores
+- `must-plan-event-versioning-before-the-first-event`: an upcasting/versioning plan exists, and no written event is edited
+- `should-model-commands-and-events-as-named-versioned-types`: every command and event is a named, versioned type, or the work says why not
+- `must-not-overload-a-generic-update-event`: no generic "update" event is overloaded
+- `must-make-handlers-and-projectors-idempotent`: every command handler and projector dedupes on a stable event id
+- `should-keep-cqrs-without-event-sourcing-as-a-stopping-point`: a full event store is used only where separate read/write models in one database would not do, or the work says why
+- `should-start-in-process-and-single-store`: separate read stores or message infrastructure exist only where the triggering requirement demands them, or the work says why
+- `should-define-the-consistency-contract-per-use-case`: each use case's consistency contract is defined and surfaced in the API, or the work says why not

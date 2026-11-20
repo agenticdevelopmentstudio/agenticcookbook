@@ -1,0 +1,11 @@
+
+- `should-revisit-the-model-on-architecture-change`: **One-time gate**: a single pre-launch review that is never revisited. Architecture drifts and the model goes stale.
+- `should-map-each-threat-to-a-linked-control`: **Controls without threats**: adding TLS or input validation because a checklist says so, with no recorded threat they address. The control cannot be reasoned about or removed safely.
+- `must-consider-every-stride-category-at-trust-boundaries`: **Boundary blindness**: enumerating threats on internal flows while ignoring the actual trust boundary (the network edge, the untrusted client, the multi-tenant split).
+- `must-answer-all-four-questions`: **Tool worship**: assuming a diagramming or scanning tool *is* the threat model. The four questions and recorded decisions are the artifact; tools only assist.
+- `should-anchor-sessions-on-the-four-questions`: a modeling session not organised around the four questions
+- `must-record-a-response-per-threat`: a threat with no recorded response, or an "accept" with no rationale or owner
+- `should-use-stride-for-question-two`: threats enumerated with no systematic STRIDE pass
+- `should-model-trust-boundaries-before-building`: a feature built before its trust boundaries were modeled
+- `should-keep-each-session-lightweight`: an exhaustive one-off model in place of a focused diagram and short threat list per feature
+- `should-keep-threat-models-in-version-control`: a threat model kept outside version control, away from the design it describes

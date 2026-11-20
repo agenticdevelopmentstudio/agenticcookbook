@@ -1,0 +1,23 @@
+
+- `should-confirm-obligations-with-counsel-per-jurisdiction`: whether the obligations for each jurisdiction served were confirmed with counsel
+- `must-be-freely-given`: whether consent is unbundled from service access and refusal leaves core functionality that does not depend on the processing intact
+- `must-be-specific-and-granular`: whether each distinct purpose has its own toggle and no blanket "I agree" covers unrelated purposes
+- `must-be-informed`: whether the purpose, controller identity, data categories and right to withdraw are presented before capture
+- `must-be-unambiguous`: whether consent requires an affirmative action, with no pre-ticked boxes, implied consent or "continue = consent"
+- `should-persist-decisions-append-only`: whether each decision is persisted as an append-only, immutable record
+- `must-not-overwrite-consent-entries`: whether any code overwrites or deletes prior consent entries, and withdrawal is written as a new event
+- `must-capture-consent-record-fields`: whether each record captures subject id, purpose(s), action, UTC timestamp, policy/notice version and capture mechanism
+- `should-store-consent-notice-text-or-hash`: whether the exact notice text or a content hash is stored
+- `should-pin-policy-to-versioned-revision`: whether the policy is pinned to a dated, versioned revision
+- `should-keep-current-consent-queryable`: whether current consent per subject and purpose is answered from a derived current-state view without replaying history
+- `must-gate-non-essential-processing`: whether every non-essential cookie, tracker and analytics call waits for consent for its purpose
+- `should-not-present-necessary-processing-as-optional`: whether strictly necessary processing is kept out of the consent choices
+- `should-re-request-consent-on-change`: whether consent is re-requested on a changed purpose, a new data category or a new processor
+- `should-re-consent-on-material-policy-change-only`: whether a policy-version bump triggers re-consent only when the change is material
+- `should-set-reconfirmation-cadence`: whether long-lived consent has a re-confirmation cadence
+- `must-make-withdrawal-as-easy-as-granting`: whether withdrawal takes the same clicks and surface as granting, with no friction
+- `must-propagate-withdrawal`: whether withdrawal stops new collection, halts downstream jobs and notifies processors and third parties
+- `must-stop-further-processing-on-withdrawal`: whether withdrawal prevents all further processing for that purpose
+- `must-not-infer-consent-from-inactivity`: whether consent is ever inferred from inactivity, scrolling or continued use
+- `must-not-make-reject-harder-than-accept`: whether "reject all" is as easy to reach as "accept all"
+- `must-not-skip-childrens-consent-paths`: whether children's data goes through the age-appropriate and verifiable-parental-consent paths the regime requires

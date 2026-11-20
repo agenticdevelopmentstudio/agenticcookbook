@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "736fac9a-56e0-449d-8dc0-b95cbfba7884",
+    "title": "Jetpack Compose: state hoisting and unidirectional data flow",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Hoist UI state to its lowest common owner or the ViewModel, keep composables stateless, and enforce state-down/events-up unidirectional flow.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "compose",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "a7ce3621-2fed-478f-8767-b186014c5923",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
+    ],
+    "references": [
+      "https://developer.android.com/develop/ui/compose/architecture"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "fc647a6026eccbdc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "hoist-state", "heading": "Hoist state"},
+    {"part": "remember-vs-remembersaveable", "heading": "remember vs rememberSaveable"},
+    {"part": "expose-immutable-ui-state", "heading": "Expose immutable UI state"},
+    {"part": "recomposition-and-stability-awareness", "heading": "Recomposition and stability awareness"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

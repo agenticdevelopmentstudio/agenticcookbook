@@ -1,0 +1,139 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Server-side authorization is the only real authorization.** Client-side checks (hiding",
+      "to": [
+        "must-not-use-client-side-checks-as-security-controls",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The claim that server-side authorization is the only real authorization is kept in rationale and backs the client-side-checks MUST NOT.",
+        "pin": "b5803d57762fdd078ac09a60733cdf9d294f72f6c7b720adee9bdc6989648b0f"
+      }
+    },
+    {
+      "sentence": "buttons, disabling fields) are UX conveniences — never security controls.",
+      "to": "must-not-use-client-side-checks-as-security-controls",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Client-side checks (hiding buttons, disabling fields) as UX conveniences, never security controls, are kept at MUST NOT.",
+        "pin": "184c58b1b4b7fc8a3da14483f2e06f816c54c29d01a65022fea183b1f8a0029c"
+      }
+    },
+    {
+      "sentence": "**Deny by default** — if no explicit permission grants access, the request MUST be denied.",
+      "to": "must-deny-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deny by default is kept at MUST: if no explicit permission grants access, the request is denied.",
+        "pin": "20d6e097c0adafb1323ec0b2ec05abb222a42ab560788b44d0307ccca7a2d110"
+      }
+    },
+    {
+      "sentence": "Every new endpoint",
+      "to": "must-deny-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Every new endpoint starting locked down follows directly from the deny-by-default MUST, since a new endpoint has no explicit grant yet.",
+        "pin": "68e6d2fe269fa31622b18a23b222c4643a8890121b55aeabb6fb845c0dde3f4c"
+      }
+    },
+    {
+      "sentence": "starts locked down.",
+      "to": "must-deny-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Starting locked down is the deny-by-default rule applied to new endpoints, kept at MUST.",
+        "pin": "fa8e099e008732d2c23f67376646eeb5994c077cac2d1fd49c9922d44b549e21"
+      }
+    },
+    {
+      "sentence": "**Least privilege** — endpoints MUST request minimum scopes.",
+      "to": "must-request-minimum-scopes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Endpoints requesting minimum scopes is kept at MUST, labelled least privilege.",
+        "pin": "cd85a155992d4090eecfb1a70e3e7420fe62cd9664827913b5f14daa9418951f"
+      }
+    },
+    {
+      "sentence": "Each endpoint enforces its own permission check.",
+      "to": "should-enforce-permission-check-per-endpoint",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Each endpoint enforcing its own permission check is kept, the unkeyed statement at SHOULD.",
+        "pin": "b533823de6bc862f2f0c83a29630fe147b6c569d7a8953fea46ce6a312d07c91"
+      }
+    },
+    {
+      "sentence": "**RBAC** — define roles with minimal permissions.",
+      "to": "should-define-roles-with-minimal-permissions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Defining RBAC roles with minimal permissions is kept at SHOULD.",
+        "pin": "b88dd12e0076415d8aac7d01ce19bffd5dafc92e3b51a64b3b08025781a010f5"
+      }
+    },
+    {
+      "sentence": "Prefer fine-grained permissions composed",
+      "to": "should-prefer-fine-grained-permissions-in-roles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring fine-grained permissions composed into roles is kept at SHOULD.",
+        "pin": "171447e65a356eead033cebb68acbf3bf4227fa035376e527d331e2fef808a2d"
+      }
+    },
+    {
+      "sentence": "into roles over monolithic role checks.",
+      "to": "should-prefer-fine-grained-permissions-in-roles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The comparison, fine-grained composed permissions over monolithic role checks, is kept.",
+        "pin": "05d44a667d8166f3cee0daae50759951d7237e1385c6428e4ac56818a23ba305"
+      }
+    },
+    {
+      "sentence": "**Broken Object Level Authorization (BOLA)** — the #1 API security risk (OWASP API Top 10).",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "BOLA as the #1 API security risk (OWASP API Top 10) is kept in rationale as the reason for the object-level rules.",
+        "pin": "42f28a962e78733cdf1aed9d29404479cc42beae9f44b743ed45db9802e04d4c"
+      }
+    },
+    {
+      "sentence": "The server MUST verify the authenticated user has access to the specific resource ID requested.",
+      "to": "must-verify-object-level-access",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The server verifying the authenticated user's access to the specific resource ID is kept at MUST, labelled BOLA.",
+        "pin": "da35b63717d98f02a7cd5fe455c0b2fa2c0279d0d78095299d8fd83a3cdd5745"
+      }
+    },
+    {
+      "sentence": "Never assume \"if they know the ID, they have access.\"",
+      "to": "must-not-treat-known-id-as-access",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never assuming that knowing the ID grants access is kept at MUST NOT.",
+        "pin": "6ed44396076c8a7d672aec34aabe887711791fb2a308ca2fbfd73d6d5634fff1"
+      }
+    }
+  ],
+  "obsolete": []
+}

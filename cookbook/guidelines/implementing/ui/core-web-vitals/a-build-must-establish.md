@@ -1,0 +1,20 @@
+
+- `must-not-reference-fid`: no text or code references FID as a current Core Web Vital
+- `must-measure-in-field-at-p75`: Core Web Vitals are measured from field (RUM) data at p75
+- `must-enforce-performance-budget-in-ci`: a CI performance budget fails the build on regression
+- `should-use-lab-tooling-for-diagnosis`: lab tooling is used for diagnosis and pre-merge gating with field data authoritative, or the work says why not
+- `must-reserve-space-for-shifting-elements`: every image, ad, embed and late-injected banner reserves space via `width`/`height` or `aspect-ratio`
+- `should-break-up-long-tasks`: no main-thread task runs over 50ms unsplit, or the work says why
+- `should-yield-to-main-thread`: long-running work yields to the main thread, or the work says why not
+- `should-prefer-scheduler-yield`: `scheduler.yield()` is used where available, or the work says why not
+- `should-provide-yield-fallback`: every `scheduler.yield()` use is feature-detected with a `setTimeout` or polyfill fallback, or the work says why not
+- `should-move-heavy-computation-to-web-worker`: heavy computation runs in a Web Worker, or the work says why not
+- `must-avoid-layout-thrashing`: no loop interleaves DOM reads and writes, and reads are batched before writes
+- `should-keep-dom-small`: the DOM stays small and long lists are virtualized, or the work says why not
+- `should-defer-non-critical-work`: non-critical work runs in `requestIdleCallback` or post-interaction, or the work says why not
+- `should-apply-lcp-quick-wins`: the LCP resource is preloaded, images are responsive, nothing render-blocks, the hero has `fetchpriority="high"` and above-the-fold content is server-rendered, or the work says why not
+- `should-apply-cls-quick-wins`: space is reserved for media and dynamic content, nothing is inserted above existing content, and `font-display` and font preloading are deliberate, or the work says why not
+- `should-collect-field-data`: field data is collected via the `web-vitals` library or CrUX, or the work says why not
+- `should-wire-a-ci-gate`: a CI gate such as Lighthouse CI asserts metric thresholds and `budget.json` budgets, or the work says why not
+- `should-express-budgets-as-concrete-limits`: each budget is a concrete limit that fails the build on regression, or the work says why not
+- `should-pin-dated-thresholds`: thresholds in use are the dated ones and were re-verified against `web.dev/articles/vitals/`, or the work says why not

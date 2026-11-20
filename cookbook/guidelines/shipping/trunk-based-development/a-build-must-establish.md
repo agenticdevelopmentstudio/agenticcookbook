@@ -1,0 +1,23 @@
+
+- `single-trunk`: the repository has one mainline, `main`, and no long-lived branch is the primary integration target
+- `integrate-daily`: the work reached trunk within a day, or was split into steps that did, or the change says why not
+- `short-lived-branches`: the branch merged within 1-2 days, or the change says why not
+- `flag-incomplete-work`: every incomplete or not-yet-enabled path is behind a feature flag, merged disabled
+- `trunk-stays-releasable`: trunk builds and passes required checks after the merge
+- `green-trunk`: build, tests and lint pass before the merge, and trunk is green after it
+- `revertable-merges`: the merge is a single squashed commit, or the change says why not
+- `no-freeze`: the change integrates directly, with no batched integration or stabilization phase
+- `should-branch-small`: the branch came from current `main` and holds one logical change, or the change says why not
+- `should-flag-partial-change`: any partial behavior is behind a default-off flag, or the change says why not
+- `should-commit-atomically`: each commit is one logical change that builds and passes tests, or the change says why not
+- `should-rebase-onto-main`: the branch sits on the latest `main` when the PR is opened or updated, or the change says why not
+- `should-merge-within-a-day`: the PR merged within a day of opening with checks green, or the change says why not
+- `should-prefer-squash-merges`: the merge was a squash merge, or the change says why not
+- `must-not-sit-on-work`: the branch holds no more than enabling-but-disabled increments, never days of unlanded work
+- `must-not-let-branch-diverge`: the branch was never a week behind trunk
+- `must-not-use-develop-as-staging-trunk`: no `develop` branch merges periodically into `main`
+- `must-not-park-finished-code-on-branch`: no finished code waits unmerged on a branch
+- `must-not-bypass-required-checks`: every required check ran and passed for the merge
+- `should-establish-green-trunk-gating-first`: green-trunk gating is in force, or the project says why not
+- `may-cut-release-branch-for-audited-build`: any release branch is a tagged, audited artifact cut from trunk
+- `should-treat-dora-as-correlation`: no claim presents the DORA finding as a guarantee, or the text says why

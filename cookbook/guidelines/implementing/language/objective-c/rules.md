@@ -1,0 +1,38 @@
+
+- **must-compile-with-arc**: Objective-C code in a mixed or legacy Apple codebase MUST compile with ARC: build with ARC (`-fobjc-arc`).
+- **must-declare-nullability-in-public-headers**: Objective-C code in a mixed or legacy Apple codebase MUST declare nullability in every public header.
+- **must-shape-for-swift-import**: Objective-C code in a mixed or legacy Apple codebase MUST be shaped so Swift imports it as idiomatic Swift.
+- **should-not-write-new-objective-c**: New Objective-C SHOULD NOT be written where Swift will do; when the code must stay Objective-C (an existing module, a C++ interop shim, a framework with an Objective-C public surface), these rules apply.
+- **should-not-call-retain-release-by-hand**: Code SHOULD NOT call `retain`, `release` or `autorelease` by hand in an ARC file.
+- **should-not-mix-manual-reference-counting**: Code SHOULD NOT mix manual reference counting into a target by file-level flags without a written reason.
+- **should-declare-explicit-property-ownership**: Object properties SHOULD be declared with an explicit ownership attribute: `strong` for owned objects, `weak` for back-references and delegates, `copy` for `NSString`, `NSArray`, `NSDictionary` and block properties whose mutable subclasses a caller could pass in.
+- **should-limit-unsafe-unretained**: Code SHOULD reach for `__unsafe_unretained` only where the compiler cannot express the lifetime, and say why in a comment.
+  - Ownership qualifiers on variables are `__strong` (the default), `__weak`, `__unsafe_unretained` and `__autoreleasing`.
+- **should-name-methods-by-method-family**: Your own methods SHOULD be named with the method-family rule in mind, because ARC applies it to them too.
+  - Method families decide ownership of a returned object. A method whose name begins with `alloc`, `new`, `copy` or `mutableCopy` returns a retained object that the caller owns; any other name returns an object the caller does not own.
+- **should-break-retain-cycles-in-blocks**: Code SHOULD break retain cycles in blocks.
+- **must-capture-weak-self-in-stored-blocks**: A block that captures `self` and is stored on `self` MUST capture a `__weak` reference and, inside the block, take a `__strong` local before use.
+- **should-remove-observers-at-teardown**: Timers, notification observers and KVO registrations SHOULD be removed in `dealloc` or an earlier teardown, and SHOULD NOT keep their target alive.
+- **should-wrap-temporary-heavy-loops-in-autoreleasepool**: Long-running loops that create many temporary objects SHOULD be wrapped in `@autoreleasepool { }` so memory does not grow until the loop ends.
+- **must-state-bridge-cast-ownership**: Casting between an Objective-C object pointer and a Core Foundation pointer MUST state who owns the result.
+- **should-pick-bridge-cast-by-ownership**: Code SHOULD use `__bridge` when ownership does not change, `__bridge_retained` to hand an object to Core Foundation (you now `CFRelease` it), and `__bridge_transfer` to take a Core Foundation object into ARC (ARC now releases it).
+- **must-not-use-bare-bridging-casts**: Code MUST NOT use a bare C cast between the two worlds in ARC code.
+  - The compiler rejects it for good reason.
+- **must-wrap-public-headers-in-assume-nonnull**: Every public header MUST wrap its declarations in `NS_ASSUME_NONNULL_BEGIN` and `NS_ASSUME_NONNULL_END`, and mark only the exceptions `nullable`.
+  - Unannotated declarations inside the region are treated as non-null.
+- **should-use-nullability-qualifiers**: Code SHOULD use `nullable`, `nonnull` and `null_resettable` on properties, parameters and return types, and `_Nullable` and `_Nonnull` where the simple forms do not fit, such as `_Nullable id * _Nonnull`.
+  - Without any annotation Swift imports a type as an implicitly unwrapped optional, which hides crashes.
+- **should-annotate-each-typedef-use**: `typedef` types are not assumed non-null even inside an audited region, so each use SHOULD be annotated.
+- **must-declare-nil-returning-methods-nullable**: A method documented to return `nil` on failure MUST be declared `nullable`.
+- **must-declare-non-nil-parameters-in-signature**: A method that must never receive `nil` MUST say so in its signature, not only in a comment.
+- **should-need-no-swift-fix-ups**: The Objective-C API SHOULD be designed so it needs no Swift-side fix-ups: declare generics on collections (`NSArray<MyListItem *> *`) so Swift sees `[MyListItem]`, and use designated nullability.
+- **should-refine-for-swift-in-an-extension**: When the Swift form should differ from the Objective-C form (a tuple instead of out-parameters, reordered or renamed arguments), the Objective-C declaration SHOULD be marked `NS_REFINED_FOR_SWIFT` and the Swift-facing API written in a Swift extension.
+  - The original is imported with a double underscore prefix (`__getRed(red:green:blue:alpha:)`), which keeps it out of ordinary autocompletion.
+- **should-keep-objective-c-as-single-source**: The Objective-C implementation SHOULD stay the single source of behavior.
+  - The refined Swift API calls it; it does not reimplement it.
+- **should-name-call-sites-as-phrases**: Methods SHOULD be named so a call site reads as a phrase, with a label for every argument after the first.
+- **should-follow-framework-conventions**: Code SHOULD follow the conventions of the framework it extends rather than inventing new vocabulary.
+- **should-prefix-public-symbols**: Every public class, protocol, enum and constant SHOULD carry a project prefix, because Objective-C has no namespaces.
+- **should-mark-designated-initializers**: Designated initializers SHOULD be marked (`NS_DESIGNATED_INITIALIZER`) and inherited ones that cannot work forbidden (`NS_UNAVAILABLE`), so a half-initialized object cannot be built.
+- **should-report-recoverable-failure-with-nserror**: Recoverable failure SHOULD be reported with a `BOOL` or object return plus an `NSError **` out-parameter, not with exceptions.
+  - Exceptions are for programmer errors.

@@ -1,0 +1,126 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When retrieval returns no supporting evidence, the system **SHOULD** abstain (\"I don't have enough information\") rather than answer from parametric memory.",
+      "to": "should-abstain-without-evidence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (no supporting evidence), the example wording, and the contrast with parametric memory.",
+        "pin": "19ba18a0521c263e00869f6e81dbdf37b4f3fcb5a460274305774f2d13cce4bd"
+      }
+    },
+    {
+      "sentence": "You **MUST** include \"unanswerable from context\" cases in the eval set and score abstention explicitly — otherwise a model that always answers looks perfect on answerable queries while hallucinating on the rest.",
+      "to": "must-include-unanswerable-cases"
+    },
+    {
+      "sentence": "An abstention is a **correct** outcome when context is insufficient; do not penalize it as a miss in aggregate scoring.",
+      "to": "should-not-penalize-correct-abstention",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Abstention as a correct outcome under insufficient context is kept, and the unkeyed do-not-penalize instruction is kept at SHOULD NOT.",
+        "pin": "92f12f23b7aa435bbbcc6f31d90a0124d74b5c9bd4def3337f904d7b6f31c645"
+      }
+    },
+    {
+      "sentence": "Run groundedness and hallucination evals in CI on a fixed query set; **MUST** fail the build when the hallucination rate regresses past a set threshold.",
+      "to": [
+        "should-run-evals-in-ci-on-fixed-set",
+        "must-fail-build-on-hallucination-regression"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Running the evals in CI on a fixed query set is kept at SHOULD, and the MUST fail-the-build on regression past a threshold is kept at MUST.",
+        "pin": "a5f01420890c6a287dd41fbb461d7d564477866542bf618843692a067cabfe88"
+      }
+    },
+    {
+      "sentence": "Treat groundedness as a release gate alongside latency and cost, not a one-time benchmark — retriever index drift and model swaps both move it.",
+      "to": "should-treat-groundedness-as-release-gate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the comparison (alongside latency and cost, not a one-time benchmark) and the reason (index drift, model swaps).",
+        "pin": "38df213413e66188e687ea1c62101f3c74770620ab8a1a59da3f63d3cf9f12a7"
+      }
+    },
+    {
+      "sentence": "> Privacy note: when eval sets contain user data, redact or synthesize PII before sending to a judge model.",
+      "to": "should-redact-pii-before-judge",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The privacy note is kept at SHOULD with its user-data condition and both options (redact or synthesize) before sending to a judge.",
+        "pin": "42a084b49b2df9f0b2934ae848d0b71ccea4c9b1eca38667cde747c113f0e331"
+      }
+    },
+    {
+      "sentence": "You **MUST** measure groundedness (claim-level support) and a hallucination rate against retrieved sources, and the system **SHOULD** abstain rather than fabricate when support is missing.",
+      "to": [
+        "must-measure-groundedness-and-hallucination-rate",
+        "should-abstain-without-evidence"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST on measuring claim-level groundedness and a hallucination rate against retrieved sources, and the SHOULD abstain rather than fabricate, are both kept.",
+        "pin": "da7a7e64ce8effd19b3399492cf608c7cc81f5a7c9713fb2110d24f9138fa260"
+      }
+    },
+    {
+      "sentence": "An LLM judge **MAY** score groundedness by seeing only the answer + retrieved chunks and labeling each claim.",
+      "to": "may-score-with-llm-judge"
+    },
+    {
+      "sentence": "Keep the judge blind to any gold answer so it scores support, not agreement.",
+      "to": "should-keep-judge-blind-to-gold-answer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason: blind to any gold answer so it scores support, not agreement.",
+        "pin": "f8c605deac6105536e4686fa6a56871fccbe4f2532e206a8faaa3035de97b052"
+      }
+    },
+    {
+      "sentence": "You **MUST** calibrate the judge against a human-labeled gold set and report agreement (e.g., Cohen's kappa) before trusting its scores.",
+      "to": "must-calibrate-judge-against-gold-set"
+    },
+    {
+      "sentence": "Frameworks such as RAGAS, DeepEval, and TruLens implement these metrics; their absolute scores diverge on the same data (forecast: still true in 2026), so pin one framework + version and track trends rather than comparing raw cross-tool numbers.",
+      "to": "should-pin-one-eval-framework",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The framework examples and score divergence (with the 2026 forecast) are kept as the sub-bullet that gives the reason, and pinning one framework + version and tracking trends is kept at SHOULD.",
+        "pin": "5c60b479f6e60bbe86ee37b96413b5a0a879d6aec5e58791a849164f3ca8c13a"
+      }
+    },
+    {
+      "sentence": "The system **SHOULD** emit citations to specific source spans (doc id + offset/quote), not just document-level pointers.",
+      "to": "should-cite-specific-spans"
+    },
+    {
+      "sentence": "You **MUST** verify cited spans rather than trust them: re-check that each quoted span exists in the source and entails the claim.",
+      "to": "must-verify-cited-spans"
+    },
+    {
+      "sentence": "Score groundedness at **claim granularity**, not whole-answer granularity: decompose the answer into atomic claims and label each `supported` / `partial` / `unsupported` (the FActScore decomposition approach, [arxiv.org/abs/2305.14251](https://arxiv.org/abs/2305.14251)).",
+      "to": "should-score-at-claim-granularity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with claim-level decomposition, the three labels, and the FActScore citation.",
+        "pin": "04a930a7e67426657d217313b731a0ba8842110b53e2eb19477335963722a4c2"
+      }
+    },
+    {
+      "sentence": "You **MUST** measure retrieval quality (recall@k, context precision) independently — most ungrounded answers trace to missing evidence, not generation, and fixing the generator cannot recover evidence that was never retrieved.",
+      "to": "must-measure-retrieval-independently"
+    }
+  ],
+  "obsolete": []
+}

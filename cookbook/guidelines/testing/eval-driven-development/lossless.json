@@ -1,0 +1,94 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A model-based grader **MUST NOT** be allowed to gate (block a merge, fail a build, accept a release) until it has been calibrated against a human-labeled gold set.",
+      "to": "must-not-gate-on-uncalibrated-judge"
+    },
+    {
+      "sentence": "**MUST** assemble a human-labeled gold set, run the judge over it, and measure agreement (e.g., divergence rate or correlation) before trusting the judge.",
+      "to": "must-measure-judge-agreement-on-gold-set"
+    },
+    {
+      "sentence": "**MUST** re-calibrate when the judge prompt, the judge model, or the rubric changes.",
+      "to": "must-recalibrate-on-judge-change"
+    },
+    {
+      "sentence": "**SHOULD** instruct the judge to return \"Unknown\" or abstain when it lacks evidence, rather than guessing.",
+      "to": "should-let-judge-abstain"
+    },
+    {
+      "sentence": "**SHOULD** periodically read raw transcripts and grades; a passing aggregate score can hide a judge that is rejecting valid answers or rubber-stamping bad ones.",
+      "to": "should-read-raw-transcripts-and-grades"
+    },
+    {
+      "sentence": "**MUST** prefer a code-based grader whenever the success criterion can be expressed in code.",
+      "to": "must-prefer-code-based-grader"
+    },
+    {
+      "sentence": "**SHOULD** grade each quality dimension (e.g., groundedness, coverage, tone) with a separate, isolated LLM-judge rather than one judge scoring everything at once.",
+      "to": "should-grade-dimensions-with-separate-judges"
+    },
+    {
+      "sentence": "**SHOULD** use a judge model deliberately different from the model under test to reduce self-preference bias (a documented but still-active research concern, not a settled magnitude).",
+      "to": "should-use-different-judge-model"
+    },
+    {
+      "sentence": "**MUST** keep a held-out test set that is not used while iterating on prompts, rubrics, or the judge — otherwise you are tuning to the eval and overstating quality.",
+      "to": "must-keep-held-out-test-set"
+    },
+    {
+      "sentence": "**SHOULD** treat the gold set used for judge calibration and the held-out behavior test set as distinct; do not let one leak into the other.",
+      "to": "should-separate-gold-set-from-held-out-set"
+    },
+    {
+      "sentence": "**SHOULD** version eval datasets alongside the code so a result is reproducible against a known dataset revision.",
+      "to": "should-version-eval-datasets"
+    },
+    {
+      "sentence": "Treat evals as the test suite for the non-deterministic parts of the system.",
+      "to": "should-treat-evals-as-test-suite",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unkeyed instruction kept at SHOULD: evals are the test suite for the non-deterministic parts of the system.",
+        "pin": "7a69b7a0fd9d821f62c7f3f6f4331e5c40b1c83c5a72f3fda9a3151150a563c4"
+      }
+    },
+    {
+      "sentence": "**MUST** report results across multiple runs of the same input, not one pass.",
+      "to": "must-report-multiple-runs"
+    },
+    {
+      "sentence": "**SHOULD** distinguish \"succeeds at least once\" from \"succeeds every time\" — these are different product guarantees.",
+      "to": "should-distinguish-once-from-every-time"
+    },
+    {
+      "sentence": "**SHOULD** track the consistency metric over time so regressions in flakiness are visible, not just regressions in best-case quality.",
+      "to": "should-track-consistency-over-time"
+    },
+    {
+      "sentence": "**MUST** use ordinary deterministic tests for parsers, schema validation, tool-call argument construction, retries, and any logic with a fixed correct output.",
+      "to": "must-use-deterministic-tests-for-fixed-output-logic"
+    },
+    {
+      "sentence": "Do not wrap deterministic code in an LLM judge.",
+      "to": "should-not-wrap-deterministic-code-in-judge",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unkeyed prohibition kept at SHOULD NOT: do not wrap deterministic code in an LLM judge.",
+        "pin": "d7e1f78cbdc0fe035c0ced806312dd5d12f54855775a899e33b4abd1f03c3a63"
+      }
+    },
+    {
+      "sentence": "**MUST** use an eval harness when the artifact under test is an agent's decisions, an LLM's generated text, multi-step tool use, or RAG answer quality — outputs that vary run to run.",
+      "to": "must-use-eval-harness-for-varying-outputs"
+    },
+    {
+      "sentence": "**SHOULD** isolate the deterministic and probabilistic layers so each is tested with the cheaper appropriate method.",
+      "to": "should-isolate-deterministic-and-probabilistic-layers"
+    }
+  ],
+  "obsolete": []
+}

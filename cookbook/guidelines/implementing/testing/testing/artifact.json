@@ -4,7 +4,7 @@
     "id": "42220186-4305-45cd-8e7d-a8d1172b6fbd",
     "title": "Comprehensive unit testing",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -29,19 +29,21 @@
       "https://playwright.dev/",
       "https://xunit.net/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests",
       "pre-pr"
     ]
   },
-  "synced": "f45ebd8643457c7a",
+  "synced": "58ef3a890f2e3973",
   "parts": [
     {"part": "intro"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "c", "heading": "C#"},
-    {"part": "python", "heading": "Python"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "c", "heading": "C# example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

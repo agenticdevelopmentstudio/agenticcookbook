@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Cross-cutting concerns are noted, not isolated.** When a concern appears across all scope groups, note it in findings as cross-cutting and move on.",
+      "to": "should-note-cross-cutting-concerns-not-isolate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-note-cross-cutting-concerns-not-isolate keeps noting an all-groups concern as cross-cutting in findings and moving on, plus 'noted, not isolated', at SHOULD.",
+        "pin": "84bef370acb77e0376ef1d7cf0e6709245026e6c6eb7c729f8b881e48189f3c3"
+      }
+    },
+    {
+      "sentence": "Do not create a scope group whose members are \"all the places that call log()\".",
+      "to": "should-not-group-call-sites",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-group-call-sites keeps the prohibition on a scope group of 'all the places that call log()', at SHOULD NOT.",
+        "pin": "03825c0e472cfb2db8b4603c8221e2c13da124f5d3d82a8db4d31ff998ae4857"
+      }
+    },
+    {
+      "sentence": "**Shared infrastructure gets exactly one scope group.** If a concern has its own files (a Logger class, a SessionManager), those files form one scope group.",
+      "to": "should-give-shared-infrastructure-one-scope-group",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-give-shared-infrastructure-one-scope-group keeps that a concern's own files (Logger class, SessionManager) form exactly one scope group.",
+        "pin": "f39444648c63afccdb7f26ae890b3cfdcdb5c14adf51a7b2cf77e8fe0fdbc1cb"
+      }
+    },
+    {
+      "sentence": "**Logging infrastructure vs logging call sites.** The `OSLog` / `Logger` configuration file is infrastructure.",
+      "to": [
+        "should-classify-logging-configuration-as-infrastructure",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-classify-logging-configuration-as-infrastructure keeps the OSLog/Logger configuration file as infrastructure, and the rationale repeats the sentence verbatim.",
+        "pin": "a68be13068d1be622f774494394dc190817be036970089d76465463de01856e3"
+      }
+    },
+    {
+      "sentence": "**Pervasive coupling is an architectural smell, not a decomposition strategy.** If every scope group directly calls a `GlobalSingleton`, note the anti-pattern — the solution is to inject the dependency, not to merge all groups into one because they share the dependency.",
+      "to": [
+        "should-note-pervasive-coupling-anti-pattern",
+        "should-inject-not-merge-shared-dependency"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep noting the GlobalSingleton anti-pattern, the 'smell, not a decomposition strategy' claim, and inject-not-merge as the remedy.",
+        "pin": "6d783c0c4ca26baca774b5a52d145fa2f9a2624df857152d3fc9f7ce24f179fc"
+      }
+    },
+    {
+      "sentence": "**Security/auth infrastructure is always its own scope group.** Never treat auth enforcement as merely cross-cutting — the SessionManager and token lifecycle have real behavior and state and warrant their own scope group (separate from where auth checks are enforced).",
+      "to": [
+        "must-give-auth-infrastructure-own-scope-group",
+        "must-not-treat-auth-as-merely-cross-cutting",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST rule keeps auth infrastructure as always its own group, separate from enforcement points, and the MUST NOT keeps 'never merely cross-cutting'; the rationale keeps the real-behavior-and-state reason.",
+        "pin": "3c11dd4ac0aa02be30369a893cf4cf15346bac553857937bf2a7d6110a7f9399"
+      }
+    }
+  ],
+  "obsolete": []
+}

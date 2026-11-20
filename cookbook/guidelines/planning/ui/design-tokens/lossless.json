@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Pin to a dated revision (e.g.",
+      "to": "should-pin-a-dated-dtcg-revision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full sentence: pin to a dated DTCG revision (e.g. `2025.10`) rather than the living draft, with the do-not-implement-notice reason.",
+        "pin": "765416b42c456967a87d45bccd033a661a92c524c7a13168ac24ead5c3c23276"
+      }
+    },
+    {
+      "sentence": "Use three layers so values change in one place and intent stays stable:",
+      "to": "should-use-three-layers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the three layers named and the reason (values change in one place, intent stays stable); the tier table stays in token-tiers.",
+        "pin": "ea5682f177bb1c668d97a9d258c0cdf92ed3597e4c2e57d011acbb7582a48df5"
+      }
+    }
+  ],
+  "obsolete": []
+}

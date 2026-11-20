@@ -1,0 +1,22 @@
+
+- `should-follow-shell-script-rules`: whether the changed scripts keep the general shell-script rules (small functions, a `main` that only calls)
+- `must-set-strict-mode`: whether every script and module begins with `Set-StrictMode` at a tested version
+- `must-not-use-strict-mode-latest`: whether any shared code uses `-Version Latest`
+- `should-set-strict-mode-at-top`: whether strict mode is set at the top of the script rather than inside a called function
+- `must-stop-on-error-when-failure-must-halt`: whether each script that must not continue after a failure sets `$ErrorActionPreference = 'Stop'` at the top
+- `should-catch-handleable-failures`: whether work whose failure can be handled is wrapped in `try`/`catch`
+- `should-clean-up-in-finally`: whether cleanup is in `finally`
+- `must-test-lastexitcode`: whether every external program call is followed by an explicit `$LASTEXITCODE` test
+- `must-suppress-unwanted-output`: whether any unwanted value leaks into the success stream
+- `must-send-messages-to-message-streams`: whether any message for people goes to the success stream
+- `must-return-a-stable-shape`: whether every function returns objects or nothing, in one shape
+- `must-not-return-display-text`: whether any function returns text meant for display
+- `must-name-functions-verb-noun`: whether every function is `Verb-Noun` with an approved verb
+- `must-not-invent-verb-synonyms`: whether any function uses a synonym for an approved verb
+- `should-not-use-reserved-verbs`: whether any function uses a verb reserved for built-in commands
+- `should-use-singular-nouns`: whether nouns are singular
+- `should-prefix-module-nouns`: whether a module's names carry a prefix
+- `must-declare-supports-should-process`: whether every state-changing command declares `SupportsShouldProcess`
+- `must-wrap-each-change-in-should-process`: whether every change is wrapped in `ShouldProcess`
+- `should-set-high-confirm-impact-when-destructive`: whether destructive commands set `ConfirmImpact` to `High`
+- `should-run-psscriptanalyzer-in-ci`: whether CI runs PSScriptAnalyzer and it passes

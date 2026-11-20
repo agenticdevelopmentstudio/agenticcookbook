@@ -1,0 +1,21 @@
+
+- **should-cover-owned-integrations-with-consumer-driven-contracts**: Service-to-service integrations where you own both sides SHOULD be covered by consumer-driven contract tests, not by relying on end-to-end tests for boundary correctness.
+  - Consumer-driven contracts are for when you own *both* sides of the interaction (your own services calling each other). The consumer's expectations define the contract; the provider verifies it.
+- **should-use-schema-contracts-for-uncontrolled-apis**: For third-party or upstream APIs you consume but do not control, SHOULD use provider / schema contracts: pin to the provider's published schema (e.g. an OpenAPI document at a dated revision) and test that your client tolerates it.
+- **must-assert-contract-shape**: Contracts MUST assert the *shape* — required fields, types, and key status/error codes.
+- **must-not-assert-incidental-detail**: Contracts MUST NOT assert every field value or incidental detail.
+- **should-match-presence-type-and-matchers**: Contracts SHOULD match on field presence and type, and on matcher-based values (e.g. "an ISO-8601 string", "a positive integer"), not on exact literals that change per request.
+- **should-assert-only-branched-codes**: Contracts SHOULD assert the error/status codes the consumer branches on, and SHOULD ignore codes it never inspects.
+- **should-loosen-over-strict-contracts**: A contract that breaks on a *backward-compatible* provider change (a new optional field, a reordered list) is too strict and SHOULD be loosened.
+- **must-verify-consumer-contracts-before-deploy**: Providers MUST verify outstanding consumer contracts in CI before deploy.
+- **should-gate-deploy-with-can-i-deploy**: A consumer-driven setup (e.g. Pact with a broker) SHOULD gate deployment with a `can-i-deploy` check that confirms every dependent consumer's contract still passes against the version being shipped.
+- **must-run-contract-tests-as-own-stage**: Contract tests MUST run as their own CI stage, separate from end-to-end tests, so a contract failure points directly at the broken boundary.
+- **must-version-and-tag-contracts**: Each contract MUST be versioned and tagged with the deployment environment (or pacticipant version) so the broker can answer "is this pair compatible in `production`?" rather than just "is the latest pair compatible?".
+- **must-record-pinned-schema-revision**: For consumed third-party APIs, the pinned schema revision MUST be recorded (URL + version/date).
+- **must-not-track-moving-latest**: When the provider publishes a new revision, it MUST be re-pinned deliberately; a consumer MUST NOT silently track a moving `latest`.
+- **must-not-require-real-provider**: Contract tests MUST NOT require the real provider to be running.
+  - The consumer side runs against a stub generated from the contract; the provider side replays recorded interactions against its real handler.
+- **should-apply-practice-with-any-framework**: The practice — not the tool — is what matters, and it SHOULD be applied with whatever framework fits the stack; Pact is a common toolchain for this pattern (see references).
+- **must-not-substitute-end-to-end-for-contract-tests**: MUST NOT treat end-to-end tests as a substitute for contract tests — they are slower, flakier, and fail far from the cause.
+- **must-not-expect-third-party-contracts-to-gate-their-deploys**: MUST NOT write a "contract" test against a third-party API you own neither side of and expect it to gate *their* deploys; you can only assert your tolerance of their pinned schema.
+- **should-not-duplicate-business-logic-in-contracts**: SHOULD NOT duplicate full business-logic assertions inside contracts — that belongs in unit/integration tests for each service.

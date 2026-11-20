@@ -1,0 +1,17 @@
+
+- `should-manage-dependencies-actively`: whether dependencies are managed actively
+- `must-commit-lockfiles`: whether every package manager's lockfile is committed
+- `should-use-locked-installs-in-ci`: whether CI installs with `--frozen-lockfile` / `npm ci` / `dotnet restore --locked-mode`
+- `must-run-dependency-scanning-in-ci`: whether CI runs a dependency vulnerability scan
+- `must-fail-builds-on-critical-vulnerabilities`: whether builds fail on critical/high vulnerabilities
+- `should-pin-dependencies`: whether dependencies are pinned to exact versions or narrow ranges
+- `must-not-use-wildcard-versions`: whether any dependency uses `*` or overly broad semver
+- `should-use-sri-for-cdn-assets`: whether every CDN-hosted script and style carries an SHA-384/SHA-512 `integrity` attribute
+- `should-watch-for-supply-chain-attacks`: whether new dependencies were checked for typosquatting, maintainer compromise, malicious post-install scripts and dependency confusion
+- `must-not-let-agents-install-freely`: whether an AI agent can freely install packages
+- `should-enforce-package-allowlist-deterministically`: whether a task- or session-scoped package/registry allowlist is enforced by deterministic gates
+- `must-not-rely-on-prose-alone`: whether prose is the only control on agent installs
+- `should-apply-registry-cooldown`: whether a cooldown window keeps brand-new releases from being auto-pulled
+- `must-require-human-approval-for-new-dependencies`: whether every new dependency had explicit human approval before it was added or merged
+- `should-verify-package-exists-and-is-maintained`: whether each candidate package was confirmed to exist and be actively maintained
+- `must-not-install-hallucinated-or-abandoned-packages`: whether any installed name is hallucinated or abandoned

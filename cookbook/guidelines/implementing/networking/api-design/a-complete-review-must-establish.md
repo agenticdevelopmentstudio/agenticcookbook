@@ -1,0 +1,13 @@
+
+- `should-use-consistent-rest`: whether the changed endpoints follow REST with the same conventions as the rest of the API
+- `should-follow-platform-api-guidelines`: whether details follow the platform API guidelines (Microsoft, Google, Zalando)
+- `must-use-lowercase-hyphenated-urls`: whether every URL is lowercase with hyphens
+- `must-use-plural-collection-nouns`: whether every collection uses a plural noun
+- `should-nest-urls-shallowly`: whether nesting stays within 2 levels
+- `must-not-put-verbs-in-urls`: whether any URL contains a verb
+- `must-not-use-trailing-slashes`: whether any URL has a trailing slash
+- `should-filter-and-sort-with-query-params`: whether filtering and sorting use query params
+- `should-follow-http-method-semantics`: whether each method's semantics, idempotency and success code match the table
+- `should-use-the-right-status-code`: whether every response uses the status code that fits its outcome
+- `should-version-in-the-url-path`: whether the version is in the URL path
+- `should-bump-major-only-for-breaking-changes`: whether each major version bump matches a breaking change

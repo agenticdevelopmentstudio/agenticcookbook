@@ -1,0 +1,28 @@
+
+- `must-define-infrastructure-as-declarative-code`: infrastructure created or changed by click-ops or ad-hoc CLI edits rather than declarative code in version control through a reviewed, planned apply
+- `should-describe-the-desired-end-state`: definitions written as imperative steps rather than a desired end state
+- `must-be-idempotent`: a configuration that produces changes when re-applied unchanged
+- `must-be-reproducible`: definitions that need manual prerequisites or give different infrastructure from the same code and inputs
+- `should-pin-tool-and-provider-versions`: floating tool or provider versions, or no committed lockfile
+- `should-prefer-mature-declarative-tooling`: tooling other than OpenTofu, Terraform or Pulumi, or Pulumi where programmable abstractions do not justify its surface
+- `must-plan-before-apply`: an apply with no plan/preview before it
+- `must-inspect-the-plan-diff`: a plan approved without a human or gated CI step inspecting its adds, changes, destroys and replaces
+- `should-run-plan-in-ci-on-every-pull-request`: pull requests with no CI `plan` or no diff surfaced in the PR
+- `should-apply-only-from-a-protected-branch`: `apply` run from developer laptops rather than a protected branch or gated pipeline
+- `should-confirm-the-cause-of-replacements`: a replacement applied with its cause (deliberate change, drift, provider upgrade) unconfirmed
+- `must-keep-state-in-a-remote-backend`: state committed to git or left only on a laptop, or a remote backend that is not versioned and recoverable
+- `must-lock-state-writes`: a state backend with no locking
+- `should-prefer-native-s3-lockfile-locking`: an S3 backend without `use_lockfile = true`
+- `should-use-a-consistent-state-key-convention`: state keys that do not follow one `<env>/<component>/terraform.tfstate` convention
+- `must-not-let-drift-become-the-source-of-truth`: out-of-band changes left standing as the source of truth, neither reconciled into code nor reverted
+- `should-run-scheduled-drift-detection`: no scheduled drift detection
+- `should-encode-intended-drift`: intended drift left as a divergence rather than encoded in configuration and re-applied
+- `should-factor-repeated-patterns-into-modules`: repeated patterns copied rather than factored into modules, or unpinned module versions
+- `should-keep-environments-as-separate-state`: environments sharing state, or environment definitions copy-pasted rather than built from shared modules
+- `must-use-least-privilege-credentials`: provider credentials that are over-privileged, long-lived where short-lived would do, or hard-coded
+- `must-not-expose-secrets-in-plaintext-state`: secrets in plaintext state
+- `should-not-emit-secrets-as-outputs`: a secret emitted as an output rather than written to a secrets manager during apply
+- `should-restrict-state-read-access`: state read access left unrestricted
+- `should-adopt-heavy-iac-platforms-only-on-measured-need`: managed IaC platforms, Kubernetes operators or multi-account orchestration with no measured need named
+- `should-start-with-the-smallest-layout-that-works`: a backend or module layout larger than what works now
+- `should-confirm-obligations-with-counsel`: data-residency or credential-handling obligations treated as settled by engineering guidance alone

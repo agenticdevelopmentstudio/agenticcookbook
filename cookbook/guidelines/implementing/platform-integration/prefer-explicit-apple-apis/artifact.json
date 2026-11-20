@@ -4,7 +4,7 @@
     "id": "095b33a1-2835-4ed5-bf01-f1e492148819",
     "title": "Use AppKit and UIKit, not SwiftUI",
     "type": "guideline",
-    "version": "2.0.4",
+    "version": "2.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -36,19 +36,24 @@
       "https://www.jessesquires.com/blog/2024/09/09/swift-observable-macro/",
       "https://nilcoalescing.com/blog/ObservableInSwiftUI/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "platform-integration",
       "ui-implementation"
     ]
   },
-  "synced": "f5d8df63d5d083de",
+  "synced": "d8841de5f9a4a06c",
   "parts": [
     {"part": "intro"},
-    {"part": "macos", "heading": "macOS"},
-    {"part": "ios", "heading": "iOS"},
-    {"part": "when-swiftui-is-required", "heading": "When SwiftUI is required"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "macos", "heading": "macOS", "role": "how-to"},
+    {"part": "ios", "heading": "iOS", "role": "how-to"},
+    {"part": "when-swiftui-is-required", "heading": "When SwiftUI is required", "role": "how-to"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

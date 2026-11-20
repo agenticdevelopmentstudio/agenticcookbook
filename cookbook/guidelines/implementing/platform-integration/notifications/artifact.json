@@ -4,11 +4,11 @@
     "id": "94e8caba-da27-4bb8-8f8e-38730b8b34e0",
     "title": "Notifications",
     "type": "guideline",
-    "version": "2.0.3",
+    "version": "2.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,20 +31,21 @@
       "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "platform-integration",
       "ui-implementation"
     ]
   },
-  "synced": "2c94e3663f7d96d4",
+  "synced": "1702a6f3e3664d8b",
   "parts": [
     {"part": "intro"},
-    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
-    {"part": "android", "heading": "Android"},
-    {"part": "windows", "heading": "Windows"},
-    {"part": "web", "heading": "Web"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "windows", "heading": "Windows", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

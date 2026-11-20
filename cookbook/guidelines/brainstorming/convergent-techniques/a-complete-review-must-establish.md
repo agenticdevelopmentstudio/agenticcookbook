@@ -1,0 +1,13 @@
+
+- `convergence-after-divergence`: whether any convergent technique was introduced before the user explicitly signalled readiness to stop generating
+- `affinity-user-words`: whether every cluster name is in the user's own language, proposed by the facilitator and confirmed by the user
+- `affinity-small-first`: whether clustering proceeded from ideas to clusters, never from predefined clusters to ideas
+- `wwhtbt-question-form`: whether the technique was framed as "What would have to be true for [idea] to work?" and never as "Why [idea] won't work"
+- `wwhtbt-follow-up`: whether, after each condition was identified, the facilitator offered to explore how it might be met before moving to the next idea
+- `premortem-before-commit`: whether a premortem was run before any crystallize step in a high-consequence domain
+- `premortem-generate-then-address`: whether failure-mode generation was complete before any failure mode was addressed
+- `premortem-round-robin`: whether all failure mechanisms were surfaced before any was ranked or addressed
+- `feasibility-three-axes`: whether the feasibility check covered assumptions, risks and dependencies
+- `feasibility-question-form`: whether every feasibility observation was framed as a question or a condition, not a verdict
+- `selection-user-led`: whether the selection was user-led, the facilitator neither making nor implying the final selection
+- `selection-criteria-explicit`: whether the user was invited to name explicit selection criteria before selection

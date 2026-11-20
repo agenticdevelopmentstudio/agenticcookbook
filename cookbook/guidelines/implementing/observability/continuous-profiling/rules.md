@@ -1,0 +1,21 @@
+
+- **must-not-add-profiling-by-default**: Per YAGNI and make-it-work-make-it-right-make-it-fast, **you MUST NOT** add a continuous-profiling pipeline by default.
+- **must-adopt-only-on-measured-need**: You MUST adopt it ONLY when a concrete, measured need justifies the added pipeline, storage, and operational cost, such as:
+  - A recurring or hard-to-reproduce production CPU/memory/allocation regression that metrics and traces localize to a service but not to a function or line.
+  - A cloud-cost or efficiency mandate where shaving CPU/memory directly reduces spend.
+  - Latency outliers whose hot path is not visible from span timings alone.
+- **should-prefer-one-off-capture**: If a one-off `pprof`/perf capture or a load-test profile answers the question, you SHOULD prefer that over standing infrastructure (small-reversible-decisions).
+- **must-choose-low-overhead-sampling-profiler**: **You MUST** choose a low-overhead, sampling profiler.
+- **must-validate-overhead-in-own-environment**: eBPF whole-system profilers and runtime samplers commonly report well under 1% CPU overhead; **you MUST** validate overhead in your own environment rather than trusting a single vendor's published figure.
+- **should-prefer-ebpf-for-diverse-targets**: **You SHOULD** prefer whole-system eBPF profiling on Linux (no per-app instrumentation; supports mixed runtimes) when targets are diverse.
+- **may-use-in-runtime-profilers**: You **MAY** use in-runtime profilers (Go `runtime/pprof`, JFR, async-profiler, .NET `dotnet-trace`) when you need language-level detail.
+- **should-emit-portable-profile-format**: **You SHOULD** emit profiles in a `pprof`-compatible or OTLP-Profiles-convertible format so data is portable across backends (explicit-over-implicit).
+- **must-attach-resource-attributes**: **You MUST** attach resource attributes (`service.name`, `service.version`, deployment, region) so profiles join the rest of your telemetry.
+- **should-correlate-profiles-with-traces**: **You SHOULD** correlate profiles with traces by recording `trace_id`/`span_id` on profile samples where the profiler and runtime support it; this lets you jump from a slow span to the code that ran inside it.
+- **should-verify-span-correlation-support**: (FORECAST: automatic span-level correlation is uneven across profilers/runtimes as of 2026.) You SHOULD verify support per language before relying on it.
+- **should-retain-profiles-shorter**: **You SHOULD** retain profiles at a shorter window than metrics/logs (volume is high) and downsample or aggregate older data.
+- **must-pin-profiles-collector-version**: Treat profiles wire format and semantic conventions as moving targets — **you MUST** pin the collector/SDK version and re-verify on upgrade.
+- **should-prefer-convertible-profiler**: (FORECAST: production-ready OTLP-Profiles backends are still emerging.) You SHOULD prefer a profiler whose data you can convert if the backend changes.
+- **must-not-substitute-profiling-for-metrics-and-tracing**: **You MUST NOT** treat continuous profiling as a substitute for RED/USE metrics or distributed tracing — it complements them; start there.
+- **must-not-ship-unmeasured-profiler**: **You MUST NOT** ship a profiler whose overhead you have not measured, especially on latency-critical services.
+- **should-not-store-full-resolution-profiles-indefinitely**: **You SHOULD NOT** store full-resolution profiles indefinitely; cost grows fast with no marginal diagnostic value.

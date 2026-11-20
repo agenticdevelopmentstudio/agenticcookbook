@@ -1,0 +1,23 @@
+
+- **should-share-domain-and-data-in-common**: Teams **SHOULD** share the domain and data layers (use cases, repositories, models, networking, serialization) in `commonMain`.
+- **must-not-depend-on-platform-ui**: The shared module **MUST NOT** depend on platform UI toolkits.
+- **should-keep-platform-ui-on-consumer**: Teams **SHOULD** keep platform-idiomatic UI (SwiftUI, Jetpack Compose, web framework) on the consuming side unless a shared-UI decision is made deliberately.
+- **may-share-presentation-layer**: A shared ViewModel/presentation layer **MAY** be shared when the team accepts coupling presentation state to KMP.
+- **should-treat-shared-presentation-as-deliberate**: A shared presentation layer **SHOULD** be treated as a deliberate scope expansion, not a default.
+- **should-expose-narrow-interfaces**: Teams **SHOULD** apply boundaries per [adc.principle.manage-complexity-through-boundaries](cookbook:555ad5e1-800f-4848-8c58-6f726bdcb42b) and expose narrow interfaces from the shared module so platforms stay swappable.
+- **should-reserve-expect-actual-for-thin-shims**: `expect`/`actual` **SHOULD** be reserved for thin platform shims (e.g., logging sink, secure storage, file paths, UUID/clock).
+- **must-match-every-expect-with-actual**: Every `expect` declaration **MUST** have a matching `actual` in the same package for every target.
+- **should-prefer-interfaces-over-expect-actual**: Teams **SHOULD** prefer interfaces plus dependency injection over `expect`/`actual` when the seam is non-trivial.
+- **should-use-hierarchical-source-sets**: Teams **SHOULD** use the hierarchical source-set structure (e.g., an intermediate `appleMain` shared by `iosMain`/`macosMain`) so common-but-not-universal code is not duplicated.
+- **should-pin-cmp-version**: Teams **SHOULD** pin the CMP version explicitly in the build.
+- **should-recheck-cmp-release-notes**: Teams **SHOULD** re-check the release notes before relying on a specific UI feature.
+- **should-forecast-unreleased-ios-parity**: Teams **SHOULD** FORECAST any unreleased iOS UI parity item against the version they pin.
+- **should-validate-accessibility-on-device**: Teams using shared CMP UI **SHOULD** validate accessibility on-device.
+- **should-choose-shared-ui-only-when-accepted**: Teams **SHOULD** choose shared CMP UI **only** when the team accepts current iOS maturity and values UI reuse over fully native look-and-feel.
+  - Otherwise keep SwiftUI on iOS and Compose on Android while still sharing all non-UI logic.
+- **should-present-shared-ui-as-per-app-decision**: Shared CMP UI **SHOULD** be presented as a deliberate decision per app, not a mandate.
+- **should-design-swift-friendly-api**: Teams **SHOULD** design the shared module's public API to be Swift-friendly: avoid Kotlin-only constructs (sealed-class exhaustiveness, default args) at the boundary.
+- **should-bridge-suspend-and-flow**: Teams **SHOULD** expose `suspend` functions and `Flow` through a documented bridge (e.g., a `Skie`-style or hand-written wrapper) so Swift callers get idiomatic async.
+- **should-not-leak-raw-coroutines**: Teams **SHOULD NOT** leak raw coroutines across the boundary.
+- **should-have-common-test-suite**: The shared module **SHOULD** have its own `commonTest` suite covering domain/data logic once, plus minimal per-target tests for `actual` implementations.
+- **should-build-every-target-in-ci**: Teams **SHOULD** run platform builds in CI for every target the project ships.

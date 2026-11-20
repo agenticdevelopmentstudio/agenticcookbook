@@ -1,0 +1,172 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Attach citation metadata at retrieval time, not after generation** — pre-embedding citations gave the best observed accuracy (~92% in Perplexity).",
+      "to": "should-attach-citations-at-retrieval",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps retrieval-time attachment, the contrast with after-generation, and the ~92% Perplexity evidence, at SHOULD.",
+        "pin": "ffedd2d7aee049419f82f3607bfa594a964637d40145e9c4e53a338e3683c735"
+      }
+    },
+    {
+      "sentence": "Cite at the claim / sentence level with the supporting quote.",
+      "to": "should-cite-at-claim-level-with-quote",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps claim/sentence-level citation with the supporting quote at SHOULD.",
+        "pin": "62d9cfe35cfcd1e7f54187546af68c529bad04ab36b1a93ab174f8e6e002a4b8"
+      }
+    },
+    {
+      "sentence": "Keep stable, numbered citations through summarization.",
+      "to": "should-keep-stable-numbered-citations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps stable, numbered citations through summarization at SHOULD.",
+        "pin": "8721f942b22d0fba665221034b6891f4b4105f900281aa3b01040a0566a94af5"
+      }
+    },
+    {
+      "sentence": "The orchestrator **plans and synthesizes; it never does ground research itself.**",
+      "to": "must-not-do-ground-research-in-orchestrator",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Plan-and-synthesize kept at SHOULD and the ban on ground research in the orchestrator strengthened to MUST NOT.",
+        "pin": "20966a7775c78f7c57a116813a2d82cba440c2d42b5bf6594b0c6b53083b39f1"
+      }
+    },
+    {
+      "sentence": "Budget per-subtopic specialists with isolated context.",
+      "to": "should-budget-isolated-subtopic-specialists",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps per-subtopic specialists, budgeting and isolated context at SHOULD.",
+        "pin": "727ddcf500cdb1b75ef058ac15855468061db3205ad40abf9647eac443d1cf1e"
+      }
+    },
+    {
+      "sentence": "**Outline before searching;** reflect at both supervisor and worker level.",
+      "to": [
+        "should-outline-before-searching",
+        "should-reflect-at-supervisor-and-worker-level"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules together keep outline-before-searching and reflection at both supervisor and worker level, each at SHOULD.",
+        "pin": "e5cbc516bb6a456eb41c817f7c3d6f03ac0f4e38ca09db37d8a4dc14532ebd33"
+      }
+    },
+    {
+      "sentence": "Stop on **coverage** (two independent sources, or one authoritative one), not on a loop count.",
+      "to": "should-stop-on-coverage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps coverage as the stop condition with both thresholds (two independent or one authoritative) and the not-a-loop-count contrast.",
+        "pin": "74ecef4a57491f25d67fdf93f05afd296fd5c1157fb6fe8768b6173b536e8885"
+      }
+    },
+    {
+      "sentence": "Outline-driven report with a **confidence / coverage indicator per section.**",
+      "to": "should-report-confidence-per-section",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the outline-driven report and the per-section confidence / coverage indicator at SHOULD.",
+        "pin": "162601aab976468534e2e49d7678cb9a1ea725202eaa005bd8fe32a33cfccef7"
+      }
+    },
+    {
+      "sentence": "Keep intermediate artifacts (outline, mind-map) for human review.",
+      "to": "should-keep-intermediate-artifacts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the outline and mind-map examples and the human-review purpose at SHOULD.",
+        "pin": "84db7d3ffc337c274fc5fe7f048be0e1d8e3e7fec1c1b2b901d8512359e4d646"
+      }
+    },
+    {
+      "sentence": "Multi-engine, domain-routed sources; **rerank and quality-gate before the LLM sees them.**",
+      "to": [
+        "should-use-multi-engine-domain-routed-sources",
+        "should-rerank-and-quality-gate-sources"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep multi-engine, domain-routed sourcing and rerank plus quality-gate before the LLM sees sources.",
+        "pin": "4ef50a5c93fcc76fddd2bc8989511b1baeb84b0810ed97ce6e69a198d81ee0d0"
+      }
+    },
+    {
+      "sentence": "Filter by freshness and authority / venue reputation.",
+      "to": "should-filter-by-freshness-and-authority",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps filtering by freshness and by authority / venue reputation at SHOULD.",
+        "pin": "2e7364608155db5fa24d1fd8b4d56c0fc0df080b44bedd1705802a257c9fdd6d"
+      }
+    },
+    {
+      "sentence": "**Read full pages, not snippets.**",
+      "to": "should-read-full-pages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps full pages over snippets at SHOULD.",
+        "pin": "da210b5978141a032bf1629a62d9492f830b4f3d9a348e7e44bf22b86a1297de"
+      }
+    },
+    {
+      "sentence": "A **dedicated reviewer** with explicit acceptance criteria.",
+      "to": "should-use-dedicated-reviewer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the dedicated reviewer and its explicit acceptance criteria at SHOULD.",
+        "pin": "4fa82c5e2814b3102c8aad01e6143b024ead8a268eb63ca02ad0693bc2709ff4"
+      }
+    },
+    {
+      "sentence": "**Cross-source corroboration** is the primary anti-hallucination defense.",
+      "to": "should-corroborate-across-sources",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the claim that cross-source corroboration is the primary anti-hallucination defense and adds a SHOULD to corroborate.",
+        "pin": "ffb9571d64332cd1c6acc65092e0f9c30c46544a25b048fdb22f591afa0ab166"
+      }
+    },
+    {
+      "sentence": "Check URL health / citation existence — even top tools hallucinate 3-13% of URLs.",
+      "to": "should-check-url-health",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps URL health / citation-existence checking and the 3-13% hallucinated-URL evidence.",
+        "pin": "f9b621ccbaa7a62dd974aaf1129c5e094794f1796d1c6a7de46bfd8b3800fd55"
+      }
+    },
+    {
+      "sentence": "Perspective diversity is structural anti-hallucination.",
+      "to": "should-build-in-perspective-diversity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the statement that perspective diversity is structural anti-hallucination and adds a SHOULD to build it in.",
+        "pin": "88ee52cb643496797928568c0f00031bdcb5d6343ab722bcc76076061637930f"
+      }
+    }
+  ],
+  "obsolete": []
+}

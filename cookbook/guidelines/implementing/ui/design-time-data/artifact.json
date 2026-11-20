@@ -4,7 +4,7 @@
     "id": "497a717f-de29-4baf-b7b8-4487f672d9a8",
     "title": "Design-Time Data",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -25,17 +25,20 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "ff3bfb7378b1c4ea",
+  "synced": "9a3f1179d9591125",
   "parts": [
     {"part": "intro"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "what-to-verify", "heading": "What to verify"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "introduction", "heading": "Introduction", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

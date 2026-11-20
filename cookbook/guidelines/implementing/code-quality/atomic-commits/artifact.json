@@ -4,7 +4,7 @@
     "id": "8075b95b-2678-4893-9a5a-eb77aa9232aa",
     "title": "Small, atomic commits",
     "type": "guideline",
-    "version": "1.2.3",
+    "version": "1.3.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -24,20 +24,23 @@
       "563aebde-52bf-4011-8907-ecc473fd942c"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-commit"
     ]
   },
-  "synced": "c3654dbfc34c569d",
+  "synced": "2592e1ef380f14fe",
   "parts": [
     {"part": "intro"},
-    {"part": "the-build-verify-commit-loop", "heading": "The build-verify-commit loop"},
-    {"part": "what-counts-as-one-logical-change", "heading": "What counts as one logical change"},
-    {"part": "small-diffs-for-agent-generated-changes", "heading": "Small diffs for agent-generated changes"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "small-diffs-for-agent-generated-changes-2", "heading": "Small diffs for agent-generated changes"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "the-build-verify-commit-loop", "heading": "The build-verify-commit loop", "role": "how-to"},
+    {"part": "what-counts-as-one-logical-change", "heading": "What counts as one logical change", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

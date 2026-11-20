@@ -4,11 +4,11 @@
     "id": "a127f652-728b-42f0-8d60-1017fccabdf3",
     "title": "Twelve-factor configuration",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,20 +28,21 @@
       "https://12factor.net/config",
       "https://12factor.net/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "configuration"
     ]
   },
-  "synced": "289c8c5866f44e45",
+  "synced": "23145eb6a782dc17",
   "parts": [
     {"part": "intro"},
-    {"part": "what-counts-as-config", "heading": "What counts as config"},
-    {"part": "core-rules", "heading": "Core rules"},
-    {"part": "practical-patterns", "heading": "Practical patterns"},
-    {"part": "forecast-note", "heading": "Forecast note"},
-    {"part": "privacy-note", "heading": "Privacy note"},
+    {"part": "what-counts-as-config", "heading": "What counts as config", "role": "how-to"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

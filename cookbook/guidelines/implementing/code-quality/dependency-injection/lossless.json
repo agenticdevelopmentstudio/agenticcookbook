@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "`Transient` for lightweight stateless services",
+      "to": "should-use-transient-for-stateless-services",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lifetime mapping, Transient for lightweight stateless services, is kept at SHOULD.",
+        "pin": "73f815624011030354c18fcec739124949467892bb1325eaec3c1f3ece629099"
+      }
+    },
+    {
+      "sentence": "`Scoped` for per-request services",
+      "to": "should-use-scoped-for-per-request-services",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lifetime mapping, Scoped for per-request services, is kept at SHOULD.",
+        "pin": "3ffc4012ab68747251690b42abb5988d7f004b584b882f25b696de0525e56688"
+      }
+    },
+    {
+      "sentence": "`Singleton` for thread-safe shared state",
+      "to": "should-use-singleton-for-shared-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lifetime mapping, Singleton for thread-safe shared state, is kept at SHOULD with the thread-safe condition.",
+        "pin": "e68f041fe6c5a194a8776a97585321ab79725b5346d0fa53e74c3409727bdfea"
+      }
+    },
+    {
+      "sentence": "A scoped service MUST NOT be injected into a singleton (captive dependency)",
+      "to": "must-not-inject-scoped-into-singleton",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on injecting a scoped service into a singleton, with the captive-dependency label, is kept verbatim.",
+        "pin": "c4554b83b1e43adc985cfad05afb9b85c30620e067a80b7621967b4d760f5829"
+      }
+    },
+    {
+      "sentence": "Use `IOptions<T>` / `IOptionsSnapshot<T>` for configuration binding",
+      "to": "should-bind-configuration-with-ioptions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Binding configuration with IOptions<T> / IOptionsSnapshot<T> is kept at SHOULD.",
+        "pin": "33dbb7d8a9d6d397d86f8ee28f4157dd3c00d1ef3f4dc1cf687b8bc37efaa9d9"
+      }
+    },
+    {
+      "sentence": "Keep registrations in `Add*()` extension methods for modularity",
+      "to": "should-register-in-add-extension-methods",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping registrations in Add*() extension methods, with the modularity reason, is kept at SHOULD.",
+        "pin": "92cc1ffbcfb8d6743ad37f1cd606e8c4cee98e5ac422d29043d3d80e8e54455b"
+      }
+    }
+  ],
+  "obsolete": []
+}

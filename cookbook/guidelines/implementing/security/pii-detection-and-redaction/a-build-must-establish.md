@@ -1,0 +1,25 @@
+
+- `two-identifier-classes`: detection covers direct identifiers and quasi-identifiers in combination
+- `use-a-coverage-checklist`: the detector's categories are enumerated against a named fixed list, or the build says why not
+- `linked-and-linkable`: each PII field carries a low/moderate/high impact rating that sizes its controls, or the build says why not
+- `detect-in-layers`: detection combines rule-based and ML layers, or the code says why not
+- `regex-for-structured`: structured types use anchored patterns, or the code says why not
+- `validate-with-checksums`: every structured match passes its format-specific validator before it is treated as PII
+- `context-words`: match confidence uses nearby context words, or the code says why not
+- `ner-for-unstructured`: free text goes through an NER model with custom recognizers for domain IDs, or the code says why not
+- `favor-recall`: the detector's tuning target is recall (F2), or the build says why not
+- `should-not-ship-precision-chosen-detector`: the detector was not selected on precision alone, or the build says why
+- `default-deny`: the boundary uses an allowlist, or the code says why an allowlist is not feasible
+- `drop-structurally`: PII-bearing fields are dropped at the schema or serialization boundary, or the code says why not
+- `pick-operation-by-need`: each redaction operation used is named with the reversibility or utility it serves, or the code says why not
+- `redact-published-data`: published and exported data is redacted, or the code says why not
+- `pseudonymized-is-not-anonymized`: no pseudonymized data is labelled or handled as anonymized, or the code says why
+- `generalize-and-suppress`: quasi-identifiers are coarsened or dropped with linkage risk bounded, or the code says why not
+- `anonymization`: data is labelled anonymized only when de-identified and irreversible, or the code says why
+- `fail-closed-backstop`: the emit or build re-scans the serialized output after redaction and hard-fails if any pattern survives
+- `defense-in-depth`: independent redaction gates are layered, or the code says why not
+- `golden-tests`: a known-leaky fixture asserts end-to-end that nothing survives, or the build says why not
+- `freeze-edge-cases`: each real edge case found has a regression test, or the build says why not
+- `scan-history-not-just-the-tip`: a public repo's full history is scanned, or the build says why not
+- `remediate-then-rotate`: exposed history is purged, the remote force-updated and exposed secrets rotated, or the build says why not
+- `assume-public-credentials-compromised`: every credential that was public is rotated as compromised

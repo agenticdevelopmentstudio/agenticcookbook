@@ -1,0 +1,23 @@
+
+- `should-treat-server-strings-and-tokens-as-untrusted`: whether every server-emitted string is treated as model-influencing and every received token as untrusted
+- `should-pin-mcp-spec-revision`: whether guidance is pinned to MCP spec revision 2025-06-18
+- `must-not-trust-own-tool-text`: whether the server treats any of its tool descriptions, schemas or results as trusted instructions
+- `must-return-tool-results-as-delimited-data`: whether tool results with external/user data are returned as clearly delimited data with embedded directives neutralized
+- `should-keep-tool-descriptions-stable`: whether tool descriptions are stable and side-effect-free, with side effects in the schema
+- `should-bind-approval-to-tool-hash`: whether approval is bound to a hash of the tool's full content and any change re-triggers consent
+- `should-version-tool-definitions`: whether tool definitions are versioned with no silent semantic changes
+- `should-act-as-oauth-resource-server`: whether the remote server acts as an OAuth 2.1 resource server
+- `must-not-accept-tokens-issued-elsewhere`: whether any token not issued for this server is accepted
+- `must-not-pass-tokens-through`: whether any received token is passed through to a downstream API
+- `should-use-token-exchange-downstream`: whether downstream calls use token exchange or the server's own client
+- `must-validate-every-inbound-token`: whether every inbound token is validated before processing, with audience-lacking tokens rejected
+- `must-implement-per-client-consent`: whether a proxy checks an approved `client_id` registry before the third-party flow
+- `must-show-client-scopes-and-redirect-on-consent`: whether the consent page names the client, scopes and exact `redirect_uri` and applies CSRF protection
+- `must-exact-match-redirect-uri`: whether `redirect_uri` is validated by exact string match
+- `must-use-random-single-use-state`: whether `state` is cryptographically random, single-use, short-lived and set only after consent
+- `must-verify-requests-not-sessions`: whether all inbound requests are verified and sessions are never used for authentication
+- `must-use-non-deterministic-session-ids`: whether session IDs are CSPRNG-generated and non-guessable
+- `should-key-session-data-by-user`: whether session data is keyed as `<user_id>:<session_id>` from token-derived identity
+- `must-consider-ssrf-on-oauth-urls`: whether SSRF mitigations apply to every OAuth-related URL fetch
+- `should-harden-oauth-url-fetching`: whether OAuth URL fetches require HTTPS, block private/reserved ranges and validate each redirect hop
+- `should-prefer-egress-proxy-and-dns-pinning`: whether an egress proxy and DNS-pinning are used rather than hand-rolled IP parsing

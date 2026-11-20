@@ -1,0 +1,12 @@
+
+- `should-use-the-split-when-scoping`: whether a new module's scoping separates the essential from the accidental, and says where agents help and where human judgment stays
+- `should-name-essential-complexity-first`: whether the module's irreducible rules, states, and interactions are named before its code
+- `must-not-treat-boundary-as-precise-classifier`: the split applied as a hard classifier — lines or files sorted into buckets as if the boundary were exact
+- `should-use-boundary-to-guide-attention`: whether the split steers where review and design attention goes rather than mechanically sorting code
+- `should-remove-accidental-complexity-aggressively`: boilerplate, glue and moving parts that a better abstraction or generation could remove, left in place
+- `must-not-drop-essential-cases`: a "simplification" that removes a domain rule, invariant or edge case the problem requires
+- `should-isolate-essential-core`: essential logic entangled with accidental code, with no thin layer between them
+- `should-route-accidental-work-to-agents`: boilerplate, glue and scaffolding written by hand, or agent output reviewed for novelty instead of correctness
+- `must-keep-essential-decisions-human-owned`: design review, requirement disambiguation or invariant definition left to an agent with no human owner
+- `should-treat-ai-eliminates-complexity-as-a-claim`: plans or estimates that assume AI removes essential complexity
+- `should-spend-saved-time-on-decomposition`: time saved by agents spent on more under-specified features rather than sharper problem decomposition

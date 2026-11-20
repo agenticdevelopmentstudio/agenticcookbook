@@ -1,0 +1,16 @@
+
+- **should-fuzz-trust-boundary-parsers**: You SHOULD fuzz any code that parses, decodes, or deserializes data crossing a trust boundary: file/media parsers, network protocol decoders, serialization formats, regex/template/expression evaluators, decompressors.
+- **should-prioritize-memory-unsafe-languages**: You SHOULD prioritize fuzzing in memory-unsafe languages (C, C++, and `unsafe` Rust/Go FFI) where defects become memory-corruption vulnerabilities.
+- **should-not-default-fuzz-business-logic**: You SHOULD NOT treat broad business/UI logic with no untrusted-input boundary as a default fuzzing target; prefer property-based testing (see [adc.guideline.implementing.testing.property-based-testing](cookbook:a34c92a2-7dd0-4641-a126-418102b8b031)) there.
+- **must-keep-targets-deterministic**: Targets MUST be deterministic for a given input (no clock/network/global-state dependence) so crashes reproduce.
+- **should-run-c-cpp-fuzzers-with-sanitizers**: C / C++ fuzzing (libFuzzer, AFL++, Honggfuzz) SHOULD run with sanitizers (ASan/UBSan/MSan).
+- **should-use-arbitrary-for-rust-structured-inputs**: Rust fuzzing with `cargo-fuzz` SHOULD use `arbitrary` for structured inputs.
+- **should-consider-oss-fuzz**: Open-source projects SHOULD consider [OSS-Fuzz](https://github.com/google/oss-fuzz) for free continuous fuzzing (libFuzzer, AFL++, Honggfuzz, ClusterFuzz) once a stable harness exists.
+- **should-pin-and-evaluate-forecast-go-fork**: The 2026 `gosentry` Go-toolchain fork SHOULD be treated as evolving; pin and evaluate it before depending on it — standard `go test -fuzz` remains the durable baseline.
+- **must-accept-raw-bytes-one-entry-point**: A fuzz target MUST accept raw bytes (or a deterministically derived structured input) and exercise exactly one parsing entry point.
+- **must-fail-loudly**: Harnesses MUST fail loudly: assert invariants and let sanitizers/panics surface defects (`fail-fast`).
+- **should-seed-starting-corpus**: You SHOULD seed a starting corpus from real and edge-case samples; coverage grows far faster from good seeds.
+- **must-commit-crashes-as-regression-cases**: Every crash a fuzzer finds MUST be committed as a regression-corpus test case so the fix is permanently guarded.
+- **should-run-long-campaigns-off-critical-path**: Long fuzzing campaigns SHOULD run in CI/nightly, not on the per-commit critical path; gate PRs on the seeded regression corpus and a short smoke run instead.
+- **should-reproduce-and-minimize-before-filing**: A crash SHOULD be reproduced with the saved crashing input and minimized (most tools provide `-minimize`/`tmin`) before filing.
+- **should-classify-by-sanitizer-report**: Crashes SHOULD be classified by sanitizer report: memory-safety crashes are typically security-relevant (escalate per [adc.guideline.testing.security-testing](cookbook:cf05e36f-ea8b-4af2-8df6-c5e772dc25b5)); logic crashes may be ordinary bugs.

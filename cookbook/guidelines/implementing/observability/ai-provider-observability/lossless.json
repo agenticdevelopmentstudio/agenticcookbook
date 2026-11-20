@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**prompt-tracking**: Prompt templates MUST be versioned.",
+      "to": "must-version-prompt-templates",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-version-prompt-templates keeps that prompt templates MUST be versioned, at the same MUST.",
+        "pin": "a28237e228c25b022f8fb162936f434f5d5aeb276418ff176824dea426b80ae9"
+      }
+    },
+    {
+      "sentence": "Use prompt template IDs.",
+      "to": "no-pii-in-prompt-logs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "no-pii-in-prompt-logs keeps the unkeyed instruction to use prompt template IDs in production logs at SHOULD, alongside the MUST NOT on full prompt text.",
+        "pin": "308049196278b3bbd7a4dcaf9d5fbe4e54e3153f1a2460601d5070c86a818c0f"
+      }
+    }
+  ],
+  "obsolete": []
+}

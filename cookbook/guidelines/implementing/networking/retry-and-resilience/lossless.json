@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Retryable status codes:** 408, 429, 500 (idempotent only), 502, 503, 504.",
+      "to": "should-treat-listed-codes-as-retryable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All six codes kept, including the 500-idempotent-only condition, as a SHOULD for clients.",
+        "pin": "0a09625a75d3af1637acfc026db619feef1648616b1e074f06d8ae1a3dd9c627"
+      }
+    },
+    {
+      "sentence": "**Circuit breaker** for cascading failure prevention:",
+      "to": "should-use-a-circuit-breaker",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the cascading-failure purpose; the sliding-window, threshold, cooldown and half-open details are kept as the rule's notes.",
+        "pin": "d895ed76d81d8aa58ddecc532fe7c99caf60a496a1a6f5d4f8dfa506eec13b07"
+      }
+    }
+  ],
+  "obsolete": []
+}

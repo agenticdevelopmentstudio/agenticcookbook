@@ -1,5 +1,5 @@
 
-Use Kotlin Coroutines for all async work. Run I/O on `Dispatchers.IO`. Use `viewModelScope` for ViewModel-scoped coroutines. Never block the main thread.
+Kotlin Coroutines: I/O on `Dispatchers.IO` inside `viewModelScope`, back on the main dispatcher to update the UI.
 
 ```kotlin
 viewModelScope.launch(Dispatchers.IO) {
@@ -7,4 +7,3 @@ viewModelScope.launch(Dispatchers.IO) {
     withContext(Dispatchers.Main) { updateUi(result) }
 }
 ```
-

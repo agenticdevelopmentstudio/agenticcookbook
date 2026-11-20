@@ -9,6 +9,3 @@ An agent can call these unknowingly through ordinary Foundation usage. Each cate
 | Active keyboard | reading the user's active keyboard list | `NSPrivacyAccessedAPICategoryActiveKeyboards` |
 | User defaults | `UserDefaults` / `NSUserDefaults` access | `NSPrivacyAccessedAPICategoryUserDefaults` |
 
-- You **MUST** declare every category your own code reaches, with at least one valid reason code per category. Invented reason codes are rejected — use only codes Apple lists for that category (see TN3183).
-- You **MUST NOT** add a category you do not actually use to "be safe"; declarations are scoped to real usage.
-

@@ -1,0 +1,212 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Name methods so a call site reads as a phrase, with a label for every argument after the first.",
+      "to": "should-name-call-sites-as-phrases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: call sites read as phrases, with a label for every argument after the first.",
+        "pin": "b46bc3d237b5a4065f3aa7bc78abb5925c5736f096fcab4b7b955856bce99771"
+      }
+    },
+    {
+      "sentence": "Follow the conventions of the framework you extend rather than inventing new vocabulary.",
+      "to": "should-follow-framework-conventions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: follow the extended framework's conventions rather than inventing vocabulary.",
+        "pin": "7771146e0b5e523d8f2e9697f09fb8d1b7ae492fb63a1c53ee3f638ec309e5ec"
+      }
+    },
+    {
+      "sentence": "Prefix every public class, protocol, enum and constant with a project prefix, because Objective-C has no namespaces.",
+      "to": "should-prefix-public-symbols",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full scope (class, protocol, enum, constant) and the no-namespaces reason.",
+        "pin": "b7a18cdfc150f0f152602adaa83aaf75014a79f0374b10eaf8adeb5c5e9ff4b3"
+      }
+    },
+    {
+      "sentence": "Mark designated initializers (`NS_DESIGNATED_INITIALIZER`) and forbid inherited ones that cannot work (`NS_UNAVAILABLE`), so a half-initialized object cannot be built.",
+      "to": "should-mark-designated-initializers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: mark NS_DESIGNATED_INITIALIZER, forbid unworkable inherited ones with NS_UNAVAILABLE, with the half-initialized-object reason.",
+        "pin": "ad2785678bee92111ed67d4d7983dadb94a0e8ecf5ac2d4aab73ee6d740829f8"
+      }
+    },
+    {
+      "sentence": "Report recoverable failure with a `BOOL` or object return plus an `NSError **` out-parameter, not with exceptions.",
+      "to": "should-report-recoverable-failure-with-nserror",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: BOOL or object return plus NSError ** out-parameter, not exceptions; the programmer-error note is kept too.",
+        "pin": "7ee5dae595789b3e70c010e577d610f9ede71af086f7ef872d166b4d95d9eaba"
+      }
+    },
+    {
+      "sentence": "Build with ARC (`-fobjc-arc`).",
+      "to": "must-compile-with-arc",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept and strengthened to MUST: compile with ARC (-fobjc-arc).",
+        "pin": "c41687652272656c4249acbd9eadecb9d63f19f8cae28d6096854e4bbb170037"
+      }
+    },
+    {
+      "sentence": "Do not call `retain`, `release` or `autorelease` by hand in an ARC file, and do not mix manual reference counting into a target by file-level flags without a written reason.",
+      "to": [
+        "should-not-call-retain-release-by-hand",
+        "should-not-mix-manual-reference-counting"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD NOT across the two rules: no hand retain/release/autorelease in ARC files, no file-level MRC mixing without a written reason.",
+        "pin": "62a20fa3dd2311a2cb90e52372c29abeab843e5e99b200fa469fd05eef1b578d"
+      }
+    },
+    {
+      "sentence": "Declare object properties with an explicit ownership attribute: `strong` for owned objects, `weak` for back-references and delegates, `copy` for `NSString`, `NSArray`, `NSDictionary` and block properties whose mutable subclasses a caller could pass in.",
+      "to": "should-declare-explicit-property-ownership",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with every attribute and its case: strong, weak for back-references and delegates, copy for the listed classes and blocks.",
+        "pin": "47a7ec7b04497a5910d18372b2b43f8e3606cfb602bd03313f73a1fd342799b5"
+      }
+    },
+    {
+      "sentence": "Reach for `__unsafe_unretained` only where the compiler cannot express the lifetime, and say why in a comment.",
+      "to": "should-limit-unsafe-unretained",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: __unsafe_unretained only where the compiler cannot express the lifetime, with a comment saying why.",
+        "pin": "2497c342872caed834fbd4c54dd9e9166058b736d04af231ec5677ebd83adadb"
+      }
+    },
+    {
+      "sentence": "Name your own methods with that rule in mind, because ARC applies it to them too.",
+      "to": "should-name-methods-by-method-family",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, with 'that rule' made explicit as the method-family rule (carried as the rule's note) and the reason that ARC applies it to your methods.",
+        "pin": "59ee4d209175771daa9158b7b89b12dfd631fade6a305cb9ddff864c64b6194b"
+      }
+    },
+    {
+      "sentence": "Break retain cycles in blocks.",
+      "to": "should-break-retain-cycles-in-blocks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: break retain cycles in blocks.",
+        "pin": "47ab02cacfe355ae2595bc27bd9cbac5c4aff257d101bcbc48af038cf307ea05"
+      }
+    },
+    {
+      "sentence": "Wrap long-running loops that create many temporary objects in `@autoreleasepool { }` so memory does not grow until the loop ends.",
+      "to": "should-wrap-temporary-heavy-loops-in-autoreleasepool",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition (long-running, many temporaries) and the reason (memory grows until the loop ends).",
+        "pin": "72c8f75efe42d6eb63a1da3c863caae3ede796fd368a591b628f792d33d090ad"
+      }
+    },
+    {
+      "sentence": "Use `__bridge` when ownership does not change, `__bridge_retained` to hand an object to Core Foundation (you now `CFRelease` it), and `__bridge_transfer` to take a Core Foundation object into ARC (ARC now releases it).",
+      "to": "should-pick-bridge-cast-by-ownership",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three casts and their ownership consequences (CFRelease, ARC releases).",
+        "pin": "be7785703b69a8fe1a441100b89da693979b82b9629572177f6f5e1be3d5382e"
+      }
+    },
+    {
+      "sentence": "Never use a bare C cast between the two worlds in ARC code.",
+      "to": "must-not-use-bare-bridging-casts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT: no bare C cast between Objective-C and Core Foundation in ARC code, with the compiler note.",
+        "pin": "b49547f66ffbb8d997d09a5d2aec716e780a6e26a38c56e75f26e0ff18fb2a50"
+      }
+    },
+    {
+      "sentence": "Design the Objective-C API so it needs no Swift-side fix-ups: declare generics on collections (`NSArray<MyListItem *> *`) so Swift sees `[MyListItem]`, and use designated nullability.",
+      "to": "should-need-no-swift-fix-ups",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: no Swift-side fix-ups, generics on collections so Swift sees typed arrays, designated nullability.",
+        "pin": "f3e316050eb7a322346c9cbaccd6ed3f887daac7b544cdf01804826a7d0ed2b5"
+      }
+    },
+    {
+      "sentence": "When the Swift form should differ from the Objective-C form (a tuple instead of out-parameters, reordered or renamed arguments), mark the Objective-C declaration `NS_REFINED_FOR_SWIFT` and write the Swift-facing API in a Swift extension.",
+      "to": "should-refine-for-swift-in-an-extension",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition and examples: NS_REFINED_FOR_SWIFT plus a Swift extension for the Swift-facing API.",
+        "pin": "df858026d94421f9be9f0ddb2f9683c1431ce44fd9e681e498f86b540f388aaa"
+      }
+    },
+    {
+      "sentence": "Keep the Objective-C implementation as the single source of behavior.",
+      "to": "should-keep-objective-c-as-single-source",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the Objective-C implementation stays the single source of behavior; the Swift API calls it.",
+        "pin": "6f997519da2deeb70ca781132fe2baa465c5bad44654997cb98cb60e04097518"
+      }
+    },
+    {
+      "sentence": "Use `nullable`, `nonnull` and `null_resettable` on properties, parameters and return types; use `_Nullable` and `_Nonnull` where the simple forms do not fit, such as `_Nullable id * _Nonnull`.",
+      "to": "should-use-nullability-qualifiers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with every qualifier and position, including the _Nullable id * _Nonnull example.",
+        "pin": "f766be8ca10c9539fbfdb43a26030b96b1f3004c33cdbd2ddc573af38258a56b"
+      }
+    },
+    {
+      "sentence": "`typedef` types are not assumed non-null even inside an audited region, so annotate each use.",
+      "to": "should-annotate-each-typedef-use",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason that typedefs are not assumed non-null inside an audited region.",
+        "pin": "ac6c93c767a4016c0dd1e7c6f4903c526c474c91200b6570e89140a05b1293a2"
+      }
+    },
+    {
+      "sentence": "A method documented to return `nil` on failure MUST be declared `nullable`, and a method that must never receive `nil` MUST say so in its signature, not only in a comment.",
+      "to": [
+        "must-declare-nil-returning-methods-nullable",
+        "must-declare-non-nil-parameters-in-signature"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUST requirements kept in two rules: nil-returning methods declared nullable; never-nil parameters stated in the signature, not only a comment.",
+        "pin": "f954c7c1d32e24a237bdafd91122267b9e7a29c09dccfa137846a50e40fde503"
+      }
+    }
+  ],
+  "obsolete": []
+}

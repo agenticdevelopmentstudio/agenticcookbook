@@ -1,0 +1,96 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The agent **SHOULD** derive these from the spec rather than author them by hand:",
+      "to": "should-derive-artifacts-from-the-spec",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'these' made explicit as the typed client, server stubs / route validation, mock server and docs; the table with each artifact's generators and reasons stays in generate-don-t-hand-write-the-derivatives.",
+        "pin": "2d2772d017a0cebf6b2bc988e385a03845c10c17adae6e5270be90a9d9413cc7"
+      }
+    },
+    {
+      "sentence": "Lint with a spec linter (e.g.",
+      "to": "should-lint-with-a-spec-linter",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full sentence: Spectral as the example, a checked-in `.spectral.yaml` ruleset extending the built-in OpenAPI ruleset with the named house rules.",
+        "pin": "30e88ddec530065c908740986b4868a131fa3e471cae83243519d7ede6295c10"
+      }
+    },
+    {
+      "sentence": "Consider adding security-focused rules (e.g. an OWASP API Security ruleset) to catch missing auth and unconstrained inputs at design time.",
+      "to": "should-consider-security-lint-rules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with the OWASP API Security example and the design-time reason.",
+        "pin": "d4fc3e2c07cab7029465d0b9768a2b7672fd3ec3ae1b08068ff11080aa53f2ea"
+      }
+    },
+    {
+      "sentence": "Add a breaking-change diff check (e.g.",
+      "to": "should-add-a-breaking-change-diff-check",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full sentence: a breaking-change diff check (e.g. `oasdiff`) so backward-incompatible edits are caught before merge.",
+        "pin": "4b9afca970ba062d06e85cc52533758e7aef64a61793abf3e4260df1619b1d5a"
+      }
+    },
+    {
+      "sentence": "Use **OpenAPI 3.1.x** as the baseline (full JSON Schema 2020-12 alignment).",
+      "to": "should-use-openapi-3-1-as-the-baseline",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the JSON Schema 2020-12 alignment reason; the 3.1.0 spec link is in references.",
+        "pin": "f653d98ce79e80feb58576ca9ca930c01f2f6db8e09f44697d7b996f561ba9b5"
+      }
+    },
+    {
+      "sentence": "Adopt it **only** when your toolchain — generators, linters, mock servers — fully supports it; otherwise stay on 3.1.x.",
+      "to": "should-adopt-openapi-3-2-only-with-full-tool-support",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'it' made explicit as OpenAPI 3.2: adopt only with full generator, linter and mock-server support, otherwise stay on 3.1.x; the 3.2.0 release facts are in rationale.",
+        "pin": "f3cf59bad102bf92e77d0742ee503de7c1af2ad03f6a71be86cf643bf0f05312"
+      }
+    },
+    {
+      "sentence": "Verify tool support before relying on 3.2-only features.",
+      "to": "should-verify-tool-support-before-3-2-features",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: verify tool support before relying on 3.2-only features.",
+        "pin": "b0dd1ec37768a383aed72adf4ef8404e28e375788fcfbe8c38200d55f96979bd"
+      }
+    },
+    {
+      "sentence": "Always state the `openapi:` version explicitly in the document; **MUST NOT** leave it implicit or mixed across files.",
+      "to": "must-state-the-openapi-version-explicitly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept and strengthened to MUST for stating the version explicitly, with the MUST NOT on leaving it implicit or mixed across files.",
+        "pin": "ce20c79e6f99662bd449ea7069ae73542ba87966a1af109f43c5407c4d7a02e7"
+      }
+    },
+    {
+      "sentence": "Skip the full ceremony only for throwaway prototypes you will delete.",
+      "to": "should-skip-the-ceremony-only-for-throwaway-prototypes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the same restriction: the full ceremony is skipped only for throwaway prototypes you will delete, as the build bar and review focus confirm.",
+        "pin": "7cec8f2e1a30e17b5d9563ccef6e953a2ff899da354015c2c14cb6a8e664d00c"
+      }
+    }
+  ],
+  "obsolete": []
+}

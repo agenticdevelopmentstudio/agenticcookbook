@@ -1,0 +1,85 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Work whose failure you can handle SHOULD be wrapped in `try`/`catch`, and cleanup SHOULD use `finally`.",
+      "to": [
+        "should-catch-handleable-failures",
+        "should-clean-up-in-finally"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs kept in two rules: wrap handleable work in try/catch; clean up in finally.",
+        "pin": "b015499b11db9deac05e8622241a8fcfeb0521d7c7ca929fb530b45b3736e591"
+      }
+    },
+    {
+      "sentence": "Use `Remove`, not `Delete`; code MUST NOT invent synonyms.",
+      "to": "must-not-invent-verb-synonyms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MUST NOT invent verb synonyms kept, with the Remove-not-Delete example.",
+        "pin": "c2f50f6a6fb93b9aec164e00f9838c72fefbad2b74604bb04850d7d915eda964"
+      }
+    },
+    {
+      "sentence": "The verbs `ForEach`, `Ping`, `Sort` and `Tee` are reserved for built-in commands.",
+      "to": "should-not-use-reserved-verbs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reserved verbs ForEach, Ping, Sort and Tee are kept, with the implied instruction made an explicit SHOULD NOT for your own functions.",
+        "pin": "120b926d72db3e3305c68c7b93aec9bda58a1c346c7ce63cc0709403e1ed9b0c"
+      }
+    },
+    {
+      "sentence": "Nouns SHOULD be singular, and a module SHOULD use a prefix so names do not collide.",
+      "to": [
+        "should-use-singular-nouns",
+        "should-prefix-module-nouns"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs kept in two rules: singular nouns; a module prefix so names do not collide.",
+        "pin": "7ea031cdc88bf9daeb3cbe84fa3c74b7dcd8b7bc2962adcd72d4dac912ae4921"
+      }
+    },
+    {
+      "sentence": "It MUST NOT return text meant for display.",
+      "to": "must-not-return-display-text",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT, with the subject (a function) made explicit: no text meant for display returned.",
+        "pin": "e984d916956204e157282c472c1a2856f0e599f98499afc1a7c746b44c65c963"
+      }
+    },
+    {
+      "sentence": "A command that changes state MUST declare `[CmdletBinding(SupportsShouldProcess)]`, which adds `-WhatIf` and `-Confirm`, and MUST wrap each change in `if ($PSCmdlet.ShouldProcess($target, $action)) { ... }`.",
+      "to": [
+        "must-declare-supports-should-process",
+        "must-wrap-each-change-in-should-process"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs kept across two rules, with the state-changing condition, the -WhatIf/-Confirm effect and the ShouldProcess wrapping form.",
+        "pin": "55c7ceb75b51def9755c2a91feadbff48c2119b33befc4d15176f08bebb7b540"
+      }
+    },
+    {
+      "sentence": "CI SHOULD run it.",
+      "to": "should-run-psscriptanalyzer-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'it' resolved to PSScriptAnalyzer; the rule's note keeps what it enforces.",
+        "pin": "de8b5d7b97415c3d71b4fcc1398a23d751c20d53f3bd47e5fceb58b257015be4"
+      }
+    }
+  ],
+  "obsolete": []
+}

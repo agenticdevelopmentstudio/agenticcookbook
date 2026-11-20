@@ -1,0 +1,19 @@
+
+- `must-not-do-ground-research-in-orchestrator`: the orchestrator issues no search or fetch of its own
+- `should-budget-isolated-subtopic-specialists`: every subtopic runs in a specialist with its own budget and isolated context, or the code says why not
+- `should-outline-before-searching`: an outline is written before the first search, or the code says why not
+- `should-reflect-at-supervisor-and-worker-level`: both the supervisor and each worker run a reflection step, or the code says why not
+- `should-stop-on-coverage`: the stop condition is coverage (two independent sources, or one authoritative one), not a loop count, or the code says why not
+- `should-use-multi-engine-domain-routed-sources`: retrieval uses more than one engine, routed by domain, or the code says why not
+- `should-rerank-and-quality-gate-sources`: every source passes a rerank and a quality gate before the LLM sees it, or the code says why not
+- `should-filter-by-freshness-and-authority`: sources are filtered by freshness and authority / venue reputation, or the code says why not
+- `should-read-full-pages`: the agent reads full pages, not snippets, or the code says why not
+- `should-use-dedicated-reviewer`: a dedicated reviewer with written acceptance criteria checks the output, or the code says why not
+- `should-corroborate-across-sources`: claims are corroborated across sources, or the code says why not
+- `should-check-url-health`: every cited URL is checked to resolve and its citation to exist, or the code says why not
+- `should-build-in-perspective-diversity`: the research structure draws on more than one perspective, or the code says why not
+- `should-attach-citations-at-retrieval`: citation metadata is attached at retrieval time, not after generation, or the code says why not
+- `should-cite-at-claim-level-with-quote`: every claim or sentence carries its citation and supporting quote, or the code says why not
+- `should-keep-stable-numbered-citations`: citation numbers are stable through summarization, or the code says why not
+- `should-report-confidence-per-section`: the report is outline-driven and every section has a confidence / coverage indicator, or the code says why not
+- `should-keep-intermediate-artifacts`: the outline and mind-map are kept for human review, or the code says why not

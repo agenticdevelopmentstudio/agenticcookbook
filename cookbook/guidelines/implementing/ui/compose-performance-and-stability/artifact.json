@@ -4,11 +4,11 @@
     "id": "9f2ef6d5-c1a0-499b-855c-b8742c8efe62",
     "title": "Jetpack Compose performance and stability",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,20 +28,22 @@
     "references": [
       "https://developer.android.com/develop/ui/compose/performance"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "performance-optimization"
     ]
   },
-  "synced": "c8de19e36f7c624f",
+  "synced": "6e664fb06711bc8c",
   "parts": [
     {"part": "intro"},
-    {"part": "stability-and-skipping", "heading": "Stability and skipping"},
-    {"part": "defer-state-reads", "heading": "Defer state reads"},
-    {"part": "avoid-wasted-work", "heading": "Avoid wasted work"},
-    {"part": "measure-release-builds-only", "heading": "Measure (release builds only)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "measure-release-builds-only", "heading": "Measure (release builds only)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "stability-and-skipping", "heading": "Stability and skipping", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

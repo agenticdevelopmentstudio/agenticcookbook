@@ -1,0 +1,17 @@
+
+- `must-not-assume-a-single-regime`: a design that applies one regime to every user
+- `should-pin-and-recheck-the-applicability-matrix`: an applicability matrix with no dated revision, or not re-checked within the last quarter
+- `must-record-a-lawful-basis`: personal data collected with no recorded lawful basis or notice/opt-out posture
+- `must-collect-only-needed-data`: a collected field the stated purpose does not need
+- `should-default-to-not-collecting`: a field collected by default with no reason given
+- `must-limit-use-to-disclosed-purposes`: data used for a purpose not disclosed at collection, or a new purpose with no new basis or notice
+- `must-define-retention-per-data-type`: a data type with no defined retention, or expired data neither deleted nor anonymized
+- `must-disclose-at-the-point-of-collection`: collection with no plain-language disclosure of what, why and with whom
+- `should-design-for-data-subject-rights`: no path for access, correction, deletion or opt-out
+- `must-identify-controller-or-processor-role`: a system whose controller or processor role was not identified before design
+- `must-govern-processors-with-a-dpa`: a processor relationship with no written DPA
+- `should-determine-applicable-regimes-before-collecting`: collection that starts before the applicable regimes are determined from user geography and data types
+- `should-confirm-the-lawful-basis-before-collecting`: collection that starts before a lawful basis or notice/opt-out posture is confirmed and recorded
+- `should-confirm-minimization-retention-and-deletion-per-field`: a field with no confirmed minimization, retention or deletion path
+- `should-consult-counsel`: a binding interpretation made without counsel
+- `must-not-treat-this-as-legal-sign-off`: this guideline cited as legal sign-off

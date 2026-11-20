@@ -1,0 +1,92 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A nested one MUST import its parent explicitly with `GetPathOfFileAbove`.",
+      "to": "must-import-parent-packages-props",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST for a nested Directory.Packages.props to import its parent explicitly with GetPathOfFileAbove is kept.",
+        "pin": "f0ffec21d30ac8650b638f144afef13463e3b2719a93b5c4c268c94e7026d1c6"
+      }
+    },
+    {
+      "sentence": "`VersionOverride` on one reference MUST be used only for a documented exception, and a project MAY set `CentralPackageVersionOverrideEnabled` to `false` to forbid it.",
+      "to": [
+        "must-use-version-override-only-for-documented-exception",
+        "may-forbid-version-override"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST limiting VersionOverride to a documented exception and the MAY to set CentralPackageVersionOverrideEnabled to false to forbid it are kept in two rules at their original levels.",
+        "pin": "818acde1860438795e1cdfe8507c3250fa7a50014e8299104a0cf5b5cd185f0b"
+      }
+    },
+    {
+      "sentence": "Code MUST NOT hand-edit the old-style project format.",
+      "to": "must-not-hand-edit-old-style-projects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on hand-editing the old-style project format is kept.",
+        "pin": "f01fe51141f4b5226e180ab7e9f9ae5c373948dc9276bb4d2d13eb367c1094bb"
+      }
+    },
+    {
+      "sentence": "Convert it.",
+      "to": "must-not-hand-edit-old-style-projects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction to convert an old-style project is kept at SHOULD in the same rule.",
+        "pin": "fadc1f3bbbcdae9a82e3826c3ead2f62bf2342f273127a6d335cf41b532d9c57"
+      }
+    },
+    {
+      "sentence": "Code MUST NOT set `OutDir` to change output folders, because it bypasses the per-project subfolders.",
+      "to": "must-not-set-outdir",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on setting OutDir to change output folders is kept, with its reason that it bypasses the per-project subfolders.",
+        "pin": "65e5ea422230ab8dcc079ce1727ba501a0d74fc731a02f352d7001b59a066cfe"
+      }
+    },
+    {
+      "sentence": "Use `BaseOutputPath`.",
+      "to": "must-not-set-outdir",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction to use BaseOutputPath instead is kept at SHOULD in the same rule.",
+        "pin": "b785c2c25c83796913286ae39579d205632e638bfc266c29654c822ae1998983"
+      }
+    },
+    {
+      "sentence": "There SHOULD be one solution per deployable unit, and it MUST list every project, so a clean checkout builds.",
+      "to": [
+        "should-have-one-solution-per-deployable-unit",
+        "must-list-every-project-in-solution"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One solution per deployable unit is kept at SHOULD and listing every project is kept at MUST with its so-a-clean-checkout-builds reason, in two rules.",
+        "pin": "6932c3a6442accaab42493e8b0936f251dca8d828a0351bd17e692fc424225bd"
+      }
+    },
+    {
+      "sentence": "Only the nearest `Directory.Packages.props` applies.",
+      "to": "must-import-parent-packages-props",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fact that only the nearest Directory.Packages.props applies is kept as the reason clause of the parent-import rule.",
+        "pin": "786c97532f57b8d8cd5a3f9138b9d332b878c6e01b074382bc6fb45b5c97141e"
+      }
+    }
+  ],
+  "obsolete": []
+}

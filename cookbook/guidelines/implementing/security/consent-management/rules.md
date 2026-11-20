@@ -1,0 +1,23 @@
+
+- **should-confirm-obligations-with-counsel-per-jurisdiction**: This is engineering guidance for building consent flows, not legal advice — obligations **SHOULD** be confirmed with counsel for each jurisdiction.
+- **must-be-freely-given**: Consent **MUST** be freely given: not bundled with service access; refusal **MUST NOT** degrade core functionality that does not depend on the processing.
+- **must-be-specific-and-granular**: Consent **MUST** be specific and granular: each distinct purpose (analytics, marketing, personalization, third-party sharing) **MUST** have its own toggle. A single blanket "I agree" **MUST NOT** cover unrelated purposes.
+- **must-be-informed**: Consent **MUST** be informed: present the purpose, controller identity, data categories, and the right to withdraw before capture.
+- **must-be-unambiguous**: Consent **MUST** be unambiguous: require an affirmative action (an explicit opt-in). Pre-ticked boxes, implied consent, or "continue = consent" **MUST NOT** be used.
+- **should-persist-decisions-append-only**: Each decision **SHOULD** be persisted as an **append-only, immutable** record.
+- **must-not-overwrite-consent-entries**: **MUST NOT** overwrite or delete prior entries — withdrawal is a new event, not a mutation.
+- **must-capture-consent-record-fields**: Each record **MUST** capture: subject id, purpose(s), grant/withdraw action, timestamp (UTC), the **policy/notice version** shown, and the capture mechanism (e.g., banner, settings page).
+- **should-store-consent-notice-text-or-hash**: The exact consent-notice text or a content hash **SHOULD** be stored so you can prove what the user saw.
+- **should-pin-policy-to-versioned-revision**: The policy **SHOULD** be pinned to a dated, versioned revision.
+- **should-keep-current-consent-queryable**: The log **SHOULD** be queryable to answer "does subject X currently consent to purpose Y?" without replaying history at read time (maintain a derived current-state view alongside the event log).
+- **must-gate-non-essential-processing**: Non-essential cookies, tracking, and analytics **MUST** be gated: do not load scripts, set tags, or send events until consent for that purpose is granted (consent-before-processing, not load-then-suppress).
+- **should-not-present-necessary-processing-as-optional**: Strictly necessary processing (security, fraud prevention, delivering the requested service) does not require consent and **SHOULD NOT** be presented as optional.
+- **should-re-request-consent-on-change**: Consent **SHOULD** be re-requested when the purpose changes, a new data category is added, or a new processor is introduced.
+- **should-re-consent-on-material-policy-change-only**: A policy-version bump alone **SHOULD** trigger re-consent only when the change is material to the user's decision.
+- **should-set-reconfirmation-cadence**: A re-confirmation cadence **SHOULD** be set for long-lived consent (commonly revisited at 12–24 months) per applicable guidance and risk.
+- **must-make-withdrawal-as-easy-as-granting**: Withdrawal **MUST** be as easy as granting — same number of clicks, same surface, no dark patterns or friction.
+- **must-propagate-withdrawal**: On withdrawal you **MUST** propagate the change so processing actually stops: stop new collection, halt downstream jobs, and notify processors/third parties that received the data.
+- **must-stop-further-processing-on-withdrawal**: Withdrawal is **prospective**: it does not invalidate processing already performed lawfully before withdrawal, but it **MUST** prevent further processing for that purpose.
+- **must-not-infer-consent-from-inactivity**: **MUST NOT** infer consent from inactivity, scrolling, or continued use.
+- **must-not-make-reject-harder-than-accept**: **MUST NOT** make "reject all" harder to reach than "accept all".
+- **must-not-skip-childrens-consent-paths**: **MUST NOT** treat children's data without the heightened, age-appropriate consent and verifiable-parental-consent paths the relevant regime requires.

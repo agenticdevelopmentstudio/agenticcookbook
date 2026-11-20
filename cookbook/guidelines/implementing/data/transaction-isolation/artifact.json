@@ -4,11 +4,11 @@
     "id": "36d29fae-0929-46ef-98d6-d7e8f67aa040",
     "title": "Transaction isolation and serialization-failure retry",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,21 +27,23 @@
     "references": [
       "https://www.postgresql.org/docs/current/transaction-iso.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "database-operations",
       "concurrency"
     ]
   },
-  "synced": "0b362f163e8e71c7",
+  "synced": "e9ed815e4a7433d2",
   "parts": [
     {"part": "intro"},
-    {"part": "isolation-levels-and-what-they-prevent", "heading": "Isolation levels and what they prevent"},
-    {"part": "requirements", "heading": "Requirements"},
-    {"part": "choosing-a-level", "heading": "Choosing a level"},
-    {"part": "retry-pattern-pseudocode", "heading": "Retry pattern (pseudocode)"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "isolation-levels-and-what-they-prevent", "heading": "Isolation levels and what they prevent", "role": "how-to"},
+    {"part": "choosing-a-level", "heading": "Choosing a level", "role": "how-to"},
+    {"part": "retry-pattern-pseudocode", "heading": "Retry pattern (pseudocode)", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Worst Possible Idea: generate deliberately terrible solutions, then invert — the inversion step",
+      "to": "must-invert-worst-possible-ideas",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-invert-worst-possible-ideas keeps the technique (generate terrible solutions, then invert) and makes the inversion step MUST, matching 'mandatory'.",
+        "pin": "0441d8e747a8dd3e1c7605aee71c781f055049b52652a8d7d8f133d04b273e84"
+      }
+    },
+    {
+      "sentence": "is mandatory; it is what converts the exercise from humor to insight",
+      "to": "must-invert-worst-possible-ideas",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-invert-worst-possible-ideas keeps the inversion step as mandatory (MUST) and the reason that it converts the exercise from humor to insight.",
+        "pin": "2a1888973d911af23e017544c914ccfaa08b88d79f90fdeee268303c46677df4"
+      }
+    },
+    {
+      "sentence": "Signal to invoke: when the same category of idea recurs three or more times, or the user says",
+      "to": "should-disrupt-when-ideas-recur-or-user-is-stuck",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-disrupt-when-ideas-recur-or-user-is-stuck keeps both triggers: the same category recurring three or more times, or the user saying \"I'm stuck\".",
+        "pin": "da0aab1470a5ece254c14118988ba6b7218461baa6c86f8e7b942c3eb46f217a"
+      }
+    },
+    {
+      "sentence": "\"I'm stuck,\" introduce a disruption before offering any more suggestions",
+      "to": "should-disrupt-when-ideas-recur-or-user-is-stuck",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-disrupt-when-ideas-recur-or-user-is-stuck keeps the unkeyed instruction at SHOULD: introduce a disruption before offering any more suggestions, under the same triggers.",
+        "pin": "6d5e38dbd7b52c41a1a0970440cd4a3944d50503d7d481b80da4bbd60285bce0"
+      }
+    }
+  ],
+  "obsolete": []
+}

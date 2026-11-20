@@ -1,0 +1,24 @@
+
+- `should-use-swift-testing-for-new-unit-tests`: whether new Swift unit tests use Swift Testing
+- `must-not-rewrite-passing-xctest-suites`: whether any passing XCTest suite was rewritten solely to switch frameworks
+- `should-keep-ui-and-performance-tests-in-xctest`: whether UI tests and XCTest performance measurement stay in XCTest
+- `may-use-any-test-function-form`: whether `@Test` functions use a form the framework allows
+- `should-pass-a-display-name`: whether each `@Test` passes a descriptive display name
+- `should-use-expect-for-ordinary-assertions`: whether ordinary assertions use `#expect`
+- `should-not-restate-the-expression-in-a-message`: whether any `#expect` message restates the expression
+- `should-use-require-for-preconditions`: whether preconditions use `#require`
+- `should-assert-errors-with-expect-throws`: whether error behavior is asserted with `#expect(throws:)` or `#require(throws:)`
+- `should-group-related-tests-with-suite`: whether related tests are grouped with `@Suite` on a type
+- `should-annotate-suites-to-set-a-name-or-traits`: whether suites that need a name or traits are annotated
+- `should-prefer-per-test-instance-state`: whether per-test state is in stored properties rather than shared mutable static state
+- `should-pass-arguments-for-many-inputs`: whether tests over many inputs pass `arguments:`
+- `should-zip-paired-inputs`: whether paired inputs use `zip(...)`
+- `should-prefer-parameterization-over-loops`: whether cases are parameterized rather than looped
+- `should-attach-traits-for-behavior-and-metadata`: whether behavior and metadata are attached as traits
+- `should-define-and-apply-tags`: whether tags are defined with `@Tag` and applied
+- `should-keep-a-small-shared-tag-vocabulary`: whether tags come from a small, shared vocabulary
+- `should-target-the-latest-swift-toolchain`: whether tests target the latest Swift 6.2.x toolchain
+- `should-write-tests-clean-under-strict-concurrency`: whether tests are clean under strict concurrency
+- `should-annotate-main-actor-tests`: whether `@Test` functions touching main-actor state are annotated `@MainActor`
+- `should-follow-one-entity-per-file`: whether each file holds one suite `struct` with nested helpers in an `extension`
+

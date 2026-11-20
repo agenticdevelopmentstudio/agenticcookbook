@@ -1,0 +1,50 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "1138183b-296d-479b-9df7-7869a006c023",
+    "title": "Choose SwiftData vs Core Data",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pick SwiftData or Core Data for Apple persistence by OS-version floor, model complexity, and migration needs — not by novelty.",
+    "platforms": [
+      "swift",
+      "ios",
+      "macos"
+    ],
+    "tags": [
+      "apple",
+      "persistence",
+      "data"
+    ],
+    "depends-on": [],
+    "related": [
+      "6a653107-929d-418e-865d-636373a27b02"
+    ],
+    "references": [
+      "https://developer.apple.com/documentation/swiftdata"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "data-modeling",
+      "schema-design"
+    ]
+  },
+  "synced": "895920e24c6d7e10",
+  "parts": [
+    {"part": "intro"},
+    {"part": "decision-rule", "heading": "Decision Rule"},
+    {"part": "rules", "heading": "Rules"},
+    {"part": "swiftdata-notes-as-of-2026", "heading": "SwiftData Notes (as of 2026)"},
+    {"part": "core-data-notes-as-of-2026", "heading": "Core Data Notes (as of 2026)"},
+    {"part": "interoperability", "heading": "Interoperability"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

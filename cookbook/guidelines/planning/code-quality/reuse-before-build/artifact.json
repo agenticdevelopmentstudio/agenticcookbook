@@ -4,11 +4,11 @@
     "id": "2c605b36-da66-4eaf-b2d4-59ed5a3976b3",
     "title": "Search for existing solutions before building",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,19 +27,21 @@
       "b712c766-af1f-4716-b8fb-34bf0bbb13eb"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "dependency-management"
     ]
   },
-  "synced": "55ae3b45ee40a7f8",
+  "synced": "69a7037861e9ea87",
   "parts": [
     {"part": "intro"},
-    {"part": "look-in-this-order", "heading": "Look in this order"},
-    {"part": "research-before-reinventing", "heading": "Research before reinventing"},
-    {"part": "verify-before-adopting", "heading": "Verify before adopting"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

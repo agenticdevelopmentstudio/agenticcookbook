@@ -1,0 +1,24 @@
+
+- **must-create-spans-via-otel-api**: Code **MUST** create spans through the OpenTelemetry API rather than vendor-specific SDKs, so the backend stays swappable.
+- **should-span-each-unit-of-work**: Each unit of work (an HTTP handler, a DB query, an outbound call, a model invocation) **SHOULD** be one span with a clear name and status.
+- **should-record-errors-on-spans**: Spans **SHOULD** record errors via `span.record_exception` / set status to `ERROR` rather than only logging, so failures are visible in the trace tree.
+- **should-prefer-auto-instrumentation**: Code SHOULD prefer auto-instrumentation for common frameworks/clients, and reserve manual spans for domain-specific work.
+- **should-propagate-w3c-trace-context**: A request crossing a service boundary **SHOULD** propagate W3C Trace Context: the `traceparent` header (and `tracestate` when present).
+- **should-pin-trace-context-level-1**: Level 2 is a Candidate Recommendation Draft as of 2026; code SHOULD treat its additions as a forecast and pin to Level 1 for interop.
+- **must-treat-header-names-case-insensitive**: Header names **MUST** be treated as ASCII case-insensitive.
+- **should-emit-lowercase-traceparent**: Code SHOULD emit `traceparent` in lowercase.
+- **must-not-drop-incoming-traceparent**: Services **MUST NOT** drop an incoming `traceparent`; continue the trace instead of starting a new root, or the trace fragments.
+- **should-inject-context-at-transport-edge**: Code SHOULD inject and extract context at the transport edge (middleware/interceptors), not scattered through business logic.
+- **must-propagate-context-in-messages**: At async and messaging boundaries, trace context **MUST** travel with the message, not just synchronous calls — inject `traceparent` into message/event metadata when publishing.
+- **should-link-consumer-span-to-producer**: For queues, pub/sub, and event streams, the consumer span **SHOULD** use a **span link** to the producer rather than a parent-child edge.
+- **should-prefer-tail-based-sampling**: Code SHOULD prefer **tail-based sampling** at the OpenTelemetry Collector over head-based sampling in the SDK: the full trace is buffered and the keep/drop decision is made after completion, so interesting traces survive.
+- **should-keep-errors-and-sample-successes**: The default sampling policy SHOULD keep 100% of traces containing an error or high latency, and sample a fraction (e.g., ~10%) of successful traces.
+- **should-tune-sampling-rate**: Code SHOULD tune the rate from what proves useful, and SHOULD NOT treat any one number as a fixed rule.
+- **must-propagate-consistent-sampling-decision**: A consistent sampling decision **MUST** be propagated via `traceparent` trace-flags so all services in one trace agree, avoiding partial traces.
+- **should-carry-trace-id-in-logs**: Log records **SHOULD** carry the active `trace_id` (and `span_id`) so a log line can be pivoted to its trace and back. See [adc.guideline.implementing.observability.metrics-red-use](cookbook:64bdf327-b4ac-4772-a3b6-cbaf7e8e5449) for the metric side.
+- **should-use-same-trace-id-field-name**: Services SHOULD use the same `trace_id` field name across services; agents grep on it to correlate signals.
+- **may-emit-exemplars**: Exemplars (linking a metric data point to a sample `trace_id`) **MAY** be emitted to jump from a latency spike to a representative trace.
+- **should-span-model-and-tool-calls**: Model the agent loop as spans: each model call and each tool/function call **SHOULD** be its own span, nested under the request or agent-step span, so token usage and tool latency are attributable.
+- **should-follow-genai-semantic-conventions**: Where applicable, code SHOULD follow the OpenTelemetry GenAI semantic conventions (e.g., `gen_ai.request.model`) for attribute names.
+- **should-record-genai-convention-version**: These conventions are still in Development status as of 2026 and may change; code SHOULD record the convention version it targets.
+- **should-opt-in-and-redact-content-capture**: Capturing prompt/response content on spans **SHOULD** be opt-in and redacted, to avoid leaking sensitive data into the tracing backend.

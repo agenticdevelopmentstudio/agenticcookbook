@@ -1,0 +1,92 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Shared init/deinit = same scope group.** If object A creates object B in its `init` and destroys it in its `deinit`, A owns B and they belong together.",
+      "to": "should-group-owner-with-owned-objects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-owner-with-owned-objects keeps the create-in-init / destroy-in-deinit condition, A-owns-B, and same-group placement, at SHOULD.",
+        "pin": "2d82d775b12a84999593ef9c6176f309c9ea91be7d2bd792aef6fdd1f5bdc299"
+      }
+    },
+    {
+      "sentence": "**Subscription ownership defines lifecycle coupling.** If object A stores a `Cancellable` / `DisposeBag` subscription to object B's stream, A's lifecycle bounds the subscription — A and B are lifecycle-coupled.",
+      "to": [
+        "should-treat-subscription-owners-as-lifecycle-coupled",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-subscription-owners-as-lifecycle-coupled keeps the Cancellable/DisposeBag condition and lifecycle coupling; the rationale keeps that A's lifecycle bounds the subscription.",
+        "pin": "5a593277cd39f52bbb62cedf84701c37ac2050f4b5f846ef8f2ac934203a5a78"
+      }
+    },
+    {
+      "sentence": "**State machines are atomic.** An explicit state machine — all states, transitions, and the object that executes them — is a single unit.",
+      "to": "should-not-split-state-machines",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-split-state-machines keeps that a state machine (states, transitions, executing object) is a single atomic unit.",
+        "pin": "15ea5a269039f6f7cf69421d7b45069f0bcf9ef0a887021cf63b45b9ad18bff2"
+      }
+    },
+    {
+      "sentence": "Do not split state machines across scope groups.",
+      "to": "should-not-split-state-machines",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-split-state-machines keeps not splitting state machines across scope groups, at SHOULD NOT.",
+        "pin": "e4c328e0a14b5ea00df69a207237150396534a859cee56f024bad0f6327074c6"
+      }
+    },
+    {
+      "sentence": "**Session objects define natural scope group boundaries.** A session — authentication session, network session, user session — and all objects that exist only for the duration of that session form one scope group.",
+      "to": "should-group-session-with-its-objects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-session-with-its-objects keeps the three session kinds and that session-lifetime objects form one scope group.",
+        "pin": "7522f3db0ec8e9086e356babfa57a2ac23064884d13378c38eba558641d1e72d"
+      }
+    },
+    {
+      "sentence": "**Weak references mark scope group edges.** A `weak` reference from A to B means B does not own A.",
+      "to": [
+        "may-separate-weakly-referenced-objects",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-separate-weakly-referenced-objects keeps 'weak references mark scope group edges' and the rationale keeps that a weak reference from A to B means B does not own A.",
+        "pin": "f1225571c67f90ab30b26f63f9f08ae3d4ef8e69fb36ef514d6a1eae69b82d20"
+      }
+    },
+    {
+      "sentence": "If A's lifecycle is independent of B's, they may belong in separate scope groups communicating through a narrow interface.",
+      "to": "may-separate-weakly-referenced-objects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-separate-weakly-referenced-objects keeps the independent-lifecycle condition, MAY-separate, and the narrow-interface communication.",
+        "pin": "d70dffabdcd15b10427a13ff1804c3727232142581a9f35c2fb3c50b2b96bffd"
+      }
+    },
+    {
+      "sentence": "**Disposal chain = lifecycle chain.** Follow `Dispose()` / `cancel()` / `close()` calls — each object that disposes another is part of the same lifecycle chain.",
+      "to": "should-follow-disposal-chains",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-follow-disposal-chains keeps following Dispose/cancel/close calls and treating each disposer as part of the same lifecycle chain.",
+        "pin": "b71bfa5d84ecbbf627d01141f123f3b4059b1cffa57019c6aa92ca0913a23514"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,5 +1,5 @@
 
-Every migration file MUST be tested for forward application. Run all migrations in order on a blank database and assert the resulting schema matches expectations.
+Forward application:
 
 ```python
 import glob, sqlite3
@@ -14,7 +14,7 @@ def test_migrations_apply_cleanly():
     assert 'sessions' in tables
 ```
 
-Migrations SHOULD be idempotent where possible. Test idempotency by applying the migration set twice:
+Idempotency, by applying the migration set twice:
 
 ```python
 def test_migration_idempotency():
@@ -24,8 +24,4 @@ def test_migration_idempotency():
             conn.executescript(open(f).read())
     # should not raise
 ```
-
-Test backward migration (rollback) when rollback scripts exist. Apply forward, then backward, then verify the schema matches the pre-migration state.
-
-Always test migrations against a database seeded with production-representative data to catch data conversion errors — type coercions, NOT NULL violations, and constraint failures that only appear with real values.
 

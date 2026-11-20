@@ -1,0 +1,129 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Where applicable, follow the OpenTelemetry GenAI semantic conventions (e.g., `gen_ai.request.model`) for attribute names.",
+      "to": "should-follow-genai-semantic-conventions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-follow-genai-semantic-conventions keeps the 'where applicable' condition, the gen_ai.request.model example and the attribute-naming scope, with the unkeyed instruction at SHOULD.",
+        "pin": "ff008358df24466439a4470d5223df230fa69a7c1dff1cadc0ce7db87e8c4d5a"
+      }
+    },
+    {
+      "sentence": "*These conventions are still in Development status as of 2026 and may change — record the convention version you target.*",
+      "to": "should-record-genai-convention-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-record-genai-convention-version keeps the Development-status-as-of-2026 caveat and the instruction to record the targeted convention version, at SHOULD.",
+        "pin": "59aea05baaade35a38309e37fb9e754899b441026ba1077e1baba2594336f0ee"
+      }
+    },
+    {
+      "sentence": "Prefer **tail-based sampling** at the OpenTelemetry Collector over head-based sampling in the SDK: the full trace is buffered and the keep/drop decision is made after completion, so interesting traces survive.",
+      "to": "should-prefer-tail-based-sampling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-tail-based-sampling keeps the preference for tail-based sampling at the Collector over SDK head-based sampling and its full reason, at SHOULD.",
+        "pin": "80fc1f14f1b5816b81f70a898db009e9c045fb99cf614c37e51bf6d9c61ed058"
+      }
+    },
+    {
+      "sentence": "A sane default policy: keep 100% of traces containing an error or high latency, and sample a fraction (e.g., ~10%) of successful traces.",
+      "to": "should-keep-errors-and-sample-successes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-errors-and-sample-successes keeps the default policy: 100% of error or high-latency traces and a fraction (~10%) of successful ones, at SHOULD.",
+        "pin": "4fb05697399fb2a5d864d83579cec357c109c582f779841543e85a7aabcaf8f9"
+      }
+    },
+    {
+      "sentence": "Tune the rate from what proves useful — do not treat any one number as a fixed rule.",
+      "to": "should-tune-sampling-rate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-tune-sampling-rate keeps tuning the rate from what proves useful and not treating any one number as fixed, at SHOULD and SHOULD NOT.",
+        "pin": "f5f180ef3ad5f740f787d7ace688b779e74abf25368f57aa1cec0aba86fb0147"
+      }
+    },
+    {
+      "sentence": "Use the same `trace_id` field name across services; agents grep on it to correlate signals.",
+      "to": "should-use-same-trace-id-field-name",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-same-trace-id-field-name keeps the same trace_id field name across services and the reason that agents grep on it, at SHOULD.",
+        "pin": "9f2009a9a8353835f0931bfe8341e75b1f2740465c28d4d78f84810969559cd7"
+      }
+    },
+    {
+      "sentence": "Prefer auto-instrumentation for common frameworks/clients; reserve manual spans for domain-specific work.",
+      "to": "should-prefer-auto-instrumentation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-auto-instrumentation keeps preferring auto-instrumentation for common frameworks/clients and reserving manual spans for domain-specific work, at SHOULD.",
+        "pin": "14e1880de74e3d7c44d171a517a99bf9ac3391d4aaf9d0eb13c0850b1ba3168b"
+      }
+    },
+    {
+      "sentence": "*Level 2 is a Candidate Recommendation Draft as of 2026 — treat its additions as a forecast and pin to Level 1 for interop.*",
+      "to": "should-pin-trace-context-level-1",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-pin-trace-context-level-1 keeps the Level 2 Candidate-Recommendation-Draft caveat, treating its additions as a forecast, and pinning to Level 1 for interop, at SHOULD.",
+        "pin": "db5c571aab972d15543354bd479d1d3f05acb819cda564eca1fd1fdabd805cfa"
+      }
+    },
+    {
+      "sentence": "Header names **MUST** be treated as ASCII case-insensitive; emit `traceparent` in lowercase.",
+      "to": [
+        "must-treat-header-names-case-insensitive",
+        "should-emit-lowercase-traceparent"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-treat-header-names-case-insensitive keeps the MUST on ASCII case-insensitive header names; should-emit-lowercase-traceparent keeps the unkeyed lowercase-emit instruction at SHOULD, matching W3C's own SHOULD.",
+        "pin": "daf403dcb13c8abe4d4c0c0e4e41ad152adba56e639c8756edb874e9e6bfe780"
+      }
+    },
+    {
+      "sentence": "Inject and extract context at the transport edge (middleware/interceptors), not scattered through business logic.",
+      "to": "should-inject-context-at-transport-edge",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-inject-context-at-transport-edge keeps injecting and extracting context at the transport edge (middleware/interceptors), not in business logic, at SHOULD.",
+        "pin": "81f58f0453171d2d0a9631a73b48ebb819ad778648d02dc28be3b22ae1c5e418"
+      }
+    },
+    {
+      "sentence": "### Async and messaging boundaries",
+      "to": "must-propagate-context-in-messages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The heading's scope survives as must-propagate-context-in-messages' opening 'At async and messaging boundaries'.",
+        "pin": "d6cb8e18172ed71a6a5bc21a213eda74c962cf6de955a754b9cf1bbf62bfc5ee"
+      }
+    },
+    {
+      "sentence": "Trace context **MUST** travel with the message, not just synchronous calls — inject `traceparent` into message/event metadata when publishing.",
+      "to": "must-propagate-context-in-messages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-propagate-context-in-messages keeps that trace context MUST travel with the message, not just synchronous calls, and the traceparent-in-metadata-on-publish mechanism.",
+        "pin": "d97d2a06d688f085b468ee568cbe857f3d9578c003807417c60ae3e0de6f6160"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,21 @@
+
+- `should-split-schema-changes-into-compatible-steps`: one migration that changes the schema in a single large, backward-incompatible step
+- `must-be-compatible-with-running-version`: a migration step after which the N-1 app version no longer works
+- `must-not-ship-schema-and-code-together`: a schema change and the code that depends on it in the same deploy
+- `must-defer-destructive-changes`: a drop, rename, type narrowing or added NOT NULL before the contract phase
+- `should-spread-change-across-releases`: one logical change expanded, migrated, switched and contracted in a single release
+- `must-add-columns-nullable-or-defaulted`: a new `NOT NULL` column without a default, or `NOT NULL` added to a large existing table in one step
+- `must-rename-by-parallel-change`: an in-place `RENAME` of a column or table in use
+- `must-batch-backfills`: a backfill run as one statement or one long transaction
+- `should-make-backfills-idempotent`: a backfill whose re-run after partial failure gives a different result
+- `should-bound-ddl-lock-wait`: a lock-taking migration with no bound on how long it waits
+- `must-set-lock-timeout`: a lock-taking `ALTER`/`DROP` with no `lock_timeout` set
+- `should-set-statement-timeout`: a migration with no `statement_timeout`
+- `should-retry-lock-timeout-aborts`: a `lock_timeout` abort not retried with backoff, or retried unbounded
+- `must-build-indexes-concurrently`: `CREATE INDEX` or `DROP INDEX` on a large live table without `CONCURRENTLY`
+- `must-not-wrap-concurrent-index-in-transaction`: `CREATE INDEX CONCURRENTLY` inside a transaction block
+- `should-clean-up-invalid-index`: a concurrent index build retried without checking for an `INVALID` index
+- `should-roll-back-by-redeploying`: a rollback plan that reverses the schema rather than redeploying the previous app version
+- `should-avoid-dropping-down-migrations`: a down-migration that drops just-added columns
+- `must-keep-old-shape-one-deploy-cycle`: the old shape removed within the same deploy cycle as the switch
+- `should-confirm-engine-lock-behavior`: a clause assumed non-blocking with no check against the engine's `ALTER TABLE` docs

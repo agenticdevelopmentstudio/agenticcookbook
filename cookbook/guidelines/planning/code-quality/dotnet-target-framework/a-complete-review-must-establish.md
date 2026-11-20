@@ -1,0 +1,12 @@
+
+- `target-current-lts-for-apps`: whether each new application or service targets the current LTS
+- `sts-only-when-needed`: whether every STS target has an STS-exclusive need and a committed upgrade before the 24-month window closes
+- `multi-target-libraries`: whether each library targets exactly the TFMs its consumers require, with `netstandard2.0` only for a concrete consumer
+- `pin-the-sdk`: whether the repo pins the SDK in `global.json`
+- `state-version-explicitly`: whether every `.csproj` names its `TargetFramework(s)` explicitly
+- `avoid-eol-targets`: whether any newly targeted framework is past, or within the delivery window of, its end of support
+- `separate-tfm-from-langversion`: whether `<LangVersion>` is decided apart from the TFM
+- `choose-tfm-from-support-cadence`: whether the TFM was chosen from the published support cadence
+- `record-version-and-end-of-support`: whether the exact version and end-of-support date are stated in the project and the PR description
+- `reverify-support-dates`: whether today's LTS/STS versions and dates were confirmed against the support policy reference
+- `justify-each-library-tfm`: whether each library TFM is justified in a comment

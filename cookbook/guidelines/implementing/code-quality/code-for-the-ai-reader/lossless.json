@@ -1,0 +1,162 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "This guidance is in genuine tension with some human-readability norms, and you **MUST NOT** maximize machine-legibility at all costs:",
+      "to": [
+        "must-not-maximize-machine-legibility-at-all-costs",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on maximizing machine-legibility at all costs is kept verbatim, and the rationale keeps that the guidance is in genuine tension with some human-readability norms.",
+        "pin": "8f7b8ffa25da5213c836d13c01c552aa3412cbd16bc8866c59cdbcea161141f5"
+      }
+    },
+    {
+      "sentence": "Favor **locality of related behavior**.",
+      "to": "should-favor-locality-of-related-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Favoring locality of related behavior is kept at SHOULD, with its context (very short files and aggressive splitting that scatter behavior).",
+        "pin": "6a361e5b0008ae830dab16c3facf7f2cf2af1e73b4be897852f3181816ec0b9e"
+      }
+    },
+    {
+      "sentence": "Apply judgment per case.",
+      "to": "should-judge-dry-per-case",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Applying judgment per case between heavy DRY/deep indirection and small explicit repetition is kept at SHOULD; the rationale keeps the hidden-coupling reason.",
+        "pin": "918b1f2a667269130486585f1248ca68719ee915d60b67ae078df061f7e95972"
+      }
+    },
+    {
+      "sentence": "The claim \"agents now read code more than humans do\" is a **plausible direction of travel, not a measured fact** — do not cite it as an established statistic.",
+      "to": [
+        "should-not-cite-agent-readership-as-statistic",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps not citing the agent-readership claim as an established statistic (SHOULD NOT), and the rationale keeps that it is a plausible direction of travel, not a measured fact.",
+        "pin": "90f41d2d8872f9601444e38ba27c4e76443a090307dc7d2b66b98ad9a3de1c31"
+      }
+    },
+    {
+      "sentence": "Justify each choice by concrete readability for the next reader, human or agent, not by appeal to that trend.",
+      "to": "should-justify-by-concrete-readability",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Justifying each choice by concrete readability for the next reader, human or agent, not by appeal to the trend, is kept at SHOULD.",
+        "pin": "d108a07a33f90e5505746eb99987e5c6443617d02a4415f5f28849810e8f00a5"
+      }
+    },
+    {
+      "sentence": "When a human-readability convention and an AI-readability heuristic conflict and the cost is low, prefer the option that keeps behavior explicit and local.",
+      "to": "should-prefer-explicit-and-local-when-cost-low",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The low-cost conflict case and the preference for the explicit, local option are kept at SHOULD with the condition intact.",
+        "pin": "3223702e737b12b56b6157185cc4650d35bec5cdc722bd799b335fb13b770b34"
+      }
+    },
+    {
+      "sentence": "When the human cost is high, weigh both and document the trade-off.",
+      "to": "should-weigh-and-document-when-human-cost-high",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The high-human-cost case and the instruction to weigh both and document the trade-off are kept at SHOULD.",
+        "pin": "3062e5154b02abea76f07935bd149a29a73047d89e1db81ec6cac0f7fe03d880"
+      }
+    },
+    {
+      "sentence": "A test named for the behavior it verifies doubles as greppable documentation of intent.",
+      "to": "should-name-tests-for-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps that a test named for its behavior doubles as greppable documentation of intent, and strengthens it to a SHOULD to name tests that way.",
+        "pin": "4e45fb20dd43bec18b72c34f29bedf87fd6a50760b60da6323ac63b5a6f4eb7c"
+      }
+    },
+    {
+      "sentence": "Minimize reflection, dynamic dispatch, and runtime metaprogramming that hides what code actually does.",
+      "to": "should-minimize-hidden-runtime-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Minimizing reflection, dynamic dispatch and runtime metaprogramming that hides what code does is kept at SHOULD; the rationale keeps the simulate-the-runtime reason.",
+        "pin": "525c94dccc662e9e97b093cd13404cececa887914c3b898d604871bdb3a54892"
+      }
+    },
+    {
+      "sentence": "Function signatures act as design documents the agent reads first — keep parameter names and return types explicit and accurate. (See the reference.)",
+      "to": "should-keep-signatures-explicit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The signatures-as-design-documents framing and keeping parameter names and return types explicit and accurate are kept at SHOULD, with the reference pointer.",
+        "pin": "a1c9d742c1552ed91ada1aa076908425c63244640c1707a8e3925515e7112045"
+      }
+    },
+    {
+      "sentence": "Prefer them where a language makes them optional.",
+      "to": "should-prefer-explicit-types-and-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring explicit types and verbose intention-revealing names where a language makes them optional is kept at SHOULD; the rationale keeps the semantic-investment reason.",
+        "pin": "415d992c3ee46c43551b3c1df5d0f2b3234ca50a8ad1d150cb3f0133b9701a24"
+      }
+    },
+    {
+      "sentence": "Prefer explicit control flow over implicit magic (auto-registration, monkey-patching, import-time side effects).",
+      "to": "should-prefer-explicit-control-flow",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring explicit control flow over implicit magic, with all three examples, is kept at SHOULD; the rationale keeps the least-astonishment pointer.",
+        "pin": "f7e3b30e84354d26a7667421d87490c39aca9f039834a3c224c8239af9cf7a79"
+      }
+    },
+    {
+      "sentence": "Prefer one canonical spelling of a concept over synonyms scattered across the codebase.",
+      "to": "should-use-one-canonical-spelling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring one canonical spelling of a concept over scattered synonyms is kept at SHOULD.",
+        "pin": "3e88c691926fc3352a77abc9e51c6d44b921ce9db76b8653c85339bdc8b642c6"
+      }
+    },
+    {
+      "sentence": "Avoid constructing identifiers at runtime (string-concatenated method names, dynamically generated attributes).",
+      "to": "should-avoid-runtime-constructed-identifiers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Avoiding runtime-constructed identifiers, with both examples, is kept at SHOULD.",
+        "pin": "d359db17b1365f907586a45d8471bcecb6f968bd112c9737c8e098197c3912aa"
+      }
+    },
+    {
+      "sentence": "Keep call sites discoverable: a function **SHOULD** be reachable by searching for its name, not only through a registry, decorator, or dependency-injection wiring that hides the connection.",
+      "to": "should-keep-call-sites-discoverable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping call sites discoverable and the SHOULD that a function be reachable by searching its name, not only via registry, decorator or DI wiring, are kept.",
+        "pin": "dbb97d74e253d8775532bce2e77466f44ea0a0b70624b0c5aa265227ea91850f"
+      }
+    }
+  ],
+  "obsolete": []
+}

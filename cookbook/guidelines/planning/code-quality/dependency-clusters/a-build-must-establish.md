@@ -1,0 +1,12 @@
+
+- `should-treat-high-coupling-ratio-as-candidate`: every cluster with an internal coupling ratio above 0.6 is a recommended candidate, or the findings say why not
+- `should-consider-merging-low-ratio-files`: every file with a coupling ratio below 0.3 carries a merge recommendation toward the group it depends on most, or the findings say why not
+- `should-separate-unidirectional-layers`: no recommended group joins two layers with a one-way dependency, or the findings say why
+- `should-flag-high-fan-in-files`: every file imported by 10+ files across multiple groups is listed under high fan-in files and not assigned to one group
+- `must-co-locate-cyclic-files`: every file of each cycle is in the same recommended scope group
+- `should-document-cycles-as-refactoring-targets`: every cycle in the findings is marked as a refactoring target
+- `should-not-count-star-imports-as-full-coupling`: every star import's coupling count rests on its verified symbol usage
+- `should-compute-coupling-metrics`: the findings give internal and external relationships, each cluster's coupling ratio, and fan-in (and fan-out) figures
+- `should-identify-dependency-direction`: the findings state the import direction between related directories
+- `should-note-import-cycles`: the findings list every import cycle under circular dependencies
+- `should-resolve-circular-dependencies`: every circular dependency in the findings carries a recommendation to resolve it

@@ -1,0 +1,15 @@
+
+- **non-sensitive-config**: Non-sensitive configuration (feature flags, URLs, tuning values) **MUST** live in ConfigMaps, not baked into images.
+- **sensitive-in-secrets**: Credentials, tokens, TLS keys, and connection strings **MUST** be stored as Secrets (or sourced from an external manager), never as ConfigMaps.
+- **no-plaintext-in-vcs**: Plaintext secret values **MUST NOT** be committed to manifests, Helm values, or any file in version control, and **MUST NOT** be baked into image layers or build args.
+- **treat-secret-as-encoded-not-encrypted**: You SHOULD treat a Kubernetes Secret as **base64-encoded, not encrypted** — protect it at the cluster level or source it from a dedicated secret manager.
+- **adopt-only-on-measured-need**: You SHOULD adopt Kubernetes only when a measured operational need justifies it (per YAGNI). A single container, a serverless platform, or a managed PaaS is often the simpler default; the guidance below applies once you have committed to Kubernetes.
+- **encryption-at-rest**: Clusters using raw Secret objects **MUST** enable [encryption at rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) for etcd, preferring a KMS provider (KMS v2 is stable as of Kubernetes 1.29) over local `aescbc`/`secretbox` keys.
+- **least-privilege-rbac**: RBAC **MUST** restrict `get`/`list`/`watch` on Secrets to the specific ServiceAccounts and subjects that need them; wildcard or namespace-wide secret read access **MUST NOT** be granted.
+- **etcd-protection**: Access to etcd and to node disks **SHOULD** be tightly controlled, since either path exposes Secret contents directly.
+- **prefer-managed-store**: Production secrets **SHOULD** come from a managed secret store (Vault, a cloud secret manager via the Secrets Store CSI driver, or ESO), not hand-authored Secret objects. For production, source secrets from a dedicated manager rather than managing raw Secret objects by hand. This adds audit logging, rotation, and a single source of truth.
+- **mount-choice**: You SHOULD inject config as environment variables for simple scalars; mount as a volume when files, larger payloads, or live updates are needed. Volume-mounted ConfigMaps/Secrets update in place; env vars do **not** and require a Pod restart.
+- **support-rotation**: Workloads **SHOULD** tolerate rotated credentials — watch mounted files or restart on change — so secrets can be rotated without a redeploy.
+- **immutable-when-stable**: You SHOULD mark ConfigMaps and Secrets `immutable: true` when their values are fixed for the release, reducing apiserver load and preventing accidental edits.
+- **pin-and-revalidate-secret-tooling**: You SHOULD pin Helm charts and operator versions, and re-validate against the dated upstream docs before adopting new flows.
+- **consult-counsel-on-compliance**: Handling credentials and PII in clusters is engineering guidance, **not legal advice**; you SHOULD consult the relevant regulations and counsel for compliance obligations.

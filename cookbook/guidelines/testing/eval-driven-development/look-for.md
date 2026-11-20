@@ -1,0 +1,20 @@
+
+- `should-treat-evals-as-test-suite`: non-deterministic parts of the system with no eval suite standing in as their tests
+- `must-use-deterministic-tests-for-fixed-output-logic`: parsers, schema validation, tool-call argument construction, retries and other fixed-output logic covered by ordinary deterministic tests
+- `should-not-wrap-deterministic-code-in-judge`: an LLM judge grading code whose correct output is fixed
+- `must-use-eval-harness-for-varying-outputs`: agent decisions, generated text, multi-step tool use or RAG answer quality tested by an eval harness, not a single assertion run
+- `should-isolate-deterministic-and-probabilistic-layers`: deterministic logic tangled into the LLM call so it can only be tested through an eval
+- `must-prefer-code-based-grader`: an LLM judge used where the success criterion could be checked in code
+- `should-grade-dimensions-with-separate-judges`: one judge prompt scoring several quality dimensions at once
+- `should-use-different-judge-model`: the judge configured with the same model as the system under test
+- `must-not-gate-on-uncalibrated-judge`: a model-based grader that blocks a merge, fails a build or accepts a release with no calibration record
+- `must-measure-judge-agreement-on-gold-set`: a human-labeled gold set and a measured judge agreement figure
+- `must-recalibrate-on-judge-change`: changes to the judge prompt, judge model or rubric with no fresh calibration
+- `should-let-judge-abstain`: a judge prompt with no "Unknown" or abstain option
+- `should-read-raw-transcripts-and-grades`: a process for periodically reading raw transcripts and grades, not only aggregate scores
+- `must-report-multiple-runs`: eval results reported from a single run per input
+- `should-distinguish-once-from-every-time`: reported metrics that do not say whether they mean success at least once (`pass@k`) or every time (`pass^k`)
+- `should-track-consistency-over-time`: a consistency metric recorded across runs over time
+- `must-keep-held-out-test-set`: a held-out test set kept out of prompt, rubric and judge iteration
+- `should-separate-gold-set-from-held-out-set`: shared items between the judge-calibration gold set and the held-out behavior test set
+- `should-version-eval-datasets`: eval datasets versioned alongside the code

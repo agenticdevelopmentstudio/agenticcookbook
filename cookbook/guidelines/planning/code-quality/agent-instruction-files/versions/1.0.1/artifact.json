@@ -1,0 +1,50 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "5aad79dd-4d0e-463e-8059-39da2fef63b3",
+    "title": "Agent instruction files (AGENTS.md / CLAUDE.md)",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Ship a lean machine-targeted instruction file at the repo root that states build/test/run commands, conventions, and what is out of scope.",
+    "platforms": [],
+    "tags": [
+      "agents",
+      "documentation",
+      "ai-workflow"
+    ],
+    "depends-on": [],
+    "related": [
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0"
+    ],
+    "references": [
+      "https://agents.md/",
+      "https://code.claude.com/docs/en/best-practices",
+      "https://aaif.io/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation-aaif-anchored-by-new-project-contributions-including-model-context-protocol-mcp-goose-and-agents-md/",
+      "https://arxiv.org/pdf/2602.11988"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "names_hosts": "Compares AGENTS.md with Claude Code's CLAUDE.md: both hosts' instruction files are the subject.",
+  "synced": "88f5a4247a4e3d0b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "which-file-to-ship", "heading": "Which file to ship"},
+    {"part": "what-to-include", "heading": "What to include"},
+    {"part": "monorepos-nest-per-directory-files", "heading": "Monorepos: nest per-directory files"},
+    {"part": "keep-it-lean-prune-ruthlessly", "heading": "Keep it lean — prune ruthlessly"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

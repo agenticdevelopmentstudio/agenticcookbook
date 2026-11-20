@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Thin but complete: one real path through every layer and boundary (UI → API → store → deploy), not a finished feature — connect the architecture before investing in any single part.",
+      "to": "should-keep-the-thread-thin-but-complete",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD the thin-but-complete thread: one real path through every layer and boundary, not a finished feature, connecting the architecture before investing in any part.",
+        "pin": "e9066ec2aeac77f02c24c1c717e38e42814ad6629777bec78940a43338c2bbff"
+      }
+    },
+    {
+      "sentence": "This is the balance with YAGNI: build the shell only for the path you are committed to and that is expensive to wire up later.",
+      "to": "should-build-the-shell-only-for-the-committed-path",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the YAGNI balance and building the shell only for the committed path that is expensive to wire up later, at SHOULD.",
+        "pin": "9fb08f944227c54e9134e6fcf5aacd73d13d71f680c0ed666a608273f12fa25e"
+      }
+    },
+    {
+      "sentence": "Do not pre-build features, options, or abstractions you don't yet need — that remains YAGNI.",
+      "to": "should-not-pre-build-unneeded-features",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps not pre-building unneeded features, options or abstractions as SHOULD NOT, with the that-remains-YAGNI framing.",
+        "pin": "d8ebad215032924c096503968ddc7d9af1b5269172500f85f04239abd4ee88c0"
+      }
+    },
+    {
+      "sentence": "Front-load the risky integrations: the thread should pierce the boundaries most likely to surprise you (auth, third-party APIs, the deploy pipeline), so failures surface while they are cheap.",
+      "to": "should-front-load-risky-integrations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD piercing the boundaries most likely to surprise (auth, third-party APIs, deploy pipeline), with the cheap-failure reason.",
+        "pin": "6504439a164f9127586df254cc1171721ca00e68143a0bf9692ca5f1da1c77d6"
+      }
+    },
+    {
+      "sentence": "For agents: validate the end-to-end shape before spending effort on breadth, so a wrong architecture is caught early instead of after generating volume against it.",
+      "to": "should-validate-shape-before-breadth",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the for-agents scope and validating the end-to-end shape before breadth at SHOULD, with the catch-a-wrong-architecture-early reason.",
+        "pin": "c6a8efe5ee4d65a803e4bc4584f94777c159af3b3a54b8e389a58e661be71116"
+      }
+    }
+  ],
+  "obsolete": []
+}

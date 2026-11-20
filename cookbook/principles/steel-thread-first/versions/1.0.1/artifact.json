@@ -1,0 +1,43 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "b224ef56-65f5-45fd-8842-767b20df6736",
+    "title": "Steel thread first",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Build the thinnest end-to-end slice through every boundary before breadth — the disciplined answer to scaffolding vs YAGNI.",
+    "platforms": [],
+    "tags": [
+      "steel-thread",
+      "walking-skeleton",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "793f491f-a352-4478-876d-7c5d871488f7",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2",
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+      "ffa8565d-b105-4758-b850-9d9b8119b838"
+    ],
+    "references": [
+      "https://www.rubick.com/steel-threads/",
+      "https://bryceyork.com/steel-threads/",
+      "https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton",
+      "https://news.ycombinator.com/item?id=35090989"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10"
+  },
+  "synced": "2fd22a72eca12920",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

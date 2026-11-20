@@ -1,0 +1,27 @@
+
+- `should-name-rule-files-lowercase-kebab-case`: every rule file name is descriptive lowercase kebab-case
+- `may-include-a-title-or-version-in-frontmatter`: rule frontmatter, where present, holds a title or version
+- `should-have-a-clear-title`: each rule opens with a title naming its purpose
+- `should-number-procedural-steps`: each procedural rule's steps are numbered or clearly separated
+- `should-give-distinct-concerns-their-own-sections`: each distinct concern has its own headed section
+- `should-use-an-imperative-tone`: every requirement uses an RFC 2119 keyword
+- `should-be-deterministic`: every rule reads one way only
+- `should-list-every-referenced-file`: every reference lists its file paths
+- `should-be-self-contained-or-clearly-scoped`: each rule contains what it needs or names where to find it
+- `should-not-use-vague-directives`: every directive names a concrete action
+- `should-avoid-vague-rules`: every rule is actionable
+- `should-avoid-contradictory-rules`: no two rules contradict
+- `should-avoid-unbounded-scope`: each rule governs one specific concern
+- `should-avoid-missing-file-paths`: no rule asks for reading without listing the files
+- `should-avoid-duplicating-claude-md`: no rule repeats project-instruction content
+- `should-avoid-rules-with-no-enforcement-mechanism`: each rule gives steps to verify compliance
+- `should-keep-per-turn-content-minimal`: the rule file itself holds only minimal per-turn content
+- `should-put-large-reference-material-on-demand`: large reference material lives in external files read on demand
+- `should-keep-rule-files-under-200-lines`: every rule file is under 200 lines / ~8KB
+- `should-inline-small-and-reference-large`: small content is inline and large content referenced
+- `should-not-duplicate-across-rules`: each concept is covered by one rule
+- `should-use-globs-for-file-specific-rules`: every file-pattern rule has `globs` frontmatter
+- `should-deduplicate-must-nots`: every MUST NOT adds a constraint not stated elsewhere
+- `should-avoid-mandatory-multi-file-reads`: no rule requires multi-file reads before work begins
+- `should-inline-mostly-metadata-files`: no referenced file is >50% YAML metadata
+

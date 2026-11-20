@@ -1,0 +1,52 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "cc7f5ee6-a848-490a-9a28-e4acae0855b3",
+    "title": "Infrastructure as code",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Define infrastructure declaratively in version control and apply it through a reviewed plan, never by hand.",
+    "platforms": [],
+    "tags": [
+      "iac",
+      "infrastructure",
+      "devops"
+    ],
+    "depends-on": [],
+    "related": [
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "39c2d053-006f-42c9-9db4-d991c1688024",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
+    ],
+    "references": [
+      "https://opentofu.org/docs/",
+      "https://opentofu.org/docs/language/settings/backends/s3/",
+      "https://developer.hashicorp.com/terraform/cli/commands/plan",
+      "https://developer.hashicorp.com/terraform/language/state"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "configuration",
+      "new-module"
+    ]
+  },
+  "synced": "6535334438b6b1a9",
+  "parts": [
+    {"part": "intro"},
+    {"part": "declarative-idempotent-definitions", "heading": "Declarative, idempotent definitions"},
+    {"part": "plan-before-apply", "heading": "Plan before apply"},
+    {"part": "remote-state-with-locking", "heading": "Remote state with locking"},
+    {"part": "drift-detection-and-reconciliation", "heading": "Drift detection and reconciliation"},
+    {"part": "modules-credentials-and-secrets", "heading": "Modules, credentials, and secrets"},
+    {"part": "adopt-when-justified-yagni", "heading": "Adopt-when-justified (YAGNI)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

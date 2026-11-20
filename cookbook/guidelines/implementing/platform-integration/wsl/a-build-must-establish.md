@@ -1,0 +1,19 @@
+
+- `linux-files-in-linux-fs`: project files Linux tools work on live in the Linux file system, not under `/mnt/c/...`, or the code says why not
+- `windows-files-in-windows-fs`: files Windows tools work on live in the Windows file system, or the code says why not
+- `must-not-hardcode-mnt-c`: no code or script contains a hardcoded `/mnt/c`
+- `must-convert-with-wslpath`: every Windows/Linux path conversion calls `wslpath`; none uses string replacement
+- `must-start-distribution-first`: code that relies on a `\\wsl$` path starts the distribution first
+- `must-use-one-line-ending-convention`: one line-ending convention holds across Windows, WSL and containers
+- `must-set-in-gitattributes`: `.gitattributes` sets line endings per file type, and nothing relies on a developer's global configuration
+- `shell-scripts-must-stay-lf`: every shell script is LF, enforced in `.gitattributes`
+- `install-git-per-file-system`: Git is installed in each file system it is used from, or the setup says why not
+- `must-configure-git-same-convention`: every Git installation is configured for the same line-ending convention
+- `set-automount-options`: `[automount] options` sets `uid`, `gid`, `umask`, `fmask` and `dmask` wherever the defaults do not suit
+- `should-not-differ-only-by-case`: no two names in a tree shared with Windows differ only by case, or the code says why
+- `must-call-with-exe`: every Windows program called from WSL is named with its `.exe` suffix
+- `must-check-program-exists`: each script checks that a Windows program exists before calling it
+- `must-detect-wsl`: every Windows-only command is guarded by WSL detection and never runs on plain Linux
+- `must-not-assume-networking-mode`: no code assumes a WSL networking mode
+- `must-make-address-configurable`: every address between the Windows host and the distribution is configurable
+- `must-restart-after-config-change`: each `wsl.conf` or `.wslconfig` change runs `wsl --terminate <distro>` or `wsl --shutdown` and waits for exit before restart

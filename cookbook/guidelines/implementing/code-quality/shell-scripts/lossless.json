@@ -1,0 +1,156 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Declare the shell in the shebang and write to that shell's rules.",
+      "to": "should-declare-shell-in-shebang",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Declaring the shell in the shebang and writing to that shell's rules is kept at SHOULD, with the POSIX sh restrictions as a sub-point.",
+        "pin": "2cf4dc3650a1fe6cd2e482c1bc8ff074d38a0260e5fdb44806ab4f9c0319743a"
+      }
+    },
+    {
+      "sentence": "Use `#!/usr/bin/env bash` (or zsh) only when you need those features, and then do not call the script with `sh`.",
+      "to": "should-use-bash-or-zsh-only-when-needed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using a bash or zsh shebang only when those features are needed, and not calling such a script with sh, are both kept at SHOULD/SHOULD NOT.",
+        "pin": "6bc2ae28659bf231cf4643be822719d9caa085da24a39af20c1dc0210f2318f0"
+      }
+    },
+    {
+      "sentence": "Quote every expansion and use `setopt`-independent forms so the script behaves the same under either.",
+      "to": "should-use-setopt-independent-forms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Quoting every expansion and using setopt-independent forms so the script behaves the same under zsh or bash is kept at SHOULD, with the zsh-differences explanation.",
+        "pin": "990871c678ed2663007286952a239ef5477251c289ed11c26e466a053ad85501"
+      }
+    },
+    {
+      "sentence": "A script does not need it and must not depend on it.",
+      "to": "must-not-depend-on-job-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That a script does not need job control and must not depend on it is kept, at MUST NOT, with the set -m explanation.",
+        "pin": "b7313e20d76810dd5f270b0780638bdfae2504d176843927169e4ad4868a4690"
+      }
+    },
+    {
+      "sentence": "Start background work with `&` and collect it with `wait`; never rely on `fg` or `bg` in a script.",
+      "to": "must-not-depend-on-job-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Starting background work with & and collecting it with wait is kept at SHOULD, and never relying on fg or bg is kept at MUST NOT.",
+        "pin": "de584da2868a25121987617412ea148816c7cbd0eedfbe87f59397f9f0467dea"
+      }
+    },
+    {
+      "sentence": "`set -e` is not a general error handler.",
+      "to": "should-check-important-commands-explicitly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The point that set -e is not a general error handler is kept as the rule's reason, with every case where it is ignored listed.",
+        "pin": "515ab9778c10b8c80fc72f26ee92d26a4c8a5dc8f40f318df4f5fae30c711598"
+      }
+    },
+    {
+      "sentence": "Check the commands that matter explicitly with `|| exit` or an `if`.",
+      "to": "should-check-important-commands-explicitly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Checking the commands that matter explicitly with || exit or an if is kept at SHOULD.",
+        "pin": "c5b697a8e5e0599626739308ff6e9adf003fa181d3565f040c78a4c75c5292e8"
+      }
+    },
+    {
+      "sentence": "Give optional values a default with `${name:-default}`.",
+      "to": "should-default-optional-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Giving optional values a ${name:-default} default is kept at SHOULD, with the set -u reason.",
+        "pin": "67c5e03a190b77ae8ea26eabe71993f0c27bcdb5398b454662e16a68073c1c53"
+      }
+    },
+    {
+      "sentence": "Older `sh` implementations may lack it, so test for it or avoid it in `#!/bin/sh` scripts.",
+      "to": "should-test-for-pipefail-or-avoid-it",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Testing for pipefail or avoiding it in #!/bin/sh scripts, because older sh may lack it, is kept at SHOULD with its reason.",
+        "pin": "991284a33d95f23260864c3e30c5d0ef6adb1d3bbbd9a5c9d2ab1909efcbde27"
+      }
+    },
+    {
+      "sentence": "Quote every expansion: `\"$var\"`, `\"$@\"`.",
+      "to": "should-quote-every-expansion",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Quoting every expansion, with the \"$var\" and \"$@\" examples, is kept at SHOULD, plus the quoting details.",
+        "pin": "2217fe996e083cf224916f32eacbf48af0aa16bd2c7b52f0697cfa7ac2a996e3"
+      }
+    },
+    {
+      "sentence": "Never build a command in a string and run it with `eval`.",
+      "to": "must-not-eval-built-strings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never building a command in a string and running it with eval is kept at MUST NOT.",
+        "pin": "a7cdf4652e3eec7e8a4fad12781a163c4dd08276e915aa66403f5e0731052e8c"
+      }
+    },
+    {
+      "sentence": "Use `trap` for cleanup.",
+      "to": "should-trap-for-cleanup",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using trap for cleanup is kept at SHOULD.",
+        "pin": "477c865e42dbfaf8c6b958063447a031fd2b2cfb252f3ef7e2b758331469fc33"
+      }
+    },
+    {
+      "sentence": "`trap 'cleanup' EXIT` runs when the shell exits; trap `INT` and `TERM` too if the script must clean up on a signal.",
+      "to": "should-trap-for-cleanup",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "trap 'cleanup' EXIT and trapping INT and TERM when the script must clean up on a signal are kept in the same rule.",
+        "pin": "ca9558532b8b58d49659b458f0ab8a09f8d321ec69fb30bb1880ad2ff584022e"
+      }
+    },
+    {
+      "sentence": "Put a time limit on any command that can hang with `timeout [options] duration command [arg]...` (GNU coreutils).",
+      "to": "should-time-limit-hanging-commands",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Putting a timeout on any command that can hang, with the full timeout syntax and GNU coreutils note, is kept at SHOULD.",
+        "pin": "746f7fd30e5015b6044dc69d80cfe342eedbbb7ff0b02d20c677e5efa474afcd"
+      }
+    },
+    {
+      "sentence": "Use `-k` to send a follow-up kill, and note that `timeout` is not part of POSIX and may be absent on macOS; check for it, or do the work in Python.",
+      "to": "should-time-limit-hanging-commands",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using -k for a follow-up kill, the note that timeout is not POSIX and may be absent on macOS, and checking for it or doing the work in Python are all kept.",
+        "pin": "0ba84e3706eabe741ffbd8e00645e3b0fee50ffa81f91efacb22d11dbbbb131b"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,45 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "2c605b36-da66-4eaf-b2d4-59ed5a3976b3",
+    "title": "Search for existing solutions before building",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Before writing new code, check the platform, your existing dependencies, your own codebases, and proven open source — and verify any candidate dependency is real.",
+    "platforms": [],
+    "tags": [
+      "reuse",
+      "dependencies",
+      "research"
+    ],
+    "depends-on": [],
+    "related": [
+      "495000e6-a1fc-4b43-8999-23089505559c",
+      "dec7cf4a-449b-47fa-9d6e-f7e9376383a7",
+      "256a827e-436e-4cde-895e-a56b9783edf2",
+      "b712c766-af1f-4716-b8fb-34bf0bbb13eb"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "dependency-management"
+    ]
+  },
+  "synced": "55ae3b45ee40a7f8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "look-in-this-order", "heading": "Look in this order"},
+    {"part": "research-before-reinventing", "heading": "Research before reinventing"},
+    {"part": "verify-before-adopting", "heading": "Verify before adopting"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

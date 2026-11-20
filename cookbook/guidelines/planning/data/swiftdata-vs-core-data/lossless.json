@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Preferred for fine-grained fetch tuning, batch operations at scale, and predictable performance on large datasets.",
+      "to": "should-prefer-core-data-for-tuning-and-scale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: Core Data preferred for fine-grained fetch tuning, batch operations at scale and predictable performance on large datasets; the rule names Core Data, which the old bullet's section heading supplied.",
+        "pin": "ab61af8f34cb79fd94f170f4eecdf15255642ca863edbb2f7861504b4043f16c"
+      }
+    },
+    {
+      "sentence": "Apply these in order; the first matching row decides.",
+      "to": "should-apply-the-decision-rows-in-order",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: apply the decision rule's rows in order, the first matching row decides; the table itself is kept intact.",
+        "pin": "5909b1a71503f0a38ad203d278f95bc5a09d4aecfebd97b66e9b4fb8cbbdb631"
+      }
+    },
+    {
+      "sentence": "Make this a **deliberate decision**, not a reach for the newest API.",
+      "to": "should-make-the-choice-deliberately",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the choice is a deliberate decision, not a reach for the newest API.",
+        "pin": "79bb594422cc0c4d03d8692d3b39de8ab7e89d4c3489d7793c988772b8182cf3"
+      }
+    },
+    {
+      "sentence": "Define models with the `@Model` macro on a Swift class — no `.xcdatamodeld` file or `NSManagedObject` subclass required.",
+      "to": "should-define-models-with-the-model-macro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to SwiftData models as the old notes section was: `@Model` macro on a Swift class, no `.xcdatamodeld` or `NSManagedObject` subclass required.",
+        "pin": "2cf66fb279185cbeafb31933a06e23e6411b9c0a637f8361f4ce5bbca8dcc6fd"
+      }
+    },
+    {
+      "sentence": "Use `@ModelActor` for background work; it gives clearer actor-isolation boundaries under Swift 6 strict concurrency than Core Data's `perform` closures.",
+      "to": "should-use-modelactor-for-background-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, including the Swift 6 strict-concurrency reason versus Core Data's `perform` closures.",
+        "pin": "83fb90d1f8d10d369ba238c7fa3b2bcdd328a73077fc1f5500ac4dfbfba9f55f"
+      }
+    },
+    {
+      "sentence": "Commonly requested items (shared/public CloudKit sync, dynamic predicate adjustment) did **not** ship — treat them as unavailable, not roadmap guarantees.",
+      "to": "should-treat-unshipped-swiftdata-features-as-unavailable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: shared/public CloudKit sync and dynamic predicate adjustment did not ship and are treated as unavailable, not roadmap guarantees; the iOS 26 cycle context stays in swiftdata-notes-as-of-2026.",
+        "pin": "d8fbd7f05f95eb26bbad044283a80ba55af9b7e2f482375fa635493d07830b04"
+      }
+    }
+  ],
+  "obsolete": []
+}

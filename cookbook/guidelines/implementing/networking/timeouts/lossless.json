@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "For long-running operations, use **202 Accepted** + polling pattern instead of extending",
+      "to": "should-use-202-for-long-running-operations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the long-running-operations condition: 202 Accepted plus polling instead of extending timeouts.",
+        "pin": "dc66dd4ffb2fa339eac11a2e5dd6d2c68614cd16235a81318481be0e44ee1330"
+      }
+    },
+    {
+      "sentence": "timeouts.",
+      "to": "should-use-202-for-long-running-operations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "This is the wrapped tail ('timeouts.') of the 202 Accepted sentence, carried whole by the same SHOULD rule.",
+        "pin": "6022aff58ac03f3395adc98498a02c6ddaacb613933ca5467442f349c5fb6a9d"
+      }
+    }
+  ],
+  "obsolete": []
+}

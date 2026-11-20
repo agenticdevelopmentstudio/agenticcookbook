@@ -1,0 +1,37 @@
+
+- `must-declare-in-pyproject`: whether every project installed or imported by other code declares itself in `pyproject.toml`
+- `should-use-project-tables-for-extras-and-scripts`: whether extras and entry points are declared in `[project.optional-dependencies]` and `[project.scripts]`
+- `should-not-write-setup-py`: whether a new project adds a `setup.py`
+- `should-match-requires-python-to-oldest-tested`: whether `requires-python` matches the oldest interpreter tested
+- `should-carry-inline-script-metadata`: whether each single-file script with dependencies carries PEP 723 metadata
+- `should-ship-py-typed`: whether a typed library ships `py.typed`
+- `should-annotate-signatures-and-public-attributes`: whether every function signature and public attribute is annotated
+- `should-type-check-strictly-in-ci`: whether CI runs a strict type check and it passes
+- `should-not-blanket-ignore-types`: whether any `# type: ignore` is blanket rather than one code with a reason
+- `should-run-commands-as-lists`: whether external programs run through `subprocess.run` with a list
+- `must-not-shell-out-foreign-values`: whether any `shell=True` string holds a value the code did not write itself
+- `should-shlex-quote-when-a-shell-is-required`: whether every value interpolated into a required shell string is `shlex.quote`d
+- `should-check-exit-status`: whether every subprocess call sets `check=True` or inspects `returncode` on purpose
+- `should-pass-timeout-to-hanging-commands`: whether every command that could hang has a `timeout=`
+- `should-capture-output-as-text`: whether output that is read is captured with `capture_output=True` and `text=True`
+- `should-not-mix-capture-output-and-streams`: whether any call combines `capture_output` with `stdout` or `stderr`
+- `should-build-env-from-os-environ`: whether each custom `env` starts from `os.environ` unless a clean one is meant
+- `should-use-pathlib`: whether paths are `pathlib.Path` rather than strings or `os.path`
+- `should-join-read-and-write-with-path-methods`: whether paths are joined with `/` and files read and written with `read_text`/`write_text`
+- `must-pass-utf-8-encoding`: whether every text read and write passes `encoding="utf-8"`
+- `should-make-and-search-directories-with-path`: whether directories are made with `mkdir(parents=True, exist_ok=True)` and searched with `glob`/`rglob`
+- `should-resolve-before-containment-check`: whether every containment check resolves the path first
+- `should-catch-narrowest-exception`: whether each handler catches the narrowest exception it can handle
+- `must-not-use-bare-except`: whether any bare `except:` exists
+- `should-not-catch-exception-outside-boundary`: whether `except Exception` appears anywhere but a process boundary that logs and exits
+- `should-name-errors-with-error-suffix`: whether new errors subclass `Exception` and end in `Error`
+- `should-chain-translated-exceptions`: whether every translated exception is chained with `from`
+- `should-use-from-none-only-on-purpose`: whether each `from None` hides an implementation detail on purpose
+- `should-keep-try-bodies-small`: whether `try` bodies are small
+- `should-use-else-and-finally`: whether success-only code is in `else` and cleanup in `finally`
+- `must-not-leave-finally-by-jump`: whether any `finally` block has `return`, `break` or `continue`
+- `should-add-note-instead-of-wrapping`: whether context is added with `add_note()` rather than an empty wrap
+- `should-start-untrusted-scripts-isolated`: whether scripts run from directories outside the user's control start with `python -I`
+- `should-not-use-m-from-untrusted-directory`: whether `-m` is used from an untrusted working directory
+- `must-not-run-interpreter-in-downloads`: whether any interpreter runs inside a directory of downloaded files
+- `should-pass-downloads-as-arguments`: whether downloaded paths are passed as arguments from the code's own directory

@@ -1,0 +1,19 @@
+
+- `must-fill-every-required-section`: whether every required section has meaningful body content, not a heading alone
+- `must-explain-each-needs-review-gap`: whether every `NEEDS REVIEW` marker states what is missing, why it could not be determined, and who or what could resolve it
+- `must-not-stack-needs-review-markers`: whether any section stacks several gaps under one `NEEDS REVIEW` marker
+- `must-not-use-needs-review-for-later-content`: whether any `NEEDS REVIEW` marker stands in for content the author means to add later
+- `must-address-applicable-edge-case-categories`: whether the Edge Cases section addresses each applicable category: null and empty input, boundary values, concurrent access, error states, offline or disconnected state
+- `must-explain-inapplicable-edge-case-categories`: whether each inapplicable category carries a brief statement of why
+- `must-not-limit-edge-cases-to-happy-path`: whether the Edge Cases section reflects deliberate analysis of failure modes rather than the happy path and one error case
+- `must-state-condition-behavior-and-level-per-edge-case`: whether each edge case entry states its condition, expected behavior and MUST or SHOULD level
+- `must-give-every-must-requirement-a-test-vector`: whether every MUST requirement has at least one test vector
+- `must-specify-test-vector-precondition-action-outcome`: whether every test vector specifies its precondition or input, action and expected observable outcome
+- `must-make-test-vector-outcomes-concrete`: whether each outcome is concrete enough that two independent testers reach the same PASS/FAIL conclusion
+- `must-exercise-failure-modes-in-test-vectors`: whether each MUST requirement that involves a failure mode has a test vector exercising that failure
+- `should-give-should-requirements-test-vectors`: whether SHOULD requirements have test vectors
+- `must-document-missing-should-test-vectors`: whether each SHOULD requirement without a test vector has a documented rationale for the omission
+- `must-label-test-vectors`: whether every test vector is numbered or labeled
+- `must-explain-non-obvious-constraints`: whether the Design Decisions section explains every non-obvious constraint in Behavioral Requirements
+- `must-not-leave-design-decisions-empty-with-should`: whether the Design Decisions section is non-empty when any SHOULD requirement exists
+- `must-not-submit-with-reminder-markers`: whether a recipe submitted for review carries a `NEEDS REVIEW` marker that is a work-in-progress note

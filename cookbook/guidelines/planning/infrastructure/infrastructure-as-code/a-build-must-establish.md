@@ -1,0 +1,28 @@
+
+- `must-define-infrastructure-as-declarative-code`: every piece of infrastructure is declarative code in version control, changed only through a reviewed, planned apply
+- `should-describe-the-desired-end-state`: definitions state the desired end state, or the work says why not
+- `must-be-idempotent`: a re-apply of the unchanged configuration shows no changes
+- `must-be-reproducible`: the infrastructure builds from the code and inputs alone on a clean machine
+- `should-pin-tool-and-provider-versions`: a committed lockfile pins tool and provider versions, or the work says why not
+- `should-prefer-mature-declarative-tooling`: the tooling is OpenTofu, Terraform or Pulumi, or the work says why not
+- `must-plan-before-apply`: every apply follows a plan/preview of the same change
+- `must-inspect-the-plan-diff`: every plan diff is inspected by a human or gated CI step before approval
+- `should-run-plan-in-ci-on-every-pull-request`: CI runs `plan` on every pull request and surfaces the diff in it, or the work says why not
+- `should-apply-only-from-a-protected-branch`: `apply` runs only from a protected branch or gated pipeline, or the work says why not
+- `should-confirm-the-cause-of-replacements`: each replacement in a plan has its cause confirmed before apply, or the work says why not
+- `must-keep-state-in-a-remote-backend`: state is in a versioned, recoverable remote backend and nowhere in git or only on a laptop
+- `must-lock-state-writes`: the state backend locks writes
+- `should-prefer-native-s3-lockfile-locking`: an S3 backend sets `use_lockfile = true`, or the work says why not
+- `should-use-a-consistent-state-key-convention`: state keys follow `<env>/<component>/terraform.tfstate`, or the work says why not
+- `must-not-let-drift-become-the-source-of-truth`: no drift is left standing; each is reconciled into code or reverted
+- `should-run-scheduled-drift-detection`: scheduled drift detection is configured, or the work says why not
+- `should-encode-intended-drift`: intended drift is in the configuration and re-applied, or the work says why not
+- `should-factor-repeated-patterns-into-modules`: repeated patterns are pinned modules with explicit inputs/outputs, or the work says why not
+- `should-keep-environments-as-separate-state`: each environment has its own state over shared modules, or the work says why not
+- `must-use-least-privilege-credentials`: provider credentials are least-privilege, short-lived where possible, supplied from environment/secret store, and nowhere hard-coded
+- `must-not-expose-secrets-in-plaintext-state`: no secret appears in plaintext state
+- `should-not-emit-secrets-as-outputs`: no secret is an output; secrets go to a secrets manager during apply, or the work says why not
+- `should-restrict-state-read-access`: state read access is restricted, or the work says why not
+- `should-adopt-heavy-iac-platforms-only-on-measured-need`: any managed IaC platform, operator or multi-account orchestration names its measured need, or the work says why
+- `should-start-with-the-smallest-layout-that-works`: the backend and module layout is the smallest that works, or the work says why not
+- `should-confirm-obligations-with-counsel`: data-residency and credential-handling obligations were confirmed with qualified counsel, or the work says why not

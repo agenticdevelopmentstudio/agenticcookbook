@@ -1,0 +1,14 @@
+
+- `must-main-only-call-functions`: each `main()` the build writes contains only function calls
+- `must-keep-scripts-composable-and-testable`: each script's logic is in functions that can be called on their own
+- `should-declare-shell-in-shebang`: each script has a shebang, and a `#!/bin/sh` script uses no bash or zsh extension, or the build says why not
+- `should-use-bash-or-zsh-only-when-needed`: each bash or zsh shebang is on a script that uses their features and is not run with `sh`, or the build says why not
+- `should-use-setopt-independent-forms`: each script gives the same result run under zsh and under bash, or the build says why not
+- `must-not-depend-on-job-control`: no script contains `set -m`, `fg` or `bg`, and background work is started with `&` and collected with `wait`, or the build says why not
+- `should-check-important-commands-explicitly`: each command that matters is followed by `|| exit` or tested in an `if`, or the build says why not
+- `should-default-optional-values`: each optional variable is expanded as `${name:-default}`, or the build says why not
+- `should-test-for-pipefail-or-avoid-it`: no `#!/bin/sh` script uses `pipefail` without testing for it, or the build says why not
+- `should-quote-every-expansion`: a scan of the scripts finds no unquoted expansion, or the build says why not
+- `must-not-eval-built-strings`: no script runs `eval` on a built string
+- `should-trap-for-cleanup`: each script needing cleanup sets a `trap` on `EXIT` (and `INT`, `TERM` where needed), or the build says why not
+- `should-time-limit-hanging-commands`: each command that can hang is wrapped in `timeout` with 124 and 137 handled and `timeout` checked for, or the build says why not

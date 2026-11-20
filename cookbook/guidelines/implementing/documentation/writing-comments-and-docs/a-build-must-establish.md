@@ -1,0 +1,28 @@
+
+- `should-comment-the-why`: each comment gives a reason, outside constraint, trap or rejected alternative, or the work says why not
+- `should-not-restate-the-line`: no comment restates the line below it, or the work says why not
+- `should-try-a-clearer-name-first`: no comment explains a block that a clearer name or smaller function could explain, or the work says why not
+- `should-name-the-source-of-surprising-values`: every surprising value names its spec section, ticket or measurement, or the work says why not
+- `should-update-docs-in-the-same-change`: the change updates every comment, docstring, README section and instruction file describing what it altered, or the work says why not
+- `should-search-docs-for-changed-names`: a search of the docs finds no stale use of a changed name, or the work says why not
+- `should-describe-new-public-behavior`: new public behavior is described where users will look, or the work says why not
+- `should-remove-docs-of-removed-behavior`: no description of removed behavior remains, or the work says why not
+- `should-give-both-readers-exact-specifics`: docs carry exact names, the real command, the real path and when each rule applies, or the work says why not
+- `should-lead-with-the-point`: each doc states its answer before its background, or the work says why not
+- `should-prefer-concrete-examples`: examples are short and use real values, or the work says why not
+- `should-keep-one-canonical-term`: each concept uses one term throughout, or the work says why not
+- `should-say-what-is-true-now`: the prose holds no narration of how it got that way, or the work says why not
+- `should-prefer-specifics`: the prose names the thing, number or file, or leaves the sentence out, or the work says why not
+- `must-not-make-up-sources`: every statistic, source and quote is real
+- `should-cut-throat-clearing`: no passage opens by restating the title or closes by summarizing itself, or the work says why not
+- `should-use-short-ordinary-words`: the prose uses short ordinary words with no stock filler or stacked hedges, or the work says why not
+- `should-not-swap-synonyms-to-disguise-a-tic`: vague words are rewritten out, not swapped for synonyms, or the work says why not
+- `should-prefer-verbs-over-nominalizations`: verbs stand where nominalizations would, or the work says why not
+- `should-use-active-voice-by-default`: passive voice appears only where the actor does not matter, or the work says why not
+- `should-hedge-only-real-uncertainty`: each hedge names what is uncertain, or the work says why not
+- `should-vary-rhythm-by-content`: lists and paragraph endings follow the content, not a quota, or the work says why not
+- `should-make-punctuation-do-a-job`: the prose uses commas, colons, parentheses or new sentences instead of dashes, with no run-on clauses, or the work says why not
+- `should-keep-one-tense-and-register`: each passage keeps one tense and one register, or the work says why not
+- `should-state-the-premise`: each claim states its premise or is weakened to what is supported, or the work says why not
+- `must-use-visible-characters-only`: the text holds no look-alike or invisible Unicode characters
+- `should-run-humanize-where-available`: the humanize skill was run over the prose and its findings reviewed, or the rules were applied by hand, or the work says why not

@@ -1,0 +1,12 @@
+
+- `should-treat-high-coupling-ratio-as-candidate`: whether every cluster with a ratio above 0.6 was treated as a strong candidate
+- `should-consider-merging-low-ratio-files`: whether every file with a ratio below 0.3 was considered for merging into the group it depends on most
+- `should-separate-unidirectional-layers`: whether layers with one-way dependencies are separate scope groups
+- `should-flag-high-fan-in-files`: whether every high fan-in file across groups is flagged for `cross-cutting-detection`
+- `must-co-locate-cyclic-files`: whether all files of each cycle are in the same scope group
+- `should-document-cycles-as-refactoring-targets`: whether each cycle is documented as a refactoring target
+- `should-not-count-star-imports-as-full-coupling`: whether star imports were counted only after verifying symbol usage
+- `should-compute-coupling-metrics`: whether all five coupling metrics were computed
+- `should-identify-dependency-direction`: whether dependency direction between directories was identified
+- `should-note-import-cycles`: whether every import cycle is noted
+- `should-resolve-circular-dependencies`: whether each circular dependency is marked to be resolved

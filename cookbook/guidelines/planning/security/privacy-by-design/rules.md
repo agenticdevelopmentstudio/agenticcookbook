@@ -1,0 +1,20 @@
+
+- **should-build-privacy-in-from-the-first-design-decision**: You SHOULD build privacy into the system from the first design decision, not as a later bolt-on.
+- **should-consult-counsel-for-jurisdiction-specific-obligations**: This guidance is engineering practice, **NOT** legal advice; you SHOULD consult counsel for jurisdiction-specific obligations.
+- **must-produce-a-maintained-data-flow-map**: Before writing code, you **MUST** produce a personal-data flow map and treat it as a maintained artifact, not a throwaway sketch.
+  - For each category of personal data, record its what, why, where and how long (see the dimensions table).
+- **must-update-the-map-on-change**: The map **MUST** be updated when fields, processors, or destinations change.
+- **should-flag-data-with-no-stated-purpose**: You **SHOULD** flag any data with no stated purpose as a candidate for removal.
+- **should-run-a-dpia-before-high-risk-processing**: You **SHOULD** run a Data Protection Impact Assessment (DPIA) before building any high-risk processing — large-scale sensitive data, systematic monitoring, profiling, or automated decisions with legal/significant effects.
+- **must-record-dpia-risks-and-mitigations**: The DPIA **MUST** identify risks to individuals and the mitigations applied, and **SHOULD** be revisited when the processing materially changes.
+- **must-escalate-unmitigated-residual-risk**: If a DPIA surfaces a residual high risk you cannot mitigate, you **MUST** escalate rather than ship silently.
+- **must-not-collect-just-in-case**: Collect the **minimum** data necessary for the stated purpose — you **MUST NOT** collect data "just in case."
+- **should-pseudonymize-or-anonymize**: You **SHOULD** pseudonymize or anonymize wherever the use case allows; prefer true anonymization (irreversible) when no re-identification is needed, and pseudonymization (keyed, reversible) otherwise.
+- **should-keep-raw-identifiers-out-of-logs-analytics-and-prompts**: You **SHOULD** keep raw identifiers out of logs, analytics, and AI prompts; hash, tokenize, or redact before they leave the trusted boundary.
+- **must-delete-or-de-identify-when-purpose-ends**: Define retention up front and **MUST** delete or de-identify data when its purpose ends.
+- **must-default-to-the-most-protective-configuration**: Per GDPR Article 25 (privacy by *default*), the out-of-the-box configuration **MUST** be the most privacy-protective.
+- **must-make-sharing-opt-in**: Sharing, public visibility, and broad processing **MUST** be opt-in, not opt-out.
+- **must-default-telemetry-off**: Optional telemetry and tracking **MUST** default to off.
+- **should-follow-least-privilege**: Access **SHOULD** follow least privilege: only the roles that need a data category can read it.
+- **should-adopt-heavier-controls-only-when-justified**: Per YAGNI, you SHOULD adopt privacy-enhancing infrastructure (dedicated tokenization vaults, differential-privacy pipelines, confidential-compute enclaves, per-tenant key management) **only when a measured need justifies them** — driven by data sensitivity, regulatory scope, or DPIA findings — not as a reflexive default.
+- **should-start-with-minimization-and-de-identification**: You SHOULD start with minimization and de-identification, and escalate to specialized tooling when the risk profile demands it.

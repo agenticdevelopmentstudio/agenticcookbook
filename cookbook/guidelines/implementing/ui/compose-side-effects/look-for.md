@@ -1,0 +1,13 @@
+
+- `must-keep-composition-side-effect-free`: network calls, observer registration, logging or mutation of external objects directly in a composable body
+- `must-launch-effects-via-effect-api`: a side effect not launched through an effect API, or one not keyed to the inputs it reads
+- `must-key-every-restarting-value`: an effect missing a key for a value whose change should restart it
+- `must-wrap-fresh-non-restarting-values`: a value read freshly in an effect that is neither keyed nor wrapped in `rememberUpdatedState`, or keyed when it should not restart the effect
+- `must-key-or-wrap-every-read-variable`: any variable read inside an effect block that is neither a key nor wrapped in `rememberUpdatedState`
+- `should-use-launchedeffect-unit-only-when-lifecycle-scoped`: `LaunchedEffect(Unit)` / `LaunchedEffect(true)` for an effect that is not genuinely lifecycle-scoped
+- `must-wrap-latched-callbacks`: a `LaunchedEffect(Unit)` / `LaunchedEffect(true)` calling a latched callback not wrapped in `rememberUpdatedState`
+- `must-use-coroutine-scope-for-events`: event-driven work (button taps) run through `LaunchedEffect` instead of `rememberCoroutineScope`
+- `must-use-disposableeffect-for-cleanup`: a resource needing teardown acquired in `LaunchedEffect`, or a `DisposableEffect` with an empty `onDispose`
+- `should-prefer-producestate`: a manually launched coroutine writing to a `mutableStateOf` where `produceState` fits
+- `should-reserve-derivedstateof`: `derivedStateOf` for a trivial combination of state, or adopted without profiling showing wasted recompositions
+- `should-hoist-long-lived-work-to-viewmodel`: work that outlives composition held in an effect instead of the ViewModel

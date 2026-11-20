@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Typography: Segoe UI Variable",
+      "to": "should-use-segoe-ui-variable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed typography choice is kept at SHOULD: Segoe UI Variable.",
+        "pin": "33651fe566086dda19c6316a3cae63435bf2cccee298aaed3fb6f36be8ec4838"
+      }
+    },
+    {
+      "sentence": "Icons: Segoe Fluent Icons",
+      "to": "should-use-segoe-fluent-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed icon choice is kept at SHOULD: Segoe Fluent Icons.",
+        "pin": "13ea3d29a7f1b9dc2e439c0141ac0cdc5dbdb9d5a9bba7eb4dad5bea4896754f"
+      }
+    },
+    {
+      "sentence": "Applications MUST follow [Windows design guidance](https://learn.microsoft.com/en-us/windows/apps/design/) for layout, spacing, and navigation patterns",
+      "to": "must-follow-windows-design-guidance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST with the Windows design guidance link and the layout, spacing and navigation scope.",
+        "pin": "7e22e3d489dbf3e9d1e6f315921d6467a464051b1ff4e26a9b4b664c227b381c"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -4,11 +4,11 @@
     "id": "d2c1aaaf-3fc7-4410-ab9a-06c264aa3208",
     "title": "Properties of Good Tests",
     "type": "guideline",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -21,18 +21,21 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests",
       "code-review"
     ]
   },
-  "synced": "c541bd342e616cee",
+  "synced": "83d13aa596e350db",
   "parts": [
     {"part": "intro"},
-    {"part": "for-test-vectors-in-cookbook-artifacts", "heading": "For test vectors in cookbook artifacts"},
-    {"part": "less-relevant-for-cookbook-authoring", "heading": "Less relevant for cookbook authoring"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "less-relevant-for-cookbook-authoring", "heading": "Less relevant for cookbook authoring", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

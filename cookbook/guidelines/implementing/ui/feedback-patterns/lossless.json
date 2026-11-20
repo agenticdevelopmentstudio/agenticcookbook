@@ -1,0 +1,96 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Auto-dismiss",
+      "to": "should-auto-dismiss-toasts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed toast auto-dismiss is kept at SHOULD with the toast scope made explicit.",
+        "pin": "b16f8b6315741b3cc62b1a18a4324dbc3ad70ae2bb5061e6d735dbe1b1280126"
+      }
+    },
+    {
+      "sentence": "after 3-5 seconds.",
+      "to": "should-auto-dismiss-toasts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 3-5 second window is kept in should-auto-dismiss-toasts.",
+        "pin": "52b7a0a0ac18a7ced933937c5707e71ac0df5ae1323c341cfce7da63ae49f52e"
+      }
+    },
+    {
+      "sentence": "No user action required.",
+      "to": "must-require-no-action-on-toasts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The toast trait 'no user action required' is kept and strengthened to a MUST.",
+        "pin": "05b076fb68e73b696ca07c66ba9934ed733c1ece5c3ca3220c400c2efe1f392d"
+      }
+    },
+    {
+      "sentence": "Dismissible.",
+      "to": "should-make-banners-dismissible",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Dismissible' for banners/inline alerts is kept at SHOULD with the scope made explicit.",
+        "pin": "77a78e773e34f4a5ddc4a7091dd2fd80c09200cacdad720f9aeb095e2dd0dd37"
+      }
+    },
+    {
+      "sentence": "Use sparingly — dialog fatigue leads to",
+      "to": "should-use-dialogs-sparingly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'use sparingly' for dialogs is kept at SHOULD with the dialog-fatigue reason.",
+        "pin": "35e6da727bdcee4b3d47de7593c0f123d68f3c960fb81a285d90ebd4379f444e"
+      }
+    },
+    {
+      "sentence": "click-through without reading.",
+      "to": "should-use-dialogs-sparingly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The click-through-without-reading consequence is kept in should-use-dialogs-sparingly.",
+        "pin": "0c2883783171912cf5e1a1d6b309e64698e65d8465612845c3d758ce7d5a6bb9"
+      }
+    },
+    {
+      "sentence": "**Destructive actions** MUST require explicit confirmation with a clearly labeled action",
+      "to": "must-confirm-destructive-actions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: destructive actions require explicit confirmation with a clearly labeled action.",
+        "pin": "6c78c5aaec89de4f5419a2b4f1f647a1373360e174b29762a8bfe0a4aecb778b"
+      }
+    },
+    {
+      "sentence": "(\"Delete\", not \"OK\").",
+      "to": "must-confirm-destructive-actions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Delete', not 'OK' example is kept in must-confirm-destructive-actions.",
+        "pin": "bf6c3dce0bf085746b3d178c3f3341258c740768eedc340fddc8026ebc3480eb"
+      }
+    },
+    {
+      "sentence": "Default focus should be on the safe option (Cancel).",
+      "to": "should-default-focus-to-safe-option",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'should' is kept as SHOULD with the safe-option (Cancel) default focus.",
+        "pin": "9d426e178a87cbb0261b196665449e04ba90c03353bbe21b48fb79ae5c6cf731"
+      }
+    }
+  ],
+  "obsolete": []
+}

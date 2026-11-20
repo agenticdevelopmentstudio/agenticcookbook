@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The goal MUST be stated in one sentence.",
+      "to": "must-state-goal-in-one-sentence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST to state the goal in one sentence is kept, with the before-starting timing its section heading gave it.",
+        "pin": "c91fb05f402378f4ed5320e1dae6b8a4b984926b2c2bb3f52a002f7a1a97f83c"
+      }
+    },
+    {
+      "sentence": "If the request is ambiguous or could be interpreted broadly, ask before assuming broad scope.",
+      "to": "should-ask-before-assuming-broad-scope",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Asking before assuming broad scope when a request is ambiguous or broadly readable is kept at SHOULD with both conditions.",
+        "pin": "2ce84e3316f438cb956e05a27327115cd64efb5c72c0b3ceec9a8b18dc1b84a0"
+      }
+    },
+    {
+      "sentence": "For multi-repo work, confirm which repository before making changes.",
+      "to": "should-confirm-repository-for-multi-repo-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming which repository before making changes in multi-repo work is kept at SHOULD.",
+        "pin": "b49150b58ca5f99f6b6ec2019b0195d6d9add114b247864813684b261de3318c"
+      }
+    },
+    {
+      "sentence": "Only what was requested MUST be modified.",
+      "to": "must-modify-only-what-was-requested",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST that only what was requested be modified is kept, with the fix-that-bug elaboration as a sub-point.",
+        "pin": "af2d32cbf66ae623501c06c2efee46c10fac7a0ff17a54c452670780b348943d"
+      }
+    },
+    {
+      "sentence": "If you discover issues outside the stated scope — broken imports, outdated comments, missing error handling — **note them** for the user but MUST NOT fix them.",
+      "to": "must-note-but-not-fix-out-of-scope-issues",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on fixing out-of-scope issues is kept verbatim with all three examples, and noting them for the user is kept at SHOULD; the sample note and its prioritization reason are kept as a sub-point.",
+        "pin": "44b9737a22ba2204a813dacf883841c4e776db23cea9e477f7ef0ec8febc5979"
+      }
+    },
+    {
+      "sentence": "Watch for these signals that scope is expanding:",
+      "to": "should-watch-for-scope-creep-signals",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Watching for scope-creep signals is kept at SHOULD with all five signals listed.",
+        "pin": "4c1226a2da09c557e2b90a917b91d20b22d73702906f8858be461c137f8aded2"
+      }
+    }
+  ],
+  "obsolete": []
+}

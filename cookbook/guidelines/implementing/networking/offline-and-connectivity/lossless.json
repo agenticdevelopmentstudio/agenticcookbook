@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Track `last_synced_at` per entity for delta sync",
+      "to": "should-track-last-synced-at",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: track last_synced_at per entity for delta sync.",
+        "pin": "70c5e82887b15b8934a6d7c98a1b0f1627ac24480a8532f9d22e3abc28324c3d"
+      }
+    },
+    {
+      "sentence": "Show clear connectivity status to the user",
+      "to": "should-show-connectivity-status",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: show clear connectivity status to the user.",
+        "pin": "6f12e3af72b6725ccabc51fc23421c1f66d03c3ab2b3249bc964784c242b40b0"
+      }
+    }
+  ],
+  "obsolete": []
+}

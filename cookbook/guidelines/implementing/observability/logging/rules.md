@@ -1,0 +1,24 @@
+
+- **must-instrument-with-platform-framework**: Every component and flow MUST be instrumented with structured logging using the platform's best-in-class framework:
+  - **Apple**: `os.log` (`Logger` from `os`) — subsystem matching bundle ID, category per component
+  - **Android**: `Timber` (or `android.util.Log`)
+  - **Web**: `console` with structured prefixes, or `pino`/`winston` in Node
+  - **Python**: `logging` module with module-level loggers
+  - **Windows/.NET**: `ILogger<T>` from `Microsoft.Extensions.Logging` — category per class via generic parameter
+- **should-use-debug-for-flow-instrumentation**: Code SHOULD use `debug` level for flow instrumentation, UI flow instrumentation included.
+- **should-log-flow-events**: Code SHOULD log state transitions, user interactions, async task start/completion/failure, and branching logic.
+- **must-not-log-pii**: Code MUST NOT log personally identifiable information in any field, even at debug level.
+- **must-match-subsystem-to-bundle-id**: On Apple platforms, the `Logger` subsystem MUST match the bundle ID.
+- **must-use-one-category-per-component**: On Apple platforms, the `Logger` category MUST be one per component or flow.
+- **should-use-android-log-with-consistent-tags**: On Android, if no dependency is desired, code SHOULD use `android.util.Log` with consistent tags.
+- **should-use-structured-message-templates**: In C#, code SHOULD use structured message templates: `logger.LogInformation("Processing {OrderId}", orderId)`.
+- **must-not-interpolate-in-log-calls**: In C#, code MUST NOT use string interpolation (`$"..."`) in log calls — it bypasses structured logging and prevents log aggregation.
+- **should-use-loggermessage-for-hot-paths**: In C#, code SHOULD use the `[LoggerMessage]` source generator attribute for high-performance hot paths.
+- **should-configure-log-levels-per-category**: In C#, code SHOULD configure log levels per category via `appsettings.json`.
+- **should-use-etw-for-system-diagnostics**: On Windows, code SHOULD use ETW tracing (`EventSource`) for system-level diagnostics and startup timing.
+- **should-use-xaml-live-visual-tree**: On Windows, developers SHOULD use XAML Live Visual Tree in Visual Studio for debugging visual tree issues.
+- **should-use-vs-performance-profiler**: On Windows, developers SHOULD use [Visual Studio Performance Profiler](https://learn.microsoft.com/en-us/visualstudio/profiling/) for CPU, memory, and UI responsiveness analysis.
+- **should-emit-telemetry-via-opentelemetry**: Components **SHOULD** emit telemetry via [OpenTelemetry](https://opentelemetry.io/) and export over OTLP, treating it as the de-facto, CNCF-graduated standard, rather than relying on ad-hoc per-platform logging alone.
+- **should-carry-trace-id-on-log-lines**: Every log line **SHOULD** carry a trace/correlation ID (e.g., `trace_id` and `span_id`) propagated through the request context, so logs correlate with distributed traces.
+- **should-follow-otel-semantic-conventions**: Log and span field names **SHOULD** follow the OpenTelemetry [semantic conventions](https://opentelemetry.io/docs/specs/semconv/) rather than ad-hoc names.
+- **should-use-structured-json-in-production**: Production logs **SHOULD** be structured JSON to keep them machine-parseable for aggregation and trace correlation.

@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "8445807b-5d0f-46f7-8024-b02586627779",
+    "title": "Be strict and maintain: Postel reconsidered (RFC 9413)",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Parse protocol and API inputs strictly, reject violations loudly, and actively co-evolve spec and implementation instead of tolerating drift.",
+    "platforms": [],
+    "tags": [
+      "protocols",
+      "robustness",
+      "networking"
+    ],
+    "depends-on": [],
+    "related": [
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "2a22b563-afb5-4615-96ae-338eafd5eb81",
+      "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419"
+    ],
+    "references": [
+      "https://datatracker.ietf.org/doc/html/rfc9413"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "api-integration",
+      "input-handling"
+    ]
+  },
+  "synced": "23e6744fb39a765f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "why-naive-tolerance-fails-rfc-9413-2023", "heading": "Why naive tolerance fails (RFC 9413, 2023)"},
+    {"part": "rules", "heading": "Rules"},
+    {"part": "strict-core-forgiving-edge-do-not-over-rotate", "heading": "Strict core, forgiving edge — do not over-rotate"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,19 @@
+
+- `serverless-pooler`: whether every serverless / autoscaling function connects through a pooler
+- `many-instance-pooler`: whether a backend of ~10+ instances or large internal pools fronts Postgres with a pooler
+- `single-instance-exception`: whether each direct connection is a single long-lived server with a bounded internal pool
+- `prefer-transaction-mode`: whether high fan-out poolers run in transaction mode
+- `session-mode-fallback`: whether each session-mode pool serves a workload that genuinely needs session-scoped features
+- `no-session-set`: whether transaction-pooled code depends on session-level `SET` / `RESET`
+- `no-listen-notify`: whether transaction-pooled code depends on `LISTEN` / `NOTIFY`
+- `no-session-advisory-locks`: whether transaction-pooled code depends on session-level advisory locks
+- `no-temp-tables`: whether transaction-pooled code depends on session temporary tables or `WITH HOLD` cursors
+- `prepared-statements-caveat`: whether transaction-pooled code depends on text-mode `PREPARE`/`DEALLOCATE`
+- `verify-pooler-prepared-statement-support`: whether the pooler version and the driver's protocol were checked for prepared-statement support
+- `disable-driver-side-prepare`: whether the driver/ORM avoids named server-side prepared statements where pooler support is unknown
+- `size-the-pool`: whether `default_pool_size` sits below `max_connections` with headroom
+- `total-connections-under-max`: whether total server connections across all poolers stay under `max_connections`
+- `separate-pool-for-session-work`: whether session-feature work uses a separate session-mode or direct connection string
+- `fail-fast-on-exhaustion`: whether client-side connection acquisition timeouts are short
+- `staging-transaction-mode-run`: whether the full transaction set ran against a transaction-mode pooler in staging without prepared-statement errors
+- `grep-for-session-state`: whether the codebase was searched for session-state usage before deploying behind transaction pooling

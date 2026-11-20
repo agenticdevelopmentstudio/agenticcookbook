@@ -1,0 +1,16 @@
+
+- `should-fuzz-trust-boundary-parsers`: each trust-boundary parser, decoder or deserializer has a fuzz target that builds and runs, or a note says why not
+- `should-prioritize-memory-unsafe-languages`: memory-unsafe parsing code has fuzz targets, or a note says why not
+- `should-not-default-fuzz-business-logic`: no fuzz target is for business or UI logic without an untrusted-input boundary, or a note says why
+- `must-keep-targets-deterministic`: replaying a saved input through a target gives the same result every time
+- `should-run-c-cpp-fuzzers-with-sanitizers`: C/C++ fuzz builds enable ASan, UBSan or MSan, or a note says why not
+- `should-use-arbitrary-for-rust-structured-inputs`: Rust structured-input targets derive their input with `arbitrary`, or a note says why not
+- `should-consider-oss-fuzz`: an open-source project with a stable harness has an OSS-Fuzz integration or a note on why not
+- `should-pin-and-evaluate-forecast-go-fork`: any `gosentry` dependency is pinned to a version with a recorded evaluation, or a note says why not
+- `must-accept-raw-bytes-one-entry-point`: each fuzz target's signature takes bytes (or a deterministic derivation) and its body calls one parsing entry point
+- `must-fail-loudly`: each harness asserts invariants and contains no catch-all that hides a crash
+- `should-seed-starting-corpus`: each fuzz target has a seed corpus directory with real and edge-case samples, or a note says why not
+- `must-commit-crashes-as-regression-cases`: each fixed fuzzer crash has its input in the regression corpus and the corpus test passes
+- `should-run-long-campaigns-off-critical-path`: long campaigns are scheduled nightly or in a separate CI job, and the PR pipeline runs the regression corpus and a short smoke run, or a note says why not
+- `should-reproduce-and-minimize-before-filing`: each filed crash has a minimized reproducing input attached, or a note says why not
+- `should-classify-by-sanitizer-report`: each crash record names its sanitizer class, and memory-safety crashes are marked for security escalation, or a note says why not

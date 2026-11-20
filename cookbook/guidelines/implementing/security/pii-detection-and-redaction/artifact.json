@@ -4,11 +4,11 @@
     "id": "bbc7a685-fb6e-4723-a4f3-90df45bfe401",
     "title": "PII detection and redaction",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-07-23",
-    "modified": "2026-07-23",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -35,23 +35,23 @@
       "https://github.com/gitleaks/gitleaks",
       "https://github.com/trufflesecurity/trufflehog"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "logging",
       "security-review"
     ]
   },
-  "synced": "ca1bc0917546bf7a",
+  "synced": "99642a97ff7f8e9b",
   "parts": [
     {"part": "intro"},
-    {"part": "know-what-you-are-looking-for", "heading": "Know what you are looking for"},
-    {"part": "detect-in-layers", "heading": "Detect in layers"},
-    {"part": "reduce-the-surface-before-you-scrub", "heading": "Reduce the surface before you scrub"},
-    {"part": "redact-with-the-right-operation", "heading": "Redact with the right operation"},
-    {"part": "verify-do-not-trust-the-filter", "heading": "Verify — do not trust the filter"},
-    {"part": "repositories-keep-history", "heading": "Repositories keep history"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "redaction-operations", "heading": "Redaction operations", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

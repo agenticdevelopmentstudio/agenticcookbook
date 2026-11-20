@@ -1,0 +1,16 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "`Content-Type: application/problem+json`:",
+      "to": "must-use-problem-details",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The trailing lead-in fragment is carried whole by the MUST rule: RFC 9457 Problem Details with Content-Type application/problem+json.",
+        "pin": "943d0582c618fba57fc7e10afd7f9af9c2b1d1b64ba7faa6bba684af58f08c7a"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,110 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Defaults when no design system exists:",
+      "to": "should-default-body-text-to-14-17pt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in's condition (defaults when no design system exists) is kept verbatim in the target rule, and each of the other default rules repeats it.",
+        "pin": "f4a5beed15a145cdf1c919b4c3e2eac73acebb4b017e571f2112fca972a2cc3e"
+      }
+    },
+    {
+      "sentence": "**Body text**: 14-17pt (16px is the safest cross-platform default)",
+      "to": "should-default-body-text-to-14-17pt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed body-text default is kept at SHOULD with the 14-17pt range, the 16px note and the no-design-system condition.",
+        "pin": "2a5d89f2ea5162bf3fd0d8d0216265cdb97eb2740a59a8478a17794251fc8e48"
+      }
+    },
+    {
+      "sentence": "**Minimum readable size**: 11-12pt for captions/labels, text MUST NOT be smaller",
+      "to": "must-not-go-below-minimum-readable-size",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT with the 11-12pt captions/labels floor and the no-design-system condition.",
+        "pin": "832b4704f8c8f239b1a20a73efe42550583d7b5eaa70c718af9daa94d6880bee"
+      }
+    },
+    {
+      "sentence": "**Line height**: 1.4x-1.5x font size for body text",
+      "to": "should-set-body-line-height-1-4-to-1-5",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed line height is kept at SHOULD with 1.4x-1.5x, the body-text scope and the no-design-system condition.",
+        "pin": "cfe5fe570641ef019aab2245933256c8b5b3f27d1386e60aaf697936677394cf"
+      }
+    },
+    {
+      "sentence": "**Heading scale**: Use the platform's built-in type scale (Dynamic Type, Material type",
+      "to": "should-use-platform-heading-scale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using the platform's built-in heading scale is kept at SHOULD with Dynamic Type named and the no-design-system condition.",
+        "pin": "8d9912e34f6e190aa07ebd96e862e002c2059eae64b2d28e8c7a3e7ba05823d6"
+      }
+    },
+    {
+      "sentence": "tokens, Fluent type ramp) rather than inventing sizes",
+      "to": "should-use-platform-heading-scale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rest of the scale list (Material type tokens, Fluent type ramp) and 'rather than inventing sizes' are kept verbatim.",
+        "pin": "2432a7dff047b3745adcca920fcff74ff05f4ae3f728f1ea107cb7e081260869"
+      }
+    },
+    {
+      "sentence": "General principles:",
+      "to": [
+        "should-limit-font-weights-per-screen",
+        "should-avoid-all-caps",
+        "should-keep-paragraph-width-45-75-characters"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'General principles' lead-in is kept as a prefix on each of the three rules it introduced (weights, all-caps, paragraph width).",
+        "pin": "2893c53cb0c78769bd54c79ff155761a0bb7b1477ebeed5f5d97064fa5f78772"
+      }
+    },
+    {
+      "sentence": "Limit to 2-3 font weights per screen (regular, medium/semibold, bold)",
+      "to": "should-limit-font-weights-per-screen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed weight limit is kept at SHOULD with 2-3 weights per screen and the example weights.",
+        "pin": "1d0eae9bc9617754f759d89df612ab7c6e830b8edc83a1c90e484ec6613cdfeb"
+      }
+    },
+    {
+      "sentence": "All-caps SHOULD be avoided for more than a few words — harms readability and screen reader experience",
+      "to": "should-avoid-all-caps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with the 'more than a few words' scope and both reasons (readability, screen reader experience).",
+        "pin": "2778bfeaac8db939ef3cfa89aba5a14c030a079d457d0cf421de643cdd4bf545"
+      }
+    },
+    {
+      "sentence": "Paragraph width: 45-75 characters for comfortable reading",
+      "to": "should-keep-paragraph-width-45-75-characters",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed paragraph width is kept at SHOULD with 45-75 characters and its reason (comfortable reading).",
+        "pin": "62f022b1932ae439873378551f33a6830b7dfb78a6c444a4dbc8ccf15b5406aa"
+      }
+    }
+  ],
+  "obsolete": []
+}

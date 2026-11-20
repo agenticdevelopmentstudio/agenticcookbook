@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Trace each anticipated change request to a stakeholder — if two stakeholders can drive changes to the same module independently, the module carries two responsibilities and should split",
+      "to": "should-split-modules-two-stakeholders-drive",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD tracing each change request to a stakeholder and splitting a module two stakeholders can drive independently, with the two-responsibilities reason.",
+        "pin": "b5137a65497515b1ca27da531418e1520089e2fc48d2c06d2d6d4eb5a75912ed"
+      }
+    },
+    {
+      "sentence": "Keep code that changes together, together; separate code that changes for different reasons even if it looks similar today",
+      "to": "should-keep-code-that-changes-together-together",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD keeping code that changes together together and separating code that changes for different reasons even if it looks similar today.",
+        "pin": "214f5d7822fba36df574945f4c61c536e8ad2e68750be7dc39f22d7c20fb9cd2"
+      }
+    },
+    {
+      "sentence": "Treat unexpected merge conflicts between unrelated features as a signal that a module is absorbing responsibilities for more than one actor",
+      "to": "should-treat-unexpected-merge-conflicts-as-a-signal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD treating unexpected merge conflicts between unrelated features as a signal of a module serving more than one actor.",
+        "pin": "2ab783baa812f9f76d4b8acb0a6f3b6844997fe073957799bf3de1ebcad3a667"
+      }
+    },
+    {
+      "sentence": "A long function or wide class is usually a sign that multiple actors share it — prefer narrow units each answerable to one actor",
+      "to": "should-prefer-narrow-units",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps that a long function or wide class usually signals multiple actors and preferring narrow single-actor units at SHOULD.",
+        "pin": "e8775e12a09acd1b86d1477a654bd7c4f0baaf21a965cf3ee4aa5d66c48c574a"
+      }
+    }
+  ],
+  "obsolete": []
+}

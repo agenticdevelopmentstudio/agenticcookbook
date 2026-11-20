@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Limit blast radius by limiting capability, permissions, and autonomy.",
+      "to": "should-limit-capability-permissions-autonomy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Limiting blast radius by limiting capability, permissions and autonomy is kept, the unkeyed instruction at SHOULD.",
+        "pin": "017cca422dc2b85dabc623df24182d357e139437c2d8953de071dc800ff996ba"
+      }
+    },
+    {
+      "sentence": "You **MUST** maintain an explicit allow-list of callable tools; **MUST NOT** expose open-ended capabilities (arbitrary shell, unrestricted HTTP, broad filesystem) without a specific justification and additional controls.",
+      "to": [
+        "must-allow-list-callable-tools",
+        "must-not-expose-open-ended-capabilities"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST on an explicit tool allow-list and the MUST NOT on open-ended capabilities, with the same examples and the justification-plus-controls exception, are kept in two rules.",
+        "pin": "bef88177a19cbc79b7717f5f275cde419e409bab6c58d5d982e996174ad751e2"
+      }
+    },
+    {
+      "sentence": "Make the confirmation describe the concrete effect, not just \"approve?\".",
+      "to": "should-describe-concrete-effect-in-confirmation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirmations describing the concrete effect, not just approve?, are kept at SHOULD, the level of the bullet they came from.",
+        "pin": "b64e1accb828892c9ca129613e6a8552e8045169ad3992e6705625b5825b55a7"
+      }
+    },
+    {
+      "sentence": "Prompt injection is the top risk.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Prompt injection being the top risk is kept in rationale, with the OWASP LLM01 label.",
+        "pin": "b6c63e40b9a57360251078d91b3cb47878c425e5fd605ae84f425a2736b8b029"
+      }
+    },
+    {
+      "sentence": "It comes in two forms; both **MUST** be in the threat model.",
+      "to": "must-threat-model-both-injection-forms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Prompt injection's two forms both being in the threat model is kept at MUST.",
+        "pin": "f0b713c5e3f9c6b47968f9614c3d610f55982c1a1873c5789303b9a55f09b07c"
+      }
+    },
+    {
+      "sentence": "Controls:",
+      "to": [
+        "must-keep-instruction-data-trust-boundary",
+        "should-apply-least-privilege-against-injection",
+        "should-prefer-deterministic-guardrails"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The Controls lead-in is carried by its three rules (trust boundary MUST, least-privilege SHOULD, deterministic guardrails SHOULD), and rationale names them as the injection controls.",
+        "pin": "a7afb88efd92e24440968e1f3348479ef79c0e881f580716e2fca62cb9fec580"
+      }
+    },
+    {
+      "sentence": "Treat \"the model was told not to\" as no control at all.",
+      "to": "should-not-count-prompt-instructions-as-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating 'the model was told not to' as no control at all is kept at SHOULD, the level of the bullet it came from.",
+        "pin": "f617c60fd63acfb3c9d86227f865c1f50542c90069ffcce94a05bb2867e51953"
+      }
+    },
+    {
+      "sentence": "Map your controls to the OWASP Top 10 for LLM Applications **2025** (pin that revision; renumbering and category shifts between editions).",
+      "to": "should-map-controls-to-owasp-llm-top-10-2025",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Mapping controls to the OWASP Top 10 for LLM Applications 2025, pinning that revision and the renumbering reason, is kept at SHOULD.",
+        "pin": "b6904cdc5300416cc8e2f5791f92573a1383ba3f4ccddda25e1eefff6dea99a6"
+      }
+    },
+    {
+      "sentence": "**LLM03 Supply Chain** / **LLM04 Data and Model Poisoning** — pin model versions, verify provenance of models, datasets, and plugins.",
+      "to": "should-pin-models-and-verify-provenance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "LLM03/LLM04: pinning model versions and verifying provenance of models, datasets and plugins are kept at SHOULD.",
+        "pin": "b522b41eb03f9605b11e7ffe472385bb0c2c36bc91b9be08e7349399ddcb29d1"
+      }
+    },
+    {
+      "sentence": "**LLM09 Misinformation** — surface citations and mark generated content as unverified; do not present model output as authoritative fact in safety-critical flows.",
+      "to": [
+        "should-mark-generated-content-unverified",
+        "should-not-present-output-as-authoritative"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "LLM09: surfacing citations and marking generated content unverified are kept at SHOULD, and not presenting output as authoritative in safety-critical flows is kept at SHOULD NOT with its scope.",
+        "pin": "e3b045728498fc08ac1f107ccae425290de6e214ab208b8d0c232d632536e241"
+      }
+    },
+    {
+      "sentence": "Apply the same egress controls you would to a raw HTTP request body.",
+      "to": "should-apply-request-body-egress-controls",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Applying the same egress controls as for a raw HTTP request body to model output is kept at SHOULD.",
+        "pin": "26cb1fbb918dc03d29b541e5174e697803c067b7fec4d4a9f94b40b238b584c7"
+      }
+    },
+    {
+      "sentence": "You **MUST** sanitize, encode, or parameterize model output before it crosses any trust boundary:",
+      "to": "must-sanitize-output-at-trust-boundaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Sanitizing, encoding or parameterizing model output before it crosses any trust boundary is kept at MUST.",
+        "pin": "0a854660179c59ea258c4cecea5e362e0fdfe344060e4c899bfccf95c58a8368"
+      }
+    },
+    {
+      "sentence": "**Shell** — never pass output to `exec`/`system`/a shell string.",
+      "to": "must-not-pass-output-to-shell",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never passing output to exec/system/a shell string is kept at MUST NOT, with argument arrays and no interpolation.",
+        "pin": "af3fc969937edc48de9abaa5154882efc487a3c33761aa84754de4ee5ee266d2"
+      }
+    },
+    {
+      "sentence": "**SQL** — use parameterized queries / prepared statements; never string-concatenate model output into SQL.",
+      "to": "must-parameterize-output-in-sql",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Parameterized queries and never concatenating model output into SQL are kept at MUST.",
+        "pin": "9085ccc04c43ae57fa0f3e9572bd0d4b0e2c083c3212b177f1eac51263daa8f2"
+      }
+    },
+    {
+      "sentence": "**HTML/DOM** — context-aware output encoding; **MUST NOT** inject into `innerHTML` or render as raw markup without sanitization.",
+      "to": "must-encode-output-for-html",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Context-aware encoding is kept at MUST and the innerHTML/raw-markup ban without sanitization at MUST NOT.",
+        "pin": "437b7b0e444759a12d76772c5e49420bf3d380129253caf88e21cdecbc315d21"
+      }
+    },
+    {
+      "sentence": "**Tool arguments** — validate and type-check against a schema before any tool call (see input-validation guideline).",
+      "to": "must-validate-tool-arguments",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Schema validation and type-checking of tool arguments before any tool call is kept at MUST with the input-validation cross-reference.",
+        "pin": "a09eaa1c8f58b396cc217903e511c296aeb923b240927e8a4810691c92246dd8"
+      }
+    }
+  ],
+  "obsolete": []
+}

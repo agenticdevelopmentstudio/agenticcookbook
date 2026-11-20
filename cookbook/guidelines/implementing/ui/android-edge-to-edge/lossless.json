@@ -1,0 +1,166 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Set a listener on the relevant view and consume insets:",
+      "to": "should-consume-insets-with-view-listener",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The Views-scoped instruction to set a listener on the relevant view and consume insets is kept at SHOULD; the listener code example it introduced stays in the android-views part.",
+        "pin": "9eeb748de86aa4e976bb8836c479fcab7884271c878f4fbb592f753e6bb746be"
+      }
+    },
+    {
+      "sentence": "Use `WindowInsetsCompat.Type.ime()` for keyboard-aware layouts; do not hardcode bottom padding.",
+      "to": "should-use-ime-insets-for-keyboard",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD / SHOULD NOT: use WindowInsetsCompat.Type.ime() for keyboard-aware layouts and do not hardcode bottom padding.",
+        "pin": "b230775f9a024dbc30aa0c2a743de90df439f23936cb809b05846b9bf17ed38b"
+      }
+    },
+    {
+      "sentence": "For Android 10 (API 29) and below, call `ViewGroupCompat.installCompatInsetsDispatch(rootView)` (androidx-core 1.16.0+) before consuming so sibling views still receive insets.",
+      "to": "should-install-compat-insets-dispatch",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Android 10 (API 29) and below condition, the androidx-core 1.16.0+ requirement, the before-consuming ordering and the sibling-views reason.",
+        "pin": "81fb5fbb82ffc11cfa2ce300d7fff0d782a2534c589a3c40629e03e50f4ead97"
+      }
+    },
+    {
+      "sentence": "Many Material Components (`BottomAppBar`, `BottomNavigationView`, `NavigationRailView`, `NavigationView`) consume insets automatically; `AppBarLayout` does not — add `android:fitsSystemWindows=\"true\"` for its top inset.",
+      "to": "should-set-fitssystemwindows-on-appbarlayout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The list of Material Components that consume insets, the AppBarLayout exception and the fitsSystemWindows fix for its top inset are all kept, the fix at SHOULD.",
+        "pin": "1b183967f058c773a771f3ff93e51b8b875c1b6469eec708f4e44bc1d72d4e0b"
+      }
+    },
+    {
+      "sentence": "Apps **MUST NOT** rely on `android:windowOptOutEdgeToEdgeEnforcement` as a long-term fix.",
+      "to": "must-not-rely-on-opt-out-attribute",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT, including the long-term-fix qualifier and the one-release-stopgap guidance.",
+        "pin": "b42d3189cc2d556968da4188595d8d2bb203a055afb3641828a2868e323f66b8"
+      }
+    },
+    {
+      "sentence": "For backward compatibility on Android 14 (API 34) and below, call `enableEdgeToEdge()` in `onCreate()` so behavior is consistent across versions.",
+      "to": "should-enable-edge-to-edge-in-oncreate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Android 14 (API 34) and below condition, the onCreate() placement and the cross-version consistency reason.",
+        "pin": "4aba3e659ee05814e5c3411e3803847d7859b58e7b47a17fcf327a191f1814d2"
+      }
+    },
+    {
+      "sentence": "Prefer the `safeDrawing` inset type for general content; it composes `systemBars`, `displayCutout`, and `ime`.",
+      "to": "should-prefer-safedrawing-insets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the general-content scope and the note that safeDrawing composes systemBars, displayCutout and ime.",
+        "pin": "814e77a386d465ec4899434475e913a3ec24ab76fdbbaf788ce3bc413fe0d03e"
+      }
+    },
+    {
+      "sentence": "The app MUST consume `WindowInsets` so that content, controls, and the keyboard are never obscured.",
+      "to": "must-consume-window-insets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with the never-obscured purpose, and the rule now states the targetSdk 35 / Android 15+ condition the intro paragraph supplied.",
+        "pin": "5e00b138750353a1744fcc9433e01895f0228736041ef74c2076fa4cc9e93ba6"
+      }
+    },
+    {
+      "sentence": "Wrap top-level UI in `Scaffold`; it applies `safeDrawing` insets and exposes the consumed `innerPadding`.",
+      "to": "should-wrap-top-level-ui-in-scaffold",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to Jetpack Compose, with the reason that Scaffold applies safeDrawing insets and exposes innerPadding.",
+        "pin": "64547eb90fc6e44bc1573a4c0f46a2a9ad16ea35d18e004e1610eb3e15d77402"
+      }
+    },
+    {
+      "sentence": "**Apply that padding** — ignoring it reintroduces the bug.",
+      "to": "should-apply-scaffold-inner-padding",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the referent made explicit (the Scaffold's innerPadding) and the reason that ignoring it reintroduces the bug.",
+        "pin": "687545bcd531a05238772c14111edd5da80469b0e8cdaaf14f267e690c5afdea"
+      }
+    },
+    {
+      "sentence": "For manual control, use `Modifier.windowInsetsPadding(...)` with the right inset type:",
+      "to": "should-use-windowinsetspadding-for-manual-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for manual Compose control, and the rule carries the full nested list of inset types (safeDrawing, systemBars, ime) the lead-in introduced.",
+        "pin": "50bd99e0c10c4781ddfb5dcd1a49c144e865abfd5be267c85afe13ba45d4760c"
+      }
+    },
+    {
+      "sentence": "Let content scroll **edge to edge** but pad the interactive/last items, e.g. apply `contentPadding` to a `LazyColumn` instead of padding the whole list, so content draws under the bars while items stay reachable.",
+      "to": "should-pad-items-not-whole-list",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the LazyColumn contentPadding example and the reason that content draws under the bars while items stay reachable.",
+        "pin": "dba2a29b97e7262993b4336374b140054b38c0f81ded6b331116010035df3136"
+      }
+    },
+    {
+      "sentence": "**MUST NOT** return `WindowInsetsCompat.CONSUMED` from a parent if child views also need the same insets — consuming stops dispatch downward.",
+      "to": "must-not-consume-insets-children-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT with the child-views-need-the-same-insets condition and the dispatch-stops-downward reason.",
+        "pin": "9c99da07a08f12f8615bb0b6a6fac873dca4f7320272e98b467b535c9589133a"
+      }
+    },
+    {
+      "sentence": "**MUST NOT** mix `fitsSystemWindows=\"true\"` with manual inset listeners on the same view; pick one strategy per view.",
+      "to": "must-not-mix-fitssystemwindows-with-listeners",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT for the same view, with the one-strategy-per-view guidance.",
+        "pin": "07290ab589e0f81c93bd21071bb9078a8ec111973665385fbe956dc757510456"
+      }
+    },
+    {
+      "sentence": "Test in both gesture and 3-button navigation, with a display cutout, and with the keyboard open.",
+      "to": "should-test-navigation-modes-cutout-and-keyboard",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The test matrix (gesture and 3-button navigation, display cutout, keyboard open) is kept at SHOULD.",
+        "pin": "b3ae79a987221f4591b8703da2e00e6fda8b77bb70d2ed25a65936e94369d09c"
+      }
+    },
+    {
+      "sentence": "Apps **MUST NOT** depend on it.",
+      "to": "must-not-rely-on-opt-out-attribute",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT in must-not-rely-on-opt-out-attribute; the deprecation context that preceded it remains in the why-this-matters part.",
+        "pin": "e4627ef38b2dbc956e321652a27fcffaa22ef57d5ef4025261bf421aafa86307"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,12 @@
+
+- `should-default-to-relational`: a new server backend uses a relational database as its primary store, or the work says why not
+- `must-justify-a-non-relational-primary-store`: every non-relational primary store names the specific requirement the relational option cannot meet
+- `should-treat-the-relational-default-as-overridable`: where a real requirement overrides the relational default, the store follows the requirement, or the work says why not
+- `should-pick-the-store-from-shape-patterns-and-scale`: the store choice cites data shape, query patterns and measured scale, or the work says why not
+- `should-choose-a-specialist-store-only-on-a-concrete-requirement`: every specialist primary store maps to a concrete requirement in the decision criteria, or the work says why
+- `must-record-the-store-and-its-justification`: an ADR or the plan names the chosen store and its one-line justifying requirement
+- `must-not-add-a-second-store-without-a-measured-limit`: no second datastore is added for scale without a measured limit on the first
+- `should-prefer-one-relational-store-with-extensions`: one relational store with extensions is used until a specific store earns its operational cost, or the work says why not
+- `should-evaluate-jsonb-before-a-document-database`: any separate document database follows an evaluation of `jsonb`, or the work says why not
+- `should-keep-derived-stores-secondary`: every search index, cache and vector index is a secondary projection of the relational system of record, or the work says why not
+- `must-cite-an-expected-workload-for-scale`: every scale reason for a non-relational store cites writes/sec, dataset size or read pattern

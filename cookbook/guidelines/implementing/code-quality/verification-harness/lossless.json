@@ -1,0 +1,113 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Start with the cheapest check that catches a real failure, then add cases as concrete failure patterns emerge.",
+      "to": "should-start-with-cheapest-check",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Starting with the cheapest check that catches a real failure and adding cases as concrete failure patterns emerge are both kept at SHOULD.",
+        "pin": "10e4537f54ce1926917611dda8f021d219d094e5abb2d95a92c74e9ab6d33455"
+      }
+    },
+    {
+      "sentence": "Do **NOT** pre-build an exhaustive suite up front (YAGNI).",
+      "to": "should-not-prebuild-exhaustive-suite",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The instruction not to pre-build an exhaustive suite up front, with the YAGNI reason, is kept at SHOULD NOT; the bold 'Do NOT' was emphasis, not an RFC 2119 keyword.",
+        "pin": "2c859bfe3ac0700cbb7ed6cc6607b63f3b5584f7badab3dda35802ef1be13d59"
+      }
+    },
+    {
+      "sentence": "When a new class of agent error appears, encode a check for it so the harness — not a human — catches the recurrence next time.",
+      "to": "should-encode-check-for-new-error-class",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Encoding a check for each new class of agent error so the harness, not a human, catches the recurrence is kept at SHOULD with its condition and reason.",
+        "pin": "042a686d936265ec0cfdd05c4a2777fd694767bf1242f4bf4113359d9d8aad5e"
+      }
+    },
+    {
+      "sentence": "Per Anthropic's Claude Code best practices, hooks and external gates \"are deterministic and guarantee the action happens.\" Choose the weakest level that holds:",
+      "to": [
+        "rationale",
+        "should-choose-weakest-enforcement-level-that-holds"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the Anthropic best-practices quote that hooks and external gates are deterministic, and the rule keeps choosing the weakest enforcement level that holds, with the levels table in the enforcement-levels part.",
+        "pin": "c312d89f0f5ff2e8f05061c2fb152ca3439724aff1ba40a3faa0f08bb9316291"
+      }
+    },
+    {
+      "sentence": "Any check that protects correctness for an unattended or merged change **MUST** be enforced by a deterministic gate (CI, pre-commit, or stop-hook), **MUST NOT** rely on prompt instructions alone.",
+      "to": "must-gate-correctness-deterministically"
+    },
+    {
+      "sentence": "Gates that can loop forever **SHOULD** cap retries and surface to a human on repeated failure rather than spinning.",
+      "to": "should-cap-gate-retries"
+    },
+    {
+      "sentence": "Gates **MUST** fail only on correctness or stated requirements (broken build, failing test, violated contract).",
+      "to": "must-fail-only-on-correctness"
+    },
+    {
+      "sentence": "They **MUST NOT** block on style nitpicks an autoformatter or optional linter can handle non-blockingly.",
+      "to": "must-not-block-on-style-nitpicks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on gates blocking for style nitpicks an autoformatter or optional linter can handle non-blockingly is kept verbatim.",
+        "pin": "97779d39bb3ebd2fb0dbd6091e2f5ab8db859ffe4027b6bcdbcdfbb58230c6fc"
+      }
+    },
+    {
+      "sentence": "An adversarial reviewer or \"find the gaps\" check **SHOULD** be told to flag only gaps affecting correctness or the stated spec; chasing every speculative finding drives over-engineering.",
+      "to": "should-scope-adversarial-review-to-correctness"
+    },
+    {
+      "sentence": "The harness **MUST** be a single command (or short script) the agent can invoke and that returns a machine-readable signal: a process exit code, a test summary, a diff against a fixture, or a screenshot compared to a target.",
+      "to": "must-be-single-runnable-command"
+    },
+    {
+      "sentence": "The check **MUST** be deterministic: the same input produces the same pass/fail.",
+      "to": "must-be-deterministic"
+    },
+    {
+      "sentence": "Flaky, time-, or network-dependent checks **MUST NOT** gate completion — they teach the agent to retry randomly or suppress the signal.",
+      "to": "must-not-gate-on-flaky-checks"
+    },
+    {
+      "sentence": "The agent **MUST** show evidence (the command run and its output), not assert success.",
+      "to": "must-show-evidence"
+    },
+    {
+      "sentence": "Wire the command into the project so the agent can discover it (e.g., a documented `verify`/`lint`/`test` entry point referenced in agent-readable docs).",
+      "to": "should-wire-command-for-discovery",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Wiring the command into the project so the agent can discover it, with the documented verify/lint/test entry point example, is kept at SHOULD.",
+        "pin": "d14aaef11e1eaafe2ca75b2b3e8b667da05e2f44e51ac7b701f038532073b30e"
+      }
+    },
+    {
+      "sentence": "Failures **SHOULD** state what was expected, what was observed, and the location (file:line) — not just a stack trace or a bare assertion.",
+      "to": "should-state-expected-observed-and-location"
+    },
+    {
+      "sentence": "Each failure **SHOULD** name a concrete next step (\"rename `x` to `y`\", \"add a test for the logged-out case\"), because an actionable message turns into a correct edit; a vague one turns into a guess.",
+      "to": "should-name-concrete-next-step"
+    },
+    {
+      "sentence": "Output **SHOULD** be concise; dumping thousands of lines floods the agent's context and degrades subsequent reasoning.",
+      "to": "should-keep-output-concise"
+    }
+  ],
+  "obsolete": []
+}

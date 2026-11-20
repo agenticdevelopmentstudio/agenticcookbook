@@ -1,0 +1,13 @@
+
+- `should-design-for-content-not-screen-size`: whether each layout is designed for its content rather than a fixed screen size
+- `should-adapt-from-compact-to-expanded`: whether each layout adapts gracefully from compact to expanded contexts
+- `should-default-to-single-column`: whether every multi-column layout is justified by content density and supported by screen width
+- `should-decide-content-before-layout`: whether the information the user needs was decided before the layout was chosen
+- `should-not-start-with-a-grid`: whether any layout started from a grid that was then filled
+- `should-keep-consistent-alignment`: whether each view keeps one leading edge
+- `must-use-adaptive-layout-system`: whether breakpoints use the platform's adaptive layout system rather than hard-coded widths
+- `should-prefer-generous-whitespace-for-consumer-uis`: whether consumer UIs prefer generous whitespace
+- `may-allow-denser-layouts-for-productivity-tools`: whether denser layouts are confined to productivity or data-heavy tools
+- `must-not-sacrifice-readability-for-density`: whether readability was sacrificed for density anywhere
+- `should-keep-one-primary-scroll-direction`: whether each view has one primary scroll direction
+- `should-avoid-nested-same-direction-scrolling`: whether any view nests same-direction scrolling

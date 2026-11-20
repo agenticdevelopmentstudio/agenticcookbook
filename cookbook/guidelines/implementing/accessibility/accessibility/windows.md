@@ -1,13 +1,8 @@
 
-WinUI 3 controls expose [UI Automation](https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-uiautomationoverview) patterns automatically. Set `AutomationProperties.Name` on interactive elements that lack visible text labels.
+WinUI 3 controls expose [UI Automation](https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-uiautomationoverview) patterns automatically.
 
-- Use `AutomationProperties.LabeledBy` for form fields
-- Use `AutomationProperties.LiveSetting` for dynamic content regions
-- High contrast support is automatic when using `ThemeResource` — never hard-code colors
-- Test with [Accessibility Insights for Windows](https://accessibilityinsights.io/)
-- Keyboard navigation: all interactive elements must be reachable via Tab, actionable via Enter/Space
-
-Components MUST respond to these Windows accessibility settings:
+Platform-specific tooling:
+- **Windows**: UI Automation patterns, Narrator testing, [Accessibility Insights](https://accessibilityinsights.io/), minimum 40x40 epx recommended touch targets
 
 | Setting | API / Detection | Action |
 |---------|----------------|--------|

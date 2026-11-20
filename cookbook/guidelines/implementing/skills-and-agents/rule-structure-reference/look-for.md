@@ -1,0 +1,27 @@
+
+- `should-name-rule-files-lowercase-kebab-case`: a rule file name that is not descriptive lowercase kebab-case, or uses an uppercase stem
+- `may-include-a-title-or-version-in-frontmatter`: rule frontmatter carrying fields other than a title or version
+- `should-have-a-clear-title`: a rule with no title or heading naming its purpose
+- `should-number-procedural-steps`: a procedural rule whose steps are not numbered or clearly separated
+- `should-give-distinct-concerns-their-own-sections`: distinct concerns mixed under one heading
+- `should-use-an-imperative-tone`: requirements stated without MUST, MUST NOT, SHOULD or MAY
+- `should-be-deterministic`: an instruction the LLM could read more than one way
+- `should-list-every-referenced-file`: an instruction to read material that does not list every file path
+- `should-be-self-contained-or-clearly-scoped`: a rule that needs information it neither contains nor points to
+- `should-not-use-vague-directives`: a directive like "Handle errors appropriately" with no concrete action
+- `should-avoid-vague-rules`: a rule like "Write good code" that is not actionable
+- `should-avoid-contradictory-rules`: one rule saying "Always do X" and another "Never do X"
+- `should-avoid-unbounded-scope`: a rule that tries to govern everything rather than one concern
+- `should-avoid-missing-file-paths`: "read the guidelines" without the list of files
+- `should-avoid-duplicating-claude-md`: rule content that belongs in project instructions
+- `should-avoid-rules-with-no-enforcement-mechanism`: a rule stating preferences with no steps to verify compliance
+- `should-keep-per-turn-content-minimal`: large content in the always-on rule file itself
+- `should-put-large-reference-material-on-demand`: large reference material inlined in a rule rather than read on demand
+- `should-keep-rule-files-under-200-lines`: a rule file of 200 lines or more, or over ~8KB
+- `should-inline-small-and-reference-large`: a large guideline inlined in a rule, or a small table pushed to an external file
+- `should-not-duplicate-across-rules`: the same concept covered by two rules
+- `should-use-globs-for-file-specific-rules`: a rule for specific file patterns with no `globs` frontmatter
+- `should-deduplicate-must-nots`: a MUST NOT item that repeats a constraint stated elsewhere in the body
+- `should-avoid-mandatory-multi-file-reads`: a rule that requires reading many files before any work begins
+- `should-inline-mostly-metadata-files`: a referenced file that is more than 50% YAML metadata
+

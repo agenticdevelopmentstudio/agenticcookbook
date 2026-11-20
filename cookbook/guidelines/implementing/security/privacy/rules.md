@@ -1,0 +1,22 @@
+
+- **must-build-privacy-in-from-day-one**: Privacy and security **MUST** be built in from day one.
+- **should-collect-only-what-is-needed**: You **SHOULD** collect only what is needed (data minimization).
+- **should-prefer-on-device-processing**: You **SHOULD** prefer on-device processing.
+- **should-require-opt-in-for-non-essential-data**: You **SHOULD** require opt-in for non-essential data collection (consent).
+- **must-remain-functional-when-denied**: Honor "deny" gracefully and respect user consent — the app **MUST** remain functional if optional data collection is denied.
+- **must-use-platform-secure-storage**: Tokens and credentials MUST use platform secure storage (Keychain, EncryptedSharedPreferences, DPAPI, HttpOnly cookies).
+- **must-not-log-pii**: No PII logging: you **MUST NOT** ever log personally identifiable information (no PII in logs), even at debug level.
+- **must-use-https**: All network communication MUST use HTTPS (TLS only).
+- **should-sanitize-input-before-display**: You **SHOULD** sanitize all user input before display to prevent XSS and injection (input sanitization).
+- **should-document-privacy-in-specs**: Each spec SHOULD include a **Privacy** section documenting data collected and how it is stored.
+- **should-support-apple-privacy-features**: On Apple platforms, you **SHOULD** support App Tracking Transparency, App Privacy Report, and Private Relay compatibility.
+- **should-include-usage-descriptions**: On Apple platforms, you **SHOULD** include `NS*UsageDescription` keys with human-readable explanations for all permission prompts.
+- **should-respect-android-storage-language-and-denials**: On Android, you **SHOULD** respect scoped storage, support per-app language preferences, and honor permission denials gracefully.
+- **should-show-rationale-before-permission-requests**: On Android, you **SHOULD** show rationale dialogs before runtime permission requests.
+- **should-configure-csp**: On the web, you **SHOULD** configure Content Security Policy (CSP) headers to restrict script sources and prevent XSS.
+- **should-use-httponly-cookies-for-tokens**: On the web, you **SHOULD** use HttpOnly secure cookies for authentication tokens.
+- **must-not-store-tokens-in-localstorage**: On the web, you **MUST NOT** store tokens in `localStorage` — never.
+- **should-minimize-third-party-scripts**: On the web, you **SHOULD** minimize third-party scripts.
+- **should-respect-do-not-track**: On the web, you **SHOULD** respect the Do Not Track header.
+- **should-declare-only-required-capabilities**: On Windows, you **SHOULD** declare only required capabilities in `Package.appxmanifest` — avoid `broadFileSystemAccess` unless essential.
+- **should-use-dpapi-for-local-secrets**: On Windows, you **SHOULD** use DPAPI for local secret storage (see secure-storage.md).

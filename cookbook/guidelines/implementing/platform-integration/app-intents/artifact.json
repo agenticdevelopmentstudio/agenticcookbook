@@ -4,11 +4,11 @@
     "id": "e5768eed-0f7f-41d0-bcf7-5a4c18964032",
     "title": "App Intents",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,20 +33,24 @@
       "https://developer.apple.com/videos/play/wwdc2025/275/",
       "https://developer.apple.com/documentation/appintents/integrating-actions-with-siri-and-apple-intelligence"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "platform-integration"
     ]
   },
-  "synced": "4720a77faf6d43a2",
+  "synced": "5fcc9307f91a1730",
   "parts": [
     {"part": "intro"},
-    {"part": "define-an-appintent", "heading": "Define an AppIntent"},
-    {"part": "zero-config-discovery-with-appshortcuts", "heading": "Zero-config discovery with AppShortcuts"},
-    {"part": "model-app-data-with-appentity-and-entityquery", "heading": "Model app data with AppEntity and EntityQuery"},
-    {"part": "choosing-app-intents-over-legacy-sirikit", "heading": "Choosing App Intents over legacy SiriKit"},
-    {"part": "forecasts-verify-against-current-docs", "heading": "FORECASTS (verify against current docs)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "define-an-appintent", "heading": "Define an AppIntent", "role": "how-to"},
+    {"part": "zero-config-discovery-with-appshortcuts", "heading": "Zero-config discovery with AppShortcuts", "role": "how-to"},
+    {"part": "model-app-data-with-appentity-and-entityquery", "heading": "Model app data with AppEntity and EntityQuery", "role": "how-to"},
+    {"part": "choosing-app-intents-over-legacy-sirikit", "heading": "Choosing App Intents over legacy SiriKit", "role": "rationale"},
+    {"part": "forecasts-verify-against-current-docs", "heading": "FORECASTS (verify against current docs)", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

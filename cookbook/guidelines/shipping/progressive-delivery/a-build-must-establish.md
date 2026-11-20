@@ -1,0 +1,18 @@
+
+- `must-not-deploy-at-full-exposure`: deploying the change leaves its exposure at the control plane's setting, not 100%
+- `must-change-exposure-without-redeploy`: exposure is changed in the control plane with no redeploy
+- `must-make-each-change-observable`: every metric, log and trace of the change carries its variant or cohort
+- `should-pick-lightest-mechanism`: one mechanism, the lightest fitting the risk, gates the change, or the change says why more
+- `should-roll-out-high-risk-changes-progressively`: every high-risk change is rolled out progressively, or the change says why not
+- `must-give-each-step-hold-and-criteria`: every ramp step names its hold duration and pass/fail criteria
+- `must-keep-schema-backward-compatible`: old and new code both run against the store throughout the rollout window
+- `must-define-health-gates-before-rollout`: each step's quantitative health gates against the baseline exist before the rollout starts
+- `should-roll-back-automatically`: a failed SLO gate or fast budget burn rolls back automatically, or the change says why not
+- `must-expose-single-kill-switch`: one kill switch reverts exposure to last-known-good in a single action
+- `must-make-rollback-idempotent`: running the revert twice leaves the same safe state and no duplicate side effects
+- `should-automate-routine-scoring-and-revert`: routine scoring and revert are automated, or the change says why not
+- `should-remove-rollout-flags`: no rollout-only flag or dead branch remains after the change is at 100% and stable, or the code says why
+- `should-pause-rollouts-during-incidents`: the pipeline blocks new rollouts during an active incident or exhausted error budget, or says why not
+- `should-prefer-native-progressive-delivery`: native progressive-delivery support is used, or the change says why bespoke traffic-shifting was built
+- `should-pin-tool-version-in-runbook`: the runbook names the tool and its pinned version, or says why not
+- `should-treat-vendor-adoption-stats-as-marketing`: no choice cites single-vendor adoption stats as fact

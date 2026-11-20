@@ -1,0 +1,17 @@
+
+- `must-keep-semantic-source-platform-neutral`: a semantic token source that is platform-specific or not shared across targets
+- `should-use-dtcg-format`: tokens not in DTCG format, or no pinned dated DTCG revision
+- `must-name-tokens-by-intent`: tokens named for raw values, or no base → semantic → component layering
+- `should-override-via-transforms-not-forks`: a forked copy of the shared token source for one platform
+- `should-adapt-to-density-independent-units`: one platform's numeric values copied without adapting to another's density-independent unit
+- `should-not-ship-raw-px-everywhere`: raw `px` used across every target
+- `must-emit-density-independent-dimensions`: dimension tokens emitted in a unit other than the target's density-independent one
+- `should-map-type-sizes-to-scalable-units`: type sizes not in `sp` on Android or `rem` on the web, or pixel-locked text as the default
+- `should-resolve-hairlines-per-device-scale`: hairline borders fixed at `1px`
+- `should-prefer-native-type-scale`: one platform's type sizes forced onto another instead of its native ramp
+- `must-carry-color-variants`: color tokens without light/dark (and high-contrast where supported) variants, or not emitted as platform-native color resources
+- `should-express-wide-gamut-device-independently`: wide-gamut color in a device-dependent space, or no sRGB fallback
+- `should-map-motion-to-platform-curves`: one platform's spring or duration hardcoded as universal, or motion ignoring reduced-motion settings
+- `should-adapt-to-host-idiom`: one platform's navigation, control shapes, density or haptics forced onto another
+- `may-diverge-component-tokens-per-platform`: per-platform component tokens that do not share a semantic ancestor
+- `should-start-with-single-shared-file`: heavy token infrastructure added before token volume or platform count justifies it

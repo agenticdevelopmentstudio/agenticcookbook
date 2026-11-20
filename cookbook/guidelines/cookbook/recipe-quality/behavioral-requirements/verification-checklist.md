@@ -12,4 +12,9 @@ A verifier MUST check each of the following items. The recipe PASSES behavioral 
 - [ ] SHOULD requirements document or link to a rationale for allowing deviation.
 - [ ] No tautological or circular requirements exist.
 - [ ] Requirements do not describe internal state or memory layout — only observable behavior.
-
+- [ ] `must-use-keywords-with-defined-semantics`: Each keyword is used with its defined RFC 2119 meaning (MUST absolute, SHOULD with documented deviation, MAY free to include or omit).
+- [ ] `must-cite-platform-standard-values`: Where a platform standard defines a value (touch target size, contrast ratio), the requirement cites that value explicitly.
+- [ ] `must-use-platform-neutral-terms-for-shared-behavior`: A behavior that is the same across platforms is expressed in platform-neutral terms.
+- [ ] `should-give-measurable-values-in-must-requirements`: MUST requirements carry measurable, verifiable values wherever a standard or design decision provides them.
+- [ ] `should-document-conditions-for-may-requirements`: MAY requirements document the conditions under which each option is appropriate.
+- [ ] `must-describe-required-outcome`: No requirement describes an attempt ("MUST try to") instead of the required outcome.

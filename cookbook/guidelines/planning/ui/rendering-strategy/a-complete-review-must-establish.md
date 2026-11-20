@@ -1,0 +1,16 @@
+
+- `should-default-to-less-client-js`: whether each route's strategy fits its job and defaults to less client JS
+- `should-frame-rendering-as-architecture-selection`: whether rendering was decided as an architecture selection, not a framework choice
+- `should-select-a-strategy-per-route`: whether the strategy is selected per route
+- `must-not-mandate-a-framework`: whether the work mandates a framework to satisfy this guideline
+- `should-optimize-for-inp-and-lcp`: whether optimisation targets INP and LCP and not FID
+- `should-prefer-islands-for-mostly-content-pages`: whether mostly-content pages use islands/partial hydration
+- `should-stream-ssr-for-slow-data-pages`: whether slow-data app pages stream SSR so the shell paints first
+- `must-measure-client-js-per-route`: whether client JS bytes are measured per route and regressions treated as defects
+- `should-pin-react-router-rsc-to-a-tested-release`: whether any React Router v7 RSC use is pinned to a tested release
+- `should-keep-use-client-boundaries-small`: whether `"use client"` boundaries are small with interactivity at the leaves
+- `should-adopt-rsc-deliberately`: whether any RSC adoption was deliberate
+- `must-not-introduce-rsc-without-benefit`: whether RSC appears in a non-React stack or without measurable benefit
+- `should-record-the-strategy-per-route`: whether each route's strategy is recorded with a one-line rationale
+- `should-keep-strategies-swappable`: whether business logic is free of any rendering mode
+- `must-validate-against-real-metrics`: whether the choice was validated against real metrics on representative routes before lock-in

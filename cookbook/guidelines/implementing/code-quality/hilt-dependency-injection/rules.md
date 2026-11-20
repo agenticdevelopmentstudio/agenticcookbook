@@ -1,0 +1,29 @@
+
+- **should-use-hilt-with-ksp-and-constructor-injection**: Apps **SHOULD** use Hilt with the KSP annotation processor and prefer constructor injection.
+- **should-reserve-singleton-for-app-scoped-state**: `@Singleton` **SHOULD** be reserved for genuinely app-scoped state.
+- **should-use-ksp-not-kapt**: SHOULD use **KSP** (`com.google.devtools.ksp`) for the Hilt compiler, not the legacy KAPT.
+- **should-apply-hilt-gradle-plugin**: SHOULD apply the `com.google.dagger.hilt.android` Gradle plugin and add `hilt-android` plus the compiler via `ksp(...)`.
+- **should-annotate-application-with-hiltandroidapp**: The `Application` subclass SHOULD be annotated with `@HiltAndroidApp`.
+- **must-have-exactly-one-hiltandroidapp**: The `@HiltAndroidApp` application, the root of the dependency graph, **MUST** exist exactly once.
+- **should-annotate-entry-points-with-androidentrypoint**: Android entry points (`Activity`, `Fragment`, `Service`) needing field injection SHOULD be annotated with `@AndroidEntryPoint`.
+- **should-inject-owned-classes-via-constructor**: Classes you own **SHOULD** declare dependencies via an `@Inject constructor`.
+- **should-use-provides-only-for-unowned-types**: SHOULD use a `@Module` with `@Provides` only for types you do not own (third-party, builders) or interfaces.
+- **should-bind-interfaces-with-binds**: SHOULD bind an interface to its implementation with `@Binds` in an `abstract` module — it generates less code than `@Provides`.
+- **should-install-every-module**: SHOULD install every module into a component with `@InstallIn(...)`.
+- **should-choose-narrowest-component**: SHOULD choose the **narrowest** component that fits the binding's lifetime.
+- **must-assume-unscoped-binding-is-new-instance**: An unscoped binding **MUST** be assumed to create a new instance per injection point — that is the correct default for stateless collaborators.
+- **must-not-depend-on-shorter-lived-component**: A longer-lived component **MUST NOT** depend on a shorter-lived one (e.g. a `@Singleton` holding an `Activity`).
+- **should-not-apply-singleton-just-in-case**: `@Singleton` **SHOULD NOT** be applied for performance "just in case." SHOULD scope only stateful, expensive-to-build, or app-shared instances.
+- **should-annotate-viewmodels-with-hiltviewmodel**: SHOULD annotate ViewModels with `@HiltViewModel` and an `@Inject constructor`.
+- **should-inject-savedstatehandle**: SHOULD inject `SavedStateHandle` for navigation/saved args.
+- **should-not-construct-hilt-viewmodels-manually**: SHOULD NOT construct these ViewModels manually.
+- **should-use-hiltviewmodel-in-compose**: For Compose, SHOULD retrieve them with `hiltViewModel()` (`androidx.hilt:hilt-navigation-compose`).
+- **should-annotate-workers-with-hiltworker**: SHOULD annotate `CoroutineWorker`/`Worker` subclasses with `@HiltWorker`.
+- **must-assist-inject-worker-runtime-params**: Runtime params (`Context`, `WorkerParameters`) **MUST** use `@AssistedInject` + `@Assisted`; other dependencies inject normally.
+- **should-wire-hiltworkerfactory**: SHOULD inject `HiltWorkerFactory` into the `Application` and wire it through a custom `WorkManager` `Configuration` (or the `Configuration.Provider` on the `Application`).
+- **should-use-hilt-android-testing**: SHOULD use `hilt-android-testing` with `kspTest`/`kspAndroidTest`.
+- **should-drive-tests-with-hiltandroidrule**: SHOULD annotate tests with `@HiltAndroidTest` and drive injection with `HiltAndroidRule`.
+- **should-replace-test-bindings-without-mutating-modules**: SHOULD replace bindings in tests with `@TestInstallIn` or `@BindValue` rather than mutating production modules.
+- **should-not-build-objects-from-passed-context**: SHOULD NOT inject the Hilt-managed graph by passing `Context` around to build objects manually — that defeats the framework.
+- **should-not-field-inject-where-constructor-possible**: SHOULD NOT field-inject where constructor injection is possible; SHOULD reserve field injection for framework-instantiated entry points.
+- **should-not-create-god-modules**: SHOULD NOT create god modules; SHOULD split modules by feature and install them into the narrowest applicable component.

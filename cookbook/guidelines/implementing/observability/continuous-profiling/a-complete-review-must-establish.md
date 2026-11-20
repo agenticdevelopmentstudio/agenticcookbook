@@ -1,0 +1,18 @@
+
+- `must-not-add-profiling-by-default`: whether a continuous-profiling pipeline is added by default
+- `must-adopt-only-on-measured-need`: whether a concrete, measured need justifies the pipeline's added pipeline, storage, and operational cost
+- `should-prefer-one-off-capture`: whether a one-off `pprof`/perf capture or load-test profile would have answered the question instead of standing infrastructure
+- `must-choose-low-overhead-sampling-profiler`: whether the chosen profiler is low-overhead and sampling
+- `must-validate-overhead-in-own-environment`: whether profiler overhead was validated in this environment rather than taken from a vendor's figure
+- `should-prefer-ebpf-for-diverse-targets`: whether whole-system eBPF profiling is used on Linux when targets are diverse
+- `may-use-in-runtime-profilers`: whether in-runtime profilers are used only where language-level detail is needed
+- `should-emit-portable-profile-format`: whether profiles are emitted in a `pprof`-compatible or OTLP-Profiles-convertible format
+- `must-attach-resource-attributes`: whether profiles carry `service.name`, `service.version`, deployment and region attributes
+- `should-correlate-profiles-with-traces`: whether profile samples record `trace_id`/`span_id` where the profiler and runtime support it
+- `should-verify-span-correlation-support`: whether span-level correlation support was verified per language before it is relied on
+- `should-retain-profiles-shorter`: whether profiles are retained for a shorter window than metrics/logs, with older data downsampled or aggregated
+- `must-pin-profiles-collector-version`: whether the profiles collector/SDK version is pinned and re-verified on upgrade
+- `should-prefer-convertible-profiler`: whether the profiler's data can be converted if the backend changes
+- `must-not-substitute-profiling-for-metrics-and-tracing`: whether profiling stands in for RED/USE metrics or distributed tracing
+- `must-not-ship-unmeasured-profiler`: whether any profiler ships with unmeasured overhead
+- `should-not-store-full-resolution-profiles-indefinitely`: whether full-resolution profiles are stored indefinitely

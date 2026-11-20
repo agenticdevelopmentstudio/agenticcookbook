@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Ask \"does this code encode the same knowledge?\" before deduplicating — if two fragments will evolve for different reasons, leave them alone",
+      "to": "should-ask-whether-same-knowledge-before-deduplicating",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-ask-whether-same-knowledge-before-deduplicating keeps the question before deduplicating and leaving alone fragments that evolve for different reasons, at SHOULD.",
+        "pin": "4ba5c3dce6e33f07d513e9e70e8f935e5c81cc0d5896221f0cba5aa453366a20"
+      }
+    },
+    {
+      "sentence": "When the same fact appears across layers (model, validation, UI copy, tests), consolidate to one source and derive the rest",
+      "to": "should-consolidate-facts-across-layers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-consolidate-facts-across-layers keeps the condition, all four layers, and consolidate-to-one-source-and-derive, at SHOULD.",
+        "pin": "723a65ac4af3f12577c29619961214f7dc6a99051ca594fa10a35adb61ba3d9a"
+      }
+    },
+    {
+      "sentence": "Prefer code generation, configuration, or derivation over hand-synchronized copies of the same fact",
+      "to": "should-prefer-derivation-over-synchronized-copies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-derivation-over-synchronized-copies keeps generation, configuration, or derivation over hand-synchronized copies, at SHOULD.",
+        "pin": "b2380d4b53c92449d802afae605d3485a8a5ec2683270f1431a7855b3c3cf1ac"
+      }
+    },
+    {
+      "sentence": "If you are unsure whether two fragments represent the same knowledge, duplicate — a coincidental twin is cheaper to split later than a wrong abstraction is to unwind",
+      "to": "should-duplicate-when-unsure",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-duplicate-when-unsure keeps the condition (unsure of same knowledge), the instruction to duplicate, and the coincidental-twin reason.",
+        "pin": "e4122d6526cd85dcd96dc6470cd75bd7ab2f0e070586db3f314ad7806df4c0a8"
+      }
+    }
+  ],
+  "obsolete": []
+}

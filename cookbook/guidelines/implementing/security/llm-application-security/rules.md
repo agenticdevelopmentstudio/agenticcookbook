@@ -1,0 +1,32 @@
+
+- **should-map-controls-to-owasp-llm-top-10-2025**: You **SHOULD** map your controls to the OWASP Top 10 for LLM Applications **2025** (pin that revision; renumbering and category shifts between editions).
+- **should-apply-request-body-egress-controls**: You **SHOULD** apply the same egress controls to model output you would to a raw HTTP request body.
+- **must-sanitize-output-at-trust-boundaries**: You **MUST** sanitize, encode, or parameterize model output before it crosses any trust boundary.
+- **must-not-pass-output-to-shell**: **Shell** — you **MUST NOT** pass output to `exec`/`system`/a shell string. Use argument arrays; **MUST NOT** interpolate into a command line.
+- **must-parameterize-output-in-sql**: **SQL** — you **MUST** use parameterized queries / prepared statements; never string-concatenate model output into SQL.
+- **must-encode-output-for-html**: **HTML/DOM** — you **MUST** use context-aware output encoding; **MUST NOT** inject into `innerHTML` or render as raw markup without sanitization.
+- **must-validate-tool-arguments**: **Tool arguments** — you **MUST** validate and type-check against a schema before any tool call (see input-validation guideline).
+- **must-validate-structured-output**: You **MUST** validate structured output (JSON, function-call args) against a strict schema and reject on mismatch — fail fast rather than coerce.
+- **must-not-treat-output-as-proof**: You **MUST NOT** treat output as proof of an action; verify side effects out-of-band.
+- **must-threat-model-both-injection-forms**: Prompt injection comes in two forms; both **MUST** be in the threat model.
+  - **Direct** — the user crafts input that overrides system instructions ("ignore previous instructions...").
+  - **Indirect** — hidden instructions arrive via content the agent *fetches or reads*: web pages, PDFs, emails, code comments, file contents, or another tool's results. This is the dominant agentic risk and is easy to miss.
+- **must-keep-instruction-data-trust-boundary**: You **MUST** keep a trust boundary between system/developer instructions and any untrusted content; clearly delimit and label retrieved or tool-returned content as data, not instructions.
+- **should-apply-least-privilege-against-injection**: You **SHOULD** apply least-privilege so a successful injection cannot reach high-impact tools (see Excessive Agency below).
+- **should-prefer-deterministic-guardrails**: You **SHOULD** prefer deterministic guardrails (allow-lists, output schemas, post-checks) over trusting the model to self-police — injection defenses are mitigations, not guarantees.
+- **should-not-count-prompt-instructions-as-control**: You **SHOULD** treat "the model was told not to" as no control at all.
+- **should-limit-capability-permissions-autonomy**: You **SHOULD** limit blast radius by limiting capability, permissions, and autonomy.
+- **must-grant-least-privilege**: You **MUST** grant each agent/tool the least privilege needed — scoped credentials, narrow API surface, no ambient admin access.
+- **must-allow-list-callable-tools**: You **MUST** maintain an explicit allow-list of callable tools.
+- **must-not-expose-open-ended-capabilities**: You **MUST NOT** expose open-ended capabilities (arbitrary shell, unrestricted HTTP, broad filesystem) without a specific justification and additional controls.
+- **should-require-human-confirmation**: You **SHOULD** require human-in-the-loop confirmation for high-impact or irreversible actions: sending money, deleting data, sending external communications, deploying, or modifying access.
+- **should-describe-concrete-effect-in-confirmation**: You **SHOULD** make the confirmation describe the concrete effect, not just "approve?".
+- **should-rate-limit-and-budget-tool-calls**: You **SHOULD** rate-limit and budget tool calls to bound runaway loops (relates to LLM10: Unbounded Consumption).
+- **must-not-put-secrets-in-system-prompt**: You **MUST NOT** place secrets, credentials, or controls you rely on for security inside the system prompt — assume the system prompt can leak (LLM07: System Prompt Leakage).
+- **must-filter-sensitive-data-in-and-out**: You **MUST** filter PII and sensitive data from both inputs and outputs, and avoid logging raw prompts/completions containing secrets (LLM02: Sensitive Information Disclosure).
+- **should-scope-retrieved-context-to-user**: You **SHOULD** scope retrieved context to what the current user is authorized to see — never let RAG return another tenant's documents.
+- **must-treat-vector-store-documents-as-untrusted**: You **MUST** treat documents entering the vector store as untrusted (they can carry indirect-injection payloads); validate provenance and apply per-document access controls at query time.
+- **should-protect-vector-store-like-source-data**: You **SHOULD** account for embedding-inversion and membership-inference risk: embeddings can leak source content, so protect the vector store like the underlying data.
+- **should-pin-models-and-verify-provenance**: **LLM03 Supply Chain** / **LLM04 Data and Model Poisoning** — you **SHOULD** pin model versions, verify provenance of models, datasets, and plugins.
+- **should-mark-generated-content-unverified**: **LLM09 Misinformation** — you **SHOULD** surface citations and mark generated content as unverified.
+- **should-not-present-output-as-authoritative**: You **SHOULD NOT** present model output as authoritative fact in safety-critical flows (LLM09 Misinformation).

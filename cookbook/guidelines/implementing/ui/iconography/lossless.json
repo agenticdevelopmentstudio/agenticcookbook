@@ -1,0 +1,89 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The platform's native icon set SHOULD be used first (SF Symbols, Material Symbols, Segoe Fluent Icons)",
+      "to": "should-use-native-icon-set-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with all three native icon sets named.",
+        "pin": "b09d2936bdf6aa1e9f043c6ce0cdee7a269ebea5392077c540b0a4b5791c86e9"
+      }
+    },
+    {
+      "sentence": "All icons accompanying actions MUST have a text label or accessible name",
+      "to": "must-label-action-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST: every action icon needs a text label or accessible name.",
+        "pin": "366c51645a77f554d3735c01f04f2b7bf095e64219ebb26e289c937f301d4b66"
+      }
+    },
+    {
+      "sentence": "Maintain consistent size and weight across the UI — don't mix outlined and filled styles",
+      "to": [
+        "should-keep-icon-size-and-weight-consistent",
+        "should-not-mix-outlined-and-filled-without-intention"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Consistent size and weight is kept at SHOULD; the no-mixing of outlined and filled styles is kept at SHOULD NOT, with its 'without intention' condition carried by the second rule.",
+        "pin": "3efc1a35f970a44688c786ae98211e67bace4ecfcd67bfa2ec182aae99ab28cf"
+      }
+    },
+    {
+      "sentence": "without intention (e.g., filled = selected, outlined = unselected)",
+      "to": "should-not-mix-outlined-and-filled-without-intention",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'without intention' condition and its example (filled = selected, outlined = unselected) are kept verbatim.",
+        "pin": "4e308410410b8dffb38bddf8a9a4d9e6d35efb26f2e31f8de156083fdf6416fa"
+      }
+    },
+    {
+      "sentence": "Minimum icon size: 16x16pt for decorative, 24x24pt for interactive (see Touch & Click Targets",
+      "to": "should-meet-minimum-icon-size",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed minimum sizes are kept at SHOULD with both values (16x16pt decorative, 24x24pt interactive) and the Touch & Click Targets cross-reference.",
+        "pin": "d6e10f53893347cdf883baedbd5b0f79d71cf3b7c198dd58b6f9928e89baf8fe"
+      }
+    },
+    {
+      "sentence": "for the full hit area)",
+      "to": "should-meet-minimum-icon-size",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The cross-reference tail 'for the full hit area' is kept in the rule text.",
+        "pin": "2ce7e7a607f3a03094f9621659f3167ef79e76b93896aea3ea31e644827794c6"
+      }
+    },
+    {
+      "sentence": "Icons conveying state (error, success, warning) MUST be paired with color AND shape —",
+      "to": "must-pair-state-icons-with-color-and-shape",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST with the error/success/warning scope and the color AND shape pairing.",
+        "pin": "e58b4c1a8016494a59a8a3a515355816e808c338f70ee3bcc3f046395d966779"
+      }
+    },
+    {
+      "sentence": "see Color section",
+      "to": "must-pair-state-icons-with-color-and-shape",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'see Color section' cross-reference is kept in the rule text.",
+        "pin": "d3650634a8b61e7ce250d74b2f91bc31c0b2f1ff1588f4b370a8503c51ecfe5d"
+      }
+    }
+  ],
+  "obsolete": []
+}

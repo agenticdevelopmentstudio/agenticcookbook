@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Types, methods, properties, public fields, constants, namespaces MUST use `PascalCase`",
+      "to": "must-pascal-case-types-and-members",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST for PascalCase on types, methods, properties, public fields, constants and namespaces is kept verbatim with every symbol kind.",
+        "pin": "80cd7796f7fb5dced804595a20dbac6f91d282b362db888b0ce13ccfbc545ccf"
+      }
+    },
+    {
+      "sentence": "Parameters and local variables MUST use `camelCase`",
+      "to": "must-camel-case-parameters-and-locals",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST for camelCase on parameters and local variables is kept verbatim.",
+        "pin": "dd1c6b6046f3424933834256d7aae45426d79172094a85d92238f813aad9141c"
+      }
+    },
+    {
+      "sentence": "Private instance fields MUST use `_camelCase` (underscore prefix)",
+      "to": "must-underscore-camel-case-private-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST for _camelCase with underscore prefix on private instance fields is kept verbatim.",
+        "pin": "89f258950a4b42ae96a3b17bac353778b97bc490a5690ed1576f9aed22bd77bf"
+      }
+    },
+    {
+      "sentence": "`I` prefix for interfaces (e.g., `IDisposable`)",
+      "to": "should-prefix-interfaces-with-i",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed I-prefix convention for interfaces is kept at SHOULD with the IDisposable example.",
+        "pin": "668661c5b7c421c6562ea8d560406e915e5634cfe890a8111f8bd03ea12e231b"
+      }
+    },
+    {
+      "sentence": "Async methods MUST have the `Async` suffix (e.g., `SaveAsync`)",
+      "to": "must-suffix-async-methods",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST for the Async suffix on async methods is kept verbatim with the SaveAsync example.",
+        "pin": "8291ca754ba66ee0223e5619ecd394ce4d542ae9e8af607756f0267fe28f58c0"
+      }
+    },
+    {
+      "sentence": "Constants MUST use `PascalCase`, not `SCREAMING_SNAKE_CASE`",
+      "to": "must-pascal-case-constants",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST for PascalCase constants, not SCREAMING_SNAKE_CASE, is kept verbatim.",
+        "pin": "22c13ff74540c558de3d533eda5b590edca6f8d7e86fb3a5e76a29ba5eeb642d"
+      }
+    },
+    {
+      "sentence": "Use `var` when the type is apparent from the right side of the assignment",
+      "to": "should-use-var-when-type-apparent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using var when the type is apparent from the right side of the assignment is kept at SHOULD with its condition.",
+        "pin": "dcbf86d53d57629e3bb9aba3b33fe72dbefba505793ca2dc4da06787472a13c1"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -4,11 +4,11 @@
     "id": "cef41f52-bfc6-4ff0-bb67-eb52521c7391",
     "title": "Retry and Resilience",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,16 +28,22 @@
       "https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults",
       "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "networking",
       "error-handling"
     ]
   },
-  "synced": "6cb20871420acf8b",
+  "synced": "9854422a297c5ad0",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-to", "heading": "Backoff and its defaults", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

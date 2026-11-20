@@ -1,0 +1,20 @@
+
+- **must-verify-bulk-operations**: Any operation that touches more than 5 files — renames, migrations, restructurings, bulk updates — MUST have a verification pass before the task is considered complete.
+- **must-not-complete-with-stale-references**: A bulk operation MUST NOT be marked complete until the verification pass returns zero stale references.
+- **must-grep-for-stale-references**: After the bulk operation finishes, the entire repo MUST be grepped for old names, paths, or identifiers that should have been updated. Check source code, documentation, configuration files, indexes, skills, rules, and test fixtures.
+- **should-verify-cross-reference-integrity**: After the bulk operation finishes, SHOULD verify that every file that references a renamed/moved entity has been updated. Common miss points:
+  - README and CLAUDE.md
+  - Index files and tables of contents
+  - Import statements and require paths
+  - Skill files that reference other skills by name
+  - Rule files that reference skills or other rules
+  - CI/CD configuration
+  - Symlinks
+- **should-confirm-completeness**: After the bulk operation finishes, SHOULD confirm the operation covered all intended files: list what was changed and compare against what should have been changed.
+- **should-verify-after-bulk-changes**: The verification pass SHOULD run:
+  - After any rename (files, directories, functions, variables across files)
+  - After migrating content between directories or repos
+  - After restructuring a directory layout
+  - After updating a convention across multiple files (e.g., frontmatter format)
+- **should-verify-each-repo-independently**: For cross-repo operations, SHOULD verify each repo independently.
+- **should-run-cross-repo-check**: For cross-repo operations, SHOULD then run a cross-repo check to confirm consistency — the same identifier should resolve correctly in every repo that references it.

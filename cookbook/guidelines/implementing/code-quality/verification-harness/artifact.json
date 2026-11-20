@@ -4,11 +4,11 @@
     "id": "a6bd5677-3e40-4480-942e-54c05e3bafc7",
     "title": "Verification harnesses as agent guardrails",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,22 +28,23 @@
     "references": [
       "https://code.claude.com/docs/en/best-practices"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-commit",
       "code-review"
     ]
   },
   "names_hosts": "Cites Claude Code's best practices and CLAUDE.md as the evidence that instructions are advisory.",
-  "synced": "06bd413fb087582f",
+  "synced": "979cbc839a33635f",
   "parts": [
     {"part": "intro"},
-    {"part": "make-the-check-runnable-and-deterministic", "heading": "Make the check runnable and deterministic"},
-    {"part": "optimize-failure-output-for-an-llm-reader", "heading": "Optimize failure output for an LLM reader"},
-    {"part": "escalate-enforcement-prompt-text-is-advisory-gates-are-deterministic", "heading": "Escalate enforcement: prompt text is advisory, gates are deterministic"},
-    {"part": "gate-on-correctness-not-taste", "heading": "Gate on correctness, not taste"},
-    {"part": "build-it-incrementally", "heading": "Build it incrementally"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "enforcement-levels", "heading": "Enforcement levels", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

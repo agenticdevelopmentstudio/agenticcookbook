@@ -1,0 +1,31 @@
+
+Review changed Python against [adc.guideline.implementing.language.python](cookbook:929e96cb-2900-4386-ad4a-1a67a0568480).
+
+- `must-declare-in-pyproject`, `should-not-write-setup-py`: Installable code is described in `pyproject.toml` with a build system, `requires-python` and declared dependencies. No new `setup.py`.
+- `should-carry-inline-script-metadata`: A script with third-party imports carries inline script metadata or a documented environment.
+- `should-ship-py-typed`: A typed library includes `py.typed`.
+- `should-annotate-signatures-and-public-attributes`, `should-type-check-strictly-in-ci`: Every new signature is annotated and the strict type check passes.
+- `should-not-blanket-ignore-types`: Each `# type: ignore` names one error code and has a reason.
+- `must-not-shell-out-foreign-values`, `should-run-commands-as-lists`: No `shell=True` with a string that includes a variable. Arguments are a list.
+- `should-check-exit-status`: `check=True` is set, or the return code is handled in the next lines.
+- `should-pass-timeout-to-hanging-commands`: Any call that can hang has a `timeout`.
+- `should-not-mix-capture-output-and-streams`: Output capture does not combine `capture_output` with explicit `stdout` or `stderr`.
+- `should-build-env-from-os-environ`: A custom `env` starts from `os.environ` unless a clean environment is the point.
+- `should-use-pathlib`, `must-pass-utf-8-encoding`: Paths are `pathlib.Path` objects. Every `read_text` and `write_text` passes an encoding.
+- `should-resolve-before-containment-check`: A containment check resolves the path first.
+- `must-not-use-bare-except`, `should-not-catch-exception-outside-boundary`: No bare `except:`. Broad `except Exception` appears only at a process boundary and logs.
+- `should-chain-translated-exceptions`: Translated errors use `raise ... from ...`.
+- `should-keep-try-bodies-small`, `must-not-leave-finally-by-jump`: `try` bodies are short. No `return`, `break` or `continue` in `finally`.
+- `should-name-errors-with-error-suffix`: New error classes derive from `Exception` and end in `Error`.
+- `should-start-untrusted-scripts-isolated`, `should-not-use-m-from-untrusted-directory`: A script that runs in a directory the user does not control is invoked with `-I`, and does not use `-m` there.
+- `should-use-project-tables-for-extras-and-scripts`: extras sit in `[project.optional-dependencies]` and entry points in `[project.scripts]`.
+- `should-match-requires-python-to-oldest-tested`: `requires-python` names the oldest interpreter CI tests.
+- `should-shlex-quote-when-a-shell-is-required`: every value interpolated into a required shell string goes through `shlex.quote`.
+- `should-capture-output-as-text`: output that is read is captured with `capture_output=True` and `text=True`.
+- `should-join-read-and-write-with-path-methods`: paths joined with `/` and files read and written with `read_text`/`write_text`, not string building.
+- `should-make-and-search-directories-with-path`: directories made with `mkdir(parents=True, exist_ok=True)` and searched with `glob`/`rglob`.
+- `should-catch-narrowest-exception`: each `except` names the narrowest exception the code handles.
+- `should-use-from-none-only-on-purpose`: each `from None` hides an implementation detail on purpose.
+- `should-use-else-and-finally`: success-only code in `else`, cleanup in `finally`.
+- `should-add-note-instead-of-wrapping`: an exception wrapped where nothing is added, instead of given context with `add_note()`.
+- `must-not-run-interpreter-in-downloads`, `should-pass-downloads-as-arguments`: an interpreter started inside a directory of downloaded files instead of given the path as an argument.

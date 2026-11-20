@@ -4,11 +4,11 @@
     "id": "8e204b5b-4f27-4f25-b43a-bf0b3ec3a88c",
     "title": "Research methodology and sources",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,18 +31,22 @@
       "https://www.sec.gov/edgar/sec-api-documentation",
       "https://www.prisma-statement.org/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "research"
     ]
   },
-  "synced": "389f6a42814fa5a5",
+  "synced": "30dcd5b3f24d3b32",
   "parts": [
     {"part": "intro"},
-    {"part": "workflow", "heading": "Workflow"},
-    {"part": "source-catalogue", "heading": "Source catalogue"},
-    {"part": "agentic-access-apis-and-mcp", "heading": "Agentic access (APIs and MCP)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "workflow", "heading": "Workflow", "role": "how-to"},
+    {"part": "source-catalogue", "heading": "Source catalogue", "role": "how-to"},
+    {"part": "agentic-access-apis-and-mcp", "heading": "Agentic access (APIs and MCP)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

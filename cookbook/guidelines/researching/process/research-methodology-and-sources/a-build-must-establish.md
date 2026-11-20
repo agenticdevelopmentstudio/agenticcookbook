@@ -1,0 +1,11 @@
+
+- `must-not-stop-at-search-results`: every finding cites a source page, never only a search-results page
+- `should-orient-and-classify-domain`: the topic's domain is classified before the first source is chosen, or the work says why not
+- `should-identify-authoritative-sources`: the authoritative sources for the domain are named and used, or the work says why not
+- `should-search-with-controlled-vocabulary`: searches use Boolean or controlled vocabulary, or the work says why not
+- `should-chain-citations-to-saturation`: citations are chained backward and forward to saturation, or the work says why not
+- `should-corroborate-across-independent-sources`: every finding rests on genuinely independent sources, or the work says why not
+- `should-record-provenance-at-generation-time`: provenance is recorded at generation time, or the work says why not
+- `should-use-prisma-for-systematic-rigor`: work that requires systematic rigor follows PRISMA, or says why not
+- `should-default-to-openalex`: academic search defaults to OpenAlex, or the work says why not
+- `should-read-full-sources`: the agent reads full sources rather than snippets, or the work says why not

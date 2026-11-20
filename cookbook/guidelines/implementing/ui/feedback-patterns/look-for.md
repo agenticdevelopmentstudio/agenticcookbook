@@ -1,0 +1,11 @@
+
+- `should-give-every-action-visible-feedback`: a user action that produces no visible feedback
+- `should-match-feedback-weight-to-action`: feedback heavier or lighter than its action (a dialog for a minor action, a toast for a major one)
+- `should-auto-dismiss-toasts`: a toast that stays up indefinitely or dismisses outside 3-5 seconds
+- `must-require-no-action-on-toasts`: a toast that needs the user to act on it
+- `must-not-use-toasts-for-errors`: an error shown in a toast or snackbar
+- `should-make-banners-dismissible`: a banner or inline alert the user cannot dismiss
+- `should-use-dialogs-sparingly`: dialogs for actions that are not destructive or irreversible
+- `must-not-use-dialogs-for-success`: a dialog used to report success
+- `must-confirm-destructive-actions`: a destructive action with no explicit confirmation, or one confirmed by a generic "OK"
+- `should-default-focus-to-safe-option`: a confirmation whose default focus is on the destructive option

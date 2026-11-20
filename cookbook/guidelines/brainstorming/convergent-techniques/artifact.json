@@ -4,11 +4,11 @@
     "id": "bcd71537-a14e-449d-863a-b32ee9625838",
     "title": "Convergent Techniques",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -35,17 +35,20 @@
       "Kelley, The Ten Faces of Innovation, 2005"
     ],
     "triggers": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "b092b0ef0f7179de",
+  "synced": "930663fc5e9876e1",
   "parts": [
     {"part": "intro"},
-    {"part": "affinity-clustering-kj-method", "heading": "Affinity Clustering (KJ Method)"},
-    {"part": "what-would-have-to-be-true-wwhtbt", "heading": "What Would Have to Be True (WWHTBT)"},
-    {"part": "premortem", "heading": "Premortem"},
-    {"part": "feasibility-check", "heading": "Feasibility Check"},
-    {"part": "idea-selection-user-led", "heading": "Idea Selection (user-led)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "affinity-clustering-kj-method", "heading": "Affinity Clustering (KJ Method)", "role": "how-to"},
+    {"part": "what-would-have-to-be-true-wwhtbt", "heading": "What Would Have to Be True (WWHTBT)", "role": "how-to"},
+    {"part": "premortem", "heading": "Premortem", "role": "how-to"},
+    {"part": "feasibility-check", "heading": "Feasibility Check", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

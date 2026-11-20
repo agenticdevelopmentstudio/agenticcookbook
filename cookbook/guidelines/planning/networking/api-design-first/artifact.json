@@ -4,11 +4,11 @@
     "id": "0b40ebfd-823f-4283-bbeb-eb2bcf095ff8",
     "title": "Design-first API development with OpenAPI",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,23 +27,23 @@
     "references": [
       "https://spec.openapis.org/oas/v3.1.0"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "api-integration",
       "new-module"
     ]
   },
-  "synced": "d4af20aa4a29771d",
+  "synced": "4693f04a212a7256",
   "parts": [
     {"part": "intro"},
-    {"part": "when-this-applies", "heading": "When this applies"},
-    {"part": "core-requirements", "heading": "Core requirements"},
-    {"part": "pin-the-version", "heading": "Pin the version"},
-    {"part": "generate-don-t-hand-write-the-derivatives", "heading": "Generate, don't hand-write, the derivatives"},
-    {"part": "lint-in-ci", "heading": "Lint in CI"},
-    {"part": "contract-checks-both-ways", "heading": "Contract checks both ways"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "generate-don-t-hand-write-the-derivatives", "heading": "Generate, don't hand-write, the derivatives", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

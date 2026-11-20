@@ -1,0 +1,14 @@
+
+- `must-evaluate-selection-arguments-ordering-stopping`: the eval report has results for selection, arguments, ordering and stopping
+- `should-report-each-dimension-separately`: the report lists each dimension's score on its own, or a note says why not
+- `must-pin-input-and-expected-trajectory`: every case file holds an input and expected tool names with arguments
+- `should-treat-suite-as-versioned-regression-set`: the suite carries a version and is checked in, or a note says why not
+- `should-allow-semantic-argument-equivalence`: argument matchers are semantic only where exact is too strict, and exact on identifiers, units and destructive parameters
+- `should-score-against-trajectory`: the scorer compares the recorded trajectory, or a note says why not
+- `must-include-error-recovery-cases`: error, empty-result and timeout cases exist and pass with recovery asserted
+- `should-include-no-tool-cases`: at least one no-tool case exists, or a note says why not
+- `must-not-assume-short-chains-generalize`: long-chain results come from long-chain cases
+- `should-add-realistic-multi-step-cases`: the report shows accuracy by chain length at the shipped tool count, or a note says why not
+- `should-report-pass-rates-with-trial-counts`: reported pass rates include their trial counts, or a note says why not
+- `should-gate-releases-and-track-per-dimension-scores`: the release pipeline runs the suite and stores per-dimension scores, or a note says why not
+- `should-keep-cases-hermetic`: the eval runs with no live backend calls, or a note says why not

@@ -1,0 +1,145 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Log every deletion (who/what/when, category, request reference) to a tamper-evident, separately retained **audit trail** — the log of a deletion is not the deleted data.",
+      "to": "should-audit-every-deletion",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Logging every deletion with who/what/when, category and request reference to a tamper-evident, separately retained audit trail is kept at SHOULD with its reason.",
+        "pin": "884704078b9ea09cedb483fb5c95557838872a6699f4a91ffc5459b537c1982d"
+      }
+    },
+    {
+      "sentence": "Reconcile periodically: scan for records past their `expires_at` that were not purged, and alert.",
+      "to": "should-reconcile-expiry-periodically",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Periodic reconciliation scanning for unpurged records past expires_at, and alerting, is kept at SHOULD.",
+        "pin": "aca35579a318adacf58bbadbfb19c8af9707f1675117089bfe3231102db795e8"
+      }
+    },
+    {
+      "sentence": "Treat a reconciliation miss as a defect (fail fast).",
+      "to": "should-treat-reconciliation-miss-as-defect",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating a reconciliation miss as a defect (fail fast) is kept at SHOULD.",
+        "pin": "e6c625a65164dccdfb991979476432d546d9c22336467b9233e0bbc7f2708728"
+      }
+    },
+    {
+      "sentence": "Define and publish a backup retention/purge policy so the maximum lag between an erasure request and full physical removal is bounded and known.",
+      "to": "should-publish-backup-purge-policy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Defining and publishing a backup retention/purge policy that bounds and makes known the erasure-to-removal lag is kept at SHOULD.",
+        "pin": "8c73cce8c8efcc5ea68d42bf687bd10dc8d33da697e53b15cb1f61f29bad8a3d"
+      }
+    },
+    {
+      "sentence": "For an erasure request, suppress the data from active systems immediately and rely on backup rotation for residual copies; **MUST NOT** restore deleted records from an old backup without re-applying pending deletions.",
+      "to": [
+        "should-suppress-erased-data-immediately",
+        "must-not-restore-without-reapplying-deletions"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Immediate suppression from active systems with backup rotation for residual copies is kept at SHOULD for erasure requests, and the ban on restoring without re-applying pending deletions is kept at MUST NOT.",
+        "pin": "bbd0685724ef9556af3a84763ba3c92ed0bb4f9518ae0b3b1ebf609aac7f165e"
+      }
+    },
+    {
+      "sentence": "Maintain an explicit inventory of where each category is copied; treat the inventory as the cascade checklist and keep it in version control.",
+      "to": "should-maintain-copy-inventory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The version-controlled copy inventory serving as the cascade checklist is kept at SHOULD with all three parts.",
+        "pin": "69524c9ae6ea140ecbcf9dc73ad5ef44ff0953124b7a625ddbd16d8eaa3d814b"
+      }
+    },
+    {
+      "sentence": "Prefer **event-driven** cascade (emit a `deletion-requested` event; each store subscribes) over a monolithic delete that must know every downstream — this keeps stores decoupled and the design open to new sinks (optimize for change).",
+      "to": "should-prefer-event-driven-cascade",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring event-driven cascade over a monolithic delete is kept at SHOULD with the mechanism and the decoupling / optimize-for-change reason.",
+        "pin": "4024b4858b715f0a6ea2112020c7f9dd2195ee077371483ce63d627da5438904"
+      }
+    },
+    {
+      "sentence": "Make cascade steps **idempotent** and retryable; a partially failed cascade **MUST** be detectable and resumable, not silently abandoned.",
+      "to": [
+        "should-make-cascade-idempotent",
+        "must-make-failed-cascade-resumable"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Idempotent, retryable cascade steps are kept at SHOULD, and a detectable, resumable partially failed cascade at MUST.",
+        "pin": "b65a135f054cb1d256b380ba10939d148c037758b9597cdbac1be2f2b770f4d0"
+      }
+    },
+    {
+      "sentence": "This is engineering guidance, not legal advice — confirm concrete retention periods with counsel.",
+      "to": "should-confirm-retention-periods-with-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The not-legal-advice caveat is kept, with confirming concrete retention periods with counsel at SHOULD.",
+        "pin": "b6c792c7af2a6e39089e597da582d451d45efb3ad824d1405fa140c053d63560"
+      }
+    },
+    {
+      "sentence": "Maintain a **retention schedule** as code or config that maps each **data category** (user profile, auth tokens, audit logs, analytics events, PII, derived ML features) to a maximum retention period and a disposition (delete vs. anonymize).",
+      "to": "should-maintain-retention-schedule",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The retention schedule as code or config, mapping every listed category to a maximum period and a disposition, is kept at SHOULD.",
+        "pin": "2c2c6a96b4092b5075e505186d059e34cdc3e6cd8bb7306851f58a18d8820706"
+      }
+    },
+    {
+      "sentence": "Every category **MUST** have a defined retention period; absence of a period is itself a decision and **MUST** be justified (e.g., legal-hold or financial records with a statutory minimum).",
+      "to": [
+        "must-define-retention-period",
+        "must-justify-missing-retention-period"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs are kept: every category has a defined retention period, and a missing period is justified, with the legal-hold/statutory example.",
+        "pin": "7cc5d41e7e76f072324cce3a800179cacaaa54440a6fbde9f985f797b62cb711"
+      }
+    },
+    {
+      "sentence": "Record a `created_at` (and where relevant `expires_at`) timestamp on every retained record so expiry is computable and auditable.",
+      "to": "should-record-retention-timestamps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Recording created_at (and expires_at where relevant) on every retained record so expiry is computable and auditable is kept at SHOULD.",
+        "pin": "69e44688bcf42203e5e9f5a3110a23d2c1b1faacdf7718d2ec0e10ad996dbabf"
+      }
+    },
+    {
+      "sentence": "Decide soft vs. hard **per category**, not globally.",
+      "to": "should-decide-delete-mode-per-category",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deciding soft vs. hard delete per category, not globally, is kept at SHOULD.",
+        "pin": "73b129f6067f71dcf550859c3e1556fb760e867704d1f02bb0b7ef4974730caf"
+      }
+    }
+  ],
+  "obsolete": []
+}

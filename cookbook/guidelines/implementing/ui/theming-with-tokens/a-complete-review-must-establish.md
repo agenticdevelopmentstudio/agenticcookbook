@@ -1,0 +1,20 @@
+
+- `must-not-edit-component-code-to-add-a-theme`: whether adding a theme required any component code change
+- `should-keep-three-token-tiers`: whether tokens keep the primitive, semantic and component tiers with themes rebinding only the semantic tier
+- `must-consume-only-semantic-tokens`: whether every component consumes only semantic (or component) tokens
+- `should-author-themes-as-value-sets`: whether each theme is a value set rebinding every semantic token, with light, dark and high-contrast as sibling sets
+- `should-resolve-tokens-at-a-single-boundary`: whether tokens resolve at a single boundary
+- `must-switch-theme-as-a-single-state-change`: whether theme switching is one state change with no per-component conditionals
+- `must-define-every-token-in-every-theme`: whether every semantic token is defined in every theme
+- `should-fail-fast-on-a-missing-token`: whether a missing key fails a build/test check rather than falling back silently
+- `must-honor-os-theme-by-default`: whether the app honors the OS theme by default and offers an explicit override
+- `must-respond-to-system-contrast-signal`: whether a high-contrast / increase-contrast theme exists and the app responds to the system contrast signal
+- `should-defer-to-system-colors-under-forced-colors`: whether system colors are left alone under forced-colors / Windows High Contrast
+- `must-meet-wcag-aa-contrast-in-every-theme`: whether every theme meets WCAG 2.2 AA contrast (4.5:1 normal text, 3:1 large text and non-text UI)
+- `must-check-contrast-per-theme`: whether contrast was checked for each theme independently
+- `should-automate-contrast-checks-in-ci`: whether the contrast check runs against the value sets in CI
+- `must-not-use-color-as-sole-state-signal`: whether any state is signaled by color alone
+- `should-align-tokens-to-dtcg-format`: whether token names/types align to the W3C Design Tokens Format Module (2025.10)
+- `should-pin-dated-spec-revision-and-isolate-parser`: whether the spec is pinned to a dated revision and the parser/build step is isolated
+- `should-adopt-token-pipeline-only-on-measured-need`: whether any token build pipeline is justified by measured need
+- `may-hand-author-value-sets-in-small-apps`: whether hand-authored per-platform value sets are in a small app, where they are allowed

@@ -1,0 +1,16 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "`tools` and `disallowedTools` MUST NOT be used together (mutually exclusive)",
+      "to": "must-not-combine-tools-and-disallowed-tools",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule restates the prohibition at MUST NOT with the same mutual-exclusivity reason; only a trailing period differs.",
+        "pin": "1d2bf43266b6b8312f45fb19a6b5613e18986014f15425e181ef734bb8cfbe90"
+      }
+    }
+  ],
+  "obsolete": []
+}

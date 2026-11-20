@@ -1,0 +1,12 @@
+
+- **should-classify-each-file-into-one-category**: The analysis **SHOULD** classify each file into exactly one primary purpose category.
+- **should-keep-groups-purpose-coherent**: Every file in a candidate scope group **SHOULD** have the same primary purpose; different purposes within the same group indicate either misclassification or a need to split — purpose-coherent groups are correctly scoped.
+- **should-split-incoherent-groups**: Scope groups whose files serve multiple unrelated purposes are incoherent and **SHOULD** be split.
+- **should-have-one-sentence-purpose**: Each scope group **SHOULD** have one sentence purpose.
+  - Test: can you complete "This scope group exists to ___" with a single clear answer? If the answer requires "and also", the group conflates concerns.
+- **should-document-mixed-purpose-files**: Mixed-purpose files are a smell, and the analysis **SHOULD** document them and recommend refactoring.
+- **should-not-create-mixed-purpose-groups**: The analysis **SHOULD NOT** create a mixed-purpose scope group to accommodate mixed-purpose files.
+- **should-split-mixed-files-along-fault-line**: For a file that mixes purposes (UI and networking, say), the analysis **SHOULD** recommend splitting the file along the fault line between those two purposes — mixed-purpose files mark the fault line.
+- **should-place-configuration-with-its-components**: Configuration files **SHOULD** belong with the components they configure, unless they configure the entire application, in which case they **SHOULD** belong in an application bootstrap scope group — configuration is rarely its own scope group.
+- **should-place-test-infrastructure-with-subject**: Test mocks and fakes **SHOULD** belong in the same scope group as the types they mock, or in a shared test infrastructure scope group if used across multiple groups — testing infrastructure belongs adjacent to its subject.
+- **must-give-build-tooling-own-group**: Build tooling **MUST** always be its own scope group: build scripts, code generators, and Gradle/Webpack configuration are not part of any runtime scope group — they form a `Build Tooling` scope group that is excluded from runtime analysis.

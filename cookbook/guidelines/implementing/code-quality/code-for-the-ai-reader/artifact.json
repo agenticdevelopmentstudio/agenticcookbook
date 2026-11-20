@@ -4,11 +4,11 @@
     "id": "42ed78a6-eea7-4b48-8b5f-be345682ffc3",
     "title": "Writing code for the AI reader",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,20 +28,21 @@
     "references": [
       "https://simonwillison.net/2025/Mar/11/using-llms-for-code/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "code-review"
     ]
   },
-  "synced": "db73b63836d69ce1",
+  "synced": "5a2d906224fdbbbf",
   "parts": [
     {"part": "intro"},
-    {"part": "write-for-grep-not-for-cleverness", "heading": "Write for grep, not for cleverness"},
-    {"part": "make-behavior-visible-not-inferred", "heading": "Make behavior visible, not inferred"},
-    {"part": "colocate-behavior-with-its-tests", "heading": "Colocate behavior with its tests"},
-    {"part": "balance-not-dogma-important", "heading": "Balance, not dogma (IMPORTANT)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

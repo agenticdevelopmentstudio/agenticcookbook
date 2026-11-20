@@ -1,0 +1,20 @@
+
+- `must-not-edit-component-code-to-add-a-theme`: a theme is added without editing component code
+- `should-keep-three-token-tiers`: tokens sit in primitive, semantic and component tiers and themes rebind only the semantic tier, or the code says why not
+- `must-consume-only-semantic-tokens`: no component reads a primitive token or a hard-coded literal
+- `should-author-themes-as-value-sets`: each theme is a value set rebinding every semantic token, or the code says why not
+- `should-resolve-tokens-at-a-single-boundary`: tokens resolve at one boundary, or the code says why not
+- `must-switch-theme-as-a-single-state-change`: switching theme is one state change, with no per-component conditionals
+- `must-define-every-token-in-every-theme`: every semantic token is defined in every theme
+- `should-fail-fast-on-a-missing-token`: a build/test check fails on a missing key, or the code says why not
+- `must-honor-os-theme-by-default`: the app follows the OS theme by default, and offers an explicit override or the code says why not
+- `must-respond-to-system-contrast-signal`: the app responds to the system contrast signal, and a high-contrast / increase-contrast theme exists or the code says why not
+- `should-defer-to-system-colors-under-forced-colors`: under forced-colors / Windows High Contrast the app uses system colors, or the code says why not
+- `must-meet-wcag-aa-contrast-in-every-theme`: every theme meets 4.5:1 for normal text and 3:1 for large text and non-text UI
+- `must-check-contrast-per-theme`: contrast is checked for each theme independently
+- `should-automate-contrast-checks-in-ci`: CI checks contrast against the value sets, or the code says why not
+- `must-not-use-color-as-sole-state-signal`: no state is signaled by color alone
+- `should-align-tokens-to-dtcg-format`: token names/types follow the W3C Design Tokens Format Module (2025.10), or the code says why not
+- `should-pin-dated-spec-revision-and-isolate-parser`: the spec revision is pinned and parsing sits in one isolated build step, or the code says why not
+- `should-adopt-token-pipeline-only-on-measured-need`: any token build pipeline has a stated measured need, or the code says why
+- `may-hand-author-value-sets-in-small-apps`: hand-authored per-platform value sets, where used, are in a small app

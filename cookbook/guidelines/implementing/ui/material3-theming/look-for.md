@@ -1,0 +1,19 @@
+
+- `must-consume-semantic-color-roles`: a component using a raw `Color(0xFF…)` literal or an app-defined palette instead of a semantic color role
+- `must-provide-light-and-dark-schemes`: a theme missing `lightColorScheme()` or `darkColorScheme()`, or choosing between them other than by `isSystemInDarkTheme()`
+- `should-generate-schemes-with-theme-builder`: a `ColorScheme` with every role hand-authored rather than generated with the Material Theme Builder
+- `should-read-colors-via-color-scheme`: a use site reading a color other than through `MaterialTheme.colorScheme.<role>`
+- `must-not-read-hard-coded-colors`: a hard-coded color read where a role exists
+- `should-treat-dynamic-color-as-deliberate`: dynamic color turned on by default, with no decision that brand identity allows the OS to drive palette
+- `should-guard-dynamic-color-api-level`: dynamic color schemes called without an Android 12+ (`Build.VERSION_CODES.S`) guard or a branded fallback
+- `should-prefer-fixed-scheme-for-brand-fidelity`: dynamic color used where brand color fidelity is a hard requirement
+- `should-use-m3-type-scale-roles`: text styled other than through `MaterialTheme.typography.<role>`
+- `must-not-apply-ad-hoc-type`: an ad-hoc `fontSize` or `fontWeight` where a scale role fits
+- `should-use-shape-scale`: shapes not taken from `MaterialTheme.shapes`
+- `should-take-corners-from-shape-scale`: a per-component magic number for corner treatment
+- `must-support-dark-completely`: a screen with a hard-coded light-only color, or text not read from `onSurface`/`onSurfaceVariant` and the matching dark scheme
+- `should-verify-contrast-when-overriding-roles`: an overridden color role with no WCAG 2.1 AA contrast check
+- `should-pin-material3-dependency`: `androidx.compose.material3` unpinned or not taken through the Compose BOM where it could be
+- `must-not-blanket-adopt-expressive`: Material 3 Expressive adopted across production code
+- `should-default-to-stable-m3-color-roles`: Expressive styling where stable M3 color roles would serve
+- `should-adopt-expressive-only-behind-a-flag`: Expressive used without a flag, without a pinned alpha, or without a concrete UX need behind it

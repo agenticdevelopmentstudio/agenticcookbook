@@ -4,11 +4,11 @@
     "id": "d9b6e0aa-0b0e-4c88-94b1-80c305baaadd",
     "title": "Choosing an API style (REST, gRPC, GraphQL)",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,22 +28,22 @@
       "https://www.designgurus.io/blog/rest-graphql-grpc-system-design",
       "https://blog.apilayer.com/graphql-vs-rest-vs-grpc-which-should-you-choose-and-when/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "api-integration",
       "new-module"
     ]
   },
-  "synced": "3fa21a8806e441cd",
+  "synced": "7ac2480d37256c25",
   "parts": [
     {"part": "intro"},
-    {"part": "decision-factors", "heading": "Decision factors"},
-    {"part": "rest-http-json", "heading": "REST (HTTP/JSON)"},
-    {"part": "grpc-http-2-protocol-buffers", "heading": "gRPC (HTTP/2 + Protocol Buffers)"},
-    {"part": "graphql", "heading": "GraphQL"},
-    {"part": "mixing-styles", "heading": "Mixing styles"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "rest-http-json", "heading": "REST (HTTP/JSON)", "role": "how-to"},
+    {"part": "grpc-http-2-protocol-buffers", "heading": "gRPC (HTTP/2 + Protocol Buffers)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -4,11 +4,11 @@
     "id": "3f442861-abec-4dfc-a2e2-a3761904d16d",
     "title": "Kotlin Multiplatform",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,20 +28,20 @@
     "references": [
       "https://www.jetbrains.com/kotlin-multiplatform/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module"
     ]
   },
-  "synced": "7b004468eace027a",
+  "synced": "f0579ffae89f1cc1",
   "parts": [
     {"part": "intro"},
-    {"part": "layering-and-the-share-boundary", "heading": "Layering and the share boundary"},
-    {"part": "expect-actual-discipline", "heading": "expect / actual discipline"},
-    {"part": "shared-ui-compose-multiplatform-cmp", "heading": "Shared UI: Compose Multiplatform (CMP)"},
-    {"part": "interop-and-packaging", "heading": "Interop and packaging"},
-    {"part": "build-and-verification", "heading": "Build and verification"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

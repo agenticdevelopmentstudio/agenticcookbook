@@ -1,0 +1,17 @@
+
+- `must-not-patch-a-running-server-in-place`: a running server patched in place (SSH sessions, live edits, in-place package installs)
+- `must-ship-immutable-versioned-artifacts`: a deployment that mutates instances rather than shipping a versioned artifact and replacing them
+- `must-not-modify-a-built-artifact`: a built artifact altered after the build rather than a new version built
+- `must-treat-servers-as-cattle`: a hand-tuned server that cannot be replaced from its image
+- `must-rebuild-to-change`: a configuration, dependency or code change made on the live instance rather than by rebuilding the image
+- `should-treat-running-instances-as-read-only`: manual `apt install`, live config edits, or hotfix scripts that survive a restart
+- `must-roll-back-by-redeploying`: a rollback that undoes changes on a live host rather than redeploying the previous known-good image
+- `should-retain-addressable-prior-images`: prior image versions not kept, or not addressable by immutable tag or digest
+- `should-not-deploy-mutable-tags`: a deploy that names a mutable tag like `latest`
+- `should-build-from-version-controlled-definitions`: an artifact built from anything other than version-controlled definitions (`Dockerfile`, Packer template)
+- `should-automate-replacement-provisioning`: replacement instances provisioned by hand
+- `should-bake-code-and-dependencies-into-the-image`: application code or dependencies fetched at runtime rather than baked into the image
+- `should-inject-environment-config-at-runtime`: secrets or per-environment values baked into the image
+- `must-keep-persistent-data-off-the-instance`: databases or user uploads on the instance's ephemeral disk
+- `should-adopt-heavier-machinery-only-on-measured-need`: Kubernetes, managed image pipelines or blue-green/canary infrastructure with no measured need named
+- `should-keep-image-builds-fast`: image builds slow enough to tempt patching in place, with no layer caching or small base image

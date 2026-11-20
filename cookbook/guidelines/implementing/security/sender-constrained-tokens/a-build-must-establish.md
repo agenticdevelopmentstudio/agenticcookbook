@@ -1,0 +1,16 @@
+
+- `should-sender-constrain-high-value-apis`: high-value and public-client APIs issue sender-constrained tokens, or the build says why not
+- `should-sender-constrain-tokens-through-intermediaries`: tokens crossing intermediaries are sender-constrained, or the build says why not
+- `may-keep-low-value-flows-bearer`: each bearer flow carries its recorded threat-model and cost decision
+- `should-pick-one-mechanism-per-surface`: each API surface accepts one mechanism, or the build names the migration plan
+- `should-present-mechanism-choice-as-trade-off`: the mechanism choice states its trade-off, or the build says why not
+- `must-send-dpop-proof-on-every-request`: the client signs and sends a `DPoP` proof on token requests and every protected resource request
+- `must-include-dpop-proof-claims`: proofs carry `htm`, `htu`, `iat`, a unique `jti`, and `ath` on resource requests
+- `must-bind-and-verify-dpop-key`: issued tokens carry `cnf.jkt` and the resource server checks the proof key against it
+- `must-reject-replayed-dpop-proofs`: the resource server rejects replayed proofs by `jti`/`iat` freshness, with a server `nonce` where replay risk is high
+- `must-keep-private-keys-non-exportable`: private keys are non-extractable WebCrypto keys or OS keystore keys, never persisted where script can read them
+- `must-bind-client-certificate-fingerprint`: the client presents a TLS certificate and tokens carry its `cnf.x5t#S256` fingerprint
+- `must-match-client-certificate-before-honoring`: the resource server matches the TLS client certificate to the bound fingerprint before honoring the token
+- `must-handle-certificate-rotation-and-revocation`: certificate rotation and revocation have an operational procedure
+- `should-combine-with-other-token-controls`: short lifetimes, refresh-token rotation, audience restriction and PKCE are in place alongside it, or the build says why not
+- `may-choose-mechanism-by-topology`: the chosen mechanism works in the deployment topology

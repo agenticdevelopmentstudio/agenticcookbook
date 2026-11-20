@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When generating a component, explicitly note which native controls are being used and why.",
+      "to": "should-note-native-controls-used",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the when-generating-a-component condition and explicitly noting which native controls are used and why, at SHOULD.",
+        "pin": "6ed959f97953db3df458d08cf88a786b87a869351ea0b2889f86a04d690f3615"
+      }
+    },
+    {
+      "sentence": "If there is ambiguity about whether a native control fits, ask the user before proceeding.",
+      "to": "should-ask-when-native-fit-is-ambiguous",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the ambiguity condition and asking the user before proceeding, at SHOULD.",
+        "pin": "58b7ba5dfaa64e7d9ee369b3e0162c26b330eb22c5ca5cb445a71a5aec3dd6c2"
+      }
+    },
+    {
+      "sentence": "Search the platform SDK for an existing control before writing a custom one",
+      "to": "should-search-sdk-before-custom-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD searching the platform SDK for an existing control before writing a custom one.",
+        "pin": "4e6ff266f24236d3cf212afc2c4819fc2e9e30733daebdc6ba16ff2dbec1149f"
+      }
+    },
+    {
+      "sentence": "When a native control almost fits, customize it rather than replacing it with a from-scratch implementation",
+      "to": "should-customize-near-fit-native-controls",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the almost-fits condition and customizing rather than replacing with a from-scratch implementation, at SHOULD.",
+        "pin": "65638641c5b3c7be6d8408912f73184c3acc04bf20cd2785f89ecb17ee6cb373"
+      }
+    },
+    {
+      "sentence": "Justify every third-party UI dependency with a concrete gap the platform SDK cannot fill",
+      "to": "should-justify-third-party-ui-dependencies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD justifying every third-party UI dependency with a concrete gap the platform SDK cannot fill.",
+        "pin": "80ede09a3cbc138650e62777af266d286623595a133b888608f402688f97ed50"
+      }
+    }
+  ],
+  "obsolete": []
+}

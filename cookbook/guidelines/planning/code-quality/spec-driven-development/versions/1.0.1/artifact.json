@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "138eed2b-6b13-40ac-8c99-1f7860420b42",
+    "title": "Spec-driven development (plan before code)",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "For non-trivial agent work, write a self-contained spec before code, separating planning from execution and ending with a verification step.",
+    "platforms": [],
+    "tags": [
+      "planning",
+      "ai-workflow",
+      "spec"
+    ],
+    "depends-on": [],
+    "related": [
+      "b224ef56-65f5-45fd-8842-767b20df6736",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2",
+      "a3f7c1d2-8e4b-4a9f-b6c3-2d1e0f9a8b7c"
+    ],
+    "references": [
+      "https://code.claude.com/docs/en/best-practices",
+      "https://github.com/github/spec-kit",
+      "https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "new-module"
+    ]
+  },
+  "synced": "375f7b53055b0a85",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-a-spec-is-required", "heading": "When a spec is required"},
+    {"part": "what-a-good-spec-contains", "heading": "What a good spec contains"},
+    {"part": "a-staged-flow-name-the-method-not-the-tool", "heading": "A staged flow (name the method, not the tool)"},
+    {"part": "verification", "heading": "Verification"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

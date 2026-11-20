@@ -1,0 +1,196 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use Jetpack Glance with Compose-style APIs for home screen widgets.",
+      "to": "android-use-jetpack-glance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-jetpack-glance keeps Jetpack Glance with Compose-style APIs for home screen widgets on Android, at SHOULD.",
+        "pin": "f03d16e24da39889ba7bc19041c7e473fd15b356c05ff474e3555961e04f9c11"
+      }
+    },
+    {
+      "sentence": "Define widget metadata in `appwidget-provider` XML.",
+      "to": "android-define-appwidget-provider",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-define-appwidget-provider keeps widget metadata in appwidget-provider XML, at SHOULD.",
+        "pin": "bc168b777421f18d28edf3aaf97fd1bb6ba36ddc9d24ea2455fc99ef55f081d1"
+      }
+    },
+    {
+      "sentence": "Support resizable widgets and respond to `onUpdate` broadcasts.",
+      "to": "android-support-resize-and-onupdate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-support-resize-and-onupdate keeps resizable widgets and onUpdate handling, at SHOULD.",
+        "pin": "78fbda5c2abfdcdacda4b87fea9c2d0bbb2777b574d23394ec44a397ef41609a"
+      }
+    },
+    {
+      "sentence": "Use `WorkManager` for background data refresh.",
+      "to": "android-refresh-with-workmanager",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-refresh-with-workmanager keeps WorkManager for background data refresh on Android, at SHOULD.",
+        "pin": "3ed5d6b1b3af9db6ee5d31f95fd4e4310e45bca0a2d2a5da6a34e5cd83d35e65"
+      }
+    },
+    {
+      "sentence": "Follow Material You theming for visual consistency with the system.",
+      "to": "android-follow-material-you",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-follow-material-you keeps Material You theming and the system-consistency reason, at SHOULD.",
+        "pin": "d91b7b1648dd3f0710c3444ee74dcd928adfdba86d46bb2b5ad0564e48fd169f"
+      }
+    },
+    {
+      "sentence": "Use WidgetKit with SwiftUI views.",
+      "to": "apple-use-widgetkit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-use-widgetkit keeps WidgetKit with SwiftUI views on Apple platforms, at SHOULD.",
+        "pin": "d8bb530fa2fdee12b6a2d830b764b83a4081cbf376e74f2eda7219e84eba9e8a"
+      }
+    },
+    {
+      "sentence": "Support small, medium, and large widget families.",
+      "to": "apple-support-widget-families",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-support-widget-families keeps small, medium and large widget families, at SHOULD.",
+        "pin": "df95e6b6b0a397d596aa99af657d081730d081f00352ed09a77ba5b47d629905"
+      }
+    },
+    {
+      "sentence": "On iOS 17+, support interactive widgets with `AppIntent`-backed buttons and toggles.",
+      "to": "ios17-support-interactive-widgets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ios17-support-interactive-widgets keeps the iOS 17+ condition and AppIntent-backed buttons and toggles, at SHOULD.",
+        "pin": "95b521333dee9f80b2b64ff8f8188870d225583a8fabc2bc61b50511b9bf741d"
+      }
+    },
+    {
+      "sentence": "On iOS 16+, support Lock Screen widgets.",
+      "to": "ios16-support-lock-screen-widgets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ios16-support-lock-screen-widgets keeps the iOS 16+ condition and Lock Screen widgets, at SHOULD.",
+        "pin": "5c104926b2669ad03b6eeb728d57f288973d036a0144c905240ee036c1d50adc"
+      }
+    },
+    {
+      "sentence": "Use `TimelineProvider` for scheduled updates and `WidgetCenter.shared.reloadTimelines` for event-driven refresh.",
+      "to": "apple-use-timelineprovider-and-reload",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-use-timelineprovider-and-reload keeps TimelineProvider for scheduled updates and reloadTimelines for event-driven refresh, at SHOULD.",
+        "pin": "81c3571b33e6e60d04999788a41e0e53345546336b8527ea04fbff5b95380446"
+      }
+    },
+    {
+      "sentence": "For real-time status, use Live Activities with `ActivityKit` and the Dynamic Island on supported devices.",
+      "to": "apple-use-live-activities-for-realtime",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-use-live-activities-for-realtime keeps Live Activities with ActivityKit and the Dynamic Island for real-time status on supported devices, at SHOULD.",
+        "pin": "10f36502e46c4f76fb66b369fa956fc141c0645dab3d01593be72802b52a7742"
+      }
+    },
+    {
+      "sentence": "Show only the most important information — widgets are not miniature apps",
+      "to": "show-only-most-important-information",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "show-only-most-important-information keeps showing only the most important information and the not-miniature-apps reason, at SHOULD.",
+        "pin": "6a55029a0c5e2dd4bbec37b9abd15158f1344d66513636f73ed8b9912181f93d"
+      }
+    },
+    {
+      "sentence": "Support multiple widget sizes when the platform offers them",
+      "to": "support-multiple-sizes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "support-multiple-sizes keeps multiple widget sizes when the platform offers them, at SHOULD.",
+        "pin": "beb1482538f65ae0b4e515934b33b1eb3eca3c5be58a06e34fff1f0ff5e2ff93"
+      }
+    },
+    {
+      "sentence": "Tapping a widget MUST deep link to the relevant content in the app",
+      "to": "must-deep-link-on-tap",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-deep-link-on-tap keeps the MUST that tapping a widget deep links to the relevant content.",
+        "pin": "fec6dbe08c82a0d37b2543bf8a3879970db0ebd9e7088738e917663a4b2470d8"
+      }
+    },
+    {
+      "sentence": "Update widget content on a reasonable cadence — balance freshness against battery and data usage",
+      "to": "update-on-reasonable-cadence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "update-on-reasonable-cadence keeps a reasonable update cadence balancing freshness against battery and data, at SHOULD.",
+        "pin": "c55c99419c2d527b046d0f90cd2be6df12557d28d3f1ae20fa4a54b7abeadcb3"
+      }
+    },
+    {
+      "sentence": "Use the Badging API for app icon notification counts.",
+      "to": "pwa-use-badging-api",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "pwa-use-badging-api keeps the Badging API for app icon counts in a PWA, at SHOULD.",
+        "pin": "bcf688e5ca90d8c8f2660530abd81e108de94ba0e227372cc46888f994d9acec"
+      }
+    },
+    {
+      "sentence": "Support periodic background sync via service workers for data freshness.",
+      "to": "pwa-support-periodic-background-sync",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "pwa-support-periodic-background-sync keeps periodic background sync via service workers for freshness, at SHOULD.",
+        "pin": "50b6dbeae7c1c30ab2571f043165ac4bccdeb056d5d0e065959e34f42af7d5e9"
+      }
+    },
+    {
+      "sentence": "Explore experimental Widget API proposals where available.",
+      "to": "pwa-explore-widget-api-proposals",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "pwa-explore-widget-api-proposals keeps exploring experimental Widget API proposals where available, at SHOULD.",
+        "pin": "edc6ea341d7151d339bc07e52dcc6547700395f989114017f7df60c57663bef5"
+      }
+    },
+    {
+      "sentence": "On desktop PWAs, consider system tray or menu bar presence where the platform allows.",
+      "to": "pwa-consider-tray-or-menu-bar",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "pwa-consider-tray-or-menu-bar keeps the desktop-PWA scope and considering tray or menu bar presence where allowed, at SHOULD.",
+        "pin": "1485ae2764f7ebdd69afdf02478f9c8209d7fb23f39db2de896e5ad959bd4100"
+      }
+    }
+  ],
+  "obsolete": []
+}

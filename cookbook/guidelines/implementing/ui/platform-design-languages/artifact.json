@@ -4,7 +4,7 @@
     "id": "3741ed5e-0b67-48f2-b227-36ae152c0f4b",
     "title": "Platform Design Languages",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -30,18 +30,20 @@
       "https://m3.material.io/",
       "https://www.w3.org/TR/WCAG21/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "platform-integration"
     ]
   },
-  "synced": "30bb71dabd626893",
+  "synced": "fc2becfccb107eaa",
   "parts": [
     {"part": "intro"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "how-this-applies-to-cookbook-authoring", "heading": "How this applies to cookbook authoring"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

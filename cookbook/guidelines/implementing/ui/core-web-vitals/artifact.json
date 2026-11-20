@@ -4,11 +4,11 @@
     "id": "c8bf92be-4b7b-4ed7-a9b5-9584c1878d63",
     "title": "Core Web Vitals and performance budgets",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,22 +31,22 @@
       "https://web.dev/articles/inp",
       "https://web.dev/articles/vitals/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "performance-optimization"
     ]
   },
-  "synced": "83400dd5445faf5c",
+  "synced": "4c239a6f400b4438",
   "parts": [
     {"part": "intro"},
-    {"part": "the-three-core-web-vitals-current-as-of-2026", "heading": "The three Core Web Vitals (current as of 2026)"},
-    {"part": "requirements", "heading": "Requirements"},
-    {"part": "inp-is-usually-the-hardest-to-pass", "heading": "INP is usually the hardest to pass"},
-    {"part": "lcp-and-cls-quick-wins", "heading": "LCP and CLS quick wins"},
-    {"part": "measurement-and-ci-enforcement", "heading": "Measurement and CI enforcement"},
-    {"part": "notes", "heading": "Notes"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "the-three-core-web-vitals-current-as-of-2026", "heading": "The three Core Web Vitals (current as of 2026)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

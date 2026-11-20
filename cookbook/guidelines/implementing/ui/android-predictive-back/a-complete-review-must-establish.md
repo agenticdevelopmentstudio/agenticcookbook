@@ -1,0 +1,15 @@
+
+- `must-not-rely-on-deprecated-back-apis`: whether any code still relies on `onBackPressed()` or `KEYCODE_BACK` interception
+- `must-register-onbackpressedcallback`: whether every custom back handler is an `OnBackPressedCallback` on the dispatcher, tied to a `LifecycleOwner`
+- `should-prefer-androidx-back-apis`: whether back handling uses the AndroidX `androidx.activity` APIs over the platform callback
+- `should-use-platform-callback-only-without-androidx`: whether the platform `OnBackInvokedCallback` is used directly only where there is no AndroidX dependency
+- `must-derive-isenabled-from-ui-state`: whether every callback's `isEnabled` is derived from observable UI state
+- `should-keep-callbacks-single-responsibility`: whether there is one callback per back-consuming UI state
+- `may-override-back-flag-per-activity`: whether any per-`<activity>` override of the flag serves gradual rollout
+- `should-enable-back-flag-for-system-animations`: whether `android:enableOnBackInvokedCallback` is `true` or omitted where the default is on
+- `should-pin-back-behavior-to-targetsdk`: whether predictive-back behavior is pinned to the app's `targetSdk` rather than assumed fixed
+- `should-animate-with-the-gesture`: whether custom transitions animate with the gesture's progress
+- `should-use-predictivebackhandler-in-compose`: whether Compose back animations use `PredictiveBackHandler`, commit on completion and reset on cancellation
+- `should-implement-back-progress-callbacks-in-views`: whether View back animations implement the started/progressed/cancelled callbacks and commit in `handleOnBackPressed`
+- `should-use-observer-priority-only-for-side-effects`: whether `PRIORITY_SYSTEM_NAVIGATION_OBSERVER` is used only for non-consuming side effects
+- `must-not-alter-navigation-from-observer`: whether any observer-priority callback alters navigation

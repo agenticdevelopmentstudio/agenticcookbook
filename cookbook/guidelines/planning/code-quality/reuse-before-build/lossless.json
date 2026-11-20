@@ -1,0 +1,68 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "You MUST check these before writing a custom implementation, nearest first:",
+      "to": "must-check-existing-solutions-nearest-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-check-existing-solutions-nearest-first keeps the MUST check before a custom implementation, nearest first, and carries the four-item list 'these' refers to.",
+        "pin": "1813c1a8d61c9490c59519b38b880fed7d824322e016e9907939f5b5c95dda41"
+      }
+    },
+    {
+      "sentence": "Check before adding anything.",
+      "to": "should-check-dependencies-before-adding",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-check-dependencies-before-adding keeps checking existing dependencies before adding anything, and item 2 of must-check-existing-solutions-nearest-first keeps existing dependencies inside the MUST-check order.",
+        "pin": "36419bbbfb2b912dd845fa6eed4a29bb4b329e834f3522d79f2450b97c40de7b"
+      }
+    },
+    {
+      "sentence": "**Your own and shared codebases** — a sibling project or shared module may already implement it; reuse beats a parallel copy (see dry).",
+      "to": [
+        "must-check-existing-solutions-nearest-first",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Item 3 of must-check-existing-solutions-nearest-first keeps own and shared codebases with the dry pointer; the rationale keeps 'reuse beats a parallel copy'.",
+        "pin": "bd5b542a9c72f9fa24018ae848db7a22fb9f6cd858cd5b047251b8f546212192"
+      }
+    },
+    {
+      "sentence": "For non-trivial functionality you SHOULD take a moment to search the ecosystem — the package registry and code search (e.g.",
+      "to": "should-search-ecosystem-for-prior-art"
+    },
+    {
+      "sentence": "If a library you already use *almost* does what you need, you SHOULD prefer extending it or contributing upstream over building a parallel implementation.",
+      "to": "should-prefer-extending-existing-library"
+    },
+    {
+      "sentence": "You MUST confirm a candidate package actually exists, is actively maintained, and is genuinely used before adding it.",
+      "to": "must-verify-candidate-package"
+    },
+    {
+      "sentence": "Do not install a package name an AI suggested without verifying it — hallucinated and typosquatted names (\"slopsquatting\") are a real supply-chain attack surface.",
+      "to": [
+        "should-not-install-unverified-ai-suggested-package",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-install-unverified-ai-suggested-package keeps the prohibition (unkeyed, now SHOULD NOT); the rationale keeps the slopsquatting supply-chain reason.",
+        "pin": "a10bbacbb1b1c487bf246bf0599b4dbeebb02b96ea984c77e760451753460ff6"
+      }
+    },
+    {
+      "sentence": "You MUST weigh the dependency against building it: for trivial functionality, a little copying is better than taking on a dependency and its supply-chain and maintenance risk (see dependency-security).",
+      "to": "must-weigh-dependency-against-building"
+    }
+  ],
+  "obsolete": []
+}

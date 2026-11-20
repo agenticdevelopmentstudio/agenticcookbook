@@ -1,0 +1,17 @@
+
+- **should-not-conflate-delivery-and-deployment**: Continuous delivery and continuous deployment are distinct practices; they SHOULD NOT be conflated.
+- **must-keep-main-releasable**: The pipeline MUST keep main releasable. Whether releases auto-ship is a separate choice.
+- **must-not-merge-unreleasable-change**: A change MUST NOT merge to main if it leaves main un-releasable.
+- **must-automate-commit-to-artifact**: The pipeline **MUST** be fully automated from commit to a deployable artifact: build, test, package, and (for deployment) deploy — no manual steps in the path to "releasable."
+- **must-trigger-pipeline-on-every-commit**: Every commit to main **MUST** trigger the pipeline.
+- **must-block-release-on-red-pipeline**: A red pipeline **MUST** block release and **SHOULD** be treated as a stop-the-line event.
+- **must-build-once-deploy-many**: The pipeline **MUST** produce a single immutable artifact promoted unchanged across environments (build once, deploy many). Do not rebuild per environment.
+- **should-make-deployments-reversible**: Deployments **SHOULD** be reversible: prefer a fast rollback or roll-forward path, and decouple deploy from release using flags (see related: feature-flags) so risky changes ship dark.
+- **should-keep-pipeline-feedback-fast**: Pipeline feedback **SHOULD** be fast (minutes, not hours); slow pipelines erode the tight-feedback-loops the practice exists to provide.
+- **must-not-chase-deploy-frequency-alone**: Teams **MUST NOT** treat "deploy more often" as a goal independent of test and architecture investment.
+- **should-adopt-deployment-only-when-supported**: Teams **SHOULD** adopt continuous *deployment* only once automated tests and a decoupled architecture genuinely support it; until then, continuous *delivery* with a human release gate is the safer default.
+- **should-plan-for-the-j-curve-dip**: Teams SHOULD expect a temporary performance dip when adopting CD, and plan for the recovery rather than abandoning the effort at the bottom of the curve. (Caveat: the J-curve is an observed pattern, not a guarantee; depth and duration vary by team.)
+- **should-confirm-ci-green-before-pr-ready**: Before marking a PR ready, an agent SHOULD confirm CI runs the full automated pipeline on the branch and is green.
+- **should-confirm-no-manual-release-step**: Before marking a PR ready, an agent SHOULD confirm the change does not require a manual step to become releasable.
+- **should-confirm-risky-behavior-flagged**: Before marking a PR ready, an agent SHOULD confirm risky behavior is gated behind a flag so merge does not force a release.
+- **should-confirm-rollback-path**: Before marking a PR ready, an agent SHOULD confirm a rollback or roll-forward path exists for the change.

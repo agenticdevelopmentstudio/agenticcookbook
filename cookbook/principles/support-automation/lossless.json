@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Expose core actions through platform automation frameworks (AppIntents, AppActions, UI Automation, APIs) wherever the platform provides them",
+      "to": "should-use-platform-automation-frameworks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD exposing core actions through platform automation frameworks (AppIntents, AppActions, UI Automation, APIs) wherever the platform provides them.",
+        "pin": "146cd05c5986076d6829ca31a10e9fd6e76e2a0f210e8340ac905cda0bd20bda"
+      }
+    },
+    {
+      "sentence": "Treat the accessibility tree as the automation backbone — scriptability and assistive technology share the same semantic foundation",
+      "to": "should-treat-accessibility-tree-as-backbone",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD treating the accessibility tree as the automation backbone, with the shared-semantic-foundation reason.",
+        "pin": "884f780f2d90076f4eab3d9661b1545b439f8d8bd9cd37f332c7ce61911c1f40"
+      }
+    },
+    {
+      "sentence": "Design operations as discrete, composable commands that can be invoked programmatically, not just through clicks and taps",
+      "to": "should-design-composable-commands",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD designing operations as discrete, composable, programmatically invokable commands, not just clicks and taps.",
+        "pin": "db898528ac19de53122627081e6ba5caa111606ebbc62935b69fb5287bef3750"
+      }
+    },
+    {
+      "sentence": "Provide non-interactive entry points (CLI, URL schemes, intent filters) so workflows and tools can drive the app without a human in the loop",
+      "to": "should-provide-non-interactive-entry-points",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD providing non-interactive entry points (CLI, URL schemes, intent filters) so tools can drive the app without a human in the loop.",
+        "pin": "3488bf9ddb513f2d80a80b62c873128c457e1d4a8df970448d981ad0544f6544"
+      }
+    }
+  ],
+  "obsolete": []
+}

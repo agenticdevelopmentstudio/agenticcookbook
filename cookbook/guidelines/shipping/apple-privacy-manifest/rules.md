@@ -1,0 +1,19 @@
+
+- **must-ship-privacy-manifest**: The app **MUST** ship a `PrivacyInfo.xcprivacy` manifest declaring required-reason API usage and tracking/data-collection before submission.
+- **should-treat-missing-manifest-as-build-breaking**: A missing or incomplete `PrivacyInfo.xcprivacy` SHOULD be treated as a build-breaking error, not a warning.
+- **should-name-and-target-manifest**: The manifest SHOULD be a property-list resource named exactly **`PrivacyInfo.xcprivacy`**, added to the app target (and to each framework/SDK target that needs its own).
+- **should-place-manifest-in-bundle**: For an app, it SHOULD be placed at the top level of the app bundle. For a framework or SDK, it SHOULD be placed inside the bundle so it ships with the binary.
+- **must-declare-tracking-domains-when-tracking**: **`NSPrivacyTrackingDomains`** (the internet domains the app connects to for tracking) MUST be declared if `NSPrivacyTracking` is `true`.
+- **must-declare-every-reached-category**: You **MUST** declare every category your own code reaches, with at least one valid reason code per category. Invented reason codes are rejected — use only codes Apple lists for that category (see TN3183).
+- **must-not-declare-unused-categories**: You **MUST NOT** add a category you do not actually use to "be safe"; declarations are scoped to real usage.
+- **must-verify-manifest-before-pr**: Before opening a PR that touches Foundation file/disk/uptime calls, `UserDefaults`, or adds a dependency, you **MUST** verify the manifest still covers all reached categories.
+- **must-match-collected-data-types**: You **MUST** match `NSPrivacyCollectedDataTypes` to the data the app actually collects.
+- **should-match-nutrition-label**: `NSPrivacyCollectedDataTypes` **SHOULD** stay consistent with the App Store Connect privacy "nutrition label".
+- **must-not-declare-for-listed-sdks**: Third-party SDKs on **Apple's list of commonly used SDKs** **MUST** ship their own signed `PrivacyInfo.xcprivacy`; you **MUST NOT** declare on their behalf.
+- **should-update-or-remove-sdk-lacking-manifest**: If a pinned SDK lacks one, you SHOULD update to a version that includes it or remove the dependency.
+- **should-search-for-trigger-symbols**: SHOULD search the source and dependencies for the trigger symbols (see *Finding required-reason usage in code*).
+- **must-cover-transitively-linked-binaries**: A manifest's reasons MUST cover transitively linked binaries, so compiled SDKs SHOULD be inspected: scan vendored `.framework`/`.xcframework` symbols, not just first-party Swift.
+- **should-reconcile-privacy-report-before-submitting**: After a clean Archive build, SHOULD confer the **Privacy Report** in Xcode's Organizer (or `xcrun` privacy tooling) to aggregate manifests across the app and its bundles, and reconcile gaps before submitting.
+- **should-keep-manifest-minimal-and-accurate**: The manifest SHOULD be kept minimal and accurate.
+- **should-recheck-docs-for-new-foundation-calls**: SHOULD re-check the official docs when adding new low-level Foundation calls.
+- **should-treat-unpublished-category-changes-as-forecast**: Any not-yet-published category change SHOULD be treated as a **forecast** until it appears in Apple's documentation.

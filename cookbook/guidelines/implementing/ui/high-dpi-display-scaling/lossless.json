@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Bitmap assets MUST be provided at multiple scales: `.scale-100`, `.scale-125`, `.scale-150`, `.scale-200`, `.scale-400`",
+      "to": "must-provide-bitmaps-at-multiple-scales",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the MUST and all five scale suffixes verbatim.",
+        "pin": "9df4c4c7e852f27e890473b5c2932532003f015d48e3899f8592044020c9762e"
+      }
+    },
+    {
+      "sentence": "For custom rendering (Win2D, Direct3D interop), query `XamlRoot.RasterizationScale` and listen for `RasterizationScaleChanged`",
+      "to": "should-track-rasterization-scale-for-custom-rendering",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD with its custom-rendering scope (Win2D, Direct3D interop), the RasterizationScale query and the RasterizationScaleChanged listener.",
+        "pin": "ec8c9a23710de15785dc44244ce37ecc9ad63801fe5b1bbc59c7a88d3cad97d7"
+      }
+    },
+    {
+      "sentence": "Pixel sizes MUST NOT be hard-coded in code-behind — rely on XAML layout and the scaling system",
+      "to": "must-not-hard-code-pixel-sizes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the MUST NOT, the code-behind scope and the reason (rely on XAML layout and the scaling system).",
+        "pin": "da68aadd807efd3df7f8d327baeb89e7b7567c081b1d10879484e49b20e947b7"
+      }
+    }
+  ],
+  "obsolete": []
+}

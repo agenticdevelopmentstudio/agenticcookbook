@@ -1,0 +1,29 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Announce phases explicitly (\"We're diverging now — no evaluation yet\") and treat a phase shift",
+      "to": [
+        "should-announce-phases-explicitly",
+        "must-not-shift-phase-unilaterally"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-announce-phases-explicitly keeps announcing phases with the example, and must-not-shift-phase-unilaterally keeps treating a phase shift as a joint decision at SHOULD.",
+        "pin": "a06efd4b938f075c6ff12a6182f6b766f26a13fca57cd246705f7adb4d758402"
+      }
+    },
+    {
+      "sentence": "as a joint decision: never shift unilaterally",
+      "to": "must-not-shift-phase-unilaterally",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-shift-phase-unilaterally keeps the joint decision and raises 'never shift unilaterally' to MUST NOT.",
+        "pin": "4c350b791ca43db2d6870e4c19e73efb3f4e16c2105e34700e20148aa3aa820a"
+      }
+    }
+  ],
+  "obsolete": []
+}

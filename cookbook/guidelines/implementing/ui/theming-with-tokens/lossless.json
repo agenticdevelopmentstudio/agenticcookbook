@@ -1,0 +1,279 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Pin the token spec: align names/types to the W3C Design Tokens Community Group Format Module,",
+      "to": "should-align-tokens-to-dtcg-format",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'pin the token spec' and 'align names/types to the W3C DTCG Format Module' are kept at SHOULD.",
+        "pin": "953b0711870a59689943a6a30cf530b5b2b770a9a00ed88c41b8093abef58e64"
+      }
+    },
+    {
+      "sentence": "whose first stable version is **2025.10** (designtokens.org).",
+      "to": "should-align-tokens-to-dtcg-format",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The first stable version (2025.10) and the designtokens.org source are kept verbatim.",
+        "pin": "99809c550accf54230d9b0543d74236fc0afa172873588a7f673d3a1f7a8f0e4"
+      }
+    },
+    {
+      "sentence": "It continues to evolve, so pin to a",
+      "to": "should-pin-dated-spec-revision-and-isolate-parser",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reason (the spec continues to evolve) and the unkeyed 'pin to a dated revision' are kept at SHOULD.",
+        "pin": "437296ccff56e72666154fedd5770c1eda4c9d9c3a682620b2dabb6de9d8bac3"
+      }
+    },
+    {
+      "sentence": "dated revision and isolate the parser/build step so a spec update is a localized change.",
+      "to": "should-pin-dated-spec-revision-and-isolate-parser",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The dated revision, isolating the parser/build step and the reason (a spec update is a localized change) are kept at SHOULD.",
+        "pin": "62611598830a55193b03ad71782bcf911b114d671f36adfd34ac64b5dae7dd42"
+      }
+    },
+    {
+      "sentence": "Adopt a token build pipeline (e.g., Style Dictionary) only when measured need justifies it — a small",
+      "to": [
+        "should-adopt-token-pipeline-only-on-measured-need",
+        "may-hand-author-value-sets-in-small-apps"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Adopting a token pipeline only on measured need is kept at SHOULD with the Style Dictionary example; the small-app clause carries on into the MAY rule.",
+        "pin": "36fb3ead3ae0e28ad72120341bf5726f42ec2f3c708e6bb45f40dce151e5a6ea"
+      }
+    },
+    {
+      "sentence": "app may hand-author per-platform value sets (per YAGNI).",
+      "to": "may-hand-author-value-sets-in-small-apps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'may' is kept as MAY with the small-app scope, per-platform value sets and the YAGNI reason.",
+        "pin": "ae0b7e56527d6fff89845ab1fce5673a101328caad9525d7eb2a155e4ec28bed"
+      }
+    },
+    {
+      "sentence": "Provide a **high-contrast / increase-contrast** theme and **MUST** respond to the system signal",
+      "to": "must-respond-to-system-contrast-signal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'provide a high-contrast / increase-contrast theme' is kept at SHOULD, and responding to the system signal is kept at MUST.",
+        "pin": "b76472823faf3ed1fe66e672b32d87dcca02308e6798757b4943518bbab027ab"
+      }
+    },
+    {
+      "sentence": "(`prefers-contrast: more`, `forced-colors`/Windows High Contrast,",
+      "to": "must-respond-to-system-contrast-signal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The signals prefers-contrast: more and forced-colors/Windows High Contrast are kept verbatim.",
+        "pin": "ee3956fa6c87f6144576fe631522dad830b35b56fe099eeb94bdb646f9bfafb6"
+      }
+    },
+    {
+      "sentence": "`UIAccessibility.isDarkerSystemColorsEnabled`, `accessibilityHighContrast`).",
+      "to": "must-respond-to-system-contrast-signal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The signals UIAccessibility.isDarkerSystemColorsEnabled and accessibilityHighContrast are kept verbatim.",
+        "pin": "5bbcf591e0950424e72bd1d6b795e58d5100b71b65aa3bb476f4d0e19e911f7a"
+      }
+    },
+    {
+      "sentence": "Under forced-colors / Windows High Contrast, defer to system colors; do not override them.",
+      "to": "should-defer-to-system-colors-under-forced-colors",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deferring to system colors under forced-colors / Windows High Contrast is kept at SHOULD, and 'do not override them' at SHOULD NOT.",
+        "pin": "126d26193632a4daf8d7f004de3b993903948880c2fb4737dd6baf1773021252"
+      }
+    },
+    {
+      "sentence": "Resolve tokens at a single boundary: a CSS custom-property scope (`:root[data-theme]`,",
+      "to": "should-resolve-tokens-at-a-single-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Resolving tokens at a single boundary is kept at SHOULD with the CSS custom-property scope and :root[data-theme].",
+        "pin": "2bc8b69fa4c6bd6ebdee2092ead8589f0d6856a7d5fbb2a61d1b2d231285b20a"
+      }
+    },
+    {
+      "sentence": "`@media (prefers-color-scheme)`), a SwiftUI `Environment`/asset catalog, a Compose",
+      "to": "should-resolve-tokens-at-a-single-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The @media (prefers-color-scheme), SwiftUI Environment/asset catalog and Compose boundaries are kept verbatim.",
+        "pin": "17ee00182e390c39f87aca0902faf1513ec170bb46c328bbb1c7fc14cc8365dc"
+      }
+    },
+    {
+      "sentence": "`MaterialTheme`/`CompositionLocal`, or a WinUI `ResourceDictionary` theme dictionary.",
+      "to": "should-resolve-tokens-at-a-single-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MaterialTheme/CompositionLocal and WinUI ResourceDictionary theme dictionary boundaries are kept verbatim.",
+        "pin": "e9bac6848378cee9f788ab47c4f9c695e881c631ac404d50760b30f488ac69cb"
+      }
+    },
+    {
+      "sentence": "A missing key is a defect — fail fast in a",
+      "to": "should-fail-fast-on-a-missing-token",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'A missing key is a defect' is kept verbatim, and 'fail fast' at SHOULD.",
+        "pin": "7dd0e93215070b25508796efee2a49bc4e57b9712f0f65ca46fbed0e7bbea543"
+      }
+    },
+    {
+      "sentence": "build/test check rather than falling back silently.",
+      "to": "should-fail-fast-on-a-missing-token",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Failing fast in a build/test check rather than falling back silently is kept verbatim.",
+        "pin": "00347e60956d768ecbba169aaa536221792c297d4e1dc9f78d56a6964836b939"
+      }
+    },
+    {
+      "sentence": "Keep three tiers so themes only rebind the middle one:",
+      "to": "should-keep-three-token-tiers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping three tiers so themes only rebind the middle one is kept at SHOULD, with the tiers named in the rule and the tier table in the the-token-layering-model part.",
+        "pin": "1569a15e555ea3805f5d73a04817d2403c783c3517d0f018b75afe58e9c32e82"
+      }
+    },
+    {
+      "sentence": "Components **MUST** consume only semantic (or component) tokens, never primitives or hard-coded",
+      "to": "must-consume-only-semantic-tokens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST: only semantic (or component) tokens, never primitives.",
+        "pin": "e195d29e25ddf98ac82cdc783b94f1af7eb2e8e467029e52735c8e758233a9e8"
+      }
+    },
+    {
+      "sentence": "literals.",
+      "to": "must-consume-only-semantic-tokens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'or hard-coded literals' is kept verbatim, along with the following sentence's reason.",
+        "pin": "2ba1774674b824536e19b7f49b525eb378a97acdf40496660e801a3ec1d3b023"
+      }
+    },
+    {
+      "sentence": "Each theme **SHOULD** be authored as a value set that rebinds every semantic token — same keys,",
+      "to": "should-author-themes-as-value-sets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: each theme is a value set rebinding every semantic token, with the same keys.",
+        "pin": "c69a7ac97898f5cfeb347ec6b3722558f9c9be88ee83b5524b7ce42793eb83a5"
+      }
+    },
+    {
+      "sentence": "different primitive references.",
+      "to": "should-author-themes-as-value-sets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'different primitive references' is kept verbatim, along with the sibling-sets sentence.",
+        "pin": "4503edbaae2995ed16b59010bd2b88cebc187de193a163140f7353bdff801806"
+      }
+    },
+    {
+      "sentence": "Every theme **MUST** satisfy WCAG 2.2 AA contrast: 4.5:1 normal text, 3:1 large text (18pt+ or 14pt+",
+      "to": "must-meet-wcag-aa-contrast-in-every-theme",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST with WCAG 2.2 AA, 4.5:1 normal text and 3:1 large text (18pt+ or 14pt+ bold).",
+        "pin": "009c7c0444902bd90617903a3ea3c5bfaa880b01b8b094e40f6f60ab84ec5e8a"
+      }
+    },
+    {
+      "sentence": "bold) and non-text UI/graphical components.",
+      "to": "must-meet-wcag-aa-contrast-in-every-theme",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'bold) and non-text UI/graphical components' is kept verbatim.",
+        "pin": "f8205c302e385251e3cf163741e7d048dd231b3aa0800e17e33a776d014291fb"
+      }
+    },
+    {
+      "sentence": "Contrast **MUST** be checked for each theme independently — a token pair that passes in light can",
+      "to": "must-check-contrast-per-theme",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST: contrast is checked for each theme independently, with the reason.",
+        "pin": "7262615ad6014d842d6bfe5503d4c6b722723cbeba753a244171035b72ab4bd7"
+      }
+    },
+    {
+      "sentence": "fail in dark or high-contrast.",
+      "to": "must-check-contrast-per-theme",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rest of the reason (can fail in dark or high-contrast) is kept verbatim.",
+        "pin": "03cc64d1f03633fa0f2e3a07a9678bc99f208972353ebddf639a43c20db0ca65"
+      }
+    },
+    {
+      "sentence": "Automate this against the value sets in CI; do not eyeball it.",
+      "to": "should-automate-contrast-checks-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Automating the per-theme contrast check against the value sets in CI is kept at SHOULD, and 'do not eyeball it' at SHOULD NOT.",
+        "pin": "a8bb0314d02610d7ab9b87127ea5fcf7de5c7a44d5ca5bfb6156a6098e501c3c"
+      }
+    },
+    {
+      "sentence": "Color **MUST NOT** be the sole signal for state (see",
+      "to": "must-not-use-color-as-sole-state-signal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at MUST NOT.",
+        "pin": "74057fc24ae4c9b668443b6a790a62a9fc9bbc84886ed7f2750ed8461f695d56"
+      }
+    },
+    {
+      "sentence": "[adc.guideline.implementing.ui.color](cookbook:e547d962-d561-4bd9-bb5a-50bdeec98335)).",
+      "to": "must-not-use-color-as-sole-state-signal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The cross-reference to adc.guideline.implementing.ui.color is kept verbatim.",
+        "pin": "bf6d32ce038cf563b44fca534228797d62ac59c8b31d349f8edaa1284b6c3ba6"
+      }
+    }
+  ],
+  "obsolete": []
+}

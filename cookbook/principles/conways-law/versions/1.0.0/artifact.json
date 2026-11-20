@@ -1,0 +1,39 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "caffd78b-1ba6-42a3-8805-1d224260588b",
+    "title": "Conway's Law",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "A system's architecture mirrors the communication structure of the teams or agents that build it — so shape those boundaries to match the design you want.",
+    "platforms": [],
+    "tags": [
+      "conways-law",
+      "architecture",
+      "organization"
+    ],
+    "depends-on": [],
+    "related": [
+      "555ad5e1-800f-4848-8c58-6f726bdcb42b",
+      "1357be12-5a58-4143-a570-849c114770c5",
+      "aadd048b-da52-415d-949f-45160b970381"
+    ],
+    "references": [
+      "https://martinfowler.com/bliki/ConwaysLaw.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09"
+  },
+  "synced": "3345ff4a5890c930",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

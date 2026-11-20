@@ -1,0 +1,285 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "All components MUST integrate with platform accessibility APIs from initial implementation:",
+      "to": "must-integrate-accessibility-apis-from-day-one",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-integrate-accessibility-apis-from-day-one keeps the MUST, its scope (all components) and timing (from initial implementation), and says the rules that follow are that integration's requirements, as the old list lead-in did.",
+        "pin": "482a3c89c5192cf07af19f7c1e9c479bb6e38cca6692a42c0030cfc50234e44e"
+      }
+    },
+    {
+      "sentence": "Semantic roles and labels on all interactive elements",
+      "to": "must-give-interactive-elements-semantic-roles-and-labels",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-give-interactive-elements-semantic-roles-and-labels keeps the list item at MUST, the level of the list's MUST lead-in, for all interactive elements.",
+        "pin": "41f4e17b3a922b811268cc2b32cceb27ad02784e3981ebe086a9b42fb37ea109"
+      }
+    },
+    {
+      "sentence": "VoiceOver (Apple) / TalkBack (Android) / screen reader (Web) full support",
+      "to": "must-fully-support-screen-readers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-fully-support-screen-readers keeps full screen reader support at MUST for VoiceOver (Apple), TalkBack (Android) and web screen readers via ARIA, and adds Narrator (Windows).",
+        "pin": "c3e6880851f02d6cf9af57c409c872aa4d83e8116bca6a51f66e1e1541f7b17d"
+      }
+    },
+    {
+      "sentence": "Keyboard and switch control navigation",
+      "to": "must-support-keyboard-and-switch-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-support-keyboard-and-switch-control keeps both keyboard and switch control navigation at MUST.",
+        "pin": "d27eb7f4ba8285c63e3845fe659d53214ef10dc1a54761b80cd7a4b6d1524800"
+      }
+    },
+    {
+      "sentence": "WCAG AA minimum contrast (4.5:1 for text, 3:1 for large text)",
+      "to": "must-meet-wcag-aa-contrast",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-meet-wcag-aa-contrast keeps WCAG AA minimum contrast at MUST with both ratios (4.5:1 text, 3:1 large text).",
+        "pin": "fc0f4f73d8856ae72d170055b8304d39289562ee49b745d57a1b67952f78e960"
+      }
+    },
+    {
+      "sentence": "Meaningful focus order following visual layout",
+      "to": "must-follow-visual-layout-focus-order",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-follow-visual-layout-focus-order keeps a meaningful focus order that follows visual layout at MUST.",
+        "pin": "4d7a86585ff30916cc7b12fb7a49d4644ca7c400cdaa81e416fa0dc23a73a078"
+      }
+    },
+    {
+      "sentence": "# Respect accessibility display options",
+      "to": "must-respond-to-display-settings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The heading's instruction survives in must-respond-to-display-settings, which ends 'they respect accessibility display options', at MUST.",
+        "pin": "ac4b98c5ca9e5bc0a22df7c0d1ae6858f927ec8b3ee0ba35e19434a7e75e029c"
+      }
+    },
+    {
+      "sentence": "# Accessibility",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The '# Accessibility' heading named a second copy of the same requirement list. The topic heading lives on in the intro's '# Accessibility from day one' (also the artifact title), and the list's content is carried by the All platforms rules.",
+        "pin": "381e307c1fe6a0d98c1a8a55db79e314092bf02de57e40909fade0e32f74a07f"
+      }
+    },
+    {
+      "sentence": "Requirements:",
+      "to": "must-integrate-accessibility-apis-from-day-one",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Requirements:' lead-in survives in must-integrate-accessibility-apis-from-day-one, which says the requirements of that integration are the rules that follow.",
+        "pin": "5799cc46d8822241737b4d5b5d877d5d71e19e33c7933845b6ef4e1876e5fd96"
+      }
+    },
+    {
+      "sentence": "Screen reader full support (VoiceOver, TalkBack, Narrator, ARIA)",
+      "to": "must-fully-support-screen-readers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-fully-support-screen-readers keeps full screen reader support at MUST for all four named readers: VoiceOver, TalkBack, Narrator and ARIA-based web readers.",
+        "pin": "462e01346959f4d660734bf14c25054de44e74954daf694e7b59742d6e30bb62"
+      }
+    },
+    {
+      "sentence": "Components MUST respond to platform accessibility and display settings including reduced motion, high contrast, color inversion, bold text, and grayscale",
+      "to": "must-respond-to-display-settings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-respond-to-display-settings keeps the MUST and all five named settings: reduced motion, high contrast, color inversion, bold text and grayscale.",
+        "pin": "5d05e3a2aad71471b19ee30d3ea6926b98351bad8a48874ad274e87fb0dd8823"
+      }
+    },
+    {
+      "sentence": "Components MUST respond to these Android accessibility settings:",
+      "to": "must-respond-to-android-accessibility-settings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-respond-to-android-accessibility-settings, under Kotlin, keeps the MUST, names all eight Android settings and points to the Kotlin table, which still gives each setting's API and action.",
+        "pin": "4d79f89d11ec488ddba571009f1305fb97498bcb593a7d1fbcfc6e652e80bc85"
+      }
+    },
+    {
+      "sentence": "Components MUST respond to these SwiftUI environment values:",
+      "to": "must-respond-to-swiftui-environment-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-respond-to-swiftui-environment-values, under Swift, keeps the MUST, names all six SwiftUI settings and points to the Swift table, which still gives each setting's key and action.",
+        "pin": "62e42806ec7db82a21ce66e936174b190c4f8bb3234b9abd5f9098aec852a293"
+      }
+    },
+    {
+      "sentence": "[WCAG 2.2](https://www.w3.org/TR/WCAG22/) — minimum AA conformance for all components.",
+      "to": [
+        "should-meet-wcag-2-2-aa",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-meet-wcag-2-2-aa keeps the unkeyed standard at SHOULD (minimum AA conformance for all web components, the old typescript part's scope), and the WCAG 2.2 link is in references.",
+        "pin": "704b98fb414feddc647ea16835b98267e0f503ce8bfbb712eb489ef6da9b4d10"
+      }
+    },
+    {
+      "sentence": "WCAG 2.2 is the current W3C Recommendation and supersedes 2.1; honor its new AA criteria: focus not obscured, focus appearance, a single-pointer alternative to dragging movements, **target size minimum 24×24 CSS px** (reconcile with the 44pt target in [adc.guideline.implementing.ui.touch-click-targets](cookbook:73b254b4-c611-434a-a9f4-67c8a7155576) — 44pt is the stricter Apple guidance), consistent help, redundant entry, and accessible authentication (no cognitive-function test).",
+      "to": [
+        "should-meet-wcag-2-2-aa",
+        "should-honor-wcag-2-2-new-aa-criteria"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-meet-wcag-2-2-aa keeps 'current W3C Recommendation and supersedes 2.1'. should-honor-wcag-2-2-new-aa-criteria keeps, at SHOULD, every new AA criterion, including the 24x24 CSS px target and the reconciliation with the 44pt touch-click-targets guidance.",
+        "pin": "dec0b8c092d0a6257ce86e8992c91d6a501004331d0dfec80294a9858b982929"
+      }
+    },
+    {
+      "sentence": "Treat WCAG 3.0 as a horizon Working Draft, not yet actionable.",
+      "to": "should-treat-wcag-3-as-not-yet-actionable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-treat-wcag-3-as-not-yet-actionable keeps the instruction at SHOULD, with WCAG 3.0 still described as a horizon Working Draft that is not yet actionable.",
+        "pin": "221b1457072b698640f66aaf3146f2428e554422afee0c6c904e4125e85bbb04"
+      }
+    },
+    {
+      "sentence": "[WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) — correct ARIA roles, states, and properties.",
+      "to": [
+        "should-follow-wai-aria-authoring-practices",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-follow-wai-aria-authoring-practices keeps correct ARIA roles, states and properties at SHOULD, and the link is in references.",
+        "pin": "052d710555d6737782b7409f42eef4f9cbe4051cbb10886cfa4eb4d59b622436"
+      }
+    },
+    {
+      "sentence": "Components MUST respond to these user preferences:",
+      "to": "must-respond-to-css-user-preferences",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-respond-to-css-user-preferences keeps the MUST for web components, names all six media-query preferences and points to the TypeScript table, which still gives each query and action.",
+        "pin": "358e154900c3a4b2238fcba6906cc51c652aee6716d4e7d2db44f9c2700d1de2"
+      }
+    },
+    {
+      "sentence": "Screen reader support: use ARIA roles, `aria-live` for dynamic content, proper landmark regions.",
+      "to": "should-support-screen-readers-with-aria",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-support-screen-readers-with-aria keeps all three techniques at SHOULD for web: ARIA roles, aria-live for dynamic content and landmark regions.",
+        "pin": "ea683ae05067b41eedd5bab78660f1c65162fb7bce1b9d0e05252c0ab033cef7"
+      }
+    },
+    {
+      "sentence": "Set `AutomationProperties.Name` on interactive elements that lack visible text labels.",
+      "to": "should-set-automation-name-on-unlabeled-elements",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-set-automation-name-on-unlabeled-elements, under Windows, keeps the unkeyed instruction at SHOULD with its condition (elements that lack visible text labels).",
+        "pin": "ef5c4140db381f8d9bf29ad81aa428c87d1462c25e84c7ceb1f0e759197b1f5a"
+      }
+    },
+    {
+      "sentence": "Use `AutomationProperties.LabeledBy` for form fields",
+      "to": "should-use-labeled-by-for-form-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-use-labeled-by-for-form-fields, under Windows, keeps AutomationProperties.LabeledBy for form fields at SHOULD.",
+        "pin": "637f423a3b2ef124af1a7bbf2942de687397e3f0f4dea4c00cd5ac9273fa29f9"
+      }
+    },
+    {
+      "sentence": "Use `AutomationProperties.LiveSetting` for dynamic content regions",
+      "to": "should-use-live-setting-for-dynamic-regions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-use-live-setting-for-dynamic-regions, under Windows, keeps AutomationProperties.LiveSetting for dynamic content regions at SHOULD.",
+        "pin": "2b9ecb1d20488c9810435b16c073a5b247569067268023c927009bff24a0e9d4"
+      }
+    },
+    {
+      "sentence": "High contrast support is automatic when using `ThemeResource` — never hard-code colors",
+      "to": "must-not-hard-code-colors",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-not-hard-code-colors keeps the fact that ThemeResource makes high contrast automatic, and raises 'never hard-code colors' to MUST NOT.",
+        "pin": "90e0377bc163e7d264e172ffa9e9a0ec577159798f7ff4de63b24165d8ea351a"
+      }
+    },
+    {
+      "sentence": "Test with [Accessibility Insights for Windows](https://accessibilityinsights.io/)",
+      "to": "should-test-with-accessibility-insights",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-test-with-accessibility-insights keeps testing with Accessibility Insights for Windows at SHOULD, link included.",
+        "pin": "36b5ed39dde3734cf36086ddbf37906236ddeeac38f96e2640afbcf5a5b056ee"
+      }
+    },
+    {
+      "sentence": "Keyboard navigation: all interactive elements must be reachable via Tab, actionable via Enter/Space",
+      "to": "must-make-elements-keyboard-reachable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-make-elements-keyboard-reachable raises the lowercase 'must' to MUST: every interactive element reachable via Tab and actionable via Enter/Space.",
+        "pin": "7cedc1af5487fbb98c6498b024291585a18ec648a90439071e8604fe8e617e4d"
+      }
+    },
+    {
+      "sentence": "Components MUST respond to these Windows accessibility settings:",
+      "to": "must-respond-to-windows-accessibility-settings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-respond-to-windows-accessibility-settings keeps the MUST, names all eight Windows settings and points to the Windows table, which still gives each setting's detection API and action.",
+        "pin": "f56c52313b653d4000e59cdd95bd1629f3bbd77245c8c2f82e460153bfdbd327"
+      }
+    },
+    {
+      "sentence": "Components MUST respond to platform accessibility and display settings including reduced motion, high contrast, color inversion, bold text, and grayscale.",
+      "to": "must-respond-to-display-settings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-respond-to-display-settings keeps this sentence's MUST and all five settings: reduced motion, high contrast, color inversion, bold text and grayscale.",
+        "pin": "d1a7daedd9c6804fe0fa9ecfa06355736ed1f0ec41b919c875b5366dfb3fc18e"
+      }
+    }
+  ],
+  "obsolete": []
+}

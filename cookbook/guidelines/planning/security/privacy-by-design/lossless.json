@@ -1,0 +1,50 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Per YAGNI, adopt these **only when a measured need justifies them** — driven by data sensitivity, regulatory scope, or DPIA findings — not as a reflexive default.",
+      "to": "should-adopt-heavier-controls-only-when-justified",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'these' made explicit as the four kinds of privacy-enhancing infrastructure: only on a measured need driven by data sensitivity, regulatory scope or DPIA findings, not as a reflexive default, per YAGNI; the cost reason is in rationale.",
+        "pin": "27b6f34356a8fc7f7c91b654673a906948a04402ed1759f0c56650315a175a06"
+      }
+    },
+    {
+      "sentence": "Start with minimization and de-identification; escalate to specialized tooling when the risk profile demands it.",
+      "to": "should-start-with-minimization-and-de-identification",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: start with minimization and de-identification, escalate to specialized tooling when the risk profile demands it.",
+        "pin": "e177be827a7eea932cf4ee7f87d74203cda4b5cdcbe66865be9a753af9a94540"
+      }
+    },
+    {
+      "sentence": "Per GDPR Article 25 (privacy by *default*), the out-of-the-box configuration **MUST** be the most privacy-protective:",
+      "to": [
+        "must-default-to-the-most-protective-configuration",
+        "must-make-sharing-opt-in",
+        "must-default-telemetry-off"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST in must-default-to-the-most-protective-configuration with the GDPR Article 25 citation; the opt-in and telemetry-off bullets it introduced are kept at MUST in the other two targets.",
+        "pin": "ab749a64c051d359012b7009eeb41e9e8c24d7d8f90fcad49f5f65339fd5fa54"
+      }
+    },
+    {
+      "sentence": "For each category of personal data, record:",
+      "to": "must-produce-a-maintained-data-flow-map",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept inside must-produce-a-maintained-data-flow-map: for each category of personal data, record its what, why, where and how long, with the dimensions table kept in data-flow-map-dimensions.",
+        "pin": "c40ae2606187231f180e0bce79372ca5b8f8809bd88a24d38d0cb4351e1c5a3d"
+      }
+    }
+  ],
+  "obsolete": []
+}

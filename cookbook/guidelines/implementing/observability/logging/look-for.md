@@ -1,0 +1,19 @@
+
+- `must-instrument-with-platform-framework`: a component or flow with no structured logging, or logging through something other than the platform's framework (`os.log` `Logger`, `Timber`/`android.util.Log`, `console`/`pino`/`winston`, Python `logging`, `ILogger<T>`)
+- `should-use-debug-for-flow-instrumentation`: flow or UI flow instrumentation logged above `debug` level
+- `should-log-flow-events`: a state transition, user interaction, async task start/completion/failure, or branch with no log line
+- `must-not-log-pii`: personally identifiable information in any log field, at any level, debug included
+- `must-match-subsystem-to-bundle-id`: an Apple `Logger` whose subsystem is not the bundle ID
+- `must-use-one-category-per-component`: an Apple `Logger` category shared across components or flows, or one component using several
+- `should-use-android-log-with-consistent-tags`: `android.util.Log` calls whose tags are inconsistent
+- `should-use-structured-message-templates`: a C# log call that builds its message instead of using a structured template with named placeholders
+- `must-not-interpolate-in-log-calls`: string interpolation (`$"..."`) inside a C# log call
+- `should-use-loggermessage-for-hot-paths`: logging on a high-performance hot path that does not use the `[LoggerMessage]` source generator
+- `should-configure-log-levels-per-category`: C# log levels set in code rather than per category in `appsettings.json`
+- `should-use-etw-for-system-diagnostics`: Windows system-level diagnostics or startup timing with no ETW (`EventSource`) tracing
+- `should-use-xaml-live-visual-tree`: visual tree issues debugged without XAML Live Visual Tree
+- `should-use-vs-performance-profiler`: Windows CPU, memory or UI responsiveness analysis done without the Visual Studio Performance Profiler
+- `should-emit-telemetry-via-opentelemetry`: a component relying on ad-hoc per-platform logging alone, with no OpenTelemetry/OTLP export
+- `should-carry-trace-id-on-log-lines`: a log line with no trace/correlation ID from the request context
+- `should-follow-otel-semantic-conventions`: log or span field names invented ad hoc where an OpenTelemetry semantic convention exists
+- `should-use-structured-json-in-production`: production logs written as unstructured text

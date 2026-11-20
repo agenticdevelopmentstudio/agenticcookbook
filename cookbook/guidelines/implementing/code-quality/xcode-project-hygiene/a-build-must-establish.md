@@ -1,0 +1,26 @@
+
+- `should-treat-project-files-as-source`: each project-file change the build makes is a small text diff with each value defined once, or the build says why not
+- `should-put-build-settings-in-xcconfig`: each build setting the build adds or changes is a line in an `.xcconfig`, or the build says why not
+- `should-keep-shared-and-per-config-xcconfigs`: a shared xcconfig holds common settings and per-configuration or per-target files hold only differences, or the build says why not
+- `should-leave-target-level-settings-empty`: `project.pbxproj` sets no target-level value for a setting an xcconfig owns, or the build says why not
+- `should-create-xcconfig-without-targets`: no xcconfig appears in a target's Copy Bundle Resources, or the build says why not
+- `should-look-up-setting-names`: each setting name the build adds is in the build settings reference, or the build says why not
+- `must-share-and-check-in-schemes`: `xcodebuild -list` from a clean checkout shows every scheme the build and CI use, from shared data
+- `should-have-one-scheme-per-buildable-thing`: each thing the build adds to build, run or test has one scheme, or the build says why not
+- `should-delete-dead-schemes`: every checked-in scheme builds, or the build says why not
+- `should-name-targets-after-products`: no target or scheme the build adds is `Untitled`, ends in `copy` or carries a stale product name, or the build says why not
+- `should-separate-test-targets`: test code is in test targets only, or the build says why not
+- `should-set-deployment-target-explicitly`: each target's deployment target is a line in its xcconfig, or the build says why not
+- `should-add-entitlements-only-for-used-capabilities`: each entitlement key the build adds matches a capability the code uses and is noted as a security change, or the build says why not
+- `should-keep-one-entitlements-file-per-need`: each target and configuration need has its own `.entitlements` file set through `CODE_SIGN_ENTITLEMENTS`, or the build says why not
+- `must-not-copy-entitlements-wholesale`: each entitlements key the build adds was added for this app, none copied wholesale from another
+- `should-keep-info-plist-small`: the Info.plist holds only keys the app needs, or the build says why not
+- `should-prefer-build-setting-substitution`: the Info.plist's version and name values are `$(...)` substitutions, or the build says why not
+- `must-include-privacy-usage-descriptions`: for each privacy API the build uses, the Info.plist has its usage-description key with user-facing text
+- `should-remove-keys-for-removed-features`: the Info.plist has no key for a feature the build removed, or the build says why not
+- `should-put-team-and-signing-style-in-xcconfig`: `DEVELOPMENT_TEAM` and `CODE_SIGN_STYLE` are set in the xcconfig, or the build says why not
+- `should-use-automatic-local-explicit-release-signing`: debug configurations sign automatically and release uses an explicit identity that is documented, or the build says why not
+- `must-not-check-in-signing-secrets`: the commit adds no certificate, private key or provisioning profile
+- `should-treat-xcodegen-spec-as-source`: where XcodeGen is used, regenerating from `project.yml` reproduces the project, and the generated project is ignored or checked in CI, or the build says why not
+- `should-keep-real-values-in-xcconfig-with-xcodegen`: where XcodeGen is used, the spec names xcconfig files via `configFiles` and holds no setting values the xcconfig should, or the build says why not
+- `should-not-introduce-generator-in-unrelated-change`: the build adds no generator to a repository without one unless that is the change, or the build says why not

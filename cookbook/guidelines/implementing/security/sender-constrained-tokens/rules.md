@@ -1,0 +1,16 @@
+
+- **should-sender-constrain-high-value-apis**: High-value or public-client APIs **SHOULD** issue sender-constrained access tokens rather than plain bearer tokens.
+- **should-sender-constrain-tokens-through-intermediaries**: Tokens that traverse intermediaries (gateways, proxies, browser code) **SHOULD** be sender-constrained, because each hop is a leak surface.
+- **may-keep-low-value-flows-bearer**: Low-value, short-lived, single-confidential-client flows **MAY** stay bearer when the threat model and operational cost do not justify constraint — this is a deliberate decision, not a default to skip.
+- **should-pick-one-mechanism-per-surface**: You **SHOULD** pick **one** mechanism per API surface and apply it consistently; do not mix bearer and constrained acceptance on the same endpoint without an explicit migration plan.
+- **should-present-mechanism-choice-as-trade-off**: You **SHOULD** present the choice as a deliberate trade-off: DPoP needs no PKI but adds per-request signing; mTLS reuses transport identity but needs certificate provisioning and TLS termination you control.
+- **must-send-dpop-proof-on-every-request**: The client **MUST** generate a key pair and send a `DPoP` proof JWT on token requests and on every protected resource request, signed with the private key.
+- **must-include-dpop-proof-claims**: The proof JWT **MUST** include `htm` (HTTP method), `htu` (HTTP URI), `iat`, and a unique `jti`; for resource requests it **MUST** include `ath` (access-token hash).
+- **must-bind-and-verify-dpop-key**: The authorization server **MUST** bind the token to the proof key via the `jkt` (JWK SHA-256 thumbprint) confirmation claim (`cnf.jkt`); the resource server **MUST** verify the presented proof key matches it.
+- **must-reject-replayed-dpop-proofs**: Resource servers **MUST** reject replayed proofs — enforce a `jti`/`iat` freshness window with a server-provided `nonce` where replay risk is high.
+- **must-keep-private-keys-non-exportable**: Private keys **MUST** stay in non-exportable storage (WebCrypto non-extractable keys, OS keystore); never persist them where script can read them.
+- **must-bind-client-certificate-fingerprint**: The client **MUST** present a TLS client certificate; the authorization server **MUST** record its SHA-256 fingerprint in the token's `cnf.x5t#S256` confirmation claim.
+- **must-match-client-certificate-before-honoring**: The resource server **MUST** confirm the TLS connection's client certificate matches the bound fingerprint before honoring the token.
+- **must-handle-certificate-rotation-and-revocation**: Certificate rotation and revocation **MUST** be operationally handled; a constrained token outliving its certificate trust is a silent failure.
+- **should-combine-with-other-token-controls**: Sender-constraining does not replace short token lifetimes, refresh-token rotation, audience restriction, or PKCE — you **SHOULD** combine them.
+- **may-choose-mechanism-by-topology**: Performance and architecture (TLS-terminating CDNs, certificate provisioning) **MAY** block a mechanism in some deployments; choose the mechanism that fits the topology rather than forcing one.

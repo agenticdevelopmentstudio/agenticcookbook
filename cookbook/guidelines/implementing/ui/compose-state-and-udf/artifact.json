@@ -4,11 +4,11 @@
     "id": "736fac9a-56e0-449d-8dc0-b95cbfba7884",
     "title": "Jetpack Compose: state hoisting and unidirectional data flow",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,23 @@
     "references": [
       "https://developer.android.com/develop/ui/compose/architecture"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "fc647a6026eccbdc",
+  "synced": "48b11130da5fd990",
   "parts": [
     {"part": "intro"},
-    {"part": "hoist-state", "heading": "Hoist state"},
-    {"part": "remember-vs-remembersaveable", "heading": "remember vs rememberSaveable"},
-    {"part": "expose-immutable-ui-state", "heading": "Expose immutable UI state"},
-    {"part": "recomposition-and-stability-awareness", "heading": "Recomposition and stability awareness"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "hoist-state", "heading": "Hoist state", "role": "how-to"},
+    {"part": "remember-vs-remembersaveable", "heading": "remember vs rememberSaveable", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

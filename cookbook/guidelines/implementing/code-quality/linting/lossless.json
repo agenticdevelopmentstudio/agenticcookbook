@@ -1,0 +1,83 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Linting config SHOULD be set up early in the project, but during rapid prototyping, committing without lint-gating every commit is acceptable.",
+      "to": [
+        "should-set-up-lint-early",
+        "may-skip-lint-gating-while-prototyping"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD to set lint config up early is kept, and the rapid-prototyping allowance to commit without lint-gating every commit is kept as a MAY with its condition.",
+        "pin": "30bb508914dfb73f5abf5cf8384cd6711dec24e943671412dbcfe1f7484b6387"
+      }
+    },
+    {
+      "sentence": "Linting MUST run as part of the automated verification process:",
+      "to": [
+        "must-run-lint-in-automated-verification",
+        "must-run-lint-during-development",
+        "must-block-ci-on-lint-failures"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST that linting run as part of the automated verification process is kept, naming all three contexts (development, CI, after code generation).",
+        "pin": "79fa841390335d1f8eefb494e1eb533815434849d1223de3239de3c1cbe54885"
+      }
+    },
+    {
+      "sentence": "**During development** — as part of the build or pre-commit hook",
+      "to": "must-run-lint-during-development",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Running lint during development as part of the build or pre-commit hook is kept at the MUST its parent sentence carried.",
+        "pin": "993a0e255186735e04d60da540608b2f93eb54232559276bd779549f97c5787e"
+      }
+    },
+    {
+      "sentence": "**In CI** — linting failures MUST block the build alongside test failures",
+      "to": "must-block-ci-on-lint-failures",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST that CI lint failures block the build alongside test failures is kept verbatim.",
+        "pin": "eea9c1616b61b34685ca4bd34ce08b56cabdbebf2616821966fe8c2f1c72341e"
+      }
+    },
+    {
+      "sentence": "**After code generation** — AI-generated code MUST pass linting before being accepted",
+      "to": "must-lint-generated-code",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST that AI-generated code pass linting before being accepted is kept verbatim.",
+        "pin": "a9c61092cebe498a2472d08cca3a915d62ac5e8cd5fa35cbefb7d0a71a3fa6a5"
+      }
+    },
+    {
+      "sentence": "# Linting from day one",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Linting from day one' heading's message is kept in the rationale as 'Lint from day one', attached to the lint-early and lint-before-first-PR rules.",
+        "pin": "b173e7bec5252b57f10c1c186c2b0cfa8ab73f0dc94cc18d4e4396c105146716"
+      }
+    },
+    {
+      "sentence": "See the implementing copy of this guideline for platform-specific setup details.",
+      "to": "platform-linters",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The pointer to the implementing copy for platform-specific setup details is kept in the platform-linters part, now also naming the platform parts.",
+        "pin": "984d57cfa6186a634523b663af8ed67050c0338297fd006e2bc56c5d7155bf31"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -496,7 +496,7 @@ ui-implementation:
 - guidelines/planning/ui/state-management/
 writing-tests:
 - guidelines/cookbook/testing/properties-of-good-tests/
-- guidelines/cookbook/testing/unit-test-patterns/
+- guidelines/cookbook/testing/test-vector-patterns/
 - guidelines/implementing/testing/property-based-testing/
 - guidelines/implementing/testing/swift-testing/
 - guidelines/implementing/testing/test-data/

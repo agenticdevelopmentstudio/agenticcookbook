@@ -1,9 +1,5 @@
 
-When a subtask is simple enough for a smaller model, consider downgrading. But measure — don't assume.
-
 ### The Decision Framework
-
-Before selecting a smaller model for a subtask, verify three things:
 
 1. **Token efficiency**: Does the smaller model actually use fewer tokens? Some smaller models compensate for lower capability with more verbose output, more retries, or more tool calls. If the smaller model uses the same or more tokens than the larger model, the downgrade is pure cost with no benefit.
 

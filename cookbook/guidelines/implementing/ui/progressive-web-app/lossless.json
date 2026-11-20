@@ -1,0 +1,186 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "To be installable an app **MUST** be served over HTTPS (or `localhost` in development) and **MUST** link a valid Web App Manifest.",
+      "to": [
+        "must-serve-over-https",
+        "must-link-valid-manifest"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs are kept, one per rule, each with the 'to be installable' scope; the localhost-in-development exception is kept.",
+        "pin": "0fe38bf9dcfd10783d7f302e74b4bb45865ddcc2f789ea1a37d2a56fd76fa6be"
+      }
+    },
+    {
+      "sentence": "The manifest **MUST** include, at minimum:",
+      "to": [
+        "must-include-manifest-core-fields",
+        "must-include-192-and-512-icons",
+        "must-include-manifest-id"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'MUST include, at minimum' lead-in is carried at MUST by the three manifest rules (core fields, 192/512 icons, id).",
+        "pin": "736b1c4194f4584b32a1b9d65ffd3774b4093a3c8b2d9b5a91aa03ba5d6e3ba8"
+      }
+    },
+    {
+      "sentence": "`name` (or `short_name`), `start_url`, and `display` set to `standalone`, `fullscreen`, or `minimal-ui`.",
+      "to": "must-include-manifest-core-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with name (or short_name), start_url, and all three allowed display values.",
+        "pin": "267a28ef32376566a26a7b285fc83e59b7235a7dd01c975211f69c670e9287da"
+      }
+    },
+    {
+      "sentence": "`icons` with both a 192x192 and a 512x512 entry.",
+      "to": "must-include-192-and-512-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with both the 192x192 and the 512x512 entry.",
+        "pin": "e1c15a27bb72237b882f2afa76e7c95b746721c430f86a076d81cf753c5c3940"
+      }
+    },
+    {
+      "sentence": "Include a `maskable` icon for adaptive shaping.",
+      "to": "should-include-maskable-icon",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD with its reason (adaptive shaping). The baseline list makes only 192x192 and 512x512 required, so SHOULD matches the old sentence's level.",
+        "pin": "32bd1efc01bdf5cd9cf80e303e79c475db277973eda10299f89b9b983f52c6c2"
+      }
+    },
+    {
+      "sentence": "`id` to give the install a stable identity across `start_url` changes.",
+      "to": "must-include-manifest-id",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The manifest id is kept at MUST with its reason (stable identity across start_url changes).",
+        "pin": "5dcb46c3dd4d5c76ce362f9f5cf44e3640671fcb3749027140602ce295854021"
+      }
+    },
+    {
+      "sentence": "Validate against Lighthouse / DevTools Application panel before shipping; do not hand-assert installability.",
+      "to": "should-validate-installability-with-tools",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validating with Lighthouse / DevTools before shipping is kept at SHOULD, and 'do not hand-assert installability' at SHOULD NOT.",
+        "pin": "c83eaedf823cb5323ea65b89224be0ea0f70aa7e3ed0acb64e630bf8b80500ac"
+      }
+    },
+    {
+      "sentence": "An installable app SHOULD ship a Web App Manifest and a service worker with an explicit caching strategy, and MUST account for iOS/Safari limitations.",
+      "to": [
+        "should-ship-manifest-and-service-worker",
+        "must-account-for-ios-safari-limitations"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both clauses are kept at their levels: the SHOULD for manifest plus service worker with an explicit caching strategy, and the MUST for iOS/Safari limitations, each scoped to installable apps.",
+        "pin": "957f3d950e669fcc2ffc9e9c979306452c691a93da4355b818e45e7aab759850"
+      }
+    },
+    {
+      "sentence": "If installability is not a requirement, do not add a service worker for its own sake (YAGNI).",
+      "to": "should-not-add-service-worker-without-installability",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the 'installability is not a requirement' condition and the YAGNI reason.",
+        "pin": "5b0e173b304422c5e9b57997f646096eea8c7d8678094e29e9e27834badaa3a8"
+      }
+    },
+    {
+      "sentence": "As of iOS 18 / Safari 18 the following hold; re-verify per release:",
+      "to": "should-reverify-ios-constraints-per-release",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The as-of date (iOS 18 / Safari 18) and the re-verify-per-release instruction are kept at SHOULD for the iOS/Safari constraints.",
+        "pin": "71e80ff68678959bf790c3a35e0225b57331890c778344fd494276befcde1916"
+      }
+    },
+    {
+      "sentence": "**Background Sync / Periodic Background Sync are unavailable.** Do not depend on them; queue writes in IndexedDB and flush on next foreground.",
+      "to": [
+        "should-not-depend-on-background-sync",
+        "should-queue-writes-in-indexeddb",
+        "ios-safari-constraints-version-sensitive-verify-against-current-safari"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fact (Background Sync / Periodic Background Sync unavailable) is kept in the iOS constraints rationale part; 'do not depend on them' is kept at SHOULD NOT; queue-in-IndexedDB-and-flush-on-foreground is kept at SHOULD.",
+        "pin": "1e1889ce5f72377303dc14bfefc53ad6b71b9179cb0e59b7666e511238776af6"
+      }
+    },
+    {
+      "sentence": "Treat all client storage as a cache, never as the source of truth.",
+      "to": "must-treat-client-storage-as-cache",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept, strengthened to MUST: all client storage is a cache, never the source of truth.",
+        "pin": "0c0b163f7bb4b7d7d59d943ade5934da6e949a9a0766a005697f9ed19be8c01e"
+      }
+    },
+    {
+      "sentence": "Web Push availability has been subject to EU regulatory variation (iOS 17.4+); confirm behavior in target regions rather than assuming uniform support. (FORECAST: regional policy continues to evolve.)",
+      "to": [
+        "should-confirm-push-in-target-regions",
+        "ios-safari-constraints-version-sensitive-verify-against-current-safari"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The EU regulatory variation (iOS 17.4+) and the confirm-in-target-regions instruction are kept at SHOULD; the FORECAST note is kept in the iOS constraints rationale part.",
+        "pin": "cb2ae8993620e8e7872af00a277a86e11ddff99dd569704144989dcd4f27f1b9"
+      }
+    },
+    {
+      "sentence": "Register the service worker after the page loads and choose a caching strategy per request class — **do not** apply one strategy globally:",
+      "to": [
+        "should-register-service-worker-after-load",
+        "should-choose-caching-strategy-per-request-class"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Registering after page load is kept at SHOULD; choosing per request class is kept at SHOULD with the 'do not apply one strategy globally' prohibition.",
+        "pin": "aa481009cadf889c2eb1037009dc9b55cd905e4c78213c108908b44a4a156427"
+      }
+    },
+    {
+      "sentence": "Precache the app shell so navigations resolve offline.",
+      "to": "should-precache-app-shell",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Precaching the app shell is kept at SHOULD with its reason (navigations resolve offline).",
+        "pin": "ba64a5cbc6cae64afc21d083b89fd38610ccd44e5d3977190e724907a51eeb7c"
+      }
+    },
+    {
+      "sentence": "Prefer a maintained library (Workbox) over hand-rolled fetch handlers unless the surface is trivial — this is a deliberate trade for correctness on edge cases (range requests, opaque responses), not a mandate.",
+      "to": "should-prefer-maintained-service-worker-library",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Workbox example, the trivial-surface exception and the full reason (edge-case correctness, not a mandate).",
+        "pin": "02aade94817a371b2e56ab7c1f2a1b9ee6292d1762be8f172b439c1275c5c60a"
+      }
+    }
+  ],
+  "obsolete": []
+}

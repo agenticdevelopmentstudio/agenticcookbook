@@ -1,0 +1,16 @@
+
+- `support-continuity-features`: a multi-device app offers at least one continuity path between devices, or the code says why not
+- `capture-enough-state`: the handoff payload carries enough state to reconstruct the user's context on the receiving device
+- `continuity-must-feel-instant`: the handoff transfers only the minimum viable state and fetches details on arrival
+- `fall-back-gracefully`: the receiver handles a missing originating-device feature with a graceful fallback
+- `use-deep-links-as-payload`: handoff payloads are deep links, or the code says why not
+- `apple-advertise-with-nsuseractivity`: the current activity is advertised with `NSUserActivity`, or the code says why not
+- `apple-enable-handoff-and-populate-userinfo`: each handoff activity sets `isEligibleForHandoff = true` and fills `userInfo` with the state to restore context
+- `apple-implement-continue-on-receiver`: the receiving app implements `application(_:continue:)`, or the code says why not
+- `apple-support-universal-clipboard`: cross-device copy/paste works through Universal Clipboard, or the code says why not
+- `android-use-nearby-or-chrome-continuity`: Android-to-Android continuity uses Nearby Connections or Chrome's cross-device features, or the code says why not
+- `android-use-links-that-resolve-natively-and-on-web`: Android-to-web continuity links resolve in both native and web contexts
+- `android-support-clipboard-sync`: clipboard sync works through Google account integration, or the code says why not
+- `web-use-shared-urls`: web continuity is carried by URLs with state parameters
+- `web-support-credential-management`: web sign-in supports the Credential Management API, or the code says why not
+- `web-consider-realtime-sync`: real-time state sync between active sessions uses WebSocket or server-sent events, or the code says why not

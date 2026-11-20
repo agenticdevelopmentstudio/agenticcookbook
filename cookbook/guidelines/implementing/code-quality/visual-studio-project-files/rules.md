@@ -1,0 +1,27 @@
+
+- **must-use-sdk-style-csproj**: Every project MUST use an SDK-style `.csproj` whose root element is `<Project Sdk="Microsoft.NET.Sdk">` (or the SDK that matches the project type).
+  - The SDK imports its props and targets implicitly.
+- **must-not-list-source-files**: A project MUST NOT list source files.
+  - The SDK includes `Compile`, `EmbeddedResource` and `None` items by glob and leaves out `bin` and `obj`. Listing a default item again fails with error NETSDK1022.
+- **must-add-items-only-for-glob-misses**: An item MUST be added only to include something the glob misses, and `Remove` MUST be used to exclude.
+- **must-not-hand-edit-old-style-projects**: Code MUST NOT hand-edit the old-style project format, and SHOULD convert it.
+- **should-set-implicit-usings-explicitly**: Implicit global usings (from .NET 6) are an SDK feature; a project SHOULD turn them on or off explicitly with a property rather than relying on a template.
+- **should-share-properties-in-directory-build-props**: Properties shared by every project SHOULD live in a `Directory.Build.props` at the repository or solution root: `TargetFramework`, `LangVersion`, `Nullable`, `TreatWarningsAsErrors`, analyzers.
+  - MSBuild imports it early, so the project can still override a value.
+- **should-put-late-logic-in-directory-build-targets**: Logic that must see the project's final values SHOULD go in `Directory.Build.targets`.
+  - `Directory.Build.targets` is imported late and is the place for logic that must see the project's final values.
+- **must-match-directory-build-props-case**: The file name MUST match exactly, including case, because Linux file systems are case-sensitive.
+  - `Directory.Build.props` is not `directory.build.props`.
+- **should-set-continuous-integration-build**: CI builds SHOULD set `ContinuousIntegrationBuild` to `true` for reproducible output.
+- **must-not-set-outdir**: Code MUST NOT set `OutDir` to change output folders, because it bypasses the per-project subfolders; it SHOULD use `BaseOutputPath`.
+- **should-manage-package-versions-centrally**: Projects SHOULD turn on central versions with a `Directory.Packages.props` at the root containing `<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>` and one `<PackageVersion Include="..." Version="..." />` per package.
+  - Project files then use `<PackageReference Include="..." />` with no `Version`.
+  - `CentralPackageTransitivePinningEnabled` pins transitive versions, and `GlobalPackageReference` adds a package (an analyzer, for example) to every project.
+- **must-import-parent-packages-props**: Only the nearest `Directory.Packages.props` applies, so a nested one MUST import its parent explicitly with `GetPathOfFileAbove`.
+- **must-use-version-override-only-for-documented-exception**: `VersionOverride` on one reference MUST be used only for a documented exception.
+- **may-forbid-version-override**: A project MAY set `CentralPackageVersionOverrideEnabled` to `false` to forbid `VersionOverride`.
+- **should-manage-solution-with-dotnet-sln**: The solution SHOULD be managed with `dotnet sln` (`add`, `list`, `remove`, `migrate`) rather than hand edits.
+  - Accepted formats are `.sln`, `.slnx` and the filtered `.slnf`; from .NET 10 `dotnet new sln` produces `.slnx`, before that `.sln`.
+- **should-have-one-solution-per-deployable-unit**: There SHOULD be one solution per deployable unit.
+- **must-list-every-project-in-solution**: A solution MUST list every project, so a clean checkout builds.
+- **must-not-contain-machine-specific-content**: A project or solution file MUST NOT contain anything machine-specific (absolute paths, user folders).

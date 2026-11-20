@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "80915bd6-f18c-4a51-b293-50cef7ead49f",
+    "title": "Choosing a .NET target framework",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Pick a .NET target framework from the documented support cadence: LTS for apps, multi-target libraries, pin the SDK.",
+    "platforms": [
+      "csharp"
+    ],
+    "tags": [
+      "dotnet",
+      "versioning",
+      "build"
+    ],
+    "depends-on": [],
+    "related": [
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
+    ],
+    "references": [
+      "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "new-module",
+      "configuration"
+    ]
+  },
+  "synced": "e4207449a517be2b",
+  "parts": [
+    {"part": "intro"},
+    {"part": "support-cadence-pinned-net-support-policy-verified-2026-06-09", "heading": "Support cadence (pinned: .NET support policy, verified 2026-06-09)"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "decision-steps-for-an-agent", "heading": "Decision steps (for an agent)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,17 @@
+
+- `must-consume-window-insets`: whether the app, at `targetSdk 35`+ on Android 15+, consumes `WindowInsets` so content, controls and the keyboard are never obscured
+- `must-handle-window-insets`: whether every layout handles window insets rather than assuming a content-safe area
+- `must-not-rely-on-opt-out-attribute`: whether the app relies on `android:windowOptOutEdgeToEdgeEnforcement` beyond a one-release stopgap
+- `should-enable-edge-to-edge-in-oncreate`: whether `enableEdgeToEdge()` is called in `onCreate()` for Android 14 and below
+- `should-prefer-safedrawing-insets`: whether general content uses the `safeDrawing` inset type
+- `should-wrap-top-level-ui-in-scaffold`: whether top-level Compose UI is wrapped in `Scaffold`
+- `should-apply-scaffold-inner-padding`: whether every `Scaffold`'s `innerPadding` is applied
+- `should-use-windowinsetspadding-for-manual-control`: whether manual Compose inset handling uses `Modifier.windowInsetsPadding(...)` with the right inset type
+- `should-pad-items-not-whole-list`: whether scrolling content draws edge to edge with its interactive/last items padded
+- `should-consume-insets-with-view-listener`: whether each View that needs insets consumes them through a listener
+- `should-use-ime-insets-for-keyboard`: whether keyboard-aware layouts use `WindowInsetsCompat.Type.ime()` with no hardcoded bottom padding
+- `should-install-compat-insets-dispatch`: whether, for Android 10 and below, `installCompatInsetsDispatch` is called before consuming
+- `should-set-fitssystemwindows-on-appbarlayout`: whether each `AppBarLayout` gets its top inset through `android:fitsSystemWindows="true"`
+- `must-not-consume-insets-children-need`: whether any parent consumes insets its children also need
+- `must-not-mix-fitssystemwindows-with-listeners`: whether any view mixes `fitsSystemWindows="true"` with a manual inset listener
+- `should-test-navigation-modes-cutout-and-keyboard`: whether the UI was tested in gesture and 3-button navigation, with a display cutout, and with the keyboard open

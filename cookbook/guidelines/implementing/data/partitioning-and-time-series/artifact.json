@@ -4,11 +4,11 @@
     "id": "2b9b576c-1e17-4a15-b347-febf2ea3c312",
     "title": "Table partitioning and time-series data",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -26,20 +26,22 @@
     "references": [
       "https://www.postgresql.org/docs/current/ddl-partitioning.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "database-operations",
       "schema-design"
     ]
   },
-  "synced": "1238c4c8975e3879",
+  "synced": "fc48f1809db71699",
   "parts": [
     {"part": "intro"},
-    {"part": "when-to-partition-measured-need-guardrail", "heading": "When to partition (measured-need guardrail)"},
-    {"part": "choosing-a-partition-strategy", "heading": "Choosing a partition strategy"},
-    {"part": "time-series-patterns", "heading": "Time-series patterns"},
-    {"part": "extension-vs-native-a-deliberate-decision", "heading": "Extension vs. native (a deliberate decision)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "choosing-a-partition-strategy", "heading": "Choosing a partition strategy", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

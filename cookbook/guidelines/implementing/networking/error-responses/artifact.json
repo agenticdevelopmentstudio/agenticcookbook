@@ -4,11 +4,11 @@
     "id": "631b7b61-985a-4f5d-9c44-2cfbfdb9091b",
     "title": "Error Responses",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-04-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -23,16 +23,22 @@
     "references": [
       "https://www.rfc-editor.org/rfc/rfc9457"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "api-integration",
       "error-handling"
     ]
   },
-  "synced": "2a5fca019e192b85",
+  "synced": "3402abdee34cc2f0",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "fields", "heading": "The fields", "role": "how-to"},
+    {"part": "examples", "heading": "Example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

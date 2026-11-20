@@ -1,0 +1,12 @@
+
+- `should-deliver-full-agreed-scope`: delivered work that covers less than the scope that was agreed
+- `must-implement-all-parts`: a part of the request with no implementation
+- `must-handle-unhappy-paths`: code that handles only the happy path, with no handling for empty, null, error, timeout or conflict cases
+- `must-not-silently-drop-request-parts`: a requested part missing with no note saying it was left out
+- `should-surface-deferrals-for-agreement`: a deferral buried in the work rather than surfaced as a note and agreed
+- `should-leave-scoping-out-to-the-user`: "out of scope" declared without the user's agreement
+- `must-not-block-on-provided-input`: a pause asking for input the request already gave or pre-specified
+- `should-reread-request-before-pausing`: a stall on a question the request answers
+- `must-verify-before-reporting-complete`: work reported complete with no evidence it was run and checked against the request
+- `must-distinguish-speculative-from-requested`: requested work skipped under YAGNI as though it were speculative
+- `should-name-what-yagni-skips`: something not built under YAGNI with no note of what was skipped and why

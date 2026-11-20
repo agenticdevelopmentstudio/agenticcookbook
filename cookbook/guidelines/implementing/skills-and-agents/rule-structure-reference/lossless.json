@@ -1,0 +1,282 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The file name should be descriptive and lowercase kebab-case (e.g., `testing.md`, `api-design.md`).",
+      "to": "should-name-rule-files-lowercase-kebab-case",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'should' becomes SHOULD, keeping descriptive lowercase kebab-case and both examples.",
+        "pin": "b83f60cb03399dca69e189743d1cfeeb2c1fa5bcdda96298c955b84722cc2745"
+      }
+    },
+    {
+      "sentence": "Optional frontmatter may include a title or version, but there is no enforced schema.",
+      "to": "may-include-a-title-or-version-in-frontmatter",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'may' becomes MAY, keeping 'no enforced schema'.",
+        "pin": "5f3c6b99e6a1823e07a90ce5cc79ab4c3c44815331547ad930c40aba4a2156e7"
+      }
+    },
+    {
+      "sentence": "Keep this minimal.",
+      "to": "should-keep-per-turn-content-minimal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule resolves 'this' to per-turn content (the rule file itself) and keeps it minimal at SHOULD; the optimization part keeps the per-turn cost context.",
+        "pin": "248dc47ea1493584e806b73abcfeaec697d7630c693f4a143963dcaae6935431"
+      }
+    },
+    {
+      "sentence": "Use this for large reference material.",
+      "to": "should-put-large-reference-material-on-demand",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule resolves 'this' to per-session external files read on demand and keeps it at SHOULD for large reference material.",
+        "pin": "4942c672539a14962b21dd1e59d54a96ad7d35d5f60028296d78fa26d5dfe561"
+      }
+    },
+    {
+      "sentence": "**Target under 200 lines / ~8KB** per rule file.",
+      "to": "should-keep-rule-files-under-200-lines",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both limits (200 lines, ~8KB) per rule file.",
+        "pin": "9f93ceacd709cca787c29cc8961730575eef4e5c78b8f7ab608234ccebad1c4a"
+      }
+    },
+    {
+      "sentence": "If larger, move content to skills or external references.",
+      "to": "should-keep-rule-files-under-200-lines",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition (if larger) and both destinations (skills or external references).",
+        "pin": "3da0f8bb1536fa40eaef66419f6bd5a2b719504493a233e46277ff1166d00d4c"
+      }
+    },
+    {
+      "sentence": "**Inline small, reference large.** A 5-line summary table belongs in the rule.",
+      "to": "should-inline-small-and-reference-large",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD along with the 5-line-table example and the 200-line-guideline counterpart.",
+        "pin": "8f605965eb06b4b5d7a176a1a9b2b020e5f3d9e6e931d26f38386d05b3874709"
+      }
+    },
+    {
+      "sentence": "**Don't duplicate across rules.** Two rules covering the same concept means Claude processes it twice per turn.",
+      "to": [
+        "should-not-duplicate-across-rules",
+        "optimization"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the instruction at SHOULD NOT, and the optimization part's Reasons keep why (processed twice per turn).",
+        "pin": "8d10fdffece45d1285ef33b2d104ae2524cd8d162985dccf0ef07c0f5340fee3"
+      }
+    },
+    {
+      "sentence": "**Use `globs` frontmatter** for rules that only apply to specific file patterns (e.g., `globs: .claude/**`).",
+      "to": "should-use-globs-for-file-specific-rules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the scope (rules for specific file patterns) and the example glob.",
+        "pin": "125b21a34372b2e75c076d1ef3c570cddec72e1e06ba85d5c8398ebf49a9808e"
+      }
+    },
+    {
+      "sentence": "**Deduplicate MUST NOTs.** Each item should add a unique constraint not stated elsewhere in the body.",
+      "to": "should-deduplicate-must-nots",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: deduplicate MUST NOTs, each adding a unique constraint not stated elsewhere in the body.",
+        "pin": "5e63b0075a027fe4993ddf1e34f373ddc1ea6152172c2007981440508015e617"
+      }
+    },
+    {
+      "sentence": "**Avoid mandatory multi-file reads.** Rules that require reading 6+ files before any work begins create high entry cost.",
+      "to": [
+        "should-avoid-mandatory-multi-file-reads",
+        "optimization"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the instruction at SHOULD, and the optimization part keeps the reason (6+ files before work begins create high entry cost).",
+        "pin": "f30f3944f88fbd430dbf73fef6e7cf1d508f1ff8a5f4707b56d059dccbe7e92f"
+      }
+    },
+    {
+      "sentence": "Prefer summaries, on-demand reads, or iterative approaches.",
+      "to": "should-avoid-mandatory-multi-file-reads",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three alternatives: summaries, on-demand reads, iterative approaches.",
+        "pin": "0bf6f8df4d4a1d3a2f6eff65e2c2608ea374e6d82c0425ca06a949b56292058d"
+      }
+    },
+    {
+      "sentence": "**Watch frontmatter ratios in referenced files.** If an external file is >50% YAML metadata, inline the content instead.",
+      "to": "should-inline-mostly-metadata-files",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the >50% YAML metadata threshold and the remedy (inline the content).",
+        "pin": "3066ac2ea4798a0f72de7bc95f09665fd125d6bbbc70d810a82ad51c91643946"
+      }
+    },
+    {
+      "sentence": "Clear title/heading identifying the rule's purpose",
+      "to": "should-have-a-clear-title",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The structure-list item is kept as a SHOULD rule: a clear title or heading identifying the rule's purpose.",
+        "pin": "5ce40def8df9541b53150b11360348d2d95db55cd4f664b7eb7294a8961d0e46"
+      }
+    },
+    {
+      "sentence": "Numbered or clearly separated steps if procedural",
+      "to": "should-number-procedural-steps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (if procedural).",
+        "pin": "dbfde570f2ab8095b3a55181dc31fabd31356706c8d99e712fbaec77405d1dd2"
+      }
+    },
+    {
+      "sentence": "Sections with headings for distinct concerns",
+      "to": "should-give-distinct-concerns-their-own-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: sections with headings for distinct concerns.",
+        "pin": "7ffca08c553a686f43f40ae29b378a15e2e24a2918fb37ab86ebe0c5aecf8ffa"
+      }
+    },
+    {
+      "sentence": "**Imperative tone**: Uses MUST, MUST NOT, SHOULD, MAY (RFC 2119)",
+      "to": "should-use-an-imperative-tone",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all four RFC 2119 keywords.",
+        "pin": "36bd3cea61f394f4ada1aea6192210209065b66dddbc5b9343180300eed4cabe"
+      }
+    },
+    {
+      "sentence": "**Deterministic**: The LLM should be able to follow the rule without ambiguity",
+      "to": "should-be-deterministic",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: followable by the LLM without ambiguity.",
+        "pin": "31c5d8031805afe630112c5cb311352368c2cbd01cc6e170eaf926427b073757"
+      }
+    },
+    {
+      "sentence": "**Explicit file references**: If the rule says \"read the principles,\" it lists every file path",
+      "to": "should-list-every-referenced-file",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition and the requirement to list every file path.",
+        "pin": "09c9533987e33a55e8c891e518931e5ac165ff03325d2e79c84dfa23247eec4c"
+      }
+    },
+    {
+      "sentence": "**Self-contained or clearly scoped**: Either contains all needed information or explicitly references where to find it",
+      "to": "should-be-self-contained-or-clearly-scoped",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both alternatives (contains all needed information, or references where to find it).",
+        "pin": "5cd47ab20cc2eb28432e6c0b58d8b2f4c9236a313458cf05039f7bd6a9864a73"
+      }
+    },
+    {
+      "sentence": "**No vague directives**: \"Handle errors appropriately\" is bad. \"Validate user input at the API boundary, return HTTP 400 with a message for invalid input\" is good.",
+      "to": "should-not-use-vague-directives",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with both the bad and good examples word for word.",
+        "pin": "b6b6eb5edcbe524e16b5fc18379703af4a55d09990c131b640acd82dbdb294f1"
+      }
+    },
+    {
+      "sentence": "**Vague rules**: \"Write good code\" — not actionable",
+      "to": "should-avoid-vague-rules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The anti-pattern is kept as SHOULD avoid, with its example and why ('not actionable').",
+        "pin": "3a882b64e6c08f133fc7e3efb7f714566788eaee107fe2502ac0577dc805518f"
+      }
+    },
+    {
+      "sentence": "**Contradictory rules**: \"Always do X\" then later \"Never do X\"",
+      "to": "should-avoid-contradictory-rules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The anti-pattern is kept as SHOULD avoid, with its example.",
+        "pin": "7561bba62c8e01a9ea9d63bcf03d36b5e188508c4bb159bb7ffe50368771ac0f"
+      }
+    },
+    {
+      "sentence": "**Unbounded scope**: Rule tries to govern everything instead of a specific concern",
+      "to": "should-avoid-unbounded-scope",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The anti-pattern is kept as SHOULD avoid, with its description.",
+        "pin": "af243fed61c38d7d7bbc112e114114caa063d4dea5ef54c680067ead10c43e7e"
+      }
+    },
+    {
+      "sentence": "**Missing file paths**: Rule says \"read the guidelines\" without listing which files",
+      "to": "should-avoid-missing-file-paths",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The anti-pattern is kept as SHOULD avoid, with its description.",
+        "pin": "2d508ce82f057077daeca88da6e66b5eb6abe3b3967ff5f2748404e7756cfc52"
+      }
+    },
+    {
+      "sentence": "**Duplicating CLAUDE.md**: Rule content that belongs in project instructions, not a standalone rule",
+      "to": "should-avoid-duplicating-claude-md",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The anti-pattern is kept as SHOULD avoid, with its description.",
+        "pin": "59f41834d2ec9b1dbb98202c659089e0c5c019fbbd0f6bfbcbb918bb862a8374"
+      }
+    },
+    {
+      "sentence": "**No enforcement mechanism**: Rule states preferences but provides no steps to verify compliance",
+      "to": "should-avoid-rules-with-no-enforcement-mechanism",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The anti-pattern is kept as SHOULD avoid, with its description.",
+        "pin": "1fdc978a10fad40565bf52a892c8150ffbf6b6221ae781836936103f46755ee0"
+      }
+    }
+  ],
+  "obsolete": []
+}

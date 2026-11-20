@@ -1,0 +1,24 @@
+
+- **should-write-the-spec-before-any-endpoint**: You SHOULD write the OpenAPI specification before implementing any endpoint, and treat that document as the single source of truth.
+- **should-define-non-trivial-apis-contract-first**: Non-trivial HTTP APIs **SHOULD** be defined contract-first: write the OpenAPI document, agree on it, then implement. This covers:
+  - Any non-trivial HTTP/REST API you author or extend (more than one or two trivial endpoints).
+  - Designing a new module that exposes or consumes an HTTP surface.
+- **should-skip-the-ceremony-only-for-throwaway-prototypes**: You SHOULD skip the full ceremony only for throwaway prototypes you will delete.
+- **must-treat-the-spec-as-the-source-of-truth**: The OpenAPI document **MUST** be the source of truth. When code and spec disagree, the spec wins and the code is the defect.
+- **must-ship-the-spec-with-the-implementation**: New or changed APIs **MUST** ship the spec change in the same change set as the implementation, never after the fact.
+- **must-lint-the-spec-in-ci**: The spec **MUST** be linted in CI, and the lint step **MUST** fail the build on errors.
+- **should-use-openapi-3-1-as-the-baseline**: You SHOULD use **OpenAPI 3.1.x** as the baseline (full JSON Schema 2020-12 alignment).
+- **should-adopt-openapi-3-2-only-with-full-tool-support**: You SHOULD adopt OpenAPI 3.2 **only** when your toolchain — generators, linters, mock servers — fully supports it; otherwise stay on 3.1.x.
+- **should-verify-tool-support-before-3-2-features**: You SHOULD verify tool support before relying on 3.2-only features.
+- **must-state-the-openapi-version-explicitly**: You MUST always state the `openapi:` version explicitly in the document; **MUST NOT** leave it implicit or mixed across files.
+- **should-derive-artifacts-from-the-spec**: The agent **SHOULD** derive the typed client, server stubs / route validation, mock server and docs from the spec rather than author them by hand.
+- **must-not-hand-edit-generated-code**: Generated code **MUST NOT** be edited by hand; regenerate from the spec instead.
+- **should-lint-with-a-spec-linter**: You SHOULD lint with a spec linter (e.g. **Spectral**) using a checked-in `.spectral.yaml` ruleset; extend the built-in OpenAPI ruleset and add house rules (naming, required `operationId`, error-schema presence).
+- **should-consider-security-lint-rules**: You SHOULD consider adding security-focused rules (e.g. an OWASP API Security ruleset) to catch missing auth and unconstrained inputs at design time.
+- **must-run-the-linter-on-every-spec-change**: The CI job **MUST** run the linter on every change touching the spec and **MUST** treat errors as failures; warnings **MAY** be allowed but **SHOULD** trend to zero.
+- **should-add-a-breaking-change-diff-check**: You SHOULD add a breaking-change diff check (e.g. `oasdiff`) so backward-incompatible edits are caught before merge.
+- **should-assert-provider-responses-conform**: Provider tests **SHOULD** assert that responses conform to the spec schemas.
+- **should-validate-consumers-against-the-spec**: Consumers **SHOULD** validate against the same spec (generated client + schema validation) so a contract drift fails a test, not production.
+- **must-not-generate-the-spec-from-code**: **MUST NOT** generate the spec from running code as the primary workflow (code-first) for a new API — that inverts the source of truth and lets undocumented behavior leak in.
+- **must-not-keep-divergent-spec-copies**: **MUST NOT** keep multiple divergent copies of the spec; one canonical document, referenced by all tooling.
+- **must-not-merge-undescribed-behavior**: **MUST NOT** merge an implementation whose behavior the spec does not describe.

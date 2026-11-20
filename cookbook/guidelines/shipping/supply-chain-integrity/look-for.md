@@ -1,0 +1,20 @@
+
+- `must-produce-sbom`: every release build emits an SBOM listing every component and version next to the binary/package; a release with none breaks it
+- `should-use-one-sbom-format`: SBOMs are CycloneDX or SPDX, one format used consistently
+- `must-produce-signed-provenance`: every release build emits signed provenance naming the builder, the method and the inputs (source commit, builder identity, parameters)
+- `should-generate-sbom-from-lockfile`: the SBOM is generated from the resolved dependency graph (lockfile), not declared ranges
+- `should-generate-provenance-on-hosted-ci`: provenance comes from the hosted CI platform, not a step the build author controls
+- `should-sign-artifacts-and-attestations`: artifacts and attestations are signed, keylessly via CI workload identity or with managed KMS keys
+- `should-pin-toolchain-by-digest`: the toolchain and base images are referenced by digest
+- `should-target-slsa-l2`: the build meets SLSA Build L2 (hosted platform, signed provenance), with L3 where the threat model calls for it
+- `must-verify-signature-before-deploy`: the deploy step checks the signature against the expected signer identity (CI workload, repo, ref)
+- `should-verify-provenance-before-deploy`: the deploy step checks provenance for the expected repo, commit, builder and parameters
+- `must-block-promotion-on-failed-check`: a failed signature or provenance check stops promotion; a warn-and-continue path breaks it
+- `should-store-release-evidence`: SBOMs and attestations are kept as immutable release evidence
+- `should-commit-lockfiles`: lockfiles are committed and CI installs with the frozen/locked flag
+- `should-pin-dependencies-by-digest`: dependencies and CI actions are pinned by version, ideally digest/hash, never floating tags
+- `should-keep-scanning-for-vulnerable-components`: known-vulnerability scanning still runs alongside attestation
+- `must-not-ship-without-sbom-and-provenance`: no release build ships with neither SBOM nor provenance
+- `must-not-pass-unverifiable-attestation`: no unsigned or unverifiable attestation is treated as passing
+- `must-not-claim-hosted-trust-for-author-controlled-provenance`: no L2 claim rests on provenance from a step the build author fully controls
+- `should-confirm-regulatory-applicability`: the regulatory drivers' current applicability to the jurisdiction and sector was confirmed

@@ -1,0 +1,18 @@
+
+- `must-be-single-runnable-command`: a check that takes several manual steps, or returns no machine-readable signal (exit code, test summary, fixture diff, screenshot comparison)
+- `must-be-deterministic`: a check whose pass/fail can change for the same input
+- `must-not-gate-on-flaky-checks`: a flaky, time-dependent or network-dependent check that gates completion
+- `must-show-evidence`: a claim of success with no command and output shown
+- `should-wire-command-for-discovery`: a verify command the agent cannot find, with no documented `verify`/`lint`/`test` entry point in agent-readable docs
+- `should-state-expected-observed-and-location`: a failure message that is only a stack trace or bare assertion, missing expected, observed or file:line
+- `should-name-concrete-next-step`: a failure message that names no concrete next step
+- `should-keep-output-concise`: harness output that dumps thousands of lines
+- `should-choose-weakest-enforcement-level-that-holds`: enforcement stronger than needed for a one-off task, or weaker than needed to hold
+- `must-gate-correctness-deterministically`: a correctness check for an unattended or merged change that rests on prompt instructions alone, with no CI, pre-commit or stop-hook gate
+- `should-cap-gate-retries`: a gate that can loop forever with no retry cap or hand-off to a human
+- `must-fail-only-on-correctness`: a gate that fails on something other than correctness or stated requirements
+- `must-not-block-on-style-nitpicks`: a gate that blocks on style nitpicks an autoformatter or optional linter could handle non-blockingly
+- `should-scope-adversarial-review-to-correctness`: an adversarial or "find the gaps" check not told to flag only correctness or spec gaps
+- `should-start-with-cheapest-check`: a harness begun with expensive checks before the cheapest one that catches a real failure
+- `should-not-prebuild-exhaustive-suite`: an exhaustive suite built up front, ahead of any concrete failure pattern
+- `should-encode-check-for-new-error-class`: a recurring class of agent error with no check encoded for it

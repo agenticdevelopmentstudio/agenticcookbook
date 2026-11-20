@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use `user-invocable: false` if it should only load automatically.",
+      "to": "should-load-reference-content-automatically-only-when-meant-to",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to reference content as in the original list item, with the condition (should only load automatically).",
+        "pin": "3f8fadef8cc3e96bd9e0835db1c577593b336806a99fd815cbabec7e464b6212"
+      }
+    },
+    {
+      "sentence": "Use `disable-model-invocation: true` for side-effect operations.",
+      "to": "should-disable-model-invocation-for-side-effect-tasks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to task content as in the original list item, for side-effect operations.",
+        "pin": "bf92263a5e5832f7df97611a553590f8e7b9868162d0157b523ac6966bae38f7"
+      }
+    },
+    {
+      "sentence": "Keep SKILL.md under 500 lines; put detailed content in references/",
+      "to": "should-keep-skill-md-under-500-lines",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both instructions kept at SHOULD: SKILL.md under 500 lines, and detailed content in references/.",
+        "pin": "32cea4c16ee33f8e4c320197223674fb76c0303e256f44c07f6241d9016984c0"
+      }
+    },
+    {
+      "sentence": "Use `${CLAUDE_SKILL_DIR}` to reference supporting files",
+      "to": "should-reference-supporting-files-with-skill-dir",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: reference supporting files with ${CLAUDE_SKILL_DIR}.",
+        "pin": "40c48aa54249f08459045ffdb3ee718f04b1c0877f35515e8b57271ec19cddc1"
+      }
+    },
+    {
+      "sentence": "Description should use keywords users would naturally say",
+      "to": "should-use-natural-keywords-in-the-description",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'should' becomes SHOULD: the description uses keywords users would naturally say.",
+        "pin": "dcc58d352482fee98a1d17df2be5132aa3b03a980f54d40a986078ccbd78055c"
+      }
+    },
+    {
+      "sentence": "Supporting files in references/, scripts/, examples/ should use lowercase descriptive names",
+      "to": "should-name-supporting-files-lowercase",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'should' becomes SHOULD, keeping all three directories.",
+        "pin": "e4250b05034d0ee975681eccbac467db14839cc036b6152c02f67b212f77d8f3"
+      }
+    }
+  ],
+  "obsolete": []
+}

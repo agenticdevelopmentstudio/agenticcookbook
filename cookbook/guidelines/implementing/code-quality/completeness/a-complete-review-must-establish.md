@@ -1,0 +1,12 @@
+
+- `should-deliver-full-agreed-scope`: the work delivers the full agreed scope, or the report says what is missing and why
+- `must-implement-all-parts`: every part of the request is implemented
+- `must-handle-unhappy-paths`: empty, null, error, timeout and conflict cases are handled, not just the happy path
+- `must-not-silently-drop-request-parts`: no part of the request was dropped silently
+- `should-surface-deferrals-for-agreement`: every deferral was said explicitly and agreed, as a note, or the report says why not
+- `should-leave-scoping-out-to-the-user`: every "out of scope" was decided with the user, or the report says why not
+- `must-not-block-on-provided-input`: no pause asked for input that had already been provided or pre-specified
+- `should-reread-request-before-pausing`: every pause was for something the request does not answer, or the report says why
+- `must-verify-before-reporting-complete`: the work was confirmed to run and meet the request before it was reported complete
+- `must-distinguish-speculative-from-requested`: nothing that was asked for was deferred as speculative
+- `should-name-what-yagni-skips`: everything skipped under YAGNI is named with its reason, or the report says why not

@@ -4,11 +4,11 @@
     "id": "1357be12-5a58-4143-a570-849c114770c5",
     "title": "Separation of concerns",
     "type": "principle",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,12 +27,17 @@
       "https://shows.acast.com/dead-code/episodes/brutality-of-behaviour-with-carson-gross",
       "https://wipdev.netlify.app/posts/separation-of-concerns-locality-of-behavior-and-javascript/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "4f44c9b9d9b0e268",
+  "synced": "b3196e0fdf76d4a2",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

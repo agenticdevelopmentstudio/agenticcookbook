@@ -1,0 +1,19 @@
+
+- `linux-files-in-linux-fs`: whether project files Linux tools work on live in the Linux file system
+- `windows-files-in-windows-fs`: whether files Windows tools work on live in the Windows file system
+- `must-not-hardcode-mnt-c`: whether any code hardcodes `/mnt/c`
+- `must-convert-with-wslpath`: whether every path crossing the boundary is converted with `wslpath` and none by string replacement
+- `must-start-distribution-first`: whether the distribution is started before code relies on a `\\wsl$` path
+- `must-use-one-line-ending-convention`: whether one line-ending convention holds across Windows, WSL and containers
+- `must-set-in-gitattributes`: whether the line-ending convention is set in `.gitattributes` per file type
+- `shell-scripts-must-stay-lf`: whether every shell script stays LF
+- `install-git-per-file-system`: whether Git is installed in each file system it is used from
+- `must-configure-git-same-convention`: whether every Git installation is configured for the same convention
+- `set-automount-options`: whether `[automount] options` sets `uid`, `gid`, `umask`, `fmask` and `dmask` where the defaults do not suit
+- `should-not-differ-only-by-case`: whether any names in a tree shared with Windows differ only by case
+- `must-call-with-exe`: whether every Windows program is called from WSL by its full `.exe` name
+- `must-check-program-exists`: whether scripts check that a Windows program exists before calling it
+- `must-detect-wsl`: whether WSL detection guards every Windows-only command
+- `must-not-assume-networking-mode`: whether any code assumes a WSL networking mode
+- `must-make-address-configurable`: whether host/distribution addresses are configurable
+- `must-restart-after-config-change`: whether each `wsl.conf` or `.wslconfig` change is followed by a terminate or shutdown and a wait for exit before restart

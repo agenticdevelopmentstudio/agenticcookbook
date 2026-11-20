@@ -1,0 +1,14 @@
+
+- **must-evaluate-selection-arguments-ordering-stopping**: You MUST evaluate whether the agent selected the right tool, supplied correct arguments, called tools in the right order, and stopped when the task was done.
+- **should-report-each-dimension-separately**: A tool-call eval SHOULD report each dimension separately so failures are diagnosable: tool selection, argument correctness, ordering, stopping, and task completion.
+- **must-pin-input-and-expected-trajectory**: Each test case MUST pin an input and the expected tool-call trajectory (tool names plus expected arguments).
+- **should-treat-suite-as-versioned-regression-set**: You SHOULD treat this suite as a fixed, versioned regression set.
+- **should-allow-semantic-argument-equivalence**: Argument checks SHOULD allow semantic equivalence where exact match is too strict (e.g., equivalent date formats), but MUST stay strict on identifiers, units, and destructive parameters.
+- **should-score-against-trajectory**: You SHOULD score against the trajectory, not just the final output — an agent can reach a correct answer through an unsafe or wasteful path.
+- **must-include-error-recovery-cases**: The suite MUST include cases where a tool returns an error, an empty result, or a timeout, and assert the agent recovers (retries sensibly, picks a fallback, or reports failure) rather than hallucinating success.
+- **should-include-no-tool-cases**: You SHOULD include cases where the correct action is to call **no** tool, to confirm the agent does not invoke tools spuriously.
+- **must-not-assume-short-chains-generalize**: You MUST NOT assume short-chain pass rates generalize to long chains.
+- **should-add-realistic-multi-step-cases**: You SHOULD add multi-step cases that exercise the realistic tool count the agent ships with, and report accuracy as a function of chain length.
+- **should-report-pass-rates-with-trial-counts**: You SHOULD run each case multiple times; tool selection is non-deterministic, so SHOULD report pass rates with trial counts, not a single run.
+- **should-gate-releases-and-track-per-dimension-scores**: You SHOULD gate releases on the suite and track per-dimension scores over time so a regression in argument correctness is not masked by stable task-completion numbers.
+- **should-keep-cases-hermetic**: You SHOULD keep cases hermetic: stub or record tool responses so the eval measures the agent, not live backend flakiness.

@@ -1,0 +1,16 @@
+
+- `must-expose-read-only-stateflow`: whether every ViewModel exposes only read-only `StateFlow` (or `SharedFlow` for one-shot events)
+- `should-back-with-private-mutablestateflow`: whether exposed state is backed by a private `MutableStateFlow` exposed with `.asStateFlow()`
+- `should-convert-cold-upstream-with-statein`: whether state derived from a cold upstream is converted with `stateIn`
+- `should-start-while-subscribed-5000`: whether each `started` policy is `SharingStarted.WhileSubscribed(5_000)`
+- `must-use-renderable-initial-value`: whether every `initialValue` is a real renderable state
+- `should-use-lazily-only-when-restart-cost-unacceptable`: whether each `Lazily` is used only where restart cost is unacceptable
+- `must-collect-lifecycle-aware`: whether every UI collection is lifecycle-aware
+- `should-use-collectasstatewithlifecycle-in-compose`: whether Compose code uses `collectAsStateWithLifecycle()`
+- `should-use-repeatonlifecycle-in-views`: whether Views / Fragments / Activities collect inside `repeatOnLifecycle(Lifecycle.State.STARTED)`
+- `must-not-use-bare-collectasstate`: whether any bare `collectAsState()` collects a ViewModel flow in lifecycle-bound UI
+- `must-not-use-launchwhenstarted`: whether any `launchWhenStarted` / `launchWhenResumed` / `whenStarted` remains
+- `must-not-collect-without-repeatonlifecycle`: whether any flow is collected in `lifecycleScope.launch` without `repeatOnLifecycle`
+- `should-inject-dispatchers`: whether thread-switching code receives its dispatchers by constructor injection
+- `should-inject-test-dispatchers`: whether tests inject test dispatchers and drive virtual time with `runTest`
+- `must-keep-active-collector-in-tests`: whether tests of a `WhileSubscribed` `StateFlow` keep an active collector

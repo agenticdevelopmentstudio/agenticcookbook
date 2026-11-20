@@ -1,0 +1,15 @@
+
+- `classify-fields`: every personal-data field has a sensitivity tier tagged in the schema
+- `sensitive-pii`: every special-category field is tagged `sensitive-pii` and has stricter access controls and audit logging
+- `propagate-tags`: derived tables, exports and caches inherit the tier and its controls, or the code says why not
+- `collect-minimum`: every collected field has a stated purpose
+- `explicit-dtos`: every API response is an explicit DTO, and no raw database model is serialized
+- `separate-stores`: `sensitive-pii` is in a dedicated, tightly scoped store, or the code says why not
+- `encrypt-at-rest`: PII is encrypted at rest, with application-layer or column encryption for `sensitive-pii`
+- `encrypt-in-transit`: PII travels only over TLS 1.2+
+- `tokenize`: systems needing only a stable reference receive tokens, or the code says why not
+- `residency`: where residency is required, the region is pinned in infrastructure config and honored
+- `no-pii-logs`: no log, trace, error message or analytics event contains PII
+- `anonymize-analytics`: analytics receives anonymized or aggregated data, or the code says why not
+- `non-prod-data`: lower environments hold no production `sensitive-pii`, and use synthetic or anonymized data or say why not
+- `retention`: every PII field has a retention period, and expired records are deleted or anonymized

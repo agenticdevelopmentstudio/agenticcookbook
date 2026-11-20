@@ -1,0 +1,20 @@
+
+- `must-enforce-guardrails-as-code`: a guardrail that exists only as a prompt instruction, with no code check behind it, breaks it
+- `should-validate-and-moderate-model-input`: a path where input reaches the model with no validation or moderation step
+- `off-band-input`: the model call is preceded by an injection, jailbreak, off-topic and unsafe-content screen; a direct pass-through of user input breaks it
+- `untrusted-context`: tool, retrieval, file or other-user content concatenated into the system or instruction prompt instead of a labeled data block
+- `layered-defense`: input checks combining deterministic rules (length, encoding, topic allow-list) with a moderation/classifier pass; a prompt-level instruction as the only defense breaks it
+- `should-treat-model-output-as-untrusted`: model output used (rendered, executed, stored, passed on) before any check runs on it
+- `deterministic-output-checks`: schema validation, PII/secret detection and moderation done in code; a "confirm your answer is safe" prompt in their place breaks it
+- `schema-conformance`: structured output parsed and validated against an explicit schema, with non-conforming output rejected or repaired, never forwarded as-is
+- `no-leakage`: a scan for PII, credentials and system-prompt text before output is returned or persisted
+- `should-constrain-agency-to-minimum`: tools, permissions or autonomy granted beyond what the agent's task needs
+- `allow-list-tools`: an explicit tool allow-list checked in code at the call boundary; an agent able to call any registered tool breaks it
+- `least-privilege`: each tool's credentials, scopes and data access; a shared admin token or broad credential breaks it
+- `human-in-the-loop`: payments, deletes, external sends and infra changes gated on explicit human confirmation before they run
+- `caps`: spending, rate and iteration limits on tool use; an unbounded agent loop breaks it
+- `kill-switch`: an operator-reachable control that halts the agent and revokes its tool access
+- `circuit-breakers`: repeated failures, guardrail trips or anomalous cost/rate pausing the agent and alerting
+- `audit-trail`: logging of inputs, tool calls, confirmations and guardrail decisions
+- `should-confirm-privacy-obligations-with-counsel`: privacy or PII handling treated as settling legal obligations without confirmation by counsel
+- `should-start-with-in-process-checks`: a heavy control (managed moderation service, policy engine, sidecar) adopted with no measured need, where in-process deterministic checks would do

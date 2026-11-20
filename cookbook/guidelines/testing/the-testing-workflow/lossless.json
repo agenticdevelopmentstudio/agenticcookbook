@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Kill surviving mutants** — additional tests MUST be written targeting gaps",
+      "to": "must-write-tests-targeting-surviving-mutant-gaps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: to kill surviving mutants, additional tests are written targeting gaps.",
+        "pin": "3a08c6fd764579945c25527730114b10b400a438661c585ff63c5315008d7e72"
+      }
+    },
+    {
+      "sentence": "**Security scan** — `semgrep scan` + `bandit` / `pip-audit` / `npm audit` MUST be run",
+      "to": "must-run-security-scan",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with every named tool: semgrep scan plus bandit / pip-audit / npm audit.",
+        "pin": "9eebb33356447c291f2d43faeb012ec221dd35b7c3be862972b06d9ae824c97b"
+      }
+    },
+    {
+      "sentence": "This creates a closed loop: AI generates tests, deterministic tools validate those tests",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the closed-loop sentence: AI generates tests and deterministic tools validate them.",
+        "pin": "e315baa496366492b75d42a402bfee0f0e34ff4e4ea0d5f54a614efec198a011"
+      }
+    },
+    {
+      "sentence": "actually catch bugs, AI writes more tests to close gaps.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the rest of the sentence: the tools validate that the tests actually catch bugs, and AI writes more tests to close gaps.",
+        "pin": "0d9543d3f939f064480fca1db27a9f335372b63536c074c0645ce735156e1e3d"
+      }
+    }
+  ],
+  "obsolete": []
+}

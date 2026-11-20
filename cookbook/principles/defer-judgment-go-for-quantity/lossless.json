@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Concretely: set a count target before evaluating (\"let's get to 15 ideas before we talk about",
+      "to": "should-set-count-target-before-evaluating",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-set-count-target-before-evaluating keeps the unkeyed instruction at SHOULD: set a count target before evaluating, with the example.",
+        "pin": "fb5d927a9710b72ba1f09e0112e7a06a7f6667dcf2a128171f2983c1d0d2d366"
+      }
+    },
+    {
+      "sentence": "which ones are best\")",
+      "to": "should-set-count-target-before-evaluating",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-set-count-target-before-evaluating keeps the full example, '15 ideas before we talk about which ones are best'.",
+        "pin": "22d94b549536ea17607f6f2869ec4b9443bbed0de4572bff3100cb01871c67e1"
+      }
+    }
+  ],
+  "obsolete": []
+}

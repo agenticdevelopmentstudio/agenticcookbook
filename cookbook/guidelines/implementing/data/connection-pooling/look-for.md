@@ -1,0 +1,19 @@
+
+- `serverless-pooler`: a serverless or autoscaling function (Lambda, Cloud Run, Cloudflare Workers, Vercel) connecting straight to Postgres
+- `many-instance-pooler`: `max_connections` raised to fit ~10+ application instances instead of a pooler in front
+- `single-instance-exception`: a direct connection justified as single-instance where there is more than one process or an unbounded internal pool
+- `prefer-transaction-mode`: a high fan-out pooler running in session or statement mode
+- `session-mode-fallback`: a session-mode pool with no session-scoped feature that needs it
+- `no-session-set`: a session-level `SET` / `RESET` of a GUC on a transaction-pooled connection, where `SET LOCAL` belongs
+- `no-listen-notify`: `LISTEN` / `NOTIFY` over a transaction-pooled connection
+- `no-session-advisory-locks`: `pg_advisory_lock` (not `pg_advisory_xact_lock`) on a transaction-pooled connection
+- `no-temp-tables`: a session temporary table or `WITH HOLD` cursor on a transaction-pooled connection
+- `prepared-statements-caveat`: `PREPARE`/`DEALLOCATE` sent as SQL text through a transaction-mode pooler
+- `verify-pooler-prepared-statement-support`: prepared statements relied on with no check of the pooler version and the driver's protocol
+- `disable-driver-side-prepare`: a driver/ORM left on named server-side prepared statements where pooler support is unknown
+- `size-the-pool`: a `default_pool_size` at or near `max_connections`, with no headroom for migrations, admin and direct connections
+- `total-connections-under-max`: pooler server pools that sum to `max_connections` or more
+- `separate-pool-for-session-work`: migrations, `LISTEN`/`NOTIFY` or admin tasks sharing the transaction-mode connection string
+- `fail-fast-on-exhaustion`: a client pool with no or a long connection acquisition timeout
+- `staging-transaction-mode-run`: a move to transaction pooling with no staging run of the full transaction set under concurrency
+- `grep-for-session-state`: a move to transaction pooling with no search for `SET ` (non-`LOCAL`), `LISTEN`, `pg_advisory_lock(` and session temp tables

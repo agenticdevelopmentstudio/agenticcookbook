@@ -1,0 +1,23 @@
+
+- **must-not-default-to-cqrs-or-event-sourcing**: These patterns add real, ongoing complexity. Per `yagni` and `make-it-work-make-it-right-make-it-fast`, you **MUST NOT** default to them.
+- **must-justify-with-a-present-requirement**: You **MUST** justify adoption with a concrete, present requirement — not a forecast that the system "might" need to scale or "might" want history later.
+- **should-default-to-a-single-model**: You SHOULD default to a single model (CRUD over one datastore).
+- **should-evaluate-an-audit-table-first**: When history is the only driver, an audit/history table or change-data-capture log **SHOULD** be evaluated first and usually suffices.
+- **must-document-the-adoption-decision**: You **MUST** treat the choice as a deliberate, documented decision (record the triggering requirement), not a mandate or a resume-driven default.
+- **should-adopt-cqrs-only-on-its-triggers**: You SHOULD adopt **CQRS** only when one of these is concretely true:
+  - Read and write workloads have **sharply divergent scaling or shape** — e.g., heavy denormalized read fan-out vs. low-volume transactional writes — and you have measured (or contractually know) the imbalance.
+  - The read side needs **independent storage or indexing** (search engine, cache, materialized view) that the write model cannot serve efficiently.
+- **should-adopt-event-sourcing-only-on-its-triggers**: You SHOULD adopt **event sourcing** only when one of these is concretely true:
+  - You have a **replay/audit requirement**: a regulatory, debugging, or temporal-query need to reconstruct exactly how state reached its current value (e.g., finance, ledgers).
+  - You need to **derive new read models retroactively** from past behavior that was not captured at write time.
+- **must-not-adopt-without-a-trigger**: If no trigger holds, **MUST NOT** adopt; revisit when one does (`small-reversible-decisions` — CRUD is the cheapest to reverse from).
+- **should-plan-for-each-cost-before-adopting**: You SHOULD plan for each cost you take on, and what it requires, before adopting: eventual consistency, projection rebuilds, event versioning and the operational surface. Command handlers, event store, projectors, and read stores each add deployment, monitoring, and failure modes (`manage-complexity-through-boundaries`).
+- **must-tolerate-eventual-consistency**: Read models lag writes; UI/API **MUST** tolerate the delay (optimistic update, loading state, or read-your-writes routing).
+- **must-rebuild-projections-without-downtime**: Projection rebuilds need a documented, tested procedure to rebuild read models from the log; it **MUST** be runnable without downtime for large stores.
+- **must-plan-event-versioning-before-the-first-event**: Events are immutable once written; you **MUST** have an upcasting/versioning plan before the first event ships — schema changes are not retroactive edits.
+- **should-model-commands-and-events-as-named-versioned-types**: Per **explicit-over-implicit**, you SHOULD model commands and events as named, versioned types.
+- **must-not-overload-a-generic-update-event**: You MUST NOT ever overload one generic "update" event.
+- **must-make-handlers-and-projectors-idempotent**: Command handlers and projectors **MUST** be idempotent — events may be redelivered; dedupe on a stable event id.
+- **should-keep-cqrs-without-event-sourcing-as-a-stopping-point**: You SHOULD keep CQRS **without** event sourcing as a valid stopping point: separating read/write models in one database is far cheaper than a full event store, and often enough.
+- **should-start-in-process-and-single-store**: You SHOULD start in-process and single-store, and introduce separate read stores or message infrastructure **only** when the triggering requirement demands it.
+- **should-define-the-consistency-contract-per-use-case**: You SHOULD define the consistency contract per use case (which reads may be stale, which must be strongly consistent) and surface it in the API.

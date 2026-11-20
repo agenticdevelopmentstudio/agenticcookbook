@@ -4,11 +4,11 @@
     "id": "0c1e0e24-cb7f-4af9-a114-da2f858422f8",
     "title": "Critique Without Killing",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,12 +31,18 @@
       "Dilts, Strategies of Genius, Vol. 1, 1994",
       "Schulze-Bentrop et al., arXiv 2503.14263, 2025"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "13ad5c2918961fb2",
+  "synced": "dc606bb9c7e60954",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "critique-techniques", "heading": "Critique Techniques", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

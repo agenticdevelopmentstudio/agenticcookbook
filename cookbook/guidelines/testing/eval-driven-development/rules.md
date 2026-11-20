@@ -1,0 +1,21 @@
+
+- **should-treat-evals-as-test-suite**: Evals SHOULD be treated as the test suite for the non-deterministic parts of the system.
+- **must-use-deterministic-tests-for-fixed-output-logic**: MUST use ordinary deterministic tests for parsers, schema validation, tool-call argument construction, retries, and any logic with a fixed correct output.
+- **should-not-wrap-deterministic-code-in-judge**: SHOULD NOT wrap deterministic code in an LLM judge.
+- **must-use-eval-harness-for-varying-outputs**: MUST use an eval harness when the artifact under test is an agent's decisions, an LLM's generated text, multi-step tool use, or RAG answer quality — outputs that vary run to run.
+- **should-isolate-deterministic-and-probabilistic-layers**: SHOULD isolate the deterministic and probabilistic layers so each is tested with the cheaper appropriate method.
+- **must-prefer-code-based-grader**: MUST prefer a code-based grader whenever the success criterion can be expressed in code.
+- **should-grade-dimensions-with-separate-judges**: SHOULD grade each quality dimension (e.g., groundedness, coverage, tone) with a separate, isolated LLM-judge rather than one judge scoring everything at once.
+- **should-use-different-judge-model**: SHOULD use a judge model deliberately different from the model under test to reduce self-preference bias (a documented but still-active research concern, not a settled magnitude).
+- **must-not-gate-on-uncalibrated-judge**: A model-based grader MUST NOT be allowed to gate (block a merge, fail a build, accept a release) until it has been calibrated against a human-labeled gold set.
+- **must-measure-judge-agreement-on-gold-set**: MUST assemble a human-labeled gold set, run the judge over it, and measure agreement (e.g., divergence rate or correlation) before trusting the judge.
+- **must-recalibrate-on-judge-change**: MUST re-calibrate when the judge prompt, the judge model, or the rubric changes.
+- **should-let-judge-abstain**: SHOULD instruct the judge to return "Unknown" or abstain when it lacks evidence, rather than guessing.
+- **should-read-raw-transcripts-and-grades**: SHOULD periodically read raw transcripts and grades; a passing aggregate score can hide a judge that is rejecting valid answers or rubber-stamping bad ones.
+- **must-report-multiple-runs**: MUST report results across multiple runs of the same input, not one pass.
+- **should-distinguish-once-from-every-time**: SHOULD distinguish "succeeds at least once" from "succeeds every time" — these are different product guarantees.
+  - Anthropic's eval guidance frames these as `pass@k` (success in at least one of k attempts) and `pass^k` (all k trials succeed); pick the metric that matches your reliability requirement.
+- **should-track-consistency-over-time**: SHOULD track the consistency metric over time so regressions in flakiness are visible, not just regressions in best-case quality.
+- **must-keep-held-out-test-set**: MUST keep a held-out test set that is not used while iterating on prompts, rubrics, or the judge — otherwise you are tuning to the eval and overstating quality.
+- **should-separate-gold-set-from-held-out-set**: SHOULD treat the gold set used for judge calibration and the held-out behavior test set as distinct; do not let one leak into the other.
+- **should-version-eval-datasets**: SHOULD version eval datasets alongside the code so a result is reproducible against a known dataset revision.

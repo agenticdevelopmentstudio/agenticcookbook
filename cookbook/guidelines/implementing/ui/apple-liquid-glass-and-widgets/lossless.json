@@ -1,0 +1,16 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Treat its specifics as recent and evolving — pin to the iOS/macOS 26 cycle (2025–2026) and confirm against current docs before relying on exact API shapes.",
+      "to": "should-treat-liquid-glass-as-evolving",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the referent made explicit (Liquid Glass), the iOS/macOS 26 cycle (2025-2026) pin and the confirm-against-current-docs-before-relying-on-API-shapes condition.",
+        "pin": "14879310c0a404739eea7046a295cb9827c13c8447c0823d499f4079002a2860"
+      }
+    }
+  ],
+  "obsolete": []
+}

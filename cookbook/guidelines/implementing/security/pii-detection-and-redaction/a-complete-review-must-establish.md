@@ -1,0 +1,25 @@
+
+- `two-identifier-classes`: whether both direct identifiers and quasi-identifiers are treated as PII
+- `use-a-coverage-checklist`: whether PII categories are enumerated against a fixed list
+- `linked-and-linkable`: whether each PII instance has a confidentiality-impact rating with controls sized to it
+- `detect-in-layers`: whether detection combines rule-based and ML techniques
+- `regex-for-structured`: whether structured types are matched with anchored patterns
+- `validate-with-checksums`: whether every pattern match is validated by a format-specific check before it counts as PII
+- `context-words`: whether nearby context words gate or boost match confidence
+- `ner-for-unstructured`: whether an NER model covers names, places and organizations, with custom recognizers for domain IDs
+- `favor-recall`: whether the detector is tuned toward recall
+- `should-not-ship-precision-chosen-detector`: whether the detector was chosen for its precision number
+- `default-deny`: whether what leaves the boundary is allowlisted where feasible
+- `drop-structurally`: whether PII-bearing fields are dropped at the schema or serialization boundary
+- `pick-operation-by-need`: whether each redaction operation fits the reversibility or utility needed
+- `redact-published-data`: whether published or exported data is redacted
+- `pseudonymized-is-not-anonymized`: whether pseudonymized data is treated as anonymized
+- `generalize-and-suppress`: whether quasi-identifiers are generalized or suppressed with linkage risk bounded
+- `anonymization`: whether anything called anonymized is de-identified and irreversible
+- `fail-closed-backstop`: whether serialized output is re-scanned after redaction and the emit or build hard-fails on any surviving pattern
+- `defense-in-depth`: whether independent redaction gates are layered
+- `golden-tests`: whether a known-leaky fixture is asserted end-to-end
+- `freeze-edge-cases`: whether real edge cases are frozen as regression tests
+- `scan-history-not-just-the-tip`: whether a public repo's history is treated as exposed surface
+- `remediate-then-rotate`: whether exposed history was purged, the remote force-updated and exposed secrets rotated
+- `assume-public-credentials-compromised`: whether every once-public credential is treated as compromised

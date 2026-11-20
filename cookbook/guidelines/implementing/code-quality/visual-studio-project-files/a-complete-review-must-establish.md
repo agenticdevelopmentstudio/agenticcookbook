@@ -1,0 +1,19 @@
+
+- `must-use-sdk-style-csproj`: every project is an SDK-style `.csproj` rooted in the matching SDK
+- `must-not-list-source-files`: no project lists source files the SDK already includes
+- `must-add-items-only-for-glob-misses`: every added item includes something the glob misses, and exclusions use `Remove`
+- `must-not-hand-edit-old-style-projects`: no old-style project file was hand-edited
+- `should-set-implicit-usings-explicitly`: each project turns implicit global usings on or off with an explicit property, or says why not
+- `should-share-properties-in-directory-build-props`: properties shared by every project live in a root `Directory.Build.props`, or the change says why not
+- `should-put-late-logic-in-directory-build-targets`: logic that must see final values is in `Directory.Build.targets`, or the change says why not
+- `must-match-directory-build-props-case`: the `Directory.Build.props` file name matches exactly, including case
+- `should-set-continuous-integration-build`: CI builds set `ContinuousIntegrationBuild` to `true`, or the change says why not
+- `must-not-set-outdir`: no project sets `OutDir` to change output folders
+- `should-manage-package-versions-centrally`: package versions are central in `Directory.Packages.props` and project references carry no `Version`, or the change says why not
+- `must-import-parent-packages-props`: every nested `Directory.Packages.props` imports its parent with `GetPathOfFileAbove`
+- `must-use-version-override-only-for-documented-exception`: every `VersionOverride` is a documented exception
+- `may-forbid-version-override`: where `CentralPackageVersionOverrideEnabled` is `false`, no `VersionOverride` is present
+- `should-manage-solution-with-dotnet-sln`: solution changes were made with `dotnet sln`, or the change says why not
+- `should-have-one-solution-per-deployable-unit`: there is one solution per deployable unit, or the change says why not
+- `must-list-every-project-in-solution`: the solution lists every project, so a clean checkout builds
+- `must-not-contain-machine-specific-content`: no project or solution file contains an absolute path or user folder

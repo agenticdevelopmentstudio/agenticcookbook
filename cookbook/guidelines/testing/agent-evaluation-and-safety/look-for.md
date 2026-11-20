@@ -1,0 +1,22 @@
+
+- `should-treat-both-gates-as-release-gating`: eval and safety gates both gate release and run in CI on every model, prompt, tool or retrieval change
+- `should-pass-both-gates`: a release waits on both gates, and either failing blocks the deploy
+- `should-follow-eval-driven-development`: graders, LLM-judge calibration and `pass@k` vs `pass^k` reporting follow eval-driven-development
+- `should-follow-llm-application-security`: prompt injection, untrusted-output handling and tool-agency limits follow llm-application-security
+- `should-pin-owasp-llm-2025-edition`: the OWASP Top 10 for LLM Applications 2025 edition is the one pinned
+- `must-define-numeric-slos`: quality and safety SLOs are explicit numeric thresholds set before production, not "looks good in testing"
+- `must-version-slo-datasets`: each SLO is measured against a versioned dataset
+- `should-set-hard-safety-ceiling`: safety SLOs carry a hard ceiling (e.g. zero secret/PII exfiltration) apart from tunable quality targets
+- `should-not-trade-safety-for-quality`: no safety SLO is loosened for a quality gain without the conflict surfaced and decided
+- `must-trigger-gates-on-every-change`: both gates run on any change to model/version, system prompt, tool definitions, retrieval corpus or guardrail config
+- `must-treat-model-bump-as-code-change`: a provider model-version bump re-runs both gates before roll-forward, even with an unchanged prompt
+- `should-record-results-against-revision`: each result is recorded with its dataset revision and model id
+- `should-keep-held-out-set`: a held-out set exists that never informs iteration
+- `must-seed-adversarial-suite`: the safety gate runs an adversarial suite (jailbreaks, direct and indirect injection, role-play coercion, encoding tricks), not only benign inputs
+- `should-combine-curated-and-automated-red-teaming`: curated known attacks run alongside periodic automated/agentic red-teaming, and each new bypass joins the suite
+- `should-layer-runtime-guardrails`: runtime guardrails (filters, allow-lists, tool-permission scoping) add depth, and none stands in for the gate that tests it
+- `must-persist-gate-results`: per-run gate results are stored so drops show as a trend
+- `should-alert-on-regression`: regressions across releases, including flakiness, raise an alert
+- `should-confirm-regulatory-obligations-with-counsel`: regulatory obligations (data-residency, consent) were confirmed with qualified counsel
+- `should-adopt-heavy-eval-infra-on-measured-need`: heavy eval infrastructure is present only where scale, regulated risk or an incident called for it
+- `should-start-small`: the setup starts from a small versioned dataset and CI gates, adding platform weight as cost or coverage demands

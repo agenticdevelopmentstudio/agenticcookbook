@@ -1,0 +1,30 @@
+
+- `should-map-controls-to-owasp-llm-top-10-2025`: controls with no mapping to the OWASP Top 10 for LLM Applications, or a mapping to an unpinned or older revision than 2025
+- `should-apply-request-body-egress-controls`: model output handled with less scrutiny than a raw HTTP request body would get
+- `must-sanitize-output-at-trust-boundaries`: model output that reaches a shell, database, DOM or tool call without sanitizing, encoding or parameterizing breaks it
+- `must-not-pass-output-to-shell`: model output passed to `exec`/`system`/a shell string, or interpolated into a command line, breaks it
+- `must-parameterize-output-in-sql`: model output string-concatenated into SQL instead of bound as a parameter breaks it
+- `must-encode-output-for-html`: model output put into `innerHTML` or rendered as raw markup without sanitization breaks it
+- `must-validate-tool-arguments`: a tool call made with model-produced arguments not validated and type-checked against a schema breaks it
+- `must-validate-structured-output`: JSON or function-call output coerced or used without strict schema validation and rejection on mismatch breaks it
+- `must-not-treat-output-as-proof`: code that takes the model's claim that an action happened as confirmation, with no out-of-band check of the side effect, breaks it
+- `must-threat-model-both-injection-forms`: a threat model that omits direct or indirect prompt injection (fetched pages, PDFs, emails, code comments, file contents, tool results) breaks it
+- `must-keep-instruction-data-trust-boundary`: retrieved or tool-returned content placed into the prompt undelimited and unlabelled, alongside system/developer instructions, breaks it
+- `should-apply-least-privilege-against-injection`: an agent that reads untrusted content and can also reach high-impact tools
+- `should-prefer-deterministic-guardrails`: safety left to the model's self-policing where an allow-list, output schema or post-check could enforce it
+- `should-not-count-prompt-instructions-as-control`: a control that consists only of telling the model not to do something
+- `should-limit-capability-permissions-autonomy`: an agent given more capability, permission or autonomy than its task needs
+- `must-grant-least-privilege`: an agent or tool holding broad credentials, a wide API surface or ambient admin access breaks it
+- `must-allow-list-callable-tools`: tools made callable with no explicit allow-list breaks it
+- `must-not-expose-open-ended-capabilities`: arbitrary shell, unrestricted HTTP or broad filesystem access exposed without a stated justification and additional controls breaks it
+- `should-require-human-confirmation`: payments, deletions, external communications, deploys or access changes run with no human-in-the-loop confirmation
+- `should-describe-concrete-effect-in-confirmation`: a confirmation prompt that asks only "approve?" without naming the concrete effect
+- `should-rate-limit-and-budget-tool-calls`: an agent loop with no rate limit or budget on tool calls
+- `must-not-put-secrets-in-system-prompt`: a secret, credential or security-relevant control placed in the system prompt breaks it
+- `must-filter-sensitive-data-in-and-out`: PII or sensitive data passed to or returned from the model unfiltered, or raw prompts/completions containing secrets logged, breaks it
+- `should-scope-retrieved-context-to-user`: retrieval not filtered by what the current user is authorized to see, so RAG can return another tenant's documents
+- `must-treat-vector-store-documents-as-untrusted`: documents ingested into the vector store with no provenance check, or queried with no per-document access control, breaks it
+- `should-protect-vector-store-like-source-data`: a vector store protected less strictly than the data its embeddings came from
+- `should-pin-models-and-verify-provenance`: unpinned model versions, or models, datasets or plugins taken without provenance checks
+- `should-mark-generated-content-unverified`: generated content shown without citations or an unverified marking
+- `should-not-present-output-as-authoritative`: a safety-critical flow that presents model output as authoritative fact

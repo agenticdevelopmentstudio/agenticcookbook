@@ -1,0 +1,19 @@
+
+- **must-ship-additive-changes-without-a-version-bump**: You **MUST** treat additive changes (new optional fields, new endpoints, new optional query params, new enum values consumers can ignore) as non-breaking and ship them without a version bump.
+- **must-version-breaking-changes**: You **MUST** treat these as breaking and requiring a version: removing or renaming a field, changing a type or units, tightening validation, changing defaults, altering status codes, or changing pagination/auth semantics.
+- **must-tolerate-unknown-fields**: Clients **MUST** tolerate unknown fields (ignore, don't reject) so the server can add fields freely.
+- **should-assume-consumers-depend-on-every-observable-detail**: Per the observable-behavior-contract guideline (Hyrum's Law), you SHOULD assume consumers depend on *every* observable detail — undocumented field order, error text, timing — so changing those can break someone even when the spec did not.
+- **should-pick-one-scheme-for-the-whole-surface**: You SHOULD pick ONE versioning scheme (URI path, media-type / header, or query param) and apply that ONE scheme consistently across the whole surface.
+- **must-not-mix-schemes**: You **MUST NOT** mix schemes within one API.
+- **should-version-at-a-coarse-grain**: You **SHOULD** version at a coarse grain (major version per breaking batch), not per endpoint or per field.
+- **should-pin-the-default-version**: Unversioned requests **SHOULD** resolve to a documented, pinned default version rather than "latest", so default behavior cannot shift under a client.
+- **should-run-the-deprecation-sequence**: When retiring a version or endpoint, you SHOULD run this sequence (announce, set a removal date, document, honor a migration window) and publish the timeline before the first signal ships.
+- **should-announce-with-the-deprecation-header**: **Announce**: you SHOULD set the `Deprecation` response header (RFC 9745, published March 2025) on affected responses. Value is the deprecation timestamp or `true`.
+- **should-link-migration-docs**: You **SHOULD** add a `Link` header with `rel="deprecation"` and `rel="successor-version"` pointing at migration docs.
+- **should-set-a-removal-date-with-sunset**: **Set a removal date**: you SHOULD add the `Sunset` header (RFC 8594) with the HTTP-date after which behavior is undefined.
+- **must-not-sunset-before-deprecation**: The `Sunset` time **MUST NOT** be earlier than the `Deprecation` time.
+- **should-document-the-deprecation**: **Document**: you SHOULD record the change, replacement, and dates in a public changelog and the OpenAPI/spec (`deprecated: true`).
+- **should-honor-a-migration-window**: **Honor a migration window**: you SHOULD give consumers a published, generous window before removal, and SHOULD NOT shorten it after announcement.
+- **must-not-ship-breaking-changes-in-place**: Breaking changes **MUST** be versioned, never shipped in place.
+- **must-pair-deprecation-headers-with-documentation**: Deprecations **SHOULD** use `Deprecation` + `Sunset` headers plus a changelog entry; headers are hints, so they **MUST** be paired with documentation, not used alone.
+- **should-measure-and-notify-before-removal**: You **SHOULD** emit metrics on deprecated-version traffic and notify identifiable high-volume consumers directly before removal.

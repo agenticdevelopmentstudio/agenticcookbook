@@ -1,0 +1,22 @@
+
+- `should-share-domain-and-data-in-common`: use cases, repositories, models, networking or serialization duplicated per platform instead of living in `commonMain`
+- `must-not-depend-on-platform-ui`: imports of SwiftUI, UIKit, Jetpack Compose or a web UI framework in the shared module
+- `should-keep-platform-ui-on-consumer`: platform UI moved into the shared module with no recorded shared-UI decision
+- `may-share-presentation-layer`: a shared ViewModel/presentation layer, and whether the team accepted coupling presentation state to KMP
+- `should-treat-shared-presentation-as-deliberate`: a shared presentation layer adopted by default rather than as a recorded scope expansion
+- `should-expose-narrow-interfaces`: wide or leaky public surfaces on the shared module that tie platforms to its internals
+- `should-reserve-expect-actual-for-thin-shims`: `expect`/`actual` used for anything beyond thin platform shims
+- `must-match-every-expect-with-actual`: an `expect` with no `actual` in the same package for some target
+- `should-prefer-interfaces-over-expect-actual`: a non-trivial seam built with `expect`/`actual` where an interface plus injection would serve
+- `should-use-hierarchical-source-sets`: code duplicated across `iosMain`/`macosMain` (or similar) where an intermediate source set belongs
+- `should-pin-cmp-version`: a CMP version left floating or implicit in the build
+- `should-recheck-cmp-release-notes`: a specific CMP UI feature relied on without its release notes checked
+- `should-forecast-unreleased-ios-parity`: an unreleased iOS parity item assumed present rather than forecast against the pinned version
+- `should-validate-accessibility-on-device`: shared CMP UI with no on-device accessibility validation
+- `should-choose-shared-ui-only-when-accepted`: shared CMP UI chosen without the team accepting current iOS maturity and the loss of native look-and-feel
+- `should-present-shared-ui-as-per-app-decision`: shared CMP UI imposed as a mandate rather than decided per app
+- `should-design-swift-friendly-api`: Kotlin-only constructs (sealed-class exhaustiveness, default args) at the Swift boundary
+- `should-bridge-suspend-and-flow`: `suspend` functions or `Flow` exposed to Swift with no documented bridge
+- `should-not-leak-raw-coroutines`: raw coroutine types crossing the boundary
+- `should-have-common-test-suite`: a shared module with no `commonTest` suite, or `actual` implementations with no per-target tests
+- `should-build-every-target-in-ci`: shipped targets with no CI platform build

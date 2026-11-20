@@ -4,7 +4,7 @@
     "id": "929e96cb-2900-4386-ad4a-1a67a0568480",
     "title": "Python",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -47,8 +47,8 @@
       "https://peps.python.org/pep-0723/",
       "https://peps.python.org/pep-0561/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "refactor",
@@ -56,24 +56,15 @@
       "security-review"
     ]
   },
-  "synced": "f19e7774166adcd9",
+  "synced": "867871051b39c487",
   "parts": [
     {"part": "intro"},
-    {"part": "packaging", "heading": "Packaging"},
-    {"part": "typing", "heading": "Typing"},
-    {"part": "subprocesses", "heading": "Subprocesses"},
-    {"part": "paths", "heading": "Paths"},
-    {"part": "exceptions", "heading": "Exceptions"},
-    {"part": "untrusted-directories", "heading": "Untrusted directories"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "packaging-2", "heading": "Packaging"},
-    {"part": "typing-2", "heading": "Typing"},
-    {"part": "subprocesses-2", "heading": "Subprocesses"},
-    {"part": "paths-2", "heading": "Paths"},
-    {"part": "exceptions-2", "heading": "Exceptions"},
-    {"part": "untrusted-directories-2", "heading": "Untrusted directories"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why a review checklist", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

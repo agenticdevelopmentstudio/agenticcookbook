@@ -1,7 +1,5 @@
 
-Sync logic requires testing at the unit level (change detection, serialization) and integration level (round-trip apply).
-
-**Change detection**: verify that the unsynced-records query returns the correct rows.
+Change detection:
 
 ```python
 def test_detects_unsynced_records(db):
@@ -13,10 +11,4 @@ def test_detects_unsynced_records(db):
     ).fetchall()
     assert ('t1',) in rows
 ```
-
-**Sync apply**: verify that applying a changeset from the server updates the local database correctly, including soft-delete propagation.
-
-**Outbox round-trip**: write a record locally, confirm it appears in the outbox, simulate a sync cycle, confirm the record is marked synced and the outbox entry is consumed.
-
-**Tombstone propagation**: delete a record on one simulated peer, apply the tombstone to a second peer, confirm the record is absent on the second peer and not resurrected by a subsequent sync.
 

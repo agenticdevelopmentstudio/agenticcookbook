@@ -4,11 +4,11 @@
     "id": "ae4444c3-adac-429a-b00e-e918ba3a70b7",
     "title": "Break Fixation Deliberately",
     "type": "principle",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-10-03",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,12 +29,17 @@
       "van Gundy, Techniques of Structured Problem Solving, 1988",
       "Eberle, SCAMPER: Games for Imagination Development, 1971"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-03"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "13c66b97d76acfbd",
+  "synced": "35def0f4ec482e95",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "disruption-techniques", "heading": "Disruption Techniques", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

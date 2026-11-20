@@ -1,0 +1,22 @@
+
+- `should-default-to-pgvector`: retrieval in a separate vector service where the primary relational datastore with `pgvector` would serve
+- `should-adopt-a-dedicated-vector-database-only-when-forced`: a dedicated vector database with no measured scale or latency need behind it
+- `should-treat-the-vector-database-migration-as-reversible`: a move to a dedicated vector database made as a default or in a way that cannot be reversed
+- `must-pin-the-embedding-model-and-dimension`: a schema that does not pin the embedding model and output dimension, or one column holding vectors from different models or dimensions
+- `should-start-with-pgvector-and-hybrid-retrieval`: a dedicated vector database adopted with no eval or load test showing pgvector cannot meet the target
+- `should-default-to-hnsw`: a vector index other than HNSW with no reason given
+- `should-raise-ef-search-for-recall`: recall shortfalls left in place where raising `hnsw.ef_search` would trade latency for them
+- `should-verify-index-defaults-against-the-pinned-version`: HNSW defaults relied on without checking them against the pinned pgvector version
+- `should-match-the-distance-operator-to-the-model`: a distance operator that does not match how the embedding model was trained
+- `must-use-one-distance-operator-for-index-and-query`: an index built with one distance operator and queried with another
+- `may-use-ivfflat`: IVFFlat used where build time and memory do not dominate, or where the recall hit is not acceptable
+- `should-use-hybrid-retrieval`: retrieval by dense vector search alone, with no lexical search and fusion
+- `should-rerank-only-top-candidates-and-cache`: reranking beyond the top ~20–50 candidates, or repeated queries reranked with no cache
+- `should-measure-fusion-weights-and-reranking`: fusion weights or the rerank choice fixed as constants rather than measured on an eval set
+- `should-chunk-before-embedding`: whole documents embedded with no chunking
+- `should-tune-the-chunk-window-against-an-eval-set`: a chunk size and overlap chosen with no tuning against a retrieval eval set
+- `must-store-a-source-reference-with-each-chunk`: a chunk stored with no stable reference to its source document and position
+- `should-chunk-on-semantic-boundaries`: fixed character-count chunking where the source has headings, paragraphs or code blocks to split on
+- `should-store-filterable-attributes-as-columns`: filterable attributes held outside ordinary columns, or filtered in a separate query
+- `must-apply-tenant-filters-at-query-time`: multi-tenant or access-controlled retrieval with no tenant/permission filter in the query, or one that relies on the LLM to ignore context
+- `must-maintain-a-retrieval-eval-set`: a change to chunking, indexing or fusion with no labeled eval set measuring recall/precision before and after

@@ -1,0 +1,24 @@
+
+- `must-make-every-store-enumerable-exportable-deletable`: a store of personal data that cannot be listed, exported or deleted by a stable subject id breaks it
+- `should-confirm-rights-with-counsel`: rights, scope, exemptions or deadlines hard-coded with no sign they were confirmed with counsel
+- `must-support-access-requests`: an export that leaves out derived data or a store breaks it
+- `must-support-erasure-requests`: an erasure that skips a store or does not reach processors breaks it
+- `must-support-rectification-requests`: a correction applied in one place but not propagated breaks it
+- `must-support-portability-requests`: no structured, machine-readable (JSON/CSV) export breaks it
+- `must-support-restriction-requests`: no way to mark data processing-suspended without deleting it breaks it
+- `must-support-objection-requests`: no way to stop a specified processing activity for one subject breaks it
+- `must-maintain-data-map`: no data map, or one missing caches, search indexes, object storage, queues, event or application logs, analytics/warehouse or backups
+- `must-record-data-map-entry-fields`: a data-map entry missing the store, subject-id key or join path, data categories, retention basis, or receiving processors
+- `must-update-data-map-for-new-stores`: a change that persists personal data in a new place without a data-map update breaks it
+- `must-verify-requester-identity`: a request handler that acts before verifying the requester is the subject or an authorized agent breaks it
+- `should-authenticate-against-session-or-verified-channel`: requester identity checked by something weaker than an existing session or a verified channel
+- `must-not-act-on-unverified-claim`: data disclosed or deleted on an emailed or typed claim of identity breaks it
+- `must-erase-every-derived-copy`: an erasure that deletes the primary row but leaves caches, search indexes, read models or analytics aggregates breaks it
+- `must-propagate-erasure-to-processors`: erasure that does not call processors' deletion APIs and record completion breaks it
+- `should-pseudonymize-or-crypto-shred-logs`: subject data left in immutable logs or event streams with no pseudonymization or per-subject key to shred
+- `must-document-backup-rescrub-window`: no documented backup rotation window, or no re-scrub of restored backups, breaks it
+- `must-log-every-request`: a request handled without a log of subject id, request type, timestamp, verifier and completion breaks it
+- `should-drive-erasure-and-export-from-one-job`: erasure or export done by ad-hoc queries instead of one deterministic job keyed by subject id
+- `must-complete-within-legal-deadline`: no deadline tracking, so requests can pass the legal deadline unnoticed, breaks it
+- `should-track-per-request-sla`: no per-request SLA tracking or no alert before breach
+- `should-test-erasure-leaves-no-residue`: no test that creates then erases a subject and checks every mapped store is empty of it

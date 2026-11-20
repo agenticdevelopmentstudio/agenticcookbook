@@ -4,11 +4,11 @@
     "id": "ed639d3f-02e5-42d1-bb87-f96908986025",
     "title": "Kubernetes configuration and secrets",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,20 +30,22 @@
       "https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/",
       "https://external-secrets.io/latest/introduction/overview/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "configuration",
       "authentication"
     ]
   },
-  "synced": "8cb5ac8008c65f89",
+  "synced": "55a55fba7e984fa0",
   "parts": [
     {"part": "intro"},
-    {"part": "separate-config-from-secrets", "heading": "Separate config from secrets"},
-    {"part": "secrets-are-not-encrypted-by-default", "heading": "Secrets are not encrypted by default"},
-    {"part": "prefer-an-external-secret-manager-production", "heading": "Prefer an external secret manager (production)"},
-    {"part": "mounting-and-rotation", "heading": "Mounting and rotation"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "secret-sourcing-approaches", "heading": "Secret sourcing approaches", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

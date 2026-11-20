@@ -4,11 +4,11 @@
     "id": "f0f9bc0c-7195-42fd-95eb-2405e81fb1ea",
     "title": "Data subject rights (DSAR)",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,22 @@
       "https://gdpr-info.eu/art-12-gdpr/",
       "https://gdpr-info.eu/art-20-gdpr/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "authentication",
       "data-modeling"
     ]
   },
-  "synced": "81187fc25b2d41b8",
+  "synced": "3f1ce94a40f82256",
   "parts": [
     {"part": "intro"},
-    {"part": "the-rights-to-support", "heading": "The rights to support"},
-    {"part": "data-map-prerequisite", "heading": "Data map (prerequisite)"},
-    {"part": "identity-verification", "heading": "Identity verification"},
-    {"part": "erasure-propagation", "heading": "Erasure propagation"},
-    {"part": "operational-requirements", "heading": "Operational requirements"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "the-rights-to-support", "heading": "The rights to support", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

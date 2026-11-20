@@ -4,11 +4,11 @@
     "id": "10c66228-2141-484c-9286-2d62d43c7b70",
     "title": "Data privacy regulations",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,20 +30,23 @@
       "https://iapp.org/resources/article/us-state-privacy-legislation-tracker/",
       "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review",
       "data-modeling"
     ]
   },
-  "synced": "7cbf2a9cdc6cd42e",
+  "synced": "6d2f6dc2783908d2",
   "parts": [
     {"part": "intro"},
-    {"part": "core-regimes-as-of-2026", "heading": "Core regimes (as of 2026)"},
-    {"part": "shared-principles-to-encode", "heading": "Shared principles to encode"},
-    {"part": "controller-vs-processor", "heading": "Controller vs processor"},
-    {"part": "before-you-collect", "heading": "Before you collect"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "core-regimes-as-of-2026", "heading": "Core regimes (as of 2026)", "role": "how-to"},
+    {"part": "controller-vs-processor", "heading": "Controller vs processor", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,16 @@
+
+- `should-not-partition-by-default`: whether each partitioned table needed partitioning rather than a normal indexed table
+- `must-justify-partitioning-with-measured-need`: whether every partitioning is justified by a concrete, measured need
+- `should-confirm-win-with-explain-analyze`: whether `EXPLAIN (ANALYZE)` before and after confirms the win
+- `should-not-over-fragment-partitions`: whether partitions stay above ~10k rows and below thousands in count
+- `must-partition-on-hot-query-filter-columns`: whether the partition key appears in the WHERE clause of hot queries
+- `should-prefer-native-declarative-partitioning`: whether native declarative partitioning is used over inheritance + triggers
+- `must-include-partition-key-in-unique-constraints`: whether every primary key and unique constraint includes the partition key
+- `should-range-partition-time-series-by-time`: whether time-series data is range partitioned by time
+- `should-retain-by-dropping-partitions`: whether retention drops or detaches partitions rather than bulk-deleting
+- `should-automate-partition-lifecycle`: whether partition creation and dropping are automated
+- `should-evaluate-brin-for-time-ordered-partitions`: whether BRIN was evaluated for large time-ordered partitions
+- `should-precompute-rollups-for-long-history`: whether long-history queries read precomputed summaries
+- `should-stay-on-native-partitioning-when-sufficient`: whether native partitioning is kept where it suffices
+- `may-adopt-extension-only-on-measured-need`: whether any extension adoption rests on a measured need
+- `should-pin-and-reverify-after-upgrades`: whether the major version is pinned and `EXPLAIN` plans are re-verified after upgrades

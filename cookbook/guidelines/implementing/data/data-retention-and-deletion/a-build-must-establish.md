@@ -1,0 +1,23 @@
+
+- `should-confirm-retention-periods-with-counsel`: each concrete retention period was confirmed with counsel, or the work says why not
+- `should-maintain-retention-schedule`: a retention schedule in code or config maps every data category to a maximum period and a disposition, or the work says why not
+- `must-define-retention-period`: every data category has a defined retention period
+- `must-justify-missing-retention-period`: every category with no period carries a written justification
+- `should-automate-expiry`: every category expires through a scheduled job, TTL index or partition-drop, or the work says why not
+- `should-record-retention-timestamps`: every retained record has `created_at` (and `expires_at` where relevant), or the code says why not
+- `should-cascade-deletions`: a deletion reaches every derived store, or the work says why not
+- `should-maintain-copy-inventory`: a version-controlled inventory lists where each category is copied, or the work says why not
+- `should-prefer-event-driven-cascade`: the cascade is driven by a `deletion-requested` event each store subscribes to, or the work says why not
+- `should-make-cascade-idempotent`: every cascade step is idempotent and retryable, or the code says why not
+- `must-make-failed-cascade-resumable`: a partially failed cascade is detected and can resume
+- `must-not-count-soft-delete-as-erasure`: no privacy erasure request is satisfied by a soft delete
+- `must-make-anonymization-irreversible`: no re-identification key is retained for anonymized data
+- `should-decide-delete-mode-per-category`: each category records its own soft-or-hard delete choice, or the work says why not
+- `must-resolve-erasure-to-hard-delete-or-anonymization`: every erasure ends in hard delete or true anonymization in the source and all derived stores
+- `should-exclude-backups-and-document-lag`: backups and immutable logs are left out of immediate cascade and the lag is documented, or the work says why not
+- `should-publish-backup-purge-policy`: a published backup retention/purge policy bounds the erasure lag, or the work says why not
+- `should-suppress-erased-data-immediately`: erased data is suppressed from active systems at once, or the work says why not
+- `must-not-restore-without-reapplying-deletions`: every backup restore re-applies pending deletions
+- `should-audit-every-deletion`: every deletion is logged to a tamper-evident, separately retained audit trail, or the work says why not
+- `should-reconcile-expiry-periodically`: a periodic job finds records past `expires_at` that were not purged and alerts, or the work says why not
+- `should-treat-reconciliation-miss-as-defect`: a reconciliation miss raises a defect, or the work says why not

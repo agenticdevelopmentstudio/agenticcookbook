@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "These are deliberate, swappable choices — name the role, not the brand.",
+      "to": "name-the-role-not-the-brand",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD (unkeyed before), with 'these' made explicit as state libraries: deliberate, swappable choices; name the role, not the brand.",
+        "pin": "c6f9c1386a75645f622db8578f28ab9099b39e14820268646c7bad42b51e114f"
+      }
+    },
+    {
+      "sentence": "Libraries in this space churn; treat the pattern as durable and the tool as an implementation detail.",
+      "to": "treat-the-tool-as-an-implementation-detail",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason (libraries in this space churn): the pattern is durable, the tool an implementation detail.",
+        "pin": "a30b989b4f75104b0af41f17809c4901dbb324b019a3dfca0d37944759c6aabc"
+      }
+    },
+    {
+      "sentence": "Reach for one only when local state and lifting genuinely fall short (see YAGNI).",
+      "to": "client-store-only-when-local-state-falls-short",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'one' made explicit as a client-store library, the condition (local state and lifting genuinely fall short) and the YAGNI reference.",
+        "pin": "803d6dd4b2466f4b91be83e862da54d4316bf3341985e267f25c4a168208264a"
+      }
+    }
+  ],
+  "obsolete": []
+}

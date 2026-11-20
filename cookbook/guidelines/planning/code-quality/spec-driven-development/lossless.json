@@ -1,0 +1,119 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Adopt the *methodology*; do **NOT** hard-code a specific tool, command set, or vendor flow into your process.",
+      "to": [
+        "should-adopt-the-methodology",
+        "should-not-hard-code-tool"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-adopt-the-methodology keeps adopting the staged-flow methodology and should-not-hard-code-tool keeps the prohibition on hard-coding a tool, command set or vendor flow (unkeyed bold NOT, now SHOULD NOT).",
+        "pin": "4195df48e1a53bb8141e2934cd4f7d194b2dd8e27d5e7681b339e8658656b48a"
+      }
+    },
+    {
+      "sentence": "It **MUST** include:",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-include-required-sections keeps the MUST include the listed sections.",
+        "pin": "8793c108d85050ea8c1815a065c85f8834a78b99f5980b6840ba302abec5ec4b"
+      }
+    },
+    {
+      "sentence": "| Section | Requirement |",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The table header only named the Section/Requirement columns; must-include-required-sections keeps that shape as 'each section below, meeting its requirement'.",
+        "pin": "788f219294b1e7bcce229f229b2b41cfb1ca55e66a143387ca440ebcf39bd3e6"
+      }
+    },
+    {
+      "sentence": "|---------|-------------|",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A table separator row with no content; must-include-required-sections carries the list it delimited.",
+        "pin": "a4e2fe9920dd7055d0d5d87fcedb63d3efd9cc3e589b825b7a01c82c5656145e"
+      }
+    },
+    {
+      "sentence": "| Goal | One or two sentences stating the \"what\" and \"why\" — not the \"how\". |",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-include-required-sections keeps the Goal section: one or two sentences of what and why, not how.",
+        "pin": "c2a249c2f38038bc8dbe4388924435058fe37724a573a06135a4a03f1e6dfdd7"
+      }
+    },
+    {
+      "sentence": "| Files & interfaces | Name the concrete files, functions, and interfaces to add or change. |",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-include-required-sections keeps the Files & interfaces section naming the concrete files, functions and interfaces to add or change.",
+        "pin": "c0d46afac809398a29e02fa6504600e25356a8812199354a99b61256933e9c0c"
+      }
+    },
+    {
+      "sentence": "| Out of scope | An explicit list of what this change will **NOT** touch.",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-include-required-sections keeps the Out of scope section as an explicit list of what the change will NOT touch.",
+        "pin": "735f3b2d9d8ac909b4e84ea7d124e24baca3a5091abbbb88ae828daab52a9dcc"
+      }
+    },
+    {
+      "sentence": "This is the highest-signal section for keeping an agent on task. |",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps that the out-of-scope list is the highest-signal section for keeping an agent on task.",
+        "pin": "df33349fc169ab48a00ea2a1d9083574e16c148b3857503d12635fc06a1d3326"
+      }
+    },
+    {
+      "sentence": "| Verification | An end-to-end check that proves the feature works (test command, build, script, or screenshot diff). |",
+      "to": "must-include-required-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-include-required-sections keeps the Verification section: an end-to-end check, with its test/build/script/screenshot-diff examples.",
+        "pin": "896ff2067c2cb663ed45a738dfabd5607bc916ba8b39970a96ce086a78f4fb9a"
+      }
+    },
+    {
+      "sentence": "A non-trivial change **MUST** start from a written spec before code is generated. \"Non-trivial\" means: the approach is uncertain, the change touches multiple files, or the agent is unfamiliar with the code being modified.",
+      "to": "must-start-non-trivial-change-from-spec",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-start-non-trivial-change-from-spec keeps the MUST and its sub-item keeps all three conditions defining non-trivial.",
+        "pin": "d5c3521b110600b0eb52db1bd8548187975c09f6888a8f03b93503dfb34796f1"
+      }
+    },
+    {
+      "sentence": "Right-size the ceremony to the change.",
+      "to": "should-right-size-ceremony",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-right-size-ceremony keeps right-sizing the ceremony to the change (unkeyed, now SHOULD).",
+        "pin": "ecbe1178cfc9671bdbdcd8202226af18d8a8ab7b6563ad41a6f81e45103383d1"
+      }
+    }
+  ],
+  "obsolete": []
+}

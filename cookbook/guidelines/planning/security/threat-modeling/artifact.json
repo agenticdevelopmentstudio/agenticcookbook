@@ -4,11 +4,11 @@
     "id": "cbfc3cd1-e0a0-44af-bcd8-0aa96eb2acda",
     "title": "Threat modeling",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,19 +29,21 @@
       "https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats",
       "https://owasp.org/www-community/Threat_Modeling_Process"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review"
     ]
   },
-  "synced": "8dcdde94255907ae",
+  "synced": "bedd2c383c6a46a0",
   "parts": [
     {"part": "intro"},
-    {"part": "the-four-questions", "heading": "The four questions"},
-    {"part": "stride-enumeration", "heading": "STRIDE enumeration"},
-    {"part": "make-it-continuous-shift-left", "heading": "Make it continuous (shift-left)"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "stride-categories", "heading": "STRIDE categories", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

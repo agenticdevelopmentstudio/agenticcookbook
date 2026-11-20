@@ -1,0 +1,22 @@
+
+- `should-accept-keys-on-non-idempotent-writes`: a `POST` that creates a resource, charges a payment or sends a message with no idempotency-key handling.
+- `should-not-add-keys-out-of-habit`: idempotency-key handling added to a `GET`, `HEAD`, `PUT` or `DELETE`.
+- `should-send-the-key-in-the-header`: a key sent somewhere other than the `Idempotency-Key` header, or one the server parses instead of treating as opaque.
+- `must-scope-keys-per-principal-and-endpoint`: a key lookup that does not include the authenticated principal and the endpoint.
+- `should-store-the-principal-endpoint-key-tuple`: a key store indexed by the key alone.
+- `should-fingerprint-the-request`: a key stored with no hash of the request payload.
+- `should-lock-new-keys-before-executing`: a new key executed before a lock is taken, or a completion that does not persist fingerprint, status and body.
+- `must-block-concurrent-retries`: an in-flight key whose concurrent retry executes the operation again.
+- `should-lock-atomically`: a key check that reads and then writes without a row lock, advisory lock or atomic conditional insert.
+- `must-replay-completed-requests`: a completed key with the same fingerprint that re-executes the operation instead of replaying the stored response.
+- `must-reject-a-reused-key-with-new-parameters`: a reused key with a different fingerprint that is re-executed or overwrites the record instead of returning 422.
+- `should-persist-key-records-durably`: key records held in per-process memory.
+- `must-expire-key-records`: key records with no TTL.
+- `should-outlast-the-retry-window`: a TTL shorter than the client's maximum retry window.
+- `should-finalize-after-commit`: a key persisted as replayable before the side effect has committed.
+- `should-generate-one-key-per-operation`: a client that makes a new key on each retry attempt.
+- `must-not-mutate-the-body-between-retries`: a retry that changes the request body but keeps the key.
+- `should-use-a-fresh-key-per-user-action`: a new user-initiated action that reuses an earlier key.
+- `should-not-derive-keys-from-timestamps`: Deriving the key from a timestamp or auto-increment — low entropy invites collisions.
+- `should-not-retry-key-rejections-blindly`: Treating a `409`/`422` from key handling as a transient error and retrying blindly (see [adc.guideline.implementing.networking.retry-and-resilience](cookbook:cef41f52-bfc6-4ff0-bb67-eb52521c7391)).
+- `should-not-cache-status-without-body`: Caching only the status code and not the body, so a replay returns an incomplete response.

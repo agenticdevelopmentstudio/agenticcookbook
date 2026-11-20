@@ -4,11 +4,11 @@
     "id": "647b7d54-41fc-4f31-96e4-3d23ae49f92b",
     "title": "PII handling and classification",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-07-23",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,22 +32,21 @@
       "https://www.iso.org/standard/27701",
       "https://www.nist.gov/privacy-framework"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "logging",
       "security-review"
     ]
   },
-  "synced": "b2892d1c506f16c7",
+  "synced": "f4a8b4eec009be74",
   "parts": [
     {"part": "intro"},
-    {"part": "classify-at-the-schema-level", "heading": "Classify at the schema level"},
-    {"part": "minimize-and-isolate", "heading": "Minimize and isolate"},
-    {"part": "protect-at-rest-and-in-transit", "heading": "Protect at rest and in transit"},
-    {"part": "keep-pii-out-of-logs-and-lower-environments", "heading": "Keep PII out of logs and lower environments"},
-    {"part": "retention-and-deletion", "heading": "Retention and deletion"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

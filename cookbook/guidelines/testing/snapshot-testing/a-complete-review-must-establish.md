@@ -1,0 +1,16 @@
+
+- `must-review-every-snapshot-diff`: every snapshot diff was reviewed before it was accepted
+- `should-treat-unexpected-diff-as-bug`: unexpected diffs were treated as potential bugs, or the code says why not
+- `must-not-reflexively-accept-all`: no accept-all command was run to make a red suite green
+- `should-update-only-after-confirming-intent`: each snapshot update was confirmed intended, or the code says why not
+- `must-run-ci-in-non-updating-mode`: CI runs snapshots in non-updating mode, so a missing or stale snapshot fails
+- `should-review-snapshot-files-like-source`: snapshot files were reviewed as carefully as source, or the code says why not
+- `should-cover-one-concern`: each snapshot covers one concern, or the code says why not
+- `should-prefer-small-inline-snapshots`: small inline snapshots are used over one large external file, or the code says why not
+- `should-not-snapshot-unreasonable-output`: no snapshot holds output that cannot be reasoned about line by line, or the code says why
+- `must-normalize-non-deterministic-values`: non-deterministic values are stripped or normalized before serializing
+- `must-stabilize-ordering`: sets, maps and query results are sorted before snapshotting
+- `should-use-property-matchers-for-dynamics`: unavoidable dynamics use property matchers, or the code says why not
+- `should-assert-logic-explicitly`: behavior and computation are asserted with explicit values, or the code says why not
+- `should-reserve-snapshots-for-stable-verbose-output`: snapshots hold only verbose, structurally stable output, or the code says why not
+- `should-delete-obsolete-snapshots`: obsolete snapshots were deleted, or the code says why not

@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "3a6baa24-9bd3-45f8-aa6a-b32c61169ed3",
+    "title": "Value objects over primitive obsession",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Wrap domain primitives that carry invariants in small immutable value objects so validation lives in one place and invalid instances cannot be constructed.",
+    "platforms": [],
+    "tags": [
+      "value-objects",
+      "types",
+      "code-quality"
+    ],
+    "depends-on": [],
+    "related": [
+      "2a22b563-afb5-4615-96ae-338eafd5eb81",
+      "a7ce3621-2fed-478f-8767-b186014c5923",
+      "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419"
+    ],
+    "references": [
+      "https://blog.ploeh.dk/2011/05/25/DesignSmellPrimitiveObsession/",
+      "https://blog.ndepend.com/code-smell-primitive-obsession-and-refactoring-recipes/",
+      "https://www.arhohuttunen.com/primitive-obsession/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "data-modeling",
+      "new-module"
+    ]
+  },
+  "synced": "568f3c9025a5cd9f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "when-to-introduce-one", "heading": "When to introduce one"},
+    {"part": "how-to-build-one", "heading": "How to build one"},
+    {"part": "per-language", "heading": "Per language"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

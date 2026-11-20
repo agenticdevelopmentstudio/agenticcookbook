@@ -1,0 +1,86 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Adopt them when a measured need justifies the cost (scale, multi-service coordination, compliance) — not by default (per YAGNI).",
+      "to": "adopt-when-justified",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Adopting orchestration platforms and per-image scanners only when a measured need (scale, multi-service coordination, compliance) justifies the cost, not by default, is kept at SHOULD with its YAGNI reason.",
+        "pin": "56bdf6c66c6da198b172e377f40a28e08e1e716d0392976de08cde97b1a79c73"
+      }
+    },
+    {
+      "sentence": "**workdir**: Use `WORKDIR` with absolute paths rather than chained `cd`.",
+      "to": "workdir",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "WORKDIR with absolute paths rather than chained cd is kept at SHOULD.",
+        "pin": "8ad4e156e916f73d630794ca156315a0bfb2141faea405def4d71a34f5f1598d"
+      }
+    },
+    {
+      "sentence": "Use `ENTRYPOINT` for the executable and `CMD` for default arguments.",
+      "to": "entrypoint-and-cmd",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ENTRYPOINT for the executable and CMD for default arguments is kept at SHOULD.",
+        "pin": "46369fe1c6c70667748ffce039166ef37a80bf23911cb659dbfdb8d7b7f5875e"
+      }
+    },
+    {
+      "sentence": "Order instructions from least- to most-frequently changed so the dependency layer is reused when only source changes:",
+      "to": "order-layers-by-change-frequency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Ordering instructions from least- to most-frequently changed so the dependency layer is reused when only source changes is kept at SHOULD with its reason; the three-step order is in the layer-order part.",
+        "pin": "bdc1071fbc339e7f987034894e41c558e404cad88abb2753c314cafdb010f820"
+      }
+    },
+    {
+      "sentence": "**combine-run**: Combine `apt-get update` with `apt-get install` in one `RUN`, pin package versions where practical, and clean caches in the same layer (`rm -rf /var/lib/apt/lists/*`) to avoid stale-cache bugs and image bloat.",
+      "to": "combine-run",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Combining apt-get update and install in one RUN, pinning versions where practical, and cleaning caches in the same layer are kept at SHOULD with both reasons.",
+        "pin": "ae43db9a56fb4698f36f1ab89a2e0741b57a58c8babb401ac31f3b4d5b13b6c9"
+      }
+    },
+    {
+      "sentence": "**deterministic-deps**: Install from a locked manifest (`requirements.txt` with hashes, `package-lock.json`, `go.sum`, `Cargo.lock`) so builds are repeatable.",
+      "to": "deterministic-deps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Installing from a locked manifest so builds are repeatable is kept at SHOULD with all four manifest examples.",
+        "pin": "469adaebd3353e85eb2b51c4805b8224d270b1b85eafcec6468c4660cf641b11"
+      }
+    },
+    {
+      "sentence": "**least-files**: Use a `.dockerignore` to exclude `.git`, secrets, local env files, build output, and `node_modules` from the build context — this shrinks context, speeds builds, and prevents accidental secret leakage.",
+      "to": "least-files",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A .dockerignore excluding .git, secrets, local env files, build output and node_modules is kept at SHOULD with all three reasons.",
+        "pin": "9da687169afbf0a3b330e2ee8185357728417db72238187550beaf70a13b080c"
+      }
+    },
+    {
+      "sentence": "**drop-extras**: Do not install packages \"just in case.\" Fewer packages means fewer CVEs to patch.",
+      "to": "drop-extras",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not installing packages 'just in case' is kept at SHOULD NOT with its reason (fewer CVEs).",
+        "pin": "acf944e86a1c1a0b0ceafebd4389a553f8806e9574b63cd5cc2d87ca518db98c"
+      }
+    }
+  ],
+  "obsolete": []
+}

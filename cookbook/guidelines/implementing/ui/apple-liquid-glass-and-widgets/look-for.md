@@ -1,0 +1,15 @@
+
+- `should-let-platform-supply-and-gate-new-apis`: custom materials, layout or behavior where the platform supplies them, or a brand-new design API used without a version gate
+- `must-use-standard-components`: custom-drawn navigation, tab bars, lists, forms, toolbars or sheets in place of the standard components
+- `must-follow-apple-hig`: layout, spacing, hit targets or idioms that depart from the HIG, or another platform's navigation model ported onto Apple
+- `should-use-system-materials`: hardcoded translucent colors for backgrounds and overlays instead of system materials
+- `must-use-semantic-color-and-type`: fixed hex colors or fixed point sizes instead of semantic system colors and fonts
+- `should-choose-framework-deliberately`: a new surface in UIKit/AppKit with no missing SwiftUI capability, or a bridge with no stated reason
+- `should-treat-liquid-glass-as-evolving`: code relying on exact Liquid Glass API shapes without pinning to the iOS/macOS 26 cycle or checking current docs
+- `should-get-liquid-glass-from-system-components`: hand-rolled glass where a system component would supply the Liquid Glass look
+- `must-gate-glasseffect-behind-availability`: `.glassEffect(...)` used without an `if #available(iOS 26, macOS 26, *)` check and a fallback
+- `must-not-apply-liquid-glass-to-content`: Liquid Glass applied to lists, tables, media or other content
+- `must-author-widgets-on-system-timeline`: a widget outside SwiftUI or a widget extension, or code assuming continuous execution or its own refresh rate
+- `should-drive-widget-actions-with-app-intents`: an interactive widget action not built on `Button(intent:)` / `Toggle(isOn:intent:)` with an App Intent
+- `should-reuse-app-intents-for-controls`: a control that duplicates logic instead of reusing the widget's App Intents
+- `must-support-declared-families-and-rendering-modes`: a declared size family the widget does not support, or a widget that ignores `\.widgetRenderingMode`

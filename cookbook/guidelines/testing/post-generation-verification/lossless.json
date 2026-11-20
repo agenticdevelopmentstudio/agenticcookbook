@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Every generated artifact MUST be verified:",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The intro keeps the MUST that every generated artifact is verified and names all six verification steps, each of which is also its own MUST rule.",
+        "pin": "b078596de42eb6224c47633ea2a4f4eb06196100fd9d9a8c085955f740510d1d"
+      }
+    },
+    {
+      "sentence": "**Build**: Compile for all target platforms (`xcodebuild`, `./gradlew build`, `npm run build`, `dotnet build`)",
+      "to": "must-build-for-all-target-platforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as a MUST verification step: compile for all target platforms, with all four example commands.",
+        "pin": "09e0ddae5c06cd6e19ea9048fdb60af83b55d51218bd5ebb464e9eafe4eba510"
+      }
+    },
+    {
+      "sentence": "**Test**: Run the full test suite — all tests MUST pass",
+      "to": "must-pass-full-test-suite",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as a MUST verification step: run the full test suite, and all tests MUST pass.",
+        "pin": "7df17837d70c5b3f4af95682579e01ffa400d593b0cc109f76a5bf991a8e67ba"
+      }
+    },
+    {
+      "sentence": "**Lint**: Run the platform linter (see [adc.guideline.implementing.code-quality.linting](cookbook:775da457-30c7-47de-b179-0fae8a8b779d))",
+      "to": "must-run-platform-linter",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as a MUST verification step: run the platform linter, with the linting guideline link.",
+        "pin": "f5438066c1c1b3323449230d422669ec6c17cacae4edf53f7e04e61c11a4753d"
+      }
+    },
+    {
+      "sentence": "**Log verification**: Build, run, and grep for expected log messages from the Logging section",
+      "to": "must-verify-expected-log-messages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as a MUST verification step: build, run, and grep for expected log messages from the Logging section.",
+        "pin": "e21b8f3b0934b04872802089f6879024244a69224d18a04108b3cb8e71c93a29"
+      }
+    },
+    {
+      "sentence": "**Accessibility audit**: Verify VoiceOver/TalkBack labels, tap target minimums (44pt iOS, 48dp Android), contrast ratios",
+      "to": "must-audit-accessibility",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as a MUST verification step with all three checks, including the 44pt/48dp tap-target minimums.",
+        "pin": "49451e11017146c7ea8ef32d32c80af7c8b3efda3d6a0175fc454fe11fc6cb9b"
+      }
+    },
+    {
+      "sentence": "**Code review against best practices**: Check against platform best practices references",
+      "to": "must-review-against-best-practices",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept as a MUST verification step: check against platform best-practices references.",
+        "pin": "377543f2f4322872cb68d09a909013cb4a430d0977e07fa6ccf809e25d9aaf27"
+      }
+    }
+  ],
+  "obsolete": []
+}

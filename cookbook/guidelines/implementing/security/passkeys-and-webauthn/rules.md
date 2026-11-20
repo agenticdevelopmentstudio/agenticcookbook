@@ -1,0 +1,24 @@
+
+- **should-offer-passkeys-as-primary**: New apps **SHOULD** offer passkeys as the primary authenticator.
+- **should-target-webauthn-level-2**: You **SHOULD** target the **W3C WebAuthn Level 2 Recommendation** (`webauthn-2`) for stable, broadly-implemented behavior.
+- **should-not-depend-on-webauthn-level-3-features**: **WebAuthn Level 3** (`webauthn-3`) is a **W3C Candidate Recommendation (2026-01-13)** — FORECAST: you **SHOULD** treat its newer features (e.g. refined attestation, related-origin requests) as evolving; you **SHOULD NOT** depend on them as universally available until they reach Recommendation.
+- **must-generate-random-challenge**: The RP backend **MUST** generate a cryptographically random `challenge` (≥16 bytes), bind it to the session, and verify it server-side on return.
+- **should-set-rp-id-to-registrable-domain**: You **SHOULD** set `rp.id` to the registrable domain.
+- **should-use-opaque-user-id**: You **SHOULD** set `user.id` to an opaque, stable, non-PII handle (not an email).
+- **must-verify-registration-response**: Server verification **MUST** confirm: challenge match, `origin`, `rp.id` hash, the user-present (UP) flag, and signature over `authenticatorData`+`clientDataHash`.
+- **should-store-credential-metadata**: You **SHOULD** store the credential id, public key, signature counter, transports, and the AAGUID for later UX.
+- **should-issue-fresh-challenge-per-attempt**: You **SHOULD** issue a fresh server-side `challenge` per authentication attempt; verify origin, `rp.id`, UP flag, and signature against the stored public key.
+- **should-flag-non-increasing-counter**: If the stored signature counter is non-zero, a **non-increasing** counter **SHOULD** be treated as possible cloning and flagged.
+- **should-prefer-discoverable-credentials**: You **SHOULD** prefer **discoverable credentials** (resident keys) so users authenticate without first entering a username.
+- **should-default-to-synced-passkeys**: For most users, synced passkeys **SHOULD** be the default.
+- **should-require-device-bound-for-admins**: For admin/high-privilege accounts, a **device-bound** authenticator (security key) **SHOULD** be required.
+- **should-encourage-two-authenticators**: Users **SHOULD** be encouraged to register **at least two** authenticators so loss of one does not lock them out.
+- **should-request-attestation-only-when-needed**: You **SHOULD** request attestation (`attestation: "direct"`) **only** when policy needs to verify authenticator make/model. MEASURED-NEED: adopt attestation verification ONLY when a concrete requirement (e.g. regulated environment, hardware allowlist) justifies it (per YAGNI).
+- **should-use-attestation-none-for-consumers**: You **SHOULD** use `attestation: "none"` for consumer flows.
+- **should-make-passkeys-primary-factor**: Passkeys **SHOULD** be the primary factor; passwords, if kept, are a fallback — never the inverse.
+- **should-not-rely-on-sms-otp**: Apps **SHOULD NOT** rely on **SMS-OTP** as a security factor (SIM-swap and interception risk); use it at most for low-risk recovery, never as the sole step-up.
+- **should-provide-account-recovery-path**: You **SHOULD** provide an explicit, rate-limited account-recovery path (e.g. verified email magic link plus identity proofing) for users who lose all authenticators.
+- **must-allow-registering-additional-passkeys**: You **MUST** always allow registering additional passkeys from an authenticated session.
+- **must-not-reuse-or-omit-challenge-verification**: You **MUST NOT** reuse or omit server-side challenge verification (replay risk).
+- **should-not-set-rp-id-outside-auth-origin**: You **SHOULD NOT** set `rp.id` to a host that doesn't cover the auth origin.
+- **should-not-treat-passkey-as-bearer-secret**: You **SHOULD NOT** treat a passkey as a bearer secret or sync the RP private key (there is none server-side).

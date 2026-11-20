@@ -1,0 +1,194 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Per [adc.principle.small-reversible-decisions](cookbook:4554e680-aca3-4bb2-bc99-1ac381c428b2):",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the citation of adc.principle.small-reversible-decisions, with its link, as the basis for adopting the stricter flags incrementally on existing code.",
+        "pin": "d7629eb67351367182156ee81b8c059fc7580ba604041325cbfad7c3341b9296"
+      }
+    },
+    {
+      "sentence": "Turn on `strict` first; land that as its own change.",
+      "to": "should-turn-on-strict-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Turning on strict first on existing code and landing it as its own change is kept at SHOULD.",
+        "pin": "0920306fe52330933f0cc560997f08b595bd96b33fd275367ecddad934bfa37d"
+      }
+    },
+    {
+      "sentence": "Enable one stricter flag at a time (`noUncheckedIndexedAccess`, then `exactOptionalPropertyTypes`, etc.), fixing the fallout before moving on.",
+      "to": "should-enable-one-stricter-flag-at-a-time",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling one stricter flag at a time, with the example sequence, and fixing the fallout before moving on are kept at SHOULD.",
+        "pin": "06e86472b51824c2cb09e5839922de31197be4dff6d249fb3d57fff1ed213e04"
+      }
+    },
+    {
+      "sentence": "Agents **SHOULD NOT** enable every flag in a single sweep on an established codebase — small, reviewable diffs keep each step reversible.",
+      "to": "should-not-enable-every-flag-in-one-sweep"
+    },
+    {
+      "sentence": "New TypeScript projects **MUST** set `\"strict\": true` in `tsconfig.json` `compilerOptions`.",
+      "to": "must-set-strict"
+    },
+    {
+      "sentence": "Code **MUST NOT** silence the checker with project-wide `// @ts-nocheck`, blanket `any`, or `skipLibCheck` used to hide first-party errors.",
+      "to": "must-not-silence-checker"
+    },
+    {
+      "sentence": "Use a narrowly-scoped `// @ts-expect-error` (with a reason) for the rare unavoidable case so the suppression fails loudly if the underlying type later changes.",
+      "to": "should-use-scoped-ts-expect-error",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The narrowly-scoped // @ts-expect-error with a reason for the rare unavoidable case, and its fail-loudly reason, are kept at SHOULD.",
+        "pin": "7cbb262c601511dc2a81c4bce38e6e4fd86ec34f9f082cbf079d2b2773fb9e09"
+      }
+    },
+    {
+      "sentence": "`\"strictNullChecks\": false`) **SHOULD** be treated as a temporary migration state, recorded in code with a tracking reference — not a permanent posture.",
+      "to": "should-treat-disabled-strict-flags-as-temporary"
+    },
+    {
+      "sentence": "Treat the following as roadmap/proposed behavior.",
+      "to": "should-not-assume-forecast-behavior-is-current",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating the forecast items as roadmap/proposed behavior is kept at SHOULD, with both forecast items listed as sub-points.",
+        "pin": "ed0401b61bdd036daf368bbd2a6b0c6ff00ee1b44b72acbc2bef2134c308b41d"
+      }
+    },
+    {
+      "sentence": "Do **not** write configs or guidance that assume it as current.",
+      "to": "should-not-assume-forecast-behavior-is-current",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not writing configs or guidance that assume the forecast behavior as current is kept at SHOULD NOT.",
+        "pin": "6df19560047856fd206f1d581e19d0ed796b76732b8c12e0ae37b3ada7866973"
+      }
+    },
+    {
+      "sentence": "The **native Go compiler (\"tsgo\", \"Project Corsa\")** and the **TypeScript 7.0** line are a proposed reimplementation targeting large build speedups.",
+      "to": "should-not-assume-forecast-behavior-is-current"
+    },
+    {
+      "sentence": "As of this writing, confirm actual release state against the official [TypeScript blog](https://devblogs.microsoft.com/typescript/) and [microsoft/typescript-go](https://github.com/microsoft/typescript-go) before depending on it.",
+      "to": "should-confirm-native-compiler-release-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming the native Go compiler and TypeScript 7.0 release state against the TypeScript blog and microsoft/typescript-go before depending on it is kept at SHOULD with both links.",
+        "pin": "2b5ecc3feb33dcb96b9f613156fb2df304605af62107c58a5a355370726462d7"
+      }
+    },
+    {
+      "sentence": "\"**strict by default**\" and the **removal of legacy module/target modes** (e.g. dropping `node10` resolution, raising the minimum target) are PLANNED breaking changes discussed for the 6.0/7.0 line.",
+      "to": "should-not-assume-forecast-behavior-is-current"
+    },
+    {
+      "sentence": "Until you have verified them in shipped release notes, **MUST** keep setting `\"strict\": true` explicitly rather than relying on an implicit default.",
+      "to": "must-keep-setting-strict-explicitly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST to keep setting \"strict\": true explicitly until strict-by-default and the legacy-mode removal are verified in shipped release notes is kept, with its condition.",
+        "pin": "5fe8d7c05331ab03626ebe5eb6b659598a13c0deae3bf9d8ae6e19e3a4e61b20"
+      }
+    },
+    {
+      "sentence": "`exactOptionalPropertyTypes` (TS 4.4) — distinguishes a missing property from one explicitly set to `undefined`.",
+      "to": "should-enable-exact-optional-property-types-when-absent-differs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "What exactOptionalPropertyTypes (TS 4.4) does, distinguishing a missing property from one set to undefined, is kept as a sub-point.",
+        "pin": "eaebd99ed7b2d8ffc5c0ec25c8efd718c0afa1ddac70109f3820c11bdb8b37f0"
+      }
+    },
+    {
+      "sentence": "Enable when modeling APIs where \"absent\" and \"present but undefined\" differ.",
+      "to": "should-enable-exact-optional-property-types-when-absent-differs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling exactOptionalPropertyTypes when modeling APIs where absent and present-but-undefined differ is kept at SHOULD with its condition.",
+        "pin": "9375f0f9778bc8b1d193e163671e8f6c9935cfc9d9fd2d2af361f49f6a5264fe"
+      }
+    },
+    {
+      "sentence": "It adds real friction with loosely-typed third-party shapes, so it is **opt-in**, not a baseline.",
+      "to": "should-enable-exact-optional-property-types-when-absent-differs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The third-party friction reason and its opt-in, not baseline, status are kept in the rule.",
+        "pin": "c967fe4817846aef1b00fb3330579b5532964aa5fb0322be54ddbbef48664824"
+      }
+    },
+    {
+      "sentence": "`erasableSyntaxOnly` (TS 5.8) — errors on TypeScript constructs that emit runtime code (`enum`, `namespace` with runtime members, parameter properties).",
+      "to": "should-enable-erasable-syntax-only-for-type-stripping",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "What erasableSyntaxOnly (TS 5.8) does, with all three runtime-emitting constructs, is kept as a sub-point.",
+        "pin": "328a435026e4364484cc73377cb1b8b5c2c2880cf164fdc9f77cd32905fdc882"
+      }
+    },
+    {
+      "sentence": "Enable it when files are run via native type-stripping (Node.js `--experimental-strip-types`/stable type stripping, Bun, Deno, or in-browser transforms) so the source contains no non-erasable syntax.",
+      "to": "should-enable-erasable-syntax-only-for-type-stripping",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling erasableSyntaxOnly when files run via native type-stripping, with every runtime listed and the no-non-erasable-syntax purpose, is kept at SHOULD.",
+        "pin": "ca97a62612a1d92aadfbbbbde12d62c93548e1de5a0e3ca16be59248e8cbd270"
+      }
+    },
+    {
+      "sentence": "Pair it with `verbatimModuleSyntax`.",
+      "to": "should-pair-erasable-syntax-only-with-verbatim-module-syntax",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pairing erasableSyntaxOnly with verbatimModuleSyntax is kept at SHOULD.",
+        "pin": "7657971368714a52d4445260c40da16ab8ee44b72f8779b26a1daef1e6d5ba85"
+      }
+    },
+    {
+      "sentence": "Enable these on greenfield projects; they close gaps `strict` alone leaves open.",
+      "to": "should-enable-recommended-near-defaults",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling the near-default flags on greenfield projects, with the reason that they close gaps strict alone leaves open, is kept in the rule.",
+        "pin": "ede45e16da4e6cf851d526c8d8d36698d77ac3da8b048b23e82e90ff56b2aa8b"
+      }
+    },
+    {
+      "sentence": "New projects **SHOULD** enable `noUncheckedIndexedAccess` and `verbatimModuleSyntax`.",
+      "to": "should-enable-recommended-near-defaults",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD for new projects to enable noUncheckedIndexedAccess and verbatimModuleSyntax is kept verbatim.",
+        "pin": "3982e4cdef82bba66c0333c24e4b43c3862d7866da9cd0e92f239153737f5ab6"
+      }
+    },
+    {
+      "sentence": "With `verbatimModuleSyntax`, type-only imports **MUST** use `import type` / `export type` (or inline `type` modifiers), since the compiler no longer elides them automatically.",
+      "to": "must-use-import-type-with-verbatim-module-syntax"
+    }
+  ],
+  "obsolete": []
+}

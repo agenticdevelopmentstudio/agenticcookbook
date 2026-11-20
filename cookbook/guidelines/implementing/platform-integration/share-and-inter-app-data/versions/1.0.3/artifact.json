@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "193e5770-fd0b-45c9-91a4-6673bf6021ff",
+    "title": "Share and inter-app data flow",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-02",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Apps SHOULD participate in the platform's share and inter-app data exchange mechanisms to integrate with other apps and workflows.",
+    "platforms": [
+      "ios",
+      "macos",
+      "android",
+      "windows",
+      "web"
+    ],
+    "tags": [
+      "sharing",
+      "platform",
+      "inter-app",
+      "drag-and-drop"
+    ],
+    "depends-on": [
+      "cf698150-45b0-4a20-881b-7d0f04208198"
+    ],
+    "related": [
+      "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "platform-integration"
+    ]
+  },
+  "synced": "8508af8a0ceb9609",
+  "parts": [
+    {"part": "intro"},
+    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
+    {"part": "android", "heading": "Android"},
+    {"part": "windows", "heading": "Windows"},
+    {"part": "web", "heading": "Web"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

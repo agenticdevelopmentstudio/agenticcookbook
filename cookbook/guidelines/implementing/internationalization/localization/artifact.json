@@ -4,7 +4,7 @@
     "id": "57cbdb9d-4cf7-4a39-bdd8-99d28be983ca",
     "title": "Localizability",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -28,21 +28,21 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "internationalization",
       "ui-implementation"
     ]
   },
-  "synced": "9b9cfea5e4af8758",
+  "synced": "8ed0e5304e48047e",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "windows", "heading": "Windows"},
-    {"part": "windows-2", "heading": "Windows"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "windows", "heading": "Windows", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

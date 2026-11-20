@@ -1,0 +1,18 @@
+
+- **multi-stage**: Dockerfiles MUST use multi-stage builds so the final image contains only the runtime artifact — not compilers, build tools, dev dependencies, or source. Build in an earlier stage; `COPY --from=<stage>` only what runs.
+- **base-image**: The final stage MUST use a minimal base — language-specific `slim`, `alpine`, or distroless. Avoid full OS images when a slim variant carries the runtime. A smaller base means fewer packages and a smaller attack surface.
+- **one-concern**: Each image SHOULD address a single concern (one app/process). Decouple distinct services into separate images so they scale and deploy independently.
+- **workdir**: You SHOULD use `WORKDIR` with absolute paths rather than chained `cd`.
+- **entrypoint-and-cmd**: You SHOULD use `ENTRYPOINT` for the executable and `CMD` for default arguments.
+- **pin-by-digest**: Base images SHOULD be pinned by digest, not a floating tag — `FROM python:3.13-slim@sha256:<digest>`. A tag like `:latest` is mutable; a digest is immutable and reproducible. Refresh digests deliberately (e.g., via Dependabot/Renovate) to pick up security patches.
+- **deterministic-deps**: Builds SHOULD install from a locked manifest (`requirements.txt` with hashes, `package-lock.json`, `go.sum`, `Cargo.lock`) so builds are repeatable.
+- **rebuild-fresh**: Periodic release builds SHOULD use `--pull` (and `--no-cache` when patching) so stale base layers and dependencies do not persist.
+- **order-layers-by-change-frequency**: You SHOULD order instructions from least- to most-frequently changed so the dependency layer is reused when only source changes.
+- **cache-order**: Dependencies MUST be installed before application source is copied, so editing source does not invalidate the (expensive) dependency layer.
+- **combine-run**: You SHOULD combine `apt-get update` with `apt-get install` in one `RUN`, pin package versions where practical, and clean caches in the same layer (`rm -rf /var/lib/apt/lists/*`) to avoid stale-cache bugs and image bloat.
+- **non-root**: The image MUST run as a non-root user. Create an unprivileged user/group and set `USER` before `ENTRYPOINT`. Do not install or rely on `sudo`.
+- **no-baked-secrets**: The image MUST NOT bake secrets (API keys, tokens, certs, passwords) into layers, `ENV`, or build args — they persist in image history even if later removed. Inject runtime config via environment/mounted secrets (see twelve-factor-config). For build-time credentials, use BuildKit secret mounts (`RUN --mount=type=secret,...`), which do not persist in the final image.
+- **least-files**: You SHOULD use a `.dockerignore` to exclude `.git`, secrets, local env files, build output, and `node_modules` from the build context — this shrinks context, speeds builds, and prevents accidental secret leakage.
+- **drop-extras**: You SHOULD NOT install packages "just in case." Fewer packages means fewer CVEs to patch.
+- **healthcheck**: The image SHOULD declare a `HEALTHCHECK` (or the orchestrator's liveness/readiness probe SHOULD cover it) so the runtime can detect an unhealthy container. Keep the check cheap and specific to the app's actual readiness.
+- **adopt-when-justified**: Orchestration platforms (Kubernetes, ECS, Nomad) and per-image vulnerability scanners add real operational weight. You SHOULD adopt them when a measured need justifies the cost (scale, multi-service coordination, compliance) — not by default (per YAGNI). A single image deployed to a managed container host is often sufficient early on.

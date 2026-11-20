@@ -4,7 +4,7 @@
     "id": "e9e60a7e-4e15-40e7-b730-fc2e311df1af",
     "title": "Shell scripts",
     "type": "guideline",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -29,18 +29,20 @@
       "https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html",
       "https://zsh.sourceforge.io/Doc/Release/Options.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "configuration"
     ]
   },
-  "synced": "819789ec51d28d37",
+  "synced": "82590f97dcbda627",
   "parts": [
     {"part": "intro"},
-    {"part": "portability", "heading": "Portability"},
-    {"part": "portability-2", "heading": "Portability"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

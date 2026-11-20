@@ -4,7 +4,7 @@
     "id": "2609037a-fb89-4b49-88b0-7e4295e5d6f6",
     "title": "Authorization",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -27,16 +27,22 @@
       "https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html",
       "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "authentication",
       "security-review"
     ]
   },
-  "synced": "59824a2b015d3d8b",
+  "synced": "5a85a8be451a5966",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

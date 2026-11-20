@@ -1,0 +1,24 @@
+
+- `should-offer-passkeys-as-primary`: whether a new app offers passkeys as its primary authenticator
+- `should-target-webauthn-level-2`: whether the code targets WebAuthn Level 2
+- `should-not-depend-on-webauthn-level-3-features`: whether any flow depends on a Level 3 feature as universally available
+- `must-generate-random-challenge`: whether the backend generates a cryptographically random challenge of at least 16 bytes, binds it to the session and verifies it server-side
+- `should-set-rp-id-to-registrable-domain`: whether `rp.id` is the registrable domain
+- `should-use-opaque-user-id`: whether `user.id` is an opaque, stable, non-PII handle
+- `must-verify-registration-response`: whether registration verification confirms challenge, origin, `rp.id` hash, UP flag and signature
+- `should-store-credential-metadata`: whether credential id, public key, counter, transports and AAGUID are stored
+- `should-issue-fresh-challenge-per-attempt`: whether each authentication attempt gets a fresh challenge and full verification against the stored public key
+- `should-flag-non-increasing-counter`: whether a non-increasing non-zero counter is flagged as possible cloning
+- `should-prefer-discoverable-credentials`: whether discoverable credentials are preferred
+- `should-default-to-synced-passkeys`: whether synced passkeys are the default for most users
+- `should-require-device-bound-for-admins`: whether admin/high-privilege accounts require a device-bound authenticator
+- `should-encourage-two-authenticators`: whether users are encouraged to register at least two authenticators
+- `should-request-attestation-only-when-needed`: whether attestation is requested only when a concrete requirement justifies it
+- `should-use-attestation-none-for-consumers`: whether consumer flows use `attestation: "none"`
+- `should-make-passkeys-primary-factor`: whether passkeys are the primary factor and any password only a fallback
+- `should-not-rely-on-sms-otp`: whether SMS-OTP is relied on as a security factor
+- `should-provide-account-recovery-path`: whether an explicit, rate-limited account-recovery path exists
+- `must-allow-registering-additional-passkeys`: whether additional passkeys can always be registered from an authenticated session
+- `must-not-reuse-or-omit-challenge-verification`: whether server-side challenge verification is ever reused or omitted
+- `should-not-set-rp-id-outside-auth-origin`: whether `rp.id` covers the auth origin
+- `should-not-treat-passkey-as-bearer-secret`: whether a passkey is treated as a bearer secret, or an RP private key is synced

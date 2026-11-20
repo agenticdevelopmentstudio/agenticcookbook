@@ -1,0 +1,19 @@
+
+- `should-build-privacy-in-from-the-first-design-decision`: whether privacy was part of the design from its first decision
+- `should-consult-counsel-for-jurisdiction-specific-obligations`: whether counsel was consulted for jurisdiction-specific obligations
+- `must-produce-a-maintained-data-flow-map`: whether a maintained personal-data flow map, recording each category's what, why, where and how long, predates the code
+- `must-update-the-map-on-change`: whether the map reflects every change to fields, processors and destinations
+- `should-flag-data-with-no-stated-purpose`: whether data with no stated purpose is flagged for removal
+- `should-run-a-dpia-before-high-risk-processing`: whether a DPIA preceded any high-risk processing
+- `must-record-dpia-risks-and-mitigations`: whether the DPIA identifies risks and mitigations and is revisited on material change
+- `must-escalate-unmitigated-residual-risk`: whether any unmitigated residual high risk was escalated
+- `must-not-collect-just-in-case`: whether collection is limited to the minimum for the stated purpose
+- `should-pseudonymize-or-anonymize`: whether data is pseudonymized or anonymized wherever the use case allows
+- `should-keep-raw-identifiers-out-of-logs-analytics-and-prompts`: whether raw identifiers are kept out of logs, analytics and AI prompts
+- `must-delete-or-de-identify-when-purpose-ends`: whether retention is defined up front and data is deleted or de-identified when its purpose ends
+- `must-default-to-the-most-protective-configuration`: whether the default configuration is the most privacy-protective
+- `must-make-sharing-opt-in`: whether sharing, public visibility and broad processing are opt-in
+- `must-default-telemetry-off`: whether optional telemetry and tracking default to off
+- `should-follow-least-privilege`: whether only roles that need a data category can read it
+- `should-adopt-heavier-controls-only-when-justified`: whether each heavy privacy control rests on a measured need
+- `should-start-with-minimization-and-de-identification`: whether minimization and de-identification came before specialized tooling

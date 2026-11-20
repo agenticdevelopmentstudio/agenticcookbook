@@ -1,0 +1,12 @@
+
+- `target-current-lts-for-apps`: every new application or service sets `<TargetFramework>` to the current LTS, or the project says why not
+- `sts-only-when-needed`: every STS target names its STS-exclusive feature and the upgrade commitment before the 24-month window closes
+- `multi-target-libraries`: every library's `<TargetFrameworks>` matches its consumers' requirements, and any `netstandard2.0` target names its consumer
+- `pin-the-sdk`: the repo has a `global.json` pinning the SDK version with a `rollForward` policy
+- `state-version-explicitly`: every `.csproj` names its `TargetFramework(s)` explicitly, with no inherited default and no "latest"
+- `avoid-eol-targets`: no newly targeted framework's end-of-support date has passed or falls within the project's planned delivery window
+- `separate-tfm-from-langversion`: any `<LangVersion>` setting is stated as its own decision, not as a TFM change
+- `choose-tfm-from-support-cadence`: the chosen TFM matches the published support cadence, or the project says why not
+- `record-version-and-end-of-support`: the project and the PR description state the exact version and its end-of-support date
+- `reverify-support-dates`: the LTS/STS versions and dates used match the support policy reference as of the change
+- `justify-each-library-tfm`: every TFM in a library's `<TargetFrameworks>` carries a justifying comment, or the project says why not

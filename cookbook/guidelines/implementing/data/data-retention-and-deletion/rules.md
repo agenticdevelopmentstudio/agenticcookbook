@@ -1,0 +1,23 @@
+
+- **should-confirm-retention-periods-with-counsel**: This is engineering guidance, not legal advice — concrete retention periods SHOULD be confirmed with counsel.
+- **should-maintain-retention-schedule**: SHOULD maintain a **retention schedule** as code or config that maps each **data category** (user profile, auth tokens, audit logs, analytics events, PII, derived ML features) to a maximum retention period and a disposition (delete vs. anonymize).
+- **must-define-retention-period**: Every category **MUST** have a defined retention period.
+- **must-justify-missing-retention-period**: Absence of a period is itself a decision and **MUST** be justified (e.g., legal-hold or financial records with a statutory minimum).
+- **should-automate-expiry**: Each category **SHOULD** have **automated expiry** — a scheduled job, TTL index, or partition-drop — rather than manual cleanup.
+- **should-record-retention-timestamps**: SHOULD record a `created_at` (and where relevant `expires_at`) timestamp on every retained record so expiry is computable and auditable.
+- **should-cascade-deletions**: Deletions **SHOULD cascade** from the source of truth to every derived store: denormalized tables, read replicas, caches (Redis/CDN), search indexes (Elasticsearch/OpenSearch), data-warehouse/analytics copies, message-queue payloads, and object storage (S3/blob).
+- **should-maintain-copy-inventory**: SHOULD maintain an explicit inventory of where each category is copied; treat the inventory as the cascade checklist and keep it in version control.
+- **should-prefer-event-driven-cascade**: SHOULD prefer **event-driven** cascade (emit a `deletion-requested` event; each store subscribes) over a monolithic delete that must know every downstream — this keeps stores decoupled and the design open to new sinks (optimize for change).
+- **should-make-cascade-idempotent**: SHOULD make cascade steps **idempotent** and retryable.
+- **must-make-failed-cascade-resumable**: A partially failed cascade **MUST** be detectable and resumable, not silently abandoned.
+- **must-not-count-soft-delete-as-erasure**: A soft delete (tombstone flag) leaves the data present and **MUST NOT** count as erasure for a privacy request.
+- **must-make-anonymization-irreversible**: Anonymization / pseudonymization **MUST** be irreversible (no re-identification key retained).
+- **should-decide-delete-mode-per-category**: SHOULD decide soft vs. hard **per category**, not globally.
+- **must-resolve-erasure-to-hard-delete-or-anonymization**: Erasure obligations **MUST** resolve to hard delete or true anonymization within the source and all derived stores.
+- **should-exclude-backups-and-document-lag**: Backups and immutable logs **SHOULD** be excluded from immediate cascade; instead **document the lag** — deleted data persists until the backup rotates out of its retention window.
+- **should-publish-backup-purge-policy**: SHOULD define and publish a backup retention/purge policy so the maximum lag between an erasure request and full physical removal is bounded and known.
+- **should-suppress-erased-data-immediately**: For an erasure request, SHOULD suppress the data from active systems immediately and rely on backup rotation for residual copies.
+- **must-not-restore-without-reapplying-deletions**: **MUST NOT** restore deleted records from an old backup without re-applying pending deletions.
+- **should-audit-every-deletion**: SHOULD log every deletion (who/what/when, category, request reference) to a tamper-evident, separately retained **audit trail** — the log of a deletion is not the deleted data.
+- **should-reconcile-expiry-periodically**: SHOULD reconcile periodically: scan for records past their `expires_at` that were not purged, and alert.
+- **should-treat-reconciliation-miss-as-defect**: SHOULD treat a reconciliation miss as a defect (fail fast).

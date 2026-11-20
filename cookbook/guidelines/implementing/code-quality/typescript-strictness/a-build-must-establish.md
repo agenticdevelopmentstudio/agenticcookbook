@@ -1,0 +1,18 @@
+
+- `should-configure-tsconfig-to-catch-errors`: the build's `tsconfig.json` enables the checks the compiler can run, or the build says why not
+- `should-adopt-stricter-flags-deliberately`: each stricter flag the build turns on is a deliberate step, not part of an all-at-once switch, or the build says why not
+- `must-set-strict`: `tsc` runs with `"strict": true` from `compilerOptions` in every new project
+- `must-not-silence-checker`: the source holds no project-wide `// @ts-nocheck` or blanket `any`, and `skipLibCheck` hides no first-party error
+- `should-use-scoped-ts-expect-error`: every suppression in the build is a scoped `// @ts-expect-error` with a reason, or the build says why not
+- `should-treat-disabled-strict-flags-as-temporary`: each disabled strict-family flag carries a tracking reference in code, or the build says why not
+- `should-enable-recommended-near-defaults`: a new project's `tsconfig.json` sets `noUncheckedIndexedAccess` and `verbatimModuleSyntax`, or the build says why not
+- `must-use-import-type-with-verbatim-module-syntax`: `tsc` passes under `verbatimModuleSyntax` with every type-only import written as `import type` / `export type` or inline `type`
+- `should-enable-exact-optional-property-types-when-absent-differs`: where the API distinguishes absent from present-but-undefined, `exactOptionalPropertyTypes` is set, or the build says why not
+- `should-enable-erasable-syntax-only-for-type-stripping`: where files run by native type-stripping, `erasableSyntaxOnly` is set and `tsc` passes, or the build says why not
+- `should-pair-erasable-syntax-only-with-verbatim-module-syntax`: any `tsconfig.json` with `erasableSyntaxOnly` also sets `verbatimModuleSyntax`, or the build says why not
+- `should-turn-on-strict-first`: on existing code, `strict` lands in a change of its own before any stricter flag, or the build says why not
+- `should-enable-one-stricter-flag-at-a-time`: on existing code, each change enables one stricter flag and `tsc` passes before the next, or the build says why not
+- `should-not-enable-every-flag-in-one-sweep`: no single change enables every flag on an established codebase, or the build says why not
+- `should-not-assume-forecast-behavior-is-current`: no config or guidance the build writes assumes forecast behavior as current, or it says why not
+- `should-confirm-native-compiler-release-state`: before the build depends on the native Go compiler or TypeScript 7.0, its release state was confirmed, or the build says why not
+- `must-keep-setting-strict-explicitly`: `tsconfig.json` sets `"strict": true` explicitly

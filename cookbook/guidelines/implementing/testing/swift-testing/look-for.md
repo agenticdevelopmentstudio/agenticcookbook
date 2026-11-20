@@ -1,0 +1,24 @@
+
+- `should-use-swift-testing-for-new-unit-tests`: a new Swift unit test written with XCTest
+- `must-not-rewrite-passing-xctest-suites`: a passing XCTest suite rewritten only to switch frameworks
+- `should-keep-ui-and-performance-tests-in-xctest`: a UI test or `measure {}` performance test moved out of XCTest
+- `may-use-any-test-function-form`: a `@Test` function contorted into a form the framework does not require
+- `should-pass-a-display-name`: a `@Test` with no descriptive display name
+- `should-use-expect-for-ordinary-assertions`: an ordinary assertion written with something other than `#expect`
+- `should-not-restate-the-expression-in-a-message`: an `#expect` with a custom message that restates its expression
+- `should-use-require-for-preconditions`: a precondition checked with `#expect` or a force-unwrap where failure makes the rest meaningless
+- `should-assert-errors-with-expect-throws`: error behavior asserted with `do/catch`
+- `should-group-related-tests-with-suite`: related tests not grouped in a `@Suite` type
+- `should-annotate-suites-to-set-a-name-or-traits`: an implicit suite that needs a name or traits but has no `@Suite`
+- `should-prefer-per-test-instance-state`: shared mutable static state used across tests
+- `should-pass-arguments-for-many-inputs`: one test body repeated by hand for many inputs instead of `arguments:`
+- `should-zip-paired-inputs`: two argument collections that form an unintended Cartesian product
+- `should-prefer-parameterization-over-loops`: a hand-written loop over cases inside one test
+- `should-attach-traits-for-behavior-and-metadata`: behavior or metadata such as disabling, bugs or time limits handled outside traits
+- `should-define-and-apply-tags`: runs filtered or organized without `@Tag` tags
+- `should-keep-a-small-shared-tag-vocabulary`: ad-hoc per-file tags
+- `should-target-the-latest-swift-toolchain`: a test target set below the latest Swift 6.2.x toolchain
+- `should-write-tests-clean-under-strict-concurrency`: a test that warns or fails under strict concurrency
+- `should-annotate-main-actor-tests`: a `@Test` touching main-actor state that dispatches manually
+- `should-follow-one-entity-per-file`: more than one suite `struct` in a file
+

@@ -1,0 +1,16 @@
+
+- **must-expose-read-only-stateflow**: The ViewModel **MUST** expose read-only `StateFlow<UiState>` (or `SharedFlow` for one-shot events), never a mutable `MutableStateFlow` directly.
+- **should-back-with-private-mutablestateflow**: The ViewModel SHOULD back its exposed state with a private `MutableStateFlow` and expose `.asStateFlow()`.
+- **should-convert-cold-upstream-with-statein**: When deriving state from a cold upstream (Room, DataStore, repository flow), you **SHOULD** convert with `stateIn(scope, started, initialValue)` rather than manually collecting into a `MutableStateFlow`.
+- **should-start-while-subscribed-5000**: The `started` policy **SHOULD** be `SharingStarted.WhileSubscribed(5_000)`.
+- **must-use-renderable-initial-value**: `initialValue` **MUST** be a real renderable state (e.g. `Loading`), because `StateFlow.value` is read synchronously before the upstream emits.
+- **should-use-lazily-only-when-restart-cost-unacceptable**: `Lazily` (start on first subscriber, never stop) SHOULD be used only when restart cost is unacceptable.
+- **must-collect-lifecycle-aware**: You **MUST** collect in a lifecycle-aware way or the collector keeps running (and keeps `WhileSubscribed` upstream alive) while the screen is invisible.
+- **should-use-collectasstatewithlifecycle-in-compose**: In Compose, SHOULD use `collectAsStateWithLifecycle()` (from `androidx.lifecycle:lifecycle-runtime-compose`).
+- **should-use-repeatonlifecycle-in-views**: In Views / Fragments / Activities, SHOULD collect inside `repeatOnLifecycle(Lifecycle.State.STARTED)` from `lifecycleScope`.
+- **must-not-use-bare-collectasstate**: **MUST NOT** use bare `collectAsState()` for ViewModel flows in lifecycle-bound UI. It collects regardless of lifecycle state, wasting CPU/network/battery while backgrounded. Replace with `collectAsStateWithLifecycle()`.
+- **must-not-use-launchwhenstarted**: **MUST NOT** use `lifecycleScope.launchWhenStarted` / `launchWhenResumed` / `whenStarted`. These are deprecated (androidx.lifecycle 2.4+): the pausing dispatcher suspends the coroutine but leaves upstream resources allocated. Replace with `repeatOnLifecycle`.
+- **must-not-collect-without-repeatonlifecycle**: **MUST NOT** collect a flow directly in `lifecycleScope.launch { ... }` without `repeatOnLifecycle`; that collects through the backgrounded state.
+- **should-inject-dispatchers**: Code that switches threads **SHOULD** receive its dispatchers via constructor injection, not reference `Dispatchers.IO` / `Dispatchers.Default` directly.
+- **should-inject-test-dispatchers**: In tests, SHOULD inject `StandardTestDispatcher` / `UnconfinedTestDispatcher` and drive virtual time with `runTest`.
+- **must-keep-active-collector-in-tests**: A `StateFlow` built with `WhileSubscribed` only starts its upstream when collected: tests **MUST** keep at least one active collector (e.g. collect into a job) or `value` stays at `initialValue`.

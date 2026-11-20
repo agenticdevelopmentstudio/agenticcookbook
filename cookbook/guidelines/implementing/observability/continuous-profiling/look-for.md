@@ -1,0 +1,18 @@
+
+- `must-not-add-profiling-by-default`: a continuous-profiling pipeline added as a default, with no measured need behind it
+- `must-adopt-only-on-measured-need`: a profiling pipeline whose justification names no concrete, measured need (a hard-to-localize production regression, a cost mandate, or latency outliers invisible in span timings)
+- `should-prefer-one-off-capture`: standing profiling infrastructure added where a one-off `pprof`/perf capture or a load-test profile would answer the question
+- `must-choose-low-overhead-sampling-profiler`: an instrumenting or high-overhead profiler in place of a low-overhead sampling one
+- `must-validate-overhead-in-own-environment`: overhead justified only by a vendor's published figure, with no measurement in this environment
+- `should-prefer-ebpf-for-diverse-targets`: per-app profilers wired into many diverse Linux targets where whole-system eBPF profiling would cover them
+- `may-use-in-runtime-profilers`: an in-runtime profiler (Go `runtime/pprof`, JFR, async-profiler, .NET `dotnet-trace`) used where no language-level detail is needed
+- `should-emit-portable-profile-format`: profiles stored in a format that is neither `pprof`-compatible nor OTLP-Profiles-convertible
+- `must-attach-resource-attributes`: profiles emitted without `service.name`, `service.version`, deployment or region attributes
+- `should-correlate-profiles-with-traces`: profile samples with no `trace_id`/`span_id` where the profiler and runtime support recording them
+- `should-verify-span-correlation-support`: reliance on automatic span-level correlation in a language whose support was not verified
+- `should-retain-profiles-shorter`: profile retention as long as or longer than metrics/logs, with no downsampling or aggregation of older data
+- `must-pin-profiles-collector-version`: an unpinned profiles collector or SDK version, or an upgrade with no re-verification
+- `should-prefer-convertible-profiler`: a profiler whose data cannot be converted if the backend changes
+- `must-not-substitute-profiling-for-metrics-and-tracing`: profiling added to a service that lacks RED/USE metrics or distributed tracing, as a substitute for them
+- `must-not-ship-unmeasured-profiler`: a profiler shipped with no overhead measurement, above all on a latency-critical service
+- `should-not-store-full-resolution-profiles-indefinitely`: full-resolution profiles kept with no retention limit

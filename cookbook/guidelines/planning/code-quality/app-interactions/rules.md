@@ -1,0 +1,14 @@
+
+- **should-scope-component-with-its-delegate-protocol**: A component with a clean delegate protocol and that protocol **SHOULD** belong in the same scope group — delegation defines interface boundaries.
+- **may-scope-delegate-implementations-elsewhere**: A component's concrete delegate implementations **MAY** belong in other scope groups.
+- **should-identify-notification-observers**: For every `NotificationCenter.post`, the analysis **SHOULD** identify all files that observe that notification — notification center usage is an implicit coupling signal.
+- **should-flag-cross-group-singletons**: Singletons accessed across many candidate groups indicate a cross-cutting dependency and **SHOULD** be flagged for `cross-cutting-detection` — singletons couple everything to everything.
+- **should-split-scope-groups-at-di-registration**: Code on either side of the DI container registration site **SHOULD** belong in separate scope groups — DI containers define the composition boundary.
+- **should-group-coordinator-with-owned-screens**: A coordinator object that manages navigation for a feature flow — and owns the child view controllers in that flow — **SHOULD** be treated as a natural scope group boundary, and the coordinator and its owned screens **SHOULD** form one group — coordinators are natural scope group boundaries.
+- **should-document-store-slices-per-group**: Where components read from global state (Redux, MobX, Context), the analysis **SHOULD** document which store slices each candidate group reads/writes — slices may suggest sub-boundaries.
+- **should-note-notification-endpoints**: For `NotificationCenter` observers and posts, the analysis **SHOULD** note the notification name, sender, and observer registration site.
+- **should-note-publisher-and-subscriber-sites**: For reactive frameworks (`Combine`, `RxSwift`, `RxKotlin`, `RxJS`), the analysis **SHOULD** note where publishers are created vs where subscribers attach.
+- **should-note-isolation-boundary**: For thread-local or actor-isolated state, the analysis **SHOULD** note the isolation boundary.
+- **should-note-di-registration-and-resolution-sites**: For DI containers, the analysis **SHOULD** note registration vs resolution sites.
+- **should-note-completion-chain-depth**: For completion handler chains, the analysis **SHOULD** note depth; chains of 3+ levels suggest refactoring to async/await.
+- **should-note-promise-chain-error-breaks**: For promise chains, the analysis **SHOULD** note where error handling breaks the chain.

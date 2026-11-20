@@ -1,0 +1,12 @@
+
+- `should-deliver-full-agreed-scope`: the build covers the full agreed scope, or says what it leaves out and why
+- `must-implement-all-parts`: each part of the request maps to an implementation
+- `must-handle-unhappy-paths`: each code path handles its empty, null, error, timeout and conflict cases
+- `must-not-silently-drop-request-parts`: each part of the request the build does not deliver is named in its report
+- `should-surface-deferrals-for-agreement`: each deferral is surfaced as a note with the user's agreement, or the build says why not
+- `should-leave-scoping-out-to-the-user`: each "out of scope" the build claims was agreed with the user, or the build says why not
+- `must-not-block-on-provided-input`: the build asked for no input the request already provided or pre-specified
+- `should-reread-request-before-pausing`: each pause the build made was for something the request does not answer, or the build says why
+- `must-verify-before-reporting-complete`: the work was run and checked against the request before the build reported it complete
+- `must-distinguish-speculative-from-requested`: the build deferred nothing that was asked for as speculative
+- `should-name-what-yagni-skips`: each thing the build skipped under YAGNI is named with its reason, or the build says why not

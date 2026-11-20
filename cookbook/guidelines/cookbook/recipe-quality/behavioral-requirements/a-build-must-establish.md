@@ -1,0 +1,19 @@
+
+- `must-use-rfc-keywords-for-normative-statements`: every normative statement in the recipe uses an RFC 2119 keyword
+- `must-write-rfc-keywords-in-all-caps`: every normatively used keyword is in ALL CAPS
+- `must-use-keywords-with-defined-semantics`: each keyword is used with its defined RFC 2119 semantics
+- `must-not-treat-lowercase-keywords-as-normative`: no lowercase "must", "should" or "may" is relied on as normative
+- `must-not-use-weaker-synonyms`: no weaker synonym stands in for a normative keyword
+- `must-be-independently-testable`: every requirement has a concrete test with a clear PASS or FAIL result in isolation
+- `must-not-bundle-behaviors-into-one-requirement`: each requirement states one discrete behavior
+- `must-not-be-tautological-or-circular`: no requirement is tautological or circular
+- `must-include-specific-values-for-measurable-constraints`: every numeric or measurable constraint gives a specific value
+- `should-not-use-unanchored-relative-terms`: no relative term appears without a concrete threshold, or the recipe says why
+- `must-cite-platform-standard-values`: every value a platform standard defines is cited explicitly in its requirement
+- `must-describe-observable-behavior`: every requirement constrains what the component does, not how
+- `must-not-reference-platform-apis-unless-scoped`: no requirement names a platform-specific API, class or framework unless the recipe is platform-scoped and the API is the only conformant option
+- `must-use-platform-neutral-terms-for-shared-behavior`: every cross-platform behavior is in platform-neutral terms
+- `should-give-measurable-values-in-must-requirements`: MUST requirements carry measurable values wherever a standard or design decision provides them, or the recipe says why not
+- `must-explain-rationale-for-should-requirements`: every SHOULD requirement explains why deviation is allowed, inline or in a linked Design Decisions section
+- `should-document-conditions-for-may-requirements`: MAY requirements document when each option is appropriate, or the recipe says why not
+- `must-describe-required-outcome`: every requirement describes the required outcome, not an attempt

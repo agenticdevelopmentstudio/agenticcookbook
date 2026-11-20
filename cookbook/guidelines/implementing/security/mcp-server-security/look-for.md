@@ -1,0 +1,23 @@
+
+- `should-treat-server-strings-and-tokens-as-untrusted`: server-emitted strings handled as safe for the model, or received tokens used before being treated as untrusted
+- `should-pin-mcp-spec-revision`: MCP security guidance or code written against an unpinned spec revision, or one other than 2025-06-18
+- `must-not-trust-own-tool-text`: a tool description, parameter schema or returned result written or passed on as trusted instructions to the agent breaks it
+- `must-return-tool-results-as-delimited-data`: a tool result with external/user data returned undelimited breaks it; one returned with embedded directives left in falls short
+- `should-keep-tool-descriptions-stable`: tool descriptions that change, carry side effects, or use prose to steer the model instead of the schema
+- `should-bind-approval-to-tool-hash`: a host approval not bound to a hash of the tool's name, description and input schema, or a change that does not re-trigger consent
+- `should-version-tool-definitions`: a tool's behavior or meaning changed without a version bump
+- `should-act-as-oauth-resource-server`: a remote MCP server that does not behave as an OAuth 2.1 resource server
+- `must-not-accept-tokens-issued-elsewhere`: a token accepted without an `aud`/audience check per RFC 8707 resource indicators breaks it
+- `must-not-pass-tokens-through`: a received token sent on to a downstream API breaks it
+- `should-use-token-exchange-downstream`: a downstream call made with anything but an exchanged distinct token or the server's own client credentials
+- `must-validate-every-inbound-token`: a request processed before its token is validated, or a token lacking this server in its audience accepted, breaks it
+- `must-implement-per-client-consent`: a proxy that starts the third-party flow without checking a registry of approved `client_id` values breaks it
+- `must-show-client-scopes-and-redirect-on-consent`: a consent page that omits the requesting client, the third-party scopes or the exact registered `redirect_uri`, or lacks CSRF protection, breaks it
+- `must-exact-match-redirect-uri`: `redirect_uri` checked by prefix, pattern or wildcard instead of exact string match breaks it
+- `must-use-random-single-use-state`: a `state` value that is predictable, reusable, long-lived, or set before consent is approved breaks it
+- `must-verify-requests-not-sessions`: an inbound request handled without verification, or a session used as authentication, breaks it
+- `must-use-non-deterministic-session-ids`: sequential, guessable or non-CSPRNG session IDs break it
+- `should-key-session-data-by-user`: session data keyed by session ID alone, or by a client-supplied user ID, instead of `<user_id>:<session_id>` from the token
+- `must-consider-ssrf-on-oauth-urls`: OAuth-related URLs (`resource_metadata`, `authorization_servers`, `token_endpoint`) fetched with no SSRF mitigation breaks it
+- `should-harden-oauth-url-fetching`: OAuth URL fetching that allows non-HTTPS beyond dev loopback, reaches private/reserved ranges, or follows redirects unchecked per hop
+- `should-prefer-egress-proxy-and-dns-pinning`: hand-rolled IP parsing used to block internal hosts where an egress proxy and DNS-pinning could be

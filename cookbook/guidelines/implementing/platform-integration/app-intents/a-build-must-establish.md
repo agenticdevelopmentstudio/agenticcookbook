@@ -1,0 +1,17 @@
+
+- `model-key-actions-as-app-intents`: each key user-facing action has an `AppIntent`, or the code says why not
+- `must-conform-to-appintent`: every intent type conforms to `AppIntent` and implements `func perform() async throws -> some IntentResult`
+- `must-declare-title-should-set-description`: every intent declares a static `title: LocalizedStringResource` and sets `description`, or says why not
+- `must-use-typed-parameters`: every user input is a `@Parameter` of an `IntentParameter`-supported type
+- `must-be-retry-safe-and-throw-typed-errors`: each `perform()` is idempotent-safe where the system may retry and throws a typed error on failure
+- `should-return-most-specific-result`: each intent returns the most specific `IntentResult`, or the code says why not
+- `conform-one-type-to-appshortcutsprovider`: one type conforms to `AppShortcutsProvider` and returns `AppShortcut` values from `appShortcuts`
+- `must-include-application-name-in-phrases`: every `AppShortcut` supplies `phrases` containing `\(.applicationName)`
+- `ship-high-value-actions-as-appshortcuts`: each high-value action ships as an `AppShortcut`, or the code says why not
+- `must-conform-domain-types-to-appentity`: every domain type exposed to intents conforms to `AppEntity` with stable `id`, `displayRepresentation` and `defaultQuery`
+- `provide-an-entityquery`: each entity provides an `EntityQuery` (or `EntityStringQuery`/`EnumerableEntityQuery`), or the code says why not
+- `back-queries-with-real-data`: queries read the real data layer, or the code says why not
+- `prefer-app-intents-for-new-work`: new app actions use App Intents, or the code says why not
+- `should-not-add-sirikit-custom-intent`: no new SiriKit custom intent covers an action App Intents can express, or the code says why
+- `migrate-custom-intents-when-touched`: touched custom intents are migrated, or the code says why not
+- `treat-other-capabilities-as-forecasts`: any capability beyond the listed surfaces is confirmed against the App Intents documentation for the target OS

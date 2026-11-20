@@ -1,0 +1,15 @@
+
+- `must-ship-root-instruction-file`: an AGENTS.md or CLAUDE.md at the repository root, or its absence in a repo agents work in
+- `should-symlink-one-canonical-file`: whether AGENTS.md and CLAUDE.md are two separately edited copies or one file and a symlink to it
+- `must-state-build-test-run-commands`: the exact build, test and run commands, with setup and environment variables, in the file — or prose standing in for them
+- `should-state-conventions`: code style, naming and project-specific patterns stated in the file
+- `should-describe-project-layout`: where source, tests and config live, described in the file
+- `should-state-out-of-scope`: files or directories not to edit, commands not to run, and "ask first" actions, listed in the file
+- `may-include-commit-security-deploy-notes`: commit/PR conventions, security gotchas or deployment steps, when present, kept accurate
+- `should-nest-per-package-files`: in a multi-package repo, a scoped instruction file inside each package
+- `should-keep-repo-wide-guidance-at-root`: repo-wide guidance held in the root file rather than repeated per package
+- `should-keep-only-differences-in-nested-files`: nested files that repeat root guidance instead of holding only what differs
+- `must-stay-concise`: bloat, stale or non-load-bearing instructions in the file
+- `should-delete-obsolete-instructions`: instructions that are obsolete, obvious, or contradicted by the code
+- `should-be-specific-and-verifiable`: vague aspirations ("write clean code") where a command, path or named rule belongs
+- `should-review-on-structure-change`: a change to build/test commands or project structure that leaves the file unchanged

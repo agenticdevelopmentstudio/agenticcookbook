@@ -4,7 +4,7 @@
     "id": "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
     "title": "Windows Subsystem for Linux",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -40,30 +40,26 @@
       "https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git",
       "https://learn.microsoft.com/en-us/windows/dev-environment/wsl-interop"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "platform-integration",
       "configuration"
     ]
   },
-  "synced": "095f23726d9a3d89",
+  "synced": "3c2e700727198450",
   "parts": [
     {"part": "intro"},
-    {"part": "where-files-live", "heading": "Where files live"},
-    {"part": "path-conversion", "heading": "Path conversion"},
-    {"part": "line-endings", "heading": "Line endings"},
-    {"part": "permissions-and-case", "heading": "Permissions and case"},
-    {"part": "interop", "heading": "Interop"},
-    {"part": "configuration-scope", "heading": "Configuration scope"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "files-and-paths", "heading": "Files and paths"},
-    {"part": "line-endings-2", "heading": "Line endings"},
-    {"part": "permissions-and-case-2", "heading": "Permissions and case"},
-    {"part": "interop-2", "heading": "Interop"},
-    {"part": "configuration", "heading": "Configuration"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "where-files-live", "heading": "Where files live", "role": "how-to"},
+    {"part": "path-conversion", "heading": "Path conversion", "role": "how-to"},
+    {"part": "permissions-and-case", "heading": "Permissions and case", "role": "how-to"},
+    {"part": "interop", "heading": "Interop", "role": "how-to"},
+    {"part": "configuration-scope", "heading": "Configuration scope", "role": "how-to"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

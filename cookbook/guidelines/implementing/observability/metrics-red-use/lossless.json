@@ -1,0 +1,49 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Recording duration as a gauge or average instead of a histogram (loses percentiles).",
+      "to": "should-not-record-duration-as-gauge",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-record-duration-as-gauge turns the anti-pattern into a SHOULD NOT and keeps the histogram alternative and the lost-percentiles reason.",
+        "pin": "0c30448d7ba4b739df5a929ded94411c87679772ab2faaff57a9203008c93da7"
+      }
+    },
+    {
+      "sentence": "High-cardinality labels that explode the time-series count and cost.",
+      "to": "should-not-use-high-cardinality-labels",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-use-high-cardinality-labels turns the anti-pattern into a SHOULD NOT and keeps the time-series-count and cost reason.",
+        "pin": "b312f639691afa2a88a58e8cb788ecdf2369f74f0e55804560a52e06194d744a"
+      }
+    },
+    {
+      "sentence": "Tracking utilization while ignoring saturation, then being surprised by latency cliffs.",
+      "to": "should-not-track-utilization-without-saturation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-track-utilization-without-saturation turns the anti-pattern into a SHOULD NOT and keeps the latency-cliff consequence.",
+        "pin": "dd70d45cb35badad826facbf454361a188a12e66c4f31092d5e0b3ad71862a28"
+      }
+    },
+    {
+      "sentence": "**resource-coverage**: Resources that can become a bottleneck **SHOULD** be monitored with all three USE dimensions; saturation is the most predictive of impending failure and **MUST NOT** be silently omitted.",
+      "to": [
+        "resource-coverage",
+        "must-not-omit-saturation"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "resource-coverage keeps the SHOULD to monitor bottleneck-capable resources on all three USE dimensions; must-not-omit-saturation keeps the predictive reason and the MUST NOT on silently omitting saturation.",
+        "pin": "3f4bd0a12a868b0fc1adb554a382ab92114f9e674423de27963e0487ff791985"
+      }
+    }
+  ],
+  "obsolete": []
+}

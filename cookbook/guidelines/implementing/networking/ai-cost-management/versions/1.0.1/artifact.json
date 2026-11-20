@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e5799ba8-98b0-4df9-9413-cdad03e76aab",
+    "title": "AI Cost Management",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-04-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "AI API calls cost $0.01-$0.10+ each. Systems MUST treat AI calls as a managed resource with budgets, caching, and fallback strategies.",
+    "platforms": [],
+    "tags": [
+      "cost-management",
+      "ai",
+      "caching",
+      "rate-limiting"
+    ],
+    "depends-on": [
+      "3416a359-e01c-40b2-8876-4a8634d4395e",
+      "c84400d9-83b3-4c4c-83d4-325dfa989202"
+    ],
+    "related": [
+      "3890e8fb-9d2d-42db-9753-cf60b95152cc"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ai-api-integration",
+      "networking",
+      "performance-optimization"
+    ]
+  },
+  "names_hosts": "Uses Claude's Haiku, Sonnet and Opus tiers as the worked example of tiered model selection.",
+  "synced": "428a1e6213ed2035",
+  "parts": [
+    {"part": "intro"},
+    {"part": "requirements", "heading": "Requirements"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

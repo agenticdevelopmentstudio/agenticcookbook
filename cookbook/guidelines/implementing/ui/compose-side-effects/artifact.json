@@ -4,11 +4,11 @@
     "id": "4b58d4d6-f177-45d7-b7c1-bf50adcd13a3",
     "title": "Jetpack Compose side effects",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,20 +30,23 @@
       "https://developer.android.com/develop/ui/compose/side-effects",
       "https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "concurrency"
     ]
   },
-  "synced": "fae6781bc927785f",
+  "synced": "1f9fa37bb2d95790",
   "parts": [
     {"part": "intro"},
-    {"part": "core-rule", "heading": "Core rule"},
-    {"part": "api-selection", "heading": "API selection"},
-    {"part": "keying-discipline-the-most-common-bug", "heading": "Keying discipline (the most common bug)"},
-    {"part": "must-must-not", "heading": "MUST / MUST NOT"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "api-selection", "heading": "API selection", "role": "how-to"},
+    {"part": "keying-discipline-the-most-common-bug", "heading": "Keying discipline (the most common bug)", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

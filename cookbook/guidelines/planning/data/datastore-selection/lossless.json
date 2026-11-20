@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Choose a specialist primary store **only** when a requirement below is concrete and, where possible, measured:",
+      "to": "should-choose-a-specialist-store-only-on-a-concrete-requirement",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: a specialist primary store only when a decision-criteria requirement is concrete and, where possible, measured; the criteria table is kept intact in decision-criteria.",
+        "pin": "ae02a41d7a6c9139a139603c52c1e519489d5553e754ddfd1c9d9b4ad67c533f"
+      }
+    },
+    {
+      "sentence": "Pick the store from data shape, query patterns, and measured scale.",
+      "to": "should-pick-the-store-from-shape-patterns-and-scale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD (unkeyed in the old intro): pick the store from data shape, query patterns and measured scale.",
+        "pin": "a81b1147885b4ba958fcf5e0a061446ac234603bb8aa7d22e6729c1aa16cdf92"
+      }
+    },
+    {
+      "sentence": "Treat the relational default as a strong starting point that a real requirement can override — not as a universal law.",
+      "to": "should-treat-the-relational-default-as-overridable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: the relational default is a strong starting point a real requirement can override, not a universal law; the advocacy-not-consensus caveat it followed is kept in rationale.",
+        "pin": "d4b7f846f71dd7db060b4a89ed06451c11f194c4817325da5b6460f779a305cb"
+      }
+    }
+  ],
+  "obsolete": []
+}

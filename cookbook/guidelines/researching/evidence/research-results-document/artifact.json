@@ -4,11 +4,11 @@
     "id": "2795e06d-b081-43ac-97d9-20ff3d0a93b1",
     "title": "Research results document",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,18 +32,20 @@
       "https://nanopub.net/",
       "https://arxiv.org/abs/1803.09010"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "research"
     ]
   },
-  "synced": "0535f42798a88ce2",
+  "synced": "9cc3ee3ce5537eb4",
   "parts": [
     {"part": "intro"},
-    {"part": "per-claim-record", "heading": "Per-claim record"},
-    {"part": "document-container", "heading": "Document container"},
-    {"part": "provenance-standards-to-align-with", "heading": "Provenance standards to align with"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "provenance-standards-to-align-with", "heading": "Provenance standards to align with", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

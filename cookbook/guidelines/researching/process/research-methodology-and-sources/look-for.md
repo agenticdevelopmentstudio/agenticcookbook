@@ -1,0 +1,11 @@
+
+- `must-not-stop-at-search-results`: the research goes past the search-results page to the sources themselves; findings resting only on result listings break it
+- `should-orient-and-classify-domain`: the topic's domain is classified before sources are chosen
+- `should-identify-authoritative-sources`: the sources used are the authoritative ones for that domain
+- `should-search-with-controlled-vocabulary`: queries use Boolean operators or a controlled vocabulary (e.g. MeSH)
+- `should-chain-citations-to-saturation`: backward and forward citation chaining runs until no new relevant sources appear
+- `should-corroborate-across-independent-sources`: each claim is backed by sources that are genuinely independent of each other
+- `should-record-provenance-at-generation-time`: provenance is recorded as each finding is produced, not reconstructed afterwards
+- `should-use-prisma-for-systematic-rigor`: where systematic rigor is required, the process follows PRISMA
+- `should-default-to-openalex`: academic search starts from OpenAlex unless another source fits better
+- `should-read-full-sources`: the agent reads full sources, not snippets

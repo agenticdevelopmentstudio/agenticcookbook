@@ -1,0 +1,13 @@
+
+- `deliberate-level`: whether each transaction sets its isolation level explicitly
+- `justified-level`: whether each chosen level is justified by the anomaly it prevents
+- `retry-serialization-failure`: whether every Repeatable Read or Serializable transaction re-runs whole on a serialization failure
+- `bounded-backoff`: whether retries are bounded with exponential backoff plus jitter
+- `surface-on-exhaustion`: whether exhausted retries surface the failure
+- `idempotent-retry`: whether every retried transaction body is free of side effects
+- `no-savepoint-only-retry`: whether every retry restarts from a fresh `BEGIN`
+- `explicit-locking-for-queues`: whether worker/queue claims use explicit row locking
+- `no-serializable-queue-dispatch`: whether queue dispatch relies on Serializable
+- `prefer-narrowest-level`: whether each transaction uses the narrowest level that prevents the anomaly that matters
+- `check-then-update-locking`: whether any check-then-update invariant runs at Read Committed without `FOR UPDATE` or Serializable
+- `confirm-engine-semantics`: whether isolation semantics were confirmed against the engine's own dated docs

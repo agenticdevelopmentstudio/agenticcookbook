@@ -1,0 +1,17 @@
+
+- `pin-to-server-version`: whether index behavior relied on matches the server's PostgreSQL version
+- `concurrent-build`: whether every index on a large live table is created `CONCURRENTLY`
+- `failed-index-cleanup`: whether a failed `CONCURRENTLY` build's `INVALID` index is detected and dropped before retrying
+- `rebuild-without-lock`: whether bloated indexes are rebuilt with `REINDEX INDEX CONCURRENTLY`
+- `type-matches-query`: whether each index type matches how its column is queried
+- `partial-index`: whether queries on a stable predicate are served by a partial index
+- `expression-index`: whether every filter on a computed value has a matching expression index
+- `composite-column-order`: whether multi-column B-tree columns are ordered most-selective-and-equality-first with the leading column(s) in the predicate
+- `covering-index`: whether each `INCLUDE (...)` is confirmed by `EXPLAIN` showing `Index Only Scan`
+- `jsonb-gin`: whether JSONB containment and key-existence queries use a GIN index
+- `jsonb-path-ops`: whether containment-only JSONB indexes use `jsonb_path_ops`
+- `jsonb-write-cost`: whether write impact was measured before a GIN index was added
+- `jsonb-scalar-expression-index`: whether a single-scalar-key JSONB query uses an expression index instead of GIN
+- `explain-before-after`: whether every new index is justified by `EXPLAIN (ANALYZE, BUFFERS)`
+- `drop-unused`: whether indexes with near-zero scans over a representative window are dropped
+- `measured-need`: whether each specialized strategy has a concrete measured need behind it

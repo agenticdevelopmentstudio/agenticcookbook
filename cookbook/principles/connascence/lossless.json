@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Rank, don't just detect: judge each coupling on three axes — strength (how hard it is to change in concert), degree (how many elements share it), and locality (how far apart they live).",
+      "to": "should-rank-coupling-on-three-axes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-rank-coupling-on-three-axes keeps 'rank, not just detect' and all three axes with their definitions (strength, degree, locality), at SHOULD.",
+        "pin": "50d90f56922b9ee94d8e2027baa3663a9ceaac40dde6ac43373dd4b0cd815dc9"
+      }
+    },
+    {
+      "sentence": "The farther apart two coupled elements live, the weaker the form between them must be — e.g. positional args → named parameters → a typed message across a boundary.",
+      "to": "must-weaken-coupling-with-distance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-weaken-coupling-with-distance keeps the distance-to-weakness requirement at MUST (matching 'must be') and the positional-to-named-to-typed-message example.",
+        "pin": "36f7749b6f6d145cb123037ad437d003722c5b1c798a936c2e9e531ba263cfc6"
+      }
+    },
+    {
+      "sentence": "Prefer the weakest form that does the job: replace positional arguments with named ones, magic numbers with named constants, duck-typed shapes with explicit types.",
+      "to": "should-prefer-weakest-form",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-weakest-form keeps the preference and all three replacements (named arguments, named constants, explicit types), at SHOULD.",
+        "pin": "cdbed67a2c95568a48af95088b3ad913ee48e19f5ebd2f831996b7bb5b1f3e7b"
+      }
+    },
+    {
+      "sentence": "Use it as the vocabulary for coupling reviews: \"connascence of position across a module boundary — convert to connascence of name\" is a decision, not a matter of taste.",
+      "to": "should-use-connascence-as-review-vocabulary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-connascence-as-review-vocabulary keeps connascence as coupling-review vocabulary, the example, and the point that it is a decision, not taste.",
+        "pin": "21f6c718eb889ee38b6b031e5ab458658200f8fe548b005386aaba4d1cb64133"
+      }
+    },
+    {
+      "sentence": "Reach for the full lattice only when the three axes above don't settle the call.",
+      "to": "should-use-full-lattice-only-when-axes-do-not-settle",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-full-lattice-only-when-axes-do-not-settle keeps the condition: the full lattice only when the three axes do not settle the call, at SHOULD.",
+        "pin": "dba3db1ab54f3155cf4ac3b65acf75c0799b8a1f5dbec47fbe9b434cfc593d09"
+      }
+    }
+  ],
+  "obsolete": []
+}

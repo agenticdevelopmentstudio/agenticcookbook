@@ -1,0 +1,40 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "dca53225-bd2b-4a11-8abb-5226e05de4a7",
+    "title": "No external dependencies in core libraries",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "roadmap_lib uses the standard library only. Do not add PyYAML, requests, or other third-party packages to core library code, so it stays portable and easy to install.",
+    "platforms": [],
+    "languages": [
+      "python"
+    ],
+    "tags": [
+      "language",
+      "no-external-dependencies-in-core-librari",
+      "python"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "dependency-management",
+      "new-module"
+    ]
+  },
+  "synced": "b92f36f8c35bdacc",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,22 @@
+
+- `should-accept-keys-on-non-idempotent-writes`: whether non-idempotent state-changing endpoints accept an idempotency key
+- `should-not-add-keys-out-of-habit`: whether keys are kept off `GET`, `HEAD`, `PUT` and `DELETE`
+- `should-send-the-key-in-the-header`: whether the client sends the key as `Idempotency-Key` and the server treats it as opaque
+- `must-scope-keys-per-principal-and-endpoint`: whether keys are scoped per endpoint and per authenticated principal
+- `should-store-the-principal-endpoint-key-tuple`: whether records are stored under `(principal, endpoint, key)`
+- `should-fingerprint-the-request`: whether a request fingerprint is stored with each key
+- `should-lock-new-keys-before-executing`: whether a new key is locked before the operation runs and its result persisted on completion
+- `must-block-concurrent-retries`: whether a concurrent retry of an in-flight key is blocked or rejected with 409
+- `should-lock-atomically`: whether the key check is atomic rather than a read-then-write race
+- `must-replay-completed-requests`: whether a completed same-fingerprint key replays the stored status and body
+- `must-reject-a-reused-key-with-new-parameters`: whether a different fingerprint on a completed key returns 422
+- `should-persist-key-records-durably`: whether key records are durable and shared across instances
+- `must-expire-key-records`: whether every key record has a TTL
+- `should-outlast-the-retry-window`: whether the TTL is longer than the client's maximum retry window
+- `should-finalize-after-commit`: whether a key is finalized only after the side effect commits
+- `should-generate-one-key-per-operation`: whether the client makes one key per logical operation and reuses it on retries
+- `must-not-mutate-the-body-between-retries`: whether retries sharing a key send the same body
+- `should-use-a-fresh-key-per-user-action`: whether a fresh user-initiated action gets a fresh key
+- `should-not-derive-keys-from-timestamps`: whether any key is derived from a timestamp or auto-increment
+- `should-not-retry-key-rejections-blindly`: whether a 409/422 from key handling is retried as if transient
+- `should-not-cache-status-without-body`: whether the stored response includes the body as well as the status

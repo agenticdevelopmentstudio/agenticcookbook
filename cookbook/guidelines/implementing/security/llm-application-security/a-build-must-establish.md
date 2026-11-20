@@ -1,0 +1,30 @@
+
+- `should-map-controls-to-owasp-llm-top-10-2025`: the controls are mapped to the OWASP Top 10 for LLM Applications 2025, pinned, or the build says why not
+- `should-apply-request-body-egress-controls`: model output passes the same egress controls as a raw HTTP request body, or the code says why not
+- `must-sanitize-output-at-trust-boundaries`: every path from model output across a trust boundary sanitizes, encodes or parameterizes it
+- `must-not-pass-output-to-shell`: model output reaches commands only as argument arrays, never a shell string or interpolated command line
+- `must-parameterize-output-in-sql`: model output reaches SQL only as bound parameters
+- `must-encode-output-for-html`: model output reaches HTML/DOM only through context-aware encoding or sanitization
+- `must-validate-tool-arguments`: every tool call validates and type-checks its arguments against a schema before running
+- `must-validate-structured-output`: structured output is validated against a strict schema and rejected on mismatch, never coerced
+- `must-not-treat-output-as-proof`: every action the model reports is verified out-of-band
+- `must-threat-model-both-injection-forms`: the threat model names direct and indirect prompt injection
+- `must-keep-instruction-data-trust-boundary`: retrieved and tool-returned content is delimited and labelled as data in the prompt
+- `should-apply-least-privilege-against-injection`: an agent exposed to untrusted content cannot reach high-impact tools, or the code says why not
+- `should-prefer-deterministic-guardrails`: allow-lists, output schemas or post-checks enforce the guardrails, or the code says why not
+- `should-not-count-prompt-instructions-as-control`: no listed control is only a prompt instruction, or the build says why not
+- `should-limit-capability-permissions-autonomy`: capability, permissions and autonomy are limited to the task, or the code says why not
+- `must-grant-least-privilege`: each agent/tool has scoped credentials, a narrow API surface and no ambient admin access
+- `must-allow-list-callable-tools`: callable tools come from an explicit allow-list
+- `must-not-expose-open-ended-capabilities`: each open-ended capability exposed has a stated justification and additional controls
+- `should-require-human-confirmation`: high-impact or irreversible actions wait for human confirmation, or the code says why not
+- `should-describe-concrete-effect-in-confirmation`: each confirmation names its concrete effect, or the code says why not
+- `should-rate-limit-and-budget-tool-calls`: tool calls are rate-limited and budgeted, or the code says why not
+- `must-not-put-secrets-in-system-prompt`: the system prompt contains no secrets, credentials or security-relied controls
+- `must-filter-sensitive-data-in-and-out`: inputs and outputs pass a PII/sensitive-data filter, and no raw prompt or completion with secrets is logged
+- `should-scope-retrieved-context-to-user`: retrieval filters to the current user's authorization, or the code says why not
+- `must-treat-vector-store-documents-as-untrusted`: ingestion validates provenance and queries apply per-document access controls
+- `should-protect-vector-store-like-source-data`: the vector store has the same protection as its source data, or the build says why not
+- `should-pin-models-and-verify-provenance`: model versions are pinned and model, dataset and plugin provenance verified, or the build says why not
+- `should-mark-generated-content-unverified`: generated content shows citations and an unverified marking, or the code says why not
+- `should-not-present-output-as-authoritative`: no safety-critical flow presents model output as authoritative fact, or the code says why

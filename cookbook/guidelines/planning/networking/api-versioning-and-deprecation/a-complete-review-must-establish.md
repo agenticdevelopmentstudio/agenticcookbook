@@ -1,0 +1,19 @@
+
+- `must-ship-additive-changes-without-a-version-bump`: whether additive changes ship without a version bump
+- `must-version-breaking-changes`: whether every breaking change carries a new version
+- `must-tolerate-unknown-fields`: whether clients ignore unknown fields rather than reject them
+- `should-assume-consumers-depend-on-every-observable-detail`: whether changes to observable details beyond the spec were treated as potentially breaking
+- `should-pick-one-scheme-for-the-whole-surface`: whether one versioning scheme applies across the whole surface
+- `must-not-mix-schemes`: whether any API mixes versioning schemes
+- `should-version-at-a-coarse-grain`: whether versions are cut per breaking batch, not per endpoint or field
+- `should-pin-the-default-version`: whether unversioned requests resolve to a documented, pinned default version
+- `should-run-the-deprecation-sequence`: whether each retirement runs the full sequence with its timeline published first
+- `should-announce-with-the-deprecation-header`: whether affected responses carry the `Deprecation` header
+- `should-link-migration-docs`: whether a `Link` header points at migration docs
+- `should-set-a-removal-date-with-sunset`: whether a `Sunset` header gives the removal date
+- `must-not-sunset-before-deprecation`: whether the `Sunset` time is no earlier than the `Deprecation` time
+- `should-document-the-deprecation`: whether the changelog and spec record the change, replacement and dates
+- `should-honor-a-migration-window`: whether a published, generous migration window precedes removal and was not shortened
+- `must-not-ship-breaking-changes-in-place`: whether any breaking change ships in place in an existing version
+- `must-pair-deprecation-headers-with-documentation`: whether deprecation headers are paired with documentation
+- `should-measure-and-notify-before-removal`: whether deprecated-version traffic is measured and high-volume consumers notified

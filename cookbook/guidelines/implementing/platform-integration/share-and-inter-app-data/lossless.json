@@ -1,0 +1,236 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Declare `<intent-filter>` with `ACTION_SEND` and appropriate MIME types to receive shared content.",
+      "to": "android-declare-send-intent-filter",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-declare-send-intent-filter keeps the ACTION_SEND intent-filter with appropriate MIME types to receive shares, at SHOULD.",
+        "pin": "3e42631fd6911e017ce4bb84f06667cda880bc4c6aec9a3d7f9fdbf744e08dd7"
+      }
+    },
+    {
+      "sentence": "Use `Intent.createChooser()` to send.",
+      "to": "android-send-with-createchooser",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-send-with-createchooser keeps Intent.createChooser() for sending on Android, at SHOULD.",
+        "pin": "51413ff48d3974fcb97122b83384b62159db1c1b126c1c457bd9abc3da77278a"
+      }
+    },
+    {
+      "sentence": "Implement Direct Share targets with `ChooserTargetService` for frequently shared-to contacts.",
+      "to": "android-implement-direct-share",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-implement-direct-share keeps Direct Share targets via ChooserTargetService for frequent contacts, at SHOULD.",
+        "pin": "b34db753756a6a9cd0528ceaa0bd69e4fe72fce46430c67f58ffb1d2d52d0f18"
+      }
+    },
+    {
+      "sentence": "Support `ContentProvider` for structured data sharing between apps.",
+      "to": "android-support-contentprovider",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-support-contentprovider keeps ContentProvider for structured inter-app data sharing, at SHOULD.",
+        "pin": "98aaebcec2e2d4bcbc7568207461733944a798f5fd2d710fe34e127a0112a6ee"
+      }
+    },
+    {
+      "sentence": "Register as a document provider via `DocumentsProvider` for the system file picker.",
+      "to": "android-register-documentsprovider",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-register-documentsprovider keeps registering a DocumentsProvider for the system file picker, at SHOULD.",
+        "pin": "9d79661af8a4dde95f9a909ac4e68427b5db5c1703eaee3fe283c5ac3363efa0"
+      }
+    },
+    {
+      "sentence": "Implement `UIActivityViewController` (iOS) or `NSSharingServicePicker` (macOS) to share content.",
+      "to": "apple-share-with-system-picker",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-share-with-system-picker keeps UIActivityViewController (iOS) or NSSharingServicePicker (macOS) for sharing, at SHOULD.",
+        "pin": "a68c0c4028c4d388b5bdaa73fbfe044b6deb120f9d4d9872e4dea275c3e5ddc6"
+      }
+    },
+    {
+      "sentence": "Create Share Extensions to receive content from other apps.",
+      "to": "apple-create-share-extensions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-create-share-extensions keeps Share Extensions to receive content from other apps, at SHOULD.",
+        "pin": "c7781555fee23c6d809898bb192b097708c048bcab8f7d1da1bbbf4576d485ec"
+      }
+    },
+    {
+      "sentence": "Register UTI declarations in `Info.plist` for file type associations.",
+      "to": "apple-register-utis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-register-utis keeps UTI declarations in Info.plist for file type associations, at SHOULD.",
+        "pin": "2b546bf87950494322cd53a8da6d62c78b36e724448edbc9eb9eb72d084b44ed"
+      }
+    },
+    {
+      "sentence": "Support drag and drop via `NSItemProvider` on iPadOS and macOS.",
+      "to": "apple-drag-and-drop-with-nsitemprovider",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-drag-and-drop-with-nsitemprovider keeps NSItemProvider drag and drop on iPadOS and macOS, at SHOULD.",
+        "pin": "b8477db796c7b68b99ceb102a14183d9ef43e2afa91124592d47a3a131b6ab30"
+      }
+    },
+    {
+      "sentence": "On macOS, support the Services menu via `NSServices` for system-wide text operations.",
+      "to": "macos-support-services-menu",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "macos-support-services-menu keeps the macOS Services menu via NSServices for system-wide text operations, at SHOULD.",
+        "pin": "1936d0da9ffe3bac2f49a5704c0bff2ef4b72ce581920795754aa55177b2949c"
+      }
+    },
+    {
+      "sentence": "Support both sending and receiving data through the platform share sheet",
+      "to": "send-and-receive-via-share-sheet",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "send-and-receive-via-share-sheet keeps both sending and receiving through the platform share sheet, at SHOULD.",
+        "pin": "229c6def13d56622846503ba9a18a1e0d92df0ab315ced30c35bd23a9ac472a6"
+      }
+    },
+    {
+      "sentence": "Register as a handler for relevant file types and UTIs/MIME types",
+      "to": "register-for-relevant-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "register-for-relevant-types keeps registering as a handler for relevant file types and UTIs/MIME types, at SHOULD.",
+        "pin": "186b7b6befc4332d7913f41afe60a9b7dda17f33618147d7b981c8f3b5f8dbf7"
+      }
+    },
+    {
+      "sentence": "Support drag and drop for content that makes sense in multi-window contexts",
+      "to": "support-drag-and-drop",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "support-drag-and-drop keeps drag and drop for content that makes sense in multi-window contexts, at SHOULD.",
+        "pin": "ced1e393d192fc977e18101d7643a8bec15648c4c94ba0cf67598a8922267722"
+      }
+    },
+    {
+      "sentence": "Validate all received data — inter-app data is an untrusted input boundary",
+      "to": "validate-received-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "validate-received-data keeps validating all received data and the untrusted-input-boundary reason, with the unkeyed instruction at SHOULD.",
+        "pin": "79811e69313eb8c4cbed7c1a1a8557625f61c3d305a72c708351d7246d5a63c9"
+      }
+    },
+    {
+      "sentence": "Use the Web Share API (`navigator.share()`) to invoke the native share sheet.",
+      "to": "web-use-web-share-api",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-web-share-api keeps navigator.share() to invoke the native share sheet, at SHOULD.",
+        "pin": "616f4ae966ffcf8bd59c78f1238c054fa8abe6460e54b7081205fa339972b061"
+      }
+    },
+    {
+      "sentence": "Register as a share target in the Web App Manifest (`share_target`).",
+      "to": "web-register-share-target",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-register-share-target keeps share_target registration in the Web App Manifest, at SHOULD.",
+        "pin": "f5e0fa34786957ee989b48a4148d82b8d132fb42ec406877852a11663e3bd9a3"
+      }
+    },
+    {
+      "sentence": "Support drag and drop via the HTML Drag and Drop API.",
+      "to": "web-support-html-drag-and-drop",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-support-html-drag-and-drop keeps the HTML Drag and Drop API on the web, at SHOULD.",
+        "pin": "fc2593498f3d67e32660453a538434eb2168ea3683848731df744078a0eaae2b"
+      }
+    },
+    {
+      "sentence": "Use the File Handling API to register as a handler for specific file types in PWAs.",
+      "to": "web-use-file-handling-api",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-file-handling-api keeps the File Handling API for PWA file type handlers, at SHOULD.",
+        "pin": "d8c025f8b736d6fbbcd89b2f6647eb3c521a0eab1d52707412ed2bc7f649a174"
+      }
+    },
+    {
+      "sentence": "Implement the Share Contract (`DataTransferManager`) to send and receive content.",
+      "to": "windows-implement-share-contract",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-implement-share-contract keeps the Share Contract (DataTransferManager) to send and receive, at SHOULD.",
+        "pin": "abc88e6e666cb5cb98c2658a53200db5ae4378a76c227b04ae9d2e2cc63c7d14"
+      }
+    },
+    {
+      "sentence": "Register as a share target in the app manifest.",
+      "to": "windows-register-share-target",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-register-share-target keeps share target registration in the app manifest on Windows, at SHOULD.",
+        "pin": "772924660bc5c72d45fcad943a3cc16a5f9c6e886f4be5367da2a308df7b4270"
+      }
+    },
+    {
+      "sentence": "Support drag and drop via `DragDrop` APIs.",
+      "to": "windows-support-dragdrop",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-support-dragdrop keeps DragDrop APIs on Windows, at SHOULD.",
+        "pin": "19abf9108deda1ed87e735f4ae0187ec15b3e5b16d0ac3bbe25cb6016ad34aa0"
+      }
+    },
+    {
+      "sentence": "Register file type associations in `Package.appxmanifest` for Open With integration.",
+      "to": "windows-register-file-associations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-register-file-associations keeps file type associations in Package.appxmanifest for Open With, at SHOULD.",
+        "pin": "bd9bac66c318fde6ecdac91b6b7b622542c06f33c873b80dd5c165ac9cced0a8"
+      }
+    },
+    {
+      "sentence": "Support clipboard with rich content formats.",
+      "to": "windows-support-rich-clipboard",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-support-rich-clipboard keeps clipboard support with rich content formats on Windows, at SHOULD.",
+        "pin": "593b81a211ff54ee725a83c0fd2912a7abbcbfec5daaf1795435988c9dee15fe"
+      }
+    }
+  ],
+  "obsolete": []
+}

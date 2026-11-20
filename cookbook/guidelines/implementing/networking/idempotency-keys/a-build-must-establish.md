@@ -1,0 +1,22 @@
+
+- `should-accept-keys-on-non-idempotent-writes`: each non-idempotent state-changing endpoint accepts an idempotency key, or the code says why not
+- `should-not-add-keys-out-of-habit`: no `GET`, `HEAD`, `PUT` or `DELETE` handler requires an idempotency key, or the code says why
+- `should-send-the-key-in-the-header`: the client sends `Idempotency-Key: <opaque-value>` and the server never parses it, or the code says why not
+- `must-scope-keys-per-principal-and-endpoint`: a key from one tenant or endpoint can never match a record of another
+- `should-store-the-principal-endpoint-key-tuple`: key records are keyed by `(principal, endpoint, key)`, or the code says why not
+- `should-fingerprint-the-request`: each record holds a hash of the payload and significant headers, or the code says why not
+- `should-lock-new-keys-before-executing`: a new key is locked before execution and persisted with fingerprint, status and body on completion, or the code says why not
+- `must-block-concurrent-retries`: a retry arriving while its key is in flight is blocked or gets `409 Conflict`, never a second execution
+- `should-lock-atomically`: the key claim is a row lock, advisory lock or atomic conditional insert, or the code says why not
+- `must-replay-completed-requests`: a completed key with the same fingerprint returns the stored status and body without re-executing
+- `must-reject-a-reused-key-with-new-parameters`: a completed key with a different fingerprint returns `422 Unprocessable Content` and changes nothing
+- `should-persist-key-records-durably`: key records live in a database or shared cache, or the code says why not
+- `must-expire-key-records`: every key record is written with a TTL
+- `should-outlast-the-retry-window`: the TTL exceeds the client's maximum retry window, or the code says why not
+- `should-finalize-after-commit`: the record becomes replayable only after the side effect commits, or the code says why not
+- `should-generate-one-key-per-operation`: the client makes the key before the first attempt and reuses it for every retry, or the code says why not
+- `must-not-mutate-the-body-between-retries`: every retry under one key sends an identical body
+- `should-use-a-fresh-key-per-user-action`: each new user-initiated action makes a new key, or the code says why not
+- `should-not-derive-keys-from-timestamps`: keys come from a high-entropy source, not a timestamp or auto-increment, or the code says why
+- `should-not-retry-key-rejections-blindly`: a 409/422 from key handling is not fed to the transient-error retry path, or the code says why
+- `should-not-cache-status-without-body`: the stored response holds both the status code and the body, or the code says why not

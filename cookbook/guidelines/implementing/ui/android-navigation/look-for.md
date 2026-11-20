@@ -1,0 +1,16 @@
+
+- `must-use-single-activity`: screens implemented as separate activities instead of composables in one `Activity`
+- `should-hoist-navcontroller-to-top`: a `NavHostController` created below the top of the UI tree, or passed into leaf composables instead of narrow callbacks
+- `must-not-touch-back-stack-from-screens`: a screen composable reading or mutating the back stack instead of emitting navigation events upward
+- `should-use-stable-type-safe-navigation-apis`: navigation built on string routes or an old `navigation-compose`, without the type-safe APIs and the `kotlinx-serialization` plugin
+- `must-use-serializable-route-types`: routes defined as raw strings rather than `@Serializable` `object` / `data class` types
+- `should-build-graph-with-type-safe-builders`: a graph built without the type-safe builders, or navigation by string rather than by route instance
+- `must-pass-arguments-through-route-type`: concatenated path strings or hand-parsed `NavBackStackEntry.arguments`
+- `should-read-route-arguments-from-savedstatehandle`: a ViewModel handed a `NavController`, or reading arguments other than via `SavedStateHandle.toRoute<Route>()`
+- `should-declare-deep-links-per-destination`: deep links handled outside the destination's type-safe route
+- `should-pin-nav3-and-recheck-release-notes`: an unpinned `androidx.navigation3` dependency, or code relying on Nav3 surface details as if settled
+- `should-choose-nav3-deliberately`: Nav3 adopted with no need for back-stack control, multi-pane/adaptive layouts or custom transitions
+- `should-not-mix-nav2-and-nav3-in-a-flow`: a single flow using both `NavHost` and `NavDisplay`
+- `must-handle-process-death`: UI state beyond the route that is lost on process death, kept outside `SavedStateHandle` or `rememberSaveable`
+- `should-scope-viewmodels-to-back-stack-entry`: back-stack-scoped state held in a ViewModel not scoped to its `NavBackStackEntry`
+- `should-use-single-start-destination`: several start destinations, or navigation that clears and rebuilds the whole graph instead of `popUpTo`/`launchSingleTop` or list operations

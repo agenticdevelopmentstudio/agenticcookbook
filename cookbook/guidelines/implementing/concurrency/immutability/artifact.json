@@ -4,11 +4,11 @@
     "id": "50ea8b39-813d-4325-be31-0ae19b8a3baf",
     "title": "Immutability",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -24,19 +24,21 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "concurrency",
       "data-modeling"
     ]
   },
-  "synced": "c93d70750e60559e",
+  "synced": "11c9ef740fcf7725",
   "parts": [
     {"part": "intro"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "c", "heading": "C#"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "c", "heading": "C#", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

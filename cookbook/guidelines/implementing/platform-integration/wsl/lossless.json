@@ -1,0 +1,45 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Interop and the appending of Windows `PATH` entries are on by default and can be turned off in `[interop]` (`enabled`, `appendWindowsPath`); a script MUST check that the program exists instead of assuming it.",
+      "to": [
+        "interop",
+        "must-check-program-exists"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The interop part keeps that interop and Windows PATH appending are on by default and can be turned off in [interop] (enabled, appendWindowsPath); must-check-program-exists keeps the MUST to check the program exists.",
+        "pin": "06c9594a65031abbdbfea4791b02f861ad9b57e8103bd76c2df23200a8a7e056"
+      }
+    },
+    {
+      "sentence": "It MUST be set in `.gitattributes` per file type, not in each developer's global configuration, and shell scripts MUST stay LF: a script with CRLF endings fails in Linux with confusing errors.",
+      "to": [
+        "must-set-in-gitattributes",
+        "shell-scripts-must-stay-lf"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-set-in-gitattributes keeps the MUST to set the convention in .gitattributes per file type, not global config; shell-scripts-must-stay-lf keeps the MUST and the CRLF-failure reason.",
+        "pin": "58bc81cd5b7d829b3934abf7aab242f2d9150f5d94cad530361771a30a8f2bb4"
+      }
+    },
+    {
+      "sentence": "Git SHOULD be installed in each file system you use it from, and each MUST be configured for the same convention.",
+      "to": [
+        "install-git-per-file-system",
+        "must-configure-git-same-convention"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "install-git-per-file-system keeps the SHOULD to install Git in each file system used; must-configure-git-same-convention keeps the MUST that each be configured for the same convention.",
+        "pin": "29319e61de88d72fb38d2a9748349075ef9b45e908372942601b172cb76a3c6b"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,99 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Compose: use `PredictiveBackHandler`, collecting the `Flow<BackEventCompat>` and reading `progress` (0f..1f).",
+      "to": "should-use-predictivebackhandler-in-compose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to Compose, with PredictiveBackHandler, collecting Flow<BackEventCompat> and reading progress (0f..1f).",
+        "pin": "59be230e5902a28d49023d56614f0f34da9a23e1f0bd9920ce22a4a124311ff1"
+      }
+    },
+    {
+      "sentence": "Commit the navigation when the flow completes; reset UI on `CancellationException` (gesture cancelled).",
+      "to": "should-use-predictivebackhandler-in-compose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both steps kept at SHOULD in the Compose rule: commit navigation when the flow completes, reset UI on CancellationException (gesture cancelled).",
+        "pin": "c212b5e1f807b611ee6136f804ba5d3104289c48f0147fbbf8e86a1ca0ba2e9b"
+      }
+    },
+    {
+      "sentence": "Views: extend `OnBackPressedCallback` and implement `handleOnBackStarted` / `handleOnBackProgressed` / `handleOnBackCancelled` (API 34+) to animate, with `handleOnBackPressed` committing the result.",
+      "to": "should-implement-back-progress-callbacks-in-views",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to Views, with all three progress callbacks, the API 34+ note and handleOnBackPressed committing the result.",
+        "pin": "8b24962fb8c06a60c19297e625a9a25191301ed6e35ffb8a437277edff3124a9"
+      }
+    },
+    {
+      "sentence": "Prefer the AndroidX `androidx.activity` APIs over the platform `OnBackInvokedCallback` — AndroidX is backward compatible across versions and is the recommended path.",
+      "to": "should-prefer-androidx-back-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason that AndroidX is backward compatible across versions and is the recommended path.",
+        "pin": "2530bec6304d0aa43e1b675864619afc58425d89132141117de545c70739a3fb"
+      }
+    },
+    {
+      "sentence": "Use the platform `OnBackInvokedCallback` directly ONLY when you have no AndroidX dependency.",
+      "to": "should-use-platform-callback-only-without-androidx",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The ONLY-when-no-AndroidX-dependency restriction on using OnBackInvokedCallback directly is kept, at SHOULD.",
+        "pin": "2d9faddf55981c735a49261a08653497a911a692ee365f16863b4decbc511238"
+      }
+    },
+    {
+      "sentence": "Keep callbacks single-responsibility: one callback per back-consuming UI state, ordered by registration.",
+      "to": "should-keep-callbacks-single-responsibility",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: one callback per back-consuming UI state, ordered by registration.",
+        "pin": "c8ea619ae3526665a368ae65591284ae1d42b78f181f8d0d93be954ce3452702"
+      }
+    },
+    {
+      "sentence": "Use it ONLY for non-consuming side effects; it MUST NOT alter navigation.",
+      "to": [
+        "should-use-observer-priority-only-for-side-effects",
+        "must-not-alter-navigation-from-observer"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Split across two rules with the referent made explicit: PRIORITY_SYSTEM_NAVIGATION_OBSERVER only for non-consuming side effects (SHOULD), and MUST NOT alter navigation (MUST NOT kept).",
+        "pin": "1f6e4976b25a13cba6eb5c47d41cc2a9ce22296f6e5e3dd02f2b18b441afa73e"
+      }
+    },
+    {
+      "sentence": "Set it `true` (or omit it where the default is on) to receive system animations.",
+      "to": "should-enable-back-flag-for-system-animations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the referent made explicit (android:enableOnBackInvokedCallback), the omit-where-default-is-on alternative and the system-animations purpose.",
+        "pin": "79bee3839515981d213f53d6e12ac5d9b18215a9fb2b086e357d7597ea051c10"
+      }
+    },
+    {
+      "sentence": "Pin the exact behavior to your `targetSdk` and re-check the linked doc before shipping — do not assume a fixed default across versions.",
+      "to": "should-pin-back-behavior-to-targetsdk",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept: pin behavior to targetSdk and re-check the linked doc before shipping, and do not assume a fixed default across versions, at SHOULD / SHOULD NOT.",
+        "pin": "75e006400f722c5bcc42951ca6071325e15e7737402d5d0fad1e5f1e4fcb8ee5"
+      }
+    }
+  ],
+  "obsolete": []
+}

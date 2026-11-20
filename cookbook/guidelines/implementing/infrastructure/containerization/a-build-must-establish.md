@@ -1,0 +1,18 @@
+
+- `multi-stage`: the Dockerfile is multi-stage and the final stage copies only what runs with `COPY --from=<stage>`
+- `base-image`: the final stage's `FROM` is a `slim`, `alpine` or distroless base
+- `one-concern`: each image runs one app or process, or the work says why not
+- `workdir`: paths are set with `WORKDIR` and absolute paths, not chained `cd`, or the work says why not
+- `entrypoint-and-cmd`: `ENTRYPOINT` names the executable and `CMD` gives default arguments, or the work says why not
+- `pin-by-digest`: every `FROM` carries an `@sha256:` digest, or the work says why not
+- `deterministic-deps`: dependencies install from a locked manifest, or the work says why not
+- `rebuild-fresh`: periodic release builds pass `--pull` (and `--no-cache` when patching), or the work says why not
+- `order-layers-by-change-frequency`: instructions are ordered from least- to most-frequently changed, or the work says why not
+- `cache-order`: the dependency manifest is copied and installed before application source is copied
+- `combine-run`: `apt-get update` and `install` share one `RUN` that removes `/var/lib/apt/lists/*`, or the work says why not
+- `non-root`: a `USER` naming an unprivileged user is set before `ENTRYPOINT`
+- `no-baked-secrets`: image history holds no secret in any layer, `ENV` or build arg
+- `least-files`: a `.dockerignore` excludes `.git`, secrets, local env files, build output and `node_modules`, or the work says why not
+- `drop-extras`: no package is installed that the runtime does not use, or the work says why not
+- `healthcheck`: a cheap, app-specific `HEALTHCHECK` or orchestrator probe is declared, or the work says why not
+- `adopt-when-justified`: any orchestration platform or per-image scanner has a recorded measured need, or the work says why not

@@ -1,0 +1,55 @@
+
+- `should-design-skills-single-purpose-and-versioned`: a skill that serves one purpose and carries a version keeps it; a skill doing several unrelated jobs, or unversioned, breaks it
+- `should-keep-rules-minimal-deterministic-side-effect-free`: a rule file with only what it needs, deterministic wording and no side effects keeps it; padding, judgment calls or side effects break it
+- `should-check-inventory-before-creating`: a new skill, rule or agent added without the inventory being consulted breaks it
+- `should-read-skills-table-before-creating-a-skill`: a new skill created without reference to the skills table in CLAUDE.md breaks it
+- `should-not-duplicate-a-skill-purpose`: a new skill whose purpose an existing skill already serves breaks it
+- `should-confirm-new-skill-name-and-purpose`: a skill not already listed, created without the user confirming its name and purpose, breaks it
+- `must-version-skills-from-day-one`: the skill's frontmatter `version` field, a `--version` parameter, and a version print on every invocation; any one missing breaks it
+- `should-increment-skill-version-by-semver`: a skill change with no version bump, or a bump of the wrong semver part (patch for fixes, minor for new behavior, major for breaking changes), breaks it
+- `must-check-session-version-at-startup`: startup code that reads the on-disk version and compares it to the session's loaded version keeps it; no such comparison breaks it
+- `should-warn-when-loaded-skill-may-be-stale`: a version mismatch that produces no warning to the user breaks it
+- `should-not-block-on-version-mismatch`: a version mismatch that stops or blocks execution breaks it
+- `should-not-describe-arguments-in-prose`: argument handling described in prose instead of through argument variables breaks it
+- `should-use-arguments-variables`: input read through `$ARGUMENTS`, `$0`, `$1` keeps it
+- `must-reference-arguments-when-hinted`: a skill declaring `argument-hint` whose body never references `$ARGUMENTS`, `$0` or `$1` breaks it
+- `should-use-claude-skill-dir`: paths to the skill's own supporting files written without `${CLAUDE_SKILL_DIR}` break it
+- `should-use-repo-relative-cookbook-paths`: cookbook content reached by an absolute or machine-specific path breaks it
+- `should-keep-skill-description-under-200-characters`: the frontmatter `description` length; 200 characters or more breaks it
+- `should-include-trigger-keywords-in-description`: a description with no natural trigger keywords breaks it
+- `should-use-one-atomic-permission-prompt`: file modifications made before a single yes/no prompt listing every file and command with reasons, or several prompts, break it
+- `should-check-prerequisites-first`: work that begins before prerequisites are checked breaks it
+- `should-stop-on-missing-prerequisites`: missing files or a misconfigured environment that the skill works on past, or stops at with no useful message, breaks it
+- `should-handle-invalid-arguments-explicitly`: invalid arguments that fail silently break it
+- `must-include-a-usage-section`: a skill with no Usage section, or one without an example invocation and its expected output, breaks it
+- `should-disable-model-invocation-for-explicit-only-skills`: a skill meant only for explicit user invocation that lacks `disable-model-invocation` breaks it
+- `must-not-disable-model-invocation-on-called-skills`: `disable-model-invocation` on a skill that another skill calls via the Skill tool breaks it
+- `should-not-fork-chainable-skills`: `context: fork` on a skill that invokes other skills or writes files the caller needs breaks it
+- `should-fork-only-isolated-read-heavy-tasks`: `context: fork` on anything but an isolated, read-heavy task that returns a report breaks it
+- `should-keep-one-authoritative-source`: content duplicated between the skill's body and its references breaks it
+- `must-not-overlap-body-and-references`: body and reference files with overlapping content that can drift out of sync break it
+- `must-lint-skill-after-every-change`: a skill created or changed without a `/lint-skill <path>` run breaks it
+- `should-fix-all-skill-lint-fails`: a skill called complete with `/lint-skill` FAILs outstanding breaks it
+- `should-present-skill-lint-warns`: `/lint-skill` WARNs not shown to the user break it
+- `should-add-new-skill-to-claude-md-and-readme`: a new skill missing from the skills table of CLAUDE.md or README.md breaks it
+- `should-use-rfc-2119-keywords-in-rules`: a rule written in advisory or suggestive language, or using RFC 2119 keywords inconsistently, breaks it
+- `should-list-every-referenced-file-path`: a rule telling the LLM to read or check content without listing every file path breaks it
+- `must-not-make-the-llm-search-for-references`: any referenced content the LLM must search for breaks it
+- `should-keep-one-concern-per-rule`: a rule addressing more than one topic breaks it
+- `should-not-combine-concerns-in-one-rule-file`: unrelated concerns in a single rule file break it
+- `must-include-a-must-not-section`: a rule with no dedicated MUST NOT section breaks it
+- `should-include-verification-steps`: a "do X" instruction with no step confirming X was done breaks it
+- `should-avoid-subjective-language`: words like "appropriate," "as needed," or "if it makes sense" break it
+- `should-be-specific-enough-for-consistent-results`: an instruction two independent sessions could follow to different results breaks it
+- `should-reapply-everything-on-same-selection`: a re-selected current configuration that does not re-apply everything from scratch breaks it
+- `should-not-skip-steps-on-same-selection`: steps skipped as "already done" on a same selection break it
+- `should-name-requirements-not-number-them`: requirements identified as REQ-001 or other sequential IDs break it
+- `must-lint-rule-after-every-change`: a rule created or changed without a `/lint-rule <path>` run breaks it
+- `should-fix-all-rule-lint-fails`: a rule called complete with `/lint-rule` FAILs outstanding breaks it
+- `should-present-rule-lint-warns`: `/lint-rule` WARNs not shown to the user break it
+- `should-scope-agent-tool-access`: an agent with neither `tools` nor `disallowedTools` set breaks it
+- `should-set-max-turns`: an agent with no `maxTurns`, or a limit out of line with the task's complexity, breaks it
+- `should-write-a-clear-system-prompt`: a markdown body that is vague, ambiguous or unstructured breaks it
+- `must-lint-agent-after-every-change`: an agent created or changed without a `/lint-agent <path>` run breaks it
+- `should-fix-all-agent-lint-fails`: `/lint-agent` FAILs left unfixed break it
+

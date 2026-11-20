@@ -1,0 +1,11 @@
+
+- `should-classify-each-file-into-one-category`: whether every file has exactly one primary purpose category
+- `should-keep-groups-purpose-coherent`: whether every candidate group is purpose-coherent
+- `should-split-incoherent-groups`: whether every incoherent group is split
+- `should-have-one-sentence-purpose`: whether each group's purpose fits one sentence with no "and also"
+- `should-document-mixed-purpose-files`: whether every mixed-purpose file is documented with a refactoring recommendation
+- `should-not-create-mixed-purpose-groups`: whether any group exists to accommodate mixed-purpose files
+- `should-split-mixed-files-along-fault-line`: whether each mixed-purpose file's split follows the fault line between its purposes
+- `should-place-configuration-with-its-components`: whether configuration sits with its components, or in a bootstrap group when app-wide
+- `should-place-test-infrastructure-with-subject`: whether test infrastructure sits with its subject or in a shared test infrastructure group
+- `must-give-build-tooling-own-group`: whether build tooling is its own scope group, excluded from runtime analysis

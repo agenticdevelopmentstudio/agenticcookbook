@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use Dynamic Type throughout — avoid fixed font sizes.",
+      "to": "should-use-dynamic-type-throughout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule should-use-dynamic-type-throughout keeps the unkeyed instruction at SHOULD with both halves: use Dynamic Type throughout and avoid fixed font sizes.",
+        "pin": "da8c84b9b32dcea7444bb3c6ffa2a85a7476d7f31bbb107962adb5b99cad0b13"
+      }
+    },
+    {
+      "sentence": "Custom fonts must respond to the bold text accessibility setting.",
+      "to": "must-make-custom-fonts-respond-to-bold-text",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule must-make-custom-fonts-respond-to-bold-text raises the lowercase 'must' to MUST and keeps the scope (custom fonts) and the trigger (the bold text accessibility setting).",
+        "pin": "1278ebb0595eff1bc324855736a3763e53140fd97c429902c2a6fedad30dc486"
+      }
+    }
+  ],
+  "obsolete": []
+}

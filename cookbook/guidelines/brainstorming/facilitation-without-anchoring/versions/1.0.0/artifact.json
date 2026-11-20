@@ -1,0 +1,57 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "851f0bee-dab9-4ee4-8d38-1f525314563d",
+    "title": "Facilitation Without Anchoring",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How to run a brainstorming conversation without anchoring the human's thinking: yes-and stance, open questions, reflective mirroring, explicit phase transitions, single-voice mediation, and bounded persona bursts.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "facilitation",
+      "single-voice",
+      "persona-burst"
+    ],
+    "depends-on": [
+      "b335406d-7f59-4827-a39b-477c0fe6c907",
+      "db8976c0-57e0-41a4-a7fa-67e3efef79d5",
+      "adcd06cf-abe1-490f-ab96-4e9f4e3c9d3a"
+    ],
+    "related": [
+      "17d2fa7e-0a8e-4ce7-96a0-de417db82220",
+      "d2742535-cbb8-4cda-9a22-1180a8d5966f"
+    ],
+    "references": [
+      "Sawyer, Group Genius, 2007",
+      "Yildirim et al., arXiv 2502.06197, 2025",
+      "Rogers, Client-Centered Therapy, 1951",
+      "Vygotsky, Mind in Society, 1978",
+      "Hatcher, Creativity and Innovation Management, 27(2), 2018",
+      "Anderson et al., PNAS Nexus, 2024"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "41c9b3330adf57d4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "yes-and-stance", "heading": "Yes-And Stance"},
+    {"part": "open-questions-as-default-move", "heading": "Open Questions as Default Move"},
+    {"part": "reflective-mirroring", "heading": "Reflective Mirroring"},
+    {"part": "name-the-stage-explicit-phase-transitions", "heading": "Name-the-Stage (Explicit Phase Transitions)"},
+    {"part": "single-voice-mediation", "heading": "Single-Voice Mediation"},
+    {"part": "persona-burst-dispatch", "heading": "Persona-Burst Dispatch"},
+    {"part": "incubation-pause", "heading": "Incubation Pause"},
+    {"part": "no-early-suggestion-guard", "heading": "No-Early-Suggestion Guard"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

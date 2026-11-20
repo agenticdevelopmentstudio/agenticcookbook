@@ -1,0 +1,37 @@
+
+- `must-declare-in-pyproject`: every project installed or imported by other code has a `pyproject.toml` with `[build-system]` and `[project]` tables
+- `should-use-project-tables-for-extras-and-scripts`: optional extras are in `[project.optional-dependencies]` and entry points in `[project.scripts]`, or the code says why not
+- `should-not-write-setup-py`: no new project has a `setup.py`
+- `should-match-requires-python-to-oldest-tested`: `requires-python` equals the oldest interpreter CI tests
+- `should-carry-inline-script-metadata`: every single-file script with dependencies has a `# /// script` block with `requires-python` and `dependencies`, or the code says why not
+- `should-ship-py-typed`: every typed library package contains `py.typed`
+- `should-annotate-signatures-and-public-attributes`: every function signature and public attribute is annotated
+- `should-type-check-strictly-in-ci`: CI runs a type checker in strict mode (mypy `--strict`) and it passes
+- `should-not-blanket-ignore-types`: every `# type: ignore` names one error code and gives a reason
+- `should-run-commands-as-lists`: every external program runs through `subprocess.run` with a list of arguments
+- `must-not-shell-out-foreign-values`: no `shell=True` call's string contains a value the code did not write itself
+- `should-shlex-quote-when-a-shell-is-required`: every value interpolated into a required shell string is passed through `shlex.quote`
+- `should-check-exit-status`: every subprocess call passes `check=True` or inspects `returncode` on purpose
+- `should-pass-timeout-to-hanging-commands`: every command that could hang passes `timeout=`
+- `should-capture-output-as-text`: every read of a command's output uses `capture_output=True` with `text=True`
+- `should-not-mix-capture-output-and-streams`: no call combines `capture_output` with explicit `stdout` or `stderr`
+- `should-build-env-from-os-environ`: every custom `env` is built from `os.environ` plus changes, or the code says why it is clean
+- `should-use-pathlib`: paths are `pathlib.Path`, with no string concatenation or `os.path`
+- `should-join-read-and-write-with-path-methods`: paths are joined with `/` and files read and written with `read_text` and `write_text`
+- `must-pass-utf-8-encoding`: every text read and write passes `encoding="utf-8"`
+- `should-make-and-search-directories-with-path`: directories are created with `mkdir(parents=True, exist_ok=True)` and searched with `glob` or `rglob`
+- `should-resolve-before-containment-check`: every test of whether a path lies under a root resolves it first
+- `should-catch-narrowest-exception`: every `except` names the narrowest exception the code can handle
+- `must-not-use-bare-except`: no bare `except:` exists
+- `should-not-catch-exception-outside-boundary`: `except Exception` appears only at a process boundary that logs and exits
+- `should-name-errors-with-error-suffix`: every custom error subclasses `Exception` and ends in `Error`
+- `should-chain-translated-exceptions`: every translated exception is raised `from` the original
+- `should-use-from-none-only-on-purpose`: every `from None` hides an implementation detail, and the code says so
+- `should-keep-try-bodies-small`: every `try` body holds only the code that can raise the handled error
+- `should-use-else-and-finally`: success-only code is in `else` and cleanup in `finally`
+- `must-not-leave-finally-by-jump`: no `finally` block contains `return`, `break` or `continue`
+- `should-add-note-instead-of-wrapping`: context is added to in-flight exceptions with `add_note()`, with no wrap that adds nothing
+- `should-start-untrusted-scripts-isolated`: every script run from a directory the user does not control is started with `python -I`
+- `should-not-use-m-from-untrusted-directory`: no `-m` invocation runs from an untrusted working directory
+- `must-not-run-interpreter-in-downloads`: no interpreter is run inside a directory of downloaded files
+- `should-pass-downloads-as-arguments`: downloaded paths are passed as arguments to an interpreter started from the code's own directory

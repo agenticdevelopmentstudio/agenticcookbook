@@ -1,0 +1,39 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When to use: parsers, serializers, data transformers, encoders/decoders, validators — anything",
+      "to": "should-use-property-tests-where-a-property-holds-for-all-inputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'When to use' list is kept as a SHOULD rule naming all five kinds of code and the 'anything where' scope.",
+        "pin": "bf8797bf4912c86c717ae3d503a65ec2b32bede3d851ad15bdb60fe1c3add099"
+      }
+    },
+    {
+      "sentence": "where \"for all valid inputs X, property Y holds.\"",
+      "to": "should-use-property-tests-where-a-property-holds-for-all-inputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The same rule carries the 'for all valid inputs X, property Y holds' condition word for word.",
+        "pin": "b3b05b74acc933aea79c2651cc830ea4fb49f7aa12e01a019d1cdde332fb05b6"
+      }
+    },
+    {
+      "sentence": "**At least one property test MUST be written per data transformation function.** Examples:",
+      "to": [
+        "must-write-a-property-test-per-data-transformation",
+        "examples"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST rule keeps at least one property test per data transformation function, and the examples part keeps all three example properties and the code sample.",
+        "pin": "6bde251a538ca051215afff656ca4c56412dbb5f989025bbb614a602869db420"
+      }
+    }
+  ],
+  "obsolete": []
+}

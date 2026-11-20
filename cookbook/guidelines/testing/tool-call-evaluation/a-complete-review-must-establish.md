@@ -1,0 +1,14 @@
+
+- `must-evaluate-selection-arguments-ordering-stopping`: the eval checks tool selection, arguments, call order and stopping
+- `should-report-each-dimension-separately`: each dimension is reported separately, or the code says why not
+- `must-pin-input-and-expected-trajectory`: every test case pins an input and its expected tool-call trajectory
+- `should-treat-suite-as-versioned-regression-set`: the suite is a fixed, versioned regression set, or the code says why not
+- `should-allow-semantic-argument-equivalence`: argument checks accept semantic equivalence where exact match is too strict, and stay strict on identifiers, units and destructive parameters
+- `should-score-against-trajectory`: scoring uses the trajectory and not only the final output, or the code says why not
+- `must-include-error-recovery-cases`: the suite includes error, empty-result and timeout cases that assert recovery
+- `should-include-no-tool-cases`: the suite includes cases where no tool should be called, or the code says why not
+- `must-not-assume-short-chains-generalize`: no conclusion about long chains rests on short-chain pass rates
+- `should-add-realistic-multi-step-cases`: multi-step cases use the shipped tool count and accuracy is reported by chain length, or the code says why not
+- `should-report-pass-rates-with-trial-counts`: each case runs multiple times and pass rates carry trial counts, or the code says why not
+- `should-gate-releases-and-track-per-dimension-scores`: releases gate on the suite and per-dimension scores are tracked, or the code says why not
+- `should-keep-cases-hermetic`: tool responses are stubbed or recorded, or the code says why not

@@ -1178,8 +1178,8 @@
     "59ffd7c7-2bdc-4f7b-b6f3-07d1f24599a3": {
       "implementations": [],
       "kind": "guideline",
-      "path": "guidelines/cookbook/testing/unit-test-patterns",
-      "rdid": "adc.guideline.cookbook.testing.unit-test-patterns"
+      "path": "guidelines/cookbook/testing/test-vector-patterns",
+      "rdid": "adc.guideline.cookbook.testing.test-vector-patterns"
     },
     "5aad79dd-4d0e-463e-8059-39da2fef63b3": {
       "implementations": [],

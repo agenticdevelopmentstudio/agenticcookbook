@@ -1,0 +1,15 @@
+
+- `must-not-rely-on-deprecated-back-apis`: no code overrides `onBackPressed()` or intercepts `KEYCODE_BACK`; back handling goes through `OnBackPressedDispatcher`
+- `must-register-onbackpressedcallback`: every custom back handler is an `OnBackPressedCallback` added to the dispatcher with a `LifecycleOwner`
+- `should-prefer-androidx-back-apis`: back handling uses the AndroidX `androidx.activity` APIs, or the work says why not
+- `should-use-platform-callback-only-without-androidx`: the platform `OnBackInvokedCallback` is used directly only in code with no AndroidX dependency, or the work says why
+- `must-derive-isenabled-from-ui-state`: every callback's `isEnabled` comes from a `StateFlow` or Compose `State`, never an imperative toggle
+- `should-keep-callbacks-single-responsibility`: each back-consuming UI state has its own callback, or the work says why not
+- `may-override-back-flag-per-activity`: any per-`<activity>` override of `android:enableOnBackInvokedCallback` is part of a gradual rollout
+- `should-enable-back-flag-for-system-animations`: `android:enableOnBackInvokedCallback` is `true` or omitted where the default is on, or the work says why not
+- `should-pin-back-behavior-to-targetsdk`: the expected predictive-back behavior is stated for the app's `targetSdk` and checked against the linked doc before shipping, or the work says why not
+- `should-animate-with-the-gesture`: every custom sheet, drawer or multi-step transition follows the gesture's progress, or the work says why not
+- `should-use-predictivebackhandler-in-compose`: Compose back animations use `PredictiveBackHandler`, commit when the flow completes and reset on `CancellationException`, or the work says why not
+- `should-implement-back-progress-callbacks-in-views`: View back animations implement `handleOnBackStarted` / `handleOnBackProgressed` / `handleOnBackCancelled` and commit in `handleOnBackPressed`, or the work says why not
+- `should-use-observer-priority-only-for-side-effects`: `PRIORITY_SYSTEM_NAVIGATION_OBSERVER` callbacks perform only non-consuming side effects, or the work says why
+- `must-not-alter-navigation-from-observer`: no `PRIORITY_SYSTEM_NAVIGATION_OBSERVER` callback alters navigation

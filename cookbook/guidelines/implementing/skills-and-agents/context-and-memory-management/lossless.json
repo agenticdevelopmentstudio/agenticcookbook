@@ -1,0 +1,53 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The agent **MUST NOT** front-load context \"just in case.\" Retrieve files, tool output, and references just-in-time, at the point they are needed.",
+      "to": [
+        "must-not-front-load-context",
+        "should-retrieve-context-just-in-time"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MUST NOT front-load context 'just in case' kept verbatim; the unkeyed just-in-time retrieval instruction kept at SHOULD with its 'at the point needed' condition.",
+        "pin": "59e83076e6a580b2e8712a3a3bd68e7f3c3ef27a69d8989edd0e8370819dc173"
+      }
+    },
+    {
+      "sentence": "An overstuffed memory file dilutes attention and causes the agent to ignore the rules that matter — keep only what changes behavior, and prune regularly.",
+      "to": [
+        "rationale",
+        "should-keep-only-behavior-changing-memory",
+        "should-prune-memory-regularly"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the reason (overstuffed memory dilutes attention, rules that matter get ignored); the two instructions are kept at SHOULD as keep-only-behavior-changing and prune-regularly rules.",
+        "pin": "bb6562795a0509bfe6a5718c1c45f27415fe3acc0fe75d818b4eedbab543367b"
+      }
+    },
+    {
+      "sentence": "> Note: larger context windows (forecast to keep growing) raise the threshold at which curation becomes urgent, but do not remove the degradation-with-fill effect.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale carries the note word for word, tied to should-treat-a-bigger-window-as-headroom.",
+        "pin": "f67a68cf2e8163c1bfc2242dbd9d7175b8b449178837391e751cda602b89b879"
+      }
+    },
+    {
+      "sentence": "Treat a bigger window as more headroom, not a license to stop curating — this is a durable property, not a vendor-specific number.",
+      "to": "should-treat-a-bigger-window-as-headroom",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the instruction at SHOULD with its full qualifier that this is a durable property, not a vendor-specific number.",
+        "pin": "9e06d97a3ee9b133361bde6b5ed0f310b4548631fc6ac2a1b3e744161b65ee10"
+      }
+    }
+  ],
+  "obsolete": []
+}

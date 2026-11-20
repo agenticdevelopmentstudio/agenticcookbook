@@ -1,0 +1,11 @@
+
+- **should-give-every-action-visible-feedback**: Every user action SHOULD have visible feedback.
+- **should-match-feedback-weight-to-action**: The weight of the feedback SHOULD match the weight of the action.
+- **should-auto-dismiss-toasts**: Toasts SHOULD auto-dismiss after 3-5 seconds.
+- **must-require-no-action-on-toasts**: Toasts MUST require no user action — no user action required.
+- **must-not-use-toasts-for-errors**: Toasts MUST NOT be used for errors.
+- **should-make-banners-dismissible**: Banners and inline alerts SHOULD be dismissible.
+- **should-use-dialogs-sparingly**: Dialogs SHOULD be used sparingly — dialog fatigue leads to click-through without reading.
+- **must-not-use-dialogs-for-success**: Dialogs MUST NOT be used for success messages — a toast or inline confirmation is sufficient.
+- **must-confirm-destructive-actions**: **Destructive actions** MUST require explicit confirmation with a clearly labeled action ("Delete", not "OK").
+- **should-default-focus-to-safe-option**: Default focus SHOULD be on the safe option (Cancel).

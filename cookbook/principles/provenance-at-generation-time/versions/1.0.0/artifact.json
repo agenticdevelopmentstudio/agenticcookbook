@@ -1,0 +1,37 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "0131807b-548d-403a-8366-de79e215949d",
+    "title": "Provenance at generation time",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Capture a claim's provenance as you gather it — the source, the exact supporting quote, and the access date — never reconstruct it afterward.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "provenance",
+      "citations"
+    ],
+    "depends-on": [],
+    "related": [
+      "09947209-369f-40de-8331-c10b0d6f32c6",
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "2795e06d-b081-43ac-97d9-20ff3d0a93b1"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "91ce9ec3f79d00d5",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

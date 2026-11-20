@@ -1,0 +1,24 @@
+
+- `must-create-spans-via-otel-api`: whether every span is created through the OpenTelemetry API rather than a vendor-specific SDK
+- `should-span-each-unit-of-work`: whether each unit of work is one span with a clear name and status
+- `should-record-errors-on-spans`: whether errors are recorded on spans via `span.record_exception` / `ERROR` status, not only logged
+- `should-prefer-auto-instrumentation`: whether common frameworks/clients use auto-instrumentation, with manual spans kept for domain-specific work
+- `should-propagate-w3c-trace-context`: whether every request crossing a service boundary propagates `traceparent` (and `tracestate` when present)
+- `should-pin-trace-context-level-1`: whether propagation is pinned to W3C Trace Context Level 1
+- `must-treat-header-names-case-insensitive`: whether trace header names are matched ASCII case-insensitively
+- `should-emit-lowercase-traceparent`: whether `traceparent` is emitted in lowercase
+- `must-not-drop-incoming-traceparent`: whether any service drops an incoming `traceparent` and starts a new root
+- `should-inject-context-at-transport-edge`: whether context is injected and extracted at the transport edge, not in business logic
+- `must-propagate-context-in-messages`: whether every published message or event carries `traceparent` in its metadata
+- `should-link-consumer-span-to-producer`: whether consumer spans for queues, pub/sub and event streams use a span link to the producer
+- `should-prefer-tail-based-sampling`: whether sampling is tail-based at the Collector rather than head-based in the SDK
+- `should-keep-errors-and-sample-successes`: whether the default policy keeps every error or high-latency trace and samples a fraction of successful ones
+- `should-tune-sampling-rate`: whether the sampling rate is tuned from use rather than fixed as a rule
+- `must-propagate-consistent-sampling-decision`: whether the sampling decision is propagated via `traceparent` trace-flags so all services in a trace agree
+- `should-carry-trace-id-in-logs`: whether log records carry the active `trace_id` (and `span_id`)
+- `should-use-same-trace-id-field-name`: whether every service uses the same `trace_id` field name
+- `may-emit-exemplars`: whether any exemplars emitted link a metric data point to a sample `trace_id`
+- `should-span-model-and-tool-calls`: whether each model call and tool/function call is its own span, nested under the request or agent-step span
+- `should-follow-genai-semantic-conventions`: whether GenAI attributes follow the OpenTelemetry GenAI semantic conventions where they apply
+- `should-record-genai-convention-version`: whether the targeted GenAI convention version is recorded
+- `should-opt-in-and-redact-content-capture`: whether prompt/response content capture on spans is opt-in and redacted

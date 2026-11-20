@@ -1,0 +1,11 @@
+
+- `should-give-every-action-visible-feedback`: every user action produces visible feedback, or the work says why not
+- `should-match-feedback-weight-to-action`: each action's feedback pattern matches its weight, or the work says why not
+- `should-auto-dismiss-toasts`: every toast auto-dismisses after 3-5 seconds, or the work says why not
+- `must-require-no-action-on-toasts`: no toast requires a user action
+- `must-not-use-toasts-for-errors`: no error is reported through a toast or snackbar
+- `should-make-banners-dismissible`: every banner and inline alert can be dismissed, or the work says why not
+- `should-use-dialogs-sparingly`: dialogs appear only for destructive or irreversible actions, or the work says why
+- `must-not-use-dialogs-for-success`: success is reported by a toast or inline confirmation, never a dialog
+- `must-confirm-destructive-actions`: every destructive action asks for confirmation through a specifically labeled button such as "Delete"
+- `should-default-focus-to-safe-option`: default focus in every confirmation is on Cancel or the other safe option, or the work says why not

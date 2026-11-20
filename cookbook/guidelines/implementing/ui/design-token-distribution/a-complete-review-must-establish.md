@@ -1,0 +1,16 @@
+
+- `must-make-source-single-authority`: whether the token source is the single authority for token values
+- `should-generate-outputs-with-transform-tool`: whether a current transform tool generates the platform outputs
+- `must-not-hand-edit-generated-outputs`: whether any generated output was hand-edited
+- `should-regenerate-on-every-change-in-ci`: whether outputs regenerate on every token change and in CI
+- `should-version-token-source`: whether the token source is versioned like a dependency
+- `should-mark-outputs-generated`: whether each output is generated, committed or published, and marked do-not-edit
+- `must-derive-names-deterministically`: whether names derive deterministically from token paths
+- `should-expose-semantic-tokens-not-primitives`: whether product code uses semantic/alias tokens rather than primitives
+- `should-run-generation-as-reproducible-step`: whether generation is a checked-in, reproducible step
+- `should-run-drift-check-in-ci`: whether CI regenerates and fails on drift from committed outputs
+- `should-version-transform-config`: whether the transform configuration is versioned with the token source
+- `should-adopt-managed-pipeline-only-on-measured-need`: whether any managed pipeline or sync service is justified by a measured need
+- `must-not-maintain-parallel-token-files`: whether any platform keeps parallel hand-written token files
+- `must-not-propagate-platform-edits-back`: whether platform edits reached the source informally rather than as source changes
+- `should-not-hardcode-raw-values`: whether feature code hardcodes raw values that a token covers

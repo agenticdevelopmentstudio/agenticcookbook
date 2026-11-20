@@ -1,0 +1,61 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The speed of your feedback loop is the speed of your learning:",
+      "to": [
+        "should-optimize-test-suite-runtime",
+        "should-deploy-small-changes-frequently",
+        "should-get-real-user-feedback-early",
+        "should-automate-commit-to-observation"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in's claim that feedback-loop speed is learning speed is kept in the intro and in rationale.md attached to all four target rules, which carry the list it introduced.",
+        "pin": "4d44deb4bea0085cd8ad753658391852f76b0ecc0547528388d4128568dba2ad"
+      }
+    },
+    {
+      "sentence": "Optimize test suite runtime — slow tests do not get run",
+      "to": "should-optimize-test-suite-runtime",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps optimizing test suite runtime at SHOULD, with its reason that slow tests do not get run.",
+        "pin": "46b3efbbee456fef44fb722fcb2c9e62f2506495020ddb2deb5bad6ad4cca75e"
+      }
+    },
+    {
+      "sentence": "Deploy small changes frequently",
+      "to": "should-deploy-small-changes-frequently",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps deploying small changes frequently at SHOULD.",
+        "pin": "fb9c42ad5d1e9312edda17d0935dca00bf3a74a4c6f1520435c7f0ee9b899ba9"
+      }
+    },
+    {
+      "sentence": "Get real user feedback as early as possible",
+      "to": "should-get-real-user-feedback-early",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps getting real user feedback as early as possible at SHOULD.",
+        "pin": "692b4f9a81b5f53d21235231c60ffe9e42dc7e82e063d0512ba3d94c6042c2f4"
+      }
+    },
+    {
+      "sentence": "Automate everything between commit and production observation",
+      "to": "should-automate-commit-to-observation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps automating everything between commit and production observation at SHOULD, with the same full scope.",
+        "pin": "3ad175089f2c2eaa2423a41ae324ff4201fd2ab8df63104451dadac4857a127b"
+      }
+    }
+  ],
+  "obsolete": []
+}

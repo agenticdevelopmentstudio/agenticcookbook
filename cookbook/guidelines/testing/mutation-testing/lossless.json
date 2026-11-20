@@ -1,0 +1,20 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Write additional tests to kill surviving mutants — all surviving mutants MUST be addressed",
+      "to": "must-address-all-surviving-mutants",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: all surviving mutants are addressed, by writing additional tests to kill them.",
+        "pin": "05a831a3a25a14c70fcb0327aca317b4024d85ef1e230ca81728bcd349514b57"
+      }
+    },
+    {
+      "sentence": "**Mutation testing MUST be run before claiming \"tests are complete.\"**",
+      "to": "must-run-before-claiming-complete"
+    }
+  ],
+  "obsolete": []
+}

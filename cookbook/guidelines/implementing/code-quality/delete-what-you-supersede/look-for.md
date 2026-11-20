@@ -1,0 +1,22 @@
+
+- `must-delete-replaced-implementation`: a new implementation added while the one it replaces is still in the code
+- `should-not-keep-old-and-new-side-by-side`: old and new paths side by side, or the old one parked behind a flag that is permanently off
+- `should-delete-as-you-go`: a TODO or plan for a later cleanup pass in place of the deletion
+- `should-delete-old-tests-with-old-code`: tests of the removed code still present, or behavior they pinned dropped instead of moved to the new path
+- `must-update-every-caller`: a caller, import, export, doc reference or string that still names the old name of a renamed or moved function, type, file or route
+- `should-search-whole-repo-for-old-name`: references to the old name in files the change never opened
+- `should-search-whole-identifier`: a missed reference that a fragment search, or a search skipping strings, config and docs, would not find
+- `should-finish-with-final-search`: any hit for the old name left in the tree
+- `must-comment-compatibility-shims`: a compatibility shim with no comment saying it is one and when it goes away
+- `must-delete-unreferenced-things`: files, functions, exports, types, assets, feature flags, config keys, environment variables or migrations that nothing references after the change
+- `should-remove-orphaned-flags`: a flag whose rollout is finished or whose old branch was removed, still present with the branch it guarded
+- `should-remove-unused-dependencies`: a manifest entry for a dependency the change made unused
+- `should-confirm-with-reference-search`: a deletion with no reference search behind it
+- `must-not-delete-unproven-unused`: something deleted that is still referenced, or not shown to be unused
+- `must-not-widen-cleanup`: deletions of unrelated dead code outside the change
+- `must-delete-not-comment-out`: commented-out code
+- `should-not-keep-old-code-for-reference`: an old block kept with a note like "kept for reference" or "old approach"
+- `should-record-old-reasoning-as-a-sentence`: old code kept to explain an approach, where a one-sentence comment would do
+- `must-not-commit-temporary-disables`: a debugging disable (a commented-out call, an `if false`) in a commit
+- `should-rename-when-meaning-changes`: a name that no longer describes what its value, function or field holds
+- `should-reread-touching-names`: parameter, variable, file or test names that describe a type or behavior the change altered

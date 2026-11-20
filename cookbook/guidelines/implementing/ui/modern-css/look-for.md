@@ -1,0 +1,26 @@
+
+- `must-gate-adoption-on-baseline`: a CSS feature adopted on one browser's support or a "Can I Use" glance rather than its Baseline status
+- `may-use-widely-available-without-fallback`: a Widely available feature carrying a fallback it does not need
+- `should-fallback-for-newly-available`: a Newly available feature used with no documented fallback or progressive enhancement
+- `should-date-baseline-claims`: a Baseline claim with no date
+- `should-verify-baseline-status`: a feature's current status assumed without checking MDN or the Baseline data
+- `should-reverify-cohort-statuses`: a cohort status relied on without re-verifying it since 2026-06-09
+- `should-use-container-queries-for-components`: component responsiveness keyed to the viewport rather than to a query container (`container-type: inline-size`) and `@container`
+- `should-limit-viewport-media-queries-to-page-level`: a viewport media query used for a component rather than a page-level concern (page shell, print, `prefers-*`)
+- `should-use-subgrid-for-nested-alignment`: nested items aligned to an ancestor grid by hand instead of with subgrid
+- `should-fallback-subgrid-only-for-pre-cutoff`: a non-subgrid fallback where no pre-cutoff version is targeted
+- `should-prefer-logical-properties`: physical properties (`margin-left`, `top`) where logical ones (`margin-inline`, `inset-block`) fit
+- `should-define-explicit-layer-order`: CSS with no explicit `@layer` order, or precedence won by escalating specificity
+- `should-import-third-party-css-into-low-layer`: third-party CSS outside a low-priority layer, or overridden with `!important`
+- `should-use-has-for-conditional-styling`: JavaScript toggling classes to style from descendant or sibling state that `:has()` could express
+- `should-use-native-nesting`: related rules scattered rather than co-located with native nesting
+- `should-not-nest-deeply`: deeply nested rules
+- `should-use-same-document-view-transitions`: a JS animation library for SPA state or route changes where `document.startViewTransition` serves
+- `must-degrade-view-transitions-gracefully`: a DOM update that does not apply when View Transitions are unsupported
+- `should-feature-detect-view-transitions`: `document.startViewTransition` called without an `if (document.startViewTransition)` check and a direct-update branch
+- `should-use-cross-document-transitions-only-as-enhancement`: cross-document (MPA) View Transitions used as more than progressive enhancement
+- `must-not-make-navigation-depend-on-cross-document-transitions`: navigation that fails or changes without cross-document (MPA) View Transitions
+- `should-respect-reduced-motion`: transitions that ignore `prefers-reduced-motion: reduce`
+- `should-not-use-js-runtimes-native-css-covers`: a CSS-in-JS runtime or JS animation library where an interoperable native CSS feature covers the need
+- `should-not-escalate-specificity`: escalated specificity or `!important` used to win the cascade
+- `should-not-gate-solely-on-caniuse`: a feature gated on `caniuse` percentages alone, without Baseline tier or the traffic's pre-cutoff versions

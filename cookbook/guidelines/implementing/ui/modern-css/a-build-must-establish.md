@@ -1,0 +1,26 @@
+
+- `must-gate-adoption-on-baseline`: every CSS feature adopted has its Baseline status recorded as the reason it is used
+- `may-use-widely-available-without-fallback`: every feature used without a fallback is Widely available
+- `should-fallback-for-newly-available`: every Newly available feature has a documented fallback or progressive enhancement, or the code says why not
+- `should-date-baseline-claims`: every Baseline claim carries a date, or the code says why not
+- `should-verify-baseline-status`: each feature's status was checked against MDN or the Baseline data, or the code says why not
+- `should-reverify-cohort-statuses`: each cohort status relied on was re-verified after 2026-06-09, or the code says why not
+- `should-use-container-queries-for-components`: component responsiveness uses `container-type: inline-size` and `@container`, or the code says why not
+- `should-limit-viewport-media-queries-to-page-level`: every viewport media query serves a page-level concern, or the code says why not
+- `should-use-subgrid-for-nested-alignment`: nested items align to ancestor tracks with subgrid, or the code says why not
+- `should-fallback-subgrid-only-for-pre-cutoff`: a non-subgrid fallback exists only where pre-cutoff versions are targeted, or the code says why
+- `should-prefer-logical-properties`: layout uses logical properties, or the code says why it uses physical ones
+- `should-define-explicit-layer-order`: an explicit `@layer` order is defined, or the code says why not
+- `should-import-third-party-css-into-low-layer`: third-party CSS is imported into a low-priority layer, or the code says why not
+- `should-use-has-for-conditional-styling`: conditional styling from descendant or sibling state uses `:has()`, or the code says why JavaScript toggles classes
+- `should-use-native-nesting`: related rules are co-located with native nesting, or the code says why not
+- `should-not-nest-deeply`: no rule is deeply nested, or the code says why
+- `should-use-same-document-view-transitions`: SPA state and route animations use `document.startViewTransition`, or the code says why not
+- `must-degrade-view-transitions-gracefully`: with View Transitions unsupported, every DOM update still applies without animation
+- `should-feature-detect-view-transitions`: every View Transition is behind `if (document.startViewTransition)` with a direct-update branch, or the code says why not
+- `should-use-cross-document-transitions-only-as-enhancement`: cross-document View Transitions are only progressive enhancement, or the code says why
+- `must-not-make-navigation-depend-on-cross-document-transitions`: navigation works without cross-document View Transitions
+- `should-respect-reduced-motion`: transitions are disabled or shortened under `prefers-reduced-motion: reduce`, or the code says why not
+- `should-not-use-js-runtimes-native-css-covers`: no CSS-in-JS runtime or JS animation library is used where native CSS covers the need, or the code says why
+- `should-not-escalate-specificity`: no specificity escalation or `!important` wins the cascade, or the code says why
+- `should-not-gate-solely-on-caniuse`: no feature is gated on `caniuse` percentages alone, or the code says why

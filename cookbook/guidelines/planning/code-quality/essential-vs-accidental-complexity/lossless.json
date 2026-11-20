@@ -1,0 +1,60 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use it to guide attention, not to mechanically sort lines of code.",
+      "to": "should-use-boundary-to-guide-attention",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-boundary-to-guide-attention keeps using the boundary to guide attention rather than mechanically sorting lines (unkeyed, now SHOULD).",
+        "pin": "60a4dd74ad49652ebb3c215c75e63313f41e31b70c4bb31aabc32af9f7552b89"
+      }
+    },
+    {
+      "sentence": "You **SHOULD** delete or generate-away accidental complexity aggressively (better abstractions, code generation, fewer moving parts) but **MUST NOT** \"simplify\" by dropping essential cases — that is hiding complexity, not removing it, and it resurfaces as bugs.",
+      "to": [
+        "should-remove-accidental-complexity-aggressively",
+        "must-not-drop-essential-cases",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD rule keeps aggressive removal with its three means, the MUST NOT keeps not dropping essential cases, and the rationale keeps the hiding-not-removing, resurfaces-as-bugs reason.",
+        "pin": "f2406f1919d5b3299a9f82994a90ac5ce0eb881f5a4607b38319e5c61469035b"
+      }
+    },
+    {
+      "sentence": "You **SHOULD** route that work to agents and review it for correctness, not for novelty.",
+      "to": "should-route-accidental-work-to-agents",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-route-accidental-work-to-agents keeps routing accidental work to agents and reviewing for correctness not novelty, and spells out 'that work' as boilerplate, glue, scaffolding and syntax.",
+        "pin": "b3009d9b3bc0bf11c2537701a10da2e4bd45c27dd8e29a283ccbc6f5f44ca86f"
+      }
+    },
+    {
+      "sentence": "Treat \"AI eliminates complexity\" as a **forecast/marketing claim, not an established result**.",
+      "to": "should-treat-ai-eliminates-complexity-as-a-claim",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-ai-eliminates-complexity-as-a-claim keeps treating the claim as forecast/marketing, not an established result (unkeyed, now SHOULD).",
+        "pin": "a8ba00a40e9a6698f48553911f3e640a53a47f196606e58ccef73b92df4bbaea"
+      }
+    },
+    {
+      "sentence": "Spend the time saved on agents harvesting the incidental on sharper problem decomposition, not on shipping more under-specified features (see `yagni`).",
+      "to": "should-spend-saved-time-on-decomposition",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-spend-saved-time-on-decomposition keeps spending saved time on sharper decomposition, not more under-specified features, with the yagni pointer.",
+        "pin": "466b9bf60a84555c7c87a427d89c35fcc2a1f34f01936cd59923568b9044f941"
+      }
+    }
+  ],
+  "obsolete": []
+}

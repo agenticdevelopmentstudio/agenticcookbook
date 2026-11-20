@@ -4,7 +4,7 @@
     "id": "926dff1a-dc12-46a4-b8c1-bdedbc142afd",
     "title": "Secure Storage",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -28,19 +28,20 @@
       "https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets",
       "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.protecteddata"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review",
       "data-modeling"
     ]
   },
-  "synced": "f91213e99db0d659",
+  "synced": "5e91b6a2a763d3d1",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "c", "heading": "C#"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

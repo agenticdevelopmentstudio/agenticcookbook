@@ -1,0 +1,22 @@
+
+- `should-default-to-pgvector`: retrieval lives in the primary relational datastore via `pgvector`, or the work says why not
+- `should-adopt-a-dedicated-vector-database-only-when-forced`: a dedicated vector database exists only where measured scale or latency forces it, or the work says why
+- `should-treat-the-vector-database-migration-as-reversible`: a migration to a dedicated vector database is recorded as reversible and scale-triggered, or the work says why not
+- `must-pin-the-embedding-model-and-dimension`: the schema pins the embedding model and its output dimension, and no column mixes models or dimensions
+- `should-start-with-pgvector-and-hybrid-retrieval`: pgvector + hybrid retrieval is in place, or an eval or load test shows pgvector cannot meet the target
+- `should-default-to-hnsw`: vector indexes are HNSW, or the work says why not
+- `should-raise-ef-search-for-recall`: `hnsw.ef_search` is set for the recall the workload needs, or the work says why not
+- `should-verify-index-defaults-against-the-pinned-version`: the HNSW defaults relied on are checked against the pinned pgvector version, or the work says why not
+- `should-match-the-distance-operator-to-the-model`: the distance operator matches the embedding model's training, or the work says why not
+- `must-use-one-distance-operator-for-index-and-query`: every index and its queries use the same distance operator
+- `may-use-ivfflat`: any IVFFlat index is where build time and memory dominate and the recall hit is acceptable
+- `should-use-hybrid-retrieval`: retrieval combines dense and lexical search with fusion, or the work says why not
+- `should-rerank-only-top-candidates-and-cache`: reranking covers only the top ~20–50 candidates and repeated queries are cached, or the work says why not
+- `should-measure-fusion-weights-and-reranking`: fusion weights and the rerank choice come from measurement on an eval set, or the work says why not
+- `should-chunk-before-embedding`: documents are chunked before embedding, or the work says why not
+- `should-tune-the-chunk-window-against-an-eval-set`: chunk size and overlap were tuned against a retrieval eval set, or the work says why not
+- `must-store-a-source-reference-with-each-chunk`: every stored chunk carries a stable reference to its source document and position
+- `should-chunk-on-semantic-boundaries`: chunking splits on semantic/structural boundaries where the source allows, or the work says why not
+- `should-store-filterable-attributes-as-columns`: filterable attributes are ordinary columns filtered in the same query, or the work says why not
+- `must-apply-tenant-filters-at-query-time`: every multi-tenant or access-controlled query applies the tenant/permission filter at query time
+- `must-maintain-a-retrieval-eval-set`: a labeled retrieval eval set exists and recall/precision were measured before and after each retrieval change

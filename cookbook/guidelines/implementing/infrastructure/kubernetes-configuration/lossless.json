@@ -1,0 +1,69 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Treat a Kubernetes Secret as **base64-encoded, not encrypted** — protect it at the cluster level or source it from a dedicated secret manager.",
+      "to": "treat-secret-as-encoded-not-encrypted",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating a Secret as base64-encoded, not encrypted, and protecting it at the cluster level or sourcing it from a secret manager is kept at SHOULD, with the reason in rationale.",
+        "pin": "0e4bcc6063d3c6b6586ee417f8e1ea98f44e4e314d1270330b4d7262cc875ea1"
+      }
+    },
+    {
+      "sentence": "> Adopt Kubernetes only when a measured operational need justifies it (per YAGNI).",
+      "to": "adopt-only-on-measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Adopting Kubernetes only on a measured operational need is kept at SHOULD with the YAGNI reason, the simpler defaults, and the scope note.",
+        "pin": "51fa58f8b0fa7256734fac5ec8c69f8a740d6cd2e68caa3293d9db6a59c58664"
+      }
+    },
+    {
+      "sentence": "**mount-choice**: Inject config as environment variables for simple scalars; mount as a volume when files, larger payloads, or live updates are needed.",
+      "to": "mount-choice",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Env vars for simple scalars and volume mounts for files, larger payloads or live updates are kept at SHOULD with the update-in-place vs restart distinction.",
+        "pin": "3aebe04e151734c22d030a30f4b6b65068fb605e80f80b6a70e570cad9291696"
+      }
+    },
+    {
+      "sentence": "**immutable-when-stable**: Mark ConfigMaps and Secrets `immutable: true` when their values are fixed for the release, reducing apiserver load and preventing accidental edits.",
+      "to": "immutable-when-stable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Marking stable ConfigMaps and Secrets immutable: true is kept at SHOULD with its condition and both reasons.",
+        "pin": "4bede31b9b0bf2ce7b77f97441391c5fcf3e5cb86f8376ddae025a8ebb71dc53"
+      }
+    },
+    {
+      "sentence": "> Forecast: secret-management tooling and CSI/operator APIs evolve quickly — pin Helm charts and operator versions, and re-validate against the dated upstream docs before adopting new flows.",
+      "to": [
+        "rationale",
+        "pin-and-revalidate-secret-tooling"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The forecast is kept in rationale, and pinning Helm charts and operator versions and re-validating against dated upstream docs before new flows is kept at SHOULD.",
+        "pin": "417f41e000a69c50f5abc73d02ae99e18fbdbc76121399b18813d3cc7a5f9cb4"
+      }
+    },
+    {
+      "sentence": "Privacy note: handling credentials and PII in clusters is engineering guidance, **not legal advice**; consult the relevant regulations and counsel for compliance obligations.",
+      "to": "consult-counsel-on-compliance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The not-legal-advice note is kept, with consulting regulations and counsel for compliance obligations at SHOULD.",
+        "pin": "59ed4d92cd74e3c4e9d1d5be06363d1169b0e735c87384e7b10b3b0da6efa2eb"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,16 @@
+
+- `should-sender-constrain-high-value-apis`: whether high-value and public-client APIs issue sender-constrained tokens
+- `should-sender-constrain-tokens-through-intermediaries`: whether tokens that traverse intermediaries are sender-constrained
+- `may-keep-low-value-flows-bearer`: whether each flow left bearer is low-value, short-lived and single-confidential-client, by deliberate decision
+- `should-pick-one-mechanism-per-surface`: whether each API surface uses one mechanism consistently, with no mixed acceptance outside a migration plan
+- `should-present-mechanism-choice-as-trade-off`: whether the mechanism choice is presented as a deliberate trade-off
+- `must-send-dpop-proof-on-every-request`: whether every token and protected resource request carries a signed `DPoP` proof
+- `must-include-dpop-proof-claims`: whether every proof carries `htm`, `htu`, `iat` and a unique `jti`, and `ath` on resource requests
+- `must-bind-and-verify-dpop-key`: whether tokens are bound via `cnf.jkt` and the resource server verifies the proof key matches
+- `must-reject-replayed-dpop-proofs`: whether replayed proofs are rejected with a `jti`/`iat` freshness window, and a `nonce` where replay risk is high
+- `must-keep-private-keys-non-exportable`: whether private keys stay in non-exportable storage, unreadable by script
+- `must-bind-client-certificate-fingerprint`: whether the client presents a certificate and its SHA-256 fingerprint is in `cnf.x5t#S256`
+- `must-match-client-certificate-before-honoring`: whether the resource server matches the connection's client certificate before honoring the token
+- `must-handle-certificate-rotation-and-revocation`: whether certificate rotation and revocation are operationally handled
+- `should-combine-with-other-token-controls`: whether sender-constraining is combined with short lifetimes, refresh-token rotation, audience restriction and PKCE
+- `may-choose-mechanism-by-topology`: whether the chosen mechanism fits the deployment topology

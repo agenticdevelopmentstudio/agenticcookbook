@@ -4,11 +4,11 @@
     "id": "3a6baa24-9bd3-45f8-aa6a-b32c61169ed3",
     "title": "Value objects over primitive obsession",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,21 @@
       "https://blog.ndepend.com/code-smell-primitive-obsession-and-refactoring-recipes/",
       "https://www.arhohuttunen.com/primitive-obsession/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "new-module"
     ]
   },
-  "synced": "568f3c9025a5cd9f",
+  "synced": "ea6748fe2d0f5660",
   "parts": [
     {"part": "intro"},
-    {"part": "when-to-introduce-one", "heading": "When to introduce one"},
-    {"part": "how-to-build-one", "heading": "How to build one"},
-    {"part": "per-language", "heading": "Per language"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "per-language", "heading": "Per language", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

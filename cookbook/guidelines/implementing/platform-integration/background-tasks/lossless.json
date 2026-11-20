@@ -1,0 +1,196 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use `WorkManager` for all deferrable background work — it handles constraints, retries, and chaining.",
+      "to": "android-use-workmanager-for-deferrable-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-workmanager-for-deferrable-work keeps WorkManager for all deferrable work and its constraints/retries/chaining reason, scoped to Android, at SHOULD.",
+        "pin": "c32aa2c8431aa1fda830bbde2a83d86b37f2e9d925c25a912522e2edf3bd5716"
+      }
+    },
+    {
+      "sentence": "Use `ForegroundService` with a persistent notification for user-visible ongoing work (music playback, navigation, uploads).",
+      "to": "android-use-foregroundservice-for-visible-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-foregroundservice-for-visible-work keeps ForegroundService with a persistent notification for user-visible ongoing work and its examples, on Android, at SHOULD.",
+        "pin": "51e5e55e8353c1e5fafc7f2df05ac768bf214815e6df1683c3d3ac915512c5a0"
+      }
+    },
+    {
+      "sentence": "Respect Doze mode and App Standby buckets.",
+      "to": "android-respect-doze-and-standby",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-respect-doze-and-standby keeps respecting Doze mode and App Standby buckets on Android, at SHOULD.",
+        "pin": "b4af2362922138c9b8461c403850d9f5caffd9ed2fd33dfacdfeabf738420aa3"
+      }
+    },
+    {
+      "sentence": "Avoid `AlarmManager` for work that `WorkManager` can handle.",
+      "to": "android-avoid-alarmmanager",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-avoid-alarmmanager keeps avoiding AlarmManager for work WorkManager can handle on Android, at SHOULD.",
+        "pin": "9679a2b419b9647b0fc92f8ba06cf2937774d744b9bcff26288cd727fa7d2580"
+      }
+    },
+    {
+      "sentence": "Use `BGAppRefreshTask` and `BGProcessingTask` via the BackgroundTasks framework for deferred work.",
+      "to": "apple-use-bgtasks-for-deferred-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-use-bgtasks-for-deferred-work keeps BGAppRefreshTask and BGProcessingTask via BackgroundTasks for deferred work on Apple platforms, at SHOULD.",
+        "pin": "f9167414aa23dd0577b0ff25340ca7eab09259cfad31b20ab5d4380f89f53a4f"
+      }
+    },
+    {
+      "sentence": "Use `URLSession` background transfers for uploads and downloads that survive app suspension.",
+      "to": "apple-use-urlsession-background-transfers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-use-urlsession-background-transfers keeps URLSession background transfers for uploads/downloads that survive suspension on Apple platforms, at SHOULD.",
+        "pin": "7e51c7f0b333d2476f33cd9452923414f3ec87e45b7b90327376107fc1b05731"
+      }
+    },
+    {
+      "sentence": "On macOS, longer-running background work is less restricted but should still use `ProcessInfo.performActivity` to prevent App Nap.",
+      "to": "macos-prevent-app-nap",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "macos-prevent-app-nap keeps the less-restricted note and ProcessInfo.performActivity to prevent App Nap on macOS, raised from lowercase should to SHOULD.",
+        "pin": "e8f7623d15c238912f1f5887af06663e113cd5d3de8f82534093e24921824f52"
+      }
+    },
+    {
+      "sentence": "Use `NSBackgroundActivityScheduler` for periodic maintenance tasks on macOS.",
+      "to": "macos-use-nsbackgroundactivityscheduler",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "macos-use-nsbackgroundactivityscheduler keeps NSBackgroundActivityScheduler for periodic maintenance tasks on macOS, at SHOULD.",
+        "pin": "6d873ad9c7d354c0998d58ec40cca9b292c9f745b67a4d883f10f4534e0a1bb5"
+      }
+    },
+    {
+      "sentence": "Use the platform's sanctioned background APIs — unsanctioned workarounds get killed and drain battery",
+      "to": "use-sanctioned-background-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "use-sanctioned-background-apis keeps using sanctioned background APIs and the killed/battery-drain reason, at SHOULD.",
+        "pin": "183e4a85d3c2cfd514021933c5eda4a0166ebffb64df34b3376af36bb087a0dc"
+      }
+    },
+    {
+      "sentence": "Design tasks to be resumable — background execution can be interrupted at any time",
+      "to": "design-tasks-to-be-resumable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "design-tasks-to-be-resumable keeps resumable tasks and the interrupted-at-any-time reason, at SHOULD.",
+        "pin": "7a0e6257510031016c02313a3b43bae046b44dae0b5c9133baa2929cd46e889e"
+      }
+    },
+    {
+      "sentence": "Minimize resource usage — the OS budgets CPU and network time strictly",
+      "to": "minimize-resource-usage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "minimize-resource-usage keeps minimizing resource usage and the strict OS CPU/network budget reason, at SHOULD.",
+        "pin": "efe3f9ea724bad2f22f03620fbed0cda8ea1e87fb739adcebe20bced10155ffe"
+      }
+    },
+    {
+      "sentence": "Report progress and completion through notifications when appropriate",
+      "to": "report-progress-through-notifications",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "report-progress-through-notifications keeps reporting progress and completion through notifications with its when-appropriate condition, at SHOULD.",
+        "pin": "6f60c79ff806e171d23386f6619eeda869642f098e65b291e5f8850589abf0e4"
+      }
+    },
+    {
+      "sentence": "Use Service Workers for background sync (`BackgroundSyncManager`) and push notification handling.",
+      "to": "web-use-service-workers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-service-workers keeps Service Workers for background sync (BackgroundSyncManager) and push handling on the web, at SHOULD.",
+        "pin": "fedec96dc832f4735beda053c89f53526885e57fac618b6961bac132640f1ccf"
+      }
+    },
+    {
+      "sentence": "Use the Periodic Background Sync API for recurring data refresh (requires PWA install and user engagement).",
+      "to": "web-use-periodic-background-sync",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-periodic-background-sync keeps the Periodic Background Sync API for recurring refresh and its PWA-install/engagement requirement, at SHOULD.",
+        "pin": "3394e20027b86f226ca45b558bc3ae0c72a0ecd206dd9c80758241d8392411fa"
+      }
+    },
+    {
+      "sentence": "Use Web Workers for CPU-intensive tasks that shouldn't block the UI thread.",
+      "to": "web-use-web-workers-for-cpu-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-web-workers-for-cpu-work keeps Web Workers for CPU-intensive tasks that shouldn't block the UI thread, at SHOULD.",
+        "pin": "5c7b53c077d37a3345238daff262a33b4c88a30a449ad728d9015b658128cc58"
+      }
+    },
+    {
+      "sentence": "Fall back to `requestIdleCallback` for low-priority deferred work.",
+      "to": "web-fall-back-to-requestidlecallback",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-fall-back-to-requestidlecallback keeps falling back to requestIdleCallback for low-priority deferred work, at SHOULD.",
+        "pin": "ba7895e26139866d233fc4c652e0106c3ea4a8431c4ccab5bc94a02e5976e3d9"
+      }
+    },
+    {
+      "sentence": "Use `BackgroundTask` with the Windows App SDK for background execution.",
+      "to": "windows-use-backgroundtask",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-use-backgroundtask keeps BackgroundTask with the Windows App SDK for background execution, at SHOULD.",
+        "pin": "1b85ef28946aa2fad067e2ab050d9d8b285e198a703aa7670516ea9c8249200c"
+      }
+    },
+    {
+      "sentence": "Register triggers (time, network state change, push notification) in the app manifest.",
+      "to": "windows-register-triggers-in-manifest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-register-triggers-in-manifest keeps registering time, network-state and push triggers in the app manifest, at SHOULD.",
+        "pin": "b297365073406338e7211b0ea568d01b2eee56f0e923742e90fc1680dbf99a20"
+      }
+    },
+    {
+      "sentence": "For long-running tasks, use `ExtendedExecutionSession`.",
+      "to": "windows-use-extendedexecutionsession",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-use-extendedexecutionsession keeps ExtendedExecutionSession for long-running tasks on Windows, at SHOULD.",
+        "pin": "330ac0748325df7f6bfaf02b180a3a45abec49dd5e32fe5afd28ce647cc27d6b"
+      }
+    }
+  ],
+  "obsolete": []
+}

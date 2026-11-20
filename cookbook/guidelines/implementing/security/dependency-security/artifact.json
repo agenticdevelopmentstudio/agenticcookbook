@@ -4,7 +4,7 @@
     "id": "b712c766-af1f-4716-b8fb-34bf0bbb13eb",
     "title": "Dependency Security",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -28,17 +28,22 @@
       "https://slsa.dev/",
       "https://www.sigstore.dev/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "dependency-management",
       "security-review"
     ]
   },
-  "synced": "7bc781a0380e4747",
+  "synced": "d291a7cc8927c305",
   "parts": [
     {"part": "intro"},
-    {"part": "agent-install-guardrails", "heading": "Agent install guardrails"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

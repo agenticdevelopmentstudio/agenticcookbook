@@ -1,0 +1,22 @@
+
+- `should-write-the-spec-before-any-endpoint`: whether the OpenAPI specification was written before any endpoint was implemented
+- `should-define-non-trivial-apis-contract-first`: whether each non-trivial HTTP API was defined contract-first
+- `should-skip-the-ceremony-only-for-throwaway-prototypes`: whether any skipped ceremony is for a throwaway prototype only
+- `must-treat-the-spec-as-the-source-of-truth`: whether the spec is the source of truth wherever code and spec disagree
+- `must-ship-the-spec-with-the-implementation`: whether every API change ships its spec change in the same change set
+- `must-lint-the-spec-in-ci`: whether the spec is linted in CI and lint errors fail the build
+- `should-use-openapi-3-1-as-the-baseline`: whether the spec baseline is OpenAPI 3.1.x
+- `should-adopt-openapi-3-2-only-with-full-tool-support`: whether any use of OpenAPI 3.2 has full toolchain support
+- `should-verify-tool-support-before-3-2-features`: whether tool support was verified before relying on 3.2-only features
+- `must-state-the-openapi-version-explicitly`: whether every spec file states one explicit `openapi:` version
+- `should-derive-artifacts-from-the-spec`: whether client, stubs, mocks and docs are generated from the spec
+- `must-not-hand-edit-generated-code`: whether any generated code was edited by hand
+- `should-lint-with-a-spec-linter`: whether a spec linter runs with a checked-in ruleset and house rules
+- `should-consider-security-lint-rules`: whether security-focused lint rules were considered
+- `must-run-the-linter-on-every-spec-change`: whether CI lints every spec change, fails on errors, and keeps warnings trending to zero
+- `should-add-a-breaking-change-diff-check`: whether a breaking-change diff check runs before merge
+- `should-assert-provider-responses-conform`: whether provider tests assert responses conform to the spec schemas
+- `should-validate-consumers-against-the-spec`: whether consumers validate against the same spec
+- `must-not-generate-the-spec-from-code`: whether a new API's spec is generated from running code as the primary workflow
+- `must-not-keep-divergent-spec-copies`: whether there is exactly one canonical spec document
+- `must-not-merge-undescribed-behavior`: whether the implementation has any behavior the spec does not describe

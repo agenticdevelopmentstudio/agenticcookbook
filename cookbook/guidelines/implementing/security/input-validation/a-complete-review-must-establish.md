@@ -1,0 +1,18 @@
+
+- `must-not-trust-client-input`: whether any server path trusts client input
+- `must-duplicate-validation-server-side`: whether all validation is duplicated server-side
+- `should-prefer-allowlists-over-denylists`: whether validation defines what is valid rather than what is invalid
+- `should-validate-sanitize-escape-in-order`: whether input is validated, sanitized, then escaped, in that order
+- `must-use-parameterized-queries`: whether every query uses parameters
+- `must-not-concatenate-input-into-queries`: whether user input is concatenated into any query
+- `should-encode-output-per-context`: whether output is encoded for its context
+- `should-use-framework-auto-escaping`: whether framework auto-escaping is used, and every place it does not apply is known
+- `must-sanitize-before-raw-html-insertion`: whether every raw HTML insertion is sanitized with a library like DOMPurify first
+- `must-validate-upload-mime-server-side`: whether upload MIME type is validated server-side, not only by extension
+- `should-limit-upload-size`: whether upload size is limited
+- `should-store-uploads-outside-web-root`: whether uploads are stored outside web root
+- `must-not-serve-uploads-as-uploaded`: whether uploads are served with their original filename or from the same origin
+- `must-validate-at-deserialization-boundary`: whether input crossing a server-side deserialization boundary is schema-validated and type-checked before use
+- `must-not-embed-secrets-in-server-rendered-output`: whether server-rendered output embeds secrets, credentials or internal-only data
+- `should-rate-limit-server-render-endpoints`: whether render and server-action endpoints are rate-limited
+- `must-pin-patched-framework-version`: whether the rendering framework is pinned to a version with current serialization-boundary security patches

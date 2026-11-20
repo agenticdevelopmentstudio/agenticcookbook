@@ -1,0 +1,65 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A test MUST move forward through them; it MUST NOT stall in quarantine.",
+      "to": [
+        "must-move-forward-through-lifecycle",
+        "must-not-stall-in-quarantine"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs kept: a test moves forward through the lifecycle's five stages, and MUST NOT stall in quarantine.",
+        "pin": "7d2f9f4f3d95631a7b4a6b6e430710230bbb88582db9faaeec8cd25a191ce5d8"
+      }
+    },
+    {
+      "sentence": "It MUST still execute on every run and report results.",
+      "to": "must-execute-quarantined-tests-every-run",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with 'it' resolved to a quarantined test: still executes on every run and reports results.",
+        "pin": "4ced78c7ac369cd90ca5581aea3be5d7d254ccfe493073f9ce3618439d644c85"
+      }
+    },
+    {
+      "sentence": "When a deadline lapses, the team MUST decide explicitly: extend with justification, fix now, or delete the test — it MUST NOT silently roll over indefinitely.",
+      "to": [
+        "must-decide-explicitly-on-lapsed-deadline",
+        "must-not-roll-over-silently"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The explicit decision on a lapsed deadline with all three options is kept at MUST, and the MUST NOT on silent indefinite rollover is kept.",
+        "pin": "739a741645834b921dc142ded5172de63c0973e299755a6e34efdcbdb0d17937"
+      }
+    },
+    {
+      "sentence": "The gating suite MUST exclude quarantined tests; a separate non-gating job MUST continue running them on every build.",
+      "to": [
+        "must-exclude-quarantined-tests-from-gate",
+        "must-run-quarantined-tests-in-non-gating-job"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs kept: the gating suite excludes quarantined tests, and a separate non-gating job keeps running them on every build.",
+        "pin": "ff6b6885f096739ef1e3f1f08ef8409809d7a000f57bf4bb30f49aa4335d781d"
+      }
+    },
+    {
+      "sentence": "A test returns to the gating suite only after the root cause is fixed and it has run green enough times to clear the flip-rate threshold.",
+      "to": "should-restore-only-after-fix-and-green-runs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unkeyed statement kept at SHOULD with both conditions: root cause fixed and enough green runs to clear the flip-rate threshold.",
+        "pin": "f4366ed98b3d40220ffd930a0f8cbf26884c2c7bed65d28520ea49649af30dba"
+      }
+    }
+  ],
+  "obsolete": []
+}

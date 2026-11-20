@@ -1,0 +1,22 @@
+
+- **should-treat-both-gates-as-release-gating**: Both gates SHOULD be treated as release-gating, run in CI on every model, prompt, tool, or retrieval change — not as a post-launch afterthought.
+- **should-pass-both-gates**: A change to an agent system **SHOULD** pass both gates before release; either gate failing blocks the deploy.
+- **should-follow-eval-driven-development**: For how to build graders, calibrate an LLM judge, and report `pass@k` vs `pass^k` consistency, you SHOULD follow **eval-driven-development**.
+- **should-follow-llm-application-security**: For prompt injection, untrusted-output handling, and tool-agency constraints, you SHOULD follow **llm-application-security** (mapped to the OWASP Top 10 for LLM Applications **2025** revision).
+- **should-pin-owasp-llm-2025-edition**: You SHOULD pin the OWASP Top 10 for LLM Applications **2025** revision that llm-application-security is mapped to.
+- **must-define-numeric-slos**: You **MUST** define both quality SLOs and safety SLOs as explicit numeric thresholds before a model reaches production — not "looks good in testing."
+- **must-version-slo-datasets**: You **MUST** express each SLO against a versioned dataset so a pass/fail is reproducible.
+- **should-set-hard-safety-ceiling**: Safety SLOs **SHOULD** include a hard ceiling (e.g., zero tolerance for secret/PII exfiltration) distinct from soft quality targets you tune over time.
+- **should-not-trade-safety-for-quality**: You **SHOULD NOT** trade a safety SLO for a quality gain; surface the conflict explicitly and decide deliberately.
+- **must-trigger-gates-on-every-change**: You **MUST** trigger both gates on every change to the model/version, system prompt, tool definitions, retrieval corpus, or guardrail config — any of these can regress behavior.
+- **must-treat-model-bump-as-code-change**: You **MUST** treat a model-version bump from a provider as a code change: re-run both gates before rolling it forward, even if the prompt is unchanged.
+- **should-record-results-against-revision**: You **SHOULD** record each result against the dataset revision and model id so regressions are attributable to a specific change.
+- **should-keep-held-out-set**: You **SHOULD** keep a held-out set that never informs iteration, so the gate measures generalization, not memorization.
+- **must-seed-adversarial-suite**: You **MUST** seed the safety gate with an adversarial suite (jailbreaks, direct and indirect prompt injection, role-play coercion, encoding tricks) — passing benign inputs proves nothing about resistance.
+- **should-combine-curated-and-automated-red-teaming**: You **SHOULD** combine curated known-attack cases with periodic automated/agentic red-teaming; treat any new bypass as a permanent regression case added to the suite.
+- **should-layer-runtime-guardrails**: You **SHOULD** layer runtime guardrails (input/output filters, allow-lists, tool-permission scoping) as defense-in-depth, and **MUST NOT** treat a guardrail as a substitute for the gate that tests it.
+- **must-persist-gate-results**: You **MUST** persist per-run gate results so a quality or safety drop is visible as a trend, not discovered by users.
+- **should-alert-on-regression**: You **SHOULD** alert on regression across releases, including flakiness regressions (consistency dropping even when best-case quality holds).
+- **should-confirm-regulatory-obligations-with-counsel**: You SHOULD confirm regulatory obligations (e.g., data-residency, consent) with qualified counsel.
+- **should-adopt-heavy-eval-infra-on-measured-need**: Heavy evaluation infrastructure (managed eval platforms, dedicated red-team services, continuous online scoring) SHOULD be adopted **when a measured need warrants it** — scale, regulated risk, or a real incident — not by default (per YAGNI).
+- **should-start-small**: You SHOULD start with a small versioned dataset and CI gates, and add platform weight when the gate cost or coverage demands it.

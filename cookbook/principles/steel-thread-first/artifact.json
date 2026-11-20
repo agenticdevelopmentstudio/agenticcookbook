@@ -4,11 +4,11 @@
     "id": "b224ef56-65f5-45fd-8842-767b20df6736",
     "title": "Steel thread first",
     "type": "principle",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,12 +32,16 @@
       "https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton",
       "https://news.ycombinator.com/item?id=35090989"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "2fd22a72eca12920",
+  "synced": "96219708abbb6a20",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

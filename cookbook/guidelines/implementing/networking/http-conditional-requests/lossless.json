@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use both: `If-Match` for correctness under concurrent edits, idempotency keys for retry safety.",
+      "to": "should-use-if-match-and-idempotency-keys-together",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both purposes: If-Match for concurrent-edit correctness, idempotency keys for retry safety; the see-related note is kept.",
+        "pin": "d090d5d8f60f00876eb527e7c2095489125dffc594882e1e5db726feac8a9746"
+      }
+    },
+    {
+      "sentence": "Surface `412` distinctly from `409 Conflict`: 412 means the client's precondition failed (refetch and retry); 409 signals a domain-level conflict that may not be resolvable by retry.",
+      "to": "should-surface-412-apart-from-409",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both meanings: 412 is a failed precondition (refetch and retry), 409 a domain conflict that retry may not resolve.",
+        "pin": "a45d1d1ac939d5c1e5cc05dc2b5588807f4c920e31ad50b23fca8c2f3929f5d9"
+      }
+    },
+    {
+      "sentence": "Behind proxies/CDNs, ensure ETags are passed through unmodified; some intermediaries rewrite or drop them.",
+      "to": "should-pass-etags-through-intermediaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the proxy/CDN scope and the reason that intermediaries rewrite or drop ETags.",
+        "pin": "e35dc703ada675fbac07a40f9b245cbd48db27a7f5422a53f22d93c5de8e0446"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,15 @@
+
+- `must-start-non-trivial-change-from-spec`: multi-file, uncertain or unfamiliar-code changes with no written spec preceding the code
+- `should-implement-against-the-spec`: implementation that follows conversation history or memory where it departs from the spec
+- `should-skip-spec-for-one-sentence-diffs`: a spec written for a typo, log line or rename
+- `should-right-size-ceremony`: process out of proportion to the size of the change
+- `should-separate-planning-from-implementation`: planning and implementation mixed in one phase
+- `must-be-self-contained`: a spec that leans on prior conversation or context a fresh session would lack
+- `must-include-required-sections`: a spec missing its goal, files and interfaces, out-of-scope list or verification check
+- `should-reference-existing-patterns`: a spec inviting a from-scratch design where an existing pattern could be named
+- `must-not-discard-spec`: a spec dropped, or left stale, once coding started
+- `should-adopt-the-methodology`: work that skips the spec, plan, tasks, implement, verify stages
+- `should-not-hard-code-tool`: process text naming a specific tool, command set or vendor flow as the method
+- `may-interview-human-first`: for larger features, whether an interview preceded the spec and implementation ran in a fresh session
+- `must-run-verification-with-evidence`: success asserted with no command output, passing tests or screenshot shown
+- `should-review-diff-against-spec`: no independent check of the diff against the spec's requirements, edge cases and scope

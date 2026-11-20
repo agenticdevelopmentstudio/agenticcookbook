@@ -4,11 +4,11 @@
     "id": "d374c32a-b452-47cd-9250-7b7d34a63116",
     "title": "Kotlin Flow and StateFlow: lifecycle-aware state exposure",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,18 +28,24 @@
     "references": [
       "https://developer.android.com/kotlin/flow/stateflow-and-sharedflow"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "concurrency"
     ]
   },
-  "synced": "0d341ea80becb245",
+  "synced": "ea7d4575e7d78b2c",
   "parts": [
     {"part": "intro"},
-    {"part": "exposing-state", "heading": "Exposing state"},
-    {"part": "collecting-lifecycle-aware-the-critical-part", "heading": "Collecting lifecycle-aware (the critical part)"},
-    {"part": "injecting-dispatchers", "heading": "Injecting dispatchers"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "exposing-state", "heading": "Exposing state", "role": "examples"},
+    {"part": "choosing-a-sharingstarted-policy", "heading": "Choosing a SharingStarted policy", "role": "how-to"},
+    {"part": "collecting-lifecycle-aware-the-critical-part", "heading": "Collecting lifecycle-aware (the critical part)", "role": "how-to"},
+    {"part": "injecting-dispatchers", "heading": "Injecting dispatchers", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,49 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a",
+    "title": "Verification and trust scoring",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-11-07",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Domain-aware verification frameworks, a 0-100 trust rubric with domain ceilings, and the false-positive patterns that mark an untrustworthy claim.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "verification",
+      "trust"
+    ],
+    "depends-on": [],
+    "related": [
+      "578e6d3b-f60d-42ff-964b-06b173ffaae9",
+      "7a14b9f2-0e10-456b-a103-8a887afda9f2",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba"
+    ],
+    "references": [
+      "https://hapgood.us/2019/06/19/sift-the-four-moves/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2981887/",
+      "https://beallslist.net/",
+      "https://www.ifcncodeofprinciples.poynter.org/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27",
+    "triggers": [
+      "research"
+    ]
+  },
+  "synced": "5d60e8d40f601e20",
+  "parts": [
+    {"part": "intro"},
+    {"part": "verification-frameworks", "heading": "Verification frameworks"},
+    {"part": "domain-bars", "heading": "Domain bars"},
+    {"part": "scoring-0-100", "heading": "Scoring (0-100)"},
+    {"part": "false-positive-catalog", "heading": "False-positive catalog"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

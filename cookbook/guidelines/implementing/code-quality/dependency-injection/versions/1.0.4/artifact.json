@@ -1,0 +1,40 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e80d67b3-813f-47fb-8894-aa4e6f6479f3",
+    "title": "Dependency Injection",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use constructor injection via Microsoft.Extensions.DependencyInjection, depend on interface types rather than concrete types, and never inject a scoped service into a singleton.",
+    "platforms": [],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "csharp",
+      "dependency-injection",
+      "language"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "new-module",
+      "code-review"
+    ]
+  },
+  "synced": "85b2a8fe29a46eac",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

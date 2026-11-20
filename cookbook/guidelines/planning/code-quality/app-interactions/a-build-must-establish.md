@@ -1,0 +1,14 @@
+
+- `should-scope-component-with-its-delegate-protocol`: every delegate protocol is in the same recommended group as its component, or the findings say why not
+- `may-scope-delegate-implementations-elsewhere`: each concrete delegate implementation placed outside its component's group is placed there on purpose
+- `should-identify-notification-observers`: every notification in the findings lists all its observing files
+- `should-flag-cross-group-singletons`: every singleton accessed across many candidate groups is listed as cross-group and flagged for `cross-cutting-detection`
+- `should-split-scope-groups-at-di-registration`: no recommended group spans both sides of the DI registration site, or the findings say why
+- `should-group-coordinator-with-owned-screens`: every feature coordinator and its owned screens make up one recommended group, or the findings say why not
+- `should-document-store-slices-per-group`: the findings list the global store slices each candidate group reads and writes
+- `should-note-notification-endpoints`: every notification in the findings carries its name, sender and observer registration site
+- `should-note-publisher-and-subscriber-sites`: every reactive chain in the findings carries its publisher and subscriber sites
+- `should-note-isolation-boundary`: every thread-local or actor-isolated state in the findings carries its isolation boundary
+- `should-note-di-registration-and-resolution-sites`: the findings list DI registration sites and injection (resolution) points
+- `should-note-completion-chain-depth`: every completion handler chain in the findings carries its depth, and every 3+ level chain is marked for async/await
+- `should-note-promise-chain-error-breaks`: every promise chain in the findings says where its error handling breaks the chain

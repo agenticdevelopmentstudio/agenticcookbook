@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "703b1ec7-b940-46a5-8974-441b04a0bb9d",
+    "title": "Continuous delivery",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep main always releasable via an automated build-test-deploy pipeline; releasing is a business decision, not a manual scramble.",
+    "platforms": [],
+    "tags": [
+      "ci-cd",
+      "delivery",
+      "automation"
+    ],
+    "depends-on": [],
+    "related": [
+      "86866beb-319a-45b2-bdfa-24f0e3f7ae58",
+      "b111a703-f4d7-4c1a-8206-d84e869791f4",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
+    ],
+    "references": [
+      "https://dora.dev/",
+      "https://dora.dev/capabilities/continuous-delivery/",
+      "https://dora.dev/capabilities/continuous-integration/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-pr"
+    ]
+  },
+  "synced": "b5b2ed764dfa4458",
+  "parts": [
+    {"part": "intro"},
+    {"part": "delivery-vs-deployment", "heading": "Delivery vs. deployment"},
+    {"part": "pipeline-requirements", "heading": "Pipeline requirements"},
+    {"part": "the-j-curve-caveat", "heading": "The J-curve caveat"},
+    {"part": "pre-pr-checklist-for-agents", "heading": "Pre-PR checklist for agents"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

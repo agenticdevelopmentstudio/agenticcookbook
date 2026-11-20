@@ -1,0 +1,69 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Determine applicable regimes from **user geography** and **data types** (special-category/sensitive data raises the bar).",
+      "to": "should-determine-applicable-regimes-before-collecting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to before collection as its old section was: determine regimes from user geography and data types, with sensitive data raising the bar.",
+        "pin": "56390c01ebfe9c05fa73b1b2a096baae7c5dab86e453f1245b0e02235f281e03"
+      }
+    },
+    {
+      "sentence": "Confirm a lawful basis or required notice/opt-out posture — and record it.",
+      "to": "should-confirm-the-lawful-basis-before-collecting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, before collection: confirm a lawful basis or notice/opt-out posture and record it.",
+        "pin": "c75fbb79f0930cde2af9cdf4b9eae52e3e97e67d8d4e1d272d40ff1f3abda78d"
+      }
+    },
+    {
+      "sentence": "Confirm minimization, retention, and a deletion path exist for each field.",
+      "to": "should-confirm-minimization-retention-and-deletion-per-field",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, before collection: confirm minimization, retention and a deletion path for each field.",
+        "pin": "6bd6d7ab1393bc21abb1a7d57e7fa53c7a3a87cc963b700dafa34be1d60b825c"
+      }
+    },
+    {
+      "sentence": "You **SHOULD** consult counsel for binding interpretation; agents **MUST NOT** treat this guideline as legal sign-off.",
+      "to": [
+        "should-consult-counsel",
+        "must-not-treat-this-as-legal-sign-off"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at the same levels across the two targets: SHOULD consult counsel for binding interpretation, and agents MUST NOT treat the guideline as legal sign-off.",
+        "pin": "c9fd1b8704e68dd8e9791dcebb82e91164d945da049c9be4d3ed9e013446a8df"
+      }
+    },
+    {
+      "sentence": "Treat the US state landscape as a moving target: pin your applicability matrix to a dated revision and **SHOULD** re-check quarterly.",
+      "to": "should-pin-and-recheck-the-applicability-matrix",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the US state landscape as a moving target, the matrix pinned to a dated revision and re-checked quarterly; the injunction/forecast context is in rationale.",
+        "pin": "80e46f7f06013bbf30d51449c42fda1d344e47e0278a9a5c88c22791b6d7b0c2"
+      }
+    },
+    {
+      "sentence": "Default to *not* collecting.",
+      "to": "should-default-to-not-collecting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD (unkeyed before): default to not collecting.",
+        "pin": "6d3025b065ca4354c2d0909fed5104fbdea14d1169f61b2fe38359d02027fbcb"
+      }
+    }
+  ],
+  "obsolete": []
+}

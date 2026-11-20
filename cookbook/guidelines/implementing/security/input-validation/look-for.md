@@ -1,0 +1,18 @@
+
+- `must-not-trust-client-input`: a server path that accepts a client-supplied value (price, role, ID, flag) as valid without checking it breaks it
+- `must-duplicate-validation-server-side`: a field validated only in the browser, with no matching server-side check, breaks it
+- `should-prefer-allowlists-over-denylists`: validation that strips or rejects known-bad patterns instead of accepting only a defined valid form
+- `should-validate-sanitize-escape-in-order`: escaping applied before validation, or sanitizing used in place of rejecting invalid input
+- `must-use-parameterized-queries`: a query built without bound parameters breaks it
+- `must-not-concatenate-input-into-queries`: string concatenation or interpolation of user input into SQL breaks it
+- `should-encode-output-per-context`: one encoding used for every output context, or HTML encoding where URL or JS encoding is needed
+- `should-use-framework-auto-escaping`: hand-rolled escaping where the framework's auto-escaping (React JSX, Django templates) would apply, or a bypass of it without need
+- `must-sanitize-before-raw-html-insertion`: `dangerouslySetInnerHTML`, `innerHTML`, `|safe` or another raw HTML insertion fed unsanitized input breaks it
+- `must-validate-upload-mime-server-side`: an upload accepted by file extension or client-sent content type alone breaks it
+- `should-limit-upload-size`: an upload endpoint with no size limit
+- `should-store-uploads-outside-web-root`: uploaded files written under the web root
+- `must-not-serve-uploads-as-uploaded`: uploads served under their original filename or from the app's own origin break it
+- `must-validate-at-deserialization-boundary`: a Server Action or serialized-body handler that uses its arguments without schema validation and type checks breaks it
+- `must-not-embed-secrets-in-server-rendered-output`: a secret, credential or internal-only value passed into a server-rendered component's output breaks it
+- `should-rate-limit-server-render-endpoints`: render or server-action endpoints with no rate limit
+- `must-pin-patched-framework-version`: a rendering framework on an unpinned version, or one missing current serialization-boundary security patches, breaks it

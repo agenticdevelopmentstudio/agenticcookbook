@@ -1,0 +1,55 @@
+
+- `should-design-skills-single-purpose-and-versioned`: whether each skill is single-purpose and versioned
+- `should-keep-rules-minimal-deterministic-side-effect-free`: whether each rule is minimal, deterministic, and side-effect-free
+- `should-check-inventory-before-creating`: whether the inventory was checked before anything new was created
+- `should-read-skills-table-before-creating-a-skill`: whether the skills table in CLAUDE.md was read before the new skill was created
+- `should-not-duplicate-a-skill-purpose`: whether any new skill duplicates an existing skill's purpose
+- `should-confirm-new-skill-name-and-purpose`: whether the name and purpose of an unlisted new skill were confirmed with the user before proceeding
+- `must-version-skills-from-day-one`: whether every skill has a frontmatter `version`, supports `--version`, and prints its version on every invocation
+- `should-increment-skill-version-by-semver`: whether every skill change incremented the version by semver
+- `must-check-session-version-at-startup`: whether the skill compares its on-disk version to the session's loaded version during startup
+- `should-warn-when-loaded-skill-may-be-stale`: whether the skill warns the user that the loaded skill may be stale when the versions differ
+- `should-not-block-on-version-mismatch`: whether the skill keeps running on a version mismatch
+- `should-not-describe-arguments-in-prose`: whether the skill describes argument handling in prose
+- `should-use-arguments-variables`: whether the skill takes its input through `$ARGUMENTS`, `$0`, `$1`
+- `must-reference-arguments-when-hinted`: whether every skill declaring `argument-hint` references the argument variables in its body
+- `should-use-claude-skill-dir`: whether the skill reaches its own supporting files through `${CLAUDE_SKILL_DIR}`
+- `should-use-repo-relative-cookbook-paths`: whether cookbook content is reached by repo-relative or `../agenticdevelopercookbook/` paths
+- `should-keep-skill-description-under-200-characters`: whether the skill description is under 200 characters
+- `should-include-trigger-keywords-in-description`: whether the description carries natural trigger keywords
+- `should-use-one-atomic-permission-prompt`: whether one yes/no prompt listing every file to be written and command to be run, with reasons, precedes any file modification
+- `should-check-prerequisites-first`: whether prerequisites are checked before work starts
+- `should-stop-on-missing-prerequisites`: whether missing files or a misconfigured environment stop the skill immediately with a useful error message
+- `should-handle-invalid-arguments-explicitly`: whether invalid arguments are handled explicitly
+- `must-include-a-usage-section`: whether every skill has a Usage section with at least one example invocation and what to expect from the output
+- `should-disable-model-invocation-for-explicit-only-skills`: whether skills meant only for explicit user invocation set `disable-model-invocation`
+- `must-not-disable-model-invocation-on-called-skills`: whether any skill that other skills call via the Skill tool sets `disable-model-invocation`
+- `should-not-fork-chainable-skills`: whether any chainable skill sets `context: fork`
+- `should-fork-only-isolated-read-heavy-tasks`: whether every `context: fork` skill is an isolated, read-heavy task that returns a report
+- `should-keep-one-authoritative-source`: whether one of body and references is the single authoritative source
+- `must-not-overlap-body-and-references`: whether the body and references overlap in content that can drift out of sync
+- `must-lint-skill-after-every-change`: whether `/lint-skill <path>` was run after every skill change
+- `should-fix-all-skill-lint-fails`: whether every `/lint-skill` FAIL was fixed before the skill was called complete
+- `should-present-skill-lint-warns`: whether `/lint-skill` WARNs were presented to the user for review
+- `should-add-new-skill-to-claude-md-and-readme`: whether each new skill is in the skills table of both CLAUDE.md and README.md
+- `should-use-rfc-2119-keywords-in-rules`: whether the rule uses MUST, MUST NOT, SHOULD, MAY consistently, in imperative tone
+- `should-list-every-referenced-file-path`: whether every instruction to read or check content lists every file path needed
+- `must-not-make-the-llm-search-for-references`: whether an LLM following the rule would have to search for any referenced content
+- `should-keep-one-concern-per-rule`: whether each rule addresses a single topic
+- `should-not-combine-concerns-in-one-rule-file`: whether any rule file combines unrelated concerns
+- `must-include-a-must-not-section`: whether every rule has a dedicated section listing what the LLM must not do
+- `should-include-verification-steps`: whether each directive in the rule has a verification step confirming it was done
+- `should-avoid-subjective-language`: whether the rule uses subjective language
+- `should-be-specific-enough-for-consistent-results`: whether two independent sessions following the rule would produce consistent, comparable results
+- `should-reapply-everything-on-same-selection`: whether re-selecting the current configuration re-applies everything from scratch
+- `should-not-skip-steps-on-same-selection`: whether any step is skipped as "already done" on a same selection
+- `should-name-requirements-not-number-them`: whether requirements carry descriptive kebab-case names rather than sequential identifiers
+- `must-lint-rule-after-every-change`: whether `/lint-rule <path>` was run after every rule change
+- `should-fix-all-rule-lint-fails`: whether every `/lint-rule` FAIL was fixed before the rule was called complete
+- `should-present-rule-lint-warns`: whether `/lint-rule` WARNs were presented to the user for review
+- `should-scope-agent-tool-access`: whether the agent restricts its tool access with `tools` or `disallowedTools`
+- `should-set-max-turns`: whether the agent sets a `maxTurns` limit appropriate to its task
+- `should-write-a-clear-system-prompt`: whether the agent's markdown body is focused, unambiguous, and structured
+- `must-lint-agent-after-every-change`: whether `/lint-agent <path>` was run after every agent change
+- `should-fix-all-agent-lint-fails`: whether every `/lint-agent` FAIL was fixed
+

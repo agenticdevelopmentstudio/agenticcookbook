@@ -1,0 +1,11 @@
+
+- `should-design-local-first`: whether an app that must work offline is local-first with background sync
+- `should-roll-back-failed-optimistic-updates`: whether optimistic updates roll back on server failure
+- `should-keep-failed-items-queued`: whether failed queue items stay queued for retry
+- `should-detect-conflicts-with-versions`: whether conflicts are detected with ETags or version numbers
+- `should-return-409-with-both-versions`: whether a conflict returns 409 with both versions
+- `should-fit-resolution-to-collaboration`: whether conflict resolution is server-wins for a simple app and merge UI or CRDTs for a collaborative one
+- `should-track-last-synced-at`: whether `last_synced_at` is tracked per entity for delta sync
+- `should-show-connectivity-status`: whether the user sees clear connectivity status
+- `must-queue-mutations-and-keep-user-work`: whether mutations are queued locally and no user work is silently discarded
+- `should-test-offline-scenarios`: whether airplane mode, flaky connections and long offline periods are tested

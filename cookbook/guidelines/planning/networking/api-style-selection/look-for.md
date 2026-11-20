@@ -1,0 +1,15 @@
+
+- `should-default-to-rest`: Selecting GraphQL or gRPC for a simple CRUD service "to be modern" — start with REST unless a need is demonstrated (YAGNI).
+- `should-not-expose-raw-grpc-publicly`: Exposing internal gRPC contracts directly to untrusted/public clients.
+- `must-bound-graphql-cost`: Adopting GraphQL without complexity limits or N+1 mitigation in place.
+- `should-pick-the-style-from-consumer-and-traffic`: a style chosen from fashion rather than who consumes the endpoint and its traffic shape
+- `must-record-the-style-decision`: no recorded decision, with rationale, for the chosen style
+- `must-weigh-the-decision-factors`: a style selected without weighing consumer, traffic shape, tooling and team, and caching
+- `should-choose-rest-for-diverse-consumers-and-http-caching`: diverse or external consumers, URL-shaped resources and valuable HTTP caching served by a style other than REST
+- `should-pin-rest-contracts-and-version-the-api`: a REST contract not pinned to a dated OpenAPI revision, or an unversioned API
+- `should-choose-grpc-for-internal-low-latency-calls`: low-latency internal calls or streaming served by a style other than gRPC with no reason given
+- `should-choose-graphql-for-measured-aggregation-needs`: GraphQL with no measured over/under-fetching problem or multi-source, per-screen aggregation behind it
+- `should-not-assume-cdn-caching-for-graphql`: a GraphQL design that relies on CDN or intermediary HTTP caching
+- `should-treat-the-graphql-schema-as-a-versioned-contract`: breaking GraphQL schema changes where additive evolution or field deprecation would do
+- `may-combine-styles`: styles mixed at one boundary, or a combination of styles that is not a deliberate choice
+- `must-document-each-boundary-style`: a boundary with no documented style decision or contract source

@@ -1,0 +1,39 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Confirm semantics against your engine's dated docs, not by analogy to PostgreSQL.",
+      "to": "confirm-engine-semantics",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming semantics against the engine's dated docs rather than by analogy to PostgreSQL is kept at SHOULD, with its 'engines differ' reason.",
+        "pin": "d3a1c617f51474fd919d2d560570649cc4727c59fba6f6f3478e304513487bae"
+      }
+    },
+    {
+      "sentence": "Code MUST NOT retry unboundedly; on exhaustion it MUST surface the failure.",
+      "to": [
+        "bounded-backoff",
+        "surface-on-exhaustion"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs are kept: MUST NOT retry unboundedly in bounded-backoff, and MUST surface the failure on exhaustion in surface-on-exhaustion.",
+        "pin": "3565a87038305e7f6e22d92b92d6c498ed9313513894bb0ad162267d1075ac83"
+      }
+    },
+    {
+      "sentence": "They SHOULD NOT rely on Serializable for queue dispatch (it serializes throughput).",
+      "to": "no-serializable-queue-dispatch",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Worker/queue claim patterns not relying on Serializable for dispatch is kept at SHOULD NOT with its reason (it serializes throughput).",
+        "pin": "4fec935b7eed0b213926691e76e563b00b0aacbb0bb78587d13d78343ef18091"
+      }
+    }
+  ],
+  "obsolete": []
+}

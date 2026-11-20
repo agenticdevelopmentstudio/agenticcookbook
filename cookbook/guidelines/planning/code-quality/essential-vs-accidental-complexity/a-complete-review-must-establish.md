@@ -1,0 +1,12 @@
+
+- `should-use-the-split-when-scoping`: whether the module was scoped with the essential/accidental split
+- `should-name-essential-complexity-first`: whether the essential complexity was named before code was written
+- `must-not-treat-boundary-as-precise-classifier`: whether the boundary was ever treated as a precise classifier
+- `should-use-boundary-to-guide-attention`: whether the split guided attention rather than sorting lines of code
+- `should-remove-accidental-complexity-aggressively`: whether removable accidental complexity was deleted or generated away
+- `must-not-drop-essential-cases`: whether any essential case was dropped in the name of simplification
+- `should-isolate-essential-core`: whether an entangled essential core was isolated behind a thin layer
+- `should-route-accidental-work-to-agents`: whether accidental-complexity work went to agents and was reviewed for correctness
+- `must-keep-essential-decisions-human-owned`: whether design review, requirement disambiguation, and invariant definition stayed under human ownership
+- `should-treat-ai-eliminates-complexity-as-a-claim`: whether "AI eliminates complexity" was treated as a claim, not a result
+- `should-spend-saved-time-on-decomposition`: whether saved time went to sharper problem decomposition

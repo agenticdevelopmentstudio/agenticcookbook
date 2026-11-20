@@ -1,0 +1,19 @@
+
+- `use-platform-notification-system`: alerts use the platform notification system and respect user preferences, or the code says why not
+- `request-permission-at-relevance`: notification permission is requested where a feature first needs it, not at launch
+- `must-be-actionable`: every notification's tap deep links to the relevant content
+- `support-grouping-and-categories`: notifications carry a group or category, or the code says why not
+- `respect-dnd-focus-and-quiet-hours`: notifications respect Do Not Disturb, Focus modes and quiet hours
+- `apple-use-unusernotificationcenter`: Apple local and push notifications go through `UNUserNotificationCenter`
+- `apple-support-actionable-notifications`: actionable Apple notifications register `UNNotificationCategory` and `UNNotificationAction`, or the code says why not
+- `ios-support-summary-and-time-sensitive`: iOS notifications set their interruption level and support Notification Summary, or the code says why not
+- `android-use-notificationcompat`: Android notifications are built with `NotificationCompat.Builder`
+- `android-declare-channels`: every Android notification category has a declared `NotificationChannel`
+- `android-support-messaging-styles`: Android messaging notifications support Direct Reply, bubbles and conversation style, or the code says why not
+- `windows-use-appnotification-api`: Windows local notifications use `AppNotificationManager` + `AppNotificationBuilder`
+- `windows-support-rich-content`: Windows notifications use text, images, buttons with activation arguments, progress bars and scheduled delivery where the content needs them
+- `windows-handle-activation`: Windows notification activation is handled alongside protocol activation
+- `web-use-notifications-api-with-service-workers`: web push notifications are shown from a service worker through the Notifications API
+- `web-request-permission-contextually`: the web app requests notification permission only in context
+- `web-support-actions-and-badges`: web notifications support actions, and badges use the Badging API, or the code says why not
+- `web-fall-back-when-denied`: the web app works with a fallback when notifications are denied or unavailable

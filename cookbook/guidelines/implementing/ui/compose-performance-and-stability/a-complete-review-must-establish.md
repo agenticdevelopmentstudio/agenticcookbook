@@ -1,0 +1,18 @@
+
+- `should-pass-immutable-data`: whether composables receive immutable data (`val`, immutable collections, stable data classes)
+- `should-prefer-genuinely-stable-inputs`: whether inputs are genuinely stable rather than relying on strong skipping
+- `should-annotate-stability-only-when-true`: whether every `@Immutable` / `@Stable` annotation is true and needed because the compiler cannot infer it
+- `should-read-state-late`: whether state is read as late as possible, through lambda-based modifiers where it changes often
+- `should-pass-lambdas-for-frequently-changing-values`: whether frequently-changing values are passed as lambdas
+- `should-use-derivedstateof-for-thresholds`: whether threshold-style UI over frequently-changing state uses `derivedStateOf`
+- `should-not-use-derivedstateof-for-one-to-one-transforms`: whether `derivedStateOf` is used for any one-to-one transform
+- `should-remember-expensive-computation`: whether costly computation is cached with `remember` keyed to its inputs
+- `must-key-lazy-list-items`: whether every lazy list or grid supplies a stable `key` per item
+- `must-not-perform-backwards-writes`: whether any composable writes to state it already read
+- `should-keep-composables-side-effect-free`: whether composables are side-effect free and idempotent
+- `should-avoid-allocating-in-composable-body`: whether composable bodies allocate collections, capturing lambdas or objects on every call
+- `should-profile-release-builds`: whether profiling used release builds with R8 and a Baseline Profile
+- `must-not-tune-against-debug-builds`: whether any tuning rests on debug-build numbers
+- `should-use-layout-inspector-recomposition-counts`: whether Layout Inspector recomposition counts were used to find over-recomposing composables
+- `should-gate-regressions-with-macrobenchmark`: whether a Macrobenchmark gate covers representative journeys
+- `should-optimize-only-after-measurement`: whether each optimization is justified by a measurement

@@ -1,0 +1,20 @@
+
+- **should-treat-machine-legibility-as-one-audience**: Machine-legibility SHOULD be treated as one reader audience to serve — not a license to abandon human readability.
+- **must-keep-names-literally-searchable**: Names **MUST** be searchable as literal strings.
+- **should-use-one-canonical-spelling**: SHOULD prefer one canonical spelling of a concept over synonyms scattered across the codebase.
+- **should-avoid-runtime-constructed-identifiers**: SHOULD avoid constructing identifiers at runtime (string-concatenated method names, dynamically generated attributes).
+- **should-find-definition-by-grep**: An agent grepping for `handle_payment` **SHOULD** find the definition, not a fragment assembled from `"handle_" + verb`.
+- **should-keep-call-sites-discoverable**: Call sites SHOULD be kept discoverable: a function **SHOULD** be reachable by searching for its name, not only through a registry, decorator, or dependency-injection wiring that hides the connection.
+- **should-minimize-hidden-runtime-behavior**: SHOULD minimize reflection, dynamic dispatch, and runtime metaprogramming that hides what code actually does.
+- **should-keep-signatures-explicit**: Function signatures act as design documents the agent reads first — parameter names and return types SHOULD be kept explicit and accurate. (See the reference.)
+- **should-prefer-explicit-types-and-names**: SHOULD prefer explicit types and verbose intention-revealing names where a language makes them optional.
+- **should-prefer-explicit-control-flow**: SHOULD prefer explicit control flow over implicit magic (auto-registration, monkey-patching, import-time side effects).
+- **should-colocate-tests**: Tests **SHOULD** live close to the code they exercise so an agent loading a module also loads its executable specification.
+- **should-name-tests-for-behavior**: A test SHOULD be named for the behavior it verifies, so it doubles as greppable documentation of intent.
+- **must-not-maximize-machine-legibility-at-all-costs**: You **MUST NOT** maximize machine-legibility at all costs.
+- **should-favor-locality-of-related-behavior**: SHOULD favor **locality of related behavior** over very short files and aggressive file-splitting that scatter related behavior an agent must assemble from many sources.
+- **should-judge-dry-per-case**: Between heavy DRY with deep indirection and a small, explicit repetition, SHOULD apply judgment per case.
+- **should-not-cite-agent-readership-as-statistic**: The claim "agents now read code more than humans do" SHOULD NOT be cited as an established statistic.
+- **should-justify-by-concrete-readability**: Each choice SHOULD be justified by concrete readability for the next reader, human or agent, not by appeal to that trend.
+- **should-prefer-explicit-and-local-when-cost-low**: When a human-readability convention and an AI-readability heuristic conflict and the cost is low, SHOULD prefer the option that keeps behavior explicit and local.
+- **should-weigh-and-document-when-human-cost-high**: When the human cost is high, SHOULD weigh both and document the trade-off.

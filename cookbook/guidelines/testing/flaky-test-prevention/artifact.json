@@ -4,7 +4,7 @@
     "id": "05d00147-5c49-42d8-bdbd-cf8fd7dc2379",
     "title": "Flaky Test Prevention",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -27,16 +27,21 @@
       "https://martinfowler.com/articles/nonDeterminism.html",
       "https://testing.googleblog.com/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests",
       "pre-pr"
     ]
   },
-  "synced": "99543534aa0884b2",
+  "synced": "e2f821836e1631f6",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

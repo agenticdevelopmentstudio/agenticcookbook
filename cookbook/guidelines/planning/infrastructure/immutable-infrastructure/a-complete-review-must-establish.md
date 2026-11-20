@@ -1,0 +1,17 @@
+
+- `must-not-patch-a-running-server-in-place`: whether any running server is patched in place
+- `must-ship-immutable-versioned-artifacts`: whether deployments ship immutable, versioned artifacts and replace instances
+- `must-not-modify-a-built-artifact`: whether any built artifact is modified after its build
+- `must-treat-servers-as-cattle`: whether every server is interchangeable and disposable
+- `must-rebuild-to-change`: whether every change goes through a rebuilt image and new instances
+- `should-treat-running-instances-as-read-only`: whether running instances are treated as read-only
+- `must-roll-back-by-redeploying`: whether rollback redeploys the previous known-good image version
+- `should-retain-addressable-prior-images`: whether prior image versions are retained and addressable by immutable tag or digest
+- `should-not-deploy-mutable-tags`: whether what is deployed is pinned to an immutable digest or version tag
+- `should-build-from-version-controlled-definitions`: whether artifacts are built from version-controlled definitions
+- `should-automate-replacement-provisioning`: whether replacement provisioning is automated end-to-end
+- `should-bake-code-and-dependencies-into-the-image`: whether code and dependencies are baked in at build time
+- `should-inject-environment-config-at-runtime`: whether environment-specific config is injected at deploy/runtime and kept out of the image
+- `must-keep-persistent-data-off-the-instance`: whether persistent data lives in external, durable stores or attached volumes
+- `should-adopt-heavier-machinery-only-on-measured-need`: whether heavier machinery rests on a measured need
+- `should-keep-image-builds-fast`: whether image builds are optimized enough that rebuild-to-deploy stays quick

@@ -1,0 +1,23 @@
+
+- `should-treat-server-strings-and-tokens-as-untrusted`: server-emitted strings and received tokens are handled as untrusted, or the code says why not
+- `should-pin-mcp-spec-revision`: the code names MCP spec revision 2025-06-18, or says why not
+- `must-not-trust-own-tool-text`: no tool description, schema or result is treated as a trusted instruction to the agent
+- `must-return-tool-results-as-delimited-data`: tool results with external/user data are returned as clearly delimited data, with embedded directives stripped or neutralized or the code saying why not
+- `should-keep-tool-descriptions-stable`: tool descriptions are stable and side-effect-free with side effects in the schema, or the code says why not
+- `should-bind-approval-to-tool-hash`: host approval is bound to a hash of name, description and input schema and re-asked on change, or the code says why not
+- `should-version-tool-definitions`: every behavior change to a tool carries a version bump, or the code says why not
+- `should-act-as-oauth-resource-server`: the remote server is built as an OAuth 2.1 resource server, or the code says why not
+- `must-not-accept-tokens-issued-elsewhere`: every accepted token has this server in its audience per RFC 8707
+- `must-not-pass-tokens-through`: no received token is sent to a downstream API
+- `should-use-token-exchange-downstream`: downstream calls use an exchanged distinct token or the server's own client, or the code says why not
+- `must-validate-every-inbound-token`: every request validates its token before processing and rejects tokens lacking this server's audience
+- `must-implement-per-client-consent`: the proxy checks a registry of approved `client_id` values before initiating any third-party flow
+- `must-show-client-scopes-and-redirect-on-consent`: the consent page shows the client, third-party scopes and exact registered `redirect_uri`, with CSRF protection
+- `must-exact-match-redirect-uri`: `redirect_uri` validation is an exact string match with no wildcards
+- `must-use-random-single-use-state`: `state` is cryptographically random, single-use, short-lived and set only after consent is approved
+- `must-verify-requests-not-sessions`: every inbound request is verified, and no session serves as authentication
+- `must-use-non-deterministic-session-ids`: session IDs come from a CSPRNG (e.g. UUIDv4)
+- `should-key-session-data-by-user`: session data is keyed as `<user_id>:<session_id>` with the user from the token, or the code says why not
+- `must-consider-ssrf-on-oauth-urls`: every OAuth-related URL fetch applies SSRF mitigations
+- `should-harden-oauth-url-fetching`: OAuth URL fetches require HTTPS (dev loopback excepted), block the listed private/reserved ranges and validate redirects per hop, or the code says why not
+- `should-prefer-egress-proxy-and-dns-pinning`: internal-host blocking goes through an egress proxy and DNS-pinning, or the code says why it parses IPs by hand

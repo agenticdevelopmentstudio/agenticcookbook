@@ -1,0 +1,16 @@
+
+- `must-make-source-single-authority`: token values defined anywhere other than the token source
+- `should-generate-outputs-with-transform-tool`: platform outputs not produced by a transform tool, or a tool version pinned from memory
+- `must-not-hand-edit-generated-outputs`: hand edits in generated token outputs
+- `should-regenerate-on-every-change-in-ci`: a token change without regeneration, or generation not run in CI
+- `should-version-token-source`: an unversioned token source, or token releases consumers cannot pin
+- `should-mark-outputs-generated`: an output that is not code-generated, not committed or published, or lacks a do-not-edit generated-file header
+- `must-derive-names-deterministically`: platform symbol names not derived deterministically from token paths
+- `should-expose-semantic-tokens-not-primitives`: feature code referencing raw/primitive tokens such as `palette.blue.500`
+- `should-run-generation-as-reproducible-step`: token generation run as a one-off manual command
+- `should-run-drift-check-in-ci`: no CI drift check comparing regenerated outputs with committed ones
+- `should-version-transform-config`: transform configuration kept outside version control
+- `should-adopt-managed-pipeline-only-on-measured-need`: a managed token pipeline or sync service adopted without a measured need
+- `must-not-maintain-parallel-token-files`: hand-written token files maintained per platform
+- `must-not-propagate-platform-edits-back`: a platform edit carried informally back into the source
+- `should-not-hardcode-raw-values`: hex colors or pixel literals in feature code where a token exists

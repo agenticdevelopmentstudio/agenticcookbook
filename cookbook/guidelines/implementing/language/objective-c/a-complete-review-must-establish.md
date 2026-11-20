@@ -1,0 +1,30 @@
+
+- `must-compile-with-arc`: whether every changed file compiles with ARC
+- `must-declare-nullability-in-public-headers`: whether every changed public header declares nullability
+- `must-shape-for-swift-import`: whether Swift imports the changed API as idiomatic Swift
+- `should-not-write-new-objective-c`: whether any new Objective-C is written where Swift would do, and if so whether the code is one that must stay Objective-C
+- `should-not-call-retain-release-by-hand`: whether any ARC file calls `retain`, `release` or `autorelease` by hand
+- `should-not-mix-manual-reference-counting`: whether any file-level flag mixes manual reference counting into a target without a written reason
+- `should-declare-explicit-property-ownership`: whether every object property carries the ownership attribute its role calls for (`strong`, `weak`, `copy`)
+- `should-limit-unsafe-unretained`: whether each `__unsafe_unretained` is needed and explained in a comment
+- `should-name-methods-by-method-family`: whether each method's name family (`alloc`, `new`, `copy`, `mutableCopy`) matches the ownership of what it returns
+- `should-break-retain-cycles-in-blocks`: whether any block forms a retain cycle
+- `must-capture-weak-self-in-stored-blocks`: whether every block stored on `self` that captures `self` captures it weakly and takes a strong local inside
+- `should-remove-observers-at-teardown`: whether every timer, notification observer and KVO registration is removed by teardown and leaves its target free
+- `should-wrap-temporary-heavy-loops-in-autoreleasepool`: whether long-running loops that create many temporaries run in an `@autoreleasepool`
+- `must-state-bridge-cast-ownership`: whether every Objective-C to Core Foundation cast states who owns the result
+- `should-pick-bridge-cast-by-ownership`: whether each bridge cast is the one that matches the ownership change, with every `__bridge_retained` balanced by one `CFRelease`
+- `must-not-use-bare-bridging-casts`: whether any bare C cast crosses between Objective-C and Core Foundation in ARC code
+- `must-wrap-public-headers-in-assume-nonnull`: whether every public header is wrapped in `NS_ASSUME_NONNULL_BEGIN`/`END` with only the exceptions `nullable`
+- `should-use-nullability-qualifiers`: whether properties, parameters and return types carry the nullability qualifiers they need
+- `should-annotate-each-typedef-use`: whether each typedef'd pointer use in an audited region is annotated
+- `must-declare-nil-returning-methods-nullable`: whether every method that can return `nil` is declared `nullable`
+- `must-declare-non-nil-parameters-in-signature`: whether every parameter that must not be `nil` says so in its signature
+- `should-need-no-swift-fix-ups`: whether the API needs any Swift-side fix-up (untyped collections, missing nullability)
+- `should-refine-for-swift-in-an-extension`: whether an API whose Swift form should differ is marked `NS_REFINED_FOR_SWIFT` with a Swift extension
+- `should-keep-objective-c-as-single-source`: whether any Swift wrapper reimplements behavior instead of calling the Objective-C original
+- `should-name-call-sites-as-phrases`: whether call sites read as phrases with every argument after the first labelled
+- `should-follow-framework-conventions`: whether names follow the conventions of the framework being extended
+- `should-prefix-public-symbols`: whether every public class, protocol, enum and constant carries the project prefix
+- `should-mark-designated-initializers`: whether designated initializers are marked and unusable inherited ones `NS_UNAVAILABLE`
+- `should-report-recoverable-failure-with-nserror`: whether recoverable failure is reported through `NSError **` rather than an exception

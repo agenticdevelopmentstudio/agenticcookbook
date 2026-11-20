@@ -4,11 +4,11 @@
     "id": "f35cf9c3-7488-4192-93fb-12d95f7244e5",
     "title": "Choose a rendering strategy per route, minimize client JS",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,20 +31,22 @@
     "references": [
       "https://react.dev/reference/rsc/server-components"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "performance-optimization"
     ]
   },
-  "synced": "8dbae039d81c6fdf",
+  "synced": "9f5ee4d597a163ea",
   "parts": [
     {"part": "intro"},
-    {"part": "core-principle", "heading": "Core principle"},
-    {"part": "strategy-selection-by-route-type", "heading": "Strategy selection by route type"},
-    {"part": "react-server-components-react-specific-note", "heading": "React Server Components (React-specific note)"},
-    {"part": "decision-hygiene", "heading": "Decision hygiene"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "strategy-by-route-type", "heading": "Strategy by route type", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

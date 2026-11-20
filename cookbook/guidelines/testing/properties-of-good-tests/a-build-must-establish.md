@@ -1,0 +1,13 @@
+
+- `must-be-isolated`: the suite passes when run in a randomized order
+- `must-be-composable`: a subset of the tests, run alone, passes
+- `must-be-deterministic`: repeated runs of the suite give the same result
+- `should-be-fast`: test timings show milliseconds per unit test and seconds per integration test, or a note says why not
+- `should-be-writable`: tests need little setup to author, or a note says why not
+- `should-be-readable`: each failure output names what broke and why, or a note says why not
+- `should-be-behavioral`: tests assert outcomes, not implementation steps, or a note says why not
+- `should-be-structure-insensitive`: tests pass unchanged after a behavior-preserving refactor, or a note says why
+- `should-be-automated`: the suite runs from one command with no manual step, or a note says why
+- `should-be-specific`: each test asserts a single cause of failure, or a note says why not
+- `should-be-predictive`: tests exercise the code paths that run in production, or a note says why not
+- `should-be-inspiring`: the suite is trusted as a gate for refactor and ship, or a note says why not

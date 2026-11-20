@@ -1,0 +1,13 @@
+
+- `deliberate-level`: a transaction that relies on the unstated global default isolation level
+- `justified-level`: an isolation level chosen with no stated anomaly it prevents
+- `retry-serialization-failure`: Treating `40001` as a hard error and surfacing it to the user — it is expected under contention and MUST be retried.
+- `bounded-backoff`: a retry loop with no max attempt count, or no exponential backoff with jitter
+- `surface-on-exhaustion`: a retry loop that swallows the failure once its attempts run out
+- `idempotent-retry`: Emitting side effects (charge a card, send a webhook) inside a Serializable transaction body that may be retried.
+- `no-savepoint-only-retry`: a handler that catches `40001` and carries on in the same aborted transaction instead of a fresh `BEGIN`
+- `explicit-locking-for-queues`: a worker/queue claim without `FOR UPDATE SKIP LOCKED` or `FOR UPDATE`
+- `no-serializable-queue-dispatch`: queue dispatch relying on Serializable
+- `prefer-narrowest-level`: Serializable used where no write skew risk exists
+- `check-then-update-locking`: Using Read Committed for a check-then-update invariant (read balance, then debit) — this loses updates; use `SELECT ... FOR UPDATE` or Serializable.
+- `confirm-engine-semantics`: isolation behaviour assumed for MySQL or another engine by analogy to PostgreSQL

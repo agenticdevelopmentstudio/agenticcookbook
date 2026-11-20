@@ -4,11 +4,11 @@
     "id": "dee58e49-84e7-4ba5-b0f0-a308b2568327",
     "title": "Consent management",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,21 +29,21 @@
       "https://gdpr-info.eu/art-4-gdpr/",
       "https://oag.ca.gov/privacy/ccpa"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "authentication",
       "ui-implementation"
     ]
   },
-  "synced": "abdd69215837e671",
+  "synced": "59195ccbd4be30ed",
   "parts": [
     {"part": "intro"},
-    {"part": "conditions-for-valid-consent", "heading": "Conditions for valid consent"},
-    {"part": "recording-consent", "heading": "Recording consent"},
-    {"part": "withdrawal", "heading": "Withdrawal"},
-    {"part": "gating-and-lifecycle", "heading": "Gating and lifecycle"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

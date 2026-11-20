@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Before treating a claim as corroborated, check that its sources do not share an origin.",
+      "to": "should-check-sources-share-no-origin",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD, with the same before-treating-as-corroborated condition, checking that a claim's sources do not share an origin.",
+        "pin": "ae7e8d153a9700637734ab18e7c995c7d7b45e74c247d3968fe665fc5c621c8c"
+      }
+    },
+    {
+      "sentence": "Record each claim's corroboration as independent, single, or uncorroborated.",
+      "to": "should-record-corroboration-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD recording each claim's corroboration as independent, single, or uncorroborated.",
+        "pin": "5717fce81c1afeb4de56415c6b0b58b1621b00d815aac9cc1480073c9e00ebd8"
+      }
+    }
+  ],
+  "obsolete": []
+}

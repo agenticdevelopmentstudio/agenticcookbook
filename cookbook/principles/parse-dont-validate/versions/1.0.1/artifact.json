@@ -1,0 +1,42 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "2a22b563-afb5-4615-96ae-338eafd5eb81",
+    "title": "Make illegal states unrepresentable",
+    "type": "principle",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Encode invariants in types and parse untrusted input once into a value that carries proof of its own validity.",
+    "platforms": [],
+    "tags": [
+      "parse-dont-validate",
+      "types",
+      "invariants"
+    ],
+    "depends-on": [],
+    "related": [
+      "425271ea-92b6-4df6-9a83-94795f1be377",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd",
+      "a7ce3621-2fed-478f-8767-b186014c5923"
+    ],
+    "references": [
+      "https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/",
+      "https://functional-architecture.org/make_illegal_states_unrepresentable/",
+      "https://aipatternbook.com/make-illegal-states-unrepresentable",
+      "https://deviq.com/practices/parse-dont-validate/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10"
+  },
+  "synced": "737a53b7323fb70e",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

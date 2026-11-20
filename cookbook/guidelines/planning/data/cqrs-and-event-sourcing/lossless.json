@@ -1,0 +1,149 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Adopt **CQRS** when one of these is concretely true:",
+      "to": "should-adopt-cqrs-only-on-its-triggers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: the rule restricts CQRS adoption to when one of the same two triggers (measured divergent read/write scaling or shape; read side needing independent storage or indexing) is concretely true, matching the old section's 'adopt only when a trigger holds' gate at SHOULD.",
+        "pin": "4eec0fb26fd894249455d8b5d8077e230707cebc340ae72f5c4d33a7c2ce43a6"
+      }
+    },
+    {
+      "sentence": "Adopt **event sourcing** when one of these is concretely true:",
+      "to": "should-adopt-event-sourcing-only-on-its-triggers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: the rule restricts event sourcing to when one of the same two triggers (replay/audit requirement; deriving new read models retroactively) is concretely true, with all examples kept.",
+        "pin": "d9c4813bb70d886e922c37c8dbf25b38b2d2d931591787c8227a2d88c5dc2964"
+      }
+    },
+    {
+      "sentence": "| Eventual consistency | Read models lag writes; UI/API **MUST** tolerate the delay (optimistic update, loading state, or read-your-writes routing). |",
+      "to": "must-tolerate-eventual-consistency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim: read models lag writes and the UI/API MUST tolerate the delay, with all three techniques listed.",
+        "pin": "027cb405216cb08c2c2dfdc1b21451f2799619d469cf487d9f281adf2f92417d"
+      }
+    },
+    {
+      "sentence": "| Projection rebuilds | A documented, tested procedure to rebuild read models from the log; **MUST** be runnable without downtime for large stores. |",
+      "to": "must-rebuild-projections-without-downtime",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: a documented, tested rebuild procedure from the log, MUST be runnable without downtime for large stores.",
+        "pin": "1fde7e197d885acde99ebd071fb955dd240a2e3773cbad555cf6aa836f51a593"
+      }
+    },
+    {
+      "sentence": "| Event versioning | Events are immutable once written; you **MUST** have an upcasting/versioning plan before the first event ships — schema changes are not retroactive edits. |",
+      "to": "must-plan-event-versioning-before-the-first-event",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim: events immutable once written, MUST have an upcasting/versioning plan before the first event ships, schema changes not retroactive edits.",
+        "pin": "49b28514d5fb1b9a0ba205353dcaf22937d5f057bd66dfc0d0aeb0e8747b3612"
+      }
+    },
+    {
+      "sentence": "| Operational surface | Command handlers, event store, projectors, and read stores each add deployment, monitoring, and failure modes (`manage-complexity-through-boundaries`). |",
+      "to": "should-plan-for-each-cost-before-adopting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim inside should-plan-for-each-cost-before-adopting: each component adds deployment, monitoring and failure modes, with the manage-complexity-through-boundaries reference.",
+        "pin": "943673ce8d71e775835724fb31ba6bff59b06b780a9799f2cc160fd5c6ca3b3f"
+      }
+    },
+    {
+      "sentence": "**explicit-over-implicit**: model commands and events as named, versioned types; never overload one generic \"update\" event.",
+      "to": [
+        "should-model-commands-and-events-as-named-versioned-types",
+        "must-not-overload-a-generic-update-event"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: named, versioned types at SHOULD (unkeyed instruction) and the ban on overloading one generic update event strengthened to MUST NOT, both citing explicit-over-implicit.",
+        "pin": "6b91bc184cb3cd6d8f883832f6ea1d88dc9db471ba28114aeb4efd7c4420fb82"
+      }
+    },
+    {
+      "sentence": "**idempotency**: command handlers and projectors **MUST** be idempotent — events may be redelivered; dedupe on a stable event id.",
+      "to": "must-make-handlers-and-projectors-idempotent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim: handlers and projectors MUST be idempotent, with the redelivery reason and stable-event-id dedupe.",
+        "pin": "7b1663fb04b00ef20476e9df413fd95fbdd8d36b13a752152e184e108e4a613f"
+      }
+    },
+    {
+      "sentence": "Keep CQRS **without** event sourcing as a valid stopping point: separating read/write models in one database is far cheaper than a full event store, and often enough.",
+      "to": "should-keep-cqrs-without-event-sourcing-as-a-stopping-point",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD, including the reason that one-database read/write separation is far cheaper than a full event store and often enough.",
+        "pin": "8d9d1d1551914873a74760bd4b3ff08acbfea5c506260b1a9458e05c3ee95880"
+      }
+    },
+    {
+      "sentence": "Start in-process and single-store; introduce separate read stores or message infrastructure **only** when the triggering requirement demands it.",
+      "to": "should-start-in-process-and-single-store",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: start in-process and single-store, introduce separate read stores or messaging only when the triggering requirement demands it.",
+        "pin": "287c216415cf79538ca0d84bbf3e8b7ceda2d3a89bc8316e8ea14efd33854c28"
+      }
+    },
+    {
+      "sentence": "Define the consistency contract per use case (which reads may be stale, which must be strongly consistent) and surface it in the API.",
+      "to": "should-define-the-consistency-contract-per-use-case",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: per-use-case consistency contract naming stale vs strongly consistent reads, surfaced in the API.",
+        "pin": "5d0be182a9ecba3af293e21216df9c36cec841c071d73c29f94e1c21c293c724"
+      }
+    },
+    {
+      "sentence": "Default to a single model (CRUD over one datastore).",
+      "to": "should-default-to-a-single-model",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: default to a single model (CRUD over one datastore).",
+        "pin": "058f6ac264a8878395e06c81e536a376aaaab5c21e13bce240252d4d4f7a7939"
+      }
+    },
+    {
+      "sentence": "| Cost | What it requires |",
+      "to": "should-plan-for-each-cost-before-adopting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The table header's content (each cost and what it requires) is carried by the rule's 'plan for each cost you take on, and what it requires, before adopting', with all four costs named.",
+        "pin": "71f4b9956c0a2302f3d38baf30f7d57f875c9a60a050b5640203b551a3c82af9"
+      }
+    },
+    {
+      "sentence": "|------|------------------|",
+      "to": "should-plan-for-each-cost-before-adopting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A markdown table separator row with no content; the table it belonged to is fully carried by the cost rules.",
+        "pin": "b59af452d3f9e2d413914673a41dcbe877d72cf7c22e5e204832d6c32cf7b8b9"
+      }
+    }
+  ],
+  "obsolete": []
+}

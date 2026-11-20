@@ -1,0 +1,52 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "It SHOULD be written as agent-neutral instructions so other tools can share it.",
+      "to": "should-write-agent-neutral-agents-md",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule names AGENTS.md and keeps the SHOULD with its reason (so other tools can share it).",
+        "pin": "a637263fd6afce1eccc96df363cc105192ffdbd2c02bdd216eb0262162882eaf"
+      }
+    },
+    {
+      "sentence": "Code MUST NOT assume one.",
+      "to": "must-not-assume-a-home-directory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule resolves 'one' to one home directory and keeps MUST NOT; the home-directory part still records the conflicting ~/.kimi and ~/.kimi-code sources.",
+        "pin": "a3ab1f3fcb86dc235fdd720bb20c56ef00f3bb8c9e380a10fa1d16d8b0fc5f1e"
+      }
+    },
+    {
+      "sentence": "It MUST check which directory the installed version uses, and scripts that touch these paths SHOULD accept an override rather than hardcoding either.",
+      "to": [
+        "must-check-the-installed-home-directory",
+        "should-accept-a-path-override"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Split into MUST check which directory the installed version uses and SHOULD accept an override rather than hardcoding either, both at the original levels.",
+        "pin": "f7cab4aa266a86b8a6609ba10e7ae092409222cf57a51433fc8e13d82823aa49"
+      }
+    },
+    {
+      "sentence": "Frontmatter fields are `name`, `description` (which MUST be present for the directory form), `type` (`prompt`, `inline` or `flow`), `whenToUse`, `disableModelInvocation` and `arguments`.",
+      "to": [
+        "skills",
+        "must-give-directory-form-skills-a-description"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The skills part lists every frontmatter field including type values, and the description MUST for the directory form is kept as its own rule.",
+        "pin": "9d940fbd068301ec231a464fc6b0a3e0a1ac5fa3e3955d67e3a526bf06906333"
+      }
+    }
+  ],
+  "obsolete": []
+}

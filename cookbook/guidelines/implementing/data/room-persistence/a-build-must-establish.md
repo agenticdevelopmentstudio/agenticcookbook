@@ -1,0 +1,27 @@
+
+- `should-prefer-coroutine-first-dao-apis`: DAO APIs use `Flow` for observable reads, `suspend` for one-shot writes and `@Transaction` for multi-statement work, or the code says why not
+- `should-state-kmp-support-as-2-7-plus`: every KMP support claim reads "2.7.0+", or the work says why not
+- `should-treat-room-3-as-forecast`: nothing relies on Room 3.0 or `androidx.room3:room3-*` as shipped, or the work says why not
+- `should-not-migrate-production-to-room-3`: production code builds on Room 2.x, or the work says why not
+- `should-pin-room-version`: the version catalog pins an exact Room version, or the work says why not
+- `must-use-ksp`: `room-compiler` is applied through the KSP plugin, with no `kapt`
+- `should-export-schema`: `room.schemaLocation` is set and the exported schema JSON is committed, or the work says why not
+- `should-return-flow-for-observable-reads`: every observable DAO read returns `Flow`, or the code says why not
+- `should-suspend-one-shot-reads-and-writes`: every one-shot read and write DAO method is `suspend`, or the code says why not
+- `must-not-call-blocking-dao-on-main-thread`: no blocking DAO function is called on the main thread
+- `should-not-allow-main-thread-queries-outside-tests`: `allowMainThreadQueries()` appears only in test code, or the code says why not
+- `must-not-mark-reactive-returns-suspend`: no DAO method returning `Flow`, `Flowable` or `Observable` is `suspend`
+- `must-wrap-atomic-multi-statement-work-in-transaction`: every atomic multi-statement operation is in `@Transaction` or `withTransaction`
+- `must-use-transaction-on-relation-queries`: every `@Query` returning a `@Relation`-bearing POJO has `@Transaction`
+- `should-keep-transactions-short`: no network or long CPU work runs inside `withTransaction`, or the code says why not
+- `should-define-one-entity-per-normalized-table`: each normalized table maps to exactly one `@Entity`, or the code says why not
+- `should-declare-relationships-not-denormalize`: relationships are `@ForeignKey` plus `@Relation`, not denormalized copies, or the code says why not
+- `must-index-foreign-key-columns`: every `@ForeignKey` column has an index
+- `should-treat-unindexed-fk-warning-as-error`: the build shows no unindexed-foreign-key warning, or the work says why not
+- `should-use-unique-index-for-natural-keys`: each natural key has `@Index(unique = true)`, or the code says why not
+- `must-bump-version-and-supply-migration`: each schema change bumps `version` and ships a `Migration` or auto-migration spec
+- `must-not-ship-destructive-migration-fallback`: the release build does not call `fallbackToDestructiveMigration()`
+- `should-test-migrations`: a `MigrationTestHelper` test migrates N to N+1 and asserts data survives, or the work says why not
+- `must-not-hold-database-per-screen`: one application-scoped `RoomDatabase` singleton is built via `Room.databaseBuilder(...)`
+- `must-not-expose-livedata-to-coroutine-consumers`: new code exposes `Flow`, not `LiveData`, to coroutine/Compose consumers
+- `must-not-split-multi-step-writes-without-transaction`: no multi-step write runs as separate suspend calls outside a transaction

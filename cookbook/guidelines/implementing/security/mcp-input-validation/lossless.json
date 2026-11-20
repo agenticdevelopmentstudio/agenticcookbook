@@ -1,0 +1,125 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Scope downstream actions to the least privilege the host-process identity holds; never widen privilege based on a tool argument.",
+      "to": [
+        "should-scope-downstream-to-least-privilege",
+        "must-not-widen-privilege-from-arguments"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Scoping downstream actions to the host-process identity's least privilege is kept at SHOULD, and never widening privilege from a tool argument is kept at MUST NOT.",
+        "pin": "01905d8e10d5a4fee22e7cfee085b4c35c509fee9abde23e49fbb6ccf1b8e27d"
+      }
+    },
+    {
+      "sentence": "**MUST NOT** forward a client-supplied token to a downstream API without validating its audience (see `mcp-server-security` token-passthrough rules).",
+      "to": "must-not-forward-unvalidated-tokens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on forwarding a client-supplied token downstream without validating its audience is kept with the mcp-server-security cross-reference.",
+        "pin": "f3c810ecdbaec9df4cb069bdc9c6ed74d247d3aafae4a8e3d98123d7c2972fa8"
+      }
+    },
+    {
+      "sentence": "**File paths**: canonicalize (resolve symlinks + `..`) and confine to an allowlisted root; reject paths that escape it.",
+      "to": "should-confine-file-paths",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Canonicalizing file paths (symlinks and ..), confining them to an allowlisted root and rejecting escapes is kept at SHOULD.",
+        "pin": "79400a3e35d7fbbc5c1641bba27d712dcb98157f4af7d4dd63248bb29c85019f"
+      }
+    },
+    {
+      "sentence": "**URL arguments**: block SSRF — allowlist schemes/hosts, resolve and reject private, loopback, and link-local IP ranges, and disable redirects to disallowed targets.",
+      "to": "should-block-ssrf",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Blocking SSRF on URL arguments with scheme/host allowlists, rejection of private, loopback and link-local ranges, and disallowed redirects is kept at SHOULD.",
+        "pin": "0885ebd67c32aa1e31e0432a6995d20b9ec5771ab3d709fe8b47a1e9078c2e27"
+      }
+    },
+    {
+      "sentence": "**Database**: use parameterized queries only; scope every query to the authorized tenant/row set — never interpolate an argument into SQL or a query path.",
+      "to": [
+        "should-use-parameterized-queries-only",
+        "should-scope-queries-to-authorized-tenant",
+        "must-not-interpolate-arguments-into-queries"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Parameterized queries only and per-tenant/row-set query scoping are kept at SHOULD, and never interpolating an argument into SQL or a query path is kept at MUST NOT.",
+        "pin": "46e766b2599c7b9e5faa5206481ac2a86661b817ac9a455f97555c53621c2863"
+      }
+    },
+    {
+      "sentence": "**Shell/OS**: avoid shell invocation; if unavoidable, pass arguments as an argv array (never a concatenated string) and allowlist the executable.",
+      "to": [
+        "should-avoid-shell-invocation",
+        "must-not-pass-concatenated-shell-string"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Avoiding shell invocation, else argv arrays and an allowlisted executable, is kept at SHOULD, and the never-concatenated-string ban is kept at MUST NOT.",
+        "pin": "29f3d473b5f85707007e5a65ce7bd7d402fde1a2325299da0753c8d71c8b8305"
+      }
+    },
+    {
+      "sentence": "Pin guidance to the MCP spec revision dated **2025-06-18** (tool `inputSchema` is JSON Schema **2020-12**).",
+      "to": "should-pin-mcp-spec-revision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning to the MCP spec revision 2025-06-18, with inputSchema as JSON Schema 2020-12, is kept at SHOULD.",
+        "pin": "f0fcc39a45f7d2622ec7f86a304363f2bc7cd0e98d30a43512e449d8be858c72"
+      }
+    },
+    {
+      "sentence": "Log validation failures and authorization denials with the tool name and caller identity (not raw argument payloads); **MUST NOT** log secrets or full tokens.",
+      "to": [
+        "should-log-failures-and-denials",
+        "must-not-log-secrets-or-tokens"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Logging validation failures and authorization denials with tool name and caller identity, not raw payloads, is kept at SHOULD, and the MUST NOT on logging secrets or full tokens is kept.",
+        "pin": "2f9dc109127fef2417cffed76d38275ae6243d8c0818c94d38ccb3e422139c70"
+      }
+    },
+    {
+      "sentence": "Return structured, non-leaky errors on rejection — fail closed, surface a stable error code, and **MUST NOT** echo internal paths or stack traces.",
+      "to": [
+        "should-return-non-leaky-errors",
+        "must-not-echo-internals-in-errors"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Structured, non-leaky, fail-closed errors with a stable code are kept at SHOULD, and the MUST NOT on echoing internal paths or stack traces is kept.",
+        "pin": "83c05a0da5d2f1deee2113c002f67fd87763041bfc01fc6bce952955bbd77a1f"
+      }
+    },
+    {
+      "sentence": "Define `inputSchema` with explicit `type`, `required`, `enum`, `pattern`, `minLength`/`maxLength`, and numeric bounds; the root **MUST** be `type: object`.",
+      "to": [
+        "should-define-explicit-schema-constraints",
+        "must-use-object-schema-root"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Explicit inputSchema constraints (type, required, enum, pattern, length and numeric bounds) are kept at SHOULD, and the object root is kept at MUST.",
+        "pin": "91013d0f2ceaebc03a4ded930bd735b8f56decfb1c1c0af6eb1e194740989863"
+      }
+    }
+  ],
+  "obsolete": []
+}

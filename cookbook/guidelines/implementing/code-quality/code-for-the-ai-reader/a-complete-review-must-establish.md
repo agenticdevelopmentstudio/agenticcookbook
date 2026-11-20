@@ -1,0 +1,20 @@
+
+- `should-treat-machine-legibility-as-one-audience`: no change gives up human readability for machine-legibility, or the code says why
+- `must-keep-names-literally-searchable`: every name is searchable as a literal string
+- `should-use-one-canonical-spelling`: each concept has one canonical spelling, or the code says why not
+- `should-avoid-runtime-constructed-identifiers`: no identifier is constructed at runtime, or the code says why
+- `should-find-definition-by-grep`: searching for each function's name finds its definition, or the code says why not
+- `should-keep-call-sites-discoverable`: every function is reachable by searching for its name, not only through a registry, decorator or DI wiring, or the code says why not
+- `should-minimize-hidden-runtime-behavior`: reflection, dynamic dispatch and runtime metaprogramming are kept to the minimum, each use justified
+- `should-keep-signatures-explicit`: every function signature has explicit, accurate parameter names and return types, or the code says why not
+- `should-prefer-explicit-types-and-names`: explicit types and intention-revealing names are used where the language makes them optional, or the code says why not
+- `should-prefer-explicit-control-flow`: control flow is explicit, with no auto-registration, monkey-patching or import-time side effects, or the code says why
+- `should-colocate-tests`: tests live close to the code they exercise, or the code says why not
+- `should-name-tests-for-behavior`: every test is named for the behavior it verifies, or the code says why not
+- `must-not-maximize-machine-legibility-at-all-costs`: no choice maximizes machine-legibility at all costs
+- `should-favor-locality-of-related-behavior`: related behavior stays local rather than split across many short files, or the code says why
+- `should-judge-dry-per-case`: each DRY-versus-repetition choice was judged for its case, or the code says why not
+- `should-not-cite-agent-readership-as-statistic`: nothing cites "agents now read code more than humans do" as an established statistic, or the code says why
+- `should-justify-by-concrete-readability`: each readability choice is justified by concrete readability for the next reader, or the code says why not
+- `should-prefer-explicit-and-local-when-cost-low`: every low-cost conflict was resolved toward explicit, local behavior, or the code says why not
+- `should-weigh-and-document-when-human-cost-high`: every high-human-cost trade-off was weighed and documented, or the code says why not

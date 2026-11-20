@@ -1,0 +1,16 @@
+
+- `should-instrument-with-red-and-use`: every request-serving service emits RED and every consumable resource emits USE metrics, or the code says why not
+- `rate-metric`: each service emits a request-rate counter labeled by route/operation
+- `errors-metric`: each service emits failed requests as a separate counter or as an `error`/`status` label on the rate counter
+- `duration-metric`: each service emits request duration as a histogram
+- `error-definition`: each service documents what counts as an error
+- `cardinality-limit`: no label holds an unbounded value; routes are bounded templates
+- `resource-coverage`: every resource that can become a bottleneck has utilization, saturation and errors metrics, or the code says why not
+- `must-not-omit-saturation`: every monitored resource has a saturation metric
+- `saturation-signal`: every saturation metric is a queue depth or wait measurement, or the code says why not
+- `naming-convention`: metric names follow one scheme across services (OpenTelemetry semantic conventions by default), or the code says why not
+- `unit-discipline`: durations are in seconds and sizes in bytes, with the unit in metric metadata, or the code says why not
+- `shared-labels`: every metric carries the same `service`, `environment` and `version` labels, or the code says why not
+- `should-not-record-duration-as-gauge`: no duration is a gauge or average, or the code says why
+- `should-not-use-high-cardinality-labels`: no label is high-cardinality, or the code says why
+- `should-not-track-utilization-without-saturation`: no resource tracks utilization without saturation, or the code says why

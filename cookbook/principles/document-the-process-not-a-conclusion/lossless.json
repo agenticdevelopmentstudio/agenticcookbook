@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A \"parked\" branch is not a failed idea — it is a resumable thread; the thought graph preserves",
+      "to": "should-preserve-unchosen-branches",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-preserve-unchosen-branches keeps that a parked branch is not a failed idea but a resumable thread.",
+        "pin": "8d1f94e61f0ecd3ecfd9a2c2d66a57f410091d790057ae5c0f0aa73edde1a695"
+      }
+    },
+    {
+      "sentence": "what was *not* chosen as richly as what was, enabling later mining",
+      "to": "should-preserve-unchosen-branches",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-preserve-unchosen-branches keeps the thought graph preserving what was not chosen as richly as what was, and the purpose of later mining, at SHOULD.",
+        "pin": "a761fd3b101edcf10c789fbc7dde6a8a82875e036338e3086320a2e9ef7f9ba0"
+      }
+    },
+    {
+      "sentence": "The facilitator's closing move is always to document where the session was heading, so the next",
+      "to": "must-document-where-session-was-heading",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-document-where-session-was-heading keeps the 'always' closing move as MUST: document where the session was heading.",
+        "pin": "b66bdec2c6f8dd59ed5c429d8c23c255dfc5ea0f1a65942b3c1d1d162dc002e1"
+      }
+    },
+    {
+      "sentence": "session can pick up from the right place without losing orientation",
+      "to": "must-document-where-session-was-heading",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-document-where-session-was-heading keeps the reason: the next session picks up from the right place without losing orientation.",
+        "pin": "dd2e4e4fb10f94500689eaabce4a645cea2339eb0d344baf00b3b4d99aa7f778"
+      }
+    }
+  ],
+  "obsolete": []
+}

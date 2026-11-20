@@ -1,0 +1,26 @@
+
+- `should-pin-mcp-spec-revision`: the code names MCP spec revision 2025-06-18 and JSON Schema 2020-12, or says why not
+- `must-validate-against-input-schema`: every tool handler validates every argument against its `inputSchema` before use and rejects on mismatch
+- `must-not-trust-argument-provenance`: no handler grants an argument privilege because it came through the model
+- `must-authorize-every-call`: every handler authorizes against the authenticated identity on every call
+- `must-sanitize-and-bound-before-side-effects`: every argument is sanitized and bounded before any side effect
+- `should-define-explicit-schema-constraints`: each `inputSchema` field has explicit type, required, enum, pattern, length or numeric bounds, or the code says why not
+- `must-use-object-schema-root`: every `inputSchema` root is `type: object`
+- `must-reject-unknown-properties`: a JSON Schema 2020-12 validator runs at the handler boundary with `additionalProperties: false`, except named intentionally open fields
+- `must-not-auto-dereference-external-refs`: the validator does not fetch external `$ref` URIs, and bounds schema depth and validation time or says why not
+- `must-not-cache-authorization-across-privilege-boundary`: every invocation re-checks scopes/permissions, and no authorization decision is cached across a privilege boundary
+- `should-scope-downstream-to-least-privilege`: downstream actions run with the host-process identity's least privilege, or the code says why not
+- `must-not-widen-privilege-from-arguments`: no tool argument changes the privilege a call runs with
+- `must-not-forward-unvalidated-tokens`: every client-supplied token is audience-validated before it is forwarded downstream
+- `should-confine-file-paths`: file paths are canonicalized and confined to an allowlisted root, with escapes rejected, or the code says why not
+- `should-block-ssrf`: URL arguments pass a scheme/host allowlist, private/loopback/link-local IPs are rejected and redirects to disallowed targets disabled, or the code says why not
+- `should-use-parameterized-queries-only`: every database call uses a parameterized query, or the code says why not
+- `should-scope-queries-to-authorized-tenant`: every query is scoped to the authorized tenant/row set, or the code says why not
+- `must-not-interpolate-arguments-into-queries`: no argument is interpolated into SQL or a query path
+- `should-avoid-shell-invocation`: no shell is invoked, or an unavoidable one gets an argv array and an allowlisted executable, or the code says why not
+- `must-not-pass-concatenated-shell-string`: no shell call receives a concatenated argument string
+- `should-validate-tool-results`: tool results are validated against `outputSchema` and fetched content stripped or labelled, or the code says why not
+- `should-log-failures-and-denials`: validation failures and denials are logged with tool name and caller identity and no raw payload, or the code says why not
+- `must-not-log-secrets-or-tokens`: no log contains secrets or full tokens
+- `should-return-non-leaky-errors`: rejections fail closed with a structured error and stable code, or the code says why not
+- `must-not-echo-internals-in-errors`: no error contains internal paths or stack traces

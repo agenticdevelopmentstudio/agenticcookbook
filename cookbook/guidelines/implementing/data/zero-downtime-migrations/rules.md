@@ -1,0 +1,21 @@
+
+- **should-split-schema-changes-into-compatible-steps**: You SHOULD split every schema change into small, individually-deployable, backward-compatible steps so the running app version keeps working at all times.
+- **must-be-compatible-with-running-version**: Each migration step **MUST** be compatible with the app version currently running against it — both N-1 and N must function after the step is applied.
+- **must-not-ship-schema-and-code-together**: A schema change and the code that depends on it **MUST NOT** ship in the same atomic step. The schema goes first (additive), code follows, cleanup goes last.
+- **must-defer-destructive-changes**: Destructive changes (drop column, rename, narrow a type, add NOT NULL) **MUST** be deferred to the contract phase, after no running code references the old shape.
+- **should-spread-change-across-releases**: You SHOULD spread one logical change across multiple releases, through the Expand, Migrate, Switch and Contract phases.
+- **must-add-columns-nullable-or-defaulted**: New columns **MUST** be added as nullable or with a safe default; do not add `NOT NULL` to an existing large table in one step. Add the column, backfill, then add the constraint as `NOT VALID` and `VALIDATE CONSTRAINT` separately.
+- **must-rename-by-parallel-change**: Renames **MUST** be done as add-new + dual-write + backfill + switch + drop-old, never as an in-place `RENAME` that breaks N-1.
+- **must-batch-backfills**: Backfills **MUST** run in bounded batches (e.g. by primary-key range) with a commit per batch, so they hold no long transaction and can resume after interruption.
+- **should-make-backfills-idempotent**: Backfill jobs **SHOULD** be idempotent so a re-run after partial failure produces the same result.
+- **should-bound-ddl-lock-wait**: You SHOULD bound the wait so a contended migration aborts cleanly and can be retried.
+- **must-set-lock-timeout**: Migrations that take table locks **MUST** set `lock_timeout` (e.g. `SET lock_timeout = '5s'`) so a blocked `ALTER`/`DROP` fails fast rather than building a lock queue.
+- **should-set-statement-timeout**: You SHOULD set `statement_timeout` too, to bound the statement's own runtime.
+- **should-retry-lock-timeout-aborts**: A migration that aborts on `lock_timeout` **SHOULD** be retried with backoff rather than run unbounded.
+- **must-build-indexes-concurrently**: Indexes on large live tables **MUST** be built with `CREATE INDEX CONCURRENTLY` (and dropped with `DROP INDEX CONCURRENTLY`) to avoid an `ACCESS EXCLUSIVE` lock on writes.
+- **must-not-wrap-concurrent-index-in-transaction**: `CREATE INDEX CONCURRENTLY` cannot run inside a transaction block. Migration steps that use it **MUST NOT** be wrapped in a transaction.
+- **should-clean-up-invalid-index**: A step that uses `CREATE INDEX CONCURRENTLY` **SHOULD** check for and clean up an `INVALID` index left by a failed concurrent build before retrying.
+- **should-roll-back-by-redeploying**: Because each step is additive and backward-compatible, the rollback SHOULD be to **redeploy the previous app version** — the expanded schema still works for it.
+- **should-avoid-dropping-down-migrations**: You SHOULD avoid down-migrations that drop just-added columns during an incident; they re-introduce the lock you were avoiding.
+- **must-keep-old-shape-one-deploy-cycle**: The old shape **MUST** survive at least one full deploy cycle past the switch so any in-flight N-1 instances stay functional.
+- **should-confirm-engine-lock-behavior**: You SHOULD confirm against your engine's current `ALTER TABLE` documentation before relying on a clause being non-blocking.

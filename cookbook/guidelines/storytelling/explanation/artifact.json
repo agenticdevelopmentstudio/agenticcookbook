@@ -4,11 +4,11 @@
     "id": "14c5afdc-9c2d-444f-bffb-7514ca889481",
     "title": "Explaining a Project",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-06-29",
-    "modified": "2026-10-03",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -23,16 +23,18 @@
       "0bfc8dc6-94ac-4bf4-8601-621ee9086487"
     ],
     "triggers": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-03",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "depends-on": [],
     "references": []
   },
-  "synced": "bb2af690801e9f6f",
+  "synced": "785b54cd6dfbde52",
   "parts": [
     {"part": "intro"},
-    {"part": "architecture", "heading": "Architecture"},
-    {"part": "capabilities", "heading": "Capabilities"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

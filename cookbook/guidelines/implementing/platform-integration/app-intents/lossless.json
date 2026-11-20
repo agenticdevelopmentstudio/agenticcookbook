@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "For new work, prefer the App Intents framework.",
+      "to": "prefer-app-intents-for-new-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "prefer-app-intents-for-new-work keeps preferring App Intents for new work, at SHOULD.",
+        "pin": "f141546bf20d36ee8947402ea5869e3fbf127fe8cef80063b01051a242ecb50f"
+      }
+    },
+    {
+      "sentence": "Do **NOT** add a new SiriKit custom intent for an action that App Intents can express; migrate existing custom intents when touched.",
+      "to": [
+        "should-not-add-sirikit-custom-intent",
+        "migrate-custom-intents-when-touched"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-add-sirikit-custom-intent keeps the unkeyed 'Do NOT' with its can-express condition at SHOULD NOT; migrate-custom-intents-when-touched keeps migrating existing custom intents when touched, at SHOULD.",
+        "pin": "912748081f75f9d42374c53e9b2fedb2c01964c8bee70208acb25b8267879e8b"
+      }
+    },
+    {
+      "sentence": "Treat any \"App Intents power feature X\" capability beyond Siri, Shortcuts, Spotlight, widgets, Control Center, and the Action Button as a FORECAST and confirm against the [App Intents documentation](https://developer.apple.com/documentation/appintents) for the OS version you target.",
+      "to": "treat-other-capabilities-as-forecasts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "treat-other-capabilities-as-forecasts keeps the full surface list, the FORECAST treatment and confirming against the App Intents docs for the targeted OS, at SHOULD.",
+        "pin": "ebc20753c03b3c6e2108934f09787e22ecb10581d6c489ea63f7c0eb19caa69e"
+      }
+    },
+    {
+      "sentence": "Provide an `EntityQuery` (or `EntityStringQuery`/`EnumerableEntityQuery`) so the system can resolve entities by id, by search string, or by enumeration.",
+      "to": "provide-an-entityquery",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "provide-an-entityquery keeps EntityQuery (or EntityStringQuery/EnumerableEntityQuery) and the resolve-by-id/search/enumeration reason, at SHOULD.",
+        "pin": "915e1b618b760827ebd47356ec2c134c9eab4af3d4b9873f4154fbfc5183648f"
+      }
+    },
+    {
+      "sentence": "Conform one type to `AppShortcutsProvider` and return `AppShortcut` values from the `appShortcuts` builder.",
+      "to": "conform-one-type-to-appshortcutsprovider",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "conform-one-type-to-appshortcutsprovider keeps conforming one type to AppShortcutsProvider and returning AppShortcut values from the appShortcuts builder, at SHOULD.",
+        "pin": "feb9353ff142fe177eafd52a3ee9cbb4c81a80ecae0ed665dfa4ffadcf518e00"
+      }
+    }
+  ],
+  "obsolete": []
+}

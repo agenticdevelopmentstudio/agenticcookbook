@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Hidden behavior, magic, and implicit coupling create bugs that take days to find:",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "intro keeps the sentence word for word: hidden behavior, magic, and implicit coupling create bugs that take days to find.",
+        "pin": "6ff0e3326577f1100763dcb828663d2013259350e842abd87178838bd3f2e928"
+      }
+    },
+    {
+      "sentence": "Make dependencies visible (injection over hidden globals)",
+      "to": "should-make-dependencies-visible",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-make-dependencies-visible keeps the instruction and its gloss, injection over hidden globals, at SHOULD.",
+        "pin": "0bc52651baa8a6864f7f07b5facf95c1a5e2cc4ce4182d873d287ad25783e1a1"
+      }
+    },
+    {
+      "sentence": "Name things for what they do, not how they are implemented",
+      "to": "should-name-for-what-things-do",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-name-for-what-things-do keeps naming for what things do, not how they are implemented, at SHOULD.",
+        "pin": "cbc4ba2bd3cdd82e3d6379ab5347e94dd300e372eb8c618da53073f3a2bc8dd2"
+      }
+    },
+    {
+      "sentence": "Prefer clear parameter passing over ambient state",
+      "to": "should-prefer-parameters-over-ambient-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-parameters-over-ambient-state keeps clear parameter passing over ambient state, at SHOULD.",
+        "pin": "2c25df93d5f3977a8fc84e32c80ca4e855b79c37180a5cd75a866a236456a01b"
+      }
+    }
+  ],
+  "obsolete": []
+}

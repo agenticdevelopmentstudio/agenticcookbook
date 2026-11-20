@@ -4,11 +4,11 @@
     "id": "16d3e8e5-47fc-4f79-b403-c532e4f12f07",
     "title": "Windows 11 materials (Mica and Acrylic)",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,19 @@
     "references": [
       "https://learn.microsoft.com/en-us/windows/apps/design/style/mica"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "dce5e125b855d2bf",
+  "synced": "d97b5dae41e25263",
   "parts": [
     {"part": "intro"},
-    {"part": "choosing-the-material", "heading": "Choosing the material"},
-    {"part": "applying-in-winui-3", "heading": "Applying in WinUI 3"},
-    {"part": "respecting-the-user-and-system", "heading": "Respecting the user and system"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

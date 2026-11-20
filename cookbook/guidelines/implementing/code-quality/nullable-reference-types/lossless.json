@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The null-forgiving operator (`!`) SHOULD NOT be used — prefer `?? throw` or guard clauses",
+      "to": "should-not-use-null-forgiving-operator",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD NOT on the null-forgiving operator and the preferred alternatives (?? throw, guard clauses) are kept verbatim.",
+        "pin": "cbff03b07cf7048e96a18d8ca7c8144289e1a9201f79cd0fa044e8c6e075a923"
+      }
+    },
+    {
+      "sentence": "Use `required` properties and constructor parameters for non-null initialization",
+      "to": "should-use-required-for-non-null-init",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using required properties and constructor parameters for non-null initialization is kept at SHOULD.",
+        "pin": "5c5a1cdf8c3b6a4defd22b7e7d97ae25d62912dd99b6deb64ce527ab51e4e768"
+      }
+    },
+    {
+      "sentence": "Use `[NotNull]`, `[MaybeNull]`, `[NotNullWhen]` from `System.Diagnostics.CodeAnalysis` for contracts the compiler cannot infer",
+      "to": "should-annotate-contracts-compiler-cannot-infer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using [NotNull], [MaybeNull], [NotNullWhen] from System.Diagnostics.CodeAnalysis for contracts the compiler cannot infer is kept at SHOULD with its condition.",
+        "pin": "24fa9c274086ca0bd47d64de882a684316b3da7ea2e51e685b73df5ec90fbbb8"
+      }
+    }
+  ],
+  "obsolete": []
+}

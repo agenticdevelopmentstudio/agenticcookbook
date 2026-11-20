@@ -1,0 +1,91 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**High internal coupling ratio (>0.6) = strong scope group candidate.** If 80% of a directory's imports are within the same directory, it is self-contained.",
+      "to": [
+        "should-treat-high-coupling-ratio-as-candidate",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-high-coupling-ratio-as-candidate keeps the >0.6 threshold and strong-candidate call; the rationale keeps the 80%-internal-imports example and self-contained reason.",
+        "pin": "3122cf3a6cf7a4282b04bcaf27cc490d38280c1967fe6a46e676053e2e0fd08c"
+      }
+    },
+    {
+      "sentence": "**Low coupling ratio (<0.3) = likely belongs elsewhere.** A file that imports mostly from other directories is probably a leaf consumer or a shared utility — consider merging it into the scope group it depends on most.",
+      "to": [
+        "should-consider-merging-low-ratio-files",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-consider-merging-low-ratio-files keeps the <0.3 threshold, likely-belongs-elsewhere and merge-into-most-depended-on group; the rationale keeps the leaf-consumer or shared-utility explanation.",
+        "pin": "75f5d84a7a4fd0b9bde723e370fcb9ca77c0044355f984c31ab2d2c3f6defb63"
+      }
+    },
+    {
+      "sentence": "**Unidirectional dependency = separate scope groups.** If layer A only imports layer B (never the reverse), A and B are separate concerns even if they live near each other.",
+      "to": [
+        "should-separate-unidirectional-layers",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-separate-unidirectional-layers keeps the A-only-imports-B condition and separate groups even when near each other; the rationale keeps the separate-concerns reason.",
+        "pin": "d2e70bf974b330ef89c02655142b0c17a387a859ce77a0ee011a6642725b786b"
+      }
+    },
+    {
+      "sentence": "**High fan-in files are shared infrastructure.** A file imported by 10+ other files across multiple candidate groups is a cross-cutting dependency — flag it for `cross-cutting-detection` rather than assigning it to one group.",
+      "to": [
+        "should-flag-high-fan-in-files",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-high-fan-in-files keeps the 10+ importers across multiple groups condition and flag-for-cross-cutting-detection rather than assign; the rationale keeps the cross-cutting-dependency claim.",
+        "pin": "32469ab1825342ab68adc35ecee4d7ae317f8c1ce1433a2ec17139fca6af29f9"
+      }
+    },
+    {
+      "sentence": "**Circular dependencies force co-location.** Files in a cycle must remain in the same scope group until the cycle is resolved.",
+      "to": "must-co-locate-cyclic-files",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-co-locate-cyclic-files keeps the MUST stay in one group until the cycle is resolved and the force-co-location headline.",
+        "pin": "08a2ce5b3babfde95bbe9eda68a120f7bc7da8e7c0106afe2a151327cd900cc1"
+      }
+    },
+    {
+      "sentence": "Document the cycle as a refactoring target.",
+      "to": "should-document-cycles-as-refactoring-targets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-document-cycles-as-refactoring-targets keeps documenting each cycle as a refactoring target, at SHOULD.",
+        "pin": "a8ca3f32c1c033ce0dacef60eab4265d6ad0a0aec13d4069c521294d3a6b3431"
+      }
+    },
+    {
+      "sentence": "**Star imports inflate apparent coupling.** A `import com.example.util.*` may only use one symbol — do not count star imports as full coupling without verifying symbol usage.",
+      "to": [
+        "should-not-count-star-imports-as-full-coupling",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-count-star-imports-as-full-coupling keeps the inflation claim and the verify-symbol-usage condition; the rationale keeps the one-symbol example.",
+        "pin": "ed87a170542c5a37ac3e924b4ddab22c624418086ca51add29ccb25beff3f0aa"
+      }
+    }
+  ],
+  "obsolete": []
+}

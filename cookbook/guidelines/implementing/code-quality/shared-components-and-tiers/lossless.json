@@ -1,0 +1,236 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When a lower tier needs something from above, invert the dependency: define a protocol or callback in the lower tier and let the higher tier supply it.",
+      "to": "should-invert-upward-dependencies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Inverting an upward dependency by defining a protocol or callback in the lower tier for the higher tier to supply is kept at SHOULD with its condition.",
+        "pin": "fe0f92bd31dd9aab1d7a12373492552d9cf5bee28871911ea19424a3a2aabb9d"
+      }
+    },
+    {
+      "sentence": "A cycle between tiers means the shared part belongs in a tier below both.",
+      "to": "should-extract-shared-part-of-cycle",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The statement that a cycle between tiers means the shared part belongs in a tier below both is kept in the rule.",
+        "pin": "665d2aa49c837d22cc422815935c98678fe886a955f4ef1ea0cd7d7fcda51b8a"
+      }
+    },
+    {
+      "sentence": "Extract it rather than allowing the cycle.",
+      "to": "should-extract-shared-part-of-cycle",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Extracting the shared part rather than allowing the cycle is kept at SHOULD.",
+        "pin": "9e194ca21ebde00d5b2943a2b2f43ee7093081bba6225db0e8d4411726a8f493"
+      }
+    },
+    {
+      "sentence": "A feature's models, service protocol, client, storage, logic and views go into the repo's existing shared tiers.",
+      "to": "should-put-feature-pieces-in-shared-tiers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Putting a feature's models, service protocol, client, storage, logic and views into the existing shared tiers is kept at SHOULD with every piece listed.",
+        "pin": "5f87fbdb3d926b2480d1db2691535dd40ddcf950bda5c1211e8d6a5ee0e63f76"
+      }
+    },
+    {
+      "sentence": "What legitimately stays in an application: the entry point, config files, and aggregation code, meaning menu assembly, dependency wiring, and thin adapters that bind a shared protocol to that application's data or transport.",
+      "to": "may-keep-entry-point-and-glue-in-app",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The list of what legitimately stays in an application (entry point, config files, aggregation code with its three kinds) is kept in full as a MAY; the 'only the glue stays' limit is carried by should-split-feature-by-need.",
+        "pin": "c6ccfc5c02ff6533937711276d2884ce80366040b304845ce2bdad66b9d6c9bd"
+      }
+    },
+    {
+      "sentence": "Split a feature by what each piece needs.",
+      "to": "should-split-feature-by-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Splitting a feature by what each piece needs is kept at SHOULD.",
+        "pin": "e1cc2ec410b3fab449c2968aa48009199928a305d9a8d2699f601a5e62b33d01"
+      }
+    },
+    {
+      "sentence": "Models and pure logic go to the foundation, persistence to the storage tier, views to the UI tier, transport clients to the IPC tier, and only the glue stays in the app.",
+      "to": "should-split-feature-by-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The per-tier placement (models and pure logic, persistence, views, transport clients) and only glue staying in the app are kept in the same rule.",
+        "pin": "734bf709d0c20e45cadbb754df4386ad336fff77fafe6f3da8c6a8784522ab13"
+      }
+    },
+    {
+      "sentence": "Every file lives inside a directory that names its purpose and belongs to a declared tier.",
+      "to": "should-keep-every-file-in-a-tier-directory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Every file living in a purpose-named directory that belongs to a declared tier is kept at SHOULD.",
+        "pin": "009a75a74565449f724a95bf9c530fc263625efe66c0f625341b659342ba3c40"
+      }
+    },
+    {
+      "sentence": "Do not leave source files strewn at the top level of a repo or package.",
+      "to": "should-keep-every-file-in-a-tier-directory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not leaving source files strewn at the top level of a repo or package is kept at SHOULD NOT.",
+        "pin": "864dc593fe3e426491cd5704bfe8723184e980a189469125521b70285ee86d9f"
+      }
+    },
+    {
+      "sentence": "Keep a directory cohesive: what is inside changes together and is reached through a small public surface.",
+      "to": "should-keep-directories-cohesive",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping a directory cohesive, changing together and reached through a small public surface, is kept at SHOULD.",
+        "pin": "f54a6f39eae36a07bcb3205c1710c82e88ab26665f3e3da011ca09503dc33017"
+      }
+    },
+    {
+      "sentence": "Group by concept, not by file type, so a reader finds a feature in one place.",
+      "to": "should-group-by-concept",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Grouping by concept, not file type, with the find-a-feature-in-one-place reason, is kept at SHOULD.",
+        "pin": "6f7610224e03e039466fa70123b91adac9ca5a7d578037270cf10c6a4a8b88d0"
+      }
+    },
+    {
+      "sentence": "When a path belongs to no declared tier, move the file into one.",
+      "to": "should-move-untiered-file-into-a-tier",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Moving a file at an untiered path into a declared tier is kept at SHOULD.",
+        "pin": "f5bf2934ad7f779ba71b557d0928d65f88e0dca9c271e9088c5ab39f0de363d3"
+      }
+    },
+    {
+      "sentence": "Do not add a tier just to hold it.",
+      "to": "should-move-untiered-file-into-a-tier",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not adding a tier just to hold such a file is kept at SHOULD NOT.",
+        "pin": "addb4eac0e735849ddafab4a097e3860f90254219f76ed9f16fd5b2fee2a06ef"
+      }
+    },
+    {
+      "sentence": "Before creating a source file or a new component, look for what already exists: the repo's tier table, its list of shared exports, and a text search for the concept under several names.",
+      "to": "should-search-before-creating",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Searching before creating a file or component, with all three sources (tier table, shared exports, several-name search), is kept at SHOULD.",
+        "pin": "8d8d783275191901ea8cc8e518668e50072cc560adf8a495612024dfa1535693"
+      }
+    },
+    {
+      "sentence": "If something close exists, extend or reuse it.",
+      "to": "should-reuse-before-building-new",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Extending or reusing something close that exists is kept at SHOULD.",
+        "pin": "623a55ee211e0d77b83d1547e966d79f3dd062f268e386ccc0ff00bd88ce4bce"
+      }
+    },
+    {
+      "sentence": "Build a new one only when you can say why the existing one cannot serve.",
+      "to": "should-reuse-before-building-new",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Building a new one only when you can say why the existing one cannot serve is kept in the same rule.",
+        "pin": "e3d110b6184b89e5cd2c32fe2f0a67c86042d6909d0f2905df791915011473c9"
+      }
+    },
+    {
+      "sentence": "A new file in a shared tier is allowed, and is how the tier grows.",
+      "to": "may-add-new-file-to-shared-tier",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That a new file in a shared tier is allowed and is how the tier grows is kept as a MAY.",
+        "pin": "e1a13f38fabb97e4cf826d9b8922f7e9bcaae013e44a973905bd40a8c044c3c6"
+      }
+    },
+    {
+      "sentence": "Check that it does not duplicate an existing component under a different name.",
+      "to": "should-check-new-shared-file-for-duplicates",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Checking that a new shared-tier file does not duplicate an existing component under another name is kept at SHOULD.",
+        "pin": "a5968187da1d053f0c06149e63ce02b9aa4b4142bfde2a9cb9823314874f3cb1"
+      }
+    },
+    {
+      "sentence": "Say what you reused, and what you chose not to reuse and why.",
+      "to": "should-say-what-was-reused",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Saying what was reused, and what was not reused and why, is kept at SHOULD.",
+        "pin": "7a01ebf934aabdeaa09e11b3855883473a4b4c9bf45d47e8927223a1f00d34bd"
+      }
+    },
+    {
+      "sentence": "Place each piece in the lowest tier whose dependencies it can live with.",
+      "to": "should-place-in-lowest-tier",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Placing each piece in the lowest tier whose dependencies it can live with is kept at SHOULD, with the foundation-only elaboration.",
+        "pin": "245fe52045732e3f990b7796339a3b887e3ad44a2ada8a4f4cca6aa915cd2166"
+      }
+    },
+    {
+      "sentence": "Do not create a new tier, framework or target to hold a feature.",
+      "to": "should-not-create-tier-for-feature",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not creating a new tier, framework or target to hold a feature is kept at SHOULD NOT, with the reason that it is the project owner's decision.",
+        "pin": "e08010991f01463365091c008d2e6df25a630dd8f18b522bcbdf0418104ba2df"
+      }
+    },
+    {
+      "sentence": "Ask of each piece: could a command-line tool link this without the application?",
+      "to": "should-ask-if-cli-could-link-it",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Asking of each piece whether a command-line tool could link it without the application is kept at SHOULD.",
+        "pin": "b0b4a3ec2227d34e6254b334ead2389e643811c66faf5a999f6928614bb31d50"
+      }
+    },
+    {
+      "sentence": "If it reads an application settings singleton or an app-only type, pass that value in as a parameter, and the piece moves down.",
+      "to": "should-pass-app-values-as-parameters",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Passing an app settings singleton or app-only type in as a parameter so the piece can move down is kept at SHOULD with its condition.",
+        "pin": "cbfda46c9c5c616ad8b0bbee7b788e962eebe1089faa87c2d705f8a7236b0051"
+      }
+    }
+  ],
+  "obsolete": []
+}

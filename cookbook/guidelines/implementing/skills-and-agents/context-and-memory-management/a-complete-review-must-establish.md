@@ -1,0 +1,21 @@
+
+- `must-curate-context-as-finite-budget`: whether the agent curates its context window as a finite budget
+- `must-not-front-load-context`: whether the agent front-loads context it does not yet need
+- `should-retrieve-context-just-in-time`: whether context is retrieved at the point it is needed
+- `should-delegate-read-heavy-subtasks`: whether large or read-heavy subtasks go to a subagent that returns only a condensed summary
+- `should-clear-context-between-unrelated-tasks`: whether context is cleared or reset between unrelated tasks
+- `must-persist-state-that-outlives-the-window`: whether information that must outlive the window is written to a persistent memory file
+- `must-record-modified-files-and-commands-before-compaction`: whether the modified-file list and test/run/build commands are recorded durably before a likely compaction
+- `should-assume-compaction-loses-specifics`: whether the agent relies on specifics surviving compaction
+- `should-declare-compaction-preservation-directives`: whether compaction-preservation directives are declared where the harness supports them
+- `must-return-condensed-subagent-summary`: whether each subagent returns a condensed summary of findings, file paths, and decisions
+- `must-not-assume-subagent-context-survives`: whether the caller relies on anything from the subagent but its returned summary
+- `must-keep-cross-session-state-in-a-persistent-file`: whether cross-session continuity lives in a persistent file the agent re-reads at session start
+- `must-keep-memory-files-concise`: whether memory files are concise and high-signal
+- `should-keep-only-behavior-changing-memory`: whether every memory entry changes behavior
+- `should-prune-memory-regularly`: whether memory files are pruned regularly
+- `must-not-duplicate-rederivable-information`: whether memory holds information the model can cheaply re-derive
+- `should-reset-context-on-task-switch`: whether the agent resets context on switching to an unrelated task
+- `should-restart-after-repeated-failed-corrections`: whether repeated failed corrections lead to a cleared context and a sharper prompt
+- `should-treat-a-bigger-window-as-headroom`: whether a bigger window is treated as headroom rather than a reason to stop curating
+

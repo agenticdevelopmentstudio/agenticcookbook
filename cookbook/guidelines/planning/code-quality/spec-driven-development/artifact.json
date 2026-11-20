@@ -4,11 +4,11 @@
     "id": "138eed2b-6b13-40ac-8c99-1f7860420b42",
     "title": "Spec-driven development (plan before code)",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,21 @@
       "https://github.com/github/spec-kit",
       "https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module"
     ]
   },
-  "synced": "375f7b53055b0a85",
+  "synced": "60cb6b0563462915",
   "parts": [
     {"part": "intro"},
-    {"part": "when-a-spec-is-required", "heading": "When a spec is required"},
-    {"part": "what-a-good-spec-contains", "heading": "What a good spec contains"},
-    {"part": "a-staged-flow-name-the-method-not-the-tool", "heading": "A staged flow (name the method, not the tool)"},
-    {"part": "verification", "heading": "Verification"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "a-staged-flow-name-the-method-not-the-tool", "heading": "A staged flow (name the method, not the tool)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

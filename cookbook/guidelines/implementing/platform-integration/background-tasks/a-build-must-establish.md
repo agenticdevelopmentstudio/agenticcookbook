@@ -1,0 +1,21 @@
+
+- `use-platform-background-apis`: sync, upload and state work runs through platform background execution APIs, or the code says why not
+- `use-sanctioned-background-apis`: background work uses only the platform's sanctioned background APIs
+- `design-tasks-to-be-resumable`: each background task resumes correctly after being interrupted, or the code says why not
+- `minimize-resource-usage`: background work uses no CPU or network beyond its job, or the code says why
+- `report-progress-through-notifications`: progress and completion are reported through notifications where appropriate, or the code says why not
+- `apple-use-bgtasks-for-deferred-work`: deferred work on Apple platforms is scheduled as `BGAppRefreshTask` or `BGProcessingTask`, or the code says why not
+- `apple-use-urlsession-background-transfers`: uploads and downloads that must survive suspension use a background `URLSession` configuration
+- `macos-prevent-app-nap`: longer-running macOS background work runs inside `ProcessInfo.performActivity`, or the code says why not
+- `macos-use-nsbackgroundactivityscheduler`: periodic macOS maintenance is scheduled with `NSBackgroundActivityScheduler`, or the code says why not
+- `android-use-workmanager-for-deferrable-work`: deferrable Android work is enqueued with `WorkManager`, or the code says why not
+- `android-use-foregroundservice-for-visible-work`: user-visible ongoing Android work runs in a `ForegroundService` with a persistent notification
+- `android-respect-doze-and-standby`: Android background work respects Doze mode and App Standby buckets
+- `android-avoid-alarmmanager`: no `AlarmManager` schedule covers work `WorkManager` can handle, or the code says why
+- `windows-use-backgroundtask`: Windows background execution uses `BackgroundTask` with the Windows App SDK, or the code says why not
+- `windows-register-triggers-in-manifest`: Windows background triggers (time, network state change, push notification) are declared in the app manifest
+- `windows-use-extendedexecutionsession`: long-running Windows tasks request an `ExtendedExecutionSession`, or the code says why not
+- `web-use-service-workers`: web background sync (`BackgroundSyncManager`) and push handling run in a Service Worker
+- `web-use-periodic-background-sync`: recurring web data refresh uses the Periodic Background Sync API where it is available, or the code says why not
+- `web-use-web-workers-for-cpu-work`: CPU-intensive web work runs in a Web Worker, off the UI thread
+- `web-fall-back-to-requestidlecallback`: low-priority deferred web work is scheduled with `requestIdleCallback`, or the code says why not

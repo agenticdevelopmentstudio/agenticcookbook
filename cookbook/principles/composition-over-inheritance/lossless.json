@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When tempted to subclass, ask: \"Is this truly an 'is-a' relationship, or am I just reusing code?\"",
+      "to": "should-use-inheritance-only-for-genuine-is-a",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-inheritance-only-for-genuine-is-a keeps the self-check question when tempted to subclass, at SHOULD, alongside the is-a-only rule.",
+        "pin": "9596052f1f63e6ee843c766fe6e0b474530f6abd2589f5853ae3a4699f1db3d7"
+      }
+    },
+    {
+      "sentence": "Extract shared behavior into protocols or standalone functions instead of a base class",
+      "to": "should-prefer-protocols-over-base-classes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-protocols-over-base-classes keeps extracting shared behavior into protocols or standalone functions instead of a base class, at SHOULD.",
+        "pin": "65d2611a3555c6cfe1689a9fe44ce0b54b9dcacf7e9aa08a808b29af7992ecfe"
+      }
+    },
+    {
+      "sentence": "Wrap an existing type with a new type to add behavior rather than extending the inheritance chain",
+      "to": "should-wrap-rather-than-subclass",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-wrap-rather-than-subclass keeps wrapping an existing type with a new type to add behavior rather than extending the inheritance chain, at SHOULD.",
+        "pin": "7a562595d3dced16e099cf2ebe32f0f14fa369a3d25f31919ced4582e596ab47"
+      }
+    }
+  ],
+  "obsolete": []
+}

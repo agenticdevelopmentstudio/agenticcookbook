@@ -4,7 +4,7 @@
     "id": "fa2196e4-9513-4b23-b805-f5f5f099e5ff",
     "title": "Architecture",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -25,16 +25,21 @@
       "https://github.com/microsoft/TemplateStudio",
       "https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "code-review"
     ]
   },
-  "synced": "06ec9f110e6ce265",
+  "synced": "e6091cc7982bc2fe",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "example", "heading": "Example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

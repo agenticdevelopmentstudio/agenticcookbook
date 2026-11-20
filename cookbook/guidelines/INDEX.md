@@ -391,7 +391,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 **testing**
 - [Properties of Good Tests](cookbook/testing/properties-of-good-tests/)
-- [Unit Test Patterns](cookbook/testing/unit-test-patterns/)
+- [Unit Test Patterns](cookbook/testing/test-vector-patterns/)
 
 ---
 

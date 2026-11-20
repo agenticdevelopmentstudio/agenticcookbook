@@ -1,0 +1,15 @@
+
+- `must-ship-root-instruction-file`: whether the repository root holds at least one machine-targeted instruction file covering build, test, run, conventions and boundaries
+- `should-symlink-one-canonical-file`: whether a repo serving both Claude Code and other agents keeps one canonical file with the other a symlink
+- `must-state-build-test-run-commands`: whether the file states the exact build, test and run commands, including required setup and environment variables
+- `should-state-conventions`: whether the file states code style, naming and project-specific patterns
+- `should-describe-project-layout`: whether the file says where source, tests and config live
+- `should-state-out-of-scope`: whether the file states what is off-limits and which actions need asking first
+- `may-include-commit-security-deploy-notes`: whether any commit/PR, security or deployment notes the file carries are correct
+- `should-nest-per-package-files`: whether each package of a multi-package repo has its own scoped instruction file
+- `should-keep-repo-wide-guidance-at-root`: whether repo-wide guidance lives in the root file
+- `should-keep-only-differences-in-nested-files`: whether nested files hold only what differs for their package
+- `must-stay-concise`: whether the file is concise and high-signal, holding only durable, load-bearing instructions
+- `should-delete-obsolete-instructions`: whether the file still holds instructions that are obsolete, obvious, or contradicted by the code
+- `should-be-specific-and-verifiable`: whether every instruction is specific and verifiable
+- `should-review-on-structure-change`: whether the file was updated with the change to build/test commands or project structure

@@ -1,0 +1,17 @@
+
+- **pin-to-server-version**: Examples assume PostgreSQL 16/17; the author SHOULD pin behavior to the server's version.
+- **concurrent-build**: Indexes on large live tables **MUST** be created with `CREATE INDEX CONCURRENTLY` so writes are not blocked by a long `ACCESS EXCLUSIVE` lock. It runs slower and cannot run inside a transaction block.
+- **failed-index-cleanup**: A `CONCURRENTLY` build that fails leaves an `INVALID` index. The author **MUST** detect it (`pg_index.indisvalid = false`) and `DROP INDEX CONCURRENTLY` before retrying.
+- **rebuild-without-lock**: To rebuild a bloated index, you **SHOULD** use `REINDEX INDEX CONCURRENTLY` rather than drop-and-recreate, preserving query coverage throughout.
+- **type-matches-query**: The index type **SHOULD** match how the column is queried, not default to B-tree reflexively (see the index types below).
+- **partial-index**: When queries filter on a stable predicate (e.g. `WHERE status = 'active'`), a partial index (`CREATE INDEX ... WHERE status = 'active'`) **SHOULD** be used to shrink the index and skip indexing irrelevant rows.
+- **expression-index**: When a query filters on a computed value (`lower(email)`, `(payload->>'tenant')`), the author **MUST** index the matching expression — a plain column index will not be used.
+- **composite-column-order**: In a multi-column B-tree, columns **MUST** be ordered most-selective-and-equality-first; the leading column(s) must appear in the predicate for the index to apply.
+- **covering-index**: To enable index-only scans for hot read paths, you **MAY** add `INCLUDE (...)` columns so the heap is not visited; confirm the gain with `EXPLAIN` showing `Index Only Scan`.
+- **jsonb-gin**: For containment queries (`@>`, key existence) on JSONB, a GIN index **SHOULD** be used.
+- **jsonb-path-ops**: When only containment (`@>`) is needed, the `jsonb_path_ops` operator class **SHOULD** be preferred — it produces a smaller, faster index than the default `jsonb_ops` at the cost of dropping key-existence operators (`?`, `?|`, `?&`).
+- **jsonb-write-cost**: GIN maintenance decomposes the whole document on every write, which can materially reduce insert throughput on write-heavy JSONB columns. The author **SHOULD** measure write impact before adding one.
+- **jsonb-scalar-expression-index**: The author **SHOULD** prefer an expression index on a single extracted scalar key over a GIN index when that is all queries need.
+- **explain-before-after**: Every new index **MUST** be justified by `EXPLAIN (ANALYZE, BUFFERS)` showing the planner uses it and the cost drops; a created-but-unused index is pure write overhead.
+- **drop-unused**: Indexes with near-zero scans in `pg_stat_user_indexes.idx_scan` over a representative window **SHOULD** be dropped.
+- **measured-need**: Specialized strategies — BRIN on huge append-only tables, table partitioning, custom operator classes — SHOULD be adopted only when a concrete measured need justifies it, not as defaults (YAGNI; make-it-work, make-it-right, make-it-fast).

@@ -1,0 +1,17 @@
+
+- `model-key-actions-as-app-intents`: a key user-facing action with no `AppIntent` type exposing it
+- `must-conform-to-appintent`: an intent type that does not conform to `AppIntent` or lacks `func perform() async throws -> some IntentResult`
+- `must-declare-title-should-set-description`: an intent with no static `title: LocalizedStringResource`, or with no `description`
+- `must-use-typed-parameters`: a user input that is not a `@Parameter`, or whose type is not `IntentParameter`-supported
+- `must-be-retry-safe-and-throw-typed-errors`: a `perform()` that is unsafe to retry where the system may retry, or that fails silently instead of throwing a typed error
+- `should-return-most-specific-result`: a `perform()` returning a bare `.result()` where a more specific `IntentResult` fits
+- `conform-one-type-to-appshortcutsprovider`: no type, or more than one, conforming to `AppShortcutsProvider`
+- `must-include-application-name-in-phrases`: an `AppShortcut` whose `phrases` lack `\(.applicationName)`
+- `ship-high-value-actions-as-appshortcuts`: a high-value action with no `AppShortcut`
+- `must-conform-domain-types-to-appentity`: a domain type exposed to intents that is not an `AppEntity` with stable `id`, `displayRepresentation` and `defaultQuery`
+- `provide-an-entityquery`: an entity with no `EntityQuery`, `EntityStringQuery` or `EnumerableEntityQuery`
+- `back-queries-with-real-data`: a query returning hardcoded values instead of reading the data layer
+- `prefer-app-intents-for-new-work`: new general app actions built on SiriKit Intents instead of App Intents
+- `should-not-add-sirikit-custom-intent`: a new `.intentdefinition` custom intent for an action App Intents can express
+- `migrate-custom-intents-when-touched`: a changed SiriKit custom intent left unmigrated
+- `treat-other-capabilities-as-forecasts`: code or docs relying on an App Intents capability beyond the listed surfaces without a check against current documentation

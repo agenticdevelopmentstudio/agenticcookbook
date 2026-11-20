@@ -4,11 +4,11 @@
     "id": "6168eb9e-50be-4b84-940d-cb97f1e374d1",
     "title": "Ship a privacy manifest and declare required-reason APIs",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,21 +33,24 @@
       "https://developer.apple.com/news/?id=pvszzano",
       "https://bitrise.io/blog/post/enforcement-of-apple-privacy-manifest-starting-from-may-1-2024"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-pr",
       "dependency-management"
     ]
   },
-  "synced": "0028667d304e551c",
+  "synced": "8f2cc767b0eb4493",
   "parts": [
     {"part": "intro"},
-    {"part": "what-the-manifest-is", "heading": "What the manifest is"},
-    {"part": "required-reason-api-categories", "heading": "Required-reason API categories"},
-    {"part": "required-practice", "heading": "Required practice"},
-    {"part": "finding-required-reason-usage-in-code", "heading": "Finding required-reason usage in code"},
-    {"part": "notes", "heading": "Notes"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "what-the-manifest-is", "heading": "What the manifest is", "role": "how-to"},
+    {"part": "required-reason-api-categories", "heading": "Required-reason API categories", "role": "how-to"},
+    {"part": "finding-required-reason-usage-in-code", "heading": "Finding required-reason usage in code", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

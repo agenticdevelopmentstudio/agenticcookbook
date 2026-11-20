@@ -4,11 +4,11 @@
     "id": "2575d546-fbd4-46a6-a143-b886c7d04f01",
     "title": "Delete what you supersede",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,22 +27,22 @@
       "34486fb8-8a0b-4538-a40a-13124155cd56"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "refactor"
     ]
   },
-  "synced": "69c40a467ed8f913",
+  "synced": "ec6e8a1786b376e5",
   "parts": [
     {"part": "intro"},
-    {"part": "remove-the-old-path-in-the-same-change", "heading": "Remove the old path in the same change"},
-    {"part": "rename-every-caller", "heading": "Rename every caller"},
-    {"part": "delete-orphaned-files-assets-flags-and-config-keys", "heading": "Delete orphaned files, assets, flags and config keys"},
-    {"part": "no-commented-out-code", "heading": "No commented-out code"},
-    {"part": "names-must-still-describe-the-thing", "heading": "Names must still describe the thing"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

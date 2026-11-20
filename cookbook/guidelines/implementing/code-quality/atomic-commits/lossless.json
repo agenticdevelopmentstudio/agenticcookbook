@@ -1,0 +1,119 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A change may touch multiple files if they are part of the same concept.",
+      "to": "may-touch-multiple-files-for-one-concept",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The permission to touch multiple files when they belong to the same concept is kept at MAY, with the interface/implementation and component/test examples.",
+        "pin": "78bef79fbae81017499685031070ef816842b10611f5ab997160d702b1fc3689"
+      }
+    },
+    {
+      "sentence": "Commits should happen as work progresses — do not batch up unrelated changes.",
+      "to": [
+        "should-commit-as-work-progresses",
+        "should-not-batch-unrelated-changes"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Committing as work progresses (SHOULD) and not batching unrelated changes (SHOULD NOT) are both kept, split into two rules.",
+        "pin": "4c4597616d24aae1176a9c7d95bdebfb11309ffe2c02b79ad7079a7523b2b49b"
+      }
+    },
+    {
+      "sentence": "Work **SHOULD** be split into small, independently reviewable pull requests up front — plan the slices first, then implement one slice at a time.",
+      "to": "should-plan-small-prs-before-coding",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the SHOULD to split work into small, independently reviewable PRs up front, and the 'plan the slices first, then implement one slice at a time' instruction.",
+        "pin": "021ac816c54cf15d58e2520ed9903902e3bbdf0539459483c3ebe32f0a7b71cb"
+      }
+    },
+    {
+      "sentence": "Large diffs degrade reviewers regardless of who reads them: humans skim past detail and AI reviewers lose precision as context grows.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps that large diffs degrade reviewers regardless of who reads them, that humans skim past detail and that AI reviewers lose precision as context grows.",
+        "pin": "eaf1d643923eca281fe7293007391b5b41ecfbb60b0f7e292bff4216b4484384"
+      }
+    },
+    {
+      "sentence": "Agent-generated output **SHOULD** receive more per-line scrutiny than hand-written code, because plausible-looking code can hide subtle defects.",
+      "to": [
+        "should-scrutinize-agent-code-more",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the SHOULD for more per-line scrutiny of agent-generated code than hand-written code, and the rationale keeps the reason that plausible-looking code can hide subtle defects.",
+        "pin": "eaddbcdbc05adebb53141facaac2179b10eb53874ebf56ab983a5a4c7a594247"
+      }
+    },
+    {
+      "sentence": "That makes small, frequent diffs matter more here, not less — a reviewer (human or AI) can hold a 50-line change fully in view, but not a 1,000-line one.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps that small, frequent diffs matter more for agent output, not less, and the 50-line versus 1,000-line comparison for a human or AI reviewer.",
+        "pin": "ffb21d2e06aee4669c32dc38c84ec4b11081d11ada6c5e5cf6327499bbeac45c"
+      }
+    },
+    {
+      "sentence": "When an agent produces a large change, it **SHOULD** be decomposed into smaller commits or PRs before review rather than reviewed as one block.",
+      "to": "should-decompose-large-agent-changes-before-review"
+    },
+    {
+      "sentence": "Work SHOULD be planned into small, reviewable pull requests **before** writing code, not carved down afterward.",
+      "to": "should-plan-small-prs-before-coding",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the SHOULD to plan small, reviewable PRs before writing code, not carved down afterward.",
+        "pin": "13d1950b8095c36f0b4837b6c6c02f661de3993dfdfecc1bcc6cbe816a47ba81"
+      }
+    },
+    {
+      "sentence": "Large diffs degrade both human and AI reviewers: once a change exceeds what fits in a reviewer's working context, review collapses into shallow pattern-matching rather than reasoning about correctness.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps that large diffs degrade human and AI reviewers and that once a change exceeds the reviewer's working context review collapses into shallow pattern-matching instead of reasoning about correctness.",
+        "pin": "c1fdd098fb82c157f08987adf504298f1e724b9e9007439b7507eccb46c0be68"
+      }
+    },
+    {
+      "sentence": "AI-generated code SHOULD receive more per-line scrutiny, not less — which makes small, frequent diffs more important for agent-authored work, not a luxury to be skipped under time pressure.",
+      "to": [
+        "should-scrutinize-agent-code-more",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the SHOULD for more scrutiny, not less, and the rationale keeps that this makes small, frequent diffs more important for agent-authored work and not a luxury to skip under time pressure.",
+        "pin": "4374706797f5a11570787d4630d860e002f2713be5c62715a373a32a2190e5bb"
+      }
+    },
+    {
+      "sentence": "If a change breaks the build, fix it before moving on — do not add more changes on top of a broken state.",
+      "to": "should-fix-broken-build-before-moving-on",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept as an unkeyed instruction raised to SHOULD: fix a broken build before moving on, and SHOULD NOT add changes on top of a broken state.",
+        "pin": "65327a3808a75873407841e433c529c4c3c1ea2417e3b3d38eeb66128cc2df0f"
+      }
+    }
+  ],
+  "obsolete": []
+}

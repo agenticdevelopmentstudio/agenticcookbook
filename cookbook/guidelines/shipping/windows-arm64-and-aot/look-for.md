@@ -1,0 +1,19 @@
+
+- `should-publish-native-arm64`: the publish targets include a native `win-arm64` build, not only `AnyCPU` or `win-x64`
+- `must-not-ship-on-x64-emulation`: no plan ships ARM hardware on x64 emulation where native ARM64 is achievable
+- `should-ship-multi-arch`: distribution covers both `win-x64` and `win-arm64`, via MSIX bundles or per-RID installers chosen by host architecture
+- `must-have-arm64-native-dependencies`: every native dependency (C/C++ runtimes, P/Invoke targets, NuGet native assets) has an ARM64 variant
+- `should-audit-runtimes-folders`: the `runtimes/` folders were audited for x64-only native assets before shipping
+- `may-use-arm64ec-for-migration`: any Arm64EC use serves incremental migration of a large native codebase
+- `should-mark-arm64ec-transitional`: Arm64EC use is marked transitional, not an end goal
+- `should-adopt-aot-only-on-measured-need`: AOT or trimming is enabled only with a concrete measurement justifying it
+- `should-not-enable-aot-by-default`: Native AOT and aggressive trimming are off by default, turned on only after profiling shows a bottleneck
+- `must-record-baseline-metric`: a baseline metric (cold-start ms, package MB) is recorded before enabling and re-measured after
+- `must-verify-reflection-and-codegen-paths`: reflection, runtime serializers and expression compilation are verified under trimming and AOT
+- `should-use-source-generators-or-aot-safe-apis`: reflection-heavy and dynamic-codegen paths use source generators or AOT-safe APIs
+- `must-check-cswinrt-interop`: WinRT interop is AOT/trim safe, and every dependent library touching it builds against an AOT-aware CsWinRT
+- `must-confirm-trim-compatible-dependencies`: each third-party dependency is confirmed trim-compatible, and no trim warning is suppressed blindly
+- `may-use-readytorun`: ReadyToRun appears only as a middle ground where startup is what matters
+- `should-prefer-readytorun-for-startup-only`: where the measured need is startup latency alone, ReadyToRun is chosen over full AOT
+- `must-test-aot-per-rid`: CI tests AOT/trimming builds per RID, including `win-arm64`
+- `should-pin-and-reverify-on-upgrade`: .NET and CsWinRT versions are pinned, and AOT/trim compatibility is re-verified on each upgrade

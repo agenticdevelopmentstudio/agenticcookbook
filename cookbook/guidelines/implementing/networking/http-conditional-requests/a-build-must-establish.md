@@ -1,0 +1,14 @@
+
+- `must-return-etags`: every representation that participates in conditional requests is served with an `ETag` header
+- `should-emit-strong-etags-for-writes`: resources that accept `If-Match` emit strong ETags, or the code says why not
+- `must-treat-etags-as-opaque`: client code stores and echoes ETags without parsing or comparing parts of them
+- `should-send-if-none-match-on-repeat-reads`: repeat GET/HEAD requests echo the prior ETag in `If-None-Match`, or the code says why not
+- `must-return-304-when-unchanged`: an unchanged resource returns `304 Not Modified` with no body, with `ETag`, `Cache-Control` and `Vary` if present
+- `should-prefer-if-none-match-over-if-modified-since`: where an ETag exists, revalidation uses `If-None-Match`, or the code says why not
+- `should-send-if-match-on-shared-writes`: PUT/PATCH/DELETE on shared, mutable resources send `If-Match` with the last-read ETag, or the code says why not
+- `must-apply-writes-only-on-matching-etag`: a write is applied only when the current ETag strongly matches `If-Match`; otherwise the server returns `412 Precondition Failed` and changes nothing
+- `should-support-and-may-require-if-match`: mutating endpoints on shared resources honor `If-Match` (or the code says why not), and an endpoint that requires it returns `428 Precondition Required` when it is missing
+- `should-use-if-match-and-idempotency-keys-together`: writes that need both send `If-Match` and an idempotency key, or the code says why not
+- `must-not-default-if-match-to-star`: no code removes `If-Match` or replaces it with `*` to avoid a 412
+- `should-surface-412-apart-from-409`: 412 and 409 reach the caller as distinct outcomes, or the code says why not
+- `should-pass-etags-through-intermediaries`: proxy and CDN configuration passes `ETag` through unmodified, or the code says why not

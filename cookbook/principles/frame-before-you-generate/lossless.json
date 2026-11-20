@@ -1,0 +1,132 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Spend real time on problem definition: the Double Diamond (Design Council, 2005) devotes its",
+      "to": [
+        "should-spend-real-time-on-problem-definition",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "SHOULD spend real time on problem definition is kept in the rule; the Double Diamond (Design Council, 2005) attribution is kept in rationale and references.",
+        "pin": "5b54f0d77b939a6f15db1edda9fc03ea44c14cfc1ad03b909066d93e42241637"
+      }
+    },
+    {
+      "sentence": "entire first diamond to finding the right problem before the second diamond seeks solutions",
+      "to": [
+        "should-spend-real-time-on-problem-definition",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps finding the right problem before seeking solutions, and rationale keeps the first-diamond/second-diamond explanation verbatim.",
+        "pin": "c26e4de48833e75fbcea6b2958f452248982ceb6b4e9bcb3e4e730902b080eda"
+      }
+    },
+    {
+      "sentence": "Use \"How Might We\" framing (IDEO; Min Basadur, 1990s) to convert closed problem statements into",
+      "to": [
+        "should-use-how-might-we-framing",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps SHOULD use How Might We to convert closed problem statements into generative invitations; IDEO and Min Basadur (1990s) are kept in rationale and references.",
+        "pin": "86a7578f615b236400887e0c1e811e841a17964ff9915fe581de430a39b2f3d2"
+      }
+    },
+    {
+      "sentence": "generative invitations: \"How *Might* We [verb] [goal]?\" assumes solvability, invites speculation",
+      "to": [
+        "should-use-how-might-we-framing",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the generative-invitation template \"How *Might* We [verb] [goal]?\" and rationale keeps that it assumes solvability and invites speculation.",
+        "pin": "2d9c85900ab1e93a50342e54355bbfbadbe87fbe07f73cafbec9a6f1c4eeba4a"
+      }
+    },
+    {
+      "sentence": "without commitment, and creates shared ownership",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps that the framing invites speculation without commitment and creates shared ownership.",
+        "pin": "4bc443c9ccb5892c22c8f8320edb049536e13e2c797e96dc5c1827b29c939037"
+      }
+    },
+    {
+      "sentence": "Apply Five Whys (Toyoda/Ohno, Toyota Production System, 1930s) to drill past stated symptoms to",
+      "to": [
+        "should-apply-five-whys",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps SHOULD apply Five Whys to drill past stated symptoms; Toyoda/Ohno, Toyota Production System (1930s) is kept in rationale and references.",
+        "pin": "0ed079cf6381c3dddf9d2e10a06fa77a9e26900cebb561ec380d1134f7b875b9"
+      }
+    },
+    {
+      "sentence": "root causes; a stated goal is often a symptom, not the underlying need",
+      "to": "should-apply-five-whys",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps drilling to root causes and that a stated goal is often a symptom, not the underlying need.",
+        "pin": "5fa758a827e8c178e5ed3fcea375ca1f31684695c3d038d9556ba8f96d73ffe8"
+      }
+    },
+    {
+      "sentence": "Use first-principles thinking to strip inherited assumptions and rebuild the problem from",
+      "to": [
+        "should-use-first-principles-thinking",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps SHOULD use first-principles thinking to strip inherited assumptions and rebuild the problem; sources kept in rationale and references.",
+        "pin": "087d95d8d184929c48d8ea977fe1089e30ad9f2674ac080ced87e7db45970781"
+      }
+    },
+    {
+      "sentence": "fundamental truths (Stanford d.school Empathize→Define, 2010; Aristotle; Musk/SpaceX)",
+      "to": [
+        "should-use-first-principles-thinking",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps rebuilding from fundamental truths, and rationale and references keep Stanford d.school Empathize→Define (2010), Aristotle and Musk/SpaceX.",
+        "pin": "23921ec756673ebfe1eec74b5d00907b05bc85d300d667dec7a1a32db61f9d03"
+      }
+    },
+    {
+      "sentence": "A good reframe often reveals that the originally-stated goal was solving the wrong level of problem",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps verbatim that a good reframe often reveals the originally-stated goal was solving the wrong level of problem.",
+        "pin": "65c9b9b2eb9ae32140b195accb00b4bc563f94c1704e6e2e96c776edeaf0752e"
+      }
+    }
+  ],
+  "obsolete": []
+}

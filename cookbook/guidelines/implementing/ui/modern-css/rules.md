@@ -1,0 +1,26 @@
+
+- **must-gate-adoption-on-baseline**: Adoption of a CSS feature **MUST** be gated on its Baseline status, not on a single browser's support or anecdotal "Can I Use" glances.
+- **may-use-widely-available-without-fallback**: **Widely available** features **MAY** be used without a fallback.
+- **should-fallback-for-newly-available**: **Newly available** features **SHOULD** be used only with a documented fallback or progressive enhancement, because pre-cutoff browser versions still receiving traffic may not support them.
+- **should-date-baseline-claims**: SHOULD pin any Baseline claim to a date — statuses advance over time.
+- **should-verify-baseline-status**: SHOULD verify against MDN or the Baseline data before assuming current status.
+- **should-reverify-cohort-statuses**: The feature cohort's statuses are accurate as of 2026-06-09; SHOULD re-verify them before relying on them.
+- **should-use-container-queries-for-components**: SHOULD author component responsiveness with **container queries** keyed to the component's own size: wrap the component in a query container (`container-type: inline-size`) and use `@container`, so the component adapts wherever it is placed.
+- **should-limit-viewport-media-queries-to-page-level**: SHOULD use **viewport media queries** only for genuinely page-level concerns (overall page shell, print, `prefers-*` user preferences).
+- **should-use-subgrid-for-nested-alignment**: SHOULD use **subgrid** to align nested items to an ancestor grid's tracks.
+- **should-fallback-subgrid-only-for-pre-cutoff**: SHOULD provide a non-subgrid fallback (explicit tracks) only if you target pre-cutoff versions.
+- **should-prefer-logical-properties**: SHOULD prefer **logical properties** (`margin-inline`, `inset-block`) over physical ones for internationalization-ready layout.
+- **should-define-explicit-layer-order**: SHOULD define an explicit **`@layer`** order (e.g. `@layer reset, base, components, utilities`) so cascade precedence is by layer, not by escalating specificity.
+- **should-import-third-party-css-into-low-layer**: SHOULD import third-party CSS into a low-priority layer to keep it overridable without `!important`.
+- **should-use-has-for-conditional-styling**: SHOULD use **`:has()`** to drive conditional styling from descendant or sibling state instead of toggling classes in JavaScript (e.g. `form:has(:invalid)`, `.card:has(> img)`).
+- **should-use-native-nesting**: SHOULD use **native nesting** for co-locating related rules.
+- **should-not-nest-deeply**: SHOULD NOT nest deeply — flat, shallow rules stay readable and greppable.
+- **should-use-same-document-view-transitions**: SHOULD use the **same-document View Transitions API** (`document.startViewTransition`) for animated state/route changes in SPAs.
+- **must-degrade-view-transitions-gracefully**: Same-document View Transitions are Newly available, so they **MUST** degrade gracefully: when unsupported, the DOM update still applies, just without animation.
+- **should-feature-detect-view-transitions**: SHOULD feature-detect with `if (document.startViewTransition) { ... } else { /* apply update directly */ }`.
+- **should-use-cross-document-transitions-only-as-enhancement**: SHOULD use cross-document (MPA) View Transitions as pure progressive enhancement only.
+- **must-not-make-navigation-depend-on-cross-document-transitions**: MUST NOT ever make navigation depend on cross-document (MPA) View Transitions.
+- **should-respect-reduced-motion**: SHOULD respect `prefers-reduced-motion: reduce` and disable or shorten transitions accordingly.
+- **should-not-use-js-runtimes-native-css-covers**: SHOULD NOT reach for a CSS-in-JS runtime or a JS animation library when an interoperable native CSS feature covers the need.
+- **should-not-escalate-specificity**: SHOULD NOT escalate specificity or use `!important` to win the cascade — reach for `@layer` instead.
+- **should-not-gate-solely-on-caniuse**: SHOULD NOT gate a feature solely on `caniuse` percentages without checking Baseline tier and whether your traffic includes pre-cutoff versions.

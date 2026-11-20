@@ -4,11 +4,11 @@
     "id": "aadd048b-da52-415d-949f-45160b970381",
     "title": "Meta-Principle: Optimize for Change",
     "type": "principle",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -25,12 +25,17 @@
       "https://kentbeck.com/summaries",
       "https://martinfowler.com/bliki/TeamTopologies.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "f07d9fb7df64f5ea",
+  "synced": "2de27432f98f9d12",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

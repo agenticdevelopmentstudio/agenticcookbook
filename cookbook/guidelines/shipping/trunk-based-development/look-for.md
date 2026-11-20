@@ -1,0 +1,23 @@
+
+- `single-trunk`: all work integrates into one shared `main`; a `develop` or weeks-open `release/*` branch used as the main integration target breaks it
+- `integrate-daily`: work reaches trunk at least daily, and work that cannot is split into smaller mergeable steps
+- `short-lived-branches`: branches merge within 1-2 days, as many small merges rather than one large one
+- `flag-incomplete-work`: incomplete or not-yet-enabled work is merged disabled behind a feature flag, not parked on a branch
+- `trunk-stays-releasable`: nothing lands that breaks the build or fails required checks
+- `green-trunk`: required build, test and lint checks gate every merge, and trunk is never left red
+- `revertable-merges`: each merge is a single squashed commit
+- `no-freeze`: no batched integration or stabilization phase stands in for continuous integration
+- `should-branch-small`: each branch is cut from current `main` for one logical change
+- `should-flag-partial-change`: a partial change sits behind a default-off flag with inert code paths
+- `should-commit-atomically`: each commit is one logical change, with build and tests run before it
+- `should-rebase-onto-main`: the branch is rebased onto the latest `main` before a PR is opened or updated
+- `should-merge-within-a-day`: the PR is opened, checks go green and it merges within a day
+- `should-prefer-squash-merges`: merges are squashed, keeping trunk history linear
+- `must-not-sit-on-work`: no branch holds days of work waiting to be complete, rather than enabling-but-disabled increments
+- `must-not-let-branch-diverge`: no branch diverges from trunk for a week before a large merge
+- `must-not-use-develop-as-staging-trunk`: no `develop` branch periodically merges into `main` as a staging trunk
+- `must-not-park-finished-code-on-branch`: finished-but-unreleased code is merged disabled behind a flag, not held on a branch
+- `must-not-bypass-required-checks`: no required check is disabled or bypassed to land a merge faster
+- `should-establish-green-trunk-gating-first`: green-trunk gating with strong automated checks and fast CI is in place before trunk-based development is adopted
+- `may-cut-release-branch-for-audited-build`: a release branch exists only as a tagged, audited artifact cut from trunk, never a long-lived integration branch
+- `should-treat-dora-as-correlation`: the DORA finding is cited as a correlation with delivery performance, not a guarantee

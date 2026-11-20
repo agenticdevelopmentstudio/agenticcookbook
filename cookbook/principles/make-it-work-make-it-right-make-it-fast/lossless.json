@@ -1,0 +1,60 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Separate correctness, design quality, and performance into sequential phases:",
+      "to": [
+        "should-separate-into-sequential-phases",
+        "should-first-make-it-work",
+        "should-then-make-it-right"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-separate-into-sequential-phases keeps at SHOULD separating correctness, design quality and performance into sequential phases; the phase rules carry the ordered list.",
+        "pin": "6912e2c8398aa6b4c2282a0ef433b66e4ca982dfa38d030603a56404c0ba8a06"
+      }
+    },
+    {
+      "sentence": "Get a working solution for the common case",
+      "to": "should-first-make-it-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-first-make-it-work keeps phase 1 getting a working solution for the common case at SHOULD.",
+        "pin": "b6016876a176088b451d6d669d847b40d58f77b2fe0689d05288dc9e330c45ee"
+      }
+    },
+    {
+      "sentence": "Refactor for clarity, handle edge cases, clean up design",
+      "to": "should-then-make-it-right",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-then-make-it-right keeps phase 2 refactoring for clarity, handling edge cases and cleaning up design at SHOULD.",
+        "pin": "62aa0e7dc66950cbeaef190ff0f6f60c6d1a9547d5a43f20fa514a377239650c"
+      }
+    },
+    {
+      "sentence": "Optimize only what measurement proves is slow",
+      "to": "should-optimize-only-measured-slowness",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-optimize-only-measured-slowness keeps phase 3 optimizing only what measurement proves is slow at SHOULD.",
+        "pin": "eeb3e12bb12c15a548ceb79f3be7dcf4c0e4f63f59bf958132314060a70005ed"
+      }
+    },
+    {
+      "sentence": "Never skip phase 2 to jump to phase 3.",
+      "to": "must-not-skip-make-it-right",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-skip-make-it-right keeps never skipping phase 2 to jump to phase 3 as MUST NOT.",
+        "pin": "b7a1a57d86d6bb37f4431157d61c3d2212d0fe62581d5574363275c2ebed9023"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Heavy OS framework usage marks a boundary.** Files that import three or more OS-specific frameworks are tightly coupled to the platform runtime and likely belong in a platform-specific scope group.",
+      "to": [
+        "should-place-heavy-os-framework-users-in-platform-group",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-place-heavy-os-framework-users-in-platform-group keeps the three-or-more-frameworks threshold and 'typically' platform-group placement (the old 'likely'); the rationale keeps the tight-coupling-to-runtime reason.",
+        "pin": "6e8cb72ebe2cc2349ac9ec3c24b4a2fed4f57fdf778f731f17eff4b77a68dcb4"
+      }
+    },
+    {
+      "sentence": "**Hardware APIs are natural boundaries.** Camera, GPS, Bluetooth, and biometric code has distinct permission requirements and testing needs — group these files together and mark the scope group as hardware-dependent.",
+      "to": [
+        "should-group-hardware-api-code",
+        "should-mark-hardware-dependent-groups",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep grouping camera/GPS/Bluetooth/biometric code and marking the group hardware-dependent; the rationale keeps the distinct permission and testing needs.",
+        "pin": "8888862b5c5cb9071993b2171e81d4111499932bc2133ed54dd7ed2a6334c375"
+      }
+    },
+    {
+      "sentence": "**Network and persistence are separate concerns.** Files that talk to the network and files that write to local storage are often conflated — separate them unless they are part of a unified data synchronization layer.",
+      "to": [
+        "should-separate-network-and-persistence",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-separate-network-and-persistence keeps the separation and its unified-sync-layer exception; the rationale keeps the often-conflated reason.",
+        "pin": "103746fc883ecfd02de3bbecf4d9e67a2fc808781fbf282d1bcce52e36c45980"
+      }
+    },
+    {
+      "sentence": "**Third-party SDK boundaries.** If a third-party SDK is touched by more than 2–3 files, those files likely form a wrapper/adapter scope group that isolates the SDK from the rest of the codebase.",
+      "to": "should-identify-sdk-wrapper-groups",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-identify-sdk-wrapper-groups keeps the more-than-2-3-files threshold and the likely wrapper/adapter group isolating the SDK.",
+        "pin": "4f84fbb61e1d76426d9ec38f7a2d32c8ab7e7936ef55f79d1a2f3f6315fc80c3"
+      }
+    },
+    {
+      "sentence": "Identify this group explicitly.",
+      "to": "should-identify-sdk-wrapper-groups",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-identify-sdk-wrapper-groups keeps identifying the wrapper group explicitly (unkeyed, now SHOULD).",
+        "pin": "8217e58a4a88bbd4bf7d9655eb48f2a031514ab63807bf99ba9f3d1cd0799450"
+      }
+    },
+    {
+      "sentence": "**System dependencies that appear in many groups are cross-cutting.** Logging frameworks and analytics SDKs that appear across all candidate groups are not boundaries — they are cross-cutting concerns (see `cross-cutting-detection`).",
+      "to": "should-not-treat-widespread-dependencies-as-boundaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-treat-widespread-dependencies-as-boundaries keeps that all-group logging and analytics SDKs are not boundaries but cross-cutting, with the cross-cutting-detection pointer.",
+        "pin": "63af00e690c131c1017e697e8a5eda0cfe0ee0dde89449f63be03dd9ea6db1c6"
+      }
+    }
+  ],
+  "obsolete": []
+}

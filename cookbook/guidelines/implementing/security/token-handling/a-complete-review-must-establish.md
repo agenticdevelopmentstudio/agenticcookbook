@@ -1,0 +1,17 @@
+
+- `should-keep-access-tokens-short-lived`: whether access tokens live 5-15 minutes
+- `should-include-only-necessary-claims`: whether JWTs carry only necessary claims, with no PII in those that transit untrusted parties
+- `should-bind-refresh-tokens-to-client`: whether refresh tokens are bound to the client
+- `should-rotate-refresh-tokens`: whether refresh tokens are rotated
+- `should-store-refresh-tokens-server-side`: whether refresh tokens are stored server-side when possible
+- `should-refresh-proactively`: whether tokens are refreshed proactively before expiry
+- `should-queue-requests-during-refresh`: whether concurrent requests are queued during refresh
+- `should-retry-refresh-with-backoff`: whether refresh failures are retried with backoff
+- `should-use-keychain-on-apple`: whether Apple code stores tokens in Keychain Services
+- `should-use-encrypted-storage-on-android`: whether Android code stores tokens in EncryptedSharedPreferences / Android Keystore
+- `should-use-dpapi-on-windows`: whether Windows code stores tokens with DPAPI
+- `should-use-httponly-cookies-on-web`: whether web tokens live in HttpOnly Secure SameSite cookies
+- `must-not-store-tokens-in-web-storage`: whether any token is stored in `localStorage` or `sessionStorage`
+- `must-not-put-tokens-in-query-parameters`: whether any token is put in a URL query parameter
+- `must-validate-jwt-alg-against-allowlist`: whether `alg: none` is rejected and the `alg` header validated server-side against an allowlist
+- `must-not-trust-client-jwt-claims`: whether client-supplied JWT claims are verified server-side before use in authorization

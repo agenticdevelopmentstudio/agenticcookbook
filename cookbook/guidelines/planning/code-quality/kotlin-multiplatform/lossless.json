@@ -1,0 +1,161 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Run platform builds in CI for every target the project ships; a green Android build does not prove the iOS framework links.",
+      "to": [
+        "should-build-every-target-in-ci",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-build-every-target-in-ci keeps running CI builds for every shipped target (unkeyed, now SHOULD); the rationale keeps that a green Android build does not prove the iOS framework links.",
+        "pin": "a0105c0771e99b5ccaeabf0bfe970eea967a7ca0aaab314eb31ae5a0913cadb8"
+      }
+    },
+    {
+      "sentence": "Every `expect` declaration **MUST** have a matching `actual` in the same package for every target; the compiler enforces this.",
+      "to": [
+        "must-match-every-expect-with-actual",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-match-every-expect-with-actual keeps the MUST, same-package and every-target scope; the rationale keeps that the compiler enforces it.",
+        "pin": "17e0eff51d976bea6678223910ab5691de8e170f1f8543bdfa0a63c8012df5c1"
+      }
+    },
+    {
+      "sentence": "Prefer interfaces plus dependency injection over `expect`/`actual` when the seam is non-trivial — it is easier to test and delete.",
+      "to": [
+        "should-prefer-interfaces-over-expect-actual",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-prefer-interfaces-over-expect-actual keeps the preference and its non-trivial-seam condition; the rationale keeps the easier-to-test-and-delete reason.",
+        "pin": "de210a9621168aef2cd53d4790e75002a0cf5068a46f9a4253b9c9de0c87900c"
+      }
+    },
+    {
+      "sentence": "Use the hierarchical source-set structure (e.g., an intermediate `appleMain` shared by `iosMain`/`macosMain`) so common-but-not-universal code is not duplicated.",
+      "to": "should-use-hierarchical-source-sets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-hierarchical-source-sets keeps the hierarchical source-set instruction, the appleMain example and the no-duplication reason.",
+        "pin": "36712339b95f78413d83970a08fe5a71f5964c980091d429ba326637c5b8c0f4"
+      }
+    },
+    {
+      "sentence": "Android consumes the shared module directly as a Gradle dependency. iOS consumes it as an Apple framework (XCFramework / CocoaPods / SPM) — design the public API to be Swift-friendly: avoid Kotlin-only constructs (sealed-class exhaustiveness, default args) at the boundary.",
+      "to": [
+        "should-design-swift-friendly-api",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-design-swift-friendly-api keeps the Swift-friendly API instruction and the Kotlin-only constructs to avoid; the rationale keeps how Android (Gradle) and iOS (XCFramework/CocoaPods/SPM) consume the module.",
+        "pin": "e5bb2123d90680e71f449dc6581742f3d713395659f1d7cc8250a7fcbd7feb00"
+      }
+    },
+    {
+      "sentence": "Expose `suspend` functions and `Flow` through a documented bridge (e.g., a `Skie`-style or hand-written wrapper) so Swift callers get idiomatic async; do not leak raw coroutines across the boundary.",
+      "to": [
+        "should-bridge-suspend-and-flow",
+        "should-not-leak-raw-coroutines"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-bridge-suspend-and-flow keeps the documented bridge, Skie/hand-written examples and idiomatic-async reason; should-not-leak-raw-coroutines keeps the prohibition.",
+        "pin": "8a559d5e4dea7e578d0d478b8f251de2d3ee433eaaec1567bd26eaee3a2afd5d"
+      }
+    },
+    {
+      "sentence": "Keep platform-idiomatic UI (SwiftUI, Jetpack Compose, web framework) on the consuming side unless a shared-UI decision is made deliberately.",
+      "to": "should-keep-platform-ui-on-consumer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-platform-ui-on-consumer keeps platform-idiomatic UI on the consumer side and the deliberate-shared-UI exception.",
+        "pin": "5d3129ba708fe20a3e1d6e843037b4a8728137865f406b5ffb9b90954ce6c6d5"
+      }
+    },
+    {
+      "sentence": "A shared ViewModel/presentation layer **MAY** be shared when the team accepts coupling presentation state to KMP; treat it as a deliberate scope expansion, not a default.",
+      "to": [
+        "may-share-presentation-layer",
+        "should-treat-shared-presentation-as-deliberate"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-share-presentation-layer keeps the MAY and its accepts-coupling condition; should-treat-shared-presentation-as-deliberate keeps deliberate-scope-expansion-not-default.",
+        "pin": "31d5980d43934449fb8010ab7eb1b2012c80854dca77fe6e043eec556029c982"
+      }
+    },
+    {
+      "sentence": "Apply boundaries per [adc.principle.manage-complexity-through-boundaries](cookbook:555ad5e1-800f-4848-8c58-6f726bdcb42b): expose narrow interfaces from the shared module so platforms stay swappable.",
+      "to": "should-expose-narrow-interfaces",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-expose-narrow-interfaces keeps the boundaries-principle link and narrow interfaces so platforms stay swappable.",
+        "pin": "909b06f050642fdf61ce5dd2090224f24eda16cc256fb23072bde256e680f780"
+      }
+    },
+    {
+      "sentence": "Pin the CMP version explicitly in the build and re-check the release notes before relying on a specific UI feature.",
+      "to": [
+        "should-pin-cmp-version",
+        "should-recheck-cmp-release-notes"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-pin-cmp-version keeps pinning the CMP version explicitly in the build; should-recheck-cmp-release-notes keeps re-checking notes before relying on a UI feature.",
+        "pin": "cbc55a1678bd6d597e3998c21df95f87e162f3a48ca524a6b841ae83a3081ebf"
+      }
+    },
+    {
+      "sentence": "iOS UI parity (text selection, native scrolling, accessibility/VoiceOver, gestures) is improving release-over-release but **still evolving** — FORECAST any unreleased item against the version you pin, and validate accessibility on-device.",
+      "to": [
+        "should-forecast-unreleased-ios-parity",
+        "should-validate-accessibility-on-device",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the still-evolving iOS parity list; the two rules keep forecasting unreleased items against the pinned version and on-device accessibility validation, scoped as the old shared-CMP-UI section was.",
+        "pin": "bdaa04a0a5325f99e780d3d23c3ff5c54cc0aa39db6c698dba7afd64e358e7f1"
+      }
+    },
+    {
+      "sentence": "Choose shared CMP UI **only** when the team accepts current iOS maturity and values UI reuse over fully native look-and-feel; otherwise keep SwiftUI on iOS and Compose on Android while still sharing all non-UI logic.",
+      "to": "should-choose-shared-ui-only-when-accepted",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-choose-shared-ui-only-when-accepted keeps the 'only when' conditions (accepts iOS maturity, values reuse over native feel) and its 'otherwise keep SwiftUI/Compose, still share non-UI logic' sub-item.",
+        "pin": "50f87fde9cac78a335794f99ea7a09fec56e010d25a3ed0f93df92db305077bb"
+      }
+    },
+    {
+      "sentence": "Present this as a deliberate decision per app, not a mandate.",
+      "to": "should-present-shared-ui-as-per-app-decision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-present-shared-ui-as-per-app-decision keeps presenting shared CMP UI as a deliberate per-app decision, not a mandate.",
+        "pin": "744fc750dbdbb525a2f48da5d1ce52ad82b3fbee2fd14e457ee5b70148e99289"
+      }
+    }
+  ],
+  "obsolete": []
+}

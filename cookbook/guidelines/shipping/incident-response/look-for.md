@@ -1,0 +1,23 @@
+
+- `should-classify-severity-at-declaration`: a severity is set when the incident is declared
+- `must-reevaluate-severity`: the severity is revisited as understanding changes; a severity fixed at declaration and never revisited breaks it
+- `should-use-small-fixed-ladder`: the org uses a small fixed ladder of severities
+- `must-map-severity-to-actions`: each severity level names who is paged, who is notified and the update cadence
+- `should-tie-thresholds-to-slos`: severity thresholds reference SLO error budgets where they exist
+- `should-separate-coordinating-from-doing`: the people coordinating the response are not the people doing the work
+- `incident-commander`: one named IC holds coordination of each declared incident and is not also debugging
+- `communications-lead`: higher-severity incidents have a CL owning stakeholder and customer updates
+- `operations-lead`: one or more responders own mitigation and investigation and report to the IC
+- `must-split-roles-as-severity-rises`: one person holds all roles only in small incidents; higher severities split the roles across people
+- `must-hand-off-incident-commander-explicitly`: the IC role is handed off explicitly at shift boundaries or when the holder steps away
+- `should-write-postmortem-for-significant-incidents`: significant incidents have written postmortems, and the org's threshold for "significant" is written down
+- `must-keep-postmortems-blameless`: postmortems name systemic and process factors, not individuals at fault
+- `must-record-postmortem-contents`: each postmortem has a timeline, detection method, user impact, root/contributing causes, and what went well and poorly
+- `must-track-remediation-in-backlog`: each remediation item is concrete, has an owner, and is a ticket in the normal backlog, not only a line in the document
+- `should-track-action-items-to-closure`: action items are tracked to closure like feature work
+- `may-share-postmortems-widely`: where postmortems are shared, they are shared widely
+- `should-bound-on-call-load`: on-call load stays at or under ~2 significant incidents per 12-hour shift
+- `must-compensate-on-call`: on-call is compensated with time off or pay, and rotates across a team large enough to avoid burnout
+- `should-feed-toil-into-action-items`: toil that drove paging appears as postmortem action items
+- `should-treat-named-tools-as-examples`: no named tooling product is treated as a requirement
+- `should-treat-ai-output-as-draft`: AI-assisted summaries and correlations are reviewed by a human responder, and a human IC stays accountable

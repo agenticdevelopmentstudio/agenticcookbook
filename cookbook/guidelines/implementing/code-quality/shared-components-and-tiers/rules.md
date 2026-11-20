@@ -1,0 +1,28 @@
+
+- **should-build-upward-from-shared-pieces**: You SHOULD build upward from the most basic shared pieces, and treat each assembly as a shared piece in its own right.
+- **should-apply-by-judgment-without-declared-tiers**: Where a repo declares its tiers (for example in `.abstractr.json`, read with the `abstractr` tool), the tools can check these rules; where it does not, you SHOULD apply them by judgment.
+- **should-search-before-creating**: Before creating a source file or a new component, you SHOULD look for what already exists: the repo's tier table, its list of shared exports, and a text search for the concept under several names.
+  - Search for "button" and "control", not only the exact filename you had in mind.
+- **should-reuse-before-building-new**: If something close exists, you SHOULD extend or reuse it, and build a new one only when you can say why the existing one cannot serve.
+- **may-add-new-file-to-shared-tier**: A new file in a shared tier MAY be added: it is allowed, and is how the tier grows.
+- **should-check-new-shared-file-for-duplicates**: For a new file in a shared tier, you SHOULD check that it does not duplicate an existing component under a different name.
+- **should-say-what-was-reused**: You SHOULD say what you reused, and what you chose not to reuse and why.
+- **should-place-in-lowest-tier**: You SHOULD place each piece in the lowest tier whose dependencies it can live with.
+  - If it needs only the foundation, it belongs in the foundation tier, not in the feature that needed it first.
+- **should-not-create-tier-for-feature**: You SHOULD NOT create a new tier, framework or target to hold a feature.
+  - Adding one is a decision for the project owner.
+- **should-ask-if-cli-could-link-it**: You SHOULD ask of each piece: could a command-line tool link this without the application?
+- **should-pass-app-values-as-parameters**: If a piece reads an application settings singleton or an app-only type, you SHOULD pass that value in as a parameter, and the piece moves down.
+- **must-not-import-from-higher-tier**: A lower tier MUST NOT import from a higher one.
+  - The foundation knows nothing about the features built on it.
+- **should-invert-upward-dependencies**: When a lower tier needs something from above, you SHOULD invert the dependency: define a protocol or callback in the lower tier and let the higher tier supply it.
+- **should-extract-shared-part-of-cycle**: A cycle between tiers means the shared part belongs in a tier below both; you SHOULD extract it rather than allowing the cycle.
+- **should-put-feature-pieces-in-shared-tiers**: A feature's models, service protocol, client, storage, logic and views SHOULD go into the repo's existing shared tiers.
+  - Any application (a GUI, a daemon, a command-line tool) then assembles the feature from them.
+- **may-keep-entry-point-and-glue-in-app**: An application MAY keep what legitimately stays in it: the entry point, config files, and aggregation code, meaning menu assembly, dependency wiring, and thin adapters that bind a shared protocol to that application's data or transport.
+- **should-split-feature-by-need**: You SHOULD split a feature by what each piece needs: models and pure logic go to the foundation, persistence to the storage tier, views to the UI tier, transport clients to the IPC tier, and only the glue stays in the app.
+- **should-keep-every-file-in-a-tier-directory**: Every file SHOULD live inside a directory that names its purpose and belongs to a declared tier, and source files SHOULD NOT be left strewn at the top level of a repo or package.
+- **should-keep-directories-cohesive**: You SHOULD keep a directory cohesive: what is inside changes together and is reached through a small public surface.
+  - Details that other code should not touch stay inside it.
+- **should-group-by-concept**: You SHOULD group by concept, not by file type, so a reader finds a feature in one place.
+- **should-move-untiered-file-into-a-tier**: When a path belongs to no declared tier, you SHOULD move the file into one, and SHOULD NOT add a tier just to hold it.

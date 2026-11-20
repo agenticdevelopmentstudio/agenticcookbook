@@ -1,0 +1,23 @@
+
+- `should-classify-severity-at-declaration`: whether severity is classified at declaration
+- `must-reevaluate-severity`: whether severity is re-evaluated as understanding changes
+- `should-use-small-fixed-ladder`: whether a small fixed severity ladder is used
+- `must-map-severity-to-actions`: whether every severity maps to concrete actions
+- `should-tie-thresholds-to-slos`: whether thresholds are tied to SLO error budgets where they exist
+- `should-separate-coordinating-from-doing`: whether coordinating is separated from doing the work
+- `incident-commander`: whether one person holds overall coordination and does not also debug
+- `communications-lead`: whether a CL owns updates for higher-severity incidents
+- `operations-lead`: whether responders own mitigation and investigation, reporting to the IC
+- `must-split-roles-as-severity-rises`: whether roles are split across people as severity rises
+- `must-hand-off-incident-commander-explicitly`: whether the IC role is explicitly handed off
+- `should-write-postmortem-for-significant-incidents`: whether significant incidents get a written postmortem and the org defines "significant"
+- `must-keep-postmortems-blameless`: whether postmortems are blameless
+- `must-record-postmortem-contents`: whether each postmortem records every required element
+- `must-track-remediation-in-backlog`: whether remediation items are concrete, owned and tracked in the backlog
+- `should-track-action-items-to-closure`: whether action items are tracked to closure
+- `may-share-postmortems-widely`: whether postmortem sharing is open where the org chooses it
+- `should-bound-on-call-load`: whether on-call load is bounded
+- `must-compensate-on-call`: whether on-call is compensated and rotates across a large enough team
+- `should-feed-toil-into-action-items`: whether paging toil feeds into postmortem action items
+- `should-treat-named-tools-as-examples`: whether any named product is treated as a requirement
+- `should-treat-ai-output-as-draft`: whether AI-assisted output is treated as a draft with a human IC accountable

@@ -1,0 +1,16 @@
+
+- `should-default-to-less-client-js`: each route's strategy names its job and ships the least client JS that job allows, or the work says why not
+- `should-frame-rendering-as-architecture-selection`: the rendering decision is framed by how much JS reaches the client, and when, or the work says why not
+- `should-select-a-strategy-per-route`: each route has its own selected strategy, or the work says why not
+- `must-not-mandate-a-framework`: the work satisfies this guideline without mandating a framework
+- `should-optimize-for-inp-and-lcp`: performance targets are INP and LCP, with none on FID, or the work says why not
+- `should-prefer-islands-for-mostly-content-pages`: mostly-content pages use islands/partial hydration, or the work says why not
+- `should-stream-ssr-for-slow-data-pages`: slow-data app pages stream SSR behind Suspense boundaries, or the work says why not
+- `must-measure-client-js-per-route`: client JS bytes (initial + hydration) are measured per route and a regression fails as a defect
+- `should-pin-react-router-rsc-to-a-tested-release`: any React Router v7 RSC use is pinned to a tested release, or the work says why not
+- `should-keep-use-client-boundaries-small`: `"use client"` boundaries sit at leaf components, or the work says why not
+- `should-adopt-rsc-deliberately`: any RSC adoption carries its recorded reason, or the work says why not
+- `must-not-introduce-rsc-without-benefit`: RSC appears only in a React app with a measured benefit from the split
+- `should-record-the-strategy-per-route`: each route's strategy and one-line rationale are recorded, or the work says why not
+- `should-keep-strategies-swappable`: business logic does not depend on a rendering mode, or the work says why
+- `must-validate-against-real-metrics`: INP, LCP, TTFB and JS transfer size were measured on representative routes before the choice was locked in

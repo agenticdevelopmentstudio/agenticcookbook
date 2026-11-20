@@ -4,11 +4,11 @@
     "id": "d2742535-cbb8-4cda-9a22-1180a8d5966f",
     "title": "Framing Techniques",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,15 +32,20 @@
       "https://www.designcouncil.org.uk/resources/framework-for-innovation/"
     ],
     "triggers": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "ab3a3d015e59545f",
+  "synced": "2288d79c24684628",
   "parts": [
     {"part": "intro"},
-    {"part": "how-might-we-hmw", "heading": "How Might We (HMW)"},
-    {"part": "five-whys", "heading": "Five Whys"},
-    {"part": "first-principles-thinking", "heading": "First-Principles Thinking"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "how-might-we-hmw", "heading": "How Might We (HMW)", "role": "how-to"},
+    {"part": "five-whys", "heading": "Five Whys", "role": "how-to"},
+    {"part": "first-principles-thinking", "heading": "First-Principles Thinking", "role": "how-to"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

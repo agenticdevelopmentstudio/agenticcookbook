@@ -4,7 +4,7 @@
     "id": "5b026378-d418-406a-9aab-6e3f043901af",
     "title": "Transport Security",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -29,19 +29,22 @@
       "https://hstspreload.org/",
       "https://wiki.mozilla.org/Security/Server_Side_TLS"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "networking",
       "security-review"
     ]
   },
-  "synced": "d75d69668fa90898",
+  "synced": "a8bd8892c8b612df",
   "parts": [
     {"part": "intro"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "pre-deploy-checklist", "heading": "Pre-deploy checklist"},
-    {"part": "verification-tools", "heading": "Verification tools"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "verification-tools", "heading": "Verification tools", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -4,11 +4,11 @@
     "id": "6d8ae093-8610-468b-932a-be2fb19eb260",
     "title": "Data retention and deletion",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,22 @@
       "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng",
       "https://www.iso.org/standard/27701"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "schema-design"
     ]
   },
-  "synced": "98f55ca5fc945693",
+  "synced": "f52d62067457fccc",
   "parts": [
     {"part": "intro"},
-    {"part": "retention-schedule", "heading": "Retention schedule"},
-    {"part": "cascading-deletion", "heading": "Cascading deletion"},
-    {"part": "soft-vs-hard-delete", "heading": "Soft vs. hard delete"},
-    {"part": "backups-and-erasure-requests", "heading": "Backups and erasure requests"},
-    {"part": "auditing", "heading": "Auditing"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "soft-vs-hard-delete", "heading": "Soft vs. hard delete", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

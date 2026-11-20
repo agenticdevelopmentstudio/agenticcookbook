@@ -1,0 +1,19 @@
+
+- `measure-at-the-journey`: every SLI is measured at the load balancer, API gateway or client telemetry, or the work says why not
+- `cover-the-failure-modes`: each user-facing service has SLIs across its relevant categories, or the work says why not
+- `latency-uses-percentiles`: every latency SLI is stated as a percentile bound
+- `define-multiple-latency-thresholds`: latency SLIs define more than one threshold, or the work says why not
+- `define-valid-events`: each SLI's denominator is stated and documented beside it
+- `slos-are-targets-not-100`: every SLO is below 100%
+- `choose-lowest-unnoticed-reliability`: each SLO is set at the lowest reliability users won't notice, or the work says why not
+- `user-facing-needs-an-slo`: every user-facing service has at least one SLO with a named owner, or the work says why not
+- `start-from-data`: each initial SLO cites the observed performance it was set from, or the work says why not
+- `budget-governs-velocity`: an agreed response to budget exhaustion exists and is triggered by it, or the work says why not
+- `agree-the-policy-first`: the exhaustion policy is agreed by product and engineering owners, before any breach
+- `alert-on-symptom-not-cause`: every alert targets budget burn; none targets a resource threshold
+- `use-multi-window-multi-burn-rate`: every burn-rate alert requires both a long and a short window, or the work says why not
+- `tier-by-severity`: fast-burn alerts page and slow-burn alerts open tickets, or the work says why not
+- `scale-windows-to-your-slo`: alert windows and rates were recomputed for the SLO's own window and target
+- `should-not-alert-on-fixed-error-count`: no alert is a single fixed error-count threshold, or the work says why
+- `should-not-use-one-global-slo`: no SLO spans unrelated journeys, or the work says why
+- `should-not-measure-slos-only-inside-service`: SLOs include client-side or edge measurement, or the work says why not

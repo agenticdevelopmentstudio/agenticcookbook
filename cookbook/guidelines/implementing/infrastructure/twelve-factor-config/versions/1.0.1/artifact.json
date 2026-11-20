@@ -1,0 +1,47 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a127f652-728b-42f0-8d60-1017fccabdf3",
+    "title": "Twelve-factor configuration",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Read config that varies between deploys from the environment and promote one immutable build artifact unchanged across every environment.",
+    "platforms": [],
+    "tags": [
+      "config",
+      "12-factor",
+      "environment"
+    ],
+    "depends-on": [],
+    "related": [
+      "cc7f5ee6-a848-490a-9a28-e4acae0855b3",
+      "e114c41c-d203-454c-bc7c-cc128f6ebadd"
+    ],
+    "references": [
+      "https://12factor.net/config",
+      "https://12factor.net/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "configuration"
+    ]
+  },
+  "synced": "289c8c5866f44e45",
+  "parts": [
+    {"part": "intro"},
+    {"part": "what-counts-as-config", "heading": "What counts as config"},
+    {"part": "core-rules", "heading": "Core rules"},
+    {"part": "practical-patterns", "heading": "Practical patterns"},
+    {"part": "forecast-note", "heading": "Forecast note"},
+    {"part": "privacy-note", "heading": "Privacy note"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,28 @@
+
+- `should-comment-the-why`: a comment that says what the code does but not why, or a non-obvious choice with no comment
+- `should-not-restate-the-line`: a comment that restates the line below it
+- `should-try-a-clearer-name-first`: a comment explaining what a block does where a clearer name or smaller function would do
+- `should-name-the-source-of-surprising-values`: a surprising value with no spec section, ticket or measurement named
+- `should-update-docs-in-the-same-change`: a behavior change whose comments, docstrings, README sections or instruction files were left for a follow-up
+- `should-search-docs-for-changed-names`: a renamed name still present in the docs
+- `should-describe-new-public-behavior`: new public behavior with no description where users will look
+- `should-remove-docs-of-removed-behavior`: a description left behind for removed behavior
+- `should-give-both-readers-exact-specifics`: docs missing exact searchable names, the real command, the real path, or when a rule applies
+- `should-lead-with-the-point`: a doc that opens with background before its answer
+- `should-prefer-concrete-examples`: an abstract description where a short example with real values would serve
+- `should-keep-one-canonical-term`: one concept called by two or more terms
+- `should-say-what-is-true-now`: narration of how the code or doc got to its current state
+- `should-prefer-specifics`: an abstraction where the thing, the number or the file could be named
+- `must-not-make-up-sources`: a statistic, source or quote with no real origin
+- `should-cut-throat-clearing`: an opening that restates the title or announces what follows, or a closing summary of what was just said
+- `should-use-short-ordinary-words`: "utilize" for "use", stock filler vocabulary, or stacked hedges
+- `should-not-swap-synonyms-to-disguise-a-tic`: a vague word swapped for a synonym instead of the clause being rewritten
+- `should-prefer-verbs-over-nominalizations`: "make a decision" where "decide" would do
+- `should-use-active-voice-by-default`: passive voice where the actor matters
+- `should-hedge-only-real-uncertainty`: a hedge with no stated uncertainty behind it
+- `should-vary-rhythm-by-content`: every list in threes, or every paragraph ending on a tidy one-line moral
+- `should-make-punctuation-do-a-job`: a dash where a comma, colon, parentheses or new sentence would do, or run-on clauses
+- `should-keep-one-tense-and-register`: a passage that shifts tense or register
+- `should-state-the-premise`: a claim with no stated premise and stronger than what supports it
+- `must-use-visible-characters-only`: look-alike or invisible Unicode characters in text
+- `should-run-humanize-where-available`: prose written where the humanize skill was available and not run over it

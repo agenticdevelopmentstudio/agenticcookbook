@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Pin to the .NET and CsWinRT versions you build against and re-verify AOT/trim compatibility on each upgrade rather than assuming prior results hold.",
+      "to": "should-pin-and-reverify-on-upgrade",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps pinning the .NET and CsWinRT versions and re-verifying AOT/trim compatibility on each upgrade rather than assuming prior results hold, at SHOULD.",
+        "pin": "b9115ce2bf2b8cfc29cf111c42eef2e723eac0df761112b95a7e2344bafcf548"
+      }
+    },
+    {
+      "sentence": "Adopt them ONLY when a concrete measurement justifies the added constraints (faster cold start, smaller download, no-runtime self-contained deploy).",
+      "to": "should-adopt-aot-only-on-measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps adopting AOT and trimming ONLY on a concrete measurement, with the three example justifications, at SHOULD.",
+        "pin": "c818c137e89b68f8c48d53b17807c307b58d8dcbd7c1157a7ef6b31c86ddd218"
+      }
+    },
+    {
+      "sentence": "Use source generators or AOT-safe APIs instead.",
+      "to": "should-use-source-generators-or-aot-safe-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps using source generators or AOT-safe APIs instead, scoped to reflection-heavy and dynamic-codegen paths; the unkeyed instruction is kept at SHOULD.",
+        "pin": "ab29c32fa7f943cb38c8590c56213d6a6c52d7157c1bf3561756e3ac8c268702"
+      }
+    },
+    {
+      "sentence": "Prefer it when the measured need is startup latency alone.",
+      "to": "should-prefer-readytorun-for-startup-only",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps preferring ReadyToRun when the measured need is startup latency alone, at SHOULD.",
+        "pin": "23310fefd7796a77d52ab53db6631f5434b864a1e4dec72cc9dd8d369b367af8"
+      }
+    },
+    {
+      "sentence": "Audit `runtimes/` folders before shipping.",
+      "to": "should-audit-runtimes-folders",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps auditing runtimes/ folders before shipping and ties it to the x64-only-dependency risk, at SHOULD.",
+        "pin": "20c89d54a6fe81d2636a888fd6b06c4a274b7568b1522356ee476aa3f1bff7e1"
+      }
+    },
+    {
+      "sentence": "Mark this as a transitional state, not an end goal.",
+      "to": "should-mark-arm64ec-transitional",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps marking Arm64EC use as transitional, not an end goal, at SHOULD.",
+        "pin": "7cf3f4f319aaedb0972ac205aca6c278bd52e0d8d4a6da7f8022c2e23d720d5f"
+      }
+    }
+  ],
+  "obsolete": []
+}

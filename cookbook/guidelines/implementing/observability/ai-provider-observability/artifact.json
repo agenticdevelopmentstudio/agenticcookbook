@@ -4,11 +4,11 @@
     "id": "3890e8fb-9d2d-42db-9753-cf60b95152cc",
     "title": "AI Provider Observability",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,18 +30,21 @@
       "https://opentelemetry.io/docs/",
       "https://docs.anthropic.com/en/api/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ai-api-integration",
       "logging",
       "api-integration"
     ]
   },
-  "synced": "fafb77aa2950d14a",
+  "synced": "c36b333b0918e452",
   "parts": [
     {"part": "intro"},
-    {"part": "requirements", "heading": "Requirements"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

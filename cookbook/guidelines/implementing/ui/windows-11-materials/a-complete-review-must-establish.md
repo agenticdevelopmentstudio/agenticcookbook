@@ -1,0 +1,15 @@
+
+- `mica-for-long-lived-windows`: whether long-lived top-level windows use Mica as the base backdrop
+- `mica-alt-for-tabbed-titlebars`: whether apps with a tabbed title bar or strong title-bar/commanding contrast use Mica Alt, on Windows App SDK 1.1+ and Windows 11 build 22000+
+- `acrylic-for-transient-surfaces`: whether transient in-app surfaces use Acrylic, not Mica
+- `one-backdrop-per-window`: whether each window applies backdrop material at most once and no individual UI element carries it
+- `use-systembackdrop`: whether the material is set through `SystemBackdrop`, with the controllers used only where controller-level customization is required
+- `transparent-layers`: whether intervening layer backgrounds are transparent and content-layer fills use the layer fill brushes
+- `win32-and-wpf`: whether Win32/WPF hosts follow the Win32 Mica path rather than the WinUI API surface
+- `never-hardcode-colors`: whether every color comes from a `ThemeResource` brush
+- `honor-system-fallback`: whether any code forces material when the system disables it
+- `high-contrast`: whether the user's High Contrast background color replaces the material
+- `title-bar-continuity`: whether the material shows in the title bar through a transparent custom title bar
+- `should-not-use-acrylic-as-long-lived-backdrop`: whether any long-lived window uses Acrylic as its full-window backdrop
+- `should-not-reenable-material-after-fallback`: whether any code re-enables transparency or material after the system fell back to solid color
+- `should-not-layer-material-on-a-single-control`: whether material is layered on a single control instead of the window backdrop

@@ -1,0 +1,23 @@
+
+- `must-move-forward-through-lifecycle`: flaky tests with no recorded stage, or stuck short of fix and restore
+- `must-not-stall-in-quarantine`: tests that have sat in quarantine with no progress toward a fix, restore or delete
+- `must-execute-quarantined-tests-every-run`: quarantined tests skipped outright rather than run and reported
+- `should-detect-from-objective-signal`: tests quarantined on a hunch rather than a flip rate above the threshold or a pass only on retry
+- `must-treat-retry-pass-as-flaky`: tests that pass only on retry treated as passing
+- `may-use-retries-only-as-detection-signal`: retries configured so a "pass on retry" counts as a pass with no flaky signal raised, rather than feeding flakiness detection
+- `should-record-per-test-history`: CI with no per-test pass/fail history
+- `must-mark-quarantined-tests-explicitly`: quarantined tests commented out or deleted instead of tagged or annotated
+- `must-exclude-quarantined-tests-from-gate`: quarantined tests still able to fail the gating suite
+- `must-run-quarantined-tests-in-non-gating-job`: no non-gating job that runs the quarantined tests on every build
+- `must-record-owner-deadline-and-issue`: quarantine annotations or registry entries missing an owner, a fix deadline or an issue link
+- `must-make-quarantine-visible`: no dashboard, report or PR check summary showing the quarantine bucket
+- `must-create-owned-work-item-on-quarantine`: a quarantine with no tracked work item naming one owner and a concrete deadline
+- `should-set-short-deadline`: quarantine deadlines measured in quarters rather than days
+- `must-decide-explicitly-on-lapsed-deadline`: lapsed deadlines with no recorded decision to extend with justification, fix now or delete
+- `must-not-roll-over-silently`: deadlines that pass and quietly move on with no decision
+- `should-restore-only-after-fix-and-green-runs`: tests restored to the gate before the root cause is fixed or before enough green runs clear the flip-rate threshold
+- `must-not-restore-on-masked-failure`: restorations justified by a retry, a longer timeout or a loosened assertion
+- `should-delete-tests-for-unwarranted-behavior`: tests left in quarantine for behavior that no longer warrants a test
+- `must-not-become-permanent-parking-lot`: an unbounded or unowned quarantine list
+- `must-not-delete-flaky-test-to-go-green`: flaky tests deleted to make CI green with no check that the behavior still needs coverage
+- `must-not-use-global-auto-retry`: suite-wide auto-retry enabled to bury flakiness

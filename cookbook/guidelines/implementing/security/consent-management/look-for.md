@@ -1,0 +1,23 @@
+
+- `should-confirm-obligations-with-counsel-per-jurisdiction`: a consent flow shipped to a jurisdiction whose obligations were never confirmed with counsel
+- `must-be-freely-given`: consent bundled with sign-up or service access, or core features that do not need the processing disabled after a refusal, breaks it
+- `must-be-specific-and-granular`: one toggle or one "I agree" covering several purposes (analytics, marketing, personalization, third-party sharing) breaks it
+- `must-be-informed`: a consent prompt that does not show the purpose, controller identity, data categories and the right to withdraw before capture
+- `must-be-unambiguous`: pre-ticked boxes, implied consent, or "continue = consent" break it; an explicit opt-in action keeps it
+- `should-persist-decisions-append-only`: consent stored as a mutable flag or row rather than an append-only, immutable record
+- `must-not-overwrite-consent-entries`: an UPDATE or DELETE on consent entries, or withdrawal written as a change to the grant, breaks it
+- `must-capture-consent-record-fields`: a consent record missing subject id, purpose(s), grant/withdraw action, UTC timestamp, policy/notice version, or capture mechanism
+- `should-store-consent-notice-text-or-hash`: no stored notice text or content hash to prove what the user saw
+- `should-pin-policy-to-versioned-revision`: a consent record pointing at a policy URL with no dated, versioned revision
+- `should-keep-current-consent-queryable`: answering "does X consent to Y now?" by replaying the event log at read time, with no derived current-state view
+- `must-gate-non-essential-processing`: a non-essential script, tag, cookie or analytics event loaded or sent before consent for its purpose (load-then-suppress) breaks it
+- `should-not-present-necessary-processing-as-optional`: a toggle offered for security, fraud prevention or delivering the requested service
+- `should-re-request-consent-on-change`: a new purpose, data category or processor added without asking for consent again
+- `should-re-consent-on-material-policy-change-only`: re-consent forced on every policy-version bump, or skipped on a material one
+- `should-set-reconfirmation-cadence`: long-lived consent with no re-confirmation cadence
+- `must-make-withdrawal-as-easy-as-granting`: withdrawal that takes more clicks, a different surface, or a dark pattern than granting breaks it
+- `must-propagate-withdrawal`: a withdrawal that is recorded but leaves collection, downstream jobs, or processors and third parties untouched breaks it
+- `must-stop-further-processing-on-withdrawal`: processing for the withdrawn purpose that continues after the withdrawal event breaks it
+- `must-not-infer-consent-from-inactivity`: consent recorded from inactivity, scrolling or continued use breaks it
+- `must-not-make-reject-harder-than-accept`: a banner where "reject all" is hidden, smaller, or a level deeper than "accept all" breaks it
+- `must-not-skip-childrens-consent-paths`: children's data handled with no age-appropriate or verifiable-parental-consent path breaks it

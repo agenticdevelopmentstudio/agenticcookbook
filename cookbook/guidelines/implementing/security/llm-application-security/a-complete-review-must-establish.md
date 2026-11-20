@@ -1,0 +1,30 @@
+
+- `should-map-controls-to-owasp-llm-top-10-2025`: whether controls are mapped to the pinned 2025 OWASP Top 10 for LLM Applications
+- `should-apply-request-body-egress-controls`: whether model output gets the same egress controls as a raw HTTP request body
+- `must-sanitize-output-at-trust-boundaries`: whether model output is sanitized, encoded or parameterized before every trust boundary it crosses
+- `must-not-pass-output-to-shell`: whether model output ever reaches `exec`/`system`/a shell string or a command line
+- `must-parameterize-output-in-sql`: whether model output reaches SQL only through parameterized queries or prepared statements
+- `must-encode-output-for-html`: whether model output reaches HTML/DOM only through context-aware encoding or sanitization
+- `must-validate-tool-arguments`: whether every tool call's arguments are validated and type-checked against a schema first
+- `must-validate-structured-output`: whether structured output is validated against a strict schema and rejected on mismatch
+- `must-not-treat-output-as-proof`: whether any action is taken as done on the model's word without out-of-band verification
+- `must-threat-model-both-injection-forms`: whether the threat model covers both direct and indirect prompt injection
+- `must-keep-instruction-data-trust-boundary`: whether untrusted content is delimited and labelled as data, apart from system/developer instructions
+- `should-apply-least-privilege-against-injection`: whether a successful injection could reach a high-impact tool
+- `should-prefer-deterministic-guardrails`: whether deterministic guardrails are used in preference to model self-policing
+- `should-not-count-prompt-instructions-as-control`: whether any claimed control is only an instruction to the model
+- `should-limit-capability-permissions-autonomy`: whether capability, permissions and autonomy are limited to bound blast radius
+- `must-grant-least-privilege`: whether each agent/tool holds only the least privilege it needs
+- `must-allow-list-callable-tools`: whether an explicit allow-list governs callable tools
+- `must-not-expose-open-ended-capabilities`: whether any open-ended capability is exposed without specific justification and additional controls
+- `should-require-human-confirmation`: whether high-impact or irreversible actions require human-in-the-loop confirmation
+- `should-describe-concrete-effect-in-confirmation`: whether each confirmation describes the concrete effect
+- `should-rate-limit-and-budget-tool-calls`: whether tool calls are rate-limited and budgeted
+- `must-not-put-secrets-in-system-prompt`: whether the system prompt holds secrets, credentials or security controls
+- `must-filter-sensitive-data-in-and-out`: whether PII and sensitive data are filtered from inputs and outputs, and raw prompts/completions with secrets are kept out of logs
+- `should-scope-retrieved-context-to-user`: whether retrieved context is scoped to what the current user may see
+- `must-treat-vector-store-documents-as-untrusted`: whether vector-store documents have provenance validated and per-document access controls applied at query time
+- `should-protect-vector-store-like-source-data`: whether the vector store is protected like the underlying data
+- `should-pin-models-and-verify-provenance`: whether model versions are pinned and model, dataset and plugin provenance verified
+- `should-mark-generated-content-unverified`: whether generated content carries citations and an unverified marking
+- `should-not-present-output-as-authoritative`: whether any safety-critical flow presents model output as authoritative fact

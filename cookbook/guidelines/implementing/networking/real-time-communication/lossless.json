@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Start with SSE** for server-push — it has built-in reconnection, works over standard HTTP,",
+      "to": "should-start-with-sse",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Start-with-SSE for server-push kept at SHOULD; the built-in-reconnection and standard-HTTP reasons are kept as the rule's note.",
+        "pin": "8184b60970726baf9e60fd1e74537770a9a6bdd33f359371d9e9f230f8a43d60"
+      }
+    },
+    {
+      "sentence": "and is sufficient for 80%+ of \"real-time\" needs.",
+      "to": "should-start-with-sse",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The wrapped tail (sufficient for 80%+ of real-time needs) is kept in the same rule's note.",
+        "pin": "cbb83fec209e30c7640707d229a563d2f0e4318b3a7c92a4228889db33aaee82"
+      }
+    },
+    {
+      "sentence": "WebSocket SHOULD only be used when",
+      "to": "should-use-websocket-only-for-bidirectional-streaming",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "This wrapped fragment is carried whole at SHOULD: WebSocket only when bidirectional streaming is required.",
+        "pin": "97515bf30cb9e14d28e1f7d6a1c7e49be27fbe7d682b6d1234b7fd3cb42ebd6b"
+      }
+    },
+    {
+      "sentence": "bidirectional streaming is required.",
+      "to": "should-use-websocket-only-for-bidirectional-streaming",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The wrapped tail is carried in the same rule: WebSocket only when bidirectional streaming is required.",
+        "pin": "0b0b5a26948df474be2f9827cdea8e51fdeee9f02106e0a223e706ed3a936661"
+      }
+    }
+  ],
+  "obsolete": []
+}

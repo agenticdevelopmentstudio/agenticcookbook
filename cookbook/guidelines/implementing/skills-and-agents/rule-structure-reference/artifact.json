@@ -4,7 +4,7 @@
     "id": "b8aa57e0-6a85-4605-ae84-1220872294de",
     "title": "Rule Structure Reference",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -26,22 +26,25 @@
       "392d9205-6a50-4815-80a0-7d148880d43b"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring"
     ]
   },
   "names_hosts": "Documents Claude Code's skill, agent and rule files: the host is the subject.",
-  "synced": "251eff3af801b73b",
+  "synced": "2da70d0066d7d04b",
   "parts": [
     {"part": "intro"},
-    {"part": "what-is-a-rule-file", "heading": "What is a Rule File?"},
-    {"part": "file-format", "heading": "File Format"},
-    {"part": "common-locations", "heading": "Common Locations"},
-    {"part": "quality-criteria", "heading": "Quality Criteria"},
-    {"part": "optimization", "heading": "Optimization"},
-    {"part": "comparison-skills-vs-agents-vs-rules", "heading": "Comparison: Skills vs Agents vs Rules"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "what-is-a-rule-file", "heading": "What is a Rule File?", "role": "how-to"},
+    {"part": "file-format", "heading": "File Format", "role": "how-to"},
+    {"part": "common-locations", "heading": "Common Locations", "role": "how-to"},
+    {"part": "comparison-skills-vs-agents-vs-rules", "heading": "Comparison: Skills vs Agents vs Rules", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "optimization", "heading": "Optimization", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

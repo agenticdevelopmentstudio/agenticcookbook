@@ -1,0 +1,169 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use `readonly` fields and `readonly struct` by default.",
+      "to": "should-use-readonly-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "readonly fields and readonly struct by default is kept at SHOULD, scoped to C#.",
+        "pin": "a147294e912910ea68d662cf870f2b4dcb2f2c1a978d244bc1109c222d417a34"
+      }
+    },
+    {
+      "sentence": "Introduce mutability only when required.",
+      "to": "should-use-readonly-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Introducing mutability only when required is kept in the same C# rule at SHOULD, and generally at MUST in must-default-to-immutable-values.",
+        "pin": "3f942db5595ec7ee9041729c3e9112c238da4fb659d84e6d2bb9ee6605d37725"
+      }
+    },
+    {
+      "sentence": "Prefer `System.Collections.Immutable` (`ImmutableList<T>`, `ImmutableDictionary<K,V>`) for shared collections",
+      "to": "should-prefer-immutable-collections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring System.Collections.Immutable for shared collections is kept at SHOULD with both named types.",
+        "pin": "0e284177ea01b6e274904262ea4da650b85e02ebfdac057e48db50972337a155"
+      }
+    },
+    {
+      "sentence": "Use `record` for DTOs, API responses, domain events, value objects",
+      "to": "should-use-records-for-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "record for DTOs, API responses, domain events and value objects is kept at SHOULD with all four uses.",
+        "pin": "f1ce778a3cbc74f9c87b4a8279914923f86885b1e935c19b03f94bfe72753d2b"
+      }
+    },
+    {
+      "sentence": "Use `record struct` / `readonly record struct` for small immutable value types",
+      "to": "should-use-record-structs-for-small-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "record struct / readonly record struct for small immutable value types is kept at SHOULD.",
+        "pin": "dd80e483d478bed431ef5037a78256f69eb1bcb34bf0e1740f1064f697b4b3cb"
+      }
+    },
+    {
+      "sentence": "Prefer positional records (`record Person(string Name, int Age)`) for simple data carriers",
+      "to": "should-prefer-positional-records",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring positional records for simple data carriers is kept at SHOULD with the example.",
+        "pin": "2d9f0c62de627204edf679245ee55722b17ff0947d2fa102eb74000c153b3d2f"
+      }
+    },
+    {
+      "sentence": "Use `init` setters and `required` keyword for mandatory properties",
+      "to": "should-use-init-and-required",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "init setters and the required keyword for mandatory properties is kept at SHOULD.",
+        "pin": "1e3f6dedb96c2b08645df0dd7d187f38fe2fb442b85c8cde8250ce805461b294"
+      }
+    },
+    {
+      "sentence": "Use `with` expressions for non-destructive mutation",
+      "to": "should-use-with-expressions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "with expressions for non-destructive mutation is kept at SHOULD.",
+        "pin": "2ddd98f2a4e5eeafc9b4e3cb1c669daeeac1a89b7fa683bbc726efc62289d23c"
+      }
+    },
+    {
+      "sentence": "Contain mutable state behind `ObservableObject` (UI) or thread-safe wrappers",
+      "to": "should-contain-mutable-state-behind-wrappers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Containing mutable state behind ObservableObject (UI) or thread-safe wrappers is kept at SHOULD with both options.",
+        "pin": "37faef24105475fb181b001a680a24917651defba4a1452e7a248b52d1019795"
+      }
+    },
+    {
+      "sentence": "Reserve `class` with mutable state for entities with identity semantics",
+      "to": "should-reserve-mutable-classes-for-entities",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Reserving mutable-state classes for entities with identity semantics is kept at SHOULD.",
+        "pin": "a338624f3872b7b309f4d6071cc7254914f80879dcc5f27430aec87107fa185b"
+      }
+    },
+    {
+      "sentence": "Use `val` by default.",
+      "to": "should-use-val-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "val by default is kept at SHOULD, scoped to Kotlin.",
+        "pin": "30bf17a84ce1d91df6ffe0bf82cd01fe8a4a75eda698f95038546b4034d725ca"
+      }
+    },
+    {
+      "sentence": "Use `data class` for value types.",
+      "to": "should-use-data-class-for-value-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "data class for value types is kept at SHOULD, scoped to Kotlin.",
+        "pin": "6408a6afccaf880df2f8eb8c8a3a8a4108cc74c9d75653b6af5dd481677e305c"
+      }
+    },
+    {
+      "sentence": "Introduce `var` only when mutation is required, and contain mutable state behind `StateFlow`.",
+      "to": [
+        "should-introduce-var-only-when-required",
+        "should-contain-mutable-state-behind-stateflow"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept at SHOULD in Kotlin: var only when mutation is required, and mutable state behind StateFlow.",
+        "pin": "7a06b79894a817563061d6498dba2a704600e8fe5b7650a66e645a6a74986a7a"
+      }
+    },
+    {
+      "sentence": "Use `const` by default.",
+      "to": "should-use-const-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "const by default is kept at SHOULD, scoped to TypeScript.",
+        "pin": "27796e2595cb8d02b5e7fcb91aa2c292d5ce0f245ea2e831d1d6d3eb2f2ad24f"
+      }
+    },
+    {
+      "sentence": "Use `var`/`let` only when mutation is required.",
+      "to": "should-use-var-or-let-only-when-required",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "var/let only when mutation is required is kept at SHOULD, scoped to TypeScript.",
+        "pin": "fd27c98ce87bdbbe0196b9f2ef821564a642299879984a0be3a5c2c39a32000a"
+      }
+    },
+    {
+      "sentence": "Prefer `useState` (React) for contained mutable state.",
+      "to": "should-prefer-usestate-for-mutable-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring React useState for contained mutable state is kept at SHOULD.",
+        "pin": "4701bf5803d6692554f51544aa5ce546202aac284cd5ebfe87e647117832a690"
+      }
+    }
+  ],
+  "obsolete": []
+}

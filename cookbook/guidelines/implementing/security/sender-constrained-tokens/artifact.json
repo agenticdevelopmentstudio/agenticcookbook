@@ -4,11 +4,11 @@
     "id": "a8e6159f-0138-438c-9402-06fb346a6a09",
     "title": "Sender-constrained access tokens",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,21 +27,22 @@
     "references": [
       "https://www.rfc-editor.org/rfc/rfc9700.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "authentication",
       "security-review"
     ]
   },
-  "synced": "551f498ab236f95a",
+  "synced": "0d16d4911ece0ccd",
   "parts": [
     {"part": "intro"},
-    {"part": "when-to-apply", "heading": "When to apply"},
-    {"part": "two-mechanisms", "heading": "Two mechanisms"},
-    {"part": "dpop-requirements", "heading": "DPoP requirements"},
-    {"part": "mtls-requirements", "heading": "mTLS requirements"},
-    {"part": "limits-do-not-over-trust", "heading": "Limits — do not over-trust"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "two-mechanisms", "heading": "Two mechanisms", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Limits — do not over-trust", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

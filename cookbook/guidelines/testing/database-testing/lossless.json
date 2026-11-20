@@ -1,0 +1,261 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use SQLite for unit tests where dialect differences do not affect the logic under test.",
+      "to": "should-use-sqlite-where-dialect-is-irrelevant",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition: SQLite for unit tests only where dialect differences do not affect the logic under test.",
+        "pin": "f4ee805c7534430601e469b892d7364e8258009aae2f2555c2cd768af082eb48"
+      }
+    },
+    {
+      "sentence": "Use `:memory:` databases for unit tests.",
+      "to": [
+        "should-use-memory-databases-for-unit-tests",
+        "in-memory-vs-file-based-databases"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unkeyed instruction kept at SHOULD: unit tests use :memory: databases; the part keeps the example.",
+        "pin": "57a88fdf1eb2c2b253131211ec0a1305569ea24b34f241fa73aa0718e538f7c9"
+      }
+    },
+    {
+      "sentence": "Use file-based databases only for integration tests that must verify WAL behavior, file locking, concurrent connections, or platform-specific I/O.",
+      "to": "should-use-file-databases-only-for-file-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the 'only' restriction and all four reasons (WAL, file locking, concurrent connections, platform-specific I/O).",
+        "pin": "60b7d9182bed8f0b7f259821140f1cd661900f205a6dd819d5b8892450ae2129"
+      }
+    },
+    {
+      "sentence": "In those cases, write the database to a temp directory and delete it in teardown.",
+      "to": "should-put-file-databases-in-temp-dir",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to those file-based cases: temp directory, delete in teardown.",
+        "pin": "48fff7a5c16fb414438b4f31064f2708fd5720b2608767a9342f27764cca8f2c"
+      }
+    },
+    {
+      "sentence": "The `:memory:` URL creates a new database per connection; use named in-memory databases (`file:name?mode=memory&cache=shared`) only when multiple connections to the same in-memory database are intentionally required.",
+      "to": "should-use-named-memory-databases-only-when-intended",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The per-connection fact is kept as the rule's sub-bullet and the named-memory-database restriction is kept at SHOULD with its intentional-multi-connection condition.",
+        "pin": "b162b5ac38951a4ccc64994fa2e91d58a386a1dc238c7799186c18ca4be10aa5"
+      }
+    },
+    {
+      "sentence": "Test idempotency by applying the migration set twice:",
+      "to": "should-test-migration-idempotency-twice",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: test migration idempotency by applying the migration set twice.",
+        "pin": "41f1c968462191247efe5e5fb9a3d5b59fd2e06b93f9cd27b197844720494199"
+      }
+    },
+    {
+      "sentence": "Test backward migration (rollback) when rollback scripts exist.",
+      "to": "should-test-backward-migrations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (when rollback scripts exist), plus the forward/backward/verify procedure.",
+        "pin": "2adb9ebb5e76cb7697da69ca2d4e63a7a7511f8481b7e689da7a9e8ae3dbfa57"
+      }
+    },
+    {
+      "sentence": "Always test migrations against a database seeded with production-representative data to catch data conversion errors — type coercions, NOT NULL violations, and constraint failures that only appear with real values.",
+      "to": "must-test-migrations-with-representative-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Always' kept as MUST always, with production-representative seed data and all three conversion-error examples as the reason.",
+        "pin": "8bd595a7e394fd12043e4083e4f7153f28dd367432ab6f020d70e4e2a50d9a4a"
+      }
+    },
+    {
+      "sentence": "Apply them only in test fixtures.",
+      "to": "should-apply-relaxed-settings-only-in-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: relaxed durability settings are applied only in test fixtures.",
+        "pin": "307ea6121c0aa43a788a6d0b8da99e57f8d6ed7b090d397a56dc64850e5aefab"
+      }
+    },
+    {
+      "sentence": "Use function-scoped fixtures for tests that write.",
+      "to": "should-use-function-scoped-fixtures-for-writes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: tests that write use function-scoped fixtures.",
+        "pin": "4d28afc59388fc6747436db68a2672959959253875909b69216bef509a93544f"
+      }
+    },
+    {
+      "sentence": "Use session-scoped fixtures for read-only tests.",
+      "to": "should-use-session-scoped-fixtures-for-reads",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: read-only tests use session-scoped fixtures.",
+        "pin": "3d47c6bb49245c96b50a037acfc86e6293663ef65a2a1983daf01ba29d6a94b6"
+      }
+    },
+    {
+      "sentence": "**Fresh database per test** (SHOULD be the default) gives perfect isolation.",
+      "to": [
+        "should-default-to-fresh-database-per-test",
+        "test-isolation-strategies"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Fresh database per test is kept as the SHOULD default, with the perfect-isolation reason; the part shows the strategy.",
+        "pin": "40c6469642a36b101a6f141c0941455ff9dca3a6d551ac092d9e7ab5d028f7fd"
+      }
+    },
+    {
+      "sentence": "Each test gets a blank database, applies the schema, and closes when done.",
+      "to": "test-isolation-strategies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The test-isolation-strategies part keeps the sentence: each test gets a blank database, applies the schema, and closes when done.",
+        "pin": "e81d45a4982cf1d90d60950721d27838862bb71b3545ed93b2604323e9b0e009"
+      }
+    },
+    {
+      "sentence": "**Transaction rollback** (MAY use for large schemas) creates the schema once and wraps each test in a transaction that is rolled back after the test.",
+      "to": [
+        "may-use-transaction-rollback-for-large-schemas",
+        "test-isolation-strategies"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MAY with its large-schema condition and the mechanism (schema once, each test in a rolled-back transaction); the part has the fixture.",
+        "pin": "57d0320c0dd751c78ffb5bb614af8dfe1a2ad09e7e1d48375da41381eafc6af5"
+      }
+    },
+    {
+      "sentence": "Tests MUST NOT commit; nested operations need SAVEPOINTs.",
+      "to": "must-not-commit-under-transaction-rollback",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MUST NOT commit is kept, scoped to transaction-rollback isolation as in the old context, and the SAVEPOINT note is a sub-bullet.",
+        "pin": "f45fdd81026abf54036e09f1a9e454670876a97e532b70bd72ad039b90acab08"
+      }
+    },
+    {
+      "sentence": "**Template + backup API** (MAY use when tests need pre-populated data and isolated writes) creates a seeded template once per session and copies it per test.",
+      "to": [
+        "may-use-template-and-backup-for-seeded-data",
+        "test-isolation-strategies"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MAY with its condition (pre-populated data plus isolated writes) and the mechanism (seeded template once per session, copied per test).",
+        "pin": "d75a95d82ffa411463378fb450861c78c7f872ca712f609153639f77ba86afb9"
+      }
+    },
+    {
+      "sentence": "Conflict tests require two databases representing two peers.",
+      "to": "must-test-conflicts-with-two-peers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The requirement for two databases representing two peers is kept and stated at MUST.",
+        "pin": "184d15023fd0ef14ba2098a5b0753aff2198d49d114f7aaf085be59b047542a0"
+      }
+    },
+    {
+      "sentence": "Apply divergent changes to each, then merge and assert the outcome matches the defined resolution strategy.",
+      "to": "should-assert-merge-matches-resolution-strategy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: divergent changes to each peer, merge, assert the outcome matches the defined resolution strategy.",
+        "pin": "90c5d074b69cdf60b0cba1a192b78c68e598f25a185a7aba2e6660ce0f8f19ff"
+      }
+    },
+    {
+      "sentence": "Test all defined conflict cases:",
+      "to": "should-test-all-conflict-cases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three conflict cases listed.",
+        "pin": "d4a2abee93e9cf9fa4015589431d2782d58ab8f86e29d92fbe191375817b8fe3"
+      }
+    },
+    {
+      "sentence": "Sync logic requires testing at the unit level (change detection, serialization) and integration level (round-trip apply).",
+      "to": "must-test-sync-at-unit-and-integration-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST, both levels with their examples (change detection, serialization; round-trip apply).",
+        "pin": "cf5dd387c709be3db1cd0a83d31c4055945fe9c618029ad2a0c5d45193d3982a"
+      }
+    },
+    {
+      "sentence": "**Change detection**: verify that the unsynced-records query returns the correct rows.",
+      "to": [
+        "should-test-change-detection",
+        "testing-sync-logic"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: verify the unsynced-records query returns the correct rows; the part keeps the example.",
+        "pin": "1047d55693d4de0d0e971a07e823ba1468b661039ab83748f474ed4e18164170"
+      }
+    },
+    {
+      "sentence": "**Sync apply**: verify that applying a changeset from the server updates the local database correctly, including soft-delete propagation.",
+      "to": "should-test-sync-apply",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, including soft-delete propagation.",
+        "pin": "5956dccef5e2eae2ff55189c623c5849b069eae1819e6faf0a22f004156f2cfd"
+      }
+    },
+    {
+      "sentence": "**Outbox round-trip**: write a record locally, confirm it appears in the outbox, simulate a sync cycle, confirm the record is marked synced and the outbox entry is consumed.",
+      "to": "should-test-outbox-round-trip",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with every step of the outbox round-trip.",
+        "pin": "2211d9ce1698e959d119c27e0e14b5e7940627ed21ae37d8a301b0d7992a0287"
+      }
+    },
+    {
+      "sentence": "**Tombstone propagation**: delete a record on one simulated peer, apply the tombstone to a second peer, confirm the record is absent on the second peer and not resurrected by a subsequent sync.",
+      "to": "should-test-tombstone-propagation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with every step, including not resurrected by a subsequent sync.",
+        "pin": "0fabfca856ea1a16c5894e1d8c69b826131e40e9d7d8fd30d30d90fe5607bb20"
+      }
+    }
+  ],
+  "obsolete": []
+}

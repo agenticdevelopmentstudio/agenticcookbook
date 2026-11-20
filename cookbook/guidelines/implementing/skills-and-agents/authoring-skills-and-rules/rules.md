@@ -1,0 +1,57 @@
+
+- **should-design-skills-single-purpose-and-versioned**: Skills SHOULD be designed as single-purpose, versioned extensions.
+- **should-keep-rules-minimal-deterministic-side-effect-free**: Rules SHOULD be kept minimal, deterministic, and side-effect-free.
+- **should-check-inventory-before-creating**: The inventory SHOULD be checked before creating anything new.
+- **should-read-skills-table-before-creating-a-skill**: The author SHOULD read the skills table in CLAUDE.md before creating a new skill (check the inventory first).
+- **should-not-duplicate-a-skill-purpose**: A new skill SHOULD NOT duplicate an existing skill's purpose.
+- **should-confirm-new-skill-name-and-purpose**: If the skill is not already listed, the author SHOULD confirm the name and purpose with the user before proceeding.
+- **must-version-skills-from-day-one**: Every skill MUST from day one have a `version` field in its frontmatter, support a `--version` parameter, and print its version on every invocation.
+- **should-increment-skill-version-by-semver**: The version SHOULD be incremented on every change following semver: patch for fixes, minor for new behavior, major for breaking changes.
+- **must-check-session-version-at-startup**: The skill MUST read its on-disk version during startup and compare it to the version loaded into the current session.
+- **should-warn-when-loaded-skill-may-be-stale**: If the versions differ, the skill SHOULD warn the user that the loaded skill may be stale.
+- **should-not-block-on-version-mismatch**: On a version mismatch the skill SHOULD continue running and SHOULD NOT block execution.
+- **should-not-describe-arguments-in-prose**: A skill SHOULD NOT describe argument handling in prose.
+- **should-use-arguments-variables**: A skill SHOULD use `$ARGUMENTS`, `$0`, `$1` for input.
+- **must-reference-arguments-when-hinted**: If the `argument-hint` frontmatter field is declared, the skill body MUST reference these variables (`$ARGUMENTS`, `$0`, `$1`).
+- **should-use-claude-skill-dir**: A skill SHOULD reference its own supporting files with `${CLAUDE_SKILL_DIR}`.
+- **should-use-repo-relative-cookbook-paths**: A skill SHOULD use repo-relative paths or `../agenticdevelopercookbook/` paths for cookbook content.
+- **should-keep-skill-description-under-200-characters**: The skill description SHOULD be kept short, under 200 characters.
+- **should-include-trigger-keywords-in-description**: The skill description SHOULD include natural trigger keywords so the model invokes the skill when appropriate.
+- **should-use-one-atomic-permission-prompt**: Before any file modifications, a skill SHOULD present a single yes/no prompt listing every file to be written and every command to be run, with reasons: one atomic permission prompt.
+- **should-check-prerequisites-first**: As error handling, a skill SHOULD check prerequisites before starting work.
+- **should-stop-on-missing-prerequisites**: If required files are missing or the environment is misconfigured, the skill SHOULD stop immediately with a useful error message.
+- **should-handle-invalid-arguments-explicitly**: A skill SHOULD handle invalid arguments explicitly rather than failing silently.
+- **must-include-a-usage-section**: Every skill MUST include a Usage section with at least one example invocation showing the command and what to expect from the output.
+- **should-disable-model-invocation-for-explicit-only-skills**: The `disable-model-invocation` frontmatter flag SHOULD be used, carefully, for skills that SHOULD only be invoked explicitly by the user.
+- **must-not-disable-model-invocation-on-called-skills**: `disable-model-invocation` MUST NOT be set on skills that other skills need to call via the Skill tool.
+- **should-not-fork-chainable-skills**: Chainable skills SHOULD have no `context: fork`.
+- **should-fork-only-isolated-read-heavy-tasks**: A skill SHOULD only use `context: fork` for isolated, read-heavy tasks that return a report.
+- **should-keep-one-authoritative-source**: A skill SHOULD NOT duplicate content between its body and its references but SHOULD maintain one authoritative source.
+  - Either the skill's markdown body is authoritative and references are supporting material, or vice versa.
+- **must-not-overlap-body-and-references**: A skill MUST NOT have both a body and references with overlapping content that can drift out of sync.
+- **must-lint-skill-after-every-change**: The author MUST always run `/lint-skill <path>` after creating or modifying a skill, after every change.
+- **should-fix-all-skill-lint-fails**: The author SHOULD fix all FAILs before considering the skill complete.
+- **should-present-skill-lint-warns**: The author SHOULD present WARNs to the user for review.
+- **should-add-new-skill-to-claude-md-and-readme**: The author SHOULD update CLAUDE.md and README.md after creating a skill, adding it to the skills table in both files.
+- **should-use-rfc-2119-keywords-in-rules**: A rule SHOULD use imperative tone throughout: MUST, MUST NOT, SHOULD, MAY (RFC 2119), consistently.
+- **should-list-every-referenced-file-path**: If the rule instructs the LLM to "read the principles" or "check the guidelines," it SHOULD list every explicit file path it needs to read.
+- **must-not-make-the-llm-search-for-references**: An LLM following the rule MUST NOT have to search for referenced content.
+- **should-keep-one-concern-per-rule**: Each rule SHOULD address a single concern, one topic: planning, implementing, permissions, versioning, committing, etc.
+- **should-not-combine-concerns-in-one-rule-file**: Unrelated concerns SHOULD NOT be combined into a single rule file.
+- **must-include-a-must-not-section**: Every rule MUST include a dedicated MUST NOT section listing what the LLM must not do.
+- **should-include-verification-steps**: A rule SHOULD NOT just state "do X" but SHOULD include verification steps that confirm X was actually done, as an enforcement mechanism.
+- **should-avoid-subjective-language**: A rule SHOULD give deterministic instructions and avoid subjective language like "appropriate," "as needed," or "if it makes sense."
+- **should-be-specific-enough-for-consistent-results**: A rule SHOULD be specific enough that two independent sessions following the rule produce consistent, comparable results.
+- **should-reapply-everything-on-same-selection**: When a user re-selects the current configuration (e.g., re-runs a setup skill with the same parameters), the rule SHOULD re-apply everything from scratch (same-selection = repair).
+- **should-not-skip-steps-on-same-selection**: On a same selection, steps SHOULD NOT be skipped with "already done"; it SHOULD be treated as a repair operation.
+- **should-name-requirements-not-number-them**: Requirements SHOULD NOT be numbered and SHOULD use descriptive kebab-case names for requirements, not sequential identifiers like REQ-001.
+- **must-lint-rule-after-every-change**: The author MUST always run `/lint-rule <path>` after creating or modifying a rule, after every change.
+- **should-fix-all-rule-lint-fails**: The author SHOULD fix all FAILs before considering the rule complete.
+- **should-present-rule-lint-warns**: The author SHOULD present WARNs to the user for review.
+- **should-scope-agent-tool-access**: An agent SHOULD use the `tools` or `disallowedTools` frontmatter fields to restrict what the agent can do.
+- **should-set-max-turns**: An agent SHOULD set `maxTurns`, a turn limit appropriate to the task complexity, to prevent unbounded execution.
+  - Simple review tasks might need 5-10 turns; complex analysis might need 20-30.
+- **should-write-a-clear-system-prompt**: An agent's instructions SHOULD be a clear system prompt: focused, unambiguous, and structured.
+- **must-lint-agent-after-every-change**: The author MUST always run `/lint-agent <path>` after creating or modifying an agent.
+- **should-fix-all-agent-lint-fails**: The author SHOULD fix all FAILs from `/lint-agent`.
+

@@ -4,11 +4,11 @@
     "id": "09b063bd-74e7-4636-baa6-23ee82ec224b",
     "title": "Privacy by design",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,22 @@
       "https://gdpr-info.eu/art-35-gdpr/",
       "https://www.nist.gov/privacy-framework"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review",
       "data-modeling"
     ]
   },
-  "synced": "1ce8d407b3953c4c",
+  "synced": "c267dd8c6922a566",
   "parts": [
     {"part": "intro"},
-    {"part": "make-the-data-flow-map-a-first-class-artifact", "heading": "Make the data-flow map a first-class artifact"},
-    {"part": "assess-high-risk-processing", "heading": "Assess high-risk processing"},
-    {"part": "minimize-and-de-identify", "heading": "Minimize and de-identify"},
-    {"part": "default-to-the-most-private-option", "heading": "Default to the most private option"},
-    {"part": "adopt-heavier-controls-only-when-justified", "heading": "Adopt heavier controls only when justified"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "data-flow-map-dimensions", "heading": "Data-flow map dimensions", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

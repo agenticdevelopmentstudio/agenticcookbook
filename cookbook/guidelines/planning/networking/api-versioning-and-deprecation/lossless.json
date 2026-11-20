@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Pick ONE scheme and apply it consistently across the whole surface.",
+      "to": "should-pick-one-scheme-for-the-whole-surface",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: one versioning scheme (the three options named) applied consistently across the whole surface; the scheme trade-off table stays in versioning-schemes and mixing stays banned at MUST NOT.",
+        "pin": "d71b730d2f9f1a877262963c648245d8056062d8c3d7bdee04fdd36c1ac1b7ed"
+      }
+    },
+    {
+      "sentence": "When retiring a version or endpoint, run this sequence and publish the timeline before the first signal ships:",
+      "to": "should-run-the-deprecation-sequence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: when retiring a version or endpoint, run the four steps in order and publish the timeline before the first signal ships; each step is its own rule.",
+        "pin": "0dd23de99eb674d7e4fb5e285923f531a1612de53a3fba8a67166d5e8137e0e9"
+      }
+    },
+    {
+      "sentence": "**Announce** — set the `Deprecation` response header (RFC 9745, published March 2025) on affected responses.",
+      "to": "should-announce-with-the-deprecation-header",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: set the `Deprecation` header (RFC 9745, March 2025) on affected responses, with its value format.",
+        "pin": "4329ac02bda2d4467715e7fb36d6cdd556bac699a5ae68dcf95eaf46cc7fa15c"
+      }
+    },
+    {
+      "sentence": "**Set a removal date** — add the `Sunset` header (RFC 8594) with the HTTP-date after which behavior is undefined.",
+      "to": "should-set-a-removal-date-with-sunset",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: add the `Sunset` header (RFC 8594) with the HTTP-date after which behavior is undefined.",
+        "pin": "d9fc36325ce4030dc4af788ed34f22409dbdc4b8672d85782274a980f7eaa3f4"
+      }
+    },
+    {
+      "sentence": "**Document** — record the change, replacement, and dates in a public changelog and the OpenAPI/spec (`deprecated: true`).",
+      "to": "should-document-the-deprecation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: record the change, replacement and dates in a public changelog and the spec (`deprecated: true`).",
+        "pin": "79be95c9abeccb0da97b8e8e7b05ce8dc56df8b9e1e6755af04326904f597779"
+      }
+    },
+    {
+      "sentence": "**Honor a migration window** — give consumers a published, generous window before removal; do not shorten it after announcement.",
+      "to": "should-honor-a-migration-window",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and SHOULD NOT: a published, generous window before removal, not shortened after announcement.",
+        "pin": "1107a6b01799b5c975d1d778b3ec6e06494cb0b1751e8f3a673782139af1fe50"
+      }
+    },
+    {
+      "sentence": "Per the observable-behavior-contract guideline (Hyrum's Law), assume consumers depend on *every* observable detail — undocumented field order, error text, timing — so changing those can break someone even when the spec did not.",
+      "to": "should-assume-consumers-depend-on-every-observable-detail",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD with the Hyrum's Law citation, the examples and the reason that such changes can break someone even when the spec did not.",
+        "pin": "8532f473f8ebae362c15c8b209dddaa36af0b6e08b8672018ce4b85b474d4e40"
+      }
+    }
+  ],
+  "obsolete": []
+}

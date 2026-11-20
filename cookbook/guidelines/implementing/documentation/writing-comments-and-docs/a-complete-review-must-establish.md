@@ -1,0 +1,28 @@
+
+- `should-comment-the-why`: whether comments say what the code cannot
+- `should-not-restate-the-line`: whether any comment restates the line below it
+- `should-try-a-clearer-name-first`: whether explanatory comments remain where a clearer name or smaller function would do
+- `should-name-the-source-of-surprising-values`: whether every surprising value names its source
+- `should-update-docs-in-the-same-change`: whether the docs describing changed behavior were updated in the same change
+- `should-search-docs-for-changed-names`: whether the docs still use any name the change altered
+- `should-describe-new-public-behavior`: whether new public behavior is described where users will look
+- `should-remove-docs-of-removed-behavior`: whether descriptions of removed behavior are gone
+- `should-give-both-readers-exact-specifics`: whether docs give exact names, real commands, real paths and when each rule applies
+- `should-lead-with-the-point`: whether each doc leads with its point
+- `should-prefer-concrete-examples`: whether examples are concrete, use real values and are short enough to be correct
+- `should-keep-one-canonical-term`: whether each concept keeps one term throughout
+- `should-say-what-is-true-now`: whether the prose says what is true now without history narration
+- `should-prefer-specifics`: whether the prose names specifics instead of abstractions
+- `must-not-make-up-sources`: whether any statistic, source or quote is made up
+- `should-cut-throat-clearing`: whether the prose is free of throat-clearing openings and summary closings
+- `should-use-short-ordinary-words`: whether the prose uses short ordinary words without filler or stacked hedges
+- `should-not-swap-synonyms-to-disguise-a-tic`: whether any vague word was swapped for a synonym rather than rewritten
+- `should-prefer-verbs-over-nominalizations`: whether verbs are used over nominalizations
+- `should-use-active-voice-by-default`: whether voice is active except where the actor does not matter
+- `should-hedge-only-real-uncertainty`: whether each hedge marks a stated, real uncertainty
+- `should-vary-rhythm-by-content`: whether rhythm follows the content rather than a pattern
+- `should-make-punctuation-do-a-job`: whether punctuation is chosen for its job rather than dashes or run-ons
+- `should-keep-one-tense-and-register`: whether each passage keeps one tense and register
+- `should-state-the-premise`: whether each claim states its premise or is weakened to what is supported
+- `must-use-visible-characters-only`: whether the text holds any look-alike or invisible Unicode characters
+- `should-run-humanize-where-available`: whether the humanize skill was run where available, or the rules applied by hand

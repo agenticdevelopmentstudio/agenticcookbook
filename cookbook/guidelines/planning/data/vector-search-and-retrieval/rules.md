@@ -1,0 +1,22 @@
+
+- **should-default-to-pgvector**: For most applications, retrieval **SHOULD** live in the primary relational datastore via the `pgvector` extension rather than a separate vector service.
+- **should-adopt-a-dedicated-vector-database-only-when-forced**: A separate dedicated vector database (e.g., a managed ANN service) **SHOULD** be adopted only when measured scale or latency forces it — typically tens of millions of vectors, high write throughput, or strict p99 targets pgvector cannot meet.
+- **should-treat-the-vector-database-migration-as-reversible**: You SHOULD treat that migration to a dedicated vector database as a reversible, scale-triggered decision, not a default.
+- **must-pin-the-embedding-model-and-dimension**: You **MUST** pin the embedding model and its output dimension as part of the schema. Mixing vectors from different models or dimensions in one column produces meaningless distances.
+- **should-start-with-pgvector-and-hybrid-retrieval**: **SHOULD** start with pgvector + hybrid retrieval and only adopt a dedicated vector database when an eval or load test demonstrates pgvector cannot meet the target.
+- **should-default-to-hnsw**: You SHOULD use an **HNSW** index as the default.
+- **should-raise-ef-search-for-recall**: You SHOULD raise `ef_search` to trade latency for recall.
+- **should-verify-index-defaults-against-the-pinned-version**: You SHOULD verify current defaults against the pinned pgvector version before relying on them.
+- **should-match-the-distance-operator-to-the-model**: You SHOULD pick the distance operator that matches how the embedding model was trained — cosine (`<=>`) for most normalized text embeddings, inner product (`<#>`) or L2 (`<->`) when the model specifies it.
+- **must-use-one-distance-operator-for-index-and-query**: The distance operator **MUST** be consistent between indexing and querying.
+- **may-use-ivfflat**: IVFFlat **MAY** be used when build time and memory dominate and a slight recall hit is acceptable.
+- **should-use-hybrid-retrieval**: Teams **SHOULD** use **hybrid retrieval**, not pure approximate-nearest-neighbor search: dense vector similarity, lexical keyword/BM25 search, fusion of the two ranked lists, and optional reranking, as the steps below set out.
+- **should-rerank-only-top-candidates-and-cache**: **SHOULD** rerank only the top ~20–50 candidates and cache results for repeated queries.
+- **should-measure-fusion-weights-and-reranking**: The dense-vs-lexical balance is workload-dependent and contested — you SHOULD treat fusion weights and whether to rerank as things to measure on your own eval set, not as fixed constants.
+- **should-chunk-before-embedding**: You SHOULD chunk documents before embedding; chunk size and overlap directly determine retrieval quality.
+- **should-tune-the-chunk-window-against-an-eval-set**: There is no universal best size — you SHOULD start with a moderate window with small overlap and tune against a retrieval eval set.
+- **must-store-a-source-reference-with-each-chunk**: **MUST** store, with each chunk, a stable reference back to its source document and position so retrieved context is attributable and citable.
+- **should-chunk-on-semantic-boundaries**: You SHOULD prefer chunking on semantic/structural boundaries (headings, paragraphs, code blocks) over fixed character counts where the source structure allows it.
+- **should-store-filterable-attributes-as-columns**: You SHOULD store filterable attributes (tenant, source, document type, timestamp, access scope) as ordinary columns alongside the vector, and filter on them in the same query.
+- **must-apply-tenant-filters-at-query-time**: For multi-tenant or access-controlled data, the tenant/permission filter **MUST** be applied at query time — never rely on the LLM to ignore retrieved context it should not see (fail-fast, security).
+- **must-maintain-a-retrieval-eval-set**: **MUST** maintain a labeled retrieval eval set and measure recall/precision before and after changes to chunking, indexing, or fusion.

@@ -1,0 +1,96 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "When specifying spacing, type sizes, or target sizes in an ingredient's Appearance section, defer to the platform HIG.",
+      "to": "should-defer-to-hig-in-appearance-sections",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deferring to the platform HIG is kept at SHOULD with its scope (spacing, type sizes, target sizes in an ingredient's Appearance section).",
+        "pin": "ddecfad98c22f56650875f4ea928671060b486f22aa43a912c972b9b350a505c"
+      }
+    },
+    {
+      "sentence": "If the platform prescribes a value, use it.",
+      "to": "should-use-the-prescribed-value",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using the platform-prescribed value is kept at SHOULD, and must-use-platform-prescribed-values carries the same requirement at MUST.",
+        "pin": "2b56516205c053784939d798f3f40cfe08e8517190c1c25eda9bbc1c49718172"
+      }
+    },
+    {
+      "sentence": "When the HIG has no opinion, specify a cross-platform default and note it as such.",
+      "to": "should-note-cross-platform-defaults",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its 'HIG has no opinion' condition and both actions (specify a cross-platform default, note it as such).",
+        "pin": "b19d39273207b040e4d54566bf6556742bebdd7ebcabb6d84da60c67263ee33d"
+      }
+    },
+    {
+      "sentence": "In the Platform Notes section of an ingredient, list any platform-specific overrides with links to the relevant HIG section.",
+      "to": "should-list-platform-overrides-in-platform-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Platform Notes scope and the links to the relevant HIG section.",
+        "pin": "3e0cad304995018293d4be80dcaee5d57a8a8628b8c0fe71e4a651b784f53f5a"
+      }
+    },
+    {
+      "sentence": "When the platform HIG prescribes a specific value (spacing, type size, target size),",
+      "to": "must-use-platform-prescribed-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The condition (HIG prescribes a specific value) and all three value kinds are kept verbatim.",
+        "pin": "0fe265243a4324e170bfa46f98b0d25853f2d4579494db96bb60fce1fe3813cd"
+      }
+    },
+    {
+      "sentence": "the platform value MUST be used.",
+      "to": "must-use-platform-prescribed-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'the platform value MUST be used' is kept verbatim at MUST.",
+        "pin": "d8e21dd4b824706c7c3cbc28b103bdee2253d5a4ac8cb8c60babba16185b7e52"
+      }
+    },
+    {
+      "sentence": "Use the defaults below to fill gaps or establish a cross-platform",
+      "to": "should-use-defaults-to-fill-gaps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using the defaults to fill gaps or set a cross-platform baseline is kept at SHOULD.",
+        "pin": "04fb8c41e31cf0b0ac698a2feaadb1a0b8aa516a0df4cf8bffca08d53ff05fd0"
+      }
+    },
+    {
+      "sentence": "baseline.",
+      "to": "should-use-defaults-to-fill-gaps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'baseline' is kept verbatim as the end of the rule.",
+        "pin": "998aedd44bf63782cd14d5aa132f7025d17f2a21fbce7641d678385f0df4a46c"
+      }
+    },
+    {
+      "sentence": "When writing UI ingredients or recipes, refer to these canonical platform design sources.",
+      "to": "should-refer-to-canonical-sources-when-writing-ui",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Referring to the canonical sources when writing UI ingredients or recipes is kept at SHOULD with its scope.",
+        "pin": "ea070d8d7232d6cfbd22a0572fad614f5292a29e84c7af0add5bf4649e3ec228"
+      }
+    }
+  ],
+  "obsolete": []
+}

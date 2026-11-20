@@ -1,0 +1,199 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Set `annotations` to describe tool behavior so hosts can apply policy.",
+      "to": "should-set-annotations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason: annotations describe tool behavior so hosts can apply policy.",
+        "pin": "fede6d22d2e273c995f9bb1815f8b7fe6634b744565f58f793a67f5f10c0eae5"
+      }
+    },
+    {
+      "sentence": "Pick by purpose, not convenience.",
+      "to": "should-pick-primitives-by-purpose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: pick each primitive by purpose, not convenience.",
+        "pin": "46be112e27e0743fc791274eaed4913979653e03a0a478b135698063d1d9e6a9"
+      }
+    },
+    {
+      "sentence": "Do not expose read-only context as a tool merely because tools are easier to wire up; that puts routing load on the model and invites accidental invocation.",
+      "to": "should-not-expose-read-only-context-as-tools",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the condition (merely because tools are easier) and both reasons (routing load, accidental invocation).",
+        "pin": "5301c0a4daa214fe5a2b94904656aa5647718b0aef5de1af9eeba30f330cb79c"
+      }
+    },
+    {
+      "sentence": "The spec distinguishes two error channels — use both correctly (fail-fast at the right layer).",
+      "to": "should-use-both-error-channels",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: use both error channels correctly, with the fail-fast-at-the-right-layer reason.",
+        "pin": "b516ca49dbdd197f41fdc05ed1bf2d5cbd679e7b6394f8debc2e3a22be7b48fe"
+      }
+    },
+    {
+      "sentence": "**Tool execution errors** (API failure, validation, business-logic): return them **in the result** with `isError: true` and an actionable message.",
+      "to": "should-return-tool-errors-in-the-result",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the error kinds, in-result isError: true, the actionable message and the self-correct note.",
+        "pin": "f32671edcd5f82418e03f644df286647d40fae7b14dd7096f2e00f43497d1016"
+      }
+    },
+    {
+      "sentence": "**Protocol errors** (unknown tool, malformed request): return a JSON-RPC `error`.",
+      "to": "should-return-protocol-errors-as-json-rpc",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the error kinds and JSON-RPC error; the model-cannot-fix note is kept.",
+        "pin": "a9beb3a58efa872f67cf7a21d5e2e09ea1da1d866bf6dde425f08c0b97a465aa"
+      }
+    },
+    {
+      "sentence": "Do not throw a protocol error for a recoverable tool failure — the model loses the signal it needs to retry.",
+      "to": "should-not-throw-protocol-errors-for-tool-failures",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the recoverable-failure scope and the lost-retry-signal reason.",
+        "pin": "94d1601177adb1214fcabadcbed9fc01fb7a10119efeec249c36270aeea5ea7f"
+      }
+    },
+    {
+      "sentence": "**Pin to a dated spec revision.** Default to the stable **2025-11-25** revision unless the host requires an older one.",
+      "to": [
+        "should-pin-a-dated-spec-revision",
+        "should-default-to-the-stable-revision"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both parts kept at SHOULD across two rules: pin a dated revision; default to 2025-11-25 unless the host requires an older one.",
+        "pin": "3411b35c0e766a857419bfc82d85ec28759937dd3b4d4ff9d4cd1d1bf2ed22b5"
+      }
+    },
+    {
+      "sentence": "Negotiate the revision during initialization rather than hard-coding it.",
+      "to": "should-negotiate-the-revision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: negotiate the revision during initialization rather than hard-coding it.",
+        "pin": "4ecf098207e2bb488d35c2d410b92fd3864bcff967b53192cc2d37c169ceec61"
+      }
+    },
+    {
+      "sentence": "Treat any release-candidate or draft revision as a forecast and gate it behind explicit opt-in.",
+      "to": "should-gate-draft-revisions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: release-candidate and draft revisions treated as forecasts and gated behind explicit opt-in.",
+        "pin": "8448c6aa8057411cf11e562c7037c7d1cdf5d9081e84155d81a5facb3ee8c871"
+      }
+    },
+    {
+      "sentence": "Assume a human-in-the-loop may gate invocations; write descriptions and errors that make consent decisions clear.",
+      "to": "should-write-for-consent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD: assume human-in-the-loop gating, and write descriptions and errors that make consent clear.",
+        "pin": "d3509679fff191ff5e1179f8745da21fb44813942a96617c46ba7729e1ab7a08"
+      }
+    },
+    {
+      "sentence": "For backward compatibility, also serialize the structured result as JSON in a `text` content block.",
+      "to": "should-also-return-text-json",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the backward-compatibility reason: also serialize structured results as JSON in a text block.",
+        "pin": "3f363bc98ec772e5cab44c15f490a8e8d4610b2abf4df4de0c14313faed63f76"
+      }
+    },
+    {
+      "sentence": "Sanitize outputs and never leak secrets or internal identifiers the host should not see.",
+      "to": "must-not-leak-secrets-in-outputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Sanitizing kept at SHOULD and never-leak strengthened to MUST NOT, with the secrets and internal-identifiers scope.",
+        "pin": "dabdac374d741dcd1dbb39a2d0e302de80a0d7ebbc6a0c366b73a10d543273de"
+      }
+    },
+    {
+      "sentence": "Keep them unique within the server.",
+      "to": "should-keep-tool-names-unique",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: tool names unique within the server.",
+        "pin": "52d2f5dd3ef23a192345041bf7e1b51defb55b6e13d9c319d4c7ba0bb792616a"
+      }
+    },
+    {
+      "sentence": "Use the optional `title` for a human-readable display label; keep `name` stable as the machine identifier.",
+      "to": "should-use-title-for-display",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both halves: title as the display label, name stable as the machine identifier.",
+        "pin": "9abf38f4d04fdd888e4bc898eff80605f8f478c74ded1ba54271d44d903e852e"
+      }
+    },
+    {
+      "sentence": "Define a strict `inputSchema` (JSON Schema, defaults to 2020-12).",
+      "to": "should-define-a-strict-input-schema",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: strict inputSchema, JSON Schema defaulting to 2020-12.",
+        "pin": "8e7be6f5d34e2cc82257b76b20cdd01796130d66df6861db5c61171a7a8a4403"
+      }
+    },
+    {
+      "sentence": "For zero-parameter tools, use `{ \"type\": \"object\", \"additionalProperties\": false }`.",
+      "to": "should-close-zero-parameter-schemas",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the zero-parameter condition and the exact closed schema.",
+        "pin": "3968ed11dd4ded01aad34817918faeed57963e67af893a4632a3484298d7431f"
+      }
+    },
+    {
+      "sentence": "Keep the tool surface small.",
+      "to": "should-keep-the-tool-surface-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: keep the tool surface small.",
+        "pin": "49c063d1a2ae4eb7f8d9bf6006f9bc2102de7beaa30c25a533082cc0fe197bb5"
+      }
+    },
+    {
+      "sentence": "Many overlapping tools degrade routing accuracy; consolidate or parameterize instead.",
+      "to": "should-keep-the-tool-surface-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept in the same rule: overlapping tools degrade routing accuracy, so consolidate or parameterize.",
+        "pin": "b3c4d02418c855e624f7374aab956a92bad3f37cec0a678c196705431b9c10f5"
+      }
+    }
+  ],
+  "obsolete": []
+}

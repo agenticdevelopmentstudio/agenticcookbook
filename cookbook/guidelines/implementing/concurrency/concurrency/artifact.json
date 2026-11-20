@@ -4,11 +4,11 @@
     "id": "6302654b-8200-4e03-862d-4734d4960d19",
     "title": "No blocking the main thread",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
-    "modified": "2026-10-04",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,21 +32,24 @@
       "https://developer.android.com/topic/libraries/architecture/coroutines",
       "https://developer.android.com/kotlin/flow/stateflow-and-sharedflow"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "concurrency",
       "performance-optimization"
     ]
   },
-  "synced": "022f70caff5f54ca",
+  "synced": "2c6e9ae1fcba3597",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "c", "heading": "C#"},
-    {"part": "windows", "heading": "Windows"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "platform-async-primitives", "heading": "Platform Concurrency Primitives", "role": "how-to"},
+    {"part": "kotlin", "heading": "Kotlin", "role": "examples"},
+    {"part": "c", "heading": "C#", "role": "examples"},
+    {"part": "windows", "heading": "Windows", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,91 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use snapshots for stable, structured output; lean on explicit assertions everywhere logic matters.",
+      "to": [
+        "should-reserve-snapshots-for-stable-verbose-output",
+        "should-assert-logic-explicitly"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept at SHOULD as sub-bullets of the two rules: snapshots for stable, structured output, and explicit assertions everywhere logic matters.",
+        "pin": "c572d9f9be5c392fed0d5c3338bfb6fb51fa6a767dd91c33ed3d524d57729293"
+      }
+    },
+    {
+      "sentence": "A snapshot **SHOULD** cover one concern — a single component's rendered output, one function's serialized result — not an entire page or aggregate object graph.",
+      "to": "should-cover-one-concern"
+    },
+    {
+      "sentence": "You **SHOULD** prefer many small inline snapshots (`toMatchInlineSnapshot`, inline approval) over one large external file.",
+      "to": "should-prefer-small-inline-snapshots"
+    },
+    {
+      "sentence": "You **SHOULD NOT** snapshot output you cannot reason about line by line.",
+      "to": "should-not-snapshot-unreasonable-output"
+    },
+    {
+      "sentence": "You **MUST** strip or normalize non-deterministic values before serializing: timestamps, dates, durations, random IDs/UUIDs, hostnames, absolute paths, and ports.",
+      "to": "must-normalize-non-deterministic-values"
+    },
+    {
+      "sentence": "You **MUST** stabilize ordering of sets, maps, and query results — sort before snapshotting rather than depending on iteration order.",
+      "to": "must-stabilize-ordering"
+    },
+    {
+      "sentence": "You **SHOULD** use property matchers for unavoidable dynamics (Jest/Vitest `expect.any(...)` in `toMatchSnapshot({ id: expect.any(String) })`; ApprovalTests scrubbers; `insta` filters) instead of regenerating the snapshot each run.",
+      "to": "should-use-property-matchers-for-dynamics"
+    },
+    {
+      "sentence": "You **SHOULD** assert specific values explicitly when the test verifies behavior or computation; a snapshot obscures *which* field mattered and why.",
+      "to": "should-assert-logic-explicitly"
+    },
+    {
+      "sentence": "You **SHOULD** reserve snapshots for output that is verbose, structurally stable, and tedious to assert by hand (serialized DOM, generated config, formatted reports).",
+      "to": "should-reserve-snapshots-for-stable-verbose-output"
+    },
+    {
+      "sentence": "You **SHOULD** delete obsolete snapshots promptly (`--ci` reports them); a stale snapshot is dead weight that misleads future readers (`design-for-deletion`).",
+      "to": "should-delete-obsolete-snapshots"
+    },
+    {
+      "sentence": "You **MUST** review every snapshot diff before accepting it.",
+      "to": "must-review-every-snapshot-diff"
+    },
+    {
+      "sentence": "Treat an unexpected diff as a potential bug, not a chore to clear.",
+      "to": "should-treat-unexpected-diff-as-bug",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: an unexpected diff is a potential bug, not a chore to clear.",
+        "pin": "3b7c7ea05a2dce0ba31b7d21f225c229de0f3c75181dda81ac37d95d90d5a0ed"
+      }
+    },
+    {
+      "sentence": "You **MUST NOT** reflexively run the update/accept-all command (`jest --updateSnapshot`/`-u`, `vitest -u`, Verify/ApprovalTests \"accept all\", `cargo insta accept`) to make a red suite green.",
+      "to": "must-not-reflexively-accept-all"
+    },
+    {
+      "sentence": "Update only after confirming each change is intended.",
+      "to": "should-update-only-after-confirming-intent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: update only after confirming each change is intended.",
+        "pin": "03ddca3ff6e50c61d60dba9e691d1cf9f9f77c682f890149058f2acc8f39b582"
+      }
+    },
+    {
+      "sentence": "CI **MUST** run snapshots in non-updating mode (e.g.",
+      "to": "must-run-ci-in-non-updating-mode"
+    },
+    {
+      "sentence": "You **SHOULD** review snapshot files in code review as carefully as source.",
+      "to": "should-review-snapshot-files-like-source"
+    }
+  ],
+  "obsolete": []
+}

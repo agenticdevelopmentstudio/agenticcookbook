@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Immutable assets** (versioned JS/CSS/images):",
+      "to": "should-cache-immutable-assets-for-a-year",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Lead-in kept with its scope (versioned JS/CSS/images) and its header value public, max-age=31536000, immutable, at SHOULD.",
+        "pin": "e27cb98187f7620a2b83cf8bc7d4b0e4f2efbc90caea975c173766812ca370d1"
+      }
+    },
+    {
+      "sentence": "**Dynamic but cacheable** (API responses):",
+      "to": "should-cache-dynamic-responses-privately",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Lead-in kept with its scope (API responses) and its header value private, max-age=60, at SHOULD.",
+        "pin": "5c4203ec50738d79840e9a3f3d6f7f300a6d76f0c5ced7b88714a2c52fafec38"
+      }
+    },
+    {
+      "sentence": "**MUST NOT cache** (sensitive data, mutations):",
+      "to": "must-not-cache-sensitive-data-or-mutations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT for both sensitive data and mutations, with Cache-Control: no-store.",
+        "pin": "0d6e2a508024ed7ac0bb47ba3df3e77c0a9b4c0d36a88e60d78f292fecc66885"
+      }
+    },
+    {
+      "sentence": "**Conditional requests** — use ETags to avoid re-downloading unchanged data:",
+      "to": "should-revalidate-with-etags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: conditional requests use ETags to avoid re-downloading unchanged data.",
+        "pin": "eeef97a193dde388f6a0d58628995853fa8bc847e2f74997d3a51b8a68d65c8d"
+      }
+    },
+    {
+      "sentence": "Stale-while-revalidate: serve cached data immediately, refresh in background",
+      "to": "should-stale-while-revalidate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for clients: serve cached data immediately and refresh in background.",
+        "pin": "ea38a5cbd464fe7c943ab00e64e55ba654013329074332632d671a06f6d10850"
+      }
+    }
+  ],
+  "obsolete": []
+}

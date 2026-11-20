@@ -1,0 +1,15 @@
+
+- **must-not-rely-on-deprecated-back-apis**: `Activity.onBackPressed()` and `Dialog.onBackPressed()` are deprecated; intercepting `KeyEvent.KEYCODE_BACK` is no longer supported. Code MUST NOT rely on either — official docs warn of "unexpected behavior in a future release."
+- **must-register-onbackpressedcallback**: Custom back logic MUST register an `OnBackPressedCallback` on the activity's `OnBackPressedDispatcher`, tied to a `LifecycleOwner` so it is removed automatically.
+- **should-prefer-androidx-back-apis**: Apps SHOULD prefer the AndroidX `androidx.activity` APIs over the platform `OnBackInvokedCallback` — AndroidX is backward compatible across versions and is the recommended path.
+- **should-use-platform-callback-only-without-androidx**: Apps SHOULD use the platform `OnBackInvokedCallback` directly ONLY when you have no AndroidX dependency.
+- **must-derive-isenabled-from-ui-state**: The callback's `isEnabled` MUST be derived from observable UI state (a `StateFlow` or Compose `State`), not toggled imperatively, so the system knows whether the app or the system handles Back.
+- **should-keep-callbacks-single-responsibility**: Callbacks SHOULD be kept single-responsibility: one callback per back-consuming UI state, ordered by registration. The most recently added enabled callback wins.
+- **may-override-back-flag-per-activity**: The `android:enableOnBackInvokedCallback` flag controls predictive back during migration. It is a per-`<application>` flag and MAY be overridden per `<activity>` for gradual rollout of multi-activity apps.
+- **should-enable-back-flag-for-system-animations**: Apps SHOULD set `android:enableOnBackInvokedCallback` `true` (or omit it where the default is on) to receive system animations.
+- **should-pin-back-behavior-to-targetsdk**: Apps SHOULD pin the exact behavior to your `targetSdk` and re-check the linked doc before shipping, and SHOULD NOT assume a fixed default across versions.
+- **should-animate-with-the-gesture**: For custom transitions (sheets, drawers, multi-step flows), guidance SHOULD animate with the gesture rather than snapping at release.
+- **should-use-predictivebackhandler-in-compose**: In Compose, apps SHOULD use `PredictiveBackHandler`, collecting the `Flow<BackEventCompat>` and reading `progress` (0f..1f), SHOULD commit the navigation when the flow completes, and SHOULD reset UI on `CancellationException` (gesture cancelled).
+- **should-implement-back-progress-callbacks-in-views**: In Views, apps SHOULD extend `OnBackPressedCallback` and implement `handleOnBackStarted` / `handleOnBackProgressed` / `handleOnBackCancelled` (API 34+) to animate, with `handleOnBackPressed` committing the result.
+- **should-use-observer-priority-only-for-side-effects**: Apps SHOULD use `PRIORITY_SYSTEM_NAVIGATION_OBSERVER` ONLY for non-consuming side effects.
+- **must-not-alter-navigation-from-observer**: A `PRIORITY_SYSTEM_NAVIGATION_OBSERVER` callback MUST NOT alter navigation.

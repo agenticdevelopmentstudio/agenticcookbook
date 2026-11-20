@@ -1,0 +1,18 @@
+
+- `should-make-reusable-composables-stateless`: whether each reusable composable is stateless
+- `must-hoist-to-lowest-common-ancestor`: whether every piece of state is hoisted to the lowest common ancestor that reads or writes it, no higher
+- `should-keep-screen-state-in-viewmodel`: whether screen-level and business state lives in a `ViewModel`
+- `may-keep-ui-element-state-in-composition`: whether UI element state kept in composition is needed by no other component
+- `should-use-remembersaveable-for-surviving-state`: whether state that should survive rotation or process death, outside a `ViewModel`, uses `rememberSaveable`
+- `must-make-saveable-values-serializable`: whether every `rememberSaveable` value is `Bundle`-serializable or has a custom `Saver`
+- `must-not-rely-on-remember-across-config-changes`: whether any code relies on `remember` across configuration changes
+- `must-expose-read-only-state`: whether every `ViewModel` exposes only read-only state
+- `should-keep-mutablestateflow-private`: whether the `MutableStateFlow` is private and exposed as its immutable upcast
+- `must-not-mutate-hoisted-state`: whether any composable mutates hoisted state directly
+- `should-collect-with-lifecycle`: whether `StateFlow` is collected with `collectAsStateWithLifecycle()` on Android
+- `should-confirm-lifecycle-compose-dependency`: whether the lifecycle-compose dependency is present
+- `should-model-screen-state-immutably`: whether screen state is a single immutable `data class` or `sealed interface` of cases
+- `should-pass-narrowest-parameters`: whether composables receive the narrowest parameters they need
+- `should-prefer-stable-parameter-types`: whether composable parameters are stable types
+- `should-mark-stability-only-when-contract-holds`: whether each stability annotation or immutable-collection choice matches a contract that genuinely holds
+- `should-treat-recomposition-as-performance-concern`: whether recomposition optimizations followed working code and a measurement

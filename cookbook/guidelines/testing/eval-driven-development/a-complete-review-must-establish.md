@@ -1,0 +1,20 @@
+
+- `should-treat-evals-as-test-suite`: every non-deterministic part of the system has evals serving as its test suite, or the code says why not
+- `must-use-deterministic-tests-for-fixed-output-logic`: every piece of logic with a fixed correct output is tested with ordinary deterministic tests
+- `should-not-wrap-deterministic-code-in-judge`: no deterministic code is graded by an LLM judge, or the code says why
+- `must-use-eval-harness-for-varying-outputs`: every agent decision, generated text, multi-step tool use or RAG answer under test goes through an eval harness
+- `should-isolate-deterministic-and-probabilistic-layers`: the deterministic and probabilistic layers are separated so each takes its cheaper test method, or the code says why not
+- `must-prefer-code-based-grader`: every criterion that can be expressed in code is graded by code, not a model
+- `should-grade-dimensions-with-separate-judges`: each quality dimension has its own isolated judge, or the code says why not
+- `should-use-different-judge-model`: the judge model differs from the model under test, or the code says why not
+- `must-not-gate-on-uncalibrated-judge`: no model-based grader gates anything before it is calibrated against a human-labeled gold set
+- `must-measure-judge-agreement-on-gold-set`: the judge's agreement with a human-labeled gold set was measured before it was trusted
+- `must-recalibrate-on-judge-change`: every change to the judge prompt, judge model or rubric was followed by re-calibration
+- `should-let-judge-abstain`: the judge is told to return "Unknown" or abstain when it lacks evidence, or the code says why not
+- `should-read-raw-transcripts-and-grades`: raw transcripts and grades are read periodically, or the code says why not
+- `must-report-multiple-runs`: every eval result is reported across multiple runs of the same input
+- `should-distinguish-once-from-every-time`: results say whether they measure success at least once or every time, with the metric matching the reliability requirement, or the code says why not
+- `should-track-consistency-over-time`: the consistency metric is tracked over time, or the code says why not
+- `must-keep-held-out-test-set`: a held-out test set exists and was not used while iterating on prompts, rubrics or the judge
+- `should-separate-gold-set-from-held-out-set`: the calibration gold set and the held-out test set are distinct with no leakage, or the code says why not
+- `should-version-eval-datasets`: eval datasets are versioned alongside the code, or the code says why not

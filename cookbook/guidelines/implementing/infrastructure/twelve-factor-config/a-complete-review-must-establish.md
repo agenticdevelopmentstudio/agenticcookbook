@@ -1,0 +1,13 @@
+
+- `must-read-varying-config-from-environment`: whether every deploy-varying value is read from the environment or a runtime config service
+- `must-build-one-immutable-artifact`: whether one immutable artifact is promoted unchanged across environments
+- `must-not-commit-secrets`: whether any secret is committed to version control
+- `should-group-config-by-deploy`: whether config is grouped by deploy rather than named environment buckets in the repo
+- `must-fail-fast-on-missing-config`: whether each variable is read by name and startup fails on a missing or malformed required value
+- `should-keep-constants-in-code`: whether constants that never vary between deploys live in code
+- `should-provide-env-example`: whether a value-free `.env.example` lists every variable and the real `.env` stays out of git and images
+- `should-validate-config-once-at-boot`: whether config is validated once into a typed object the rest of the code reads
+- `should-inject-secrets-at-runtime`: whether secrets are injected at runtime from a managed store
+- `should-start-with-environment-injection`: whether a heavyweight secrets platform rests on a measured need
+- `should-treat-new-factor-revisions-as-forecasts`: whether the guidance relied on is the current published 12-Factor config factor
+- `should-consult-counsel`: whether regulatory obligations for credentials and personal data went to counsel

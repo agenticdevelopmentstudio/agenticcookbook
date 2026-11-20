@@ -1,0 +1,52 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**type-matches-query**: The index type **SHOULD** match how the column is queried, not default to B-tree reflexively:",
+      "to": [
+        "type-matches-query",
+        "choose-the-type-by-access-pattern"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Matching index type to how the column is queried, not B-tree by reflex, is kept at SHOULD; the type table it introduced is carried whole by choose-the-type-by-access-pattern.",
+        "pin": "4a096c6f0f377164c254a9cff700722339dd9e3333d57404fa51dac05ff9b2cb"
+      }
+    },
+    {
+      "sentence": "The author **SHOULD** measure write impact before adding one, and **SHOULD** prefer an expression index on a single extracted scalar key when that is all queries need.",
+      "to": [
+        "jsonb-write-cost",
+        "jsonb-scalar-expression-index"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs are kept: measure GIN write impact before adding one, and prefer an expression index on a single extracted scalar key when that is all queries need.",
+        "pin": "7afa68d43ade71b992f19dd869d9b64ab59705d4fe7cb853d61357be44826355"
+      }
+    },
+    {
+      "sentence": "Examples below assume PostgreSQL 16/17; pin behavior to your server's version.",
+      "to": "pin-to-server-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The PostgreSQL 16/17 assumption is kept and pinning behavior to the server's version is kept at SHOULD.",
+        "pin": "43e37c18310fcfdfdd537980624c339a91b09e790ceb6cd8f4c54d0702ff1682"
+      }
+    },
+    {
+      "sentence": "**measured-need**: Specialized strategies — BRIN on huge append-only tables, table partitioning, custom operator classes — are adopt-only-when-a-concrete-measured-need-justifies-it, not defaults (YAGNI; make-it-work, make-it-right, make-it-fast).",
+      "to": "measured-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Adopting BRIN, partitioning and custom operator classes only on a concrete measured need, not as defaults, is kept at SHOULD with all three examples and the YAGNI reasons.",
+        "pin": "82b06c06a0443459bf0f838a9a11513a883fb50c75475baecaf9729fcda112f7"
+      }
+    }
+  ],
+  "obsolete": []
+}

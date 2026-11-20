@@ -1,0 +1,19 @@
+
+- **should-publish-native-arm64**: Apps targeting Windows on ARM **SHOULD** publish a native `win-arm64` build. An `AnyCPU` or `win-x64` binary runs only under x64 emulation, with measurably slower startup, sluggish UI, and higher power draw (see the ARM overview reference).
+- **must-not-ship-on-x64-emulation**: Builds **MUST NOT** rely on x64 emulation as the shipping plan for ARM hardware when native ARM64 is achievable; emulation is a compatibility fallback, not a target.
+- **should-ship-multi-arch**: Distribution **SHOULD** ship multi-arch (both `win-x64` and `win-arm64`) so one artifact set covers all Windows hardware — MSIX bundles or per-RID installers selected by the host architecture.
+- **must-have-arm64-native-dependencies**: Every native dependency (C/C++ runtimes, P/Invoke targets, NuGet packages with native assets) **MUST** provide an ARM64 variant; a single x64-only native dependency forces the whole process into emulation.
+- **should-audit-runtimes-folders**: The `runtimes/` folders SHOULD be audited before shipping, so no x64-only native dependency forces the process into emulation.
+- **may-use-arm64ec-for-migration**: Arm64EC **MAY** be used for incremental migration of a large native codebase, letting ARM64 and emulated x64 code coexist in one process while modules are ported.
+- **should-mark-arm64ec-transitional**: Arm64EC use SHOULD be marked as a transitional state, not an end goal.
+- **should-adopt-aot-only-on-measured-need**: Teams SHOULD adopt AOT and trimming ONLY when a concrete measurement justifies the added constraints (faster cold start, smaller download, no-runtime self-contained deploy).
+- **should-not-enable-aot-by-default**: Teams **SHOULD NOT** enable Native AOT or aggressive trimming by default. First make it work and correct; introduce these only after profiling shows startup, size, or deployment is a real bottleneck.
+- **must-record-baseline-metric**: Before enabling, the team **MUST** record the baseline metric being improved (e.g., cold-start ms, package MB) and re-measure after, so the constraint is paid for by a demonstrated gain.
+- **must-verify-reflection-and-codegen-paths**: Reflection-heavy and dynamic-codegen paths **MUST** be verified: trimming and AOT remove unreferenced code and forbid runtime IL generation, breaking unguarded reflection, runtime serializers, and expression compilation.
+- **should-use-source-generators-or-aot-safe-apis**: Reflection-heavy and dynamic-codegen paths SHOULD use source generators or AOT-safe APIs instead.
+- **must-check-cswinrt-interop**: WinRT/CsWinRT interop **MUST** be checked for AOT/trim safety. CsWinRT supplies source-generated vtables and AOT-safe binding (e.g. the `WinRT.GeneratedBindableCustomProperty` attribute) — but every dependent library that touches WinRT interop **MUST** itself be built against an AOT-aware CsWinRT version, or the app is not AOT-compatible (see CsWinRT `aot-trimming.md`).
+- **must-confirm-trim-compatible-dependencies**: Each third-party dependency **MUST** be confirmed trim-compatible (annotated with `IsTrimmable`/feature switches). Trim warnings **MUST NOT** be suppressed blindly; an unverified library can be silently trimmed and fail only at runtime.
+- **may-use-readytorun**: ReadyToRun (R2R) **MAY** be a lower-risk middle ground when only startup matters: it pre-JITs without AOT's full trimming constraints.
+- **should-prefer-readytorun-for-startup-only**: ReadyToRun SHOULD be preferred when the measured need is startup latency alone.
+- **must-test-aot-per-rid**: AOT/trimming builds **MUST** be tested per-RID, including `win-arm64`, in CI — a build that passes trim analysis on x64 can still fail at runtime on ARM64.
+- **should-pin-and-reverify-on-upgrade**: Teams SHOULD pin to the .NET and CsWinRT versions they build against and re-verify AOT/trim compatibility on each upgrade rather than assuming prior results hold.

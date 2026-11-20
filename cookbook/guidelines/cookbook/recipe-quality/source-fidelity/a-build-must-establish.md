@@ -1,0 +1,18 @@
+
+- `must-trace-requirements-to-source`: every behavioral requirement traces to a specific code path, API response or test case
+- `must-not-invent-requirements`: no requirement covers behavior the source does not implement
+- `should-note-indirect-evidence-source`: each indirectly traced requirement notes its evidence source, or the recipe says why not
+- `must-mark-partially-observable-requirements`: every partially observable requirement is marked `NEEDS REVIEW` with what cannot be confirmed and why
+- `must-not-fabricate-unimplemented-concerns`: no requirement is fabricated for a concern the source does not support
+- `must-mark-unimplemented-sections`: every unimplemented section carries `NEEDS REVIEW: Not implemented in source. Behavior undefined.`
+- `must-not-mark-implemented-behavior-needs-review`: no `NEEDS REVIEW` marker sits on implemented, observable behavior
+- `must-document-workarounds-and-quirks`: every workaround, hack and surprising behavior is documented in Design Decisions or inline notes
+- `must-not-smooth-over-quirks`: every quirk is described by its actual behavior
+- `must-document-unusual-handling`: every unusual or non-obvious handling is a requirement or a noted deviation
+- `should-note-behavior-affecting-technical-debt`: behavior-affecting technical debt is noted in Design Decisions, or the recipe says why not
+- `must-not-treat-behavior-affecting-debt-as-optional`: all technical debt that affects how implementations must behave is documented
+- `must-document-actual-error-handling`: the recipe documents the source's actual error handling, swallowed or ignored errors included
+- `must-not-claim-unattempted-error-handling`: no requirement claims error handling the source never attempts
+- `must-describe-code-as-it-is`: the recipe describes the code as it is
+- `must-separate-aspirational-behavior`: aspirational behavior appears only in a clearly separate "Recommended Improvements" section
+- `must-not-derive-requirements-from-an-ideal`: no requirement comes from an ideal component rather than the code

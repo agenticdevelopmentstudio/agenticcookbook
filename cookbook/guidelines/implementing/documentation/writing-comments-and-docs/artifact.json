@@ -4,11 +4,11 @@
     "id": "8238bdf2-432b-4c34-9050-742a1f16d107",
     "title": "Writing comments and docs",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,21 +28,22 @@
       "da56ab62-98ad-4f52-b972-3ebfda5b1718"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "code-review"
     ]
   },
-  "synced": "b55cbb3f98010115",
+  "synced": "9276998dc2d375e0",
   "parts": [
     {"part": "intro"},
-    {"part": "comment-the-why-not-the-what", "heading": "Comment the why, not the what"},
-    {"part": "update-docs-in-the-same-change", "heading": "Update docs in the same change"},
-    {"part": "write-for-the-ai-and-human-reader", "heading": "Write for the AI and human reader"},
-    {"part": "plain-language-rules", "heading": "Plain-language rules"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

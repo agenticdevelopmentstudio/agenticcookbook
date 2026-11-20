@@ -1,5 +1,5 @@
 
-Conflict tests require two databases representing two peers. Apply divergent changes to each, then merge and assert the outcome matches the defined resolution strategy.
+Last-write-wins, across two peers:
 
 ```python
 def test_last_write_wins(peer_a, peer_b):
@@ -14,9 +14,4 @@ def test_last_write_wins(peer_a, peer_b):
     result = peer_b.execute("SELECT title FROM tasks WHERE id = 't1'").fetchone()
     assert result[0] == 'B title'  # last-write-wins: B's later timestamp survives
 ```
-
-Test all defined conflict cases:
-- Update vs update (same field, different values)
-- Update vs delete (one peer deletes while another updates)
-- Insert vs insert (duplicate IDs from offline creation)
 

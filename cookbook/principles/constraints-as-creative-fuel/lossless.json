@@ -1,0 +1,56 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Self-imposed constraints outperform externally-imposed ones: always offer the constraint as a",
+      "to": "must-offer-constraints-as-provocations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-offer-constraints-as-provocations keeps the reason (self-imposed outperform externally-imposed) and 'always offer the constraint as a provocation' at MUST.",
+        "pin": "a364b89b64a7f196b03bf6ef627f1d7b7f8a846635be46654965df9a7b62360e"
+      }
+    },
+    {
+      "sentence": "provocation (\"What if you could only use three materials?\") and let the user choose whether to",
+      "to": "must-offer-constraints-as-provocations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-offer-constraints-as-provocations keeps the three-materials example and the user's choice over the constraint.",
+        "pin": "30c81da48d0971662169db230113920e838528bb98f330679475e1c99f3497cb"
+      }
+    },
+    {
+      "sentence": "accept, modify, or reject it",
+      "to": "must-offer-constraints-as-provocations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-offer-constraints-as-provocations keeps all three user options: accept, modify, or reject the constraint.",
+        "pin": "b9f222656732dc05d4d21b3d8943542b89db961fd3a71a153e9ed443812e89cb"
+      }
+    },
+    {
+      "sentence": "Invoke when the user is stuck or generating redundantly; a targeted constraint redirects energy",
+      "to": "should-invoke-constraint-when-stuck-or-redundant",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-invoke-constraint-when-stuck-or-redundant keeps both triggers (stuck, generating redundantly) at SHOULD and the reason that a targeted constraint redirects energy.",
+        "pin": "83fcb0552c7f145649fc8a25ae7b2f0234b95057357b3b8b0b96d2fc522e4251"
+      }
+    },
+    {
+      "sentence": "more effectively than asking for \"more ideas\"",
+      "to": "should-invoke-constraint-when-stuck-or-redundant",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-invoke-constraint-when-stuck-or-redundant keeps the comparison: a targeted constraint redirects energy more effectively than asking for \"more ideas\".",
+        "pin": "d641046a8cb724035f901600df78714afe03b01c3eccafbcafd569d8ba1d28be"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,13 @@
+
+- `must-read-varying-config-from-environment`: no deploy-varying value is hardcoded in source
+- `must-build-one-immutable-artifact`: the pipeline builds one artifact and promotes the same image to every environment
+- `must-not-commit-secrets`: no secret is present in version control
+- `should-group-config-by-deploy`: the repo holds no named per-environment config buckets, or the work says why not
+- `must-fail-fast-on-missing-config`: startup fails when a required value is missing or malformed, with no default for required secrets
+- `should-keep-constants-in-code`: deploy-invariant constants are defined in code, or the work says why not
+- `should-provide-env-example`: a committed `.env.example` without real values lists every variable read, and `.env` is git-ignored and excluded from images, or the work says why not
+- `should-validate-config-once-at-boot`: config is parsed once at boot into a typed object and nothing else reads the environment directly, or the work says why not
+- `should-inject-secrets-at-runtime`: the artifact holds no secrets and they arrive at runtime from a managed store, or the work says why not
+- `should-start-with-environment-injection`: secrets use environment injection unless a measured need for a heavier platform is recorded, or the work says why not
+- `should-treat-new-factor-revisions-as-forecasts`: the work pins to the published guidance at https://12factor.net/config, or says why not
+- `should-consult-counsel`: the work records counsel's view on regulatory obligations, or says why not

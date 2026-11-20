@@ -1,0 +1,19 @@
+
+- `must-ship-privacy-manifest`: whether the app ships a `PrivacyInfo.xcprivacy` declaring required-reason API usage and tracking/data collection
+- `should-treat-missing-manifest-as-build-breaking`: whether a missing or incomplete manifest breaks the build
+- `should-name-and-target-manifest`: whether the manifest is named exactly `PrivacyInfo.xcprivacy` and added to each target that needs it
+- `should-place-manifest-in-bundle`: whether each manifest is placed where it ships with its bundle
+- `must-declare-tracking-domains-when-tracking`: whether tracking domains are declared whenever `NSPrivacyTracking` is `true`
+- `must-declare-every-reached-category`: whether every reached category is declared with at least one valid, Apple-listed reason code
+- `must-not-declare-unused-categories`: whether any declared category is unused
+- `must-verify-manifest-before-pr`: whether the manifest was verified before a PR touching the listed calls or dependencies
+- `must-match-collected-data-types`: whether `NSPrivacyCollectedDataTypes` matches the data actually collected
+- `should-match-nutrition-label`: whether the collected data types agree with the App Store Connect privacy label
+- `must-not-declare-for-listed-sdks`: whether anything is declared on behalf of a listed SDK
+- `should-update-or-remove-sdk-lacking-manifest`: whether any listed SDK lacking a manifest remains pinned
+- `should-search-for-trigger-symbols`: whether source and dependencies were searched for trigger symbols
+- `must-cover-transitively-linked-binaries`: whether the reasons cover transitively linked binaries
+- `should-reconcile-privacy-report-before-submitting`: whether the Privacy Report was reconciled before submission
+- `should-keep-manifest-minimal-and-accurate`: whether the manifest is minimal and accurate
+- `should-recheck-docs-for-new-foundation-calls`: whether new low-level Foundation calls were re-checked against the official docs
+- `should-treat-unpublished-category-changes-as-forecast`: whether an unpublished category change is treated as a forecast

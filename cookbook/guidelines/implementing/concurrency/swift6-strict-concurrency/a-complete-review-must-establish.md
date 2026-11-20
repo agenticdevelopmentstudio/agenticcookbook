@@ -1,0 +1,24 @@
+
+- `must-make-boundary-crossing-types-sendable`: whether every type crossing an isolation boundary is `Sendable`
+- `should-prefer-immutable-value-types`: whether immutable value types are preferred
+- `may-declare-final-class-sendable`: whether each explicit `Sendable` class is `final` with only immutable `Sendable` state
+- `may-use-unchecked-sendable-when-guaranteed`: whether each `@unchecked Sendable` class has a safety guarantee (e.g. internal locking)
+- `must-justify-unchecked-sendable`: whether every `@unchecked Sendable` is justified in a comment
+- `must-not-expose-unsynchronized-mutable-state`: whether any `@unchecked Sendable` class exposes mutable state without synchronization
+- `should-wrap-mutable-shared-state-in-actor`: whether mutable shared state is wrapped in an `actor` rather than `@unchecked Sendable`
+- `should-use-actor-for-mutable-state`: whether mutable state is protected by an `actor`
+- `should-annotate-ui-types-with-mainactor`: whether UI types and view models touching UI state are `@MainActor`
+- `must-run-ui-updates-on-main-actor`: whether every UI update runs on the main actor
+- `must-not-access-isolated-state-from-nonisolated`: whether any `nonisolated` function accesses actor-isolated state synchronously
+- `should-adopt-incrementally-per-module`: whether strict concurrency is adopted module by module
+- `should-enable-checks-as-warnings-first`: whether checks ran as warnings in Swift 5 mode before a module moved to Swift 6 mode
+- `should-migrate-leaf-modules-first`: whether migration goes leaf modules first and the app target last
+- `should-flip-to-swift-6-only-when-warnings-clear`: whether each module flipped to Swift 6 mode had its warnings clear
+- `should-use-preconcurrency-as-temporary-shim`: whether each `@preconcurrency` is a temporary shim for a not-yet-migrated dependency
+- `should-not-flip-whole-workspace-at-once`: whether the whole workspace was flipped to Swift 6 mode at once
+- `should-confirm-target-settings-before-assuming`: whether code relying on Swift 6.2 behavior matches what the target enables
+- `should-leave-library-default-isolation-nonisolated`: whether every library leaves default isolation `nonisolated`
+- `should-enable-approachable-features-individually`: whether an existing project enabled the two approachable-concurrency features one at a time
+- `should-use-concurrent-to-opt-off-main-actor`: whether functions meant to run off the main actor use `@concurrent`
+- `should-treat-default-isolation-as-per-target-decision`: whether each default-isolation choice is per target and recorded where the target is configured
+- `should-build-migrated-modules-warning-free`: whether each migrated module builds in Swift 6 mode with zero concurrency warnings

@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "In these cases, the SwiftUI layer SHOULD be kept as thin as possible.",
+      "to": "keep-swiftui-layer-thin",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "keep-swiftui-layer-thin keeps the SHOULD and its scope, with 'in these cases' made explicit as 'where SwiftUI is required'.",
+        "pin": "ff1136645e0d19a0bca4a2c7500ba61fe2a5fe5a8634a8474bb8386adfaa09ef"
+      }
+    },
+    {
+      "sentence": "Pin the minimum deployment target and avoid deprecated APIs to reduce generation ambiguity.",
+      "to": "pin-target-and-avoid-deprecated-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "pin-target-and-avoid-deprecated-apis keeps pinning the minimum deployment target and avoiding deprecated APIs, its where-SwiftUI-is-required scope and the generation-ambiguity reason, at SHOULD.",
+        "pin": "64fcbcaa965240e97414b50928f183a7c66ac5fb9106fe5d94a5867a0af1a9df"
+      }
+    }
+  ],
+  "obsolete": []
+}

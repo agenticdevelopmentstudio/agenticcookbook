@@ -1,0 +1,23 @@
+
+- **must-move-forward-through-lifecycle**: A test MUST move forward through the lifecycle's five stages.
+- **must-not-stall-in-quarantine**: A test MUST NOT stall in quarantine.
+- **must-execute-quarantined-tests-every-run**: A quarantined test MUST still execute on every run and report results.
+- **should-detect-from-objective-signal**: Flakiness SHOULD be detected from an objective signal: a **flip rate** (pass/fail transitions on unchanged code) above an agreed threshold, or a test that passes only on retry.
+- **must-treat-retry-pass-as-flaky**: A test that needs a retry to pass MUST be treated as flaky, even when the retry hides the failure from the gate.
+- **may-use-retries-only-as-detection-signal**: Retries MAY be used as a detection signal but MUST NOT be used as a silent cure — a test that "passes on retry 3 of 3" is a flaky test, not a passing one.
+- **should-record-per-test-history**: The CI system SHOULD record per-test pass/fail history so flip rate is measurable rather than anecdotal.
+- **must-mark-quarantined-tests-explicitly**: A quarantined test MUST be marked explicitly (e.g., a `@quarantined` tag, category, or skip-from-gate annotation) — never commented out or deleted.
+- **must-exclude-quarantined-tests-from-gate**: The gating suite MUST exclude quarantined tests.
+- **must-run-quarantined-tests-in-non-gating-job**: A separate non-gating job MUST continue running quarantined tests on every build.
+- **must-record-owner-deadline-and-issue**: Each quarantined test MUST carry: an owner, a fix deadline, and a link to the tracking issue, recorded in the annotation or a tracked registry.
+- **must-make-quarantine-visible**: The quarantine bucket MUST be visible (a dashboard, report, or PR check summary).
+- **must-create-owned-work-item-on-quarantine**: Quarantining a test MUST create a tracked work item with a single named owner and a concrete deadline.
+- **should-set-short-deadline**: The deadline SHOULD be short (days, not quarters).
+- **must-decide-explicitly-on-lapsed-deadline**: When a deadline lapses, the team MUST decide explicitly: extend with justification, fix now, or delete the test.
+- **must-not-roll-over-silently**: A lapsed deadline MUST NOT silently roll over indefinitely.
+- **should-restore-only-after-fix-and-green-runs**: A test SHOULD return to the gating suite only after the root cause is fixed and it has run green enough times to clear the flip-rate threshold.
+- **must-not-restore-on-masked-failure**: Masking a failure with a retry, an increased timeout, or a loosened assertion is NOT a fix and MUST NOT qualify a test for restoration.
+- **should-delete-tests-for-unwarranted-behavior**: If the covered behavior no longer warrants a test, the test SHOULD be deleted outright rather than left quarantined.
+- **must-not-become-permanent-parking-lot**: Quarantine MUST NOT become a permanent parking lot — an unbounded, unowned quarantine list is a failure of this lifecycle.
+- **must-not-delete-flaky-test-to-go-green**: Deleting a flaky test to make CI green, without addressing whether the behavior still needs coverage, is silent loss of coverage and MUST NOT be done.
+- **must-not-use-global-auto-retry**: Globally enabling auto-retry across the whole suite to bury flakiness MUST NOT be used as a substitute for this lifecycle.

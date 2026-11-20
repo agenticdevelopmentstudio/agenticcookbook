@@ -1,0 +1,175 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Sign artifacts and attestations.",
+      "to": "should-sign-artifacts-and-attestations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps signing artifacts and attestations, with the keyless-signing and KMS guidance that followed; the unkeyed instruction is kept at SHOULD.",
+        "pin": "02af903403ffc28fd27401ad4b47649be97053a6ecf3cb6a96259bad8284a973"
+      }
+    },
+    {
+      "sentence": "Pin the toolchain and base images by digest so the build is reproducible enough to attest.",
+      "to": "should-pin-toolchain-by-digest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps pinning the toolchain and base images by digest, with the reproducible-enough-to-attest reason, at SHOULD.",
+        "pin": "7e9e3f08e24fbaefaa2764329e77dc36ab792b8a80eac62387515211a77bbf12"
+      }
+    },
+    {
+      "sentence": "### SLSA Build levels (v1.0, Build track L0–L3)",
+      "to": [
+        "slsa-build-levels",
+        "should-target-slsa-l2"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The slsa-build-levels part keeps the SLSA v1.0 single Build track with levels 0-3, and the L2 rule carries the levels' use.",
+        "pin": "b494b59d5d604cab4b4a6b0d01736dfa0dabcf6c6527ada476cc0c6c16fc7eca"
+      }
+    },
+    {
+      "sentence": "Target **L2** as a realistic baseline; reach for L3 where the threat model justifies it.",
+      "to": "should-target-slsa-l2",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps L2 as the realistic baseline and reaching for L3 where the threat model justifies it, at SHOULD.",
+        "pin": "2502b49ad3e66e5d09c56cb265c84aa0570b4aea42877e685c95cce97b831bdd"
+      }
+    },
+    {
+      "sentence": "Commit lockfiles; install with the frozen/locked flag in CI so resolution is deterministic.",
+      "to": "should-commit-lockfiles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps committing lockfiles and installing with the frozen/locked flag in CI for deterministic resolution, at SHOULD.",
+        "pin": "e20bb7dab0b34c98a0e7de54bf1d766e739c0694b5b63f5e40d1639c82697620"
+      }
+    },
+    {
+      "sentence": "Pin dependencies (and CI actions) by version, ideally by digest/hash, not floating tags.",
+      "to": "should-pin-dependencies-by-digest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps pinning dependencies and CI actions by version, ideally by digest/hash, not floating tags, at SHOULD.",
+        "pin": "fdea2a6909ff800142943a8a1234be24de095ee2a33be06bbe8147651ff77edb"
+      }
+    },
+    {
+      "sentence": "Keep scanning for known-vulnerable components — it answers a different question (*is this version exploitable?*) than provenance (*did this come from where I think?*).",
+      "to": "should-keep-scanning-for-vulnerable-components",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps continued scanning for known-vulnerable components and the reason it answers a different question than provenance, at SHOULD.",
+        "pin": "8b83439ac4d9fc45f9550e62f253b41c1acaa6143170bcf5bd665b504a7dd8fd"
+      }
+    },
+    {
+      "sentence": "Store SBOMs and attestations as immutable release evidence for incident response and audits.",
+      "to": "should-store-release-evidence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps storing SBOMs and attestations as immutable release evidence for incident response and audits, at SHOULD.",
+        "pin": "884f67450f0a3b3de946da63b684d3b0443240225f164ee64f8f5d7442b75413"
+      }
+    },
+    {
+      "sentence": "Do not ship a release build with no SBOM and no provenance.",
+      "to": "must-not-ship-without-sbom-and-provenance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on shipping a release build with no SBOM and no provenance, now at MUST NOT.",
+        "pin": "d02a39d40c73bdc95ec9712b7fca796637053b7a2d10f3d985b6fc751accd94b"
+      }
+    },
+    {
+      "sentence": "Do not treat an unsigned or unverifiable attestation as passing.",
+      "to": "must-not-pass-unverifiable-attestation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on treating an unsigned or unverifiable attestation as passing, now at MUST NOT.",
+        "pin": "120f724e2eaea7288966d60ef064be18d4d916d9afd974be14824e93fab9f867"
+      }
+    },
+    {
+      "sentence": "Do not generate provenance from a fully build-author-controlled step and claim hosted-build (L2) trust.",
+      "to": "must-not-claim-hosted-trust-for-author-controlled-provenance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the prohibition on claiming hosted-build (L2) trust for author-controlled provenance, now at MUST NOT.",
+        "pin": "d11d83277eeca126e8b55ffe36984d4f339f3b83deb0e600aa6e21b0b4dbedf8"
+      }
+    },
+    {
+      "sentence": "These are *drivers*, not engineering requirements; confirm current applicability for your jurisdiction and sector.",
+      "to": [
+        "regulatory-drivers-dated-treat-timelines-as-forecasts",
+        "should-confirm-regulatory-applicability"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The regulatory part keeps that these are drivers, not engineering requirements, and the rule keeps confirming current applicability for jurisdiction and sector at SHOULD.",
+        "pin": "0b35d8abf50d27d67844691b80a692985812b6d81b24ba8526e5081db660b6d5"
+      }
+    },
+    {
+      "sentence": "Every release build **MUST** produce, alongside the binary/package:",
+      "to": [
+        "must-produce-sbom",
+        "must-produce-signed-provenance"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both rules keep the MUST that every release build produce the item alongside the binary/package.",
+        "pin": "6fac54474275ed21ad83e66e86416c221100623c29f46a3f654ebbf2fa7586b0"
+      }
+    },
+    {
+      "sentence": "**An SBOM** (Software Bill of Materials) listing every component and version.",
+      "to": "must-produce-sbom",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the SBOM listing every component and version, at MUST.",
+        "pin": "156300b066cdff971b48ef861b02c04385aedf00f34d0da4563d8cca9fecdd87"
+      }
+    },
+    {
+      "sentence": "Use **CycloneDX** or **SPDX** — both are widely tooled; pick one and stay consistent.",
+      "to": "should-use-one-sbom-format",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps CycloneDX or SPDX, the widely-tooled reason, and pick-one-and-stay-consistent, at SHOULD.",
+        "pin": "4b1c2c3374d304e0072ca3c8afe713b5bf8ac6cdfcfb4da74cc103d8c785cd92"
+      }
+    },
+    {
+      "sentence": "**Signed build provenance** describing *what* built the artifact, *how*, and from *which* inputs (source commit, builder identity, parameters).",
+      "to": "must-produce-signed-provenance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps signed build provenance describing what, how and from which inputs, with the input examples, at MUST.",
+        "pin": "ca375b009fe161a8e5b1168dd2987450740e7062a769fa74d3cbf2a9850b517a"
+      }
+    }
+  ],
+  "obsolete": []
+}

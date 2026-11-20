@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Treat any newer factor revisions as forecasts until officially published, and pin to the current published guidance at https://12factor.net/config.",
+      "to": "should-treat-new-factor-revisions-as-forecasts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating newer factor revisions as forecasts until published, and pinning to the published guidance at 12factor.net/config, is kept at SHOULD with the URL.",
+        "pin": "e812e1f8e403c5b5023c987bf7f91c03c2b87df2a08696fe6f30047ec40f2189"
+      }
+    },
+    {
+      "sentence": "Provide a `.env.example` (committed, no real values) listing every variable the app reads; keep the real `.env` git-ignored and out of images.",
+      "to": "should-provide-env-example",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A committed .env.example with no real values listing every variable, and a git-ignored real .env kept out of images, is kept at SHOULD.",
+        "pin": "c19c8a6f769acbc2c2939d67de3ef7b55cb6a5de692284afb9cec9d147b3df99"
+      }
+    },
+    {
+      "sentence": "Validate and coerce config once at boot into a typed config object; the rest of the code reads that object, not `process.env`/`os.environ` directly.",
+      "to": "should-validate-config-once-at-boot",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validating and coercing config once at boot into a typed object that the rest of the code reads instead of process.env/os.environ is kept at SHOULD.",
+        "pin": "66d77d4391baa772163d35830ef01b2f45ee06d113e7af7d4115cd4f91065384"
+      }
+    },
+    {
+      "sentence": "Inject secrets at runtime from a managed secret store (cloud secret manager, orchestrator secret, or vault) rather than baking them into the artifact.",
+      "to": "should-inject-secrets-at-runtime",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Injecting secrets at runtime from a managed secret store rather than baking them into the artifact is kept at SHOULD with all three store examples.",
+        "pin": "7d6277cb7f24530ea4de4ed0e5dbe357649768e9d2a7a9d3f0e9ca000cb300c8"
+      }
+    },
+    {
+      "sentence": "Treat the choice of a heavyweight secrets platform as adopt-when-measured-need-justifies, not a default (YAGNI) — start with environment injection.",
+      "to": "should-start-with-environment-injection",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A heavyweight secrets platform only on a measured need, not as a default, starting with environment injection, is kept at SHOULD with the YAGNI reason.",
+        "pin": "90e508f1aea2af28862dc46c385ede66e77dbd0ff75a50c005cc0e33f8d34b46"
+      }
+    },
+    {
+      "sentence": "This is engineering guidance and is **NOT** legal advice; consult counsel for regulatory obligations.",
+      "to": "should-consult-counsel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The not-legal-advice caveat is kept, with consulting counsel for regulatory obligations at SHOULD.",
+        "pin": "851d89c3d8a03128e91a46fe2ad4075fba17323d8d437c980432be914ede7984"
+      }
+    },
+    {
+      "sentence": "It is **NOT** internal application constants that stay the same across deploys (routing tables, fixed business rules).",
+      "to": "should-keep-constants-in-code",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That config excludes internal constants that stay the same across deploys, with both examples, is kept in should-keep-constants-in-code, which adds that they SHOULD live in code.",
+        "pin": "79288381a72a76dea8d6bb190ab2059e00d8ae510fe288ad405e2585f7f13f53"
+      }
+    }
+  ],
+  "obsolete": []
+}

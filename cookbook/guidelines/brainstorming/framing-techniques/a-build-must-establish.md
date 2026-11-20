@@ -1,0 +1,11 @@
+
+- `framing-before-divergence`: framing techniques are applied before any divergent phase
+- `hmw-reframe-first`: at least one HMW framing of the seed idea exists before any ideation begins
+- `hmw-multiple-angles`: 2–4 HMW variants reframe the problem from different angles, or the work says why not
+- `hmw-syntax`: every HMW question opens with the exact words "How Might We"
+- `five-whys-before-generating`: a seed that sounds like a solution gets Five Whys before generation, or the work says why not
+- `five-whys-chain`: each "Why?" targets the answer to the prior "Why?"
+- `five-whys-stop`: Five Whys stops at a root cause, not at a fixed count, or the work says why
+- `first-principles-list-assumptions`: the user is invited to name assumptions explicitly before first-principles reasoning is applied
+- `first-principles-rebuild`: after assumptions are surfaced the user is invited to reconstruct the goal without them, or the work says why not
+- `first-principles-distinguish`: first-principles thinking and analogical reasoning are kept distinct, never conflated

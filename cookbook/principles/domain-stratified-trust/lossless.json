@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "High-consequence domains (medical, legal, financial, scientific) demand independent primary or credentialed sources.",
+      "to": "must-demand-primary-sources-in-high-consequence-domains",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-demand-primary-sources-in-high-consequence-domains keeps all four domains and 'demand' as MUST for independent primary or credentialed sources.",
+        "pin": "cfcc4ce2c874a5c834bfb859205320203717cd3ac5cefae3613e7a8972cff76a"
+      }
+    },
+    {
+      "sentence": "Low-consequence, subjective domains (recipes, product picks, opinion) may validate by broad independent consensus.",
+      "to": "may-validate-low-consequence-by-consensus",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-validate-low-consequence-by-consensus keeps the permissive 'may' as MAY, the three example domains, and broad independent consensus.",
+        "pin": "4484ba2831316817be0a16547a67e82054b975f3002db188ec39474989a8ddc6"
+      }
+    },
+    {
+      "sentence": "A confident tone or expert phrasing never lowers the bar; the domain does.",
+      "to": "must-not-lower-the-bar-for-confident-tone",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-lower-the-bar-for-confident-tone keeps 'never lowers the bar' as MUST NOT and that the domain sets the bar.",
+        "pin": "311134f0069cbcae7d9c7d3d7064a37d1d4d3c2568d3c4a52f525b8dba983dce"
+      }
+    },
+    {
+      "sentence": "Cap a claim's trust score when it fails its domain's minimum source, however plausible it sounds.",
+      "to": "should-cap-trust-below-domain-minimum",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-cap-trust-below-domain-minimum keeps capping the trust score on failing the domain's minimum source, however plausible, at SHOULD.",
+        "pin": "23cac8a1b52f3da5ccffcfefe5c8cd16f3c8d14861664ab2cf851341da646a61"
+      }
+    }
+  ],
+  "obsolete": []
+}

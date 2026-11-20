@@ -1,0 +1,18 @@
+
+- `multi-stage`: a single-stage Dockerfile whose final image carries compilers, build tools, dev dependencies or source
+- `base-image`: a final stage on a full OS image where a `slim`, `alpine` or distroless base carries the runtime
+- `one-concern`: one image running more than one app or process
+- `workdir`: chained `cd` in `RUN` instead of `WORKDIR` with an absolute path
+- `entrypoint-and-cmd`: the executable in `CMD`, or default arguments baked into `ENTRYPOINT`
+- `pin-by-digest`: `FROM` on a floating tag such as `:latest` with no `@sha256:` digest
+- `deterministic-deps`: dependencies installed without a locked manifest
+- `rebuild-fresh`: periodic release builds run without `--pull`
+- `order-layers-by-change-frequency`: frequently changed instructions placed before rarely changed ones
+- `cache-order`: `COPY . .` before the dependency install
+- `combine-run`: `apt-get update` in a separate `RUN` from `apt-get install`, or apt caches not cleaned in the same layer
+- `non-root`: no `USER` set before `ENTRYPOINT`, a root `USER`, or `sudo` installed
+- `no-baked-secrets`: a secret in a layer, `ENV` or build arg
+- `least-files`: no `.dockerignore`, or one that lets `.git`, secrets, env files, build output or `node_modules` into the context
+- `drop-extras`: packages installed that the runtime does not use
+- `healthcheck`: no `HEALTHCHECK` and no orchestrator probe covering it, or a costly or generic check
+- `adopt-when-justified`: an orchestration platform or per-image scanner adopted with no measured need

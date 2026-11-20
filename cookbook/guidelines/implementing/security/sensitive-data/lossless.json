@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Data minimization** — APIs MUST return only fields the client needs.",
+      "to": "must-return-only-needed-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "APIs returning only fields the client needs is kept at MUST, labelled data minimization.",
+        "pin": "e901ab4fbe512266bfd63de378dd423ba1c716b982378923bc314e5cd0bcda34"
+      }
+    },
+    {
+      "sentence": "Use explicit response DTOs,",
+      "to": "must-return-only-needed-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using explicit response DTOs is kept, the unkeyed instruction at SHOULD.",
+        "pin": "61bcda13424c14ef3d48eaf63c97bbe2baa6f73d41e1cafe20208e30a2097ff0"
+      }
+    },
+    {
+      "sentence": "never dump database models directly.",
+      "to": "must-return-only-needed-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never dumping database models directly is kept, now at MUST NOT.",
+        "pin": "6f2d30b1a9f93456c2374c7712dd17be66279ab498ebca71c661e0cb1f1b5437"
+      }
+    },
+    {
+      "sentence": "**PII classification** — data MUST be classified by sensitivity (public, internal, PII, sensitive PII).",
+      "to": "must-classify-data-by-sensitivity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Classifying data by sensitivity into the four tiers is kept at MUST, labelled PII classification.",
+        "pin": "c75df9cd76825a96d884a333c5a2c70a9878333e556c46aa2e656973d54cb9c2"
+      }
+    },
+    {
+      "sentence": "Apply controls proportional to tier.",
+      "to": "must-classify-data-by-sensitivity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Applying controls proportional to tier is kept at SHOULD.",
+        "pin": "e021370efd3a90c026576301a0698d4c605ff3e0aa5baaa04200cc92f71279c8"
+      }
+    },
+    {
+      "sentence": "**Field-level encryption** — encrypt highly sensitive fields (SSN, payment info) at the",
+      "to": "should-encrypt-sensitive-fields-at-application-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Encrypting highly sensitive fields (SSN, payment info) at field level is kept at SHOULD.",
+        "pin": "3b99d118a17aeebb0258ece149cda565dfb73b844c744e688f2cf39bce5a0929"
+      }
+    },
+    {
+      "sentence": "application level with a KMS (AWS KMS, Azure Key Vault, GCP KMS).",
+      "to": "should-encrypt-sensitive-fields-at-application-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Application-level encryption with a KMS (AWS KMS, Azure Key Vault, GCP KMS) is kept.",
+        "pin": "0669bae8ac72b089d20b9343cf0c292fdb9a8d38b10428ff09ff6b43f90e5466"
+      }
+    },
+    {
+      "sentence": "Separate from database-level",
+      "to": "should-encrypt-sensitive-fields-at-application-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping it separate from database-level encryption is kept.",
+        "pin": "44bc63557709ba5dc70ef3183a009373c7ac4c22c5ced0087e3a90aa7fcdcc11"
+      }
+    },
+    {
+      "sentence": "encryption.",
+      "to": "should-encrypt-sensitive-fields-at-application-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The end of the separate-from-database-level-encryption clause is kept.",
+        "pin": "2b65f4384432473cbc0613937c1a7d76104d4e142c6ea40bcab4fe105082a575"
+      }
+    },
+    {
+      "sentence": "**No PII in logs** — tokens, passwords, credit card numbers, or PII MUST NOT be logged.",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Tokens, passwords, credit card numbers and PII MUST NOT be logged is kept.",
+        "pin": "d6b0e62da5d25442613a7c7eccdb677f0fa62617760be4f8c0363934785b9fcc"
+      }
+    },
+    {
+      "sentence": "Mask/redact",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Masking/redacting is kept at SHOULD.",
+        "pin": "4b01253dd824492ee684948912248dab10c26e273f6b4ae40484c1513b8d1865"
+      }
+    },
+    {
+      "sentence": "in all log outputs, including debug level.",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The scope, all log outputs including debug level, is kept.",
+        "pin": "9e8c5dec5deae230669e413e209a5d2913d8174a150d53a1454bc4d5c9dccfd6"
+      }
+    },
+    {
+      "sentence": "See [adc.guideline.implementing.security.privacy](cookbook:29057cf0-a38b-4c35-8b8b-52e12bf54784)",
+      "to": "references",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The cross-reference to the privacy guideline is kept in references, tied to must-not-log-pii.",
+        "pin": "60fa286f5ccbe58eb52e89bdf5333f3838321cf1da6dcacc543a6de6fc9cdb7a"
+      }
+    },
+    {
+      "sentence": "**No internals in API responses** — internal IDs, stack traces, or database",
+      "to": "must-not-expose-internals-in-api-responses",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not exposing internal IDs, stack traces or database errors in API responses is kept at MUST NOT.",
+        "pin": "29d35b872d67101701d025bff11e43b3a725538cc7cff4a156d3d8fb62abcb05"
+      }
+    },
+    {
+      "sentence": "error messages MUST NOT be exposed in production.",
+      "to": "must-not-expose-internals-in-api-responses",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The production scope of that MUST NOT is kept.",
+        "pin": "608a96f20b604f869033948641eda0f294f60238ef5005d691ad07d44a1abb94"
+      }
+    },
+    {
+      "sentence": "Return generic errors with correlation IDs.",
+      "to": "must-not-expose-internals-in-api-responses",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Returning generic errors with correlation IDs is kept at SHOULD.",
+        "pin": "a6c0cb138404237d4d8320acd3a8ccab1ac3a2ee0c23bb562042a3b116f29213"
+      }
+    },
+    {
+      "sentence": "**Cache-Control: no-store** on responses containing sensitive data.",
+      "to": "should-set-no-store-on-sensitive-responses",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Cache-Control: no-store on responses containing sensitive data is kept at SHOULD.",
+        "pin": "a88dcb79ab88b914143d6032a6125db6dfdea74fbb6d1611b6f5e60ea5286b31"
+      }
+    }
+  ],
+  "obsolete": []
+}

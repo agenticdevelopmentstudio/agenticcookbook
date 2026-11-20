@@ -1,0 +1,19 @@
+
+- `must-instrument-with-platform-framework`: every component and flow logs through the platform's best-in-class structured logging framework
+- `should-use-debug-for-flow-instrumentation`: flow instrumentation, UI flow included, logs at `debug` level, or the code says why not
+- `should-log-flow-events`: state transitions, user interactions, async task start/completion/failure, and branching logic each have a log line, or the code says why not
+- `must-not-log-pii`: no log field carries personally identifiable information, at any level
+- `must-match-subsystem-to-bundle-id`: every Apple `Logger` subsystem is the bundle ID
+- `must-use-one-category-per-component`: every Apple `Logger` category is one per component or flow
+- `should-use-android-log-with-consistent-tags`: any `android.util.Log` use has consistent tags, or the code says why not
+- `should-use-structured-message-templates`: every C# log call uses a structured message template, or the code says why not
+- `must-not-interpolate-in-log-calls`: no C# log call uses string interpolation (`$"..."`)
+- `should-use-loggermessage-for-hot-paths`: high-performance hot paths log through `[LoggerMessage]`, or the code says why not
+- `should-configure-log-levels-per-category`: C# log levels are configured per category in `appsettings.json`, or the code says why not
+- `should-use-etw-for-system-diagnostics`: Windows system-level diagnostics and startup timing use ETW (`EventSource`), or the work says why not
+- `should-use-xaml-live-visual-tree`: visual tree issues were debugged with XAML Live Visual Tree, or the work says why not
+- `should-use-vs-performance-profiler`: Windows CPU, memory, and UI responsiveness analysis used the Visual Studio Performance Profiler, or the work says why not
+- `should-emit-telemetry-via-opentelemetry`: components export telemetry via OpenTelemetry over OTLP, or the code says why not
+- `should-carry-trace-id-on-log-lines`: every log line carries a trace/correlation ID from the request context, or the code says why not
+- `should-follow-otel-semantic-conventions`: log and span field names follow the OpenTelemetry semantic conventions, or the code says why not
+- `should-use-structured-json-in-production`: production logs are structured JSON, or the code says why not

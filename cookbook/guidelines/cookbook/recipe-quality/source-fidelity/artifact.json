@@ -4,11 +4,11 @@
     "id": "47563e88-307b-4eef-a63c-ddc18e85a945",
     "title": "Source Fidelity",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,18 +27,20 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "recipe-authoring"
     ]
   },
-  "synced": "7b287daabf6e59ad",
+  "synced": "448156f43c58f037",
   "parts": [
     {"part": "intro"},
-    {"part": "requirements", "heading": "Requirements"},
-    {"part": "common-violations", "heading": "Common Violations"},
-    {"part": "verification-checklist", "heading": "Verification Checklist"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "common-violations", "heading": "Common Violations", "role": "examples"},
+    {"part": "verification-checklist", "heading": "Verification Checklist", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

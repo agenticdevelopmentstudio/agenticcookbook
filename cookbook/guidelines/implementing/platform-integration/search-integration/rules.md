@@ -1,0 +1,19 @@
+
+- **content-discoverable-in-system-search**: App content SHOULD be discoverable through the platform's system search, enabling users to find content without opening the app.
+- **index-what-users-search-for**: You SHOULD index content that users would reasonably search for — documents, contacts, messages, settings.
+- **keep-index-current**: You SHOULD keep the search index current — add items when created, remove when deleted.
+- **must-deep-link-indexed-items**: Each indexed item MUST deep link back to the relevant content.
+- **include-rich-metadata**: You SHOULD include rich metadata (thumbnails, descriptions, categories) for meaningful search results.
+- **apple-index-with-core-spotlight**: On Apple platforms, you SHOULD use Core Spotlight (`CSSearchableItem`, `CSSearchableItemAttributeSet`) to index content.
+- **ios17-conform-to-indexedentity**: On iOS 17+, you SHOULD conform entities to `IndexedEntity` for semantic indexing with natural language support.
+- **apple-donate-nsuseractivity**: On Apple platforms, you SHOULD support `NSUserActivity` donation for Handoff-eligible items to appear in Spotlight suggestions.
+- **android-use-app-indexing**: On Android, you SHOULD use Firebase App Indexing or `AppIndexingApi` for on-device search integration.
+- **android-declare-searchable-content**: On Android, you SHOULD declare searchable content in `searchable.xml` and implement `SearchableInfo`.
+- **android-support-assistant-markup**: On Android, you SHOULD support Google Assistant via structured content markup.
+- **windows-use-search-indexer**: On Windows, you SHOULD use the Windows Search indexer with `ISearchManager` and property handlers.
+- **windows-register-associations-and-protocols**: On Windows, you SHOULD register file type associations and protocol handlers so content appears in Start menu search.
+- **windows-uwp-winui-search**: On Windows, for UWP/WinUI, you SHOULD use `SearchPane` or in-app search with system integration.
+- **web-use-structured-data**: On the web, you SHOULD use structured data (JSON-LD, Schema.org) for search engine discoverability.
+- **web-implement-social-meta-tags**: On the web, you SHOULD implement OpenGraph and Twitter Card meta tags.
+- **web-support-web-app-manifest**: On the web, you SHOULD support the Web App Manifest for PWA search integration.
+- **web-ensure-crawlability**: On the web, you SHOULD ensure server-side rendering or pre-rendering for crawlability.

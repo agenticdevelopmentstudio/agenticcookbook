@@ -4,11 +4,11 @@
     "id": "d3cb8f40-b142-447d-8176-8055d55868b1",
     "title": "Software supply-chain integrity",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,22 +31,23 @@
       "https://cyclonedx.org/specification/overview/",
       "https://docs.sigstore.dev/cosign/signing/overview/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "dependency-management",
       "pre-pr"
     ]
   },
-  "synced": "6ccb8c1039f15145",
+  "synced": "00ee6dedd82db319",
   "parts": [
     {"part": "intro"},
-    {"part": "two-artifacts-per-build", "heading": "Two artifacts per build"},
-    {"part": "build-emit-sbom-provenance", "heading": "Build: emit SBOM + provenance"},
-    {"part": "deploy-verify-before-promotion", "heading": "Deploy: verify before promotion"},
-    {"part": "combine-with-pinning-and-lockfiles", "heading": "Combine with pinning and lockfiles"},
-    {"part": "regulatory-drivers-dated-treat-timelines-as-forecasts", "heading": "Regulatory drivers (dated — treat timelines as forecasts)"},
-    {"part": "must-not", "heading": "MUST NOT"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "slsa-build-levels", "heading": "SLSA Build levels (v1.0, Build track L0–L3)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "regulatory-drivers-dated-treat-timelines-as-forecasts", "heading": "Regulatory drivers (dated — treat timelines as forecasts)", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

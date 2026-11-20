@@ -1,0 +1,146 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**classify-fields** — every field holding personal data MUST carry a sensitivity tier:",
+      "to": "classify-fields",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Every personal-data field carrying a sensitivity tier is kept at MUST, with the four tiers and schema-level tagging.",
+        "pin": "d1cb55219a037c5637bfee86485c154c67e878d720c2c10a248db42c688675dd"
+      }
+    },
+    {
+      "sentence": "**sensitive-pii** — special categories (health, biometric, genetic, racial/ethnic,",
+      "to": "sensitive-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The GDPR Article 9 special categories being tagged sensitive-pii with stricter access controls and audit logging is kept at MUST.",
+        "pin": "3e4ce1f436064a9bf140785812d4986c627f0c8574820abb70d4864e45429fb8"
+      }
+    },
+    {
+      "sentence": "**no-pii-logs** — PII MUST NOT be written to logs, traces, error messages, or analytics",
+      "to": "no-pii-logs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "PII MUST NOT be written to logs, traces, error messages or analytics events is kept, with redaction or hashing at the logging boundary.",
+        "pin": "1e8068b28ce51856652d7231675de9a57486f00226df169b58e4543ec09062ab"
+      }
+    },
+    {
+      "sentence": "**anonymize-analytics** — analytics SHOULD use anonymized or aggregated data; pseudonymized",
+      "to": "anonymize-analytics",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Analytics using anonymized or aggregated data is kept at SHOULD with the pseudonymized-data caveat.",
+        "pin": "c5567f48e7a18d5f665b9b97004477f9a557fbfb2d18533c2324768f17790f71"
+      }
+    },
+    {
+      "sentence": "**non-prod-data** — development, test, and staging environments SHOULD use synthetic or",
+      "to": "non-prod-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Lower environments using synthetic or anonymized data is kept at SHOULD, and holding no production sensitive-pii is kept at MUST NOT.",
+        "pin": "30e6587004871ce35c7dc5a3d1a254e8e4f564f255acf5e0cea8f09cd4a849c2"
+      }
+    },
+    {
+      "sentence": "**explicit-dtos** — APIs MUST return explicit response DTOs and MUST NOT serialize raw",
+      "to": "explicit-dtos",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Explicit response DTOs (MUST) and never serializing raw database models (MUST NOT), with the leak reason, are kept.",
+        "pin": "e21651f0ad4ffabc9af6196b06f35a3d082aed862093fe4a234a92d3f99e6051"
+      }
+    },
+    {
+      "sentence": "**encrypt-at-rest** — PII MUST be encrypted at rest (database/disk encryption at minimum;",
+      "to": "encrypt-at-rest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Encrypting PII at rest is kept at MUST, with disk/database encryption at minimum and column encryption for sensitive-pii.",
+        "pin": "762e8a54359a162c8d65a99935d710fcd621fe7ca6817338f96d84f3b607b952"
+      }
+    },
+    {
+      "sentence": "**encrypt-in-transit** — PII MUST travel over TLS 1.2+ (prefer 1.3); plaintext transport is",
+      "to": "encrypt-in-transit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "PII over TLS 1.2+ (prefer 1.3) is kept at MUST, with plaintext transport prohibited.",
+        "pin": "0eb8acf65371ab362c17a1b2feb43fa5f31d452d0775c39a358c633bba0817b9"
+      }
+    },
+    {
+      "sentence": "**tokenize** — where a downstream system needs a stable reference but not the value itself",
+      "to": "tokenize",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Tokenizing values where a downstream system needs only a stable reference is kept at SHOULD, with the payment example and reason.",
+        "pin": "2a721d6bbc2d3da23099458d71ee68cafb7aec64d648cf22ca6712ad225bf21e"
+      }
+    },
+    {
+      "sentence": "**residency** — when contracts or law require it, storage and processing MUST honor",
+      "to": "residency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Honoring data-residency constraints when contracts or law require it is kept at MUST, with the region pinned in infrastructure config.",
+        "pin": "c5cacd01e80326b2a2bb3b8e084246bb12d030692d86e6acadd890cc88d12d0f"
+      }
+    },
+    {
+      "sentence": "**retention** — every PII field MUST have a defined retention period; expired records MUST be",
+      "to": "retention",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A defined retention period per PII field and deletion or anonymization of expired records are kept at MUST.",
+        "pin": "a965aed4f7ca5ff8e86e0922b35fb6cba7aa54bef853974b6f050775210434c7"
+      }
+    },
+    {
+      "sentence": "**propagate-tags** — classification SHOULD flow downstream so derived tables, exports, and",
+      "to": "propagate-tags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Classification flowing downstream so derived tables, exports and caches inherit the tier and its controls is kept at SHOULD.",
+        "pin": "d2839c89a03f8dcf49405334237a2232ac987b9be4e002cb26f76498bd589a68"
+      }
+    },
+    {
+      "sentence": "**collect-minimum** — services MUST collect only fields with a stated purpose.",
+      "to": "collect-minimum",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Collecting only fields with a stated purpose is kept at MUST, with the drop-rather-than-keep YAGNI note.",
+        "pin": "528ad008016fd0c382520bdb178adb2cc6bc0e069100e3f6d59bcc794e534a20"
+      }
+    },
+    {
+      "sentence": "**separate-stores** — `sensitive-pii` SHOULD live in a dedicated, more tightly scoped store",
+      "to": "separate-stores",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "sensitive-pii living in a dedicated, more tightly scoped store apart from general data is kept at SHOULD.",
+        "pin": "6f90bfdbfcc32432d4624427bf4f871489066af4012a8529dc6ed64c56502bac"
+      }
+    }
+  ],
+  "obsolete": []
+}

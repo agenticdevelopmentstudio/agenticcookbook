@@ -1,0 +1,36 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Before adding a parameter, config option, or extension point, confirm a current requirement demands it",
+      "to": "should-confirm-requirement-before-adding-extension-points",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps confirming a current requirement before adding a parameter, config option, or extension point, at SHOULD, with all three named kinds.",
+        "pin": "291ed99293013158d6ff4b775d3cabdc4ea10b205e1b312aaa3be90d5da99abb"
+      }
+    },
+    {
+      "sentence": "Delete dead code and unused abstractions — they are not \"free\" to keep around",
+      "to": "should-delete-dead-code-and-unused-abstractions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps deleting dead code and unused abstractions at SHOULD, with the reason that they are not free to keep.",
+        "pin": "4d66a02d16daa38bcfd862a8f9a9d6d345dc30e939c54f89707d17c37e320d3a"
+      }
+    },
+    {
+      "sentence": "When someone says \"we might need this later,\" treat that as a reason to wait, not a reason to build",
+      "to": "should-treat-might-need-later-as-reason-to-wait",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps treating \"we might need this later\" as a reason to wait, not to build, at SHOULD.",
+        "pin": "237eba5626e6b3f28f0443fa2184730005ce4d48f19e2039d0ddd1b586193083"
+      }
+    }
+  ],
+  "obsolete": []
+}

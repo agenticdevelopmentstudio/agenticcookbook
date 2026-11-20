@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Limit the palette** — 1 primary/accent color, 1-2 neutral tones, plus semantic colors for",
+      "to": "should-limit-the-palette",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The palette limit (1 primary/accent, 1-2 neutrals, plus success/warning/error semantic colors) is kept and keyed at SHOULD.",
+        "pin": "529de0c731ebc695a63326544088add5a4cf521d3e57a9e1e48510d1bd6cdfe2"
+      }
+    },
+    {
+      "sentence": "Avoid rainbow UIs.",
+      "to": "should-limit-the-palette",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD in should-limit-the-palette: rainbow UIs SHOULD be avoided.",
+        "pin": "87911f356735d73f7ebefa0fa5acf88ff2b95944743cdaef21ee916b56a1bf47"
+      }
+    },
+    {
+      "sentence": "**Contrast minimums** (WCAG AA, per [adc.guideline.implementing.accessibility.accessibility](cookbook:3d970d6a-2d71-48f3-9f84-69c1d823d6e8)):",
+      "to": "must-meet-contrast-minimums",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The WCAG AA contrast minimums, with the accessibility cross-reference, are kept and strengthened to a MUST; the AA/AAA table it introduced is carried in the contrast-minimums part.",
+        "pin": "8ec38a6880ffdbb304f587e0c3bf316adfc6894014046f815df7b01c8349f6b8"
+      }
+    },
+    {
+      "sentence": "Test both.",
+      "to": "should-test-light-and-dark",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the referent made explicit: both light and dark themes are tested.",
+        "pin": "5e2b3e317b8d54f456b5cf4ab2e2431bbf26a6c0e473deb74eed4479d2e391c8"
+      }
+    }
+  ],
+  "obsolete": []
+}

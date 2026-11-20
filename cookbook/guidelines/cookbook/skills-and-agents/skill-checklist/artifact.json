@@ -4,7 +4,7 @@
     "id": "2945503d-8e92-44ca-bc64-20285eb29296",
     "title": "Skill Lint Checklist",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -26,20 +26,24 @@
       "fe0daac0-1ba7-4c93-a47e-e42e75612cf6"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring",
       "pre-pr"
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "f7f25c5a145b1413",
+  "synced": "1f66cd04a9a70a5d",
   "parts": [
     {"part": "intro"},
-    {"part": "structure-format", "heading": "Structure & Format"},
-    {"part": "content-quality", "heading": "Content Quality"},
-    {"part": "best-practices", "heading": "Best Practices"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "structure-format", "heading": "Structure & Format", "role": "review-focus"},
+    {"part": "content-quality", "heading": "Content Quality", "role": "review-focus"},
+    {"part": "best-practices", "heading": "Best Practices", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

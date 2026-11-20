@@ -1,0 +1,47 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e547d962-d561-4bd9-bb5a-50bdeec98335",
+    "title": "Color",
+    "type": "guideline",
+    "version": "1.0.4",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Use color with intention — never as the sole means of conveying information.",
+    "platforms": [
+      "typescript",
+      "web",
+      "windows"
+    ],
+    "tags": [
+      "color",
+      "ui"
+    ],
+    "depends-on": [],
+    "related": [
+      "3d970d6a-2d71-48f3-9f84-69c1d823d6e8"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines/color",
+      "https://learn.microsoft.com/en-us/windows/apps/design/style/color",
+      "https://m3.material.io/styles/color/system/how-the-system-works",
+      "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html",
+      "https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "2ad2dfbc4c0dcda7",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

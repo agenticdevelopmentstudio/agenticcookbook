@@ -1,0 +1,13 @@
+
+- `must-manage-ai-calls-as-a-resource`: whether every AI call is covered by a budget, caching and a fallback strategy
+- `must-cache-equivalent-requests`: whether identical or semantically equivalent requests are served from a cache
+- `should-key-cache-on-model-template-and-variables`: whether the cache key holds the model, prompt template ID, template variables and temperature (if 0)
+- `must-budget-per-user-and-per-request`: whether each AI-powered feature defines a per-user and a per-request cost budget
+- `must-degrade-when-budget-exhausted`: whether an exhausted budget makes the system reject or degrade gracefully
+- `should-route-to-cheapest-adequate-model`: whether requests go to the cheapest model that meets quality requirements
+- `should-batch-non-latency-sensitive-work`: whether non-latency-sensitive work uses batch APIs
+- `must-record-cost-per-response`: whether every API response records its actual cost
+- `should-aggregate-cost`: whether aggregate cost is available per feature, per user and per time period
+- `should-define-fallback-providers`: whether fallback providers are defined for availability and cost
+- `should-review-prompts-for-token-efficiency`: whether prompts have been reviewed for token efficiency
+- `should-cache-system-prompts`: whether system prompts are cached where the API supports it

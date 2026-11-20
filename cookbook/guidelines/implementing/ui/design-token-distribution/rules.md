@@ -1,0 +1,16 @@
+
+- **must-make-source-single-authority**: The token source (e.g. a [W3C Design Tokens](https://www.designtokens.org/tr/drafts/format/) JSON file or `tokens.json`) **MUST** be the single authority for token values.
+- **should-generate-outputs-with-transform-tool**: A transform tool **SHOULD** generate platform outputs — [Style Dictionary](https://styledictionary.com/) is the established choice (use a current released version; verify the latest at build time rather than pinning from memory).
+- **must-not-hand-edit-generated-outputs**: Generated outputs **MUST NOT** be hand-edited. Edits belong in the source; the build regenerates downstream.
+- **should-regenerate-on-every-change-in-ci**: Code SHOULD regenerate on **every** token change, and SHOULD run generation in CI so drift fails fast (per fail-fast).
+- **should-version-token-source**: The token source SHOULD be versioned. Token releases SHOULD be treated like any other versioned dependency so consumers can pin and upgrade deliberately.
+- **should-mark-outputs-generated**: Each output **SHOULD** be code-generated, committed (or published as an artifact), and clearly marked "do not edit by hand" with a generated-file header.
+- **must-derive-names-deterministically**: Naming **MUST** be derived deterministically from token paths so the same token resolves to a predictable symbol on every platform.
+- **should-expose-semantic-tokens-not-primitives**: Semantic/alias tokens (`color.surface.primary`) **SHOULD** be exposed to product code; raw/primitive tokens (`palette.blue.500`) **SHOULD NOT** be referenced directly in features (per explicit-over-implicit).
+- **should-run-generation-as-reproducible-step**: Generation SHOULD run as a checked-in, reproducible step (a package script or task), not a one-off manual command.
+- **should-run-drift-check-in-ci**: A drift check **SHOULD** run in CI: regenerate, then fail if the working tree differs from committed outputs. This guarantees outputs always match the source.
+- **should-version-transform-config**: The transform configuration SHOULD be kept in version control alongside the token source.
+- **should-adopt-managed-pipeline-only-on-measured-need**: Work SHOULD reach for a managed token pipeline or design-tool sync service only when a measured need justifies it (per YAGNI); a local build step covers most projects.
+- **must-not-maintain-parallel-token-files**: Projects **MUST NOT** maintain parallel hand-written token files per platform — they drift.
+- **must-not-propagate-platform-edits-back**: Projects **MUST NOT** let a platform edit propagate "back up" to the source informally; they change the source and regenerate.
+- **should-not-hardcode-raw-values**: Feature code **SHOULD NOT** hardcode raw values (hex colors, pixel literals) when a token exists.

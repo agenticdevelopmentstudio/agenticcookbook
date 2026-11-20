@@ -1,0 +1,17 @@
+
+- `wild-ideation-human-first`: the user contributes at least one idea before the AI contributes any
+- `wild-ideation-volume-target`: at least 10 distinct ideas exist before readiness to evaluate is signalled, or the work says why not
+- `distant-analogy-domain-gap`: every analogy's source domain differs from the user's in industry, domain or scale
+- `distant-analogy-mapping`: every surfaced analogy is followed by its structural match ("In X, Y solves Z because... In your problem, the equivalent of Y would be...")
+- `blend-emergent-property`: every blend names at least one emergent property neither input space possesses alone
+- `blend-invite-user`: the user is invited to name the emergent property before it is supplied, or the work says why not
+- `inversion-identify-assumption`: every inversion is preceded by a statement of the assumption it inverts
+- `inversion-explore`: no reversed version is discarded before the facilitator asks "What would actually be valuable about this reversed version?"
+- `constraint-framed-as-question`: every injected constraint is framed as a question, not a directive
+- `constraint-user-choice`: every injected constraint comes with the user's choice to accept, modify or reject it
+- `reverse-inversion-required`: every reverse brainstorm's failure-generation step is followed by the inversion step
+- `reverse-distinct-mechanisms`: at least 5 distinct failure mechanisms are generated before inverting, or the work says why not
+- `scamper-axis-limit`: no turn applies more than 2 SCAMPER axes
+- `scamper-one-idea`: every SCAMPER axis is applied to one specific idea, not to the problem in general
+- `random-stimulus-forced-connection`: every random stimulus is followed by the prompt "What does this make you think of, applied to your problem?" before any suggested connection
+- `random-stimulus-novel`: every random stimulus is unrelated to the user's domain

@@ -12,4 +12,7 @@ A verifier MUST check each of the following items. The recipe PASSES completenes
 - [ ] SHOULD requirements without test vectors have documented rationale for the omission.
 - [ ] The Design Decisions section explains any non-obvious MUST constraint.
 - [ ] The Design Decisions section is non-empty if any SHOULD requirement exists.
-
+- [ ] `must-not-stack-needs-review-markers`: No section stacks `NEEDS REVIEW` markers; each gap has its own labeled marker.
+- [ ] `must-not-limit-edge-cases-to-happy-path`: The Edge Cases section goes beyond the happy path and one error case and shows deliberate analysis of failure modes.
+- [ ] `should-give-should-requirements-test-vectors`: SHOULD requirements have test vectors where they can.
+- [ ] `must-not-submit-with-reminder-markers`: No `NEEDS REVIEW` marker is a work-in-progress note in a recipe submitted for review.

@@ -1,0 +1,19 @@
+
+- `must-not-do-ground-research-in-orchestrator`: whether the orchestrator does any ground research itself
+- `should-budget-isolated-subtopic-specialists`: whether per-subtopic specialists are budgeted and given isolated context
+- `should-outline-before-searching`: whether an outline exists before searching starts
+- `should-reflect-at-supervisor-and-worker-level`: whether reflection happens at both supervisor and worker level
+- `should-stop-on-coverage`: whether research stops on coverage, not on a loop count
+- `should-use-multi-engine-domain-routed-sources`: whether sources are multi-engine and domain-routed
+- `should-rerank-and-quality-gate-sources`: whether sources are reranked and quality-gated before the LLM sees them
+- `should-filter-by-freshness-and-authority`: whether sources are filtered by freshness and authority / venue reputation
+- `should-read-full-pages`: whether full pages are read rather than snippets
+- `should-use-dedicated-reviewer`: whether a dedicated reviewer with explicit acceptance criteria exists
+- `should-corroborate-across-sources`: whether claims are corroborated across sources
+- `should-check-url-health`: whether URL health and citation existence are checked
+- `should-build-in-perspective-diversity`: whether perspective diversity is built into the structure
+- `should-attach-citations-at-retrieval`: whether citation metadata is attached at retrieval time
+- `should-cite-at-claim-level-with-quote`: whether citations are at the claim / sentence level with the supporting quote
+- `should-keep-stable-numbered-citations`: whether citations stay stable and numbered through summarization
+- `should-report-confidence-per-section`: whether the report is outline-driven with a confidence / coverage indicator per section
+- `should-keep-intermediate-artifacts`: whether intermediate artifacts are kept for human review

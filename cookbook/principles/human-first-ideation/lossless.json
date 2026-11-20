@@ -1,0 +1,131 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Yildirim et al. (2025, arXiv 2502.06197): participants who used LLMs from the start produced",
+      "to": [
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps the Yildirim et al. (2025, arXiv 2502.06197) finding about participants who used LLMs from the start, and references lists the source.",
+        "pin": "2d0fd65aca35d87ed2bbca7cd596c17fbf98ca82a85ed9ebe451940a87a7b59e"
+      }
+    },
+    {
+      "sentence": "fewer original ideas, reported lower creative self-efficacy, and felt less ownership compared to",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps verbatim fewer original ideas, lower creative self-efficacy and less ownership.",
+        "pin": "b96c26ccc3cdd305ddc7af7f76512c8e20c60a7f65a7c3797edeb763bd1afa8b"
+      }
+    },
+    {
+      "sentence": "those who ideated independently first",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps the comparison against those who ideated independently first.",
+        "pin": "15fe9f1540d736253522ef6cd819a8788664bd3634c1ebb7b14e655d8d48f529"
+      }
+    },
+    {
+      "sentence": "HAICo (Dong et al., 2024, arXiv 2512.18388): scaffolding divergent exploration *before* any AI",
+      "to": [
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps HAICo (Dong et al., 2024, arXiv 2512.18388) scaffolding divergent exploration before any AI artifact generation, and references lists it.",
+        "pin": "18e54aa841b36bcd6076e6cd626500bf729a51f25f2388fa954112f1fb0d27f7"
+      }
+    },
+    {
+      "sentence": "artifact generation produced 42% more novel outputs and 33% greater diversity than direct",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps 42% more novel outputs and 33% greater diversity than direct chatbot use.",
+        "pin": "6ddbcd5376908c5487e27d3b62b6f31ab27e177d314a3e4f5b04a57fe4fed536"
+      }
+    },
+    {
+      "sentence": "chatbot use; users internalized a \"brainstorm-first workflow\" that transferred to other tools",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps that users internalized a brainstorm-first workflow that transferred to other tools.",
+        "pin": "4f274b8c9778483df4e2b48a9ece3a5c90b3a13a4b2faabaf7cda3d3478b53d6"
+      }
+    },
+    {
+      "sentence": "Ask \"What have you been thinking?\" before \"Here's an idea\" — always",
+      "to": "must-ask-before-offering-ideas",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-ask-before-offering-ideas keeps asking \"What have you been thinking?\" before \"Here's an idea\" at MUST, which carries the old \"always\".",
+        "pin": "391190dd91c7de7c53c7a69be169d17f4594f6021149f22dbc69d5647ead6e74"
+      }
+    },
+    {
+      "sentence": "Vygotsky's Zone of Proximal Development (1978): good scaffolding keeps the human at their",
+      "to": [
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps Vygotsky's Zone of Proximal Development (1978) and that good scaffolding keeps the human at their creative edge; references lists it.",
+        "pin": "072731a01562353c2d652d323262e5be113fb19369d7a255dacf87b0d3ea8890"
+      }
+    },
+    {
+      "sentence": "creative edge; the AI taking the first move pulls the human *below* the creative work",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps that the AI taking the first move pulls the human below the creative work.",
+        "pin": "e1db98623004de2dcf8c451c74306663d9a1ca86f84291c4f3c2816f32583d9a"
+      }
+    },
+    {
+      "sentence": "After the human has contributed, the AI may add — using \"yes-and\" (Sawyer, 2007) to build",
+      "to": [
+        "may-add-after-human-contributes",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-add-after-human-contributes keeps that after the human has contributed the AI MAY add using yes-and; Sawyer (2007) is kept in references.",
+        "pin": "befe64e571b9a3a54640bd574a3e4cea049940fe2644fbc57901e3297278fb3b"
+      }
+    },
+    {
+      "sentence": "rather than replace, never to anchor or supplant",
+      "to": [
+        "may-add-after-human-contributes",
+        "must-not-anchor-or-supplant"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-add-after-human-contributes keeps building rather than replacing, and must-not-anchor-or-supplant makes never anchoring or supplanting a MUST NOT.",
+        "pin": "c0066fe31960607eaed2b2b414cbf6418c60fadf6c101c0a8aadc7fb3514ddd0"
+      }
+    }
+  ],
+  "obsolete": []
+}

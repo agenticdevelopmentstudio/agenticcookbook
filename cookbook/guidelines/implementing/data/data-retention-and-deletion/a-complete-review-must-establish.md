@@ -1,0 +1,23 @@
+
+- `should-confirm-retention-periods-with-counsel`: whether concrete retention periods were confirmed with counsel
+- `should-maintain-retention-schedule`: whether a retention schedule in code or config maps each data category to a period and a disposition
+- `must-define-retention-period`: whether every category has a defined retention period
+- `must-justify-missing-retention-period`: whether every category without a period is justified
+- `should-automate-expiry`: whether each category's expiry is automated
+- `should-record-retention-timestamps`: whether every retained record carries `created_at` (and `expires_at` where relevant)
+- `should-cascade-deletions`: whether deletions cascade to every derived store
+- `should-maintain-copy-inventory`: whether a version-controlled inventory lists where each category is copied
+- `should-prefer-event-driven-cascade`: whether the cascade is event-driven rather than a monolithic delete
+- `should-make-cascade-idempotent`: whether cascade steps are idempotent and retryable
+- `must-make-failed-cascade-resumable`: whether a partially failed cascade is detectable and resumable
+- `must-not-count-soft-delete-as-erasure`: whether any privacy request is satisfied by soft delete
+- `must-make-anonymization-irreversible`: whether anonymization keeps no re-identification key
+- `should-decide-delete-mode-per-category`: whether soft vs. hard delete is decided per category
+- `must-resolve-erasure-to-hard-delete-or-anonymization`: whether erasure ends in hard delete or true anonymization in the source and all derived stores
+- `should-exclude-backups-and-document-lag`: whether backups and immutable logs are excluded from immediate cascade with the lag documented
+- `should-publish-backup-purge-policy`: whether a published backup purge policy bounds the erasure lag
+- `should-suppress-erased-data-immediately`: whether erased data is suppressed from active systems immediately
+- `must-not-restore-without-reapplying-deletions`: whether any backup restore skips re-applying pending deletions
+- `should-audit-every-deletion`: whether every deletion is logged to a tamper-evident, separately retained audit trail
+- `should-reconcile-expiry-periodically`: whether a periodic reconciliation scans for unpurged expired records and alerts
+- `should-treat-reconciliation-miss-as-defect`: whether a reconciliation miss is treated as a defect

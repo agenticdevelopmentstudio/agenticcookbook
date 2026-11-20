@@ -4,7 +4,7 @@
     "id": "e547d962-d561-4bd9-bb5a-50bdeec98335",
     "title": "Color",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -33,15 +33,21 @@
       "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html",
       "https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "2ad2dfbc4c0dcda7",
+  "synced": "c58120aafe93078e",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "contrast-minimums", "heading": "Contrast minimums", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,17 @@
+
+- `pin-to-server-version`: the index behavior used was checked against the server's PostgreSQL version, or the work says why not
+- `concurrent-build`: every index on a large live table is created with `CREATE INDEX CONCURRENTLY`, outside a transaction block
+- `failed-index-cleanup`: the migration detects an `INVALID` index after a failed `CONCURRENTLY` build and runs `DROP INDEX CONCURRENTLY` before retrying
+- `rebuild-without-lock`: every bloated-index rebuild uses `REINDEX INDEX CONCURRENTLY`, or the work says why not
+- `type-matches-query`: every index's type matches its column's query pattern, or the work says why not
+- `partial-index`: every index serving a stable-predicate filter is partial, or the work says why not
+- `expression-index`: every filter on a computed value has an index on the matching expression
+- `composite-column-order`: every multi-column B-tree is ordered most-selective-and-equality-first and its leading column(s) appear in the predicate
+- `covering-index`: every `INCLUDE (...)` index has an `EXPLAIN` showing `Index Only Scan`
+- `jsonb-gin`: every JSONB containment or key-existence query has a GIN index, or the work says why not
+- `jsonb-path-ops`: every containment-only JSONB GIN index uses `jsonb_path_ops`, or the work says why not
+- `jsonb-write-cost`: write impact was measured before each GIN index on a JSONB column was added, or the work says why not
+- `jsonb-scalar-expression-index`: every JSONB query needing only one scalar key uses an expression index, or the work says why not
+- `explain-before-after`: every new index has `EXPLAIN (ANALYZE, BUFFERS)` output showing it is used and the cost drops
+- `drop-unused`: no index with near-zero `idx_scan` over a representative window remains, or the work says why
+- `measured-need`: every BRIN index, partitioning or custom operator class names the measured need behind it, or the work says why not

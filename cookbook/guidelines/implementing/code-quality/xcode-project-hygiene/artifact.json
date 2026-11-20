@@ -4,7 +4,7 @@
     "id": "187a80eb-e2e5-4a6c-8d14-aa591840abe6",
     "title": "Xcode project hygiene",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -43,32 +43,23 @@
       "https://developer.apple.com/documentation/bundleresources/information-property-list",
       "https://raw.githubusercontent.com/yonaskolb/XcodeGen/master/Docs/ProjectSpec.md"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "configuration",
       "new-module",
       "pre-commit"
     ]
   },
-  "synced": "3a71a5e38467edff",
+  "synced": "5228e594d55f4dde",
   "parts": [
     {"part": "intro"},
-    {"part": "build-settings-live-in-xcconfig-files", "heading": "Build settings live in xcconfig files"},
-    {"part": "targets-and-schemes", "heading": "Targets and schemes"},
-    {"part": "entitlements", "heading": "Entitlements"},
-    {"part": "info-plist", "heading": "Info.plist"},
-    {"part": "signing", "heading": "Signing"},
-    {"part": "project-generators", "heading": "Project generators"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "build-settings", "heading": "Build settings"},
-    {"part": "schemes-and-targets", "heading": "Schemes and targets"},
-    {"part": "entitlements-2", "heading": "Entitlements"},
-    {"part": "info-plist-2", "heading": "Info.plist"},
-    {"part": "signing-2", "heading": "Signing"},
-    {"part": "generated-projects", "heading": "Generated projects"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why review checks these items", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

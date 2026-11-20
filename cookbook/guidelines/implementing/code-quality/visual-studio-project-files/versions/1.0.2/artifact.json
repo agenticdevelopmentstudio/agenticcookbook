@@ -1,0 +1,70 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "9ed898fe-ba86-44be-9911-d24fea60dc90",
+    "title": "Visual Studio project files",
+    "type": "guideline",
+    "version": "1.0.2",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-10-09",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keep .NET and Visual Studio projects SDK-style and small, share properties through Directory.Build.props, manage package versions centrally and keep solution files tidy.",
+    "platforms": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "languages": [
+      "csharp"
+    ],
+    "tags": [
+      "visual-studio",
+      "msbuild",
+      "csproj",
+      "dotnet",
+      "nuget",
+      "solution"
+    ],
+    "depends-on": [],
+    "related": [
+      "af8a4221-90b7-434f-b2a4-64c86a072386",
+      "775da457-30c7-47de-b179-0fae8a8b779d",
+      "6aa54d1a-1888-4107-9e8d-1c2f0ef0c320",
+      "256a827e-436e-4cde-895e-a56b9783edf2"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/overview",
+      "https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory",
+      "https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management",
+      "https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln",
+      "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-09",
+    "triggers": [
+      "configuration",
+      "new-module",
+      "dependency-management"
+    ]
+  },
+  "synced": "143815d497565e84",
+  "parts": [
+    {"part": "intro"},
+    {"part": "sdk-style-projects", "heading": "SDK-style projects"},
+    {"part": "shared-properties", "heading": "Shared properties"},
+    {"part": "central-package-management", "heading": "Central package management"},
+    {"part": "solution-files", "heading": "Solution files"},
+    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "introduction", "heading": "Introduction"},
+    {"part": "project-structure", "heading": "Project structure"},
+    {"part": "shared-properties-2", "heading": "Shared properties"},
+    {"part": "packages", "heading": "Packages"},
+    {"part": "solutions", "heading": "Solutions"},
+    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

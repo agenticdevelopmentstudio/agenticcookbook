@@ -1,0 +1,115 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The file **MUST** stay concise and high-signal.",
+      "to": "must-stay-concise",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-stay-concise keeps the MUST to stay concise and high-signal, verbatim in substance.",
+        "pin": "e213fbc27c4d0cc3bb96c701d7cec863b48b7356d81cc2ef8a24c1af4f615e68"
+      }
+    },
+    {
+      "sentence": "A widely-reported failure mode is that bloated, stale instruction files get partially ignored and can degrade task success — keep durable, load-bearing instructions only.",
+      "to": [
+        "must-stay-concise",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-stay-concise keeps 'keep durable, load-bearing instructions only' and the rationale keeps the reported failure mode of bloated, stale files being partially ignored and degrading task success.",
+        "pin": "fd434583cb07302660b83f7ece4b4c1455bf7e68bdff8d31424dfdf755dd7ff6"
+      }
+    },
+    {
+      "sentence": "Note this is a practitioner heuristic, not a settled empirical result; the durable principle is signal-to-noise, so you **SHOULD** delete instructions that are obsolete, obvious, or contradicted by the code.",
+      "to": [
+        "should-delete-obsolete-instructions",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-delete-obsolete-instructions keeps the SHOULD delete obsolete, obvious or contradicted instructions; the rationale keeps the practitioner-heuristic caveat and the signal-to-noise principle.",
+        "pin": "22ecde396b211a0d4b34fd07615a67db8373272af86130caf1eb7fa5619fcc6f"
+      }
+    },
+    {
+      "sentence": "The root file **SHOULD** hold repo-wide guidance; nested files **SHOULD** hold only what differs for that package, to avoid duplication.",
+      "to": [
+        "should-keep-repo-wide-guidance-at-root",
+        "should-keep-only-differences-in-nested-files"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep both SHOULDs: root holds repo-wide guidance, nested files hold only what differs, with the 'to avoid duplication' reason.",
+        "pin": "333ab98ecda433e6e821b682c88a96d938e6f5cb69398ade62df2c572c3e120b"
+      }
+    },
+    {
+      "sentence": "**build-test-run**: It **MUST** state the exact commands to build, test, and run the project (e.g.",
+      "to": "must-state-build-test-run-commands",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-state-build-test-run-commands keeps the MUST state exact build, test and run commands, with the examples and setup/env-var scope.",
+        "pin": "fcaaee8c29b9a04d847d1676424ba5d82824e94a91d1a7c1a5eabff6f5284674"
+      }
+    },
+    {
+      "sentence": "**conventions**: It **SHOULD** state code style, naming, and project-specific patterns the agent must follow.",
+      "to": "should-state-conventions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-state-conventions keeps the SHOULD state code style, naming and project-specific patterns.",
+        "pin": "f625b58f1c4beb8465db6d998e2a41abf7f549ed12e86bf65bc31251b2f1f581"
+      }
+    },
+    {
+      "sentence": "**layout**: It **SHOULD** describe the project layout — where source, tests, and config live — so the agent navigates without guessing.",
+      "to": "should-describe-project-layout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-describe-project-layout keeps the SHOULD, the source/tests/config scope and the navigate-without-guessing reason.",
+        "pin": "c2eeb79b42eac219e1ce36de7cff75e0b75c266d068822e010e884008ab4c20e"
+      }
+    },
+    {
+      "sentence": "**out-of-scope**: It **SHOULD** state what is off-limits: files or directories not to edit, commands not to run, and any \"ask first\" actions.",
+      "to": "should-state-out-of-scope",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-state-out-of-scope keeps the SHOULD and all three off-limits kinds: files/dirs, commands, ask-first actions.",
+        "pin": "dc27745032390073e502ba97996cd0ab002e5cc8ffbe9d425a055c4134daf4aa"
+      }
+    },
+    {
+      "sentence": "It **MAY** include commit/PR conventions, security gotchas, and deployment steps.",
+      "to": "may-include-commit-security-deploy-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-include-commit-security-deploy-notes keeps the MAY for commit/PR conventions, security gotchas and deployment steps.",
+        "pin": "199bb26d304762bf24d296cbd470f5a9de8e3e8b979fd17e380076190e3b46be"
+      }
+    },
+    {
+      "sentence": "The repo **MUST** ship at least one such file.",
+      "to": "must-ship-root-instruction-file",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-ship-root-instruction-file keeps the MUST ship at least one such file, and adds the root location and AGENTS.md/CLAUDE.md naming.",
+        "pin": "e8f51a01b3e4fe77dea105062444015cde372e3aff6dd9dba7ca5c053e76eba2"
+      }
+    }
+  ],
+  "obsolete": []
+}

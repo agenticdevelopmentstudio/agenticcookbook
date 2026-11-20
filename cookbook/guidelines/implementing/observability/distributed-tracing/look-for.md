@@ -1,0 +1,24 @@
+
+- `must-create-spans-via-otel-api`: a span created through a vendor-specific SDK rather than the OpenTelemetry API
+- `should-span-each-unit-of-work`: an HTTP handler, DB query, outbound call or model invocation with no span, or a span with no clear name or status
+- `should-record-errors-on-spans`: an error that is only logged, with no `span.record_exception` or `ERROR` status on the active span
+- `should-prefer-auto-instrumentation`: manual spans written around a common framework or client that auto-instrumentation covers
+- `should-propagate-w3c-trace-context`: an outbound call across a service boundary that sends no `traceparent` (or drops a present `tracestate`)
+- `should-pin-trace-context-level-1`: reliance on W3C Trace Context Level 2 additions instead of Level 1
+- `must-treat-header-names-case-insensitive`: a case-sensitive lookup of the `traceparent` or `tracestate` header
+- `should-emit-lowercase-traceparent`: `traceparent` emitted in any case other than lowercase
+- `must-not-drop-incoming-traceparent`: a service that starts a new root span when a request arrives with a `traceparent`
+- `should-inject-context-at-transport-edge`: context injected or extracted inside business logic rather than in middleware or interceptors
+- `must-propagate-context-in-messages`: a message or event published without `traceparent` in its metadata
+- `should-link-consumer-span-to-producer`: a queue, pub/sub or event-stream consumer span made a child of the producer instead of linked to it
+- `should-prefer-tail-based-sampling`: head-based sampling in the SDK where tail-based sampling at the Collector could be used
+- `should-keep-errors-and-sample-successes`: a default sampling policy that drops error or high-latency traces, or keeps every successful trace
+- `should-tune-sampling-rate`: a sampling rate fixed as a rule with no tuning from what proves useful
+- `must-propagate-consistent-sampling-decision`: a service that makes its own sampling decision instead of honouring the `traceparent` trace-flags
+- `should-carry-trace-id-in-logs`: log records with no active `trace_id` (and `span_id`)
+- `should-use-same-trace-id-field-name`: services naming the trace ID field differently
+- `may-emit-exemplars`: exemplars emitted where they link no metric point to a sample `trace_id`
+- `should-span-model-and-tool-calls`: a model call or tool/function call in an agent loop with no span of its own, or not nested under the request or agent-step span
+- `should-follow-genai-semantic-conventions`: GenAI span attributes named outside the OpenTelemetry GenAI semantic conventions where they apply
+- `should-record-genai-convention-version`: GenAI attributes used with no record of the convention version targeted
+- `should-opt-in-and-redact-content-capture`: prompt/response content captured on spans by default, or unredacted

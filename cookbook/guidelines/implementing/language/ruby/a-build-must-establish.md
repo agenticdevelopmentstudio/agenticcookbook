@@ -1,0 +1,33 @@
+
+- `should-treat-ruby-as-code`: every Ruby file is structured as code (methods, checked results), not as a shell script with syntax, or the code says why
+- `must-begin-with-frozen-string-literal`: every Ruby file begins with `# frozen_string_literal: true`
+- `must-put-magic-comment-in-first-section`: the `frozen_string_literal` comment is in each file's first comment section
+- `must-copy-before-mutating-strings`: every mutated string is made with `+""` or `String.new`, or is a `dup` of a frozen one
+- `should-use-open3-with-separate-arguments`: every child process runs through `Open3.capture2`, `capture2e` or `capture3` with separate arguments, or the code says why not
+- `must-not-build-command-strings-from-input`: no single command string contains outside input
+- `must-check-process-status`: every `Process::Status` returned is checked with `success?`
+- `should-rescue-enoent-when-absence-expected`: every call whose executable may be absent rescues `Errno::ENOENT`
+- `should-feed-stdin-through-stdin-data`: every child's standard input is fed through `stdin_data:`, or the code says why not
+- `must-pass-argument-lists-to-spawn`: every `Process.spawn` and similar call passes an argument list
+- `should-model-records-with-data-define`: every record type is a `Data.define`, or the code says why not
+- `should-use-struct-only-for-mutation`: every `Struct` is one whose members are mutated
+- `should-serialize-with-to-h`: every serialization returns `to_h`, or the code says why not
+- `must-not-rescue-exception`: no code rescues `Exception`
+- `should-rescue-by-class-name`: every `rescue` names the class it handles
+- `must-not-use-rescue-modifier`: no `rescue` modifier exists
+- `must-not-return-from-ensure`: no `ensure` block contains `return`
+- `should-raise-with-raise`: errors are raised with `raise`, never `fail`
+- `should-subclass-standard-error`: every domain error subclasses `StandardError`
+- `must-pass-hashes-as-explicit-keywords`: every hash passed as keywords uses `**opts`, and is accepted with `**opts`
+- `must-forward-all-argument-kinds`: every forwarding method declares `*args, **kwargs, &block` or uses `...`
+- `should-limit-ruby2-keywords-to-old-rubies`: every `ruby2_keywords` is in code that must also run on Ruby 2.6 to 3.0, and says so
+- `must-use-snake-case`: every method and variable is `snake_case`
+- `must-end-predicates-in-question-mark`: every predicate method ends in `?`
+- `must-pair-bang-methods`: every bang method has a non-bang counterpart
+- `should-configure-style-in-rubocop-yml`: style is configured in `.rubocop.yml` and the code passes it
+- `should-set-rubocop-target-version`: the target Ruby version comes from `AllCops: TargetRubyVersion`, the gemspec, `.ruby-version` or `.tool-versions`
+- `must-use-rubocop-version-env-only-in-ci`: `RUBOCOP_TARGET_RUBY_VERSION` is set only in CI
+- `must-have-one-global-gem-source`: every `Gemfile` has exactly one global `source`
+- `must-commit-gemfile-lock`: `Gemfile.lock` is committed and matches the `Gemfile`
+- `should-group-dev-and-test-gems`: development and test gems are in groups
+- `should-omit-unneeded-gem-groups`: installs that do not need development or test gems run with `bundle config set --local without <group>`, or the code says why not

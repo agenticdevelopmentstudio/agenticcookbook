@@ -1,0 +1,49 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "ae9559b5-4829-4349-b018-986e98c31d39",
+    "title": "Apple design language and widgets",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-09",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Adopt the system Apple design language and materials over custom chrome, and version-gate brand-new design APIs like Liquid Glass.",
+    "platforms": [
+      "swift",
+      "ios",
+      "macos"
+    ],
+    "tags": [
+      "apple",
+      "design",
+      "widgets"
+    ],
+    "depends-on": [],
+    "related": [
+      "3741ed5e-0b67-48f2-b227-36ae152c0f4b",
+      "e3aa9294-61cf-4a3a-9fbf-0528a1404094"
+    ],
+    "references": [
+      "https://developer.apple.com/design/human-interface-guidelines"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-09",
+    "triggers": [
+      "ui-implementation",
+      "platform-integration"
+    ]
+  },
+  "synced": "4ab0dceb643a4ac8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "adopt-the-system-design-language", "heading": "Adopt the system design language"},
+    {"part": "liquid-glass-version-recent-evolving-forecast-sensitive", "heading": "Liquid Glass — version-recent, evolving (FORECAST-sensitive)"},
+    {"part": "widgetkit-and-glanceable-surfaces", "heading": "WidgetKit and glanceable surfaces"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

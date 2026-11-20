@@ -1,0 +1,17 @@
+
+- `must-measure-groundedness-and-hallucination-rate`: the system measures groundedness and a hallucination rate against retrieved sources
+- `should-score-at-claim-granularity`: groundedness is scored per atomic claim, or the code says why not
+- `must-measure-retrieval-independently`: retrieval quality is measured independently of generation
+- `should-cite-specific-spans`: citations point at specific source spans, or the code says why not
+- `must-verify-cited-spans`: every cited span is checked to exist in the source and entail its claim
+- `may-score-with-llm-judge`: where an LLM judge scores groundedness, it sees only the answer and retrieved chunks
+- `should-keep-judge-blind-to-gold-answer`: the judge never sees a gold answer, or the code says why
+- `must-calibrate-judge-against-gold-set`: the judge was calibrated against a human-labeled gold set with agreement reported before its scores were trusted
+- `should-pin-one-eval-framework`: one eval framework and version is pinned and trends are tracked, or the code says why not
+- `should-abstain-without-evidence`: the system abstains when retrieval finds no supporting evidence, or the code says why not
+- `must-include-unanswerable-cases`: the eval set includes unanswerable-from-context cases and scores abstention explicitly
+- `should-not-penalize-correct-abstention`: aggregate scoring does not count a correct abstention as a miss, or the code says why
+- `should-run-evals-in-ci-on-fixed-set`: groundedness and hallucination evals run in CI on a fixed query set, or the code says why not
+- `must-fail-build-on-hallucination-regression`: CI fails the build when the hallucination rate regresses past a set threshold
+- `should-treat-groundedness-as-release-gate`: groundedness gates releases alongside latency and cost, or the code says why not
+- `should-redact-pii-before-judge`: user PII in eval sets is redacted or synthesized before reaching a judge model, or the code says why not

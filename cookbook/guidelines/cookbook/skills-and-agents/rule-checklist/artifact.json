@@ -4,7 +4,7 @@
     "id": "392d9205-6a50-4815-80a0-7d148880d43b",
     "title": "Rule Lint Checklist",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
@@ -27,21 +27,26 @@
       "b8aa57e0-6a85-4605-ae84-1220872294de"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring",
       "pre-pr"
     ]
   },
   "names_hosts": "A review checklist for Claude Code skills, agents and rules; it cites Claude Code's docs and its model overrides by name.",
-  "synced": "95436374a153e18c",
+  "synced": "3ec3911c60eccd82",
   "parts": [
     {"part": "intro"},
-    {"part": "content-quality", "heading": "Content Quality"},
-    {"part": "best-practices", "heading": "Best Practices"},
-    {"part": "rule-specific", "heading": "Rule-Specific"},
-    {"part": "optimization", "heading": "Optimization"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "content-quality", "heading": "Content Quality", "role": "review-focus"},
+    {"part": "best-practices", "heading": "Best Practices", "role": "review-focus"},
+    {"part": "rule-specific", "heading": "Rule-Specific", "role": "review-focus"},
+    {"part": "why-optimization", "heading": "Why Rule Size Matters", "role": "rationale"},
+    {"part": "optimization", "heading": "Optimization", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

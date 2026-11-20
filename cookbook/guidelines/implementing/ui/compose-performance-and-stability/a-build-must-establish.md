@@ -1,0 +1,18 @@
+
+- `should-pass-immutable-data`: composable parameters are `val`, immutable collections or stable data classes, or the work says why not
+- `should-prefer-genuinely-stable-inputs`: composable inputs are genuinely stable, or the work says why not
+- `should-annotate-stability-only-when-true`: every `@Immutable` / `@Stable` type is truly so and not inferable by the compiler, or the work says why it is annotated
+- `should-read-state-late`: frequently-changing state is read in lambda-based modifiers, not in composition, or the work says why not
+- `should-pass-lambdas-for-frequently-changing-values`: frequently-changing values are passed as lambdas, or the work says why not
+- `should-use-derivedstateof-for-thresholds`: threshold-driven UI over frequently-changing state uses `derivedStateOf`, or the work says why not
+- `should-not-use-derivedstateof-for-one-to-one-transforms`: no `derivedStateOf` wraps a one-to-one transform, or the work says why
+- `should-remember-expensive-computation`: costly computations are wrapped in `remember` keyed to their inputs, or the work says why not
+- `must-key-lazy-list-items`: every lazy list or grid `items(...)` call supplies a stable `key`
+- `must-not-perform-backwards-writes`: no composable writes to state it already read
+- `should-keep-composables-side-effect-free`: composables have no side effects in their body and are idempotent, or the work says why not
+- `should-avoid-allocating-in-composable-body`: no collection, capturing lambda or object is allocated in a composable body on every call, or the work says why
+- `should-profile-release-builds`: performance was measured on a release build with R8 and a Baseline Profile, or the work says why not
+- `must-not-tune-against-debug-builds`: no tuning decision rests on a debug-build measurement
+- `should-use-layout-inspector-recomposition-counts`: recomposition counts were checked in Layout Inspector, or the work says why not
+- `should-gate-regressions-with-macrobenchmark`: Macrobenchmark runs on representative journeys as a regression gate, or the work says why not
+- `should-optimize-only-after-measurement`: every optimization names the measurement that justified it, or the work says why not

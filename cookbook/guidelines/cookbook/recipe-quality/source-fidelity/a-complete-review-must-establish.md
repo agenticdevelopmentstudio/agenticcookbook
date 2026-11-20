@@ -1,0 +1,18 @@
+
+- `must-trace-requirements-to-source`: whether every behavioral requirement traces to a specific code path, API response or test case
+- `must-not-invent-requirements`: whether any requirement covers behavior the source does not implement
+- `should-note-indirect-evidence-source`: whether each indirectly traced requirement notes its evidence source
+- `must-mark-partially-observable-requirements`: whether each partially observable requirement is marked `NEEDS REVIEW` with what cannot be confirmed and why
+- `must-not-fabricate-unimplemented-concerns`: whether the recipe fabricates requirements for a concern the source does not support
+- `must-mark-unimplemented-sections`: whether every unimplemented section carries `NEEDS REVIEW: Not implemented in source. Behavior undefined.`
+- `must-not-mark-implemented-behavior-needs-review`: whether any `NEEDS REVIEW` marker sits on behavior that is implemented and observable
+- `must-document-workarounds-and-quirks`: whether every known workaround, platform-specific hack or surprising behavior is documented in Design Decisions or inline notes
+- `must-not-smooth-over-quirks`: whether any quirk is described by its idealized behavior with the actual behavior omitted
+- `must-document-unusual-handling`: whether every unusual or non-obvious handling is documented as a requirement or noted deviation
+- `should-note-behavior-affecting-technical-debt`: whether technical debt affecting behavioral correctness is noted in Design Decisions
+- `must-not-treat-behavior-affecting-debt-as-optional`: whether technical debt that affects how implementations must behave was left undocumented
+- `must-document-actual-error-handling`: whether the recipe documents the source's actual error handling, including swallowed exceptions and ignored error codes
+- `must-not-claim-unattempted-error-handling`: whether the recipe claims error handling (such as `MUST display an error message on failure`) that the source never attempts
+- `must-describe-code-as-it-is`: whether the recipe describes the code as it is, not as the author believes it should be
+- `must-separate-aspirational-behavior`: whether aspirational behavior, if present, sits in a separate "Recommended Improvements" section clearly distinguished from normative requirements
+- `must-not-derive-requirements-from-an-ideal`: whether any requirement comes from what "a well-implemented component would do" rather than what the code does

@@ -4,11 +4,11 @@
     "id": "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a",
     "title": "Verification and trust scoring",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,19 +31,22 @@
       "https://beallslist.net/",
       "https://www.ifcncodeofprinciples.poynter.org/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "research"
     ]
   },
-  "synced": "5d60e8d40f601e20",
+  "synced": "bba9742bf4c42eec",
   "parts": [
     {"part": "intro"},
-    {"part": "verification-frameworks", "heading": "Verification frameworks"},
-    {"part": "domain-bars", "heading": "Domain bars"},
-    {"part": "scoring-0-100", "heading": "Scoring (0-100)"},
-    {"part": "false-positive-catalog", "heading": "False-positive catalog"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "verification-frameworks", "heading": "Verification frameworks", "role": "how-to"},
+    {"part": "domain-bars", "heading": "Domain bars", "role": "how-to"},
+    {"part": "scoring-0-100", "heading": "Scoring (0-100)", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

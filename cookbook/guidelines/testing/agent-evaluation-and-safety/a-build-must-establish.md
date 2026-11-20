@@ -1,0 +1,22 @@
+
+- `should-treat-both-gates-as-release-gating`: CI runs both gates as release gates on every model, prompt, tool or retrieval change, or the project says why not
+- `should-pass-both-gates`: the release passed both gates and the deploy is blocked on either failure, or the project says why not
+- `should-follow-eval-driven-development`: graders, judge calibration and consistency reporting follow eval-driven-development, or the project says why not
+- `should-follow-llm-application-security`: prompt injection, untrusted output and tool agency are handled per llm-application-security, or the project says why not
+- `should-pin-owasp-llm-2025-edition`: the safety mapping names the pinned 2025 edition, or the project says why not
+- `must-define-numeric-slos`: numeric quality and safety SLO thresholds are defined before the model reaches production
+- `must-version-slo-datasets`: every SLO names the versioned dataset its pass/fail is measured on
+- `should-set-hard-safety-ceiling`: the safety SLOs include a hard ceiling, or the project says why not
+- `should-not-trade-safety-for-quality`: no safety SLO was relaxed for quality, or the trade is recorded as a deliberate decision
+- `must-trigger-gates-on-every-change`: CI triggers both gates for each of model, prompt, tools, corpus and guardrail config changes
+- `must-treat-model-bump-as-code-change`: the model-version bump passed both gates before it rolled forward
+- `should-record-results-against-revision`: each gate result carries its dataset revision and model id, or the project says why not
+- `should-keep-held-out-set`: the gate includes a held-out set unused in iteration, or the project says why not
+- `must-seed-adversarial-suite`: the safety gate's suite contains adversarial cases of each named kind
+- `should-combine-curated-and-automated-red-teaming`: the suite combines curated and automated red-teaming and holds every found bypass, or the project says why not
+- `should-layer-runtime-guardrails`: guardrails are layered, or the project says why not, and the gate still tests each one
+- `must-persist-gate-results`: every run's gate results are persisted
+- `should-alert-on-regression`: an alert fires on cross-release regression and flakiness, or the project says why not
+- `should-confirm-regulatory-obligations-with-counsel`: the project records counsel's confirmation of regulatory obligations, or says why not
+- `should-adopt-heavy-eval-infra-on-measured-need`: any heavy eval infrastructure cites the measured need behind it, or the project says why not
+- `should-start-small`: the gates start from a small versioned dataset in CI, or the project says why not

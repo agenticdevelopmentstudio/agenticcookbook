@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Using Acrylic as a full-window backdrop for a long-lived window (use Mica — Acrylic's real-time blur wastes power).",
+      "to": "should-not-use-acrylic-as-long-lived-backdrop",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed anti-pattern is kept at SHOULD NOT with its full-window, long-lived scope, the Mica alternative and the power reason.",
+        "pin": "c42749950eb5d74aff448abcd49c0a80b81f97156c0a20987b315b9c5c042f33"
+      }
+    },
+    {
+      "sentence": "Re-enabling transparency or material after the system fell back to solid color.",
+      "to": "should-not-reenable-material-after-fallback",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed anti-pattern is kept at SHOULD NOT with its after-fallback condition; honor-system-fallback also forbids it at MUST NOT.",
+        "pin": "82cb07d33de5f4bc558303a1a3ce3379c5f34b9e5dd6853f5651ca868e749efc"
+      }
+    },
+    {
+      "sentence": "Layering material on a single control instead of the window backdrop.",
+      "to": "should-not-layer-material-on-a-single-control",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed anti-pattern is kept at SHOULD NOT with its 'instead of the window backdrop' contrast; one-backdrop-per-window also forbids it at MUST NOT.",
+        "pin": "2fa6e9274dbeff63f1543a8058cd5db27b177ee4caea6ea48cb4b9af571349ba"
+      }
+    },
+    {
+      "sentence": "**win32-and-wpf**: For Win32/WPF hosts, follow the platform-specific \"Apply Mica in Win32 desktop apps\" path rather than assuming the WinUI API surface.",
+      "to": "win32-and-wpf",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD with the Win32/WPF scope, the named Microsoft path and the contrast with the WinUI API surface.",
+        "pin": "939242c3d78728ae8aa2bee65529dd0e5c6b10201d6b385109da91e37e479dd4"
+      }
+    }
+  ],
+  "obsolete": []
+}

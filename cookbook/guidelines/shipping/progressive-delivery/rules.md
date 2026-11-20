@@ -1,0 +1,18 @@
+
+- **must-not-deploy-at-full-exposure**: A deploy MUST NOT imply 100% exposure. Ship the artifact dark, then control exposure separately.
+- **must-change-exposure-without-redeploy**: The exposure control plane (feature flags, traffic weights, or ring assignment) MUST be changeable without a redeploy. This keeps rollback to seconds, not a build cycle (`small-reversible-decisions`).
+- **must-make-each-change-observable**: Each progressive change MUST be observable on its own: tag metrics/logs/traces with the variant or cohort so canary and baseline are comparable side by side (`explicit-over-implicit`).
+- **should-pick-lightest-mechanism**: SHOULD pick the lightest rollout mechanism that fits the risk, and SHOULD NOT stack all of them.
+- **should-roll-out-high-risk-changes-progressively**: High-risk changes (schema-affecting, auth, payment, irreversible side effects) SHOULD be rolled out progressively rather than shipped to 100% at once.
+- **must-give-each-step-hold-and-criteria**: A typical canary ramp holds at each step long enough to observe peak load, cache warming, and background jobs — e.g. 1% -> 5% -> 25% -> 50% -> 100%. Each step MUST have an explicit hold duration and pass/fail criteria.
+- **must-keep-schema-backward-compatible**: Schema and data changes MUST stay backward-compatible across the rollout window (expand-then-contract): old and new code run against the same store simultaneously.
+- **must-define-health-gates-before-rollout**: Each step MUST define quantitative health gates *before* rollout — e.g. error rate, latency percentiles (p95/p99), and a key business metric — compared against the baseline cohort.
+- **should-roll-back-automatically**: Rollback SHOULD be triggered automatically when an SLO health gate fails or the error budget burns faster than the allowed rate, not by waiting for a human to notice (`fail-fast`).
+- **must-expose-single-kill-switch**: The control plane MUST expose a single kill switch that reverts exposure to the last-known-good state in one action.
+- **must-make-rollback-idempotent**: Rollback and re-application MUST be idempotent: repeating the revert produces the same safe state with no duplicate side effects (`idempotency`).
+- **should-automate-routine-scoring-and-revert**: Humans handle exceptions and ambiguous signals; routine scoring and revert SHOULD be automated.
+- **should-remove-rollout-flags**: Flags introduced purely to gate a rollout are temporary. The flag and the dead branch SHOULD be removed once the change is at 100% and stable, to avoid permanent branching debt (`design-for-deletion`, `yagni`).
+- **should-pause-rollouts-during-incidents**: New progressive rollouts SHOULD be paused during an active incident or when the error budget is exhausted.
+- **should-prefer-native-progressive-delivery**: SHOULD prefer the platform/orchestrator's native progressive-delivery support (e.g. Kubernetes-native canary controllers, or a managed flag service) before building bespoke traffic-shifting (`native-controls`, `open-source-preference`).
+- **should-pin-tool-version-in-runbook**: SHOULD pin the tool and its version in your runbook rather than encoding vendor specifics here.
+- **should-treat-vendor-adoption-stats-as-marketing**: SHOULD treat single-vendor adoption stats as marketing, not fact.

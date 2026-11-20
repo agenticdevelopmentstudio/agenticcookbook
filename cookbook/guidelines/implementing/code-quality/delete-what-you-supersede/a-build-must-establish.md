@@ -1,0 +1,22 @@
+
+- `must-delete-replaced-implementation`: each implementation the build replaced is deleted in the same change
+- `should-not-keep-old-and-new-side-by-side`: no old path is left beside its new one or behind a permanently-off flag, or the build says why
+- `should-delete-as-you-go`: the build did its deletions as it went, not as a planned later pass, or says why
+- `should-delete-old-tests-with-old-code`: old tests were removed with the old code, and still-relevant behavior they pinned is tested on the new path, or the build says why not
+- `must-update-every-caller`: a search for each renamed or moved item's old name finds no caller, import, export, doc reference or string left
+- `should-search-whole-repo-for-old-name`: the build searched the whole repo for each old name, or says why not
+- `should-search-whole-identifier`: the build searched whole identifiers across code, strings, config and docs, or says why not
+- `should-finish-with-final-search`: a final search for each old name was run and every hit resolved, or the build says why not
+- `must-comment-compatibility-shims`: every shim the build keeps has a comment saying it is one and when it goes away
+- `must-delete-unreferenced-things`: a reference search finds nothing the change left unreferenced
+- `should-remove-orphaned-flags`: every flag the change orphaned is removed with its branch, or the build says why not
+- `should-remove-unused-dependencies`: every dependency the change made unused is out of the manifest, or the build says why not
+- `should-confirm-with-reference-search`: each deletion is backed by a reference search, or the build says why not
+- `must-not-delete-unproven-unused`: everything the build deleted was shown to be unused
+- `must-not-widen-cleanup`: the build deleted no unrelated dead code and noted any it found for the user
+- `must-delete-not-comment-out`: the build leaves no commented-out code
+- `should-not-keep-old-code-for-reference`: the build keeps no old block as a reference, or says why
+- `should-record-old-reasoning-as-a-sentence`: reasoning behind a removed approach that matters is kept as a comment sentence, not as code, or the build says why not
+- `must-not-commit-temporary-disables`: no commit holds a temporary debugging disable
+- `should-rename-when-meaning-changes`: every value, function or field whose content the build changed is renamed to match, or the build says why not
+- `should-reread-touching-names`: the names touching each changed type or behavior were reread and fixed, or the build says why not

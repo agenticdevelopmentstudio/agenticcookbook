@@ -1,0 +1,20 @@
+
+- `should-treat-machine-legibility-as-one-audience`: the code serves machine-legibility without abandoning human readability, or says why
+- `must-keep-names-literally-searchable`: every name the build adds is searchable as a literal string
+- `should-use-one-canonical-spelling`: every concept the build names uses its one canonical spelling, or the code says why not
+- `should-avoid-runtime-constructed-identifiers`: the build constructs no identifier at runtime, or the code says why
+- `should-find-definition-by-grep`: a search for each new function's name finds its definition, or the code says why not
+- `should-keep-call-sites-discoverable`: each new function has a call site that names it, or the code says why not
+- `should-minimize-hidden-runtime-behavior`: the build adds no reflection, dynamic dispatch or runtime metaprogramming it could do without, or the code says why
+- `should-keep-signatures-explicit`: every new signature has explicit, accurate parameter names and return types, or the code says why not
+- `should-prefer-explicit-types-and-names`: new code uses explicit types and intention-revealing names where they are optional, or says why not
+- `should-prefer-explicit-control-flow`: new code adds no auto-registration, monkey-patching or import-time side effects, or says why
+- `should-colocate-tests`: new tests sit beside the code they exercise, or the code says why not
+- `should-name-tests-for-behavior`: each new test is named for the behavior it verifies, or the code says why not
+- `must-not-maximize-machine-legibility-at-all-costs`: no change trades away human readability wholesale for machine-legibility
+- `should-favor-locality-of-related-behavior`: related behavior the build adds is kept together, or the code says why not
+- `should-judge-dry-per-case`: each abstraction or repetition the build adds is justified for its case, or the code says why not
+- `should-not-cite-agent-readership-as-statistic`: no comment or doc the build adds cites agent readership as an established statistic, or says why
+- `should-justify-by-concrete-readability`: each readability choice the build records rests on concrete readability, not the trend, or says why not
+- `should-prefer-explicit-and-local-when-cost-low`: each low-cost conflict the build met was resolved toward explicit, local behavior, or the code says why not
+- `should-weigh-and-document-when-human-cost-high`: each high-human-cost trade-off the build made is documented, or the code says why not

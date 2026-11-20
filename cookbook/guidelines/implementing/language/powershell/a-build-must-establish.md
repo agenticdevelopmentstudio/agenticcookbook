@@ -1,0 +1,22 @@
+
+- `should-follow-shell-script-rules`: every script keeps its functions small with a `main` that only calls them, or the code says why not
+- `must-set-strict-mode`: every script and module begins with `Set-StrictMode -Version 3.0` or the highest tested version
+- `must-not-use-strict-mode-latest`: no shared code uses `Set-StrictMode -Version Latest`
+- `should-set-strict-mode-at-top`: `Set-StrictMode` is set at the top of each script, not inside a function other code calls
+- `must-stop-on-error-when-failure-must-halt`: every script that must not continue after a failure sets `$ErrorActionPreference = 'Stop'` at the top, overriding it only per command with `-ErrorAction`
+- `should-catch-handleable-failures`: work whose failure the code can handle is wrapped in `try`/`catch`
+- `should-clean-up-in-finally`: every cleanup runs in `finally`, or the code says why not
+- `must-test-lastexitcode`: every external program call is followed by an explicit `$LASTEXITCODE` test
+- `must-suppress-unwanted-output`: every unwanted value is suppressed with `$null = ...`, `| Out-Null` or a redirection
+- `must-send-messages-to-message-streams`: every message for people goes to `Write-Verbose`, `Write-Information` or `Write-Warning`
+- `must-return-a-stable-shape`: every function returns either objects or nothing, in one shape
+- `must-not-return-display-text`: no function returns text meant for display
+- `must-name-functions-verb-noun`: every function is named `Verb-Noun` with a verb `Get-Verb` lists
+- `must-not-invent-verb-synonyms`: no function uses a synonym for an approved verb (`Delete-`, `Kill-`)
+- `should-not-use-reserved-verbs`: no function of the project's own uses `ForEach`, `Ping`, `Sort` or `Tee`
+- `should-use-singular-nouns`: every function noun is singular, or the code says why not
+- `should-prefix-module-nouns`: every module's function nouns carry the module prefix, or the code says why not
+- `must-declare-supports-should-process`: every state-changing command declares `[CmdletBinding(SupportsShouldProcess)]`
+- `must-wrap-each-change-in-should-process`: every change in a state-changing command is inside `if ($PSCmdlet.ShouldProcess(...))`
+- `should-set-high-confirm-impact-when-destructive`: every destructive command sets `ConfirmImpact` to `High`, or the code says why not
+- `should-run-psscriptanalyzer-in-ci`: CI runs PSScriptAnalyzer, including `UseApprovedVerbs` and `UseShouldProcessForStateChangingFunctions`, and it passes

@@ -1,0 +1,11 @@
+
+- `framing-before-divergence`: whether framing techniques were applied before any divergent phase began
+- `hmw-reframe-first`: whether the facilitator generated at least one HMW framing of the seed idea before any ideation began
+- `hmw-multiple-angles`: whether the facilitator generated 2–4 HMW variants reframing the problem from different angles
+- `hmw-syntax`: whether every HMW question uses the exact three-word opener "How Might We"
+- `five-whys-before-generating`: whether Five Whys was applied when the seed sounded like a solution rather than a goal
+- `five-whys-chain`: whether each "Why?" targeted the answer to the prior "Why?", not the original symptom statement
+- `five-whys-stop`: whether Five Whys stopped when the answer was a root cause (an unchangeable constraint or a genuine underlying need) rather than after exactly five iterations
+- `first-principles-list-assumptions`: whether the user was invited to name assumptions explicitly before first-principles reasoning was applied
+- `first-principles-rebuild`: whether, after assumptions were surfaced, the user was invited to reconstruct the goal as if none of them were true
+- `first-principles-distinguish`: whether the facilitator kept first-principles thinking ("what is fundamentally true?") distinct from analogical reasoning ("how did others solve this?")

@@ -1,0 +1,11 @@
+
+- **should-define-ports**: SHOULD define ports (interfaces) that describe what the application needs.
+- **should-use-adapters**: SHOULD use adapters to translate between external technologies and your ports.
+- **should-test-core-without-infrastructure**: SHOULD test the core application without databases, UIs, or networks.
+- **should-define-dependencies-as-owned-protocols**: SHOULD define each external dependency as a protocol the app owns, not a concrete type the vendor owns.
+- **should-keep-adapters-thin**: SHOULD keep adapter implementations thin — translate and delegate.
+- **must-not-add-business-logic-to-adapters**: Adapter implementations MUST NOT add business logic.
+- **should-extract-shared-contracts**: If two modules need to share a type, SHOULD extract it into a shared contract rather than coupling the modules directly.
+- **should-verify-boundaries-without-framework-imports**: SHOULD verify boundaries by confirming core logic compiles and tests pass with no framework imports.
+- **should-extend-at-the-boundary**: Extend at the boundary, don't break the contract: once a boundary is stable and widely depended on, SHOULD add capability through new implementations behind the port rather than changing the port's existing shape.
+- **should-not-pre-generalize-unstable-boundaries**: SHOULD apply extend-at-the-boundary only to boundaries that have actually stabilized, and SHOULD NOT pre-generalize one you are still discovering (see yagni, steel-thread-first).

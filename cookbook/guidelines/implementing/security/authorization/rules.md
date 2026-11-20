@@ -1,0 +1,11 @@
+
+- **should-enforce-all-access-control-server-side**: All access control **SHOULD** be enforced server-side.
+- **must-not-use-client-side-checks-as-security-controls**: Client-side checks (hiding buttons, disabling fields) are UX conveniences and **MUST NOT** be used as security controls.
+- **must-deny-by-default**: If no explicit permission grants access, the request MUST be denied (deny by default).
+  - Every new endpoint starts locked down.
+- **must-request-minimum-scopes**: Endpoints MUST request minimum scopes (least privilege).
+- **should-enforce-permission-check-per-endpoint**: Each endpoint **SHOULD** enforce its own permission check.
+- **should-define-roles-with-minimal-permissions**: RBAC roles **SHOULD** be defined with minimal permissions.
+- **should-prefer-fine-grained-permissions-in-roles**: Fine-grained permissions composed into roles **SHOULD** be preferred over monolithic role checks.
+- **must-verify-object-level-access**: The server MUST verify the authenticated user has access to the specific resource ID requested (Broken Object Level Authorization, BOLA).
+- **must-not-treat-known-id-as-access**: Code **MUST NOT** assume "if they know the ID, they have access."

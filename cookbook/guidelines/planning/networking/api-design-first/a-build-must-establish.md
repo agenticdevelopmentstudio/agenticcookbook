@@ -1,0 +1,22 @@
+
+- `should-write-the-spec-before-any-endpoint`: the OpenAPI specification predates every endpoint's implementation, or the work says why not
+- `should-define-non-trivial-apis-contract-first`: each non-trivial HTTP API has an agreed OpenAPI document written before its implementation, or the work says why not
+- `should-skip-the-ceremony-only-for-throwaway-prototypes`: the ceremony is skipped only for a throwaway prototype to be deleted, or the work says why
+- `must-treat-the-spec-as-the-source-of-truth`: where code and spec disagreed, the code was fixed to the spec
+- `must-ship-the-spec-with-the-implementation`: every API change carries its spec change in the same change set
+- `must-lint-the-spec-in-ci`: CI lints the spec and fails the build on errors
+- `should-use-openapi-3-1-as-the-baseline`: the spec is OpenAPI 3.1.x, or the work says why not
+- `should-adopt-openapi-3-2-only-with-full-tool-support`: OpenAPI 3.2 is used only where every generator, linter and mock server supports it, or the work says why
+- `should-verify-tool-support-before-3-2-features`: each 3.2-only feature used has its tool support verified, or the work says why not
+- `must-state-the-openapi-version-explicitly`: every spec file states the same explicit `openapi:` version
+- `should-derive-artifacts-from-the-spec`: the client, stubs or route validation, mock server and docs are generated from the spec, or the work says why not
+- `must-not-hand-edit-generated-code`: no generated code carries hand edits
+- `should-lint-with-a-spec-linter`: a spec linter runs with a checked-in ruleset extending the OpenAPI rules with house rules, or the work says why not
+- `should-consider-security-lint-rules`: security-focused lint rules are in the ruleset, or the work says why not
+- `must-run-the-linter-on-every-spec-change`: CI lints every change touching the spec and treats errors as failures
+- `should-add-a-breaking-change-diff-check`: a breaking-change diff check runs before merge, or the work says why not
+- `should-assert-provider-responses-conform`: provider tests assert responses conform to the spec schemas, or the work says why not
+- `should-validate-consumers-against-the-spec`: consumers validate against the same spec, or the work says why not
+- `must-not-generate-the-spec-from-code`: a new API's spec is not generated from running code
+- `must-not-keep-divergent-spec-copies`: one canonical spec document exists and all tooling references it
+- `must-not-merge-undescribed-behavior`: every behavior of the implementation is described in the spec

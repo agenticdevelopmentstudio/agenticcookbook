@@ -1,0 +1,13 @@
+
+- `should-note-cross-cutting-concerns-not-isolate`: every concern appearing across all groups is listed under cross-cutting concerns, not as a scope group
+- `should-not-group-call-sites`: no recommended scope group's members are only call sites of a concern, or the findings say why
+- `should-give-shared-infrastructure-one-scope-group`: each concern's own files appear in exactly one shared infrastructure scope group, or the findings say why not
+- `should-treat-call-sites-as-dependencies`: each shared infrastructure group lists its call sites as consumers, not members
+- `should-classify-logging-configuration-as-infrastructure`: logging configuration files form the logging infrastructure unit and no log call site is in it
+- `should-note-pervasive-coupling-anti-pattern`: every singleton called directly from every group is listed under coupling anomalies
+- `should-inject-not-merge-shared-dependency`: each pervasive-coupling anomaly recommends injecting the dependency, and no groups were merged for sharing it
+- `must-give-auth-infrastructure-own-scope-group`: security/auth infrastructure is a scope group of its own, separate from the auth check sites
+- `must-not-treat-auth-as-merely-cross-cutting`: auth infrastructure does not appear only among the cross-cutting concerns
+- `should-group-event-definitions-with-analytics`: analytics event definition files are in the analytics infrastructure group, or the findings say why not
+- `must-catalog-di-container-separately`: the findings list the DI / composition root files separately, with the groups they wire together
+- `should-apply-the-definitive-test`: each infrastructure group's stated reason names its own state, lifecycle, or logic

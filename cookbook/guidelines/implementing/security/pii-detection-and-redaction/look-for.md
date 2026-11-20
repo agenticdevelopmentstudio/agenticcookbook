@@ -1,0 +1,25 @@
+
+- `two-identifier-classes`: a PII scan or schema review that covers only direct identifiers and ignores quasi-identifiers (date of birth, ZIP, gender) in combination breaks it
+- `use-a-coverage-checklist`: PII categories chosen ad hoc rather than enumerated against a fixed list such as HIPAA Safe Harbor's 18 identifiers
+- `linked-and-linkable`: PII instances with no low/moderate/high confidentiality-impact rating, or controls not sized to it
+- `detect-in-layers`: detection that relies on a single technique instead of combining rule-based and ML detection
+- `regex-for-structured`: structured types (email, phone, SSN, credit-card, IBAN, IP) matched with unanchored patterns or not matched at all
+- `validate-with-checksums`: a pattern match treated as PII with no format-specific validator (Luhn, IBAN mod-97) breaks it
+- `context-words`: detection that ignores nearby context words when gating or scoring a match
+- `ner-for-unstructured`: free text scanned for names, places or organizations by regex alone, or domain ID formats with no custom recognizer
+- `favor-recall`: a detector tuned for precision or F1 rather than recall (F2 / β=2)
+- `should-not-ship-precision-chosen-detector`: a detector chosen because of a clean precision number
+- `default-deny`: a boundary that blocklists hidden fields where an allowlist of what may leave was feasible
+- `drop-structurally`: PII-bearing fields string-scrubbed out of a built payload instead of dropped at the schema or serialization boundary
+- `pick-operation-by-need`: a redaction operation used where its reversibility or utility does not fit the need
+- `redact-published-data`: published or exported data protected by masking, tokenization or pseudonymization instead of redaction
+- `pseudonymized-is-not-anonymized`: pseudonymized data labelled or handled as anonymized
+- `generalize-and-suppress`: quasi-identifiers kept at full precision with no coarsening, suppression or k-anonymity / l-diversity / t-closeness bound on linkage risk
+- `anonymization`: data called anonymized where re-identification remains reasonably feasible
+- `fail-closed-backstop`: an emit or build that does not re-scan the serialized output after redaction, or that warns instead of hard-failing on a surviving pattern, breaks it
+- `defense-in-depth`: a single redaction gate with no independent layer behind it
+- `golden-tests`: no known-leaky fixture with an end-to-end assertion that nothing survives
+- `freeze-edge-cases`: a real edge case (a `git@github.com:` remote, a `~/tool` path) found and fixed without a regression test
+- `scan-history-not-just-the-tip`: a public repo scanned only at the working tree, not across its history
+- `remediate-then-rotate`: PII or a secret removed from the tip but not purged with `git filter-repo` or BFG, the remote not force-updated, or an exposed secret not rotated
+- `assume-public-credentials-compromised`: a credential that was public treated as safe once purged breaks it

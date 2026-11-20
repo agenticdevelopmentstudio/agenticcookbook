@@ -1,0 +1,19 @@
+
+- `measure-at-the-journey`: whether each SLI is measured at the boundary closest to the user
+- `cover-the-failure-modes`: whether each user-facing service defines SLIs across the relevant categories (availability, latency, correctness/freshness/coverage)
+- `latency-uses-percentiles`: whether every latency SLI is a percentile bound, not a mean
+- `define-multiple-latency-thresholds`: whether latency SLIs define multiple thresholds for typical and tail experience
+- `define-valid-events`: whether each SLI states and documents which events count toward its denominator
+- `slos-are-targets-not-100`: whether every SLO is below 100%
+- `choose-lowest-unnoticed-reliability`: whether each SLO is the lowest reliability users won't notice
+- `user-facing-needs-an-slo`: whether every user-facing service has at least one SLO with an owner
+- `start-from-data`: whether the initial SLO was set from observed performance
+- `budget-governs-velocity`: whether budget state governs shipping pace, with an agreed response to exhaustion
+- `agree-the-policy-first`: whether product and engineering owners agreed the exhaustion consequences before any breach
+- `alert-on-symptom-not-cause`: whether alerting targets budget burn rather than resource thresholds
+- `use-multi-window-multi-burn-rate`: whether burn-rate alerts require both a long and a short window
+- `tier-by-severity`: whether fast burn pages and slow burn opens a ticket
+- `scale-windows-to-your-slo`: whether the windows and rates were recomputed for any window or target other than 30 days and 99.9%
+- `should-not-alert-on-fixed-error-count`: whether any alert rests on a single fixed error-count threshold
+- `should-not-use-one-global-slo`: whether one global SLO covers unrelated journeys
+- `should-not-measure-slos-only-inside-service`: whether SLOs are measured only inside the service

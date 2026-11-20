@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Build disposable software, not reusable software:",
+      "to": [
+        "intro",
+        "should-build-disposable-software"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "intro keeps the sentence and should-build-disposable-software keeps the instruction at SHOULD: disposable, not reusable, software.",
+        "pin": "7f28bc2b64106742401dc60182af73bb308eb68a89e8d2de8504b4e7dd291d28"
+      }
+    },
+    {
+      "sentence": "Write code that is easy to throw away without affecting the rest of the system",
+      "to": "should-write-code-easy-to-throw-away",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-write-code-easy-to-throw-away keeps the instruction and its condition, without affecting the rest of the system, at SHOULD.",
+        "pin": "cb13dad60132535ee6687fab57619028f9c694d91d1df2d398552986f1ec5a61"
+      }
+    },
+    {
+      "sentence": "Treat lines of code as lines spent — deleting code reduces maintenance cost",
+      "to": "should-treat-lines-as-spent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-lines-as-spent keeps 'lines of code as lines spent' and the reason that deleting code reduces maintenance cost, at SHOULD.",
+        "pin": "80768d046747f65fd20cdf1aa1b269e6088f7723d6319db8bee84af44c770064"
+      }
+    },
+    {
+      "sentence": "Do not abstract prematurely in pursuit of reuse",
+      "to": "should-not-abstract-prematurely-for-reuse",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-abstract-prematurely-for-reuse keeps the unkeyed prohibition at SHOULD NOT: no premature abstraction in pursuit of reuse.",
+        "pin": "16c65e2d6de2e6bd0c9fda62caa61c0a6d81e563099bb30b0eb6161a89e19193"
+      }
+    },
+    {
+      "sentence": "When in doubt, duplicate rather than couple",
+      "to": "should-duplicate-rather-than-couple-when-in-doubt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-duplicate-rather-than-couple-when-in-doubt keeps the condition (when in doubt) and the instruction to duplicate rather than couple, at SHOULD.",
+        "pin": "c71b69e9fbf5a4b9e2ab6ec119eccebe22d55b977d1187b36287fa31759f212f"
+      }
+    }
+  ],
+  "obsolete": []
+}

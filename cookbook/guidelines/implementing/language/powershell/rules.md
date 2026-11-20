@@ -1,0 +1,27 @@
+
+- **should-follow-shell-script-rules**: The general script rules in Shell scripts ([adc.guideline.implementing.code-quality.shell-scripts](cookbook:e9e60a7e-4e15-40e7-b730-fc2e311df1af)) (small functions, a `main` that only calls) SHOULD apply to PowerShell scripts and modules too.
+- **must-set-strict-mode**: Every script and module MUST begin with `Set-StrictMode -Version 3.0` (or the highest version you have tested).
+  - Strict mode is off by default; with it on, reading an uninitialized variable or a property that does not exist is an error instead of `$null`.
+- **must-not-use-strict-mode-latest**: Shared code MUST NOT use `-Version Latest`.
+  - `Latest` means the newest strict mode of whatever PowerShell runs the script, so behavior can change when the host is upgraded.
+- **should-set-strict-mode-at-top**: Strict mode applies to the current scope and its child scopes, so it SHOULD be set at the top of the script, not inside a function that other code calls.
+- **must-stop-on-error-when-failure-must-halt**: A script that must not continue after a failure MUST set `$ErrorActionPreference = 'Stop'` at the top, and MAY override it for one command with `-ErrorAction`.
+  - `$ErrorActionPreference` defaults to `Continue`: a non-terminating error is reported and the script keeps going.
+- **should-catch-handleable-failures**: Work whose failure you can handle SHOULD be wrapped in `try`/`catch`.
+- **should-clean-up-in-finally**: Cleanup SHOULD use `finally`.
+- **must-test-lastexitcode**: After running an external program, code MUST test `$LASTEXITCODE` explicitly.
+  - Native commands do not follow `$ErrorActionPreference` by default; `$PSNativeCommandUseErrorActionPreference` is `$false`.
+- **must-suppress-unwanted-output**: Unwanted output MUST be suppressed with `$null = ...` or `| Out-Null`, or with a redirection such as `> $null`.
+- **must-send-messages-to-message-streams**: Messages for people MUST go to `Write-Verbose`, `Write-Information` or `Write-Warning`, never to the success stream.
+- **must-return-a-stable-shape**: A function MUST return a stable shape: either objects, or nothing.
+- **must-not-return-display-text**: A function MUST NOT return text meant for display.
+- **must-name-functions-verb-noun**: Functions MUST be named `Verb-Noun` with a verb from the approved list (`Get-Verb` prints it).
+- **must-not-invent-verb-synonyms**: Code MUST NOT invent synonyms for an approved verb: use `Remove`, not `Delete`.
+- **should-not-use-reserved-verbs**: The verbs `ForEach`, `Ping`, `Sort` and `Tee` are reserved for built-in commands, so your own functions SHOULD NOT use them.
+- **should-use-singular-nouns**: Nouns SHOULD be singular.
+- **should-prefix-module-nouns**: A module SHOULD use a prefix so names do not collide.
+- **must-declare-supports-should-process**: A command that changes state MUST declare `[CmdletBinding(SupportsShouldProcess)]`, which adds `-WhatIf` and `-Confirm`.
+- **must-wrap-each-change-in-should-process**: A command that changes state MUST wrap each change in `if ($PSCmdlet.ShouldProcess($target, $action)) { ... }`.
+- **should-set-high-confirm-impact-when-destructive**: Destructive commands SHOULD set `ConfirmImpact` to `High` so they prompt by default; the default is `Medium`, compared with `$ConfirmPreference`.
+- **should-run-psscriptanalyzer-in-ci**: CI SHOULD run PSScriptAnalyzer.
+  - PSScriptAnalyzer enforces this with `UseApprovedVerbs` and `UseShouldProcessForStateChangingFunctions` (state-changing verbs include New, Set, Remove, Start, Stop, Restart, Reset and Update).

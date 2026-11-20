@@ -1,0 +1,22 @@
+
+- `should-share-domain-and-data-in-common`: the domain and data layers live in `commonMain`, or the project says why not
+- `must-not-depend-on-platform-ui`: the shared module has no dependency on a platform UI toolkit
+- `should-keep-platform-ui-on-consumer`: platform UI is on the consuming side, or a deliberate shared-UI decision is recorded
+- `may-share-presentation-layer`: any shared presentation layer is backed by the team's recorded acceptance of the coupling
+- `should-treat-shared-presentation-as-deliberate`: any shared presentation layer is recorded as a deliberate scope expansion
+- `should-expose-narrow-interfaces`: the shared module's public surface is narrow interfaces, or the project says why not
+- `should-reserve-expect-actual-for-thin-shims`: every `expect`/`actual` pair is a thin platform shim, or the project says why not
+- `must-match-every-expect-with-actual`: every `expect` has an `actual` in the same package for every target, and every target compiles
+- `should-prefer-interfaces-over-expect-actual`: every non-trivial seam is an interface plus injection, or the project says why not
+- `should-use-hierarchical-source-sets`: no code is duplicated across sibling source sets that an intermediate source set could hold
+- `should-pin-cmp-version`: the build names an explicit CMP version
+- `should-recheck-cmp-release-notes`: each relied-on CMP UI feature is present in the pinned version's release notes
+- `should-forecast-unreleased-ios-parity`: every relied-on iOS parity item is released in the pinned version or marked as a forecast
+- `should-validate-accessibility-on-device`: accessibility of the shared UI was validated on a device
+- `should-choose-shared-ui-only-when-accepted`: shared CMP UI, where used, is backed by the team accepting current iOS maturity
+- `should-present-shared-ui-as-per-app-decision`: the shared-UI choice is recorded per app
+- `should-design-swift-friendly-api`: no Kotlin-only construct crosses the Swift boundary, or the project says why
+- `should-bridge-suspend-and-flow`: every `suspend` function and `Flow` reaching Swift goes through a documented bridge
+- `should-not-leak-raw-coroutines`: no raw coroutine type is in the Swift-facing API
+- `should-have-common-test-suite`: a `commonTest` suite covers the shared domain/data logic, and each `actual` has a per-target test
+- `should-build-every-target-in-ci`: CI builds every target the project ships

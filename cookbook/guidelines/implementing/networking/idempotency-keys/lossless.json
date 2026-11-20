@@ -1,0 +1,136 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Generate the key **once per logical operation**, before the first attempt, and reuse the *same* key for every retry of that operation.",
+      "to": "should-generate-one-key-per-operation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for the client: one key per logical operation, generated before the first attempt and reused for every retry.",
+        "pin": "1d8317c5d376bc0b38aed2d435c2312501fb7737feafa77b287b28005f88777d"
+      }
+    },
+    {
+      "sentence": "A fresh user-initiated action gets a fresh key.",
+      "to": "should-use-a-fresh-key-per-user-action",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept, stated as SHOULD: a fresh user-initiated action gets a fresh key.",
+        "pin": "dcfb1aa8c68411567b40cf89a0dc5beeb2cc2312f3ce05e818fd6d926892dd22"
+      }
+    },
+    {
+      "sentence": "Persist key records durably (database or shared cache), not in per-process memory — a retry can land on any instance.",
+      "to": "should-persist-key-records-durably",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both stores (database or shared cache), the not-per-process-memory exclusion and the any-instance reason.",
+        "pin": "e68f067987c608c4004b4416fd8d624c8406976489a02bc2e066301c3d25b248"
+      }
+    },
+    {
+      "sentence": "Keep the TTL longer than the client's maximum retry window.",
+      "to": "should-outlast-the-retry-window",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: TTL longer than the client's maximum retry window.",
+        "pin": "9337c5e5d47c03f6fc42078cdf802b28e7102d007ffb4e68f39674580ac1a59e"
+      }
+    },
+    {
+      "sentence": "Only finalize (persist as replayable) once the side effect has committed.",
+      "to": "should-finalize-after-commit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: finalize as replayable only once the side effect has committed.",
+        "pin": "8d9e957c4f2fa4438d867163b281503c4d25827c276288fa0dcaa68bfb40dab0"
+      }
+    },
+    {
+      "sentence": "**Fingerprint the request.** Compute a hash of the request payload (and any semantically significant headers).",
+      "to": "should-fingerprint-the-request",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: hash the request payload and any semantically significant headers.",
+        "pin": "40d0136b561db6852d12900e0579cb16ced33345719a2f66541a5d2839bda1cd"
+      }
+    },
+    {
+      "sentence": "Store it alongside the key.",
+      "to": "should-fingerprint-the-request",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept in the same rule at SHOULD: store the fingerprint alongside the key.",
+        "pin": "bcd431b4a9e69075b8c8881ce1ea4d2587e53b9a0cc48d9cb044f0351f517cdd"
+      }
+    },
+    {
+      "sentence": "**New key:** acquire a lock on the key, then execute the operation.",
+      "to": "should-lock-new-keys-before-executing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for the new-key case: lock the key, then execute.",
+        "pin": "338bf509b0a348fe556234c11b47da15616d9f0dde270f89b430be274f89c82c"
+      }
+    },
+    {
+      "sentence": "On completion, persist the key → `{request-fingerprint, status-code, response-body}` and release the lock.",
+      "to": "should-lock-new-keys-before-executing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept in the same rule: on completion persist key to {request-fingerprint, status-code, response-body} and release the lock.",
+        "pin": "9ae703dce2c5129b0b1e8668be0c8852bb9d9788af2e0eaa770aa2ab77950188"
+      }
+    },
+    {
+      "sentence": "Use a row lock, advisory lock, or atomic conditional insert — not a read-then-write race.",
+      "to": "should-lock-atomically",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three mechanisms and the not-a-read-then-write-race exclusion.",
+        "pin": "50e730bd26418d9d9d60cfba6960885b70a5e50af08848e839e32f5ddaafd1a7"
+      }
+    },
+    {
+      "sentence": "The client sends `Idempotency-Key: <opaque-value>`.",
+      "to": "should-send-the-key-in-the-header",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for the client sending Idempotency-Key: <opaque-value>; the UUIDv4 and opaque-to-server note is kept.",
+        "pin": "fd3cb5a491bd96ea3159cf5f1a1bfaf326684e3929ba9bca51862420835e832a"
+      }
+    },
+    {
+      "sentence": "Store the tuple `(principal, endpoint, key)`.",
+      "to": "should-store-the-principal-endpoint-key-tuple",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the server stores the (principal, endpoint, key) tuple.",
+        "pin": "fe51100222ae4b96e7bd7551cbab7e0a6e8444a6d2c79314d845a9d1df7dc959"
+      }
+    },
+    {
+      "sentence": "Do not add one out of habit (yagni).",
+      "to": "should-not-add-keys-out-of-habit",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the GET/HEAD/PUT/DELETE scope, the yagni reason and the already-idempotent note.",
+        "pin": "47a3efecf676c4143fc23fd148c8f120132753b6edf42afe98dfcfbfeeb6126b"
+      }
+    }
+  ],
+  "obsolete": []
+}

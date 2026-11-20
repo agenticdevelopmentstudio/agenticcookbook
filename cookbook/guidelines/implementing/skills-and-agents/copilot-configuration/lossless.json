@@ -1,0 +1,16 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "It SHOULD be short: build and test commands, conventions that are not obvious from the code, and what to avoid.",
+      "to": "should-keep-copilot-instructions-short",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule names .github/copilot-instructions.md and keeps the SHOULD with all three listed contents: build/test commands, non-obvious conventions, what to avoid.",
+        "pin": "9f0b0aed8710882bc438aac565a4f7cf4eba25d103d243c4fcca2f6a69e330f2"
+      }
+    }
+  ],
+  "obsolete": []
+}

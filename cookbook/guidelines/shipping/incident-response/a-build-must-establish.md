@@ -1,0 +1,23 @@
+
+- `should-classify-severity-at-declaration`: every declared incident has a severity set at declaration, or the process says why not
+- `must-reevaluate-severity`: the incident process includes re-evaluating severity as understanding changes
+- `should-use-small-fixed-ladder`: the severity ladder is small and fixed, or the process says why not
+- `must-map-severity-to-actions`: every severity level lists who is paged, who is notified and the update cadence
+- `should-tie-thresholds-to-slos`: severity thresholds cite SLO error budgets where they exist, or the process says why not
+- `should-separate-coordinating-from-doing`: the process gives coordination and hands-on work to different roles, or says why not
+- `incident-commander`: every declared incident has exactly one IC, who does not debug
+- `communications-lead`: every higher-severity incident has a CL, or the process says why not
+- `operations-lead`: every incident has responders owning mitigation and investigation who report to the IC, or the process says why not
+- `must-split-roles-as-severity-rises`: above small incidents, the roles are held by different people
+- `must-hand-off-incident-commander-explicitly`: every IC change at a shift boundary or absence is an explicit handoff
+- `should-write-postmortem-for-significant-incidents`: the org's written threshold for "significant" exists, and every incident above it has a postmortem, or the process says why not
+- `must-keep-postmortems-blameless`: no postmortem names an individual at fault
+- `must-record-postmortem-contents`: every postmortem records timeline, detection method, user impact, root/contributing causes, and what went well and poorly
+- `must-track-remediation-in-backlog`: every remediation item is a concrete, owned ticket in the normal backlog
+- `should-track-action-items-to-closure`: every action item is tracked to closure, or the process says why not
+- `may-share-postmortems-widely`: postmortems may be shared widely; nothing is required
+- `should-bound-on-call-load`: no on-call shift exceeds the cap (~2 significant incidents per 12 hours), or the process says why
+- `must-compensate-on-call`: on-call is compensated with time off or pay, and rotates across a large enough team, or the process says why it does not rotate
+- `should-feed-toil-into-action-items`: paging toil is recorded as postmortem action items, or the process says why not
+- `should-treat-named-tools-as-examples`: no named product is written into the process as a requirement, or the process says why
+- `should-treat-ai-output-as-draft`: AI-assisted output is reviewed by a human responder and a human IC is accountable, or the process says why not

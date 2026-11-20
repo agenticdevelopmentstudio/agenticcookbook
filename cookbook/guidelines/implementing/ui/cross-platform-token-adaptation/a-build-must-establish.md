@@ -1,0 +1,17 @@
+
+- `must-keep-semantic-source-platform-neutral`: one platform-neutral semantic token source feeds every platform build
+- `should-use-dtcg-format`: the token source is DTCG pinned to a dated revision, or the work says why not
+- `must-name-tokens-by-intent`: every token has an intent-based name and the layers map base → semantic → component
+- `should-override-via-transforms-not-forks`: platform overrides are transforms or aliases, with no forked copy of the source, or the work says why
+- `should-adapt-to-density-independent-units`: each platform's values are expressed in its density-independent unit, or the work says why not
+- `should-not-ship-raw-px-everywhere`: raw `px` appears only where intended (such as web hairlines), or the work says why
+- `must-emit-density-independent-dimensions`: dimension tokens are emitted as pt, dp, rem or epx for their target
+- `should-map-type-sizes-to-scalable-units`: type sizes are `sp` on Android and `rem` on the web, and no text is pixel-locked by default
+- `should-resolve-hairlines-per-device-scale`: hairline borders resolve per device scale, or the work says why not
+- `should-prefer-native-type-scale`: the type scale maps onto Dynamic Type, Material 3 or `clamp()`/`rem` steps, or the work says why not
+- `must-carry-color-variants`: every color token has light/dark (and high-contrast where supported) variants emitted as native color resources
+- `should-express-wide-gamut-device-independently`: wide-gamut color is Display P3 / OKLCH with an sRGB fallback, or the work says why not
+- `should-map-motion-to-platform-curves`: motion tokens map to each platform's standard curves and respect reduced motion, or the work says why not
+- `should-adapt-to-host-idiom`: each target uses its host's navigation, controls, density and haptics, or the work says why not
+- `may-diverge-component-tokens-per-platform`: every per-platform component token shares its semantic ancestor
+- `should-start-with-single-shared-file`: the setup is a single shared file with per-platform transforms, or the work names the need that justified more

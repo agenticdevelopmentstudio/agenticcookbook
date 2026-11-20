@@ -1,0 +1,31 @@
+
+- `should-pin-a-dated-spec-revision`: whether the server pins a dated spec revision
+- `should-default-to-the-stable-revision`: whether the default revision is 2025-11-25 unless the host requires an older one
+- `should-negotiate-the-revision`: whether the revision is negotiated during initialization
+- `should-gate-draft-revisions`: whether any release-candidate or draft revision sits behind explicit opt-in
+- `should-pick-primitives-by-purpose`: whether each capability uses the primitive that fits its purpose
+- `should-prefer-resources-for-read-only-context`: whether read-only, user- or host-selected context is a resource
+- `should-prefer-prompts-for-invoked-workflows`: whether human-invoked workflows are prompts
+- `should-use-tools-only-for-model-chosen-operations`: whether tools are limited to operations the model chooses autonomously
+- `should-not-expose-read-only-context-as-tools`: whether any read-only context is exposed as a tool
+- `must-name-and-describe-tools-precisely`: whether every tool's name is precise and action-oriented and its description states what it does, when to use it and what it returns
+- `should-constrain-tool-names`: whether tool names are 1–128 chars, case-sensitive and within `[A-Za-z0-9_.-]`
+- `should-keep-tool-names-unique`: whether tool names are unique within the server
+- `should-use-title-for-display`: whether display labels use `title` and `name` stays stable
+- `should-define-a-strict-input-schema`: whether every tool defines a strict `inputSchema`
+- `should-close-zero-parameter-schemas`: whether zero-parameter tools use the closed empty object schema
+- `should-keep-the-tool-surface-small`: whether overlapping tools are consolidated or parameterized
+- `should-declare-an-output-schema`: whether tools declare an `outputSchema` and return matching `structuredContent`
+- `must-conform-to-the-output-schema`: whether `structuredContent` conforms to the declared `outputSchema` and clients validate it
+- `should-also-return-text-json`: whether structured results are also serialized as JSON in a `text` block
+- `must-not-leak-secrets-in-outputs`: whether outputs are sanitized and free of secrets and internal identifiers
+- `should-use-both-error-channels`: whether tool errors and protocol errors each use their own channel
+- `should-return-tool-errors-in-the-result`: whether tool execution errors return in the result with `isError: true` and an actionable message
+- `should-return-protocol-errors-as-json-rpc`: whether protocol errors return a JSON-RPC `error`
+- `should-not-throw-protocol-errors-for-tool-failures`: whether any recoverable tool failure is thrown as a protocol error
+- `should-set-annotations`: whether tools set `annotations` describing their behavior
+- `must-treat-annotations-as-untrusted`: whether clients treat annotations as untrusted unless the server is trusted
+- `should-set-annotations-accurately`: whether each annotation matches the tool's real behavior
+- `must-not-rely-on-annotations-alone`: whether safety rests on more than annotations
+- `must-validate-authorize-rate-limit-and-sanitize`: whether every tool validates inputs, enforces access control, is rate-limited and sanitizes outputs
+- `should-write-for-consent`: whether descriptions and errors make consent decisions clear

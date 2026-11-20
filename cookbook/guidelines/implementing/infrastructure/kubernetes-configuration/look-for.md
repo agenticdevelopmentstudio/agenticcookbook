@@ -1,0 +1,15 @@
+
+- `non-sensitive-config`: non-sensitive settings baked into an image instead of a ConfigMap
+- `sensitive-in-secrets`: a credential, token, TLS key or connection string in a ConfigMap
+- `no-plaintext-in-vcs`: a plaintext secret in a manifest, Helm values, any versioned file, an image layer or a build arg
+- `treat-secret-as-encoded-not-encrypted`: a Secret treated as safe because its value is base64-encoded
+- `adopt-only-on-measured-need`: Kubernetes adopted with no measured operational need
+- `encryption-at-rest`: a cluster with raw Secrets and no etcd encryption at rest, or local `aescbc`/`secretbox` keys where a KMS provider is available
+- `least-privilege-rbac`: a Role granting wildcard or namespace-wide `get`/`list`/`watch` on Secrets
+- `etcd-protection`: loosely controlled access to etcd or node disks
+- `prefer-managed-store`: hand-authored Secret objects in production
+- `mount-choice`: env vars used for files, large payloads or values that must update live
+- `support-rotation`: a workload that needs a redeploy to pick up a rotated credential
+- `immutable-when-stable`: a ConfigMap or Secret fixed for the release but not marked `immutable: true`
+- `pin-and-revalidate-secret-tooling`: an unpinned Helm chart or operator version, or a new flow adopted without checking dated upstream docs
+- `consult-counsel-on-compliance`: compliance obligations for credentials or PII decided with no reference to regulations or counsel

@@ -1,0 +1,20 @@
+
+- **must-start-non-trivial-change-from-spec**: A non-trivial change **MUST** start from a written spec before code is generated.
+  - "Non-trivial" means: the approach is uncertain, the change touches multiple files, or the agent is unfamiliar with the code being modified.
+- **should-implement-against-the-spec**: After producing the spec, you **SHOULD** implement against it; the spec — not the conversation history or the agent's working memory — is the source of truth.
+- **should-skip-spec-for-one-sentence-diffs**: If you can describe the diff in one sentence (a typo, a log line, a rename), you **SHOULD** skip the spec and do the work directly.
+- **should-right-size-ceremony**: You **SHOULD** right-size the ceremony to the change.
+- **should-separate-planning-from-implementation**: Planning and implementation **SHOULD** run in distinct phases so research context does not bleed into and bias execution.
+- **must-be-self-contained**: A spec **MUST** be self-contained — readable and executable in a fresh session with no prior context.
+- **must-include-required-sections**: A spec **MUST** include each section below, meeting its requirement:
+  - Goal of one or two sentences stating the "what" and "why" — not the "how".
+  - Files & interfaces — name the concrete files, functions, and interfaces to add or change.
+  - Out of scope — an explicit list of what this change will **NOT** touch.
+  - Verification — an end-to-end check that proves the feature works (test command, build, script, or screenshot diff).
+- **should-reference-existing-patterns**: The spec **SHOULD** reference existing patterns to follow ("model X on the existing Y") rather than inviting a from-scratch design.
+- **must-not-discard-spec**: The spec **MUST NOT** be discarded once coding starts; it is the artifact the implementation is reviewed against.
+- **should-adopt-the-methodology**: You **SHOULD** adopt the *methodology* of the staged flow.
+- **should-not-hard-code-tool**: You **SHOULD NOT** hard-code a specific tool, command set, or vendor flow into your process.
+- **may-interview-human-first**: For larger features, the agent **MAY** interview the human first to surface edge cases and tradeoffs, then write the spec, then start a fresh session to implement against it with clean context.
+- **must-run-verification-with-evidence**: Implementation **MUST** end by running the spec's verification step and showing the evidence (command output, passing tests, or screenshot), not merely asserting success.
+- **should-review-diff-against-spec**: An independent reviewer (a fresh context or subagent) **SHOULD** check the diff against the spec: every requirement implemented, listed edge cases covered, and nothing outside the stated scope changed.

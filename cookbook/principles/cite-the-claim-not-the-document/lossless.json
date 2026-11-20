@@ -1,0 +1,29 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Attach sources at the sentence or claim level, not as a document-wide reference list.",
+      "to": "should-attach-sources-at-claim-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-attach-sources-at-claim-level keeps the instruction verbatim at SHOULD: sources at sentence or claim level, not a document-wide reference list.",
+        "pin": "85291f2185f8edd42956c5f10318b68cf4f6a210993dd35024ae50bf9b2cfd77"
+      }
+    },
+    {
+      "sentence": "Include the verbatim quote that supports the specific claim; never paraphrase the key evidence.",
+      "to": [
+        "should-include-verbatim-supporting-quote",
+        "must-not-paraphrase-key-evidence"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-include-verbatim-supporting-quote keeps including the verbatim supporting quote (SHOULD) and must-not-paraphrase-key-evidence raises 'never paraphrase the key evidence' to MUST NOT.",
+        "pin": "b6ca0882e21454cdff8c8f3f4b69c7c0e42edcd1b904c0b8da2ecf49b351b287"
+      }
+    }
+  ],
+  "obsolete": []
+}

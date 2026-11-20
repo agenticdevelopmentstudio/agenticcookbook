@@ -1,0 +1,140 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Shneiderman (2020, *Human-Centered AI*): AI tools should support human autonomy, competence,",
+      "to": [
+        "should-support-human-autonomy",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-support-human-autonomy keeps at SHOULD that AI tools support human autonomy, competence and oversight; Shneiderman (2020, Human-Centered AI) is kept in rationale and references.",
+        "pin": "624563d89c9012696da9460163408c0d648fe94bd3e48866629d067c4b800a79"
+      }
+    },
+    {
+      "sentence": "and oversight — not absorb or replace the creative function; the human remains the author",
+      "to": "should-support-human-autonomy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-support-human-autonomy keeps oversight, not absorbing or replacing the creative function, and the human remaining the author.",
+        "pin": "0380fa4fe49d70208e07b72d8a87f9f1c124512f62af3484b261748b10423a37"
+      }
+    },
+    {
+      "sentence": "Rezwana & Maher (2024, arXiv 2411.12527): the target state is Level 4 co-creativity where both",
+      "to": [
+        "should-target-level-4-co-creativity",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-target-level-4-co-creativity keeps Level 4 co-creativity as the SHOULD target; Rezwana & Maher (2024, arXiv 2411.12527) is kept in rationale and references.",
+        "pin": "a80eedd730731499cf133ff9e735f741c5451da6d6b01867a444bcbb11e35fe4"
+      }
+    },
+    {
+      "sentence": "parties contribute meaningfully and the human maintains creative direction",
+      "to": "should-target-level-4-co-creativity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-target-level-4-co-creativity keeps both parties contributing meaningfully and the human maintaining creative direction.",
+        "pin": "cd1efc6d1ea02a6f00aac43da2dd53f41112505f369431663723fb40b4cd2d64"
+      }
+    },
+    {
+      "sentence": "HAICo (Dong et al., 2024, arXiv 2512.18388): the scaffolding posture (facilitate exploration",
+      "to": [
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps HAICo (Dong et al., 2024, arXiv 2512.18388) and the scaffolding posture of facilitating exploration before generating; references lists it.",
+        "pin": "3a55a3e48953c69beee75775d18a91a2738f5b20185aeac2591611a9634222d6"
+      }
+    },
+    {
+      "sentence": "before generating) produced 42% more novel outputs than the generation posture",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps the 42% more novel outputs than the generation posture.",
+        "pin": "561291b9e899a9ece72836fe2e168b3e7acbcb8f2efd5b87ed58e58b8c7f0aff"
+      }
+    },
+    {
+      "sentence": "\"Yes-and\" as default conversational stance (Sawyer, 2007; Hatcher, 2018): accept the human's",
+      "to": [
+        "should-use-yes-and-stance",
+        "rationale",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-yes-and-stance keeps yes-and as the SHOULD default conversational stance; Sawyer (2007) and Hatcher (2018) are kept in rationale and references.",
+        "pin": "e2e59fa3c74b8755cd3ca1a86dee3bd9469151eb32486d47eb46277bf1e6eff6"
+      }
+    },
+    {
+      "sentence": "contribution and build on it; never replace the human's framing with the AI's own",
+      "to": [
+        "should-use-yes-and-stance",
+        "must-not-replace-human-framing"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-yes-and-stance keeps accepting and building on the human's contribution, and must-not-replace-human-framing makes never replacing the human's framing a MUST NOT.",
+        "pin": "581a8a7e218bdb08d9ac6358712d29b5d3ab84283715be2983a95bccdb75bd69"
+      }
+    },
+    {
+      "sentence": "Vygotsky (1978): scaffold at the Zone of Proximal Development — challenge enough to push into",
+      "to": [
+        "should-scaffold-at-zpd",
+        "references"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-scaffold-at-zpd keeps scaffolding at the Zone of Proximal Development with enough challenge to push into unexplored territory; Vygotsky (1978) is in references.",
+        "pin": "5587ddf702cc608bb04729baccdfb3947560b1eca6d2eaab30ce2523656252b3"
+      }
+    },
+    {
+      "sentence": "unexplored territory, support enough not to be overwhelming; taking the first move pulls the",
+      "to": [
+        "should-scaffold-at-zpd",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-scaffold-at-zpd keeps support enough not to be overwhelming, and rationale keeps that taking the first move pulls the human below the creative work.",
+        "pin": "d6a72111fe9766668044d546bd16746cb8b1f400e62873e634b3282980800578"
+      }
+    },
+    {
+      "sentence": "human below the creative work",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale keeps that taking the first move pulls the human below the creative work.",
+        "pin": "a44bca7d4547cf6c63171fd0c9d4267c3af2d869bdba2b85588acfb5fca015ba"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -11,8 +11,3 @@ private let logger = Logger(
 
 logger.debug("PrimaryButton: tapped, starting async action")
 ```
-
-- Subsystem MUST match the bundle ID
-- Category MUST be one per component or flow
-- Use `debug` level for UI flow instrumentation
-

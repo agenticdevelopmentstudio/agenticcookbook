@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "ed0b7eb6-9e33-41f7-954f-1e1a0f813462",
+    "title": "Agentic research design lessons",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-11-07",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Architecture, sourcing, citation, and verification lessons distilled from production deep-research agents.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "agents",
+      "architecture"
+    ],
+    "depends-on": [],
+    "related": [
+      "09947209-369f-40de-8331-c10b0d6f32c6",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba",
+      "a94d7efc-746e-4d93-8ea2-c4ff28f1f28a"
+    ],
+    "references": [
+      "https://github.com/assafelovic/gpt-researcher",
+      "https://github.com/stanford-oval/storm",
+      "https://github.com/langchain-ai/open_deep_research",
+      "https://huggingface.co/blog/open-deep-research"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27",
+    "triggers": [
+      "research"
+    ]
+  },
+  "informational": "Lessons observed in production research agents, offered as evidence for design choices rather than as rules.",
+  "synced": "c4bde6888bb3dabb",
+  "parts": [
+    {"part": "intro"},
+    {"part": "orchestration", "heading": "Orchestration"},
+    {"part": "sourcing-and-retrieval", "heading": "Sourcing and retrieval"},
+    {"part": "citation-and-provenance", "heading": "Citation and provenance"},
+    {"part": "verification", "heading": "Verification"},
+    {"part": "reporting", "heading": "Reporting"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

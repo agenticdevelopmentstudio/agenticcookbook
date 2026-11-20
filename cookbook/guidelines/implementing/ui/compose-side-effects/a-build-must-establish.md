@@ -1,0 +1,13 @@
+
+- `must-keep-composition-side-effect-free`: no composable body performs network calls, observer registration, logging or external mutation
+- `must-launch-effects-via-effect-api`: every side effect runs in an effect API keyed to the inputs it reads
+- `must-key-every-restarting-value`: every value whose change should restart an effect is among its keys
+- `must-wrap-fresh-non-restarting-values`: every value read freshly but not restarting its effect is wrapped with `rememberUpdatedState`
+- `must-key-or-wrap-every-read-variable`: every variable read inside an effect block is a key or wrapped in `rememberUpdatedState`
+- `should-use-launchedeffect-unit-only-when-lifecycle-scoped`: every `LaunchedEffect(Unit)` / `LaunchedEffect(true)` is genuinely lifecycle-scoped, or the work says why
+- `must-wrap-latched-callbacks`: every latched callback in a `LaunchedEffect(Unit)` / `LaunchedEffect(true)` is wrapped in `rememberUpdatedState`
+- `must-use-coroutine-scope-for-events`: every event-driven coroutine is launched from `rememberCoroutineScope`
+- `must-use-disposableeffect-for-cleanup`: every resource needing teardown is acquired in a `DisposableEffect` with a non-empty `onDispose`
+- `should-prefer-producestate`: no manually launched coroutine writes to a `mutableStateOf` where `produceState` fits, or the work says why
+- `should-reserve-derivedstateof`: every `derivedStateOf` collapses frequent state changes and profiling showed the wasted recompositions, or the work says why
+- `should-hoist-long-lived-work-to-viewmodel`: work that outlives composition is in the ViewModel, or the work says why not

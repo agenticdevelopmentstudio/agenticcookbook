@@ -4,11 +4,11 @@
     "id": "33c3971e-84a3-4318-8674-b0ff60e7f8f3",
     "title": "Groundedness and hallucination checks",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,22 @@
       "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
       "https://arxiv.org/abs/2309.15217"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ai-api-integration",
       "writing-tests"
     ]
   },
-  "synced": "177bcae3b99100d5",
+  "synced": "5df7fcbb1840e8fe",
   "parts": [
     {"part": "intro"},
-    {"part": "what-to-measure", "heading": "What to measure"},
-    {"part": "require-and-verify-citations", "heading": "Require and verify citations"},
-    {"part": "llm-judge-calibrated-to-humans", "heading": "LLM judge, calibrated to humans"},
-    {"part": "abstain-instead-of-fabricating", "heading": "Abstain instead of fabricating"},
-    {"part": "ci-and-gating", "heading": "CI and gating"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "what-to-measure", "heading": "What to measure", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

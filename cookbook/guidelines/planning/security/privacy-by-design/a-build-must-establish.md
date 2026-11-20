@@ -1,0 +1,19 @@
+
+- `should-build-privacy-in-from-the-first-design-decision`: the design records privacy decisions from its first decision, or the work says why not
+- `should-consult-counsel-for-jurisdiction-specific-obligations`: jurisdiction-specific obligations were checked with counsel, or the work says why not
+- `must-produce-a-maintained-data-flow-map`: a personal-data flow map exists, predates the code, and records what, why, where and how long for each category
+- `must-update-the-map-on-change`: the map matches the current fields, processors and destinations
+- `should-flag-data-with-no-stated-purpose`: each item with no stated purpose is flagged for removal, or the work says why not
+- `should-run-a-dpia-before-high-risk-processing`: high-risk processing has a DPIA done before it was built, or the work says why not
+- `must-record-dpia-risks-and-mitigations`: the DPIA lists risks to individuals and mitigations applied
+- `must-escalate-unmitigated-residual-risk`: every unmitigated residual high risk has a recorded escalation
+- `must-not-collect-just-in-case`: every collected field serves the stated purpose
+- `should-pseudonymize-or-anonymize`: data is pseudonymized or anonymized where the use case allows, or the work says why not
+- `should-keep-raw-identifiers-out-of-logs-analytics-and-prompts`: logs, analytics and AI prompts carry no raw identifiers, or the work says why
+- `must-delete-or-de-identify-when-purpose-ends`: retention is defined and data is deleted or de-identified when its purpose ends
+- `must-default-to-the-most-protective-configuration`: the shipped default configuration is the most privacy-protective
+- `must-make-sharing-opt-in`: sharing, public visibility and broad processing are off until the user opts in
+- `must-default-telemetry-off`: optional telemetry and tracking are off by default
+- `should-follow-least-privilege`: each data category is readable only by roles that need it, or the work says why not
+- `should-adopt-heavier-controls-only-when-justified`: each heavy privacy control names the measured need behind it, or the work says why not
+- `should-start-with-minimization-and-de-identification`: minimization and de-identification are in place before specialized tooling, or the work says why not

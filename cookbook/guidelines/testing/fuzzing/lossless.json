@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Open-source projects **SHOULD** consider [OSS-Fuzz](https://github.com/google/oss-fuzz) for free continuous fuzzing (libFuzzer, AFL++, Honggfuzz, ClusterFuzz) once a stable harness exists.",
+      "to": "should-consider-oss-fuzz"
+    },
+    {
+      "sentence": "Treat as evolving; **pin and evaluate** before depending on it — standard `go test -fuzz` remains the durable baseline.",
+      "to": "should-pin-and-evaluate-forecast-go-fork",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the subject made explicit (the 2026 gosentry Go-toolchain fork): treat as evolving, pin and evaluate before depending on it, standard go test -fuzz as the durable baseline.",
+        "pin": "86d6277a8df5d5c6d61a5ac7b600285dc4e9ffa546795049bc1c4ed6af178a63"
+      }
+    },
+    {
+      "sentence": "Reproduce with the saved crashing input; minimize it (most tools provide `-minimize`/`tmin`) before filing.",
+      "to": "should-reproduce-and-minimize-before-filing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: reproduce with the saved crashing input and minimize (-minimize/tmin) before filing.",
+        "pin": "88423b59556c6f9f9ceeab01102a4322ad0fb287d9a7d84dad397398b75a73b6"
+      }
+    },
+    {
+      "sentence": "Classify by sanitizer report: memory-safety crashes are typically security-relevant (escalate per [adc.guideline.testing.security-testing](cookbook:cf05e36f-ea8b-4af2-8df6-c5e772dc25b5)); logic crashes may be ordinary bugs.",
+      "to": "should-classify-by-sanitizer-report",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both classes, the security-testing escalation link, and the ordinary-bug note.",
+        "pin": "7efaa8ec0bdff9fa0fceb724a55df80d71316a5bd41b5756fb91009c3a52dff9"
+      }
+    },
+    {
+      "sentence": "You **SHOULD** fuzz any code that parses, decodes, or deserializes data crossing a trust boundary: file/media parsers, network protocol decoders, serialization formats, regex/template/expression evaluators, decompressors.",
+      "to": "should-fuzz-trust-boundary-parsers"
+    },
+    {
+      "sentence": "You **SHOULD** prioritize fuzzing in memory-unsafe languages (C, C++, and `unsafe` Rust/Go FFI) where defects become memory-corruption vulnerabilities.",
+      "to": "should-prioritize-memory-unsafe-languages"
+    },
+    {
+      "sentence": "You **SHOULD NOT** treat broad business/UI logic with no untrusted-input boundary as a default fuzzing target; prefer property-based testing (see [adc.guideline.implementing.testing.property-based-testing](cookbook:a34c92a2-7dd0-4641-a126-418102b8b031)) there.",
+      "to": "should-not-default-fuzz-business-logic"
+    },
+    {
+      "sentence": "Targets **MUST** be deterministic for a given input (no clock/network/global-state dependence) so crashes reproduce.",
+      "to": "must-keep-targets-deterministic"
+    },
+    {
+      "sentence": "A fuzz target **MUST** accept raw bytes (or a deterministically derived structured input) and exercise exactly one parsing entry point.",
+      "to": "must-accept-raw-bytes-one-entry-point"
+    },
+    {
+      "sentence": "Harnesses **MUST** fail loudly: assert invariants and let sanitizers/panics surface defects (`fail-fast`).",
+      "to": "must-fail-loudly"
+    },
+    {
+      "sentence": "You **SHOULD** seed a starting corpus from real and edge-case samples; coverage grows far faster from good seeds.",
+      "to": "should-seed-starting-corpus"
+    },
+    {
+      "sentence": "Every crash a fuzzer finds **MUST** be committed as a regression-corpus test case so the fix is permanently guarded.",
+      "to": "must-commit-crashes-as-regression-cases"
+    },
+    {
+      "sentence": "Long fuzzing campaigns **SHOULD** run in CI/nightly, not on the per-commit critical path; gate PRs on the seeded regression corpus and a short smoke run instead.",
+      "to": "should-run-long-campaigns-off-critical-path"
+    }
+  ],
+  "obsolete": []
+}

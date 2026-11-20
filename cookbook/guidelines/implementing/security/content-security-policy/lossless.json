@@ -1,0 +1,171 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Start strict:** `default-src 'none'` then add only what is needed",
+      "to": "should-start-strict-from-default-src-none",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Starting strict from default-src 'none' and adding only what is needed is kept, the unkeyed instruction at SHOULD.",
+        "pin": "e0819c6c8af491c629be4a0d036b4d31ecfe3df62767e56f5a239f766bcba0c3"
+      }
+    },
+    {
+      "sentence": "**Nonce-based scripts:** `script-src 'nonce-{random}' 'strict-dynamic'` SHOULD be used — more secure than",
+      "to": "should-use-nonce-based-scripts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Nonce-based script-src with 'strict-dynamic' is kept at SHOULD with its comparison to domain allowlisting.",
+        "pin": "7bf1444d4070f38e608f3601ef84b25615064e6575e550ea07b9654a2c31c82d"
+      }
+    },
+    {
+      "sentence": "domain allowlisting (bypassable via JSONP/CDN scripts)",
+      "to": "should-use-nonce-based-scripts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reason, domain allowlisting is bypassable via JSONP/CDN scripts, is kept.",
+        "pin": "3eda2eaf90e33b07edad2f45345fa5106268935b642dba5d4192432ec865f64b"
+      }
+    },
+    {
+      "sentence": "Policies MUST NOT include `'unsafe-inline'` or `'unsafe-eval'` for script-src",
+      "to": "must-not-allow-unsafe-inline-or-eval",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on 'unsafe-inline' or 'unsafe-eval' for script-src is kept verbatim in meaning.",
+        "pin": "6b280157c2fb8e80546f50a4eea0ff2c209c5420e11b270c4bd79ca18f268f66"
+      }
+    },
+    {
+      "sentence": "**`frame-ancestors 'self'`** to prevent clickjacking (replaces X-Frame-Options)",
+      "to": "should-set-frame-ancestors-self",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "frame-ancestors 'self' to prevent clickjacking, replacing X-Frame-Options, is kept at SHOULD.",
+        "pin": "c91853fab15238460f5f4a2f6a73372119ba10dbec4488e8c53194897ad90457"
+      }
+    },
+    {
+      "sentence": "New policies SHOULD be deployed in report-only mode first (`Content-Security-Policy-Report-Only`) to find",
+      "to": "should-deploy-report-only-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deploying new policies in report-only mode first via Content-Security-Policy-Report-Only is kept at SHOULD.",
+        "pin": "5e1e528f5141d54572bb9304774275f8ca100173ff6e8c8f858354e6815410b8"
+      }
+    },
+    {
+      "sentence": "violations before enforcing",
+      "to": "should-deploy-report-only-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The purpose, finding violations before enforcing, is kept.",
+        "pin": "9232eb5a67cb7113e4b4534dbc3228e31fd21adf0162ca079983fe388ca7c6fb"
+      }
+    },
+    {
+      "sentence": "A strict nonce-based CSP does NOT stop DOM-based XSS that flows through injection sinks like `innerHTML`,",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That a strict nonce-based CSP does not stop DOM-based XSS through sinks like innerHTML is kept in rationale.",
+        "pin": "3ee9c4035969e48ef992d49f0629cc8f2888cc51c7df590135b9dddfa3899821"
+      }
+    },
+    {
+      "sentence": "`document.write`, or `eval`-equivalents.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The other named sinks, document.write and eval-equivalents, are kept in rationale.",
+        "pin": "88a20622d237c83ade93386c68d43398beb015e70a7c021d371a5900d1d8e4c6"
+      }
+    },
+    {
+      "sentence": "Harden those sinks separately:",
+      "to": [
+        "should-require-trusted-types",
+        "should-back-trusted-types-with-sanitizer",
+        "should-roll-out-trusted-types-report-only-first",
+        "should-enable-trusted-types-despite-mixed-support"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Hardening those sinks separately is kept in rationale and carried out by the four Trusted Types rules.",
+        "pin": "122874d2981d6e22a9c161abd92784350c4723bd7da6f47ae4222ff3f9623c58"
+      }
+    },
+    {
+      "sentence": "The CSP **SHOULD** add `require-trusted-types-for 'script'` together with a named `trusted-types` policy so",
+      "to": "should-require-trusted-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "require-trusted-types-for 'script' with a named trusted-types policy is kept at SHOULD.",
+        "pin": "a7be3263e5f42aa7a77453e1dc080b97c00d54ee85ae502fd1a4a375f840b5b0"
+      }
+    },
+    {
+      "sentence": "only policy-vetted typed values can be assigned to dangerous DOM sinks; raw strings are rejected.",
+      "to": "should-require-trusted-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The effect, only policy-vetted typed values reach dangerous DOM sinks and raw strings are rejected, is kept.",
+        "pin": "227935d1eb12c67807750beac4b1c7b07a62045465e1007fcee21647425d4211"
+      }
+    },
+    {
+      "sentence": "The trusted-types policy **SHOULD** be backed by a documented sanitizer — DOMPurify, or the Sanitizer API",
+      "to": "should-back-trusted-types-with-sanitizer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Backing the trusted-types policy with a documented sanitizer such as DOMPurify or the Sanitizer API is kept at SHOULD.",
+        "pin": "84e047500547b6288033ac9a9044ec80add635969c585db2c38a39657549d851"
+      }
+    },
+    {
+      "sentence": "(`Element.setHTML()`) — rather than ad-hoc escaping.",
+      "to": "should-back-trusted-types-with-sanitizer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Element.setHTML() and the contrast with ad-hoc escaping are kept.",
+        "pin": "36132cf628300d76acd53d64a91ce9c0dcfd6e3a947308de3da9ddcad95f093e"
+      }
+    },
+    {
+      "sentence": "Trusted Types is supported in Chromium and now Safari, degrades safely (no-op) where unsupported, and has an",
+      "to": "should-enable-trusted-types-despite-mixed-support",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The support facts (Chromium and Safari, safe no-op degradation, official polyfill) are kept as the reason in the same rule.",
+        "pin": "4d9e2fbf3ac5eab29e77ac0af835e5c4bc50846d8ca965d1845f1ea691240e8b"
+      }
+    },
+    {
+      "sentence": "official polyfill, so it **SHOULD** be enabled as defense-in-depth even with mixed browser support.",
+      "to": "should-enable-trusted-types-despite-mixed-support",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling Trusted Types as defense-in-depth despite mixed browser support is kept at SHOULD with its reason.",
+        "pin": "b4b831a49a2d86f33d9878d4a5e8d0e044a4ba51a93506fcdae4d39fb6bef643"
+      }
+    }
+  ],
+  "obsolete": []
+}

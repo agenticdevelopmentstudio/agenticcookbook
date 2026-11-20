@@ -4,7 +4,7 @@
     "id": "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448",
     "title": "PowerShell",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -48,29 +48,24 @@
       "https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useapprovedverbs",
       "https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useshouldprocessforstatechangingfunctions"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "error-handling",
       "configuration"
     ]
   },
-  "synced": "4b8140d3bc08ff7b",
+  "synced": "416bc7a053c35633",
   "parts": [
     {"part": "intro"},
-    {"part": "strict-mode", "heading": "Strict mode"},
-    {"part": "error-handling", "heading": "Error handling"},
-    {"part": "pipeline-output", "heading": "Pipeline output"},
-    {"part": "naming-and-verbs", "heading": "Naming and verbs"},
-    {"part": "state-changing-commands", "heading": "State-changing commands"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "strict-mode-and-errors", "heading": "Strict mode and errors"},
-    {"part": "output", "heading": "Output"},
-    {"part": "naming", "heading": "Naming"},
-    {"part": "state-changing-functions", "heading": "State-changing functions"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "pipeline-output", "heading": "Pipeline output", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why a review checklist", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

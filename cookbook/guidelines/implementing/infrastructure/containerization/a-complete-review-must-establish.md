@@ -1,0 +1,18 @@
+
+- `multi-stage`: whether the final image holds only the runtime artifact from a multi-stage build
+- `base-image`: whether the final stage uses a minimal base
+- `one-concern`: whether each image addresses a single concern
+- `workdir`: whether `WORKDIR` with absolute paths replaces chained `cd`
+- `entrypoint-and-cmd`: whether `ENTRYPOINT` holds the executable and `CMD` the default arguments
+- `pin-by-digest`: whether base images are pinned by digest
+- `deterministic-deps`: whether dependencies install from a locked manifest
+- `rebuild-fresh`: whether periodic release builds use `--pull`
+- `order-layers-by-change-frequency`: whether instructions run from least- to most-frequently changed
+- `cache-order`: whether dependencies install before application source is copied
+- `combine-run`: whether `apt-get update` and `install` share one `RUN` that also cleans the caches
+- `non-root`: whether the image runs as a non-root user without `sudo`
+- `no-baked-secrets`: whether any secret is baked into layers, `ENV` or build args
+- `least-files`: whether a `.dockerignore` keeps `.git`, secrets, env files, build output and `node_modules` out of the context
+- `drop-extras`: whether every installed package is needed
+- `healthcheck`: whether a cheap, app-specific health check or probe is declared
+- `adopt-when-justified`: whether any orchestration platform or scanner is backed by a measured need

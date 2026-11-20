@@ -4,11 +4,11 @@
     "id": "6b8715f1-ece0-4db6-b691-19e9d0367ef3",
     "title": "Service-level objectives and error budgets",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,21 +27,24 @@
     "references": [
       "https://sre.google/workbook/implementing-slos/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "logging",
       "performance-optimization"
     ]
   },
-  "synced": "f4b15414ac8f35ad",
+  "synced": "64dd96b2611fd07b",
   "parts": [
     {"part": "intro"},
-    {"part": "pick-slis-that-reflect-user-experience", "heading": "Pick SLIs that reflect user experience"},
-    {"part": "set-slos", "heading": "Set SLOs"},
-    {"part": "derive-and-spend-the-error-budget", "heading": "Derive and spend the error budget"},
-    {"part": "alert-on-burn-rate-not-thresholds", "heading": "Alert on burn rate, not thresholds"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "pick-slis-that-reflect-user-experience", "heading": "Pick SLIs that reflect user experience", "role": "how-to"},
+    {"part": "set-slos", "heading": "Set SLOs", "role": "how-to"},
+    {"part": "derive-and-spend-the-error-budget", "heading": "Derive and spend the error budget", "role": "how-to"},
+    {"part": "alert-on-burn-rate-not-thresholds", "heading": "Alert on burn rate, not thresholds", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

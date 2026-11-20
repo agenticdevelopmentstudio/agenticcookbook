@@ -1,0 +1,15 @@
+
+- `should-pick-the-style-from-consumer-and-traffic`: the style decision names the consumer and traffic shape it follows from, or the work says why not
+- `must-record-the-style-decision`: a recorded decision gives the chosen style and its rationale
+- `must-weigh-the-decision-factors`: the decision record weighs consumer, traffic shape, tooling and team, and caching
+- `should-choose-rest-for-diverse-consumers-and-http-caching`: diverse/external consumers with URL-shaped resources and valuable HTTP caching get REST, or the work says why not
+- `should-default-to-rest`: the API is REST unless a measured need justifies another style, or the work says why
+- `should-pin-rest-contracts-and-version-the-api`: REST contracts are pinned to a dated OpenAPI revision and the API is versioned, or the work says why not
+- `should-choose-grpc-for-internal-low-latency-calls`: low-latency internal calls and streaming use gRPC, or the work says why not
+- `should-not-expose-raw-grpc-publicly`: no raw gRPC is exposed to public third-party clients without a REST/Connect façade, or the work says why
+- `should-choose-graphql-for-measured-aggregation-needs`: any GraphQL endpoint names the measured aggregation need behind it, or the work says why
+- `must-bound-graphql-cost`: every GraphQL endpoint mitigates N+1 and enforces query depth/complexity limits
+- `should-not-assume-cdn-caching-for-graphql`: no GraphQL path depends on CDN caching, or the work says why
+- `should-treat-the-graphql-schema-as-a-versioned-contract`: GraphQL schema changes are additive or deprecations, or the work says why not
+- `may-combine-styles`: any mix of styles sits at distinct boundaries as a recorded, deliberate choice
+- `must-document-each-boundary-style`: each boundary documents its style decision and contract source

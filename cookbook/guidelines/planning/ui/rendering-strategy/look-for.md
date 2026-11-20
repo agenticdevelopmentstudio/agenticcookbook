@@ -1,0 +1,16 @@
+
+- `should-default-to-less-client-js`: a route shipping more client JS than its job needs
+- `should-frame-rendering-as-architecture-selection`: rendering decided as a framework preference rather than by how much JS reaches the client, and when
+- `should-select-a-strategy-per-route`: one rendering strategy applied to the whole app
+- `must-not-mandate-a-framework`: a framework required in order to satisfy this guideline
+- `should-optimize-for-inp-and-lcp`: performance work aimed at FID, or not at INP and LCP
+- `should-prefer-islands-for-mostly-content-pages`: a mostly-content page with a few widgets hydrated whole instead of as islands
+- `should-stream-ssr-for-slow-data-pages`: an app page on slow data whose shell waits for the data before painting
+- `must-measure-client-js-per-route`: no per-route measure of client JS bytes (initial + hydration), or a regression treated as cosmetic
+- `should-pin-react-router-rsc-to-a-tested-release`: React Router v7 RSC relied on without a pinned, tested release
+- `should-keep-use-client-boundaries-small`: large `"use client"` boundaries, or interactivity kept above leaf components
+- `should-adopt-rsc-deliberately`: RSC adopted with no recorded reason
+- `must-not-introduce-rsc-without-benefit`: RSC in a non-React stack, or in a React app where the server/client split gives no measurable benefit
+- `should-record-the-strategy-per-route`: a route with no recorded strategy and one-line rationale
+- `should-keep-strategies-swappable`: business logic coupled to a rendering mode
+- `must-validate-against-real-metrics`: a strategy locked in without INP, LCP, TTFB and JS transfer size measured on representative routes

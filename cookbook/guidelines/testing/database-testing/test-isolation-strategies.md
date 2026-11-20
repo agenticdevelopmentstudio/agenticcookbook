@@ -1,5 +1,5 @@
 
-**Fresh database per test** (SHOULD be the default) gives perfect isolation. Each test gets a blank database, applies the schema, and closes when done. Schema setup cost is negligible for most schemas.
+**Fresh database per test.** Each test gets a blank database, applies the schema, and closes when done.
 
 ```python
 import pytest, sqlite3
@@ -20,7 +20,7 @@ def test_empty(db):
     assert db.execute("SELECT COUNT(*) FROM users").fetchone()[0] == 0
 ```
 
-**Transaction rollback** (MAY use for large schemas) creates the schema once and wraps each test in a transaction that is rolled back after the test. Tests MUST NOT commit; nested operations need SAVEPOINTs.
+**Transaction rollback.**
 
 ```python
 @pytest.fixture
@@ -30,7 +30,7 @@ def db(shared_db):
     shared_db.execute("ROLLBACK")
 ```
 
-**Template + backup API** (MAY use when tests need pre-populated data and isolated writes) creates a seeded template once per session and copies it per test.
+**Template + backup API.**
 
 ```python
 @pytest.fixture(scope='session')

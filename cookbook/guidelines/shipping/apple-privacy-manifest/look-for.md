@@ -1,0 +1,19 @@
+
+- `must-ship-privacy-manifest`: a `PrivacyInfo.xcprivacy` is in the app target, declaring required-reason API usage and tracking/data collection; an app target without one breaks it
+- `should-treat-missing-manifest-as-build-breaking`: the build or CI fails, not warns, when the manifest is missing or incomplete
+- `should-name-and-target-manifest`: the file is named exactly `PrivacyInfo.xcprivacy`, is a property list, and is a member of the app target and each framework/SDK target that needs its own
+- `should-place-manifest-in-bundle`: the app's manifest lands at the top level of the app bundle, and each framework's or SDK's inside its bundle
+- `must-declare-tracking-domains-when-tracking`: when `NSPrivacyTracking` is `true`, `NSPrivacyTrackingDomains` lists the tracking domains
+- `must-declare-every-reached-category`: every required-reason category the code reaches (file timestamp, boot time, disk space, active keyboard, user defaults) appears in `NSPrivacyAccessedAPITypes` with at least one reason code Apple lists for it
+- `must-not-declare-unused-categories`: no declared category lacks a matching call in the code
+- `must-verify-manifest-before-pr`: a PR touching Foundation file/disk/uptime calls, `UserDefaults`, or adding a dependency shows the manifest was checked against them
+- `must-match-collected-data-types`: `NSPrivacyCollectedDataTypes` lists exactly the data the app collects
+- `should-match-nutrition-label`: `NSPrivacyCollectedDataTypes` agrees with the App Store Connect privacy label
+- `must-not-declare-for-listed-sdks`: the app's manifest declares nothing on behalf of an SDK on Apple's list, and each such SDK carries its own signed manifest
+- `should-update-or-remove-sdk-lacking-manifest`: a pinned listed SDK without a manifest is updated to a version with one, or removed
+- `should-search-for-trigger-symbols`: the source and dependencies were searched for the trigger symbols
+- `must-cover-transitively-linked-binaries`: the declared reasons cover vendored `.framework`/`.xcframework` symbols, not just first-party Swift
+- `should-reconcile-privacy-report-before-submitting`: the Xcode Privacy Report from a clean Archive was reconciled before submission
+- `should-keep-manifest-minimal-and-accurate`: the manifest holds no more and no less than the app's real usage
+- `should-recheck-docs-for-new-foundation-calls`: new low-level Foundation calls were checked against Apple's current required-reason list
+- `should-treat-unpublished-category-changes-as-forecast`: no category change Apple has not yet published is handled as if it were in force

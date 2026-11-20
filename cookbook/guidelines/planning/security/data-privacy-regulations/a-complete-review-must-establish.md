@@ -1,0 +1,17 @@
+
+- `must-not-assume-a-single-regime`: whether every regime that applies to the product's users is covered
+- `should-pin-and-recheck-the-applicability-matrix`: whether the applicability matrix is pinned to a dated revision and re-checked quarterly
+- `must-record-a-lawful-basis`: whether a lawful basis or notice/opt-out posture is established and recorded before collection
+- `must-collect-only-needed-data`: whether every collected field is needed for the stated purpose
+- `should-default-to-not-collecting`: whether collection defaults to not collecting
+- `must-limit-use-to-disclosed-purposes`: whether data is used only for purposes disclosed at collection
+- `must-define-retention-per-data-type`: whether each data type has a retention period and is deleted or anonymized on expiry
+- `must-disclose-at-the-point-of-collection`: whether what is collected, why and with whom is disclosed in plain language at collection
+- `should-design-for-data-subject-rights`: whether access, correction, deletion and opt-out are designed in
+- `must-identify-controller-or-processor-role`: whether each system's role was identified before design
+- `must-govern-processors-with-a-dpa`: whether every processor relationship has a written DPA
+- `should-determine-applicable-regimes-before-collecting`: whether applicable regimes were determined from geography and data types before collection
+- `should-confirm-the-lawful-basis-before-collecting`: whether the lawful basis or posture was confirmed and recorded before collection
+- `should-confirm-minimization-retention-and-deletion-per-field`: whether each field has confirmed minimization, retention and a deletion path
+- `should-consult-counsel`: whether counsel was consulted for binding interpretation
+- `must-not-treat-this-as-legal-sign-off`: whether this guideline is treated as legal sign-off

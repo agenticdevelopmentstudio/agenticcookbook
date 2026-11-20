@@ -1,0 +1,13 @@
+
+- `must-manage-ai-calls-as-a-resource`: an AI call made with no budget, cache or fallback around it.
+- `must-cache-equivalent-requests`: AI requests that repeat (identical or semantically equivalent) yet reach the provider every time.
+- `should-key-cache-on-model-template-and-variables`: a cache key that leaves out the model, the prompt template ID, the template variables or (at temperature 0) the temperature.
+- `must-budget-per-user-and-per-request`: an AI-powered feature with no per-user or no per-request cost budget.
+- `must-degrade-when-budget-exhausted`: a path where an exhausted budget neither rejects nor degrades gracefully.
+- `should-route-to-cheapest-adequate-model`: one expensive model used for every request, including ones a cheaper model handles at the needed quality.
+- `should-batch-non-latency-sensitive-work`: work nobody waits on sent to a real-time endpoint instead of a batch API.
+- `must-record-cost-per-response`: a response whose actual cost (input and output tokens times price) is not recorded.
+- `should-aggregate-cost`: cost that cannot be totalled per feature, per user and per time period.
+- `should-define-fallback-providers`: a single provider with no fallback for availability or cost.
+- `should-review-prompts-for-token-efficiency`: prompts carrying text that adds tokens and no quality.
+- `should-cache-system-prompts`: a system prompt sent uncached where the API supports prompt caching.

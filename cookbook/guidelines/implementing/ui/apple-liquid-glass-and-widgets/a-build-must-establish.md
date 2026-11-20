@@ -1,0 +1,15 @@
+
+- `should-let-platform-supply-and-gate-new-apis`: materials, layout and behavior come from the platform, and every brand-new design API is version-gated, or the work says why not
+- `must-use-standard-components`: every navigation, tab, list, form, toolbar and sheet is a standard component
+- `must-follow-apple-hig`: layout, spacing, hit targets and idioms follow the HIG, and no other platform's navigation model is used
+- `should-use-system-materials`: backgrounds and overlays use system materials, or the work says why not
+- `must-use-semantic-color-and-type`: no fixed hex color or fixed point size is used; colors and fonts are semantic system values
+- `should-choose-framework-deliberately`: new surfaces are SwiftUI and every UIKit/AppKit bridge names the missing capability, or the work says why not
+- `should-treat-liquid-glass-as-evolving`: Liquid Glass use is pinned to the iOS/macOS 26 cycle and was checked against current docs, or the work says why not
+- `should-get-liquid-glass-from-system-components`: the Liquid Glass look comes from system components, with no hand-rolled glass, or the work says why
+- `must-gate-glasseffect-behind-availability`: every `.glassEffect(...)` is inside `if #available(iOS 26, macOS 26, *)` with a fallback for earlier targets
+- `must-not-apply-liquid-glass-to-content`: no list, table, media or other content carries Liquid Glass
+- `must-author-widgets-on-system-timeline`: widgets are SwiftUI in a widget extension, refresh on the system timeline, and assume no continuous execution
+- `should-drive-widget-actions-with-app-intents`: interactive widget actions use `Button(intent:)` / `Toggle(isOn:intent:)` with an App Intent, or the work says why not
+- `should-reuse-app-intents-for-controls`: controls reuse the widget's App Intents via `ControlWidgetButton` / `ControlWidgetToggle`, or the work says why not
+- `must-support-declared-families-and-rendering-modes`: every declared size family renders, and the widget reads `\.widgetRenderingMode` to render in full color, accented and vibrant

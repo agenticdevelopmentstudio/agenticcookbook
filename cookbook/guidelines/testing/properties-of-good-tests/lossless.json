@@ -1,0 +1,136 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "From Kent Beck's Test Desiderata — tests should be:",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the attribution to Kent Beck's Test Desiderata and that these are properties tests should have; every listed property is a rule at SHOULD or MUST.",
+        "pin": "1b77ae1011f58f378d80ed8ac62fd283298546237b6a35891ada7d640ac76035"
+      }
+    },
+    {
+      "sentence": "**Isolated** — tests MUST NOT share mutable state or depend on execution order",
+      "to": "must-be-isolated",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT: no shared mutable state and no dependence on execution order.",
+        "pin": "f20990145055486c7b65186ab04313ccdcbbff3e3934197eb87914feb15dc4ad"
+      }
+    },
+    {
+      "sentence": "**Composable** — tests MUST be runnable in any subset and any order",
+      "to": "must-be-composable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: runnable in any subset and any order.",
+        "pin": "4e5381446873765ef78248e10b86c502d0798b47b8b7c67fc08d665b9e301c61"
+      }
+    },
+    {
+      "sentence": "**Deterministic** — tests MUST produce the same result every time, no flakiness",
+      "to": "must-be-deterministic",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: same result every time, no flakiness.",
+        "pin": "d080fd8d5743ef901afc4eb743e37558555ca32f1b9ea3b45be00c79967bd1df"
+      }
+    },
+    {
+      "sentence": "**Fast** — milliseconds per unit test, seconds per integration test",
+      "to": "should-be-fast",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD (the list's 'should be') with both speed targets.",
+        "pin": "571d4e6eff6c25cb844fa5732f6b484851fbdcd32c0b34c3ea5d8e89309cc0b1"
+      }
+    },
+    {
+      "sentence": "**Writable** — easy to author, low ceremony",
+      "to": "should-be-writable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: easy to author, low ceremony.",
+        "pin": "8045e6b888596e9fa99174d6dead2fa1b983e9cab675a8380d51aad03e5a2863"
+      }
+    },
+    {
+      "sentence": "**Readable** — a failing test tells you what broke and why",
+      "to": "should-be-readable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: a failing test tells you what broke and why.",
+        "pin": "ee9b2b49966fc8ac74e6c678df93ece080d2607955ae91a7845c739d8071849e"
+      }
+    },
+    {
+      "sentence": "**Behavioral** — tests SHOULD verify what the code does, not how it does it",
+      "to": "should-be-behavioral",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: verify what the code does, not how.",
+        "pin": "d97559c0172514b539071ac1682ec623cbf62f39a80dceb557576d82bb54b497"
+      }
+    },
+    {
+      "sentence": "**Structure-insensitive** — refactoring internals SHOULD NOT break tests",
+      "to": "should-be-structure-insensitive",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT: refactoring internals does not break tests.",
+        "pin": "eea2633fbb776b85b8396f7af1ad1b672add75385330f0cbdd6c222ffc631030"
+      }
+    },
+    {
+      "sentence": "**Automated** — no manual steps, no human judgment needed",
+      "to": "should-be-automated",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: no manual steps, no human judgment.",
+        "pin": "bac2f95f2a3c8ad14a33e797cbc310980eb33f6a052b5a9048b37e5c288b90fa"
+      }
+    },
+    {
+      "sentence": "**Specific** — a failure points to exactly one cause",
+      "to": "should-be-specific",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: a failure points to exactly one cause.",
+        "pin": "6e08880395f7ee9c110b5bfdbb9e6637777b65506d41160ab33ccff7174ee875"
+      }
+    },
+    {
+      "sentence": "**Predictive** — passing tests mean the code works in production",
+      "to": "should-be-predictive",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: passing tests mean the code works in production.",
+        "pin": "eb779b0c549cd392c81080089679af34b371a50b0a5b745ad141ed7da6fce828"
+      }
+    },
+    {
+      "sentence": "**Inspiring** — confidence to refactor and ship",
+      "to": "should-be-inspiring",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: confidence to refactor and ship.",
+        "pin": "da905831078001174740bfe040793033ab21303403fa594bec8011926a5f979c"
+      }
+    }
+  ],
+  "obsolete": []
+}

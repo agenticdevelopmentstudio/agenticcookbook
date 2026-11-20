@@ -1,0 +1,11 @@
+
+- `should-anchor-sessions-on-the-four-questions`: whether modeling sessions are anchored on the four questions
+- `must-answer-all-four-questions`: whether all four questions are answered, with threats and responses beyond a DFD
+- `must-record-a-response-per-threat`: whether every threat records an explicit response, and every "accept" a rationale and owner
+- `should-use-stride-for-question-two`: whether STRIDE drives the enumeration of what can go wrong
+- `must-consider-every-stride-category-at-trust-boundaries`: whether every STRIDE category was considered for each flow crossing a trust boundary
+- `should-map-each-threat-to-a-linked-control`: whether each threat maps to a documented control whose guideline is linked from the model
+- `should-model-trust-boundaries-before-building`: whether trust boundaries were modeled before the feature was built
+- `should-revisit-the-model-on-architecture-change`: whether the model was revisited after each architecture change
+- `should-keep-each-session-lightweight`: whether sessions are focused per feature
+- `should-keep-threat-models-in-version-control`: whether threat models live in version control beside their design

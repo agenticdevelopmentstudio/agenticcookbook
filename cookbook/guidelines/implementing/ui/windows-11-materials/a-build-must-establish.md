@@ -1,0 +1,15 @@
+
+- `mica-for-long-lived-windows`: long-lived top-level windows use Mica as the base backdrop, or the code says why not
+- `mica-alt-for-tabbed-titlebars`: apps with a tabbed title bar or strong title-bar/commanding contrast use Mica Alt on Windows App SDK 1.1+ and Windows 11 build 22000+, or the code says why not
+- `acrylic-for-transient-surfaces`: flyouts, context menus, tooltips, command bars and light-dismiss panes use Acrylic, or the code says why not
+- `one-backdrop-per-window`: no window applies backdrop material more than once, and no individual UI element carries it
+- `use-systembackdrop`: the material is set via `SystemBackdrop`, or the code says why controller-level customization is required
+- `transparent-layers`: intervening layer backgrounds are transparent, with content-layer fills from `LayerFillColorDefaultBrush` (`LayerOnMicaBaseAltFillColorDefaultBrush` on the Mica Alt commanding layer)
+- `win32-and-wpf`: Win32/WPF hosts follow the "Apply Mica in Win32 desktop apps" path, or the code says why not
+- `never-hardcode-colors`: every color comes from a `ThemeResource` brush, none hardcoded hex
+- `honor-system-fallback`: no code forces material when the system disables it
+- `high-contrast`: in High Contrast mode the user's chosen background color replaces the material
+- `title-bar-continuity`: the material extends into the non-client area through a transparent custom title bar, or the code says why not
+- `should-not-use-acrylic-as-long-lived-backdrop`: no long-lived window uses Acrylic as its full-window backdrop, or the code says why
+- `should-not-reenable-material-after-fallback`: no code re-enables transparency or material after the system's fallback, or the code says why
+- `should-not-layer-material-on-a-single-control`: no material is layered on a single control instead of the window backdrop, or the code says why

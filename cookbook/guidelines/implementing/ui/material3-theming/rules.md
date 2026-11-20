@@ -1,0 +1,19 @@
+
+- **must-consume-semantic-color-roles**: Components **MUST** consume semantic color roles (`primary`, `onPrimary`, `surface`, `onSurface`, `surfaceContainer`, `error`, `outline`, …), never raw `Color(0xFF…)` literals or app-defined palettes.
+- **must-provide-light-and-dark-schemes**: The theme **MUST** provide both a `lightColorScheme()` and a `darkColorScheme()` and select between them based on `isSystemInDarkTheme()`.
+- **should-generate-schemes-with-theme-builder**: SHOULD generate schemes with the Material Theme Builder rather than hand-authoring every role.
+- **should-read-colors-via-color-scheme**: SHOULD read colors at use sites via `MaterialTheme.colorScheme.<role>`.
+- **must-not-read-hard-coded-colors**: **MUST NOT** read a hard-coded color when a role exists.
+- **should-treat-dynamic-color-as-deliberate**: Dynamic color SHOULD be treated as a deliberate decision, not a default — opt in when brand identity allows the OS to drive palette.
+- **should-guard-dynamic-color-api-level**: **SHOULD** guard the API level and fall back to your branded scheme.
+- **should-prefer-fixed-scheme-for-brand-fidelity**: When brand color fidelity is a hard requirement, SHOULD prefer a fixed branded scheme over dynamic color.
+- **should-use-m3-type-scale-roles**: SHOULD use the M3 type scale roles (`displayLarge` … `labelSmall`) via `MaterialTheme.typography.<role>`.
+- **must-not-apply-ad-hoc-type**: **MUST NOT** apply ad-hoc `fontSize`/`fontWeight` where a scale role fits.
+- **should-use-shape-scale**: SHOULD use the shape scale (`extraSmall` … `extraLarge`) via `MaterialTheme.shapes`.
+- **should-take-corners-from-shape-scale**: Component corner treatment **SHOULD** come from the scale, not per-component magic numbers.
+- **must-support-dark-completely**: Dark support **MUST** be complete: every screen reads `onSurface`/`onSurfaceVariant` for text and the matching dark scheme, with no hard-coded light-only colors.
+- **should-verify-contrast-when-overriding-roles**: Role pairs (`primary`/`onPrimary`, `surface`/`onSurface`) are designed to meet contrast targets; **SHOULD** verify contrast against WCAG 2.1 AA when overriding any role.
+- **should-pin-material3-dependency**: SHOULD pin the dependency, e.g. `androidx.compose.material3:material3:1.4.x` (stable line as of mid-2026), via the Compose BOM where possible.
+- **must-not-blanket-adopt-expressive**: **MUST NOT** blanket-adopt Expressive in production.
+- **should-default-to-stable-m3-color-roles**: SHOULD default to stable M3 color roles.
+- **should-adopt-expressive-only-behind-a-flag**: SHOULD adopt Expressive only behind a flag, on a pinned alpha, when a concrete UX need justifies the instability.

@@ -1,0 +1,18 @@
+
+- `should-make-reusable-composables-stateless`: every reusable composable takes state via parameters and emits changes via callbacks, or the work says why not
+- `must-hoist-to-lowest-common-ancestor`: every piece of state lives at the lowest common ancestor that reads or writes it
+- `should-keep-screen-state-in-viewmodel`: screen-level and business state lives in a `ViewModel`, or the work says why not
+- `may-keep-ui-element-state-in-composition`: UI element state kept in `remember` is needed by no other component
+- `should-use-remembersaveable-for-surviving-state`: state that should survive rotation or process death, outside a `ViewModel`, uses `rememberSaveable`, or the work says why not
+- `must-make-saveable-values-serializable`: every `rememberSaveable` value is `Bundle`-serializable or supplied with a custom `Saver`
+- `must-not-rely-on-remember-across-config-changes`: no code relies on a `remember` value surviving a configuration change
+- `must-expose-read-only-state`: every `ViewModel` exposes state as `StateFlow` or `State`, never the mutable backing field
+- `should-keep-mutablestateflow-private`: the `MutableStateFlow` is private and exposed through `asStateFlow()` or an equivalent upcast, or the work says why not
+- `must-not-mutate-hoisted-state`: every hoisted-state change from a composable goes through an event callback
+- `should-collect-with-lifecycle`: `StateFlow` is collected with `collectAsStateWithLifecycle()` on Android, or the work says why not
+- `should-confirm-lifecycle-compose-dependency`: the `lifecycle-runtime-compose` dependency is declared, or the work says why not
+- `should-model-screen-state-immutably`: screen state is one immutable `data class` or `sealed interface` of cases, or the work says why not
+- `should-pass-narrowest-parameters`: composables take the narrowest parameters they need, or the work says why not
+- `should-prefer-stable-parameter-types`: composable parameters are immutable data classes, primitives or lambdas, or the work says why not
+- `should-mark-stability-only-when-contract-holds`: every `@Immutable` / `@Stable` type genuinely holds that contract, or the work says why it is annotated
+- `should-treat-recomposition-as-performance-concern`: every recomposition optimization names the measurement that justified it, or the work says why not

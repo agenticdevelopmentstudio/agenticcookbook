@@ -1,0 +1,265 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Constrain what it can pull:",
+      "to": [
+        "must-not-let-agents-install-freely",
+        "should-enforce-package-allowlist-deterministically",
+        "should-apply-registry-cooldown",
+        "must-require-human-approval-for-new-dependencies",
+        "should-verify-package-exists-and-is-maintained"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in constraining what an agent can pull is carried by the agent MUST NOT plus its four constraint rules (allowlist, cooldown, human approval, existence check).",
+        "pin": "fcd93af4ac38f720b7d395b216bffcef1b8b8d059e6412c928a86cd8921bb793"
+      }
+    },
+    {
+      "sentence": "**Allowlist, enforced deterministically** — scope an explicit package/registry allowlist to the",
+      "to": "should-enforce-package-allowlist-deterministically",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "An explicit package/registry allowlist, enforced deterministically, is kept, the unkeyed instruction at SHOULD.",
+        "pin": "2fa2fa49ef9969dbef8b836394aa1b0b4052cb1dc281856b93756ecf027552b4"
+      }
+    },
+    {
+      "sentence": "task or session and enforce it through DETERMINISTIC gates (pre-install hooks, CI checks, sandbox",
+      "to": "should-enforce-package-allowlist-deterministically",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Scoping the allowlist to the task or session and enforcing it through deterministic gates (pre-install hooks, CI checks) is kept.",
+        "pin": "2762edcc3b2ba2340fafbaef690a03816eceeaf9c0636523df9c3bd38b716e2a"
+      }
+    },
+    {
+      "sentence": "policy), NOT prompt text.",
+      "to": "should-enforce-package-allowlist-deterministically",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Sandbox policy as a gate and the NOT-prompt-text contrast are kept.",
+        "pin": "5cb0900001fff39af7ba9ad6d024d643a84af586de6110853b1626a11d6b46e5"
+      }
+    },
+    {
+      "sentence": "Agents can ignore prompt instructions, so prose alone MUST NOT be the",
+      "to": "must-not-rely-on-prose-alone",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reason that agents can ignore prompt instructions and the MUST NOT on prose as the only control are kept.",
+        "pin": "519ac02e3a2068fc843cb81273e3705bfd8d24964fdebf5a88956fb0cf8dd80a"
+      }
+    },
+    {
+      "sentence": "only control.",
+      "to": "must-not-rely-on-prose-alone",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The completion, prose MUST NOT be the only control, is kept at MUST NOT.",
+        "pin": "127f96852f4075053b8b9a864e41600e159773ce783f701eaa8e92811ddb53bf"
+      }
+    },
+    {
+      "sentence": "**Registry cooldown** — apply a cooldown window (e.g. pip's dependency cooldown) so brand-new",
+      "to": "should-apply-registry-cooldown",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Applying a registry cooldown window, with pip's dependency cooldown as the example, is kept at SHOULD.",
+        "pin": "c5d9c8060edabc42d1a44b56603da53fe5dd9b8bb4dfb5174ced409dba85c9dc"
+      }
+    },
+    {
+      "sentence": "releases are not auto-pulled, reducing exposure to freshly compromised versions.",
+      "to": "should-apply-registry-cooldown",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The purpose, not auto-pulling brand-new releases to reduce exposure to freshly compromised versions, is kept.",
+        "pin": "169c349f5dc341f9b702c50f959059d531f8661b749008a2ec8908d6cc03653d"
+      }
+    },
+    {
+      "sentence": "**Human-in-the-loop approval** — any NEW dependency MUST require explicit human approval before it",
+      "to": "must-require-human-approval-for-new-dependencies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Explicit human approval for any NEW dependency is kept at MUST.",
+        "pin": "476bd022e4bbb090ae0a31c54de47c66b505ad9c585cb31621d4c7c95c6aeea5"
+      }
+    },
+    {
+      "sentence": "is added or merged.",
+      "to": "must-require-human-approval-for-new-dependencies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The timing, before it is added or merged, is kept.",
+        "pin": "488c8811a40a528b77f1ab19d830a0cf0b5aa97296e9679e18cd0565769e0903"
+      }
+    },
+    {
+      "sentence": "**Verify existence and maintenance (anti-slopsquatting)** — before adding a candidate package,",
+      "to": "should-verify-package-exists-and-is-maintained",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Verifying existence and maintenance before adding a candidate package is kept at SHOULD, labelled anti-slopsquatting.",
+        "pin": "1740f160c19e65167e3623b9677cee55925352b0b19ac2f4ec645d7fda1425fb"
+      }
+    },
+    {
+      "sentence": "confirm it actually exists and is actively maintained; an agent MUST NOT install a hallucinated or",
+      "to": [
+        "should-verify-package-exists-and-is-maintained",
+        "must-not-install-hallucinated-or-abandoned-packages"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming the package exists and is actively maintained is kept at SHOULD, and the agent MUST NOT install a hallucinated or abandoned name is kept.",
+        "pin": "2e96f092ea391c9fc81a68a0923c2a916ea315315b9af55ccbb471701fdad07d"
+      }
+    },
+    {
+      "sentence": "abandoned name.",
+      "to": "must-not-install-hallucinated-or-abandoned-packages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on installing a hallucinated or abandoned name is kept.",
+        "pin": "d82911301aae00f4ab9dffce8155b70a0e1108e98df31d07e4d5597c18a04d70"
+      }
+    },
+    {
+      "sentence": "Manage them actively.",
+      "to": "should-manage-dependencies-actively",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Managing dependencies actively is kept, the unkeyed instruction at SHOULD.",
+        "pin": "f8a96b0dcc87750255e1da3d0a0c3e7bac0759c3d36bbc1a6497ac5f1c44d18a"
+      }
+    },
+    {
+      "sentence": "**Lockfiles are mandatory** — `package-lock.json`, `Podfile.lock`, `gradle.lockfile`,",
+      "to": "must-commit-lockfiles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Lockfiles being mandatory is kept with MUST be committed and the same lockfile examples.",
+        "pin": "d2b62322537f221299ac2672f86b2a9db487bdd3871f7b4ab7f5a0a27ecadfd8"
+      }
+    },
+    {
+      "sentence": "`poetry.lock`, `Cargo.lock`, `packages.lock.json`.",
+      "to": "must-commit-lockfiles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The remaining lockfile examples (poetry.lock, Cargo.lock, packages.lock.json) are kept.",
+        "pin": "7898980cb5777ced8d25325ff012b6a52ce91ccb98f6935aa465670ee114d106"
+      }
+    },
+    {
+      "sentence": "Use `--frozen-lockfile` /",
+      "to": "should-use-locked-installs-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using --frozen-lockfile in CI is kept at SHOULD.",
+        "pin": "8f819d4e9b83d82fed7d239f5736a57e3eb9b294c57938ce83f1243d6678bfd5"
+      }
+    },
+    {
+      "sentence": "`npm ci` / `dotnet restore --locked-mode` in CI.",
+      "to": "should-use-locked-installs-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "npm ci and dotnet restore --locked-mode in CI are kept at SHOULD.",
+        "pin": "4fde547e1218d89a0dced73be2b428871ed2ac9b1ba2fda4cacc0d4c256dd897"
+      }
+    },
+    {
+      "sentence": "**Automated scanning** — CI MUST run `npm audit`, `pip-audit`, Dependabot, Snyk, or `dotnet list",
+      "to": "must-run-dependency-scanning-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "CI running automated dependency scanning with the same named tools is kept at MUST.",
+        "pin": "00f11989c47e57e2fefcf1175d8f2d844dbdb28834b288fb5615961561618fbf"
+      }
+    },
+    {
+      "sentence": "package --vulnerable`.",
+      "to": "must-run-dependency-scanning-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "dotnet list package --vulnerable is kept as one of the scanners.",
+        "pin": "df74f326c9ebd9f8c7b01456366cf7c133350d780f6c12b5d39db1ff69bb984d"
+      }
+    },
+    {
+      "sentence": "**Pin dependencies** — exact versions or narrow ranges.",
+      "to": "should-pin-dependencies",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning dependencies to exact versions or narrow ranges is kept at SHOULD.",
+        "pin": "6d612f77c32dfa0d44dd4c9c8d07e56fcecd1f8ce4080b89370c9aaea2bf445e"
+      }
+    },
+    {
+      "sentence": "**Subresource Integrity (SRI)** — for any CDN-hosted scripts/styles, use `integrity`",
+      "to": "should-use-sri-for-cdn-assets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using SRI integrity attributes for any CDN-hosted scripts/styles is kept at SHOULD.",
+        "pin": "398038c55a980671c9bd5c0b83a6909a9971ee01f50e4b7cc88499b213103f6e"
+      }
+    },
+    {
+      "sentence": "attributes with SHA-384/SHA-512 hashes.",
+      "to": "should-use-sri-for-cdn-assets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHA-384/SHA-512 hash requirement is kept.",
+        "pin": "c44bb095812ee0b22662edc6e77eaaa8ef8b2d8d00cefb4561921ab14dcca35f"
+      }
+    },
+    {
+      "sentence": "**Watch for supply chain attacks** — typosquatting, maintainer compromise, malicious",
+      "to": "should-watch-for-supply-chain-attacks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Watching for supply chain attacks, including typosquatting and maintainer compromise, is kept at SHOULD.",
+        "pin": "a6ffa790e42f0f6c647638ae14025172cc4b4095ca6c62efd322df943091c973"
+      }
+    },
+    {
+      "sentence": "post-install scripts, dependency confusion (internal/public name collisions).",
+      "to": "should-watch-for-supply-chain-attacks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Malicious post-install scripts and dependency confusion (internal/public name collisions) are kept.",
+        "pin": "a958c891249e0106e7730af7fe52fd9b23cef2a5ce3c276f8bae1b340033b3c2"
+      }
+    }
+  ],
+  "obsolete": []
+}

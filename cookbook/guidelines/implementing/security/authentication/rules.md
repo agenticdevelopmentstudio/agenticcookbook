@@ -1,0 +1,11 @@
+
+- **should-use-oauth-oidc-with-pkce-for-public-clients**: OAuth 2.0 / OpenID Connect with PKCE **SHOULD** be used for all public clients.
+- **should-use-system-browser-auth-flow-on-native-platforms**: Native apps (iOS/Android/Windows) **SHOULD** use Authorization Code + PKCE via the system browser (`ASWebAuthenticationSession`, Custom Tabs, `WebAuthenticationBroker`).
+- **must-not-embed-webview-for-auth**: Apps MUST NOT embed a WebView for auth — the app can intercept credentials.
+- **should-use-auth-code-pkce-flow-on-spa-platforms**: SPAs **SHOULD** use Authorization Code + PKCE.
+- **should-consider-bff-for-spas**: SPAs **SHOULD** consider a Backend-for-Frontend (BFF) pattern where the SPA never handles tokens directly — the BFF holds tokens server-side in HttpOnly cookies.
+- **should-use-client-credentials-flow-on-server-platforms**: Server-to-server auth **SHOULD** use the Client Credentials flow.
+- **should-use-short-lived-access-tokens-in-session-management**: Access tokens **SHOULD** be short-lived (5-15 minutes).
+- **must-rotate-refresh-tokens**: Refresh token rotation MUST be used — each use issues a new refresh token and invalidates the old one.
+- **should-invalidate-token-family-on-refresh-reuse**: Reuse of a revoked refresh token **SHOULD** be detected, and the entire token family invalidated.
+- **should-enforce-absolute-session-timeouts**: Absolute session timeouts **SHOULD** be enforced server-side.

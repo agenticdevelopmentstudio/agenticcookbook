@@ -1,0 +1,15 @@
+
+- `should-let-platform-supply-and-gate-new-apis`: whether the platform supplies materials, layout and behavior, and brand-new design APIs are version-gated to the deployment target
+- `must-use-standard-components`: whether standard SwiftUI/UIKit/AppKit components are used instead of custom-drawn equivalents
+- `must-follow-apple-hig`: whether layout, spacing, hit targets and idioms follow the HIG and no foreign navigation model is ported
+- `should-use-system-materials`: whether backgrounds and overlays use system materials rather than hardcoded translucent colors
+- `must-use-semantic-color-and-type`: whether every color and font is a semantic system value
+- `should-choose-framework-deliberately`: whether new surfaces use SwiftUI and each UIKit/AppKit bridge fills a missing capability
+- `should-treat-liquid-glass-as-evolving`: whether Liquid Glass use is pinned to the iOS/macOS 26 cycle and checked against current docs
+- `should-get-liquid-glass-from-system-components`: whether the Liquid Glass look comes from system components rather than hand-rolled glass
+- `must-gate-glasseffect-behind-availability`: whether every `.glassEffect(...)` is behind an availability check with a graceful fallback
+- `must-not-apply-liquid-glass-to-content`: whether Liquid Glass is kept to the navigation/control layer and off content
+- `must-author-widgets-on-system-timeline`: whether widgets are SwiftUI in a widget extension on the system-managed timeline, assuming no continuous execution
+- `should-drive-widget-actions-with-app-intents`: whether interactive widget actions use intent-backed `Button` / `Toggle`
+- `should-reuse-app-intents-for-controls`: whether controls reuse the same App Intents
+- `must-support-declared-families-and-rendering-modes`: whether every declared size family is supported and `widgetRenderingMode` is respected

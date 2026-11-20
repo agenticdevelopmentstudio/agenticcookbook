@@ -1,0 +1,20 @@
+
+- **must-not-reference-fid**: Agents MUST NOT reference FID as a current Core Web Vital.
+- **must-measure-in-field-at-p75**: Core Web Vitals **MUST** be measured in the **field at p75** (RUM), not solely in lab tools — lab single-runs do not represent the percentile distribution real users experience.
+- **must-enforce-performance-budget-in-ci**: A **performance budget MUST be enforced in CI** so regressions fail the build rather than reaching production.
+- **should-use-lab-tooling-for-diagnosis**: Lab tooling (Lighthouse, DevTools) **SHOULD** be used for diagnosis and pre-merge gating, with field data as the authoritative pass/fail signal.
+- **must-reserve-space-for-shifting-elements**: Layout-shift-prone elements (images, ads, embeds, late-injected banners) **MUST** reserve space via explicit `width`/`height` or `aspect-ratio` to protect CLS.
+- **should-break-up-long-tasks**: Code SHOULD **break up long tasks** — split work > 50ms into smaller chunks so the main thread can paint and handle input between them.
+- **should-yield-to-main-thread**: Code SHOULD **yield to the main thread.**
+- **should-prefer-scheduler-yield**: Code SHOULD prefer `scheduler.yield()` where available — note it is **Chromium-supported but NOT yet Baseline** as of 2026 (limited availability).
+- **should-provide-yield-fallback**: Code SHOULD provide a fallback: feature-detect and degrade to `await new Promise(r => setTimeout(r))` (loses the prioritized continuation) or the `scheduler-polyfill`.
+- **should-move-heavy-computation-to-web-worker**: Code SHOULD **move heavy computation to a Web Worker** (parsing, diffing, crypto, image work) to keep the main thread free for rendering and input.
+- **must-avoid-layout-thrashing**: Code SHOULD **avoid layout thrashing** — batch DOM reads then writes; code MUST NOT interleave reads/writes in a loop that forces synchronous reflow — never interleave them.
+- **should-keep-dom-small**: Code SHOULD **keep the DOM small** — oversized DOM trees (thousands of nodes) inflate style/layout cost on every interaction. Code SHOULD virtualize long lists.
+- **should-defer-non-critical-work**: Code SHOULD **defer non-critical work** to idle time (`requestIdleCallback`) or post-interaction.
+- **should-apply-lcp-quick-wins**: For **LCP**, code SHOULD preload the LCP image/font, serve responsive images, avoid render-blocking CSS/JS, use `fetchpriority="high"` on the hero image, and prefer server-side rendering for above-the-fold content.
+- **should-apply-cls-quick-wins**: For **CLS**, code SHOULD reserve space for media and dynamic content; avoid inserting content above existing content; use `font-display: optional`/`swap` deliberately and preload fonts to reduce reflow.
+- **should-collect-field-data**: Code SHOULD collect field data via the **`web-vitals` JavaScript library** (reports LCP, INP, CLS using the attribution build for debugging) or the Chrome User Experience Report (CrUX).
+- **should-wire-a-ci-gate**: Code SHOULD wire a CI gate such as **Lighthouse CI** (`lhci autorun`) with assertions on metric thresholds and resource/byte budgets defined in a `budget.json`.
+- **should-express-budgets-as-concrete-limits**: Code SHOULD express budgets as concrete limits (e.g., total JS transfer <= 170KB compressed for the critical path) and fail the build on regression — this turns performance into a `tight-feedback-loop` and a `support-automation` boundary rather than a manual review step.
+- **should-pin-dated-thresholds**: Treating Core Web Vitals as a deliberate, budgeted constraint (not an after-the-fact audit) is the durable practice; specific thresholds are reviewed periodically by the Chrome team, so work SHOULD pin to the dated thresholds above and re-verify against `web.dev/articles/vitals/`.

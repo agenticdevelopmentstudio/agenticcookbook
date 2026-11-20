@@ -1,0 +1,22 @@
+
+- `should-share-domain-and-data-in-common`: whether the domain and data layers are shared in `commonMain`
+- `must-not-depend-on-platform-ui`: whether the shared module depends on any platform UI toolkit
+- `should-keep-platform-ui-on-consumer`: whether platform UI stays on the consuming side absent a deliberate shared-UI decision
+- `may-share-presentation-layer`: whether a shared presentation layer rests on the team accepting the coupling
+- `should-treat-shared-presentation-as-deliberate`: whether a shared presentation layer was a deliberate scope expansion
+- `should-expose-narrow-interfaces`: whether the shared module exposes narrow interfaces that keep platforms swappable
+- `should-reserve-expect-actual-for-thin-shims`: whether `expect`/`actual` is kept to thin platform shims
+- `must-match-every-expect-with-actual`: whether every `expect` has a matching `actual` in the same package for every target
+- `should-prefer-interfaces-over-expect-actual`: whether non-trivial seams use interfaces plus dependency injection
+- `should-use-hierarchical-source-sets`: whether common-but-not-universal code lives in an intermediate source set
+- `should-pin-cmp-version`: whether the CMP version is pinned explicitly
+- `should-recheck-cmp-release-notes`: whether release notes were checked for each relied-on UI feature
+- `should-forecast-unreleased-ios-parity`: whether unreleased iOS parity items were forecast against the pinned version
+- `should-validate-accessibility-on-device`: whether accessibility was validated on-device
+- `should-choose-shared-ui-only-when-accepted`: whether shared CMP UI was chosen only with current iOS maturity accepted
+- `should-present-shared-ui-as-per-app-decision`: whether shared UI was decided per app
+- `should-design-swift-friendly-api`: whether the public API avoids Kotlin-only constructs at the boundary
+- `should-bridge-suspend-and-flow`: whether `suspend` and `Flow` reach Swift through a documented bridge
+- `should-not-leak-raw-coroutines`: whether raw coroutines leak across the boundary
+- `should-have-common-test-suite`: whether a `commonTest` suite covers domain/data logic, with per-target tests for `actual` implementations
+- `should-build-every-target-in-ci`: whether CI builds every shipped target

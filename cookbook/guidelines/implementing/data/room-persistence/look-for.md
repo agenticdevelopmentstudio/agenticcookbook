@@ -1,0 +1,27 @@
+
+- `should-prefer-coroutine-first-dao-apis`: DAO methods built on callbacks or blocking calls instead of `Flow`, `suspend` and `@Transaction`
+- `should-state-kmp-support-as-2-7-plus`: a KMP support claim tied to a Room version before 2.7.0
+- `should-treat-room-3-as-forecast`: Room 3.0 API or `androidx.room3:room3-*` artifacts treated as a shipped default
+- `should-not-migrate-production-to-room-3`: production code depending on Room 3.0
+- `should-pin-room-version`: a Room dependency floating to `+` or missing from the version catalog
+- `must-use-ksp`: `kapt` used for `room-compiler`
+- `should-export-schema`: no `room.schemaLocation`, or the exported JSON schema not committed
+- `should-return-flow-for-observable-reads`: an observable read returning something other than `Flow`
+- `should-suspend-one-shot-reads-and-writes`: a one-shot read or a write DAO method that is not `suspend`
+- `must-not-call-blocking-dao-on-main-thread`: a blocking DAO function called on the main thread
+- `should-not-allow-main-thread-queries-outside-tests`: `allowMainThreadQueries()` in non-test code
+- `must-not-mark-reactive-returns-suspend`: a `suspend` DAO method returning `Flow`, `Flowable` or `Observable`
+- `must-wrap-atomic-multi-statement-work-in-transaction`: an atomic multi-statement operation with no `@Transaction` or `withTransaction`
+- `must-use-transaction-on-relation-queries`: a `@Query` returning a `@Relation`-bearing POJO without `@Transaction`
+- `should-keep-transactions-short`: network or long CPU work inside `withTransaction`
+- `should-define-one-entity-per-normalized-table`: an `@Entity` spanning more than one normalized table
+- `should-declare-relationships-not-denormalize`: related data denormalized instead of `@ForeignKey` plus `@Relation`
+- `must-index-foreign-key-columns`: a `@ForeignKey` column with no index
+- `should-treat-unindexed-fk-warning-as-error`: Room's unindexed-foreign-key build warning left in place
+- `should-use-unique-index-for-natural-keys`: natural-key uniqueness checked in app code with no `@Index(unique = true)`
+- `must-bump-version-and-supply-migration`: a schema change with no `version` bump or no `Migration` / auto-migration spec
+- `must-not-ship-destructive-migration-fallback`: `fallbackToDestructiveMigration()` reachable in a release build
+- `should-test-migrations`: a migration with no `MigrationTestHelper` test from version N to N+1
+- `must-not-hold-database-per-screen`: a `RoomDatabase` built per screen rather than one application-scoped singleton
+- `must-not-expose-livedata-to-coroutine-consumers`: new code exposing `LiveData` to a coroutine/Compose consumer
+- `must-not-split-multi-step-writes-without-transaction`: a multi-step write as separate suspend calls outside a transaction

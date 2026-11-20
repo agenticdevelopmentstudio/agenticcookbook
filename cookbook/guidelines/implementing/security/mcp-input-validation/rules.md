@@ -1,0 +1,26 @@
+
+- **should-pin-mcp-spec-revision**: You **SHOULD** pin guidance to the MCP spec revision dated **2025-06-18** (tool `inputSchema` is JSON Schema **2020-12**).
+- **must-validate-against-input-schema**: Tool handlers **MUST** validate every argument against the tool's declared `inputSchema` before use, rejecting on mismatch — do not rely on the client or model to have validated.
+- **must-not-trust-argument-provenance**: Handlers **MUST NOT** trust an argument because it arrived through the model; an argument's provenance grants it no privilege.
+- **must-authorize-every-call**: Handlers **MUST** enforce authorization on every call against the authenticated identity, not against anything the model passes.
+- **must-sanitize-and-bound-before-side-effects**: Handlers **MUST** sanitize and bound any argument before it reaches a side effect (filesystem, network, DB, shell, downstream API).
+- **should-define-explicit-schema-constraints**: You **SHOULD** define `inputSchema` with explicit `type`, `required`, `enum`, `pattern`, `minLength`/`maxLength`, and numeric bounds.
+- **must-use-object-schema-root**: The `inputSchema` root **MUST** be `type: object`.
+- **must-reject-unknown-properties**: Validate with a JSON Schema 2020-12 validator at the handler boundary and **MUST** reject unknown properties (`additionalProperties: false`) unless a field is intentionally open.
+- **must-not-auto-dereference-external-refs**: Implementations **MUST NOT** auto-dereference external `$ref` URIs and **SHOULD** bound schema depth and total validation time to prevent schema-driven DoS.
+- **must-not-cache-authorization-across-privilege-boundary**: Re-check the caller's scopes/permissions on **every** tool invocation against the session's authenticated identity; **MUST NOT** cache an authorization decision across a privilege boundary.
+- **should-scope-downstream-to-least-privilege**: You **SHOULD** scope downstream actions to the least privilege the host-process identity holds.
+- **must-not-widen-privilege-from-arguments**: You **MUST NOT** ever widen privilege based on a tool argument.
+- **must-not-forward-unvalidated-tokens**: You **MUST NOT** forward a client-supplied token to a downstream API without validating its audience (see `mcp-server-security` token-passthrough rules).
+- **should-confine-file-paths**: **File paths**: you **SHOULD** canonicalize (resolve symlinks + `..`) and confine to an allowlisted root; reject paths that escape it. Treat path traversal as a primary attack on file tools.
+- **should-block-ssrf**: **URL arguments**: you **SHOULD** block SSRF — allowlist schemes/hosts, resolve and reject private, loopback, and link-local IP ranges, and disable redirects to disallowed targets.
+- **should-use-parameterized-queries-only**: **Database**: you **SHOULD** use parameterized queries only.
+- **should-scope-queries-to-authorized-tenant**: You **SHOULD** scope every query to the authorized tenant/row set.
+- **must-not-interpolate-arguments-into-queries**: You **MUST NOT** ever interpolate an argument into SQL or a query path.
+- **should-avoid-shell-invocation**: **Shell/OS**: you **SHOULD** avoid shell invocation; if unavoidable, pass arguments as an argv array and allowlist the executable.
+- **must-not-pass-concatenated-shell-string**: Shell arguments **MUST NOT** ever be passed as a concatenated string.
+- **should-validate-tool-results**: Tool results flow back into model context — **SHOULD** validate against `outputSchema` and strip or label untrusted fetched content so it is not read as instructions.
+- **should-log-failures-and-denials**: You **SHOULD** log validation failures and authorization denials with the tool name and caller identity (not raw argument payloads).
+- **must-not-log-secrets-or-tokens**: Logs **MUST NOT** contain secrets or full tokens.
+- **should-return-non-leaky-errors**: You **SHOULD** return structured, non-leaky errors on rejection — fail closed, surface a stable error code.
+- **must-not-echo-internals-in-errors**: Rejection errors **MUST NOT** echo internal paths or stack traces.

@@ -6,5 +6,4 @@
 | TypeScript | ESLint | Prettier |
 | C# / .NET | Roslyn Analyzers + .editorconfig | dotnet format |
 
-See the implementing copy of this guideline for platform-specific setup details.
-
+See the Swift, Kotlin, TypeScript and C# parts of this guideline, the implementing copy, for platform-specific setup details.

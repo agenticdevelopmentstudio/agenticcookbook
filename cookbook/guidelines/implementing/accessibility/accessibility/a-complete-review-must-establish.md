@@ -1,0 +1,25 @@
+
+- `must-integrate-accessibility-apis-from-day-one`: every component integrates with the platform accessibility APIs from its initial implementation
+- `must-give-interactive-elements-semantic-roles-and-labels`: every interactive element has a semantic role and a label
+- `must-fully-support-screen-readers`: the component has full screen reader support on each platform it targets
+- `must-support-keyboard-and-switch-control`: the component supports keyboard and switch control navigation
+- `must-not-break-at-larger-text-sizes`: no layout breaks at larger text sizes
+- `must-meet-wcag-aa-contrast`: all text meets WCAG AA contrast: 4.5:1, or 3:1 for large text
+- `must-follow-visual-layout-focus-order`: focus order is meaningful and follows the visual layout
+- `must-respond-to-display-settings`: the component responds to the platform accessibility and display settings, including reduced motion, high contrast, color inversion, bold text and grayscale
+- `must-respond-to-swiftui-environment-values`: every SwiftUI environment value in the Swift table is read and its action taken
+- `must-respond-to-android-accessibility-settings`: every Android setting in the Kotlin table is honored with its action
+- `should-meet-wcag-2-2-aa`: whether every component meets WCAG 2.2 AA
+- `should-honor-wcag-2-2-new-aa-criteria`: whether the component honors each of WCAG 2.2's new AA criteria
+- `should-treat-wcag-3-as-not-yet-actionable`: whether WCAG 3.0 is treated as a horizon draft rather than an actionable standard
+- `should-follow-wai-aria-authoring-practices`: whether ARIA roles, states and properties follow the WAI-ARIA Authoring Practices
+- `must-respond-to-css-user-preferences`: every user preference in the TypeScript table is honored with its action
+- `should-support-screen-readers-with-aria`: whether screen reader support uses ARIA roles, `aria-live` for dynamic content and proper landmark regions
+- `should-set-automation-name-on-unlabeled-elements`: whether every unlabeled interactive element sets `AutomationProperties.Name`
+- `should-use-labeled-by-for-form-fields`: whether form fields use `AutomationProperties.LabeledBy`
+- `should-use-live-setting-for-dynamic-regions`: whether dynamic content regions use `AutomationProperties.LiveSetting`
+- `must-not-hard-code-colors`: no color is hard-coded
+- `should-test-with-accessibility-insights`: whether the component was tested with Accessibility Insights for Windows
+- `must-make-elements-keyboard-reachable`: every interactive element is reachable via Tab and actionable via Enter/Space
+- `should-use-40-epx-touch-targets`: whether Windows touch targets are at least 40x40 epx
+- `must-respond-to-windows-accessibility-settings`: every Windows setting in the Windows table is honored with its action

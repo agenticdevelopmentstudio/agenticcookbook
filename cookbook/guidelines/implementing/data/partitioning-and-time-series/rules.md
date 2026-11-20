@@ -1,0 +1,16 @@
+
+- **should-not-partition-by-default**: Per **YAGNI** and **make-it-work-make-it-right-make-it-fast**, you SHOULD NOT partition by default. A normal indexed table serves most workloads.
+- **must-justify-partitioning-with-measured-need**: You **MUST** justify partitioning with a concrete, measured need — typically a table at real scale (commonly cited thresholds: tens of millions of rows or roughly 50-100 GB; treat these as rules of thumb, not hard limits — verify against your workload) **or** a retention requirement where you periodically purge old data.
+- **should-confirm-win-with-explain-analyze**: You **SHOULD** confirm the win with `EXPLAIN (ANALYZE)` before and after: partitioning helps only when queries filter on the partition key so the planner prunes partitions.
+- **should-not-over-fragment-partitions**: You **SHOULD NOT** create partitions smaller than ~10k rows or accumulate thousands of partitions; both add planning overhead. Aim for a few dozen to a few hundred partitions.
+- **must-partition-on-hot-query-filter-columns**: You **MUST** partition on column(s) that appear in the WHERE clause of hot queries, or pruning cannot fire.
+- **should-prefer-native-declarative-partitioning**: You **SHOULD** prefer native declarative partitioning over legacy inheritance + triggers.
+- **must-include-partition-key-in-unique-constraints**: You **MUST** include the partition key in primary keys and unique constraints (a PostgreSQL constraint).
+- **should-range-partition-time-series-by-time**: Time-series data SHOULD be **range partitioned by time** (e.g. one partition per day/week/month sized so each holds a workable row count).
+- **should-retain-by-dropping-partitions**: Retention SHOULD be done **by dropping partitions**: `DROP TABLE`/`DETACH PARTITION` on an old partition is near-instant and reclaims space, unlike a bulk `DELETE` that bloats the table and stresses autovacuum.
+- **should-automate-partition-lifecycle**: You **SHOULD** automate partition creation and dropping (e.g. `pg_partman`).
+- **should-evaluate-brin-for-time-ordered-partitions**: **BRIN indexes** on the time column suit naturally-ordered append-only data and are far smaller than B-tree; you **SHOULD** evaluate BRIN for large time-ordered partitions.
+- **should-precompute-rollups-for-long-history**: **Rollups / continuous aggregates**: you SHOULD precompute summaries for queries spanning long history instead of scanning raw rows. Plain materialized views require manual refresh; some extensions refresh incrementally.
+- **should-stay-on-native-partitioning-when-sufficient**: You **SHOULD** stay on native partitioning when its capabilities suffice — fewer operational dependencies.
+- **may-adopt-extension-only-on-measured-need**: You **MAY** adopt an extension ONLY when a measured need (compression ratio, automated lifecycle, query speedup on large history) justifies the added dependency and operational surface.
+- **should-pin-and-reverify-after-upgrades**: You SHOULD pin to your deployed major version and re-verify `EXPLAIN` plans after upgrades.

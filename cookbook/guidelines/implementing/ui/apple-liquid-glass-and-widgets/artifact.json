@@ -4,11 +4,11 @@
     "id": "ae9559b5-4829-4349-b018-986e98c31d39",
     "title": "Apple design language and widgets",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -31,19 +31,21 @@
     "references": [
       "https://developer.apple.com/design/human-interface-guidelines"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "platform-integration"
     ]
   },
-  "synced": "4ab0dceb643a4ac8",
+  "synced": "dbe6818911d7f3e1",
   "parts": [
     {"part": "intro"},
-    {"part": "adopt-the-system-design-language", "heading": "Adopt the system design language"},
-    {"part": "liquid-glass-version-recent-evolving-forecast-sensitive", "heading": "Liquid Glass — version-recent, evolving (FORECAST-sensitive)"},
-    {"part": "widgetkit-and-glanceable-surfaces", "heading": "WidgetKit and glanceable surfaces"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "liquid-glass-version-recent-evolving-forecast-sensitive", "heading": "Liquid Glass — version-recent, evolving (FORECAST-sensitive)", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

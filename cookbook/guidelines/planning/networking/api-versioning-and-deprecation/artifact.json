@@ -4,11 +4,11 @@
     "id": "c4273664-4d26-477b-b778-ac1e9b51f385",
     "title": "API versioning and deprecation",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,19 +27,21 @@
     "references": [
       "https://www.rfc-editor.org/rfc/rfc8594.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "api-integration"
     ]
   },
-  "synced": "9d5d8cf0ab2494ac",
+  "synced": "e0c36e2b93125160",
   "parts": [
     {"part": "intro"},
-    {"part": "evolve-additively-first", "heading": "Evolve additively first"},
-    {"part": "choosing-a-versioning-scheme-a-decision-not-a-mandate", "heading": "Choosing a versioning scheme (a decision, not a mandate)"},
-    {"part": "deprecation-lifecycle", "heading": "Deprecation lifecycle"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "versioning-schemes", "heading": "Versioning schemes", "role": "how-to"},
+    {"part": "deprecation-headers-example", "heading": "Deprecation headers example", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

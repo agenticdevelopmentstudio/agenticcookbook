@@ -4,11 +4,11 @@
     "id": "f34f83c0-3a3e-4a94-a0e9-08ce75ac9762",
     "title": "Zero-downtime migrations: expand and contract",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,20 +28,23 @@
     "references": [
       "https://www.postgresql.org/docs/current/sql-altertable.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "schema-design",
       "database-operations"
     ]
   },
-  "synced": "25ab3dea33056daa",
+  "synced": "2a300f7a423a5dbb",
   "parts": [
     {"part": "intro"},
-    {"part": "the-core-invariant-n-n-1-compatibility", "heading": "The core invariant: N / N-1 compatibility"},
-    {"part": "expand-and-contract-parallel-change", "heading": "Expand and contract (parallel change)"},
-    {"part": "make-ddl-fail-fast-instead-of-stalling-the-app", "heading": "Make DDL fail fast instead of stalling the app"},
-    {"part": "roll-back-by-reversing-not-undoing", "heading": "Roll back by reversing, not undoing"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "expand-and-contract-parallel-change", "heading": "Expand and contract (parallel change)", "role": "how-to"},
+    {"part": "expand-example", "heading": "Expand step in SQL", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

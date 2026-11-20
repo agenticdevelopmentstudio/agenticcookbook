@@ -1,0 +1,32 @@
+
+- `should-use-memory-databases-for-unit-tests`: unit-test fixtures that connect to `:memory:` rather than a file
+- `should-use-file-databases-only-for-file-behavior`: file-based test databases in tests that do not exercise WAL, file locking, concurrent connections or platform-specific I/O
+- `should-put-file-databases-in-temp-dir`: file-based test databases written outside a temp directory, or left behind after teardown
+- `must-not-share-memory-database-across-modules`: one in-memory database reused by unrelated test modules
+- `should-use-named-memory-databases-only-when-intended`: `file:name?mode=memory&cache=shared` URLs where no test needs several connections to one in-memory database
+- `should-default-to-fresh-database-per-test`: the default database fixture creating a blank database and applying the schema per test
+- `may-use-transaction-rollback-for-large-schemas`: transaction-rollback fixtures used where the schema is not large
+- `must-not-commit-under-transaction-rollback`: `COMMIT` calls inside tests that run under a rollback fixture, and nested operations without SAVEPOINTs
+- `may-use-template-and-backup-for-seeded-data`: template-and-backup fixtures used where tests need neither pre-populated data nor isolated writes
+- `should-maintain-test-seeds-file`: a `test_seeds.sql` (or equivalent) file holding representative fixture data
+- `should-cover-seed-cases`: seed data missing typical records, edge cases (nulls, empty strings, boundary values) or a relevant status
+- `must-not-build-shared-fixtures-per-test`: the same fixture data built record-by-record inside several tests
+- `should-use-function-scoped-fixtures-for-writes`: session- or module-scoped fixtures used by tests that write
+- `should-use-session-scoped-fixtures-for-reads`: read-only tests rebuilding a database per test where a session-scoped fixture would do
+- `should-relax-test-durability`: test database setup without relaxed durability (`journal_mode = OFF`, `synchronous = OFF`)
+- `should-apply-relaxed-settings-only-in-tests`: relaxed durability pragmas reachable from production code
+- `must-test-forward-migrations`: a test that applies every migration in order to a blank database and asserts the resulting schema
+- `should-make-migrations-idempotent`: migrations that fail when applied a second time where idempotency was possible
+- `should-test-migration-idempotency-twice`: a test that applies the migration set twice
+- `should-test-backward-migrations`: rollback scripts with no forward-then-backward test checking the pre-migration schema
+- `must-test-migrations-with-representative-data`: migration tests run only on empty databases, not on production-representative data
+- `must-test-sync-at-unit-and-integration-level`: sync code with unit tests (change detection, serialization) and an integration round-trip test
+- `should-test-change-detection`: a test that the unsynced-records query returns the correct rows
+- `should-test-sync-apply`: a test that applying a server changeset updates the local database, including soft-delete propagation
+- `should-test-outbox-round-trip`: a test that a local write appears in the outbox, is marked synced, and the outbox entry is consumed
+- `should-test-tombstone-propagation`: a test that a delete on one peer is applied to a second peer and not resurrected by a later sync
+- `must-test-conflicts-with-two-peers`: conflict tests that use two databases representing two peers
+- `should-assert-merge-matches-resolution-strategy`: conflict tests that apply divergent changes, merge, and assert the defined resolution outcome
+- `should-test-all-conflict-cases`: missing update-vs-update, update-vs-delete or insert-vs-insert conflict tests
+- `should-use-sqlite-where-dialect-is-irrelevant`: unit tests that run against SQLite only where dialect differences do not affect the logic
+- `must-use-production-database-for-dialect-tests`: integration tests of type enforcement, constraint behavior or database-specific SQL that run against SQLite instead of the production database

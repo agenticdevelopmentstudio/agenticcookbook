@@ -1,0 +1,24 @@
+
+- **must-make-boundary-crossing-types-sendable**: Any type that crosses an isolation boundary (closure capture, actor argument/return, `Task` value, `async let`) **MUST** be `Sendable`. The compiler enforces this in Swift 6 mode.
+- **should-prefer-immutable-value-types**: Prefer immutable value types (`struct`/`enum` with `let` `Sendable` stored properties) — they **SHOULD** be `Sendable` automatically; see [adc.principle.immutability-by-default](cookbook:a7ce3621-2fed-478f-8767-b186014c5923).
+- **may-declare-final-class-sendable**: A `final class` with only immutable `Sendable` state **MAY** declare `Sendable` conformance explicitly.
+- **may-use-unchecked-sendable-when-guaranteed**: A class whose safety the compiler cannot prove but that you guarantee (e.g. internal locking) **MAY** use `@unchecked Sendable`.
+- **must-justify-unchecked-sendable**: A class's `@unchecked Sendable` **MUST** be justified in a comment.
+- **must-not-expose-unsynchronized-mutable-state**: A class using `@unchecked Sendable` **MUST NOT** expose mutable state without synchronization.
+- **should-wrap-mutable-shared-state-in-actor**: Mutable shared state **SHOULD** be wrapped in an `actor`, not retrofitted with `@unchecked Sendable`.
+- **should-use-actor-for-mutable-state**: SHOULD use `actor` to protect mutable state; its members are isolated and accessed with `await` from outside.
+- **should-annotate-ui-types-with-mainactor**: SHOULD annotate UI types and view models that touch UIKit/AppKit/SwiftUI state with `@MainActor`.
+- **must-run-ui-updates-on-main-actor**: UI updates **MUST** run on the main actor.
+- **must-not-access-isolated-state-from-nonisolated**: A function that is `nonisolated` **MUST NOT** access actor-isolated state synchronously.
+- **should-adopt-incrementally-per-module**: Strict concurrency **SHOULD** be adopted incrementally per module — a Swift 6 compiler still builds Swift 5 modules, so the strictness is opt-in per target.
+- **should-enable-checks-as-warnings-first**: SHOULD enable checks as **warnings** first via the `StrictConcurrency` upcoming-feature flag (or the "Strict Concurrency Checking" build setting at `Targeted`, then `Complete`) while still in Swift 5 mode.
+- **should-migrate-leaf-modules-first**: SHOULD migrate **leaf modules first** (no dependents), then work upward; switch the **app target last**.
+- **should-flip-to-swift-6-only-when-warnings-clear**: SHOULD flip a module to the Swift 6 language mode only once its warnings are clear.
+- **should-use-preconcurrency-as-temporary-shim**: SHOULD use `@preconcurrency` on imports/conformances to keep Swift-5 clients compiling against a not-yet-migrated dependency — treat it as a **temporary** shim, not a destination.
+- **should-not-flip-whole-workspace-at-once**: SHOULD NOT flip the whole workspace to Swift 6 mode at once; that produces an unactionable wall of errors.
+- **should-confirm-target-settings-before-assuming**: Swift 6.2 behavior depends on settings — SHOULD confirm what a target actually enables before assuming it.
+- **should-leave-library-default-isolation-nonisolated**: Default `@MainActor` isolation is intended for **app and executable targets**, NOT libraries — a library **SHOULD** leave default isolation `nonisolated` so callers stay in control.
+- **should-enable-approachable-features-individually**: SHOULD enable each of `InferIsolatedConformances` and `NonisolatedNonsendingByDefault` **individually** when migrating an existing project, because changing where async work runs can move code off the thread it ran on before.
+- **should-use-concurrent-to-opt-off-main-actor**: SHOULD use the `@concurrent` attribute to explicitly opt a function into running off the main actor.
+- **should-treat-default-isolation-as-per-target-decision**: SHOULD treat any default-isolation choice as a **deliberate per-target decision**, not a global mandate; record it where the target is configured.
+- **should-build-migrated-modules-warning-free**: SHOULD build each migrated module in Swift 6 language mode with zero concurrency warnings before moving up the graph.

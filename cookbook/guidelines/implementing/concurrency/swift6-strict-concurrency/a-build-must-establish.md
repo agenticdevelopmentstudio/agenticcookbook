@@ -1,0 +1,24 @@
+
+- `must-make-boundary-crossing-types-sendable`: every type crossing an isolation boundary is `Sendable`, and the module builds in Swift 6 mode
+- `should-prefer-immutable-value-types`: shared data is held in immutable value types, or the code says why not
+- `may-declare-final-class-sendable`: every class declaring `Sendable` is `final` with only immutable `Sendable` state
+- `may-use-unchecked-sendable-when-guaranteed`: every `@unchecked Sendable` class has a safety guarantee the code shows (e.g. internal locking)
+- `must-justify-unchecked-sendable`: every `@unchecked Sendable` has a justifying comment
+- `must-not-expose-unsynchronized-mutable-state`: no `@unchecked Sendable` class exposes mutable state without synchronization
+- `should-wrap-mutable-shared-state-in-actor`: mutable shared state is in an `actor`, not behind `@unchecked Sendable`, or the code says why
+- `should-use-actor-for-mutable-state`: mutable state is protected by an `actor`, or the code says why not
+- `should-annotate-ui-types-with-mainactor`: every UI type and view model touching UIKit/AppKit/SwiftUI state is `@MainActor`, or the code says why not
+- `must-run-ui-updates-on-main-actor`: every UI update runs on the main actor
+- `must-not-access-isolated-state-from-nonisolated`: no `nonisolated` function accesses actor-isolated state synchronously
+- `should-adopt-incrementally-per-module`: strict concurrency was adopted per module, or the work says why not
+- `should-enable-checks-as-warnings-first`: each module ran strict checks as warnings in Swift 5 mode before Swift 6 mode, or the work says why not
+- `should-migrate-leaf-modules-first`: modules were migrated leaf first and the app target last, or the work says why not
+- `should-flip-to-swift-6-only-when-warnings-clear`: every module in Swift 6 mode had zero warnings when flipped, or the work says why not
+- `should-use-preconcurrency-as-temporary-shim`: every `@preconcurrency` covers a not-yet-migrated dependency and is marked temporary, or the code says why
+- `should-not-flip-whole-workspace-at-once`: the workspace was not flipped to Swift 6 mode in one step, or the work says why
+- `should-confirm-target-settings-before-assuming`: the target's settings were checked for what Swift 6.2 behavior it enables, or the work says why not
+- `should-leave-library-default-isolation-nonisolated`: every library target's default isolation is `nonisolated`, or the code says why not
+- `should-enable-approachable-features-individually`: an existing project enabled `InferIsolatedConformances` and `NonisolatedNonsendingByDefault` one at a time, or the work says why not
+- `should-use-concurrent-to-opt-off-main-actor`: every function meant to run off the main actor carries `@concurrent`, or the code says why not
+- `should-treat-default-isolation-as-per-target-decision`: each target's default-isolation choice is set per target and recorded where it is configured, or the work says why not
+- `should-build-migrated-modules-warning-free`: each migrated module builds in Swift 6 mode with zero concurrency warnings before the next one up, or the work says why not

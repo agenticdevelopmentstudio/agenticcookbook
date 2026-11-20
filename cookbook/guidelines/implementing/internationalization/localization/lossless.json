@@ -1,0 +1,226 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "All user-facing strings MUST be localizable — no hardcoded strings:",
+      "to": "must-make-user-facing-strings-localizable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All user-facing strings localizable, no hardcoded strings, is kept at MUST; the per-platform list it introduced is carried by the platform rules.",
+        "pin": "657de7485c91ff80a2133875c88745608691f60a5a5239ed8373f78a8bcf5758"
+      }
+    },
+    {
+      "sentence": "**Apple**: `String(localized:)` or `NSLocalizedString`.",
+      "to": "should-use-string-localized-on-apple",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "String(localized:) or NSLocalizedString on Apple is kept at SHOULD.",
+        "pin": "aaca70f7601c012d3bda40e13e0a405c41ecc585593cee76cfb65cfe58083732"
+      }
+    },
+    {
+      "sentence": "Store in `.xcstrings` or `.strings`.",
+      "to": "should-store-apple-strings-in-xcstrings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Storing Apple strings in .xcstrings or .strings is kept at SHOULD.",
+        "pin": "ca8d47202c60fc4fc1679f0547d3e075b9b6c9857b718e64b214ba831cb8485d"
+      }
+    },
+    {
+      "sentence": "**Android**: `strings.xml` resources.",
+      "to": "should-use-strings-xml-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "strings.xml resources on Android is kept at SHOULD.",
+        "pin": "011eb45aca48bf6943a533b9352b597c9c46ff240a7d5752836fb8eabaaae6f4"
+      }
+    },
+    {
+      "sentence": "Reference via `R.string.*` or `stringResource()`.",
+      "to": "should-reference-android-strings-via-resources",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Referencing Android strings via R.string.* or stringResource() is kept at SHOULD.",
+        "pin": "ede26f5df0ae89f59af620b601663e58b0b404a4b64fcc3d3a7d4291e02f6ad3"
+      }
+    },
+    {
+      "sentence": "**Web**: i18n library (`react-intl`, `i18next`).",
+      "to": "should-use-i18n-library-on-web",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "An i18n library (react-intl, i18next) on the web is kept at SHOULD, with FormatJS added.",
+        "pin": "931ddb56961cc24ec323dba2aa83ee441a8bc09a7b47677b14f2eb8fa9f0d207"
+      }
+    },
+    {
+      "sentence": "Extract to message catalogs.",
+      "to": "should-extract-to-message-catalogs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Extracting strings to message catalogs is kept at SHOULD.",
+        "pin": "695cad0f3db2895c226d852b44fc64c6fcba231a11592a8ba25cedbfba23114a"
+      }
+    },
+    {
+      "sentence": "**Windows**: `.resw` resource files with `x:Uid` in XAML.",
+      "to": "should-use-mrt-core-resw-on-windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": ".resw resource files with x:Uid in XAML on Windows is kept at SHOULD.",
+        "pin": "8c96cd1a12bd4cb8a4665f5493bc25cbdec07cc4e53ebb0046c99526871ecd03"
+      }
+    },
+    {
+      "sentence": "`ResourceLoader` from MRT Core for code-behind access.",
+      "to": "should-use-resource-loader-in-code-behind",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ResourceLoader from MRT Core for code-behind access is kept at SHOULD.",
+        "pin": "ab9ff870427b19ee027e10b983732f25bbac09b48b081db3bc3af31e0440ea01"
+      }
+    },
+    {
+      "sentence": "Use `strings.xml` resource files.",
+      "to": "should-use-strings-xml-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "strings.xml resource files in Kotlin/Android is kept at SHOULD.",
+        "pin": "5520376d389a61cd224680bb5711b76cc9e16962d1c92bb0e1dd28c3d4568154"
+      }
+    },
+    {
+      "sentence": "Reference via `R.string.*` in code or `stringResource()` in Compose.",
+      "to": "should-reference-android-strings-via-resources",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "R.string.* in code and stringResource() in Compose are kept at SHOULD with both contexts.",
+        "pin": "4d688800b39e9ef5200beb4aeafd2ccf2efb74f16c06312ccce9f9ef9862ac63"
+      }
+    },
+    {
+      "sentence": "No hardcoded user-facing strings.",
+      "to": "must-make-user-facing-strings-localizable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No hardcoded user-facing strings is kept at MUST, on every platform.",
+        "pin": "2b6e52182816dc5ae845e38d5735954712813180e17e87d1b3b3ae4cfc206409"
+      }
+    },
+    {
+      "sentence": "Use `String(localized:)` (Swift 5.7+) or `NSLocalizedString`.",
+      "to": "should-use-string-localized-on-apple",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "String(localized:) (Swift 5.7+) or NSLocalizedString is kept at SHOULD with the version note.",
+        "pin": "a438b7eef210bf20619270698db4e68719087318aee9b9c9b2701db9de4f44a3"
+      }
+    },
+    {
+      "sentence": "Store strings in `.xcstrings` (Xcode 15+) or `.strings` files.",
+      "to": "should-store-apple-strings-in-xcstrings",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": ".xcstrings (Xcode 15+) or .strings files is kept at SHOULD with the version note.",
+        "pin": "78a8bd9a58f6169a138c6ad971d9106283d0df528a9a71b37f0c5b492e9ca66b"
+      }
+    },
+    {
+      "sentence": "Use an i18n library (`react-intl`, `i18next`, `FormatJS`).",
+      "to": "should-use-i18n-library-on-web",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "An i18n library (react-intl, i18next, FormatJS) is kept at SHOULD with all three named.",
+        "pin": "a8b5e709ae4abec153492565bc35c57fbec9897fcd1c1d35456938b45340e1b7"
+      }
+    },
+    {
+      "sentence": "Extract all user-facing strings into message catalogs.",
+      "to": "should-extract-to-message-catalogs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Extracting all user-facing strings into message catalogs is kept at SHOULD.",
+        "pin": "3ca8219294d2d67a44dbfe075f9e11eff9ddc7df52b7424453865237e103cc9f"
+      }
+    },
+    {
+      "sentence": "Use MRT Core with `.resw` resource files.",
+      "to": "should-use-mrt-core-resw-on-windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MRT Core with .resw resource files on Windows is kept at SHOULD.",
+        "pin": "57d138756dc3421ba5c645dc1147bff8c629a55b35afc7297bd8b180df01057f"
+      }
+    },
+    {
+      "sentence": "Folder structure: `Strings/<language-tag>/Resources.resw` (e.g., `Strings/en-US/Resources.resw`)",
+      "to": "should-follow-windows-strings-folder-structure",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The Strings/<language-tag>/Resources.resw folder structure, with the en-US example, is kept at SHOULD.",
+        "pin": "de4b66aaee882e8bbd782b69962c82f548ed391f960cd196dc7890d328b290e9"
+      }
+    },
+    {
+      "sentence": "Code-behind access via `Microsoft.Windows.ApplicationModel.Resources.ResourceLoader`",
+      "to": "should-use-resource-loader-in-code-behind",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Code-behind access via Microsoft.Windows.ApplicationModel.Resources.ResourceLoader is kept at SHOULD with the full type name.",
+        "pin": "7a5f2bf9d3074d1b82b62aa29d9bae58829289bca6fa2a1ef5fabfd130fbbe09"
+      }
+    },
+    {
+      "sentence": "No hardcoded user-facing strings",
+      "to": "must-make-user-facing-strings-localizable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No hardcoded user-facing strings on Windows is kept at MUST, on every platform.",
+        "pin": "8648a4a99d7108df0505db04246ca6de66e650d445b368c5c7a07f0f1c12b987"
+      }
+    },
+    {
+      "sentence": "<!-- XAML: localized via x:Uid -->",
+      "to": "windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The XAML code comment is kept unchanged in the Windows example in the windows part.",
+        "pin": "444ed50f123c0b29f7acb2734310cb5e2c56a0e2b09055abd165bbe0240d75da"
+      }
+    },
+    {
+      "sentence": "# Localization",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The duplicate '# Localization' heading carried no requirement; the intro under the Localizability heading carries its text.",
+        "pin": "f223557a003d88c635f331d68386b10b4cb30bd9d0665fd616e6574b1877868b"
+      }
+    }
+  ],
+  "obsolete": []
+}

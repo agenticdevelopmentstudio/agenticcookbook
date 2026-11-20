@@ -4,7 +4,7 @@
     "id": "9ed898fe-ba86-44be-9911-d24fea60dc90",
     "title": "Visual Studio project files",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -43,28 +43,23 @@
       "https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln",
       "https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "configuration",
       "new-module",
       "dependency-management"
     ]
   },
-  "synced": "143815d497565e84",
+  "synced": "19e07025e97db3f0",
   "parts": [
     {"part": "intro"},
-    {"part": "sdk-style-projects", "heading": "SDK-style projects"},
-    {"part": "shared-properties", "heading": "Shared properties"},
-    {"part": "central-package-management", "heading": "Central package management"},
-    {"part": "solution-files", "heading": "Solution files"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "project-structure", "heading": "Project structure"},
-    {"part": "shared-properties-2", "heading": "Shared properties"},
-    {"part": "packages", "heading": "Packages"},
-    {"part": "solutions", "heading": "Solutions"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why review checks these items", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

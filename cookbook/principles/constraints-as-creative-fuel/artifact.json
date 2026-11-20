@@ -4,11 +4,11 @@
     "id": "62d3f4a7-0310-4606-b3ee-95610dddbbb8",
     "title": "Constraints as Creative Fuel",
     "type": "principle",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,12 +30,18 @@
       "Onarheim, Creativity and Innovation Management, 21(2), 2012",
       "Knapp, Zeratsky & Kowitz, Sprint, 2016 (Crazy 8s)"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "bf57d1b2fcd050d0",
+  "synced": "f24a152b73290916",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "constraint-types", "heading": "Constraint Types", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

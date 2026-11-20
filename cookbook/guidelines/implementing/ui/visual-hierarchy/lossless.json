@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use size and weight (not just color) to distinguish heading levels",
+      "to": "should-distinguish-headings-by-size-and-weight",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction is kept at SHOULD with size and weight, not just color, for heading levels.",
+        "pin": "b8a3ad08c231bdd93b2b4f0e4efa8766c91f49e73380e5c26e265ed5039b35b5"
+      }
+    },
+    {
+      "sentence": "Group related content with proximity; separate unrelated content with whitespace",
+      "to": "should-group-by-proximity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept at SHOULD: group related content by proximity, separate unrelated content with whitespace.",
+        "pin": "46bb01b9aeb2140126e7c73b5fc3e3773e61c4661f3e181aa1f001023c964b67"
+      }
+    }
+  ],
+  "obsolete": []
+}

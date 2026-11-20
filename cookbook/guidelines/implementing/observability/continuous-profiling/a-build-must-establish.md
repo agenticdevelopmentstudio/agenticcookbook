@@ -1,0 +1,18 @@
+
+- `must-not-add-profiling-by-default`: no continuous-profiling pipeline is added by default
+- `must-adopt-only-on-measured-need`: any profiling pipeline added names the concrete, measured need that justifies its pipeline, storage, and operational cost
+- `should-prefer-one-off-capture`: standing profiling infrastructure is added only where a one-off capture or load-test profile could not answer the question, or the work says why
+- `must-choose-low-overhead-sampling-profiler`: the profiler is a low-overhead sampling profiler
+- `must-validate-overhead-in-own-environment`: profiler overhead was measured in this environment
+- `should-prefer-ebpf-for-diverse-targets`: diverse Linux targets are profiled by a whole-system eBPF profiler, or the work says why not
+- `may-use-in-runtime-profilers`: any in-runtime profiler serves a need for language-level detail
+- `should-emit-portable-profile-format`: profiles are emitted in a `pprof`-compatible or OTLP-Profiles-convertible format, or the work says why not
+- `must-attach-resource-attributes`: every profile carries `service.name`, `service.version`, deployment and region attributes
+- `should-correlate-profiles-with-traces`: profile samples record `trace_id`/`span_id` wherever the profiler and runtime support it, or the work says why not
+- `should-verify-span-correlation-support`: span-level correlation is relied on only in languages whose support was verified
+- `should-retain-profiles-shorter`: profile retention is shorter than metrics/logs retention and older data is downsampled or aggregated, or the work says why not
+- `must-pin-profiles-collector-version`: the profiles collector/SDK version is pinned, and upgrades re-verify it
+- `should-prefer-convertible-profiler`: the profiler's data can be converted to another backend, or the work says why not
+- `must-not-substitute-profiling-for-metrics-and-tracing`: the service has RED/USE metrics and distributed tracing alongside any profiling
+- `must-not-ship-unmeasured-profiler`: no profiler ships without a measured overhead, latency-critical services above all
+- `should-not-store-full-resolution-profiles-indefinitely`: full-resolution profiles have a retention limit, or the work says why not

@@ -1,0 +1,19 @@
+
+- **must-be-single-runnable-command**: The harness MUST be a single command (or short script) the agent can invoke and that returns a machine-readable signal: a process exit code, a test summary, a diff against a fixture, or a screenshot compared to a target.
+- **must-be-deterministic**: The check MUST be deterministic: the same input produces the same pass/fail.
+- **must-not-gate-on-flaky-checks**: Flaky, time-, or network-dependent checks MUST NOT gate completion — they teach the agent to retry randomly or suppress the signal.
+- **must-show-evidence**: The agent MUST show evidence (the command run and its output), not assert success.
+  - Reviewing evidence is faster than re-running the check.
+- **should-wire-command-for-discovery**: You SHOULD wire the command into the project so the agent can discover it (e.g., a documented `verify`/`lint`/`test` entry point referenced in agent-readable docs).
+- **should-state-expected-observed-and-location**: Failures SHOULD state what was expected, what was observed, and the location (file:line) — not just a stack trace or a bare assertion.
+- **should-name-concrete-next-step**: Each failure SHOULD name a concrete next step ("rename `x` to `y`", "add a test for the logged-out case"), because an actionable message turns into a correct edit; a vague one turns into a guess.
+- **should-keep-output-concise**: Output SHOULD be concise; dumping thousands of lines floods the agent's context and degrades subsequent reasoning.
+- **should-choose-weakest-enforcement-level-that-holds**: You SHOULD choose the weakest enforcement level that holds: in-prompt, per-session, or deterministic gate.
+- **must-gate-correctness-deterministically**: Any check that protects correctness for an unattended or merged change MUST be enforced by a deterministic gate (CI, pre-commit, or stop-hook), MUST NOT rely on prompt instructions alone.
+- **should-cap-gate-retries**: Gates that can loop forever SHOULD cap retries and surface to a human on repeated failure rather than spinning.
+- **must-fail-only-on-correctness**: Gates MUST fail only on correctness or stated requirements (broken build, failing test, violated contract).
+- **must-not-block-on-style-nitpicks**: Gates MUST NOT block on style nitpicks an autoformatter or optional linter can handle non-blockingly.
+- **should-scope-adversarial-review-to-correctness**: An adversarial reviewer or "find the gaps" check SHOULD be told to flag only gaps affecting correctness or the stated spec; chasing every speculative finding drives over-engineering.
+- **should-start-with-cheapest-check**: You SHOULD start with the cheapest check that catches a real failure, then add cases as concrete failure patterns emerge.
+- **should-not-prebuild-exhaustive-suite**: You SHOULD NOT pre-build an exhaustive suite up front (YAGNI).
+- **should-encode-check-for-new-error-class**: When a new class of agent error appears, you SHOULD encode a check for it so the harness — not a human — catches the recurrence next time.

@@ -1,0 +1,15 @@
+
+- `must-start-non-trivial-change-from-spec`: every non-trivial change has a written spec dated before its code
+- `should-implement-against-the-spec`: every part of the implementation traces to the spec, or the build says why not
+- `should-skip-spec-for-one-sentence-diffs`: no spec exists for a change describable in one sentence, or the build says why
+- `should-right-size-ceremony`: the process used matches the change's size, or the build says why not
+- `should-separate-planning-from-implementation`: planning and implementation are distinct phases, or the build says why not
+- `must-be-self-contained`: the spec needs no prior context to be read and executed
+- `must-include-required-sections`: the spec has a goal, files and interfaces, an out-of-scope list and a verification check
+- `should-reference-existing-patterns`: the spec names the existing patterns it follows, or says why there are none
+- `must-not-discard-spec`: the spec remains in place after coding starts
+- `should-adopt-the-methodology`: the work shows the spec, plan, tasks, implement and verify stages, or says why not
+- `should-not-hard-code-tool`: no specific tool, command set or vendor flow is hard-coded as the process
+- `may-interview-human-first`: any interview held before the spec is followed by the spec and a fresh implementation session
+- `must-run-verification-with-evidence`: the spec's verification step was run and its output, passing tests or screenshot is shown
+- `should-review-diff-against-spec`: an independent review of the diff against the spec is recorded, or the build says why not

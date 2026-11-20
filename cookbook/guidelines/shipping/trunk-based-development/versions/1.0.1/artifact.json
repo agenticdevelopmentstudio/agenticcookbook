@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "86866beb-319a-45b2-bdfa-24f0e3f7ae58",
+    "title": "Trunk-based development",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Integrate to one shared trunk in small daily increments behind feature flags, keeping trunk releasable instead of trading rigor for long branches.",
+    "platforms": [],
+    "tags": [
+      "git",
+      "ci",
+      "delivery"
+    ],
+    "depends-on": [],
+    "related": [
+      "8075b95b-2678-4893-9a5a-eb77aa9232aa",
+      "4554e680-aca3-4bb2-bc99-1ac381c428b2"
+    ],
+    "references": [
+      "https://trunkbaseddevelopment.com/",
+      "https://dora.dev/capabilities/trunk-based-development/",
+      "https://dora.dev/devops-capabilities/technical/trunk-based-development/",
+      "https://launchdarkly.com/blog/elite-performance-with-trunk-based-development/"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "pre-commit",
+      "pre-pr"
+    ]
+  },
+  "synced": "ae6918de32045e57",
+  "parts": [
+    {"part": "intro"},
+    {"part": "core-practices", "heading": "Core practices"},
+    {"part": "why-frequency-beats-branch-isolation", "heading": "Why frequency beats branch isolation"},
+    {"part": "how-an-agent-should-work-on-trunk", "heading": "How an agent should work on trunk"},
+    {"part": "required-protections", "heading": "Required protections"},
+    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "caveats", "heading": "Caveats"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

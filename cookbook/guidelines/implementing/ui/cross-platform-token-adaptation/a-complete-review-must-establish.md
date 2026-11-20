@@ -1,0 +1,17 @@
+
+- `must-keep-semantic-source-platform-neutral`: whether the semantic token source is platform-neutral and shared
+- `should-use-dtcg-format`: whether tokens use DTCG pinned to a dated revision
+- `must-name-tokens-by-intent`: whether tokens carry semantic names tied to intent and are layered base → semantic → component
+- `should-override-via-transforms-not-forks`: whether platform overrides are transforms or aliases over the shared source
+- `should-adapt-to-density-independent-units`: whether numeric intent is adapted to each platform's density-independent unit
+- `should-not-ship-raw-px-everywhere`: whether raw `px` is shipped everywhere
+- `must-emit-density-independent-dimensions`: whether every dimension token is emitted in the target's density-independent unit
+- `should-map-type-sizes-to-scalable-units`: whether type sizes use `sp` / `rem` and text is not pixel-locked by default
+- `should-resolve-hairlines-per-device-scale`: whether hairlines resolve to the smallest crisp value per device scale
+- `should-prefer-native-type-scale`: whether the shared type scale maps onto each platform's native ramp
+- `must-carry-color-variants`: whether every color token carries its variants and is emitted as a platform-native resource
+- `should-express-wide-gamut-device-independently`: whether wide-gamut color is device-independent and degrades to sRGB
+- `should-map-motion-to-platform-curves`: whether motion tokens map to platform curves and respect reduced motion
+- `should-adapt-to-host-idiom`: whether each target follows its host idiom
+- `may-diverge-component-tokens-per-platform`: whether diverging component tokens share the same semantic ancestor
+- `should-start-with-single-shared-file`: whether tooling beyond a single shared file and per-platform transforms is justified by need

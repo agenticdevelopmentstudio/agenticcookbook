@@ -4,7 +4,7 @@
     "id": "e858e124-8774-450f-ab7a-9b27a6965660",
     "title": "Kimi configuration",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -39,27 +39,25 @@
       "https://www.kimi.com/en/help/kimi-code/cli-customization",
       "https://github.com/MoonshotAI/kimi-cli"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring",
       "configuration"
     ]
   },
-  "synced": "7edfa3fc3ee247f4",
+  "synced": "7e744002ee38ed3c",
   "parts": [
     {"part": "intro"},
-    {"part": "home-directory", "heading": "Home directory"},
-    {"part": "configuration", "heading": "Configuration"},
-    {"part": "agents-md", "heading": "AGENTS.md"},
-    {"part": "skills", "heading": "Skills"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "paths", "heading": "Paths"},
-    {"part": "secrets", "heading": "Secrets"},
-    {"part": "skills-2", "heading": "Skills"},
-    {"part": "instructions", "heading": "Instructions"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "home-directory", "heading": "Home directory", "role": "how-to"},
+    {"part": "configuration", "heading": "Configuration", "role": "how-to"},
+    {"part": "agents-md", "heading": "AGENTS.md", "role": "how-to"},
+    {"part": "skills", "heading": "Skills", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

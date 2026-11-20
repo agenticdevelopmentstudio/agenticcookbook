@@ -1,0 +1,18 @@
+
+- `should-pass-immutable-data`: `var` properties, plain `List` parameters or data classes with unstable properties passed into composables
+- `should-prefer-genuinely-stable-inputs`: unstable inputs (such as a fresh `ArrayList` each recomposition) relied on strong skipping to skip
+- `should-annotate-stability-only-when-true`: `@Immutable` or `@Stable` on a type that is not truly so, that the compiler could infer, or that was annotated to silence the compiler
+- `should-read-state-late`: frequently-changing state read in composition where a lambda-based modifier (`offset {}`, `graphicsLayer {}`, `drawBehind {}`) would defer it
+- `should-pass-lambdas-for-frequently-changing-values`: an already-read scroll or animation value passed down instead of a lambda
+- `should-use-derivedstateof-for-thresholds`: frequently-changing state driving UI directly where only a computed threshold matters
+- `should-not-use-derivedstateof-for-one-to-one-transforms`: `derivedStateOf` wrapping a one-to-one transform
+- `should-remember-expensive-computation`: costly computation repeated each recomposition, or `remember` without keys tied to its inputs
+- `must-key-lazy-list-items`: `items(...)` in a lazy list or grid without a stable `key`
+- `must-not-perform-backwards-writes`: a composable writing to state it has already read
+- `should-keep-composables-side-effect-free`: side effects in a composable body, or a composable that is not idempotent
+- `should-avoid-allocating-in-composable-body`: new collections, capturing lambdas or objects allocated in a composable body on every call
+- `should-profile-release-builds`: performance numbers taken without a release build, R8 and a Baseline Profile
+- `must-not-tune-against-debug-builds`: tuning decisions based on debug-build measurements
+- `should-use-layout-inspector-recomposition-counts`: recomposition problems guessed at without Layout Inspector counts
+- `should-gate-regressions-with-macrobenchmark`: no Macrobenchmark regression gate over representative journeys
+- `should-optimize-only-after-measurement`: optimization of composables that no measurement shows to be hot

@@ -1,0 +1,19 @@
+
+- **use-platform-notification-system**: Apps SHOULD use the platform notification system for timely, actionable alerts that respect user preferences.
+- **request-permission-at-relevance**: You SHOULD request permission at the moment of relevance, not at launch.
+- **must-be-actionable**: Every notification MUST be actionable — tapping it deep links to the relevant content.
+- **support-grouping-and-categories**: You SHOULD support notification grouping and categories to reduce clutter.
+- **respect-dnd-focus-and-quiet-hours**: You SHOULD respect Do Not Disturb, Focus modes, and quiet hours.
+- **apple-use-unusernotificationcenter**: On Apple platforms, you SHOULD use `UNUserNotificationCenter` for local and push notifications.
+- **apple-support-actionable-notifications**: On Apple platforms, you SHOULD support actionable notifications with `UNNotificationCategory` and `UNNotificationAction`.
+- **ios-support-summary-and-time-sensitive**: On iOS, you SHOULD support Notification Summary and Time Sensitive interruption levels.
+- **android-use-notificationcompat**: On Android, you SHOULD use `NotificationCompat.Builder` for backward-compatible notifications.
+- **android-declare-channels**: On Android, you SHOULD declare notification channels (`NotificationChannel`) so users can control categories individually.
+- **android-support-messaging-styles**: On Android, you SHOULD support Direct Reply, bubbles, and conversation style for messaging apps.
+- **windows-use-appnotification-api**: On Windows, you SHOULD use `AppNotificationManager` + `AppNotificationBuilder` fluent API for local notifications.
+- **windows-support-rich-content**: On Windows, you SHOULD support text, images, buttons with activation arguments, progress bars, and scheduled delivery.
+- **windows-handle-activation**: On Windows, you SHOULD handle notification activation alongside protocol activation.
+- **web-use-notifications-api-with-service-workers**: On the web, you SHOULD use the Notifications API with service workers for push notifications.
+- **web-request-permission-contextually**: On the web, you SHOULD request permission contextually.
+- **web-support-actions-and-badges**: On the web, you SHOULD support notification actions and badges via the Badging API.
+- **web-fall-back-when-denied**: On the web, you SHOULD fall back gracefully when notifications are denied or unavailable.

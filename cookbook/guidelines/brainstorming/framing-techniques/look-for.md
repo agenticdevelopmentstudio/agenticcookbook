@@ -1,0 +1,11 @@
+
+- `framing-before-divergence`: a divergent phase begun before any framing technique was applied
+- `hmw-reframe-first`: ideation begun with no HMW framing of the seed idea
+- `hmw-multiple-angles`: a single HMW framing, or variants that do not reframe from different angles (broadened, narrowed, user-reversed, domain-shifted)
+- `hmw-syntax`: an HMW question opened with "How could we", "How should we" or any opener but "How Might We"
+- `five-whys-before-generating`: a seed that sounds like a solution ("I want to build X") taken into generation without Five Whys
+- `five-whys-chain`: a "Why?" aimed at the original symptom statement instead of the prior answer
+- `five-whys-stop`: Five Whys stopped at exactly five iterations, or before a root cause was reached
+- `first-principles-list-assumptions`: first-principles reasoning applied before the user was invited to name assumptions explicitly
+- `first-principles-rebuild`: surfaced assumptions left without an invitation to reconstruct the goal as if none of them were true
+- `first-principles-distinguish`: first-principles thinking and analogical reasoning treated as the same thing

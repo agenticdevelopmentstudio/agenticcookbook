@@ -4,7 +4,7 @@
     "id": "49acdf9f-e4cb-4492-a620-809438eefb37",
     "title": "Pagination",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -24,16 +24,22 @@
       "https://google.aip.dev/158",
       "https://opensource.zalando.com/restful-api-guidelines/#pagination"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "api-integration",
       "data-modeling"
     ]
   },
-  "synced": "c08a103b796aad68",
+  "synced": "d658f7958c4e479c",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

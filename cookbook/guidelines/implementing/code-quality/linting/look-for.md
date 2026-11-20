@@ -1,0 +1,23 @@
+
+- `must-lint-before-first-pr`: a project with no linter configured, or whose lint fails, at its first pull request
+- `should-set-up-lint-early`: lint config added late in a project's life, after much code
+- `may-skip-lint-gating-while-prototyping`: nothing to flag in itself; check only that prototyping commits that skipped lint gating are clean by the time a PR opens
+- `must-be-lint-clean-before-any-pr`: a PR opened with lint warnings or errors
+- `must-commit-linter-config`: a linter config that lives only on someone's machine, or is ignored by version control
+- `must-run-lint-in-build-or-pre-commit`: a build or pre-commit hook that does not run the linter
+- `must-auto-fix-formatting`: a formatter that only reports, with no fix command wired up
+- `must-run-lint-in-automated-verification`: an automated verification process (dev build, CI, generation step) that skips lint
+- `must-run-lint-during-development`: a development loop (local build, pre-commit hook) in which lint never runs
+- `must-block-ci-on-lint-failures`: CI where a lint failure does not fail the build, such as `continue-on-error` or a non-blocking lint job
+- `must-lint-generated-code`: AI-generated code accepted without a lint run
+- `should-use-swiftlint-strict`: a Swift project without SwiftLint, without `.swiftlint.yml` at the root, without `strict`, or not run as an SPM plugin or build phase
+- `should-format-swift-with-swift-format`: a Swift project with no swift-format
+- `should-use-ktlint`: a Kotlin project without ktlint, without `.editorconfig` at the root, or without the `org.jlleitschuh.gradle.ktlint` Gradle plugin
+- `should-use-eslint-with-prettier-config`: a TypeScript project without ESLint and `eslint.config.js`, or without `eslint-config-prettier`
+- `should-format-typescript-with-prettier`: a TypeScript project without Prettier and `.prettierrc`
+- `should-lint-css-with-stylelint`: CSS with no Stylelint and `.stylelintrc.json`
+- `should-add-lint-scripts-and-hooks`: lint and format not available as `package.json` scripts or pre-commit hooks
+- `should-keep-style-rules-in-editorconfig`: C# style rules kept anywhere but a root `.editorconfig`
+- `should-enable-roslyn-analyzers`: a `.csproj` without `EnforceCodeStyleInBuild` true and `AnalysisLevel` `latest-recommended`
+- `should-auto-fix-with-dotnet-format`: C# formatting fixed any way but `dotnet format`
+- `should-supplement-with-extra-analyzers`: a C# project with neither Roslynator nor Meziantou.Analyzer

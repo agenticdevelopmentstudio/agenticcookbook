@@ -1,0 +1,22 @@
+
+- `should-default-to-pgvector`: whether retrieval lives in the primary relational datastore via `pgvector`
+- `should-adopt-a-dedicated-vector-database-only-when-forced`: whether any dedicated vector database is forced by measured scale or latency
+- `should-treat-the-vector-database-migration-as-reversible`: whether a migration to a dedicated vector database is a reversible, scale-triggered decision
+- `must-pin-the-embedding-model-and-dimension`: whether the schema pins the embedding model and output dimension
+- `should-start-with-pgvector-and-hybrid-retrieval`: whether pgvector + hybrid retrieval came first, with an eval or load test before any dedicated vector database
+- `should-default-to-hnsw`: whether the vector index is HNSW by default
+- `should-raise-ef-search-for-recall`: whether `hnsw.ef_search` is raised where recall must be traded for latency
+- `should-verify-index-defaults-against-the-pinned-version`: whether the HNSW defaults relied on were verified against the pinned pgvector version
+- `should-match-the-distance-operator-to-the-model`: whether the distance operator matches how the embedding model was trained
+- `must-use-one-distance-operator-for-index-and-query`: whether indexing and querying use the same distance operator
+- `may-use-ivfflat`: whether any IVFFlat use is where build time and memory dominate and the recall hit is acceptable
+- `should-use-hybrid-retrieval`: whether retrieval is hybrid (dense, lexical, fused) rather than pure ANN
+- `should-rerank-only-top-candidates-and-cache`: whether reranking is limited to the top ~20–50 candidates and cached for repeated queries
+- `should-measure-fusion-weights-and-reranking`: whether fusion weights and reranking were measured on the project's own eval set
+- `should-chunk-before-embedding`: whether documents are chunked before embedding
+- `should-tune-the-chunk-window-against-an-eval-set`: whether the chunk window was tuned against a retrieval eval set
+- `must-store-a-source-reference-with-each-chunk`: whether every chunk carries a stable reference to its source document and position
+- `should-chunk-on-semantic-boundaries`: whether chunking follows semantic/structural boundaries where the source allows it
+- `should-store-filterable-attributes-as-columns`: whether filterable attributes are ordinary columns filtered in the same query
+- `must-apply-tenant-filters-at-query-time`: whether every multi-tenant or access-controlled query applies the tenant/permission filter at query time
+- `must-maintain-a-retrieval-eval-set`: whether a labeled retrieval eval set measures recall/precision before and after each retrieval change

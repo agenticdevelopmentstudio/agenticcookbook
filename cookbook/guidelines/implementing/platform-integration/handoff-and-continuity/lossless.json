@@ -1,0 +1,146 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use Google Play Services' Nearby Connections API or Chrome's cross-device features for continuity between Android devices.",
+      "to": "android-use-nearby-or-chrome-continuity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-nearby-or-chrome-continuity keeps Nearby Connections or Chrome cross-device features for Android-to-Android continuity, at SHOULD.",
+        "pin": "93635e639dba84cfe46d724ea6570a0dbbb94e538405ef91d4c35ee714465a64"
+      }
+    },
+    {
+      "sentence": "For Android-to-web continuity, use Firebase Dynamic Links or deep links that resolve in both native and web contexts.",
+      "to": "android-use-links-that-resolve-natively-and-on-web",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-links-that-resolve-natively-and-on-web keeps Firebase Dynamic Links or dual-context deep links for Android-to-web continuity, at SHOULD.",
+        "pin": "dd5086b51da661ea398d2897da5446d14a7150f10d1cf5957d7cbc9daa797ffe"
+      }
+    },
+    {
+      "sentence": "Support clipboard sync through Google account integration.",
+      "to": "android-support-clipboard-sync",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-support-clipboard-sync keeps clipboard sync through Google account integration on Android, at SHOULD.",
+        "pin": "e1444563d796d2c3abdeffd07df3e0046a6a1c7f41342f5de9917173f2a7b366"
+      }
+    },
+    {
+      "sentence": "Use `NSUserActivity` to advertise the current activity.",
+      "to": "apple-advertise-with-nsuseractivity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-advertise-with-nsuseractivity keeps NSUserActivity to advertise the current activity on Apple platforms, at SHOULD.",
+        "pin": "b57a7c79481d1fe649041a2708f25e9c0dc9c42bee279192cd43d40953611b0c"
+      }
+    },
+    {
+      "sentence": "Set `isEligibleForHandoff = true` and populate `userInfo` with state needed to restore context.",
+      "to": "apple-enable-handoff-and-populate-userinfo",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-enable-handoff-and-populate-userinfo keeps isEligibleForHandoff = true and populating userInfo with restore state, at SHOULD.",
+        "pin": "af6615c0abd59920c272f8918bf3da2ca9814da2bc9d738d46d99859883b38a2"
+      }
+    },
+    {
+      "sentence": "Implement `application(_:continue:)` on the receiving device.",
+      "to": "apple-implement-continue-on-receiver",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-implement-continue-on-receiver keeps implementing application(_:continue:) on the receiving device, at SHOULD.",
+        "pin": "cfc7a9de4af62336993d90de21dd42732dc93d53b67fe30fa2f9c37d0071f87c"
+      }
+    },
+    {
+      "sentence": "Support Universal Clipboard for cross-device copy/paste.",
+      "to": "apple-support-universal-clipboard",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-support-universal-clipboard keeps Universal Clipboard for cross-device copy/paste on Apple platforms, at SHOULD.",
+        "pin": "34c8ba5fbc60cc0f4e99b2f531fe22972c903379019b07250be3aa661a4b61e5"
+      }
+    },
+    {
+      "sentence": "Capture enough state to reconstruct the user's context on the receiving device",
+      "to": "capture-enough-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "capture-enough-state keeps capturing enough state to reconstruct the user's context on the receiver, at SHOULD.",
+        "pin": "c48588ed92f5f3c2992da68ca96e32a49fd2c12ba9d5acae6e25f2155a9a6651"
+      }
+    },
+    {
+      "sentence": "Continuity MUST feel instant — pre-transfer the minimum viable state, fetch details on arrival",
+      "to": "continuity-must-feel-instant",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "continuity-must-feel-instant keeps the MUST and the pre-transfer-minimum, fetch-on-arrival method.",
+        "pin": "106478240be110bcca86a5be5b041f97cfb1e37edddb02408105edcebf324986"
+      }
+    },
+    {
+      "sentence": "Fall back gracefully when the receiving device lacks a feature the originating device had",
+      "to": "fall-back-gracefully",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "fall-back-gracefully keeps graceful fallback when the receiver lacks a feature the originator had, at SHOULD.",
+        "pin": "509d5a8e0e52ba31109057b4069302637418f38c1d811d1c2b01e979d07183e7"
+      }
+    },
+    {
+      "sentence": "Use deep links as the universal handoff payload — every platform can resolve a URL",
+      "to": "use-deep-links-as-payload",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "use-deep-links-as-payload keeps deep links as the universal handoff payload and the every-platform-resolves-a-URL reason, at SHOULD.",
+        "pin": "3c8e9069e09ab570ce84824173a1ca4a011877e295da1fc2358bd44ec785e2fb"
+      }
+    },
+    {
+      "sentence": "Use shared URLs as the primary continuity mechanism — a well-constructed URL with state parameters is the most universal handoff format.",
+      "to": "web-use-shared-urls",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-shared-urls keeps shared URLs as the primary web continuity mechanism and the most-universal-format reason, at SHOULD.",
+        "pin": "17a8e6bcd732e610dd15bc3a39c13ec3e9948ebbbed42c4cd5cd917895c7be8e"
+      }
+    },
+    {
+      "sentence": "Support the Credential Management API for seamless sign-in across devices.",
+      "to": "web-support-credential-management",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-support-credential-management keeps the Credential Management API for seamless cross-device sign-in, at SHOULD.",
+        "pin": "f97387f5d9cc514e35abdcdda234af992508dac6c55b3682fe48ca463f21cc7b"
+      }
+    },
+    {
+      "sentence": "Consider WebSocket or server-sent events for real-time state sync between active sessions.",
+      "to": "web-consider-realtime-sync",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-consider-realtime-sync keeps considering WebSocket or server-sent events for real-time sync between active sessions, at SHOULD (no weaker than 'consider').",
+        "pin": "a3a780b0f5b30637518cec5bab764702cd025ea2c2a9af7993dd58657c165e49"
+      }
+    }
+  ],
+  "obsolete": []
+}

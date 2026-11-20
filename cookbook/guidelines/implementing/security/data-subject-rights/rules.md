@@ -1,0 +1,25 @@
+
+- **must-make-every-store-enumerable-exportable-deletable**: This is an architectural property, not a feature bolted on later: every store of personal data **MUST** be enumerable, exportable, and deletable keyed by a stable subject id.
+- **should-confirm-rights-with-counsel**: Engineering guidance only — NOT legal advice. Rights, scope, exemptions, and deadlines **SHOULD** be confirmed with counsel for your jurisdictions.
+- **must-support-access-requests**: An agent **MUST** be able to satisfy an **Access** request: export everything held about the subject, including derived data.
+- **must-support-erasure-requests**: An agent **MUST** be able to satisfy an **Erasure** ("right to be forgotten") request: delete across all stores and propagate to processors.
+- **must-support-rectification-requests**: An agent **MUST** be able to satisfy a **Rectification** request: correct inaccurate data and propagate the correction.
+- **must-support-portability-requests**: An agent **MUST** be able to satisfy a **Portability** request: provide a structured, machine-readable export (e.g. JSON/CSV).
+- **must-support-restriction-requests**: An agent **MUST** be able to satisfy a **Restriction** request: mark data as processing-suspended without deleting it.
+- **must-support-objection-requests**: An agent **MUST** be able to satisfy an **Objection** request: stop a specified processing activity.
+- **must-maintain-data-map**: You **MUST** maintain a data map enumerating every place personal data lives.
+  - Primary databases, caches, search indexes (Elasticsearch/OpenSearch), object storage, message queues, event logs, application logs, analytics/warehouse, and backups.
+- **must-record-data-map-entry-fields**: Every entry **MUST** record the store, the subject-id key (or join path), the data categories, the retention basis, and which third-party processors receive it.
+- **must-update-data-map-for-new-stores**: New code paths that persist personal data **MUST** update the data map; treat an un-mapped store as a defect.
+- **must-verify-requester-identity**: Before acting on any request, you **MUST** verify the requester is the subject (or an authorized agent).
+- **should-authenticate-against-session-or-verified-channel**: The requester **SHOULD** be authenticated against an existing session or a verified channel.
+- **must-not-act-on-unverified-claim**: **MUST NOT** disclose or delete data on an unverified claim, since the request itself is an attack surface for account takeover and data exfiltration.
+- **must-erase-every-derived-copy**: Deletion **MUST** reach every derived copy, not just the primary row: caches, search indexes, denormalized read models, and analytics aggregates.
+- **must-propagate-erasure-to-processors**: Deletion **MUST** reach third-party processors — call their deletion APIs and record completion.
+- **should-pseudonymize-or-crypto-shred-logs**: Deletion **MUST** reach logs and event streams: you **SHOULD** prefer pseudonymization or crypto-shredding (delete the per-subject key) where immutable append-only logs make row deletion impractical.
+- **must-document-backup-rescrub-window**: Deletion **MUST** reach backups: full purge is often infeasible, so the rotation window after which restored backups are re-scrubbed **MUST** be documented, and that window treated as part of the SLA.
+- **must-log-every-request**: Every request **MUST** be logged with subject id, request type, timestamp, verifier, and completion — this audit trail is itself evidence of compliance.
+- **should-drive-erasure-and-export-from-one-job**: Erasure and export **SHOULD** be driven by a single deterministic job keyed by subject id, not ad-hoc queries, so coverage is testable.
+- **must-complete-within-legal-deadline**: You **MUST** complete requests within the legal deadline (GDPR: one month, extendable to three for complex cases — confirm with counsel).
+- **should-track-per-request-sla**: You **SHOULD** track per-request SLA and alert before breach.
+- **should-test-erasure-leaves-no-residue**: Tests **SHOULD** assert that a created-then-erased subject leaves no residue across mapped stores.

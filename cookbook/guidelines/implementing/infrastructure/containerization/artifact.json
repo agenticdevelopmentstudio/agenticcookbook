@@ -4,11 +4,11 @@
     "id": "ecf27370-3cd4-47a2-a359-7b42575ef48f",
     "title": "Containerization",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,22 +30,21 @@
       "https://github.com/GoogleContainerTools/distroless",
       "https://github.com/opencontainers/image-spec"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "configuration"
     ]
   },
-  "synced": "5d4727e432be10e0",
+  "synced": "df10d77823753d3b",
   "parts": [
     {"part": "intro"},
-    {"part": "build-structure", "heading": "Build structure"},
-    {"part": "reproducibility-and-supply-chain", "heading": "Reproducibility and supply chain"},
-    {"part": "layer-caching", "heading": "Layer caching"},
-    {"part": "security", "heading": "Security"},
-    {"part": "observability", "heading": "Observability"},
-    {"part": "adopt-when-justified", "heading": "Adopt-when-justified"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "layer-order", "heading": "Layer order", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

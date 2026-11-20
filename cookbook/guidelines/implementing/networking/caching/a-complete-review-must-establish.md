@@ -1,0 +1,9 @@
+
+- `should-use-http-caching-headers`: whether caching is expressed with HTTP caching headers
+- `should-let-the-server-set-cache-policy`: whether the server sets cache policy and the client honors it
+- `should-cache-immutable-assets-for-a-year`: whether immutable assets carry `public, max-age=31536000, immutable`
+- `should-cache-dynamic-responses-privately`: whether dynamic but cacheable responses carry `private, max-age=60`
+- `must-not-cache-sensitive-data-or-mutations`: whether every sensitive or mutation response carries `no-store`
+- `should-revalidate-with-etags`: whether unchanged data is revalidated with ETags rather than re-downloaded
+- `must-invalidate-after-mutations`: whether every mutation invalidates the related cache entries
+- `should-stale-while-revalidate`: whether the client serves cached data immediately and refreshes in the background

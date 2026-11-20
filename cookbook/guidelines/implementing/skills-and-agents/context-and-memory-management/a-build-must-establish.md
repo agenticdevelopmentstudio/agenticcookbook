@@ -1,0 +1,21 @@
+
+- `must-curate-context-as-finite-budget`: the agent treats the context window as a finite, curated budget, not an append-only transcript
+- `must-not-front-load-context`: the agent loads no context up front "just in case"
+- `should-retrieve-context-just-in-time`: files, tool output, and references are retrieved just-in-time, at the point they are needed
+- `should-delegate-read-heavy-subtasks`: every large or read-heavy subtask runs in a subagent with an isolated context that returns only a condensed summary
+- `should-clear-context-between-unrelated-tasks`: context is cleared or reset between unrelated tasks
+- `must-persist-state-that-outlives-the-window`: decisions, conventions, and task state that must outlive the window are in a persistent memory file
+- `must-record-modified-files-and-commands-before-compaction`: before a likely compaction, the list of modified files and the test/run/build commands are in a memory file or compaction directive
+- `should-assume-compaction-loses-specifics`: nothing after a compaction depends on exact line numbers, intermediate reasoning, or raw tool output surviving it
+- `should-declare-compaction-preservation-directives`: where the harness supports them, compaction-preservation directives keep the modified-file list and test commands
+- `must-return-condensed-subagent-summary`: every subagent returns a condensed summary (findings, file paths, decisions), not raw dumps
+- `must-not-assume-subagent-context-survives`: the caller uses only the subagent's returned summary
+- `must-keep-cross-session-state-in-a-persistent-file`: plans, conventions, and in-progress task state live in a persistent file re-read at session start
+- `must-keep-memory-files-concise`: every memory file is concise and high-signal
+- `should-keep-only-behavior-changing-memory`: every memory entry is one that changes behavior
+- `should-prune-memory-regularly`: memory files are pruned regularly
+- `must-not-duplicate-rederivable-information`: memory holds only what cannot be inferred, no file contents or standard conventions
+- `should-reset-context-on-task-switch`: on a switch to an unrelated task, the agent resets context
+- `should-restart-after-repeated-failed-corrections`: after repeated failed correction attempts on one problem, the agent clears the context and restarts from a sharper prompt
+- `should-treat-a-bigger-window-as-headroom`: the agent keeps curating context however large the window
+

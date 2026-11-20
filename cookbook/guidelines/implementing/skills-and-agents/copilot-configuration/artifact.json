@@ -4,7 +4,7 @@
     "id": "4f4ed7a2-a26f-40f2-b863-51715b5c470c",
     "title": "GitHub Copilot configuration",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -37,28 +37,28 @@
       "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
       "https://code.visualstudio.com/docs/copilot/customization/prompt-files"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring",
       "configuration"
     ]
   },
   "names_hosts": "Describes how GitHub Copilot also reads CLAUDE.md and GEMINI.md instruction files, so it names those hosts.",
-  "synced": "0f4a8fa0deea2516",
+  "synced": "6f8c390d0f38c983",
   "parts": [
     {"part": "intro"},
-    {"part": "repository-wide-instructions", "heading": "Repository-wide instructions"},
-    {"part": "path-specific-instructions", "heading": "Path-specific instructions"},
-    {"part": "agent-instruction-files", "heading": "Agent instruction files"},
-    {"part": "precedence", "heading": "Precedence"},
-    {"part": "prompt-files", "heading": "Prompt files"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "files-and-names", "heading": "Files and names"},
-    {"part": "instruction-content", "heading": "Instruction content"},
-    {"part": "prompt-files-2", "heading": "Prompt files"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "repository-wide-instructions", "heading": "Repository-wide instructions", "role": "how-to"},
+    {"part": "path-specific-instructions", "heading": "Path-specific instructions", "role": "how-to"},
+    {"part": "agent-instruction-files", "heading": "Agent instruction files", "role": "how-to"},
+    {"part": "precedence", "heading": "Precedence", "role": "how-to"},
+    {"part": "prompt-files", "heading": "Prompt files", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

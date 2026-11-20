@@ -1,0 +1,13 @@
+
+- `should-note-cross-cutting-concerns-not-isolate`: whether every concern appearing across all groups is noted as cross-cutting rather than isolated
+- `should-not-group-call-sites`: whether any scope group consists only of a concern's call sites
+- `should-give-shared-infrastructure-one-scope-group`: whether each concern with its own files has exactly one scope group for them
+- `should-treat-call-sites-as-dependencies`: whether infrastructure call sites are treated as dependencies, not members
+- `should-classify-logging-configuration-as-infrastructure`: whether logging configuration is classified as infrastructure and log call sites are not
+- `should-note-pervasive-coupling-anti-pattern`: whether a singleton called directly by every group is noted as an anti-pattern
+- `should-inject-not-merge-shared-dependency`: whether a shared dependency led to injection being recommended rather than groups being merged
+- `must-give-auth-infrastructure-own-scope-group`: whether security/auth infrastructure is its own scope group, separate from the auth check sites
+- `must-not-treat-auth-as-merely-cross-cutting`: whether auth enforcement was ever treated as merely cross-cutting
+- `should-group-event-definitions-with-analytics`: whether analytics event definitions sit with the analytics infrastructure
+- `must-catalog-di-container-separately`: whether the DI composition root is cataloged separately as the bootstrap/wiring layer
+- `should-apply-the-definitive-test`: whether the state-lifecycle-or-logic test was applied to tell cross-cutting from shared infrastructure

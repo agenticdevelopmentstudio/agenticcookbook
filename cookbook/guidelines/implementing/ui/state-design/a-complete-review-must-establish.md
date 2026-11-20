@@ -1,0 +1,12 @@
+
+- `must-handle-all-four-states`: whether every view that loads data or can be empty handles all four states explicitly
+- `must-not-show-unexplained-blank-screen`: whether any path shows a blank screen with no explanation
+- `should-show-progress-while-loading`: whether every load shows progress
+- `should-use-skeletons-and-spinners`: whether content-heavy views use skeleton screens and actions use spinners
+- `must-not-block-screen-for-partial-load`: whether any partial load blocks the entire screen
+- `should-explain-empty-state`: whether each empty state explains what belongs there and why it is empty, and gives one clear action to populate it
+- `should-compose-empty-state`: whether each empty state has an icon or illustration, a brief message and a CTA button
+- `should-explain-errors-with-recovery`: whether each error state identifies the problem, explains why where possible, and offers a recovery action
+- `must-not-show-raw-errors`: whether any raw error code or stack trace is shown
+- `should-not-blame-the-user`: whether any error text blames the user
+- `should-design-empty-and-error-with-care`: whether empty and error states got the same care as the loaded state

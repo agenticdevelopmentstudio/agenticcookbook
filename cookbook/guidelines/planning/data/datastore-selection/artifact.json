@@ -4,11 +4,11 @@
     "id": "6a653107-929d-418e-865d-636373a27b02",
     "title": "Choosing a primary datastore",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,20 +32,23 @@
       "https://www.cockroachlabs.com/blog/document-store-vs-relational-database/",
       "https://aerospike.com/blog/sql-vs-nosql/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "schema-design"
     ]
   },
-  "synced": "726033d55ba2b35e",
+  "synced": "95bfe971671104e6",
   "parts": [
     {"part": "intro"},
-    {"part": "strong-default", "heading": "Strong default"},
-    {"part": "why-relational-is-the-default", "heading": "Why relational is the default"},
-    {"part": "decision-criteria", "heading": "Decision criteria"},
-    {"part": "rules", "heading": "Rules"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "decision-criteria", "heading": "Decision criteria", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-relational-is-the-default", "heading": "Why relational is the default", "role": "rationale"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

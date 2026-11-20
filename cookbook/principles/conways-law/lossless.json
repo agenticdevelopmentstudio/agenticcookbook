@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Optimize the real coordination paths.",
+      "to": "should-optimize-real-coordination-paths",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-optimize-real-coordination-paths keeps the instruction at SHOULD and spells out the real paths (shared context, handoffs, review loops) versus nominal lines or labels.",
+        "pin": "527c01b698f1b14916c1a88fede9fdcd5f37e149927ef831cb638eac730c0d99"
+      }
+    },
+    {
+      "sentence": "**Treat the inverse maneuver as a lens, not a deterministic law.** Aligning boundaries makes a target architecture *easier*; it does not guarantee it.",
+      "to": "should-treat-inverse-maneuver-as-lens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-inverse-maneuver-as-lens keeps the lens-not-law framing and that aligning boundaries makes the target easier but does not guarantee it, at SHOULD.",
+        "pin": "b3f63de9df3d9cec1ad779c48cbd5240aedf3bf53511acd6fbeb6bee7a4e8ca6"
+      }
+    },
+    {
+      "sentence": "Verify the emergent structure against the intended design rather than assuming alignment.",
+      "to": "should-verify-emergent-structure",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-verify-emergent-structure keeps verifying the emergent structure against the intended design rather than assuming alignment, at SHOULD.",
+        "pin": "62414e5a21d8ea326ddae1599a6a722ca22241b3c23efd644357b755395bf508"
+      }
+    },
+    {
+      "sentence": "**Assign agents along the seams you want in the code.** Give each module or bounded context to one agent (or one tightly-coordinating cluster).",
+      "to": "should-assign-agents-along-desired-seams",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-assign-agents-along-desired-seams keeps assigning along wanted seams and one module or bounded context per agent or tightly-coordinating cluster, at SHOULD.",
+        "pin": "6952c096686f969ddf3281cc9b32c890807302a0a4e4745f4904ba2af0f277c3"
+      }
+    },
+    {
+      "sentence": "**Watch for high-bandwidth handoffs.** Where two agents must exchange large, frequently-changing context to make progress, expect a tight coupling to appear at that boundary in the output.",
+      "to": "should-watch-for-high-bandwidth-handoffs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-watch-for-high-bandwidth-handoffs keeps the watch instruction, the condition (large, frequently-changing context exchanged to progress) and the expected tight coupling at that boundary.",
+        "pin": "7c98b06b941f4ec258ca6b375310d7618e1be9b0c7b36272a3324644bda315a1"
+      }
+    },
+    {
+      "sentence": "If that coupling is undesirable, restructure the assignment, not just the prompt.",
+      "to": "should-restructure-assignment-not-prompt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-restructure-assignment-not-prompt keeps the condition (coupling undesirable) and the instruction to restructure the assignment, not just the prompt, at SHOULD.",
+        "pin": "cf1e4d31fc846b3fe128c971b385e7cb435ae368b736b311e4cef728a9d5b870"
+      }
+    },
+    {
+      "sentence": "**Re-partition when the architecture should change.** Because boundaries are sticky, a desired architectural shift usually requires reshaping who builds what — see [adc.principle.meta-principle-optimize-for-change](cookbook:aadd048b-da52-415d-949f-45160b970381).",
+      "to": "should-repartition-when-architecture-changes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-repartition-when-architecture-changes keeps the instruction, the stickiness reason, the 'usually requires reshaping who builds what' claim, and the optimize-for-change link.",
+        "pin": "e93258e9a943d2a3d07a9a0745c064c041b52b62df2a61773d355dff0e0b1bf1"
+      }
+    }
+  ],
+  "obsolete": []
+}

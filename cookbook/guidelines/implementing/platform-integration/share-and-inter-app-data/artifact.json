@@ -4,11 +4,11 @@
     "id": "193e5770-fd0b-45c9-91a4-6673bf6021ff",
     "title": "Share and inter-app data flow",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-02",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -33,19 +33,19 @@
       "d27c35ab-84f6-4f40-8c29-91630fdc90e7"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "platform-integration"
     ]
   },
-  "synced": "8508af8a0ceb9609",
+  "synced": "e8b1ec5a28a26b8c",
   "parts": [
     {"part": "intro"},
-    {"part": "apple-ios-macos", "heading": "Apple (iOS / macOS)"},
-    {"part": "android", "heading": "Android"},
-    {"part": "windows", "heading": "Windows"},
-    {"part": "web", "heading": "Web"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

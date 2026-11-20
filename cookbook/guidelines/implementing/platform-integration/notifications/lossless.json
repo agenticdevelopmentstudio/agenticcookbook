@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use `NotificationCompat.Builder` for backward-compatible notifications.",
+      "to": "android-use-notificationcompat",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-use-notificationcompat keeps NotificationCompat.Builder for backward-compatible notifications on Android, at SHOULD.",
+        "pin": "8ffc1e98bf1edf1b2bd8516fe05cd1f08e983be6b37cb2993a0498db6504c4a3"
+      }
+    },
+    {
+      "sentence": "Declare notification channels (`NotificationChannel`) so users can control categories individually.",
+      "to": "android-declare-channels",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-declare-channels keeps declaring NotificationChannels and the per-category user-control reason, at SHOULD.",
+        "pin": "db58f56dcec315c22ec1ea6f8b29081fcc583b53c17d90585af0bbad86f7a525"
+      }
+    },
+    {
+      "sentence": "Support Direct Reply, bubbles, and conversation style for messaging apps.",
+      "to": "android-support-messaging-styles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "android-support-messaging-styles keeps Direct Reply, bubbles and conversation style for messaging apps, at SHOULD.",
+        "pin": "01a741e6e652da11990e354a6f4e7784f32a07f11f048c8c788ca20deb4e8fd8"
+      }
+    },
+    {
+      "sentence": "Use `UNUserNotificationCenter` for local and push notifications.",
+      "to": "apple-use-unusernotificationcenter",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-use-unusernotificationcenter keeps UNUserNotificationCenter for local and push notifications on Apple platforms, at SHOULD.",
+        "pin": "0788f778318c04d73ca330ef1764d51b505cd1ea75df3e7d947445b58e24459a"
+      }
+    },
+    {
+      "sentence": "Support actionable notifications with `UNNotificationCategory` and `UNNotificationAction`.",
+      "to": "apple-support-actionable-notifications",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "apple-support-actionable-notifications keeps actionable notifications via UNNotificationCategory and UNNotificationAction, at SHOULD.",
+        "pin": "baf988cedcf770fca26f92e3d50a2a18930f42dbe9530e02adcc015a62593200"
+      }
+    },
+    {
+      "sentence": "On iOS, support Notification Summary and Time Sensitive interruption levels.",
+      "to": "ios-support-summary-and-time-sensitive",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "ios-support-summary-and-time-sensitive keeps the iOS scope and Notification Summary plus Time Sensitive levels, at SHOULD.",
+        "pin": "2597e24d6fc59fba2bf741e3130c15bd7b699756b5478f1b4c3c650653f92dfd"
+      }
+    },
+    {
+      "sentence": "Request permission at the moment of relevance, not at launch",
+      "to": "request-permission-at-relevance",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "request-permission-at-relevance keeps requesting permission at the moment of relevance, not at launch, at SHOULD.",
+        "pin": "a4a2c2c802427ae8e1e8a945b38fc7ea48870236798ddbfb3cf37a71e4afaabb"
+      }
+    },
+    {
+      "sentence": "Every notification MUST be actionable — tapping it deep links to the relevant content",
+      "to": "must-be-actionable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-be-actionable keeps the MUST that every notification be actionable and deep link on tap.",
+        "pin": "a25640c833b68462ff9f2e935d6a8c4a624432496637fa37fab8bed35b83c50c"
+      }
+    },
+    {
+      "sentence": "Support notification grouping and categories to reduce clutter",
+      "to": "support-grouping-and-categories",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "support-grouping-and-categories keeps grouping and categories and the reduce-clutter reason, at SHOULD.",
+        "pin": "ecad502aafb057ec375d9a3463f4c0b40d4e3e024486880c8c330357094123a2"
+      }
+    },
+    {
+      "sentence": "Respect Do Not Disturb, Focus modes, and quiet hours",
+      "to": "respect-dnd-focus-and-quiet-hours",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "respect-dnd-focus-and-quiet-hours keeps respecting Do Not Disturb, Focus modes and quiet hours, at SHOULD.",
+        "pin": "61a682b6678667314070b259145eb2c439f3d3b238e88670572b7b12f7c1bd5d"
+      }
+    },
+    {
+      "sentence": "Use the Notifications API with service workers for push notifications.",
+      "to": "web-use-notifications-api-with-service-workers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-use-notifications-api-with-service-workers keeps the Notifications API with service workers for web push, at SHOULD.",
+        "pin": "e5aa820a1abdbaea362d9d5506a162164a19f0fec07ffa852693d36b48650ef6"
+      }
+    },
+    {
+      "sentence": "Request permission contextually.",
+      "to": "web-request-permission-contextually",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-request-permission-contextually keeps contextual permission requests on the web, at SHOULD.",
+        "pin": "f56f6cbc1d1a416ecd2d4a88218112b76d7b9655935b387be4bf2f56508c7401"
+      }
+    },
+    {
+      "sentence": "Support notification actions and badges via the Badging API.",
+      "to": "web-support-actions-and-badges",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-support-actions-and-badges keeps notification actions and badges via the Badging API, at SHOULD.",
+        "pin": "f06af165c73a0b2390b29603a132333aa86c03551d75c953619cf0b91847b36f"
+      }
+    },
+    {
+      "sentence": "Fall back gracefully when notifications are denied or unavailable.",
+      "to": "web-fall-back-when-denied",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "web-fall-back-when-denied keeps graceful fallback when notifications are denied or unavailable, at SHOULD.",
+        "pin": "c0a5980ec699c1747bb42cfcb5599c709915dfee8c95c3b00b44c7cedacd5eb1"
+      }
+    },
+    {
+      "sentence": "Use `AppNotificationManager` + `AppNotificationBuilder` fluent API for local notifications.",
+      "to": "windows-use-appnotification-api",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-use-appnotification-api keeps AppNotificationManager + AppNotificationBuilder for local notifications on Windows, at SHOULD.",
+        "pin": "5cff2dbf8a9b6d8b19ca1dbdc71a95745806c2d7de2693bdf9bf5be9f9470609"
+      }
+    },
+    {
+      "sentence": "Support text, images, buttons with activation arguments, progress bars, and scheduled delivery.",
+      "to": "windows-support-rich-content",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-support-rich-content keeps text, images, buttons with activation arguments, progress bars and scheduled delivery, at SHOULD.",
+        "pin": "2bbbc7d0057d137036c8a4b3e5b8da7bdc9bd5c418f98d2e45c8bbe19f6c6a9b"
+      }
+    },
+    {
+      "sentence": "Handle notification activation alongside protocol activation.",
+      "to": "windows-handle-activation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "windows-handle-activation keeps handling notification activation alongside protocol activation, at SHOULD.",
+        "pin": "a9928c1a88a24bdf3d42904c88f287f508c94d47fc2a44f5721c24aab3a1073f"
+      }
+    }
+  ],
+  "obsolete": []
+}

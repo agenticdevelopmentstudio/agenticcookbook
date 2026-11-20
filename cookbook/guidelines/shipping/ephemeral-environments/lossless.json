@@ -1,0 +1,99 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Note: managed-platform feature names and DB-branching capabilities evolve quickly — verify current behavior against the vendor's docs before relying on a specific guarantee.",
+      "to": "should-verify-vendor-behavior",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the reason (feature names and DB-branching capabilities evolve quickly) and the instruction to verify against vendor docs before relying on a guarantee, at SHOULD.",
+        "pin": "adc45bcd3609e192c5bcde2dc22fcff38f760faa1d2107b18894c9236602fbf7"
+      }
+    },
+    {
+      "sentence": "FORECAST: treat any \"instant branch\" or per-PR-cost claim as vendor-specific and unverified until measured in your own pipeline.",
+      "to": "should-treat-vendor-claims-as-unverified",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the FORECAST label and treating instant-branch and per-PR-cost claims as vendor-specific and unverified until measured in your own pipeline, at SHOULD.",
+        "pin": "f5b10bc445ac13bc34bfb8b94bbdcf292b6de428c455aab497e316d0bd75a5ca"
+      }
+    },
+    {
+      "sentence": "**created-automatically**: The environment MUST be provisioned on a PR `opened`/`synchronize` event, not by hand.",
+      "to": "must-provision-on-pr-event",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST to provision on PR opened/synchronize, not by hand.",
+        "pin": "5f35eccb01080e9faff30db318536c3b6367182279c955ad26a7182b87119a3b"
+      }
+    },
+    {
+      "sentence": "**isolated**: Each environment MUST own its services, datastore, and DNS, namespaced by the PR identifier (e.g.",
+      "to": "must-own-namespaced-resources",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST to own services, datastore and DNS namespaced by PR identifier, with the examples the truncated sentence began.",
+        "pin": "6123a5b8b47120793f6473e4781461e0a275f7140af6dfc5292ae2e9a073a1f6"
+      }
+    },
+    {
+      "sentence": "**destroyed-automatically**: Teardown MUST fire on the PR `closed` event (covers both merge and abandon).",
+      "to": "must-tear-down-on-pr-close",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST to tear down on PR closed, covering both merge and abandon.",
+        "pin": "63fdbb1fcc60f65fbbb91a1c5e82e0d0fe29c266e4416981dc9a88b9b15fa623"
+      }
+    },
+    {
+      "sentence": "No environment may outlive its PR.",
+      "to": "must-not-outlive-pr",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps that no environment may outlive its PR and states it as MUST NOT.",
+        "pin": "f4c37db258cb5263cd4ae0a5553ebb43d95853c19869f6137d69a28f8451e352"
+      }
+    },
+    {
+      "sentence": "Seed each environment with synthetic or anonymized fixtures (per *test-data-management*).",
+      "to": "should-seed-with-synthetic-fixtures",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps seeding with synthetic or anonymized fixtures per test-data-management; the unkeyed instruction is kept at SHOULD.",
+        "pin": "fd339defe5818576ea41ad0ddca17fa0d01ad5be3529a924faad7a161f109330"
+      }
+    },
+    {
+      "sentence": "Pick fresh-provision by default and adopt branching only when spin-up latency is a measured bottleneck (per *yagni*).",
+      "to": "should-default-to-fresh-provision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps fresh-provision as the default and the condition that branching is adopted only when spin-up latency is a measured bottleneck, per yagni.",
+        "pin": "1dfce7a2fd198767d84fce02931e31c73122bc3946e471a94151cac055700fe2"
+      }
+    },
+    {
+      "sentence": "Run E2E/smoke suites and contract tests (see [adc.guideline.testing.contract-testing](cookbook:abdcd282-5b81-4ab2-ab1e-3ed288a4aee5)) against the live URL, and post the preview link plus check results back as a PR comment for human review.",
+      "to": [
+        "should-run-e2e-against-live-url",
+        "should-post-preview-link-and-results"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep running E2E/smoke and contract tests against the live URL and posting the preview link plus results as a PR comment for human review, at SHOULD.",
+        "pin": "461c1f8f48c152624bd8abf33603fddee8916296df0b73edd9897c1992cd7cab"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "These are CLI tools",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The intro keeps that the scans (SAST, dependency scanning, DAST) use CLI tools; the scanners part lists them with their commands.",
+        "pin": "639a9155caa34510de0c83095028a2dd317a92513e7387201cd4fbb99d964f80"
+      }
+    },
+    {
+      "sentence": "Claude Code can invoke directly.",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The intro keeps that Claude Code can invoke these CLI tools directly.",
+        "pin": "dbb7170ede47acef7009883dcd25cc5338c9a1850d97dacbfdb8e386460c2dca"
+      }
+    }
+  ],
+  "obsolete": []
+}

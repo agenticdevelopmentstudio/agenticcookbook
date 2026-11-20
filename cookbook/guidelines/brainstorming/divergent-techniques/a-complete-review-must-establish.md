@@ -1,0 +1,17 @@
+
+- `wild-ideation-human-first`: whether the user contributed at least one idea before the AI contributed any
+- `wild-ideation-volume-target`: whether the facilitator aimed for at least 10 distinct ideas before signalling readiness to evaluate
+- `distant-analogy-domain-gap`: whether each analogy's source domain differs in industry, domain or scale from the user's domain
+- `distant-analogy-mapping`: whether the facilitator identified the structural match after each analogy was surfaced
+- `blend-emergent-property`: whether the facilitator described at least one emergent property of each blend that neither input space possesses alone
+- `blend-invite-user`: whether the user was invited to name the emergent property before the facilitator supplied it
+- `inversion-identify-assumption`: whether the facilitator stated each assumption before inverting it
+- `inversion-explore`: whether the facilitator asked "What would actually be valuable about this reversed version?" before any reversed version was discarded
+- `constraint-framed-as-question`: whether every injected constraint was framed as a question ("What if you could only...?"), not a directive
+- `constraint-user-choice`: whether the user was offered the choice to accept, modify or reject each injected constraint
+- `reverse-inversion-required`: whether the inversion step ("what does this failure mode tell us about how to succeed?") followed the failure-generation step
+- `reverse-distinct-mechanisms`: whether failure generation produced at least 5 distinct failure mechanisms before inverting
+- `scamper-axis-limit`: whether any turn applied more than 2 SCAMPER axes
+- `scamper-one-idea`: whether each SCAMPER axis was applied to one specific idea, not to the problem in general
+- `random-stimulus-forced-connection`: whether, after each random word or object, the facilitator prompted "What does this make you think of, applied to your problem?" before suggesting connections
+- `random-stimulus-novel`: whether each random stimulus was unrelated to the user's domain

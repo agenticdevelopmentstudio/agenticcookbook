@@ -1,0 +1,13 @@
+
+- `must-be-isolated`: shared mutable state between tests, or a test that relies on another having run first
+- `must-be-composable`: a test that fails when run alone, in a subset, or in a different order
+- `must-be-deterministic`: a test whose result varies between runs
+- `should-be-fast`: a unit test taking more than milliseconds, or an integration test more than seconds
+- `should-be-writable`: heavy setup ceremony that makes a test hard to author
+- `should-be-readable`: a failure message that does not say what broke and why
+- `should-be-behavioral`: assertions on how the code does its work rather than what it does
+- `should-be-structure-insensitive`: tests coupled to internals, which break on a refactor that keeps behavior
+- `should-be-automated`: a test needing a manual step or a human judgment
+- `should-be-specific`: a test whose failure could have several causes
+- `should-be-predictive`: passing tests that do not exercise what runs in production
+- `should-be-inspiring`: a suite too weak or brittle to give confidence to refactor and ship

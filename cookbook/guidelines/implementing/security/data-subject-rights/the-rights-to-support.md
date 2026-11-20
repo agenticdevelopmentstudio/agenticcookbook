@@ -1,6 +1,4 @@
 
-Under GDPR Chapter 3 (and analogues such as CCPA/CPRA), an agent **MUST** be able to satisfy each request type:
-
 | Right | Obligation |
 |-------|-----------|
 | **Access** | Export everything held about the subject, including derived data. |

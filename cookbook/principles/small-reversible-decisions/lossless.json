@@ -1,0 +1,50 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "If it is expensive to reverse, invest in understanding first:",
+      "to": [
+        "should-invest-in-understanding-expensive-decisions",
+        "should-prefer-incremental-delivery",
+        "should-defer-binding-decisions"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-invest-in-understanding-expensive-decisions keeps the expensive-to-reverse condition and investing in understanding first at SHOULD; the list rules carry the items the lead-in introduced.",
+        "pin": "7bd2fe67033d1b2b2e75d14772976a9ed3f65e6ff9103c0ab688c1ef234de60e"
+      }
+    },
+    {
+      "sentence": "Prefer incremental delivery over phased releases",
+      "to": "should-prefer-incremental-delivery",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD preferring incremental delivery over phased releases.",
+        "pin": "ae508a0167be862c9994c13091ba0fc79545135cf1f9334d12c2768b8b5b8fa3"
+      }
+    },
+    {
+      "sentence": "Defer binding decisions until the last responsible moment",
+      "to": "should-defer-binding-decisions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD deferring binding decisions until the last responsible moment.",
+        "pin": "9186bebf4f4a19d1c5f54999feb7b840761939114c68fc3fddcb60ae98a18168"
+      }
+    },
+    {
+      "sentence": "Treat architecture as a continuous activity, not an up-front phase",
+      "to": "should-treat-architecture-as-continuous",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD treating architecture as a continuous activity, not an up-front phase.",
+        "pin": "a2060d105857d81cf5b8b517dbb089a93da1e180a99318265f76f57c1890fed8"
+      }
+    }
+  ],
+  "obsolete": []
+}

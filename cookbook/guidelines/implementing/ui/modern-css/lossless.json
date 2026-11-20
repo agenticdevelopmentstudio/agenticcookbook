@@ -1,0 +1,218 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Do not reach for a CSS-in-JS runtime or a JS animation library when an interoperable native CSS feature covers the need.",
+      "to": "should-not-use-js-runtimes-native-css-covers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed anti-pattern is kept at SHOULD NOT with both named runtimes and the 'when native CSS covers the need' condition.",
+        "pin": "3aa5c9fc76d2ca65ab69dcc953cfce67afe11e53b3b10f2ccd30ddabfa3443a9"
+      }
+    },
+    {
+      "sentence": "Do not escalate specificity or use `!important` to win the cascade — reach for `@layer` instead.",
+      "to": "should-not-escalate-specificity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with both behaviours (escalating specificity, !important) and the @layer alternative.",
+        "pin": "cf1fad1579233d4f8e539cb6868daaf2326984bdec6bbb1de676fb18496353f4"
+      }
+    },
+    {
+      "sentence": "Do not gate a feature solely on `caniuse` percentages without checking Baseline tier and whether your traffic includes pre-cutoff versions.",
+      "to": "should-not-gate-solely-on-caniuse",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with both checks it requires (Baseline tier, pre-cutoff traffic).",
+        "pin": "97eba8b32929ae9ed05b18ef7444bd96d96377b6c1e67f4ddab92e5922517053"
+      }
+    },
+    {
+      "sentence": "Define an explicit **`@layer`** order (e.g.",
+      "to": "should-define-explicit-layer-order",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "An explicit @layer order is kept at SHOULD with the example order and the reason (precedence by layer, not specificity).",
+        "pin": "36c3b64984d8bf3b65a107d9d07419cb71cb0fd45b6ded605b8a8b3681654681"
+      }
+    },
+    {
+      "sentence": "Import third-party CSS into a low-priority layer to keep it overridable without `!important`.",
+      "to": "should-import-third-party-css-into-low-layer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Importing third-party CSS into a low-priority layer is kept at SHOULD with its reason (overridable without !important).",
+        "pin": "6a0c48e3f89513c4f34127c1bc5f709b776a463a6736e95f8d7e3d93f944904b"
+      }
+    },
+    {
+      "sentence": "Use **`:has()`** to drive conditional styling from descendant or sibling state instead of toggling classes in JavaScript (e.g.",
+      "to": "should-use-has-for-conditional-styling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using :has() for conditional styling from descendant or sibling state, instead of JS class toggling, is kept at SHOULD with both examples.",
+        "pin": "2141d80165e674cd38523ac8bfbc1a1c7aad90816123c8ad30a7233333cf1d39"
+      }
+    },
+    {
+      "sentence": "Use **native nesting** for co-locating related rules; do not nest deeply — flat, shallow rules stay readable and greppable.",
+      "to": [
+        "should-use-native-nesting",
+        "should-not-nest-deeply"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Native nesting for co-locating rules is kept at SHOULD; 'do not nest deeply' is kept at SHOULD NOT with its reason (flat, shallow rules stay readable and greppable).",
+        "pin": "fd3bf90201f892949fcaa8bb0597cb70bd447ae83d08209734708187b18de9f5"
+      }
+    },
+    {
+      "sentence": "Requirements:",
+      "to": [
+        "must-gate-adoption-on-baseline",
+        "may-use-widely-available-without-fallback",
+        "should-fallback-for-newly-available",
+        "should-date-baseline-claims",
+        "should-verify-baseline-status"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Requirements:' lead-in is carried by the five Baseline-adoption rules, and the rationale part names them as the requirements for deciding adoption with Baseline.",
+        "pin": "1e5ec3e737588ddcf8620eeb784d3f88c40945a6c683817a070906950e5b9596"
+      }
+    },
+    {
+      "sentence": "Pin any Baseline claim to a date — statuses advance over time.",
+      "to": "should-date-baseline-claims",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Dating Baseline claims is kept at SHOULD with its reason (statuses advance over time).",
+        "pin": "59c42682e47b2c10bb5fb8360766aa05463f4f543ed37d25b5ec8090953eabf7"
+      }
+    },
+    {
+      "sentence": "Verify against MDN or the Baseline data before assuming current status.",
+      "to": "should-verify-baseline-status",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Verifying against MDN or Baseline data before assuming current status is kept at SHOULD.",
+        "pin": "c3d7189d4223b7e193bc611d61ef235aa27126b67c94af8464175075ae0bf2ee"
+      }
+    },
+    {
+      "sentence": "Author component responsiveness with **container queries** keyed to the component's own size: wrap the component in a query container (`container-type: inline-size`) and use `@container`, so the component adapts wherever it is placed.",
+      "to": "should-use-container-queries-for-components",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Container queries for component responsiveness are kept at SHOULD with the container-type: inline-size wrapper, @container and the 'adapts wherever placed' reason.",
+        "pin": "5e8e4ef4d2116951436587f0e98aa6a34ee85c2a10d430763076ce9b07b77e0a"
+      }
+    },
+    {
+      "sentence": "Use **viewport media queries** only for genuinely page-level concerns (overall page shell, print, `prefers-*` user preferences).",
+      "to": "should-limit-viewport-media-queries-to-page-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Viewport media queries limited to page-level concerns are kept at SHOULD with all three examples (page shell, print, prefers-*).",
+        "pin": "f6c366cef56e0f819ee3f0e5c7246e7401b0548632b847e99a89ed44806d6c9c"
+      }
+    },
+    {
+      "sentence": "Use **subgrid** to align nested items to an ancestor grid's tracks.",
+      "to": "should-use-subgrid-for-nested-alignment",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using subgrid to align nested items to an ancestor grid's tracks is kept at SHOULD.",
+        "pin": "60d93064f35121bd1bb4c80dc736576f9b1f974f368c40146bf3a4855cca8106"
+      }
+    },
+    {
+      "sentence": "Provide a non-subgrid fallback (explicit tracks) only if you target pre-cutoff versions.",
+      "to": "should-fallback-subgrid-only-for-pre-cutoff",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The non-subgrid fallback is kept at SHOULD with its pre-cutoff-only condition and the 'explicit tracks' detail.",
+        "pin": "6c27c1b92c33312bc80787399a4e1b6ef7bfe952ac2536a5ea28c4d1eade5401"
+      }
+    },
+    {
+      "sentence": "Prefer **logical properties** (`margin-inline`, `inset-block`) over physical ones for internationalization-ready layout.",
+      "to": "should-prefer-logical-properties",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Logical over physical properties is kept at SHOULD with both examples and the internationalization reason.",
+        "pin": "e01deac15f2b2064c01f65f04bf879305c8836658bf7e5f962f499285b51e93e"
+      }
+    },
+    {
+      "sentence": "Use the **same-document View Transitions API** (`document.startViewTransition`) for animated state/route changes in SPAs.",
+      "to": "should-use-same-document-view-transitions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Same-document View Transitions for SPA state/route changes is kept at SHOULD with the API named.",
+        "pin": "c081ade416604c4c7de42f655c99fefa2f23353fd76b1c97254771c7f8229940"
+      }
+    },
+    {
+      "sentence": "It is Newly available, so it **MUST** degrade gracefully: when unsupported, the DOM update still applies, just without animation.",
+      "to": "must-degrade-view-transitions-gracefully",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with its reason (Newly available) and the degraded behaviour (DOM update applies without animation); the rule names the feature for the old 'it'.",
+        "pin": "51d822a329dbe36559b07f7c0675be6fb96fa5c09cecbe489e2393a42efdc7ee"
+      }
+    },
+    {
+      "sentence": "Feature-detect with `if (document.startViewTransition) { ... } else { /* apply update directly */ }`.",
+      "to": "should-feature-detect-view-transitions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Feature detection is kept at SHOULD with the exact detection snippet.",
+        "pin": "c468e4fc68e55648c652f363e82a7e87d0925b1d6b327cfc09865075b0af1e2a"
+      }
+    },
+    {
+      "sentence": "Use them as pure progressive enhancement only; never make navigation depend on them.",
+      "to": [
+        "should-use-cross-document-transitions-only-as-enhancement",
+        "must-not-make-navigation-depend-on-cross-document-transitions"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pure progressive enhancement is kept at SHOULD and 'never make navigation depend on them' is kept, strengthened to MUST NOT; both rules name cross-document (MPA) View Transitions for the old 'them'.",
+        "pin": "e2befbb98851d100168874f607f0c5b2cd2b87c432c1add2c1aeb16e017383bb"
+      }
+    },
+    {
+      "sentence": "Respect `prefers-reduced-motion: reduce` and disable or shorten transitions accordingly.",
+      "to": "should-respect-reduced-motion",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Respecting prefers-reduced-motion: reduce by disabling or shortening transitions is kept at SHOULD.",
+        "pin": "ef4ac50b3e0fc670689a0edf9a723f239d482e7203cfbf8068f6daccfcb1dfbc"
+      }
+    }
+  ],
+  "obsolete": []
+}

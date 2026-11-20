@@ -1,0 +1,11 @@
+
+- `should-classify-each-file-into-one-category`: the classification summary counts every file once, in one category
+- `should-keep-groups-purpose-coherent`: every candidate group is marked purpose-coherent with its category, or mixed with a split recommended
+- `should-split-incoherent-groups`: every group marked mixed carries a split recommendation
+- `should-have-one-sentence-purpose`: every recommended group's purpose is one sentence with no "and also"
+- `should-document-mixed-purpose-files`: every mixed-purpose file is listed with the categories it mixes and a recommended refactoring
+- `should-not-create-mixed-purpose-groups`: no recommended group exists to hold mixed-purpose files
+- `should-split-mixed-files-along-fault-line`: every mixed-purpose file's recommended split runs between its two purposes
+- `should-place-configuration-with-its-components`: every configuration file sits in the group it configures, or in an application bootstrap group when app-wide, or the findings say why not
+- `should-place-test-infrastructure-with-subject`: every mock and fake sits with the types it mocks, or in a shared test infrastructure group when used across groups
+- `must-give-build-tooling-own-group`: every build tooling file is listed under the `Build Tooling` group and in no runtime group

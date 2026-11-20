@@ -4,11 +4,11 @@
     "id": "355028de-c329-48dd-b609-41aba903e01c",
     "title": "MCP tool input validation",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,22 +27,22 @@
     "references": [
       "https://modelcontextprotocol.io/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ai-api-integration",
       "input-handling",
       "security-review"
     ]
   },
-  "synced": "8400ad2a46171659",
+  "synced": "4a07e274ecc847b0",
   "parts": [
     {"part": "intro"},
-    {"part": "core-rules", "heading": "Core rules"},
-    {"part": "schema-validation", "heading": "Schema validation"},
-    {"part": "authorization-per-call", "heading": "Authorization per call"},
-    {"part": "bound-resource-access", "heading": "Bound resource access"},
-    {"part": "output-and-observability", "heading": "Output and observability"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,20 @@
+
+- `must-default-to-immutable-values`: whether immutable values are the default and each mutable one is necessary
+- `should-prefer-value-types`: whether value types are preferred over reference types
+- `must-contain-mutation-behind-boundaries`: whether all mutation is contained behind clear boundaries
+- `should-use-val-by-default`: whether Kotlin code uses `val` by default
+- `should-use-data-class-for-value-types`: whether Kotlin value types are `data class`es
+- `should-introduce-var-only-when-required`: whether each Kotlin `var` is required for mutation
+- `should-contain-mutable-state-behind-stateflow`: whether Kotlin mutable state is contained behind `StateFlow`
+- `should-use-const-by-default`: whether TypeScript code uses `const` by default
+- `should-use-var-or-let-only-when-required`: whether each TypeScript `var`/`let` is required for mutation
+- `should-prefer-usestate-for-mutable-state`: whether React contained mutable state uses `useState`
+- `should-use-readonly-by-default`: whether C# fields and structs are `readonly` by default
+- `should-prefer-immutable-collections`: whether shared C# collections use `System.Collections.Immutable`
+- `should-use-records-for-data`: whether C# DTOs, API responses, domain events and value objects are `record`s
+- `should-use-record-structs-for-small-values`: whether small immutable C# value types are `record struct` / `readonly record struct`
+- `should-prefer-positional-records`: whether simple C# data carriers are positional records
+- `should-use-init-and-required`: whether mandatory C# properties use `init` setters and `required`
+- `should-use-with-expressions`: whether C# non-destructive mutation uses `with` expressions
+- `should-contain-mutable-state-behind-wrappers`: whether C# mutable state is behind `ObservableObject` (UI) or thread-safe wrappers
+- `should-reserve-mutable-classes-for-entities`: whether every C# `class` with mutable state is an entity with identity semantics

@@ -4,11 +4,11 @@
     "id": "e0c6916b-4c1c-49f6-9111-69eb0ee64d2d",
     "title": "Separate server state from client state",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,20 +30,21 @@
     "references": [
       "https://tanstack.com/query/latest/docs/framework/react/guides/does-this-replace-client-state"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "80a618d1c1c19058",
+  "synced": "f753eb168ac856ba",
   "parts": [
     {"part": "intro"},
-    {"part": "the-two-kinds-of-state", "heading": "The two kinds of state"},
-    {"part": "requirements", "heading": "Requirements"},
-    {"part": "how-to-choose-a-mechanism-decision-order", "heading": "How to choose a mechanism (decision order)"},
-    {"part": "example-libraries-not-mandates", "heading": "Example libraries (not mandates)"},
-    {"part": "anti-patterns-to-flag-in-review", "heading": "Anti-patterns to flag in review"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "two-kinds-of-state", "heading": "The two kinds of state", "role": "how-to"},
+    {"part": "example-libraries", "heading": "Example libraries (not mandates)", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

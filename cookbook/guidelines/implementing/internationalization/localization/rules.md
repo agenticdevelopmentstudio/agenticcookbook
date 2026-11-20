@@ -1,0 +1,12 @@
+
+- **must-make-user-facing-strings-localizable**: All user-facing strings MUST be localizable — no hardcoded strings. No hardcoded user-facing strings on any platform.
+- **should-store-in-platform-resource-files**: You SHOULD store strings in platform-standard resource files and reference them through the platform's localization API.
+- **should-use-string-localized-on-apple**: On Apple platforms, you SHOULD use `String(localized:)` (Swift 5.7+) or `NSLocalizedString`.
+- **should-store-apple-strings-in-xcstrings**: You SHOULD store Apple strings in `.xcstrings` (Xcode 15+) or `.strings` files.
+- **should-use-strings-xml-on-android**: On Android (Kotlin), you SHOULD use `strings.xml` resource files.
+- **should-reference-android-strings-via-resources**: You SHOULD reference Android strings via `R.string.*` in code or `stringResource()` in Compose.
+- **should-use-i18n-library-on-web**: On the web (TypeScript), you SHOULD use an i18n library (`react-intl`, `i18next`, `FormatJS`).
+- **should-extract-to-message-catalogs**: You SHOULD extract all user-facing strings into message catalogs.
+- **should-use-mrt-core-resw-on-windows**: On Windows, you SHOULD use MRT Core with `.resw` resource files, with `x:Uid` in XAML.
+- **should-follow-windows-strings-folder-structure**: Windows resource files SHOULD follow the folder structure `Strings/<language-tag>/Resources.resw` (e.g., `Strings/en-US/Resources.resw`).
+- **should-use-resource-loader-in-code-behind**: Windows code-behind SHOULD access strings via `ResourceLoader` from MRT Core (`Microsoft.Windows.ApplicationModel.Resources.ResourceLoader`).

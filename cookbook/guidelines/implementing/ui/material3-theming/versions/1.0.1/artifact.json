@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "1e7f8c3d-ece9-4c5c-b7ca-7703391995dd",
+    "title": "Material 3 theming on Android",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-09",
+    "modified": "2026-06-10",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Theme Compose UIs with Material 3 color roles, ColorScheme, type and shape scales, and full dark support.",
+    "platforms": [
+      "kotlin"
+    ],
+    "tags": [
+      "android",
+      "material",
+      "theming"
+    ],
+    "depends-on": [],
+    "related": [
+      "5cc9773e-78de-493e-891c-2a819baf9b60",
+      "e547d962-d561-4bd9-bb5a-50bdeec98335"
+    ],
+    "references": [
+      "https://m3.material.io/",
+      "https://blog.google/products-and-platforms/platforms/android/material-3-expressive-android-wearos-launch/",
+      "https://developer.android.com/jetpack/androidx/releases/compose-material3",
+      "https://developer.android.com/develop/ui/compose/designsystems/material3"
+    ],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-10",
+    "triggers": [
+      "ui-implementation"
+    ]
+  },
+  "synced": "faa00a03d773f95f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "color-roles-and-colorscheme", "heading": "Color roles and ColorScheme"},
+    {"part": "dynamic-color-material-you", "heading": "Dynamic color (Material You)"},
+    {"part": "typography-and-shape-scales", "heading": "Typography and shape scales"},
+    {"part": "dark-theme-and-accessibility", "heading": "Dark theme and accessibility"},
+    {"part": "versioning-and-material-3-expressive-forecast", "heading": "Versioning and Material 3 Expressive (FORECAST)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

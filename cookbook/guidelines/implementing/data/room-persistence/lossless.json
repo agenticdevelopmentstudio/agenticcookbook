@@ -1,0 +1,159 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "You **MUST NOT** call blocking (non-`suspend`, non-reactive) DAO functions on the main thread; Room throws `IllegalStateException` unless `allowMainThreadQueries()` is set, which you **SHOULD NOT** use outside tests.",
+      "to": [
+        "must-not-call-blocking-dao-on-main-thread",
+        "should-not-allow-main-thread-queries-outside-tests"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept at their levels: MUST NOT call blocking DAO functions on the main thread (with the IllegalStateException behavior), and SHOULD NOT use allowMainThreadQueries() outside tests.",
+        "pin": "61965fb3d5b7e20c5600242ef9168fad92c7117820b292f77e8e0af863fc012d"
+      }
+    },
+    {
+      "sentence": "Prefer coroutine-first DAO APIs: observable reads as `Flow`, one-shot writes as `suspend`, and multi-statement work wrapped in `@Transaction`.",
+      "to": "should-prefer-coroutine-first-dao-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring coroutine-first DAO APIs is kept at SHOULD with all three shapes (Flow reads, suspend writes, @Transaction multi-statement work).",
+        "pin": "9133cd27b8f574373b9bc98204cc920c4f2ece81912526c7a136452a1793385e"
+      }
+    },
+    {
+      "sentence": "Do not hold the `RoomDatabase` instance per-screen; build one application-scoped singleton via `Room.databaseBuilder(...)`.",
+      "to": "must-not-hold-database-per-screen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not holding RoomDatabase per screen and building one application-scoped singleton via Room.databaseBuilder is kept, at MUST NOT, which is stronger.",
+        "pin": "6bba74fe895bcf4f2d2a700277b01b7df7d5fa92f3826e81e1e97b7fa329fef4"
+      }
+    },
+    {
+      "sentence": "Do not expose `LiveData` for new code when the consumer is a coroutine/Compose layer; prefer `Flow`.",
+      "to": "must-not-expose-livedata-to-coroutine-consumers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not exposing LiveData in new code for coroutine/Compose consumers, preferring Flow, is kept with its scope, at MUST NOT, which is stronger.",
+        "pin": "e418806e799537cf6c67181c1c7202e3c04b14362311b662dbe4bfb17bf3e638"
+      }
+    },
+    {
+      "sentence": "Do not perform multi-step writes as separate suspend calls without a transaction — a crash between calls leaves a partial, inconsistent state.",
+      "to": "must-not-split-multi-step-writes-without-transaction",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not splitting multi-step writes across suspend calls without a transaction is kept at MUST NOT with its reason (partial, inconsistent state on crash).",
+        "pin": "d6e46df8244086db8614a1c477692869aad0e89e15b5972adc854e5f879eb75c"
+      }
+    },
+    {
+      "sentence": "Define one `@Entity` per normalized table.",
+      "to": "should-define-one-entity-per-normalized-table",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One @Entity per normalized table is kept at SHOULD.",
+        "pin": "922b10a0cabc4c3a96908e371493487885163d15ac575f438343c4c7f8275f5e"
+      }
+    },
+    {
+      "sentence": "Declare relationships with `@ForeignKey` and load them via `@Relation`, not by denormalizing.",
+      "to": "should-declare-relationships-not-denormalize",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "@ForeignKey relationships loaded via @Relation rather than denormalizing is kept at SHOULD.",
+        "pin": "c92d39faf0307c4385864ca1df6378cff147a43da94b87e55a5c8459dbedf2f7"
+      }
+    },
+    {
+      "sentence": "Room emits a build warning for unindexed foreign keys; treat it as an error to fix.",
+      "to": "should-treat-unindexed-fk-warning-as-error",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating Room's unindexed-foreign-key build warning as an error to fix is kept at SHOULD.",
+        "pin": "40b892dfe9e1edec9850fbd7683b8b853f3db3977a7455df72c392785da71728"
+      }
+    },
+    {
+      "sentence": "Add an `@Index(unique = true)` for natural-key uniqueness instead of relying on app-side checks.",
+      "to": "should-use-unique-index-for-natural-keys",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using @Index(unique = true) for natural-key uniqueness instead of app-side checks is kept at SHOULD.",
+        "pin": "aa5b9184d40b2a66f0a5e53a10712fb8f4bca2ca25a1a38e8f2a06c5cd1edb43"
+      }
+    },
+    {
+      "sentence": "`@Transaction` is also **REQUIRED** on `@Query` methods that return a `@Relation`-bearing POJO, so the parent and child reads see a consistent snapshot.",
+      "to": "must-use-transaction-on-relation-queries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "REQUIRED is kept as MUST for @Transaction on @Query methods returning @Relation-bearing POJOs, with its consistent-snapshot reason.",
+        "pin": "29dd3bf4f15000b185a5b0140b3b549f98ee5ad793233e87096591770d70b2d8"
+      }
+    },
+    {
+      "sentence": "Keep transactions short; do no network or long CPU work inside `withTransaction`.",
+      "to": "should-keep-transactions-short",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping transactions short, with no network or long CPU work inside withTransaction, is kept at SHOULD.",
+        "pin": "1a8a8c1b6bc22ee263d036a2bc1bb1b6c1a7bda30a415bdb370bdcdf30944019"
+      }
+    },
+    {
+      "sentence": "State KMP support as \"2.7.0+\" — do not back-port the claim to older versions.",
+      "to": "should-state-kmp-support-as-2-7-plus",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Stating KMP support as 2.7.0+ without back-porting the claim is kept at SHOULD.",
+        "pin": "8bcecd4b7defda982d7d842a3aa4381f778abb7fc2dc7686a96c704376fce7f3"
+      }
+    },
+    {
+      "sentence": "**Room 3.0 is ALPHA — treat its API and the `androidx.room3:room3-*` artifact rename as a FORECAST, not a shipped default.",
+      "to": "should-treat-room-3-as-forecast",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Room 3.0's ALPHA status, and treating its API and the room3 artifact rename as a FORECAST and not a shipped default, are kept at SHOULD.",
+        "pin": "2d70e905ae72bc67eeec1207c0fd38d0090a308da554de2f61430b35fa0fb2b2"
+      }
+    },
+    {
+      "sentence": "Do not migrate production code to it yet.**",
+      "to": "should-not-migrate-production-to-room-3",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not migrating production code to Room 3.0 yet is kept at SHOULD NOT.",
+        "pin": "50bbf36fedd15e0314ae1fabdffb82638a9c16baf814116144ff379c0a1f524f"
+      }
+    },
+    {
+      "sentence": "Pin the Room version explicitly in the version catalog; do not float to `+`.",
+      "to": "should-pin-room-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning the Room version explicitly in the version catalog, never floating to +, is kept at SHOULD.",
+        "pin": "fe9c1f7884e75f2cbefb0bbe538c57af1ab4ce634e92688877a5e755ef443a08"
+      }
+    }
+  ],
+  "obsolete": []
+}

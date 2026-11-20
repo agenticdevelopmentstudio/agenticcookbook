@@ -1,0 +1,79 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Construct what you need, per test.** Avoid large shared fixture files.",
+      "to": [
+        "should-construct-what-each-test-needs",
+        "should-avoid-large-shared-fixture-files"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both instructions kept at SHOULD: construct what each test needs, and avoid large shared fixture files.",
+        "pin": "ed33c0f0510eb06928161b387887739e40bab980f1570c37781d3517fbd9ba05"
+      }
+    },
+    {
+      "sentence": "**Builder pattern** or **factory functions** SHOULD be used for complex objects — each test calls",
+      "to": "should-use-builders-or-factories-for-complex-objects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: builders or factory functions for complex objects, with the each-test-calls continuation.",
+        "pin": "3ae605118bedcef97f7abbfb13abb77f27e95fa60c4ab52063120b9267d54da8"
+      }
+    },
+    {
+      "sentence": "`makeOrder(status: .pending)` with only the fields it cares about, defaults for the rest",
+      "to": "should-use-builders-or-factories-for-complex-objects",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule carries the makeOrder example with 'only the fields it cares about, defaults for the rest'.",
+        "pin": "c0b12e1551c737edf59025b4bc91c7205f0c2c27d27862eb52cb0da3d2ead176"
+      }
+    },
+    {
+      "sentence": "**Property-based generators** (Hypothesis strategies, fast-check arbitraries) for",
+      "to": "should-use-property-based-generators-for-coverage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, naming both generator kinds (Hypothesis strategies, fast-check arbitraries).",
+        "pin": "65cea5d7081391c1823f6a63ab15ecc1411e7477346b4ec75307d5432dcc5f8f"
+      }
+    },
+    {
+      "sentence": "comprehensive input coverage",
+      "to": "should-use-property-based-generators-for-coverage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule carries the purpose, comprehensive input coverage.",
+        "pin": "99c0f757c5031c3402aa6cdbb68c6b72380aca5112d85182b4d79fff93b7cfb2"
+      }
+    },
+    {
+      "sentence": "**Inline literals** for simple cases — `assert parse(\"hello\") == \"hello\"` is clear",
+      "to": "should-use-inline-literals-for-simple-cases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for simple cases, with the example.",
+        "pin": "9968c7898c64d3ae6d204023dda435f15abb9560180931d342adf106af9a3228"
+      }
+    },
+    {
+      "sentence": "**No magic fixtures** — if a test needs specific data, the data MUST be visible in the test",
+      "to": "must-keep-specific-data-visible-in-the-test",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with the condition (a test needs specific data) and the 'no magic fixtures' framing.",
+        "pin": "8f6afde9c2e08499a63f85bb9d4f6692ba45b2e76dca5fac031e8748450df3e0"
+      }
+    }
+  ],
+  "obsolete": []
+}

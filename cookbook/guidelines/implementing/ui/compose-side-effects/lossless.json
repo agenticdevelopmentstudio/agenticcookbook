@@ -1,0 +1,39 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "`LaunchedEffect(Unit)` / `LaunchedEffect(true)` runs once per entry into composition; use it **only** when the effect is genuinely lifecycle-scoped, and **MUST** still wrap latched callbacks in `rememberUpdatedState`.",
+      "to": [
+        "should-use-launchedeffect-unit-only-when-lifecycle-scoped",
+        "must-wrap-latched-callbacks"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Split across two rules: the runs-once-per-entry fact and the only-when-genuinely-lifecycle-scoped restriction (unkeyed, kept at SHOULD), and the MUST to still wrap latched callbacks in rememberUpdatedState.",
+        "pin": "b07d87f96950ccd11daff4155287e9e2f043250ae12bb5034236aca666d23c73"
+      }
+    },
+    {
+      "sentence": "Adopt it only when profiling shows wasted recompositions.",
+      "to": "should-reserve-derivedstateof",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD inside should-reserve-derivedstateof with the referent explicit: adopt derivedStateOf only when profiling shows wasted recompositions.",
+        "pin": "bf9e655742fe5b5c706cab80f1d5dc9ef34eb5e49513d597fcb645c8d234c9f5"
+      }
+    },
+    {
+      "sentence": "Prefer hoisting state and side effects into the ViewModel where the work outlives composition; effect APIs are for work bound to the composable's lifetime.",
+      "to": "should-hoist-long-lived-work-to-viewmodel",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the outlives-composition condition and the reason that effect APIs are for work bound to the composable's lifetime.",
+        "pin": "233f4f1124abfa56df8542629c638bbbcf1dea590635cf7220bad242401e589a"
+      }
+    }
+  ],
+  "obsolete": []
+}

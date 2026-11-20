@@ -4,11 +4,11 @@
     "id": "064250f4-a30a-4240-9f2c-010012419f25",
     "title": "Narrative Arc",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-06-29",
-    "modified": "2026-10-03",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -24,17 +24,18 @@
       "21e9045a-1881-42bd-92d1-57a006638626"
     ],
     "triggers": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-03",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "depends-on": [],
     "references": []
   },
-  "synced": "b421f5390eb0683f",
+  "synced": "f1005aa64520c747",
   "parts": [
     {"part": "intro"},
-    {"part": "timeline", "heading": "Timeline"},
-    {"part": "pivots", "heading": "Pivots"},
-    {"part": "rough-spots", "heading": "Rough Spots"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

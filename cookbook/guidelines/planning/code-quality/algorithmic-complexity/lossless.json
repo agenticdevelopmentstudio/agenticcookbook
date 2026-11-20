@@ -1,0 +1,72 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**High-complexity algorithms warrant their own scope group.** Code implementing O(n log n) or worse algorithms on large datasets is a distinct engineering concern — performance optimization, testing with large inputs, and benchmarking apply specifically to it.",
+      "to": [
+        "should-give-high-complexity-algorithms-own-scope-group",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-give-high-complexity-algorithms-own-scope-group keeps the own-scope-group call at SHOULD for O(n log n)-or-worse code on large datasets; the rationale keeps the distinct-concern reason (optimization, large-input testing, benchmarking).",
+        "pin": "b205c807266b4c99294efd6e29354dc6a21d58e48ac458d96ee357346374c549"
+      }
+    },
+    {
+      "sentence": "**Caching layers are scope group candidates.** A caching subsystem with its own eviction policy, invalidation logic, and hit/miss tracking is a meaningful independent component.",
+      "to": [
+        "should-treat-caching-layers-as-candidates",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-caching-layers-as-candidates keeps caching subsystems with eviction, invalidation and hit/miss tracking as candidates; the rationale keeps the meaningful-independent-component reason.",
+        "pin": "7469cbc8245bd219d2b3c19cf9af4383e602378ab7198f6bb691103093c2c8b4"
+      }
+    },
+    {
+      "sentence": "**Computational code should not be mixed with I/O.** Files that mix algorithm implementation with network calls or file system access conflate two different concerns — note this as a design smell.",
+      "to": [
+        "should-not-mix-computation-with-io",
+        "should-note-mixed-io-as-design-smell",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep not mixing computation with I/O and noting such files as a design smell; the rationale keeps the conflated-concerns reason and the network/file-system scope.",
+        "pin": "b481f54df2eb01fa49f072777d68c498b880b302431e5b673b4fe52c1cb23cd4"
+      }
+    },
+    {
+      "sentence": "**Simple CRUD code is not a boundary signal.** Code that maps data structures to/from persistence formats and performs no interesting computation is not algorithmically significant — its boundaries come from `module-boundaries` or `purpose-classification`.",
+      "to": [
+        "should-not-treat-crud-as-boundary-signal",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-treat-crud-as-boundary-signal keeps the claim and the module-boundaries / purpose-classification redirect; the rationale keeps the no-interesting-computation definition.",
+        "pin": "7a65b0a59115b0464749a15c06157c44f4d6511afd2cc62b7ddc1cdc70ce1a95"
+      }
+    },
+    {
+      "sentence": "**Parallel computation implies a concurrency concern.** Code using parallel execution primitives has distinct testing requirements (race conditions, thread safety) and likely belongs in its own scope group or must be flagged as a concurrency concern.",
+      "to": [
+        "must-scope-or-flag-parallel-computation",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-scope-or-flag-parallel-computation keeps own-scope-group-or-MUST-flag; the rationale keeps the race-condition and thread-safety testing reason.",
+        "pin": "fb363792b79742a95caf5d5802018648e9af97ab2920426f06c8592950aaa02c"
+      }
+    }
+  ],
+  "obsolete": []
+}

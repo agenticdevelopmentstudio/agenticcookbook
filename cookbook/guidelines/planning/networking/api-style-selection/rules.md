@@ -1,0 +1,19 @@
+
+- **should-pick-the-style-from-consumer-and-traffic**: You SHOULD pick the API style from who consumes the endpoint and the shape of its traffic, not from fashion.
+- **must-record-the-style-decision**: The choice **MUST** be recorded as a deliberate decision with its rationale (see the related `api-design` guideline).
+- **must-weigh-the-decision-factors**: You **MUST** weigh these before selecting a style:
+  - **Consumer**: public/third-party, first-party web/mobile, or internal service-to-service.
+  - **Traffic shape**: request/response CRUD, high-frequency low-latency RPC, streaming, or wide-fan-out aggregation across many resources.
+  - **Tooling and team**: existing client stacks, codegen tolerance, debuggability (human-readable vs binary).
+  - **Caching**: whether HTTP intermediary/CDN caching is valuable.
+- **should-choose-rest-for-diverse-consumers-and-http-caching**: You SHOULD choose REST when consumers are diverse/external, resources map cleanly to URLs, and HTTP caching (`ETag`, `Cache-Control`, CDN) adds value.
+- **should-default-to-rest**: REST **SHOULD** be the default unless a measured need (latency, streaming, fan-out) justifies another style.
+- **should-pin-rest-contracts-and-version-the-api**: You SHOULD pin contracts to a dated OpenAPI revision and version the API (`/v1`) per `api-design`.
+- **should-choose-grpc-for-internal-low-latency-calls**: You SHOULD use gRPC for low-latency internal service-to-service calls and streaming, per the official model (RPC over HTTP/2 with Protocol Buffers as the IDL and serialization; see references): choose gRPC when callers are internal services, latency/throughput matter, you want generated client/server stubs across languages, or you need uni-/bi-directional streaming.
+- **should-not-expose-raw-grpc-publicly**: You **SHOULD NOT** expose raw gRPC as a public third-party API without a REST/Connect façade.
+- **should-choose-graphql-for-measured-aggregation-needs**: You SHOULD use GraphQL when clients drive aggregation across many resources and over/under-fetching with REST is a measured problem: choose GraphQL when first-party clients need to compose data from several sources in one round trip and field-level shape varies by screen.
+- **must-bound-graphql-cost**: You **MUST** mitigate the N+1 problem (e.g. batching/dataloader patterns) and **MUST** enforce query depth/complexity limits to bound cost.
+- **should-not-assume-cdn-caching-for-graphql**: GraphQL caching is field-level and client-driven, not HTTP-intermediary; you SHOULD NOT assume CDN caching applies.
+- **should-treat-the-graphql-schema-as-a-versioned-contract**: You SHOULD treat the GraphQL schema as a versioned contract, and prefer additive evolution and field deprecation over breaking changes.
+- **may-combine-styles**: A system **MAY** combine styles at different boundaries (e.g. gRPC internally, REST or GraphQL at the edge); this is a normal, deliberate choice, not a smell.
+- **must-document-each-boundary-style**: Each boundary **MUST** document its own style decision and contract source.

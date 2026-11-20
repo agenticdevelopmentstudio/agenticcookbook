@@ -1,6 +1,4 @@
 
-Components MUST respond to these SwiftUI environment values:
-
 | Setting | Environment Key | Action |
 |---------|----------------|--------|
 | Reduce Motion | `\.accessibilityReduceMotion` | Replace animations with crossfades or instant transitions |

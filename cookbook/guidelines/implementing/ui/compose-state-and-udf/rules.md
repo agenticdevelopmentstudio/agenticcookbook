@@ -1,0 +1,18 @@
+
+- **should-make-reusable-composables-stateless**: A reusable composable **SHOULD** be stateless: it takes its state via parameters and emits changes via callback lambdas. This advances `separation-of-concerns` — rendering is decoupled from state ownership.
+- **must-hoist-to-lowest-common-ancestor**: State **MUST** be hoisted to the **lowest common ancestor** that reads or writes it — no higher. Hoisting too high causes unnecessary recomposition and couples unrelated subtrees; hoisting too low blocks sharing.
+- **should-keep-screen-state-in-viewmodel**: Screen-level / business state (data loaded from repositories, navigation results, form submission status) **SHOULD** live in a `ViewModel`, not in composition, so it survives configuration changes and process-death restoration.
+- **may-keep-ui-element-state-in-composition**: Pure UI element state (scroll position, expanded/collapsed, focus, text-field cursor) **MAY** stay in composition via `remember` when no other component needs it.
+- **should-use-remembersaveable-for-surviving-state**: Use `rememberSaveable` for state that **SHOULD** survive rotation or process death (entered text, selected tab) when it does not belong in a `ViewModel`.
+- **must-make-saveable-values-serializable**: Values stored in `rememberSaveable` **MUST** be `Bundle`-serializable or supplied with a custom `Saver`.
+- **must-not-rely-on-remember-across-config-changes**: `remember` **MUST NOT** be relied on across configuration changes — it is cleared when the composable leaves composition.
+- **must-expose-read-only-state**: A `ViewModel` **MUST** expose read-only state — a `StateFlow<UiState>` (or `State<UiState>`), never the mutable backing field.
+- **should-keep-mutablestateflow-private**: A `ViewModel` SHOULD keep the `MutableStateFlow` private and expose the immutable upcast.
+- **must-not-mutate-hoisted-state**: Composables **MUST NOT** mutate hoisted state directly; they signal intent through event callbacks. This is `explicit-over-implicit` — every state change has a named, traceable entry point.
+- **should-collect-with-lifecycle**: Code SHOULD collect `StateFlow` with `collectAsStateWithLifecycle()` (from `lifecycle-runtime-compose`) so collection stops in the background — code SHOULD prefer it over `collectAsState()` on Android.
+- **should-confirm-lifecycle-compose-dependency**: Code SHOULD confirm the lifecycle-compose dependency is present.
+- **should-model-screen-state-immutably**: Code SHOULD model screen state as a single immutable `data class` or a `sealed interface` of cases (Loading / Success / Empty / Error). Immutable state aligns with `immutability-by-default` and removes a class of concurrency bugs.
+- **should-pass-narrowest-parameters**: Code SHOULD pass the **narrowest** parameters a composable needs (e.g. `title: String`), not whole aggregate objects, so recomposition is scoped to what actually changed.
+- **should-prefer-stable-parameter-types**: Code SHOULD prefer **stable** types as parameters: immutable `data class`es, primitives, and lambdas. Unstable types (e.g. `var` fields, plain `List` whose runtime impl Compose can't prove immutable) can defeat recomposition skipping.
+- **should-mark-stability-only-when-contract-holds**: Code SHOULD use Kotlin immutable collections (`kotlinx.collections.immutable`) or annotate types as `@Immutable` / `@Stable` only when the contract genuinely holds — a false stability annotation causes missed updates.
+- **should-treat-recomposition-as-performance-concern**: Code SHOULD treat unnecessary recomposition as a **performance** concern, not a correctness one, and SHOULD make it work and right first, then measure with the Compose recomposition tooling before optimizing (`make-it-work-make-it-right-make-it-fast`).

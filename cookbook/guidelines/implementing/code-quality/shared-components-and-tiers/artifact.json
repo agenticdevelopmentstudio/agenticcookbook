@@ -4,11 +4,11 @@
     "id": "56394d2f-b784-4771-92a4-faacc037c609",
     "title": "Shared components and tiers",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
-    "modified": "2026-10-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,22 +29,22 @@
       "e80d67b3-813f-47fb-8894-aa4e6f6479f3"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "code-review"
     ]
   },
-  "synced": "69e853efe28d3bad",
+  "synced": "2e866674af167886",
   "parts": [
     {"part": "intro"},
-    {"part": "search-before-you-write", "heading": "Search before you write"},
-    {"part": "the-lowest-tier-that-can-hold-it", "heading": "The lowest tier that can hold it"},
-    {"part": "dependencies-point-downward", "heading": "Dependencies point downward"},
-    {"part": "features-live-in-shared-tiers-apps-are-shells", "heading": "Features live in shared tiers, apps are shells"},
-    {"part": "organize-into-encapsulated-directories", "heading": "Organize into encapsulated directories"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

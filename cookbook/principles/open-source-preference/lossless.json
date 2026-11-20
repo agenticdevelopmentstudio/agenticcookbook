@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Before reaching outward, check what you already have: the platform's standard library and the dependencies already in the project often solve the problem — prefer those before adding anything new",
+      "to": "should-check-what-you-already-have",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD checking the standard library and existing project dependencies before reaching outward, and preferring them before adding anything new.",
+        "pin": "40b5c294b0298140b5dfc4685d0b84113818810dfef78f57cfc2c25c4e63a639"
+      }
+    },
+    {
+      "sentence": "Evaluate candidates by maintenance activity, license compatibility, and community adoption before recommending",
+      "to": "should-evaluate-candidates-before-recommending",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD evaluating candidates by maintenance activity, license compatibility and community adoption before recommending.",
+        "pin": "d7bad081db0a3a6fdb29645561a9c53f6796602b4cdd06144093e1e97f35af4f"
+      }
+    },
+    {
+      "sentence": "Verify a candidate is real before adopting it: confirm the package actually exists, is actively maintained, and is widely used.",
+      "to": "should-verify-candidate-is-real",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD verifying a candidate is real before adopting it: it exists, is actively maintained and is widely used.",
+        "pin": "e39983353a65baa096cf7379e6a2deb14b175aeb6c23ec5e181c36add4ee521c"
+      }
+    },
+    {
+      "sentence": "Never install a package name an AI suggested without verifying it — hallucinated and typosquatted names are a live supply-chain risk",
+      "to": "must-not-install-unverified-ai-suggested-packages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps never installing an unverified AI-suggested package name as MUST NOT, with the hallucinated and typosquatted supply-chain reason.",
+        "pin": "7faf30c994ab779f60e5dc0424a3586b87f8161ce60527dd3007baa4b11f4e9b"
+      }
+    },
+    {
+      "sentence": "Present at least two options with trade-offs rather than silently picking one",
+      "to": "should-present-at-least-two-options",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD presenting at least two options with trade-offs rather than silently picking one.",
+        "pin": "4642ad1028d263a6e605d91dc3d17e2db86c541ed97b0c76895c88a2d0da92c1"
+      }
+    },
+    {
+      "sentence": "If building custom, document why the available open-source options were rejected",
+      "to": "should-document-why-open-source-was-rejected",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the if-building-custom condition and documenting why the open-source options were rejected, at SHOULD.",
+        "pin": "7ad81bc0cf86415d4f51f884bbaf5f217e44117ad318f747d45a2256f85e1650"
+      }
+    }
+  ],
+  "obsolete": []
+}

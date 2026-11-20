@@ -4,7 +4,7 @@
     "id": "28e0fd80-be0a-4f85-ac42-1e423623b242",
     "title": "Bulk operation verification",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-28",
@@ -26,21 +26,21 @@
       "563aebde-52bf-4011-8907-ecc473fd942c"
     ],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "code-review",
       "pre-commit"
     ]
   },
   "names_hosts": "Lists CLAUDE.md among the files a bulk operation must re-check.",
-  "synced": "03f96fa98ddf3798",
+  "synced": "ec2d437ba5bff23e",
   "parts": [
     {"part": "intro"},
-    {"part": "what-to-verify", "heading": "What to verify"},
-    {"part": "when-to-run", "heading": "When to run"},
-    {"part": "for-cross-repo-operations", "heading": "For cross-repo operations"},
-    {"part": "the-rule", "heading": "The rule"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

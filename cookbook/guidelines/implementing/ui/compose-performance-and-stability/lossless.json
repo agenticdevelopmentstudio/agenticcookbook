@@ -1,0 +1,196 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "`remember(keys) { expensive() }` to cache costly computation across recompositions; recompute only when a key changes.",
+      "to": "should-remember-expensive-computation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: use remember(keys) to cache costly computation across recompositions, recomputing only when a key changes, with the keyed-derived-results example.",
+        "pin": "df6b168cbed767bdde91b7b9a536a616737289cc3bdb56c40118d4c1485ed4d5"
+      }
+    },
+    {
+      "sentence": "Do **NOT** perform backwards writes — never write to a state value that the same composable already read; this loops recomposition.",
+      "to": "must-not-perform-backwards-writes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Do NOT' is kept and strengthened to MUST NOT, with the never-write-to-already-read-state definition and the recomposition-loop reason.",
+        "pin": "c9a0ce88343b7843ad26ccdabd348721dbd3feb9246b490f6fb514d1dd909c70"
+      }
+    },
+    {
+      "sentence": "Keep composables side-effect free and idempotent.",
+      "to": "should-keep-composables-side-effect-free",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: composables side-effect free and idempotent.",
+        "pin": "024611821db8d980f576c644c06e14fd597cd803e8af52d93da0e443605ec5df"
+      }
+    },
+    {
+      "sentence": "Avoid allocating new collections, lambdas-with-captures, or objects in the composable body on every call; hoist or `remember` them.",
+      "to": "should-avoid-allocating-in-composable-body",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three allocation kinds, the every-call scope and the hoist-or-remember remedy.",
+        "pin": "0184231ef9744b8bba7f0ddc167ae85e884861ed542f01c0d40f761a7cb77f2c"
+      }
+    },
+    {
+      "sentence": "Read state as **late** as possible.",
+      "to": "should-read-state-late",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: read state as late as possible.",
+        "pin": "6f79e52e3c30fa47895124f3b5b6b8a0fbd88b09dd7496589868cd8d492895d4"
+      }
+    },
+    {
+      "sentence": "Hoist the read into a lambda-based modifier so a value change triggers only layout/draw, not recomposition: `Modifier.offset { IntOffset(x, y) }`, `Modifier.graphicsLayer { alpha = a }`, `Modifier.drawBehind { ... }`.",
+      "to": "should-read-state-late",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the layout/draw-not-recomposition reason and all three lambda-modifier examples.",
+        "pin": "2f129bf3e43264e8345d054f515bb2db7488896d2a8f083f4432872b7f9360ec"
+      }
+    },
+    {
+      "sentence": "Pass **lambdas** instead of already-read values when the value changes frequently (e.g. scroll/animation): `Counter(count = { viewModel.count })` defers the read to the consumer.",
+      "to": "should-pass-lambdas-for-frequently-changing-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the frequently-changing condition, the scroll/animation example and the deferred-read Counter example.",
+        "pin": "fb27fe4352228076998aec6d78c6dfd22941bbb0cc0ef2de2914522796112c26"
+      }
+    },
+    {
+      "sentence": "Use `derivedStateOf { ... }` when a frequently-changing state should drive UI only when a **computed** result crosses a threshold (e.g.",
+      "to": "should-use-derivedstateof-for-thresholds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the computed-threshold condition and the firstVisibleItemIndex > 0 example.",
+        "pin": "e8caa8b8592968aa00b63c2b88284a50d2752000c5f6d7e33715bfc8c918f980"
+      }
+    },
+    {
+      "sentence": "Do not use it for one-to-one transforms — that adds overhead with no benefit.",
+      "to": "should-not-use-derivedstateof-for-one-to-one-transforms",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the referent made explicit (derivedStateOf) and the overhead-with-no-benefit reason.",
+        "pin": "5dc1694bafcf8ca54afb9ef5ae6d35bb4aa8e32adc5ceabfeef7ae894ee399ee"
+      }
+    },
+    {
+      "sentence": "Profile **release** builds with R8 enabled and a **Baseline Profile** applied.",
+      "to": "should-profile-release-builds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both conditions: R8 enabled and a Baseline Profile applied.",
+        "pin": "9a2da69c3ace697cd267e509e16984156d4b8ed94294374e375914e546a4aa66"
+      }
+    },
+    {
+      "sentence": "Debug builds run unoptimized Compose and produce misleading numbers — never tune against them.",
+      "to": "must-not-tune-against-debug-builds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The misleading-debug-numbers reason is kept and 'never tune against them' is strengthened to MUST NOT.",
+        "pin": "08b2a4d46820ff1058eaec231d3e3503a23b023955ec522d9497f9a0e071ffe9"
+      }
+    },
+    {
+      "sentence": "Use **Layout Inspector** recomposition counts to find composables recomposing more than expected; a high count signals an unstable parameter or an un-deferred read.",
+      "to": "should-use-layout-inspector-recomposition-counts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the find-over-recomposing-composables purpose and the unstable-parameter / un-deferred-read diagnosis.",
+        "pin": "8222cef595ce3ee59f3afea2cbc455bfe940853976b58475293728e5783c011c"
+      }
+    },
+    {
+      "sentence": "For regression gates, use Macrobenchmark (frame timing, `recompositionCount`) on representative journeys.",
+      "to": "should-gate-regressions-with-macrobenchmark",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for regression gates, with frame timing, recompositionCount and representative journeys.",
+        "pin": "fa474e0c3aba4b2277731363bd2a8c8080676c61968533cb79e210c1a255f6cf"
+      }
+    },
+    {
+      "sentence": "Optimize a hotspot **only** after a measurement justifies it (per make-it-work-make-it-right-make-it-fast); do not pre-optimize composables that are not hot.",
+      "to": "should-optimize-only-after-measurement",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD / SHOULD NOT: optimize only after measurement justifies it (with the principle reference) and do not pre-optimize composables that are not hot.",
+        "pin": "14a8342005824de0a4f15753df4bf79be29f24dab050d02d3cbfdfa1a04bc5a7"
+      }
+    },
+    {
+      "sentence": "Pass **immutable** data into composables.",
+      "to": "should-pass-immutable-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: composables are passed immutable data.",
+        "pin": "d4aa23f6e80f461b2c2f533abf975a10146cd08137736e625914189e18fb9de7"
+      }
+    },
+    {
+      "sentence": "Prefer `val` over `var`, `kotlinx.collections.immutable` (`ImmutableList`/`PersistentList`) over `List`, and data classes whose properties are themselves stable.",
+      "to": "should-pass-immutable-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All three preferences (val over var, kotlinx immutable collections over List, data classes with stable properties) are kept at SHOULD.",
+        "pin": "0b03be2b0114143929737275faf8375cf4bd6de060faf405133718d90d59a50c"
+      }
+    },
+    {
+      "sentence": "Prefer genuinely stable inputs.",
+      "to": "should-prefer-genuinely-stable-inputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, with the strong-skipping-does-not-make-a-type-stable context that motivates it.",
+        "pin": "6c615fcf0a3c6c28dcd26135c3b258194c39c5a277f23cecc2eb1c83b36ff886"
+      }
+    },
+    {
+      "sentence": "Annotate `@Immutable` (deeply unchanging) or `@Stable` (changes only via `State`) **only** when the type is truly so and the compiler cannot infer it (e.g., a type from a module without the Compose compiler, or one using an interface field).",
+      "to": "should-annotate-stability-only-when-true",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the only-when-truly-so-and-compiler-cannot-infer condition, the definitions of @Immutable/@Stable and both examples.",
+        "pin": "177925982a205f31d2c467c83cb394f907281b16090edb27bdb48bec21ef8f5b"
+      }
+    },
+    {
+      "sentence": "A false annotation causes missed recompositions and stale UI — do not annotate to silence the compiler.",
+      "to": "should-annotate-stability-only-when-true",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The missed-recompositions/stale-UI reason is kept and 'do not annotate to silence the compiler' is kept at SHOULD NOT.",
+        "pin": "2fa0487b89af7c8051c1ac5c3c5bc747b84d59d31c4704e9a9355d78798f3101"
+      }
+    }
+  ],
+  "obsolete": []
+}

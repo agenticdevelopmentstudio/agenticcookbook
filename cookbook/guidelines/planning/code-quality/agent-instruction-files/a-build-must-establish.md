@@ -1,0 +1,15 @@
+
+- `must-ship-root-instruction-file`: the repository root holds an AGENTS.md or CLAUDE.md covering how to build, test and run the project, plus its conventions and boundaries
+- `should-symlink-one-canonical-file`: where both files exist, one is a symlink to the other, or the repo says why not
+- `must-state-build-test-run-commands`: the file states the exact build, test and run commands and any required setup or environment variables
+- `should-state-conventions`: the file states code style, naming and project-specific patterns, or the repo says why not
+- `should-describe-project-layout`: the file says where source, tests and config live, or the repo says why not
+- `should-state-out-of-scope`: the file lists what is off-limits and the "ask first" actions, or the repo says why not
+- `may-include-commit-security-deploy-notes`: any commit/PR, security or deployment notes in the file match the project
+- `should-nest-per-package-files`: each package of a multi-package repo has a scoped instruction file, or the repo says why not
+- `should-keep-repo-wide-guidance-at-root`: repo-wide guidance is in the root file, or the repo says why not
+- `should-keep-only-differences-in-nested-files`: no nested file repeats the root file's guidance, or the repo says why
+- `must-stay-concise`: every instruction in the file is durable and load-bearing
+- `should-delete-obsolete-instructions`: no instruction is obsolete, obvious, or contradicted by the code, or the repo says why it stays
+- `should-be-specific-and-verifiable`: every instruction names a command, a path or a rule, or the repo says why not
+- `should-review-on-structure-change`: the file matches the current build/test commands and project structure

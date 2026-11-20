@@ -4,11 +4,11 @@
     "id": "851f0bee-dab9-4ee4-8d38-1f525314563d",
     "title": "Facilitation Without Anchoring",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-06-27",
-    "modified": "2026-06-27",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -38,20 +38,16 @@
       "Anderson et al., PNAS Nexus, 2024"
     ],
     "triggers": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-27"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19"
   },
-  "synced": "41c9b3330adf57d4",
+  "synced": "d16791d05bee855e",
   "parts": [
     {"part": "intro"},
-    {"part": "yes-and-stance", "heading": "Yes-And Stance"},
-    {"part": "open-questions-as-default-move", "heading": "Open Questions as Default Move"},
-    {"part": "reflective-mirroring", "heading": "Reflective Mirroring"},
-    {"part": "name-the-stage-explicit-phase-transitions", "heading": "Name-the-Stage (Explicit Phase Transitions)"},
-    {"part": "single-voice-mediation", "heading": "Single-Voice Mediation"},
-    {"part": "persona-burst-dispatch", "heading": "Persona-Burst Dispatch"},
-    {"part": "incubation-pause", "heading": "Incubation Pause"},
-    {"part": "no-early-suggestion-guard", "heading": "No-Early-Suggestion Guard"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

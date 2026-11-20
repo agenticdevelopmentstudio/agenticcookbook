@@ -1,0 +1,35 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "7df29f51-703a-4fc8-992d-64591ffd9e61",
+    "title": "Unit Test Patterns",
+    "type": "guideline",
+    "version": "1.0.3",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-03-27",
+    "modified": "2026-11-19",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "**Structure — Arrange, Act, Assert (AAA):**",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "unit-test-patterns"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-04-04",
+    "triggers": [
+      "writing-tests"
+    ]
+  },
+  "synced": "6de7cda0e4d78213",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

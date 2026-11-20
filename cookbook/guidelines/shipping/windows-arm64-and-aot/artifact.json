@@ -4,11 +4,11 @@
     "id": "d39543f4-e1b9-4054-afa2-2a3087742a4c",
     "title": "Windows ARM64 and Native AOT",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -29,19 +29,21 @@
     "references": [
       "https://learn.microsoft.com/en-us/windows/arm/overview"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-pr",
       "performance-optimization"
     ]
   },
-  "synced": "960bc7b62e73bff8",
+  "synced": "770c398bfbec7614",
   "parts": [
     {"part": "intro"},
-    {"part": "ship-native-arm64", "heading": "Ship native ARM64"},
-    {"part": "native-aot-and-trimming-measured-need", "heading": "Native AOT and trimming (MEASURED-NEED)"},
-    {"part": "forecast", "heading": "FORECAST"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

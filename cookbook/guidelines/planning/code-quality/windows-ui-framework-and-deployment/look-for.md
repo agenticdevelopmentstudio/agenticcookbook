@@ -1,0 +1,26 @@
+
+- `should-make-both-decisions-explicitly-and-early`: a UI framework or deployment model adopted implicitly, with no recorded decision
+- `should-pick-framework-from-targets-and-investment`: a framework choice justified by popularity rather than target devices and existing investment
+- `should-default-new-windows-apps-to-winui3`: a new Windows-only desktop app built on something other than WinUI 3 on the Windows App SDK, with no reason given
+- `should-build-winui3-with-visual-studio-msbuild`: a WinUI 3 app built with a toolchain other than Visual Studio + MSBuild
+- `must-not-call-wpf-dead`: advice calling an existing WPF app dead
+- `should-keep-wpf-and-modernize`: an existing WPF app moved off WPF with no concrete reason
+- `should-keep-winforms`: an existing WinForms app moved with no concrete need
+- `must-not-claim-uwp-deprecated`: text claiming UWP is deprecated or must be ported to WinUI now
+- `should-treat-uwp-as-feature-frozen`: UWP treated as abandoned rather than feature-frozen
+- `should-consider-maui-or-react-native-for-cross-platform`: a cross-platform native plan that never weighs .NET MAUI or React Native for Desktop
+- `must-start-cross-platform-when-it-is-a-goal`: a WinUI start where multi-platform is a real near-term goal
+- `must-recommend-uwp-for-unsupported-targets`: Xbox, Surface Hub, HoloLens or IoT targets given something other than UWP
+- `should-recommend-gdk-for-games`: a game built on UWP or WinUI instead of the GDK
+- `must-not-mix-winui-into-uwp`: WinUI or Windows App SDK content inside a UWP app
+- `must-not-mix-winui2-with-winui3`: WinUI 2 and WinUI 3 references in the same app
+- `must-have-package-identity-for-gated-features`: notifications, background tasks, app extensions, share targets, file associations, startup tasks or Windows AI Foundry APIs used without package identity
+- `should-not-pick-unpackaged-for-identity-apps`: an unpackaged model chosen for an app needing identity-gated features
+- `should-default-new-apps-to-packaged-msix`: a new app not packaged as MSIX, with no deployment constraint named
+- `should-use-external-location-to-keep-installer`: an existing app keeping its installer that lacks packaged-with-external-location identity
+- `must-bootstrap-unpackaged-apps`: an unpackaged app missing the runtime install or self-contained build, the `Bootstrap.Initialize()` call, or `<WindowsPackageType>None</WindowsPackageType>`
+- `must-not-set-package-type-when-packaged`: `<WindowsPackageType>None</WindowsPackageType>` in a packaged app's project
+- `must-record-deployment-model`: planning notes with no recorded deployment model
+- `should-settle-framework-by-first-ui-module`: a UI module written before the framework choice was made
+- `should-settle-deployment-by-first-identity-feature`: an identity-gated feature written before the deployment choice was made
+- `should-prefer-msix-when-uncertain`: uncertain requirements met with a model other than packaged MSIX

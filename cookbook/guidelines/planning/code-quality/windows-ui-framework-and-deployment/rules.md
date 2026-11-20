@@ -1,0 +1,26 @@
+
+- **should-make-both-decisions-explicitly-and-early**: You **SHOULD** make both the UI framework and the deployment model decisions explicitly and early.
+- **should-pick-framework-from-targets-and-investment**: You **SHOULD** pick the framework from target devices and existing investment, not from hype.
+- **should-default-new-windows-apps-to-winui3**: For a new, Windows-only desktop app, agents **SHOULD** default to **WinUI 3** on the **Windows App SDK** (Microsoft's current recommendation for new native apps, runs down to Windows 10 1809).
+- **should-build-winui3-with-visual-studio-msbuild**: You **SHOULD** build a new WinUI 3 app with **Visual Studio + MSBuild** — the only officially supported toolchain.
+- **must-not-call-wpf-dead**: An existing WPF app **MUST NOT** be told it is dead.
+- **should-keep-wpf-and-modernize**: For an existing WPF app, you **SHOULD** keep WPF and modernize in place unless there is a concrete reason to move.
+- **should-keep-winforms**: For an existing WinForms app, you **SHOULD** stay unless a concrete need forces a change.
+- **must-not-claim-uwp-deprecated**: For an existing UWP app, agents **MUST NOT** claim "UWP is deprecated, port to WinUI now."
+- **should-treat-uwp-as-feature-frozen**: You **SHOULD** treat UWP as feature-frozen, not abandoned.
+- **should-consider-maui-or-react-native-for-cross-platform**: For cross-platform native, you **SHOULD** consider **.NET MAUI** (produces a WinUI app on Windows) or **React Native for Desktop**.
+- **must-start-cross-platform-when-it-is-a-goal**: You **MUST** start with these cross-platform frameworks if multi-platform is a real near-term goal — .NET MAUI and React Native for Desktop; you cannot start in WinUI and add MAUI later.
+- **must-recommend-uwp-for-unsupported-targets**: Agents **MUST** recommend **UWP** when the target is **Xbox, Surface Hub, HoloLens, or IoT** — UWP is still the recommended choice for some targets.
+- **should-recommend-gdk-for-games**: For **game development**, agents **SHOULD** recommend the **Microsoft Game Development Kit (GDK)**, not UWP or WinUI.
+- **must-not-mix-winui-into-uwp**: WinUI/Windows App SDK content **MUST NOT** be mixed into a UWP app.
+- **must-not-mix-winui2-with-winui3**: WinUI for UWP (formerly WinUI 2) **MUST NOT** be mixed with WinUI 3.
+- **must-have-package-identity-for-gated-features**: An app that needs **toast/push notifications, background tasks, app extensions, share targets, file associations, startup tasks, or Windows AI Foundry APIs** **MUST** have **package identity** — choose packaged MSIX or packaged-with-external-location.
+- **should-not-pick-unpackaged-for-identity-apps**: You **SHOULD NOT** pick unpackaged for apps that need identity-gated features.
+- **should-default-new-apps-to-packaged-msix**: New apps **SHOULD** default to **packaged MSIX** unless a deployment constraint rules it out.
+- **should-use-external-location-to-keep-installer**: Existing apps that must keep their installer **SHOULD** use **packaged with external location** to gain identity without replacing the installer.
+- **must-bootstrap-unpackaged-apps**: Unpackaged apps **MUST** install the Windows App SDK runtime (or ship self-contained) and call `Bootstrap.Initialize()` at startup; set `<WindowsPackageType>None</WindowsPackageType>` in the project.
+- **must-not-set-package-type-when-packaged**: Packaged apps **MUST NOT** set the `<WindowsPackageType>None</WindowsPackageType>` property.
+- **must-record-deployment-model**: The chosen model **MUST** be recorded in the project's planning notes (per [adc.principle.explicit-over-implicit](cookbook:e114c41c-d203-454c-bc7c-cc128f6ebadd)) so the identity assumption is visible to every later decision.
+- **should-settle-framework-by-first-ui-module**: You **SHOULD** defer the framework choice no later than the first UI module.
+- **should-settle-deployment-by-first-identity-feature**: You **SHOULD** defer the deployment choice no later than the first identity-gated feature.
+- **should-prefer-msix-when-uncertain**: When requirements are uncertain, agents **SHOULD** prefer packaged MSIX.

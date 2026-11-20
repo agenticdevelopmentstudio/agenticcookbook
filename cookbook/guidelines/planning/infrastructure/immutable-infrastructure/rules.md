@@ -1,0 +1,17 @@
+
+- **must-not-patch-a-running-server-in-place**: You MUST NOT ever patch a running server in place.
+- **must-ship-immutable-versioned-artifacts**: Deployments **MUST** ship immutable, versioned artifacts and replace instances rather than mutating them.
+- **must-not-modify-a-built-artifact**: Once built, an artifact **MUST NOT** be modified; a change means building a new version.
+- **must-treat-servers-as-cattle**: Servers MUST be treated as **cattle, not pets** — interchangeable and disposable, never hand-tuned and irreplaceable.
+- **must-rebuild-to-change**: To change configuration, dependencies, or code, you **MUST** rebuild the image and roll out new instances — not SSH in to mutate the live one.
+- **should-treat-running-instances-as-read-only**: Running instances **SHOULD** be treated as read-only; no manual `apt install`, no live config edits, no hotfix scripts that survive a restart.
+- **must-roll-back-by-redeploying**: Rollback **MUST** be performed by redeploying the previous known-good image version, not by undoing changes on a live host.
+- **should-retain-addressable-prior-images**: You SHOULD keep prior image versions retained and addressable (immutable tags or digests, e.g. `app@sha256:...`) so any past release can be restored deterministically.
+- **should-not-deploy-mutable-tags**: You SHOULD avoid mutable tags like `latest` for what is actually deployed; pin to an immutable digest or version tag.
+- **should-build-from-version-controlled-definitions**: You SHOULD pair this with **infrastructure-as-code** (see related): the artifact is built from version-controlled definitions (`Dockerfile`, Packer template) so builds are reproducible and reviewable.
+- **should-automate-replacement-provisioning**: Provisioning of replacement instances **SHOULD** be automated end-to-end so replacement is routine, not a manual event.
+- **should-bake-code-and-dependencies-into-the-image**: You SHOULD bake application code and dependencies **into** the image at build time.
+- **should-inject-environment-config-at-runtime**: You SHOULD inject environment-specific config at **deploy/runtime** via environment variables or a config service, and SHOULD NOT bake secrets or per-environment values into the image.
+- **must-keep-persistent-data-off-the-instance**: Persistent data (databases, user uploads) **MUST** live in external, durable stores or attached volumes — never on the instance's ephemeral disk, which is destroyed on replace.
+- **should-adopt-heavier-machinery-only-on-measured-need**: You SHOULD adopt heavier machinery — Kubernetes, managed image pipelines, blue-green or canary rollout infrastructure — only **when a measured need justifies it** (scale, zero-downtime SLAs, fleet size), not as a default.
+- **should-keep-image-builds-fast**: For faster iteration, you SHOULD optimize image builds (layer caching, small base images) so rebuild-to-deploy stays quick enough that no one is tempted to patch in place.

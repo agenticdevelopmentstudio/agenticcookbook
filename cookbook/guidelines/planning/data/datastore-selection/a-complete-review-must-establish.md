@@ -1,0 +1,12 @@
+
+- `should-default-to-relational`: whether a new server backend defaults to a relational database
+- `must-justify-a-non-relational-primary-store`: whether any non-relational primary store is justified by a specific, stated requirement
+- `should-treat-the-relational-default-as-overridable`: whether the relational default yielded where a real requirement overrides it
+- `should-pick-the-store-from-shape-patterns-and-scale`: whether the store was picked from data shape, query patterns and measured scale
+- `should-choose-a-specialist-store-only-on-a-concrete-requirement`: whether each specialist primary store rests on a concrete, measured-where-possible requirement
+- `must-record-the-store-and-its-justification`: whether the chosen store and its one-line justification are recorded in an ADR or the plan
+- `must-not-add-a-second-store-without-a-measured-limit`: whether any second datastore added for scale has a measured limit on the first behind it
+- `should-prefer-one-relational-store-with-extensions`: whether polyglot persistence was preferred over one relational store before a store earned its operational cost
+- `should-evaluate-jsonb-before-a-document-database`: whether `jsonb` was evaluated before any separate document database
+- `should-keep-derived-stores-secondary`: whether every derived store is a secondary projection of the relational system of record
+- `must-cite-an-expected-workload-for-scale`: whether each scale claim for a non-relational store cites an expected workload

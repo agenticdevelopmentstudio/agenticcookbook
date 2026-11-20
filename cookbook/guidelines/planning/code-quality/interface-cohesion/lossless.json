@@ -1,0 +1,72 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Protocol/interface + implementors form one unit.** If a file defines a protocol and a second file is its primary concrete implementation, they belong in the same scope group unless the implementation is independently large enough to warrant separation (50+ files).",
+      "to": "should-group-protocol-with-primary-implementation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-protocol-with-primary-implementation keeps the protocol-plus-primary-implementation same-group call, its 50+-files exception and the one-unit headline.",
+        "pin": "9f5b6fad130895d428c86829b4f3d8512d626de131bec03ee03dfd4cb10d36ef"
+      }
+    },
+    {
+      "sentence": "**Barrel files define the interface boundary.** Everything a barrel re-exports is part of the same public surface.",
+      "to": [
+        "should-treat-barrel-reexports-as-one-candidate",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-barrel-reexports-as-one-candidate keeps 'barrel files define the interface boundary' and the rationale keeps that everything a barrel re-exports is one public surface.",
+        "pin": "a5a99250c0af5a8c3ef43408fc34f37b8b8bb4162cf3e6f5148e41db68f62e9f"
+      }
+    },
+    {
+      "sentence": "If the barrel re-exports from five subdirectories, those subdirectories share an interface and are candidates for a single scope group — unless they are large enough to warrant separate groups that share a common API layer.",
+      "to": "should-treat-barrel-reexports-as-one-candidate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-barrel-reexports-as-one-candidate keeps the five-subdirectory case, the shared interface, single-group candidacy and the large-enough-for-separate-groups-with-shared-API exception.",
+        "pin": "07cda5acc56ac92aa057e43c43078483dec163392c4fd270b1a347b049b15914"
+      }
+    },
+    {
+      "sentence": "**Shared types follow their primary consumer, not their definition file.** A `UserProfile` struct defined in `Models/` but used only by the `Auth` module belongs in the `Auth` scope group.",
+      "to": "should-place-shared-types-with-primary-consumer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-place-shared-types-with-primary-consumer keeps the primary-consumer placement and the UserProfile-in-Models-used-only-by-Auth example.",
+        "pin": "764defc797897a56863cd8d9577109a10e50c8c5436d127942f44b47abd11d39"
+      }
+    },
+    {
+      "sentence": "**Fragmented interfaces are a smell.** If the same logical interface is declared across three files with no organizing barrel, note this as a cohesion anomaly — it indicates the public surface has not been intentionally designed.",
+      "to": [
+        "should-note-fragmented-interfaces",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-note-fragmented-interfaces keeps the three-files-no-barrel condition and noting it as a cohesion anomaly; the rationale keeps the not-intentionally-designed reason.",
+        "pin": "650661cfb11aa5b63ebf2d79c68b8f56e497b1522aff125d3a7872cf5be4af74"
+      }
+    },
+    {
+      "sentence": "**Internal helpers are not interface.** Private/internal/file-private symbols do not contribute to interface cohesion; they contribute to implementation cohesion analyzed by `dependency-clusters`.",
+      "to": "should-not-count-internal-helpers-as-interface",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-count-internal-helpers-as-interface keeps private/internal/file-private symbols out of interface cohesion and their role in implementation cohesion under dependency-clusters.",
+        "pin": "1252348ba2479bb3f75cf16aa3f0e1c738fc145b6d3b5c51f7b377d5b9009a0d"
+      }
+    }
+  ],
+  "obsolete": []
+}

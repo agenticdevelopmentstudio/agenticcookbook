@@ -1,0 +1,18 @@
+
+- **must-review-every-snapshot-diff**: You MUST review every snapshot diff before accepting it.
+- **should-treat-unexpected-diff-as-bug**: You SHOULD treat an unexpected diff as a potential bug, not a chore to clear.
+- **must-not-reflexively-accept-all**: You MUST NOT reflexively run the update/accept-all command (`jest --updateSnapshot`/`-u`, `vitest -u`, Verify/ApprovalTests "accept all", `cargo insta accept`) to make a red suite green.
+- **should-update-only-after-confirming-intent**: You SHOULD update only after confirming each change is intended.
+- **must-run-ci-in-non-updating-mode**: CI MUST run snapshots in non-updating mode (e.g. `--ci`) so a missing or stale snapshot fails rather than silently writing a new one.
+- **should-review-snapshot-files-like-source**: You SHOULD review snapshot files in code review as carefully as source.
+- **should-cover-one-concern**: A snapshot SHOULD cover one concern — a single component's rendered output, one function's serialized result — not an entire page or aggregate object graph.
+- **should-prefer-small-inline-snapshots**: You SHOULD prefer many small inline snapshots (`toMatchInlineSnapshot`, inline approval) over one large external file.
+- **should-not-snapshot-unreasonable-output**: You SHOULD NOT snapshot output you cannot reason about line by line.
+- **must-normalize-non-deterministic-values**: You MUST strip or normalize non-deterministic values before serializing: timestamps, dates, durations, random IDs/UUIDs, hostnames, absolute paths, and ports.
+- **must-stabilize-ordering**: You MUST stabilize ordering of sets, maps, and query results — sort before snapshotting rather than depending on iteration order.
+- **should-use-property-matchers-for-dynamics**: You SHOULD use property matchers for unavoidable dynamics (Jest/Vitest `expect.any(...)` in `toMatchSnapshot({ id: expect.any(String) })`; ApprovalTests scrubbers; `insta` filters) instead of regenerating the snapshot each run.
+- **should-assert-logic-explicitly**: You SHOULD assert specific values explicitly when the test verifies behavior or computation; a snapshot obscures *which* field mattered and why.
+  - Lean on explicit assertions everywhere logic matters.
+- **should-reserve-snapshots-for-stable-verbose-output**: You SHOULD reserve snapshots for output that is verbose, structurally stable, and tedious to assert by hand (serialized DOM, generated config, formatted reports).
+  - Use snapshots for stable, structured output.
+- **should-delete-obsolete-snapshots**: You SHOULD delete obsolete snapshots promptly (`--ci` reports them); a stale snapshot is dead weight that misleads future readers (`design-for-deletion`).

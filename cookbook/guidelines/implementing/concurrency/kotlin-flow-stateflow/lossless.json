@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Compose**: use `collectAsStateWithLifecycle()` (from `androidx.lifecycle:lifecycle-runtime-compose`).",
+      "to": "should-use-collectasstatewithlifecycle-in-compose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "collectAsStateWithLifecycle() in Compose, with its artifact androidx.lifecycle:lifecycle-runtime-compose, is kept at SHOULD; the MUST to collect lifecycle-aware stays in must-collect-lifecycle-aware.",
+        "pin": "ed8129e82ac8834a4cfe3f51dd48a60a2effccd1f357d169d2d8fc4251b6ec5e"
+      }
+    },
+    {
+      "sentence": "**Views / Fragments / Activities**: collect inside `repeatOnLifecycle(Lifecycle.State.STARTED)` from `lifecycleScope`.",
+      "to": "should-use-repeatonlifecycle-in-views",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Collecting inside repeatOnLifecycle(Lifecycle.State.STARTED) from lifecycleScope in Views/Fragments/Activities is kept at SHOULD, backed by the MUST NOT on collecting without repeatOnLifecycle.",
+        "pin": "494e2925e20742e8eb36904b321a22974ab18e66c3c3902cabb5a7d71cb1c5fa"
+      }
+    },
+    {
+      "sentence": "### Anti-patterns — flag and fix",
+      "to": "look-for",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'flag and fix' anti-pattern heading is carried by look-for, which marks each of the three anti-pattern rules 'an anti-pattern to flag and fix'; the rules keep their MUST NOT and fix.",
+        "pin": "560fef255ef9346031d6e8aae4a46028538064c741b3e74418c564e9f87ea042"
+      }
+    },
+    {
+      "sentence": "Back it with a private `MutableStateFlow` and expose `.asStateFlow()`.",
+      "to": "should-back-with-private-mutablestateflow",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Backing exposed state with a private MutableStateFlow exposed via .asStateFlow() is kept at SHOULD, and the read-only exposure stays MUST in must-expose-read-only-stateflow.",
+        "pin": "fc1663375d157f7d94b5662f65ca298aaf54a373e28c94210403167e0a9f7d07"
+      }
+    },
+    {
+      "sentence": "### Choosing a SharingStarted policy",
+      "to": "choosing-a-sharingstarted-policy",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Choosing a SharingStarted policy' heading is kept as the heading of the part that carries the full policy table.",
+        "pin": "15fe1d71d7ee68383a6fa9cf756e9aea1321723a22f89527cd8b437e3e76e10e"
+      }
+    },
+    {
+      "sentence": "In tests, inject `StandardTestDispatcher` / `UnconfinedTestDispatcher` and drive virtual time with `runTest`.",
+      "to": "should-inject-test-dispatchers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Injecting StandardTestDispatcher / UnconfinedTestDispatcher in tests and driving virtual time with runTest is kept at SHOULD.",
+        "pin": "0eb569b5a3c4089061a7f7b4c49eef18d03164e6e9c82905b2508d50eee035ee"
+      }
+    }
+  ],
+  "obsolete": []
+}

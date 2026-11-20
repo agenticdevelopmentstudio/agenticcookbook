@@ -1,0 +1,19 @@
+
+- **must-not-do-ground-research-in-orchestrator**: The orchestrator SHOULD plan and synthesize; it MUST NOT do ground research itself.
+- **should-budget-isolated-subtopic-specialists**: SHOULD budget per-subtopic specialists with isolated context.
+- **should-outline-before-searching**: SHOULD outline before searching.
+- **should-reflect-at-supervisor-and-worker-level**: SHOULD reflect at both supervisor and worker level.
+- **should-stop-on-coverage**: SHOULD stop on coverage (two independent sources, or one authoritative one), not on a loop count.
+- **should-use-multi-engine-domain-routed-sources**: Sources SHOULD be multi-engine and domain-routed.
+- **should-rerank-and-quality-gate-sources**: Sources SHOULD be reranked and quality-gated before the LLM sees them.
+- **should-filter-by-freshness-and-authority**: SHOULD filter sources by freshness and authority / venue reputation.
+- **should-read-full-pages**: SHOULD read full pages, not snippets.
+- **should-use-dedicated-reviewer**: SHOULD use a dedicated reviewer with explicit acceptance criteria.
+- **should-corroborate-across-sources**: Claims SHOULD be corroborated across sources; cross-source corroboration is the primary anti-hallucination defense.
+- **should-check-url-health**: SHOULD check URL health / citation existence — even top tools hallucinate 3-13% of URLs.
+- **should-build-in-perspective-diversity**: Perspective diversity SHOULD be built into the research structure; perspective diversity is structural anti-hallucination.
+- **should-attach-citations-at-retrieval**: Citation metadata SHOULD be attached at retrieval time, not after generation — pre-embedding citations gave the best observed accuracy (~92% in Perplexity).
+- **should-cite-at-claim-level-with-quote**: SHOULD cite at the claim / sentence level with the supporting quote.
+- **should-keep-stable-numbered-citations**: SHOULD keep stable, numbered citations through summarization.
+- **should-report-confidence-per-section**: The report SHOULD be outline-driven, with a confidence / coverage indicator per section.
+- **should-keep-intermediate-artifacts**: SHOULD keep intermediate artifacts (outline, mind-map) for human review.

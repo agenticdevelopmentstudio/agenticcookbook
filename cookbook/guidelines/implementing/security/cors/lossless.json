@@ -1,0 +1,124 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Maintain an",
+      "to": "should-maintain-explicit-origin-allowlist",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Maintaining an explicit allowlist of origins is kept, the unkeyed instruction at SHOULD.",
+        "pin": "6d31b8b1f3b83cf4773ac8bfafd8969aca18f9a7a9738d30c7060d4faf38cc8f"
+      }
+    },
+    {
+      "sentence": "explicit allowlist of origins.",
+      "to": "should-maintain-explicit-origin-allowlist",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The allowlist being explicit and of origins is kept in the same rule.",
+        "pin": "e48352b08925ab4119e0ff8f6b5e104ab67e0ce6c9ee4b03ef73bd1ee26d706d"
+      }
+    },
+    {
+      "sentence": "`*` MUST NOT be used with credentials — browsers block this, and attempting it reveals a",
+      "to": "must-not-use-wildcard-with-credentials",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on * with credentials is kept, with the reason that browsers block it.",
+        "pin": "9b1dc6528368a8c9494f38ef0fa06878db15151b3490bac0205d7372312efccf"
+      }
+    },
+    {
+      "sentence": "design misunderstanding.",
+      "to": "must-not-use-wildcard-with-credentials",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The second reason, that attempting it reveals a design misunderstanding, is kept.",
+        "pin": "631839f56e87a1c2fe8bf79c4c730223a5c560c4f0b309293f1426fdbde5471f"
+      }
+    },
+    {
+      "sentence": "**Preflight caching:** SHOULD set `Access-Control-Max-Age: 86400` to reduce preflight overhead.",
+      "to": "should-cache-preflight",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting Access-Control-Max-Age: 86400 to reduce preflight overhead is kept at SHOULD.",
+        "pin": "58d9b45f87db3d8619d8763ccc9138e505c1062f0a5fe8e7977f71a4179ed4e8"
+      }
+    },
+    {
+      "sentence": "**Minimize exposed headers:** Only what the client actually needs.",
+      "to": "should-minimize-exposed-headers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Minimizing exposed headers to only what the client needs is kept at SHOULD.",
+        "pin": "09c7da80e9a227e4a390ac8226a5bc5018def134d08e64631988584940d046a3"
+      }
+    },
+    {
+      "sentence": "**Common misconfigurations:**",
+      "to": [
+        "must-not-use-wildcard-with-credentials",
+        "should-not-match-origins-with-unanchored-regex",
+        "should-not-allow-null-origin",
+        "should-not-allow-broad-methods-and-headers"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The common-misconfigurations lead-in is carried by its four rules, each a prohibition on one misconfiguration, and rationale names them as the common misconfigurations.",
+        "pin": "272b2511098524f3c30d11d1582482105920af7800329d2e8aa33f216a8a6428"
+      }
+    },
+    {
+      "sentence": "Wildcard origin with credentials",
+      "to": [
+        "must-not-use-wildcard-with-credentials",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Wildcard origin with credentials is kept as a MUST NOT and listed as a common misconfiguration in rationale.",
+        "pin": "d3880170c6d1e909cb5e414dceeba282e6735ff23eb3591d1b48158687a2e7ae"
+      }
+    },
+    {
+      "sentence": "Regex matching without anchoring (`evil-example.com` matching `example.com`)",
+      "to": "should-not-match-origins-with-unanchored-regex",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unanchored regex origin matching is kept as SHOULD NOT with the evil-example.com example.",
+        "pin": "e676b68cd2ac213758eb8b2ba161665917bd64f3a5e58e149965f9551f7bcc78"
+      }
+    },
+    {
+      "sentence": "Allowing `null` origin (exploitable via sandboxed iframes)",
+      "to": "should-not-allow-null-origin",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Allowing the null origin is kept as SHOULD NOT with its reason, exploitable via sandboxed iframes.",
+        "pin": "a3e360b2f64a41db789407809199acdd0018dc0b8bb0148f7d7f810c18c8fe5c"
+      }
+    },
+    {
+      "sentence": "Overly broad allowed methods and headers",
+      "to": "should-not-allow-broad-methods-and-headers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Overly broad allowed methods and headers are kept as SHOULD NOT.",
+        "pin": "a3b11e9aeb8ccad83e80e6b7866a2c0186d9bc04c8fbf0f63bbeae9db155be6d"
+      }
+    }
+  ],
+  "obsolete": []
+}

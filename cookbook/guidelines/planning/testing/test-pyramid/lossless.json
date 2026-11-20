@@ -1,0 +1,79 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use real databases, real",
+      "to": "should-use-real-dependencies-in-integration-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "First half of a line-wrapped sentence, kept whole at SHOULD: integration tests use real databases, real file systems, real HTTP where practical.",
+        "pin": "72bffe797755ed34508a4014220d884defa5e656b82b40e476905b0afe6cd763"
+      }
+    },
+    {
+      "sentence": "file systems, real HTTP where practical.",
+      "to": "should-use-real-dependencies-in-integration-tests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Second half of the same line-wrapped sentence, kept whole at SHOULD with the 'where practical' condition.",
+        "pin": "adbd20da2601640e6784bc61dd9f9dbeee24c598e48913b3c2884bacea5bb1de"
+      }
+    },
+    {
+      "sentence": "Expensive, brittle, SHOULD be used sparingly.",
+      "to": [
+        "should-use-e2e-tests-sparingly",
+        "test-kinds"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: the SHOULD on using E2E tests sparingly is its own rule, and 'expensive, brittle' stays in test-kinds as the E2E description.",
+        "pin": "b7b0eb42e439f0cd47021c019b4b386c47d2d4d69c521c5e7082b3f1fca2740b"
+      }
+    },
+    {
+      "sentence": "Reserve for critical user journeys.",
+      "to": "should-reserve-e2e-for-critical-journeys",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD (unkeyed before), with the subject made explicit: E2E tests are reserved for critical user journeys.",
+        "pin": "93100398100ee7763922aead825361cf534f7445602212b336160ebcc74c3a10"
+      }
+    },
+    {
+      "sentence": "If you're unsure what kind of test to write, write a unit test.",
+      "to": "should-default-to-a-unit-test",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD (unkeyed before): when unsure what kind of test to write, write a unit test.",
+        "pin": "ed7560c234252041f70b80f5f7c5364239fd77c4bc68d2e45f2e78a32997cfc7"
+      }
+    },
+    {
+      "sentence": "If the unit test can't",
+      "to": "should-escalate-to-integration-when-unit-cannot-cover",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "First half of a line-wrapped sentence, kept whole at SHOULD: when a unit test can't cover the behavior, escalate to integration.",
+        "pin": "aa81eadcd5a2b99eaefadc9f6d4e15f71a01b7e1fb6f8bb5bd478cc8c9b7303e"
+      }
+    },
+    {
+      "sentence": "cover the behavior (e.g., database queries, UI rendering), escalate to integration.",
+      "to": "should-escalate-to-integration-when-unit-cannot-cover",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Second half of the same sentence, kept at SHOULD with the database-query and UI-rendering examples.",
+        "pin": "22cf436c5397a35623c7a3107184a579d7232d336e9926c40a5cfdfa4a68fae5"
+      }
+    }
+  ],
+  "obsolete": []
+}

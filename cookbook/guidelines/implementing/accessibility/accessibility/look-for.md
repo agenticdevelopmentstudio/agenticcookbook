@@ -1,0 +1,25 @@
+
+- `must-integrate-accessibility-apis-from-day-one`: a component shipped without platform accessibility API integration, or with it planned for later
+- `must-give-interactive-elements-semantic-roles-and-labels`: an interactive element with no semantic role or no label
+- `must-fully-support-screen-readers`: an element or flow the platform screen reader cannot reach, announce or operate
+- `must-support-keyboard-and-switch-control`: an element unreachable or inoperable by keyboard or switch control
+- `must-not-break-at-larger-text-sizes`: fixed sizes, clipping or overlap that appear when Dynamic Type or font scaling grows the text
+- `must-meet-wcag-aa-contrast`: a text/background pair below 4.5:1, or large text below 3:1
+- `must-follow-visual-layout-focus-order`: a focus order that jumps against the visual layout
+- `must-respond-to-display-settings`: a component that ignores reduced motion, high contrast, color inversion, bold text or grayscale
+- `must-respond-to-swiftui-environment-values`: a SwiftUI view that never reads an environment value the Swift table lists, or reads it and does not take the action given
+- `must-respond-to-android-accessibility-settings`: an Android setting in the Kotlin table that the component never checks, or checks without taking the action given
+- `should-meet-wcag-2-2-aa`: a component judged against WCAG 2.1 or below AA rather than 2.2 AA
+- `should-honor-wcag-2-2-new-aa-criteria`: a gap against focus not obscured, focus appearance, a single-pointer drag alternative, the 24×24 CSS px target minimum, consistent help, redundant entry or accessible authentication
+- `should-treat-wcag-3-as-not-yet-actionable`: a requirement taken from the WCAG 3.0 Working Draft as if it were in force
+- `should-follow-wai-aria-authoring-practices`: an ARIA role, state or property used against the WAI-ARIA Authoring Practices
+- `must-respond-to-css-user-preferences`: a media query in the TypeScript table with no matching style or script response
+- `should-support-screen-readers-with-aria`: dynamic content with no `aria-live`, missing landmark regions, or elements with no ARIA role
+- `should-set-automation-name-on-unlabeled-elements`: an interactive element with no visible text label and no `AutomationProperties.Name`
+- `should-use-labeled-by-for-form-fields`: a form field with no `AutomationProperties.LabeledBy`
+- `should-use-live-setting-for-dynamic-regions`: a dynamic content region with no `AutomationProperties.LiveSetting`
+- `must-not-hard-code-colors`: a hard-coded color in place of a `ThemeResource`
+- `should-test-with-accessibility-insights`: a Windows component never checked with Accessibility Insights for Windows
+- `must-make-elements-keyboard-reachable`: an interactive element Tab cannot reach or Enter/Space cannot activate
+- `should-use-40-epx-touch-targets`: a Windows touch target smaller than 40x40 epx
+- `must-respond-to-windows-accessibility-settings`: a Windows setting in the Windows table that the component never detects, or detects without taking the action given

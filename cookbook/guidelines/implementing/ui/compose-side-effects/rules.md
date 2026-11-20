@@ -1,0 +1,13 @@
+
+- **must-keep-composition-side-effect-free**: A composable function **MUST** be side-effect-free during composition. Network calls, observer registration, logging, and mutation of external objects **MUST NOT** run directly in the body — they run on every recomposition, an unpredictable count.
+- **must-launch-effects-via-effect-api**: Side effects **MUST** be launched via the appropriate effect API, **keyed to the inputs the effect reads**.
+- **must-key-every-restarting-value**: Keys **MUST** include every value whose change should restart the effect.
+- **must-wrap-fresh-non-restarting-values**: Values that should be read freshly but **MUST NOT** restart the effect **MUST** be wrapped with `rememberUpdatedState`.
+- **must-key-or-wrap-every-read-variable**: Every mutable or immutable variable read inside the effect block **MUST** be a key, OR be wrapped in `rememberUpdatedState`. There is no third option.
+- **should-use-launchedeffect-unit-only-when-lifecycle-scoped**: `LaunchedEffect(Unit)` / `LaunchedEffect(true)` runs once per entry into composition; code SHOULD use it **only** when the effect is genuinely lifecycle-scoped.
+- **must-wrap-latched-callbacks**: A `LaunchedEffect(Unit)` / `LaunchedEffect(true)` effect **MUST** still wrap latched callbacks in `rememberUpdatedState`.
+- **must-use-coroutine-scope-for-events**: Event-driven work (button taps) **MUST** use `rememberCoroutineScope`, not `LaunchedEffect` — composition is not an event.
+- **must-use-disposableeffect-for-cleanup**: Cleanup-bearing resources **MUST** use `DisposableEffect` with a non-empty `onDispose`; `LaunchedEffect` **MUST NOT** be used where teardown is required.
+- **should-prefer-producestate**: `produceState` **SHOULD** be preferred over manually launching a coroutine that writes to a `mutableStateOf`.
+- **should-reserve-derivedstateof**: `derivedStateOf` is comparatively expensive and **SHOULD** be reserved for collapsing frequent state changes (e.g., scroll offset → boolean) into fewer recompositions — not for trivial combinations of state. Code SHOULD adopt it only when profiling shows wasted recompositions.
+- **should-hoist-long-lived-work-to-viewmodel**: Code SHOULD prefer hoisting state and side effects into the ViewModel where the work outlives composition; effect APIs are for work bound to the composable's lifetime.

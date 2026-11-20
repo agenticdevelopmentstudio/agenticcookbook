@@ -1,0 +1,170 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use `actor` to protect mutable state; its members are isolated and accessed with `await` from outside.",
+      "to": "should-use-actor-for-mutable-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using actor to protect mutable state is kept at SHOULD with the explanation that members are isolated and reached with await from outside.",
+        "pin": "a753ffa267ebc5c1ce8524d2cab8f13d1edba3123fb6ac93b0dca636c95fe1b2"
+      }
+    },
+    {
+      "sentence": "Annotate UI types and view models that touch UIKit/AppKit/SwiftUI state with `@MainActor`.",
+      "to": "should-annotate-ui-types-with-mainactor",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Annotating UI types and view models touching UIKit/AppKit/SwiftUI state with @MainActor is kept at SHOULD; the MUST on UI updates is its own rule.",
+        "pin": "5dbbc36f6937f3e7c6bbed63b2e76f602ae66bb09013a9b7e02a1381f2692743"
+      }
+    },
+    {
+      "sentence": "**Requirement**: Any type that crosses an isolation boundary (closure capture, actor argument/return, `Task` value, `async let`) **MUST** be `Sendable`.",
+      "to": "must-make-boundary-crossing-types-sendable",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with all four boundary kinds (closure capture, actor argument/return, Task value, async let) and the Swift 6 enforcement note.",
+        "pin": "99e4878f53f8bfa4e8556e6fcf2b94895641d2ab3751a12d7fc555c0741bc5e0"
+      }
+    },
+    {
+      "sentence": "Recommended order (durable practice from the Swift migration guide):",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in's claim is kept in rationale: the four migration steps, listed in order, are named the recommended order and attributed to the Swift migration guide as durable practice.",
+        "pin": "24c5194ce5174117eddc4b4771c2f4770736765b1c2d63f63c6ecd31cff2f2e3"
+      }
+    },
+    {
+      "sentence": "Enable checks as **warnings** first via the `StrictConcurrency` upcoming-feature flag (or the \"Strict Concurrency Checking\" build setting at `Targeted`, then `Complete`) while still in Swift 5 mode.",
+      "to": "should-enable-checks-as-warnings-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling checks as warnings first, via the StrictConcurrency flag or the build setting at Targeted then Complete, while still in Swift 5 mode, is kept at SHOULD.",
+        "pin": "6dd6509c02207db7261dd9e4db954f4f23b814242f5dc6881571957d59409c5c"
+      }
+    },
+    {
+      "sentence": "Migrate **leaf modules first** (no dependents), then work upward; switch the **app target last**.",
+      "to": "should-migrate-leaf-modules-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Leaf modules first, then upward, app target last is kept at SHOULD.",
+        "pin": "b6e13eca9ed214aba95ba36f90c9a9f3546955a3963fa9672c6f0a227b943384"
+      }
+    },
+    {
+      "sentence": "Flip a module to the Swift 6 language mode only once its warnings are clear.",
+      "to": "should-flip-to-swift-6-only-when-warnings-clear",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Flipping a module to Swift 6 mode only once its warnings are clear is kept at SHOULD with its condition.",
+        "pin": "4a7cdf43550c6d180bfecf4d9ea5fc55893681a23801ed18699acdb279b66b13"
+      }
+    },
+    {
+      "sentence": "Use `@preconcurrency` on imports/conformances to keep Swift-5 clients compiling against a not-yet-migrated dependency — treat it as a **temporary** shim, not a destination.",
+      "to": "should-use-preconcurrency-as-temporary-shim",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "@preconcurrency on imports/conformances for not-yet-migrated dependencies, as a temporary shim only, is kept at SHOULD.",
+        "pin": "053c985a6bfa66eccff32c611300e273ed5b2c2478b93e05823398e8f9bbe14c"
+      }
+    },
+    {
+      "sentence": "Do not flip the whole workspace to Swift 6 mode at once; that produces an unactionable wall of errors.",
+      "to": "should-not-flip-whole-workspace-at-once",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not flipping the whole workspace at once is kept at SHOULD NOT with its reason (an unactionable wall of errors).",
+        "pin": "7d5902ebc3b8b9ac4e2eeae6cfc8a8eac726c3ec93ce1560efc907c32a0f4780"
+      }
+    },
+    {
+      "sentence": "A class whose safety the compiler cannot prove but that you guarantee (e.g. internal locking) **MAY** use `@unchecked Sendable` — but this **MUST** be justified in a comment, and the class **MUST NOT** expose mutable state without synchronization.",
+      "to": [
+        "may-use-unchecked-sendable-when-guaranteed",
+        "must-justify-unchecked-sendable",
+        "must-not-expose-unsynchronized-mutable-state"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All three clauses are kept at their levels: MAY use @unchecked Sendable when safety is guaranteed, MUST justify it in a comment, MUST NOT expose unsynchronized mutable state.",
+        "pin": "49f7821878dc223ee235297cecf43bd48da26b2d07b4fb2049d33b2f2dc67f85"
+      }
+    },
+    {
+      "sentence": "Behavior depends on settings — confirm what a target actually enables before assuming it.",
+      "to": "should-confirm-target-settings-before-assuming",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Confirming what a target actually enables before assuming Swift 6.2 behavior is kept at SHOULD, scoped to Swift 6.2.",
+        "pin": "109a84f6a5dbf4ff5214016297e6b2bb99becdd802aa67f0b81d3f36c121a861"
+      }
+    },
+    {
+      "sentence": "This is intended for **app and executable targets**, NOT libraries — a library **SHOULD** leave default isolation `nonisolated` so callers stay in control.",
+      "to": "should-leave-library-default-isolation-nonisolated",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Default @MainActor isolation for app and executable targets only, with libraries leaving isolation nonisolated so callers stay in control, is kept at SHOULD with its reason.",
+        "pin": "2530565cb2c372315359b46170fd50d7c32f9661620677541c09ced824c4a94f"
+      }
+    },
+    {
+      "sentence": "Enable each **individually** when migrating an existing project, because changing where async work runs can move code off the thread it ran on before.",
+      "to": "should-enable-approachable-features-individually",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Enabling InferIsolatedConformances and NonisolatedNonsendingByDefault individually when migrating is kept at SHOULD with its reason.",
+        "pin": "250dd6ed2efe908df64b907a4a27963b291cde036a088b43ce319f940adc349c"
+      }
+    },
+    {
+      "sentence": "Use the `@concurrent` attribute to explicitly opt a function into running off the main actor.",
+      "to": "should-use-concurrent-to-opt-off-main-actor",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using @concurrent to opt a function off the main actor is kept at SHOULD.",
+        "pin": "9b8594cdc9826e68817d177b9d85d7c2370666d2d9b3151621aa2b3e75f63808"
+      }
+    },
+    {
+      "sentence": "Treat any default-isolation choice as a **deliberate per-target decision**, not a global mandate; record it where the target is configured.",
+      "to": "should-treat-default-isolation-as-per-target-decision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Default isolation as a deliberate per-target decision, recorded where the target is configured, is kept at SHOULD with both halves.",
+        "pin": "41bf0098e1021b5a5c050ea6ec6967fcb306199f05b4d1de21feb1d74d3bf3b4"
+      }
+    },
+    {
+      "sentence": "Build each migrated module in Swift 6 language mode with zero concurrency warnings before moving up the graph.",
+      "to": "should-build-migrated-modules-warning-free",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Building each migrated module in Swift 6 mode with zero concurrency warnings before moving up the graph is kept at SHOULD.",
+        "pin": "9727e223f9f8a62f3480a60e104496ea8e6648ac9a68b0d0b293ff7b58d59e9e"
+      }
+    }
+  ],
+  "obsolete": []
+}

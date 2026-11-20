@@ -1,0 +1,66 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "> FORECAST / version-sensitive: PostgreSQL partition-pruning behavior and extension feature sets evolve per release.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The FORECAST / version-sensitive note that pruning behavior and extension features change per release is kept in rationale, tied to the pin-and-reverify rule.",
+        "pin": "8f49992856f2b5c618a853a115d7181a399be98659328c1a33ccabeb7fd0d9ca"
+      }
+    },
+    {
+      "sentence": "Pin to your deployed major version and re-verify `EXPLAIN` plans after upgrades.",
+      "to": "should-pin-and-reverify-after-upgrades",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning to the deployed major version and re-verifying EXPLAIN plans after upgrades is kept at SHOULD.",
+        "pin": "28ae338c275b3737bd7c8a0fa21fa23e770d0cc238fa5a145f40bfd563cb0bb1"
+      }
+    },
+    {
+      "sentence": "**Range partition by time** (e.g. one partition per day/week/month sized so each holds a workable row count).",
+      "to": "should-range-partition-time-series-by-time",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Range-partitioning time-series by time, with the day/week/month sizing example, is kept at SHOULD.",
+        "pin": "273631d90e9acd9226fc2c78d21a37cd1e9b85d1824e78182a6b36cc04980ef7"
+      }
+    },
+    {
+      "sentence": "**Retention by dropping partitions**: `DROP TABLE`/`DETACH PARTITION` on an old partition is near-instant and reclaims space, unlike a bulk `DELETE` that bloats the table and stresses autovacuum.",
+      "to": "should-retain-by-dropping-partitions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Retention by dropping partitions is kept at SHOULD with the reason it beats a bulk DELETE (near-instant, reclaims space, no bloat or autovacuum stress).",
+        "pin": "e5677d195790021689abc9cb17e4c0cbeb13f93a91e3ad11837915891030482d"
+      }
+    },
+    {
+      "sentence": "**Rollups / continuous aggregates**: precompute summaries for queries spanning long history instead of scanning raw rows.",
+      "to": "should-precompute-rollups-for-long-history",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Precomputing rollups / continuous aggregates for long-history queries is kept at SHOULD, with the materialized-view refresh note.",
+        "pin": "7bae3dd1ea241a35a50844a75999998900be83c2bca9f2fdb22cb5d88bcc42de"
+      }
+    },
+    {
+      "sentence": "Per **YAGNI** and **make-it-work-make-it-right-make-it-fast**, do NOT partition by default.",
+      "to": "should-not-partition-by-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'do NOT partition by default' is kept at SHOULD NOT with its YAGNI / make-it-work reasons, backed by the MUST to justify partitioning with a measured need.",
+        "pin": "b3a20809960d1837847782b1ab4f0ea4a03d4c026199b27d8817558f08227064"
+      }
+    }
+  ],
+  "obsolete": []
+}

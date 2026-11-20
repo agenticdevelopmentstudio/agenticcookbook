@@ -1,0 +1,14 @@
+
+- `must-evaluate-selection-arguments-ordering-stopping`: a tool-using agent evaluated on its final answer only, with no check of tool choice, arguments, order or stopping
+- `should-report-each-dimension-separately`: one blended score where per-dimension results (selection, arguments, ordering, stopping, completion) would diagnose the failure
+- `must-pin-input-and-expected-trajectory`: a test case with no pinned input or no expected tool names and arguments
+- `should-treat-suite-as-versioned-regression-set`: a trajectory suite that changes freely with no version
+- `should-allow-semantic-argument-equivalence`: exact-match argument checks failing on equivalent forms, or loose matching on identifiers, units or destructive parameters
+- `should-score-against-trajectory`: scoring that checks only the final output
+- `must-include-error-recovery-cases`: no case where a tool errors, returns empty or times out, or no assertion that the agent recovers
+- `should-include-no-tool-cases`: no case where the right action is to call no tool
+- `must-not-assume-short-chains-generalize`: long-chain behavior claimed from short-chain pass rates
+- `should-add-realistic-multi-step-cases`: multi-step cases using fewer tools than the agent ships with, or accuracy not reported by chain length
+- `should-report-pass-rates-with-trial-counts`: a single-run result reported with no trial count
+- `should-gate-releases-and-track-per-dimension-scores`: releases not gated on the suite, or per-dimension scores not tracked over time
+- `should-keep-cases-hermetic`: eval cases calling live backends rather than stubbed or recorded responses

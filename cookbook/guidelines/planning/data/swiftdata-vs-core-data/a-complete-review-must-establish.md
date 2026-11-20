@@ -1,0 +1,16 @@
+
+- `must-justify-by-os-floor-complexity-and-migrations`: whether the choice is justified by OS-version floor, model complexity and migration needs, not novelty
+- `should-make-the-choice-deliberately`: whether the choice was a deliberate decision
+- `should-apply-the-decision-rows-in-order`: whether the first matching decision-rule row decided the choice
+- `should-default-to-swiftdata-when-no-row-forces-core-data`: whether new code defaults to SwiftData when no row forces Core Data
+- `should-use-swiftdata-for-greenfield-ios-17-plus`: whether a greenfield app with an iOS 17+ / macOS 14+ floor uses SwiftData
+- `should-use-core-data-for-controlled-migrations`: whether projects needing fully-controlled migrations or schema versioning use Core Data
+- `must-use-core-data-below-the-swiftdata-floor`: whether all code below the SwiftData floor uses Core Data
+- `must-not-rewrite-working-core-data-to-modernize`: whether any Core Data-to-SwiftData rewrite has a concrete need behind it
+- `should-prefer-core-data-for-tuning-and-scale`: whether Core Data is used where fine-grained tuning, scale batches or large-dataset performance are needed
+- `should-define-models-with-the-model-macro`: whether SwiftData models use `@Model` on a Swift class
+- `should-use-modelactor-for-background-work`: whether SwiftData background work uses `@ModelActor`
+- `must-verify-swiftdata-writes-persist`: whether SwiftData writes are verified by fetch-after-save tests and behavior is pinned to a tested OS revision
+- `should-treat-unshipped-swiftdata-features-as-unavailable`: whether anything relies on SwiftData features that did not ship
+- `may-adopt-swiftdata-incrementally`: whether incremental adoption was available in place of a big-bang rewrite
+- `must-keep-the-schema-compatible-across-layers`: whether the shared schema stays compatible across both layers, validated by migration tests

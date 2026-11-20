@@ -1,0 +1,332 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Catch the narrowest exception that you can handle.",
+      "to": "should-catch-narrowest-exception",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: catch the narrowest exception you can handle.",
+        "pin": "d0b4b3d7a0e7a7920c6733f780c6ecfcbf46f12317b36e923ffd16b1dfb1dbf2"
+      }
+    },
+    {
+      "sentence": "Never write a bare `except:`, and do not catch `Exception` except at a process boundary that logs and exits.",
+      "to": [
+        "must-not-use-bare-except",
+        "should-not-catch-exception-outside-boundary"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept: bare except at MUST NOT, catching Exception at SHOULD NOT with the process-boundary-that-logs-and-exits exception.",
+        "pin": "0b749e3b86694187615078942ed4b944b693e9bdd5153ab2854691f855a4c206"
+      }
+    },
+    {
+      "sentence": "Define your own errors as subclasses of `Exception`, named with the suffix `Error`.",
+      "to": "should-name-errors-with-error-suffix",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: own errors subclass Exception and are named with the Error suffix.",
+        "pin": "8ba279cab812345472b69654421a14eda464844a6a098b7b94a3cfe005f0ecd1"
+      }
+    },
+    {
+      "sentence": "When you translate an exception, chain it: `raise ConfigError(\"...\") from err`.",
+      "to": "should-chain-translated-exceptions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition (when translating) and the raise ... from err form.",
+        "pin": "ee5cb34f32f89eb5bce78823b3188ecf76377a42602ae824e2865816ef707093"
+      }
+    },
+    {
+      "sentence": "Use `from None` only to hide an implementation detail on purpose.",
+      "to": "should-use-from-none-only-on-purpose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: from None only to hide an implementation detail on purpose.",
+        "pin": "8646ddefddaa2147bccc3b428b66c36ff6de48b3551f83b6e93a14c3e28520a3"
+      }
+    },
+    {
+      "sentence": "Keep the `try` body small.",
+      "to": "should-keep-try-bodies-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: keep the try body small.",
+        "pin": "e00b7c230b56ea6d2ee0c8f3b6863acdf3f1946eb7ac7017bb7bf85b58f69cf9"
+      }
+    },
+    {
+      "sentence": "Put code that runs only on success in `else`, and cleanup in `finally`.",
+      "to": "should-use-else-and-finally",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: success-only code in else, cleanup in finally.",
+        "pin": "e4134e4ec791283a8143565a2ac998b29eac86b546c05d0f1debdceb3e016671"
+      }
+    },
+    {
+      "sentence": "Never `return`, `break` or `continue` out of a `finally` block; the 3.14 interpreter warns about it (PEP 765).",
+      "to": "must-not-leave-finally-by-jump",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT for return, break and continue out of finally, with the PEP 765 reason.",
+        "pin": "7905ff08e04c28cf7dc4d33acff44d9b35edba32d97bb6c823c3436f43d4f603"
+      }
+    },
+    {
+      "sentence": "Add context to an in-flight exception with `add_note()` instead of wrapping it where you have nothing to add.",
+      "to": "should-add-note-instead-of-wrapping",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: add_note() instead of wrapping where there is nothing to add.",
+        "pin": "e177ba57a454867dc1419901fcc3a0ef59d4ff4a68a6a38527705685cc07c30d"
+      }
+    },
+    {
+      "sentence": "Put optional extras in `[project.optional-dependencies]` and command-line entry points in `[project.scripts]`.",
+      "to": "should-use-project-tables-for-extras-and-scripts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both tables: optional-dependencies for extras, scripts for entry points.",
+        "pin": "299e34262fee1e6f057849b0cd8463ecec4cdb7984508a64b9b54c9fa78533b1"
+      }
+    },
+    {
+      "sentence": "Do not write a `setup.py` for a new project.",
+      "to": "should-not-write-setup-py",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the new-project scope.",
+        "pin": "baff650e50cd3c16ff8e89a135819ed491651433c8a4a18163ea330f4f42fc4e"
+      }
+    },
+    {
+      "sentence": "Declare `requires-python` to match the oldest interpreter you test.",
+      "to": "should-match-requires-python-to-oldest-tested",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: requires-python matches the oldest tested interpreter.",
+        "pin": "2dcc68ccd0f31116683f130a511d7229357fd5503378be54e19f1069a17ae88e"
+      }
+    },
+    {
+      "sentence": "A typed library ships a `py.typed` marker file in the package (PEP 561) so type checkers use its annotations.",
+      "to": "should-ship-py-typed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept and strengthened from a description to SHOULD: typed libraries ship py.typed (PEP 561) so checkers use the annotations.",
+        "pin": "f8a731092f351aaa4cd1dc67bf7128488e3db1a2981d3d0f08832510c916d2e2"
+      }
+    },
+    {
+      "sentence": "Use `pathlib.Path`, not string concatenation or `os.path`.",
+      "to": "should-use-pathlib",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: pathlib.Path rather than string concatenation or os.path.",
+        "pin": "ca3e41ada3cd66e65263c446f1cbed5e417c22cf89c7a7bc238b815a50165fab"
+      }
+    },
+    {
+      "sentence": "Join with `/`, read and write with `read_text` and `write_text`, and always pass `encoding=\"utf-8\"`.",
+      "to": [
+        "should-join-read-and-write-with-path-methods",
+        "must-pass-utf-8-encoding"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept across two rules: join with / and read_text/write_text at SHOULD; always pass encoding=\"utf-8\" at MUST.",
+        "pin": "e286f6a941ee0703f916575d743cb537b7de0e50afe72b01cf0f770d36072b55"
+      }
+    },
+    {
+      "sentence": "Create directories with `mkdir(parents=True, exist_ok=True)` and search with `glob` and `rglob`.",
+      "to": "should-make-and-search-directories-with-path",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: mkdir(parents=True, exist_ok=True), glob and rglob.",
+        "pin": "084a5d10279a7cf348109529326ef812ec0489a8c536bce56fe1c8237f8af4c7"
+      }
+    },
+    {
+      "sentence": "Resolve a path before you test whether it lies under a root.",
+      "to": "should-resolve-before-containment-check",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason that only resolve() collapses .. and symlinks.",
+        "pin": "0e042a746b979eee09b3c494455e95bb54007521f78a8a1a2897ef373a9786f6"
+      }
+    },
+    {
+      "sentence": "Run external programs with `subprocess.run`, passing the command as a list: `subprocess.run([\"git\", \"status\"], check=True)`.",
+      "to": "should-run-commands-as-lists",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: subprocess.run with the command as a list, with the example.",
+        "pin": "081a932f3a1c542f2ce771187483c46be5d4b957b6543904c685fd4aff3b0db0"
+      }
+    },
+    {
+      "sentence": "Never use `shell=True` with a string that contains any value you did not write yourself.",
+      "to": "must-not-shell-out-foreign-values",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT: no shell=True with any value you did not write; the list-never-reaches-a-shell note is kept.",
+        "pin": "9e1d568b81c602f1be4a98769c12f788fb7eac5496b5a76076e3abee180a0032"
+      }
+    },
+    {
+      "sentence": "If a shell is truly required, quote each interpolated value with `shlex.quote`.",
+      "to": "should-shlex-quote-when-a-shell-is-required",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition that a shell is truly required: shlex.quote each interpolated value.",
+        "pin": "0901d4de96062044a529790a21b69d70417c1454496a9e8103da410b635f496c"
+      }
+    },
+    {
+      "sentence": "Pass `check=True` so a non-zero exit raises `CalledProcessError`, or inspect `returncode` on purpose.",
+      "to": "should-check-exit-status",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both alternatives: check=True raising CalledProcessError, or inspecting returncode on purpose.",
+        "pin": "62b4fca2e9fcaaacca7c5108972c59fb08d327a1a4d74543feaed862e50e4ed2"
+      }
+    },
+    {
+      "sentence": "Pass `timeout=` for any command that could hang.",
+      "to": "should-pass-timeout-to-hanging-commands",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the could-hang condition; the TimeoutExpired note is kept.",
+        "pin": "a0d4a8a2c244d5ef64f33953fb218cfaf14a9d5848188fd396c70e41c1e2ca04"
+      }
+    },
+    {
+      "sentence": "Use `capture_output=True` with `text=True` to read output.",
+      "to": "should-capture-output-as-text",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: capture_output=True with text=True.",
+        "pin": "8c406ec43008b92b27d2d86556e228b1c96fa9cc0eb395ade3ac0b0a30859336"
+      }
+    },
+    {
+      "sentence": "Do not combine `capture_output` with explicit `stdout` or `stderr` arguments.",
+      "to": "should-not-mix-capture-output-and-streams",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT: no capture_output combined with explicit stdout or stderr.",
+        "pin": "7b7db74e1a76373ad0a9b72b47df65f341b2d20f4db92cfc4cb0f33edc2660f2"
+      }
+    },
+    {
+      "sentence": "Build it from `os.environ` plus your changes unless you want a clean one.",
+      "to": "should-build-env-from-os-environ",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with 'it' resolved to env, the unless-you-want-a-clean-one exception and the replaces-inherited-environment note.",
+        "pin": "8a1a781e4eb74e2bed39e0dfd1444281f02b18c698d1a26ab90ede0ac3df1589"
+      }
+    },
+    {
+      "sentence": "Annotate every function signature and every public attribute.",
+      "to": "should-annotate-signatures-and-public-attributes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: every function signature and every public attribute annotated.",
+        "pin": "abd4de85ca4e2232ba41c46d5bb289db3f0a7ae6b731ad96cfbb86b3f09354f2"
+      }
+    },
+    {
+      "sentence": "Run a type checker in strict mode in CI (for mypy, `--strict`, which includes `--disallow-untyped-defs`).",
+      "to": "should-type-check-strictly-in-ci",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: strict type checking in CI, with the mypy --strict detail.",
+        "pin": "fccbb4b9e78ad932e965ff983237bc7325aa72d544dd7af90b8f38052b4a6d3f"
+      }
+    },
+    {
+      "sentence": "Do not silence a checker with a blanket `# type: ignore`; ignore one error code and say why.",
+      "to": "should-not-blanket-ignore-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT for blanket type: ignore, with the one-error-code-and-say-why alternative.",
+        "pin": "933e29e76310d06aa7bd383c388d3f7ff901136458195da7c6ab4da54a787189"
+      }
+    },
+    {
+      "sentence": "Start it with `python -I` (isolated mode), which ignores the script directory, the user site-packages directory and every `PYTHON*` environment variable.",
+      "to": "should-start-untrusted-scripts-isolated",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the untrusted-directory condition, what -I ignores, and the planted-file reason and -E -P -s note.",
+        "pin": "2f2c546c4e996c327411b29354fb35b2874435f944548ec2de35507f625b5fb9"
+      }
+    },
+    {
+      "sentence": "Be aware that `-m` puts the current directory on `sys.path`, so do not use `-m` from an untrusted working directory.",
+      "to": "should-not-use-m-from-untrusted-directory",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT with the sys.path reason and the untrusted-working-directory scope.",
+        "pin": "4cd7fb88b4f4616f9df43ffdd40027aa82e453817b3e08aef83857fccee88a9e"
+      }
+    },
+    {
+      "sentence": "Never run an interpreter inside a directory of downloaded files.",
+      "to": "must-not-run-interpreter-in-downloads",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST NOT: never run an interpreter inside a directory of downloaded files.",
+        "pin": "0d9a0026d10176ea6683ddc07c1fdc00d0fe575f310a559010a6c2b8430e7b73"
+      }
+    },
+    {
+      "sentence": "Run it from your own directory and pass the downloaded path as an argument.",
+      "to": "should-pass-downloads-as-arguments",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: run from your own directory and pass the downloaded path as an argument.",
+        "pin": "35610f04ebe59d308e943e623d87a78bd0cb377b6cf5ace6c068cb1393bdacdd"
+      }
+    }
+  ],
+  "obsolete": []
+}

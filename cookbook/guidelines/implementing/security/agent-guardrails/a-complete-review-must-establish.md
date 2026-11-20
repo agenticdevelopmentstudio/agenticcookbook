@@ -1,0 +1,20 @@
+
+- `must-enforce-guardrails-as-code`: whether every guardrail is enforced by deterministic code, not by prompt instructions alone
+- `should-validate-and-moderate-model-input`: whether everything reaching the model is validated and moderated
+- `off-band-input`: whether input is screened for prompt injection, jailbreaks, off-topic requests and unsafe content before it reaches the model
+- `untrusted-context`: whether content from tools, retrieval, files or other users is treated as untrusted, labeled as data, and kept out of the instruction channel
+- `layered-defense`: whether input checks combine deterministic rules with a moderation/classifier pass, and prompt-level instructions are never the only defense
+- `should-treat-model-output-as-untrusted`: whether all model output is treated as untrusted until it has passed checks
+- `deterministic-output-checks`: whether schema/JSON validation, PII and secret detection, and unsafe-content moderation of output run in code, not by model self-certification
+- `schema-conformance`: whether structured output is validated against an explicit schema and non-conforming output is rejected or repaired, never passed downstream verbatim
+- `no-leakage`: whether output is scanned for PII, credentials and system-prompt leakage before it is returned or persisted
+- `should-constrain-agency-to-minimum`: whether the agent's agency is constrained to the minimum required
+- `allow-list-tools`: whether the agent is limited to an explicit tool allow-list enforced deterministically at the call boundary
+- `least-privilege`: whether each tool runs with the narrowest scopes, credentials and data access needed, with no shared admin tokens
+- `human-in-the-loop`: whether every high-impact or irreversible action requires explicit human confirmation before execution
+- `caps`: whether spending, rate and iteration caps bound tool use
+- `kill-switch`: whether a kill switch that halts the agent and revokes its tool access exists and is reachable by operators
+- `circuit-breakers`: whether repeated failures, guardrail trips or anomalous cost/rate trip a circuit breaker that pauses the agent and alerts
+- `audit-trail`: whether inputs, tool calls, confirmations and guardrail decisions are logged for after-the-fact review
+- `should-confirm-privacy-obligations-with-counsel`: whether privacy obligations the code relies on were confirmed with counsel
+- `should-start-with-in-process-checks`: whether guardrails start with in-process deterministic checks, and any heavy control has a measured need behind it

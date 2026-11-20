@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use [DPAPI](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.protecteddata) (`ProtectedData.Protect`/`Unprotect` with `DataProtectionScope.CurrentUser`) for Windows-only local secrets",
+      "to": "should-use-dpapi-for-windows-local-secrets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "DPAPI (ProtectedData.Protect/Unprotect with CurrentUser scope) for Windows-only local secrets is kept at SHOULD, scoped to C# as before.",
+        "pin": "1b8720ab348a4bb3d9d62c4eb3c643c249ce58c9dac686e4157a68caf2e86150"
+      }
+    },
+    {
+      "sentence": "Use [User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) (`Microsoft.Extensions.Configuration.UserSecrets`) for development-time secrets only (plaintext JSON — not for production)",
+      "to": "should-use-user-secrets-for-development-only",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "User Secrets for development-time secrets only, with the plaintext-JSON not-for-production caveat, is kept at SHOULD in C#.",
+        "pin": "04168a7331cb66504673bea627b1f8dca64f46ec53ed5291e6b198a83f6a02a9"
+      }
+    },
+    {
+      "sentence": "Never store tokens or credentials in plaintext config files or app settings",
+      "to": "must-not-store-tokens-in-plaintext-config",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never storing tokens or credentials in plaintext config files or app settings is kept at MUST NOT in C#.",
+        "pin": "12216d9ccb8f4b2ac6f8788e639311e99beed82d5461efb9684f8f08d7bac848"
+      }
+    },
+    {
+      "sentence": "Use `EncryptedSharedPreferences` or the Android Keystore for tokens, credentials, and sensitive data.",
+      "to": "should-use-encrypted-storage-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "EncryptedSharedPreferences or the Android Keystore for tokens, credentials and sensitive data is kept at SHOULD, the old Kotlin scope kept as On Android.",
+        "pin": "67bc8ceae4968ba9a627280f978875290f7f4460499850e37b7aa47836f15e7f"
+      }
+    },
+    {
+      "sentence": "Never store secrets in plain SharedPreferences.",
+      "to": "must-not-store-secrets-in-plain-sharedpreferences",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never storing secrets in plain SharedPreferences is kept at MUST NOT on Android.",
+        "pin": "89d5db830a0e6bd2e8202c7d09e1f19e7c4b77e1b4a131c5279e0aa9816f4b81"
+      }
+    },
+    {
+      "sentence": "Use Keychain Services for tokens, credentials, and any sensitive data.",
+      "to": "should-use-keychain-on-apple",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keychain Services for tokens, credentials and any sensitive data is kept at SHOULD, the old Swift scope kept as On Apple platforms.",
+        "pin": "934ab7aa168cf602dc2a4d960d157adef090db7cec51202ccd559745d8839477"
+      }
+    },
+    {
+      "sentence": "Never store secrets in UserDefaults or plists.",
+      "to": "must-not-store-secrets-in-userdefaults-or-plists",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never storing secrets in UserDefaults or plists is kept at MUST NOT on Apple platforms.",
+        "pin": "4b70025b0a4ebbbb6328bd841ca639b4f9649ff1392dea7a6baa342d7641d402"
+      }
+    }
+  ],
+  "obsolete": []
+}

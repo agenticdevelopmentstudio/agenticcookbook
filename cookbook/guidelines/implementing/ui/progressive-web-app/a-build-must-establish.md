@@ -1,0 +1,24 @@
+
+- `should-ship-manifest-and-service-worker`: the installable app ships a Web App Manifest and a service worker with an explicit caching strategy, or the code says why not
+- `must-account-for-ios-safari-limitations`: every iOS/Safari limitation the app meets is handled
+- `should-not-add-service-worker-without-installability`: a service worker is present only where installability (or offline behavior or push) is a requirement, or the code says why
+- `must-serve-over-https`: the app is served over HTTPS, or over `localhost` in development
+- `must-link-valid-manifest`: the app links a Web App Manifest that validates
+- `must-register-service-worker-for-offline-or-push`: a service worker is registered wherever offline behavior or push is in scope
+- `must-include-manifest-core-fields`: the manifest has `name` (or `short_name`), `start_url`, and `display` set to `standalone`, `fullscreen` or `minimal-ui`
+- `must-include-192-and-512-icons`: the manifest `icons` hold a 192x192 and a 512x512 entry
+- `should-include-maskable-icon`: the manifest holds a `maskable` icon, or the code says why not
+- `must-include-manifest-id`: the manifest holds an `id`
+- `should-validate-installability-with-tools`: installability was validated with Lighthouse / DevTools Application panel before shipping, or the build says why not
+- `should-register-service-worker-after-load`: the service worker registers after the page loads, or the code says why not
+- `should-choose-caching-strategy-per-request-class`: each request class has its own caching strategy, or the code says why one applies globally
+- `must-version-cache-and-delete-stale-caches`: the cache name carries a version and `activate` deletes stale caches
+- `should-precache-app-shell`: the app shell is precached and an offline navigation resolves, or the code says why not
+- `should-prefer-maintained-service-worker-library`: a maintained library (Workbox) handles fetches unless the surface is trivial, or the code says why not
+- `should-reverify-ios-constraints-per-release`: the iOS / Safari constraints were re-verified against the current release, or the build says why not
+- `must-request-push-permission-after-install`: notification permission is requested only from a user gesture after Home Screen install
+- `must-provide-in-app-install-guidance`: iOS users see in-app "Share -> Add to Home Screen" guidance and no programmatic install button
+- `should-not-depend-on-background-sync`: nothing depends on Background Sync / Periodic Background Sync, or the code says why
+- `should-queue-writes-in-indexeddb`: writes are queued in IndexedDB and flushed on next foreground, or the code says why not
+- `must-treat-client-storage-as-cache`: no client storage is the source of truth
+- `should-confirm-push-in-target-regions`: Web Push behavior is confirmed in each target region, or the build says why not

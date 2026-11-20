@@ -1,0 +1,17 @@
+
+- `must-consume-window-insets`: on Android 15+ at `targetSdk 35`+, no content, control or keyboard is obscured by the system bars
+- `must-handle-window-insets`: every screen handles window insets; none assumes a content-safe area
+- `must-not-rely-on-opt-out-attribute`: `android:windowOptOutEdgeToEdgeEnforcement` is absent, or the work says which single release it bridges
+- `should-enable-edge-to-edge-in-oncreate`: every activity calls `enableEdgeToEdge()` in `onCreate()`, or the work says why not
+- `should-prefer-safedrawing-insets`: general content uses `safeDrawing` insets, or the work says why another type
+- `should-wrap-top-level-ui-in-scaffold`: top-level Compose UI sits in a `Scaffold`, or the work says why not
+- `should-apply-scaffold-inner-padding`: every `Scaffold`'s `innerPadding` is applied, or the work says why not
+- `should-use-windowinsetspadding-for-manual-control`: manual Compose inset handling uses `Modifier.windowInsetsPadding(...)` with the right inset type, or the work says why not
+- `should-pad-items-not-whole-list`: scrolling lists pad through `contentPadding` rather than padding the whole list, or the work says why not
+- `should-consume-insets-with-view-listener`: every View needing insets consumes them in a `setOnApplyWindowInsetsListener`, or the work says why not
+- `should-use-ime-insets-for-keyboard`: keyboard-aware layouts use `WindowInsetsCompat.Type.ime()` and hardcode no bottom padding, or the work says why not
+- `should-install-compat-insets-dispatch`: an app supporting Android 10 and below calls `ViewGroupCompat.installCompatInsetsDispatch(rootView)` before consuming, or the work says why not
+- `should-set-fitssystemwindows-on-appbarlayout`: every `AppBarLayout` has `android:fitsSystemWindows="true"`, or the work says how its top inset is handled
+- `must-not-consume-insets-children-need`: no parent returns `WindowInsetsCompat.CONSUMED` for insets its children need
+- `must-not-mix-fitssystemwindows-with-listeners`: no view has both `fitsSystemWindows="true"` and a manual inset listener
+- `should-test-navigation-modes-cutout-and-keyboard`: the UI was tested in gesture and 3-button navigation, with a display cutout, and with the keyboard open, or the work says why not

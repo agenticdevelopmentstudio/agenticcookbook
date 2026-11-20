@@ -1,0 +1,17 @@
+
+- `should-keep-access-tokens-short-lived`: access tokens expire within 5-15 minutes, or the build says why not
+- `should-include-only-necessary-claims`: JWTs carry only necessary claims and no PII where they transit untrusted parties, or the code says why not
+- `should-bind-refresh-tokens-to-client`: refresh tokens are bound to the client, or the code says why not
+- `should-rotate-refresh-tokens`: each refresh rotates the refresh token, or the code says why not
+- `should-store-refresh-tokens-server-side`: refresh tokens are stored server-side, or the code says why that was not possible
+- `should-refresh-proactively`: refresh fires before expiry (e.g., at 75% of TTL), or the code says why not
+- `should-queue-requests-during-refresh`: concurrent requests wait on one in-flight refresh, or the code says why not
+- `should-retry-refresh-with-backoff`: refresh failures retry with backoff, or the code says why not
+- `should-use-keychain-on-apple`: Apple tokens are in Keychain Services, or the code says why not
+- `should-use-encrypted-storage-on-android`: Android tokens are in EncryptedSharedPreferences / Android Keystore, or the code says why not
+- `should-use-dpapi-on-windows`: Windows tokens are protected with DPAPI (`ProtectedData`), or the code says why not
+- `should-use-httponly-cookies-on-web`: web tokens are HttpOnly Secure SameSite cookies and never in localStorage, or the code says why not
+- `must-not-store-tokens-in-web-storage`: no token is written to `localStorage` or `sessionStorage`
+- `must-not-put-tokens-in-query-parameters`: no token appears in a URL query parameter
+- `must-validate-jwt-alg-against-allowlist`: the server rejects `alg: none` and validates `alg` against an allowlist
+- `must-not-trust-client-jwt-claims`: authorization uses JWT claims only after server-side verification

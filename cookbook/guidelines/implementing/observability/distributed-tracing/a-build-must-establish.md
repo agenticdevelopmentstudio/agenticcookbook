@@ -1,0 +1,24 @@
+
+- `must-create-spans-via-otel-api`: every span is created through the OpenTelemetry API; no vendor-specific SDK creates spans
+- `should-span-each-unit-of-work`: each HTTP handler, DB query, outbound call and model invocation is one span with a clear name and status, or the code says why not
+- `should-record-errors-on-spans`: every caught error is recorded on its span via `span.record_exception` / `ERROR` status, or the code says why not
+- `should-prefer-auto-instrumentation`: common frameworks/clients are auto-instrumented and manual spans cover only domain-specific work, or the code says why
+- `should-propagate-w3c-trace-context`: every request crossing a service boundary carries `traceparent` (and `tracestate` when present), or the code says why not
+- `should-pin-trace-context-level-1`: propagation targets W3C Trace Context Level 1, or the code says why not
+- `must-treat-header-names-case-insensitive`: trace header names are read ASCII case-insensitively
+- `should-emit-lowercase-traceparent`: `traceparent` is emitted in lowercase
+- `must-not-drop-incoming-traceparent`: every service continues an incoming `traceparent` rather than starting a new root
+- `should-inject-context-at-transport-edge`: context injection and extraction live in middleware/interceptors, or the code says why not
+- `must-propagate-context-in-messages`: every message/event published carries `traceparent` in its metadata
+- `should-link-consumer-span-to-producer`: every queue, pub/sub and event-stream consumer span links to its producer, or the code says why not
+- `should-prefer-tail-based-sampling`: sampling is tail-based at the OpenTelemetry Collector, or the code says why it is head-based
+- `should-keep-errors-and-sample-successes`: the default sampling policy keeps 100% of error or high-latency traces and samples a fraction of successful ones, or the code says why not
+- `should-tune-sampling-rate`: the sampling rate is a tunable setting, not a fixed rule
+- `must-propagate-consistent-sampling-decision`: the sampling decision travels in `traceparent` trace-flags and every service honours it
+- `should-carry-trace-id-in-logs`: every log record carries the active `trace_id` (and `span_id`), or the code says why not
+- `should-use-same-trace-id-field-name`: every service names the trace ID field the same, or the code says why not
+- `may-emit-exemplars`: any exemplar emitted links a metric data point to a sample `trace_id`
+- `should-span-model-and-tool-calls`: each model call and each tool/function call in the agent loop is its own span nested under the request or agent-step span, or the code says why not
+- `should-follow-genai-semantic-conventions`: GenAI attribute names follow the OpenTelemetry GenAI semantic conventions where they apply, or the code says why not
+- `should-record-genai-convention-version`: the targeted GenAI convention version is recorded, or the code says why not
+- `should-opt-in-and-redact-content-capture`: prompt/response content capture on spans is off by default and redacted when on, or the code says why not

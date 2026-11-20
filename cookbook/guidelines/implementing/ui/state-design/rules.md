@@ -1,0 +1,12 @@
+
+- **must-handle-all-four-states**: Every view that loads data or can be empty MUST handle all four states explicitly.
+- **must-not-show-unexplained-blank-screen**: A blank screen with no explanation MUST NOT be shown.
+- **should-show-progress-while-loading**: Loading — SHOULD show progress (see [adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068)).
+- **should-use-skeletons-and-spinners**: SHOULD use skeleton screens for content-heavy views, spinners for actions.
+- **must-not-block-screen-for-partial-load**: MUST NOT ever block the entire screen for a partial load.
+- **should-explain-empty-state**: Empty — SHOULD explain what belongs here, why it's empty, and provide a single clear action to populate it.
+- **should-compose-empty-state**: SHOULD use an icon or illustration, a brief message, and a CTA button.
+- **should-explain-errors-with-recovery**: Error — SHOULD identify the problem, explain why if possible, and offer a recovery action (retry, go back, contact support).
+- **must-not-show-raw-errors**: Raw error codes or stack traces MUST NOT be shown.
+- **should-not-blame-the-user**: Don't blame the user — error text SHOULD NOT blame the user.
+- **should-design-empty-and-error-with-care**: SHOULD design empty and error states with the same care as the loaded state — they are often the user's first impression.

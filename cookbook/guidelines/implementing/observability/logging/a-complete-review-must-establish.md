@@ -1,0 +1,19 @@
+
+- `must-instrument-with-platform-framework`: whether every component and flow is instrumented with structured logging through the platform's best-in-class framework
+- `should-use-debug-for-flow-instrumentation`: whether flow instrumentation, UI flow included, uses `debug` level
+- `should-log-flow-events`: whether state transitions, user interactions, async task start/completion/failure, and branching logic are logged
+- `must-not-log-pii`: whether any log field carries personally identifiable information, at any level
+- `must-match-subsystem-to-bundle-id`: whether every Apple `Logger` subsystem matches the bundle ID
+- `must-use-one-category-per-component`: whether every Apple `Logger` category is one per component or flow
+- `should-use-android-log-with-consistent-tags`: whether `android.util.Log`, where used, has consistent tags
+- `should-use-structured-message-templates`: whether C# log calls use structured message templates
+- `must-not-interpolate-in-log-calls`: whether any C# log call uses string interpolation
+- `should-use-loggermessage-for-hot-paths`: whether high-performance hot paths log through `[LoggerMessage]`
+- `should-configure-log-levels-per-category`: whether C# log levels are configured per category in `appsettings.json`
+- `should-use-etw-for-system-diagnostics`: whether Windows system-level diagnostics and startup timing use ETW (`EventSource`)
+- `should-use-xaml-live-visual-tree`: whether visual tree issues are debugged with XAML Live Visual Tree
+- `should-use-vs-performance-profiler`: whether Windows CPU, memory, and UI responsiveness analysis uses the Visual Studio Performance Profiler
+- `should-emit-telemetry-via-opentelemetry`: whether components emit telemetry via OpenTelemetry over OTLP
+- `should-carry-trace-id-on-log-lines`: whether every log line carries a trace/correlation ID
+- `should-follow-otel-semantic-conventions`: whether log and span field names follow the OpenTelemetry semantic conventions
+- `should-use-structured-json-in-production`: whether production logs are structured JSON

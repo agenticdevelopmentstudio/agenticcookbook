@@ -1,0 +1,15 @@
+
+- **must-ship-root-instruction-file**: A repository consumed by AI coding agents **MUST** ship at least one such machine-targeted instruction file (AGENTS.md or CLAUDE.md) at the repo root that tells an agent how to build, test, and run the project, plus the conventions and boundaries a new teammate would need.
+- **should-symlink-one-canonical-file**: To serve both Claude Code and other agents from one source, you **SHOULD** keep a single canonical file and make the other a symlink (e.g. `CLAUDE.md` → `AGENTS.md`) rather than maintaining two copies that drift.
+- **must-state-build-test-run-commands**: The instruction file **MUST** state the exact commands to build, test, and run the project (e.g. `npm test`, `make build`), including any required setup or environment variables.
+- **should-state-conventions**: The instruction file **SHOULD** state code style, naming, and project-specific patterns the agent must follow.
+- **should-describe-project-layout**: The instruction file **SHOULD** describe the project layout — where source, tests, and config live — so the agent navigates without guessing.
+- **should-state-out-of-scope**: The instruction file **SHOULD** state what is off-limits: files or directories not to edit, commands not to run, and any "ask first" actions.
+- **may-include-commit-security-deploy-notes**: The instruction file **MAY** include commit/PR conventions, security gotchas, and deployment steps.
+- **should-nest-per-package-files**: For multi-package repos you **SHOULD** place a scoped instruction file inside each package.
+- **should-keep-repo-wide-guidance-at-root**: The root file **SHOULD** hold repo-wide guidance.
+- **should-keep-only-differences-in-nested-files**: Nested files **SHOULD** hold only what differs for that package, to avoid duplication.
+- **must-stay-concise**: The file **MUST** stay concise and high-signal — keep durable, load-bearing instructions only.
+- **should-delete-obsolete-instructions**: You **SHOULD** delete instructions that are obsolete, obvious, or contradicted by the code.
+- **should-be-specific-and-verifiable**: Every instruction **SHOULD** be specific and verifiable (a command, a path, a named rule) rather than vague aspiration ("write clean code").
+- **should-review-on-structure-change**: You **SHOULD** review the file whenever build/test commands or project structure change, treating it as code that rots.

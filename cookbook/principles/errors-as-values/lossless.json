@@ -1,0 +1,49 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Expected vs exceptional: model recoverable outcomes (not-found, validation-failed, conflict) as returned values; let exceptions signal bugs and unrecoverable states.",
+      "to": [
+        "should-model-recoverable-outcomes-as-values",
+        "should-reserve-exceptions-for-unrecoverable"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-model-recoverable-outcomes-as-values keeps recoverable outcomes with examples as returned values; should-reserve-exceptions-for-unrecoverable keeps exceptions for bugs and unrecoverable states, both SHOULD.",
+        "pin": "038a2472dcb988e8deee26ff368fd83526bac394015e7c0a921b876816e5375b"
+      }
+    },
+    {
+      "sentence": "Put the failure in the signature: a function that can fail should say so in its return type, not through an undeclared throw a caller can't see.",
+      "to": "should-put-the-failure-in-the-signature",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-put-the-failure-in-the-signature keeps the 'should' at SHOULD: a failing function says so in its return type, not an undeclared throw.",
+        "pin": "408fe727843376907b738781e0c812c823690445afa1cddb3b30420e4415acfd"
+      }
+    },
+    {
+      "sentence": "Choose a boundary policy deliberately and keep it consistent per layer: Rust `Result`, Go explicit error returns, Kotlin sealed `Result`, Swift `Result`/`throws`, TypeScript Result-style libraries.",
+      "to": "should-keep-boundary-policy-consistent-per-layer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-boundary-policy-consistent-per-layer keeps choosing the policy deliberately, per-layer consistency, and all five language examples.",
+        "pin": "b97ca09f1c0e70f7799fb855256a2cab45e7f6e33d50f7d5e7caa021eb1b5e5b"
+      }
+    },
+    {
+      "sentence": "Never swallow: log-and-continue, a silent `null`, or a default that masks failure is the documented failure mode — propagate or handle explicitly.",
+      "to": "must-not-swallow-failures",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-swallow-failures keeps 'never swallow' as MUST NOT, all three failure modes, and propagate-or-handle-explicitly as MUST.",
+        "pin": "d3e9c66cdbbab9705f486199d55e5d189f6054a63f27ffa6ad337202165d2d78"
+      }
+    }
+  ],
+  "obsolete": []
+}

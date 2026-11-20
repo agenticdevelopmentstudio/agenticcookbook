@@ -1,0 +1,16 @@
+
+- `should-instrument-with-red-and-use`: whether every request-serving service has RED metrics and every consumable resource has USE metrics
+- `rate-metric`: whether each service emits request rate as a counter labeled by route/operation
+- `errors-metric`: whether each service emits failed requests as a separate counter or an `error`/`status` label, so error ratio is computable
+- `duration-metric`: whether each service emits request duration as a histogram
+- `error-definition`: whether each service documents what counts as an error
+- `cardinality-limit`: whether any label includes unbounded values
+- `resource-coverage`: whether every resource that can become a bottleneck is monitored on all three USE dimensions
+- `must-not-omit-saturation`: whether saturation is silently omitted anywhere
+- `saturation-signal`: whether saturation is a measured queue depth or wait metric
+- `naming-convention`: whether metric names follow one consistent scheme across services
+- `unit-discipline`: whether durations are in seconds and sizes in bytes, with the unit in metric metadata
+- `shared-labels`: whether `service`, `environment` and `version` labels are applied uniformly
+- `should-not-record-duration-as-gauge`: whether any duration is recorded as a gauge or average
+- `should-not-use-high-cardinality-labels`: whether any label is high-cardinality
+- `should-not-track-utilization-without-saturation`: whether utilization is tracked anywhere saturation is ignored

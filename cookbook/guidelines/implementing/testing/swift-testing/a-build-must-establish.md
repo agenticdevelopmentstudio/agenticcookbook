@@ -1,0 +1,24 @@
+
+- `should-use-swift-testing-for-new-unit-tests`: every new Swift unit test uses Swift Testing
+- `must-not-rewrite-passing-xctest-suites`: no passing XCTest suite is rewritten except when its test changes
+- `should-keep-ui-and-performance-tests-in-xctest`: UI tests and `measure {}` performance tests are in XCTest
+- `may-use-any-test-function-form`: every `@Test` function is a global function or method, optionally `async`, `throws` or actor-isolated
+- `should-pass-a-display-name`: every `@Test` has a descriptive display name
+- `should-use-expect-for-ordinary-assertions`: ordinary assertions use `#expect`
+- `should-not-restate-the-expression-in-a-message`: no `#expect` message restates its expression
+- `should-use-require-for-preconditions`: every precondition uses `#require`
+- `should-assert-errors-with-expect-throws`: error assertions use `#expect(throws:)` or `#require(throws:)`
+- `should-group-related-tests-with-suite`: related tests are grouped in a `@Suite` type
+- `should-annotate-suites-to-set-a-name-or-traits`: every suite needing a name or traits has `@Suite`
+- `should-prefer-per-test-instance-state`: test state is per-instance, set up in `init` and torn down in `deinit`
+- `should-pass-arguments-for-many-inputs`: tests over many inputs use `@Test(arguments:)`
+- `should-zip-paired-inputs`: paired inputs are passed through `zip(...)`
+- `should-prefer-parameterization-over-loops`: each case surfaces as a distinct result through parameterization
+- `should-attach-traits-for-behavior-and-metadata`: behavior and metadata are expressed as traits
+- `should-define-and-apply-tags`: tags are defined with `@Tag` and applied with `.tags(...)`
+- `should-keep-a-small-shared-tag-vocabulary`: every tag comes from the shared vocabulary
+- `should-target-the-latest-swift-toolchain`: the tests build on the latest Swift 6.2.x toolchain
+- `should-write-tests-clean-under-strict-concurrency`: the tests compile clean under strict concurrency
+- `should-annotate-main-actor-tests`: every `@Test` touching main-actor state is `@MainActor`
+- `should-follow-one-entity-per-file`: each file holds one suite `struct`, helpers in an `extension`
+

@@ -1,0 +1,99 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Generate schemes with the Material Theme Builder rather than hand-authoring every role.",
+      "to": "should-generate-schemes-with-theme-builder",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its 'rather than hand-authoring every role' contrast.",
+        "pin": "c3491c1228efa31e2902f0aac1823aa88225c587e90976d57a92305734442c39"
+      }
+    },
+    {
+      "sentence": "Read colors at use sites via `MaterialTheme.colorScheme.<role>`.",
+      "to": "should-read-colors-via-color-scheme",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Reading colors at use sites via MaterialTheme.colorScheme.<role> is kept at SHOULD.",
+        "pin": "f5114ae0ab0049896cb8a4f1779f67f4405bfd76d385cae3186f78821d79be2b"
+      }
+    },
+    {
+      "sentence": "Treat it as a deliberate decision, not a default — opt in when brand identity allows the OS to drive palette.",
+      "to": "should-treat-dynamic-color-as-deliberate",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Dynamic color as a deliberate decision, not a default, is kept at SHOULD with the opt-in condition (brand identity allows the OS to drive palette).",
+        "pin": "0b5d00e6ab976373f8bc66060c5af1ce0feeabe6f93fa18bf8ab7e874214c989"
+      }
+    },
+    {
+      "sentence": "**SHOULD** guard the API level and fall back to your branded scheme:",
+      "to": "should-guard-dynamic-color-api-level",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Guarding the API level and falling back to the branded scheme is kept at SHOULD; the code sample the colon introduced is kept in the dynamic-color-material-you examples part.",
+        "pin": "3291290fe28ab4de35eacdf85393c4d83bc4ea8c5754d667b1cba577358dabca"
+      }
+    },
+    {
+      "sentence": "When brand color fidelity is a hard requirement, prefer a fixed branded scheme over dynamic color.",
+      "to": "should-prefer-fixed-scheme-for-brand-fidelity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the hard-requirement condition and the fixed-over-dynamic preference.",
+        "pin": "ba637b63c928bd491b26f52ef146a151be921b0023e94209b2b07884cd722a34"
+      }
+    },
+    {
+      "sentence": "Use the M3 type scale roles (`displayLarge` … `labelSmall`) via `MaterialTheme.typography.<role>`.",
+      "to": "should-use-m3-type-scale-roles",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The M3 type scale roles (displayLarge … labelSmall) via MaterialTheme.typography.<role> are kept at SHOULD.",
+        "pin": "d087d1f31618794fb42ce6d4bdcd9e0e198f78e701ced7cd5b4a4ccc26fb0e92"
+      }
+    },
+    {
+      "sentence": "Use the shape scale (`extraSmall` … `extraLarge`) via `MaterialTheme.shapes`.",
+      "to": "should-use-shape-scale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The shape scale (extraSmall … extraLarge) via MaterialTheme.shapes is kept at SHOULD.",
+        "pin": "3525dbfbaefef18f440ceab90c99ed8bc34abd9d44e4ee352bd9f90fad4298b4"
+      }
+    },
+    {
+      "sentence": "Pin the dependency, e.g.",
+      "to": "should-pin-material3-dependency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning the dependency is kept at SHOULD, with the example version, its date and the Compose BOM qualifier.",
+        "pin": "3fa22b09b8148f42f2fd9af2138c17c02eb9034e7f3636377e4a21fffd9960d3"
+      }
+    },
+    {
+      "sentence": "Default to stable M3 color roles; adopt Expressive only behind a flag, on a pinned alpha, when a concrete UX need justifies the instability.",
+      "to": [
+        "should-default-to-stable-m3-color-roles",
+        "should-adopt-expressive-only-behind-a-flag"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept at SHOULD: stable M3 color roles as the default, and Expressive only behind a flag, on a pinned alpha, when a concrete UX need justifies it.",
+        "pin": "dcc7bf4a6585021606e31cc762e8d7a5d84b6f365821e2d0d833a614c3d1cb2f"
+      }
+    }
+  ],
+  "obsolete": []
+}

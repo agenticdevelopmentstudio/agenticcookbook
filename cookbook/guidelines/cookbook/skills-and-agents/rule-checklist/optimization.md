@@ -1,6 +1,4 @@
 
-Rules in `.claude/rules/` are injected into the system prompt on **every turn** — not just at session start. Every byte costs context on every user message, tool call, and response. These checks flag common sources of per-turn waste.
-
 | ID  | Criterion | How to check | Severity |
 |-----|-----------|-------------|----------|
 | O01 | Rule file under 200 lines / ~8KB | Count lines and bytes; larger rules should move content to on-demand skills or external references | WARN |

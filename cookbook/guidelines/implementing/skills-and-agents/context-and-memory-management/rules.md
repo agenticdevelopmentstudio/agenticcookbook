@@ -1,0 +1,21 @@
+
+- **must-curate-context-as-finite-budget**: The agent **MUST** treat the context window as a finite, actively curated budget — not an append-only transcript.
+- **must-not-front-load-context**: The agent **MUST NOT** front-load context "just in case."
+- **should-retrieve-context-just-in-time**: The agent SHOULD retrieve files, tool output, and references just-in-time, at the point they are needed.
+- **should-delegate-read-heavy-subtasks**: Large or read-heavy subtasks (codebase exploration, multi-file investigation, log analysis) **SHOULD** be delegated to a subagent that runs in an isolated context and returns only a condensed summary.
+- **should-clear-context-between-unrelated-tasks**: The agent **SHOULD** clear or reset context between unrelated tasks rather than carrying stale history forward.
+- **must-persist-state-that-outlives-the-window**: Information that must outlive the current window (decisions, conventions, task state) **MUST** be written to a persistent memory file, not relied upon to survive in-conversation.
+- **must-record-modified-files-and-commands-before-compaction**: Before a compaction is likely, the agent **MUST** ensure the **list of modified files** and the **test/run/build commands** are recorded somewhere durable (a memory file or compaction directive), so they survive the summary.
+- **should-assume-compaction-loses-specifics**: The agent **SHOULD** assume compaction loses specifics: exact line numbers, intermediate reasoning, and raw tool output are not guaranteed to persist.
+- **should-declare-compaction-preservation-directives**: Where the harness supports it, the agent **SHOULD** declare compaction-preservation directives (e.g. "when compacting, always keep the full modified-file list and test commands").
+- **must-return-condensed-subagent-summary**: A subagent **MUST** return a condensed summary (findings, file paths, decisions) — not raw dumps of everything it read.
+- **must-not-assume-subagent-context-survives**: The caller **MUST NOT** assume the subagent's intermediate context is available afterward; only the returned summary survives.
+- **must-keep-cross-session-state-in-a-persistent-file**: Cross-session continuity (plans, conventions, in-progress task state) **MUST** live in a persistent file the agent re-reads at session start, since the context window does not persist between sessions.
+- **must-keep-memory-files-concise**: Memory files **MUST** stay concise and high-signal.
+- **should-keep-only-behavior-changing-memory**: A memory file SHOULD keep only what changes behavior.
+- **should-prune-memory-regularly**: Memory files SHOULD be pruned regularly.
+- **must-not-duplicate-rederivable-information**: The agent **MUST NOT** duplicate information the model can cheaply re-derive (e.g. file contents, standard conventions) into memory; store only what cannot be inferred.
+- **should-reset-context-on-task-switch**: On switching to an unrelated task, the agent **SHOULD** reset context so prior files and tool output do not bias the new work.
+- **should-restart-after-repeated-failed-corrections**: After repeated failed correction attempts on one problem, the agent **SHOULD** clear the polluted context and restart from a sharper prompt rather than layering more corrections — failed approaches in-window degrade subsequent reasoning.
+- **should-treat-a-bigger-window-as-headroom**: The agent SHOULD treat a bigger window as more headroom, not a license to stop curating — this is a durable property, not a vendor-specific number.
+

@@ -4,11 +4,11 @@
     "id": "b5a1b4b6-c61c-4b45-825f-730bd782d0f3",
     "title": "CQRS and event sourcing",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,20 +30,20 @@
       "https://www.usefulfunctions.co.uk/2025/11/06/cqrs-and-event-sourcing-when-to-use/",
       "https://www.ashrafmageed.com/cqrs-eventsourcing-and-the-cost-of-tooling-constraints/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "data-modeling",
       "schema-design"
     ]
   },
-  "synced": "cfa8ac642fd37afe",
+  "synced": "a447c0e615931932",
   "parts": [
     {"part": "intro"},
-    {"part": "measured-need-guardrail-strong", "heading": "MEASURED-NEED guardrail (strong)"},
-    {"part": "adopt-only-when-a-trigger-holds", "heading": "Adopt ONLY when a trigger holds"},
-    {"part": "costs-you-take-on-plan-for-each-before-adopting", "heading": "Costs you take on (plan for each before adopting)"},
-    {"part": "implementation-guidance-when-justified", "heading": "Implementation guidance (when justified)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

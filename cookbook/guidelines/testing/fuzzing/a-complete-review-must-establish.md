@@ -1,0 +1,16 @@
+
+- `should-fuzz-trust-boundary-parsers`: every parser, decoder or deserializer of data crossing a trust boundary has a fuzz target, or the code says why not
+- `should-prioritize-memory-unsafe-languages`: parsing code in memory-unsafe languages is fuzzed first, or the code says why not
+- `should-not-default-fuzz-business-logic`: no business or UI logic without an untrusted-input boundary is a default fuzz target, or the code says why
+- `must-keep-targets-deterministic`: every fuzz target is deterministic for a given input
+- `should-run-c-cpp-fuzzers-with-sanitizers`: every C/C++ fuzz build runs with sanitizers, or the code says why not
+- `should-use-arbitrary-for-rust-structured-inputs`: Rust targets with structured inputs use `arbitrary`, or the code says why not
+- `should-consider-oss-fuzz`: an open-source project with a stable harness has considered OSS-Fuzz, or the code says why not
+- `should-pin-and-evaluate-forecast-go-fork`: any use of the `gosentry` fork is pinned and was evaluated first, with standard `go test -fuzz` kept as the baseline, or the code says why not
+- `must-accept-raw-bytes-one-entry-point`: every fuzz target accepts raw bytes or a deterministic derivation and exercises exactly one parsing entry point
+- `must-fail-loudly`: every harness asserts invariants and lets sanitizers and panics surface defects
+- `should-seed-starting-corpus`: every fuzz target has a seed corpus from real and edge-case samples, or the code says why not
+- `must-commit-crashes-as-regression-cases`: every crash a fuzzer found is committed as a regression-corpus case
+- `should-run-long-campaigns-off-critical-path`: long campaigns run in CI/nightly and PRs gate on the regression corpus plus a short smoke run, or the code says why not
+- `should-reproduce-and-minimize-before-filing`: every filed crash was reproduced from its saved input and minimized, or the report says why not
+- `should-classify-by-sanitizer-report`: every crash is classified by its sanitizer report, with memory-safety crashes escalated per security testing, or the report says why not

@@ -1,0 +1,11 @@
+
+- `should-anchor-sessions-on-the-four-questions`: the threat model records an answer under each of the four questions, or the work says why not
+- `must-answer-all-four-questions`: the model holds a DFD, enumerated threats, responses and a validation
+- `must-record-a-response-per-threat`: every threat has an explicit response, and every "accept" names a rationale and owner
+- `should-use-stride-for-question-two`: the threat list is organised by STRIDE category, or the work says why not
+- `must-consider-every-stride-category-at-trust-boundaries`: each flow crossing a trust boundary has an entry for every STRIDE category, "not applicable" included
+- `should-map-each-threat-to-a-linked-control`: each threat names a control in the feature plan and links its guideline, or the work says why not
+- `should-model-trust-boundaries-before-building`: the trust-boundary model predates the feature's build, or the work says why not
+- `should-revisit-the-model-on-architecture-change`: the model is updated for each architecture change, or the work says why not
+- `should-keep-each-session-lightweight`: each feature has a focused diagram and short threat list, or the work says why not
+- `should-keep-threat-models-in-version-control`: the threat model is committed beside the design it describes, or the work says why not

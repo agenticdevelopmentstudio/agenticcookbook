@@ -1,0 +1,18 @@
+
+- `must-not-deploy-at-full-exposure`: whether a deploy implies 100% exposure
+- `must-change-exposure-without-redeploy`: whether the exposure control plane changes without a redeploy
+- `must-make-each-change-observable`: whether each progressive change is observable on its own
+- `should-pick-lightest-mechanism`: whether the lightest fitting mechanism is used without stacking
+- `should-roll-out-high-risk-changes-progressively`: whether high-risk changes are rolled out progressively
+- `must-give-each-step-hold-and-criteria`: whether every step has an explicit hold duration and pass/fail criteria
+- `must-keep-schema-backward-compatible`: whether schema and data changes stay backward-compatible across the rollout window
+- `must-define-health-gates-before-rollout`: whether quantitative health gates were defined before rollout
+- `should-roll-back-automatically`: whether rollback triggers automatically on a failed gate or fast budget burn
+- `must-expose-single-kill-switch`: whether a single kill switch reverts exposure in one action
+- `must-make-rollback-idempotent`: whether rollback and re-application are idempotent
+- `should-automate-routine-scoring-and-revert`: whether routine scoring and revert are automated
+- `should-remove-rollout-flags`: whether rollout flags are removed once the change is at 100% and stable
+- `should-pause-rollouts-during-incidents`: whether new rollouts pause during incidents or an exhausted budget
+- `should-prefer-native-progressive-delivery`: whether native support was preferred before bespoke traffic-shifting
+- `should-pin-tool-version-in-runbook`: whether the tool and version are pinned in the runbook
+- `should-treat-vendor-adoption-stats-as-marketing`: whether single-vendor adoption stats are treated as marketing

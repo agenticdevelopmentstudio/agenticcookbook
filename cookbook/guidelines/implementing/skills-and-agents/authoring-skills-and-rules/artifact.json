@@ -4,7 +4,7 @@
     "id": "dccc22a6-94f3-4cfc-8b30-bae18c56f6f0",
     "title": "Authoring Skills and Rules",
     "type": "guideline",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-28",
@@ -24,20 +24,24 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "skill-authoring"
     ]
   },
   "names_hosts": "Tells authors to update the CLAUDE.md skills table, a Claude Code file.",
-  "synced": "36a5f41ff6af2836",
+  "synced": "81b688541472333f",
   "parts": [
     {"part": "intro"},
-    {"part": "overview", "heading": "Overview"},
-    {"part": "skill-design", "heading": "Skill Design"},
-    {"part": "rule-design", "heading": "Rule Design"},
-    {"part": "agent-design", "heading": "Agent Design"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "overview", "heading": "Overview", "role": "rationale"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

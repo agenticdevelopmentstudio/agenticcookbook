@@ -4,11 +4,11 @@
     "id": "ef2d2757-132a-403b-8e98-bbeca9c42deb",
     "title": "Framework Conventions",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-04-07",
-    "modified": "2026-11-07",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,20 +27,23 @@
     "depends-on": [],
     "related": [],
     "references": [],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "code-review"
     ]
   },
-  "informational": "An analysis lens: the signals to look for and the findings to report when scoping a codebase; it sets no requirements.",
-  "synced": "a67e1d8f89fbabff",
+  "synced": "4a43f26b4b0c2520",
   "parts": [
     {"part": "intro"},
-    {"part": "signals-and-indicators", "heading": "Signals and Indicators"},
-    {"part": "boundary-detection", "heading": "Boundary Detection"},
-    {"part": "findings-format", "heading": "Findings Format"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "signals-and-indicators", "heading": "Signals and Indicators", "role": "how-to"},
+    {"part": "findings-format", "heading": "Findings Format", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

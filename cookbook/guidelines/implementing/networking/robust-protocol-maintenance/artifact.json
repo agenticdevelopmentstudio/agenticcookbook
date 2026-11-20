@@ -4,11 +4,11 @@
     "id": "8445807b-5d0f-46f7-8024-b02586627779",
     "title": "Be strict and maintain: Postel reconsidered (RFC 9413)",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,19 +28,23 @@
     "references": [
       "https://datatracker.ietf.org/doc/html/rfc9413"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "api-integration",
       "input-handling"
     ]
   },
-  "synced": "23e6744fb39a765f",
+  "synced": "16692fb9fb3322b7",
   "parts": [
     {"part": "intro"},
-    {"part": "why-naive-tolerance-fails-rfc-9413-2023", "heading": "Why naive tolerance fails (RFC 9413, 2023)"},
-    {"part": "rules", "heading": "Rules"},
-    {"part": "strict-core-forgiving-edge-do-not-over-rotate", "heading": "Strict core, forgiving edge — do not over-rotate"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "strict-core-forgiving-edge-do-not-over-rotate", "heading": "Strict core, forgiving edge", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-naive-tolerance-fails-rfc-9413-2023", "heading": "Why naive tolerance fails (RFC 9413, 2023)", "role": "rationale"},
+    {"part": "do-not-over-rotate", "heading": "Do not over-rotate", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,23 @@
+
+- `single-trunk`: whether one shared mainline is the integration point for all work
+- `integrate-daily`: whether work is integrated into trunk at least daily or decomposed until it can be
+- `short-lived-branches`: whether branches live no more than 1-2 days and merges are many and small
+- `flag-incomplete-work`: whether incomplete work is merged disabled behind a feature flag
+- `trunk-stays-releasable`: whether trunk stays releasable, with no breaking merge landed
+- `green-trunk`: whether required status checks pass before every merge and trunk is not left red
+- `revertable-merges`: whether each merge is a single squashed commit
+- `no-freeze`: whether integration is continuous rather than deferred to a batched phase
+- `should-branch-small`: whether each branch is short-lived, cut from current `main`, for one logical change
+- `should-flag-partial-change`: whether a partial change is gated behind a default-off flag
+- `should-commit-atomically`: whether each commit is one logical change with build and tests run first
+- `should-rebase-onto-main`: whether the branch was rebased onto the latest `main` before the PR
+- `should-merge-within-a-day`: whether the PR merged within a day with checks green
+- `should-prefer-squash-merges`: whether squash merges were preferred
+- `must-not-sit-on-work`: whether days of work accumulated on a branch until complete
+- `must-not-let-branch-diverge`: whether a branch diverged from trunk for a week before a large merge
+- `must-not-use-develop-as-staging-trunk`: whether a `develop` branch serves as a staging trunk
+- `must-not-park-finished-code-on-branch`: whether finished-but-unreleased code is held on a branch
+- `must-not-bypass-required-checks`: whether required checks were disabled or bypassed to land a merge
+- `should-establish-green-trunk-gating-first`: whether green-trunk gating was established first
+- `may-cut-release-branch-for-audited-build`: whether any release branch is a tagged, audited build cut from trunk rather than an integration branch
+- `should-treat-dora-as-correlation`: whether the DORA finding is treated as correlation, not a guarantee

@@ -1,0 +1,19 @@
+
+- `must-not-do-ground-research-in-orchestrator`: the orchestrator's code only plans and synthesizes; any search or fetch call made by the orchestrator itself breaks it
+- `should-budget-isolated-subtopic-specialists`: each subtopic is handed to its own specialist with its own budget and isolated context, not run in one shared context
+- `should-outline-before-searching`: an outline is produced before the first search is issued
+- `should-reflect-at-supervisor-and-worker-level`: a reflection step exists in both the supervisor loop and the worker loop
+- `should-stop-on-coverage`: the stop condition tests coverage (two independent sources, or one authoritative one), not a loop count
+- `should-use-multi-engine-domain-routed-sources`: retrieval calls more than one engine and routes by domain
+- `should-rerank-and-quality-gate-sources`: a rerank and a quality gate sit between retrieval and the LLM call
+- `should-filter-by-freshness-and-authority`: sources are filtered by freshness and by authority / venue reputation
+- `should-read-full-pages`: the agent fetches and reads full pages, not search snippets
+- `should-use-dedicated-reviewer`: a separate reviewer step with explicit acceptance criteria checks the output
+- `should-corroborate-across-sources`: claims are checked against more than one source
+- `should-check-url-health`: cited URLs are checked to resolve and the citation to exist
+- `should-build-in-perspective-diversity`: the research structure draws on several perspectives
+- `should-attach-citations-at-retrieval`: citation metadata is attached when a source is retrieved, not added after generation
+- `should-cite-at-claim-level-with-quote`: each claim or sentence carries its own citation with the supporting quote
+- `should-keep-stable-numbered-citations`: citation numbers survive summarization unchanged
+- `should-report-confidence-per-section`: the report follows the outline and each section carries a confidence / coverage indicator
+- `should-keep-intermediate-artifacts`: the outline and mind-map are kept for human review, not discarded

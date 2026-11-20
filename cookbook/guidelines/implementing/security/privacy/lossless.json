@@ -1,0 +1,316 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Declare only required capabilities in `Package.appxmanifest` — avoid `broadFileSystemAccess` unless essential",
+      "to": "should-declare-only-required-capabilities",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Declaring only required capabilities in Package.appxmanifest and avoiding broadFileSystemAccess unless essential is kept at SHOULD; the old C# section's Windows scope is kept as On Windows.",
+        "pin": "5a5dfa21b756a86eafa135435aca1c0d6395becc8f46b521dc1a9c51815cc351"
+      }
+    },
+    {
+      "sentence": "Use DPAPI for local secret storage (see secure-storage.md)",
+      "to": "should-use-dpapi-for-local-secrets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using DPAPI for local secret storage, with the secure-storage cross-reference, is kept at SHOULD for Windows.",
+        "pin": "8f5b9fe6d3d5b89bc6b9553d5dcc17922693cc6dde9e8de5ebc87f51c3d9c492"
+      }
+    },
+    {
+      "sentence": "No PII in logs, even at debug level",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No PII in logs even at debug level is kept, now as a general MUST NOT, broader than the old C# scope.",
+        "pin": "419fe4c88353a8be9ae2ca9f692fbc1a90f769452650f891c3581def62e73349"
+      }
+    },
+    {
+      "sentence": "Respect user consent: app must remain functional if optional data collection is denied",
+      "to": "must-remain-functional-when-denied",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Respecting consent and the app remaining functional when optional data collection is denied is kept at MUST.",
+        "pin": "32209461275f3e71b3ca5d2524b83766868c27ac6859975462325420cf28d78b"
+      }
+    },
+    {
+      "sentence": "### Data minimization",
+      "to": "should-collect-only-what-is-needed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The data-minimization heading is carried by its rule, labelled data minimization.",
+        "pin": "2a1470564410816c7cd33726eeffab1e3c8c214a3b6ef9d146fe309a005bb9f9"
+      }
+    },
+    {
+      "sentence": "Collect only what is needed.",
+      "to": "should-collect-only-what-is-needed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Collecting only what is needed is kept, the unkeyed instruction at SHOULD.",
+        "pin": "00f6098527499ead7120c4bc1990d673431361725e699a9e97d8d0596e49fe62"
+      }
+    },
+    {
+      "sentence": "Prefer on-device processing.",
+      "to": "should-prefer-on-device-processing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring on-device processing is kept at SHOULD.",
+        "pin": "12c23eb95a46d6dbf84d97580b7d3ca1d4a20825de78ce4d545bc0cf1544b2c1"
+      }
+    },
+    {
+      "sentence": "### Consent",
+      "to": "should-require-opt-in-for-non-essential-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The consent heading is carried by the opt-in rule, labelled consent.",
+        "pin": "db6ad0172a39385d7c2db525ec4d784a6fe3fd000594c21298859ea987b17b2a"
+      }
+    },
+    {
+      "sentence": "Opt-in for non-essential data collection.",
+      "to": "should-require-opt-in-for-non-essential-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Opt-in for non-essential data collection is kept at SHOULD.",
+        "pin": "64be471b68114629314d6e985eb515598f19c4c4010dfe629f9780cd512e1461"
+      }
+    },
+    {
+      "sentence": "Honor \"deny\" gracefully — the app must remain functional.",
+      "to": "must-remain-functional-when-denied",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Honoring deny gracefully, with the app remaining functional, is kept at MUST.",
+        "pin": "ec07a60f8598f162025f1673e8454f791e85ee98e5a8240b66039feaf1760fa8"
+      }
+    },
+    {
+      "sentence": "### Secure storage",
+      "to": "must-use-platform-secure-storage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The secure-storage heading is carried by the platform secure storage MUST with the same four mechanisms.",
+        "pin": "79d05fafab00b47ba1d046976dc49a5f59d263a205321caf4babd89a08495203"
+      }
+    },
+    {
+      "sentence": "Never log personally identifiable information, even at debug level.",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never logging PII even at debug level is kept at MUST NOT.",
+        "pin": "91fe93f87475a3fd0d7e724fe623bfd14d37c0bba6548e453c562e02caa54769"
+      }
+    },
+    {
+      "sentence": "### TLS only",
+      "to": "must-use-https",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The TLS-only heading is carried by the HTTPS MUST, labelled TLS only.",
+        "pin": "4729bcfbc1c2fc6b2f69569c7addda5ee1c27e7d930163f59ed7c7880716ed6d"
+      }
+    },
+    {
+      "sentence": "All network communication MUST use HTTPS.",
+      "to": "must-use-https",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All network communication using HTTPS is kept at MUST.",
+        "pin": "fb175bf696fb70a60314f3b85aa68b481e2a7118012170f17e64ff6b2b9f4c08"
+      }
+    },
+    {
+      "sentence": "### Input sanitization",
+      "to": "should-sanitize-input-before-display",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The input-sanitization heading is carried by its rule, labelled input sanitization.",
+        "pin": "b1fb76416561ad0f222eae7aba4258d28e8179f7c565111375c648594716028c"
+      }
+    },
+    {
+      "sentence": "# Privacy",
+      "to": "must-build-privacy-in-from-day-one",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The Privacy section heading is carried by the build-in-from-day-one rule that opened it; its other sentences have their own rules.",
+        "pin": "db32df7750534f4bd50bc643f6b916211033a4649764f32b7f995665d9c784ba"
+      }
+    },
+    {
+      "sentence": "Privacy and security must be built in from day one.",
+      "to": "must-build-privacy-in-from-day-one",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Building privacy and security in from day one is kept at MUST.",
+        "pin": "b95937e29921b1eeb50a58e53e7ef4b3416725bc64f60de17c603949de617e44"
+      }
+    },
+    {
+      "sentence": "No PII in logs, even at debug level.",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "No PII in logs even at debug level is kept at MUST NOT.",
+        "pin": "cbb8ab8238caa11cbd3cf36684695d86351d84b6739433aa3b0a5ff2bfe757c4"
+      }
+    },
+    {
+      "sentence": "Respect scoped storage, support per-app language preferences, and honor permission denials gracefully.",
+      "to": "should-respect-android-storage-language-and-denials",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Scoped storage, per-app language preferences and graceful permission denials are kept at SHOULD, with the old Kotlin section's scope kept as On Android.",
+        "pin": "b9cc58b1d0a6447f56a36fb381d014a37c098c17d2511ca068b38843b0293e5a"
+      }
+    },
+    {
+      "sentence": "Show rationale dialogs before runtime permission requests.",
+      "to": "should-show-rationale-before-permission-requests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rationale dialogs before runtime permission requests are kept at SHOULD on Android.",
+        "pin": "d1604d4bd9d5a4bccd1b8195e4ea209302e4e818f643d48282642d76b3b56aab"
+      }
+    },
+    {
+      "sentence": "Support App Tracking Transparency, App Privacy Report, and Private Relay compatibility.",
+      "to": "should-support-apple-privacy-features",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Supporting App Tracking Transparency, App Privacy Report and Private Relay is kept at SHOULD, the old Swift scope kept as On Apple platforms.",
+        "pin": "abb58bd0710d3184a3033f6a6a0da9ffec84c75f5cf0948e6bdcc4682cba6344"
+      }
+    },
+    {
+      "sentence": "Include `NS*UsageDescription` keys with human-readable explanations for all permission prompts.",
+      "to": "should-include-usage-descriptions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "NS*UsageDescription keys with human-readable explanations for all permission prompts are kept at SHOULD on Apple platforms.",
+        "pin": "a28a365f17ab53d8a579ae1bda6ba7b688494b3f7ee704695b6631a1484e8120"
+      }
+    },
+    {
+      "sentence": "**Content Security Policy**: Configure CSP headers to restrict script sources and prevent XSS.",
+      "to": "should-configure-csp",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Configuring CSP headers to restrict script sources and prevent XSS is kept at SHOULD, the old TypeScript scope kept as On the web.",
+        "pin": "6ffd79c4f99f13767a66eae252eb1b3302cfa7e7050969e006392a047bca623a"
+      }
+    },
+    {
+      "sentence": "**HttpOnly cookies**: Use HttpOnly secure cookies for authentication tokens.",
+      "to": "should-use-httponly-cookies-for-tokens",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "HttpOnly secure cookies for authentication tokens are kept at SHOULD on the web.",
+        "pin": "c8d8bb93ab1984d02a215f3119f8fbc13f8adb45728743f7f20a1e67cf5725b1"
+      }
+    },
+    {
+      "sentence": "**Input sanitization**: Sanitize all user input before display to prevent XSS and injection.",
+      "to": "should-sanitize-input-before-display",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Sanitizing all user input before display to prevent XSS and injection is kept at SHOULD, now unscoped.",
+        "pin": "fa1c58cab44fd720b6c94e3436b900d6a77ea05116fe3827c630303f04f1f10b"
+      }
+    },
+    {
+      "sentence": "**TLS only**: All network communication MUST use HTTPS.",
+      "to": "must-use-https",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All network communication using HTTPS is kept at MUST.",
+        "pin": "22b3f068602d1c2b303f7d4e9bdaaef4f83d46cbe5985badf6905c5a5ce2c5e7"
+      }
+    },
+    {
+      "sentence": "Minimize third-party scripts.",
+      "to": "should-minimize-third-party-scripts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Minimizing third-party scripts is kept at SHOULD on the web.",
+        "pin": "bcfbf2802100c63272ae4899850880d758d97d0deb580f0f24cb001623f78fa4"
+      }
+    },
+    {
+      "sentence": "Respect the Do Not Track header.",
+      "to": "should-respect-do-not-track",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Respecting the Do Not Track header is kept at SHOULD on the web.",
+        "pin": "94299e642178dfb39bec7c42dd6f9ab6864bf5eb3f7f14ddaaa2a727f798a417"
+      }
+    },
+    {
+      "sentence": "### No PII logging",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The No PII logging heading is carried by the PII-logging MUST NOT, labelled no PII logging.",
+        "pin": "279d27501030b0aa815f5c2e4573651e921834820cb446c6bca3b79fc9bad773"
+      }
+    },
+    {
+      "sentence": "Sanitize all user input before display (prevent XSS, injection).",
+      "to": "should-sanitize-input-before-display",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Sanitizing user input before display to prevent XSS and injection is kept at SHOULD.",
+        "pin": "e7ced343f328efe4e004a0363ad010c56cdfa97f5505e92a9a6be25d43ed2595"
+      }
+    },
+    {
+      "sentence": "Never store tokens in `localStorage`.",
+      "to": "must-not-store-tokens-in-localstorage",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never storing tokens in localStorage is kept at MUST NOT on the web.",
+        "pin": "d76d9a6051775a9e30a15b6456206f75a8f8860900acd4ef9b2e45df8786ae52"
+      }
+    }
+  ],
+  "obsolete": []
+}

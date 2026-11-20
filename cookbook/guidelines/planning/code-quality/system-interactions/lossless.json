@@ -1,0 +1,82 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Lifecycle callback implementations are natural scope group anchors.** Files that implement `UIApplicationDelegate`, `AndroidApplication`, or equivalent are the entry points of the application — they are architectural seams where scope groups plug in.",
+      "to": [
+        "should-anchor-groups-on-lifecycle-callbacks",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-anchor-groups-on-lifecycle-callbacks keeps UIApplicationDelegate/AndroidApplication implementers as natural anchors and architectural seams; the rationale keeps that they are the application's entry points.",
+        "pin": "286202d6a60741fe6c64476d29ba4f37da772d098db5f0e02b513efe24e2baa2"
+      }
+    },
+    {
+      "sentence": "**Each OS integration point is a potential boundary.** A file that handles push notification payloads is in the notification scope group.",
+      "to": "should-treat-each-os-integration-point-as-distinct",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-each-os-integration-point-as-distinct keeps each integration point as a potential boundary and its sub-item keeps push-notification payload handlers in the notification group.",
+        "pin": "1fa0fcb45353c75c4af377d586fb52d1eb3bdc26a8c07a00cbb8828010e7a81c"
+      }
+    },
+    {
+      "sentence": "Treat each OS integration point as a distinct concern.",
+      "to": "should-treat-each-os-integration-point-as-distinct",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-treat-each-os-integration-point-as-distinct keeps treating each OS integration point as a distinct concern (unkeyed, now SHOULD).",
+        "pin": "31820f8e13927ef44c334c5cdfc1e05523781983e0650b183762de2f505162e4"
+      }
+    },
+    {
+      "sentence": "**Background execution code belongs in its own scope group.** Background tasks have distinct lifecycle, resource, and testing constraints.",
+      "to": [
+        "should-give-background-code-own-group",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-give-background-code-own-group keeps background code in its own group; the rationale keeps the distinct lifecycle, resource and testing constraints.",
+        "pin": "f7594ee8c2a829dee5a9bf659f1e0fc2377d31b3745f4234edacecb583ed8758"
+      }
+    },
+    {
+      "sentence": "Code that runs in background contexts should not be mixed with foreground UI code.",
+      "to": "should-not-mix-background-with-foreground-ui",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-mix-background-with-foreground-ui keeps the should-not at SHOULD NOT.",
+        "pin": "132fccd949d12e91f7b30ca96ebc19f7fa4f33b9ce74f7bc0ce319956fd4eeeb"
+      }
+    },
+    {
+      "sentence": "**IPC code is infrastructure.** An app extension that communicates with its host app via shared container is infrastructure-layer code — it should be grouped with other infrastructure, not with the feature it serves.",
+      "to": "should-group-ipc-with-infrastructure",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-ipc-with-infrastructure keeps the shared-container app-extension example as infrastructure code grouped with infrastructure, not with the feature it serves.",
+        "pin": "f8c9151f5d321e742ff745c3a8d8bc121ec05dc37b11a585311ca1ed3f6fe238"
+      }
+    },
+    {
+      "sentence": "**Lifecycle callbacks that dispatch to many subsystems are composition roots.** An `AppDelegate` that calls 15 different services is a composition root, not a feature — it belongs in an `App` or `Bootstrap` scope group that wires everything together.",
+      "to": "should-place-composition-roots-in-bootstrap-group",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-place-composition-roots-in-bootstrap-group keeps the many-subsystem dispatcher (AppDelegate calling 15 services) as a composition root, not a feature, placed in an App or Bootstrap group.",
+        "pin": "c654feef7a1979070d6002610f67d50e467c8d474096cc7e81dd79e69b13d69d"
+      }
+    }
+  ],
+  "obsolete": []
+}

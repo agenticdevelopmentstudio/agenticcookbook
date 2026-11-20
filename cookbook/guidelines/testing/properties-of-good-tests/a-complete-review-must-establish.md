@@ -1,0 +1,13 @@
+
+- `must-be-isolated`: no test shares mutable state or depends on execution order
+- `must-be-composable`: every test can run in any subset and any order
+- `must-be-deterministic`: every test produces the same result every time
+- `should-be-fast`: unit tests run in milliseconds and integration tests in seconds, or the code says why not
+- `should-be-writable`: tests are easy to author with low ceremony, or the code says why not
+- `should-be-readable`: a failing test tells you what broke and why, or the code says why not
+- `should-be-behavioral`: tests verify what the code does, not how, or the code says why not
+- `should-be-structure-insensitive`: refactoring internals does not break the tests, or the code says why
+- `should-be-automated`: tests need no manual step or human judgment, or the code says why
+- `should-be-specific`: each failure points to exactly one cause, or the code says why not
+- `should-be-predictive`: passing tests mean the code works in production, or the code says why not
+- `should-be-inspiring`: the suite gives confidence to refactor and ship, or the code says why not

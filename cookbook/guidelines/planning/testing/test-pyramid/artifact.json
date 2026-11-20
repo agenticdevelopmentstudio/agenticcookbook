@@ -4,7 +4,7 @@
     "id": "a8f9c003-e970-4f28-bb7d-30a23b891b3f",
     "title": "Test Pyramid",
     "type": "guideline",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -26,18 +26,22 @@
       "https://web.dev/articles/ta-strategies",
       "https://www.wiremock.io/post/rethinking-the-testing-pyramid"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests",
       "pre-pr"
     ]
   },
-  "synced": "8f9de13142a67c13",
+  "synced": "97605ad23b9d6d1c",
   "parts": [
     {"part": "intro"},
-    {"part": "the-shape-is-context-dependent", "heading": "The shape is context-dependent"},
-    {"part": "the-shape-is-context-dependent-2", "heading": "The shape is context-dependent"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "test-kinds", "heading": "Test kinds", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -4,11 +4,11 @@
     "id": "d53b7623-38ee-4d9f-a99b-f54b6a64f7a6",
     "title": "Tool-call evaluation",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,22 @@
       "https://proceedings.mlr.press/v267/patil25a.html",
       "https://modelcontextprotocol.io/specification/2025-06-18"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ai-api-integration",
       "writing-tests"
     ]
   },
-  "synced": "83243c7c5c36ceb4",
+  "synced": "94d9683624668195",
   "parts": [
     {"part": "intro"},
-    {"part": "what-to-score", "heading": "What to score"},
-    {"part": "build-a-trajectory-suite", "heading": "Build a trajectory suite"},
-    {"part": "error-recovery-cases", "heading": "Error-recovery cases"},
-    {"part": "test-long-compositions-explicitly", "heading": "Test long compositions explicitly"},
-    {"part": "practices", "heading": "Practices"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "what-to-score", "heading": "What to score", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

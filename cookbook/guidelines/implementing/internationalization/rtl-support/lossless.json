@@ -1,0 +1,240 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "All layouts MUST support right-to-left languages:",
+      "to": "must-support-rtl-languages",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All layouts supporting right-to-left languages is kept at MUST; the four practices it introduced are carried by their own rules.",
+        "pin": "a4879dd0b5ce3d8bfa7170c227541a8d16a2201198858ca35d115af250cbd9a3"
+      }
+    },
+    {
+      "sentence": "Use **leading/trailing** (not left/right) for alignment and padding",
+      "to": "should-use-leading-trailing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed instruction to use leading/trailing, not left/right, for alignment and padding is kept at SHOULD.",
+        "pin": "fb029147d286309e07ecbd7aa6ffbddba8a211ba3d7383122eba96e63b88111d"
+      }
+    },
+    {
+      "sentence": "Mirror icons with directional meaning (forward/back arrows)",
+      "to": "should-mirror-directional-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Mirroring icons with directional meaning, with the forward/back example, is kept at SHOULD.",
+        "pin": "82d501358e1f682b137274a2f1f29239ab592e6957be78df73a43c71c6b5c926"
+      }
+    },
+    {
+      "sentence": "Do NOT mirror non-directional icons (checkmarks, clocks)",
+      "to": "should-not-mirror-non-directional-icons",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Do NOT mirror non-directional icons', with the checkmark/clock examples, is kept at SHOULD NOT.",
+        "pin": "c28655eb6e2110421fdce751d71e0a99b616cddd9d4804d511250ee5ffb3cb99"
+      }
+    },
+    {
+      "sentence": "Test with RTL locale enabled",
+      "to": "should-test-with-rtl-locale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Testing with an RTL locale enabled is kept at SHOULD.",
+        "pin": "27ef8846f8a5777aa23ed6b0e1e1f31cd1a6ae7cd8e84483c16b114faf378d72"
+      }
+    },
+    {
+      "sentence": "Platform notes:",
+      "to": [
+        "should-use-leading-trailing",
+        "should-preview-rtl-on-apple",
+        "should-set-flow-direction-on-windows"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Platform notes' lead-in is carried by the platform rules it names and by the platform-notes part, which keeps the label.",
+        "pin": "208db7646a583893bbd7cb8038ed9e3ed71b02ef9566fb0c540196b5679a3874"
+      }
+    },
+    {
+      "sentence": "**Apple**: Use `.environment(\\.layoutDirection, .rightToLeft)` in previews.",
+      "to": "should-preview-rtl-on-apple",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Previewing with .environment(\\.layoutDirection, .rightToLeft) on Apple is kept at SHOULD.",
+        "pin": "fe2d96acf09f81ef4ec424b663b88ed893e01773e1659634378896eea3a31fa7"
+      }
+    },
+    {
+      "sentence": "SwiftUI handles leading/trailing automatically.",
+      "to": "platform-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fact that SwiftUI handles leading/trailing automatically is kept in platform-notes.",
+        "pin": "aa8de26567d9c088d5d7758e60f83320385df832155f305f1e02acca6755b634"
+      }
+    },
+    {
+      "sentence": "**Android**: Set `android:supportsRtl=\"true\"`.",
+      "to": "should-set-supports-rtl-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting android:supportsRtl=\"true\" is kept at SHOULD, scoped to Android and placed in the manifest.",
+        "pin": "cc4e49de58e751fc93b6ae9b22cdad7522c415a8db280dbe99c27fc2ab467e85"
+      }
+    },
+    {
+      "sentence": "Use `start`/`end` instead of `left`/`right`.",
+      "to": "should-use-start-end-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "start/end instead of left/right on Android is kept at SHOULD.",
+        "pin": "0865e92f98a373ee2e976cd8f4002c930d8485b0a9e4a47ca1179976d736bf76"
+      }
+    },
+    {
+      "sentence": "**Web**: Use `dir=\"rtl\"` attribute.",
+      "to": "should-set-dir-rtl-on-web",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The web dir=\"rtl\" attribute is kept at SHOULD, on the root element for RTL locales.",
+        "pin": "8c0b3c72df4b7cf58ba1a2a1ae5a14d5adf14974a64a87b1f6462b3c922099c5"
+      }
+    },
+    {
+      "sentence": "Use CSS logical properties (`margin-inline-start` not `margin-left`).",
+      "to": "should-use-css-logical-properties",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "CSS logical properties on the web, with the margin-inline-start example, are kept at SHOULD.",
+        "pin": "194b66c46cc41919b8e5060832fd24da3a69f825ad5f47a76098f6af90dbba3a"
+      }
+    },
+    {
+      "sentence": "**Windows**: Use `FlowDirection` property.",
+      "to": "should-set-flow-direction-on-windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The Windows FlowDirection property is kept at SHOULD, with the RightToLeft value on the root element.",
+        "pin": "d3cbb03353b6072a7a9f690d4fd0c2b0a124cc090b4aa8cdb4326e85e59090eb"
+      }
+    },
+    {
+      "sentence": "WinUI 3 XAML handles leading/trailing automatically.",
+      "to": "platform-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fact that WinUI 3 XAML handles leading/trailing automatically is kept in platform-notes, with the FlowDirection condition.",
+        "pin": "fd6c13b27bf0093ed31770dc61f52db4b7a1624b2ca65321ba448f0ac83bb26e"
+      }
+    },
+    {
+      "sentence": "# RTL Support",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The duplicate '# RTL Support' heading carried no requirement; the intro under the RTL layout support heading carries its paragraph whole.",
+        "pin": "b7e2d188cf66f6c02dd8de2d436ee7ce5d51cdaa3c7c5aec60d7f253abbce9fc"
+      }
+    },
+    {
+      "sentence": "Set `android:supportsRtl=\"true\"` in the manifest.",
+      "to": "should-set-supports-rtl-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting android:supportsRtl=\"true\" in the manifest is kept at SHOULD.",
+        "pin": "45883d4d2dbf5d49fd4da4b960e95a5fa69f89f2fe29a02cc6504b37090fdcaf"
+      }
+    },
+    {
+      "sentence": "Use `start`/`end` instead of `left`/`right` in layouts.",
+      "to": "should-use-start-end-on-android",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "start/end instead of left/right in Android layouts is kept at SHOULD.",
+        "pin": "5768937c0383405a01c20bb4ca1dcb4be5721659f62905bb53460f685a0c4ebd"
+      }
+    },
+    {
+      "sentence": "Force RTL in developer options for testing.",
+      "to": "should-force-rtl-for-android-testing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Forcing RTL in Android developer options for testing is kept at SHOULD.",
+        "pin": "90c21696934a1dcdc14345878f0e671cbe7b7bea5fafad8bba44bd3de5acc6f3"
+      }
+    },
+    {
+      "sentence": "Use CSS logical properties throughout:",
+      "to": "should-use-css-logical-properties",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "CSS logical properties throughout is kept at SHOULD, with all three mappings listed.",
+        "pin": "7e5029b35d800bba045a73c8e33c2ff07ea152a3b6f7c5222af076d27e46a3f9"
+      }
+    },
+    {
+      "sentence": "Set `dir=\"rtl\"` attribute on the root element for RTL locales.",
+      "to": "should-set-dir-rtl-on-web",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "dir=\"rtl\" on the root element for RTL locales is kept at SHOULD with its condition.",
+        "pin": "33bc6b55226e938bb5654831d288fe988e4c09893c1844434acf133435f4e18e"
+      }
+    },
+    {
+      "sentence": "Set `FlowDirection=\"RightToLeft\"` on the root element for RTL locales",
+      "to": "should-set-flow-direction-on-windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "FlowDirection=\"RightToLeft\" on the root element for RTL locales is kept at SHOULD with its condition.",
+        "pin": "ecdb29eeaf76d8e350d736cc837471c70f39125ecfc03230c02fbf167f49d383"
+      }
+    },
+    {
+      "sentence": "WinUI 3 XAML layout handles leading/trailing automatically when FlowDirection is set",
+      "to": "platform-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fact that WinUI 3 XAML layout handles leading/trailing automatically once FlowDirection is set is kept in platform-notes with the condition.",
+        "pin": "7913104fa8ba62296943f059dc51d1fb374db3250636357008e33c8e982238d8"
+      }
+    },
+    {
+      "sentence": "Test with RTL language packs installed",
+      "to": "should-test-with-rtl-language-packs-on-windows",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Testing with RTL language packs installed on Windows is kept at SHOULD.",
+        "pin": "e384adf070c8fc0fe6b44fc8818152389a2bba1d93e128e58ddaeb48ca2d790b"
+      }
+    }
+  ],
+  "obsolete": []
+}

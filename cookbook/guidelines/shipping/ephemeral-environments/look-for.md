@@ -1,0 +1,23 @@
+
+- `should-give-every-pr-a-preview`: the PR workflow provisions a preview environment for every PR where feasible
+- `must-provision-on-pr-event`: provisioning is triggered by the PR `opened`/`synchronize` event; a hand-run provision step breaks it
+- `must-define-spin-up-in-iac`: spin-up is defined entirely in IaC (Compose, Helm, K8s manifests, Terraform, or a platform manifest), with no manual setup
+- `must-own-namespaced-resources`: services, datastore and DNS are per environment and named with the PR identifier
+- `must-not-collide-across-prs`: no resource name or shared resource can be claimed by two PRs at once
+- `must-tear-down-on-pr-close`: teardown is triggered by the PR `closed` event
+- `should-reap-orphans-by-ttl`: a scheduled reaper sweeps orphaned environments by age/TTL
+- `must-not-outlive-pr`: nothing keeps an environment alive after its PR closes
+- `must-recreate-state-from-iac`: all state comes from IaC plus seed scripts, and no manual hotfix is applied to a live preview
+- `should-keep-environments-cheap-and-short-lived`: compute is spot/preemptible, scales to zero when idle, and shuts down on a TTL
+- `must-remove-every-namespaced-resource`: teardown removes compute, DB, buckets, DNS and secrets for the namespace
+- `should-seed-with-synthetic-fixtures`: seed data is synthetic or anonymized
+- `must-not-copy-production-pii`: no seed or restore path copies production PII into a preview
+- `should-default-to-fresh-provision`: the database is fresh-provisioned unless spin-up latency was measured as a bottleneck
+- `should-include-real-backend`: the preview runs the PR's backend, not a static frontend against shared staging
+- `should-run-e2e-against-live-url`: E2E/smoke and contract tests run against the preview's live URL
+- `should-post-preview-link-and-results`: the preview link and check results are posted back to the PR as a comment
+- `may-substitute-request-routing`: where request-routing / intercept replaces a full stack, it is recorded as a deliberate decision for a change too large for a full stack
+- `must-not-write-to-production`: preview credentials are sandbox ones, with no write access to production stores, queues or third-party prod accounts
+- `should-make-spin-up-and-teardown-idempotent`: re-running spin-up or teardown neither duplicates nor orphans resources
+- `should-verify-vendor-behavior`: any relied-on platform guarantee was checked against the vendor's current docs
+- `should-treat-vendor-claims-as-unverified`: "instant branch" or per-PR-cost claims are not relied on until measured in the pipeline

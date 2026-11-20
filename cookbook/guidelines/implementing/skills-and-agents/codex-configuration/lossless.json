@@ -1,0 +1,65 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Each file SHOULD be short, and reference material SHOULD move into skills, which load on demand.",
+      "to": [
+        "should-keep-agents-md-files-short",
+        "should-move-reference-material-into-skills"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs kept: AGENTS.md files short, and reference material moved into skills with the on-demand-loading reason.",
+        "pin": "4a2fa32bc6ea32a2f2740de52b066e07e0e1dab57eb67bb8eb07e50601962592"
+      }
+    },
+    {
+      "sentence": "You MUST check a key against the configuration reference before using it, and MUST NOT copy keys from another tool.",
+      "to": [
+        "must-check-keys-against-reference",
+        "must-not-copy-keys-from-other-tools"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Split into two rules keeping MUST check keys against the configuration reference before use and MUST NOT copy keys from another tool.",
+        "pin": "5bb99b1905bfbf776a699c570ae87537266b9d593667df6c5a4a4ea69057d2dc"
+      }
+    },
+    {
+      "sentence": "You MUST NOT write new ones unless a skill cannot express the need.",
+      "to": "must-not-write-new-custom-prompts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule resolves 'new ones' to custom prompts and keeps the MUST NOT with its exception (unless a skill cannot express the need).",
+        "pin": "1ac2011b3599afde23a1d70fb9bad4f57c19a069b02b261b7c53ad8c72518393"
+      }
+    },
+    {
+      "sentence": "Disable a skill without deleting it with a `[[skills.config]]` entry in `~/.codex/config.toml`, and restart Codex.",
+      "to": "should-disable-skills-via-skills-config",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for the unkeyed instruction: disable without deleting via a [[skills.config]] entry in ~/.codex/config.toml, then restart Codex.",
+        "pin": "11d1f35c2a08bf22d8e6fac94330af9669c17bebe209ead2079d871309f2c0d3"
+      }
+    },
+    {
+      "sentence": "Skills MUST follow Skill structure reference ([adc.guideline.implementing.skills-and-agents.skill-structure-reference](cookbook:fe0daac0-1ba7-4c93-a47e-e42e75612cf6)) for the contents of `SKILL.md`, and installing one MUST follow Never overwrite a user's files ([adc.guideline.implementing.skills-and-agents.never-clobber-user-files](cookbook:5358bc26-ea8f-4dd0-94d1-22dc1c6ad291)).",
+      "to": [
+        "must-follow-skill-structure-reference",
+        "must-follow-never-clobber-on-install"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs kept with their links: SKILL.md contents follow the skill structure reference, and installing a skill follows never-clobber-user-files.",
+        "pin": "518763627438cf4cf5b634838ad9439e740a69961ca525b3a3cf5647b4fa343b"
+      }
+    }
+  ],
+  "obsolete": []
+}

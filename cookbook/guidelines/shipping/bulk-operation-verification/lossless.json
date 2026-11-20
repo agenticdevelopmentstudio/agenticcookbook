@@ -1,0 +1,80 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Verify each repo independently.",
+      "to": "should-verify-each-repo-independently",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps verifying each repo independently, scoped to cross-repo operations; the unkeyed instruction is kept at SHOULD.",
+        "pin": "3b0af4efd7560b56d7eced8ae9235e9c2d0815abb7a18e1c3954405def4f987b"
+      }
+    },
+    {
+      "sentence": "Then run a cross-repo check to confirm consistency — the same identifier should resolve correctly in every repo that references it.",
+      "to": "should-run-cross-repo-check",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the cross-repo consistency check, its 'then' ordering, cross-repo scope, and the criterion that the same identifier resolves in every referencing repo.",
+        "pin": "af34e83eef3b84e1402f318530e4e9cd196fd2142b9788e3ad430a7d2cc40161"
+      }
+    },
+    {
+      "sentence": "After the bulk operation finishes:",
+      "to": [
+        "must-grep-for-stale-references",
+        "should-verify-cross-reference-integrity",
+        "should-confirm-completeness"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Each of the three rules opens with 'After the bulk operation finishes', so the lead-in's timing condition is kept on every item it introduced.",
+        "pin": "74e08f7b134f00946b4c5e850ca4daafa79c56532cf98c627bb1774395e1a4d7"
+      }
+    },
+    {
+      "sentence": "**Stale references**: The entire repo MUST be grepped for old names, paths, or identifiers that should have been updated.",
+      "to": "must-grep-for-stale-references",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps the MUST to grep the entire repo for old names, paths or identifiers, after the operation finishes.",
+        "pin": "283bf2aa4bb88eb2639261fd7f487be0deb5e120fd0e2e1fbb1889243c449ab5"
+      }
+    },
+    {
+      "sentence": "**Cross-reference integrity**: Verify that every file that references a renamed/moved entity has been updated.",
+      "to": "should-verify-cross-reference-integrity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps verifying that every file referencing a renamed/moved entity was updated, with the full list of common miss points, at SHOULD.",
+        "pin": "e473d4c2583bbd8a141ca091e44f19d5f5c3866cc209b469760f567a762c699b"
+      }
+    },
+    {
+      "sentence": "**Completeness**: Confirm the operation covered all intended files.",
+      "to": "should-confirm-completeness",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps confirming the operation covered all intended files, at SHOULD.",
+        "pin": "c9257926985d21f93b80efdabbbd1391465aa4cf8f8999ee7ac07ff0fc531c03"
+      }
+    },
+    {
+      "sentence": "List what was changed and compare against what should have been changed.",
+      "to": "should-confirm-completeness",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps listing what was changed and comparing it against what should have been changed.",
+        "pin": "4d1ae3669935756f57943ae02684c249c0b3c7ec905827fe118d7bb08352270a"
+      }
+    }
+  ],
+  "obsolete": []
+}

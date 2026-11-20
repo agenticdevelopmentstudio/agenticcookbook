@@ -1,0 +1,51 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "bcd71537-a14e-449d-863a-b32ee9625838",
+    "title": "Convergent Techniques",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Techniques for the Critique and Converge phases — clustering, feasibility assessment, premortem, and user-led selection. MUST NOT be introduced until divergence is complete.",
+    "platforms": [],
+    "tags": [
+      "brainstorming",
+      "convergence",
+      "critique",
+      "selection"
+    ],
+    "depends-on": [
+      "0c1e0e24-cb7f-4af9-a114-da2f858422f8",
+      "e8677291-1d21-484f-b562-90b8600ea380"
+    ],
+    "related": [
+      "17d2fa7e-0a8e-4ce7-96a0-de417db82220"
+    ],
+    "references": [
+      "Kawakita, KJ Method, 1967",
+      "Klein, Performing a Project Premortem, Harvard Business Review, 2007",
+      "Mitchell et al., Organizational Behavior and Human Decision Processes, 1989",
+      "Nemeth & Rogers, British Journal of Social Psychology, 1996",
+      "Kelley, The Ten Faces of Innovation, 2005"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "b092b0ef0f7179de",
+  "parts": [
+    {"part": "intro"},
+    {"part": "affinity-clustering-kj-method", "heading": "Affinity Clustering (KJ Method)"},
+    {"part": "what-would-have-to-be-true-wwhtbt", "heading": "What Would Have to Be True (WWHTBT)"},
+    {"part": "premortem", "heading": "Premortem"},
+    {"part": "feasibility-check", "heading": "Feasibility Check"},
+    {"part": "idea-selection-user-led", "heading": "Idea Selection (user-led)"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

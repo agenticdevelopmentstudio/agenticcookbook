@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A component should receive its dependencies from the outside, not construct them internally:",
+      "to": [
+        "intro",
+        "should-receive-dependencies-from-outside"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "intro keeps the sentence and should-receive-dependencies-from-outside keeps its 'should' at SHOULD: receive dependencies from outside, not construct them internally.",
+        "pin": "dc26097bc5fd17476128e7126820f18a980e2b1da18948d4de8fcb4cc5387f97"
+      }
+    },
+    {
+      "sentence": "Pass services via constructor/initializer parameters or protocol properties",
+      "to": "should-pass-services-via-initializer-or-protocol-properties",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-pass-services-via-initializer-or-protocol-properties keeps both channels (constructor/initializer parameters, protocol properties) at SHOULD.",
+        "pin": "dd94774730c648bca8075f012262b595281e3f3c7bdaf6877a803595a4535fc0"
+      }
+    },
+    {
+      "sentence": "Never instantiate a concrete service inside the component that uses it",
+      "to": "must-not-instantiate-concrete-service-in-its-user",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-instantiate-concrete-service-in-its-user keeps 'never' as MUST NOT, with the same scope: a concrete service inside the component that uses it.",
+        "pin": "1ac705a91615c8adbce2fafd2a61ac1f52972b636d53fe3a273cdbfdd4c164e3"
+      }
+    },
+    {
+      "sentence": "Use protocol/interface types for dependencies, not concrete types",
+      "to": "should-depend-on-protocol-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-depend-on-protocol-types keeps protocol/interface types for dependencies rather than concrete types, at SHOULD.",
+        "pin": "91676b2710c313c3ac1e698e0c6ac2e06e3a5a60b5ccb385636875de94202739"
+      }
+    },
+    {
+      "sentence": "Avoid service locator pattern (hidden global lookup)",
+      "to": "should-avoid-service-locator",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-avoid-service-locator keeps avoiding the service locator pattern and its gloss as hidden global lookup, at SHOULD.",
+        "pin": "1c1c775da399b7fecca12c4be38b4b1850606a61a5b4de6185f8dd59482d226c"
+      }
+    }
+  ],
+  "obsolete": []
+}

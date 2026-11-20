@@ -1,6 +1,4 @@
 
-Components MUST respond to these Android accessibility settings:
-
 | Setting | API | Action |
 |---------|-----|--------|
 | Remove Animations | `animator_duration_scale == 0` | Disable all custom animations |

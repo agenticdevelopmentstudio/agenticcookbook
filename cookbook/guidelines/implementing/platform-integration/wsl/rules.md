@@ -1,0 +1,19 @@
+
+- **linux-files-in-linux-fs**: Project files that Linux tools work on SHOULD live in the Linux file system (for example `/home/<user>/project`), not under `/mnt/c/...`.
+- **windows-files-in-windows-fs**: Files that Windows tools work on SHOULD live in the Windows file system.
+- **must-not-hardcode-mnt-c**: Code MUST NOT hardcode `/mnt/c`.
+- **must-convert-with-wslpath**: Code MUST convert paths with `wslpath` and MUST NOT use string replacement.
+- **must-start-distribution-first**: The `\\wsl$` share resolves only while the distribution is running. The distribution MUST be started before code relies on the path.
+- **must-use-one-line-ending-convention**: Projects MUST use one line-ending convention across Windows, WSL and containers.
+- **must-set-in-gitattributes**: The line-ending convention MUST be set in `.gitattributes` per file type, not in each developer's global configuration.
+- **shell-scripts-must-stay-lf**: Shell scripts MUST stay LF: a script with CRLF endings fails in Linux with confusing errors.
+- **install-git-per-file-system**: Git SHOULD be installed in each file system you use it from.
+- **must-configure-git-same-convention**: Each Git installation MUST be configured for the same line-ending convention.
+- **set-automount-options**: Configuration SHOULD set `uid`, `gid`, `umask`, `fmask` and `dmask` in `[automount] options` when the defaults do not suit.
+- **should-not-differ-only-by-case**: Two files that differ only by case can exist in WSL and collide in Windows, so names SHOULD NOT differ only by case in a tree shared with Windows.
+- **must-call-with-exe**: Code MUST call a Windows program from WSL by its full name including `.exe` (`explorer.exe`, `powershell.exe`).
+- **must-check-program-exists**: A script MUST check that the program exists instead of assuming it.
+- **must-detect-wsl**: Code MUST detect WSL before using Windows-only commands and MUST NOT run them from plain Linux.
+- **must-not-assume-networking-mode**: Code MUST NOT assume a networking mode.
+- **must-make-address-configurable**: The Windows host and the distribution may or may not share `localhost`, so the address MUST be configurable.
+- **must-restart-after-config-change**: You MUST run `wsl --terminate <distro>` or `wsl --shutdown` and wait for the distribution to exit before restarting it.

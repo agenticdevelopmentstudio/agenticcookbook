@@ -1,0 +1,119 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Choose names that are unlikely to repeat across levels, and document the shadowing in the install report.",
+      "to": [
+        "should-choose-names-unlikely-to-repeat-across-levels",
+        "should-document-shadowing-in-the-install-report"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both instructions kept at SHOULD (names unlikely to repeat across levels, shadowing documented in the install report); the merge-levels context stays in the collisions-in-names-that-merge part.",
+        "pin": "2f82d46a6d35523193a77489004802bfc1d1b1f6e126bfc465e039dc89a9b89b"
+      }
+    },
+    {
+      "sentence": "Print one line per skipped file: the path, why it was skipped, and what the user can do (rename theirs, or install with your own prefix).",
+      "to": "should-print-one-line-per-skipped-file",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three items per line (path, why skipped, what the user can do) and both remedies.",
+        "pin": "b079966f0506de7a89b0c2843d233f7d3ad015e53159ac0b25d9c2ed85902847"
+      }
+    },
+    {
+      "sentence": "Exit with a non-zero status when any file was skipped for a conflict, so automation notices.",
+      "to": "should-exit-non-zero-on-a-skipped-conflict",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (any file skipped for a conflict) and reason (so automation notices).",
+        "pin": "78e50e385478b3ed2180950ca7400e25cfd60549710c16fd3a552863e3547c1e"
+      }
+    },
+    {
+      "sentence": "Namespace everything you ship.",
+      "to": "should-namespace-everything-shipped",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD; the rule also carries the following elaboration on prefixes or own directory and why.",
+        "pin": "fd686b3bf57194e050a38d6d11fad71709aa3df962fa81dffbc45eb3335a9b41"
+      }
+    },
+    {
+      "sentence": "Check before you write.",
+      "to": "should-check-before-writing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full decision procedure for identical, previously installed, and foreign targets.",
+        "pin": "ea6b2de44c9020e30216f209a80a42bb893b4161d87a3b7687ac7906b64e8cd6"
+      }
+    },
+    {
+      "sentence": "Mark what you install.",
+      "to": "should-mark-what-is-installed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both mechanisms (in-file marker or manifest) and the reason (updates and uninstalls touch only your files).",
+        "pin": "c496c4c5f466c4b7b131142c31fa4b44312450390cab21911531d3de7f4559e1"
+      }
+    },
+    {
+      "sentence": "Never fix a collision by renaming the user's file or by removing it.",
+      "to": "must-not-rename-or-remove-the-users-file",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Never' is kept as MUST NOT, along with the alternative (rename or skip your own).",
+        "pin": "1adc3cae949f91a0b1ccf53d9c7d3f64b46971bb13f7ee611bb1866d8b32baf5"
+      }
+    },
+    {
+      "sentence": "Uninstall removes only files recorded as yours, and only if they still match what you wrote.",
+      "to": "should-uninstall-only-own-unchanged-files",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both conditions (recorded as yours, still matching), plus the handling of user-edited files.",
+        "pin": "9649a507702cc31d2a1d0a931c102f05cff63a05ea29a3a8bf8e8c7d1402c369"
+      }
+    },
+    {
+      "sentence": "Do the check in the installer, not in the shipped file.",
+      "to": "should-check-in-the-installer",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the collision check lives in the installer, not the shipped file.",
+        "pin": "4ab08a7b9f64531fe549809bd628a8a29832534f76ac6985fadf27630bd554f1"
+      }
+    },
+    {
+      "sentence": "A skill must not rely on being the only one with its name.",
+      "to": "must-not-rely-on-a-unique-name",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lowercase 'must not' is strengthened to MUST NOT, with the same scope.",
+        "pin": "b8b976c19f7466684cdc55de5f129e0b5eeb25ab72fb8e6eeb3c91e75e517c05"
+      }
+    },
+    {
+      "sentence": "Make installs idempotent: running one twice leaves the same files and reports no conflict with itself.",
+      "to": "should-make-installs-idempotent",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full definition of idempotent (same files, no conflict with itself).",
+        "pin": "9bd5ce66b57a28e26879707050e8ec118cc572e9607389a14e5c4a400cbf6adc"
+      }
+    }
+  ],
+  "obsolete": []
+}

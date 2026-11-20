@@ -1,0 +1,18 @@
+
+- `should-configure-tsconfig-to-catch-errors`: `tsconfig.json` has the compiler catch the errors it can, or the code says why not
+- `should-adopt-stricter-flags-deliberately`: stricter flags were adopted deliberately rather than all at once, or the change says why not
+- `must-set-strict`: every new project sets `"strict": true` in `compilerOptions`
+- `must-not-silence-checker`: nothing silences the checker with project-wide `// @ts-nocheck`, blanket `any`, or `skipLibCheck` over first-party errors
+- `should-use-scoped-ts-expect-error`: every unavoidable suppression is a narrowly-scoped `// @ts-expect-error` with a reason, or the code says why not
+- `should-treat-disabled-strict-flags-as-temporary`: every disabled strict-family flag is a recorded temporary migration state with a tracking reference, or the code says why not
+- `should-enable-recommended-near-defaults`: new projects enable `noUncheckedIndexedAccess` and `verbatimModuleSyntax`, or the code says why not
+- `must-use-import-type-with-verbatim-module-syntax`: under `verbatimModuleSyntax`, every type-only import and export uses `import type`, `export type` or an inline `type` modifier
+- `should-enable-exact-optional-property-types-when-absent-differs`: where "absent" and "present but undefined" differ, `exactOptionalPropertyTypes` is on, or the code says why not
+- `should-enable-erasable-syntax-only-for-type-stripping`: files run by native type-stripping have `erasableSyntaxOnly` on, or the code says why not
+- `should-pair-erasable-syntax-only-with-verbatim-module-syntax`: `erasableSyntaxOnly` is paired with `verbatimModuleSyntax`, or the code says why not
+- `should-turn-on-strict-first`: on existing code, `strict` came first as its own change, or the change says why not
+- `should-enable-one-stricter-flag-at-a-time`: on existing code, each stricter flag was enabled alone with its fallout fixed before the next, or the change says why not
+- `should-not-enable-every-flag-in-one-sweep`: an established codebase did not get every flag in a single sweep, or the change says why not
+- `should-not-assume-forecast-behavior-is-current`: no config or guidance assumes the forecast behavior as current, or it says why not
+- `should-confirm-native-compiler-release-state`: any dependency on the native Go compiler or TypeScript 7.0 follows a check of its actual release state, or the change says why not
+- `must-keep-setting-strict-explicitly`: `"strict": true` is set explicitly until strict by default is verified in shipped release notes

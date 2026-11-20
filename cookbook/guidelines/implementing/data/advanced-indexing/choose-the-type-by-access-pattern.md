@@ -1,6 +1,4 @@
 
-- **type-matches-query**: The index type **SHOULD** match how the column is queried, not default to B-tree reflexively:
-
 | Type | Use when | Notes |
 |------|----------|-------|
 | B-tree | Equality, ranges, `ORDER BY`, `=`/`<`/`>`/`BETWEEN` | The default; supports unique constraints and sorted output |

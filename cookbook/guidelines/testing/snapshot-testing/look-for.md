@@ -1,0 +1,16 @@
+
+- `must-review-every-snapshot-diff`: snapshot diffs accepted with no sign they were reviewed
+- `should-treat-unexpected-diff-as-bug`: an unexpected snapshot diff cleared without asking whether it is a bug
+- `must-not-reflexively-accept-all`: an update/accept-all run (`-u`, `--updateSnapshot`, `cargo insta accept`, "accept all") used to turn a red suite green
+- `should-update-only-after-confirming-intent`: snapshot updates with no confirmation that each change was intended
+- `must-run-ci-in-non-updating-mode`: CI that runs snapshot tests in a mode able to write new snapshots
+- `should-review-snapshot-files-like-source`: snapshot files skipped or rubber-stamped in code review
+- `should-cover-one-concern`: a snapshot of an entire page or aggregate object graph
+- `should-prefer-small-inline-snapshots`: one large external snapshot file where small inline snapshots would serve
+- `should-not-snapshot-unreasonable-output`: a snapshot too large to reason about line by line
+- `must-normalize-non-deterministic-values`: timestamps, dates, durations, random IDs/UUIDs, hostnames, absolute paths or ports serialized raw
+- `must-stabilize-ordering`: sets, maps or query results snapshotted in iteration order
+- `should-use-property-matchers-for-dynamics`: a snapshot regenerated each run instead of using property matchers, scrubbers or filters
+- `should-assert-logic-explicitly`: behavior or computation verified only by a snapshot
+- `should-reserve-snapshots-for-stable-verbose-output`: snapshots of short or unstable output that explicit assertions would cover
+- `should-delete-obsolete-snapshots`: obsolete snapshots left in place

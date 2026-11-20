@@ -1,0 +1,16 @@
+
+- `must-justify-by-os-floor-complexity-and-migrations`: a framework choice justified by novelty rather than OS-version floor, model complexity and migration needs
+- `should-make-the-choice-deliberately`: SwiftData or Core Data picked as a reach for the newest API, with no decision recorded
+- `should-apply-the-decision-rows-in-order`: a choice that skips a decision-rule row that matches before the one applied
+- `should-default-to-swiftdata-when-no-row-forces-core-data`: new code on Core Data when no decision-rule row forces it
+- `should-use-swiftdata-for-greenfield-ios-17-plus`: a new greenfield app with an iOS 17+ / macOS 14+ floor not using SwiftData
+- `should-use-core-data-for-controlled-migrations`: a project needing deterministic, fully-controlled migrations or schema versioning on SwiftData
+- `must-use-core-data-below-the-swiftdata-floor`: SwiftData in code that targets OS versions below its floor
+- `must-not-rewrite-working-core-data-to-modernize`: a working Core Data stack rewritten into SwiftData with no concrete need behind it
+- `should-prefer-core-data-for-tuning-and-scale`: SwiftData where fine-grained fetch tuning, batch operations at scale or predictable performance on large datasets are needed
+- `should-define-models-with-the-model-macro`: SwiftData models defined other than with `@Model` on a Swift class
+- `should-use-modelactor-for-background-work`: SwiftData background work done outside a `@ModelActor`
+- `must-verify-swiftdata-writes-persist`: SwiftData saves assumed to succeed, with no fetch-after-save test, or behavior expectations not pinned to a tested OS revision
+- `should-treat-unshipped-swiftdata-features-as-unavailable`: code or a plan relying on shared/public CloudKit sync or dynamic predicate adjustment in SwiftData
+- `may-adopt-swiftdata-incrementally`: a big-bang rewrite where SwiftData could be introduced for new models alongside Core Data
+- `must-keep-the-schema-compatible-across-layers`: a schema that diverges between the SwiftData and Core Data layers, or no migration tests before shipping

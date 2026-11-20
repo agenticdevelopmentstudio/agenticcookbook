@@ -1,0 +1,246 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Never trust client input.** Client-side validation is a UX feature, not a security control.",
+      "to": [
+        "must-not-trust-client-input",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Never trusting client input is kept at MUST NOT, and client-side validation being a UX feature, not a security control, is kept in rationale.",
+        "pin": "bd0105d56bb70d30865aea98c2e97429facee973e04f70ed7be50fcbc5bcf0af"
+      }
+    },
+    {
+      "sentence": "All validation must be duplicated server-side.",
+      "to": "must-duplicate-validation-server-side",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Duplicating all validation server-side is kept at MUST.",
+        "pin": "c48d3647306971d75ec4530328750eed70af1596a07cf1a41729aff8ca1bacb7"
+      }
+    },
+    {
+      "sentence": "**Allowlists over denylists** — validation SHOULD define what is valid, not what is invalid.",
+      "to": "should-prefer-allowlists-over-denylists",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validation defining what is valid rather than what is invalid, allowlists over denylists, is kept at SHOULD.",
+        "pin": "f79014f58f23c203506202a15e91824556b2c184aa967ad482e3bca03b6c7a6f"
+      }
+    },
+    {
+      "sentence": "**Validate, sanitize, escape** — in that order.",
+      "to": "should-validate-sanitize-escape-in-order",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validate, sanitize, escape in that order is kept at SHOULD with the ordering.",
+        "pin": "a28747f3e2c8dc2561a17abb2bf3a21700e974ec4252b85748a3ddf01040c063"
+      }
+    },
+    {
+      "sentence": "**Parameterized queries** MUST be used — the only reliable defense against SQL injection.",
+      "to": "must-use-parameterized-queries"
+    },
+    {
+      "sentence": "User input MUST NOT be concatenated",
+      "to": "must-not-concatenate-input-into-queries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST NOT on concatenating user input is kept.",
+        "pin": "d948796b150426762fd93c82699dbe5abc28f01bbf2b5ea71c7d3203257eb863"
+      }
+    },
+    {
+      "sentence": "into queries.",
+      "to": "must-not-concatenate-input-into-queries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The object of the ban, queries, is kept.",
+        "pin": "8ef79dbeafaf87c5c0777b89a96494f4639fb67e93db5d049bca0bf3a2d152f2"
+      }
+    },
+    {
+      "sentence": "**Output encoding** — context-dependent: HTML-encode for HTML, URL-encode for URLs.",
+      "to": "should-encode-output-per-context",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Context-dependent output encoding (HTML-encode for HTML, URL-encode for URLs) is kept at SHOULD.",
+        "pin": "13a966579018f0af206366d94ca086fa2689e4b6b5d2db5a152f66659f6443a9"
+      }
+    },
+    {
+      "sentence": "framework auto-escaping (React JSX, Django templates) and understand when it does NOT apply",
+      "to": "should-use-framework-auto-escaping",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using framework auto-escaping (React JSX, Django templates) and understanding when it does not apply is kept at SHOULD.",
+        "pin": "46520c4065cd1f8f4db85909a4df19f143867c34436003ad3c4c906f227c741d"
+      }
+    },
+    {
+      "sentence": "(e.g., raw HTML insertion APIs — always sanitize with a library like DOMPurify first).",
+      "to": [
+        "should-use-framework-auto-escaping",
+        "must-sanitize-before-raw-html-insertion"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The raw-HTML-insertion example is kept, and always sanitizing with a library like DOMPurify first is now a MUST, stronger than before.",
+        "pin": "e961353d56a9543a0d056854a8e72da0860d90bbf9d2a1cc951adea842fa1821"
+      }
+    },
+    {
+      "sentence": "**File uploads** — MIME type MUST be validated server-side (not just extension).",
+      "to": "must-validate-upload-mime-server-side",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validating upload MIME type server-side, not just extension, is kept at MUST.",
+        "pin": "b0791df5c9b8cac29d13f6c0b73660cfc484d75655a268424a779620f4df0d4c"
+      }
+    },
+    {
+      "sentence": "Limit size.",
+      "to": "should-limit-upload-size",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Limiting upload size is kept, the unkeyed instruction at SHOULD.",
+        "pin": "a0f1e144c3de8c644659d5478157f4d16ccde07231cd7f8954c40900d117bb20"
+      }
+    },
+    {
+      "sentence": "Store",
+      "to": "should-store-uploads-outside-web-root",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Storing uploads outside web root is kept at SHOULD.",
+        "pin": "7e039774148d559d52743ba04adbda2fd32e8d61633b392036781037d4e0cad8"
+      }
+    },
+    {
+      "sentence": "outside web root.",
+      "to": "should-store-uploads-outside-web-root",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The location, outside web root, is kept.",
+        "pin": "07eef4e0dffd6f8269ea093d2fafcfd73ffc7791b7330e69ee7171db1d2a6063"
+      }
+    },
+    {
+      "sentence": "**Validate at the boundary** — untrusted input crossing a server-side deserialization boundary",
+      "to": "must-validate-at-deserialization-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Validating untrusted input at a server-side deserialization boundary is kept at MUST.",
+        "pin": "491e7507ddcc0fa1fd1307b1e153c1c97511255459d270b2af5ee40f43a31b15"
+      }
+    },
+    {
+      "sentence": "(e.g., RSC Server Action arguments, the RSC Flight payload, or any equivalent serialized",
+      "to": "must-validate-at-deserialization-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The examples (RSC Server Action arguments, RSC Flight payload, any equivalent serialized request body) are kept.",
+        "pin": "82837da7a8285ebb73935bffc92d9d6157189c75e2d60d97bcb953bd16f0af00"
+      }
+    },
+    {
+      "sentence": "request body) MUST be schema-validated and type-checked before use.",
+      "to": "must-validate-at-deserialization-boundary",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Schema-validation and type-checking before use are kept at MUST.",
+        "pin": "ec74ba2b22861c50aac1e7566938b36db721932c365ee0feb53e09d50054302d"
+      }
+    },
+    {
+      "sentence": "**No secrets in server-rendered components** — server-rendered output MUST NOT embed secrets,",
+      "to": "must-not-embed-secrets-in-server-rendered-output",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Server-rendered output MUST NOT embed secrets is kept.",
+        "pin": "0738e7309c1597090b93e8c7059a7156922ff107edca9c499a9828f977bd98fb"
+      }
+    },
+    {
+      "sentence": "credentials, or internal-only data, since the rendered payload is sent to the client.",
+      "to": "must-not-embed-secrets-in-server-rendered-output",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Credentials and internal-only data, and the reason that the rendered payload is sent to the client, are kept.",
+        "pin": "1d69c034a8cc795310607f3073be8313a3833da4b78b8b33cd2aef3b31186aa7"
+      }
+    },
+    {
+      "sentence": "**Rate-limit server-render endpoints** — render and server-action endpoints SHOULD be",
+      "to": "should-rate-limit-server-render-endpoints",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rate-limiting render and server-action endpoints is kept at SHOULD.",
+        "pin": "3e8c0cb575546c6465736700aa7b3ac78232f2b628ac75ef7eb3bcedb4c0a9ff"
+      }
+    },
+    {
+      "sentence": "rate-limited to bound the cost of crafted or repeated requests.",
+      "to": "should-rate-limit-server-render-endpoints",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The purpose, bounding the cost of crafted or repeated requests, is kept.",
+        "pin": "0e766b8d4a574bee570038062c2c6328965c08b53f344a81d30144fbe846ef25"
+      }
+    },
+    {
+      "sentence": "**Pin to a patched framework version** — the rendering framework MUST be pinned to a version",
+      "to": "must-pin-patched-framework-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning the rendering framework to a patched version is kept at MUST.",
+        "pin": "e4e611d4b79640ac23206beb4f0d10e116dc320424dc408ff0f40a0fc45fb85c"
+      }
+    },
+    {
+      "sentence": "that includes current security patches for its serialization boundary.",
+      "to": "must-pin-patched-framework-version",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The patch scope, current security patches for its serialization boundary, is kept.",
+        "pin": "0c47a7c86108e5c79cbcce912308d0a2a60a3de199a7c4f42955fab62a52827c"
+      }
+    },
+    {
+      "sentence": "Use",
+      "to": "should-use-framework-auto-escaping",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The fragment Use begins the framework auto-escaping instruction, kept at SHOULD.",
+        "pin": "6b9f428b77206f590e45a48fc6b2421890311f286a1890d9fd36be24f1293d83"
+      }
+    }
+  ],
+  "obsolete": []
+}

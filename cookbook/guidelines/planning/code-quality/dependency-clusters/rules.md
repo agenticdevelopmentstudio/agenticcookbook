@@ -1,0 +1,12 @@
+
+- **should-treat-high-coupling-ratio-as-candidate**: A directory or cluster with a high internal coupling ratio (>0.6) **SHOULD** be treated as a strong scope group candidate.
+- **should-consider-merging-low-ratio-files**: A file with a low coupling ratio (<0.3) likely belongs elsewhere; the analysis **SHOULD** consider merging it into the scope group it depends on most.
+- **should-separate-unidirectional-layers**: If layer A only imports layer B (never the reverse), A and B **SHOULD** be separate scope groups even if they live near each other — unidirectional dependency = separate scope groups.
+- **should-flag-high-fan-in-files**: A file imported by 10+ other files across multiple candidate groups **SHOULD** be flagged for `cross-cutting-detection` rather than assigned to one group — high fan-in files are shared infrastructure.
+- **must-co-locate-cyclic-files**: Files in a cycle **MUST** remain in the same scope group until the cycle is resolved — circular dependencies force co-location.
+- **should-document-cycles-as-refactoring-targets**: Each import cycle **SHOULD** be documented as a refactoring target.
+- **should-not-count-star-imports-as-full-coupling**: Star imports inflate apparent coupling; the analysis **SHOULD NOT** count star imports as full coupling without verifying symbol usage.
+- **should-compute-coupling-metrics**: The analysis **SHOULD** compute the coupling metrics: internal coupling, external coupling, coupling ratio, fan-in and fan-out.
+- **should-identify-dependency-direction**: The analysis **SHOULD** identify the direction of dependencies: do files in directory A import files in directory B, or vice versa?
+- **should-note-import-cycles**: The analysis **SHOULD** note any import cycles.
+- **should-resolve-circular-dependencies**: A circular dependency is a design problem that **SHOULD** be resolved.

@@ -1,0 +1,17 @@
+
+- `must-reference-semantic-tokens-not-raw-values`: Do **NOT** hardcode hex/spacing/font literals in components — that defeats single-source propagation.
+- `must-not-reference-primitives-from-code`: Do **NOT** reference primitive tokens from components; an intent change then requires editing many call sites.
+- `must-keep-one-shared-source`: Do **NOT** fork per-platform token copies; divergence is inevitable.
+- `should-express-every-decision-as-a-token`: a design decision (color, spacing, typography, radius, motion, elevation, opacity) with no named token
+- `should-use-the-dtcg-format`: a token source in a format other than DTCG JSON with no reason given
+- `should-pin-a-dated-dtcg-revision`: a token source tracking the living DTCG draft instead of a dated revision
+- `must-give-each-token-a-type-and-value`: a token with no explicit `$type` or `$value`, or no `$description` of its intent
+- `should-generate-platform-outputs`: a hand-maintained platform output
+- `should-use-three-layers`: tokens with no primitive / semantic / component layering
+- `must-alias-semantic-and-component-tokens`: a semantic or component token holding a duplicated literal instead of an alias
+- `should-keep-three-tiers-at-most`: more than three tiers, or a component tier with no second consumer
+- `should-model-variants-by-swapping-semantic-references`: a variant that edits component tokens rather than the semantic layer's references
+- `should-resolve-modes-as-sets-or-themes`: mode-specific values that change the component contract between modes
+- `must-use-platform-neutral-names`: a token name that is platform-specific or inconsistent across platforms
+- `should-check-contrast-in-the-pipeline`: color pairs not checked for WCAG 2.2 contrast in the pipeline, or a violation that does not fail the build
+- `should-schema-validate-the-token-file`: no schema validation of the token file in CI

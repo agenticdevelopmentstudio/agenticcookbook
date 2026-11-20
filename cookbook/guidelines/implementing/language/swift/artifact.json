@@ -4,7 +4,7 @@
     "id": "e0fa9d85-2143-4869-bea9-e085bc4c2f9d",
     "title": "Swift",
     "type": "guideline",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-10-09",
@@ -45,30 +45,24 @@
       "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling/",
       "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/accesscontrol/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-10-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "new-module",
       "refactor",
       "error-handling"
     ]
   },
-  "synced": "dc899b9737792f4c",
+  "synced": "4f00b1b7b3bc1651",
   "parts": [
     {"part": "intro"},
-    {"part": "related-swift-guidelines", "heading": "Related Swift guidelines"},
-    {"part": "value-types-first", "heading": "Value types first"},
-    {"part": "optionals", "heading": "Optionals"},
-    {"part": "error-handling", "heading": "Error handling"},
-    {"part": "access-control", "heading": "Access control"},
-    {"part": "why-this-matters", "heading": "Why this matters"},
-    {"part": "introduction", "heading": "Introduction"},
-    {"part": "types", "heading": "Types"},
-    {"part": "optionals-2", "heading": "Optionals"},
-    {"part": "errors", "heading": "Errors"},
-    {"part": "access-control-2", "heading": "Access control"},
-    {"part": "linked-reviews", "heading": "Linked reviews"},
-    {"part": "why-this-matters-2", "heading": "Why this matters"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "why-this-matters", "heading": "Why this matters", "role": "rationale"},
+    {"part": "why-this-matters-2", "heading": "Why a review checklist", "role": "rationale"},
+    {"part": "related-swift-guidelines", "heading": "Related Swift guidelines", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

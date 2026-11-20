@@ -1,0 +1,20 @@
+
+- `must-produce-sbom`: every release build's outputs include an SBOM listing every component and version
+- `should-use-one-sbom-format`: every SBOM is in the one chosen format, CycloneDX or SPDX, or the project says why not
+- `must-produce-signed-provenance`: every release build's outputs include signed provenance naming what built it, how, and from which inputs
+- `should-generate-sbom-from-lockfile`: the SBOM is generated from the lockfile's resolved graph, or the project says why not
+- `should-generate-provenance-on-hosted-ci`: provenance is produced by the hosted CI platform, or the project says why not
+- `should-sign-artifacts-and-attestations`: every artifact and attestation is signed, or the project says why not
+- `should-pin-toolchain-by-digest`: every toolchain and base image reference is a digest, or the project says why not
+- `should-target-slsa-l2`: the build meets SLSA Build L2, or the project says why not
+- `must-verify-signature-before-deploy`: the deploy step verifies each artifact's signature against the expected signer identity
+- `should-verify-provenance-before-deploy`: the deploy step verifies provenance against the expected repo, commit, builder and parameters, or the project says why not
+- `must-block-promotion-on-failed-check`: a failed signature or provenance check fails the promotion
+- `should-store-release-evidence`: every release's SBOM and attestations are stored immutably, or the project says why not
+- `should-commit-lockfiles`: lockfiles are committed and CI installs frozen/locked, or the project says why not
+- `should-pin-dependencies-by-digest`: no dependency or CI action uses a floating tag, or the project says why
+- `should-keep-scanning-for-vulnerable-components`: known-vulnerability scanning runs in CI, or the project says why not
+- `must-not-ship-without-sbom-and-provenance`: no release build ships lacking both SBOM and provenance
+- `must-not-pass-unverifiable-attestation`: the gate rejects every unsigned or unverifiable attestation
+- `must-not-claim-hosted-trust-for-author-controlled-provenance`: every L2 claim rests on hosted-platform provenance
+- `should-confirm-regulatory-applicability`: the project records the regulatory drivers' applicability to its jurisdiction and sector, or says why not

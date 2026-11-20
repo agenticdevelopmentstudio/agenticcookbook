@@ -4,11 +4,11 @@
     "id": "70f2ab2f-a05f-4981-9fea-e9d169fc1753",
     "title": "Theming with tokens",
     "type": "guideline",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -36,21 +36,22 @@
       "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/",
       "https://www.w3.org/TR/WCAG22/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation",
       "accessibility"
     ]
   },
-  "synced": "dc0026dca0656404",
+  "synced": "004c400a206f1ca6",
   "parts": [
     {"part": "intro"},
-    {"part": "the-token-layering-model", "heading": "The token layering model"},
-    {"part": "switching-the-active-set", "heading": "Switching the active set"},
-    {"part": "respect-the-system-and-accessibility-settings", "heading": "Respect the system and accessibility settings"},
-    {"part": "verify-contrast-per-theme", "heading": "Verify contrast per theme"},
-    {"part": "notes", "heading": "Notes"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "the-token-layering-model", "heading": "The token layering model", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

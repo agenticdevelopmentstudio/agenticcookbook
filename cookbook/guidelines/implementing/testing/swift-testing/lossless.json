@@ -1,0 +1,186 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Target the latest Swift 6.2.x toolchain and write tests that are clean under strict concurrency; annotate `@MainActor` on `@Test` functions that touch main-actor state rather than dispatching manually.",
+      "to": [
+        "should-target-the-latest-swift-toolchain",
+        "should-write-tests-clean-under-strict-concurrency",
+        "should-annotate-main-actor-tests"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All three unkeyed instructions kept at SHOULD in separate rules: latest Swift 6.2.x toolchain, clean under strict concurrency, and @MainActor on main-actor @Test functions rather than manual dispatch.",
+        "pin": "8004269f1c47c2a253ba919cb4fdb929f77bdecba577afc5d52e645bca6e063f"
+      }
+    },
+    {
+      "sentence": "Follow one-entity-per-file: one suite `struct` per file, with nested helpers in an `extension`.",
+      "to": "should-follow-one-entity-per-file",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: one suite struct per file, nested helpers in an extension.",
+        "pin": "ee4b5df218ababb4fb5a95a566dd18460f13ffc3f2a666c1b29366f4f61e83a2"
+      }
+    },
+    {
+      "sentence": "The function **MAY** be a global function or a method, and **MAY** be `async`, `throws`, or isolated to a global actor (e.g.",
+      "to": "may-use-any-test-function-form",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MAYs kept, with all forms (global or method; async, throws, global-actor isolated) and the @MainActor example.",
+        "pin": "21124bb6f05b6ca12bbd805cbbccd5bb727c13dcde1a351d5866ef524b723c8f"
+      }
+    },
+    {
+      "sentence": "A descriptive display name **SHOULD** be passed: `@Test(\"Parses ISO-8601 dates\")`.",
+      "to": "should-pass-a-display-name"
+    },
+    {
+      "sentence": "**`#expect(expr)`** records a failure but continues; use it for ordinary assertions.",
+      "to": [
+        "should-use-expect-for-ordinary-assertions",
+        "core-api"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the behavior (records a failure but continues), and the core-api part repeats it.",
+        "pin": "0933e9fceb3424d21d06203f236a5f75e69783120a631862629619dae976db5f"
+      }
+    },
+    {
+      "sentence": "It captures sub-expression values, so a single `#expect(a == b)` reports both operands on failure — you **SHOULD NOT** add a custom message that restates the expression.",
+      "to": "should-not-restate-the-expression-in-a-message",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The SHOULD NOT and its reason (sub-expression capture reports both operands) are kept.",
+        "pin": "52a680180f438d84ff04328f36c101ab8d35d0efa3957d55758e3aa0167807a7"
+      }
+    },
+    {
+      "sentence": "**`#require(expr)`** throws and halts the test when the expectation fails; use it for preconditions whose failure makes the rest of the test meaningless.",
+      "to": [
+        "should-use-require-for-preconditions",
+        "core-api"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the behavior (throws and halts) and the scope (preconditions whose failure makes the rest meaningless); core-api repeats the behavior.",
+        "pin": "f22e5439a998b8914b1b064640439019d86f836eb9807e91e6a3d64d02f3015a"
+      }
+    },
+    {
+      "sentence": "Use **`#expect(throws:)`** / `#require(throws:)` to assert error behavior instead of `do/catch`.",
+      "to": "should-assert-errors-with-expect-throws",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: #expect(throws:)/#require(throws:) instead of do/catch.",
+        "pin": "b5d7aa82e4965024a46e05ec1d4d9b8f2e0b1a9e6c6a666ed72c5ecea74e4da8"
+      }
+    },
+    {
+      "sentence": "Pass `arguments:` to run one test body over many inputs: `@Test(arguments: [1, 2, 3])`.",
+      "to": "should-pass-arguments-for-many-inputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the example.",
+        "pin": "64c767a26ffec0be6bbb5b798a04d8c5dc82108dd9099a1a8ec88ed3e8d3e3d6"
+      }
+    },
+    {
+      "sentence": "Use `zip(...)` for paired inputs to avoid an unintended Cartesian product across two collections.",
+      "to": "should-zip-paired-inputs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the reason (avoid an unintended Cartesian product).",
+        "pin": "3e13ec46e97530df0e2b59e15bcc404ee47ea6e862fc860f9881daaefe087d53"
+      }
+    },
+    {
+      "sentence": "You **SHOULD** prefer parameterization over hand-written loops so each case surfaces as a distinct result.",
+      "to": "should-prefer-parameterization-over-loops"
+    },
+    {
+      "sentence": "Group related tests with **`@Suite`** on a type (often a `struct`).",
+      "to": "should-group-related-tests-with-suite",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: @Suite on a type, often a struct.",
+        "pin": "c85329ce257c171362a02e7e43180dc4d2b2ab973afbd4e11e12d758e7571a35"
+      }
+    },
+    {
+      "sentence": "A type containing `@Test` methods is treated as a suite implicitly, but you **SHOULD** annotate it to set a name or traits.",
+      "to": "should-annotate-suites-to-set-a-name-or-traits"
+    },
+    {
+      "sentence": "You **SHOULD** prefer this over shared mutable static state to keep tests independent (see [adc.guideline.implementing.testing.unit-test-patterns](cookbook:7df29f51-703a-4fc8-992d-64591ffd9e61)).",
+      "to": "should-prefer-per-test-instance-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule resolves 'this' to per-test state in stored properties and keeps the SHOULD, the reason (independence) and the link.",
+        "pin": "a5ce2600c1025f675adb73593b27112b0e92aedcd47e786272b2a6b3a2539bc9"
+      }
+    },
+    {
+      "sentence": "Attach **traits** for behavior and metadata: `.disabled(\"reason\")`, `.bug(\"url\")`, `.timeLimit(.minutes(1))`, `.enabled(if:)`, and serialization via `.serialized`.",
+      "to": "should-attach-traits-for-behavior-and-metadata",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all five traits listed.",
+        "pin": "49bc8e86233b1407e0fbce41a65ce8bfe32482a82cb0a73245bd5d143f5b5dad"
+      }
+    },
+    {
+      "sentence": "Define **tags** with `@Tag` and apply them to filter/organize runs (e.g.",
+      "to": "should-define-and-apply-tags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the purpose (filter/organize runs) and the .tags(.network) example.",
+        "pin": "3d330835e3194c2e5c09750844fc5e386342a5b6e2fef59ed4673fb487be8004"
+      }
+    },
+    {
+      "sentence": "You **SHOULD** keep a small, shared tag vocabulary rather than ad-hoc per-file tags.",
+      "to": "should-keep-a-small-shared-tag-vocabulary"
+    },
+    {
+      "sentence": "For new Swift **unit tests**, you **SHOULD** author with Swift Testing rather than XCTest.",
+      "to": "should-use-swift-testing-for-new-unit-tests"
+    },
+    {
+      "sentence": "You **MUST NOT** rewrite passing XCTest suites solely to switch frameworks; migrate opportunistically when a test changes.",
+      "to": "must-not-rewrite-passing-xctest-suites",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MUST NOT kept with its 'solely to switch frameworks' scope; the unkeyed 'migrate opportunistically when a test changes' is kept at SHOULD.",
+        "pin": "afac9ef64a60748e110616867bcffe6a6d3d28449f667767a59658b4bf4eb909"
+      }
+    },
+    {
+      "sentence": "Keep those in XCTest.",
+      "to": "should-keep-ui-and-performance-tests-in-xctest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule resolves 'those' to UI tests (XCUIApplication) and XCTest-based performance measurement (measure {}) and keeps them in XCTest at SHOULD.",
+        "pin": "7b1bea791312e7c5d4b31f8aa46ce3c663310a8537dee5a7051f7b57445221d1"
+      }
+    }
+  ],
+  "obsolete": []
+}

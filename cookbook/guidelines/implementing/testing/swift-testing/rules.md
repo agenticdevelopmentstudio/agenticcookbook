@@ -1,0 +1,24 @@
+
+- **should-use-swift-testing-for-new-unit-tests**: For new Swift unit tests, you SHOULD author with Swift Testing rather than XCTest.
+- **must-not-rewrite-passing-xctest-suites**: You MUST NOT rewrite passing XCTest suites solely to switch frameworks; you SHOULD migrate opportunistically when a test changes.
+- **should-keep-ui-and-performance-tests-in-xctest**: You SHOULD keep UI tests (`XCUIApplication`) and XCTest-based performance measurement (`measure {}`) in XCTest.
+- **may-use-any-test-function-form**: The `@Test` function MAY be a global function or a method, and MAY be `async`, `throws`, or isolated to a global actor (e.g. `@MainActor`).
+- **should-pass-a-display-name**: A descriptive display name SHOULD be passed: `@Test("Parses ISO-8601 dates")`.
+- **should-use-expect-for-ordinary-assertions**: You SHOULD use `#expect(expr)`, which records a failure but continues, for ordinary assertions.
+- **should-not-restate-the-expression-in-a-message**: `#expect` captures sub-expression values, so a single `#expect(a == b)` reports both operands on failure — you SHOULD NOT add a custom message that restates the expression.
+- **should-use-require-for-preconditions**: You SHOULD use `#require(expr)`, which throws and halts the test when the expectation fails, for preconditions whose failure makes the rest of the test meaningless.
+- **should-assert-errors-with-expect-throws**: You SHOULD use `#expect(throws:)` / `#require(throws:)` to assert error behavior instead of `do/catch`.
+- **should-group-related-tests-with-suite**: You SHOULD group related tests with `@Suite` on a type (often a `struct`).
+- **should-annotate-suites-to-set-a-name-or-traits**: A type containing `@Test` methods is treated as a suite implicitly, but you SHOULD annotate it to set a name or traits.
+- **should-prefer-per-test-instance-state**: You SHOULD prefer per-test state in stored properties over shared mutable static state to keep tests independent (see [adc.guideline.implementing.testing.unit-test-patterns](cookbook:7df29f51-703a-4fc8-992d-64591ffd9e61)).
+- **should-pass-arguments-for-many-inputs**: You SHOULD pass `arguments:` to run one test body over many inputs: `@Test(arguments: [1, 2, 3])`.
+- **should-zip-paired-inputs**: You SHOULD use `zip(...)` for paired inputs to avoid an unintended Cartesian product across two collections.
+- **should-prefer-parameterization-over-loops**: You SHOULD prefer parameterization over hand-written loops so each case surfaces as a distinct result.
+- **should-attach-traits-for-behavior-and-metadata**: You SHOULD attach traits for behavior and metadata: `.disabled("reason")`, `.bug("url")`, `.timeLimit(.minutes(1))`, `.enabled(if:)`, and serialization via `.serialized`.
+- **should-define-and-apply-tags**: You SHOULD define tags with `@Tag` and apply them to filter/organize runs (e.g. `.tags(.network)`).
+- **should-keep-a-small-shared-tag-vocabulary**: You SHOULD keep a small, shared tag vocabulary rather than ad-hoc per-file tags.
+- **should-target-the-latest-swift-toolchain**: You SHOULD target the latest Swift 6.2.x toolchain.
+- **should-write-tests-clean-under-strict-concurrency**: You SHOULD write tests that are clean under strict concurrency.
+- **should-annotate-main-actor-tests**: You SHOULD annotate `@MainActor` on `@Test` functions that touch main-actor state rather than dispatching manually.
+- **should-follow-one-entity-per-file**: You SHOULD follow one-entity-per-file: one suite `struct` per file, with nested helpers in an `extension`.
+

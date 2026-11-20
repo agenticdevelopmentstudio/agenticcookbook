@@ -1,0 +1,20 @@
+
+- `must-not-reference-fid`: whether any text or code references FID as a current Core Web Vital
+- `must-measure-in-field-at-p75`: whether Core Web Vitals are measured in the field at p75
+- `must-enforce-performance-budget-in-ci`: whether a performance budget is enforced in CI so regressions fail the build
+- `should-use-lab-tooling-for-diagnosis`: whether lab tooling serves diagnosis and pre-merge gating with field data as the authority
+- `must-reserve-space-for-shifting-elements`: whether every layout-shift-prone element reserves space
+- `should-break-up-long-tasks`: whether long tasks over 50ms are broken into smaller chunks
+- `should-yield-to-main-thread`: whether long-running work yields to the main thread
+- `should-prefer-scheduler-yield`: whether `scheduler.yield()` is preferred where available
+- `should-provide-yield-fallback`: whether `scheduler.yield()` use has a feature-detected fallback
+- `should-move-heavy-computation-to-web-worker`: whether heavy computation runs in a Web Worker
+- `must-avoid-layout-thrashing`: whether DOM reads and writes are batched and never interleaved in a reflow-forcing loop
+- `should-keep-dom-small`: whether the DOM stays small and long lists are virtualized
+- `should-defer-non-critical-work`: whether non-critical work is deferred to idle time or post-interaction
+- `should-apply-lcp-quick-wins`: whether the LCP quick wins are applied
+- `should-apply-cls-quick-wins`: whether the CLS quick wins are applied
+- `should-collect-field-data`: whether field data is collected via `web-vitals` or CrUX
+- `should-wire-a-ci-gate`: whether a CI gate asserts metric thresholds and resource/byte budgets
+- `should-express-budgets-as-concrete-limits`: whether budgets are concrete limits that fail the build on regression
+- `should-pin-dated-thresholds`: whether thresholds are pinned to dated values and re-verified against `web.dev/articles/vitals/`

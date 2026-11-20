@@ -1,0 +1,21 @@
+
+- `should-put-config-where-codex-looks`: whether each kind of configuration is in the place Codex looks for it
+- `should-keep-shared-config-in-repo`: whether everything the team shares is inside the repository
+- `must-not-depend-on-untrusted-checkout`: whether any setting that must apply on every machine depends on an untrusted checkout
+- `must-check-keys-against-reference`: whether every key used is in the configuration reference
+- `must-not-copy-keys-from-other-tools`: whether any key was copied from another tool
+- `must-not-check-in-secrets`: whether any checked-in `config.toml` contains a secret
+- `should-keep-agents-md-files-short`: whether each `AGENTS.md` file is short
+- `should-move-reference-material-into-skills`: whether reference material sits in skills rather than `AGENTS.md`
+- `should-write-agents-md-for-any-agent`: whether `AGENTS.md` is written for any agent, not one tool
+- `should-not-repeat-parent-in-nested-agents-md`: whether nested `AGENTS.md` files repeat their parent
+- `should-give-agents-override-a-reason`: whether each `AGENTS.override.md` has a reason
+- `should-write-skill-description-as-trigger`: whether each skill description is written as a trigger
+- `should-put-repository-skills-under-agents-skills`: whether every repository skill is under `.agents/skills`
+- `should-set-allow-implicit-invocation-false`: whether every skill meant to run only on request sets `allow_implicit_invocation: false`
+- `should-disable-skills-via-skills-config`: whether skills are disabled with a `[[skills.config]]` entry rather than deleted
+- `must-follow-skill-structure-reference`: whether each `SKILL.md` follows the skill structure reference
+- `must-follow-never-clobber-on-install`: whether installing a skill follows never-clobber-user-files
+- `must-not-write-new-custom-prompts`: whether any new custom prompt was written where a skill could express the need
+- `should-migrate-team-prompts-to-skills`: whether every prompt the team uses has been migrated to a repository skill
+

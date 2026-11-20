@@ -1,0 +1,58 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "A `Gemfile` MUST have one global `source`, and its `Gemfile.lock` MUST be committed.",
+      "to": [
+        "must-have-one-global-gem-source",
+        "must-commit-gemfile-lock"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both MUSTs kept in two rules: one global source; Gemfile.lock committed.",
+        "pin": "f7744a94741382ef45258c9194454332d994b66b76e2c402eb6f1221d6032ac1"
+      }
+    },
+    {
+      "sentence": "Development and test gems SHOULD be kept in groups, and installs SHOULD omit them where they are not needed with `bundle config set --local without <group>`.",
+      "to": [
+        "should-group-dev-and-test-gems",
+        "should-omit-unneeded-gem-groups"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs kept in two rules: dev and test gems grouped; installs omit unneeded groups with bundle config set --local without <group>.",
+        "pin": "337e7777693cce6ddffdebcff8ca5ef454316774cc3a5212e99d759684db13c4"
+      }
+    },
+    {
+      "sentence": "Code SHOULD raise with `raise`, not `fail`, and SHOULD define domain errors as subclasses of `StandardError`.",
+      "to": [
+        "should-raise-with-raise",
+        "should-subclass-standard-error"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs kept in two rules: raise not fail; domain errors subclass StandardError.",
+        "pin": "22f9b679b4fcd57e30d6131117d7ed400f6c458076a0395566825ab4f82d8945"
+      }
+    },
+    {
+      "sentence": "Style SHOULD be configured in `.rubocop.yml`, and the project SHOULD set `AllCops: TargetRubyVersion` or let it come from the gemspec, `.ruby-version` or `.tool-versions`.",
+      "to": [
+        "should-configure-style-in-rubocop-yml",
+        "should-set-rubocop-target-version"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both SHOULDs kept in two rules: style in .rubocop.yml; TargetRubyVersion set or taken from the gemspec, .ruby-version or .tool-versions.",
+        "pin": "228a818ad7494a63337c2a47550f115a5dbf50e98d97aad85218222de295ddf6"
+      }
+    }
+  ],
+  "obsolete": []
+}

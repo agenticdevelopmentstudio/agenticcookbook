@@ -1,0 +1,18 @@
+
+- `should-configure-tsconfig-to-catch-errors`: a `tsconfig.json` that leaves off checks the compiler could run
+- `should-adopt-stricter-flags-deliberately`: stricter flags switched on all at once with no plan behind them
+- `must-set-strict`: a new project whose `tsconfig.json` `compilerOptions` lack `"strict": true`
+- `must-not-silence-checker`: a project-wide `// @ts-nocheck`, a blanket `any`, or `skipLibCheck` hiding first-party errors
+- `should-use-scoped-ts-expect-error`: a suppression that is not a narrowly-scoped `// @ts-expect-error` with a reason, such as `// @ts-ignore`
+- `should-treat-disabled-strict-flags-as-temporary`: a disabled strict-family flag with no tracking reference recorded in code
+- `should-enable-recommended-near-defaults`: a new project without `noUncheckedIndexedAccess` or `verbatimModuleSyntax`
+- `must-use-import-type-with-verbatim-module-syntax`: under `verbatimModuleSyntax`, a type-only import or export without `import type`, `export type` or an inline `type` modifier
+- `should-enable-exact-optional-property-types-when-absent-differs`: an API where "absent" and "present but undefined" differ, modeled without `exactOptionalPropertyTypes`
+- `should-enable-erasable-syntax-only-for-type-stripping`: files run by native type-stripping (Node.js, Bun, Deno, in-browser transforms) without `erasableSyntaxOnly`
+- `should-pair-erasable-syntax-only-with-verbatim-module-syntax`: `erasableSyntaxOnly` set without `verbatimModuleSyntax`
+- `should-turn-on-strict-first`: on existing code, stricter flags enabled before `strict`, or `strict` landed together with other changes
+- `should-enable-one-stricter-flag-at-a-time`: on existing code, a change enabling more than one stricter flag, or moving on with fallout unfixed
+- `should-not-enable-every-flag-in-one-sweep`: an established codebase with every flag enabled in a single sweep
+- `should-not-assume-forecast-behavior-is-current`: config or guidance that assumes the native Go compiler, TypeScript 7.0, strict by default or removed legacy modes as current
+- `should-confirm-native-compiler-release-state`: a dependency on the native Go compiler or TypeScript 7.0 with no check of its release state against the TypeScript blog and microsoft/typescript-go
+- `must-keep-setting-strict-explicitly`: a `tsconfig.json` that relies on an implicit strict default instead of setting `"strict": true`

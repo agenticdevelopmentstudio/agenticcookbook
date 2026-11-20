@@ -1,0 +1,20 @@
+
+- **must-enforce-guardrails-as-code**: Guardrails **MUST** be enforced as deterministic code, not as prompt instructions alone — a model can always be talked out of following its own prompt (OWASP LLM01:2025 Prompt Injection).
+- **should-validate-and-moderate-model-input**: Everything reaching the model **SHOULD** be validated and moderated.
+- **off-band-input**: The system **MUST** screen input for prompt injection, jailbreaks, off-topic requests, and unsafe content before it reaches the model.
+- **untrusted-context**: Content from tools, retrieval, files, or other users **MUST** be treated as untrusted and labeled as data, never merged into the instruction channel.
+- **layered-defense**: Input checks **SHOULD** combine cheap deterministic rules (length, encoding, allow-listed topics) with a moderation/classifier pass; prompt-level instructions **MAY** supplement but **MUST NOT** be the only defense.
+- **should-treat-model-output-as-untrusted**: All model output **SHOULD** be treated as untrusted until it has passed checks (see [adc.guideline.implementing.security.llm-application-security](cookbook:a8088a6a-4542-4f6c-b74a-7c7ef7dcc63d)).
+- **deterministic-output-checks**: Output guardrails **MUST** be enforced deterministically — schema/JSON validation, PII and secret detection, and unsafe-content moderation run in code, not by asking the model to self-certify.
+- **schema-conformance**: Structured output **MUST** be parsed and validated against an explicit schema; non-conforming output **MUST** be rejected or repaired, never passed downstream verbatim.
+- **no-leakage**: Output **MUST** be scanned for PII, credentials, and system-prompt leakage (OWASP LLM02:2025, LLM07:2025) before it is returned or persisted.
+- **should-constrain-agency-to-minimum**: Agency **SHOULD** be constrained to the minimum required (OWASP LLM06:2025 Excessive Agency).
+- **allow-list-tools**: The agent **MUST** be limited to an explicit allow-list of tools; tool guardrails **MUST** be enforced deterministically at the call boundary.
+- **least-privilege**: Each tool **MUST** run with the narrowest scopes, credentials, and data access needed — no shared admin tokens.
+- **human-in-the-loop**: High-impact or irreversible actions (payments, deletes, external sends, infra changes) **MUST** require explicit human confirmation before execution.
+- **caps**: Spending, rate, and iteration caps **MUST** bound tool use to prevent runaway loops and unbounded consumption (OWASP LLM10:2025).
+- **kill-switch**: A kill switch that halts the agent and revokes its tool access **MUST** exist and be reachable by operators.
+- **circuit-breakers**: Repeated failures, guardrail trips, or anomalous cost/rate **SHOULD** trip a circuit breaker that pauses the agent and alerts.
+- **audit-trail**: Inputs, tool calls, confirmations, and guardrail decisions **SHOULD** be logged for after-the-fact review.
+- **should-confirm-privacy-obligations-with-counsel**: Privacy and PII handling here is engineering guidance, not legal advice; obligations **SHOULD** be confirmed with counsel.
+- **should-start-with-in-process-checks**: Heavy controls (managed moderation services, dedicated policy engines, sidecar enforcement) are adopt-when-measured-need-justifies per YAGNI — guardrails **SHOULD** start with in-process deterministic checks.

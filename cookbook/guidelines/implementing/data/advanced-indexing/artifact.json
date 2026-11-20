@@ -4,11 +4,11 @@
     "id": "8a1d8274-cc46-4449-a824-7c7a79c0b1e2",
     "title": "Advanced database indexing",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,21 +27,21 @@
     "references": [
       "https://www.postgresql.org/docs/current/indexes.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "database-operations",
       "performance-optimization"
     ]
   },
-  "synced": "2c5e77d39b084665",
+  "synced": "f141741516bf9311",
   "parts": [
     {"part": "intro"},
-    {"part": "build-safely-on-live-tables", "heading": "Build safely on live tables"},
-    {"part": "choose-the-type-by-access-pattern", "heading": "Choose the type by access pattern"},
-    {"part": "targeted-index-shapes", "heading": "Targeted index shapes"},
-    {"part": "indexing-jsonb", "heading": "Indexing JSONB"},
-    {"part": "validate-then-keep-honest", "heading": "Validate, then keep honest"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "choose-the-type-by-access-pattern", "heading": "Choose the type by access pattern", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

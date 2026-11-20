@@ -1,0 +1,21 @@
+
+- `should-split-schema-changes-into-compatible-steps`: whether each schema change is split into small, backward-compatible steps
+- `must-be-compatible-with-running-version`: whether both N-1 and N work after every migration step
+- `must-not-ship-schema-and-code-together`: whether any schema change ships in the same step as code that depends on it
+- `must-defer-destructive-changes`: whether every destructive change waits for the contract phase
+- `should-spread-change-across-releases`: whether each logical change is spread across releases
+- `must-add-columns-nullable-or-defaulted`: whether every new column is nullable or defaulted, with `NOT NULL` added later via `NOT VALID` then `VALIDATE CONSTRAINT`
+- `must-rename-by-parallel-change`: whether every rename goes through add-new, dual-write, backfill, switch and drop-old
+- `must-batch-backfills`: whether backfills run in bounded batches with a commit per batch
+- `should-make-backfills-idempotent`: whether backfills are idempotent
+- `should-bound-ddl-lock-wait`: whether every lock wait is bounded
+- `must-set-lock-timeout`: whether every lock-taking migration sets `lock_timeout`
+- `should-set-statement-timeout`: whether migrations set `statement_timeout`
+- `should-retry-lock-timeout-aborts`: whether `lock_timeout` aborts are retried with backoff
+- `must-build-indexes-concurrently`: whether indexes on large live tables are built and dropped `CONCURRENTLY`
+- `must-not-wrap-concurrent-index-in-transaction`: whether any concurrent index step is wrapped in a transaction
+- `should-clean-up-invalid-index`: whether a failed concurrent build's `INVALID` index is cleaned up before retry
+- `should-roll-back-by-redeploying`: whether rollback is a redeploy of the previous app version
+- `should-avoid-dropping-down-migrations`: whether down-migrations drop just-added columns
+- `must-keep-old-shape-one-deploy-cycle`: whether the old shape survives a full deploy cycle past the switch
+- `should-confirm-engine-lock-behavior`: whether non-blocking claims were confirmed against the engine's current docs

@@ -1,0 +1,20 @@
+
+- `must-not-edit-component-code-to-add-a-theme`: a new theme that needed edits to component code
+- `should-keep-three-token-tiers`: tokens not split into primitive, semantic and component tiers, or a theme that rebinds a tier other than the semantic one
+- `must-consume-only-semantic-tokens`: a component reading a primitive token or a hard-coded literal
+- `should-author-themes-as-value-sets`: a theme written as branches in code instead of a value set rebinding every semantic token with the same keys
+- `should-resolve-tokens-at-a-single-boundary`: tokens resolved in more than one place instead of one boundary (CSS custom-property scope, SwiftUI `Environment`/asset catalog, Compose `MaterialTheme`/`CompositionLocal`, WinUI theme dictionary)
+- `must-switch-theme-as-a-single-state-change`: per-component conditionals on the theme instead of one swap of the set
+- `must-define-every-token-in-every-theme`: a semantic token missing from any theme
+- `should-fail-fast-on-a-missing-token`: a missing key that falls back silently instead of failing a build/test check
+- `must-honor-os-theme-by-default`: an app that ignores the OS theme by default, or offers no explicit override
+- `must-respond-to-system-contrast-signal`: no high-contrast / increase-contrast theme, or no response to `prefers-contrast: more`, `forced-colors`, `UIAccessibility.isDarkerSystemColorsEnabled` or `accessibilityHighContrast`
+- `should-defer-to-system-colors-under-forced-colors`: colors overridden under forced-colors / Windows High Contrast
+- `must-meet-wcag-aa-contrast-in-every-theme`: a theme with a pair below 4.5:1 for normal text or 3:1 for large text and non-text UI
+- `must-check-contrast-per-theme`: contrast checked in one theme only
+- `should-automate-contrast-checks-in-ci`: no CI check of contrast against the value sets
+- `must-not-use-color-as-sole-state-signal`: a state shown by color alone
+- `should-align-tokens-to-dtcg-format`: token names/types not aligned to the W3C Design Tokens Format Module (2025.10)
+- `should-pin-dated-spec-revision-and-isolate-parser`: an unpinned spec revision, or token parsing spread outside one build step
+- `should-adopt-token-pipeline-only-on-measured-need`: a token build pipeline added with no measured need
+- `may-hand-author-value-sets-in-small-apps`: in a small app, hand-authored per-platform value sets are allowed and are not a finding

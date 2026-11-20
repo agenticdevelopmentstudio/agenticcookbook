@@ -1,0 +1,27 @@
+
+- `should-name-rule-files-lowercase-kebab-case`: whether every rule file name is descriptive lowercase kebab-case
+- `may-include-a-title-or-version-in-frontmatter`: whether any rule frontmatter goes beyond a title or version
+- `should-have-a-clear-title`: whether each rule has a clear title naming its purpose
+- `should-number-procedural-steps`: whether procedural rules number or clearly separate their steps
+- `should-give-distinct-concerns-their-own-sections`: whether distinct concerns have their own headed sections
+- `should-use-an-imperative-tone`: whether requirements use RFC 2119 keywords
+- `should-be-deterministic`: whether the LLM can follow each rule without ambiguity
+- `should-list-every-referenced-file`: whether every reference to material lists each file path
+- `should-be-self-contained-or-clearly-scoped`: whether each rule contains what it needs or references where to find it
+- `should-not-use-vague-directives`: whether any directive is vague
+- `should-avoid-vague-rules`: whether every rule is actionable
+- `should-avoid-contradictory-rules`: whether any rules contradict each other
+- `should-avoid-unbounded-scope`: whether each rule governs a specific concern
+- `should-avoid-missing-file-paths`: whether any rule asks for reading without listing the files
+- `should-avoid-duplicating-claude-md`: whether any rule duplicates CLAUDE.md content
+- `should-avoid-rules-with-no-enforcement-mechanism`: whether each rule gives steps to verify compliance
+- `should-keep-per-turn-content-minimal`: whether per-turn rule content is kept minimal
+- `should-put-large-reference-material-on-demand`: whether large reference material is in external files read on demand
+- `should-keep-rule-files-under-200-lines`: whether every rule file is under 200 lines / ~8KB
+- `should-inline-small-and-reference-large`: whether small content is inlined and large content referenced
+- `should-not-duplicate-across-rules`: whether any concept is covered by more than one rule
+- `should-use-globs-for-file-specific-rules`: whether rules for specific file patterns use `globs` frontmatter
+- `should-deduplicate-must-nots`: whether each MUST NOT adds a unique constraint
+- `should-avoid-mandatory-multi-file-reads`: whether any rule makes multi-file reads mandatory up front
+- `should-inline-mostly-metadata-files`: whether any referenced file is >50% YAML metadata
+

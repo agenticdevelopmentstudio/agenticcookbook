@@ -1,0 +1,62 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Before committing to an architecture, ask: \"What would it cost to reverse this in six months?\"",
+      "to": "should-ask-reversal-cost",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD asking, before committing to an architecture, what it would cost to reverse it in six months.",
+        "pin": "81654ca7d0b67d521f265816217def0a6aa1e3e4fb88771f2cd93baec2793366"
+      }
+    },
+    {
+      "sentence": "Prefer decisions that keep options open over decisions that lock in a technology or pattern",
+      "to": "should-prefer-decisions-that-keep-options-open",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD preferring decisions that keep options open over ones that lock in a technology or pattern.",
+        "pin": "3938d99791f4325f4ffbd8ab9a0be6712565530c0e965b113b9b7a77f8f21162"
+      }
+    },
+    {
+      "sentence": "When two approaches are otherwise equal, choose the one that is easier to change later",
+      "to": "should-choose-easier-to-change-when-equal",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the otherwise-equal condition and choosing the approach easier to change later at SHOULD.",
+        "pin": "29a91ad0ab8cf46f65d933c5f70d7e263a80a0287471bfab380afc952b4d4f7b"
+      }
+    },
+    {
+      "sentence": "Treat **cognitive load** as the metric the structural principles serve: simplicity, locality of behavior, and boundaries all exist to reduce the cognitive load of understanding and changing the system, so a design — or an agent workflow — **SHOULD** be tested by whether it lowers that load.",
+      "to": [
+        "should-test-design-by-cognitive-load",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-test-design-by-cognitive-load keeps cognitive load as the metric and the SHOULD test of a design or agent workflow; rationale keeps that simplicity, locality of behavior and boundaries exist to reduce that load.",
+        "pin": "0d9d55c4851c3f8b11c5fa56fe2bacaa9481dff4b75df376e3100d362b7e785d"
+      }
+    },
+    {
+      "sentence": "Caveat: AI and multi-agent tooling can *shift* load onto the human orchestrator rather than remove it, so use cognitive load as a lens (proxies: fan-out, file count, time-to-onboard), not a thresholded metric.",
+      "to": [
+        "should-use-cognitive-load-as-a-lens",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-cognitive-load-as-a-lens keeps the lens-not-threshold instruction with its proxies, and rationale keeps the caveat that AI and multi-agent tooling can shift load onto the human orchestrator.",
+        "pin": "60c277692ebcf3d387ac2ed22939e74e774821bf1bc04063be57997bda9cd7f2"
+      }
+    }
+  ],
+  "obsolete": []
+}

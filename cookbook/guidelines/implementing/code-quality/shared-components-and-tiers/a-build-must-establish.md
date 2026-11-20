@@ -1,0 +1,22 @@
+
+- `should-build-upward-from-shared-pieces`: each component the build adds is assembled from existing shared pieces where they exist, or the build says why not
+- `should-apply-by-judgment-without-declared-tiers`: in a repo without declared tiers, the build states the tier it judged each new file to belong to, or says why not
+- `should-search-before-creating`: the build records the tier table, shared exports and several-name search it checked before each new file, or says why not
+- `should-reuse-before-building-new`: for each new component near an existing one, the build states why the existing one cannot serve
+- `may-add-new-file-to-shared-tier`: each new shared-tier file the build adds is placed in that tier on purpose
+- `should-check-new-shared-file-for-duplicates`: each new shared-tier file was checked against the tier's exports for a duplicate under another name, or the build says why not
+- `should-say-what-was-reused`: the build's report lists what it reused and what it declined to reuse, with why
+- `should-place-in-lowest-tier`: each new piece is in the lowest tier its imports allow, or the build says why not
+- `should-not-create-tier-for-feature`: the build adds no new tier, framework or target for a feature unless the project owner decided it
+- `should-ask-if-cli-could-link-it`: each new piece builds without the application, so a command-line tool could link it, or the build says why not
+- `should-pass-app-values-as-parameters`: no new piece reads an application settings singleton or app-only type it could take as a parameter, or the build says why not
+- `must-not-import-from-higher-tier`: the tier check (or an import scan) finds no lower-tier import of a higher tier
+- `should-invert-upward-dependencies`: each upward need in the build is a protocol or callback defined below and supplied above, or the build says why not
+- `should-extract-shared-part-of-cycle`: the build leaves no dependency cycle between tiers, or says why not
+- `should-put-feature-pieces-in-shared-tiers`: the feature's models, service protocol, client, storage, logic and views are in shared tiers, or the build says why not
+- `may-keep-entry-point-and-glue-in-app`: the build's application-tier files are only entry point, config and aggregation code
+- `should-split-feature-by-need`: the build places models and logic in the foundation, persistence in storage, views in UI, transport in IPC and only glue in the app, or says why not
+- `should-keep-every-file-in-a-tier-directory`: every file the build adds is in a purpose-named directory of a declared tier, none at the top level, or the build says why not
+- `should-keep-directories-cohesive`: each directory the build adds or changes is reached only through its small public surface, or the build says why not
+- `should-group-by-concept`: the build groups new files by concept, not by file type, or says why not
+- `should-move-untiered-file-into-a-tier`: the build leaves no file in a path outside a declared tier and adds no tier just to hold one, or says why not

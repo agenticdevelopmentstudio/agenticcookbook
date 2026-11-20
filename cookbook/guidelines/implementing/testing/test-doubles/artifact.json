@@ -4,7 +4,7 @@
     "id": "734f7c30-8cf2-4284-8276-267d62c3c49c",
     "title": "Test Doubles",
     "type": "guideline",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -36,15 +36,22 @@
       "https://nsubstitute.github.io/",
       "https://vitest.dev/guide/mocking.html"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-04-04",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "writing-tests"
     ]
   },
-  "synced": "db10ef9091d23322",
+  "synced": "854872690a61cc7b",
   "parts": [
     {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "taxonomy", "heading": "Taxonomy", "role": "how-to"},
+    {"part": "platform-tools", "heading": "Platform tools", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

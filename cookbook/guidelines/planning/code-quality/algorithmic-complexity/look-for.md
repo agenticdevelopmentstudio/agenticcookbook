@@ -1,0 +1,14 @@
+
+- `should-give-high-complexity-algorithms-own-scope-group`: O(n log n) or worse algorithms over large datasets, and whether the proposed grouping gives them a scope group of their own
+- `should-treat-caching-layers-as-candidates`: a caching subsystem with its own eviction, invalidation and hit/miss tracking, and whether it is listed as a scope group candidate
+- `should-not-mix-computation-with-io`: files where algorithm code sits beside network calls or file system access
+- `should-note-mixed-io-as-design-smell`: whether each such mixed file is noted as a design smell in the findings
+- `should-not-treat-crud-as-boundary-signal`: simple CRUD mapping code proposed as an algorithmic boundary
+- `must-scope-or-flag-parallel-computation`: parallel execution primitives (`concurrentPerform`, `parallel()`, `ParallelStream`, PLINQ, GPU compute, SIMD) and whether that code is scoped on its own or flagged as a concurrency concern
+- `should-note-comparator-shape`: sort calls with custom comparators, and whether the findings say simple or compound
+- `should-note-traversal-cycle-handling`: BFS/DFS code, and whether the findings say how cycles and visited sets are handled
+- `should-note-hash-map-purpose`: hash maps used for frequency counting, grouping or deduplication, and whether the findings say so
+- `should-note-set-deduplication`: sets that strip duplicates from a stream, and whether the findings say so
+- `should-flag-triple-nesting-immediately`: loops nested three or more deep, and whether the findings flag them
+- `should-note-float-precision`: floating point summation or running averages, and whether the findings note precision
+- `should-note-accelerated-matrix-libraries`: matrix multiplication, and whether the findings say if an accelerated library does it

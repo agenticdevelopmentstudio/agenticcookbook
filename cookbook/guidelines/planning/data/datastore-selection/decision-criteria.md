@@ -1,6 +1,4 @@
 
-Choose a specialist primary store **only** when a requirement below is concrete and, where possible, measured:
-
 | Need | Signal that justifies it | Candidate store |
 |------|--------------------------|-----------------|
 | Relational, transactional, mixed queries | Default — entities with relationships, joins, integrity | Relational (Postgres) |

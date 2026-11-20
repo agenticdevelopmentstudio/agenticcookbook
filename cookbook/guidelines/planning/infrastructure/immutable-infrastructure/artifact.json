@@ -4,11 +4,11 @@
     "id": "60b3f760-f397-4762-b2d5-5aba80fd51f8",
     "title": "Immutable infrastructure",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,21 +30,20 @@
       "https://docs.docker.com/build/building/best-practices/",
       "https://12factor.net/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "configuration"
     ]
   },
-  "synced": "abdb7059e8059fa4",
+  "synced": "f461e013d8c52e88",
   "parts": [
     {"part": "intro"},
-    {"part": "core-rule", "heading": "Core rule"},
-    {"part": "rebuild-and-redeploy-over-patch-in-place", "heading": "Rebuild-and-redeploy over patch-in-place"},
-    {"part": "rollback-is-a-redeploy", "heading": "Rollback is a redeploy"},
-    {"part": "pairs-with-iac-and-containerization", "heading": "Pairs with IaC and containerization"},
-    {"part": "build-vs-runtime-state", "heading": "Build vs. runtime state"},
-    {"part": "scope-and-trade-offs-yagni", "heading": "Scope and trade-offs (YAGNI)"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

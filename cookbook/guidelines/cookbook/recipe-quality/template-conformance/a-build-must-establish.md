@@ -1,0 +1,24 @@
+
+- `must-begin-with-yaml-frontmatter`: the recipe begins with a valid YAML frontmatter block between `---` lines
+- `must-include-required-frontmatter-fields`: the frontmatter has `id`, `title`, `type`, `version`, `status`, `language`, `created`, `modified`, `author` and `summary`
+- `must-use-unique-uuid-v4-id`: `id` is a canonical hyphenated UUID v4, unique in the cookbook
+- `must-match-title-to-heading`: `title` is non-empty and equals the `# Title` heading
+- `must-have-index-entry-and-matching-rdid`: the recipe has an `index.json` entry and its rdid ends with its folder name
+- `must-use-recognized-type`: `type` is a recognized artifact type
+- `must-use-semver-version`: `version` is MAJOR.MINOR.PATCH with no pre-release label, build metadata or prefix
+- `must-use-recognized-status`: `status` is `draft`, `review`, `accepted` or `deprecated`
+- `must-use-bcp-47-language`: `language` is a valid BCP 47 tag
+- `must-use-iso-8601-dates`: `created` and `modified` are `YYYY-MM-DD` dates
+- `must-make-platforms-a-sequence`: `platforms` is a YAML sequence of one or more canonical identifiers
+- `must-make-tags-a-sequence`: `tags` is a YAML sequence, possibly empty
+- `must-keep-summary-single-line-and-short`: `summary` is one line of at most 160 characters
+- `must-make-link-fields-present-sequences`: `depends-on`, `related` and `references` are each present as YAML sequences
+- `must-open-body-with-h1`: the body opens with `# Title` right after the frontmatter
+- `must-contain-template-sections-in-order`: every template section is present in the prescribed order
+- `must-use-exact-section-names`: every section heading uses the template's exact name
+- `must-use-level-2-section-headings`: every section is a `## Section Name` heading
+- `must-not-omit-required-sections`: no required section is omitted
+- `may-append-extra-sections-at-end`: any additional section follows the final required section
+- `must-not-insert-sections-between-required`: no additional section sits between required sections
+- `must-end-with-change-history`: `## Change History` is the final section
+- `may-leave-change-history-empty-initially`: the Change History body is empty only at initial creation

@@ -1,0 +1,11 @@
+
+- **must-not-stop-at-search-results**: Web search is the start, not the method; research MUST NOT stop at a search-results page.
+- **should-orient-and-classify-domain**: SHOULD first orient and classify the topic's domain.
+- **should-identify-authoritative-sources**: SHOULD identify the authoritative sources for that domain (see the source catalogue) and go to them.
+- **should-search-with-controlled-vocabulary**: SHOULD search with Boolean or controlled vocabulary (e.g. MeSH for medicine).
+- **should-chain-citations-to-saturation**: SHOULD chain citations — backward and forward snowballing — to saturation.
+- **should-corroborate-across-independent-sources**: SHOULD corroborate across genuinely independent sources.
+- **should-record-provenance-at-generation-time**: SHOULD record provenance as you go, at generation time.
+- **should-use-prisma-for-systematic-rigor**: SHOULD use PRISMA when systematic rigor is required.
+- **should-default-to-openalex**: For academic sources, OpenAlex (free, no key) SHOULD be the default.
+- **should-read-full-sources**: An agent SHOULD read full sources rather than snippets.

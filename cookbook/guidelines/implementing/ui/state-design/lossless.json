@@ -1,0 +1,126 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Loading** — show progress (see [adc.guideline.implementing.ui.always-show-progress](cookbook:8d52028b-d358-4965-93a1-030fc8405068)).",
+      "to": "should-show-progress-while-loading",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Showing progress in the loading state is kept at SHOULD with the always-show-progress cross-reference.",
+        "pin": "816bfafc20c9e25c0bb5b8e50316ae5a431dafb7c454dedce8bb47d2b100ef62"
+      }
+    },
+    {
+      "sentence": "Use skeleton screens for content-heavy",
+      "to": "should-use-skeletons-and-spinners",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Skeleton screens for content-heavy views are kept at SHOULD.",
+        "pin": "1a6634c95f91a03a57e4b273fe3ae47598d1be8a26029ce37cc03fc49c99391e"
+      }
+    },
+    {
+      "sentence": "views, spinners for actions.",
+      "to": "should-use-skeletons-and-spinners",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rest of the instruction (views; spinners for actions) is kept in the same rule.",
+        "pin": "e0189ff1f4e29985d98c6845fb9c40f5351779c5143a6ffd5ce83238071004b5"
+      }
+    },
+    {
+      "sentence": "Never block the entire screen for a partial load.",
+      "to": "must-not-block-screen-for-partial-load",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Never block the entire screen for a partial load' is kept, strengthened to MUST NOT.",
+        "pin": "4c307d5c228a8001f1390353752991f082636c87d97d142e580303f476e75ef1"
+      }
+    },
+    {
+      "sentence": "**Empty** — explain what belongs here, why it's empty, and provide a single clear action to",
+      "to": "should-explain-empty-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The empty state's explain-what, explain-why and single-clear-action requirements are kept at SHOULD.",
+        "pin": "87106e7895c77e2a3073fdd238a2b7c5775bf4b70a03861ef7e3633b1602768b"
+      }
+    },
+    {
+      "sentence": "populate it.",
+      "to": "should-explain-empty-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'populate it' is kept verbatim as the purpose of the single clear action.",
+        "pin": "e73214c1bd1a2f0749f8aa4604c8b233925daec186ce8cfd5cc7bd1c54c60b96"
+      }
+    },
+    {
+      "sentence": "Use an icon or illustration, a brief message, and a CTA button.",
+      "to": "should-compose-empty-state",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The empty-state composition (icon or illustration, brief message, CTA button) is kept at SHOULD.",
+        "pin": "5c03ff1738e088b7b7364c63eb2d4e1e95cdb07e418e22d8f2b12466c3593029"
+      }
+    },
+    {
+      "sentence": "**Error** — identify the problem, explain why if possible, and offer a recovery action (retry,",
+      "to": "should-explain-errors-with-recovery",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The error state's identify, explain-why-if-possible and recovery-action requirements are kept at SHOULD with the retry example.",
+        "pin": "2010b362f127f1579c3665b157b51495183995585df2241a3f22b7d03218d7e1"
+      }
+    },
+    {
+      "sentence": "go back, contact support).",
+      "to": "should-explain-errors-with-recovery",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The remaining recovery examples (go back, contact support) are kept verbatim.",
+        "pin": "ef250d2ff62efb61a89f6c85088985b7189ebb44b42cc3347a5c388ea0615ed3"
+      }
+    },
+    {
+      "sentence": "Don't blame the user.",
+      "to": "should-not-blame-the-user",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Don't blame the user' is kept at SHOULD NOT.",
+        "pin": "1f823956a61198b652da211905572bb92f1610f78254e0a976038f4c65917434"
+      }
+    },
+    {
+      "sentence": "Design empty and error states with the same care as the loaded state — they are often the",
+      "to": "should-design-empty-and-error-with-care",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Designing empty and error states with the same care as the loaded state is kept at SHOULD.",
+        "pin": "20b2552bebc25fc115917260ff995de2eda2486a1f5edbf677ac01430886b266"
+      }
+    },
+    {
+      "sentence": "user's first impression.",
+      "to": "should-design-empty-and-error-with-care",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reason (they are often the user's first impression) is kept verbatim.",
+        "pin": "8ae697887f1fd0bff3289c58e993138fa09e833c71b66aeea64fcc0304ef45a1"
+      }
+    }
+  ],
+  "obsolete": []
+}

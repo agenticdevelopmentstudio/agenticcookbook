@@ -4,11 +4,11 @@
     "id": "ab8ed68c-949d-42c8-8c07-416674795a65",
     "title": "MCP server security",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -32,23 +32,22 @@
       "https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html",
       "https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "security-review",
       "ai-api-integration"
     ]
   },
-  "synced": "2f5d9d06a90dbfd6",
+  "synced": "c123d6bc90d2795d",
   "parts": [
     {"part": "intro"},
-    {"part": "threat-classes", "heading": "Threat classes"},
-    {"part": "tool-definitions-and-output", "heading": "Tool definitions and output"},
-    {"part": "rug-pull-tool-redefinition", "heading": "Rug-pull / tool redefinition"},
-    {"part": "authorization-token-audience-and-passthrough", "heading": "Authorization: token audience and passthrough"},
-    {"part": "confused-deputy-oauth-proxy-servers", "heading": "Confused deputy (OAuth proxy servers)"},
-    {"part": "session-hijacking", "heading": "Session hijacking"},
-    {"part": "ssrf-via-oauth-discovery", "heading": "SSRF via OAuth discovery"},
+    {"part": "threat-classes", "heading": "Threat classes", "role": "rationale"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,86 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Keep the `MutableStateFlow` private and expose the immutable upcast.",
+      "to": "should-keep-mutablestateflow-private",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the ViewModel scope the surrounding MUST supplied: keep MutableStateFlow private and expose the immutable upcast.",
+        "pin": "a81256028bf30bf6461edb0351f13a7c0a65678a1c490d69248ea9f083350404"
+      }
+    },
+    {
+      "sentence": "Collect `StateFlow` with `collectAsStateWithLifecycle()` (from `lifecycle-runtime-compose`) so collection stops in the background — prefer it over `collectAsState()` on Android.",
+      "to": "should-collect-with-lifecycle",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the lifecycle-runtime-compose source, the stops-in-background reason and the Android preference over collectAsState().",
+        "pin": "2d59d2fb8212db99d88cd38a1bd736e6767dfd6842e3c1008b6e197be1903caf"
+      }
+    },
+    {
+      "sentence": "Confirm the lifecycle-compose dependency is present.",
+      "to": "should-confirm-lifecycle-compose-dependency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: confirm the lifecycle-compose dependency is present.",
+        "pin": "3a3d460d394b22263780187f438ac898750c5348789a5b17f0cfc44ea55d8a7d"
+      }
+    },
+    {
+      "sentence": "Model screen state as a single immutable `data class` or a `sealed interface` of cases (Loading / Success / Empty / Error).",
+      "to": "should-model-screen-state-immutably",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both shapes (single immutable data class or sealed interface of Loading/Success/Empty/Error cases).",
+        "pin": "63a03f00f86db77c6be7029543f3510d23e060f306e0affa2e369d7500621167"
+      }
+    },
+    {
+      "sentence": "Pass the **narrowest** parameters a composable needs (e.g.",
+      "to": "should-pass-narrowest-parameters",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the title: String example, the not-whole-aggregates contrast and the scoped-recomposition reason.",
+        "pin": "8314201d0ffdd635daa1c84d27785d72bbdc15c74881ab523ccfc4ee40e2e845"
+      }
+    },
+    {
+      "sentence": "Prefer **stable** types as parameters: immutable `data class`es, primitives, and lambdas.",
+      "to": "should-prefer-stable-parameter-types",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three stable kinds (immutable data classes, primitives, lambdas).",
+        "pin": "9fb65bc9d30a808a4d2d3e9c07999eaa68aed73808c7b9bcddd32149d7bd5750"
+      }
+    },
+    {
+      "sentence": "Use Kotlin immutable collections (`kotlinx.collections.immutable`) or annotate types as `@Immutable` / `@Stable` only when the contract genuinely holds — a false stability annotation causes missed updates.",
+      "to": "should-mark-stability-only-when-contract-holds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the only-when-the-contract-genuinely-holds condition and the missed-updates reason.",
+        "pin": "d2ee4b51f113bfe0f2ca507dd211b972552936c2b4d5968e9daeeedb80624d22"
+      }
+    },
+    {
+      "sentence": "Treat unnecessary recomposition as a **performance** concern, not a correctness one: make it work and right first, then measure with the Compose recomposition tooling before optimizing (`make-it-work-make-it-right-make-it-fast`).",
+      "to": "should-treat-recomposition-as-performance-concern",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both parts kept at SHOULD: recomposition is a performance not correctness concern, and work-then-right-then-measure with Compose tooling before optimizing, with the principle reference.",
+        "pin": "7cf3eca5da2b4a9feea8bfbaa465d5cf7429e9677a5f74cfd7a290214518de05"
+      }
+    }
+  ],
+  "obsolete": []
+}

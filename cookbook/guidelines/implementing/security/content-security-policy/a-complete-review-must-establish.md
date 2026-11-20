@@ -1,0 +1,10 @@
+
+- `should-start-strict-from-default-src-none`: whether the policy starts at `default-src 'none'` and adds only what is needed
+- `should-use-nonce-based-scripts`: whether scripts are allowed by `script-src 'nonce-{random}' 'strict-dynamic'` rather than domain allowlisting
+- `must-not-allow-unsafe-inline-or-eval`: whether `script-src` includes `'unsafe-inline'` or `'unsafe-eval'`
+- `should-set-frame-ancestors-self`: whether the policy sets `frame-ancestors 'self'`
+- `should-deploy-report-only-first`: whether a new policy ran in report-only mode before it was enforced
+- `should-require-trusted-types`: whether the CSP adds `require-trusted-types-for 'script'` with a named `trusted-types` policy
+- `should-back-trusted-types-with-sanitizer`: whether the trusted-types policy is backed by a documented sanitizer rather than ad-hoc escaping
+- `should-roll-out-trusted-types-report-only-first`: whether Trusted Types ran in report-only mode before enforcing
+- `should-enable-trusted-types-despite-mixed-support`: whether Trusted Types is enabled as defense-in-depth despite mixed browser support

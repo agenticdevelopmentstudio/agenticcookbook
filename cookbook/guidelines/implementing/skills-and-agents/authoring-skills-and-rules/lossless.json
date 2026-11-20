@@ -1,0 +1,514 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The following practices reflect early lessons.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps that the agent practices reflect early lessons, along with the maturity context before it.",
+        "pin": "d9622a1ada4ac0a054efd36dc4f4c35f10a6677e5241ca03f69b44f77d386a06"
+      }
+    },
+    {
+      "sentence": "**Scope tool access** -- Use the `tools` or `disallowedTools` frontmatter fields to restrict what the agent can do.",
+      "to": "should-scope-agent-tool-access",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for the unkeyed instruction: use tools or disallowedTools frontmatter to restrict what the agent can do.",
+        "pin": "0bbc04fa77385e542b8843aa073ec1ccaf6282cb7b99a3ead9d5d8a55c2249a4"
+      }
+    },
+    {
+      "sentence": "**Set `maxTurns`** -- Prevent unbounded execution by setting a turn limit appropriate to the task complexity.",
+      "to": "should-set-max-turns",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: set maxTurns to a limit appropriate to task complexity, with the reason (prevent unbounded execution).",
+        "pin": "0d071addcc2f00bda83d9e8c7b8a53ab02f01b430d03ed7b9e43b7f3811c34b4"
+      }
+    },
+    {
+      "sentence": "**Clear system prompt** -- The markdown body IS the agent's instruction set.",
+      "to": [
+        "should-write-a-clear-system-prompt",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale keeps the statement word for word ('The markdown body IS the agent's instruction set'), tied to the clear-system-prompt rule.",
+        "pin": "f1e3a10ecf9339b22fcdd77d5280ebfacd36cfb7581266eb4dd3b74e8ce11240"
+      }
+    },
+    {
+      "sentence": "Make the instructions focused, unambiguous, and structured.",
+      "to": "should-write-a-clear-system-prompt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three qualities: focused, unambiguous, structured.",
+        "pin": "338e0009ed72e7af9f13f2af3a45960700cd4d49b1278f53fe70de52025258be"
+      }
+    },
+    {
+      "sentence": "**Always lint** -- Run `/lint-agent <path>` after creating or modifying an agent.",
+      "to": "must-lint-agent-after-every-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps /lint-agent <path> after creating or modifying an agent, raised to MUST ('always').",
+        "pin": "7543cdc837e5165435f2b9058428b7963bc18c12371a80b80055eae9e11dd56c"
+      }
+    },
+    {
+      "sentence": "Fix all FAILs.",
+      "to": "should-fix-all-agent-lint-fails",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD and scoped to the FAILs from /lint-agent, matching the original's context.",
+        "pin": "2ec428998a596a1b8e001e3a6f2ed143ba13a76499d4e00e061908438cacbd18"
+      }
+    },
+    {
+      "sentence": "**Imperative tone throughout** -- Use MUST, MUST NOT, SHOULD, MAY (RFC 2119) consistently.",
+      "to": "should-use-rfc-2119-keywords-in-rules",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: imperative tone throughout, using the RFC 2119 keywords consistently; the reason sits in the rationale.",
+        "pin": "5dcf32ed946eb553fbc3a24b558b3d75a48e53e5727052faf5c192f714c693eb"
+      }
+    },
+    {
+      "sentence": "**Explicit file paths** -- If the rule instructs the LLM to \"read the principles\" or \"check the guidelines,\" list every file path it needs to read.",
+      "to": "should-list-every-referenced-file-path",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (when the rule says read the principles or check the guidelines) and the requirement to list every file path.",
+        "pin": "62fd2e690b098d6b39286e4b311ecba2b1db241badb59c859376ac4af64e310c"
+      }
+    },
+    {
+      "sentence": "**Single concern per rule** -- Each rule addresses one topic: planning, implementing, permissions, versioning, committing, etc.",
+      "to": "should-keep-one-concern-per-rule",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: one concern per rule, with the full example list of topics.",
+        "pin": "8dc4b5b5db746a7b7f8ae02e6857e7ee04c6446cbcd613ac977a7eb9267a6911"
+      }
+    },
+    {
+      "sentence": "Do not combine unrelated concerns into a single rule file.",
+      "to": "should-not-combine-concerns-in-one-rule-file",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT: unrelated concerns are not combined into one rule file.",
+        "pin": "700f9694b41e418f183b96531005b0a0ba2e35582ef2b5c784d640943a17cef4"
+      }
+    },
+    {
+      "sentence": "**MUST NOT section required** -- Every rule MUST include a dedicated section listing what the LLM must not do.",
+      "to": "must-include-a-must-not-section",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST is kept: every rule includes a dedicated MUST NOT section listing what the LLM must not do.",
+        "pin": "2d1ba1e78a9a641d964ec0b2b99c2bbedd32db53b52f2395e5d36b433b91304e"
+      }
+    },
+    {
+      "sentence": "**Enforcement mechanism** -- Do not just state \"do X.\" Include verification steps that confirm X was actually done.",
+      "to": "should-include-verification-steps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT/SHOULD: don't just state 'do X', include verification steps confirming X was done, framed as the enforcement mechanism.",
+        "pin": "b02d00329ff57df4b3bcbd8c11c2e45787a3ffc2203a8187837490185234a460"
+      }
+    },
+    {
+      "sentence": "**Deterministic instructions** -- Avoid subjective language like \"appropriate,\" \"as needed,\" or \"if it makes sense.\" Be specific enough that two independent sessions following the rule produce consistent, comparable results.",
+      "to": [
+        "should-avoid-subjective-language",
+        "should-be-specific-enough-for-consistent-results"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD: avoid the quoted subjective phrases, and be specific enough that two independent sessions produce consistent, comparable results.",
+        "pin": "3e8a2dcd2c6b9c0e2c5ef97fd97ab34c32df8e679711639a43581bdf949c94d1"
+      }
+    },
+    {
+      "sentence": "**Same-selection = repair** -- When a user re-selects the current configuration (e.g., re-runs a setup skill with the same parameters), re-apply everything from scratch.",
+      "to": "should-reapply-everything-on-same-selection",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition and example (re-running a setup skill with the same parameters) and re-apply everything from scratch.",
+        "pin": "22f986ebf8d0b09cc549f7fcaaf1b82936fe31d42ce012379f2434f5619ed6eb"
+      }
+    },
+    {
+      "sentence": "Do not skip steps with \"already done\" -- treat it as a repair operation.",
+      "to": "should-not-skip-steps-on-same-selection",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT/SHOULD: steps aren't skipped as 'already done', and a same selection is treated as a repair.",
+        "pin": "c2979367f87e35bbb3038fcd79f5d17b1188f5af2d2431dda7e340483a566e2f"
+      }
+    },
+    {
+      "sentence": "**Named requirements, not numbered** -- Use descriptive kebab-case names for requirements, not sequential identifiers like REQ-001.",
+      "to": "should-name-requirements-not-number-them",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: descriptive kebab-case names rather than sequential identifiers like REQ-001.",
+        "pin": "3aca98d43a1297b9b228ef15c6d46007d4f0468ece86c7b5bf68b679c505d31f"
+      }
+    },
+    {
+      "sentence": "**Always lint after creating or modifying** -- Run `/lint-rule <path>` after every change.",
+      "to": "must-lint-rule-after-every-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps /lint-rule <path> after every change, raised to MUST ('always').",
+        "pin": "dddc16779ecdd3689fc113e706bba0c2e46ded93e451e0fef4fafd65dd8f00ee"
+      }
+    },
+    {
+      "sentence": "Fix all FAILs before considering the rule complete.",
+      "to": "should-fix-all-rule-lint-fails",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its completion condition (before considering the rule complete).",
+        "pin": "26a6c8f62879eef7fefddd73daf8b0c3fbda13842191b3170841136fdd9f88bf"
+      }
+    },
+    {
+      "sentence": "Present WARNs to the user for review.",
+      "to": [
+        "should-present-skill-lint-warns",
+        "should-present-rule-lint-warns"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for both lint contexts the sentence appeared in, skills and rules: present WARNs to the user for review.",
+        "pin": "b1a86ccf14ac20b42d18f0f2902387406bf9144b69ce5999c6302532300f7383"
+      }
+    },
+    {
+      "sentence": "**Check the inventory first** -- Read the skills table in CLAUDE.md before creating a new skill.",
+      "to": "should-read-skills-table-before-creating-a-skill",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: read the CLAUDE.md skills table before creating a new skill.",
+        "pin": "ba9acde0f99c67464a94f30b1d3f72c022497fb51de71736b7170702ef5ca15f"
+      }
+    },
+    {
+      "sentence": "Do not duplicate an existing skill's purpose.",
+      "to": "should-not-duplicate-a-skill-purpose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT: a new skill does not duplicate an existing skill's purpose.",
+        "pin": "8eb705312cb8990f0099ccf07bea0d37d1aff7fa5b144d122f8cd1205dc62b50"
+      }
+    },
+    {
+      "sentence": "If the skill is not already listed, confirm the name and purpose with the user before proceeding.",
+      "to": "should-confirm-new-skill-name-and-purpose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (skill not already listed): confirm name and purpose with the user before proceeding.",
+        "pin": "e6d1d84786bcdb54bd93d506c9a8d295633a5d14fe4febc5c0c9e5839d30b526"
+      }
+    },
+    {
+      "sentence": "**Version from day one** -- Every skill MUST have a `version` field in its frontmatter, support a `--version` parameter, and print its version on every invocation.",
+      "to": "must-version-skills-from-day-one",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The MUST is kept with all three requirements: a version frontmatter field, a --version parameter, and printing the version on every invocation.",
+        "pin": "27f406cc3d243febb436e74f3d7054be498770661357ae2358fb41add1eab4b7"
+      }
+    },
+    {
+      "sentence": "Increment the version on every change following semver: patch for fixes, minor for new behavior, major for breaking changes.",
+      "to": "should-increment-skill-version-by-semver",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full semver mapping: patch for fixes, minor for new behavior, major for breaking changes.",
+        "pin": "30a1f5a6d4bf75802106b83e0eb81824830a4b74d290efdd647240279dd0a0a3"
+      }
+    },
+    {
+      "sentence": "**Session version check** -- The skill MUST read its on-disk version during startup and compare it to the version loaded into the current session.",
+      "to": "must-check-session-version-at-startup",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unchanged at MUST: read the on-disk version at startup and compare it with the version loaded in the session.",
+        "pin": "61dca6ed1a1c2c191a2bd56e3af4218401b13b9150ac6451fddc390b287aed87"
+      }
+    },
+    {
+      "sentence": "If the versions differ, warn the user that the loaded skill may be stale.",
+      "to": "should-warn-when-loaded-skill-may-be-stale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (versions differ): warn that the loaded skill may be stale.",
+        "pin": "45d2942c39d8ff531cf5c3192c39e6a1c08e970a5cc8b1cee13e93785147dd13"
+      }
+    },
+    {
+      "sentence": "Continue running -- do not block execution.",
+      "to": "should-not-block-on-version-mismatch",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD/SHOULD NOT, scoped to a version mismatch: keep running and don't block execution.",
+        "pin": "67b92be5e1f70f3ed3730d504c2df5c4831848beb7d1aca13176fe8d09be021f"
+      }
+    },
+    {
+      "sentence": "**Use `$ARGUMENTS`** -- Do not describe argument handling in prose.",
+      "to": "should-not-describe-arguments-in-prose",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT: argument handling is not described in prose.",
+        "pin": "6368b629ae5cc3f2db69c097c4bd9fce3bcc26262fc35d80496b22b8cba7f45c"
+      }
+    },
+    {
+      "sentence": "Use `$ARGUMENTS`, `$0`, `$1` for input.",
+      "to": "should-use-arguments-variables",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three variables: $ARGUMENTS, $0, $1.",
+        "pin": "4a0e9d94d89b107aade70854420e4f721b90f48be65f73a073cb64b329674b64"
+      }
+    },
+    {
+      "sentence": "If the `argument-hint` frontmatter field is declared, the skill body MUST reference these variables.",
+      "to": "must-reference-arguments-when-hinted",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with the argument-hint condition, and the variables are named explicitly.",
+        "pin": "ebf5121841f68400c22a29b770c3db15d7ba8e689f5c996059eb3b802bc88492"
+      }
+    },
+    {
+      "sentence": "**Use `${CLAUDE_SKILL_DIR}`** -- Reference the skill's own supporting files with `${CLAUDE_SKILL_DIR}`.",
+      "to": "should-use-claude-skill-dir",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: the skill references its own supporting files with ${CLAUDE_SKILL_DIR}.",
+        "pin": "da5d1380d14a47b857ddcd06310470fa1ce0e2f7c4076c1f504b0496e1cd287b"
+      }
+    },
+    {
+      "sentence": "Use repo-relative paths or `../agenticdevelopercookbook/` paths for cookbook content.",
+      "to": "should-use-repo-relative-cookbook-paths",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both path forms allowed for cookbook content.",
+        "pin": "d0cb8f427395c541c4b607b42341a073511ed8c43af35af1dd8b98c0aff266dd"
+      }
+    },
+    {
+      "sentence": "**Description under 200 characters** -- The skill description is loaded into every session's context window.",
+      "to": [
+        "should-keep-skill-description-under-200-characters",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the under-200-characters limit at SHOULD, and the rationale keeps the reason (the description loads into every session's context).",
+        "pin": "e313b611565b8168e06256eaa9b9854192aca88eef3e2cea58e33b2325a9c9ab"
+      }
+    },
+    {
+      "sentence": "Keep it short and include natural trigger keywords so the model invokes the skill when appropriate.",
+      "to": [
+        "should-keep-skill-description-under-200-characters",
+        "should-include-trigger-keywords-in-description"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both instructions kept at SHOULD: keep the description short, and include natural trigger keywords so the model invokes the skill when appropriate.",
+        "pin": "fa02e7aba64e39824040cd3c00e467ae3573af0f598aab36bdbc85dd1eb9d2e0"
+      }
+    },
+    {
+      "sentence": "**Atomic permission prompt** -- Before any file modifications, present a single yes/no prompt listing every file to be written and every command to be run, with reasons.",
+      "to": "should-use-one-atomic-permission-prompt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with every element: before any file changes, one yes/no prompt listing every file and command, with reasons.",
+        "pin": "3d54eea802fbdfec45d9f9bc1d4cb3fb9dc944eafea1ecd8a9bddd4373158239"
+      }
+    },
+    {
+      "sentence": "**Error handling** -- Check prerequisites before starting work.",
+      "to": "should-check-prerequisites-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: check prerequisites before starting work.",
+        "pin": "f91a143fae60c1c470cfda37d94560b728d1aaa22d5e9e38a5e3ef5e690af728"
+      }
+    },
+    {
+      "sentence": "If required files are missing or the environment is misconfigured, stop immediately with a useful error message.",
+      "to": "should-stop-on-missing-prerequisites",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both conditions (missing required files, misconfigured environment): stop immediately with a useful error.",
+        "pin": "a8d464962c127f6db602011426842123224dc42a73497162f76b7bfd316d81fe"
+      }
+    },
+    {
+      "sentence": "Handle invalid arguments explicitly rather than failing silently.",
+      "to": "should-handle-invalid-arguments-explicitly",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: invalid arguments are handled explicitly rather than failing silently.",
+        "pin": "fe3ff39e41a400dbc14edd28f3ec6f71a26c8995d6d83e36f426ca0635f739e0"
+      }
+    },
+    {
+      "sentence": "**Include a Usage section** -- Every skill MUST include at least one example invocation showing the command and what to expect from the output.",
+      "to": "must-include-a-usage-section",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: a Usage section with at least one example invocation showing the command and the expected output.",
+        "pin": "660db7b8998fdf2ec3e3ca81ec92315a8ad27a30abe6b1300e75f7421ff9797e"
+      }
+    },
+    {
+      "sentence": "**`disable-model-invocation` carefully** -- Use this frontmatter flag for skills that SHOULD only be invoked explicitly by the user.",
+      "to": "should-disable-model-invocation-for-explicit-only-skills",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the 'carefully' qualifier and the scope (skills that should only be invoked explicitly by the user).",
+        "pin": "e8c10ba085b351d2d23f64dfaa42e19f9b1a01d61018c4377dd7e197ed4eedc0"
+      }
+    },
+    {
+      "sentence": "Do NOT set it on skills that other skills need to call via the Skill tool.",
+      "to": "must-not-disable-model-invocation-on-called-skills",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The emphatic 'Do NOT' becomes MUST NOT: disable-model-invocation is not set on skills that other skills call via the Skill tool.",
+        "pin": "780efb4cd21bb501a2dc729adbffda831182bdf154bf046c5e98cbb95aa67f66"
+      }
+    },
+    {
+      "sentence": "**No `context: fork` on chainable skills** -- Forked skills cannot invoke other skills or write files visible to the caller.",
+      "to": [
+        "should-not-fork-chainable-skills",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps 'no context: fork on chainable skills' at SHOULD, and the rationale keeps the reason (forked skills cannot invoke skills or write caller-visible files).",
+        "pin": "3d3fcbbe7228ac1e117a206186c9689b1e494e938cfd8f1756420a8715225a6e"
+      }
+    },
+    {
+      "sentence": "Only use `context: fork` for isolated, read-heavy tasks that return a report.",
+      "to": "should-fork-only-isolated-read-heavy-tasks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the full scope: context: fork only for isolated, read-heavy tasks that return a report.",
+        "pin": "e7f414f0ab9c72d0ad3ad2d94dea05f7acb14e0e34d78f67f6c651425dabf402"
+      }
+    },
+    {
+      "sentence": "**Don't duplicate between body and references** -- Maintain one authoritative source.",
+      "to": "should-keep-one-authoritative-source",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD NOT/SHOULD: no duplication between body and references, one authoritative source.",
+        "pin": "7846489308e72e4de7af2d718327fada97cd8b0c4a742ae7539668986e1cdc4d"
+      }
+    },
+    {
+      "sentence": "Never have both with overlapping content that can drift out of sync.",
+      "to": "must-not-overlap-body-and-references",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Never' is kept as MUST NOT: body and references never overlap in content that can drift out of sync.",
+        "pin": "e8d2fa8ef33a4429eaa9009e6eaa8b7867519c308d009111a8ddb8c96447a42b"
+      }
+    },
+    {
+      "sentence": "**Always lint after creating or modifying** -- Run `/lint-skill <path>` after every change.",
+      "to": "must-lint-skill-after-every-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps /lint-skill <path> after every change, raised to MUST ('always').",
+        "pin": "e6baed820167dbe32bb624b4c164870950c013a9595e70026b334687ae7dda1a"
+      }
+    },
+    {
+      "sentence": "Fix all FAILs before considering the skill complete.",
+      "to": "should-fix-all-skill-lint-fails",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its completion condition (before considering the skill complete).",
+        "pin": "19a3fdd8cc3165b748e9e3baceac42733ad0bc312ee6b9a2d10dfd01816b430e"
+      }
+    },
+    {
+      "sentence": "**Update CLAUDE.md and README.md** -- After creating a skill, add it to the skills table in both files.",
+      "to": "should-add-new-skill-to-claude-md-and-readme",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: after creating a skill, add it to the skills table in both CLAUDE.md and README.md.",
+        "pin": "69862352e38a17097dc7e2a3bee75b6fe21789fa14bccd12f61acd03ccfb3819"
+      }
+    }
+  ],
+  "obsolete": []
+}

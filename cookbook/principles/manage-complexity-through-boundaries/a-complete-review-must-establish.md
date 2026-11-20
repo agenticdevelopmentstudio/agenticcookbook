@@ -1,0 +1,11 @@
+
+- `should-define-ports`: whether each external need of the application is described by a port (interface)
+- `should-use-adapters`: whether adapters translate between each external technology and the ports
+- `should-test-core-without-infrastructure`: whether the core application is tested without databases, UIs, or networks
+- `should-define-dependencies-as-owned-protocols`: whether each external dependency is defined as a protocol the app owns rather than a vendor's concrete type
+- `should-keep-adapters-thin`: whether each adapter only translates and delegates
+- `must-not-add-business-logic-to-adapters`: whether any adapter adds business logic
+- `should-extract-shared-contracts`: whether every type two modules share lives in a shared contract rather than coupling the modules directly
+- `should-verify-boundaries-without-framework-imports`: whether core logic compiles and its tests pass with no framework imports
+- `should-extend-at-the-boundary`: whether new capability on a stable, widely depended-on boundary came through new implementations behind the port rather than a change to its shape
+- `should-not-pre-generalize-unstable-boundaries`: whether any boundary still being discovered was pre-generalized

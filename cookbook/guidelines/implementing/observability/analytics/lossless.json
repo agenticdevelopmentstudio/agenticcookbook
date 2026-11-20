@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "No direct coupling to any analytics backend.",
+      "to": "must-not-couple-to-analytics-backend",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-couple-to-analytics-backend keeps the ban on direct coupling to any analytics backend, at MUST NOT.",
+        "pin": "0f1d30ddf4dfb97c3020e419137a7946a25a4cf2e67ac1d22dd7146df9cb8a0d"
+      }
+    },
+    {
+      "sentence": "Provide a logging-only default; swap in a backend (Mixpanel, Amplitude, PostHog) later.",
+      "to": "should-provide-logging-only-default",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-provide-logging-only-default keeps the logging-only default and the later backend swap with its examples (Mixpanel, Amplitude, PostHog), at SHOULD.",
+        "pin": "beb96076c9ff5338c9d1303c606fc1f481c4166bf31a79bb89243b59fd5d7848"
+      }
+    }
+  ],
+  "obsolete": []
+}

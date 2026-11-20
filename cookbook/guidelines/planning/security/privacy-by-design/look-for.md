@@ -1,0 +1,19 @@
+
+- `should-build-privacy-in-from-the-first-design-decision`: privacy controls added after the design was settled
+- `should-consult-counsel-for-jurisdiction-specific-obligations`: jurisdiction-specific obligations decided without counsel
+- `must-produce-a-maintained-data-flow-map`: code written before a personal-data flow map exists, or a map missing what, why, where or how long for a data category
+- `must-update-the-map-on-change`: a change to fields, processors or destinations with no matching map update
+- `should-flag-data-with-no-stated-purpose`: data with no stated purpose not flagged for removal
+- `should-run-a-dpia-before-high-risk-processing`: high-risk processing built with no DPIA
+- `must-record-dpia-risks-and-mitigations`: a DPIA that omits risks to individuals or their mitigations, or one not revisited after a material change
+- `must-escalate-unmitigated-residual-risk`: an unmitigated residual high risk shipped without escalation
+- `must-not-collect-just-in-case`: data collected beyond the minimum for the stated purpose
+- `should-pseudonymize-or-anonymize`: identifiable data kept where pseudonymization or anonymization would serve
+- `should-keep-raw-identifiers-out-of-logs-analytics-and-prompts`: raw identifiers in logs, analytics or AI prompts
+- `must-delete-or-de-identify-when-purpose-ends`: no retention defined up front, or data kept identifiable after its purpose ends
+- `must-default-to-the-most-protective-configuration`: an out-of-the-box configuration that is not the most privacy-protective
+- `must-make-sharing-opt-in`: sharing, public visibility or broad processing that is opt-out
+- `must-default-telemetry-off`: optional telemetry or tracking on by default
+- `should-follow-least-privilege`: a role that can read a data category it does not need
+- `should-adopt-heavier-controls-only-when-justified`: heavy privacy-enhancing infrastructure adopted with no measured need behind it
+- `should-start-with-minimization-and-de-identification`: specialized tooling reached for before minimization and de-identification

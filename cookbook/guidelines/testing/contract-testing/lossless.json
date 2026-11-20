@@ -1,0 +1,143 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**MUST NOT** treat end-to-end tests as a substitute for contract tests — they are slower, flakier, and fail far from the cause.",
+      "to": "must-not-substitute-end-to-end-for-contract-tests"
+    },
+    {
+      "sentence": "**MUST NOT** write a \"contract\" test against a third-party API you own neither side of and expect it to gate *their* deploys; you can only assert your tolerance of their pinned schema.",
+      "to": "must-not-expect-third-party-contracts-to-gate-their-deploys"
+    },
+    {
+      "sentence": "**SHOULD NOT** duplicate full business-logic assertions inside contracts — that belongs in unit/integration tests for each service.",
+      "to": "should-not-duplicate-business-logic-in-contracts"
+    },
+    {
+      "sentence": "Pact is a common toolchain for this pattern (see references); the practice — not the tool — is what matters and **SHOULD** be applied with whatever framework fits the stack.",
+      "to": "should-apply-practice-with-any-framework",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: practice over tool, any fitting framework, Pact named as a common toolchain with the references pointer.",
+        "pin": "0f74e3000152ce97290bd7bc701bb890cce6aef568e32e48bc3ec834b7299e4b"
+      }
+    },
+    {
+      "sentence": "Match on field presence and type, and on matcher-based values (e.g. \"an ISO-8601 string\", \"a positive integer\"), not on exact literals that change per request.",
+      "to": "should-match-presence-type-and-matchers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps presence/type and matcher-based matching over per-request literals, with both examples, now at SHOULD.",
+        "pin": "25de997c0156a8cabe0c8438a366ac1ed1ac9c22e9dec43f288b81eb34955fa7"
+      }
+    },
+    {
+      "sentence": "Assert the error/status codes the consumer branches on; ignore codes it never inspects.",
+      "to": "should-assert-only-branched-codes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves kept at SHOULD: assert the codes the consumer branches on, ignore codes it never inspects.",
+        "pin": "4b4b1bfa1edf67d7cb1dc4a28d43735ac238b50c389b38d5b1acedb02ae2b84b"
+      }
+    },
+    {
+      "sentence": "A contract that breaks on a *backward-compatible* provider change (a new optional field, a reordered list) is too strict — loosen it.",
+      "to": "should-loosen-over-strict-contracts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the backward-compatible condition and both examples (new optional field, reordered list).",
+        "pin": "54873220289daf4d37f23efa01e5cb01baa5707c6cb6e9ef5ada10c845df85cf"
+      }
+    },
+    {
+      "sentence": "Service-to-service integrations where you own both sides **SHOULD** be covered by consumer-driven contract tests, not by relying on end-to-end tests for boundary correctness.",
+      "to": "should-cover-owned-integrations-with-consumer-driven-contracts"
+    },
+    {
+      "sentence": "Contracts **MUST** assert the *shape* — required fields, types, and key status/error codes — and **MUST NOT** assert every field value or incidental detail.",
+      "to": [
+        "must-assert-contract-shape",
+        "must-not-assert-incidental-detail",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "MUST assert shape (required fields, types, key status/error codes) and MUST NOT assert every value or incidental detail are both kept, split across two rules; rationale adds why.",
+        "pin": "61f90e0a32aba0a922d12e1cfb17106ca98e0ef887dbed6d4eb752f2dc1c7f0b"
+      }
+    },
+    {
+      "sentence": "Providers **MUST** verify outstanding consumer contracts in CI before deploy.",
+      "to": "must-verify-consumer-contracts-before-deploy"
+    },
+    {
+      "sentence": "Pact with a broker) **SHOULD** gate deployment with a `can-i-deploy` check that confirms every dependent consumer's contract still passes against the version being shipped.",
+      "to": "should-gate-deploy-with-can-i-deploy"
+    },
+    {
+      "sentence": "Contract tests **MUST** run as their own CI stage, separate from end-to-end tests, so a contract failure points directly at the broken boundary.",
+      "to": "must-run-contract-tests-as-own-stage"
+    },
+    {
+      "sentence": "Each contract **MUST** be versioned and tagged with the deployment environment (or pacticipant version) so the broker can answer \"is this pair compatible in `production`?\" rather than just \"is the latest pair compatible?\".",
+      "to": "must-version-and-tag-contracts"
+    },
+    {
+      "sentence": "For consumed third-party APIs, the pinned schema revision **MUST** be recorded (URL + version/date).",
+      "to": "must-record-pinned-schema-revision"
+    },
+    {
+      "sentence": "When the provider publishes a new revision, re-pin deliberately — **MUST NOT** silently track a moving `latest`.",
+      "to": "must-not-track-moving-latest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Re-pin deliberately is now an explicit MUST and the MUST NOT on silently tracking a moving latest is kept, with the new-revision condition.",
+        "pin": "3b88ae9790aceaef343808ffaea71acf6b8562fd16d6d3fb2e22d3a634482eef"
+      }
+    },
+    {
+      "sentence": "Contract tests **MUST NOT** require the real provider to be running.",
+      "to": "must-not-require-real-provider"
+    },
+    {
+      "sentence": "**Consumer-driven contracts** — use when you own *both* sides of the interaction (your own services calling each other).",
+      "to": "should-cover-owned-integrations-with-consumer-driven-contracts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule's sub-bullet keeps that consumer-driven contracts are for when you own both sides (your own services calling each other), and the rule recommends them at SHOULD for that case.",
+        "pin": "95e70aa51b5b8237dfc55e64cfa0cbc0ec999283b4eb6d7afd1901059a0fadcd"
+      }
+    },
+    {
+      "sentence": "**Provider / schema contracts** — use for third-party or upstream APIs you consume but do **not** control.",
+      "to": "should-use-schema-contracts-for-uncontrolled-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its scope: provider/schema contracts for third-party or upstream APIs you consume but do not control.",
+        "pin": "59d5f132059310e8129dad9f43f3ba6c5f255edf590773c920e75359c1a1e866"
+      }
+    },
+    {
+      "sentence": "Pin to the provider's published schema (e.g. an OpenAPI document at a dated revision) and test that your client tolerates it; you cannot make them run your contract.",
+      "to": [
+        "should-use-schema-contracts-for-uncontrolled-apis",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps pinning to the published schema (OpenAPI at a dated revision) and testing client tolerance; rationale keeps that you cannot make them run your contract.",
+        "pin": "73926e7846c44c291e3863e72ff1e3492c6d34e605a3a09c20ee12f228fa24a6"
+      }
+    }
+  ],
+  "obsolete": []
+}

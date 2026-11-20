@@ -1,0 +1,75 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Treat a missing or incomplete `PrivacyInfo.xcprivacy` as a build-breaking error, not a warning.",
+      "to": "should-treat-missing-manifest-as-build-breaking",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps treating a missing or incomplete manifest as build-breaking rather than a warning; the unkeyed instruction is kept at SHOULD.",
+        "pin": "0d5bdf4e8172ead9e3cb3e76c77bd461e621a37503eca76a6dcf54c8f2d7f28b"
+      }
+    },
+    {
+      "sentence": "The manifest is additive and durable: declaring an unused category or a missing reason both cause rejection, so keep it minimal and accurate.",
+      "to": [
+        "should-keep-manifest-minimal-and-accurate",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps 'minimal and accurate' at SHOULD, and the rationale part keeps the reason that the manifest is additive and durable and that an unused category or a missing reason both cause rejection.",
+        "pin": "9bf48f7cb616b9de18cb5be8a494bc03ae44ed40f1aad77a213e334d569e84a1"
+      }
+    },
+    {
+      "sentence": "Apple may extend the required-reason API list over time; re-check the official docs when adding new low-level Foundation calls.",
+      "to": [
+        "should-recheck-docs-for-new-foundation-calls",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps re-checking the official docs for new low-level Foundation calls at SHOULD, and the rationale part keeps the reason that Apple may extend the required-reason API list.",
+        "pin": "b94a86565f358b59ab42bde4b30d89b12d48e5b1fd29492a0feb0c6ac791733f"
+      }
+    },
+    {
+      "sentence": "Treat any not-yet-published category change as a **forecast** until it appears in Apple's documentation.",
+      "to": "should-treat-unpublished-category-changes-as-forecast",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps treating unpublished category changes as a forecast until they appear in Apple's documentation, at SHOULD.",
+        "pin": "f6ea05ad4c36b8a506bb30eb7d9e3e47b8b412b6e4c4551414e60dd628070d31"
+      }
+    },
+    {
+      "sentence": "You **MUST** match `NSPrivacyCollectedDataTypes` to the data the app actually collects; it **SHOULD** stay consistent with the App Store Connect privacy \"nutrition label\".",
+      "to": [
+        "must-match-collected-data-types",
+        "should-match-nutrition-label"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep the MUST to match NSPrivacyCollectedDataTypes to real collection and the SHOULD to stay consistent with the nutrition label.",
+        "pin": "eb229e4eab3d481527db462ff4c8ce4e4931fb35d90a220f21bfe8d43d2f4ac1"
+      }
+    },
+    {
+      "sentence": "If a pinned SDK lacks one, update to a version that includes it or remove the dependency.",
+      "to": "should-update-or-remove-sdk-lacking-manifest",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule, placed directly after the listed-SDK rule, keeps update-or-remove for a pinned SDK lacking its manifest; the unkeyed instruction is kept at SHOULD.",
+        "pin": "9ca5a039ade24e7cba90f0929dfc317357846facdcc2936f51426c08c238c0cc"
+      }
+    }
+  ],
+  "obsolete": []
+}

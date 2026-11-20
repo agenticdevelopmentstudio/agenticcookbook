@@ -1,0 +1,17 @@
+
+- `should-keep-access-tokens-short-lived`: an access token lifetime longer than 5-15 minutes
+- `should-include-only-necessary-claims`: JWT claims beyond those needed, or PII in a JWT that transits untrusted parties
+- `should-bind-refresh-tokens-to-client`: a refresh token usable by any client that presents it
+- `should-rotate-refresh-tokens`: a refresh token reused across refreshes instead of rotated
+- `should-store-refresh-tokens-server-side`: a refresh token held on the client where server-side storage was possible
+- `should-refresh-proactively`: refresh that waits for expiry instead of firing before it (e.g., at 75% of TTL)
+- `should-queue-requests-during-refresh`: concurrent requests that each trigger their own refresh, racing
+- `should-retry-refresh-with-backoff`: a refresh failure with no retry, or retries with no backoff
+- `should-use-keychain-on-apple`: Apple token storage outside Keychain Services
+- `should-use-encrypted-storage-on-android`: Android token storage outside EncryptedSharedPreferences / Android Keystore
+- `should-use-dpapi-on-windows`: Windows token storage without DPAPI (`ProtectedData`)
+- `should-use-httponly-cookies-on-web`: web token storage outside HttpOnly Secure SameSite cookies, or in localStorage
+- `must-not-store-tokens-in-web-storage`: a token written to `localStorage` or `sessionStorage` breaks it
+- `must-not-put-tokens-in-query-parameters`: a token in a URL query parameter breaks it
+- `must-validate-jwt-alg-against-allowlist`: a JWT accepted with `alg: none`, or an `alg` header not checked server-side against an allowlist, breaks it
+- `must-not-trust-client-jwt-claims`: an authorization decision on client-supplied JWT claims without server-side verification breaks it

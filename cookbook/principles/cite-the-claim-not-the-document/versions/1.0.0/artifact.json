@@ -1,0 +1,36 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "09947209-369f-40de-8331-c10b0d6f32c6",
+    "title": "Cite the claim, not the document",
+    "type": "principle",
+    "version": "1.0.0",
+    "status": "accepted",
+    "language": "en",
+    "created": "2026-06-27",
+    "modified": "2026-06-27",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Every individual claim carries its own citation and the exact supporting quote — a bibliography at the end is not auditable.",
+    "platforms": [],
+    "tags": [
+      "research",
+      "citations",
+      "provenance"
+    ],
+    "depends-on": [],
+    "related": [
+      "0131807b-548d-403a-8366-de79e215949d",
+      "85030572-15bc-474c-bd50-f4d9ae0435ba"
+    ],
+    "references": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-06-27"
+  },
+  "synced": "d9f6b6a927c24fc4",
+  "parts": [
+    {"part": "intro"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

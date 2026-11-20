@@ -1,0 +1,11 @@
+
+- `should-define-ports`: every external need of the application is described by a port (interface), or the work says why not
+- `should-use-adapters`: every external technology is reached through an adapter that translates it to a port, or the work says why not
+- `should-test-core-without-infrastructure`: the core application's tests run without databases, UIs, or networks, or the work says why not
+- `should-define-dependencies-as-owned-protocols`: every external dependency is defined as a protocol the app owns, not a concrete type the vendor owns, or the work says why not
+- `should-keep-adapters-thin`: every adapter only translates and delegates, or the work says why not
+- `must-not-add-business-logic-to-adapters`: no adapter contains business logic
+- `should-extract-shared-contracts`: every type shared by two modules lives in a shared contract, with no direct coupling between them, or the work says why not
+- `should-verify-boundaries-without-framework-imports`: core logic compiles and its tests pass with no framework imports, or the work says why not
+- `should-extend-at-the-boundary`: every stable, widely depended-on port kept its existing shape, with new capability added as new implementations behind it, or the work says why not
+- `should-not-pre-generalize-unstable-boundaries`: no boundary still being discovered was pre-generalized, or the work says why

@@ -1,0 +1,16 @@
+
+- **should-default-to-less-client-js**: You SHOULD choose the strategy per route based on that route's job, and default to shipping less client JS.
+- **should-frame-rendering-as-architecture-selection**: You SHOULD frame rendering as an architecture-selection decision, not a framework choice.
+- **should-select-a-strategy-per-route**: You **SHOULD** select a rendering strategy **per route**, not one strategy for the whole app. A marketing landing page and a logged-in dashboard have different constraints.
+- **must-not-mandate-a-framework**: You **MUST NOT** mandate a framework to satisfy this guideline. The same per-route reasoning applies to React, Svelte/SvelteKit, Vue/Nuxt, Astro, SolidStart, Qwik, and others.
+- **should-optimize-for-inp-and-lcp**: You SHOULD optimize for INP and LCP, and SHOULD **not** target FID.
+- **should-prefer-islands-for-mostly-content-pages**: You **SHOULD** prefer islands/partial hydration for pages that are mostly content with a few interactive widgets.
+- **should-stream-ssr-for-slow-data-pages**: You **SHOULD** use streaming SSR (Suspense boundaries) for app pages that depend on slow data, so the shell paints before data resolves.
+- **must-measure-client-js-per-route**: You **MUST** measure the client JS bytes per route (initial + hydration) and treat regressions as defects, not cosmetics.
+- **should-pin-react-router-rsc-to-a-tested-release**: **React Router v7 RSC support is newer and less stable**; you SHOULD treat it as evolving, and pin to a tested release before relying on it.
+- **should-keep-use-client-boundaries-small**: RSC moves component work to the server so component code and its dependencies do **not** ship to the client; you **SHOULD** keep `"use client"` boundaries small and push interactivity to leaf components.
+- **should-adopt-rsc-deliberately**: You SHOULD adopt RSC deliberately, not reflexively.
+- **must-not-introduce-rsc-without-benefit**: You **MUST NOT** introduce RSC to a non-React stack or to a React app where the server/client split adds no measurable benefit — that violates simplicity.
+- **should-record-the-strategy-per-route**: You **SHOULD** record the chosen strategy per route (e.g. in the route's plan or a routing manifest) with a one-line rationale, so the decision is reversible and auditable.
+- **should-keep-strategies-swappable**: You **SHOULD** keep strategies swappable: avoid coupling business logic to a rendering mode so a route can move from SSR to SSG (or vice versa) as requirements change.
+- **must-validate-against-real-metrics**: You **MUST** validate the choice against real metrics (INP, LCP, TTFB, JS transfer size) on representative routes before locking it in.

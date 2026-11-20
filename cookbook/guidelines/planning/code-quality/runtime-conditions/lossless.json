@@ -1,0 +1,117 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Permission-gated code clusters.** Files that all request or check the same permission belong together — they share an operational prerequisite and a failure mode when the permission is denied.",
+      "to": [
+        "should-group-permission-gated-code",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-permission-gated-code keeps same-permission files in one group and the clusters headline; the rationale keeps the shared operational prerequisite and permission-denied failure mode.",
+        "pin": "509f5c4d9df2ab5375a360caded3ecde1052dd292150182c8fcae728b142f5eb"
+      }
+    },
+    {
+      "sentence": "**Entitlements define hard boundaries.** Code that requires an entitlement cannot run without it.",
+      "to": [
+        "should-separate-entitlement-groups",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-separate-entitlement-groups keeps 'entitlements define hard boundaries' and the rationale keeps that entitlement-requiring code cannot run without it.",
+        "pin": "d56affdc3aac18ef87475ba0e4852407d753d4158ef0b1fa397047a800e4ef8b"
+      }
+    },
+    {
+      "sentence": "If one candidate group requires an entitlement that others do not, they are distinct operational units.",
+      "to": "should-separate-entitlement-groups",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-separate-entitlement-groups keeps the one-group-requires-what-others-do-not condition and treating them as distinct operational units.",
+        "pin": "9601a93255fd7d7f856b06820ecf4bd9fe20365eac992077517e7d4629dd419b"
+      }
+    },
+    {
+      "sentence": "**OS version gates mark optional feature envelopes.** Code behind `@available(iOS 16.0, *)` is conditionally executable — flag it as a version-gated feature within its scope group.",
+      "to": [
+        "should-flag-version-gated-features",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-flag-version-gated-features keeps flagging @available-gated code as a version-gated feature within its group and the envelope headline; the rationale keeps the conditionally-executable reason.",
+        "pin": "fedca26858e01bd019b870c23c80e434c98d362f856462bd48e24c65c354a124"
+      }
+    },
+    {
+      "sentence": "If it constitutes a large portion of the group, it may warrant its own scope group.",
+      "to": "may-give-large-version-gated-code-own-group",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "may-give-large-version-gated-code-own-group keeps the large-portion condition and MAY warrant its own scope group.",
+        "pin": "806b3c411d1da137d20622ec3d540036d6f2bb95cb9eb8bd77be75c15cf52fb1"
+      }
+    },
+    {
+      "sentence": "**Environment-specific code belongs in a configuration scope group.** Code that reads environment variables, loads config files, or applies build-time conditionals is configuration infrastructure — it typically belongs in one scope group rather than scattered.",
+      "to": [
+        "should-group-environment-specific-code",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-group-environment-specific-code keeps the three kinds of environment-specific code and 'typically one configuration group rather than scattered'; the rationale keeps that it is configuration infrastructure.",
+        "pin": "c86f1a221a2f522d8dbdd535d7deda5a8801e2f0e66c4d7e933cce22089cd81a"
+      }
+    },
+    {
+      "sentence": "**Feature-flagged code is pre-production.** Large blocks of feature-flagged code indicate in-flight work.",
+      "to": [
+        "should-not-group-unenabled-code-paths",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-group-unenabled-code-paths keeps the pre-production headline and the rationale keeps that large feature-flagged blocks indicate in-flight work.",
+        "pin": "c2ac7daa98cf8d8484d8482ed8d1ded033de543710597d3c784133b2072f4bf8"
+      }
+    },
+    {
+      "sentence": "Document the flags but do not create scope groups around unenabled code paths.",
+      "to": [
+        "should-document-feature-flags",
+        "should-not-group-unenabled-code-paths"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-document-feature-flags keeps documenting the flags and should-not-group-unenabled-code-paths keeps the prohibition on groups around unenabled paths.",
+        "pin": "d6fec7ade4fcd95dbc179675c7a7a6949ea4037811159ac61379af41382f8acf"
+      }
+    },
+    {
+      "sentence": "**Remote config dependencies imply a network prerequisite.** Code that requires a remote config fetch before it can function has an implicit startup dependency — note this as an operational ordering constraint.",
+      "to": [
+        "should-note-remote-config-ordering",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-note-remote-config-ordering keeps noting the operational ordering constraint and the network-prerequisite headline; the rationale keeps the implicit startup dependency.",
+        "pin": "f62c2f3640e244aadd299f772c943e4ada7d4b5aa75e810fc36ffefe509fd179"
+      }
+    }
+  ],
+  "obsolete": []
+}

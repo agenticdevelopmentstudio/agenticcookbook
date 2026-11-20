@@ -1,0 +1,22 @@
+
+- `should-treat-both-gates-as-release-gating`: whether both gates are release-gating and run in CI on every such change
+- `should-pass-both-gates`: whether a change passed both gates before release, with either failure blocking deploy
+- `should-follow-eval-driven-development`: whether grader building, judge calibration and consistency reporting follow eval-driven-development
+- `should-follow-llm-application-security`: whether those safety concerns follow llm-application-security
+- `should-pin-owasp-llm-2025-edition`: whether the 2025 OWASP LLM Top 10 edition is pinned
+- `must-define-numeric-slos`: whether numeric quality and safety SLOs exist before production
+- `must-version-slo-datasets`: whether each SLO is expressed against a versioned dataset
+- `should-set-hard-safety-ceiling`: whether safety SLOs include a hard ceiling distinct from soft targets
+- `should-not-trade-safety-for-quality`: whether a safety SLO was traded for quality
+- `must-trigger-gates-on-every-change`: whether both gates trigger on every such change
+- `must-treat-model-bump-as-code-change`: whether a model-version bump re-ran both gates before rolling forward
+- `should-record-results-against-revision`: whether results are recorded against dataset revision and model id
+- `should-keep-held-out-set`: whether a held-out set is kept out of iteration
+- `must-seed-adversarial-suite`: whether the safety gate is seeded with an adversarial suite
+- `should-combine-curated-and-automated-red-teaming`: whether curated and automated red-teaming are combined and new bypasses become regression cases
+- `should-layer-runtime-guardrails`: whether guardrails are layered and never treated as a substitute for the gate
+- `must-persist-gate-results`: whether per-run gate results are persisted
+- `should-alert-on-regression`: whether regression alerts, including for flakiness, exist
+- `should-confirm-regulatory-obligations-with-counsel`: whether regulatory obligations were confirmed with counsel
+- `should-adopt-heavy-eval-infra-on-measured-need`: whether heavy eval infrastructure was adopted on a measured need rather than by default
+- `should-start-small`: whether the setup started small and grew on demand

@@ -1,0 +1,19 @@
+
+- `must-ship-privacy-manifest`: the submitted app contains a `PrivacyInfo.xcprivacy` declaring its required-reason API usage and tracking/data collection
+- `should-treat-missing-manifest-as-build-breaking`: a missing or incomplete manifest fails the build, or the project says why not
+- `should-name-and-target-manifest`: the manifest is a property list named exactly `PrivacyInfo.xcprivacy` in the app target and every framework/SDK target that needs its own, or the project says why not
+- `should-place-manifest-in-bundle`: the built app has its manifest at the bundle's top level, and each framework/SDK inside its bundle, or the project says why not
+- `must-declare-tracking-domains-when-tracking`: if `NSPrivacyTracking` is `true`, `NSPrivacyTrackingDomains` is present
+- `must-declare-every-reached-category`: every category the code reaches is declared, each with at least one reason code Apple lists for it
+- `must-not-declare-unused-categories`: every declared category has a call in the code that reaches it
+- `must-verify-manifest-before-pr`: every PR touching Foundation file/disk/uptime calls or `UserDefaults`, or adding a dependency, records that the manifest still covers all reached categories
+- `must-match-collected-data-types`: `NSPrivacyCollectedDataTypes` names exactly the data the app collects
+- `should-match-nutrition-label`: `NSPrivacyCollectedDataTypes` matches the App Store Connect privacy label, or the project says why not
+- `must-not-declare-for-listed-sdks`: every SDK on Apple's list ships its own signed manifest, and the app declares nothing for it
+- `should-update-or-remove-sdk-lacking-manifest`: no pinned SDK on the list lacks a manifest, or the project says why it stays
+- `should-search-for-trigger-symbols`: the source and dependencies were searched for the trigger symbols, or the project says why not
+- `must-cover-transitively-linked-binaries`: the declared reasons cover every transitively linked binary, vendored frameworks included
+- `should-reconcile-privacy-report-before-submitting`: the Privacy Report from a clean Archive shows no unreconciled gap at submission, or the project says why not
+- `should-keep-manifest-minimal-and-accurate`: the manifest declares only real usage and all of it, or the project says why not
+- `should-recheck-docs-for-new-foundation-calls`: each new low-level Foundation call was checked against the official docs, or the project says why not
+- `should-treat-unpublished-category-changes-as-forecast`: no unpublished category change is declared or relied on as current, or the project says why

@@ -4,11 +4,11 @@
     "id": "0ce05d51-1d2b-4679-869a-fa1533be95ab",
     "title": "Vector search and retrieval",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -27,22 +27,24 @@
     "references": [
       "https://github.com/pgvector/pgvector"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ai-api-integration",
       "data-modeling"
     ]
   },
-  "synced": "079c1c80ed9006f2",
+  "synced": "dbd4ac9a7e174a7d",
   "parts": [
     {"part": "intro"},
-    {"part": "default-to-pgvector-inside-postgres", "heading": "Default to pgvector inside Postgres"},
-    {"part": "indexing", "heading": "Indexing"},
-    {"part": "prefer-hybrid-retrieval-over-pure-ann", "heading": "Prefer hybrid retrieval over pure ANN"},
-    {"part": "chunking", "heading": "Chunking"},
-    {"part": "metadata-filtering", "heading": "Metadata filtering"},
-    {"part": "verification", "heading": "Verification"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "indexing", "heading": "Indexing", "role": "how-to"},
+    {"part": "prefer-hybrid-retrieval-over-pure-ann", "heading": "Prefer hybrid retrieval over pure ANN", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

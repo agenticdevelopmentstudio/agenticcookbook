@@ -1,0 +1,159 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**Single-column by default** — multi-column only when content density justifies it and",
+      "to": "should-default-to-single-column",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Single-column default kept at SHOULD with the content-density condition for going multi-column.",
+        "pin": "be7d10da8020a56c7c5dcaf5747a93f194a5dfe5b6bc608e1575d81f63dc7a3a"
+      }
+    },
+    {
+      "sentence": "screen width supports it",
+      "to": "should-default-to-single-column",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The second condition (screen width supports it) is kept in the same rule, joined by 'and'.",
+        "pin": "c87191533739b0cf9c789222ed38520be894597da5fb13e775d29aa6ed4c9bf4"
+      }
+    },
+    {
+      "sentence": "**Content-first** — decide what information the user needs, then choose a layout.",
+      "to": "should-decide-content-before-layout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed content-first instruction is kept at SHOULD: decide what the user needs, then choose a layout.",
+        "pin": "a085e70527b71f2b018d3dfec7e0b575e57d86c6a0f03b3eac37a853432b349b"
+      }
+    },
+    {
+      "sentence": "Don't",
+      "to": "should-not-start-with-a-grid",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Don't' is kept at SHOULD NOT in the rule that forbids starting with a grid.",
+        "pin": "5ab3864e5b8521857cf8f5faca67a5e929c1c5dc2db15b5559aac32addb34885"
+      }
+    },
+    {
+      "sentence": "start with a grid and fill it.",
+      "to": "should-not-start-with-a-grid",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Start with a grid and fill it' is kept verbatim as the thing the rule says SHOULD NOT be done.",
+        "pin": "737b1ee941b34ece9a3d1b1a4677972e77273eb70ad30968b32a32d2aaebee0e"
+      }
+    },
+    {
+      "sentence": "**Consistent alignment** — pick a leading edge and stick to it.",
+      "to": "should-keep-consistent-alignment",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pick a leading edge and stick to it is kept at SHOULD.",
+        "pin": "4b07a245c62b48ad15bbfe6437767ffc1b4b1259a96566d416a0ffbe22318359"
+      }
+    },
+    {
+      "sentence": "Mixed alignment creates",
+      "to": "should-keep-consistent-alignment",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The reason (mixed alignment creates visual noise) is kept verbatim in the rule.",
+        "pin": "2965caff0f27a05ad7f81bf748e9b1da94bffe277ce92749fa627aa8130bc40b"
+      }
+    },
+    {
+      "sentence": "visual noise.",
+      "to": "should-keep-consistent-alignment",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'visual noise' is kept verbatim as the end of the rule's reason.",
+        "pin": "6764c82d519326c0c95d47f51a472de71cae910b9a172394195f0c961b531b34"
+      }
+    },
+    {
+      "sentence": "**Responsive breakpoints** — the platform's adaptive layout system (Size Classes,",
+      "to": "must-use-adaptive-layout-system",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The adaptive layout system requirement is kept at MUST with Size Classes listed.",
+        "pin": "24bd7f833c8e875af569bf067248c6f105208fa58a6a40466670ac682999b119"
+      }
+    },
+    {
+      "sentence": "Window Size Classes, CSS media queries, VisualStateManager) MUST be used rather than hard-coded widths",
+      "to": "must-use-adaptive-layout-system",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rest of the platform list (Window Size Classes, CSS media queries, VisualStateManager) and 'rather than hard-coded widths' are kept at MUST.",
+        "pin": "7ea68389b2dfee43beeecd8f83ff8321bbf55fe4f8a36960479c7b52c242f747"
+      }
+    },
+    {
+      "sentence": "**Content density** — generous whitespace SHOULD be preferred for consumer UIs, allow denser layouts",
+      "to": [
+        "should-prefer-generous-whitespace-for-consumer-uis",
+        "may-allow-denser-layouts-for-productivity-tools"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Generous whitespace for consumer UIs stays SHOULD; the unkeyed 'allow denser layouts' is kept as a MAY permission, which matches its permissive meaning.",
+        "pin": "6c6e7fd0fc8c57c3201415c98cbebf6c47f4b945ca60c22e1c175fb1366a5ded"
+      }
+    },
+    {
+      "sentence": "for productivity/data-heavy tools.",
+      "to": "may-allow-denser-layouts-for-productivity-tools",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The scope 'productivity/data-heavy tools' is kept verbatim in the MAY rule.",
+        "pin": "ea6d380576e978153e8d275a6a98100298786aef2b7396178a94877ba2e4a663"
+      }
+    },
+    {
+      "sentence": "**Scroll direction** — one primary scroll direction per view.",
+      "to": "should-keep-one-primary-scroll-direction",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One primary scroll direction per view is kept at SHOULD.",
+        "pin": "3d8052b35d8dd541482197986d167cdb687b0c077e74696e196fe7b7f002d9ad"
+      }
+    },
+    {
+      "sentence": "Nested same-direction",
+      "to": "should-avoid-nested-same-direction-scrolling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Nested same-direction scrolling is kept as the rule's subject.",
+        "pin": "0d36801f3faf936cb4a5dcf47cd493ade572b2bdb55617b26bda576d27905d76"
+      }
+    },
+    {
+      "sentence": "scrolling SHOULD be avoided.",
+      "to": "should-avoid-nested-same-direction-scrolling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'SHOULD be avoided' is kept verbatim.",
+        "pin": "3c394d6524e44c32c375c2b36e4a65ca5ef083f19567b7df01ffe82da82d7043"
+      }
+    }
+  ],
+  "obsolete": []
+}

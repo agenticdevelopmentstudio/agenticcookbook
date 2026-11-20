@@ -1,0 +1,24 @@
+
+- `should-ship-manifest-and-service-worker`: whether the installable app ships a Web App Manifest and a service worker with an explicit caching strategy
+- `must-account-for-ios-safari-limitations`: whether the app accounts for iOS/Safari limitations
+- `should-not-add-service-worker-without-installability`: whether a service worker exists where installability is not a requirement
+- `must-serve-over-https`: whether the app is served over HTTPS (or `localhost` in development)
+- `must-link-valid-manifest`: whether the app links a valid Web App Manifest
+- `must-register-service-worker-for-offline-or-push`: whether a service worker is registered wherever offline behavior or push is in scope
+- `must-include-manifest-core-fields`: whether the manifest has `name` (or `short_name`), `start_url`, and `display` set to `standalone`, `fullscreen` or `minimal-ui`
+- `must-include-192-and-512-icons`: whether the manifest `icons` include a 192x192 and a 512x512 entry
+- `should-include-maskable-icon`: whether the manifest includes a `maskable` icon
+- `must-include-manifest-id`: whether the manifest includes `id`
+- `should-validate-installability-with-tools`: whether installability was validated with Lighthouse / DevTools Application panel before shipping
+- `should-register-service-worker-after-load`: whether the service worker is registered after the page loads
+- `should-choose-caching-strategy-per-request-class`: whether each request class has its own caching strategy
+- `must-version-cache-and-delete-stale-caches`: whether the cache is versioned and stale caches are deleted in `activate`
+- `should-precache-app-shell`: whether the app shell is precached
+- `should-prefer-maintained-service-worker-library`: whether a maintained library is used unless the surface is trivial
+- `should-reverify-ios-constraints-per-release`: whether the iOS / Safari constraints were re-verified for the current release
+- `must-request-push-permission-after-install`: whether notification permission is requested from a user gesture after Home Screen install
+- `must-provide-in-app-install-guidance`: whether iOS users get in-app install guidance rather than a programmatic install button
+- `should-not-depend-on-background-sync`: whether anything depends on Background Sync / Periodic Background Sync
+- `should-queue-writes-in-indexeddb`: whether writes are queued in IndexedDB and flushed on next foreground
+- `must-treat-client-storage-as-cache`: whether any client storage is treated as the source of truth
+- `should-confirm-push-in-target-regions`: whether Web Push behavior was confirmed in the target regions

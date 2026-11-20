@@ -1,0 +1,193 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use structured message templates: `logger.LogInformation(\"Processing {OrderId}\", orderId)`",
+      "to": "should-use-structured-message-templates",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-structured-message-templates keeps the C# structured-template instruction and its LogInformation example, at SHOULD.",
+        "pin": "9213e7362396dcb53048f1e4586b4c31df7df1cb7aa9091c0cd64b9a6107f802"
+      }
+    },
+    {
+      "sentence": "**Never** use string interpolation (`$\"...\"`) in log calls — it bypasses structured logging and prevents log aggregation",
+      "to": "must-not-interpolate-in-log-calls",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-interpolate-in-log-calls keeps the C# ban on $\"...\" interpolation in log calls and both reasons, at MUST NOT (from Never).",
+        "pin": "1eb458ce243a8d67e4c09ef212a86b769ec454cf2e8b5d65d0e6cf544e04cc39"
+      }
+    },
+    {
+      "sentence": "Use the `[LoggerMessage]` source generator attribute for high-performance hot paths",
+      "to": "should-use-loggermessage-for-hot-paths",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-loggermessage-for-hot-paths keeps the C# [LoggerMessage] source generator for high-performance hot paths, at SHOULD.",
+        "pin": "6e21737d822521a7cd8b58e322728604fa2ef0d2606c021a242c8e482ae9ea05"
+      }
+    },
+    {
+      "sentence": "Configure log levels per category via `appsettings.json`",
+      "to": "should-configure-log-levels-per-category",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-configure-log-levels-per-category keeps C# per-category log levels via appsettings.json, at SHOULD.",
+        "pin": "1a74cfa994caf4ea50d805fa47ef5291d57c3ffb29b8aa2c35a1124c38e3f7e6"
+      }
+    },
+    {
+      "sentence": "Every component and flow must be instrumented with structured logging using the platform's best-in-class framework:",
+      "to": "must-instrument-with-platform-framework",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-instrument-with-platform-framework keeps every component and flow instrumented with structured logging via the platform's best-in-class framework, raised from lowercase must to MUST, with the per-platform list beneath it.",
+        "pin": "7c479e08ef3351589f52cc55b69de618b7bd6cdbddc4e82c6e399b35ea2054bc"
+      }
+    },
+    {
+      "sentence": "Use `debug` level for flow instrumentation.",
+      "to": "should-use-debug-for-flow-instrumentation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-debug-for-flow-instrumentation keeps debug level for flow instrumentation, at SHOULD.",
+        "pin": "c19058ec5bb4315489b61df2419e93b044e05dea2f1746039bf55ac11cd39ae7"
+      }
+    },
+    {
+      "sentence": "Log state transitions, user interactions, async task start/completion/failure, and branching logic.",
+      "to": "should-log-flow-events",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-log-flow-events keeps logging state transitions, user interactions, async task start/completion/failure and branching logic, at SHOULD.",
+        "pin": "fb0fbbb121e855ac0252bd7694a43c478a53ad38d8fa531435bddb0550480447"
+      }
+    },
+    {
+      "sentence": "# Logging",
+      "to": "intro",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The '# Logging' heading only titled a summary section of the same guideline; intro keeps the guideline's heading and the summary's content opens it.",
+        "pin": "12be753c506104953d79b58560533a85471acdcc144637d8696a4055f5d85d00"
+      }
+    },
+    {
+      "sentence": "Never log personally identifiable information, even at debug level.",
+      "to": "must-not-log-pii",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-log-pii keeps the ban on logging PII even at debug level, at MUST NOT, and widens it to any field.",
+        "pin": "e550fe4a3758e3599f9b940e7e764dd0042ed3bc217423d2228c4c787aa23bc8"
+      }
+    },
+    {
+      "sentence": "The per-platform loggers above remain the source of structured log lines; this subsection governs how those lines integrate with distributed telemetry.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "rationale keeps that the per-platform loggers remain the source of structured log lines and that the OpenTelemetry rules govern how those lines integrate with distributed telemetry.",
+        "pin": "bef8978f960f3dfbcafe58afb9f706d6fc20ef12215f7ae89770b6871ca94ac6"
+      }
+    },
+    {
+      "sentence": "The PII guidance still applies — never emit personally identifiable information in any field, even at debug level.",
+      "to": [
+        "must-not-log-pii",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-log-pii keeps never emitting PII in any field even at debug level, at MUST NOT; rationale keeps that the PII guidance still applies to the telemetry rules.",
+        "pin": "5e32844f2db1946341ff80142743fe905e09c331a968e9154104ec38eb9180d8"
+      }
+    },
+    {
+      "sentence": "Subsystem MUST match the bundle ID",
+      "to": "must-match-subsystem-to-bundle-id",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-match-subsystem-to-bundle-id keeps the Apple Logger subsystem matching the bundle ID, at MUST.",
+        "pin": "ada3c6a5131bbd906fedc9c9a0505946306a3f24398ffea22c30cc719d7777c8"
+      }
+    },
+    {
+      "sentence": "Category MUST be one per component or flow",
+      "to": "must-use-one-category-per-component",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-use-one-category-per-component keeps one Logger category per component or flow on Apple platforms, at MUST.",
+        "pin": "311f4769776c96c1cef01a29b8d0257f6a2c316c0e276d9c3c034e3eacdcccb7"
+      }
+    },
+    {
+      "sentence": "Use `debug` level for UI flow instrumentation",
+      "to": "should-use-debug-for-flow-instrumentation",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-debug-for-flow-instrumentation keeps debug level for UI flow instrumentation explicitly, at SHOULD, in a scope wider than Apple alone.",
+        "pin": "df940202e7410f8ab8fc00c43a2dec72154195054827b6b9f58832b6f0448f08"
+      }
+    },
+    {
+      "sentence": "Additionally:",
+      "to": [
+        "should-use-etw-for-system-diagnostics",
+        "should-use-xaml-live-visual-tree",
+        "should-use-vs-performance-profiler"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The 'Additionally' lead-in is carried by its three Windows rules (ETW, XAML Live Visual Tree, VS Performance Profiler), and rationale keeps that they apply in addition to ILogger<T> with C# conventions.",
+        "pin": "b0f138df08090a3ede787381f4f98683a43cf612eb0f661a46f61072811a1b09"
+      }
+    },
+    {
+      "sentence": "Use ETW tracing (`EventSource`) for system-level diagnostics and startup timing",
+      "to": "should-use-etw-for-system-diagnostics",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-etw-for-system-diagnostics keeps ETW (EventSource) for system-level diagnostics and startup timing on Windows, at SHOULD.",
+        "pin": "cdb870fd8f6c4697797917fdf41f9c8a86b30f389b65ada6cb794efedd234b3f"
+      }
+    },
+    {
+      "sentence": "Use XAML Live Visual Tree in Visual Studio for debugging visual tree issues",
+      "to": "should-use-xaml-live-visual-tree",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-xaml-live-visual-tree keeps XAML Live Visual Tree in Visual Studio for visual tree debugging on Windows, at SHOULD.",
+        "pin": "7817d21c0d18b3b6614ea6c9059c5fa214fc619456d0926decef728fef461de3"
+      }
+    },
+    {
+      "sentence": "Use [Visual Studio Performance Profiler](https://learn.microsoft.com/en-us/visualstudio/profiling/) for CPU, memory, and UI responsiveness analysis",
+      "to": "should-use-vs-performance-profiler",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-use-vs-performance-profiler keeps the Visual Studio Performance Profiler link and its CPU, memory and UI responsiveness scope on Windows, at SHOULD.",
+        "pin": "08a612dd28b957705f79b9108540f5aed605266d810fc534adf1bf4550c38cba"
+      }
+    }
+  ],
+  "obsolete": []
+}

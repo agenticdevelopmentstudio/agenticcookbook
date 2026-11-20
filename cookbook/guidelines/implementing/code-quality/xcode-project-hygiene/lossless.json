@@ -1,0 +1,249 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Put build settings in `.xcconfig` files, not in the project editor's Build Settings tab.",
+      "to": "should-put-build-settings-in-xcconfig",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Putting build settings in .xcconfig files rather than the editor's Build Settings tab is kept at SHOULD, with the one-line-diff reason as a sub-point.",
+        "pin": "be35c34d8bf1c8a7423a802310699832d5a2dbbcabe7b68078941aa3e535f28f"
+      }
+    },
+    {
+      "sentence": "Keep one shared file for settings common to every target and one per configuration or target for the differences.",
+      "to": "should-keep-shared-and-per-config-xcconfigs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One shared xcconfig for common settings and one per configuration or target for the differences is kept at SHOULD.",
+        "pin": "3157e065f2eb7f12af9974a70b844226ace85637e2228e7ea10429bc5d7167da"
+      }
+    },
+    {
+      "sentence": "Add only the settings you want to change.",
+      "to": "should-keep-shared-and-per-config-xcconfigs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Adding only the settings you want to change is kept at SHOULD in the same rule.",
+        "pin": "3d252ee42492c8894eadbe3b5d166ad73d24beb1fa39b22a82f9ec848770e8d0"
+      }
+    },
+    {
+      "sentence": "Leave the target-level Build Settings tab empty for any setting an xcconfig already owns, or the target value silently wins.",
+      "to": "should-leave-target-level-settings-empty",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Leaving the target-level Build Settings tab empty for settings an xcconfig owns, with the target-value-silently-wins reason, is kept at SHOULD.",
+        "pin": "e67b7faee5a6813bc9643e03a02994a25c5ae96ef68507bfa15d2ee94d6b0a6d"
+      }
+    },
+    {
+      "sentence": "Create the file with \"Configuration Settings File\" and deselect all targets so Xcode does not embed it in the bundle.",
+      "to": "should-create-xcconfig-without-targets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Creating the file with Configuration Settings File and deselecting all targets, with the not-embedded-in-bundle reason, is kept at SHOULD.",
+        "pin": "2c743e4a48ac7e6949c837e9e769b35e1900a61732ee7d1e341998bed1599ec2"
+      }
+    },
+    {
+      "sentence": "Look up each setting name in the build settings reference before you use it.",
+      "to": "should-look-up-setting-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Looking up each setting name in the build settings reference before use is kept at SHOULD.",
+        "pin": "dd14e8a852cb17019ab08655ead143f5adf754d7c414c5e5fc870f01a23b29cc"
+      }
+    },
+    {
+      "sentence": "Do not guess a name; an unknown setting is ignored without an error.",
+      "to": "should-look-up-setting-names",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not guessing a setting name is kept at SHOULD NOT, with the ignored-without-error reason.",
+        "pin": "926827ab51da0014adee29ed0ca9a76e069be51583c7c11d27ed9f7c36e33c90"
+      }
+    },
+    {
+      "sentence": "Add one only for a capability the app uses, and review every added key as a security change.",
+      "to": "should-add-entitlements-only-for-used-capabilities",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Adding an entitlement only for a capability the app uses and reviewing every added key as a security change are kept at SHOULD.",
+        "pin": "10d61be48d7322667f6152548358963e876b474c831f6a0c77afa92bd495b144"
+      }
+    },
+    {
+      "sentence": "Keep one `.entitlements` file per target and configuration need (for example a sandboxed macOS app and its helper), referenced through the `CODE_SIGN_ENTITLEMENTS` setting.",
+      "to": "should-keep-one-entitlements-file-per-need",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One .entitlements file per target and configuration need, with the sandboxed-app-and-helper example and the CODE_SIGN_ENTITLEMENTS reference, is kept at SHOULD.",
+        "pin": "d10e893c06f06ccd4b67240d830756b76be99cdb4bd5ab27f7416e6d8a6dd91c"
+      }
+    },
+    {
+      "sentence": "Never copy an entitlements file from another app wholesale.",
+      "to": "must-not-copy-entitlements-wholesale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Never copy an entitlements file wholesale' is kept as a MUST NOT, with the leftover-key reason as a sub-point.",
+        "pin": "8df9ca259af35740ab89cf7cd42a81dacbd0256c18a537891e1b8ce628f19782"
+      }
+    },
+    {
+      "sentence": "Keep the Info.plist small.",
+      "to": "should-keep-info-plist-small",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping the Info.plist small is kept at SHOULD.",
+        "pin": "5fbf9add8874364a3559500fbf4914aae761cec573c5589172be2cdce95001da"
+      }
+    },
+    {
+      "sentence": "Prefer build-setting substitution (`$(PRODUCT_NAME)`, `$(MARKETING_VERSION)`) over literals, so a version or name is set once in the xcconfig.",
+      "to": "should-prefer-build-setting-substitution",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring build-setting substitution over literals, with both examples and the set-once-in-the-xcconfig reason, is kept at SHOULD.",
+        "pin": "5d98517b616810668d8ef8e3505c79e911a1619976c43c35c4f82812d05aa234"
+      }
+    },
+    {
+      "sentence": "Remove keys for features the app no longer has.",
+      "to": "should-remove-keys-for-removed-features",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Removing Info.plist keys for features the app no longer has is kept at SHOULD.",
+        "pin": "207596bcd919bf91ec59d4d0d90f51e6f99857c3295933a6196ea29f9371ccbb"
+      }
+    },
+    {
+      "sentence": "Where the repository already uses XcodeGen (a `project.yml` spec), treat the spec as the source and the generated `.xcodeproj` as an output: regenerate it, do not hand-edit it, and either ignore it in version control or verify in CI that it matches the spec.",
+      "to": "should-treat-xcodegen-spec-as-source",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The whole XcodeGen instruction, including its already-uses condition, regenerate, no hand-edit, and ignore-or-verify-in-CI, is kept at SHOULD.",
+        "pin": "f8a6c99846b774917ff0434b768df4d688cdc0c560cb5637999e95dc36d81bc4"
+      }
+    },
+    {
+      "sentence": "XcodeGen's spec points targets at xcconfig files through its `configFiles` option and at settings through its `settings` key; keep real values in the xcconfig and use the spec for structure.",
+      "to": "should-keep-real-values-in-xcconfig-with-xcodegen",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The configFiles/settings explanation and keeping real values in the xcconfig with the spec for structure are kept at SHOULD.",
+        "pin": "d4120ce38912060c73052ab5d982a4da88b13927d9d2db8797b488e3038511ca"
+      }
+    },
+    {
+      "sentence": "Do not introduce a generator into a repository that has none as part of an unrelated change.",
+      "to": "should-not-introduce-generator-in-unrelated-change",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not introducing a generator into a repository without one as part of an unrelated change is kept at SHOULD NOT.",
+        "pin": "c5e2844dc7346e19b50427818de63844acf8e7ceec6d519ffa930717a1d715ae"
+      }
+    },
+    {
+      "sentence": "Put the team ID and signing style in the xcconfig.",
+      "to": "should-put-team-and-signing-style-in-xcconfig",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Putting the team ID and signing style in the xcconfig is kept at SHOULD.",
+        "pin": "90d11aee0ef7c881405e57f33aa8268fc40d1a307a84d832ae4d7120ebaa959e"
+      }
+    },
+    {
+      "sentence": "Use automatic signing for local development and an explicit, documented identity for release builds.",
+      "to": "should-use-automatic-local-explicit-release-signing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Automatic signing for local development and an explicit, documented identity for release builds are kept at SHOULD.",
+        "pin": "0d907d3387d45a0fb3c5eb4c6b29a8c62b0d8dad56dc6ee88c885d90222f632f"
+      }
+    },
+    {
+      "sentence": "Never check in a certificate, a private key or a provisioning profile.",
+      "to": "must-not-check-in-signing-secrets",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "'Never check in a certificate, private key or provisioning profile' is kept as a MUST NOT, with the CI-secret-store sub-point.",
+        "pin": "354be5a46903d4974cc27f75ec09eaf13b2bbde80d8cda3050a7528b824ba893"
+      }
+    },
+    {
+      "sentence": "One scheme per thing a person builds, runs or tests.",
+      "to": "should-have-one-scheme-per-buildable-thing",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "One scheme per thing a person builds, runs or tests is kept at SHOULD.",
+        "pin": "9209db21d99b3a79b469cc1ad2a3d0835a0d773eb4fecb3320539fca12eeacf6"
+      }
+    },
+    {
+      "sentence": "Delete schemes that no longer build.",
+      "to": "should-delete-dead-schemes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Deleting schemes that no longer build is kept at SHOULD.",
+        "pin": "0abadf015cdf8b46822aeda12a5c6c76829adb8133b044605b69593c6566d9a1"
+      }
+    },
+    {
+      "sentence": "Name targets and schemes after what they produce.",
+      "to": "should-name-targets-after-products",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Naming targets and schemes after what they produce is kept at SHOULD.",
+        "pin": "b9a13225d7c1211440bc7df17f4bdff30a0fd7b0551ec795de4bf4b21e5496c9"
+      }
+    },
+    {
+      "sentence": "Do not leave `Untitled`, a copied target's `copy` suffix or a stale product name.",
+      "to": "should-name-targets-after-products",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Not leaving Untitled, a copy suffix or a stale product name is kept at SHOULD NOT in the same rule.",
+        "pin": "410e5d861853bec53c38655d14a24d0ed6d790a0325634c61f1216e9c3d0e439"
+      }
+    },
+    {
+      "sentence": "Keep test targets separate from app targets, and set each target's deployment target explicitly in the xcconfig, not by default.",
+      "to": [
+        "should-separate-test-targets",
+        "should-set-deployment-target-explicitly"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Keeping test targets separate and setting each deployment target explicitly in the xcconfig, not by default, are kept at SHOULD in two rules.",
+        "pin": "365d988b9840fc6517eeeabd03ee68f6790588113d22eb8b9ca3f50b5ef8733f"
+      }
+    }
+  ],
+  "obsolete": []
+}

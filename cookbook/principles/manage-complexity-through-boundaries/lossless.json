@@ -1,0 +1,72 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Define each external dependency as a protocol the app owns, not a concrete type the vendor owns",
+      "to": "should-define-dependencies-as-owned-protocols",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD defining each external dependency as a protocol the app owns, not a concrete type the vendor owns.",
+        "pin": "e1584562f6b840d57750b143ed2d285bcfea3297879c8398931825bf2d700741"
+      }
+    },
+    {
+      "sentence": "Keep adapter implementations thin — translate and delegate, never add business logic",
+      "to": [
+        "should-keep-adapters-thin",
+        "must-not-add-business-logic-to-adapters"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-keep-adapters-thin keeps thin translate-and-delegate adapters at SHOULD, and must-not-add-business-logic-to-adapters makes never adding business logic a MUST NOT.",
+        "pin": "79b352c019b140d547e8175748961810347b841b899eaea49b01f97a0e47336e"
+      }
+    },
+    {
+      "sentence": "If two modules need to share a type, extract it into a shared contract rather than coupling the modules directly",
+      "to": "should-extract-shared-contracts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the two-modules-share-a-type condition and extracting a shared contract rather than coupling the modules directly at SHOULD.",
+        "pin": "eb2df8b52d32d602d9c04c3b65fec2ae29dda80f05e1fe76429cafbfe3ac3e36"
+      }
+    },
+    {
+      "sentence": "Verify boundaries by confirming core logic compiles and tests pass with no framework imports",
+      "to": "should-verify-boundaries-without-framework-imports",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD verifying boundaries by confirming core logic compiles and tests pass with no framework imports.",
+        "pin": "f350a90db496994e20466ffbbb1b6afa3ca7a48d7df9ac109c7af23258b4238f"
+      }
+    },
+    {
+      "sentence": "Extend at the boundary, don't break the contract: once a boundary is stable and widely depended on, add capability through new implementations behind the port rather than changing the port's existing shape — the durable kernel of the open/closed principle.",
+      "to": [
+        "should-extend-at-the-boundary",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-extend-at-the-boundary keeps the stable-and-widely-depended-on condition and adding capability behind the port rather than changing its shape; rationale keeps the open/closed kernel.",
+        "pin": "1a5c0f0f193ed37d9dfaccdf875c8457423303d24847c7faf44f876c32589954"
+      }
+    },
+    {
+      "sentence": "Apply it only to boundaries that have actually stabilized; do not pre-generalize one you are still discovering (see yagni, steel-thread-first).",
+      "to": "should-not-pre-generalize-unstable-boundaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-pre-generalize-unstable-boundaries keeps applying it only to stabilized boundaries and not pre-generalizing one still being discovered, with the yagni and steel-thread-first pointers.",
+        "pin": "d9f693b2a51e654505419858e314e63a2a8d1f74cad2d77e7e8f52c06a818896"
+      }
+    }
+  ],
+  "obsolete": []
+}

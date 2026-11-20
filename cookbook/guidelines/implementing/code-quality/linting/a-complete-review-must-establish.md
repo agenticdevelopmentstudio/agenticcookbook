@@ -1,0 +1,23 @@
+
+- `must-lint-before-first-pr`: the project had linting configured and passing before its first pull request
+- `should-set-up-lint-early`: lint config was set up early, or the project says why not
+- `may-skip-lint-gating-while-prototyping`: any commit that skipped lint gating was during rapid prototyping, and lint was clean before a PR opened
+- `must-be-lint-clean-before-any-pr`: lint is clean on every PR
+- `must-commit-linter-config`: the linter config is committed
+- `must-run-lint-in-build-or-pre-commit`: lint runs as part of the build or the pre-commit hook
+- `must-auto-fix-formatting`: formatting can be fixed automatically by a committed command
+- `must-run-lint-in-automated-verification`: lint runs during development, in CI and after code generation
+- `must-run-lint-during-development`: during development, lint runs in the build or the pre-commit hook
+- `must-block-ci-on-lint-failures`: a lint failure blocks the CI build alongside test failures
+- `must-lint-generated-code`: AI-generated code passed lint before it was accepted
+- `should-use-swiftlint-strict`: Swift code is linted by SwiftLint in `strict` mode from a root `.swiftlint.yml`, run as an SPM plugin or build phase, or the project says why not
+- `should-format-swift-with-swift-format`: Swift code is formatted by swift-format, or the project says why not
+- `should-use-ktlint`: Kotlin code is linted and formatted by ktlint from a root `.editorconfig` via its Gradle plugin, or the project says why not
+- `should-use-eslint-with-prettier-config`: TypeScript is linted by ESLint from `eslint.config.js` with `eslint-config-prettier`, or the project says why not
+- `should-format-typescript-with-prettier`: TypeScript is formatted by Prettier from `.prettierrc`, or the project says why not
+- `should-lint-css-with-stylelint`: CSS is linted by Stylelint from `.stylelintrc.json`, or the project says why not
+- `should-add-lint-scripts-and-hooks`: lint and format run from `package.json` scripts and pre-commit hooks, or the project says why not
+- `should-keep-style-rules-in-editorconfig`: all C# style rules are in the root `.editorconfig`, or the project says why not
+- `should-enable-roslyn-analyzers`: Roslyn analyzers are enabled in `.csproj` with `EnforceCodeStyleInBuild` and `latest-recommended`, or the project says why not
+- `should-auto-fix-with-dotnet-format`: `dotnet format` is the auto-fixer, or the project says why not
+- `should-supplement-with-extra-analyzers`: Roslynator or Meziantou.Analyzer supplements the rules, or the project says why not

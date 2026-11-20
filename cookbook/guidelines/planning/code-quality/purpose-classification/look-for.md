@@ -1,0 +1,11 @@
+
+- `should-classify-each-file-into-one-category`: files left unclassified or given more than one primary category
+- `should-keep-groups-purpose-coherent`: candidate groups whose files carry different primary purposes
+- `should-split-incoherent-groups`: groups serving several unrelated purposes with no split recommended
+- `should-have-one-sentence-purpose`: groups whose "This scope group exists to ___" needs "and also"
+- `should-document-mixed-purpose-files`: files mixing UI with networking, business logic with persistence, or orchestration with networking, and whether they are listed with a refactoring recommendation
+- `should-not-create-mixed-purpose-groups`: a scope group created to hold mixed-purpose files
+- `should-split-mixed-files-along-fault-line`: whether each mixed-purpose file has a split recommended along the line between its purposes
+- `should-place-configuration-with-its-components`: configuration files grouped apart from the components they configure, or app-wide configuration outside a bootstrap group
+- `should-place-test-infrastructure-with-subject`: mocks and fakes grouped apart from the types they mock, when used by only one group
+- `must-give-build-tooling-own-group`: build scripts, code generators or Gradle/Webpack configuration inside a runtime scope group

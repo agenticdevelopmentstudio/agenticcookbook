@@ -1,0 +1,102 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Spread one logical change across multiple releases:",
+      "to": "should-spread-change-across-releases",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Spreading one logical change across multiple releases is kept at SHOULD, naming the four phases the table carries in the expand-and-contract part.",
+        "pin": "f93b5a7bc71346e23bab5aa2ebc1d26b7275cda157fdd39808aea173951b0538"
+      }
+    },
+    {
+      "sentence": "Split every schema change into small, individually-deployable, backward-compatible steps so the running app version keeps working at all times.",
+      "to": "should-split-schema-changes-into-compatible-steps",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Splitting every schema change into small, individually deployable, backward-compatible steps so the running app keeps working is kept at SHOULD with its reason.",
+        "pin": "0b1d3b71dead169d6a94881ba2a0716f1956457945c4eb2b5d672b61b4c91468"
+      }
+    },
+    {
+      "sentence": "Bound the wait so a contended migration aborts cleanly and can be retried.",
+      "to": "should-bound-ddl-lock-wait",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Bounding the DDL lock wait so a contended migration aborts cleanly and can be retried is kept at SHOULD; rationale keeps the lock-queue reason.",
+        "pin": "b04d3979c6ffea5509e03367c6ec5a4ca6c7336fa97dd048eaf7100a4c014c06"
+      }
+    },
+    {
+      "sentence": "Set `statement_timeout` too, to bound the statement's own runtime.",
+      "to": "should-set-statement-timeout",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting statement_timeout as well, to bound the statement's own runtime, is kept at SHOULD next to the lock_timeout MUST.",
+        "pin": "2ab37432f8f1f42c1845b6f1d7d9a590193ad19463e1b69527256daf1e2231d1"
+      }
+    },
+    {
+      "sentence": "Migration steps that use it **MUST NOT** be wrapped in a transaction, and the step **SHOULD** check for and clean up an `INVALID` index left by a failed concurrent build before retrying.",
+      "to": [
+        "must-not-wrap-concurrent-index-in-transaction",
+        "should-clean-up-invalid-index"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both halves are kept at their levels: MUST NOT wrap CREATE INDEX CONCURRENTLY steps in a transaction, and SHOULD clean up an INVALID index from a failed build before retrying.",
+        "pin": "1752d42a6e1a416f7e37cd970e9022558826b64f487de7de22f63c84d6d9c950"
+      }
+    },
+    {
+      "sentence": "Because each step is additive and backward-compatible, the rollback is to **redeploy the previous app version** — the expanded schema still works for it.",
+      "to": "should-roll-back-by-redeploying",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rolling back by redeploying the previous app version is kept at SHOULD with its reason (the expanded schema still works for it).",
+        "pin": "d882c5cca3405c30e6474794ef04b6dfb6714d0b4c100feb78e3368281599f4d"
+      }
+    },
+    {
+      "sentence": "Avoid down-migrations that drop just-added columns during an incident; they re-introduce the lock you were avoiding.",
+      "to": "should-avoid-dropping-down-migrations",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Avoiding down-migrations that drop just-added columns during an incident is kept at SHOULD with its reason (they re-introduce the lock).",
+        "pin": "058a46cd0423a667e83f2cdfb23d285a2d8add55b96305c8128ea1832fd97fb9"
+      }
+    },
+    {
+      "sentence": "> Note: exact lock behavior and which `ALTER TABLE` operations rewrite the table vary by database engine and version.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The note that lock behavior and which ALTER TABLE operations rewrite the table vary by engine and version is kept in rationale.",
+        "pin": "94e875bbf197ab28d3cf59b6ad9bbe44a57e333aff17c47e291a17e2dbd65f2d"
+      }
+    },
+    {
+      "sentence": "The Postgres examples here are illustrative; confirm against your engine's current `ALTER TABLE` documentation before relying on a clause being non-blocking.",
+      "to": [
+        "rationale",
+        "should-confirm-engine-lock-behavior"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "That the Postgres examples are illustrative is kept in rationale, and confirming against the engine's current ALTER TABLE docs before relying on a non-blocking clause is kept at SHOULD.",
+        "pin": "b4b5196a293b631b9a16d0351348f41bf58f10fa7feefc2d2ef88facac040b47"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -4,7 +4,7 @@
     "id": "0f0c1da3-1c53-417b-890d-0259d7513c65",
     "title": "Instrumented logging",
     "type": "guideline",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -36,23 +36,28 @@
       "https://opentelemetry.io/docs/specs/semconv/",
       "https://docs.cloud.google.com/logging/docs/structured-logging"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "logging",
       "new-module",
       "error-handling"
     ]
   },
-  "synced": "8e5dd4f243ac06cf",
+  "synced": "3a7ae3b7429cef07",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "c", "heading": "C#"},
-    {"part": "windows", "heading": "Windows"},
-    {"part": "python", "heading": "Python"},
-    {"part": "opentelemetry-and-trace-correlation", "heading": "OpenTelemetry and trace correlation"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "swift", "heading": "Swift", "role": "how-to"},
+    {"part": "kotlin", "heading": "Kotlin", "role": "how-to"},
+    {"part": "c", "heading": "C#", "role": "how-to"},
+    {"part": "windows", "heading": "Windows", "role": "how-to"},
+    {"part": "python", "heading": "Python", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,86 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**response-caching**: Identical or semantically equivalent requests MUST be cached.",
+      "to": "must-cache-equivalent-requests",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST for identical or semantically equivalent requests; the TTL-depends-on-use-case note is kept.",
+        "pin": "0e5ae08c277c981962bb17f1b93373682d4538531042c4729be587195a4374e4"
+      }
+    },
+    {
+      "sentence": "Cache key includes: model, prompt template ID, template variables, temperature (if 0).",
+      "to": "should-key-cache-on-model-template-and-variables",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "All four key components kept, including the temperature-if-0 condition; the unkeyed statement is kept at SHOULD.",
+        "pin": "f0de346aa5f319c8070b111b4bbe7a0806068202218bc82cfbf9e3e0b8e4ad47"
+      }
+    },
+    {
+      "sentence": "**cost-budgets**: Every AI-powered feature MUST define a per-user and per-request cost budget.",
+      "to": "must-budget-per-user-and-per-request",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST: every AI-powered feature defines both a per-user and a per-request budget.",
+        "pin": "c2f32aac0fd8c239c1845a04db2091ea4a2842e774bd315e0b3c36dc61f0ce95"
+      }
+    },
+    {
+      "sentence": "**tiered-model-selection**: Systems SHOULD route requests to the cheapest model that meets quality requirements.",
+      "to": "should-route-to-cheapest-adequate-model",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the quality-requirement condition and the Haiku/Sonnet/Opus example.",
+        "pin": "65be5160f3a343220de8f8cf14be0e5dd7260f17f6853912f24bafedbad7e8e0"
+      }
+    },
+    {
+      "sentence": "**batch-over-realtime**: Non-latency-sensitive work SHOULD use batch APIs (typically 50% cheaper) rather than real-time endpoints.",
+      "to": "should-batch-non-latency-sensitive-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the non-latency-sensitive scope and the typically-50%-cheaper reason.",
+        "pin": "a87e9e3bd096d8f0d5522717530c2ec8fcb8531cb93868608115ad7ee13e2ea5"
+      }
+    },
+    {
+      "sentence": "**cost-per-request-tracking**: Every API response MUST record actual cost (input tokens times price plus output tokens times price).",
+      "to": "must-record-cost-per-response",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at MUST with the cost formula (input tokens times price plus output tokens times price).",
+        "pin": "04fec7fa7d674827d2d4e451fdf7adff89b087d2e2e79ed25332020717005dd9"
+      }
+    },
+    {
+      "sentence": "**provider-fallback**: Systems SHOULD define fallback providers for availability and cost.",
+      "to": "should-define-fallback-providers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD for both availability and cost, with the traffic-shift note.",
+        "pin": "e0fd4f49530a3728ff8fc5e4293b07c6a6632092f21a92b83eb1568f4212e239"
+      }
+    },
+    {
+      "sentence": "**prompt-optimization**: Prompt length directly affects cost.",
+      "to": "should-review-prompts-for-token-efficiency",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The statement that prompt length directly affects cost is kept as the note on the token-efficiency rule.",
+        "pin": "222145047261dcba6c07b6a52bc5c5a2f203acbcbaf10679c86188d8594b48c9"
+      }
+    }
+  ],
+  "obsolete": []
+}

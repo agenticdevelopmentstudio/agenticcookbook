@@ -1,0 +1,33 @@
+
+- `should-treat-ruby-as-code`: whether each changed Ruby file is written as code rather than as a shell script with syntax
+- `must-begin-with-frozen-string-literal`: whether every file begins with `# frozen_string_literal: true`
+- `must-put-magic-comment-in-first-section`: whether that comment is in the first comment section
+- `must-copy-before-mutating-strings`: whether any string is mutated without `+""`, `String.new` or `dup` first
+- `should-use-open3-with-separate-arguments`: whether child processes run through `Open3` with separate arguments
+- `must-not-build-command-strings-from-input`: whether any single command string is built from outside input
+- `must-check-process-status`: whether every returned `Process::Status` is checked with `success?`
+- `should-rescue-enoent-when-absence-expected`: whether `Errno::ENOENT` is rescued where a missing executable is expected
+- `should-feed-stdin-through-stdin-data`: whether standard input is fed through `stdin_data:`
+- `must-pass-argument-lists-to-spawn`: whether every `Process.spawn` and similar call passes an argument list
+- `should-model-records-with-data-define`: whether records are modeled with `Data.define`
+- `should-use-struct-only-for-mutation`: whether each `Struct` is one that needs mutation
+- `should-serialize-with-to-h`: whether serialization returns `to_h`
+- `must-not-rescue-exception`: whether any code rescues `Exception`
+- `should-rescue-by-class-name`: whether every rescue names the class it handles
+- `must-not-use-rescue-modifier`: whether any `rescue` modifier is used
+- `must-not-return-from-ensure`: whether any `ensure` block returns
+- `should-raise-with-raise`: whether errors are raised with `raise`, not `fail`
+- `should-subclass-standard-error`: whether domain errors subclass `StandardError`
+- `must-pass-hashes-as-explicit-keywords`: whether every hash passed as keywords uses explicit `**opts`
+- `must-forward-all-argument-kinds`: whether every forwarding method declares `*args, **kwargs, &block` or uses `...`
+- `should-limit-ruby2-keywords-to-old-rubies`: whether each `ruby2_keywords` is in code that must run on Ruby 2.6 to 3.0
+- `must-use-snake-case`: whether methods and variables are `snake_case`
+- `must-end-predicates-in-question-mark`: whether every predicate ends in `?`
+- `must-pair-bang-methods`: whether every bang method has a non-bang counterpart
+- `should-configure-style-in-rubocop-yml`: whether style is configured in `.rubocop.yml` and the new code passes it
+- `should-set-rubocop-target-version`: whether the target Ruby version is set
+- `must-use-rubocop-version-env-only-in-ci`: whether `RUBOCOP_TARGET_RUBY_VERSION` is used outside CI
+- `must-have-one-global-gem-source`: whether each `Gemfile` has one global `source`
+- `must-commit-gemfile-lock`: whether `Gemfile.lock` is committed and updated with the `Gemfile`
+- `should-group-dev-and-test-gems`: whether development and test gems are in groups
+- `should-omit-unneeded-gem-groups`: whether installs omit groups they do not need

@@ -1,0 +1,24 @@
+
+- `should-offer-passkeys-as-primary`: a new app whose sign-in offers passwords first and passkeys, if at all, as a secondary option
+- `should-target-webauthn-level-2`: WebAuthn code that relies on behavior outside the Level 2 Recommendation
+- `should-not-depend-on-webauthn-level-3-features`: a flow that requires Level 3 features (refined attestation, related-origin requests) to work, with no fallback
+- `must-generate-random-challenge`: a challenge that is predictable, under 16 bytes, not bound to the session, or not verified server-side on return breaks it
+- `should-set-rp-id-to-registrable-domain`: an `rp.id` set to something other than the registrable domain
+- `should-use-opaque-user-id`: a `user.id` that is an email, carries PII, or changes over time
+- `must-verify-registration-response`: registration verification that skips challenge match, `origin`, `rp.id` hash, the UP flag, or the signature over `authenticatorData`+`clientDataHash` breaks it
+- `should-store-credential-metadata`: a stored credential missing its id, public key, signature counter, transports or AAGUID
+- `should-issue-fresh-challenge-per-attempt`: an authentication challenge reused across attempts, or an assertion accepted without verifying origin, `rp.id`, UP flag and signature against the stored key
+- `should-flag-non-increasing-counter`: a non-zero stored counter followed by a non-increasing one, accepted without a cloning flag
+- `should-prefer-discoverable-credentials`: credentials registered as non-discoverable so the user must enter a username first
+- `should-default-to-synced-passkeys`: ordinary user accounts steered to device-bound authenticators by default
+- `should-require-device-bound-for-admins`: admin or high-privilege accounts allowed with synced passkeys only
+- `should-encourage-two-authenticators`: no prompt for users to register a second authenticator
+- `should-request-attestation-only-when-needed`: `attestation: "direct"` requested with no concrete requirement (regulated environment, hardware allowlist) behind it
+- `should-use-attestation-none-for-consumers`: a consumer flow requesting anything but `attestation: "none"`
+- `should-make-passkeys-primary-factor`: a password kept as the primary factor with the passkey as fallback
+- `should-not-rely-on-sms-otp`: SMS-OTP used as a security factor, as the sole step-up, or for anything but low-risk recovery
+- `should-provide-account-recovery-path`: no explicit, rate-limited recovery path for users who lose all authenticators
+- `must-allow-registering-additional-passkeys`: an authenticated session that cannot register another passkey breaks it
+- `must-not-reuse-or-omit-challenge-verification`: a challenge reused, or server-side challenge verification skipped, breaks it
+- `should-not-set-rp-id-outside-auth-origin`: an `rp.id` for a host that does not cover the auth origin
+- `should-not-treat-passkey-as-bearer-secret`: a passkey handled as a bearer secret, or code that tries to sync an RP-side private key

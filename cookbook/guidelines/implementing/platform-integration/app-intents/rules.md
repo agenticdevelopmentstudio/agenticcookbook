@@ -1,0 +1,17 @@
+
+- **model-key-actions-as-app-intents**: Key user-facing actions **SHOULD** be modeled as App Intents.
+- **must-conform-to-appintent**: An intent type **MUST** conform to `AppIntent` and implement `func perform() async throws -> some IntentResult`.
+- **must-declare-title-should-set-description**: Each intent **MUST** declare a static `title: LocalizedStringResource` and **SHOULD** set `description` so the action reads clearly in Shortcuts and Spotlight.
+- **must-use-typed-parameters**: User inputs **MUST** use `@Parameter` with a typed, `IntentParameter`-supported type (primitives, `AppEnum`, or an `AppEntity`).
+- **must-be-retry-safe-and-throw-typed-errors**: `perform()` **MUST** be idempotent-safe where the system may retry, and **MUST** throw a typed error rather than failing silently.
+- **should-return-most-specific-result**: Return value **SHOULD** use the most specific `IntentResult` (e.g. `.result(value:)`, `&ProvidesDialog`, `&ReturnsValue`) so results chain into other actions.
+- **conform-one-type-to-appshortcutsprovider**: You SHOULD conform one type to `AppShortcutsProvider` and return `AppShortcut` values from the `appShortcuts` builder.
+- **must-include-application-name-in-phrases**: Each `AppShortcut` **MUST** supply `phrases` containing `\(.applicationName)` so Siri can resolve the invocation.
+- **ship-high-value-actions-as-appshortcuts**: High-value actions **SHOULD** ship as `AppShortcut`s so users get voice and Spotlight access with no configuration.
+- **must-conform-domain-types-to-appentity**: A domain type exposed to intents **MUST** conform to `AppEntity` (stable `id`, `displayRepresentation`, and a `defaultQuery`).
+- **provide-an-entityquery**: You SHOULD provide an `EntityQuery` (or `EntityStringQuery`/`EnumerableEntityQuery`) so the system can resolve entities by id, by search string, or by enumeration.
+- **back-queries-with-real-data**: Queries **SHOULD** be backed by your real data layer, not hardcoded — they are how Siri and Shortcuts fetch live values.
+- **prefer-app-intents-for-new-work**: For new work, you SHOULD prefer the App Intents framework.
+- **should-not-add-sirikit-custom-intent**: You **SHOULD NOT** add a new SiriKit custom intent for an action that App Intents can express.
+- **migrate-custom-intents-when-touched**: You SHOULD migrate existing custom intents when touched.
+- **treat-other-capabilities-as-forecasts**: You SHOULD treat any "App Intents power feature X" capability beyond Siri, Shortcuts, Spotlight, widgets, Control Center, and the Action Button as a FORECAST and confirm against the [App Intents documentation](https://developer.apple.com/documentation/appintents) for the OS version you target.

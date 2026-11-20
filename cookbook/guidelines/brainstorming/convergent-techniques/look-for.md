@@ -1,0 +1,13 @@
+
+- `convergence-after-divergence`: a convergent technique introduced before the user explicitly signals readiness to stop generating
+- `affinity-user-words`: cluster names in AI-generated labels rather than the user's own language, or names the user never confirmed
+- `affinity-small-first`: ideas sorted into predefined clusters instead of clusters built up from the ideas
+- `wwhtbt-question-form`: an idea assessed as "Why [idea] won't work" instead of "What would have to be true for [idea] to work?"
+- `wwhtbt-follow-up`: a condition identified and the next idea taken up without an offer to explore how the condition might be met
+- `premortem-before-commit`: a crystallize step in a high-consequence domain with no premortem run before it
+- `premortem-generate-then-address`: a failure mode addressed while failure-mode generation is still under way
+- `premortem-round-robin`: failure mechanisms ranked or addressed before all of them were surfaced
+- `feasibility-three-axes`: a feasibility check that leaves out assumptions, risks or dependencies
+- `feasibility-question-form`: a feasibility observation stated as a verdict instead of a question or a condition
+- `selection-user-led`: the facilitator making or implying the final selection of a direction
+- `selection-criteria-explicit`: selection begun without the user being invited to name explicit selection criteria

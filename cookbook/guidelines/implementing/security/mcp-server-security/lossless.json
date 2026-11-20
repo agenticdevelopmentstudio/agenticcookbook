@@ -1,0 +1,86 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Treat a remote MCP server as an OAuth 2.1 **resource server**.",
+      "to": "should-act-as-oauth-resource-server",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating a remote MCP server as an OAuth 2.1 resource server is kept, the unkeyed instruction at SHOULD.",
+        "pin": "940b773aaf1a7444f40c648fc4e24e4c36d7dcbf584fe62b6811590b266b19c8"
+      }
+    },
+    {
+      "sentence": "To call a downstream service, use a token-exchange flow to obtain a distinct token, or act as its own client.",
+      "to": "should-use-token-exchange-downstream",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using token exchange for a distinct downstream token, or acting as its own client, is kept at SHOULD; the passthrough ban stays MUST NOT in must-not-pass-tokens-through.",
+        "pin": "6e55b2c6fcc497e421b4044cd11fc2d56d8ebf44cfe205d43599185c96fd1169"
+      }
+    },
+    {
+      "sentence": "When the server proxies a third-party API using a static client ID, a stale consent cookie lets an attacker skip the consent screen.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The confused-deputy threat (static client ID proxy, stale consent cookie skipping consent) is kept in rationale as the reason for the per-client consent rules.",
+        "pin": "d50e2846c1fef261e9b7faf4b7670019e12f5c84c735df8d68392fa5b88205e2"
+      }
+    },
+    {
+      "sentence": "Treat every string the server emits as model-influencing input and every token it receives as untrusted.",
+      "to": "should-treat-server-strings-and-tokens-as-untrusted",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating every emitted string as model-influencing input and every received token as untrusted is kept at SHOULD.",
+        "pin": "9be328c9c5ed7e04b60bf3b1b6d5394a8e5115ed97741adc889e565e52de08aa"
+      }
+    },
+    {
+      "sentence": "Pin guidance to the MCP spec revision dated **2025-06-18** (Security Best Practices + Authorization), which carries the normative MUST/MUST NOT statements below.",
+      "to": "should-pin-mcp-spec-revision",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Pinning to the MCP spec revision 2025-06-18 (Security Best Practices + Authorization) is kept at SHOULD with its note about the normative statements.",
+        "pin": "488e29a27cdc37d492677ac04d437b7bf2d0c516dacbb4537f30e847311b1fe6"
+      }
+    },
+    {
+      "sentence": "A server (or a tool it proxies) can present a benign description at approval time and a malicious one later.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rug-pull threat, benign description at approval and malicious later, is kept in rationale for the hash-binding and versioning rules.",
+        "pin": "79b3eb581a35b2c379df5e329c436c09306cd015def803e267f1916d456c0c6e"
+      }
+    },
+    {
+      "sentence": "They **SHOULD** require HTTPS (loopback excepted for dev), block private/reserved ranges (`10/8`, `172.16/12`, `192.168/16`, `169.254/16`, `127/8`, `fc00::/7`, `fe80::/10`), and validate redirect targets per hop.",
+      "to": "should-harden-oauth-url-fetching",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Server-side deployments requiring HTTPS (loopback dev exception), blocking the same private/reserved ranges and validating redirects per hop are kept at SHOULD.",
+        "pin": "0b0e32f913022da38b8248989fc6ef2e68a55f75e5035ec538fb9d23fbf040c3"
+      }
+    },
+    {
+      "sentence": "Prefer an egress proxy and DNS-pinning over hand-rolled IP parsing, which misses octal/hex/IPv4-mapped-IPv6 encodings.",
+      "to": "should-prefer-egress-proxy-and-dns-pinning",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring an egress proxy and DNS-pinning over hand-rolled IP parsing, with the octal/hex/IPv4-mapped-IPv6 reason, is kept at SHOULD.",
+        "pin": "72b731249b8967eca2aadd1b53958d503332d4dcd0121b3fba6f16265c6cdc14"
+      }
+    }
+  ],
+  "obsolete": []
+}

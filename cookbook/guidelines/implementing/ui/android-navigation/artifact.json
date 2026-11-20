@@ -4,11 +4,11 @@
     "id": "58252326-3716-4bf4-92b9-e678b879f910",
     "title": "Android navigation in Compose",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,19 +28,21 @@
     "references": [
       "https://developer.android.com/guide/navigation"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "ui-implementation"
     ]
   },
-  "synced": "d4d5df763c7d75f4",
+  "synced": "b791787ca0bc9c8b",
   "parts": [
     {"part": "intro"},
-    {"part": "architecture", "heading": "Architecture"},
-    {"part": "default-type-safe-navigation-compose-nav2", "heading": "Default: type-safe Navigation Compose (Nav2)"},
-    {"part": "navigation-3-nav3-newer-option-adopt-deliberately", "heading": "Navigation 3 (Nav3) — newer option, adopt deliberately"},
-    {"part": "state-and-lifecycle", "heading": "State and lifecycle"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "default-type-safe-navigation-compose-nav2", "heading": "Default: type-safe Navigation Compose (Nav2)", "role": "examples"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "navigation-3-nav3-newer-option-adopt-deliberately", "heading": "Navigation 3 (Nav3) — newer option, adopt deliberately", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

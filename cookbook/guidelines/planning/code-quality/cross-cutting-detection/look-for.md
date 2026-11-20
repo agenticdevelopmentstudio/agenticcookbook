@@ -1,0 +1,13 @@
+
+- `should-note-cross-cutting-concerns-not-isolate`: concerns whose call sites appear across all groups, and whether the findings list them as cross-cutting rather than as groups
+- `should-not-group-call-sites`: a proposed scope group made only of the call sites of a concern (every file calling `log()`, `Analytics.track`, an auth check)
+- `should-give-shared-infrastructure-one-scope-group`: a concern's own files (a Logger class, a SessionManager), and whether they form exactly one group
+- `should-treat-call-sites-as-dependencies`: call sites of shared infrastructure listed as members of its group instead of as dependencies on it
+- `should-classify-logging-configuration-as-infrastructure`: logger configuration and log routing files classified as infrastructure, with log call sites left out of it
+- `should-note-pervasive-coupling-anti-pattern`: a `GlobalSingleton` (or `.shared` instance) called directly from every group, and whether the findings note it as an anti-pattern
+- `should-inject-not-merge-shared-dependency`: groups merged together because they share a dependency, where injecting it was the remedy
+- `must-give-auth-infrastructure-own-scope-group`: SessionManager, AuthGuard, AuthMiddleware or TokenRefreshInterceptor code, and whether it is its own group, apart from the auth check sites
+- `must-not-treat-auth-as-merely-cross-cutting`: auth infrastructure filed only under cross-cutting concerns
+- `should-group-event-definitions-with-analytics`: analytics event definition files split across their callers instead of kept with the analytics infrastructure
+- `must-catalog-di-container-separately`: the DI container or composition root, and whether the findings catalog it separately as the wiring layer
+- `should-apply-the-definitive-test`: whether each cross-cutting or infrastructure call rests on the code having (or lacking) its own state, lifecycle, or logic

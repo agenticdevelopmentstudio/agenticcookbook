@@ -1,0 +1,19 @@
+
+- `must-ship-additive-changes-without-a-version-bump`: each additive change ships in the current version
+- `must-version-breaking-changes`: each breaking change ships under a new version
+- `must-tolerate-unknown-fields`: clients ignore unknown fields
+- `should-assume-consumers-depend-on-every-observable-detail`: changes to observable details beyond the spec are handled as potentially breaking, or the work says why not
+- `should-pick-one-scheme-for-the-whole-surface`: one versioning scheme is applied across the whole surface, or the work says why not
+- `must-not-mix-schemes`: the API uses exactly one versioning scheme
+- `should-version-at-a-coarse-grain`: each new major version carries a breaking batch, or the work says why not
+- `should-pin-the-default-version`: unversioned requests resolve to a documented, pinned default version, or the work says why not
+- `should-run-the-deprecation-sequence`: each retirement announces, sets a removal date, documents and honors a window, with the timeline published first, or the work says why not
+- `should-announce-with-the-deprecation-header`: affected responses carry a `Deprecation` header, or the work says why not
+- `should-link-migration-docs`: a `Link` header with `rel="deprecation"` and `rel="successor-version"` points at migration docs, or the work says why not
+- `should-set-a-removal-date-with-sunset`: a `Sunset` header gives the removal HTTP-date, or the work says why not
+- `must-not-sunset-before-deprecation`: every `Sunset` time is at or after its `Deprecation` time
+- `should-document-the-deprecation`: the public changelog and spec (`deprecated: true`) record the change, replacement and dates, or the work says why not
+- `should-honor-a-migration-window`: a published migration window precedes removal and was not shortened, or the work says why not
+- `must-not-ship-breaking-changes-in-place`: no existing version's behavior changes in a breaking way
+- `must-pair-deprecation-headers-with-documentation`: every deprecation header has documentation alongside it
+- `should-measure-and-notify-before-removal`: deprecated-version traffic is measured and high-volume consumers are notified, or the work says why not

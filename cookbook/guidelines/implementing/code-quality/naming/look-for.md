@@ -1,0 +1,9 @@
+
+- `should-use-dotnet-casing-consistently`: casing that mixes conventions across a codebase, or departs from .NET's for its symbol kind
+- `must-pascal-case-types-and-members`: a type, method, property, public field, constant or namespace not in `PascalCase`
+- `must-camel-case-parameters-and-locals`: a parameter or local variable not in `camelCase`
+- `must-underscore-camel-case-private-fields`: a private instance field without the underscore prefix or not in `_camelCase`
+- `should-prefix-interfaces-with-i`: an interface whose name does not start with `I`
+- `must-suffix-async-methods`: an async method (returning `Task`/`ValueTask`) whose name lacks the `Async` suffix
+- `must-pascal-case-constants`: a constant in `SCREAMING_SNAKE_CASE` or any casing but `PascalCase`
+- `should-use-var-when-type-apparent`: an explicit type repeated where the right side of the assignment already makes it apparent

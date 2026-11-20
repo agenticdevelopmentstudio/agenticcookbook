@@ -4,11 +4,11 @@
     "id": "4b85c8bc-e588-40ca-b5a5-453b7a16d710",
     "title": "Passkeys and WebAuthn",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-09",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -28,22 +28,21 @@
       "https://www.w3.org/TR/webauthn-3/",
       "https://fidoalliance.org/passkeys/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-09",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "authentication"
     ]
   },
-  "synced": "b323196ee8be51e1",
+  "synced": "bffcb4d0a4820b20",
   "parts": [
     {"part": "intro"},
-    {"part": "standards-baseline-pin-and-track", "heading": "Standards baseline (pin and track)"},
-    {"part": "registration-ceremony-navigator-credentials-create", "heading": "Registration ceremony (`navigator.credentials.create`)"},
-    {"part": "authentication-ceremony-navigator-credentials-get", "heading": "Authentication ceremony (`navigator.credentials.get`)"},
-    {"part": "authenticator-and-passkey-types", "heading": "Authenticator and passkey types"},
-    {"part": "attestation", "heading": "Attestation"},
-    {"part": "fallback-and-recovery", "heading": "Fallback and recovery"},
-    {"part": "anti-patterns", "heading": "Anti-patterns"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "authenticator-and-passkey-types", "heading": "Authenticator and passkey types", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

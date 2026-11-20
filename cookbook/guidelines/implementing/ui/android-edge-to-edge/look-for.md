@@ -1,0 +1,17 @@
+
+- `must-consume-window-insets`: an app at `targetSdk 35`+ whose content, controls or keyboard can sit under the status, caption or navigation bars
+- `must-handle-window-insets`: layouts that assume the system bars leave a content-safe area instead of handling insets
+- `must-not-rely-on-opt-out-attribute`: `android:windowOptOutEdgeToEdgeEnforcement` set in a theme or manifest, beyond a one-release stopgap
+- `should-enable-edge-to-edge-in-oncreate`: an activity that does not call `enableEdgeToEdge()` in `onCreate()`, so Android 14 and below behave differently
+- `should-prefer-safedrawing-insets`: general content padded with a narrower inset type than `safeDrawing`
+- `should-wrap-top-level-ui-in-scaffold`: top-level Compose UI not wrapped in `Scaffold`
+- `should-apply-scaffold-inner-padding`: a `Scaffold` content lambda that ignores `innerPadding`
+- `should-use-windowinsetspadding-for-manual-control`: manual inset handling in Compose that does not use `Modifier.windowInsetsPadding(...)`, or uses the wrong inset type for the content
+- `should-pad-items-not-whole-list`: a scrolling list padded as a whole rather than through `contentPadding`, so content cannot draw under the bars
+- `should-consume-insets-with-view-listener`: a View layout with no `setOnApplyWindowInsetsListener` on the view that needs insets
+- `should-use-ime-insets-for-keyboard`: hardcoded bottom padding for the keyboard instead of `WindowInsetsCompat.Type.ime()`
+- `should-install-compat-insets-dispatch`: an app supporting Android 10 and below that consumes insets without `ViewGroupCompat.installCompatInsetsDispatch(rootView)`
+- `should-set-fitssystemwindows-on-appbarlayout`: an `AppBarLayout` without `android:fitsSystemWindows="true"` for its top inset
+- `must-not-consume-insets-children-need`: a parent listener returning `WindowInsetsCompat.CONSUMED` while child views need the same insets
+- `must-not-mix-fitssystemwindows-with-listeners`: one view with both `fitsSystemWindows="true"` and a manual inset listener
+- `should-test-navigation-modes-cutout-and-keyboard`: no testing in gesture and 3-button navigation, with a display cutout, and with the keyboard open

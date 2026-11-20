@@ -1,0 +1,12 @@
+
+- `should-treat-high-coupling-ratio-as-candidate`: clusters whose internal coupling ratio is above 0.6, and whether they are among the recommended candidates
+- `should-consider-merging-low-ratio-files`: files whose coupling ratio is below 0.3, and whether merging them into the group they depend on most was considered
+- `should-separate-unidirectional-layers`: directory pairs where imports flow one way only, and whether the two sides are separate groups
+- `should-flag-high-fan-in-files`: files imported by 10+ files across several candidate groups, and whether they are flagged for `cross-cutting-detection` instead of assigned to one group
+- `must-co-locate-cyclic-files`: files in an import cycle split across different groups
+- `should-document-cycles-as-refactoring-targets`: whether every cycle is recorded as a refactoring target
+- `should-not-count-star-imports-as-full-coupling`: star imports (`import com.example.util.*`) counted as full coupling without checking which symbols are used
+- `should-compute-coupling-metrics`: whether internal coupling, external coupling, coupling ratio, fan-in and fan-out are computed
+- `should-identify-dependency-direction`: whether each directory pair's import direction is stated
+- `should-note-import-cycles`: import cycles in the graph missing from the findings
+- `should-resolve-circular-dependencies`: circular dependencies left without a recommendation to resolve them

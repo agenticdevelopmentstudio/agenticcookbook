@@ -1,0 +1,13 @@
+
+- `deliberate-level`: every transaction sets its isolation level explicitly
+- `justified-level`: every chosen isolation level names the anomaly it prevents
+- `retry-serialization-failure`: every Repeatable Read or Serializable transaction is wrapped in retry logic that re-runs it on `40001` (and InnoDB `1213`/`1205`)
+- `bounded-backoff`: retries stop at a fixed max attempt count and wait with exponential backoff plus jitter
+- `surface-on-exhaustion`: the last failed attempt raises the failure to the caller
+- `idempotent-retry`: no email, payment, external call or non-transactional counter runs inside a retried block
+- `no-savepoint-only-retry`: each retry begins a fresh transaction with `BEGIN`
+- `explicit-locking-for-queues`: worker/queue claims use `SELECT ... FOR UPDATE SKIP LOCKED` or `FOR UPDATE`
+- `no-serializable-queue-dispatch`: queue dispatch does not rely on Serializable, or the code says why not
+- `prefer-narrowest-level`: Serializable is used only where write skew is a real risk, or the code says why not
+- `check-then-update-locking`: each check-then-update invariant uses `SELECT ... FOR UPDATE` or Serializable, or the code says why not
+- `confirm-engine-semantics`: the work cites the deployed engine's dated docs for its isolation semantics, or says why not

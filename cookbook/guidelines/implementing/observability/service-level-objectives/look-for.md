@@ -1,0 +1,19 @@
+
+- `measure-at-the-journey`: an SLI measured inside an internal subsystem, or on CPU or memory, rather than at the boundary closest to the user
+- `cover-the-failure-modes`: a user-facing service with SLIs for some of availability, latency and correctness/freshness/coverage but not the ones relevant to it
+- `latency-uses-percentiles`: a latency SLI stated as a mean
+- `define-multiple-latency-thresholds`: a latency SLI with a single threshold, capturing typical or tail experience but not both
+- `define-valid-events`: an SLI whose denominator is not stated or not documented beside it (health checks, warmup and client-aborted requests left in)
+- `slos-are-targets-not-100`: an SLO of 100%
+- `choose-lowest-unnoticed-reliability`: an SLO set higher than the reliability users would notice, with no reason given
+- `user-facing-needs-an-slo`: a user-facing service with no SLO, or an SLO with no owner
+- `start-from-data`: an initial SLO with no observed performance behind it
+- `budget-governs-velocity`: an exhausted budget with no agreed response, or a healthy budget that still holds shipping back
+- `agree-the-policy-first`: no exhaustion policy agreed by product and engineering owners before a breach
+- `alert-on-symptom-not-cause`: an alert on a resource threshold (CPU > 80%, queue depth) instead of budget burn
+- `use-multi-window-multi-burn-rate`: a burn-rate alert with only one window
+- `tier-by-severity`: slow burn that pages, or fast burn that only opens a ticket
+- `scale-windows-to-your-slo`: the 30-day, 99.9% windows and rates reused for a different window or target without recomputing
+- `should-not-alert-on-fixed-error-count`: an alert on a single fixed error-count threshold
+- `should-not-use-one-global-slo`: one global SLO spanning unrelated journeys
+- `should-not-measure-slos-only-inside-service`: SLOs measured only inside the service, with no client-side or edge signal

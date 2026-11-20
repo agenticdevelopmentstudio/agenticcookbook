@@ -1,0 +1,21 @@
+
+- `should-put-config-where-codex-looks`: settings are in `config.toml`, instructions in `AGENTS.md`, reusable procedures in skills, each where Codex looks for it
+- `should-keep-shared-config-in-repo`: everything the team shares is inside the repository
+- `must-not-depend-on-untrusted-checkout`: no setting that must apply on every machine depends on an untrusted checkout's `.codex/config.toml`
+- `must-check-keys-against-reference`: every `config.toml` key is in the configuration reference
+- `must-not-copy-keys-from-other-tools`: no `config.toml` key is copied from another tool
+- `must-not-check-in-secrets`: no checked-in `config.toml` contains a secret
+- `should-keep-agents-md-files-short`: each `AGENTS.md` is short and the combined files stay under `project_doc_max_bytes`
+- `should-move-reference-material-into-skills`: reference material is in skills, not `AGENTS.md`
+- `should-write-agents-md-for-any-agent`: `AGENTS.md` is agent-neutral, written for any agent rather than one tool
+- `should-not-repeat-parent-in-nested-agents-md`: no nested `AGENTS.md` repeats its parent
+- `should-give-agents-override-a-reason`: every `AGENTS.override.md` states its reason
+- `should-write-skill-description-as-trigger`: every `SKILL.md` has a `name` and a trigger-style `description`
+- `should-put-repository-skills-under-agents-skills`: every repository skill is under `.agents/skills`
+- `should-set-allow-implicit-invocation-false`: every skill meant to run only on request sets `allow_implicit_invocation: false` in `agents/openai.yaml`
+- `should-disable-skills-via-skills-config`: every disabled skill is disabled by a `[[skills.config]]` entry in `~/.codex/config.toml`, not deleted
+- `must-follow-skill-structure-reference`: every `SKILL.md` follows the skill structure reference
+- `must-follow-never-clobber-on-install`: the skill install follows never-clobber-user-files
+- `must-not-write-new-custom-prompts`: no new custom prompt exists unless a skill cannot express the need
+- `should-migrate-team-prompts-to-skills`: no prompt the team uses remains a custom prompt; each is a repository skill
+

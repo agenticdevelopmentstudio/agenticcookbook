@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "MUST be applied before any divergent phase; premature ideation on a misframed problem wastes all",
+      "to": "framing-before-divergence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule framing-before-divergence keeps the MUST to apply framing techniques before any divergent phase, with its reason (premature ideation on a misframed problem wastes all generative effort).",
+        "pin": "3c115ed11164410beb12d0e400016b123dc869ddeb619406e3a2af5280e2f917"
+      }
+    },
+    {
+      "sentence": "generative effort.",
+      "to": "framing-before-divergence",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The continuation 'generative effort.' is kept verbatim at the end of framing-before-divergence's reason clause.",
+        "pin": "c5cff083181bcb0e05b38841f7b5001bc2836cc76444c31f3d9fc27896783f06"
+      }
+    }
+  ],
+  "obsolete": []
+}

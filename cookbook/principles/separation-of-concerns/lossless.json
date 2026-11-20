@@ -1,0 +1,59 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Describe each module's responsibility in one sentence without using \"and\" — if you cannot, split it",
+      "to": "should-split-when-description-needs-and",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD describing each module's responsibility in one sentence without \"and\" and splitting it if you cannot.",
+        "pin": "b2f720900b202918fbcbda5d881a194e1c21e135973c85bf4588d96ff11f026c"
+      }
+    },
+    {
+      "sentence": "Keep UI rendering, business logic, and data access in separate layers that can change independently",
+      "to": "should-separate-ui-logic-and-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD keeping UI rendering, business logic and data access in separate, independently changeable layers.",
+        "pin": "248fd4d01d3c3dff98444c794e0c41695c034eaddef0b3b1f5a2cb7029b2e2c3"
+      }
+    },
+    {
+      "sentence": "When a change to one feature forces edits in an unrelated feature, treat it as a coupling defect",
+      "to": "should-treat-cross-feature-edits-as-coupling",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the cross-feature-edit condition and treating it as a coupling defect, at SHOULD.",
+        "pin": "b6f78e3c5b02e16316422e550cf1662a24a09013ba374202737e796daa3004e1"
+      }
+    },
+    {
+      "sentence": "Counterweight — locality of behavior: separate by *reason to change*, but co-locate by *reason to read*.",
+      "to": "should-co-locate-by-reason-to-read",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the locality-of-behavior counterweight: separate by reason to change, co-locate by reason to read, at SHOULD.",
+        "pin": "2a3491845230ba5f7a2ba0455ed0a6021cb6fb0555c838c83d6eddb8ccb72537"
+      }
+    },
+    {
+      "sentence": "Separation and locality pull in opposite directions; choose per case rather than maximizing either.",
+      "to": [
+        "should-co-locate-by-reason-to-read",
+        "rationale"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps choosing per case rather than maximizing either, and rationale keeps that separation and locality pull in opposite directions.",
+        "pin": "6d0ffc49c76e0d37aef65c7f57b75ff0f9750ba6a1c836d4c9be55a83854243b"
+      }
+    }
+  ],
+  "obsolete": []
+}

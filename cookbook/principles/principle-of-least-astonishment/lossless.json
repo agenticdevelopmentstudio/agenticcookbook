@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Name functions and types so a reader can predict what they do without reading the implementation",
+      "to": "should-name-for-predictability",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD naming functions and types so a reader can predict what they do without reading the implementation.",
+        "pin": "37bc61cc45cfe25537ff9c5936ab3b4b1e8da3fe2fa82bfab33a78dc31f46e04"
+      }
+    },
+    {
+      "sentence": "If a method mutates state, make that visible in the name or signature — never hide side effects",
+      "to": "must-make-mutation-visible",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the mutates-state condition and making it visible in the name or signature, raised to MUST, with never hiding side effects.",
+        "pin": "bb55d7a3218f41b537e46e98d6df33714956bc8829e86226266d9e50e8cae843"
+      }
+    },
+    {
+      "sentence": "Follow platform naming conventions even when you prefer a different style",
+      "to": "should-follow-platform-naming-conventions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD following platform naming conventions even when you prefer a different style.",
+        "pin": "c3d357ca3a885ff9161922ad82919214f38b5c40e588979e0b519c70557762da"
+      }
+    },
+    {
+      "sentence": "When reviewing code, ask: \"Would a new team member be surprised by this behavior?\"",
+      "to": "should-ask-would-a-new-team-member-be-surprised",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the when-reviewing-code condition and the new-team-member-surprise question, at SHOULD.",
+        "pin": "77218eda44ab1b9cfb10c34b30b744f90dc565da4e3bb77c97705fc020cbc953"
+      }
+    }
+  ],
+  "obsolete": []
+}

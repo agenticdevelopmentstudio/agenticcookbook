@@ -1,0 +1,23 @@
+
+- **must-delete-replaced-implementation**: When you replace an implementation, you MUST delete the one it replaces in the same change.
+- **should-not-keep-old-and-new-side-by-side**: SHOULD NOT leave old and new side by side, and SHOULD NOT park the old one behind a flag that is permanently off.
+- **should-delete-as-you-go**: SHOULD do the deletion as you go, not as a cleanup pass you plan to do later.
+- **should-delete-old-tests-with-old-code**: SHOULD delete the old tests with the old code, and move any behavior they pinned that still matters onto the new path.
+- **must-update-every-caller**: When you rename or move a function, type, file or route, you MUST update every caller, import, export, doc reference and string that names it.
+  - A rename is a change to every caller, so apply this rule in the same change, including to a rename made because a name no longer describes the thing.
+- **should-search-whole-repo-for-old-name**: SHOULD search for the old name across the whole repo, not only the files you opened.
+- **should-search-whole-identifier**: SHOULD search for the whole identifier, not a fragment.
+- **should-finish-with-final-search**: SHOULD finish with a final search for the old name. Any remaining hit is either a missed caller or a deliberate compatibility shim.
+- **must-comment-compatibility-shims**: A compatibility shim MUST say so in a comment that names when it goes away.
+- **must-delete-unreferenced-things**: After the change, anything that nothing references MUST go: files, functions, exports, types, images and other assets, feature flags, config keys, environment variables, migrations of paths that no longer exist.
+- **should-remove-orphaned-flags**: A flag whose rollout is finished, or whose old branch you just removed, is an orphan: SHOULD remove the flag and the branch it guarded.
+- **should-remove-unused-dependencies**: Dependencies your change made unused SHOULD come out of the manifest in the same change.
+- **should-confirm-with-reference-search**: SHOULD confirm with a reference search before deleting.
+- **must-not-delete-unproven-unused**: You MUST NOT delete what you cannot show is unused.
+- **must-not-widen-cleanup**: You MUST NOT widen the cleanup to unrelated dead code; note that for the user instead.
+- **must-delete-not-comment-out**: Code you no longer need MUST be deleted, not commented out.
+- **should-not-keep-old-code-for-reference**: SHOULD NOT leave a block of old code with a note such as "kept for reference" or "old approach".
+- **should-record-old-reasoning-as-a-sentence**: If the reasoning behind the old approach matters, SHOULD write it as a sentence in a comment and delete the code.
+- **must-not-commit-temporary-disables**: A temporary disable while debugging is fine on your machine and MUST NOT reach a commit.
+- **should-rename-when-meaning-changes**: When a change alters what a value, function or field holds, SHOULD rename it to match.
+- **should-reread-touching-names**: After you change a type or a behavior, SHOULD reread the names that touch it, including parameter names, variable names, file names and test names.

@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Keep each session lightweight: a focused diagram and a short threat list per feature beats an exhaustive enterprise-wide model done once.",
+      "to": "should-keep-each-session-lightweight",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept verbatim at SHOULD: a focused diagram and short threat list per feature beats an exhaustive enterprise-wide model done once; the Manifesto reason is in rationale.",
+        "pin": "b384e10224a2b1619f004e33424e15f1e358460f1b7d6c8a158d112b03becf7a"
+      }
+    },
+    {
+      "sentence": "Use STRIDE to drive question 2 systematically.",
+      "to": "should-use-stride-for-question-two",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: STRIDE drives question 2 systematically.",
+        "pin": "2003292cf0b142fdd7d05c5f17e382d0b49dadd030048b03773265c3bf994b92"
+      }
+    },
+    {
+      "sentence": "Apply each category to elements touching a trust boundary:",
+      "to": "should-use-stride-for-question-two",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD inside the same rule: each category is applied to elements touching a trust boundary; the category table stays in stride-categories.",
+        "pin": "631365fa4042c140e5b16107bebbec20cf4ca5dd97bce5c10794b5d47a9aac65"
+      }
+    },
+    {
+      "sentence": "Anchor every modeling session on the four questions from the Threat Modeling Manifesto (threatmodelingmanifesto.org):",
+      "to": "should-anchor-sessions-on-the-four-questions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the Threat Modeling Manifesto source, and the four questions with their full explanations kept as the rule's numbered list.",
+        "pin": "f30f703cced5929eb56a19af7cd07c3a02641a1d2a43e00fabfc4e7247d22f54"
+      }
+    }
+  ],
+  "obsolete": []
+}

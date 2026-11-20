@@ -1,0 +1,13 @@
+
+- **should-note-cross-cutting-concerns-not-isolate**: When a concern appears across all scope groups, the analysis **SHOULD** note it in findings as cross-cutting and move on — cross-cutting concerns are noted, not isolated.
+- **should-not-group-call-sites**: The analysis **SHOULD NOT** create a scope group whose members are "all the places that call log()".
+- **should-give-shared-infrastructure-one-scope-group**: If a concern has its own files (a Logger class, a SessionManager), those files **SHOULD** form exactly one scope group — shared infrastructure gets exactly one scope group.
+- **should-treat-call-sites-as-dependencies**: The call sites of shared infrastructure in other groups **SHOULD** be treated as dependencies on its group, not members of it.
+- **should-classify-logging-configuration-as-infrastructure**: The `OSLog` / `Logger` configuration file, or a centralized `LogManager` or `Logger` configuration file that sets up log destinations, **SHOULD** be classified as infrastructure — a single `Logging Infrastructure` unit; an `os.log("did the thing")` call in a view controller **SHOULD NOT** — logging infrastructure vs logging call sites.
+- **should-note-pervasive-coupling-anti-pattern**: If every scope group directly calls a `GlobalSingleton`, the analysis **SHOULD** note the anti-pattern — pervasive coupling is an architectural smell, not a decomposition strategy.
+- **should-inject-not-merge-shared-dependency**: The remedy for pervasive coupling **SHOULD** be to inject the dependency, not to merge all groups into one because they share the dependency.
+- **must-give-auth-infrastructure-own-scope-group**: Security/auth infrastructure — the SessionManager and token lifecycle — **MUST** always be its own scope group, separate from where auth checks are enforced.
+- **must-not-treat-auth-as-merely-cross-cutting**: The analysis **MUST NOT** ever treat auth enforcement as merely cross-cutting.
+- **should-group-event-definitions-with-analytics**: Event definition files (`AnalyticsEvents.swift`, `events.ts`) **SHOULD** belong with the analytics infrastructure, not be split across callers.
+- **must-catalog-di-container-separately**: A DI container that wires together all scope groups is a composition root and **MUST** be cataloged separately as the bootstrap/wiring layer.
+- **should-apply-the-definitive-test**: To tell cross-cutting from shared infrastructure, the analysis **SHOULD** ask: "Does this code have its own state, lifecycle, or logic — or does it exist only as calls woven into other code?"

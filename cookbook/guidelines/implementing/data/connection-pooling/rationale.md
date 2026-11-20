@@ -1,0 +1,3 @@
+
+- `no-session-set`, `no-listen-notify`, `no-session-advisory-locks`, `no-temp-tables`, `prepared-statements-caveat`: these are the sharp footguns under transaction-mode pooling. Code that runs under transaction-mode pooling must not depend on session state. Transaction mode reassigns the server connection between transactions, so any state scoped to a session — not a transaction — silently breaks.
+- `prepared-statements-caveat`, `verify-pooler-prepared-statement-support`: As a forecast-now-shipped nuance: PgBouncer added protocol-level prepared-statement support (1.21, 2023) enabled by default since 1.24 (January 2025), so protocol-prepared statements via the client library (e.g. libpq `PQprepare`) work in transaction mode.

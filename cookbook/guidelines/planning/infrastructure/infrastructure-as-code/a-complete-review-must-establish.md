@@ -1,0 +1,28 @@
+
+- `must-define-infrastructure-as-declarative-code`: whether all infrastructure is declarative code in version control, changed only through a reviewed, planned apply
+- `should-describe-the-desired-end-state`: whether definitions describe the desired end state
+- `must-be-idempotent`: whether re-applying an unchanged configuration produces no changes
+- `must-be-reproducible`: whether the same code and inputs give the same infrastructure on a clean machine with no manual prerequisites
+- `should-pin-tool-and-provider-versions`: whether tool and provider versions are pinned in a committed lockfile
+- `should-prefer-mature-declarative-tooling`: whether the tooling is mature and declarative
+- `must-plan-before-apply`: whether every change is previewed with a plan/preview before apply
+- `must-inspect-the-plan-diff`: whether a human or gated CI step inspects each plan diff before approval
+- `should-run-plan-in-ci-on-every-pull-request`: whether CI runs `plan` on every pull request and surfaces the diff
+- `should-apply-only-from-a-protected-branch`: whether `apply` runs only from a protected branch or gated pipeline
+- `should-confirm-the-cause-of-replacements`: whether the cause of each replacement is confirmed before applying
+- `must-keep-state-in-a-remote-backend`: whether state lives in a versioned, recoverable remote backend
+- `must-lock-state-writes`: whether state writes are locked
+- `should-prefer-native-s3-lockfile-locking`: whether an S3 backend uses native lockfile locking
+- `should-use-a-consistent-state-key-convention`: whether state keys follow one convention that IAM can scope per environment
+- `must-not-let-drift-become-the-source-of-truth`: whether any drift stands as the source of truth
+- `should-run-scheduled-drift-detection`: whether drift detection runs on a schedule
+- `should-encode-intended-drift`: whether intended drift is encoded in configuration and re-applied
+- `should-factor-repeated-patterns-into-modules`: whether repeated patterns are pinned modules with explicit inputs/outputs
+- `should-keep-environments-as-separate-state`: whether each environment has separate state over shared modules
+- `must-use-least-privilege-credentials`: whether provider credentials are least-privilege, short-lived where possible, and supplied from environment/secret store
+- `must-not-expose-secrets-in-plaintext-state`: whether any secret is in plaintext state
+- `should-not-emit-secrets-as-outputs`: whether any secret is emitted as an output
+- `should-restrict-state-read-access`: whether state read access is restricted
+- `should-adopt-heavy-iac-platforms-only-on-measured-need`: whether heavier IaC machinery rests on a measured need
+- `should-start-with-the-smallest-layout-that-works`: whether the backend and module layout is the smallest that works
+- `should-confirm-obligations-with-counsel`: whether data-residency and credential-handling obligations were confirmed with qualified counsel

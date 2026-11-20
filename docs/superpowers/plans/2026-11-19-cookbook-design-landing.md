@@ -37,9 +37,9 @@ Gates
 
 A fresh worktree off `main` after phase 1 lands.
 
-- ⬜ ~250 guideline topics converted to roled parts in batches of ~20; each passes `lossless` and an independent judge;
-  one commit per topic
-- ⬜ all 44 principles converted
-- ⬜ topics with no review text get reviewer and build parts written from their own rules (R3)
-- ⬜ each converted topic stays in `research-exempt.json` until researched
-- ⬜ `cookr update`; gates as in phase 1; landed with `/ship no-squash`
+- ✅ ~250 guideline topics converted to roled parts in batches of ~20; each passes `lossless` and an independent judge;
+  one commit per topic (278 guidelines; 268 roled, the 10 under `guidelines/reviewing/` stay unroled by rule)
+- ✅ all 44 principles converted
+- ✅ topics with no review text get reviewer and build parts written from their own rules (R3)
+- ✅ each converted topic stays in `research-exempt.json` until researched
+- 🔄 `cookr update` ✅; gates as in phase 1; landed with `/ship no-squash`

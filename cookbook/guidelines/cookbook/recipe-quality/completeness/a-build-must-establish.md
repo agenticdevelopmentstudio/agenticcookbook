@@ -1,0 +1,19 @@
+
+- `must-fill-every-required-section`: every required section has meaningful body content or a `NEEDS REVIEW` marker
+- `must-explain-each-needs-review-gap`: every `NEEDS REVIEW` marker states what is missing, why, and who or what can resolve it
+- `must-not-stack-needs-review-markers`: each gap in a section has its own labeled `NEEDS REVIEW` marker
+- `must-not-use-needs-review-for-later-content`: no `NEEDS REVIEW` marker stands in for content to be added later
+- `must-address-applicable-edge-case-categories`: the Edge Cases section addresses every applicable category of the five
+- `must-explain-inapplicable-edge-case-categories`: every inapplicable edge-case category has a brief statement of why
+- `must-not-limit-edge-cases-to-happy-path`: the Edge Cases section covers failure modes beyond the happy path and one error case
+- `must-state-condition-behavior-and-level-per-edge-case`: every edge case entry states its condition, expected behavior and level
+- `must-give-every-must-requirement-a-test-vector`: every MUST requirement has at least one test vector
+- `must-specify-test-vector-precondition-action-outcome`: every test vector specifies precondition or input, action and expected observable outcome
+- `must-make-test-vector-outcomes-concrete`: every outcome is concrete enough for two independent testers to reach the same PASS/FAIL conclusion
+- `must-exercise-failure-modes-in-test-vectors`: every MUST requirement involving a failure mode has a test vector that exercises it
+- `should-give-should-requirements-test-vectors`: SHOULD requirements have test vectors, or the recipe documents why not
+- `must-document-missing-should-test-vectors`: every SHOULD requirement without a test vector has a documented rationale
+- `must-label-test-vectors`: every test vector is numbered or labeled
+- `must-explain-non-obvious-constraints`: every non-obvious constraint in Behavioral Requirements is explained in Design Decisions
+- `must-not-leave-design-decisions-empty-with-should`: Design Decisions is non-empty whenever any SHOULD requirement exists
+- `must-not-submit-with-reminder-markers`: no recipe submitted for review carries a work-in-progress `NEEDS REVIEW` note

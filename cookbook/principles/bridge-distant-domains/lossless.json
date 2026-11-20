@@ -1,0 +1,26 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "The AI's unique contribution: ask \"What problem in nature, history, or an unrelated industry is",
+      "to": "should-ask-for-structural-analogue-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-ask-for-structural-analogue-first keeps the framing as the AI's unique contribution and the full question about nature, history, or an unrelated industry, at SHOULD.",
+        "pin": "9b97a3b8e7cb48d0378975a4283a53143c966bad86d2db4ebd353556e28b45a0"
+      }
+    },
+    {
+      "sentence": "structurally similar to this one?\" before offering domain-native solutions",
+      "to": "should-ask-for-structural-analogue-first",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-ask-for-structural-analogue-first keeps the structural-similarity question and its ordering: asked before offering domain-native solutions.",
+        "pin": "44f460e68a278a400f6f64f4d2e6e7cd20d5a9672ec786adac8c6f2835a596c8"
+      }
+    }
+  ],
+  "obsolete": []
+}

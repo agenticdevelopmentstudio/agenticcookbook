@@ -1,0 +1,139 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Reusing or omitting server-side challenge verification (replay risk) — **MUST NOT**.",
+      "to": "must-not-reuse-or-omit-challenge-verification",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Reusing or omitting server-side challenge verification is kept at MUST NOT with the replay-risk reason.",
+        "pin": "e6aff000d2962eea5248520ac674d67055622883b127b8f1d6668d43845d6b88"
+      }
+    },
+    {
+      "sentence": "Setting `rp.id` to a host that doesn't cover the auth origin.",
+      "to": "should-not-set-rp-id-outside-auth-origin",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Setting rp.id to a host that does not cover the auth origin, an unkeyed anti-pattern, is kept at SHOULD NOT.",
+        "pin": "c736726cce6532cc78195e3539e27120aa62b14d17aef10150ec77ff3e37cb57"
+      }
+    },
+    {
+      "sentence": "Treating a passkey as a bearer secret or syncing the RP private key (there is none server-side).",
+      "to": "should-not-treat-passkey-as-bearer-secret",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Treating a passkey as a bearer secret or syncing the RP private key is kept at SHOULD NOT, with the note that there is none server-side.",
+        "pin": "a6eec4804d9cfbd9031f66c71337325b8066cd99ff76f850d2d7b9d9b8c75e06"
+      }
+    },
+    {
+      "sentence": "Request attestation (`attestation: \"direct\"`) **only** when policy needs to verify authenticator make/model.",
+      "to": "should-request-attestation-only-when-needed",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Requesting direct attestation only when policy must verify authenticator make/model is kept at SHOULD with the MEASURED-NEED/YAGNI condition.",
+        "pin": "e82a954a4e4f6779d0f8e86f29d7688bcdcd4abb6f74f38976ad92736a7084c2"
+      }
+    },
+    {
+      "sentence": "Use `attestation: \"none\"` for consumer flows.",
+      "to": "should-use-attestation-none-for-consumers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Using attestation none for consumer flows is kept at SHOULD.",
+        "pin": "edefcd549a7209b0f3c58e05d43473f0ac9dc503b4a04fdeb7a779acf1717821"
+      }
+    },
+    {
+      "sentence": "Issue a fresh server-side `challenge` per attempt; verify origin, `rp.id`, UP flag, and signature against the stored public key.",
+      "to": "should-issue-fresh-challenge-per-attempt",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "A fresh server-side challenge per authentication attempt and verification of origin, rp.id, UP flag and signature are kept at SHOULD.",
+        "pin": "915b5007e9e3e66b83bc98701351586a210d4fbb61061d0fff27054c54c41b16"
+      }
+    },
+    {
+      "sentence": "Prefer **discoverable credentials** (resident keys) so users authenticate without first entering a username.",
+      "to": "should-prefer-discoverable-credentials",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Preferring discoverable credentials so users skip entering a username is kept at SHOULD with its reason.",
+        "pin": "338b8c74a0ce70457981042fa9cb4385acb69a46554b075195569b1e198574f7"
+      }
+    },
+    {
+      "sentence": "Provide an explicit, rate-limited account-recovery path (e.g. verified email magic link plus identity proofing) for users who lose all authenticators.",
+      "to": "should-provide-account-recovery-path",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "An explicit, rate-limited account-recovery path for users who lose all authenticators is kept at SHOULD with the same example.",
+        "pin": "fb05c2e84b34c3f61ce53364929da725e369692c062aa5f6cef236c255fd9117"
+      }
+    },
+    {
+      "sentence": "Always allow registering additional passkeys from an authenticated session.",
+      "to": "must-allow-registering-additional-passkeys",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Always allowing additional passkeys to be registered from an authenticated session is kept, now at MUST.",
+        "pin": "6556ef9cee2e1e91b579443e036ddb45a389f0bc82cc0b6ac73863eec6289b46"
+      }
+    },
+    {
+      "sentence": "Set `rp.id` to the registrable domain; set `user.id` to an opaque, stable, non-PII handle (not an email).",
+      "to": [
+        "should-set-rp-id-to-registrable-domain",
+        "should-use-opaque-user-id"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "rp.id set to the registrable domain and user.id set to an opaque, stable, non-PII handle (not an email) are kept at SHOULD.",
+        "pin": "a4a76a50b3ae4388a5b0f97b6cc4c1e4dd2f8de3247e28aa5e7e717ae0c4fb03"
+      }
+    },
+    {
+      "sentence": "Store the credential id, public key, signature counter, transports, and the AAGUID for later UX.",
+      "to": "should-store-credential-metadata",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Storing credential id, public key, signature counter, transports and AAGUID for later UX is kept at SHOULD.",
+        "pin": "8a016f37833c8b7c8d91e43e7e955237addec5636ff63638bfd48f0be8a6b520"
+      }
+    },
+    {
+      "sentence": "Target the **W3C WebAuthn Level 2 Recommendation** (`webauthn-2`) for stable, broadly-implemented behavior.",
+      "to": "should-target-webauthn-level-2",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Targeting WebAuthn Level 2 Recommendation for stable, broadly-implemented behavior is kept at SHOULD.",
+        "pin": "ea6db448203b584a3fd213f913adc82561763ffdfe0886119f7c44609f0c5411"
+      }
+    },
+    {
+      "sentence": "**WebAuthn Level 3** (`webauthn-3`) is a **W3C Candidate Recommendation (2026-01-13)** — FORECAST: treat its newer features (e.g. refined attestation, related-origin requests) as evolving; do not depend on them as universally available until they reach Recommendation.",
+      "to": "should-not-depend-on-webauthn-level-3-features",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Level 3's Candidate Recommendation status (2026-01-13), treating its newer features as evolving and not depending on them until Recommendation, is kept with the FORECAST label.",
+        "pin": "3a0d80bb0b856f0ff8ceb0121029070fe4b62fe177d2d372fbb5fa4ca070fbad"
+      }
+    }
+  ],
+  "obsolete": []
+}

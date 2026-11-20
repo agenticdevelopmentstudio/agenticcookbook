@@ -1,0 +1,18 @@
+
+- `must-not-deploy-at-full-exposure`: a deploy ships the change dark, with exposure set separately; a deploy that turns the change on for everyone breaks it
+- `must-change-exposure-without-redeploy`: flags, traffic weights or ring assignment can be changed without a redeploy
+- `must-make-each-change-observable`: metrics, logs and traces carry the variant or cohort tag, so canary and baseline compare side by side
+- `should-pick-lightest-mechanism`: the rollout uses the lightest mechanism fitting the risk, not several stacked
+- `should-roll-out-high-risk-changes-progressively`: schema-affecting, auth, payment or irreversible changes are rolled out progressively, not at 100% at once
+- `must-give-each-step-hold-and-criteria`: each ramp step has an explicit hold duration and pass/fail criteria
+- `must-keep-schema-backward-compatible`: schema and data changes follow expand-then-contract, so old and new code both work against the store during the rollout
+- `must-define-health-gates-before-rollout`: quantitative health gates (error rate, p95/p99 latency, a business metric) against the baseline cohort are defined before the rollout starts
+- `should-roll-back-automatically`: a failed SLO gate or a fast error-budget burn triggers rollback without a human
+- `must-expose-single-kill-switch`: one action reverts exposure to the last-known-good state
+- `must-make-rollback-idempotent`: repeating a revert or re-application yields the same safe state with no duplicate side effects
+- `should-automate-routine-scoring-and-revert`: routine scoring and revert run automatically, with humans left the exceptions
+- `should-remove-rollout-flags`: rollout-only flags and their dead branches are removed once the change is at 100% and stable
+- `should-pause-rollouts-during-incidents`: new rollouts are held during an active incident or an exhausted error budget
+- `should-prefer-native-progressive-delivery`: native platform or orchestrator support is used before bespoke traffic-shifting
+- `should-pin-tool-version-in-runbook`: the runbook pins the tool and its version, and vendor specifics are not encoded elsewhere
+- `should-treat-vendor-adoption-stats-as-marketing`: no decision rests on single-vendor adoption stats

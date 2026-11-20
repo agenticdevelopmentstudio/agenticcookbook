@@ -1,0 +1,20 @@
+
+- **must-consume-window-insets**: When an app targets `targetSdk 35` (Android 15) or higher and runs on Android 15+, the app MUST consume `WindowInsets` so that content, controls, and the keyboard are never obscured.
+- **must-handle-window-insets**: Apps **MUST** handle window insets under edge-to-edge; do not assume system bars leave a content-safe area.
+- **must-not-rely-on-opt-out-attribute**: Apps **MUST NOT** rely on `android:windowOptOutEdgeToEdgeEnforcement` as a long-term fix, and apps **MUST NOT** depend on it. Treat it only as a one-release emergency stopgap, if at all.
+- **should-enable-edge-to-edge-in-oncreate**: For backward compatibility on Android 14 (API 34) and below, apps SHOULD call `enableEdgeToEdge()` in `onCreate()` so behavior is consistent across versions.
+- **should-prefer-safedrawing-insets**: Apps SHOULD prefer the `safeDrawing` inset type for general content; it composes `systemBars`, `displayCutout`, and `ime`.
+- **should-wrap-top-level-ui-in-scaffold**: In Jetpack Compose, top-level UI SHOULD be wrapped in `Scaffold`; it applies `safeDrawing` insets and exposes the consumed `innerPadding`.
+- **should-apply-scaffold-inner-padding**: Apps SHOULD **apply that padding** (the `Scaffold`'s `innerPadding`) — ignoring it reintroduces the bug.
+- **should-use-windowinsetspadding-for-manual-control**: For manual control in Jetpack Compose, apps SHOULD use `Modifier.windowInsetsPadding(...)` with the right inset type:
+  - `WindowInsets.safeDrawing` — default for scrollable/static content.
+  - `WindowInsets.systemBars` — status + navigation + caption bars only.
+  - `WindowInsets.ime` — keyboard; combine via `WindowInsets.safeDrawing` or `Modifier.imePadding()` for input fields.
+- **should-pad-items-not-whole-list**: Content SHOULD scroll **edge to edge** with the interactive/last items padded, e.g. apply `contentPadding` to a `LazyColumn` instead of padding the whole list, so content draws under the bars while items stay reachable.
+- **should-consume-insets-with-view-listener**: In Android Views, apps SHOULD set a listener on the relevant view and consume insets.
+- **should-use-ime-insets-for-keyboard**: Apps SHOULD use `WindowInsetsCompat.Type.ime()` for keyboard-aware layouts and SHOULD NOT hardcode bottom padding.
+- **should-install-compat-insets-dispatch**: For Android 10 (API 29) and below, apps SHOULD call `ViewGroupCompat.installCompatInsetsDispatch(rootView)` (androidx-core 1.16.0+) before consuming so sibling views still receive insets.
+- **should-set-fitssystemwindows-on-appbarlayout**: Many Material Components (`BottomAppBar`, `BottomNavigationView`, `NavigationRailView`, `NavigationView`) consume insets automatically; `AppBarLayout` does not — apps SHOULD add `android:fitsSystemWindows="true"` for its top inset.
+- **must-not-consume-insets-children-need**: A parent **MUST NOT** return `WindowInsetsCompat.CONSUMED` if child views also need the same insets — consuming stops dispatch downward.
+- **must-not-mix-fitssystemwindows-with-listeners**: Apps **MUST NOT** mix `fitsSystemWindows="true"` with manual inset listeners on the same view; pick one strategy per view.
+- **should-test-navigation-modes-cutout-and-keyboard**: Apps SHOULD be tested in both gesture and 3-button navigation, with a display cutout, and with the keyboard open.

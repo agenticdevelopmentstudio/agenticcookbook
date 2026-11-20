@@ -4,7 +4,7 @@
     "id": "3d970d6a-2d71-48f3-9f84-69c1d823d6e8",
     "title": "Accessibility from day one",
     "type": "guideline",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-03-27",
@@ -34,22 +34,26 @@
       "https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/",
       "https://www.w3.org/WAI/standards-guidelines/wcag/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "accessibility",
       "ui-implementation",
       "pre-pr"
     ]
   },
-  "synced": "171bbee2cc7d48e5",
+  "synced": "b463f7b6e36ac7d4",
   "parts": [
     {"part": "intro"},
-    {"part": "swift", "heading": "Swift"},
-    {"part": "kotlin", "heading": "Kotlin"},
-    {"part": "typescript", "heading": "TypeScript"},
-    {"part": "windows", "heading": "Windows"},
-    {"part": "typescript-2", "heading": "TypeScript"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "swift", "heading": "Swift", "role": "how-to"},
+    {"part": "kotlin", "heading": "Kotlin", "role": "how-to"},
+    {"part": "typescript", "heading": "TypeScript", "role": "how-to"},
+    {"part": "windows", "heading": "Windows", "role": "how-to"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
     {"part": "history", "heading": "Change History"}
   ]
 }

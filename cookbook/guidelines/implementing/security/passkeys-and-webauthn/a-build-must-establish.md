@@ -1,0 +1,24 @@
+
+- `should-offer-passkeys-as-primary`: a new app presents passkeys as the primary authenticator, or the build says why not
+- `should-target-webauthn-level-2`: the WebAuthn code targets the Level 2 Recommendation, or the build says why not
+- `should-not-depend-on-webauthn-level-3-features`: every Level 3 feature used has a working path without it, or the code says why not
+- `must-generate-random-challenge`: every challenge is cryptographically random, at least 16 bytes, session-bound and verified server-side on return
+- `should-set-rp-id-to-registrable-domain`: `rp.id` is the registrable domain, or the code says why not
+- `should-use-opaque-user-id`: `user.id` is an opaque, stable, non-PII handle, or the code says why not
+- `must-verify-registration-response`: registration verification checks challenge match, `origin`, `rp.id` hash, the UP flag and the signature over `authenticatorData`+`clientDataHash`
+- `should-store-credential-metadata`: each credential record stores id, public key, signature counter, transports and AAGUID, or the code says why not
+- `should-issue-fresh-challenge-per-attempt`: each authentication attempt issues a fresh challenge and verifies origin, `rp.id`, UP flag and signature, or the code says why not
+- `should-flag-non-increasing-counter`: a non-increasing counter after a non-zero one is flagged as possible cloning, or the code says why not
+- `should-prefer-discoverable-credentials`: registration requests discoverable credentials, or the code says why not
+- `should-default-to-synced-passkeys`: synced passkeys are the default for ordinary users, or the build says why not
+- `should-require-device-bound-for-admins`: admin/high-privilege accounts require a device-bound authenticator, or the build says why not
+- `should-encourage-two-authenticators`: users are prompted to register at least two authenticators, or the build says why not
+- `should-request-attestation-only-when-needed`: `attestation: "direct"` appears only with a named concrete requirement, or the code says why
+- `should-use-attestation-none-for-consumers`: consumer flows use `attestation: "none"`, or the code says why not
+- `should-make-passkeys-primary-factor`: passkeys are the primary factor and any password a fallback, or the build says why not
+- `should-not-rely-on-sms-otp`: SMS-OTP is at most a low-risk recovery step and never the sole step-up, or the build says why
+- `should-provide-account-recovery-path`: an explicit, rate-limited recovery path exists for users with no authenticator, or the build says why not
+- `must-allow-registering-additional-passkeys`: an authenticated session can always register another passkey
+- `must-not-reuse-or-omit-challenge-verification`: every ceremony verifies its own server-side challenge, with no reuse
+- `should-not-set-rp-id-outside-auth-origin`: `rp.id` covers the auth origin, or the code says why not
+- `should-not-treat-passkey-as-bearer-secret`: no code treats a passkey as a bearer secret or syncs an RP private key, or the code says why

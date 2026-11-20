@@ -1,0 +1,13 @@
+
+- `should-use-consistent-rest`: every endpoint is a REST resource with the API's shared conventions, or the code says why not
+- `should-follow-platform-api-guidelines`: details not settled here follow the Microsoft, Google and Zalando API guidelines, or the code says why not
+- `must-use-lowercase-hyphenated-urls`: every URL path segment is lowercase with hyphens
+- `must-use-plural-collection-nouns`: every collection path is a plural noun
+- `should-nest-urls-shallowly`: no path nests more than 2 levels, or the code says why
+- `must-not-put-verbs-in-urls`: no URL contains a verb
+- `must-not-use-trailing-slashes`: no URL ends in a trailing slash
+- `should-filter-and-sort-with-query-params`: filtering and sorting are query params, or the code says why not
+- `should-follow-http-method-semantics`: GET reads (200), POST creates (201 + Location), PUT fully replaces (200), PATCH partially updates (200), DELETE removes (204, no body)
+- `should-use-the-right-status-code`: every response's status code is the listed one for its outcome
+- `should-version-in-the-url-path`: the API version is the first path segment (`/v1/...`)
+- `should-bump-major-only-for-breaking-changes`: the major version changes only with a breaking change

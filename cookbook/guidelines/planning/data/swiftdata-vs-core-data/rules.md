@@ -1,7 +1,16 @@
 
-- The choice **MUST** be justified by OS-version floor, model complexity, and migration needs — never by framework novelty.
-- New greenfield apps with an iOS 17+ / macOS 14+ floor **SHOULD** use SwiftData.
-- Projects requiring deterministic, fully-controlled migrations or schema versioning **SHOULD** use Core Data, whose multi-stage migration tooling is more mature as of 2026.
-- Code targeting OS versions below the SwiftData floor **MUST** use Core Data.
-- A project **MUST NOT** rewrite a working Core Data stack into SwiftData purely to modernize; migrate only when a concrete need (new model work, concurrency cleanup) justifies the cost.
-
+- **must-justify-by-os-floor-complexity-and-migrations**: The choice **MUST** be justified by OS-version floor, model complexity, and migration needs — never by framework novelty.
+- **should-make-the-choice-deliberately**: The choice SHOULD be a **deliberate decision**, not a reach for the newest API.
+- **should-apply-the-decision-rows-in-order**: You SHOULD apply the decision rule's rows in order; the first matching row decides.
+- **should-default-to-swiftdata-when-no-row-forces-core-data**: When no row above forces Core Data, **SHOULD** default to SwiftData for new code.
+- **should-use-swiftdata-for-greenfield-ios-17-plus**: New greenfield apps with an iOS 17+ / macOS 14+ floor **SHOULD** use SwiftData.
+- **should-use-core-data-for-controlled-migrations**: Projects requiring deterministic, fully-controlled migrations or schema versioning **SHOULD** use Core Data, whose multi-stage migration tooling is more mature as of 2026.
+- **must-use-core-data-below-the-swiftdata-floor**: Code targeting OS versions below the SwiftData floor **MUST** use Core Data.
+- **must-not-rewrite-working-core-data-to-modernize**: A project **MUST NOT** rewrite a working Core Data stack into SwiftData purely to modernize; migrate only when a concrete need (new model work, concurrency cleanup) justifies the cost.
+- **should-prefer-core-data-for-tuning-and-scale**: Core Data SHOULD be preferred for fine-grained fetch tuning, batch operations at scale, and predictable performance on large datasets.
+- **should-define-models-with-the-model-macro**: You SHOULD define SwiftData models with the `@Model` macro on a Swift class — no `.xcdatamodeld` file or `NSManagedObject` subclass required.
+- **should-use-modelactor-for-background-work**: You SHOULD use `@ModelActor` for background work; it gives clearer actor-isolation boundaries under Swift 6 strict concurrency than Core Data's `perform` closures.
+- **must-verify-swiftdata-writes-persist**: **MUST** verify writes persist (fetch-after-save in tests) rather than assuming success, and pin behavior expectations to a tested OS revision.
+- **should-treat-unshipped-swiftdata-features-as-unavailable**: Commonly requested items (shared/public CloudKit sync, dynamic predicate adjustment) did **not** ship — you SHOULD treat them as unavailable, not roadmap guarantees.
+- **may-adopt-swiftdata-incrementally**: Teams **MAY** introduce SwiftData for new models in a Core Data app, or expose a Core Data stack to SwiftData, rather than performing a big-bang rewrite.
+- **must-keep-the-schema-compatible-across-layers**: When interoperating, the underlying schema **MUST** stay compatible across both layers; validate with migration tests before shipping.

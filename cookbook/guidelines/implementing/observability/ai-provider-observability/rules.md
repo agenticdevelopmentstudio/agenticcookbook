@@ -1,0 +1,9 @@
+
+- **structured-request-log**: Every AI API call MUST log: provider name, model ID, prompt token count, completion token count, total cost (computed from token counts and per-token price), latency in milliseconds, HTTP status, and request ID.
+- **must-version-prompt-templates**: Prompt templates MUST be versioned.
+- **should-reference-prompt-template-in-logs**: Logs SHOULD reference the prompt template ID and version, not the full prompt text (which may contain PII).
+- **cost-attribution**: Logs MUST include a cost-attribution tag (feature name, user action, or batch job ID) so costs can be traced to their source.
+- **rate-limit-tracking**: Rate limit headers (remaining, reset) SHOULD be logged to enable proactive throttling.
+- **error-classification**: AI provider errors MUST be classified: rate-limit, context-length-exceeded, content-filter, server-error, timeout. Each category has different retry and fallback behavior.
+- **no-pii-in-prompt-logs**: Full prompt text MUST NOT be logged in production. Production logs SHOULD use prompt template IDs instead.
+- **may-log-full-prompts-in-controlled-environments**: In development or staging, full prompts MAY be logged if the environment is access-controlled.

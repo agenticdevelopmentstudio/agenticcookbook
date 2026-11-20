@@ -1,0 +1,116 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "**tier-by-severity**: Page on fast burn; open a ticket on slow burn.",
+      "to": "tier-by-severity",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "tier-by-severity keeps paging on fast burn and ticketing on slow burn at SHOULD, with the starting burn-rate table.",
+        "pin": "ec993040d0d1c7b0442899702ca3b702b373f4d1fc75ee6ae40f8fde4890eba6"
+      }
+    },
+    {
+      "sentence": "**scale-windows-to-your-SLO**: These windows and rates assume a 30-day, 99.9% SLO.",
+      "to": "scale-windows-to-your-slo",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "scale-windows-to-your-slo keeps the 30-day, 99.9% assumption and the MUST to recompute when window or target differs, with its reason.",
+        "pin": "0a71fbd57a170e513a65bb7b0d60ab3f0deed093288e30fa3aa6e53688e480be"
+      }
+    },
+    {
+      "sentence": "Alerting on a single fixed error-count threshold (no relation to budget; floods or misses).",
+      "to": "should-not-alert-on-fixed-error-count",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-alert-on-fixed-error-count turns the anti-pattern into a SHOULD NOT and keeps both reasons (no relation to budget; floods or misses).",
+        "pin": "c928efa3abda533c7066904cb46797cd44d457b3852f5ce0df835b00a90d5adc"
+      }
+    },
+    {
+      "sentence": "One global SLO covering unrelated journeys (masks a broken critical path behind healthy traffic).",
+      "to": "should-not-use-one-global-slo",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-use-one-global-slo turns the anti-pattern into a SHOULD NOT and keeps the masked-critical-path reason.",
+        "pin": "678a6c3a602f44de857357ae5dd990e94dc88f0c62a27043628a139b8b8f2cd4"
+      }
+    },
+    {
+      "sentence": "SLOs measured only inside the service, missing client-side and edge failures.",
+      "to": "should-not-measure-slos-only-inside-service",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-not-measure-slos-only-inside-service turns the anti-pattern into a SHOULD NOT and keeps the missed client-side and edge failures.",
+        "pin": "bfdbb7858b2bc9d882a1334022333ec5dae64639c81ba9fb1a0c181fdd3f14c0"
+      }
+    },
+    {
+      "sentence": "Define **multiple thresholds** to capture both typical and tail experience, e.g.",
+      "to": "define-multiple-latency-thresholds",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "define-multiple-latency-thresholds keeps multiple latency thresholds for typical and tail experience with the 90%/99% example, at SHOULD.",
+        "pin": "e9d061b45b720cedbdaa79cae4a543627a05c2a01b7ef562a0f4b0e4fa1cd3a2"
+      }
+    },
+    {
+      "sentence": "**SLOs-are-targets-not-100**: SLOs MUST be below 100%. 100% is the wrong target — it forbids all change and is unobservable.",
+      "to": "slos-are-targets-not-100",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "slos-are-targets-not-100 keeps the MUST that SLOs be below 100% and both reasons (forbids all change, unobservable).",
+        "pin": "12ecba3c2497416e6d863e5b74de9bd999d82a08747111770dcce7c30561d611"
+      }
+    },
+    {
+      "sentence": "Choose the lowest reliability users won't notice.",
+      "to": "choose-lowest-unnoticed-reliability",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "choose-lowest-unnoticed-reliability keeps choosing the lowest reliability users won't notice, at SHOULD.",
+        "pin": "88a9ba77e6279a2567bcbe988a712ae89c5d923d25edccf85fd2810962b82ebb"
+      }
+    },
+    {
+      "sentence": "**user-facing-needs-an-SLO**: Every user-facing service SHOULD have at least one SLO with an owner.",
+      "to": "user-facing-needs-an-slo",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "user-facing-needs-an-slo keeps every user-facing service having at least one owned SLO, at SHOULD.",
+        "pin": "3a9fb85c8dcfeb107164d91b55b0202367b2efd06685bb05c966baf4a10e6252"
+      }
+    },
+    {
+      "sentence": "**start-from-data**: Set the initial SLO from observed performance, then tighten deliberately.",
+      "to": "start-from-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "start-from-data keeps setting the initial SLO from observed performance and tightening deliberately, at SHOULD.",
+        "pin": "3b2060e96b99a54f7b01213035b33c5a5da57bd525cda8e9bebadc7fee8724d5"
+      }
+    },
+    {
+      "sentence": "Do not promise a number you have never measured.",
+      "to": "start-from-data",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "start-from-data keeps not promising a never-measured number, at SHOULD NOT.",
+        "pin": "7417c2c266a48901b8268e3ac87ed961377696ccfea618271e1586160bc6fddf"
+      }
+    }
+  ],
+  "obsolete": []
+}

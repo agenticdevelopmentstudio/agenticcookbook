@@ -1,0 +1,18 @@
+
+- `must-not-trust-client-input`: every client-supplied value is checked on the server before use
+- `must-duplicate-validation-server-side`: every client-side validation has a matching server-side validation
+- `should-prefer-allowlists-over-denylists`: every validator defines the valid form (an allowlist), or the code says why it uses a denylist
+- `should-validate-sanitize-escape-in-order`: input is validated, then sanitized, then escaped, or the code says why not
+- `must-use-parameterized-queries`: every query uses bound parameters
+- `must-not-concatenate-input-into-queries`: no query concatenates or interpolates user input
+- `should-encode-output-per-context`: every output is encoded for its context (HTML, URL, JS), or the code says why not
+- `should-use-framework-auto-escaping`: output goes through framework auto-escaping, and each bypass is named, or the code says why not
+- `must-sanitize-before-raw-html-insertion`: every raw HTML insertion receives input sanitized by a library like DOMPurify
+- `must-validate-upload-mime-server-side`: every upload's MIME type is validated server-side, beyond its extension
+- `should-limit-upload-size`: every upload endpoint has a size limit, or the code says why not
+- `should-store-uploads-outside-web-root`: uploads are stored outside web root, or the code says why not
+- `must-not-serve-uploads-as-uploaded`: uploads are served under a generated name from a separate origin
+- `must-validate-at-deserialization-boundary`: every Server Action argument and serialized request body is schema-validated and type-checked before use
+- `must-not-embed-secrets-in-server-rendered-output`: no server-rendered output contains secrets, credentials or internal-only data
+- `should-rate-limit-server-render-endpoints`: render and server-action endpoints are rate-limited, or the code says why not
+- `must-pin-patched-framework-version`: the rendering framework is pinned to a version that includes current security patches for its serialization boundary

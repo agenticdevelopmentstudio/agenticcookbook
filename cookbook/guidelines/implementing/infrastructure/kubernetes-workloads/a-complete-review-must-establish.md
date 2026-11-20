@@ -1,0 +1,22 @@
+
+- `should-not-default-to-kubernetes`: whether a measured need justifies Kubernetes over a PaaS, container service or VM
+- `should-use-managed-control-plane`: whether the control plane is managed
+- `must-declare-requests-and-memory-limits`: whether every container declares CPU and memory requests and a memory limit
+- `should-set-memory-request-equal-to-limit`: whether memory requests equal memory limits
+- `may-omit-cpu-limit`: whether CPU limits on latency-sensitive workloads were weighed against throttling
+- `must-always-set-cpu-request`: whether every container sets `requests.cpu`
+- `should-assign-priority-class`: whether critical workloads carry a `priorityClass`
+- `should-use-startup-probe-for-long-init`: whether long-init apps use a `startupProbe`
+- `must-define-readiness-probe`: whether every serving container defines a `readinessProbe`
+- `should-define-liveness-probe`: whether a cheap `livenessProbe` distinct from readiness is defined
+- `must-keep-probes-lightweight`: whether every probe is lightweight and dependency-free where possible
+- `should-use-rolling-update`: whether rollouts use `RollingUpdate` with explicit `maxUnavailable` and `maxSurge`
+- `should-set-min-ready-seconds`: whether `minReadySeconds` is set
+- `must-define-pod-disruption-budget`: whether each workload that needs availability has a `PodDisruptionBudget`
+- `should-spread-replicas`: whether replicas spread across nodes and zones
+- `should-harden-security-context`: whether pods run with the hardened `securityContext`
+- `should-enforce-pod-security-admission`: whether namespaces enforce Pod Security Admission `restricted`
+- `must-not-mount-default-service-account-token`: whether any pod mounts the default ServiceAccount token without calling the API server
+- `should-isolate-with-namespaces-and-labels`: whether workloads are namespaced and carry `app.kubernetes.io/*` labels
+- `should-autoscale-stateless-with-hpa`: whether stateless workloads scale with an HPA paired with cluster autoscaling
+- `should-validate-against-own-requirements`: whether the setup was validated against the team's own regulatory and threat-model requirements

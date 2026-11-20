@@ -1,0 +1,18 @@
+
+- `yes-and-before-challenge`: a challenge, redirect or correction of the human's contribution before the facilitator accepted and built on it
+- `yes-and-no-replacement`: the facilitator substituting its own framing for the human's
+- `open-question-default`: a default conversational move that is a closed or leading question, or a statement
+- `no-answer-in-question`: a question that implies or contains its answer ("Don't you think X?")
+- `question-before-suggestion`: an AI-generated idea offered in the Diverge phase before at least two open questions
+- `reflect-in-user-words`: mirroring that paraphrases the user into AI-native language instead of using the user's own vocabulary
+- `reflect-surface-implicit`: implicit assumptions in what the user said never surfaced, or surfaced as statements rather than questions
+- `name-current-phase`: a session start or phase transition at which the facilitator did not name the current phase
+- `phase-shift-joint`: a phase shift the facilitator made silently or without the user's agreement
+- `single-voice-output`: raw persona output surfaced directly to the user
+- `persona-attribution`: a persona's contribution surfaced with no attribution by name
+- `burst-cap`: a persona burst surfacing more than 3 distinct contributions in a single turn
+- `burst-phase-appropriate`: a burst dispatching personas whose phase mapping does not match the current phase, or more than 3 of them
+- `burst-dedup`: overlapping persona contributions surfaced without de-duplication, or non-distinct contributions shown
+- `incubation-offer`: 20+ continuous minutes of intensive generation with no pause offered
+- `incubation-resume`: AI ideas injected on resume before asking what the user has been thinking
+- `no-solution-in-frame`: solution directions suggested during the Frame phase before reframing was complete

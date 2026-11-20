@@ -1,0 +1,22 @@
+
+- **should-not-default-to-kubernetes**: Kubernetes adds substantial operational surface (control plane, networking, RBAC, upgrades). You **SHOULD NOT** default to it. Prefer a managed PaaS, container service, or single VM until you have a measured need — multi-service orchestration, autoscaling, or multi-team self-service (per YAGNI).
+- **should-use-managed-control-plane**: When the need justifies it, **SHOULD** use a managed control plane (e.g., EKS, GKE, AKS) rather than self-hosting, to shift undifferentiated operational load.
+- **must-declare-requests-and-memory-limits**: Every container **MUST** declare CPU and memory `requests` (for scheduling) and memory `limits` (to bound usage). Without requests the scheduler cannot place pods predictably; without a memory limit a leak can evict neighbors.
+- **should-set-memory-request-equal-to-limit**: You SHOULD set `requests.memory == limits.memory` for predictable, non-burstable memory.
+- **may-omit-cpu-limit**: For CPU, **MAY** omit `limits.cpu` to avoid throttling latency-sensitive workloads.
+- **must-always-set-cpu-request**: Even when `limits.cpu` is omitted, you MUST always set `requests.cpu`.
+- **should-assign-priority-class**: **SHOULD** assign a `priorityClass` to critical workloads so they survive node pressure.
+- **should-use-startup-probe-for-long-init**: A `startupProbe`, which gates slow-starting apps before other probes run, **SHOULD** be used for apps with long init.
+- **must-define-readiness-probe**: A `readinessProbe` **MUST** be defined; failing it removes the pod from Service endpoints and stops traffic without a restart.
+- **should-define-liveness-probe**: A `livenessProbe`, which restarts a wedged container, **SHOULD** be defined; keep it cheap and distinct from readiness.
+- **must-keep-probes-lightweight**: Each probe **MUST** be lightweight and dependency-free where possible — a liveness probe that checks a database will cascade failures.
+- **should-use-rolling-update**: **SHOULD** use the default `RollingUpdate` strategy with explicit `maxUnavailable` and `maxSurge`.
+- **should-set-min-ready-seconds**: You SHOULD set `minReadySeconds` so new pods prove healthy before old ones retire.
+- **must-define-pod-disruption-budget**: **MUST** define a `PodDisruptionBudget` for any workload that needs availability during voluntary disruptions (node drains, upgrades).
+- **should-spread-replicas**: **SHOULD** spread replicas with `topologySpreadConstraints` across nodes and zones.
+- **should-harden-security-context**: Pods **SHOULD** run with a hardened `securityContext`: `runAsNonRoot: true`, `readOnlyRootFilesystem: true`, `allowPrivilegeEscalation: false`, drop all Linux capabilities, and set a `seccompProfile` of `RuntimeDefault`.
+- **should-enforce-pod-security-admission**: **SHOULD** enforce baseline guarantees at the namespace level with Pod Security Admission (`restricted` profile) as of Kubernetes 1.25+.
+- **must-not-mount-default-service-account-token**: **MUST NOT** mount the default ServiceAccount token unless the workload calls the API server.
+- **should-isolate-with-namespaces-and-labels**: **SHOULD** isolate workloads with namespaces and apply the recommended `app.kubernetes.io/*` labels for selection and tooling.
+- **should-autoscale-stateless-with-hpa**: **SHOULD** scale stateless workloads with a `HorizontalPodAutoscaler` driven by CPU, memory, or custom metrics; pair it with cluster autoscaling so capacity follows demand.
+- **should-validate-against-own-requirements**: Security and isolation guidance here is engineering practice, not a compliance certification; you SHOULD validate against your own regulatory and threat-model requirements.

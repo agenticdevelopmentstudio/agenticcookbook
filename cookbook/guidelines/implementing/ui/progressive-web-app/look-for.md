@@ -1,0 +1,24 @@
+
+- `should-ship-manifest-and-service-worker`: an installable app with no Web App Manifest, or no service worker with an explicit caching strategy
+- `must-account-for-ios-safari-limitations`: an installable app that assumes behavior iOS/Safari does not provide
+- `should-not-add-service-worker-without-installability`: a service worker added for its own sake where installability is not a requirement
+- `must-serve-over-https`: an installable app served over plain HTTP anywhere but `localhost` in development
+- `must-link-valid-manifest`: an installable app with no manifest link, or a manifest that does not validate
+- `must-register-service-worker-for-offline-or-push`: offline behavior or push in scope with no service worker registered
+- `must-include-manifest-core-fields`: a manifest missing `name`/`short_name` or `start_url`, or with `display` other than `standalone`, `fullscreen` or `minimal-ui`
+- `must-include-192-and-512-icons`: a manifest `icons` list without both a 192x192 and a 512x512 entry
+- `should-include-maskable-icon`: a manifest with no `maskable` icon
+- `must-include-manifest-id`: a manifest with no `id`
+- `should-validate-installability-with-tools`: installability asserted by hand rather than validated with Lighthouse or the DevTools Application panel
+- `should-register-service-worker-after-load`: a service worker registered before the page has loaded
+- `should-choose-caching-strategy-per-request-class`: one caching strategy applied to every request
+- `must-version-cache-and-delete-stale-caches`: an unversioned cache, or an `activate` handler that leaves stale caches in place
+- `should-precache-app-shell`: an app shell not precached, so navigations fail offline
+- `should-prefer-maintained-service-worker-library`: hand-rolled fetch handlers on a non-trivial surface where a maintained library (Workbox) would serve
+- `should-reverify-ios-constraints-per-release`: iOS / Safari constraints relied on without re-verifying them for the current release
+- `must-request-push-permission-after-install`: notification permission requested on first page load, outside a user gesture, or before Home Screen install
+- `must-provide-in-app-install-guidance`: a programmatic install button on iOS, or no in-app "Share -> Add to Home Screen" guidance
+- `should-not-depend-on-background-sync`: code that depends on Background Sync or Periodic Background Sync
+- `should-queue-writes-in-indexeddb`: writes that are lost rather than queued in IndexedDB and flushed on next foreground
+- `must-treat-client-storage-as-cache`: client storage (Cache, IndexedDB) treated as the source of truth
+- `should-confirm-push-in-target-regions`: Web Push assumed to work uniformly, without confirming behavior in target regions

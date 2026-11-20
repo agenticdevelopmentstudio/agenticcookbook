@@ -1,0 +1,46 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Before adding abstraction, ask: \"Am I braiding two concerns together?\"",
+      "to": "should-ask-whether-concerns-are-braided",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps the before-adding-abstraction condition and the braiding-two-concerns question, at SHOULD.",
+        "pin": "ee25ca10424cda41e418c19ddd027a006a94147a4913fd4f31706a34ca44e13e"
+      }
+    },
+    {
+      "sentence": "Favor constructs that do one thing over constructs that feel convenient",
+      "to": "should-favor-single-purpose-constructs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps at SHOULD favoring constructs that do one thing over constructs that feel convenient.",
+        "pin": "406b8db9b56497fee859937a22ea83ebcd6b61be456c7f9eebac91dd271c434a"
+      }
+    },
+    {
+      "sentence": "Complexity is never removed later — it compounds.",
+      "to": "should-resist-complexity-at-introduction",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps as its reason that complexity is never removed later and compounds.",
+        "pin": "390b74128ed76ae62cdcb6a917698a1071efde380d37f5c9010a424cc17f0951"
+      }
+    },
+    {
+      "sentence": "Resist it at introduction time",
+      "to": "should-resist-complexity-at-introduction",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule keeps resisting complexity at introduction time at SHOULD.",
+        "pin": "f3558941688caae75c60ca3195e11920d8772c6bd4fd9943ae6f5cf91a90a232"
+      }
+    }
+  ],
+  "obsolete": []
+}

@@ -1,0 +1,19 @@
+
+- `serverless-pooler`: every serverless / autoscaling function's connection string points at a pooler
+- `many-instance-pooler`: a backend of ~10+ instances or large internal pools connects through a pooler, or the work says why not
+- `single-instance-exception`: every direct connection comes from a single long-lived server with a bounded internal pool
+- `prefer-transaction-mode`: every high fan-out pooler runs in transaction mode, or the work says why not
+- `session-mode-fallback`: every session-mode pool names the session-scoped feature it serves, or the work says why
+- `no-session-set`: no transaction-pooled code issues a session-level `SET` / `RESET`; per-transaction GUCs use `SET LOCAL`
+- `no-listen-notify`: no transaction-pooled code uses `LISTEN` / `NOTIFY`
+- `no-session-advisory-locks`: no transaction-pooled code takes `pg_advisory_lock`; advisory locks are `pg_advisory_xact_lock`
+- `no-temp-tables`: no transaction-pooled code uses a session temporary table or a `WITH HOLD` cursor that outlives a transaction
+- `prepared-statements-caveat`: no transaction-pooled code issues `PREPARE`/`DEALLOCATE` as SQL text
+- `verify-pooler-prepared-statement-support`: the pooler version and the driver's extended-protocol use were checked against the pooler's docs, or the work says why not
+- `disable-driver-side-prepare`: where pooler support is unknown, the driver/ORM is set to avoid named server-side prepared statements, or the work says why not
+- `size-the-pool`: `default_pool_size` is below `max_connections` with headroom for migrations, admin and direct connections, or the work says why not
+- `total-connections-under-max`: the sum of server connections across all poolers is under `max_connections`
+- `separate-pool-for-session-work`: migrations, `LISTEN`/`NOTIFY` and admin tasks use a separate session-mode or direct connection string, or the work says why not
+- `fail-fast-on-exhaustion`: client-side connection acquisition timeouts are short, or the work says why not
+- `staging-transaction-mode-run`: the full transaction set ran against a transaction-mode pooler in staging with no `prepared statement does not exist` / `InvalidSqlStatementName` errors, or the work says why not
+- `grep-for-session-state`: the codebase was searched for `SET ` (non-`LOCAL`), `LISTEN`, `pg_advisory_lock(` and session temp tables before deploying, or the work says why not

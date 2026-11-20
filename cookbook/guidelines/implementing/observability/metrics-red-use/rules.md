@@ -1,0 +1,16 @@
+
+- **should-instrument-with-red-and-use**: Code SHOULD instrument every request-serving **service** with RED (Rate, Errors, Duration) and every consumable **resource** with USE (Utilization, Saturation, Errors).
+- **rate-metric**: Each service **MUST** emit request rate as a counter (requests over time), labeled by route/operation.
+- **errors-metric**: Each service **MUST** emit a count of failed requests as a separate counter (or as an `error`/`status` label on the rate counter) so error ratio is computable.
+- **duration-metric**: Each service **MUST** emit request duration as a histogram (not just a mean) so percentiles (p50/p95/p99) are derivable; means hide tail latency.
+- **error-definition**: Each service **MUST** document what counts as an error (e.g., HTTP 5xx, gRPC non-OK, business-level failure) — error ratio is meaningless without an explicit definition.
+- **cardinality-limit**: Labels **MUST NOT** include unbounded values (raw user IDs, full URLs, request bodies). Use bounded route templates (`/users/{id}`, not `/users/42`) to keep time-series cardinality manageable.
+- **resource-coverage**: Resources that can become a bottleneck **SHOULD** be monitored with all three USE dimensions.
+- **must-not-omit-saturation**: Saturation is the most predictive of impending failure and **MUST NOT** be silently omitted.
+- **saturation-signal**: Saturation **SHOULD** be a measurable queue depth or wait metric, not inferred solely from high utilization — 100% utilization without saturation is healthy throughput.
+- **naming-convention**: Metric names **SHOULD** follow one consistent scheme across services (the cookbook default is OpenTelemetry semantic conventions, e.g. `http.server.request.duration`) so the same query works everywhere and dashboards compose.
+- **unit-discipline**: Durations **SHOULD** be recorded in seconds and sizes in bytes (base units), with the unit stated in metric metadata; mixing `ms` and `s` for the same concept breaks aggregation.
+- **shared-labels**: Cross-cutting labels (`service`, `environment`, `version`) **SHOULD** be applied uniformly so RED and USE signals from the same deployment join cleanly during incident analysis.
+- **should-not-record-duration-as-gauge**: Code SHOULD NOT record duration as a gauge or average instead of a histogram (loses percentiles).
+- **should-not-use-high-cardinality-labels**: Code SHOULD NOT use high-cardinality labels that explode the time-series count and cost.
+- **should-not-track-utilization-without-saturation**: Code SHOULD NOT track utilization while ignoring saturation, then being surprised by latency cliffs.

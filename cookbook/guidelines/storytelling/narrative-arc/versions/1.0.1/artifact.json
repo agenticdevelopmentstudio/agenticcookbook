@@ -1,0 +1,40 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "064250f4-a30a-4240-9f2c-010012419f25",
+    "title": "Narrative Arc",
+    "type": "guideline",
+    "version": "1.0.1",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-06-29",
+    "modified": "2026-10-03",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Reconstruct the build journey over time from the actual record — timeline, pivots, and rough spots — grounded in git history and decisions, never a narrated guess.",
+    "platforms": [],
+    "tags": [
+      "storytelling",
+      "narrative",
+      "arc"
+    ],
+    "related": [
+      "0bfc8dc6-94ac-4bf4-8601-621ee9086487",
+      "21e9045a-1881-42bd-92d1-57a006638626"
+    ],
+    "triggers": [],
+    "approved-by": "approve-artifact v1.0.0",
+    "approved-date": "2026-10-03",
+    "depends-on": [],
+    "references": []
+  },
+  "synced": "b421f5390eb0683f",
+  "parts": [
+    {"part": "intro"},
+    {"part": "timeline", "heading": "Timeline"},
+    {"part": "pivots", "heading": "Pivots"},
+    {"part": "rough-spots", "heading": "Rough Spots"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,17 @@
+
+- `must-not-assume-a-single-regime`: the applicability matrix lists every regime covering the product's users
+- `should-pin-and-recheck-the-applicability-matrix`: the applicability matrix carries a dated revision re-checked within a quarter, or the work says why not
+- `must-record-a-lawful-basis`: a recorded lawful basis or notice/opt-out posture predates collection
+- `must-collect-only-needed-data`: every collected field maps to the stated purpose
+- `should-default-to-not-collecting`: no field is collected by default, or the work says why
+- `must-limit-use-to-disclosed-purposes`: every use of the data matches a purpose disclosed at collection
+- `must-define-retention-per-data-type`: each data type has a retention period and an expiry path that deletes or anonymizes
+- `must-disclose-at-the-point-of-collection`: a plain-language disclosure of what, why and with whom appears at the point of collection
+- `should-design-for-data-subject-rights`: access, correction, deletion and opt-out paths exist, or the work says why not
+- `must-identify-controller-or-processor-role`: each system's controller or processor role is recorded in the design
+- `must-govern-processors-with-a-dpa`: each processor relationship has a written DPA
+- `should-determine-applicable-regimes-before-collecting`: the applicable regimes are determined from user geography and data types before collection, or the work says why not
+- `should-confirm-the-lawful-basis-before-collecting`: the lawful basis or posture is confirmed and recorded before collection, or the work says why not
+- `should-confirm-minimization-retention-and-deletion-per-field`: each field has confirmed minimization, retention and a deletion path, or the work says why not
+- `should-consult-counsel`: counsel was consulted for binding interpretation, or the work says why not
+- `must-not-treat-this-as-legal-sign-off`: the work does not present this guideline as legal sign-off

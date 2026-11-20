@@ -1,0 +1,176 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "If the operation is repeatable and has a known outcome, use a shell script.",
+      "to": "should-use-shell-scripts-for-deterministic-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both conditions (repeatable, known outcome).",
+        "pin": "b531dcdad37107951bd250c9a14a962739e5c9c11719ba99ac1b8c1e09a5cb01"
+      }
+    },
+    {
+      "sentence": "**In skills**: Extract deterministic steps into shell scripts in the skill's directory.",
+      "to": "should-extract-deterministic-skill-steps-into-scripts",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD, scoped to skills, with the location (the skill's directory).",
+        "pin": "15b334b634671bed472a936ce3b1fdb66c07e5f4f7a58bf03c33f6db754c5991"
+      }
+    },
+    {
+      "sentence": "The skill invokes the script via Bash, then uses the model for the steps that need judgment.",
+      "to": "1-use-shell-scripts-for-deterministic-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The How to Apply list in part 1-use-shell-scripts-for-deterministic-work carries the sentence word for word under In skills.",
+        "pin": "9b640de58f784f08cb637eb550ca5ae984d3a364a28afb35258626efada22e28"
+      }
+    },
+    {
+      "sentence": "Use PreToolUse hooks for validation, PostToolUse hooks for formatting and linting.",
+      "to": "should-use-hooks-for-validation-and-formatting",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with both hook roles: PreToolUse for validation, PostToolUse for formatting and linting.",
+        "pin": "947135fd2128e45bfd4004c57061ed69f5d97c370f34fe537cc5656512836451"
+      }
+    },
+    {
+      "sentence": "**In agents**: When an agent's task includes deterministic subtasks, have it call shell scripts rather than reasoning through known operations.",
+      "to": "should-have-agents-call-scripts-for-deterministic-subtasks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with its condition (the agent's task includes deterministic subtasks) and the contrast with reasoning through known operations.",
+        "pin": "b1c7071202d483bfa72b1d008b0d215319dd2bae453945a33eb991fb8916d30c"
+      }
+    },
+    {
+      "sentence": "An agent that runs `wc -l` is faster than one that reads a file and counts lines.",
+      "to": "1-use-shell-scripts-for-deterministic-work",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The How to Apply list in part 1-use-shell-scripts-for-deterministic-work carries the example word for word under In agents.",
+        "pin": "f1bd568ef23746bbb9357f82ede22f4af3b0ceffb18db820ea73422cbba9b0af"
+      }
+    },
+    {
+      "sentence": "When a subtask is simple enough for a smaller model, consider downgrading.",
+      "to": "should-consider-downgrading-simple-subtasks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the condition (subtask simple enough for a smaller model).",
+        "pin": "5e07e51799fbf9aec8e6d44d33ea56b484cd6562d46557985ace38214e8784d5"
+      }
+    },
+    {
+      "sentence": "But measure — don't assume.",
+      "to": "should-measure-not-assume",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: a downgrade is measured, and its benefit not assumed, both at SHOULD.",
+        "pin": "d1de511247048ac2ce34171b47ba13b7bb7b7066ccfd091a9e03dd6cf8b2f3ef"
+      }
+    },
+    {
+      "sentence": "Before selecting a smaller model for a subtask, verify three things:",
+      "to": "should-verify-three-things-before-downgrading",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The lead-in is kept at SHOULD and names the three items; the detailed criteria stay in part 2-model-selection-tradeoffs.",
+        "pin": "5c3a00f94f4dc1b44f24ac882085e88120fdaf02cdec840096c747761914eff5"
+      }
+    },
+    {
+      "sentence": "Load only what's needed for the current step.",
+      "to": "should-load-only-what-the-current-step-needs",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: load only what the current step needs.",
+        "pin": "b4d03fbda3ff79845e54dc9d4de1f3dc6901e0ff2a3ecc1ef5d1c0396a608e7a"
+      }
+    },
+    {
+      "sentence": "Never loaded unconditionally.",
+      "to": "must-not-load-deep-reference-unconditionally",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rule names the subject (Tier 3 deep reference: research, full cookbook) and strengthens 'never' to MUST NOT.",
+        "pin": "1f5051cadaab3bc01b99a632b136476002b4617e89c7b1521c25df474705e2fe"
+      }
+    },
+    {
+      "sentence": "**Rules**: Rules MUST be kept to the minimum directive.",
+      "to": "must-keep-rules-to-the-minimum-directive",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unchanged at MUST: rules are kept to the minimum directive.",
+        "pin": "77e20d768f7646373c0ff790019f2dc0c34c8605564519c9e2953cefdf40b780"
+      }
+    },
+    {
+      "sentence": "Instead of inlining a 38-item checklist, write a one-line pointer: \"Run the checklist in `<path>` before marking complete.\" The checklist loads once when needed, not on every turn.",
+      "to": "3-progressive-disclosure-of-context",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Part 3-progressive-disclosure-of-context carries the checklist-pointer example and its reason word for word.",
+        "pin": "bb4484dd1c290fe7aa16eabdbb85f688c371f3ec1a054e37c1cea2ea667ac4af"
+      }
+    },
+    {
+      "sentence": "**Skills**: Skills SHOULD structure each step to load its own context.",
+      "to": "should-load-context-per-skill-step",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unchanged at SHOULD: each skill step loads its own context.",
+        "pin": "ec3551e6cf1072dd874e3827b5e6acb406ea8da97889b42ed089147d27740683"
+      }
+    },
+    {
+      "sentence": "Step 3 reads the guidelines it needs when step 3 begins.",
+      "to": "3-progressive-disclosure-of-context",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Part 3-progressive-disclosure-of-context carries the example word for word.",
+        "pin": "789591e1f58014dc1317914580cae9e6beab02caa2459bb4a6f3a2f874bbb5f0"
+      }
+    },
+    {
+      "sentence": "**Agents**: Agents MUST receive narrow, specific instructions for one task.",
+      "to": "must-give-agents-narrow-instructions",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unchanged at MUST: narrow, specific instructions for one task.",
+        "pin": "e5a28a26d7f8ae3160dae8b098415608836c91e7792e03525fcdc545285ece92"
+      }
+    },
+    {
+      "sentence": "**CLAUDE.md**: CLAUDE.md SHOULD contain only project identity, directory structure, and workflow pointers.",
+      "to": "should-keep-claude-md-to-identity-structure-and-pointers",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Unchanged at SHOULD with all three permitted contents.",
+        "pin": "b94800b11445efe4f9dc1685cef24b9eb8eb8786fb8ce1cd1b2d416dfa2d9a8c"
+      }
+    }
+  ],
+  "obsolete": []
+}

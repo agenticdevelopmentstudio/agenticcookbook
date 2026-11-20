@@ -1,0 +1,69 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Invalid state should be detected and surfaced immediately at the point of origin, not propagated silently:",
+      "to": [
+        "intro",
+        "should-surface-invalid-state-at-origin"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "intro keeps the sentence and should-surface-invalid-state-at-origin keeps its 'should' at SHOULD: detect and surface immediately at origin, not propagate silently.",
+        "pin": "97618ad72ca7a71f69de9d10f9a7da990918dbff473e6abf5d8c2574415690c3"
+      }
+    },
+    {
+      "sentence": "Use assertions and preconditions in debug builds",
+      "to": "should-assert-preconditions-in-debug",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-assert-preconditions-in-debug keeps assertions and preconditions in debug builds, at SHOULD.",
+        "pin": "3953371f91e4e06a09da87e0840d4a7e1fde6b9a858733cc2141a91076565c16"
+      }
+    },
+    {
+      "sentence": "Validate inputs at system boundaries",
+      "to": "should-validate-inputs-at-boundaries",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-validate-inputs-at-boundaries keeps validating inputs at system boundaries, at SHOULD.",
+        "pin": "c808937b4f547c000aaa5227eb5f95332a2808f2a0df54bf4260bca32835d861"
+      }
+    },
+    {
+      "sentence": "Return typed errors rather than swallowing exceptions",
+      "to": "should-return-typed-errors",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-return-typed-errors keeps returning typed errors rather than swallowing exceptions, at SHOULD.",
+        "pin": "5e75776e7e1d877a3c0259dc026c87b5513788f2716b653ce46106f75490d3ce"
+      }
+    },
+    {
+      "sentence": "Never use empty catch blocks",
+      "to": "must-not-use-empty-catch-blocks",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "must-not-use-empty-catch-blocks keeps 'never' as MUST NOT use empty catch blocks.",
+        "pin": "f082c77842a437d853e42fd29a42f30c8d9d66a9bd0af3e3416025ea9664d28a"
+      }
+    },
+    {
+      "sentence": "In production, fail gracefully with clear messages; in debug, fail loudly",
+      "to": "should-fail-gracefully-in-production-loudly-in-debug",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "should-fail-gracefully-in-production-loudly-in-debug keeps both halves: graceful with clear messages in production, loud in debug, each at SHOULD.",
+        "pin": "ad16934bc3b65a3a14f69b35f96e5a136662e884014f16b893b9991643f66d2e"
+      }
+    }
+  ],
+  "obsolete": []
+}

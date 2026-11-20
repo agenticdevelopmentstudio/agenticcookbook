@@ -1,0 +1,76 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Use the stable type-safe APIs in `androidx.navigation:navigation-compose` (type-safe routes are stable as of 2.8.0; pin a current `2.9.x` build and apply the `kotlinx-serialization` Gradle plugin).",
+      "to": "should-use-stable-type-safe-navigation-apis",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with the navigation-compose package, the 2.8.0 stability note, the 2.9.x pin and the kotlinx-serialization plugin requirement.",
+        "pin": "6b05a28e0a0b69e0dd0ace8cb2b2229ffa687caac3f95d80d1d6539bf92b7a6f"
+      }
+    },
+    {
+      "sentence": "Build the graph with the type-safe builders and navigate by passing a route instance:",
+      "to": "should-build-graph-with-type-safe-builders",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD: build with the type-safe builders and navigate by passing a route instance; the NavHost/composable<T> example it introduced stays in the Nav2 part.",
+        "pin": "6a3fba6485c7415b9c29b2e9c63cc903273aaa28fa479e89aefd3c01a0bc7e35"
+      }
+    },
+    {
+      "sentence": "Pin a current `1.x` release before relying on it; APIs and supporting libraries (e.g.",
+      "to": "should-pin-nav3-and-recheck-release-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The pin-a-current-1.x-release-before-relying-on-it instruction is kept at SHOULD, with androidx.navigation3 named as the subject the old paragraph implied.",
+        "pin": "4ccb56f267dbfcdb332d9dcf353f95ffbabdb140f4da41733b5449fcde16b9f4"
+      }
+    },
+    {
+      "sentence": "`material3-adaptive-navigation3`) are still maturing, so treat specific surface details as evolving (FORECAST) and re-check the release notes.",
+      "to": "should-pin-nav3-and-recheck-release-notes",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept: the APIs and material3-adaptive-navigation3 are still maturing, so treat surface details as evolving (FORECAST) and re-check release notes, at SHOULD.",
+        "pin": "9b136c3b248ac4653cc5fdb2640be44f17fb8ca4db4e198564fc95f8366000c3"
+      }
+    },
+    {
+      "sentence": "Choose Nav3 as a **deliberate decision** when you need full control over the back stack, multi-pane/adaptive layouts, or custom transitions — not as a blanket mandate.",
+      "to": "should-choose-nav3-deliberately",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Kept at SHOULD with all three triggering needs (back-stack control, multi-pane/adaptive layouts, custom transitions) and the not-a-blanket-mandate qualifier.",
+        "pin": "5a79f7ab467ba63c2cbb7451baca46f5202b3e7bcf32844ca04b48ebb1dcbf14"
+      }
+    },
+    {
+      "sentence": "Do **NOT** mix Nav2 `NavHost` and Nav3 `NavDisplay` for the same flow; pick one model per navigation graph and migrate a flow at a time.",
+      "to": "should-not-mix-nav2-and-nav3-in-a-flow",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The unkeyed 'Do NOT mix' is kept at SHOULD NOT for the same flow, with pick-one-model-per-graph and migrate-a-flow-at-a-time.",
+        "pin": "504d09a8ef889baab0b051f82daa05cf9488ddb649cb6984b1ed3c685f1d8c9f"
+      }
+    },
+    {
+      "sentence": "Use a single `startDestination`; avoid clearing and rebuilding the entire graph to navigate — prefer `popUpTo`/`launchSingleTop` (Nav2) or list operations (Nav3).",
+      "to": "should-use-single-start-destination",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Both instructions kept at SHOULD (single startDestination; avoid clearing and rebuilding the graph) with the popUpTo/launchSingleTop (Nav2) and list-operations (Nav3) alternatives.",
+        "pin": "c0875a8dcf3346bb0fac6a5ffadcd2b412a520b5290090033a919bc80b603f1a"
+      }
+    }
+  ],
+  "obsolete": []
+}

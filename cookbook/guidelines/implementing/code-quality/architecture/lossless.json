@@ -1,0 +1,9 @@
+{
+  "base": "0005775",
+  "moved": [
+    {"sentence": "NavigationView + Frame SHOULD be used for page-level navigation", "to": "should-use-navigationview-and-frame", "judged": {"by": "independent judge (opus)", "verdict": "pass", "note": "The rule keeps NavigationView + Frame for page-level navigation at SHOULD, unchanged.", "pin": "4196d399dce6eb2c5dae06d09b96bf85d139fd2606e56523001b2a1e87c4d1f8"}},
+    {"sentence": "Navigation service abstraction in the ViewModel layer — code-behind MUST NOT manipulate Frame directly", "to": ["should-put-navigation-service-in-viewmodel-layer", "must-not-manipulate-frame-from-code-behind"], "judged": {"by": "independent judge (opus)", "verdict": "pass", "note": "The navigation service abstraction in the ViewModel layer is kept (an unkeyed instruction now at SHOULD) and the MUST NOT on code-behind manipulating Frame directly is kept verbatim in its own rule.", "pin": "784bc6e46c76c43c7ce0183cbe0f798961d5c8aa46546385523675c65eac4fa9"}},
+    {"sentence": "Use [Template Studio](https://github.com/microsoft/TemplateStudio) for project scaffolding with MVVM, navigation, and theming pre-wired", "to": "should-scaffold-with-template-studio", "judged": {"by": "independent judge (opus)", "verdict": "pass", "note": "The unkeyed instruction to scaffold with Template Studio, with MVVM, navigation and theming pre-wired, is kept at SHOULD with its link.", "pin": "288ae310a80e5f7b2599fc53dab6a1705a499b556cebf54c11756eb21d7bf850"}}
+  ],
+  "obsolete": []
+}

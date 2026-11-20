@@ -1,0 +1,18 @@
+
+- **should-pass-immutable-data**: Composables SHOULD be passed **immutable** data. Code SHOULD prefer `val` over `var`, `kotlinx.collections.immutable` (`ImmutableList`/`PersistentList`) over `List`, and data classes whose properties are themselves stable.
+- **should-prefer-genuinely-stable-inputs**: Code SHOULD prefer genuinely stable inputs; strong skipping does not make a type stable.
+- **should-annotate-stability-only-when-true**: Code SHOULD annotate `@Immutable` (deeply unchanging) or `@Stable` (changes only via `State`) **only** when the type is truly so and the compiler cannot infer it (e.g., a type from a module without the Compose compiler, or one using an interface field). A false annotation causes missed recompositions and stale UI — code SHOULD NOT annotate to silence the compiler.
+- **should-read-state-late**: State SHOULD be read as **late** as possible. Code SHOULD hoist the read into a lambda-based modifier so a value change triggers only layout/draw, not recomposition: `Modifier.offset { IntOffset(x, y) }`, `Modifier.graphicsLayer { alpha = a }`, `Modifier.drawBehind { ... }`.
+- **should-pass-lambdas-for-frequently-changing-values**: Code SHOULD pass **lambdas** instead of already-read values when the value changes frequently (e.g. scroll/animation): `Counter(count = { viewModel.count })` defers the read to the consumer.
+- **should-use-derivedstateof-for-thresholds**: Code SHOULD use `derivedStateOf { ... }` when a frequently-changing state should drive UI only when a **computed** result crosses a threshold (e.g. `firstVisibleItemIndex > 0`).
+- **should-not-use-derivedstateof-for-one-to-one-transforms**: Code SHOULD NOT use `derivedStateOf` for one-to-one transforms — that adds overhead with no benefit.
+- **should-remember-expensive-computation**: Code SHOULD use `remember(keys) { expensive() }` to cache costly computation across recompositions, recomputing only when a key changes. `remember(items, query) { items.filter(...) }` keys derived results to inputs.
+- **must-key-lazy-list-items**: In `LazyColumn`/`LazyRow`/`LazyVerticalGrid`, you **MUST** supply a stable `key` per item (`items(list, key = { it.id })`) so reorders and insertions reuse state instead of recomposing the whole list.
+- **must-not-perform-backwards-writes**: Code **MUST NOT** perform backwards writes — never write to a state value that the same composable already read; this loops recomposition.
+- **should-keep-composables-side-effect-free**: Composables SHOULD be kept side-effect free and idempotent.
+- **should-avoid-allocating-in-composable-body**: Code SHOULD avoid allocating new collections, lambdas-with-captures, or objects in the composable body on every call; it SHOULD hoist or `remember` them.
+- **should-profile-release-builds**: Code SHOULD be profiled in **release** builds with R8 enabled and a **Baseline Profile** applied.
+- **must-not-tune-against-debug-builds**: Debug builds run unoptimized Compose and produce misleading numbers — code MUST NOT be tuned against them; never tune against them.
+- **should-use-layout-inspector-recomposition-counts**: Code SHOULD use **Layout Inspector** recomposition counts to find composables recomposing more than expected; a high count signals an unstable parameter or an un-deferred read.
+- **should-gate-regressions-with-macrobenchmark**: For regression gates, code SHOULD use Macrobenchmark (frame timing, `recompositionCount`) on representative journeys.
+- **should-optimize-only-after-measurement**: Code SHOULD optimize a hotspot **only** after a measurement justifies it (per make-it-work-make-it-right-make-it-fast) and SHOULD NOT pre-optimize composables that are not hot.

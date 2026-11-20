@@ -1,0 +1,19 @@
+
+- `should-publish-native-arm64`: the build produces a native `win-arm64` artifact, or the project says why not
+- `must-not-ship-on-x64-emulation`: ARM hardware gets a native ARM64 build wherever one is achievable
+- `should-ship-multi-arch`: the release set holds both `win-x64` and `win-arm64`, or the project says why not
+- `must-have-arm64-native-dependencies`: every native dependency in the package has an ARM64 variant
+- `should-audit-runtimes-folders`: the `runtimes/` folders hold no x64-only native asset at ship time, or the project says why not
+- `may-use-arm64ec-for-migration`: any Arm64EC module is part of an incremental port
+- `should-mark-arm64ec-transitional`: Arm64EC use is labelled transitional, or the project says why not
+- `should-adopt-aot-only-on-measured-need`: any AOT or trimming setting cites the measurement that justifies it, or the project says why not
+- `should-not-enable-aot-by-default`: Native AOT and aggressive trimming are off unless profiling showed a bottleneck, or the project says why
+- `must-record-baseline-metric`: the baseline and post-change measurements of the improved metric are recorded
+- `must-verify-reflection-and-codegen-paths`: reflection-heavy and dynamic-codegen paths pass under the trimmed/AOT build
+- `should-use-source-generators-or-aot-safe-apis`: those paths use source generators or AOT-safe APIs, or the project says why not
+- `must-check-cswinrt-interop`: the app and every library touching WinRT interop build against an AOT-aware CsWinRT
+- `must-confirm-trim-compatible-dependencies`: every third-party dependency is trim-compatible and the build suppresses no trim warning unverified
+- `may-use-readytorun`: any ReadyToRun build serves a startup-only need
+- `should-prefer-readytorun-for-startup-only`: a startup-only need is met with ReadyToRun, or the project says why not
+- `must-test-aot-per-rid`: CI runs the AOT/trimming tests for each RID, including `win-arm64`
+- `should-pin-and-reverify-on-upgrade`: .NET and CsWinRT versions are pinned and AOT/trim compatibility re-checked on the last upgrade, or the project says why not

@@ -1,0 +1,26 @@
+
+- `should-make-both-decisions-explicitly-and-early`: the planning notes record both the UI framework and the deployment model decisions
+- `should-pick-framework-from-targets-and-investment`: the framework decision names the target devices and existing investment it rests on
+- `should-default-new-windows-apps-to-winui3`: a new Windows-only desktop app targets WinUI 3 on the Windows App SDK, or the plan says why not
+- `should-build-winui3-with-visual-studio-msbuild`: a new WinUI 3 app builds with Visual Studio + MSBuild, or the plan says why not
+- `must-not-call-wpf-dead`: no planning text tells an existing WPF app it is dead
+- `should-keep-wpf-and-modernize`: an existing WPF app stays on WPF, or the plan names the concrete reason to move
+- `should-keep-winforms`: an existing WinForms app stays, or the plan names the concrete need that forces a change
+- `must-not-claim-uwp-deprecated`: no planning text claims UWP is deprecated
+- `should-treat-uwp-as-feature-frozen`: the plan treats an existing UWP app as feature-frozen, not abandoned
+- `should-consider-maui-or-react-native-for-cross-platform`: a cross-platform native plan records .NET MAUI and React Native for Desktop as considered
+- `must-start-cross-platform-when-it-is-a-goal`: an app with a real near-term multi-platform goal starts on .NET MAUI or React Native for Desktop
+- `must-recommend-uwp-for-unsupported-targets`: every Xbox, Surface Hub, HoloLens or IoT target uses UWP
+- `should-recommend-gdk-for-games`: a game targets the GDK, or the plan says why not
+- `must-not-mix-winui-into-uwp`: no UWP app references WinUI or Windows App SDK content
+- `must-not-mix-winui2-with-winui3`: no app references both WinUI for UWP and WinUI 3
+- `must-have-package-identity-for-gated-features`: every app using an identity-gated feature is packaged MSIX or packaged with external location
+- `should-not-pick-unpackaged-for-identity-apps`: no app needing identity-gated features is unpackaged, or the plan says why
+- `should-default-new-apps-to-packaged-msix`: every new app is packaged MSIX, or the plan names the deployment constraint that rules it out
+- `should-use-external-location-to-keep-installer`: every existing app keeping its installer uses packaged with external location, or the plan says why not
+- `must-bootstrap-unpackaged-apps`: every unpackaged app installs or ships the runtime, calls `Bootstrap.Initialize()` at startup and sets `<WindowsPackageType>None</WindowsPackageType>`
+- `must-not-set-package-type-when-packaged`: no packaged app's project sets `<WindowsPackageType>None</WindowsPackageType>`
+- `must-record-deployment-model`: the planning notes record the chosen deployment model
+- `should-settle-framework-by-first-ui-module`: the framework decision predates the first UI module, or the plan says why not
+- `should-settle-deployment-by-first-identity-feature`: the deployment decision predates the first identity-gated feature, or the plan says why not
+- `should-prefer-msix-when-uncertain`: uncertain requirements lead to packaged MSIX, or the plan says why not

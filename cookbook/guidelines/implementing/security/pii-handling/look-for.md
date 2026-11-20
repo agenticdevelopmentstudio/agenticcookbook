@@ -1,0 +1,15 @@
+
+- `classify-fields`: a schema field holding personal data with no `public`/`internal`/`pii`/`sensitive-pii` tier, or a tier recorded only in application code, breaks it
+- `sensitive-pii`: a special-category field (health, biometric, genetic, racial/ethnic, political, religious, sexual orientation) not tagged `sensitive-pii`, or lacking stricter access controls and audit logging, breaks it
+- `propagate-tags`: derived tables, exports or caches that drop the source field's tier and its controls
+- `collect-minimum`: a collected field with no stated purpose, or one kept "just in case", breaks it
+- `explicit-dtos`: an API that serializes a raw database model instead of an explicit response DTO breaks it
+- `separate-stores`: `sensitive-pii` kept alongside general application data instead of in a dedicated, tightly scoped store
+- `encrypt-at-rest`: PII stored without at-rest encryption, or `sensitive-pii` without application-layer or column encryption, breaks it
+- `encrypt-in-transit`: PII sent in plaintext or over TLS below 1.2 breaks it
+- `tokenize`: a downstream system that needs only a stable reference but receives the PII value itself
+- `residency`: storage or processing outside a required region, or a region pinned only in code comments rather than infrastructure config, breaks it
+- `no-pii-logs`: PII written to a log, trace, error message or analytics event, or identifiers not redacted or hashed at the logging boundary, breaks it
+- `anonymize-analytics`: analytics fed identifiable or pseudonymized-but-re-identifiable data rather than anonymized or aggregated data
+- `non-prod-data`: development, test or staging seeded with real data instead of synthetic or anonymized data; production `sensitive-pii` there breaks it
+- `retention`: a PII field with no defined retention period, or expired records not deleted or anonymized, breaks it

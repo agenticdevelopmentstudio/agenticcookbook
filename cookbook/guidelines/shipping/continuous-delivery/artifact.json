@@ -4,11 +4,11 @@
     "id": "703b1ec7-b940-46a5-8974-441b04a0bb9d",
     "title": "Continuous delivery",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "status": "accepted",
     "language": "en",
     "created": "2026-06-09",
-    "modified": "2026-06-10",
+    "modified": "2026-11-19",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -30,19 +30,22 @@
       "https://dora.dev/capabilities/continuous-delivery/",
       "https://dora.dev/capabilities/continuous-integration/"
     ],
-    "approved-by": "approve-artifact v1.0.0",
-    "approved-date": "2026-06-10",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-19",
     "triggers": [
       "pre-pr"
     ]
   },
-  "synced": "b5b2ed764dfa4458",
+  "synced": "bdd995c96805b70d",
   "parts": [
     {"part": "intro"},
-    {"part": "delivery-vs-deployment", "heading": "Delivery vs. deployment"},
-    {"part": "pipeline-requirements", "heading": "Pipeline requirements"},
-    {"part": "the-j-curve-caveat", "heading": "The J-curve caveat"},
-    {"part": "pre-pr-checklist-for-agents", "heading": "Pre-PR checklist for agents"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "delivery-vs-deployment", "heading": "Delivery vs. deployment", "role": "how-to"},
+    {"part": "pre-pr-checklist-for-agents", "heading": "Pre-PR checklist for agents", "role": "how-to"},
+    {"part": "look-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "the-j-curve-caveat", "heading": "The J-curve caveat", "role": "rationale"},
     {"part": "history", "heading": "Change History"}
   ]
 }

@@ -1,0 +1,27 @@
+
+- `should-prefer-coroutine-first-dao-apis`: whether DAO APIs are coroutine-first
+- `should-state-kmp-support-as-2-7-plus`: whether every KMP support claim is stated as "2.7.0+"
+- `should-treat-room-3-as-forecast`: whether Room 3.0 is treated as a forecast, not a shipped default
+- `should-not-migrate-production-to-room-3`: whether production code has moved to Room 3.0
+- `should-pin-room-version`: whether the Room version is pinned in the version catalog
+- `must-use-ksp`: whether the Room compiler runs through KSP
+- `should-export-schema`: whether schema export is on and the schema JSON is committed
+- `should-return-flow-for-observable-reads`: whether observable reads return `Flow`
+- `should-suspend-one-shot-reads-and-writes`: whether one-shot reads and all writes are `suspend`
+- `must-not-call-blocking-dao-on-main-thread`: whether any blocking DAO function runs on the main thread
+- `should-not-allow-main-thread-queries-outside-tests`: whether `allowMainThreadQueries()` appears outside tests
+- `must-not-mark-reactive-returns-suspend`: whether any reactive return type is marked `suspend`
+- `must-wrap-atomic-multi-statement-work-in-transaction`: whether every atomic multi-statement operation runs in a single transaction
+- `must-use-transaction-on-relation-queries`: whether every `@Relation`-returning `@Query` has `@Transaction`
+- `should-keep-transactions-short`: whether transactions stay free of network and long CPU work
+- `should-define-one-entity-per-normalized-table`: whether each normalized table has its own `@Entity`
+- `should-declare-relationships-not-denormalize`: whether relationships use `@ForeignKey` and `@Relation`
+- `must-index-foreign-key-columns`: whether every `@ForeignKey` column is indexed
+- `should-treat-unindexed-fk-warning-as-error`: whether any unindexed-foreign-key warning remains
+- `should-use-unique-index-for-natural-keys`: whether natural keys carry a unique index
+- `must-bump-version-and-supply-migration`: whether each schema change bumps `version` and supplies a migration
+- `must-not-ship-destructive-migration-fallback`: whether a release build can use `fallbackToDestructiveMigration()`
+- `should-test-migrations`: whether each migration has a `MigrationTestHelper` test
+- `must-not-hold-database-per-screen`: whether the database is one application-scoped singleton
+- `must-not-expose-livedata-to-coroutine-consumers`: whether new code exposes `LiveData` to coroutine/Compose consumers
+- `must-not-split-multi-step-writes-without-transaction`: whether any multi-step write runs as separate calls without a transaction

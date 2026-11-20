@@ -1,0 +1,20 @@
+
+- `should-treat-machine-legibility-as-one-audience`: a change made for agents that leaves the code harder for a human to read
+- `must-keep-names-literally-searchable`: a name that cannot be found by searching for it as a literal string
+- `should-use-one-canonical-spelling`: one concept spelled several ways (synonyms) across the codebase
+- `should-avoid-runtime-constructed-identifiers`: string-concatenated method names, `getattr`/reflection on built-up names, dynamically generated attributes
+- `should-find-definition-by-grep`: a search for a function's name that turns up fragments (`"handle_" + verb`) instead of its definition
+- `should-keep-call-sites-discoverable`: a function reachable only through a registry, decorator, or dependency-injection wiring, with no call site naming it
+- `should-minimize-hidden-runtime-behavior`: reflection, dynamic dispatch or runtime metaprogramming that hides what the code does
+- `should-keep-signatures-explicit`: vague parameter names, missing or inaccurate return types
+- `should-prefer-explicit-types-and-names`: omitted optional types and terse names where the language allows explicit ones
+- `should-prefer-explicit-control-flow`: auto-registration, monkey-patching, import-time side effects
+- `should-colocate-tests`: tests kept far from the module they exercise
+- `should-name-tests-for-behavior`: test names that say nothing of the behavior they verify (`test1`, `testFoo`)
+- `must-not-maximize-machine-legibility-at-all-costs`: machine-legibility pushed to a point where human readability is given up
+- `should-favor-locality-of-related-behavior`: related behavior split across many very short files
+- `should-judge-dry-per-case`: an abstraction several layers deep that removes a small repetition, or a large repetition left where an abstraction is plainly better
+- `should-not-cite-agent-readership-as-statistic`: a comment or doc citing "agents read code more than humans" as an established statistic
+- `should-justify-by-concrete-readability`: a choice justified by appeal to the agent-readership trend instead of concrete readability
+- `should-prefer-explicit-and-local-when-cost-low`: a low-cost conflict between conventions resolved toward implicit or scattered behavior
+- `should-weigh-and-document-when-human-cost-high`: a high-human-cost trade-off made without a note documenting it

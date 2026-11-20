@@ -1,0 +1,16 @@
+
+- `should-group-owner-with-owned-objects`: every object-creation hierarchy in the findings sits in one recommended group, or the findings say why not
+- `should-treat-subscription-owners-as-lifecycle-coupled`: every subscription owner is listed under subscription ownership with the publishers it holds
+- `should-not-split-state-machines`: every state machine's states, transitions and executing object are in one recommended group
+- `should-group-session-with-its-objects`: every session and its session-scoped objects are one recommended group, or the findings say why not
+- `may-separate-weakly-referenced-objects`: every separation at a weak reference names the independent lifecycle and the narrow interface between the groups
+- `should-follow-disposal-chains`: every disposal chain found is recorded, with its members in one lifecycle chain
+- `must-invalidate-timers`: every scheduled timer is invalidated, and every one that is not is listed as a lifecycle anomaly
+- `should-note-timer-invalidation-site`: every timer in the findings says where it is invalidated relative to its owner's teardown
+- `should-note-factory-assembly`: every factory in the findings says what it assembles
+- `should-note-state-between-init-phases`: every two-phase initialization in the findings describes its in-between state
+- `should-note-released-resources`: every teardown in the findings names the resources it releases
+- `should-note-teardown-hook-cleanup`: every framework teardown hook in the findings names its cleanup
+- `should-note-session-scope`: every network session in the findings is marked per-request or long-lived
+- `should-note-valid-transitions`: every state machine in the findings lists its valid transitions
+- `should-note-observer-removal`: every observer registration in the findings says whether removal is explicit or token-managed

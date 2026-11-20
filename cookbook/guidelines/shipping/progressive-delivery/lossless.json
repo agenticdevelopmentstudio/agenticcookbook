@@ -1,0 +1,69 @@
+{
+  "base": "0005775",
+  "moved": [
+    {
+      "sentence": "Pick the lightest mechanism that fits the risk; do not stack all of them.",
+      "to": "should-pick-lightest-mechanism",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps picking the lightest mechanism that fits the risk and not stacking them all, at SHOULD / SHOULD NOT.",
+        "pin": "13c8f8f51c9e248fdd0cd5d71b764de85c3aec488fa5d1ed690c5a72c8cc2167"
+      }
+    },
+    {
+      "sentence": "Remove the flag and the dead branch once the change is at 100% and stable, to avoid permanent branching debt (`design-for-deletion`, `yagni`).",
+      "to": "should-remove-rollout-flags",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps removing the flag and dead branch once at 100% and stable, with the branching-debt reason and principle references, at SHOULD.",
+        "pin": "3f87012511d249eba9055a5dcf788a1780a2749ac06a069f2f8f451b28e18b76"
+      }
+    },
+    {
+      "sentence": "Pause new progressive rollouts during an active incident or when the error budget is exhausted.",
+      "to": "should-pause-rollouts-during-incidents",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps pausing new rollouts during an active incident or when the error budget is exhausted, at SHOULD.",
+        "pin": "79a72939f2cb0e004a804f41944f661d45862a1e7811908a367ad2e5d32a7052"
+      }
+    },
+    {
+      "sentence": "Prefer the platform/orchestrator's native progressive-delivery support (e.g.",
+      "to": "should-prefer-native-progressive-delivery",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "Rule keeps preferring native progressive-delivery support, with the examples the truncated sentence began, over bespoke traffic-shifting.",
+        "pin": "dfeb8f54b4c4e3e9b4c43d09231c698501e2a3537cd1b8f41edf46f5ae880e78"
+      }
+    },
+    {
+      "sentence": "> FORECAST / evolving: specific controller versions, flag-vendor APIs, and SLO query syntaxes change frequently.",
+      "to": "rationale",
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The rationale part keeps the FORECAST / evolving note that controller versions, flag-vendor APIs and SLO query syntaxes change frequently, attached to the two rules it motivates.",
+        "pin": "f4b5f0885f70492431fa267232b87509f502b9eab367295e9eacd53d79c11b3e"
+      }
+    },
+    {
+      "sentence": "Pin the tool and its version in your runbook rather than encoding vendor specifics here, and treat single-vendor adoption stats as marketing, not fact.",
+      "to": [
+        "should-pin-tool-version-in-runbook",
+        "should-treat-vendor-adoption-stats-as-marketing"
+      ],
+      "judged": {
+        "by": "independent judge (opus)",
+        "verdict": "pass",
+        "note": "The two rules keep pinning the tool and version in the runbook rather than encoding vendor specifics, and treating single-vendor adoption stats as marketing, at SHOULD.",
+        "pin": "697c6dafff30927555ae6c971efc5c5a223a813e9762d1d37889fec45bccfcd9"
+      }
+    }
+  ],
+  "obsolete": []
+}

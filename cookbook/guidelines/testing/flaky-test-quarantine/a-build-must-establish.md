@@ -1,0 +1,23 @@
+
+- `must-move-forward-through-lifecycle`: each flaky test's current lifecycle stage is recorded
+- `must-not-stall-in-quarantine`: no quarantined test is past its deadline without a recorded decision
+- `must-execute-quarantined-tests-every-run`: the latest run's results include every quarantined test
+- `should-detect-from-objective-signal`: each quarantine entry cites its flip rate or retry-pass signal, or a note says why not
+- `must-treat-retry-pass-as-flaky`: every test that passed only on retry in the latest runs is flagged as flaky
+- `may-use-retries-only-as-detection-signal`: any retry configured in CI reports retry passes as a flakiness signal, and none turns a retry pass into an unflagged pass
+- `should-record-per-test-history`: CI stores per-test pass/fail history, or a note says why not
+- `must-mark-quarantined-tests-explicitly`: each quarantined test has a quarantine tag or annotation and is neither commented out nor deleted
+- `must-exclude-quarantined-tests-from-gate`: the gating job's test selection excludes the quarantine tag
+- `must-run-quarantined-tests-in-non-gating-job`: a non-gating CI job runs the quarantined tests on every build
+- `must-record-owner-deadline-and-issue`: each quarantine annotation or registry entry holds an owner, a deadline and an issue link
+- `must-make-quarantine-visible`: a dashboard, report or PR check summary lists the quarantined tests
+- `must-create-owned-work-item-on-quarantine`: each quarantined test has an open tracked work item with one owner and a deadline
+- `should-set-short-deadline`: each quarantine deadline is days away, not quarters, or a note says why
+- `must-decide-explicitly-on-lapsed-deadline`: each lapsed deadline has a recorded extend, fix or delete decision
+- `must-not-roll-over-silently`: no quarantine deadline is past with no decision recorded
+- `should-restore-only-after-fix-and-green-runs`: each restored test has a root-cause fix and green runs above the flip-rate threshold, or a note says why not
+- `must-not-restore-on-masked-failure`: no restoration change consists only of a retry, a timeout increase or a loosened assertion
+- `should-delete-tests-for-unwarranted-behavior`: no quarantined test is for behavior that no longer warrants one, or a note says why it stays
+- `must-not-become-permanent-parking-lot`: every entry in the quarantine list has an owner and a deadline
+- `must-not-delete-flaky-test-to-go-green`: each deleted flaky test has a recorded check that its behavior no longer needs coverage
+- `must-not-use-global-auto-retry`: the test runner has no suite-wide auto-retry setting

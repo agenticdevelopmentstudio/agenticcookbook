@@ -1,0 +1,28 @@
+
+- **must-define-infrastructure-as-declarative-code**: Infrastructure (compute, networking, DNS, IAM, managed services) MUST be defined as declarative code in version control and changed only through a reviewed, planned apply.
+- **should-describe-the-desired-end-state**: You SHOULD describe the **desired end state**, not the steps to reach it.
+- **must-be-idempotent**: Re-applying an unchanged configuration MUST produce no changes (idempotency).
+- **must-be-reproducible**: Definitions MUST be **reproducible**: the same code plus the same inputs yields the same infrastructure, on a clean machine, with no manual prerequisites.
+- **should-pin-tool-and-provider-versions**: You SHOULD pin tool and provider versions explicitly (e.g. a `.terraform.lock.hcl` / lockfile committed to the repo).
+- **should-prefer-mature-declarative-tooling**: You SHOULD prefer mature, declarative tooling: **OpenTofu** or **Terraform** (HCL), or **Pulumi** (general-purpose languages) when programmable abstractions justify the added surface area.
+- **must-plan-before-apply**: Every change MUST be previewed with a **plan/preview** (`tofu plan`, `terraform plan`, `pulumi preview`) before apply.
+- **must-inspect-the-plan-diff**: Treat the plan diff like a code review: a human (or a gated CI step) MUST inspect adds, changes, and especially **destroys/replaces** before approving.
+- **should-run-plan-in-ci-on-every-pull-request**: You SHOULD run `plan` in CI on every pull request and surface the diff in the PR.
+- **should-apply-only-from-a-protected-branch**: `apply` SHOULD run only from a protected branch or a gated pipeline, not from developer laptops.
+- **should-confirm-the-cause-of-replacements**: You SHOULD be wary of resources marked for replacement, and confirm the underlying cause (a deliberate change vs. drift vs. a provider upgrade) before applying.
+- **must-keep-state-in-a-remote-backend**: State MUST live in a **remote backend** (S3, GCS, AzureRM blob, or a managed IaC platform), versioned and recoverable — never committed to git or left only on a laptop.
+- **must-lock-state-writes**: State writes MUST be **locked** to prevent concurrent corruption. GCS and AzureRM provide their own locking.
+- **should-prefer-native-s3-lockfile-locking**: For the S3 backend, you SHOULD prefer native S3 lockfile-based locking (`use_lockfile = true`, available since 2025); a DynamoDB lock table remains valid and can run alongside it during migration.
+- **should-use-a-consistent-state-key-convention**: You SHOULD use a consistent state key convention (`<env>/<component>/terraform.tfstate`) so IAM policies can scope per environment.
+- **must-not-let-drift-become-the-source-of-truth**: **Drift** (out-of-band manual changes) MUST NOT become the source of truth. Reconcile it back into code, or revert it.
+- **should-run-scheduled-drift-detection**: You SHOULD run scheduled drift detection (e.g. a periodic `plan`, `pulumi refresh` + preview, or a platform's drift feature) so manual changes are caught in hours, not at the next unrelated apply when a `destroy` appears unexpectedly.
+- **should-encode-intended-drift**: When drift is real and intended, you SHOULD encode it in the configuration and re-apply, and SHOULD NOT leave the divergence in place.
+- **should-factor-repeated-patterns-into-modules**: You SHOULD factor repeated patterns into **modules** with explicit inputs/outputs, and pin module versions.
+- **should-keep-environments-as-separate-state**: You SHOULD keep environments (dev/stage/prod) as separate state with shared modules — avoid copy-paste.
+- **must-use-least-privilege-credentials**: Provider credentials MUST be **least-privilege**, short-lived where possible (OIDC/workload identity over long-lived static keys), and supplied via environment/secret store — never hard-coded.
+- **must-not-expose-secrets-in-plaintext-state**: **Secrets MUST NOT be exposed in plaintext state.** State files store resource attributes (including outputs) in plaintext for HCL tools.
+- **should-not-emit-secrets-as-outputs**: You SHOULD NOT emit secrets as outputs; write them directly to a secrets manager during apply and have apps fetch at runtime.
+- **should-restrict-state-read-access**: Pulumi encrypts values marked `secret` in state, but you SHOULD restrict state read access regardless.
+- **should-adopt-heavy-iac-platforms-only-on-measured-need**: You SHOULD reach for managed IaC platforms, Kubernetes operators, or multi-account orchestration **only when a measured need justifies the operational weight** — not as a default.
+- **should-start-with-the-smallest-layout-that-works**: You SHOULD start with the smallest backend and module layout that works and grow deliberately (small, reversible decisions).
+- **should-confirm-obligations-with-counsel**: You SHOULD confirm data-residency and credential-handling obligations with qualified counsel.

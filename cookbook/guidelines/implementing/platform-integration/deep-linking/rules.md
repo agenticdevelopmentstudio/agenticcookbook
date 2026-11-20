@@ -1,0 +1,11 @@
+
+- **must-deep-link-significant-views**: All significant feature points and views MUST be deep linkable using the platform's native URL/deep link mechanism.
+- **spec-defines-deep-linking**: Each spec SHOULD include a **Deep Linking** section defining URL patterns.
+- **web-view-should-have-shareable-url**: On the web, every view SHOULD have a unique, shareable URL.
+- **typescript-view-must-have-shareable-url**: In TypeScript, every view MUST have a unique, shareable URL.
+- **typescript-use-framework-routing**: In TypeScript, you SHOULD use framework routing (React Router, Next.js routing, etc.).
+- **windows-declare-and-handle-protocol**: On Windows, you SHOULD declare protocol handlers in `Package.appxmanifest` and handle activation through the Windows App SDK lifecycle APIs.
+- **windows-declare-protocol-in-manifest**: On Windows, you SHOULD declare `<uap:Protocol Name="myapp"/>` in the manifest.
+- **windows-handle-activation-in-onlaunched**: On Windows, you SHOULD handle activation via `AppInstance.GetActivatedEventArgs()` in `App.OnLaunched`.
+- **windows-parse-uri-and-navigate**: On Windows, you SHOULD parse the URI to determine the target page/state, and navigate accordingly.
+- **windows-single-instance-for-deep-links**: On Windows, you SHOULD use `AppInstance.FindOrRegisterForKey()` for single-instancing (recommended for deep links).

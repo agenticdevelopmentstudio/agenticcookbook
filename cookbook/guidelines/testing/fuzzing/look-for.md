@@ -1,0 +1,16 @@
+
+- `should-fuzz-trust-boundary-parsers`: parsers, decoders, deserializers, evaluators or decompressors on a trust boundary with no fuzz target
+- `should-prioritize-memory-unsafe-languages`: unfuzzed parsing code in C, C++ or `unsafe` Rust/Go FFI
+- `should-not-default-fuzz-business-logic`: fuzz targets for business or UI logic with no untrusted-input boundary, where property-based tests belong
+- `must-keep-targets-deterministic`: fuzz targets that read the clock, the network or global state
+- `should-run-c-cpp-fuzzers-with-sanitizers`: C/C++ fuzz builds without ASan, UBSan or MSan
+- `should-use-arbitrary-for-rust-structured-inputs`: Rust fuzz targets hand-decoding structured inputs instead of using `arbitrary`
+- `should-consider-oss-fuzz`: an open-source project with a stable harness and no OSS-Fuzz integration or recorded decision
+- `should-pin-and-evaluate-forecast-go-fork`: a dependency on the `gosentry` fork that is unpinned or unevaluated
+- `must-accept-raw-bytes-one-entry-point`: fuzz targets that take something other than raw bytes (or a deterministic derivation) or call more than one parsing entry point
+- `must-fail-loudly`: harnesses that catch and swallow panics, exceptions or sanitizer reports, or assert no invariants
+- `should-seed-starting-corpus`: fuzz targets with no seed corpus of real and edge-case samples
+- `must-commit-crashes-as-regression-cases`: fixed fuzzer crashes with no committed regression-corpus case
+- `should-run-long-campaigns-off-critical-path`: long fuzz campaigns in the per-commit pipeline, or PRs not gated on the regression corpus and a short smoke run
+- `should-reproduce-and-minimize-before-filing`: crash reports filed without a reproduced, minimized input
+- `should-classify-by-sanitizer-report`: memory-safety crashes not escalated as security-relevant
