@@ -1,13 +1,13 @@
 ---
 name: cookr
-version: "0.22.0"
+version: "0.23.0"
 description: "Inventory, coverage, extraction prompts and arrangement for the specs of a library cookbook (a repo's cookbook/ directory with cookbook.json). Wraps the `cookr` CLI at ~/.local/bin/cookr. Use when the user asks which components have specs, what is left to write for a group, to write the spec for a component, to scope a change to the recipes it touches, to check what recipe work a change still owes, to record which code implements a recipe and confirm it, to rename or look up a recipe's id, to upgrade a cookbook to format 2, to relink specs after code moved, to convert artifacts into source folders and compile them back into docs, to compile them into routed skills for skill-router, to install, check or uninstall the compiled skills (the routed set and the always-on principles skill), or to tune them for the host and model you are running as (payload, stamp)."
 argument-hint: "[--help] [-p <repo-root>] <inventory|coverage|arrangement|relink|scope|check|status|implements|confirm|id|rename|diff|upgrade|skills sync|convert|compile|roles set|roles check|roles lossless|roles worklist|roles gaps|fold|install|uninstall|payload|stamp|prompt extract <name>|--tier <group>> [...]"
 allowed-tools: Bash(cookr *), Bash(command -v cookr)
 model: sonnet
 ---
 
-# cookr v0.22.0
+# cookr v0.23.0
 
 Thin wrapper around the `cookr` CLI at `~/.local/bin/cookr`. All work goes
 through the CLI — never duplicate its logic in this skill, including recipe
@@ -279,7 +279,9 @@ roles, in part order:
 | reviewer | `rules`, `review-focus` | `reviewing-<tail>` |
 | review-verifier | `review-bar` | `verifying-review-<tail>` |
 
-Each routes under its own use case (`coding/verifying-build/...`) and carries
+Each routes under its own use case, with the artifact's own use case below it
+(`coding/verifying-build/planning/data`; a principle's `coding/verifying-build/principles`), so
+no route node gathers one kind from every use case. Each carries
 `metadata.skill: <kind>`; the receipt records its `kind`. The builder keeps the
 artifact's description; the other three say what they are for ("Review code
 against this guideline: ..."). `rationale` and `references` parts go to each
@@ -345,7 +347,11 @@ research.
   [{"sentence", "reason", "judged"}], "retargets": ["<sentence>"]}` (named
   copies are read as `--copy`; `judged`, `retargeted` and `retargets` are
   optional, the last two written only by `--retarget`; a sentence named twice
-  is refused). The gate does not
+  is refused). A topic moved since the base (`git mv`, then `cookr rename` for
+  its rdid) names its old path in `"renamed_from": "<its path at rev>"`, which
+  is read as its own base; that path must be gone and carry the topic's
+  artifact id, and a same-named folder renamed away, not folded, is no twin to
+  list. The gate does not
   prove meaning: it is an accounting, tripwires, and a judge's recorded,
   pinned verdict.
   A target is a rule, or a non-rule part judged by its one item or line

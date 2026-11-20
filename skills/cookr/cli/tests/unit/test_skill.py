@@ -472,11 +472,12 @@ def test_the_four_route_by_their_use_case_with_the_same_tail(roled):
     routes = {s.kind: s.routes for s in skill.compose_all(roled)}
     assert routes == {
         "builder": ("coding/implementing/data", "coding/when/database-operations/implementing/data"),
-        "build-verifier": ("coding/verifying-build/data",
-                           "coding/when/database-operations/verifying-build/data"),
-        "reviewer": ("coding/reviewing/data", "coding/when/database-operations/reviewing/data"),
-        "review-verifier": ("coding/verifying-review/data",
-                            "coding/when/database-operations/verifying-review/data"),
+        "build-verifier": ("coding/verifying-build/implementing/data",
+                           "coding/when/database-operations/verifying-build/implementing/data"),
+        "reviewer": ("coding/reviewing/implementing/data",
+                     "coding/when/database-operations/reviewing/implementing/data"),
+        "review-verifier": ("coding/verifying-review/implementing/data",
+                            "coding/when/database-operations/verifying-review/implementing/data"),
     }
 
 
@@ -554,7 +555,8 @@ def test_a_roled_planning_topic_compiles_four_skills_named_by_its_tail(book):
         "reviewer": "reviewing-data-t", "review-verifier": "verifying-review-data-t"}
     assert by["builder"].name == skill.skill_name("guidelines", ("planning", "data", "t"))
     assert by["builder"].routes == ("coding/planning/data", "coding/when/database-operations/planning/data")
-    assert by["reviewer"].routes == ("coding/reviewing/data", "coding/when/database-operations/reviewing/data")
+    assert by["reviewer"].routes == ("coding/reviewing/planning/data",
+                                     "coding/when/database-operations/reviewing/planning/data")
     assert "How to" in by["builder"].text and "Look for" in by["reviewer"].text
 
 
@@ -564,7 +566,10 @@ def test_a_roled_principle_compiles_four_skills(book):
     assert {k: s.name for k, s in by.items()} == {
         "builder": "principle-t", "build-verifier": "verifying-build-principle-t",
         "reviewer": "reviewing-principle-t", "review-verifier": "verifying-review-principle-t"}
-    assert all(s.routes == ("principles",) for s in by.values())
+    assert {k: s.routes for k, s in by.items()} == {
+        "builder": ("principles",), "build-verifier": ("coding/verifying-build/principles",),
+        "reviewer": ("coding/reviewing/principles",),
+        "review-verifier": ("coding/verifying-review/principles",)}
     assert "How to" in by["builder"].text and "Look for" in by["reviewer"].text
 
 

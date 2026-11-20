@@ -1179,6 +1179,57 @@ def test_a_listed_copy_that_still_exists_fails(tmp_path, capsys):
     assert any(rel in f["reason"] and "exists" in f["reason"] for f in out["failures"]), out
 
 
+def _rename(root, old, new):
+    subprocess.run(["git", "-C", str(root), "mv", old, new], check=True, capture_output=True)
+    return root / new
+
+
+def test_a_renamed_topic_reads_its_old_path_as_its_own_base(tmp_path, capsys):
+    from cookr.core.rolework import RoleworkError, lossless
+    _topic(tmp_path)
+    base = _commit(tmp_path)
+    folder = _rename(tmp_path, "cookbook/guidelines/implementing/data/t",
+                     "cookbook/guidelines/implementing/data/t2")
+    with pytest.raises(RoleworkError, match="is not in"):
+        lossless(folder, base, require_judged=False)
+    (folder / "lossless.json").write_text(json.dumps(
+        {"base": base, "renamed_from": "cookbook/guidelines/implementing/data/t", "moved": []}))
+    code, out, _ = _lossless(capsys, folder, base, "--draft")
+    assert code == 0, out
+    assert out["failures"] == [] and out["missing"] == []
+
+
+def test_renamed_from_must_be_gone_and_carry_the_topics_id(tmp_path):
+    from cookr.core.rolework import RoleworkError, lossless
+    folder = _topic(tmp_path)
+    other = _topic(tmp_path, "cookbook/guidelines/planning/data/u", roled=False)
+    manifest = other / "artifact.json"
+    manifest.write_text(manifest.read_text().replace("6f1c1e2a-0000-4000-8000-000000000001",
+                                                     "6f1c1e2a-0000-4000-8000-0000000000ff"))
+    base = _commit(tmp_path)
+    (folder / "lossless.json").write_text(json.dumps(
+        {"base": base, "renamed_from": "cookbook/guidelines/planning/data/u", "moved": []}))
+    with pytest.raises(RoleworkError, match="still exists"):
+        lossless(folder, base, require_judged=False)
+    import shutil
+    shutil.rmtree(other)
+    with pytest.raises(RoleworkError, match="not this topic"):
+        lossless(folder, base, require_judged=False)
+
+
+def test_a_same_named_folder_renamed_away_is_no_twin(tmp_path, capsys):
+    folder = _topic(tmp_path)
+    twin = _topic(tmp_path, "cookbook/guidelines/planning/data/t", roled=False)
+    manifest = twin / "artifact.json"
+    manifest.write_text(manifest.read_text().replace("6f1c1e2a-0000-4000-8000-000000000001",
+                                                     "6f1c1e2a-0000-4000-8000-0000000000ee"))
+    base = _commit(tmp_path)
+    _rename(tmp_path, "cookbook/guidelines/planning/data/t", "cookbook/guidelines/planning/data/t-plan")
+    code, out, _ = _lossless(capsys, folder, base, "--draft")
+    assert code == 0, out
+    assert not any("planning/data/t" in (f["reason"] or "") for f in out["failures"]), out
+
+
 # A parenthetical gloss is read with the FLIP_WORD that opens the clause it
 # glosses ("After applying server records (step 5 of the sync cycle)" says
 # "after step 5"): sync-engine-design's real rule. Nothing else is inherited.

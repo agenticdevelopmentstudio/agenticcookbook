@@ -54,7 +54,10 @@ plus the parts carrying the kind's roles, in part order, rendered with
 have unroled (`<use-case>-<tail>`); each other skill is named and routed with
 the artifact's use case replaced by its kind's (USE_CASES), so
 `guidelines/planning/data/t` gives `planning-data-t` and `reviewing-data-t`,
-and `principles/t` gives `principle-t` and `reviewing-principle-t` (`roled_paths`). Each
+and `principles/t` gives `principle-t` and `reviewing-principle-t` (`roled_paths`).
+Each other kind routes under its own use case with the artifact's below it
+(`coding/reviewing/planning/data`, `coding/reviewing/principles`: `roled_routes`),
+so no route node gathers one kind from every use case. Each
 carries `metadata.skill: <kind>`, and has no tuning, so no variants. A template's
 `refer` entry may name `roles` instead of `sections`, and its `description`
 places the artifact's (`{{description}}`) in the skill's own. Only the
@@ -246,6 +249,22 @@ def roled_paths(type_dir: str, rel: tuple[str, ...]) -> dict[str, tuple[str, ...
     stays, after theirs (`reviewing-principle-t`)."""
     tail = rel[1:] if len(rel) > 1 else (TYPE_DIRS[type_dir], *rel)
     return {BUILDER: rel, **{kind: (use_case, *tail) for kind, use_case in USE_CASES.items()}}
+
+
+def roled_routes(artifact: Artifact, type_dir: str, rel: tuple[str, ...], kind: str,
+                 library: Optional[str] = None) -> tuple[str, ...]:
+    """The routes of a roled artifact's `kind` skill. The builder routes as the
+    artifact would unroled. Each other kind routes under its own use case and
+    keeps the artifact's own below it, so one kind's skills from every use case
+    never share a node: `coding/reviewing/planning/data` for
+    `guidelines/planning/data/t`, and `coding/reviewing/principles` for a
+    principle."""
+    if kind == BUILDER:
+        return derive_routes(artifact, type_dir, rel, library)
+    use_case = USE_CASES[kind]
+    if TYPE_DIRS[type_dir] == "principle":
+        return ("/".join(["coding", use_case, "principles"]),)
+    return derive_routes(artifact, type_dir, (use_case, *rel), library)
 
 
 def derive_routes(artifact: Artifact, type_dir: str, rel: tuple[str, ...],
@@ -484,7 +503,7 @@ def compose_all(folder: Path, library: Optional[str] = None, templates: Path = T
         t = template(f"{src.kind}.{kind}", templates)
         rel = paths[kind]
         name = skill_name(src.type_dir, rel, src.library)
-        routes = derive_routes(src.artifact, src.type_dir, rel, src.library)
+        routes = roled_routes(src.artifact, src.type_dir, src.rel, kind, src.library)
         # The code that implements it is the builder's concern alone.
         art, ri = _with_implementations(src, t) if kind == BUILDER else (src.artifact, None)
         parts = [p for p in art.parts

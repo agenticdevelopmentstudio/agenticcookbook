@@ -67,7 +67,11 @@ tripwires, and a judge's recorded, pinned verdict:
   keyword, negation or FLIP_WORD; it is shown, never silently passed.
 - Every copy folded since the base is read (`_unread_copies`): a "Fold" history
   row's copy, and a same-named folder gone since the base, must be listed, and
-  a listed copy must be gone.
+  a listed copy must be gone. A same-named folder that was renamed, not folded
+  (a live artifact carries its id), is no copy.
+- `renamed_from`, a path at the base from the repo root, says the topic was
+  moved there since the base: that path is read as its own base text
+  (`_base_home`). It must be gone now and its artifact id must be the topic's.
 
 An entry that accounts for nothing fails; one naming a sentence twice is
 refused. No part names the file, so it never reaches a compiled doc or skill.
@@ -739,7 +743,9 @@ def read_accounting(folder: Path) -> Optional[dict]:
     except json.JSONDecodeError as e:
         raise RoleworkError(f"{path}: not JSON ({e})") from e
     copies = data.get("copies", []) if isinstance(data, dict) else None
+    renamed = data.get("renamed_from", "x") if isinstance(data, dict) else None
     if (not isinstance(data, dict) or not isinstance(data.get("base"), str)
+            or not (isinstance(renamed, str) and renamed)
             or not isinstance(copies, list) or not all(isinstance(c, str) and c for c in copies)
             or not isinstance(data.get("moved", []), list)
             or not _entries(data, "moved", "to") or not _entries(data, "obsolete", "reason")
@@ -747,6 +753,7 @@ def read_accounting(folder: Path) -> Optional[dict]:
                     and all(isinstance(s, str) and s.strip() for s in data.get("retargets", [])))):
         judged = '{"by": "...", "verdict": "pass" or "fail", "note": "...", "pin": "<sha256>"}'
         raise RoleworkError(f'{path}: expected {{"base": "<rev>", "copies": ["<folder at rev>", ...], '
+                            f'"renamed_from" (optional): "<this folder\'s path at rev>", '
                             f'"moved": [{{"sentence": "...", '
                             f'"to": "<rule or part>" or ["<rule or part>", ...], '
                             f'"judged" (optional): {judged}, '
@@ -984,8 +991,42 @@ def _base_title(folder: Path, rev: str) -> Optional[str]:
     return title if isinstance(title, str) else None
 
 
+def _artifact_id(folder: Path, rev: Optional[str] = None) -> Optional[str]:
+    """`folder`'s meta id now, or at `rev` (None when it has none)."""
+    top = _top(folder)
+    if rev is None:
+        f = Path(folder) / ARTIFACT_FILE
+        text = f.read_text(encoding="utf-8") if f.is_file() else None
+    else:
+        shown = _git(top, "show", f"{rev}:{_rel(Path(folder).resolve(), top)}/{ARTIFACT_FILE}")
+        text = None if shown.returncode else shown.stdout
+    try:
+        found = json.loads(text).get("meta", {}).get("id") if text else None
+    except (ValueError, AttributeError):
+        return None
+    return found if isinstance(found, str) else None
+
+
+def _base_home(folder: Path, rev: str, accounting: Optional[dict]) -> Path:
+    """Where `folder`'s own text lives at `rev`: itself, or the `renamed_from`
+    path its accounting names, which must be gone now and carry its id."""
+    renamed = (accounting or {}).get("renamed_from")
+    if not renamed:
+        return Path(folder).resolve()
+    top = _top(folder)
+    home = (top / renamed).resolve()
+    if home.exists():
+        raise RoleworkError(f'{ACCOUNTING}: renamed_from {renamed} still exists: it names where this '
+                            f'topic was at --base, gone since')
+    if _artifact_id(home, rev) != _artifact_id(folder):
+        raise RoleworkError(f"{ACCOUNTING}: renamed_from {renamed} at {rev} is not this topic "
+                            f"(its artifact id differs, or it has none)")
+    return home
+
+
 def _read_base(folder: Path, rev: str, copies: Iterable[Path], accounting: Optional[dict]) -> _Base:
     top = _top(folder)
+    home = _base_home(folder, rev, accounting)
     wanted = [Path(c).resolve() for c in copies]
     wanted += [top / c for c in (accounting or {}).get("copies", [])]
     read = list(dict.fromkeys(p.resolve() for p in wanted))
@@ -995,12 +1036,12 @@ def _read_base(folder: Path, rev: str, copies: Iterable[Path], accounting: Optio
     own: set[str] = set()
     origin: dict[str, str] = {}
     checked = 0
-    for old in (folder, *read):
+    for old in (home, *read):
         titles = {t for t in (current.meta.get("title"), _base_title(old, rev)) if t}
         for text in base_parts(old, rev):
             for s in sentences(_drop_markdown_only(text, titles)):
                 checked += 1
-                if old is folder:
+                if old is home:
                     own.add(s)
                 else:
                     origin.setdefault(s, _rel(old, top))
@@ -1014,11 +1055,28 @@ def _read_base(folder: Path, rev: str, copies: Iterable[Path], accounting: Optio
 _FOLD_ROW = re.compile(r"(?:^|[|;])\s*Fold (\S+) into this topic")
 
 
-def _unread_copies(folder: Path, rev: str, read: list[Path]) -> list[str]:
+def _live_ids(cookbook: Path, besides: Path) -> set[str]:
+    """The meta id of every artifact folder under `cookbook` now, `besides` itself
+    excepted: a twin that carries the topic's own id was folded into it, not
+    renamed away."""
+    ids = set()
+    for f in cookbook.rglob(ARTIFACT_FILE):
+        if "versions" in f.relative_to(cookbook).parts or f.parent.resolve() == besides:
+            continue
+        found = _artifact_id(f.parent)
+        if found:
+            ids.add(found)
+    return ids
+
+
+def _unread_copies(folder: Path, rev: str, read: list[Path],
+                   home: Optional[Path] = None) -> list[str]:
     """Why a copy folded since `rev` would go unread, one reason each:
     a "Fold <path>" history row added since `rev` whose copy is not read; an
     artifact folder at `rev` that is gone now and has the topic's folder name
-    (a twin) that is not read; a read copy that still exists (not folded)."""
+    (a twin) that is not read, unless another live artifact carries its id (it
+    was renamed, not folded); a read copy that still exists (not folded). `home`
+    is where the topic was at `rev` (`_base_home`), for its history there."""
     top = _top(folder)
     folder = Path(folder).resolve()
     listed = set(read)
@@ -1026,7 +1084,7 @@ def _unread_copies(folder: Path, rev: str, read: list[Path]) -> list[str]:
     why = []
     hist_file = folder / f"{HISTORY}.md"
     now_rows = hist_file.read_text(encoding="utf-8").splitlines() if hist_file.is_file() else []
-    at_base = _git(top, "show", f"{rev}:{_rel(hist_file, top)}")
+    at_base = _git(top, "show", f"{rev}:{_rel((home or folder) / f'{HISTORY}.md', top)}")
     base_rows = set(at_base.stdout.splitlines()) if not at_base.returncode else set()
     for row in now_rows:
         if row in base_rows:
@@ -1035,12 +1093,17 @@ def _unread_copies(folder: Path, rev: str, read: list[Path]) -> list[str]:
             path = (cookbook / m.group(1)).resolve()
             if path not in listed:
                 why.append(f"folded copy {_rel(path, top)} is not read: add it to \"copies\"")
+    live: Optional[set[str]] = None
     listed_at_base = _git(top, "ls-tree", "-r", "--name-only", rev, "--", _rel(cookbook, top))
     for line in listed_at_base.stdout.splitlines():
         if not line.endswith(f"/{ARTIFACT_FILE}"):
             continue
         twin = (top / line).parent.resolve()
         if twin.name == folder.name and twin != folder and not twin.exists() and twin not in listed:
+            if live is None:
+                live = _live_ids(cookbook, folder)
+            if _artifact_id(twin, rev) in live:
+                continue
             why.append(f"folded copy {_rel(twin, top)} (a twin of this topic, gone since --base) "
                        f"is not read: add it to \"copies\"")
     for c in read:
@@ -1082,7 +1145,8 @@ def lossless(folder: Path, rev: str, copies: Iterable[Path] = (),
     report.copies = [_rel(c, top) for c in base.copies]
     report.checked = base.checked
     report.failures += [{"sentence": None, "to": None, "reason": r}
-                        for r in _unread_copies(folder, rev, base.copies)]
+                        for r in _unread_copies(folder, rev, base.copies,
+                                                _base_home(folder, rev, accounting))]
 
     moved: dict[str, dict] = {}
     dropped: dict[str, dict] = {}

@@ -159,7 +159,8 @@ is cut to the hosts' limit, are refused, each naming the other.
 
 `rationale` and `references` go to each skill's linked reference files, never
 its SKILL.md. Each skill has its own description and routes under its own use
-case. A builder writes the code, a reviewer reviews it, and each
+case, with the artifact's own use case below it (`coding/reviewing/planning/data`; a
+principle's `coding/reviewing/principles`). A builder writes the code, a reviewer reviews it, and each
 verifier grades the other's work against its bar.
 
 ### Research
