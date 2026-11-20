@@ -5,7 +5,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Prefer platform built-in frameworks before custom implementations",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/native-controls.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/native-controls/",
     "prompt": null
   },
   {
@@ -14,7 +14,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Note and get approval for all behavioral/structural choices",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/code-quality/scope-discipline.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/code-quality/scope-discipline/",
     "prompt": null
   },
   {
@@ -23,7 +23,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "All lengthy work on background threads",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/concurrency/concurrency.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/concurrency/concurrency/",
     "prompt": null
   },
   {
@@ -32,7 +32,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "One logical change per commit",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/code-quality/atomic-commits.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/code-quality/atomic-commits/",
     "prompt": null
   },
   {
@@ -41,7 +41,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Build, test, lint, log verify, a11y audit, code review",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/post-generation-verification.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/post-generation-verification/",
     "prompt": null
   },
   {
@@ -50,7 +50,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Linter configured, runs on build or pre-commit",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/code-quality/linting.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/code-quality/linting/",
     "prompt": null
   },
   {
@@ -59,7 +59,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "No interleaving of concerns. Simple beats easy.",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/simplicity.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/simplicity/",
     "prompt": null
   },
   {
@@ -68,7 +68,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Three sequential phases — never skip phase 2",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/make-it-work-make-it-right-make-it-fast.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/make-it-work-make-it-right-make-it-fast/",
     "prompt": null
   },
   {
@@ -77,7 +77,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Receive dependencies from outside, not constructed internally",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/dependency-injection.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/dependency-injection/",
     "prompt": null
   },
   {
@@ -86,7 +86,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Default to immutable values; mutate only when necessary",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/immutability-by-default.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/immutability-by-default/",
     "prompt": null
   },
   {
@@ -95,7 +95,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Detect invalid state at point of origin",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/fail-fast.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/fail-fast/",
     "prompt": null
   },
   {
@@ -104,7 +104,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Build disposable, not reusable. Every line is a maintenance liability.",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/design-for-deletion.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/design-for-deletion/",
     "prompt": null
   },
   {
@@ -113,7 +113,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Build for today's known requirements only",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/yagni.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/yagni/",
     "prompt": null
   },
   {
@@ -122,7 +122,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "Visible dependencies, clear intent, no hidden behavior",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/explicit-over-implicit.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/explicit-over-implicit/",
     "prompt": null
   },
   {
@@ -131,7 +131,7 @@
     "category": "core-engineering",
     "apply": "always",
     "summary": "One reason to change per module",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/separation-of-concerns.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/principles/separation-of-concerns/",
     "prompt": null
   },
   {
@@ -158,7 +158,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "Isolated, deterministic, fast, behavioral, readable",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/properties-of-good-tests.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/properties-of-good-tests/",
     "prompt": null
   },
   {
@@ -176,7 +176,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "No shared state, no timing, no real network in unit tests",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/flaky-test-prevention.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/flaky-test-prevention/",
     "prompt": null
   },
   {
@@ -194,7 +194,7 @@
     "category": "testing",
     "apply": "always",
     "summary": "Write tests alongside code, validate with mutation testing",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/the-testing-workflow.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/the-testing-workflow/",
     "prompt": null
   },
   {
@@ -204,7 +204,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Determinate or indeterminate progress for async work",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/ui/always-show-progress.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/ui/always-show-progress/",
     "prompt": "Does this feature involve async operations that need progress indication?"
   },
   {
@@ -214,7 +214,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Structured logging for all components and flows",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/observability/logging.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/observability/logging/",
     "prompt": "This feature will include structured logging. Any components that should be excluded?"
   },
   {
@@ -224,7 +224,7 @@
     "apply": "ask",
     "default": "ask",
     "summary": "All significant views must be deep linkable",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/platform-integration/deep-linking.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/platform-integration/deep-linking/",
     "prompt": "Should the views in this feature be deep linkable?"
   },
   {
@@ -234,7 +234,7 @@
     "apply": "ask",
     "default": "opt-out",
     "summary": "Components scriptable via platform mechanisms (Shortcuts, intents)",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/platform-integration/shortcuts-and-automation.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/platform-integration/shortcuts-and-automation/",
     "prompt": "Does this feature need scripting/automation support (Shortcuts, intents)?"
   },
   {
@@ -244,7 +244,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Platform accessibility APIs from day one",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/accessibility/accessibility.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/accessibility/accessibility/",
     "prompt": "This feature will include full accessibility support. Any constraints?"
   },
   {
@@ -254,7 +254,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "All user-facing strings localizable",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/internationalization/localization.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/internationalization/localization/",
     "prompt": "This feature will use localized strings. Confirm or opt out."
   },
   {
@@ -264,7 +264,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Support right-to-left languages",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/internationalization/rtl-support.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/internationalization/rtl-support/",
     "prompt": "This feature will support RTL layouts. Confirm or opt out."
   },
   {
@@ -274,7 +274,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Respond to reduced motion, high contrast, bold text, etc.",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/accessibility/accessibility.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/accessibility/accessibility/",
     "prompt": "This feature will respect accessibility display options. Confirm or opt out."
   },
   {
@@ -284,7 +284,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Data minimization, secure storage, no PII logging",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/security/privacy.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/security/privacy/",
     "prompt": "Does this feature collect, store, or transmit user data?"
   },
   {
@@ -294,7 +294,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "All features gated behind feature flags",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/feature-management/feature-flags.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/feature-management/feature-flags/",
     "prompt": "This feature will be gated behind a feature flag. Confirm or opt out."
   },
   {
@@ -304,7 +304,7 @@
     "apply": "ask",
     "default": "ask",
     "summary": "Significant user actions instrumented for analytics",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/observability/analytics.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/observability/analytics/",
     "prompt": "Which user actions in this feature should be tracked for analytics?"
   },
   {
@@ -314,7 +314,7 @@
     "apply": "ask",
     "default": "opt-out",
     "summary": "Variant assignment support for experiments",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/feature-management/ab-testing.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/feature-management/ab-testing/",
     "prompt": "Does this feature need A/B testing / experimentation support?"
   },
   {
@@ -324,7 +324,7 @@
     "apply": "ask",
     "default": "opt-in",
     "summary": "Debug panel entries for flags, analytics, experiments",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/feature-management/debug-mode.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/implementing/feature-management/debug-mode/",
     "prompt": "This feature will include debug panel entries. Confirm or opt out."
   },
   {
@@ -344,7 +344,7 @@
     "apply": "ask",
     "default": "ask",
     "summary": "Validate tests catch bugs via mutation analysis",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/mutation-testing.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/mutation-testing/",
     "prompt": "Should we run mutation testing to validate test quality?"
   },
   {
@@ -354,7 +354,7 @@
     "apply": "ask",
     "default": "ask",
     "summary": "SAST, dependency scanning, security audits",
-    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/security-testing.md",
+    "guideline_path": "../agenticdevelopercookbook/cookbook/guidelines/testing/security-testing/",
     "prompt": "Should we run security scans (Semgrep, dependency audit)?"
   }
 ]
