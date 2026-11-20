@@ -530,10 +530,9 @@ def cookr_pieces(file: str, cookr_py: str, cli: Path | None) -> list[list]:
     env = dict(os.environ)
     if cli is not None:
         env["PYTHONPATH"] = str(cli)
-    code = ("import json, sys; from cookr.core.gaps import _FENCE, _SPLIT, MIN_WORDS, blocks, normalise; "
+    code = ("import json, sys; from cookr.core.gaps import MIN_WORDS, pieces; "
             "t = open(sys.argv[1], encoding='utf-8').read(); "
-            "print(json.dumps([[p.strip(), len(normalise(p).split()) >= MIN_WORDS] "
-            "for b in blocks(_FENCE.sub('\\n\\n', t)) for p in _SPLIT.split(b) if normalise(p)]))")
+            "print(json.dumps([[p, len(n.split()) >= MIN_WORDS] for p, n in pieces(t)]))")
     # -P: never the working directory on the path (G44), and a fixed cwd too
     r = subprocess.run([cookr_py, "-P", "-c", code, file], capture_output=True, text=True, env=env,
                        cwd=HERE)

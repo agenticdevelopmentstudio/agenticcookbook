@@ -86,15 +86,18 @@ def blocks(text: str) -> list[str]:
     return found
 
 
+def pieces(text: str) -> list[tuple[str, str]]:
+    """(original wording, normalised) for every piece `text` is cut into, in
+    order: its prose blocks (fenced code left out) split after each sentence
+    mark. A piece with no words is left out; one under MIN_WORDS is kept here,
+    for a caller that shows what `sentences` drops (grow-cookbook's run_gaps)."""
+    return [(piece.strip(), norm) for block in blocks(without_fences(text))
+            for piece in _SPLIT.split(block) if (norm := normalise(piece))]
+
+
 def sentences(text: str) -> list[tuple[str, str]]:
     """(original wording, normalised) for each counted sentence of `text`."""
-    found = []
-    for block in blocks(without_fences(text)):
-        for piece in _SPLIT.split(block):
-            norm = normalise(piece)
-            if len(norm.split()) >= MIN_WORDS:
-                found.append((piece.strip(), norm))
-    return found
+    return [(p, norm) for p, norm in pieces(text) if len(norm.split()) >= MIN_WORDS]
 
 
 def topic_text(folder: Path) -> str:
