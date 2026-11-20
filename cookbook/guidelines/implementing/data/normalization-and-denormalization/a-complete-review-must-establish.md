@@ -8,4 +8,4 @@
 - Triggers used to maintain denormalized data are wrapped in transaction and tested
 - No "just in case" denormalization; measure the query before denormalizing
 
-- `should-start-at-3nf`: A review passes when it establishes every item above.
+A review passes when it establishes every item above.

@@ -16,4 +16,4 @@
 - iOS variants use no downloaded code that introduces or changes features, are neither hidden from App Review nor undocumented, and are described with specificity in the Notes for Review and accessible for review; they ship in the reviewed binary, or a recorded reason says why not
 - Store-page tests use Apple product page optimization or Google Play store listing experiments, or a recorded reason says why not
 
-- `store-page-tests-use-store-tools`: A review passes when it establishes every item above.
+A review passes when it establishes every item above.

@@ -43,7 +43,7 @@
       "schema-design"
     ]
   },
-  "synced": "7afe8317e42d7909",
+  "synced": "bf28d627c4144d35",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

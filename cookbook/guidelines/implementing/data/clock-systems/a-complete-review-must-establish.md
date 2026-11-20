@@ -6,4 +6,4 @@
 - Clock implementation format specified (e.g., 64-bit for HLC: 32-bit counter + 32-bit clock ID)
 - Clock synchronization or drift tolerance documented
 
-- `must-not-order-by-wall-clock-alone`: A review passes when it establishes every item above.
+A review passes when it establishes every item above.

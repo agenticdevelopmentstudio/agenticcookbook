@@ -6,4 +6,4 @@
 - Connection pooling implements single-writer pattern for write transactions
 - Transaction isolation levels understood and documented for concurrent read scenarios
 
-- `must-enable-wal-mode`: A review passes when it establishes every item above.
+A review passes when it establishes every item above.

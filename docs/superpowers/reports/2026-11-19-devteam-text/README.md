@@ -82,5 +82,7 @@ Tensions the batches noted (no rule directly contradicted):
 
 Text that names devteam's own machinery (the diff, a lane, `read_base_file`, "your summary", another speciality)
 moved verbatim like everything else. Each batch report lists it, quoted, under **reader-specific**. One process
-sentence recurs: "A review passes when it establishes every item above." It sits under the last rule of each topic
-that had it.
+sentence recurs: "A review passes when it establishes every item above." In each of the 24 topics that
+have it, it is the review bar's untagged closing line, after every bullet. The batches had tagged it with whichever
+rule came last in 21 of them, which would have read as a requirement of that rule; review finding f9 made all 24
+the same.

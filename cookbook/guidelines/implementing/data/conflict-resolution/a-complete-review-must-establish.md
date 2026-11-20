@@ -4,4 +4,5 @@
 - Field-level merge strategy includes base version for three-way comparison when applicable
 - Manual resolution queue exists for conflicts that cannot be automatically resolved
 - Policy justification documented (why this strategy fits the data semantics)
-- `must-have-explicit-conflict-strategy`: A review passes when it establishes every item above.
+
+A review passes when it establishes every item above.

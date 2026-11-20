@@ -8,4 +8,4 @@
 - No application logic relies on exact JSON string representation; always extract via `json_extract()`
 - JSON columns optional/nullable unless default JSON object provided; NULL vs empty `{}` distinction understood
 
-- `should-index-json-via-generated-columns`: A review passes when it establishes every item above.
+A review passes when it establishes every item above.

@@ -50,10 +50,10 @@
       "sentence": "See the implementing copy of this guideline for detailed examples and fix patterns.",
       "reason": "the reviewing copy's pointer to this topic; the copy is folded into this topic, so the pointer would point at itself",
       "judged": {
-        "by": "judge-opus-5.5-2026-11-19",
+        "by": "judge-opus-5.5-2026-11-20",
         "verdict": "pass",
-        "note": "The sentence only points the reviewing copy at the implementing copy and states no rule; this topic holds the folded copy's anti-patterns (look-for.md) and examples and fixes for each (anti-patterns-that-cause-full-table-scans.md), so the pointer would point at itself, and the added should-index-both-sides-of-or pass line is a review criterion that leaves this unchanged.",
-        "pin": "9b709ab3e551e897cfe3d6c28d6c6ceb800358450ead668717994197c1d3f862"
+        "note": "The sentence only points the reviewing copy at the implementing copy and states no rule; this topic holds the folded copy's anti-patterns (look-for.md) and examples and fixes for each (anti-patterns-that-cause-full-table-scans.md), so the pointer would point at itself, and the added should-index-both-sides-of-or pass line is a review criterion that leaves this unchanged; review finding f9 only made the pass sentence an untagged closing line, which leaves this unchanged.",
+        "pin": "40f7a108ae699c3b96f155ade0671b0eddf67a8e3021392d4575bd3e82415c76"
       }
     }
   ]

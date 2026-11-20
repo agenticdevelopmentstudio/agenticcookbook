@@ -6,4 +6,5 @@
 - Schema migration strategy handles offline devices (deferred, conditional, or dual schema)
 - Data expiry and cache invalidation strategy documented
 - Connectivity detection implemented to trigger sync when connection restored
-- `must-enable-wal-for-synced-databases`: A review passes when it establishes every item above.
+
+A review passes when it establishes every item above.

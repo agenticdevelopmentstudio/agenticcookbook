@@ -5,4 +5,5 @@
 - Server requirements documented (PostgreSQL, custom backend, cloud-hosted, self-hosted options)
 - License compatibility verified
 - Migration path or escape hatch documented if tool becomes unsuitable
-- `should-choose-tool-by-requirements`: A review passes when it establishes every item above.
+
+A review passes when it establishes every item above.
