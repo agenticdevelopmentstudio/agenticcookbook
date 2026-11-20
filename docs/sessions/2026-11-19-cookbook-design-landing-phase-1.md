@@ -1,8 +1,8 @@
-# Session: landing the cookbook design, tooling, content and devteam's review text
+# Session: landing the cookbook design, tooling, content, devteam's review text and reference format 3
 
 - **Date:** 2026-11-19
 - **Session:** `42c82725-9e4b-4ae4-aed3-3ac87a841295`
-- **Branch:** `cookbook-design-landing`, `cookbook-design-landing-phase-2`, `cookbook-devteam-text`
+- **Branch:** `cookbook-design-landing`, `cookbook-design-landing-phase-2`, `cookbook-devteam-text`, `reference-format-3`
 
 ## Orientation
 
@@ -13,7 +13,8 @@ pins were left alone. It ran as an all-night run under the development playbook.
 
 Phase 1, tooling and design, landed as PR #81. Phase 2, converting every guideline and principle to roled parts,
 landed as PR #83 (`23deb6d`). Phase 2b, moving devteam's own review text into its topics (R7), landed as PR #85
-(`541164e7`). Next, the devteam re-pins this cookbook. That is phase 3, and it runs in teamtesting.
+(`541164e7`). Phase 2c, reference format 3 (grow-cookbook 1.4.46), landed as PR #87 (`121c85dc`). Next, the
+devteam re-pins this cookbook at `121c85dc`. That is phase 3, and it runs in teamtesting.
 
 ## Decisions
 
@@ -55,6 +56,17 @@ landed as PR #83 (`23deb6d`). Phase 2b, moving devteam's own review text into it
 - **A rule's name carries its keyword (f10).** Renamed: `must-not-deviate-from-platform-design-without-rationale`,
   `should-not-ask-for-more-than-the-use-needs`, `should-use-relative-unit-breakpoints-on-the-web` (f8).
 
+- **Stage 1 measures only a speciality's own text (format 3).** A roled speciality's review sections are its
+  topic's reviewer pair, copied whole, so counting them measured the topic against itself. The devteam's
+  `speciality_reference.py` writes `FORMAT = 3` and names the left-out sections in the row's `copied`.
+- **A devteam checkout that writes an older format is refused, never run (review f3).** Its `FORMAT` line is read,
+  not executed, so a stale checkout can't make an old reference look current.
+- **MUST means no exception (review f1).** A review bar line that let any rule be skipped with a reason was split:
+  MUST rules are kept, and only SHOULD rules may be skipped with a reason. The pre-branch shell-scripts line got
+  the same fix (topic bumped 1.2.1 → 1.2.2).
+- **Each fix lands as its own commit, split by hand when two findings touched one file.** The f2 and f3 fixes both
+  edited `run_gaps.py`, so f3's edits were set aside and f2 was committed and tested alone first.
+
 ## Considered and rejected
 
 - **Making `held()` in gaps match on whole words only.** This was half of finding f7, and it was refuted.
@@ -68,16 +80,18 @@ landed as PR #83 (`23deb6d`). Phase 2b, moving devteam's own review text into it
 - **Research is still owed.** Every converted topic is in `research-exempt.json` until it has been researched.
 - **R4 contradictions and reader-specific text await the owner's ruling.** Listed in
   [reports/2026-11-19-devteam-text/README.md](../superpowers/reports/2026-11-19-devteam-text/README.md).
-- **Phase 3 (in teamtesting).** Re-pin the cookbook in agenticdevteam, then point every speciality whose
-  `metadata.cookbook` names a folded topic at that topic's survivor. After that, re-pin pipeline and devteam, then
-  review and ship each repo.
+- **Phase 3 (in teamtesting).** The specialities already point at the survivors, and the whole-branch review
+  (`2026-11-20-live-claude-claude-opus-5-5-46dd`) is fixed. Still to do: re-pin agenticdevteam's cookbook at
+  `121c85dc`, then land pipeline, agenticdevteam and teamtesting in that order.
 
 ## Pointers
 
 - Checklist: [2026-11-19-cookbook-design-landing.md](../superpowers/plans/2026-11-19-cookbook-design-landing.md)
 - Status: [STATUS.md](../project/STATUS.md), the section for PR #81
 - Status: [STATUS.md](../project/STATUS.md), the section for PR #83
+- Status: [STATUS.md](../project/STATUS.md), the section for PR #87
 - Reviews: `2026-11-20-live-claude-claude-opus-5-5-e51c` (phase 1) and `2026-11-20-live-claude-claude-opus-5-5-ac2d`
-  (phase 2) and `2026-11-20-live-claude-claude-opus-5-5-663e` (phase 2b), in the private reviews repo
+  (phase 2), `2026-11-20-live-claude-claude-opus-5-5-663e` (phase 2b) and `2026-11-20-live-claude-claude-opus-5-5-cc41`
+  (phase 2c), in the private reviews repo
 - Phase 2 batch reports: [reports/2026-11-19-phase-2/](../superpowers/reports/2026-11-19-phase-2/)
 - Phase 2b reports: [reports/2026-11-19-devteam-text/](../superpowers/reports/2026-11-19-devteam-text/)

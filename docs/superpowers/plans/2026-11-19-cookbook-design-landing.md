@@ -83,3 +83,15 @@ regenerated from it.
 - ℹ️ Contradictions (R4) and reader-specific text are moved and left unfixed, for the owner to rule on; the
   report's README lists each with both quotes.
 
+## Phase 2c — reference format 3 (`reference-format-3`)
+
+A roled speciality's *Review focus* and review bar are its topic's reviewer pair, copied whole, so stage 1 must not
+measure them as the speciality's own text. grow-cookbook 1.4.46 reads reference format 3.
+
+- ✅ format 3 in `reference_format.py`, `run_gaps.py` and stage 1's docs (`635e5c70`, `e9b5abb4`)
+- ✅ whole-branch review (`mycodereview --cr high`, review `2026-11-20-live-claude-claude-opus-5-5-cc41`): 6 findings,
+  each fixed in its own commit with a test or scan that fails before it (`d3e9db0d`, `37bd974a`, `eefd402e`,
+  `dd0c9672`, `37eac5e7`, `121c85dc`); fixes recorded with `teambench live fixes`; gate re-run: cookr 1557,
+  grow-cookbook 702, `validate` and `lint --no-llm` over 383 artifacts all pass
+- ✅ landed with `/ship no-squash` (PR #87, `121c85dc`)
+

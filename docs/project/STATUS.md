@@ -1,6 +1,6 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-11-20 (PR #85). *Derives from:* `226f310` (PR #64, agenticcookbook),
+*Updated:* 2026-11-20 (PR #87). *Derives from:* `226f310` (PR #64, agenticcookbook),
 `2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`),
 PR #72 (`dd2e4670`, `44c510bf`), PR #74 (`689ab01`, `e75c550`), PR #78
 (`48d460aa`, `40c02a7f`, `63522f3f`), `52df843b` (cookr 0.13.1), and
@@ -12,6 +12,29 @@ Read this first to resume the work. The design lives in the
 format 2 and recipes-first adoption live in the
 [adoption design](../superpowers/specs/2026-11-09-cookr-adoption-design.md) and its
 [plan](../superpowers/plans/2026-11-09-cookr-adoption.md).
+
+## Reference format 3, grow-cookbook 1.4.46 (PR #87, 2026-11-20)
+
+*Derives from:* PR #87, `aae80fb5..121c85dc` (landed one by one). Checklist:
+[2026-11-19-cookbook-design-landing.md](../superpowers/plans/2026-11-19-cookbook-design-landing.md), Phase 2c.
+
+- **A roled speciality's review sections are not its own text.** The devteam copies a roled topic's reviewer and
+  review-verifier skills whole into the speciality's *Review focus* and *A complete review must establish*, so
+  stage 1 measuring them counted the topic against itself. Reference format 3 (`REFERENCE_FORMAT = 3`, matching
+  the devteam's `speciality_reference.py` `FORMAT = 3`) leaves them out, and the row's `copied` names them. A row
+  written in an older format is `stale_reference` and is never measured as current.
+- **A stale writer is refused.** `reference_format.writer_format` reads a devteam script's `FORMAT` line without
+  running it. `devteam_checkout.py` exits 2 saying to pull a checkout that writes an older format, and `run_gaps.py`
+  never runs such a script; a reference it would have written is `no_writer` (review f3).
+- **`review_focus_pair` only where a reference opens with its own Review focus** (f2). In a roled reference,
+  sentences 1 and 2 are other text, and a repeat there counts like any other.
+- **MUST rules are kept with no exception.** In the 24 review bars that said "every other rule is kept, or the
+  change says why not", the line is split: every MUST rule is kept with no exception, and only a SHOULD rule may be
+  skipped with a reason (f1). transport-security's bar tags each rule with its real level (f6).
+- Review `2026-11-20-live-claude-claude-opus-5-5-cc41` (`/code-review high`, 6 findings), each fixed in its own
+  commit. Gate after the fixes: cookr 1557, grow-cookbook 702, `validate` and `lint --no-llm` over 383 artifacts.
+- **Next:** agenticdevteam re-pins `external/agenticcookbook` at `121c85dc`, and the devteam, pipeline and
+  teamtesting branches land (phase 3, in teamtesting).
 
 ## Cookbook design landing, phase 2b (PR #85, 2026-11-20)
 
