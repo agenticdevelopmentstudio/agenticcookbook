@@ -1,8 +1,8 @@
-# Session: landing the cookbook design and tooling from the devteam branch
+# Session: landing the cookbook design, tooling and content from the devteam branch
 
 - **Date:** 2026-11-19
 - **Session:** `42c82725-9e4b-4ae4-aed3-3ac87a841295`
-- **Branch:** `cookbook-design-landing`
+- **Branch:** `cookbook-design-landing`, `cookbook-design-landing-phase-2`
 
 ## Orientation
 
@@ -11,8 +11,8 @@ The cookr and grow-cookbook work, and the new artifact design (roled parts, name
 moved that work to the cookbook's `main`, so that everyone using cookr gets it, while the devteam and teamtesting
 pins were left alone. It ran as an all-night run under the development playbook.
 
-Phase 1, tooling and design, has landed as PR #81. Phase 2, converting the content, is next. After it, the devteam
-re-pins this cookbook.
+Phase 1, tooling and design, landed as PR #81. Phase 2, converting every guideline and principle to roled parts,
+landed as PR #83 (`23deb6d`). Next, the devteam re-pins this cookbook. That is phase 3, and it runs in teamtesting.
 
 ## Decisions
 
@@ -31,6 +31,20 @@ re-pins this cookbook.
 - **Run conditions for the night run.** Tests ran only at each phase gate and were pre-authorized. Reviews were
   `mycodereview --cr high`. No devteam review was run.
 
+- **Phase 2's conversion was format only.** Batches of about 20 topics went to subagents with one brief (no research,
+  no new rules, no change to any rule's substance). Each topic was committed on its own, then the topics were
+  squashed with `squashr` into one content commit (`508d051`) before the review.
+- **A reworded sentence is accepted only with a judge's pin.** An opus judge reviewed every `moved` entry, and its
+  verdict is pinned in `lossless.json` with `roles lossless --pin-for`. One example is api-style-selection's
+  `may-combine-styles`, which was at 69% overlap. Rewording it created a new missing sentence and a clause-MAY
+  failure. So the original rule sentence stays verbatim, and one added sentence ("A single system **MAY** use more
+  than one style.") carries the rule. The judge passed that version.
+- **Self-links are a cookr fix, not a content workaround (f6).** A reviewer line that linked to its own topic failed
+  the overlap check. `_drop_self_links` (cookr 0.23.4) measures the sentence without those links. The 13 lines now
+  read "against the rules above".
+- **The two pinned commits stay bundled (f8).** Splitting `fe1451b` or `508d051` would rewrite the commit the review
+  pinned, and that would cut its fix commits off from it. The checklist lists what each commit holds instead.
+
 ## Considered and rejected
 
 - **Making `held()` in gaps match on whole words only.** This was half of finding f7, and it was refuted.
@@ -41,12 +55,7 @@ re-pins this cookbook.
 
 ## Open threads
 
-- **Phase 2.**
-  - Convert about 250 guideline topics in batches of about 20, one commit per topic. Each topic must pass `lossless`
-    and an independent judge.
-  - Convert the 44 principles.
-  - Write the R3 reviewer and build parts for topics that have no review text.
-  - Keep every converted topic in `research-exempt.json` until it has been researched.
+- **Research is still owed.** Every converted topic is in `research-exempt.json` until it has been researched.
 - **Phase 3 (in teamtesting).** Re-pin the cookbook in agenticdevteam, then point every speciality whose
   `metadata.cookbook` names a folded topic at that topic's survivor. After that, re-pin pipeline and devteam, then
   review and ship each repo.
@@ -55,4 +64,7 @@ re-pins this cookbook.
 
 - Checklist: [2026-11-19-cookbook-design-landing.md](../superpowers/plans/2026-11-19-cookbook-design-landing.md)
 - Status: [STATUS.md](../project/STATUS.md), the section for PR #81
-- Review: `2026-11-20-live-claude-claude-opus-5-5-e51c` in the private reviews repo
+- Status: [STATUS.md](../project/STATUS.md), the section for PR #83
+- Reviews: `2026-11-20-live-claude-claude-opus-5-5-e51c` (phase 1) and `2026-11-20-live-claude-claude-opus-5-5-ac2d`
+  (phase 2), in the private reviews repo
+- Phase 2 batch reports: [reports/2026-11-19-phase-2/](../superpowers/reports/2026-11-19-phase-2/)

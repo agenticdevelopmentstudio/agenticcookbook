@@ -52,7 +52,7 @@ A fresh worktree off `main` after phase 1 lands.
   8 findings, each fixed in its own commit (f6 in two: the cookr fix and the 13 topics; f8 by recording why the
   pinned bundles stay); fixes recorded with `teambench live fixes`; suites re-run after the fixes: cookr 1543,
   grow-cookbook 698, `validate` and `lint --no-llm` over 383 artifacts all pass
-- 🔄 landed with `/ship no-squash`
+- ✅ landed with `/ship no-squash` (PR #83, `23deb6d`)
 - ℹ️ Two reviewed commits bundle changes that could have stood alone (review `2026-11-20-live-claude-claude-opus-5-5-ac2d`,
   f8). They stay bundled, because they are the commits that review pinned. Splitting them now would rewrite the pinned
   commit and cut its fix commits off from it. What each one holds, for anyone reverting part of it:

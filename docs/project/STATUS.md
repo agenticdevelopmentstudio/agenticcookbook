@@ -1,6 +1,6 @@
 # Status — compiled artifacts and routed skills
 
-*Updated:* 2026-11-19 (PR #81). *Derives from:* `226f310` (PR #64, agenticcookbook),
+*Updated:* 2026-11-19 (PR #83). *Derives from:* `226f310` (PR #64, agenticcookbook),
 `2ac4109` (PR #2, skill-router), PR #66 (`revise-corpus-conformance`),
 PR #72 (`dd2e4670`, `44c510bf`), PR #74 (`689ab01`, `e75c550`), PR #78
 (`48d460aa`, `40c02a7f`, `63522f3f`), `52df843b` (cookr 0.13.1), and
@@ -12,6 +12,47 @@ Read this first to resume the work. The design lives in the
 format 2 and recipes-first adoption live in the
 [adoption design](../superpowers/specs/2026-11-09-cookr-adoption-design.md) and its
 [plan](../superpowers/plans/2026-11-09-cookr-adoption.md).
+
+## Cookbook design landing, phase 2 (PR #83, 2026-11-19)
+
+*Derives from:* PR #83, `0005775..23deb6d` (12 commits, landed one by one). The checklist is
+[2026-11-19-cookbook-design-landing.md](../superpowers/plans/2026-11-19-cookbook-design-landing.md), and the batch
+reports are under [reports/2026-11-19-phase-2/](../superpowers/reports/2026-11-19-phase-2/). Phases 1 and 2 have
+both landed. Next, the devteam re-pins this cookbook (phase 3, in teamtesting).
+
+What landed and why:
+
+- **Every topic is in roled parts.** 278 guidelines and 44 principles. 268 of the guidelines are roled. The 10
+  under `guidelines/reviewing/` stay unroled, by rule. Each topic has:
+  - a `rules` part, with every requirement as a named rule;
+  - `look-for`, `a-complete-review-must-establish` and `a-build-must-establish` parts (R3), written only from
+    that topic's own rules.
+
+  Rules promoted from text that had no RFC keyword are listed, quoted, in the batch reports.
+- **Nothing was lost.** Every topic passes `cookr roles lossless --base 0005775`. Every reworded or dropped
+  sentence has an independent opus judge's verdict, pinned in the topic's `lossless.json`. Six topics have no
+  `lossless.json`, because every old sentence in them survives verbatim. Every converted topic stays in
+  `research-exempt.json` until it is researched.
+- **cookr 0.22.1–0.23.4.**
+  - `renamed_from`: a renamed topic is checked against its old folder. Three review fixes went into this: f1–f3
+    in 0.23.1–0.23.3. A topic moved to another use case no longer counts as its own twin. Twins named after the old
+    name are checked. A base mismatch is reported instead of raising.
+  - A twin folded into its survivor is accounted as a copy.
+  - Routes are per use case.
+  - `_drop_self_links` (0.23.4): a sentence is measured without links to its own topic.
+- **The rename and the cleanup.** `unit-test-patterns` is now `test-vector-patterns`, and the orphan parts were
+  removed.
+- **Review.** `mycodereview --squashed --cr high` ran as review `2026-11-20-live-claude-claude-opus-5-5-ac2d`. Each
+  of its 8 findings was fixed in its own commit with a `Review-Finding:` trailer:
+  - 40 intros now frame their topic instead of repeating its rules (f4);
+  - the review parts in appkit-and-uikit-patterns have their own headings (f5);
+  - 13 reviewer lines check "against the rules above" instead of linking to their own topic (f6).
+
+  The fixes were recorded with `teambench live fixes`. After the fixes, the suites passed: cookr 1543,
+  grow-cookbook 698, and `validate` and `lint --no-llm` over 383 artifacts.
+- **Two bundled commits stay bundled.** `fe1451b` (the cookr changes) and `508d051` (the conversion) are the commits
+  the review pinned. The checklist lists what each one holds, for anyone reverting part of it. From now on, the
+  squash happens before the review, so each logical change lands as its own commit.
 
 ## Cookbook design landing, phase 1 (PR #81, 2026-11-19)
 
@@ -44,8 +85,7 @@ What landed and why:
   `teambench live fixes`. After the fixes, the suites passed: cookr 1550, grow-cookbook 698, and `validate` and
   `lint --no-llm` over 383 artifacts.
 
-Open: phase 2 converts about 250 guideline topics and the 44 principles into roled parts. After that, the devteam
-re-pins this cookbook (its `devteam-scope-specialists` checklist in teamtesting).
+Phase 2 has since landed (PR #83, above).
 
 ## Concise compiled skills and the recompile (PR #78, 2026-11-13)
 
