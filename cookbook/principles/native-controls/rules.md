@@ -5,7 +5,6 @@
 - **should-search-sdk-before-custom-control**: SHOULD search the platform SDK for an existing control before writing a custom one.
 - **should-customize-near-fit-native-controls**: When a native control almost fits, SHOULD customize it rather than replacing it with a from-scratch implementation.
 - **should-justify-third-party-ui-dependencies**: SHOULD justify every third-party UI dependency with a concrete gap the platform SDK cannot fill.
-- **should-prefer-winui3-controls-over-custom-drawn**: On Windows, SHOULD use WinUI 3 controls over custom-drawn equivalents.
 - **must-not-reimplement-standard-winui3-controls**: On Windows, standard WinUI 3 controls MUST NOT be custom-reimplemented.
 - **should-use-windows-app-sdk-for-system-integration**: On Windows, SHOULD use Windows App SDK APIs for system integration (file access, notifications, and background tasks).
 - **should-document-native-control-deviations**: SHOULD document deviations from native controls with their rationale.

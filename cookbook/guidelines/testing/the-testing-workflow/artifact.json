@@ -34,7 +34,7 @@
     ]
   },
   "names_hosts": "Describes the testing workflow as run in Claude Code; a candidate to move into hosts/claude.md.",
-  "synced": "aa849bc8ae104622",
+  "synced": "92501d1f59c25458",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

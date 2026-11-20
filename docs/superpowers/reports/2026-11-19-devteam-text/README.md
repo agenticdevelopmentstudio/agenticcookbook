@@ -20,7 +20,9 @@ own text for them.
 Two follow-up fixes, after the batches:
 - `principles/native-controls`: "No custom reimplementations of standard WinUI 3 controls" had been held under the
   SHOULD rule `should-prefer-winui3-controls-over-custom-drawn`. R7's mapping makes "no" wording MUST NOT, so it is now
-  its own rule, `must-not-reimplement-standard-winui3-controls`.
+  its own rule, `must-not-reimplement-standard-winui3-controls`. Review finding f5 then dropped the SHOULD rule, since
+  it stated the same requirement at a second strength; devteam's "WinUI 3 controls over custom-drawn equivalents"
+  now sits under the MUST NOT rule.
 - `guidelines/implementing/code-quality/dependency-injection`: the Transient-into-Singleton capture sat only as
   bullet text under `must-not-inject-scoped-into-singleton`. It is now the named rule
   `should-not-inject-transient-into-singleton`.
@@ -50,6 +52,15 @@ Two follow-up fixes, after the batches:
   state…"; review finding f4 showed the contradiction, so the rule now reads "Mutable state shared across concurrent
   contexts MUST NOT be accessed without synchronization or an owning actor." Devteam's sentence stays in the review
   bar, for the owner to rule on.
+
+Duplicate strengths removed after review finding f5, each requirement now at one strength:
+- `guidelines/testing/the-testing-workflow`: "All 7 workflow steps MUST be executed in order" made the SHOULD steps
+  (mutation testing, E2E) mandatory. The rule is now `must-execute-workflow-steps-in-order`: the steps that run go in
+  order, and a skipped SHOULD step is stated with its reason. Devteam's "All 7 workflow steps executed in order;"
+  stays in the review bar.
+- `guidelines/testing/security-testing`: the SHOULD rule `should-run-the-scan-layers-that-match-language-and-surface`
+  restated the existing MUST rule `must-run-security-scans-in-post-generation-verification`. It is gone, and devteam's
+  sentences sit under the MUST rule.
 
 Tensions the batches noted (no rule directly contradicted):
 - `guidelines/implementing/ui/typography`: devteam allows a custom font with justification; the topic says "The platform's system font MUST

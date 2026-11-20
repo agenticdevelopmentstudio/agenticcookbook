@@ -44,7 +44,7 @@
     ]
   },
   "names_hosts": "Names a security tool as one Claude Code can invoke directly.",
-  "synced": "96b64498dbf6cb33",
+  "synced": "fb05955d5845457b",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
