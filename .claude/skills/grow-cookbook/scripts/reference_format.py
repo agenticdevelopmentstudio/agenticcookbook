@@ -6,8 +6,9 @@ the reference format its file is written in (its FORMAT). Format 2 takes
 `## Standing focus` and `## Tidy focus` (grow-cookbook 1.4.26); format 3 leaves
 out a roled skill's `## Review focus` and review bar, which the devteam copies
 whole from the topic's reviewer pair, so they are not its own text (1.4.46); a row with no
-stamp, or an older one, was written before that, its file lacking text the
-measure needs. Such a row is stale: run_gaps.py, `unmeasured.py --check` and
+stamp, or an older one, was written before that, its file not in the sections
+the measure reads now (missing some, or holding copied text it must not count).
+Such a row is stale: run_gaps.py, `unmeasured.py --check` and
 stage_status.py list it in `stale_reference`, never measure it as current;
 a stale reference holds the area at `next: plan`, approved or not (1.4.28).
 Raise REFERENCE_FORMAT with the devteam's FORMAT. Stdlib only.
@@ -39,7 +40,8 @@ import os
 from pathlib import Path
 
 REFERENCE_FORMAT = 3
-WHY = (f"reference text predates format {REFERENCE_FORMAT} (adds sections the measure needs): rewrite "
+WHY = (f"reference text predates format {REFERENCE_FORMAT} (its file is not in the sections the measure "
+       "reads now: it may lack some, or hold copied text it must not count): rewrite "
        "A/reference (step 1.1, then steps 1.2 and 1.3) and re-measure")
 LEGACY_NULL = "legacy_null"
 LEGACY_NULL_WHY = (f"a row with no file, written before reference format {REFERENCE_FORMAT} for another area's "

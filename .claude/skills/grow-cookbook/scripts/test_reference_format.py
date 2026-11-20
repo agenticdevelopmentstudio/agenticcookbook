@@ -16,7 +16,9 @@ import stage_status  # noqa: E402
 
 def test_the_stale_why_names_the_format_not_one_sections_pair():
     # G108: the cause is the format, not "Standing focus and Tidy focus" alone.
-    assert rf.WHY.startswith(f"reference text predates format {rf.REFERENCE_FORMAT} (adds sections the measure needs)")
+    assert rf.WHY.startswith(f"reference text predates format {rf.REFERENCE_FORMAT} (its file is not in the sections")
+    # 1.4.46: format 3 takes sections out, so an older file can hold extra text, not only lack some
+    assert "adds sections" not in rf.WHY and "copied text it must not count" in rf.WHY
     assert "Standing focus" not in rf.WHY
 
 
