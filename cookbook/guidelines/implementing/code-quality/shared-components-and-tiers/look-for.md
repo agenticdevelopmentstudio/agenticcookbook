@@ -21,9 +21,9 @@
 - `should-group-by-concept`: files grouped by file type (all models, all views) rather than by concept
 - `should-move-untiered-file-into-a-tier`: a file at a path in no declared tier, or a new tier added just to hold one
 - `should-apply-by-judgment-without-declared-tiers`: Read the `__evidence__/abstractr` unit first; it tells you which case you are in.
-- `should-recommend-abstractr-init-when-no-tier-map`: If it begins `NO-TIER-MAP:` the repo has no `.abstractr.json`: raise exactly one low-severity finding recommending `abstractr init`, then review from principles alone.
-- `must-not-recommend-abstractr-init-when-binary-unavailable`: If it begins `ABSTRACTR-UNAVAILABLE:` the map exists but the `abstractr` binary is not on PATH: the unit lists the declared tiers (name, paths, depends_on, shared, holds) so you can judge placement from them; do NOT raise the `abstractr init` finding in this case.
-- `must-account-for-every-check-new-refusal`: Otherwise use the `map` and `check --new` output as the facts.
+- `should-apply-by-judgment-without-declared-tiers`: If it begins `NO-TIER-MAP:` the repo has no `.abstractr.json`: raise exactly one low-severity finding recommending `abstractr init`, then review from principles alone.
+- `should-apply-by-judgment-without-declared-tiers`: If it begins `ABSTRACTR-UNAVAILABLE:` the map exists but the `abstractr` binary is not on PATH: the unit lists the declared tiers (name, paths, depends_on, shared, holds) so you can judge placement from them; do NOT raise the `abstractr init` finding in this case.
+- `should-place-in-lowest-tier`: Otherwise use the `map` and `check --new` output as the facts.
 - `should-apply-by-judgment-without-declared-tiers`: Read the `__evidence__/abstractr` unit first.
 - `should-apply-by-judgment-without-declared-tiers`: With `NO-TIER-MAP:` there are no declared tiers: judge from the repo's visible layering and the cookbook principles, and leave the one `abstractr init` suggestion to the repo-organization lens.
 - `should-check-new-shared-file-for-duplicates`: With `ABSTRACTR-UNAVAILABLE:` judge from the tiers the unit pastes; there is no exports listing, so look for duplicates yourself by searching the shared tiers for the names and behavior the diff adds.

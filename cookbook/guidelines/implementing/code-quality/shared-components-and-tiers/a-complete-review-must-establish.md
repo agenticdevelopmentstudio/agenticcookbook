@@ -21,8 +21,7 @@
 - `should-group-by-concept`: files are grouped by concept, not by file type, or the change says why not
 - `should-move-untiered-file-into-a-tier`: no file sits at a path in no declared tier and no tier was added just to hold one, or the change says why not
 - `should-keep-every-file-in-a-tier-directory`: Each finding names the file or directory and the tier or layout rule it breaks, taken from the map or from the repo's visible layout;
-- `should-recommend-abstractr-init-when-no-tier-map`: the `abstractr init` finding appears only for the `NO-TIER-MAP:` case, never for `ABSTRACTR-UNAVAILABLE:`, and at most once;
-- `must-not-recommend-abstractr-init-when-binary-unavailable`: whether the `abstractr init` finding is withheld where the map exists but the `abstractr` binary is not on PATH
-- `must-account-for-every-check-new-refusal`: every `check --new` refusal in the evidence is accounted for.
+- `should-apply-by-judgment-without-declared-tiers`: the `abstractr init` finding appears only for the `NO-TIER-MAP:` case, never for `ABSTRACTR-UNAVAILABLE:`, and at most once;
+- `should-place-in-lowest-tier`: every `check --new` refusal in the evidence is accounted for.
 - `should-check-new-shared-file-for-duplicates`: a duplicate claim was checked against the export listing or by search, not asserted from a similar name;
 - `should-place-in-lowest-tier`: findings cite the tier map when the evidence has one.

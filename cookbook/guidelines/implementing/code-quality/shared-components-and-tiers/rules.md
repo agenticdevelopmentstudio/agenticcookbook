@@ -26,6 +26,3 @@
   - Details that other code should not touch stay inside it.
 - **should-group-by-concept**: You SHOULD group by concept, not by file type, so a reader finds a feature in one place.
 - **should-move-untiered-file-into-a-tier**: When a path belongs to no declared tier, you SHOULD move the file into one, and SHOULD NOT add a tier just to hold it.
-- **should-recommend-abstractr-init-when-no-tier-map**: Where a repo has no `.abstractr.json` (`NO-TIER-MAP:`), a review SHOULD raise exactly one low-severity finding recommending `abstractr init`, then review from principles alone; that finding appears at most once.
-- **must-not-recommend-abstractr-init-when-binary-unavailable**: Where the map exists but the `abstractr` binary is not on PATH (`ABSTRACTR-UNAVAILABLE:`), the `abstractr init` finding MUST NOT be raised; placement is judged from the declared tiers (name, paths, depends_on, shared, holds).
-- **must-account-for-every-check-new-refusal**: Every `check --new` refusal in the evidence MUST be accounted for.
