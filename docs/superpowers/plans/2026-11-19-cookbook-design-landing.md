@@ -4,8 +4,8 @@ Lands the cookr and grow-cookbook improvements and the new artifact design from 
 branch on the cookbook's `main`, so everyone using cookr and the cookbook gets them. Only this repo changes: the
 devteam and teamtesting pins stay where they are and are re-pinned later.
 
-Gate rule (owner, 2026-11-19): no tests and no code review run before the end of a phase, and at each gate the work
-stops and asks the owner before running it.
+Gate rule (owner, 2026-11-19): no tests and no code review run before the end of a phase. For the 2026-11-19 night
+run the owner pre-authorized every phase's test gate, and reviews are `mycodereview --cr high`.
 
 ## Phase 1 — tooling and design (`cookbook-design-landing`)
 
@@ -24,10 +24,13 @@ Content
 - ✅ ab-testing, debug-mode and feature-flags pass `cookr roles lossless --require-judged` and `cookr validate`
 - ✅ `cookr update` run; README and CLAUDE.md counts current
 
-Gates (each asked for before it runs)
+Gates
 - ✅ cookr and skill suites, full `validate` and lint pass (cookr unit + functional, grow-cookbook 696; validate and
   `lint --no-llm` over 383 artifacts)
-- ⬜ whole-branch review (`--skip devteam`) has no unrefuted finding open
+- ✅ whole-branch review (`mycodereview --squashed --cr high`, review `2026-11-20-live-claude-claude-opus-5-5-e51c`):
+  10 findings, each fixed in its own commit (f4, f7 and f10 in part; the refuted halves say why in their commits);
+  fixes recorded with `teambench live fixes`; suites re-run after the fixes: cookr 1550, grow-cookbook 698,
+  `validate` and `lint --no-llm` over 383 artifacts all pass
 - ⬜ landed with `/ship no-squash`
 
 ## Phase 2 — convert the content (`cookbook-design-landing-phase-2`)
@@ -39,4 +42,4 @@ A fresh worktree off `main` after phase 1 lands.
 - ⬜ all 44 principles converted
 - ⬜ topics with no review text get reviewer and build parts written from their own rules (R3)
 - ⬜ each converted topic stays in `research-exempt.json` until researched
-- ⬜ `cookr update`; gates as in phase 1 (asked for first); landed with `/ship no-squash`
+- ⬜ `cookr update`; gates as in phase 1; landed with `/ship no-squash`
