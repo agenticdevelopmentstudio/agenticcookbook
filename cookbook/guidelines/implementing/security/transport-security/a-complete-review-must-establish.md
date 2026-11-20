@@ -10,4 +10,4 @@
 - `should-consider-certificate-transparency-monitoring`: whether Certificate Transparency monitoring was considered as an alternative
 - `should-use-mozilla-tls-configuration`: whether the server uses Mozilla's "Intermediate" or "Modern" TLS configuration
 - `should-prefer-aead-ciphers`: whether AEAD ciphers (AES-GCM, ChaCha20-Poly1305) are preferred
-- `should-submit-to-hsts-preload-list`: HSTS is enabled on production domains with `max-age=31536000; includeSubDomains; preload` and the domain is submitted to the preload list (no plain-HTTP endpoints);
+- `must-enable-hsts-on-production-domains`, `should-submit-to-hsts-preload-list`, `must-not-expose-plain-http-endpoints`: HSTS is enabled on production domains with `max-age=31536000; includeSubDomains; preload` and the domain is submitted to the preload list (no plain-HTTP endpoints);

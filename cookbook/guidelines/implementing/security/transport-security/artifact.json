@@ -36,7 +36,7 @@
       "security-review"
     ]
   },
-  "synced": "c57fd517173330c8",
+  "synced": "f0313efabed62d3a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
