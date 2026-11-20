@@ -92,6 +92,7 @@ from .artifact import (
 )
 from .bumping import BumpError, plan_against_base
 from .markdown import RESEARCH_DIR, in_versions, uncited
+from .research import EXEMPT_FILE
 from .errors import CookbookError
 from .index import INDEX_FILE, IndexCache, current_index, load_index, save_index, sync_from_folders
 from .linkedit import edit_links
@@ -1447,6 +1448,24 @@ def _held_below(copy: Path) -> list[str]:
     return held
 
 
+def _carry_exemption(cookbook: Path, copy_rel: str, topic_rel: str, topic: Path) -> None:
+    """The copy leaves the cookbook's EXEMPT_FILE with its folder; when it was
+    listed and the topic, still without its research, is not, the topic is
+    listed in its place, so a fold never makes `cookr validate` fail."""
+    path = cookbook / EXEMPT_FILE
+    if not path.is_file():
+        return
+    data = json.loads(path.read_text(encoding="utf-8"))
+    topics = data.get("topics")
+    if not isinstance(topics, list) or copy_rel not in topics:
+        return
+    kept = [t for t in topics if t != copy_rel]
+    if topic_rel not in kept and not (topic / RESEARCH_DIR).is_dir():
+        kept.append(topic_rel)
+    data["topics"] = sorted(kept) if topics == sorted(topics) else kept
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
     """Fold `copy` into `topic`: the copy's text the topic lacks becomes new
     unroled parts (so the census names them until each gets a role), the fold
@@ -1532,6 +1551,7 @@ def fold(copy: Path, topic: Path, *, author: str, day: str) -> FoldReport:
     shutil.rmtree(copy)   # last: a failure above leaves the copy, and every link to it, whole
     if doc_path(copy).is_file():
         doc_path(copy).unlink()
+    _carry_exemption(cookbook, copy_rel, topic.resolve().relative_to(cookbook.resolve()).as_posix(), topic)
     if (cookbook / INDEX_FILE).is_file():
         index = load_index(cookbook)
         sync_from_folders(index, cookbook)
