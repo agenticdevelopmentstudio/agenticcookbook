@@ -1,52 +1,71 @@
 
 - `if-applicability`: every file under `ingredients/` but `_template.md` has `type: ingredient`, and every file with that type is checked as an ingredient
 - `if-frontmatter-complete`: the frontmatter holds every required field the conventions list, and no `domain` field
-- `tmpl-approval-fields`: the frontmatter carries `approved-by` and `approved-date`, as the template does
+- `tmpl-approval-fields`: the frontmatter carries `approved-by: ""` and `approved-date: ""`, as the template does
 - `if-type-field`: the `type` field is `ingredient`
 - `if-title-heading`: the first H1 is the frontmatter `title`, exactly
 - `if-section-order`: the sections appear in the 22-entry order, every section not marked MAY is present, and none is out of order
-- `short-required-core-labelled-optional-rest`: every section is either in the required core or labelled optional, and each present section uses its specified heading and level
+- `short-required-core-labelled-optional-rest`: every section of the format is either required (unmarked in `if-section-order`) or labelled optional (marked MAY there)
+- `present-section-uses-specified-heading`: each present section uses its specified heading and heading level
 - `inapplicable-section-stated-not-omitted`: no section the ingredient carries is empty: each with nothing to say says so in one line
 - `informative-sections-labelled`: any section marked non-normative states no requirement
 - `section-structure-machine-checked`: any tool check of the structure (heading list, required headings, frontmatter schema, ordered sections) passes
+- `requirement-keywords-without-section-flagged`: any tool check for RFC 2119 keywords without a `## Behavioral Requirements` section passes
 - `component-recipe-sections-in-order`: a component recipe carries Overview, Behavioral Requirements, Appearance, States, Accessibility, Conformance Test Vectors and Edge Cases, in that order
-- `if-overview`: `## Overview` says briefly what the component is and when to use it
-- `overview-states-when-not-to-use`: `## Overview` also says when not to use the component, and why to use it
-- `if-behavioral-requirements`: `## Behavioral Requirements` holds named, bold kebab-case requirements, each with an RFC 2119 keyword
+- `if-overview`: `## Overview` describes briefly what the component is
+- `overview-states-when-to-use`: `## Overview` says when to use the component
+- `overview-states-when-not-to-use`: `## Overview` says when not to use the component
+- `overview-states-why-to-use`: `## Overview` says why the component should be used
+- `if-behavioral-requirements`: a `## Behavioral Requirements` section states the ingredient's conformance requirements
+- `behavioral-requirements-keyword-levels`: every requirement carries an RFC 2119 keyword giving its level: MUST, SHOULD or MAY
+- `behavioral-requirements-one-style`: every requirement is written in the same style, set apart from the section's other text
+- `behavioral-requirements-named`: every requirement carries a unique bold kebab-case name
 - `if-appearance`: a UI ingredient's `## Appearance` defines corner radius, padding, font, background, foreground, border, shadow and size constraints
 - `tmpl-appearance-properties`: any visual property `## Appearance` gives carries its value
 - `appearance-contrast-in-all-states`: the colors given keep text at 4.5:1 and icons at 3:1 against their background in every interactive state
-- `if-states`: a UI ingredient with interactive states has a `## States` table of its visual state changes
+- `if-states`: a UI ingredient with interactive states has a `## States` table defining its visual state changes (default, pressed, disabled, focused, loading, etc.)
 - `tmpl-states-table`: `## States` is a `| State | Appearance change |` table with a row for each state the component takes
 - `states-include-hover-and-selected`: a component that can be hovered or selected has Hover and Selected rows
-- `if-accessibility`: `## Accessibility` defines role/trait, label requirements, state change announcements and minimum tap target size, or says "not applicable" with a justification for an infrastructure ingredient
+- `if-accessibility`: a `## Accessibility` section is present
+- `accessibility-role`: `## Accessibility` gives the component's role or trait
+- `accessibility-role-from-apg`: where APG has a pattern for the component, the role given is that pattern's
+- `accessibility-label`: `## Accessibility` states the component's label requirements
+- `accessibility-state-announcements`: `## Accessibility` states how each change to the component's states is notified to assistive technologies
+- `accessibility-min-target-size`: `## Accessibility` gives a minimum target size
+- `accessibility-not-applicable-stated`: an infrastructure ingredient's `## Accessibility` says accessibility is out of scope for it, and why
 - `accessibility-keyboard-interaction`: `## Accessibility` describes the component's keyboard interaction
 - `per-platform-target-sizes`: the minimum target size is given for each platform from that platform's own guidelines
-- `tmpl-accessibility-min-tap-target`: `## Accessibility` holds the template's items: role/trait, label requirements, state-change announcements and a minimum tap target
-- `if-test-vectors`: `## Conformance Test Vectors` is an ID, Requirements, Input, Expected table, each vector mapped to a named requirement
-- `tmpl-test-vector-id-format`: every test vector has a unique ID in the `component-001` form and names the requirements it tests
+- `tmpl-accessibility-min-tap-target`: `## Accessibility` holds the template's items: role/trait, label requirements, announced state changes and a minimum tap target of 44×44pt
+- `if-test-vectors`: `## Conformance Test Vectors` is present, each vector pairing an input with its expected outcome
+- `test-vectors-table`: the vectors are a `| ID | Requirements | Input | Expected |` table
+- `tmpl-test-vector-id-format`: every test vector has a unique ID in the `component-001` form
+- `test-vectors-map-to-requirements`: every test vector names in its Requirements column the named requirements it tests
 - `test-vectors-cover-pass-fail-inapplicable`: each requirement has vectors expecting passed, failed and inapplicable
+- `template-carries-test-vectors`: `_template.md` carries a `## Conformance Test Vectors` section
 - `if-edge-cases`: `## Edge Cases` describes boundary conditions, error states and unexpected input
-- `assumptions-and-limitations-stated`: `## Edge Cases` lists the known assumptions, limitations and exceptions, and what is out of scope and why
+- `assumptions-and-limitations-stated`: `## Edge Cases` lists the known assumptions, limitations and exceptions
+- `out-of-scope-cases-stated`: `## Edge Cases` says which cases are out of scope, and why
 - `if-configuration`: `## Configuration` is an Option, Type, Default, Description table, or the note "This ingredient has no configurable options."
-- `tmpl-deep-linking-patterns`: `## Deep Linking` is a Platform, URL Pattern table with Apple, Android and Web rows
-- `deep-links-use-verified-https-links`: each deep link is a verified https link (universal link, App Link), or the ingredient says why not
+- `tmpl-deep-linking-patterns`: `## Deep Linking` is a Platform, URL Pattern table with the template's rows: Apple `{{app_scheme}}://component-name`, Android `https://{{app_domain}}/component-name` and Web `/component-name`
+- `deep-links-use-verified-https-links`: each deep link is a verified https link (a universal link on Apple platforms, an App Link on Android)
 - `tmpl-localization-table`: `## Localization` is a String Key, Default (en), Context table with each string's context
 - `tmpl-accessibility-options`: `## Accessibility Options` is an Option, Behavior table covering Reduce Motion, Increase Contrast, Differentiate Without Color and, where offered, Dynamic Type
-- `accessibility-options-include-text-size`: an ingredient that shows text says how its text resizes to 200 percent without loss of content or function
+- `accessibility-options-include-text-size`: an ingredient that shows text carries `## Accessibility Options`, and it says how the text resizes to 200 percent without loss of content or function
 - `tmpl-feature-flags-table`: every flag in `## Feature Flags` has its key and its default value
-- `tmpl-analytics-events`: `## Analytics` is an Event, Properties, When table
+- `tmpl-analytics-events`: `## Analytics` is an Event, Properties, When table with the template's rows: `component_name.viewed` (`{}`, Component appears on screen) and `component_name.interacted` (`{ action: string }`, User interacts with component)
 - `analytics-event-names-fit-platform-limits`: every event sent to Firebase Analytics has a name of letters, digits and underscores, starting with a letter, at most 40 characters
-- `tmpl-privacy-fields`: `## Privacy` states Data collected, Storage, Transmission and Retention, and says so when nothing is collected
+- `tmpl-privacy-fields`: `## Privacy` states Data collected, Storage, Transmission and Retention
+- `privacy-states-none-collected`: the `## Privacy` of an ingredient that collects no data says that none is collected
 - `privacy-states-encryption-in-transit`: `## Privacy` says whether data leaving the device is encrypted in transit
 - `if-logging`: `## Logging` defines subsystem, category and an Event, Level, Message table
 - `tmpl-logging-subsystem-category`: any subsystem named is a large functional area and any category a specific area within it
 - `if-platform-notes`: `## Platform Notes` gives per-platform guidance for SwiftUI, Compose and React/Web at least, or only the target platform of a single-platform ingredient
-- `tmpl-platform-notes-platforms`: each targeted platform has an entry, and one with nothing to add says so
+- `tmpl-platform-notes-platforms`: each targeted platform the template lists has an entry
+- `platform-notes-none-stated`: a platform with nothing to add says so in one line
 - `if-reference-implementations`: no authored `## Reference Implementations` section exists, and every implementation recorded in `index.json` exists unless `planned`
-- `if-design-decisions`: `## Design Decisions` exists, each decision in the Decision, Rationale, Approved form
-- `tmpl-design-decisions-approved`: each decision affecting visual or behavioral outcome is recorded and marked pending or approved by the user
-- `if-compliance`: `## Compliance` is a Check, Status, Category table, each check linked to its definition
+- `if-design-decisions`: `## Design Decisions` exists, each decision in the form **Decision**: Description. **Rationale**: Why. **Approved**: yes | pending
+- `tmpl-design-decisions-approved`: each decision carries its status: pending until its stakeholders agree, then yes
+- `if-compliance`: `## Compliance` is a Check, Status, Category table, its status values `passed`, `failed`, `partial`, each check linked to its definition in the relevant compliance category file
 - `tmpl-compliance-link-form`: each compliance row links its check by UUID, `[adc.check.<document>.<check-name>](cookbook:<check-uuid>)`
 - `compliance-status-includes-inapplicable`: a check that does not apply is reported `inapplicable`, not passed
 - `if-change-history`: the file ends with a Version, Date, Author, Summary `## Change History` table

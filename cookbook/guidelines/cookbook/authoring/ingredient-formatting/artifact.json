@@ -12,7 +12,7 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "How a cookbook ingredient is laid out: frontmatter, title, section order, what each section holds, and platform defaults for targets, links and events.",
+    "summary": "How a cookbook ingredient is laid out: frontmatter, title, section order, what each section holds, and per-platform target sizes, deep links and event names.",
     "platforms": [],
     "tags": [
       "cookbook",
@@ -77,7 +77,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "75570ed2b8fda417",
+  "synced": "9793dd6bf35265f6",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

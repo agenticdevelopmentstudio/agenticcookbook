@@ -22,6 +22,14 @@ Conformance test vectors with all three outcomes for one requirement:
 | toggle-003 | must-announce-state | The toggle is hidden from the accessibility tree by its container | inapplicable |
 ```
 
+A Feature Flags section, in the template's table, each flag with its key and its default:
+
+```markdown
+| Flag Key | Default | Description |
+|----------|---------|-------------|
+| `{{app_prefix}}.component_name` | `true` | Enables this component |
+```
+
 A Privacy section for a component that collects nothing:
 
 ```markdown
@@ -41,5 +49,11 @@ Event names that Firebase Analytics accepts:
 |-------|------------|------|
 | `toggle_viewed` | `{}` | Component appears on screen |
 | `toggle_changed` | `{ value: boolean }` | User changes the toggle |
+```
+
+A Design Decisions entry with its status:
+
+```markdown
+- **Decision**: The toggle animates its thumb over 150 ms. **Rationale**: Matches the platform switch. **Approved**: pending
 ```
 
