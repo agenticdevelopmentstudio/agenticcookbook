@@ -1,0 +1,16 @@
+{
+  "batches": [
+    {
+      "name": "cookbook/authoring",
+      "topics": [
+        {"topic": "principle-formatting", "survivor": "guidelines/cookbook/authoring/principle-formatting", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "guideline-formatting", "survivor": "guidelines/cookbook/authoring/guideline-formatting", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "ingredient-formatting", "survivor": "guidelines/cookbook/authoring/ingredient-formatting", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "recipe-formatting", "survivor": "guidelines/cookbook/authoring/recipe-formatting", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "cookbook-formatting", "survivor": "guidelines/cookbook/authoring/cookbook-formatting", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "activity-triggers", "survivor": "guidelines/cookbook/authoring/activity-triggers", "new": true, "kind": "new", "devteam": "authored"}
+      ],
+      "building": []
+    }
+  ]
+}

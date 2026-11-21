@@ -1,0 +1,49 @@
+{
+  "area": "cookbook/authoring",
+  "new_topics": [
+    {
+      "speciality": null,
+      "topic": "guidelines/cookbook/authoring/principle-formatting",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/cookbook/authoring/guideline-formatting",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/cookbook/authoring/ingredient-formatting",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/cookbook/authoring/recipe-formatting",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/cookbook/authoring/cookbook-formatting",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/cookbook/authoring/activity-triggers",
+      "file": null,
+      "kind": "new"
+    }
+  ],
+  "building": [],
+  "unplaced": [],
+  "marked_here": [],
+  "mark_conflicts": [],
+  "against_survivor": [],
+  "survivor_elsewhere": [],
+  "unread_marks": [],
+  "ignored_marks": []
+}
