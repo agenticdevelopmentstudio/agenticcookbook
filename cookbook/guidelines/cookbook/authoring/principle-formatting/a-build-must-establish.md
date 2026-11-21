@@ -1,23 +1,35 @@
 
-- `pf-frontmatter-complete`: every meta field `guide/introduction/conventions.md` requires is present, and there is no `domain` field
+- `pf-frontmatter-complete`: every meta field `guide/introduction/conventions.md` requires is present
+- `pf-no-domain-field`: the frontmatter has no `domain` field
 - `pf-type-field`: `type` is `principle`
 - `pf-summary-what-and-when`: the `summary` says what the principle is about and when it applies
 - `pf-title-heading`: the first H1 matches the frontmatter `title` exactly
 - `pf-single-title`: the document has one level-1 heading, its first heading, which is the title
 - `pf-statement`: a concise statement paragraph of the principle's core idea, typically one to three sentences, follows the H1 directly
-- `pf-key-guidance-first`: the statement comes before the bullets, and the most important bullets come first
-- `pf-actionable-guidance`: unless the statement is self-evident in practice, bullets give its practical applications, each a specific full sentence, two to seven short items of one structure
+- `pf-statement-before-bullets`: the statement comes before the bullets
+- `pf-key-guidance-first`: the most important bullets come first
+- `pf-actionable-guidance`: unless the statement is self-evident in practice, bullets give its practical applications
+- `pf-bullet-right-altitude`: each bullet is specific enough to guide a decision yet flexible enough to work as a heuristic
+- `pf-bullet-full-sentence`: each bullet is a full sentence, not a fragment
+- `pf-bullet-list-shape`: the list holds two to seven short items of one structure
 - `pf-state-why`: the principle says why it holds
-- `pf-only-what-the-agent-lacks`: no bullet holds what the agent already knows, a copied style convention or a lint rule, and each answers a mistake agents make
+- `pf-only-what-the-agent-lacks`: the principle holds only what the agent could not work out for itself
+- `pf-no-copied-conventions`: no bullet copies a common style convention the agent knows or a rule a linter checks
+- `pf-bullet-for-a-repeated-mistake`: each bullet answers a mistake agents repeat without it
 - `pf-brevity`: the body, without frontmatter and Change History, is concise and within ~50 lines, and detailed guidance is in guidelines
-- `pf-always-loaded-budget`: the principle was sized with everything else always loaded, against the hosts' limits
+- `pf-always-loaded-budget`: a principle that loads on every task was sized with everything else always loaded, against the hosts' limits
 - `pf-change-history`: the file ends with a `## Change History` table whose columns are Version, Date, Author and Summary
-- `pf-history-newest-first`: the history has a dated row for every version, the latest first
-- `pf-format-checks-tool-enforced`: every check a script can decide is run by a schema, linter or CI, and the text holds only what no tool checks
+- `pf-history-row-per-version`: the history has a row for every version
+- `pf-history-dated`: each history row shows its version's date
+- `pf-history-newest-first`: the history lists the latest version first
+- `pf-format-checks-tool-enforced`: every check a script can decide is run by a schema, linter or CI
+- `pf-text-holds-untooled-guidance`: the principle's text holds only guidance no tool checks
 - `standard-roled-parts`: a principle added or rewritten gives each part a role
 - `standard-named-rules`: each rule of a roled principle is its own `- **kebab-name**: …` bullet of a `rules` part, with an RFC 2119 keyword
-- `standard-one-source-per-topic`: the topic has one folder, and its detailed guidance is linked from the artifact that owns it, not copied
-- `standard-research-cited`: the principle's research is in its `research/` folder and each named rule cites its claims
+- `standard-one-source-per-topic`: the topic is written once, in one folder
+- `standard-link-detail-not-copy`: detailed guidance lives in the artifact that owns it and is linked, not copied
+- `standard-research-kept`: the principle's research is in its folder's `research/`
+- `standard-research-cited`: each named rule cites the claims it stands on
 - `roles-principle-may-be-roled`: a roled principle compiles to skills like a roled guideline
 - `roles-vocabulary`: every role given is one of `rules`, `how-to`, `examples`, `review-focus`, `review-bar`, `build-bar`, `rationale` or `references`
 - `roles-intro-history-unroled`: neither the intro nor the history carries a role

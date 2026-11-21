@@ -12,7 +12,7 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "How a cookbook principle is shaped: required frontmatter, one title, its main point first, actionable bullets that say why, a dated history, and roled parts.",
+    "summary": "How a cookbook principle is shaped: required frontmatter, one title, its main point and why first, actionable bullets, a dated history, and roled parts.",
     "platforms": [],
     "tags": [
       "principle",
@@ -67,7 +67,8 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "95294011e7ba3efc",
+  "names_hosts": "Cites agent hosts' published instruction budgets and guidance as the evidence for its rules.",
+  "synced": "5182e85fad6dc4cb",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
