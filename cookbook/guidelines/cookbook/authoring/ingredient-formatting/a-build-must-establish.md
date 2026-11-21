@@ -5,7 +5,7 @@
 - `if-type-field`: the `type` field is `ingredient`
 - `if-title-heading`: the first H1 is the frontmatter `title`, exactly
 - `if-section-order`: the sections appear in the 22-entry order, every section not marked MAY is present, and none is out of order
-- `short-required-core-labelled-optional-rest`: every section of the format is either required (unmarked in `if-section-order`) or labelled optional (marked MAY there)
+- `short-required-core-labelled-optional-rest`: every section of the format is either required (unmarked in `if-section-order`; `## Appearance` and `## States` by UI ingredients only) or labelled optional (marked MAY there)
 - `present-section-uses-specified-heading`: each present section uses its specified heading and heading level
 - `inapplicable-section-stated-not-omitted`: no section the ingredient carries is empty: each with nothing to say says so in one line
 - `informative-sections-labelled`: any section marked non-normative states no requirement
@@ -27,10 +27,10 @@
 - `tmpl-states-table`: `## States` is a `| State | Appearance change |` table with a row for each state the component takes
 - `states-include-hover-and-selected`: a component that can be hovered or selected has Hover and Selected rows
 - `if-accessibility`: a `## Accessibility` section is present
-- `accessibility-role`: `## Accessibility` gives the component's role or trait
+- `accessibility-role`: a UI ingredient's `## Accessibility` gives the component's role or trait
 - `accessibility-role-from-apg`: where APG has a pattern for the component, the role given is that pattern's
-- `accessibility-label`: `## Accessibility` states the component's label requirements
-- `accessibility-state-announcements`: `## Accessibility` states how each change to the component's states is notified to assistive technologies
+- `accessibility-label`: a UI ingredient's `## Accessibility` states the component's label requirements
+- `accessibility-state-announcements`: a UI ingredient's `## Accessibility` states how each change to the component's states is notified to assistive technologies
 - `accessibility-min-target-size`: `## Accessibility` gives a minimum target size
 - `accessibility-not-applicable-stated`: an infrastructure ingredient's `## Accessibility` says accessibility is out of scope for it, and why
 - `accessibility-keyboard-interaction`: `## Accessibility` describes the component's keyboard interaction

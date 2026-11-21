@@ -43,7 +43,7 @@
   20. `## Design Decisions`
   21. `## Compliance`
   22. `## Change History` (claim: if-section-order-prior)
-- **short-required-core-labelled-optional-rest**: The ingredient format SHOULD label every section either required, carried by every ingredient, or optional, so that every optional section can be found: the required sections are those `if-section-order` does not mark "(MAY omit)" or "(MAY: …)", and the optional sections are those it marks. (claims: rfc-some-sections-required, rfc3552-security-section-required, rfc-security-considerations-required, act-required-items, act-optional-items, w3c-qa-label-optional-features)
+- **short-required-core-labelled-optional-rest**: The ingredient format SHOULD label every section either required or optional, so that every optional section can be found: the required sections are those `if-section-order` does not mark "(MAY omit)" or "(MAY: …)" (`## Appearance` and `## States` by UI ingredients only, per `if-appearance` and `if-states`), and the optional sections are those it marks. (claims: rfc-some-sections-required, rfc3552-security-section-required, rfc-security-considerations-required, act-required-items, act-optional-items, w3c-qa-label-optional-features)
 - **present-section-uses-specified-heading**: A section that is present SHOULD use its specified heading and heading level. (claim: patternfly-template-omit-but-fixed-headings)
 - **inapplicable-section-stated-not-omitted**: A section an ingredient carries that has nothing to say for it SHOULD say so in one line, as Apple's "No additional considerations for tvOS." does, rather than stand empty, so that a reader can tell a deliberate 'none' from an omission. This holds for the source, even where a published or rendered form drops the empty section, as the RFC Editor does at publication and GOV.UK's template does on its website. (claims: rfc-empty-iana-section-kept, rfc-editor-removes-empty-iana, govuk-template-empty-fields-hidden, rfc-no-actions-statement, w3c-qa-label-optional-features, apple-platform-considerations-none, play-form-even-if-no-data)
 - **informative-sections-labelled**: A section that states no requirements MAY be marked non-normative, with the line "This section is non-normative." (claim: respec-informative-marking)
@@ -85,10 +85,16 @@
 - **if-accessibility**: The ingredient MUST have a `## Accessibility` section.
 
   **Applies when:** always. (claim: wcag-name-role-value)
-- **accessibility-role**: The `## Accessibility` section MUST give the component's role or trait (for example, button, heading, text field), the role assistive technologies determine programmatically. (claim: wcag-name-role-value)
+- **accessibility-role**: The `## Accessibility` section MUST give the component's role or trait (for example, button, heading, text field), the role assistive technologies determine programmatically.
+
+  **Applies when:** UI ingredients; an infrastructure ingredient follows `accessibility-not-applicable-stated`. (claim: wcag-name-role-value)
 - **accessibility-role-from-apg**: Where the ARIA Authoring Practices Guide has a pattern for the component, the role given SHOULD be the one that pattern states (a button has role `button`). (claim: apg-button-role)
-- **accessibility-label**: The `## Accessibility` section MUST state the component's label requirements: the name assistive technologies determine programmatically for it. (claim: wcag-name-role-value)
-- **accessibility-state-announcements**: The `## Accessibility` section MUST state how each change to the component's states (for example, loading, disabled) is notified to assistive technologies. (claim: wcag-name-role-value)
+- **accessibility-label**: The `## Accessibility` section MUST state the component's label requirements: the name assistive technologies determine programmatically for it.
+
+  **Applies when:** UI ingredients; an infrastructure ingredient follows `accessibility-not-applicable-stated`. (claim: wcag-name-role-value)
+- **accessibility-state-announcements**: The `## Accessibility` section MUST state how each change to the component's states (for example, loading, disabled) is notified to assistive technologies.
+
+  **Applies when:** UI ingredients; an infrastructure ingredient follows `accessibility-not-applicable-stated`. (claim: wcag-name-role-value)
 - **accessibility-min-target-size**: The `## Accessibility` section SHOULD give the component's minimum target size. (claims: apple-strive-min-control-size, android-touch-target-48dp, wcag-target-size-minimum-24)
 - **accessibility-not-applicable-stated**: An infrastructure ingredient's `## Accessibility` section SHOULD say that accessibility is out of scope for it, and why, rather than stand empty. (claims: rfc3552-out-of-scope-stated, rfc-empty-iana-section-kept)
 - **accessibility-keyboard-interaction**: The `## Accessibility` section SHOULD describe the component's keyboard interaction, beside its role, states and properties. (claim: apg-keyboard-interaction-section)

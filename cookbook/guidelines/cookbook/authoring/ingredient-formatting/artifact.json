@@ -77,7 +77,7 @@
       "recipe-authoring"
     ]
   },
-  "synced": "9793dd6bf35265f6",
+  "synced": "046d82eebf1bb4ba",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
