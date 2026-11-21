@@ -1,0 +1,45 @@
+
+- `gf-frontmatter-complete`: every required meta field is present and there is no `domain` field.
+- `gf-type-field`: `type` is `guideline`.
+- `gf-title-heading`: the first H1 matches the frontmatter `title` exactly.
+- `gf-summary-statement`: a summary statement appears immediately after the H1.
+- `summary-complete-in-itself`: the summary is a concise overview that stands without the body, most important information first.
+- `gf-structured-guidance`: the guidance is in bulleted lists, tables or subsections, each list's items in one structure and the requirements in one consistent style.
+- `key-rules-identifiable`: the key rules are easy to find.
+- `gf-rfc-keywords`: requirements use RFC 2119 keywords, in bold or uppercase when normative.
+- `normative-keywords-only-where-required`: each keyword is used only where an obligation is required.
+- `keywords-impose-no-method`: no keyword imposes a method that is not required.
+- `gf-change-history`: the file ends with a `## Change History` table with Version, Date, Author and Summary columns.
+- `change-history-entry-per-version`: every version has an entry that explains its significant changes.
+- `change-history-newest-first`: the latest version comes first, and no entry is a commit-log diff.
+- `released-versions-immutable`: no released version's content is modified; a change is a new version.
+- `gf-compliance-section`: a `## Compliance` section, where present, lists evaluated compliance checks and their status.
+- `gf-triggers-field`: `triggers` is present, a YAML list of names from the trigger guide, or `[]`.
+- `gf-roled-parts`: every part but the intro and the history has a role from the list, the four required roles are present, and no `routes` or `hosts/` is set.
+- `conv-roled-parts`: each part is labelled with what it holds, informative parts saying so.
+- `mark-normative-and-informative`: normative content is told apart from informative content, which does not sound normative, and references are marked normative or informative.
+- `examples-are-non-normative`: no example, diagram or note is normative.
+- `conformance-and-scope-statement`: the guideline says what following it requires and defines its scope, which holds no requirements.
+- `gf-named-rules`: every bullet in a `rules` part is a named rule with a unique kebab-case name and an RFC 2119 keyword.
+- `conv-named-rules`: each rule has its own bullet and can be referenced by its name.
+- `conv-roled-artifact-complete`: every other part has a role, each rule is named, and no `routes` or `hosts/` is set.
+- `one-requirement-per-rule`: each rule expresses one specific, unambiguous thought, with no rationale mixed in.
+- `rules-are-verifiable`: compliance with each rule can be evaluated.
+- `rule-states-when-it-applies`: each rule is in the standard form and states precisely the action it requires.
+- `rule-has-rationale`: each rule has a rationale with its assumptions and its evidence.
+- `conv-rationale-to-references`: rationale sits in a bounded rationale part, not in the rules' bullets.
+- `stable-rule-identifiers`: rule names are unchanged across revisions and no rule is identified by position.
+- `keep-rule-lists-short`: each list has at least two and, where possible, no more than seven items.
+- `single-h1`: there is one unique level-1 heading.
+- `no-skipped-heading-levels`: no heading level is skipped.
+- `gf-research-folder`: `research/research.json` and `research/research.md` are present in the documented shape, and every cited claim is named by a verdict.
+- `gf-rule-cites-research`: each named rule ends with one citation of claims in `research/research.json`.
+- `conv-research-cited`: each rule links explicitly to its evidence.
+- `conv-one-source-per-topic`: the topic has one folder and links to other docs rather than duplicating them.
+- `conv-legacy-keeps-working`: unroled artifacts compile as before, and unresearched ones are listed in `cookbook/research-exempt.json`.
+- `conv-role-values`: every `role` is one of the listed values, and the intro and history carry none.
+- `conv-no-roles-under-reviewing`: no roled artifact is under `guidelines/reviewing/`, and no ingredient or recipe is roled.
+- `conv-four-skills`: a roled artifact compiles to the builder, build-verifier, reviewer and review-verifier skills.
+- `conv-skill-names`: the compiled skills are named as documented, and no two artifacts' skills share a name.
+- `check-guidelines-automatically`: the guideline's structure is checked by tools: frontmatter by schema, headings by linter.
+
