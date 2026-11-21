@@ -5,10 +5,22 @@
   "base_commit": "071e52f9572bf4b7c534cfcf95fb111282abc423",
   "research_type": "Technology / software (intent: Decide; domain: retrieval and agent context selection, controlled vocabularies). Technical MEDIUM bar for host and tool documentation; Statistical bar for every metric claim (precision, recall, accuracy, token figures, evidence that filtering helps or harms).",
   "questions": [
-    {"id": "best-practices", "text": "Best practices: what is current best practice for this topic?"},
-    {"id": "known-solutions", "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"},
-    {"id": "platform-guidelines", "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"},
-    {"id": "experts-view", "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"}
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
   ],
   "methodology": {
     "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to authoritative sources (the agent hosts' own documentation from Anthropic, OpenAI, Cursor and GitHub; the W3C SKOS Recommendation and Primer; NISO's ISO 25964 description and ANSI/NISO Z39.19; peer-reviewed or preprint evaluations for metric claims), chain citations, corroborate across independent publishers, record provenance at generation time.",
@@ -17,7 +29,9 @@
     "exclusion": "Search-result snippets; pages that could not be fetched (nlp.stanford.edu's IIR site refused connections, so a university-hosted copy of chapter 8 was used); the ISO 25964 text itself (paywalled); blogs, SEO articles and vendor marketing; any claim without a fetched verbatim quote.",
     "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15, capped by the domain bar (Technical MEDIUM; Statistical MED-HIGH for metric claims, where an undisclosed sample or an unrefereed study scores low); secondary sources scored at most 72; prior cookbook text scored 0."
   },
-  "agents": ["grow-cookbook research agent"],
+  "agents": [
+    "grow-cookbook research agent"
+  ],
   "sources": [
     "https://code.claude.com/docs/en/memory",
     "https://code.claude.com/docs/en/skills",
@@ -52,7 +66,10 @@
     "https://stackoverflow.com/help/privileges/create-tags",
     "https://stackoverflow.com/help/privileges/suggest-tag-synonyms"
   ],
-  "dates": {"researched": "2026-11-21", "accessed": "2026-11-21"},
+  "dates": {
+    "researched": "2026-11-21",
+    "accessed": "2026-11-21"
+  },
   "summary": "The design holds: every agent host now loads instructions conditionally (Claude Code path-scoped rules and skills, Cursor rule types, Copilot applyTo, metadata filters in OpenAI file search and Pinecone), and the evaluations that exist (Lost in the Middle, IFScale, Chroma's context-rot report, RAG-MCP) show that more context and more instructions degrade model performance, which is the direction the trigger guide assumes. A small closed vocabulary with scope notes and examples is what Z39.19 and SKOS prescribe, and outside practice supports a union query, frontmatter declaration, a per-item tag cap of 5, and nominating a new term before use. Every rule that carries a number (240, 10-20, ~12, 27, ~10) is unsupported: no source measures tag-filtered guideline loading for coding agents, and no source supports those counts. The 'most effective' claim for graduated checkpoints and the proportional-cost rule have no study behind them. The index location, regeneration command, generated-not-hand-edited rule, ordering, guideline-only scope and empty-list default are internal choices no outside source addresses. Research adds governance (scope notes, history notes, renames with the old value kept as an alias, retirement with impact assessment and migration, periodic review of overused and unused values), mechanical validation of trigger values, a fallback for tag misses, and evaluation with a labelled task set reporting recall and precision.",
   "open_questions": [
     "Whether `refactor` (17 guidelines) and `research` (10 guidelines), in use at the base commit but absent from the canonical table, are nominated and added to the table or migrated to existing values; the governance verdicts give the procedure, not the outcome.",
@@ -82,11 +99,21 @@
       "source_type": "vendor engineering guidance (agent host)",
       "quote": "good context engineering means finding the smallest possible set of high-signal tokens that maximize the likelihood of some desired outcome.",
       "citations": [
-        {"title": "Effective context engineering for AI agents", "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "effective context engineering AI agents smallest set high-signal tokens",
-      "trust": {"score": 80, "basis": "Agent-host vendor's own engineering guidance, current (2025); a principle, not a measured result; single publisher."},
+      "trust": {
+        "score": 80,
+        "basis": "Agent-host vendor's own engineering guidance, current (2025); a principle, not a measured result; single publisher."
+      },
       "independence": "single"
     },
     {
@@ -96,11 +123,21 @@
       "source_type": "vendor engineering guidance (agent host)",
       "quote": "Studies on needle-in-a-haystack style benchmarking have uncovered the concept of context rot : as the number of tokens in the context window increases, the model's ability to accurately recall information from that context decreases.",
       "citations": [
-        {"title": "Effective context engineering for AI agents", "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "context rot needle in a haystack recall decreases tokens context window",
-      "trust": {"score": 72, "basis": "Vendor summary of benchmark studies it does not name; the direction is independently measured by Chroma's report and Lost in the Middle (separate claims), but this sentence gives no sample or measure."},
+      "trust": {
+        "score": 72,
+        "basis": "Vendor summary of benchmark studies it does not name; the direction is independently measured by Chroma's report and Lost in the Middle (separate claims), but this sentence gives no sample or measure."
+      },
       "independence": "single"
     },
     {
@@ -110,11 +147,21 @@
       "source_type": "vendor engineering guidance (agent host)",
       "quote": "teams will often stuff a laundry list of edge cases into a prompt in an attempt to articulate every possible rule the LLM should follow for a particular task. We do not recommend this.",
       "citations": [
-        {"title": "Effective context engineering for AI agents", "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "effective context engineering prompt laundry list edge cases rules",
-      "trust": {"score": 78, "basis": "Agent-host vendor's current guidance; a recommendation without a measured result."},
+      "trust": {
+        "score": 78,
+        "basis": "Agent-host vendor's current guidance; a recommendation without a measured result."
+      },
       "independence": "single"
     },
     {
@@ -124,11 +171,21 @@
       "source_type": "vendor engineering guidance (agent host)",
       "quote": "In certain settings, the most effective agents might employ a hybrid strategy, retrieving some data up front for speed, and pursuing further autonomous exploration at its discretion.",
       "citations": [
-        {"title": "Effective context engineering for AI agents", "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "hybrid strategy retrieving data up front just-in-time agent context",
-      "trust": {"score": 76, "basis": "Agent-host vendor guidance; hedged ('might'), with Claude Code given as the example; no measurement."},
+      "trust": {
+        "score": 76,
+        "basis": "Agent-host vendor guidance; hedged ('might'), with Claude Code given as the example; no measurement."
+      },
       "independence": "single"
     },
     {
@@ -138,11 +195,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Research in the field of information science has shown that controlled vocabularies improve both precision and recall in searching. For example, they improve precision by defining the scope of terms and they increase recall by retrieving documents that employ different terms for the same concept.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "controlled vocabulary improve precision and recall Z39.19",
-      "trust": {"score": 66, "basis": "National standard (authoritative), but as a metric claim it cites unnamed 'research' with no study, sample or measure, so it is held below the Statistical bar."},
+      "trust": {
+        "score": 66,
+        "basis": "National standard (authoritative), but as a metric claim it cites unnamed 'research' with no study, sample or measure, so it is held below the Statistical bar."
+      },
       "independence": "single"
     },
     {
@@ -152,11 +219,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Vocabulary control is accomplished by three principal methods: defining the scope, or meaning, of terms; using the equivalence relationship to link synonymous and nearly synonymous terms; and distinguishing among homographs.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "vocabulary control principal methods scope equivalence homographs",
-      "trust": {"score": 86, "basis": "Accredited national standard, the primary source for controlled-vocabulary construction; 2005 text reaffirmed 2010; definitional."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, the primary source for controlled-vocabulary construction; 2005 text reaffirmed 2010; definitional."
+      },
       "independence": "single"
     },
     {
@@ -166,11 +243,21 @@
       "source_type": "national standard (NISO)",
       "quote": "A list of terms that have been enumerated explicitly. This list is controlled by and is available from a controlled vocabulary registration authority. All terms in a controlled vocabulary must have an unambiguous, non-redundant definition.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "controlled vocabulary definition enumerated explicitly registration authority",
-      "trust": {"score": 86, "basis": "Accredited national standard's glossary definition; definitional claim within the standard's own domain."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard's glossary definition; definitional claim within the standard's own domain."
+      },
       "independence": "single"
     },
     {
@@ -180,11 +267,21 @@
       "source_type": "national standard (NISO)",
       "quote": "A controlled vocabulary must compensate for the problems caused by ambiguity by ensuring that each term has one and only one meaning.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "controlled vocabulary ambiguity each term one and only one meaning",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 5.3.1; normative wording ('must')."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 5.3.1; normative wording ('must')."
+      },
       "independence": "single"
     },
     {
@@ -194,11 +291,21 @@
       "source_type": "national standard (NISO)",
       "quote": "A scope note is used: • to restrict or expand the application of a term, • to distinguish between terms that have overlapping meanings in natural language, or • to provide other advice on term usage to either the indexer or the searcher. A scope note should state the chosen meaning of a term.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "scope note restrict expand application of a term Z39.19",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 6.2.2; matches SKOS scopeNote (separate claim, W3C)."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 6.2.2; matches SKOS scopeNote (separate claim, W3C)."
+      },
       "independence": "single"
     },
     {
@@ -208,11 +315,21 @@
       "source_type": "national standard (NISO)",
       "quote": "a controlled vocabulary is not frozen in time⎯new concepts emerge, terminology and usage change, and some terms go out of fashion or become obsolete. Thus, there is a continuing need to maintain the controlled vocabulary once it has been constructed.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "controlled vocabulary maintenance not frozen in time new concepts obsolete",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 2.5."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 2.5."
+      },
       "independence": "single"
     },
     {
@@ -222,11 +339,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Policies and procedures should be established for periodic review of terminology, establishment of new terms, and replacement of obsolete terms, especially in fields where the terminology changes rapidly.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "policies procedures periodic review terminology new terms obsolete terms",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.1; normative 'should'."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.1; normative 'should'."
+      },
       "independence": "single"
     },
     {
@@ -236,11 +363,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Whenever an appropriate term or combination of terms cannot be found in a controlled vocabulary, the indexer or searcher should nominate a new term as a candidate term",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "nominate new term candidate term controlled vocabulary indexer",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.1.1."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.1.1."
+      },
       "independence": "single"
     },
     {
@@ -250,11 +387,21 @@
       "source_type": "national standard (NISO)",
       "quote": "New terms and those nominated for reconsideration should be reviewed by the editor of the controlled vocabulary, and preferably by an editorial board",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "new terms reviewed by editor editorial board controlled vocabulary",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.1.1."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.1.1."
+      },
       "independence": "single"
     },
     {
@@ -264,11 +411,21 @@
       "source_type": "national standard (NISO)",
       "quote": "If a term is modified, the date of the change should be recorded in the history note (see section 6.2.3), and a USE reference should be made from the old form to the new form.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "term modified history note USE reference old form new form",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.1.2."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.1.2."
+      },
       "independence": "single"
     },
     {
@@ -278,11 +435,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Whenever a term is modified or deleted from a controlled vocabulary, the impact of the change on the ability to search previously indexed database records must be considered",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "term deleted controlled vocabulary impact previously indexed records",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.2.1; normative 'must'."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.2.1; normative 'must'."
+      },
       "independence": "single"
     },
     {
@@ -292,11 +459,21 @@
       "source_type": "national standard (NISO)",
       "quote": "If it is retained, it must be marked, e.g., \"for retrieval purposes only,\" and the date of its change in status must be recorded in the history note and displayed to users. If it is superseded by a newer term, a cross-reference to the new term should be provided.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "retained term for retrieval purposes only history note cross-reference",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.2.1."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.2.1."
+      },
       "independence": "single"
     },
     {
@@ -306,11 +483,21 @@
       "source_type": "national standard (NISO)",
       "quote": "One-for-one term changes, where one term simply replaces another, may be implemented in the database automatically if resources permit.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "one-for-one term changes implemented automatically database",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.2.1; permissive 'may'."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.2.1; permissive 'may'."
+      },
       "independence": "single"
     },
     {
@@ -320,11 +507,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Deleting a term in the database without replacing it with another term could, over time, seriously reduce access to content objects if no replacement indexing is carried out.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "deleting a term without replacement reduce access content objects",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.2.1."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.2.1."
+      },
       "independence": "single"
     },
     {
@@ -334,11 +531,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Each term should have a history note recording its date of entry",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "history note date of entry term controlled vocabulary",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3.2.2."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3.2.2."
+      },
       "independence": "single"
     },
     {
@@ -348,11 +555,21 @@
       "source_type": "national standard (NISO)",
       "quote": "If appropriate, the history note may also include the date discontinued, the term that succeeded the term, and/or the term that preceded it.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "history note date discontinued term succeeded preceded",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 6.2.3."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 6.2.3."
+      },
       "independence": "single"
     },
     {
@@ -362,11 +579,21 @@
       "source_type": "national standard (NISO)",
       "quote": "This section suggests procedures for adding, modifying, and deleting terms. The term record should note the date of each change and identify the individual responsible for it.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "adding modifying deleting terms date of each change individual responsible",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 11.3."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 11.3."
+      },
       "independence": "single"
     },
     {
@@ -376,11 +603,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Overused terms and terms that have been assigned very infrequently in indexing should be considered candidates for modification or deletion, as both kinds of term are generally ineffective in retrieval.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "overused terms infrequently assigned candidates for deletion ineffective retrieval",
-      "trust": {"score": 84, "basis": "Accredited national standard, section 11.3.1.3; a practitioner rule, not a measured threshold."},
+      "trust": {
+        "score": 84,
+        "basis": "Accredited national standard, section 11.3.1.3; a practitioner rule, not a measured threshold."
+      },
       "independence": "single"
     },
     {
@@ -390,11 +627,21 @@
       "source_type": "national standard (NISO)",
       "quote": "it is vital to conduct periodic tests with follow-on evaluation to ensure that the controlled vocabulary is as useful as possible.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "controlled vocabulary periodic tests follow-on evaluation",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 2.6."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 2.6."
+      },
       "independence": "single"
     },
     {
@@ -404,11 +651,21 @@
       "source_type": "national standard (NISO)",
       "quote": "the natural language used to describe content objects (literary warrant), • the language of users (user warrant), and • the needs and priorities of the organization (organizational warrant).",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "literary warrant user warrant organizational warrant controlled vocabulary",
-      "trust": {"score": 84, "basis": "Accredited national standard, section 5.3.5; the mapping to triggers is this record's application."},
+      "trust": {
+        "score": 84,
+        "basis": "Accredited national standard, section 5.3.5; the mapping to triggers is this record's application."
+      },
       "independence": "single"
     },
     {
@@ -418,11 +675,21 @@
       "source_type": "practitioner article (secondary)",
       "quote": "The commit build is the one that has to be done quickly, as a result it will take a number of shortcuts that will reduce the ability to detect bugs. The trick is to balance the needs of bug finding and speed so that a good commit build is stable enough for other people to work on.",
       "citations": [
-        {"title": "Continuous Integration", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "n.d.", "url": "https://martinfowler.com/articles/continuousIntegration.html", "accessed": "2026-11-21"}
+        {
+          "title": "Continuous Integration",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "n.d.",
+          "url": "https://martinfowler.com/articles/continuousIntegration.html",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "continuous integration commit build quick second stage build",
-      "trust": {"score": 68, "basis": "Secondary source (widely cited practitioner article), used because no primary standard covers staged checks; capped at 72."},
+      "trust": {
+        "score": 68,
+        "basis": "Secondary source (widely cited practitioner article), used because no primary standard covers staged checks; capped at 72."
+      },
       "independence": "single"
     },
     {
@@ -432,11 +699,21 @@
       "source_type": "practitioner article (secondary)",
       "quote": "For most projects, however, the XP guideline of a ten minute build is perfectly within reason.",
       "citations": [
-        {"title": "Continuous Integration", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "n.d.", "url": "https://martinfowler.com/articles/continuousIntegration.html", "accessed": "2026-11-21"}
+        {
+          "title": "Continuous Integration",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "n.d.",
+          "url": "https://martinfowler.com/articles/continuousIntegration.html",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "XP guideline ten minute build continuous integration",
-      "trust": {"score": 66, "basis": "Secondary source; a rule of thumb, not a measured result; capped at 72."},
+      "trust": {
+        "score": 66,
+        "basis": "Secondary source; a rule of thumb, not a measured result; capped at 72."
+      },
       "independence": "single"
     },
     {
@@ -446,11 +723,21 @@
       "source_type": "practitioner article (secondary)",
       "quote": "The second stage build runs a different suite of tests that do hit a real database and involve more end-to-end behavior. This suite might take a couple of hours to run.",
       "citations": [
-        {"title": "Continuous Integration", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "n.d.", "url": "https://martinfowler.com/articles/continuousIntegration.html", "accessed": "2026-11-21"}
+        {
+          "title": "Continuous Integration",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "n.d.",
+          "url": "https://martinfowler.com/articles/continuousIntegration.html",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "continuous integration second stage build end-to-end tests",
-      "trust": {"score": 68, "basis": "Secondary source used for staged checks no primary covers; capped at 72."},
+      "trust": {
+        "score": 68,
+        "basis": "Secondary source used for staged checks no primary covers; capped at 72."
+      },
       "independence": "single"
     },
     {
@@ -460,11 +747,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Rules can be scoped to specific files using YAML frontmatter with the `paths` field. These conditional rules only apply when Claude is working with files matching the specified patterns.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code path-specific rules paths frontmatter",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation of its own behaviour; same mechanism independently present in Copilot and Cursor (separate claims)."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation of its own behaviour; same mechanism independently present in Copilot and Cursor (separate claims)."
+      },
       "independence": "single"
     },
     {
@@ -474,11 +771,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Rules can also be [scoped to specific file paths](#path-specific-rules), so they only load into context when Claude works with matching files, reducing noise and saving context space.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code rules scoped file paths reducing noise saving context",
-      "trust": {"score": 84, "basis": "Agent-host owner's documentation; states the design aim, not a measurement."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's documentation; states the design aim, not a measurement."
+      },
       "independence": "single"
     },
     {
@@ -488,11 +795,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Rules without [`paths` frontmatter](#path-specific-rules) are loaded at launch with the same priority as `.claude/CLAUDE.md`.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code rules without paths frontmatter loaded at launch",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation of its own behaviour."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation of its own behaviour."
+      },
       "independence": "single"
     },
     {
@@ -502,11 +819,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Unlike CLAUDE.md content, a skill's body loads only when it's used, so long reference material costs almost nothing until you need it.",
       "citations": [
-        {"title": "Extend Claude with skills", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/skills", "accessed": "2026-11-21"}
+        {
+          "title": "Extend Claude with skills",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/skills",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code skills body loads only when used",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation of its own behaviour."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation of its own behaviour."
+      },
       "independence": "single"
     },
     {
@@ -516,11 +843,21 @@
       "source_type": "official agent-host documentation",
       "quote": "What the skill does and when to use it. Claude uses this to decide when to apply the skill.",
       "citations": [
-        {"title": "Extend Claude with skills", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/skills", "accessed": "2026-11-21"}
+        {
+          "title": "Extend Claude with skills",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/skills",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code skill description when to use frontmatter",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation; the same mechanism is stated in Agent Skills docs (separate claim)."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation; the same mechanism is stated in Agent Skills docs (separate claim)."
+      },
       "independence": "single"
     },
     {
@@ -530,11 +867,21 @@
       "source_type": "official agent-host documentation",
       "quote": "The listing always contains every skill name, but if you have many skills, Claude Code drops some descriptions to fit the listing's character budget, which removes the keywords Claude needs to match your request. The budget scales at 1% of the model's context window.",
       "citations": [
-        {"title": "Extend Claude with skills", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/skills", "accessed": "2026-11-21"}
+        {
+          "title": "Extend Claude with skills",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/skills",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code skill descriptions cut short listing character budget",
-      "trust": {"score": 84, "basis": "Agent-host owner's documentation of its own limit."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's documentation of its own limit."
+      },
       "independence": "single"
     },
     {
@@ -544,11 +891,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Every skill in the [skill listing](#skill-descriptions-are-cut-short) adds to your context on every turn, whether or not Claude ever uses it.",
       "citations": [
-        {"title": "Extend Claude with skills", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/skills", "accessed": "2026-11-21"}
+        {
+          "title": "Extend Claude with skills",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/skills",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code skill listing adds context every turn",
-      "trust": {"score": 84, "basis": "Agent-host owner's documentation of its own behaviour."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's documentation of its own behaviour."
+      },
       "independence": "single"
     },
     {
@@ -558,11 +915,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Rule Type Description Always Apply Apply to every chat session Apply Intelligently When Agent decides it's relevant based on description Apply to Specific Files When file matches a specified pattern Apply Manually When @-mentioned in chat (e.g., @my-rule )",
       "citations": [
-        {"title": "Rules", "author": "Anysphere (Cursor)", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}
+        {
+          "title": "Rules",
+          "author": "Anysphere (Cursor)",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Cursor rules always apply apply intelligently specific files manually",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation; quote normalised to single spaces from a table."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's current documentation; quote normalised to single spaces from a table."
+      },
       "independence": "single"
     },
     {
@@ -572,11 +939,21 @@
       "source_type": "official agent-host documentation",
       "quote": "alwaysApply true — Always included. Globs and description are ignored.",
       "citations": [
-        {"title": "Rules", "author": "Anysphere (Cursor)", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}
+        {
+          "title": "Rules",
+          "author": "Anysphere (Cursor)",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Cursor rules alwaysApply globs description frontmatter",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -586,11 +963,21 @@
       "source_type": "official agent-host documentation",
       "quote": "**Path-specific custom instructions** apply to requests made in the context of files that match a specified path.",
       "citations": [
-        {"title": "Adding repository custom instructions for GitHub Copilot", "author": "GitHub, Inc.", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions", "accessed": "2026-11-21"}
+        {
+          "title": "Adding repository custom instructions for GitHub Copilot",
+          "author": "GitHub, Inc.",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub Copilot path-specific custom instructions applyTo",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation; independent publisher from Anthropic and Cursor for the same pattern."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation; independent publisher from Anthropic and Cursor for the same pattern."
+      },
       "independence": "single"
     },
     {
@@ -600,11 +987,21 @@
       "source_type": "official agent-host documentation",
       "quote": "At the start of the file, create a frontmatter block containing the `applyTo` keyword. Use glob syntax to specify what files or directories the instructions apply to.",
       "citations": [
-        {"title": "Adding repository custom instructions for GitHub Copilot", "author": "GitHub, Inc.", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions", "accessed": "2026-11-21"}
+        {
+          "title": "Adding repository custom instructions for GitHub Copilot",
+          "author": "GitHub, Inc.",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Copilot instructions frontmatter applyTo glob syntax",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -614,11 +1011,21 @@
       "source_type": "official agent-host documentation",
       "quote": "If the path you specify matches a file that Copilot is working on, and a repository-wide custom instructions file also exists, then the instructions from both files are used.",
       "citations": [
-        {"title": "Adding repository custom instructions for GitHub Copilot", "author": "GitHub, Inc.", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions", "accessed": "2026-11-21"}
+        {
+          "title": "Adding repository custom instructions for GitHub Copilot",
+          "author": "GitHub, Inc.",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Copilot path-specific and repository-wide instructions both used",
-      "trust": {"score": 86, "basis": "Agent-host owner's current documentation."},
+      "trust": {
+        "score": 86,
+        "basis": "Agent-host owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -628,11 +1035,21 @@
       "source_type": "open format specification site",
       "quote": "Agents automatically read the nearest file in the directory tree, so the closest one takes precedence and every subproject can ship tailored instructions.",
       "citations": [
-        {"title": "AGENTS.md", "author": "AGENTS.md open format", "publisher": "agents.md", "date": "n.d.", "url": "https://agents.md/", "accessed": "2026-11-21"}
+        {
+          "title": "AGENTS.md",
+          "author": "AGENTS.md open format",
+          "publisher": "agents.md",
+          "date": "n.d.",
+          "url": "https://agents.md/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "AGENTS.md nearest file directory tree precedence",
-      "trust": {"score": 78, "basis": "The format's own site, collaboratively stewarded; describes the convention, not every agent's implementation."},
+      "trust": {
+        "score": 78,
+        "basis": "The format's own site, collaboratively stewarded; describes the convention, not every agent's implementation."
+      },
       "independence": "single"
     },
     {
@@ -642,11 +1059,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Codex concatenates files from the root down, joining them with blank lines. Files closer to your current directory override earlier guidance because they appear later in the combined prompt.",
       "citations": [
-        {"title": "Custom instructions with AGENTS.md", "author": "OpenAI", "publisher": "OpenAI Developers", "date": "n.d.", "url": "https://developers.openai.com/codex/guides/agents-md", "accessed": "2026-11-21"}
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "author": "OpenAI",
+          "publisher": "OpenAI Developers",
+          "date": "n.d.",
+          "url": "https://developers.openai.com/codex/guides/agents-md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Codex AGENTS.md concatenates files root down",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -656,11 +1083,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Codex skips empty files and stops adding files once the combined size reaches the limit defined by project_doc_max_bytes (32 KiB by default).",
       "citations": [
-        {"title": "Custom instructions with AGENTS.md", "author": "OpenAI", "publisher": "OpenAI Developers", "date": "n.d.", "url": "https://developers.openai.com/codex/guides/agents-md", "accessed": "2026-11-21"}
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "author": "OpenAI",
+          "publisher": "OpenAI Developers",
+          "date": "n.d.",
+          "url": "https://developers.openai.com/codex/guides/agents-md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Codex project_doc_max_bytes 32 KiB AGENTS.md limit",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation of its own default."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's current documentation of its own default."
+      },
       "independence": "single"
     },
     {
@@ -670,11 +1107,21 @@
       "source_type": "official API documentation",
       "quote": "You can filter the search results based on the metadata of the files.",
       "citations": [
-        {"title": "File search", "author": "OpenAI", "publisher": "OpenAI Platform docs", "date": "n.d.", "url": "https://platform.openai.com/docs/guides/tools-file-search", "accessed": "2026-11-21"}
+        {
+          "title": "File search",
+          "author": "OpenAI",
+          "publisher": "OpenAI Platform docs",
+          "date": "n.d.",
+          "url": "https://platform.openai.com/docs/guides/tools-file-search",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "OpenAI file search metadata filtering attributes",
-      "trust": {"score": 84, "basis": "API owner's current documentation; the `in` filter is shown in its example code."},
+      "trust": {
+        "score": 84,
+        "basis": "API owner's current documentation; the `in` filter is shown in its example code."
+      },
       "independence": "single"
     },
     {
@@ -684,11 +1131,21 @@
       "source_type": "official database documentation",
       "quote": "Documents can carry metadata , key-value pairs that store related information. When you search, add a metadata filter to limit results to the documents that match it.",
       "citations": [
-        {"title": "Filter by metadata", "author": "Pinecone Systems, Inc.", "publisher": "Pinecone Docs", "date": "n.d.", "url": "https://docs.pinecone.io/guides/search/filter-by-metadata", "accessed": "2026-11-21"}
+        {
+          "title": "Filter by metadata",
+          "author": "Pinecone Systems, Inc.",
+          "publisher": "Pinecone Docs",
+          "date": "n.d.",
+          "url": "https://docs.pinecone.io/guides/search/filter-by-metadata",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Pinecone filter by metadata key-value pairs search",
-      "trust": {"score": 84, "basis": "Database owner's current documentation; independent of OpenAI for the same pattern."},
+      "trust": {
+        "score": 84,
+        "basis": "Database owner's current documentation; independent of OpenAI for the same pattern."
+      },
       "independence": "single"
     },
     {
@@ -698,11 +1155,21 @@
       "source_type": "official database documentation",
       "quote": "$in Matches records or documents with metadata values that are in a specified array.",
       "citations": [
-        {"title": "Filter by metadata", "author": "Pinecone Systems, Inc.", "publisher": "Pinecone Docs", "date": "n.d.", "url": "https://docs.pinecone.io/guides/search/filter-by-metadata", "accessed": "2026-11-21"}
+        {
+          "title": "Filter by metadata",
+          "author": "Pinecone Systems, Inc.",
+          "publisher": "Pinecone Docs",
+          "date": "n.d.",
+          "url": "https://docs.pinecone.io/guides/search/filter-by-metadata",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Pinecone metadata filter $in operator array",
-      "trust": {"score": 84, "basis": "Database owner's current documentation."},
+      "trust": {
+        "score": 84,
+        "basis": "Database owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -712,11 +1179,21 @@
       "source_type": "official API documentation",
       "quote": "**Tool selection accuracy:** Claude's ability to pick the right tool degrades once you exceed 30–50 available tools. Because tool search loads only a focused set of relevant tools on demand, selection accuracy stays high even across thousands of tools.",
       "citations": [
-        {"title": "Tool search tool", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/tool-use/tool-search-tool", "accessed": "2026-11-21"}
+        {
+          "title": "Tool search tool",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/tool-use/tool-search-tool",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude tool search tool selection accuracy degrades 30-50 tools",
-      "trust": {"score": 58, "basis": "Platform owner's documentation, but the 30-50 threshold is a metric claim with no disclosed study, sample or measure; held below the Statistical bar."},
+      "trust": {
+        "score": 58,
+        "basis": "Platform owner's documentation, but the 30-50 threshold is a metric claim with no disclosed study, sample or measure; held below the Statistical bar."
+      },
       "independence": "single"
     },
     {
@@ -726,11 +1203,21 @@
       "source_type": "official API documentation",
       "quote": "Keep your 3–5 most frequently used tools non-deferred so Claude can call them without searching first.",
       "citations": [
-        {"title": "Tool search tool", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/tool-use/tool-search-tool", "accessed": "2026-11-21"}
+        {
+          "title": "Tool search tool",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/tool-use/tool-search-tool",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "tool search keep most frequently used tools non-deferred",
-      "trust": {"score": 80, "basis": "Platform owner's current documentation; a configuration recommendation, not a measurement."},
+      "trust": {
+        "score": 80,
+        "basis": "Platform owner's current documentation; a configuration recommendation, not a measurement."
+      },
       "independence": "single"
     },
     {
@@ -740,11 +1227,21 @@
       "source_type": "official tool documentation",
       "quote": "Git hook scripts are useful for identifying simple issues before submission to code review. We run our hooks on every commit to automatically point out issues in code such as missing semicolons, trailing whitespace, and debug statements. By pointing these issues out before code review, this allows a code reviewer to focus on the architecture of a change while not wasting time with trivial style nitpicks.",
       "citations": [
-        {"title": "pre-commit", "author": "pre-commit project (Anthony Sottile et al.)", "publisher": "pre-commit.com", "date": "n.d.", "url": "https://pre-commit.com/", "accessed": "2026-11-21"}
+        {
+          "title": "pre-commit",
+          "author": "pre-commit project (Anthony Sottile et al.)",
+          "publisher": "pre-commit.com",
+          "date": "n.d.",
+          "url": "https://pre-commit.com/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "pre-commit framework git hooks simple issues before code review",
-      "trust": {"score": 80, "basis": "The tool's own documentation; describes the practice it implements."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own documentation; describes the practice it implements."
+      },
       "independence": "single"
     },
     {
@@ -754,11 +1251,21 @@
       "source_type": "official tool documentation",
       "quote": "default_stages : [ pre-commit , pre-push ]",
       "citations": [
-        {"title": "pre-commit", "author": "pre-commit project (Anthony Sottile et al.)", "publisher": "pre-commit.com", "date": "n.d.", "url": "https://pre-commit.com/", "accessed": "2026-11-21"}
+        {
+          "title": "pre-commit",
+          "author": "pre-commit project (Anthony Sottile et al.)",
+          "publisher": "pre-commit.com",
+          "date": "n.d.",
+          "url": "https://pre-commit.com/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "pre-commit default_stages pre-push configuration",
-      "trust": {"score": 76, "basis": "The tool's own documentation; the quote is a configuration example."},
+      "trust": {
+        "score": 76,
+        "basis": "The tool's own documentation; the quote is a configuration example."
+      },
       "independence": "single"
     },
     {
@@ -768,11 +1275,21 @@
       "source_type": "vendor tool source (official repository)",
       "quote": "Create 20 eval queries — a mix of should-trigger and should-not-trigger.",
       "citations": [
-        {"title": "skill-creator SKILL.md", "author": "Anthropic", "publisher": "GitHub (anthropics/skills)", "date": "n.d.", "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md", "accessed": "2026-11-21"}
+        {
+          "title": "skill-creator SKILL.md",
+          "author": "Anthropic",
+          "publisher": "GitHub (anthropics/skills)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "skill-creator trigger eval queries should-trigger should-not-trigger",
-      "trust": {"score": 74, "basis": "Vendor's own published skill; a procedure, not a validated sample size."},
+      "trust": {
+        "score": 74,
+        "basis": "Vendor's own published skill; a procedure, not a validated sample size."
+      },
       "independence": "single"
     },
     {
@@ -782,11 +1299,21 @@
       "source_type": "vendor tool source (official repository)",
       "quote": "It splits the eval set into 60% train and 40% held-out test, evaluates the current description (running each query 3 times to get a reliable trigger rate)",
       "citations": [
-        {"title": "skill-creator SKILL.md", "author": "Anthropic", "publisher": "GitHub (anthropics/skills)", "date": "n.d.", "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md", "accessed": "2026-11-21"}
+        {
+          "title": "skill-creator SKILL.md",
+          "author": "Anthropic",
+          "publisher": "GitHub (anthropics/skills)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "skill-creator description optimization train held-out test trigger rate",
-      "trust": {"score": 72, "basis": "Vendor's own published tooling; describes its method; no reported results."},
+      "trust": {
+        "score": 52,
+        "basis": "Vendor's own published tooling; describes its method; no reported results. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers the 60/40 split and running each query 3 times. It does not cover the claim's clause about picking the description by test score. That clause is in a later sentence of the same paragraph (\"best_description — selected by test score rather than train score to avoid overfitting\"), which the quote leaves out; lowered 72->52."
+      },
       "independence": "single"
     },
     {
@@ -796,11 +1323,21 @@
       "source_type": "vendor tool source (official repository)",
       "quote": "Note: currently Claude has a tendency to \"undertrigger\" skills -- to not use them when they'd be useful.",
       "citations": [
-        {"title": "skill-creator SKILL.md", "author": "Anthropic", "publisher": "GitHub (anthropics/skills)", "date": "n.d.", "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md", "accessed": "2026-11-21"}
+        {
+          "title": "skill-creator SKILL.md",
+          "author": "Anthropic",
+          "publisher": "GitHub (anthropics/skills)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude undertrigger skills descriptions pushy",
-      "trust": {"score": 66, "basis": "Vendor's qualitative observation about its own model; no measurement."},
+      "trust": {
+        "score": 66,
+        "basis": "Vendor's qualitative observation about its own model; no measurement."
+      },
       "independence": "single"
     },
     {
@@ -810,11 +1347,21 @@
       "source_type": "official agent-host documentation",
       "quote": "If the skill ships in a plugin, you can measure how often it triggers across realistic prompts rather than checking one at a time: write an eval case with a [`tool_used: Skill` grader]",
       "citations": [
-        {"title": "Extend Claude with skills", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/skills", "accessed": "2026-11-21"}
+        {
+          "title": "Extend Claude with skills",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/skills",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code measure how often skill triggers eval case plugin eval",
-      "trust": {"score": 80, "basis": "Agent-host owner's current documentation of its own tooling."},
+      "trust": {
+        "score": 60,
+        "basis": "Agent-host owner's current documentation of its own tooling. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote matches apart from markdown-link formatting. It cuts off before \"and run it with claude plugin eval after each description change\". It also limits this to a skill that \"ships in a plugin\", a restriction the claim drops when it says \"Claude Code supports\"; lowered 80->60."
+      },
       "independence": "single"
     },
     {
@@ -824,11 +1371,21 @@
       "source_type": "platform help-center policy (secondary for this domain)",
       "quote": "Each question may only contain 5 tags at a maximum, so choose the ones that best describe your question.",
       "citations": [
-        {"title": "What are tags, and how should I use them?", "author": "Stack Overflow", "publisher": "Stack Overflow Help Center", "date": "n.d.", "url": "https://stackoverflow.com/help/tagging", "accessed": "2026-11-21"}
+        {
+          "title": "What are tags, and how should I use them?",
+          "author": "Stack Overflow",
+          "publisher": "Stack Overflow Help Center",
+          "date": "n.d.",
+          "url": "https://stackoverflow.com/help/tagging",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Stack Overflow maximum tags per question",
-      "trust": {"score": 64, "basis": "Primary for Stack Overflow's own policy but secondary as evidence for a guideline tag cap; a design choice, not a measured optimum; capped at 72."},
+      "trust": {
+        "score": 64,
+        "basis": "Primary for Stack Overflow's own policy but secondary as evidence for a guideline tag cap; a design choice, not a measured optimum; capped at 72."
+      },
       "independence": "single"
     },
     {
@@ -838,11 +1395,21 @@
       "source_type": "platform help-center policy (secondary for this domain)",
       "quote": "You should always favor existing tags; only create new tags when you feel you can make a strong case that your question does cover a new topic that nobody else has asked about before on this site.",
       "citations": [
-        {"title": "Privileges - Create new tags", "author": "Stack Overflow", "publisher": "Stack Overflow Help Center", "date": "n.d.", "url": "https://stackoverflow.com/help/privileges/create-tags", "accessed": "2026-11-21"}
+        {
+          "title": "Privileges - Create new tags",
+          "author": "Stack Overflow",
+          "publisher": "Stack Overflow Help Center",
+          "date": "n.d.",
+          "url": "https://stackoverflow.com/help/privileges/create-tags",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Stack Overflow when should I create new tags favor existing tags",
-      "trust": {"score": 64, "basis": "Primary for Stack Overflow's own policy, secondary as tagging practice; capped at 72."},
+      "trust": {
+        "score": 64,
+        "basis": "Primary for Stack Overflow's own policy, secondary as tagging practice; capped at 72."
+      },
       "independence": "single"
     },
     {
@@ -852,11 +1419,21 @@
       "source_type": "platform help-center policy (secondary for this domain)",
       "quote": "The goal is to avoid manually editing the tags on every post by making the retagging automatic for common tag mistakes.",
       "citations": [
-        {"title": "Privileges - Create tag synonyms", "author": "Stack Overflow", "publisher": "Stack Overflow Help Center", "date": "n.d.", "url": "https://stackoverflow.com/help/privileges/suggest-tag-synonyms", "accessed": "2026-11-21"}
+        {
+          "title": "Privileges - Create tag synonyms",
+          "author": "Stack Overflow",
+          "publisher": "Stack Overflow Help Center",
+          "date": "n.d.",
+          "url": "https://stackoverflow.com/help/privileges/suggest-tag-synonyms",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Stack Overflow tag synonyms retagging automatic",
-      "trust": {"score": 64, "basis": "Primary for Stack Overflow's own mechanism, secondary as vocabulary governance practice; capped at 72."},
+      "trust": {
+        "score": 64,
+        "basis": "Primary for Stack Overflow's own mechanism, secondary as vocabulary governance practice; capped at 72."
+      },
       "independence": "single"
     },
     {
@@ -866,11 +1443,21 @@
       "source_type": "official platform documentation",
       "quote": "This filesystem-based architecture allows **progressive disclosure:** Claude loads information in stages as needed, rather than consuming context upfront.",
       "citations": [
-        {"title": "Agent Skills", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview", "accessed": "2026-11-21"}
+        {
+          "title": "Agent Skills",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Agent Skills progressive disclosure loads information in stages",
-      "trust": {"score": 86, "basis": "Platform owner's current documentation."},
+      "trust": {
+        "score": 86,
+        "basis": "Platform owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -880,11 +1467,21 @@
       "source_type": "official platform documentation",
       "quote": "The `description` is what Claude matches your request against when determining whether to trigger the Skill, so it must say both what the Skill does and when to use it. This lightweight approach means you can install many Skills without context penalty: until a Skill is triggered, only its name and description occupy context.",
       "citations": [
-        {"title": "Agent Skills", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview", "accessed": "2026-11-21"}
+        {
+          "title": "Agent Skills",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Agent Skills description triggers skill name description occupy context",
-      "trust": {"score": 86, "basis": "Platform owner's current documentation."},
+      "trust": {
+        "score": 86,
+        "basis": "Platform owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -894,11 +1491,21 @@
       "source_type": "official platform documentation",
       "quote": "**Be specific and include key terms**. Include both what the Skill does and specific triggers/contexts for when to use it.",
       "citations": [
-        {"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Agent Skills best practices description specific key terms triggers",
-      "trust": {"score": 86, "basis": "Platform owner's current authoring guidance."},
+      "trust": {
+        "score": 86,
+        "basis": "Platform owner's current authoring guidance."
+      },
       "independence": "single"
     },
     {
@@ -908,11 +1515,21 @@
       "source_type": "official platform documentation",
       "quote": "**Create evaluations BEFORE writing extensive documentation.** This ensures your Skill solves real problems rather than documenting imagined ones.",
       "citations": [
-        {"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Agent Skills create evaluations before writing documentation",
-      "trust": {"score": 84, "basis": "Platform owner's current authoring guidance."},
+      "trust": {
+        "score": 84,
+        "basis": "Platform owner's current authoring guidance."
+      },
       "independence": "single"
     },
     {
@@ -922,11 +1539,21 @@
       "source_type": "official platform documentation",
       "quote": "Evaluations are your source of truth for measuring Skill effectiveness.",
       "citations": [
-        {"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Docs", "date": "n.d.", "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Docs",
+          "date": "n.d.",
+          "url": "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Agent Skills evaluations source of truth measuring effectiveness",
-      "trust": {"score": 84, "basis": "Platform owner's current authoring guidance."},
+      "trust": {
+        "score": 84,
+        "basis": "Platform owner's current authoring guidance."
+      },
       "independence": "single"
     },
     {
@@ -936,11 +1563,21 @@
       "source_type": "official agent-host documentation",
       "quote": "**Size**: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence. Move instructions that matter for only part of the codebase into [path-scoped rules](#path-specific-rules), which load only when Claude works with matching files.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "CLAUDE.md size target 200 lines reduce adherence",
-      "trust": {"score": 78, "basis": "Agent-host owner's current guidance; the adherence effect is asserted without a disclosed study."},
+      "trust": {
+        "score": 78,
+        "basis": "Agent-host owner's current guidance; the adherence effect is asserted without a disclosed study."
+      },
       "independence": "single"
     },
     {
@@ -950,11 +1587,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Use the [`InstructionsLoaded` hook](https://code.claude.com/docs/en/hooks#instructionsloaded) to log which `CLAUDE.md` and rules files are loaded, when they load, and why. This is useful for debugging path-specific rules or lazy-loaded files in subdirectories.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code InstructionsLoaded hook log rules loaded",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation of its own feature."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's current documentation of its own feature."
+      },
       "independence": "single"
     },
     {
@@ -964,11 +1611,21 @@
       "source_type": "official agent-host documentation",
       "quote": "If the YAML between the markers doesn't parse, Claude Code ignores the frontmatter and loads the rule as if it had no `paths`.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code rule frontmatter doesn't parse loads as if no paths",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation of its own behaviour."},
+      "trust": {
+        "score": 64,
+        "basis": "Agent-host owner's current documentation of its own behaviour. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote holds, but the next sentence in the source is \"Run claude --debug to see the parse error.\" So a parse error does exist and can be seen. The claim's \"silently\" and \"without an error\" overstate what the docs say; lowered 84->64."
+      },
       "independence": "single"
     },
     {
@@ -978,11 +1635,21 @@
       "source_type": "official agent-host documentation",
       "quote": "`paths` is the only field Claude Code reads from a rule; any other field is ignored without an error.",
       "citations": [
-        {"title": "Manage Claude's memory", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}
+        {
+          "title": "Manage Claude's memory",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code rule frontmatter other fields ignored without error",
-      "trust": {"score": 84, "basis": "Agent-host owner's current documentation of its own behaviour."},
+      "trust": {
+        "score": 84,
+        "basis": "Agent-host owner's current documentation of its own behaviour."
+      },
       "independence": "single"
     },
     {
@@ -992,11 +1659,21 @@
       "source_type": "official agent-host documentation",
       "quote": "Good rules are focused, actionable, and scoped. Keep rules under 500 lines Split large rules into multiple, composable rules",
       "citations": [
-        {"title": "Rules", "author": "Anysphere (Cursor)", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}
+        {
+          "title": "Rules",
+          "author": "Anysphere (Cursor)",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Cursor rules best practices focused actionable scoped 500 lines",
-      "trust": {"score": 80, "basis": "Agent-host owner's current guidance; quote normalised to single spaces from a list."},
+      "trust": {
+        "score": 80,
+        "basis": "Agent-host owner's current guidance; quote normalised to single spaces from a list."
+      },
       "independence": "single"
     },
     {
@@ -1006,11 +1683,21 @@
       "source_type": "W3C Recommendation",
       "quote": "S14 A resource has no more than one value of skos:prefLabel per language tag.",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Reference", "author": "Alistair Miles; Sean Bechhofer (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-reference/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Reference",
+          "author": "Alistair Miles; Sean Bechhofer (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-reference/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS reference prefLabel integrity condition S14",
-      "trust": {"score": 90, "basis": "W3C Recommendation, normative integrity condition; stable standard."},
+      "trust": {
+        "score": 90,
+        "basis": "W3C Recommendation, normative integrity condition; stable standard."
+      },
       "independence": "single"
     },
     {
@@ -1020,11 +1707,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "skos:scopeNote supplies some, possibly partial, information about the intended meaning of a concept, especially as an indication of how the use of a concept is limited in indexing practice.",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS primer scopeNote intended meaning indexing practice",
-      "trust": {"score": 88, "basis": "W3C Working Group Note accompanying the Recommendation; independent publisher from NISO for the same practice."},
+      "trust": {
+        "score": 88,
+        "basis": "W3C Working Group Note accompanying the Recommendation; independent publisher from NISO for the same practice."
+      },
       "independence": "single"
     },
     {
@@ -1034,11 +1731,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "skos:definition supplies a complete explanation of the intended meaning of a concept.",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS definition complete explanation intended meaning",
-      "trust": {"score": 88, "basis": "W3C Working Group Note."},
+      "trust": {
+        "score": 68,
+        "basis": "W3C Working Group Note. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote only says that skos:definition gives a complete explanation. The \"partial scope note\" half of the contrast sits in the Primer's scopeNote sentence just before it (\"some, possibly partial, information\"), which this quote leaves out; lowered 88->68."
+      },
       "independence": "single"
     },
     {
@@ -1048,11 +1755,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "skos:example supplies an example of the use of a concept",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS example note use of a concept",
-      "trust": {"score": 88, "basis": "W3C Working Group Note."},
+      "trust": {
+        "score": 88,
+        "basis": "W3C Working Group Note."
+      },
       "independence": "single"
     },
     {
@@ -1062,11 +1779,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "skos:historyNote describes significant changes to the meaning or the form of a concept",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS historyNote significant changes meaning form concept",
-      "trust": {"score": 88, "basis": "W3C Working Group Note."},
+      "trust": {
+        "score": 88,
+        "basis": "W3C Working Group Note."
+      },
       "independence": "single"
     },
     {
@@ -1076,11 +1803,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "skos:changeNote documents fine-grained changes to a concept, for the purposes of administration and maintenance",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS changeNote fine-grained changes administration maintenance",
-      "trust": {"score": 88, "basis": "W3C Working Group Note."},
+      "trust": {
+        "score": 88,
+        "basis": "W3C Working Group Note."
+      },
       "independence": "single"
     },
     {
@@ -1090,11 +1827,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "The skos:altLabel property makes it possible to assign an alternative lexical label to a concept. This is especially helpful when assigning labels beyond the one that is preferred for the concept, for instance when synonyms need to be represented",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS altLabel alternative lexical label synonyms",
-      "trust": {"score": 88, "basis": "W3C Working Group Note."},
+      "trust": {
+        "score": 68,
+        "basis": "W3C Working Group Note. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The Primer lists synonyms, near-synonyms, abbreviations and acronyms as uses of altLabel. It never mentions old or former forms. Keeping a renamed value resolvable is the cookbook's extension, not something the source states; lowered 88->68."
+      },
       "independence": "single"
     },
     {
@@ -1104,11 +1851,21 @@
       "source_type": "W3C Working Group Note",
       "quote": "a KOS designer would like that character string to be accessible to applications performing text-based indexing and search operations, but would not like that label to be visible otherwise.",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Primer", "author": "Antoine Isaac; Ed Summers (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-primer/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Primer",
+          "author": "Antoine Isaac; Ed Summers (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-primer/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS hiddenLabel text-based indexing search not visible",
-      "trust": {"score": 88, "basis": "W3C Working Group Note."},
+      "trust": {
+        "score": 68,
+        "basis": "W3C Working Group Note. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The Primer's only example of a hidden label is \"misspelled variants of other lexical labels\". It does not mention retired forms, which the claim attributes to SKOS; lowered 88->68."
+      },
       "independence": "single"
     },
     {
@@ -1118,11 +1875,21 @@
       "source_type": "W3C Recommendation",
       "quote": "note that there is no way to close the boundary of a concept scheme.",
       "citations": [
-        {"title": "SKOS Simple Knowledge Organization System Reference", "author": "Alistair Miles; Sean Bechhofer (eds.)", "publisher": "W3C", "date": "2009-08-18", "url": "https://www.w3.org/TR/skos-reference/", "accessed": "2026-11-21"}
+        {
+          "title": "SKOS Simple Knowledge Organization System Reference",
+          "author": "Alistair Miles; Sean Bechhofer (eds.)",
+          "publisher": "W3C",
+          "date": "2009-08-18",
+          "url": "https://www.w3.org/TR/skos-reference/",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "SKOS reference concept scheme closed system boundary",
-      "trust": {"score": 84, "basis": "W3C Recommendation, section 4.6.1; the conclusion that the application must enforce closure is this record's inference."},
+      "trust": {
+        "score": 84,
+        "basis": "W3C Recommendation, section 4.6.1; the conclusion that the application must enforce closure is this record's inference."
+      },
       "independence": "single"
     },
     {
@@ -1132,11 +1899,21 @@
       "source_type": "standards body description (NISO, ISO TC46/SC9 secretariat)",
       "quote": "This part of ISO 25964 gives recommendations for the development and maintenance of thesauri intended for information retrieval applications",
       "citations": [
-        {"title": "ISO 25964 – the international standard for thesauri and interoperability with other vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "n.d.", "url": "https://www.niso.org/schemas/iso25964", "accessed": "2026-11-21"}
+        {
+          "title": "ISO 25964 – the international standard for thesauri and interoperability with other vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "n.d.",
+          "url": "https://www.niso.org/schemas/iso25964",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "ISO 25964 thesauri development maintenance information retrieval",
-      "trust": {"score": 80, "basis": "Standards body's public description of the standard; the standard's own text is paywalled and not read."},
+      "trust": {
+        "score": 80,
+        "basis": "Standards body's public description of the standard; the standard's own text is paywalled and not read."
+      },
       "independence": "single"
     },
     {
@@ -1146,11 +1923,21 @@
       "source_type": "standards body description (NISO, ISO TC46/SC9 secretariat)",
       "quote": "Care has similarly been taken to maintain compatibility with the W3C standard SKOS",
       "citations": [
-        {"title": "ISO 25964 – the international standard for thesauri and interoperability with other vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "n.d.", "url": "https://www.niso.org/schemas/iso25964", "accessed": "2026-11-21"}
+        {
+          "title": "ISO 25964 – the international standard for thesauri and interoperability with other vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "n.d.",
+          "url": "https://www.niso.org/schemas/iso25964",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "ISO 25964 compatibility W3C SKOS",
-      "trust": {"score": 80, "basis": "Standards body's public description."},
+      "trust": {
+        "score": 80,
+        "basis": "Standards body's public description."
+      },
       "independence": "single"
     },
     {
@@ -1160,11 +1947,21 @@
       "source_type": "official tool documentation",
       "quote": "pre-commit This hook is invoked by git-commit[1] , and can be bypassed with the --no-verify option.",
       "citations": [
-        {"title": "githooks Documentation", "author": "Git project", "publisher": "git-scm.com", "date": "n.d.", "url": "https://git-scm.com/docs/githooks", "accessed": "2026-11-21"}
+        {
+          "title": "githooks Documentation",
+          "author": "Git project",
+          "publisher": "git-scm.com",
+          "date": "n.d.",
+          "url": "https://git-scm.com/docs/githooks",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "githooks pre-commit bypassed no-verify",
-      "trust": {"score": 90, "basis": "Git project's own reference documentation."},
+      "trust": {
+        "score": 90,
+        "basis": "Git project's own reference documentation."
+      },
       "independence": "single"
     },
     {
@@ -1174,11 +1971,21 @@
       "source_type": "official tool documentation",
       "quote": "pre-push This hook is called by git-push[1] and can be used to prevent a push from taking place.",
       "citations": [
-        {"title": "githooks Documentation", "author": "Git project", "publisher": "git-scm.com", "date": "n.d.", "url": "https://git-scm.com/docs/githooks", "accessed": "2026-11-21"}
+        {
+          "title": "githooks Documentation",
+          "author": "Git project",
+          "publisher": "git-scm.com",
+          "date": "n.d.",
+          "url": "https://git-scm.com/docs/githooks",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "githooks pre-push prevent a push",
-      "trust": {"score": 90, "basis": "Git project's own reference documentation."},
+      "trust": {
+        "score": 90,
+        "basis": "Git project's own reference documentation."
+      },
       "independence": "single"
     },
     {
@@ -1188,11 +1995,21 @@
       "source_type": "official platform documentation",
       "quote": "Required status checks must have a `successful`, `skipped`, or `neutral` status before collaborators can make changes to a protected branch.",
       "citations": [
-        {"title": "About protected branches", "author": "GitHub, Inc.", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches", "accessed": "2026-11-21"}
+        {
+          "title": "About protected branches",
+          "author": "GitHub, Inc.",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub protected branches require status checks before merging",
-      "trust": {"score": 86, "basis": "Platform owner's current documentation."},
+      "trust": {
+        "score": 86,
+        "basis": "Platform owner's current documentation."
+      },
       "independence": "single"
     },
     {
@@ -1202,11 +2019,21 @@
       "source_type": "peer-reviewed study (TACL 2024; arXiv)",
       "quote": "We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts.",
       "citations": [
-        {"title": "Lost in the Middle: How Language Models Use Long Contexts", "author": "Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang", "publisher": "arXiv (Transactions of the Association for Computational Linguistics)", "date": "2023-11-20", "url": "https://arxiv.org/abs/2307.03172", "accessed": "2026-11-21"}
+        {
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "author": "Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang",
+          "publisher": "arXiv (Transactions of the Association for Computational Linguistics)",
+          "date": "2023-11-20",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "lost in the middle language models long contexts position relevant information",
-      "trust": {"score": 78, "basis": "Peer-reviewed (TACL), disclosed sample and measure, widely replicated direction; a QA proxy for guideline loading and older models, so below the top band."},
+      "trust": {
+        "score": 78,
+        "basis": "Peer-reviewed (TACL), disclosed sample and measure, widely replicated direction; a QA proxy for guideline loading and older models, so below the top band."
+      },
       "independence": "single"
     },
     {
@@ -1216,11 +2043,21 @@
       "source_type": "peer-reviewed study (TACL 2024; arXiv)",
       "quote": "when relevant information is placed in the middle of its input context, GPT-3.5-Turbo's performance on the multi- document question task is lower than its performance when predicting without any documents (i.e., the closed-book setting; 56.1%).",
       "citations": [
-        {"title": "Lost in the Middle: How Language Models Use Long Contexts", "author": "Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang", "publisher": "arXiv (Transactions of the Association for Computational Linguistics)", "date": "2023-11-20", "url": "https://arxiv.org/abs/2307.03172", "accessed": "2026-11-21"}
+        {
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "author": "Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang",
+          "publisher": "arXiv (Transactions of the Association for Computational Linguistics)",
+          "date": "2023-11-20",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "lost in the middle closed-book 56.1% multi-document question answering",
-      "trust": {"score": 76, "basis": "Peer-reviewed, disclosed sample (2,655 queries) and measure (accuracy); one model, a QA proxy."},
+      "trust": {
+        "score": 76,
+        "basis": "Peer-reviewed, disclosed sample (2,655 queries) and measure (accuracy); one model, a QA proxy."
+      },
       "independence": "single"
     },
     {
@@ -1230,11 +2067,21 @@
       "source_type": "peer-reviewed study (TACL 2024; arXiv)",
       "quote": "using 50 documents instead of 20 retrieved documents only marginally improves performance (∼1.5% for GPT-3.5-Turbo and ∼1% for claude-1.3)",
       "citations": [
-        {"title": "Lost in the Middle: How Language Models Use Long Contexts", "author": "Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang", "publisher": "arXiv (Transactions of the Association for Computational Linguistics)", "date": "2023-11-20", "url": "https://arxiv.org/abs/2307.03172", "accessed": "2026-11-21"}
+        {
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "author": "Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang",
+          "publisher": "arXiv (Transactions of the Association for Computational Linguistics)",
+          "date": "2023-11-20",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "lost in the middle 50 documents instead of 20 marginal improvement",
-      "trust": {"score": 74, "basis": "Peer-reviewed open-domain QA case study with disclosed setup; older models; a proxy."},
+      "trust": {
+        "score": 74,
+        "basis": "Peer-reviewed open-domain QA case study with disclosed setup; older models; a proxy."
+      },
       "independence": "single"
     },
     {
@@ -1244,11 +2091,21 @@
       "source_type": "preprint study (arXiv)",
       "quote": "We introduce IFScale, a simple benchmark of 500 keyword-inclusion instructions",
       "citations": [
-        {"title": "How Many Instructions Can LLMs Follow at Once?", "author": "Daniel Jaroslawicz et al.", "publisher": "arXiv", "date": "2025-07-15", "url": "https://arxiv.org/abs/2507.11538", "accessed": "2026-11-21"}
+        {
+          "title": "How Many Instructions Can LLMs Follow at Once?",
+          "author": "Daniel Jaroslawicz et al.",
+          "publisher": "arXiv",
+          "date": "2025-07-15",
+          "url": "https://arxiv.org/abs/2507.11538",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "how many instructions can LLMs follow at once IFScale instruction density",
-      "trust": {"score": 62, "basis": "Unrefereed preprint; disclosed benchmark (500 instructions, 20 models) and measure (accuracy, 68% best at max density); synthetic keyword instructions are a proxy for guidelines."},
+      "trust": {
+        "score": 62,
+        "basis": "Unrefereed preprint; disclosed benchmark (500 instructions, 20 models) and measure (accuracy, 68% best at max density); synthetic keyword instructions are a proxy for guidelines."
+      },
       "independence": "single"
     },
     {
@@ -1258,11 +2115,21 @@
       "source_type": "vendor technical report",
       "quote": "In this report, we evaluate 18 LLMs, including the state-of-the-art GPT-4.1, Claude 4, Gemini 2.5, and Qwen3 models. Our results reveal that models do not use their context uniformly; instead, their performance grows increasingly unreliable as input length grows.",
       "citations": [
-        {"title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance", "author": "Kelly Hong; Anton Troynikov; Jeff Huber", "publisher": "Chroma", "date": "2025-07-14", "url": "https://research.trychroma.com/context-rot", "accessed": "2026-11-21"}
+        {
+          "title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance",
+          "author": "Kelly Hong; Anton Troynikov; Jeff Huber",
+          "publisher": "Chroma",
+          "date": "2025-07-14",
+          "url": "https://research.trychroma.com/context-rot",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "context rot increasing input tokens LLM performance 18 models",
-      "trust": {"score": 58, "basis": "Vendor technical report, not peer-reviewed, though it discloses models and code; current models; direction matches Lost in the Middle."},
+      "trust": {
+        "score": 58,
+        "basis": "Vendor technical report, not peer-reviewed, though it discloses models and code; current models; direction matches Lost in the Middle."
+      },
       "independence": "single"
     },
     {
@@ -1272,11 +2139,21 @@
       "source_type": "preprint study (arXiv)",
       "quote": "RAG-MCP significantly cuts prompt tokens (e.g., by over 50%) and more than triples tool selection accuracy (43.13% vs 13.62% baseline) on benchmark tasks.",
       "citations": [
-        {"title": "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation", "author": "Gan and Sun", "publisher": "arXiv", "date": "2025-05-06", "url": "https://arxiv.org/abs/2505.03275", "accessed": "2026-11-21"}
+        {
+          "title": "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation",
+          "author": "Gan and Sun",
+          "publisher": "arXiv",
+          "date": "2025-05-06",
+          "url": "https://arxiv.org/abs/2505.03275",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "RAG-MCP prompt bloat tool selection retrieval accuracy",
-      "trust": {"score": 56, "basis": "Unrefereed preprint; disclosed benchmark and measure; tool selection is a proxy for guideline selection."},
+      "trust": {
+        "score": 56,
+        "basis": "Unrefereed preprint; disclosed benchmark and measure; tool selection is a proxy for guideline selection."
+      },
       "independence": "single"
     },
     {
@@ -1286,11 +2163,21 @@
       "source_type": "preprint study (arXiv)",
       "quote": "its retrieval precision and overall throughput degrade as the tool registry scales to thousands of MCPs.",
       "citations": [
-        {"title": "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation", "author": "Gan and Sun", "publisher": "arXiv", "date": "2025-05-06", "url": "https://arxiv.org/abs/2505.03275", "accessed": "2026-11-21"}
+        {
+          "title": "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation",
+          "author": "Gan and Sun",
+          "publisher": "arXiv",
+          "date": "2025-05-06",
+          "url": "https://arxiv.org/abs/2505.03275",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "RAG-MCP limitations retrieval precision degrade registry scales",
-      "trust": {"score": 54, "basis": "Unrefereed preprint's own stated limitation."},
+      "trust": {
+        "score": 54,
+        "basis": "Unrefereed preprint's own stated limitation."
+      },
       "independence": "single"
     },
     {
@@ -1300,11 +2187,21 @@
       "source_type": "vendor engineering announcement",
       "quote": "Internal testing showed significant accuracy improvements on MCP evaluations when working with large tool libraries. Opus 4 improved from 49% to 74%, and Opus 4.5 improved from 79.5% to 88.1% with Tool Search Tool enabled.",
       "citations": [
-        {"title": "Introducing advanced tool use on the Claude Developer Platform", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2025-11-24", "url": "https://www.anthropic.com/engineering/advanced-tool-use", "accessed": "2026-11-21"}
+        {
+          "title": "Introducing advanced tool use on the Claude Developer Platform",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-11-24",
+          "url": "https://www.anthropic.com/engineering/advanced-tool-use",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Anthropic advanced tool use tool search accuracy Opus 49% 74%",
-      "trust": {"score": 40, "basis": "Vendor internal testing of its own product, sample and evaluation set undisclosed; fails the Statistical bar."},
+      "trust": {
+        "score": 40,
+        "basis": "Vendor internal testing of its own product, sample and evaluation set undisclosed; fails the Statistical bar."
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1314,11 +2211,21 @@
       "source_type": "vendor engineering announcement",
       "quote": "This represents an 85% reduction in token usage while maintaining access to your full tool library.",
       "citations": [
-        {"title": "Introducing advanced tool use on the Claude Developer Platform", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2025-11-24", "url": "https://www.anthropic.com/engineering/advanced-tool-use", "accessed": "2026-11-21"}
+        {
+          "title": "Introducing advanced tool use on the Claude Developer Platform",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-11-24",
+          "url": "https://www.anthropic.com/engineering/advanced-tool-use",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "Anthropic tool search 85% reduction token usage",
-      "trust": {"score": 40, "basis": "Vendor's worked example of its own product; fails the Statistical bar."},
+      "trust": {
+        "score": 40,
+        "basis": "Vendor's worked example of its own product; fails the Statistical bar."
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1328,11 +2235,21 @@
       "source_type": "vendor engineering report",
       "quote": "We use 1 minus recall@20 as our evaluation metric, which measures the percentage of relevant documents that fail to be retrieved within the top 20 chunks.",
       "citations": [
-        {"title": "Introducing Contextual Retrieval", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2024-09-19", "url": "https://www.anthropic.com/news/contextual-retrieval", "accessed": "2026-11-21"}
+        {
+          "title": "Introducing Contextual Retrieval",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2024-09-19",
+          "url": "https://www.anthropic.com/news/contextual-retrieval",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "contextual retrieval 1 minus recall@20 evaluation metric failed retrievals",
-      "trust": {"score": 60, "basis": "Vendor report with disclosed metric and appendix of domains, not peer-reviewed; used here for the measure (recall@k), which is standard IR practice."},
+      "trust": {
+        "score": 40,
+        "basis": "Vendor report with disclosed metric and appendix of domains, not peer-reviewed; used here for the measure (recall@k), which is standard IR practice. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote only defines the 1 minus recall@20 metric. The 5.7% to 2.9% figure is elsewhere in the article (contextual embeddings plus contextual BM25, averaged across domains), not in the quote. The article measures chunk retrieval for RAG, not \"context selection\" in general; lowered 60->40."
+      },
       "independence": "single"
     },
     {
@@ -1342,11 +2259,21 @@
       "source_type": "vendor engineering report",
       "quote": "If your knowledge base is smaller than 200,000 tokens (about 500 pages of material), you can just include the entire knowledge base in the prompt that you give the model, with no need for RAG or similar methods.",
       "citations": [
-        {"title": "Introducing Contextual Retrieval", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2024-09-19", "url": "https://www.anthropic.com/news/contextual-retrieval", "accessed": "2026-11-21"}
+        {
+          "title": "Introducing Contextual Retrieval",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2024-09-19",
+          "url": "https://www.anthropic.com/news/contextual-retrieval",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "contextual retrieval knowledge base smaller than 200,000 tokens include entire prompt",
-      "trust": {"score": 58, "basis": "Vendor guidance with no study behind the threshold; it pulls against context-rot findings, so it is a hedge, not a rule."},
+      "trust": {
+        "score": 58,
+        "basis": "Vendor guidance with no study behind the threshold; it pulls against context-rot findings, so it is a hedge, not a rule."
+      },
       "independence": "single"
     },
     {
@@ -1356,11 +2283,21 @@
       "source_type": "textbook (academic press)",
       "quote": "To measure ad hoc information retrieval effectiveness in the standard way, we need a test collection consisting of three things: 1. A document collection 2. A test suite of information needs, expressible as queries 3. A set of relevance judgments, standardly a binary assessment of either relevant or nonrelevant for each query-document pair.",
       "citations": [
-        {"title": "Introduction to Information Retrieval, chapter 8: Evaluation in information retrieval", "author": "Christopher D. Manning; Prabhakar Raghavan; Hinrich Schütze", "publisher": "Cambridge University Press", "date": "2008", "url": "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "Introduction to Information Retrieval, chapter 8: Evaluation in information retrieval",
+          "author": "Christopher D. Manning; Prabhakar Raghavan; Hinrich Schütze",
+          "publisher": "Cambridge University Press",
+          "date": "2008",
+          "url": "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "information retrieval evaluation test collection relevance judgments",
-      "trust": {"score": 86, "basis": "Standard IR textbook from an academic press; method, not a metric result; read from a course-archive copy."},
+      "trust": {
+        "score": 86,
+        "basis": "Standard IR textbook from an academic press; method, not a metric result; read from a course-archive copy."
+      },
       "independence": "single"
     },
     {
@@ -1370,11 +2307,21 @@
       "source_type": "textbook (academic press)",
       "quote": "As a rule of thumb, 50 information needs has usually been found to be a sufficient minimum.",
       "citations": [
-        {"title": "Introduction to Information Retrieval, chapter 8: Evaluation in information retrieval", "author": "Christopher D. Manning; Prabhakar Raghavan; Hinrich Schütze", "publisher": "Cambridge University Press", "date": "2008", "url": "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "Introduction to Information Retrieval, chapter 8: Evaluation in information retrieval",
+          "author": "Christopher D. Manning; Prabhakar Raghavan; Hinrich Schütze",
+          "publisher": "Cambridge University Press",
+          "date": "2008",
+          "url": "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "50 information needs sufficient minimum evaluation",
-      "trust": {"score": 74, "basis": "Textbook rule of thumb from an authoritative source, stated without its supporting study; a practice figure, not a measured result."},
+      "trust": {
+        "score": 74,
+        "basis": "Textbook rule of thumb from an authoritative source, stated without its supporting study; a practice figure, not a measured result."
+      },
       "independence": "single"
     },
     {
@@ -1384,11 +2331,21 @@
       "source_type": "textbook (academic press)",
       "quote": "Relevance is assessed relative to an information need, not a query.",
       "citations": [
-        {"title": "Introduction to Information Retrieval, chapter 8: Evaluation in information retrieval", "author": "Christopher D. Manning; Prabhakar Raghavan; Hinrich Schütze", "publisher": "Cambridge University Press", "date": "2008", "url": "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "Introduction to Information Retrieval, chapter 8: Evaluation in information retrieval",
+          "author": "Christopher D. Manning; Prabhakar Raghavan; Hinrich Schütze",
+          "publisher": "Cambridge University Press",
+          "date": "2008",
+          "url": "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "relevance assessed relative to information need not query",
-      "trust": {"score": 86, "basis": "Standard IR textbook; definitional."},
+      "trust": {
+        "score": 86,
+        "basis": "Standard IR textbook; definitional."
+      },
       "independence": "single"
     },
     {
@@ -1398,11 +2355,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Information retrieval effectiveness is traditionally measured by two parameters: recall and precision.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "information retrieval effectiveness measured recall and precision",
-      "trust": {"score": 86, "basis": "Accredited national standard, section 5.3.6; agrees with IIR chapter 8."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard, section 5.3.6; agrees with IIR chapter 8."
+      },
       "independence": "single"
     },
     {
@@ -1412,11 +2379,21 @@
       "source_type": "national standard (NISO)",
       "quote": "A measure of a search system's ability to retrieve all relevant content objects.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "recall definition retrieve all relevant content objects",
-      "trust": {"score": 86, "basis": "Accredited national standard's glossary."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard's glossary."
+      },
       "independence": "single"
     },
     {
@@ -1426,11 +2403,21 @@
       "source_type": "national standard (NISO)",
       "quote": "A measure of a search system's ability to retrieve only relevant content objects.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "precision definition retrieve only relevant content objects",
-      "trust": {"score": 86, "basis": "Accredited national standard's glossary."},
+      "trust": {
+        "score": 86,
+        "basis": "Accredited national standard's glossary."
+      },
       "independence": "single"
     },
     {
@@ -1440,11 +2427,21 @@
       "source_type": "national standard (NISO)",
       "quote": "Recall and precision tend to be inverse ratios. When one goes up, the other usually goes down.",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "recall and precision inverse ratios",
-      "trust": {"score": 80, "basis": "Accredited national standard's glossary note; a general observation, not a measured result."},
+      "trust": {
+        "score": 80,
+        "basis": "Accredited national standard's glossary note; a general observation, not a measured result."
+      },
       "independence": "single"
     },
     {
@@ -1454,11 +2451,21 @@
       "source_type": "vendor engineering guidance (agent host)",
       "quote": "Start by maximizing recall to ensure your compaction prompt captures every relevant piece of information from the trace, then iterate to improve precision by eliminating superfluous content.",
       "citations": [
-        {"title": "Effective context engineering for AI agents", "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "context engineering maximizing recall then precision compaction",
-      "trust": {"score": 68, "basis": "Vendor guidance stated for compaction, applied here by analogy to selection; no measurement."},
+      "trust": {
+        "score": 48,
+        "basis": "Vendor guidance stated for compaction, applied here by analogy to selection; no measurement. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The advice is specific to tuning a compaction prompt on agent traces, not to context selection in general. The source never says that missing what matters is the worse error; lowered 68->48."
+      },
       "independence": "single"
     },
     {
@@ -1468,11 +2475,21 @@
       "source_type": "vendor engineering guidance (agent host)",
       "quote": "If a human engineer can't definitively say which tool should be used in a given situation, an AI agent can't be expected to do better.",
       "citations": [
-        {"title": "Effective context engineering for AI agents", "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan, Jeremy Hadfield (Anthropic Applied AI team)",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "human engineer can't say which tool AI agent can't be expected",
-      "trust": {"score": 70, "basis": "Vendor guidance about tool sets, applied by analogy to trigger values."},
+      "trust": {
+        "score": 70,
+        "basis": "Vendor guidance about tool sets, applied by analogy to trigger values."
+      },
       "independence": "single"
     },
     {
@@ -1482,11 +2499,21 @@
       "source_type": "national standard (NISO)",
       "quote": "There is surprisingly little research or literature dealing specifically with the testing and evaluation of controlled vocabularies",
       "citations": [
-        {"title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies", "author": "NISO", "publisher": "National Information Standards Organization", "date": "2005", "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf", "accessed": "2026-11-21"}
+        {
+          "title": "ANSI/NISO Z39.19-2005 (R2010) Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+          "author": "NISO",
+          "publisher": "National Information Standards Organization",
+          "date": "2005",
+          "url": "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "little research testing and evaluation of controlled vocabularies",
-      "trust": {"score": 80, "basis": "Accredited national standard, section 11.2.1; dated 2005."},
+      "trust": {
+        "score": 80,
+        "basis": "Accredited national standard, section 11.2.1; dated 2005."
+      },
       "independence": "single"
     },
     {
@@ -1496,11 +2523,21 @@
       "source_type": "peer-reviewed study (Information Research)",
       "quote": "The tool with the best results is the list of descriptors (39.5% consistency), followed by the augmented thesaurus (29.8%) and, with an almost identical value, the standard thesaurus (27.5%).",
       "citations": [
-        {"title": "Evaluation of controlled vocabularies by inter-indexer consistency", "author": "Concha Soler Monreal; Isidoro Gil-Leiva", "publisher": "Information Research 16(4)", "date": "2011-12", "url": "https://informationr.net/ir/16-4/paper502.html", "accessed": "2026-11-21"}
+        {
+          "title": "Evaluation of controlled vocabularies by inter-indexer consistency",
+          "author": "Concha Soler Monreal; Isidoro Gil-Leiva",
+          "publisher": "Information Research 16(4)",
+          "date": "2011-12",
+          "url": "https://informationr.net/ir/16-4/paper502.html",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "inter-indexer consistency controlled vocabularies evaluation",
-      "trust": {"score": 56, "basis": "Peer-reviewed journal, disclosed method and measure, but a small sample (three articles, few professionals) and human indexers of articles, not authors tagging guidelines."},
+      "trust": {
+        "score": 56,
+        "basis": "Peer-reviewed journal, disclosed method and measure, but a small sample (three articles, few professionals) and human indexers of articles, not authors tagging guidelines."
+      },
       "independence": "single"
     },
     {
@@ -1510,11 +2547,21 @@
       "source_type": "prior cookbook text",
       "quote": "Instead of loading all 240 guidelines into context, agents query by activity to get the 10-20 that matter right now.\n\nGuidelines are the opposite: numerous, specific, and most are irrelevant to any given task. Loading all of them wastes context and dilutes signal.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: load-by-activity-not-all",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1524,11 +2571,21 @@
       "source_type": "prior cookbook text",
       "quote": "Triggers solve this. Each guideline declares the activities where it's relevant. An agent about to write tests queries `writing-tests` and gets ~12 guidelines instead of 240.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: guideline-declares-activities",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1538,11 +2595,21 @@
       "source_type": "prior cookbook text",
       "quote": "The most effective usage is graduated — lightweight guardrails during active work, thorough review at natural checkpoints:",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: escalating-checkpoint-pattern",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1552,11 +2619,21 @@
       "source_type": "prior cookbook text",
       "quote": "**Principles** — always loaded into context. Small (27 items), universal, load-bearing. These are the foundation that applies to every task.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: principles-always-loaded",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1566,11 +2643,21 @@
       "source_type": "prior cookbook text",
       "quote": "**Trigger-filtered guidelines** — loaded on demand based on current activity. When an agent is about to write tests, it queries `writing-tests` and gets ~12 specific testing guidelines. When it's about to call an API, it queries `api-integration` and gets the relevant networking and security guidelines.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: trigger-filtered-on-demand",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1580,11 +2667,21 @@
       "source_type": "prior cookbook text",
       "quote": "**Pre-commit checklist** — a small mandatory set (~10 rules) triggered by `pre-commit`. Checked before every commit. Fast, focused, catches common issues.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: pre-commit-checklist",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1594,11 +2691,21 @@
       "source_type": "prior cookbook text",
       "quote": "The cost of checking is proportional to the stakes of the action.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: check-cost-proportional-to-stakes",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1608,11 +2715,21 @@
       "source_type": "prior cookbook text",
       "quote": "The trigger index lives at `cookbook/index/triggers.yaml` (generated by `cookr update`). It lists each guideline by its source folder, relative to `cookbook/`:",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: trigger-index-location",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1622,11 +2739,21 @@
       "source_type": "prior cookbook text",
       "quote": "After adding or modifying guideline triggers, regenerate:",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: regenerate-index-after-change",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1636,11 +2763,21 @@
       "source_type": "prior cookbook text",
       "quote": "The index is a generated artifact — do not edit it manually.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: trigger-index-not-hand-edited",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1650,11 +2787,21 @@
       "source_type": "prior cookbook text",
       "quote": "Order triggers from most specific to least specific.",
       "citations": [
-        {"title": "activity-triggers (trigger-guide.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (trigger-guide.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/trigger-guide.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: order-specific-to-general",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1664,11 +2811,21 @@
       "source_type": "prior cookbook text",
       "quote": "| `triggers` | Guideline only | Activity or context tags that make this guideline relevant to an AI agent.",
       "citations": [
-        {"title": "activity-triggers (conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: triggers-guideline-only",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1678,49 +2835,375 @@
       "source_type": "prior cookbook text",
       "quote": "Empty list `[]` if not yet classified.",
       "citations": [
-        {"title": "activity-triggers (conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}
+        {
+          "title": "activity-triggers (conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
       ],
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: triggers-empty-until-classified",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     }
   ],
   "verdicts": [
-    {"rule": "load-by-activity-not-all", "verdict": "unsupported", "claims": ["load-by-activity-not-all-prior", "bp-smallest-high-signal-set", "bp-context-rot-recall-falls", "bp-no-laundry-list-of-rules", "ks-path-rules-save-context", "ks-tool-search-accuracy-degrades", "ev-lost-in-middle-position", "ev-lost-in-middle-below-closed-book", "ev-more-docs-marginal", "ev-ifscale-instruction-density", "ev-chroma-context-rot", "ev-rag-mcp-selection-accuracy", "ev-rag-mcp-degrades-at-scale", "ev-anthropic-tool-search-internal", "ev-tool-search-token-reduction"]},
-    {"rule": "guideline-declares-activities", "verdict": "unsupported", "claims": ["guideline-declares-activities-prior", "ks-claude-path-scoped-rules", "ks-skill-description-decides-loading", "ks-cursor-rule-types", "ks-copilot-path-instructions", "ks-openai-metadata-filter", "ks-pinecone-metadata-filter", "pg-skills-metadata-only-until-triggered"]},
-    {"rule": "canonical-trigger-vocabulary", "verdict": "supported", "claims": ["bp-controlled-vocabulary-defined", "bp-vocab-control-three-methods", "bp-scope-note-states-meaning", "bp-controlled-vocab-improves-precision-recall", "pg-skos-scope-note", "pg-skos-example", "pg-iso25964-maintenance", "pg-iso25964-skos-compatible"]},
-    {"rule": "escalating-checkpoint-pattern", "verdict": "unsupported", "claims": ["escalating-checkpoint-pattern-prior", "bp-commit-build-fast", "bp-second-stage-build", "ks-pre-commit-simple-issues", "ks-pre-commit-stages"]},
-    {"rule": "principles-always-loaded", "verdict": "unsupported", "claims": ["principles-always-loaded-prior", "bp-hybrid-upfront-plus-on-demand", "ks-rules-without-paths-load-at-launch", "ks-cursor-always-apply", "ks-codex-concatenates-root-down", "ks-keep-few-tools-non-deferred"]},
-    {"rule": "trigger-filtered-on-demand", "verdict": "unsupported", "claims": ["trigger-filtered-on-demand-prior", "ks-skill-body-loads-on-use", "pg-agent-skills-progressive-disclosure", "ks-claude-path-scoped-rules", "ks-copilot-path-instructions", "ks-cursor-rule-types", "ks-agents-md-nearest-file"]},
-    {"rule": "pre-commit-checklist", "verdict": "unsupported", "claims": ["pre-commit-checklist-prior", "ks-pre-commit-simple-issues", "pg-githooks-pre-commit-bypass", "bp-commit-build-fast", "bp-ten-minute-build"]},
-    {"rule": "pre-pr-audit", "verdict": "supported", "claims": ["bp-second-stage-build", "pg-githooks-pre-push", "pg-github-required-status-checks"]},
-    {"rule": "check-cost-proportional-to-stakes", "verdict": "unsupported", "claims": ["check-cost-proportional-to-stakes-prior", "bp-commit-build-fast", "bp-second-stage-build"]},
-    {"rule": "trigger-index-location", "verdict": "unsupported", "claims": ["trigger-index-location-prior"]},
-    {"rule": "query-union-of-triggers", "verdict": "supported", "claims": ["ks-openai-metadata-filter", "ks-pinecone-in-operator", "ks-copilot-instructions-combined"]},
-    {"rule": "regenerate-index-after-change", "verdict": "unsupported", "claims": ["regenerate-index-after-change-prior"]},
-    {"rule": "trigger-index-not-hand-edited", "verdict": "unsupported", "claims": ["trigger-index-not-hand-edited-prior"]},
-    {"rule": "triggers-field-in-meta", "verdict": "supported", "claims": ["ks-claude-path-scoped-rules", "ks-copilot-applyto-frontmatter"]},
-    {"rule": "one-to-five-triggers", "verdict": "supported", "claims": ["ks-so-five-tag-cap", "bp-prune-overused-and-rare-terms"]},
-    {"rule": "canonical-values-only", "verdict": "supported", "claims": ["bp-controlled-vocabulary-defined", "bp-controlled-vocab-improves-precision-recall", "ks-so-favor-existing-tags"]},
-    {"rule": "add-trigger-to-guide-first", "verdict": "supported", "claims": ["bp-nominate-candidate-term", "bp-editor-reviews-new-terms", "ks-so-favor-existing-tags"]},
-    {"rule": "order-specific-to-general", "verdict": "unsupported", "claims": ["order-specific-to-general-prior"]},
-    {"rule": "triggers-guideline-only", "verdict": "unsupported", "claims": ["triggers-guideline-only-prior"]},
-    {"rule": "triggers-empty-until-classified", "verdict": "unsupported", "claims": ["triggers-empty-until-classified-prior"]},
-    {"rule": "triggers-from-canonical-taxonomy", "verdict": "supported", "claims": ["bp-controlled-vocabulary-defined", "pg-iso25964-maintenance"]},
-    {"rule": "trigger-one-meaning-one-label", "verdict": "new", "claims": ["bp-one-meaning-per-term", "pg-skos-one-preflabel", "bp-controlled-vocabulary-defined"]},
-    {"rule": "trigger-scope-note-per-value", "verdict": "new", "claims": ["bp-scope-note-states-meaning", "pg-skos-scope-note", "pg-skos-definition", "pg-skos-example", "ev-human-cant-pick-tool"]},
-    {"rule": "trigger-values-carry-key-terms", "verdict": "new", "claims": ["pg-skills-description-key-terms", "pg-skills-metadata-only-until-triggered", "bp-warrant"]},
-    {"rule": "trigger-change-history", "verdict": "new", "claims": ["bp-change-record-dated", "bp-history-note-records-entry", "bp-history-note-succession", "pg-skos-history-note", "pg-skos-change-note"]},
-    {"rule": "rename-keeps-old-value-as-alias", "verdict": "new", "claims": ["bp-rename-use-reference", "pg-skos-altlabel-synonyms", "pg-skos-hidden-label", "ks-so-tag-synonyms-auto-retag"]},
-    {"rule": "retire-assesses-impact-and-migrates", "verdict": "new", "claims": ["bp-retire-consider-impact", "bp-retained-term-marked", "bp-one-for-one-auto-migrate", "bp-delete-without-replacement-loses-access"]},
-    {"rule": "vocabulary-periodic-review", "verdict": "new", "claims": ["bp-vocabulary-needs-maintenance", "bp-maintenance-policies", "bp-prune-overused-and-rare-terms", "bp-periodic-evaluation"]},
-    {"rule": "validate-trigger-values-mechanically", "verdict": "new", "claims": ["pg-skos-open-boundary", "pg-unknown-fields-ignored-silently", "pg-bad-frontmatter-loads-always"]},
-    {"rule": "measure-trigger-selection-with-labelled-tasks", "verdict": "new", "claims": ["ev-test-collection-three-parts", "ev-fifty-information-needs", "ev-relevance-to-need-not-query", "pg-skills-evaluations-first", "pg-skills-evaluations-source-of-truth", "ks-skill-trigger-eval-set", "ks-skill-trigger-train-test-split", "ks-plugin-eval-trigger-rate", "ev-little-research-vocab-evaluation"]},
-    {"rule": "report-recall-and-precision", "verdict": "new", "claims": ["ev-measure-by-recall-precision", "ev-recall-defined", "ev-precision-defined", "ev-recall-precision-inverse", "ev-contextual-retrieval-failure-rate", "ev-start-with-recall"]},
-    {"rule": "fallback-when-tags-miss", "verdict": "new", "claims": ["bp-hybrid-upfront-plus-on-demand", "ks-cursor-rule-types", "ks-skill-description-decides-loading", "ks-skill-undertrigger", "ev-indexer-consistency-low"]},
-    {"rule": "keep-always-loaded-core-small", "verdict": "new", "claims": ["pg-claude-md-size-adherence", "pg-cursor-rules-focused", "ks-keep-few-tools-non-deferred", "ks-codex-size-limit", "ks-skill-listing-costs-every-turn", "ks-skill-listing-budget-drops-descriptions"]},
-    {"rule": "log-loaded-guidelines", "verdict": "new", "claims": ["pg-instructions-loaded-hook"]},
-    {"rule": "filter-only-when-corpus-outgrows-context", "verdict": "new", "claims": ["ev-contextual-retrieval-small-kb-in-prompt", "ev-more-docs-marginal"]}
+    {
+      "rule": "load-by-activity-not-all",
+      "verdict": "unsupported",
+      "claims": [
+        "load-by-activity-not-all-prior",
+        "bp-smallest-high-signal-set",
+        "bp-context-rot-recall-falls",
+        "bp-no-laundry-list-of-rules",
+        "ks-path-rules-save-context",
+        "ks-tool-search-accuracy-degrades",
+        "ev-lost-in-middle-position",
+        "ev-lost-in-middle-below-closed-book",
+        "ev-more-docs-marginal",
+        "ev-ifscale-instruction-density",
+        "ev-chroma-context-rot",
+        "ev-rag-mcp-selection-accuracy",
+        "ev-rag-mcp-degrades-at-scale",
+        "ev-anthropic-tool-search-internal",
+        "ev-tool-search-token-reduction"
+      ]
+    },
+    {
+      "rule": "guideline-declares-activities",
+      "verdict": "unsupported",
+      "claims": [
+        "guideline-declares-activities-prior",
+        "ks-claude-path-scoped-rules",
+        "ks-skill-description-decides-loading",
+        "ks-cursor-rule-types",
+        "ks-copilot-path-instructions",
+        "ks-openai-metadata-filter",
+        "ks-pinecone-metadata-filter",
+        "pg-skills-metadata-only-until-triggered"
+      ]
+    },
+    {
+      "rule": "canonical-trigger-vocabulary",
+      "verdict": "supported",
+      "claims": [
+        "bp-controlled-vocabulary-defined",
+        "bp-vocab-control-three-methods",
+        "bp-scope-note-states-meaning",
+        "bp-controlled-vocab-improves-precision-recall",
+        "pg-skos-scope-note",
+        "pg-skos-example",
+        "pg-iso25964-maintenance",
+        "pg-iso25964-skos-compatible"
+      ]
+    },
+    {
+      "rule": "escalating-checkpoint-pattern",
+      "verdict": "unsupported",
+      "claims": [
+        "escalating-checkpoint-pattern-prior",
+        "bp-commit-build-fast",
+        "bp-second-stage-build",
+        "ks-pre-commit-simple-issues",
+        "ks-pre-commit-stages"
+      ]
+    },
+    {
+      "rule": "principles-always-loaded",
+      "verdict": "unsupported",
+      "claims": [
+        "principles-always-loaded-prior",
+        "bp-hybrid-upfront-plus-on-demand",
+        "ks-rules-without-paths-load-at-launch",
+        "ks-cursor-always-apply",
+        "ks-codex-concatenates-root-down",
+        "ks-keep-few-tools-non-deferred"
+      ]
+    },
+    {
+      "rule": "trigger-filtered-on-demand",
+      "verdict": "unsupported",
+      "claims": [
+        "trigger-filtered-on-demand-prior",
+        "ks-skill-body-loads-on-use",
+        "pg-agent-skills-progressive-disclosure",
+        "ks-claude-path-scoped-rules",
+        "ks-copilot-path-instructions",
+        "ks-cursor-rule-types",
+        "ks-agents-md-nearest-file"
+      ]
+    },
+    {
+      "rule": "pre-commit-checklist",
+      "verdict": "unsupported",
+      "claims": [
+        "pre-commit-checklist-prior",
+        "ks-pre-commit-simple-issues",
+        "pg-githooks-pre-commit-bypass",
+        "bp-commit-build-fast",
+        "bp-ten-minute-build"
+      ]
+    },
+    {
+      "rule": "pre-pr-audit",
+      "verdict": "supported",
+      "claims": [
+        "bp-second-stage-build",
+        "pg-githooks-pre-push",
+        "pg-github-required-status-checks"
+      ]
+    },
+    {
+      "rule": "check-cost-proportional-to-stakes",
+      "verdict": "unsupported",
+      "claims": [
+        "check-cost-proportional-to-stakes-prior",
+        "bp-commit-build-fast",
+        "bp-second-stage-build"
+      ]
+    },
+    {
+      "rule": "trigger-index-location",
+      "verdict": "unsupported",
+      "claims": [
+        "trigger-index-location-prior"
+      ]
+    },
+    {
+      "rule": "query-union-of-triggers",
+      "verdict": "supported",
+      "claims": [
+        "ks-openai-metadata-filter",
+        "ks-pinecone-in-operator",
+        "ks-copilot-instructions-combined"
+      ]
+    },
+    {
+      "rule": "regenerate-index-after-change",
+      "verdict": "unsupported",
+      "claims": [
+        "regenerate-index-after-change-prior"
+      ]
+    },
+    {
+      "rule": "trigger-index-not-hand-edited",
+      "verdict": "unsupported",
+      "claims": [
+        "trigger-index-not-hand-edited-prior"
+      ]
+    },
+    {
+      "rule": "triggers-field-in-meta",
+      "verdict": "supported",
+      "claims": [
+        "ks-claude-path-scoped-rules",
+        "ks-copilot-applyto-frontmatter"
+      ]
+    },
+    {
+      "rule": "one-to-five-triggers",
+      "verdict": "supported",
+      "claims": [
+        "ks-so-five-tag-cap",
+        "bp-prune-overused-and-rare-terms"
+      ]
+    },
+    {
+      "rule": "canonical-values-only",
+      "verdict": "supported",
+      "claims": [
+        "bp-controlled-vocabulary-defined",
+        "bp-controlled-vocab-improves-precision-recall",
+        "ks-so-favor-existing-tags"
+      ]
+    },
+    {
+      "rule": "add-trigger-to-guide-first",
+      "verdict": "supported",
+      "claims": [
+        "bp-nominate-candidate-term",
+        "bp-editor-reviews-new-terms",
+        "ks-so-favor-existing-tags"
+      ]
+    },
+    {
+      "rule": "order-specific-to-general",
+      "verdict": "unsupported",
+      "claims": [
+        "order-specific-to-general-prior"
+      ]
+    },
+    {
+      "rule": "triggers-guideline-only",
+      "verdict": "unsupported",
+      "claims": [
+        "triggers-guideline-only-prior"
+      ]
+    },
+    {
+      "rule": "triggers-empty-until-classified",
+      "verdict": "unsupported",
+      "claims": [
+        "triggers-empty-until-classified-prior"
+      ]
+    },
+    {
+      "rule": "triggers-from-canonical-taxonomy",
+      "verdict": "supported",
+      "claims": [
+        "bp-controlled-vocabulary-defined",
+        "pg-iso25964-maintenance"
+      ]
+    },
+    {
+      "rule": "trigger-one-meaning-one-label",
+      "verdict": "new",
+      "claims": [
+        "bp-one-meaning-per-term",
+        "pg-skos-one-preflabel",
+        "bp-controlled-vocabulary-defined"
+      ]
+    },
+    {
+      "rule": "trigger-scope-note-per-value",
+      "verdict": "new",
+      "claims": [
+        "bp-scope-note-states-meaning",
+        "pg-skos-scope-note",
+        "pg-skos-definition",
+        "pg-skos-example",
+        "ev-human-cant-pick-tool"
+      ]
+    },
+    {
+      "rule": "trigger-values-carry-key-terms",
+      "verdict": "new",
+      "claims": [
+        "pg-skills-description-key-terms",
+        "pg-skills-metadata-only-until-triggered",
+        "bp-warrant"
+      ]
+    },
+    {
+      "rule": "trigger-change-history",
+      "verdict": "new",
+      "claims": [
+        "bp-change-record-dated",
+        "bp-history-note-records-entry",
+        "bp-history-note-succession",
+        "pg-skos-history-note",
+        "pg-skos-change-note"
+      ]
+    },
+    {
+      "rule": "rename-keeps-old-value-as-alias",
+      "verdict": "new",
+      "claims": [
+        "bp-rename-use-reference",
+        "pg-skos-altlabel-synonyms",
+        "pg-skos-hidden-label",
+        "ks-so-tag-synonyms-auto-retag"
+      ]
+    },
+    {
+      "rule": "retire-assesses-impact-and-migrates",
+      "verdict": "new",
+      "claims": [
+        "bp-retire-consider-impact",
+        "bp-retained-term-marked",
+        "bp-one-for-one-auto-migrate",
+        "bp-delete-without-replacement-loses-access"
+      ]
+    },
+    {
+      "rule": "vocabulary-periodic-review",
+      "verdict": "new",
+      "claims": [
+        "bp-vocabulary-needs-maintenance",
+        "bp-maintenance-policies",
+        "bp-prune-overused-and-rare-terms",
+        "bp-periodic-evaluation"
+      ]
+    },
+    {
+      "rule": "validate-trigger-values-mechanically",
+      "verdict": "new",
+      "claims": [
+        "pg-skos-open-boundary",
+        "pg-unknown-fields-ignored-silently",
+        "pg-bad-frontmatter-loads-always"
+      ]
+    },
+    {
+      "rule": "measure-trigger-selection-with-labelled-tasks",
+      "verdict": "new",
+      "claims": [
+        "ev-test-collection-three-parts",
+        "ev-fifty-information-needs",
+        "ev-relevance-to-need-not-query",
+        "pg-skills-evaluations-first",
+        "pg-skills-evaluations-source-of-truth",
+        "ks-skill-trigger-eval-set",
+        "ks-skill-trigger-train-test-split",
+        "ks-plugin-eval-trigger-rate",
+        "ev-little-research-vocab-evaluation"
+      ]
+    },
+    {
+      "rule": "report-recall-and-precision",
+      "verdict": "new",
+      "claims": [
+        "ev-measure-by-recall-precision",
+        "ev-recall-defined",
+        "ev-precision-defined",
+        "ev-recall-precision-inverse",
+        "ev-contextual-retrieval-failure-rate",
+        "ev-start-with-recall"
+      ]
+    },
+    {
+      "rule": "fallback-when-tags-miss",
+      "verdict": "new",
+      "claims": [
+        "bp-hybrid-upfront-plus-on-demand",
+        "ks-cursor-rule-types",
+        "ks-skill-description-decides-loading",
+        "ks-skill-undertrigger",
+        "ev-indexer-consistency-low"
+      ]
+    },
+    {
+      "rule": "keep-always-loaded-core-small",
+      "verdict": "new",
+      "claims": [
+        "pg-claude-md-size-adherence",
+        "pg-cursor-rules-focused",
+        "ks-keep-few-tools-non-deferred",
+        "ks-codex-size-limit",
+        "ks-skill-listing-costs-every-turn",
+        "ks-skill-listing-budget-drops-descriptions"
+      ]
+    },
+    {
+      "rule": "log-loaded-guidelines",
+      "verdict": "new",
+      "claims": [
+        "pg-instructions-loaded-hook"
+      ]
+    },
+    {
+      "rule": "filter-only-when-corpus-outgrows-context",
+      "verdict": "new",
+      "claims": [
+        "ev-contextual-retrieval-small-kb-in-prompt",
+        "ev-more-docs-marginal"
+      ]
+    }
   ]
 }
