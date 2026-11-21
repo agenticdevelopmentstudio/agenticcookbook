@@ -4,7 +4,7 @@
     "id": "51a6fb7d-6668-4e64-9bc0-aa5b568092a3",
     "title": "Principle Formatting",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-21",
@@ -63,12 +63,12 @@
       "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md013.md",
       "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-21",
     "triggers": []
   },
   "names_hosts": "Cites agent hosts' published instruction budgets and guidance as the evidence for its rules.",
-  "synced": "5182e85fad6dc4cb",
+  "synced": "b938c2a5cf529244",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
