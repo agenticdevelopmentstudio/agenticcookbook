@@ -1,0 +1,25 @@
+
+- [Inverted Pyramid: Writing for Comprehension](https://www.nngroup.com/articles/inverted-pyramid/), Nielsen Norman Group
+- [PEP 1](https://raw.githubusercontent.com/python/peps/main/peps/pep-0001.rst), Python Software Foundation
+- [Documenting Architecture Decisions](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Michael Nygard
+- [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/)
+- [Docs as code](https://www.writethedocs.org/guide/docs-as-code/), Write the Docs
+- markdownlint: [MD041](https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md041.md), [MD025](https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md025.md), [MD043](https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md043.md), [MD013](https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md013.md), [Custom Rules](https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/CustomRules.md)
+- Vale: [metric](https://vale.sh/docs/checks/metric), [occurrence](https://vale.sh/docs/checks/occurrence), [script](https://vale.sh/docs/checks/script)
+- JSON Schema: [object](https://json-schema.org/understanding-json-schema/reference/object), [const](https://json-schema.org/understanding-json-schema/reference/const)
+- [Content collections](https://docs.astro.build/en/guides/content-collections/), Astro
+- [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) and [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Anthropic
+- [How Claude remembers your project](https://code.claude.com/docs/en/memory) and [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices), Anthropic
+- [Skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) and [Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices), Anthropic
+- [Agent Skills specification](https://agentskills.io/specification)
+- [AGENTS.md](https://agents.md/)
+- [Cursor Rules](https://cursor.com/docs/context/rules), Cursor
+- [Custom instructions with AGENTS.md](https://developers.openai.com/codex/guides/agents-md), OpenAI
+- [Adding repository custom instructions for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions), GitHub
+- [Explanation](https://diataxis.fr/explanation/), Diátaxis
+- Google: [Headings and titles](https://developers.google.com/style/headings), [Paragraphs](https://developers.google.com/tech-writing/one/paragraphs)
+- Microsoft: [Top 10 tips for Microsoft style and voice](https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice), [Scannable content](https://learn.microsoft.com/en-us/style-guide/scannable-content/), [Lists](https://learn.microsoft.com/en-us/style-guide/scannable-content/lists)
+- [How Many Instructions Can LLMs Follow at Once?](https://arxiv.org/abs/2507.11538) (IFScale)
+- [Lost in the Middle](https://arxiv.org/abs/2307.03172)
+- [Context Rot](https://research.trychroma.com/context-rot), Chroma
+

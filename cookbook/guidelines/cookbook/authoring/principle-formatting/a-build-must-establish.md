@@ -1,0 +1,29 @@
+
+- `pf-frontmatter-complete`: every meta field `guide/introduction/conventions.md` requires is present, and there is no `domain` field
+- `pf-type-field`: `type` is `principle`
+- `pf-summary-what-and-when`: the `summary` says what the principle is about and when it applies
+- `pf-title-heading`: the first H1 matches the frontmatter `title` exactly
+- `pf-single-title`: the document has one level-1 heading, its first heading, which is the title
+- `pf-statement`: a concise statement paragraph of the principle's core idea, typically one to three sentences, follows the H1 directly
+- `pf-key-guidance-first`: the statement comes before the bullets, and the most important bullets come first
+- `pf-actionable-guidance`: unless the statement is self-evident in practice, bullets give its practical applications, each a specific full sentence, two to seven short items of one structure
+- `pf-state-why`: the principle says why it holds
+- `pf-only-what-the-agent-lacks`: no bullet holds what the agent already knows, a copied style convention or a lint rule, and each answers a mistake agents make
+- `pf-brevity`: the body, without frontmatter and Change History, is concise and within ~50 lines, and detailed guidance is in guidelines
+- `pf-always-loaded-budget`: the principle was sized with everything else always loaded, against the hosts' limits
+- `pf-change-history`: the file ends with a `## Change History` table whose columns are Version, Date, Author and Summary
+- `pf-history-newest-first`: the history has a dated row for every version, the latest first
+- `pf-format-checks-tool-enforced`: every check a script can decide is run by a schema, linter or CI, and the text holds only what no tool checks
+- `standard-roled-parts`: a principle added or rewritten gives each part a role
+- `standard-named-rules`: each rule of a roled principle is its own `- **kebab-name**: …` bullet of a `rules` part, with an RFC 2119 keyword
+- `standard-one-source-per-topic`: the topic has one folder, and its detailed guidance is linked from the artifact that owns it, not copied
+- `standard-research-cited`: the principle's research is in its `research/` folder and each named rule cites its claims
+- `roles-principle-may-be-roled`: a roled principle compiles to skills like a roled guideline
+- `roles-vocabulary`: every role given is one of `rules`, `how-to`, `examples`, `review-focus`, `review-bar`, `build-bar`, `rationale` or `references`
+- `roles-intro-history-unroled`: neither the intro nor the history carries a role
+- `roles-every-part-roled`: every other part of a roled principle has a role, each rule is named, and no `routes` or `hosts/` is set
+- `roles-four-skills`: a roled principle compiles to a builder, a build-verifier, a reviewer and a review-verifier, each the intro plus its roles' parts
+- `roles-principle-skill-names`: the skills of `principles/t` are `principle-t` and `reviewing-principle-t`
+- `roles-principle-routing`: each skill has its own description and routes under its own use case, a principle's under `coding/reviewing/principles`
+- `roles-rationale-references-linked`: `rationale` and `references` reach each skill's linked reference files, not its SKILL.md
+
