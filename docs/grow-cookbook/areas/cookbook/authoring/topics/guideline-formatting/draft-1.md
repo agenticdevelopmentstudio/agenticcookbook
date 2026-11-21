@@ -1,0 +1,337 @@
+---
+id: 99eb40d3-98a6-4213-9fee-f8a62694dba4
+title: "Guideline Formatting"
+type: guideline
+version: 1.0.0
+status: draft
+language: en
+created: 2026-11-21
+modified: 2026-11-21
+author: Mike Fullerton
+copyright: 2026 Mike Fullerton
+license: MIT
+summary: "How a cookbook guideline is built: complete frontmatter, a summary after its H1, roled parts, named rules each citing its research, and a change history."
+platforms: []
+tags:
+  - cookbook
+  - authoring
+  - guideline
+  - formatting
+  - research
+depends-on: []
+related:
+  - 2795e06d-b081-43ac-97d9-20ff3d0a93b1
+  - e48a04d7-c479-427d-9d8e-fe9e9b990c77
+references:
+  - https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/
+  - https://www.nationalacademies.org/read/13058/chapter/7
+  - https://www.nationalacademies.org/read/13058/chapter/3
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC3001530
+  - https://keepachangelog.com/en/1.1.0/
+  - https://www.writethedocs.org/guide/docs-as-code/
+  - https://docs.publishing.service.gov.uk/manual/docs-style-guide.html
+  - https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  - https://github.com/DavidAnson/markdownlint/blob/main/doc/CustomRules.md
+  - https://docs.vale.sh/checks/existence
+  - https://docs.vale.sh/topics/scopes
+  - https://json-schema.org/understanding-json-schema/reference/object
+  - https://json-schema.org/understanding-json-schema/reference/enum
+  - https://github.com/JulianCataldo/remark-lint-frontmatter-schema
+  - https://docs.astro.build/en/guides/content-collections/
+  - https://semver.org/
+  - https://github.com/OWASP/ASVS/blob/master/README.md
+  - https://www.rfc-editor.org/rfc/rfc7322
+  - https://www.rfc-editor.org/rfc/rfc2119
+  - https://www.rfc-editor.org/rfc/rfc7991
+  - https://www.w3.org/TR/qaframe-spec/
+  - https://www.w3.org/guide/manual-of-style/
+  - https://www.w3.org/TR/WCAG22/
+  - https://www.w3.org/policies/process/
+  - https://diataxis.fr/
+  - https://diataxis.fr/reference/
+  - https://diataxis.fr/how-to-guides/
+  - https://diataxis.fr/explanation/
+  - https://developers.google.com/style/headings
+  - https://developers.google.com/style/lists
+  - https://learn.microsoft.com/en-us/style-guide/scannable-content/
+  - https://learn.microsoft.com/en-us/style-guide/scannable-content/lists
+  - https://www.martinfowler.com/bliki/StandardsSpeak.html
+approved-by: ""
+approved-date: ""
+triggers: []
+---
+
+# Guideline Formatting
+
+A cookbook guideline MUST carry complete frontmatter with `type: guideline`, open with a summary statement right after its H1, give each part a role, state each requirement as a named rule with an RFC 2119 keyword that cites the research claims it stands on, keep that research in its folder, and end with a change history.
+
+## Rules
+
+- **gf-frontmatter-complete**: All required meta fields (the frontmatter of the compiled doc) MUST be present per `guide/introduction/conventions.md`: id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related and references. The meta MUST NOT carry a `domain` field. (claims: rfc7322-required-elements, rfc7991-front-matter-metadata, json-schema-required, json-schema-no-additional-properties, remark-lint-frontmatter-schema)
+- **gf-type-field**: The `type` field MUST be `guideline`, one value of the cookbook's fixed set of artifact types. (claims: json-schema-enum, diataxis-four-forms)
+- **gf-title-heading**: The first H1 heading MUST match the frontmatter `title` field exactly.
+
+  **Applies when:** always. (claim: gf-title-heading-prior)
+- **gf-summary-statement**: A summary statement MUST appear immediately after the H1 heading, ahead of the body. (claims: rfc7322-abstract-required, rfc7322-required-elements)
+- **summary-complete-in-itself**: The summary statement SHOULD be complete in itself, a concise overview a reader can take without the body, with the most important information first. (claims: rfc7322-abstract-complete-in-itself, ms-lead-with-most-important)
+- **gf-structured-guidance**: The guideline MUST organise its guidance into discrete components (bulleted lists, tables or subsections), with every item of a list in the same structure and its requirements written in one consistent style that tells them apart from the rest of the text. (claims: w3c-qa-consistent-requirement-style, ms-discrete-components, google-bulleted-lists, diataxis-reference-consistent)
+- **key-rules-identifiable**: A guideline's key rules SHOULD be easy to identify. (claim: agree-key-recommendations-identifiable)
+- **gf-rfc-keywords**: Requirements within the guideline MUST use RFC 2119 keywords (MUST, MUST NOT, SHOULD, SHOULD NOT, MAY) to indicate obligation levels. Keywords MUST be bold or uppercase when used normatively.
+
+  **Applies when:** the guideline contains requirements or rules (not purely informational content). (claim: gf-rfc-keywords-prior)
+- **normative-keywords-only-where-required**: A rule SHOULD use the RFC 2119 keywords with care and sparingly, only where they are required for interoperation or to limit harmful behaviour. (claim: rfc2119-use-sparingly)
+- **keywords-impose-no-method**: A rule MUST NOT use a normative keyword to impose a particular method where the method is not required. (claim: rfc2119-no-method-imposition)
+- **gf-change-history**: The file MUST end with a `## Change History` section containing a table with columns: Version, Date, Author, Summary, documenting the changes of each revision and the date of each version. (claims: w3c-process-document-substantive-changes, keepachangelog-date-displayed)
+- **change-history-entry-per-version**: The change history SHOULD have an entry for every version, and SHOULD explain or link to its significant changes from the previous version. (claims: keepachangelog-entry-per-version, w3c-process-status-explains-changes)
+- **change-history-newest-first**: The change history SHOULD put the latest version first, and its entries SHOULD NOT be commit-log diffs, which are full of noise. (claims: keepachangelog-latest-first, keepachangelog-commit-diffs-bad)
+- **released-versions-immutable**: Once a version of a guideline is released, its contents MUST NOT be modified; a change is released as a new version. (claim: semver-released-immutable)
+- **gf-compliance-section**: The guideline MAY include a `## Compliance` section listing evaluated compliance checks and their status. This is recommended when the guideline is referenced by compliance checks in other categories.
+
+  **Applies when:** the guideline is referenced by one or more compliance check definitions. (claim: gf-compliance-section-prior)
+- **gf-triggers-field**: The `triggers` field SHOULD be present in guideline frontmatter. It MUST be a YAML list of trigger names from the canonical taxonomy defined in `introduction/trigger-guide.md`. Empty list `[]` is acceptable for guidelines not yet classified.
+
+  **Applies when:** always. (claim: gf-triggers-field-prior)
+- **gf-roled-parts**: A roled guideline MUST give every part but the intro and the history a `role` in `artifact.json`, one of `rules`, `how-to`, `examples`, `review-focus`, `review-bar`, `build-bar`, `rationale` or `references`, and MUST have at least one part of each of `rules`, `review-focus`, `review-bar` and `build-bar`. It sets no `routes` and no `hosts/`, and does not live under `guidelines/reviewing/`.
+
+  What each role holds (`guidelines/implementing/data/indexing` is a worked example; its parts are `rules`, `look-for`, `a-complete-review-must-establish` and `a-build-must-establish`, among others):
+
+  | Role | Holds | Goes to |
+  |---|---|---|
+  | none (`intro`) | the summary statement | every skill |
+  | `rules` | the named rules | builder, reviewer |
+  | `how-to`, `examples` | how to keep the rules | builder |
+  | `review-focus` | what a reviewer looks for | reviewer |
+  | `review-bar` | what a complete review must establish | review-verifier |
+  | `build-bar` | what a complete build must establish: exactly one line per named rule, `` - `rule-name`: … ``, and no line naming anything else | build-verifier |
+  | `rationale`, `references` | why, and the sources | each skill's references |
+  | none (`history`) | the change history | none |
+
+  **Applies when:** any part of the guideline carries a `role`. (claim: gf-roled-parts-prior)
+- **conv-roled-parts**: Each part of a guideline SHOULD be labelled with the form of documentation it holds, so that its normative parts are told apart from its informative ones and each informative part says so at its start. (claims: w3c-qa-distinguish-normative, w3c-mos-label-each-section, diataxis-four-forms)
+- **mark-normative-and-informative**: A guideline SHOULD clearly distinguish its normative content, which is the standard, from its informative background and clarification; an informative part SHOULD NOT use language that sounds normative, and the guideline's references SHOULD each be marked normative or informative. (claims: w3c-qa-distinguish-normative, w3c-mos-distinguish-informative, w3c-qa-avoid-normative-sounding-informative, rfc7322-references-normative-informative, fowler-normative-part-of-standard)
+- **examples-are-non-normative**: A guideline's examples, diagrams and notes SHOULD be informative, and SHOULD NOT be made normative. (claims: w3c-mos-examples-never-normative, wcag-examples-notes-informative)
+- **conformance-and-scope-statement**: A guideline SHOULD include a statement describing what is required of those who follow it, and SHOULD define its scope; the scope statement SHOULD hold no requirements. (claims: w3c-qa-conformance-clause, w3c-qa-define-scope, w3c-qa-no-requirements-in-scope)
+- **gf-named-rules**: Every bullet in a `rules` part MUST be a named rule: `- **kebab-name**: … MUST|SHOULD|MAY …`, its name unique in the guideline and its obligation an RFC 2119 keyword. (claims: w3c-qa-consistent-requirement-style, wcag-sc-number-and-short-name, rfc7991-anchor-attribute, vale-markup-aware-scopes)
+- **conv-named-rules**: Each rule SHOULD be stated in its own bullet so that it can be uniquely referenced, in the guideline's one consistent requirement style. (claims: nasa-one-thought-per-requirement, nasa-uniquely-referenced, w3c-qa-consistent-requirement-style)
+- **conv-roled-artifact-complete**: A roled artifact gives every other part a role, names each rule in its `rules` parts (`- **kebab-name**: … MUST|SHOULD|MAY …`), and sets no `routes` and no `hosts/`. `cookr validate` lists what is wrong. (claim: conv-roled-artifact-complete-prior)
+- **one-requirement-per-rule**: A rule SHOULD express only one thought, be specific and unambiguous, and not mix the requirement with its rationale. (claims: nasa-one-thought-per-requirement, agree-specific-unambiguous, nasa-requirements-and-rationale-mixed)
+- **rules-are-verifiable**: A rule SHOULD be worded so that compliance with it can be evaluated: what it governs can be tested, demonstrated, inspected or analysed against it, as a measurable or testable statement. (claims: nasa-requirements-verifiable, iom-compliance-evaluable, w3c-qa-test-assertions, wcag-success-criteria-testable)
+- **rule-states-when-it-applies**: A rule SHOULD be written in a standardized form that states precisely the action it requires. (claim: iom-standardized-form-and-circumstances)
+- **rule-has-rationale**: Each rule SHOULD be accompanied by an intelligible rationale, including its assumptions, the reasoning behind it, and a summary of the relevant evidence and its gaps. (claims: nasa-rationale-accompanies-requirement, iom-evidence-per-recommendation)
+- **conv-rationale-to-references**: A rule's rationale SHOULD be kept out of the rule's bullet, as background, context and reasons in a closely bounded rationale part rather than mixed with the rules, so the rules alone are the standard. (claims: nasa-rationale-accompanies-requirement, nasa-requirements-and-rationale-mixed, diataxis-explanation-bounded, fowler-normative-part-of-standard)
+- **stable-rule-identifiers**: A rule's name SHOULD stay stable across revisions so they do not break links into the guideline, and a rule SHOULD NOT be identified by its position, since positional identifiers may change between versions and become problematic as the guideline grows and changes. (claims: w3c-mos-dont-break-links, asvs-versioned-identifiers, asvs-positional-ids-problematic)
+- **keep-rule-lists-short**: A list SHOULD have at least two items and, if possible, no more than seven. (claim: ms-list-length)
+- **single-h1**: A guideline SHOULD have one unique level-1 heading. (claims: google-unique-h1, markdownlint-md025-front-matter-title)
+- **no-skipped-heading-levels**: A guideline SHOULD NOT skip levels of the heading hierarchy. (claim: google-no-skipped-heading-levels)
+- **gf-research-folder**: The guideline MUST keep the research it was written from in `research/` in its folder: `research/research.json`, in the shape of the research-results document (`guidelines/researching/evidence/research-results-document`), and `research/research.md`, the same, readable, under the four question headings in this order: `## Best practices`, `## Known solutions`, `## Platform guidelines`, `## The expert's view`.
+
+  Each claim in `research.json`'s `claims` list is the per-claim record: `id` (kebab-case, unique), `question` (`best-practices`, `known-solutions`, `platform-guidelines` or `experts-view`), `claim`, `citations` (each with `title`, `author`, `publisher`, `date`, `url`, `accessed`), `source_type`, `quote`, `generated_by`, `query`, `trust` (`{"score": 0-100, "basis"}`) and `independence` (`multi-independent`, `single` or `uncorroborated`). The `verdicts` list gives each rule checked a verdict, `supported`, `contradicted`, `unsupported` or `new`, and the claims it rests on, at least one; every claim a rule cites MUST be named by a verdict. A rule the research cannot support is recorded as a claim itself, its source the cookbook's own text at the topic's base commit, with an `unsupported` verdict (`contradicted` when the research finds against it) naming that claim; a rule kept for the owner cites it, and `cookr validate` passes it with an `owner-decides` warning naming the rule and the claim.
+
+  **Applies when:** always, unless the guideline is listed in `cookbook/research-exempt.json` as a topic written before research-first whose research is still to come. (claim: gf-research-folder-prior)
+- **gf-rule-cites-research**: Each named rule MUST cite the claims of its research it stands on, once, at the end of its bullet: `(claim: <id>)`, or `(claims: <id>, <id>)` for several. Nothing follows the citation. Every id cited MUST be a claim in `research/research.json`. The citation names the claim, never the document (`cite-the-claim-not-the-document`), so a reader can follow a rule to the quote and source behind it.
+
+  ```markdown
+  - **index-foreign-keys**: Every foreign-key column MUST have an index. (claims: fk-index-postgres, fk-index-sqlite)
+  ```
+
+  **Applies when:** the guideline has a `research/` folder. In a roled guideline the named rules are its `rules` parts' bullets; in an unroled one, every named bullet that states MUST, SHOULD or MAY outside the intro and the history. (claim: gf-rule-cites-research-prior)
+- **conv-research-cited**: Each rule SHOULD have an explicit link to its supporting evidence, so a reader can find the reasoning and the evidence behind it. (claims: iom-evidence-per-recommendation, agree-explicit-link-to-evidence)
+- **conv-one-source-per-topic**: A topic SHOULD be written once, in one place; a guideline SHOULD NOT duplicate what existing documentation already says, and SHOULD link to it instead. (claims: govuk-dont-duplicate, diataxis-how-to-link-out)
+- **conv-legacy-keeps-working**: The cookbook MUST keep this true: An artifact written before this design keeps working as it is: an unroled artifact compiles as it always did, and one with no research is listed in `cookbook/research-exempt.json` until its research is written. (claim: conv-legacy-keeps-working-prior)
+- **conv-role-values**: Roles MUST be used as follows: A part may carry a `role` in `artifact.json`: `rules`, `how-to`, `examples`, `review-focus`, `review-bar`, `build-bar`, `rationale` or `references`. The intro and the history never carry one. An artifact with no role is compiled as it always was. (claim: conv-role-values-prior)
+- **conv-no-roles-under-reviewing**: Roles MUST be placed as follows: A guideline with roles may live under any use-case folder but `guidelines/reviewing/`, which is folded into each topic and never roled; a principle may carry roles too, an ingredient or a recipe never. (claim: conv-no-roles-under-reviewing-prior)
+- **conv-four-skills**: A roled artifact MUST compile as follows: It compiles to four skills, each the intro plus the parts of its roles:
+
+  | Skill | Roles | Name |
+  |---|---|---|
+  | builder | `rules`, `how-to`, `examples` | `<use-case>-<tail>` |
+  | build-verifier | `build-bar` | `verifying-build-<tail>` |
+  | reviewer | `rules`, `review-focus` | `reviewing-<tail>` |
+  | review-verifier | `review-bar` | `verifying-review-<tail>` |
+
+  (claim: conv-four-skills-prior)
+- **conv-skill-names**: The compiled skills MUST be named as follows: The builder keeps the name the artifact would have unroled; the other three replace only its use case: `guidelines/planning/data/t` gives `planning-data-t` and `reviewing-data-t`, and `principles/t`, which has no use case, keeps its type: `principle-t` and `reviewing-principle-t`. Two artifacts whose skills would share a name, after a long name is cut to the hosts' limit, are refused, each naming the other. (claim: conv-skill-names-prior)
+- **check-guidelines-automatically**: A guideline's structure SHOULD be checked with the same kind of tools as code, in automated tests: its frontmatter against a schema, its required heading structure by a linter, and the presence of listed tokens by a prose checker. (claims: writethedocs-docs-as-code, astro-schema-enforces-frontmatter, markdownlint-md043-required-headings, vale-existence-check)
+
+## How to keep the rules
+
+- **Start from the frontmatter.** Fill every required field, set `type: guideline`, give the artifact a new UUID as its `id`, and leave `domain` out. Leave `approved-by` and `approved-date` as `""` until approval stamps them. Set `triggers` to names from `guide/introduction/trigger-guide.md`, or `[]` when none fits.
+- **Write the H1 and the summary next.** Copy the frontmatter `title` into the H1 word for word, then write the summary statement directly under it: the action a reader takes, first, in a paragraph that stands without the rest of the doc.
+- **Lay out the parts in order.** Use the headings `## Rules`, `## How to keep the rules`, `## Examples`, `## What a reviewer looks for`, `## A complete review must establish`, `## A build must establish`, `## Rationale`, `## References` and `## Change History`. Give each a role with `cookr roles set` after `cookr convert`; the intro and the history carry none.
+- **Write one rule to a bullet.** Name it in kebab-case, state one requirement with one RFC 2119 keyword in uppercase, say when it applies, and end it with its citation. Keep the why for the rationale part.
+- **Pick the keyword from the evidence.** A rule is no stronger than the weakest claim it cites. Use MUST only where the cited claims say must; a claim that says should carries SHOULD.
+- **Cite the claim, at the end.** Write `(claim: <id>)` or `(claims: <id>, <id>)` as the bullet's last text, with nothing after it, not even a full stop. Every id is a claim in `research/research.json` that some verdict names.
+- **Indent what continues a rule.** A rule that needs a second paragraph, a table or a code block indents those lines under its bullet, so they stay part of it, and the citation still ends the last line.
+- **Write the build bar from the rules.** Give it exactly one line per named rule, `` - `rule-name`: … ``, and no line naming anything else.
+- **Keep names once they ship.** A rule's name is how other docs and reviews link to it; rename it only by a new version, and never number rules by position.
+- **Let the tools check it.** Run `cookr roles check <folder>` for unnamed, duplicate and uncited rules and citations not at the end, and `cookr validate` for the frontmatter, links, research and the index.
+- **Record each version.** Add a row per version to the change history table, with the date and a summary a reader can follow. Let `cookr bump <folder> --summary "..."` write the version, the `modified` date and the row.
+
+## Examples
+
+A rules part with two named rules, each citing its claims at its end:
+
+```markdown
+## Rules
+
+- **index-foreign-keys**: Every foreign-key column MUST have an index. (claims: fk-index-postgres, fk-index-sqlite)
+- **name-indexes-by-columns**: An index SHOULD be named for the table and columns it covers. (claim: index-naming-convention)
+```
+
+The build-bar lines that go with them, one per rule:
+
+```markdown
+## A build must establish
+
+- `index-foreign-keys`: every foreign-key column has an index.
+- `name-indexes-by-columns`: every index is named for its table and columns.
+```
+
+A rule that is not named, and one whose citation is not at its end, both of which `cookr roles check` reports:
+
+```markdown
+- Every foreign-key column MUST have an index. (claim: fk-index-postgres)
+- **index-foreign-keys**: Every foreign-key column MUST have an index (claim: fk-index-postgres), on every table.
+```
+
+A change history row:
+
+```markdown
+| Version | Date | Author | Summary |
+|---------|------|--------|---------|
+| 1.0.0 | 2026-11-21 | Mike Fullerton | Initial creation |
+```
+
+## What a reviewer looks for
+
+- Frontmatter missing a required field, carrying `domain`, with a `type` other than `guideline`, or with a `triggers` name not in the trigger guide.
+- An H1 that differs from the `title`, more than one H1, or a skipped heading level.
+- A summary that is not directly under the H1, that needs the body to make sense, or that buries the action a reader takes.
+- A bullet in a `rules` part that has no kebab-case name, states no RFC 2119 keyword, or shares its name with another rule.
+- A rule that states more than one requirement, mixes in its rationale, cannot be checked, or does not say when it applies.
+- A rule whose keyword is stronger than the claims it cites, or a keyword used where nothing requires it or to impose a method.
+- A rule with no citation, a citation before its end, an id that is no claim in `research/research.json`, or a claim no verdict names.
+- A part without a role, a roled guideline missing a `rules`, `review-focus`, `review-bar` or `build-bar` part, or `routes` or `hosts/` set.
+- An example, note or rationale that reads as a requirement, or a rationale part that adds rules of its own.
+- A build bar with a missing line for a rule, two lines for one rule, or a line naming something that is not a rule.
+- A rule renamed, or a released version's content changed, without a new version.
+- A topic that already exists elsewhere in the cookbook written again instead of extended.
+- A change history that is not the last section, is missing a column, or has no row for the current version.
+
+## A complete review must establish
+
+- Every required frontmatter field is present, `domain` is absent, `type` is `guideline`, and every `triggers` name is in the trigger guide.
+- The H1 matches the `title` exactly, it is the only H1, and no heading level is skipped.
+- The summary statement sits directly under the H1 and stands on its own.
+- Every part but the intro and the history has a role, and the `rules`, `review-focus`, `review-bar` and `build-bar` roles are each present.
+- Every bullet in a `rules` part is a uniquely named rule with an RFC 2119 keyword, one requirement, a checkable statement and the circumstances it applies in.
+- Every rule ends with one citation, every cited id is a claim in `research/research.json`, and every cited claim is named by a verdict.
+- No rule is stronger than the weakest claim it cites.
+- Examples, notes and rationale are informative and state no requirement of their own.
+- The build bar has exactly one line per named rule and no other line naming anything.
+- Rule names are unchanged from the previous version, or the change is a new version.
+- The topic has one folder and links out rather than repeating what other docs say.
+- The file ends with a change history table with Version, Date, Author and Summary columns and a row for every version.
+
+## A build must establish
+
+- `gf-frontmatter-complete`: every required meta field is present and there is no `domain` field.
+- `gf-type-field`: `type` is `guideline`.
+- `gf-title-heading`: the first H1 matches the frontmatter `title` exactly.
+- `gf-summary-statement`: a summary statement appears immediately after the H1.
+- `summary-complete-in-itself`: the summary is a concise overview that stands without the body, most important information first.
+- `gf-structured-guidance`: the guidance is in bulleted lists, tables or subsections, each list's items in one structure and the requirements in one consistent style.
+- `key-rules-identifiable`: the key rules are easy to find.
+- `gf-rfc-keywords`: requirements use RFC 2119 keywords, in bold or uppercase when normative.
+- `normative-keywords-only-where-required`: each keyword is used only where an obligation is required.
+- `keywords-impose-no-method`: no keyword imposes a method that is not required.
+- `gf-change-history`: the file ends with a `## Change History` table with Version, Date, Author and Summary columns.
+- `change-history-entry-per-version`: every version has an entry that explains its significant changes.
+- `change-history-newest-first`: the latest version comes first, and no entry is a commit-log diff.
+- `released-versions-immutable`: no released version's content is modified; a change is a new version.
+- `gf-compliance-section`: a `## Compliance` section, where present, lists evaluated compliance checks and their status.
+- `gf-triggers-field`: `triggers` is present, a YAML list of names from the trigger guide, or `[]`.
+- `gf-roled-parts`: every part but the intro and the history has a role from the list, the four required roles are present, and no `routes` or `hosts/` is set.
+- `conv-roled-parts`: each part is labelled with what it holds, informative parts saying so.
+- `mark-normative-and-informative`: normative content is told apart from informative content, which does not sound normative, and references are marked normative or informative.
+- `examples-are-non-normative`: no example, diagram or note is normative.
+- `conformance-and-scope-statement`: the guideline says what following it requires and defines its scope, which holds no requirements.
+- `gf-named-rules`: every bullet in a `rules` part is a named rule with a unique kebab-case name and an RFC 2119 keyword.
+- `conv-named-rules`: each rule has its own bullet and can be referenced by its name.
+- `conv-roled-artifact-complete`: every other part has a role, each rule is named, and no `routes` or `hosts/` is set.
+- `one-requirement-per-rule`: each rule expresses one specific, unambiguous thought, with no rationale mixed in.
+- `rules-are-verifiable`: compliance with each rule can be evaluated.
+- `rule-states-when-it-applies`: each rule is in the standard form and states precisely the action it requires.
+- `rule-has-rationale`: each rule has a rationale with its assumptions and its evidence.
+- `conv-rationale-to-references`: rationale sits in a bounded rationale part, not in the rules' bullets.
+- `stable-rule-identifiers`: rule names are unchanged across revisions and no rule is identified by position.
+- `keep-rule-lists-short`: each list has at least two and, where possible, no more than seven items.
+- `single-h1`: there is one unique level-1 heading.
+- `no-skipped-heading-levels`: no heading level is skipped.
+- `gf-research-folder`: `research/research.json` and `research/research.md` are present in the documented shape, and every cited claim is named by a verdict.
+- `gf-rule-cites-research`: each named rule ends with one citation of claims in `research/research.json`.
+- `conv-research-cited`: each rule links explicitly to its evidence.
+- `conv-one-source-per-topic`: the topic has one folder and links to other docs rather than duplicating them.
+- `conv-legacy-keeps-working`: unroled artifacts compile as before, and unresearched ones are listed in `cookbook/research-exempt.json`.
+- `conv-role-values`: every `role` is one of the listed values, and the intro and history carry none.
+- `conv-no-roles-under-reviewing`: no roled artifact is under `guidelines/reviewing/`, and no ingredient or recipe is roled.
+- `conv-four-skills`: a roled artifact compiles to the builder, build-verifier, reviewer and review-verifier skills.
+- `conv-skill-names`: the compiled skills are named as documented, and no two artifacts' skills share a name.
+- `check-guidelines-automatically`: the guideline's structure is checked by tools: frontmatter by schema, headings by linter.
+
+## Rationale
+
+- **Frontmatter is the document's metadata, and a schema can check it.** RFC 7322 lists the elements every RFC carries and marks the required ones, and xml2rfc v3 holds a document's metadata in a front element ahead of the abstract. JSON Schema's `required` names the fields an object must have, `additionalProperties: false` refuses one the format forbids, such as `domain`, and `enum` holds a field such as `type` to a fixed set; remark-lint-frontmatter-schema applies such a schema to Markdown frontmatter. Diátaxis's four forms of documentation are why the type is a closed set.
+- **The summary comes first and stands alone.** RFC 7322 requires every RFC to have an abstract, complete in itself, and Microsoft's style guide puts the most important information first, since the first screen is what is most likely to be read.
+- **Rules are told apart from everything else.** The W3C QA Framework requires conformance requirements in a consistent style and says how normative content is told from informative; the W3C Manual of Style has each informative section say so and keeps figures, examples and notes informative, as WCAG 2.2 does; editors warn against informative text that sounds normative; RFC 7322 marks each reference normative or informative; and Martin Fowler reads the normative text as the standard. Microsoft's and Google's style guides organise guidance into headings, lists and tables, each list's items in one structure, and Diátaxis finds reference useful when it is consistent. AGREE II appraises a guideline on whether its key recommendations are easy to find.
+- **A named rule can be referenced, checked and linked.** NASA's requirements guidance asks for one thought per statement, each uniquely referenceable, and names the paragraph that mixes requirements with rationale as a common failure; WCAG gives each success criterion a number and a short name, xml2rfc gives blocks anchors, and Vale can scope a check to list items. AGREE II asks that recommendations be specific and unambiguous. The W3C Manual of Style keeps anchors stable so revisions do not break links, and OWASP ASVS warns that positional identifiers change between versions and become a problem as a standard grows.
+- **A rule is worded so compliance can be judged, and says when it applies.** NASA requires a requirement to be verifiable by test, demonstration, inspection or analysis; the IOM's standard for trustworthy guidelines asks that strong recommendations be worded so compliance can be evaluated, in a standardized form that states the action precisely; the W3C QA Framework asks for testable assertions; and WCAG layers its guidelines over testable success criteria.
+- **Keywords are a tool, not decoration.** RFC 2119 asks that its imperatives be used with care and sparingly, only where required for interoperation or to limit harm, and never to impose a method that is not required. The cookbook's own rule that requirements use the keywords, bold or uppercase, is kept for the owner: the W3C QA Framework requires a consistent, distinguishable style and gives the keywords as one technique for it.
+- **Each rule carries its evidence.** The IOM asks for the reasoning behind each recommendation, with a summary of its evidence and its gaps, and AGREE II appraises a guideline on the explicit link from its recommendations to their evidence; NASA has each requirement accompanied by a rationale with its assumptions. Diátaxis keeps explanation closely bounded rather than mixed with instruction, which is why rationale lives in its own part. The cookbook's research folder and its citation form are its own design for that link, kept for the owner.
+- **One topic, one place.** GOV.UK's documentation style tells writers not to duplicate what existing documentation says, and a Diátaxis how-to guide links to material that would get in its way rather than repeating it.
+- **Versions are fixed once released.** Semantic Versioning forbids modifying a released version's contents; the W3C Process has a revised draft document its substantive changes; Keep a Changelog has an entry per version, the latest first, with each release's date, and calls commit-log diffs a poor changelog because they are full of noise.
+- **Headings follow the documentation norms.** Google's style guide uses one unique level-1 heading per page and does not skip levels; markdownlint's MD025 treats a frontmatter title as the top-level heading, MD041 checks that a document has a title, and a custom rule can check what the built-ins lack, such as an H1 that equals the frontmatter title. Microsoft keeps a list to between two and, if possible, seven items.
+- **Structure is checked like code.** Write the Docs' docs-as-code practice tests documentation with the tools used for code; Astro content collections enforce frontmatter with a schema, markdownlint's MD043 enforces a required heading structure, and Vale's existence check flags listed tokens.
+- **Questions left to the owner.** Whether gf-research-folder, gf-rule-cites-research, gf-rfc-keywords and gf-roled-parts stay MUST, since the outside sources put their substance at should or good-practice strength; whether gf-title-heading is kept, given markdownlint's default; whether gf-compliance-section is kept, since no source speaks to it; whether examples-are-non-normative is written as MUST NOT; whether normative-keywords-only-where-required belongs here or to requirement-keywords; whether keep-rule-lists-short applies to a rules part; and whether the change history is ordered newest-first or oldest-first.
+
+## References
+
+- [Appendix C: How to Write a Good Requirement](https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/) (NASA)
+- [Clinical Practice Guidelines We Can Trust, Chapter 5: Current Best Practices and Standards for Development of Trustworthy CPGs: Part II, Traversing the Process](https://www.nationalacademies.org/read/13058/chapter/7) (The National Academies Press)
+- [Clinical Practice Guidelines We Can Trust, Chapter 1: Introduction](https://www.nationalacademies.org/read/13058/chapter/3) (The National Academies Press)
+- [AGREE II: advancing guideline development, reporting and evaluation in health care](https://pmc.ncbi.nlm.nih.gov/articles/PMC3001530) (CMAJ (Canadian Medical Association Journal))
+- [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) (keepachangelog.com)
+- [Docs as Code](https://www.writethedocs.org/guide/docs-as-code/) (Write the Docs)
+- [Documentation style guide](https://docs.publishing.service.gov.uk/manual/docs-style-guide.html) (GOV.UK Developer Documentation)
+- [markdownlint Rules (doc/Rules.md)](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md) (GitHub (DavidAnson/markdownlint))
+- [markdownlint Custom Rules (doc/CustomRules.md)](https://github.com/DavidAnson/markdownlint/blob/main/doc/CustomRules.md) (GitHub (DavidAnson/markdownlint))
+- [Existence](https://docs.vale.sh/checks/existence) (docs.vale.sh)
+- [Scopes](https://docs.vale.sh/topics/scopes) (docs.vale.sh)
+- [Understanding JSON Schema: object](https://json-schema.org/understanding-json-schema/reference/object) (json-schema.org)
+- [Understanding JSON Schema: Enumerated values](https://json-schema.org/understanding-json-schema/reference/enum) (json-schema.org)
+- [remark-lint-frontmatter-schema](https://github.com/JulianCataldo/remark-lint-frontmatter-schema) (GitHub)
+- [Content collections](https://docs.astro.build/en/guides/content-collections/) (docs.astro.build)
+- [Semantic Versioning 2.0.0](https://semver.org/) (semver.org)
+- [OWASP Application Security Verification Standard (README)](https://github.com/OWASP/ASVS/blob/master/README.md) (GitHub (OWASP/ASVS))
+- [RFC 7322: RFC Style Guide](https://www.rfc-editor.org/rfc/rfc7322) (RFC Editor)
+- [RFC 2119: Key words for use in RFCs to Indicate Requirement Levels](https://www.rfc-editor.org/rfc/rfc2119) (IETF)
+- [RFC 7991: The "xml2rfc" Version 3 Vocabulary](https://www.rfc-editor.org/rfc/rfc7991) (RFC Editor (IAB stream))
+- [QA Framework: Specification Guidelines](https://www.w3.org/TR/qaframe-spec/) (W3C)
+- [W3C Manual of Style](https://www.w3.org/guide/manual-of-style/) (W3C)
+- [Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/) (W3C)
+- [W3C Process Document](https://www.w3.org/policies/process/) (W3C)
+- [Diátaxis](https://diataxis.fr/) (diataxis.fr)
+- [Reference](https://diataxis.fr/reference/) (diataxis.fr)
+- [How-to guides](https://diataxis.fr/how-to-guides/) (diataxis.fr)
+- [Explanation](https://diataxis.fr/explanation/) (diataxis.fr)
+- [Headings and titles](https://developers.google.com/style/headings) (Google developer documentation style guide)
+- [Lists](https://developers.google.com/style/lists) (Google developer documentation style guide)
+- [Scannable content - Microsoft Style Guide](https://learn.microsoft.com/en-us/style-guide/scannable-content/) (Microsoft Learn)
+- [Lists - Microsoft Style Guide](https://learn.microsoft.com/en-us/style-guide/scannable-content/lists) (Microsoft Learn)
+- [Standards Speak](https://www.martinfowler.com/bliki/StandardsSpeak.html) (martinfowler.com)
+
+## Change History
+
+| Version | Date | Author | Summary |
+|---------|------|--------|---------|
+| 1.0.0 | 2026-11-21 | Mike Fullerton | Initial creation |
