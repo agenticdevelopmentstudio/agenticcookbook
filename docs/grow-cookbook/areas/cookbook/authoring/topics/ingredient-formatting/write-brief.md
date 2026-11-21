@@ -347,3 +347,9 @@ Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, ci
       - `tmpl-states-table`, `states-include-hover-and-selected`: the bullet says "Flutter's, Material's and Fluent's state lists include hover and selected". `fluent-rest-selected-states` names only rest and selected, and has no hover. Fix: "Flutter's and Material's state lists include hover and selected, and Fluent's includes selected."
       - `tmpl-logging-subsystem-category`: the bullet says "so that log messages can be filtered by functional area". Neither `apple-logger-subsystem-category` nor `apple-logger-optional` mentions filtering. The second claim says only that the two strings "add context to all messages you log". Fix: "so that each message carries the context of its functional area".
       - `section-structure-machine-checked`: the bullet says "MD043's wildcards stand only for unspecified headings, so named optional sections take a custom rule". `md043-wildcards-only`'s second check refuted exactly that inference: the doc also lists `%` regex headings and `^` loops, and never says a named heading cannot be optional or that a custom rule is needed. Fix: "MD043's wildcards `*`, `+` and `?` stand for unspecified headings; a custom rule can name an optional section".
+
+## Round 3 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
