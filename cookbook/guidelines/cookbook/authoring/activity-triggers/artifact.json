@@ -65,6 +65,7 @@
       "skill-authoring"
     ]
   },
+  "names_hosts": "Cites agent hosts' published guidance on rule loading and instruction size as the evidence for its rules.",
   "synced": "ae302ff90109aa7d",
   "parts": [
     {"part": "intro"},
