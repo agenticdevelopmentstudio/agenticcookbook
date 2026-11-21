@@ -4,7 +4,7 @@
     "id": "1b7b83f9-3b8a-46f7-81b7-9a55291a23a2",
     "title": "Activity Triggers",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-21",
@@ -59,15 +59,15 @@
       "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf",
       "https://informationr.net/ir/16-4/paper502.html"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-21",
     "triggers": [
       "recipe-authoring",
       "skill-authoring"
     ]
   },
   "names_hosts": "Cites agent hosts' published guidance on rule loading and instruction size as the evidence for its rules.",
-  "synced": "9202d0ab53f3c606",
+  "synced": "fb9009a295b956e9",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
