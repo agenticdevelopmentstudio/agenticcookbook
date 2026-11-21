@@ -1,0 +1,37 @@
+
+- `load-by-activity-not-all`: the agent loads the guidelines its activity's triggers select, not every guideline.
+- `filter-only-when-corpus-outgrows-context`: loading the whole corpus instead of filtering is done only when it fits in the prompt.
+- `guideline-declares-activities`: every guideline built declares the activities it serves.
+- `triggers-field-in-meta`: the triggers sit in the guideline's `triggers` frontmatter field, after `approved-date`.
+- `query-union-of-triggers`: a query for several triggers loads the union of the guidelines each returns.
+- `principles-always-loaded`: principles are loaded into every task's context.
+- `keep-always-loaded-core-small`: the always-loaded tier holds only what every task needs.
+- `trigger-filtered-on-demand`: guidelines load only when an activity's trigger selects them.
+- `fallback-when-tags-miss`: a description- or search-based selection covers tasks whose triggers miss a guideline.
+- `log-loaded-guidelines`: where logging is built, it records which guidelines loaded, when and why.
+- `escalating-checkpoint-pattern`: light checks run during work and broader ones at checkpoints.
+- `pre-commit-checklist`: the `pre-commit` set is checked before every commit and stays fast.
+- `pre-pr-audit`: the broader `pre-pr` set is checked once before the pull request is opened.
+- `check-cost-proportional-to-stakes`: a checkpoint's checking grows with the stakes of the action it guards.
+- `trigger-index-location`: queries read `cookbook/index/triggers.yaml`.
+- `regenerate-index-after-change`: `cookr update` ran after every trigger change.
+- `trigger-index-not-hand-edited`: the trigger index holds no hand edits.
+- `canonical-values-only`: every `triggers` value is a value of the canonical table.
+- `triggers-from-canonical-taxonomy`: the field's values come from the one canonical taxonomy and no other list.
+- `one-to-five-triggers`: every classified guideline carries one to five triggers.
+- `order-specific-to-general`: each guideline's triggers run from most specific to least specific.
+- `triggers-guideline-only`: only guidelines carry a `triggers` field.
+- `triggers-empty-until-classified`: a guideline not yet classified carries `[]`.
+- `canonical-trigger-vocabulary`: every value in the table has a definition, a "when it fires" scope note and example guidelines.
+- `trigger-one-meaning-one-label`: no value has two meanings or two canonical labels, and no two values share a meaning.
+- `trigger-scope-note-per-value`: every value has a scope note and an example, and overlapping values say which applies.
+- `trigger-values-carry-key-terms`: every value's description names when it applies in the tasks' own words.
+- `add-trigger-to-guide-first`: a new value was nominated, reviewed and added to the table before any guideline used it.
+- `trigger-change-history`: every value records its date of entry and each dated change with its author.
+- `rename-keeps-old-value-as-alias`: a renamed value's old name still resolves to the new one, and its guidelines were retagged.
+- `retire-assesses-impact-and-migrates`: a retired value's tagged guidelines were assessed and migrated, or the value was kept marked for retrieval only.
+- `vocabulary-periodic-review`: a review policy exists and its reviews look at overused and rarely used values.
+- `validate-trigger-values-mechanically`: tooling fails on a value outside the table.
+- `measure-trigger-selection-with-labelled-tasks`: selection is measured on a labelled task set with a held-out part.
+- `report-recall-and-precision`: the measurement reports recall and precision.
+

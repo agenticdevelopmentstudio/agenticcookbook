@@ -1,0 +1,83 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "1b7b83f9-3b8a-46f7-81b7-9a55291a23a2",
+    "title": "Activity Triggers",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-11-21",
+    "modified": "2026-11-21",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Guideline triggers: a closed, governed vocabulary of activities, tiered on-demand loading, the trigger index, and measuring selection by recall and precision.",
+    "platforms": [],
+    "tags": [
+      "triggers",
+      "controlled-vocabulary",
+      "context-loading",
+      "guidelines"
+    ],
+    "depends-on": [],
+    "related": [
+      "0f999db4-956a-4124-a142-367b1a570983"
+    ],
+    "references": [
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf",
+      "https://martinfowler.com/articles/continuousIntegration.html",
+      "https://code.claude.com/docs/en/memory",
+      "https://code.claude.com/docs/en/skills",
+      "https://cursor.com/docs/context/rules",
+      "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+      "https://agents.md/",
+      "https://developers.openai.com/codex/guides/agents-md",
+      "https://platform.openai.com/docs/guides/tools-file-search",
+      "https://docs.pinecone.io/guides/search/filter-by-metadata",
+      "https://docs.claude.com/en/docs/agents-and-tools/tool-use/tool-search-tool",
+      "https://pre-commit.com/",
+      "https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md",
+      "https://stackoverflow.com/help/tagging",
+      "https://stackoverflow.com/help/privileges/create-tags",
+      "https://stackoverflow.com/help/privileges/suggest-tag-synonyms",
+      "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview",
+      "https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices",
+      "https://www.w3.org/TR/skos-reference/",
+      "https://www.w3.org/TR/skos-primer/",
+      "https://www.niso.org/schemas/iso25964",
+      "https://git-scm.com/docs/githooks",
+      "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
+      "https://arxiv.org/abs/2307.03172",
+      "https://arxiv.org/abs/2507.11538",
+      "https://research.trychroma.com/context-rot",
+      "https://arxiv.org/abs/2505.03275",
+      "https://www.anthropic.com/engineering/advanced-tool-use",
+      "https://www.anthropic.com/news/contextual-retrieval",
+      "https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf",
+      "https://informationr.net/ir/16-4/paper502.html"
+    ],
+    "approved-by": "",
+    "approved-date": "",
+    "triggers": [
+      "recipe-authoring",
+      "skill-authoring"
+    ]
+  },
+  "synced": "ae302ff90109aa7d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "adding-triggers-to-a-guideline", "heading": "Adding triggers to a guideline", "role": "how-to"},
+    {"part": "changing-the-vocabulary", "heading": "Changing the vocabulary", "role": "how-to"},
+    {"part": "measuring-selection", "heading": "Measuring selection", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

@@ -1,0 +1,11 @@
+
+Every agent host now loads context selectively. Agent hosts load path-scoped rules and skill bodies on demand. Cursor has four rule activation modes. Copilot has `applyTo`, and OpenAI file search and Pinecone filter by metadata. The published evaluations (Lost in the Middle, IFScale, Chroma's context-rot report, RAG-MCP) all find that more context and more simultaneous instructions make models less reliable. That supports filtering, though no study measures tag-filtered guideline loading for coding agents. A small corpus that fits in the prompt can still be loaded whole.
+
+The vocabulary rules come from ANSI/NISO Z39.19, ISO 25964 and SKOS. They give a closed list with one meaning and one preferred label per value, a scope note, examples, a dated history, aliases for old forms, and retirement with an impact check. SKOS cannot close a vocabulary, and agent hosts silently ignore fields and values they do not understand, so tooling has to enforce the list.
+
+Tags miss. People tagging from a controlled vocabulary agree only 27.5-39.5% of the time, and selection by description under-triggers, so loading needs a fallback and a measurement. The measurement uses IIR's test collection of documents, needs and relevance judgments, scored by recall and precision, which usually trade off.
+
+No source supports any count in the prior text (240 guidelines, 10-20 per query, ~12 for `writing-tests`, 27 principles, ~10 pre-commit rules). No study backs "most effective" for graduated checkpoints, and no source states the proportional-cost rule. The index location, the regeneration step, the hand-edit ban, specific-to-general ordering, the guideline-only scope and the empty-list default are the cookbook's own design, which no outside source addresses. Those rules keep their prior text for the owner, as do the open questions research raised: the uncatalogued `refactor` and `research` values, the counts, whether pre-commit stays mandatory, the fallback and its recall trade, the size of the evaluation set, and the cap of five.
+
+General context loading (retrieving just in time, not front-loading) belongs to `context-and-memory-management`. RFC 2119 keyword case and lint severity belong to the sibling topic `requirement-keywords`.
+
