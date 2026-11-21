@@ -21,7 +21,9 @@
       "validation"
     ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "2c5ee8e0-9da5-4b44-9f87-51962abe76ab"
+    ],
     "references": [
       "https://www.rfc-editor.org/rfc/rfc8259.html",
       "https://json-schema.org/draft/2020-12/json-schema-core",
@@ -60,7 +62,7 @@
       "configuration"
     ]
   },
-  "synced": "df5150b51bd4f09c",
+  "synced": "7cf6d8366302b1cd",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

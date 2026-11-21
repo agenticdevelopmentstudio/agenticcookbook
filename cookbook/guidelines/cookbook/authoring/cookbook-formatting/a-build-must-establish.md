@@ -40,7 +40,7 @@
 - `schema-date-format`: `created` and `modified` are checked as RFC 3339 full-dates, or the change says why
 - `enable-format-assertion`: no field relies on `format` alone without format assertion on, or the change says why
 - `schema-closed-objects`: each object closed with `"additionalProperties": false` is closed to catch misspelt keys by choice, or the change says why
-- `closed-objects-keep-an-extension-point`: an extension point, when added, is open for other tools and closed objects extended through `allOf` use `unevaluatedProperties`
+- `closed-objects-keep-an-extension-point`: an extension point, when added, is open for other tools, and a closed object extended through `allOf`, when closed with `unevaluatedProperties`, sees its subschemas' properties
 - `validate-the-schema-strictly`: the schema compiles under strict checking, or the change says why
 - `schema-paths-are-strings`: `spec` and each `path` are strings holding relative-path references, or the change says why
 - `schema-structure-kind-enum`: `kind` is typed as the rule writes it
