@@ -1,15 +1,21 @@
 
 - Frontmatter missing a required field, carrying `domain`, with a `type` other than `guideline`, or with a `triggers` name not in the trigger guide.
 - An H1 that differs from the `title`, more than one H1, or a skipped heading level.
-- A summary that is not directly under the H1, that needs the body to make sense, or that buries the action a reader takes.
+- A summary that is not directly under the H1, that needs the body to make sense, or that buries the most important information.
+- No statement of what following the guideline requires, no scope, or a scope that states a requirement.
+- Requirements in no consistent style, guidance as unbroken prose, list items of mixed structure, overlong lists, or key rules that are hard to find.
 - A bullet in a `rules` part that has no kebab-case name, states no RFC 2119 keyword, or shares its name with another rule.
-- A rule that states more than one requirement, mixes in its rationale, cannot be checked, or does not say when it applies.
-- A rule whose keyword is stronger than the claims it cites, or a keyword used where nothing requires it or to impose a method.
+- A rule that states more than one requirement, is vague or ambiguous, cannot be checked, does not state precisely the action it requires, or does not say when it applies.
+- A rule with no rationale, or with its rationale written into its bullet.
+- A keyword used where nothing requires it, or used to impose a method.
 - A rule with no citation, a citation before its end, an id that is no claim in `research/research.json`, or a claim no verdict names.
-- A part without a role, a roled guideline missing a `rules`, `review-focus`, `review-bar` or `build-bar` part, or `routes` or `hosts/` set.
-- An example, note or rationale that reads as a requirement, or a rationale part that adds rules of its own.
+- A missing `research/research.json` or `research/research.md`, or one not in the documented shape.
+- A part without a role, a role not in the list, a role on the intro or the history, a roled guideline missing a `rules`, `review-focus`, `review-bar` or `build-bar` part, `routes` or `hosts/` set, or a roled guideline under `guidelines/reviewing/`.
+- An informative part that does not say so at its start, sounds normative, or holds an example, diagram or note that reads as a requirement; a reference not marked normative or informative.
 - A build bar with a missing line for a rule, two lines for one rule, or a line naming something that is not a rule.
-- A rule renamed, or a released version's content changed, without a new version.
-- A topic that already exists elsewhere in the cookbook written again instead of extended.
-- A change history that is not the last section, is missing a column, or has no row for the current version.
+- A rule renamed or numbered by position, or a released version's content changed, without a new version.
+- Text that repeats what another document already says instead of linking to it.
+- A change history that is not the last section, is missing a column, lacks a dated row for a version, has a row that does not explain its changes, is oldest-first, or is a commit-log dump.
+- A `## Compliance` section that does not list evaluated checks and their status.
+- Structure checked only by eye, where a schema, linter or `cookr` check could check it.
 

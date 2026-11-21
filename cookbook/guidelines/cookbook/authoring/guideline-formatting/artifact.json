@@ -12,7 +12,7 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "How a cookbook guideline is built: complete frontmatter, a summary after its H1, roled parts, named rules each citing its research, and a change history.",
+    "summary": "How a cookbook guideline is built: frontmatter, an H1 and its summary, roled parts, named rules that cite their research, and a change history.",
     "platforms": [],
     "tags": [
       "cookbook",
@@ -24,7 +24,9 @@
     "depends-on": [],
     "related": [
       "2795e06d-b081-43ac-97d9-20ff3d0a93b1",
-      "e48a04d7-c479-427d-9d8e-fe9e9b990c77"
+      "e48a04d7-c479-427d-9d8e-fe9e9b990c77",
+      "456f23bd-4523-47e8-9541-073ac046f2ad",
+      "1b7b83f9-3b8a-46f7-81b7-9a55291a23a2"
     ],
     "references": [
       "https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/",
@@ -65,7 +67,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "b7651f2ff1aa3dcd",
+  "synced": "0d0cd2e471f3be5d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

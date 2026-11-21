@@ -1,4 +1,6 @@
 
+These examples are informative.
+
 A rules part with two named rules, each citing its claims at its end:
 
 ```markdown

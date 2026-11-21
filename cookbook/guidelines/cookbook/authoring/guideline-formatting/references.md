@@ -1,4 +1,12 @@
 
+This part is informative: it lists the sources the rules were researched from.
+
+### Normative
+
+- [RFC 2119: Key words for use in RFCs to Indicate Requirement Levels](https://www.rfc-editor.org/rfc/rfc2119) (IETF)
+
+### Informative
+
 - [Appendix C: How to Write a Good Requirement](https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/) (NASA)
 - [Clinical Practice Guidelines We Can Trust, Chapter 5: Current Best Practices and Standards for Development of Trustworthy CPGs: Part II, Traversing the Process](https://www.nationalacademies.org/read/13058/chapter/7) (The National Academies Press)
 - [Clinical Practice Guidelines We Can Trust, Chapter 1: Introduction](https://www.nationalacademies.org/read/13058/chapter/3) (The National Academies Press)
@@ -17,7 +25,6 @@
 - [Semantic Versioning 2.0.0](https://semver.org/) (semver.org)
 - [OWASP Application Security Verification Standard (README)](https://github.com/OWASP/ASVS/blob/master/README.md) (GitHub (OWASP/ASVS))
 - [RFC 7322: RFC Style Guide](https://www.rfc-editor.org/rfc/rfc7322) (RFC Editor)
-- [RFC 2119: Key words for use in RFCs to Indicate Requirement Levels](https://www.rfc-editor.org/rfc/rfc2119) (IETF)
 - [RFC 7991: The "xml2rfc" Version 3 Vocabulary](https://www.rfc-editor.org/rfc/rfc7991) (RFC Editor (IAB stream))
 - [QA Framework: Specification Guidelines](https://www.w3.org/TR/qaframe-spec/) (W3C)
 - [W3C Manual of Style](https://www.w3.org/guide/manual-of-style/) (W3C)
