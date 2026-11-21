@@ -6,7 +6,7 @@ version: 2.7.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: '2026-11-19'
+modified: '2026-11-21'
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -31,12 +31,12 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | [Testing](#testing-15-guidelines) | 15 | Writing and structuring tests |
 | [Reviewing](#reviewing-10-guidelines) | 10 | Checking code quality, security, accessibility |
 | [Shipping](#shipping-10-guidelines) | 10 | Pre-commit, pre-PR, packaging |
-| [Cookbook](#cookbook-11-guidelines) | 11 | Writing cookbook content (recipes, skills, agents) |
+| [Cookbook](#cookbook-17-guidelines) | 17 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](#researching-5-guidelines) | 5 | Gathering, verifying, and recording trustworthy research |
 | [Storytelling](#storytelling-6-guidelines) | 6 | Telling a project's story: positioning, explanation, narrative, grounded in the record |
 | [Brainstorming](#brainstorming-4-guidelines) | 4 | Framing a problem, generating ideas and converging, without anchoring |
 
-278 guidelines.
+284 guidelines.
 
 ---
 
@@ -373,8 +373,16 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Cookbook (11 guidelines)
+### Cookbook (17 guidelines)
 
+
+**authoring**
+- [Activity Triggers](cookbook/authoring/activity-triggers/)
+- [Cookbook Formatting](cookbook/authoring/cookbook-formatting/)
+- [Guideline Formatting](cookbook/authoring/guideline-formatting/)
+- [Ingredient Formatting](cookbook/authoring/ingredient-formatting/)
+- [Principle Formatting](cookbook/authoring/principle-formatting/)
+- [Requirement Keywords](cookbook/authoring/requirement-keywords/)
 
 **recipe-quality**
 - [Behavioral Requirements](cookbook/recipe-quality/behavioral-requirements/)

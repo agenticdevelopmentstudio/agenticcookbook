@@ -395,6 +395,12 @@
       "path": "guidelines/reviewing/code-quality/code-hygiene",
       "rdid": "adc.guideline.reviewing.code-quality.code-hygiene"
     },
+    "1b7b83f9-3b8a-46f7-81b7-9a55291a23a2": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/authoring/activity-triggers",
+      "rdid": "adc.guideline.cookbook.authoring.activity-triggers"
+    },
     "1bf8364a-064b-52fe-9db8-5eb2e862bbac": {
       "implementations": [],
       "kind": "check",
@@ -622,6 +628,12 @@
       "kind": "guideline",
       "path": "guidelines/implementing/ui/high-dpi-display-scaling",
       "rdid": "adc.guideline.implementing.ui.high-dpi-display-scaling"
+    },
+    "2c5ee8e0-9da5-4b44-9f87-51962abe76ab": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/authoring/ingredient-formatting",
+      "rdid": "adc.guideline.cookbook.authoring.ingredient-formatting"
     },
     "2c605b36-da66-4eaf-b2d4-59ed5a3976b3": {
       "implementations": [],
@@ -911,6 +923,12 @@
       "path": "principles/small-reversible-decisions",
       "rdid": "adc.principle.small-reversible-decisions"
     },
+    "456f23bd-4523-47e8-9541-073ac046f2ad": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/authoring/requirement-keywords",
+      "rdid": "adc.guideline.cookbook.authoring.requirement-keywords"
+    },
     "47563e88-307b-4eef-a63c-ddc18e85a945": {
       "implementations": [],
       "kind": "guideline",
@@ -989,6 +1007,12 @@
       "path": "guidelines/implementing/code-quality/yaml-frontmatter",
       "rdid": "adc.guideline.implementing.code-quality.yaml-frontmatter"
     },
+    "4c7be774-12c6-4bf0-a9ee-82e8633610dc": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/authoring/cookbook-formatting",
+      "rdid": "adc.guideline.cookbook.authoring.cookbook-formatting"
+    },
     "4ca8a3d5-cdcc-4f74-a2ec-3a198608b419": {
       "implementations": [],
       "kind": "guideline",
@@ -1042,6 +1066,12 @@
       "kind": "guideline",
       "path": "guidelines/planning/code-quality/module-boundaries",
       "rdid": "adc.guideline.planning.code-quality.module-boundaries"
+    },
+    "51a6fb7d-6668-4e64-9bc0-aa5b568092a3": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/authoring/principle-formatting",
+      "rdid": "adc.guideline.cookbook.authoring.principle-formatting"
     },
     "51e1f37a-919e-4e42-b439-ffdf0c2ef2e8": {
       "implementations": [],
@@ -1900,6 +1930,12 @@
       "kind": "guideline",
       "path": "guidelines/implementing/platform-integration/shortcuts-and-automation",
       "rdid": "adc.guideline.implementing.platform-integration.shortcuts-and-automation"
+    },
+    "99eb40d3-98a6-4213-9fee-f8a62694dba4": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/cookbook/authoring/guideline-formatting",
+      "rdid": "adc.guideline.cookbook.authoring.guideline-formatting"
     },
     "9a48f093-91f5-5cf6-b97f-6a868dd33030": {
       "implementations": [],

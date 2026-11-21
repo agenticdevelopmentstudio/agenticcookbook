@@ -238,3 +238,9 @@ Each claim in `research.json`'s `claims` list is the per-claim record: `id` (keb
 - Whether keep-rule-lists-short applies to a rules part: Microsoft's seven-item limit is for lists in general ('if possible'), not for a rule-bearing document's rule count.
 - Whether the change history is ordered newest-first (Keep a Changelog) or oldest-first (the conventions.md example has one row, so the order is not stated).
 - Whether conv-* rules that state tool behaviour (conv-legacy-keeps-working, conv-role-values, conv-no-roles-under-reviewing, conv-roled-artifact-complete, conv-four-skills, conv-skill-names) remain in conventions.md as design statements without outside research, per owner ruling Q12.
+
+## From requirement-keywords's review
+- R1.8: Sibling `guideline-formatting` (route there, not this topic's to fix): its `rules.md` restates keyword rules this topic owns. The area plan says "The formatting topics cite it, never restate it". The restated rules:
+  - `gf-rfc-keywords`, which also merges in the bold-or-uppercase text.
+  - `normative-keywords-only-where-required`, which duplicates this topic's `keywords-only-where-required`.
+  - Fix in guideline-formatting: cite requirement-keywords instead of restating these rules.

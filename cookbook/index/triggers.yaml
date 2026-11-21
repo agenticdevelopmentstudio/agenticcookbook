@@ -92,6 +92,7 @@ concurrency:
 - guidelines/implementing/platform-integration/background-tasks/
 - guidelines/implementing/ui/compose-side-effects/
 configuration:
+- guidelines/cookbook/authoring/cookbook-formatting/
 - guidelines/implementing/code-quality/shell-scripts/
 - guidelines/implementing/code-quality/visual-studio-project-files/
 - guidelines/implementing/code-quality/xcode-project-hygiene/
@@ -361,6 +362,10 @@ pre-pr:
 - guidelines/testing/mutation-testing/
 - guidelines/testing/the-testing-workflow/
 recipe-authoring:
+- guidelines/cookbook/authoring/activity-triggers/
+- guidelines/cookbook/authoring/cookbook-formatting/
+- guidelines/cookbook/authoring/ingredient-formatting/
+- guidelines/cookbook/authoring/requirement-keywords/
 - guidelines/cookbook/recipe-quality/behavioral-requirements/
 - guidelines/cookbook/recipe-quality/completeness/
 - guidelines/cookbook/recipe-quality/cookbook-compliance/
@@ -430,6 +435,7 @@ security-review:
 - guidelines/testing/fuzzing/
 - guidelines/testing/security-testing/
 skill-authoring:
+- guidelines/cookbook/authoring/activity-triggers/
 - guidelines/cookbook/skills-and-agents/agent-checklist/
 - guidelines/cookbook/skills-and-agents/rule-checklist/
 - guidelines/cookbook/skills-and-agents/skill-checklist/
