@@ -246,3 +246,9 @@ lint: fail 1
 Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
 
 - R2.1: `rules.md`, **measure-trigger-selection-with-labelled-tasks** (source-fidelity: no `supported` or `new` claim is left without a rule): this round's split dropped `ev-fifty-information-needs` from the rule's citation. No rule cites it now. The claim belongs to the `new` verdict for measure-trigger-selection-with-labelled-tasks ("As a rule of thumb, 50 information needs has usually been found to be a sufficient minimum."). Only the how-to `measuring-selection.md` step 1 still uses it ("IIR's rule of thumb is a minimum of 50 information needs"), with no rule behind it. My script found no other claim of a `supported` or `new` verdict that has lost its citation. Fix: cite `ev-fifty-information-needs` again on measure-trigger-selection-with-labelled-tasks, or on a rule of its own at SHOULD at most. Give the rule of thumb as the research's reference point and leave the adopted count to the owner, as the owner list's open question on the set's size and `measuring-selection.md` both do.
+
+## Round 3 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
