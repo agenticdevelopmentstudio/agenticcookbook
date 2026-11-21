@@ -1,0 +1,64 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "456f23bd-4523-47e8-9541-073ac046f2ad",
+    "title": "Requirement Keywords",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-11-21",
+    "modified": "2026-11-21",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "How cookbook rules use RFC 2119 keywords: what MUST, SHOULD and MAY mean, case, where keywords belong, and how a keyword sets a lint finding's severity.",
+    "platforms": [],
+    "tags": [
+      "authoring",
+      "requirement-keywords",
+      "rfc-2119",
+      "lint-severity"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://www.rfc-editor.org/rfc/rfc2119.txt",
+      "https://www.rfc-editor.org/rfc/rfc8174.txt",
+      "https://www.rfc-editor.org/rfc/rfc7322.txt",
+      "https://www.w3.org/TR/qaframe-spec/",
+      "https://www.w3.org/guide/manual-of-style/",
+      "https://www.w3.org/wiki/RfcKeywords",
+      "https://infra.spec.whatwg.org/",
+      "https://www.oasis-open.org/?p=3585",
+      "https://portal.etsi.org/Services/editHelp/Search/FAQs/Requirements",
+      "https://respec.org/docs/",
+      "https://speced.github.io/bikeshed/",
+      "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits",
+      "https://vale.sh/docs/styles",
+      "https://eslint.org/docs/latest/use/configure/rules",
+      "https://eslint.org/docs/latest/use/command-line-interface",
+      "https://github.com/DavidAnson/markdownlint",
+      "https://github.com/DavidAnson/markdownlint-cli2",
+      "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html",
+      "https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests"
+    ],
+    "triggers": [
+      "recipe-authoring"
+    ]
+  },
+  "synced": "bdc4ca2859e197ff",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "reading-a-keyword", "heading": "Reading a keyword", "role": "how-to"},
+    {"part": "writing-a-requirement", "heading": "Writing a requirement", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
