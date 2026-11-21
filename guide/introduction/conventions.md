@@ -2,11 +2,11 @@
 id: 7a3e1f2c-8b4d-4e6a-9c5f-1d2e3f4a5b6c
 title: "Conventions"
 type: reference
-version: 2.4.0
+version: 2.5.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: 2026-11-19
+modified: 2026-11-21
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -37,7 +37,9 @@ All conventions for file format, naming, cross-referencing, and authoring in thi
 
 ## File Format
 
-Every markdown file starts with a YAML frontmatter block containing these fields:
+Every markdown file starts with a YAML frontmatter block. The fields from `id` to `references`
+are required. `approved-by`, `approved-date` and `triggers` follow them when the artifact carries
+them:
 
 ```yaml
 ---
@@ -86,9 +88,9 @@ triggers: []
 | `related` | Yes | UUIDs of related content ("see also"). Empty list `[]` if none. |
 | `references` | Yes | External URLs referenced by this content. Empty list `[]` if none. |
 | `ingredients` | Recipe only | UUIDs of the ingredients this recipe composes. Required when `type` is `recipe`. |
-| `approved-by` | Yes | Approval stamp from `/approve-artifact`. Format: `"approve-artifact <version>"`. Empty string `""` if not yet approved. (Written by /approve-artifact; not linted.) |
-| `approved-date` | Yes | ISO 8601 date when the artifact was last approved. Empty string `""` if not yet approved. (Written by /approve-artifact; not linted.) |
-| `triggers` | Guideline only | Activity or context tags that make this guideline relevant to an AI agent. Empty list `[]` if not yet classified. Values from the canonical trigger taxonomy in `guide/introduction/trigger-guide.md`. |
+| `approved-by` | No | Approval stamp from `/approve-artifact`. Format: `"approve-artifact <version>"`. Empty string `""` if not yet approved. An ingredient SHOULD carry it. (Written by /approve-artifact only when lint passes with zero FAIL findings; not linted.) |
+| `approved-date` | No | ISO 8601 date when the artifact was last approved. Empty string `""` if not yet approved. An ingredient SHOULD carry it. (Written by /approve-artifact only when lint passes with zero FAIL findings; not linted.) |
+| `triggers` | Guideline only | Activity or context tags that make this guideline relevant to an AI agent. A guideline SHOULD carry it, after `approved-date`. Empty list `[]` if not yet classified. Every value MUST come from the canonical trigger table in `guide/introduction/trigger-guide.md`. A classified guideline SHOULD carry one to five, from most specific to least specific. See [adc.guideline.cookbook.authoring.activity-triggers](cookbook:1b7b83f9-3b8a-46f7-81b7-9a55291a23a2). |
 
 ### Source Folders
 
@@ -140,7 +142,10 @@ it always was. A guideline with roles may live under any use-case folder but
 principle may carry roles too, an ingredient or a recipe never. A roled artifact
 gives every other part a role, names each rule in its `rules` parts
 (`- **kebab-name**: … MUST|SHOULD|MAY …`), and sets no `routes` and no `hosts/`.
-`cookr validate` lists what is wrong.
+`cookr validate` lists what is wrong. A roled guideline also has at least one part of each of
+`rules`, `review-focus`, `review-bar` and `build-bar`; what each role holds is in the
+`gf-roled-parts` rule of
+[adc.guideline.cookbook.authoring.guideline-formatting](cookbook:99eb40d3-98a6-4213-9fee-f8a62694dba4).
 
 It compiles to four skills, each the intro plus the parts of its roles:
 
@@ -232,11 +237,12 @@ raises the version, sets `modified` and adds the row deterministically:
 | 1.0.0 | YYYY-MM-DD | Name | Initial creation |
 ```
 
-Each row corresponds to a version bump. Once a version is on main, it is immutable.
+Each row corresponds to a version bump, and each row's date is an ISO 8601 date. The latest
+version comes first. Once a version is on main, it is immutable.
 
 ### Compliance Section
 
-Recipes and guidelines include a `## Compliance` section listing the compliance checks that were evaluated and their results. Compliance checks are defined in `tbd/compliance/` — see `tbd/compliance/INDEX.md` for the full list. Each named check (`### <check-name>` in a category file) has its own UUID and rdid in `cookbook/index.json` (`adc.check.<category>.<check-name>`), so it is linked like an artifact.
+Recipes and ingredients include a `## Compliance` section listing the compliance checks that were evaluated and their results. A guideline MAY include one; it is recommended when compliance checks reference the guideline. Compliance checks are defined in `tbd/compliance/` — see `tbd/compliance/INDEX.md` for the full list. Each named check (`### <check-name>` in a category file) has its own UUID and rdid in `cookbook/index.json` (`adc.check.<category>.<check-name>`), so it is linked like an artifact.
 
 **Format:**
 
@@ -368,7 +374,7 @@ Requirements use descriptive kebab-case names, not sequential numbers. Format: `
 ```
 
 Constraints:
-- Names MUST be unique within the requirements section of a file
+- Names MUST be unique within the artifact
 - Names MUST be kebab-case (URL-safe)
 - Names SHOULD be descriptive of the requirement's subject
 
@@ -433,8 +439,13 @@ there; `cookr update` replaces it with the UUID:
 
 ## Platform Notes
 
-An ingredient or recipe carries one bullet per platform under `## Platform Notes`:
-SwiftUI, Compose, React/Web, AppKit / UIKit, and WinUI 3. The **WinUI 3** bullet
+A recipe carries one bullet per platform under `## Platform Notes`:
+SwiftUI, Compose, React/Web, AppKit / UIKit, and WinUI 3. An ingredient MUST
+cover at least SwiftUI, Compose and React/Web, and SHOULD carry a bullet for each
+of those five platforms it targets; a single-platform ingredient lists only its
+target. A platform with nothing to add SHOULD say so in one line. See
+[adc.guideline.cookbook.authoring.ingredient-formatting](cookbook:2c5ee8e0-9da5-4b44-9f87-51962abe76ab).
+The **WinUI 3** bullet
 is required for any recipe counted by `cookr coverage`; a recipe with an empty
 WinUI 3 bullet reports as `partial`.
 
@@ -442,9 +453,16 @@ WinUI 3 bullet reports as `partial`.
 
 Use RFC 2119 keywords for all behavioral requirements:
 
-- **MUST** / **MUST NOT**: Absolute requirements.
-- **SHOULD** / **SHOULD NOT**: Recommendations.
-- **MAY**: Optional behavior.
+- **MUST** / **MUST NOT**: An absolute requirement and an absolute prohibition. Follow every MUST.
+- **SHOULD** / **SHOULD NOT**: A recommendation and a negative recommendation. Valid reasons to
+  deviate can exist; weigh the full implications first. Address every SHOULD unless there is a
+  documented reason to skip it.
+- **MAY**: Truly optional behavior, permitted but not obligatory.
+
+Write each keyword in UPPERCASE. Use MUST, not SHALL. Write a prohibition as MUST NOT, never
+"MUST not" or "MAY NOT". By default a broken MUST is a lint FAIL, a missed SHOULD a WARN, and only
+FAIL findings block approval. The full rules are in
+[adc.guideline.cookbook.authoring.requirement-keywords](cookbook:456f23bd-4523-47e8-9541-073ac046f2ad).
 
 ## Template Variables
 
@@ -458,6 +476,7 @@ Content uses `{{placeholder}}` tokens for consumer-specific values. Never hardco
 | `{{bundle_id}}` | `com.company.app` | Bundle/package identifier |
 | `{{app_scheme}}` | `myapp` | URL scheme for deep links |
 | `{{app_prefix}}` | `myapp` | Prefix for feature flag keys |
+| `{{app_domain}}` | `example.com` | Web domain for verified app links |
 | `{{api_base_url}}` | `https://api.example.com` | Production API URL |
 | `{{db_name}}` | `myapp.db` | Local database filename |
 
@@ -472,10 +491,13 @@ Format:
 **Approved**: yes | pending
 ```
 
+A decision is `pending` while it is proposed, and `yes` once its stakeholders agree.
+
 ## Change History
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.5.0 | 2026-11-21 | Mike Fullerton | Matched to the researched authoring guidelines: approval fields are not required, triggers follow activity-triggers, ingredients carry Compliance and a guideline may, ingredient Platform Notes, keyword meanings and case, history newest first, `{{app_domain}}` |
 | 2.4.0 | 2026-11-19 | Mike Fullerton | The standard: roled parts, named rules, one source per topic and research; copies are folded with `cookr fold`; a cookbook with `research-exempt.json` is research-first, and that file lists every topic still owed research |
 | 2.3.3 | 2026-11-16 | Mike Fullerton | `approved-by` and `approved-date` are written by /approve-artifact after lint, so lint does not check them |
 | 2.3.2 | 2026-11-16 | Mike Fullerton | Research: every verdict names a claim; a rule the research cannot support cites itself as a claim and is warned for the owner; `validate --research` checks research alone |
