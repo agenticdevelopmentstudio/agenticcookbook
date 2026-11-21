@@ -4,7 +4,7 @@
     "id": "2c5ee8e0-9da5-4b44-9f87-51962abe76ab",
     "title": "Ingredient Formatting",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-21",
@@ -71,13 +71,13 @@
       "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
       "https://keepachangelog.com/en/1.1.0/"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-21",
     "triggers": [
       "recipe-authoring"
     ]
   },
-  "synced": "046d82eebf1bb4ba",
+  "synced": "81f50c6f1975d3cd",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
