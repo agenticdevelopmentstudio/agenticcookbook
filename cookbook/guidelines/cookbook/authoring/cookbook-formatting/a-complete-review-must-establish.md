@@ -1,0 +1,7 @@
+
+- Every MUST rule is kept, with no exception: `cf-valid-json`, `manifest-is-utf8-without-bom`, `cf-schema-valid`, `cf-required-identity-fields`, `cf-format-is-integer`, `cf-uuid-format`, `cf-rdid-format`, `cf-type-field`, `cf-required-project-fields`, `cf-dependencies-in-cookr-config`, `cf-semver-fields`, `released-version-is-immutable`, `cf-structure-present`, `cf-structure-kind`, `cf-library-tree-is-arrangement`, `cf-library-elements-consistent`, `cf-spec-paths-valid`, `cf-source-domains`, `cf-no-circular-deps`, `cf-code-roots`, `cf-code-root-fields`, `cf-code-root-coverage`, `schema-required-identity`, `schema-format-const-2`, `schema-rdid-pattern`, `schema-version-pattern`, `schema-depends-on-dot-paths`
+- Every SHOULD rule is kept, or the change says why not: `no-duplicate-member-names`, `uuid-compared-not-parsed`, `version-is-semver`, `cf-library-tree-mirrors-code`, `relative-paths-stay-inside-the-cookbook`, `semantic-checks-in-code`, `report-every-error`, `schema-dialect-2020-12`, `schema-has-stable-absolute-id`, `schema-id-uuid-pattern`, `schema-source-id-pattern`, `schema-license-spdx`, `schema-date-format`, `enable-format-assertion`, `schema-closed-objects`, `validate-the-schema-strictly`, `schema-paths-are-strings`, `schema-has-positive-and-negative-tests`
+- Every MAY rule that is taken is kept as written: `closed-objects-keep-an-extension-point`, `schema-structure-kind-enum`, `depends-on-items-unique`, `schema-association-declared`, `guideline-generated-from-schema`
+
+A review passes when it establishes every item above.
+

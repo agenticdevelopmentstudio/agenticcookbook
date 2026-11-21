@@ -1,0 +1,52 @@
+
+- `cf-valid-json`: `cookbook.json` parses as JSON
+- `manifest-is-utf8-without-bom`: `cookbook.json` is UTF-8 and does not begin with a byte order mark
+- `no-duplicate-member-names`: no object in `cookbook.json` repeats a member name, or the change says why
+- `cf-schema-valid`: `cookbook.json` validates against `references/cookbook.schema.json` with a real validator
+- `cf-required-identity-fields`: `format` (`2`), `id` and `rdid` are present
+- `cf-format-is-integer`: `format` is a whole number, not a semver string
+- `cf-uuid-format`: `id` is a valid UUID
+- `uuid-compared-not-parsed`: code compares UUIDs without regard to case and does not parse their fields, or says why
+- `cf-rdid-format`: `rdid` is one lowercase kebab-case segment
+- `cf-type-field`: a project manifest's `type` is `"cookbook"`
+- `cf-required-project-fields`: a project manifest has `type`, `name`, `version`, `description`, `author`, `license`, `created`, `modified` and `platforms`
+- `cf-dependencies-in-cookr-config`: no linked cookbook is listed in `cookbook.json`; they are `dependencies` in `.cookr.json`
+- `cf-semver-fields`: `version` is a semver string matching `^\d+\.\d+\.\d+$`
+- `version-is-semver`: every `version` is a Semantic Versioning 2.0.0 version with no leading zeroes, or the change says why
+- `released-version-is-immutable`: no released version's contents changed without a new `version`
+- `cf-structure-present`: a project manifest has `structure` with a `description`
+- `cf-structure-kind`: `structure.kind`, when present, is `app`, `library`, `plugin` or `widget`
+- `cf-library-tree-is-arrangement`: a `library` cookbook's directory tree is its arrangement of groups and components
+- `cf-library-tree-mirrors-code`: a `library` cookbook's tree mirrors its code's arrangement, or the change says why
+- `cf-library-elements-consistent`: a `library` cookbook's `structural-elements`, when present, does not contradict its tree
+- `cf-spec-paths-valid`: every `spec` resolves to an existing markdown file relative to the cookbook directory
+- `relative-paths-stay-inside-the-cookbook`: no relative path resolves outside the cookbook directory, or the change says why
+- `cf-source-domains`: every `source.id` is an ingredient's or recipe's UUID that resolves in its cookbook's `index.json`
+- `cf-no-circular-deps`: the `depends-on` graph has no cycle
+- `cf-code-roots`: `cookbook.json` has no `code` block
+- `cf-code-root-fields`: each root in `.cookr.json` names an existing `path` and a valid `platform`
+- `cf-code-root-coverage`: every source file under a root is covered by some artifact's implementations
+- `semantic-checks-in-code`: the checks the schema cannot express run in cookr's code, or the change says why
+- `report-every-error`: cookr reports every validation error, and a cycle by its nodes, or the change says why
+- `schema-dialect-2020-12`: the schema's root declares `"$schema": "https://json-schema.org/draft/2020-12/schema"`, or the change says why
+- `schema-has-stable-absolute-id`: the schema's root has an absolute-URI `$id`, and a new format version's schema sits beside the old one, or the change says why
+- `schema-required-identity`: the schema's top-level `required` lists `format`, `id` and `rdid`
+- `schema-format-const-2`: the schema pins `format` with `"const": 2`
+- `schema-id-uuid-pattern`: `id` has an anchored hex-and-dash UUID pattern, or the change says why
+- `schema-source-id-pattern`: `source.id` has an anchored pattern for a UUID, optionally after a cookbook UUID and a slash, or the change says why
+- `schema-rdid-pattern`: `rdid` has an anchored pattern admitting only a lowercase letter, then lowercase letters, digits and hyphens
+- `schema-version-pattern`: `version` is typed as the rule writes it
+- `schema-license-spdx`: `license` uses SPDX short identifiers, or the change says why
+- `schema-date-format`: `created` and `modified` are checked as RFC 3339 full-dates, or the change says why
+- `enable-format-assertion`: no field relies on `format` alone without format assertion on, or the change says why
+- `schema-closed-objects`: each object closed with `"additionalProperties": false` is closed to catch misspelt keys by choice, or the change says why
+- `closed-objects-keep-an-extension-point`: an extension point, when added, is open for other tools and closed objects extended through `allOf` use `unevaluatedProperties`
+- `validate-the-schema-strictly`: the schema compiles under strict checking, or the change says why
+- `schema-paths-are-strings`: `spec` and each `path` are strings holding relative-path references, or the change says why
+- `schema-structure-kind-enum`: `kind` is typed as the rule writes it
+- `schema-depends-on-dot-paths`: `depends-on` is typed as the rule writes it
+- `depends-on-items-unique`: `depends-on`, when marked, carries `"uniqueItems": true`
+- `schema-has-positive-and-negative-tests`: the schema has positive test manifests, run with a real validator, or the change says why
+- `schema-association-declared`: a `$schema` member, when present, names the cookbook schema
+- `guideline-generated-from-schema`: generated schema rules, when generated, come from `references/cookbook.schema.json`
+
