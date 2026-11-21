@@ -189,3 +189,13 @@ Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `##
 
 lint: fail 1
 ````
+
+## Round 2 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
+
+Disputes so far (disputes.md):
+
+- R1.1: The fix is right but not one the draft can make. `names_hosts` is a key of `artifact.json` only, never of the doc: `read_document` sets no `names_hosts`, and `save_document`/`convert --update` copy it from the folder's current manifest (`skills/cookr/cli/cookr/core/artifact.py`, `artifact.names_hosts = current.names_hosts`), so no text in draft.md can set it, and the author may edit draft.md alone. The wording stays, as the finding says (the host figures are the evidence for `pf-always-loaded-budget` and the rules citing `claude-md-*`/`codex-*` claims, and `roles-every-part-roled` forbids `hosts/`). Route it to integration: set `"names_hosts": "Cites agent hosts' published instruction budgets and guidance as the evidence for its rules."` in the folder's `artifact.json`. With the round-2 draft folded in, `cookr validate` reports nothing else for this folder except the expected `owner-decides` rows.

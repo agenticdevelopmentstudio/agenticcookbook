@@ -2,39 +2,65 @@
 
 ## Findings
 
-- `artifact.json` (cookbook-compliance; `cookr validate` Neutrality): the artifact names hosts with no reason given, so `cookr validate` reports `guidelines/cookbook/authoring/principle-formatting | unlisted | claude, codex` and exits 1 on this artifact's account. Every instance: `rules.md` lines 9, 11, 13, 16, 18, 19 and 23 (claim ids `claude-md-*` and `codex-*`, plus "Claude Code" and "Codex" in `pf-always-loaded-budget`); `rationale.md` lines 8, 11 and 16 ("Claude Code", "Codex", "Claude may"); `references.md` lines 12, 13 and 17 (Claude and Codex link titles and URLs). The host figures are the evidence the rules stand on, and `roles-every-part-roled` forbids `hosts/` in a roled artifact, so moving the wording out is not the fix. Fix: add `"names_hosts"` to `artifact.json` with a reason of 16 characters or more, for example "Cites agent hosts' published instruction budgets and guidance as the evidence for its rules.", then confirm `cookr validate` no longer lists this folder under Neutrality.
-- `rationale.md` (source-fidelity): two rationale lines say more than their claim supports. (1) `pf-key-guidance-first` says models "at high instruction density, show a bias toward earlier instructions (IFScale)". The second check refuted exactly that qualifier for `ifscale-earlier-instructions`: the abstract reports the bias but does not tie it to high density. (2) `pf-state-why`/`standard-research-cited` says "Nygard notes that a decision's motivation is the hardest thing to recover later", but the `adr-motivation-lost` quote says "One of the hardest things to track". Fix: drop "at high instruction density" from (1), and write "one of the hardest things to track" in (2).
-- `what-a-reviewer-looks-for.md`, `a-complete-review-must-establish.md`, `how-to-keep-the-rules.md` (cross-recipe consistency within the guideline: the review and how-to parts must match the rule they serve): `pf-statement` says the statement is "typically 1-3 sentences", but three parts turn that into a hard limit. Every instance: review-focus "a statement that … runs past three sentences"; review-bar "to hold the core idea in one to three sentences"; how-to "Write the statement first, in one to three sentences". Fix: make each one say "typically one to three sentences", for example review-focus "a statement that is not the core idea or runs well past the typical one to three sentences". `a-build-must-establish.md` already says "typically" and needs no change.
-- `a-build-must-establish.md`, `a-complete-review-must-establish.md`, `how-to-keep-the-rules.md`, `intro.md` (rule fidelity; owner open question 1): `pf-always-loaded-budget` applies only to "Principles that load on every task", and leaves to the owner whether principles load always or as skills. Four parts drop that condition and treat every principle as always loaded. Every instance: build-bar "`pf-always-loaded-budget`: the principle was sized with everything else always loaded, against the hosts' limits"; review-bar "the principle's share of the always-loaded total was weighed against the hosts' limits"; how-to "Count the principle with the others that load on every task"; intro "size it against the always-loaded budget". Fix: put the condition back in each, for example build-bar "a principle that loads on every task was sized with everything else always loaded, against the hosts' limits", and how-to "When the principle loads on every task, count it with the others that do". `what-a-reviewer-looks-for.md` ("principles whose always-loaded total is not weighed") already keeps the condition.
-- `rules.md` (behavioral-requirements `must-not-bundle-behaviors-into-one-requirement`; conventions' "one rule to a bullet"): eight rules not on the owner list each bundle several separately testable behaviours into one bullet. Every instance: `pf-frontmatter-complete` (required fields present; no `domain` field); `pf-key-guidance-first` (statement before bullets; most important bullets first); `pf-actionable-guidance` (bullets present when the statement is not self-evident; each bullet specific yet heuristic; each a full sentence; two to seven items of one structure); `pf-only-what-the-agent-lacks` (only what the agent lacks; no copied conventions or lint rules; add a bullet only for a repeated mistake); `pf-history-newest-first` (a row per version; each dated; latest first); `pf-format-checks-tool-enforced` (tool-decidable checks run by a tool; text holds only what no tool checks); `standard-one-source-per-topic` (one folder per topic; detail linked, not copied); `standard-research-cited` (research kept in `research/`; each rule cites its claims). Fix: split each into one named rule per behaviour. A prior rule name stays on one of its parts; the new names are free. Each part cites the subset of the original claims it stands on, at that subset's weakest strength, and each new rule gets its own `a-build-must-establish.md` line. Owner-listed rules (`pf-title-heading`, `pf-statement`, `pf-change-history`, `pf-brevity`, `roles-*-prior`) are exempt and stay as they are.
-- `intro.md` and `artifact.json` `summary` (consistency with `pf-state-why`): the intro says "specific bullets that say why" and the summary says "actionable bullets that say why". The rule asks the principle to say why it holds, and the how-to says the reason goes "in it [the statement] or in the bullet it explains". Neither asks every bullet to give a reason. Fix: intro "its core idea first with the reason it holds, then specific bullets"; summary, for example, "How a cookbook principle is shaped: required frontmatter, one title, its main point and why first, actionable bullets, a dated history, and roled parts." (148 characters).
+none
 
 ## Checked
 
-- All 27 verdicts have a rule of the same name in `rules.md`, and no rule lacks a verdict. Every `supported` and `new` verdict has its rule.
-- Every rule ends with exactly one `(claim: …)`/`(claims: …)` citation with nothing after it. Every cited id is a claim in research.json that some verdict names. The verdict-named claims no rule cites all belong to `unsupported` verdicts.
-- Strength rule: none of the six refuted claims (`adr-motivation-lost`, `skill-only-new-context`, `docs-as-code`, `md043-required-headings`, `vale-metric-formulas`, `ifscale-earlier-instructions`) is cited by a MUST rule. Their rules (`pf-state-why`, `standard-research-cited`, `pf-only-what-the-agent-lacks`, `pf-format-checks-tool-enforced`, `pf-key-guidance-first`) are all SHOULD/SHOULD NOT. No claim was in "citation dropped".
-- The only non-owner MUST rules are `pf-frontmatter-complete` and `pf-type-field`. Their claims (PEP 1's required preamble, Agent Skills' required frontmatter, Astro's erroring schema, JSON Schema `required`/`const`) carry a requirement or an enforcement mechanism, and none was refuted.
-- Each SHOULD/MAY rule reads at the strength of its sources. Every new rule's content follows from the claims it cites. `pf-always-loaded-budget` quotes the 200-line target and the 32 KiB Codex default as the claims state them.
-- Owner list: `pf-title-heading`, `pf-statement`, `pf-change-history`, `pf-brevity` and `roles-every-part-roled` match their prior text word for word and cite only `<rule>-prior`. `roles-vocabulary`, `roles-principle-skill-names` and `roles-principle-routing` carry exactly the listed lead-ins, followed by the prior text word for word.
-- No part settles an owner open question. The rationale names the length figure, the title exact-match and the MUST-vs-SHOULD questions as the owner's. `pf-frontmatter-complete` defers its field list to conventions.md. The always-loaded condition is the exception, raised above.
-- Structure follows guideline-formatting `gf-roled-parts`/`gf-named-rules`: intro, Rules, How to keep the rules, Examples, What a reviewer looks for, A complete review must establish, A build must establish, Rationale, References, Change History. The intro and history are unroled, and every other part carries a valid role.
-- `a-build-must-establish.md` has exactly one line per named rule, in rule order, and names nothing else. `cookr roles check` is ok (27 rules, no findings, four skills compile).
-- Rationale covers all 27 rules, so every SHOULD has its reason (behavioral-requirements `must-explain-rationale-for-should-requirements`).
-- `references.md` lists every URL in `meta.references`, and those are the research's sources.
-- Frontmatter: `summary` is 157 characters, `tags` are four lowercase tags that fit the topic, `platforms` is `[]` (universal), and both `related` UUIDs resolve in `index.json` (authoring-skills-and-rules, skill-checklist), relevant to the skill-compilation rules. Version, modified and history are left to stage 5.
-- The example is a correct, rule-conforming short principle: title matches H1, statement first with its reason, full-sentence bullets, linked detail, dated newest-first history.
-- How-to commands exist and take the stated forms: `cookr roles set`, `cookr roles check`, `cookr bump <folder> --summary` (dry-run succeeded on the folder).
-- Sibling topics, routed to them, not this topic's to fix: `cookr validate` also reports `guidelines/cookbook/authoring/activity-triggers` as Neutrality `unlisted` (claude, codex), and `guidelines/cookbook/authoring/guideline-formatting` rule `gf-rule-cites-research` with `citation-not-at-end` and `unknown-claim` (`<id>`).
+- `artifact.json` now carries `"names_hosts": "Cites agent hosts' published instruction budgets and guidance as the evidence for its rules."`. `cookr validate` exits 0, and its Neutrality section reports "No artifact names a host without saying why (32 say why)". This folder is no longer listed.
+- `cookr roles check` on the folder is ok: 39 rules, no findings, and all four skills compile (builder, build-verifier, reviewer, review-verifier). `cookr validate` Roles reports that every build bar cites exactly its rules.
+- All 27 verdict names still have a rule of that name. No prior rule was renamed, and each split kept the prior name on one part.
+- Every one of the 39 rules ends with one citation. Every cited id is a claim in research.json that some verdict names. No claim from a `supported` or `new` verdict is left uncited after the splits.
+- `a-build-must-establish.md` has exactly one line per rule, in rule order, including a line for each new split rule.
+- New split rules, checked against their cited claims:
+  - `pf-no-domain-field` (MUST NOT): `pep-preamble-required` gives a fixed, required header set stated with "must", and `astro-frontmatter-schema` errors on a schema violation. Together they support a fixed field set. Neither claim was refuted.
+  - The `pf-statement-before-bullets`, `pf-key-guidance-first`, `pf-actionable-guidance`, `pf-bullet-right-altitude`, `pf-bullet-full-sentence`, `pf-bullet-list-shape`, `pf-no-copied-conventions`, `pf-bullet-for-a-repeated-mistake`, `pf-history-row-per-version`, `pf-history-dated`, `pf-history-newest-first`, `pf-text-holds-untooled-guidance`, `standard-link-detail-not-copy`, `standard-research-kept` and `standard-research-cited` rules each follow from the subset they cite, at SHOULD or SHOULD NOT.
+- Strength rule: the refuted claims `ifscale-earlier-instructions`, `adr-motivation-lost`, `skill-only-new-context`, `docs-as-code`, `md043-required-headings` and `vale-metric-formulas` are cited only by SHOULD rules.
+- `pf-key-guidance-first` now says only that models "favour earlier instructions". It no longer ties the bias to instruction density, so it matches what the second check confirmed.
+- Owner list: `pf-title-heading`, `pf-statement`, `pf-change-history`, `pf-brevity` and `roles-*` are unchanged. Each still cites only its `-prior` claim, and each carries the listed lead-ins.
+- Rationale: every new rule name appears in a rationale line, so every SHOULD has its reason. The merged lines state the strength each rule takes.
+- The changed review-focus and review-bar lines each match the rule they serve. These cover statement before bullets, bullets for a statement that is not self-evident, altitude, full sentences, list shape, text spent on what a tool checks, and the research folder and citations.
+- `summary` is 152 characters and describes the new text.
+- The intro matches the draft's new text and keeps the always-loaded condition.
+
+## Rulings
+
+- R1.1: fixed — `names_hosts` is set in `artifact.json` with a reason of more than 16 characters, and `cookr validate` no longer lists this folder under Neutrality. The author's dispute was that the draft cannot set the key and the fix belongs to integration. That dispute is moot, because the key is now in the folder.
+- R1.2: fixed — `rationale.md` drops "at high instruction density" from the IFScale clause. It now says "one of the hardest things to track", matching the `adr-motivation-lost` quote.
+- R1.3: fixed — the three parts now say "typically" one to three sentences:
+  - review-focus says "runs well past the typical one to three sentences";
+  - review-bar says "in typically one to three sentences";
+  - how-to says "typically in one to three sentences".
+- R1.4: fixed — all four parts restore the condition that a principle loads on every task:
+  - build-bar: "a principle that loads on every task was sized …";
+  - review-bar: "for a principle that loads on every task, its share …";
+  - how-to: "When the principle loads on every task, count it with the others that do";
+  - intro: "size it against the always-loaded budget when it loads on every task".
+- R1.5: fixed — each of the eight bundled rules is now split into single-behaviour rules:
+  - `pf-frontmatter-complete` and `pf-no-domain-field`;
+  - `pf-statement-before-bullets` and `pf-key-guidance-first`;
+  - `pf-actionable-guidance`, `pf-bullet-right-altitude`, `pf-bullet-full-sentence` and `pf-bullet-list-shape`;
+  - `pf-only-what-the-agent-lacks`, `pf-no-copied-conventions` and `pf-bullet-for-a-repeated-mistake`;
+  - `pf-history-row-per-version`, `pf-history-dated` and `pf-history-newest-first`;
+  - `pf-format-checks-tool-enforced` and `pf-text-holds-untooled-guidance`;
+  - `standard-one-source-per-topic` and `standard-link-detail-not-copy`;
+  - `standard-research-kept` and `standard-research-cited`.
+
+  Each new rule cites a subset of the original claims at the right strength, keeps a prior name on one part, and has its own build-bar line.
+- R1.6: fixed — the intro now reads "its core idea first with the reason it holds, then specific bullets". The summary reads "its main point and why first, actionable bullets". Neither asks every bullet to give a reason.
 
 ## Lint
 
-/lint-artifact v2.0.1 on the compiled doc (type guideline, compliance `tbd/compliance/artifact-formatting/guideline-formatting.md`): Pass 18, Warn 0, Fail 1.
+/lint-artifact on the compiled doc (type guideline, compliance `tbd/compliance/artifact-formatting/guideline-formatting.md`): Pass 29, Warn 1, Fail 0. RESULT: CLEAN.
 
-- [FAIL] FM-03: Index entry matches folder. `cookbook/index.json` has no entry for `51a6fb7d-6668-4e64-9bc0-aa5b568092a3`, and no `cookbook/authoring` path appears in the index. Fix: run `cookr update` to regenerate the index.
-- [PASS] FM-01, FM-02, FM-04 to FM-13 (including FM-11 H1 matches title, FM-11a related UUIDs resolve), GF-01 statement after H1, GF-02 structured guidance, GF-03 RFC keywords, GF-04 no Compliance section needed, gf-change-history, gf-triggers-field.
-- Also noted, outside the artifact's checks: `cookr validate` reports drift in the guidelines and triggers indexes, and the Neutrality finding raised under Findings.
+- [PASS] FM-01 to FM-13, including:
+  - FM-03: the index entry matches the folder at `guidelines/cookbook/authoring/principle-formatting`;
+  - FM-11: the H1 matches the title;
+  - FM-11a: the links resolve.
+- [PASS] GF-01 statement after H1, GF-02 structured guidance (39 bullet rules), GF-03 RFC keywords, and gf-triggers-field.
+- [PASS] gf-roled-parts, gf-named-rules (39 unique, each with a keyword), gf-research-folder (75 claims, valid verdicts), gf-rule-cites-research, and build-bar (39 lines, one per rule).
+- [WARN] GF-04: no Compliance section. This only matters if a compliance check references the guideline, and roled guidelines have no such section.
+- The example principle's `# Explicit Over Implicit` heading and its `## Change History` sit inside a fenced block, so they do not count as extra headings.
 
-lint: fail 1
+lint: clean
 
-verdict: fail
+verdict: pass
