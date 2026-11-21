@@ -42,6 +42,23 @@ def uncited(text: str) -> str:
                    for (_, bare), line in zip(unfenced(lines), lines))
 
 
+def code_masked(text: str) -> str:
+    """`text` with its code masked: each character of a fenced block's lines and
+    of an inline code span becomes NUL, line endings kept, so the result is as
+    long as `text` and a match in it sits where it sits in `text`. A citation
+    is searched for in this, so `` `(claim: <id>)` `` written as an example is
+    never read as one (as `uncited` leaves it in place)."""
+    lines = split_lines(text)
+    out = []
+    for (_, bare), line in zip(unfenced(lines), lines):
+        if bare is None:
+            body = line.rstrip("\r\n")
+            out.append("\0" * len(body) + line[len(body):])
+        else:
+            out.append(_CODE_SPAN.sub(lambda m: "\0" * len(m.group(0)), line))
+    return "".join(out)
+
+
 def _uncited_line(line: str) -> str:
     out, at = [], 0
     for span in _CODE_SPAN.finditer(line):

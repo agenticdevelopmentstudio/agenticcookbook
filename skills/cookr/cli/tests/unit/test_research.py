@@ -533,3 +533,17 @@ def test_the_research_only_check_reports_a_topic_still_exempt(tmp_path, monkeypa
     (cb / research.EXEMPT_FILE).write_text(json.dumps({"why": "x", "topics": [TOPIC]}), encoding="utf-8")
     code, out = research_only(cb, folder, capsys, monkeypatch)
     assert code == 1 and "stale-exemption" in out
+
+
+def test_a_citation_written_in_code_is_not_cited():
+    from cookr.core.research import cited_at_end, citations
+    text = ("Each rule MUST end with `(claim: <id>)` or `(claims: <id>, <id>)`.\n\n"
+            "  ```markdown\n  - **x**: y. (claims: fk-a, fk-b)\n  ```\n\n"
+            "  **Applies when:** always. (claim: real-one)")
+    assert citations(text) == ["real-one"]
+    assert cited_at_end(text)
+
+
+def test_code_after_the_citation_still_counts_as_following_it():
+    from cookr.core.research import cited_at_end
+    assert not cited_at_end("A rule MUST hold. (claim: a) see `x`")

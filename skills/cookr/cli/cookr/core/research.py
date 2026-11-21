@@ -87,7 +87,7 @@ from typing import Iterable, Optional
 
 from .artifact import ARTIFACT_FILE, HISTORY, INTRO, Artifact, ArtifactError, is_folder, load_folder
 from .errors import CookbookError
-from .markdown import CITATION, RESEARCH_DIR
+from .markdown import CITATION, RESEARCH_DIR, code_masked
 from .roles import named_bullets, rule_texts, states_requirement
 
 RESEARCH_JSON = "research.json"
@@ -128,13 +128,15 @@ class ResearchFinding:
 
 
 def citations(text: str) -> list[str]:
-    """The claim ids a rule's text cites, in order."""
-    return [i.strip() for m in CITATION.finditer(text) for i in m.group(1).split(",") if i.strip()]
+    """The claim ids a rule's text cites, in order; a citation written in code
+    (a fenced block, an inline code span) is an example, never one."""
+    return [i.strip() for m in CITATION.finditer(code_masked(text)) for i in m.group(1).split(",") if i.strip()]
 
 
 def cited_at_end(text: str) -> bool:
-    """True when `text` has no citation, or one only, ending it."""
-    found = list(CITATION.finditer(text))
+    """True when `text` has no citation, or one only, ending it; a citation
+    written in code is not counted."""
+    found = list(CITATION.finditer(code_masked(text)))
     return not found or (len(found) == 1 and found[0].end() == len(text.rstrip()))
 
 
