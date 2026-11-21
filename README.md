@@ -50,7 +50,7 @@ The cookbook contains four types of **cookbook artifacts** — standalone markdo
 
 Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition over Inheritance, Separation of Concerns, SRP, Connascence, Conway's Law, Design for Deletion, DRY, Explicit over Implicit, Make Illegal States Unrepresentable, Errors as Values, Small Reversible Decisions, Tight Feedback Loops, Manage Complexity Through Boundaries, Least Astonishment, Idempotency, Native Controls, Open Source Preference, Make It Work/Right/Fast, Steel Thread First, Deliberate Prudent Technical Debt, Optimize for Change, Type Precedes Method, Domain-Stratified Trust, Independence Before Corroboration, Provenance at Generation Time, Cite the Claim Not the Document, Suppress Unsupported Confidence; and for ideation, Frame Before You Generate, Diverge Before You Converge, Defer Judgment and Go for Quantity, Human-First Ideation, Keep the Human at the Wheel, Break Fixation Deliberately, Bridge Distant Domains, Constraints as Creative Fuel, Counteract Homogenization with Diversity, Critique Without Killing, Document the Process Not a Conclusion.
 
-### Guidelines (278 files)
+### Guidelines (284 files)
 
 *What rules apply when building.* Organized by **use case** — the phase of work where they apply, with [trigger-based filtering](guide/introduction/trigger-guide.md) for AI agents:
 
@@ -61,7 +61,7 @@ Simplicity, YAGNI, Fail Fast, Dependency Injection, Immutability, Composition ov
 | Testing | 15 | Writing and structuring tests |
 | Reviewing | 10 | Checking code quality, security, accessibility |
 | Shipping | 10 | Pre-commit, pre-PR, packaging |
-| Cookbook | 11 | Writing cookbook content (recipes, skills, agents) |
+| Cookbook | 17 | Writing cookbook content (recipes, skills, agents) |
 | Researching | 5 | Gathering, verifying, and recording trustworthy research |
 | Brainstorming | 4 | Running ideation sessions with AI assistance |
 | Storytelling | 6 | Writing narrative and explanatory content |
@@ -140,7 +140,7 @@ The cookbook's public-facing website (React 19, TypeScript, Tailwind CSS 4) and 
 cookbook/                # cookbook content root
   introduction/          # getting started, conventions, glossary
   principles/            # 44 engineering principles
-  guidelines/            # 278 use-case-organized guidelines
+  guidelines/            # 284 use-case-organized guidelines
   ingredients/           # atomic component specs (building blocks)
   recipes/               # compositions of ingredients into features
   compliance/            # 10 compliance categories (81 checks)

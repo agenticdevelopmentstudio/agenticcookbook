@@ -92,12 +92,12 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
-| [Planning](guidelines/planning/) | 63 | Architecture, data modeling, choosing patterns |
+| [Planning](guidelines/planning/) | 35 | Architecture, data modeling, choosing patterns |
 | [Implementing](guidelines/implementing/) | 182 | Writing new code |
-| [Testing](guidelines/testing/) | 24 | Writing and structuring tests |
-| [Reviewing](guidelines/reviewing/) | 63 | Checking code quality, security, accessibility |
-| [Shipping](guidelines/shipping/) | 17 | Pre-commit, pre-PR, packaging |
-| [Cookbook](guidelines/cookbook/) | 16 | Writing cookbook content (recipes, skills, agents) |
+| [Testing](guidelines/testing/) | 15 | Writing and structuring tests |
+| [Reviewing](guidelines/reviewing/) | 10 | Checking code quality, security, accessibility |
+| [Shipping](guidelines/shipping/) | 10 | Pre-commit, pre-PR, packaging |
+| [Cookbook](guidelines/cookbook/) | 17 | Writing cookbook content (recipes, skills, agents) |
 | [Researching](guidelines/researching/) | 5 | Gathering, verifying, and recording trustworthy research |
 | [Brainstorming](guidelines/brainstorming/) | 4 | Facilitating idea generation sessions with framing-techniques, divergent-techniques, convergent-techniques, and facilitation-without-anchoring |
 | [Storytelling](guidelines/storytelling/) | 6 | Writing narrative and explanatory content |
