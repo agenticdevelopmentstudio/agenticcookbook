@@ -1,18 +1,20 @@
-You are reviewing a cookbook guideline you did not write. Today is 2026-11-21.
-Do not edit any file except the one you are told to write, and run no
-background work: reply only once review.md is complete.
+You are re-reviewing a cookbook guideline you did not write. Today is
+2026-11-21. Do not edit any file except the one you are told to write, and run
+no background work: reply only once review.md is complete.
 
 The guideline: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/cookbook/guidelines/cookbook/authoring/guideline-formatting/ (artifact.json and one .md per part).
 Its research: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/cookbook/guidelines/cookbook/authoring/guideline-formatting/research/research.json and research.md.
 The second check: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/second-check.md.
 The owner list: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/owner-list.md.
-The write brief the author worked from: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/write-brief.md.
+The earlier reviews: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/review-1.md
+The author's disputes: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/disputes.md (absent when there are none).
+What changed this round: /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/diff-2.md (the diff from the previous draft).
 
 Run cookr, this checkout's own, as `PYTHONPATH=/Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/skills/cookr/cli /private/tmp/claude-501/-Users-mfullerton-Development-projects-myagenticteams-teamtesting--claude-worktrees-devteam-scope-specialists/42c82725-9e4b-4ae4-aed3-3ac87a841295/scratchpad/cookr-venv/bin/python -P -m cookr -p /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook <command>`: for example
-`PYTHONPATH=/Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/skills/cookr/cli /private/tmp/claude-501/-Users-mfullerton-Development-projects-myagenticteams-teamtesting--claude-worktrees-devteam-scope-specialists/42c82725-9e4b-4ae4-aed3-3ac87a841295/scratchpad/cookr-venv/bin/python -P -m cookr -p /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook roles check cookbook/guidelines/cookbook/authoring/guideline-formatting`, or `PYTHONPATH=/Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/skills/cookr/cli /private/tmp/claude-501/-Users-mfullerton-Development-projects-myagenticteams-teamtesting--claude-worktrees-devteam-scope-specialists/42c82725-9e4b-4ae4-aed3-3ac87a841295/scratchpad/cookr-venv/bin/python -P -m cookr -p /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook compile cookbook/guidelines/cookbook/authoring/guideline-formatting` to read
-the guideline as one doc (delete the doc afterwards).
+`PYTHONPATH=/Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/skills/cookr/cli /private/tmp/claude-501/-Users-mfullerton-Development-projects-myagenticteams-teamtesting--claude-worktrees-devteam-scope-specialists/42c82725-9e4b-4ae4-aed3-3ac87a841295/scratchpad/cookr-venv/bin/python -P -m cookr -p /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook roles check cookbook/guidelines/cookbook/authoring/guideline-formatting`.
 
-This is round 1 of at most 3: a full review.
+This is round 2 of at most 3: a scoped re-review, not a
+fresh one.
 
 Review criteria. Stage 4 reviews against exactly these, and the author writes to them:
 
@@ -50,24 +52,91 @@ Review criteria. Stage 4 reviews against exactly these, and the author writes to
    sibling, and the orchestrator routes it there; it is not this topic's to
    fix.
 
-A finding names every instance of its class, not one example: when one rule's
-MUST outruns its claims, check every rule for the same and list them all in
-that one finding.
+The findings still open, to rule on:
+- R1.1: `rules.md`, **gf-structured-guidance**: the rule is MUST, but two of the four claims it cites are hedged below MUST. `google-bulleted-lists` reads "Use the same syntax/structure for all list items in a given list, if possible", and `diataxis-reference-consistent` says only that reference "is useful when it is consistent". `ms-discrete-components` is style advice ("to support scanning"). Only `w3c-qa-consistent-requirement-style` (QA Framework Requirement 7) is MUST-strength. The "every item of a list in the same structure" and "discrete components" parts therefore outrun their claims. No other MUST rule cites a hedged or refuted claim: all 43 rules were checked, and no refuted claim carries MUST anywhere. Fix: either lower gf-structured-guidance to SHOULD, or keep gf-structured-guidance at MUST for "requirements written in one consistent style that tells them apart" citing only `w3c-qa-consistent-requirement-style` and move the discrete-components and same-list-structure requirement into a new SHOULD rule citing `ms-discrete-components, google-bulleted-lists, diataxis-reference-consistent`, with its own build-bar line.
+- R1.2: `rules.md`, **rule-states-when-it-applies**: the rule's text now says only "a standardized form that states precisely the action it requires". The circumstances half is gone, but four places still require it. The rule's name says "when it applies". `what-a-reviewer-looks-for.md` line 5 reads "or does not say when it applies". `a-complete-review-must-establish.md` line 5 reads "and the circumstances it applies in". `how-to-keep-the-rules.md` ("Write one rule to a bullet") says "say when it applies". The `rationale.md` bullet head reads "and says when it applies". So the reviewer and the review-verifier check a requirement that no rule states. Fix: restore the circumstances clause to the rule at SHOULD ("… that states precisely the action it requires and the circumstances in which it applies"). `iom-standardized-form-and-circumstances` states it, and as a refuted claim it can still carry SHOULD (the second check found the clause in IOM Standard 6.1, just outside the quote). Otherwise, rename the rule (for example `rule-states-action-precisely`) and remove the "when it applies" or "circumstances" wording from all four places.
+- R1.3: `what-a-reviewer-looks-for.md` ("A rule whose keyword is stronger than the claims it cites"), `a-complete-review-must-establish.md` ("No rule is stronger than the weakest claim it cites.") and `how-to-keep-the-rules.md` ("Pick the keyword from the evidence. A rule is no stronger than the weakest claim it cites. Use MUST only where the cited claims say must; a claim that says should carries SHOULD."): all three state and enforce a requirement that no named rule in `## Rules` holds. Informative parts state a requirement of their own, which mark-normative-and-informative and examples-are-non-normative say they should not, and the review bar holds a reviewer to something the rules never ask of a builder. Fix: tie each of these lines to a named rule the research supports (for example, fold the check into what normative-keywords-only-where-required covers, a keyword used where its evidence does not require it). If no cited claim carries it, remove the two review lines, recast the how-to bullet as informative advice, and add the missing strength rule to the rationale's "Questions left to the owner".
+- R1.4: `intro.md`: the summary statement says a guideline "MUST … give each part a role" and "keep that research in its folder" with no conditions. Both contradict the rules they summarise. gf-roled-parts applies only "when any part of the guideline carries a `role`". conv-legacy-keeps-working keeps unroled artifacts compiling as they always did. gf-research-folder exempts topics listed in `cookbook/research-exempt.json`. Fix: state the conditions ("a roled guideline gives each part but the intro and history a role"; "keeps its research in its folder unless it is listed as research-exempt"), or drop the MUST from the summary and phrase it as a description.
+- R1.5: `rationale.md` and `rules.md` **stable-rule-identifiers**: three source statements contradict what the second check found.
+    - Rationale ("A named rule can be referenced…") says "OWASP ASVS warns that positional identifiers change between versions and become a problem as a standard grows". The second check on `asvs-positional-ids-problematic` found that "this becomes problematic" refers to identifiers used without the version element, not to positional identifiers. stable-rule-identifiers repeats the same misreading in its "since positional identifiers may change between versions and become problematic as the guideline grows and changes" clause.
+    - Rationale (same bullet) says NASA "names the paragraph that mixes requirements with rationale as a common failure". Per the second check on `nasa-requirements-and-rationale-mixed`, the source does not call it common.
+    - Rationale ("A rule is worded so compliance can be judged…") says "NASA requires a requirement to be verifiable". Per the second check on `nasa-requirements-verifiable`, NASA phrases this as a checklist question, not a requirement.
+    Fix: reword the rationale to "OWASP ASVS notes that its identifiers may change between versions", "NASA's checklist flags a paragraph that holds both requirements and rationale" and "NASA's checklist asks whether the system can be tested, demonstrated, inspected or analysed against each requirement". Drop the "since…" clause from stable-rule-identifiers.
+- R1.6: `rules.md`, rationale written into rule bullets: these rules carry their reasons inside the rule, against the guideline's own one-requirement-per-rule ("not mix the requirement with its rationale") and conv-rationale-to-references.
+    - **change-history-newest-first**: "which are full of noise"
+    - **stable-rule-identifiers**: "so they do not break links into the guideline" and "since positional identifiers may change … grows and changes"
+    - **conv-research-cited**: "so a reader can find the reasoning and the evidence behind it"
+    - **conv-rationale-to-references**: "so the rules alone are the standard"
+    Rules on the owner list are exempt. Fix: end each rule at its requirement and move the reason to the matching `rationale.md` bullet, where most of it already is.
+- R1.7: `rules.md`, compound rules: these rules bundle two or more requirements into one bullet. That goes against one-requirement-per-rule ("express only one thought") and recipe-quality/behavioral-requirements `must-not-bundle-behaviors-into-one-requirement`, and the build bar then has one line covering several checks.
+    - **gf-frontmatter-complete**: required fields present, and no `domain`
+    - **gf-structured-guidance**: discrete components, same list structure, and one requirement style
+    - **summary-complete-in-itself**: complete in itself, and most important first
+    - **change-history-entry-per-version**: an entry per version, and its changes explained
+    - **change-history-newest-first**: latest first, and no commit-log diffs
+    - **mark-normative-and-informative**: normative told apart, informative not normative-sounding, and references marked
+    - **examples-are-non-normative**: two clauses that restate each other
+    - **conformance-and-scope-statement**: conformance statement, scope defined, and no requirements in the scope
+    - **stable-rule-identifiers**: names stable, and not positional
+    - **conv-one-source-per-topic**: written once, no duplication, and link instead
+    Rules on the owner list are exempt. Fix: split each into separately named rules, each with its own citation (prior names stay on the part they named, and new names are free), and give each new rule its own build-bar line.
+- R1.8: The guideline does not keep three of its own SHOULD rules:
+    - `references.md` marks no reference as normative or informative (mark-normative-and-informative: "the guideline's references SHOULD each be marked normative or informative").
+    - The guideline has no statement of what following it requires and no scope statement (conformance-and-scope-statement).
+    - None of its informative parts (`how-to-keep-the-rules.md`, `examples.md`, `rationale.md`, `references.md`) says so at its start (conv-roled-parts: "each informative part says so at its start").
+    Fix: mark each reference, for example RFC 2119 and RFC 7322 as normative and the style guides as informative. Add a short conformance and scope statement to the intro, with no requirement in the scope sentence. Open each informative part with a sentence saying it is informative.
+- R1.9: `a-complete-review-must-establish.md`: the review bar does not establish 18 named rules, so the review-verifier never checks them:
+    - gf-structured-guidance
+    - key-rules-identifiable
+    - normative-keywords-only-where-required
+    - keywords-impose-no-method
+    - change-history-newest-first
+    - released-versions-immutable (only renames are covered)
+    - gf-compliance-section
+    - conv-roled-parts (each informative part labelled)
+    - conformance-and-scope-statement
+    - mark-normative-and-informative (references marked)
+    - rule-has-rationale
+    - conv-rationale-to-references
+    - keep-rule-lists-short
+    - gf-research-folder (`research.json` and `research.md` present and in shape; only the verdict link is covered)
+    - conv-role-values (the intro and history carry no role)
+    - conv-no-roles-under-reviewing
+    - conv-four-skills and conv-skill-names
+    - check-guidelines-automatically
+    The worked example the guideline itself names (`guidelines/implementing/data/indexing`) has its review bar name every MUST rule and every SHOULD rule. Fix: add a line for each missing rule, or follow the indexing form: "Every MUST rule is kept, with no exception: …" and "Every SHOULD rule is kept, or the review says why not: …", naming all 43 rules.
+- R1.10: `artifact.json` `related`: it lists only research-results-document and template-conformance. It omits the sibling requirement-keywords (`456f23bd-4523-47e8-9541-073ac046f2ad`), which overlaps gf-rfc-keywords, normative-keywords-only-where-required and keywords-impose-no-method and already holds `gf-rfc-keywords` and `keywords-only-where-required` of its own. It also omits activity-triggers (`1b7b83f9-3b8a-46f7-81b7-9a55291a23a2`), the trigger vocabulary gf-triggers-field depends on. conv-one-source-per-topic asks the guideline to link to such docs rather than repeat them. Fix: add both UUIDs to `related`. Whether the shared `gf-rfc-keywords` and the overlapping keyword rule belong here or in requirement-keywords is an open question on the owner list, so it is not raised here; the orchestrator may route the duplicate rule name to requirement-keywords.
+
+1. Rule on every open finding above, in `## Rulings`, one line each:
+   `- <id>: fixed|disputed-accepted|routed|open — <reason>`.
+   - `fixed`: the change resolves it.
+   - `disputed-accepted`: the author disputed it in disputes.md and is
+     right. A dispute you reject is `open`, with why.
+   - `routed`: the finding belongs to a named sibling topic and was recorded
+     in that sibling's write-brief.md if it has not passed stage 4, or in its
+     integrate.md if it has. Name the sibling in the reason.
+   - `open`: it still stands.
+2. Raise a new finding only on text the diff shows changed this round, or for
+   a factual error against a cited claim (name the claim). Nothing else is
+   reviewed again.
+3. Never ask to reverse a fix an earlier round asked for unless you cite the
+   claim that makes that fix wrong.
+A new finding names every instance of its class in the changed text.
 
 Then run the /lint-artifact skill on /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/cookbook/guidelines/cookbook/authoring/guideline-formatting, telling it to run cookr as
 above, and include its result. A lint WARN is not an error.
 
 Write /Users/mfullerton/Development/projects/myagenticteams/teamtesting/.claude/worktrees/teams-cookbook-grounding-phase-2/external/teams/external/agenticcookbook/docs/grow-cookbook/areas/cookbook/authoring/topics/guideline-formatting/review.md:
 - `# Review: guideline-formatting`
-- `## Findings`: findings only, one top-level `- ` bullet each: the file, the
-  rule or line, what is wrong (every instance), and the fix. Write `none` if
-  there are none.
-- `## Checked`: what you checked and found right, one bullet each. Positive
-  notes never go under Findings.
+- `## Findings`: new findings only, one top-level `- ` bullet each: the file,
+  the rule or line, what is wrong (every instance), and the fix. Write `none`
+  if there are none.
+- `## Checked`: what you checked and found right, one bullet each.
+- `## Rulings`: one line per open finding, as above.
 - `## Lint`: the /lint-artifact result, then, as the section's last line,
   exactly `lint: clean` (no lint error) or `lint: fail <n>` (n lint errors).
   A script reads only that line; without it the round counts as a lint
   failure.
 - last, a line of its own, exactly `verdict: pass` or `verdict: fail`.
-  `fail` when any finding or lint error stands.
+  `fail` when a new finding, a ruling of `open`, or a lint error stands.
 Reply with the verdict line only.

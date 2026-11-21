@@ -2,92 +2,82 @@
 
 ## Findings
 
-- `rules.md`, **gf-structured-guidance**: the rule is MUST, but two of the four claims it cites are hedged below MUST. `google-bulleted-lists` reads "Use the same syntax/structure for all list items in a given list, if possible", and `diataxis-reference-consistent` says only that reference "is useful when it is consistent". `ms-discrete-components` is style advice ("to support scanning"). Only `w3c-qa-consistent-requirement-style` (QA Framework Requirement 7) is MUST-strength. The "every item of a list in the same structure" and "discrete components" parts therefore outrun their claims. No other MUST rule cites a hedged or refuted claim: all 43 rules were checked, and no refuted claim carries MUST anywhere. Fix: either lower gf-structured-guidance to SHOULD, or keep gf-structured-guidance at MUST for "requirements written in one consistent style that tells them apart" citing only `w3c-qa-consistent-requirement-style` and move the discrete-components and same-list-structure requirement into a new SHOULD rule citing `ms-discrete-components, google-bulleted-lists, diataxis-reference-consistent`, with its own build-bar line.
-- `rules.md`, **rule-states-when-it-applies**: the rule's text now says only "a standardized form that states precisely the action it requires". The circumstances half is gone, but four places still require it. The rule's name says "when it applies". `what-a-reviewer-looks-for.md` line 5 reads "or does not say when it applies". `a-complete-review-must-establish.md` line 5 reads "and the circumstances it applies in". `how-to-keep-the-rules.md` ("Write one rule to a bullet") says "say when it applies". The `rationale.md` bullet head reads "and says when it applies". So the reviewer and the review-verifier check a requirement that no rule states. Fix: restore the circumstances clause to the rule at SHOULD ("… that states precisely the action it requires and the circumstances in which it applies"). `iom-standardized-form-and-circumstances` states it, and as a refuted claim it can still carry SHOULD (the second check found the clause in IOM Standard 6.1, just outside the quote). Otherwise, rename the rule (for example `rule-states-action-precisely`) and remove the "when it applies" or "circumstances" wording from all four places.
-- `what-a-reviewer-looks-for.md` ("A rule whose keyword is stronger than the claims it cites"), `a-complete-review-must-establish.md` ("No rule is stronger than the weakest claim it cites.") and `how-to-keep-the-rules.md` ("Pick the keyword from the evidence. A rule is no stronger than the weakest claim it cites. Use MUST only where the cited claims say must; a claim that says should carries SHOULD."): all three state and enforce a requirement that no named rule in `## Rules` holds. Informative parts state a requirement of their own, which mark-normative-and-informative and examples-are-non-normative say they should not, and the review bar holds a reviewer to something the rules never ask of a builder. Fix: tie each of these lines to a named rule the research supports (for example, fold the check into what normative-keywords-only-where-required covers, a keyword used where its evidence does not require it). If no cited claim carries it, remove the two review lines, recast the how-to bullet as informative advice, and add the missing strength rule to the rationale's "Questions left to the owner".
-- `intro.md`: the summary statement says a guideline "MUST … give each part a role" and "keep that research in its folder" with no conditions. Both contradict the rules they summarise. gf-roled-parts applies only "when any part of the guideline carries a `role`". conv-legacy-keeps-working keeps unroled artifacts compiling as they always did. gf-research-folder exempts topics listed in `cookbook/research-exempt.json`. Fix: state the conditions ("a roled guideline gives each part but the intro and history a role"; "keeps its research in its folder unless it is listed as research-exempt"), or drop the MUST from the summary and phrase it as a description.
-- `rationale.md` and `rules.md` **stable-rule-identifiers**: three source statements contradict what the second check found.
-  - Rationale ("A named rule can be referenced…") says "OWASP ASVS warns that positional identifiers change between versions and become a problem as a standard grows". The second check on `asvs-positional-ids-problematic` found that "this becomes problematic" refers to identifiers used without the version element, not to positional identifiers. stable-rule-identifiers repeats the same misreading in its "since positional identifiers may change between versions and become problematic as the guideline grows and changes" clause.
-  - Rationale (same bullet) says NASA "names the paragraph that mixes requirements with rationale as a common failure". Per the second check on `nasa-requirements-and-rationale-mixed`, the source does not call it common.
-  - Rationale ("A rule is worded so compliance can be judged…") says "NASA requires a requirement to be verifiable". Per the second check on `nasa-requirements-verifiable`, NASA phrases this as a checklist question, not a requirement.
-
-  Fix: reword the rationale to "OWASP ASVS notes that its identifiers may change between versions", "NASA's checklist flags a paragraph that holds both requirements and rationale" and "NASA's checklist asks whether the system can be tested, demonstrated, inspected or analysed against each requirement". Drop the "since…" clause from stable-rule-identifiers.
-- `rules.md`, rationale written into rule bullets: these rules carry their reasons inside the rule, against the guideline's own one-requirement-per-rule ("not mix the requirement with its rationale") and conv-rationale-to-references.
-  - **change-history-newest-first**: "which are full of noise"
-  - **stable-rule-identifiers**: "so they do not break links into the guideline" and "since positional identifiers may change … grows and changes"
-  - **conv-research-cited**: "so a reader can find the reasoning and the evidence behind it"
-  - **conv-rationale-to-references**: "so the rules alone are the standard"
-
-  Rules on the owner list are exempt. Fix: end each rule at its requirement and move the reason to the matching `rationale.md` bullet, where most of it already is.
-- `rules.md`, compound rules: these rules bundle two or more requirements into one bullet. That goes against one-requirement-per-rule ("express only one thought") and recipe-quality/behavioral-requirements `must-not-bundle-behaviors-into-one-requirement`, and the build bar then has one line covering several checks.
-  - **gf-frontmatter-complete**: required fields present, and no `domain`
-  - **gf-structured-guidance**: discrete components, same list structure, and one requirement style
-  - **summary-complete-in-itself**: complete in itself, and most important first
-  - **change-history-entry-per-version**: an entry per version, and its changes explained
-  - **change-history-newest-first**: latest first, and no commit-log diffs
-  - **mark-normative-and-informative**: normative told apart, informative not normative-sounding, and references marked
-  - **examples-are-non-normative**: two clauses that restate each other
-  - **conformance-and-scope-statement**: conformance statement, scope defined, and no requirements in the scope
-  - **stable-rule-identifiers**: names stable, and not positional
-  - **conv-one-source-per-topic**: written once, no duplication, and link instead
-
-  Rules on the owner list are exempt. Fix: split each into separately named rules, each with its own citation (prior names stay on the part they named, and new names are free), and give each new rule its own build-bar line.
-- The guideline does not keep three of its own SHOULD rules:
-  - `references.md` marks no reference as normative or informative (mark-normative-and-informative: "the guideline's references SHOULD each be marked normative or informative").
-  - The guideline has no statement of what following it requires and no scope statement (conformance-and-scope-statement).
-  - None of its informative parts (`how-to-keep-the-rules.md`, `examples.md`, `rationale.md`, `references.md`) says so at its start (conv-roled-parts: "each informative part says so at its start").
-
-  Fix: mark each reference, for example RFC 2119 and RFC 7322 as normative and the style guides as informative. Add a short conformance and scope statement to the intro, with no requirement in the scope sentence. Open each informative part with a sentence saying it is informative.
-- `a-complete-review-must-establish.md`: the review bar does not establish 18 named rules, so the review-verifier never checks them:
-  - gf-structured-guidance
-  - key-rules-identifiable
-  - normative-keywords-only-where-required
-  - keywords-impose-no-method
-  - change-history-newest-first
-  - released-versions-immutable (only renames are covered)
-  - gf-compliance-section
-  - conv-roled-parts (each informative part labelled)
-  - conformance-and-scope-statement
-  - mark-normative-and-informative (references marked)
-  - rule-has-rationale
-  - conv-rationale-to-references
-  - keep-rule-lists-short
-  - gf-research-folder (`research.json` and `research.md` present and in shape; only the verdict link is covered)
-  - conv-role-values (the intro and history carry no role)
-  - conv-no-roles-under-reviewing
-  - conv-four-skills and conv-skill-names
-  - check-guidelines-automatically
-
-  The worked example the guideline itself names (`guidelines/implementing/data/indexing`) has its review bar name every MUST rule and every SHOULD rule. Fix: add a line for each missing rule, or follow the indexing form: "Every MUST rule is kept, with no exception: …" and "Every SHOULD rule is kept, or the review says why not: …", naming all 43 rules.
-- `artifact.json` `related`: it lists only research-results-document and template-conformance. It omits the sibling requirement-keywords (`456f23bd-4523-47e8-9541-073ac046f2ad`), which overlaps gf-rfc-keywords, normative-keywords-only-where-required and keywords-impose-no-method and already holds `gf-rfc-keywords` and `keywords-only-where-required` of its own. It also omits activity-triggers (`1b7b83f9-3b8a-46f7-81b7-9a55291a23a2`), the trigger vocabulary gf-triggers-field depends on. conv-one-source-per-topic asks the guideline to link to such docs rather than repeat them. Fix: add both UUIDs to `related`. Whether the shared `gf-rfc-keywords` and the overlapping keyword rule belong here or in requirement-keywords is an open question on the owner list, so it is not raised here; the orchestrator may route the duplicate rule name to requirement-keywords.
+none
 
 ## Checked
 
-- Every rule ends with exactly one citation in `(claim: …)` or `(claims: …)` form with nothing after it. Every cited id is a claim in `research.json` that some verdict names (scripted check), and `cookr roles check` reports no findings for the 43 rules.
-- Every claim named by a `supported` or `new` verdict is cited by at least one rule (scripted check). No supported or new claim is left without a rule.
-- Every rule on the owner list keeps its prior text word for word (scripted comparison against each `<rule>-prior` claim, after removing the 2-space continuation indent) and cites only `<rule>-prior`: gf-title-heading, gf-rfc-keywords, gf-compliance-section, gf-triggers-field, gf-roled-parts, gf-research-folder, gf-rule-cites-research and conv-roled-artifact-complete, all with no lead-in.
-- The five lead-ins match owner-list.md exactly: conv-legacy-keeps-working "The cookbook MUST keep this true:", conv-role-values "Roles MUST be used as follows:", conv-no-roles-under-reviewing "Roles MUST be placed as follows:", conv-four-skills "A roled artifact MUST compile as follows:", conv-skill-names "The compiled skills MUST be named as follows:". conv-roled-artifact-complete correctly takes no lead-in, since the owner list gives it none.
-- No refuted claim (the 23 listed under "Second-check corrections, refuted") is cited by a MUST rule. Every rule that cites one is at SHOULD or below. The write brief lists no "citation dropped" corrections.
-- The other MUST and MUST NOT rules match their claims' strength: gf-frontmatter-complete (RFC 7322 required elements, JSON Schema `required` and `additionalProperties: false`), gf-type-field, gf-summary-statement (RFC 7322 "must have an Abstract"), keywords-impose-no-method (RFC 2119 "must not … impose"), gf-change-history (W3C Process "must provide public documentation"), released-versions-immutable (SemVer MUST NOT).
-- Every new rule's SHOULD or SHOULD NOT matches its cited claims, apart from the bundling and wording findings above.
-- The prior rule names the verdicts key on are all present and unrenamed. New rules (summary-complete-in-itself, key-rules-identifiable, keywords-impose-no-method, change-history-entry-per-version) cite claims some verdict names.
-- The text settles none of the owner list's open questions. The rationale's "Questions left to the owner" restates them without deciding them.
-- The build bar has exactly one line per named rule, in rule order, and names nothing else (scripted check, and `cookr roles check` ok).
-- `artifact.json` parts: intro, then rules, how-to, examples, review-focus, review-bar, build-bar, rationale and references, then history. The intro and history carry no role, all four required roles are present, and there are no `routes` and no `hosts/`. The four compiled skills are named `cookbook-authoring-guideline-formatting`, `verifying-build-…`, `reviewing-…` and `verifying-review-authoring-guideline-formatting`.
-- Frontmatter: `summary` is 153 characters and describes the new text, `type` is `guideline`, `triggers` is `[]`, `platforms` is `[]` (platform-neutral), the tags fit the topic, and both `related` UUIDs resolve (research-results-document, template-conformance). Version, modified and history are left to `cookr bump` and were not reviewed.
-- `references` in `artifact.json` matches `references.md` one for one, and each research source is listed.
-- `cookr validate --research` on this folder passes. The full `cookr validate` fails only on neutrality findings in sibling topics (activity-triggers and principle-formatting name `claude`/`codex`); none of them is in this folder. Its `owner-decides` warnings for this topic are the expected ones for owner-list rules.
-- The H1 equals the `title` and there is a single H1. The examples are informative and correctly formed (named rules, citation last, a build-bar pair, a change-history row).
+- `cookr roles check` on the folder: ok, 59 rules, no findings; it compiles to the four skills (builder, build-verifier, reviewer, review-verifier).
+- The build bar has exactly one line per named rule, in the rules' order (59 and 59, no extra or missing name).
+- The review bar names all 59 rules exactly once, sorted by keyword: every MUST rule (including the owner-list rules whose lead-in carries MUST), every SHOULD rule (gf-triggers-field, whose presence is SHOULD, among them), and gf-compliance-section as the one MAY rule.
+- Every rule ends with its citation, and every cited id is a claim in `research/research.json` that some verdict names (the only non-matching ids, `fk-index-postgres` and `fk-index-sqlite`, sit in gf-rule-cites-research's example code block, which is owner-list prior text).
+- Every `supported` and `new` verdict's rule is present, and every claim those verdicts name is cited by some rule.
+- No MUST or MUST NOT rule cites a claim the second check refuted. The MUST rules changed this round cite confirmed claims: gf-structured-guidance (`w3c-qa-consistent-requirement-style`), no-domain-field (`json-schema-no-additional-properties`), released-versions-immutable (`semver-released-immutable`), keywords-impose-no-method (`rfc2119-no-method-imposition`).
+- The new SHOULD rules split out this round each cite claims at or above SHOULD strength, refuted claims among them only at SHOULD: guidance-in-discrete-components, list-items-share-one-structure, summary-leads-with-most-important, guideline-defines-scope, scope-holds-no-requirements, rule-specific-and-unambiguous, rule-in-standardized-form, no-positional-rule-identifiers, informative-part-says-so, informative-text-not-normative-sounding, references-marked-normative-or-informative, link-instead-of-repeating, change-history-explains-changes, change-history-dates-each-version, change-history-not-commit-log.
+- Owner-list rules keep their prior text word for word, with only the listed lead-ins (conv-legacy-keeps-working, conv-role-values, conv-no-roles-under-reviewing, conv-four-skills, conv-skill-names).
+- No rule changed this round carries its reason in its bullet; the reasons sit in the matching `rationale.md` bullets.
+- The rationale's source statements match the second check: OWASP ASVS's identifiers "may change between versions" and the problem is a reference without its version (`asvs-positional-ids-problematic`, `asvs-versioned-identifiers`); NASA's checklist "flags" a paragraph mixing requirements and rationale, without calling it common (`nasa-requirements-and-rationale-mixed`); NASA's checklist "asks whether" each requirement can be verified (`nasa-requirements-verifiable`).
+- The intro states its conditions (a roled guideline; not listed in `cookbook/research-exempt.json`), carries no RFC keyword, adds a conformance statement, and a scope statement that holds no requirement; it links requirement-keywords, activity-triggers and research-results-document rather than repeating them.
+- Each informative part (`how-to-keep-the-rules.md`, `examples.md`, `rationale.md`, `references.md`) says it is informative in its first sentence, and the informative text changed this round states no RFC keyword.
+- `references.md` marks RFC 2119 normative and every other source informative, under H3 headings below the part's H2, so no heading level is skipped.
+- The how-to's "Choose the keyword from the evidence" bullet is advice with no keyword, and the weakest-claim question is listed in the rationale's "Questions left to the owner".
+- `what-a-reviewer-looks-for.md` covers each rule added this round, and its line "does not say when it applies" is held by rule-states-when-it-applies.
+- Frontmatter: `summary` is 143 characters and describes the new text; `related` holds research-results-document, template-conformance, requirement-keywords and activity-triggers; `tags` and `platforms: []` fit the guideline.
+- `disputes.md` holds one dispute, on a sibling's finding (requirement-keywords R1.8), not on an open finding of this topic, so it needs no ruling here.
+
+## Rulings
+
+- R1.1: fixed — gf-structured-guidance is MUST for one consistent, distinguishable requirement style, citing only `w3c-qa-consistent-requirement-style`; guidance-in-discrete-components and list-items-share-one-structure are new SHOULD rules with their own build-bar lines.
+- R1.2: fixed — rule-states-when-it-applies now states the circumstances requirement at SHOULD (claim: iom-standardized-form-and-circumstances), and the action half is the new rule-in-standardized-form, so the reviewer, review-bar, how-to and rationale wording is backed by a rule.
+- R1.3: fixed — the "keyword stronger than its claims" review line and review-bar line are gone, the remaining review line ties to normative-keywords-only-where-required and keywords-impose-no-method, the how-to bullet is recast as keyword-free advice, and the question is in the rationale's "Questions left to the owner".
+- R1.4: fixed — the intro carries no MUST and states both conditions: roles only for a roled guideline, research unless listed in `cookbook/research-exempt.json`.
+- R1.5: fixed — the rationale now says ASVS identifiers may change between versions and a reference without its version becomes a problem, NASA's checklist flags the mixed paragraph, and NASA's checklist asks whether each requirement can be verified; the "since…" clause is gone from stable-rule-identifiers.
+- R1.6: fixed — change-history-newest-first, stable-rule-identifiers, conv-research-cited and conv-rationale-to-references each end at their requirement.
+- R1.7: fixed — every listed compound rule is split into separately named, separately cited rules (no-domain-field, guidance-in-discrete-components, list-items-share-one-structure, summary-leads-with-most-important, change-history-explains-changes, change-history-dates-each-version, change-history-not-commit-log, informative-part-says-so, informative-text-not-normative-sounding, references-marked-normative-or-informative, guideline-defines-scope, scope-holds-no-requirements, no-positional-rule-identifiers, link-instead-of-repeating), examples-are-non-normative is one clause, and each has its own build-bar line.
+- R1.8: fixed — references are marked normative (RFC 2119) or informative, the intro holds a conformance statement and a requirement-free scope statement, and each informative part says so at its start.
+- R1.9: fixed — the review bar follows the indexing form and names all 59 rules under MUST, SHOULD and MAY.
+- R1.10: fixed — `related` now holds requirement-keywords (`456f23bd-4523-47e8-9541-073ac046f2ad`) and activity-triggers (`1b7b83f9-3b8a-46f7-81b7-9a55291a23a2`).
 
 ## Lint
 
-- I ran `/lint-artifact` (v2.0.1) on `cookbook/guidelines/cookbook/authoring/guideline-formatting`, using the checkout's cookr. It checked against `tbd/compliance/artifact-formatting/guideline-formatting.md`.
-- Pass 18, Warn 1, Fail 0. RESULT: CLEAN.
-- These checks passed: FM-01 through FM-13 (FM-11a links resolve), GF-01 summary after the H1, GF-02 structured guidance, GF-03 RFC 2119 keywords, plus gf-roled-parts, gf-named-rules, gf-research-folder and gf-rule-cites-research (`research.json` and `research.md` present; cookr's roles, citation and research checks pass).
-- [WARN] GF-04 / gf-compliance-section: there is no `## Compliance` section. The rule asks for one only when compliance checks reference this guideline, so this is a warning, not an error.
-- The repo-wide `cookr validate` failure comes from other artifacts. Its rows are owner-decides and neutrality findings in sibling topics, and none is in this folder.
+/lint-artifact on `cookbook/guidelines/cookbook/authoring/guideline-formatting` (type guideline, compliance file `tbd/compliance/artifact-formatting/guideline-formatting.md`, compiled doc linted):
+
+```
+[PASS] FM-01: YAML frontmatter block present
+[PASS] FM-02: id is a valid UUID
+[PASS] FM-03: Index entry matches folder (cookbook/index.json path and rdid adc.guideline.cookbook.authoring.guideline-formatting; no domain field)
+[PASS] FM-04: type is guideline
+[PASS] FM-05: version 1.0.0 is valid semver
+[PASS] FM-06: All required fields present
+[PASS] FM-07: license is MIT
+[PASS] FM-08: copyright is "2026 Mike Fullerton"
+[PASS] FM-09: created and modified are ISO dates (2026-11-21)
+[PASS] FM-10: summary is non-empty
+[PASS] FM-11: H1 "Guideline Formatting" matches title
+[PASS] FM-11a: Links resolve (cookr validate passed)
+[PASS] FM-12: Change History present with one row
+[PASS] FM-13: No TODO or placeholder text
+[PASS] GF-01: Summary statement follows the H1
+[PASS] GF-02: Structured guidance (59 named rules, bullets, subsections)
+[PASS] GF-03: RFC 2119 keywords present in every rule
+[PASS] GF-04: Compliance section — not required here. No compliance check references this guideline.
+[PASS] gf-type-field
+[PASS] gf-title-heading
+[PASS] gf-triggers-field: `triggers: []`
+[PASS] gf-roled-parts: every part has a role. rules, review-focus, review-bar and build-bar are all present, with no routes or hosts.
+[PASS] gf-named-rules: 59 unique kebab-named rules, each with an RFC keyword
+[PASS] gf-research-folder: research.json and research.md present, with the four question headings in order. cookr validate passed.
+[PASS] gf-rule-cites-research: every rule ends with a (claim: …) citation and every cited id exists in research.json
+[PASS] gf-roled-parts (build-bar): exactly one line per named rule, 59 for 59, with no extras
+
+=== LINT SUMMARY ===
+Artifact: guideline-formatting
+Type: guideline
+Pass: 26 | Warn: 0 | Fail: 0
+RESULT: CLEAN — artifact passes all checks.
+```
+
+`cookr validate` for the whole cookbook passed; its `owner-decides` warnings were on other artifacts.
 
 lint: clean
 
-verdict: fail
-
+verdict: pass

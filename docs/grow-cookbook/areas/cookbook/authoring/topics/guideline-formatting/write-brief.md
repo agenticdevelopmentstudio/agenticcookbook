@@ -302,3 +302,13 @@ Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, ci
     - check-guidelines-automatically
     The worked example the guideline itself names (`guidelines/implementing/data/indexing`) has its review bar name every MUST rule and every SHOULD rule. Fix: add a line for each missing rule, or follow the indexing form: "Every MUST rule is kept, with no exception: …" and "Every SHOULD rule is kept, or the review says why not: …", naming all 43 rules.
 - R1.10: `artifact.json` `related`: it lists only research-results-document and template-conformance. It omits the sibling requirement-keywords (`456f23bd-4523-47e8-9541-073ac046f2ad`), which overlaps gf-rfc-keywords, normative-keywords-only-where-required and keywords-impose-no-method and already holds `gf-rfc-keywords` and `keywords-only-where-required` of its own. It also omits activity-triggers (`1b7b83f9-3b8a-46f7-81b7-9a55291a23a2`), the trigger vocabulary gf-triggers-field depends on. conv-one-source-per-topic asks the guideline to link to such docs rather than repeat them. Fix: add both UUIDs to `related`. Whether the shared `gf-rfc-keywords` and the overlapping keyword rule belong here or in requirement-keywords is an open question on the owner list, so it is not raised here; the orchestrator may route the duplicate rule name to requirement-keywords.
+
+## Round 2 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
+
+Disputes so far (disputes.md):
+
+- requirement-keywords R1.8: gf-rfc-keywords is on this topic's owner list and is kept word for word (claim: gf-rfc-keywords-prior), and the brief lists "whether normative-keywords-only-where-required belongs here or in requirement-keywords" as an open owner question; replacing them with a citation of requirement-keywords would settle that question, and would leave the `new`-verdict claim rfc2119-use-sparingly cited by no rule. The draft links requirement-keywords in its intro and `related` instead.
