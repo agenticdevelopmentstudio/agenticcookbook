@@ -1,0 +1,3354 @@
+{
+  "topic": "ingredient-formatting",
+  "artifact": "cookbook/guidelines/cookbook/authoring/ingredient-formatting",
+  "scope": "The structural format of a cookbook ingredient (an atomic component spec): the file's applicability, its frontmatter, the H1 title, the ordered list of 22 sections with their MAY-omit status, and what each section must hold (Overview, Behavioral Requirements, Appearance, States, Accessibility, Conformance Test Vectors, Edge Cases, Configuration, Deep Linking, Localization, Accessibility Options, Feature Flags, Analytics, Privacy, Logging, Platform Notes, Reference Implementations, Design Decisions, Compliance, Change History), the template's default content, and the component-recipe section list that template-conformance repeats. Requirement-keyword case and lint severity belong to requirement-keywords and are left out.",
+  "base_commit": "071e52f9572bf4b7c534cfcf95fb111282abc423",
+  "research_type": "verification of an existing draft and its template against standards bodies, platform owners, tool and design-system documentation, plus discovery of practices the draft lacks",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "Each of the 35 rules in the brief was checked against primary sources: standards bodies (IETF/RFC Editor, W3C, OASIS), the platform owners' own documentation (Apple, Google/Android/Firebase/Play/Flutter, Microsoft), the tools' own documentation (markdownlint, Vale, JSON Schema, ReSpec, Jekyll, OpenFeature, SemVer) and design systems' own templates (PatternFly, GOV.UK, Material, Fluent). Each claim quotes the fetched source verbatim; secondary practitioner articles are used only for the expert's view, where no primary source covers the point.",
+    "search_strategy": "Topic-only web searches and direct fetches of the canonical pages: document-structure and section-order guidance in specification style guides, conformance and test-assertion guidance, structured rule formats, required-heading linters and schema validators, component documentation templates, and each platform's accessibility, deep-linking, localization, logging, analytics and privacy pages.",
+    "inclusion": "Primary sources from the owner of the standard, platform, tool or design system, fetched and quoted verbatim on 2026-11-21; secondary sources only where no primary covers the point, said so in the trust basis.",
+    "exclusion": "Pages that could not be fetched (Segment, GitLab Pajamas, EightShapes), sources with no quotable text on the point, and anything on requirement-keyword case or lint severity (requirement-keywords' topic).",
+    "scoring": "Trust is a 0-100 blend: authority 30, independent corroboration 25, accuracy 20, currency 10, transparency 15, judged at the technical-medium bar; secondary sources are capped at 72. Every research claim's verbatim words were found at one publisher, so each is 'single'; prior claims are 'uncorroborated' and score 0."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://www.rfc-editor.org/rfc/rfc7322",
+    "https://www.rfc-editor.org/rfc/rfc8126",
+    "https://www.rfc-editor.org/rfc/rfc3552",
+    "https://www.w3.org/TR/qaframe-spec/",
+    "https://www.w3.org/TR/act-rules-format/",
+    "https://www.w3.org/TR/EARL10-Schema/",
+    "http://docs.oasis-open.org/tag/guidelines/v1.0/cn02/guidelines-v1.0-cn02.html",
+    "https://semver.org/spec/v2.0.0.html",
+    "https://www.rfc-editor.org/rfc/rfc9562",
+    "https://github.com/DavidAnson/markdownlint/blob/main/doc/md043.md",
+    "https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md",
+    "https://github.com/DavidAnson/markdownlint/blob/main/doc/md041.md",
+    "https://github.com/DavidAnson/markdownlint/blob/main/doc/CustomRules.md",
+    "https://docs.vale.sh/checks/occurrence.md",
+    "https://docs.vale.sh/checks/script.md",
+    "https://json-schema.org/draft/2020-12/json-schema-validation",
+    "https://json-schema.org/draft/2020-12/json-schema-core",
+    "https://respec.org/docs/",
+    "https://jekyllrb.com/docs/front-matter/",
+    "https://github.com/open-feature/spec/blob/main/specification/sections/01-flag-evaluation.md",
+    "https://github.com/patternfly/patternfly-org/blob/main/packages/documentation-site/patternfly-docs/content/content-design/writing-guides/patternfly-design-guidelines.md",
+    "https://docs.publishing.service.gov.uk/repos/govuk-design-guide/components/*component-documentation-template.html",
+    "https://github.com/material-components/material-components-android/blob/master/docs/components/Checkbox.md",
+    "https://api.flutter.dev/flutter/widgets/WidgetState.html",
+    "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+    "https://developer.apple.com/design/human-interface-guidelines/buttons",
+    "https://developer.apple.com/design/human-interface-guidelines/typography",
+    "https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app",
+    "https://developer.apple.com/documentation/os/logger",
+    "https://developer.apple.com/app-store/app-privacy-details/",
+    "https://developer.android.com/guide/topics/ui/accessibility/apps",
+    "https://support.google.com/accessibility/android/answer/7101858",
+    "https://developer.android.com/training/app-links",
+    "https://developer.android.com/guide/topics/resources/localization",
+    "https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event",
+    "https://support.google.com/googleplay/android-developer/answer/10787469",
+    "https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting",
+    "https://www.w3.org/TR/WCAG22/",
+    "https://www.w3.org/TR/mediaqueries-5/",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/button/",
+    "https://fluent2.microsoft.design/components/web/react/core/button/usage",
+    "https://www.industrialempathy.com/posts/design-docs-at-google/",
+    "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+    "https://keepachangelog.com/en/1.1.0/"
+  ],
+  "dates": {
+    "researched": "2026-11-21",
+    "accessed": "2026-11-21"
+  },
+  "summary": "Specification style guides (RFC 7322, the W3C QA framework, the ACT Rules Format) and design-system templates (PatternFly, GOV.UK) support a fixed section order with named headings, but only at recommended strength inside the body, with a short required core and the rest labelled optional; none supports a 22-section MUST order. They agree on a conformance clause, testable requirements and test vectors with expected outcomes, and the W3C outcome vocabularies include 'inapplicable', which the draft's passed/failed/partial lacks. Where a section does not apply, IETF and W3C keep it with an explicit 'none' statement in the source while publishers may hide it in the rendered form. Platform owners contradict three template defaults: one 44x44pt tap target (Apple's minimum varies by platform, Android uses 48dp, Windows 40px, WCAG AA 24px), a custom URL scheme for Apple deep links (Apple strongly recommends universal links) and dotted analytics event names (Firebase allows only letters, digits and underscores). Section structure can be machine-checked with markdownlint MD043 or a custom rule, Vale, or a JSON Schema over the parsed sections; MD043 alone cannot name an optional heading.",
+  "open_questions": [
+    "Should an inapplicable section be omitted, or kept with a one-line 'not applicable' note in the source (IETF/W3C practice) and hidden only in a rendered form (GOV.UK practice)?",
+    "Should ingredients split into UI and infrastructure variants with their own section lists, or keep one schema that applies UI-only sections conditionally (JSON Schema if/then)?",
+    "Which of the formatting checks should become a schema or lint rule rather than prose: the section order, the frontmatter fields, the H1-equals-title check?",
+    "Should the template's tap-target default be one value, a per-platform table (Apple per platform, Android 48dp, Windows 40px) or the WCAG 2.2 AA 24px floor with 44px as the enhanced target?",
+    "Should analytics event names use dots, or underscores to fit Firebase's naming limits?",
+    "Should the Apple deep-linking row show a universal link instead of a custom URL scheme?",
+    "Should the compliance status vocabulary keep 'partial', or adopt EARL's passed/failed/cantTell/inapplicable/untested?",
+    "Should the section-order and section-presence rules stay MUST where the sources support only recommended strength?",
+    "Should the template keep approved-by and approved-date, which no source and no required-field list prescribes?",
+    "Should 'loading' stay among the default states, given that no platform's state list includes it?",
+    "Should the H1 duplicate the frontmatter title, given that markdownlint's default treats a front-matter title as the top-level heading?"
+  ],
+  "limitations": [
+    "Segment's analytics spec, GitLab's Pajamas component template and EightShapes' component-documentation articles could not be fetched (403 or load failure), so they are absent.",
+    "The W3C Security and Privacy Questionnaire gave no quotable text on a privacy section's fields.",
+    "No Android or Windows logging guidance equivalent to Apple's subsystem/category was fetched; the Logging findings are Apple-only.",
+    "No source prescribes the frontmatter field list, the approved-by/approved-date fields or a 'loading' state; those remain cookbook policy.",
+    "Apple's Human Interface Guidelines were read through their JSON endpoint, and most pages carry no date.",
+    "No claim's verbatim words were found at two independent publishers, so every research claim is 'single' even where publishers agree in substance.",
+    "Requirement-keyword case and lint severity are left to requirement-keywords and were not researched here.",
+    "The derived Reference Implementations section is cookr behaviour; no external source covers it.",
+    "The placement of Platform Notes after the core sections and of Change History at the end rests on observed page layouts (Apple HIG, Keep a Changelog) without quotable text on placement."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "rfc-order-strongly-recommended-in-body",
+      "question": "best-practices",
+      "claim": "The RFC Style Guide gives a fixed element order but only strongly recommends it inside the document body; the order is required only outside the body (front and back matter).",
+      "quote": "Within the body of the memo, the order shown above is strongly recommended. Exceptions may be questioned. Outside the body of the memo, the order above is required.",
+      "citations": [
+        {
+          "title": "RFC 7322: RFC Style Guide",
+          "author": "H. Flanagan, S. Ginoza",
+          "publisher": "RFC Editor",
+          "date": "2014-09",
+          "url": "https://www.rfc-editor.org/rfc/rfc7322",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rfc style guide section order required body",
+      "trust": {
+        "score": 85,
+        "basis": "Standards publisher's own style guide (RFC Editor); authoritative for its series; stable."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc-some-sections-required",
+      "question": "best-practices",
+      "claim": "In the RFC series only some of the listed sections are required; the rest appear when they apply.",
+      "quote": "A published RFC will largely contain the elements in the following list. Some of these sections are required, as noted.",
+      "citations": [
+        {
+          "title": "RFC 7322: RFC Style Guide",
+          "author": "H. Flanagan, S. Ginoza",
+          "publisher": "RFC Editor",
+          "date": "2014-09",
+          "url": "https://www.rfc-editor.org/rfc/rfc7322",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rfc style guide required sections list",
+      "trust": {
+        "score": 84,
+        "basis": "RFC Editor's own style guide; definitional for its series."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc-security-considerations-required",
+      "question": "best-practices",
+      "claim": "A long-lived specification template keeps a short list of always-required sections; for RFCs, Security Considerations is one of them.",
+      "quote": "All RFCs must contain a section that discusses the security considerations relevant to the specification",
+      "citations": [
+        {
+          "title": "RFC 7322: RFC Style Guide",
+          "author": "H. Flanagan, S. Ginoza",
+          "publisher": "RFC Editor",
+          "date": "2014-09",
+          "url": "https://www.rfc-editor.org/rfc/rfc7322",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rfc style guide security considerations required",
+      "trust": {
+        "score": 85,
+        "basis": "RFC Editor's style guide; restated by RFC 3552 (rfc3552-security-section-required), same standards family, so not independent."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc-empty-iana-section-kept",
+      "question": "best-practices",
+      "claim": "IANA prefers that an IANA Considerations section with nothing to say be kept, saying so, rather than omitted, so a reader can tell a deliberate 'none' from an omission.",
+      "quote": "IANA prefers that these \"empty\" IANA Considerations sections be left in the document for the record: it makes it clear later on that the document explicitly said that no IANA actions were needed (and that it wasn't just omitted).",
+      "citations": [
+        {
+          "title": "RFC 8126: Guidelines for Writing an IANA Considerations Section in RFCs",
+          "author": "M. Cotton, B. Leiba, T. Narten",
+          "publisher": "IETF",
+          "date": "2017-06",
+          "url": "https://www.rfc-editor.org/rfc/rfc8126",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "IANA considerations empty section left in document",
+      "trust": {
+        "score": 86,
+        "basis": "IETF Best Current Practice (RFC 8126) from the registry operator's guidance; directly on how an inapplicable section is marked."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc-no-actions-statement",
+      "question": "best-practices",
+      "claim": "A document with nothing for a mandated section should, once the authors confirm it, still include the section with an explicit 'no actions' statement.",
+      "quote": "In order to make it clear to IANA that it has no actions to perform (and that the author has consciously made such a determination), such documents should, after the authors confirm that this is the case, include an IANA Considerations section that states:",
+      "citations": [
+        {
+          "title": "RFC 8126: Guidelines for Writing an IANA Considerations Section in RFCs",
+          "author": "M. Cotton, B. Leiba, T. Narten",
+          "publisher": "IETF",
+          "date": "2017-06",
+          "url": "https://www.rfc-editor.org/rfc/rfc8126",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "IANA considerations no actions statement wording",
+      "trust": {
+        "score": 85,
+        "basis": "IETF BCP; the statement it prescribes is \"This document has no IANA actions.\""
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc-editor-removes-empty-iana",
+      "question": "best-practices",
+      "claim": "The kept-but-empty section is a drafting-stage convention: the RFC Editor removes an empty IANA Considerations section at publication, though the Internet-Draft must carry it.",
+      "quote": "The RFC Editor will remove an IANA Considerations section that says there are no IANA considerations (although such a section is required in the Internet-Draft preceding the RFC).",
+      "citations": [
+        {
+          "title": "RFC 7322: RFC Style Guide",
+          "author": "H. Flanagan, S. Ginoza",
+          "publisher": "RFC Editor",
+          "date": "2014-09",
+          "url": "https://www.rfc-editor.org/rfc/rfc7322",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rfc editor removes empty IANA considerations section",
+      "trust": {
+        "score": 84,
+        "basis": "RFC Editor's own style guide; qualifies rfc-empty-iana-section-kept (the source keeps the section, the published form may drop it)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc3552-out-of-scope-stated",
+      "question": "best-practices",
+      "claim": "A specification's required security section must say what is out of scope and why, not only what is covered.",
+      "quote": "Authors MUST describe 1. which attacks are out of scope (and why!)",
+      "citations": [
+        {
+          "title": "RFC 3552: Guidelines for Writing RFC Text on Security Considerations",
+          "author": "E. Rescorla, B. Korver",
+          "publisher": "IETF",
+          "date": "2003-07",
+          "url": "https://www.rfc-editor.org/rfc/rfc3552",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rfc 3552 security considerations out of scope MUST describe",
+      "trust": {
+        "score": 82,
+        "basis": "IETF BCP; from 2003 but still the governing guidance; on stating limits explicitly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rfc3552-security-section-required",
+      "question": "best-practices",
+      "claim": "Every RFC is required to carry a Security Considerations section.",
+      "quote": "All RFCs are required by RFC 2223 to contain a Security Considerations section.",
+      "citations": [
+        {
+          "title": "RFC 3552: Guidelines for Writing RFC Text on Security Considerations",
+          "author": "E. Rescorla, B. Korver",
+          "publisher": "IETF",
+          "date": "2003-07",
+          "url": "https://www.rfc-editor.org/rfc/rfc3552",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rfc 3552 security considerations section required",
+      "trust": {
+        "score": 82,
+        "basis": "IETF BCP; agrees with rfc-security-considerations-required (same standards family, so not independent)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "w3c-qa-conformance-clause",
+      "question": "best-practices",
+      "claim": "W3C's specification guidelines require a specification to include a conformance clause.",
+      "quote": "Include a conformance clause.",
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C QA framework specification guidelines conformance clause",
+      "trust": {
+        "score": 78,
+        "basis": "W3C Recommendation (Requirement 1); authoritative but from 2005, so currency is reduced."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "w3c-qa-consistent-requirement-style",
+      "question": "best-practices",
+      "claim": "Conformance requirements must be written in one consistent style, and the specification must explain how to tell them apart from other text.",
+      "quote": "Use a consistent style for conformance requirements and explain how to distinguish them.",
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C QA framework consistent style conformance requirements",
+      "trust": {
+        "score": 78,
+        "basis": "W3C Recommendation (Requirement 7); 2005."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "w3c-qa-indicate-levels",
+      "question": "best-practices",
+      "claim": "A specification must indicate which of its requirements are mandatory, which recommended and which optional.",
+      "quote": "Indicate which conformance requirements are mandatory, which are recommended, and which are optional.",
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C QA framework mandatory recommended optional requirements",
+      "trust": {
+        "score": 78,
+        "basis": "W3C Recommendation (Requirement 8); 2005."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "w3c-qa-test-assertions",
+      "question": "best-practices",
+      "claim": "A test assertion is a testable statement derived from a specification's requirements, from which test cases are built; W3C advises providing them.",
+      "quote": "A test assertion is a measurable or testable statement of behavior, action, or condition. It is contained within or derived from the specification's requirements and provides a normative foundation from which one or more test cases can be built.",
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C QA framework test assertions good practice",
+      "trust": {
+        "score": 76,
+        "basis": "W3C Recommendation good practice (GP12), not a requirement; 2005."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "w3c-qa-template-test-assertion-section",
+      "question": "best-practices",
+      "claim": "W3C suggests that the template for new feature proposals include a section for test assertions.",
+      "quote": "Create a template for new feature proposals that includes a section for adding test assertions.",
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C QA framework template section test assertions",
+      "trust": {
+        "score": 74,
+        "basis": "W3C Recommendation technique for GP12; advisory."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "w3c-qa-label-optional-features",
+      "question": "best-practices",
+      "claim": "Optional features should be labelled so they can all be found, and when there are none the conformance section should say so rather than stay silent.",
+      "quote": "When introducing an optional feature in the specification, label it as such, so that it is easy to find all the optional features defined in the specification. If there are no optional features, state that in the conformance section.",
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C QA framework label optional features state none",
+      "trust": {
+        "score": 76,
+        "basis": "W3C Recommendation good practice (GP16); agrees in substance with rfc-empty-iana-section-kept from an independent publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "act-required-items",
+      "question": "best-practices",
+      "claim": "W3C's ACT Rules Format fixes a minimum set of items every rule document must contain.",
+      "quote": "An ACT Rule must consist of at least the following items: Descriptive Title Rule Identifier Rule Description Rule Type Accessibility Requirements Mapping",
+      "citations": [
+        {
+          "title": "Accessibility Conformance Testing (ACT) Rules Format 1.1",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-05",
+          "url": "https://www.w3.org/TR/act-rules-format/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C ACT rules format required items",
+      "trust": {
+        "score": 88,
+        "basis": "Current W3C Recommendation (2026-02-05) for a structured, testable rule document; authoritative."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "act-optional-items",
+      "question": "best-practices",
+      "claim": "The ACT Rules Format separates its required items from a short list of items it labels optional, implementations among them.",
+      "quote": "An ACT Rule MAY also contain: Related Rules (optional) under Background Other Resources (optional) under Background Issues List (optional) Implementations (optional) Acknowledgments (optional)",
+      "citations": [
+        {
+          "title": "Accessibility Conformance Testing (ACT) Rules Format 1.1",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-05",
+          "url": "https://www.w3.org/TR/act-rules-format/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C ACT rules format optional items implementations",
+      "trust": {
+        "score": 88,
+        "basis": "Current W3C Recommendation; shows optional sections labelled as such."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "act-examples-pass-fail-inapplicable",
+      "question": "best-practices",
+      "claim": "Each ACT rule must carry examples for passed, failed and inapplicable outcomes, each pairing an input snippet with its expected outcome.",
+      "quote": "Each rule must have one or more examples for passed, failed, and inapplicable outcomes. An example consists of two pieces of data, a snippet of each input aspect for a rule, and the expected outcome for that rule.",
+      "citations": [
+        {
+          "title": "Accessibility Conformance Testing (ACT) Rules Format 1.1",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-05",
+          "url": "https://www.w3.org/TR/act-rules-format/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C ACT rules format test cases examples expected outcome",
+      "trust": {
+        "score": 88,
+        "basis": "Current W3C Recommendation; directly on input/expected test vectors."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "act-outcome-types",
+      "question": "best-practices",
+      "claim": "ACT outcomes include 'inapplicable' alongside passed and failed.",
+      "quote": "An outcome can be one of the five following types: inapplicable: No part of the test subject matches the applicability passed: A test target meets all expectations failed: A test target does not meet all expectations",
+      "citations": [
+        {
+          "title": "Accessibility Conformance Testing (ACT) Rules Format 1.1",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-05",
+          "url": "https://www.w3.org/TR/act-rules-format/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C ACT rules format outcome types",
+      "trust": {
+        "score": 88,
+        "basis": "Current W3C Recommendation; agrees with earl-outcome-values (same publisher, so not independent)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "act-assumptions-listed",
+      "question": "best-practices",
+      "claim": "An ACT rule must list its known assumptions, limitations and exceptions.",
+      "quote": "An ACT Rule must list any known assumptions, limitations or any exceptions for the evaluation, the test environment, technologies being used or the subject being tested.",
+      "citations": [
+        {
+          "title": "Accessibility Conformance Testing (ACT) Rules Format 1.1",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-05",
+          "url": "https://www.w3.org/TR/act-rules-format/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C ACT rules format assumptions limitations",
+      "trust": {
+        "score": 88,
+        "basis": "Current W3C Recommendation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "earl-outcome-values",
+      "question": "best-practices",
+      "claim": "W3C's EARL recommends five outcome values for a test result: passed, failed, cantTell, inapplicable and untested. It has no 'partial'.",
+      "quote": "Where applicable it is recommended to use one of the following instances of earl:OutcomeValue, to categorize the outcome of carrying out the test: earl:passed Passed - the subject passed the test. earl:failed Failed - the subject failed the test. earl:cantTell Cannot tell - it is unclear if the subject passed or failed the test. earl:inapplicable Inapplicable - the test is not applicable to the subject. earl:untested Untested - the test has not been carried out.",
+      "citations": [
+        {
+          "title": "Evaluation and Report Language (EARL) 1.0 Schema",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2017-02-02",
+          "url": "https://www.w3.org/TR/EARL10-Schema/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C EARL outcome values passed failed inapplicable",
+      "trust": {
+        "score": 82,
+        "basis": "W3C Working Group Note (2017), the reference vocabulary for test results; recommended, not required."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "oasis-ta-identifier",
+      "question": "best-practices",
+      "claim": "A test assertion carries a unique identifier that maps it to the specification statement it tests; universal uniqueness is recommended.",
+      "quote": "Identifier A unique identifier of the test assertion. It facilitates the mapping of assertions to specification statements. It is recommended that the identifier be made universally unique.",
+      "citations": [
+        {
+          "title": "Test Assertions Guidelines Version 1.0 (Committee Note 02)",
+          "author": "OASIS Test Assertions Guidelines (TAG) TC",
+          "publisher": "OASIS",
+          "date": "2013-06-19",
+          "url": "http://docs.oasis-open.org/tag/guidelines/v1.0/cn02/guidelines-v1.0-cn02.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body committee note (OASIS)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OASIS test assertions guidelines identifier",
+      "trust": {
+        "score": 74,
+        "basis": "OASIS Committee Note (2013): authoritative on test assertions, but a note rather than a standard, and dated."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "oasis-ta-normative-source",
+      "question": "best-practices",
+      "claim": "A test assertion names the precise normative statement it tests.",
+      "quote": "Normative Source The part of the test assertion that identifies the precise specification requirements or normative statements that the test assertion is addressing.",
+      "citations": [
+        {
+          "title": "Test Assertions Guidelines Version 1.0 (Committee Note 02)",
+          "author": "OASIS Test Assertions Guidelines (TAG) TC",
+          "publisher": "OASIS",
+          "date": "2013-06-19",
+          "url": "http://docs.oasis-open.org/tag/guidelines/v1.0/cn02/guidelines-v1.0-cn02.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body committee note (OASIS)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OASIS test assertions normative source",
+      "trust": {
+        "score": 74,
+        "basis": "OASIS Committee Note (2013); agrees in substance with act-examples-pass-fail-inapplicable from an independent publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "semver-released-immutable",
+      "question": "best-practices",
+      "claim": "Under Semantic Versioning, a released version's contents must not change; any change is a new version.",
+      "quote": "Once a versioned package has been released, the contents of that version MUST NOT be modified. Any modifications MUST be released as a new version.",
+      "citations": [
+        {
+          "title": "Semantic Versioning 2.0.0",
+          "author": "Tom Preston-Werner",
+          "publisher": "semver.org",
+          "date": "n.d.",
+          "url": "https://semver.org/spec/v2.0.0.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "semantic versioning released version must not be modified",
+      "trust": {
+        "score": 80,
+        "basis": "The specification's own text (semver.org, read from its source repository); widely adopted."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "uuid-unique-identifier",
+      "question": "best-practices",
+      "claim": "A UUID is designed to be unique across space and time, which suits it as a stable link target for a check or an artifact.",
+      "quote": "A UUID is 128 bits long and is intended to guarantee uniqueness across space and time.",
+      "citations": [
+        {
+          "title": "RFC 9562: Universally Unique IDentifiers (UUIDs)",
+          "author": "K. Davis, B. Peabody, P. Leach",
+          "publisher": "IETF",
+          "date": "2024-05",
+          "url": "https://www.rfc-editor.org/rfc/rfc9562",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (IETF / RFC Editor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "RFC 9562 UUID uniqueness",
+      "trust": {
+        "score": 86,
+        "basis": "Current IETF Standards Track RFC (2024)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "md043-enforces-heading-structure",
+      "question": "known-solutions",
+      "claim": "markdownlint's MD043 checks a file's headings against a configured list, enforcing one heading structure across a set of files.",
+      "quote": "This rule is triggered when the headings in a file do not match the array of headings passed to the rule. It can be used to enforce a standard heading structure for a set of files.",
+      "citations": [
+        {
+          "title": "MD043 - Required heading structure",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint/blob/main/doc/md043.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "markdownlint required headings rule MD043",
+      "trust": {
+        "score": 82,
+        "basis": "The tool's own rule documentation; authoritative for what the tool does."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "md043-wildcards-only",
+      "question": "known-solutions",
+      "claim": "MD043 expresses optional sections only through wildcards (zero or more, one or more, or exactly one unspecified heading). It cannot name a specific heading as optional, so a long order with named optional sections needs a custom rule.",
+      "quote": "Use the special value `*` meaning \"zero or more unspecified headings\", the special value `+` meaning \"one or more unspecified headings\", or the special value `?` meaning \"exactly one unspecified heading\"",
+      "citations": [
+        {
+          "title": "MD043 - Required heading structure",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint/blob/main/doc/md043.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "markdownlint MD043 optional headings wildcard",
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own documentation; that it cannot name an optional heading is inferred from the documented syntax, which offers nothing else."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "md025-front-matter-title-is-h1",
+      "question": "known-solutions",
+      "claim": "markdownlint treats a front-matter `title` as the document's top-level heading, so by default a following `# Title` H1 is reported as a second top-level heading.",
+      "quote": "If [YAML](https://wikipedia.org/wiki/YAML) front matter is present and contains a `title` property (commonly used with blog posts), this rule treats that as a top level heading and will report a violation for any subsequent top-level headings.",
+      "citations": [
+        {
+          "title": "MD025 - Multiple top-level headings in the same document",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "markdownlint MD025 front matter title top level heading",
+      "trust": {
+        "score": 82,
+        "basis": "The tool's own rule documentation; default behaviour, configurable."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "md041-first-line-h1",
+      "question": "known-solutions",
+      "claim": "markdownlint's MD041 checks that a document has a title by requiring its first line to be a top-level heading. No built-in rule checks that the H1 equals the front-matter title.",
+      "quote": "This rule is intended to ensure documents have a title and is triggered when the first line in a document is not a top-level ([HTML][HTML] `h1`) heading",
+      "citations": [
+        {
+          "title": "MD041 - First line in a file should be a top-level heading",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint/blob/main/doc/md041.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "markdownlint MD041 first line heading title",
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own documentation; the absence of a title-equality rule comes from the rule list read, not from a stated fact."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "markdownlint-custom-rules",
+      "question": "known-solutions",
+      "claim": "markdownlint custom rules can do anything the built-in rules can, so title equality or a section order with named optional sections can be checked by a custom rule.",
+      "quote": "Custom rules can do everything the built-in rules can and are defined inline or imported from another package",
+      "citations": [
+        {
+          "title": "Custom Rules",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint/blob/main/doc/CustomRules.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "markdownlint custom rules",
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "vale-occurrence-min-flags-absence",
+      "question": "known-solutions",
+      "claim": "Vale's occurrence check can make the absence of a token in a scope a violation, for example a required heading.",
+      "quote": "`min` makes absence a violation: a scope with fewer than `min` matches is flagged.",
+      "citations": [
+        {
+          "title": "occurrence",
+          "author": "Vale",
+          "publisher": "Vale documentation (docs.vale.sh)",
+          "date": "n.d.",
+          "url": "https://docs.vale.sh/checks/occurrence.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "vale occurrence check min absence",
+      "trust": {
+        "score": 78,
+        "basis": "The tool's own documentation (docs.vale.sh, Markdown source)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "vale-script-arbitrary-rules",
+      "question": "known-solutions",
+      "claim": "Vale's script check runs arbitrary logic in Tengo, enough to check a section order with named optional sections.",
+      "quote": "`script` allows for the creation of arbitrary logic-based rules using [Tengo](https://tengolang.com/), a Go-like scripting language.",
+      "citations": [
+        {
+          "title": "script",
+          "author": "Vale",
+          "publisher": "Vale documentation (docs.vale.sh)",
+          "date": "n.d.",
+          "url": "https://docs.vale.sh/checks/script.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "vale script check tengo",
+      "trust": {
+        "score": 78,
+        "basis": "The tool's own documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "json-schema-required-properties",
+      "question": "known-solutions",
+      "claim": "JSON Schema's `required` keyword checks that every named property is present, which fits a frontmatter field list.",
+      "quote": "An object instance is valid against this keyword if every item in the array is the name of a property in the instance.",
+      "citations": [
+        {
+          "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON (draft 2020-12)",
+          "author": "A. Wright, H. Andrews, B. Hutton",
+          "publisher": "JSON Schema",
+          "date": "2022-06-16",
+          "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "json schema required keyword",
+      "trust": {
+        "score": 86,
+        "basis": "The JSON Schema 2020-12 specification itself."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "json-schema-const",
+      "question": "known-solutions",
+      "claim": "JSON Schema's `const` pins a value, such as `type: ingredient`.",
+      "quote": "An instance validates successfully against this keyword if its value is equal to the value of the keyword.",
+      "citations": [
+        {
+          "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON (draft 2020-12)",
+          "author": "A. Wright, H. Andrews, B. Hutton",
+          "publisher": "JSON Schema",
+          "date": "2022-06-16",
+          "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "json schema const keyword",
+      "trust": {
+        "score": 86,
+        "basis": "The JSON Schema 2020-12 specification."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "json-schema-prefixitems-positional",
+      "question": "known-solutions",
+      "claim": "JSON Schema's `prefixItems` validates array elements by position, so a section order can be checked only if the sections are modelled as an ordered array.",
+      "quote": "Validation succeeds if each element of the instance validates against the schema at the same position, if any.",
+      "citations": [
+        {
+          "title": "JSON Schema: A Media Type for Describing JSON Documents (draft 2020-12)",
+          "author": "A. Wright, H. Andrews, B. Hutton",
+          "publisher": "JSON Schema",
+          "date": "2022-06-16",
+          "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "json schema prefixItems positional array",
+      "trust": {
+        "score": 84,
+        "basis": "The JSON Schema 2020-12 core specification."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "json-schema-objects-unordered",
+      "question": "known-solutions",
+      "claim": "In JSON Schema's data model objects are unordered, so the order of frontmatter keys cannot be checked; only arrays carry order.",
+      "quote": "An unordered set of properties mapping a string to an instance, from the JSON \"object\" value",
+      "citations": [
+        {
+          "title": "JSON Schema: A Media Type for Describing JSON Documents (draft 2020-12)",
+          "author": "A. Wright, H. Andrews, B. Hutton",
+          "publisher": "JSON Schema",
+          "date": "2022-06-16",
+          "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "json schema object unordered array ordered",
+      "trust": {
+        "score": 84,
+        "basis": "The JSON Schema 2020-12 core specification."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "json-schema-if-then",
+      "question": "known-solutions",
+      "claim": "JSON Schema's `if` selects between `then` and `else` subschemas, so one schema can apply UI-only checks to UI ingredients and skip them for infrastructure ones.",
+      "quote": "This validation outcome of this keyword's subschema has no direct effect on the overall validation result. Rather, it controls which of the \"then\" or \"else\" keywords are evaluated.",
+      "citations": [
+        {
+          "title": "JSON Schema: A Media Type for Describing JSON Documents (draft 2020-12)",
+          "author": "A. Wright, H. Andrews, B. Hutton",
+          "publisher": "JSON Schema",
+          "date": "2022-06-16",
+          "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "json schema if then else conditional",
+      "trust": {
+        "score": 84,
+        "basis": "The JSON Schema 2020-12 core specification."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "respec-privsec-lint",
+      "question": "known-solutions",
+      "claim": "ReSpec, the W3C specification tool, lints for a missing required section (Privacy and/or Security Considerations).",
+      "quote": "Warns when the document is missing a Privacy and/or Security Considerations section. Required for W3C specifications that contain normative content.",
+      "citations": [
+        {
+          "title": "ReSpec documentation",
+          "author": "ReSpec",
+          "publisher": "respec.org",
+          "date": "n.d.",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "respec lint privacy security considerations section",
+      "trust": {
+        "score": 76,
+        "basis": "The tool's own documentation; it also states W3C's requirement, secondhand."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "respec-conformance-lint",
+      "question": "known-solutions",
+      "claim": "ReSpec warns when requirement keywords are used without a conformance section.",
+      "quote": "ReSpec will warn you if RFC 2119 keywords are present but the conformance section is missing",
+      "citations": [
+        {
+          "title": "ReSpec documentation",
+          "author": "ReSpec",
+          "publisher": "respec.org",
+          "date": "n.d.",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "respec conformance section RFC 2119 keywords warning",
+      "trust": {
+        "score": 76,
+        "basis": "The tool's own documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "respec-informative-marking",
+      "question": "known-solutions",
+      "claim": "ReSpec marks a section as non-normative and inserts the standard 'This section is non-normative.' line.",
+      "quote": "Marks a section as non-normative. ReSpec automatically prepends the standard \"This section is non-normative.\" paragraph.",
+      "citations": [
+        {
+          "title": "ReSpec documentation",
+          "author": "ReSpec",
+          "publisher": "respec.org",
+          "date": "n.d.",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "respec informative section non-normative",
+      "trust": {
+        "score": 74,
+        "basis": "The tool's own documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "respec-headingless-lint",
+      "question": "known-solutions",
+      "claim": "ReSpec lints for a section that does not begin with a heading.",
+      "quote": "Warns when a <section> element does not begin with a heading element (<h2>–<h6>).",
+      "citations": [
+        {
+          "title": "ReSpec documentation",
+          "author": "ReSpec",
+          "publisher": "respec.org",
+          "date": "n.d.",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "respec no-headingless-sections lint",
+      "trust": {
+        "score": 74,
+        "basis": "The tool's own documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jekyll-front-matter-first",
+      "question": "known-solutions",
+      "claim": "Tools that read YAML front matter require it to come first in the file, between triple-dashed lines.",
+      "quote": "The front matter must be the first thing in the file and must take the form of valid YAML set between triple-dashed lines.",
+      "citations": [
+        {
+          "title": "Front Matter",
+          "author": "Jekyll",
+          "publisher": "jekyllrb.com",
+          "date": "n.d.",
+          "url": "https://jekyllrb.com/docs/front-matter/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "tool documentation (the project's own docs)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "jekyll front matter first thing in file YAML",
+      "trust": {
+        "score": 78,
+        "basis": "The tool's own documentation (read from its source repository)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "openfeature-flag-key-and-default",
+      "question": "known-solutions",
+      "claim": "The OpenFeature specification requires every flag evaluation to take a flag key and a default value.",
+      "quote": "The `client` **MUST** provide methods for typed flag evaluation, including boolean, numeric, string, and structure, with parameters `flag key` (string, required), `default value` (boolean | number | string | structure, required), `evaluation context` (optional), and `evaluation options` (optional), which returns the flag value.",
+      "citations": [
+        {
+          "title": "Flag Evaluation API (OpenFeature specification)",
+          "author": "OpenFeature",
+          "publisher": "open-feature/spec (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/open-feature/spec/blob/main/specification/sections/01-flag-evaluation.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "specification (the project's own text)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "OpenFeature flag evaluation flag key default value",
+      "trust": {
+        "score": 82,
+        "basis": "The vendor-neutral CNCF specification's own text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "patternfly-template-omit-but-fixed-headings",
+      "question": "known-solutions",
+      "claim": "PatternFly's guideline template fixes section order and names. Sections may be omitted, but a section that is present must use the specified heading and level.",
+      "quote": "When creating guidelines, refer to the following template to ensure that information is presented in a consistent order and within sections that are consistently named and structured. Sections may be omitted, but if they are present, you must use the specified section headings and heading levels.",
+      "citations": [
+        {
+          "title": "PatternFly design guidelines (content design writing guide)",
+          "author": "Red Hat (PatternFly)",
+          "publisher": "patternfly-org (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/patternfly/patternfly-org/blob/main/packages/documentation-site/patternfly-docs/content/content-design/writing-guides/patternfly-design-guidelines.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PatternFly design guidelines template sections omitted headings",
+      "trust": {
+        "score": 76,
+        "basis": "The design system's own writing guide (Red Hat), read from its source repository."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "patternfly-usage-when-to-use",
+      "question": "known-solutions",
+      "claim": "PatternFly's component guideline template opens with usage: how the component is used, when and why.",
+      "quote": "Explain how the component is used, when to use it, and why it should be used.",
+      "citations": [
+        {
+          "title": "PatternFly design guidelines (content design writing guide)",
+          "author": "Red Hat (PatternFly)",
+          "publisher": "patternfly-org (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/patternfly/patternfly-org/blob/main/packages/documentation-site/patternfly-docs/content/content-design/writing-guides/patternfly-design-guidelines.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PatternFly guidelines usage when to use",
+      "trust": {
+        "score": 74,
+        "basis": "The design system's own writing guide."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "govuk-description-required",
+      "question": "known-solutions",
+      "claim": "GOV.UK's component documentation template requires a brief description of what the component is.",
+      "quote": "This briefly describes what the component is. It is required to display the description on the page, and in the  meta description.",
+      "citations": [
+        {
+          "title": "Component documentation template",
+          "author": "Government Digital Service",
+          "publisher": "GOV.UK Developer Documentation",
+          "date": "2024-12-11",
+          "url": "https://docs.publishing.service.gov.uk/repos/govuk-design-guide/components/*component-documentation-template.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GOV.UK component documentation template description required",
+      "trust": {
+        "score": 78,
+        "basis": "Government Digital Service's own documentation template; current (2024-12-11)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "govuk-when-to-use",
+      "question": "known-solutions",
+      "claim": "GOV.UK's template asks when to use the component.",
+      "quote": "Briefly describe the situation(s) when to use this component.",
+      "citations": [
+        {
+          "title": "Component documentation template",
+          "author": "Government Digital Service",
+          "publisher": "GOV.UK Developer Documentation",
+          "date": "2024-12-11",
+          "url": "https://docs.publishing.service.gov.uk/repos/govuk-design-guide/components/*component-documentation-template.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GOV.UK component documentation template when to use",
+      "trust": {
+        "score": 76,
+        "basis": "GDS's own template."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "govuk-when-not-to-use",
+      "question": "known-solutions",
+      "claim": "GOV.UK's template also asks when not to use the component.",
+      "quote": "Briefly describe the situation(s) when not to use this component.",
+      "citations": [
+        {
+          "title": "Component documentation template",
+          "author": "Government Digital Service",
+          "publisher": "GOV.UK Developer Documentation",
+          "date": "2024-12-11",
+          "url": "https://docs.publishing.service.gov.uk/repos/govuk-design-guide/components/*component-documentation-template.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GOV.UK component documentation template when not to use",
+      "trust": {
+        "score": 76,
+        "basis": "GDS's own template; PatternFly's template has a 'When not to use' subsection too (independent publisher, in substance)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "govuk-template-empty-fields-hidden",
+      "question": "known-solutions",
+      "claim": "GOV.UK's template does not display a field that holds no data: the opposite convention to keeping a 'none' statement.",
+      "quote": "Any fields without any data points will not be displayed on the website.",
+      "citations": [
+        {
+          "title": "Component documentation template",
+          "author": "Government Digital Service",
+          "publisher": "GOV.UK Developer Documentation",
+          "date": "2024-12-11",
+          "url": "https://docs.publishing.service.gov.uk/repos/govuk-design-guide/components/*component-documentation-template.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GOV.UK component documentation template empty fields not displayed",
+      "trust": {
+        "score": 76,
+        "basis": "GDS's own template; conflicts with rfc-empty-iana-section-kept on the rendered form."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "material-states-list",
+      "question": "known-solutions",
+      "claim": "Material's component documentation lists the interactive states a component has: enabled, disabled, hover, focused and pressed, plus its selection states.",
+      "quote": "Checkboxes can be selected, unselected, or indeterminate, and those states on error. Checkboxes have enabled, disabled, hover, focused, and pressed states.",
+      "citations": [
+        {
+          "title": "Checkbox (Material Components for Android documentation)",
+          "author": "Google LLC (Material Components)",
+          "publisher": "material-components-android (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/material-components/material-components-android/blob/master/docs/components/Checkbox.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Material components checkbox states documentation",
+      "trust": {
+        "score": 78,
+        "basis": "Google's own component documentation (source repository)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "material-attribute-table",
+      "question": "known-solutions",
+      "claim": "Material documents a component's visual properties as attribute tables, with a default value for each attribute.",
+      "quote": "Element | Attribute | Related method(s) | Default value",
+      "citations": [
+        {
+          "title": "Checkbox (Material Components for Android documentation)",
+          "author": "Google LLC (Material Components)",
+          "publisher": "material-components-android (GitHub)",
+          "date": "n.d.",
+          "url": "https://github.com/material-components/material-components-android/blob/master/docs/components/Checkbox.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Material components checkbox attributes table default value",
+      "trust": {
+        "score": 74,
+        "basis": "Google's own component documentation; the quote is a table header, so the claim is about structure only."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "flutter-interactive-states",
+      "question": "known-solutions",
+      "claim": "Flutter defines a standard set of interactive widget states: hovered, focused, pressed, dragged, selected, scrolledUnder, disabled and error.",
+      "quote": "Interactive states that some of the widgets can take on when receiving input from the user.",
+      "citations": [
+        {
+          "title": "WidgetState enum",
+          "author": "Google LLC (Flutter)",
+          "publisher": "Flutter API documentation",
+          "date": "n.d.",
+          "url": "https://api.flutter.dev/flutter/widgets/WidgetState.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Flutter WidgetState enum interactive states",
+      "trust": {
+        "score": 82,
+        "basis": "Google's own Flutter API reference; the value list was read from the same page."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "flutter-hover-state",
+      "question": "known-solutions",
+      "claim": "Flutter's standard widget states include hovered.",
+      "quote": "The state when the user drags their mouse cursor over the given widget.",
+      "citations": [
+        {
+          "title": "WidgetState enum",
+          "author": "Google LLC (Flutter)",
+          "publisher": "Flutter API documentation",
+          "date": "n.d.",
+          "url": "https://api.flutter.dev/flutter/widgets/WidgetState.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Flutter WidgetState hovered",
+      "trust": {
+        "score": 82,
+        "basis": "Google's own Flutter API reference."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "flutter-selected-state",
+      "question": "known-solutions",
+      "claim": "Flutter's standard widget states include selected.",
+      "quote": "The state when this item has been selected.",
+      "citations": [
+        {
+          "title": "WidgetState enum",
+          "author": "Google LLC (Flutter)",
+          "publisher": "Flutter API documentation",
+          "date": "n.d.",
+          "url": "https://api.flutter.dev/flutter/widgets/WidgetState.html",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Flutter WidgetState selected",
+      "trust": {
+        "score": 82,
+        "basis": "Google's own Flutter API reference."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-min-control-size-per-platform",
+      "question": "platform-guidelines",
+      "claim": "Apple gives a default and a smaller minimum control size for each platform: iOS and iPadOS 44x44 pt default, 28x28 pt minimum; macOS 28 and 20; tvOS 66 and 56; visionOS 60 and 28; watchOS 44 and 28.",
+      "quote": "Platform Default control size Minimum control size iOS, iPadOS 44x44 pt 28x28 pt macOS 28x28 pt 20x20 pt tvOS 66x66 pt 56x56 pt visionOS 60x60 pt 28x28 pt watchOS 44x44 pt 28x28 pt",
+      "citations": [
+        {
+          "title": "Accessibility - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "2025-06-09",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG accessibility minimum control size",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own Human Interface Guidelines (read through its JSON endpoint)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-strive-min-control-size",
+      "question": "platform-guidelines",
+      "claim": "Apple asks for the recommended minimum control size of each platform, not one value.",
+      "quote": "Strive to meet the recommended minimum control size for each platform to ensure controls and menus are comfortable for all when tapping and clicking.",
+      "citations": [
+        {
+          "title": "Accessibility - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "2025-06-09",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG accessibility control size each platform",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-button-hit-region-44",
+      "question": "platform-guidelines",
+      "claim": "Apple's Buttons page sets a general 44x44 pt hit region, 60x60 pt in visionOS.",
+      "quote": "As a general rule, a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt — to ensure that people can select it easily, whether they use a fingertip, a pointer, their eyes, or a remote.",
+      "citations": [
+        {
+          "title": "Buttons - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG buttons hit region 44",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG; agrees with the iOS default in apple-min-control-size-per-platform."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-press-state",
+      "question": "platform-guidelines",
+      "claim": "Apple requires a press state for a custom button.",
+      "quote": "Always include a press state for a custom button. Without a press state, a button can feel unresponsive, making people wonder if it’s accepting their input.",
+      "citations": [
+        {
+          "title": "Buttons - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG buttons press state",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-platform-considerations-none",
+      "question": "platform-guidelines",
+      "claim": "Apple's per-platform section names each platform and says so explicitly when a platform has nothing extra.",
+      "quote": "No additional considerations for tvOS.",
+      "citations": [
+        {
+          "title": "Buttons - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG buttons platform considerations",
+      "trust": {
+        "score": 84,
+        "basis": "Apple's own HIG; a 'Platform considerations' section with a 'none' statement for a platform."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-reduce-motion",
+      "question": "platform-guidelines",
+      "claim": "Apple asks apps to respond to the Reduce Motion setting.",
+      "quote": "People who are prone to these effects can turn on the Reduce Motion accessibility setting. When this setting is active, ensure your app or game responds by reducing automatic and repetitive animations, including zooming, scaling, and peripheral motion.",
+      "citations": [
+        {
+          "title": "Accessibility - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "2025-06-09",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG reduce motion",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-increase-contrast",
+      "question": "platform-guidelines",
+      "claim": "Apple asks for a higher-contrast scheme when Increase Contrast is on.",
+      "quote": "If your app doesn’t provide this minimum contrast by default, ensure it at least provides a higher contrast color scheme when the system setting Increase Contrast is turned on.",
+      "citations": [
+        {
+          "title": "Accessibility - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "2025-06-09",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG increase contrast",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-more-than-color",
+      "question": "platform-guidelines",
+      "claim": "Apple asks that information not be conveyed by color alone.",
+      "quote": "Convey information with more than color alone. Some people have trouble differentiating between certain colors and shades.",
+      "citations": [
+        {
+          "title": "Accessibility - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "2025-06-09",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG differentiate without color",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-dynamic-type",
+      "question": "platform-guidelines",
+      "claim": "Dynamic Type lets people resize text on most Apple platforms: a display option next to Reduce Motion and Increase Contrast.",
+      "quote": "Dynamic Type is a system-level feature in iOS, iPadOS, tvOS, visionOS, and watchOS that lets people adjust the size of visible text on their device to ensure readability and comfort.",
+      "citations": [
+        {
+          "title": "Typography - Human Interface Guidelines",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple HIG typography Dynamic Type",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own HIG."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-universal-links-recommended",
+      "question": "platform-guidelines",
+      "claim": "Apple accepts custom URL schemes for deep links but strongly recommends universal links.",
+      "quote": "While custom URL schemes are an acceptable form of deep linking, universal links are strongly recommended.",
+      "citations": [
+        {
+          "title": "Defining a custom URL scheme for your app",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple custom URL scheme universal links recommended",
+      "trust": {
+        "score": 88,
+        "basis": "Apple's own developer documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-url-scheme-attack-vector",
+      "question": "platform-guidelines",
+      "claim": "Apple warns that a custom URL scheme is an attack vector into the app.",
+      "quote": "URL schemes offer a potential attack vector into your app",
+      "citations": [
+        {
+          "title": "Defining a custom URL scheme for your app",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple custom URL scheme attack vector",
+      "trust": {
+        "score": 88,
+        "basis": "Apple's own developer documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-logger-subsystem-category",
+      "question": "platform-guidelines",
+      "claim": "On Apple platforms a logger's subsystem is a large functional area of the app, and its category a specific area within that subsystem.",
+      "quote": "A subsystem corresponds to a large functional area of your app, and a category corresponds to a specific area within a particular subsystem.",
+      "citations": [
+        {
+          "title": "Logger",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/os/logger",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple Logger subsystem category",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own API documentation; Apple only (no other platform's equivalent was read)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-logger-optional",
+      "question": "platform-guidelines",
+      "claim": "On Apple's Logger the subsystem and category are optional.",
+      "quote": "assign an optional subsystem and category string to add context to all messages you log",
+      "citations": [
+        {
+          "title": "Logger",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/os/logger",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple Logger optional subsystem category",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own API documentation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-collect-definition",
+      "question": "platform-guidelines",
+      "claim": "Apple defines 'collect' as transmitting data off the device and keeping it longer than a real-time request needs, which ties the template's Transmission and Retention fields together.",
+      "quote": "“Collect” refers to transmitting data off the device in a way that allows you and/or your third-party partners to access it for a period longer than what is necessary to service the transmitted request in real time.",
+      "citations": [
+        {
+          "title": "App privacy details on the App Store",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/app-store/app-privacy-details/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Apple app privacy details collect definition",
+      "trust": {
+        "score": 86,
+        "basis": "Apple's own App Store policy page."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-touch-target-48dp",
+      "question": "platform-guidelines",
+      "claim": "Android recommends touch targets of at least 48x48 dp.",
+      "quote": "For touch interfaces, we recommend that each interactive UI element have a focusable area, or touch target size, of at least 48dpx48dp. Larger is even better.",
+      "citations": [
+        {
+          "title": "Make apps more accessible",
+          "author": "Google LLC (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "2026-11-10",
+          "url": "https://developer.android.com/guide/topics/ui/accessibility/apps",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Android accessibility touch target size 48dp",
+      "trust": {
+        "score": 88,
+        "basis": "Android Developers documentation, current (2026-11-10)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-touch-target-spacing",
+      "question": "platform-guidelines",
+      "claim": "Android also asks for 8 dp of space between touch targets.",
+      "quote": "Consider making touch targets at least 48x48dp, separated by 8dp of space or more, to ensure balanced information density and usability.",
+      "citations": [
+        {
+          "title": "Touch target size",
+          "author": "Google LLC",
+          "publisher": "Android Accessibility Help",
+          "date": "n.d.",
+          "url": "https://support.google.com/accessibility/android/answer/7101858",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Android accessibility help touch target spacing 8dp",
+      "trust": {
+        "score": 84,
+        "basis": "Google's own Android accessibility help."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-app-links-recommended",
+      "question": "platform-guidelines",
+      "claim": "Android recommends App Links (verified https links) for deep links to a website.",
+      "quote": "For deep links to your website, App Links is a recommended approach.",
+      "citations": [
+        {
+          "title": "About deep links",
+          "author": "Google LLC (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "2026-10-28",
+          "url": "https://developer.android.com/training/app-links",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Android about deep links App Links recommended",
+      "trust": {
+        "score": 88,
+        "basis": "Android Developers documentation, current (2026-10-28)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-string-context",
+      "question": "platform-guidelines",
+      "claim": "Android asks for a description of the context of each localized string, for translators.",
+      "quote": "As you declare strings in your strings.xml file, make sure to describe the context in which the string is used. This information is invaluable to the translator and results in better quality translation.",
+      "citations": [
+        {
+          "title": "Localize your app",
+          "author": "Google LLC (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "2026-11-10",
+          "url": "https://developer.android.com/guide/topics/resources/localization",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Android localize your app string context translator",
+      "trust": {
+        "score": 88,
+        "basis": "Android Developers documentation, current (2026-11-10)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "firebase-event-name-charset",
+      "question": "platform-guidelines",
+      "claim": "Firebase Analytics event names may hold only letters, digits and underscores, must start with a letter, and run to at most 40 characters, so a dotted name such as `component_name.viewed` is invalid there.",
+      "quote": "Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores (\"_\"), and must start with an alphabetic character.",
+      "citations": [
+        {
+          "title": "FirebaseAnalytics.Event",
+          "author": "Google LLC (Firebase)",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firebase Analytics event name rules characters",
+      "trust": {
+        "score": 86,
+        "basis": "Google's own API reference for its analytics SDK."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "play-form-even-if-no-data",
+      "question": "platform-guidelines",
+      "claim": "Google Play requires the Data safety form even of apps that collect no data; such apps state that none is collected.",
+      "quote": "Even developers with apps that do not collect any user data must complete this form and provide a link to their privacy policy. In this case, the completed form and privacy policy can indicate that no user data is collected or shared.",
+      "citations": [
+        {
+          "title": "Provide information for Google Play's Data safety section",
+          "author": "Google LLC",
+          "publisher": "Play Console Help",
+          "date": "n.d.",
+          "url": "https://support.google.com/googleplay/android-developer/answer/10787469",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Play data safety section no data collected",
+      "trust": {
+        "score": 86,
+        "basis": "Google's own Play Console policy help."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "play-encryption-in-transit",
+      "question": "platform-guidelines",
+      "claim": "Google Play asks whether collected data is encrypted in transit.",
+      "quote": "Is data collected or shared by your app using encryption in transit to protect the flow of user data from the end user’s device to the server.",
+      "citations": [
+        {
+          "title": "Provide information for Google Play's Data safety section",
+          "author": "Google LLC",
+          "publisher": "Play Console Help",
+          "date": "n.d.",
+          "url": "https://support.google.com/googleplay/android-developer/answer/10787469",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Play data safety encryption in transit",
+      "trust": {
+        "score": 84,
+        "basis": "Google's own Play Console policy help."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "play-ephemeral-processing",
+      "question": "platform-guidelines",
+      "claim": "Google Play defines ephemeral processing (held in memory, no longer than the request needs), the counterpart of a retention statement.",
+      "quote": "Processing data \"ephemerally\" means accessing and using it while the data is only stored in memory and retained for no longer than necessary to service the specific request in real-time.",
+      "citations": [
+        {
+          "title": "Provide information for Google Play's Data safety section",
+          "author": "Google LLC",
+          "publisher": "Play Console Help",
+          "date": "n.d.",
+          "url": "https://support.google.com/googleplay/android-developer/answer/10787469",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Play data safety ephemeral processing",
+      "trust": {
+        "score": 84,
+        "basis": "Google's own Play Console policy help; agrees in substance with apple-collect-definition from an independent publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "windows-touch-target-40",
+      "question": "platform-guidelines",
+      "claim": "Windows sets touch targets at about 7.5 mm square (40x40 pixels at 135 PPI and 1.0x scale).",
+      "quote": "In general, set your touch target size to 7.5mm square range (40x40 pixels on a 135 PPI display at a 1.0x scaling plateau).",
+      "citations": [
+        {
+          "title": "Targeting - Windows apps",
+          "author": "Microsoft Corporation",
+          "publisher": "Microsoft Learn",
+          "date": "2026-11-16",
+          "url": "https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "official platform documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Windows apps touch targeting size",
+      "trust": {
+        "score": 86,
+        "basis": "Microsoft Learn, current (2026-11-16)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wcag-name-role-value",
+      "question": "platform-guidelines",
+      "claim": "WCAG requires that every user interface component's name, role and states can be programmatically determined, and that changes to them are notified to assistive technologies (Level A).",
+      "quote": "For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies.",
+      "citations": [
+        {
+          "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2024-12-12",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WCAG 2.2 4.1.2 name role value",
+      "trust": {
+        "score": 90,
+        "basis": "W3C Recommendation (2024-12-12), the web's accessibility standard; Level A."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wcag-target-size-minimum-24",
+      "question": "platform-guidelines",
+      "claim": "WCAG 2.2's Level AA target size is 24 by 24 CSS pixels.",
+      "quote": "The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except when:",
+      "citations": [
+        {
+          "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2024-12-12",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WCAG 2.2 2.5.8 target size minimum",
+      "trust": {
+        "score": 90,
+        "basis": "W3C Recommendation; Level AA."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wcag-target-size-enhanced-44",
+      "question": "platform-guidelines",
+      "claim": "WCAG's 44 by 44 CSS pixel target is the enhanced Level AAA criterion.",
+      "quote": "The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when:",
+      "citations": [
+        {
+          "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2024-12-12",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WCAG 2.2 2.5.5 target size enhanced",
+      "trust": {
+        "score": 90,
+        "basis": "W3C Recommendation; Level AAA."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wcag-resize-text",
+      "question": "platform-guidelines",
+      "claim": "WCAG requires text to resize to 200 percent without loss of content or function (Level AA).",
+      "quote": "Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.",
+      "citations": [
+        {
+          "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2024-12-12",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WCAG 2.2 1.4.4 resize text",
+      "trust": {
+        "score": 90,
+        "basis": "W3C Recommendation; Level AA; agrees in substance with apple-dynamic-type from an independent publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wcag-use-of-color",
+      "question": "platform-guidelines",
+      "claim": "WCAG forbids color as the only visual means of conveying information (Level A).",
+      "quote": "Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.",
+      "citations": [
+        {
+          "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2024-12-12",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WCAG 2.2 1.4.1 use of color",
+      "trust": {
+        "score": 90,
+        "basis": "W3C Recommendation; Level A."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wcag-animation-from-interactions",
+      "question": "platform-guidelines",
+      "claim": "WCAG's Level AAA criterion lets motion triggered by interaction be disabled.",
+      "quote": "Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.",
+      "citations": [
+        {
+          "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2024-12-12",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WCAG 2.2 2.3.3 animation from interactions",
+      "trust": {
+        "score": 88,
+        "basis": "W3C Recommendation; Level AAA."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "mq5-prefers-reduced-motion",
+      "question": "platform-guidelines",
+      "claim": "On the web the reduce-motion setting is read with the prefers-reduced-motion media feature.",
+      "quote": "The prefers-reduced-motion media feature is used to detect if the user has requested the system minimize the amount of non-essential motion it uses.",
+      "citations": [
+        {
+          "title": "Media Queries Level 5",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-19",
+          "url": "https://www.w3.org/TR/mediaqueries-5/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Media Queries Level 5 prefers-reduced-motion",
+      "trust": {
+        "score": 80,
+        "basis": "W3C Working Draft (2026-02-19); widely implemented, not yet a Recommendation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "mq5-prefers-contrast",
+      "question": "platform-guidelines",
+      "claim": "On the web the contrast setting is read with the prefers-contrast media feature.",
+      "quote": "The prefers-contrast media feature is used to detect if the user has requested more or less contrast in the page.",
+      "citations": [
+        {
+          "title": "Media Queries Level 5",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2026-02-19",
+          "url": "https://www.w3.org/TR/mediaqueries-5/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Media Queries Level 5 prefers-contrast",
+      "trust": {
+        "score": 80,
+        "basis": "W3C Working Draft."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apg-button-role",
+      "question": "platform-guidelines",
+      "claim": "The ARIA Authoring Practices Guide states each pattern's role; a button has role button.",
+      "quote": "The button has role of button.",
+      "citations": [
+        {
+          "title": "Button Pattern (ARIA Authoring Practices Guide)",
+          "author": "W3C Web Accessibility Initiative",
+          "publisher": "W3C WAI",
+          "date": "n.d.",
+          "url": "https://www.w3.org/WAI/ARIA/apg/patterns/button/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WAI-ARIA APG button pattern role",
+      "trust": {
+        "score": 84,
+        "basis": "W3C WAI's own guide."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apg-keyboard-interaction-section",
+      "question": "platform-guidelines",
+      "claim": "Each APG pattern page has a Keyboard Interaction section next to its roles, states and properties.",
+      "quote": "Keyboard Interaction",
+      "citations": [
+        {
+          "title": "Button Pattern (ARIA Authoring Practices Guide)",
+          "author": "W3C Web Accessibility Initiative",
+          "publisher": "W3C WAI",
+          "date": "n.d.",
+          "url": "https://www.w3.org/WAI/ARIA/apg/patterns/button/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "standards body specification (W3C)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "WAI-ARIA APG button pattern sections",
+      "trust": {
+        "score": 78,
+        "basis": "W3C WAI's own guide; the quote is the section heading, so the claim is about structure only."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "fluent-rest-selected-states",
+      "question": "platform-guidelines",
+      "claim": "Microsoft's Fluent documents rest and selected as button states.",
+      "quote": "A button’s rest state indicates “off” while the selected state indicates “on.”",
+      "citations": [
+        {
+          "title": "Button usage - Fluent 2 Design System (React)",
+          "author": "Microsoft Corporation",
+          "publisher": "Fluent 2 Design System",
+          "date": "n.d.",
+          "url": "https://fluent2.microsoft.design/components/web/react/core/button/usage",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Fluent 2 button usage states rest selected",
+      "trust": {
+        "score": 82,
+        "basis": "Microsoft's own design system."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "fluent-contrast-in-all-states",
+      "question": "platform-guidelines",
+      "claim": "Fluent requires button text and icon contrast to hold in every interactive state.",
+      "quote": "To ensure buttons are visually accessible, any button text must pass 4.5:1 and icons must pass 3:1 contrast against their background in all interactive states.",
+      "citations": [
+        {
+          "title": "Button usage - Fluent 2 Design System (React)",
+          "author": "Microsoft Corporation",
+          "publisher": "Fluent 2 Design System",
+          "date": "n.d.",
+          "url": "https://fluent2.microsoft.design/components/web/react/core/button/usage",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "design-system documentation (the owner's own)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Fluent 2 button contrast all interactive states",
+      "trust": {
+        "score": 82,
+        "basis": "Microsoft's own design system."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ubl-form-fits-project",
+      "question": "experts-view",
+      "claim": "An experienced design-doc author at Google says such documents should take whatever form suits the project, not follow a strict guideline.",
+      "quote": "Design docs are informal documents and thus don’t follow a strict guideline for their content. Rule #1 is: Write them in whatever form makes the most sense for the particular project.",
+      "citations": [
+        {
+          "title": "Design Docs at Google",
+          "author": "Malte Ubl",
+          "publisher": "industrialempathy.com",
+          "date": "2020-07-06",
+          "url": "https://www.industrialempathy.com/posts/design-docs-at-google/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "secondary: practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "design docs at Google template",
+      "trust": {
+        "score": 62,
+        "basis": "Secondary: practitioner article, used because no primary source gives an expert's view on long mandatory templates; capped at 72."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ubl-template-clarity",
+      "question": "experts-view",
+      "claim": "The same author: a template does no harm, but clarity is what matters.",
+      "quote": "It doesn’t hurt using a template, but the clarity is the important part.",
+      "citations": [
+        {
+          "title": "Design Docs at Google",
+          "author": "Malte Ubl",
+          "publisher": "industrialempathy.com",
+          "date": "2020-07-06",
+          "url": "https://www.industrialempathy.com/posts/design-docs-at-google/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "secondary: practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "design docs at Google template clarity",
+      "trust": {
+        "score": 62,
+        "basis": "Secondary practitioner article, used for the same reason; capped at 72."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nygard-adr-status",
+      "question": "experts-view",
+      "claim": "A decision record carries a status: proposed until the stakeholders agree, accepted after.",
+      "quote": "A decision may be \"proposed\" if the project stakeholders haven't agreed with it yet, or \"accepted\" once it is agreed.",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "secondary: practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record status proposed accepted",
+      "trust": {
+        "score": 66,
+        "basis": "Secondary: the article that introduced decision records (practitioner), used because no primary standard governs them; capped at 72."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nygard-consequences-listed",
+      "question": "experts-view",
+      "claim": "A decision record lists all of the decision's consequences.",
+      "quote": "This section describes the resulting context, after applying the decision. All consequences should be listed here",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "secondary: practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record consequences",
+      "trust": {
+        "score": 64,
+        "basis": "Secondary practitioner article, used for the same reason; capped at 72."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kac-guiding-principles",
+      "question": "experts-view",
+      "claim": "A change history has an entry for every version, newest first, each with its release date.",
+      "quote": "Guiding Principles Changelogs are for humans, not machines. There should be an entry for every single version. The same types of changes should be grouped. Versions and sections should be linkable. The latest version comes first. The release date of each version is displayed. Mention whether you follow Semantic Versioning.",
+      "citations": [
+        {
+          "title": "Keep a Changelog 1.1.0",
+          "author": "Olivier Lacan",
+          "publisher": "keepachangelog.com",
+          "date": "n.d.",
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "secondary: practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "keep a changelog guiding principles",
+      "trust": {
+        "score": 66,
+        "basis": "Secondary: a widely adopted community convention, used because no primary standard covers change histories; capped at 72."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kac-iso-dates",
+      "question": "experts-view",
+      "claim": "Change-history dates should be ISO 8601.",
+      "quote": "These reasons, and the fact this date format is an ISO standard, are why it is the recommended date format for changelog entries.",
+      "citations": [
+        {
+          "title": "Keep a Changelog 1.1.0",
+          "author": "Olivier Lacan",
+          "publisher": "keepachangelog.com",
+          "date": "n.d.",
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "secondary: practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "keep a changelog ISO date format",
+      "trust": {
+        "score": 64,
+        "basis": "Secondary community convention, used for the same reason; capped at 72."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "if-applicability-prior",
+      "question": "known-solutions",
+      "claim": "This category applies to any file with `type: ingredient` in its frontmatter. All files in `ingredients/` (and its subdirectories) MUST have this type, except `_template.md`.",
+      "quote": "This category applies to any file with `type: ingredient` in its frontmatter. All files in `ingredients/` (and its subdirectories) MUST have this type, except `_template.md`.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-applicability",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-section-order-prior",
+      "question": "best-practices",
+      "claim": "Ingredients MUST follow this section order. Optional sections (marked MAY) can be omitted entirely but MUST NOT appear out of order.\n\n1. YAML frontmatter\n2. `# Title`\n3. `## Overview`\n4. `## Behavioral Requirements`\n5. `## Appearance`\n6. `## States`\n7. `## Accessibility`\n8. `## Conformance Test Vectors`\n9. `## Edge Cases`\n10. `## Configuration`\n11. `## Deep Linking` (MAY omit)\n12. `## Localization` (MAY omit)\n13. `## Accessibility Options` (MAY omit)\n14. `## Feature Flags` (MAY omit)\n15. `## Analytics` (MAY omit)\n16. `## Privacy` (MAY omit)\n17. `## Logging`\n18. `## Platform Notes`\n19. `## Reference Implementations` (MAY: derived from `index.json` when compiled; never authored)\n20. `## Design Decisions`\n21. `## Compliance`\n22. `## Change History`",
+      "quote": "Ingredients MUST follow this section order. Optional sections (marked MAY) can be omitted entirely but MUST NOT appear out of order.\n\n1. YAML frontmatter\n2. `# Title`\n3. `## Overview`\n4. `## Behavioral Requirements`\n5. `## Appearance`\n6. `## States`\n7. `## Accessibility`\n8. `## Conformance Test Vectors`\n9. `## Edge Cases`\n10. `## Configuration`\n11. `## Deep Linking` (MAY omit)\n12. `## Localization` (MAY omit)\n13. `## Accessibility Options` (MAY omit)\n14. `## Feature Flags` (MAY omit)\n15. `## Analytics` (MAY omit)\n16. `## Privacy` (MAY omit)\n17. `## Logging`\n18. `## Platform Notes`\n19. `## Reference Implementations` (MAY: derived from `index.json` when compiled; never authored)\n20. `## Design Decisions`\n21. `## Compliance`\n22. `## Change History`",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-section-order",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-frontmatter-complete-prior",
+      "question": "known-solutions",
+      "claim": "All required meta fields (the frontmatter of the compiled doc) MUST be present per `guide/introduction/conventions.md`. There is no `domain` field.\n\nThe artifact's `id` is its identity: every link to it stores that UUID. Its rdid and folder path are held in the cookbook's `index.json`, never in the artifact; `cookr validate` fails when the index and the folders disagree.\n\n**Applies when:** always.\n\n**Required fields:** id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references.",
+      "quote": "All required meta fields (the frontmatter of the compiled doc) MUST be present per `guide/introduction/conventions.md`. There is no `domain` field.\n\nThe artifact's `id` is its identity: every link to it stores that UUID. Its rdid and folder path are held in the cookbook's `index.json`, never in the artifact; `cookr validate` fails when the index and the folders disagree.\n\n**Applies when:** always.\n\n**Required fields:** id, title, type, version, status, language, created, modified, author, copyright, license, summary, platforms, tags, depends-on, related, references.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-frontmatter-complete",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-type-field-prior",
+      "question": "known-solutions",
+      "claim": "The `type` field MUST be `ingredient`.\n\n**Applies when:** always.",
+      "quote": "The `type` field MUST be `ingredient`.\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-type-field",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-title-heading-prior",
+      "question": "known-solutions",
+      "claim": "The first H1 heading MUST match the frontmatter `title` field exactly.\n\n**Applies when:** always.",
+      "quote": "The first H1 heading MUST match the frontmatter `title` field exactly.\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-title-heading",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-appearance-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST have a `## Appearance` section defining visual properties: corner radius, padding, font, background, foreground, border, shadow, and size constraints.\n\n**Applies when:** UI ingredients (components, panels, windows). MAY be omitted for infrastructure ingredients.",
+      "quote": "The ingredient MUST have a `## Appearance` section defining visual properties: corner radius, padding, font, background, foreground, border, shadow, and size constraints.\n\n**Applies when:** UI ingredients (components, panels, windows). MAY be omitted for infrastructure ingredients.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-appearance",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-states-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST have a `## States` section with a table defining visual state changes (default, pressed, disabled, focused, loading, etc.).\n\n**Applies when:** UI ingredients with interactive states. MAY be omitted for infrastructure ingredients.",
+      "quote": "The ingredient MUST have a `## States` section with a table defining visual state changes (default, pressed, disabled, focused, loading, etc.).\n\n**Applies when:** UI ingredients with interactive states. MAY be omitted for infrastructure ingredients.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-states",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-edge-cases-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST have a `## Edge Cases` section describing boundary conditions, error states, and unexpected input scenarios.\n\n**Applies when:** always.",
+      "quote": "The ingredient MUST have a `## Edge Cases` section describing boundary conditions, error states, and unexpected input scenarios.\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-edge-cases",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-configuration-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST have a `## Configuration` section with a table listing configurable options: Option, Type, Default, Description. If the ingredient has no configurable options, the section MUST be present with a note stating \"This ingredient has no configurable options.\"\n\n**Applies when:** always.",
+      "quote": "The ingredient MUST have a `## Configuration` section with a table listing configurable options: Option, Type, Default, Description. If the ingredient has no configurable options, the section MUST be present with a note stating \"This ingredient has no configurable options.\"\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-configuration",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-logging-prior",
+      "question": "platform-guidelines",
+      "claim": "The ingredient MUST have a `## Logging` section defining: subsystem, category, and a table of log events with columns: Event, Level, Message.\n\n**Applies when:** always.",
+      "quote": "The ingredient MUST have a `## Logging` section defining: subsystem, category, and a table of log events with columns: Event, Level, Message.\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-logging",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-platform-notes-prior",
+      "question": "platform-guidelines",
+      "claim": "The ingredient MUST have a `## Platform Notes` section with per-platform implementation guidance. At minimum: SwiftUI, Compose, React/Web.\n\n**Applies when:** always. Single-platform ingredients list only the target platform.",
+      "quote": "The ingredient MUST have a `## Platform Notes` section with per-platform implementation guidance. At minimum: SwiftUI, Compose, React/Web.\n\n**Applies when:** always. Single-platform ingredients list only the target platform.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-platform-notes",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-reference-implementations-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST NOT carry an authored `## Reference Implementations` section. The code that implements it is recorded in its cookbook's `index.json` with `cookr implements <uuid|rdid> <location> --platform <p>` (`--remove <location>` drops a row), and `cookr confirm <uuid|rdid>` records it as conforming to the current version. A compiled doc or skill shows those rows as a derived `## Reference Implementations` section after `## Platform Notes`. `platform` is one of `macos`, `ios`, `apple`, `web`, `android`, `windows`, `linux`, `python`; a location is a repo-relative file, a directory ending with `/` (which claims every source file below it), or a URL. Every recorded location MUST exist, unless the row is `planned`.\n\n**Applies when:** the repo's `.cookr.json` declares `roots` (a cookbook that lives beside its source). `cookr validate` checks that every recorded location exists.",
+      "quote": "The ingredient MUST NOT carry an authored `## Reference Implementations` section. The code that implements it is recorded in its cookbook's `index.json` with `cookr implements <uuid|rdid> <location> --platform <p>` (`--remove <location>` drops a row), and `cookr confirm <uuid|rdid>` records it as conforming to the current version. A compiled doc or skill shows those rows as a derived `## Reference Implementations` section after `## Platform Notes`. `platform` is one of `macos`, `ios`, `apple`, `web`, `android`, `windows`, `linux`, `python`; a location is a repo-relative file, a directory ending with `/` (which claims every source file below it), or a URL. Every recorded location MUST exist, unless the row is `planned`.\n\n**Applies when:** the repo's `.cookr.json` declares `roots` (a cookbook that lives beside its source). `cookr validate` checks that every recorded location exists.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-reference-implementations",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-design-decisions-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST have a `## Design Decisions` section. Each decision follows the format: **Decision**: Description. **Rationale**: Why. **Approved**: yes | pending.\n\n**Applies when:** always. New ingredients start with an empty section; decisions are added as they arise.",
+      "quote": "The ingredient MUST have a `## Design Decisions` section. Each decision follows the format: **Decision**: Description. **Rationale**: Why. **Approved**: yes | pending.\n\n**Applies when:** always. New ingredients start with an empty section; decisions are added as they arise.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-design-decisions",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-compliance-prior",
+      "question": "best-practices",
+      "claim": "The ingredient MUST have a `## Compliance` section with a table containing columns: Check, Status, Category. Status values: `passed`, `failed`, `partial`. Each check links to its definition in the relevant compliance category file.\n\n**Applies when:** always.",
+      "quote": "The ingredient MUST have a `## Compliance` section with a table containing columns: Check, Status, Category. Status values: `passed`, `failed`, `partial`. Each check links to its definition in the relevant compliance category file.\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-compliance",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by earl-outcome-values, act-outcome-types"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "if-change-history-prior",
+      "question": "best-practices",
+      "claim": "The file MUST end with a `## Change History` section containing a table with columns: Version, Date, Author, Summary.\n\n**Applies when:** always.",
+      "quote": "The file MUST end with a `## Change History` section containing a table with columns: Version, Date, Author, Summary.\n\n**Applies when:** always.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (ingredient-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/ingredient-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: if-change-history",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "tmpl-approval-fields-prior",
+      "question": "best-practices",
+      "claim": "the template's frontmatter carries two fields the draft's required list lacks: \"approved-by: \\\"\\\"\" and \"approved-date: \\\"\\\"\".",
+      "quote": "the template's frontmatter carries two fields the draft's required list lacks: \"approved-by: \\\"\\\"\" and \"approved-date: \\\"\\\"\".",
+      "citations": [
+        {
+          "title": "ingredient-formatting (_template.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:cookbook/ingredients/_template.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: tmpl-approval-fields",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "tmpl-accessibility-min-tap-target-prior",
+      "question": "platform-guidelines",
+      "claim": "\"- Role/trait (e.g., button, heading, text field)\n- Label requirements\n- Announce state changes (e.g., loading, disabled)\n- Minimum tap target: 44×44pt\"",
+      "quote": "\"- Role/trait (e.g., button, heading, text field)\n- Label requirements\n- Announce state changes (e.g., loading, disabled)\n- Minimum tap target: 44×44pt\"",
+      "citations": [
+        {
+          "title": "ingredient-formatting (_template.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:cookbook/ingredients/_template.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: tmpl-accessibility-min-tap-target",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by apple-min-control-size-per-platform, android-touch-target-48dp, windows-touch-target-40, wcag-target-size-minimum-24"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "tmpl-deep-linking-patterns-prior",
+      "question": "platform-guidelines",
+      "claim": "\"| Platform | URL Pattern |\" with rows \"| Apple | `{{app_scheme}}://component-name` |\", \"| Android | `https://{{app_domain}}/component-name` |\", \"| Web | `/component-name` |\".",
+      "quote": "\"| Platform | URL Pattern |\" with rows \"| Apple | `{{app_scheme}}://component-name` |\", \"| Android | `https://{{app_domain}}/component-name` |\", \"| Web | `/component-name` |\".",
+      "citations": [
+        {
+          "title": "ingredient-formatting (_template.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:cookbook/ingredients/_template.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: tmpl-deep-linking-patterns",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by apple-universal-links-recommended, apple-url-scheme-attack-vector"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "tmpl-analytics-events-prior",
+      "question": "platform-guidelines",
+      "claim": "\"| Event | Properties | When |\" with rows \"| `component_name.viewed` | `{}` | Component appears on screen |\" and \"| `component_name.interacted` | `{ action: string }` | User interacts with component |\".",
+      "quote": "\"| Event | Properties | When |\" with rows \"| `component_name.viewed` | `{}` | Component appears on screen |\" and \"| `component_name.interacted` | `{ action: string }` | User interacts with component |\".",
+      "citations": [
+        {
+          "title": "ingredient-formatting (_template.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:cookbook/ingredients/_template.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: tmpl-analytics-events",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by firebase-event-name-charset"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "component-recipe-sections-in-order-prior",
+      "question": "best-practices",
+      "claim": "- **must-contain-template-sections-in-order**: The recipe MUST contain all sections defined in the standard template, in the prescribed order.\n  - For component recipes, the required sections in order are: **Overview**, **Behavioral Requirements**, **Appearance**, **States**, **Accessibility**, **Conformance Test Vectors**, **Edge Cases**.",
+      "quote": "- **must-contain-template-sections-in-order**: The recipe MUST contain all sections defined in the standard template, in the prescribed order.\n  - For component recipes, the required sections in order are: **Overview**, **Behavioral Requirements**, **Appearance**, **States**, **Accessibility**, **Conformance Test Vectors**, **Edge Cases**.",
+      "citations": [
+        {
+          "title": "ingredient-formatting (rules.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:cookbook/guidelines/cookbook/recipe-quality/template-conformance/rules.md",
+          "accessed": "2026-11-21"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "rule under verification: component-recipe-sections-in-order",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "if-applicability",
+      "verdict": "unsupported",
+      "claims": [
+        "if-applicability-prior",
+        "json-schema-const",
+        "json-schema-if-then"
+      ]
+    },
+    {
+      "rule": "if-section-order",
+      "verdict": "unsupported",
+      "claims": [
+        "if-section-order-prior",
+        "rfc-order-strongly-recommended-in-body",
+        "patternfly-template-omit-but-fixed-headings",
+        "md043-enforces-heading-structure",
+        "ubl-template-clarity",
+        "ubl-form-fits-project"
+      ]
+    },
+    {
+      "rule": "if-frontmatter-complete",
+      "verdict": "unsupported",
+      "claims": [
+        "if-frontmatter-complete-prior",
+        "jekyll-front-matter-first",
+        "json-schema-required-properties"
+      ]
+    },
+    {
+      "rule": "if-type-field",
+      "verdict": "unsupported",
+      "claims": [
+        "if-type-field-prior",
+        "json-schema-const"
+      ]
+    },
+    {
+      "rule": "if-title-heading",
+      "verdict": "unsupported",
+      "claims": [
+        "if-title-heading-prior",
+        "md041-first-line-h1",
+        "md025-front-matter-title-is-h1",
+        "markdownlint-custom-rules"
+      ]
+    },
+    {
+      "rule": "if-overview",
+      "verdict": "supported",
+      "claims": [
+        "govuk-description-required",
+        "govuk-when-to-use",
+        "patternfly-usage-when-to-use"
+      ]
+    },
+    {
+      "rule": "if-behavioral-requirements",
+      "verdict": "supported",
+      "claims": [
+        "w3c-qa-conformance-clause",
+        "w3c-qa-consistent-requirement-style",
+        "w3c-qa-indicate-levels",
+        "oasis-ta-identifier",
+        "respec-conformance-lint"
+      ]
+    },
+    {
+      "rule": "if-appearance",
+      "verdict": "unsupported",
+      "claims": [
+        "if-appearance-prior",
+        "material-attribute-table"
+      ]
+    },
+    {
+      "rule": "if-states",
+      "verdict": "unsupported",
+      "claims": [
+        "if-states-prior",
+        "apple-press-state",
+        "material-states-list",
+        "flutter-interactive-states"
+      ]
+    },
+    {
+      "rule": "if-accessibility",
+      "verdict": "supported",
+      "claims": [
+        "wcag-name-role-value",
+        "apg-button-role",
+        "wcag-target-size-minimum-24",
+        "apple-strive-min-control-size",
+        "android-touch-target-48dp"
+      ]
+    },
+    {
+      "rule": "if-test-vectors",
+      "verdict": "supported",
+      "claims": [
+        "act-examples-pass-fail-inapplicable",
+        "oasis-ta-normative-source",
+        "oasis-ta-identifier",
+        "w3c-qa-test-assertions",
+        "w3c-qa-template-test-assertion-section"
+      ]
+    },
+    {
+      "rule": "if-edge-cases",
+      "verdict": "unsupported",
+      "claims": [
+        "if-edge-cases-prior",
+        "act-assumptions-listed",
+        "rfc3552-out-of-scope-stated"
+      ]
+    },
+    {
+      "rule": "if-configuration",
+      "verdict": "unsupported",
+      "claims": [
+        "if-configuration-prior",
+        "rfc-empty-iana-section-kept",
+        "w3c-qa-label-optional-features",
+        "material-attribute-table"
+      ]
+    },
+    {
+      "rule": "if-logging",
+      "verdict": "unsupported",
+      "claims": [
+        "if-logging-prior",
+        "apple-logger-optional",
+        "apple-logger-subsystem-category"
+      ]
+    },
+    {
+      "rule": "if-platform-notes",
+      "verdict": "unsupported",
+      "claims": [
+        "if-platform-notes-prior",
+        "apple-platform-considerations-none",
+        "apple-min-control-size-per-platform"
+      ]
+    },
+    {
+      "rule": "if-reference-implementations",
+      "verdict": "unsupported",
+      "claims": [
+        "if-reference-implementations-prior",
+        "act-optional-items"
+      ]
+    },
+    {
+      "rule": "if-design-decisions",
+      "verdict": "unsupported",
+      "claims": [
+        "if-design-decisions-prior",
+        "nygard-adr-status",
+        "nygard-consequences-listed"
+      ]
+    },
+    {
+      "rule": "if-compliance",
+      "verdict": "contradicted",
+      "claims": [
+        "if-compliance-prior",
+        "earl-outcome-values",
+        "act-outcome-types"
+      ]
+    },
+    {
+      "rule": "if-change-history",
+      "verdict": "unsupported",
+      "claims": [
+        "if-change-history-prior",
+        "kac-guiding-principles",
+        "semver-released-immutable"
+      ]
+    },
+    {
+      "rule": "tmpl-approval-fields",
+      "verdict": "unsupported",
+      "claims": [
+        "tmpl-approval-fields-prior",
+        "nygard-adr-status"
+      ]
+    },
+    {
+      "rule": "tmpl-appearance-properties",
+      "verdict": "supported",
+      "claims": [
+        "material-attribute-table",
+        "fluent-contrast-in-all-states"
+      ]
+    },
+    {
+      "rule": "tmpl-states-table",
+      "verdict": "supported",
+      "claims": [
+        "material-states-list",
+        "apple-press-state",
+        "flutter-interactive-states",
+        "wcag-name-role-value"
+      ]
+    },
+    {
+      "rule": "tmpl-accessibility-min-tap-target",
+      "verdict": "contradicted",
+      "claims": [
+        "tmpl-accessibility-min-tap-target-prior",
+        "apple-min-control-size-per-platform",
+        "android-touch-target-48dp",
+        "windows-touch-target-40",
+        "wcag-target-size-minimum-24"
+      ]
+    },
+    {
+      "rule": "tmpl-test-vector-id-format",
+      "verdict": "supported",
+      "claims": [
+        "oasis-ta-identifier",
+        "w3c-qa-test-assertions"
+      ]
+    },
+    {
+      "rule": "tmpl-deep-linking-patterns",
+      "verdict": "contradicted",
+      "claims": [
+        "tmpl-deep-linking-patterns-prior",
+        "apple-universal-links-recommended",
+        "apple-url-scheme-attack-vector"
+      ]
+    },
+    {
+      "rule": "tmpl-localization-table",
+      "verdict": "supported",
+      "claims": [
+        "android-string-context"
+      ]
+    },
+    {
+      "rule": "tmpl-accessibility-options",
+      "verdict": "supported",
+      "claims": [
+        "apple-reduce-motion",
+        "apple-increase-contrast",
+        "apple-more-than-color",
+        "mq5-prefers-reduced-motion",
+        "mq5-prefers-contrast",
+        "wcag-use-of-color",
+        "wcag-animation-from-interactions"
+      ]
+    },
+    {
+      "rule": "tmpl-feature-flags-table",
+      "verdict": "supported",
+      "claims": [
+        "openfeature-flag-key-and-default"
+      ]
+    },
+    {
+      "rule": "tmpl-analytics-events",
+      "verdict": "contradicted",
+      "claims": [
+        "tmpl-analytics-events-prior",
+        "firebase-event-name-charset"
+      ]
+    },
+    {
+      "rule": "tmpl-privacy-fields",
+      "verdict": "supported",
+      "claims": [
+        "apple-collect-definition",
+        "play-ephemeral-processing",
+        "play-form-even-if-no-data"
+      ]
+    },
+    {
+      "rule": "tmpl-logging-subsystem-category",
+      "verdict": "supported",
+      "claims": [
+        "apple-logger-subsystem-category"
+      ]
+    },
+    {
+      "rule": "tmpl-platform-notes-platforms",
+      "verdict": "supported",
+      "claims": [
+        "apple-strive-min-control-size",
+        "apple-min-control-size-per-platform",
+        "android-touch-target-48dp",
+        "windows-touch-target-40"
+      ]
+    },
+    {
+      "rule": "tmpl-design-decisions-approved",
+      "verdict": "supported",
+      "claims": [
+        "nygard-adr-status"
+      ]
+    },
+    {
+      "rule": "tmpl-compliance-link-form",
+      "verdict": "supported",
+      "claims": [
+        "oasis-ta-normative-source",
+        "uuid-unique-identifier"
+      ]
+    },
+    {
+      "rule": "component-recipe-sections-in-order",
+      "verdict": "unsupported",
+      "claims": [
+        "component-recipe-sections-in-order-prior",
+        "rfc-order-strongly-recommended-in-body",
+        "rfc-some-sections-required",
+        "patternfly-template-omit-but-fixed-headings",
+        "json-schema-if-then"
+      ]
+    },
+    {
+      "rule": "inapplicable-section-stated-not-omitted",
+      "verdict": "new",
+      "claims": [
+        "rfc-empty-iana-section-kept",
+        "rfc-no-actions-statement",
+        "w3c-qa-label-optional-features",
+        "apple-platform-considerations-none",
+        "play-form-even-if-no-data",
+        "rfc-editor-removes-empty-iana",
+        "govuk-template-empty-fields-hidden"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "section-structure-machine-checked",
+      "verdict": "new",
+      "claims": [
+        "md043-enforces-heading-structure",
+        "md043-wildcards-only",
+        "markdownlint-custom-rules",
+        "vale-occurrence-min-flags-absence",
+        "vale-script-arbitrary-rules",
+        "json-schema-required-properties",
+        "json-schema-prefixitems-positional",
+        "json-schema-objects-unordered",
+        "respec-privsec-lint",
+        "respec-headingless-lint"
+      ],
+      "strength": "optional"
+    },
+    {
+      "rule": "short-required-core-labelled-optional-rest",
+      "verdict": "new",
+      "claims": [
+        "rfc-some-sections-required",
+        "rfc-security-considerations-required",
+        "rfc3552-security-section-required",
+        "act-required-items",
+        "act-optional-items",
+        "w3c-qa-label-optional-features",
+        "patternfly-template-omit-but-fixed-headings"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "compliance-status-includes-inapplicable",
+      "verdict": "new",
+      "claims": [
+        "earl-outcome-values",
+        "act-outcome-types"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "test-vectors-cover-pass-fail-inapplicable",
+      "verdict": "new",
+      "claims": [
+        "act-examples-pass-fail-inapplicable",
+        "act-outcome-types"
+      ],
+      "strength": "recommended (ACT requires it for its own rules)"
+    },
+    {
+      "rule": "overview-states-when-not-to-use",
+      "verdict": "new",
+      "claims": [
+        "govuk-when-not-to-use",
+        "patternfly-usage-when-to-use"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "per-platform-target-sizes",
+      "verdict": "new",
+      "claims": [
+        "apple-min-control-size-per-platform",
+        "apple-strive-min-control-size",
+        "apple-button-hit-region-44",
+        "android-touch-target-48dp",
+        "android-touch-target-spacing",
+        "windows-touch-target-40",
+        "wcag-target-size-minimum-24",
+        "wcag-target-size-enhanced-44"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "accessibility-options-include-text-size",
+      "verdict": "new",
+      "claims": [
+        "wcag-resize-text",
+        "apple-dynamic-type"
+      ],
+      "strength": "required at WCAG 2.2 Level AA"
+    },
+    {
+      "rule": "states-include-hover-and-selected",
+      "verdict": "new",
+      "claims": [
+        "flutter-hover-state",
+        "flutter-selected-state",
+        "material-states-list",
+        "fluent-rest-selected-states"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "appearance-contrast-in-all-states",
+      "verdict": "new",
+      "claims": [
+        "fluent-contrast-in-all-states"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "accessibility-keyboard-interaction",
+      "verdict": "new",
+      "claims": [
+        "apg-keyboard-interaction-section"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "deep-links-use-verified-https-links",
+      "verdict": "new",
+      "claims": [
+        "apple-universal-links-recommended",
+        "android-app-links-recommended",
+        "apple-url-scheme-attack-vector"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "analytics-event-names-fit-platform-limits",
+      "verdict": "new",
+      "claims": [
+        "firebase-event-name-charset"
+      ],
+      "strength": "required where Firebase Analytics is used"
+    },
+    {
+      "rule": "privacy-states-encryption-in-transit",
+      "verdict": "new",
+      "claims": [
+        "play-encryption-in-transit"
+      ],
+      "strength": "recommended"
+    },
+    {
+      "rule": "assumptions-and-limitations-stated",
+      "verdict": "new",
+      "claims": [
+        "act-assumptions-listed",
+        "rfc3552-out-of-scope-stated"
+      ],
+      "strength": "required in ACT rules and RFC security sections; recommended here"
+    },
+    {
+      "rule": "informative-sections-labelled",
+      "verdict": "new",
+      "claims": [
+        "respec-informative-marking"
+      ],
+      "strength": "optional"
+    },
+    {
+      "rule": "released-version-immutable",
+      "verdict": "new",
+      "claims": [
+        "semver-released-immutable"
+      ],
+      "strength": "required by SemVer"
+    },
+    {
+      "rule": "change-history-iso-dates",
+      "verdict": "new",
+      "claims": [
+        "kac-iso-dates"
+      ],
+      "strength": "recommended"
+    }
+  ]
+}
