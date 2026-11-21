@@ -285,3 +285,54 @@ The artifact's `id` is its identity: every link to it stores that UUID. Its rdid
 - Should the template keep approved-by and approved-date, which no source and no required-field list prescribes?
 - Should 'loading' stay among the default states, given that no platform's state list includes it?
 - Should the H1 duplicate the frontmatter title, given that markdownlint's default treats a front-matter title as the top-level heading?
+
+## Round 1 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R1.1: `rules.md` (source fidelity, strength rule): four rules that are not on the owner list carry MUST, but the weakest claim each one cites is only a recommendation or advice. Every instance:
+    - `if-overview` cites `govuk-when-to-use`. That claim is an unmarked template prompt ("Briefly describe the situation(s) when to use this component"). The same template marks only the description as required (`govuk-description-required`: "It is required to display the description"), and `govuk-template-empty-fields-hidden` shows its other fields are optional. So "when to use it" is at MUST without support.
+    - `if-behavioral-requirements` cites `oasis-ta-identifier` (an OASIS Committee Note; "It is recommended that the identifier be made universally unique") and `respec-conformance-lint` (a tool that only "will warn you").
+    - `if-accessibility` cites `apple-strive-min-control-size` ("Strive to meet …") and `android-touch-target-48dp` ("we recommend …"). These two are the only claims behind its "minimum tap target size" item. `apg-button-role` is descriptive.
+    - `if-test-vectors` cites `w3c-qa-test-assertions` (good practice GP12, "not a requirement"), `w3c-qa-template-test-assertion-section` ("advisory") and `oasis-ta-normative-source` (Committee Note).
+    - Fix: in each rule, keep MUST only on the part a MUST-strength claim carries, and move the rest to SHOULD:
+      - `if-overview`: MUST for what the component is (`govuk-description-required`); "when to use it" becomes SHOULD, in this rule or in `overview-states-when-not-to-use`.
+      - `if-accessibility`: MUST for role, label and announced state changes (`wcag-name-role-value`); the tap-target item becomes SHOULD (`per-platform-target-sizes` already holds it at SHOULD).
+      - `if-behavioral-requirements` and `if-test-vectors`: lower to SHOULD, or cite only their MUST-strength claims (`w3c-qa-conformance-clause`, `w3c-qa-consistent-requirement-style`, `w3c-qa-indicate-levels`, `act-examples-pass-fail-inapplicable`) for the MUST part and give the rest SHOULD.
+    - I checked the other non-owner MUST rules and they hold: `accessibility-options-include-text-size` (WCAG AA), `analytics-event-names-fit-platform-limits` (Firebase's hard limits), `released-version-immutable` (SemVer MUST).
+- R1.2: `rules.md`, `tmpl-feature-flags-table` (source fidelity): the MUST covers the table layout `| Flag Key | Default | Description |`. `openfeature-flag-key-and-default` supports only that a flag has a key and a default value, and it says that about the client evaluation API, not about a documentation table. The build-bar line already leaves the table out ("every flag … has its key and its default value"). Fix: keep the MUST on "give each flag its key and its default value". Put the table at SHOULD, or drop it.
+- R1.3: `rules.md` (source fidelity: every rule follows from the claims it cites): three rules cite a claim their text does not use, or say more than the claim supports. Every instance:
+    - `tmpl-appearance-properties` cites `fluent-contrast-in-all-states` but says nothing about contrast. Contrast is `appearance-contrast-in-all-states`'s subject.
+    - `tmpl-states-table` cites `wcag-name-role-value`. That claim is about states being programmatically determinable and announced, not about a visual table of appearance changes.
+    - `tmpl-design-decisions-approved`: its first SHOULD ("Each decision … SHOULD be recorded in `## Design Decisions`") has no supporting claim, because `nygard-adr-status` covers only a decision's status. Its second SHOULD says "approved by the user", but the claim says "project stakeholders".
+    - Fix:
+      - Drop `fluent-contrast-in-all-states` from `tmpl-appearance-properties`. `appearance-contrast-in-all-states` still cites it.
+      - Drop `wcag-name-role-value` from `tmpl-states-table` (`if-accessibility` still cites it), or add the programmatic-state point the claim actually makes.
+      - Reduce `tmpl-design-decisions-approved` to the status the claim supports, for example "Each decision in `## Design Decisions` SHOULD carry its status: pending (proposed) until its stakeholders agree, then yes (accepted)." Change its build-bar line to match.
+- R1.4: `rules.md`, `accessibility-options-include-text-size` (internal consistency): the rule says an ingredient that shows text MUST give its text-resize behaviour "in `## Accessibility Options`". `if-section-order` marks that section "(MAY omit)", and nothing tells the author that such an ingredient must therefore carry it. Its build-bar line also leaves out where the statement goes. Fix: say so in the rule, for example "… MUST carry `## Accessibility Options` and say there how its text resizes …". Alternatively, put the statement in `## Accessibility`, which is always present. Make the build-bar line name the section either way.
+- R1.5: `a-build-must-establish.md` (the build bar must match the rule it checks): four lines for owner-list rules leave out values that the kept rule text requires. Each omission quietly leans toward an open question that belongs to the owner. Every instance:
+    - `tmpl-accessibility-min-tap-target` drops "44×44pt" (open question 4).
+    - `tmpl-deep-linking-patterns` drops the three URL patterns, among them `{{app_scheme}}://component-name` (open question 6).
+    - `tmpl-analytics-events` drops the two template rows and their dotted names (open question 5).
+    - `if-compliance` drops the status values `passed`, `failed`, `partial` (open question 7).
+    - Fix: restore each value as the rule states it, for example "`## Accessibility` holds the template's items: …, and a minimum tap target of 44×44pt" and "… Status values `passed`, `failed`, `partial`, each check linked to its definition".
+- R1.6: `rules.md` (behavioral-requirements `must-not-bundle-behaviors-into-one-requirement`): rules that are not on the owner list bundle separately testable behaviours into one bullet. Every instance:
+    - `short-required-core-labelled-optional-rest`: core and optional labels; the specified heading and level.
+    - `overview-states-when-not-to-use`: when not to use; why to use.
+    - `if-overview`: what it is; when to use it.
+    - `if-behavioral-requirements`: the section is present; RFC 2119 keywords; bold kebab-case names.
+    - `if-accessibility`: four separate items, plus the infrastructure "not applicable" case.
+    - `if-test-vectors`: the four-column table; each vector mapped to a named requirement.
+    - `tmpl-test-vector-id-format`: unique ID form; requirements named; table form.
+    - `assumptions-and-limitations-stated`: assumptions, limitations and exceptions; out of scope and why.
+    - `tmpl-privacy-fields`: the four fields; an ingredient that collects nothing says so.
+    - `tmpl-logging-subsystem-category`: Apple's meaning for subsystem and category; the events table.
+    - `tmpl-platform-notes-platforms`: an entry per targeted platform; the "nothing to add" line.
+    - `tmpl-design-decisions-approved`: recorded; approved.
+    - `tmpl-feature-flags-table`: key and default; table.
+    - Fix: split each into one named rule per behaviour. The verdict name stays on one part, and new names are free. Each part cites the subset of the original claims it rests on, at that subset's weakest strength. Each new rule gets its own `a-build-must-establish.md` line, and every `supported` and `new` claim stays cited.
+- R1.7: `rationale.md` (behavioral-requirements `must-explain-rationale-for-should-requirements`): the Rationale covers 11 of 53 rules. These SHOULD rules give no reason, either inline or in the Rationale: `tmpl-approval-fields`, `overview-states-when-not-to-use`, `appearance-contrast-in-all-states`, `tmpl-states-table`, `states-include-hover-and-selected`, `accessibility-keyboard-interaction`, `tmpl-test-vector-id-format`, `assumptions-and-limitations-stated`, `tmpl-deep-linking-patterns`, `tmpl-accessibility-options`, `tmpl-analytics-events`, `tmpl-privacy-fields`, `privacy-states-encryption-in-transit`, `tmpl-logging-subsystem-category`, `tmpl-design-decisions-approved`, `tmpl-compliance-link-form`, `change-history-iso-dates`. The ones that do give a reason are `tmpl-localization-table` ("for the translator"), `tmpl-platform-notes-platforms` ("since each platform's own guidelines differ") and those in `rationale.md`. Fix: add one Rationale bullet per rule, or an inline "so that …" clause, drawn from the cited claim. Examples:
+    - `change-history-iso-dates`: an ISO standard date format, per Keep a Changelog.
+    - `tmpl-compliance-link-form`: a UUID is unique across space and time, so the link survives renames.
+    - `accessibility-keyboard-interaction`: APG documents keyboard interaction beside roles, states and properties.
+- R1.8: `rules.md` `short-required-core-labelled-optional-rest` and `intro.md` (behavioral-requirements `should-not-use-unanchored-relative-terms`): "a short core of sections" gives no threshold and names no core, so a build cannot test "short". Fix: define the core as the sections `if-section-order` does not mark "(MAY omit)", or drop "short" in both places.
