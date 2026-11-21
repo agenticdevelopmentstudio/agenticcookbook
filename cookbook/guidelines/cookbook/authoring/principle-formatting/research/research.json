@@ -5,10 +5,22 @@
   "base_commit": "071e52f9572bf4b7c534cfcf95fb111282abc423",
   "research_type": "How-to / troubleshooting (intent Do; domain technical writing and agent context; Product / how-to LOW-MEDIUM bar, Technical MEDIUM bar for agent-host documentation)",
   "questions": [
-    {"id": "best-practices", "text": "Best practices: what is current best practice for this topic?"},
-    {"id": "known-solutions", "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"},
-    {"id": "platform-guidelines", "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"},
-    {"id": "experts-view", "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"}
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
   ],
   "methodology": {
     "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify (technical writing; agent context), go to the authoritative sources for that domain (style-guide owners, documentation-framework authors, lint and schema tool documentation, agent-host vendor documentation, peer-reviewed or preprint studies of long-context instruction following), corroborate across independent sources, record provenance at generation time.",
@@ -17,7 +29,9 @@
     "exclusion": "Search-result snippets; pages not fetched; blogs, SEO articles and forum posts; any claim without a fetched verbatim quote. Each claim cites only the page that holds its quote, so corroboration is recorded across claims (named in each trust basis and in the verdicts), not by stacking citations on one quote.",
     "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15, capped by the domain bar (Product / how-to LOW-MEDIUM; Technical MEDIUM for agent-host documentation); secondary sources scored at most 72; preprints and vendor reports at most 78; prior cookbook text 0."
   },
-  "agents": ["grow-cookbook research agent"],
+  "agents": [
+    "grow-cookbook research agent"
+  ],
   "sources": [
     "https://code.claude.com/docs/en/memory",
     "https://code.claude.com/docs/en/best-practices",
@@ -56,7 +70,10 @@
     "https://arxiv.org/abs/2507.11538",
     "https://research.trychroma.com/context-rot"
   ],
-  "dates": {"researched": "2026-11-21", "accessed": "2026-11-21"},
+  "dates": {
+    "researched": "2026-11-21",
+    "accessed": "2026-11-21"
+  },
   "summary": "Outside practice supports the shape of a principle: required metadata checked by a schema (PEP 1's required preamble, JSON Schema required/const, Astro collection schemas, Agent Skills' required name and description), one title per document (Google; markdownlint MD025/MD041), the main point first (NN/g, Microsoft, Google), specific actionable guidance in bullets (Anthropic's context-engineering post and CLAUDE.md guidance, Cursor), and a dated, newest-first entry per version (Keep a Changelog). Four draft rules are not supported at the strength they state: no source requires the H1 to equal the frontmatter title (pf-title-heading), the statement-first and change-history practices are recommendations, not requirements (pf-statement and pf-change-history hold at SHOULD), and no source supports a ~50-line cap (pf-brevity). The evidence on length is real but sets budgets, not a per-principle number: agent hosts bound the always-loaded total (Claude Code: under 200 lines per CLAUDE.md, MEMORY.md truncated at 200 lines or 25KB; Codex: 32 KiB combined; Copilot's sample: two pages), bound on-demand skill bodies (SKILL.md under 500 lines, under 5000 tokens; Cursor rules under 500 lines), and studies show adherence and recall fall as context and instruction density grow (IFScale, Lost in the Middle, Chroma's Context Rot), with a bias toward earlier content. The Standard's role-separated content is consistent with Anthropic's progressive disclosure and evaluator-optimizer pattern, one source per topic with host warnings about contradictory instructions, and keeping the change history out of the compiled skills with Keep a Changelog's 'for humans, not machines'. Internal mechanics (the role vocabulary, every-part-roled, skill names, routing) cannot be confirmed by an outside source. New practice no rule covers: one title per document, state why, write only what the agent lacks, a summary that says what and when, newest-first history, tool-enforced format checks, a budget for the whole always-loaded set, and the most important guidance first.",
   "open_questions": [
     "Which length figure the principle rule should name: the research supports no ~50-line per-principle cap; it supports a budget for everything always loaded (Claude Code's under-200-lines-per-file target) and an on-demand body bound (SKILL.md under 500 lines / under 5000 tokens). Whether principles are always loaded together (then the cap is the shared budget divided across the cookbook's principles, about 45 today) or load on demand as compiled skills (then the skill bound applies) is the owner's to decide.",
@@ -80,11 +97,23 @@
       "question": "best-practices",
       "claim": "Start content with its most important piece of information (the inverted pyramid), so a reader who stops early still gets the main point.",
       "quote": "Start content with the most important piece of information so readers can get the main point, regardless of how much they read. This style of writing is perfectly suited to writing for the web.",
-      "citations": [{"title": "Inverted Pyramid: Writing for Comprehension", "author": "Nielsen Norman Group", "publisher": "Nielsen Norman Group", "date": "2018-02-11", "url": "https://www.nngroup.com/articles/inverted-pyramid/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Inverted Pyramid: Writing for Comprehension",
+          "author": "Nielsen Norman Group",
+          "publisher": "Nielsen Norman Group",
+          "date": "2018-02-11",
+          "url": "https://www.nngroup.com/articles/inverted-pyramid/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "practitioner research (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "inverted pyramid writing most important information first web content",
-      "trust": {"score": 70, "basis": "Secondary but a widely cited usability-research firm; independently corroborated by Microsoft (ms-lead-with-most-important) and Google (google-opening-sentence); capped at the secondary ceiling."},
+      "trust": {
+        "score": 70,
+        "basis": "Secondary but a widely cited usability-research firm; independently corroborated by Microsoft (ms-lead-with-most-important) and Google (google-opening-sentence); capped at the secondary ceiling."
+      },
       "independence": "single"
     },
     {
@@ -92,11 +121,23 @@
       "question": "best-practices",
       "claim": "A standards-process document type can require a metadata preamble with fixed, required headers (PEP 1 requires its preamble, title, author, status, type and created headers among others).",
       "quote": "Each PEP must begin with an :rfc:`2822` style header preamble.  The headers must appear in the following order.  Headers marked with \"*\" are optional and are described below.  All other headers are required.",
-      "citations": [{"title": "PEP 1 – PEP Purpose and Guidelines", "author": "Barry Warsaw, Jeremy Hylton, David Goodger, Alyssa Coghlan", "publisher": "Python Software Foundation (python/peps)", "date": "2000-06-13", "url": "https://raw.githubusercontent.com/python/peps/main/peps/pep-0001.rst", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "PEP 1 – PEP Purpose and Guidelines",
+          "author": "Barry Warsaw, Jeremy Hylton, David Goodger, Alyssa Coghlan",
+          "publisher": "Python Software Foundation (python/peps)",
+          "date": "2000-06-13",
+          "url": "https://raw.githubusercontent.com/python/peps/main/peps/pep-0001.rst",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standards-process document (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "PEP 1 header preamble required fields abstract",
-      "trust": {"score": 82, "basis": "Primary, actively maintained process standard that states the requirement with 'must'; corroborated by JSON Schema required (json-schema-required) and Agent Skills' required fields (skill-frontmatter-required)."},
+      "trust": {
+        "score": 82,
+        "basis": "Primary, actively maintained process standard that states the requirement with 'must'; corroborated by JSON Schema required (json-schema-required) and Agent Skills' required fields (skill-frontmatter-required)."
+      },
       "independence": "single"
     },
     {
@@ -104,11 +145,23 @@
       "question": "best-practices",
       "claim": "A structured document opens with a short abstract of the issue it addresses; PEP 1 says each PEP should have one of about 200 words.",
       "quote": "Abstract -- a short (~200 word) description of the technical issue\n   being addressed.",
-      "citations": [{"title": "PEP 1 – PEP Purpose and Guidelines", "author": "Barry Warsaw, Jeremy Hylton, David Goodger, Alyssa Coghlan", "publisher": "Python Software Foundation (python/peps)", "date": "2000-06-13", "url": "https://raw.githubusercontent.com/python/peps/main/peps/pep-0001.rst", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "PEP 1 – PEP Purpose and Guidelines",
+          "author": "Barry Warsaw, Jeremy Hylton, David Goodger, Alyssa Coghlan",
+          "publisher": "Python Software Foundation (python/peps)",
+          "date": "2000-06-13",
+          "url": "https://raw.githubusercontent.com/python/peps/main/peps/pep-0001.rst",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standards-process document (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "PEP 1 header preamble required fields abstract",
-      "trust": {"score": 76, "basis": "Primary; the list it sits in is introduced with 'Each PEP should have the following parts/sections', so it supports a short statement at SHOULD strength, not MUST."},
+      "trust": {
+        "score": 76,
+        "basis": "Primary; the list it sits in is introduced with 'Each PEP should have the following parts/sections', so it supports a short statement at SHOULD strength, not MUST."
+      },
       "independence": "single"
     },
     {
@@ -116,11 +169,23 @@
       "question": "best-practices",
       "claim": "Michael Nygard's architecture decision record, a close analogue of a short principle document, is meant to be one or two pages long.",
       "quote": "The whole document should be one or two pages long.",
-      "citations": [{"title": "Documenting Architecture Decisions", "author": "Michael Nygard", "publisher": "Cognitect", "date": "2011-11-15", "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "practitioner article (originating source for ADRs)",
       "generated_by": "grow-cookbook research agent",
       "query": "Nygard documenting architecture decisions short text file",
-      "trust": {"score": 64, "basis": "The originating practitioner source for ADRs, but a blog post from 2011 for human readers; gives a page budget, not a line cap."},
+      "trust": {
+        "score": 64,
+        "basis": "The originating practitioner source for ADRs, but a blog post from 2011 for human readers; gives a page budget, not a line cap."
+      },
       "independence": "single"
     },
     {
@@ -128,11 +193,23 @@
       "question": "best-practices",
       "claim": "Recording the motivation behind a decision matters because, without it, later readers can only blindly accept or blindly change it.",
       "quote": "One of the hardest things to track during the life of a project is the motivation behind certain decisions.",
-      "citations": [{"title": "Documenting Architecture Decisions", "author": "Michael Nygard", "publisher": "Cognitect", "date": "2011-11-15", "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "practitioner article (originating source for ADRs)",
       "generated_by": "grow-cookbook research agent",
       "query": "Nygard documenting architecture decisions short text file",
-      "trust": {"score": 62, "basis": "Originating practitioner source; corroborated in spirit by Anthropic (prompting-explain-why) and Diataxis (diataxis-explain-why)."},
+      "trust": {
+        "score": 42,
+        "basis": "Originating practitioner source; corroborated in spirit by Anthropic (prompting-explain-why) and Diataxis (diataxis-explain-why). Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote says only that decision motivation is hard to track. The \"blindly accept or blindly change\" reasoning is in the next paragraph of the post (\"this person has only two choices: Blindly accept the decision... Blindly change it\"), not in the quote; lowered 62->42."
+      },
       "independence": "single"
     },
     {
@@ -140,11 +217,23 @@
       "question": "best-practices",
       "claim": "A change history should have an entry for every version.",
       "quote": "There should be an entry for every single version.",
-      "citations": [{"title": "Keep a Changelog 1.1.0", "author": "Olivier Lacan", "publisher": "keepachangelog.com", "date": "n.d.", "url": "https://keepachangelog.com/en/1.1.0/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keep a Changelog 1.1.0",
+          "author": "Olivier Lacan",
+          "publisher": "keepachangelog.com",
+          "date": "n.d.",
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "community convention (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "keep a changelog guiding principles every version latest first date",
-      "trust": {"score": 68, "basis": "Widely adopted community convention, not a standard; states it as 'should'."},
+      "trust": {
+        "score": 68,
+        "basis": "Widely adopted community convention, not a standard; states it as 'should'."
+      },
       "independence": "single"
     },
     {
@@ -152,11 +241,23 @@
       "question": "best-practices",
       "claim": "A change history lists the latest version first.",
       "quote": "The latest version comes first.",
-      "citations": [{"title": "Keep a Changelog 1.1.0", "author": "Olivier Lacan", "publisher": "keepachangelog.com", "date": "n.d.", "url": "https://keepachangelog.com/en/1.1.0/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keep a Changelog 1.1.0",
+          "author": "Olivier Lacan",
+          "publisher": "keepachangelog.com",
+          "date": "n.d.",
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "community convention (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "keep a changelog guiding principles every version latest first date",
-      "trust": {"score": 66, "basis": "Community convention, single source; the cookbook's existing history parts already list the newest row first."},
+      "trust": {
+        "score": 66,
+        "basis": "Community convention, single source; the cookbook's existing history parts already list the newest row first."
+      },
       "independence": "single"
     },
     {
@@ -164,11 +265,23 @@
       "question": "best-practices",
       "claim": "Each version in a change history shows its release date.",
       "quote": "The release date of each version is displayed.",
-      "citations": [{"title": "Keep a Changelog 1.1.0", "author": "Olivier Lacan", "publisher": "keepachangelog.com", "date": "n.d.", "url": "https://keepachangelog.com/en/1.1.0/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keep a Changelog 1.1.0",
+          "author": "Olivier Lacan",
+          "publisher": "keepachangelog.com",
+          "date": "n.d.",
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "community convention (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "keep a changelog guiding principles every version latest first date",
-      "trust": {"score": 66, "basis": "Community convention, single source; supports the Version and Date columns, not a required table form."},
+      "trust": {
+        "score": 66,
+        "basis": "Community convention, single source; supports the Version and Date columns, not a required table form."
+      },
       "independence": "single"
     },
     {
@@ -176,11 +289,23 @@
       "question": "experts-view",
       "claim": "A change history is written for human readers, not for machines, which supports keeping it out of what an agent loads.",
       "quote": "Changelogs are for humans, not machines.",
-      "citations": [{"title": "Keep a Changelog 1.1.0", "author": "Olivier Lacan", "publisher": "keepachangelog.com", "date": "n.d.", "url": "https://keepachangelog.com/en/1.1.0/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keep a Changelog 1.1.0",
+          "author": "Olivier Lacan",
+          "publisher": "keepachangelog.com",
+          "date": "n.d.",
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "community convention (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "keep a changelog guiding principles every version latest first date",
-      "trust": {"score": 64, "basis": "Community convention; its 'machines' means tooling rather than LLM agents, so applying it to agent context is an inference, corroborated by Anthropic's every-line-costs guidance (claude-md-every-line-costs)."},
+      "trust": {
+        "score": 64,
+        "basis": "Community convention; its 'machines' means tooling rather than LLM agents, so applying it to agent context is an inference, corroborated by Anthropic's every-line-costs guidance (claude-md-every-line-costs)."
+      },
       "independence": "single"
     },
     {
@@ -188,11 +313,23 @@
       "question": "best-practices",
       "claim": "Docs-as-code practice writes documentation with the same tools as code, including code review and automated tests.",
       "quote": "Documentation as Code (Docs as Code) refers to a philosophy that you should be writing documentation with the same tools as code:",
-      "citations": [{"title": "Docs as code", "author": "Eric Holscher & the Write the Docs community", "publisher": "Write the Docs", "date": "n.d.", "url": "https://www.writethedocs.org/guide/docs-as-code/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Docs as code",
+          "author": "Eric Holscher & the Write the Docs community",
+          "publisher": "Write the Docs",
+          "date": "n.d.",
+          "url": "https://www.writethedocs.org/guide/docs-as-code/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "community guide (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "docs as code automated tests documentation linting",
-      "trust": {"score": 66, "basis": "Secondary community guide (the list that follows names Version Control, Code Reviews and Automated Tests); corroborated by the lint and schema tools' own docs (md043-required-headings, json-schema-required)."},
+      "trust": {
+        "score": 46,
+        "basis": "Secondary community guide (the list that follows names Version Control, Code Reviews and Automated Tests); corroborated by the lint and schema tools' own docs (md043-required-headings, json-schema-required). Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote stops at the colon. The list that follows it on the page (Issue Trackers, Version Control, Plain Text Markup, Code Reviews, Automated Tests) is not in the quote, so the \"including code review and automated tests\" part is unsupported by the quote itself; lowered 66->46."
+      },
       "independence": "single"
     },
     {
@@ -200,11 +337,23 @@
       "question": "known-solutions",
       "claim": "markdownlint MD041 checks that a document starts with a top-level heading, treating that heading as the document's title.",
       "quote": "Rationale: The top-level heading often acts as the title of a document.",
-      "citations": [{"title": "MD041 - First line in a file should be a top-level heading", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md041.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MD041 - First line in a file should be a top-level heading",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md041.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint first line heading front matter title rule",
-      "trust": {"score": 80, "basis": "The tool's own rule documentation, current main branch; authoritative for what the tool checks."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own rule documentation, current main branch; authoritative for what the tool checks."
+      },
       "independence": "single"
     },
     {
@@ -212,11 +361,23 @@
       "question": "known-solutions",
       "claim": "By default MD041 accepts a front-matter title in place of a first-line H1, so it does not by itself check that an H1 matches the front-matter title.",
       "quote": "If [YAML][YAML] front matter is present and contains a `title` property\n(commonly used with blog posts), this rule will not report a violation.",
-      "citations": [{"title": "MD041 - First line in a file should be a top-level heading", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md041.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MD041 - First line in a file should be a top-level heading",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md041.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint first line heading front matter title rule",
-      "trust": {"score": 80, "basis": "Tool's own documentation; authoritative for the tool's behaviour."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool's own documentation; authoritative for the tool's behaviour."
+      },
       "independence": "single"
     },
     {
@@ -224,11 +385,23 @@
       "question": "known-solutions",
       "claim": "markdownlint MD025 enforces a single H1 that is the document's title.",
       "quote": "To fix, structure your document so there is a single h1 heading that is\nthe title for the document.",
-      "citations": [{"title": "MD025 - Multiple top-level headings in the same document", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md025.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MD025 - Multiple top-level headings in the same document",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md025.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint single h1 front matter title",
-      "trust": {"score": 80, "basis": "Tool's own documentation; corroborated as practice by Google's style guide (google-single-h1)."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool's own documentation; corroborated as practice by Google's style guide (google-single-h1)."
+      },
       "independence": "single"
     },
     {
@@ -236,11 +409,23 @@
       "question": "known-solutions",
       "claim": "With default settings MD025 treats a front-matter title as the H1 and reports any later H1, so a compiled document carrying both a front-matter title and a `# Title` trips it unless front_matter_title is set to an empty string.",
       "quote": "If [YAML](https://wikipedia.org/wiki/YAML) front matter is present and\ncontains a `title` property (commonly used with blog posts), this rule treats\nthat as a top level heading and will report a violation for any subsequent\ntop-level headings.",
-      "citations": [{"title": "MD025 - Multiple top-level headings in the same document", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md025.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MD025 - Multiple top-level headings in the same document",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md025.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint single h1 front matter title",
-      "trust": {"score": 80, "basis": "Tool's own documentation; the same page documents setting front_matter_title to \"\" to disable it."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool's own documentation; the same page documents setting front_matter_title to \"\" to disable it."
+      },
       "independence": "single"
     },
     {
@@ -248,11 +433,23 @@
       "question": "known-solutions",
       "claim": "markdownlint MD043 enforces a required heading structure across a set of files, with wildcards for optional sections, so it can require a final `## Change History` heading.",
       "quote": "This rule is triggered when the headings in a file do not match the array of\nheadings passed to the rule. It can be used to enforce a standard heading\nstructure for a set of files.",
-      "citations": [{"title": "MD043 - Required heading structure", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md043.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MD043 - Required heading structure",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md043.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint required heading structure rule",
-      "trust": {"score": 80, "basis": "Tool's own documentation; the page shows the '*' wildcard followed by a required final heading."},
+      "trust": {
+        "score": 60,
+        "basis": "Tool's own documentation; the page shows the '*' wildcard followed by a required final heading. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote supports only enforcing a standard heading structure across files. The wildcard support (`*`, `+`, `?`) that the claim depends on is described further down the page, not in the quote; lowered 80->60."
+      },
       "independence": "single"
     },
     {
@@ -260,11 +457,23 @@
       "question": "known-solutions",
       "claim": "markdownlint's length rule MD013 measures the width of each line, not the length of a document, so a body-length cap needs a custom rule or another tool.",
       "quote": "This rule is triggered when there are lines that are longer than the\nconfigured `line_length` (default: 80 characters).",
-      "citations": [{"title": "MD013 - Line length", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md013.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MD013 - Line length",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/md013.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint line length rule document length",
-      "trust": {"score": 78, "basis": "Tool's own documentation for what MD013 measures; that no other built-in rule counts document lines was not established (see limitations)."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool's own documentation for what MD013 measures; that no other built-in rule counts document lines was not established (see limitations)."
+      },
       "independence": "single"
     },
     {
@@ -272,11 +481,23 @@
       "question": "known-solutions",
       "claim": "markdownlint custom rules receive the document's lines and its front-matter lines separately, so a custom rule can compare the H1 with the front-matter title or count body lines.",
       "quote": "`frontMatterLines` is an `Array` of `String` values corresponding to any\n      lines of front matter (not present in the `lines` `Array`).",
-      "citations": [{"title": "Custom Rules", "author": "David Anson", "publisher": "markdownlint (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/CustomRules.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Custom Rules",
+          "author": "David Anson",
+          "publisher": "markdownlint (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/doc/CustomRules.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint custom rules front matter lines parser",
-      "trust": {"score": 78, "basis": "Tool's own API documentation; the comparison itself would be custom code, not a shipped rule."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool's own API documentation; the comparison itself would be custom code, not a shipped rule."
+      },
       "independence": "single"
     },
     {
@@ -284,11 +505,23 @@
       "question": "known-solutions",
       "claim": "Vale's metric check evaluates formulas over built-in counts (words, sentences, paragraphs, lists, headings by level, readability scores), document-wide or per scoped block, so it can bound a statement's sentence count or a body's word count.",
       "quote": "metric enforces arbitrary formulas based on pre-defined, built-in variables.",
-      "citations": [{"title": "metric", "author": "Vale (Joseph Kato)", "publisher": "vale.sh", "date": "n.d.", "url": "https://vale.sh/docs/checks/metric", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "metric",
+          "author": "Vale (Joseph Kato)",
+          "publisher": "vale.sh",
+          "date": "n.d.",
+          "url": "https://vale.sh/docs/checks/metric",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "vale metric check variables words paragraphs headings",
-      "trust": {"score": 78, "basis": "Tool's own documentation, current (mentions Vale v3.23.0 features); the variables table is on the same page."},
+      "trust": {
+        "score": 58,
+        "basis": "Tool's own documentation, current (mentions Vale v3.23.0 features); the variables table is on the same page. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote says only that metric evaluates formulas over built-in variables. The variable list the claim names (words, sentences, paragraphs, list, heading.h{n}, readability scores) is in the page's Variables table, not in the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -296,11 +529,23 @@
       "question": "known-solutions",
       "claim": "Vale's occurrence check bounds how many times a token appears in a scope.",
       "quote": "occurrence enforces the maximum or minimum number of times a particular token can appear in a given scope.",
-      "citations": [{"title": "occurrence", "author": "Vale (Joseph Kato)", "publisher": "vale.sh", "date": "n.d.", "url": "https://vale.sh/docs/checks/occurrence", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "occurrence",
+          "author": "Vale (Joseph Kato)",
+          "publisher": "vale.sh",
+          "date": "n.d.",
+          "url": "https://vale.sh/docs/checks/occurrence",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "vale occurrence check max min scope",
-      "trust": {"score": 76, "basis": "Tool's own documentation."},
+      "trust": {
+        "score": 76,
+        "basis": "Tool's own documentation."
+      },
       "independence": "single"
     },
     {
@@ -308,11 +553,23 @@
       "question": "known-solutions",
       "claim": "Vale's script check runs arbitrary logic (Tengo scripts) over a scope, for structural checks the declarative checks cannot express, such as paragraphs per section.",
       "quote": "script allows for the creation of arbitrary logic-based rules using Tengo, a Go-like scripting language.",
-      "citations": [{"title": "script", "author": "Vale (Joseph Kato)", "publisher": "vale.sh", "date": "n.d.", "url": "https://vale.sh/docs/checks/script", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "script",
+          "author": "Vale (Joseph Kato)",
+          "publisher": "vale.sh",
+          "date": "n.d.",
+          "url": "https://vale.sh/docs/checks/script",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "tool documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "vale script check tengo",
-      "trust": {"score": 76, "basis": "Tool's own documentation; its example limits paragraphs per section."},
+      "trust": {
+        "score": 76,
+        "basis": "Tool's own documentation; its example limits paragraphs per section."
+      },
       "independence": "single"
     },
     {
@@ -320,11 +577,23 @@
       "question": "known-solutions",
       "claim": "A JSON Schema `required` keyword lists the properties a document must have, so required meta fields are tool-decidable.",
       "quote": "By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword.",
-      "citations": [{"title": "JSON Schema - object", "author": "JSON Schema", "publisher": "json-schema.org", "date": "n.d.", "url": "https://json-schema.org/understanding-json-schema/reference/object", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "JSON Schema - object",
+          "author": "JSON Schema",
+          "publisher": "json-schema.org",
+          "date": "n.d.",
+          "url": "https://json-schema.org/understanding-json-schema/reference/object",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "specification documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "json schema required properties keyword",
-      "trust": {"score": 84, "basis": "The specification project's own reference; stable."},
+      "trust": {
+        "score": 84,
+        "basis": "The specification project's own reference; stable."
+      },
       "independence": "single"
     },
     {
@@ -332,11 +601,23 @@
       "question": "known-solutions",
       "claim": "A JSON Schema `const` keyword fixes a property to one value, so 'type must be principle' is tool-decidable.",
       "quote": "The const keyword is used to restrict a value to a single value.",
-      "citations": [{"title": "JSON Schema - Constant values", "author": "JSON Schema", "publisher": "json-schema.org", "date": "n.d.", "url": "https://json-schema.org/understanding-json-schema/reference/const", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "JSON Schema - Constant values",
+          "author": "JSON Schema",
+          "publisher": "json-schema.org",
+          "date": "n.d.",
+          "url": "https://json-schema.org/understanding-json-schema/reference/const",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "specification documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "json schema const keyword single value",
-      "trust": {"score": 84, "basis": "The specification project's own reference; stable."},
+      "trust": {
+        "score": 84,
+        "basis": "The specification project's own reference; stable."
+      },
       "independence": "single"
     },
     {
@@ -344,11 +625,23 @@
       "question": "known-solutions",
       "claim": "Static-site tooling validates every Markdown file's frontmatter against a collection schema and errors on a violation (Astro content collections, using Zod).",
       "quote": "Schemas enforce consistent frontmatter or entry data within a collection through Zod validation. A schema guarantees that this data exists in a predictable form when you need to reference or query it. If any file violates its collection schema, Astro will provide a helpful error to let you know.",
-      "citations": [{"title": "Content collections", "author": "Astro", "publisher": "Astro Docs", "date": "n.d.", "url": "https://docs.astro.build/en/guides/content-collections/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Content collections",
+          "author": "Astro",
+          "publisher": "Astro Docs",
+          "date": "n.d.",
+          "url": "https://docs.astro.build/en/guides/content-collections/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor documentation (primary for the tool)",
       "generated_by": "grow-cookbook research agent",
       "query": "content collections frontmatter schema validation markdown",
-      "trust": {"score": 80, "basis": "Vendor's own documentation; independent of the JSON Schema project (json-schema-required), so the two corroborate schema-checked frontmatter."},
+      "trust": {
+        "score": 80,
+        "basis": "Vendor's own documentation; independent of the JSON Schema project (json-schema-required), so the two corroborate schema-checked frontmatter."
+      },
       "independence": "single"
     },
     {
@@ -356,11 +649,23 @@
       "question": "known-solutions",
       "claim": "Anthropic documents an evaluator-optimizer pattern in which one model call generates and another evaluates against clear criteria, the pattern behind pairing a builder or reviewer with a verifier that grades its work against a bar.",
       "quote": "In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.",
-      "citations": [{"title": "Building effective agents", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2024-12-19", "url": "https://www.anthropic.com/engineering/building-effective-agents", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Building effective agents",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2024-12-19",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor engineering publication (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "anthropic building effective agents evaluator optimizer",
-      "trust": {"score": 76, "basis": "Agent-host vendor's own engineering guidance; supports the generator/evaluator split as a pattern, not the cookbook's four specific skills."},
+      "trust": {
+        "score": 76,
+        "basis": "Agent-host vendor's own engineering guidance; supports the generator/evaluator split as a pattern, not the cookbook's four specific skills."
+      },
       "independence": "single"
     },
     {
@@ -368,11 +673,23 @@
       "question": "known-solutions",
       "claim": "The AGENTS.md format imposes no heading structure on agents' instruction files: it is plain Markdown that the agent reads as text, so a required structure serves authors and tools, not the agent.",
       "quote": "No. AGENTS.md is just standard Markdown. Use any headings you like; the agent simply parses the text you provide.",
-      "citations": [{"title": "AGENTS.md", "author": "Agentic AI Foundation (Linux Foundation)", "publisher": "agents.md", "date": "n.d.", "url": "https://agents.md/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "AGENTS.md",
+          "author": "Agentic AI Foundation (Linux Foundation)",
+          "publisher": "agents.md",
+          "date": "n.d.",
+          "url": "https://agents.md/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "format documentation (primary for the format)",
       "generated_by": "grow-cookbook research agent",
       "query": "AGENTS.md format instructions for coding agents",
-      "trust": {"score": 74, "basis": "The format's own site, stewarded by a foundation; definitional."},
+      "trust": {
+        "score": 74,
+        "basis": "The format's own site, stewarded by a foundation; definitional."
+      },
       "independence": "single"
     },
     {
@@ -380,11 +697,23 @@
       "question": "platform-guidelines",
       "claim": "Anthropic's Claude Code guidance targets under 200 lines per always-loaded CLAUDE.md file, because longer files consume more context and reduce adherence.",
       "quote": "target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence.",
-      "citations": [{"title": "How Claude remembers your project", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "How Claude remembers your project",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code CLAUDE.md size lines adherence memory",
-      "trust": {"score": 86, "basis": "Host vendor's current documentation for its own always-loaded file; the same page truncates MEMORY.md at 'the first 200 lines or 25KB'. A target, not a measured threshold."},
+      "trust": {
+        "score": 86,
+        "basis": "Host vendor's current documentation for its own always-loaded file; the same page truncates MEMORY.md at 'the first 200 lines or 25KB'. A target, not a measured threshold."
+      },
       "independence": "single"
     },
     {
@@ -392,11 +721,23 @@
       "question": "platform-guidelines",
       "claim": "Specific, concise instructions are followed more consistently by Claude.",
       "quote": "The more specific and concise your instructions, the more consistently Claude follows them.",
-      "citations": [{"title": "How Claude remembers your project", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "How Claude remembers your project",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code CLAUDE.md size lines adherence memory",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation; corroborated by Cursor (cursor-focused-actionable)."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's current documentation; corroborated by Cursor (cursor-focused-actionable)."
+      },
       "independence": "single"
     },
     {
@@ -404,11 +745,23 @@
       "question": "platform-guidelines",
       "claim": "Group instructions under headers and bullets; organized sections are easier for the agent to follow than dense paragraphs.",
       "quote": "group related instructions under markdown headers and bullets. Organized sections are easier for Claude to follow than dense paragraphs.",
-      "citations": [{"title": "How Claude remembers your project", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "How Claude remembers your project",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code CLAUDE.md size lines adherence memory",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation; corroborated for human readers by Microsoft's list guidance (ms-lists-short)."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's current documentation; corroborated for human readers by Microsoft's list guidance (ms-lists-short)."
+      },
       "independence": "single"
     },
     {
@@ -416,11 +769,23 @@
       "question": "platform-guidelines",
       "claim": "Contradictory instructions make the agent pick one arbitrarily, so the same guidance should not be stated twice in diverging forms.",
       "quote": "if two instructions contradict each other, Claude may pick one arbitrarily.",
-      "citations": [{"title": "How Claude remembers your project", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/memory", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "How Claude remembers your project",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/memory",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code CLAUDE.md size lines adherence memory",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation; corroborated by Cursor's reference-don't-copy guidance (cursor-reference-not-copy)."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's current documentation; corroborated by Cursor's reference-don't-copy guidance (cursor-reference-not-copy)."
+      },
       "independence": "single"
     },
     {
@@ -428,11 +793,23 @@
       "question": "platform-guidelines",
       "claim": "Every line of an always-loaded instruction file takes some of the agent's attention on every task, relevant or not.",
       "quote": "which means every line in it takes a little of Claude's attention on *every* task, whether it's relevant or not.",
-      "citations": [{"title": "Best practices for Claude Code", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Best practices for Claude Code",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code best practices keep CLAUDE.md short",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation; consistent with its context-engineering post (context-finite-resource)."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's current documentation; consistent with its context-engineering post (context-finite-resource)."
+      },
       "independence": "single"
     },
     {
@@ -440,11 +817,23 @@
       "question": "platform-guidelines",
       "claim": "An always-loaded instruction file works best holding only what the agent could not work out for itself.",
       "quote": "That's why the file works best when it only holds what Claude couldn't work out from the code itself:",
-      "citations": [{"title": "Best practices for Claude Code", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Best practices for Claude Code",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code best practices keep CLAUDE.md short",
-      "trust": {"score": 82, "basis": "Host vendor's current documentation; corroborated by Anthropic's skill guidance (skill-only-new-context) and independently by Cursor (cursor-use-a-linter)."},
+      "trust": {
+        "score": 82,
+        "basis": "Host vendor's current documentation; corroborated by Anthropic's skill guidance (skill-only-new-context) and independently by Cursor (cursor-use-a-linter)."
+      },
       "independence": "single"
     },
     {
@@ -452,11 +841,23 @@
       "question": "platform-guidelines",
       "claim": "A skill costs less context than an always-loaded file: only its name and description are seen every session and the body loads when the task calls for it.",
       "quote": "Skills are also lighter on context than `CLAUDE.md` for this kind of thing. For a skill Claude can start on its own, it sees the name and description in every session, but only [reads the full file](https://code.claude.com/docs/en/skills.md#skill-content-lifecycle) when the task calls for it.",
-      "citations": [{"title": "Best practices for Claude Code", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Best practices for Claude Code",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code best practices keep CLAUDE.md short",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation of its own loading behaviour; bears on whether a principle compiled to skills is 'always loaded'."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's current documentation of its own loading behaviour; bears on whether a principle compiled to skills is 'always loaded'."
+      },
       "independence": "single"
     },
     {
@@ -464,11 +865,23 @@
       "question": "platform-guidelines",
       "claim": "Skill content should add only context the model does not already have, each piece justifying its token cost.",
       "quote": "Only add context Claude doesn’t already have.",
-      "citations": [{"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Platform Docs", "date": "n.d.", "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Platform Docs",
+          "date": "n.d.",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "agent skills authoring best practices concise SKILL.md 500 lines",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation; the same section asks 'Does this paragraph justify its token cost?'."},
+      "trust": {
+        "score": 64,
+        "basis": "Host vendor's current documentation; the same section asks 'Does this paragraph justify its token cost?'. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only the first half of the claim. The token-cost part comes from the page's next lines (\"Challenge each piece of information... Does this paragraph justify its token cost?\"), which the quote leaves out; lowered 84->64."
+      },
       "independence": "single"
     },
     {
@@ -476,11 +889,23 @@
       "question": "platform-guidelines",
       "claim": "Anthropic recommends keeping an on-demand SKILL.md body under 500 lines, splitting longer content into separate files.",
       "quote": "Keep the `SKILL.md` body under 500 lines for optimal performance.",
-      "citations": [{"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Platform Docs", "date": "n.d.", "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Platform Docs",
+          "date": "n.d.",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "agent skills authoring best practices concise SKILL.md 500 lines",
-      "trust": {"score": 84, "basis": "Host vendor's current documentation; independently matched by Cursor's 500-line rule guidance (cursor-rules-500-lines)."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's current documentation; independently matched by Cursor's 500-line rule guidance (cursor-rules-500-lines)."
+      },
       "independence": "single"
     },
     {
@@ -488,11 +913,23 @@
       "question": "platform-guidelines",
       "claim": "Agent skill files require frontmatter fields (name and description) with validation rules.",
       "quote": "The `SKILL.md` frontmatter requires `name` and `description` fields with specific validation rules:",
-      "citations": [{"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Platform Docs", "date": "n.d.", "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Platform Docs",
+          "date": "n.d.",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "agent skills authoring best practices concise SKILL.md 500 lines",
-      "trust": {"score": 84, "basis": "Host vendor's documentation stating a hard requirement of its format."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's documentation stating a hard requirement of its format."
+      },
       "independence": "single"
     },
     {
@@ -500,11 +937,23 @@
       "question": "platform-guidelines",
       "claim": "The description loaded for discovery should say both what the content does and when to use it.",
       "quote": "The `description` field makes Skill discovery possible and should include both what the Skill does and when to use it.",
-      "citations": [{"title": "Skill authoring best practices", "author": "Anthropic", "publisher": "Claude Platform Docs", "date": "n.d.", "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Skill authoring best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Platform Docs",
+          "date": "n.d.",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "agent skills authoring best practices concise SKILL.md 500 lines",
-      "trust": {"score": 82, "basis": "Host vendor's documentation; corroborated by the Agent Skills specification's example description ('A description of what this skill does and when to use it')."},
+      "trust": {
+        "score": 82,
+        "basis": "Host vendor's documentation; corroborated by the Agent Skills specification's example description ('A description of what this skill does and when to use it')."
+      },
       "independence": "single"
     },
     {
@@ -512,11 +961,23 @@
       "question": "platform-guidelines",
       "claim": "The Agent Skills specification loads metadata (~100 tokens) for every skill at startup and the body (under 5000 tokens recommended) only on activation, and moves detailed reference material to separate files.",
       "quote": "Instructions (< 5000 tokens recommended): The full SKILL.md body is loaded when the skill is activated",
-      "citations": [{"title": "Specification - Agent Skills", "author": "Agent Skills", "publisher": "agentskills.io", "date": "n.d.", "url": "https://agentskills.io/specification", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Specification - Agent Skills",
+          "author": "Agent Skills",
+          "publisher": "agentskills.io",
+          "date": "n.d.",
+          "url": "https://agentskills.io/specification",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "open format specification (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "agent skills specification progressive disclosure tokens SKILL.md",
-      "trust": {"score": 80, "basis": "The format's own specification; same originator as Anthropic's skill guidance, so not independent of skill-body-500-lines. The same section says: 'Keep your main SKILL.md under 500 lines. Move detailed reference material to separate files.'"},
+      "trust": {
+        "score": 80,
+        "basis": "The format's own specification; same originator as Anthropic's skill guidance, so not independent of skill-body-500-lines. The same section says: 'Keep your main SKILL.md under 500 lines. Move detailed reference material to separate files.'"
+      },
       "independence": "single"
     },
     {
@@ -524,11 +985,23 @@
       "question": "platform-guidelines",
       "claim": "Only a skill's name and description are loaded at startup for every skill, so they are the always-loaded part of a compiled artifact.",
       "quote": "Metadata (~100 tokens): The name and description fields are loaded at startup for all skills",
-      "citations": [{"title": "Specification - Agent Skills", "author": "Agent Skills", "publisher": "agentskills.io", "date": "n.d.", "url": "https://agentskills.io/specification", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Specification - Agent Skills",
+          "author": "Agent Skills",
+          "publisher": "agentskills.io",
+          "date": "n.d.",
+          "url": "https://agentskills.io/specification",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "open format specification (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "agent skills specification progressive disclosure tokens SKILL.md",
-      "trust": {"score": 80, "basis": "The format's own specification; consistent with Claude Code's loading description (skills-lighter-than-always-loaded)."},
+      "trust": {
+        "score": 80,
+        "basis": "The format's own specification; consistent with Claude Code's loading description (skills-lighter-than-always-loaded)."
+      },
       "independence": "single"
     },
     {
@@ -536,11 +1009,23 @@
       "question": "platform-guidelines",
       "claim": "Cursor's rule guidance keeps each rule under 500 lines and splits large rules into composable ones.",
       "quote": "Keep rules under 500 lines",
-      "citations": [{"title": "Rules", "author": "Anysphere", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Rules",
+          "author": "Anysphere",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "cursor rules best practices under 500 lines",
-      "trust": {"score": 80, "basis": "Host vendor's own documentation, independent of Anthropic; the next bullet reads 'Split large rules into multiple, composable rules'."},
+      "trust": {
+        "score": 80,
+        "basis": "Host vendor's own documentation, independent of Anthropic; the next bullet reads 'Split large rules into multiple, composable rules'."
+      },
       "independence": "single"
     },
     {
@@ -548,11 +1033,23 @@
       "question": "platform-guidelines",
       "claim": "Good agent rules are focused, actionable and scoped.",
       "quote": "Good rules are focused, actionable, and scoped.",
-      "citations": [{"title": "Rules", "author": "Anysphere", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Rules",
+          "author": "Anysphere",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "cursor rules best practices under 500 lines",
-      "trust": {"score": 80, "basis": "Host vendor's own documentation, independent of Anthropic (claude-md-specific-concise)."},
+      "trust": {
+        "score": 80,
+        "basis": "Host vendor's own documentation, independent of Anthropic (claude-md-specific-concise)."
+      },
       "independence": "single"
     },
     {
@@ -560,11 +1057,23 @@
       "question": "platform-guidelines",
       "claim": "Reference a canonical file instead of copying its content into a rule; it keeps rules short and stops copies going stale.",
       "quote": "Reference files instead of copying their contents. This keeps rules short and prevents them from becoming stale as code changes.",
-      "citations": [{"title": "Rules", "author": "Anysphere", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Rules",
+          "author": "Anysphere",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "cursor rules best practices under 500 lines",
-      "trust": {"score": 78, "basis": "Host vendor's own documentation; supports one source per topic as a design choice."},
+      "trust": {
+        "score": 78,
+        "basis": "Host vendor's own documentation; supports one source per topic as a design choice."
+      },
       "independence": "single"
     },
     {
@@ -572,11 +1081,23 @@
       "question": "platform-guidelines",
       "claim": "OpenAI Codex stops adding instruction files once their combined size reaches 32 KiB by default, so an always-loaded set has a hard total budget.",
       "quote": "Codex skips empty files and stops adding files once the combined size reaches the limit defined by project_doc_max_bytes (32 KiB by default).",
-      "citations": [{"title": "Custom instructions with AGENTS.md", "author": "OpenAI", "publisher": "OpenAI Developers", "date": "n.d.", "url": "https://developers.openai.com/codex/guides/agents-md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "author": "OpenAI",
+          "publisher": "OpenAI Developers",
+          "date": "n.d.",
+          "url": "https://developers.openai.com/codex/guides/agents-md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Codex AGENTS.md project_doc_max_bytes size limit",
-      "trust": {"score": 84, "basis": "Host vendor's own documentation of a configured limit; independent of Anthropic (claude-md-200-lines)."},
+      "trust": {
+        "score": 84,
+        "basis": "Host vendor's own documentation of a configured limit; independent of Anthropic (claude-md-200-lines)."
+      },
       "independence": "single"
     },
     {
@@ -584,11 +1105,23 @@
       "question": "platform-guidelines",
       "claim": "OpenAI's guidance for review rules keeps them concise, explains the behaviour to flag, and reserves formatting and lint checks for CI rather than for the agent.",
       "quote": "Keep rules concise, explain the behavior to flag and any safe path or exception, and reserve formatting and lint checks for CI.",
-      "citations": [{"title": "Custom instructions with AGENTS.md", "author": "OpenAI", "publisher": "OpenAI Developers", "date": "n.d.", "url": "https://developers.openai.com/codex/guides/agents-md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "author": "OpenAI",
+          "publisher": "OpenAI Developers",
+          "date": "n.d.",
+          "url": "https://developers.openai.com/codex/guides/agents-md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Codex AGENTS.md project_doc_max_bytes size limit",
-      "trust": {"score": 82, "basis": "Host vendor's own documentation; independently matched by Cursor (cursor-use-a-linter)."},
+      "trust": {
+        "score": 82,
+        "basis": "Host vendor's own documentation; independently matched by Cursor (cursor-use-a-linter)."
+      },
       "independence": "single"
     },
     {
@@ -596,11 +1129,23 @@
       "question": "platform-guidelines",
       "claim": "GitHub's published prompt for generating Copilot repository instructions limits them to two pages.",
       "quote": "Instructions must be no longer than 2 pages.",
-      "citations": [{"title": "Adding repository custom instructions for GitHub Copilot", "author": "GitHub", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Adding repository custom instructions for GitHub Copilot",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub Copilot repository custom instructions length",
-      "trust": {"score": 68, "basis": "Host vendor's own page, but the sentence sits in a sample prompt under <Limitations>, not in a stated product limit."},
+      "trust": {
+        "score": 68,
+        "basis": "Host vendor's own page, but the sentence sits in a sample prompt under <Limitations>, not in a stated product limit."
+      },
       "independence": "single"
     },
     {
@@ -608,11 +1153,23 @@
       "question": "platform-guidelines",
       "claim": "Diataxis's explanation pages give background and context: why things are so, design decisions, constraints and implications.",
       "quote": "Provide background and context in your explanation: explain why things are so - design decisions, historical reasons, technical constraints - draw implications, mention specific examples.",
-      "citations": [{"title": "Explanation - Diátaxis", "author": "Daniele Procida", "publisher": "diataxis.fr", "date": "n.d.", "url": "https://diataxis.fr/explanation/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Explanation - Diátaxis",
+          "author": "Daniele Procida",
+          "publisher": "diataxis.fr",
+          "date": "n.d.",
+          "url": "https://diataxis.fr/explanation/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "documentation framework (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "diataxis explanation understanding-oriented",
-      "trust": {"score": 78, "basis": "The framework author's own page; corroborated by Anthropic (prompting-explain-why)."},
+      "trust": {
+        "score": 78,
+        "basis": "The framework author's own page; corroborated by Anthropic (prompting-explain-why)."
+      },
       "independence": "single"
     },
     {
@@ -620,11 +1177,23 @@
       "question": "platform-guidelines",
       "claim": "Diataxis keeps explanation closely bounded: instruction and technical description belong elsewhere, and letting them in harms the explanation and hides them from their proper place.",
       "quote": "One risk of explanation is that it tends to absorb other things. The writer, intent on covering the topic, feels the urge to include instruction or technical description related to it. But documentation already has other places for these, and allowing them to creep in interferes with the explanation itself, and removes them from view in the correct place.",
-      "citations": [{"title": "Explanation - Diátaxis", "author": "Daniele Procida", "publisher": "diataxis.fr", "date": "n.d.", "url": "https://diataxis.fr/explanation/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Explanation - Diátaxis",
+          "author": "Daniele Procida",
+          "publisher": "diataxis.fr",
+          "date": "n.d.",
+          "url": "https://diataxis.fr/explanation/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "documentation framework (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "diataxis explanation understanding-oriented",
-      "trust": {"score": 78, "basis": "The framework author's own page; supports 'detailed guidance belongs in guidelines' and is in tension with a principle carrying action bullets."},
+      "trust": {
+        "score": 78,
+        "basis": "The framework author's own page; supports 'detailed guidance belongs in guidelines' and is in tension with a principle carrying action bullets."
+      },
       "independence": "single"
     },
     {
@@ -632,11 +1201,23 @@
       "question": "platform-guidelines",
       "claim": "Google's developer documentation style guide uses a unique H1 per page and only one H1 on a page.",
       "quote": "Use a unique level-1 heading (h1) for each page in a set of documents and only use a level-1 heading once on a page.",
-      "citations": [{"title": "Headings and titles", "author": "Google", "publisher": "Google developer documentation style guide", "date": "2026-06-08", "url": "https://developers.google.com/style/headings", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Headings and titles",
+          "author": "Google",
+          "publisher": "Google developer documentation style guide",
+          "date": "2026-06-08",
+          "url": "https://developers.google.com/style/headings",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "google developer documentation style guide headings h1 once",
-      "trust": {"score": 82, "basis": "Style-guide owner's current page (last updated 2026-06-08); independently matched by markdownlint MD025 (md025-single-title)."},
+      "trust": {
+        "score": 82,
+        "basis": "Style-guide owner's current page (last updated 2026-06-08); independently matched by markdownlint MD025 (md025-single-title)."
+      },
       "independence": "single"
     },
     {
@@ -644,11 +1225,23 @@
       "question": "platform-guidelines",
       "claim": "Google's technical-writing course treats the opening sentence as the most important, since busy readers may skip what follows.",
       "quote": "The opening sentence is the most important sentence of any paragraph. Busy readers focus on opening sentences and sometimes skip over subsequent sentences.",
-      "citations": [{"title": "Paragraphs | Technical Writing", "author": "Google", "publisher": "Google for Developers", "date": "2025-03-28", "url": "https://developers.google.com/tech-writing/one/paragraphs", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Paragraphs | Technical Writing",
+          "author": "Google",
+          "publisher": "Google for Developers",
+          "date": "2025-03-28",
+          "url": "https://developers.google.com/tech-writing/one/paragraphs",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style and training guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "google technical writing paragraphs opening sentence length",
-      "trust": {"score": 80, "basis": "Google's own technical-writing course; corroborated by NN/g (lead-with-main-point) and Microsoft (ms-lead-with-most-important)."},
+      "trust": {
+        "score": 80,
+        "basis": "Google's own technical-writing course; corroborated by NN/g (lead-with-main-point) and Microsoft (ms-lead-with-most-important)."
+      },
       "independence": "single"
     },
     {
@@ -656,11 +1249,23 @@
       "question": "platform-guidelines",
       "claim": "Readers welcome paragraphs of three to five sentences and avoid ones of more than about seven.",
       "quote": "Readers generally welcome paragraphs containing three to five sentences, but will avoid paragraphs containing more than about seven sentences.",
-      "citations": [{"title": "Paragraphs | Technical Writing", "author": "Google", "publisher": "Google for Developers", "date": "2025-03-28", "url": "https://developers.google.com/tech-writing/one/paragraphs", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Paragraphs | Technical Writing",
+          "author": "Google",
+          "publisher": "Google for Developers",
+          "date": "2025-03-28",
+          "url": "https://developers.google.com/tech-writing/one/paragraphs",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style and training guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "google technical writing paragraphs opening sentence length",
-      "trust": {"score": 74, "basis": "Google's own course; a guideline for human readers, no study cited; gives a paragraph bound, not a document bound."},
+      "trust": {
+        "score": 74,
+        "basis": "Google's own course; a guideline for human readers, no study cited; gives a paragraph bound, not a document bound."
+      },
       "independence": "single"
     },
     {
@@ -668,11 +1273,23 @@
       "question": "platform-guidelines",
       "claim": "Microsoft's style guide says to get to the point fast: lead with what matters most and front-load keywords.",
       "quote": "Lead with what's most important. Front-load keywords for scanning.",
-      "citations": [{"title": "Top 10 tips for Microsoft style and voice", "author": "Microsoft", "publisher": "Microsoft Writing Style Guide (Microsoft Learn)", "date": "2026-07-02", "url": "https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Top 10 tips for Microsoft style and voice",
+          "author": "Microsoft",
+          "publisher": "Microsoft Writing Style Guide (Microsoft Learn)",
+          "date": "2026-07-02",
+          "url": "https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Microsoft writing style guide top 10 tips brief lead with most important",
-      "trust": {"score": 80, "basis": "Style-guide owner's current page; independent of Google and NN/g."},
+      "trust": {
+        "score": 80,
+        "basis": "Style-guide owner's current page; independent of Google and NN/g."
+      },
       "independence": "single"
     },
     {
@@ -680,11 +1297,23 @@
       "question": "platform-guidelines",
       "claim": "Microsoft's style guide says to be brief: give just enough to decide confidently and prune every excess word.",
       "quote": "Give customers just enough information to make decisions confidently. Prune every excess word.",
-      "citations": [{"title": "Top 10 tips for Microsoft style and voice", "author": "Microsoft", "publisher": "Microsoft Writing Style Guide (Microsoft Learn)", "date": "2026-07-02", "url": "https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Top 10 tips for Microsoft style and voice",
+          "author": "Microsoft",
+          "publisher": "Microsoft Writing Style Guide (Microsoft Learn)",
+          "date": "2026-07-02",
+          "url": "https://learn.microsoft.com/en-us/style-guide/top-10-tips-style-voice",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Microsoft writing style guide top 10 tips brief lead with most important",
-      "trust": {"score": 80, "basis": "Style-guide owner's current page; supports concision at SHOULD strength without a number."},
+      "trust": {
+        "score": 80,
+        "basis": "Style-guide owner's current page; supports concision at SHOULD strength without a number."
+      },
       "independence": "single"
     },
     {
@@ -692,11 +1321,23 @@
       "question": "platform-guidelines",
       "claim": "Content on the first screen is the most likely to be read; many readers do not scroll further.",
       "quote": "Content on the first screen (also called above the fold) is the most likely to be read. Many readers won’t scroll further without a compelling reason.",
-      "citations": [{"title": "Scannable content", "author": "Microsoft", "publisher": "Microsoft Writing Style Guide (Microsoft Learn)", "date": "2023-06-20", "url": "https://learn.microsoft.com/en-us/style-guide/scannable-content/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Scannable content",
+          "author": "Microsoft",
+          "publisher": "Microsoft Writing Style Guide (Microsoft Learn)",
+          "date": "2023-06-20",
+          "url": "https://learn.microsoft.com/en-us/style-guide/scannable-content/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Microsoft style guide scannable content short paragraphs",
-      "trust": {"score": 76, "basis": "Style-guide owner's page; about human readers; the agent analogue is the early-position bias in ifscale-earlier-instructions and lost-in-the-middle."},
+      "trust": {
+        "score": 76,
+        "basis": "Style-guide owner's page; about human readers; the agent analogue is the early-position bias in ifscale-earlier-instructions and lost-in-the-middle."
+      },
       "independence": "single"
     },
     {
@@ -704,11 +1345,23 @@
       "question": "platform-guidelines",
       "claim": "Microsoft's style guide gives a list two to seven short items, consistent in structure.",
       "quote": "A list should have at least two items but (if possible) no more than seven items. Each item should be fairly short—the reader should be able to see at least two, and preferably three, list items at a glance.",
-      "citations": [{"title": "Lists", "author": "Microsoft", "publisher": "Microsoft Writing Style Guide (Microsoft Learn)", "date": "2023-06-14", "url": "https://learn.microsoft.com/en-us/style-guide/scannable-content/lists", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Lists",
+          "author": "Microsoft",
+          "publisher": "Microsoft Writing Style Guide (Microsoft Learn)",
+          "date": "2023-06-14",
+          "url": "https://learn.microsoft.com/en-us/style-guide/scannable-content/lists",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Microsoft style guide lists bulleted items consistent structure",
-      "trust": {"score": 78, "basis": "Style-guide owner's page; the same page says 'Make all the items in a list consistent in structure.'"},
+      "trust": {
+        "score": 78,
+        "basis": "Style-guide owner's page; the same page says 'Make all the items in a list consistent in structure.'"
+      },
       "independence": "single"
     },
     {
@@ -716,11 +1369,23 @@
       "question": "platform-guidelines",
       "claim": "Explaining the motivation behind an instruction helps the model deliver better-targeted behaviour than a bare command.",
       "quote": "Providing context or motivation behind your instructions, such as explaining to Claude why such behavior is important, can give Claude more information about your goals and help it deliver more targeted responses.",
-      "citations": [{"title": "Prompting best practices", "author": "Anthropic", "publisher": "Claude Platform Docs", "date": "n.d.", "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Prompting best practices",
+          "author": "Anthropic",
+          "publisher": "Claude Platform Docs",
+          "date": "n.d.",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude prompting best practices add context motivation why",
-      "trust": {"score": 84, "basis": "Model vendor's current documentation; corroborated for human readers by Diataxis (diataxis-explain-why)."},
+      "trust": {
+        "score": 84,
+        "basis": "Model vendor's current documentation; corroborated for human readers by Diataxis (diataxis-explain-why)."
+      },
       "independence": "single"
     },
     {
@@ -728,11 +1393,23 @@
       "question": "experts-view",
       "claim": "Anthropic's context-engineering guidance treats context as a finite resource with diminishing returns, because recall falls as context grows (context rot).",
       "quote": "Context, therefore, must be treated as a finite resource with diminishing marginal returns.",
-      "citations": [{"title": "Effective context engineering for AI agents", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor engineering publication (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "anthropic effective context engineering context rot attention budget",
-      "trust": {"score": 80, "basis": "Model vendor's engineering post (updated 2026-10-18); independently corroborated by Chroma's report (chroma-context-rot) and the Lost in the Middle study (lost-in-the-middle)."},
+      "trust": {
+        "score": 80,
+        "basis": "Model vendor's engineering post (updated 2026-10-18); independently corroborated by Chroma's report (chroma-context-rot) and the Lost in the Middle study (lost-in-the-middle)."
+      },
       "independence": "single"
     },
     {
@@ -740,11 +1417,23 @@
       "question": "experts-view",
       "claim": "Good context engineering finds the smallest possible set of high-signal tokens that produce the desired outcome.",
       "quote": "good context engineering means finding the smallest possible set of high-signal tokens that maximize the likelihood of some desired outcome.",
-      "citations": [{"title": "Effective context engineering for AI agents", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor engineering publication (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "anthropic effective context engineering context rot attention budget",
-      "trust": {"score": 80, "basis": "Model vendor's engineering post; a principle, not a measured bound."},
+      "trust": {
+        "score": 80,
+        "basis": "Model vendor's engineering post; a principle, not a measured bound."
+      },
       "independence": "single"
     },
     {
@@ -752,11 +1441,23 @@
       "question": "experts-view",
       "claim": "Minimal context does not mean short: an instruction still needs enough information up front for the agent to adhere, which is where a hard length cap can hurt.",
       "quote": "(Note that minimal does not necessarily mean short; you still need to give the agent sufficient information up front to ensure it adheres to the desired behavior.)",
-      "citations": [{"title": "Effective context engineering for AI agents", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor engineering publication (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "anthropic effective context engineering context rot attention budget",
-      "trust": {"score": 80, "basis": "Model vendor's engineering post; the qualification that bounds any length rule."},
+      "trust": {
+        "score": 80,
+        "basis": "Model vendor's engineering post; the qualification that bounds any length rule."
+      },
       "independence": "single"
     },
     {
@@ -764,11 +1465,23 @@
       "question": "experts-view",
       "claim": "Instructions work best at the right altitude: specific enough to guide behaviour, yet flexible enough to act as strong heuristics, avoiding both brittle hard-coded logic and vague high-level guidance.",
       "quote": "The optimal altitude strikes a balance: specific enough to guide behavior effectively, yet flexible enough to provide the model with strong heuristics to guide behavior.",
-      "citations": [{"title": "Effective context engineering for AI agents", "author": "Anthropic", "publisher": "Anthropic Engineering", "date": "2025-09-29", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Effective context engineering for AI agents",
+          "author": "Anthropic",
+          "publisher": "Anthropic Engineering",
+          "date": "2025-09-29",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor engineering publication (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "anthropic effective context engineering context rot attention budget",
-      "trust": {"score": 80, "basis": "Model vendor's engineering post; maps onto a principle's statement (heuristic) plus guidance (specific)."},
+      "trust": {
+        "score": 80,
+        "basis": "Model vendor's engineering post; maps onto a principle's statement (heuristic) plus guidance (specific)."
+      },
       "independence": "single"
     },
     {
@@ -776,11 +1489,23 @@
       "question": "experts-view",
       "claim": "Instruction-following accuracy falls as instruction density grows; even the best frontier models reach only 68% accuracy at 500 simultaneous instructions.",
       "quote": "We evaluate 20 state-of-the-art models across seven major providers and find that even the best frontier models only achieve 68% accuracy at the max density of 500 instructions.",
-      "citations": [{"title": "How Many Instructions Can LLMs Follow at Once?", "author": "Daniel Jaroslawicz, Brendan Whiting, Parth Shah, Karime Maamari", "publisher": "arXiv (2507.11538)", "date": "2025-07-15", "url": "https://arxiv.org/abs/2507.11538", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "How Many Instructions Can LLMs Follow at Once?",
+          "author": "Daniel Jaroslawicz, Brendan Whiting, Parth Shah, Karime Maamari",
+          "publisher": "arXiv (2507.11538)",
+          "date": "2025-07-15",
+          "url": "https://arxiv.org/abs/2507.11538",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "research preprint",
       "generated_by": "grow-cookbook research agent",
       "query": "how many instructions can LLMs follow at once instruction density benchmark",
-      "trust": {"score": 70, "basis": "Preprint, not peer reviewed; synthetic keyword-inclusion task; measures instruction count, not lines; read from the abstract."},
+      "trust": {
+        "score": 70,
+        "basis": "Preprint, not peer reviewed; synthetic keyword-inclusion task; measures instruction count, not lines; read from the abstract."
+      },
       "independence": "single"
     },
     {
@@ -788,11 +1513,23 @@
       "question": "experts-view",
       "claim": "At high instruction density models show a bias toward earlier instructions.",
       "quote": "Our analysis reveals model size and reasoning capability to correlate with 3 distinct performance degradation patterns, bias towards earlier instructions, and distinct categories of instruction-following errors.",
-      "citations": [{"title": "How Many Instructions Can LLMs Follow at Once?", "author": "Daniel Jaroslawicz, Brendan Whiting, Parth Shah, Karime Maamari", "publisher": "arXiv (2507.11538)", "date": "2025-07-15", "url": "https://arxiv.org/abs/2507.11538", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "How Many Instructions Can LLMs Follow at Once?",
+          "author": "Daniel Jaroslawicz, Brendan Whiting, Parth Shah, Karime Maamari",
+          "publisher": "arXiv (2507.11538)",
+          "date": "2025-07-15",
+          "url": "https://arxiv.org/abs/2507.11538",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "research preprint",
       "generated_by": "grow-cookbook research agent",
       "query": "how many instructions can LLMs follow at once instruction density benchmark",
-      "trust": {"score": 68, "basis": "Preprint, abstract only; consistent with the primacy effect in lost-in-the-middle."},
+      "trust": {
+        "score": 48,
+        "basis": "Preprint, abstract only; consistent with the primacy effect in lost-in-the-middle. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The abstract reports a \"bias towards earlier instructions\" but does not tie it to high density, so the claim's \"at high instruction density\" is not supported. From memory and not checked here: the paper's body says primacy effects peak at moderate density and fade at the highest densities; lowered 68->48."
+      },
       "independence": "single"
     },
     {
@@ -800,11 +1537,23 @@
       "question": "experts-view",
       "claim": "Language models use information at the start or end of a long context best and degrade significantly for information in the middle, even long-context models.",
       "quote": "In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models.",
-      "citations": [{"title": "Lost in the Middle: How Language Models Use Long Contexts", "author": "Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, Percy Liang", "publisher": "arXiv (2307.03172)", "date": "2023-11-20", "url": "https://arxiv.org/abs/2307.03172", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "author": "Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, Percy Liang",
+          "publisher": "arXiv (2307.03172)",
+          "date": "2023-11-20",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "research paper (arXiv, revised v3)",
       "generated_by": "grow-cookbook research agent",
       "query": "lost in the middle how language models use long contexts",
-      "trust": {"score": 74, "basis": "Widely cited study read from its arXiv abstract; retrieval tasks on 2023 models, so currency is limited; corroborated by Chroma (chroma-context-rot) and Anthropic (context-finite-resource)."},
+      "trust": {
+        "score": 74,
+        "basis": "Widely cited study read from its arXiv abstract; retrieval tasks on 2023 models, so currency is limited; corroborated by Chroma (chroma-context-rot) and Anthropic (context-finite-resource)."
+      },
       "independence": "single"
     },
     {
@@ -812,11 +1561,23 @@
       "question": "experts-view",
       "claim": "Across 18 models, performance grows less reliable as input length grows, even on simple tasks.",
       "quote": "Our results reveal that models do not use their context uniformly; instead, their performance grows increasingly unreliable as input length grows.",
-      "citations": [{"title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance", "author": "Kelly Hong, Anton Troynikov, Jeff Huber", "publisher": "Chroma", "date": "2025-07-14", "url": "https://research.trychroma.com/context-rot", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance",
+          "author": "Kelly Hong, Anton Troynikov, Jeff Huber",
+          "publisher": "Chroma",
+          "date": "2025-07-14",
+          "url": "https://research.trychroma.com/context-rot",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "vendor technical report (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "context rot increasing input tokens LLM performance",
-      "trust": {"score": 66, "basis": "Vendor technical report, not peer reviewed, from a retrieval-database company with an interest in the result; independent of Anthropic and of the Lost in the Middle authors."},
+      "trust": {
+        "score": 66,
+        "basis": "Vendor technical report, not peer reviewed, from a retrieval-database company with an interest in the result; independent of Anthropic and of the Lost in the Middle authors."
+      },
       "independence": "single"
     },
     {
@@ -824,11 +1585,23 @@
       "question": "experts-view",
       "claim": "When an agent keeps ignoring an instruction that is in its file, emphasis does not fix it: the file has grown long enough that the line gets lost, or the rule belongs in enforcement.",
       "quote": "If Claude keeps ignoring a line that *is* in `CLAUDE.md`, adding IMPORTANT probably won't fix it. Either the file has grown long enough that the line gets lost, or the line is a rule that can't have exceptions",
-      "citations": [{"title": "Best practices for Claude Code", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Best practices for Claude Code",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code best practices keep CLAUDE.md short",
-      "trust": {"score": 82, "basis": "Host vendor's current documentation; the common mistake it names (shouting instead of trimming) is the practitioner point."},
+      "trust": {
+        "score": 82,
+        "basis": "Host vendor's current documentation; the common mistake it names (shouting instead of trimming) is the practitioner point."
+      },
       "independence": "single"
     },
     {
@@ -836,11 +1609,23 @@
       "question": "experts-view",
       "claim": "What must happen every time belongs in enforcement (a hook, deny rule or setting); instruction text is for guidelines the agent may judge inapplicable.",
       "quote": "If something has to happen every time, make it a hook, a deny rule, or a managed setting. `CLAUDE.md` is for guidelines, and Claude is allowed to decide a guideline doesn't apply.",
-      "citations": [{"title": "Best practices for Claude Code", "author": "Anthropic", "publisher": "Claude Code Docs", "date": "n.d.", "url": "https://code.claude.com/docs/en/best-practices", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Best practices for Claude Code",
+          "author": "Anthropic",
+          "publisher": "Claude Code Docs",
+          "date": "n.d.",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Claude Code best practices keep CLAUDE.md short",
-      "trust": {"score": 82, "basis": "Host vendor's current documentation; matched by OpenAI (codex-lint-in-ci) and Cursor (cursor-use-a-linter)."},
+      "trust": {
+        "score": 82,
+        "basis": "Host vendor's current documentation; matched by OpenAI (codex-lint-in-ci) and Cursor (cursor-use-a-linter)."
+      },
       "independence": "single"
     },
     {
@@ -848,11 +1633,23 @@
       "question": "experts-view",
       "claim": "Do not copy whole style guides into agent rules; use a linter, since the agent already knows common conventions.",
       "quote": "Copying entire style guides: Use a linter instead. Agent already knows common style conventions.",
-      "citations": [{"title": "Rules", "author": "Anysphere", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Rules",
+          "author": "Anysphere",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "cursor rules best practices under 500 lines",
-      "trust": {"score": 78, "basis": "Host vendor's own 'What to avoid' list; independent of Anthropic and OpenAI."},
+      "trust": {
+        "score": 78,
+        "basis": "Host vendor's own 'What to avoid' list; independent of Anthropic and OpenAI."
+      },
       "independence": "single"
     },
     {
@@ -860,11 +1657,23 @@
       "question": "experts-view",
       "claim": "Start with few rules and add one only when the agent repeats the same mistake; do not over-optimize first.",
       "quote": "Start simple. Add rules only when you notice Agent making the same mistake repeatedly. Don't over-optimize before you understand your patterns.",
-      "citations": [{"title": "Rules", "author": "Anysphere", "publisher": "Cursor Docs", "date": "n.d.", "url": "https://cursor.com/docs/context/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Rules",
+          "author": "Anysphere",
+          "publisher": "Cursor Docs",
+          "date": "n.d.",
+          "url": "https://cursor.com/docs/context/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "agent-host vendor documentation (primary)",
       "generated_by": "grow-cookbook research agent",
       "query": "cursor rules best practices under 500 lines",
-      "trust": {"score": 74, "basis": "Host vendor's own guidance; practitioner advice rather than a measured result."},
+      "trust": {
+        "score": 74,
+        "basis": "Host vendor's own guidance; practitioner advice rather than a measured result."
+      },
       "independence": "single"
     },
     {
@@ -872,11 +1681,23 @@
       "question": "experts-view",
       "claim": "In a short decision record, bullets are for visual style, not an excuse for sentence fragments.",
       "quote": "Bullets are acceptable only for visual style, not as an excuse for writing sentence fragments.",
-      "citations": [{"title": "Documenting Architecture Decisions", "author": "Michael Nygard", "publisher": "Cognitect", "date": "2011-11-15", "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "practitioner article (originating source for ADRs)",
       "generated_by": "grow-cookbook research agent",
       "query": "Nygard documenting architecture decisions short text file",
-      "trust": {"score": 60, "basis": "Single practitioner opinion for human readers; a caution on how guidance bullets are written, not against having them."},
+      "trust": {
+        "score": 60,
+        "basis": "Single practitioner opinion for human readers; a caution on how guidance bullets are written, not against having them."
+      },
       "independence": "single"
     },
     {
@@ -884,11 +1705,23 @@
       "question": "best-practices",
       "claim": "The first H1 heading MUST match the frontmatter `title` field exactly.",
       "quote": "The first H1 heading MUST match the frontmatter `title` field exactly.",
-      "citations": [{"title": "principle-formatting (principle-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (principle-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: pf-title-heading",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -896,11 +1729,23 @@
       "question": "best-practices",
       "claim": "A concise statement paragraph MUST appear immediately after the H1 heading. This is the principle's core idea — typically 1-3 sentences.",
       "quote": "A concise statement paragraph MUST appear immediately after the H1 heading. This is the principle's core idea — typically 1-3 sentences.",
-      "citations": [{"title": "principle-formatting (principle-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (principle-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: pf-statement",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -908,11 +1753,23 @@
       "question": "best-practices",
       "claim": "The file MUST end with a `## Change History` section containing a table with columns: Version, Date, Author, Summary.",
       "quote": "The file MUST end with a `## Change History` section containing a table with columns: Version, Date, Author, Summary.",
-      "citations": [{"title": "principle-formatting (principle-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (principle-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: pf-change-history",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -920,11 +1777,23 @@
       "question": "experts-view",
       "claim": "Principles SHOULD be concise. The body (excluding frontmatter and Change History) SHOULD NOT exceed ~50 lines. Principles are philosophical anchors, not exhaustive guides — detailed guidance belongs in guidelines.",
       "quote": "Principles SHOULD be concise. The body (excluding frontmatter and Change History) SHOULD NOT exceed ~50 lines. Principles are philosophical anchors, not exhaustive guides — detailed guidance belongs in guidelines.",
-      "citations": [{"title": "principle-formatting (principle-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (principle-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/principle-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: pf-brevity",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -932,11 +1801,23 @@
       "question": "known-solutions",
       "claim": "A part may carry a `role` in `artifact.json`: `rules`, `how-to`, `examples`, `review-focus`, `review-bar`, `build-bar`, `rationale` or `references`.",
       "quote": "A part may carry a `role` in `artifact.json`: `rules`, `how-to`, `examples`, `review-focus`, `review-bar`, `build-bar`, `rationale` or `references`.",
-      "citations": [{"title": "principle-formatting (conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: roles-vocabulary",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -944,11 +1825,23 @@
       "question": "known-solutions",
       "claim": "A roled artifact gives every other part a role, names each rule in its `rules` parts (`- **kebab-name**: … MUST|SHOULD|MAY …`), and sets no `routes` and no `hosts/`.",
       "quote": "A roled artifact gives every other part a role, names each rule in its `rules` parts (`- **kebab-name**: … MUST|SHOULD|MAY …`), and sets no `routes` and no `hosts/`.",
-      "citations": [{"title": "principle-formatting (conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: roles-every-part-roled",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -956,11 +1849,23 @@
       "question": "known-solutions",
       "claim": "`principles/t`, which has no use case, keeps its type: `principle-t` and `reviewing-principle-t`.",
       "quote": "`principles/t`, which has no use case, keeps its type: `principle-t` and `reviewing-principle-t`.",
-      "citations": [{"title": "principle-formatting (conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: roles-principle-skill-names",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -968,41 +1873,298 @@
       "question": "known-solutions",
       "claim": "Each skill has its own description and routes under its own use case, with the artifact's own use case below it (`coding/reviewing/planning/data`; a principle's `coding/reviewing/principles`).",
       "quote": "Each skill has its own description and routes under its own use case, with the artifact's own use case below it (`coding/reviewing/planning/data`; a principle's `coding/reviewing/principles`).",
-      "citations": [{"title": "principle-formatting (conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "principle-formatting (conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: roles-principle-routing",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     }
   ],
   "verdicts": [
-    {"rule": "pf-frontmatter-complete", "verdict": "supported", "claims": ["pep-preamble-required", "skill-frontmatter-required", "json-schema-required", "astro-frontmatter-schema"]},
-    {"rule": "pf-type-field", "verdict": "supported", "claims": ["json-schema-const", "pep-preamble-required", "astro-frontmatter-schema"]},
-    {"rule": "pf-title-heading", "verdict": "unsupported", "claims": ["pf-title-heading-prior", "md041-frontmatter-title-satisfies", "md025-frontmatter-title-counts", "markdownlint-custom-rules-frontmatter"]},
-    {"rule": "pf-statement", "verdict": "unsupported", "claims": ["pf-statement-prior", "lead-with-main-point", "ms-lead-with-most-important", "google-opening-sentence", "pep-abstract-short", "google-paragraph-length", "vale-metric-formulas"]},
-    {"rule": "pf-actionable-guidance", "verdict": "supported", "claims": ["right-altitude", "claude-md-specific-concise", "claude-md-headers-and-bullets", "cursor-focused-actionable", "ms-lists-short", "nygard-bullets-not-fragments", "diataxis-keep-bounded"]},
-    {"rule": "pf-change-history", "verdict": "unsupported", "claims": ["pf-change-history-prior", "changelog-entry-per-version", "changelog-dated", "md043-required-headings"]},
-    {"rule": "pf-brevity", "verdict": "unsupported", "claims": ["pf-brevity-prior", "claude-md-200-lines", "skill-body-500-lines", "agentskills-progressive-disclosure", "cursor-rules-500-lines", "codex-32kib-combined", "copilot-two-pages", "ifscale-density-degrades", "chroma-context-rot", "lost-in-the-middle", "context-finite-resource", "minimal-not-short", "claude-md-line-gets-lost", "ms-be-brief", "adr-short-record", "diataxis-keep-bounded", "md013-measures-line-width"]},
-    {"rule": "standard-roled-parts", "verdict": "supported", "claims": ["evaluator-optimizer", "skills-lighter-than-always-loaded", "agentskills-progressive-disclosure"]},
-    {"rule": "standard-named-rules", "verdict": "supported", "claims": ["claude-md-headers-and-bullets", "cursor-rules-500-lines", "ms-lists-short"]},
-    {"rule": "standard-one-source-per-topic", "verdict": "supported", "claims": ["claude-md-conflicts", "cursor-reference-not-copy", "diataxis-keep-bounded"]},
-    {"rule": "standard-research-cited", "verdict": "supported", "claims": ["adr-motivation-lost", "prompting-explain-why", "diataxis-explain-why"]},
-    {"rule": "roles-vocabulary", "verdict": "unsupported", "claims": ["roles-vocabulary-prior"]},
-    {"rule": "roles-intro-history-unroled", "verdict": "supported", "claims": ["changelog-for-humans", "claude-md-every-line-costs", "claude-md-only-what-agent-lacks", "lead-with-main-point"]},
-    {"rule": "roles-principle-may-be-roled", "verdict": "supported", "claims": ["evaluator-optimizer", "skills-lighter-than-always-loaded", "agentskills-progressive-disclosure"]},
-    {"rule": "roles-every-part-roled", "verdict": "unsupported", "claims": ["roles-every-part-roled-prior"]},
-    {"rule": "roles-four-skills", "verdict": "supported", "claims": ["evaluator-optimizer", "skills-lighter-than-always-loaded"]},
-    {"rule": "roles-principle-skill-names", "verdict": "unsupported", "claims": ["roles-principle-skill-names-prior"]},
-    {"rule": "roles-rationale-references-linked", "verdict": "supported", "claims": ["agentskills-progressive-disclosure", "skill-body-500-lines", "skills-lighter-than-always-loaded"]},
-    {"rule": "roles-principle-routing", "verdict": "unsupported", "claims": ["roles-principle-routing-prior"]},
-    {"rule": "pf-single-title", "verdict": "new", "claims": ["google-single-h1", "md025-single-title", "md041-title-heading"]},
-    {"rule": "pf-state-why", "verdict": "new", "claims": ["prompting-explain-why", "diataxis-explain-why", "adr-motivation-lost"]},
-    {"rule": "pf-only-what-the-agent-lacks", "verdict": "new", "claims": ["skill-only-new-context", "claude-md-only-what-agent-lacks", "cursor-use-a-linter", "smallest-high-signal-set", "cursor-start-simple"]},
-    {"rule": "pf-summary-what-and-when", "verdict": "new", "claims": ["skill-description-what-and-when", "agentskills-metadata-always-loaded"]},
-    {"rule": "pf-history-newest-first", "verdict": "new", "claims": ["changelog-latest-first", "changelog-entry-per-version", "changelog-dated"]},
-    {"rule": "pf-format-checks-tool-enforced", "verdict": "new", "claims": ["docs-as-code", "codex-lint-in-ci", "cursor-use-a-linter", "claude-md-hooks-for-absolutes", "md043-required-headings", "json-schema-required", "markdownlint-custom-rules-frontmatter", "vale-metric-formulas", "vale-occurrence", "vale-script", "agentsmd-any-headings"]},
-    {"rule": "pf-always-loaded-budget", "verdict": "new", "claims": ["claude-md-200-lines", "codex-32kib-combined", "claude-md-every-line-costs", "ifscale-density-degrades", "agentskills-metadata-always-loaded"]},
-    {"rule": "pf-key-guidance-first", "verdict": "new", "claims": ["lost-in-the-middle", "ifscale-earlier-instructions", "ms-first-screen", "google-opening-sentence"]}
+    {
+      "rule": "pf-frontmatter-complete",
+      "verdict": "supported",
+      "claims": [
+        "pep-preamble-required",
+        "skill-frontmatter-required",
+        "json-schema-required",
+        "astro-frontmatter-schema"
+      ]
+    },
+    {
+      "rule": "pf-type-field",
+      "verdict": "supported",
+      "claims": [
+        "json-schema-const",
+        "pep-preamble-required",
+        "astro-frontmatter-schema"
+      ]
+    },
+    {
+      "rule": "pf-title-heading",
+      "verdict": "unsupported",
+      "claims": [
+        "pf-title-heading-prior",
+        "md041-frontmatter-title-satisfies",
+        "md025-frontmatter-title-counts",
+        "markdownlint-custom-rules-frontmatter"
+      ]
+    },
+    {
+      "rule": "pf-statement",
+      "verdict": "unsupported",
+      "claims": [
+        "pf-statement-prior",
+        "lead-with-main-point",
+        "ms-lead-with-most-important",
+        "google-opening-sentence",
+        "pep-abstract-short",
+        "google-paragraph-length",
+        "vale-metric-formulas"
+      ]
+    },
+    {
+      "rule": "pf-actionable-guidance",
+      "verdict": "supported",
+      "claims": [
+        "right-altitude",
+        "claude-md-specific-concise",
+        "claude-md-headers-and-bullets",
+        "cursor-focused-actionable",
+        "ms-lists-short",
+        "nygard-bullets-not-fragments",
+        "diataxis-keep-bounded"
+      ]
+    },
+    {
+      "rule": "pf-change-history",
+      "verdict": "unsupported",
+      "claims": [
+        "pf-change-history-prior",
+        "changelog-entry-per-version",
+        "changelog-dated",
+        "md043-required-headings"
+      ]
+    },
+    {
+      "rule": "pf-brevity",
+      "verdict": "unsupported",
+      "claims": [
+        "pf-brevity-prior",
+        "claude-md-200-lines",
+        "skill-body-500-lines",
+        "agentskills-progressive-disclosure",
+        "cursor-rules-500-lines",
+        "codex-32kib-combined",
+        "copilot-two-pages",
+        "ifscale-density-degrades",
+        "chroma-context-rot",
+        "lost-in-the-middle",
+        "context-finite-resource",
+        "minimal-not-short",
+        "claude-md-line-gets-lost",
+        "ms-be-brief",
+        "adr-short-record",
+        "diataxis-keep-bounded",
+        "md013-measures-line-width"
+      ]
+    },
+    {
+      "rule": "standard-roled-parts",
+      "verdict": "supported",
+      "claims": [
+        "evaluator-optimizer",
+        "skills-lighter-than-always-loaded",
+        "agentskills-progressive-disclosure"
+      ]
+    },
+    {
+      "rule": "standard-named-rules",
+      "verdict": "supported",
+      "claims": [
+        "claude-md-headers-and-bullets",
+        "cursor-rules-500-lines",
+        "ms-lists-short"
+      ]
+    },
+    {
+      "rule": "standard-one-source-per-topic",
+      "verdict": "supported",
+      "claims": [
+        "claude-md-conflicts",
+        "cursor-reference-not-copy",
+        "diataxis-keep-bounded"
+      ]
+    },
+    {
+      "rule": "standard-research-cited",
+      "verdict": "supported",
+      "claims": [
+        "adr-motivation-lost",
+        "prompting-explain-why",
+        "diataxis-explain-why"
+      ]
+    },
+    {
+      "rule": "roles-vocabulary",
+      "verdict": "unsupported",
+      "claims": [
+        "roles-vocabulary-prior"
+      ]
+    },
+    {
+      "rule": "roles-intro-history-unroled",
+      "verdict": "supported",
+      "claims": [
+        "changelog-for-humans",
+        "claude-md-every-line-costs",
+        "claude-md-only-what-agent-lacks",
+        "lead-with-main-point"
+      ]
+    },
+    {
+      "rule": "roles-principle-may-be-roled",
+      "verdict": "supported",
+      "claims": [
+        "evaluator-optimizer",
+        "skills-lighter-than-always-loaded",
+        "agentskills-progressive-disclosure"
+      ]
+    },
+    {
+      "rule": "roles-every-part-roled",
+      "verdict": "unsupported",
+      "claims": [
+        "roles-every-part-roled-prior"
+      ]
+    },
+    {
+      "rule": "roles-four-skills",
+      "verdict": "supported",
+      "claims": [
+        "evaluator-optimizer",
+        "skills-lighter-than-always-loaded"
+      ]
+    },
+    {
+      "rule": "roles-principle-skill-names",
+      "verdict": "unsupported",
+      "claims": [
+        "roles-principle-skill-names-prior"
+      ]
+    },
+    {
+      "rule": "roles-rationale-references-linked",
+      "verdict": "supported",
+      "claims": [
+        "agentskills-progressive-disclosure",
+        "skill-body-500-lines",
+        "skills-lighter-than-always-loaded"
+      ]
+    },
+    {
+      "rule": "roles-principle-routing",
+      "verdict": "unsupported",
+      "claims": [
+        "roles-principle-routing-prior"
+      ]
+    },
+    {
+      "rule": "pf-single-title",
+      "verdict": "new",
+      "claims": [
+        "google-single-h1",
+        "md025-single-title",
+        "md041-title-heading"
+      ]
+    },
+    {
+      "rule": "pf-state-why",
+      "verdict": "new",
+      "claims": [
+        "prompting-explain-why",
+        "diataxis-explain-why",
+        "adr-motivation-lost"
+      ]
+    },
+    {
+      "rule": "pf-only-what-the-agent-lacks",
+      "verdict": "new",
+      "claims": [
+        "skill-only-new-context",
+        "claude-md-only-what-agent-lacks",
+        "cursor-use-a-linter",
+        "smallest-high-signal-set",
+        "cursor-start-simple"
+      ]
+    },
+    {
+      "rule": "pf-summary-what-and-when",
+      "verdict": "new",
+      "claims": [
+        "skill-description-what-and-when",
+        "agentskills-metadata-always-loaded"
+      ]
+    },
+    {
+      "rule": "pf-history-newest-first",
+      "verdict": "new",
+      "claims": [
+        "changelog-latest-first",
+        "changelog-entry-per-version",
+        "changelog-dated"
+      ]
+    },
+    {
+      "rule": "pf-format-checks-tool-enforced",
+      "verdict": "new",
+      "claims": [
+        "docs-as-code",
+        "codex-lint-in-ci",
+        "cursor-use-a-linter",
+        "claude-md-hooks-for-absolutes",
+        "md043-required-headings",
+        "json-schema-required",
+        "markdownlint-custom-rules-frontmatter",
+        "vale-metric-formulas",
+        "vale-occurrence",
+        "vale-script",
+        "agentsmd-any-headings"
+      ]
+    },
+    {
+      "rule": "pf-always-loaded-budget",
+      "verdict": "new",
+      "claims": [
+        "claude-md-200-lines",
+        "codex-32kib-combined",
+        "claude-md-every-line-costs",
+        "ifscale-density-degrades",
+        "agentskills-metadata-always-loaded"
+      ]
+    },
+    {
+      "rule": "pf-key-guidance-first",
+      "verdict": "new",
+      "claims": [
+        "lost-in-the-middle",
+        "ifscale-earlier-instructions",
+        "ms-first-screen",
+        "google-opening-sentence"
+      ]
+    }
   ]
 }
