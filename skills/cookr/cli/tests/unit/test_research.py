@@ -507,6 +507,26 @@ def test_the_research_only_check_names_a_path_that_is_no_artifact(tmp_path, monk
     assert code == 2 and "indexng" in cap.out + cap.err and "no-research" not in cap.out + cap.err
 
 
+def test_the_research_only_check_takes_a_new_topic_holding_only_its_research(tmp_path, monkeypatch, patch_refs,
+                                                                              capsys):
+    # A new topic's folder holds only research/ until stage 3 writes its text.
+    cb, folder = roled(tmp_path, monkeypatch, cite="")
+    new = folder.parent / "keys-new"
+    new.mkdir()
+    write_research(new)
+    code, out = research_only(cb, new, capsys, monkeypatch)
+    assert code == 0 and "Research passed" in out
+
+
+def test_the_research_only_check_refuses_bad_research_of_a_new_topic(tmp_path, monkeypatch, patch_refs, capsys):
+    cb, folder = roled(tmp_path, monkeypatch, cite="")
+    new = folder.parent / "keys-new"
+    new.mkdir()
+    write_research(new, claims=[claim(independence="lots")])
+    code, out = research_only(cb, new, capsys, monkeypatch)
+    assert code == 1 and "incomplete-claim" in out
+
+
 def test_the_research_only_check_reports_a_topic_still_exempt(tmp_path, monkeypatch, patch_refs, capsys):
     cb, folder = roled(tmp_path, monkeypatch, cite="")
     write_research(folder)

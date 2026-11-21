@@ -207,8 +207,10 @@ def _headings(text: str) -> list[tuple[str, str]]:
     return []
 
 
-def _findings(folder: Path, artifact: Artifact, exempt: Optional[set[Path]]) -> list[tuple[str, str]]:
-    """`exempt` is None in a cookbook with no EXEMPT_FILE: only a roled artifact needs research there."""
+def _findings(folder: Path, artifact: Optional[Artifact], exempt: Optional[set[Path]]) -> list[tuple[str, str]]:
+    """`exempt` is None in a cookbook with no EXEMPT_FILE: only a roled artifact needs research there.
+    `artifact` is None for a new topic's folder, which holds only its research until its text is
+    written: its research is checked, and it has no rules to check."""
     d = folder / RESEARCH_DIR
     if not d.is_dir():
         if exempt is None:
@@ -248,7 +250,7 @@ def _findings(folder: Path, artifact: Artifact, exempt: Optional[set[Path]]) -> 
                   for c in v.get("claims") or [] if c not in known]
         ruled.update(c for c in v.get("claims") or [] if isinstance(c, str))
 
-    for name, text in rules_of(artifact).items():
+    for name, text in (rules_of(artifact) if artifact is not None else {}).items():
         cited = citations(text)
         if not cited:
             found.append(("rule-cites-nothing", f"rule '{name}' cites no research claim"))
@@ -291,7 +293,7 @@ def owner_rules(root: Path, folders: Iterable[Path]) -> list[ResearchFinding]:
     research claim that sits in such a verdict is not the owner's."""
     found = []
     for folder in folders:
-        if not (folder / RESEARCH_DIR).is_dir():
+        if not (folder / RESEARCH_DIR).is_dir() or not is_folder(folder):
             continue
         try:
             artifact = load_folder(folder)
@@ -318,15 +320,22 @@ def research_only(root: Path, folder: Path) -> list[ResearchFinding]:
     """The findings on `folder`'s research alone, at the end of research and
     before its rules cite it: no rule-citation finding (RULE_KINDS), and
     `no-research` whether or not the folder is roled or exempt. A path that is
-    no artifact source folder (a typo) is refused by name, never `no-research`."""
+    no artifact source folder (a typo) is refused by name, never `no-research`.
+    A new topic's folder, which holds only `research/` until its text is
+    written, is checked on its research alone: it is a source folder in the
+    making, not a typo."""
     if not is_folder(folder):
-        raise NotAnArtifactError(f"{folder}: not an artifact source folder (no {ARTIFACT_FILE})")
-    if not (folder / RESEARCH_DIR).is_dir():
+        if not (folder / RESEARCH_DIR).is_dir():
+            raise NotAnArtifactError(f"{folder}: not an artifact source folder (no {ARTIFACT_FILE}, "
+                                     f"no {RESEARCH_DIR}/)")
+        artifact = None
+    elif not (folder / RESEARCH_DIR).is_dir():
         return [ResearchFinding(folder, "no-research", f"no {RESEARCH_DIR}/ folder")]
-    try:
-        artifact = load_folder(folder)
-    except ArtifactError as e:
-        return [ResearchFinding(folder, "unreadable-research", f"the artifact does not load: {e}")]
+    else:
+        try:
+            artifact = load_folder(folder)
+        except ArtifactError as e:
+            return [ResearchFinding(folder, "unreadable-research", f"the artifact does not load: {e}")]
     _, stale = exemptions(root)
     return ([ResearchFinding(folder, k, d) for k, d in _findings(folder, artifact, None)
              if k not in RULE_KINDS]
