@@ -117,3 +117,31 @@ def test_the_prior_claim_is_any_prior_source_claim_the_verdict_names(tmp_path):
     art = _research(tmp_path, "contradicted", claim_id="the-old-wording")
     [entry] = owner_list.build(art)["prior"]
     assert entry["prior"] == "Old text MUST hold"
+
+
+def test_a_rule_keeps_its_later_paragraphs_across_blank_lines():
+    text = "\n".join([
+        "## Rules",
+        "",
+        "- **multi**: It compiles to four skills:",
+        "",
+        "  | Skill | Roles |",
+        "  |---|---|",
+        "  | builder | `rules` |",
+        "",
+        "  ```markdown",
+        "  - **x**: y. (claim: z)",
+        "  ```",
+        "",
+        "  **Applies when:** always. (claim: multi-prior)",
+        "- **next**: Another rule. (claim: n)",
+        "",
+        "Prose after the list ends the last rule.",
+        "",
+        "## Examples",
+    ])
+    rules = owner_list.draft_rules(text)
+    assert rules["multi"] == owner_list._norm(
+        "It compiles to four skills: | Skill | Roles | |---|---| | builder | `rules` | "
+        "```markdown - **x**: y. (claim: z) ``` **Applies when:** always.")
+    assert rules["next"] == "Another rule."

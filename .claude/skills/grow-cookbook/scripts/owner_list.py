@@ -69,9 +69,11 @@ def draft_rules(text: str) -> dict[str, str]:
         if m:
             current = m.group(1)
             rules[current] = m.group(2)
-        elif current and line.startswith((" ", "\t")) and line.strip():
-            rules[current] += " " + line.strip()
         elif not line.strip():
+            continue  # a blank line inside a bullet: its next paragraph is indented
+        elif current and line.startswith((" ", "\t")):
+            rules[current] += " " + line.strip()
+        else:
             current = None
     return {name: _norm(_CITATION.sub("", body)) for name, body in rules.items()}
 
