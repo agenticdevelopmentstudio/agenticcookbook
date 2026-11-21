@@ -16,22 +16,45 @@
 - `trigger-index-location`: queries read `cookbook/index/triggers.yaml`.
 - `regenerate-index-after-change`: `cookr update` ran after every trigger change.
 - `trigger-index-not-hand-edited`: the trigger index holds no hand edits.
-- `canonical-values-only`: every `triggers` value is a value of the canonical table.
+- `canonical-values-only`: every `triggers` value is a value of the canonical table in `guide/introduction/trigger-guide.md`.
 - `triggers-from-canonical-taxonomy`: the field's values come from the one canonical taxonomy and no other list.
 - `one-to-five-triggers`: every classified guideline carries one to five triggers.
 - `order-specific-to-general`: each guideline's triggers run from most specific to least specific.
 - `triggers-guideline-only`: only guidelines carry a `triggers` field.
 - `triggers-empty-until-classified`: a guideline not yet classified carries `[]`.
+- `favour-existing-trigger-values`: every new value's nomination states why no existing value covers the activity.
+- `add-trigger-to-guide-first`: a missing value was nominated as a candidate, not written unlisted into a guideline.
+- `editor-reviews-candidate-values`: every admitted value was reviewed by the vocabulary's editor first.
 - `canonical-trigger-vocabulary`: every value in the table has a definition, a "when it fires" scope note and example guidelines.
-- `trigger-one-meaning-one-label`: no value has two meanings or two canonical labels, and no two values share a meaning.
-- `trigger-scope-note-per-value`: every value has a scope note and an example, and overlapping values say which applies.
+- `trigger-one-meaning-one-label`: no value has more than one meaning.
+- `trigger-single-canonical-label`: no value has more than one canonical label.
+- `trigger-values-not-redundant`: no two values share a meaning.
+- `trigger-scope-note-per-value`: every value has a scope note saying how its use is limited, beside its definition.
+- `overlapping-values-say-which-applies`: values whose scopes overlap each say which one applies.
 - `trigger-values-carry-key-terms`: every value's description names when it applies in the tasks' own words.
-- `add-trigger-to-guide-first`: a new value was nominated, reviewed and added to the table before any guideline used it.
-- `trigger-change-history`: every value records its date of entry and each dated change with its author.
-- `rename-keeps-old-value-as-alias`: a renamed value's old name still resolves to the new one, and its guidelines were retagged.
-- `retire-assesses-impact-and-migrates`: a retired value's tagged guidelines were assessed and migrated, or the value was kept marked for retrieval only.
-- `vocabulary-periodic-review`: a review policy exists and its reviews look at overused and rarely used values.
+- `trigger-change-history`: every value has a history note giving its date of entry.
+- `trigger-change-dated-with-person`: every addition, modification and deletion records its date and the person responsible.
+- `significant-changes-in-history-note`: every significant change to a value's meaning or form is in its history note.
+- `administrative-changes-in-change-note`: where change notes are kept, they hold the fine-grained administrative changes.
+- `history-note-records-succession`: where succession is recorded, the history note names the values that preceded or succeeded the value.
+- `rename-dated-in-history-note`: every rename's date is in the value's history note.
+- `rename-keeps-old-value-as-alias`: a renamed value's old name is kept as an alternative label and still resolves to the new one.
+- `old-value-matched-not-shown`: where an old form is a hidden label, search and validation match it and the table does not show it.
+- `one-for-one-retag-automatically`: where retagging is automated, a one-for-one change retags every guideline carrying the old value.
+- `retire-assesses-impact-and-migrates`: every changed or retired value's tagged guidelines were looked at before the change.
+- `retired-value-marked-retrieval-only`: every kept retired value is marked for retrieval only, with the date of its status change in its history note.
+- `retired-value-points-to-successor`: every superseded value cross-references its successor.
+- `no-delete-without-replacement`: no value was deleted while guidelines still carried it without retagging them under a replacement.
+- `vocabulary-periodic-review`: a policy sets the periodic review, the adding of values and the replacing of obsolete ones.
+- `review-tests-the-vocabulary`: each periodic review tested and evaluated the vocabulary.
+- `review-flags-overused-and-rare-values`: each periodic review counted the guidelines per value and listed the values outside the policy's thresholds as candidates.
 - `validate-trigger-values-mechanically`: tooling fails on a value outside the table.
-- `measure-trigger-selection-with-labelled-tasks`: selection is measured on a labelled task set with a held-out part.
+- `reject-unparseable-frontmatter`: tooling fails on a guideline whose frontmatter does not parse.
+- `measure-trigger-selection-with-labelled-tasks`: selection is measured on a labelled task set of guidelines, tasks that should and should not load them, and the guidelines each task needs.
+- `evaluation-before-trigger-text`: the selection evaluation existed before the trigger values and scope notes it tests were written.
+- `evaluation-is-source-of-truth`: claims that selection works rest on the evaluation's results.
+- `hold-out-part-of-task-set`: part of the task set was held out from tuning.
+- `repeat-runs-for-a-rate`: where selection is not deterministic, each task's rate comes from several runs.
 - `report-recall-and-precision`: the measurement reports recall and precision.
+- `tune-recall-first`: tuning raised recall before it improved precision.
 
