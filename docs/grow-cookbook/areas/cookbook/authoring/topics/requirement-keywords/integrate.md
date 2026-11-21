@@ -1,5 +1,13 @@
 # Integrate: requirement-keywords
 
+## Lossless
+
+New topic: its text was never in the cookbook at the base commit (it came from tbd/compliance/, which owner-list.md carries word for word), so `cookr roles lossless` has no base text to check.
+
+## Validate
+
+`cookr validate` passed; its owner-decides rows are listed under For the owner. Bumped to 1.0.1; /add-artifact approved it (lint 24 pass, 0 fail).
+
 ## For the owner
 
 Rules standing as they were until you decide each (`cookr validate` owner-decides):
@@ -19,12 +27,8 @@ Open questions from the owner list:
 - Whether lint-artifact's GF-03 level 'WARN if missing' stays a warning; the sources support a keyword as SHOULD, which maps to a warning, but the owner decides.
 - Whether keywords are additionally styled (bold, or the W3C Manual of Style's em with class rfc2119) for readability; no source makes styling carry the meaning, and a W3C editor recommends dropping the formatting requirement.
 
-## Lossless
+Notes:
 
-New topic: its text was never in the cookbook at the base commit (it came from tbd/compliance/, which owner-list.md carries word for word), so `cookr roles lossless` has no base text to check.
-
-## Validate
-
-`cookr validate` passed; its owner-decides rows are listed under For the owner. Bumped to 1.0.1; /add-artifact approved it (lint 24 pass, 0 fail).
+- gf-rfc-keywords-bold-or-uppercase (kept word for word, research contradicted) lets a keyword count when bold or uppercase, while keywords-meaningful-only-in-uppercase gives meaning to UPPERCASE only. conventions.md now says to write keywords in UPPERCASE, which satisfies both, but whether a bold lowercase "must" is a requirement stays open.
 
 integrated: 2026-11-21

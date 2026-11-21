@@ -1,5 +1,13 @@
 # Integrate: ingredient-formatting
 
+## Lossless
+
+New topic: its text was never in the cookbook at the base commit (it came from tbd/compliance/, which owner-list.md carries word for word), so `cookr roles lossless` has no base text to check.
+
+## Validate
+
+`cookr validate` passed; its owner-decides rows are listed under For the owner. Bumped to 1.0.1; /add-artifact approved it (lint 24 pass, 0 fail).
+
 ## For the owner
 
 Rules standing as they were until you decide each (`cookr validate` owner-decides):
@@ -43,13 +51,6 @@ Notes:
 
 - accessibility-options-include-text-size requires `## Accessibility Options` for any ingredient that shows text, while if-section-order, kept word for word, marks that section (MAY omit). Deciding if-section-order settles it.
 - component-recipe-sections-in-order carries the prior rule word for word, so its text still opens with the prior rule's own name (`- **must-contain-template-sections-in-order**: The recipe MUST ...`), a second rule name nested inside the first. Deciding the rule settles its wording.
-
-## Lossless
-
-New topic: its text was never in the cookbook at the base commit (it came from tbd/compliance/, which owner-list.md carries word for word), so `cookr roles lossless` has no base text to check.
-
-## Validate
-
-`cookr validate` passed; its owner-decides rows are listed under For the owner. Bumped to 1.0.1; /add-artifact approved it (lint 24 pass, 0 fail).
+- if-compliance (kept word for word, research contradicted) fixes the status values as passed, failed, partial, while compliance-status-includes-inapplicable says they SHOULD include inapplicable; conventions.md's "Only list checks that are applicable" sides with if-compliance. conventions.md's status values were left as they were until you decide.
 
 integrated: 2026-11-21
