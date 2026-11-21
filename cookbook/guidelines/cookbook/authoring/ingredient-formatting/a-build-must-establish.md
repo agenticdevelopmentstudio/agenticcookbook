@@ -1,0 +1,55 @@
+
+- `if-applicability`: every file under `ingredients/` but `_template.md` has `type: ingredient`, and every file with that type is checked as an ingredient
+- `if-frontmatter-complete`: the frontmatter holds every required field the conventions list, and no `domain` field
+- `tmpl-approval-fields`: the frontmatter carries `approved-by` and `approved-date`, as the template does
+- `if-type-field`: the `type` field is `ingredient`
+- `if-title-heading`: the first H1 is the frontmatter `title`, exactly
+- `if-section-order`: the sections appear in the 22-entry order, every section not marked MAY is present, and none is out of order
+- `short-required-core-labelled-optional-rest`: every section is either in the required core or labelled optional, and each present section uses its specified heading and level
+- `inapplicable-section-stated-not-omitted`: no section the ingredient carries is empty: each with nothing to say says so in one line
+- `informative-sections-labelled`: any section marked non-normative states no requirement
+- `section-structure-machine-checked`: any tool check of the structure (heading list, required headings, frontmatter schema, ordered sections) passes
+- `component-recipe-sections-in-order`: a component recipe carries Overview, Behavioral Requirements, Appearance, States, Accessibility, Conformance Test Vectors and Edge Cases, in that order
+- `if-overview`: `## Overview` says briefly what the component is and when to use it
+- `overview-states-when-not-to-use`: `## Overview` also says when not to use the component, and why to use it
+- `if-behavioral-requirements`: `## Behavioral Requirements` holds named, bold kebab-case requirements, each with an RFC 2119 keyword
+- `if-appearance`: a UI ingredient's `## Appearance` defines corner radius, padding, font, background, foreground, border, shadow and size constraints
+- `tmpl-appearance-properties`: any visual property `## Appearance` gives carries its value
+- `appearance-contrast-in-all-states`: the colors given keep text at 4.5:1 and icons at 3:1 against their background in every interactive state
+- `if-states`: a UI ingredient with interactive states has a `## States` table of its visual state changes
+- `tmpl-states-table`: `## States` is a `| State | Appearance change |` table with a row for each state the component takes
+- `states-include-hover-and-selected`: a component that can be hovered or selected has Hover and Selected rows
+- `if-accessibility`: `## Accessibility` defines role/trait, label requirements, state change announcements and minimum tap target size, or says "not applicable" with a justification for an infrastructure ingredient
+- `accessibility-keyboard-interaction`: `## Accessibility` describes the component's keyboard interaction
+- `per-platform-target-sizes`: the minimum target size is given for each platform from that platform's own guidelines
+- `tmpl-accessibility-min-tap-target`: `## Accessibility` holds the template's items: role/trait, label requirements, state-change announcements and a minimum tap target
+- `if-test-vectors`: `## Conformance Test Vectors` is an ID, Requirements, Input, Expected table, each vector mapped to a named requirement
+- `tmpl-test-vector-id-format`: every test vector has a unique ID in the `component-001` form and names the requirements it tests
+- `test-vectors-cover-pass-fail-inapplicable`: each requirement has vectors expecting passed, failed and inapplicable
+- `if-edge-cases`: `## Edge Cases` describes boundary conditions, error states and unexpected input
+- `assumptions-and-limitations-stated`: `## Edge Cases` lists the known assumptions, limitations and exceptions, and what is out of scope and why
+- `if-configuration`: `## Configuration` is an Option, Type, Default, Description table, or the note "This ingredient has no configurable options."
+- `tmpl-deep-linking-patterns`: `## Deep Linking` is a Platform, URL Pattern table with Apple, Android and Web rows
+- `deep-links-use-verified-https-links`: each deep link is a verified https link (universal link, App Link), or the ingredient says why not
+- `tmpl-localization-table`: `## Localization` is a String Key, Default (en), Context table with each string's context
+- `tmpl-accessibility-options`: `## Accessibility Options` is an Option, Behavior table covering Reduce Motion, Increase Contrast, Differentiate Without Color and, where offered, Dynamic Type
+- `accessibility-options-include-text-size`: an ingredient that shows text says how its text resizes to 200 percent without loss of content or function
+- `tmpl-feature-flags-table`: every flag in `## Feature Flags` has its key and its default value
+- `tmpl-analytics-events`: `## Analytics` is an Event, Properties, When table
+- `analytics-event-names-fit-platform-limits`: every event sent to Firebase Analytics has a name of letters, digits and underscores, starting with a letter, at most 40 characters
+- `tmpl-privacy-fields`: `## Privacy` states Data collected, Storage, Transmission and Retention, and says so when nothing is collected
+- `privacy-states-encryption-in-transit`: `## Privacy` says whether data leaving the device is encrypted in transit
+- `if-logging`: `## Logging` defines subsystem, category and an Event, Level, Message table
+- `tmpl-logging-subsystem-category`: any subsystem named is a large functional area and any category a specific area within it
+- `if-platform-notes`: `## Platform Notes` gives per-platform guidance for SwiftUI, Compose and React/Web at least, or only the target platform of a single-platform ingredient
+- `tmpl-platform-notes-platforms`: each targeted platform has an entry, and one with nothing to add says so
+- `if-reference-implementations`: no authored `## Reference Implementations` section exists, and every implementation recorded in `index.json` exists unless `planned`
+- `if-design-decisions`: `## Design Decisions` exists, each decision in the Decision, Rationale, Approved form
+- `tmpl-design-decisions-approved`: each decision affecting visual or behavioral outcome is recorded and marked pending or approved by the user
+- `if-compliance`: `## Compliance` is a Check, Status, Category table, each check linked to its definition
+- `tmpl-compliance-link-form`: each compliance row links its check by UUID, `[adc.check.<document>.<check-name>](cookbook:<check-uuid>)`
+- `compliance-status-includes-inapplicable`: a check that does not apply is reported `inapplicable`, not passed
+- `if-change-history`: the file ends with a Version, Date, Author, Summary `## Change History` table
+- `change-history-iso-dates`: every Change History date is ISO 8601
+- `released-version-immutable`: no released version's contents were changed; every change is a new version
+
