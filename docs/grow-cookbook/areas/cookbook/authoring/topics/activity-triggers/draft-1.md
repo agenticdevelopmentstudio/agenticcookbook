@@ -1,0 +1,268 @@
+---
+id: 1b7b83f9-3b8a-46f7-81b7-9a55291a23a2
+title: "Activity Triggers"
+type: guideline
+version: 1.0.0
+status: draft
+language: en
+created: 2026-11-21
+modified: 2026-11-21
+author: Mike Fullerton
+copyright: 2026 Mike Fullerton
+license: MIT
+summary: "Guideline triggers: a closed, governed vocabulary of activities, tiered on-demand loading, the trigger index, and measuring selection by recall and precision."
+platforms: []
+tags:
+  - triggers
+  - controlled-vocabulary
+  - context-loading
+  - guidelines
+depends-on: []
+related:
+  - 0f999db4-956a-4124-a142-367b1a570983
+references:
+  - https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+  - https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf
+  - https://martinfowler.com/articles/continuousIntegration.html
+  - https://code.claude.com/docs/en/memory
+  - https://code.claude.com/docs/en/skills
+  - https://cursor.com/docs/context/rules
+  - https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions
+  - https://agents.md/
+  - https://developers.openai.com/codex/guides/agents-md
+  - https://platform.openai.com/docs/guides/tools-file-search
+  - https://docs.pinecone.io/guides/search/filter-by-metadata
+  - https://docs.claude.com/en/docs/agents-and-tools/tool-use/tool-search-tool
+  - https://pre-commit.com/
+  - https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md
+  - https://stackoverflow.com/help/tagging
+  - https://stackoverflow.com/help/privileges/create-tags
+  - https://stackoverflow.com/help/privileges/suggest-tag-synonyms
+  - https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview
+  - https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices
+  - https://www.w3.org/TR/skos-reference/
+  - https://www.w3.org/TR/skos-primer/
+  - https://www.niso.org/schemas/iso25964
+  - https://git-scm.com/docs/githooks
+  - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches
+  - https://arxiv.org/abs/2307.03172
+  - https://arxiv.org/abs/2507.11538
+  - https://research.trychroma.com/context-rot
+  - https://arxiv.org/abs/2505.03275
+  - https://www.anthropic.com/engineering/advanced-tool-use
+  - https://www.anthropic.com/news/contextual-retrieval
+  - https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf
+  - https://informationr.net/ir/16-4/paper502.html
+approved-by: ""
+approved-date: ""
+triggers:
+  - recipe-authoring
+  - skill-authoring
+---
+
+# Activity Triggers
+
+Tag each guideline with the activities it serves, using only values from the cookbook's closed trigger vocabulary, so an agent loads the guidelines its current activity needs on top of a small always-loaded core. Govern that vocabulary as a thesaurus is governed (one meaning per value, a scope note, a dated history, an alias on rename, migration on retirement), reject unlisted values with tooling, and measure trigger selection against labelled tasks by recall and precision.
+
+## Rules
+
+### Loading by activity
+
+- **load-by-activity-not-all**: An agent SHOULD load guidelines by activity, not all of them: Instead of loading all 240 guidelines into context, agents query by activity to get the 10-20 that matter right now. Guidelines are the opposite: numerous, specific, and most are irrelevant to any given task. Loading all of them wastes context and dilutes signal. (claim: load-by-activity-not-all-prior)
+- **filter-only-when-corpus-outgrows-context**: A corpus of guidelines small enough to fit in the prompt (Anthropic puts the line at about 200,000 tokens) MAY be loaded whole instead of filtered by trigger, since past a point more loaded documents buy little: 50 retrieved documents instead of 20 improved accuracy only marginally. (claims: ev-contextual-retrieval-small-kb-in-prompt, ev-more-docs-marginal)
+- **guideline-declares-activities**: Each guideline SHOULD declare the activities it serves: Triggers solve this. Each guideline declares the activities where it's relevant. An agent about to write tests queries `writing-tests` and gets ~12 guidelines instead of 240. (claim: guideline-declares-activities-prior)
+- **triggers-field-in-meta**: A guideline SHOULD declare its triggers in a `triggers` field of its own frontmatter, after `approved-date`, the way one agent host's rules declare their scope in a `paths` frontmatter field and Copilot instruction files in an `applyTo` frontmatter block. (claims: ks-claude-path-scoped-rules, ks-copilot-applyto-frontmatter)
+- **query-union-of-triggers**: An agent MAY query several triggers at once and load the union of the guidelines they return, the same operation as a metadata filter's `in` over a list of values, and as Copilot using every instruction file that applies. (claims: ks-openai-metadata-filter, ks-pinecone-in-operator, ks-copilot-instructions-combined)
+- **principles-always-loaded**: Principles SHOULD be the always-loaded tier: **Principles** — always loaded into context. Small (27 items), universal, load-bearing. These are the foundation that applies to every task. (claim: principles-always-loaded-prior)
+- **keep-always-loaded-core-small**: The always-loaded tier SHOULD be kept small and focused, with anything that applies only to some work moved to the on-demand tier, because whatever is always loaded adds to the context on every turn, a longer always-loaded file reduces adherence, and hosts cap or cut that tier: one host stops adding AGENTS.md files at 32 KiB by default, and another drops skill descriptions past its listing budget, removing the keywords used to match them. (claims: pg-claude-md-size-adherence, pg-cursor-rules-focused, ks-keep-few-tools-non-deferred, ks-codex-size-limit, ks-skill-listing-costs-every-turn, ks-skill-listing-budget-drops-descriptions)
+- **trigger-filtered-on-demand**: Guidelines SHOULD be the on-demand tier: **Trigger-filtered guidelines** — loaded on demand based on current activity. When an agent is about to write tests, it queries `writing-tests` and gets ~12 specific testing guidelines. When it's about to call an API, it queries `api-integration` and gets the relevant networking and security guidelines. (claim: trigger-filtered-on-demand-prior)
+- **fallback-when-tags-miss**: Trigger-filtered loading SHOULD have a fallback for a task whose triggers miss a guideline it needs, a selection by description over all guidelines beside the set loaded up front, as Cursor's agent-decided rules and agent skill descriptions select, because people tagging from a controlled vocabulary agree with each other only 27.5-39.5% of the time; selection by description under-triggers too, so neither replaces the other. (claims: bp-hybrid-upfront-plus-on-demand, ks-cursor-rule-types, ks-skill-description-decides-loading, ks-skill-undertrigger, ev-indexer-consistency-low)
+- **log-loaded-guidelines**: A loader MAY log which guidelines it loaded for a task, when and why, as an agent host's hook can log which instruction files load, when they load and why. (claim: pg-instructions-loaded-hook)
+
+### Checkpoints
+
+- **escalating-checkpoint-pattern**: Checks SHOULD be staged by checkpoint: The most effective usage is graduated — lightweight guardrails during active work, thorough review at natural checkpoints: (claim: escalating-checkpoint-pattern-prior)
+- **pre-commit-checklist**: Each commit SHOULD be checked against this set: **Pre-commit checklist** — a small mandatory set (~10 rules) triggered by `pre-commit`. Checked before every commit. Fast, focused, catches common issues. (claim: pre-commit-checklist-prior)
+- **pre-pr-audit**: A broader set, triggered by `pre-pr`, SHOULD be checked once before a pull request is opened, more thorough than the commit check and covering testing completeness, accessibility and security headers: a slower second stage after the fast commit stage, run at a later checkpoint such as git's pre-push hook, which can block a push, or as a status check GitHub requires to pass before changes reach a protected branch. (claims: bp-second-stage-build, pg-githooks-pre-push, pg-github-required-status-checks)
+- **check-cost-proportional-to-stakes**: A checkpoint MAY spend on checking in step with what is at stake: The cost of checking is proportional to the stakes of the action. (claim: check-cost-proportional-to-stakes-prior)
+
+### The trigger index
+
+- **trigger-index-location**: An agent SHOULD query this one index: The trigger index lives at `cookbook/index/triggers.yaml` (generated by `cookr update`). It lists each guideline by its source folder, relative to `cookbook/`: (claim: trigger-index-location-prior)
+- **regenerate-index-after-change**: The trigger index MUST be regenerated after any trigger change: After adding or modifying guideline triggers, regenerate: (claim: regenerate-index-after-change-prior)
+- **trigger-index-not-hand-edited**: The trigger index MUST NOT be edited by hand: The index is a generated artifact — do not edit it manually. (claim: trigger-index-not-hand-edited-prior)
+
+### A guideline's triggers
+
+- **canonical-values-only**: Every value in a guideline's `triggers` MUST be a value of the canonical trigger table: the table is an explicit list in which every value has a definition, so a value outside it is no part of the controlled vocabulary, whose purpose is better precision and recall in finding guidelines. (claims: bp-controlled-vocabulary-defined, bp-controlled-vocab-improves-precision-recall)
+- **triggers-from-canonical-taxonomy**: The `triggers` field MUST take its values from one canonical trigger taxonomy, an explicit list kept by the cookbook as its authority, and from no second list. (claims: bp-controlled-vocabulary-defined, pg-iso25964-maintenance)
+- **one-to-five-triggers**: A classified guideline SHOULD carry from one to five triggers, the cap Stack Overflow puts on a question's tags; a value that far more guidelines carry than the rest, or that almost none carry, is a candidate for change or removal in the vocabulary's review. (claims: ks-so-five-tag-cap, bp-prune-overused-and-rare-terms)
+- **order-specific-to-general**: A guideline SHOULD list its triggers in this order: Order triggers from most specific to least specific. (claim: order-specific-to-general-prior)
+- **triggers-guideline-only**: The `triggers` field MUST be carried by guidelines only, as this row of the conventions' field table says: | `triggers` | Guideline only | Activity or context tags that make this guideline relevant to an AI agent. (claim: triggers-guideline-only-prior)
+- **triggers-empty-until-classified**: A guideline whose triggers are not yet chosen MAY carry an empty list: Empty list `[]` if not yet classified. (claim: triggers-empty-until-classified-prior)
+
+### Governing the vocabulary
+
+- **canonical-trigger-vocabulary**: The cookbook SHOULD keep its trigger values as a controlled vocabulary built and maintained as ISO 25964-1 recommends for retrieval thesauri (a standard kept compatible with SKOS): an explicit list in which every value has an unambiguous, non-redundant definition, a scope note stating the meaning chosen for it (when it fires), and examples of its use (example guidelines), controlled by defining each value's scope, linking synonyms to one preferred value and telling homographs apart, because a controlled vocabulary improves both precision and recall in searching, as Z39.19 states without citing a study. (claims: bp-controlled-vocabulary-defined, bp-vocab-control-three-methods, bp-scope-note-states-meaning, bp-controlled-vocab-improves-precision-recall, pg-skos-scope-note, pg-skos-example, pg-iso25964-maintenance, pg-iso25964-skos-compatible)
+- **trigger-one-meaning-one-label**: Each trigger value MUST have one and only one meaning and one canonical label, and two values MUST NOT share a meaning. (claims: bp-one-meaning-per-term, pg-skos-one-preflabel, bp-controlled-vocabulary-defined)
+- **trigger-scope-note-per-value**: Each trigger value SHOULD carry, beside its definition of the complete meaning, a scope note saying how its use is limited and an example of its use, and values whose scopes overlap SHOULD each say which one applies, because when a person cannot say which of two options fits a situation, an agent cannot be expected to do better. (claims: bp-scope-note-states-meaning, pg-skos-scope-note, pg-skos-definition, pg-skos-example, ev-human-cant-pick-tool)
+- **trigger-values-carry-key-terms**: Each trigger value's name and description SHOULD say when it applies in the words of the tasks it serves, chosen on warrant (the language of the guidelines, of the agents and people who use them, and the cookbook's own needs), because until a guideline loads, only that text stands for it in matching. (claims: pg-skills-description-key-terms, pg-skills-metadata-only-until-triggered, bp-warrant)
+- **add-trigger-to-guide-first**: An author SHOULD favour an existing trigger value and propose a new one only with a strong case; a new value SHOULD be nominated as a candidate, reviewed by the vocabulary's editor (preferably an editorial board) and added to the canonical table before any guideline uses it. (claims: bp-nominate-candidate-term, bp-editor-reviews-new-terms, ks-so-favor-existing-tags)
+- **trigger-change-history**: Each trigger value SHOULD record the date it entered the vocabulary and, for each later change, its date and the person responsible, with significant changes to its meaning or form in a history note and fine-grained administrative changes in a change note; the history note MAY also record the date the value was discontinued and the values that preceded or succeeded it. (claims: bp-change-record-dated, bp-history-note-records-entry, bp-history-note-succession, pg-skos-history-note, pg-skos-change-note)
+- **rename-keeps-old-value-as-alias**: A renamed trigger value SHOULD stay resolvable under its old name: the rename is dated and the old value kept as an alternative label pointing to the new one, which search and validation still match without the table showing it, and the guidelines carrying the old value are retagged automatically. (claims: bp-rename-use-reference, pg-skos-altlabel-synonyms, pg-skos-hidden-label, ks-so-tag-synonyms-auto-retag)
+- **retire-assesses-impact-and-migrates**: Before a trigger value is changed or retired, the impact on finding the guidelines already tagged with it MUST be considered, and a retired value that is kept MUST be marked as kept for retrieval only, pointing to its successor; a one-for-one replacement MAY be applied to the tagged guidelines automatically, since deleting a value without retagging its guidelines under a replacement loses them over time. (claims: bp-retire-consider-impact, bp-retained-term-marked, bp-one-for-one-auto-migrate, bp-delete-without-replacement-loses-access)
+- **vocabulary-periodic-review**: The trigger vocabulary SHOULD be maintained under set policies for periodic review, for adding values and for replacing obsolete ones, since a vocabulary is never finished; each review SHOULD test and evaluate the vocabulary, and treat values that are overused and values assigned very rarely as candidates for change or removal. (claims: bp-vocabulary-needs-maintenance, bp-maintenance-policies, bp-prune-overused-and-rare-terms, bp-periodic-evaluation)
+- **validate-trigger-values-mechanically**: Tooling SHOULD reject a guideline whose `triggers` holds a value outside the canonical table, because nothing else will: SKOS has no way to close a vocabulary's boundary, an agent host ignores a frontmatter field it does not know without an error, and it loads a rule whose frontmatter does not parse as if it had no scope. (claims: pg-skos-open-boundary, pg-unknown-fields-ignored-silently, pg-bad-frontmatter-loads-always)
+
+### Measuring selection
+
+- **measure-trigger-selection-with-labelled-tasks**: Trigger selection SHOULD be measured, with the evaluation built before extensive guideline text and treated as the source of truth for whether selection works, against a test collection of three parts: the guidelines, a set of realistic tasks (a mix that should and should not load a given guideline), and for each task the guidelines it needs, judged against the task and not against the trigger word; part of the set SHOULD be held out from tuning, and each task MAY be run several times to get a rate. Little published work tests controlled vocabularies, so the cookbook builds its own set. (claims: ev-test-collection-three-parts, ev-fifty-information-needs, ev-relevance-to-need-not-query, pg-skills-evaluations-first, pg-skills-evaluations-source-of-truth, ks-skill-trigger-eval-set, ks-skill-trigger-train-test-split, ks-plugin-eval-trigger-rate, ev-little-research-vocab-evaluation)
+- **report-recall-and-precision**: A selection evaluation SHOULD report recall (whether every guideline a task needs was loaded) and precision (whether only guidelines it needs were loaded), or the failure rate 1 minus recall@k; because the two usually move in opposite directions, tuning SHOULD raise recall first and then improve precision. (claims: ev-measure-by-recall-precision, ev-recall-defined, ev-precision-defined, ev-recall-precision-inverse, ev-contextual-retrieval-failure-rate, ev-start-with-recall)
+
+## Adding triggers to a guideline
+
+1. Read the canonical trigger table and each value's scope note. Pick the values whose scope covers the activities the guideline serves, from one to five.
+2. If no value fits, do not invent one in the guideline. Nominate a candidate value with a definition, a scope note, examples and the task words it should match, and have it reviewed and added to the table first.
+3. Write the values in the guideline's `triggers` field, after `approved-date`, most specific first. A guideline whose triggers are not chosen yet carries `[]`.
+4. Regenerate the trigger index with `cookr update`. Never edit `cookbook/index/triggers.yaml` by hand.
+
+## Changing the vocabulary
+
+- **Add**: nominate the value, have the editor review it, record its date of entry in its history note, then add it to the table.
+- **Rename**: date the rename, keep the old value as an alternative label pointing to the new one, and retag the guidelines that carry it, automatically where tooling allows.
+- **Retire**: list the guidelines tagged with the value and judge what retiring it does to finding them. Migrate them to the successor (automatically for a one-for-one replacement), or keep the old value marked "for retrieval only" with a pointer to its successor. Record the date discontinued and the successor in its history note. Never delete a value with guidelines still carrying it and no replacement.
+- **Review**: on the review policy's schedule, count how many guidelines carry each value. Look at values carried by far more guidelines than the rest and values almost none carry, and re-run the selection evaluation.
+
+## Measuring selection
+
+1. Build the test collection: the guidelines, a set of realistic tasks, and for each task the guidelines it needs, judged by reading the task, not the trigger word. Include tasks that should not load a given guideline. IIR's rule of thumb is a minimum of 50 information needs; skill-creator uses 20 queries. The size the cookbook uses is the owner's to set.
+2. Hold part of the set out from any tuning of values or scope notes.
+3. Run each task's selection (several times where selection is not deterministic) and compare the guidelines loaded with the guidelines needed.
+4. Report recall and precision per task and overall. Tune for recall first, then precision.
+
+## Examples
+
+A guideline's triggers, in its meta:
+
+```yaml
+triggers:
+  - database-operations
+  - performance-optimization
+  - schema-design
+```
+
+An agent that is about to write tests for an API client queries two triggers at once and loads the union:
+
+```text
+writing-tests ∪ api-integration  →  every guideline tagged with either value
+```
+
+A rename kept resolvable (a sketch, in SKOS terms):
+
+```text
+prefLabel:   ui-implementation
+altLabel:    ui-work            (old value; still matched, not shown in the table)
+historyNote: 2026-11-21 renamed from ui-work
+```
+
+## What a reviewer looks for
+
+- A `triggers` value that is not in the canonical table, or a new value used before it was added there.
+- A guideline with no triggers and no `[]`, or with more than five triggers.
+- Triggers not ordered from most specific to least specific.
+- A `triggers` field on an artifact that is not a guideline.
+- A hand edit to `cookbook/index/triggers.yaml`, or a trigger change committed without the index regenerated.
+- A vocabulary value with no definition, no scope note or no example, two values with one meaning, or overlapping values that do not say which applies.
+- A value's description that does not use the words of the tasks it serves.
+- A rename that drops the old value, or a retirement that deletes a value its guidelines still carry with no replacement or migration.
+- A value with no history note, or a change with no date or no person responsible.
+- Tooling that accepts an unlisted trigger value or a frontmatter that does not parse.
+- An always-loaded tier that keeps growing with material only some work needs.
+- Trigger-filtered loading with no fallback for a task whose triggers miss.
+- A selection change made without a labelled task set, without a held-out part, or reported without recall and precision.
+
+## A complete review must establish
+
+- Every `triggers` value of every changed guideline is a value of the canonical table, and every new value was added to the table, after nomination and review, before it was used.
+- Every changed guideline carries one to five triggers, most specific first, or `[]`; no artifact other than a guideline carries `triggers`.
+- The trigger index was regenerated by `cookr update` after the change and was not edited by hand.
+- Every value added or changed in the vocabulary has one meaning, one label, a definition, a scope note, an example, task words in its description, and a dated history note.
+- Every rename keeps the old value as an alias, and every retirement weighed its impact and migrated or marked the tagged guidelines.
+- Tooling rejects values outside the table.
+- The always-loaded tier stayed small, and on-demand loading keeps a fallback for missed tags.
+- Any change to triggers or the vocabulary that affects selection was measured on the labelled task set, with recall and precision reported.
+
+## A build must establish
+
+- `load-by-activity-not-all`: the agent loads the guidelines its activity's triggers select, not every guideline.
+- `filter-only-when-corpus-outgrows-context`: loading the whole corpus instead of filtering is done only when it fits in the prompt.
+- `guideline-declares-activities`: every guideline built declares the activities it serves.
+- `triggers-field-in-meta`: the triggers sit in the guideline's `triggers` frontmatter field, after `approved-date`.
+- `query-union-of-triggers`: a query for several triggers loads the union of the guidelines each returns.
+- `principles-always-loaded`: principles are loaded into every task's context.
+- `keep-always-loaded-core-small`: the always-loaded tier holds only what every task needs.
+- `trigger-filtered-on-demand`: guidelines load only when an activity's trigger selects them.
+- `fallback-when-tags-miss`: a description- or search-based selection covers tasks whose triggers miss a guideline.
+- `log-loaded-guidelines`: where logging is built, it records which guidelines loaded, when and why.
+- `escalating-checkpoint-pattern`: light checks run during work and broader ones at checkpoints.
+- `pre-commit-checklist`: the `pre-commit` set is checked before every commit and stays fast.
+- `pre-pr-audit`: the broader `pre-pr` set is checked once before the pull request is opened.
+- `check-cost-proportional-to-stakes`: a checkpoint's checking grows with the stakes of the action it guards.
+- `trigger-index-location`: queries read `cookbook/index/triggers.yaml`.
+- `regenerate-index-after-change`: `cookr update` ran after every trigger change.
+- `trigger-index-not-hand-edited`: the trigger index holds no hand edits.
+- `canonical-values-only`: every `triggers` value is a value of the canonical table.
+- `triggers-from-canonical-taxonomy`: the field's values come from the one canonical taxonomy and no other list.
+- `one-to-five-triggers`: every classified guideline carries one to five triggers.
+- `order-specific-to-general`: each guideline's triggers run from most specific to least specific.
+- `triggers-guideline-only`: only guidelines carry a `triggers` field.
+- `triggers-empty-until-classified`: a guideline not yet classified carries `[]`.
+- `canonical-trigger-vocabulary`: every value in the table has a definition, a "when it fires" scope note and example guidelines.
+- `trigger-one-meaning-one-label`: no value has two meanings or two canonical labels, and no two values share a meaning.
+- `trigger-scope-note-per-value`: every value has a scope note and an example, and overlapping values say which applies.
+- `trigger-values-carry-key-terms`: every value's description names when it applies in the tasks' own words.
+- `add-trigger-to-guide-first`: a new value was nominated, reviewed and added to the table before any guideline used it.
+- `trigger-change-history`: every value records its date of entry and each dated change with its author.
+- `rename-keeps-old-value-as-alias`: a renamed value's old name still resolves to the new one, and its guidelines were retagged.
+- `retire-assesses-impact-and-migrates`: a retired value's tagged guidelines were assessed and migrated, or the value was kept marked for retrieval only.
+- `vocabulary-periodic-review`: a review policy exists and its reviews look at overused and rarely used values.
+- `validate-trigger-values-mechanically`: tooling fails on a value outside the table.
+- `measure-trigger-selection-with-labelled-tasks`: selection is measured on a labelled task set with a held-out part.
+- `report-recall-and-precision`: the measurement reports recall and precision.
+
+## Rationale
+
+Every agent host now loads context selectively. Agent hosts load path-scoped rules and skill bodies on demand. Cursor has four rule activation modes. Copilot has `applyTo`, and OpenAI file search and Pinecone filter by metadata. The published evaluations (Lost in the Middle, IFScale, Chroma's context-rot report, RAG-MCP) all find that more context and more simultaneous instructions make models less reliable. That supports filtering, though no study measures tag-filtered guideline loading for coding agents. A small corpus that fits in the prompt can still be loaded whole.
+
+The vocabulary rules come from ANSI/NISO Z39.19, ISO 25964 and SKOS. They give a closed list with one meaning and one preferred label per value, a scope note, examples, a dated history, aliases for old forms, and retirement with an impact check. SKOS cannot close a vocabulary, and agent hosts silently ignore fields and values they do not understand, so tooling has to enforce the list.
+
+Tags miss. People tagging from a controlled vocabulary agree only 27.5-39.5% of the time, and selection by description under-triggers, so loading needs a fallback and a measurement. The measurement uses IIR's test collection of documents, needs and relevance judgments, scored by recall and precision, which usually trade off.
+
+No source supports any count in the prior text (240 guidelines, 10-20 per query, ~12 for `writing-tests`, 27 principles, ~10 pre-commit rules). No study backs "most effective" for graduated checkpoints, and no source states the proportional-cost rule. The index location, the regeneration step, the hand-edit ban, specific-to-general ordering, the guideline-only scope and the empty-list default are the cookbook's own design, which no outside source addresses. Those rules keep their prior text for the owner, as do the open questions research raised: the uncatalogued `refactor` and `research` values, the counts, whether pre-commit stays mandatory, the fallback and its recall trade, the size of the evaluation set, and the cap of five.
+
+General context loading (retrieving just in time, not front-loading) belongs to `context-and-memory-management`. RFC 2119 keyword case and lint severity belong to the sibling topic `requirement-keywords`.
+
+## References
+
+- Anthropic, [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- ANSI/NISO, [Z39.19 Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies](https://groups.niso.org/higherlogic/ws/public/download/6484/Guidelines%20for%20the%20Construction,%20Format,%20and%20Management%20of%20Monolingual%20Controlled%20Vocabularies.pdf)
+- NISO, [ISO 25964: the international standard for thesauri](https://www.niso.org/schemas/iso25964)
+- W3C, [SKOS Reference](https://www.w3.org/TR/skos-reference/) and [SKOS Primer](https://www.w3.org/TR/skos-primer/)
+- Martin Fowler, [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
+- Anthropic, [skill-creator](https://raw.githubusercontent.com/anthropics/skills/main/skills/skill-creator/SKILL.md), [Introducing advanced tool use](https://www.anthropic.com/engineering/advanced-tool-use) and [Introducing Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval)
+- Cursor, [Rules](https://cursor.com/docs/context/rules)
+- GitHub, [Adding repository custom instructions for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) and [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+- [AGENTS.md](https://agents.md/)
+- OpenAI, [File search](https://platform.openai.com/docs/guides/tools-file-search); Pinecone, [Filter by metadata](https://docs.pinecone.io/guides/search/filter-by-metadata)
+- [pre-commit](https://pre-commit.com/); Git, [githooks](https://git-scm.com/docs/githooks)
+- Stack Overflow, [tagging](https://stackoverflow.com/help/tagging), [create new tags](https://stackoverflow.com/help/privileges/create-tags) and [tag synonyms](https://stackoverflow.com/help/privileges/suggest-tag-synonyms)
+- Liu et al., [Lost in the Middle](https://arxiv.org/abs/2307.03172); [How Many Instructions Can LLMs Follow at Once?](https://arxiv.org/abs/2507.11538); Chroma, [Context Rot](https://research.trychroma.com/context-rot); [RAG-MCP](https://arxiv.org/abs/2505.03275)
+- Manning, Raghavan and Schütze, [Introduction to Information Retrieval, chapter 8](https://wiki.eecs.yorku.ca/course_archive/2013-14/W/6339/_media/08eval.pdf)
+- [Evaluation of controlled vocabularies by inter-indexer consistency](https://informationr.net/ir/16-4/paper502.html)
+- The agent hosts' own documentation on memory, skills, skill authoring, tool search and AGENTS.md, which this guideline's `references` lists in full.
+
+## Change History
+
+| Version | Date | Author | Summary |
+|---------|------|--------|---------|
+| 1.0.0 | 2026-11-21 | Mike Fullerton | Initial creation, written from research |
