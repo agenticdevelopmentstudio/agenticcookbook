@@ -243,3 +243,9 @@ The FM-03 fix is `cookr update`, which regenerates the index. The linter also po
 
 lint: fail 1
 ````
+
+## Round 2 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
