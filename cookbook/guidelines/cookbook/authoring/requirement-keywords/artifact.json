@@ -4,7 +4,7 @@
     "id": "456f23bd-4523-47e8-9541-073ac046f2ad",
     "title": "Requirement Keywords",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-21",
@@ -55,13 +55,13 @@
       "https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests",
       "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/editing-your-configuration-of-default-setup"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-21",
     "triggers": [
       "recipe-authoring"
     ]
   },
-  "synced": "afa706b3e88ceb1a",
+  "synced": "d3b7e59d885201c0",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
