@@ -5,7 +5,7 @@
 - `rule-uses-rfc-2119-keywords`: every rule states its requirement with MUST, MUST NOT, SHOULD, SHOULD NOT or MAY
 - `must-is-absolute-requirement`: every MUST is followed and every MUST NOT avoided, with no deviation
 - `should-is-recommendation`: every deviation from a SHOULD or SHOULD NOT was made only after its implications were weighed
-- `may-is-optional-behavior`: no MAY item is treated as required
+- `may-is-optional-behavior`: no MAY item is treated as obligatory
 - `follow-must-address-should-checks`: every MUST check is followed, and every SHOULD check is addressed or skipped with a documented reason
 - `approve-on-zero-fail`: approval metadata is stamped only after `/lint-artifact` reports zero FAIL findings, and a failing run reports its issues without approving
 - `keywords-meaningful-only-in-uppercase`: every keyword meant to carry its BCP 14 meaning is uppercase, unless the document declares another convention
@@ -16,8 +16,8 @@
 - `keyword-sets-finding-severity`: each lint check's default severity follows its rule's keyword: FAIL for MUST, WARN for SHOULD, at most a note for MAY
 - `warn-findings-do-not-block`: by default a run with only WARN findings neither fails nor blocks approval
 - `one-keyword-per-requirement`: each requirement has one keyword in the form subject, keyword, operation, written actively
-- `use-core-keyword-subset`: rules use MUST, MUST NOT, SHOULD and MAY, and MUST rather than SHALL
+- `use-core-keyword-subset`: rules use MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, and MUST rather than SHALL
 - `no-mixed-case-negation-or-may-not`: no rule writes 'MUST not' or 'MAY NOT'
-- `one-keyword-set-never-mixed`: the artifact uses one keyword set and never mixes must and shall
+- `one-keyword-set-never-mixed`: the artifact uses one keyword set and never mixes 'must' and 'shall'
 - `keywords-only-where-required`: keywords appear only where a requirement needs one
 

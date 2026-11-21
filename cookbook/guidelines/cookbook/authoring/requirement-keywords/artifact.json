@@ -21,7 +21,10 @@
       "lint-severity"
     ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "99eb40d3-98a6-4213-9fee-f8a62694dba4",
+      "04fe1298-3880-4584-8a4a-c7a538eb5193"
+    ],
     "references": [
       "https://www.rfc-editor.org/rfc/rfc2119.txt",
       "https://www.rfc-editor.org/rfc/rfc8174.txt",
@@ -31,23 +34,34 @@
       "https://www.w3.org/wiki/RfcKeywords",
       "https://infra.spec.whatwg.org/",
       "https://www.oasis-open.org/?p=3585",
+      "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf",
       "https://portal.etsi.org/Services/editHelp/Search/FAQs/Requirements",
+      "https://raw.githubusercontent.com/GSA/plainlanguage.gov/main/_pages/guidelines/conversational/shall-and-must.md",
+      "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0016.html",
+      "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0017.html",
+      "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html",
+      "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0019.html",
+      "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0024.html",
       "https://respec.org/docs/",
       "https://speced.github.io/bikeshed/",
       "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits",
       "https://vale.sh/docs/styles",
+      "https://vale.sh/docs/keys/minalertlevel",
       "https://eslint.org/docs/latest/use/configure/rules",
       "https://eslint.org/docs/latest/use/command-line-interface",
       "https://github.com/DavidAnson/markdownlint",
       "https://github.com/DavidAnson/markdownlint-cli2",
       "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html",
-      "https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests"
+      "https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests",
+      "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/editing-your-configuration-of-default-setup"
     ],
+    "approved-by": "",
+    "approved-date": "",
     "triggers": [
       "recipe-authoring"
     ]
   },
-  "synced": "bdc4ca2859e197ff",
+  "synced": "afa706b3e88ceb1a",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
