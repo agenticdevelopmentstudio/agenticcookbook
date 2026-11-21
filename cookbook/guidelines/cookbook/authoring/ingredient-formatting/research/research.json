@@ -176,8 +176,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "rfc style guide security considerations required",
       "trust": {
-        "score": 85,
-        "basis": "RFC Editor's style guide; restated by RFC 3552 (rfc3552-security-section-required), same standards family, so not independent."
+        "score": 65,
+        "basis": "RFC Editor's style guide; restated by RFC 3552 (rfc3552-security-section-required), same standards family, so not independent. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote backs only the RFC half (\"All RFCs must contain a section that discusses the security considerations\"). Nothing in the source supports the general rule that \"a long-lived specification template keeps a short list of always-required sections\"; lowered 85->65."
       },
       "independence": "single"
     },
@@ -224,8 +224,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "IANA considerations no actions statement wording",
       "trust": {
-        "score": 85,
-        "basis": "IETF BCP; the statement it prescribes is \"This document has no IANA actions.\""
+        "score": 65,
+        "basis": "IETF BCP; the statement it prescribes is \"This document has no IANA actions.\" Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): RFC 8126 §9.1 is specifically about the IANA Considerations section. It says such documents \"should ... include an IANA Considerations section that states: This document has no IANA actions.\" The claim widens this to any mandated section, which the source does not say; lowered 85->65."
       },
       "independence": "single"
     },
@@ -728,8 +728,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint MD043 optional headings wildcard",
       "trust": {
-        "score": 80,
-        "basis": "The tool's own documentation; that it cannot name an optional heading is inferred from the documented syntax, which offers nothing else."
+        "score": 60,
+        "basis": "The tool's own documentation; that it cannot name an optional heading is inferred from the documented syntax, which offers nothing else. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The doc lists the `*`, `+` and `?` wildcards, plus `%` regex headings and `^` loops. It never says a named heading cannot be optional or that a custom rule is needed. The \"only\" and \"cannot\" parts are inference. Also, `?` means exactly one heading, not an optional one; lowered 80->60."
       },
       "independence": "single"
     },
@@ -1160,8 +1160,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "PatternFly guidelines usage when to use",
       "trust": {
-        "score": 74,
-        "basis": "The design system's own writing guide."
+        "score": 54,
+        "basis": "The design system's own writing guide. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote is the description of the \"Usage (H2)\" section, but the template does not open with Usage. It opens with \"Elements (H2)\", the annotated image of the component's parts, and Usage comes second; lowered 74->54."
       },
       "independence": "single"
     },
@@ -1280,8 +1280,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "Material components checkbox states documentation",
       "trust": {
-        "score": 78,
-        "basis": "Google's own component documentation (source repository)."
+        "score": 58,
+        "basis": "Google's own component documentation (source repository). Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The source is the Checkbox doc of material-components-android only. It lists those states for checkboxes, but one component's doc does not show that Material's component documentation in general lists states this way; lowered 78->58."
       },
       "independence": "single"
     },
@@ -1592,8 +1592,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "Apple HIG typography Dynamic Type",
       "trust": {
-        "score": 86,
-        "basis": "Apple's own HIG."
+        "score": 66,
+        "basis": "Apple's own HIG. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The Typography page supports Dynamic Type on iOS, iPadOS, tvOS, visionOS and watchOS. It never mentions Reduce Motion or Increase Contrast, so the \"display option next to\" part is unsupported; lowered 86->66."
       },
       "independence": "single"
     },
@@ -2168,8 +2168,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "WAI-ARIA APG button pattern sections",
       "trust": {
-        "score": 78,
-        "basis": "W3C WAI's own guide; the quote is the section heading, so the claim is about structure only."
+        "score": 58,
+        "basis": "W3C WAI's own guide; the quote is the section heading, so the claim is about structure only. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): Only the Button pattern page is cited. It does have \"Keyboard Interaction\" next to \"WAI-ARIA Roles, States, and Properties\", but one page does not establish \"each APG pattern page\"; lowered 78->58."
       },
       "independence": "single"
     },
