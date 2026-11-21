@@ -200,3 +200,69 @@ Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, ci
 - R1.2: `rationale.md` (source fidelity, criterion 2): three sentences say more than, or the opposite of, the research. (1) Paragraph 3: "Unknown keywords are treated as annotations too". This flat statement is the overstatement the second check refuted for `jsonschema-unknown-keywords-annotations`: Core 2020-12 says they "SHOULD be treated as annotations", and Ajv's strict mode rejects them. `validate-the-schema-strictly` already words it correctly. Fix: "JSON Schema 2020-12 says unknown keywords should be treated as annotations, so a misspelt keyword in the schema constrains nothing unless the schema is compiled strictly." (2) Paragraph 2: "as Cargo checks a package by building it rather than by parsing its manifest". `cargo-package-verify-build` says Cargo's packaging step checks the package "beyond parsing it", not instead of parsing it. Fix: "as Cargo's packaging step checks a package by building it, beyond parsing its manifest". (3) Last paragraph: "no outside source requires them or argues against them". The research has a source against one of them: the `cf-required-project-fields` verdict cites `npm-name-version-required-to-publish` (npm requires only name and version, and only for a package that will be published), and owner-list.md lists it as "against". Fix: "…are this cookbook's own design; no outside source requires them, and npm, for one, requires only `name` and `version`, and only of a package it publishes."
 - R1.3: `a-build-must-establish.md` and `what-a-reviewer-looks-for.md`, `closed-objects-keep-an-extension-point` (the bars must match the rule's strength, cross-recipe-consistency within the guideline): both halves of the rule are MAY, including "a closed object meant to be extended through `allOf` MAY be closed with `unevaluatedProperties`". Both parts turn the second half into an unconditional requirement. Build bar: "closed objects extended through `allOf` use `unevaluatedProperties`". Review focus: "an object meant to be extended through `allOf` uses `unevaluatedProperties`". I checked every other MAY rule's build-bar line and review-focus bullet, and each is conditional ("when marked", "when present", "when generated", "when added"). Fix: build bar "an extension point, when added, is open for other tools, and a closed object extended through `allOf`, when closed with `unevaluatedProperties`, sees its subschemas' properties". Review focus: "an object meant to be extended through `allOf`, if closed, is closed with `unevaluatedProperties` rather than `additionalProperties`, or the change says why".
 - R1.4: `artifact.json` `related` (frontmatter, criterion 6): `related` is `[]`, though the new text rests on a sibling guideline. `cf-source-domains` needs every `source.id` to be "the UUID of an ingredient or recipe" that resolves in `index.json`. `cf-code-root-coverage` and `cf-library-tree-mirrors-code` depend on "artifact's implementations" recorded in `index.json`. `ingredient-formatting` (`2c5ee8e0-9da5-4b44-9f87-51962abe76ab`) defines that identity and the `index.json` implementations (`if-reference-implementations`). Its siblings `guideline-formatting`, `ingredient-formatting` and `principle-formatting` all fill `related`. Fix: add `2c5ee8e0-9da5-4b44-9f87-51962abe76ab` to `related`.
+
+## Round 2 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
+
+Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `## Lint` section:
+
+````
+/lint-artifact on `cookbook/guidelines/cookbook/authoring/cookbook-formatting`, with cookr run as instructed:
+
+```
+Type: guideline | Compliance: tbd/compliance/artifact-formatting/guideline-formatting.md
+
+[PASS] FM-01: YAML frontmatter block present
+[PASS] FM-02: id is a valid UUID (4c7be774-12c6-4bf0-a9ee-82e8633610dc)
+[PASS] FM-03: index.json entry matches folder (rdid adc.guideline.cookbook.authoring.cookbook-formatting; no domain field)
+[PASS] FM-04: type is guideline
+[PASS] FM-05: version is valid semver (1.0.0)
+[PASS] FM-06: all required fields present
+[PASS] FM-07: license is MIT
+[PASS] FM-08: copyright has year and name
+[PASS] FM-09: created and modified are valid dates
+[PASS] FM-10: summary is non-empty
+[PASS] FM-11: H1 matches title
+[PASS] FM-11a: links resolve (cookr validate passed)
+[PASS] FM-12: Change History present with one row
+[PASS] FM-13: no TODO/TBD/FIXME/placeholder text
+[PASS] GF-01 / gf-summary-statement: summary follows the H1
+[PASS] GF-02 / gf-structured-guidance: rules, a numbered procedure, subsections
+[WARN] GF-03 / gf-rfc-keywords: schema-structure-kind-enum
+       -> The rule is only a quoted JSON fragment. Its only keyword, "MAY be omitted", sits inside the
+          quoted description string. The rule states no obligation of its own. Every other rule is fine.
+[PASS] gf-frontmatter-complete
+[PASS] gf-type-field
+[PASS] gf-title-heading
+[PASS] gf-change-history
+[PASS] gf-triggers-field: triggers [recipe-authoring, configuration]
+[PASS] gf-roled-parts: every part has a role, and rules, review-focus, review-bar and build-bar are all present
+[FAIL] gf-named-rules: schema-structure-kind-enum
+       -> The obligation must be an RFC 2119 keyword in the rule's own text. It currently reads
+          `- **schema-structure-kind-enum**: "kind": { ... }`.
+          Reword it as "The schema MUST type `structure.kind` as written here: ...", the way
+          schema-version-pattern does.
+          The other 49 rules have unique names and a keyword.
+[PASS] gf-research-folder: research.json and research.md present, with the four headings in order
+[PASS] gf-rule-cites-research: all 50 rules end in a citation and every cited id is a claim
+[PASS] build-bar: 50 lines, one per rule, none extra
+[WARN] GF-04 / gf-compliance-section: no `## Compliance` section
+       -> Optional unless a compliance check references this guideline.
+[WARN] style: cf-type-field
+       -> The rule text reads `MUST be \"cookbook\"`, with a stray backslash-escaped quote in the markdown.
+          Write the value as `` `cookbook` `` or `"cookbook"`.
+
+=== LINT SUMMARY ===
+Artifact: cookbook-formatting
+Type: guideline
+Pass: 28 | Warn: 3 | Fail: 1
+RESULT: NOT CLEAN — 1 failing check.
+```
+
+The one FAIL, `gf-named-rules` on `schema-structure-kind-enum`, hits text that this round did not change. That text is the owner-list prior text, kept word for word. Round 1's lint passed the same text. owner-list.md gives this rule no lead-in, so under criterion 5 the author cannot add the suggested "The schema MUST type `structure.kind` as written here:". Only a lead-in listed in owner-list.md is accepted. The fix therefore belongs to the owner: add a lead-in for `schema-structure-kind-enum` to owner-list.md, and the author then applies it. Until that happens the lint error stands, so it is counted below.
+
+lint: fail 1
+````
