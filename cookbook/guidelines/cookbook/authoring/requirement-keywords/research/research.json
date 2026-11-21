@@ -5,10 +5,22 @@
   "base_commit": "071e52f9572bf4b7c534cfcf95fb111282abc423",
   "research_type": "How-to / troubleshooting (intent Do; domain technical writing; method practitioner and standards sources). Bar: How-to / troubleshooting, no escalation (owner ruling Q13).",
   "questions": [
-    {"id": "best-practices", "text": "Best practices: what is current best practice for this topic?"},
-    {"id": "known-solutions", "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"},
-    {"id": "platform-guidelines", "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"},
-    {"id": "experts-view", "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"}
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
   ],
   "methodology": {
     "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to authoritative sources first (the standards bodies that define normative keywords: IETF RFC 2119, RFC 8174, RFC 7322; W3C QA Framework and Manual of Style; WHATWG Infra; OASIS; ISO/IEC Directives Part 2; ETSI), then the tools' own documentation (ReSpec, Bikeshed, idnits, Vale, ESLint, markdownlint, SARIF, GitHub code scanning), then practitioner and editor views (W3C spec-prod list, W3C wiki, plainlanguage.gov); corroborate across independent publishers; record provenance at generation time.",
@@ -17,7 +29,9 @@
     "exclusion": "Pages not fetched; blog summaries restating RFC 2119 without adding anything; current ISO/IEC Directives on iso.org (403, not fetched); the KAN and ETSI NGSI-LD pages (404).",
     "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15; domain bar How-to / troubleshooting (LOW-MEDIUM, broad independent consensus), no escalation."
   },
-  "agents": ["grow-cookbook research agent"],
+  "agents": [
+    "grow-cookbook research agent"
+  ],
   "sources": [
     "https://www.rfc-editor.org/rfc/rfc2119.txt",
     "https://www.rfc-editor.org/rfc/rfc8174.txt",
@@ -49,7 +63,10 @@
     "https://www.w3.org/wiki/RfcKeywords",
     "https://raw.githubusercontent.com/GSA/plainlanguage.gov/main/_pages/guidelines/conversational/shall-and-must.md"
   ],
-  "dates": {"researched": "2026-11-21", "accessed": "2026-11-21"},
+  "dates": {
+    "researched": "2026-11-21",
+    "accessed": "2026-11-21"
+  },
   "summary": "The keyword definitions hold: RFC 2119 makes MUST/MUST NOT absolute, SHOULD/SHOULD NOT a recommendation whose implications must be weighed before deviating, and MAY truly optional (ISO/IEC Annex H agrees in its shall/should/may forms). Three rules are stronger than the sources: no standard requires keywords for every requirement (RFC 8174 says normative text does not require them), so 'MUST use RFC 2119 keywords' (gf-rfc-keywords, conventions.md and the artifact-formatting rule) is supported only at SHOULD, paired with a MUST to say how keywordless text is read (W3C QA Framework Requirement 7). The 'bold or uppercase' rule is contradicted in its bold alternative: under RFC 8174 the words carry BCP 14 meaning only in all capitals, and OASIS likewise ties the meaning to UPPERCASE. The severity rules hold: across Vale, ESLint, markdownlint, Bikeshed and GitHub code scanning only error-level findings fail the run or the merge check, warnings do not, which supports approve-on-zero-fail and a MUST-to-error, SHOULD-to-warning, MAY-to-no-finding mapping (an inference; no source states it directly). The topic is missing: uppercase-only meaning; flagging lowercase keywords in rule text; stating the keyword interpretation (the BCP 14 boilerplate); stating how keywordless text is read; no keywords in non-normative text; one keyword per requirement in subject-keyword-operation form; the core keyword subset; no 'MUST not'/'MAY NOT'; one keyword set never mixed; keywords only where actually required.",
   "open_questions": [
     "Case convention: follow RFC 8174 (only all-capital keywords carry meaning) or WHATWG Infra's willful violation (lowercase keywords carry the same meaning and are preferred for legibility); the sources support either if declared, and the owner chooses one.",
@@ -74,11 +91,23 @@
       "question": "best-practices",
       "claim": "MUST (and its synonyms REQUIRED and SHALL) marks an absolute requirement of the specification.",
       "quote": "MUST This word, or the terms \"REQUIRED\" or \"SHALL\", mean that the definition is an absolute requirement of the specification.",
-      "citations": [{"title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)", "author": "S. Bradner", "publisher": "IETF (RFC Editor)", "date": "1997-03", "url": "https://www.rfc-editor.org/rfc/rfc2119.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)",
+          "author": "S. Bradner",
+          "publisher": "IETF (RFC Editor)",
+          "date": "1997-03",
+          "url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 2119 key words requirement levels definition",
-      "trust": {"score": 85, "basis": "The defining standard (IETF BCP 14) for the keywords; verbatim; old but current as BCP 14 together with RFC 8174."},
+      "trust": {
+        "score": 85,
+        "basis": "The defining standard (IETF BCP 14) for the keywords; verbatim; old but current as BCP 14 together with RFC 8174."
+      },
       "independence": "single"
     },
     {
@@ -86,11 +115,23 @@
       "question": "best-practices",
       "claim": "MUST NOT (and SHALL NOT) marks an absolute prohibition of the specification.",
       "quote": "MUST NOT This phrase, or the phrase \"SHALL NOT\", mean that the definition is an absolute prohibition of the specification.",
-      "citations": [{"title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)", "author": "S. Bradner", "publisher": "IETF (RFC Editor)", "date": "1997-03", "url": "https://www.rfc-editor.org/rfc/rfc2119.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)",
+          "author": "S. Bradner",
+          "publisher": "IETF (RFC Editor)",
+          "date": "1997-03",
+          "url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 2119 key words requirement levels definition",
-      "trust": {"score": 85, "basis": "The defining standard (IETF BCP 14); verbatim."},
+      "trust": {
+        "score": 85,
+        "basis": "The defining standard (IETF BCP 14); verbatim."
+      },
       "independence": "single"
     },
     {
@@ -98,11 +139,23 @@
       "question": "best-practices",
       "claim": "SHOULD (RECOMMENDED) is a recommendation: valid reasons to ignore it may exist, but the full implications must be understood and carefully weighed before deviating.",
       "quote": "SHOULD This word, or the adjective \"RECOMMENDED\", mean that there may exist valid reasons in particular circumstances to ignore a particular item, but the full implications must be understood and carefully weighed before choosing a different course.",
-      "citations": [{"title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)", "author": "S. Bradner", "publisher": "IETF (RFC Editor)", "date": "1997-03", "url": "https://www.rfc-editor.org/rfc/rfc2119.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)",
+          "author": "S. Bradner",
+          "publisher": "IETF (RFC Editor)",
+          "date": "1997-03",
+          "url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 2119 key words requirement levels definition",
-      "trust": {"score": 85, "basis": "The defining standard (IETF BCP 14); verbatim."},
+      "trust": {
+        "score": 85,
+        "basis": "The defining standard (IETF BCP 14); verbatim."
+      },
       "independence": "single"
     },
     {
@@ -110,11 +163,23 @@
       "question": "best-practices",
       "claim": "SHOULD NOT (NOT RECOMMENDED) is the negative recommendation: the behaviour may sometimes be acceptable, but the implications must be weighed before doing it.",
       "quote": "SHOULD NOT This phrase, or the phrase \"NOT RECOMMENDED\" mean that there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label.",
-      "citations": [{"title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)", "author": "S. Bradner", "publisher": "IETF (RFC Editor)", "date": "1997-03", "url": "https://www.rfc-editor.org/rfc/rfc2119.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)",
+          "author": "S. Bradner",
+          "publisher": "IETF (RFC Editor)",
+          "date": "1997-03",
+          "url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 2119 key words requirement levels definition",
-      "trust": {"score": 85, "basis": "The defining standard (IETF BCP 14); verbatim."},
+      "trust": {
+        "score": 85,
+        "basis": "The defining standard (IETF BCP 14); verbatim."
+      },
       "independence": "single"
     },
     {
@@ -122,11 +187,23 @@
       "question": "best-practices",
       "claim": "MAY (OPTIONAL) marks an item that is truly optional.",
       "quote": "MAY This word, or the adjective \"OPTIONAL\", mean that an item is truly optional.",
-      "citations": [{"title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)", "author": "S. Bradner", "publisher": "IETF (RFC Editor)", "date": "1997-03", "url": "https://www.rfc-editor.org/rfc/rfc2119.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)",
+          "author": "S. Bradner",
+          "publisher": "IETF (RFC Editor)",
+          "date": "1997-03",
+          "url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 2119 key words requirement levels definition",
-      "trust": {"score": 85, "basis": "The defining standard (IETF BCP 14); verbatim."},
+      "trust": {
+        "score": 85,
+        "basis": "The defining standard (IETF BCP 14); verbatim."
+      },
       "independence": "single"
     },
     {
@@ -134,11 +211,23 @@
       "question": "best-practices",
       "claim": "The keywords are to be used with care and sparingly, only where actually required for interoperation or to limit potentially harmful behaviour.",
       "quote": "Imperatives of the type defined in this memo must be used with care and sparingly. In particular, they MUST only be used where it is actually required for interoperation or to limit behavior which has potential for causing harm",
-      "citations": [{"title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)", "author": "S. Bradner", "publisher": "IETF (RFC Editor)", "date": "1997-03", "url": "https://www.rfc-editor.org/rfc/rfc2119.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)",
+          "author": "S. Bradner",
+          "publisher": "IETF (RFC Editor)",
+          "date": "1997-03",
+          "url": "https://www.rfc-editor.org/rfc/rfc2119.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 2119 guidance in the use of these imperatives",
-      "trust": {"score": 80, "basis": "The defining standard, section 6; the interoperation framing is protocol-specific, so its transfer to a cookbook's rules is a reading, not a statement."},
+      "trust": {
+        "score": 80,
+        "basis": "The defining standard, section 6; the interoperation framing is protocol-specific, so its transfer to a cookbook's rules is a reading, not a statement."
+      },
       "independence": "single"
     },
     {
@@ -146,11 +235,23 @@
       "question": "best-practices",
       "claim": "Using the keywords is not required: normative text does not need them, and much normative text without them is still normative.",
       "quote": "These words can be used as defined here, but using them is not required. Specifically, normative text does not require the use of these key words. They are used for clarity and consistency when that is what's wanted, but a lot of normative text does not use them and is still normative.",
-      "citations": [{"title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)", "author": "B. Leiba", "publisher": "IETF (RFC Editor)", "date": "2017-05", "url": "https://www.rfc-editor.org/rfc/rfc8174.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)",
+          "author": "B. Leiba",
+          "publisher": "IETF (RFC Editor)",
+          "date": "2017-05",
+          "url": "https://www.rfc-editor.org/rfc/rfc8174.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 8174 uppercase lowercase key words normative text",
-      "trust": {"score": 87, "basis": "Part of BCP 14 itself, updating RFC 2119; verbatim; consistent with the W3C QA Framework listing keywords as one of several conformance styles (qa-consistent-style-explain)."},
+      "trust": {
+        "score": 87,
+        "basis": "Part of BCP 14 itself, updating RFC 2119; verbatim; consistent with the W3C QA Framework listing keywords as one of several conformance styles (qa-consistent-style-explain)."
+      },
       "independence": "single"
     },
     {
@@ -158,11 +259,23 @@
       "question": "best-practices",
       "claim": "Only the UPPERCASE forms of the keywords carry the defined BCP 14 meanings.",
       "quote": "This document updates RFC 2119 by clarifying that only UPPERCASE usage of the key words have the defined special meanings.",
-      "citations": [{"title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)", "author": "B. Leiba", "publisher": "IETF (RFC Editor)", "date": "2017-05", "url": "https://www.rfc-editor.org/rfc/rfc8174.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)",
+          "author": "B. Leiba",
+          "publisher": "IETF (RFC Editor)",
+          "date": "2017-05",
+          "url": "https://www.rfc-editor.org/rfc/rfc8174.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 8174 uppercase lowercase key words",
-      "trust": {"score": 88, "basis": "BCP 14 itself; verbatim; OASIS states the same rule in its own words (oasis-uppercase-only)."},
+      "trust": {
+        "score": 88,
+        "basis": "BCP 14 itself; verbatim; OASIS states the same rule in its own words (oasis-uppercase-only)."
+      },
       "independence": "single"
     },
     {
@@ -170,11 +283,23 @@
       "question": "best-practices",
       "claim": "When the words are not capitalized they have their normal English meanings and BCP 14 does not apply to them.",
       "quote": "When these words are not capitalized, they have their normal English meanings and are not affected by this document.",
-      "citations": [{"title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)", "author": "B. Leiba", "publisher": "IETF (RFC Editor)", "date": "2017-05", "url": "https://www.rfc-editor.org/rfc/rfc8174.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)",
+          "author": "B. Leiba",
+          "publisher": "IETF (RFC Editor)",
+          "date": "2017-05",
+          "url": "https://www.rfc-editor.org/rfc/rfc8174.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 8174 uppercase lowercase key words",
-      "trust": {"score": 88, "basis": "BCP 14 itself; verbatim."},
+      "trust": {
+        "score": 88,
+        "basis": "BCP 14 itself; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -182,11 +307,23 @@
       "question": "best-practices",
       "claim": "A document that follows BCP 14 states near its beginning a boilerplate that names the keywords and says they carry the BCP 14 meaning only in all capitals.",
       "quote": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
-      "citations": [{"title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)", "author": "B. Leiba", "publisher": "IETF (RFC Editor)", "date": "2017-05", "url": "https://www.rfc-editor.org/rfc/rfc8174.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)",
+          "author": "B. Leiba",
+          "publisher": "IETF (RFC Editor)",
+          "date": "2017-05",
+          "url": "https://www.rfc-editor.org/rfc/rfc8174.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC 8174 boilerplate key words BCP 14",
-      "trust": {"score": 88, "basis": "BCP 14 itself, which says authors 'should incorporate this phrase near the beginning of their document'; idnits checks for it (idnits-boilerplate-check)."},
+      "trust": {
+        "score": 68,
+        "basis": "BCP 14 itself, which says authors 'should incorporate this phrase near the beginning of their document'; idnits checks for it (idnits-boilerplate-check). Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote is only the boilerplate text. The claim's point that a document states it \"near its beginning\" is not in the quote; RFC 8174 says that in a separate sentence (\"should incorporate this phrase near the beginning\"); lowered 88->68."
+      },
       "independence": "single"
     },
     {
@@ -194,11 +331,23 @@
       "question": "best-practices",
       "claim": "A document using the capitalized words must either cite RFC 2119 as a normative reference or specify its own interpretation of them.",
       "quote": "RFC 2119 [BCP14] defines a default interpretation of these capitalized words in IETF documents. If this interpretation is used, RFC 2119 must be cited (as specified in RFC 2119) and included as a normative reference. Otherwise, the correct interpretation must be specified in the document.",
-      "citations": [{"title": "RFC Style Guide (RFC 7322)", "author": "H. Flanagan, S. Ginoza", "publisher": "IAB / RFC Editor", "date": "2014-09", "url": "https://www.rfc-editor.org/rfc/rfc7322.txt", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "RFC Style Guide (RFC 7322)",
+          "author": "H. Flanagan, S. Ginoza",
+          "publisher": "IAB / RFC Editor",
+          "date": "2014-09",
+          "url": "https://www.rfc-editor.org/rfc/rfc7322.txt",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide",
       "generated_by": "grow-cookbook research agent",
       "query": "RFC style guide requirement key words RFC 2119 cited",
-      "trust": {"score": 84, "basis": "The RFC Editor's own style guide; verbatim; the RFC 8174 boilerplate (bcp14-boilerplate) and ReSpec's conformance section (respec-conformance-boilerplate) implement the same practice."},
+      "trust": {
+        "score": 64,
+        "basis": "The RFC Editor's own style guide; verbatim; the RFC 8174 boilerplate (bcp14-boilerplate) and ReSpec's conformance section (respec-conformance-boilerplate) implement the same practice. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): RFC 7322 (the RFC Style Guide) scopes the rule to \"IETF documents\" and RFCs. The claim applies it to any document; lowered 84->64."
+      },
       "independence": "single"
     },
     {
@@ -206,11 +355,23 @@
       "question": "best-practices",
       "claim": "Specifications convey conformance requirements in different styles (RFC 2119 keywords, imperative voice, descriptive assertions); a specification must use a consistent style and tell readers which styles it uses and how to distinguish them.",
       "quote": "Specifications use different styles to convey conformance requirements: RFC 2119 [RFC2119] keywords, imperative voice, descriptive assertions, etc. Tell the readers what styles are used, especially when the specification uses different styles for different parts of the specification.",
-      "citations": [{"title": "QA Framework: Specification Guidelines", "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson", "publisher": "W3C", "date": "2005-08-17", "url": "https://www.w3.org/TR/qaframe-spec/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C QA framework specification guidelines conformance requirements style",
-      "trust": {"score": 82, "basis": "W3C Recommendation; this is under its Requirement 7 ('Use a consistent style for conformance requirements and explain how to distinguish them.'); dated 2005 but not superseded."},
+      "trust": {
+        "score": 62,
+        "basis": "W3C Recommendation; this is under its Requirement 7 ('Use a consistent style for conformance requirements and explain how to distinguish them.'); dated 2005 but not superseded. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote supports only \"tell readers what styles are used\". The duty to \"use a consistent style\" and explain \"how to distinguish them\" is in Requirement 7's title, which the quote leaves out; lowered 82->62."
+      },
       "independence": "single"
     },
     {
@@ -218,11 +379,23 @@
       "question": "best-practices",
       "claim": "RFC 2119 keywords make conformance requirements easy to spot, and are usually given distinctive formatting such as uppercase or bold.",
       "quote": "Using RFC 2119 [RFC2119] key words (MUST, SHOULD, MAY, …) makes it easy to spot conformance requirements. ... They are usually written with distinctive formatting, such as uppercase or bold.",
-      "citations": [{"title": "QA Framework: Specification Guidelines", "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson", "publisher": "W3C", "date": "2005-08-17", "url": "https://www.w3.org/TR/qaframe-spec/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C QA framework specification guidelines RFC 2119 key words",
-      "trust": {"score": 74, "basis": "W3C Recommendation, but descriptive ('usually'), and predates RFC 8174, which ties meaning to all capitals; it describes practice, not a requirement."},
+      "trust": {
+        "score": 74,
+        "basis": "W3C Recommendation, but descriptive ('usually'), and predates RFC 8174, which ties meaning to all capitals; it describes practice, not a requirement."
+      },
       "independence": "single"
     },
     {
@@ -230,11 +403,23 @@
       "question": "best-practices",
       "claim": "A specification must indicate which of its requirements are mandatory, which recommended, and which optional.",
       "quote": "Indicate which conformance requirements are mandatory, which are recommended, and which are optional.",
-      "citations": [{"title": "QA Framework: Specification Guidelines", "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson", "publisher": "W3C", "date": "2005-08-17", "url": "https://www.w3.org/TR/qaframe-spec/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C QA framework mandatory recommended optional requirements",
-      "trust": {"score": 82, "basis": "W3C Recommendation, Requirement 8 (a Requirement, i.e. 'necessary for claiming conformance' to the guidelines)."},
+      "trust": {
+        "score": 82,
+        "basis": "W3C Recommendation, Requirement 8 (a Requirement, i.e. 'necessary for claiming conformance' to the guidelines)."
+      },
       "independence": "single"
     },
     {
@@ -242,11 +427,23 @@
       "question": "best-practices",
       "claim": "Requirement levels can define conformance classes: HTTP/1.1 defines one conformance where every MUST is met and another where every MUST and SHOULD is met.",
       "quote": "For instance, HTTP 1.1 [HTTP11] defines two types of conformance, one where all the MUST are respected, and one where all the MUST and the SHOULD are implemented.",
-      "citations": [{"title": "QA Framework: Specification Guidelines", "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson", "publisher": "W3C", "date": "2005-08-17", "url": "https://www.w3.org/TR/qaframe-spec/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C QA framework mandatory recommended optional requirements",
-      "trust": {"score": 76, "basis": "W3C Recommendation; an example rather than a rule, so it shows MUST and SHOULD being judged separately, not a mandated mapping."},
+      "trust": {
+        "score": 76,
+        "basis": "W3C Recommendation; an example rather than a rule, so it shows MUST and SHOULD being judged separately, not a mandated mapping."
+      },
       "independence": "single"
     },
     {
@@ -254,11 +451,23 @@
       "question": "best-practices",
       "claim": "A good keyword requirement has the form subject, one keyword, operation: a class of product, one of MUST/SHOULD/MAY, and a verb for what it does.",
       "quote": "A good conformance requirement using RFC Keyword is of the form: subject rfc_keyword operation, where subject is one of the classes of products, rfc_keyword one of MUST, SHOULD, MAY, and operation a verb describing one of the operations the classes of products can do",
-      "citations": [{"title": "QA Framework: Specification Guidelines", "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson", "publisher": "W3C", "date": "2005-08-17", "url": "https://www.w3.org/TR/qaframe-spec/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C QA framework conformance requirement form subject keyword",
-      "trust": {"score": 76, "basis": "W3C Recommendation, stated as a Good Practice technique, not a Requirement; the W3C wiki gives the same advice (w3c-wiki-active-form)."},
+      "trust": {
+        "score": 76,
+        "basis": "W3C Recommendation, stated as a Good Practice technique, not a Requirement; the W3C wiki gives the same advice (w3c-wiki-active-form)."
+      },
       "independence": "single"
     },
     {
@@ -266,11 +475,23 @@
       "question": "best-practices",
       "claim": "Language that looks normative, such as RFC 2119 keywords, should be avoided in informative sections.",
       "quote": "Avoid using language that looks normative (e.g., with RFC 2119 key words) in informative sections.",
-      "citations": [{"title": "QA Framework: Specification Guidelines", "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson", "publisher": "W3C", "date": "2005-08-17", "url": "https://www.w3.org/TR/qaframe-spec/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "QA Framework: Specification Guidelines",
+          "author": "Karl Dubost, Lynne Rosenthal, Dominique Hazaël-Massieux, Lofton Henderson",
+          "publisher": "W3C",
+          "date": "2005-08-17",
+          "url": "https://www.w3.org/TR/qaframe-spec/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C QA framework informative sections normative language",
-      "trust": {"score": 80, "basis": "W3C Recommendation; the W3C Manual of Style, WHATWG Infra and ETSI say the same in their own words (w3c-mos-no-keywords-informative, infra-no-keywords-in-non-normative, etsi-requirements-only-normative)."},
+      "trust": {
+        "score": 80,
+        "basis": "W3C Recommendation; the W3C Manual of Style, WHATWG Infra and ETSI say the same in their own words (w3c-mos-no-keywords-informative, infra-no-keywords-in-non-normative, etsi-requirements-only-normative)."
+      },
       "independence": "single"
     },
     {
@@ -278,11 +499,23 @@
       "question": "known-solutions",
       "claim": "ReSpec inserts the standard RFC 2119 conformance boilerplate when a document has a section with id conformance.",
       "quote": "A <section> with id=\"conformance\" tells ReSpec to insert the standard RFC 2119 conformance boilerplate.",
-      "citations": [{"title": "ReSpec Documentation", "author": "ReSpec contributors", "publisher": "W3C / ReSpec", "date": "2026-11-15", "url": "https://respec.org/docs/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ReSpec Documentation",
+          "author": "ReSpec contributors",
+          "publisher": "W3C / ReSpec",
+          "date": "2026-11-15",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ReSpec conformance section RFC 2119 boilerplate",
-      "trust": {"score": 80, "basis": "The tool's own current documentation; verbatim."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own current documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -290,11 +523,23 @@
       "question": "known-solutions",
       "claim": "ReSpec warns when RFC 2119 keywords are present but the conformance section that declares them is missing.",
       "quote": "ReSpec will warn you if RFC 2119 keywords are present but the conformance section is missing:",
-      "citations": [{"title": "ReSpec Documentation", "author": "ReSpec contributors", "publisher": "W3C / ReSpec", "date": "2026-11-15", "url": "https://respec.org/docs/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ReSpec Documentation",
+          "author": "ReSpec contributors",
+          "publisher": "W3C / ReSpec",
+          "date": "2026-11-15",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ReSpec conformance section RFC 2119 boilerplate",
-      "trust": {"score": 80, "basis": "The tool's own current documentation; verbatim."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own current documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -302,11 +547,23 @@
       "question": "known-solutions",
       "claim": "ReSpec lint rules are configured per rule as error, warning or disabled; errors show as red banners and warnings as yellow.",
       "quote": "Rule severity can be true (error), \"warn\" (warning), or false (disabled)",
-      "citations": [{"title": "ReSpec Documentation", "author": "ReSpec contributors", "publisher": "W3C / ReSpec", "date": "2026-11-15", "url": "https://respec.org/docs/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ReSpec Documentation",
+          "author": "ReSpec contributors",
+          "publisher": "W3C / ReSpec",
+          "date": "2026-11-15",
+          "url": "https://respec.org/docs/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ReSpec lint rules severity warn error",
-      "trust": {"score": 78, "basis": "The tool's own current documentation; verbatim; the same page says 'Linting errors appear as red banners in the document header; warnings appear as yellow'."},
+      "trust": {
+        "score": 58,
+        "basis": "The tool's own current documentation; verbatim; the same page says 'Linting errors appear as red banners in the document header; warnings appear as yellow'. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only the true, \"warn\" and false values. The red and yellow banners are in the page's next sentence, which is not in the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -314,11 +571,23 @@
       "question": "known-solutions",
       "claim": "Bikeshed grades its messages fatal (clear mistakes), link-error, warning (questionable but fine to generate) and lint (opt-in lint violations).",
       "quote": "clear mistakes are \"fatal\", errors in resolving autolinks are \"link-error\", things that look a little questionable but are totally okay to generate a document with are \"warning\", and things that just violate one of the opt-in lint checks are \"lint\".",
-      "citations": [{"title": "Bikeshed Documentation", "author": "Tab Atkins-Bittner", "publisher": "speced (Bikeshed)", "date": "2026-11-20", "url": "https://speced.github.io/bikeshed/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Bikeshed Documentation",
+          "author": "Tab Atkins-Bittner",
+          "publisher": "speced (Bikeshed)",
+          "date": "2026-11-20",
+          "url": "https://speced.github.io/bikeshed/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bikeshed die-on fatal warning lint",
-      "trust": {"score": 80, "basis": "The spec generator's own current documentation, written by its maintainer; verbatim."},
+      "trust": {
+        "score": 80,
+        "basis": "The spec generator's own current documentation, written by its maintainer; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -326,11 +595,23 @@
       "question": "known-solutions",
       "claim": "Bikeshed's --die-on flag sets which message levels make it fail to produce output and exit non-zero.",
       "quote": "The --die-on flag controls which sorts of errors cause Bikeshed to fail to produce output and exit with a non-0 status",
-      "citations": [{"title": "Bikeshed Documentation", "author": "Tab Atkins-Bittner", "publisher": "speced (Bikeshed)", "date": "2026-11-20", "url": "https://speced.github.io/bikeshed/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Bikeshed Documentation",
+          "author": "Tab Atkins-Bittner",
+          "publisher": "speced (Bikeshed)",
+          "date": "2026-11-20",
+          "url": "https://speced.github.io/bikeshed/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bikeshed die-on fatal warning lint",
-      "trust": {"score": 80, "basis": "The tool's own current documentation; verbatim."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own current documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -338,11 +619,23 @@
       "question": "known-solutions",
       "claim": "By default Bikeshed fails only on fatal errors; warnings and lint do not stop it.",
       "quote": "Defaults to \"fatal\".",
-      "citations": [{"title": "Bikeshed Documentation", "author": "Tab Atkins-Bittner", "publisher": "speced (Bikeshed)", "date": "2026-11-20", "url": "https://speced.github.io/bikeshed/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Bikeshed Documentation",
+          "author": "Tab Atkins-Bittner",
+          "publisher": "speced (Bikeshed)",
+          "date": "2026-11-20",
+          "url": "https://speced.github.io/bikeshed/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bikeshed die-on fatal warning lint",
-      "trust": {"score": 78, "basis": "The tool's own current documentation, in its --die-on entry; verbatim."},
+      "trust": {
+        "score": 58,
+        "basis": "The tool's own current documentation, in its --die-on entry; verbatim. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): \"Defaults to 'fatal'\" on its own does not say what defaults. The surrounding `--die-on` text, where each level includes all previous levels, is what supports the claim, and it is not in the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -350,11 +643,23 @@
       "question": "known-solutions",
       "claim": "Bikeshed has an opt-in lint, accidental-2119, that complains about RFC 2119 terms used in non-normative sections.",
       "quote": "accidental-2119 (default: off) Complains about usage of RFC 2119 terms (may, must, should, etc.) in non-normative sections.",
-      "citations": [{"title": "Bikeshed Documentation", "author": "Tab Atkins-Bittner", "publisher": "speced (Bikeshed)", "date": "2026-11-20", "url": "https://speced.github.io/bikeshed/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Bikeshed Documentation",
+          "author": "Tab Atkins-Bittner",
+          "publisher": "speced (Bikeshed)",
+          "date": "2026-11-20",
+          "url": "https://speced.github.io/bikeshed/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bikeshed accidental-2119 lint",
-      "trust": {"score": 80, "basis": "The tool's own current documentation; verbatim."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own current documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -362,11 +667,23 @@
       "question": "known-solutions",
       "claim": "Bikeshed's generated conformance text declares that its keywords do not appear in uppercase, for readability, and that requirements combine descriptive assertions with RFC 2119 terms.",
       "quote": "However, for readability, these words do not appear in all uppercase letters in this specification.",
-      "citations": [{"title": "Bikeshed Documentation", "author": "Tab Atkins-Bittner", "publisher": "speced (Bikeshed)", "date": "2026-11-20", "url": "https://speced.github.io/bikeshed/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Bikeshed Documentation",
+          "author": "Tab Atkins-Bittner",
+          "publisher": "speced (Bikeshed)",
+          "date": "2026-11-20",
+          "url": "https://speced.github.io/bikeshed/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bikeshed conformance section RFC 2119 lowercase",
-      "trust": {"score": 72, "basis": "The tool's own document's conformance section; verbatim; it shows a declared lowercase convention, which BCP 14 does not cover (see uppercase-only-meaning)."},
+      "trust": {
+        "score": 52,
+        "basis": "The tool's own document's conformance section; verbatim; it shows a declared lowercase convention, which BCP 14 does not cover (see uppercase-only-meaning). Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only the readability and lowercase point. The page's previous sentence says requirements combine \"descriptive assertions and RFC 2119 terminology\", but that sentence is not in the quote; lowered 72->52."
+      },
       "independence": "single"
     },
     {
@@ -374,11 +691,23 @@
       "question": "known-solutions",
       "claim": "IETF idnits flags lowercase 'not' with an uppercase keyword (for example 'MUST not') as not an accepted RFC 2119 usage.",
       "quote": "Using lowercase 'not' together with uppercase 'MUST', 'SHALL', 'SHOULD', or 'RECOMMENDED' is not an accepted usage according to RFC 2119. Please use uppercase 'NOT' together with RFC 2119 keywords (if that is what you mean).",
-      "citations": [{"title": "idnits (source, version 2.17.1)", "author": "IETF Trust / ietf-tools", "publisher": "IETF Tools (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "idnits (source, version 2.17.1)",
+          "author": "IETF Trust / ietf-tools",
+          "publisher": "IETF Tools (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool source",
       "generated_by": "grow-cookbook research agent",
       "query": "idnits RFC 2119 keywords check",
-      "trust": {"score": 78, "basis": "The IETF's own draft checker; message text read from its source, verbatim; the tool's purpose is stated on author-tools.ietf.org."},
+      "trust": {
+        "score": 78,
+        "basis": "The IETF's own draft checker; message text read from its source, verbatim; the tool's purpose is stated on author-tools.ietf.org."
+      },
       "independence": "single"
     },
     {
@@ -386,11 +715,23 @@
       "question": "known-solutions",
       "claim": "IETF idnits flags 'MAY NOT' as not defined in RFC 2119 and suggests 'MUST NOT'.",
       "quote": "The expression 'MAY NOT', while looking like RFC 2119 requirements text, is not defined in RFC 2119, and should not be used. Consider using 'MUST NOT' instead (if that is what you mean).",
-      "citations": [{"title": "idnits (source, version 2.17.1)", "author": "IETF Trust / ietf-tools", "publisher": "IETF Tools (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "idnits (source, version 2.17.1)",
+          "author": "IETF Trust / ietf-tools",
+          "publisher": "IETF Tools (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool source",
       "generated_by": "grow-cookbook research agent",
       "query": "idnits RFC 2119 keywords check",
-      "trust": {"score": 78, "basis": "The IETF's own draft checker; verbatim; OASIS also says 'MAY NOT' is not a keyword (oasis-may-not-not-keyword)."},
+      "trust": {
+        "score": 78,
+        "basis": "The IETF's own draft checker; verbatim; OASIS also says 'MAY NOT' is not a keyword (oasis-may-not-not-keyword)."
+      },
       "independence": "single"
     },
     {
@@ -399,13 +740,22 @@
       "claim": "IETF idnits checks that a draft using RFC 2119 keywords has both the RFC 2119 reference and the boilerplate, reporting an error without the reference and a warning when only the boilerplate is off.",
       "quote": "both a reference to RFC 2119 and the recommended RFC 2119 boilerplate, even if it appears to use RFC 2119 keywords",
       "citations": [
-        {"title": "idnits (source, version 2.17.1)", "author": "IETF Trust / ietf-tools", "publisher": "IETF Tools (GitHub)", "date": "n.d.", "url": "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits", "accessed": "2026-11-21"},
-        {"title": "idnits (Author Tools)", "author": "IETF", "publisher": "IETF Author Tools", "date": "n.d.", "url": "https://author-tools.ietf.org/idnits", "accessed": "2026-11-21"}
+        {
+          "title": "idnits (source, version 2.17.1)",
+          "author": "IETF Trust / ietf-tools",
+          "publisher": "IETF Tools (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/ietf-tools/idnits/main/idnits",
+          "accessed": "2026-11-21"
+        }
       ],
       "source_type": "official tool source",
       "generated_by": "grow-cookbook research agent",
       "query": "idnits RFC 2119 boilerplate check",
-      "trust": {"score": 72, "basis": "Message text and its err/warn level read from the tool's source (severities err, flaw, warn, comment); the Author Tools page states the tool's purpose ('inspects Internet-Draft (I-D) documents for conditions that should be adjusted'), not this message; the level split is read from code."},
+      "trust": {
+        "score": 52,
+        "basis": "Message text and its err/warn level read from the tool's source (severities err, flaw, warn, comment); the Author Tools page states the tool's purpose ('inspects Internet-Draft (I-D) documents for conditions that should be adjusted'), not this message; the level split is read from code. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote is a fragment of a message in the idnits source. The split the claim describes (error with no reference, warning with only the boilerplate off) comes from the code around it (`sectionerr` vs `sectionwarn`), not from the quote. The author-tools page is only an upload form; lowered 72->52."
+      },
       "independence": "single"
     },
     {
@@ -413,11 +763,23 @@
       "question": "known-solutions",
       "claim": "Vale rules have three levels, suggestion, warning and error, and only errors set a non-zero exit code.",
       "quote": "suggestion, warning, or error. Only errors set a non-zero exit code.",
-      "citations": [{"title": "Styles", "author": "Vale", "publisher": "vale.sh", "date": "n.d.", "url": "https://vale.sh/docs/styles", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Styles",
+          "author": "Vale",
+          "publisher": "vale.sh",
+          "date": "n.d.",
+          "url": "https://vale.sh/docs/styles",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Vale alert level error warning suggestion exit code",
-      "trust": {"score": 80, "basis": "The tool's own documentation; verbatim; ESLint and markdownlint-cli2 behave the same (eslint-warn-no-exit-code, markdownlint-cli2-exit-codes)."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool's own documentation; verbatim; ESLint and markdownlint-cli2 behave the same (eslint-warn-no-exit-code, markdownlint-cli2-exit-codes)."
+      },
       "independence": "single"
     },
     {
@@ -425,11 +787,23 @@
       "question": "known-solutions",
       "claim": "Vale's MinAlertLevel controls which levels are reported, so error-level alerts can fail CI while warnings and suggestions show only in the editor.",
       "quote": "This allows you to, for example, show all alerts in your editor while only running error-level alerts in CI.",
-      "citations": [{"title": "MinAlertLevel", "author": "Vale", "publisher": "vale.sh", "date": "n.d.", "url": "https://vale.sh/docs/keys/minalertlevel", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "MinAlertLevel",
+          "author": "Vale",
+          "publisher": "vale.sh",
+          "date": "n.d.",
+          "url": "https://vale.sh/docs/keys/minalertlevel",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Vale MinAlertLevel CI",
-      "trust": {"score": 78, "basis": "The tool's own documentation; verbatim; the page also says error-level alerts give a non-zero exit code and warning- and suggestion-level alerts do not, 'useful for controlling which rules will fail CI builds'."},
+      "trust": {
+        "score": 58,
+        "basis": "The tool's own documentation; verbatim; the page also says error-level alerts give a non-zero exit code and warning- and suggestion-level alerts do not, 'useful for controlling which rules will fail CI builds'. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote is about the `--minAlertLevel` command-line override and says error-level alerts are \"run\" in CI. It does not say MinAlertLevel controls which levels are reported, or that errors \"fail CI\". The page says those things elsewhere; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -437,11 +811,23 @@
       "question": "known-solutions",
       "claim": "In ESLint a rule set to warn reports without affecting the exit code; a rule set to error makes the exit code 1 when triggered.",
       "quote": "\"warn\" or 1 - turn the rule on as a warning (doesn’t affect exit code).",
-      "citations": [{"title": "Configure Rules", "author": "OpenJS Foundation (ESLint)", "publisher": "ESLint", "date": "n.d.", "url": "https://eslint.org/docs/latest/use/configure/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Configure Rules",
+          "author": "OpenJS Foundation (ESLint)",
+          "publisher": "ESLint",
+          "date": "n.d.",
+          "url": "https://eslint.org/docs/latest/use/configure/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ESLint rule severity warn error exit code",
-      "trust": {"score": 82, "basis": "The tool's own current documentation; verbatim; the same page: '\"error\" or 2 - turn the rule on as an error (exit code is 1 when triggered).'"},
+      "trust": {
+        "score": 62,
+        "basis": "The tool's own current documentation; verbatim; the same page: '\"error\" or 2 - turn the rule on as an error (exit code is 1 when triggered).' Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only \"warn\". The claim's \"error makes the exit code 1\" is in the next list item (\"exit code is 1 when triggered\"), which is not in the quote; lowered 82->62."
+      },
       "independence": "single"
     },
     {
@@ -449,11 +835,23 @@
       "question": "known-solutions",
       "claim": "ESLint rules are typically set to error to enforce compliance in CI, pre-commit checks and pull-request merging, because error makes ESLint exit non-zero.",
       "quote": "Rules are typically set to \"error\" to enforce compliance with the rule during continuous integration testing, pre-commit checks, and pull request merging because doing so causes ESLint to exit with a non-zero exit code.",
-      "citations": [{"title": "Configure Rules", "author": "OpenJS Foundation (ESLint)", "publisher": "ESLint", "date": "n.d.", "url": "https://eslint.org/docs/latest/use/configure/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Configure Rules",
+          "author": "OpenJS Foundation (ESLint)",
+          "publisher": "ESLint",
+          "date": "n.d.",
+          "url": "https://eslint.org/docs/latest/use/configure/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ESLint rule severity warn error exit code",
-      "trust": {"score": 82, "basis": "The tool's own current documentation; verbatim."},
+      "trust": {
+        "score": 82,
+        "basis": "The tool's own current documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -461,11 +859,23 @@
       "question": "known-solutions",
       "claim": "ESLint uses warn for a rule being introduced before it becomes an error, or for a rule that cannot be certain it found a problem and needs manual review.",
       "quote": "or when a rule cannot determine with certainty that a problem has been found (when a rule might have false positives and need manual review)",
-      "citations": [{"title": "Configure Rules", "author": "OpenJS Foundation (ESLint)", "publisher": "ESLint", "date": "n.d.", "url": "https://eslint.org/docs/latest/use/configure/rules", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Configure Rules",
+          "author": "OpenJS Foundation (ESLint)",
+          "publisher": "ESLint",
+          "date": "n.d.",
+          "url": "https://eslint.org/docs/latest/use/configure/rules",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ESLint rule severity warn error exit code",
-      "trust": {"score": 78, "basis": "The tool's own current documentation; verbatim; describes typical use of warn, not a requirement."},
+      "trust": {
+        "score": 58,
+        "basis": "The tool's own current documentation; verbatim; describes typical use of warn, not a requirement. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only the uncertain or false-positive use. The page's \"introducing a new rule that will eventually be set to error\" clause is not in the quote, and the page lists a third use the claim leaves out (flagging non-error issues); lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -473,11 +883,23 @@
       "question": "known-solutions",
       "claim": "ESLint exits successfully when it finds only warnings, unless an optional --max-warnings threshold is set and exceeded.",
       "quote": "Normally, if ESLint runs and finds no errors (only warnings), it exits with a success exit status. However, if --max-warnings is specified and the total warning count is greater than the specified threshold, ESLint exits with an error status.",
-      "citations": [{"title": "Command Line Interface Reference", "author": "OpenJS Foundation (ESLint)", "publisher": "ESLint", "date": "n.d.", "url": "https://eslint.org/docs/latest/use/command-line-interface", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Command Line Interface Reference",
+          "author": "OpenJS Foundation (ESLint)",
+          "publisher": "ESLint",
+          "date": "n.d.",
+          "url": "https://eslint.org/docs/latest/use/command-line-interface",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "ESLint max-warnings exit status",
-      "trust": {"score": 82, "basis": "The tool's own current documentation; verbatim."},
+      "trust": {
+        "score": 82,
+        "basis": "The tool's own current documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -485,11 +907,23 @@
       "question": "known-solutions",
       "claim": "markdownlint lets each rule report violations as errors (true or \"error\") or as warnings (\"warning\").",
       "quote": "The values true or \"error\" enable a rule in its default configuration and report violations as errors. The value \"warning\" enables a rule in its default configuration and reports violations as warnings.",
-      "citations": [{"title": "markdownlint (README)", "author": "David Anson", "publisher": "GitHub (DavidAnson/markdownlint)", "date": "n.d.", "url": "https://github.com/DavidAnson/markdownlint", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "markdownlint (README)",
+          "author": "David Anson",
+          "publisher": "GitHub (DavidAnson/markdownlint)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint rule severity warning error",
-      "trust": {"score": 78, "basis": "The library maintainer's own README; verbatim."},
+      "trust": {
+        "score": 78,
+        "basis": "The library maintainer's own README; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -497,11 +931,23 @@
       "question": "known-solutions",
       "claim": "markdownlint-cli2 exits 0 when there are no errors, even with warnings, and 1 when there are errors.",
       "quote": "0: Linting was successful and there were no errors (there may be warnings)",
-      "citations": [{"title": "markdownlint-cli2 (README)", "author": "David Anson", "publisher": "GitHub (DavidAnson/markdownlint-cli2)", "date": "n.d.", "url": "https://github.com/DavidAnson/markdownlint-cli2", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "markdownlint-cli2 (README)",
+          "author": "David Anson",
+          "publisher": "GitHub (DavidAnson/markdownlint-cli2)",
+          "date": "n.d.",
+          "url": "https://github.com/DavidAnson/markdownlint-cli2",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official tool documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "markdownlint-cli2 exit codes warnings errors",
-      "trust": {"score": 78, "basis": "The CLI maintainer's own README; verbatim; the next line: '1: Linting was successful and there were errors (and possibly warnings)'."},
+      "trust": {
+        "score": 58,
+        "basis": "The CLI maintainer's own README; verbatim; the next line: '1: Linting was successful and there were errors (and possibly warnings)'. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only exit code 0. The README's next line has exit 1 for errors, but it is not in the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -509,11 +955,23 @@
       "question": "known-solutions",
       "claim": "The SARIF standard for static-analysis results defines the error level as a serious problem found by the rule.",
       "quote": "\"error\": The rule specified by ruleId was evaluated and a serious problem was found.",
-      "citations": [{"title": "Static Analysis Results Interchange Format (SARIF) Version 2.1.0 Plus Errata 01", "author": "OASIS Static Analysis Results Interchange Format (SARIF) TC", "publisher": "OASIS Open", "date": "2023-08-28", "url": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Static Analysis Results Interchange Format (SARIF) Version 2.1.0 Plus Errata 01",
+          "author": "OASIS Static Analysis Results Interchange Format (SARIF) TC",
+          "publisher": "OASIS Open",
+          "date": "2023-08-28",
+          "url": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "SARIF result level error warning note",
-      "trust": {"score": 82, "basis": "OASIS Standard; verbatim."},
+      "trust": {
+        "score": 82,
+        "basis": "OASIS Standard; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -521,11 +979,23 @@
       "question": "known-solutions",
       "claim": "SARIF defines the warning level as a problem found by the rule, below error.",
       "quote": "\"warning\": The rule specified by ruleId was evaluated and a problem was found.",
-      "citations": [{"title": "Static Analysis Results Interchange Format (SARIF) Version 2.1.0 Plus Errata 01", "author": "OASIS Static Analysis Results Interchange Format (SARIF) TC", "publisher": "OASIS Open", "date": "2023-08-28", "url": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Static Analysis Results Interchange Format (SARIF) Version 2.1.0 Plus Errata 01",
+          "author": "OASIS Static Analysis Results Interchange Format (SARIF) TC",
+          "publisher": "OASIS Open",
+          "date": "2023-08-28",
+          "url": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "SARIF result level error warning note",
-      "trust": {"score": 82, "basis": "OASIS Standard; verbatim."},
+      "trust": {
+        "score": 62,
+        "basis": "OASIS Standard; verbatim. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote says only \"a problem was found\". \"Below error\" has to be inferred from the separate error definition (\"serious problem\"), which the quote does not include; lowered 82->62."
+      },
       "independence": "single"
     },
     {
@@ -533,11 +1003,23 @@
       "question": "known-solutions",
       "claim": "SARIF defines the note level as a minor problem or an opportunity to improve.",
       "quote": "\"note\": The rule specified by ruleId was evaluated and a minor problem or an opportunity to improve the code was found.",
-      "citations": [{"title": "Static Analysis Results Interchange Format (SARIF) Version 2.1.0 Plus Errata 01", "author": "OASIS Static Analysis Results Interchange Format (SARIF) TC", "publisher": "OASIS Open", "date": "2023-08-28", "url": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Static Analysis Results Interchange Format (SARIF) Version 2.1.0 Plus Errata 01",
+          "author": "OASIS Static Analysis Results Interchange Format (SARIF) TC",
+          "publisher": "OASIS Open",
+          "date": "2023-08-28",
+          "url": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "SARIF result level error warning note",
-      "trust": {"score": 82, "basis": "OASIS Standard; verbatim."},
+      "trust": {
+        "score": 82,
+        "basis": "OASIS Standard; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -545,11 +1027,23 @@
       "question": "known-solutions",
       "claim": "GitHub's code scanning check fails when any result has error (or critical/high) severity, and succeeds with lower-severity results treated as warnings or notes.",
       "quote": "If the code scanning results check finds any problems with a severity of error, critical, or high, the check fails and the error is reported in the check results. If all the results found by code scanning have lower severities, the alerts are treated as warnings or notes and the check succeeds.",
-      "citations": [{"title": "Triaging code scanning alerts in pull requests", "author": "GitHub", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Triaging code scanning alerts in pull requests",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official platform documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub code scanning check fails severity error",
-      "trust": {"score": 82, "basis": "The platform's own documentation; verbatim."},
+      "trust": {
+        "score": 82,
+        "basis": "The platform's own documentation; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -557,11 +1051,23 @@
       "question": "known-solutions",
       "claim": "GitHub rulesets can block merging a pull request when a required tool finds an alert at a severity the ruleset names, so the blocking severity is configurable.",
       "quote": "A required tool finds a code scanning alert of a severity that is defined in the ruleset.",
-      "citations": [{"title": "Editing your configuration of default setup", "author": "GitHub", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/editing-your-configuration-of-default-setup", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Editing your configuration of default setup",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/editing-your-configuration-of-default-setup",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official platform documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub code scanning rulesets prevent merge severity",
-      "trust": {"score": 78, "basis": "The platform's own documentation; verbatim; introduced by 'You can use rulesets to prevent pull requests from being merged when one of the following conditions is met:'."},
+      "trust": {
+        "score": 58,
+        "basis": "The platform's own documentation; verbatim; introduced by 'You can use rulesets to prevent pull requests from being merged when one of the following conditions is met:'. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote is only one condition from a list. The words that rulesets \"prevent pull requests from being merged\" are in the sentence before it, which is not in the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -569,11 +1075,23 @@
       "question": "platform-guidelines",
       "claim": "The W3C Manual of Style advises that keywords used in the RFC sense be UPPERCASE, wrapped in em and styled with the rfc2119 CSS class.",
       "quote": "When these key words are used in the RFC sense, make them UPPERCASE, enclose them in the em element, and style them with CSS class of rfc2119 to make the UPPERCASE readable.",
-      "citations": [{"title": "W3C Manual of Style", "author": "W3C", "publisher": "W3C", "date": "2016-07-10", "url": "https://www.w3.org/guide/manual-of-style/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "W3C Manual of Style",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2016-07-10",
+          "url": "https://www.w3.org/guide/manual-of-style/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C manual of style RFC 2119 key words",
-      "trust": {"score": 66, "basis": "W3C's own style guide, but it says 'No requirements for W3C publications are in this document', so this is advice; a W3C editor proposes dropping it (tab-drop-formatting-requirement)."},
+      "trust": {
+        "score": 66,
+        "basis": "W3C's own style guide, but it says 'No requirements for W3C publications are in this document', so this is advice; a W3C editor proposes dropping it (tab-drop-formatting-requirement)."
+      },
       "independence": "single"
     },
     {
@@ -581,11 +1099,23 @@
       "question": "platform-guidelines",
       "claim": "The W3C Manual of Style advises marking informative sections as such and not using RFC 2119 keywords in them.",
       "quote": "If some sections are informative, say so at the start of each section, and do not use RFC 2119 keywords in those sections",
-      "citations": [{"title": "W3C Manual of Style", "author": "W3C", "publisher": "W3C", "date": "2016-07-10", "url": "https://www.w3.org/guide/manual-of-style/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "W3C Manual of Style",
+          "author": "W3C",
+          "publisher": "W3C",
+          "date": "2016-07-10",
+          "url": "https://www.w3.org/guide/manual-of-style/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "style guide",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C manual of style RFC 2119 key words informative",
-      "trust": {"score": 70, "basis": "W3C's own style guide (advice, not a publication requirement); agrees with the QA Framework (qa-no-normative-language-in-informative)."},
+      "trust": {
+        "score": 70,
+        "basis": "W3C's own style guide (advice, not a publication requirement); agrees with the QA Framework (qa-no-normative-language-in-informative)."
+      },
       "independence": "single"
     },
     {
@@ -593,11 +1123,23 @@
       "question": "platform-guidelines",
       "claim": "WHATWG Infra gives the keywords the same meaning in lowercase, and forbids them in non-normative content.",
       "quote": "These keywords have equivalent meaning when written in lowercase and cannot appear in non-normative content.",
-      "citations": [{"title": "Infra Standard", "author": "WHATWG", "publisher": "WHATWG", "date": "2026-11-15", "url": "https://infra.spec.whatwg.org/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Infra Standard",
+          "author": "WHATWG",
+          "publisher": "WHATWG",
+          "date": "2026-11-15",
+          "url": "https://infra.spec.whatwg.org/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "WHATWG Infra conformance RFC 2119 lowercase",
-      "trust": {"score": 82, "basis": "WHATWG Living Standard (updated 2026-11-15) that the WHATWG specs build on; verbatim."},
+      "trust": {
+        "score": 82,
+        "basis": "WHATWG Living Standard (updated 2026-11-15) that the WHATWG specs build on; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -605,11 +1147,23 @@
       "question": "platform-guidelines",
       "claim": "WHATWG Infra's lowercase convention is a declared willful violation of RFC 8174, chosen for legibility and long-standing practice.",
       "quote": "This is a willful violation of RFC 8174, motivated by legibility and a desire to preserve long-standing practice in many non-IETF-published pre-RFC 8174 documents.",
-      "citations": [{"title": "Infra Standard", "author": "WHATWG", "publisher": "WHATWG", "date": "2026-11-15", "url": "https://infra.spec.whatwg.org/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Infra Standard",
+          "author": "WHATWG",
+          "publisher": "WHATWG",
+          "date": "2026-11-15",
+          "url": "https://infra.spec.whatwg.org/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "WHATWG Infra conformance RFC 2119 lowercase",
-      "trust": {"score": 82, "basis": "WHATWG Living Standard; verbatim; it confirms by contrast that RFC 8174's rule is uppercase-only."},
+      "trust": {
+        "score": 82,
+        "basis": "WHATWG Living Standard; verbatim; it confirms by contrast that RFC 8174's rule is uppercase-only."
+      },
       "independence": "single"
     },
     {
@@ -617,11 +1171,23 @@
       "question": "platform-guidelines",
       "claim": "WHATWG Infra encourages documents to limit themselves to must, must not, should and may.",
       "quote": "Documents using this standard are encouraged to limit themselves to \"must\", \"must not\", \"should\", and \"may\", and to use these in their lowercase form as that is generally considered to be more readable.",
-      "citations": [{"title": "Infra Standard", "author": "WHATWG", "publisher": "WHATWG", "date": "2026-11-15", "url": "https://infra.spec.whatwg.org/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Infra Standard",
+          "author": "WHATWG",
+          "publisher": "WHATWG",
+          "date": "2026-11-15",
+          "url": "https://infra.spec.whatwg.org/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "WHATWG Infra conformance RFC 2119 lowercase",
-      "trust": {"score": 78, "basis": "WHATWG Living Standard; verbatim; 'encouraged', so it supports a SHOULD."},
+      "trust": {
+        "score": 78,
+        "basis": "WHATWG Living Standard; verbatim; 'encouraged', so it supports a SHOULD."
+      },
       "independence": "single"
     },
     {
@@ -629,11 +1195,23 @@
       "question": "platform-guidelines",
       "claim": "WHATWG Infra makes assertions, diagrams, examples and notes non-normative, and everything else normative.",
       "quote": "All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.",
-      "citations": [{"title": "Infra Standard", "author": "WHATWG", "publisher": "WHATWG", "date": "2026-11-15", "url": "https://infra.spec.whatwg.org/", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Infra Standard",
+          "author": "WHATWG",
+          "publisher": "WHATWG",
+          "date": "2026-11-15",
+          "url": "https://infra.spec.whatwg.org/",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "WHATWG Infra conformance non-normative",
-      "trust": {"score": 80, "basis": "WHATWG Living Standard; verbatim; shows a document declaring how text with and without keywords is read."},
+      "trust": {
+        "score": 80,
+        "basis": "WHATWG Living Standard; verbatim; shows a document declaring how text with and without keywords is read."
+      },
       "independence": "single"
     },
     {
@@ -641,11 +1219,23 @@
       "question": "platform-guidelines",
       "claim": "OASIS writes RFC 2119 keywords in UPPERCASE; in lowercase they have only normal English meaning and state no requirement.",
       "quote": "[RFC 2119] keywords are written in UPPERCASE. When [RFC2119] keywords are written in lowercase, they have only their normal English usage meaning. In lowercase, [RFC2119] keywords do not state normative or conformance requirements.",
-      "citations": [{"title": "Keyword Guidelines for OASIS Specifications and Standards", "author": "OASIS Open", "publisher": "OASIS Open", "date": "n.d.", "url": "https://www.oasis-open.org/?p=3585", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keyword Guidelines for OASIS Specifications and Standards",
+          "author": "OASIS Open",
+          "publisher": "OASIS Open",
+          "date": "n.d.",
+          "url": "https://www.oasis-open.org/?p=3585",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OASIS keyword guidelines RFC 2119 uppercase lowercase",
-      "trust": {"score": 80, "basis": "A standards body's own drafting guidance; verbatim; states RFC 8174's rule independently (uppercase-only-meaning)."},
+      "trust": {
+        "score": 80,
+        "basis": "A standards body's own drafting guidance; verbatim; states RFC 8174's rule independently (uppercase-only-meaning)."
+      },
       "independence": "single"
     },
     {
@@ -653,11 +1243,23 @@
       "question": "platform-guidelines",
       "claim": "OASIS treats changing a keyword's case, such as lowercase must to MUST, as a material change to the conformance requirements.",
       "quote": "WARNING: Changing an [RFC 2119] keyword, such as lowercase “must” to UPPERCASE “MUST”, changes the conformance requirements of a specification. If that happens, it is a material change that requires a public review.",
-      "citations": [{"title": "Keyword Guidelines for OASIS Specifications and Standards", "author": "OASIS Open", "publisher": "OASIS Open", "date": "n.d.", "url": "https://www.oasis-open.org/?p=3585", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keyword Guidelines for OASIS Specifications and Standards",
+          "author": "OASIS Open",
+          "publisher": "OASIS Open",
+          "date": "n.d.",
+          "url": "https://www.oasis-open.org/?p=3585",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OASIS keyword guidelines RFC 2119 uppercase lowercase",
-      "trust": {"score": 78, "basis": "A standards body's own drafting guidance; verbatim."},
+      "trust": {
+        "score": 78,
+        "basis": "A standards body's own drafting guidance; verbatim."
+      },
       "independence": "single"
     },
     {
@@ -665,11 +1267,23 @@
       "question": "platform-guidelines",
       "claim": "OASIS says work products that become specifications should use RFC 2119 keywords: a recommendation, not a requirement.",
       "quote": "All TC work products that will become OASIS TC specifications or OASIS standards, should use [RFC 2119] keywords.",
-      "citations": [{"title": "Keyword Guidelines for OASIS Specifications and Standards", "author": "OASIS Open", "publisher": "OASIS Open", "date": "n.d.", "url": "https://www.oasis-open.org/?p=3585", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keyword Guidelines for OASIS Specifications and Standards",
+          "author": "OASIS Open",
+          "publisher": "OASIS Open",
+          "date": "n.d.",
+          "url": "https://www.oasis-open.org/?p=3585",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OASIS keyword guidelines RFC 2119 uppercase lowercase",
-      "trust": {"score": 76, "basis": "A standards body's own drafting guidance; verbatim; the strength is lowercase 'should', which the same document says carries normal English meaning."},
+      "trust": {
+        "score": 76,
+        "basis": "A standards body's own drafting guidance; verbatim; the strength is lowercase 'should', which the same document says carries normal English meaning."
+      },
       "independence": "single"
     },
     {
@@ -677,11 +1291,23 @@
       "question": "platform-guidelines",
       "claim": "OASIS specifications choose either the RFC 2119 or the ISO/IEC keyword set and never mix the two.",
       "quote": "Every OASIS specification or standard will choose (and use) one or the other. The two keyword sets are never mixed in a specification or standard.",
-      "citations": [{"title": "Keyword Guidelines for OASIS Specifications and Standards", "author": "OASIS Open", "publisher": "OASIS Open", "date": "n.d.", "url": "https://www.oasis-open.org/?p=3585", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keyword Guidelines for OASIS Specifications and Standards",
+          "author": "OASIS Open",
+          "publisher": "OASIS Open",
+          "date": "n.d.",
+          "url": "https://www.oasis-open.org/?p=3585",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OASIS keyword guidelines RFC 2119 ISO keywords mixed",
-      "trust": {"score": 76, "basis": "A standards body's own drafting guidance; verbatim; Justice Canada's drafting rule against using must and shall together (plainlanguage-must-not-shall) agrees."},
+      "trust": {
+        "score": 76,
+        "basis": "A standards body's own drafting guidance; verbatim; Justice Canada's drafting rule against using must and shall together (plainlanguage-must-not-shall) agrees."
+      },
       "independence": "single"
     },
     {
@@ -689,11 +1315,23 @@
       "question": "platform-guidelines",
       "claim": "OASIS says 'MAY NOT' is not a keyword.",
       "quote": "Is “MAY NOT” a keyword? No, although there is an example of “MAY NOT” in an OASIS specification.",
-      "citations": [{"title": "Keyword Guidelines for OASIS Specifications and Standards", "author": "OASIS Open", "publisher": "OASIS Open", "date": "n.d.", "url": "https://www.oasis-open.org/?p=3585", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keyword Guidelines for OASIS Specifications and Standards",
+          "author": "OASIS Open",
+          "publisher": "OASIS Open",
+          "date": "n.d.",
+          "url": "https://www.oasis-open.org/?p=3585",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OASIS keyword guidelines MAY NOT",
-      "trust": {"score": 76, "basis": "A standards body's own drafting guidance; verbatim; idnits flags the same (idnits-may-not)."},
+      "trust": {
+        "score": 76,
+        "basis": "A standards body's own drafting guidance; verbatim; idnits flags the same (idnits-may-not)."
+      },
       "independence": "single"
     },
     {
@@ -701,11 +1339,23 @@
       "question": "platform-guidelines",
       "claim": "Under the ISO/IEC verbal forms, keywords need neither uppercase nor bold: they are keywords by definition, not typography.",
       "quote": "In the ISO/IEC examples note that keywords do not require UPPER case or bolding in order to be keywords. They are keywords by definition, not typography.",
-      "citations": [{"title": "Keyword Guidelines for OASIS Specifications and Standards", "author": "OASIS Open", "publisher": "OASIS Open", "date": "n.d.", "url": "https://www.oasis-open.org/?p=3585", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Keyword Guidelines for OASIS Specifications and Standards",
+          "author": "OASIS Open",
+          "publisher": "OASIS Open",
+          "date": "n.d.",
+          "url": "https://www.oasis-open.org/?p=3585",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OASIS keyword guidelines ISO keywords case bold",
-      "trust": {"score": 74, "basis": "A standards body's own drafting guidance; verbatim; it also notes 'Unlike [RFC 2119], Annex H of [ISO/IEC Directives] does not distinguish between upper and lower case forms of its keywords.'"},
+      "trust": {
+        "score": 74,
+        "basis": "A standards body's own drafting guidance; verbatim; it also notes 'Unlike [RFC 2119], Annex H of [ISO/IEC Directives] does not distinguish between upper and lower case forms of its keywords.'"
+      },
       "independence": "single"
     },
     {
@@ -713,11 +1363,23 @@
       "question": "platform-guidelines",
       "claim": "ISO/IEC Directives Part 2 uses shall for requirements to be strictly followed, from which no deviation is permitted.",
       "quote": "The verbal forms shown in Table H.1 shall be used to indicate requirements strictly to be followed in order to conform to the document and from which no deviation is permitted.",
-      "citations": [{"title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H", "author": "ISO/IEC", "publisher": "ISO/IEC (copy archived on mhonarc.org)", "date": "2004", "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H",
+          "author": "ISO/IEC",
+          "publisher": "ISO/IEC (copy archived on mhonarc.org)",
+          "date": "2004",
+          "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO IEC Directives Part 2 Annex H verbal forms shall should may",
-      "trust": {"score": 70, "basis": "The ISO/IEC drafting rules, but the 2004 edition read from a mailing-list archive copy because iso.org returned 403; OASIS's synopsis of Annex H agrees ('shall – to indicate requirements strictly to be followed')."},
+      "trust": {
+        "score": 70,
+        "basis": "The ISO/IEC drafting rules, but the 2004 edition read from a mailing-list archive copy because iso.org returned 403; OASIS's synopsis of Annex H agrees ('shall – to indicate requirements strictly to be followed')."
+      },
       "independence": "single"
     },
     {
@@ -725,11 +1387,23 @@
       "question": "platform-guidelines",
       "claim": "ISO/IEC uses should for a preferred but not required course of action, and should not for one deprecated but not prohibited.",
       "quote": "that a certain course of action is preferred but not necessarily required, or that (in the negative form) a certain possibility or course of action is deprecated but not prohibited.",
-      "citations": [{"title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H", "author": "ISO/IEC", "publisher": "ISO/IEC (copy archived on mhonarc.org)", "date": "2004", "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H",
+          "author": "ISO/IEC",
+          "publisher": "ISO/IEC (copy archived on mhonarc.org)",
+          "date": "2004",
+          "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO IEC Directives Part 2 Annex H verbal forms shall should may",
-      "trust": {"score": 70, "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy (current edition not fetched)."},
+      "trust": {
+        "score": 70,
+        "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy (current edition not fetched)."
+      },
       "independence": "single"
     },
     {
@@ -737,11 +1411,23 @@
       "question": "platform-guidelines",
       "claim": "ISO/IEC uses may for a course of action permissible within the limits of the document, and can for ability or possibility.",
       "quote": "The verbal forms shown in Table H.3 shall be used to indicate a course of action permissible within the limits of the document.",
-      "citations": [{"title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H", "author": "ISO/IEC", "publisher": "ISO/IEC (copy archived on mhonarc.org)", "date": "2004", "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H",
+          "author": "ISO/IEC",
+          "publisher": "ISO/IEC (copy archived on mhonarc.org)",
+          "date": "2004",
+          "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO IEC Directives Part 2 Annex H verbal forms shall should may",
-      "trust": {"score": 70, "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy; the same annex: '“May” signifies permission expressed by the document, whereas “can” refers to the ability of a user of the document or to a possibility open to him/her.'"},
+      "trust": {
+        "score": 70,
+        "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy; the same annex: '“May” signifies permission expressed by the document, whereas “can” refers to the ability of a user of the document or to a possibility open to him/her.'"
+      },
       "independence": "single"
     },
     {
@@ -749,11 +1435,23 @@
       "question": "platform-guidelines",
       "claim": "ISO/IEC forbids must as an alternative to shall, to keep document requirements apart from external statutory obligations.",
       "quote": "Do not use “must” as an alternative for “shall”. (This will avoid any confusion between the requirements of a document and external statutory obligations.)",
-      "citations": [{"title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H", "author": "ISO/IEC", "publisher": "ISO/IEC (copy archived on mhonarc.org)", "date": "2004", "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H",
+          "author": "ISO/IEC",
+          "publisher": "ISO/IEC (copy archived on mhonarc.org)",
+          "date": "2004",
+          "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO IEC Directives Part 2 Annex H verbal forms must shall",
-      "trust": {"score": 70, "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy; OASIS's synopsis repeats it."},
+      "trust": {
+        "score": 70,
+        "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy; OASIS's synopsis repeats it."
+      },
       "independence": "single"
     },
     {
@@ -761,11 +1459,23 @@
       "question": "platform-guidelines",
       "claim": "ISO/IEC forbids may not as a way to express a prohibition.",
       "quote": "Do not use “may not” instead of “shall not” to express a prohibition.",
-      "citations": [{"title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H", "author": "ISO/IEC", "publisher": "ISO/IEC (copy archived on mhonarc.org)", "date": "2004", "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "ISO/IEC Directives, Part 2: Rules for the structure and drafting of International Standards (2004), Annex H",
+          "author": "ISO/IEC",
+          "publisher": "ISO/IEC (copy archived on mhonarc.org)",
+          "date": "2004",
+          "url": "https://www.mhonarc.org/archive/html/ietf/2011-09/pdfBUKoWRBJxm.pdf",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO IEC Directives Part 2 Annex H may not prohibition",
-      "trust": {"score": 70, "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy; idnits and OASIS reject MAY NOT for RFC 2119 too (idnits-may-not, oasis-may-not-not-keyword)."},
+      "trust": {
+        "score": 70,
+        "basis": "ISO/IEC drafting rules, 2004 edition from an archive copy; idnits and OASIS reject MAY NOT for RFC 2119 too (idnits-may-not, oasis-may-not-not-keyword)."
+      },
       "independence": "single"
     },
     {
@@ -773,11 +1483,23 @@
       "question": "platform-guidelines",
       "claim": "ETSI states requirements only in normative clauses and deliverables, and avoids shall, must and other requirement wording in informative ones.",
       "quote": "The requirements shall be mentioned only in normative clauses and deliverables",
-      "citations": [{"title": "What about requirements in ETSI deliverables? (editHelp FAQ)", "author": "ETSI", "publisher": "ETSI", "date": "n.d.", "url": "https://portal.etsi.org/Services/editHelp/Search/FAQs/Requirements", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "What about requirements in ETSI deliverables? (editHelp FAQ)",
+          "author": "ETSI",
+          "publisher": "ETSI",
+          "date": "n.d.",
+          "url": "https://portal.etsi.org/Services/editHelp/Search/FAQs/Requirements",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "official standards-body guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "ETSI drafting rules requirements normative informative shall must",
-      "trust": {"score": 70, "basis": "A standards body's own editing help; verbatim; FAQ form, undated."},
+      "trust": {
+        "score": 50,
+        "basis": "A standards body's own editing help; verbatim; FAQ form, undated. Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only the first half. The \"avoid shall/must ... in informative deliverables (TR, EG, SR, GR)\" part is in the page's next sentence, which is not in the quote; lowered 70->50."
+      },
       "independence": "single"
     },
     {
@@ -785,11 +1507,23 @@
       "question": "experts-view",
       "claim": "A W3C/WHATWG spec editor recommends dropping the Manual of Style's requirement to format keywords specially.",
       "quote": "So I strongly recommend that we amend the Manual Of Style to drop the formatting requirement.",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "Tab Atkins Jr.", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-30", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0017.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "Tab Atkins Jr.",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-30",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0017.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 58, "basis": "Named editor of many W3C/WHATWG specs and Bikeshed's author, on W3C's public archive; one person's view, though fantasai raised the same problem (fantasai-styling-requirement)."},
+      "trust": {
+        "score": 58,
+        "basis": "Named editor of many W3C/WHATWG specs and Bikeshed's author, on W3C's public archive; one person's view, though fantasai raised the same problem (fantasai-styling-requirement)."
+      },
       "independence": "single"
     },
     {
@@ -797,11 +1531,23 @@
       "question": "experts-view",
       "claim": "Specifications state many requirements without any keyword, through 'is' statements and algorithm steps that are MUST-equivalent, so a keyword-only reading misses them.",
       "quote": "they'll be missing a ton anyway where we say something \"is\" X, or \"To X: <list steps>\", which are also MUST-equivalent.",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "Tab Atkins Jr.", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-30", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0017.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "Tab Atkins Jr.",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-30",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0017.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 62, "basis": "Named spec editor; agrees with RFC 8174 (keywords-not-required-for-normative-text) and the QA Framework's 'descriptive assertions' style."},
+      "trust": {
+        "score": 62,
+        "basis": "Named spec editor; agrees with RFC 8174 (keywords-not-required-for-normative-text) and the QA Framework's 'descriptive assertions' style."
+      },
       "independence": "single"
     },
     {
@@ -809,11 +1555,23 @@
       "question": "experts-view",
       "claim": "A CSS spec editor reports the Manual of Style as requiring keywords in uppercase inside an em element with extra styling.",
       "quote": "which requires RFC2119 keywords to be encoded in uppercase inside an <em> element with some extra styling",
-      "citations": [{"title": "RFC2119 Styling", "author": "fantasai", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-30", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0016.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "RFC2119 Styling",
+          "author": "fantasai",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-30",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0016.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 55, "basis": "Named CSSWG editor opening the thread; describes the practice, adds no rule."},
+      "trust": {
+        "score": 55,
+        "basis": "Named CSSWG editor opening the thread; describes the practice, adds no rule."
+      },
       "independence": "single"
     },
     {
@@ -821,11 +1579,23 @@
       "question": "experts-view",
       "claim": "Claims that a document never uses the words in their ordinary sense rarely survive inspection: there is always some 'must' or 'may' used in plain English.",
       "quote": "I do not remember ever seeing such claims confirmed by inspection: there was *always\" some use of \"must\" which meant \"it will in the nature of things always be the case that ...\", or some use of \"may\" meaning \"it could happen that ...\"",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "C. M. Sperberg-McQueen", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-31", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "C. M. Sperberg-McQueen",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-31",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 60, "basis": "Named long-time W3C editor (XML), on W3C's public archive; experience report; quoted as archived, including its mismatched asterisk-quote."},
+      "trust": {
+        "score": 60,
+        "basis": "Named long-time W3C editor (XML), on W3C's public archive; experience report; quoted as archived, including its mismatched asterisk-quote."
+      },
       "independence": "single"
     },
     {
@@ -833,11 +1603,23 @@
       "question": "experts-view",
       "claim": "Marking the keywords distinctly helps a working group focus on what is and is not a conformance requirement.",
       "quote": "it does help focus WG attention on the question of what is and what is not a requirement for conformance.",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "C. M. Sperberg-McQueen", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-31", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "C. M. Sperberg-McQueen",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-31",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 58, "basis": "Named W3C editor; one view."},
+      "trust": {
+        "score": 58,
+        "basis": "Named W3C editor; one view."
+      },
       "independence": "single"
     },
     {
@@ -845,11 +1627,23 @@
       "question": "experts-view",
       "claim": "ISO/IEC standards manage without uppercase keywords partly because they take great care never to use the conformance verbs in non-standard senses.",
       "quote": "ISO/IEC standards appear to get by just fine without uppercasing the verbs relevant to conformance -- partly because they do go to great lengths to ensure that the relevant verbs are not used in non-standard senses.",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "C. M. Sperberg-McQueen", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-31", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "C. M. Sperberg-McQueen",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-31",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0018.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 58, "basis": "Named W3C editor; consistent with OASIS on ISO keywords being keywords by definition (oasis-iso-keywords-by-definition)."},
+      "trust": {
+        "score": 58,
+        "basis": "Named W3C editor; consistent with OASIS on ISO keywords being keywords by definition (oasis-iso-keywords-by-definition)."
+      },
       "independence": "single"
     },
     {
@@ -857,11 +1651,23 @@
       "question": "experts-view",
       "claim": "The CSSWG, WHATWG and other groups treat a keyword used in its ordinary sense in a spec as an editorial error and reword it.",
       "quote": "Afaict, the CSSWG, WHATWG, and at least some other groups consider such instances to be editorial errors, and will make an effort to reword these occurrences.",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "fantasai", "publisher": "W3C spec-prod mailing list archives", "date": "2023-05-31", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0019.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "fantasai",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-05-31",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0019.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 58, "basis": "Named CSSWG editor reporting several groups' practice; one view."},
+      "trust": {
+        "score": 58,
+        "basis": "Named CSSWG editor reporting several groups' practice; one view."
+      },
       "independence": "single"
     },
     {
@@ -869,11 +1675,23 @@
       "question": "experts-view",
       "claim": "ReSpec's maintainer says ReSpec defaults to BCP 14 and already warns about RFC 2119 keywords in non-normative blocks, and could be stricter.",
       "quote": "Right now, Respec defaults to BCP14. IIRC, Respec already warns about incorrect RFC2119 in non-normative blocks (notes, examples, etc.), but could make it more strict.",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "Marcos Caceres", "publisher": "W3C spec-prod mailing list archives", "date": "2023-06-01", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0024.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "Marcos Caceres",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-06-01",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0024.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 60, "basis": "ReSpec's maintainer on his own tool; 'IIRC' hedges it; ReSpec's docs confirm a related warning (respec-warns-missing-conformance)."},
+      "trust": {
+        "score": 60,
+        "basis": "ReSpec's maintainer on his own tool; 'IIRC' hedges it; ReSpec's docs confirm a related warning (respec-warns-missing-conformance)."
+      },
       "independence": "single"
     },
     {
@@ -881,11 +1699,23 @@
       "question": "experts-view",
       "claim": "A proposed approach is to mark keyword uses explicitly with a minimal shorthand and lint any usage not so marked.",
       "quote": "introduce a very minimal shorthand for explicitly stating that you mean the 2119 keyword, and then lint for any usages that aren't marked up as such",
-      "citations": [{"title": "Re: RFC2119 Styling", "author": "Marcos Caceres (quoting Tab Atkins Jr.)", "publisher": "W3C spec-prod mailing list archives", "date": "2023-06-01", "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0024.html", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Re: RFC2119 Styling",
+          "author": "Marcos Caceres (quoting Tab Atkins Jr.)",
+          "publisher": "W3C spec-prod mailing list archives",
+          "date": "2023-06-01",
+          "url": "https://lists.w3.org/Archives/Public/spec-prod/2023AprJun/0024.html",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "expert opinion (public mailing list)",
       "generated_by": "grow-cookbook research agent",
       "query": "spec-prod RFC2119 styling manual of style",
-      "trust": {"score": 52, "basis": "A proposal by a named spec-tool author, quoted in another maintainer's reply; not yet a shipped practice."},
+      "trust": {
+        "score": 52,
+        "basis": "A proposal by a named spec-tool author, quoted in another maintainer's reply; not yet a shipped practice."
+      },
       "independence": "single"
     },
     {
@@ -893,11 +1723,23 @@
       "question": "experts-view",
       "claim": "Write keyword requirements in the active form, 'X MUST do Y', not the passive 'X MUST be Y'.",
       "quote": "one should not say \"X MUST be Y\" (grammatical form: passive), but \"X MUST do Y\"",
-      "citations": [{"title": "RfcKeywords", "author": "W3C", "publisher": "W3C Wiki", "date": "2007-04-12", "url": "https://www.w3.org/wiki/RfcKeywords", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "RfcKeywords",
+          "author": "W3C",
+          "publisher": "W3C Wiki",
+          "date": "2007-04-12",
+          "url": "https://www.w3.org/wiki/RfcKeywords",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "community wiki",
       "generated_by": "grow-cookbook research agent",
       "query": "W3C wiki RFC keywords usage",
-      "trust": {"score": 45, "basis": "Secondary: an old community wiki page on w3.org, used only alongside the QA Framework's subject-keyword-operation form (qa-subject-keyword-operation), which no primary states in this wording."},
+      "trust": {
+        "score": 45,
+        "basis": "Secondary: an old community wiki page on w3.org, used only alongside the QA Framework's subject-keyword-operation form (qa-subject-keyword-operation), which no primary states in this wording."
+      },
       "independence": "single"
     },
     {
@@ -905,11 +1747,23 @@
       "question": "experts-view",
       "claim": "US federal plain-language guidance prefers 'must' over 'shall' for requirements, and quotes Justice Canada's rule against using must and shall together.",
       "quote": "Use \"must\" not \"shall\" to impose requirements.",
-      "citations": [{"title": "Shall and must", "author": "U.S. General Services Administration (plainlanguage.gov)", "publisher": "plainlanguage.gov (GitHub: GSA/plainlanguage.gov)", "date": "n.d.", "url": "https://raw.githubusercontent.com/GSA/plainlanguage.gov/main/_pages/guidelines/conversational/shall-and-must.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "Shall and must",
+          "author": "U.S. General Services Administration (plainlanguage.gov)",
+          "publisher": "plainlanguage.gov (GitHub: GSA/plainlanguage.gov)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/GSA/plainlanguage.gov/main/_pages/guidelines/conversational/shall-and-must.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "government style guide",
       "generated_by": "grow-cookbook research agent",
       "query": "plain language shall and must requirements",
-      "trust": {"score": 55, "basis": "Secondary for this topic (legal and regulatory drafting, not specifications), used only for preferring one word for a requirement and not mixing synonyms, which the RFC sources do not address; the page quotes Justice Canada: 'Drafters should not use \"must\" and \"shall\" together in the same Act or regulation.'"},
+      "trust": {
+        "score": 35,
+        "basis": "Secondary for this topic (legal and regulatory drafting, not specifications), used only for preferring one word for a requirement and not mixing synonyms, which the RFC sources do not address; the page quotes Justice Canada: 'Drafters should not use \"must\" and \"shall\" together in the same Act or regulation.' Second check 2026-11-21: refuted (quote-found yes, supports-claim partly): The quote covers only \"use must not shall\". The Justice Canada passage (\"Drafters should not use 'must' and 'shall' together...\") is further down the page and not in the quote; lowered 55->35."
+      },
       "independence": "single"
     },
     {
@@ -917,11 +1771,23 @@
       "question": "best-practices",
       "claim": "Requirements within the guideline MUST use RFC 2119 keywords (MUST, MUST NOT, SHOULD, SHOULD NOT, MAY) to indicate obligation levels.",
       "quote": "Requirements within the guideline MUST use RFC 2119 keywords (MUST, MUST NOT, SHOULD, SHOULD NOT, MAY) to indicate obligation levels.",
-      "citations": [{"title": "requirement-keywords (tbd/compliance/artifact-formatting/guideline-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/guideline-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "requirement-keywords (tbd/compliance/artifact-formatting/guideline-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/guideline-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: gf-rfc-keywords",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -929,11 +1795,23 @@
       "question": "best-practices",
       "claim": "Keywords MUST be bold or uppercase when used normatively.",
       "quote": "Keywords MUST be bold or uppercase when used normatively.",
-      "citations": [{"title": "requirement-keywords (tbd/compliance/artifact-formatting/guideline-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/guideline-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "requirement-keywords (tbd/compliance/artifact-formatting/guideline-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:tbd/compliance/artifact-formatting/guideline-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: gf-rfc-keywords-bold-or-uppercase",
-      "trust": {"score": 0, "basis": "no research source supports it; contradicted by uppercase-only-meaning, lowercase-has-normal-english-meaning, bcp14-boilerplate and oasis-uppercase-only (a bold lowercase keyword carries no BCP 14 meaning); the uppercase alternative alone is supported"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it; contradicted by uppercase-only-meaning, lowercase-has-normal-english-meaning, bcp14-boilerplate and oasis-uppercase-only (a bold lowercase keyword carries no BCP 14 meaning); the uppercase alternative alone is supported"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -941,11 +1819,23 @@
       "question": "best-practices",
       "claim": "Use RFC 2119 keywords for all behavioral requirements:",
       "quote": "Use RFC 2119 keywords for all behavioral requirements:",
-      "citations": [{"title": "requirement-keywords (guide/introduction/conventions.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "requirement-keywords (guide/introduction/conventions.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:guide/introduction/conventions.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: use-rfc-2119-keywords-for-behavioral-requirements",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -953,35 +1843,254 @@
       "question": "best-practices",
       "claim": "**Use RFC 2119 keywords** for requirements — MUST, MUST NOT, SHOULD, SHOULD NOT, MAY.",
       "quote": "**Use RFC 2119 keywords** for requirements — MUST, MUST NOT, SHOULD, SHOULD NOT, MAY.",
-      "citations": [{"title": "requirement-keywords (.claude/rules/artifact-formatting.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:.claude/rules/artifact-formatting.md", "accessed": "2026-11-21"}],
+      "citations": [
+        {
+          "title": "requirement-keywords (.claude/rules/artifact-formatting.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:071e52f9572bf4b7c534cfcf95fb111282abc423:.claude/rules/artifact-formatting.md",
+          "accessed": "2026-11-21"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: rule-uses-rfc-2119-keywords",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     }
   ],
   "verdicts": [
-    {"rule": "gf-rfc-keywords", "verdict": "unsupported", "claims": ["gf-rfc-keywords-prior", "keywords-not-required-for-normative-text", "qa-consistent-style-explain", "oasis-should-use-rfc2119", "keywords-make-requirements-easy-to-spot"]},
-    {"rule": "gf-rfc-keywords-bold-or-uppercase", "verdict": "contradicted", "claims": ["gf-rfc-keywords-bold-or-uppercase-prior", "uppercase-only-meaning", "lowercase-has-normal-english-meaning", "bcp14-boilerplate", "oasis-uppercase-only"]},
-    {"rule": "use-rfc-2119-keywords-for-behavioral-requirements", "verdict": "unsupported", "claims": ["use-rfc-2119-keywords-for-behavioral-requirements-prior", "keywords-not-required-for-normative-text", "qa-consistent-style-explain", "tab-keywordless-must-equivalent"]},
-    {"rule": "must-is-absolute-requirement", "verdict": "supported", "claims": ["rfc2119-must-absolute-requirement", "rfc2119-must-not-absolute-prohibition", "iso-shall-requirement"]},
-    {"rule": "should-is-recommendation", "verdict": "supported", "claims": ["rfc2119-should-recommendation", "rfc2119-should-not-recommendation", "iso-should-preferred"]},
-    {"rule": "may-is-optional-behavior", "verdict": "supported", "claims": ["rfc2119-may-truly-optional", "iso-may-permission"]},
-    {"rule": "rule-uses-rfc-2119-keywords", "verdict": "unsupported", "claims": ["rule-uses-rfc-2119-keywords-prior", "keywords-not-required-for-normative-text", "oasis-should-use-rfc2119", "infra-core-subset"]},
-    {"rule": "follow-must-address-should-checks", "verdict": "supported", "claims": ["rfc2119-must-absolute-requirement", "rfc2119-should-recommendation", "qa-indicate-levels", "qa-conformance-classes-by-level"]},
-    {"rule": "approve-on-zero-fail", "verdict": "supported", "claims": ["vale-only-errors-nonzero", "eslint-error-for-ci", "markdownlint-cli2-exit-codes", "github-check-fails-on-error", "bikeshed-die-on", "bikeshed-die-on-default-fatal"]},
-    {"rule": "keywords-meaningful-only-in-uppercase", "verdict": "new", "claims": ["uppercase-only-meaning", "lowercase-has-normal-english-meaning", "oasis-uppercase-only", "oasis-case-change-is-material", "infra-willful-violation", "infra-lowercase-equivalent", "bikeshed-lowercase-for-readability"]},
-    {"rule": "lowercase-keyword-in-rule-text-flagged", "verdict": "new", "claims": ["sperberg-mcqueen-lowercase-misuse", "fantasai-lowercase-misuse-is-editorial-error", "oasis-case-change-is-material", "bikeshed-accidental-2119", "caceres-respec-defaults-bcp14", "lint-unmarked-keyword-usage", "eslint-warn-for-uncertain"]},
-    {"rule": "state-the-keyword-interpretation", "verdict": "new", "claims": ["state-the-interpretation", "bcp14-boilerplate", "idnits-boilerplate-check", "respec-conformance-boilerplate", "respec-warns-missing-conformance"]},
-    {"rule": "state-how-keywordless-text-is-read", "verdict": "new", "claims": ["qa-consistent-style-explain", "keywords-not-required-for-normative-text", "infra-no-keywords-in-non-normative", "tab-keywordless-must-equivalent"]},
-    {"rule": "no-keywords-in-non-normative-text", "verdict": "new", "claims": ["qa-no-normative-language-in-informative", "w3c-mos-no-keywords-informative", "infra-lowercase-equivalent", "etsi-requirements-only-normative", "bikeshed-accidental-2119"]},
-    {"rule": "keyword-sets-finding-severity", "verdict": "new", "claims": ["rfc2119-must-absolute-requirement", "rfc2119-should-recommendation", "rfc2119-may-truly-optional", "qa-conformance-classes-by-level", "sarif-error-level", "sarif-warning-level", "sarif-note-level", "eslint-warn-for-uncertain", "markdownlint-error-or-warning", "respec-lint-severity", "bikeshed-error-levels"]},
-    {"rule": "warn-findings-do-not-block", "verdict": "new", "claims": ["vale-only-errors-nonzero", "vale-minalertlevel-ci", "eslint-warn-no-exit-code", "eslint-max-warnings", "markdownlint-cli2-exit-codes", "github-check-fails-on-error", "github-ruleset-blocks-merge", "bikeshed-die-on-default-fatal"]},
-    {"rule": "one-keyword-per-requirement", "verdict": "new", "claims": ["qa-subject-keyword-operation", "w3c-wiki-active-form"]},
-    {"rule": "use-core-keyword-subset", "verdict": "new", "claims": ["infra-core-subset", "plainlanguage-must-not-shall"]},
-    {"rule": "no-mixed-case-negation-or-may-not", "verdict": "new", "claims": ["idnits-mixed-case-not", "idnits-may-not", "oasis-may-not-not-keyword", "iso-no-may-not"]},
-    {"rule": "one-keyword-set-never-mixed", "verdict": "new", "claims": ["oasis-never-mix-keyword-sets", "iso-no-must-for-shall", "plainlanguage-must-not-shall", "oasis-iso-keywords-by-definition", "sperberg-mcqueen-iso-avoids-nonstandard-senses"]},
-    {"rule": "keywords-only-where-required", "verdict": "new", "claims": ["keywords-used-sparingly", "sperberg-mcqueen-focus-attention", "keywords-make-requirements-easy-to-spot", "w3c-mos-uppercase-em", "tab-drop-formatting-requirement", "fantasai-styling-requirement"]}
+    {
+      "rule": "gf-rfc-keywords",
+      "verdict": "unsupported",
+      "claims": [
+        "gf-rfc-keywords-prior",
+        "keywords-not-required-for-normative-text",
+        "qa-consistent-style-explain",
+        "oasis-should-use-rfc2119",
+        "keywords-make-requirements-easy-to-spot"
+      ]
+    },
+    {
+      "rule": "gf-rfc-keywords-bold-or-uppercase",
+      "verdict": "contradicted",
+      "claims": [
+        "gf-rfc-keywords-bold-or-uppercase-prior",
+        "uppercase-only-meaning",
+        "lowercase-has-normal-english-meaning",
+        "bcp14-boilerplate",
+        "oasis-uppercase-only"
+      ]
+    },
+    {
+      "rule": "use-rfc-2119-keywords-for-behavioral-requirements",
+      "verdict": "unsupported",
+      "claims": [
+        "use-rfc-2119-keywords-for-behavioral-requirements-prior",
+        "keywords-not-required-for-normative-text",
+        "qa-consistent-style-explain",
+        "tab-keywordless-must-equivalent"
+      ]
+    },
+    {
+      "rule": "must-is-absolute-requirement",
+      "verdict": "supported",
+      "claims": [
+        "rfc2119-must-absolute-requirement",
+        "rfc2119-must-not-absolute-prohibition",
+        "iso-shall-requirement"
+      ]
+    },
+    {
+      "rule": "should-is-recommendation",
+      "verdict": "supported",
+      "claims": [
+        "rfc2119-should-recommendation",
+        "rfc2119-should-not-recommendation",
+        "iso-should-preferred"
+      ]
+    },
+    {
+      "rule": "may-is-optional-behavior",
+      "verdict": "supported",
+      "claims": [
+        "rfc2119-may-truly-optional",
+        "iso-may-permission"
+      ]
+    },
+    {
+      "rule": "rule-uses-rfc-2119-keywords",
+      "verdict": "unsupported",
+      "claims": [
+        "rule-uses-rfc-2119-keywords-prior",
+        "keywords-not-required-for-normative-text",
+        "oasis-should-use-rfc2119",
+        "infra-core-subset"
+      ]
+    },
+    {
+      "rule": "follow-must-address-should-checks",
+      "verdict": "supported",
+      "claims": [
+        "rfc2119-must-absolute-requirement",
+        "rfc2119-should-recommendation",
+        "qa-indicate-levels",
+        "qa-conformance-classes-by-level"
+      ]
+    },
+    {
+      "rule": "approve-on-zero-fail",
+      "verdict": "supported",
+      "claims": [
+        "vale-only-errors-nonzero",
+        "eslint-error-for-ci",
+        "markdownlint-cli2-exit-codes",
+        "github-check-fails-on-error",
+        "bikeshed-die-on",
+        "bikeshed-die-on-default-fatal"
+      ]
+    },
+    {
+      "rule": "keywords-meaningful-only-in-uppercase",
+      "verdict": "new",
+      "claims": [
+        "uppercase-only-meaning",
+        "lowercase-has-normal-english-meaning",
+        "oasis-uppercase-only",
+        "oasis-case-change-is-material",
+        "infra-willful-violation",
+        "infra-lowercase-equivalent",
+        "bikeshed-lowercase-for-readability"
+      ]
+    },
+    {
+      "rule": "lowercase-keyword-in-rule-text-flagged",
+      "verdict": "new",
+      "claims": [
+        "sperberg-mcqueen-lowercase-misuse",
+        "fantasai-lowercase-misuse-is-editorial-error",
+        "oasis-case-change-is-material",
+        "bikeshed-accidental-2119",
+        "caceres-respec-defaults-bcp14",
+        "lint-unmarked-keyword-usage",
+        "eslint-warn-for-uncertain"
+      ]
+    },
+    {
+      "rule": "state-the-keyword-interpretation",
+      "verdict": "new",
+      "claims": [
+        "state-the-interpretation",
+        "bcp14-boilerplate",
+        "idnits-boilerplate-check",
+        "respec-conformance-boilerplate",
+        "respec-warns-missing-conformance"
+      ]
+    },
+    {
+      "rule": "state-how-keywordless-text-is-read",
+      "verdict": "new",
+      "claims": [
+        "qa-consistent-style-explain",
+        "keywords-not-required-for-normative-text",
+        "infra-no-keywords-in-non-normative",
+        "tab-keywordless-must-equivalent"
+      ]
+    },
+    {
+      "rule": "no-keywords-in-non-normative-text",
+      "verdict": "new",
+      "claims": [
+        "qa-no-normative-language-in-informative",
+        "w3c-mos-no-keywords-informative",
+        "infra-lowercase-equivalent",
+        "etsi-requirements-only-normative",
+        "bikeshed-accidental-2119"
+      ]
+    },
+    {
+      "rule": "keyword-sets-finding-severity",
+      "verdict": "new",
+      "claims": [
+        "rfc2119-must-absolute-requirement",
+        "rfc2119-should-recommendation",
+        "rfc2119-may-truly-optional",
+        "qa-conformance-classes-by-level",
+        "sarif-error-level",
+        "sarif-warning-level",
+        "sarif-note-level",
+        "eslint-warn-for-uncertain",
+        "markdownlint-error-or-warning",
+        "respec-lint-severity",
+        "bikeshed-error-levels"
+      ]
+    },
+    {
+      "rule": "warn-findings-do-not-block",
+      "verdict": "new",
+      "claims": [
+        "vale-only-errors-nonzero",
+        "vale-minalertlevel-ci",
+        "eslint-warn-no-exit-code",
+        "eslint-max-warnings",
+        "markdownlint-cli2-exit-codes",
+        "github-check-fails-on-error",
+        "github-ruleset-blocks-merge",
+        "bikeshed-die-on-default-fatal"
+      ]
+    },
+    {
+      "rule": "one-keyword-per-requirement",
+      "verdict": "new",
+      "claims": [
+        "qa-subject-keyword-operation",
+        "w3c-wiki-active-form"
+      ]
+    },
+    {
+      "rule": "use-core-keyword-subset",
+      "verdict": "new",
+      "claims": [
+        "infra-core-subset",
+        "plainlanguage-must-not-shall"
+      ]
+    },
+    {
+      "rule": "no-mixed-case-negation-or-may-not",
+      "verdict": "new",
+      "claims": [
+        "idnits-mixed-case-not",
+        "idnits-may-not",
+        "oasis-may-not-not-keyword",
+        "iso-no-may-not"
+      ]
+    },
+    {
+      "rule": "one-keyword-set-never-mixed",
+      "verdict": "new",
+      "claims": [
+        "oasis-never-mix-keyword-sets",
+        "iso-no-must-for-shall",
+        "plainlanguage-must-not-shall",
+        "oasis-iso-keywords-by-definition",
+        "sperberg-mcqueen-iso-avoids-nonstandard-senses"
+      ]
+    },
+    {
+      "rule": "keywords-only-where-required",
+      "verdict": "new",
+      "claims": [
+        "keywords-used-sparingly",
+        "sperberg-mcqueen-focus-attention",
+        "keywords-make-requirements-easy-to-spot",
+        "w3c-mos-uppercase-em",
+        "tab-drop-formatting-requirement",
+        "fantasai-styling-requirement"
+      ]
+    }
   ]
 }
