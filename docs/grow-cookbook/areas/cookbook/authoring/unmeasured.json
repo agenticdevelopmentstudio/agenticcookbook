@@ -3,6 +3,12 @@
   "new_topics": [
     {
       "speciality": null,
+      "topic": "guidelines/cookbook/authoring/requirement-keywords",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
       "topic": "guidelines/cookbook/authoring/principle-formatting",
       "file": null,
       "kind": "new"
@@ -16,12 +22,6 @@
     {
       "speciality": null,
       "topic": "guidelines/cookbook/authoring/ingredient-formatting",
-      "file": null,
-      "kind": "new"
-    },
-    {
-      "speciality": null,
-      "topic": "guidelines/cookbook/authoring/recipe-formatting",
       "file": null,
       "kind": "new"
     },
