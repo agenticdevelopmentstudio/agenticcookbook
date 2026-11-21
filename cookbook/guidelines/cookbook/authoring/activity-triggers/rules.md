@@ -77,6 +77,7 @@
 ### Measuring selection
 
 - **measure-trigger-selection-with-labelled-tasks**: Trigger selection SHOULD be measured against a test collection of three parts: the guidelines, a set of tasks (a mix that should and should not load a given guideline), and for each task the guidelines it needs, judged against the task and not against the trigger word; little published work tests controlled vocabularies, so the cookbook builds its own set. (claims: ev-test-collection-three-parts, ev-relevance-to-need-not-query, ks-skill-trigger-eval-set, ev-little-research-vocab-evaluation)
+- **task-set-size-reference-point**: The labelled task set's size SHOULD be weighed against the IR rule of thumb that 50 information needs has usually been found a sufficient minimum; the size the cookbook adopts is the owner's to set. (claim: ev-fifty-information-needs)
 - **evaluation-before-trigger-text**: The selection evaluation SHOULD be built before the trigger values and scope notes it tests are written. (claim: pg-skills-evaluations-first)
 - **evaluation-is-source-of-truth**: Whether trigger selection works SHOULD be judged by the selection evaluation, as its source of truth. (claim: pg-skills-evaluations-source-of-truth)
 - **hold-out-part-of-task-set**: Part of the labelled task set SHOULD be held out from any tuning of trigger values or scope notes. (claim: ks-skill-trigger-train-test-split)

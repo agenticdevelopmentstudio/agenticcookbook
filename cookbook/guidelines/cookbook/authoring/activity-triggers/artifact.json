@@ -67,7 +67,7 @@
     ]
   },
   "names_hosts": "Cites agent hosts' published guidance on rule loading and instruction size as the evidence for its rules.",
-  "synced": "eee295e4e114dc88",
+  "synced": "9202d0ab53f3c606",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

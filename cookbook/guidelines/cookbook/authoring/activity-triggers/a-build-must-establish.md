@@ -51,6 +51,7 @@
 - `validate-trigger-values-mechanically`: tooling fails on a value outside the table.
 - `reject-unparseable-frontmatter`: tooling fails on a guideline whose frontmatter does not parse.
 - `measure-trigger-selection-with-labelled-tasks`: selection is measured on a labelled task set of guidelines, tasks that should and should not load them, and the guidelines each task needs.
+- `task-set-size-reference-point`: the task set's size was weighed against the IR rule of thumb of a minimum of 50 information needs.
 - `evaluation-before-trigger-text`: the selection evaluation existed before the trigger values and scope notes it tests were written.
 - `evaluation-is-source-of-truth`: claims that selection works rest on the evaluation's results.
 - `hold-out-part-of-task-set`: part of the task set was held out from tuning.
