@@ -544,6 +544,12 @@ def test_a_citation_written_in_code_is_not_cited():
     assert cited_at_end(text)
 
 
+def test_a_code_span_inside_a_citation_comes_back_readable():
+    from cookr.core.research import citations
+    ids = citations("A rule MUST hold. (claims: a, x `y`)")
+    assert ids == ["a", "x `y`"] and not any("\0" in i for i in ids)
+
+
 def test_code_after_the_citation_still_counts_as_following_it():
     from cookr.core.research import cited_at_end
     assert not cited_at_end("A rule MUST hold. (claim: a) see `x`")

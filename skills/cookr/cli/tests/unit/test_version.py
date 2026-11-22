@@ -46,4 +46,5 @@ def test_the_version_is_pinned():
     # 0.23.4: roles lossless measures a sentence without its links to its own topic
     # 0.23.5: validate --research takes a new topic's folder holding only research/
     # 0.23.6: a citation written in code is never cited
-    assert __version__ == "0.23.6"
+    # 0.23.7: a code span inside a citation comes back readable, never NUL bytes
+    assert __version__ == "0.23.7"

@@ -129,8 +129,11 @@ class ResearchFinding:
 
 def citations(text: str) -> list[str]:
     """The claim ids a rule's text cites, in order; a citation written in code
-    (a fenced block, an inline code span) is an example, never one."""
-    return [i.strip() for m in CITATION.finditer(code_masked(text)) for i in m.group(1).split(",") if i.strip()]
+    (a fenced block, an inline code span) is an example, never one. The ids are
+    read from `text` itself, where the masked match sits, so a code span inside
+    a citation's parentheses comes back readable, never as NUL bytes."""
+    return [i.strip() for m in CITATION.finditer(code_masked(text))
+            for i in text[m.start(1):m.end(1)].split(",") if i.strip()]
 
 
 def cited_at_end(text: str) -> bool:
