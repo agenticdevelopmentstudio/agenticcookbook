@@ -45,4 +45,5 @@ def test_the_version_is_pinned():
     # 0.23.3: roles lossless: a renamed_from for another base is ignored, so the base mismatch is reported instead of raised.
     # 0.23.4: roles lossless measures a sentence without its links to its own topic
     # 0.23.5: validate --research takes a new topic's folder holding only research/
-    assert __version__ == "0.23.5"
+    # 0.23.6: a citation written in code is never cited
+    assert __version__ == "0.23.6"
