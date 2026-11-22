@@ -296,3 +296,9 @@ That run did not apply the per-rule `gf-named-rules` check that round 2's lint a
 
 lint: fail 1
 ````
+
+## Round 3 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
