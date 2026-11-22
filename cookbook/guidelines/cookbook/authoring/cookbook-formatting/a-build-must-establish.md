@@ -43,7 +43,7 @@
 - `closed-objects-keep-an-extension-point`: an extension point, when added, is open for other tools, and a closed object extended through `allOf`, when closed with `unevaluatedProperties`, sees its subschemas' properties
 - `validate-the-schema-strictly`: the schema compiles under strict checking, or the change says why
 - `schema-paths-are-strings`: `spec` and each `path` are strings holding relative-path references, or the change says why
-- `schema-structure-kind-enum`: `kind` is typed as the rule writes it
+- `schema-structure-kind-enum`: `structure.kind` is typed as the rule writes it
 - `schema-depends-on-dot-paths`: `depends-on` is typed as the rule writes it
 - `depends-on-items-unique`: `depends-on`, when marked, carries `"uniqueItems": true`
 - `schema-has-positive-and-negative-tests`: the schema has positive test manifests, run with a real validator, or the change says why

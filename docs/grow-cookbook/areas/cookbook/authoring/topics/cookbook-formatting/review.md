@@ -2,83 +2,40 @@
 
 ## Findings
 
-none
+- `cookbook/guidelines/cookbook/authoring/cookbook-formatting/` (the guideline under review): the round-3 change is in `draft.md` but was never folded back into the source folder. The folder still compiles to `draft-2.md` byte for byte (`cookr compile --out` on the folder, then `diff` against `draft-2.md`, gives no difference). All three changed lines in diff-3.md are therefore missing from the folder:
+  - `rules.md` line 46, `schema-structure-kind-enum`: it still reads `- **schema-structure-kind-enum**: "kind": { ... }` without the owner's lead-in "The schema MUST type `structure.kind` as written here:". That is the round-2 `gf-named-rules` lint failure, and it still stands.
+  - `a-complete-review-must-establish.md` line 4: `schema-structure-kind-enum` is still in the MAY list and not in the MUST list.
+  - `a-build-must-establish.md` line 46: it still reads "`kind` is typed as the rule writes it" and not "`structure.kind` is typed as the rule writes it".
+  Fix: fold `draft.md` into the folder (`cookr convert --update`, or edit the three section files to match diff-3.md), then delete any compiled doc left over.
 
 ## Checked
 
-- `rules.md`, `version-is-semver`: "as Android's guidance points to" and `android-semver-good-basis` are gone. The rule is SHOULD and cites `semver-normal-version-form`, `semver-no-leading-zeroes`, `semver-suggested-regex`, `swiftpm-version-semver`, `npm-version-node-semver` and `cargo-version-three-numeric-parts`. None of these is permissive or refuted. `android-semver-good-basis` is still named by the verdict that keeps `version-is-semver` as its rule, so no `supported` or `new` verdict is left without a rule.
-- `references.md` and the `references` frontmatter still list the Android versioning page. That is still correct, because `cf-format-is-integer` and `schema-format-const-2` cite `android-versioncode-integer` from the same page.
-- `rationale.md`, paragraph 2: "Cargo's packaging step checks a package by building it, beyond parsing its manifest" matches `cargo-package-verify-build` ("beyond parsing it").
-- `rationale.md`, paragraph 3: "JSON Schema 2020-12 says unknown keywords should be treated as annotations" matches the SHOULD in the quote of `jsonschema-unknown-keywords-annotations`, and so keeps the second check's correction. "Unless the schema is compiled strictly" stays consistent with `validate-the-schema-strictly`.
-- `rationale.md`, last paragraph: "npm, for one, requires only `name` and `version`, and only of a package it publishes" matches `npm-name-version-required-to-publish`. It no longer contradicts the "against" source that owner-list.md records for `cf-required-project-fields`.
-- `a-build-must-establish.md`, `closed-objects-keep-an-extension-point`: the build-bar line is now conditional ("when added", "when closed with `unevaluatedProperties`"), which matches the rule's two MAY halves.
-- `what-a-reviewer-looks-for.md`: the `allOf` bullet is now conditional ("if closed, ... or the change says why"), which matches the MAY strength and the form of the other MAY bullets.
-- `artifact.json` `related` now holds `2c5ee8e0-9da5-4b44-9f87-51962abe76ab` (ingredient-formatting), the sibling that `cf-source-domains`, `cf-code-root-coverage` and `cf-library-tree-mirrors-code` rest on.
-- diff-2.md changes nothing beyond these four fixes, so no other text is open to review this round.
-- `cookr lint` Phase A: all 389 artifacts passed the deterministic checks. Phase B, the LLM pass, cannot run from this checkout's cookr because `skills/cookr/cli/references/prompts/lint.md` is missing, so the /lint-artifact skill below supplies the quality pass. `cookr roles check` compiles every role for this guideline, including the reviewer and review-verifier.
+- `draft.md`, `schema-structure-kind-enum`: the lead-in is "The schema MUST type `structure.kind` as written here:", exactly as owner-list.md lists it under the owner ruling of 2026-11-22. The prior text after it is word for word, and the rule still ends with `(claim: schema-structure-kind-enum-prior)`, which exists in research.json.
+- Strength: `schema-structure-kind-enum-prior` is not listed among the second check's refutations (it appears nowhere in second-check.md), so MUST is allowed under criterion 3. The MUST comes from the owner's lead-in, which criterion 5 accepts.
+- `draft.md`, *A complete review must establish*: `schema-structure-kind-enum` has moved from the MAY list to the MUST list. That matches its new MUST strength, and each rule appears in exactly one list.
+- `draft.md`, *A build must establish*: the `schema-structure-kind-enum` line now names `structure.kind`, which matches the rule's lead-in.
+- diff-3.md changes nothing else, so no other text is open to review this round.
+- `cookr roles check` on the folder compiles every role.
 
 ## Rulings
 
-- R1.1: fixed — `version-is-semver` no longer cites `android-semver-good-basis` or invokes Android's guidance. It rests on claims that support SHOULD.
-- R1.2: fixed — all three rationale sentences now read as the research words them: SHOULD for unknown keywords, "beyond parsing" for Cargo, and npm's name and version for publishing.
-- R1.3: fixed — the build-bar line and the review-focus bullet for `closed-objects-keep-an-extension-point` are both conditional, matching the rule's MAY.
-- R1.4: fixed — `related` now names ingredient-formatting (`2c5ee8e0-9da5-4b44-9f87-51962abe76ab`).
+none (no findings were open)
 
 ## Lint
 
-/lint-artifact on `cookbook/guidelines/cookbook/authoring/cookbook-formatting`, with cookr run as instructed:
+The /lint-artifact skill (lint-artifact v2.0.1, run with this checkout's cookr against the folder) returned:
 
 ```
-Type: guideline | Compliance: tbd/compliance/artifact-formatting/guideline-formatting.md
-
-[PASS] FM-01: YAML frontmatter block present
-[PASS] FM-02: id is a valid UUID (4c7be774-12c6-4bf0-a9ee-82e8633610dc)
-[PASS] FM-03: index.json entry matches folder (rdid adc.guideline.cookbook.authoring.cookbook-formatting; no domain field)
-[PASS] FM-04: type is guideline
-[PASS] FM-05: version is valid semver (1.0.0)
-[PASS] FM-06: all required fields present
-[PASS] FM-07: license is MIT
-[PASS] FM-08: copyright has year and name
-[PASS] FM-09: created and modified are valid dates
-[PASS] FM-10: summary is non-empty
-[PASS] FM-11: H1 matches title
-[PASS] FM-11a: links resolve (cookr validate passed)
-[PASS] FM-12: Change History present with one row
-[PASS] FM-13: no TODO/TBD/FIXME/placeholder text
-[PASS] GF-01 / gf-summary-statement: summary follows the H1
-[PASS] GF-02 / gf-structured-guidance: rules, a numbered procedure, subsections
-[WARN] GF-03 / gf-rfc-keywords: schema-structure-kind-enum
-       -> The rule is only a quoted JSON fragment. Its only keyword, "MAY be omitted", sits inside the
-          quoted description string. The rule states no obligation of its own. Every other rule is fine.
-[PASS] gf-frontmatter-complete
-[PASS] gf-type-field
-[PASS] gf-title-heading
-[PASS] gf-change-history
-[PASS] gf-triggers-field: triggers [recipe-authoring, configuration]
-[PASS] gf-roled-parts: every part has a role, and rules, review-focus, review-bar and build-bar are all present
-[FAIL] gf-named-rules: schema-structure-kind-enum
-       -> The obligation must be an RFC 2119 keyword in the rule's own text. It currently reads
-          `- **schema-structure-kind-enum**: "kind": { ... }`.
-          Reword it as "The schema MUST type `structure.kind` as written here: ...", the way
-          schema-version-pattern does.
-          The other 49 rules have unique names and a keyword.
-[PASS] gf-research-folder: research.json and research.md present, with the four headings in order
-[PASS] gf-rule-cites-research: all 50 rules end in a citation and every cited id is a claim
-[PASS] build-bar: 50 lines, one per rule, none extra
-[WARN] GF-04 / gf-compliance-section: no `## Compliance` section
-       -> Optional unless a compliance check references this guideline.
-[WARN] style: cf-type-field
-       -> The rule text reads `MUST be \"cookbook\"`, with a stray backslash-escaped quote in the markdown.
-          Write the value as `` `cookbook` `` or `"cookbook"`.
-
-=== LINT SUMMARY ===
-Artifact: cookbook-formatting
-Type: guideline
-Pass: 28 | Warn: 3 | Fail: 1
-RESULT: NOT CLEAN — 1 failing check.
+[PASS] FM-01 … FM-13, FM-11a (frontmatter, index entry, links, Change History, no placeholders)
+[PASS] GF-01: Summary paragraph follows the H1
+[PASS] GF-02: Structured guidance
+[PASS] GF-03: RFC 2119 keywords used (53 occurrences)
+[PASS] GF-04: No Compliance section (optional)
+Pass: 18 | Warn: 0 | Fail: 0
+RESULT: CLEAN
 ```
 
-The one FAIL, `gf-named-rules` on `schema-structure-kind-enum`, hits text that this round did not change. That text is the owner-list prior text, kept word for word. Round 1's lint passed the same text. owner-list.md gives this rule no lead-in, so under criterion 5 the author cannot add the suggested "The schema MUST type `structure.kind` as written here:". Only a lead-in listed in owner-list.md is accepted. The fix therefore belongs to the owner: add a lead-in for `schema-structure-kind-enum` to owner-list.md, and the author then applies it. Until that happens the lint error stands, so it is counted below.
+That run did not apply the per-rule `gf-named-rules` check that round 2's lint applied. The folder still holds the same keywordless `schema-structure-kind-enum` text that failed that check in round 2 (see Findings), so that failure is counted here.
 
 lint: fail 1
 

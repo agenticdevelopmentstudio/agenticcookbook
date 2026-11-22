@@ -266,3 +266,33 @@ The one FAIL, `gf-named-rules` on `schema-structure-kind-enum`, hits text that t
 
 lint: fail 1
 ````
+
+## Round 3 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R3.1: `cookbook/guidelines/cookbook/authoring/cookbook-formatting/` (the guideline under review): the round-3 change is in `draft.md` but was never folded back into the source folder. The folder still compiles to `draft-2.md` byte for byte (`cookr compile --out` on the folder, then `diff` against `draft-2.md`, gives no difference). All three changed lines in diff-3.md are therefore missing from the folder:
+    - `rules.md` line 46, `schema-structure-kind-enum`: it still reads `- **schema-structure-kind-enum**: "kind": { ... }` without the owner's lead-in "The schema MUST type `structure.kind` as written here:". That is the round-2 `gf-named-rules` lint failure, and it still stands.
+    - `a-complete-review-must-establish.md` line 4: `schema-structure-kind-enum` is still in the MAY list and not in the MUST list.
+    - `a-build-must-establish.md` line 46: it still reads "`kind` is typed as the rule writes it" and not "`structure.kind` is typed as the rule writes it".
+    Fix: fold `draft.md` into the folder (`cookr convert --update`, or edit the three section files to match diff-3.md), then delete any compiled doc left over.
+
+Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `## Lint` section:
+
+````
+The /lint-artifact skill (lint-artifact v2.0.1, run with this checkout's cookr against the folder) returned:
+
+```
+[PASS] FM-01 … FM-13, FM-11a (frontmatter, index entry, links, Change History, no placeholders)
+[PASS] GF-01: Summary paragraph follows the H1
+[PASS] GF-02: Structured guidance
+[PASS] GF-03: RFC 2119 keywords used (53 occurrences)
+[PASS] GF-04: No Compliance section (optional)
+Pass: 18 | Warn: 0 | Fail: 0
+RESULT: CLEAN
+```
+
+That run did not apply the per-rule `gf-named-rules` check that round 2's lint applied. The folder still holds the same keywordless `schema-structure-kind-enum` text that failed that check in round 2 (see Findings), so that failure is counted here.
+
+lint: fail 1
+````
