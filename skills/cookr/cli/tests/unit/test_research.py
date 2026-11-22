@@ -518,6 +518,20 @@ def test_the_research_only_check_takes_a_new_topic_holding_only_its_research(tmp
     assert code == 0 and "Research passed" in out
 
 
+def test_the_research_only_check_refuses_a_folder_that_lost_its_manifest(tmp_path, monkeypatch, patch_refs,
+                                                                          capsys):
+    # Parts beside research/ and no artifact.json: a broken source folder, refused by name.
+    cb, folder = roled(tmp_path, monkeypatch, cite="")
+    new = folder.parent / "keys-new"
+    new.mkdir()
+    write_research(new)
+    (new / "rules.md").write_text("- **a-rule**: It MUST hold.\n")
+    capsys.readouterr()
+    code = main(["validate", "-p", str(cb), "--research", str(new)])
+    cap = capsys.readouterr()
+    assert code == 2 and "rules.md" in cap.out + cap.err and "Research passed" not in cap.out
+
+
 def test_the_research_only_check_refuses_bad_research_of_a_new_topic(tmp_path, monkeypatch, patch_refs, capsys):
     cb, folder = roled(tmp_path, monkeypatch, cite="")
     new = folder.parent / "keys-new"

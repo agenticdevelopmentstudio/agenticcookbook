@@ -328,11 +328,17 @@ def research_only(root: Path, folder: Path) -> list[ResearchFinding]:
     no artifact source folder (a typo) is refused by name, never `no-research`.
     A new topic's folder, which holds only `research/` until its text is
     written, is checked on its research alone: it is a source folder in the
-    making, not a typo."""
+    making, not a typo. A folder holding anything beside `research/` (a part,
+    say) and no manifest is a source folder that lost its manifest: it is
+    refused by name, so its rule checks are never silently skipped."""
     if not is_folder(folder):
         if not (folder / RESEARCH_DIR).is_dir():
             raise NotAnArtifactError(f"{folder}: not an artifact source folder (no {ARTIFACT_FILE}, "
                                      f"no {RESEARCH_DIR}/)")
+        others = sorted(p.name for p in folder.iterdir() if p.name != RESEARCH_DIR and not p.name.startswith("."))
+        if others:
+            raise NotAnArtifactError(f"{folder}: no {ARTIFACT_FILE}, but it holds more than {RESEARCH_DIR}/ "
+                                     f"({', '.join(others)}): a source folder missing its manifest")
         artifact = None
     elif not (folder / RESEARCH_DIR).is_dir():
         return [ResearchFinding(folder, "no-research", f"no {RESEARCH_DIR}/ folder")]
