@@ -55,14 +55,14 @@
       "https://github.com/coveooss/json-schema-for-humans",
       "https://blog.cloudflare.com/cloudflares-json-powered-documentation-generator/"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-22",
     "triggers": [
       "recipe-authoring",
       "configuration"
     ]
   },
-  "synced": "50f27aa44006a6f1",
+  "synced": "f5baef1e6c72a6bb",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
