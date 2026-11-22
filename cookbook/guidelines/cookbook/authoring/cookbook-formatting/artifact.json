@@ -4,11 +4,11 @@
     "id": "4c7be774-12c6-4bf0-a9ee-82e8633610dc",
     "title": "Cookbook Formatting",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-21",
-    "modified": "2026-11-21",
+    "modified": "2026-11-22",
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
@@ -62,7 +62,7 @@
       "configuration"
     ]
   },
-  "synced": "457ca5ad22bdca61",
+  "synced": "50f27aa44006a6f1",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
