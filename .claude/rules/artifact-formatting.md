@@ -14,7 +14,7 @@ Each artifact type has a formatting guideline or compliance file that defines it
 | Guideline | `cookbook/guidelines/cookbook/authoring/guideline-formatting/` | 59 |
 | Ingredient | `cookbook/guidelines/cookbook/authoring/ingredient-formatting/` | 72 |
 | Recipe | `tbd/compliance/artifact-formatting/recipe-formatting.md` (folds into `cookbook/guidelines/cookbook/recipe-quality/template-conformance/` when that area is planned) | 15 |
-| Cookbook | `tbd/compliance/artifact-formatting/cookbook-formatting.md` (becoming `cookbook/guidelines/cookbook/authoring/cookbook-formatting/`) | 13 |
+| Cookbook | `cookbook/guidelines/cookbook/authoring/cookbook-formatting/` | 50 |
 
 Two guidelines apply to every type: `cookbook/guidelines/cookbook/authoring/requirement-keywords/` (RFC 2119 keyword use and case) and `cookbook/guidelines/cookbook/authoring/activity-triggers/` (a guideline's `triggers`).
 
