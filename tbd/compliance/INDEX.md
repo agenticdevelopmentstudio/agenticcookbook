@@ -22,7 +22,7 @@ references: []
 
 # Compliance
 
-Compliance checks are curated indexes of guideline-derived requirements, grouped by concern. Each recipe and guideline includes a Compliance section listing the checks that were evaluated and their status.
+Compliance checks are curated indexes of guideline-derived requirements, grouped by concern. A recipe or guideline MAY include a Compliance section listing the checks that were evaluated and their status. The formatting checks for principles, guidelines, ingredients and cookbooks are now the named rules of the guidelines under `cookbook/guidelines/cookbook/authoring/`.
 
 ## Architecture
 

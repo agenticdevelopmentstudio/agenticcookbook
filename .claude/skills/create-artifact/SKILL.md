@@ -1,13 +1,13 @@
 ---
 name: create-artifact
-version: "2.1.0"
+version: "2.1.1"
 description: "Guided creation of a new cookbook artifact. Walks through type selection, content authoring, and integration via /add-artifact."
 argument-hint: "[principle|guideline|recipe] [--title <title>]"
 allowed-tools: Read, Glob, Grep, Edit, Write, Bash(uuidgen), Bash(date *), Bash(wc *), Bash(rsync *), Bash(cookr *), Bash(rm *), AskUserQuestion
 context: fork
 ---
 
-# Create Artifact v2.1.0
+# Create Artifact v2.1.1
 
 Guided wizard for creating a new cookbook artifact from scratch. Asks which type (principle, guideline, recipe), walks through content authoring using the formatting compliance spec for that type, then invokes `/add-artifact` to integrate.
 
@@ -21,16 +21,16 @@ roled, stop and point them to `/grow-cookbook <stage> <area>`.
 
 ## Startup
 
-create-artifact v2.1.0
+create-artifact v2.1.1
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.1.0). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.1.1). If they differ, print:
 
-> Warning: This skill is running v2.1.0 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.1.1 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> create-artifact v2.1.0
+> create-artifact v2.1.1
 
 Then stop.
 
@@ -114,8 +114,8 @@ Read the compliance file for the artifact type:
 
 | Type | Compliance File |
 |------|----------------|
-| Principle | `tbd/compliance/artifact-formatting/principle-formatting.md` |
-| Guideline | `tbd/compliance/artifact-formatting/guideline-formatting.md` |
+| Principle | `cookbook/guidelines/cookbook/authoring/principle-formatting/rules.md` |
+| Guideline | `cookbook/guidelines/cookbook/authoring/guideline-formatting/rules.md` |
 | Recipe | `tbd/compliance/artifact-formatting/recipe-formatting.md` |
 
 Walk through each required section defined in the compliance file, asking the user for content. For each section:

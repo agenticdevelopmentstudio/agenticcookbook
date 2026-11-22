@@ -1,12 +1,12 @@
 ---
 name: grow-cookbook
-version: "1.4.47"
+version: "1.4.48"
 description: "Add or rewrite cookbook guidelines from research, one area at a time: plan the area, research each topic, write it with cited rules, review, integrate."
 argument-hint: "<plan|research|write|review|integrate> <area> [--workspace <dir>] [--topic <name>]"
 allowed-tools: Read, Glob, Grep, Edit, Write, Agent, Skill, Bash(PYTHONPATH=*), Bash(myteams *), Bash(git *), Bash(python3 *), Bash(~/.cache/grow-cookbook/cookr-venv/bin/python *), Bash(date *), Bash(mkdir *), Bash(cat *), Bash(cp *), Bash(mv *), Bash(rm *)
 ---
 
-# Grow Cookbook v1.4.47
+# Grow Cookbook v1.4.48
 
 The procedure for adding to the cookbook: an area is planned, each topic in it
 is researched, written as a roled guideline whose every rule cites its
@@ -49,9 +49,9 @@ runs every script, the devteam's included; a brief naming another venv for it ch
 
 ## Startup
 
-grow-cookbook v1.4.47
+grow-cookbook v1.4.48
 
-If `$ARGUMENTS` is `--version`, respond with exactly `grow-cookbook v1.4.47` and stop.
+If `$ARGUMENTS` is `--version`, respond with exactly `grow-cookbook v1.4.48` and stop.
 
 1. Check `$COOKR_PY`:
    ```

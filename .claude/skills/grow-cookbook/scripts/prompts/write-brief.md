@@ -22,7 +22,7 @@ Write one roled guideline, as a single markdown doc with frontmatter, that:
   it carrying the keyword the old text implied, and keep the text after it
   word for word;
 - settles none of the open questions on the owner list;
-- follows {{repo}}/tbd/compliance/artifact-formatting/guideline-formatting.md,
+- follows {{repo}}/cookbook/guidelines/cookbook/authoring/guideline-formatting/rules.md,
   gf-roled-parts and gf-named-rules: an intro; a `## Rules` section of
   named rules `- **kebab-name**: … MUST|SHOULD|MAY …`; how-to and example
   sections; `## What a reviewer looks for`;

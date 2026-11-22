@@ -127,7 +127,7 @@ no owner list and no other topic.
    The part names are the section headings as kebab-case file names; list
    them with `$COOKR_PY -c "import json; print([p['part'] for p in json.load(open('<repo>/<artifact>/artifact.json'))['parts']])"`.
    Each role is the one the gf-roled-parts table in
-   `tbd/compliance/artifact-formatting/guideline-formatting.md` gives what
+   `cookbook/guidelines/cookbook/authoring/guideline-formatting/rules.md` gives what
    the part holds (`rules`, `how-to`, `examples`, `review-focus`,
    `review-bar`, `build-bar`, `rationale` or `references`). For example, a
    topic whose parts are `intro`, `rules`, `covering-indexes`,

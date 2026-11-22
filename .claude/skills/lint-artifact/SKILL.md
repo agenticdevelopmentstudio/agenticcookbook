@@ -1,6 +1,6 @@
 ---
 name: lint-artifact
-version: "2.0.1"
+version: "2.0.2"
 description: "Lint a cookbook artifact (principle, guideline, or recipe) against its type's formatting compliance checks. Auto-detects type from frontmatter."
 argument-hint: "[path-or-name]"
 allowed-tools: Read, Glob, Grep, Bash(wc *), Bash(git rev-parse *), Bash(PYTHONPATH=*), AskUserQuestion
@@ -8,22 +8,22 @@ context: fork
 model: sonnet
 ---
 
-# Lint Artifact v2.0.1
+# Lint Artifact v2.0.2
 
-Validate a cookbook artifact for structural completeness, frontmatter correctness, and convention compliance. Auto-detects the artifact type from the `type` frontmatter field and runs the corresponding checks from `tbd/compliance/artifact-formatting/`.
+Validate a cookbook artifact for structural completeness, frontmatter correctness, and convention compliance. Auto-detects the artifact type from the `type` frontmatter field and runs the corresponding checks: the named rules of its type's formatting guideline (`cookbook/guidelines/cookbook/authoring/<type>-formatting/rules.md`), or, for a recipe, `tbd/compliance/artifact-formatting/recipe-formatting.md` until it folds into template-conformance.
 
 ## Startup
 
-lint-artifact v2.0.1
+lint-artifact v2.0.2
 
-**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.1). If they differ, print:
+**Version check**: Read `${CLAUDE_SKILL_DIR}/SKILL.md` from disk and extract the `version:` field from frontmatter. Compare to this skill's version (2.0.2). If they differ, print:
 
-> Warning: This skill is running v2.0.1 but vA.B.C is installed. Restart the session to use the latest version.
+> Warning: This skill is running v2.0.2 but vA.B.C is installed. Restart the session to use the latest version.
 
 Then continue running.
 
 If `$ARGUMENTS` is `--version`, respond with exactly:
-> lint-artifact v2.0.1
+> lint-artifact v2.0.2
 
 Then stop.
 
@@ -76,8 +76,8 @@ Read the target file's YAML frontmatter. Extract the `type` field.
 
 | Type | Compliance File |
 |------|----------------|
-| `principle` | `tbd/compliance/artifact-formatting/principle-formatting.md` |
-| `guideline` | `tbd/compliance/artifact-formatting/guideline-formatting.md` |
+| `principle` | `cookbook/guidelines/cookbook/authoring/principle-formatting/rules.md` |
+| `guideline` | `cookbook/guidelines/cookbook/authoring/guideline-formatting/rules.md` |
 | `recipe` | `tbd/compliance/artifact-formatting/recipe-formatting.md` |
 
 If the `type` field is missing or not one of the three artifact types, print:
