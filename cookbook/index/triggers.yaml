@@ -40,6 +40,13 @@ api-integration:
 - guidelines/planning/networking/api-versioning-and-deprecation/
 - guidelines/reviewing/networking/observable-behavior-contract/
 - guidelines/testing/contract-testing/
+artifact-authoring:
+- guidelines/cookbook/authoring/activity-triggers/
+- guidelines/cookbook/authoring/cookbook-formatting/
+- guidelines/cookbook/authoring/guideline-formatting/
+- guidelines/cookbook/authoring/ingredient-formatting/
+- guidelines/cookbook/authoring/principle-formatting/
+- guidelines/cookbook/authoring/requirement-keywords/
 authentication:
 - guidelines/implementing/infrastructure/kubernetes-configuration/
 - guidelines/implementing/security/authentication/

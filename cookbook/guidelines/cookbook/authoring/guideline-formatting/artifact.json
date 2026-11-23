@@ -65,7 +65,9 @@
     ],
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-21",
-    "triggers": []
+    "triggers": [
+      "artifact-authoring"
+    ]
   },
   "synced": "c67cb40c552a6f54",
   "parts": [

@@ -74,7 +74,8 @@
     "approved-by": "approve-artifact v2.0.0",
     "approved-date": "2026-11-21",
     "triggers": [
-      "recipe-authoring"
+      "recipe-authoring",
+      "artifact-authoring"
     ]
   },
   "synced": "81f50c6f1975d3cd",

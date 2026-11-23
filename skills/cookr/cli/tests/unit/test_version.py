@@ -48,4 +48,5 @@ def test_the_version_is_pinned():
     # 0.23.6: a citation written in code is never cited
     # 0.23.7: a code span inside a citation comes back readable, never NUL bytes
     # 0.23.8: validate --research refuses a folder holding parts but no artifact.json
-    assert __version__ == "0.23.8"
+    # 0.23.9: artifact-authoring is a canonical trigger
+    assert __version__ == "0.23.9"

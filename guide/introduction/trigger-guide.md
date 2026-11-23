@@ -65,6 +65,7 @@ Triggers solve this. Each guideline declares the activities where it's relevant.
 | `offline-support` | Offline-first patterns, sync, conflict resolution | offline-and-connectivity, sync-engine-design, conflict-resolution |
 | `skill-authoring` | Writing Claude Code skills, rules, or agents | authoring-skills-and-rules, skill-checklist, agent-checklist |
 | `recipe-authoring` | Writing or modifying cookbook recipes | recipe-quality guidelines |
+| `artifact-authoring` | Writing or modifying cookbook artifacts (principles, guidelines, ingredients, recipes, cookbooks) | guideline-formatting, principle-formatting, requirement-keywords |
 | `schema-design` | Designing database schemas, migrations | sqlite-best-practices, schema-evolution, sync-schema-design |
 
 ## Usage Pattern for AI Agents

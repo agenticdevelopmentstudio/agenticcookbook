@@ -59,6 +59,7 @@
     "approved-date": "2026-11-22",
     "triggers": [
       "recipe-authoring",
+      "artifact-authoring",
       "configuration"
     ]
   },

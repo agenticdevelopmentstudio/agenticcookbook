@@ -63,6 +63,7 @@
     "approved-date": "2026-11-21",
     "triggers": [
       "recipe-authoring",
+      "artifact-authoring",
       "skill-authoring"
     ]
   },
