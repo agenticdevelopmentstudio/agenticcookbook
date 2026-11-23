@@ -12,6 +12,28 @@
         {"topic": "activity-triggers", "survivor": "guidelines/cookbook/authoring/activity-triggers", "new": true, "kind": "new", "devteam": "authored"}
       ],
       "building": []
+    },
+    {
+      "name": "planning/project-management",
+      "topics": [
+        {"topic": "risk-tracking", "survivor": "guidelines/planning/project-management/risk-tracking", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "decision-records", "survivor": "guidelines/planning/project-management/decision-records", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "dependency-tracking", "survivor": "guidelines/planning/project-management/dependency-tracking", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "issue-tracking", "survivor": "guidelines/planning/project-management/issue-tracking", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "milestone-scheduling", "survivor": "guidelines/planning/project-management/milestone-scheduling", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "task-breakdown", "survivor": "guidelines/planning/project-management/task-breakdown", "new": true, "kind": "new", "devteam": "authored"}
+      ],
+      "building": []
+    },
+    {
+      "name": "testing/quality-assurance",
+      "topics": [
+        {"topic": "e2e-test-authoring", "survivor": "guidelines/testing/quality-assurance/e2e-test-authoring", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "test-failure-triage", "survivor": "guidelines/testing/quality-assurance/test-failure-triage", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "exploratory-testing-charters", "survivor": "guidelines/testing/quality-assurance/exploratory-testing-charters", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "test-impact-analysis", "survivor": "guidelines/testing/quality-assurance/test-impact-analysis", "new": true, "kind": "new", "devteam": "authored"}
+      ],
+      "building": []
     }
   ]
 }

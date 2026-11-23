@@ -1,0 +1,49 @@
+{
+  "area": "planning/project-management",
+  "new_topics": [
+    {
+      "speciality": null,
+      "topic": "guidelines/planning/project-management/risk-tracking",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/planning/project-management/decision-records",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/planning/project-management/dependency-tracking",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/planning/project-management/issue-tracking",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/planning/project-management/milestone-scheduling",
+      "file": null,
+      "kind": "new"
+    },
+    {
+      "speciality": null,
+      "topic": "guidelines/planning/project-management/task-breakdown",
+      "file": null,
+      "kind": "new"
+    }
+  ],
+  "building": [],
+  "unplaced": [],
+  "marked_here": [],
+  "mark_conflicts": [],
+  "against_survivor": [],
+  "survivor_elsewhere": [],
+  "unread_marks": [],
+  "ignored_marks": []
+}
