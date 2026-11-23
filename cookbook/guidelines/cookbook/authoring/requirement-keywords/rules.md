@@ -1,6 +1,6 @@
 
 - **gf-rfc-keywords**: Requirements within the guideline MUST use RFC 2119 keywords (MUST, MUST NOT, SHOULD, SHOULD NOT, MAY) to indicate obligation levels. (claim: gf-rfc-keywords-prior)
-- **gf-rfc-keywords-bold-or-uppercase**: Keywords MUST be bold or uppercase when used normatively. (claim: gf-rfc-keywords-bold-or-uppercase-prior)
+- **gf-rfc-keywords-uppercase**: Keywords MUST be written in UPPERCASE when used normatively; bold adds no meaning, so a bold lowercase keyword states no requirement. (claims: uppercase-only-meaning, oasis-uppercase-only, oasis-case-change-is-material)
 - **use-rfc-2119-keywords-for-behavioral-requirements**: An artifact MUST follow this convention: Use RFC 2119 keywords for all behavioral requirements: MUST, MUST NOT, SHOULD, SHOULD NOT and MAY. (claim: use-rfc-2119-keywords-for-behavioral-requirements-prior)
 - **rule-uses-rfc-2119-keywords**: **Use RFC 2119 keywords** for requirements — MUST, MUST NOT, SHOULD, SHOULD NOT, MAY. (claim: rule-uses-rfc-2119-keywords-prior)
 - **must-is-absolute-requirement**: A builder or reviewer MUST treat a rule's MUST as an absolute requirement and its MUST NOT as an absolute prohibition, from which no deviation is permitted. (claims: rfc2119-must-absolute-requirement, rfc2119-must-not-absolute-prohibition, iso-shall-requirement)

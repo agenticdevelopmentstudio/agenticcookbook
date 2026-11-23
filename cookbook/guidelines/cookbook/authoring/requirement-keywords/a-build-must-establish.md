@@ -1,6 +1,6 @@
 
 - `gf-rfc-keywords`: every requirement in the guideline uses one of MUST, MUST NOT, SHOULD, SHOULD NOT or MAY
-- `gf-rfc-keywords-bold-or-uppercase`: every keyword used normatively is bold or uppercase
+- `gf-rfc-keywords-uppercase`: every keyword used normatively is written in UPPERCASE
 - `use-rfc-2119-keywords-for-behavioral-requirements`: every behavioral requirement uses an RFC 2119 keyword
 - `rule-uses-rfc-2119-keywords`: every rule states its requirement with MUST, MUST NOT, SHOULD, SHOULD NOT or MAY
 - `must-is-absolute-requirement`: every MUST is followed and every MUST NOT avoided, with no deviation

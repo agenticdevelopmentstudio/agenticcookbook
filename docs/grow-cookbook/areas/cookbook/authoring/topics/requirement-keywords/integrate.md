@@ -31,4 +31,8 @@ Notes:
 
 - gf-rfc-keywords-bold-or-uppercase (kept word for word, research contradicted) lets a keyword count when bold or uppercase, while keywords-meaningful-only-in-uppercase gives meaning to UPPERCASE only. conventions.md now says to write keywords in UPPERCASE, which satisfies both, but whether a bold lowercase "must" is a requirement stays open.
 
+## Owner rulings
+
+- 2026-11-23, keyword case: only the UPPERCASE form of a keyword carries meaning (RFC 8174), and bold adds none. `gf-rfc-keywords-bold-or-uppercase` is renamed `gf-rfc-keywords-uppercase`, reads "Keywords MUST be written in UPPERCASE when used normatively; bold adds no meaning", and cites the research claims that support it instead of its contradicted prior text. This settles the case-convention question (RFC 8174, not Infra's willful violation) and the styling question (styling is not required and never carries meaning) on the owner list, and the note on a bold lowercase "must".
+
 integrated: 2026-11-21
