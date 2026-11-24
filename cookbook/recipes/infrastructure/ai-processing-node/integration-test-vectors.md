@@ -29,3 +29,4 @@
 | `apn-026` | `machine-mode` | Start with `AI_NODE_ENVIRONMENT_TOKEN=abc` | Startup fails with a configuration error saying the token must be a `jenv_` token |
 | `apn-027` | `claude-code-provider` | Hub node (`AI_NODE_API_TOKEN` only); a claimed AI step with provider `claude-code` | The step fails with `retryable: false`; no subprocess runs |
 | `apn-028` | `register-step-handlers`, `claim-sends-job-types` | Start the TypeScript node with `AI_NODE_API_TOKEN` and no environment token | The claim request's `jobTypes` is exactly `categorize_and_tag` and `jobs.step.ai`; `jobs.step.script` is absent |
+| `apn-029` | `step-ai-tool-loop` | `/mcp` lists `notes.search`, then `notes_search`; the model calls `notes_search_2` | The model was offered `notes_search` and `notes_search_2`; the `/mcp` call names `notes_search`, and a call to `notes_search` would name `notes.search` |
