@@ -12,7 +12,7 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Break work into small, specific tasks with a done test, sized by their doers, one owner once started, an ordered backlog, milestone links and named blockers.",
+    "summary": "Break work into small, specific tasks with a done test, sized by their doers: one owner once started, an ordered backlog, milestone links and named blockers.",
     "platforms": [],
     "tags": [
       "task-breakdown",
@@ -59,7 +59,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "13e4283aafc1a27e",
+  "synced": "44d9371b47fc1dc4",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

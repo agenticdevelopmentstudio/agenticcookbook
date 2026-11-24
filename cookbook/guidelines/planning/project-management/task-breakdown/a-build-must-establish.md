@@ -1,23 +1,33 @@
 
-- `break-down-assign-and-prioritize-tasks`: larger work is broken into smaller tasks, the work has a responsible person or team, and the tasks are ordered.
-- `breakdown-covers-all-scope`: the tasks add up to all of the work in scope and hold nothing outside it.
+- `break-down-assign-and-prioritize-tasks`: every backlog item bigger than a task is broken into smaller tasks.
+- `work-has-a-responsible-owner`: every piece of broken-down work has a responsible person or team.
+- `breakdown-covers-all-scope`: the breakdown includes all of the work in scope, project management included.
+- `work-package-activities-add-up`: where a WBS is used, each work package's activities add up to all of its work.
 - `split-into-vertical-slices`: each story or backlog item is split into vertical slices, not by architectural layer.
 - `doers-size-their-tasks`: every task's size was set by the people who will do it.
 - `task-sized-hours-to-a-few-days`: every task fits in hours to a couple of days, and none is a week or more.
-- `split-large-estimates`: no task with a large or unknown estimate is left unsplit.
+- `split-large-estimates`: no task estimated at a week or more is left unsplit.
+- `split-unestimable-tasks`: no task whose duration cannot be estimated is left unsplit.
 - `story-fits-one-iteration`: every user story fits within one iteration.
-- `work-package-within-eighty-hours`: where a WBS is used, every lowest-level work package is within about 80 hours and one reporting period.
-- `tasks-specific-and-actionable`: every task has a clear outcome and a short title that states what it is.
-- `task-text-names-action-and-done-test`: every task names a visible action and a done test the team agrees on.
+- `work-package-within-eighty-hours`: where a WBS is used, every lowest-level work package is 80 hours of effort or less.
+- `work-package-within-one-reporting-period`: where a WBS is used, every lowest-level work package fits within one reporting period.
+- `tasks-specific-and-actionable`: every task is specific enough for everyone on the team to understand.
+- `task-states-its-outcome`: every task describes a concrete piece of work with a defined outcome.
+- `task-serves-its-story`: every task contributes to the story it belongs to.
+- `task-title-states-the-task`: every task's title states directly what the task is.
+- `task-names-visible-action`: every task names a physical, visible action.
+- `task-has-done-test`: every task carries a done test the team agrees on.
 - `done-test-is-pass-fail`: every done test is a set of measurable pass/fail statements.
 - `task-has-time-expectation`: every task carries a time expectation.
 - `started-task-has-one-owner`: every started task has exactly one assignee.
 - `backlog-is-kept-ordered`: the backlog is ordered, by rank or by priority levels.
 - `task-has-assignee-and-priority`: every todo has an assignee and a priority.
-- `link-tasks-to-milestones`: every task is linked to the milestone it serves.
+- `link-tasks-to-milestones`: where the project uses milestones, every task is linked to the milestone it serves.
 - `task-milestone-must-exist`: no todo is assigned to a milestone that does not exist.
-- `identify-blocked-tasks-and-blockers`: every blocked task is identified, marked as blocked where the tracker allows, and acted on when active work is reviewed.
-- `blocker-links-the-blocking-item`: every blocked task has a "blocked by" link to what it waits on.
+- `identify-blocked-tasks-and-blockers`: every blocked task, and what blocks it, is identified when active work is reviewed.
+- `mark-blocked-tasks`: where the tracker allows it, every blocked task is marked as blocked.
+- `remove-identified-blockers`: every identified blocker is acted on.
+- `blocker-links-the-blocking-item`: every blocked task that waits on a tracked item has a "blocked by" link to it.
 - `blocker-states-reason`: every blocked task carries a brief note naming the cause.
 - `blocker-records-dates`: where dates are recorded, a blocker note gives the start date and the resolved date.
 - `keep-resolved-blockers`: resolved blocker notes are kept.

@@ -16,6 +16,8 @@ Done when: - The button appears on /login for signed-out users
            - Clicking it redirects to github.com/login/oauth/authorize
            - The existing email sign-in still passes its tests
 Expect:    about half a day
+Assignee:  Dana
+Priority:  High
 Milestone: Beta sign-up
 ```
 
@@ -26,7 +28,7 @@ By layer (avoid):   "Build the export UI"  /  "Add the export table"  /  "Write 
 Vertical slices:    "Export one report as CSV"  /  "Export a filtered report"  /  "Schedule a weekly export"
 ```
 
-A blocked task:
+A blocked task waiting on a tracked item:
 
 ```text
 Blocked by:  #412 Rotate the staging OAuth secret
