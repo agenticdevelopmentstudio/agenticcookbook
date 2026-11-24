@@ -92,7 +92,7 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
-| [Planning](guidelines/planning/) | 35 | Architecture, data modeling, choosing patterns |
+| [Planning](guidelines/planning/) | 42 | Architecture, data modeling, choosing patterns |
 | [Implementing](guidelines/implementing/) | 182 | Writing new code |
 | [Testing](guidelines/testing/) | 15 | Writing and structuring tests |
 | [Reviewing](guidelines/reviewing/) | 10 | Checking code quality, security, accessibility |
