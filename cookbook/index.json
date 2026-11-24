@@ -515,6 +515,12 @@
       "path": "privacy-and-data#no-pii-in-logs",
       "rdid": "adc.check.privacy-and-data.no-pii-in-logs"
     },
+    "23e55c7c-c16e-40d1-88a0-4b51148d2660": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/project-record-linking",
+      "rdid": "adc.guideline.planning.project-management.project-record-linking"
+    },
     "246d87c8-213a-4de1-9452-6e683d3d75e3": {
       "implementations": [],
       "kind": "guideline",
