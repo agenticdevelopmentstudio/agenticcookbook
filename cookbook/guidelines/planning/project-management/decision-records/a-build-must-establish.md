@@ -15,6 +15,6 @@
 - `decision-links-to-its-work`: each record links to the issues and code review that carry it out.
 - `acknowledge-contradicted-decisions`: no decision changes an earlier one without a new record naming it and the earlier record marked superseded.
 - `supersede-never-edit-accepted-records`: no accepted record was edited to change its decision.
-- `supersession-links-both-ways`: each superseded record links to its replacement, and each replacement names what it replaces.
-- `backfill-undocumented-decisions`: where a log was started for an existing system, known past decisions were recorded where their data was available.
+- `supersession-links-both-ways`: each superseded record's status links to its replacement.
+- `backfill-undocumented-decisions`: where used, past decisions recorded retroactively are ones whose data was available.
 

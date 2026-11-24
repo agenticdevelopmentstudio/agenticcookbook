@@ -60,7 +60,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "e3bff68003778cd0",
+  "synced": "52a3eb529e8bb7f4",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
