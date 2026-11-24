@@ -4,7 +4,7 @@
     "id": "eb82d5d7-4f42-4417-8104-a14f6a27899f",
     "title": "End-to-End Test Authoring",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -86,14 +86,14 @@
       "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library",
       "https://www.thoughtworks.com/radar/techniques/production-data-in-test-environments"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": [
       "writing-tests",
       "pre-pr"
     ]
   },
-  "synced": "d40c81de838d5729",
+  "synced": "6ffdc76c0d04bb56",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
