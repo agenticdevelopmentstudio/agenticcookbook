@@ -52,11 +52,11 @@
       "https://developsense.com/blog/2011/12/what-exploratory-testing-is-not-part-5-undocumented-testing",
       "https://www.satisfice.com/blog/archives/1509"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "d14569799204151d",
+  "synced": "a00919b44e266e01",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
