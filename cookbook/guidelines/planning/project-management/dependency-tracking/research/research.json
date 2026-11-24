@@ -1,0 +1,1079 @@
+{
+  "topic": "dependency-tracking",
+  "artifact": "cookbook/guidelines/planning/project-management/dependency-tracking",
+  "scope": "How a delivery team maps and tracks the delivery dependencies it waits on (other teams, vendors, tasks, decisions; internal and external): each dependency's type, owner, status and need-by date, and how one at risk or blocked is flagged and escalated before it delays a milestone. General practice for any delivery team. Out of scope: software dependencies (libraries, OS frameworks), milestone dependency chains, cycle detection and the critical path (milestone-scheduling), and the general linking convention between records (project-record-linking).",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (Product / how-to LOW-MEDIUM bar, broad independent consensus; no escalation). Metric claims take the Statistical MED-HIGH bar.",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "research_questions": [
+    "Best practice: how should a delivery team map and track its dependencies on other teams, vendors, tasks and decisions: internal versus external, each with a type, an owner, a status and a need-by date?",
+    "Known solutions: how do dependency boards, SAFe's program board, RAID logs and the dependency links of Jira, Linear and GitHub Projects compare for tracking delivery dependencies?",
+    "Platform guidelines: what do the PMBOK Guide's schedule and stakeholder guidance, PRINCE2 and the scaled-agile frameworks (SAFe, LeSS) say about recording and managing dependencies between teams?",
+    "The expert's view: what do delivery leads say teams get wrong with dependencies (found late, no owner on the other side, status never updated), and what to do instead?",
+    "Blocked dependency flagging: find how teams mark a dependency at risk or blocked and escalate it before it delays a milestone, and state the status values a dependency carries and when a blocked one is escalated."
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify the domain (cross-team delivery dependencies; how-to), go to the method owners' own guides (Scrum Guide, Kanban Guide, SAFe, LeSS) and the trackers' own documentation (GitHub, Linear, Jira) first, then professional-body and institutional guidance (APM / INCOSE UK SIG, University of Essex Strategic Projects Office), then practitioner sources for what no primary covers; corroborate across independent publishers; record provenance at generation time.",
+    "search_strategy": "WebSearch for each method owner's and tracker's own pages on dependencies, blocked work, impediments, flags and status updates; for PMI, PRINCE2 and ISO 21502 public material; and for practitioner work on blockers and dependency impact (Leopold and Magennis, Team Topologies, DORA). Every cited page fetched with WebFetch or downloaded with curl and read as text (APM PDF converted with pdftotext).",
+    "inclusion": "Primary: method owners' guides (scrumguides.org, kanbanguides.org, framework.scaledagile.com, less.works), trackers' own documentation (docs.github.com, linear.app/docs, support.atlassian.com). Institutional / professional-body: APM / INCOSE UK Systems Thinking SIG guidance; University of Essex project-delivery guidance. Secondary, flagged in the trust basis: Atlassian's own articles on RAID logs and dependencies, prince2.wiki, InfoQ (Leopold and Magennis), Team Topologies, DORA, a wiki summary of a Magennis talk.",
+    "exclusion": "Search-result snippets; pages that could not be fetched (pmi.org learning library 403, projectmanagement.com 403, iso.org 403, GAO schedule guide 403, local.gov.uk 403, project-management-basics.com PRINCE2 mirrors 404, Linear's old issue-relations URL which now redirects); exam-prep flashcards and SEO templates; any claim without a fetched quote.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15, capped by the domain bar (Product / how-to LOW-MEDIUM; Statistical MED-HIGH for metric claims), applying cite-the-claim-not-the-document, independence-before-corroboration, domain-stratified-trust, suppress-unsupported-confidence and provenance-at-generation-time."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/sharing-project-updates",
+    "https://linear.app/docs/issue-property",
+    "https://linear.app/docs/initiative-and-project-updates",
+    "https://support.atlassian.com/jira-software-cloud/docs/flag-an-issue/",
+    "https://support.atlassian.com/jira-software-cloud/docs/configure-dependencies-in-jira-for-advanced-roadmaps/",
+    "https://support.atlassian.com/jira-software-cloud/docs/what-is-the-dependencies-report-in-advanced-roadmaps/",
+    "https://support.atlassian.com/jira-software-cloud/docs/view-and-manage-dependencies-on-the-program-board/",
+    "https://www.atlassian.com/agile/project-management/raid-log",
+    "https://www.atlassian.com/agile/project-management/project-management-dependencies",
+    "https://framework.scaledagile.com/pi-planning/",
+    "https://framework.scaledagile.com/art-sync/",
+    "https://framework.scaledagile.com/pi-objectives/",
+    "https://less.works/less/framework/coordination-and-integration.html",
+    "https://less.works/less/structure/feature-teams",
+    "https://scrumguides.org/scrum-guide.html",
+    "https://kanbanguides.org/english/",
+    "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+    "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
+    "https://prince2.wiki/Manage_by_exception",
+    "https://www.infoq.com/articles/blockers-defects-process-improvement",
+    "https://teamtopologies.com/key-concepts",
+    "https://dora.dev/capabilities/loosely-coupled-teams/",
+    "https://www.hanssamios.com/dokuwiki/troy_magennis_-_solving_the_hairy_problem_of_team_dependencies"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "The three Worker Focus rules hold at SHOULD strength: sources independently classify dependencies as internal or external (APM quoting PRINCE2 and MSP, University of Essex, Leopold and Magennis), track each one's status and keep reviewing it (Essex, Atlassian, APM, Kanban Guide, Linear), and flag blocked or at-risk ones visibly (GitHub's Blocked icon, Linear's orange and red flags, Jira's Impediment flag and red off-track dependencies). The two Verify rules are supported only at SHOULD, not as must-hold checks: sources recommend recording a dependency's type and status and linking blocked work to what it blocks, but none requires it of every dependency, so both are unsupported at the stated strength and recorded as prior claims. The research finds six practices no rule covers: an owner agreed on both sides, a need-by date in a 'we depend on X to deliver Y by date Z' statement, a small status vocabulary (on track / at risk / off track plus blocked), escalation through a named cross-team forum or by exception before a milestone slips, logging an at-risk dependency as a risk, and reducing dependencies before tracking them. Apple, Android and Windows have no bearing on this topic.",
+  "open_questions": [
+    "Whether the two Verify clauses (every dependency has a type and status; blocked or at-risk dependencies are linked to affected milestones or todos) stay as must-hold checks as a house convention, or are restated at SHOULD, the strength the sources support.",
+    "Which status vocabulary the cookbook adopts for a dependency: the trackers' project-health set (On track, At risk, Off track) plus Blocked and Done, or another set; the sources offer several and none is a standard.",
+    "What 'type' means for a dependency in the cookbook: internal versus external (PRINCE2), internal / intra / external (MSP, Essex), inward versus outward (APM), the PMBOK's mandatory / discretionary, or what the dependency is on (team, vendor, task, decision); the sources use all of these.",
+    "When a blocked or at-risk dependency is escalated: at a fixed review cadence, as soon as its need-by date is forecast to be missed (PRINCE2's manage-by-exception), or at a named forum such as SAFe's ART Sync; the sources give no single trigger.",
+    "Whether a dependency at risk is also entered as a risk (Essex, APM), which would couple this topic to risk-tracking, or stays only in the dependency record."
+  ],
+  "limitations": [
+    "PMI's PMBOK Guide could not be read: pmi.org and projectmanagement.com returned 403 to every fetch, and no PMI-published public excerpt was reachable, so no claim cites PMI and the PMBOK's mandatory / discretionary / internal / external taxonomy is not used as a finding.",
+    "ISO 21502 and ISO 31000 could not be read: iso.org returned 403 and no public excerpt was found; no claim cites them.",
+    "PRINCE2's own manual (AXELOS / PeopleCert) was not reachable; its dependency definitions are taken from the APM / INCOSE UK guidance that quotes them, and its manage-by-exception rule from prince2.wiki, both secondary.",
+    "SAFe's article bodies are partly behind a login; only the publicly served sentences were usable, and SAFe's ROAM risk method and the ART planning board's dependency notation could not be quoted from Scaled Agile's own pages.",
+    "LeSS's own coordination guide was fetched; LeSS says nothing specific about a dependency status or an escalation trigger.",
+    "No study with a disclosed sample was found for any metric claim (dependency counts versus on-time delivery, or review cadence); the only quantitative claim (each dependency halves the chance of on-time completion) is a teaching model reported second-hand and is scored on the Statistical bar accordingly.",
+    "The GAO Schedule Assessment Guide and the UK Government Functional Standard GovS 002 could not be fetched (403) or did not expose dependency clauses."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "internal-and-external-dependency-classes",
+      "question": "best-practices",
+      "claim": "Delivery dependencies are classified by whether they are under the team's control: internal ones inside the project or programme and external ones outside it, with some guidance adding an intermediate class between projects of one organisation.",
+      "quote": "Internal dependency – This is a dependency between two activities within a project, under the control of the PM | External dependency – This is a dependency beyond the control of the PM. Examples include delivery of a product from another project and a decision from programme management (e.g. funding). | These dependencies can be one of three types: | dependencies between workstreams within a project (intra-project) | dependencies between projects within a programme (intra-programme) | dependencies between the programme or its projects and external conditions (external)",
+      "citations": [
+        {
+          "title": "Fusion Point Guidance – Interdependency Management (Issue 1.0)",
+          "author": "APM / INCOSE UK Systems Thinking Specific Interest Group",
+          "publisher": "Association for Project Management",
+          "date": "2017-04",
+          "url": "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Dependency management",
+          "author": "University of Essex Strategic Projects Office",
+          "publisher": "University of Essex",
+          "date": "n.d.",
+          "url": "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "professional-body guidance quoting PRINCE2 definitions; institutional project-delivery guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 plans practice external dependencies; Government Functional Standard project delivery dependencies managed",
+      "trust": {
+        "score": 75,
+        "basis": "Two independent publishers (APM / INCOSE UK SIG, which quotes PRINCE2 and MSP; University of Essex) state the same internal/external split; PRINCE2 itself reached only through APM's quotation and the SIG disclaims a formal APM position, so authority is reduced; meets the how-to bar by independent consensus."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "dependency-statement-with-need-by-date",
+      "question": "best-practices",
+      "claim": "A dependency is best stated as who is to deliver what by which date for which of the team's own deliverables, and its need-by date is agreed with the providing side.",
+      "quote": "“We are dependent on X to deliver Y on date Z in order for us to deliver AA”. | Align and agree timelines through specifying when required and aligning with source of the interdependency to confirm achievability (including resource)",
+      "citations": [
+        {
+          "title": "Fusion Point Guidance – Interdependency Management (Issue 1.0)",
+          "author": "APM / INCOSE UK Systems Thinking Specific Interest Group",
+          "publisher": "Association for Project Management",
+          "date": "2017-04",
+          "url": "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "professional-body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 plans practice external dependencies product flow diagram axelos OR peoplecert",
+      "trust": {
+        "score": 65,
+        "basis": "Single professional-body SIG paper, explicit and verifiable; the SIG disclaims formal APM endorsement; the date field is corroborated in kind by Atlassian's RAID example (see raid-entry-owner-due-date-status), not in these words."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "document-dependency-type-source-timeline",
+      "question": "best-practices",
+      "claim": "Each identified dependency is documented with its type (inward or outward), its source, its specification and its timeline, agreed in a signed-off dependency agreement, and then monitored for its whole life.",
+      "quote": "Evaluate and document the interdependencies the project will have (e.g. type (inward/outward), source, specification, timeline) | Signoff dependency agreement to include commitments, responsibility and accountability. | Monitor and control throughout life of the interdependency.",
+      "citations": [
+        {
+          "title": "Fusion Point Guidance – Interdependency Management (Issue 1.0)",
+          "author": "APM / INCOSE UK Systems Thinking Specific Interest Group",
+          "publisher": "Association for Project Management",
+          "date": "2017-04",
+          "url": "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "professional-body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 plans practice external dependencies product flow diagram axelos OR peoplecert",
+      "trust": {
+        "score": 65,
+        "basis": "Single professional-body SIG paper giving the fields as examples ('e.g.'), not a required set; no formal APM endorsement."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "owner-agreed-and-confirmed-by-other-side",
+      "question": "best-practices",
+      "claim": "Every dependency has agreed ownership of its management actions, and is communicated to the providing project's owner so that the other side confirms it and tracks it in its own dependency log.",
+      "quote": "All dependencies should have: | agreed ownership of management actions | The dependency should then be communicated with the owner of the project/programme to ensure the receiving project/programme confirms the dependency and tracks it in their dependency log.",
+      "citations": [
+        {
+          "title": "Dependency management",
+          "author": "University of Essex Strategic Projects Office",
+          "publisher": "University of Essex",
+          "date": "n.d.",
+          "url": "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "institutional project-delivery guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Government Functional Standard GovS 002 project delivery dependencies managed",
+      "trust": {
+        "score": 45,
+        "basis": "Single institutional guide, explicit SHOULD-strength wording; ownership itself is corroborated independently by APM ('Agreeing ownership', apm-common-difficulties) and Atlassian (raid-entry-owner-due-date-status), the two-sided confirmation only here. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Essex says all dependencies \"should have\" agreed ownership of management actions. It says the dependency is communicated to \"the owner of the project/programme\" so that the \"receiving project/programme\" confirms it and logs it. The source calls the other side the receiving project, not the \"providing\" one, so the claim adds a direction the source does not give; lowered 65->45."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "raid-entry-owner-due-date-status",
+      "question": "best-practices",
+      "claim": "In a RAID log each dependency entry has a designated owner, a due date and a status, and Blocked is one of the statuses a dependency entry takes.",
+      "quote": "Each entry needs a designated owner who will track its progress. | Each category is tracked in its own column, with entries assigned to an owner and given a due date and a status. | Dependency Waiting for design team to finalize wireframes Alex March 22 Blocked",
+      "citations": [
+        {
+          "title": "How to create a RAID log to keep projects organized and on track",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/raid-log",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "RAID log risks assumptions issues dependencies template owner due date status",
+      "trust": {
+        "score": 60,
+        "basis": "Secondary: a tracker vendor's general article, not its product documentation; used because no primary standard was reachable for RAID fields. Owner corroborated by Essex and APM independently; due date and status here only."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "review-dependencies-regularly",
+      "question": "best-practices",
+      "claim": "Dependencies are reviewed at regular points through the project, for example in status meetings, steering reviews and sprint planning.",
+      "quote": "Dependencies require continual management and should be reviewed at regular points. | Review the entries during project status meetings, steering committee discussions, or sprint planning sessions.",
+      "citations": [
+        {
+          "title": "Dependency management",
+          "author": "University of Essex Strategic Projects Office",
+          "publisher": "University of Essex",
+          "date": "n.d.",
+          "url": "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "How to create a RAID log to keep projects organized and on track",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/raid-log",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "institutional project-delivery guidance; vendor practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Government Functional Standard GovS 002 project delivery dependencies managed; RAID log risks assumptions issues dependencies template owner due date status",
+      "trust": {
+        "score": 75,
+        "basis": "Two independent publishers agree; corroborated in kind by the Kanban Guide's regular review of active items (kanban-guide-unblock-and-review); neither names a cadence, so no metric claim is made."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "at-risk-dependency-entered-as-risk",
+      "question": "best-practices",
+      "claim": "A dependency assessed as a risk to the project, or a threat to it such as lateness, is also entered in the risk log or register and reviewed for its effect on milestones.",
+      "quote": "All dependencies should be registered on the risk log if they are assessed as a risk to the project / programme. | Threats to interdependencies are captured and categorised as such within Programme Risk Register | Programme Review (eg schedule implications to programme milestones)",
+      "citations": [
+        {
+          "title": "Dependency management",
+          "author": "University of Essex Strategic Projects Office",
+          "publisher": "University of Essex",
+          "date": "n.d.",
+          "url": "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Fusion Point Guidance – Interdependency Management (Issue 1.0)",
+          "author": "APM / INCOSE UK Systems Thinking Specific Interest Group",
+          "publisher": "Association for Project Management",
+          "date": "2017-04",
+          "url": "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "institutional project-delivery guidance; professional-body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Government Functional Standard GovS 002 project delivery dependencies managed; PRINCE2 plans practice external dependencies",
+      "trust": {
+        "score": 72,
+        "basis": "Two independent publishers agree; APM's wording is from its process figure; how-to bar met by consensus."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "identify-dependencies-in-planning-with-others",
+      "question": "best-practices",
+      "claim": "Dependencies are identified during planning, together with the other teams, stakeholders and partners who know of hidden ones, and inbound dependencies raised by other projects are captured too.",
+      "quote": "Consult with all team members, including stakeholders, partners, customers, and business members. Each person brings experience and awareness of hidden dependencies that could delay the project. | Dependency mapping helps identify project risks during planning. | inbound dependencies raised by other projects",
+      "citations": [
+        {
+          "title": "Project dependencies: Types & ways to manage them effectively",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/project-management-dependencies",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Dependency management",
+          "author": "University of Essex Strategic Projects Office",
+          "publisher": "University of Essex",
+          "date": "n.d.",
+          "url": "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor practitioner article; institutional project-delivery guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "atlassian.com agile project management dependency management cross-team dependencies; Government Functional Standard GovS 002 project delivery dependencies",
+      "trust": {
+        "score": 72,
+        "basis": "Two independent publishers agree; corroborated by SAFe's PI Planning purpose (safe-pi-planning-identifies-dependencies)."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "communicate-dependency-changes",
+      "question": "best-practices",
+      "claim": "Dependency changes are pushed to the people affected, and dependencies are carried in the standard status reports, so a dependent team knows when it can start and who is responsible.",
+      "quote": "Communication is the key to successful dependency management. Team members need to know when they can begin working on their tasks, who is responsible for dependent tasks, and when things change. Consider a tiered approach to communication, such as including dependencies in your standard project dashboard reports and push-style notices when things change.",
+      "citations": [
+        {
+          "title": "Project dependencies: Types & ways to manage them effectively",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/project-management-dependencies",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "atlassian.com agile project management dependency management cross-team dependencies",
+      "trust": {
+        "score": 55,
+        "basis": "Single secondary vendor article; consistent with Essex's 'communicated with the owner' (owner-agreed-and-confirmed-by-other-side) but those words are only here."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-issue-dependencies-blocked-icon",
+      "question": "known-solutions",
+      "claim": "GitHub Issues records dependencies as 'blocked by' and 'blocking' links between issues, and marks a blocked issue with a Blocked icon on project boards and the Issues page.",
+      "quote": "Issue dependencies let you define issues that are blocked by, or blocking, other work. | Blocked issues are marked with a \"Blocked\" icon on your project boards or repository's Issues page, so you can easily identify bottlenecks.",
+      "citations": [
+        {
+          "title": "Creating issue dependencies",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub docs creating issue dependencies blocked by blocking",
+      "trust": {
+        "score": 88,
+        "basis": "Primary: the platform owner's current documentation of its own feature; authoritative for what the product does."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-projects-define-blockers-and-fields",
+      "question": "known-solutions",
+      "claim": "GitHub's guidance for Projects is to define which issues are blocked by or blocking others, track status in a single-select field with preset values and target dates in a date field, and automate updates so the project stays current.",
+      "quote": "To ensure efficient progress, clearly define which issues are blocked by, or blocking, other issues. | Use a single select field to track information about a task based on a preset list of values. | A date field to track target ship dates | The less you need to remember to do manually, the more likely your project will stay up to date.",
+      "citations": [
+        {
+          "title": "Best practices for Projects",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "docs.github.com projects best practices blocked by blocking",
+      "trust": {
+        "score": 85,
+        "basis": "Primary: the platform owner's own best-practice page; a recommendation for its product, not a requirement."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "tracker-health-on-track-at-risk-off-track",
+      "question": "known-solutions",
+      "claim": "Trackers give projects a health status from a short preset list: Linear offers On track, At risk and Off track, and GitHub Projects status updates offer statuses such as On track and At risk with a target date.",
+      "quote": "Select a health indicator— On track, At risk, or Off track —to represent the current state of the Initiative or Project. | You can set a status, such as \"On track\" or \"At risk\", to allow people to quickly determine the current state of the project. You can also set start dates and target dates.",
+      "citations": [
+        {
+          "title": "Initiative and Project updates",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/initiative-and-project-updates",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Sharing project updates",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/sharing-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "linear docs initiative project updates health; docs.github.com projects sharing project updates status At risk Off track On track",
+      "trust": {
+        "score": 82,
+        "basis": "Two independent vendors' own documentation; these apply to projects, not to a dependency record, so the transfer to dependency status is an inference flagged in research.md."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "linear-blocked-by-flags",
+      "question": "known-solutions",
+      "claim": "Linear records blocked-by and blocking relations between issues, shows blockers in the issue sidebar with an orange flag and blocked work with a red flag, and moves the relation to Related once the blocker is resolved.",
+      "quote": "If other issues are blocking the current issue, they'll show up in the issue sidebar with an orange flag under Blocked by. | If the issue is blocking other work, the blocked issues show up in the issue sidebar with a red flag under Blocks. | Once the blocking issue has been resolved, the relationship moves under Related.",
+      "citations": [
+        {
+          "title": "Issue properties (Issue relations)",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs issue relations blocked by blocking",
+      "trust": {
+        "score": 88,
+        "basis": "Primary: the vendor's current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-update-reminders-and-staleness",
+      "question": "known-solutions",
+      "claim": "Linear reminds a project's owner when a status update is due and visibly marks a project whose update is overdue, turning its health icon grey when it stays overdue.",
+      "quote": "Reminders are only sent when there is an Initiative owner. | If an update schedule is configured for a project, its health icon will reflect when an update has been missed. Projects that remain overdue for an extended period will have their icon turn grey to indicate inactivity.",
+      "citations": [
+        {
+          "title": "Initiative and Project updates",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/initiative-and-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "linear docs initiative project updates health reminders",
+      "trust": {
+        "score": 62,
+        "basis": "Primary vendor documentation of its own feature; it shows one tool treating a stale status as a signal, not a general rule. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quoted reminder sentence is about Initiative owners, not projects. Project reminders on the same page are optional, set by admins, and go to \"project leads\". The staleness and grey-icon part is supported; lowered 82->62."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-flag-impediment",
+      "question": "known-solutions",
+      "claim": "Jira marks a blocked work item with a flag, stored as the Flagged field with the single value Impediment and visible to everyone in the space, and a comment can be added when the flag is set or removed.",
+      "quote": "You can flag a work item to indicate that it's important or blocked. | You can also add a comment when you're adding a flag to or removing a flag from a work item. | The flag for a work item is stored in a custom checkbox field called \"Flagged\", which has only one value: Impediment. | Flagged work items are visible to all members of a space.",
+      "citations": [
+        {
+          "title": "Flag a work item",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/flag-an-issue/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "support.atlassian.com Jira flag a work item impediment flagged board",
+      "trust": {
+        "score": 88,
+        "basis": "Primary: the vendor's current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-plans-off-track-dependencies",
+      "question": "known-solutions",
+      "claim": "Jira Plans treats work-item links as dependencies (Blocks by default), and its dependencies view and program board show a dependency in red when it is off-track, with filters to list only off-track dependencies.",
+      "quote": "By default, dependencies in your plan treat all work item links as though they have the Blocks work item link type. | If the arrow turns red, this indicates that the dependency is off-track. | The Program board lets you create, view, and edit dependencies while planning upcoming work. | View all of the off-track dependencies in your plan by selecting Show lines for all off-track dependencies.",
+      "citations": [
+        {
+          "title": "Configure dependencies in your plan",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/configure-dependencies-in-jira-for-advanced-roadmaps/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What is the dependencies view in your plan?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/what-is-the-dependencies-report-in-advanced-roadmaps/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "View and manage dependencies on the Program board",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/view-and-manage-dependencies-on-the-program-board/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official product documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "support.atlassian.com Jira plan view and manage dependencies off-track dependency timeline",
+      "trust": {
+        "score": 86,
+        "basis": "Primary vendor documentation, three pages of one publisher (not independent of each other); premium-tier feature per Atlassian."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "raid-log-tracks-dependencies-with-risks",
+      "question": "known-solutions",
+      "claim": "A RAID log is a single log of risks, assumptions, issues and dependencies, where a dependency entry records waiting on another team, an approval or a vendor.",
+      "quote": "A RAID log is a project management tool that tracks risks, assumptions, issues, and dependencies in one place. | Dependencies highlight relationships between tasks, teams, or external factors that could affect delivery timelines. A dependency may involve waiting for another team to complete a component, receiving legal approval, or relying on an external vendor.",
+      "citations": [
+        {
+          "title": "How to create a RAID log to keep projects organized and on track",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/raid-log",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "RAID log risks assumptions issues dependencies template owner due date status",
+      "trust": {
+        "score": 58,
+        "basis": "Secondary vendor article; no standard defines the RAID log; Essex's 'dependency log' and 'risk log' are consistent but not the same words."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "safe-pi-planning-identifies-dependencies",
+      "question": "platform-guidelines",
+      "claim": "SAFe's PI Planning identifies cross-team dependencies, and its outputs include an ART planning board showing feature delivery dates and dependencies; PI objectives expose dependencies that need coordination.",
+      "quote": "PI Planning provides the opportunity to align development objectives with business goals, identify dependencies, and plan work based on available capacity. | PI Planning outputs include committed PI objectives from the Agile Teams and an ART planning board that reflects feature delivery dates and dependencies. | Exposes dependencies that require coordination",
+      "citations": [
+        {
+          "title": "PI Planning",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "Scaled Agile Framework",
+          "date": "n.d.",
+          "url": "https://framework.scaledagile.com/pi-planning/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "PI Objectives",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "Scaled Agile Framework",
+          "date": "n.d.",
+          "url": "https://framework.scaledagile.com/pi-objectives/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's framework guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "framework.scaledagile.com PI planning program board dependencies",
+      "trust": {
+        "score": 82,
+        "basis": "Primary: the framework owner's own pages; only the publicly served sentences were read (body partly behind login)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "safe-art-sync-escalation-point",
+      "question": "platform-guidelines",
+      "claim": "In SAFe the ART Sync is the primary escalation point for cross-team impediments that teams cannot resolve locally, where business owners check that risks and dependencies are being actively managed.",
+      "quote": "It serves as an escalation point for operational impediments that teams cannot resolve locally | The ART sync serves as the primary escalation point for cross-team impediments. | Business Owners and stakeholders can verify that the ART is working toward its agreed-upon objectives, actively managing associated risks and dependencies.",
+      "citations": [
+        {
+          "title": "ART Sync",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "Scaled Agile Framework",
+          "date": "n.d.",
+          "url": "https://framework.scaledagile.com/art-sync/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's framework guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "framework.scaledagile.com ART sync escalation impediments dependencies",
+      "trust": {
+        "score": 82,
+        "basis": "Primary: the framework owner's own page; binds SAFe adopters only."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "less-just-talk-and-scouts",
+      "question": "platform-guidelines",
+      "claim": "LeSS prefers decentralised coordination: teams talk to the other team directly, send a scout to monitor an interface they depend on and report back, or have a leading team keep track of what the other teams are doing.",
+      "quote": "Probably the best way to coordinate between teams is to simply coordinate between the teams. | When there is a need for coordination then “just talk” by going to the other team, picking up the phone or, in the worst case, dropping them an email. | A simple coordination method is for teams to explore their environment and send scouts to other teams or other interfaces. The scout monitors the interface and reports back to his team. | In addition to doing development work, they are responsible for keeping track of what the other teams are doing and helping them synchronize.",
+      "citations": [
+        {
+          "title": "Coordination & Integration",
+          "author": "The LeSS Company B.V.",
+          "publisher": "LeSS Framework (less.works)",
+          "date": "n.d.",
+          "url": "https://less.works/less/framework/coordination-and-integration.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's framework guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "less.works coordination and integration dependencies",
+      "trust": {
+        "score": 80,
+        "basis": "Primary: the framework owner's own guide."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "less-minimise-dependencies-feature-teams",
+      "question": "platform-guidelines",
+      "claim": "LeSS treats cross-team dependencies as a cost to remove by structure: feature teams minimise dependencies between teams, and a felt need for Scrum of Scrums can signal unnecessary dependency.",
+      "quote": "minimizes dependencies between teams to increase flexibility | A caution: The desire to hold a Scrum of Scrums can be a sign of unnecessary dependency or coordination problems caused by single-function groups and component teams, or by teams not able or willing to identify and do shared work.",
+      "citations": [
+        {
+          "title": "Feature Teams",
+          "author": "The LeSS Company B.V.",
+          "publisher": "LeSS Framework (less.works)",
+          "date": "n.d.",
+          "url": "https://less.works/less/structure/feature-teams",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Coordination & Integration",
+          "author": "The LeSS Company B.V.",
+          "publisher": "LeSS Framework (less.works)",
+          "date": "n.d.",
+          "url": "https://less.works/less/framework/coordination-and-integration.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's framework guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "less.works feature teams dependencies between teams",
+      "trust": {
+        "score": 80,
+        "basis": "Primary: the framework owner's own pages (one publisher)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-guide-impediments",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide has no dependency record; it handles what blocks a team as impediments, identified at the Daily Scrum and whose removal the Scrum Master causes.",
+      "quote": "Causing the removal of impediments to the Scrum Team's progress; | Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings.",
+      "citations": [
+        {
+          "title": "The 2020 Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 impediments dependencies",
+      "trust": {
+        "score": 85,
+        "basis": "Primary: the method's definitive guide; the absence of any dependency term was checked in the full text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-guide-unblock-and-review",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide requires items in the workflow to be actively managed, including unblocking blocked work, and describes regular review of active items as common practice.",
+      "quote": "Items in the workflow must be managed actively. | Unblocking blocked work. | A common practice is for Kanban system members to review the active items regularly.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "John Coleman and Daniel Vacanti",
+          "publisher": "Kanban Guides",
+          "date": "2025-05-01",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide blocked work active management",
+      "trust": {
+        "score": 85,
+        "basis": "Primary: the guide's own text, current (2025); 'must' applies to active management, of which unblocking is one listed form."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-manage-by-exception",
+      "question": "platform-guidelines",
+      "claim": "PRINCE2 escalates by exception: a project manager works within agreed tolerances and escalates to the project board when the situation exceeds them.",
+      "quote": "PRINCE2 refers to these significant issues as exceptions, which occur when the situation exceeds the predefined tolerance. | referred to as tolerance—before they need to inform the project board | they have to escalate it to the board.",
+      "citations": [
+        {
+          "title": "Manage by exception",
+          "author": "Frank Turley",
+          "publisher": "prince2.wiki (EMPII Group BV)",
+          "date": "n.d.",
+          "url": "https://prince2.wiki/Manage_by_exception",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner reference (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "exception forecast deviation beyond the agreed tolerance levels PRINCE2 glossary",
+      "trust": {
+        "score": 55,
+        "basis": "Secondary: a practitioner wiki summarising PRINCE2, used because the AXELOS / PeopleCert manual was not reachable; the principle is applied to dependencies by inference, not by the source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "leopold-red-blocker-sticker-days-blocked",
+      "question": "experts-view",
+      "claim": "Practitioners mark a blocked work item with a red note giving the reason, count the days it stays blocked at each stand-up, and keep the notes after the blocker is resolved for later analysis.",
+      "quote": "A common technique used by teams is to add a red Post-it note with a brief reason to the blocked work ticket. | The easiest method for the team is to add a tick mark during each day's stand-up to count total days blocked. | After you resolve these blockers, DON'T THROW THE BLOCKER POST-ITS AWAY!",
+      "citations": [
+        {
+          "title": "Using Blockers and Defects for Process Improvement",
+          "author": "Klaus Leopold and Troy Magennis",
+          "publisher": "InfoQ",
+          "date": "2015-06-08",
+          "url": "https://www.infoq.com/articles/blockers-defects-process-improvement",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "blocker clustering Klaus Leopold kanban blocked work items tickets",
+      "trust": {
+        "score": 62,
+        "basis": "Secondary, used because no primary covers blocker records; recognised Kanban practitioners; the reason-with-flag part is corroborated by Jira's flag comment (jira-flag-impediment); the day count only here."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "cluster-blockers-internal-external",
+      "question": "experts-view",
+      "claim": "Recorded blockers are clustered by internal and external causes and then by commonality, to find which kinds of blocker recur.",
+      "quote": "cluster the blockers by internal and external causes and then group them by some form of commonality",
+      "citations": [
+        {
+          "title": "Using Blockers and Defects for Process Improvement",
+          "author": "Klaus Leopold and Troy Magennis",
+          "publisher": "InfoQ",
+          "date": "2015-06-08",
+          "url": "https://www.infoq.com/articles/blockers-defects-process-improvement",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "blocker clustering Klaus Leopold kanban blocked work items tickets",
+      "trust": {
+        "score": 58,
+        "basis": "Secondary, single practitioner article; the internal/external split is independently consistent with internal-and-external-dependency-classes."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apm-common-difficulties",
+      "question": "experts-view",
+      "claim": "The usual difficulties with dependencies are identifying them at all, agreeing an owner, and pinning down what is needed and its need-by date early in the lifecycle; an undefined dependency should be kept under constant review as a risk with a management plan.",
+      "quote": "Identifying the interdependency | Agreeing ownership | Depending on position in lifecycle, it can often be difficult to specify exactly what it is and need by date | These dependencies should remain under constant review and acknowledged as a source of risk with an associated management plan (e.g. mitigation or contingency).",
+      "citations": [
+        {
+          "title": "Fusion Point Guidance – Interdependency Management (Issue 1.0)",
+          "author": "APM / INCOSE UK Systems Thinking Specific Interest Group",
+          "publisher": "Association for Project Management",
+          "date": "2017-04",
+          "url": "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "professional-body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 plans practice external dependencies product flow diagram axelos OR peoplecert",
+      "trust": {
+        "score": 65,
+        "basis": "Single professional-body SIG paper; 'hidden dependencies' found late is corroborated in kind by Atlassian (identify-dependencies-in-planning-with-others)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rescope-to-remove-dependencies",
+      "question": "experts-view",
+      "claim": "Experts advise reducing dependencies rather than only tracking them: re-scope or trade solutions to bring a dependency inside the team's control, and organise teams so they do not wait on one another.",
+      "quote": "In extreme circumstances, the programme or project may be re-scoped to remove (difficult) interdependencies to reduce risk, e.g. bring the delivery of the interdependency within the control of the project. | Nothing kills productivity faster than one team waiting on another team. | Teams are able to complete work without needing fine-grained communication and coordination with people outside the team.",
+      "citations": [
+        {
+          "title": "Fusion Point Guidance – Interdependency Management (Issue 1.0)",
+          "author": "APM / INCOSE UK Systems Thinking Specific Interest Group",
+          "publisher": "Association for Project Management",
+          "date": "2017-04",
+          "url": "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Key Concepts",
+          "author": "Team Topologies",
+          "publisher": "teamtopologies.com",
+          "date": "n.d.",
+          "url": "https://teamtopologies.com/key-concepts",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Capabilities: Loosely coupled teams",
+          "author": "DORA",
+          "publisher": "dora.dev (Google Cloud)",
+          "date": "2025-10-20",
+          "url": "https://dora.dev/capabilities/loosely-coupled-teams/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "professional-body guidance; expert practitioner site; research programme capability page",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 plans practice external dependencies; Team Topologies key concepts dependencies; DORA loosely coupled teams",
+      "trust": {
+        "score": 58,
+        "basis": "Three independent publishers agree, and LeSS says the same (less-minimise-dependencies-feature-teams); DORA's research claim is not quantified on its page, so no metric is asserted. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): APM says re-scoping to remove interdependencies is something done \"in extreme circumstances\", not general advice, and nothing quoted supports \"trade solutions\". Team Topologies (\"eliminate team dependencies\") and DORA do support organising teams so they don't wait on each other; lowered 78->58."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "stale-log-loses-value",
+      "question": "experts-view",
+      "claim": "A dependency or RAID log that is not updated regularly goes stale: entries must be revisited and outdated statuses reconciled before it is useful again.",
+      "quote": "Requires frequent updates. If not updated regularly, the team may have to revisit old entries, clarify missing information, and reconcile outdated statuses before the log becomes useful again.",
+      "citations": [
+        {
+          "title": "How to create a RAID log to keep projects organized and on track",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/raid-log",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "RAID log risks assumptions issues dependencies template owner due date status",
+      "trust": {
+        "score": 55,
+        "basis": "Secondary vendor article; consistent with Linear's stale-update signal (linear-update-reminders-and-staleness) but those words are only here."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "each-dependency-halves-on-time-chance",
+      "question": "experts-view",
+      "claim": "A practitioner teaching model holds that each added team dependency roughly halves the chance of on-time completion, so removing one is worth more than tracking it.",
+      "quote": "each team dependency HALVES the chances of an on-time completion | Remove dependency - half chances of being delayed",
+      "citations": [
+        {
+          "title": "Troy Magennis - Solving the Hairy Problem of Team Dependencies",
+          "author": "Hans Samios",
+          "publisher": "hanssamios.com (personal wiki)",
+          "date": "2015-08-28",
+          "url": "https://www.hanssamios.com/dokuwiki/troy_magennis_-_solving_the_hairy_problem_of_team_dependencies",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "personal notes summarising a conference talk (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Troy Magennis dependencies probability on-time delivery each dependency halves",
+      "trust": {
+        "score": 5,
+        "basis": "Metric claim on the Statistical bar: no study, sample or measure, a 50/50-per-dependency teaching model reported second-hand in a personal wiki; capped low; usable only as the direction of the effect, never as a figure. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The page (notes on a Troy Magennis talk) supports \"halves the chances\" and \"remove dependency - half chances of being delayed\". It never compares removing a dependency with tracking it, so \"worth more than tracking it\" is an added conclusion; lowered 25->5."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "dependency-has-type-and-status-prior",
+      "question": "best-practices",
+      "claim": "Every dependency has a type and status",
+      "quote": "Every dependency has a type and status",
+      "citations": [
+        {
+          "title": "dependency-tracking (teams/projectteam/specialities/project/dependencies.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/dependencies.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Every dependency has a type and status",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "blocked-dependency-linked-to-affected-work-prior",
+      "question": "best-practices",
+      "claim": "blocked or at-risk dependencies are linked to affected milestones or todos",
+      "quote": "blocked or at-risk dependencies are linked to affected milestones or todos",
+      "citations": [
+        {
+          "title": "dependency-tracking (teams/projectteam/specialities/project/dependencies.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/dependencies.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "blocked or at-risk dependencies are linked to affected milestones or todos",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "map-internal-and-external-dependencies",
+      "verdict": "supported",
+      "claims": [
+        "internal-and-external-dependency-classes",
+        "raid-log-tracks-dependencies-with-risks",
+        "cluster-blockers-internal-external",
+        "identify-dependencies-in-planning-with-others"
+      ]
+    },
+    {
+      "rule": "track-dependency-availability-and-status",
+      "verdict": "supported",
+      "claims": [
+        "raid-entry-owner-due-date-status",
+        "review-dependencies-regularly",
+        "document-dependency-type-source-timeline",
+        "kanban-guide-unblock-and-review",
+        "tracker-health-on-track-at-risk-off-track"
+      ]
+    },
+    {
+      "rule": "flag-at-risk-or-blocked-dependencies",
+      "verdict": "supported",
+      "claims": [
+        "github-issue-dependencies-blocked-icon",
+        "linear-blocked-by-flags",
+        "jira-flag-impediment",
+        "jira-plans-off-track-dependencies",
+        "leopold-red-blocker-sticker-days-blocked"
+      ]
+    },
+    {
+      "rule": "dependency-has-type-and-status",
+      "verdict": "unsupported",
+      "claims": [
+        "dependency-has-type-and-status-prior",
+        "document-dependency-type-source-timeline",
+        "raid-entry-owner-due-date-status"
+      ]
+    },
+    {
+      "rule": "blocked-dependency-linked-to-affected-work",
+      "verdict": "unsupported",
+      "claims": [
+        "blocked-dependency-linked-to-affected-work-prior",
+        "github-projects-define-blockers-and-fields",
+        "github-issue-dependencies-blocked-icon",
+        "jira-plans-off-track-dependencies",
+        "at-risk-dependency-entered-as-risk"
+      ]
+    },
+    {
+      "rule": "dependency-owner-agreed-on-both-sides",
+      "verdict": "new",
+      "claims": [
+        "owner-agreed-and-confirmed-by-other-side",
+        "raid-entry-owner-due-date-status",
+        "apm-common-difficulties",
+        "document-dependency-type-source-timeline"
+      ]
+    },
+    {
+      "rule": "dependency-has-need-by-date",
+      "verdict": "new",
+      "claims": [
+        "dependency-statement-with-need-by-date",
+        "raid-entry-owner-due-date-status",
+        "apm-common-difficulties"
+      ]
+    },
+    {
+      "rule": "dependency-status-values",
+      "verdict": "new",
+      "claims": [
+        "tracker-health-on-track-at-risk-off-track",
+        "raid-entry-owner-due-date-status",
+        "linear-blocked-by-flags",
+        "jira-plans-off-track-dependencies",
+        "linear-update-reminders-and-staleness",
+        "stale-log-loses-value"
+      ]
+    },
+    {
+      "rule": "escalate-blocked-dependency-before-milestone",
+      "verdict": "new",
+      "claims": [
+        "safe-art-sync-escalation-point",
+        "prince2-manage-by-exception",
+        "scrum-guide-impediments",
+        "less-just-talk-and-scouts",
+        "communicate-dependency-changes"
+      ]
+    },
+    {
+      "rule": "at-risk-dependency-logged-as-risk",
+      "verdict": "new",
+      "claims": [
+        "at-risk-dependency-entered-as-risk",
+        "apm-common-difficulties"
+      ]
+    },
+    {
+      "rule": "reduce-dependencies-before-tracking",
+      "verdict": "new",
+      "claims": [
+        "rescope-to-remove-dependencies",
+        "less-minimise-dependencies-feature-teams",
+        "each-dependency-halves-on-time-chance"
+      ]
+    },
+    {
+      "rule": "record-blocker-reason-and-duration",
+      "verdict": "new",
+      "claims": [
+        "leopold-red-blocker-sticker-days-blocked",
+        "jira-flag-impediment",
+        "cluster-blockers-internal-external"
+      ]
+    },
+    {
+      "rule": "identify-dependencies-during-planning",
+      "verdict": "new",
+      "claims": [
+        "identify-dependencies-in-planning-with-others",
+        "safe-pi-planning-identifies-dependencies"
+      ]
+    }
+  ]
+}
