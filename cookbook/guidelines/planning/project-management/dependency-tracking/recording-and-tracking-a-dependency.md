@@ -7,7 +7,7 @@ This section is informative: it shows one way to keep the rules, not a required 
 4. Give it an owner, and send it to the owner of the other project or team so it is confirmed there and appears in their dependency log too.
 5. Set its status from the team's preset list. A tracker's single-select field holds such a list, and a date field holds the need-by date. GitHub recommends automating updates so the project stays current.
 6. Review the dependencies at the meetings the team already holds: status meetings, steering reviews, sprint planning, the Daily Scrum. The sources name no cadence.
-7. When one is blocked, flag it where the team will see it, note why, and count the days it stays blocked. When it cannot be cleared locally, take it to the forum the method names, or straight to the other team.
+7. When one is blocked, flag it where the team will see it, note why, and count the days it stays blocked. When it cannot be cleared locally, take it to the forum the method names, or straight to the other team. Keep the note once the block is cleared.
 
 How the tools compare:
 
