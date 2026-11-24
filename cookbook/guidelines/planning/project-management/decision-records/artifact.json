@@ -4,7 +4,7 @@
     "id": "2b7a1593-48e0-4bbe-8e14-0df7a863628d",
     "title": "Decision Records",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -49,11 +49,11 @@
       "https://confluence.atlassian.com/doc/decisions-blueprint-339739406.html",
       "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "eb41baad13af6a4a",
+  "synced": "b545155d44b9a7b4",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
