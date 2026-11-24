@@ -178,3 +178,9 @@ Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, ci
 Disputes so far (disputes.md):
 
 - lint-FM-03: the missing `cookbook/index.json` entry for `a55182ef-3144-407c-b64a-6377f37f5c63` is not in the draft and cannot be fixed there; the fix the lint names, `cookr update`, edits the index, which the guideline author must not touch (guideline-author "Touch indexes ... That is the cookbook's file-management job"), so it belongs to the integration stage, as for the unindexed sibling `milestone-scheduling`
+
+## Round 3 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
