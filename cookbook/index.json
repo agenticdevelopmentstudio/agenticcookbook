@@ -617,6 +617,12 @@
       "path": "principles/design-for-deletion",
       "rdid": "adc.principle.design-for-deletion"
     },
+    "2b7a1593-48e0-4bbe-8e14-0df7a863628d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/decision-records",
+      "rdid": "adc.guideline.planning.project-management.decision-records"
+    },
     "2b9b576c-1e17-4a15-b347-febf2ea3c312": {
       "implementations": [],
       "kind": "guideline",
@@ -856,6 +862,12 @@
       "kind": "guideline",
       "path": "guidelines/planning/code-quality/kotlin-multiplatform",
       "rdid": "adc.guideline.planning.code-quality.kotlin-multiplatform"
+    },
+    "3f978ba7-c8c1-4b53-8fda-12e5a6966b75": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/dependency-tracking",
+      "rdid": "adc.guideline.planning.project-management.dependency-tracking"
     },
     "40ba1017-cec3-42f0-bd89-63a29eb3dd4d": {
       "implementations": [],
@@ -3062,6 +3074,12 @@
       "path": "user-safety#content-moderation",
       "rdid": "adc.check.user-safety.content-moderation"
     },
+    "f264cc0b-45d3-4593-a437-7371610c5a8a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/task-breakdown",
+      "rdid": "adc.guideline.planning.project-management.task-breakdown"
+    },
     "f28a4638-c2ae-4a9b-817f-0f19b5712168": {
       "implementations": [],
       "kind": "guideline",
@@ -3133,6 +3151,12 @@
       "kind": "guideline",
       "path": "guidelines/implementing/data/database",
       "rdid": "adc.guideline.implementing.data.database"
+    },
+    "f77eeffe-2699-4028-9195-4bfc23c75e91": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/issue-tracking",
+      "rdid": "adc.guideline.planning.project-management.issue-tracking"
     },
     "f7961f5a-834b-4ba1-804e-8c1ddcc251a7": {
       "implementations": [],

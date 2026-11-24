@@ -122,3 +122,60 @@ none
 - Which template to standardise on: Nygard's, MADR, or Y-statements; Zimmermann advises choosing one and sticking to it.
 - Whether 'deprecated' is a status distinct from 'superseded' (Nygard and MADR list both) and whether superseded records may ever be deleted (Zimmermann mentions deleting; Nygard and Microsoft keep them).
 - Whether sequential numbering is required (Nygard, Fowler, adr-tools) or avoided to dodge merge conflicts (log4brains).
+
+## Round 1 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R1.1: `rules.md`, `supersession-links-both-ways` against `acknowledge-contradicted-decisions`: two behaviours are required twice, at two strengths. (1) Marking the earlier record superseded is a MUST in `acknowledge-contradicted-decisions` ("the earlier record is marked superseded") and a SHOULD in `supersession-links-both-ways` ("the superseded record SHOULD be marked superseded with a link to its replacement"). (2) The new record naming the record it replaces is a MUST in `acknowledge-contradicted-decisions` ("a new record that names the earlier decision") and a SHOULD in `supersession-links-both-ways` ("the new record SHOULD name the record it replaces"). Under cookbook-compliance (must-not-contradict) and behavioral-requirements (must-use-keywords-with-defined-semantics), one behaviour cannot be both absolute and waivable. The two build-bar lines and the review-focus sentence repeat the overlap. Fix: cut `supersession-links-both-ways` down to the one thing it adds, the link from the superseded record's mark to its replacement. For example: "When one record supersedes another, the superseded record's status SHOULD link to the record that replaces it. (claims: supersede-and-link, supersession-header-fields, gds-way-supersede-must)". It stays SHOULD, because it cites two refuted claims. Narrow its `a-build-must-establish.md` line to match ("each superseded record's status links to its replacement").
+- R1.2: `a-build-must-establish.md`, `backfill-undocumented-decisions`: the line "where a log was started for an existing system, known past decisions were recorded where their data was available" turns a MAY rule into an obligation the build must meet. The other MAY rule's line is written "where used" (`record-confidence-level`), and the review bar files backfill under "noted where it was used". Fix: make the line conditional on use, e.g. "where used, past decisions recorded retroactively are ones whose data was available".
+- R1.3: `intro.md`, first paragraph: "A later decision that changes an earlier one never edits or silently contradicts it" and "the two link to each other" state as absolutes what the rules hold at lower strength. Not editing an accepted record is SHOULD NOT (`supersede-never-edit-accepted-records`). It cannot carry MUST, because it cites the refuted `adr-tools-supersede-command` and `clarifications-may-amend`. Two-way linking is SHOULD (`supersession-links-both-ways`). Only the "silently contradicts" part is MUST. Fix: keep "never silently contradicts" and soften the rest so it matches the rules, e.g. "...is a new record rather than an edit, it marks the old one superseded, and the two should link to each other".
+- R1.4: `intro.md`, second paragraph: "such as datastore selection" mentions a cookbook artifact by a freeform description. cross-recipe-consistency (must-reference-siblings-by-uuid, must-format-cross-references-consistently) asks for an in-text `[rdid](cookbook:uuid)` link, which is the form sibling `task-breakdown` uses in its rationale. The artifact is already in `related`. Fix: write it as `[adc.guideline.planning.data.datastore-selection](cookbook:6a653107-929d-418e-865d-636373a27b02)`. The other mention there, "project record linking", has no guideline or uuid yet, so a freeform mention is the only form available and is not part of this finding.
+- R1.5: Lint FM-03: `cookbook/index.json` has no entry for id `2b7a1593-48e0-4bbe-8e14-0df7a863628d` (expected rdid `adc.guideline.planning.project-management.decision-records`). template-conformance must-have-index-entry-and-matching-rdid fails for the same reason, and `cookr validate` reports index drift for `guidelines/INDEX.md`. Fix: run `cookr update`, using this checkout's cookr, to add the index entry and regenerate the index.
+
+Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `## Lint` section:
+
+````
+/lint-artifact (v2.0.1) on `cookbook/guidelines/planning/project-management/decision-records`, run with this checkout's cookr:
+
+```
+Type: guideline | Compliance: tbd/compliance/artifact-formatting/guideline-formatting.md
+
+[PASS] FM-01: YAML frontmatter block present
+[PASS] FM-02: id is a valid UUID (2b7a1593-48e0-4bbe-8e14-0df7a863628d)
+[FAIL] FM-03: Index entry matches folder
+       -> cookbook/index.json has no entry for this id and no entry whose path is guidelines/planning/project-management/decision-records. Expected rdid: adc.guideline.planning.project-management.decision-records. Run `cookr update` to add it.
+[PASS] FM-04: type is guideline
+[PASS] FM-05: version 1.0.0 is valid semver
+[PASS] FM-06: all required fields present (approved-by and approved-date are blank, not checked)
+[PASS] FM-07: license is MIT
+[PASS] FM-08: copyright "2026 Mike Fullerton"
+[PASS] FM-09: created and modified are ISO dates
+[PASS] FM-10: summary is non-empty
+[PASS] FM-11: H1 "Decision Records" matches title
+[PASS] FM-11a: links resolve
+       -> The only link is related 6a653107-..., which is in the index as datastore-selection. `cookr validate` reports nothing for this artifact.
+[PASS] FM-12: Change History section present with one row
+[WARN] FM-13: placeholder text
+       -> Line 85 of the compiled doc says "Fill in the context, the decision...". It is an instruction step in the how-to, not a placeholder. No TODO, TBD, FIXME or placeholder text was found.
+[PASS] GF-01: summary statement follows H1
+[PASS] GF-02: structured guidance (rules, how-to, tables, subsections)
+[PASS] GF-03: RFC 2119 keywords on every rule
+[PASS] GF-04: Compliance section is optional and nothing references it
+[PASS] gf-roled-parts: the rules, review-focus, review-bar and build-bar parts are all present with valid roles
+[PASS] gf-named-rules: 18 named rules, all names unique, each with an RFC 2119 keyword
+[PASS] gf-research-folder: research.json and research.md are present, with the four question headings in order
+[PASS] gf-rule-cites-research: every rule ends in a claim citation, and all cited ids exist in research.json
+[PASS] gf-triggers-field: `triggers` is present and empty, which is allowed
+
+=== LINT SUMMARY ===
+Artifact: decision-records
+Type: guideline
+Pass: 22 | Warn: 1 | Fail: 1
+RESULT: NOT CLEAN — 1 failing check. Fix these before the artifact can be approved.
+```
+
+The FM-13 WARN is not an error. `cookr validate` also reports four frontmatter-presence issues, but all four are in sibling topics' research.md files (dependency-tracking, milestone-scheduling, project-record-linking, risk-tracking), not this artifact.
+
+lint: fail 1
+````
