@@ -4,7 +4,7 @@
     "id": "3f978ba7-c8c1-4b53-8fda-12e5a6966b75",
     "title": "Dependency Tracking",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -54,11 +54,11 @@
       "https://dora.dev/capabilities/loosely-coupled-teams/",
       "https://www.hanssamios.com/dokuwiki/troy_magennis_-_solving_the_hairy_problem_of_team_dependencies"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "d05a252577b8cb6f",
+  "synced": "97cd9c14a66a985d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
