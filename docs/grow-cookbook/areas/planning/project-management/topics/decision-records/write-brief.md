@@ -179,3 +179,13 @@ The FM-13 WARN is not an error. `cookr validate` also reports four frontmatter-p
 
 lint: fail 1
 ````
+
+## Round 2 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
+
+Disputes so far (disputes.md):
+
+- R1.5: The fix (`cookr update` writing `cookbook/index.json` and `guidelines/INDEX.md`) is outside the draft: the author's brief says "Edit only the draft" and "Edit nothing else: no index", and the guideline-author role lists "Touch indexes, `triggers.yaml`, or approval metadata" as an anti-pattern because indexing is the cookbook's file-management job (stage 5 integration via `/add-artifact`). FM-03 fails because the new topic is not yet integrated, not because of anything in the draft's text, so it cannot be fixed by the author.
