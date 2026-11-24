@@ -166,3 +166,15 @@ I ran /lint-artifact (v2.0.1, using this checkout's cookr) on the compiled guide
 
 lint: fail 1
 ````
+
+## Round 2 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R2.1: `a-build-must-establish.md`, build lines that ask for more than their rule (behavioral-requirements, source-fidelity: a build check must test the rule at the strength and scope it states, no more). Two lines changed this round have this problem:
+    - `risk-identification-and-attention-flagging`: "the register includes risks whose sources lie outside the team's control." The rule, like `iso-identify-risks-whatever-their-source` ("should identify risks, whether or not their sources are under its control"), asks that identification not stop at what the team controls. It does not say such risks must exist. A project with no external-source risks keeps the rule but fails this line. Fix: "risk identification covered sources outside the team's control as well as those within it."
+    - `agree-escalation-criteria`: "escalation criteria are agreed and written down." The rule and its claims (`orange-book-timely-escalation` "based on agreed criteria"; `nao-escalation-criteria-immediate-action` "clear criteria for escalating risks") ask for agreed, clear criteria. Neither the rule nor its claims says the criteria are written down. Fix: "clear escalation criteria are agreed."
+
+Disputes so far (disputes.md):
+
+- lint-FM-03: the missing `cookbook/index.json` entry for `a55182ef-3144-407c-b64a-6377f37f5c63` is not in the draft and cannot be fixed there; the fix the lint names, `cookr update`, edits the index, which the guideline author must not touch (guideline-author "Touch indexes ... That is the cookbook's file-management job"), so it belongs to the integration stage, as for the unindexed sibling `milestone-scheduling`
