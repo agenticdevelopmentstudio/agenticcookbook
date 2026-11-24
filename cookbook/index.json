@@ -1278,7 +1278,22 @@
       "rdid": "adc.principle.defer-judgment-go-for-quantity"
     },
     "61ca76a4-0188-488b-9ac6-1144ca8ed506": {
-      "implementations": [],
+      "implementations": [
+        {
+          "conformance": {
+            "state": "unverified"
+          },
+          "location": "https://github.com/agenticdevelopmentstudio/ai-processing-node/tree/main/websites/ai-node/src",
+          "platform": "web"
+        },
+        {
+          "conformance": {
+            "state": "unverified"
+          },
+          "location": "https://github.com/agenticdevelopmentstudio/ai-processing-node/tree/main/Apple/ai-processing-node",
+          "platform": "macos"
+        }
+      ],
       "kind": "recipe",
       "path": "recipes/infrastructure/ai-processing-node",
       "rdid": "adc.recipe.infrastructure.ai-processing-node"

@@ -23,3 +23,14 @@
 **Rationale**: Only the handler knows what constitutes a duplicate side effect for its domain. The node framework can detect a duplicate job ID (already in terminal state on the backend) and skip re-running, but fine-grained deduplication (e.g., "did I already write this category?") requires handler-level logic.
 **Approved**: pending
 
+**Decision**: The `claude-code` provider runs with no tools (`--allowedTools ""`) and pinned flags.
+**Rationale**: Tools for a step come only from the hub's `/mcp` under the acting token, where the persona's grants apply. Letting the CLI use its own tools would act with the machine user's full access outside those grants, and a flag taken from the step would let a template author turn tools back on.
+**Approved**: pending
+
+**Decision**: Script steps run only on a machine whose owner set `AI_NODE_ALLOW_SCRIPTS=1`.
+**Rationale**: A script is arbitrary code. On the owner's own machine, with the owner's explicit opt-in, it runs with the owner's own authority; on a shared hub pool node it would run one customer's code beside another's.
+**Approved**: pending
+
+**Decision**: The tool loop is capped at 20 tool calls per step and the cap is a non-retryable failure.
+**Rationale**: A model that keeps asking for tools would otherwise hold the lease and spend tokens without end; retrying the same prompt would loop the same way.
+**Approved**: pending

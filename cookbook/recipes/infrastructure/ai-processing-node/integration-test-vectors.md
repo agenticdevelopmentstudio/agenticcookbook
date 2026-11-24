@@ -9,5 +9,22 @@
 | `apn-006` | `poll-claim`, `loop-continuity` | Backend queue is empty | Claim returns zero jobs; no complete/fail calls made; loop waits the poll interval and polls again |
 | `apn-007` | `lost-lease-abort` | Heartbeat response returns lease-invalid (e.g. 409 Conflict) mid-handler | Node cancels handler execution, does NOT call complete or fail, logs lease loss, continues loop |
 | `apn-008` | `backend-failure-is-job-failure`, `inject-llm-backend` | Stub LLM backend returns a result missing `category` | Handler fails; node calls fail with `retryable: true`; no complete call is made |
-| `apn-009` | `register-handler-at-startup` | Start the node with the handler registry populated | The claim request lists exactly `categorize_and_tag` as the supported type |
-
+| `apn-009` | `register-handler-at-startup`, `claim-sends-job-types` | Start the node with `AI_NODE_API_TOKEN` and no environment token | The claim request's `jobTypes` is exactly `categorize_and_tag` and `jobs.step.ai`; `jobs.step.script` is absent |
+| `apn-010` | `machine-mode`, `script-steps-machine-only`, `claim-sends-job-types` | Start with `AI_NODE_ENVIRONMENT_TOKEN=jenv_x` and `AI_NODE_ALLOW_SCRIPTS=1` | The claim uses `Bearer jenv_x`; `jobTypes` and `capabilities` include `jobs.step.script` |
+| `apn-011` | `script-steps-machine-only` | Start with `AI_NODE_ALLOW_SCRIPTS=1` and only `AI_NODE_API_TOKEN` | `jobs.step.script` is not registered and not in `jobTypes` |
+| `apn-012` | `machine-mode` | Start with neither `AI_NODE_API_TOKEN` nor `AI_NODE_ENVIRONMENT_TOKEN` | Startup fails with a configuration error naming both settings |
+| `apn-013` | `step-ai-handler` | Claimed `jobs.step.ai` with a prompt, instructions, inputs and an output schema; stub backend returns a valid object | The request carries the prompt, instructions, inputs and the schema; complete reports the object |
+| `apn-014` | `step-ai-tool-loop` | Claim carries an acting token; stub model asks for one `/mcp` tool, then answers | One `/mcp` call with `Authorization: Bearer <acting token>`; its result goes back to the model; complete reports the answer |
+| `apn-015` | `step-ai-tool-loop` | Stub model asks for a tool on every turn | The handler stops after 20 tool calls and fails the step with `retryable: false` and an error naming the limit |
+| `apn-016` | `step-ai-tool-loop` | Claim carries no acting token | The model request offers no tools and no `/mcp` call is made |
+| `apn-017` | `step-script-handler` | Script `cat` with earlier outputs `{"a":1}` | Output is the object `{"a":1}`; the temporary directory no longer exists |
+| `apn-018` | `step-script-handler` | Script prints `env`; the node runs with `AI_NODE_ENVIRONMENT_TOKEN` set | Output does not contain the token or any of the node's variables |
+| `apn-019` | `step-script-handler` | Script `sleep 120` with no timeout; then a step timeout of 3600 s | The first fails after 60 s with a timeout error; the second is clamped to 900 s |
+| `apn-020` | `step-script-handler` | Script exits 3 after writing `boom` to stderr | The step fails with exit code 3 and `boom` in the error |
+| `apn-021` | `claude-code-provider` | Provider `claude-code`; stub CLI prints a JSON result with usage | The CLI was run as `claude -p --output-format json --allowedTools ""` with the prompt on stdin; the result and usage are reported |
+| `apn-022` | `claude-code-provider` | Stub CLI prints text that is not JSON | The step fails as retryable with an error saying the CLI output did not parse |
+| `apn-023` | `no-key-on-machine` | Machine mode; a claimed AI step with model source `connection` | The step fails with `retryable: false`; no provider is called |
+| `apn-024` | `step-ai-tool-loop` | `/mcp` lists a tool `notes.search`; the model calls `notes_search` | The model was offered `notes_search`; the `/mcp` call names `notes.search` |
+| `apn-025` | `step-ai-tool-loop`, `lost-lease-abort` | Claim carries an acting token; `/mcp` answers 401 | The node calls neither complete nor fail |
+| `apn-026` | `machine-mode` | Start with `AI_NODE_ENVIRONMENT_TOKEN=abc` | Startup fails with a configuration error saying the token must be a `jenv_` token |
+| `apn-027` | `claude-code-provider` | Hub node (`AI_NODE_API_TOKEN` only); a claimed AI step with provider `claude-code` | The step fails with `retryable: false`; no subprocess runs |
