@@ -14,7 +14,7 @@
 - **split-large-estimates**: A task estimated at a week or more SHOULD be broken into smaller tasks. (claims: linear-break-up-large-estimates, small-tasks-hours-to-days, not-small-enough-is-the-pitfall)
 - **split-unestimable-tasks**: A task whose duration cannot be estimated, because the work behind it has not been thought through, SHOULD be broken into smaller tasks. (claims: large-chunky-tasks-hide-design, linear-break-up-large-estimates, task-title-states-the-task)
 - **story-fits-one-iteration**: A user story above the tasks SHOULD be small enough to finish within one iteration. (claim: stories-small-enough-for-an-iteration)
-- **work-package-within-eighty-hours**: In a work breakdown structure, a lowest-level work package SHOULD be no more than 80 hours of effort. (claim: wbs-eighty-hour-heuristic)
+- **work-package-within-eighty-hours**: In a work breakdown structure, a lowest-level work package SHOULD be no more than about 80 hours of effort. (claim: wbs-eighty-hour-heuristic)
 - **work-package-within-one-reporting-period**: In a work breakdown structure, a lowest-level work package SHOULD take no longer than one reporting period. (claim: wbs-eighty-hour-heuristic)
 
 ### Task wording
