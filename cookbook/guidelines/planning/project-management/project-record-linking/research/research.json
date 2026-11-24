@@ -1,0 +1,979 @@
+{
+  "topic": "project-record-linking",
+  "artifact": "cookbook/guidelines/planning/project-management/project-record-linking",
+  "scope": "How a delivery team's project records (risks, decisions, dependencies, issues, milestones, tasks) reference each other and the findings that raised them: which record carries each link, which links are two-way, how a link names its target so it stays valid when the target moves or closes, and how links are checked for dangling targets. Record-specific fields (decision supersession, issue resolution, blocked milestones, task blockers, risk and dependency fields) stay with their host topics; this research covers the shared linking convention. Safety-critical requirements traceability is context only.",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (Product / how-to LOW-MEDIUM bar, no escalation); no metric claims were found, so the Statistical bar was not invoked.",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify (how-to; traceability between project records), go to the authoritative sources (method owners and standards bodies, the issue trackers' own documentation, the canonical ADR texts, traceability tools' documentation), chain citations, corroborate across independent publishers, record provenance at generation time. Scored per guidelines/researching/evidence/verification-and-trust-scoring.",
+    "search_strategy": "WebSearch for each tracker's linking, relation, dependency, sub-issue, milestone, move/transfer and delete documentation (GitHub, Jira, Linear, GitLab); PRINCE2 register composition (public summaries, the manual being paywalled); PMI risk/issue logs; ADR numbering and supersession (Nygard, MADR, adr-tools, Microsoft Learn, Henderson); bidirectional traceability and dangling-link validation (Doorstop, Sphinx-Needs, IBM ELM, Wikipedia, NASA SWEHB); W3C on persistent identifiers; practitioner RAID-log guidance. Every cited page was fetched; quotes were checked against the fetched page text.",
+    "inclusion": "Primary: tracker vendors' own documentation of their own features, W3C, Microsoft Learn, the Scrum Guide, the canonical ADR texts and tool sources. Secondary only where no primary source was reachable (PRINCE2 summaries by accredited trainers, Wikipedia for the Gotel and Finkelstein definition, a practitioner course page), and said so in the claim's trust basis.",
+    "exclusion": "Vendor marketing pages that do not document a feature; community forum answers; projectteam's own paths, formats and specialist names; safety-standard (DO-178C, ISO 26262) text beyond link direction and dangling-link checking; pages that could not be fetched (PMI library, NASA SWEHB, ISO OBP, the UCL Gotel and Finkelstein PDF)."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://adr.github.io/madr/",
+    "https://arxiv.org/abs/2206.04462",
+    "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+    "https://confluence.atlassian.com/adminjiraserver/configuring-issue-linking-938847862.html",
+    "https://confluence.atlassian.com/jirasoftware/referencing-issues-in-your-development-work-1688898766.html",
+    "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/deleting-an-issue",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/transferring-an-issue-to-another-repository",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue",
+    "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones",
+    "https://docs.github.com/en/rest/issues/issue-dependencies",
+    "https://docs.gitlab.com/user/work_items/linked_items/",
+    "https://doorstop.readthedocs.io/en/v3.1/cli/validation.html",
+    "https://en.wikipedia.org/wiki/Requirements_traceability",
+    "https://ferdinebi.github.io/software-engineering-with-ai/delivery/project-management/risk-issue-management/",
+    "https://github.com/joelparkerhenderson/architecture-decision-record",
+    "https://github.com/npryce/adr-tools/blob/master/src/adr-new",
+    "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+    "https://linear.app/docs/issue-property",
+    "https://prince2.wiki/management-products/issue-register",
+    "https://prince2.wiki/management-products/risk-register/",
+    "https://scrumguides.org/scrum-guide.html",
+    "https://sphinx-needs.readthedocs.io/en/latest/configuration.html",
+    "https://support.atlassian.com/jira-software-cloud/docs/link-issues/",
+    "https://support.atlassian.com/migration/kb/migration-of-jiras-historical-keys-for-issues-and-projects/",
+    "https://www.ibm.com/docs/SSYMRC_7.0.3/com.ibm.jazz.vvc.doc/topics/c_linkval.html",
+    "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+    "https://www.w3.org/Provider/Style/URI"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "The topic has no rules of its own, so every verdict is new. The sources converge on a small linking convention. Every record gets a unique identifier that is never reused and carries no status or location, so it stays valid when the record moves or closes (PRINCE2 summaries, Nygard, MADR, W3C; Jira and GitHub redirect moved records' old keys and URLs). A link names its target by that identifier. A two-way relationship is recorded once, as a typed link with a phrase for each direction, and is shown on both records (Jira's outward/inward descriptions, GitLab's bi-directional linked items, GitHub's backlinks and blocked-by/blocking API, Linear's Blocked by/Blocks, adr-tools' reverse link). Records are closed or superseded, never deleted: a deleted GitHub issue's URL becomes page-not-found, while Linear keeps a resolved blocker's relation as Related; a changed decision is a new record that supersedes the old and both are linked (Microsoft Learn, Nygard, adr-tools). Blocked work names its blocker explicitly (GitHub's own guidance). Traceability tools check links: Doorstop errors on a link to an unknown UID and warns on links to inactive items, unlinked items and cycles; Sphinx-Needs warns on dead links unless allowed; IBM ELM marks links suspect when either end changes. The method owners (Scrum Guide, PRINCE2 as publicly summarised) leave the link fields to the team beyond unique identifiers and an integrated register. Strengths supported are SHOULD at most: no source requires (MUST) any of these practices for project records.",
+  "open_questions": [
+    "Whether a two-way link is written in both records' files or written once and its reverse computed by the checker; the trackers compute the reverse, file-based records must choose.",
+    "What identifier scheme project records use: one prefix per record type (R-1, D-1, I-1) or one global sequence; the sources require only uniqueness and no reuse.",
+    "Whether a link to an unknown identifier fails the check (as Doorstop's error does) or only warns (as Sphinx-Needs does by default).",
+    "Whether a link whose target is closed or superseded is reported at all, and if so at what level; Linear keeps it as Related, Doorstop warns when a child links to an inactive parent.",
+    "Whether every record must be linked to at least one other record (an orphan check), or only the record types whose host topics require a link.",
+    "Whether accepted decision records are immutable (Microsoft Learn, Nygard) or may take dated amendments (Henderson's teams found mutability worked better).",
+    "Whether a realised risk keeps its record and links forward to the new issue (the 'realised, see I-01' convention) or is moved to the issue register as PRINCE2 summaries describe."
+  ],
+  "limitations": [
+    "PMI's PMBOK Guide and its practice standards, ISO 21502 and ISO 31000 are paywalled; PMI's public library pages and ISO's OBP preview returned 403 to the fetcher, so no claim rests on them.",
+    "AXELOS's PRINCE2 manual is paywalled; PRINCE2 is covered only through two accredited trainers' public summaries (PRINCE2 wiki by EMPII Group, ILX Group's prince2.com).",
+    "NASA's Software Engineering Handbook (bidirectional traceability, SWE-052/059) returned 403; Gotel and Finkelstein's 1994 definition of requirements traceability is cited through Wikipedia, which quotes it.",
+    "The IBM Engineering Lifecycle Management page was read through WebFetch only; a direct download returned 403, so its quote could not be checked a second way.",
+    "The Kanban Guide, SAFe and LeSS were not researched for this topic; the Scrum Guide was read and is silent on links between items.",
+    "Linear's documentation does not say whether a relation is stored once or twice; it shows Blocked by on one issue and Blocks on the other.",
+    "No study or survey measured how often project-record links dangle or what a linking convention saves; no metric claim is made.",
+    "Atlassian's RAID-log article body could not be retrieved; practitioner RAID-log guidance found (Smartsheet, Notion) does not address identifiers or cross-references.",
+    "Apple, Android and Windows have no bearing on this topic and were not researched."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "bp-ids-never-reused",
+      "question": "best-practices",
+      "claim": "Records in a decision log are numbered sequentially and a number is never reused, so a reference to a number keeps naming the same record.",
+      "quote": "ADRs will be numbered sequentially and monotonically. Numbers will not be reused. | NNNN is a consecutive number",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "MADR: Markdown Architectural Decision Records",
+          "author": "MADR project",
+          "publisher": "adr.github.io",
+          "date": "n.d.",
+          "url": "https://adr.github.io/madr/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "canonical practitioner article; open-source template documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Nygard documenting architecture decisions numbered sequentially; MADR template status superseded filename",
+      "trust": {
+        "score": 72,
+        "basis": "The originating ADR text and the most-used ADR template agree independently; stable practice, currency not critical. Stated for decision records; extending it to other project records is an inference."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "bp-identifier-carries-no-status",
+      "question": "best-practices",
+      "claim": "An identifier that must stay valid should not encode things that change, such as a record's status: links break because people change names, not because they have to.",
+      "quote": "Cool URIs don't change. | URIs don't change: people change them. | Documents change status - or there would be no point in producing drafts.",
+      "citations": [
+        {
+          "title": "Cool URIs don't change",
+          "author": "Tim Berners-Lee",
+          "publisher": "W3C",
+          "date": "1998",
+          "url": "https://www.w3.org/Provider/Style/URI",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "standards-body style note",
+      "generated_by": "grow-cookbook research agent",
+      "query": "W3C cool URIs don't change",
+      "trust": {
+        "score": 66,
+        "basis": "W3C note by the web's inventor, long-standing; written for web URIs, applied here by analogy to record identifiers; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bp-supersede-and-link-both",
+      "question": "best-practices",
+      "claim": "A changed decision is recorded as a new record that supersedes the original, the original is marked superseded, and the two are linked to each other rather than the old record being edited.",
+      "quote": "The ADR serves as an append-only log. Don't go back and edit accepted records. If a decision changes, write a new record that supersedes the original and link the two together. | If a later ADR changes or reverses a decision, it may be marked as \"deprecated\" or \"superseded\" with a reference to its replacement.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Microsoft Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "platform-owner guidance; canonical practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft Well-Architected architecture decision record append-only supersede; Nygard ADR superseded reference to its replacement",
+      "trust": {
+        "score": 82,
+        "basis": "Microsoft's current guidance (2026) and the originating ADR article agree independently; Microsoft states it as an imperative."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "bp-bidirectional-traceability",
+      "question": "best-practices",
+      "claim": "Traceability is defined as following an item's life in both directions, from its origins forward and from later work back.",
+      "quote": "the ability to describe and follow the life of a requirement in both a forwards and backwards direction",
+      "citations": [
+        {
+          "title": "Requirements traceability",
+          "author": "Wikipedia contributors",
+          "publisher": "Wikipedia",
+          "date": "n.d.",
+          "url": "https://en.wikipedia.org/wiki/Requirements_traceability",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "reference (encyclopedia, quoting Gotel and Finkelstein 1994)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "requirements traceability definition forwards and backwards direction",
+      "trust": {
+        "score": 35,
+        "basis": "Secondary: Wikipedia quoting Gotel and Finkelstein's definition, used because the original paper and NASA's SWEHB returned 403; requirements-domain context applied to project records. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The definition is of requirements traceability: following \"the life of a requirement\" forwards and backwards. The claim widens it to traceability of any item; lowered 55->35."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bp-risk-realised-links-issue",
+      "question": "best-practices",
+      "claim": "When a risk materialises it becomes an issue, and the register links the risk to the new issue rather than losing the connection.",
+      "quote": "A risk becomes an issue once it materializes. | The register convention is to mark the risk as \"realised → see I-01\" and create a new issue entry.",
+      "citations": [
+        {
+          "title": "Issue register",
+          "author": "Frank Turley",
+          "publisher": "PRINCE2 wiki (EMPII Group)",
+          "date": "n.d.",
+          "url": "https://prince2.wiki/management-products/issue-register",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Risk & Issue Management",
+          "author": "End-to-End Software Engineering with AI",
+          "publisher": "ferdinebi.github.io",
+          "date": "2026-05-07",
+          "url": "https://ferdinebi.github.io/software-engineering-with-ai/delivery/project-management/risk-issue-management/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "accredited-trainer summary; practitioner course page",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 issue register unique identifier risk; PMI risk register issue log cross-reference risk ID",
+      "trust": {
+        "score": 50,
+        "basis": "Two independent secondary sources (no primary PRINCE2 or PMI text reachable); the second is an unattributed course page, so only the risk-to-issue transition is well grounded, the link convention less so."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "ks-github-autolink-backlink",
+      "question": "known-solutions",
+      "claim": "GitHub turns a reference by number (#26, owner/repo#26) into a link and by default writes the reverse link on the target automatically.",
+      "quote": "references to issues and pull requests are automatically converted to shortened links | By default, references generate a backlink. For example, manually linking to an issue in a pull request will automatically generate another link from the issue back to the pull request.",
+      "citations": [
+        {
+          "title": "Autolinked references and URLs",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub autolinked references backlink issue number",
+      "trust": {
+        "score": 82,
+        "basis": "GitHub's own current documentation of its own feature; meets the Technical MEDIUM bar."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-github-dependencies-both-directions",
+      "question": "known-solutions",
+      "claim": "GitHub issue dependencies record blocked-by/blocking relations, mark blocked issues, and expose the relation from both ends in the REST API.",
+      "quote": "Issue dependencies let you define issues that are blocked by, or blocking, other work. | Blocked issues are marked with a \"Blocked\" icon on your project boards or repository's Issues page | List dependencies an issue is blocked by | List dependencies an issue is blocking",
+      "citations": [
+        {
+          "title": "Creating issue dependencies",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "REST API endpoints for issue dependencies",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/rest/issues/issue-dependencies",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub creating issue dependencies blocked by blocking; GitHub REST issue dependencies blocked_by",
+      "trust": {
+        "score": 82,
+        "basis": "GitHub's own current documentation of its own feature (two pages, one publisher)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-github-sub-issues-and-milestones",
+      "question": "known-solutions",
+      "claim": "GitHub links work to its parent through sub-issues (up to 100 per parent, eight levels) and to a milestone by association, and the parent or milestone shows the children's progress.",
+      "quote": "You can add up to 100 sub-issues per parent issue and create up to eight levels of nested sub-issues. | Your sub-issues show their relationship to the parent issue allowing you to track your work across GitHub. | you can associate it with issues and pull requests | The number of open and closed issues and pull requests associated with the milestone",
+      "citations": [
+        {
+          "title": "Adding sub-issues",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "About milestones",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub adding sub-issues limits; GitHub about milestones",
+      "trust": {
+        "score": 80,
+        "basis": "GitHub's own current documentation of its own features."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-github-closing-keywords",
+      "question": "known-solutions",
+      "claim": "On GitHub the resolving change carries the link to the issue it resolves (a closing keyword in the pull request or commit), and merging it closes the issue.",
+      "quote": "You can link a pull request to an issue by using a supported keyword in the pull request's description or in a commit message | When you merge a linked pull request into the default branch of a repository, its linked issue is automatically closed.",
+      "citations": [
+        {
+          "title": "Linking a pull request to an issue",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub linking a pull request to an issue closing keywords",
+      "trust": {
+        "score": 80,
+        "basis": "GitHub's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-jira-typed-links-two-descriptions",
+      "question": "known-solutions",
+      "claim": "Jira records a link once with a type that has an outward and an inward description, so the same link reads 'is blocked by' from one issue and 'blocks' from the other; default types are relates, duplicates, blocks and clones.",
+      "quote": "add a description of a link that'll originate from the source issue | add a description of a link that'll join the destination issue | At the same time, \"Issue B\" has an inward link of type blocks that goes back to \"Issue A\". New installations of Jira come with four default types of links: relates to / relates to duplicates / is duplicated by blocks / is blocked by clones / is cloned by",
+      "citations": [
+        {
+          "title": "Configuring issue linking (Jira Data Center 11.3)",
+          "author": "Atlassian",
+          "publisher": "Atlassian Documentation",
+          "date": "n.d.",
+          "url": "https://confluence.atlassian.com/adminjiraserver/configuring-issue-linking-938847862.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira configure issue linking outward description inward description link type",
+      "trust": {
+        "score": 82,
+        "basis": "Atlassian's own documentation of its own feature, Data Center and Cloud pages agreeing."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-jira-key-names-target",
+      "question": "known-solutions",
+      "claim": "Jira names a work item by its key (project prefix, hyphen, number) and links development work to it when the key appears in the commit message, branch or pull request.",
+      "quote": "the issue key must conform to the default Jira key format – that is, two or more uppercase letters ( [A-Z][A-Z]+ ), followed by a hyphen and the issue number. For example, ABC-123. | Include the issue key in the commit message.",
+      "citations": [
+        {
+          "title": "Referencing issues in your development work",
+          "author": "Atlassian",
+          "publisher": "Atlassian Documentation",
+          "date": "n.d.",
+          "url": "https://confluence.atlassian.com/jirasoftware/referencing-issues-in-your-development-work-1688898766.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Atlassian referencing issues in your development work issue key commit message",
+      "trust": {
+        "score": 78,
+        "basis": "Atlassian's own documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-linear-relations",
+      "question": "known-solutions",
+      "claim": "Linear shows a blocking relation on both issues (Blocked by on one, Blocks on the other), turns a mention into a related link, and keeps the relation as Related once the blocker is resolved.",
+      "quote": "If other issues are blocking the current issue, they'll show up in the issue sidebar with an orange flag under Blocked by | If the issue is blocking other work, the blocked issues show up in the issue sidebar with a red flag under Blocks | When you reference issues in a description or comment, they'll automatically become a related issue. | Once the blocking issue has been resolved, the relationship moves under Related .",
+      "citations": [
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs issue relations blocking related duplicate",
+      "trust": {
+        "score": 78,
+        "basis": "Linear's own documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-gitlab-bidirectional-links",
+      "question": "known-solutions",
+      "claim": "GitLab's linked items are bi-directional relations (relates to, blocks, is blocked by), removed from both items together, and closing a blocked item asks for confirmation.",
+      "quote": "Linked items create bi-directional relationships between work items | The bi-directional relationship is removed from both items | The icon disappears when the blocking item is closed, or when the relationship is changed or removed . If you try to close a blocked item, a confirmation message appears.",
+      "citations": [
+        {
+          "title": "Linked items",
+          "author": "GitLab",
+          "publisher": "GitLab Docs",
+          "date": "n.d.",
+          "url": "https://docs.gitlab.com/user/work_items/linked_items/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitLab linked issues relates to blocks is blocked by",
+      "trust": {
+        "score": 80,
+        "basis": "GitLab's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-two-way-link-recorded-once",
+      "question": "known-solutions",
+      "claim": "Across trackers, a two-way relationship is recorded once and shown from both records, each side with its own wording, rather than being written separately on each record.",
+      "quote": "Linked items create bi-directional relationships between work items | At the same time, \"Issue B\" has an inward link of type blocks that goes back to \"Issue A\". | By default, references generate a backlink.",
+      "citations": [
+        {
+          "title": "Linked items",
+          "author": "GitLab",
+          "publisher": "GitLab Docs",
+          "date": "n.d.",
+          "url": "https://docs.gitlab.com/user/work_items/linked_items/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Configuring issue linking (Jira Data Center 11.3)",
+          "author": "Atlassian",
+          "publisher": "Atlassian Documentation",
+          "date": "n.d.",
+          "url": "https://confluence.atlassian.com/adminjiraserver/configuring-issue-linking-938847862.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Autolinked references and URLs",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation (three vendors)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitLab linked items bi-directional; Jira inward outward link; GitHub backlink",
+      "trust": {
+        "score": 65,
+        "basis": "Three independent vendors' own documentation show the same pattern; the synthesis (record once, show both ways) is this research's reading of their behaviour. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The sources say links are bi-directional, that Jira shows one link as inward on the other issue, and that GitHub \"will automatically generate another link\". None says a link is \"recorded once\", and GitHub's backlink is a second link with no wording of its own, so \"across trackers… each side with its own wording\" goes beyond what they say; lowered 85->65."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "ks-adr-tools-reverse-link",
+      "question": "known-solutions",
+      "claim": "adr-tools writes both ends of a decision link: superseding marks the old record superseded and links it to the new one, and a plain link writes a reverse link into the existing record.",
+      "quote": "A Markdown link to the superceded ADR is inserted into the Status section. The status of the superceded ADR is changed to record that it has been superceded by the new ADR. | REVERSE-LINK is the description of the link created in the existing ADR that will refer to the new ADR.",
+      "citations": [
+        {
+          "title": "adr-tools: src/adr-new",
+          "author": "Nat Pryce",
+          "publisher": "GitHub (npryce/adr-tools)",
+          "date": "n.d.",
+          "url": "https://github.com/npryce/adr-tools/blob/master/src/adr-new",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "open-source tool source and help text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "adr-tools adr new supersede link reverse link",
+      "trust": {
+        "score": 70,
+        "basis": "The tool's own help text, read from its source; widely used but a single open-source project. Comment markers removed from the quoted lines."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-dangling-link-checks",
+      "question": "known-solutions",
+      "claim": "Traceability tools check links by default: a link to an unknown identifier is an error or warning, and a link to an inactive item, an unlinked item and a cycle are reported.",
+      "quote": "An item's link is an invalid or unknown UID. | An item's parent link is an inactive item. | A normative, non-derived item in a child document has no links. | There is a cycle of item links. | Unknown outgoing link in standard need | If True, dead links are allowed and do not throw a warning.",
+      "citations": [
+        {
+          "title": "Integrity Checks (Doorstop v3.1)",
+          "author": "Doorstop developers",
+          "publisher": "Read the Docs",
+          "date": "n.d.",
+          "url": "https://doorstop.readthedocs.io/en/v3.1/cli/validation.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Configuration (Sphinx-Needs)",
+          "author": "Sphinx-Needs developers (useblocks)",
+          "publisher": "Read the Docs",
+          "date": "n.d.",
+          "url": "https://sphinx-needs.readthedocs.io/en/latest/configuration.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "open-source tool documentation (two projects)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "doorstop requirements validation unknown link; sphinx-needs dead links warning",
+      "trust": {
+        "score": 78,
+        "basis": "Two independent tools' own documentation agree that dangling links are checked by default; requirements-traceability tools, applied to project records by analogy."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "ks-backlinks-computed",
+      "question": "known-solutions",
+      "claim": "Sphinx-Needs stores a link once on the source item by the target's ID and computes the back link, with separate incoming and outgoing wording.",
+      "quote": "back links are computed on every need | Incoming text, to use for incoming links",
+      "citations": [
+        {
+          "title": "Configuration (Sphinx-Needs)",
+          "author": "Sphinx-Needs developers (useblocks)",
+          "publisher": "Read the Docs",
+          "date": "n.d.",
+          "url": "https://sphinx-needs.readthedocs.io/en/latest/configuration.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "open-source tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "sphinx-needs links incoming outgoing back links",
+      "trust": {
+        "score": 70,
+        "basis": "The tool's own documentation; a single project, file-based like project records."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-suspect-links",
+      "question": "known-solutions",
+      "claim": "IBM's lifecycle tools mark a link suspect when either end changes, and also when it is new or unknown, so it is re-checked before it is trusted.",
+      "quote": "If you change the contents of either artifact, the status of the link becomes suspect. | The system sets links as suspect when they are new or unknown.",
+      "citations": [
+        {
+          "title": "Link validity in projects that are enabled for configurations",
+          "author": "IBM",
+          "publisher": "IBM Documentation",
+          "date": "n.d.",
+          "url": "https://www.ibm.com/docs/SSYMRC_7.0.3/com.ibm.jazz.vvc.doc/topics/c_linkval.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "IBM DOORS link validity suspect links",
+      "trust": {
+        "score": 62,
+        "basis": "Vendor's own documentation, but read only through WebFetch (direct download 403), for a heavyweight requirements tool; Doorstop's suspect-link warning is the same idea from another publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ks-traceability-matrix",
+      "question": "known-solutions",
+      "claim": "A traceability matrix shows every link at a glance but becomes large and confusing at scale.",
+      "quote": "The advantage of traceability matrices is that all links between artifacts are visible at a glance. | the tables could become very large and confusing.",
+      "citations": [
+        {
+          "title": "Requirements traceability",
+          "author": "Wikipedia contributors",
+          "publisher": "Wikipedia",
+          "date": "n.d.",
+          "url": "https://en.wikipedia.org/wiki/Requirements_traceability",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "reference (encyclopedia)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "requirements traceability matrix advantages disadvantages",
+      "trust": {
+        "score": 50,
+        "basis": "Secondary reference used because NASA SWEHB was unreachable; uncontroversial description."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pg-prince2-unique-identifiers",
+      "question": "platform-guidelines",
+      "claim": "PRINCE2's issue and risk registers give each entry a unique reference so it can be tracked and referenced.",
+      "quote": "Each issue has a unique identifier to ensure it can be easily tracked and referenced. | Each risk should have a unique reference number and a concise summary of the event or uncertainty",
+      "citations": [
+        {
+          "title": "Issue register",
+          "author": "Frank Turley",
+          "publisher": "PRINCE2 wiki (EMPII Group)",
+          "date": "n.d.",
+          "url": "https://prince2.wiki/management-products/issue-register",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "ILX Group (prince2.com)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "accredited-trainer summaries of a paywalled method (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 issue register issue identifier risk register unique reference",
+      "trust": {
+        "score": 62,
+        "basis": "Two independent accredited-training publishers summarise PRINCE2 alike; the AXELOS manual itself is paywalled, so this is the owner's method as publicly summarised, not its text."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "pg-prince2-integrated-register",
+      "question": "platform-guidelines",
+      "claim": "PRINCE2's registers may be kept as one integrated project register, with issue reports linked to specific risks.",
+      "quote": "Part of an integrated project register for all risks, actions, decisions, assumptions, issues, lessons | This makes updating, collaborating, and linking related items easier (e.g., connecting an issue report to a specific risk).",
+      "citations": [
+        {
+          "title": "Risk register",
+          "author": "Frank Turley",
+          "publisher": "PRINCE2 wiki (EMPII Group)",
+          "date": "n.d.",
+          "url": "https://prince2.wiki/management-products/risk-register/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue register",
+          "author": "Frank Turley",
+          "publisher": "PRINCE2 wiki (EMPII Group)",
+          "date": "n.d.",
+          "url": "https://prince2.wiki/management-products/issue-register",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "accredited-trainer summary of a paywalled method (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 risk register format integrated register; PRINCE2 issue register tips",
+      "trust": {
+        "score": 48,
+        "basis": "One secondary publisher; the linking is a tip, not a stated PRINCE2 requirement."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pg-scrum-guide-leaves-attributes",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide does not prescribe links between backlog items; their attributes are left to the domain and team.",
+      "quote": "Attributes often vary with the domain of work.",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide product backlog item attributes dependencies",
+      "trust": {
+        "score": 72,
+        "basis": "The method owners' own current guide; the claim is about what it leaves open, read across the whole text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pg-github-single-source-and-blockers",
+      "question": "platform-guidelines",
+      "claim": "GitHub's own guidance for Projects is to keep one source of truth, link related issues and pull requests, and state explicitly which issues are blocked by or blocking others.",
+      "quote": "To prevent information from getting out of sync, maintain a single source of truth. | Link to related issues or pull requests to communicate how they are connected. | To ensure efficient progress, clearly define which issues are blocked by, or blocking, other issues.",
+      "citations": [
+        {
+          "title": "Best practices for Projects",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub best practices for projects single source of truth link related issues",
+      "trust": {
+        "score": 78,
+        "basis": "The platform owner's own best-practice page; recommendation-strength wording (SHOULD), single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pg-moved-records-keep-old-names",
+      "question": "platform-guidelines",
+      "claim": "Trackers keep a moved record's old name working: Jira reserves historical keys and redirects them, and GitHub redirects a transferred issue's old URL.",
+      "quote": "Jira reserves all previous historical keys | the old link pointing to ALPHA-1 continues to work because it redirects your browser to BETA-5 | The original URL redirects to the new issue's URL.",
+      "citations": [
+        {
+          "title": "Handling of Historical Key Conflicts in Jira Cloud Migrations",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "2026-01-23",
+          "url": "https://support.atlassian.com/migration/kb/migration-of-jiras-historical-keys-for-issues-and-projects/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Transferring an issue to another repository",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/transferring-an-issue-to-another-repository",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation (two vendors)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira move work item old key redirect; GitHub transferring an issue URL redirects",
+      "trust": {
+        "score": 82,
+        "basis": "Two independent vendors' own documentation; Atlassian's page notes conflicts on cross-site migration, so the guarantee holds within a site."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "pg-deleted-record-breaks-links",
+      "question": "platform-guidelines",
+      "claim": "Deleting a GitHub issue is permanent, nobody is notified, and its URL then shows page-not-found, so every link to it dangles.",
+      "quote": "Collaborators do not receive a notification when issues are deleted. | When visiting the URL of a deleted issue, collaborators will see a message stating that the web page can't be found",
+      "citations": [
+        {
+          "title": "Deleting an issue",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/deleting-an-issue",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub deleting an issue consequences",
+      "trust": {
+        "score": 80,
+        "basis": "GitHub's own documentation of its own behaviour; that links dangle follows directly from the page-not-found result."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ev-missing-links-impede",
+      "question": "experts-view",
+      "claim": "Practitioners report that links assumed to exist are often missing, and the gap is found only when someone needs them.",
+      "quote": "However, it was soon identified that the fundamental traceability links between requirements and test cases were missing. This lack of traceability impeded the implementation of a solution to help the company deal with its quality issues.",
+      "citations": [
+        {
+          "title": "When Traceability Goes Awry: an Industrial Experience Report",
+          "author": "Davide Fucci, Emil Alégroth, Thomas Axelsson",
+          "publisher": "arXiv",
+          "date": "2022-06-09",
+          "url": "https://arxiv.org/abs/2206.04462",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "industrial experience report (preprint)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "when traceability goes awry industrial experience report",
+      "trust": {
+        "score": 32,
+        "basis": "One industrial case (an anecdote, not a population result) in a preprint; supports the failure mode, not its frequency. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The abstract reports one case, at a single telecom company, where links were missing. It says traceability is \"often assumed to exist\", not that links are \"often missing\", and it does not say gaps are found only when someone needs them; lowered 52->32."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ev-unrecorded-decisions-contradicted",
+      "question": "experts-view",
+      "claim": "A decision that is not recorded where later work can find it gets re-argued or unknowingly contradicted.",
+      "quote": "A decision that's made but never recorded will likely be forgotten, leading to repeated debates or later changes that unknowingly contradict the original intent.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Microsoft Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "platform-owner guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft Well-Architected architecture decision record",
+      "trust": {
+        "score": 66,
+        "basis": "Microsoft's current guidance, an expert judgement without data; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ev-supersede-not-edit-debated",
+      "question": "experts-view",
+      "claim": "Practitioners advise superseding a decision with a new record rather than altering it, though some teams find dated amendments work better in practice.",
+      "quote": "Don't alter existing information in an ADR. Instead, amend the ADR by adding new information, or supersede the ADR by creating a new ADR. | In theory, immutability is ideal. In practice, mutability has worked better for our teams.",
+      "citations": [
+        {
+          "title": "Architecture decision record (ADR)",
+          "author": "Joel Parker Henderson",
+          "publisher": "GitHub (joelparkerhenderson/architecture-decision-record)",
+          "date": "n.d.",
+          "url": "https://github.com/joelparkerhenderson/architecture-decision-record",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner reference repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record supersede immutable Henderson",
+      "trust": {
+        "score": 58,
+        "basis": "Widely cited practitioner collection; single publisher; records a real disagreement rather than a settled practice."
+      },
+      "independence": "single"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "record-has-unique-stable-id",
+      "verdict": "new",
+      "claims": [
+        "pg-prince2-unique-identifiers",
+        "bp-ids-never-reused",
+        "ks-jira-key-names-target"
+      ]
+    },
+    {
+      "rule": "id-never-reused-or-renamed",
+      "verdict": "new",
+      "claims": [
+        "bp-ids-never-reused",
+        "bp-identifier-carries-no-status",
+        "pg-moved-records-keep-old-names"
+      ]
+    },
+    {
+      "rule": "link-names-target-by-id",
+      "verdict": "new",
+      "claims": [
+        "ks-github-autolink-backlink",
+        "ks-jira-key-names-target",
+        "ks-backlinks-computed"
+      ]
+    },
+    {
+      "rule": "typed-links-with-both-readings",
+      "verdict": "new",
+      "claims": [
+        "ks-jira-typed-links-two-descriptions",
+        "ks-gitlab-bidirectional-links",
+        "ks-linear-relations",
+        "ks-backlinks-computed"
+      ]
+    },
+    {
+      "rule": "two-way-link-recorded-once-shown-both-ways",
+      "verdict": "new",
+      "claims": [
+        "ks-two-way-link-recorded-once",
+        "ks-github-autolink-backlink",
+        "ks-github-dependencies-both-directions",
+        "ks-gitlab-bidirectional-links",
+        "ks-linear-relations",
+        "ks-adr-tools-reverse-link",
+        "ks-backlinks-computed",
+        "bp-bidirectional-traceability"
+      ]
+    },
+    {
+      "rule": "close-or-supersede-never-delete",
+      "verdict": "new",
+      "claims": [
+        "pg-deleted-record-breaks-links",
+        "ks-linear-relations",
+        "bp-supersede-and-link-both"
+      ]
+    },
+    {
+      "rule": "superseding-record-links-both-ways",
+      "verdict": "new",
+      "claims": [
+        "bp-supersede-and-link-both",
+        "ks-adr-tools-reverse-link",
+        "ev-supersede-not-edit-debated",
+        "ev-unrecorded-decisions-contradicted"
+      ]
+    },
+    {
+      "rule": "blocked-record-names-its-blocker",
+      "verdict": "new",
+      "claims": [
+        "pg-github-single-source-and-blockers",
+        "ks-github-dependencies-both-directions",
+        "ks-linear-relations",
+        "ks-gitlab-bidirectional-links"
+      ]
+    },
+    {
+      "rule": "child-record-carries-parent-link",
+      "verdict": "new",
+      "claims": [
+        "ks-github-sub-issues-and-milestones",
+        "ks-github-closing-keywords"
+      ]
+    },
+    {
+      "rule": "realised-risk-links-to-its-issue",
+      "verdict": "new",
+      "claims": [
+        "bp-risk-realised-links-issue",
+        "pg-prince2-integrated-register"
+      ]
+    },
+    {
+      "rule": "link-instead-of-copy",
+      "verdict": "new",
+      "claims": [
+        "pg-github-single-source-and-blockers"
+      ]
+    },
+    {
+      "rule": "check-links-for-dangling-targets",
+      "verdict": "new",
+      "claims": [
+        "ks-dangling-link-checks",
+        "ks-suspect-links",
+        "pg-deleted-record-breaks-links",
+        "ev-missing-links-impede"
+      ]
+    },
+    {
+      "rule": "report-unlinked-records",
+      "verdict": "new",
+      "claims": [
+        "ks-dangling-link-checks",
+        "ks-traceability-matrix",
+        "ev-missing-links-impede"
+      ]
+    }
+  ]
+}
