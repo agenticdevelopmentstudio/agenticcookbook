@@ -1,0 +1,1532 @@
+{
+  "topic": "milestone-scheduling",
+  "artifact": "cookbook/guidelines/planning/project-management/milestone-scheduling",
+  "scope": "How a delivery team defines milestones, sequences the work between them, sets target dates, keeps the schedule current, checks its dependency chains for cycles and finds the critical path, and accounts for every at-risk or blocked milestone. General practice for any delivery team; projectteam's own paths, formats and specialist names are excluded, as are delivery dependencies on other teams (dependency-tracking), tasks and their blockers (task-breakdown) and the general record-linking convention (project-record-linking). Apple, Android and Windows have no bearing on this topic.",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (intent Do; domain project scheduling; method standards bodies and practitioner sources). Product / how-to LOW-MEDIUM bar, no escalation; no metric claim is made, so the Statistical bar is not invoked.",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "research_questions": [
+    "Best practice: how should a team set milestones, sequence the work between them, set target dates and keep the schedule current?",
+    "Known solutions: how do milestone plans, roadmaps, Gantt charts, critical path method and rolling-wave planning compare for a software team, and which do GitHub milestones, Jira and Linear cycles support?",
+    "Platform guidelines: what do the PMBOK Guide's schedule guidance, ISO 21502 and the Scrum and Kanban Guides say about milestones, dates and forecasting?",
+    "The expert's view: what do delivery leads say teams get wrong with schedules (dates without dependencies, no buffer, milestones blocked with no reason recorded), and what to do instead?",
+    "Milestone cycle detection: find how scheduling practice and tools detect cycles in a dependency chain and find the critical path, and state how a milestone plan is checked so its chains hold no cycle.",
+    "Blocked milestone accounting: find how practitioners tie a milestone's status to the risks and issues that explain it, and state the rule that every blocked or at-risk milestone names the issue or risk that blocks it."
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify (project scheduling; how-to), go to the authoritative sources for the domain (a government audit standard for schedules, the method owners' guides, the issue trackers' own documentation, the runtime library docs for graph checks), chain citations, corroborate across independent publishers, record provenance at generation time.",
+    "search_strategy": "WebSearch for each research question against standards bodies (GAO, ISO, PMI, APM, AXELOS/PeopleCert), method owners (Scrum Guide, Kanban Guide, Scaled Agile), the trackers (GitHub Docs, Atlassian Support, Linear Docs), scheduling tools and libraries (Microsoft Project, Python graphlib, NetworkX) and named practitioners (Construx/McConnell, Spolsky, Basecamp Shape Up); WebFetch of every cited page; the GAO guide and the Construx white paper read in full as text extracted from their PDFs with pdftotext, and every quote from them taken from that text.",
+    "inclusion": "Primary sources first: GAO-16-89G, the Scrum Guide, the Kanban Guide, Scaled Agile's own framework pages, PeopleCert's PRINCE2 7 article, APM's own pages, the trackers' and tools' own documentation. Named-expert secondary sources (McConnell, Spolsky, Singer) only for the expert's-view and comparison questions no primary source covers.",
+    "exclusion": "Search-result snippets, training-provider and exam-prep summaries of PRINCE2 and PMBOK, template vendors' blog posts (Miro, Lucid, Aha!, Smartsheet), community forum answers, pages that refused the fetch (PMI, ISO OBP, gaoinnovations.gov HTML, ANSI previews, GovS 002 download) and any quote not found in the fetched page.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15, capped by the Product / how-to LOW-MEDIUM domain bar (broad independent consensus); a vendor's documentation of its own product is scored as authoritative for that product only."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://www.gao.gov/assets/d1689G.pdf",
+    "https://www.scrumguides.org/scrum-guide.html",
+    "https://kanbanguides.org/english/",
+    "https://framework.scaledagile.com/PI-planning",
+    "https://framework.scaledagile.com/roadmap",
+    "https://www.peoplecert.org/news-and-announcements/prince2-7-issues",
+    "https://apm.org.uk/resources/what-is-project-management/what-is-scheduling-in-project-management/",
+    "https://committee.iso.org/sites/tc258/home/projects/published/iso-21502.html",
+    "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/sharing-project-updates",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+    "https://linear.app/docs/project-milestones",
+    "https://linear.app/docs/project-dependencies",
+    "https://linear.app/docs/initiative-and-project-updates",
+    "https://linear.app/docs/use-cycles",
+    "https://support.atlassian.com/jira-software-cloud/docs/what-are-dependencies-in-advanced-roadmaps",
+    "https://support.atlassian.com/jira-software-cloud/docs/troubleshoot-warnings-on-your-timeline-in-advanced-roadmaps",
+    "https://support.atlassian.com/jira-software-cloud/docs/flag-an-issue/",
+    "https://support.atlassian.com/jira/kb/how-to-identify-cyclic-issue-links-or-loops-in-jira/",
+    "https://support.microsoft.com/en-us/article/49988375-7b43-4e55-abeb-d21e6ed9bff8",
+    "https://docs.python.org/3/library/graphlib.html",
+    "https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.dag.dag_longest_path.html",
+    "https://www.construx.com/wp-content/uploads/2019/02/CxWhitePaper_ConeOfUncertainty.pdf",
+    "https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/",
+    "https://basecamp.com/shapeup/1.2-chapter-03"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "Three of the five rules hold at their stated strength: defining and sequencing milestones with target dates, dependency chains and status (GAO-16-89G Best Practice 2, GitHub milestones, Linear milestones and project dependencies, Jira plan dependencies, SAFe's planning board); identifying at-risk and blocked milestones (GitHub and Linear status updates, Jira off-track warnings and flags, the Kanban and Scrum Guides on impediments); and chains having no cycles, which is a logical necessity: GAO says an activity cannot have its successor also be its predecessor, Microsoft Project cannot calculate dates across a circular dependency, and a topological order exists if and only if the graph is acyclic (Python graphlib, which reports the cycle). Two rules are unsupported at the must-hold strength their Verify wording carries: 'every milestone has a status and target date' and 'no milestone is blocked without a corresponding issue or concern' are supported only as SHOULD (GAO's schedule narrative should report key milestone status and explain date changes; Linear and GitHub make milestone dates optional; Jira's flag comment and Linear's update text are optional). The research adds eleven practices no rule covers: milestones as zero-duration key events, logic links over fixed dates, a topological-sort cycle check, the critical path as the longest path, statusing against a status date, explicit schedule contingency, a baseline with variance, a narrative explaining every date change, naming the risk behind an at-risk milestone, forecasting dates from history as ranges, and (MAY) fixing the date while flexing scope, or committing the near term while forecasting the rest.",
+  "open_questions": [
+    "Whether the two unsupported Verify rules (milestone-has-status-and-target-date, blocked-milestone-has-issue-or-concern) are kept as must-hold checks by house policy or restated at the SHOULD strength the sources support; the owner decides.",
+    "Whether 'target date' in milestone-has-status-and-target-date means a fixed committed date or a forecast computed from logic: GAO says baseline and status schedules should not carry hard date constraints, so a policy that every milestone carries a fixed date conflicts with logic-driven scheduling unless the date is a baseline target.",
+    "Whether the at-risk case joins the blocked case in one rule (every blocked or at-risk milestone names its issue or risk) or stays a separate rule; the brief's research question asks for both, the listed rule names only blocked.",
+    "Which status vocabulary the cookbook names: Linear uses On track / At risk / Off track, GitHub Projects uses On track / At risk among others, Jira uses a Flagged = Impediment field; the owner decides whether to fix a vocabulary or leave it to the tracker.",
+    "Whether the cookbook names a schedule update cadence; GAO ties cadence to duration, complexity and risk and gives only an example (track weekly when reporting monthly), so any fixed cadence is a policy choice.",
+    "Whether 'fix the date, flex the scope' (Shape Up, Scrum's fixed-length Sprint) is stated as an option beside critical-path scheduling or left out; the sources present it as a method choice, not a universal practice."
+  ],
+  "limitations": [
+    "PMI's own pages (the PMBOK Guide, the Practice Standard for Scheduling, PMI Learning Library papers on critical path and rolling-wave planning) returned HTTP 403 to every fetch, and the ANSI preview of the Practice Standard for Scheduling did too; no PMI wording is quoted, and the PMBOK Guide's schedule guidance is not established here.",
+    "ISO 21502:2020 is paywalled and its iso.org page and OBP preview refused the fetch; only ISO TC 258's public scope summary was read, which says nothing about schedules or milestones, so no ISO 21502 claim on scheduling is made. ISO 31000 was not reached.",
+    "No AXELOS/PeopleCert primary text on PRINCE2 7's Plans or Progress practices (tolerances, exception reports, highlight reports) could be fetched; the AXELOS progress blog returned only its page title. PRINCE2 is represented only by PeopleCert's article on the Issues practice.",
+    "LeSS was not researched; no LeSS page on milestones or dates was reached in the time available.",
+    "The UK GovS 002 project delivery standard download refused the fetch; no UK government text is quoted.",
+    "Linear's issue-relations page returned 404; Linear's blocking behaviour is cited from its project-dependencies page only. No tracker page was found saying whether GitHub, Linear or Jira refuse to create a cyclic dependency at entry time; Jira's own KB treats cycles as something to detect afterwards.",
+    "The Construx cone-of-uncertainty figures (4x to 0.25x) rest on research the white paper does not name, sample or measure; they are not used as a claim, only McConnell's qualitative advice on commitments is.",
+    "Apple, Android and Windows platform guidelines have no bearing on milestone scheduling and were not researched."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "milestones-are-zero-duration-key-events",
+      "question": "best-practices",
+      "claim": "A milestone is a point in time with no duration that marks a key event or stage; every schedule includes start and finish milestones.",
+      "quote": "Milestones are points in time that have no duration but that denote the achievement or realization of key events and accomplishments such as program events or contract start dates. | Two important milestones that every schedule should include are the project’s start and its finish. | Project milestones represent different stages in a project's lifecycle.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Project milestones",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/project-milestones",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G; Linear docs project milestones",
+      "trust": {
+        "score": 82,
+        "basis": "GAO's schedule guide is a primary government standard for schedule quality; Linear independently treats milestones as stages; definitional, stable; LOW-MEDIUM bar met by two independent publishers."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "standard-milestones-documented-with-criteria",
+      "question": "best-practices",
+      "claim": "Organizations that standardize milestones document each with a description, completion criteria, a work-breakdown reference and the decision authority.",
+      "quote": "The standard program milestones are documented along with a description, completion criteria, WBS reference or crosswalk, and the decision authority.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 42,
+        "basis": "Primary GAO source, but the sentence is a footnoted example (FAA practice), not one of GAO's stated best practices; single source. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): GAO gives this as a footnoted example (\"For example, Federal Aviation Administration (FAA) service organizations employ standard program milestones...\"). It describes one agency's practice, not a general statement about organizations that standardize milestones; lowered 62->42."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "sequence-with-logic",
+      "question": "best-practices",
+      "claim": "Schedule activities and milestones should be sequenced and joined by logic links so that critical dates can be met and progress measured, and the logic should be verified as complete and defensible.",
+      "quote": "Best Practice 2: The schedule should be planned so that critical program dates can be met. To do this, activities must be logically sequenced and linked—that is, listed in the order in which they are to be carried out and joined with logic. | verify that the project schedule is built on complete and defensible logic",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What is scheduling in project management?",
+          "author": "Association for Project Management",
+          "publisher": "Association for Project Management",
+          "date": "n.d.",
+          "url": "https://apm.org.uk/resources/what-is-project-management/what-is-scheduling-in-project-management/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard; professional body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G; APM Association for Project Management scheduling milestones critical path guide",
+      "trust": {
+        "score": 66,
+        "basis": "Two independent primary authorities (US GAO, UK APM chartered body) state the practice; stable domain. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): GAO holds the Best Practice 2 fragment and APM holds \"verify that the project schedule is built on complete and defensible logic\". Neither fragment says logic sequencing lets \"progress be measured\", so that part of the claim has no quoted support; lowered 86->66."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "missing-logic-justified",
+      "question": "best-practices",
+      "claim": "Every activity should have at least one predecessor and one successor, except the start and finish milestones; any activity missing logic must be justified in the schedule documentation.",
+      "quote": "As a general rule, every activity within the schedule should have at least one predecessor and at least one successor. | However, any activity that is missing predecessor or successor logic must be clearly justified in the schedule documentation.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "\"circular logic\" schedule network \"loop\" scheduling best practice GAO",
+      "trust": {
+        "score": 74,
+        "basis": "Primary GAO standard, explicit wording; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "avoid-hard-date-constraints",
+      "question": "best-practices",
+      "claim": "Baseline schedules and official status updates should not carry hard date constraints; an unavoidable one must be justified by an event outside the schedule.",
+      "quote": "Working versions of schedules may include hard constraints to assess available float and available resources, but the baseline schedule and official status updates should not contain hard constraints. If a hard constraint cannot be avoided, it must be used judiciously and must be fully justified by referring to some controlling event outside the schedule in the schedule’s basis document.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 74,
+        "basis": "Primary GAO standard, explicit wording; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "critical-path-is-longest-path",
+      "question": "best-practices",
+      "claim": "A schedule should identify its critical path, the longest-duration path through the logic-linked activities, which sets the earliest completion date.",
+      "quote": "Best Practice 6: The schedule should identify the program’s critical path—the path of longest duration through the sequence of activities. | The program’s critical path determines the program’s earliest completion date | determines the overall duration of the identified work based on estimates and logical dependencies.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What is scheduling in project management?",
+          "author": "Association for Project Management",
+          "publisher": "Association for Project Management",
+          "date": "n.d.",
+          "url": "https://apm.org.uk/resources/what-is-project-management/what-is-scheduling-in-project-management/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard; professional body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices; APM scheduling milestones critical path",
+      "trust": {
+        "score": 86,
+        "basis": "Two independent primary authorities; the critical-path method is long-settled practice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "assess-network-for-circular-logic",
+      "question": "best-practices",
+      "claim": "A schedule network should be checked for circular logic, because a loop makes an activity its own predecessor and cannot be scheduled.",
+      "quote": "Networks should be assessed for circular logic—that is, logic that forces two activities to be dependent on each other. Circular logic creates an endless loop of work: an activity cannot have its successor also be its predecessor.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "\"circular logic\" schedule network \"loop\" scheduling best practice GAO",
+      "trust": {
+        "score": 80,
+        "basis": "Primary GAO standard; the impossibility is corroborated in substance by Microsoft Project and Python graphlib (claims ms-project-refuses-circular-dependency, topological-order-iff-acyclic), counted there rather than here because the words differ."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "status-date-separates-actual-from-remaining",
+      "question": "best-practices",
+      "claim": "Schedule status is taken against a status date that divides actual work from remaining work; past dates are actuals and future dates are forecasts.",
+      "quote": "A status date (or data date) denotes the date of the latest update to the schedule and thus defines the demarcation between actual work performed and remaining work. | No dates in the past should be estimated; no dates in the future are actual dates.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 74,
+        "basis": "Primary GAO standard, explicit wording; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "update-regularly-track-finer-than-report",
+      "question": "best-practices",
+      "claim": "Schedule updates should be regular, at a cadence set by the project's duration, complexity and risk, and progress should be tracked more often than it is reported.",
+      "quote": "Updates should be regular and fully supported by team members and program management. | The time between status updates depends on the program’s duration, complexity, and risk, as well as the detail in the IMS. | Program managers should consider tracking progress in the schedule more frequently than the reporting period.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 72,
+        "basis": "Primary GAO standard; the cadence itself is left to the project, so only the principle is claimed; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "status-reveals-late-work",
+      "question": "best-practices",
+      "claim": "Regular statusing tells the team which activities are complete, in progress or late, the current critical path, and highlights actual and potential problems.",
+      "quote": "knowledge of whether activities are complete, in progress, or late and the effect of variances on remaining effort; | the current status of total float and critical path activities; and | the creation of trend reports and analyses to highlight actual and potential problems.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 72,
+        "basis": "Primary GAO standard; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "schedule-contingency-is-explicit",
+      "question": "best-practices",
+      "claim": "A schedule should hold explicit buffer (contingency) for known risks and uncertainty, rather than none.",
+      "quote": "A baseline schedule includes margin or a reserve of extra time, referred to as schedule contingency, to account for known and quantified risks and uncertainty. | Ideally, you have a bunch of buffer for this. | It is derived from the critical path that protects critical chains of activities with buffers.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Evidence Based Scheduling",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2007-10-26",
+          "url": "https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What is scheduling in project management?",
+          "author": "Association for Project Management",
+          "publisher": "Association for Project Management",
+          "date": "n.d.",
+          "url": "https://apm.org.uk/resources/what-is-project-management/what-is-scheduling-in-project-management/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard; expert practitioner article; professional body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices; Joel Spolsky evidence based scheduling; APM scheduling critical chain",
+      "trust": {
+        "score": 84,
+        "basis": "Three independent publishers (government standard, professional body, named practitioner) agree on explicit buffer; stable practice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "risk-margin-not-padding",
+      "question": "best-practices",
+      "claim": "Durations should be estimated at most-likely conditions without padding; risk margin belongs in separate contingency activities that management can monitor.",
+      "quote": "Most likely conditions for estimated durations imply that duration estimates do not contain padding or margin for risk. Rather, risk margin should be introduced as separate schedule contingency activities to facilitate proper monitoring by management",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 72,
+        "basis": "Primary GAO standard; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "schedule-risk-analysis-sizes-contingency",
+      "question": "best-practices",
+      "claim": "A schedule risk analysis, starting from the risk register and a sound critical-path schedule, sizes the contingency needed for a level of confidence and identifies the high-priority risks.",
+      "quote": "Data about program schedule risks are incorporated into a statistical simulation to predict the level of confidence in meeting a program’s completion date; to determine the contingency, or reserve of time, needed for a level of confidence; and to identify high-priority risks. | Risk events that can be listed and defined should be included in a program’s risk register",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 50,
+        "basis": "Primary GAO standard; heavier than most software teams run; single publisher. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports sizing contingency for a confidence level and identifying high-priority risks. It does not say the analysis starts from the risk register and a sound CPM schedule; GAO says \"A schedule risk analysis starts with a good critical path method schedule\" in the preceding sentence, outside the quote; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "baseline-and-variance",
+      "question": "best-practices",
+      "claim": "A baseline schedule is kept under change control and the current forecast is monitored against it to reveal milestone variance and its downstream effect.",
+      "quote": "The baseline schedule is designated the target schedule and is subjected to a configuration management control process. | The schedule should be continually monitored so as to reveal when forecasted completion dates differ from baseline dates and whether schedule variances affect downstream work.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 72,
+        "basis": "Primary GAO standard; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "schedule-narrative-explains-changes",
+      "question": "best-practices",
+      "claim": "Each status update should carry a narrative giving the status of key milestone dates and explaining any change in them.",
+      "quote": "all changes made to the schedule during statusing should be documented, and salient changes should be justified along with their likely effect on future activities. | the status of key milestone dates, including the program finish date; | explanations for any changes in key dates;",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide schedule narrative",
+      "trust": {
+        "score": 74,
+        "basis": "Primary GAO standard, stated as a minimum content list (at SHOULD strength); single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-milestones-due-date-progress",
+      "question": "known-solutions",
+      "claim": "GitHub milestones group a repository's issues and pull requests and show a due date and a completion percentage.",
+      "quote": "You can use milestones to track progress on groups of issues or pull requests in a repository. | The milestone's due date | The milestone's completion percentage",
+      "citations": [
+        {
+          "title": "About milestones",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Docs about milestones due date progress",
+      "trust": {
+        "score": 85,
+        "basis": "GitHub's own current documentation of its own feature; authoritative for that product."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-projects-roadmap-dates",
+      "question": "known-solutions",
+      "claim": "GitHub Projects' roadmap layout places items on a timeline from date and iteration fields and can mark milestones.",
+      "quote": "Roadmaps use your custom date and iteration fields to position your issues, pull requests, and draft issues on a timeline, | the milestones associated with items in your project.",
+      "citations": [
+        {
+          "title": "Customizing the roadmap layout",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Projects roadmap layout dates iteration field docs",
+      "trust": {
+        "score": 85,
+        "basis": "GitHub's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-issue-dependencies",
+      "question": "known-solutions",
+      "claim": "GitHub issue dependencies record which issue blocks which, and a blocked issue is marked as blocked by naming the issue it depends on.",
+      "quote": "Issue dependencies let you define issues that are blocked by, or blocking, other work. | To indicate that your issue depends on another issue being completed, select Mark as blocked by.",
+      "citations": [
+        {
+          "title": "Creating issue dependencies",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub docs creating issue dependencies blocked by blocking",
+      "trust": {
+        "score": 85,
+        "basis": "GitHub's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-status-updates",
+      "question": "known-solutions",
+      "claim": "GitHub Projects status updates record a status such as On track or At risk, start and target dates, and a message.",
+      "quote": "You can post updates to your projects that share the current status, start date, and target date of the project itself. | Your status update can also contain a message that supports formatting with Markdown.",
+      "citations": [
+        {
+          "title": "Sharing project updates",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/sharing-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Projects sharing project updates status",
+      "trust": {
+        "score": 65,
+        "basis": "GitHub's own current documentation of its own feature. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports status, start and target dates, and a Markdown message, but not the example values \"On track\" or \"At risk\". The page does say: You can set a status, such as \"On track\" or \"At risk\". That sentence is not in the quote; lowered 85->65."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-milestones-optional-date",
+      "question": "known-solutions",
+      "claim": "Linear project milestones divide a project into stages with completion percentages; a target date on a milestone is optional.",
+      "quote": "Project milestones help you divide and organize work inside projects. | While assigning a date to a milestone is optional, you can add one at any time after the milestone has been created. | We show a completion percentage for each milestone to highlight the progress of the linked issues.",
+      "citations": [
+        {
+          "title": "Project milestones",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/project-milestones",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs project milestones",
+      "trust": {
+        "score": 85,
+        "basis": "Linear's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-project-dependencies",
+      "question": "known-solutions",
+      "claim": "Linear project dependencies are end-to-start blocking links drawn on the timeline, and a dependency whose dates conflict is shown as violated.",
+      "quote": "Project dependencies provide a visual depiction of blocking relationships on timeline views. | Currently we only support a end -> start dependency. | The red line is a dependency that has been violated.",
+      "citations": [
+        {
+          "title": "Project dependencies",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/project-dependencies",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs project dependencies",
+      "trust": {
+        "score": 85,
+        "basis": "Linear's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-cycles-not-releases",
+      "question": "known-solutions",
+      "claim": "Linear cycles are time-boxed periods of work that are not tied to releases, so a cycle is not a milestone.",
+      "quote": "Cycles are time-boxed periods where a team works on completing a pre-defined set of work. | Unlike sprints, cycles are not tied to releases.",
+      "citations": [
+        {
+          "title": "Cycles",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/use-cycles",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs cycles",
+      "trust": {
+        "score": 65,
+        "basis": "Linear's own current documentation of its own feature. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Linear says cycles are time-boxed and \"Unlike sprints, cycles are not tied to releases\". The conclusion \"so a cycle is not a milestone\" is the author's inference; Linear does not say it; lowered 85->65."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-project-health-updates",
+      "question": "known-solutions",
+      "claim": "Linear project updates carry a health indicator (On track, At risk, Off track) and a description of status, challenges and next steps, with reminders on a chosen cadence.",
+      "quote": "Select a health indicator—On track, At risk, or Off track—to represent the current state of the Initiative or Project. | a rich text description for deeper insights into status, challenges, and next steps. | These settings allow you to choose how often reminders are sent, such as weekly or biweekly",
+      "citations": [
+        {
+          "title": "Updates",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/initiative-and-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs project updates health on track at risk",
+      "trust": {
+        "score": 85,
+        "basis": "Linear's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-plan-dependencies",
+      "question": "known-solutions",
+      "claim": "Jira plans treat dependencies as finish-before-start links and turn a dependency red when the lead-in item puts the dependent item at risk.",
+      "quote": "Dependencies in your plan indicate work items that are reliant on others being completed first. | Dependencies in your plan turn red to indicate when the lead-in work item is putting the second work item at risk.",
+      "citations": [
+        {
+          "title": "What are dependencies in your plan?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/what-are-dependencies-in-advanced-roadmaps",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira plans dependencies view cross-project dependency report",
+      "trust": {
+        "score": 85,
+        "basis": "Atlassian's own current documentation of its own feature (Premium/Enterprise plans)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-off-track-warnings",
+      "question": "known-solutions",
+      "claim": "Jira plans warn of scheduling errors, including off-track dependencies and open work that has passed its end date.",
+      "quote": "your plan warns you of any scheduling errors which are referred to as off-track dependencies. | Open work item has passed its inferred/assigned end date",
+      "citations": [
+        {
+          "title": "Troubleshoot warnings on your timeline in your plan",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/troubleshoot-warnings-on-your-timeline-in-advanced-roadmaps",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira plans timeline dependencies offtrack dependency warnings support atlassian",
+      "trust": {
+        "score": 83,
+        "basis": "Atlassian's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-flag-impediment",
+      "question": "known-solutions",
+      "claim": "Jira lets a work item be flagged as blocked (Flagged = Impediment) and optionally takes a comment when the flag is added or removed.",
+      "quote": "You can flag a work item to indicate that it's important or blocked. | You can also add a comment when you're adding a flag to or removing a flag from a work item.",
+      "citations": [
+        {
+          "title": "Flag a work item",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/flag-an-issue/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira flag impediment issue atlassian support",
+      "trust": {
+        "score": 85,
+        "basis": "Atlassian's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-cyclic-links-detected-after",
+      "question": "known-solutions",
+      "claim": "Jira does not prevent cyclic issue links; Atlassian's guidance is to detect loops afterwards by exporting links and scanning them, since loops can break apps that compute over links.",
+      "quote": "having a cyclic link or loop may cause malfunctions in the app and in Jira. | Scan and parse the file, printing the cyclic links identified. | this article only detects loops of the same Issue Link Type.",
+      "citations": [
+        {
+          "title": "How to identify cyclic Issue links or loops in Jira",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "2025-09-25",
+          "url": "https://support.atlassian.com/jira/kb/how-to-identify-cyclic-issue-links-or-loops-in-jira/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor knowledge-base article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira plans circular dependency detected warning loop dependencies atlassian",
+      "trust": {
+        "score": 70,
+        "basis": "Atlassian's own KB, current (2025); 'does not prevent' is inferred from the KB's detect-afterwards procedure, not stated, so scored below the feature docs."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ms-project-refuses-circular-dependency",
+      "question": "known-solutions",
+      "claim": "Microsoft Project cannot compute dates across a circular dependency and by default cancels the action that would create one.",
+      "quote": "Microsoft Project cannot calculate start and finish dates for tasks that have circular dependencies. | Project will cancel the action you have taken and will not create a circular dependency.",
+      "citations": [
+        {
+          "title": "Planning Wizard",
+          "author": "Microsoft",
+          "publisher": "Microsoft Support",
+          "date": "n.d.",
+          "url": "https://support.microsoft.com/en-us/article/49988375-7b43-4e55-abeb-d21e6ed9bff8",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Microsoft Project circular relationship error tasks linked loop support",
+      "trust": {
+        "score": 64,
+        "basis": "Microsoft's own documentation of its scheduling engine; independent of GAO and Python. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The Planning Wizard offers a choice. One option cancels the action; the other, \"Continue the operation\", creates the circular dependency and stops calculation. The page never says cancelling is the default; lowered 84->64."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "topological-order-iff-acyclic",
+      "question": "known-solutions",
+      "claim": "A dependency graph can be put in a complete topological order only if it has no cycles; Python's graphlib raises CycleError and reports one cycle when it does.",
+      "quote": "A complete topological ordering is possible if and only if the graph has no directed cycles, that is, if it is a directed acyclic graph. | In the reported list, the first and the last node will be the same, to make it clear that it is cyclic.",
+      "citations": [
+        {
+          "title": "graphlib — Functionality to operate with graph-like structures",
+          "author": "Python Software Foundation",
+          "publisher": "Python documentation",
+          "date": "n.d.",
+          "url": "https://docs.python.org/3/library/graphlib.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official runtime documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Python graphlib TopologicalSorter CycleError documentation",
+      "trust": {
+        "score": 88,
+        "basis": "Official Python standard-library documentation; the iff statement is a mathematical fact; current."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "critical-path-is-dag-longest-path",
+      "question": "known-solutions",
+      "claim": "Once the chains are acyclic, the critical path is the longest path through the dependency DAG, which graph libraries compute directly.",
+      "quote": "the path of longest duration through the sequence of activities. | Returns the longest path in a directed acyclic graph (DAG).",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "dag_longest_path",
+          "author": "NetworkX Developers",
+          "publisher": "NetworkX documentation",
+          "date": "n.d.",
+          "url": "https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.dag.dag_longest_path.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard; library documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NetworkX dag_longest_path is_directed_acyclic_graph documentation",
+      "trust": {
+        "score": 80,
+        "basis": "Two independent publishers hold the two halves of the claim (GAO defines the critical path as the longest path; NetworkX computes a DAG's longest path); the join is a direct reading of both."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "evidence-based-scheduling",
+      "question": "known-solutions",
+      "claim": "Evidence-based scheduling simulates many futures from historical estimate accuracy (Monte Carlo) to give a probability for each ship date instead of one date.",
+      "quote": "you’re going to use the Monte Carlo method to simulate many possible futures. | you get a confidence distribution curve, showing the probability that you will ship on any given date.",
+      "citations": [
+        {
+          "title": "Evidence Based Scheduling",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2007-10-26",
+          "url": "https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Joel Spolsky evidence based scheduling",
+      "trust": {
+        "score": 42,
+        "basis": "Named practitioner's own description of his method; secondary (no standard covers it); 2007 but the technique is stable; single source. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports Monte Carlo simulation of many futures and a probability for each ship date. It does not say the simulation draws on historical estimate accuracy (velocity history) or replaces a single date. The source says both nearby (\"fake history with a wide range of velocities\"; \"Rather than just adding up estimates to get a single ship date\"); lowered 62->42."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "fixed-time-variable-scope",
+      "question": "known-solutions",
+      "claim": "Shape Up fixes the time budget (appetite) and varies scope to meet it, the reverse of estimating a date from a fixed scope.",
+      "quote": "This principle, called \"fixed time, variable scope,\" is key to successfully defining and shipping projects. | An appetite is completely different from an estimate.",
+      "citations": [
+        {
+          "title": "Shape Up, Chapter 3: Set Boundaries",
+          "author": "Ryan Singer",
+          "publisher": "37signals (Basecamp)",
+          "date": "n.d.",
+          "url": "https://basecamp.com/shapeup/1.2-chapter-03",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's published book",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Shape Up basecamp fixed time variable scope appetite circuit breaker",
+      "trust": {
+        "score": 66,
+        "basis": "Method owner's own text, so primary for Shape Up; one company's method; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "critical-path-vs-critical-chain",
+      "question": "known-solutions",
+      "claim": "Critical path scheduling centres on activities and their logic; critical chain scheduling centres on resources and protects chains with buffers.",
+      "quote": "The critical path approach places emphasis on the activities in a project | The critical chain approach attempts to keep resources at a constant utilisation",
+      "citations": [
+        {
+          "title": "What is scheduling in project management?",
+          "author": "Association for Project Management",
+          "publisher": "Association for Project Management",
+          "date": "n.d.",
+          "url": "https://apm.org.uk/resources/what-is-project-management/what-is-scheduling-in-project-management/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "professional body guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "APM Association for Project Management scheduling milestones critical path guide",
+      "trust": {
+        "score": 50,
+        "basis": "APM is a chartered professional body, primary for UK practice; single source. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers the activity focus of critical path and the resource-utilisation focus of critical chain, but not the claim's \"protects chains with buffers\". APM's text \"protects critical chains of activities with buffers\" is on the same page but not in this claim's quote; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-define-blocked-by-and-one-target-date",
+      "question": "platform-guidelines",
+      "claim": "GitHub's own guidance for Projects is to state explicitly which issues block which, track a target ship date in one place, and use milestones to show how issues roll up to a goal.",
+      "quote": "To ensure efficient progress, clearly define which issues are blocked by, or blocking, other issues. | For example, track a target ship date in a single location instead of spread across multiple fields. | To track how smaller issues fit into the larger goal, use milestones or labels.",
+      "citations": [
+        {
+          "title": "Best practices for Projects",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Projects best practices iteration milestones",
+      "trust": {
+        "score": 72,
+        "basis": "Platform owner's own best-practice guidance, phrased as advice; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-forecasting-practices",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide recognises burn-downs, burn-ups and cumulative flows for forecasting progress but says they do not replace empiricism.",
+      "quote": "Various practices exist to forecast progress, like burn-downs, burn-ups, or cumulative flows. | While proven useful, these do not replace the importance of empiricism.",
+      "citations": [
+        {
+          "title": "The 2020 Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://www.scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 forecast progress burn-downs cumulative flow",
+      "trust": {
+        "score": 88,
+        "basis": "The Scrum Guide is the canonical primary source for Scrum; current edition."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-product-goal-target",
+      "question": "platform-guidelines",
+      "claim": "Scrum plans against a Product Goal rather than dated milestones, and progress toward it is reviewed at each Sprint Review.",
+      "quote": "The Product Goal describes a future state of the product which can serve as a target for the Scrum Team to plan against. | The Scrum Team presents the results of their work to key stakeholders and progress toward the Product Goal is discussed.",
+      "citations": [
+        {
+          "title": "The 2020 Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://www.scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 Product Goal Sprint Review",
+      "trust": {
+        "score": 65,
+        "basis": "Canonical primary source; 'rather than dated milestones' reflects that the Guide speaks of a Product Goal, not milestones. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The Scrum Guide holds both fragments. It does not contrast the Product Goal with dated milestones, so \"rather than dated milestones\" is the author's own framing; lowered 85->65."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-sprint-fixed-length",
+      "question": "platform-guidelines",
+      "claim": "Scrum Sprints are fixed-length events of one month or less.",
+      "quote": "They are fixed length events of one month or less to create consistency.",
+      "citations": [
+        {
+          "title": "The 2020 Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://www.scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 Sprint fixed length",
+      "trust": {
+        "score": 88,
+        "basis": "Canonical primary source, explicit wording."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-impediments",
+      "question": "platform-guidelines",
+      "claim": "Scrum surfaces impediments daily and makes their removal an accountability of the Scrum Master.",
+      "quote": "Daily Scrums improve communications, identify impediments, | Causing the removal of impediments to the Scrum Team’s progress; and,",
+      "citations": [
+        {
+          "title": "The 2020 Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://www.scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 impediments Daily Scrum Scrum Master",
+      "trust": {
+        "score": 85,
+        "basis": "Canonical primary source, explicit wording."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-sle-forecast",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide forecasts delivery with a service level expectation: an elapsed time with a probability, based on historical cycle time.",
+      "quote": "The SLE itself has two parts: a period of elapsed time and a probability associated with that period | The SLE should be based on historical cycle time and, once calculated, should be visualized on the DoW.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "kanbanguides.org",
+          "publisher": "kanbanguides.org",
+          "date": "2025-05",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide service level expectation forecast kanbanguides.org",
+      "trust": {
+        "score": 85,
+        "basis": "The Kanban Guide is the method owners' canonical text, current (v2025.5)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-unblock-and-age",
+      "question": "platform-guidelines",
+      "claim": "Kanban's active management of work includes keeping items from ageing past the SLE and unblocking blocked work.",
+      "quote": "Ensuring work items do not age unnecessarily, using the SLE as a reference. | Unblocking blocked work.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "kanbanguides.org",
+          "publisher": "kanbanguides.org",
+          "date": "2025-05",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide service level expectation forecast kanbanguides.org",
+      "trust": {
+        "score": 84,
+        "basis": "Canonical method text, current."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-issue-includes-concern",
+      "question": "platform-guidelines",
+      "claim": "PRINCE2 7 defines an issue as anything that could affect the project, covering problems and concerns as well as opportunities.",
+      "quote": "In PRINCE2 7, the broad definition of issues is \"anything that could affect the project\". | issues can be either a problem, a concern, a business opportunity",
+      "citations": [
+        {
+          "title": "PRINCE2 7 Issues: not every issue equals a change",
+          "author": "Brad Bigelow",
+          "publisher": "PeopleCert",
+          "date": "n.d.",
+          "url": "https://www.peoplecert.org/news-and-announcements/prince2-7-issues",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's public article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PeopleCert PRINCE2 7 issues risks progress practice overview official",
+      "trust": {
+        "score": 68,
+        "basis": "PRINCE2 7 manual is paywalled; this is the owner's (PeopleCert) public article, used as its public summary; single source."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "safe-planning-board-milestones",
+      "question": "platform-guidelines",
+      "claim": "SAFe's PI planning produces a planning board of delivery dates and dependencies, and SAFe treats milestones as the way to monitor progress and risk.",
+      "quote": "an ART planning board that reflects feature delivery dates and dependencies | Milestones are crucial to monitor product development and related risks.",
+      "citations": [
+        {
+          "title": "PI Planning",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "SAFe Framework",
+          "date": "2026-03-15",
+          "url": "https://framework.scaledagile.com/PI-planning",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Roadmap",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "SAFe Framework",
+          "date": "2025-02-25",
+          "url": "https://framework.scaledagile.com/roadmap",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's framework documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "scaledagileframework.com PI planning program board milestones dependencies",
+      "trust": {
+        "score": 76,
+        "basis": "Method owner's own current pages; two pages from one publisher, so single."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "safe-roadmap-commit-near-forecast-far",
+      "question": "platform-guidelines",
+      "claim": "SAFe's PI roadmap commits the next increment and only forecasts the two after it.",
+      "quote": "The first represents the committed work, and the following two PIs are a forecast.",
+      "citations": [
+        {
+          "title": "Roadmap",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "SAFe Framework",
+          "date": "2025-02-25",
+          "url": "https://framework.scaledagile.com/roadmap",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's framework documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "scaledagileframework.com milestones fixed-date learning milestones PI milestones",
+      "trust": {
+        "score": 72,
+        "basis": "Method owner's own current page; single source; a rolling-wave pattern PMI also names but could not be fetched."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "hard-constraints-defeat-cpm",
+      "question": "experts-view",
+      "claim": "Pinning dates with hard constraints instead of logic is a common error: it corrupts the critical path and the credibility of every date after it.",
+      "quote": "However, using hard constraints simply to fix activity dates at certain points in time immediately convolutes critical path calculations. It also reduces the credibility of any schedule date on activities that logically occur after the hard constraint.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 54,
+        "basis": "GAO's auditors' finding from assessing real programme schedules; primary; single publisher. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): GAO says that using hard constraints to fix dates \"immediately convolutes critical path calculations\" and defeats CPM. Neither the quote nor the passage around it calls this a \"common error\"; lowered 74->54."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "too-many-milestones-mask-work",
+      "question": "experts-view",
+      "claim": "Too many milestones hide the work that drives them, and work represented as milestones cannot forecast key dates.",
+      "quote": "when too many milestones are introduced into a schedule, the activity sequences that are most likely to delay milestone achievement may become increasingly difficult to identify. If work is represented by milestones, actual progress recorded in the schedule cannot be used to forecast the dates of key events.",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 72,
+        "basis": "Primary GAO standard; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "status-date-not-view-date",
+      "question": "experts-view",
+      "claim": "A common error is treating today's date or the last save date as the schedule's status date.",
+      "quote": "Neither the date on which someone is viewing the schedule nor the latest save date should be used as a substitute for a valid status date",
+      "citations": [
+        {
+          "title": "Schedule Assessment Guide: Best Practices for Project Schedules (GAO-16-89G)",
+          "author": "U.S. Government Accountability Office",
+          "publisher": "U.S. Government Accountability Office",
+          "date": "2015-12",
+          "url": "https://www.gao.gov/assets/d1689G.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government audit standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GAO Schedule Assessment Guide best practices project schedules GAO-16-89G",
+      "trust": {
+        "score": 50,
+        "basis": "Primary GAO standard backed by a case study; single publisher. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): GAO says the viewing date or the latest save date \"should not be used as a substitute for a valid status date\" and gives one case study. It does not call this a \"common error\"; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "commit-after-cone-narrows",
+      "question": "experts-view",
+      "claim": "Committing to dates early, before decisions have narrowed estimate uncertainty, sabotages projects; commit once the uncertainty has been reduced.",
+      "quote": "Organizations should avoid making commitments until the Cone has been reduced, because until then the commitments will not be supportable. | Software organizations inadvertantly sabotage their own projects by making commitments too early in the Cone of Uncertainty. | The Cone narrows only as you make decisions that eliminate variability.",
+      "citations": [
+        {
+          "title": "Software Development's Cone of Uncertainty (Best Practices White Paper)",
+          "author": "Steve McConnell",
+          "publisher": "Construx Software",
+          "date": "2010-01",
+          "url": "https://www.construx.com/wp-content/uploads/2019/02/CxWhitePaper_ConeOfUncertainty.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner white paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Construx McConnell cone of uncertainty estimate target commitment",
+      "trust": {
+        "score": 64,
+        "basis": "Recognised estimation expert's own white paper; qualitative advice only (its figures are not used); secondary source for a question no standard reached here answers; single."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "schedules-are-halfhearted",
+      "question": "experts-view",
+      "claim": "In a practitioner's experience most software schedules are not believed because they are not kept as working tools.",
+      "quote": "Most of the schedules you do see are halfhearted attempts. | nobody believes the schedule is realistic.",
+      "citations": [
+        {
+          "title": "Evidence Based Scheduling",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2007-10-26",
+          "url": "https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Joel Spolsky evidence based scheduling",
+      "trust": {
+        "score": 25,
+        "basis": "One practitioner's anecdote, not generalisable evidence; scored low per the anecdote-generalised pattern; kept as the expert's framing of the problem only. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Spolsky says most schedules are halfhearted and stored on a file share and forgotten. Separately, he says developers won't make schedules because \"nobody believes the schedule is realistic\". He does not say schedules go unbelieved because they are not kept as working tools; the claim's causal link is not in the source; lowered 45->25."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "milestone-has-status-and-target-date-prior",
+      "question": "best-practices",
+      "claim": "Every milestone has a status and target date",
+      "quote": "Every milestone has a status and target date",
+      "citations": [
+        {
+          "title": "milestone-scheduling (teams/projectteam/specialities/project/schedule.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/schedule.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "prior rule under verification: milestone-has-status-and-target-date",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "blocked-milestone-has-issue-or-concern-prior",
+      "question": "best-practices",
+      "claim": "no milestone is blocked without a corresponding issue or concern",
+      "quote": "no milestone is blocked without a corresponding issue or concern",
+      "citations": [
+        {
+          "title": "milestone-scheduling (teams/projectteam/specialities/project/schedule.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/schedule.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "prior rule under verification: blocked-milestone-has-issue-or-concern",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "define-and-sequence-milestones",
+      "verdict": "supported",
+      "claims": [
+        "sequence-with-logic",
+        "milestones-are-zero-duration-key-events",
+        "github-milestones-due-date-progress",
+        "github-projects-roadmap-dates",
+        "github-define-blocked-by-and-one-target-date",
+        "linear-milestones-optional-date",
+        "linear-project-dependencies",
+        "jira-plan-dependencies",
+        "safe-planning-board-milestones"
+      ]
+    },
+    {
+      "rule": "identify-at-risk-or-blocked-milestones",
+      "verdict": "supported",
+      "claims": [
+        "status-reveals-late-work",
+        "jira-off-track-warnings",
+        "jira-flag-impediment",
+        "linear-project-health-updates",
+        "github-status-updates",
+        "github-issue-dependencies",
+        "kanban-unblock-and-age",
+        "scrum-impediments"
+      ]
+    },
+    {
+      "rule": "milestone-has-status-and-target-date",
+      "verdict": "unsupported",
+      "claims": [
+        "milestone-has-status-and-target-date-prior",
+        "schedule-narrative-explains-changes",
+        "baseline-and-variance",
+        "github-status-updates",
+        "linear-milestones-optional-date",
+        "github-milestones-due-date-progress"
+      ]
+    },
+    {
+      "rule": "milestone-chains-have-no-cycles",
+      "verdict": "supported",
+      "claims": [
+        "assess-network-for-circular-logic",
+        "ms-project-refuses-circular-dependency",
+        "topological-order-iff-acyclic",
+        "jira-cyclic-links-detected-after"
+      ]
+    },
+    {
+      "rule": "blocked-milestone-has-issue-or-concern",
+      "verdict": "unsupported",
+      "claims": [
+        "blocked-milestone-has-issue-or-concern-prior",
+        "github-issue-dependencies",
+        "jira-flag-impediment",
+        "prince2-issue-includes-concern",
+        "schedule-narrative-explains-changes",
+        "linear-project-health-updates"
+      ]
+    },
+    {
+      "rule": "milestone-marks-a-key-event",
+      "verdict": "new",
+      "claims": [
+        "milestones-are-zero-duration-key-events",
+        "standard-milestones-documented-with-criteria",
+        "too-many-milestones-mask-work"
+      ]
+    },
+    {
+      "rule": "link-milestones-by-logic-not-fixed-dates",
+      "verdict": "new",
+      "claims": [
+        "sequence-with-logic",
+        "missing-logic-justified",
+        "avoid-hard-date-constraints",
+        "hard-constraints-defeat-cpm"
+      ]
+    },
+    {
+      "rule": "check-chains-by-topological-sort",
+      "verdict": "new",
+      "claims": [
+        "topological-order-iff-acyclic",
+        "assess-network-for-circular-logic",
+        "ms-project-refuses-circular-dependency",
+        "jira-cyclic-links-detected-after"
+      ]
+    },
+    {
+      "rule": "identify-the-critical-path",
+      "verdict": "new",
+      "claims": [
+        "critical-path-is-longest-path",
+        "critical-path-is-dag-longest-path",
+        "critical-path-vs-critical-chain"
+      ]
+    },
+    {
+      "rule": "status-against-a-status-date",
+      "verdict": "new",
+      "claims": [
+        "status-date-separates-actual-from-remaining",
+        "update-regularly-track-finer-than-report",
+        "status-date-not-view-date",
+        "linear-project-health-updates"
+      ]
+    },
+    {
+      "rule": "hold-explicit-schedule-contingency",
+      "verdict": "new",
+      "claims": [
+        "schedule-contingency-is-explicit",
+        "risk-margin-not-padding",
+        "schedule-risk-analysis-sizes-contingency",
+        "critical-path-vs-critical-chain"
+      ]
+    },
+    {
+      "rule": "keep-a-baseline-and-report-variance",
+      "verdict": "new",
+      "claims": [
+        "baseline-and-variance"
+      ]
+    },
+    {
+      "rule": "explain-every-milestone-date-change",
+      "verdict": "new",
+      "claims": [
+        "schedule-narrative-explains-changes",
+        "avoid-hard-date-constraints"
+      ]
+    },
+    {
+      "rule": "at-risk-milestone-names-its-risk",
+      "verdict": "new",
+      "claims": [
+        "linear-project-health-updates",
+        "github-status-updates",
+        "prince2-issue-includes-concern",
+        "schedule-risk-analysis-sizes-contingency",
+        "schedule-narrative-explains-changes"
+      ]
+    },
+    {
+      "rule": "forecast-dates-from-history-as-ranges",
+      "verdict": "new",
+      "claims": [
+        "kanban-sle-forecast",
+        "scrum-forecasting-practices",
+        "evidence-based-scheduling",
+        "commit-after-cone-narrows",
+        "schedules-are-halfhearted"
+      ]
+    },
+    {
+      "rule": "fix-the-date-flex-the-scope",
+      "verdict": "new",
+      "claims": [
+        "fixed-time-variable-scope",
+        "scrum-sprint-fixed-length",
+        "scrum-product-goal-target",
+        "linear-cycles-not-releases"
+      ]
+    },
+    {
+      "rule": "commit-near-term-forecast-later",
+      "verdict": "new",
+      "claims": [
+        "safe-roadmap-commit-near-forecast-far",
+        "commit-after-cone-narrows"
+      ]
+    }
+  ]
+}
