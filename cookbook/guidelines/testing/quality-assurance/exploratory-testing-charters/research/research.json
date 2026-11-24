@@ -5,10 +5,22 @@
   "base_commit": "77a898dbc718928bbd96ef617723c83ec69cd549",
   "research_type": "How-to / troubleshooting (intent Do; domain exploratory testing; method practitioner sources and published method guides). Product / how-to bar LOW-MEDIUM (broad independent consensus), no escalation. Session-length claims are metric claims and were scored on the Statistical bar; none of them rests on a study, so none meets it.",
   "questions": [
-    {"id": "best-practices", "text": "Best practices: what is current best practice for this topic?"},
-    {"id": "known-solutions", "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"},
-    {"id": "platform-guidelines", "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"},
-    {"id": "experts-view", "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"}
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
   ],
   "methodology": {
     "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify (how-to, exploratory testing), go to the standards and certification bodies first (ISO/IEC/IEEE 29119-1 and -3, the ISTQB Foundation and Advanced Test Analyst syllabi) and the method owners (Jonathan Bach's session-based test management, James Bach's Heuristic Test Strategy Model, Hendrickson's Explore It!), then the platform owners' bug-reporting guidance (Apple, Android, Microsoft, Mozilla for the web) and practitioner and research sources (Rapid Software Testing, DevelopSense, Workroom Productions, the Association for Software Testing, Kaner, Whittaker, Ghazi et al.) for what no primary source covers; corroborate across independent publishers; record provenance at generation time.",
@@ -17,7 +29,9 @@
     "exclusion": "Vendor marketing pages, anonymous blog posts, content farms, pages behind a paywall or login that could not be read (O'Reilly, Medium, Springer full text), and any page not fetched in this session.",
     "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30, Independent corroboration 25, Accuracy 20, Currency 10, Transparency 15; the how-to bar is LOW-MEDIUM (broad independent consensus); session-length claims take the Statistical bar. Independence is multi-independent only when two or more independent publishers hold the quoted words; every claim here quotes one publisher, so each is single, and corroboration across claims is noted in the trust basis."
   },
-  "agents": ["grow-cookbook research agent"],
+  "agents": [
+    "grow-cookbook research agent"
+  ],
   "sources": [
     "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
     "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
@@ -44,7 +58,10 @@
     "https://developer.apple.com/bug-reporting/",
     "https://source.android.com/docs/setup/contribute/report-bugs"
   ],
-  "dates": {"researched": "2026-11-24", "accessed": "2026-11-24"},
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
   "summary": "Exploratory testing is a recognised technique in ISO/IEC/IEEE 29119-1 and the ISTQB syllabi: it designs, runs and evaluates tests together while learning the product, and hunts for hidden properties that formal techniques miss, which supports looking for what specs cannot anticipate. Under session-based test management a session is an uninterrupted, chartered, time-boxed block that is debriefed (PROOF) and recorded on a session sheet of notes, issues and bugs. The ISTQB Test Analyst syllabus, citing Ghazi et al., lists what a charter may hold (mission, duration, areas of interest, priorities, what will not be tested, limitations) and gives Hendrickson's 'Explore [target] With [resources] To discover [information]' format; Hendrickson warns against charters too specific or too broad. Defect-report guidance from ISTQB, Mozilla and Apple agrees on location, observed and expected results, steps and reproducibility, so the Worker Focus reporting rule, the observed-not-inferred check and the retry check hold. Four rules do not hold as written: no source bounds a session by a step count (every source uses a time box), no source speaks to staying on one origin, the Rapid Software Testing guide warns against a pedantic 'Expected:' line and asks for the oracle 'unless it is obvious' (contradicting the hard four-part fail), and session-based test management lets a tester divert to an off-charter problem and records it as opportunity time (contradicting 'out-of-charter rather than raised'). The ban on padding a clean session is unsupported; reporting what was and was not covered is supported. Apple, Android and Windows bear on the topic only through their bug-report guidance.",
   "open_questions": [
     "Whether an automated session keeps a step cap at all, keeps it beside a time box, or replaces it with a time box as every source uses; and, if kept, what number (no source gives 25 or any step count).",
@@ -70,11 +87,23 @@
       "question": "best-practices",
       "claim": "ISO/IEC/IEEE 29119-1 defines exploratory testing as experience-based testing in which the tester designs and runs tests spontaneously from knowledge, prior exploration and heuristics about common behaviours and failures.",
       "quote": "experience-based testing (3.36) in which the tester spontaneously designs and executes tests based on the tester's existing relevant knowledge, prior exploration of the test item (3.107) (including the results of previous tests), and heuristic “rules of thumb” regarding common software behaviours and types of failure",
-      "citations": [{"title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)", "author": "ISO/IEC JTC 1/SC 7 and IEEE", "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)", "date": "2021", "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)",
+          "author": "ISO/IEC JTC 1/SC 7 and IEEE",
+          "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)",
+          "date": "2021",
+          "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "international standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO/IEC/IEEE 29119-1 exploratory testing definition",
-      "trust": {"score": 80, "basis": "The international testing standard's own definition, read in its public preview; the ISTQB Foundation syllabus (iso-et-definition is matched by et-explores-untested-areas) and Kaner give the same learning-while-testing view."},
+      "trust": {
+        "score": 80,
+        "basis": "The international testing standard's own definition, read in its public preview; the ISTQB Foundation syllabus (iso-et-definition is matched by et-explores-untested-areas) and Kaner give the same learning-while-testing view."
+      },
       "independence": "single"
     },
     {
@@ -82,11 +111,23 @@
       "question": "best-practices",
       "claim": "ISO/IEC/IEEE 29119-1 says exploratory testing hunts for hidden properties and behaviours that can interfere with other properties and so put the software at risk of failing.",
       "quote": "Exploratory testing hunts for hidden properties (including hidden behaviours) that, while quite possibly benign by themselves, can interfere with other properties of the software under test, and so constitute a risk that the software will fail.",
-      "citations": [{"title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)", "author": "ISO/IEC JTC 1/SC 7 and IEEE", "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)", "date": "2021", "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)",
+          "author": "ISO/IEC JTC 1/SC 7 and IEEE",
+          "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)",
+          "date": "2021",
+          "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "international standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO/IEC/IEEE 29119-1 exploratory testing definition",
-      "trust": {"score": 80, "basis": "A note to the standard's definition, quoted directly from the public preview; ISTQB's 'complement other more formal test techniques' (et-complements-formal-techniques) agrees in substance."},
+      "trust": {
+        "score": 80,
+        "basis": "A note to the standard's definition, quoted directly from the public preview; ISTQB's 'complement other more formal test techniques' (et-complements-formal-techniques) agrees in substance."
+      },
       "independence": "single"
     },
     {
@@ -94,11 +135,23 @@
       "question": "best-practices",
       "claim": "ISO/IEC/IEEE 29119-1 names test attacks, tours and error taxonomies as forms experience-based testing can take.",
       "quote": "Experience-based testing can include concepts such as test attacks, tours, and error taxonomies which target potential problems such as security, performance, and other quality areas.",
-      "citations": [{"title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)", "author": "ISO/IEC JTC 1/SC 7 and IEEE", "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)", "date": "2021", "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)",
+          "author": "ISO/IEC JTC 1/SC 7 and IEEE",
+          "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)",
+          "date": "2021",
+          "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "international standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO/IEC/IEEE 29119-1 experience-based testing tours attacks",
-      "trust": {"score": 75, "basis": "A note in the standard, quoted directly; Whittaker's tours (whittaker-landmark-tour) are one published instance."},
+      "trust": {
+        "score": 75,
+        "basis": "A note in the standard, quoted directly; Whittaker's tours (whittaker-landmark-tour) are one published instance."
+      },
       "independence": "single"
     },
     {
@@ -106,11 +159,23 @@
       "question": "best-practices",
       "claim": "ISO/IEC/IEEE 29119-1 defines an incident report as documentation of an incident's occurrence, nature and status, and says such reports are also called anomaly, bug or defect reports.",
       "quote": "Incident reports are also known as anomaly reports, bug reports, defect reports, error reports, issues, problem reports and trouble reports, amongst other terms.",
-      "citations": [{"title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)", "author": "ISO/IEC JTC 1/SC 7 and IEEE", "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)", "date": "2021", "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "ISO/IEC/IEEE 29119-1:2021 Software and systems engineering — Software testing — Part 1: General concepts (public preview)",
+          "author": "ISO/IEC JTC 1/SC 7 and IEEE",
+          "publisher": "ISO/IEC and IEEE (preview hosted by iTeh Standards)",
+          "date": "2021",
+          "url": "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "international standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ISO/IEC/IEEE 29119-1 incident report definition anomaly report",
-      "trust": {"score": 75, "basis": "The standard's definition note, quoted directly; it fixes the vocabulary (an anomaly report is an incident report) but the preview does not show the fields, so it carries no field list."},
+      "trust": {
+        "score": 75,
+        "basis": "The standard's definition note, quoted directly; it fixes the vocabulary (an anomaly report is an incident report) but the preview does not show the fields, so it carries no field list."
+      },
       "independence": "single"
     },
     {
@@ -118,11 +183,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus says exploratory tests are designed, run and evaluated together while the tester learns the test object, and are used to explore it more deeply and to create tests for untested areas.",
       "quote": "In exploratory testing, tests are simultaneously designed, executed, and evaluated while the tester learns about the test object. The testing is used to learn more about the test object, to explore it more deeply with focused tests, and to create tests for untested areas.",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 exploratory testing session-based test charter",
-      "trust": {"score": 80, "basis": "The certification body's current syllabus, section 4.4.2, quoted directly; agrees with ISO 29119-1 (iso-et-definition) and Kaner (kaner-et-definition)."},
+      "trust": {
+        "score": 80,
+        "basis": "The certification body's current syllabus, section 4.4.2, quoted directly; agrees with ISO 29119-1 (iso-et-definition) and Kaner (kaner-et-definition)."
+      },
       "independence": "single"
     },
     {
@@ -130,11 +207,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus places exploratory testing as a complement to more formal test techniques, not a replacement.",
       "quote": "Exploratory testing is also useful to complement other more formal test techniques.",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 exploratory testing session-based test charter",
-      "trust": {"score": 75, "basis": "Quoted directly from section 4.4.2; ISO 29119-1's hidden-properties note (iso-et-hunts-hidden-properties) supports the same placement."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly from section 4.4.2; ISO 29119-1's hidden-properties note (iso-et-hunts-hidden-properties) supports the same placement."
+      },
       "independence": "single"
     },
     {
@@ -142,11 +231,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus says session-based exploratory testing runs within a defined time box, is guided by a charter of test objectives, and is usually followed by a debriefing with the stakeholders.",
       "quote": "In a session-based approach, exploratory testing is performed within a defined time box. The tester uses a test charter containing test objectives to guide the testing. The test session is usually followed by a debriefing that involves a discussion between the tester and stakeholders interested in the test results of the test session.",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 exploratory testing session-based test charter",
-      "trust": {"score": 80, "basis": "The certification body's syllabus, quoted directly; Bach's session-based test management (sbtm-session-definition, sbtm-debrief-each-session) is the independent origin of the same practice."},
+      "trust": {
+        "score": 80,
+        "basis": "The certification body's syllabus, quoted directly; Bach's session-based test management (sbtm-session-definition, sbtm-debrief-each-session) is the independent origin of the same practice."
+      },
       "independence": "single"
     },
     {
@@ -154,11 +255,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus says the tester may document the steps followed and the discoveries made on session sheets.",
       "quote": "The tester may use test session sheets to document the steps followed and the discoveries made.",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 exploratory testing session sheet",
-      "trust": {"score": 75, "basis": "Quoted directly; 'may' makes it a permitted practice, and the claim keeps that strength."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly; 'may' makes it a permitted practice, and the claim keeps that strength."
+      },
       "independence": "single"
     },
     {
@@ -166,11 +279,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus says a charter gives a session its mission: its scope and objectives, and information such as limitations, timelines and risks.",
       "quote": "In exploratory testing, a test charter provides the mission of a test session, which outlines its scope and objectives and information such as limitations, timelines, and risks.",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTAL-TA v4.0 test charter contents exploratory testing",
-      "trust": {"score": 80, "basis": "The certification body's current advanced syllabus, section 3.4.1, quoted directly; Bach (sbtm-session-definition), Lyndsay (charter-is-unit-of-work) and the Association for Software Testing (ast-charter-definition) describe the charter as the session's mission in the same way."},
+      "trust": {
+        "score": 80,
+        "basis": "The certification body's current advanced syllabus, section 3.4.1, quoted directly; Bach (sbtm-session-definition), Lyndsay (charter-is-unit-of-work) and the Association for Software Testing (ast-charter-definition) describe the charter as the session's mission in the same way."
+      },
       "independence": "single"
     },
     {
@@ -178,11 +303,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus, citing Ghazi et al. (2017), lists optional charter contents including organizational information such as the session's duration, and a test scope naming areas of interest, priorities, exit criteria and what will not be tested.",
       "quote": "test scope (e.g., specific areas of interest within the system under test, test level, test techniques to be used, test ideas, exit criteria, priorities, what the test charter is supposed to cover, and a description of what will not be tested)",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTAL-TA v4.0 test charter contents exploratory testing",
-      "trust": {"score": 75, "basis": "Quoted directly; the syllabus introduces the list with 'Test charters may contain but are not limited to', so these are permitted contents (MAY), and the list rests on an empirical study (ghazi-charter-checklists) read here only as its abstract."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly; the syllabus introduces the list with 'Test charters may contain but are not limited to', so these are permitted contents (MAY), and the list rests on an empirical study (ghazi-charter-checklists) read here only as its abstract."
+      },
       "independence": "single"
     },
     {
@@ -190,11 +327,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus lists a charter's limitations as what the product must never do, beside entry criteria, the test environment and historical information.",
       "quote": "limitations (i.e., what the product must never do)",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTAL-TA v4.0 test charter contents exploratory testing",
-      "trust": {"score": 70, "basis": "Quoted directly from the same optional list; a permitted content, not a requirement."},
+      "trust": {
+        "score": 70,
+        "basis": "Quoted directly from the same optional list; a permitted content, not a requirement."
+      },
       "independence": "single"
     },
     {
@@ -202,11 +351,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus gives Hendrickson's lightweight charter format: explore a target, with resources, to discover information.",
       "quote": "A popular lightweight format of a mission is “Explore [target] With [resources] To discover [information]” (Hendrickson, 2013)",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson charter template Explore With To discover",
-      "trust": {"score": 75, "basis": "A primary syllabus quoting the template's author; Lyndsay's article (hendrickson-template-via-lyndsay), an independent publisher, describes the same three-part template."},
+      "trust": {
+        "score": 75,
+        "basis": "A primary syllabus quoting the template's author; Lyndsay's article (hendrickson-template-via-lyndsay), an independent publisher, describes the same three-part template."
+      },
       "independence": "single"
     },
     {
@@ -214,11 +375,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus says a charter does not specify the test suites a session will run.",
       "quote": "The test charter does not specify the test suites that will be executed in each test session.",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTAL-TA v4.0 test charter contents exploratory testing",
-      "trust": {"score": 75, "basis": "Quoted directly; Hendrickson's 'direction without overspecifying test actions' (hendrickson-direction-without-overspecifying) agrees."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly; Hendrickson's 'direction without overspecifying test actions' (hendrickson-direction-without-overspecifying) agrees."
+      },
       "independence": "single"
     },
     {
@@ -226,11 +399,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus says general objectives leave room to explore, naming techniques may constrain the tester, and stating what the system cannot do lowers the chance of false-positive reports.",
       "quote": "For example, defining only the general test objectives provides ample room for exploration, while adding the information on test techniques to be used may constrain the TA. On the other hand, adding information (e.g., what the system definitely cannot do) can help lower the likelihood of reporting false-positive results.",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTAL-TA v4.0 test charter contents exploratory testing",
-      "trust": {"score": 75, "basis": "Quoted directly; Hendrickson's too-specific and too-broad warnings (hendrickson-too-specific, hendrickson-too-broad) make the same trade-off."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly; Hendrickson's too-specific and too-broad warnings (hendrickson-too-specific, hendrickson-too-broad) make the same trade-off."
+      },
       "independence": "single"
     },
     {
@@ -238,11 +423,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Test Analyst syllabus says the tester logs questions, observations and ideas for future testing with the test results, on a session sheet.",
       "quote": "During a test session, the TA records test logs that include questions, observations, or ideas for future testing along with the test results. This data is documented in a session sheet.",
-      "citations": [{"title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2025-05-02", "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Advanced Level Test Analyst Syllabus v4.0",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2025-05-02",
+          "url": "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTAL-TA v4.0 session sheet test logs",
-      "trust": {"score": 75, "basis": "Quoted directly; Bach's session sheet of bugs, issues and notes (sbtm-bugs-issues-notes) is the independent origin."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly; Bach's session sheet of bugs, issues and notes (sbtm-bugs-issues-notes) is the independent origin."
+      },
       "independence": "single"
     },
     {
@@ -250,11 +447,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus lists expected and actual results among what a defect report logged during dynamic testing typically includes.",
       "quote": "Expected results and actual results",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 defect report contents expected actual results",
-      "trust": {"score": 80, "basis": "An item of section 5.5's list, which opens 'A defect report logged during dynamic testing typically includes:'; Mozilla (mozilla-observed-and-expected) and Apple (apple-expected-results) ask for the same pair. 'Typically' keeps it short of a requirement."},
+      "trust": {
+        "score": 80,
+        "basis": "An item of section 5.5's list, which opens 'A defect report logged during dynamic testing typically includes:'; Mozilla (mozilla-observed-and-expected) and Apple (apple-expected-results) ask for the same pair. 'Typically' keeps it short of a requirement."
+      },
       "independence": "single"
     },
     {
@@ -262,11 +471,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus says a defect report describes the failure well enough to reproduce and resolve it, including the steps that found it and any logs, screenshots or recordings.",
       "quote": "Description of the failure to enable reproduction and resolution including the test steps that detected the anomaly, and any relevant test logs, database dumps, screenshots, or recordings",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 defect report contents reproduction",
-      "trust": {"score": 80, "basis": "Quoted directly from section 5.5; Apple, Android and Mozilla (apple-steps-to-reproduce, android-steps-to-reproduce, mozilla-steps-most-important) all ask for steps to reproduce."},
+      "trust": {
+        "score": 80,
+        "basis": "Quoted directly from section 5.5; Apple, Android and Mozilla (apple-steps-to-reproduce, android-steps-to-reproduce, mozilla-steps-most-important) all ask for steps to reproduce."
+      },
       "independence": "single"
     },
     {
@@ -274,11 +495,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus lists identifying the test object and the test environment among a defect report's contents.",
       "quote": "Identification of the test object and test environment",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 defect report contents",
-      "trust": {"score": 75, "basis": "Quoted directly from section 5.5; the Rapid Software Testing guide (rst-environment) asks for the platform tested on as well."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly from section 5.5; the Rapid Software Testing guide (rst-environment) asks for the platform tested on as well."
+      },
       "independence": "single"
     },
     {
@@ -286,11 +519,23 @@
       "question": "best-practices",
       "claim": "The ISTQB Foundation syllabus says a defect report's purpose is to give those who handle and resolve defects enough information to resolve the issue.",
       "quote": "Provide those responsible for handling and resolving reported defects with sufficient information to resolve the issue",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB CTFL 4.0 defect report objectives",
-      "trust": {"score": 75, "basis": "Quoted directly from section 5.5's objectives list; the Rapid Software Testing guide's 'Not enough information to reproduce' (rst-not-enough-to-reproduce) names the same failure."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly from section 5.5's objectives list; the Rapid Software Testing guide's 'Not enough information to reproduce' (rst-not-enough-to-reproduce) names the same failure."
+      },
       "independence": "single"
     },
     {
@@ -298,11 +543,23 @@
       "question": "known-solutions",
       "claim": "Session-based test management defines a session as an uninterrupted block of reviewable, chartered test effort, chartered meaning tied to a mission: what is tested or what problems are sought.",
       "quote": "What we call a session is an uninterrupted block of reviewable, chartered test effort. By “chartered,” we mean that each session is associated with a mission—what we are testing, or what problems we are looking for.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "Jonathan Bach session-based test management article session charter debrief",
-      "trust": {"score": 75, "basis": "The method's originating article, quoted directly from a university-hosted reprint; dated 2000 but still the reference the ISTQB syllabi build on (session-is-chartered-time-box)."},
+      "trust": {
+        "score": 75,
+        "basis": "The method's originating article, quoted directly from a university-hosted reprint; dated 2000 but still the reference the ISTQB syllabi build on (session-is-chartered-time-box)."
+      },
       "independence": "single"
     },
     {
@@ -310,11 +567,23 @@
       "question": "known-solutions",
       "claim": "In session-based test management as first published, sessions last about ninety minutes, deliberately loosely timed, with short sessions near forty-five minutes and long ones near two hours.",
       "quote": "In my team, sessions last ninety minutes, give or take. We don’t time them very strictly because we don’t want to be more obsessed with time than with good testing. If a session lasts closer to forty-five minutes, we call it a short session. If it lasts closer to two hours, we call it a long session.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "Jonathan Bach session-based test management session length ninety minutes",
-      "trust": {"score": 45, "basis": "Quoted directly, but it is one team's practice, not a measured optimum: a metric claim on the Statistical bar with no study behind it. Lyndsay's 10-120 minutes (session-length-range) agrees in range only."},
+      "trust": {
+        "score": 45,
+        "basis": "Quoted directly, but it is one team's practice, not a measured optimum: a metric claim on the Statistical bar with no study behind it. Lyndsay's 10-120 minutes (session-length-range) agrees in range only."
+      },
       "independence": "single"
     },
     {
@@ -322,11 +591,23 @@
       "question": "known-solutions",
       "claim": "Session-based test management holds a short debrief on every session so the tester and the test manager agree on what happened.",
       "quote": "We hold a debriefing on each session—a short discussion to assure that the tester and the test manager are clear about what happened.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "Jonathan Bach session-based test management debrief",
-      "trust": {"score": 75, "basis": "Quoted directly; the ISTQB Foundation syllabus (session-is-chartered-time-box) independently states that a session is usually followed by a debriefing."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted directly; the ISTQB Foundation syllabus (session-is-chartered-time-box) independently states that a session is usually followed by a debriefing."
+      },
       "independence": "single"
     },
     {
@@ -334,11 +615,23 @@
       "question": "known-solutions",
       "claim": "The session-based debrief follows the PROOF checklist: past, results, obstacles, outlook and feelings.",
       "quote": "Past What happened during the session? Results What was achieved during the session? Obstacles What got in the way of good testing? Outlook What still needs to be done? Feelings How does the tester feel about all this?",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "session-based test management PROOF debrief checklist",
-      "trust": {"score": 70, "basis": "Quoted directly from the article's debrief checklist (laid out as a table, joined here); a single originator's checklist."},
+      "trust": {
+        "score": 70,
+        "basis": "Quoted directly from the article's debrief checklist (laid out as a table, joined here); a single originator's checklist."
+      },
       "independence": "single"
     },
     {
@@ -346,11 +639,23 @@
       "question": "experts-view",
       "claim": "The originator of session-based test management reports that dropping debriefs led to poor session sheets and meaningless metrics.",
       "quote": "We experimented with dropping the session debriefings, but that led to poor session sheets and meaningless metrics.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "Jonathan Bach session-based test management debrief",
-      "trust": {"score": 60, "basis": "Quoted directly; one team's reported experience, not a study."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; one team's reported experience, not a study."
+      },
       "independence": "single"
     },
     {
@@ -358,11 +663,23 @@
       "question": "known-solutions",
       "claim": "A session-based report carries the session charter (a mission and the areas to be tested), tester, start time, task breakdown, data files, test notes, issues and bugs.",
       "quote": "Session charter (includes a mission statement and areas to be tested)",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "session-based test management session sheet sections",
-      "trust": {"score": 70, "basis": "The first item of the article's report-sections list, quoted directly; the other sections are listed in the same place."},
+      "trust": {
+        "score": 50,
+        "basis": "The first item of the article's report-sections list, quoted directly; the other sections are listed in the same place. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the charter line. The source's full list (tester name(s), date and time started, task breakdown, data files, test notes, issues, bugs) is not in the quote; lowered 70->50."
+      },
       "independence": "single"
     },
     {
@@ -370,11 +687,23 @@
       "question": "known-solutions",
       "claim": "A session sheet keeps bugs (product quality concerns), issues (questions about the test process or project) and notes (anything else, such as test ideas and risk lists) apart.",
       "quote": "Bugs are concerns about the quality of the product. Issues are questions or problems that relate to the test process or the project at large. Notes are a free-form record of anything else—test case ideas, function lists, risk lists, or any other elements related to the testing that occurs during the session.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "session-based test management session sheet bugs issues notes",
-      "trust": {"score": 70, "basis": "Quoted directly; the ISTQB Test Analyst syllabus (session-sheet-logs-questions-observations) keeps questions and observations on the session sheet as well."},
+      "trust": {
+        "score": 70,
+        "basis": "Quoted directly; the ISTQB Test Analyst syllabus (session-sheet-logs-questions-observations) keeps questions and observations on the session sheet as well."
+      },
       "independence": "single"
     },
     {
@@ -382,11 +711,23 @@
       "question": "known-solutions",
       "claim": "Session-based test management has testers report time on charter versus on opportunity, and encourages them to divert from the charter when they stumble on an off-charter problem that looks important.",
       "quote": "We also ask testers to report the portion of their time spent “on charter” versus “on opportunity.” Opportunity testing is any testing that doesn’t fit the charter of the session. Since we’re doing exploratory testing, we remind and encourage testers that it’s okay to divert from their charter if they stumble into an off-charter problem that looks important.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "session-based test management on charter opportunity testing",
-      "trust": {"score": 70, "basis": "The method's own article, quoted directly; Hendrickson's advice to turn temptations into new charters (hendrickson-temptations-new-charters) is a complementary practice, not a contradiction."},
+      "trust": {
+        "score": 70,
+        "basis": "The method's own article, quoted directly; Hendrickson's advice to turn temptations into new charters (hendrickson-temptations-new-charters) is a complementary practice, not a contradiction."
+      },
       "independence": "single"
     },
     {
@@ -394,11 +735,23 @@
       "question": "known-solutions",
       "claim": "Session-based test management has a tester who gets nowhere abort the session and do another, and has the manager narrow the charter or add sessions at the debrief.",
       "quote": "If the tester can’t get anywhere, the standing order is to abort the session and do a different one.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "session-based test management abort session reduce scope of charter",
-      "trust": {"score": 60, "basis": "Quoted directly; one originator's standing order."},
+      "trust": {
+        "score": 40,
+        "basis": "Quoted directly; one originator's standing order. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers only aborting the session. The next sentence in the source, which the quote leaves out, says the manager should \"reduce the scope of the charter (in the debriefing) or create more sessions with the same charter.\"; lowered 60->40."
+      },
       "independence": "single"
     },
     {
@@ -406,11 +759,23 @@
       "question": "known-solutions",
       "claim": "Session-based test management dispatches testers with to-do session sheets: a charter with every other section blank.",
       "quote": "One way to dispatch exploratory testers is to create ToDo session sheets—sheets that include a charter but with all other sections blank.",
-      "citations": [{"title": "Session-Based Test Management", "author": "Jonathan Bach", "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)", "date": "2000-11", "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Session-Based Test Management",
+          "author": "Jonathan Bach",
+          "publisher": "Software Testing & Quality Engineering magazine (reprint hosted by Linköping University)",
+          "date": "2000-11",
+          "url": "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method originator's article",
       "generated_by": "grow-cookbook research agent",
       "query": "session-based test management ToDo session sheets",
-      "trust": {"score": 60, "basis": "Quoted directly; a single method's dispatch mechanism."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; a single method's dispatch mechanism."
+      },
       "independence": "single"
     },
     {
@@ -418,11 +783,23 @@
       "question": "known-solutions",
       "claim": "Lyndsay describes a charter as a unit of work with a purpose, whose planned duration says how much time the team will spend, not how long it should take.",
       "quote": "When planned, it's often given a duration – the duration indicates how much time the team is prepared to spend not how long it should take.",
-      "citations": [{"title": "Shaping Testing With Charters", "author": "James Lyndsay", "publisher": "Workroom Productions", "date": "2024-01-20", "url": "https://www.workroom-productions.com/shaping-testing-with-charters/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Shaping Testing With Charters",
+          "author": "James Lyndsay",
+          "publisher": "Workroom Productions",
+          "date": "2024-01-20",
+          "url": "https://www.workroom-productions.com/shaping-testing-with-charters/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "test charter exploratory testing duration session Lyndsay",
-      "trust": {"score": 55, "basis": "A long-standing practitioner's article, quoted directly; the ISTQB Test Analyst syllabus lists duration as charter content (charter-optional-contents). Secondary to the syllabi."},
+      "trust": {
+        "score": 55,
+        "basis": "A long-standing practitioner's article, quoted directly; the ISTQB Test Analyst syllabus lists duration as charter content (charter-optional-contents). Secondary to the syllabi."
+      },
       "independence": "single"
     },
     {
@@ -430,11 +807,23 @@
       "question": "known-solutions",
       "claim": "Lyndsay describes a session as a unit of time, typically 10 to 120 minutes, long enough to be useful and short enough to finish in one piece.",
       "quote": "A session is a unit of time. It is typically 10-120 minutes long; long enough to be useful, short enough to be done in one piece.",
-      "citations": [{"title": "Shaping Testing With Charters", "author": "James Lyndsay", "publisher": "Workroom Productions", "date": "2024-01-20", "url": "https://www.workroom-productions.com/shaping-testing-with-charters/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Shaping Testing With Charters",
+          "author": "James Lyndsay",
+          "publisher": "Workroom Productions",
+          "date": "2024-01-20",
+          "url": "https://www.workroom-productions.com/shaping-testing-with-charters/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "exploratory testing session length minutes time box",
-      "trust": {"score": 45, "basis": "Quoted directly; a metric claim on the Statistical bar with no study behind it. It agrees with session-based test management's 45-120 minute range (sbtm-session-length-ninety-minutes) in range only."},
+      "trust": {
+        "score": 45,
+        "basis": "Quoted directly; a metric claim on the Statistical bar with no study behind it. It agrees with session-based test management's 45-120 minute range (sbtm-session-length-ninety-minutes) in range only."
+      },
       "independence": "single"
     },
     {
@@ -442,11 +831,23 @@
       "question": "known-solutions",
       "claim": "Lyndsay reports Hendrickson's three-part charter template from Explore It!: the target being explored and the resources brought to it, then the information sought.",
       "quote": "In Explore It , Elisabeth Hendrickson suggests A simple three part template Target: Where are you exploring? It could be a feature, a requirement, or a module. Resources: What resources will you bring with you?",
-      "citations": [{"title": "Shaping Testing With Charters", "author": "James Lyndsay", "publisher": "Workroom Productions", "date": "2024-01-20", "url": "https://www.workroom-productions.com/shaping-testing-with-charters/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Shaping Testing With Charters",
+          "author": "James Lyndsay",
+          "publisher": "Workroom Productions",
+          "date": "2024-01-20",
+          "url": "https://www.workroom-productions.com/shaping-testing-with-charters/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary, reporting the template's author)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson charter template Explore With To discover",
-      "trust": {"score": 55, "basis": "A secondary source reporting Hendrickson's book, which could not be read; the ISTQB Test Analyst syllabus (charter-format-explore-with-to-discover), an independent primary, gives the same template."},
+      "trust": {
+        "score": 35,
+        "basis": "A secondary source reporting Hendrickson's book, which could not be read; the ISTQB Test Analyst syllabus (charter-format-explore-with-to-discover), an independent primary, gives the same template. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote stops after Target and Resources, so it does not name the third part the claim gives. The page does go on to \"Information: What kind of information are you hoping to find?\", but that text is not in the quote; lowered 55->35."
+      },
       "independence": "single"
     },
     {
@@ -454,11 +855,23 @@
       "question": "experts-view",
       "claim": "Lyndsay advises that a collection of charters works together but should always be treated as incomplete.",
       "quote": "A collection of charters works together, but should always be regarded as incomplete.",
-      "citations": [{"title": "Shaping Testing With Charters", "author": "James Lyndsay", "publisher": "Workroom Productions", "date": "2024-01-20", "url": "https://www.workroom-productions.com/shaping-testing-with-charters/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Shaping Testing With Charters",
+          "author": "James Lyndsay",
+          "publisher": "Workroom Productions",
+          "date": "2024-01-20",
+          "url": "https://www.workroom-productions.com/shaping-testing-with-charters/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "test charter exploratory testing Lyndsay",
-      "trust": {"score": 50, "basis": "Quoted directly; Hendrickson's 'Chartering is an ongoing process' (hendrickson-chartering-ongoing) agrees."},
+      "trust": {
+        "score": 50,
+        "basis": "Quoted directly; Hendrickson's 'Chartering is an ongoing process' (hendrickson-chartering-ongoing) agrees."
+      },
       "independence": "single"
     },
     {
@@ -466,11 +879,23 @@
       "question": "known-solutions",
       "claim": "The Association for Software Testing defines a charter as a brief statement of what to test, how to test it and what problems to look for, to give the session a clear mission.",
       "quote": "A charter is a brief statement of what should be tested, how it should be tested, and problems that should be looked for, with the objective of having a clear mission for the session.",
-      "citations": [{"title": "Chartering", "author": "Pete Walen and Justin Rohrman", "publisher": "Association for Software Testing", "date": "n.d.", "url": "https://whose.associationforsoftwaretesting.org/docs/communication/chartering/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Chartering",
+          "author": "Pete Walen and Justin Rohrman",
+          "publisher": "Association for Software Testing",
+          "date": "n.d.",
+          "url": "https://whose.associationforsoftwaretesting.org/docs/communication/chartering/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "professional association skills guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Association for Software Testing chartering skill",
-      "trust": {"score": 55, "basis": "A professional association's skills guide, quoted directly from the page; independent of ISTQB and agrees with its mission framing (charter-mission-scope-limitations)."},
+      "trust": {
+        "score": 55,
+        "basis": "A professional association's skills guide, quoted directly from the page; independent of ISTQB and agrees with its mission framing (charter-mission-scope-limitations)."
+      },
       "independence": "single"
     },
     {
@@ -478,11 +903,23 @@
       "question": "known-solutions",
       "claim": "Ghazi, Garigapati and Petersen elicited factors and content elements to help design test charters.",
       "quote": "Overall, 30 factors and 35 content elements have been elicited.",
-      "citations": [{"title": "Checklists to Support Test Charter Design in Exploratory Testing", "author": "Ahmad Nauman Ghazi, Ratna Pranathi Garigapati and Kai Petersen", "publisher": "arXiv", "date": "2017-04-04", "url": "https://arxiv.org/abs/1704.00988", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Checklists to Support Test Charter Design in Exploratory Testing",
+          "author": "Ahmad Nauman Ghazi, Ratna Pranathi Garigapati and Kai Petersen",
+          "publisher": "arXiv",
+          "date": "2017-04-04",
+          "url": "https://arxiv.org/abs/1704.00988",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "research paper (abstract)",
       "generated_by": "grow-cookbook research agent",
       "query": "test charter design exploratory testing checklist study",
-      "trust": {"score": 60, "basis": "The study's own abstract, quoted directly; it is the source the ISTQB Test Analyst syllabus cites for charter contents (charter-optional-contents). The full paper was not read."},
+      "trust": {
+        "score": 60,
+        "basis": "The study's own abstract, quoted directly; it is the source the ISTQB Test Analyst syllabus cites for charter contents (charter-optional-contents). The full paper was not read."
+      },
       "independence": "single"
     },
     {
@@ -490,11 +927,23 @@
       "question": "known-solutions",
       "claim": "Ghazi, Petersen, Bjarnason and Runeson propose levels of exploration, defined by how charters are written, from fully exploratory to fully scripted, and find the levels can guide charter structure.",
       "quote": "The results show that the proposed ET levels have distinguishing characteristics and that the levels can be used as a guide to structure test charters.",
-      "citations": [{"title": "Exploratory Testing: One Size Doesn't Fit All", "author": "Ahmad Nauman Ghazi, Kai Petersen, Elizabeth Bjarnason and Per Runeson", "publisher": "arXiv", "date": "2017-04-03", "url": "https://arxiv.org/abs/1704.00537", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Exploratory Testing: One Size Doesn't Fit All",
+          "author": "Ahmad Nauman Ghazi, Kai Petersen, Elizabeth Bjarnason and Per Runeson",
+          "publisher": "arXiv",
+          "date": "2017-04-03",
+          "url": "https://arxiv.org/abs/1704.00537",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "research paper (abstract)",
       "generated_by": "grow-cookbook research agent",
       "query": "exploratory testing levels test charters study",
-      "trust": {"score": 55, "basis": "The study's abstract, quoted directly; focus groups at four companies, so qualitative evidence only."},
+      "trust": {
+        "score": 55,
+        "basis": "The study's abstract, quoted directly; focus groups at four companies, so qualitative evidence only."
+      },
       "independence": "single"
     },
     {
@@ -502,11 +951,23 @@
       "question": "known-solutions",
       "claim": "Kaner defines exploratory testing as a style that emphasises the tester's freedom and responsibility to keep optimizing the value of the work, with learning, design, execution and interpretation running in parallel.",
       "quote": "is a style of software testing that emphasizes the personal freedom and responsibility of the individual tester to continually optimize the value of her work",
-      "citations": [{"title": "A Tutorial in Exploratory Testing", "author": "Cem Kaner", "publisher": "Cem Kaner (QUEST 2008 tutorial)", "date": "2008-04", "url": "http://kaner.com/pdfs/QAIExploring.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "A Tutorial in Exploratory Testing",
+          "author": "Cem Kaner",
+          "publisher": "Cem Kaner (QUEST 2008 tutorial)",
+          "date": "2008-04",
+          "url": "http://kaner.com/pdfs/QAIExploring.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner tutorial (originator of the term)",
       "generated_by": "grow-cookbook research agent",
       "query": "Kaner exploratory testing definition style freedom responsibility",
-      "trust": {"score": 60, "basis": "The term's originator, quoted from his tutorial slide with the bullet marks dropped; dated 2008 but consistent with ISO 29119-1 and ISTQB (iso-et-definition, et-explores-untested-areas)."},
+      "trust": {
+        "score": 40,
+        "basis": "The term's originator, quoted from his tutorial slide with the bullet marks dropped; dated 2008 but consistent with ISO 29119-1 and ISTQB (iso-et-definition, et-explores-untested-areas). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote stops at \"optimize the value of her work\". The rest of the claim, about learning, design, execution and interpretation running \"as mutually supportive activities that run in parallel\", is on the same slide but not in the quote; lowered 60->40."
+      },
       "independence": "single"
     },
     {
@@ -514,11 +975,23 @@
       "question": "known-solutions",
       "claim": "The Heuristic Test Strategy Model is a set of patterns for designing and choosing tests, meant to remind testers what to think about.",
       "quote": "The Heuristic Test Strategy Model is a set of patterns for designing and choosing tests to perform. The immediate purpose of this model is to remind testers of what to think about during that process.",
-      "citations": [{"title": "Heuristic Test Strategy Model v6.0", "author": "James Bach", "publisher": "Satisfice, Inc.", "date": "2024-02-08", "url": "https://www.developsense.com/resource/htsm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Heuristic Test Strategy Model v6.0",
+          "author": "James Bach",
+          "publisher": "Satisfice, Inc.",
+          "date": "2024-02-08",
+          "url": "https://www.developsense.com/resource/htsm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method owner's model",
       "generated_by": "grow-cookbook research agent",
       "query": "Heuristic Test Strategy Model product elements",
-      "trust": {"score": 65, "basis": "The model's own text, quoted directly from v6.0 (Satisfice lists v6.3, December 2024, as current; the quoted wording is the model's long-standing opening)."},
+      "trust": {
+        "score": 65,
+        "basis": "The model's own text, quoted directly from v6.0 (Satisfice lists v6.3, December 2024, as current; the quoted wording is the model's long-standing opening)."
+      },
       "independence": "single"
     },
     {
@@ -526,11 +999,23 @@
       "question": "known-solutions",
       "claim": "The Heuristic Test Strategy Model's product elements are structure, function, data, interfaces, platform, operations and time, used to outline what a session covers.",
       "quote": "Interfaces. Every conduit by which the product is accessed or expressed.",
-      "citations": [{"title": "Heuristic Test Strategy Model v6.0", "author": "James Bach", "publisher": "Satisfice, Inc.", "date": "2024-02-08", "url": "https://www.developsense.com/resource/htsm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Heuristic Test Strategy Model v6.0",
+          "author": "James Bach",
+          "publisher": "Satisfice, Inc.",
+          "date": "2024-02-08",
+          "url": "https://www.developsense.com/resource/htsm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method owner's model",
       "generated_by": "grow-cookbook research agent",
       "query": "Heuristic Test Strategy Model product elements",
-      "trust": {"score": 60, "basis": "One of the seven element definitions, quoted directly; the others (Structure, Function, Data, Platform, Operations, Time) are defined in the same list. Bolton (bolton-time-added-to-product-elements) independently gives the list's history."},
+      "trust": {
+        "score": 40,
+        "basis": "One of the seven element definitions, quoted directly; the others (Structure, Function, Data, Platform, Operations, Time) are defined in the same list. Bolton (bolton-time-added-to-product-elements) independently gives the list's history. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote defines only Interfaces. The HTSM does list Structure, Function, Data, Interfaces, Platform, Operations and Time elsewhere, but not in the quote, and neither the quote nor the source ties the elements to outlining what a session covers; lowered 60->40."
+      },
       "independence": "single"
     },
     {
@@ -538,11 +1023,23 @@
       "question": "known-solutions",
       "claim": "Bolton records that the product elements began as structure, function, data, platform and operations, used to structure a coverage outline, and that time was added later.",
       "quote": "James Bach wrote an article on product elements, identifying Structure, Function, Data, Platform, and Operations (SFDPO; think “San Francisco DePOt”, he suggested) as a set of heuristic guidewords for creating or structuring or reviewing the highest levels of a coverage outline.",
-      "citations": [{"title": "How Models Change", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2014-07-19", "url": "https://developsense.com/?p=1773", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "How Models Change",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2014-07-19",
+          "url": "https://developsense.com/?p=1773",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "SFDPOT product elements coverage outline Bolton",
-      "trust": {"score": 55, "basis": "Quoted directly; a co-author of Rapid Software Testing, so close to the model's owner."},
+      "trust": {
+        "score": 35,
+        "basis": "Quoted directly; a co-author of Rapid Software Testing, so close to the model's owner. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers only the original SFDPO set as guidewords for a coverage outline. Bolton's account of adding Time (\"I persuaded James that Time was a worthy addition\") comes in the next paragraph, which is not quoted; lowered 55->35."
+      },
       "independence": "single"
     },
     {
@@ -550,11 +1047,23 @@
       "question": "experts-view",
       "claim": "The Heuristic Test Strategy Model warns that software is complex and invisible and that testing must cover all of it that matters, not just the parts easy to see.",
       "quote": "Software is complex and invisible. Take care to cover all of it that matters, not just the parts that are easy to see.",
-      "citations": [{"title": "Heuristic Test Strategy Model v6.0", "author": "James Bach", "publisher": "Satisfice, Inc.", "date": "2024-02-08", "url": "https://www.developsense.com/resource/htsm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Heuristic Test Strategy Model v6.0",
+          "author": "James Bach",
+          "publisher": "Satisfice, Inc.",
+          "date": "2024-02-08",
+          "url": "https://www.developsense.com/resource/htsm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method owner's model",
       "generated_by": "grow-cookbook research agent",
       "query": "Heuristic Test Strategy Model product elements",
-      "trust": {"score": 55, "basis": "Quoted directly; expert advice without supporting data."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly; expert advice without supporting data."
+      },
       "independence": "single"
     },
     {
@@ -562,11 +1071,23 @@
       "question": "known-solutions",
       "claim": "Whittaker's landmark tour picks the product's landmark features in advance and moves between them in a shuffled order.",
       "quote": "Pick the landmarks in advance, scramble them up and tour from one to the next.",
-      "citations": [{"title": "tour of the month: the landmark tour", "author": "James Whittaker", "publisher": "Microsoft (archived MSDN blog on Microsoft Learn)", "date": "2009-05-11", "url": "https://learn.microsoft.com/en-us/archive/blogs/james_whittaker/tour-of-the-month-the-landmark-tour", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "tour of the month: the landmark tour",
+          "author": "James Whittaker",
+          "publisher": "Microsoft (archived MSDN blog on Microsoft Learn)",
+          "date": "2009-05-11",
+          "url": "https://learn.microsoft.com/en-us/archive/blogs/james_whittaker/tour-of-the-month-the-landmark-tour",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Whittaker exploratory testing tours landmark tour",
-      "trust": {"score": 50, "basis": "The tour's author, quoted directly from an archived 2009 post; ISO 29119-1 (iso-experience-based-tours-attacks) names tours as a form of experience-based testing. Bolton cautions that touring is not necessarily exploratory."},
+      "trust": {
+        "score": 50,
+        "basis": "The tour's author, quoted directly from an archived 2009 post; ISO 29119-1 (iso-experience-based-tours-attacks) names tours as a form of experience-based testing. Bolton cautions that touring is not necessarily exploratory."
+      },
       "independence": "single"
     },
     {
@@ -574,11 +1095,23 @@
       "question": "known-solutions",
       "claim": "Whittaker advises concentrating testing on the landmark features that draw users.",
       "quote": "If you identify the landmark features that draw users, that’s where you need to concentrate a lot of testing.",
-      "citations": [{"title": "tour of the month: the landmark tour", "author": "James Whittaker", "publisher": "Microsoft (archived MSDN blog on Microsoft Learn)", "date": "2009-05-11", "url": "https://learn.microsoft.com/en-us/archive/blogs/james_whittaker/tour-of-the-month-the-landmark-tour", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "tour of the month: the landmark tour",
+          "author": "James Whittaker",
+          "publisher": "Microsoft (archived MSDN blog on Microsoft Learn)",
+          "date": "2009-05-11",
+          "url": "https://learn.microsoft.com/en-us/archive/blogs/james_whittaker/tour-of-the-month-the-landmark-tour",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Whittaker exploratory testing tours landmark tour",
-      "trust": {"score": 50, "basis": "Quoted directly; a single practitioner's advice that supports ranking focus areas by what users use most."},
+      "trust": {
+        "score": 50,
+        "basis": "Quoted directly; a single practitioner's advice that supports ranking focus areas by what users use most."
+      },
       "independence": "single"
     },
     {
@@ -586,11 +1119,23 @@
       "question": "platform-guidelines",
       "claim": "Microsoft's Test & Feedback extension for Azure Test Plans supports exploratory sessions: filing bugs, capturing screenshots and recordings, and exporting a session report.",
       "quote": "Create bugs and export a session report for sharing without signing in.",
-      "citations": [{"title": "Install and use the Test & Feedback extension", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2025-11-24", "url": "https://learn.microsoft.com/en-us/azure/devops/test/perform-exploratory-tests", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Install and use the Test & Feedback extension",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2025-11-24",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/test/perform-exploratory-tests",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Azure Test Plans Test & Feedback extension exploratory testing session report",
-      "trust": {"score": 70, "basis": "Microsoft's own current product documentation, quoted directly; it documents a tool, not a method."},
+      "trust": {
+        "score": 50,
+        "basis": "Microsoft's own current product documentation, quoted directly; it documents a tool, not a method. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote names only creating bugs and exporting a session report, and it describes Standalone mode. The screenshots and recordings are in the sentence before it (\"Capture screenshots, notes, and recordings locally\"), which the quote leaves out; lowered 70->50."
+      },
       "independence": "single"
     },
     {
@@ -598,11 +1143,23 @@
       "question": "platform-guidelines",
       "claim": "Microsoft's exploratory-testing extension records an action log of the steps that led to an issue, for reproducing it and understanding its context.",
       "quote": "The image action log is the sequence of steps you took that led to the issue. It can be used to reproduce the issue and understand the context.",
-      "citations": [{"title": "Use the Test & Feedback extension in Connected mode", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2026-08-17", "url": "https://learn.microsoft.com/en-us/azure/devops/test/connected-mode-exploratory-testing", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Use the Test & Feedback extension in Connected mode",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-08-17",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/test/connected-mode-exploratory-testing",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Azure Test Plans exploratory testing connected mode action log",
-      "trust": {"score": 70, "basis": "Microsoft's own documentation, quoted directly; agrees with ISTQB's steps that detected the anomaly (defect-report-enables-reproduction)."},
+      "trust": {
+        "score": 70,
+        "basis": "Microsoft's own documentation, quoted directly; agrees with ISTQB's steps that detected the anomaly (defect-report-enables-reproduction)."
+      },
       "independence": "single"
     },
     {
@@ -610,11 +1167,23 @@
       "question": "platform-guidelines",
       "claim": "Microsoft's exploratory-testing extension searches existing bugs with similar title keywords when a new bug is filed.",
       "quote": "When you enter a bug title, the extension automatically searches for existing bugs with similar title keywords.",
-      "citations": [{"title": "Use the Test & Feedback extension in Connected mode", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2026-08-17", "url": "https://learn.microsoft.com/en-us/azure/devops/test/connected-mode-exploratory-testing", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Use the Test & Feedback extension in Connected mode",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-08-17",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/test/connected-mode-exploratory-testing",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Azure Test Plans exploratory testing connected mode duplicate bugs",
-      "trust": {"score": 60, "basis": "Microsoft's own documentation, quoted directly; a tool feature, so it supports duplicate checking only as a MAY."},
+      "trust": {
+        "score": 60,
+        "basis": "Microsoft's own documentation, quoted directly; a tool feature, so it supports duplicate checking only as a MAY."
+      },
       "independence": "single"
     },
     {
@@ -622,11 +1191,23 @@
       "question": "platform-guidelines",
       "claim": "Mozilla's bug-writing guidelines ask the reporter to say whether the bug reproduces at will, occasionally, or not at all.",
       "quote": "Indicate whether you can reproduce the bug at will, occasionally, or not at all.",
-      "citations": [{"title": "Bug Writing Guidelines", "author": "Mozilla", "publisher": "Mozilla (bugzilla.mozilla.org)", "date": "n.d.", "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Writing Guidelines",
+          "author": "Mozilla",
+          "publisher": "Mozilla (bugzilla.mozilla.org)",
+          "date": "n.d.",
+          "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Mozilla bug writing guidelines reproducible steps expected actual",
-      "trust": {"score": 75, "basis": "A browser maker's own bug-writing guidance for the web platform, quoted from a WebFetch reading taken twice with the same wording; the Rapid Software Testing guide (rst-frequency) asks the same."},
+      "trust": {
+        "score": 75,
+        "basis": "A browser maker's own bug-writing guidance for the web platform, quoted from a WebFetch reading taken twice with the same wording; the Rapid Software Testing guide (rst-frequency) asks the same."
+      },
       "independence": "single"
     },
     {
@@ -634,11 +1215,23 @@
       "question": "platform-guidelines",
       "claim": "Mozilla's guidelines say a bug that reproduces only occasionally must come with additional information.",
       "quote": "If you can reproduce occasionally, but not after following specific steps, you must provide additional information",
-      "citations": [{"title": "Bug Writing Guidelines", "author": "Mozilla", "publisher": "Mozilla (bugzilla.mozilla.org)", "date": "n.d.", "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Writing Guidelines",
+          "author": "Mozilla",
+          "publisher": "Mozilla (bugzilla.mozilla.org)",
+          "date": "n.d.",
+          "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Mozilla bug writing guidelines reproducible occasionally",
-      "trust": {"score": 70, "basis": "Quoted from the WebFetch reading; 'must' is Mozilla's own word for its tracker."},
+      "trust": {
+        "score": 70,
+        "basis": "Quoted from the WebFetch reading; 'must' is Mozilla's own word for its tracker."
+      },
       "independence": "single"
     },
     {
@@ -646,11 +1239,23 @@
       "question": "platform-guidelines",
       "claim": "Mozilla's guidelines ask for the observed (actual) result and the expected result after the steps.",
       "quote": "After your steps, precisely describe the observed (actual) result and the expected result.",
-      "citations": [{"title": "Bug Writing Guidelines", "author": "Mozilla", "publisher": "Mozilla (bugzilla.mozilla.org)", "date": "n.d.", "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Writing Guidelines",
+          "author": "Mozilla",
+          "publisher": "Mozilla (bugzilla.mozilla.org)",
+          "date": "n.d.",
+          "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Mozilla bug writing guidelines expected actual result",
-      "trust": {"score": 75, "basis": "Quoted from the WebFetch reading; ISTQB (defect-report-expected-and-actual) and Apple (apple-expected-results) ask for the same."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted from the WebFetch reading; ISTQB (defect-report-expected-and-actual) and Apple (apple-expected-results) ask for the same."
+      },
       "independence": "single"
     },
     {
@@ -658,11 +1263,23 @@
       "question": "platform-guidelines",
       "claim": "Mozilla's guidelines ask the reporter to keep observed facts clearly apart from speculation.",
       "quote": "Clearly separate facts (observations) from speculations.",
-      "citations": [{"title": "Bug Writing Guidelines", "author": "Mozilla", "publisher": "Mozilla (bugzilla.mozilla.org)", "date": "n.d.", "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Writing Guidelines",
+          "author": "Mozilla",
+          "publisher": "Mozilla (bugzilla.mozilla.org)",
+          "date": "n.d.",
+          "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Mozilla bug writing guidelines facts observations speculation",
-      "trust": {"score": 70, "basis": "Quoted from the WebFetch reading; the Rapid Software Testing guide (rst-grounded-in-observation) independently grounds a bug in direct observation."},
+      "trust": {
+        "score": 70,
+        "basis": "Quoted from the WebFetch reading; the Rapid Software Testing guide (rst-grounded-in-observation) independently grounds a bug in direct observation."
+      },
       "independence": "single"
     },
     {
@@ -670,11 +1287,23 @@
       "question": "platform-guidelines",
       "claim": "Mozilla's guidelines call steps to reproduce the most important part of a bug report.",
       "quote": "Steps to reproduce are the most important part of any bug report.",
-      "citations": [{"title": "Bug Writing Guidelines", "author": "Mozilla", "publisher": "Mozilla (bugzilla.mozilla.org)", "date": "n.d.", "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Writing Guidelines",
+          "author": "Mozilla",
+          "publisher": "Mozilla (bugzilla.mozilla.org)",
+          "date": "n.d.",
+          "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Mozilla bug writing guidelines steps to reproduce",
-      "trust": {"score": 75, "basis": "Quoted from the WebFetch reading; Apple and Android (apple-steps-to-reproduce, android-steps-to-reproduce) ask for steps too."},
+      "trust": {
+        "score": 75,
+        "basis": "Quoted from the WebFetch reading; Apple and Android (apple-steps-to-reproduce, android-steps-to-reproduce) ask for steps too."
+      },
       "independence": "single"
     },
     {
@@ -682,11 +1311,23 @@
       "question": "platform-guidelines",
       "claim": "Apple's bug-reporting guidance asks for instructions to reproduce the issue, with each step described in detail.",
       "quote": "Your report should include instructions on how to reproduce the issue, with detailed descriptions of each step.",
-      "citations": [{"title": "Bug Reporting", "author": "Apple", "publisher": "Apple Developer", "date": "n.d.", "url": "https://developer.apple.com/bug-reporting/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Reporting",
+          "author": "Apple",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/bug-reporting/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Apple developer bug reporting best practices steps to reproduce expected results",
-      "trust": {"score": 75, "basis": "Apple's own guidance page, quoted from a WebFetch reading; agrees with Mozilla and Android."},
+      "trust": {
+        "score": 75,
+        "basis": "Apple's own guidance page, quoted from a WebFetch reading; agrees with Mozilla and Android."
+      },
       "independence": "single"
     },
     {
@@ -694,11 +1335,23 @@
       "question": "platform-guidelines",
       "claim": "Apple's bug-reporting guidance shows an expected-results line in its example report.",
       "quote": "Expected results: The event should appear and stay on my calendar.",
-      "citations": [{"title": "Bug Reporting", "author": "Apple", "publisher": "Apple Developer", "date": "n.d.", "url": "https://developer.apple.com/bug-reporting/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Reporting",
+          "author": "Apple",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/bug-reporting/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Apple developer bug reporting best practices expected results",
-      "trust": {"score": 70, "basis": "Apple's own example, quoted from a WebFetch reading; an example, not a stated requirement."},
+      "trust": {
+        "score": 70,
+        "basis": "Apple's own example, quoted from a WebFetch reading; an example, not a stated requirement."
+      },
       "independence": "single"
     },
     {
@@ -706,11 +1359,23 @@
       "question": "platform-guidelines",
       "claim": "Apple asks for one issue per report and may return reports that discuss several issues for resubmission.",
       "quote": "Reports that discuss multiple issues aren’t actionable and may be returned for resubmission as separate reports.",
-      "citations": [{"title": "Bug Reporting", "author": "Apple", "publisher": "Apple Developer", "date": "n.d.", "url": "https://developer.apple.com/bug-reporting/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Reporting",
+          "author": "Apple",
+          "publisher": "Apple Developer",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/bug-reporting/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Apple developer bug reporting one issue per report",
-      "trust": {"score": 75, "basis": "Apple's own guidance, quoted from a WebFetch reading; the Rapid Software Testing guide (rst-one-problem-per-report) independently says the same."},
+      "trust": {
+        "score": 75,
+        "basis": "Apple's own guidance, quoted from a WebFetch reading; the Rapid Software Testing guide (rst-one-problem-per-report) independently says the same."
+      },
       "independence": "single"
     },
     {
@@ -718,11 +1383,23 @@
       "question": "platform-guidelines",
       "claim": "The Android Open Source Project asks that a bug report include its steps to reproduce.",
       "quote": "If the issue is a bug, include the steps to reproduce the bug in the comments.",
-      "citations": [{"title": "Report bugs", "author": "Google", "publisher": "Android Open Source Project", "date": "n.d.", "url": "https://source.android.com/docs/setup/contribute/report-bugs", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Report bugs",
+          "author": "Google",
+          "publisher": "Android Open Source Project",
+          "date": "n.d.",
+          "url": "https://source.android.com/docs/setup/contribute/report-bugs",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Android Open Source Project report bugs steps to reproduce",
-      "trust": {"score": 70, "basis": "The platform owner's own page, quoted from a WebFetch reading; it gives steps only, with no expected-result or frequency guidance."},
+      "trust": {
+        "score": 70,
+        "basis": "The platform owner's own page, quoted from a WebFetch reading; it gives steps only, with no expected-result or frequency guidance."
+      },
       "independence": "single"
     },
     {
@@ -730,11 +1407,23 @@
       "question": "platform-guidelines",
       "claim": "The Android Open Source Project warns that a report saying only that something isn't working will likely need more information.",
       "quote": "A comment that only states something isn't working is likely to require further information.",
-      "citations": [{"title": "Report bugs", "author": "Google", "publisher": "Android Open Source Project", "date": "n.d.", "url": "https://source.android.com/docs/setup/contribute/report-bugs", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Report bugs",
+          "author": "Google",
+          "publisher": "Android Open Source Project",
+          "date": "n.d.",
+          "url": "https://source.android.com/docs/setup/contribute/report-bugs",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "platform owner's guidelines",
       "generated_by": "grow-cookbook research agent",
       "query": "Android Open Source Project report bugs",
-      "trust": {"score": 65, "basis": "Quoted from a WebFetch reading of the platform owner's page."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted from a WebFetch reading of the platform owner's page."
+      },
       "independence": "single"
     },
     {
@@ -742,11 +1431,23 @@
       "question": "experts-view",
       "claim": "Bolton's checklist for a bug report starts with the problem perceived: what bad thing happens, or what good thing fails to happen.",
       "quote": "Problem : Provide a description of the problem you perceive. What Bad Thing happens? What Good Thing fails to happen?",
-      "citations": [{"title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2024-02-14", "url": "https://developsense.com/?p=11835", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2024-02-14",
+          "url": "https://developsense.com/?p=11835",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton problem example oracle bug report checklist",
-      "trust": {"score": 60, "basis": "A recognised testing expert's recent checklist, quoted directly; matches the Rapid Software Testing guide's elements (rst-grounded-in-observation)."},
+      "trust": {
+        "score": 60,
+        "basis": "A recognised testing expert's recent checklist, quoted directly; matches the Rapid Software Testing guide's elements (rst-grounded-in-observation)."
+      },
       "independence": "single"
     },
     {
@@ -754,11 +1455,23 @@
       "question": "experts-view",
       "claim": "Bolton's checklist asks what was observed about the product itself: context, data, state, steps, logs or evidence that let others see what the tester saw.",
       "quote": "Example : What did you observe about the product itself? Describe context, data, state, steps, logs, behaviour or evidence that would allow other people to see what you saw.",
-      "citations": [{"title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2024-02-14", "url": "https://developsense.com/?p=11835", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2024-02-14",
+          "url": "https://developsense.com/?p=11835",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton problem example oracle bug report checklist",
-      "trust": {"score": 60, "basis": "Quoted directly; agrees with Mozilla's facts-versus-speculation rule (mozilla-facts-vs-speculation)."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; agrees with Mozilla's facts-versus-speculation rule (mozilla-facts-vs-speculation)."
+      },
       "independence": "single"
     },
     {
@@ -766,11 +1479,23 @@
       "question": "experts-view",
       "claim": "Bolton's checklist asks for the oracle: the means by which the problem was recognised, usually an observable inconsistency between the product and some specification, example, tool, preference or principle.",
       "quote": "Oracle : The means by which you recognized the problem. That’s generally about an observable, describable inconsistency between the product and some specification, example, tool, preference, or principle, in the view of someone who matters.",
-      "citations": [{"title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2024-02-14", "url": "https://developsense.com/?p=11835", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2024-02-14",
+          "url": "https://developsense.com/?p=11835",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton problem example oracle bug report checklist",
-      "trust": {"score": 60, "basis": "Quoted directly; the Rapid Software Testing guide (rst-all-reports-based-on-oracle) states the same requirement."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; the Rapid Software Testing guide (rst-all-reports-based-on-oracle) states the same requirement."
+      },
       "independence": "single"
     },
     {
@@ -778,11 +1503,23 @@
       "question": "experts-view",
       "claim": "Bolton notes that some oracles are strong and authoritative while others only suggest a problem.",
       "quote": "Bear in mind that some oracles are stronger and more authoritative; others are weaker, and merely suggestive of a problem.",
-      "citations": [{"title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2024-02-14", "url": "https://developsense.com/?p=11835", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Problem, Example, Oracle: A Quick Checklist for Bug Reports",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2024-02-14",
+          "url": "https://developsense.com/?p=11835",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton problem example oracle bug report checklist",
-      "trust": {"score": 55, "basis": "Quoted directly; one expert's caution."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly; one expert's caution."
+      },
       "independence": "single"
     },
     {
@@ -790,11 +1527,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide says a perceived bug ought to be grounded in direct observation of the product itself, with the steps and data used stated specifically.",
       "quote": "How you encountered that problem. The bug you perceive ought to be grounded in a direct observation of the product itself. Be specific about steps and data you used.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports",
-      "trust": {"score": 65, "basis": "The Rapid Software Testing authors' own guide, quoted directly from the downloaded PDF; Mozilla (mozilla-facts-vs-speculation) and Bolton (bolton-peo-example) agree."},
+      "trust": {
+        "score": 65,
+        "basis": "The Rapid Software Testing authors' own guide, quoted directly from the downloaded PDF; Mozilla (mozilla-facts-vs-speculation) and Bolton (bolton-peo-example) agree."
+      },
       "independence": "single"
     },
     {
@@ -802,11 +1551,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide says every bug report rests on some oracle, the means by which the problem is recognised.",
       "quote": "All bug reports are based on some sort of oracle, and maybe several different oracles.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports oracle",
-      "trust": {"score": 65, "basis": "Quoted directly; agrees with Bolton's checklist (bolton-peo-oracle)."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; agrees with Bolton's checklist (bolton-peo-oracle)."
+      },
       "independence": "single"
     },
     {
@@ -814,11 +1575,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide asks the reporter to say why the behaviour is a bug unless it is obvious.",
       "quote": "Indicate your oracles. That means say why you think this is a bug, unless it is obvious.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports oracle",
-      "trust": {"score": 65, "basis": "Quoted directly; it makes the stated reason conditional on the problem not being obvious."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; it makes the stated reason conditional on the problem not being obvious."
+      },
       "independence": "single"
     },
     {
@@ -826,11 +1599,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide asks testers to be judicious about an 'expected:' line and never to write a vacuous one such as 'the product should give the correct result'.",
       "quote": "Please be judicious about writing “expected:” at the end of a bug description. Testers often throw that into a bug report even when the expected result is obvious. Never say “Expected: the product should give the correct result” or other vacuous statement.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports expected result",
-      "trust": {"score": 65, "basis": "Quoted directly; it stands against ISTQB's and Mozilla's habit of always pairing expected with actual (defect-report-expected-and-actual, mozilla-observed-and-expected) only where the expectation is obvious or vacuous."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; it stands against ISTQB's and Mozilla's habit of always pairing expected with actual (defect-report-expected-and-actual, mozilla-observed-and-expected) only where the expectation is obvious or vacuous."
+      },
       "independence": "single"
     },
     {
@@ -838,11 +1623,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide names pedantic reporting, such as 'Expected: product doesn't crash', as a common bug-report mistake.",
       "quote": "Pedantic reporting. The report includes information that is common knowledge, implying that the developer is ignorant of basic facts. Example “Actual: product crashes. Expected: product doesn’t crash.” The second part of that is pedantic.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports common mistakes",
-      "trust": {"score": 65, "basis": "Quoted directly from the guide's list of mistakes."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly from the guide's list of mistakes."
+      },
       "independence": "single"
     },
     {
@@ -850,11 +1647,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide says an opinion without enough grounding or evidence is no basis for a bug report.",
       "quote": "Reporting an unsupported opinion. A personal opinion with insufficient grounding or evidence to support it is no basis to report a bug.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports common mistakes",
-      "trust": {"score": 65, "basis": "Quoted directly from the guide's list of mistakes."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly from the guide's list of mistakes."
+      },
       "independence": "single"
     },
     {
@@ -862,11 +1671,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide names a report without enough information for the developer to verify the problem as a common mistake.",
       "quote": "Not enough information to reproduce. There is not enough information to enable the developer to verify the existence of the problem.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports common mistakes",
-      "trust": {"score": 65, "basis": "Quoted directly; agrees with ISTQB (defect-report-sufficient-information)."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; agrees with ISTQB (defect-report-sufficient-information)."
+      },
       "independence": "single"
     },
     {
@@ -874,11 +1695,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide asks whether the problem has been seen more than once and, if so, when.",
       "quote": "Have you seen the problem more than once? If so, what other times have you seen it?",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports reproduce",
-      "trust": {"score": 65, "basis": "Quoted directly; Mozilla's reproducibility question (mozilla-reproducibility-at-will) agrees."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; Mozilla's reproducibility question (mozilla-reproducibility-at-will) agrees."
+      },
       "independence": "single"
     },
     {
@@ -886,11 +1719,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide asks whether the reporter tried to reproduce the effect, and with what steps.",
       "quote": "Have you tried to reproduce the effect? What are the steps to reproduce it?",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports reproduce",
-      "trust": {"score": 65, "basis": "Quoted directly; Mozilla asks for more information when a bug reproduces only occasionally (mozilla-occasional-needs-more-info)."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; Mozilla asks for more information when a bug reproduces only occasionally (mozilla-occasional-needs-more-info)."
+      },
       "independence": "single"
     },
     {
@@ -898,11 +1743,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide asks how often the problem appears or how easy it is to make happen.",
       "quote": "How frequently does it appear; or how easy is it to make happen?",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports frequency",
-      "trust": {"score": 60, "basis": "Quoted directly; agrees with Mozilla (mozilla-reproducibility-at-will)."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; agrees with Mozilla (mozilla-reproducibility-at-will)."
+      },
       "independence": "single"
     },
     {
@@ -910,11 +1767,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide says to avoid reporting several problems in one bug report.",
       "quote": "Avoid reporting multiple problems in one bug report.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports",
-      "trust": {"score": 65, "basis": "Quoted directly; Apple (apple-one-issue-per-report) says the same."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; Apple (apple-one-issue-per-report) says the same."
+      },
       "independence": "single"
     },
     {
@@ -922,11 +1791,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide asks for the environment: the platform tested on, typically hardware and operating system.",
       "quote": "Environment. The platform you were testing on. Typically this is your hardware, browser and operating system.",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports environment",
-      "trust": {"score": 60, "basis": "Quoted directly; agrees with ISTQB (defect-report-identifies-object-and-environment)."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; agrees with ISTQB (defect-report-identifies-object-and-environment)."
+      },
       "independence": "single"
     },
     {
@@ -934,11 +1815,23 @@
       "question": "experts-view",
       "claim": "The Rapid Software Testing guide suggests investigating a puzzling bug for about ten minutes before checking in with a developer.",
       "quote": "I recommend the 10-minute heuristic: investigate a puzzling bug for no more than about 10-minutes before checking in with a developer about it",
-      "citations": [{"title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "n.d.", "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rapid Software Testing Guide to Making Good Bug Reports (v1.6)",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "n.d.",
+          "url": "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner guide",
       "generated_by": "grow-cookbook research agent",
       "query": "Rapid Software Testing guide making good bug reports investigate",
-      "trust": {"score": 45, "basis": "Quoted directly; a heuristic with a number but no study, so it meets no Statistical bar and supports only a MAY."},
+      "trust": {
+        "score": 45,
+        "basis": "Quoted directly; a heuristic with a number but no study, so it meets no Statistical bar and supports only a MAY."
+      },
       "independence": "single"
     },
     {
@@ -946,11 +1839,23 @@
       "question": "experts-view",
       "claim": "Hendrickson says a good charter gives direction without overspecifying test actions.",
       "quote": "A good charter offers direction without overspecifying test actions.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters good charter",
-      "trust": {"score": 65, "basis": "The author's own book excerpt from the publisher, quoted directly; the ISTQB Test Analyst syllabus (charter-does-not-list-tests) agrees."},
+      "trust": {
+        "score": 65,
+        "basis": "The author's own book excerpt from the publisher, quoted directly; the ISTQB Test Analyst syllabus (charter-does-not-list-tests) agrees."
+      },
       "independence": "single"
     },
     {
@@ -958,11 +1863,23 @@
       "question": "experts-view",
       "claim": "Hendrickson warns that a charter too specific becomes just another way of writing individual tests.",
       "quote": "When charters are too specific, they become just a different (and weird) way of expressing individual tests.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters too specific too broad",
-      "trust": {"score": 65, "basis": "Quoted directly; ISTQB's detail trade-off (charter-detail-trade-off) agrees."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly; ISTQB's detail trade-off (charter-detail-trade-off) agrees."
+      },
       "independence": "single"
     },
     {
@@ -970,11 +1887,23 @@
       "question": "experts-view",
       "claim": "Hendrickson warns that a charter too broad gives too little focus to know when exploring is done.",
       "quote": "On the flip side, charters that are too broad run the risk of not providing enough focus. You won’t know how to tell when you’re done exploring if the target is too big.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters too specific too broad",
-      "trust": {"score": 65, "basis": "Quoted directly."},
+      "trust": {
+        "score": 65,
+        "basis": "Quoted directly."
+      },
       "independence": "single"
     },
     {
@@ -982,11 +1911,23 @@
       "question": "experts-view",
       "claim": "Hendrickson advises several charters, each focused on one area or one kind of problem, over a single huge charter.",
       "quote": "Rather than a single huge charter, it is better to craft multiple charters, where each focuses on a single area and/or a specific type of security hole",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters too specific too broad",
-      "trust": {"score": 60, "basis": "Quoted directly; the example is about security, but the advice is general."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; the example is about security, but the advice is general."
+      },
       "independence": "single"
     },
     {
@@ -994,11 +1935,23 @@
       "question": "experts-view",
       "claim": "Hendrickson says charters are framed with stakeholders to answer the most valuable questions about the software.",
       "quote": "To ensure the information you find has value, you need to work closely with your stakeholders to identify and frame charters targeted at answering the most valuable questions about the software.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters stakeholders",
-      "trust": {"score": 60, "basis": "Quoted directly; Walen's pairing on charters (ast-charter-definition's page) points the same way."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; Walen's pairing on charters (ast-charter-definition's page) points the same way."
+      },
       "independence": "single"
     },
     {
@@ -1006,11 +1959,23 @@
       "question": "experts-view",
       "claim": "Hendrickson warns against spending time discovering information nobody will act on.",
       "quote": "Asking these questions is important because you don’t want to spend a lot of time discovering information that no one will ever take action on.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters stakeholders",
-      "trust": {"score": 55, "basis": "Quoted directly."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly."
+      },
       "independence": "single"
     },
     {
@@ -1018,11 +1983,23 @@
       "question": "experts-view",
       "claim": "Hendrickson says chartering is an ongoing process.",
       "quote": "Chartering is an ongoing process.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters ongoing",
-      "trust": {"score": 55, "basis": "Quoted directly; Lyndsay (lyndsay-charters-incomplete) agrees."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly; Lyndsay (lyndsay-charters-incomplete) agrees."
+      },
       "independence": "single"
     },
     {
@@ -1030,11 +2007,23 @@
       "question": "experts-view",
       "claim": "Hendrickson treats the temptation to wander from a charter as a cue to write more charters for later sessions.",
       "quote": "Such temptations are a cue that you need to jot down additional charters to pursue in later sessions.",
-      "citations": [{"title": "Explore It! (excerpt: Charters)", "author": "Elisabeth Hendrickson", "publisher": "The Pragmatic Bookshelf", "date": "2013-02", "url": "https://media.pragprog.com/titles/ehxta/charters.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Explore It! (excerpt: Charters)",
+          "author": "Elisabeth Hendrickson",
+          "publisher": "The Pragmatic Bookshelf",
+          "date": "2013-02",
+          "url": "https://media.pragprog.com/titles/ehxta/charters.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert's book (publisher's excerpt)",
       "generated_by": "grow-cookbook research agent",
       "query": "Hendrickson Explore It charters ongoing",
-      "trust": {"score": 60, "basis": "Quoted directly; complements session-based test management's opportunity time (sbtm-on-charter-vs-opportunity)."},
+      "trust": {
+        "score": 60,
+        "basis": "Quoted directly; complements session-based test management's opportunity time (sbtm-on-charter-vs-opportunity)."
+      },
       "independence": "single"
     },
     {
@@ -1042,11 +2031,23 @@
       "question": "experts-view",
       "claim": "Bolton frames testing as composing and justifying two parallel stories, one about the product and one about the testing.",
       "quote": "To test is to compose, edit, narrate, and justify two parallel stories.",
-      "citations": [{"title": "Test Framing", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2011-05", "url": "https://developsense.com/presentations/2011-05-STAREast-TestFraming.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Test Framing",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2011-05",
+          "url": "https://developsense.com/presentations/2011-05-STAREast-TestFraming.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert conference presentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton test framing testing story",
-      "trust": {"score": 55, "basis": "Quoted directly from the slides; the HTSM's quality story (htsm-quality-story) is the same idea from the model's owner."},
+      "trust": {
+        "score": 35,
+        "basis": "Quoted directly from the slides; the HTSM's quality story (htsm-quality-story) is the same idea from the model's owner. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote says only \"two parallel stories\". That one is about the product and one about the testing comes from the next slide text (\"a story about the product… a story about testing\"), which is not quoted; lowered 55->35."
+      },
       "independence": "single"
     },
     {
@@ -1054,11 +2055,23 @@
       "question": "experts-view",
       "claim": "Bolton says the testing story covers how the product was configured, operated and observed, what has not been tested yet, what won't be, and why the work was good enough.",
       "quote": "But also tell a story about testing… …how you configured, operated and observed it… …about what you haven’t tested, yet… …or won’t test, at all… …and about why what you did was good enough.",
-      "citations": [{"title": "Test Framing", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2011-05", "url": "https://developsense.com/presentations/2011-05-STAREast-TestFraming.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Test Framing",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2011-05",
+          "url": "https://developsense.com/presentations/2011-05-STAREast-TestFraming.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert conference presentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton test framing testing story",
-      "trust": {"score": 55, "basis": "Quoted directly from consecutive slides (joined as the slides run); supports reporting coverage and gaps, including on a session that found nothing."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly from consecutive slides (joined as the slides run); supports reporting coverage and gaps, including on a session that found nothing."
+      },
       "independence": "single"
     },
     {
@@ -1066,11 +2079,23 @@
       "question": "experts-view",
       "claim": "The Heuristic Test Strategy Model says the result of testing is an assessment told as a story, including bugs and curios, not a verification of quality.",
       "quote": "The Testing and Quality Story is the result of testing. You can never know the \"actual\" quality of a software product— you can’t “verify” quality, as such— but by performing tests, you can make an assessment, and that takes the form of a story you tell (including bugs, curios, etc.).",
-      "citations": [{"title": "Heuristic Test Strategy Model v6.0", "author": "James Bach", "publisher": "Satisfice, Inc.", "date": "2024-02-08", "url": "https://www.developsense.com/resource/htsm.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Heuristic Test Strategy Model v6.0",
+          "author": "James Bach",
+          "publisher": "Satisfice, Inc.",
+          "date": "2024-02-08",
+          "url": "https://www.developsense.com/resource/htsm.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "method owner's model",
       "generated_by": "grow-cookbook research agent",
       "query": "Heuristic Test Strategy Model quality story",
-      "trust": {"score": 55, "basis": "Quoted directly; agrees with Bolton's two stories (bolton-two-stories)."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly; agrees with Bolton's two stories (bolton-two-stories)."
+      },
       "independence": "single"
     },
     {
@@ -1078,11 +2103,23 @@
       "question": "experts-view",
       "claim": "Bolton advises treating anything documentation says about a product as rumour until the product itself has been engaged.",
       "quote": "we should treat anything that any documentation says about a product as a rumour until we’ve engaged with the product.",
-      "citations": [{"title": "How Models Change", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2014-07-19", "url": "https://developsense.com/?p=1773", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "How Models Change",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2014-07-19",
+          "url": "https://developsense.com/?p=1773",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "SFDPOT product elements coverage outline Bolton",
-      "trust": {"score": 50, "basis": "Quoted directly; supports both looking past what specs say and grounding findings in the product itself."},
+      "trust": {
+        "score": 50,
+        "basis": "Quoted directly; supports both looking past what specs say and grounding findings in the product itself."
+      },
       "independence": "single"
     },
     {
@@ -1090,11 +2127,23 @@
       "question": "experts-view",
       "claim": "Bolton names the risk that an exploratory tester fails to document something important, and says the answer is to manage it, documenting what is done and has been done.",
       "quote": "There’s a potential risk associated with an exploratory approach: that the tester might fail to document something important.",
-      "citations": [{"title": "What Exploratory Testing Is Not (Part 5): Undocumented Testing", "author": "Michael Bolton", "publisher": "DevelopSense", "date": "2011-12-21", "url": "https://developsense.com/blog/2011/12/what-exploratory-testing-is-not-part-5-undocumented-testing", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "What Exploratory Testing Is Not (Part 5): Undocumented Testing",
+          "author": "Michael Bolton",
+          "publisher": "DevelopSense",
+          "date": "2011-12-21",
+          "url": "https://developsense.com/blog/2011/12/what-exploratory-testing-is-not-part-5-undocumented-testing",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Bolton what exploratory testing is not undocumented testing",
-      "trust": {"score": 55, "basis": "Quoted directly; the same article points to session-based test management for managing the risk."},
+      "trust": {
+        "score": 35,
+        "basis": "Quoted directly; the same article points to session-based test management for managing the risk. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote states only the risk. The answer the claim gives (\"we manage it\", documenting what we are doing and what we have done) comes in the sentences after it and is not quoted; lowered 55->35."
+      },
       "independence": "single"
     },
     {
@@ -1102,11 +2151,23 @@
       "question": "experts-view",
       "claim": "Bach and Bolton say session-based test management was created to bring more accountability to informal exploratory work.",
       "quote": "with the goal of creating a higher level of accountability around informal exploratory work.",
-      "citations": [{"title": "Exploratory Testing 3.0", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "2015-03", "url": "https://www.satisfice.com/blog/archives/1509", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Exploratory Testing 3.0",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "2015-03",
+          "url": "https://www.satisfice.com/blog/archives/1509",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Exploratory Testing 3.0 Bach Bolton",
-      "trust": {"score": 55, "basis": "Quoted directly; the authors' own account of their method's history."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly; the authors' own account of their method's history."
+      },
       "independence": "single"
     },
     {
@@ -1114,11 +2175,23 @@
       "question": "experts-view",
       "claim": "Bach and Bolton define testing as evaluating a product by learning about it through exploration and experimentation, including questioning, modeling, observation and inference.",
       "quote": "Testing is the process of evaluating a product by learning about it through exploration and experimentation, which includes: questioning, study, modeling, observation and inference, output checking, etc.",
-      "citations": [{"title": "Exploratory Testing 3.0", "author": "James Bach and Michael Bolton", "publisher": "Satisfice", "date": "2015-03", "url": "https://www.satisfice.com/blog/archives/1509", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Exploratory Testing 3.0",
+          "author": "James Bach and Michael Bolton",
+          "publisher": "Satisfice",
+          "date": "2015-03",
+          "url": "https://www.satisfice.com/blog/archives/1509",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "expert practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Exploratory Testing 3.0 Bach Bolton",
-      "trust": {"score": 55, "basis": "Quoted directly; inference is part of testing here, which bounds how far the observed-not-inferred check reaches: inference guides testing, observation grounds the report."},
+      "trust": {
+        "score": 55,
+        "basis": "Quoted directly; inference is part of testing here, which bounds how far the observed-not-inferred check reaches: inference guides testing, observation grounds the report."
+      },
       "independence": "single"
     },
     {
@@ -1126,11 +2199,23 @@
       "question": "best-practices",
       "claim": "Hard cap: 25 browser steps per pass.",
       "quote": "Hard cap: 25 browser steps per pass.",
-      "citations": [{"title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "prior rule text",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1138,11 +2223,23 @@
       "question": "best-practices",
       "claim": "Stay on the site's own origin.",
       "quote": "Stay on the site's own origin.",
-      "citations": [{"title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "prior rule text",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1150,11 +2247,23 @@
       "question": "best-practices",
       "claim": "Every reported anomaly carries all four parts: where (URL or path), what was seen, what was expected instead, and how repeatable it appeared. An anomaly missing the expectation is a fail — without it there is no claim of wrongness.",
       "quote": "Every reported anomaly carries all four parts: where (URL or path), what was seen, what was expected instead, and how repeatable it appeared. An anomaly missing the expectation is a fail — without it there is no claim of wrongness.",
-      "citations": [{"title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "prior rule text",
-      "trust": {"score": 0, "basis": "no research source supports it as a hard fail; contradicted by rst-judicious-expected, rst-pedantic-reporting and rst-indicate-oracles-unless-obvious, which make the stated expectation conditional on the problem not being obvious"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it as a hard fail; contradicted by rst-judicious-expected, rst-pedantic-reporting and rst-indicate-oracles-unless-obvious, which make the stated expectation conditional on the problem not being obvious"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1162,11 +2271,23 @@
       "question": "best-practices",
       "claim": "Findings stay inside the charter's ranked focus areas and respect its \"leave alone\" rules; an anomaly in an excluded area is reported as out-of-charter rather than raised as a finding.",
       "quote": "Findings stay inside the charter's ranked focus areas and respect its \"leave alone\" rules; an anomaly in an excluded area is reported as out-of-charter rather than raised as a finding.",
-      "citations": [{"title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "prior rule text",
-      "trust": {"score": 0, "basis": "no research source supports it; contradicted by sbtm-on-charter-vs-opportunity, which encourages raising an important off-charter problem and logs the time as opportunity"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it; contradicted by sbtm-on-charter-vs-opportunity, which encourages raising an important off-charter problem and logs the time as opportunity"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -1174,41 +2295,309 @@
       "question": "best-practices",
       "claim": "A pass that found nothing says so plainly and reports the areas actually covered. Padding a clean pass with severity-free observations is a fail, and so is a silent empty result.",
       "quote": "A pass that found nothing says so plainly and reports the areas actually covered. Padding a clean pass with severity-free observations is a fail, and so is a silent empty result.",
-      "citations": [{"title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "exploratory-testing-charters (teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/exploratory-charter.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "prior rule text",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     }
   ],
   "verdicts": [
-    {"rule": "charter-names-scope-cap-focus-and-exclusions", "verdict": "supported", "claims": ["charter-mission-scope-limitations", "charter-optional-contents", "charter-states-what-product-must-never-do", "sbtm-session-sheet-sections", "charter-is-unit-of-work", "whittaker-landmark-concentrate", "charter-detail-trade-off"]},
-    {"rule": "look-for-what-specs-cannot-anticipate", "verdict": "supported", "claims": ["iso-et-hunts-hidden-properties", "et-explores-untested-areas", "et-complements-formal-techniques", "bolton-documentation-is-rumour", "htsm-cover-what-matters"]},
-    {"rule": "session-has-hard-step-cap", "verdict": "unsupported", "claims": ["session-has-hard-step-cap-prior", "session-is-chartered-time-box", "sbtm-session-length-ninety-minutes", "session-length-range"]},
-    {"rule": "stay-on-charter-origin", "verdict": "unsupported", "claims": ["stay-on-charter-origin-prior"]},
-    {"rule": "report-anomaly-where-what-expected-repeatable", "verdict": "supported", "claims": ["defect-report-expected-and-actual", "defect-report-identifies-object-and-environment", "defect-report-enables-reproduction", "iso-incident-report-definition", "mozilla-observed-and-expected", "mozilla-reproducibility-at-will", "apple-expected-results", "bolton-peo-example", "rst-seen-more-than-once", "rst-frequency"]},
-    {"rule": "no-anomalies-said-plainly", "verdict": "supported", "claims": ["bolton-two-stories", "bolton-story-of-untested", "htsm-quality-story", "sbtm-proof-debrief"]},
-    {"rule": "anomaly-carries-all-four-parts", "verdict": "contradicted", "claims": ["anomaly-carries-all-four-parts-prior", "rst-judicious-expected", "rst-pedantic-reporting", "rst-indicate-oracles-unless-obvious"]},
-    {"rule": "finding-is-observed-not-inferred", "verdict": "supported", "claims": ["rst-grounded-in-observation", "mozilla-facts-vs-speculation", "bolton-peo-example", "rst-unsupported-opinion", "bolton-documentation-is-rumour", "et3-testing-definition"]},
-    {"rule": "findings-stay-inside-charter", "verdict": "contradicted", "claims": ["findings-stay-inside-charter-prior", "sbtm-on-charter-vs-opportunity"]},
-    {"rule": "clean-pass-reports-coverage", "verdict": "unsupported", "claims": ["clean-pass-reports-coverage-prior", "bolton-story-of-untested", "htsm-quality-story", "sbtm-bugs-issues-notes"]},
-    {"rule": "repeatability-states-retry", "verdict": "supported", "claims": ["rst-tried-to-reproduce", "rst-seen-more-than-once", "mozilla-occasional-needs-more-info", "mozilla-reproducibility-at-will"]},
-    {"rule": "charter-states-target-resources-and-information-sought", "verdict": "new", "claims": ["charter-format-explore-with-to-discover", "hendrickson-template-via-lyndsay", "ast-charter-definition", "sbtm-session-definition", "ghazi-charter-checklists", "ghazi-levels-of-exploration"]},
-    {"rule": "charter-neither-too-narrow-nor-too-broad", "verdict": "new", "claims": ["hendrickson-direction-without-overspecifying", "hendrickson-too-specific", "hendrickson-too-broad", "hendrickson-multiple-focused-charters", "charter-does-not-list-tests", "charter-detail-trade-off"]},
-    {"rule": "charters-framed-with-stakeholders-and-kept-open", "verdict": "new", "claims": ["hendrickson-work-with-stakeholders", "hendrickson-actionable-information", "hendrickson-chartering-ongoing", "lyndsay-charters-incomplete", "sbtm-todo-session-sheets"]},
-    {"rule": "session-is-time-boxed", "verdict": "new", "claims": ["session-is-chartered-time-box", "sbtm-session-definition", "sbtm-session-length-ninety-minutes", "session-length-range", "charter-is-unit-of-work"]},
-    {"rule": "session-is-debriefed", "verdict": "new", "claims": ["session-is-chartered-time-box", "sbtm-debrief-each-session", "sbtm-proof-debrief", "sbtm-dropping-debriefs-hurt", "sbtm-abort-or-rescope", "et3-accountability"]},
-    {"rule": "session-sheet-keeps-bugs-issues-and-notes", "verdict": "new", "claims": ["sbtm-session-sheet-sections", "sbtm-bugs-issues-notes", "session-sheet-records-steps", "session-sheet-logs-questions-observations", "azure-test-feedback-extension", "bolton-risk-of-not-documenting"]},
-    {"rule": "off-charter-work-logged-as-opportunity", "verdict": "new", "claims": ["sbtm-on-charter-vs-opportunity", "hendrickson-temptations-new-charters"]},
-    {"rule": "clean-session-reports-coverage-and-gaps", "verdict": "new", "claims": ["bolton-two-stories", "bolton-story-of-untested", "htsm-quality-story", "sbtm-proof-debrief", "htsm-cover-what-matters"]},
-    {"rule": "finding-states-its-oracle", "verdict": "new", "claims": ["bolton-peo-problem", "bolton-peo-oracle", "rst-all-reports-based-on-oracle", "rst-indicate-oracles-unless-obvious", "rst-judicious-expected", "bolton-oracles-vary-strength"]},
-    {"rule": "finding-gives-steps-to-reproduce", "verdict": "new", "claims": ["defect-report-enables-reproduction", "defect-report-sufficient-information", "mozilla-steps-most-important", "apple-steps-to-reproduce", "android-steps-to-reproduce", "android-not-working-insufficient", "rst-not-enough-to-reproduce", "azure-action-log-reproduce"]},
-    {"rule": "finding-records-environment", "verdict": "new", "claims": ["defect-report-identifies-object-and-environment", "rst-environment"]},
-    {"rule": "one-problem-per-finding", "verdict": "new", "claims": ["apple-one-issue-per-report", "rst-one-problem-per-report"]},
-    {"rule": "use-product-element-heuristics-and-tours", "verdict": "new", "claims": ["htsm-model-purpose", "htsm-product-elements", "bolton-time-added-to-product-elements", "whittaker-landmark-tour", "iso-experience-based-tours-attacks"]},
-    {"rule": "exploration-designs-runs-and-learns-together", "verdict": "new", "claims": ["iso-et-definition", "et-explores-untested-areas", "kaner-et-definition", "et3-testing-definition"]},
-    {"rule": "check-for-duplicate-before-filing", "verdict": "new", "claims": ["azure-duplicate-search"]},
-    {"rule": "time-box-puzzling-bug-investigation", "verdict": "new", "claims": ["rst-ten-minute-heuristic"]}
+    {
+      "rule": "charter-names-scope-cap-focus-and-exclusions",
+      "verdict": "supported",
+      "claims": [
+        "charter-mission-scope-limitations",
+        "charter-optional-contents",
+        "charter-states-what-product-must-never-do",
+        "sbtm-session-sheet-sections",
+        "charter-is-unit-of-work",
+        "whittaker-landmark-concentrate",
+        "charter-detail-trade-off"
+      ]
+    },
+    {
+      "rule": "look-for-what-specs-cannot-anticipate",
+      "verdict": "supported",
+      "claims": [
+        "iso-et-hunts-hidden-properties",
+        "et-explores-untested-areas",
+        "et-complements-formal-techniques",
+        "bolton-documentation-is-rumour",
+        "htsm-cover-what-matters"
+      ]
+    },
+    {
+      "rule": "session-has-hard-step-cap",
+      "verdict": "unsupported",
+      "claims": [
+        "session-has-hard-step-cap-prior",
+        "session-is-chartered-time-box",
+        "sbtm-session-length-ninety-minutes",
+        "session-length-range"
+      ]
+    },
+    {
+      "rule": "stay-on-charter-origin",
+      "verdict": "unsupported",
+      "claims": [
+        "stay-on-charter-origin-prior"
+      ]
+    },
+    {
+      "rule": "report-anomaly-where-what-expected-repeatable",
+      "verdict": "supported",
+      "claims": [
+        "defect-report-expected-and-actual",
+        "defect-report-identifies-object-and-environment",
+        "defect-report-enables-reproduction",
+        "iso-incident-report-definition",
+        "mozilla-observed-and-expected",
+        "mozilla-reproducibility-at-will",
+        "apple-expected-results",
+        "bolton-peo-example",
+        "rst-seen-more-than-once",
+        "rst-frequency"
+      ]
+    },
+    {
+      "rule": "no-anomalies-said-plainly",
+      "verdict": "supported",
+      "claims": [
+        "bolton-two-stories",
+        "bolton-story-of-untested",
+        "htsm-quality-story",
+        "sbtm-proof-debrief"
+      ]
+    },
+    {
+      "rule": "anomaly-carries-all-four-parts",
+      "verdict": "contradicted",
+      "claims": [
+        "anomaly-carries-all-four-parts-prior",
+        "rst-judicious-expected",
+        "rst-pedantic-reporting",
+        "rst-indicate-oracles-unless-obvious"
+      ]
+    },
+    {
+      "rule": "finding-is-observed-not-inferred",
+      "verdict": "supported",
+      "claims": [
+        "rst-grounded-in-observation",
+        "mozilla-facts-vs-speculation",
+        "bolton-peo-example",
+        "rst-unsupported-opinion",
+        "bolton-documentation-is-rumour",
+        "et3-testing-definition"
+      ]
+    },
+    {
+      "rule": "findings-stay-inside-charter",
+      "verdict": "contradicted",
+      "claims": [
+        "findings-stay-inside-charter-prior",
+        "sbtm-on-charter-vs-opportunity"
+      ]
+    },
+    {
+      "rule": "clean-pass-reports-coverage",
+      "verdict": "unsupported",
+      "claims": [
+        "clean-pass-reports-coverage-prior",
+        "bolton-story-of-untested",
+        "htsm-quality-story",
+        "sbtm-bugs-issues-notes"
+      ]
+    },
+    {
+      "rule": "repeatability-states-retry",
+      "verdict": "supported",
+      "claims": [
+        "rst-tried-to-reproduce",
+        "rst-seen-more-than-once",
+        "mozilla-occasional-needs-more-info",
+        "mozilla-reproducibility-at-will"
+      ]
+    },
+    {
+      "rule": "charter-states-target-resources-and-information-sought",
+      "verdict": "new",
+      "claims": [
+        "charter-format-explore-with-to-discover",
+        "hendrickson-template-via-lyndsay",
+        "ast-charter-definition",
+        "sbtm-session-definition",
+        "ghazi-charter-checklists",
+        "ghazi-levels-of-exploration"
+      ]
+    },
+    {
+      "rule": "charter-neither-too-narrow-nor-too-broad",
+      "verdict": "new",
+      "claims": [
+        "hendrickson-direction-without-overspecifying",
+        "hendrickson-too-specific",
+        "hendrickson-too-broad",
+        "hendrickson-multiple-focused-charters",
+        "charter-does-not-list-tests",
+        "charter-detail-trade-off"
+      ]
+    },
+    {
+      "rule": "charters-framed-with-stakeholders-and-kept-open",
+      "verdict": "new",
+      "claims": [
+        "hendrickson-work-with-stakeholders",
+        "hendrickson-actionable-information",
+        "hendrickson-chartering-ongoing",
+        "lyndsay-charters-incomplete",
+        "sbtm-todo-session-sheets"
+      ]
+    },
+    {
+      "rule": "session-is-time-boxed",
+      "verdict": "new",
+      "claims": [
+        "session-is-chartered-time-box",
+        "sbtm-session-definition",
+        "sbtm-session-length-ninety-minutes",
+        "session-length-range",
+        "charter-is-unit-of-work"
+      ]
+    },
+    {
+      "rule": "session-is-debriefed",
+      "verdict": "new",
+      "claims": [
+        "session-is-chartered-time-box",
+        "sbtm-debrief-each-session",
+        "sbtm-proof-debrief",
+        "sbtm-dropping-debriefs-hurt",
+        "sbtm-abort-or-rescope",
+        "et3-accountability"
+      ]
+    },
+    {
+      "rule": "session-sheet-keeps-bugs-issues-and-notes",
+      "verdict": "new",
+      "claims": [
+        "sbtm-session-sheet-sections",
+        "sbtm-bugs-issues-notes",
+        "session-sheet-records-steps",
+        "session-sheet-logs-questions-observations",
+        "azure-test-feedback-extension",
+        "bolton-risk-of-not-documenting"
+      ]
+    },
+    {
+      "rule": "off-charter-work-logged-as-opportunity",
+      "verdict": "new",
+      "claims": [
+        "sbtm-on-charter-vs-opportunity",
+        "hendrickson-temptations-new-charters"
+      ]
+    },
+    {
+      "rule": "clean-session-reports-coverage-and-gaps",
+      "verdict": "new",
+      "claims": [
+        "bolton-two-stories",
+        "bolton-story-of-untested",
+        "htsm-quality-story",
+        "sbtm-proof-debrief",
+        "htsm-cover-what-matters"
+      ]
+    },
+    {
+      "rule": "finding-states-its-oracle",
+      "verdict": "new",
+      "claims": [
+        "bolton-peo-problem",
+        "bolton-peo-oracle",
+        "rst-all-reports-based-on-oracle",
+        "rst-indicate-oracles-unless-obvious",
+        "rst-judicious-expected",
+        "bolton-oracles-vary-strength"
+      ]
+    },
+    {
+      "rule": "finding-gives-steps-to-reproduce",
+      "verdict": "new",
+      "claims": [
+        "defect-report-enables-reproduction",
+        "defect-report-sufficient-information",
+        "mozilla-steps-most-important",
+        "apple-steps-to-reproduce",
+        "android-steps-to-reproduce",
+        "android-not-working-insufficient",
+        "rst-not-enough-to-reproduce",
+        "azure-action-log-reproduce"
+      ]
+    },
+    {
+      "rule": "finding-records-environment",
+      "verdict": "new",
+      "claims": [
+        "defect-report-identifies-object-and-environment",
+        "rst-environment"
+      ]
+    },
+    {
+      "rule": "one-problem-per-finding",
+      "verdict": "new",
+      "claims": [
+        "apple-one-issue-per-report",
+        "rst-one-problem-per-report"
+      ]
+    },
+    {
+      "rule": "use-product-element-heuristics-and-tours",
+      "verdict": "new",
+      "claims": [
+        "htsm-model-purpose",
+        "htsm-product-elements",
+        "bolton-time-added-to-product-elements",
+        "whittaker-landmark-tour",
+        "iso-experience-based-tours-attacks"
+      ]
+    },
+    {
+      "rule": "exploration-designs-runs-and-learns-together",
+      "verdict": "new",
+      "claims": [
+        "iso-et-definition",
+        "et-explores-untested-areas",
+        "kaner-et-definition",
+        "et3-testing-definition"
+      ]
+    },
+    {
+      "rule": "check-for-duplicate-before-filing",
+      "verdict": "new",
+      "claims": [
+        "azure-duplicate-search"
+      ]
+    },
+    {
+      "rule": "time-box-puzzling-bug-investigation",
+      "verdict": "new",
+      "claims": [
+        "rst-ten-minute-heuristic"
+      ]
+    }
   ]
 }
