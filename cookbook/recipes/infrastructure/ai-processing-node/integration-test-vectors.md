@@ -25,9 +25,12 @@
 | `apn-022` | `claude-code-provider` | Stub CLI prints text that is not JSON | The step fails as retryable with an error saying the CLI output did not parse |
 | `apn-023` | `no-key-on-machine` | Machine mode; a claimed AI step with model source `connection` | The step fails with `retryable: false`; no provider is called |
 | `apn-024` | `step-ai-tool-loop` | `/mcp` lists a tool `notes.search`; the model calls `notes_search` | The model was offered `notes_search`; the `/mcp` call names `notes.search` |
-| `apn-025` | `step-ai-tool-loop`, `lost-lease-abort` | Claim carries an acting token; `/mcp` answers 401 | The node calls neither complete nor fail |
+| `apn-025` | `step-ai-tool-loop`, `lost-lease-abort` | Claim carries an acting token; `/mcp` answers 401, and the heartbeat then answers 404 | The node sends one heartbeat and calls neither complete nor fail |
 | `apn-026` | `machine-mode` | Start with `AI_NODE_ENVIRONMENT_TOKEN=abc` | Startup fails with a configuration error saying the token must be a `jenv_` token |
 | `apn-027` | `claude-code-provider` | Hub node (`AI_NODE_API_TOKEN` only); a claimed AI step with provider `claude-code` | The step fails with `retryable: false`; no subprocess runs |
 | `apn-028` | `register-step-handlers`, `claim-sends-job-types` | Start the TypeScript node with `AI_NODE_API_TOKEN` and no environment token | The claim request's `jobTypes` is exactly `categorize_and_tag` and `jobs.step.ai`; `jobs.step.script` is absent |
 | `apn-029` | `step-ai-tool-loop` | `/mcp` lists `notes.search`, then `notes_search`; the model calls `notes_search_2` | The model was offered `notes_search` and `notes_search_2`; the `/mcp` call names `notes_search`, and a call to `notes_search` would name `notes.search` |
 | `apn-030` | `step-ai-tool-loop` | Claim carries an acting token; the stub model asks for 18 tools in one turn, then 4 in the next | Exactly 18 `/mcp` tool calls are made; the step fails with `retryable: false` and an error naming the limit |
+| `apn-031` | `step-ai-tool-loop` | Claim carries an acting token; `/mcp` answers 401, and the heartbeat then succeeds | The node calls fail with `retryable: true` and an error saying the lease still holds |
+| `apn-032` | `machine-mode`, `register-step-handlers` | Start with `AI_NODE_ENVIRONMENT_TOKEN=jenv_x` | The claim's `providers` is exactly `local`; `jobTypes` and `capabilities` do not include `categorize_and_tag` |
+| `apn-033` | `claude-code-provider` | Provider `claude-code` with model `sonnet`; then with model `--tools Bash` | The first CLI run ends with `--model sonnet`; the second fails with `retryable: false` and no subprocess runs |
