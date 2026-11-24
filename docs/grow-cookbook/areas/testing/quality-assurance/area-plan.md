@@ -148,9 +148,9 @@ myagenticteams-qa-team (owner ruling, 2026-11-21).
 
 ## Owner questions
 
-1. Research bar for every topic: no escalation is proposed. e2e-test-authoring and test-impact-analysis stay at the *Technology / software* bar, exploratory-testing-charters at the *How-to / troubleshooting* bar, and test-failure-triage at the *Technology / software* bar with intent *Evaluate*; each metric claim (failure-cause frequency, selection recall, time saved) takes the *Statistical* bar.
-2. The area path: the four topics go under a new sub-area `cookbook/guidelines/testing/quality-assurance/`, while `testing/`'s fifteen existing topics sit directly under `testing/`. Approve the sub-area, or place the topics directly under `cookbook/guidelines/testing/` beside the existing ones (which makes the area `testing`, and every existing topic there part of this plan).
-3. test-failure-triage and flaky-test-quarantine: the plan keeps triage `new` and hands a flake disposition to flaky-test-quarantine's lifecycle. Approve that split, or fold triage into flaky-test-quarantine as its first step.
+1. Research bar for every topic: no escalation is proposed. e2e-test-authoring and test-impact-analysis stay at the *Technology / software* bar, exploratory-testing-charters at the *How-to / troubleshooting* bar, and test-failure-triage at the *Technology / software* bar with intent *Evaluate*; each metric claim (failure-cause frequency, selection recall, time saved) takes the *Statistical* bar. Answered 2026-11-24: the owner approved the plan as it stands, research bars as proposed, no escalation.
+2. The area path: the four topics go under a new sub-area `cookbook/guidelines/testing/quality-assurance/`, while `testing/`'s fifteen existing topics sit directly under `testing/`. Approve the sub-area, or place the topics directly under `cookbook/guidelines/testing/` beside the existing ones (which makes the area `testing`, and every existing topic there part of this plan). Answered 2026-11-24: the owner approved the new sub-area `cookbook/guidelines/testing/quality-assurance/`.
+3. test-failure-triage and flaky-test-quarantine: the plan keeps triage `new` and hands a flake disposition to flaky-test-quarantine's lifecycle. Approve that split, or fold triage into flaky-test-quarantine as its first step. Answered 2026-11-24: test-failure-triage stays its own new topic and hands a flake to flaky-test-quarantine's lifecycle.
 
 ## Step-4 re-check
 
@@ -172,6 +172,23 @@ plan's own: `missing_subjects` went from 0 to 11 (the **Missing subjects**
 above). Step 1.3 was re-run (`run_gaps.py --hints`), which saved the report again.
 
 Hand-off check, after the plan's final edit:
+
+- unmeasured.py testing/quality-assurance: check unchanged; changes 0; new_keys 0; stale_reference 0; result a7c23a7e7fca
+- run_gaps.py --check testing/quality-assurance: unchanged, exit 0; would_clear 0; failed 0; unplaced 0; stale_reference 0; r9_stale 0; verdict_changes 0; counted_rows 0; counted_rows_differ 0; changes 0; gap_total_rows 0; measured_total 0; missing_subjects 11; not_compared 0; counted_with_prior_verdict 0; counted_never_judged 0; stated 0 -> measured 0 (+0: counted_with_prior_verdict 0, counted_never_judged 0, verdict_changes 0); hints on (flag); report 35689372b5cde834adc561ca3cae106e1de0524c
+- run_gaps.py --check-homes testing/quality-assurance: `check_homes` [], exit 0
+- run_gaps.py --check-verdicts testing/quality-assurance: `check_verdicts` [], exit 0
+- copy_check.py testing/quality-assurance: copies 0; identical 0; moved 0; unreadable 0; twin_differs 0; differ_uncarried none; result 8f6aaa512007
+- stage_status.py testing/quality-assurance: next approve; plan_sections 0; stale_reference 0; r9_stale 0; stale_copy_check 0; host_check 0; cite_moved 0; stale_verdicts 0; result 0785eeb62840
+
+This plan cites no other area plan, so no plan hash is recorded.
+
+### On 1.4.48, after the owner's ruling (2026-11-24)
+
+The owner approved the plan as it stands: research bars as proposed, no
+escalation; the new sub-area `cookbook/guidelines/testing/quality-assurance/`;
+test-failure-triage stays its own new topic and hands a flake to
+flaky-test-quarantine's lifecycle. The plan marked every Owner question
+answered and changed nothing else. Hand-off check, after the plan's final edit:
 
 - unmeasured.py testing/quality-assurance: check unchanged; changes 0; new_keys 0; stale_reference 0; result a7c23a7e7fca
 - run_gaps.py --check testing/quality-assurance: unchanged, exit 0; would_clear 0; failed 0; unplaced 0; stale_reference 0; r9_stale 0; verdict_changes 0; counted_rows 0; counted_rows_differ 0; changes 0; gap_total_rows 0; measured_total 0; missing_subjects 11; not_compared 0; counted_with_prior_verdict 0; counted_never_judged 0; stated 0 -> measured 0 (+0: counted_with_prior_verdict 0, counted_never_judged 0, verdict_changes 0); hints on (flag); report 35689372b5cde834adc561ca3cae106e1de0524c
