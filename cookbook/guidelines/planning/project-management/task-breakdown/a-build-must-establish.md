@@ -9,7 +9,7 @@
 - `split-large-estimates`: no task estimated at a week or more is left unsplit.
 - `split-unestimable-tasks`: no task whose duration cannot be estimated is left unsplit.
 - `story-fits-one-iteration`: every user story fits within one iteration.
-- `work-package-within-eighty-hours`: where a WBS is used, every lowest-level work package is 80 hours of effort or less.
+- `work-package-within-eighty-hours`: where a WBS is used, every lowest-level work package is about 80 hours of effort or less.
 - `work-package-within-one-reporting-period`: where a WBS is used, every lowest-level work package fits within one reporting period.
 - `tasks-specific-and-actionable`: every task is specific enough for everyone on the team to understand.
 - `task-states-its-outcome`: every task describes a concrete piece of work with a defined outcome.
