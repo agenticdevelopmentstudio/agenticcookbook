@@ -127,3 +127,42 @@ none
 - Whether opportunities (positive risks) are in this topic's scope: ISO 31000, PRINCE2 and PMBOK 8 all treat them alongside threats, while the listed rules speak only of concerns.
 - Whether the rule requires a separate actionee beside the owner, as PRINCE2 does, or lets one person hold both, which PRINCE2 says is common.
 - Which tracker mapping the cookbook recommends for a small team: a custom 'Risk' issue type with fields in GitHub or Jira, a RAID log document, or a project health flag such as Linear's 'At risk', which marks a project but is not a per-risk record.
+
+## Round 1 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R1.1: `rules.md`, bundled rules (behavioral-requirements must-not-bundle-behaviors-into-one-requirement; guideline-formatting one-requirement-per-rule): each of these rules joins two or more behaviours that can each be tested on its own, so one part can pass while another fails:
+    - `risk-identification-and-attention-flagging`: identify risks whatever their source; surface new risks and impediments as they appear; record each one as soon as it is identified, whoever raised it.
+    - `distinguish-immediate-action-from-monitoring`: evaluate each risk as needing action now or being watched; record its proximity (already two SHOULDs in one bullet).
+    - `link-concerns-to-related-elements`: a unique identifier; the product or process it concerns (two SHOULDs).
+    - `concern-has-status-and-raiser`: the raiser is named; a status is carried; the status history is kept (two SHOULDs plus the history clause).
+    - `risk-review-cadence`: reviews are planned, with responsibility defined, inside the normal management flow; the register is checked for new or revised risks at each review (two SHOULDs).
+    - `owner-most-capable-and-not-overloaded`: the owner is the person most capable; no one holds too many risks (two SHOULDs).
+    - `risk-response-triage`: the response comes from a defined set of options; it is chosen by weighing benefit against cost (the build line checks the two separately).
+    - `escalate-risks-beyond-tolerance`: escalation criteria are agreed; a risk beyond tolerance is escalated rather than accepted (two SHOULDs).
+    - `describe-risk-as-cause-event-effect`: the description gives cause, event and effect; no entry duplicates another (the build line checks the two separately).
+    Fix: split each into one rule per behaviour. The prior rule name stays on one half, because verdict names are fixed, and the other half gets a fresh name. Each new rule carries its own citation (the claims that support that half), its own line in `a-build-must-establish.md`, and an entry in the SHOULD list of `a-complete-review-must-establish.md`.
+- R1.2: `rules.md`, the list as a whole (guideline-formatting keep-rule-lists-short; template/sibling structure): the 17 rules are one flat list, but a list SHOULD have no more than seven items where possible. The siblings group their rules under `###` subsections (`issue-tracking` has "Recording issues" and "Triage"; `dependency-tracking` has three to six rules per subsection). Fix: group the rules, including the new ones from the split above, under `###` subsections of seven or fewer. Possible groups are recording a risk, ownership, review, response and escalation, and tooling.
+- R1.3: `rules.md`, `risk-becomes-issue-when-it-happens`, "SHOULD leave the risk register": this rests on the part of the claims that the second check refuted. `pmbok8-issue-already-happened` is refuted because "the source never says an issue no longer belongs in the risk register". `orange-book-contingency-if-risks-crystallise` is refuted because Principle D9 "does not say that crystallising is the point where something stops being a risk". `prince2-issue-is-event-that-happened` and `atlassian-raid-issues-need-immediate-attention` define an issue and set it apart from a risk, but neither says the risk leaves the register. The wording also contradicts the guideline itself in three places:
+    - `concern-has-status-and-raiser` keeps each risk's status (active or closed) and its history in the register.
+    - `keeping-a-risk-register.md` step 7 says to "close the risk and raise an issue".
+    - The build-bar line says "is closed and raised as an issue".
+    Fix: "A risk whose event has happened SHOULD be closed in the risk register and raised as an issue, which needs management action now." Add `prince2-risk-status-field` (active or closed; named by the `concern-has-status-and-raiser` verdict) to its citation.
+- R1.4: `rules.md`, `flag-project-at-risk`, "alongside a record for each risk rather than in place of one", and its `a-build-must-establish.md` line, "beside its per-risk records": none of the cited claims supports the clause. `linear-health-at-risk` was refuted on exactly the per-risk part ("Nothing in the quote or the page supports 'no per-risk record type'"), and its quote supports only the project-level health indicator. The clause also decides part of the owner's open question on tracker mapping, which lists "a project health flag such as Linear's 'At risk'" as one candidate mapping for a small team, because it rules that flag out as the mapping. Fix: end the rule at the indicator: "A team MAY mark a project its risks threaten with a health indicator such as on track, at risk or off track. (claim: linear-health-at-risk)". Make the build line read "where used, a threatened project carries a health indicator". The other rules already ask for a record for each risk, so nothing is lost.
+- R1.5: `artifact.json` `related` and `intro.md`, the scope paragraph (criterion 6; cross-recipe-consistency must-reference-siblings-by-uuid): `related` is `[]`, but the text hands every risk that has happened to issue tracking, and sibling guidelines it overlaps already exist:
+    - `issue-tracking` (`f77eeffe-2699-4028-9195-4bfc23c75e91`, in `cookbook/index.json`). Its own intro sends "risks that have not happened" to this topic.
+    - `dependency-tracking` (`3f978ba7-c8c1-4b53-8fda-12e5a6966b75`). Its `at-risk-dependency-logged-as-risk` rule feeds this register, and its round-1 review already asked that guideline to add this one to its `related`.
+    The intro also names issue tracking in free prose, not by link. Fix: add both UUIDs to `related`, and in the intro link issue tracking as `[adc.guideline.planning.project-management.issue-tracking](cookbook:f77eeffe-2699-4028-9195-4bfc23c75e91)`, the form `issue-tracking`'s intro uses for its existing siblings. `project-record-linking` has no guideline yet, so it stays a topic mention.
+
+Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `## Lint` section:
+
+````
+I ran /lint-artifact (v2.0.1, using this checkout's cookr) on the compiled guideline. Result: Pass 21, Warn 0, Fail 1, RESULT: NOT CLEAN.
+
+- PASS: FM-01, FM-02, FM-04 to FM-13 (frontmatter, UUID, type, semver, required fields, MIT license, copyright, dates, summary, H1 matching the title, links, Change History, no placeholders); GF-01 to GF-04; gf-triggers-field; gf-roled-parts (17 build-bar lines, one per rule); gf-named-rules; gf-research-folder; gf-rule-cites-research (every cited claim exists and has a verdict).
+- FAIL: FM-03, index entry matches folder. `cookbook/index.json` has no entry for `a55182ef-3144-407c-b64a-6377f37f5c63` and no `risk-tracking` path. Fix: run `cookr update`, which adds the entry. The sibling `milestone-scheduling` is unindexed in the same way.
+- `cookr validate` shows nothing for this artifact. It fails only on `project-record-linking/research/research.md` (no frontmatter) and on cookbook-wide index drift.
+
+lint: fail 1
+````

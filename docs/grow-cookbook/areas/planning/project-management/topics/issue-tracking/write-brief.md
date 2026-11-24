@@ -144,3 +144,9 @@ For each rule below, only the rule's wording is exempt from review; everything e
 Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
 
 - R1.1: `rationale.md`, third paragraph, "Mozilla and Linear raise a notice beyond the assignee": wrong for Linear. The cited claim `critical-notifies-beyond-assignee` quotes Linear as "When an issue is marked as Urgent, Linear notifies the assignee and, if email notifications are enabled, also sends an urgent email notification": Linear notifies the assignee itself, not anyone beyond it. Only Mozilla (Release Management and the component's triage owner for S1 and S2) notifies beyond the assignee. This is the only instance; the rule `escalate-critical-issues` says "a notice beyond the triage queue", which both sources do support. Fix: reword to something like "Mozilla notifies Release Management beyond the assignee, and Linear sends the assignee an urgent notice", or "Mozilla and Linear raise a notice beyond the triage queue".
+
+## Round 2 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
