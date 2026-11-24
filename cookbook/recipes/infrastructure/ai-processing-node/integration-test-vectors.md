@@ -17,10 +17,10 @@
 | `apn-014` | `step-ai-tool-loop` | Claim carries an acting token; stub model asks for one `/mcp` tool, then answers | One `/mcp` call with `Authorization: Bearer <acting token>`; its result goes back to the model; complete reports the answer |
 | `apn-015` | `step-ai-tool-loop` | Stub model asks for a tool on every turn | The handler stops after 20 tool calls and fails the step with `retryable: false` and an error naming the limit |
 | `apn-016` | `step-ai-tool-loop` | Claim carries no acting token | The model request offers no tools and no `/mcp` call is made |
-| `apn-017` | `step-script-handler` | Script `cat` with earlier outputs `{"a":1}` | Output is the object `{"a":1}`; the temporary directory no longer exists |
-| `apn-018` | `step-script-handler` | Script prints `env`; the node runs with `AI_NODE_ENVIRONMENT_TOKEN` set | Output does not contain the token or any of the node's variables |
-| `apn-019` | `step-script-handler` | Script `sleep 120` with no timeout; then a step timeout of 3600 s | The first fails after 60 s with a timeout error; the second is clamped to 900 s |
-| `apn-020` | `step-script-handler` | Script exits 3 after writing `boom` to stderr | The step fails with exit code 3 and `boom` in the error |
+| `apn-017` | `step-script-handler` | A `node` script `process.stdin.pipe(process.stdout);` with earlier outputs `{"a":1}` | Output is the object `{"a":1}`; the temporary directory no longer exists |
+| `apn-018` | `step-script-handler` | A `node` script `process.stdout.write(JSON.stringify(process.env))`; the node runs with `AI_NODE_ENVIRONMENT_TOKEN` set | Output does not contain the token or any of the node's variables |
+| `apn-019` | `step-script-handler` | A `node` script `setTimeout(() => {}, 120_000);` with no timeout; then a step timeout of 3600 s | The first fails after 60 s with a timeout error; the second is clamped to 900 s |
+| `apn-020` | `step-script-handler` | A `node` script `process.stderr.write('boom'); process.exit(3);` | The step fails with exit code 3 and `boom` in the error |
 | `apn-021` | `claude-code-provider` | Provider `claude-code`; stub CLI prints a JSON result with usage | The CLI was run as `claude -p --output-format json --tools "" --strict-mcp-config --safe-mode --permission-mode dontAsk --no-session-persistence --disable-slash-commands` with the prompt on stdin, in an empty temporary directory that no longer exists afterwards; the result and usage are reported |
 | `apn-022` | `claude-code-provider` | Stub CLI prints text that is not JSON | The step fails as retryable with an error saying the CLI output did not parse |
 | `apn-023` | `no-key-on-machine` | Machine mode; a claimed AI step with model source `connection` | The step fails with `retryable: false`; no provider is called |
