@@ -5,10 +5,22 @@
   "base_commit": "77a898dbc718928bbd96ef617723c83ec69cd549",
   "research_type": "Technology / software (intent Evaluate; domain test failure classification; method tool documentation, published industry studies and practitioner sources). Technical bar MEDIUM (official current docs; recency), no escalation. Every figure on failure-cause frequency (Labuschagne et al., Luo et al., Lam et al., Gruber et al. via Parry et al., the Google TAP figure via Luo et al.) is scored on the Statistical bar MED-HIGH: the study, its sample, its measure and its result are named in the claim.",
   "questions": [
-    {"id": "best-practices", "text": "Best practices: what is current best practice for this topic?"},
-    {"id": "known-solutions", "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"},
-    {"id": "platform-guidelines", "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"},
-    {"id": "experts-view", "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"}
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
   ],
   "methodology": {
     "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify the domain (test failure classification; technology, intent Evaluate), go first to the test-runner and CI owners' own documentation (Playwright, pytest and pytest-rerunfailures, Apache Maven Surefire, Gradle test-retry, Apple Xcode, Android AndroidJUnitRunner, Firebase Test Lab, GitHub Actions, GitLab, Azure DevOps, CircleCI, Buildkite, Jest) and the large projects' own triage procedures (Mozilla sheriffing and Treeherder, Chromium gardening), then the published studies themselves (Luo et al. FSE 2014, Labuschagne et al. ESEC/FSE 2017, Lam et al. ISSTA 2019, Parry et al. TOSEM 2022), then vendors' flake systems (Meta PFS, Datadog, Trunk), then standards for stating evidence and confidence (ODNI ICD 203, Mozilla bug-writing guidelines), then practitioner sources (Software Engineering at Google, Fowler, Wheeler's review of Agans) for what no primary covers; corroborate across independent publishers; record provenance at generation time.",
@@ -17,7 +29,9 @@
     "exclusion": "Team-specific conventions of the team the rules were quoted from (layout, tags, selectors, mocks, output contracts, step budgets, site registry); flaky-test quarantine and lifecycle (other topics); production incident severity; search-results pages and AI-generated summaries; vendor marketing pages; third-party comparisons (Harness, Mergify, FitGap) of vendors whose own docs were not read.",
     "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15, with the Technical MEDIUM ceiling for tool claims and the Statistical MED-HIGH bar (study, sample, measure, result) for every frequency figure; cite-the-claim-not-the-document, independence-before-corroboration (several pages from one publisher count as one), domain-stratified-trust, suppress-unsupported-confidence (single-source and out-of-domain claims capped), provenance-at-generation-time."
   },
-  "agents": ["grow-cookbook research agent"],
+  "agents": [
+    "grow-cookbook research agent"
+  ],
   "sources": [
     "https://playwright.dev/docs/test-retries",
     "https://playwright.dev/docs/trace-viewer",
@@ -60,7 +74,10 @@
     "https://martinfowler.com/articles/nonDeterminism.html",
     "https://dwheeler.com/essays/debugging-agans.html"
   ],
-  "dates": {"researched": "2026-11-24", "accessed": "2026-11-24"},
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
   "summary": "Six of the eleven rules hold at their stated strength. Every failure gets one classification from a fixed set: Mozilla's sheriffs look at all failures on sheriffed trees and Treeherder gives each one classification from a fixed list (fixed by commit, expected fail, intermittent, infra, not classified and variants); Labuschagne et al. classified every failure in 61 projects as flaky, a bug in the system under test, or a broken or obsolete test, and Firebase Test Lab and Trunk ship fixed outcome sets. Not forcing a verdict holds at SHOULD: Luo et al. note that a failing rerun 'may be a real deterministic failure or might be still a flaky test', Treeherder keeps 'not classified', Datadog has 'Unknown', and Meta's PFS reports when it 'cannot confidently estimate'. Evidence that states what was observed and a bug that names the observed misbehavior are required by Mozilla's bug-writing guidelines ('Clearly separate facts (observations) from speculations'; describe 'the observed (actual) result and the expected result') and Chromium's ('Copy+paste the relevant parts of the log'). A flake is defined by its history in every runner and CI system read (Playwright, Surefire, Azure DevOps, CircleCI, Firebase). Four rules are unsupported at must-hold strength: an environment verdict resting on cross-test or probe signals is common practice (Gradle maxFailures, Treeherder's pin-many for infra, Firebase's inconclusive outcome) but no source says a single test never establishes it, and Gruber et al. detect infrastructure flakiness from one test's cross-run pattern; a stale-test verdict naming the new assertion, an uncertain verdict naming the missing evidence (ICD 203 supports this at SHOULD), and a 1-10 confidence scale with a 9-10 reproduction-and-mechanism threshold have no source requiring them. 'Triage changes nothing' is contradicted as general practice: Chromium gardeners revert culprits and disable tests, Mozilla sheriffs file tracking bugs, Azure DevOps puts bug creation in its resolution step. The research adds eleven practices: gather the trace, logs, screenshots and history first; rerun on the same revision before calling a flake; never let a pass on retry clear a possible bug (24% of flaky-test fixes in Luo et al. changed the code under test, 94% of those fixing a bug); find the change that introduced the failure; a named triage rotation; separate infrastructure outcomes from test failures; tell a stale test from a bug by whether the behavior change was intended; tell broken from flaky by the failure pattern; reproduce in the failing environment (86% of Microsoft's flaky tests flaked only in CI); state confidence with its basis; record the flake's cause category; and mark a known failure as expected with its reason. Frequency figures: 18% of test-suite executions fail and 13% of failures are flaky, with 74% of non-flaky failures bugs and 26% incorrect or obsolete tests (Labuschagne et al.); 4.56% of Google TAP failures were flaky (a personal communication reported by Luo et al.).",
   "open_questions": [
     "Whether triage stays a disposition-only output that files, closes, edits and reverts nothing (the team's rule triage-changes-nothing), or follows the sheriff and gardener practice in which the triager files the tracking bug, reverts the culprit or disables the test; the owner decides whether the cookbook states a general rule or leaves this to each team.",
@@ -90,11 +107,23 @@
       "question": "best-practices",
       "claim": "Mozilla's sheriffs look at every failure on its sheriffed trees and decide for each whether it is a regression or an intermittent failure.",
       "quote": "The Firefox Sheriff team looks at all failures for tasks which are visible by default in Treeherder (tier 1 and 2) ... determine if the failure is a regression or an intermittent failure",
-      "citations": [{"title": "Sheriffed intermittent failures", "author": "Mozilla", "publisher": "Firefox Source Docs", "date": "n.d.", "url": "https://firefox-source-docs.mozilla.org/testing/sheriffed-intermittents/index.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Sheriffed intermittent failures",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/testing/sheriffed-intermittents/index.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "project's own procedure documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Treeherder failure classification fixed by commit intermittent infra expected fail sheriff",
-      "trust": {"score": 72, "basis": "A large project's own current triage procedure, quoted directly; a primary source for who triages and what they decide. Single publisher; Chromium's gardener procedure (bp-gardener-owns-new-failures) corroborates the role independently but not these words."},
+      "trust": {
+        "score": 32,
+        "basis": "A large project's own current triage procedure, quoted directly; a primary source for who triages and what they decide. Single publisher; Chromium's gardener procedure (bp-gardener-owns-new-failures) corroborates the role independently but not these words. Second check 2026-11-24: refuted (quote-found no, supports-claim partly): The source reads \"and determines if the failure is a regression or an intermittent failure\", not \"determine\". It also limits the review to tier 1 and 2 tasks shown by default on pushes to named sheriffed trees, not every failure on the trees; lowered 72->32."
+      },
       "independence": "single"
     },
     {
@@ -102,11 +131,23 @@
       "question": "best-practices",
       "claim": "Chromium assigns a gardener whose duties, in priority order, include keeping new test failures out and repairing existing ones, identifying the culprit change and reverting it.",
       "quote": "New test failures are not introduced ... Existing test failures are repaired ... identify a culprit CL and revert it ... Revert changes that you know or suspect are causing breakages.",
-      "citations": [{"title": "Chromium Gardening (docs/gardener.md)", "author": "The Chromium Authors", "publisher": "Chromium source (chromium.googlesource.com)", "date": "n.d.", "url": "https://chromium.googlesource.com/chromium/src/+/HEAD/docs/gardener.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Chromium Gardening (docs/gardener.md)",
+          "author": "The Chromium Authors",
+          "publisher": "Chromium source (chromium.googlesource.com)",
+          "date": "n.d.",
+          "url": "https://chromium.googlesource.com/chromium/src/+/HEAD/docs/gardener.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "project's own procedure documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Chromium sheriffing gardener failing test triage documentation flaky disable",
-      "trust": {"score": 72, "basis": "Chromium's own current procedure at HEAD, quoted directly; primary for the triage role. Single publisher."},
+      "trust": {
+        "score": 72,
+        "basis": "Chromium's own current procedure at HEAD, quoted directly; primary for the triage role. Single publisher."
+      },
       "independence": "single"
     },
     {
@@ -115,13 +156,30 @@
       "claim": "In the published triage procedures the triager acts on the verdict: Chromium's sheriffs disable a failing test and file a bug, and Azure DevOps's flaky-test workflow includes creating a bug and marking or unmarking the test as flaky as part of resolution.",
       "quote": "Prefix DISABLED_ to the name of the crashing/timing out test. | Resolution - Manual bug-creation or manual marking and unmarking test as flaky based on your analysis",
       "citations": [
-        {"title": "Handling a failing test", "author": "The Chromium Authors", "publisher": "The Chromium Projects", "date": "n.d.", "url": "https://www.chromium.org/developers/tree-sheriffs/handling-a-failing-test/", "accessed": "2026-11-24"},
-        {"title": "Manage flaky tests - Azure Pipelines", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2020-08-31", "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/flaky-test-management?view=azure-devops", "accessed": "2026-11-24"}
+        {
+          "title": "Handling a failing test",
+          "author": "The Chromium Authors",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/developers/tree-sheriffs/handling-a-failing-test/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Manage flaky tests - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2020-08-31",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/flaky-test-management?view=azure-devops",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "project's own procedure documentation; vendor documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Chromium handling a failing test sheriff disable; Azure DevOps flaky test management",
-      "trust": {"score": 74, "basis": "Two independent primary publishers (Chromium, Microsoft) each place the action (disabling, bug creation, marking) in the triage step; Chromium's page is undated and may be older than the gardener page."},
+      "trust": {
+        "score": 74,
+        "basis": "Two independent primary publishers (Chromium, Microsoft) each place the action (disabling, bug creation, marking) in the triage step; Chromium's page is undated and may be older than the gardener page."
+      },
       "independence": "multi-independent"
     },
     {
@@ -130,13 +188,30 @@
       "claim": "Chromium's and Mozilla's triage procedures both require the triager to copy the relevant failure lines from the log into the bug rather than only linking the log.",
       "quote": "Copy+paste the relevant parts of the log into the bug report. | open the log and copy the relevant lines for the failure",
       "citations": [
-        {"title": "Handling a failing test", "author": "The Chromium Authors", "publisher": "The Chromium Projects", "date": "n.d.", "url": "https://www.chromium.org/developers/tree-sheriffs/handling-a-failing-test/", "accessed": "2026-11-24"},
-        {"title": "Sheriffing/How To/Intermittent bugs", "author": "Mozilla", "publisher": "MozillaWiki", "date": "n.d.", "url": "https://wiki.mozilla.org/Sheriffing/How_To/Intermittent_bugs", "accessed": "2026-11-24"}
+        {
+          "title": "Handling a failing test",
+          "author": "The Chromium Authors",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/developers/tree-sheriffs/handling-a-failing-test/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Sheriffing/How To/Intermittent bugs",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/Sheriffing/How_To/Intermittent_bugs",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "project's own procedure documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Chromium handling a failing test; Mozilla sheriffing intermittent bugs",
-      "trust": {"score": 78, "basis": "Two independent large projects' own procedures say the same thing in imperative form; meets the Technical bar with independent corroboration."},
+      "trust": {
+        "score": 78,
+        "basis": "Two independent large projects' own procedures say the same thing in imperative form; meets the Technical bar with independent corroboration."
+      },
       "independence": "multi-independent"
     },
     {
@@ -144,11 +219,23 @@
       "question": "best-practices",
       "claim": "Mozilla's bug-writing guidelines require a report to describe precisely the observed (actual) result and the expected result, and to separate observations from speculation.",
       "quote": "After your steps, precisely describe the observed (actual) result and the expected result. ... Clearly separate facts (observations) from speculations.",
-      "citations": [{"title": "Bug Writing Guidelines", "author": "Mozilla", "publisher": "Bugzilla@Mozilla", "date": "n.d.", "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Bug Writing Guidelines",
+          "author": "Mozilla",
+          "publisher": "Bugzilla@Mozilla",
+          "date": "n.d.",
+          "url": "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "project's own procedure documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Mozilla bug writing guidelines actual results expected results",
-      "trust": {"score": 72, "basis": "A long-standing primary guideline from a large project, quoted directly, imperative in form; single publisher, though bp-failure-message-desired-actual states the same desired/actual split for test failures independently."},
+      "trust": {
+        "score": 72,
+        "basis": "A long-standing primary guideline from a large project, quoted directly, imperative in form; single publisher, though bp-failure-message-desired-actual states the same desired/actual split for test failures independently."
+      },
       "independence": "single"
     },
     {
@@ -156,11 +243,23 @@
       "question": "best-practices",
       "claim": "Software Engineering at Google holds that a good test failure message states the desired outcome, the actual outcome and the relevant parameters, so a problem can be diagnosed from the message.",
       "quote": "A good failure message contains much the same information as the test’s name: it should clearly express the desired outcome, the actual outcome, and any relevant parameters.",
-      "citations": [{"title": "Software Engineering at Google, Chapter 12: Unit Testing", "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)", "publisher": "O'Reilly Media (abseil.io)", "date": "2020", "url": "https://abseil.io/resources/swe-book/html/ch12.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Software Engineering at Google, Chapter 12: Unit Testing",
+          "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)",
+          "publisher": "O'Reilly Media (abseil.io)",
+          "date": "2020",
+          "url": "https://abseil.io/resources/swe-book/html/ch12.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner book",
       "generated_by": "grow-cookbook research agent",
       "query": "Software Engineering at Google unit testing clear failure messages",
-      "trust": {"score": 60, "basis": "Secondary (a practitioner book by Google engineers), used because no runner's documentation states what a failure message must carry; quoted directly; single source."},
+      "trust": {
+        "score": 60,
+        "basis": "Secondary (a practitioner book by Google engineers), used because no runner's documentation states what a failure message must carry; quoted directly; single source."
+      },
       "independence": "single"
     },
     {
@@ -168,11 +267,23 @@
       "question": "best-practices",
       "claim": "Software Engineering at Google holds that changing a system's existing behavior is the one case in which existing tests are expected to change, and calls a test brittle when it fails on an unrelated change that introduces no real bug.",
       "quote": "Changing a system's existing behavior is the one case when we expect to have to make updates to the system's existing tests. ... a brittle test is one that fails in the face of an unrelated change to production code that does not introduce any real bugs.",
-      "citations": [{"title": "Software Engineering at Google, Chapter 12: Unit Testing", "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)", "publisher": "O'Reilly Media (abseil.io)", "date": "2020", "url": "https://abseil.io/resources/swe-book/html/ch12.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Software Engineering at Google, Chapter 12: Unit Testing",
+          "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)",
+          "publisher": "O'Reilly Media (abseil.io)",
+          "date": "2020",
+          "url": "https://abseil.io/resources/swe-book/html/ch12.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner book",
       "generated_by": "grow-cookbook research agent",
       "query": "Software Engineering at Google unchanging tests behavior changes brittle tests",
-      "trust": {"score": 62, "basis": "Secondary practitioner book, used because no tool documentation defines when a test is legitimately stale; quoted directly; Jest's snapshot guidance (pg-jest-snapshot-bug-or-update) makes the same bug-versus-intended-change split independently."},
+      "trust": {
+        "score": 62,
+        "basis": "Secondary practitioner book, used because no tool documentation defines when a test is legitimately stale; quoted directly; Jest's snapshot guidance (pg-jest-snapshot-bug-or-update) makes the same bug-versus-intended-change split independently."
+      },
       "independence": "single"
     },
     {
@@ -180,11 +291,23 @@
       "question": "best-practices",
       "claim": "Luo et al. describe the common way to test a suspected flake: rerun the failing test several times on the same code; a pass shows it is definitely flaky, while continued failure leaves it either a real deterministic failure or a flake that did not manifest.",
       "quote": "rerun the failing test multiple times on the same code to find whether it will pass (and thus is definitely flaky) or will not pass (and thus may be a real deterministic failure or might be still a flaky test that did not manifest in a pass in those multiple runs).",
-      "citations": [{"title": "An Empirical Analysis of Flaky Tests", "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov", "publisher": "ACM SIGSOFT FSE 2014", "date": "2014-11", "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "An Empirical Analysis of Flaky Tests",
+          "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov",
+          "publisher": "ACM SIGSOFT FSE 2014",
+          "date": "2014-11",
+          "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "An Empirical Analysis of Flaky Tests Luo Hariri Eloussi Marinov",
-      "trust": {"score": 76, "basis": "Peer-reviewed, widely cited study, quoted from the fetched PDF; the rerun method is corroborated in substance by every runner that labels a pass-on-retry as flaky (pg-ci-flaky-same-code-history), though not in these words; older but the logic is not time-sensitive."},
+      "trust": {
+        "score": 76,
+        "basis": "Peer-reviewed, widely cited study, quoted from the fetched PDF; the rerun method is corroborated in substance by every runner that labels a pass-on-retry as flaky (pg-ci-flaky-same-code-history), though not in these words; older but the logic is not time-sensitive."
+      },
       "independence": "single"
     },
     {
@@ -192,11 +315,23 @@
       "question": "best-practices",
       "claim": "ODNI's analytic standard ICD 203 has analytic products distinguish statements of underlying information from statements of assumption or judgment, and state assumptions explicitly when they bridge information gaps.",
       "quote": "Analytic products should clearly distinguish statements that convey underlying intelligence information used in analysis from statements that convey assumptions or judgments. ... Products should state assumptions explicitly when they serve as the linchpin of an argument or when they bridge key information gaps.",
-      "citations": [{"title": "Intelligence Community Directive 203: Analytic Standards", "author": "Office of the Director of National Intelligence", "publisher": "Office of the Director of National Intelligence", "date": "2015-01-02", "url": "https://archive.dni.gov/files/documents/ICD/ICD-203.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Intelligence Community Directive 203: Analytic Standards",
+          "author": "Office of the Director of National Intelligence",
+          "publisher": "Office of the Director of National Intelligence",
+          "date": "2015-01-02",
+          "url": "https://archive.dni.gov/files/documents/ICD/ICD-203.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "government standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ICD 203 analytic standards uncertainty distinguish information assumptions judgments",
-      "trust": {"score": 58, "basis": "A primary published standard for stating evidence-based verdicts, quoted from the fetched PDF, but from intelligence analysis, not software testing: capped for domain transfer. It carries 'should', a recommendation. Mozilla's 'separate facts (observations) from speculations' (bp-bug-report-observed-vs-expected) makes the same point independently in the software domain."},
+      "trust": {
+        "score": 58,
+        "basis": "A primary published standard for stating evidence-based verdicts, quoted from the fetched PDF, but from intelligence analysis, not software testing: capped for domain transfer. It carries 'should', a recommendation. Mozilla's 'separate facts (observations) from speculations' (bp-bug-report-observed-vs-expected) makes the same point independently in the software domain."
+      },
       "independence": "single"
     },
     {
@@ -204,11 +339,23 @@
       "question": "best-practices",
       "claim": "ICD 203 has an analytic judgment state its confidence and the basis for its uncertainty, name the causes of uncertainty including knowledge gaps, and identify the indicators that would change that uncertainty.",
       "quote": "Analytic products should indicate and explain the basis for the uncertainties associated with major analytic judgments ... Analytic products should note causes of uncertainty (e.g., type, currency, and amount of information, knowledge gaps, and the nature of the issue) ... As appropriate, products should identify indicators that would alter the levels of uncertainty for major analytic judgments.",
-      "citations": [{"title": "Intelligence Community Directive 203: Analytic Standards", "author": "Office of the Director of National Intelligence", "publisher": "Office of the Director of National Intelligence", "date": "2015-01-02", "url": "https://archive.dni.gov/files/documents/ICD/ICD-203.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Intelligence Community Directive 203: Analytic Standards",
+          "author": "Office of the Director of National Intelligence",
+          "publisher": "Office of the Director of National Intelligence",
+          "date": "2015-01-02",
+          "url": "https://archive.dni.gov/files/documents/ICD/ICD-203.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "government standard",
       "generated_by": "grow-cookbook research agent",
       "query": "ICD 203 analytic standards uncertainty distinguish information assumptions judgments",
-      "trust": {"score": 58, "basis": "Primary standard quoted from the fetched PDF, out of the software domain (capped); 'should' throughout, so it supports SHOULD, not MUST. No software-testing source found states how a triage verdict expresses confidence; Meta's PFS posterior (ks-meta-pfs-posterior-uncertainty) is the nearest in-domain practice."},
+      "trust": {
+        "score": 58,
+        "basis": "Primary standard quoted from the fetched PDF, out of the software domain (capped); 'should' throughout, so it supports SHOULD, not MUST. No software-testing source found states how a triage verdict expresses confidence; Meta's PFS posterior (ks-meta-pfs-posterior-uncertainty) is the nearest in-domain practice."
+      },
       "independence": "single"
     },
     {
@@ -216,11 +363,23 @@
       "question": "best-practices",
       "claim": "Labuschagne et al. studied real CI test failures in 61 Java projects using Travis CI, classified each by how developers resolved it as a flaky test, a bug in the system under test, or a broken or obsolete test, and found 18% of test-suite executions fail, 13% of those failures are flaky, and of the non-flaky failures 74% were bugs and 26% incorrect or obsolete tests.",
       "quote": "We determined how developers resolved the failures they encountered and used this to classify the failures as being caused by a flaky test, by a bug in the system under test, or by a broken or obsolete test. ... We found that 18% of test suite executions fail and that 13% of these failures are flaky. Of the non-flaky failures, only 74% were caused by a bug in the system under test; the remaining 26% were due to incorrect or obsolete tests.",
-      "citations": [{"title": "Measuring the Cost of Regression Testing in Practice: A Study of Java Projects using Continuous Integration", "author": "Adriaan Labuschagne, Laura Inozemtseva and Reid Holmes", "publisher": "ACM ESEC/FSE 2017", "date": "2017-09", "url": "https://www.cs.ubc.ca/~rtholmes/papers/fse_2017_labuschange.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Measuring the Cost of Regression Testing in Practice: A Study of Java Projects using Continuous Integration",
+          "author": "Adriaan Labuschagne, Laura Inozemtseva and Reid Holmes",
+          "publisher": "ACM ESEC/FSE 2017",
+          "date": "2017-09",
+          "url": "https://www.cs.ubc.ca/~rtholmes/papers/fse_2017_labuschange.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "Labuschagne Inozemtseva Holmes Measuring the cost of regression testing in practice flaky failing builds",
-      "trust": {"score": 72, "basis": "Statistical bar: study named (ESEC/FSE 2017), sample (61 open-source Java projects on Travis CI), measure (failure classified by its resolution) and result (18%, 13%, 74%/26%) all disclosed; peer-reviewed, quoted from the fetched PDF. Single study, open-source Java only, so the shares are not general; Lam et al. cite its 12.8%-of-builds figure, which confirms the dataset but is not independent replication."},
+      "trust": {
+        "score": 72,
+        "basis": "Statistical bar: study named (ESEC/FSE 2017), sample (61 open-source Java projects on Travis CI), measure (failure classified by its resolution) and result (18%, 13%, 74%/26%) all disclosed; peer-reviewed, quoted from the fetched PDF. Single study, open-source Java only, so the shares are not general; Lam et al. cite its 12.8%-of-builds figure, which confirms the dataset but is not independent replication."
+      },
       "independence": "single"
     },
     {
@@ -228,11 +387,23 @@
       "question": "known-solutions",
       "claim": "Mozilla's Treeherder classifies each failure into one value from a fixed list: not classified, fixed by commit, expected fail, intermittent, infra, new failure not classified, autoclassified intermittent, and intermittent needs bugid.",
       "quote": "\"not classified\" ... \"fixed by commit\" ... \"expected fail\" ... \"intermittent\" ... \"infra\" ... \"new failure not classified\" ... \"autoclassified intermittent\" ... \"intermittent needs bugid\"",
-      "citations": [{"title": "treeherder/model/fixtures/failure_classification.json", "author": "Mozilla", "publisher": "GitHub (mozilla/treeherder)", "date": "n.d.", "url": "https://raw.githubusercontent.com/mozilla/treeherder/master/treeherder/model/fixtures/failure_classification.json", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "treeherder/model/fixtures/failure_classification.json",
+          "author": "Mozilla",
+          "publisher": "GitHub (mozilla/treeherder)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/mozilla/treeherder/master/treeherder/model/fixtures/failure_classification.json",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "tool source code",
       "generated_by": "grow-cookbook research agent",
       "query": "Treeherder failure classification fixed by commit intermittent infra expected fail sheriff",
-      "trust": {"score": 75, "basis": "The production triage tool's own classification data, read directly; primary and current (master branch). It is a data fixture, so it gives the names, not their definitions."},
+      "trust": {
+        "score": 75,
+        "basis": "The production triage tool's own classification data, read directly; primary and current (master branch). It is a data fixture, so it gives the names, not their definitions."
+      },
       "independence": "single"
     },
     {
@@ -240,11 +411,23 @@
       "question": "known-solutions",
       "claim": "Mozilla's sheriffing guide treats broken build infrastructure as the case where many jobs fail at once, and has sheriffs pin those jobs together and apply one classification to all of them.",
       "quote": "something in the build infrastructure is broken, causing lots of jobs to fail at once",
-      "citations": [{"title": "Sheriffing/How To/Treeherder", "author": "Mozilla", "publisher": "MozillaWiki", "date": "n.d.", "url": "https://wiki.mozilla.org/Sheriffing/How_To/Treeherder", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Sheriffing/How To/Treeherder",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/Sheriffing/How_To/Treeherder",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "project's own procedure documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Treeherder failure classification fixed by commit intermittent infra expected fail sheriff",
-      "trust": {"score": 64, "basis": "Primary procedure, quoted directly; it states the signal (many jobs at once), not a rule that only such a signal establishes an infrastructure fault. Wiki page, undated."},
+      "trust": {
+        "score": 64,
+        "basis": "Primary procedure, quoted directly; it states the signal (many jobs at once), not a rule that only such a signal establishes an infrastructure fault. Wiki page, undated."
+      },
       "independence": "single"
     },
     {
@@ -252,11 +435,23 @@
       "question": "known-solutions",
       "claim": "Datadog's flaky test management categorizes a flaky test's cause from its execution patterns and error signals into categories including concurrency, randomness, timeout, order dependency, asynchronous wait, network, time and environment dependency, with an Unknown category for a test flaky for an unknown reason.",
       "quote": "execution patterns and error signals ... Test is flaky for an unknown reason.",
-      "citations": [{"title": "Flaky Test Management", "author": "Datadog", "publisher": "Datadog Docs", "date": "n.d.", "url": "https://docs.datadoghq.com/tests/flaky_management/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Flaky Test Management",
+          "author": "Datadog",
+          "publisher": "Datadog Docs",
+          "date": "n.d.",
+          "url": "https://docs.datadoghq.com/tests/flaky_management/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "vendor documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Datadog flaky test management categories",
-      "trust": {"score": 62, "basis": "Vendor's own current documentation; the categories echo Luo et al.'s published taxonomy (ks-luo-flaky-root-causes) but the page gives no accuracy figures for its AI categorization, so the claim is held to what the categories are."},
+      "trust": {
+        "score": 62,
+        "basis": "Vendor's own current documentation; the categories echo Luo et al.'s published taxonomy (ks-luo-flaky-root-causes) but the page gives no accuracy figures for its AI categorization, so the claim is held to what the categories are."
+      },
       "independence": "single"
     },
     {
@@ -264,11 +459,23 @@
       "question": "known-solutions",
       "claim": "Trunk Flaky Tests classifies each test as broken, flaky or healthy by monitor: consistently failing tests are broken, intermittently failing ones flaky, and broken takes precedence over flaky.",
       "quote": "catching consistently failing tests ... catching intermittently failing tests",
-      "citations": [{"title": "Detection", "author": "Trunk Technologies", "publisher": "Trunk Docs", "date": "n.d.", "url": "https://docs.trunk.io/flaky-tests/detection", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Detection",
+          "author": "Trunk Technologies",
+          "publisher": "Trunk Docs",
+          "date": "n.d.",
+          "url": "https://docs.trunk.io/flaky-tests/detection",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "vendor documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Trunk flaky tests detection broken flaky healthy",
-      "trust": {"score": 62, "basis": "Vendor's own current documentation, quoted directly; single vendor; agrees in substance with Meta's PFS (ks-meta-pfs-broken-vs-flaky) that consistent failure is not flakiness."},
+      "trust": {
+        "score": 62,
+        "basis": "Vendor's own current documentation, quoted directly; single vendor; agrees in substance with Meta's PFS (ks-meta-pfs-broken-vs-flaky) that consistent failure is not flakiness."
+      },
       "independence": "single"
     },
     {
@@ -276,11 +483,23 @@
       "question": "known-solutions",
       "claim": "Meta's probabilistic flakiness score measures how likely a test is to fail when it could have passed on the same code, so a deterministic test that breaks scores near zero despite many failures.",
       "quote": "the score measures how likely the test is to fail, provided it could have passed on the same version of code ... PFS of the test is close to zero, despite many observed failures",
-      "citations": [{"title": "Probabilistic flakiness: Understanding and reducing flaky tests", "author": "Engineering at Meta", "publisher": "Engineering at Meta", "date": "2020-12-10", "url": "https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Probabilistic flakiness: Understanding and reducing flaky tests",
+          "author": "Engineering at Meta",
+          "publisher": "Engineering at Meta",
+          "date": "2020-12-10",
+          "url": "https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "vendor engineering publication",
       "generated_by": "grow-cookbook research agent",
       "query": "Meta probabilistic flakiness score PFS",
-      "trust": {"score": 66, "basis": "Meta's own description of its production system, quoted directly; primary for how Meta separates broken from flaky; not peer-reviewed and single source."},
+      "trust": {
+        "score": 66,
+        "basis": "Meta's own description of its production system, quoted directly; primary for how Meta separates broken from flaky; not peer-reviewed and single source."
+      },
       "independence": "single"
     },
     {
@@ -288,11 +507,23 @@
       "question": "known-solutions",
       "claim": "Meta's flakiness model yields a full posterior distribution rather than a point estimate, and reports when it cannot confidently estimate a test's flakiness.",
       "quote": "our model yields an entire posterior distribution ... cannot confidently estimate flakiness of a particular test",
-      "citations": [{"title": "Probabilistic flakiness: Understanding and reducing flaky tests", "author": "Engineering at Meta", "publisher": "Engineering at Meta", "date": "2020-12-10", "url": "https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Probabilistic flakiness: Understanding and reducing flaky tests",
+          "author": "Engineering at Meta",
+          "publisher": "Engineering at Meta",
+          "date": "2020-12-10",
+          "url": "https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "vendor engineering publication",
       "generated_by": "grow-cookbook research agent",
       "query": "Meta probabilistic flakiness score PFS",
-      "trust": {"score": 64, "basis": "Primary description of a production system's uncertainty handling, quoted directly; single source; shows practice, not a recommendation for human triage."},
+      "trust": {
+        "score": 64,
+        "basis": "Primary description of a production system's uncertainty handling, quoted directly; single source; shows practice, not a recommendation for human triage."
+      },
       "independence": "single"
     },
     {
@@ -300,11 +531,23 @@
       "question": "known-solutions",
       "claim": "Microsoft's flaky-test framework instruments flaky tests to log runtime properties and uses a tool, RootFinder, to find differences between the logs of passing and failing runs to locate the root cause.",
       "quote": "Our framework instruments flaky tests and all relevant code to log various runtime properties, and then uses a preliminary tool, called RootFinder, to find differences in the logs of passing and failing runs.",
-      "citations": [{"title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting", "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta", "publisher": "ACM ISSTA 2019", "date": "2019-07", "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting",
+          "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta",
+          "publisher": "ACM ISSTA 2019",
+          "date": "2019-07",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "Lam Root causing flaky tests in a large-scale industrial setting ISSTA 2019",
-      "trust": {"score": 70, "basis": "Peer-reviewed industrial paper from Microsoft, quoted from the fetched PDF; describes a technique, not a prevalence figure."},
+      "trust": {
+        "score": 70,
+        "basis": "Peer-reviewed industrial paper from Microsoft, quoted from the fetched PDF; describes a technique, not a prevalence figure."
+      },
       "independence": "single"
     },
     {
@@ -312,11 +555,23 @@
       "question": "known-solutions",
       "claim": "git bisect binary-searches history between a known good and a known bad commit to find the commit that introduced a bug, and its run mode lets a script mark a commit as untestable (exit 125) so it is skipped.",
       "quote": "This command uses a binary search algorithm to find which commit in your project's history introduced a bug. ... The special exit code 125 should be used when the current source code cannot be tested.",
-      "citations": [{"title": "git-bisect Documentation", "author": "Git project", "publisher": "git-scm.com", "date": "n.d.", "url": "https://git-scm.com/docs/git-bisect", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "git-bisect Documentation",
+          "author": "Git project",
+          "publisher": "git-scm.com",
+          "date": "n.d.",
+          "url": "https://git-scm.com/docs/git-bisect",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "git bisect run exit code 125 skip",
-      "trust": {"score": 80, "basis": "The tool owner's own current reference, quoted directly; definitional for the tool; Chromium's gardener duty to identify the culprit CL (bp-gardener-owns-new-failures) is independent corroboration of the practice."},
+      "trust": {
+        "score": 80,
+        "basis": "The tool owner's own current reference, quoted directly; definitional for the tool; Chromium's gardener duty to identify the culprit CL (bp-gardener-owns-new-failures) is independent corroboration of the practice."
+      },
       "independence": "single"
     },
     {
@@ -324,11 +579,23 @@
       "question": "known-solutions",
       "claim": "Buildkite Test Engine labels tests whose results indicate flakiness and its workflow actions can notify the team responsible for fixing a flaky test, including by creating an issue for that team.",
       "quote": "create a Linear issue for the team responsible for fixing a flaky test",
-      "citations": [{"title": "Flaky test management", "author": "Buildkite", "publisher": "Buildkite Docs", "date": "n.d.", "url": "https://buildkite.com/docs/test-engine/flaky-test-management", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Flaky test management",
+          "author": "Buildkite",
+          "publisher": "Buildkite Docs",
+          "date": "n.d.",
+          "url": "https://buildkite.com/docs/test-engine/flaky-test-management",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "vendor documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Buildkite Test Engine flaky test detection docs",
-      "trust": {"score": 58, "basis": "Vendor's own current documentation, quoted directly; narrow (routing to an owner), single source; the page does not describe its detection models."},
+      "trust": {
+        "score": 58,
+        "basis": "Vendor's own current documentation, quoted directly; narrow (routing to an owner), single source; the page does not describe its detection models."
+      },
       "independence": "single"
     },
     {
@@ -336,11 +603,23 @@
       "question": "known-solutions",
       "claim": "Luo et al. studied 201 commits that likely fix flaky tests in 51 open-source projects and found the top three root-cause categories are Async Wait (74 of 161 commits, 45%), Concurrency (32 of 161, 20%) and Test Order Dependency (19 of 161, 12%).",
       "quote": "We study in detail a total of 201 commits that likely fix flaky tests in 51 open-source projects. ... The top three categories of flaky tests are Async Wait, Concurrency, and Test Order Dependency. ... 74 out of 161 (45%) commits are from the Async Wait category ... 32 out of 161 (20%) commits are from the Concurrency ... 19 out of 161 (12%) commits are from the Test Order",
-      "citations": [{"title": "An Empirical Analysis of Flaky Tests", "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov", "publisher": "ACM SIGSOFT FSE 2014", "date": "2014-11", "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "An Empirical Analysis of Flaky Tests",
+          "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov",
+          "publisher": "ACM SIGSOFT FSE 2014",
+          "date": "2014-11",
+          "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "An Empirical Analysis of Flaky Tests Luo Hariri Eloussi Marinov",
-      "trust": {"score": 68, "basis": "Statistical bar: study (FSE 2014), sample (201 flaky-fix commits, 161 classified, 51 Apache projects), measure (root cause of the fix) and result disclosed; peer-reviewed. Not replicated in shares: Gruber et al.'s Python study found async wait and concurrency at 3% each (ev-infrastructure-flakiness-share), so the shares are sample-specific; the categories themselves recur in Datadog's tool."},
+      "trust": {
+        "score": 68,
+        "basis": "Statistical bar: study (FSE 2014), sample (201 flaky-fix commits, 161 classified, 51 Apache projects), measure (root cause of the fix) and result disclosed; peer-reviewed. Not replicated in shares: Gruber et al.'s Python study found async wait and concurrency at 3% each (ev-infrastructure-flakiness-share), so the shares are sample-specific; the categories themselves recur in Datadog's tool."
+      },
       "independence": "single"
     },
     {
@@ -348,11 +627,23 @@
       "question": "platform-guidelines",
       "claim": "Playwright Test reports a test as flaky when it failed on the first run but passed when retried, and as failed when it failed the first run and every retry.",
       "quote": "tests that failed on the first run, but passed when retried; ... tests that failed on the first run and failed all retries.",
-      "citations": [{"title": "Retries", "author": "Microsoft", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-retries", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Retries",
+          "author": "Microsoft",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-retries",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright test retries flaky status",
-      "trust": {"score": 82, "basis": "The runner owner's current documentation, quoted directly; definitional for Playwright's status values."},
+      "trust": {
+        "score": 82,
+        "basis": "The runner owner's current documentation, quoted directly; definitional for Playwright's status values."
+      },
       "independence": "single"
     },
     {
@@ -360,11 +651,23 @@
       "question": "platform-guidelines",
       "claim": "Playwright recommends recording traces in CI on the first retry of a failed test; a trace holds the actions and locators used, DOM snapshots for each action, the network requests, browser and test console logs, and a screencast.",
       "quote": "Traces should be run on continuous integration on the first retry of a failed test. ... captures a set of complete DOM snapshots for each action ... The Network tab shows you all the network requests that were made during your test.",
-      "citations": [{"title": "Trace viewer", "author": "Microsoft", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/trace-viewer", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Trace viewer",
+          "author": "Microsoft",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/trace-viewer",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright trace viewer on-first-retry CI",
-      "trust": {"score": 80, "basis": "Runner owner's current documentation, quoted directly; 'should' makes it a recommendation."},
+      "trust": {
+        "score": 80,
+        "basis": "Runner owner's current documentation, quoted directly; 'should' makes it a recommendation."
+      },
       "independence": "single"
     },
     {
@@ -372,11 +675,23 @@
       "question": "platform-guidelines",
       "claim": "Playwright's test.fail annotation runs a test expected to fail and complains if it does not fail, while test.fixme marks it failing without running it.",
       "quote": "marks the test as failing. Playwright will run this test and ensure it does indeed fail. ... If the test does not fail, Playwright will complain.",
-      "citations": [{"title": "Annotations", "author": "Microsoft", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-annotations", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Annotations",
+          "author": "Microsoft",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-annotations",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright test annotations test.fail test.fixme",
-      "trust": {"score": 78, "basis": "Runner owner's current documentation, quoted directly; definitional; pytest's xfail (pg-pytest-xfail-strict-reason) is the independent counterpart."},
+      "trust": {
+        "score": 78,
+        "basis": "Runner owner's current documentation, quoted directly; definitional; pytest's xfail (pg-pytest-xfail-strict-reason) is the independent counterpart."
+      },
       "independence": "single"
     },
     {
@@ -384,11 +699,23 @@
       "question": "platform-guidelines",
       "claim": "pytest's xfail marker records a test expected to fail, with a reason parameter for the motive and a raises parameter that reports any other exception as a regular failure.",
       "quote": "An xfail means that you expect a test to fail for some reason. ... You can specify the motive of an expected failure with the reason parameter: ... Then the test will be reported as a regular failure if it fails with an exception not mentioned in raises.",
-      "citations": [{"title": "How to use skip and xfail to deal with tests that cannot succeed", "author": "pytest-dev", "publisher": "pytest documentation", "date": "n.d.", "url": "https://docs.pytest.org/en/stable/how-to/skipping.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "How to use skip and xfail to deal with tests that cannot succeed",
+          "author": "pytest-dev",
+          "publisher": "pytest documentation",
+          "date": "n.d.",
+          "url": "https://docs.pytest.org/en/stable/how-to/skipping.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "pytest xfail strict reason raises",
-      "trust": {"score": 80, "basis": "Runner owner's current documentation, quoted directly; definitional; independently matched by Playwright's test.fail and Treeherder's 'expected fail' class."},
+      "trust": {
+        "score": 80,
+        "basis": "Runner owner's current documentation, quoted directly; definitional; independently matched by Playwright's test.fail and Treeherder's 'expected fail' class."
+      },
       "independence": "single"
     },
     {
@@ -397,13 +724,30 @@
       "claim": "pytest's documentation says rerunning failed tests can mitigate flaky tests' effects, and pytest-rerunfailures reruns failures and marks as failed only tests that fail on every rerun, with options to rerun only failures matching, or not matching, a pattern.",
       "quote": "Rerunning any failed tests can mitigate the negative effects of flaky tests. | Note that output will show all re-runs. Tests that fail on all the re-runs will be marked as failed.",
       "citations": [
-        {"title": "Flaky tests", "author": "pytest-dev", "publisher": "pytest documentation", "date": "n.d.", "url": "https://docs.pytest.org/en/stable/explanation/flaky.html", "accessed": "2026-11-24"},
-        {"title": "pytest-rerunfailures", "author": "pytest-dev", "publisher": "GitHub (pytest-dev/pytest-rerunfailures)", "date": "n.d.", "url": "https://github.com/pytest-dev/pytest-rerunfailures", "accessed": "2026-11-24"}
+        {
+          "title": "Flaky tests",
+          "author": "pytest-dev",
+          "publisher": "pytest documentation",
+          "date": "n.d.",
+          "url": "https://docs.pytest.org/en/stable/explanation/flaky.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "pytest-rerunfailures",
+          "author": "pytest-dev",
+          "publisher": "GitHub (pytest-dev/pytest-rerunfailures)",
+          "date": "n.d.",
+          "url": "https://github.com/pytest-dev/pytest-rerunfailures",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "pytest flaky tests rerun plugins; pytest-rerunfailures only-rerun",
-      "trust": {"score": 76, "basis": "The pytest project's own documentation and plugin README, quoted directly; both are pytest-dev, so one publisher, counted single."},
+      "trust": {
+        "score": 76,
+        "basis": "The pytest project's own documentation and plugin README, quoted directly; both are pytest-dev, so one publisher, counted single."
+      },
       "independence": "single"
     },
     {
@@ -411,11 +755,23 @@
       "question": "platform-guidelines",
       "claim": "Maven Surefire's rerunFailingTestsCount reruns failing tests and counts a test that passes on a rerun as a flake, reported separately in the summary and in flakyFailure/flakyError elements of the XML report, and can fail the build above a flake count.",
       "quote": "Then this test will be counted as a flaky test. The build will be successful, but in the end of the summary of all tests run, the number of flaky tests will be output on the screen ... flakyFailure and flakyError elements will be used in the generated xml report to include information of each failing re-runs.",
-      "citations": [{"title": "Rerun Failing Tests", "author": "The Apache Software Foundation", "publisher": "Apache Maven Surefire", "date": "n.d.", "url": "https://maven.apache.org/surefire/maven-surefire-plugin/examples/rerun-failing-tests.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Rerun Failing Tests",
+          "author": "The Apache Software Foundation",
+          "publisher": "Apache Maven Surefire",
+          "date": "n.d.",
+          "url": "https://maven.apache.org/surefire/maven-surefire-plugin/examples/rerun-failing-tests.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Maven surefire rerunFailingTestsCount flaky",
-      "trust": {"score": 80, "basis": "Plugin owner's documentation, quoted directly; definitional for JUnit 4/5 and TestNG under Maven."},
+      "trust": {
+        "score": 80,
+        "basis": "Plugin owner's documentation, quoted directly; definitional for JUnit 4/5 and TestNG under Maven."
+      },
       "independence": "single"
     },
     {
@@ -423,11 +779,23 @@
       "question": "platform-guidelines",
       "claim": "Gradle's test-retry plugin has a maxFailures setting that stops retrying once too many tests fail, because when everything starts failing retrying is unlikely to help.",
       "quote": "When something goes badly wrong and all tests start failing, it can be preferable to not keep retrying tests.",
-      "citations": [{"title": "test-retry-gradle-plugin", "author": "Gradle Inc.", "publisher": "GitHub (gradle/test-retry-gradle-plugin)", "date": "n.d.", "url": "https://github.com/gradle/test-retry-gradle-plugin", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "test-retry-gradle-plugin",
+          "author": "Gradle Inc.",
+          "publisher": "GitHub (gradle/test-retry-gradle-plugin)",
+          "date": "n.d.",
+          "url": "https://github.com/gradle/test-retry-gradle-plugin",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "gradle test retry plugin maxFailures failOnPassedAfterRetry",
-      "trust": {"score": 72, "basis": "Tool owner's README, quoted directly; it shows that mass failure is treated as a different signal from a single flaky failure, not that it proves an environment fault."},
+      "trust": {
+        "score": 72,
+        "basis": "Tool owner's README, quoted directly; it shows that mass failure is treated as a different signal from a single flaky failure, not that it proves an environment fault."
+      },
       "independence": "single"
     },
     {
@@ -435,11 +803,23 @@
       "question": "platform-guidelines",
       "claim": "Xcode can run a test repeatedly to determine its reliability, stopping after the first failure, after the first success, or after a fixed number of repetitions, optionally restarting the test runner each time; xcodebuild offers the same from the command line.",
       "quote": "Run the test until the first time it fails, or it reaches maximum repetitions. ... Run the test until the first time it passes, or it reaches maximum repetitions. ... Run the test the specified number of times, regardless of its outcome.",
-      "citations": [{"title": "Running tests and interpreting results", "author": "Apple Inc.", "publisher": "Apple Developer Documentation", "date": "n.d.", "url": "https://developer.apple.com/tutorials/data/documentation/xcode/running-tests-and-interpreting-results.json", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Running tests and interpreting results",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/tutorials/data/documentation/xcode/running-tests-and-interpreting-results.json",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Xcode running tests and interpreting results test repetition",
-      "trust": {"score": 78, "basis": "Platform owner's current documentation (read through its JSON endpoint), quoted directly."},
+      "trust": {
+        "score": 78,
+        "basis": "Platform owner's current documentation (read through its JSON endpoint), quoted directly."
+      },
       "independence": "single"
     },
     {
@@ -447,11 +827,23 @@
       "question": "platform-guidelines",
       "claim": "Xcode's test report summarizes failure information and screenshots to show where to start investigating, and its Insights section reports common failure patterns across configurations and run destinations.",
       "quote": "It highlights important patterns failure information, screenshots, and more to help you determine where to start your investigations. ... Reports common failure patterns and long running tests found while analyzing results across multiple configurations and run destinations.",
-      "citations": [{"title": "Running tests and interpreting results", "author": "Apple Inc.", "publisher": "Apple Developer Documentation", "date": "n.d.", "url": "https://developer.apple.com/tutorials/data/documentation/xcode/running-tests-and-interpreting-results.json", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Running tests and interpreting results",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/tutorials/data/documentation/xcode/running-tests-and-interpreting-results.json",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Xcode running tests and interpreting results test report insights",
-      "trust": {"score": 76, "basis": "Platform owner's current documentation, quoted directly (including its own grammatical slip)."},
+      "trust": {
+        "score": 76,
+        "basis": "Platform owner's current documentation, quoted directly (including its own grammatical slip)."
+      },
       "independence": "single"
     },
     {
@@ -459,11 +851,23 @@
       "question": "platform-guidelines",
       "claim": "Android Test Orchestrator runs each instrumented test in its own Instrumentation instance, so shared state is minimized and one test's crash does not stop the rest of the suite from reporting.",
       "quote": "Even if one test crashes, it takes down only its own instance of Instrumentation. This means that the other tests in your suite still run, providing complete test results.",
-      "citations": [{"title": "AndroidJUnitRunner", "author": "Google", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/instrumented-tests/androidx-test-libraries/runner", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "AndroidJUnitRunner",
+          "author": "Google",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/instrumented-tests/androidx-test-libraries/runner",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Android Test Orchestrator clearPackageData crashes isolated",
-      "trust": {"score": 76, "basis": "Platform owner's current documentation, quoted directly; bears on triage only in keeping one failure from hiding others' results."},
+      "trust": {
+        "score": 76,
+        "basis": "Platform owner's current documentation, quoted directly; bears on triage only in keeping one failure from hiding others' results."
+      },
       "independence": "single"
     },
     {
@@ -472,13 +876,30 @@
       "claim": "Firebase Test Lab reports an inconclusive outcome, distinct from failure, for something unexpected that is likely a transient problem such as a Test Lab error, and its infrastructure errors do not trigger its flaky-test reruns.",
       "quote": "Something unexpected happened. The run should still be considered unsuccessful but this is likely a transient problem and re-running the test might be successful. | Infrastructure errors are independent from the deflake feature and don't trigger deflake reruns.",
       "citations": [
-        {"title": "OutcomeSummary (Tool Results API v1beta3)", "author": "Google", "publisher": "Firebase", "date": "n.d.", "url": "https://firebase.google.com/docs/test-lab/reference/toolresults/rest/v1beta3/OutcomeSummary", "accessed": "2026-11-24"},
-        {"title": "Troubleshooting and FAQ for Test Lab", "author": "Google", "publisher": "Firebase", "date": "n.d.", "url": "https://firebase.google.com/docs/test-lab/troubleshooting?hl=en", "accessed": "2026-11-24"}
+        {
+          "title": "OutcomeSummary (Tool Results API v1beta3)",
+          "author": "Google",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/test-lab/reference/toolresults/rest/v1beta3/OutcomeSummary",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Troubleshooting and FAQ for Test Lab",
+          "author": "Google",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/test-lab/troubleshooting?hl=en",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Firebase Test Lab num-flaky-test-attempts flaky outcome",
-      "trust": {"score": 76, "basis": "Platform owner's current API reference and FAQ, quoted directly; both Google/Firebase, so one publisher."},
+      "trust": {
+        "score": 76,
+        "basis": "Platform owner's current API reference and FAQ, quoted directly; both Google/Firebase, so one publisher."
+      },
       "independence": "single"
     },
     {
@@ -486,11 +907,23 @@
       "question": "platform-guidelines",
       "claim": "Firebase Test Lab gives each instrumentation test its own report page with stack traces, logs and videos, and returns performance metrics from physical devices.",
       "quote": "Test Lab separates each test into its own detailed report page, complete with stack traces, logs, and videos.",
-      "citations": [{"title": "Analyze Firebase Test Lab results", "author": "Google", "publisher": "Firebase", "date": "n.d.", "url": "https://firebase.google.com/docs/test-lab/android/analyzing-results", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Analyze Firebase Test Lab results",
+          "author": "Google",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/test-lab/android/analyzing-results",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Firebase Test Lab analyzing results flaky inconclusive",
-      "trust": {"score": 76, "basis": "Platform owner's current documentation, quoted directly."},
+      "trust": {
+        "score": 76,
+        "basis": "Platform owner's current documentation, quoted directly."
+      },
       "independence": "single"
     },
     {
@@ -499,14 +932,38 @@
       "claim": "CI systems define a flaky test by its outcome history on unchanged code: CircleCI as failed and passed on the same commit within 14 days, Azure DevOps as failing and then passing on a rerun, and Firebase Test Lab as both failure and success under the same configuration.",
       "quote": "Flaky tests are identified as tests that failed and passed on the same commit in a 14-day window. | If a test case fails initially but passes on a rerun, it is marked as flaky. | A group of steps that were run with the same configuration had both failure and success outcomes.",
       "citations": [
-        {"title": "Test Insights", "author": "CircleCI", "publisher": "CircleCI Docs", "date": "n.d.", "url": "https://circleci.com/docs/guides/insights/insights-tests/", "accessed": "2026-11-24"},
-        {"title": "Manage flaky tests - Azure Pipelines", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2020-08-31", "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/flaky-test-management?view=azure-devops", "accessed": "2026-11-24"},
-        {"title": "OutcomeSummary (Tool Results API v1beta3)", "author": "Google", "publisher": "Firebase", "date": "n.d.", "url": "https://firebase.google.com/docs/test-lab/reference/toolresults/rest/v1beta3/OutcomeSummary", "accessed": "2026-11-24"}
+        {
+          "title": "Test Insights",
+          "author": "CircleCI",
+          "publisher": "CircleCI Docs",
+          "date": "n.d.",
+          "url": "https://circleci.com/docs/guides/insights/insights-tests/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Manage flaky tests - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2020-08-31",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/flaky-test-management?view=azure-devops",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "OutcomeSummary (Tool Results API v1beta3)",
+          "author": "Google",
+          "publisher": "Firebase",
+          "date": "n.d.",
+          "url": "https://firebase.google.com/docs/test-lab/reference/toolresults/rest/v1beta3/OutcomeSummary",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "CircleCI test insights flaky same commit; Azure DevOps flaky test management; Firebase Test Lab flaky outcome",
-      "trust": {"score": 86, "basis": "Three independent platform owners' current documentation each define flakiness by outcome history on the same code or configuration; Playwright and Surefire (pg-playwright-flaky-status, pg-surefire-flaky-counted) agree; broad consensus above the Technical bar."},
+      "trust": {
+        "score": 86,
+        "basis": "Three independent platform owners' current documentation each define flakiness by outcome history on the same code or configuration; Playwright and Surefire (pg-playwright-flaky-status, pg-surefire-flaky-counted) agree; broad consensus above the Technical bar."
+      },
       "independence": "multi-independent"
     },
     {
@@ -514,11 +971,23 @@
       "question": "platform-guidelines",
       "claim": "GitLab's test reports show how often a failing test failed on the default branch in the last 14 days, which tests newly failed relative to the target branch, and screenshot attachments to help debug failures.",
       "quote": "Failed {n} time(s) in {default_branch} in the last 14 days. ... Newly failed tests: Tests that passed on the target branch but failed on your branch. ... Add screenshots to test reports to help debug test failures.",
-      "citations": [{"title": "Unit test reports", "author": "GitLab Inc.", "publisher": "GitLab Docs", "date": "n.d.", "url": "https://docs.gitlab.com/ci/testing/unit_test_reports/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Unit test reports",
+          "author": "GitLab Inc.",
+          "publisher": "GitLab Docs",
+          "date": "n.d.",
+          "url": "https://docs.gitlab.com/ci/testing/unit_test_reports/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "GitLab unit test reports recent failures screenshots",
-      "trust": {"score": 78, "basis": "Vendor's own current documentation, quoted directly."},
+      "trust": {
+        "score": 78,
+        "basis": "Vendor's own current documentation, quoted directly."
+      },
       "independence": "single"
     },
     {
@@ -526,11 +995,23 @@
       "question": "platform-guidelines",
       "claim": "GitHub Actions can re-run only the failed jobs of a run, with debug logging enabled, and a re-run uses the same commit SHA and ref as the original run.",
       "quote": "To enable runner diagnostic logging and step debug logging for the re-run, use the --debug flag. ... The workflow will also use the same GITHUB_SHA (commit SHA) and GITHUB_REF (git ref)",
-      "citations": [{"title": "Re-running workflows and jobs", "author": "GitHub", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Re-running workflows and jobs",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub Actions re-run failed jobs debug logging same SHA",
-      "trust": {"score": 78, "basis": "Vendor's own current documentation, quoted directly. GitHub Actions itself has no flaky-test classification; this is the rerun mechanism only."},
+      "trust": {
+        "score": 78,
+        "basis": "Vendor's own current documentation, quoted directly. GitHub Actions itself has no flaky-test classification; this is the rerun mechanism only."
+      },
       "independence": "single"
     },
     {
@@ -538,11 +1019,23 @@
       "question": "platform-guidelines",
       "claim": "Jest's documentation says a failing snapshot means either the runner found a bug that should be fixed or the implementation changed and the snapshot needs updating, and that a bug must be fixed before snapshots are regenerated so the buggy behavior is not recorded.",
       "quote": "If they don't match, either the test runner found a bug in your code (in the <Link> component in this case) that should be fixed, or the implementation has changed and the snapshot needs to be updated. ... If we had any additional failing snapshot tests due to an unintentional bug, we would need to fix the bug before re-generating snapshots to avoid recording snapshots of the buggy behavior.",
-      "citations": [{"title": "Snapshot Testing", "author": "Meta Platforms and Jest contributors", "publisher": "Jest", "date": "n.d.", "url": "https://jestjs.io/docs/snapshot-testing", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Snapshot Testing",
+          "author": "Meta Platforms and Jest contributors",
+          "publisher": "Jest",
+          "date": "n.d.",
+          "url": "https://jestjs.io/docs/snapshot-testing",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Jest snapshot testing failing snapshot bug or update",
-      "trust": {"score": 78, "basis": "Runner owner's current documentation, quoted directly; Software Engineering at Google (bp-tests-change-only-on-behavior-change) makes the same bug-versus-intended-change split independently."},
+      "trust": {
+        "score": 78,
+        "basis": "Runner owner's current documentation, quoted directly; Software Engineering at Google (bp-tests-change-only-on-behavior-change) makes the same bug-versus-intended-change split independently."
+      },
       "independence": "single"
     },
     {
@@ -551,13 +1044,30 @@
       "claim": "Practitioners warn that flaky failures make engineers stop reacting to test failures, and that once a failure is ignored the test loses its value.",
       "quote": "After that happens, engineers will stop reacting to test failures, eliminating any value the test suite provided. | Once you start ignoring a regression test failure, then that test is useless and you might as well throw it away.",
       "citations": [
-        {"title": "Software Engineering at Google, Chapter 11: Testing Overview", "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)", "publisher": "O'Reilly Media (abseil.io)", "date": "2020", "url": "https://abseil.io/resources/swe-book/html/ch11.html", "accessed": "2026-11-24"},
-        {"title": "Eradicating Non-Determinism in Tests", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2011-04-14", "url": "https://martinfowler.com/articles/nonDeterminism.html", "accessed": "2026-11-24"}
+        {
+          "title": "Software Engineering at Google, Chapter 11: Testing Overview",
+          "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)",
+          "publisher": "O'Reilly Media (abseil.io)",
+          "date": "2020",
+          "url": "https://abseil.io/resources/swe-book/html/ch11.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Eradicating Non-Determinism in Tests",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2011-04-14",
+          "url": "https://martinfowler.com/articles/nonDeterminism.html",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "practitioner book; practitioner article",
       "generated_by": "grow-cookbook research agent",
       "query": "Software Engineering at Google testing overview flaky; Fowler eradicating non-determinism",
-      "trust": {"score": 72, "basis": "Two independent expert publishers say the same; secondary sources used because this is expert opinion, which the question asks for; Luo et al. and Lam et al. state the same risk in peer-reviewed form (ev-ignoring-flaky-hides-bugs)."},
+      "trust": {
+        "score": 72,
+        "basis": "Two independent expert publishers say the same; secondary sources used because this is expert opinion, which the question asks for; Luo et al. and Lam et al. state the same risk in peer-reviewed form (ev-ignoring-flaky-hides-bugs)."
+      },
       "independence": "multi-independent"
     },
     {
@@ -565,11 +1075,23 @@
       "question": "experts-view",
       "claim": "Software Engineering at Google holds that automatically rerunning flaky tests limits their impact but only delays addressing the root cause.",
       "quote": "Just keep in mind that rerunning a test is only delaying the need to address the root cause of flakiness.",
-      "citations": [{"title": "Software Engineering at Google, Chapter 11: Testing Overview", "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)", "publisher": "O'Reilly Media (abseil.io)", "date": "2020", "url": "https://abseil.io/resources/swe-book/html/ch11.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Software Engineering at Google, Chapter 11: Testing Overview",
+          "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)",
+          "publisher": "O'Reilly Media (abseil.io)",
+          "date": "2020",
+          "url": "https://abseil.io/resources/swe-book/html/ch11.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner book",
       "generated_by": "grow-cookbook research agent",
       "query": "Software Engineering at Google testing overview flaky rerun",
-      "trust": {"score": 64, "basis": "Expert practitioner book, quoted directly; Luo et al. call reruns 'workarounds' rather than solutions in the same vein (not quoted here)."},
+      "trust": {
+        "score": 64,
+        "basis": "Expert practitioner book, quoted directly; Luo et al. call reruns 'workarounds' rather than solutions in the same vein (not quoted here)."
+      },
       "independence": "single"
     },
     {
@@ -578,13 +1100,30 @@
       "claim": "Peer-reviewed studies from academia and Microsoft warn that ignoring flaky-test failures is dangerous because those failures may be real faults in the production code.",
       "quote": "However, ignoring failures of flaky tests can be dangerous, since those failures may represent real faults in the production code. | if a flaky test fails frequently, developers tend to ignore its failures and, thus, could miss real bugs.",
       "citations": [
-        {"title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting", "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta", "publisher": "ACM ISSTA 2019", "date": "2019-07", "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf", "accessed": "2026-11-24"},
-        {"title": "An Empirical Analysis of Flaky Tests", "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov", "publisher": "ACM SIGSOFT FSE 2014", "date": "2014-11", "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf", "accessed": "2026-11-24"}
+        {
+          "title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting",
+          "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta",
+          "publisher": "ACM ISSTA 2019",
+          "date": "2019-07",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "An Empirical Analysis of Flaky Tests",
+          "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov",
+          "publisher": "ACM SIGSOFT FSE 2014",
+          "date": "2014-11",
+          "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "Lam Root causing flaky tests; Luo An Empirical Analysis of Flaky Tests",
-      "trust": {"score": 78, "basis": "Two peer-reviewed papers from different groups (Microsoft and UIUC; Lam later worked with Marinov's group but this paper's authorship and data are Microsoft's) state the same risk; quoted from fetched PDFs."},
+      "trust": {
+        "score": 78,
+        "basis": "Two peer-reviewed papers from different groups (Microsoft and UIUC; Lam later worked with Marinov's group but this paper's authorship and data are Microsoft's) state the same risk; quoted from fetched PDFs."
+      },
       "independence": "multi-independent"
     },
     {
@@ -592,11 +1131,23 @@
       "question": "experts-view",
       "claim": "In Luo et al.'s sample of flaky-test fixes, 24% modified the code under test, and 94% of those fixed a bug in it.",
       "quote": "F.12 Some fixes to flaky tests (24%) modify the CUT, and most of these cases (94%) fix a bug in the CUT.",
-      "citations": [{"title": "An Empirical Analysis of Flaky Tests", "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov", "publisher": "ACM SIGSOFT FSE 2014", "date": "2014-11", "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "An Empirical Analysis of Flaky Tests",
+          "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov",
+          "publisher": "ACM SIGSOFT FSE 2014",
+          "date": "2014-11",
+          "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "An Empirical Analysis of Flaky Tests Luo Hariri Eloussi Marinov",
-      "trust": {"score": 64, "basis": "Statistical bar: study (FSE 2014), sample (flaky-test fix commits in 51 open-source projects), measure (whether the fix touched the code under test and fixed a bug there) and result disclosed; peer-reviewed; single, unreplicated study, open-source only."},
+      "trust": {
+        "score": 64,
+        "basis": "Statistical bar: study (FSE 2014), sample (flaky-test fix commits in 51 open-source projects), measure (whether the fix touched the code under test and fixed a bug there) and result disclosed; peer-reviewed; single, unreplicated study, open-source only."
+      },
       "independence": "single"
     },
     {
@@ -604,11 +1155,23 @@
       "question": "experts-view",
       "claim": "Lam et al. found at Microsoft that, rerun locally 100 times, 86% of flaky tests were flaky only in the CI pipeline, and 97 of 311 tests that failed in the cloud could not be reproduced locally even with 100 reruns.",
       "quote": "When we re-run flaky tests locally 100 times, we find that 86% of them are only flaky in the CI pipeline. ... Of 311 tests in our dataset that failed on the cloud, we could not reproduce the failure locally in 97 cases, even with 100 reruns.",
-      "citations": [{"title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting", "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta", "publisher": "ACM ISSTA 2019", "date": "2019-07", "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting",
+          "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta",
+          "publisher": "ACM ISSTA 2019",
+          "date": "2019-07",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "Lam Root causing flaky tests in a large-scale industrial setting ISSTA 2019",
-      "trust": {"score": 66, "basis": "Statistical bar: study (ISSTA 2019), sample (flaky tests from five Microsoft projects over one month on CloudBuild; 311 cloud failures), measure (local reproduction in 100 reruns) and result disclosed; peer-reviewed industrial data; single study, projects anonymized."},
+      "trust": {
+        "score": 66,
+        "basis": "Statistical bar: study (ISSTA 2019), sample (flaky tests from five Microsoft projects over one month on CloudBuild; 311 cloud failures), measure (local reproduction in 100 reruns) and result disclosed; peer-reviewed industrial data; single study, projects anonymized."
+      },
       "independence": "single"
     },
     {
@@ -617,13 +1180,30 @@
       "claim": "A few reruns may not reveal a flaky test whose chance of changing outcome is low; in one study flaky tests were still being found after up to 10,000 reruns.",
       "quote": "When the probability for a flaky test to change its outcome is low, rerunning it a few times may not be enough to manifest that it can change the outcome. | flaky tests were still being detected after up to 10,000 reruns",
       "citations": [
-        {"title": "An Empirical Analysis of Flaky Tests", "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov", "publisher": "ACM SIGSOFT FSE 2014", "date": "2014-11", "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf", "accessed": "2026-11-24"},
-        {"title": "A Survey of Flaky Tests", "author": "Owain Parry, Gregory M. Kapfhammer, Michael Hilton and Phil McMinn", "publisher": "ACM Transactions on Software Engineering and Methodology 31(1)", "date": "2022-01", "url": "https://eprints.whiterose.ac.uk/id/eprint/230095/1/parry2021.pdf", "accessed": "2026-11-24"}
+        {
+          "title": "An Empirical Analysis of Flaky Tests",
+          "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov",
+          "publisher": "ACM SIGSOFT FSE 2014",
+          "date": "2014-11",
+          "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "A Survey of Flaky Tests",
+          "author": "Owain Parry, Gregory M. Kapfhammer, Michael Hilton and Phil McMinn",
+          "publisher": "ACM Transactions on Software Engineering and Methodology 31(1)",
+          "date": "2022-01",
+          "url": "https://eprints.whiterose.ac.uk/id/eprint/230095/1/parry2021.pdf",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "peer-reviewed study; peer-reviewed survey",
       "generated_by": "grow-cookbook research agent",
       "query": "Luo An Empirical Analysis of Flaky Tests; Parry Kapfhammer Hilton McMinn A Survey of Flaky Tests",
-      "trust": {"score": 72, "basis": "Two independent research groups; the 10,000-rerun figure is Alshammari et al.'s, reported secondhand by Parry et al.'s peer-reviewed survey (the original not fetched)."},
+      "trust": {
+        "score": 72,
+        "basis": "Two independent research groups; the 10,000-rerun figure is Alshammari et al.'s, reported secondhand by Parry et al.'s peer-reviewed survey (the original not fetched)."
+      },
       "independence": "multi-independent"
     },
     {
@@ -631,11 +1211,23 @@
       "question": "experts-view",
       "claim": "Parry et al. report that Gruber et al. ran 22,352 Python projects' suites 200 times in original and random order, called a test infrastructure-flaky when it was flaky between iterations but not within one, and of 7,571 flaky tests found 28% infrastructure flakiness, 59% test order dependency and 13% other causes.",
       "quote": "They considered a flaky test to be due to infrastructure flakiness if it was flaky between iterations but not within an iteration ... In total, they identified 7,571 flaky tests among 1006 projects of their subject set. Of these, they found 28% to be due to infrastructure flakiness, 59% due to test order dependencies and 13% due to other causes.",
-      "citations": [{"title": "A Survey of Flaky Tests", "author": "Owain Parry, Gregory M. Kapfhammer, Michael Hilton and Phil McMinn", "publisher": "ACM Transactions on Software Engineering and Methodology 31(1)", "date": "2022-01", "url": "https://eprints.whiterose.ac.uk/id/eprint/230095/1/parry2021.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "A Survey of Flaky Tests",
+          "author": "Owain Parry, Gregory M. Kapfhammer, Michael Hilton and Phil McMinn",
+          "publisher": "ACM Transactions on Software Engineering and Methodology 31(1)",
+          "date": "2022-01",
+          "url": "https://eprints.whiterose.ac.uk/id/eprint/230095/1/parry2021.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed survey (secondary for the figures)",
       "generated_by": "grow-cookbook research agent",
       "query": "Parry Kapfhammer Hilton McMinn A Survey of Flaky Tests TOSEM",
-      "trust": {"score": 58, "basis": "Statistical bar: study (Gruber et al. ICST 2021), sample (22,352 PyPI projects, 876,186 tests), measure (between- vs within-iteration flakiness) and result disclosed, but read through a peer-reviewed survey, not the original paper: secondary, capped."},
+      "trust": {
+        "score": 58,
+        "basis": "Statistical bar: study (Gruber et al. ICST 2021), sample (22,352 PyPI projects, 876,186 tests), measure (between- vs within-iteration flakiness) and result disclosed, but read through a peer-reviewed survey, not the original paper: secondary, capped."
+      },
       "independence": "single"
     },
     {
@@ -643,11 +1235,23 @@
       "question": "experts-view",
       "claim": "Luo et al. report, from a personal communication with John Micco, that Google's TAP system averaged 1.6M test failures a day over 15 months, of which 73K (4.56%) were caused by flaky tests.",
       "quote": "the TAP system at Google had 1.6M test failures on average each day in the past 15 months, and 73K out of 1.6M (4.56%) test failures were caused by flaky tests.",
-      "citations": [{"title": "An Empirical Analysis of Flaky Tests", "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov", "publisher": "ACM SIGSOFT FSE 2014", "date": "2014-11", "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "An Empirical Analysis of Flaky Tests",
+          "author": "Qingzhou Luo, Farah Hariri, Lamyaa Eloussi and Darko Marinov",
+          "publisher": "ACM SIGSOFT FSE 2014",
+          "date": "2014-11",
+          "url": "https://mir.cs.illinois.edu/marinov/publications/LuoETAL14FlakyTestsAnalysis.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "peer-reviewed study (secondary for the figure)",
       "generated_by": "grow-cookbook research agent",
       "query": "An Empirical Analysis of Flaky Tests Luo Hariri Eloussi Marinov",
-      "trust": {"score": 45, "basis": "Statistical bar not met: sample (Google TAP, 15 months) and result are given but the measure (how 'caused by flaky tests' was decided) is not disclosed, and the source is a personal communication reported in a paper; dated (2014). Capped low."},
+      "trust": {
+        "score": 45,
+        "basis": "Statistical bar not met: sample (Google TAP, 15 months) and result are given but the measure (how 'caused by flaky tests' was decided) is not disclosed, and the source is a personal communication reported in a paper; dated (2014). Capped low."
+      },
       "independence": "single"
     },
     {
@@ -655,11 +1259,23 @@
       "question": "experts-view",
       "claim": "Agans's debugging rules, as reviewed by Wheeler, say to make the failure happen again and to look at data rather than repair on a guess, and that many people try to fix things on a guess instead of gathering data to test a hypothesis.",
       "quote": "Too many try to \"fix\" things based on a guess instead of gathering and observing data to prove or disprove a hypothesis.",
-      "citations": [{"title": "Review of Debugging by David J. Agans", "author": "David A. Wheeler", "publisher": "dwheeler.com", "date": "2004-03-02", "url": "https://dwheeler.com/essays/debugging-agans.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Review of Debugging by David J. Agans",
+          "author": "David A. Wheeler",
+          "publisher": "dwheeler.com",
+          "date": "2004-03-02",
+          "url": "https://dwheeler.com/essays/debugging-agans.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner book review",
       "generated_by": "grow-cookbook research agent",
       "query": "Agans debugging nine rules Make It Fail Quit Thinking and Look",
-      "trust": {"score": 48, "basis": "Secondary: a review of a practitioner book, not the book itself, which was not read; old (2004) though the principle is not time-sensitive; single source. Mozilla's 'separate facts (observations) from speculations' (bp-bug-report-observed-vs-expected) supports the same practice in a primary source."},
+      "trust": {
+        "score": 48,
+        "basis": "Secondary: a review of a practitioner book, not the book itself, which was not read; old (2004) though the principle is not time-sensitive; single source. Mozilla's 'separate facts (observations) from speculations' (bp-bug-report-observed-vs-expected) supports the same practice in a primary source."
+      },
       "independence": "single"
     },
     {
@@ -667,11 +1283,23 @@
       "question": "experts-view",
       "claim": "Jest warns against the habit of regenerating snapshots when tests fail instead of examining the root causes of the failure.",
       "quote": "The goal is to make it easy to review snapshots in pull requests, and fight against the habit of regenerating snapshots when test suites fail instead of examining the root causes of their failure.",
-      "citations": [{"title": "Snapshot Testing", "author": "Meta Platforms and Jest contributors", "publisher": "Jest", "date": "n.d.", "url": "https://jestjs.io/docs/snapshot-testing", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Snapshot Testing",
+          "author": "Meta Platforms and Jest contributors",
+          "publisher": "Jest",
+          "date": "n.d.",
+          "url": "https://jestjs.io/docs/snapshot-testing",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official documentation",
       "generated_by": "grow-cookbook research agent",
       "query": "Jest snapshot testing failing snapshot bug or update",
-      "trust": {"score": 72, "basis": "Runner owner's documentation naming a common mistake, quoted directly; single source."},
+      "trust": {
+        "score": 72,
+        "basis": "Runner owner's documentation naming a common mistake, quoted directly; single source."
+      },
       "independence": "single"
     },
     {
@@ -679,11 +1307,23 @@
       "question": "experts-view",
       "claim": "Software Engineering at Google holds that larger tests are often flakier because they use more infrastructure, and that unchecked flakiness makes them too hard to triage.",
       "quote": "Larger tests are often flakier because they use more infrastructure than does a small unit test. ... But we still need to keep them from breaking or else they provide no signal and become too difficult to triage.",
-      "citations": [{"title": "Software Engineering at Google, Chapter 14: Larger Testing", "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)", "publisher": "O'Reilly Media (abseil.io)", "date": "2020", "url": "https://abseil.io/resources/swe-book/html/ch14.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Software Engineering at Google, Chapter 14: Larger Testing",
+          "author": "Titus Winters, Tom Manshreck and Hyrum Wright (eds.)",
+          "publisher": "O'Reilly Media (abseil.io)",
+          "date": "2020",
+          "url": "https://abseil.io/resources/swe-book/html/ch14.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner book",
       "generated_by": "grow-cookbook research agent",
       "query": "Software Engineering at Google larger testing flaky",
-      "trust": {"score": 58, "basis": "Expert practitioner book, quoted directly; single source; an expert observation, not a measured figure."},
+      "trust": {
+        "score": 58,
+        "basis": "Expert practitioner book, quoted directly; single source; an expert observation, not a measured figure."
+      },
       "independence": "single"
     },
     {
@@ -692,13 +1332,30 @@
       "claim": "Meta's flakiness work assumes that all real-world tests are flaky to some extent, and Lam et al. note calls to treat every test as potentially flaky.",
       "quote": "all real-world tests are flaky to some extent | there have even been calls to adopt the position that every test is potentially a flaky test",
       "citations": [
-        {"title": "Probabilistic flakiness: Understanding and reducing flaky tests", "author": "Engineering at Meta", "publisher": "Engineering at Meta", "date": "2020-12-10", "url": "https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/", "accessed": "2026-11-24"},
-        {"title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting", "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta", "publisher": "ACM ISSTA 2019", "date": "2019-07", "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf", "accessed": "2026-11-24"}
+        {
+          "title": "Probabilistic flakiness: Understanding and reducing flaky tests",
+          "author": "Engineering at Meta",
+          "publisher": "Engineering at Meta",
+          "date": "2020-12-10",
+          "url": "https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Root Causing Flaky Tests in a Large-Scale Industrial Setting",
+          "author": "Wing Lam, Patrice Godefroid, Suman Nath, Anirudh Santhiar and Suresh Thummalapenta",
+          "publisher": "ACM ISSTA 2019",
+          "date": "2019-07",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/11/LamETAL19RootFinder.pdf",
+          "accessed": "2026-11-24"
+        }
       ],
       "source_type": "vendor engineering publication; peer-reviewed study",
       "generated_by": "grow-cookbook research agent",
       "query": "Meta probabilistic flakiness score PFS; Lam Root causing flaky tests",
-      "trust": {"score": 68, "basis": "Two independent publishers (Meta, Microsoft/ISSTA) hold the position; Lam reports it as a position others take, not a finding, so the claim is held to that."},
+      "trust": {
+        "score": 68,
+        "basis": "Two independent publishers (Meta, Microsoft/ISSTA) hold the position; Lam reports it as a position others take, not a finding, so the claim is held to that."
+      },
       "independence": "multi-independent"
     },
     {
@@ -706,11 +1363,23 @@
       "question": "best-practices",
       "claim": "An **environment** verdict cites a signal spanning unrelated sites or tests, or a probe/status observation. A single failing test never establishes it.",
       "quote": "An **environment** verdict cites a signal spanning unrelated sites or tests, or a probe/status observation. A single failing test never establishes it.",
-      "citations": [{"title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "research brief rule under verification",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -718,11 +1387,23 @@
       "question": "best-practices",
       "claim": "A **spec-rot** verdict carries a non-empty `suggested_fix` naming what the spec should assert now. A suggested_fix that restates the failure, or says the spec needs updating without saying to what, is a fail.",
       "quote": "A **spec-rot** verdict carries a non-empty `suggested_fix` naming what the spec should assert now. A suggested_fix that restates the failure, or says the spec needs updating without saying to what, is a fail.",
-      "citations": [{"title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "research brief rule under verification",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -730,11 +1411,23 @@
       "question": "best-practices",
       "claim": "An **uncertain** verdict names what evidence is missing and what would settle it. Bare \"insufficient evidence\" is a fail.",
       "quote": "An **uncertain** verdict names what evidence is missing and what would settle it. Bare \"insufficient evidence\" is a fail.",
-      "citations": [{"title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "research brief rule under verification",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -742,11 +1435,23 @@
       "question": "best-practices",
       "claim": "`confidence` is 1-10. A 9 or 10 appears only where the evidence describes an actual reproduction *and* states the mechanism.",
       "quote": "`confidence` is 1-10. A 9 or 10 appears only where the evidence describes an actual reproduction *and* states the mechanism.",
-      "citations": [{"title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "research brief rule under verification",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     },
     {
@@ -754,37 +1459,253 @@
       "question": "best-practices",
       "claim": "No finding files, closes, or comments on an issue, edits a spec, or claims to have changed anything — the disposition is the whole output.",
       "quote": "No finding files, closes, or comments on an issue, edits a spec, or claims to have changed anything — the disposition is the whole output.",
-      "citations": [{"title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "test-failure-triage (teams/myagenticteams-qa-team/specialities/testing/failure-triage.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/failure-triage.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "research brief rule under verification",
-      "trust": {"score": 0, "basis": "contradicted by claims bp-triage-acts-on-verdict, bp-gardener-owns-new-failures"},
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by claims bp-triage-acts-on-verdict, bp-gardener-owns-new-failures"
+      },
       "independence": "uncorroborated"
     }
   ],
   "verdicts": [
-    {"rule": "every-failure-gets-one-disposition", "verdict": "supported", "claims": ["bp-sheriffs-review-every-failure", "ks-treeherder-classification-set", "bp-failure-classes-flaky-bug-obsolete"]},
-    {"rule": "disposition-from-fixed-set", "verdict": "supported", "claims": ["ks-treeherder-classification-set", "bp-failure-classes-flaky-bug-obsolete", "pg-firebase-inconclusive-vs-failure", "ks-trunk-broken-vs-flaky", "ev-google-flaky-failure-share"]},
-    {"rule": "never-force-a-verdict", "verdict": "supported", "claims": ["bp-rerun-same-code-separates-flake", "ks-treeherder-classification-set", "ks-datadog-flaky-categories", "ks-meta-pfs-posterior-uncertainty", "bp-explain-uncertainty-and-gaps"]},
-    {"rule": "evidence-states-what-was-observed", "verdict": "supported", "claims": ["bp-bug-report-observed-vs-expected", "bp-failure-record-copies-log", "bp-separate-information-from-judgment", "ev-get-data-first"]},
-    {"rule": "bug-names-observed-misbehavior", "verdict": "supported", "claims": ["bp-bug-report-observed-vs-expected", "bp-failure-message-desired-actual"]},
-    {"rule": "flake-cites-history-or-race", "verdict": "supported", "claims": ["pg-ci-flaky-same-code-history", "pg-playwright-flaky-status", "pg-surefire-flaky-counted", "bp-rerun-same-code-separates-flake", "ks-luo-flaky-root-causes", "ks-datadog-flaky-categories"]},
-    {"rule": "environment-cites-cross-test-signal", "verdict": "unsupported", "claims": ["environment-cites-cross-test-signal-prior", "pg-gradle-maxfailures-stops-retry", "ks-treeherder-infra-classify-many", "pg-firebase-inconclusive-vs-failure", "ev-infrastructure-flakiness-share"]},
-    {"rule": "spec-rot-names-new-assertion", "verdict": "unsupported", "claims": ["spec-rot-names-new-assertion-prior", "pg-jest-snapshot-bug-or-update", "bp-tests-change-only-on-behavior-change"]},
-    {"rule": "uncertain-names-missing-evidence", "verdict": "unsupported", "claims": ["uncertain-names-missing-evidence-prior", "bp-explain-uncertainty-and-gaps"]},
-    {"rule": "high-confidence-needs-reproduction-and-mechanism", "verdict": "unsupported", "claims": ["high-confidence-needs-reproduction-and-mechanism-prior", "bp-explain-uncertainty-and-gaps", "ev-get-data-first"]},
-    {"rule": "triage-changes-nothing", "verdict": "contradicted", "claims": ["triage-changes-nothing-prior", "bp-triage-acts-on-verdict", "bp-gardener-owns-new-failures"]},
-    {"rule": "gather-failure-artifacts-before-classifying", "verdict": "new", "claims": ["pg-playwright-trace-on-first-retry", "pg-firebase-artifacts", "pg-gitlab-failure-history-and-screenshots", "pg-xcode-test-report-insights", "bp-failure-record-copies-log", "ks-rootfinder-compares-pass-fail-logs", "pg-android-orchestrator-isolates-crashes"]},
-    {"rule": "rerun-on-same-revision-before-calling-flake", "verdict": "new", "claims": ["bp-rerun-same-code-separates-flake", "pg-github-rerun-same-sha-debug", "pg-ci-flaky-same-code-history", "pg-pytest-rerun-mitigates", "pg-xcode-repeat-tests"]},
-    {"rule": "pass-on-retry-does-not-clear-a-bug", "verdict": "new", "claims": ["ev-ignoring-flaky-hides-bugs", "ev-flaky-fixes-fix-cut-bugs", "ev-rerun-delays-root-cause", "ev-flaky-erodes-trust", "ev-reruns-may-not-manifest"]},
-    {"rule": "find-the-change-that-introduced-the-failure", "verdict": "new", "claims": ["ks-git-bisect-finds-culprit", "bp-gardener-owns-new-failures", "pg-gitlab-failure-history-and-screenshots"]},
-    {"rule": "named-triage-rotation-owns-failures", "verdict": "new", "claims": ["bp-sheriffs-review-every-failure", "bp-gardener-owns-new-failures", "ks-buildkite-notify-responsible-team"]},
-    {"rule": "separate-infrastructure-outcomes-from-test-failures", "verdict": "new", "claims": ["pg-firebase-inconclusive-vs-failure", "ks-treeherder-infra-classify-many", "pg-gradle-maxfailures-stops-retry", "ev-infrastructure-flakiness-share", "ev-larger-tests-flakier"]},
-    {"rule": "stale-test-distinguished-by-intended-behavior-change", "verdict": "new", "claims": ["bp-failure-classes-flaky-bug-obsolete", "bp-tests-change-only-on-behavior-change", "pg-jest-snapshot-bug-or-update", "ev-regenerating-instead-of-examining"]},
-    {"rule": "distinguish-broken-from-flaky-by-failure-pattern", "verdict": "new", "claims": ["ks-trunk-broken-vs-flaky", "ks-meta-pfs-broken-vs-flaky", "pg-playwright-flaky-status"]},
-    {"rule": "reproduce-in-the-failing-environment", "verdict": "new", "claims": ["ev-ci-only-flakiness", "ev-reruns-may-not-manifest", "pg-xcode-repeat-tests", "ev-get-data-first"]},
-    {"rule": "verdict-states-confidence-and-its-basis", "verdict": "new", "claims": ["bp-explain-uncertainty-and-gaps", "bp-separate-information-from-judgment", "ks-meta-pfs-posterior-uncertainty", "ev-every-test-flaky-to-some-degree"]},
-    {"rule": "record-flake-cause-category", "verdict": "new", "claims": ["ks-luo-flaky-root-causes", "ks-datadog-flaky-categories"]},
-    {"rule": "known-failure-marked-expected-with-reason", "verdict": "new", "claims": ["pg-pytest-xfail-strict-reason", "pg-playwright-test-fail-annotation", "ks-treeherder-classification-set"]}
+    {
+      "rule": "every-failure-gets-one-disposition",
+      "verdict": "supported",
+      "claims": [
+        "bp-sheriffs-review-every-failure",
+        "ks-treeherder-classification-set",
+        "bp-failure-classes-flaky-bug-obsolete"
+      ]
+    },
+    {
+      "rule": "disposition-from-fixed-set",
+      "verdict": "supported",
+      "claims": [
+        "ks-treeherder-classification-set",
+        "bp-failure-classes-flaky-bug-obsolete",
+        "pg-firebase-inconclusive-vs-failure",
+        "ks-trunk-broken-vs-flaky",
+        "ev-google-flaky-failure-share"
+      ]
+    },
+    {
+      "rule": "never-force-a-verdict",
+      "verdict": "supported",
+      "claims": [
+        "bp-rerun-same-code-separates-flake",
+        "ks-treeherder-classification-set",
+        "ks-datadog-flaky-categories",
+        "ks-meta-pfs-posterior-uncertainty",
+        "bp-explain-uncertainty-and-gaps"
+      ]
+    },
+    {
+      "rule": "evidence-states-what-was-observed",
+      "verdict": "supported",
+      "claims": [
+        "bp-bug-report-observed-vs-expected",
+        "bp-failure-record-copies-log",
+        "bp-separate-information-from-judgment",
+        "ev-get-data-first"
+      ]
+    },
+    {
+      "rule": "bug-names-observed-misbehavior",
+      "verdict": "supported",
+      "claims": [
+        "bp-bug-report-observed-vs-expected",
+        "bp-failure-message-desired-actual"
+      ]
+    },
+    {
+      "rule": "flake-cites-history-or-race",
+      "verdict": "supported",
+      "claims": [
+        "pg-ci-flaky-same-code-history",
+        "pg-playwright-flaky-status",
+        "pg-surefire-flaky-counted",
+        "bp-rerun-same-code-separates-flake",
+        "ks-luo-flaky-root-causes",
+        "ks-datadog-flaky-categories"
+      ]
+    },
+    {
+      "rule": "environment-cites-cross-test-signal",
+      "verdict": "unsupported",
+      "claims": [
+        "environment-cites-cross-test-signal-prior",
+        "pg-gradle-maxfailures-stops-retry",
+        "ks-treeherder-infra-classify-many",
+        "pg-firebase-inconclusive-vs-failure",
+        "ev-infrastructure-flakiness-share"
+      ]
+    },
+    {
+      "rule": "spec-rot-names-new-assertion",
+      "verdict": "unsupported",
+      "claims": [
+        "spec-rot-names-new-assertion-prior",
+        "pg-jest-snapshot-bug-or-update",
+        "bp-tests-change-only-on-behavior-change"
+      ]
+    },
+    {
+      "rule": "uncertain-names-missing-evidence",
+      "verdict": "unsupported",
+      "claims": [
+        "uncertain-names-missing-evidence-prior",
+        "bp-explain-uncertainty-and-gaps"
+      ]
+    },
+    {
+      "rule": "high-confidence-needs-reproduction-and-mechanism",
+      "verdict": "unsupported",
+      "claims": [
+        "high-confidence-needs-reproduction-and-mechanism-prior",
+        "bp-explain-uncertainty-and-gaps",
+        "ev-get-data-first"
+      ]
+    },
+    {
+      "rule": "triage-changes-nothing",
+      "verdict": "contradicted",
+      "claims": [
+        "triage-changes-nothing-prior",
+        "bp-triage-acts-on-verdict",
+        "bp-gardener-owns-new-failures"
+      ]
+    },
+    {
+      "rule": "gather-failure-artifacts-before-classifying",
+      "verdict": "new",
+      "claims": [
+        "pg-playwright-trace-on-first-retry",
+        "pg-firebase-artifacts",
+        "pg-gitlab-failure-history-and-screenshots",
+        "pg-xcode-test-report-insights",
+        "bp-failure-record-copies-log",
+        "ks-rootfinder-compares-pass-fail-logs",
+        "pg-android-orchestrator-isolates-crashes"
+      ]
+    },
+    {
+      "rule": "rerun-on-same-revision-before-calling-flake",
+      "verdict": "new",
+      "claims": [
+        "bp-rerun-same-code-separates-flake",
+        "pg-github-rerun-same-sha-debug",
+        "pg-ci-flaky-same-code-history",
+        "pg-pytest-rerun-mitigates",
+        "pg-xcode-repeat-tests"
+      ]
+    },
+    {
+      "rule": "pass-on-retry-does-not-clear-a-bug",
+      "verdict": "new",
+      "claims": [
+        "ev-ignoring-flaky-hides-bugs",
+        "ev-flaky-fixes-fix-cut-bugs",
+        "ev-rerun-delays-root-cause",
+        "ev-flaky-erodes-trust",
+        "ev-reruns-may-not-manifest"
+      ]
+    },
+    {
+      "rule": "find-the-change-that-introduced-the-failure",
+      "verdict": "new",
+      "claims": [
+        "ks-git-bisect-finds-culprit",
+        "bp-gardener-owns-new-failures",
+        "pg-gitlab-failure-history-and-screenshots"
+      ]
+    },
+    {
+      "rule": "named-triage-rotation-owns-failures",
+      "verdict": "new",
+      "claims": [
+        "bp-sheriffs-review-every-failure",
+        "bp-gardener-owns-new-failures",
+        "ks-buildkite-notify-responsible-team"
+      ]
+    },
+    {
+      "rule": "separate-infrastructure-outcomes-from-test-failures",
+      "verdict": "new",
+      "claims": [
+        "pg-firebase-inconclusive-vs-failure",
+        "ks-treeherder-infra-classify-many",
+        "pg-gradle-maxfailures-stops-retry",
+        "ev-infrastructure-flakiness-share",
+        "ev-larger-tests-flakier"
+      ]
+    },
+    {
+      "rule": "stale-test-distinguished-by-intended-behavior-change",
+      "verdict": "new",
+      "claims": [
+        "bp-failure-classes-flaky-bug-obsolete",
+        "bp-tests-change-only-on-behavior-change",
+        "pg-jest-snapshot-bug-or-update",
+        "ev-regenerating-instead-of-examining"
+      ]
+    },
+    {
+      "rule": "distinguish-broken-from-flaky-by-failure-pattern",
+      "verdict": "new",
+      "claims": [
+        "ks-trunk-broken-vs-flaky",
+        "ks-meta-pfs-broken-vs-flaky",
+        "pg-playwright-flaky-status"
+      ]
+    },
+    {
+      "rule": "reproduce-in-the-failing-environment",
+      "verdict": "new",
+      "claims": [
+        "ev-ci-only-flakiness",
+        "ev-reruns-may-not-manifest",
+        "pg-xcode-repeat-tests",
+        "ev-get-data-first"
+      ]
+    },
+    {
+      "rule": "verdict-states-confidence-and-its-basis",
+      "verdict": "new",
+      "claims": [
+        "bp-explain-uncertainty-and-gaps",
+        "bp-separate-information-from-judgment",
+        "ks-meta-pfs-posterior-uncertainty",
+        "ev-every-test-flaky-to-some-degree"
+      ]
+    },
+    {
+      "rule": "record-flake-cause-category",
+      "verdict": "new",
+      "claims": [
+        "ks-luo-flaky-root-causes",
+        "ks-datadog-flaky-categories"
+      ]
+    },
+    {
+      "rule": "known-failure-marked-expected-with-reason",
+      "verdict": "new",
+      "claims": [
+        "pg-pytest-xfail-strict-reason",
+        "pg-playwright-test-fail-annotation",
+        "ks-treeherder-classification-set"
+      ]
+    }
   ]
 }
