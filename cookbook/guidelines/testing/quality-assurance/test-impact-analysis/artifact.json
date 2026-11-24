@@ -53,14 +53,14 @@
       "https://martinfowler.com/articles/rise-test-impact-analysis.html",
       "https://mill-build.org/blog/3-selective-testing.html"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": [
       "pre-pr",
       "configuration"
     ]
   },
-  "synced": "b97094fff82a9f36",
+  "synced": "d936ae7c9632c75e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
