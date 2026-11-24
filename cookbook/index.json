@@ -29,6 +29,12 @@
       "path": "guidelines/planning/code-quality/algorithmic-complexity",
       "rdid": "adc.guideline.planning.code-quality.algorithmic-complexity"
     },
+    "023d4c91-d797-4e82-880c-a4ad7906a54a": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/milestone-scheduling",
+      "rdid": "adc.guideline.planning.project-management.milestone-scheduling"
+    },
     "02e9042d-0d15-47ac-9361-2f16980a03ca": {
       "implementations": [],
       "kind": "guideline",
@@ -2074,6 +2080,12 @@
       "kind": "guideline",
       "path": "guidelines/implementing/data/room-persistence",
       "rdid": "adc.guideline.implementing.data.room-persistence"
+    },
+    "a55182ef-3144-407c-b64a-6377f37f5c63": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/planning/project-management/risk-tracking",
+      "rdid": "adc.guideline.planning.project-management.risk-tracking"
     },
     "a61b6ede-624b-4424-bdf6-aeb153c9a3ea": {
       "implementations": [],

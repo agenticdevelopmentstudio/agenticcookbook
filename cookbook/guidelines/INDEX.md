@@ -26,7 +26,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
-| [Planning](#planning-39-guidelines) | 39 | Architecture, data modeling, choosing patterns |
+| [Planning](#planning-41-guidelines) | 41 | Architecture, data modeling, choosing patterns |
 | [Implementing](#implementing-182-guidelines) | 182 | Writing new code |
 | [Testing](#testing-15-guidelines) | 15 | Writing and structuring tests |
 | [Reviewing](#reviewing-10-guidelines) | 10 | Checking code quality, security, accessibility |
@@ -36,11 +36,11 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | [Storytelling](#storytelling-6-guidelines) | 6 | Telling a project's story: positioning, explanation, narrative, grounded in the record |
 | [Brainstorming](#brainstorming-4-guidelines) | 4 | Framing a problem, generating ideas and converging, without anchoring |
 
-288 guidelines.
+290 guidelines.
 
 ---
 
-### Planning (39 guidelines)
+### Planning (41 guidelines)
 
 
 **code-quality**
@@ -83,6 +83,8 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Decision Records](planning/project-management/decision-records/)
 - [Dependency Tracking](planning/project-management/dependency-tracking/)
 - [Issue Tracking](planning/project-management/issue-tracking/)
+- [Milestone Scheduling](planning/project-management/milestone-scheduling/)
+- [Risk Tracking](planning/project-management/risk-tracking/)
 - [Task Breakdown](planning/project-management/task-breakdown/)
 
 **security**
