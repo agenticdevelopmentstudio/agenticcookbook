@@ -1,7 +1,7 @@
 
 ### Breaking the work down
 
-- **break-down-assign-and-prioritize-tasks**: Planning SHOULD break each backlog item that is bigger than task-sized-hours-to-a-few-days allows into smaller tasks. (claims: refinement-breaks-down-and-sizes, decompose-to-one-day-or-less, github-sub-issues-break-down-work)
+- **break-down-assign-and-prioritize-tasks**: Planning SHOULD break each backlog item too big to finish in hours to a couple of days into smaller tasks. (claims: refinement-breaks-down-and-sizes, decompose-to-one-day-or-less, github-sub-issues-break-down-work)
 - **work-has-a-responsible-owner**: Each piece of work that is broken into tasks, such as a work package or a parent item, SHOULD have a person or team responsible for it. (claims: nasa-ram-assigns-responsibility, prince2-work-package-assigns-products)
 - **breakdown-covers-all-scope**: A breakdown SHOULD include all of the work in the project's scope, project management included. (claims: wbs-hundred-percent-rule, nasa-wbs-defines-all-work)
 - **work-package-activities-add-up**: In a work breakdown structure, the activities in each work package SHOULD add up to all of the work needed to complete that work package. (claim: wbs-hundred-percent-rule)

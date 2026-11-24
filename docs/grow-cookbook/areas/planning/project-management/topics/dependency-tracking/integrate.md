@@ -21,6 +21,6 @@ New topic, no base text (`cookr roles lossless`: not in the base commit).
 
 ## Validate
 
-`cookr validate` passed; its owner-decides rows are listed under For the owner. Bumped 1.0.0 → 1.0.1; /add-artifact approved it (no lint failures; warnings: the Blocked and at-risk subsection holds 8 rules, and the names `record-blocker-reason-and-duration` and `escalate-blocked-dependency-before-milestone` say more than their rules; names left as they are because rule names stay stable).
+`cookr validate` passed; its owner-decides rows are listed under For the owner. Bumped 1.0.0 → 1.0.1; /add-artifact approved it (no lint failures; warnings: the Blocked and at-risk subsection holds 8 rules, and the names `record-blocker-reason-and-duration` and `escalate-blocked-dependency-before-milestone` say more than their rules). The phase 3 code review fixes renamed those two new rules to `record-blocker-reason` and `escalate-unresolved-blocked-dependency`; only prior rule names are fixed.
 
 integrated: 2026-11-24

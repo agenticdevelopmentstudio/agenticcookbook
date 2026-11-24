@@ -22,7 +22,7 @@
 
 - **flag-at-risk-or-blocked-dependencies**: A blocked or off-track dependency SHOULD be flagged where everyone working on the affected work can see it, such as by a blocked-by link with a Blocked icon or flag on the board, a Jira Impediment flag, or a red mark on the blocked item. (claims: github-issue-dependencies-blocked-icon, linear-blocked-by-flags, jira-flag-impediment, jira-plans-off-track-dependencies, leopold-red-blocker-sticker-days-blocked)
 - **blocked-dependency-linked-to-affected-work**: A dependency record MUST keep this true: blocked or at-risk dependencies are linked to affected milestones or todos (claim: blocked-dependency-linked-to-affected-work-prior)
-- **record-blocker-reason-and-duration**: A blocked dependency's record SHOULD give a brief reason why it is blocked. (claims: leopold-red-blocker-sticker-days-blocked, jira-flag-impediment)
+- **record-blocker-reason**: A blocked dependency's record SHOULD give a brief reason why it is blocked. (claims: leopold-red-blocker-sticker-days-blocked, jira-flag-impediment)
 - **count-days-dependency-blocked**: A blocked dependency's record MAY count the days it has stayed blocked. (claim: leopold-red-blocker-sticker-days-blocked)
 - **keep-resolved-dependency-blockers**: The records of a dependency's resolved blockers SHOULD be kept, not thrown away. (claim: leopold-red-blocker-sticker-days-blocked)
 - **analyse-resolved-blockers**: A team MAY cluster its resolved dependency blockers by internal and external causes, then by what they have in common, to find which kinds of blocker recur. (claim: cluster-blockers-internal-external)
@@ -31,7 +31,7 @@
 
 ### Escalating and reducing dependencies
 
-- **escalate-blocked-dependency-before-milestone**: A blocked dependency the team cannot resolve locally SHOULD be escalated through a named forum or by exception, such as SAFe's ART Sync, the PRINCE2 project board once tolerance is exceeded, or the Scrum Master for an impediment. (claims: safe-art-sync-escalation-point, prince2-manage-by-exception, scrum-guide-impediments)
+- **escalate-unresolved-blocked-dependency**: A blocked dependency the team cannot resolve locally SHOULD be escalated through a named forum or by exception, such as SAFe's ART Sync, the PRINCE2 project board once tolerance is exceeded, or the Scrum Master for an impediment. (claims: safe-art-sync-escalation-point, prince2-manage-by-exception, scrum-guide-impediments)
 - **coordinate-directly-with-the-other-team**: A team MAY coordinate a dependency directly with the team it depends on, by talking to that team or by sending a scout to monitor the interface and report back. (claim: less-just-talk-and-scouts)
 - **reduce-dependencies-before-tracking**: Teams SHOULD be organised to minimise the dependencies between them, so that each can complete its work without waiting on another. (claims: rescope-to-remove-dependencies, less-minimise-dependencies-feature-teams, each-dependency-halves-on-time-chance)
 - **rescope-to-remove-difficult-dependency**: In extreme circumstances, a project MAY be re-scoped to remove a difficult dependency, for example by bringing its delivery within the project's control. (claim: rescope-to-remove-dependencies)

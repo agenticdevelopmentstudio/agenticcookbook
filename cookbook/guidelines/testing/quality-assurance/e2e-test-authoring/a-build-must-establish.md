@@ -17,7 +17,7 @@
 - `e2e-trace-on-ci-failure`: the suite records a trace for each E2E test that fails on CI.
 - `e2e-test-what-the-user-sees`: each spec checks what the end user sees and does.
 - `e2e-locators-user-facing-first`: each locator uses a user-facing attribute or an explicit contract such as a test id, not the DOM structure, where one fits.
-- `e2e-test-id-only-when-no-user-facing-locator`: where used, each test id is a `data-*` attribute, UIKit's `accessibilityIdentifier` or an AutomationId.
+- `e2e-locate-by-test-id`: where used, each test id is a `data-*` attribute, UIKit's `accessibilityIdentifier` or an AutomationId.
 - `e2e-compose-finders-over-semantics-tree`: where used, Compose tests select nodes with finders over the semantics tree.
 - `e2e-scope-automation-id-by-container`: each AutomationId locator is scoped by its container.
 - `e2e-avoid-dom-structure-locators`: no locator is a CSS or XPath path through the DOM structure.
