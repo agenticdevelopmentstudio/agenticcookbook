@@ -21,7 +21,7 @@
 | `apn-018` | `step-script-handler` | Script prints `env`; the node runs with `AI_NODE_ENVIRONMENT_TOKEN` set | Output does not contain the token or any of the node's variables |
 | `apn-019` | `step-script-handler` | Script `sleep 120` with no timeout; then a step timeout of 3600 s | The first fails after 60 s with a timeout error; the second is clamped to 900 s |
 | `apn-020` | `step-script-handler` | Script exits 3 after writing `boom` to stderr | The step fails with exit code 3 and `boom` in the error |
-| `apn-021` | `claude-code-provider` | Provider `claude-code`; stub CLI prints a JSON result with usage | The CLI was run as `claude -p --output-format json --allowedTools ""` with the prompt on stdin; the result and usage are reported |
+| `apn-021` | `claude-code-provider` | Provider `claude-code`; stub CLI prints a JSON result with usage | The CLI was run as `claude -p --output-format json --tools "" --strict-mcp-config --safe-mode --permission-mode dontAsk --no-session-persistence --disable-slash-commands` with the prompt on stdin, in an empty temporary directory that no longer exists afterwards; the result and usage are reported |
 | `apn-022` | `claude-code-provider` | Stub CLI prints text that is not JSON | The step fails as retryable with an error saying the CLI output did not parse |
 | `apn-023` | `no-key-on-machine` | Machine mode; a claimed AI step with model source `connection` | The step fails with `retryable: false`; no provider is called |
 | `apn-024` | `step-ai-tool-loop` | `/mcp` lists a tool `notes.search`; the model calls `notes_search` | The model was offered `notes_search`; the `/mcp` call names `notes.search` |

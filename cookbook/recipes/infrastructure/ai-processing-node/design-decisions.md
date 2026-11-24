@@ -23,8 +23,8 @@
 **Rationale**: Only the handler knows what constitutes a duplicate side effect for its domain. The node framework can detect a duplicate job ID (already in terminal state on the backend) and skip re-running, but fine-grained deduplication (e.g., "did I already write this category?") requires handler-level logic.
 **Approved**: pending
 
-**Decision**: The `claude-code` provider runs with no tools (`--allowedTools ""`) and pinned flags.
-**Rationale**: Tools for a step come only from the hub's `/mcp` under the acting token, where the persona's grants apply. Letting the CLI use its own tools would act with the machine user's full access outside those grants, and a flag taken from the step would let a template author turn tools back on.
+**Decision**: The `claude-code` provider runs with no tools (`--tools ""`, `--strict-mcp-config`, `--safe-mode`, `--permission-mode dontAsk`), pinned flags and an empty working directory.
+**Rationale**: Tools for a step come only from the hub's `/mcp` under the acting token, where the persona's grants apply. Letting the CLI use its own tools, its MCP servers or the owner's settings and hooks would act with the machine user's full access outside those grants. `--allowedTools ""` is not enough, because it only pre-approves tools and the read-only ones run without asking in `-p` mode. The empty working directory gives the CLI no project to read, and a flag taken from the step would let a template author turn tools back on.
 **Approved**: pending
 
 **Decision**: Script steps run only on a machine whose owner set `AI_NODE_ALLOW_SCRIPTS=1`.
