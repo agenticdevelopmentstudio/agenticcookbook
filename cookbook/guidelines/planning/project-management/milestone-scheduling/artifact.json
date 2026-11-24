@@ -4,7 +4,7 @@
     "id": "023d4c91-d797-4e82-880c-a4ad7906a54a",
     "title": "Milestone Scheduling",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -54,11 +54,11 @@
       "https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/",
       "https://www.construx.com/wp-content/uploads/2019/02/CxWhitePaper_ConeOfUncertainty.pdf"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "f8306a6a74683aae",
+  "synced": "56d9363c27ba0d1e",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
