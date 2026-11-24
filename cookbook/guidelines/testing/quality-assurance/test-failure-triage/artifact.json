@@ -4,7 +4,7 @@
     "id": "4825088c-7d3a-4ef3-8c1b-c5b70b88da0d",
     "title": "Test Failure Triage",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -75,7 +75,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "0a1e8416cd259de7",
+  "synced": "32e76897a0815f06",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
