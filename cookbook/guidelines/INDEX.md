@@ -6,7 +6,7 @@ version: 2.7.0
 status: accepted
 language: en
 created: 2026-03-27
-modified: '2026-11-21'
+modified: '2026-11-24'
 author: Mike Fullerton
 copyright: 2026 Mike Fullerton
 license: MIT
@@ -26,7 +26,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 | Use Case | Guidelines | When to use |
 |----------|-----------|-------------|
-| [Planning](#planning-35-guidelines) | 35 | Architecture, data modeling, choosing patterns |
+| [Planning](#planning-39-guidelines) | 39 | Architecture, data modeling, choosing patterns |
 | [Implementing](#implementing-182-guidelines) | 182 | Writing new code |
 | [Testing](#testing-15-guidelines) | 15 | Writing and structuring tests |
 | [Reviewing](#reviewing-10-guidelines) | 10 | Checking code quality, security, accessibility |
@@ -36,11 +36,11 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | [Storytelling](#storytelling-6-guidelines) | 6 | Telling a project's story: positioning, explanation, narrative, grounded in the record |
 | [Brainstorming](#brainstorming-4-guidelines) | 4 | Framing a problem, generating ideas and converging, without anchoring |
 
-284 guidelines.
+288 guidelines.
 
 ---
 
-### Planning (35 guidelines)
+### Planning (39 guidelines)
 
 
 **code-quality**
@@ -78,6 +78,12 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 - [Design-first API development with OpenAPI](planning/networking/api-design-first/)
 - [Choosing an API style (REST, gRPC, GraphQL)](planning/networking/api-style-selection/)
 - [API versioning and deprecation](planning/networking/api-versioning-and-deprecation/)
+
+**project-management**
+- [Decision Records](planning/project-management/decision-records/)
+- [Dependency Tracking](planning/project-management/dependency-tracking/)
+- [Issue Tracking](planning/project-management/issue-tracking/)
+- [Task Breakdown](planning/project-management/task-breakdown/)
 
 **security**
 - [Data privacy regulations](planning/security/data-privacy-regulations/)
