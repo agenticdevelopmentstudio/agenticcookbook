@@ -40,7 +40,7 @@
     "approved-date": "2026-11-23"
   },
   "names_hosts": "Specifies the claude-code inference provider, which runs the Claude Code CLI as a subprocess: the CLI is the subject, not the reader.",
-  "synced": "3accd2bec128085e",
+  "synced": "afd74218607a8213",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},

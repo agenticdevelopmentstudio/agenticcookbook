@@ -8,6 +8,6 @@
 | `claude-code` availability | The CLI's answer to `--version` | The claim's `capabilities` and the `claude-code` runner | one-way | A yes is kept for the life of the process; a no is asked again after 60 seconds (machine-mode) |
 | Handler result | Categorize and tag handler | Job worker | one-way | The validated `{ category, tags, confidence? }` object returned from the handler |
 | Step result | `jobs.step.ai` or `jobs.step.script` handler | Job worker | one-way | `{ output, toolCalls }` or `{ output, exitCode }`, reported on complete with the step's usage |
-| Acting token | Backend claim response (`actingToken`) | `jobs.step.ai` tool loop | one-way | The bearer on `/mcp`, valid only while the lease holds; never logged or shipped |
+| Acting token | Backend claim response (`actingToken`), replaced by each heartbeat response that carries one | `jobs.step.ai` tool loop | one-way | The bearer on `/mcp`, valid for one lease; the newest one is used, a null heartbeat token keeps the current one; never logged or shipped |
 | Machine capabilities | Handler registry, provider probes | Backend claim request | one-way | `{ jobTypes, providers, scripts }`, rebuilt and sent with every claim in machine mode |
 
