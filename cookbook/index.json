@@ -3032,6 +3032,12 @@
       "path": "guidelines/implementing/ui/modern-css",
       "rdid": "adc.guideline.implementing.ui.modern-css"
     },
+    "eb82d5d7-4f42-4417-8104-a14f6a27899f": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/quality-assurance/e2e-test-authoring",
+      "rdid": "adc.guideline.testing.quality-assurance.e2e-test-authoring"
+    },
     "ec59e5cc-5591-4c0b-87f8-00df54394607": {
       "implementations": [],
       "kind": "principle",
