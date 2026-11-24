@@ -4,7 +4,7 @@
     "id": "23e55c7c-c16e-40d1-88a0-4b51148d2660",
     "title": "Project Record Linking",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -61,11 +61,11 @@
       "https://www.ibm.com/docs/SSYMRC_7.0.3/com.ibm.jazz.vvc.doc/topics/c_linkval.html",
       "https://arxiv.org/abs/2206.04462"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "971ec5921fc6d501",
+  "synced": "3a93fb2fa80d8bce",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
