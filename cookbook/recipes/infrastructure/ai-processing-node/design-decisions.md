@@ -31,6 +31,6 @@
 **Rationale**: A script is arbitrary code. On the owner's own machine, with the owner's explicit opt-in, it runs with the owner's own authority; on a shared hub pool node it would run one customer's code beside another's.
 **Approved**: pending
 
-**Decision**: The tool loop is capped at 20 tool calls per step and the cap is a non-retryable failure.
-**Rationale**: A model that keeps asking for tools would otherwise hold the lease and spend tokens without end; retrying the same prompt would loop the same way.
+**Decision**: The tool loop is capped at 20 tool calls per step, checked per turn before any call runs, and the cap is a non-retryable failure.
+**Rationale**: A model that keeps asking for tools would otherwise hold the lease and spend tokens without end; retrying the same prompt would loop the same way. Checking the whole turn first means a turn that crosses the cap makes no call at all, so which side effects reach the hub never depends on the order of a turn's calls.
 **Approved**: pending
