@@ -1,0 +1,1792 @@
+{
+  "topic": "issue-tracking",
+  "artifact": "cookbook/guidelines/planning/project-management/issue-tracking",
+  "scope": "Tracking project issues and defects from report to close: identifying and triaging new issues, assessing severity apart from priority, severity scales, owning each issue, tracking status to resolution, escalating critical and long-unresolved issues, recording how an issue was resolved and linking the fix, duplicates and not-planned closes, and the issue log as history. Covers the project-management bodies (PMBOK via a public secondary, ISO 21502, PRINCE2 7, the Scrum Guide, the Kanban Guide, ITIL 4 via a public secondary) and the trackers GitHub, Jira, Linear, Bugzilla and Google Issue Tracker. Production incidents are cookbook/guidelines/shipping/incident-response's, security vulnerability triage is cookbook/guidelines/reviewing/security/vulnerability-prioritization's, risks are risk-tracking's and the linking convention is project-record-linking's.",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (intent Do; domain issue triage and resolution; Product/how-to LOW-MEDIUM bar, broad independent consensus)",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to authoritative sources (the project-management bodies' own texts or their owners' public summaries, the tracker vendors' documentation for their own products, large open-source projects' published triage policies), chain citations, corroborate across independent publishers, record provenance at generation time.",
+    "search_strategy": "WebSearch for triage policy, severity and priority definitions, resolution fields, closing keywords, escalation and issue-log guidance; every cited page fetched (curl converted with textutil, WebFetch where curl was blocked, pdftotext for the CDC newsletter PDF, the Kubernetes guide fetched raw from GitHub, the IEEE TSE abstract read from OpenAlex) and each quote re-checked against the fetched text. Searches named the topic only.",
+    "inclusion": "Primary sources first: tracker vendors' docs for their own products (GitHub, Atlassian Jira and Jira Service Management, Linear, Google Issue Tracker), Mozilla's and Kubernetes' and Chromium's published triage policies, the Scrum Guide, the Kanban Guide, PeopleCert's PRINCE2 7 article by a PRINCE2 7 co-author, a U.S. CDC project-management newsletter quoting PMBOK. Expert sources (Spolsky; a peer-reviewed IEEE TSE study) for the expert's-view question.",
+    "exclusion": "Search-result snippets, vendor SEO blogs and listicles (Plane, Inflectra, DEV Community, bug0), pages that could not be fetched (PMI library 403, GitLab handbook behind auth, a finance-ni.gov.uk 404, the Open University and UCL repository pages 403), and any quote not found in the fetched page.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy 20 + Currency 10 + Transparency 15, capped by the Product/how-to LOW-MEDIUM domain bar (broad independent consensus among practitioners' and vendors' current documentation)."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://wiki.mozilla.org/BMO/UserGuide/BugFields",
+    "https://firefox-source-docs.mozilla.org/bug-mgmt/guides/severity.html",
+    "https://firefox-source-docs.mozilla.org/bug-mgmt/guides/priority.html",
+    "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+    "https://groups.google.com/g/mozilla.tools.bmo/c/uAZpsT_vd64",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/closing-an-issue",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue",
+    "https://docs.github.com/en/rest/issues/issues",
+    "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues",
+    "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+    "https://linear.app/docs/triage",
+    "https://linear.app/docs/triage-manage-unplanned-work",
+    "https://linear.app/docs/issue-property",
+    "https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/",
+    "https://confluence.atlassian.com/servicedeskcloud/configuring-statuses-resolutions-and-priorities-1097176115.html",
+    "https://support.atlassian.com/jira-software-cloud/docs/reference-issues-in-your-development-work/",
+    "https://www.atlassian.com/blog/development/realigning-priority-categorization-public-bug-repository",
+    "https://www.atlassian.com/agile/software-development/bug-triage",
+    "https://www.atlassian.com/itsm/problem-management/process",
+    "https://developers.google.com/issue-tracker/concepts/issues",
+    "https://developers.google.com/issue-tracker/references/glossary-of-fields",
+    "https://raw.githubusercontent.com/kubernetes/community/master/contributors/guide/issue-triage.md",
+    "https://www.chromium.org/for-testers/bug-reporting-guidelines/triage-best-practices/",
+    "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+    "https://www.peoplecert.org/news-and-announcements/prince2-7-issues",
+    "https://scrumguides.org/scrum-guide.html",
+    "https://kanbanguides.org/english/",
+    "https://committee.iso.org/sites/tc258/home/projects/published/iso-21502.html",
+    "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+    "https://api.openalex.org/works/doi:10.1109/tse.2019.2944608"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "Five of the seven rules hold at SHOULD strength: triage with a severity assessment (Mozilla, Kubernetes, Chromium, Atlassian, Linear), tracking status to resolution (Jira, Google Issue Tracker, Linear, Atlassian; the Scrum and Kanban guides on actively removing impediments), escalating critical issues (Mozilla S1 full attention and Release Management notice, Kubernetes critical-urgent, Chromium and Google P0), a critical issue having an owner or being escalated, and a resolved issue referencing what resolved it (Jira resolutions, GitHub state_reason and closing keywords, the CDC issue log). 'Every issue has severity and status' is contradicted as worded: Mozilla exempts tasks and enhancements from severity, and GitHub, Jira and Linear ship no severity field at all; status holds for every issue, severity for defects. 'Link issues to specialist findings' is unsupported: no source has specialist findings; sources support only linking related records. The topic misses: severity kept apart from priority, a defined severity scale, rationale for severity changes, severity set by the assessor rather than the reporter (priority inflation), a documented escalation path, escalating issues unresolved past a time limit, a named triage owner or rotation, triage within a time bound, one owner per issue, a resolution reason from a fixed set, linking the fixing change, closing duplicates against the canonical issue, closing not-planned work definitively, verifying the fix before close, keeping closed issues as history, telling stakeholders how it was resolved, minimum issue fields, a small priority scale, one tracker everyone uses, issues covering more than defects, and flagging stale issues.",
+  "open_questions": [
+    "Which severity scale the cookbook adopts: Mozilla's four levels (S1 Catastrophic to S4 Small/Trivial) or Atlassian's three (Critical, Major, Minor), or another.",
+    "Whether tasks and enhancements carry a severity, or only defects (Mozilla allows N/A for tasks and enhancements).",
+    "The escalation time limit for an unresolved critical issue, and who it escalates to (Mozilla assigns S1 within 2 business days and notifies Release Management; Linear's example is a 24 hour SLA for Urgent).",
+    "Whether the reporter (or a named verifier) must confirm a fix before the issue is closed, or the fixer may close it.",
+    "Whether the rule to link issues to specialist findings stays, since no source covers specialist findings; the general linking convention is project-record-linking's.",
+    "Whether priority stays optional beside severity (Mozilla makes it optional) or is required."
+  ],
+  "limitations": [
+    "PMBOK is paywalled and PMI's library page returned 403; its issue definition and issue-log guidance are taken from a U.S. CDC project-management newsletter that quotes it.",
+    "ISO 21502 and ISO 31000 are paywalled; ISO's TC 258 page describes ISO 21502 only as high-level practice guidance and holds no public issue text, so no ISO claim is made.",
+    "ITIL 4 is paywalled and AXELOS has no public text on problem management; the known-error definition is taken from Atlassian's ITSM page, a secondary source with a commercial interest.",
+    "SAFe and LeSS were not researched; no claim rests on them.",
+    "The IEEE TSE priority-inflation paper's full text could not be fetched (repository pages returned 403); only its abstract, read from OpenAlex, is quoted, and its metric results are not used.",
+    "Production incidents (cookbook/guidelines/shipping/incident-response) and security vulnerability triage (cookbook/guidelines/reviewing/security/vulnerability-prioritization) are excluded as those topics' subjects.",
+    "The CDC newsletter PDF is two-column; its quotes were reassembled across line breaks from pdftotext output.",
+    "No source gives a measured effect size for any triage practice; every finding here is practice consensus, not a statistical result."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "triage-identifies-categorizes-prioritizes",
+      "question": "best-practices",
+      "claim": "Triage is the regular step where each new issue is identified, categorized by kind and owner, and prioritized, and the decision on whether, when and by whom it is worked is made.",
+      "source_type": "vendor documentation; open-source project policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bug triage process identify categorize prioritize; Kubernetes issue triage guidelines; Chromium triage best practices",
+      "quote": "Bug triage is the process of identifying, categorizing, prioritizing, and resolving software bugs efficiently. | Triaging involves categorizing issues and pull requests based on factors such as priority/urgency, SIG ownership of the issue, and the issue kind (bug, feature, etc.). | A process (often taking the form of a regular meeting) for making decisions about the need, priority, timing, and assignment of work requests.",
+      "citations": [
+        {
+          "title": "Bug triage: A guide to efficient bug management",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/software-development/bug-triage",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue Triage Guidelines",
+          "author": "Kubernetes Authors",
+          "publisher": "Kubernetes community (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/kubernetes/community/master/contributors/guide/issue-triage.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Triage Best Practices",
+          "author": "The Chromium Projects",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/for-testers/bug-reporting-guidelines/triage-best-practices/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 80,
+        "basis": "Three independent publishers (a tracker vendor and two large open-source projects' own policies) give the same definition; stable practice; meets the LOW-MEDIUM bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "triage-sets-severity-on-every-defect",
+      "question": "best-practices",
+      "claim": "Mozilla counts a defect as triaged only once it has a severity, so that no critical issue is missed; tasks and enhancements may carry a severity of N/A.",
+      "source_type": "open-source project policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firefox triage for Bugzilla severity triaged definition",
+      "quote": "We want to make sure that we looked at every defect and a severity has been defined. This way, we make sure that we did not miss any critical issues during the development and stabilization cycles. | Bugs of type Task or Enhancement may have a Severity of N/A, but defects must have a Severity that is neither -- nor N/A.",
+      "citations": [
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 72,
+        "basis": "Mozilla's current published triage policy, primary for its own process; one publisher; consistent with other projects' triage practice."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "severity-describes-impact",
+      "question": "best-practices",
+      "claim": "Severity records the impact of an issue when it occurs; it is an input to priority, not the priority itself.",
+      "source_type": "open-source project documentation; vendor engineering blog",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Bugzilla severity field definition; Atlassian symptom severity public bug repository",
+      "quote": "This field describes the impact of a bug. This field is utilized by the programmers/engineers/release managers/managers to determine the severity of issues and used as input for the priority of the bug. | we have added a new field called Symptom Severity to represent the severity of the bug when it occurs.",
+      "citations": [
+        {
+          "title": "BMO/UserGuide/BugFields",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/BMO/UserGuide/BugFields",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Realigning priority categorization in our public bug repository",
+          "author": "Atlassian",
+          "publisher": "Atlassian Blog",
+          "date": "2016-08-26",
+          "url": "https://www.atlassian.com/blog/development/realigning-priority-categorization-public-bug-repository",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 78,
+        "basis": "Two independent publishers (Mozilla, Atlassian) each define severity as impact; Atlassian's post is older but describes a field it still uses; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "severity-separate-from-priority",
+      "question": "best-practices",
+      "claim": "Severity (impact) and priority (order of fixing) are kept as separate fields, because one field for both conflates impact with scheduling.",
+      "source_type": "open-source project announcement; open-source project documentation; vendor engineering blog",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Mozilla changes to Firefox bug triage process severity priority; Atlassian realigning priority categorization",
+      "quote": "Using Priority alone conflates severity with scheduling. | This field describes the importance and order in which a bug should be fixed compared to other bugs. | Previously, that priority field represented single-customer severity – in other words, the severity of the bug for a single customer, regardless of how easy the bug is to exploit or the overall customer impact. But, since we prioritise our work based on overall customer impact, we needed to adjust that priority field.",
+      "citations": [
+        {
+          "title": "Changes to the Firefox Bug Triage Process",
+          "author": "Emma Humphries",
+          "publisher": "mozilla.tools.bmo (Google Groups)",
+          "date": "2020-04-27",
+          "url": "https://groups.google.com/g/mozilla.tools.bmo/c/uAZpsT_vd64",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "BMO/UserGuide/BugFields",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/BMO/UserGuide/BugFields",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Realigning priority categorization in our public bug repository",
+          "author": "Atlassian",
+          "publisher": "Atlassian Blog",
+          "date": "2016-08-26",
+          "url": "https://www.atlassian.com/blog/development/realigning-priority-categorization-public-bug-repository",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 78,
+        "basis": "Mozilla and Atlassian independently split one priority field into severity and priority for the same reason; primary for their own processes; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "severity-levels-defined",
+      "question": "best-practices",
+      "claim": "Severity uses a small, defined scale whose levels are described by user impact, data loss and whether a workaround exists.",
+      "source_type": "open-source project documentation; vendor engineering blog",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Bugzilla severity S1 S2 S3 S4 definitions; Atlassian symptom severity critical major minor",
+      "quote": "S1 (Catastrophic) Blocks development/testing, may impact more than 25% of users, causes data loss, likely dot release driver, and no workaround available | S2 (Serious) Major functionality/product severely impaired or a high impact issue and a satisfactory workaround does not exist | S3 (Normal) Blocks non-critical functionality or a work around exists | S4 (Small/Trivial) minor significance, cosmetic issues, low or no impact to users | Critical – Crashes, data loss or corruption, severe memory leaks. Major – Major loss of function, no workaround possible. Minor – Minor loss of function, or other problem where easy workaround is present.",
+      "citations": [
+        {
+          "title": "BMO/UserGuide/BugFields",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/BMO/UserGuide/BugFields",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Realigning priority categorization in our public bug repository",
+          "author": "Atlassian",
+          "publisher": "Atlassian Blog",
+          "date": "2016-08-26",
+          "url": "https://www.atlassian.com/blog/development/realigning-priority-categorization-public-bug-repository",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 76,
+        "basis": "Two independent scales share the same criteria (data loss, workaround, breadth of impact); the level counts differ, so the scale itself is an owner choice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "severity-change-needs-rationale",
+      "question": "best-practices",
+      "claim": "Changing an issue's severity is recorded with a comment giving the reason.",
+      "source_type": "open-source project policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firefox triage for Bugzilla severity change comment",
+      "quote": "Changing a bug’s severity requires a comment explaining the rationale.",
+      "citations": [
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 60,
+        "basis": "One publisher's current policy; not corroborated elsewhere; supports MAY or SHOULD at most."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "triage-has-named-owner",
+      "question": "best-practices",
+      "claim": "Someone is explicitly responsible for triaging incoming issues, often as a rotation, so new issues are seen and prioritized.",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firefox triage owner component; Linear manage unplanned work triage responsibility; Chromium triage rotation",
+      "quote": "Each component must have a Triage Owner. | Someone should have the explicit responsibility to review new issues to make sure they're seen and prioritized. | It's common to set up a rotation (e.g., weekly) or for the team lead to own this task. | Setup a rotation w/ your team members, to share the load.",
+      "citations": [
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "How to manage unplanned work",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/triage-manage-unplanned-work",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Triage Best Practices",
+          "author": "The Chromium Projects",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/for-testers/bug-reporting-guidelines/triage-best-practices/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 80,
+        "basis": "Three independent publishers; current docs; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "triage-within-time-bound",
+      "question": "best-practices",
+      "claim": "New issues are triaged within a stated time, Mozilla's being one week.",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firefox triage new bugs within one week; Linear triage timely review",
+      "quote": "All new bugs should be fully triaged, or under active investigation, within one week of being created. | The most important thing is to make a clear owner to ensure new issues get reviewed in a timely way.",
+      "citations": [
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "How to manage unplanned work",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/triage-manage-unplanned-work",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 68,
+        "basis": "Two independent publishers agree triage must be timely; only Mozilla states a bound, so the length is an owner choice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "untriaged-is-visible",
+      "question": "best-practices",
+      "claim": "Issues awaiting triage are visibly marked or held apart, so an untriaged issue cannot pass for a triaged one.",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kubernetes needs-triage label; Linear triage inbox",
+      "quote": "New issues are automatically assigned a `needs-triage` label indicating that these issues are currently awaiting triage. | If an issue lacks a `priority` label, this means it has not been reviewed and prioritized yet. | Triage is a special inbox for your team.",
+      "citations": [
+        {
+          "title": "Issue Triage Guidelines",
+          "author": "Kubernetes Authors",
+          "publisher": "Kubernetes community (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/kubernetes/community/master/contributors/guide/issue-triage.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Triage",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/triage",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 72,
+        "basis": "Two independent publishers implement the same idea differently (label versus inbox); current docs."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "issue-has-one-owner",
+      "question": "best-practices",
+      "claim": "Each issue is assigned to one owner as soon as it is triaged, and stays owned until it is closed.",
+      "source_type": "expert practitioner article; vendor documentation; government project-management guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Painless bug tracking assigned to exactly one person; bug triage assign each bug; issues management prioritized assigned an owner",
+      "quote": "every bug needs to be assigned to exactly one person at all times, until it is closed. A bug is like a hot potato: when it’s assigned to you, you are responsible to resolve it, somehow, or assign it to someone else. | It’s important to assign each bug to a team member as soon as it’s categorized and prioritized. | Prioritization - Issues should be prioritized, assigned an owner, next steps, and due dates.",
+      "citations": [
+        {
+          "title": "Painless Bug Tracking",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-11-08",
+          "url": "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Bug triage: A guide to efficient bug management",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/software-development/bug-triage",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 80,
+        "basis": "Three independent publishers (expert, vendor, government guidance) agree; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "issue-log-minimum-fields",
+      "question": "best-practices",
+      "claim": "An issue record carries at least an identifier, description, priority, impact, owner, current status and next steps or target date; trackers require a minimum set at creation.",
+      "source_type": "government project-management guidance; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "issues management issue log minimum requirements; Google Issue Tracker required fields",
+      "quote": "Minimum Requirements - Tools to manage issues should contain a unique identification number, priority, issue description, impact summary, action steps, current status, and issue owner. | This log include a description of the issue, the assignment of each issue to one or more individuals for resolution, a target date by which the issue needs to be resolved, and other related information. | For all new issues, there are several required fields. These include Component, Title, Priority and Type.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 66,
+        "basis": "Two independent publishers; the field lists differ, so the exact set is an owner choice; the CDC newsletter is dated."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "status-tracks-to-resolution",
+      "question": "best-practices",
+      "claim": "Every issue carries a status that moves through a defined workflow from open to a closed state, so the team can see where each issue stands until it is resolved.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira work item statuses priorities resolutions; Google Issue Tracker status field; Linear workflow statuses; bug triage tracking to resolution",
+      "quote": "A work item's status, priority, and resolution represent some of the most important fields describing and reporting on your team's work. They give your team at-a-glance information about where the work is in your workflow, how important it is to your goals, and a description of how the work was completed. | The Status field tracks an issue's resolution process, with common statuses including New, Assigned, In Progress, Fixed, and Won't fix, classifying issues as either Open or Closed. | These workflows are team-specific and come with a default set and order: Backlog > Todo > In Progress > Done > Canceled. | Steps include reporting, categorization, prioritization, assignment, and tracking to resolution.",
+      "citations": [
+        {
+          "title": "What are work item statuses, priorities, and resolutions?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Bug triage: A guide to efficient bug management",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/software-development/bug-triage",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 82,
+        "basis": "Three independent tracker vendors build status workflows into every issue; current docs; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "stale-issues-flagged",
+      "question": "best-practices",
+      "claim": "Issues that sit without activity are flagged so they do not age unnoticed.",
+      "source_type": "open-source project policy; methodology guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kubernetes lifecycle stale issues 90 days; Kanban guide work items age",
+      "quote": "When an issue goes 90 days without activity, the [k8s-triage-robot](https://github.com/k8s-triage-robot) adds the `lifecycle/stale` label to that issue. | Ensuring work items do not age unnecessarily, using the SLE as a reference.",
+      "citations": [
+        {
+          "title": "Issue Triage Guidelines",
+          "author": "Kubernetes Authors",
+          "publisher": "Kubernetes community (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/kubernetes/community/master/contributors/guide/issue-triage.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "The Kanban Guide",
+          "author": "Kanban Guides",
+          "publisher": "kanbanguides.org",
+          "date": "n.d.",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 62,
+        "basis": "Two independent publishers; the Kanban Guide speaks of work items generally, not issues; the 90-day figure is Kubernetes' own choice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "escalate-critical-full-attention",
+      "question": "best-practices",
+      "claim": "The most severe issues get immediate attention and an owner fast: Mozilla assigns S1 bugs within 2 business days, Kubernetes team leaders make sure critical-urgent issues are actively worked, and Chromium and Google define the top level as needing immediate resolution.",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firefox S1 bugs assigned within 2 business days; Kubernetes priority critical-urgent; Chromium P0 emergency; Google Issue Tracker P0",
+      "quote": "All new S1 and sec-critical bugs should get the full attention of anyone that can reasonably help. They should be assigned within 2 business days. | `priority/critical-urgent` | Team leaders are responsible for making sure that these issues (in their area) are being actively worked on—i.e., drop what you're doing. Stuff is burning. These should be fixed before the next release. | P0 - Emergency | An issue that needs to be addressed immediately and with as many resources as is required.",
+      "citations": [
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue Triage Guidelines",
+          "author": "Kubernetes Authors",
+          "publisher": "Kubernetes community (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/kubernetes/community/master/contributors/guide/issue-triage.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Triage Best Practices",
+          "author": "The Chromium Projects",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/for-testers/bug-reporting-guidelines/triage-best-practices/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 82,
+        "basis": "Four publishers, at least three independent (Mozilla, Kubernetes, Google/Chromium), agree; current policies; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "critical-notifies-beyond-assignee",
+      "question": "best-practices",
+      "claim": "A critical issue raises a notice beyond the triage queue: Mozilla notifies Release Management for S1 and S2 bugs, and Linear notifies the assignee of an Urgent issue.",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Firefox S1 S2 notify Release Management triage owner; Linear urgent priority notification",
+      "quote": "If the bug has a Severity of S1 or S2 then notify Release Management and contact the triage owner of the component for which you think it belongs to. We cannot lose track of a high severity bug because it is in the wrong component. | When an issue is marked as Urgent, Linear notifies the assignee and, if email notifications are enabled, also sends an urgent email notification.",
+      "citations": [
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 70,
+        "basis": "Two independent publishers; Linear's is product behaviour rather than policy."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "escalation-procedure-documented",
+      "question": "best-practices",
+      "claim": "The escalation process is agreed and written down as part of planning how issues will be managed.",
+      "source_type": "government project-management guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "issues management escalation process documented",
+      "quote": "Escalation Process - An escalation process should be identified as part of overall issue management planning activities and should be documented.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 55,
+        "basis": "One government guidance newsletter, dated 2012; not corroborated; supports SHOULD at most."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "escalate-unresolved-after-time",
+      "question": "best-practices",
+      "claim": "An issue that stays unresolved past an agreed time is escalated or reviewed; trackers express this as a deadline tied to priority.",
+      "source_type": "government project-management guidance; vendor documentation; open-source project policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "issue escalation unresolved lengthy period; Linear priority SLA; Firefox open S1 S2 end of release cycle",
+      "quote": "Escalation - If an issue remains unresolved for a lengthy period of time (we may want to specify a time range here), the issue should be escalated using the agreed upon escalation procedure. | When Priority is Urgent, add a 24 hour SLA | When Priority is High, add a 1 week SLA | Any open S1 or S2 bugs at the end of the release cycle will require review by engineering and release management.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Triage for Bugzilla",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 68,
+        "basis": "Three independent publishers; the time limits differ (Linear's are examples), so the length is an owner choice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-resolution",
+      "question": "best-practices",
+      "claim": "When an issue is resolved, how it was resolved is recorded on the issue.",
+      "source_type": "government project-management guidance; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "issues management record the resolution in the issue log; bug tracking adding detailed information about bug fixes",
+      "quote": "Documentation - When an issue is resolved, record the resolution in the issue log. | You can use a bug tracking system to log and track each bug, adding detailed information about bug fixes when they’re implemented.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Bug triage: A guide to efficient bug management",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/software-development/bug-triage",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 74,
+        "basis": "Two independent publishers (government guidance, tracker vendor); meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "verify-resolution",
+      "question": "best-practices",
+      "claim": "A fix is confirmed, by the reporter, a named verifier or a test, before the issue is closed.",
+      "source_type": "expert practitioner article; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "only the person who opened the bug can close the bug; Jira resolved awaiting verification by reporter; Google Issue Tracker fixed verified",
+      "quote": "The golden rule is that only the person who opened the bug can close the bug. | Resolved A resolution has been taken, and it is awaiting verification by reporter. | The issue has been addressed and the correctness of the fix has been confirmed by the user in the Verifier field. | Once you've implemented a bug fix and confirmed through testing that the issue is resolved, you can close the ticket.",
+      "citations": [
+        {
+          "title": "Painless Bug Tracking",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-11-08",
+          "url": "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What are work item statuses, priorities, and resolutions?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Bug triage: A guide to efficient bug management",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/software-development/bug-triage",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 74,
+        "basis": "Three independent publishers agree a fix is verified before close; who verifies differs (reporter, verifier, test), so that is an owner choice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "close-not-planned-definitively",
+      "question": "best-practices",
+      "claim": "Work the team will not do is closed as not planned, with an explanation, rather than left open.",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Chromium triage be definitive close the issue; Linear decline triage canceled; GitHub close issue not planned",
+      "quote": "Be definitive. If the work isn't something that we intend on doing (or isn't something we're able to confirm is a real issue), then close the issue out and provide honest and courteous feedback. | **Declining** will update the issue to a _Canceled_ status type and present the option of adding a comment with an explanation. | You can close an issue when bugs are fixed, feedback is acted on, or to show that work is not planned.",
+      "citations": [
+        {
+          "title": "Triage Best Practices",
+          "author": "The Chromium Projects",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/for-testers/bug-reporting-guidelines/triage-best-practices/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Triage",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/triage",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Closing an issue",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/closing-an-issue",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 72,
+        "basis": "Three independent publishers; current docs."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "keep-closed-as-history",
+      "question": "best-practices",
+      "claim": "Closed issues stay in the log as a historical record for lessons learned.",
+      "source_type": "government project-management guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "issues management closed issues remain in the issue log",
+      "quote": "Issue History - Closed issues should remain in the issue log as a historical record and to facilitate lessons learned activities.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 55,
+        "basis": "One government guidance newsletter, dated; not corroborated by a second publisher's words, though every tracker keeps closed issues."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "communicate-resolution",
+      "question": "best-practices",
+      "claim": "Stakeholders are told how an issue was resolved once it is resolved.",
+      "source_type": "government project-management guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "issues management communicate how the issue was resolved stakeholders",
+      "quote": "Once an issue has been resolved, an official communication should be sent to stakeholders communicating how the issue was resolved.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 50,
+        "basis": "One government guidance newsletter, dated; not corroborated; supports MAY."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "resolution-reason-from-fixed-set",
+      "question": "known-solutions",
+      "claim": "Trackers record why an issue closed from a fixed set of reasons (fixed or done, won't fix or not planned, duplicate, cannot reproduce, by design).",
+      "source_type": "vendor documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira resolution field; GitHub REST issues state_reason; Google Issue Tracker won't fix statuses; FogBugz resolve fixed won't fix",
+      "quote": "A work item can be completed, or resolved, in many ways. A work item resolution is usually set when the status is changed. | Can be one of: completed, not_planned, duplicate, reopened, null | Won't fix (Not reproducible) | There are many ways to resolve a bug. FogBUGZ allows you to resolve a bug as fixed, won’t fix, postponed, not repro, duplicate, or by design.",
+      "citations": [
+        {
+          "title": "What are work item statuses, priorities, and resolutions?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "REST API endpoints for issues",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/rest/issues/issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Painless Bug Tracking",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-11-08",
+          "url": "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 82,
+        "basis": "Four independent publishers, three of them primary for their own trackers; current docs; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "jira-resolution-field-unresolved",
+      "question": "known-solutions",
+      "claim": "In Jira the resolution field is how an issue is closed; an issue with no resolution is shown as Unresolved, so resolutions must not be named Unresolved or None.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira Service Management configuring statuses resolutions priorities",
+      "quote": "Resolutions are the ways in which an issue can be closed. | Don't name resolutions \"Unresolved\" or \"None\": Jira automatically shows issues as \"Unresolved\" when they have no set resolution.",
+      "citations": [
+        {
+          "title": "Configuring statuses, resolutions, and priorities",
+          "author": "Atlassian",
+          "publisher": "Atlassian Documentation",
+          "date": "n.d.",
+          "url": "https://confluence.atlassian.com/servicedeskcloud/configuring-statuses-resolutions-and-priorities-1097176115.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 66,
+        "basis": "Vendor docs primary for its own product; single publisher; product-specific."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "itil-known-error",
+      "question": "known-solutions",
+      "claim": "ITIL problem management names a problem with a documented root cause and workaround a known error, and Jira Service Management offers Known error as a resolution.",
+      "source_type": "vendor documentation (secondary for ITIL 4)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ITIL 4 problem management known error definition",
+      "quote": "In ITIL, a known error is “a problem that has a documented root cause and a workaround.” | Known error The problem has a documented root cause and a work around.",
+      "citations": [
+        {
+          "title": "Problem management process",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/itsm/problem-management/process",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What are work item statuses, priorities, and resolutions?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 52,
+        "basis": "Both pages are Atlassian's; ITIL 4 itself is paywalled, so the definition is second-hand from a vendor with a commercial interest."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "link-fix-to-issue",
+      "question": "known-solutions",
+      "claim": "Trackers link the fixing change to the issue: GitHub closes an issue when a pull request or commit with a closing keyword merges, Jira links commits and pull requests that carry the issue key, and Jira Service Management links problems to the changes that fix them.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub linking a pull request to an issue closing keywords; Jira reference work items in commit messages",
+      "quote": "You can link a pull request or branch to an issue to show that a fix is in progress and to automatically close the issue when the pull request or branch is merged. | You can also use closing keywords in a commit message. The issue will be closed when you merge the commit into the default branch, but the pull request that contains the commit will not be listed as a linked pull request. | When committing changes to your branch, use the key in your commit message to link those commits to the development panel in your Jira work item. | Jira Service Management links problems to the incidents they cause and to the changes that fix them, so teams work from one record with full context.",
+      "citations": [
+        {
+          "title": "Linking a pull request to an issue",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Reference work items in your development spaces",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/reference-issues-in-your-development-work/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Problem management process",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/itsm/problem-management/process",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 60,
+        "basis": "Two independent tracker vendors, each primary for its own product; current docs. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quoted Jira text only covers putting the key in commit messages. The claim's \"and pull requests that carry the issue key\" isn't in the quote, though the page does say \"When you create a pull request, use the key in the pull request title.\" The GitHub and Jira Service Management parts are supported; lowered 80->60."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "close-duplicates-link-canonical",
+      "question": "known-solutions",
+      "claim": "A duplicate is closed with a link to the original issue, and trackers keep that link (GitHub duplicate_issue_id, Linear's Duplicate status, Google's canonical-issue link).",
+      "source_type": "open-source project policy; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kubernetes triage duplicate reference the original issue; Linear duplicate status; GitHub duplicate_issue_id",
+      "quote": "If a duplicate is found, let the issue reporter know, reference the original issue, and close the duplicate. | Duplicate issues show a link to the original issue directly in the issue view | The ID of the issue that this issue duplicates, used when marking this issue as a duplicate with status: Duplicate or state_reason: duplicate. | Link to the canonical issue found in the bar at the top of a page that is marked as duplicate.",
+      "citations": [
+        {
+          "title": "Issue Triage Guidelines",
+          "author": "Kubernetes Authors",
+          "publisher": "Kubernetes community (GitHub)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/kubernetes/community/master/contributors/guide/issue-triage.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "REST API endpoints for issues",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/rest/issues/issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 80,
+        "basis": "Four independent publishers; current docs; meets the bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "link-related-records",
+      "question": "known-solutions",
+      "claim": "Trackers let an issue reference related issues, pull requests, incidents and changes; none of the sources links issues to review findings as such.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub best practices for projects link related issues; Jira Service Management link problems to incidents",
+      "quote": "Assign collaborators to issues to communicate responsibility. Link to related issues or pull requests to communicate how they are connected. | Mentioning an issue in another issue or pull request will create references between them and using keywords, like fixes:, in your pull requests will automatically close the associated issues. | Jira Service Management links problems to the incidents they cause and to the changes that fix them, so teams work from one record with full context.",
+      "citations": [
+        {
+          "title": "Best practices for Projects",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "About issues",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Problem management process",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/itsm/problem-management/process",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 66,
+        "basis": "Two independent vendors support linking related records; nothing supports the narrower 'specialist findings' wording."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "mozilla-bugzilla-severity-priority-fields",
+      "question": "known-solutions",
+      "claim": "Bugzilla carries severity and priority as two fields, with priority levels defined by release cycle.",
+      "source_type": "open-source project documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Bugzilla priority P1 P2 P5 definitions; Firefox defect severity field",
+      "quote": "We use the severity field in Bugzilla to indicate the scope of a bug’s effect on Firefox. | The field is display alongside the bug’s priority. | Fix in the current release cycle | Fix in the next release cycle or the following (nightly + 1 or nightly + 2) | Will not fix, but will accept a patch",
+      "citations": [
+        {
+          "title": "Defect Severity",
+          "author": "Mozilla",
+          "publisher": "Firefox Source Docs",
+          "date": "n.d.",
+          "url": "https://firefox-source-docs.mozilla.org/bug-mgmt/guides/severity.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "BMO/UserGuide/BugFields",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/BMO/UserGuide/BugFields",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 70,
+        "basis": "Mozilla's own current docs; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "google-issue-tracker-priority-and-severity",
+      "question": "known-solutions",
+      "claim": "Google Issue Tracker carries both severity and priority on every issue, requires priority at creation, and defines priority P0 to P4 by impact and workaround.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google Issue Tracker issue fields priority severity; glossary of fields",
+      "quote": "This includes the type of issue, its importance in terms of severity and priority, and the record of activity on the issue. | Issue importance is defined by Priority levels, ranging from P0 (immediate action needed) to P4 (addressed eventually). | Severity of the issue.",
+      "citations": [
+        {
+          "title": "Issues",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/concepts/issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Glossary of Fields",
+          "author": "Google",
+          "publisher": "Google for Developers (Issue Tracker)",
+          "date": "n.d.",
+          "url": "https://developers.google.com/issue-tracker/references/glossary-of-fields",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 50,
+        "basis": "Google's own current docs; one publisher; the severity levels' meanings are not published. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports severity and priority as issue fields and a P0–P4 range, but nothing in it says priority is required at creation or that levels are defined by impact and workaround. The cited page does say both, in \"required fields... Component, Title, Priority and Type\" and in its P0–P4 table, so a fuller quote would back the claim; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-priority-conflates-severity",
+      "question": "known-solutions",
+      "claim": "Jira ships priority but no severity field; its default priority descriptions read as severity.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira default priorities Highest High Medium Low Lowest",
+      "quote": "A work item's priority indicates its relative importance. | Highest This problem will block progress. | Low Minor problem or easily worked around. | Lowest Trivial problem with little or no impact on progress.",
+      "citations": [
+        {
+          "title": "What are work item statuses, priorities, and resolutions?",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-cloud-administration/docs/what-are-issue-statuses-priorities-and-resolutions/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 68,
+        "basis": "Atlassian's own current docs; one publisher; the absence of a severity field is read from the page's field list."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-no-default-severity",
+      "question": "known-solutions",
+      "claim": "GitHub ships default labels (bug, duplicate, wontfix and others) but no severity or priority; teams add them as labels or a project single-select field.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub managing labels default labels; GitHub projects single select field priority",
+      "quote": "GitHub provides default labels in every new repository. | Indicates an unexpected problem or unintended behavior | Indicates that work won't continue on an issue, pull request, or discussion | Use a single select field to track information about a task based on a preset list of values. For example, track priority or project phase.",
+      "citations": [
+        {
+          "title": "Managing labels",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Best practices for Projects",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 70,
+        "basis": "GitHub's own current docs; one publisher; the absence of a severity label is read from the default-label list."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-priority-five-levels",
+      "question": "known-solutions",
+      "claim": "Linear offers a fixed five-value priority (No priority to Urgent), no severity field, and deliberately no custom priorities.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear issue properties priority levels custom priorities",
+      "quote": "Priority is an optional property for Linear issues to signify to your team the urgency of the issue. Issues can be set to No priority, Low, Medium, High, or Urgent. | We don’t have the option to set custom priorities or more granular priorities since it’s easy to get carried away with specificity. Adding too many options makes it harder to set priority and leads to diminishing returns.",
+      "citations": [
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 70,
+        "basis": "Linear's own current docs; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-triage-inbox",
+      "question": "known-solutions",
+      "claim": "Linear's Triage inbox holds new issues until someone accepts, declines, marks as duplicate or snoozes them, and can require priority before an issue leaves triage.",
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear triage accept decline duplicate snooze require priority",
+      "quote": "Triage offers a opportunity to review, update, and prioritize issues before they are added to your team's workflow. Consider using Triage responsibility to set a rotating schedule of ownership for monitoring incoming issues. | Can I require priority to be set before an issue leaves Triage? | Yes. Configure this behavior under Team Settings > Triage.",
+      "citations": [
+        {
+          "title": "Triage",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/triage",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 68,
+        "basis": "Linear's own current docs; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pmbok-issue-log",
+      "question": "platform-guidelines",
+      "claim": "PMBOK defines an issue as an unsettled or disputed matter, and every project, whatever its size, keeps an issue log or tracking system.",
+      "source_type": "government project-management guidance (secondary for PMBOK)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMBOK issue definition issue log project management",
+      "quote": "An issue is a point or matter in question or in dispute, or a point or matter that is not settled and is under discussion or over which there are opposing views or disagreements. | In general, all projects, regardless of type or size, should have an issue tracking system or log where issues are regularly managed and monitored.",
+      "citations": [
+        {
+          "title": "Issues Management (CDC Unified Process Project Management Newsletter, Vol 6 Issue 2)",
+          "author": "Daniel Vitek",
+          "publisher": "U.S. Centers for Disease Control and Prevention",
+          "date": "2012-02",
+          "url": "https://stacks.cdc.gov/view/cdc/78626/cdc_78626_DS1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 55,
+        "basis": "PMBOK is paywalled and PMI's page returned 403; the definition is quoted second-hand by a CDC newsletter; dated."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-issue-broad",
+      "question": "platform-guidelines",
+      "claim": "PRINCE2 7 treats an issue as anything that could affect the project (a problem, concern, opportunity, change request or off-specification), which any stakeholder may raise; not every issue becomes a change.",
+      "source_type": "methodology owner publication",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 7 issues definition anything that could affect the project",
+      "quote": "In PRINCE2 7, the broad definition of issues is “anything that could affect the project”. | For example, issues can be either a problem, a concern, a business opportunity, a request for change, or something off-specification. | Not all issues result in changes. But all changes start as issues. | Any stakeholder can raise an issue, and capturing and assessing issues is a great way of maintaining stakeholder engagement.",
+      "citations": [
+        {
+          "title": "PRINCE2 7 Issues: not every issue equals a change",
+          "author": "Brad Bigelow",
+          "publisher": "PeopleCert",
+          "date": "n.d.",
+          "url": "https://www.peoplecert.org/news-and-announcements/prince2-7-issues",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 62,
+        "basis": "Published by PRINCE2's owner (PeopleCert) and written by a PRINCE2 7 co-author; the manual itself is paywalled."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-impediments-removed",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide has no issue tracker; it gives impediments to the Scrum Master to remove and to the Daily Scrum to surface.",
+      "source_type": "methodology guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 impediments Scrum Master Daily Scrum",
+      "quote": "Causing the removal of impediments to the Scrum Team’s progress; and, | Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings.",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 70,
+        "basis": "The canonical guide, primary for Scrum; one publisher; about impediments, not issue records."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-active-management",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide requires items in the workflow to be managed actively, including unblocking blocked work and keeping items from ageing past the service level expectation.",
+      "source_type": "methodology guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide active management of items in the workflow",
+      "quote": "Items in the workflow must be managed actively. Active management of items in a workflow can take several forms, including but not limited to the following: | Unblocking blocked work. | Ensuring work items do not age unnecessarily, using the SLE as a reference.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "Kanban Guides",
+          "publisher": "kanbanguides.org",
+          "date": "n.d.",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 66,
+        "basis": "The canonical guide, primary for Kanban; one publisher; about work items generally."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bug-database-everyone-uses",
+      "question": "experts-view",
+      "claim": "A good team keeps all issues in one tracker that everyone uses; if filing is too much work, people go around it.",
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Painless bug tracking database of bugs hallmark",
+      "quote": "Keeping a database of bugs is one of the hallmarks of a good software team. | For the bug database to work, everybody needs to use it, and if entering bugs “formally” is too much work, people will go around the bug database.",
+      "citations": [
+        {
+          "title": "Painless Bug Tracking",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-11-08",
+          "url": "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 58,
+        "basis": "Widely cited expert article; old but about stable human behaviour; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "spolsky-three-things",
+      "question": "experts-view",
+      "claim": "An expert holds that a good bug report needs exactly three things (steps to reproduce, what was expected, what was seen) and no more.",
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Painless bug tracking every good bug report needs exactly three things",
+      "quote": "Every good bug report needs exactly three things.",
+      "citations": [
+        {
+          "title": "Painless Bug Tracking",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-11-08",
+          "url": "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 30,
+        "basis": "One expert article, old; the three items are listed on the page after this sentence. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote says only that a good report needs \"exactly three things\" and does not name them. The page names them in the next sentence (\"Steps to reproduce, What you expected to see, and What you saw instead\"), so a longer quote would support the claim; lowered 50->30."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "avoid-extra-fields",
+      "question": "experts-view",
+      "claim": "Keep the tracker's fields and priority levels few: extra fields and finer priorities make issues harder to file and rank, for little return.",
+      "source_type": "expert practitioner article; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "avoid the temptation to add new fields to the bug database; Linear no custom priorities",
+      "quote": "Avoid the temptation to add new fields to the bug database. | Adding too many options makes it harder to set priority and leads to diminishing returns.",
+      "citations": [
+        {
+          "title": "Painless Bug Tracking",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-11-08",
+          "url": "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 66,
+        "basis": "An expert and a vendor independently say the same; no measured effect."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "priority-inflation",
+      "question": "experts-view",
+      "claim": "People filing issues inflate their priority, and a separate triage team does not cure it; severity is set by those who assess the issue, not by the reporter.",
+      "source_type": "peer-reviewed study (abstract); open-source project documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "priority inflation bug repair assessor; Bugzilla severity should not be set by people filing bugs",
+      "quote": "Priority inflation occurs when a Quality-Assurance (QA) engineer or a project manager requesting a feature inflates the priority of their task so that developers deliver the fix or the new functionality more quickly. We survey developers and show that priority inflation occurs and misallocates developer time. | We then show that the common mitigation strategy of having a bug triage team assigning priorities does not resolve priority inflation and slows development. | It should not be set by people filing bugs.",
+      "citations": [
+        {
+          "title": "The Assessor's Dilemma: Improving Bug Repair via Empirical Game Theory",
+          "author": "Carlos Gavidia-Calderon, Federica Sarro, Mark Harman and Earl T. Barr",
+          "publisher": "IEEE Transactions on Software Engineering (abstract via OpenAlex)",
+          "date": "2019",
+          "url": "https://api.openalex.org/works/doi:10.1109/tse.2019.2944608",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "BMO/UserGuide/BugFields",
+          "author": "Mozilla",
+          "publisher": "MozillaWiki",
+          "date": "n.d.",
+          "url": "https://wiki.mozilla.org/BMO/UserGuide/BugFields",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 66,
+        "basis": "Peer-reviewed study (abstract only; its metrics not used) independently matched by Mozilla's rule that reporters do not set severity."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "regression-not-severity",
+      "question": "experts-view",
+      "claim": "Severity is judged by impact alone: being a regression neither raises nor lowers it.",
+      "source_type": "open-source project announcement",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Mozilla changes to Firefox bug triage process regression severity",
+      "quote": "Note that a bug can be a regression but may have a minor severity, and conversely bugs which are not regressions can have a major severity.",
+      "citations": [
+        {
+          "title": "Changes to the Firefox Bug Triage Process",
+          "author": "Emma Humphries",
+          "publisher": "mozilla.tools.bmo (Google Groups)",
+          "date": "2020-04-27",
+          "url": "https://groups.google.com/g/mozilla.tools.bmo/c/uAZpsT_vd64",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 56,
+        "basis": "One publisher's announcement by its triage lead; not corroborated."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "duplicates-refiled",
+      "question": "experts-view",
+      "claim": "Important issues get re-filed, often as duplicates, so triage expects and merges them.",
+      "source_type": "open-source project policy",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Chromium triage best practices duplicate re-file important issues",
+      "quote": "People will re-file (and often duplicate) important issues.",
+      "citations": [
+        {
+          "title": "Triage Best Practices",
+          "author": "The Chromium Projects",
+          "publisher": "The Chromium Projects",
+          "date": "n.d.",
+          "url": "https://www.chromium.org/for-testers/bug-reporting-guidelines/triage-best-practices/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 30,
+        "basis": "One publisher's practitioner guidance; not corroborated. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Chromium uses this line to justify spending triage time on recent issues and letting old ones go. Its point is that important problems resurface as new reports. It does not say triage should expect duplicates and merge them, beyond noting that old issues often \"have not been properly duped\"; lowered 50->30."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "link-issues-to-findings-prior",
+      "question": "best-practices",
+      "claim": "link issues to specialist findings when applicable",
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "quote": "link issues to specialist findings when applicable",
+      "citations": [
+        {
+          "title": "issue-tracking (teams/projectteam/specialities/project/issues.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/issues.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "issue-has-severity-and-status-prior",
+      "question": "best-practices",
+      "claim": "Every issue has severity and status",
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "quote": "Every issue has severity and status",
+      "citations": [
+        {
+          "title": "issue-tracking (teams/projectteam/specialities/project/issues.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/issues.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by claims triage-sets-severity-on-every-defect, github-no-default-severity, jira-priority-conflates-severity, linear-priority-five-levels"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "identify-assess-severity-and-triage",
+      "verdict": "supported",
+      "claims": [
+        "triage-identifies-categorizes-prioritizes",
+        "severity-describes-impact",
+        "triage-sets-severity-on-every-defect",
+        "linear-triage-inbox"
+      ]
+    },
+    {
+      "rule": "link-issues-to-findings",
+      "verdict": "unsupported",
+      "claims": [
+        "link-issues-to-findings-prior",
+        "link-related-records"
+      ]
+    },
+    {
+      "rule": "track-resolution-status",
+      "verdict": "supported",
+      "claims": [
+        "status-tracks-to-resolution",
+        "scrum-impediments-removed",
+        "kanban-active-management"
+      ]
+    },
+    {
+      "rule": "escalate-critical-issues",
+      "verdict": "supported",
+      "claims": [
+        "escalate-critical-full-attention",
+        "critical-notifies-beyond-assignee"
+      ]
+    },
+    {
+      "rule": "issue-has-severity-and-status",
+      "verdict": "contradicted",
+      "claims": [
+        "issue-has-severity-and-status-prior",
+        "triage-sets-severity-on-every-defect",
+        "github-no-default-severity",
+        "jira-priority-conflates-severity",
+        "linear-priority-five-levels"
+      ]
+    },
+    {
+      "rule": "critical-issue-owned-or-escalated",
+      "verdict": "supported",
+      "claims": [
+        "escalate-critical-full-attention",
+        "critical-notifies-beyond-assignee",
+        "issue-has-one-owner"
+      ]
+    },
+    {
+      "rule": "resolved-issue-references-resolution",
+      "verdict": "supported",
+      "claims": [
+        "record-resolution",
+        "resolution-reason-from-fixed-set",
+        "link-fix-to-issue",
+        "jira-resolution-field-unresolved"
+      ]
+    },
+    {
+      "rule": "defect-has-severity-every-issue-has-status",
+      "verdict": "new",
+      "claims": [
+        "triage-sets-severity-on-every-defect",
+        "status-tracks-to-resolution"
+      ]
+    },
+    {
+      "rule": "severity-kept-apart-from-priority",
+      "verdict": "new",
+      "claims": [
+        "severity-separate-from-priority",
+        "mozilla-bugzilla-severity-priority-fields",
+        "google-issue-tracker-priority-and-severity",
+        "jira-priority-conflates-severity"
+      ]
+    },
+    {
+      "rule": "define-issue-severity-levels",
+      "verdict": "new",
+      "claims": [
+        "severity-levels-defined",
+        "regression-not-severity"
+      ]
+    },
+    {
+      "rule": "severity-change-needs-rationale",
+      "verdict": "new",
+      "claims": [
+        "severity-change-needs-rationale"
+      ]
+    },
+    {
+      "rule": "severity-set-by-assessor-not-reporter",
+      "verdict": "new",
+      "claims": [
+        "priority-inflation"
+      ]
+    },
+    {
+      "rule": "escalation-path-documented",
+      "verdict": "new",
+      "claims": [
+        "escalation-procedure-documented"
+      ]
+    },
+    {
+      "rule": "escalate-unresolved-after-time-limit",
+      "verdict": "new",
+      "claims": [
+        "escalate-unresolved-after-time"
+      ]
+    },
+    {
+      "rule": "triage-has-a-named-owner",
+      "verdict": "new",
+      "claims": [
+        "triage-has-named-owner"
+      ]
+    },
+    {
+      "rule": "triage-new-issues-promptly",
+      "verdict": "new",
+      "claims": [
+        "triage-within-time-bound",
+        "untriaged-is-visible"
+      ]
+    },
+    {
+      "rule": "every-issue-has-one-owner",
+      "verdict": "new",
+      "claims": [
+        "issue-has-one-owner"
+      ]
+    },
+    {
+      "rule": "record-resolution-reason",
+      "verdict": "new",
+      "claims": [
+        "resolution-reason-from-fixed-set",
+        "itil-known-error"
+      ]
+    },
+    {
+      "rule": "link-fix-change-to-issue",
+      "verdict": "new",
+      "claims": [
+        "link-fix-to-issue"
+      ]
+    },
+    {
+      "rule": "close-duplicates-linking-canonical",
+      "verdict": "new",
+      "claims": [
+        "close-duplicates-link-canonical",
+        "duplicates-refiled"
+      ]
+    },
+    {
+      "rule": "close-unplanned-work-definitively",
+      "verdict": "new",
+      "claims": [
+        "close-not-planned-definitively"
+      ]
+    },
+    {
+      "rule": "verify-resolution-before-close",
+      "verdict": "new",
+      "claims": [
+        "verify-resolution"
+      ]
+    },
+    {
+      "rule": "keep-closed-issues-as-history",
+      "verdict": "new",
+      "claims": [
+        "keep-closed-as-history"
+      ]
+    },
+    {
+      "rule": "communicate-resolution-to-stakeholders",
+      "verdict": "new",
+      "claims": [
+        "communicate-resolution"
+      ]
+    },
+    {
+      "rule": "issue-records-minimum-fields",
+      "verdict": "new",
+      "claims": [
+        "issue-log-minimum-fields",
+        "spolsky-three-things"
+      ]
+    },
+    {
+      "rule": "keep-priority-scale-small",
+      "verdict": "new",
+      "claims": [
+        "avoid-extra-fields",
+        "linear-priority-five-levels"
+      ]
+    },
+    {
+      "rule": "one-tracker-everyone-uses",
+      "verdict": "new",
+      "claims": [
+        "bug-database-everyone-uses",
+        "pmbok-issue-log"
+      ]
+    },
+    {
+      "rule": "issue-covers-more-than-defects",
+      "verdict": "new",
+      "claims": [
+        "prince2-issue-broad",
+        "pmbok-issue-log"
+      ]
+    },
+    {
+      "rule": "flag-stale-issues",
+      "verdict": "new",
+      "claims": [
+        "stale-issues-flagged",
+        "kanban-active-management"
+      ]
+    }
+  ]
+}
