@@ -7,7 +7,7 @@
 - `two-way-link-recorded-once-shown-both-ways`: each two-way relationship shows on both records, and removing it removes it from both.
 - `link-instead-of-copy`: information held in one record is linked from the others, not copied into them.
 - `blocked-record-names-its-blocker`: every blocked record has a blocked-by link to the record that blocks it.
-- `child-record-carries-parent-link`: where used, each part record carries the link to the record it is part of.
+- `child-record-carries-parent-link`: where used, the link between a part record and the record it is part of is carried on the part record.
 - `superseding-record-links-both-ways`: each superseding record links to the one it replaces, and the replaced one is marked superseded with a link back.
 - `realised-risk-links-to-its-issue`: where used, each issue that came from a realised risk is linked to that risk.
 - `close-or-supersede-never-delete`: no record that others link to has been deleted; it was closed or marked superseded.

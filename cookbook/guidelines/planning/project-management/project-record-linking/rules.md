@@ -15,7 +15,7 @@
 ### Which record carries which link
 
 - **blocked-record-names-its-blocker**: A record whose work is blocked SHOULD state which record blocks it, by a blocked-by link to that record. (claims: pg-github-single-source-and-blockers, ks-github-dependencies-both-directions, ks-linear-relations, ks-gitlab-bidirectional-links)
-- **child-record-carries-parent-link**: A record that is part of a larger one, such as a sub-issue under its parent issue, work under a milestone, or the change that resolves an issue, MAY carry the link to the larger record. (claims: ks-github-sub-issues-and-milestones, ks-github-closing-keywords)
+- **child-record-carries-parent-link**: Where a record is part of a larger one, such as a sub-issue under its parent issue, work under a milestone, or the change that resolves an issue, the link between them MAY be carried on the smaller record. (claims: ks-github-sub-issues-and-milestones, ks-github-closing-keywords)
 - **superseding-record-links-both-ways**: A record that supersedes another SHOULD link to the record it replaces, and the replaced record SHOULD be marked superseded, with a link to its replacement. (claims: bp-supersede-and-link-both, ks-adr-tools-reverse-link, ev-supersede-not-edit-debated, ev-unrecorded-decisions-contradicted)
 - **realised-risk-links-to-its-issue**: When a risk materialises and becomes an issue, the issue and the risk it came from MAY be linked, so the connection between them is kept. (claims: bp-risk-realised-links-issue, pg-prince2-integrated-register)
 
