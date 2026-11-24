@@ -1,0 +1,1775 @@
+{
+  "topic": "risk-tracking",
+  "artifact": "cookbook/guidelines/planning/project-management/risk-tracking",
+  "scope": "How a delivery team identifies, records, reviews, responds to and closes project risks and open concerns: the risk register (or RAID log) and its fields, the owner and raiser of each risk, its review cadence, the response options and how one is chosen, and when a risk becomes an issue. Issue severity and triage belong to issue-tracking, and linking in general belongs to project-record-linking; only what a risk record itself carries is researched here. Apple, Android and Windows have no bearing on this topic.",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (domain project risk management; Product / how-to / definitional LOW-MEDIUM bar, no Statistical claims found)",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to the standards bodies and method owners first (ISO 31000, PRINCE2, PMI's PMBOK Guide, HM Treasury's Orange Book, the Scrum and Kanban Guides) and the trackers' own documentation (GitHub, Linear, Atlassian), corroborate across independent publishers, use practitioner sources only where no primary covers the point, record provenance at generation time.",
+    "search_strategy": "WebSearch for each standard's and method owner's own text on risk registers, owners, review and responses, and for each tracker's documentation of risk or health fields; every cited page fetched with WebFetch or curl, PDFs read with pdftotext, and each quote checked against the fetched text.",
+    "inclusion": "Primary sources: ISO 31000:2018, PRINCE2 2017, PMI's published PMBOK 8 errata, HM Treasury's Orange Book, the UK National Audit Office's good-practice guide, the Scrum Guide, the Kanban Guide, GitHub Docs, Linear Docs, Atlassian's guides. Secondary sources (ILX Group's PRINCE2.com article, the Open Practice Library ROAM page, a Substack summary of PMBOK 8) only where no fetchable primary covered the point, flagged in trust basis.",
+    "exclusion": "Search-result snippets, community forum posts, pages that could not be fetched (iso.org OBP, PMI learning library and projectmanagement.com, axelos.com, the SAFe framework site, Jira Align documentation), and any claim not backed by a fetched quote.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy 20 + Currency 10 + Transparency 15, capped by the How-to / Product LOW-MEDIUM bar; secondary sources and copies hosted by third parties score lower."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+    "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+    "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+    "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+    "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+    "https://www.pmi.org/-/media/pmi/documents/public/pdf/pmbok-standards/pg8-errata---second-printing.pdf",
+    "https://projectmanagementcompass.substack.com/p/inside-pmbok-8-risk-performance-domain",
+    "https://scrumguides.org/scrum-guide.html",
+    "https://kanbanguides.org/english/",
+    "https://linear.app/docs/initiative-and-project-updates",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-your-organization",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization",
+    "https://www.atlassian.com/work-management/project-management/risk-register",
+    "https://www.atlassian.com/agile/project-management/raid-log",
+    "https://openpracticelibrary.com/practice/roam-boards/"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "All five listed rules hold at SHOULD strength. ISO 31000, PRINCE2 and the Orange Book all have teams identify risks early and from anyone, record them in a register whose entries carry an author (raiser), a status and a reference to the product they concern, evaluate each to decide whether action is needed now or the risk is kept under watch, and review the register on a planned basis so nothing goes stale. The topic is missing: a single named owner per risk (with an actionee for the response), a set review cadence (stage boundaries or a fixed interval such as monthly), response triage across avoid, reduce, transfer, share, accept, contingent plans and escalation chosen by cost against tolerance, escalation of risks that exceed tolerance, a risk description written as cause, event and effect, and the hand-over to issue-tracking once a risk has happened. None of the trackers (GitHub, Jira, Linear) ships a dedicated risk record; teams build one from custom issue types and fields or use a project health flag.",
+  "open_questions": [
+    "Which review cadence the rule names: PRINCE2 ties formal review to stage ends and progress reviews, the NAO example is monthly, and the Kanban Guide allows continuous or fixed-interval review; the owner decides whether the rule names one interval or requires the team to set one.",
+    "Which response vocabulary the cookbook adopts: ISO 31000's treatment options, PRINCE2's avoid, reduce, transfer, share, accept and prepare contingent plans, PMBOK 8's mitigate, avoid, transfer, accept and escalate, or the ROAM categories (resolved, owned, accepted, mitigated).",
+    "Whether opportunities (positive risks) are in this topic's scope: ISO 31000, PRINCE2 and PMBOK 8 all treat them alongside threats, while the listed rules speak only of concerns.",
+    "Whether the rule requires a separate actionee beside the owner, as PRINCE2 does, or lets one person hold both, which PRINCE2 says is common.",
+    "Which tracker mapping the cookbook recommends for a small team: a custom 'Risk' issue type with fields in GitHub or Jira, a RAID log document, or a project health flag such as Linear's 'At risk', which marks a project but is not a per-risk record."
+  ],
+  "limitations": [
+    "ISO 31000:2018 was read from a copy hosted by a university, not from iso.org (its Online Browsing Platform returned 403); PRINCE2 2017 was read from a copy hosted by a university mirror, not from AXELOS.",
+    "The PMBOK Guide Eighth Edition core text is paywalled; PMI's own public errata and a secondary Substack summary stand in for it, and the Substack claims are scored as secondary.",
+    "ISO 21502 was not fetched and is not cited.",
+    "The SAFe framework site and axelos.com are JavaScript-rendered and returned no text; ROAM is cited from the Open Practice Library instead. LeSS was not found to speak to risk registers and is not cited.",
+    "Jira Align's risk documentation could not be reached; community posts describing its required risk fields were not fetched in full and are not cited. Jira coverage is Atlassian's own guides.",
+    "No study, survey or metric on risk review cadence or register outcomes was found, so no claim takes the Statistical bar; the NAO's monthly review is one organisation's example, not a measured result.",
+    "Apple, Android and Windows have no bearing on this topic and were not researched.",
+    "Nearly every claim rests on one publisher's words; corroboration is shown by several independent claims under the same verdict rather than by shared wording."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "iso-identify-risks-whatever-their-source",
+      "question": "best-practices",
+      "claim": "Risk identification covers every risk to the objectives, including those whose sources the organisation does not control.",
+      "quote": "The organization should identify risks, whether or not their sources are under its control.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.4.2",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 risk identification monitoring and review recording and reporting",
+      "trust": {
+        "score": 76,
+        "basis": "The international risk-management standard (authority), read from a copy hosted by a university rather than iso.org, so transparency is reduced; current edition; corroborated in substance by PRINCE2's capture-on-identification rule."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-evaluation-decides-action",
+      "question": "best-practices",
+      "claim": "Evaluating a risk against the agreed criteria decides whether it needs action: doing nothing further, treating it, analysing it further, keeping existing controls or reconsidering objectives.",
+      "quote": "Risk evaluation involves comparing the results of the risk analysis with the established risk criteria to determine where additional action is required. This can lead to a decision to: — do nothing further; — consider risk treatment options; — undertake further analysis to better understand the risk; — maintain existing controls; — reconsider objectives.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.4.4",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 risk evaluation decision do nothing further treatment options",
+      "trust": {
+        "score": 76,
+        "basis": "International standard (authority), third-party-hosted copy; corroborated in substance by PRINCE2's reduce versus contingent-plan options and the NAO's 'require immediate action' escalation criteria."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-treatment-options",
+      "question": "best-practices",
+      "claim": "The standard names the options for treating a risk: avoid it, take it on for an opportunity, remove its source, change its likelihood or consequences, share it, or retain it by informed decision.",
+      "quote": "Options for treating risk may involve one or more of the following: — avoiding the risk by deciding not to start or continue with the activity that gives rise to the risk; — taking or increasing the risk in order to pursue an opportunity; — removing the risk source; — changing the likelihood; — changing the consequences; — sharing the risk (e.g. through contracts, buying insurance); — retaining the risk by informed decision.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.5.2",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 selection of risk treatment options avoiding sharing retaining",
+      "trust": {
+        "score": 78,
+        "basis": "International standard (authority), third-party-hosted copy; the same option list appears independently in the Orange Book (D6) and, in its own words, in PRINCE2 Table 10.3."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-select-treatment-by-cost-benefit",
+      "question": "best-practices",
+      "claim": "A treatment is chosen by weighing what it gains toward the objectives against its cost, effort and drawbacks.",
+      "quote": "Selecting the most appropriate risk treatment option(s) involves balancing the potential benefits derived in relation to the achievement of the objectives against costs, effort or disadvantages of implementation.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.5.2",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 selecting risk treatment balancing benefits against costs",
+      "trust": {
+        "score": 74,
+        "basis": "International standard (authority), third-party-hosted copy; consistent with PRINCE2's tolerance limit on accepting a risk, but no second source states the cost-benefit test in these terms."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-untreatable-risk-kept-under-review",
+      "question": "best-practices",
+      "claim": "A risk that no treatment adequately reduces stays recorded and under ongoing review rather than being dropped.",
+      "quote": "If there are no treatment options available or if treatment options do not sufficiently modify the risk, the risk should be recorded and kept under ongoing review.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.5.2",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 risk recorded and kept under ongoing review",
+      "trust": {
+        "score": 76,
+        "basis": "International standard (authority), third-party-hosted copy; corroborated in substance by the Orange Book's 'regularly reviewed and revised' and the NAO's up-to-date register."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-monitoring-planned-with-responsibilities",
+      "question": "best-practices",
+      "claim": "Ongoing monitoring and periodic review are a planned part of risk management, with clearly defined responsibilities.",
+      "quote": "Ongoing monitoring and periodic review of the risk management process and its outcomes should be a planned part of the risk management process, with responsibilities clearly defined.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.6",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 monitoring and review planned part responsibilities clearly defined",
+      "trust": {
+        "score": 78,
+        "basis": "International standard (authority), third-party-hosted copy; corroborated independently in substance by the Orange Book (D6, D10), PRINCE2's progress-review step and the NAO guide."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-record-and-report-outcomes",
+      "question": "best-practices",
+      "claim": "The outcomes of risk management, including monitoring results, are documented and reported.",
+      "quote": "The risk management process and its outcomes should be documented and reported through appropriate mechanisms.",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.7",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 recording and reporting documented and reported",
+      "trust": {
+        "score": 74,
+        "basis": "International standard (authority), third-party-hosted copy; consistent with PRINCE2's risk register and the Orange Book's 'recorded, communicated and validated'."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "iso-treatment-plan-names-responsible-and-timing",
+      "question": "best-practices",
+      "claim": "A treatment plan names who is accountable and responsible for it and when its actions are to start and finish.",
+      "quote": "those who are accountable and responsible for approving and implementing the plan;",
+      "citations": [
+        {
+          "title": "ISO 31000:2018 Risk management — Guidelines (second edition), clause 6.5.3",
+          "author": "ISO/TC 262 Risk management",
+          "publisher": "International Organization for Standardization (copy hosted by Instituto Superior Técnico, Universidade de Lisboa)",
+          "date": "2018-02-15",
+          "url": "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "international standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ISO 31000 2018 preparing and implementing risk treatment plans information",
+      "trust": {
+        "score": 54,
+        "basis": "International standard (authority), third-party-hosted copy; the same clause lists 'when actions are expected to be undertaken and completed.'; corroborated in substance by PRINCE2's owner and actionee. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is a single bullet about who is accountable and responsible. The timing part of the claim rests on a different bullet in clause 6.5.3 (\"when actions are expected to be undertaken and completed\"), which the quote does not include; lowered 74->54."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-regularly-reviewed",
+      "question": "best-practices",
+      "claim": "The recorded outcome of risk evaluation is reviewed and revised regularly because risks change.",
+      "quote": "The outcome of risk evaluation should be recorded, communicated and validated at appropriate levels of the organisation. It should be regularly reviewed and revised based on the dynamic nature and level of the risks faced.",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (principle D6)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book management of risk principles and concepts risk evaluation regularly reviewed",
+      "trust": {
+        "score": 80,
+        "basis": "HM Treasury's government-wide risk guidance, fetched from gov.uk (authority, transparency, current); independent of ISO 31000 and corroborates its periodic-review clause in substance."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-continuous-monitoring",
+      "question": "best-practices",
+      "claim": "Monitoring is continuous and shows whether and how the risk profile is changing.",
+      "quote": "Ongoing and continuous monitoring should support understanding of whether and how the risk profile is changing",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (principle D10)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book ongoing and continuous monitoring risk profile",
+      "trust": {
+        "score": 76,
+        "basis": "HM Treasury guidance on gov.uk (authority, current); corroborated in substance by ISO 31000 6.6."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-risk-in-normal-management-flow",
+      "question": "best-practices",
+      "claim": "Risk is considered regularly in the normal flow of management information, not as a separate occasional exercise.",
+      "quote": "Risk should be considered regularly as part of the normal flow of management information about the organisation’s activities",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (principle A5)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book risk considered regularly normal flow of management information",
+      "trust": {
+        "score": 74,
+        "basis": "HM Treasury guidance on gov.uk (authority, current); consistent with PRINCE2 checking the risk register at each progress review and Atlassian including the register in project reviews."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-timely-escalation",
+      "question": "best-practices",
+      "claim": "Risks are escalated in good time against agreed criteria.",
+      "quote": "including the timely escalation of risks, as necessary, based on agreed criteria.",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (principle C2)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book timely escalation of risks agreed criteria",
+      "trust": {
+        "score": 76,
+        "basis": "HM Treasury guidance on gov.uk (authority, current); corroborated independently in substance by the NAO's escalation criteria and PRINCE2's escalate-when-tolerances-threatened step."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-contingency-if-risks-crystallise",
+      "question": "best-practices",
+      "claim": "Contingency and incident arrangements are prepared for when a risk crystallises, the point at which it stops being a risk and needs handling as an event.",
+      "quote": "contingency, containment, crisis, incident and continuity management arrangements should be developed and communicated to support resilience and recovery if risks crystallise.",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (principle D9)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book contingency arrangements if risks crystallise",
+      "trust": {
+        "score": 50,
+        "basis": "HM Treasury guidance on gov.uk (authority, current); speaks to organisational resilience more than to a delivery team's register, so applicability is partial. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Principle D9 only says these arrangements are developed in case risks crystallise. It does not say that crystallising is the point where something stops being a risk and becomes an event; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-first-line-ownership",
+      "question": "best-practices",
+      "claim": "Management doing the work holds primary ownership of identifying, assessing and managing its risks.",
+      "quote": "Under the ‘first line role’, management have primary ownership, responsibility and accountability for identifying, assessing and managing risks.",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (section 11.1)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book first line role primary ownership identifying assessing managing risks",
+      "trust": {
+        "score": 70,
+        "basis": "HM Treasury guidance on gov.uk (authority, current); states ownership at the level of a management line rather than one person per risk, so it supports ownership in general."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "orange-book-register-holds-owners-and-links",
+      "question": "best-practices",
+      "claim": "Risk registers already hold each risk's owners and its links to the business processes it concerns, information that later work relies on.",
+      "quote": "Existing risk and control information (including owners and links to business processes etc) should already have been captured in risk registers and other documents and this should be useful when planning assurance work",
+      "citations": [
+        {
+          "title": "The Orange Book: Management of Risk – Principles and Concepts (risk assurance)",
+          "author": "HM Treasury (Government Finance Function)",
+          "publisher": "GOV.UK",
+          "date": "2026-11-18",
+          "url": "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government guidance (national risk-management standard for UK government)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Orange Book risk registers owners and links to business processes",
+      "trust": {
+        "score": 62,
+        "basis": "HM Treasury guidance on gov.uk (authority, current), but the statement appears in passing in the assurance section rather than as a register rule; corroborated in substance by PRINCE2's product reference."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-capture-risks-when-identified",
+      "question": "known-solutions",
+      "claim": "Anyone involved in or affected by the project may raise a risk, and PRINCE2 has it entered in the risk register as soon as it is identified.",
+      "quote": "Any member of the project, corporate or programme management, the customer, or other stakeholder may raise an issue or risk. PRINCE2 recommends that risks are captured in the risk register as soon as they are identified.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), section 10.4.1.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register composition risk author risk status risk owner actionee",
+      "trust": {
+        "score": 76,
+        "basis": "The PRINCE2 method's own manual (authority), read from a copy hosted by a university mirror rather than AXELOS; 2017 is the current project edition; corroborated in substance by ISO 31000 6.4.2."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-register-records-status-and-history",
+      "question": "known-solutions",
+      "claim": "The risk register is the record of a project's identified risks, including each risk's status and history.",
+      "quote": "A risk register provides a record of identified risks relating to the project, including their status and history.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.1",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register purpose record of identified risks status and history",
+      "trust": {
+        "score": 76,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated in substance by Atlassian's risk register guide and ISO 31000 6.7."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-risk-author-field",
+      "question": "known-solutions",
+      "claim": "Each risk register entry records its author, the person who raised the risk.",
+      "quote": "Risk author The person who raised the risk",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register composition risk author",
+      "trust": {
+        "score": 72,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; the section is introduced by 'For each entry in the risk register, the following should be recorded:', so the field is a SHOULD; no other fetched source names a raiser field."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-risk-status-field",
+      "question": "known-solutions",
+      "claim": "Each risk register entry records its status, typically active or closed.",
+      "quote": "Risk status Typically described in terms of whether the risk is active or closed",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register composition risk status active or closed",
+      "trust": {
+        "score": 74,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy, 'should be recorded'; corroborated in substance by the ILX article's 'Current status' field and Atlassian's RAID log status tracking."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-status-shows-action-taken",
+      "question": "known-solutions",
+      "claim": "A quality criterion of the register is that each risk's status shows whether action has been taken on it.",
+      "quote": "The status indicates whether action has been taken.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.5",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register quality criteria status indicates whether action has been taken",
+      "trust": {
+        "score": 72,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; stated as a quality criterion, the check a register must pass."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-risk-refers-to-product",
+      "question": "known-solutions",
+      "claim": "A quality criterion of the register is that each risk is uniquely identified and says which product it refers to.",
+      "quote": "Risks are uniquely identified, including information about which product they refer to.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.5",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register quality criteria uniquely identified which product they refer to",
+      "trust": {
+        "score": 70,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; the same criterion is applied to the issue register, lessons log and quality register; corroborated in substance by the Orange Book's 'links to business processes'."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-risk-description-cause-event-effect",
+      "question": "known-solutions",
+      "claim": "A risk is described in terms of its cause, the uncertain event, and its effect on the objectives.",
+      "quote": "Risk description Describes the risk in terms of the cause, event (threat or opportunity) and effect (in words of the impact)",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk description cause event effect",
+      "trust": {
+        "score": 70,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated in substance by the ILX article's warning against vague risk entries."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-proximity-field",
+      "question": "known-solutions",
+      "claim": "Each risk records its proximity: how soon the risk event is expected, from imminent to beyond the project.",
+      "quote": "Proximity This would typically state how close to the present time the risk event is anticipated to happen (e.g. imminent, within the management stage, within the project, beyond the project).",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register proximity imminent within the management stage",
+      "trust": {
+        "score": 68,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; no second fetched source names proximity, so it bears on urgency only as one method's field."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-single-risk-owner",
+      "question": "known-solutions",
+      "claim": "Each risk has exactly one owner, the person responsible for managing it.",
+      "quote": "Risk owner The person responsible for managing the risk (there should be only one risk owner per risk)",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk owner only one risk owner per risk",
+      "trust": {
+        "score": 78,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated independently in substance by the Open Practice Library ROAM page ('A single owner is preferred'), Atlassian's risk ownership component and the NAO's finding on lack of ownership."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-owner-and-actionee-agreed",
+      "question": "known-solutions",
+      "claim": "Each risk has an agreed owner and actionee; the owner is the person most able to manage it, and no one should hold too many risks.",
+      "quote": "The risk owner should be the person most capable of managing the risk. Allocating too many risks to any one individual should be avoided.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), section 10.4.4",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 implement risk owner actionee identified and agreed for each risk",
+      "trust": {
+        "score": 52,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; the same section opens 'It is critical to ensure that the owner and actionee are identified and agreed for each risk'. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers only \"most capable\" and \"avoid too many risks\". The \"agreed owner and actionee\" half comes from the sentence just before it (\"It is critical to ensure that the owner and actionee are identified and agreed for each risk\"), which the quote leaves out; lowered 72->52."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-risk-actionee",
+      "question": "known-solutions",
+      "claim": "The register names the actionee who carries out the response, who may or may not be the owner.",
+      "quote": "Risk actionee The person(s) who will implement the action(s) described in the risk response. This may or may not be the same person as the risk owner.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk actionee implement the actions described in the risk response",
+      "trust": {
+        "score": 70,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated in substance by the ILX article's owner and actionee and ISO 31000 6.5.3."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-reduce-is-action-now",
+      "question": "known-solutions",
+      "claim": "Reducing a threat means acting now to change its probability or impact.",
+      "quote": "This option involves definite action now to change the probability and/or the impact of the risk.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Table 10.3",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk response types reduce prepare contingent plans accept",
+      "trust": {
+        "score": 74,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated in substance by ISO 31000's 'changing the likelihood' and 'changing the consequences'."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-contingent-plans-wait",
+      "question": "known-solutions",
+      "claim": "Preparing contingent plans means planning now but not acting now, so the risk is watched until it changes.",
+      "quote": "This option involves preparing plans now, but not taking action now.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Table 10.3",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 prepare contingent plans preparing plans now but not taking action now",
+      "trust": {
+        "score": 56,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated independently in substance by PMI's PMBOK 8 contingent response strategies, which act only on a trigger. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says \"preparing plans now, but not taking action now\". The idea of waiting until things change comes from the next sentence (\"we'll make a plan for what we'll do if the situation changes\"), and the source never says the risk is \"watched\"; lowered 76->56."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-accept-not-beyond-tolerance",
+      "question": "known-solutions",
+      "claim": "Accepting a risk is not appropriate once its exposure exceeds the organisation's risk tolerance.",
+      "quote": "This option would not be appropriate if the risk exposure exceeded the risk tolerance threshold for the organizational activity in question.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Table 10.3",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 accept risk exposure exceeded the risk tolerance threshold",
+      "trust": {
+        "score": 70,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; consistent with ISO 31000's 'retaining the risk by informed decision' and the NAO's above-tolerance escalation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-escalate-when-tolerance-threatened",
+      "question": "known-solutions",
+      "claim": "At each progress review the project manager decides whether to escalate issues and risks when tolerances are threatened.",
+      "quote": "escalate issues and risks (section 17.4.7) if tolerances are threatened",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Controlling a stage: review the management stage status",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 controlling a stage escalate issues and risks if tolerances are threatened",
+      "trust": {
+        "score": 74,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated independently in substance by the Orange Book (C2) and the NAO's escalation criteria."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-review-register-at-progress-reviews",
+      "question": "known-solutions",
+      "claim": "Each stage progress review checks the risk register for new or revised risks and their impact on the plans.",
+      "quote": "check the risk register for any new or revised risks and assess their impact on the business case, stage plan or project plan",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Controlling a stage: review the management stage status",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 review the management stage status check the risk register",
+      "trust": {
+        "score": 76,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated in substance by Atlassian's advice to review the register in project review meetings and the NAO's monthly reviews."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-risk-timing-set-in-approach",
+      "question": "known-solutions",
+      "claim": "The project's risk management approach states when formal risk management activities happen, for example at the end of each management stage.",
+      "quote": "Timing of risk management activities States when formal risk management activities are to be undertaken (e.g. at the end of management stages)",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.24.2",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk management approach timing of risk management activities",
+      "trust": {
+        "score": 72,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated in substance by ISO 31000's 'planned part' of review and the ILX article's stage-boundary reviews."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-register-formats",
+      "question": "known-solutions",
+      "claim": "A risk register can be a document, spreadsheet, database, wall chart, tool entry, or part of an integrated register of risks, actions, decisions, assumptions, issues and lessons (a RAID-style log).",
+      "quote": "a part of an integrated project register for all risks, actions, decisions, assumptions, issues, lessons, etc.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Appendix A.25.4",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 risk register format and presentation integrated project register",
+      "trust": {
+        "score": 50,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; the same list includes 'an entry in a project management tool'; corroborated in substance by Atlassian's RAID log guide. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the last bullet of the A.25.4 format list. The document, spreadsheet, database, wall-chart and tool formats are in earlier bullets that the quote leaves out, and the source never says \"RAID\"; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-issue-is-event-that-happened",
+      "question": "known-solutions",
+      "claim": "An issue is an event that has already happened and needs management action, which separates it from a risk that might happen.",
+      "quote": "A relevant event that has happened, was not planned, and requires management action. It can be any concern, query, request for change, suggestion or off-specification raised during a project.",
+      "citations": [
+        {
+          "title": "Managing Successful Projects with PRINCE2 (2017 edition), Glossary: issue",
+          "author": "AXELOS Limited",
+          "publisher": "TSO (The Stationery Office); copy hosted by HSE University",
+          "date": "2017",
+          "url": "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's manual",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 2017 glossary issue relevant event that has happened",
+      "trust": {
+        "score": 76,
+        "basis": "PRINCE2 manual (authority), third-party-hosted copy; corroborated independently in substance by Atlassian's RAID log guide and a secondary summary of PMBOK 8 ('An issue is something that has already happened.')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pmbok8-contingent-responses-on-trigger",
+      "question": "known-solutions",
+      "claim": "PMBOK 8's contingent response strategies are designed to run only when a named trigger condition occurs, so the team spends nothing on the risk until then.",
+      "quote": "Contingent response strategies. These risk strategies are intentionally designed for implementation only if one or more specific trigger conditions occur.",
+      "citations": [
+        {
+          "title": "PMBOK Guide Eighth Edition errata (second printing)",
+          "author": "Project Management Institute",
+          "publisher": "Project Management Institute",
+          "date": "n.d.",
+          "url": "https://www.pmi.org/-/media/pmi/documents/public/pdf/pmbok-standards/pg8-errata---second-printing.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "standards body's published errata to its standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMBOK Guide eighth edition risk performance domain contingent response strategies trigger",
+      "trust": {
+        "score": 68,
+        "basis": "PMI's own published correction text for the PMBOK Guide (authority), though errata are excerpts not the full chapter; the same text adds 'This approach allows the project team to avoid exerting effort and resources against a risk until they are needed.'; corroborated in substance by PRINCE2's contingent plans."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pmbok8-threat-responses-include-escalation",
+      "question": "known-solutions",
+      "claim": "PMBOK 8 lists the threat responses as mitigate, avoid, transfer, accept or escalate.",
+      "quote": "For threats: You can use mitigation, avoidance, transference, acceptance, or escalation.",
+      "citations": [
+        {
+          "title": "Inside PMBOK® 8: Risk Performance Domain",
+          "author": "William Meller",
+          "publisher": "Project Management Compass (Substack)",
+          "date": "2026-05-18",
+          "url": "https://projectmanagementcompass.substack.com/p/inside-pmbok-8-risk-performance-domain",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary summary of a paywalled standard)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMBOK 8 risk performance domain threat responses escalation",
+      "trust": {
+        "score": 46,
+        "basis": "Secondary source used because the PMBOK 8 text is paywalled and PMI's public pages could not be fetched; an individual's summary, consistent with ISO 31000 and PRINCE2 option lists but not checked against PMI's own words."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "roam-four-categories",
+      "question": "known-solutions",
+      "claim": "ROAM boards, used in SAFe program planning, sort each risk into resolved, owned, accepted or mitigated.",
+      "quote": "ROAM Boards are a simple visualization for categorizing project or program risks into four categories:",
+      "citations": [
+        {
+          "title": "ROAM Boards",
+          "author": "Will McKinley and Matt Napiorkowski",
+          "publisher": "Open Practice Library",
+          "date": "2021-03-24",
+          "url": "https://openpracticelibrary.com/practice/roam-boards/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner practice library (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ROAM risks resolved owned accepted mitigated board",
+      "trust": {
+        "score": 30,
+        "basis": "Secondary source used because the SAFe framework site rendered no text; a community practice library page whose categories match the SAFe vocabulary; the same page adds 'Note that categorization of risks as mitigated means that we have already taken that action.' Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the lead-in; the four category names come right after it on the page. The page never mentions SAFe or program planning, so that part of the claim has no support; lowered 50->30."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "roam-single-owner",
+      "question": "known-solutions",
+      "claim": "ROAM prefers one owner per risk, who owns tracking and the conversation rather than having to solve the risk alone.",
+      "quote": "A single owner is preferred to limit the chance that no one keeps track of the work.",
+      "citations": [
+        {
+          "title": "ROAM Boards",
+          "author": "Will McKinley and Matt Napiorkowski",
+          "publisher": "Open Practice Library",
+          "date": "2021-03-24",
+          "url": "https://openpracticelibrary.com/practice/roam-boards/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner practice library (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "ROAM board risk single owner",
+      "trust": {
+        "score": 34,
+        "basis": "Secondary community source; independent of PRINCE2 and corroborates its one-owner rule in substance; the page adds 'putting your name on the card does not mean you have to solve it, it just means you own the conversation going forward and tracking progress.' Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says a single owner is preferred. The claim that the owner owns tracking and the conversation rather than solving the risk comes from the sentence before it (\"putting your name on the card does not mean you have to solve it, it just means you own the conversation going forward and tracking progress\"); lowered 54->34."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-controls-risk-by-iteration",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide controls risk through short iterations and prescribes no risk register.",
+      "quote": "Scrum employs an iterative, incremental approach to optimize predictability and to control risk.",
+      "citations": [
+        {
+          "title": "The Scrum Guide (November 2020)",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 control risk impediments",
+      "trust": {
+        "score": 58,
+        "basis": "The Scrum Guide itself (authority, transparency, current edition); its absence of a register is read from the full fetched text; the guide also says 'Shorter Sprints can be employed to generate more learning cycles and limit risk of cost and effort to a smaller time frame.' Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports \"controls risk through iterations\". It does not support \"prescribes no risk register\", though I checked and the Guide never uses the word \"register\"; lowered 78->58."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-daily-identifies-impediments",
+      "question": "platform-guidelines",
+      "claim": "The Daily Scrum is where a Scrum team surfaces impediments each day.",
+      "quote": "Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings.",
+      "citations": [
+        {
+          "title": "The Scrum Guide (November 2020)",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide 2020 Daily Scrum identify impediments",
+      "trust": {
+        "score": 72,
+        "basis": "The Scrum Guide itself (authority); an impediment is a present blocker rather than a future risk, so this supports daily attention flagging, not a register."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-review-active-items-age",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide has team members review active items regularly so work does not age unnecessarily, continuously or at set intervals.",
+      "quote": "A common practice is for Kanban system members to review the active items regularly. This review can occur continuously, at regular intervals, or through a combination of both.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "Kanban Guide contributors",
+          "publisher": "kanbanguides.org",
+          "date": "2025-05",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide manage risk work item age review active items regularly",
+      "trust": {
+        "score": 48,
+        "basis": "The Kanban Guide itself (authority, current); it speaks of work items, not risk records, so it supports the no-item-left-unreviewed check by analogy; the guide says 'the strategy of Kanban is to help you understand trade-offs and manage risk.' Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote calls review \"a common practice\", not something the Guide has members do. The \"so work does not age unnecessarily\" purpose comes from a separate bullet (\"Ensuring work items do not age unnecessarily, using the SLE as a reference\"), not from the quote; lowered 68->48."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-health-at-risk",
+      "question": "platform-guidelines",
+      "claim": "Linear flags risk at project level through an update's health indicator (On track, At risk, Off track); it has no per-risk record type.",
+      "quote": "Select a health indicator— On track, At risk, or Off track —to represent the current state of the Initiative or Project.",
+      "citations": [
+        {
+          "title": "Updates (initiative and project updates)",
+          "author": "Linear",
+          "publisher": "Linear",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/initiative-and-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear project updates health at risk off track",
+      "trust": {
+        "score": 50,
+        "basis": "Linear's own documentation (authority for its product, transparency); the absence of a risk record type is read from its docs, which describe no such type. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports the project-level health indicator. Nothing in the quote or the page supports \"no per-risk record type\"; lowered 70->50."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-update-reminders-to-owner",
+      "question": "platform-guidelines",
+      "claim": "Linear sends update reminders for in-progress projects to the single project lead or initiative owner.",
+      "quote": "Reminders are sent for active Initiatives and Projects with statuses in the In Progress category, and only to the Initiative owner or project lead.",
+      "citations": [
+        {
+          "title": "Updates (initiative and project updates)",
+          "author": "Linear",
+          "publisher": "Linear",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/initiative-and-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear project update reminders project lead",
+      "trust": {
+        "score": 64,
+        "basis": "Linear's own documentation; applies to project health updates, not individual risks, so it supports a named owner and cadence only by analogy."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-overdue-updates-flagged",
+      "question": "platform-guidelines",
+      "claim": "Linear marks in-progress projects that are overdue for an update, and greys out ones overdue for long, so stale status is visible.",
+      "quote": "When project update reminders are enabled, in-progress projects that are overdue for updates will reflect this for easier monitoring.",
+      "citations": [
+        {
+          "title": "Updates (initiative and project updates)",
+          "author": "Linear",
+          "publisher": "Linear",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/initiative-and-project-updates",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear projects overdue for updates icon grey inactivity",
+      "trust": {
+        "score": 64,
+        "basis": "Linear's own documentation; the page adds 'Projects that remain overdue for an extended period will have their icon turn grey to indicate inactivity.'; a project-level mechanism, applied to risks by analogy."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-custom-issue-types",
+      "question": "platform-guidelines",
+      "claim": "GitHub has no built-in risk type (the defaults are task, bug and feature), but an organisation can create up to 25 issue types, so a team can define a Risk type.",
+      "quote": "The default types are task, bug, and feature.",
+      "citations": [
+        {
+          "title": "Managing issue types in an organization",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub issue types organization default task bug feature",
+      "trust": {
+        "score": 52,
+        "basis": "GitHub's own documentation (authority, transparency, current); the page also says 'You can create up to 25 issue types that you can apply to issues'. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only gives the default types. \"Up to 25 issue types\" is two sentences earlier on the page, not in the quote; lowered 72->52."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-custom-issue-fields",
+      "question": "platform-guidelines",
+      "claim": "GitHub issue fields add structured metadata such as impact or priority, so a risk issue can carry likelihood, impact and status fields.",
+      "quote": "Issue fields let you add structured metadata to issues across your repositories. Instead of relying on labels or free-text workarounds, you can create fields like priority, effort, impact, or any custom category your team needs.",
+      "citations": [
+        {
+          "title": "Managing issue fields in your organization",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-your-organization",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub issue fields organization structured metadata impact",
+      "trust": {
+        "score": 70,
+        "basis": "GitHub's own documentation (authority, current); field types are single-select, text, number and date, up to 25 fields; it does not mention risks, so the mapping is an application."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "atlassian-risk-register-components",
+      "question": "platform-guidelines",
+      "claim": "Atlassian's guide gives a risk register four parts: identification, assessment, response, and ownership by one knowledgeable owner who keeps the entry current.",
+      "quote": "Risk ownership : Assign a knowledgeable owner responsible for the overall risk, including the response plan.",
+      "citations": [
+        {
+          "title": "Risk register",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/work-management/project-management/risk-register",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor guide (tracker vendor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Atlassian risk register project management owner review",
+      "trust": {
+        "score": 40,
+        "basis": "Jira's vendor's published guide (moderate authority; marketing-adjacent); the page adds 'The owner is responsible for researching additional information or solutions, updating the risk register with new or changing information'; corroborated in substance by PRINCE2's risk owner. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers only the ownership component, and it says \"a knowledgeable owner\", not one owner who keeps the entry current. The page does list the four components (identification, assessment, response, ownership), but outside the quote; lowered 60->40."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "atlassian-regular-risk-meeting",
+      "question": "platform-guidelines",
+      "claim": "Atlassian advises reviewing the risk register in project reviews and holding a separate, regular risk register meeting.",
+      "quote": "The project review meeting should include reviewing the risk register, but having a separate and regular risk register meeting is good practice.",
+      "citations": [
+        {
+          "title": "Risk register",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/work-management/project-management/risk-register",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor guide (tracker vendor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Atlassian risk register regular risk register meeting",
+      "trust": {
+        "score": 58,
+        "basis": "Jira's vendor's guide (moderate authority); names no interval; corroborated in substance by PRINCE2's progress-review check and the NAO's monthly review."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "atlassian-probability-times-impact",
+      "question": "platform-guidelines",
+      "claim": "Atlassian's register scores a risk as probability multiplied by impact.",
+      "quote": "Finally, calculate the risk score by multiplying the probability by the impact.",
+      "citations": [
+        {
+          "title": "Risk register",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/work-management/project-management/risk-register",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor guide (tracker vendor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Atlassian risk register risk score probability impact",
+      "trust": {
+        "score": 56,
+        "basis": "Jira's vendor's guide (moderate authority); PRINCE2's register likewise records probability, impact and expected value; a convention, not a measured result."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "atlassian-raid-issues-need-immediate-attention",
+      "question": "platform-guidelines",
+      "claim": "In a RAID log, risks are hypothetical while issues are already affecting the project and need immediate attention.",
+      "quote": "Unlike risks, issues require immediate attention because they are already impacting the project.",
+      "citations": [
+        {
+          "title": "How to create a RAID log to keep projects organized and on track",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/agile/project-management/raid-log",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor guide (tracker vendor)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "RAID log risks assumptions issues dependencies",
+      "trust": {
+        "score": 60,
+        "basis": "Jira's vendor's guide (moderate authority); corroborated independently in substance by PRINCE2's issue definition; the page also warns a log 'Requires frequent updates' and of 'Potential for information overload'."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nao-lack-of-ownership",
+      "question": "experts-view",
+      "claim": "Government leaders and practitioners name lack of accountability, and so lack of ownership, as a reason risks go unmanaged.",
+      "quote": "Leaders and practitioners suggested that one of the reasons is the lack of accountability for risks, resulting in a lack of ownership to take actions.",
+      "citations": [
+        {
+          "title": "Overcoming challenges to managing risks in government: Good practice guide",
+          "author": "National Audit Office",
+          "publisher": "National Audit Office (UK)",
+          "date": "2023-12",
+          "url": "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "public audit body good-practice guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NAO overcoming challenges to managing risks in government good practice guide risk registers",
+      "trust": {
+        "score": 72,
+        "basis": "The UK's public audit body reporting what practitioners said (authority, transparency); a qualitative finding, not a measured rate; corroborated in substance by PRINCE2's one-owner rule and the ILX article."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nao-clarity-of-ownership-complex-risks",
+      "question": "experts-view",
+      "claim": "Ownership must be especially clear for risks that span parts of the organisation or delivery partners.",
+      "quote": "It is particularly important to have clarity of ownership for complex risks that involve different aspects of the organisation or other delivery partners.",
+      "citations": [
+        {
+          "title": "Overcoming challenges to managing risks in government: Good practice guide",
+          "author": "National Audit Office",
+          "publisher": "National Audit Office (UK)",
+          "date": "2023-12",
+          "url": "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "public audit body good-practice guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NAO clarity of ownership complex risks delivery partners",
+      "trust": {
+        "score": 48,
+        "basis": "UK public audit body guidance (authority); consistent with PRINCE2's single owner. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source says it is \"particularly important\" to have clarity of ownership. The claim turns that into \"must\", which overstates its strength; lowered 68->48."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nao-registers-up-to-date",
+      "question": "experts-view",
+      "claim": "Risk registers need to be kept up to date and to reflect the risks that matter most.",
+      "quote": "Risk registers are central to reporting and communicating risks in government – they need to be up to date and reflect the risks of most importance to the organisation.",
+      "citations": [
+        {
+          "title": "Overcoming challenges to managing risks in government: Good practice guide",
+          "author": "National Audit Office",
+          "publisher": "National Audit Office (UK)",
+          "date": "2023-12",
+          "url": "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "public audit body good-practice guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NAO risk registers up to date living documents",
+      "trust": {
+        "score": 72,
+        "basis": "UK public audit body guidance (authority, transparency); the same guide's checklist says 'Ensure risk registers are robust and ‘living documents’ that reflect significant risks'; corroborated in substance by the Orange Book and the ILX article."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nao-escalation-criteria-immediate-action",
+      "question": "experts-view",
+      "claim": "Clear escalation criteria tell people when a risk is above tolerance and needs immediate action rather than continued monitoring.",
+      "quote": "Having clear criteria for escalating risks improves transparency and makes it easier for individuals to know when to escalate risks that are above tolerance and require immediate action.",
+      "citations": [
+        {
+          "title": "Overcoming challenges to managing risks in government: Good practice guide",
+          "author": "National Audit Office",
+          "publisher": "National Audit Office (UK)",
+          "date": "2023-12",
+          "url": "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "public audit body good-practice guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NAO clear criteria for escalating risks above tolerance immediate action",
+      "trust": {
+        "score": 74,
+        "basis": "UK public audit body guidance (authority); corroborated independently in substance by the Orange Book (C2) and PRINCE2's tolerance-based escalation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nao-monthly-review-example",
+      "question": "experts-view",
+      "claim": "One government body's good-practice example reviews its central register monthly with each workstream lead and flags risks above tolerance for escalation.",
+      "quote": "The central risk register is updated monthly following risk reviews with each workstream lead where ongoing risks are discussed, and risks which exceed tolerance levels are flagged for escalation with senior leaders.",
+      "citations": [
+        {
+          "title": "Overcoming challenges to managing risks in government: Good practice guide",
+          "author": "National Audit Office",
+          "publisher": "National Audit Office (UK)",
+          "date": "2023-12",
+          "url": "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "public audit body good-practice guide (case example)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NAO central risk register updated monthly risk reviews workstream lead",
+      "trust": {
+        "score": 60,
+        "basis": "UK public audit body (authority) reporting one organisation's practice; a single example, not a standard cadence or a measured result, so it shows a cadence in use rather than a required one."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ilx-owner-and-actionee",
+      "question": "experts-view",
+      "claim": "The owner is accountable for the risk being managed and the actionee carries out the response.",
+      "quote": "Owner and actionee: The owner is accountable for ensuring the risk is managed; the actionee is responsible for carrying out the agreed response",
+      "citations": [
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "PRINCE2.com (ILX Group)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (accredited training provider; secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 risk register what to include and what to avoid",
+      "trust": {
+        "score": 50,
+        "basis": "Secondary source from a PRINCE2 training provider, used for the practitioner view no primary states; restates PRINCE2's owner and actionee, so not independent of it."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ilx-current-status",
+      "question": "experts-view",
+      "claim": "A register's status field shows whether the response actions are complete, ongoing or pending and whether exposure has changed.",
+      "quote": "Current status: Shows whether the response actions are complete, ongoing, or pending, and whether the risk exposure has changed",
+      "citations": [
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "PRINCE2.com (ILX Group)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (accredited training provider; secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "risk register current status response actions complete ongoing pending",
+      "trust": {
+        "score": 50,
+        "basis": "Secondary training-provider article; consistent with PRINCE2's status field and quality criterion, from which it derives."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ilx-static-records",
+      "question": "experts-view",
+      "claim": "A register left as a static record is a common mistake; reviews belong in stage boundaries, board meetings or team reviews.",
+      "quote": "Static records: Reviews should be built into stage boundaries, project board meetings, or team reviews",
+      "citations": [
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "PRINCE2.com (ILX Group)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (accredited training provider; secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "risk register mistakes static records reviews stage boundaries",
+      "trust": {
+        "score": 52,
+        "basis": "Secondary training-provider article, used for the common-mistake view; corroborated in substance by the NAO's 'living documents' and Atlassian's 'Requires frequent updates'."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ilx-lack-of-accountability",
+      "question": "experts-view",
+      "claim": "A register entry without a named person responsible for managing and escalating it is a common failure.",
+      "quote": "Lack of accountability: Each risk must have someone responsible for its management and escalation",
+      "citations": [
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "PRINCE2.com (ILX Group)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (accredited training provider; secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "risk register mistakes lack of accountability",
+      "trust": {
+        "score": 52,
+        "basis": "Secondary training-provider article; corroborated in substance by the NAO's independent finding on lack of ownership."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ilx-vague-or-duplicated-risks",
+      "question": "experts-view",
+      "claim": "Vague or duplicated register entries make ownership and action hard to assign; each risk should be specific and distinct.",
+      "quote": "Vague or duplicated risks: Ambiguous entries make it hard to assess ownership or action, so, risks should be specific and distinct, not repeated in slightly different forms",
+      "citations": [
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "PRINCE2.com (ILX Group)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (accredited training provider; secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "risk register mistakes vague or duplicated risks",
+      "trust": {
+        "score": 50,
+        "basis": "Secondary training-provider article; consistent with PRINCE2's cause-event-effect description and unique identification."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ilx-overly-complex-scoring",
+      "question": "experts-view",
+      "claim": "A scoring scheme that needs too much interpretation is not kept up; keep scoring simple.",
+      "quote": "Overly complex scoring systems: If the scoring model requires excessive interpretation, it’s less likely to be maintained consistently, so keep it simple to encourage engagement",
+      "citations": [
+        {
+          "title": "The risk register: What to include (and what to avoid)",
+          "author": "ILX Marketing Team",
+          "publisher": "PRINCE2.com (ILX Group)",
+          "date": "2025-11-11",
+          "url": "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (accredited training provider; secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "risk register mistakes overly complex scoring",
+      "trust": {
+        "score": 44,
+        "basis": "Secondary training-provider article, a practitioner opinion with no study behind it; consistent with Atlassian's simple probability-times-impact score."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pmbok8-unassigned-response-is-a-wish",
+      "question": "experts-view",
+      "claim": "A planned response that is never assigned or resourced is a common failure point; it is not a response.",
+      "quote": "A response that exists in a document but never gets assigned or resourced is not a response. It is just a wish.",
+      "citations": [
+        {
+          "title": "Inside PMBOK® 8: Risk Performance Domain",
+          "author": "William Meller",
+          "publisher": "Project Management Compass (Substack)",
+          "date": "2026-05-18",
+          "url": "https://projectmanagementcompass.substack.com/p/inside-pmbok-8-risk-performance-domain",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMBOK 8 risk performance domain implement risk responses",
+      "trust": {
+        "score": 24,
+        "basis": "Secondary, an individual practitioner's commentary on PMBOK 8; consistent with PRINCE2's 'It is critical to ensure that the owner and actionee are identified and agreed for each risk'. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The \"failure point\" part comes from the sentence before the quote (\"In practice, it is a massive failure point\"), not from the quote. The source is also a practitioner's Substack summary, not PMBOK itself; lowered 44->24."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pmbok8-issue-already-happened",
+      "question": "experts-view",
+      "claim": "Practitioners stress that an issue is something that has already happened and needs immediate action, so it no longer belongs in the risk register.",
+      "quote": "An issue is something that has already happened.",
+      "citations": [
+        {
+          "title": "Inside PMBOK® 8: Risk Performance Domain",
+          "author": "William Meller",
+          "publisher": "Project Management Compass (Substack)",
+          "date": "2026-05-18",
+          "url": "https://projectmanagementcompass.substack.com/p/inside-pmbok-8-risk-performance-domain",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMBOK 8 risk versus issue already happened",
+      "trust": {
+        "score": 28,
+        "basis": "Secondary practitioner commentary; the next sentences read 'It might be happening right in front of you right now. It requires immediate action.'; corroborated independently in substance by PRINCE2's issue definition and Atlassian's RAID guide. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says an issue has already happened. \"Requires immediate action\" is in the following sentences, and the source never says an issue no longer belongs in the risk register; lowered 48->28."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pmbok8-monitoring-never-stops",
+      "question": "experts-view",
+      "claim": "Monitoring runs throughout: track existing risks, look for new ones, and check whether responses worked, so the register does not become a dead record.",
+      "quote": "Monitoring never stops. You track existing risks and hunt for new ones.",
+      "citations": [
+        {
+          "title": "Inside PMBOK® 8: Risk Performance Domain",
+          "author": "William Meller",
+          "publisher": "Project Management Compass (Substack)",
+          "date": "2026-05-18",
+          "url": "https://projectmanagementcompass.substack.com/p/inside-pmbok-8-risk-performance-domain",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMBOK 8 monitor risks risk register",
+      "trust": {
+        "score": 44,
+        "basis": "Secondary practitioner commentary; the next sentences add 'You evaluate if your responses actually worked. This process is how you connect your risk register back to reality.'; consistent with ISO 31000 6.6."
+      },
+      "independence": "single"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "risk-identification-and-attention-flagging",
+      "verdict": "supported",
+      "claims": [
+        "iso-identify-risks-whatever-their-source",
+        "prince2-capture-risks-when-identified",
+        "scrum-daily-identifies-impediments",
+        "linear-health-at-risk",
+        "orange-book-timely-escalation",
+        "nao-escalation-criteria-immediate-action"
+      ]
+    },
+    {
+      "rule": "distinguish-immediate-action-from-monitoring",
+      "verdict": "supported",
+      "claims": [
+        "iso-evaluation-decides-action",
+        "prince2-reduce-is-action-now",
+        "prince2-contingent-plans-wait",
+        "pmbok8-contingent-responses-on-trigger",
+        "prince2-proximity-field",
+        "nao-escalation-criteria-immediate-action"
+      ]
+    },
+    {
+      "rule": "link-concerns-to-related-elements",
+      "verdict": "supported",
+      "claims": [
+        "prince2-risk-refers-to-product",
+        "orange-book-register-holds-owners-and-links",
+        "prince2-register-formats"
+      ]
+    },
+    {
+      "rule": "concern-has-status-and-raiser",
+      "verdict": "supported",
+      "claims": [
+        "prince2-risk-author-field",
+        "prince2-risk-status-field",
+        "prince2-register-records-status-and-history",
+        "prince2-status-shows-action-taken",
+        "ilx-current-status"
+      ]
+    },
+    {
+      "rule": "no-concern-open-without-review",
+      "verdict": "supported",
+      "claims": [
+        "iso-monitoring-planned-with-responsibilities",
+        "iso-untreatable-risk-kept-under-review",
+        "orange-book-regularly-reviewed",
+        "orange-book-continuous-monitoring",
+        "nao-registers-up-to-date",
+        "prince2-review-register-at-progress-reviews",
+        "ilx-static-records",
+        "kanban-review-active-items-age",
+        "linear-overdue-updates-flagged",
+        "pmbok8-monitoring-never-stops"
+      ]
+    },
+    {
+      "rule": "risk-has-single-named-owner",
+      "verdict": "new",
+      "claims": [
+        "prince2-single-risk-owner",
+        "prince2-owner-and-actionee-agreed",
+        "roam-single-owner",
+        "atlassian-risk-register-components",
+        "nao-lack-of-ownership",
+        "nao-clarity-of-ownership-complex-risks",
+        "ilx-lack-of-accountability",
+        "orange-book-first-line-ownership"
+      ]
+    },
+    {
+      "rule": "risk-response-has-an-actionee",
+      "verdict": "new",
+      "claims": [
+        "prince2-risk-actionee",
+        "iso-treatment-plan-names-responsible-and-timing",
+        "ilx-owner-and-actionee",
+        "pmbok8-unassigned-response-is-a-wish"
+      ]
+    },
+    {
+      "rule": "risk-review-cadence",
+      "verdict": "new",
+      "claims": [
+        "prince2-risk-timing-set-in-approach",
+        "prince2-review-register-at-progress-reviews",
+        "iso-monitoring-planned-with-responsibilities",
+        "orange-book-risk-in-normal-management-flow",
+        "atlassian-regular-risk-meeting",
+        "nao-monthly-review-example",
+        "ilx-static-records",
+        "kanban-review-active-items-age"
+      ]
+    },
+    {
+      "rule": "risk-response-triage",
+      "verdict": "new",
+      "claims": [
+        "iso-treatment-options",
+        "iso-select-treatment-by-cost-benefit",
+        "prince2-reduce-is-action-now",
+        "prince2-contingent-plans-wait",
+        "prince2-accept-not-beyond-tolerance",
+        "pmbok8-threat-responses-include-escalation",
+        "roam-four-categories"
+      ]
+    },
+    {
+      "rule": "escalate-risks-beyond-tolerance",
+      "verdict": "new",
+      "claims": [
+        "orange-book-timely-escalation",
+        "nao-escalation-criteria-immediate-action",
+        "prince2-escalate-when-tolerance-threatened",
+        "prince2-accept-not-beyond-tolerance",
+        "nao-monthly-review-example"
+      ]
+    },
+    {
+      "rule": "risk-becomes-issue-when-it-happens",
+      "verdict": "new",
+      "claims": [
+        "prince2-issue-is-event-that-happened",
+        "atlassian-raid-issues-need-immediate-attention",
+        "pmbok8-issue-already-happened",
+        "orange-book-contingency-if-risks-crystallise"
+      ]
+    },
+    {
+      "rule": "describe-risk-as-cause-event-effect",
+      "verdict": "new",
+      "claims": [
+        "prince2-risk-description-cause-event-effect",
+        "ilx-vague-or-duplicated-risks"
+      ]
+    },
+    {
+      "rule": "keep-risk-scoring-simple",
+      "verdict": "new",
+      "claims": [
+        "atlassian-probability-times-impact",
+        "ilx-overly-complex-scoring"
+      ]
+    },
+    {
+      "rule": "track-risks-in-the-team-tracker",
+      "verdict": "new",
+      "claims": [
+        "prince2-register-formats",
+        "github-custom-issue-types",
+        "github-custom-issue-fields",
+        "linear-health-at-risk",
+        "iso-record-and-report-outcomes",
+        "scrum-controls-risk-by-iteration"
+      ]
+    }
+  ]
+}
