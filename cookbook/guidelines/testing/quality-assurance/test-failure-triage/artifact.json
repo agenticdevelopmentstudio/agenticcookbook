@@ -71,11 +71,11 @@
       "https://martinfowler.com/articles/nonDeterminism.html",
       "https://dwheeler.com/essays/debugging-agans.html"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "32e76897a0815f06",
+  "synced": "c7d0d379036f1fa4",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

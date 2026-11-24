@@ -94,7 +94,7 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 |----------|-----------|-------------|
 | [Planning](guidelines/planning/) | 42 | Architecture, data modeling, choosing patterns |
 | [Implementing](guidelines/implementing/) | 182 | Writing new code |
-| [Testing](guidelines/testing/) | 16 | Writing and structuring tests |
+| [Testing](guidelines/testing/) | 17 | Writing and structuring tests |
 | [Reviewing](guidelines/reviewing/) | 10 | Checking code quality, security, accessibility |
 | [Shipping](guidelines/shipping/) | 10 | Pre-commit, pre-PR, packaging |
 | [Cookbook](guidelines/cookbook/) | 17 | Writing cookbook content (recipes, skills, agents) |
