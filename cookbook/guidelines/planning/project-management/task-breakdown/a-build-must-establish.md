@@ -1,0 +1,25 @@
+
+- `break-down-assign-and-prioritize-tasks`: larger work is broken into smaller tasks, the work has a responsible person or team, and the tasks are ordered.
+- `breakdown-covers-all-scope`: the tasks add up to all of the work in scope and hold nothing outside it.
+- `split-into-vertical-slices`: each story or backlog item is split into vertical slices, not by architectural layer.
+- `doers-size-their-tasks`: every task's size was set by the people who will do it.
+- `task-sized-hours-to-a-few-days`: every task fits in hours to a couple of days, and none is a week or more.
+- `split-large-estimates`: no task with a large or unknown estimate is left unsplit.
+- `story-fits-one-iteration`: every user story fits within one iteration.
+- `work-package-within-eighty-hours`: where a WBS is used, every lowest-level work package is within about 80 hours and one reporting period.
+- `tasks-specific-and-actionable`: every task has a clear outcome and a short title that states what it is.
+- `task-text-names-action-and-done-test`: every task names a visible action and a done test the team agrees on.
+- `done-test-is-pass-fail`: every done test is a set of measurable pass/fail statements.
+- `task-has-time-expectation`: every task carries a time expectation.
+- `started-task-has-one-owner`: every started task has exactly one assignee.
+- `backlog-is-kept-ordered`: the backlog is ordered, by rank or by priority levels.
+- `task-has-assignee-and-priority`: every todo has an assignee and a priority.
+- `link-tasks-to-milestones`: every task is linked to the milestone it serves.
+- `task-milestone-must-exist`: no todo is assigned to a milestone that does not exist.
+- `identify-blocked-tasks-and-blockers`: every blocked task is identified, marked as blocked where the tracker allows, and acted on when active work is reviewed.
+- `blocker-links-the-blocking-item`: every blocked task has a "blocked by" link to what it waits on.
+- `blocker-states-reason`: every blocked task carries a brief note naming the cause.
+- `blocker-records-dates`: where dates are recorded, a blocker note gives the start date and the resolved date.
+- `keep-resolved-blockers`: resolved blocker notes are kept.
+- `blocked-task-references-blocker`: every blocked todo references a specific blocker.
+
