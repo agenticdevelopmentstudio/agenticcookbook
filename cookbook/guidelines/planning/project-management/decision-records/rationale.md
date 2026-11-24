@@ -1,0 +1,11 @@
+
+This section is informative.
+
+Without a recorded motivation, a later team either accepts a decision blindly or reverses it blindly, and a decision that is never recorded is likely to be forgotten, debated again or contradicted without anyone knowing. Writing the record also clarifies a group's thinking, and brevity matters most. That is why the minimum is context, decision and consequences, why the rationale and the losing options go in, and why the one firm rule is that a changed decision acknowledges the one it changes. The acknowledgement is the strongest consensus in the research: AWS, Microsoft, Google Cloud, Nygard, Fowler, the GDS Way and PEP 1 all keep the earlier decision visible.
+
+Most rules are recommendations because the sources disagree on the template. Nygard's original record and the GOV.UK template have no alternatives section, and MADR marks its decision-makers field optional, so the research supports naming the decider and recording alternatives as recommendations. Immutability is a recommendation too: the GDS Way allows a clarification to update a record during implementation, and Henderson's teams find amending records works better for them, while Microsoft, AWS and Fowler keep accepted records unchanged.
+
+Several questions are the owner's and are left open here: whether naming the decider is required; whether alternatives belong on every record or only where two or more options were real; whether a clarification may edit an accepted record in place; whether records live in the code repository, a wiki readable by non-developers, or both; which template to standardise on; whether deprecated is a status distinct from superseded, and whether a superseded record may ever be deleted; and whether records are numbered sequentially.
+
+The research found no study that measures whether recording alternatives or deciders improves outcomes; the support is consensus guidance. One mining study of GitHub repositories found adoption of decision records low but growing, which is context, not support. The Scrum and Kanban Guides define no decision record, and the primary texts of PMBOK, ISO 21502, PRINCE2, SAFe and LeSS were not reachable. An imperfect log that is accurate and current is still better than none.
+
