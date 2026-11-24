@@ -1,0 +1,1667 @@
+{
+  "topic": "decision-records",
+  "artifact": "cookbook/guidelines/planning/project-management/decision-records",
+  "scope": "Recording project decisions: what a decision record carries (context, rationale, alternatives, decider, date, status, consequences), when to write one, where to keep it so it is findable, linking it to the work it affects, and supersession (a later decision that changes an earlier one acknowledges and links it). Covers ADR practice (Nygard, MADR, Y-statements, adr-tools, log4brains), cloud and government owners' ADR guidance (AWS, Microsoft, Google Cloud, GOV.UK), proposal processes that record decisions (Python PEPs, IETF RFCs, Rust RFCs), tracker linking (GitHub, Jira, Linear) and project frameworks (Scrum Guide, Kanban Guide). Not covered: datastore-selection's must-record-the-store-and-its-justification (cited, not restated) and linking between project records in general (project-record-linking); only supersession links are this topic's.",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (LOW-MEDIUM bar: broad independent consensus); the one adoption figure is held to the Statistical bar and reported as a single study",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient, go to authoritative sources (the originating article, cloud and government owners' ADR guidance, the template projects' own repositories, standards bodies' process documents, tracker vendors' docs), chain citations, corroborate across independent publishers, record provenance at generation time.",
+    "search_strategy": "WebSearch on the topic only (architecture decision record best practice, supersede, template, decision log, decision tracking in PMBOK/PRINCE2/Scrum); WebFetch of each candidate page; every quote then re-checked verbatim against the page text with curl, except AWS Prescriptive Guidance, whose quotes come from the fetched page's markdown. One empirical study was located through the OpenAlex index and read there as its abstract.",
+    "inclusion": "Primary sources first: the originator of the ADR (Nygard), owner guidance from AWS, Microsoft, Google Cloud, GOV.UK/GDS, the MADR, adr-tools and log4brains repositories, PEP 1, RFC 7322, the Rust RFC template, Atlassian, GitHub and Jira docs, the Scrum and Kanban Guides. Secondary expert sources (Fowler, Zimmermann, Thoughtworks Radar, Spotify Engineering, the Design Practice Repository, the Henderson ADR collection) only for the expert's view and what no primary source covers.",
+    "exclusion": "Pages that could not be fetched as text (PMI 'On the Record', ProjectManagement.com Decision Tracker, AWS Architecture Blog ADR post, most of Linear's docs); paywalled standards (PMBOK, ISO 21502, ISO 31000) with no owner summary; exam-prep sites restating PRINCE2; vendor marketing without guidance.",
+    "scoring": "Trust 0-100 = Authority 30 + Independent corroboration 25 + Accuracy 20 + Currency 10 + Transparency 15, per verification-and-trust-scoring. multi-independent only where two or more independent publishers hold the quoted words."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+    "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+    "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+    "https://docs.cloud.google.com/architecture/architecture-decision-records",
+    "https://www.gov.uk/government/publications/architectural-decision-record-framework/architectural-decision-record-framework",
+    "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+    "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+    "https://raw.githubusercontent.com/adr/madr/main/template/adr-template-minimal.md",
+    "https://adr.github.io/madr/",
+    "https://github.com/npryce/adr-tools",
+    "https://raw.githubusercontent.com/npryce/adr-tools/master/src/template.md",
+    "https://github.com/thomvaill/log4brains",
+    "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+    "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+    "https://github.com/socadk/design-practice-repository/blob/master/artifact-templates/DPR-ArchitecturalDecisionRecordYForm.md",
+    "https://engineering.atspotify.com/2020/04/when-should-i-write-an-architecture-decision-record",
+    "https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records",
+    "https://raw.githubusercontent.com/joelparkerhenderson/architecture-decision-record/main/README.md",
+    "https://peps.python.org/pep-0001/",
+    "https://www.rfc-editor.org/rfc/rfc7322.txt",
+    "https://github.com/rust-lang/rfcs/blob/master/0000-template.md",
+    "https://www.atlassian.com/software/confluence/templates/decision",
+    "https://confluence.atlassian.com/doc/decisions-blueprint-339739406.html",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue",
+    "https://support.atlassian.com/jira-software-cloud/docs/link-issues/",
+    "https://linear.app/docs/issue-relations",
+    "https://scrumguides.org/scrum-guide.html",
+    "https://kanbanguides.org/english/",
+    "https://api.openalex.org/works/doi:10.1109/access.2023.3287654"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "All six rules hold. Context, rationale and consequences are the minimum every owner names (AWS, Microsoft, GOV.UK, Nygard). Alternatives are recorded by Microsoft, Google Cloud, MADR, Rust RFCs and PEPs, and Fowler and Zimmermann urge it, though Nygard's original template and the GOV.UK template omit them, so the sources support SHOULD rather than MUST. The decider is named by MADR (optional metadata), PEP-Delegate, DACI's Approver and GOV.UK's decision-level table; Nygard has no decider field, so SHOULD. Findability and linking to work are supported by Microsoft, GDS, Google Cloud, Thoughtworks and MADR, with GitHub and Jira supplying the link mechanisms. Acknowledging a changed decision is the strongest consensus: accepted records are immutable and a new record supersedes the old, linked both ways (Microsoft, AWS, GDS 'must', Fowler, Nygard, PEP 'must', RFC 7322). New practices with support: immutable-then-supersede, supersession links in both directions, a status lifecycle, a decision date, good and bad consequences, one short decision per record, only significant decisions, recording rejected proposals, confidence level, backfilling undocumented decisions, and no dummy alternatives. Scrum and Kanban Guides define no decision record; PMBOK, ISO 21502 and PRINCE2 primary texts were not reachable.",
+  "open_questions": [
+    "Whether naming the decider is a MUST or a SHOULD: MADR marks decision-makers optional and Nygard's template has no decider field, while PEP-Delegate, DACI and GOV.UK always name one; the owner sets the strength.",
+    "Whether alternatives are required on every record, or only where two or more options were real: Nygard and GOV.UK omit the section, Google Cloud ties ADRs to 'two or more engineering options', MADR's minimal template keeps it.",
+    "Whether a clarification may edit an accepted record in place (GDS Way allows it before implementation; Henderson's collection prefers dated amendments) or every change must be a new superseding record (Microsoft, AWS, Fowler).",
+    "Where records live: in the code repository (Nygard, Fowler, GDS, Thoughtworks, log4brains) or a wiki readable by non-developers (Google Cloud notes both; Atlassian's decision log); or the repository with a mirrored wiki.",
+    "Which template to standardise on: Nygard's, MADR, or Y-statements; Zimmermann advises choosing one and sticking to it.",
+    "Whether 'deprecated' is a status distinct from 'superseded' (Nygard and MADR list both) and whether superseded records may ever be deleted (Zimmermann mentions deleting; Nygard and Microsoft keep them).",
+    "Whether sequential numbering is required (Nygard, Fowler, adr-tools) or avoided to dodge merge conflicts (log4brains)."
+  ],
+  "limitations": [
+    "PMBOK Guide, ISO 21502 and ISO 31000 are paywalled and no owner summary of their decision-log guidance was fetched; their position is not established.",
+    "PRINCE2's decision recording (issue register, project log) was found only in exam-prep secondary pages, not from AXELOS or PeopleCert; it is not cited.",
+    "SAFe and LeSS were not established: no fetchable owner page addressed decision records.",
+    "PMI's 'On the Record' article returned 403, ProjectManagement.com's Decision Tracker is premium, the AWS Architecture Blog ADR post and most of Linear's docs render only through JavaScript.",
+    "Linear's issue relations are cited from the page heading alone; Linear's full list of relation types was not readable.",
+    "AWS Prescriptive Guidance quotes were taken from the fetched page's markdown rather than a curl text check.",
+    "The adoption study (Buchgeher et al., IEEE Access 2023) was read as its abstract through OpenAlex; its figures are one mining study of public GitHub repositories and are not corroborated.",
+    "No study measures whether recording alternatives or deciders improves outcomes; the support is consensus guidance, not evidence of effect.",
+    "Apple, Android and Windows publish no guidance on decision records; the topic has no bearing on those platforms."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "record-context-of-decision",
+      "question": "best-practices",
+      "claim": "Every decision record states the context that forced the decision, alongside the decision and its consequences; owners treat these three as the minimum.",
+      "quote": "At a minimum, each ADR should define the context of the decision, the decision itself, and the consequences of the decision for the project and its deliverables. | Context This section describes the forces at play, including technological, political, social, and project local. | Each ADR should contain: title / date / status / context / decision / consequences / stakeholders consulted / links to supporting documents",
+      "citations": [
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architectural Decision Record Framework",
+          "author": "Department for Science, Innovation and Technology",
+          "publisher": "GOV.UK",
+          "date": "2025-11-04",
+          "url": "https://www.gov.uk/government/publications/architectural-decision-record-framework/architectural-decision-record-framework",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; originating practitioner article; government framework",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record minimum contents context decision consequences",
+      "trust": {
+        "score": 87,
+        "basis": "Three independent primary publishers (AWS, the ADR's originator, the UK government) state context as required content; stable practice; quotes checked against the pages."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-rationale-justification",
+      "question": "best-practices",
+      "claim": "A decision record gives the reason for the decision, not only the decision; a record without its justification loses its value.",
+      "quote": "Always include context and rationale. A record without justification loses its value over time as stakeholders can't evaluate whether the decision still applies when circumstances change. | ADRs contain not just the decision, but also a brief rationale for the decision. | One of the most powerful aspects of the ADR structure is that it focuses on the reason for the decision rather than how the team implemented it.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record rationale justification always include",
+      "trust": {
+        "score": 88,
+        "basis": "Microsoft and AWS owner guidance independently agree, corroborated by Fowler; Microsoft page dated 2026; quotes checked."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-alternatives-considered",
+      "question": "best-practices",
+      "claim": "A decision record lists the options that were considered and ruled out, with why they lost.",
+      "quote": "The ADR documents all key decisions, including alternatives that you ruled out, for architecturally significant requirements. | An ADR captures the key options available, the main requirements that drive a decision, and the design decisions themselves. | As part of this it's valuable to explicitly list all the serious alternatives that were considered, together with their pros and cons.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture decision records overview",
+          "author": "Google Cloud",
+          "publisher": "Google Cloud Architecture Center",
+          "date": "2024-08-16",
+          "url": "https://docs.cloud.google.com/architecture/architecture-decision-records",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record alternatives considered options ruled out",
+      "trust": {
+        "score": 84,
+        "basis": "Microsoft and Google Cloud owner guidance independently agree, corroborated by Fowler; Nygard's original template and the GOV.UK template omit alternatives, so this is consensus at SHOULD, not universal."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-who-decided",
+      "question": "best-practices",
+      "claim": "Decision records name who made the decision: MADR's decision-makers field, the PEP-Delegate header and DACI's Approver each carry it.",
+      "quote": "decision-makers: {list everyone involved in the decision} | The term “PEP-Delegate” is used under the Steering Council governance model for the PEP’s designated decision maker, who is recorded in the “PEP-Delegate” field in the PEP’s header. | DACI stands for Driver, Approver, Contributors, and Informed. This helps draw clear lines about what the expectations are for each team member.",
+      "citations": [
+        {
+          "title": "MADR template (adr-template.md)",
+          "author": "MADR project",
+          "publisher": "GitHub (adr/madr)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "PEP 1 - PEP Purpose and Guidelines",
+          "author": "Python Software Foundation",
+          "publisher": "peps.python.org",
+          "date": "n.d.",
+          "url": "https://peps.python.org/pep-0001/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "DACI: Decision documentation template | Confluence",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/software/confluence/templates/decision",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "template project repository; standards-body process document; vendor template",
+      "generated_by": "grow-cookbook research agent",
+      "query": "decision record decision-makers field decider approver",
+      "trust": {
+        "score": 78,
+        "basis": "Three independent primary publishers carry a decider field; MADR marks its metadata optional and Nygard's template has none, so support is SHOULD."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "accepted-records-immutable",
+      "question": "best-practices",
+      "claim": "Once a decision record is accepted it is not edited; a changed decision is a new record.",
+      "quote": "When the team accepts an ADR, it becomes immutable. If new insights require a different decision, the team proposes a new ADR. When the team accepts the new ADR, it supersedes the previous ADR. | The ADR serves as an append-only log. Don't go back and edit accepted records. | Once an ADR is accepted, it should never be reopened or changed - instead it should be superseded.",
+      "citations": [
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record immutable append-only supersede",
+      "trust": {
+        "score": 88,
+        "basis": "AWS and Microsoft owner guidance independently agree, corroborated by Fowler and log4brains; GDS Way allows clarifications, noted in open questions."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "supersede-and-link",
+      "question": "best-practices",
+      "claim": "A decision that changes or reverses an earlier one is a new record that marks the old one superseded and links the two.",
+      "quote": "If a decision changes, write a new record that supersedes the original and link the two together. This approach preserves the history of your thinking and makes it clear when and why the direction shifted. | If a later ADR changes or reverses a decision, it may be marked as \"deprecated\" or \"superseded\" with a reference to its replacement. | If a decision has been superseded by another decision, the old ADR must be clearly marked as “superseded”.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Documenting architecture decisions",
+          "author": "Government Digital Service",
+          "publisher": "The GDS Way",
+          "date": "2026-03-05",
+          "url": "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; originating practitioner article; government engineering standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record superseded link replacement",
+      "trust": {
+        "score": 89,
+        "basis": "Three independent primary publishers agree, GDS in 'must'; corroborated by AWS, Fowler and PEP 1; current pages; quotes checked."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "records-prevent-relitigation",
+      "question": "best-practices",
+      "claim": "Recorded decisions, including rejected options, stop teams reopening settled questions or unknowingly contradicting earlier intent.",
+      "quote": "A decision that's made but never recorded will likely be forgotten, leading to repeated debates or later changes that unknowingly contradict the original intent. | The ADR can help teams avoid a repeat of the same discussion points, and it can help provide historical context when teams revisit topics. | This both helps record the thought process behind the final version of the PEP as well as preventing people from bringing up the same rejected idea again in subsequent discussions.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture decision records overview",
+          "author": "Google Cloud",
+          "publisher": "Google Cloud Architecture Center",
+          "date": "2024-08-16",
+          "url": "https://docs.cloud.google.com/architecture/architecture-decision-records",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "PEP 1 - PEP Purpose and Guidelines",
+          "author": "Python Software Foundation",
+          "publisher": "peps.python.org",
+          "date": "n.d.",
+          "url": "https://peps.python.org/pep-0001/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; standards-body process document",
+      "generated_by": "grow-cookbook research agent",
+      "query": "decision record avoid repeated debates contradict original intent",
+      "trust": {
+        "score": 85,
+        "basis": "Three independent primary publishers state the same purpose; quotes checked."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "status-lifecycle",
+      "question": "best-practices",
+      "claim": "Each decision record carries a status that moves through proposed, accepted and superseded (some add rejected and deprecated).",
+      "quote": "Status, such as Proposed, Accepted, or Superseded. | Each ADR has a status. “proposed” while it is under discussion, “accepted” once the team accepts it and it is active, “superseded” once it is significantly modified or replaced - with a link to the superseding ADR. | status: \"{proposed | rejected | accepted | deprecated | … | superseded by ADR-0123}\"",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "MADR template (adr-template.md)",
+          "author": "MADR project",
+          "publisher": "GitHub (adr/madr)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; expert practitioner article; template project repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record status proposed accepted superseded",
+      "trust": {
+        "score": 85,
+        "basis": "Microsoft, Fowler and MADR independently list the lifecycle; Nygard, AWS and GDS agree; Microsoft's italics dropped from the quote."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-decision-date",
+      "question": "best-practices",
+      "claim": "A decision record carries the date the decision was made or last updated.",
+      "quote": "To help keep a record of decisions, you might include a timestamp for each decision to show when the choice was made. | date: {YYYY-MM-DD when the decision was last updated} | If the team approves the ADR, the owner adds a timestamp, version, and list of stakeholders.",
+      "citations": [
+        {
+          "title": "Architecture decision records overview",
+          "author": "Google Cloud",
+          "publisher": "Google Cloud Architecture Center",
+          "date": "2024-08-16",
+          "url": "https://docs.cloud.google.com/architecture/architecture-decision-records",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "MADR template (adr-template.md)",
+          "author": "MADR project",
+          "publisher": "GitHub (adr/madr)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; template project repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "decision record timestamp date when decided",
+      "trust": {
+        "score": 80,
+        "basis": "Three independent publishers; Google Cloud says 'might', so support is SHOULD; GOV.UK's template and adr-tools' also carry a date."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-consequences-good-and-bad",
+      "question": "best-practices",
+      "claim": "A decision record lists all its consequences, the costs as well as the benefits, and does not hide them.",
+      "quote": "All consequences should be listed here, not just the \"positive\" ones. | Avoid hiding consequences of decisions intentionally or accidentally.",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record consequences positive negative",
+      "trust": {
+        "score": 84,
+        "basis": "Nygard and Microsoft independently; MADR's Good/Bad consequence bullets and Zimmermann's Free Lunch anti-pattern corroborate."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "one-decision-short-record",
+      "question": "best-practices",
+      "claim": "Each record holds one decision and is kept short, a page or two.",
+      "quote": "Each record describes a set of forces and a single decision in response to those forces. | Documents should be short, just a couple of pages, and contain the decision, the context for making it, and significant ramifications. | Specific: Each ADR should be about one AD, not multiple ADs.",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture decision record (ADR) README",
+          "author": "Joel Parker Henderson",
+          "publisher": "GitHub (joelparkerhenderson/architecture-decision-record)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/joelparkerhenderson/architecture-decision-record/main/README.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article; expert practitioner articles",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record single decision short one or two pages",
+      "trust": {
+        "score": 78,
+        "basis": "Three independent practitioner publishers; no platform owner states it as directly; quotes checked."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-significant-decisions",
+      "question": "best-practices",
+      "claim": "Records are written for significant decisions (structural, quality-affecting or hard to reverse), not for every choice.",
+      "quote": "Only include choices that affect the system's structure, key quality attributes, or are difficult to reverse. | An ADR should be written whenever a decision of significant impact is made; it is up to each team to align on what defines a significant impact. | Project members should create an ADR for every architecturally significant decision that affects the software project or product",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "When Should I Write an Architecture Decision Record",
+          "author": "Josef Blake",
+          "publisher": "Spotify Engineering",
+          "date": "2020-04-14",
+          "url": "https://engineering.atspotify.com/2020/04/when-should-i-write-an-architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; engineering-organisation practice article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "when to write an architecture decision record significant decision",
+      "trust": {
+        "score": 83,
+        "basis": "Microsoft and AWS owner guidance independently agree, corroborated by Spotify's practice."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "store-openly-findable",
+      "question": "best-practices",
+      "claim": "The decision log is stored openly where everyone affected can find it; teams plan for discoverability.",
+      "quote": "This log should be readily available and stored openly with the workload's documentation. | Think about how to make your ADRs discoverable, especially if they require more than just a one-off set of code or infrastructure changes. | Share the approved ADR with all relevant stakeholders and ensure that it is accessible for future reference.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Documenting architecture decisions",
+          "author": "Government Digital Service",
+          "publisher": "The GDS Way",
+          "date": "2026-03-05",
+          "url": "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architectural Decision Record Framework",
+          "author": "Department for Science, Innovation and Technology",
+          "publisher": "GOV.UK",
+          "date": "2025-11-04",
+          "url": "https://www.gov.uk/government/publications/architectural-decision-record-framework/architectural-decision-record-framework",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; government engineering standard; government framework",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision log discoverable accessible stakeholders",
+      "trust": {
+        "score": 84,
+        "basis": "Microsoft and UK government independently; GDS Way and the GOV.UK framework share a government parent but are separate documents; quotes checked."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "store-with-the-code",
+      "question": "best-practices",
+      "claim": "Records for one codebase live in that codebase's version control, so they stay in sync and their history is kept; broader decisions may live in a central repository or wiki.",
+      "quote": "Architecture decisions should be stored in version control so there is a record of what was changed, who by, and when. | Store your ADRs close to your application code, ideally in the same version control system. | The common advice is to keep decision records in the source repository of the code base to which they apply. | We recommend storing these details in source control, instead of a wiki or website, as then they can provide a record that remains in sync with the code itself.",
+      "citations": [
+        {
+          "title": "Documenting architecture decisions",
+          "author": "Government Digital Service",
+          "publisher": "The GDS Way",
+          "date": "2026-03-05",
+          "url": "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture decision records overview",
+          "author": "Google Cloud",
+          "publisher": "Google Cloud Architecture Center",
+          "date": "2024-08-16",
+          "url": "https://docs.cloud.google.com/architecture/architecture-decision-records",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Lightweight Architecture Decision Records",
+          "author": "Thoughtworks",
+          "publisher": "Thoughtworks Technology Radar",
+          "date": "2018-05",
+          "url": "https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government engineering standard; vendor documentation; expert practitioner articles",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision records version control source repository wiki",
+      "trust": {
+        "score": 84,
+        "basis": "GDS and Google Cloud owner guidance independently agree, corroborated by Fowler and Thoughtworks; Google Cloud and Fowler also note the wiki alternative for non-developers."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "link-decisions-to-work",
+      "question": "best-practices",
+      "claim": "Decision records link to the work they affect: the issues that carry them out and the code review that enforces them.",
+      "quote": "Consider using your issue tracker to make sure that decisions you’ve made are followed through and put into effect. | Consider adding links to collaboration boards or issue management systems. | During the code review, a code reviewer might find changes that violate one or more ADRs. In this case, the reviewer asks the author of the code change to update the code, and shares a link to the ADR.",
+      "citations": [
+        {
+          "title": "Documenting architecture decisions",
+          "author": "Government Digital Service",
+          "publisher": "The GDS Way",
+          "date": "2026-03-05",
+          "url": "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "MADR template (adr-template.md)",
+          "author": "MADR project",
+          "publisher": "GitHub (adr/madr)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government engineering standard; template project repository; vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "decision record link issue tracker code review",
+      "trust": {
+        "score": 80,
+        "basis": "Three independent publishers; each phrases it as 'consider' or process advice, so support is SHOULD; Rust RFCs' tracking-issue header corroborates."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-rejected-decisions",
+      "question": "best-practices",
+      "claim": "A proposal that is rejected is still recorded, with the reason, so the question is not reopened.",
+      "quote": "The team can also decide to reject the ADR. In this case, the ADR owner adds a reason for the rejection to prevent future discussions on the same topic. | A PEP can also be “Rejected”. Perhaps after all is said and done it was not a good idea. It is still important to have a record of this fact.",
+      "citations": [
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "PEP 1 - PEP Purpose and Guidelines",
+          "author": "Python Software Foundation",
+          "publisher": "peps.python.org",
+          "date": "n.d.",
+          "url": "https://peps.python.org/pep-0001/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; standards-body process document",
+      "generated_by": "grow-cookbook research agent",
+      "query": "decision record rejected status reason for rejection",
+      "trust": {
+        "score": 78,
+        "basis": "Two independent primary publishers; MADR's 'rejected' status corroborates."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "record-confidence-level",
+      "question": "best-practices",
+      "claim": "A record states how confident the decision was and what change would trigger revisiting it.",
+      "quote": "Record the confidence level of the decision. | Decisions are usually made under some degree of uncertainty, so it's handy to record the confidence level of the decision. This is a good place to mention any changes in the product context that should trigger the team to reevaluate the decision.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record confidence level reevaluate",
+      "trust": {
+        "score": 74,
+        "basis": "Microsoft and Fowler independently; Zimmermann's 'Disclose your confidence level' corroborates; Fowler calls it 'handy', so MAY to SHOULD."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "backfill-undocumented",
+      "question": "best-practices",
+      "claim": "Decisions already made but never written down are recorded retroactively when a log is started.",
+      "quote": "An ADR should be started for brownfield workloads, and if the data is available, it should be retroactively generated based on known past decisions. | Sometimes a decision was made, or an implicit standard forms naturally on its own, but because it was never documented, it’s not clear to everyone (especially new hires) that this decision exists.",
+      "citations": [
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "When Should I Write an Architecture Decision Record",
+          "author": "Josef Blake",
+          "publisher": "Spotify Engineering",
+          "date": "2020-04-14",
+          "url": "https://engineering.atspotify.com/2020/04/when-should-i-write-an-architecture-decision-record",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; engineering-organisation practice article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record retroactive brownfield undocumented decision",
+      "trust": {
+        "score": 52,
+        "basis": "Microsoft and Spotify independently; Microsoft conditions it on data being available, so MAY. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Microsoft makes this conditional: records \"should be retroactively generated\" only \"if the data is available\", and only for brownfield workloads. Spotify lists backfilling as one case for writing an ADR. The claim drops the condition and states backfilling as unconditional practice; lowered 72->52."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "nygard-template",
+      "question": "known-solutions",
+      "claim": "Nygard's original ADR template has Title, Status, Context, Decision and Consequences, numbered files in the repository, and no alternatives or decider section; adr-tools ships the same shape.",
+      "quote": "We will keep ADRs in the project repository under doc/arch/adr-NNN.md | ADRs will be numbered sequentially and monotonically. Numbers will not be reused. | Context This section describes the forces at play, including technological, political, social, and project local.",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "adr-tools template.md",
+          "author": "Nat Pryce",
+          "publisher": "GitHub (npryce/adr-tools)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/npryce/adr-tools/master/src/template.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article; tool repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Nygard ADR template sections",
+      "trust": {
+        "score": 78,
+        "basis": "The originator's own article, read in full; adr-tools derives from it, so not independent."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "madr-template",
+      "question": "known-solutions",
+      "claim": "MADR (Markdown Any Decision Records) adds Decision Drivers, Considered Options with pros and cons, and optional decision-makers, consulted and informed metadata to the Nygard shape, plus a minimal variant that still keeps Considered Options.",
+      "quote": "## Context and Problem Statement | ## Decision Drivers | ## Considered Options | ## Decision Outcome | # These are optional metadata elements. Feel free to remove any of them.",
+      "citations": [
+        {
+          "title": "MADR template (adr-template.md)",
+          "author": "MADR project",
+          "publisher": "GitHub (adr/madr)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "MADR minimal template (adr-template-minimal.md)",
+          "author": "MADR project",
+          "publisher": "GitHub (adr/madr)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/adr/madr/main/template/adr-template-minimal.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "template project repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "MADR template considered options decision-makers",
+      "trust": {
+        "score": 78,
+        "basis": "The project's own template files; one publisher; current main branch."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "y-statement",
+      "question": "known-solutions",
+      "claim": "The Y-statement records context, requirement, chosen option, rejected options and accepted downside in one structured sentence.",
+      "quote": "A Y-Statement captures decision context, addressed requirement(s), decision outcome, and consequences (good and bad) in a single, structured sentence. | In the context of the Web shop service, facing the need to keep user session data consistent and current across instances, we decided for the Database Session State Pattern (and against Client Session State or Server Session State) to achieve cloud elasticity, accepting that a session database needs to be designed, implemented, and replicated.",
+      "citations": [
+        {
+          "title": "Architectural Decision Record (Y-Statement)",
+          "author": "Olaf Zimmermann",
+          "publisher": "Design Practice Repository (GitHub socadk)",
+          "date": "n.d.",
+          "url": "https://github.com/socadk/design-practice-repository/blob/master/artifact-templates/DPR-ArchitecturalDecisionRecordYForm.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner template",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Y-statement architectural decision record template",
+      "trust": {
+        "score": 66,
+        "basis": "Originator's own template repository; single publisher; log4brains names Y-statements as an alternative template."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "adr-tools-supersede-command",
+      "question": "known-solutions",
+      "claim": "adr-tools creates numbered ADR files and, with -s, writes the new record as superseding an old one and updates the old one's status.",
+      "quote": "ADRs are stored in a subdirectory of your project as Markdown files. The default directory is `doc/adr` | This will create a new ADR file that is flagged as superceding ADR 9, and changes the status of ADR 9 to indicate that it is superceded by the new ADR.",
+      "citations": [
+        {
+          "title": "adr-tools",
+          "author": "Nat Pryce",
+          "publisher": "GitHub (npryce/adr-tools)",
+          "date": "n.d.",
+          "url": "https://github.com/npryce/adr-tools",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tool repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "adr-tools supersede command",
+      "trust": {
+        "score": 52,
+        "basis": "The tool's own README; single publisher; the misspelling 'superceding' is the source's. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote does not mention numbering or the -s flag, so on its own it does not back those parts of the claim. The README does say both in the text next to it: \"This will create a new, numbered ADR file\" and \"use the -s option. adr new -s 9 ...\". Adding those lines to the quote would make it support the claim; lowered 72->52."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "log4brains-knowledge-base",
+      "question": "known-solutions",
+      "claim": "log4brains keeps ADRs in the repository and publishes them as a searchable static site with a timeline, MADR by default, without sequential file numbers.",
+      "quote": "It enables you to log Architecture Decision Records (ADR) right from your IDE and to publish them automatically as a static website. | No required file numbering schema (i.e., `adr-0001.md`, `adr-0002.md`...): avoids git merge issues | As you can guess from the template above, an ADR is immutable. Only its status can change.",
+      "citations": [
+        {
+          "title": "log4brains",
+          "author": "Thomas Vaillant",
+          "publisher": "GitHub (thomvaill/log4brains)",
+          "date": "n.d.",
+          "url": "https://github.com/thomvaill/log4brains",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tool repository",
+      "generated_by": "grow-cookbook research agent",
+      "query": "log4brains ADR knowledge base",
+      "trust": {
+        "score": 68,
+        "basis": "The tool's own README; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "confluence-decision-log",
+      "question": "known-solutions",
+      "claim": "Atlassian's Confluence offers a Decisions blueprint whose index is a decision log, and a DACI template whose Options considered section lists at least three options with pros and cons.",
+      "quote": "The index acts as your Decision Log and lists all the decisions in that space. | All the elements of the template are important, but the Options considered section is where you really get down to the heart of the matter. Come to this section once you have sorted out at least three possibilities for your project.",
+      "citations": [
+        {
+          "title": "Decisions Blueprint",
+          "author": "Atlassian",
+          "publisher": "Confluence Data Center documentation",
+          "date": "n.d.",
+          "url": "https://confluence.atlassian.com/doc/decisions-blueprint-339739406.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "DACI: Decision documentation template | Confluence",
+          "author": "Atlassian",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/software/confluence/templates/decision",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation; vendor template",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Confluence decision log template DACI",
+      "trust": {
+        "score": 68,
+        "basis": "Vendor's own docs for its own product; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "supersession-header-fields",
+      "question": "known-solutions",
+      "claim": "Standards processes carry supersession as header fields in both directions: PEPs' Superseded-By and Replaces, RFCs' Obsoletes and Updates.",
+      "quote": "PEPs may also have a Superseded-By header indicating that a PEP has been rendered obsolete by a later document; the value is the number of the PEP that replaces the current document. The newer PEP must have a Replaces header containing the number of the PEP that it rendered obsolete. | When an RFC obsoletes or updates a previously published RFC or RFCs, this information is included in the document header.",
+      "citations": [
+        {
+          "title": "PEP 1 - PEP Purpose and Guidelines",
+          "author": "Python Software Foundation",
+          "publisher": "peps.python.org",
+          "date": "n.d.",
+          "url": "https://peps.python.org/pep-0001/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "RFC 7322: RFC Style Guide",
+          "author": "H. Flanagan; S. Ginoza",
+          "publisher": "RFC Editor",
+          "date": "2014-09",
+          "url": "https://www.rfc-editor.org/rfc/rfc7322.txt",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "standards-body process documents",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PEP Superseded-By Replaces header; RFC Obsoletes Updates header",
+      "trust": {
+        "score": 66,
+        "basis": "Two independent standards bodies' own process documents; long-standing and in force; quotes checked. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): PEP 1 does carry header fields in both directions (Superseded-By on the old PEP, Replaces on the new one). RFC 7322 §4.1.4 only puts \"Updates:\" and \"Obsoletes:\" in the newer RFC's header, which is one direction. So \"in both directions\" is wrong for RFCs; lowered 86->66."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "proposal-processes-record-alternatives",
+      "question": "known-solutions",
+      "claim": "Language proposal processes require a section on alternatives and rejected ideas with the reasons they were not chosen.",
+      "quote": "What other designs have been considered and what is the rationale for not choosing them? | Those rejected ideas should be recorded along with the reasoning as to why they were rejected.",
+      "citations": [
+        {
+          "title": "0000-template.md (RFC template)",
+          "author": "The Rust Project Developers",
+          "publisher": "GitHub (rust-lang/rfcs)",
+          "date": "n.d.",
+          "url": "https://github.com/rust-lang/rfcs/blob/master/0000-template.md",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "PEP 1 - PEP Purpose and Guidelines",
+          "author": "Python Software Foundation",
+          "publisher": "peps.python.org",
+          "date": "n.d.",
+          "url": "https://peps.python.org/pep-0001/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "standards-body process documents",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Rust RFC template rationale and alternatives; PEP rejected ideas",
+      "trust": {
+        "score": 82,
+        "basis": "Two independent project governance bodies; both in force."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "adr-adoption-study",
+      "question": "known-solutions",
+      "claim": "One mining study of GitHub repositories found ADR adoption low but growing, about half of adopting repositories holding one to five records, and Nygard's template the most used.",
+      "quote": "Our results show that the adoption of ADRs is still low, although the number of repositories using ADRs is increasing every year. About 50% of all repositories with ADRs contain just one to five ADRs suggesting that the concept has been tried but not yet definitively adopted. | In most repositories the template proposed by Michael Nygrad is used.",
+      "citations": [
+        {
+          "title": "Using Architecture Decision Records in Open Source Projects—An MSR Study on GitHub (abstract, OpenAlex record)",
+          "author": "Georg Buchgeher; Stefan Schöberl; Verena Geist; Bernhard Dorninger; Philipp Haindl; Rainer Weinreich",
+          "publisher": "IEEE Access (via OpenAlex)",
+          "date": "2023",
+          "url": "https://api.openalex.org/works/doi:10.1109/access.2023.3287654",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed empirical study (abstract)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision records open source GitHub adoption study",
+      "trust": {
+        "score": 58,
+        "basis": "Peer-reviewed journal, but read as the abstract only and a single uncorroborated study; Statistical bar not met for figures, so reported as context, not rule support. 'Nygrad' is the source's spelling."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "cloud-providers-agree-on-supersession",
+      "question": "platform-guidelines",
+      "claim": "AWS, Microsoft and Google Cloud each tell teams that a changed decision keeps the earlier one visible: a new record supersedes it, or the change records the previous decision and why.",
+      "quote": "Changes to an existing ADR requires creating a new ADR, establishing a review process for the new ADR, and approving the ADR. If the team approves the new ADR, the owner should change the state of the old ADR to Superseded. | If a decision changes, write a new record that supersedes the original and link the two together. | If you make adjustments, include the previous decision and why a change is made.",
+      "citations": [
+        {
+          "title": "Architectural decision record process",
+          "author": "Amazon Web Services",
+          "publisher": "AWS Prescriptive Guidance",
+          "date": "n.d.",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Maintain an architecture decision record (ADR) - Azure Well-Architected Framework",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-04-10",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture decision records overview",
+          "author": "Google Cloud",
+          "publisher": "Google Cloud Architecture Center",
+          "date": "2024-08-16",
+          "url": "https://docs.cloud.google.com/architecture/architecture-decision-records",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "AWS Azure Google Cloud architecture decision record change superseded",
+      "trust": {
+        "score": 88,
+        "basis": "Three independent platform owners agree; AWS bold markers dropped from the quote."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "gds-way-supersede-must",
+      "question": "platform-guidelines",
+      "claim": "The UK government's engineering standard requires a superseded record to be marked so directly under its heading, with a link to the new record once accepted.",
+      "quote": "If a decision has been superseded by another decision, the old ADR must be clearly marked as “superseded”. | A “Status: superseded” line should appear directly under the heading. Add a link to the new ADR as soon as it’s been accepted.",
+      "citations": [
+        {
+          "title": "Documenting architecture decisions",
+          "author": "Government Digital Service",
+          "publisher": "The GDS Way",
+          "date": "2026-03-05",
+          "url": "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government engineering standard",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GDS Way architecture decisions superseded",
+      "trust": {
+        "score": 60,
+        "basis": "Primary government standard, reviewed 2026; one publisher for these words, corroborated in substance by Microsoft and Nygard. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): GDS says the old ADR \"must be clearly marked as 'superseded'\", but only says the status line \"should appear directly under the heading\". The claim says the heading placement is required, which is stronger than the source (MUST where it says SHOULD); lowered 80->60."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "govuk-adr-framework",
+      "question": "platform-guidelines",
+      "claim": "The GOV.UK ADR framework sets the record's fields and assigns decision-makers by decision level; it is mandated only for cross-government decisions and recommended at all levels.",
+      "quote": "Determine the scope of the decision and identify the appropriate decision-making level. | However, the ADR framework will only be mandated for cross-government and cross-public sector decisions. | The ADR framework is designed to ensure that architectural decisions are made at the appropriate level, with the right stakeholders, and with proper visibility and traceability.",
+      "citations": [
+        {
+          "title": "Architectural Decision Record Framework",
+          "author": "Department for Science, Innovation and Technology",
+          "publisher": "GOV.UK",
+          "date": "2025-11-04",
+          "url": "https://www.gov.uk/government/publications/architectural-decision-record-framework/architectural-decision-record-framework",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government framework",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GOV.UK architectural decision record framework",
+      "trust": {
+        "score": 78,
+        "basis": "Primary government publication, 2025; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-issue-pr-linking",
+      "question": "platform-guidelines",
+      "claim": "GitHub links a pull request to the issues it addresses through keywords in the description or commit message, across repositories.",
+      "quote": "You can link a pull request to an issue by using a supported keyword in the pull request's description or in a commit message. | The issue can be in a different repository than the linked pull request or branch.",
+      "citations": [
+        {
+          "title": "Linking a pull request to an issue",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub link pull request to issue keyword",
+      "trust": {
+        "score": 76,
+        "basis": "Owner documentation for its own product; one publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "jira-link-types-no-supersedes",
+      "question": "platform-guidelines",
+      "claim": "Jira links work items with configurable types (blocks, clones, duplicates, implements, relates to); no default type expresses supersession, so admins add one.",
+      "quote": "Linked work items help your team surface, understand, and manage dependencies and related work. | Work item link types can be configured by Jira admins.",
+      "citations": [
+        {
+          "title": "Link work items | Jira Cloud",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support",
+          "date": "2026-08-11",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/link-issues/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira link work items link types",
+      "trust": {
+        "score": 72,
+        "basis": "Owner documentation; the absence of a supersedes type is read from the page's listed defaults."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-issue-relations",
+      "question": "platform-guidelines",
+      "claim": "Linear relates issues as related, blocking or blocked.",
+      "quote": "Mark issues as related, blocking, or blocked",
+      "citations": [
+        {
+          "title": "Issue relations",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-relations",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear issue relations",
+      "trust": {
+        "score": 50,
+        "basis": "Owner documentation, but only the page heading was readable as text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "scrum-guide-no-decision-record",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide ties decisions to artifact transparency but defines no decision record.",
+      "quote": "With Scrum, important decisions are based on the perceived state of its three formal artifacts. Artifacts that have low transparency can lead to decisions that diminish value and increase risk.",
+      "citations": [
+        {
+          "title": "The 2020 Scrum Guide",
+          "author": "Ken Schwaber; Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "framework owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide decisions artifacts transparency",
+      "trust": {
+        "score": 70,
+        "basis": "The framework's own guide, read in full; the absence of a decision record is a reading of the whole text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-guide-no-decision-record",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide mentions decisions only as informed by flow metrics and defines no decision record.",
+      "quote": "They reflect the Kanban system’s current health and performance and will help inform decisions about how value is delivered.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "The Kanban Guide authors",
+          "publisher": "kanbanguides.org",
+          "date": "n.d.",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "framework owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide decisions",
+      "trust": {
+        "score": 64,
+        "basis": "The framework's own guide; the only occurrence of 'decision' in the text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nygard-motivation-is-lost",
+      "question": "experts-view",
+      "claim": "Without recorded motivation, later teams either accept a decision blindly or reverse it blindly; the record exists to prevent both.",
+      "quote": "One of the hardest things to track during the life of a project is the motivation behind certain decisions. | It's better to avoid either blind acceptance or blind reversal.",
+      "citations": [
+        {
+          "title": "Documenting Architecture Decisions",
+          "author": "Michael Nygard",
+          "publisher": "Cognitect",
+          "date": "2011-11-15",
+          "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Nygard documenting architecture decisions motivation",
+      "trust": {
+        "score": 74,
+        "basis": "The originator; one publisher; widely cited (Fowler names it the origin)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "zimmermann-identify-decision-makers",
+      "question": "experts-view",
+      "claim": "Name the decision-makers so they are accountable for enforcing the decision, and judge every option, not only the chosen one.",
+      "quote": "The decision makers should be identified, which helps to make them accountable for decision enforcement. | All neglected options should be evaluated as well.",
+      "citations": [
+        {
+          "title": "How to create Architectural Decision Records (ADRs) — and how not to",
+          "author": "Olaf Zimmermann",
+          "publisher": "ozimmer.ch",
+          "date": "2023-04-03",
+          "url": "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "how to create architectural decision records and how not to",
+      "trust": {
+        "score": 62,
+        "basis": "Recognised expert (MADR and Y-statement co-originator), single publisher; updated 2026."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "zimmermann-anti-patterns",
+      "question": "experts-view",
+      "claim": "Common mistakes: justifying with pros only, documenting no consequences or only harmless ones.",
+      "quote": "Fairy Tale (aka Wishful Thinking): A shallow justification is given, for instance only pros but no cons. | Free Lunch Coupon (aka Candy Bar): No consequences are documented, or only consequences that seem to be harmless.",
+      "citations": [
+        {
+          "title": "How to create Architectural Decision Records (ADRs) — and how not to",
+          "author": "Olaf Zimmermann",
+          "publisher": "ozimmer.ch",
+          "date": "2023-04-03",
+          "url": "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architectural decision record anti-patterns",
+      "trust": {
+        "score": 62,
+        "basis": "Recognised expert, single publisher; corroborated in substance by Nygard and Microsoft on consequences."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "zimmermann-dummy-alternative-and-sprint",
+      "question": "experts-view",
+      "claim": "Do not invent a non-viable option to make the chosen one look better, and do not record only one option; consider at least two real options.",
+      "quote": "Dummy Alternative: A solution is made up and presented as an option, but does not work at all in the given context. This move tries to make the preferred option shine and give the impression that multiple alternatives have been evaluated, which is not really the case. | Sprint (aka Rush): Only one option is considered. | consider at least two options per issue",
+      "citations": [
+        {
+          "title": "How to create Architectural Decision Records (ADRs) — and how not to",
+          "author": "Olaf Zimmermann",
+          "publisher": "ozimmer.ch",
+          "date": "2023-04-03",
+          "url": "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architectural decision record dummy alternative anti-pattern",
+      "trust": {
+        "score": 60,
+        "basis": "Recognised expert, single publisher; no other source names the dummy-alternative failure."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "zimmermann-mega-adr",
+      "question": "experts-view",
+      "claim": "Do not turn decision records into multi-page architecture documentation; keep them to the decision.",
+      "quote": "Mega-ADR: A lot of detailed information about the architecture is stuffed into several multi-page ADRs serving as documentation master (or monster?).",
+      "citations": [
+        {
+          "title": "How to create Architectural Decision Records (ADRs) — and how not to",
+          "author": "Olaf Zimmermann",
+          "publisher": "ozimmer.ch",
+          "date": "2023-04-03",
+          "url": "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architectural decision record mega-ADR anti-pattern",
+      "trust": {
+        "score": 60,
+        "basis": "Recognised expert, single publisher; consistent with Nygard and Fowler on brevity."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "zimmermann-socialize-and-one-template",
+      "question": "experts-view",
+      "claim": "Choose one template and keep to it, and socialise each record once reviewed; a record no one hears of has no effect.",
+      "quote": "Decide on single template and stick to this format. | Once completed and reviewed, ADRs have to be “socialized” to be effective (communicated, discussed, agreed upon).",
+      "citations": [
+        {
+          "title": "How to create Architectural Decision Records (ADRs) — and how not to",
+          "author": "Olaf Zimmermann",
+          "publisher": "ozimmer.ch",
+          "date": "2023-04-03",
+          "url": "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architectural decision record socialize template",
+      "trust": {
+        "score": 60,
+        "basis": "Recognised expert, single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "clarifications-may-amend",
+      "question": "experts-view",
+      "claim": "Practitioners disagree on strict immutability: GDS allows clarifying an existing record before it is implemented, and Henderson's teams amend records with dated notes.",
+      "quote": "If there are clarifications, then updating your existing ADR may be appropriate. | However, if some implementation of the original decision has occurred, you should write a new ADR to explain the new decision. | In theory, immutability is ideal. In practice, mutability has worked better for our teams.",
+      "citations": [
+        {
+          "title": "Documenting architecture decisions",
+          "author": "Government Digital Service",
+          "publisher": "The GDS Way",
+          "date": "2026-03-05",
+          "url": "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Architecture decision record (ADR) README",
+          "author": "Joel Parker Henderson",
+          "publisher": "GitHub (joelparkerhenderson/architecture-decision-record)",
+          "date": "n.d.",
+          "url": "https://raw.githubusercontent.com/joelparkerhenderson/architecture-decision-record/main/README.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government engineering standard; expert practitioner collection",
+      "generated_by": "grow-cookbook research agent",
+      "query": "architecture decision record update existing clarification mutability",
+      "trust": {
+        "score": 48,
+        "basis": "Two independent publishers agree a clarification may edit; Microsoft, AWS and Fowler say otherwise, so this is a dissent, recorded as an open question. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): GDS allows updating for \"clarifications\" found during the implementation phase, and requires a new ADR once implementation has occurred. That is not quite \"before it is implemented\". Henderson's quoted line only says \"mutability has worked better\". The \"dated notes\" part is in the next, unquoted sentence: \"We insert the new info the existing ADR, with a date stamp, and a note that the info arrived after the decision.\"; lowered 68->48."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "fowler-writing-clarifies",
+      "question": "experts-view",
+      "claim": "Writing the record is itself useful: it clarifies the group's thinking; brevity matters most.",
+      "quote": "the act of writing them helps to clarify thinking, particularly with groups of people. | The most important thing to bear in mind here is brevity.",
+      "citations": [
+        {
+          "title": "Architecture Decision Record",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2026-03-24",
+          "url": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Fowler architecture decision record bliki",
+      "trust": {
+        "score": 70,
+        "basis": "Recognised expert, 2026; single publisher."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "spotify-rfc-then-adr",
+      "question": "experts-view",
+      "claim": "Decisions are reached through RFCs or meetings; the ADR records the outcome, and peer review is where undocumented decisions surface.",
+      "quote": "We typically arrive at these decisions through discussion in Request for Comments (RFCs) or during our engineering meetings. | One way to identify an undocumented decision is during Peer Review.",
+      "citations": [
+        {
+          "title": "When Should I Write an Architecture Decision Record",
+          "author": "Josef Blake",
+          "publisher": "Spotify Engineering",
+          "date": "2020-04-14",
+          "url": "https://engineering.atspotify.com/2020/04/when-should-i-write-an-architecture-decision-record",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "engineering-organisation practice article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "when should I write an architecture decision record",
+      "trust": {
+        "score": 60,
+        "basis": "One organisation's practice; single publisher; 2020."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "thoughtworks-adopt",
+      "question": "experts-view",
+      "claim": "Thoughtworks placed lightweight ADRs in its Adopt ring and prefers them in source control over a wiki.",
+      "quote": "Lightweight Architecture Decision Records is a technique for capturing important architectural decisions along with their context and consequences. We recommend storing these details in source control, instead of a wiki or website, as then they can provide a record that remains in sync with the code itself.",
+      "citations": [
+        {
+          "title": "Lightweight Architecture Decision Records",
+          "author": "Thoughtworks",
+          "publisher": "Thoughtworks Technology Radar",
+          "date": "2018-05",
+          "url": "https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert consultancy assessment",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Thoughtworks radar lightweight architecture decision records",
+      "trust": {
+        "score": 64,
+        "basis": "Respected consultancy; single publisher; 2018 blip no longer on the current Radar edition."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "inconsistent-log-better-than-none",
+      "question": "experts-view",
+      "claim": "An imperfect, inconsistently formatted decision log beats having none, provided it is accurate and current.",
+      "quote": "An inconsistently formatted decision log is better that none (assuming that its content is accurate and current).",
+      "citations": [
+        {
+          "title": "Architectural Decision Record (Y-Statement)",
+          "author": "Olaf Zimmermann",
+          "publisher": "Design Practice Repository (GitHub socadk)",
+          "date": "n.d.",
+          "url": "https://github.com/socadk/design-practice-repository/blob/master/artifact-templates/DPR-ArchitecturalDecisionRecordYForm.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner template",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Y-statement decision log hints",
+      "trust": {
+        "score": 55,
+        "basis": "Single expert source; the typo 'that' is the source's."
+      },
+      "independence": "single"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "record-decisions-with-full-context",
+      "verdict": "supported",
+      "claims": [
+        "record-context-of-decision",
+        "record-rationale-justification",
+        "record-consequences-good-and-bad"
+      ]
+    },
+    {
+      "rule": "capture-rationale-alternatives-and-decider",
+      "verdict": "supported",
+      "claims": [
+        "record-rationale-justification",
+        "record-alternatives-considered",
+        "record-who-decided"
+      ]
+    },
+    {
+      "rule": "decisions-findable-and-linked",
+      "verdict": "supported",
+      "claims": [
+        "store-openly-findable",
+        "store-with-the-code",
+        "link-decisions-to-work",
+        "github-issue-pr-linking"
+      ]
+    },
+    {
+      "rule": "decision-has-rationale-and-decider",
+      "verdict": "supported",
+      "claims": [
+        "record-rationale-justification",
+        "record-who-decided",
+        "zimmermann-identify-decision-makers"
+      ]
+    },
+    {
+      "rule": "alternatives-are-recorded",
+      "verdict": "supported",
+      "claims": [
+        "record-alternatives-considered",
+        "proposal-processes-record-alternatives",
+        "zimmermann-dummy-alternative-and-sprint"
+      ]
+    },
+    {
+      "rule": "acknowledge-contradicted-decisions",
+      "verdict": "supported",
+      "claims": [
+        "supersede-and-link",
+        "records-prevent-relitigation",
+        "cloud-providers-agree-on-supersession",
+        "gds-way-supersede-must"
+      ]
+    },
+    {
+      "rule": "supersede-never-edit-accepted-records",
+      "verdict": "new",
+      "claims": [
+        "accepted-records-immutable",
+        "adr-tools-supersede-command",
+        "clarifications-may-amend"
+      ]
+    },
+    {
+      "rule": "supersession-links-both-ways",
+      "verdict": "new",
+      "claims": [
+        "supersede-and-link",
+        "supersession-header-fields",
+        "gds-way-supersede-must"
+      ]
+    },
+    {
+      "rule": "record-status-lifecycle",
+      "verdict": "new",
+      "claims": [
+        "status-lifecycle"
+      ]
+    },
+    {
+      "rule": "record-decision-date",
+      "verdict": "new",
+      "claims": [
+        "record-decision-date"
+      ]
+    },
+    {
+      "rule": "record-consequences-good-and-bad",
+      "verdict": "new",
+      "claims": [
+        "record-consequences-good-and-bad",
+        "zimmermann-anti-patterns"
+      ]
+    },
+    {
+      "rule": "one-decision-per-short-record",
+      "verdict": "new",
+      "claims": [
+        "one-decision-short-record",
+        "zimmermann-mega-adr"
+      ]
+    },
+    {
+      "rule": "record-significant-decisions-only",
+      "verdict": "new",
+      "claims": [
+        "record-significant-decisions"
+      ]
+    },
+    {
+      "rule": "record-rejected-proposals",
+      "verdict": "new",
+      "claims": [
+        "record-rejected-decisions"
+      ]
+    },
+    {
+      "rule": "record-confidence-level",
+      "verdict": "new",
+      "claims": [
+        "record-confidence-level"
+      ]
+    },
+    {
+      "rule": "backfill-undocumented-decisions",
+      "verdict": "new",
+      "claims": [
+        "backfill-undocumented"
+      ]
+    },
+    {
+      "rule": "no-dummy-alternatives",
+      "verdict": "new",
+      "claims": [
+        "zimmermann-dummy-alternative-and-sprint"
+      ]
+    }
+  ]
+}
