@@ -1,0 +1,41 @@
+
+- `look-for-what-specs-cannot-anticipate`: the session targets what the specification and scripted tests do not cover, and checks documentation claims against the product.
+- `exploration-designs-runs-and-learns-together`: tests were designed during the session from what earlier tests showed, not run from a fixed list.
+- `use-product-element-heuristics-and-tours`: where used, the heuristic or tour that chose the coverage is named.
+- `charter-states-target-resources-and-information-sought`: each charter states its target, resources and information sought.
+- `charter-names-scope-cap-focus-and-exclusions`: each charter states its scope, planned duration as a time budget, ranked focus areas and what is out of scope.
+- `charter-may-carry-optional-contents`: where used, each optional content (exit criteria, test ideas or techniques, entry criteria, environment, limitations) is stated in the charter.
+- `charter-neither-too-narrow-nor-too-broad`: no charter lists the individual tests to run, and each has a target the tester can finish exploring.
+- `split-large-areas-into-focused-charters`: each area too large for one charter is covered by several focused charters.
+- `charters-framed-with-stakeholders`: each charter traces to a question raised with the stakeholders who act on the results.
+- `charter-set-kept-open`: new questions raised by sessions were added to the set of charters.
+- `session-is-time-boxed`: each session ran as one uninterrupted block within a time box set beforehand.
+- `session-length-within-reported-range`: where used, each time box is between about 10 and about 120 minutes.
+- `session-has-hard-step-cap`: no pass exceeds 25 browser steps.
+- `stay-on-charter-origin`: no step leaves the site's own origin.
+- `abort-a-session-that-gets-nowhere`: where used, each aborted session is recorded as aborted and replaced by a different session.
+- `session-is-debriefed`: each session has a debrief covering past, results, obstacles, outlook and feelings.
+- `dispatch-sessions-as-todo-charters`: where used, each to-do session sheet carries a charter and blank other sections.
+- `session-sheet-keeps-bugs-issues-and-notes`: each session sheet keeps bugs, issues and notes in separate sections.
+- `session-sheet-records-steps-and-discoveries`: where used, the session sheet lists the steps followed and the discoveries made.
+- `record-sessions-with-a-session-tool`: where used, the tool's filed bugs, action logs and session report are kept with the session.
+- `off-charter-work-logged-as-opportunity`: each session record splits its time into on charter and on opportunity.
+- `off-charter-ideas-become-new-charters`: each tempting off-charter area is noted as a later charter.
+- `findings-stay-inside-charter`: each anomaly in an excluded area is reported as out-of-charter, not raised as a finding.
+- `report-anomaly-where-what-expected-repeatable`: each finding records where it was seen, what was observed, what was expected and how repeatable it was.
+- `anomaly-carries-all-four-parts`: each reported anomaly carries where (URL or path), what was seen, what was expected and how repeatable it appeared.
+- `finding-gives-steps-to-reproduce`: each finding gives steps detailed enough for someone else to reproduce it, with any logs, screenshots or recordings.
+- `finding-records-environment`: each finding identifies the test object and its environment.
+- `repeatability-states-retry`: each finding states whether and how reproduction was tried, and whether it reproduced at will, occasionally or not at all.
+- `occasional-finding-carries-more-information`: each occasional finding carries information beyond its steps, such as other sightings and frequency.
+- `one-problem-per-finding`: no finding reports more than one problem.
+- `finding-is-observed-not-inferred`: each finding rests on observed behaviour, with inference and speculation kept apart and no finding resting on opinion or documentation alone.
+- `finding-states-its-oracle`: each finding whose problem is not obvious names its oracle.
+- `no-vacuous-expected-result`: no finding carries a vacuous or common-knowledge expected result.
+- `oracle-strength-may-be-stated`: where used, each stated oracle strength is given beside its oracle.
+- `check-for-duplicate-before-filing`: where used, the duplicate search was run before the bug was filed.
+- `time-box-puzzling-bug-investigation`: where used, a puzzling bug was taken to a developer after about ten minutes.
+- `clean-session-reports-coverage-and-gaps`: each session report states what was covered and how, what was not tested, and why that was good enough.
+- `no-anomalies-said-plainly`: each session that found no problem says so explicitly.
+- `clean-pass-reports-coverage`: each clean pass says so plainly and reports the areas covered, with no padding and no silent empty result.
+

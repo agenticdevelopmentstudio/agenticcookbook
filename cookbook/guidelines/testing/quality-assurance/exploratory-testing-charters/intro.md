@@ -1,0 +1,7 @@
+
+# Exploratory Testing Charters
+
+Give every exploratory session a charter that names the target it explores, the resources it brings and the information it seeks, with its scope, its time budget, its focus areas in priority order and what it leaves alone. Run the session as one time-boxed block, keep a session sheet with bugs, issues and notes apart, and debrief it. Report each finding from what was observed in the product, with where it was seen, the steps to reproduce it, the environment, why it is a problem, and how repeatable it was; and report what the session covered and left untested, also when it found nothing.
+
+This guideline covers how any team plans, runs and reports exploratory testing: what a charter holds and how one is sized and chosen, how a session is bounded, recorded and debriefed under session-based test management, and what each finding records. Writing scripted end-to-end tests belongs to [adc.guideline.testing.quality-assurance.e2e-test-authoring](cookbook:eb82d5d7-4f42-4417-8104-a14f6a27899f); classifying a failed automated test belongs to [adc.guideline.testing.quality-assurance.test-failure-triage](cookbook:4825088c-7d3a-4ef3-8c1b-c5b70b88da0d); the conventions of the issue tracker a finding is filed in belong to [adc.guideline.planning.project-management.issue-tracking](cookbook:f77eeffe-2699-4028-9195-4bfc23c75e91). Following this guideline means keeping every MUST rule below, keeping each SHOULD rule or stating why a session departs from it, and using each MAY rule where it helps.
+

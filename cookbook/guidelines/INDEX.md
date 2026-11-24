@@ -28,7 +28,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 |----------|-----------|-------------|
 | [Planning](#planning-42-guidelines) | 42 | Architecture, data modeling, choosing patterns |
 | [Implementing](#implementing-182-guidelines) | 182 | Writing new code |
-| [Testing](#testing-18-guidelines) | 18 | Writing and structuring tests |
+| [Testing](#testing-19-guidelines) | 19 | Writing and structuring tests |
 | [Reviewing](#reviewing-10-guidelines) | 10 | Checking code quality, security, accessibility |
 | [Shipping](#shipping-10-guidelines) | 10 | Pre-commit, pre-PR, packaging |
 | [Cookbook](#cookbook-17-guidelines) | 17 | Writing cookbook content (recipes, skills, agents) |
@@ -36,7 +36,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 | [Storytelling](#storytelling-6-guidelines) | 6 | Telling a project's story: positioning, explanation, narrative, grounded in the record |
 | [Brainstorming](#brainstorming-4-guidelines) | 4 | Framing a problem, generating ideas and converging, without anchoring |
 
-294 guidelines.
+295 guidelines.
 
 ---
 
@@ -322,7 +322,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 ---
 
-### Testing (18 guidelines)
+### Testing (19 guidelines)
 
 - [Agent evaluation and safety](testing/agent-evaluation-and-safety/)
 - [Contract testing for services](testing/contract-testing/)
@@ -342,6 +342,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 **quality-assurance**
 - [End-to-End Test Authoring](testing/quality-assurance/e2e-test-authoring/)
+- [Exploratory Testing Charters](testing/quality-assurance/exploratory-testing-charters/)
 - [Test Failure Triage](testing/quality-assurance/test-failure-triage/)
 - [Test Impact Analysis](testing/quality-assurance/test-impact-analysis/)
 
