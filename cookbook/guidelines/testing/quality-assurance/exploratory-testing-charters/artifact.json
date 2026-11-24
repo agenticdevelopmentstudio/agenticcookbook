@@ -4,7 +4,7 @@
     "id": "979a89c0-0d26-4e8a-aae0-c4983ec5d675",
     "title": "Exploratory Testing Charters",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -56,7 +56,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "618614216a421ef5",
+  "synced": "d14569799204151d",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
