@@ -1,0 +1,5 @@
+
+- Each MUST rule is kept, with no exception: `every-failure-gets-one-disposition`, `disposition-from-fixed-set`, `evidence-states-what-was-observed`, `bug-names-observed-misbehavior`, `flake-cites-history-or-race`, `environment-cites-cross-test-signal`, `spec-rot-names-new-assertion`, `uncertain-names-missing-evidence`, `high-confidence-needs-reproduction-and-mechanism`, `triage-changes-nothing`.
+- Each SHOULD rule is kept or its departure is stated: `never-force-a-verdict`, `gather-failure-artifacts-before-classifying`, `rerun-on-same-revision-before-calling-flake`, `pass-on-retry-does-not-clear-a-bug`, `find-the-change-that-introduced-the-failure`, `named-triage-rotation-owns-failures`, `separate-infrastructure-outcomes-from-test-failures`, `stale-test-distinguished-by-intended-behavior-change`, `distinguish-broken-from-flaky-by-failure-pattern`, `reproduce-in-the-failing-environment`, `verdict-states-confidence-and-its-basis`.
+- Each MAY rule is noted where it was used: `record-flake-cause-category`, `known-failure-marked-expected-with-reason`.
+
