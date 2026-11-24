@@ -1,5 +1,5 @@
 
-- Every milestone is defined as a key event with no duration, sequenced, dated and tracked; the schedule has start and finish milestones; work is not represented as milestones; the milestones are few enough that the work driving them is visible.
+- Every milestone is defined as a key event with no duration and sequenced, and the dependency chains between milestones are recorded; each milestone's progress is tracked; the schedule has start and finish milestones; work is not represented as milestones; the milestones are few enough that the work driving them is visible.
 - Each target ship date is tracked in one place.
 - Every activity and milestone is linked by logic, with each missing link justified, and the baseline and official updates carry no unjustified hard date constraint.
 - The dependency chains hold no cycle, as shown by a topological sort of the exported links, and any cycle found was reported.

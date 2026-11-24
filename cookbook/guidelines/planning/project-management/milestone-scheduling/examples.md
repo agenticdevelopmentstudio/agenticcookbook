@@ -29,7 +29,7 @@ for (a, b), d in days.items():
 print(nx.dag_longest_path(g, weight="days"))   # ['start', 'api-freeze', 'beta', 'launch']
 ```
 
-Had `start` also depended on `launch`, the sort would have stopped with `cycle in milestone chain: start -> launch -> beta -> api-freeze -> start` (the order the error lists varies).
+Had `start` also depended on `launch`, the sort would have stopped with `cycle in milestone chain: api-freeze -> docs-ready -> launch -> start -> api-freeze` (graphlib lists each milestone followed by one that depends on it, starting from whichever node it reaches first).
 
 A status update for one milestone:
 

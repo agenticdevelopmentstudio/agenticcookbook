@@ -17,6 +17,7 @@ Proximity: within the stage
 Probability: 3  Impact: 5  Score: 15
 Response: reduce: migrate to the v3 API this sprint
 Status: active; response ongoing
+Status history: 2026-11-03 active, response pending; 2026-11-10 active, response ongoing
 Next review: sprint review, 2026-11-28
 ```
 

@@ -22,7 +22,10 @@
       "planning"
     ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "3f978ba7-c8c1-4b53-8fda-12e5a6966b75",
+      "f264cc0b-45d3-4593-a437-7371610c5a8a"
+    ],
     "references": [
       "https://www.gao.gov/assets/d1689G.pdf",
       "https://apm.org.uk/resources/what-is-project-management/what-is-scheduling-in-project-management/",
@@ -55,7 +58,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "f9275729e79f139b",
+  "synced": "f8306a6a74683aae",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

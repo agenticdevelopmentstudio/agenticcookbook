@@ -1,5 +1,6 @@
 
-- `define-and-sequence-milestones`: the milestones are defined, sequenced, given target dates, linked by dependency chains and tracked for status and progress.
+- `define-and-sequence-milestones`: the milestones are defined, sequenced and linked by recorded dependency chains.
+- `track-milestone-progress`: each milestone's progress is tracked.
 - `milestone-marks-a-key-event`: each milestone marks a key event or stage and has no duration.
 - `schedule-has-start-and-finish-milestones`: the schedule has a start milestone and a finish milestone.
 - `work-is-not-a-milestone`: no work is represented as a milestone.
