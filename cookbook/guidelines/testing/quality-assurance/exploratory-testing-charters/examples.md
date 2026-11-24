@@ -18,9 +18,10 @@ Limitation: the product never charges a card twice for one order
 A finding:
 
 ```text
-Where: checkout, order confirmation page
+Where: /checkout/confirmation
 Observed: after removing an item in a second tab and returning, the confirmation page showed
   the old total (3 items, 42.00); the receipt email showed the new total (2 items, 30.00).
+Expected: the confirmation page shows the current cart total, 2 items, 30.00.
 Oracle: the confirmation page and the receipt disagree for the same order.
 Steps: 1. add three items to the cart  2. open the cart in a second tab and remove one item
   3. return to the first tab and confirm the order
@@ -37,7 +38,7 @@ Covered: cart review and payment entry with saved cards and a slow network profi
 Not tested: the confirmation page on mobile browsers (no device available this session).
 Good enough because: the order total, the highest-priority focus area, was checked on every
   path the charter names.
-Time: 50 minutes on charter, 10 on opportunity (an unexpected currency switch in settings).
-New charter noted: explore currency switching during checkout.
+Time: 50 minutes on charter, 10 on opportunity (the order-history page linked from the confirmation).
+New charter noted: explore the order-history page for orders whose cart changed mid-checkout.
 ```
 

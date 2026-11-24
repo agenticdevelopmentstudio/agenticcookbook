@@ -12,7 +12,7 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Exploratory testing: charter each session, time-box and debrief it, and report each finding with its steps, oracle and repeatability, and what went untested.",
+    "summary": "Exploratory testing: charter, time-box and debrief each session; report each finding with its expectation, steps and repeatability, and what went untested.",
     "platforms": [],
     "tags": [
       "testing",
@@ -56,7 +56,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "95e857a9172611b8",
+  "synced": "9b51c37d574edbb0",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

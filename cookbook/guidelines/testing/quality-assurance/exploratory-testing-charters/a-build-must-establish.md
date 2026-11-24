@@ -1,11 +1,13 @@
 
-- `look-for-what-specs-cannot-anticipate`: the session targets what the specification and scripted tests do not cover, and checks documentation claims against the product.
+- `look-for-what-specs-cannot-anticipate`: the session targets what the specification and scripted tests do not cover.
+- `treat-documentation-as-unconfirmed`: each claim documentation makes about the product was checked against the product before it was relied on.
 - `exploration-designs-runs-and-learns-together`: tests were designed during the session from what earlier tests showed, not run from a fixed list.
 - `use-product-element-heuristics-and-tours`: where used, the heuristic or tour that chose the coverage is named.
 - `charter-states-target-resources-and-information-sought`: each charter states its target, resources and information sought.
 - `charter-names-scope-cap-focus-and-exclusions`: each charter states its scope, planned duration as a time budget, ranked focus areas and what is out of scope.
 - `charter-may-carry-optional-contents`: where used, each optional content (exit criteria, test ideas or techniques, entry criteria, environment, limitations) is stated in the charter.
-- `charter-neither-too-narrow-nor-too-broad`: no charter lists the individual tests to run, and each has a target the tester can finish exploring.
+- `charter-gives-direction-not-tests`: no charter lists the individual tests or test actions to run.
+- `charter-target-is-finishable`: each charter has a target focused enough that the tester can tell when it has been explored.
 - `split-large-areas-into-focused-charters`: each area too large for one charter is covered by several focused charters.
 - `charters-framed-with-stakeholders`: each charter traces to a question raised with the stakeholders who act on the results.
 - `charter-set-kept-open`: new questions raised by sessions were added to the set of charters.
