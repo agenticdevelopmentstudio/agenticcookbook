@@ -9,7 +9,7 @@
 | `apn-006` | `poll-claim`, `loop-continuity` | Backend queue is empty | Claim returns zero jobs; no complete/fail calls made; loop waits the poll interval and polls again |
 | `apn-007` | `lost-lease-abort` | Heartbeat response returns lease-invalid (e.g. 409 Conflict) mid-handler | Node cancels handler execution, does NOT call complete or fail, logs lease loss, continues loop |
 | `apn-008` | `backend-failure-is-job-failure`, `inject-llm-backend` | Stub LLM backend returns a result missing `category` | Handler fails; node calls fail with `retryable: true`; no complete call is made |
-| `apn-009` | `register-handler-at-startup`, `claim-sends-job-types` | Start the node with `AI_NODE_API_TOKEN` and no environment token | The claim request's `jobTypes` is exactly `categorize_and_tag` and `jobs.step.ai`; `jobs.step.script` is absent |
+| `apn-009` | `register-handler-at-startup` | Start the node with the handler registry populated | The claim request lists `categorize_and_tag` as a supported type, and only types with a registered handler |
 | `apn-010` | `machine-mode`, `script-steps-machine-only`, `claim-sends-job-types` | Start with `AI_NODE_ENVIRONMENT_TOKEN=jenv_x` and `AI_NODE_ALLOW_SCRIPTS=1` | The claim uses `Bearer jenv_x`; `jobTypes` and `capabilities` include `jobs.step.script` |
 | `apn-011` | `script-steps-machine-only` | Start with `AI_NODE_ALLOW_SCRIPTS=1` and only `AI_NODE_API_TOKEN` | `jobs.step.script` is not registered and not in `jobTypes` |
 | `apn-012` | `machine-mode` | Start with neither `AI_NODE_API_TOKEN` nor `AI_NODE_ENVIRONMENT_TOKEN` | Startup fails with a configuration error naming both settings |
@@ -28,3 +28,4 @@
 | `apn-025` | `step-ai-tool-loop`, `lost-lease-abort` | Claim carries an acting token; `/mcp` answers 401 | The node calls neither complete nor fail |
 | `apn-026` | `machine-mode` | Start with `AI_NODE_ENVIRONMENT_TOKEN=abc` | Startup fails with a configuration error saying the token must be a `jenv_` token |
 | `apn-027` | `claude-code-provider` | Hub node (`AI_NODE_API_TOKEN` only); a claimed AI step with provider `claude-code` | The step fails with `retryable: false`; no subprocess runs |
+| `apn-028` | `register-step-handlers`, `claim-sends-job-types` | Start the TypeScript node with `AI_NODE_API_TOKEN` and no environment token | The claim request's `jobTypes` is exactly `categorize_and_tag` and `jobs.step.ai`; `jobs.step.script` is absent |
