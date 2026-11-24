@@ -1,5 +1,5 @@
 
-The node is a linear pipeline of three components arranged around one control loop:
+The node is a linear pipeline arranged around one control loop: the job worker, the handler for the claimed job's type, and the LLM backend:
 
 ```
  adh backend ──claim (types, batch)──▶ ┌─────────────────────────────┐
@@ -10,14 +10,20 @@ The node is a linear pipeline of three components arranged around one control lo
                                         └──────────────┬──────────────┘
                                                        │ payload
                                         ┌──────────────▼──────────────┐
-                                        │ categorize_and_tag handler   │
+                                        │ Handler for the job's type   │
+                                        │  categorize_and_tag          │
+                                        │  jobs.step.ai ──tools──▶ /mcp│
+                                        │  jobs.step.script (machine)  │
                                         └──────────────┬──────────────┘
                                                        │ schema + prompt
                                         ┌──────────────▼──────────────┐
                                         │ LLM backend (configured)     │
-                                        │  HTTP API  or  CLI process   │
+                                        │  HTTP API, or the claude-code│
+                                        │  CLI process                 │
                                         └─────────────────────────────┘
 ```
+
+`categorize_and_tag` and `jobs.step.ai` ask the LLM backend; `jobs.step.script` runs its script as a subprocess and asks no model. A `jobs.step.ai` step whose claim carries an acting token may call the hub's `/mcp` tools under that token between model turns.
 
 This is a non-UI recipe: the arrangement is the logical dataflow above, not a visual layout.
 

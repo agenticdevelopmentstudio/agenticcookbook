@@ -36,11 +36,11 @@
     "references": [
       "https://datatracker.ietf.org/doc/html/rfc2119"
     ],
-    "approved-by": "approve-artifact v1.1.0",
-    "approved-date": "2026-10-04"
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-23"
   },
   "names_hosts": "Specifies the claude-code inference provider, which runs the Claude Code CLI as a subprocess: the CLI is the subject, not the reader.",
-  "synced": "0ba85f1d2fc90d28",
+  "synced": "3accd2bec128085e",
   "parts": [
     {"part": "intro"},
     {"part": "overview", "heading": "Overview"},
