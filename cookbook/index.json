@@ -959,6 +959,12 @@
       "path": "guidelines/cookbook/recipe-quality/source-fidelity",
       "rdid": "adc.guideline.cookbook.recipe-quality.source-fidelity"
     },
+    "4825088c-7d3a-4ef3-8c1b-c5b70b88da0d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/quality-assurance/test-failure-triage",
+      "rdid": "adc.guideline.testing.quality-assurance.test-failure-triage"
+    },
     "4842d5fc-f0cc-48a5-b7c8-0be0e2ce2448": {
       "implementations": [],
       "kind": "guideline",

@@ -1,0 +1,25 @@
+
+- `every-failure-gets-one-disposition`: each failure in the input has exactly one disposition, and no disposition names a failure outside it.
+- `disposition-from-fixed-set`: each disposition is one value of the fixed set.
+- `never-force-a-verdict`: each failure the evidence does not settle is uncertain.
+- `evidence-states-what-was-observed`: each verdict states what was observed and where, apart from inference.
+- `bug-names-observed-misbehavior`: each product-bug verdict names the actual and expected result and where it was seen.
+- `flake-cites-history-or-race`: each flake verdict cites outcome history on unchanged code or a race in the error.
+- `environment-cites-cross-test-signal`: each environment verdict cites a signal across unrelated tests or a probe or status observation.
+- `spec-rot-names-new-assertion`: each spec-rot verdict's `suggested_fix` names what the spec should assert now.
+- `uncertain-names-missing-evidence`: each uncertain verdict names the missing evidence and what would settle it.
+- `high-confidence-needs-reproduction-and-mechanism`: each confidence is 1-10, and each 9 or 10 rests on a described reproduction and a stated mechanism.
+- `triage-changes-nothing`: no finding files, closes or comments on an issue, edits a spec, or claims a change.
+- `gather-failure-artifacts-before-classifying`: the log lines, artifacts, history and run results were gathered before the disposition.
+- `rerun-on-same-revision-before-calling-flake`: each flake was rerun on the same revision and configuration first.
+- `pass-on-retry-does-not-clear-a-bug`: no verdict treats a pass on retry as clearing the product code.
+- `find-the-change-that-introduced-the-failure`: each new failure names the change that introduced it, or says why it is not yet known.
+- `named-triage-rotation-owns-failures`: a person, rotation or responsible team is named to triage.
+- `separate-infrastructure-outcomes-from-test-failures`: each infrastructure-caused failure is an environment fault, not a bug or flake.
+- `stale-test-distinguished-by-intended-behavior-change`: each stale-test verdict rests on a change meant to alter the checked behavior.
+- `distinguish-broken-from-flaky-by-failure-pattern`: no test failing on every run of one revision is called a flake.
+- `reproduce-in-the-failing-environment`: reproduction was tried in the environment where the failure happened.
+- `verdict-states-confidence-and-its-basis`: each verdict states its confidence, its basis and its gaps.
+- `record-flake-cause-category`: where used, each flake's cause category is recorded.
+- `known-failure-marked-expected-with-reason`: where used, each expected-failure mark carries its reason.
+
