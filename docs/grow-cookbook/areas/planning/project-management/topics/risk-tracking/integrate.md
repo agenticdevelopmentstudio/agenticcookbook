@@ -12,6 +12,8 @@ Open questions from the owner list:
 - Whether the rule requires a separate actionee beside the owner, as PRINCE2 does, or lets one person hold both, which PRINCE2 says is common.
 - Which tracker mapping the cookbook recommends for a small team: a custom 'Risk' issue type with fields in GitHub or Jira, a RAID log document, or a project health flag such as Linear's 'At risk', which marks a project but is not a per-risk record.
 
+- from the phase 3 code review (claude-code-review/f8): the name `concern-has-status-and-raiser` promises a status, but the rule requires only the raiser. It is a prior rule, whose name stays fixed, so the rename is the owner's; the review suggests renaming it to match its text.
+
 ## Lossless
 
 New topic, no base text (`cookr roles lossless`: not in the base commit).

@@ -17,6 +17,9 @@ Open questions from the owner list:
 - Whether a blocker must name a tracked item (a blocked-by link) or may name an outside cause in text (a vendor, a missing decision), and whether its start date is required.
 - Whether every task must link to a milestone, or only tasks in a project that uses milestones; the sources describe milestones as optional grouping.
 
+- from the phase 3 code review (claude-code-review/f4): `task-has-assignee-and-priority` (MUST) requires an assignee and a priority on every todo, while `started-task-has-one-owner` assigns an owner only once work begins and `backlog-is-kept-ordered` allows order instead of a priority field; the rule also uses "todo", which the guideline never defines beside "task". The review suggests limiting the MUST to started work and allowing backlog order as the priority, or lowering it to SHOULD.
+- from the phase 3 code review (claude-code-review/f8): the name `break-down-assign-and-prioritize-tasks` promises assigning and prioritising, but the rule only breaks work down. It is a prior rule, whose name the grow-cookbook procedure keeps fixed, so the rename is the owner's; the review suggests renaming it to match its text. (Its text no longer names another rule; that part was fixed.)
+
 ## Lossless
 
 New topic, no base text (`cookr roles lossless`: not in the base commit).

@@ -24,4 +24,6 @@ Open questions from owner-list.md:
 - What the stale-test disposition is called in the cookbook: the team's 'spec-rot', Labuschagne et al.'s 'broken or obsolete test', or another name.
 - Whether a flake disposition must also open a bug investigation of the product code, given that 24% of flaky-test fixes in Luo et al.'s sample changed the code under test, or whether that question is left to the flaky-test-quarantine lifecycle the flake is handed to.
 
+- from the phase 3 code review (claude-code-review/f5): `triage-changes-nothing` (MUST) forbids any triage from editing a spec or filing an issue, while `known-failure-marked-expected-with-reason` (MAY) marks a known failure expected-to-fail, an edit to the test, and the intro hands a found bug to issue-tracking. The review suggests limiting `triage-changes-nothing` to the triage verdict itself, or moving expected-failure marking out of the triage step.
+
 integrated: 2026-11-24

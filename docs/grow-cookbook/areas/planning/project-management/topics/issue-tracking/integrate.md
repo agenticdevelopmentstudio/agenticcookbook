@@ -16,6 +16,8 @@ Open questions from the owner list:
 - Whether the rule to link issues to specialist findings stays, since no source covers specialist findings; the general linking convention is project-record-linking's.
 - Whether priority stays optional beside severity (Mozilla makes it optional) or is required.
 
+- from the phase 3 code review (claude-code-review/f2): `issue-has-severity-and-status` (MUST) requires a severity on every issue, while `defect-has-severity-every-issue-has-status`, `issue-covers-more-than-defects` and the review bar put severity on defects only, so an enhancement, a concern or an issue awaiting its assessor fails the MUST. The review suggests restating the MUST as status on every issue and severity on defects, or dropping it in favour of the SHOULD.
+
 ## Lossless
 
 New topic, no base text (`cookr roles lossless`: not in the base commit).

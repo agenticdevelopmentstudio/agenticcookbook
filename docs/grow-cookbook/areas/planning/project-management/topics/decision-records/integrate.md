@@ -14,6 +14,8 @@ Open questions from the owner list:
 - Whether 'deprecated' is a status distinct from 'superseded' (Nygard and MADR list both) and whether superseded records may ever be deleted (Zimmermann mentions deleting; Nygard and Microsoft keep them).
 - Whether sequential numbering is required (Nygard, Fowler, adr-tools) or avoided to dodge merge conflicts (log4brains).
 
+- from the phase 3 code review (claude-code-review/f8): three rule names promise more than their text: `capture-rationale-alternatives-and-decider` states only the rationale, `decision-has-rationale-and-decider` only the decider, and `decisions-findable-and-linked` only storage. They are prior rules, whose names stay fixed, so the renames are the owner's; the review suggests renaming each to match its text.
+
 ## Lossless
 
 New topic, no base text (`cookr roles lossless`: not in the base commit).
