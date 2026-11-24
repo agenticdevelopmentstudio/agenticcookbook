@@ -192,7 +192,7 @@ A library of principles, guidelines, ingredients, recipes, and workflows for bui
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
-| 4.3.2 | 2026-11-24 | Mike Fullerton | Testing guideline count matches the tree: 19, with the quality-assurance guidelines Exploratory Testing Charters and Test Impact Analysis |
+| 4.3.2 | 2026-11-24 | Mike Fullerton | Guideline counts match the tree: Planning 35→42, with the 7 project-management guidelines (Decision Records, Dependency Tracking, Issue Tracking, Milestone Scheduling, Project Record Linking, Risk Tracking, Task Breakdown), and Testing 15→19, with the 4 quality-assurance guidelines (E2E Test Authoring, Exploratory Testing Charters, Test Failure Triage, Test Impact Analysis) |
 | 4.3.1 | 2026-11-15 | Mike Fullerton | Guideline counts match the tree: Implementing 182, Reviewing 63; list Storytelling (6). The reviewer query-optimization twin was folded into its implementing topic |
 | 4.3.0 | 2026-10-04 | Mike Fullerton | List the 29 ingredients extracted when recipes became ingredient compositions |
 | 4.2.0 | 2026-04-21 | Mike Fullerton | Add DRY and SRP principles |

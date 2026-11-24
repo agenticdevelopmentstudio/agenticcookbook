@@ -2,7 +2,7 @@
 id: eb0764d5-aeac-40cc-9aa4-d84e4eaa652d
 title: Guidelines Index
 type: reference
-version: 2.7.0
+version: 2.8.0
 status: accepted
 language: en
 created: 2026-03-27
@@ -456,6 +456,7 @@ Guidelines are organized by **use case** — the phase of work where they apply.
 
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
+| 2.8.0 | 2026-11-24 | Mike Fullerton | Add 7 project-management guidelines (Decision Records, Dependency Tracking, Issue Tracking, Milestone Scheduling, Project Record Linking, Risk Tracking, Task Breakdown) and 4 quality-assurance guidelines (E2E Test Authoring, Exploratory Testing Charters, Test Failure Triage, Test Impact Analysis); Planning 35→42, Testing 15→19 |
 | 2.7.0 | 2026-07-23 | Mike Fullerton | Add PII detection and redaction guideline (implementing/security) |
 | 2.6.0 | 2026-06-27 | Mike Fullerton | Add Researching use case (5 guidelines): research-results-document, verification-and-trust-scoring, research-type-taxonomy, research-methodology-and-sources, agentic-research-design-lessons |
 | 2.5.0 | 2026-06-09 | Mike Fullerton | Add 43 guidelines across waves 2-4 (AI-native, security, backend, API/MCP, observability, delivery, platforms) |
