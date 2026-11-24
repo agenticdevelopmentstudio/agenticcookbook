@@ -4,7 +4,7 @@
     "id": "e981def5-83d1-4c99-a5f3-3566270f618d",
     "title": "Test Impact Analysis",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -60,7 +60,7 @@
       "configuration"
     ]
   },
-  "synced": "d936ae7c9632c75e",
+  "synced": "16a9dd8b11e99995",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
