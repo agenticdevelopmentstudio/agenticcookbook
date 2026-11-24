@@ -12,8 +12,14 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Writing E2E specs that test what a user does and stay stable: user-facing locators, condition waits, isolated state, hermetic networks, secrets kept out.",
-    "platforms": [],
+    "summary": "E2E specs that test what a user does and stay stable: user-facing or test-id locators, condition waits, isolated state, stubbed networks, secrets kept out.",
+    "platforms": [
+      "web",
+      "ios",
+      "macos",
+      "android",
+      "windows"
+    ],
     "tags": [
       "e2e-testing",
       "locators",
@@ -28,7 +34,9 @@
       "42220186-4305-45cd-8e7d-a8d1172b6fbd",
       "abdcd282-5b81-4ab2-ab1e-3ed288a4aee5",
       "0de6da80-6793-4ef5-afd3-c7663da1d952",
-      "4f5fe9ef-1bf8-4354-92c7-92d9e28673b8"
+      "4f5fe9ef-1bf8-4354-92c7-92d9e28673b8",
+      "e5af9ba5-f484-40c3-9738-470090f5241c",
+      "05d00147-5c49-42d8-bdbd-cf8fd7dc2379"
     ],
     "references": [
       "https://playwright.dev/docs/best-practices",
@@ -85,7 +93,7 @@
       "pre-pr"
     ]
   },
-  "synced": "4122f52b38841b85",
+  "synced": "39fa176749ea5987",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

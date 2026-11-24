@@ -26,7 +26,7 @@ The same wait, written against the rules and then kept:
 | Breaks a rule | Keeps it |
 |---|---|
 | `await page.waitForTimeout(2000)` | `await expect(page.getByRole('alert')).toHaveText('Saved')` |
-| `page.locator('div.form > div:nth-child(3) > button')` | `page.getByRole('button', { name: 'Save' })` |
+| `page.locator('div.form > div:nth-child(3) > button')` | `page.getByRole('button', { name: 'Save' })` or `page.getByTestId('save')` |
 | `const password = 'hunter2'` | `const password = process.env.TEST_USER_PASSWORD` |
 
 A rationale for a new assertion:
