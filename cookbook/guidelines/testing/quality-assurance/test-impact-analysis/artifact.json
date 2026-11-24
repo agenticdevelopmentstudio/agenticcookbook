@@ -1,0 +1,76 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "e981def5-83d1-4c99-a5f3-3566270f618d",
+    "title": "Test Impact Analysis",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-11-24",
+    "modified": "2026-11-24",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Choosing the tests to run for a change: select along the dependency graph, run everything when unsure, keep a full run behind it, and record why.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "ci",
+      "test-selection",
+      "test-impact-analysis",
+      "monorepo"
+    ],
+    "depends-on": [],
+    "related": [
+      "4f5fe9ef-1bf8-4354-92c7-92d9e28673b8",
+      "a8f9c003-e970-4f28-bb7d-30a23b891b3f",
+      "4825088c-7d3a-4ef3-8c1b-c5b70b88da0d"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+      "https://nx.dev/ci/features/affected",
+      "https://turborepo.dev/docs/reference/run",
+      "https://bazel.build/query/language",
+      "https://github.com/bazel-contrib/target-determinator",
+      "https://github.com/Tinder/bazel-diff",
+      "https://www.pantsbuild.org/stable/docs/using-pants/advanced-target-selection",
+      "https://docs.develocity.ai/predictive-test-selection/",
+      "https://docs.gradle.org/current/userguide/java_testing.html",
+      "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+      "https://docs.gitlab.com/ci/yaml/",
+      "https://source.android.com/docs/core/tests/development/test-mapping",
+      "https://developer.apple.com/documentation/xcode/organizing-tests-to-improve-feedback",
+      "https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/",
+      "https://arxiv.org/abs/1810.05286",
+      "https://web.eecs.umich.edu/~xwangsd/courses/w23/readings/googletest.pdf",
+      "https://mpapad.github.io/publications/pdfs/ICSE-SEIP2019.pdf",
+      "https://users.ece.utexas.edu/~gligoric/papers/abstracts/GligoricETAL15Ekstazi.txt",
+      "https://par.nsf.gov/servlets/purl/10055460",
+      "https://help.launchableinc.com/features/predictive-test-selection/use-cases-for-predictive-test-selection/",
+      "https://help.launchableinc.com/features/predictive-test-selection/how-launchable-selects-tests/",
+      "https://help.launchableinc.com/features/predictive-test-selection/observing-subset-behavior/",
+      "https://martinfowler.com/articles/rise-test-impact-analysis.html",
+      "https://mill-build.org/blog/3-selective-testing.html"
+    ],
+    "approved-by": "",
+    "approved-date": "",
+    "triggers": [
+      "pre-pr",
+      "configuration"
+    ]
+  },
+  "synced": "5e20bff9f962d45d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "selecting-tests-for-a-change", "heading": "Selecting tests for a change", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}

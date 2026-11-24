@@ -123,6 +123,7 @@ configuration:
 - guidelines/planning/code-quality/windows-ui-framework-and-deployment/
 - guidelines/planning/infrastructure/immutable-infrastructure/
 - guidelines/planning/infrastructure/infrastructure-as-code/
+- guidelines/testing/quality-assurance/test-impact-analysis/
 data-modeling:
 - guidelines/implementing/code-quality/value-objects/
 - guidelines/implementing/code-quality/yaml-frontmatter/
@@ -368,6 +369,7 @@ pre-pr:
 - guidelines/testing/flaky-test-quarantine/
 - guidelines/testing/mutation-testing/
 - guidelines/testing/quality-assurance/e2e-test-authoring/
+- guidelines/testing/quality-assurance/test-impact-analysis/
 - guidelines/testing/the-testing-workflow/
 recipe-authoring:
 - guidelines/cookbook/authoring/activity-triggers/

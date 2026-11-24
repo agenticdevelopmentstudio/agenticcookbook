@@ -1,0 +1,21 @@
+
+- `fail-closed-when-unsure`: each changed path the selection was unsure of has every test it might affect included.
+- `each-selection-justified-by-diff`: each included site is justified by a named path or hunk from the commit range.
+- `every-changed-path-accounted-for`: each residue path is attributed to sites or named as unattributable with its candidate sites included.
+- `fail-closed-is-stated`: each place the analysis was unsure is stated, with its sites included.
+- `reasoning-cites-diff-contents`: the reasoning cites the diff, not only commit messages, branch names or file names.
+- `unknown-reach-selects-everything`: each change of unknown reach selected every test.
+- `shared-inputs-select-everything`: each change to an untraceable shared input selected every test that may use it.
+- `select-by-dependency-graph-not-paths-alone`: the tests were chosen from declared dependencies and inputs or recorded coverage, not path patterns alone.
+- `diff-against-a-known-good-base`: the changes were computed between two named revisions with a known-good base.
+- `select-from-every-changed-file`: the changed-file list holds every file that changed.
+- `decide-change-by-content`: where used, a file's change is decided from a hash of its content.
+- `always-select-new-changed-and-failing-tests`: recently new, changed, failed and flaky tests are selected.
+- `run-the-full-suite-periodically`: a full-suite run is set later in the pipeline or on a schedule.
+- `validate-selection-against-full-runs`: the selection has been compared with full runs of the same changes, with no missed failure.
+- `retrain-a-learned-selector`: a learned selection model is retrained on recent test results.
+- `record-why-each-test-was-selected`: the selected and unselected tests are recorded with the reason for each.
+- `log-each-fallback`: each run logs whether it was incremental or a full fallback.
+- `measure-selection-recall-and-savings`: the failures still reported and the time or cost saved are measured on the team's history.
+- `path-skipped-required-checks-resolve`: no required check is left unresolved by a path-skipped workflow.
+
