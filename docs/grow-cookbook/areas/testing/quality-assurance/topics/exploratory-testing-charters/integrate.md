@@ -22,3 +22,5 @@ Open questions from owner-list.md:
 - Whether the expectation stays a mandatory fourth part of every finding, or the finding must state its oracle only when the problem is not obvious, as the Rapid Software Testing guide advises.
 - Whether padding a clean session with severity-free observations stays a fail, given that session sheets and the HTSM quality story both keep notes and curios beside bugs.
 - Whether 'intermittent' requires one stated second attempt or a stated count of attempts and successes; Mozilla asks for 'at will, occasionally, or not at all' and more information when occasional, but no source fixes a number.
+
+integrated: 2026-11-24
