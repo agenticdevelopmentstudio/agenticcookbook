@@ -4,7 +4,7 @@
     "id": "f264cc0b-45d3-4593-a437-7371610c5a8a",
     "title": "Task Breakdown",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -59,7 +59,7 @@
     "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "966e792000afda89",
+  "synced": "42eef86651d375a8",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

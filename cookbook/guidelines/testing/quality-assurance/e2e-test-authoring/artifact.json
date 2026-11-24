@@ -4,7 +4,7 @@
     "id": "eb82d5d7-4f42-4417-8104-a14f6a27899f",
     "title": "End-to-End Test Authoring",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -93,7 +93,7 @@
       "pre-pr"
     ]
   },
-  "synced": "6ffdc76c0d04bb56",
+  "synced": "eacfcaaca8e6f683",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

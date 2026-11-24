@@ -14,13 +14,13 @@
 - `report-dependency-changes`: each change to a dependency reached the people it affects.
 - `flag-at-risk-or-blocked-dependencies`: each blocked or off-track dependency is visibly flagged.
 - `blocked-dependency-linked-to-affected-work`: each blocked or at-risk dependency is linked to the milestones or todos it affects.
-- `record-blocker-reason-and-duration`: each blocked dependency's record says why it is blocked.
+- `record-blocker-reason`: each blocked dependency's record says why it is blocked.
 - `count-days-dependency-blocked`: where used, each blocked dependency's record counts its days blocked.
 - `keep-resolved-dependency-blockers`: the records of resolved dependency blockers are kept.
 - `analyse-resolved-blockers`: where used, resolved blockers are clustered by cause.
 - `at-risk-dependency-logged-as-risk`: each dependency threatening the project is handled as a risk with a management plan.
 - `at-risk-dependency-reviewed-against-milestones`: each dependency threatening the project is reviewed for its effect on milestones.
-- `escalate-blocked-dependency-before-milestone`: each blocked dependency the team could not resolve was escalated through a named forum or by exception.
+- `escalate-unresolved-blocked-dependency`: each blocked dependency the team could not resolve was escalated through a named forum or by exception.
 - `coordinate-directly-with-the-other-team`: where used, the team coordinated directly with the team it depends on.
 - `reduce-dependencies-before-tracking`: the team structure was considered for dependencies it could remove.
 - `rescope-to-remove-difficult-dependency`: where used, the re-scoping and the dependency it removed are recorded.
