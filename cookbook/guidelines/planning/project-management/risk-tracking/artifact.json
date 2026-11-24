@@ -1,0 +1,59 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "a55182ef-3144-407c-b64a-6377f37f5c63",
+    "title": "Risk Tracking",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-11-24",
+    "modified": "2026-11-24",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Keeping a project risk register: identify and record risks early, give each one owner, status and response, review on a plan, escalate, hand over issues.",
+    "platforms": [],
+    "tags": [
+      "risk-tracking",
+      "risk-register",
+      "project-management",
+      "escalation"
+    ],
+    "depends-on": [],
+    "related": [],
+    "references": [
+      "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
+      "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
+      "https://pm.hse.ru/mirror/pubs/share/562398363.pdf",
+      "https://www.pmi.org/-/media/pmi/documents/public/pdf/pmbok-standards/pg8-errata---second-printing.pdf",
+      "https://projectmanagementcompass.substack.com/p/inside-pmbok-8-risk-performance-domain",
+      "https://openpracticelibrary.com/practice/roam-boards/",
+      "https://scrumguides.org/scrum-guide.html",
+      "https://kanbanguides.org/english/",
+      "https://linear.app/docs/initiative-and-project-updates",
+      "https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization",
+      "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-your-organization",
+      "https://www.atlassian.com/work-management/project-management/risk-register",
+      "https://www.atlassian.com/agile/project-management/raid-log",
+      "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
+      "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid"
+    ],
+    "approved-by": "",
+    "approved-date": "",
+    "triggers": []
+  },
+  "synced": "e00082241b7dc77d",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "keeping-a-risk-register", "heading": "Keeping a risk register", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
