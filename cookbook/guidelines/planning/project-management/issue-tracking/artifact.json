@@ -4,7 +4,7 @@
     "id": "f77eeffe-2699-4028-9195-4bfc23c75e91",
     "title": "Issue Tracking",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -56,11 +56,11 @@
       "https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/",
       "https://api.openalex.org/works/doi:10.1109/tse.2019.2944608"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "52a3eb529e8bb7f4",
+  "synced": "1d7503371b2c654b",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
