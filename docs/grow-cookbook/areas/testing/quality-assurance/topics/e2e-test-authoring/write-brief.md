@@ -178,3 +178,31 @@ Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `##
 
 lint: fail 1
 ````
+
+## Round 2 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R2.1: `writing-a-spec.md`, "How the tools compare" (text changed this round): two bullets now say more than the claims behind them. (1) The **Selenium** bullet says "Its own locator order (unique IDs, then CSS, then XPath) is for structural locators." ks-se-locator-preference says only that "If unique IDs are unavailable, a well-written CSS selector is the preferred method of locating an element". Selenium gives that order for locating elements in general and never limits it to structural locators. Limiting it to the structural fallback is this guideline's choice, which the Rationale states correctly ("kept for the structural locator a spec falls back to"). (2) The **Windows UI Automation** bullet says an AutomationId "needs container and scope information to be useful". pg-ms-automationid-scope's quote says it "typically needs" that information, and the Rationale quotes it with "typically". The bullet drops the hedge. Fix: in (1), say that Selenium ranks unique IDs, then a well-written CSS selector, above XPath, and that this guideline applies that order to the structural locator a spec falls back to. In (2), restore "typically".
+
+Lint failed (`lint: fail 1`): fix each lint error in the draft. The review's `## Lint` section:
+
+````
+The `/lint-artifact` result (run with this checkout's cookr; it compiled the folder to the scratchpad):
+
+- Shared checks: FM-01, FM-02, FM-04 to FM-11, FM-11a, FM-12 and FM-13 PASS. FM-11a: all 8 `related` UUIDs and every in-text `cookbook:` link resolve.
+- [FAIL] FM-03: Index entry matches folder. `eb82d5d7-4f42-4417-8104-a14f6a27899f` has no entry in `cookbook/index.json`.
+- Guideline checks: GF-01, GF-02, GF-03, gf-frontmatter-complete, gf-triggers-field, gf-roled-parts, gf-named-rules (47 rules), gf-build-bar, gf-research-folder and gf-rule-cites-research PASS.
+- [WARN] GF-04: no `## Compliance` section. It is optional.
+- `cookr validate` lists this artifact in no failure. The `guidelines/INDEX.md` and `index/triggers.yaml` drift follows from the missing index entry.
+- Summary: Pass 24, Warn 1, Fail 1. RESULT: NOT CLEAN, 1 failing check.
+
+The author disputes FM-03 in disputes.md: the index entry is written by `cookr update` at integration, and the draft cannot add it. The lint still reports it as a failure, so it is counted below.
+
+lint: fail 1
+````
+
+Disputes so far (disputes.md):
+
+- R1.3(e): the exception added to `e2e-page-objects-hold-no-assertions`, its build line and the reviewer text is Fowler's (checks of a page's own invariants), which ev-fowler-po-no-assertions' record states; Selenium's "a page object may check that its page loaded" is only a note in second-check.md and in no claim of research.json (ks-se-po-no-assertions' quote is "Page objects themselves should never make verifications or assertions"), so adding it would put words in the rule no cited claim covers.
+- R1.lint FM-03: the missing `cookbook/index.json` entry (and the `guidelines/INDEX.md` and `index/triggers.yaml` drift) is index state that `cookr update` writes at integration; the author may edit only draft.md (write brief: "Edit only the draft"), and no change to the draft can add an index entry. `cookr validate` on a scratch copy with this draft folded in reports no issue in this artifact beyond that drift and the expected owner-decides warning.

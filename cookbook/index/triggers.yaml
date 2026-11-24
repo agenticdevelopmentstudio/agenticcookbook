@@ -367,6 +367,7 @@ pre-pr:
 - guidelines/testing/flaky-test-prevention/
 - guidelines/testing/flaky-test-quarantine/
 - guidelines/testing/mutation-testing/
+- guidelines/testing/quality-assurance/e2e-test-authoring/
 - guidelines/testing/the-testing-workflow/
 recipe-authoring:
 - guidelines/cookbook/authoring/activity-triggers/
@@ -527,6 +528,7 @@ writing-tests:
 - guidelines/testing/groundedness-and-hallucination/
 - guidelines/testing/mutation-testing/
 - guidelines/testing/properties-of-good-tests/
+- guidelines/testing/quality-assurance/e2e-test-authoring/
 - guidelines/testing/security-testing/
 - guidelines/testing/snapshot-testing/
 - guidelines/testing/the-testing-workflow/
