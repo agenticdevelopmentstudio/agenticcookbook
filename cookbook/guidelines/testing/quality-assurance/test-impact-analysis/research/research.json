@@ -150,8 +150,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "bazel-diff impacted targets generate-hashes README",
       "trust": {
-        "score": 68,
-        "basis": "Tool owner's README, stated for its own query service; the principle generalises (Azure TIA likewise reasons per changed file) but no second publisher states it in these terms."
+        "score": 48,
+        "basis": "Tool owner's README, stated for its own query service; the principle generalises (Azure TIA likewise reasons per changed file) but no second publisher states it in these terms. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source sets this rule for one input: bazel-diff's `modifiedFilepaths` list in the query-server API (the same optimisation as `generate-hashes --modified-filepaths`). The claim widens it to any changed-file list fed to any selection; lowered 68->48."
       },
       "independence": "single"
     },
@@ -894,8 +894,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "pants changed-since changed-dependents transitive test selection",
       "trust": {
-        "score": 76,
-        "basis": "Pants' own current documentation stating a limit of its tool; corroborated in substance by Nx's lockfile default."
+        "score": 56,
+        "basis": "Pants' own current documentation stating a limit of its tool; corroborated in substance by Nx's lockfile default. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the hedge that third-party changes \"may not be surfaced as you expect\". The claim's main point is in the next sentence, which the quote leaves out: any change to one dependency in a lockfile or target generator \"will consider all users of any dependency changed, transitively.\"; lowered 76->56."
       },
       "independence": "single"
     },
@@ -1038,8 +1038,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
       "trust": {
-        "score": 76,
-        "basis": "Microsoft's own documentation; it does not say what fields the report carries."
+        "score": 56,
+        "basis": "Microsoft's own documentation; it does not say what fields the report carries. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says TIA is part of test reporting at the summary and details levels. Manual validation is a different sentence on the same page that the quote leaves out: \"A developer who knows how the SUT and tests are architected could manually validate the test selection using the TIA reporting capabilities.\"; lowered 76->56."
       },
       "independence": "single"
     },
@@ -1278,8 +1278,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "Rise of Test Impact Analysis Hammant",
       "trust": {
-        "score": 62,
-        "basis": "Secondary, stated of one tool (Testar); corroborated in substance by Azure TIA's fallback for HTML/CSS and Celik et al.'s missed dependencies."
+        "score": 42,
+        "basis": "Secondary, stated of one tool (Testar); corroborated in substance by Azure TIA's fallback for HTML/CSS and Celik et al.'s missed dependencies. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): \"The tool\" is Testar, one contributor's tool described in the article's appendix. The user has to list resource files for it, otherwise it re-runs all tests. The source does not state this as a limit of coverage-based mapping in general; lowered 62->42."
       },
       "independence": "single"
     },
@@ -1302,8 +1302,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "Rise of Test Impact Analysis Hammant",
       "trust": {
-        "score": 58,
-        "basis": "Secondary, a fragment describing common practice rather than a recommendation; corroborated in substance by Launchable and Azure TIA."
+        "score": 18,
+        "basis": "Secondary, a fragment describing common practice rather than a recommendation; corroborated in substance by Launchable and Azure TIA. Second check 2026-11-24: refuted (quote-found yes, supports-claim no): The source says teams using suites and tags \"might choose\" a smaller suite per commit plus a nightly job, and criticises it right away (\"delays bad news, and defeats the aims of Continuous Integration\"). It does not describe a practice of teams that select tests per commit; lowered 58->18."
       },
       "independence": "single"
     },
@@ -1398,8 +1398,8 @@
       "generated_by": "grow-cookbook research agent",
       "query": "Taming Google-Scale Continuous Testing Memon ICSE 2017",
       "trust": {
-        "score": 70,
-        "basis": "Peer-reviewed, system owner's engineers; corroborated in substance by Meta's abstract ('infeasible to run all potentially-impacted tests on each change')."
+        "score": 50,
+        "basis": "Peer-reviewed, system owner's engineers; corroborated in substance by Meta's abstract ('infeasible to run all potentially-impacted tests on each change'). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source only says that Google's churn rate rules out running all affected targets for each change, so TAP postpones them to milestones. Applying this to teams in general, and the phrase \"rather than drop safety outright\", are not in the source; lowered 70->50."
       },
       "independence": "single"
     },
