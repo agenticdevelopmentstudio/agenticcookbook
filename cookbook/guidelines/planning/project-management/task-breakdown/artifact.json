@@ -4,7 +4,7 @@
     "id": "f264cc0b-45d3-4593-a437-7371610c5a8a",
     "title": "Task Breakdown",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -55,11 +55,11 @@
       "https://gettingthingsdone.com/2010/10/some-key-gtd-definitions/",
       "https://facilethings.com/blog/en/what-is-the-next-action"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "c072195d43688f97",
+  "synced": "966e792000afda89",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
