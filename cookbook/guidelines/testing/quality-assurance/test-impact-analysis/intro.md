@@ -1,0 +1,7 @@
+
+# Test Impact Analysis
+
+When a change runs only the tests it can affect, choose them along the dependency graph from every file that changed against a known-good base, and run everything whenever the analysis cannot tell what a change reaches. Always add recently new, changed and failing tests, keep a full run behind the subset, and record why each test was or was not selected, so the selection can be checked against full runs and measured on the team's own history.
+
+This guideline covers how any team that tests a product chooses which tests or test targets to run for a change: the selection methods (build-graph affected-target queries, coverage-based mapping, path filters and predictive selection), how a selection fails safe when it cannot map a change, which changes select everything, the full run kept behind a selection, and what a selection records so it can be checked. Excluding quarantined tests from the gating job is a selection by tag, not by change, and belongs to [adc.guideline.testing.flaky-test-quarantine](cookbook:4f5fe9ef-1bf8-4354-92c7-92d9e28673b8); how many tests a suite holds at each level belongs to [adc.guideline.planning.testing.test-pyramid](cookbook:a8f9c003-e970-4f28-bb7d-30a23b891b3f); classifying a selected test that failed belongs to [adc.guideline.testing.quality-assurance.test-failure-triage](cookbook:4825088c-7d3a-4ef3-8c1b-c5b70b88da0d). Following this guideline means keeping every MUST rule below, keeping each SHOULD rule or stating why a selection departs from it, and using each MAY rule where it helps.
+

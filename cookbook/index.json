@@ -3011,6 +3011,12 @@
       "path": "artifact-formatting/recipe-formatting#rf-type-field",
       "rdid": "adc.check.artifact-formatting.recipe-formatting.rf-type-field"
     },
+    "e981def5-83d1-4c99-a5f3-3566270f618d": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/quality-assurance/test-impact-analysis",
+      "rdid": "adc.guideline.testing.quality-assurance.test-impact-analysis"
+    },
     "e9e60a7e-4e15-40e7-b730-fc2e311df1af": {
       "implementations": [],
       "kind": "guideline",
