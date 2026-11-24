@@ -1937,6 +1937,12 @@
       "path": "platform-compliance#platform-touch-targets",
       "rdid": "adc.check.platform-compliance.platform-touch-targets"
     },
+    "979a89c0-0d26-4e8a-aae0-c4983ec5d675": {
+      "implementations": [],
+      "kind": "guideline",
+      "path": "guidelines/testing/quality-assurance/exploratory-testing-charters",
+      "rdid": "adc.guideline.testing.quality-assurance.exploratory-testing-charters"
+    },
     "97bba3fe-a9b2-5421-83b5-a59cbbe5460d": {
       "implementations": [],
       "kind": "check",

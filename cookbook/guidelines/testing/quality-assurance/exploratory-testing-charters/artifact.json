@@ -1,0 +1,72 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "979a89c0-0d26-4e8a-aae0-c4983ec5d675",
+    "title": "Exploratory Testing Charters",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-11-24",
+    "modified": "2026-11-24",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Exploratory testing: charter each session, time-box and debrief it, and report each finding with its steps, oracle and repeatability, and what went untested.",
+    "platforms": [],
+    "tags": [
+      "testing",
+      "exploratory-testing",
+      "test-charters",
+      "session-based-testing",
+      "bug-reports"
+    ],
+    "depends-on": [],
+    "related": [
+      "eb82d5d7-4f42-4417-8104-a14f6a27899f",
+      "4825088c-7d3a-4ef3-8c1b-c5b70b88da0d",
+      "f77eeffe-2699-4028-9195-4bfc23c75e91"
+    ],
+    "references": [
+      "https://cdn.standards.iteh.ai/samples/81291/2e08edad03eb48e882e398015d0120fa/ISO-IEC-IEEE-PRF-29119-1.pdf",
+      "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "https://www.istqb.org/wp-content/uploads/sdm-uploads/ISTQB-CTAL-TA-Syllabus-v4.0-EN-4.pdf",
+      "https://www.ida.liu.se/~TDDD04/labs/2019/exploratory_testing/stqe-sbtm.pdf",
+      "https://www.workroom-productions.com/shaping-testing-with-charters/",
+      "https://whose.associationforsoftwaretesting.org/docs/communication/chartering/",
+      "https://arxiv.org/abs/1704.00988",
+      "https://arxiv.org/abs/1704.00537",
+      "http://kaner.com/pdfs/QAIExploring.pdf",
+      "https://www.developsense.com/resource/htsm.pdf",
+      "https://developsense.com/?p=1773",
+      "https://learn.microsoft.com/en-us/archive/blogs/james_whittaker/tour-of-the-month-the-landmark-tour",
+      "https://learn.microsoft.com/en-us/azure/devops/test/perform-exploratory-tests",
+      "https://learn.microsoft.com/en-us/azure/devops/test/connected-mode-exploratory-testing",
+      "https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html",
+      "https://developer.apple.com/bug-reporting/",
+      "https://source.android.com/docs/setup/contribute/report-bugs",
+      "https://developsense.com/?p=11835",
+      "https://www.satisfice.com/download/rapid-testing-guide-to-making-good-bug-reports",
+      "https://media.pragprog.com/titles/ehxta/charters.pdf",
+      "https://developsense.com/presentations/2011-05-STAREast-TestFraming.pdf",
+      "https://developsense.com/blog/2011/12/what-exploratory-testing-is-not-part-5-undocumented-testing",
+      "https://www.satisfice.com/blog/archives/1509"
+    ],
+    "approved-by": "",
+    "approved-date": "",
+    "triggers": []
+  },
+  "synced": "95e857a9172611b8",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "running-a-chartered-session", "heading": "Running a chartered session", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
