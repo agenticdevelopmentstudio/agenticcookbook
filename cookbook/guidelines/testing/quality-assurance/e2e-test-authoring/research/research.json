@@ -5,10 +5,22 @@
   "base_commit": "77a898dbc718928bbd96ef617723c83ec69cd549",
   "research_type": "Technology / software (intent Do; domain browser and mobile end-to-end UI testing; Technical MEDIUM bar: official current docs, recency; no escalation)",
   "questions": [
-    {"id": "best-practices", "text": "Best practices: what is current best practice for this topic?"},
-    {"id": "known-solutions", "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"},
-    {"id": "platform-guidelines", "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"},
-    {"id": "experts-view", "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"}
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
   ],
   "methodology": {
     "method": "guidelines/researching/process/research-methodology-and-sources: orient (browser and mobile E2E UI testing, a technical domain), go first to the tool and platform owners' own documentation (Playwright, Cypress, WebdriverIO, Selenium, Testing Library, W3C WAI-ARIA, Apple XCUIAutomation/UIKit, Android Espresso/Compose/UI Automator, Microsoft UI Automation), then to standards and security owners for secrets and test data (OWASP ASVS and Secrets Management Cheat Sheet, GitHub Actions docs, the UK ICO) and the ISTQB Foundation syllabus for traceability; use practitioner sources (martinfowler.com, Kent C. Dodds, Thoughtworks Technology Radar) only for the expert's view and for what no primary covers.",
@@ -16,7 +28,9 @@
     "inclusion": "Owner or standards-body text that bears on locators, waiting, isolation, network mocking versus live runs, tagging and gating, credentials and test data, or the rationale behind assertions; practitioner texts by recognised testing authors for the expert's view.",
     "exclusion": "Team-specific layouts, tags, selectors, mocks, output contracts and registries (owner ruling 2026-11-21); vendor marketing; pages that could not be fetched (their claims are not made)."
   },
-  "agents": ["grow-cookbook research agent"],
+  "agents": [
+    "grow-cookbook research agent"
+  ],
   "sources": [
     "https://playwright.dev/docs/best-practices",
     "https://playwright.dev/docs/locators",
@@ -65,7 +79,10 @@
     "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library",
     "https://www.thoughtworks.com/radar/techniques/production-data-in-test-environments"
   ],
-  "dates": {"researched": "2026-11-24", "accessed": "2026-11-24"},
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
   "summary": "Four of the five listed rules hold. Deterministic specs (write-deterministic-specs) are what every tool owner asks for: Playwright calls tests that wait for time inherently flaky, and Android, Selenium, WebdriverIO, Cypress and Fowler all reject fixed sleeps in favour of waiting on a condition. Hermetic specs stub the network through the tool's interception API (hermetic-specs-mock-the-api): Playwright tells you to use its Network API rather than servers you do not control, and Cypress recommends stubbing for most tests with a real server kept for the critical paths. Credentials stay out of the repository (no-credentials-or-real-user-data): OWASP ASVS 2.10.4 requires it, and Playwright and Cypress keep secrets in environment variables and git-ignored files. Real user data is kept out by the data-minimisation principle and Thoughtworks' Hold on production data in test environments. Tracing a test to its test basis is SHOULD-strength practice (ISTQB), which supports rationale-cites-assertion-source. No source makes an untraced rationale a fail, so rationale-names-what-makes-assertion-correct is unsupported at that strength. The research adds rules the topic lacks: locators that face the user first (role, label, text) with a test id only when none fits, and no CSS/XPath DOM paths; waiting on conditions, never on time; isolated test state set up programmatically; a controlled clock; retries that report flakiness instead of hiding it; hermetic by default with live runs kept to the critical paths and selected by tag or project; credentials from the environment or CI secrets, stored auth state git-ignored, dedicated test accounts; traces on CI failure; page objects that hold no assertions; and E2E assertions that do not repeat what lower-level tests already cover. Apple, Android and Microsoft UI Automation each publish an identifier for automation (accessibilityIdentifier, test tags or resource ids, AutomationId) and condition-based waits.",
   "open_questions": [
     "Whether a rationale that does not cite its feature doc, plan or commit is a fail (MUST, as rationale-names-what-makes-assertion-correct states) or a SHOULD, which is what the ISTQB traceability text supports.",
@@ -93,11 +110,23 @@
       "question": "best-practices",
       "claim": "An E2E test verifies what the end user sees and does, not implementation details.",
       "quote": "Automated tests should verify that the application code works for the end users",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices test user-visible behavior",
-      "trust": {"score": 84, "basis": "Tool owner's current best-practices page; corroborated in substance by Testing Library's guiding principle (pg-tl-guiding-principle) and Apple's UI-testing overview (pg-apple-ui-test-as-person)."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's current best-practices page; corroborated in substance by Testing Library's guiding principle (pg-tl-guiding-principle) and Apple's UI-testing overview (pg-apple-ui-test-as-person)."
+      },
       "independence": "single"
     },
     {
@@ -105,11 +134,23 @@
       "question": "best-practices",
       "claim": "Each E2E test is isolated from every other test and runs independently.",
       "quote": "Each test should be completely isolated from another test and should run independently",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices test isolation",
-      "trust": {"score": 86, "basis": "Tool owner's best-practices page; independently corroborated by Cypress (bp-cy-tests-independent), Selenium (ks-se-no-shared-data) and Fowler (ev-fowler-isolated)."},
+      "trust": {
+        "score": 86,
+        "basis": "Tool owner's best-practices page; independently corroborated by Cypress (bp-cy-tests-independent), Selenium (ks-se-no-shared-data) and Fowler (ev-fowler-isolated)."
+      },
       "independence": "single"
     },
     {
@@ -117,11 +158,23 @@
       "question": "best-practices",
       "claim": "An E2E spec does not exercise external sites or third-party servers the team does not control.",
       "quote": "Don't try to test links to external sites or third party servers that you do not control.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices avoid testing third-party dependencies",
-      "trust": {"score": 84, "basis": "Tool owner's best-practices page; Cypress's best practices make the same point independently (\"Only test websites that you control\")."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's best-practices page; Cypress's best practices make the same point independently (\"Only test websites that you control\")."
+      },
       "independence": "single"
     },
     {
@@ -129,11 +182,23 @@
       "question": "best-practices",
       "claim": "Instead of depending on uncontrolled servers, a spec uses the tool's network API to guarantee the response it needs.",
       "quote": "Instead, use the Playwright Network API and guarantee the response needed.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices mock network third party",
-      "trust": {"score": 84, "basis": "Tool owner's imperative guidance; corroborated by Cypress's stub-most-tests guidance (ks-cy-stub-majority) and Selenium's (ks-se-eliminate-external-services)."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's imperative guidance; corroborated by Cypress's stub-most-tests guidance (ks-cy-stub-majority) and Selenium's (ks-se-eliminate-external-services)."
+      },
       "independence": "single"
     },
     {
@@ -141,11 +206,23 @@
       "question": "best-practices",
       "claim": "When a spec touches a database, the test controls the data in it.",
       "quote": "If working with a database then make sure you control the data.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices testing with a database",
-      "trust": {"score": 80, "basis": "Tool owner's best-practices page; one short line, corroborated in substance by Selenium's do-not-share-test-data guidance."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's best-practices page; one short line, corroborated in substance by Selenium's do-not-share-test-data guidance."
+      },
       "independence": "single"
     },
     {
@@ -153,11 +230,23 @@
       "question": "best-practices",
       "claim": "A spec that runs against a live staging environment needs that environment held stable.",
       "quote": "Test against a staging environment and make sure it doesn't change.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices staging environment",
-      "trust": {"score": 80, "basis": "Tool owner's best-practices page; the only owner text found on keeping a live target stable."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's best-practices page; the only owner text found on keeping a live target stable."
+      },
       "independence": "single"
     },
     {
@@ -165,11 +254,23 @@
       "question": "best-practices",
       "claim": "Assertions that wait for the expected condition replace manual waits.",
       "quote": "By using web first assertions Playwright will wait until the expected condition is met.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices web first assertions",
-      "trust": {"score": 84, "basis": "Tool owner's page; WebdriverIO documents the same retrying-assertion design (ks-wdio-auto-retry-assertions)."},
+      "trust": {
+        "score": 64,
+        "basis": "Tool owner's page; WebdriverIO documents the same retrying-assertion design (ks-wdio-auto-retry-assertions). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says web-first assertions wait until the expected condition is met. Nothing on the best-practices page says they replace manual waits; its \"👎\" contrast is a non-waiting `expect(await ...isVisible())` assertion, not a sleep; lowered 84->64."
+      },
       "independence": "single"
     },
     {
@@ -177,11 +278,23 @@
       "question": "best-practices",
       "claim": "CI failures are debugged from a recorded trace rather than from videos and screenshots.",
       "quote": "For CI failures, use the Playwright trace viewer instead of videos and screenshots.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices trace viewer CI",
-      "trust": {"score": 78, "basis": "Tool owner's page; tool-specific, no independent corroboration found."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's page; tool-specific, no independent corroboration found."
+      },
       "independence": "single"
     },
     {
@@ -189,11 +302,23 @@
       "question": "best-practices",
       "claim": "A test never waits a fixed time; tests that wait for time are inherently flaky.",
       "quote": "Never wait for timeout in production. Tests that wait for time are inherently flaky.",
-      "citations": [{"title": "Page (page.waitForTimeout)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/api/class-page", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Page (page.waitForTimeout)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/api/class-page",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs (API reference)",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright page.waitForTimeout discouraged flaky",
-      "trust": {"score": 88, "basis": "Tool owner's API reference marks the method Discouraged in imperative words; independently corroborated by Android (pg-android-avoid-sleep), Selenium (ks-se-sleep-fails), WebdriverIO (ks-wdio-no-pause), Cypress (bp-cy-no-arbitrary-wait) and Fowler (ev-fowler-no-bare-sleeps)."},
+      "trust": {
+        "score": 88,
+        "basis": "Tool owner's API reference marks the method Discouraged in imperative words; independently corroborated by Android (pg-android-avoid-sleep), Selenium (ks-se-sleep-fails), WebdriverIO (ks-wdio-no-pause), Cypress (bp-cy-no-arbitrary-wait) and Fowler (ev-fowler-no-bare-sleeps)."
+      },
       "independence": "single"
     },
     {
@@ -201,11 +326,23 @@
       "question": "best-practices",
       "claim": "Time-dependent behaviour is tested with a controlled clock rather than real time.",
       "quote": "Accurately simulating time-dependent behavior is essential for verifying the correctness of applications.",
-      "citations": [{"title": "Clock", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/clock", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Clock",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/clock",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright clock API control time tests",
-      "trust": {"score": 78, "basis": "Tool owner's Clock guide; corroborated in substance by Fowler's wrap-the-clock advice (ev-fowler-wrap-clock)."},
+      "trust": {
+        "score": 58,
+        "basis": "Tool owner's Clock guide; corroborated in substance by Fowler's wrap-the-clock advice (ev-fowler-wrap-clock). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says simulating time-dependent behaviour is essential. Controlling the clock instead of real time is the next sentence (\"manipulate and control time within tests ... without the delays and variability of real-time execution\"), not the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -213,11 +350,23 @@
       "question": "best-practices",
       "claim": "Secrets used by specs are passed in from outside, such as environment variables, not stored in source code.",
       "quote": "It is usually a good idea not to store your secrets in the source code, so we'll need a way to pass secrets from outside.",
-      "citations": [{"title": "Parameterize tests (Passing Environment Variables)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-parameterize", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Parameterize tests (Passing Environment Variables)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-parameterize",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright environment variables secrets username password",
-      "trust": {"score": 82, "basis": "Tool owner's guide, SHOULD-strength wording (\"usually a good idea\"); MUST-strength support for the same point comes from OWASP ASVS (bp-asvs-no-secrets-in-repo)."},
+      "trust": {
+        "score": 82,
+        "basis": "Tool owner's guide, SHOULD-strength wording (\"usually a good idea\"); MUST-strength support for the same point comes from OWASP ASVS (bp-asvs-no-secrets-in-repo)."
+      },
       "independence": "single"
     },
     {
@@ -225,11 +374,23 @@
       "question": "best-practices",
       "claim": "Waiting for an arbitrary time period is an anti-pattern; waits are guarded by an explicit condition.",
       "quote": "Waiting for arbitrary time periods using cy.wait(Number).",
-      "citations": [{"title": "Best Practices (Unnecessary Waiting)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/core-concepts/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices (Unnecessary Waiting)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/core-concepts/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress best practices unnecessary waiting anti-pattern",
-      "trust": {"score": 82, "basis": "Tool owner lists it as an Anti-Pattern; independent of Playwright, Android and Selenium, which say the same."},
+      "trust": {
+        "score": 62,
+        "basis": "Tool owner lists it as an Anti-Pattern; independent of Playwright, Android and Selenium, which say the same. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the anti-pattern text. The half about guarding waits with \"an explicit condition\" comes from the separate \"Best Practice\" line beside it, which is not quoted; lowered 82->62."
+      },
       "independence": "single"
     },
     {
@@ -237,11 +398,23 @@
       "question": "best-practices",
       "claim": "Tests do not rely on the state left by previous tests; each runs and passes on its own.",
       "quote": "Tests should always be able to run independently from one another and still pass.",
-      "citations": [{"title": "Best Practices (Having Tests Rely on State of Previous Tests)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/core-concepts/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices (Having Tests Rely on State of Previous Tests)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/core-concepts/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress best practices tests rely on state of previous tests",
-      "trust": {"score": 84, "basis": "Tool owner's Best Practice line; independent corroboration from Playwright and Selenium."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's Best Practice line; independent corroboration from Playwright and Selenium."
+      },
       "independence": "single"
     },
     {
@@ -249,11 +422,23 @@
       "question": "best-practices",
       "claim": "Specs log in and set application state programmatically instead of through the UI.",
       "quote": "Test specs in isolation, programmatically log into your application, and take control of your application's state.",
-      "citations": [{"title": "Best Practices (Organizing Tests, Logging In, Controlling State)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/core-concepts/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices (Organizing Tests, Logging In, Controlling State)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/core-concepts/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress best practices logging in controlling state",
-      "trust": {"score": 82, "basis": "Tool owner's Best Practice line; Selenium independently says the same (ks-se-api-login)."},
+      "trust": {
+        "score": 82,
+        "basis": "Tool owner's Best Practice line; Selenium independently says the same (ks-se-api-login)."
+      },
       "independence": "single"
     },
     {
@@ -261,11 +446,23 @@
       "question": "best-practices",
       "claim": "State is reset before each test runs rather than cleaned up after.",
       "quote": "Clean up state before tests run.",
-      "citations": [{"title": "Best Practices (Using after or afterEach Hooks)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/core-concepts/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices (Using after or afterEach Hooks)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/core-concepts/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress best practices after afterEach hooks clean up state",
-      "trust": {"score": 76, "basis": "Tool owner's Best Practice line; no independent owner text found on before-versus-after cleanup specifically."},
+      "trust": {
+        "score": 76,
+        "basis": "Tool owner's Best Practice line; no independent owner text found on before-versus-after cleanup specifically."
+      },
       "independence": "single"
     },
     {
@@ -273,11 +470,23 @@
       "question": "best-practices",
       "claim": "Test cases are traced to the test-basis elements (requirements, plans) they derive from.",
       "quote": "To implement effective test monitoring and test control, it is important to establish and maintain traceability throughout the test process between the test basis elements, testware associated with these elements (e.g., test conditions, risks, test cases), test results, and defects.",
-      "citations": [{"title": "Certified Tester Foundation Level Syllabus v4.0.1, section 1.4.4 Traceability between the Test Basis and Testware", "author": "International Software Testing Qualifications Board", "publisher": "ISTQB", "date": "2024-09-15", "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Certified Tester Foundation Level Syllabus v4.0.1, section 1.4.4 Traceability between the Test Basis and Testware",
+          "author": "International Software Testing Qualifications Board",
+          "publisher": "ISTQB",
+          "date": "2024-09-15",
+          "url": "https://www.istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "certification syllabus (testing body of knowledge)",
       "generated_by": "grow-cookbook research agent",
       "query": "ISTQB glossary test basis traceability test case requirements",
-      "trust": {"score": 74, "basis": "The international testing-qualifications body's current syllabus; SHOULD-strength (\"it is important\"), general to all testing rather than E2E-specific; no second independent source found requiring a per-assertion rationale."},
+      "trust": {
+        "score": 74,
+        "basis": "The international testing-qualifications body's current syllabus; SHOULD-strength (\"it is important\"), general to all testing rather than E2E-specific; no second independent source found requiring a per-assertion rationale."
+      },
       "independence": "single"
     },
     {
@@ -285,11 +494,23 @@
       "question": "best-practices",
       "claim": "Passwords, secrets and API keys are not included in source code or stored in source repositories.",
       "quote": "and API keys are managed securely and not included in the source code or stored within source code repositories.",
-      "citations": [{"title": "Application Security Verification Standard 4.0.3, V2 Authentication, requirement 2.10.4", "author": "OWASP Foundation", "publisher": "OWASP", "date": "2021-10", "url": "https://raw.githubusercontent.com/OWASP/ASVS/v4.0.3/4.0/en/0x11-V2-Authentication.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Application Security Verification Standard 4.0.3, V2 Authentication, requirement 2.10.4",
+          "author": "OWASP Foundation",
+          "publisher": "OWASP",
+          "date": "2021-10",
+          "url": "https://raw.githubusercontent.com/OWASP/ASVS/v4.0.3/4.0/en/0x11-V2-Authentication.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "security verification standard",
       "generated_by": "grow-cookbook research agent",
       "query": "OWASP ASVS 2.10.4 secrets not included in source code",
-      "trust": {"score": 84, "basis": "OWASP's verification standard states it as a requirement to verify (MUST strength); not test-specific, but test credentials are credentials; corroborated by Playwright (bp-pw-env-secrets) and OWASP's cheat sheet."},
+      "trust": {
+        "score": 84,
+        "basis": "OWASP's verification standard states it as a requirement to verify (MUST strength); not test-specific, but test credentials are credentials; corroborated by Playwright (bp-pw-env-secrets) and OWASP's cheat sheet."
+      },
       "independence": "single"
     },
     {
@@ -297,11 +518,23 @@
       "question": "best-practices",
       "claim": "Tests use dedicated, standard test secrets rather than real ones.",
       "quote": "Create standard test secrets and use them universally across the organization.",
-      "citations": [{"title": "Secrets Management Cheat Sheet", "author": "OWASP Foundation", "publisher": "OWASP Cheat Sheet Series", "date": "n.d.", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Secrets Management Cheat Sheet",
+          "author": "OWASP Foundation",
+          "publisher": "OWASP Cheat Sheet Series",
+          "date": "n.d.",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "security guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OWASP secrets management cheat sheet test secrets CI/CD",
-      "trust": {"score": 72, "basis": "OWASP community guidance (authoritative for security, not a standard); SHOULD strength; corroborated by Playwright's dedicated test accounts (ks-pw-account-per-worker)."},
+      "trust": {
+        "score": 52,
+        "basis": "OWASP community guidance (authoritative for security, not a standard); SHOULD strength; corroborated by Playwright's dedicated test accounts (ks-pw-account-per-worker). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is under \"8.1 General detection approaches\". Standard test secrets are meant to cut secret-scanner false positives, not to tell tests to use fake secrets instead of real ones; lowered 72->52."
+      },
       "independence": "single"
     },
     {
@@ -309,11 +542,23 @@
       "question": "best-practices",
       "claim": "Production secrets are kept apart from development and test secrets.",
       "quote": "Consider separating the production and development secrets by having separate secret management solutions.",
-      "citations": [{"title": "Secrets Management Cheat Sheet", "author": "OWASP Foundation", "publisher": "OWASP Cheat Sheet Series", "date": "n.d.", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Secrets Management Cheat Sheet",
+          "author": "OWASP Foundation",
+          "publisher": "OWASP Cheat Sheet Series",
+          "date": "n.d.",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "security guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "OWASP secrets management cheat sheet separate production development secrets",
-      "trust": {"score": 68, "basis": "OWASP community guidance at \"consider\" strength (MAY/SHOULD); single source."},
+      "trust": {
+        "score": 48,
+        "basis": "OWASP community guidance at \"consider\" strength (MAY/SHOULD); single source. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): OWASP says only \"Consider\" separate secret-management solutions, a weaker strength than the claim. It names production and development secrets, not test secrets; lowered 68->48."
+      },
       "independence": "single"
     },
     {
@@ -321,11 +566,23 @@
       "question": "best-practices",
       "claim": "Synthetic data used in place of personal data helps meet the data-minimisation principle.",
       "quote": "can help you comply with the data minimisation principle.",
-      "citations": [{"title": "Synthetic data (privacy-enhancing technologies guidance)", "author": "Information Commissioner's Office", "publisher": "ICO", "date": "n.d.", "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/privacy-enhancing-technologies/what-pets-are-there/synthetic-data", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Synthetic data (privacy-enhancing technologies guidance)",
+          "author": "Information Commissioner's Office",
+          "publisher": "ICO",
+          "date": "n.d.",
+          "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/privacy-enhancing-technologies/what-pets-are-there/synthetic-data",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "regulator guidance",
       "generated_by": "grow-cookbook research agent",
       "query": "using production personal data in test environments guidance synthetic test data privacy",
-      "trust": {"score": 68, "basis": "UK data-protection regulator, authoritative on the principle; the page does not name testing explicitly and is marked under review, so it supports the real-user-data half only by application; corroborated by Thoughtworks (ev-thoughtworks-prod-data)."},
+      "trust": {
+        "score": 68,
+        "basis": "UK data-protection regulator, authoritative on the principle; the page does not name testing explicitly and is marked under review, so it supports the real-user-data half only by application; corroborated by Thoughtworks (ev-thoughtworks-prod-data)."
+      },
       "independence": "single"
     },
     {
@@ -333,11 +590,23 @@
       "question": "known-solutions",
       "claim": "Playwright can mock and modify HTTP and HTTPS traffic from within a spec.",
       "quote": "Playwright provides APIs to mock and modify network traffic, both HTTP and HTTPS.",
-      "citations": [{"title": "Mock APIs", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/mock", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Mock APIs",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/mock",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright mock API page.route HAR",
-      "trust": {"score": 84, "basis": "Tool owner's documentation of its own capability; descriptive, current."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's documentation of its own capability; descriptive, current."
+      },
       "independence": "single"
     },
     {
@@ -345,11 +614,23 @@
       "question": "known-solutions",
       "claim": "Recorded HAR files can be replayed as mocks, matched strictly on URL and method.",
       "quote": "HAR replay matches URL and HTTP method strictly.",
-      "citations": [{"title": "Mock APIs (Mocking with HAR files)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/mock", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Mock APIs (Mocking with HAR files)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/mock",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright mock API page.route HAR",
-      "trust": {"score": 78, "basis": "Tool owner's documentation; descriptive."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's documentation; descriptive."
+      },
       "independence": "single"
     },
     {
@@ -357,11 +638,23 @@
       "question": "known-solutions",
       "claim": "Playwright auto-waits for actionability checks before every action.",
       "quote": "It auto-waits for all the relevant checks to pass and only then performs the requested action.",
-      "citations": [{"title": "Auto-waiting", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/actionability", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Auto-waiting",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/actionability",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright actionability auto-waiting",
-      "trust": {"score": 84, "basis": "Tool owner's documentation of its own behaviour."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's documentation of its own behaviour."
+      },
       "independence": "single"
     },
     {
@@ -369,11 +662,23 @@
       "question": "known-solutions",
       "claim": "A test that fails first and passes on retry is reported as flaky, not as passed.",
       "quote": "\"flaky\" - tests that failed on the first run, but passed when retried;",
-      "citations": [{"title": "Retries", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-retries", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Retries",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-retries",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright test retries flaky worker",
-      "trust": {"score": 80, "basis": "Tool owner's documentation; Android independently pairs retries with fixing flaky tests (pg-android-retries-fix)."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's documentation; Android independently pairs retries with fixing flaky tests (pg-android-retries-fix)."
+      },
       "independence": "single"
     },
     {
@@ -381,11 +686,23 @@
       "question": "known-solutions",
       "claim": "Playwright gives each test its own storage and cookies through a fresh browser context.",
       "quote": "This means that each test has its own local storage, session storage, cookies etc.",
-      "citations": [{"title": "Isolation", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/browser-contexts", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Isolation",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/browser-contexts",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright browser contexts test isolation",
-      "trust": {"score": 84, "basis": "Tool owner's documentation of its isolation model."},
+      "trust": {
+        "score": 64,
+        "basis": "Tool owner's documentation of its isolation model. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote defines test isolation (each test has its own storage and cookies). \"Through a fresh browser context\" is a separate next sentence (\"Playwright achieves this using BrowserContexts\"), not the quote; lowered 84->64."
+      },
       "independence": "single"
     },
     {
@@ -393,11 +710,23 @@
       "question": "known-solutions",
       "claim": "Fixtures give each test exactly the environment it needs and are isolated between tests.",
       "quote": "Test fixtures are used to establish the environment for each test, giving the test everything it needs and nothing else.",
-      "citations": [{"title": "Fixtures", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-fixtures", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Fixtures",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-fixtures",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright test fixtures isolated page object model",
-      "trust": {"score": 80, "basis": "Tool owner's documentation; descriptive of a pattern."},
+      "trust": {
+        "score": 60,
+        "basis": "Tool owner's documentation; descriptive of a pattern. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers only the \"environment each test needs\" half. \"Test fixtures are isolated between tests\" is the next sentence and is not quoted; lowered 80->60."
+      },
       "independence": "single"
     },
     {
@@ -405,11 +734,23 @@
       "question": "known-solutions",
       "claim": "Tests can be tagged and a run selected by tag.",
       "quote": "Sometimes you want to tag your tests as @fast or @slow, and then filter by tag in the test report.",
-      "citations": [{"title": "Annotations (Tag tests)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-annotations", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Annotations (Tag tests)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-annotations",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright test annotations tags grep",
-      "trust": {"score": 76, "basis": "Tool owner's documentation of a mechanism; it does not itself prescribe tagging live specs."},
+      "trust": {
+        "score": 56,
+        "basis": "Tool owner's documentation of a mechanism; it does not itself prescribe tagging live specs. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers tagging and filtering by tag in the test report. Choosing which tests run by tag is the next sentence (\"only run tests that have a certain tag\"), not the quote; lowered 76->56."
+      },
       "independence": "single"
     },
     {
@@ -417,11 +758,23 @@
       "question": "known-solutions",
       "claim": "A test can carry annotations, such as a link to an issue, that appear in the report.",
       "quote": "Annotations have a type and a description for more context and available in reporter API.",
-      "citations": [{"title": "Annotations (Custom annotations)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-annotations", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Annotations (Custom annotations)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-annotations",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright test annotations tags grep",
-      "trust": {"score": 72, "basis": "Tool owner's documentation of a mechanism that can carry a rationale's source; does not require one."},
+      "trust": {
+        "score": 72,
+        "basis": "Tool owner's documentation of a mechanism that can carry a rationale's source; does not require one."
+      },
       "independence": "single"
     },
     {
@@ -429,11 +782,23 @@
       "question": "known-solutions",
       "claim": "Projects run groups of tests against different environments with their own settings, such as retries.",
       "quote": "we can run our tests against a staging environment with 2 retries",
-      "citations": [{"title": "Projects", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-projects", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Projects",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-projects",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright projects staging production environment",
-      "trust": {"score": 78, "basis": "Tool owner's documentation of a mechanism for keeping live runs apart."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's documentation of a mechanism for keeping live runs apart."
+      },
       "independence": "single"
     },
     {
@@ -441,11 +806,23 @@
       "question": "known-solutions",
       "claim": "Projects can filter which tests they run, so live and hermetic specs can be run separately.",
       "quote": "We can split tests into projects and use filters to run a subset of tests.",
-      "citations": [{"title": "Projects", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-projects", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Projects",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-projects",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright projects staging production environment",
-      "trust": {"score": 76, "basis": "Tool owner's documentation of a mechanism."},
+      "trust": {
+        "score": 56,
+        "basis": "Tool owner's documentation of a mechanism. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports projects with filters running a subset of tests. Running \"live and hermetic specs separately\" is an application of that and is not in the source; its example is a \"smoke\" project; lowered 76->56."
+      },
       "independence": "single"
     },
     {
@@ -453,11 +830,23 @@
       "question": "known-solutions",
       "claim": "An environment variable can switch a run between a staging and a production target.",
       "quote": "Now, you can run tests against a staging or a production environment:",
-      "citations": [{"title": "Parameterize tests (Passing Environment Variables)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/test-parameterize", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Parameterize tests (Passing Environment Variables)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/test-parameterize",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright environment variables secrets username password",
-      "trust": {"score": 74, "basis": "Tool owner's documentation of a mechanism; does not prescribe it."},
+      "trust": {
+        "score": 74,
+        "basis": "Tool owner's documentation of a mechanism; does not prescribe it."
+      },
       "independence": "single"
     },
     {
@@ -465,11 +854,23 @@
       "question": "known-solutions",
       "claim": "Stored authentication state lives in a directory that is git-ignored.",
       "quote": "We recommend to create playwright/.auth directory and add it to your .gitignore.",
-      "citations": [{"title": "Authentication", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/auth", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Authentication",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/auth",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright authentication storage state gitignore",
-      "trust": {"score": 84, "basis": "Tool owner's explicit recommendation (SHOULD); Cypress gives the same advice for its env file (ks-cy-env-gitignore)."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's explicit recommendation (SHOULD); Cypress gives the same advice for its env file (ks-cy-env-gitignore)."
+      },
       "independence": "single"
     },
     {
@@ -477,11 +878,23 @@
       "question": "known-solutions",
       "claim": "A stored browser-state file holds secrets that can impersonate the test account.",
       "quote": "The browser state file may contain sensitive cookies and headers that could be used to impersonate you or your test account.",
-      "citations": [{"title": "Authentication", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/auth", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Authentication",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/auth",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright authentication storage state gitignore",
-      "trust": {"score": 84, "basis": "Tool owner's warning on its own feature."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's warning on its own feature."
+      },
       "independence": "single"
     },
     {
@@ -489,11 +902,23 @@
       "question": "known-solutions",
       "claim": "Tests that change server-side state use one test account per parallel worker.",
       "quote": "We will need multiple testing accounts, one per each parallel worker.",
-      "citations": [{"title": "Authentication", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/auth", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Authentication",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/auth",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright authentication storage state gitignore",
-      "trust": {"score": 76, "basis": "Tool owner's documentation of a pattern for server-side state; single source."},
+      "trust": {
+        "score": 56,
+        "basis": "Tool owner's documentation of a pattern for server-side state; single source. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote states only that one account per worker is needed. The \"tests that change server-side state\" condition is in separate sentences of the section (\"This is the recommended approach for tests that modify server-side state\"); lowered 76->56."
+      },
       "independence": "single"
     },
     {
@@ -501,11 +926,23 @@
       "question": "known-solutions",
       "claim": "Playwright runs tests in parallel by default, which makes isolation a precondition.",
       "quote": "Playwright runs tests in parallel by default.",
-      "citations": [{"title": "Best Practices", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright best practices parallelism sharding",
-      "trust": {"score": 80, "basis": "Tool owner's description of its own default."},
+      "trust": {
+        "score": 60,
+        "basis": "Tool owner's description of its own default. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source states only the parallel-by-default fact. It does not say this makes isolation a precondition; it adds that tests in one file run in order in the same worker; lowered 80->60."
+      },
       "independence": "single"
     },
     {
@@ -513,11 +950,23 @@
       "question": "known-solutions",
       "claim": "Most specs stub the network, with one true end-to-end test kept against the real server.",
       "quote": "Mix and match, typically have one true end-to-end test, and then stub the rest",
-      "citations": [{"title": "Network Requests (Stub Responses)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/guides/network-requests", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Network Requests (Stub Responses)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/guides/network-requests",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress network requests stub responses vs server responses",
-      "trust": {"score": 80, "basis": "Tool owner's suggested use; corroborated in direction by Playwright's network-API advice (bp-pw-use-network-api)."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's suggested use; corroborated in direction by Playwright's network-API advice (bp-pw-use-network-api)."
+      },
       "independence": "single"
     },
     {
@@ -525,11 +974,23 @@
       "question": "known-solutions",
       "claim": "Specs against the real server are used sparingly and kept for the critical paths.",
       "quote": "Great for the critical paths of your application",
-      "citations": [{"title": "Network Requests (Use Server Responses)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/guides/network-requests", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Network Requests (Use Server Responses)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/guides/network-requests",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress network requests stub responses vs server responses",
-      "trust": {"score": 78, "basis": "Tool owner's suggested use; single source."},
+      "trust": {
+        "score": 58,
+        "basis": "Tool owner's suggested use; single source. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote says real-server tests are \"Great for\" critical paths, not that they are kept only for them. \"Use sparingly\" is a separate bullet, not the quote. The list also says \"Helpful to have one test around the happy path of a feature\"; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -537,11 +998,23 @@
       "question": "known-solutions",
       "claim": "Stubbed responses can drift from what the real server sends, which is why some live coverage remains.",
       "quote": "No guarantee your stubbed responses match the actual data the server sends",
-      "citations": [{"title": "Network Requests (Stub Responses)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/guides/network-requests", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Network Requests (Stub Responses)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/guides/network-requests",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress network requests stub responses vs server responses",
-      "trust": {"score": 78, "basis": "Tool owner's stated downside of its own feature."},
+      "trust": {
+        "score": 58,
+        "basis": "Tool owner's stated downside of its own feature. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source lists the drift risk as a downside of stubbing. The conclusion that some live coverage therefore remains is the researcher's inference, not the quote; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -549,11 +1022,23 @@
       "question": "known-solutions",
       "claim": "Cypress recommends dedicated data-* attributes as selectors, isolated from CSS and JS changes.",
       "quote": "Use data-* attributes to provide context to your selectors and isolate them from CSS or JS changes.",
-      "citations": [{"title": "Best Practices (Selecting Elements)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/core-concepts/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices (Selecting Elements)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/core-concepts/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress best practices selecting elements data-cy",
-      "trust": {"score": 78, "basis": "Tool owner's Best Practice; differs from Testing Library's role-first order (pg-tl-testid-last), so it is one tool's preference, not consensus."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's Best Practice; differs from Testing Library's role-first order (pg-tl-testid-last), so it is one tool's preference, not consensus."
+      },
       "independence": "single"
     },
     {
@@ -561,11 +1046,23 @@
       "question": "known-solutions",
       "claim": "Selectors that are brittle and subject to change are an anti-pattern.",
       "quote": "Using highly brittle selectors that are subject to change.",
-      "citations": [{"title": "Best Practices (Selecting Elements)", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/core-concepts/best-practices", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices (Selecting Elements)",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/core-concepts/best-practices",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress best practices selecting elements data-cy",
-      "trust": {"score": 80, "basis": "Tool owner's Anti-Pattern line; independent of Playwright's CSS/XPath warning (pg-pw-css-xpath-not-recommended)."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's Anti-Pattern line; independent of Playwright's CSS/XPath warning (pg-pw-css-xpath-not-recommended)."
+      },
       "independence": "single"
     },
     {
@@ -573,11 +1070,23 @@
       "question": "known-solutions",
       "claim": "A local env file holding sensitive values is git-ignored.",
       "quote": "Add cypress.env.json to .gitignore if it contains sensitive data.",
-      "citations": [{"title": "Environment Variables", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/guides/environment-variables", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Environment Variables",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/guides/environment-variables",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress environment variables secrets gitignore",
-      "trust": {"score": 78, "basis": "Tool owner's instruction; independent of Playwright's matching advice."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's instruction; independent of Playwright's matching advice."
+      },
       "independence": "single"
     },
     {
@@ -585,11 +1094,23 @@
       "question": "known-solutions",
       "claim": "Values a spec hands to the browser are visible to the app, third-party scripts and extensions.",
       "quote": "Values are accessible to application code, third-party scripts, and browser extensions.",
-      "citations": [{"title": "Environment Variables", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/app/guides/environment-variables", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Environment Variables",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/app/guides/environment-variables",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress environment variables secrets gitignore",
-      "trust": {"score": 74, "basis": "Tool owner's warning on its own feature; single source."},
+      "trust": {
+        "score": 74,
+        "basis": "Tool owner's warning on its own feature; single source."
+      },
       "independence": "single"
     },
     {
@@ -597,11 +1118,23 @@
       "question": "known-solutions",
       "claim": "Session caching keeps passwords and tokens out of anything written to the test log.",
       "quote": "Cypress shows the id in the Command Log, so we recommend keeping sensitive data such as passwords and tokens out of it.",
-      "citations": [{"title": "session", "author": "Cypress.io, Inc.", "publisher": "Cypress Documentation", "date": "n.d.", "url": "https://docs.cypress.io/api/commands/session", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "session",
+          "author": "Cypress.io, Inc.",
+          "publisher": "Cypress Documentation",
+          "date": "n.d.",
+          "url": "https://docs.cypress.io/api/commands/session",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Cypress cy.session cache login passwords command log",
-      "trust": {"score": 76, "basis": "Tool owner's recommendation; GitHub gives the same advice for CI logs (ks-gha-dont-print)."},
+      "trust": {
+        "score": 56,
+        "basis": "Tool owner's recommendation; GitHub gives the same advice for CI logs (ks-gha-dont-print). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The advice covers only the cy.session id, because Cypress shows that id in the Command Log. The claim widens it to \"anything written to the test log\"; lowered 76->56."
+      },
       "independence": "single"
     },
     {
@@ -609,11 +1142,23 @@
       "question": "known-solutions",
       "claim": "WebdriverIO recommends role-plus-name selectors because they survive class, test id and DOM changes.",
       "quote": "A role plus a name keeps matching when class names, test ids or the DOM structure change.",
-      "citations": [{"title": "Selectors", "author": "WebdriverIO project (OpenJS Foundation)", "publisher": "WebdriverIO", "date": "n.d.", "url": "https://webdriver.io/docs/selectors/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Selectors",
+          "author": "WebdriverIO project (OpenJS Foundation)",
+          "publisher": "WebdriverIO",
+          "date": "n.d.",
+          "url": "https://webdriver.io/docs/selectors/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "WebdriverIO selectors best practices role data-testid",
-      "trust": {"score": 78, "basis": "Tool owner's documentation; independent of Playwright and Testing Library, which also put role first."},
+      "trust": {
+        "score": 58,
+        "basis": "Tool owner's documentation; independent of Playwright and Testing Library, which also put role first. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says that role plus name keeps matching through class, test-id and DOM changes; it makes no recommendation. \"Prefer the role selector\" appears elsewhere, and only in contrast to `[role=button]`. The page's own selector table rates `button=Submit` \"Always / Best\" and `aria/` only \"Good\"; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -621,11 +1166,23 @@
       "question": "known-solutions",
       "claim": "Fixed pauses are not resilient and cause flaky tests; wait for a condition instead.",
       "quote": "using this is a bad idea as it isn't resilient and will only cause flaky tests in the long run.",
-      "citations": [{"title": "Best Practices", "author": "WebdriverIO project (OpenJS Foundation)", "publisher": "WebdriverIO", "date": "n.d.", "url": "https://webdriver.io/docs/bestpractices/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "WebdriverIO project (OpenJS Foundation)",
+          "publisher": "WebdriverIO",
+          "date": "n.d.",
+          "url": "https://webdriver.io/docs/bestpractices/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "WebdriverIO best practices pause waitFor",
-      "trust": {"score": 78, "basis": "Tool owner's best-practices page; independent corroboration of the no-sleep rule."},
+      "trust": {
+        "score": 58,
+        "basis": "Tool owner's best-practices page; independent corroboration of the no-sleep rule. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers \"not resilient, flaky\". \"Wait for a condition instead\" appears only in a code example (`waitForEnabled()`), not in the quoted text; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -633,11 +1190,23 @@
       "question": "known-solutions",
       "claim": "Assertions that do not wait for their result cause flaky tests; retrying assertions are used instead.",
       "quote": "Don't use manual assertions that do not automatically wait for the results to match as this will cause for flaky tests.",
-      "citations": [{"title": "Best Practices", "author": "WebdriverIO project (OpenJS Foundation)", "publisher": "WebdriverIO", "date": "n.d.", "url": "https://webdriver.io/docs/bestpractices/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Best Practices",
+          "author": "WebdriverIO project (OpenJS Foundation)",
+          "publisher": "WebdriverIO",
+          "date": "n.d.",
+          "url": "https://webdriver.io/docs/bestpractices/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "WebdriverIO best practices pause waitFor",
-      "trust": {"score": 78, "basis": "Tool owner's best-practices page; matches Playwright's web-first assertions independently."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's best-practices page; matches Playwright's web-first assertions independently."
+      },
       "independence": "single"
     },
     {
@@ -645,11 +1214,23 @@
       "question": "known-solutions",
       "claim": "Selenium's own locator order prefers unique IDs, then well-written CSS, over XPath.",
       "quote": "If unique IDs are unavailable, a well-written CSS selector is the preferred method of locating an element.",
-      "citations": [{"title": "Tips on working with locators", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/test_practices/encouraged/locators/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Tips on working with locators",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/test_practices/encouraged/locators/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium locators best practice id css xpath",
-      "trust": {"score": 74, "basis": "Tool owner's guidance, but it predates and differs from the user-facing-first order of Playwright, Testing Library and WebdriverIO; recorded as the comparison point, not as best practice."},
+      "trust": {
+        "score": 74,
+        "basis": "Tool owner's guidance, but it predates and differs from the user-facing-first order of Playwright, Testing Library and WebdriverIO; recorded as the comparison point, not as best practice."
+      },
       "independence": "single"
     },
     {
@@ -657,11 +1238,23 @@
       "question": "known-solutions",
       "claim": "A fixed sleep fails whenever it is not long enough, because code cannot know how long to wait.",
       "quote": "Because the code can’t know exactly how long it needs to wait, this can fail when it doesn’t sleep long enough.",
-      "citations": [{"title": "Waiting Strategies", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/webdriver/waits/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Waiting Strategies",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/webdriver/waits/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium waits sleep implicit explicit",
-      "trust": {"score": 80, "basis": "Tool owner's documentation; independent corroboration of the no-sleep rule."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's documentation; independent corroboration of the no-sleep rule."
+      },
       "independence": "single"
     },
     {
@@ -669,11 +1262,23 @@
       "question": "known-solutions",
       "claim": "Selenium specs do not mix implicit and explicit waits.",
       "quote": "Do not mix implicit and explicit waits. Doing so can cause unpredictable wait times.",
-      "citations": [{"title": "Waiting Strategies", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/webdriver/waits/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Waiting Strategies",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/webdriver/waits/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium waits sleep implicit explicit",
-      "trust": {"score": 80, "basis": "Tool owner's imperative; WebDriver-specific."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's imperative; WebDriver-specific."
+      },
       "independence": "single"
     },
     {
@@ -681,11 +1286,23 @@
       "question": "known-solutions",
       "claim": "Tests do not share test data.",
       "quote": "Do not share test data.",
-      "citations": [{"title": "Avoid Sharing State", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/test_practices/encouraged/avoid_sharing_state/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Avoid Sharing State",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/test_practices/encouraged/avoid_sharing_state/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium avoid sharing state test isolation",
-      "trust": {"score": 80, "basis": "Tool owner's imperative; independent corroboration of isolation."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's imperative; independent corroboration of isolation."
+      },
       "independence": "single"
     },
     {
@@ -693,11 +1310,23 @@
       "question": "known-solutions",
       "claim": "Each test gets a new browser driver instance, which isolates tests and simplifies parallel runs.",
       "quote": "Create a new WebDriver instance per test. This helps ensure test isolation and makes parallelization simpler.",
-      "citations": [{"title": "Avoid Sharing State", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/test_practices/encouraged/avoid_sharing_state/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Avoid Sharing State",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/test_practices/encouraged/avoid_sharing_state/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium avoid sharing state test isolation",
-      "trust": {"score": 78, "basis": "Tool owner's guidance; matches Playwright's browser-context-per-test model."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's guidance; matches Playwright's browser-context-per-test model."
+      },
       "independence": "single"
     },
     {
@@ -705,11 +1334,23 @@
       "question": "known-solutions",
       "claim": "Logging in through an API rather than the browser before each test improves speed and stability.",
       "quote": "Eliminating logging in via web browser before every test will improve both the speed and stability of the test.",
-      "citations": [{"title": "Generating application state", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/test_practices/encouraged/generating_application_state/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Generating application state",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/test_practices/encouraged/generating_application_state/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium generating application state login API cookie",
-      "trust": {"score": 78, "basis": "Tool owner's guidance; independent of Cypress's programmatic-login advice."},
+      "trust": {
+        "score": 78,
+        "basis": "Tool owner's guidance; independent of Cypress's programmatic-login advice."
+      },
       "independence": "single"
     },
     {
@@ -717,11 +1358,23 @@
       "question": "known-solutions",
       "claim": "Removing dependencies on external services makes E2E tests faster and more stable.",
       "quote": "Eliminating the dependencies on external services will greatly improve the speed and stability of your tests.",
-      "citations": [{"title": "Mock External Services", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/test_practices/encouraged/mock_external_services/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Mock External Services",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/test_practices/encouraged/mock_external_services/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium mock external services",
-      "trust": {"score": 76, "basis": "Tool owner's guidance (one sentence); independent of Playwright and Cypress."},
+      "trust": {
+        "score": 76,
+        "basis": "Tool owner's guidance (one sentence); independent of Playwright and Cypress."
+      },
       "independence": "single"
     },
     {
@@ -729,11 +1382,23 @@
       "question": "known-solutions",
       "claim": "Page objects hold no assertions; verification stays in the test.",
       "quote": "Page objects themselves should never make verifications or assertions.",
-      "citations": [{"title": "Page object models", "author": "Selenium Project", "publisher": "Selenium", "date": "n.d.", "url": "https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Page object models",
+          "author": "Selenium Project",
+          "publisher": "Selenium",
+          "date": "n.d.",
+          "url": "https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Selenium page object models assertions",
-      "trust": {"score": 76, "basis": "Tool owner's guidance; Fowler independently favours the same (ev-fowler-po-no-assertions)."},
+      "trust": {
+        "score": 76,
+        "basis": "Tool owner's guidance; Fowler independently favours the same (ev-fowler-po-no-assertions)."
+      },
       "independence": "single"
     },
     {
@@ -741,11 +1406,23 @@
       "question": "known-solutions",
       "claim": "CI secrets are withheld from runs triggered from forked repositories.",
       "quote": "secrets are not passed to the runner when a workflow is triggered from a forked repository.",
-      "citations": [{"title": "Using secrets in GitHub Actions", "author": "GitHub, Inc.", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Using secrets in GitHub Actions",
+          "author": "GitHub, Inc.",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub Actions secrets forked repository masking logs",
-      "trust": {"score": 80, "basis": "CI platform owner's documentation of its own behaviour; bears on gating live specs that need secrets."},
+      "trust": {
+        "score": 60,
+        "basis": "CI platform owner's documentation of its own behaviour; bears on gating live specs that need secrets. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source covers GitHub Actions only, and exempts GITHUB_TOKEN (\"With the exception of GITHUB_TOKEN\"). The claim widens it to all \"CI secrets\" and leaves out the exception; lowered 80->60."
+      },
       "independence": "single"
     },
     {
@@ -753,11 +1430,23 @@
       "question": "known-solutions",
       "claim": "Secrets are kept from being printed in CI logs.",
       "quote": "Be careful that your secrets do not get printed when your workflow runs.",
-      "citations": [{"title": "Using secrets in GitHub Actions", "author": "GitHub, Inc.", "publisher": "GitHub Docs", "date": "n.d.", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Using secrets in GitHub Actions",
+          "author": "GitHub, Inc.",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "GitHub Actions secrets forked repository masking logs",
-      "trust": {"score": 78, "basis": "CI platform owner's caution; SHOULD strength."},
+      "trust": {
+        "score": 78,
+        "basis": "CI platform owner's caution; SHOULD strength."
+      },
       "independence": "single"
     },
     {
@@ -765,11 +1454,23 @@
       "question": "platform-guidelines",
       "claim": "Locators prioritise user-facing attributes and explicit contracts.",
       "quote": "To make tests resilient, we recommend prioritizing user-facing attributes and explicit contracts such as",
-      "citations": [{"title": "Locators", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/locators", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Locators",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/locators",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright locators getByRole recommended",
-      "trust": {"score": 86, "basis": "Tool owner's locator guide (SHOULD, \"we recommend\"); independently corroborated by Testing Library (pg-tl-byrole-top) and WebdriverIO (ks-wdio-role-selector)."},
+      "trust": {
+        "score": 86,
+        "basis": "Tool owner's locator guide (SHOULD, \"we recommend\"); independently corroborated by Testing Library (pg-tl-byrole-top) and WebdriverIO (ks-wdio-role-selector)."
+      },
       "independence": "single"
     },
     {
@@ -777,11 +1478,23 @@
       "question": "platform-guidelines",
       "claim": "Role locators find elements by their explicit and implicit accessibility attributes.",
       "quote": "page.getByRole() to locate by explicit and implicit accessibility attributes.",
-      "citations": [{"title": "Locators", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/locators", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Locators",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/locators",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright locators getByRole recommended",
-      "trust": {"score": 84, "basis": "Tool owner's locator guide; descriptive."},
+      "trust": {
+        "score": 84,
+        "basis": "Tool owner's locator guide; descriptive."
+      },
       "independence": "single"
     },
     {
@@ -789,11 +1502,23 @@
       "question": "platform-guidelines",
       "claim": "Playwright calls test ids the most resilient locator because they survive text and role changes.",
       "quote": "Testing by test ids is the most resilient way of testing as even if your text or role of the attribute changes,",
-      "citations": [{"title": "Locators (Locate by test id)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/locators", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Locators (Locate by test id)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/locators",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright locators getByTestId when to use",
-      "trust": {"score": 80, "basis": "Tool owner's guide; it sits in tension with Testing Library's last-resort placement (pg-tl-testid-last), so it supports test ids as a permitted choice, not a first one."},
+      "trust": {
+        "score": 80,
+        "basis": "Tool owner's guide; it sits in tension with Testing Library's last-resort placement (pg-tl-testid-last), so it supports test ids as a permitted choice, not a first one."
+      },
       "independence": "single"
     },
     {
@@ -801,11 +1526,23 @@
       "question": "platform-guidelines",
       "claim": "CSS and XPath locators are not recommended because DOM changes break them.",
       "quote": "CSS and XPath are not recommended as the DOM can often change leading to non resilient tests.",
-      "citations": [{"title": "Locators (Locate by CSS or XPath)", "author": "Microsoft (Playwright project)", "publisher": "Playwright", "date": "n.d.", "url": "https://playwright.dev/docs/locators", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Locators (Locate by CSS or XPath)",
+          "author": "Microsoft (Playwright project)",
+          "publisher": "Playwright",
+          "date": "n.d.",
+          "url": "https://playwright.dev/docs/locators",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Playwright locators CSS XPath not recommended",
-      "trust": {"score": 86, "basis": "Tool owner's guide (SHOULD NOT); independently corroborated by Cypress (ks-cy-brittle-selectors), WebdriverIO and Fowler (ev-fowler-po-brittle)."},
+      "trust": {
+        "score": 86,
+        "basis": "Tool owner's guide (SHOULD NOT); independently corroborated by Cypress (ks-cy-brittle-selectors), WebdriverIO and Fowler (ev-fowler-po-brittle)."
+      },
       "independence": "single"
     },
     {
@@ -813,11 +1550,23 @@
       "question": "platform-guidelines",
       "claim": "A test resembles how users interact with the product as much as possible.",
       "quote": "your test should resemble how users interact with your code (component, page, etc.) as much as possible.",
-      "citations": [{"title": "About Queries (Priority)", "author": "Testing Library contributors", "publisher": "Testing Library", "date": "n.d.", "url": "https://testing-library.com/docs/queries/about/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "About Queries (Priority)",
+          "author": "Testing Library contributors",
+          "publisher": "Testing Library",
+          "date": "n.d.",
+          "url": "https://testing-library.com/docs/queries/about/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Testing Library query priority getByRole",
-      "trust": {"score": 84, "basis": "The library owner's documented principle, which Playwright and WebdriverIO locators follow; independent of Playwright."},
+      "trust": {
+        "score": 84,
+        "basis": "The library owner's documented principle, which Playwright and WebdriverIO locators follow; independent of Playwright."
+      },
       "independence": "single"
     },
     {
@@ -825,11 +1574,23 @@
       "question": "platform-guidelines",
       "claim": "Role queries over the accessibility tree are the first choice for almost every element.",
       "quote": "This should be your top preference for just about everything.",
-      "citations": [{"title": "About Queries (Priority: getByRole)", "author": "Testing Library contributors", "publisher": "Testing Library", "date": "n.d.", "url": "https://testing-library.com/docs/queries/about/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "About Queries (Priority: getByRole)",
+          "author": "Testing Library contributors",
+          "publisher": "Testing Library",
+          "date": "n.d.",
+          "url": "https://testing-library.com/docs/queries/about/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Testing Library query priority getByRole",
-      "trust": {"score": 86, "basis": "Library owner's priority list; independently matched by Playwright (pg-pw-prioritize-user-facing)."},
+      "trust": {
+        "score": 86,
+        "basis": "Library owner's priority list; independently matched by Playwright (pg-pw-prioritize-user-facing)."
+      },
       "independence": "single"
     },
     {
@@ -837,11 +1598,23 @@
       "question": "platform-guidelines",
       "claim": "Test ids are used only when no role or text match works, or the text is dynamic.",
       "quote": "The user cannot see (or hear) these, so this is only recommended for cases where you can't match by role or text",
-      "citations": [{"title": "About Queries (Priority: getByTestId)", "author": "Testing Library contributors", "publisher": "Testing Library", "date": "n.d.", "url": "https://testing-library.com/docs/queries/about/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "About Queries (Priority: getByTestId)",
+          "author": "Testing Library contributors",
+          "publisher": "Testing Library",
+          "date": "n.d.",
+          "url": "https://testing-library.com/docs/queries/about/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Testing Library query priority getByTestId",
-      "trust": {"score": 84, "basis": "Library owner's priority list; Playwright's locator guide also lists getByTestId last and allows it when other locators fail."},
+      "trust": {
+        "score": 84,
+        "basis": "Library owner's priority list; Playwright's locator guide also lists getByTestId last and allows it when other locators fail."
+      },
       "independence": "single"
     },
     {
@@ -849,11 +1622,23 @@
       "question": "platform-guidelines",
       "claim": "Role locators rest on the accessibility tree, the tree of accessible objects that represents the UI's structure.",
       "quote": "Tree of accessible objects that represents the structure of the user interface (UI).",
-      "citations": [{"title": "Accessible Rich Internet Applications (WAI-ARIA) 1.2, Terms: Accessibility Tree", "author": "W3C Accessible Rich Internet Applications Working Group", "publisher": "W3C", "date": "2023-06-06", "url": "https://www.w3.org/TR/wai-aria-1.2/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Accessible Rich Internet Applications (WAI-ARIA) 1.2, Terms: Accessibility Tree",
+          "author": "W3C Accessible Rich Internet Applications Working Group",
+          "publisher": "W3C",
+          "date": "2023-06-06",
+          "url": "https://www.w3.org/TR/wai-aria-1.2/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "specification (W3C Recommendation)",
       "generated_by": "grow-cookbook research agent",
       "query": "WAI-ARIA 1.2 roles accessibility tree accessible name",
-      "trust": {"score": 88, "basis": "W3C Recommendation, the normative definition the role locators rest on."},
+      "trust": {
+        "score": 68,
+        "basis": "W3C Recommendation, the normative definition the role locators rest on. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): WAI-ARIA 1.2 does define the accessibility tree this way (the source writes \"( UI)\", a formatting difference only). It says nothing about role locators, so the claim's main point, that role locators rest on the tree, is not in the quote; lowered 88->68."
+      },
       "independence": "single"
     },
     {
@@ -861,11 +1646,23 @@
       "question": "platform-guidelines",
       "claim": "The accessible name, which role locators match on, is the name of a UI element exposed by every platform accessibility API.",
       "quote": "The accessible name is the name of a user interface element.",
-      "citations": [{"title": "Accessible Rich Internet Applications (WAI-ARIA) 1.2, Accessible Name", "author": "W3C Accessible Rich Internet Applications Working Group", "publisher": "W3C", "date": "2023-06-06", "url": "https://www.w3.org/TR/wai-aria-1.2/", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Accessible Rich Internet Applications (WAI-ARIA) 1.2, Accessible Name",
+          "author": "W3C Accessible Rich Internet Applications Working Group",
+          "publisher": "W3C",
+          "date": "2023-06-06",
+          "url": "https://www.w3.org/TR/wai-aria-1.2/",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "specification (W3C Recommendation)",
       "generated_by": "grow-cookbook research agent",
       "query": "WAI-ARIA 1.2 roles accessibility tree accessible name",
-      "trust": {"score": 86, "basis": "W3C Recommendation; normative definition."},
+      "trust": {
+        "score": 66,
+        "basis": "W3C Recommendation; normative definition. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the one-line definition. \"Each platform accessibility API provides the accessible name property\" is the next sentence and not part of the quote. The spec never says role locators match on the accessible name; lowered 86->66."
+      },
       "independence": "single"
     },
     {
@@ -873,11 +1670,23 @@
       "question": "platform-guidelines",
       "claim": "Apple's UI tests drive the app's views and controls as a person would.",
       "quote": "You can also create test cases to manipulate your app’s views and controls, as if a person is interacting with your interface.",
-      "citations": [{"title": "XCUIAutomation", "author": "Apple Inc.", "publisher": "Apple Developer Documentation", "date": "n.d.", "url": "https://developer.apple.com/documentation/xcuiautomation", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "XCUIAutomation",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/xcuiautomation",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Apple XCUITest user interface tests accessibility identifier",
-      "trust": {"score": 80, "basis": "Platform owner's framework overview, read through its JSON documentation endpoint."},
+      "trust": {
+        "score": 80,
+        "basis": "Platform owner's framework overview, read through its JSON documentation endpoint."
+      },
       "independence": "single"
     },
     {
@@ -885,11 +1694,23 @@
       "question": "platform-guidelines",
       "claim": "On Apple platforms an accessibility identifier, not the spoken label, uniquely identifies an element for UI automation.",
       "quote": "An identifier can be used to uniquely identify an element in the scripts you write using the UI Automation interfaces.",
-      "citations": [{"title": "accessibilityIdentifier", "author": "Apple Inc.", "publisher": "Apple Developer Documentation", "date": "n.d.", "url": "https://developer.apple.com/documentation/uikit/uiaccessibilityidentification/accessibilityidentifier", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "accessibilityIdentifier",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/uikit/uiaccessibilityidentification/accessibilityidentifier",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Apple accessibilityIdentifier UI automation",
-      "trust": {"score": 82, "basis": "Platform owner's API reference; it is Apple's test-id equivalent and sits beside the label rather than replacing it."},
+      "trust": {
+        "score": 62,
+        "basis": "Platform owner's API reference; it is Apple's test-id equivalent and sits beside the label rather than replacing it. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote only says an identifier \"can be used to uniquely identify an element\" in UI Automation scripts. The contrast with the label is a separate next sentence (\"avoid inappropriately setting or accessing an element's accessibility label\"). The page is UIKit's, not all Apple platforms; lowered 82->62."
+      },
       "independence": "single"
     },
     {
@@ -897,11 +1718,23 @@
       "question": "platform-guidelines",
       "claim": "Apple UI tests wait for an element to exist within a timeout rather than sleeping.",
       "quote": "Waits the specified amount of time for an element to exist.",
-      "citations": [{"title": "waitForExistence(timeout:)", "author": "Apple Inc.", "publisher": "Apple Developer Documentation", "date": "n.d.", "url": "https://developer.apple.com/documentation/xcuiautomation/xcuielement/waitforexistence(timeout:)", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "waitForExistence(timeout:)",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/xcuiautomation/xcuielement/waitforexistence(timeout:)",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Apple XCUIElement waitForExistence timeout",
-      "trust": {"score": 76, "basis": "Platform owner's API reference; describes the mechanism, does not itself forbid sleeps."},
+      "trust": {
+        "score": 56,
+        "basis": "Platform owner's API reference; describes the mechanism, does not itself forbid sleeps. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote is only the API abstract (\"Waits the specified amount of time for an element to exist\"). Neither it nor anything else on the page says to use it rather than sleeping; lowered 76->56."
+      },
       "independence": "single"
     },
     {
@@ -909,11 +1742,23 @@
       "question": "platform-guidelines",
       "claim": "Android UI tests avoid sleeping for an arbitrary period, which makes them slow or flaky.",
       "quote": "You should avoid pausing your tests for an arbitrary period (sleep) to let the app run and stabilize. This makes tests unnecessary slow or flaky, because running the same test in different environments might need more or less time to execute.",
-      "citations": [{"title": "Big test stability", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/instrumented-tests/stability", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Big test stability",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/instrumented-tests/stability",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android big test stability flaky sleep synchronization",
-      "trust": {"score": 86, "basis": "Platform owner's warning (SHOULD); independent corroboration of Playwright's no-wait-for-time rule."},
+      "trust": {
+        "score": 86,
+        "basis": "Platform owner's warning (SHOULD); independent corroboration of Playwright's no-wait-for-time rule."
+      },
       "independence": "single"
     },
     {
@@ -921,11 +1766,23 @@
       "question": "platform-guidelines",
       "claim": "Large UI tests wait until a specific condition is met rather than guessing whether the app is busy.",
       "quote": "Instead of estimating whether an activity is busy or not, you can make your tests wait until specific conditions have been met.",
-      "citations": [{"title": "Big test stability", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/instrumented-tests/stability", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Big test stability",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/instrumented-tests/stability",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android big test stability flaky sleep synchronization",
-      "trust": {"score": 84, "basis": "Platform owner's guidance; matches Fowler's callback-or-polling advice independently."},
+      "trust": {
+        "score": 84,
+        "basis": "Platform owner's guidance; matches Fowler's callback-or-polling advice independently."
+      },
       "independence": "single"
     },
     {
@@ -933,11 +1790,23 @@
       "question": "platform-guidelines",
       "claim": "Retries may be added to big tests, but flaky tests are still fixed.",
       "quote": "Add retrying mechanisms to big tests, but always fix flaky tests.",
-      "citations": [{"title": "Big test stability", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/instrumented-tests/stability", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Big test stability",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/instrumented-tests/stability",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android big test stability flaky sleep synchronization",
-      "trust": {"score": 82, "basis": "Platform owner's Key Point; independent of Playwright's flaky classification."},
+      "trust": {
+        "score": 82,
+        "basis": "Platform owner's Key Point; independent of Playwright's flaky classification."
+      },
       "independence": "single"
     },
     {
@@ -945,11 +1814,23 @@
       "question": "platform-guidelines",
       "claim": "Asynchronous work unknown to Espresso is registered as an idling resource so tests synchronise with it.",
       "quote": "In order to make Espresso aware of your app's long-running operations, you must register each one as an idling resource.",
-      "citations": [{"title": "Espresso idling resources", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/espresso/idling-resource", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Espresso idling resources",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/espresso/idling-resource",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android Espresso idling resource Thread.sleep",
-      "trust": {"score": 84, "basis": "Platform owner's documentation (MUST wording for Espresso synchronisation)."},
+      "trust": {
+        "score": 84,
+        "basis": "Platform owner's documentation (MUST wording for Espresso synchronisation)."
+      },
       "independence": "single"
     },
     {
@@ -957,11 +1838,23 @@
       "question": "platform-guidelines",
       "claim": "Espresso synchronises with the UI so tests need no waits, sleeps or polls.",
       "quote": "It lets you leave your waits, syncs, sleeps, and polls behind while it manipulates and asserts on the application UI when it is at rest.",
-      "citations": [{"title": "Espresso", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/espresso", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Espresso",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/espresso",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android Espresso synchronization onView",
-      "trust": {"score": 80, "basis": "Platform owner's framework overview; descriptive."},
+      "trust": {
+        "score": 80,
+        "basis": "Platform owner's framework overview; descriptive."
+      },
       "independence": "single"
     },
     {
@@ -969,11 +1862,23 @@
       "question": "platform-guidelines",
       "claim": "Android provides intent stubbing for hermetic testing.",
       "quote": "Extension to validate and stub intents for hermetic testing.",
-      "citations": [{"title": "Espresso (Packages)", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/espresso", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Espresso (Packages)",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/espresso",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android Espresso synchronization onView",
-      "trust": {"score": 74, "basis": "Platform owner's package description; names hermetic testing but gives no wider guidance."},
+      "trust": {
+        "score": 74,
+        "basis": "Platform owner's package description; names hermetic testing but gives no wider guidance."
+      },
       "independence": "single"
     },
     {
@@ -981,11 +1886,23 @@
       "question": "platform-guidelines",
       "claim": "Compose tests find nodes in the semantics tree, by text, content description or test tag.",
       "quote": "Finders let you select one or multiple elements (or nodes in the semantics tree) to make assertions or perform actions on them.",
-      "citations": [{"title": "Testing APIs (Compose)", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/develop/ui/compose/testing/apis", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Testing APIs (Compose)",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/develop/ui/compose/testing/apis",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Compose testing finders onNodeWithText testTag semantics",
-      "trust": {"score": 78, "basis": "Platform owner's documentation; descriptive, gives no priority order between text and test tag."},
+      "trust": {
+        "score": 58,
+        "basis": "Platform owner's documentation; descriptive, gives no priority order between text and test tag. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote says finders select nodes in the semantics tree. It does not mention finding by text, content description or test tag; lowered 78->58."
+      },
       "independence": "single"
     },
     {
@@ -993,11 +1910,23 @@
       "question": "platform-guidelines",
       "claim": "UI Automator can reset an app to a fresh state between tests by clearing its data.",
       "quote": "Clear the app's data (resets it to a fresh state)",
-      "citations": [{"title": "Write automated tests with UI Automator", "author": "Google (Android Developers)", "publisher": "Android Developers", "date": "n.d.", "url": "https://developer.android.com/training/testing/other-components/ui-automator", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Write automated tests with UI Automator",
+          "author": "Google (Android Developers)",
+          "publisher": "Android Developers",
+          "date": "n.d.",
+          "url": "https://developer.android.com/training/testing/other-components/ui-automator",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "Android UI Automator find elements wait clear app data",
-      "trust": {"score": 70, "basis": "Platform owner's code-sample comment; descriptive of a mechanism."},
+      "trust": {
+        "score": 70,
+        "basis": "Platform owner's code-sample comment; descriptive of a mechanism."
+      },
       "independence": "single"
     },
     {
@@ -1005,11 +1934,23 @@
       "question": "platform-guidelines",
       "claim": "On Windows UI Automation, AutomationId identifies an element among its siblings for test scripts.",
       "quote": "AutomationIdProperty uniquely identifies a UI Automation element from its siblings.",
-      "citations": [{"title": "Use the AutomationID Property", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2017-03-30", "url": "https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/use-the-automationid-property", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Use the AutomationID Property",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2017-03-30",
+          "url": "https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/use-the-automationid-property",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "UI Automation AutomationId test automation locate element",
-      "trust": {"score": 76, "basis": "Platform owner's documentation for the .NET Framework UIA classes (2017, updated 2026); currency reduced for modern Windows apps."},
+      "trust": {
+        "score": 76,
+        "basis": "Platform owner's documentation for the .NET Framework UIA classes (2017, updated 2026); currency reduced for modern Windows apps."
+      },
       "independence": "single"
     },
     {
@@ -1017,11 +1958,23 @@
       "question": "platform-guidelines",
       "claim": "An AutomationId is not unique across the whole tree, so a stable locator scopes it by its container.",
       "quote": "AutomationIdProperty does not guarantee a unique identity throughout the tree; it typically needs container and scope information to be useful.",
-      "citations": [{"title": "Use the AutomationID Property", "author": "Microsoft", "publisher": "Microsoft Learn", "date": "2017-03-30", "url": "https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/use-the-automationid-property", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Use the AutomationID Property",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2017-03-30",
+          "url": "https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/use-the-automationid-property",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "official docs",
       "generated_by": "grow-cookbook research agent",
       "query": "UI Automation AutomationId test automation locate element",
-      "trust": {"score": 74, "basis": "Platform owner's documentation; matches Playwright's locator chaining in substance."},
+      "trust": {
+        "score": 74,
+        "basis": "Platform owner's documentation; matches Playwright's locator chaining in substance."
+      },
       "independence": "single"
     },
     {
@@ -1029,11 +1982,23 @@
       "question": "experts-view",
       "claim": "Non-deterministic tests are useless and infect the whole suite.",
       "quote": "they are useless, secondly they are a virulent infection that can completely ruin your entire test suite.",
-      "citations": [{"title": "Eradicating Non-Determinism in Tests", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2011-04-14", "url": "https://martinfowler.com/articles/nonDeterminism.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Eradicating Non-Determinism in Tests",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2011-04-14",
+          "url": "https://martinfowler.com/articles/nonDeterminism.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler eradicating non-determinism in tests",
-      "trust": {"score": 62, "basis": "Secondary source by a recognised authority, used for the expert's view which no primary covers; dated 2011 but the point is restated by current owner docs (bp-pw-wait-for-timeout-flaky)."},
+      "trust": {
+        "score": 62,
+        "basis": "Secondary source by a recognised authority, used for the expert's view which no primary covers; dated 2011 but the point is restated by current owner docs (bp-pw-wait-for-timeout-flaky)."
+      },
       "independence": "single"
     },
     {
@@ -1041,11 +2006,23 @@
       "question": "experts-view",
       "claim": "Never use bare sleeps to wait for asynchronous responses; use a callback or polling.",
       "quote": "Never use bare sleeps to wait for asynchonous responses: use a callback or polling.",
-      "citations": [{"title": "Eradicating Non-Determinism in Tests", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2011-04-14", "url": "https://martinfowler.com/articles/nonDeterminism.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Eradicating Non-Determinism in Tests",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2011-04-14",
+          "url": "https://martinfowler.com/articles/nonDeterminism.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler eradicating non-determinism in tests",
-      "trust": {"score": 66, "basis": "Secondary source; independent of the tool owners, who all say the same."},
+      "trust": {
+        "score": 66,
+        "basis": "Secondary source; independent of the tool owners, who all say the same."
+      },
       "independence": "single"
     },
     {
@@ -1053,11 +2030,23 @@
       "question": "experts-view",
       "claim": "Tests are kept isolated so one test's execution cannot affect another.",
       "quote": "Keep your tests isolated from each other, so that execution of one test will not affect any others.",
-      "citations": [{"title": "Eradicating Non-Determinism in Tests", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2011-04-14", "url": "https://martinfowler.com/articles/nonDeterminism.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Eradicating Non-Determinism in Tests",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2011-04-14",
+          "url": "https://martinfowler.com/articles/nonDeterminism.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler eradicating non-determinism in tests",
-      "trust": {"score": 64, "basis": "Secondary source; independent of the owners' isolation guidance."},
+      "trust": {
+        "score": 64,
+        "basis": "Secondary source; independent of the owners' isolation guidance."
+      },
       "independence": "single"
     },
     {
@@ -1065,11 +2054,23 @@
       "question": "experts-view",
       "claim": "The system clock is wrapped so tests can substitute it.",
       "quote": "Always wrap the system clock, so it can be easily substituted for testing.",
-      "citations": [{"title": "Eradicating Non-Determinism in Tests", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2011-04-14", "url": "https://martinfowler.com/articles/nonDeterminism.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Eradicating Non-Determinism in Tests",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2011-04-14",
+          "url": "https://martinfowler.com/articles/nonDeterminism.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler eradicating non-determinism in tests",
-      "trust": {"score": 62, "basis": "Secondary source; Playwright's Clock API is the current tool-owner counterpart."},
+      "trust": {
+        "score": 62,
+        "basis": "Secondary source; Playwright's Clock API is the current tool-owner counterpart."
+      },
       "independence": "single"
     },
     {
@@ -1077,11 +2078,23 @@
       "question": "experts-view",
       "claim": "Determinism against remote services comes from a test double.",
       "quote": "In this situation it's vital to ensure determinism, so it's time to reach for a Test Double",
-      "citations": [{"title": "Eradicating Non-Determinism in Tests", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2011-04-14", "url": "https://martinfowler.com/articles/nonDeterminism.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Eradicating Non-Determinism in Tests",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2011-04-14",
+          "url": "https://martinfowler.com/articles/nonDeterminism.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler eradicating non-determinism in tests",
-      "trust": {"score": 62, "basis": "Secondary source; independent support for hermetic stubbing."},
+      "trust": {
+        "score": 62,
+        "basis": "Secondary source; independent support for hermetic stubbing."
+      },
       "independence": "single"
     },
     {
@@ -1089,11 +2102,23 @@
       "question": "experts-view",
       "claim": "Tests that manipulate HTML elements directly are brittle to UI changes.",
       "quote": "if you write tests that manipulate the HTML elements directly your tests will be brittle to changes in the UI.",
-      "citations": [{"title": "PageObject", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2013-09-10", "url": "https://martinfowler.com/bliki/PageObject.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "PageObject",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2013-09-10",
+          "url": "https://martinfowler.com/bliki/PageObject.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler page object assertions",
-      "trust": {"score": 62, "basis": "Secondary source by a recognised authority; independent of the tool owners' DOM-locator warnings."},
+      "trust": {
+        "score": 62,
+        "basis": "Secondary source by a recognised authority; independent of the tool owners' DOM-locator warnings."
+      },
       "independence": "single"
     },
     {
@@ -1101,11 +2126,23 @@
       "question": "experts-view",
       "claim": "Page objects carry no assertions.",
       "quote": "I favor having no assertions in page objects.",
-      "citations": [{"title": "PageObject", "author": "Martin Fowler", "publisher": "martinfowler.com", "date": "2013-09-10", "url": "https://martinfowler.com/bliki/PageObject.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "PageObject",
+          "author": "Martin Fowler",
+          "publisher": "martinfowler.com",
+          "date": "2013-09-10",
+          "url": "https://martinfowler.com/bliki/PageObject.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "Martin Fowler page object assertions",
-      "trust": {"score": 58, "basis": "Secondary source stated as a preference (\"I favor\"); corroborated by Selenium (ks-se-po-no-assertions)."},
+      "trust": {
+        "score": 38,
+        "basis": "Secondary source stated as a preference (\"I favor\"); corroborated by Selenium (ks-se-po-no-assertions). Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): Fowler gives a personal preference (\"I favor\"), sets out the opposing view, and says in footnote 3 that assertions checking a page's invariants are fine. The absolute \"carry no assertions\" goes further than that; lowered 58->38."
+      },
       "independence": "single"
     },
     {
@@ -1113,11 +2150,23 @@
       "question": "experts-view",
       "claim": "End-to-end tests are notoriously flaky and fail for unforeseeable reasons.",
       "quote": "They are notoriously flaky and often fail for unexpected and unforeseeable reasons.",
-      "citations": [{"title": "The Practical Test Pyramid", "author": "Ham Vocke", "publisher": "martinfowler.com", "date": "2018-02-26", "url": "https://martinfowler.com/articles/practical-test-pyramid.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "The Practical Test Pyramid",
+          "author": "Ham Vocke",
+          "publisher": "martinfowler.com",
+          "date": "2018-02-26",
+          "url": "https://martinfowler.com/articles/practical-test-pyramid.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "practical test pyramid end-to-end tests flaky duplication",
-      "trust": {"score": 60, "basis": "Secondary practitioner source; matches Android's statement that big tests are more prone to occasional failures."},
+      "trust": {
+        "score": 60,
+        "basis": "Secondary practitioner source; matches Android's statement that big tests are more prone to occasional failures."
+      },
       "independence": "single"
     },
     {
@@ -1125,11 +2174,23 @@
       "question": "experts-view",
       "claim": "E2E tests do not re-test the conditional logic and edge cases lower-level tests already cover.",
       "quote": "You don't test all the conditional logic and edge cases that your lower-level tests already cover.",
-      "citations": [{"title": "The Practical Test Pyramid", "author": "Ham Vocke", "publisher": "martinfowler.com", "date": "2018-02-26", "url": "https://martinfowler.com/articles/practical-test-pyramid.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "The Practical Test Pyramid",
+          "author": "Ham Vocke",
+          "publisher": "martinfowler.com",
+          "date": "2018-02-26",
+          "url": "https://martinfowler.com/articles/practical-test-pyramid.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "practical test pyramid end-to-end tests flaky duplication",
-      "trust": {"score": 60, "basis": "Secondary source; no primary owner text found on duplication, so the claim rests on practitioner consensus."},
+      "trust": {
+        "score": 60,
+        "basis": "Secondary source; no primary owner text found on duplication, so the claim rests on practitioner consensus."
+      },
       "independence": "single"
     },
     {
@@ -1137,11 +2198,23 @@
       "question": "experts-view",
       "claim": "A higher-level test focuses on what lower-level tests could not cover.",
       "quote": "Make sure that the higher-level test focuses on the part that the lower-level tests couldn't cover.",
-      "citations": [{"title": "The Practical Test Pyramid", "author": "Ham Vocke", "publisher": "martinfowler.com", "date": "2018-02-26", "url": "https://martinfowler.com/articles/practical-test-pyramid.html", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "The Practical Test Pyramid",
+          "author": "Ham Vocke",
+          "publisher": "martinfowler.com",
+          "date": "2018-02-26",
+          "url": "https://martinfowler.com/articles/practical-test-pyramid.html",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "practical test pyramid end-to-end tests flaky duplication",
-      "trust": {"score": 60, "basis": "Secondary source; single."},
+      "trust": {
+        "score": 60,
+        "basis": "Secondary source; single."
+      },
       "independence": "single"
     },
     {
@@ -1149,11 +2222,23 @@
       "question": "experts-view",
       "claim": "An element that may not be present yet is queried with a waiting query, not looked up once and asserted.",
       "quote": "use find* any time you want to query for something that may not be available right away.",
-      "citations": [{"title": "Common mistakes with React Testing Library", "author": "Kent C. Dodds", "publisher": "kentcdodds.com", "date": "2020-05-04", "url": "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Common mistakes with React Testing Library",
+          "author": "Kent C. Dodds",
+          "publisher": "kentcdodds.com",
+          "date": "2020-05-04",
+          "url": "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "common mistakes with React Testing Library",
-      "trust": {"score": 56, "basis": "Secondary source by Testing Library's author, applying the same waiting principle as the tool owners; used for the expert view only."},
+      "trust": {
+        "score": 56,
+        "basis": "Secondary source by Testing Library's author, applying the same waiting principle as the tool owners; used for the expert view only."
+      },
       "independence": "single"
     },
     {
@@ -1161,11 +2246,23 @@
       "question": "experts-view",
       "claim": "Querying by CSS selectors loses the confidence that user-facing queries give.",
       "quote": "if you query around using querySelector we lose a lot of that confidence.",
-      "citations": [{"title": "Common mistakes with React Testing Library", "author": "Kent C. Dodds", "publisher": "kentcdodds.com", "date": "2020-05-04", "url": "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Common mistakes with React Testing Library",
+          "author": "Kent C. Dodds",
+          "publisher": "kentcdodds.com",
+          "date": "2020-05-04",
+          "url": "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner article (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "common mistakes with React Testing Library",
-      "trust": {"score": 56, "basis": "Secondary source; component-test context, applied to E2E by analogy."},
+      "trust": {
+        "score": 56,
+        "basis": "Secondary source; component-test context, applied to E2E by analogy."
+      },
       "independence": "single"
     },
     {
@@ -1173,11 +2270,23 @@
       "question": "experts-view",
       "claim": "Fake data is safer than production data in test environments.",
       "quote": "Fake data is a safer approach, and tools exist to help in its creation.",
-      "citations": [{"title": "Production data in test environments (Technology Radar, Hold)", "author": "Thoughtworks Technology Advisory Board", "publisher": "Thoughtworks", "date": "2022-03", "url": "https://www.thoughtworks.com/radar/techniques/production-data-in-test-environments", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Production data in test environments (Technology Radar, Hold)",
+          "author": "Thoughtworks Technology Advisory Board",
+          "publisher": "Thoughtworks",
+          "date": "2022-03",
+          "url": "https://www.thoughtworks.com/radar/techniques/production-data-in-test-environments",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner guidance (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "using production personal data in test environments guidance synthetic test data privacy",
-      "trust": {"score": 62, "basis": "Secondary consultancy source placed in the Hold ring; corroborated in principle by the ICO (bp-ico-synthetic-minimisation)."},
+      "trust": {
+        "score": 62,
+        "basis": "Secondary consultancy source placed in the Hold ring; corroborated in principle by the ICO (bp-ico-synthetic-minimisation)."
+      },
       "independence": "single"
     },
     {
@@ -1185,11 +2294,23 @@
       "question": "experts-view",
       "claim": "Test systems usually protect private data less well than production does.",
       "quote": "the level of security, specifically around protection of private data, tends to be less for test systems.",
-      "citations": [{"title": "Production data in test environments (Technology Radar, Hold)", "author": "Thoughtworks Technology Advisory Board", "publisher": "Thoughtworks", "date": "2022-03", "url": "https://www.thoughtworks.com/radar/techniques/production-data-in-test-environments", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "Production data in test environments (Technology Radar, Hold)",
+          "author": "Thoughtworks Technology Advisory Board",
+          "publisher": "Thoughtworks",
+          "date": "2022-03",
+          "url": "https://www.thoughtworks.com/radar/techniques/production-data-in-test-environments",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "practitioner guidance (secondary)",
       "generated_by": "grow-cookbook research agent",
       "query": "using production personal data in test environments guidance synthetic test data privacy",
-      "trust": {"score": 60, "basis": "Secondary consultancy source; single."},
+      "trust": {
+        "score": 60,
+        "basis": "Secondary consultancy source; single."
+      },
       "independence": "single"
     },
     {
@@ -1197,35 +2318,264 @@
       "question": "best-practices",
       "claim": "The rationale names the feature doc, plan, or commit the new assertion derives from. A rationale that argues the assertion is sensible, without citing what makes it correct, is a fail.",
       "quote": "The rationale names the feature doc, plan, or commit the new assertion derives from. A rationale that argues the assertion is sensible, without citing what makes it correct, is a fail.",
-      "citations": [{"title": "e2e-test-authoring (teams/myagenticteams-qa-team/specialities/testing/spec-authoring.md)", "author": "Agentic Developer Cookbook", "publisher": "agenticcookbook", "date": "n.d.", "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/spec-authoring.md", "accessed": "2026-11-24"}],
+      "citations": [
+        {
+          "title": "e2e-test-authoring (teams/myagenticteams-qa-team/specialities/testing/spec-authoring.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/spec-authoring.md",
+          "accessed": "2026-11-24"
+        }
+      ],
       "source_type": "prior cookbook text",
       "generated_by": "grow-cookbook research agent",
       "query": "rule under verification: rationale-names-what-makes-assertion-correct",
-      "trust": {"score": 0, "basis": "no research source supports it"},
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
       "independence": "uncorroborated"
     }
   ],
   "verdicts": [
-    {"rule": "write-deterministic-specs", "verdict": "supported", "claims": ["bp-pw-wait-for-timeout-flaky", "bp-pw-web-first-assertions", "bp-pw-tests-fully-isolated", "bp-cy-no-arbitrary-wait", "ks-pw-auto-wait-actionability", "ks-se-sleep-fails", "ks-wdio-no-pause", "pg-android-avoid-sleep", "ev-fowler-nondeterminism-useless", "ev-fowler-no-bare-sleeps"]},
-    {"rule": "rationale-cites-assertion-source", "verdict": "supported", "claims": ["bp-istqb-traceability", "ks-pw-annotations"]},
-    {"rule": "rationale-names-what-makes-assertion-correct", "verdict": "unsupported", "claims": ["rationale-names-what-makes-assertion-correct-prior", "bp-istqb-traceability"]},
-    {"rule": "hermetic-specs-mock-the-api", "verdict": "supported", "claims": ["bp-pw-only-test-what-you-control", "bp-pw-use-network-api", "ks-pw-mock-api", "ks-pw-har-replay", "ks-cy-stub-majority", "ks-se-eliminate-external-services", "pg-android-espresso-intents-hermetic", "ev-fowler-test-double-remote"]},
-    {"rule": "no-credentials-or-real-user-data", "verdict": "supported", "claims": ["bp-asvs-no-secrets-in-repo", "bp-pw-env-secrets", "ks-pw-auth-gitignore", "ks-pw-auth-state-sensitive", "ks-cy-env-gitignore", "bp-owasp-standard-test-secrets", "bp-ico-synthetic-minimisation", "ev-thoughtworks-prod-data", "ev-thoughtworks-weak-test-security"]},
-    {"rule": "e2e-locators-user-facing-first", "verdict": "new", "claims": ["pg-pw-prioritize-user-facing", "pg-pw-getbyrole", "pg-tl-guiding-principle", "pg-tl-byrole-top", "ks-wdio-role-selector", "pg-aria-accessibility-tree", "pg-aria-accessible-name", "bp-pw-test-user-visible-behavior", "pg-apple-ui-test-as-person"]},
-    {"rule": "e2e-test-id-only-when-no-user-facing-locator", "verdict": "new", "claims": ["pg-tl-testid-last", "pg-pw-testid-resilient", "ks-cy-data-attributes", "pg-apple-accessibility-identifier", "pg-android-compose-semantics", "pg-ms-automationid", "pg-ms-automationid-scope"]},
-    {"rule": "e2e-avoid-dom-structure-locators", "verdict": "new", "claims": ["pg-pw-css-xpath-not-recommended", "ks-cy-brittle-selectors", "ev-fowler-po-brittle", "ev-kcd-queryselector", "ks-se-locator-preference"]},
-    {"rule": "e2e-wait-on-conditions-not-time", "verdict": "new", "claims": ["bp-pw-wait-for-timeout-flaky", "bp-pw-web-first-assertions", "bp-cy-no-arbitrary-wait", "ks-wdio-no-pause", "ks-wdio-auto-retry-assertions", "ks-se-sleep-fails", "ks-se-no-mix-waits", "pg-android-avoid-sleep", "pg-android-wait-until", "pg-android-idling-resources", "pg-android-espresso-sync", "pg-apple-wait-for-existence", "ev-fowler-no-bare-sleeps", "ev-kcd-find-for-async"]},
-    {"rule": "e2e-isolate-test-state", "verdict": "new", "claims": ["bp-pw-tests-fully-isolated", "bp-cy-tests-independent", "bp-cy-clean-state-before", "bp-pw-control-database-data", "ks-pw-browser-context-isolation", "ks-pw-fixtures-isolated", "ks-pw-parallel-default", "ks-se-no-shared-data", "ks-se-new-driver-per-test", "pg-android-uiautomator-clear-data", "ev-fowler-isolated"]},
-    {"rule": "e2e-set-up-state-programmatically", "verdict": "new", "claims": ["bp-cy-programmatic-login", "ks-se-api-login"]},
-    {"rule": "e2e-control-the-clock", "verdict": "new", "claims": ["bp-pw-clock-control", "ev-fowler-wrap-clock"]},
-    {"rule": "e2e-retries-surface-flakiness", "verdict": "new", "claims": ["ks-pw-retries-flaky", "pg-android-retries-fix", "ev-fowler-nondeterminism-useless"]},
-    {"rule": "e2e-hermetic-by-default-live-for-critical-paths", "verdict": "new", "claims": ["ks-cy-stub-majority", "ks-cy-real-server-critical-paths", "ks-cy-stub-drift", "bp-pw-use-network-api", "bp-pw-stable-staging", "ev-vocke-e2e-flaky"]},
-    {"rule": "e2e-select-live-specs-by-tag-or-project", "verdict": "new", "claims": ["ks-pw-tags-grep", "ks-pw-projects-filter", "ks-pw-projects-environments", "ks-pw-env-staging-switch", "ks-gha-secrets-forks"]},
-    {"rule": "e2e-credentials-from-environment", "verdict": "new", "claims": ["bp-pw-env-secrets", "bp-asvs-no-secrets-in-repo", "ks-cy-env-gitignore", "ks-cy-env-values-exposed", "ks-cy-session-no-passwords-in-id", "ks-gha-dont-print"]},
-    {"rule": "e2e-stored-auth-state-git-ignored", "verdict": "new", "claims": ["ks-pw-auth-gitignore", "ks-pw-auth-state-sensitive"]},
-    {"rule": "e2e-dedicated-test-accounts", "verdict": "new", "claims": ["bp-owasp-standard-test-secrets", "bp-owasp-separate-prod-dev", "ks-pw-account-per-worker"]},
-    {"rule": "e2e-trace-on-ci-failure", "verdict": "new", "claims": ["bp-pw-trace-viewer-on-ci"]},
-    {"rule": "e2e-page-objects-hold-no-assertions", "verdict": "new", "claims": ["ks-se-po-no-assertions", "ev-fowler-po-no-assertions", "ks-pw-fixtures-isolated"]},
-    {"rule": "e2e-do-not-repeat-lower-level-assertions", "verdict": "new", "claims": ["ev-vocke-no-retest-lower-level", "ev-vocke-focus-uncovered"]}
+    {
+      "rule": "write-deterministic-specs",
+      "verdict": "supported",
+      "claims": [
+        "bp-pw-wait-for-timeout-flaky",
+        "bp-pw-web-first-assertions",
+        "bp-pw-tests-fully-isolated",
+        "bp-cy-no-arbitrary-wait",
+        "ks-pw-auto-wait-actionability",
+        "ks-se-sleep-fails",
+        "ks-wdio-no-pause",
+        "pg-android-avoid-sleep",
+        "ev-fowler-nondeterminism-useless",
+        "ev-fowler-no-bare-sleeps"
+      ]
+    },
+    {
+      "rule": "rationale-cites-assertion-source",
+      "verdict": "supported",
+      "claims": [
+        "bp-istqb-traceability",
+        "ks-pw-annotations"
+      ]
+    },
+    {
+      "rule": "rationale-names-what-makes-assertion-correct",
+      "verdict": "unsupported",
+      "claims": [
+        "rationale-names-what-makes-assertion-correct-prior",
+        "bp-istqb-traceability"
+      ]
+    },
+    {
+      "rule": "hermetic-specs-mock-the-api",
+      "verdict": "supported",
+      "claims": [
+        "bp-pw-only-test-what-you-control",
+        "bp-pw-use-network-api",
+        "ks-pw-mock-api",
+        "ks-pw-har-replay",
+        "ks-cy-stub-majority",
+        "ks-se-eliminate-external-services",
+        "pg-android-espresso-intents-hermetic",
+        "ev-fowler-test-double-remote"
+      ]
+    },
+    {
+      "rule": "no-credentials-or-real-user-data",
+      "verdict": "supported",
+      "claims": [
+        "bp-asvs-no-secrets-in-repo",
+        "bp-pw-env-secrets",
+        "ks-pw-auth-gitignore",
+        "ks-pw-auth-state-sensitive",
+        "ks-cy-env-gitignore",
+        "bp-owasp-standard-test-secrets",
+        "bp-ico-synthetic-minimisation",
+        "ev-thoughtworks-prod-data",
+        "ev-thoughtworks-weak-test-security"
+      ]
+    },
+    {
+      "rule": "e2e-locators-user-facing-first",
+      "verdict": "new",
+      "claims": [
+        "pg-pw-prioritize-user-facing",
+        "pg-pw-getbyrole",
+        "pg-tl-guiding-principle",
+        "pg-tl-byrole-top",
+        "ks-wdio-role-selector",
+        "pg-aria-accessibility-tree",
+        "pg-aria-accessible-name",
+        "bp-pw-test-user-visible-behavior",
+        "pg-apple-ui-test-as-person"
+      ]
+    },
+    {
+      "rule": "e2e-test-id-only-when-no-user-facing-locator",
+      "verdict": "new",
+      "claims": [
+        "pg-tl-testid-last",
+        "pg-pw-testid-resilient",
+        "ks-cy-data-attributes",
+        "pg-apple-accessibility-identifier",
+        "pg-android-compose-semantics",
+        "pg-ms-automationid",
+        "pg-ms-automationid-scope"
+      ]
+    },
+    {
+      "rule": "e2e-avoid-dom-structure-locators",
+      "verdict": "new",
+      "claims": [
+        "pg-pw-css-xpath-not-recommended",
+        "ks-cy-brittle-selectors",
+        "ev-fowler-po-brittle",
+        "ev-kcd-queryselector",
+        "ks-se-locator-preference"
+      ]
+    },
+    {
+      "rule": "e2e-wait-on-conditions-not-time",
+      "verdict": "new",
+      "claims": [
+        "bp-pw-wait-for-timeout-flaky",
+        "bp-pw-web-first-assertions",
+        "bp-cy-no-arbitrary-wait",
+        "ks-wdio-no-pause",
+        "ks-wdio-auto-retry-assertions",
+        "ks-se-sleep-fails",
+        "ks-se-no-mix-waits",
+        "pg-android-avoid-sleep",
+        "pg-android-wait-until",
+        "pg-android-idling-resources",
+        "pg-android-espresso-sync",
+        "pg-apple-wait-for-existence",
+        "ev-fowler-no-bare-sleeps",
+        "ev-kcd-find-for-async"
+      ]
+    },
+    {
+      "rule": "e2e-isolate-test-state",
+      "verdict": "new",
+      "claims": [
+        "bp-pw-tests-fully-isolated",
+        "bp-cy-tests-independent",
+        "bp-cy-clean-state-before",
+        "bp-pw-control-database-data",
+        "ks-pw-browser-context-isolation",
+        "ks-pw-fixtures-isolated",
+        "ks-pw-parallel-default",
+        "ks-se-no-shared-data",
+        "ks-se-new-driver-per-test",
+        "pg-android-uiautomator-clear-data",
+        "ev-fowler-isolated"
+      ]
+    },
+    {
+      "rule": "e2e-set-up-state-programmatically",
+      "verdict": "new",
+      "claims": [
+        "bp-cy-programmatic-login",
+        "ks-se-api-login"
+      ]
+    },
+    {
+      "rule": "e2e-control-the-clock",
+      "verdict": "new",
+      "claims": [
+        "bp-pw-clock-control",
+        "ev-fowler-wrap-clock"
+      ]
+    },
+    {
+      "rule": "e2e-retries-surface-flakiness",
+      "verdict": "new",
+      "claims": [
+        "ks-pw-retries-flaky",
+        "pg-android-retries-fix",
+        "ev-fowler-nondeterminism-useless"
+      ]
+    },
+    {
+      "rule": "e2e-hermetic-by-default-live-for-critical-paths",
+      "verdict": "new",
+      "claims": [
+        "ks-cy-stub-majority",
+        "ks-cy-real-server-critical-paths",
+        "ks-cy-stub-drift",
+        "bp-pw-use-network-api",
+        "bp-pw-stable-staging",
+        "ev-vocke-e2e-flaky"
+      ]
+    },
+    {
+      "rule": "e2e-select-live-specs-by-tag-or-project",
+      "verdict": "new",
+      "claims": [
+        "ks-pw-tags-grep",
+        "ks-pw-projects-filter",
+        "ks-pw-projects-environments",
+        "ks-pw-env-staging-switch",
+        "ks-gha-secrets-forks"
+      ]
+    },
+    {
+      "rule": "e2e-credentials-from-environment",
+      "verdict": "new",
+      "claims": [
+        "bp-pw-env-secrets",
+        "bp-asvs-no-secrets-in-repo",
+        "ks-cy-env-gitignore",
+        "ks-cy-env-values-exposed",
+        "ks-cy-session-no-passwords-in-id",
+        "ks-gha-dont-print"
+      ]
+    },
+    {
+      "rule": "e2e-stored-auth-state-git-ignored",
+      "verdict": "new",
+      "claims": [
+        "ks-pw-auth-gitignore",
+        "ks-pw-auth-state-sensitive"
+      ]
+    },
+    {
+      "rule": "e2e-dedicated-test-accounts",
+      "verdict": "new",
+      "claims": [
+        "bp-owasp-standard-test-secrets",
+        "bp-owasp-separate-prod-dev",
+        "ks-pw-account-per-worker"
+      ]
+    },
+    {
+      "rule": "e2e-trace-on-ci-failure",
+      "verdict": "new",
+      "claims": [
+        "bp-pw-trace-viewer-on-ci"
+      ]
+    },
+    {
+      "rule": "e2e-page-objects-hold-no-assertions",
+      "verdict": "new",
+      "claims": [
+        "ks-se-po-no-assertions",
+        "ev-fowler-po-no-assertions",
+        "ks-pw-fixtures-isolated"
+      ]
+    },
+    {
+      "rule": "e2e-do-not-repeat-lower-level-assertions",
+      "verdict": "new",
+      "claims": [
+        "ev-vocke-no-retest-lower-level",
+        "ev-vocke-focus-uncovered"
+      ]
+    }
   ]
 }
