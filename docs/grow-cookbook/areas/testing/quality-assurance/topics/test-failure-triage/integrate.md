@@ -23,3 +23,5 @@ Open questions from owner-list.md:
 - Whether 'an uncertain verdict names what evidence is missing and what would settle it' is kept as a must-hold check or stated at SHOULD, the strength ICD 203's standard on uncertainty carries.
 - What the stale-test disposition is called in the cookbook: the team's 'spec-rot', Labuschagne et al.'s 'broken or obsolete test', or another name.
 - Whether a flake disposition must also open a bug investigation of the product code, given that 24% of flaky-test fixes in Luo et al.'s sample changed the code under test, or whether that question is left to the flaky-test-quarantine lifecycle the flake is handed to.
+
+integrated: 2026-11-24
