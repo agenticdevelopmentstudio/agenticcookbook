@@ -1,0 +1,31 @@
+
+- `one-tracker-everyone-uses`: the project's issues are kept in one tracker that everyone uses, and filing in it is light.
+- `issue-covers-more-than-defects`: where the tracker holds issues other than defects, they are matters that could affect the project, raised by any stakeholder.
+- `issue-records-minimum-fields`: every issue record carries its identifier, description, impact, owner, status and next steps or target date, and every defect gives steps to reproduce, expected and actual results.
+- `defect-has-severity-every-issue-has-status`: every issue carries a status, and every defect a severity.
+- `issue-has-severity-and-status`: every issue has a severity and a status.
+- `keep-priority-scale-small`: the tracker has few fields and few priority levels.
+- `link-issues-to-findings`: an issue raised by a specialist finding links to that finding.
+- `identify-assess-severity-and-triage`: every new issue is categorized, assessed for severity by impact, prioritized and decided on.
+- `triage-has-a-named-owner`: a named person or rotation is responsible for triaging new issues.
+- `triage-new-issues-promptly`: new issues are triaged within the stated time and marked as awaiting triage until then.
+- `every-issue-has-one-owner`: every triaged issue has exactly one owner until it closes.
+- `severity-kept-apart-from-priority`: severity and priority are separate fields.
+- `define-issue-severity-levels`: the project's severity scale is defined, small, and leveled by impact alone.
+- `severity-set-by-assessor-not-reporter`: severity is set by whoever assesses the issue, not its reporter.
+- `severity-change-needs-rationale`: where the project requires it, every severity change carries a comment giving the reason.
+- `track-resolution-status`: every issue's status moves through a defined workflow to a closed state, and its blockers are worked on.
+- `flag-stale-issues`: where the project flags stale issues, an issue with no activity for the set time is flagged.
+- `escalate-critical-issues`: every critical issue gets immediate attention and a notice beyond the triage queue.
+- `critical-issue-owned-or-escalated`: every critical issue is owned within the stated time or escalated.
+- `escalation-path-documented`: the escalation process is written down.
+- `escalate-unresolved-after-time-limit`: every issue unresolved past the agreed time is escalated by the agreed procedure.
+- `resolved-issue-references-resolution`: every resolved issue records how it was resolved.
+- `record-resolution-reason`: every closed issue records a resolution reason from a fixed set.
+- `link-fix-change-to-issue`: every fixing change is linked to its issue.
+- `verify-resolution-before-close`: every fix is confirmed by the reporter, a named verifier or a test before its issue closes.
+- `communicate-resolution-to-stakeholders`: where the project tells stakeholders, each resolution is communicated to them.
+- `close-duplicates-linking-canonical`: every duplicate is closed with a link to the original issue and its reporter told.
+- `close-unplanned-work-definitively`: work the team will not do is closed as not planned, with an explanation.
+- `keep-closed-issues-as-history`: closed issues remain in the tracker.
+
