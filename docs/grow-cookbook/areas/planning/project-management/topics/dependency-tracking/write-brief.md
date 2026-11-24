@@ -139,3 +139,9 @@ Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, ci
 Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
 
 - R2.1: `rationale.md`, first paragraph, the sentence added this round: "the count of days blocked rests on the practitioners alone, so it is an option, as recording a blocked task's dates is in task breakdown." The reason it gives for MAY ("rests on the practitioners alone") also fits `keep-resolved-dependency-blockers`. That rule cites only `leopold-red-blocker-sticker-days-blocked` too, whose `trust.basis` corroborates only the reason-with-flag part, yet it is SHOULD. Read with the rules, the rationale gives one reason for two different strengths. This is the only instance in the changed text. Fix: give the reason for each strength on its own terms. For example, say the day count is an option so that it matches `task-breakdown`'s `blocker-records-dates`, and that keeping resolved blockers is a recommendation because Leopold and Magennis say it emphatically ("DON'T THROW THE BLOCKER POST-ITS AWAY!"), which matches `task-breakdown`'s `keep-resolved-blockers`. Or drop "rests on the practitioners alone, so" as the reason.
+
+## Round 3 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
