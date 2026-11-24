@@ -4,7 +4,7 @@
     "id": "a55182ef-3144-407c-b64a-6377f37f5c63",
     "title": "Risk Tracking",
     "type": "guideline",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -42,11 +42,11 @@
       "https://www.nao.org.uk/wp-content/uploads/2023/12/overcoming-challenges-to-managing-risks-in-government.pdf",
       "https://www.prince2.com/uk/blog/the-risk-register-what-to-include-and-what-to-avoid"
     ],
-    "approved-by": "",
-    "approved-date": "",
+    "approved-by": "approve-artifact v2.0.0",
+    "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "edaa15669c4ac2c2",
+  "synced": "41e74a5b004e64d4",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
