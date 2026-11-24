@@ -21,10 +21,12 @@ source of rules, and the team-specific parts stay in projectteam.
 | issue-tracking | `cookbook/guidelines/planning/project-management/issue-tracking` (new; input: projectteam `specialities/project/issues.md`) | itself (new) | none | none | How-to / troubleshooting (intent Do; domain issue triage and resolution; method standards bodies, tool documentation and practitioner sources) |
 | milestone-scheduling | `cookbook/guidelines/planning/project-management/milestone-scheduling` (new; input: projectteam `specialities/project/schedule.md`) | itself (new) | none | none | How-to / troubleshooting (intent Do; domain project scheduling; method standards bodies and practitioner sources) |
 | task-breakdown | `cookbook/guidelines/planning/project-management/task-breakdown` (new; input: projectteam `specialities/project/todos.md`) | itself (new) | none | none | How-to / troubleshooting (intent Do; domain work decomposition and task assignment; method standards bodies and practitioner sources) |
+| project-record-linking | `cookbook/guidelines/planning/project-management/project-record-linking` (new, by owner ruling 2026-11-24; input: the cross-references each of projectteam's six `specialities/project/` files requires) | itself (new) | none | none | How-to / troubleshooting (intent Do; domain traceability between project records; method standards bodies, tool documentation and practitioner sources) |
 
 No topic has a copy, so nothing folds in this area. Each topic was added to
 the worklist as `new: true`, `kind: "new"`, `devteam: "authored"`, in the
-`planning/project-management` batch.
+`planning/project-management` batch; `project-record-linking` joined it on
+the owner's ruling of 2026-11-24 that cross-artifact linking is its own topic.
 
 The topic names are the practices, not projectteam's file names: a
 "concern" is a risk or an open worry, so the topic is `risk-tracking`; a
@@ -103,6 +105,7 @@ copy_check.py planning/project-management: copies 0; identical 0; moved 0; unrea
 | issue-tracking | new | `cookbook/guidelines/planning/project-management/issue-tracking` | No artifact rules project issue triage, severity and resolution; `incident-response` covers production incidents only. |
 | milestone-scheduling | new | `cookbook/guidelines/planning/project-management/milestone-scheduling` | No artifact rules milestones, their sequencing or a critical path. |
 | task-breakdown | new | `cookbook/guidelines/planning/project-management/task-breakdown` | No artifact rules how work is split into owned, actionable tasks; `spec-driven-development` stops at the spec. |
+| project-record-linking | new | `cookbook/guidelines/planning/project-management/project-record-linking` | No artifact rules how risks, decisions, dependencies, issues, milestones and tasks reference each other; its own topic by owner ruling (2026-11-24). Last in order: it cites the six record topics. |
 
 ## Research questions
 
@@ -164,15 +167,20 @@ of the issue trackers teams use (GitHub Issues and Projects, Jira, Linear).
 5. **Actionable task wording**: find what practitioners require of an actionable task (a verb and an object, a done condition, a size limit), and state what a task's text says and how large a task may be.
 6. **Task blocker naming**: find how trackers and practitioners record what a blocked task waits on, and state how a blocked task names its blocker.
 
-### No host
+### project-record-linking (new)
 
-1. **Cross-artifact linking**: how project records (risks, decisions, dependencies, issues, milestones, tasks) reference each other so each is findable from the others. Carried, no host: no topic's folder name shares a specific word with the subject; each topic's questions name links to its own records only. Named under **Owner questions**.
+1. Best practice: how should a delivery team link its project records (risks, decisions, dependencies, issues, milestones, tasks) to each other and to the findings that raised them: which record carries each link, which links are two-way, and how a record is identified so a link stays valid when the record moves or closes?
+2. Known solutions: how do RAID logs, traceability matrices, ADR links, and the linked-issue, sub-issue, relation and dependency fields of GitHub Issues and Projects, Jira and Linear compare for keeping links between records findable?
+3. Platform guidelines: what do the PMBOK Guide, ISO 21502, PRINCE2's registers and logs, and the trackers' own documentation say about cross-referencing risks, issues, decisions and the plan?
+4. The expert's view: what do delivery leads and traceability practitioners say teams get wrong with links between records (one-way links, links to closed or deleted records, records findable from none of the others), and what to do instead?
+5. **Cross-artifact linking**: find how practitioners and trackers keep each project record findable from the records it touches, and state which links each record type carries (a blocked milestone to its issue or risk, a task to its milestone and blocker, a superseding decision to the one it supersedes, a resolved issue to its resolution), how a link names its target, and how links are checked for dangling targets. The record-specific fields stay at their hosts (**Decision supersession**, **Issue resolution traceability**, **Blocked milestone accounting**, **Task blocker naming**); this topic rules the linking convention they share.
 
 ## Owner questions
 
-1. Research bar for every topic: no escalation is proposed. Each topic stays at the *How-to / troubleshooting* bar; any metric claim (a review cadence or a task size backed by a study) takes the *Statistical* bar.
-2. **Cross-artifact linking** has no host (carried, no host, under **Research questions**). Does it become its own `new` topic in this area (for example `project-record-linking`), or is each topic's question 1 widened to cover the links from its own records, with risk-tracking, decision-records, dependency-tracking, issue-tracking, milestone-scheduling and task-breakdown each answering it in part?
-3. The area path: the topics go under a new `cookbook/guidelines/planning/project-management/`, beside `planning/code-quality` and the other planning areas. Approve the path, or name another.
+1. Research bar for every topic (risk-tracking, decision-records, dependency-tracking, issue-tracking, milestone-scheduling, task-breakdown): no escalation is proposed. Each topic stays at the *How-to / troubleshooting* bar; any metric claim (a review cadence or a task size backed by a study) takes the *Statistical* bar. Answered 2026-11-24: the owner approved the plan as it stands, research bars as proposed, no escalation.
+2. **Cross-artifact linking**: answered 2026-11-24 by owner ruling: it is its own `new` topic in this area, `project-record-linking`, which hosts it (**Research questions**, *project-record-linking*, question 5). It no longer sits under `### No host`.
+3. The area path: the topics go under a new `cookbook/guidelines/planning/project-management/`, beside `planning/code-quality` and the other planning areas. Answered 2026-11-24: the owner approved the path.
+4. Research bar for project-record-linking: no escalation; *How-to / troubleshooting*, any metric claim taking the *Statistical* bar. Answered 2026-11-24: set by the owner's ruling and approval, no escalation.
 
 ## Step-4 re-check
 
@@ -194,6 +202,35 @@ plan's own: `missing_subjects` went from 0 to 12 (the **Missing subjects**
 above). `host_check` held the area at plan on one tie: the subject then named "Task blocker recording" shared "record" with decision-records and "task" with task-breakdown. It was renamed **Task blocker naming**, which shares a word with task-breakdown only. Step 1.3 was re-run (`run_gaps.py --hints`), which saved the report again.
 
 Hand-off check, after the plan's final edit:
+
+- unmeasured.py planning/project-management: check unchanged; changes 0; new_keys 0; stale_reference 0; result a7c23a7e7fca
+- run_gaps.py --check planning/project-management: unchanged, exit 0; would_clear 0; failed 0; unplaced 0; stale_reference 0; r9_stale 0; verdict_changes 0; counted_rows 0; counted_rows_differ 0; changes 0; gap_total_rows 0; measured_total 0; missing_subjects 12; not_compared 0; counted_with_prior_verdict 0; counted_never_judged 0; stated 0 -> measured 0 (+0: counted_with_prior_verdict 0, counted_never_judged 0, verdict_changes 0); hints on (flag); report 3549796163980e5e4fa6770f5e6e2996557e90b7
+- run_gaps.py --check-homes planning/project-management: `check_homes` [], exit 0
+- run_gaps.py --check-verdicts planning/project-management: `check_verdicts` [], exit 0
+- copy_check.py planning/project-management: copies 0; identical 0; moved 0; unreadable 0; twin_differs 0; differ_uncarried none; result caed47f1ecdb
+- stage_status.py planning/project-management: next approve; plan_sections 0; stale_reference 0; r9_stale 0; stale_copy_check 0; host_check 0; cite_moved 0; stale_verdicts 0; result 0785eeb62840
+
+This plan cites no other area plan, so no plan hash is recorded.
+
+### On 1.4.48, after the owner's ruling (2026-11-24)
+
+The owner ruled that cross-artifact linking is its own topic,
+`project-record-linking`, and approved the plan as it stands (the path,
+research bars as proposed, no escalation). The plan added the topic to
+**Topics**, **Proposed topics** (last, since it cites the six record topics)
+and **Research questions**, moved **Cross-artifact linking** from `### No host`
+to its question 5 (it shares `linking` with the topic's folder name), and
+marked every Owner question answered. The record-specific links stay at their
+hosts (**Decision supersession**, **Issue resolution traceability**,
+**Blocked milestone accounting**, **Task blocker naming**): each shares a
+specific word only with its own topic, so moving one would trip `host_check`.
+The worklist batch gained `project-record-linking` (`new: true`, `kind: "new"`,
+`devteam: "authored"`).
+
+The first `unmeasured.py --check` after the edit changed (exit 1, `changes` 1):
+`new_topics` added `guidelines/planning/project-management/project-record-linking`,
+the worklist row above. `A/unmeasured.json` was rewritten with
+`write_on_success.py`. Hand-off check, after the plan's final edit:
 
 - unmeasured.py planning/project-management: check unchanged; changes 0; new_keys 0; stale_reference 0; result a7c23a7e7fca
 - run_gaps.py --check planning/project-management: unchanged, exit 0; would_clear 0; failed 0; unplaced 0; stale_reference 0; r9_stale 0; verdict_changes 0; counted_rows 0; counted_rows_differ 0; changes 0; gap_total_rows 0; measured_total 0; missing_subjects 12; not_compared 0; counted_with_prior_verdict 0; counted_never_judged 0; stated 0 -> measured 0 (+0: counted_with_prior_verdict 0, counted_never_judged 0, verdict_changes 0); hints on (flag); report 3549796163980e5e4fa6770f5e6e2996557e90b7

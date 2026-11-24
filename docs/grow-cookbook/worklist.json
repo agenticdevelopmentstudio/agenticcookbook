@@ -21,7 +21,8 @@
         {"topic": "dependency-tracking", "survivor": "guidelines/planning/project-management/dependency-tracking", "new": true, "kind": "new", "devteam": "authored"},
         {"topic": "issue-tracking", "survivor": "guidelines/planning/project-management/issue-tracking", "new": true, "kind": "new", "devteam": "authored"},
         {"topic": "milestone-scheduling", "survivor": "guidelines/planning/project-management/milestone-scheduling", "new": true, "kind": "new", "devteam": "authored"},
-        {"topic": "task-breakdown", "survivor": "guidelines/planning/project-management/task-breakdown", "new": true, "kind": "new", "devteam": "authored"}
+        {"topic": "task-breakdown", "survivor": "guidelines/planning/project-management/task-breakdown", "new": true, "kind": "new", "devteam": "authored"},
+        {"topic": "project-record-linking", "survivor": "guidelines/planning/project-management/project-record-linking", "new": true, "kind": "new", "devteam": "authored"}
       ],
       "building": []
     },
