@@ -1,0 +1,38 @@
+
+- `define-and-sequence-milestones`: the milestones are defined, sequenced, given target dates, linked by dependency chains and tracked for status and progress.
+- `milestone-marks-a-key-event`: each milestone marks a key event or stage and has no duration.
+- `schedule-has-start-and-finish-milestones`: the schedule has a start milestone and a finish milestone.
+- `work-is-not-a-milestone`: no work is represented as a milestone.
+- `keep-milestones-few`: the milestones are few enough that the activity sequences driving them stay easy to identify.
+- `document-standard-milestones`: where a standard set of milestones is used and documented, each entry has a description, completion criteria, a work-breakdown reference and a deciding authority.
+- `one-place-for-the-target-date`: each target ship date is tracked in one place.
+- `link-milestones-by-logic-not-fixed-dates`: every activity and milestone is joined by logic links, each activity with a predecessor and a successor.
+- `justify-missing-logic`: every activity missing a predecessor or successor, other than the start and finish milestones, is justified in the schedule documentation.
+- `no-hard-constraints-in-the-baseline`: the baseline and the official status updates carry no hard date constraint.
+- `justify-unavoidable-hard-constraints`: every unavoidable hard date constraint names its controlling outside event in the basis document.
+- `milestone-chains-have-no-cycles`: the dependency chains between milestones hold no cycle.
+- `check-chains-by-topological-sort`: the exported dependency links pass a topological sort.
+- `report-the-cycle-found`: a failed cycle check names the cycle it found.
+- `identify-the-critical-path`: the critical path is identified as the longest-duration path through the acyclic logic.
+- `critical-chain-is-an-option`: where the team schedules by critical chain instead of critical path, the schedule is built around keeping resources at a constant utilisation.
+- `hold-explicit-schedule-contingency`: contingency is held as separate, monitored contingency activities.
+- `estimate-without-padding`: activity durations are most-likely estimates with no risk margin inside them.
+- `size-contingency-by-risk-analysis`: where a schedule risk analysis is run, it gives the contingency for a stated level of confidence and lists the high-priority risks.
+- `status-against-a-status-date`: each update states its status date, with actuals before it and forecasts after it.
+- `status-date-is-not-view-or-save-date`: no update uses the viewing date or the latest save date as its status date.
+- `update-on-a-regular-cadence`: the schedule is updated on a regular cadence suited to the project's duration, complexity and risk.
+- `track-more-often-than-reported`: progress is tracked more often than it is reported.
+- `milestone-has-status-and-target-date`: every milestone has a status and a target date.
+- `keep-a-baseline-and-report-variance`: a baseline is kept under change control and each forecast milestone date is compared with its baseline date and its downstream effect.
+- `explain-every-milestone-date-change`: each status update gives the status of the key milestone dates, the finish date included, and explains each change to them.
+- `document-schedule-changes`: every change made during statusing is documented, and each salient one is justified with its likely effect.
+- `identify-at-risk-or-blocked-milestones`: each status update identifies the at-risk and blocked milestones.
+- `act-on-blocked-milestones`: each blocked milestone is raised when active work is reviewed and acted on.
+- `at-risk-milestone-names-its-risk`: every milestone reported at risk names the risk or concern behind it.
+- `blocked-milestone-has-issue-or-concern`: no milestone is blocked without a corresponding issue or concern.
+- `forecast-dates-from-history-as-ranges`: each forecast milestone date is drawn from the team's history and paired with a probability.
+- `forecast-charts-do-not-replace-empiricism`: where burn-down, burn-up or cumulative flow charts forecast progress, the work actually done is inspected as well.
+- `commit-after-uncertainty-narrows`: no milestone date is committed before the decisions that narrow its estimate are made.
+- `commit-near-term-forecast-later`: where a roadmap commits only the next increment, the later increments are marked as forecasts.
+- `fix-the-date-flex-the-scope`: where the time is fixed, the scope is what varies to fit it.
+
