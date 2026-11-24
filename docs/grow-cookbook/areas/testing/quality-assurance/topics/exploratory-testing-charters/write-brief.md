@@ -166,3 +166,9 @@ Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, ci
 Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
 
 - R2.1: `rationale.md`, last paragraph (changed this round), the sentence "Some rest on one publisher alone: ... the sizing, splitting, stakeholder and new-charter rules on Hendrickson ...": the "sizing" rules are `charter-gives-direction-not-tests` and `charter-target-is-finishable` (how-to step 3, "Size it", covers both). `charter-gives-direction-not-tests` cites `charter-does-not-list-tests` and `charter-detail-trade-off`, both from the ISTQB Test Analyst syllabus, as well as Hendrickson, so it does not rest on Hendrickson alone. This is the same source-fidelity error R1.6 asked to remove. It is the only instance: the other single-publisher attributions in the sentence are accurate. `split-large-areas-into-focused-charters`, `charters-framed-with-stakeholders` and `off-charter-ideas-become-new-charters` cite only Hendrickson claims. `off-charter-work-logged-as-opportunity` and `dispatch-sessions-as-todo-charters` cite only SBTM. `treat-documentation-as-unconfirmed` cites only Bolton, and `no-vacuous-expected-result` only the RST guide. Fix: replace "the sizing" with "the finishable-target rule" (`charter-target-is-finishable`, which cites only `hendrickson-too-broad`), or drop the sizing rules from the list.
+
+## Round 3 findings
+
+Verdict: pass. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+none
