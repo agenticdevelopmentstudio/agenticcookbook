@@ -4,7 +4,7 @@
     "id": "f77eeffe-2699-4028-9195-4bfc23c75e91",
     "title": "Issue Tracking",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -60,7 +60,7 @@
     "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "1d7503371b2c654b",
+  "synced": "6b1890d398fa0893",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
