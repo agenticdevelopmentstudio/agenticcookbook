@@ -4,7 +4,7 @@
     "id": "a55182ef-3144-407c-b64a-6377f37f5c63",
     "title": "Risk Tracking",
     "type": "guideline",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "status": "draft",
     "language": "en",
     "created": "2026-11-24",
@@ -46,7 +46,7 @@
     "approved-date": "2026-11-24",
     "triggers": []
   },
-  "synced": "41e74a5b004e64d4",
+  "synced": "ac39c85204503c49",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
