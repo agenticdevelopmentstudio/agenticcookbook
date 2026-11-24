@@ -14,30 +14,33 @@
 - `e2e-fixtures-give-only-what-test-needs`: where fixtures are used, each gives the test what it needs and nothing else.
 - `e2e-retries-surface-flakiness`: where retries run, a test that passed only on retry is reported as flaky.
 - `e2e-fix-flaky-tests`: each flaky test found is fixed, not left passing on retry.
-- `e2e-trace-on-ci-failure`: a failing E2E test on CI leaves a trace to debug from.
+- `e2e-trace-on-ci-failure`: the suite records a trace for each E2E test that fails on CI.
 - `e2e-test-what-the-user-sees`: each spec checks what the end user sees and does.
-- `e2e-locators-user-facing-first`: each locator uses role and accessible name, label or text where one fits.
-- `e2e-test-id-where-no-user-facing-locator`: where used, each test id locates an element no role or text match fits.
+- `e2e-locators-user-facing-first`: each locator uses a user-facing attribute or an explicit contract such as a test id, not the DOM structure, where one fits.
+- `e2e-test-id-only-when-no-user-facing-locator`: where used, each test id is a `data-*` attribute, UIKit's `accessibilityIdentifier` or an AutomationId.
+- `e2e-compose-finders-over-semantics-tree`: where used, Compose tests select nodes with finders over the semantics tree.
 - `e2e-scope-automation-id-by-container`: each AutomationId locator is scoped by its container.
 - `e2e-avoid-dom-structure-locators`: no locator is a CSS or XPath path through the DOM structure.
 - `e2e-prefer-unique-id-to-css-to-xpath`: each structural fallback locator is a unique ID, else a CSS selector, before XPath.
 - `hermetic-specs-mock-the-api`: each hermetic spec stubs its network responses through the tool's interception API or a test double.
 - `e2e-do-not-test-what-you-do-not-control`: no spec exercises an external site or third-party server the team does not control.
-- `e2e-hermetic-by-default-live-for-critical-paths`: most specs stub the network, and live specs cover critical paths.
+- `e2e-hermetic-by-default-live-for-critical-paths`: the suite stubs the network in the main, alongside true end-to-end specs against the real server.
 - `e2e-live-environment-held-stable`: each live spec runs against an environment kept from changing.
 - `e2e-select-live-specs-by-tag-or-project`: where used, live specs are selected by a tag, a project or an environment variable.
-- `e2e-gate-live-specs-needing-secrets`: where used, live specs that need CI secrets do not run on fork-triggered workflows.
+- `e2e-gate-live-specs-needing-secrets`: where used, on GitHub Actions, live specs that need repository secrets do not run on fork-triggered workflows.
 - `no-credentials-or-real-user-data`: the change holds no credentials, tokens or API keys, in fixtures, comments or mocked responses.
 - `e2e-credentials-from-environment`: each secret a spec uses comes from outside the source code.
 - `e2e-env-file-git-ignored`: each local env file holding sensitive values is git-ignored.
 - `e2e-stored-auth-state-git-ignored`: stored authentication state lives in a git-ignored directory.
 - `e2e-secrets-kept-from-browser`: no secret is handed to the browser as a configuration value.
-- `e2e-secrets-out-of-logs`: no password, token or other secret appears in the test or CI log.
+- `e2e-secrets-out-of-ci-logs`: no secret a spec uses is printed in the CI log.
+- `e2e-no-secrets-in-session-id`: no `cy.session` id holds a password, token or other sensitive data.
 - `e2e-synthetic-data-not-real-user-data`: fixtures, comments and mocked responses hold synthetic data, not real user data.
-- `e2e-dedicated-test-accounts`: specs use dedicated test accounts and standard test secrets.
+- `e2e-dedicated-test-accounts`: each spec that signs in signs in as a test account.
 - `e2e-account-per-worker`: tests that change server-side state use one test account per parallel worker.
-- `e2e-separate-production-secrets`: where used, production secrets sit in a separate secret store.
-- `e2e-page-objects-hold-no-assertions`: no page object makes a verification or assertion.
+- `e2e-standard-test-secrets`: where used, the organisation's standard test secrets are used universally across it.
+- `e2e-separate-production-secrets`: where used, production secrets sit in a secret-management solution separate from development secrets.
+- `e2e-page-objects-hold-no-assertions`: no page object makes a verification or assertion other than a check of its page's own invariants.
 - `e2e-do-not-repeat-lower-level-assertions`: no E2E spec re-tests logic and edge cases lower-level tests cover.
 - `e2e-focus-on-what-lower-levels-miss`: each E2E spec covers behaviour lower-level tests could not.
 - `rationale-cites-assertion-source`: each spec's rationale cites the feature doc or plan its assertions derive from.
