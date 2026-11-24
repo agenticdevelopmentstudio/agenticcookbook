@@ -1,0 +1,1359 @@
+{
+  "topic": "task-breakdown",
+  "artifact": "cookbook/guidelines/planning/project-management/task-breakdown",
+  "scope": "How work is broken into tasks for any delivery team: what makes a task specific and actionable, how large a task may be, one owner (assignee), a priority or order, acceptance or done criteria, the link from each task to its milestone, and how a blocked task names what it waits on. Out of scope: writing the spec before code (spec-driven-development), ordering thin end-to-end slices (steel-thread-first), milestones themselves (milestone-scheduling) and the general record-linking convention (project-record-linking); projectteam's own paths, formats and specialist names.",
+  "base_commit": "f0dd450e1188364e9e221d912d49657944ae46ad",
+  "research_type": "How-to / troubleshooting (intent Do; domain work decomposition and task assignment; method standards bodies and practitioner sources). Product / how-to bar LOW-MEDIUM (broad independent consensus), no escalation. No task-size claim found rests on a study or survey, so none was scored on the Statistical bar.",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient and classify (how-to, work decomposition), go to the method owners and standards bodies first (Scrum Guide, Kanban Guide, PMI/PMBOK, ISO 21502, AXELOS PRINCE2, SAFe, NASA WBS Handbook, GAO Schedule Assessment Guide) and the trackers' own documentation (GitHub Issues, Jira, Linear), then practitioner sources (Wake, Cohn, Spolsky, Humanizing Work, Leopold and Magennis, DORA, GTD) for what no primary source covers; corroborate across independent publishers; record provenance at generation time.",
+    "search_strategy": "WebSearch for each method owner's and tracker's guidance on decomposition, task size, assignment, priority, done criteria, milestones and blocked work; WebFetch of every cited page; every quote then re-checked verbatim against the page's own text fetched separately (whitespace and typographic quotes normalised).",
+    "inclusion": "Method owners' guides, standards bodies' public pages and handbooks, trackers' own documentation, named practitioner articles with an author and a date where given.",
+    "exclusion": "Community forum answers, marketplace app pages, AI content-farm pages, and any page whose quoted words could not be found in its fetched text. PMI (pmi.org), ISO (iso.org) and GAO (gaoinnovations.gov, gao.gov) refused automated fetches (HTTP 403), so no claim cites them.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority (30) + Independent corroboration (25) + Accuracy/verifiability (20) + Currency (10) + Transparency (15), capped by the how-to domain ceiling; cite-the-claim-not-the-document, independence-before-corroboration, domain-stratified-trust, suppress-unsupported-confidence and provenance-at-generation-time applied; secondary sources standing in for an unreachable primary are scored down and say so."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://scrumguides.org/scrum-guide.html",
+    "https://kanbanguides.org/english/",
+    "https://framework.scaledagile.com/story",
+    "https://www.nasa.gov/wp-content/uploads/2023/08/nasa-work-breakdown-structure-handbook.pdf",
+    "https://en.wikipedia.org/wiki/Work_breakdown_structure",
+    "https://prince2.wiki/management-products/work-package/",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+    "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones",
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/assigning-issues-and-pull-requests-to-other-github-users",
+    "https://linear.app/docs/issue-property",
+    "https://linear.app/docs/assigning-issues",
+    "https://linear.app/docs/projects",
+    "https://linear.app/method/write-issues-not-user-stories",
+    "https://support.atlassian.com/jira-software-cloud/docs/flag-an-issue/",
+    "https://support.atlassian.com/jira-software-cloud/docs/create-or-remove-dependencies-on-your-timeline/",
+    "https://www.atlassian.com/work-management/project-management/acceptance-criteria",
+    "https://xp123.com/invest-in-good-stories-and-smart-tasks/",
+    "https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/",
+    "https://www.joelonsoftware.com/2000/03/29/painless-software-schedules/",
+    "https://dora.dev/capabilities/working-in-small-batches/",
+    "https://www.mountaingoatsoftware.com/blog/should-a-team-assign-work-during-sprint-planning",
+    "https://www.scrum.org/resources/blog/why-pre-assigning-tasks-scrum-bad-idea-and-what-do-instead",
+    "https://handbook.gitlab.com/handbook/people-group/directly-responsible-individuals/",
+    "https://www.infoq.com/articles/blockers-defects-process-improvement",
+    "https://gettingthingsdone.com/2010/10/some-key-gtd-definitions/",
+    "https://facilethings.com/blog/en/what-is-the-next-action"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "The four Worker Focus clauses hold at SHOULD: the Scrum Guide has Developers decompose items into work items of one day or less and own their plan; the NASA WBS Handbook ties work to responsibility (RAM) and derives tasks and milestones from the WBS; Wake's SMART tasks, Linear's method and GTD's next action make a task specific and actionable with a done test; the Kanban Guide requires blocked work to be actively unblocked, the Scrum Guide has the Daily Scrum identify impediments, and GitHub, Jira and Linear all record blocked-by relations. Of the three Verify clauses, 'every todo has an assignee and priority' is contradicted as a check on every todo: Cohn and Scrum.org advise against assigning all tasks up front, the Scrum Guide orders the backlog rather than labelling priority, and Linear's priority includes 'No priority'; the sources support one owner per started task and an ordered backlog. 'Blocked todos reference a specific blocker' is supported only at SHOULD (trackers provide the link, practitioners record the reason; no source requires it). 'No todo is assigned to a nonexistent milestone' has no source. New practices found: a task's text names the action and its done condition; tasks sized at hours to a few days with a week as the outer limit; a blocker recorded as a link to the blocking item plus a short reason and dates; one owner per started task, claimed when work begins; an ordered backlog; vertical rather than layer splits; decomposition covering 100% of scope; sizing by the people doing the work.",
+  "open_questions": [
+    "Whether 'every todo has an assignee' should become 'every started todo has exactly one assignee', leaving unstarted todos unassigned as Cohn and Scrum.org advise, or stay a check on every todo as a projectteam convention; the owner decides.",
+    "Whether 'priority' is kept as a per-task field (as Linear and Jira offer) or replaced by backlog order (as the Scrum Guide has it), and whether 'no priority' is an allowed value.",
+    "Whether 'no todo is assigned to a nonexistent milestone' is kept as a house referential-integrity check; no external source states it, though trackers only offer existing milestones to pick.",
+    "Which task-size limit the guideline states: one day or less (Scrum Guide), hours to a couple of days with a week as too big (DORA), 2 to 16 hours (Spolsky), or 80 hours (WBS heuristic); the sources agree on 'small' but not on one number.",
+    "Whether a blocker must name a tracked item (a blocked-by link) or may name an outside cause in text (a vendor, a missing decision), and whether its start date is required.",
+    "Whether every task must link to a milestone, or only tasks in a project that uses milestones; the sources describe milestones as optional grouping."
+  ],
+  "limitations": [
+    "PMI (the PMBOK Guide and the Practice Standard for Work Breakdown Structures), ISO 21502 and the GAO Schedule Assessment Guide could not be read: pmi.org, iso.org and gaoinnovations.gov/gao.gov refused automated fetches (HTTP 403). The WBS 100% rule and 80-hour heuristic are cited from Wikipedia's summary of the PMI practice standard, a secondary source, and the NASA WBS Handbook stands in as the primary WBS source.",
+    "AXELOS's PRINCE2 manual is paywalled and its own public summary could not be fetched as a document; the work package is cited from the PRINCE2 wiki (EMPII Group, using the trade mark under AXELOS permission), a secondary source.",
+    "ISO 31000 (risk) was not researched: blocked tasks are a flow concern here, not a risk-register one, and no risk-specific task rule is under verification.",
+    "LeSS was not cited: no LeSS page was found that speaks to task breakdown, assignment or blockers beyond what the Scrum Guide says.",
+    "Apple, Android and Windows have no bearing on this topic and were not researched.",
+    "No study or survey measuring the effect of a task-size limit on schedule accuracy was found; every size figure here is a method owner's or practitioner's heuristic, scored on the how-to bar.",
+    "Linear's documentation was reorganised; its former issue-relations and priority pages return 404, and those facts are cited from the current issue-property page.",
+    "No source was found that states a rule against assigning a task to a milestone that does not exist."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "decompose-to-one-day-or-less",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide has the Developers plan the Sprint's work by decomposing Product Backlog items into smaller work items of one day or less, at their own discretion.",
+      "quote": "This is often done by decomposing Product Backlog items into smaller work items of one day or less. How this is done is at the sole discretion of the Developers.",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide sprint backlog decomposing product backlog items one day or less",
+      "trust": {
+        "score": 65,
+        "basis": "The method owners' own current guide, quoted directly; 'often' makes it a common practice, not a requirement, which the claim keeps. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The guide says the Developers plan the work for each item, and \"This is often done by decomposing...\" into items of a day or less. It names this as a common way to plan, not as the way the guide prescribes. The claim drops the word \"often\" and so states it more strongly than the source does; lowered 85->65."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "developers-own-the-sprint-backlog",
+      "question": "platform-guidelines",
+      "claim": "In Scrum the Sprint Backlog, including its breakdown into work, is a plan by and for the Developers, who are accountable for creating it.",
+      "quote": "The Sprint Backlog is a plan by and for the Developers. | Creating a plan for the Sprint, the Sprint Backlog;",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide sprint backlog plan by and for the Developers accountability",
+      "trust": {
+        "score": 85,
+        "basis": "Method owners' own guide, quoted directly; authoritative for Scrum teams."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "refinement-breaks-down-and-sizes",
+      "question": "platform-guidelines",
+      "claim": "Scrum's Product Backlog refinement breaks items into smaller, more precise items with a description, order and size, and the Developers who will do the work size it.",
+      "quote": "Product Backlog refinement is the act of breaking down and further defining Product Backlog items into smaller more precise items. This is an ongoing activity to add details, such as a description, order, and size. | The Developers who will be doing the work are responsible for the sizing.",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide product backlog refinement breaking down sizing",
+      "trust": {
+        "score": 85,
+        "basis": "Method owners' own guide, quoted directly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "doers-estimate-their-tasks",
+      "question": "experts-view",
+      "claim": "Only the people who will do a task should size or schedule it; a schedule written by management and handed down fails.",
+      "quote": "Only the programmer who is going to write the code can schedule it. Any system where management writes a schedule and hands it off to programmers is doomed to fail. | The Developers who will be doing the work are responsible for the sizing.",
+      "citations": [
+        {
+          "title": "Painless Software Schedules",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-03-29",
+          "url": "https://www.joelonsoftware.com/2000/03/29/painless-software-schedules/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article; method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Painless Software Schedules only the programmer who writes the code can schedule it",
+      "trust": {
+        "score": 75,
+        "basis": "A practitioner and the Scrum Guide, independent publishers, agree; the practitioner article is old but the practice is stable."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "small-tasks-hours-to-days",
+      "question": "best-practices",
+      "claim": "Tasks should be small enough to finish in hours to a couple of days; a task of a week or more has not been broken down enough.",
+      "quote": "During a sprint, you should be able to complete batches of work in small increments of time, meaning hours to a couple days. | Any batch of code that takes longer than a week to complete and check is too big. | As a rule of thumb, each task should be from 2 to 16 hours. If you have a 40 hour (one week) task on your schedule, you're not breaking it down enough.",
+      "citations": [
+        {
+          "title": "Working in small batches",
+          "author": "DORA (Google Cloud)",
+          "publisher": "dora.dev",
+          "date": "2025-12-08",
+          "url": "https://dora.dev/capabilities/working-in-small-batches/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Painless Software Schedules",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-03-29",
+          "url": "https://www.joelonsoftware.com/2000/03/29/painless-software-schedules/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "research programme guidance; expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "DORA working in small batches hours days week too big; painless software schedules task 2 to 16 hours",
+      "trust": {
+        "score": 75,
+        "basis": "Two independent publishers (Google's DORA programme, a practitioner) converge, and the Scrum Guide's 'one day or less' agrees; the figures are heuristics, not study results, so scored on the how-to bar."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "stories-small-enough-for-an-iteration",
+      "question": "known-solutions",
+      "claim": "Above the task, a user story is kept small enough to finish within one iteration: SAFe says a few days or less; Wake's INVEST put the upper bound at a few person-weeks.",
+      "quote": "Keeping stories small ensures they can be completed in a single iteration, allowing every iteration to deliver value. | A story describes a small piece of functionality that an Agile Team can finish in a few days or less. | Good stories tend to be small. Stories typically represent at most a few person-weeks worth of work.",
+      "citations": [
+        {
+          "title": "Story",
+          "author": "Scaled Agile, Inc.",
+          "publisher": "SAFe Framework",
+          "date": "2025-01-27",
+          "url": "https://framework.scaledagile.com/story",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "INVEST in Good Stories, and SMART Tasks",
+          "author": "Bill Wake",
+          "publisher": "XP123",
+          "date": "2003-08-17",
+          "url": "https://xp123.com/invest-in-good-stories-and-smart-tasks/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "framework owner's guide; originating practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "SAFe story small enough single iteration few days; INVEST small stories",
+      "trust": {
+        "score": 70,
+        "basis": "Framework owner plus the INVEST originator, independent; they agree on 'small' but differ on the bound, so only the shape is corroborated."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "task-specific-enough-to-understand",
+      "question": "best-practices",
+      "claim": "A task is specific enough that everyone can understand what is involved, and describes a concrete piece of work with a clear, defined outcome.",
+      "quote": "A task needs to be specific enough that everyone can understand what's involved in it. | An issue should describe a task with a clear, defined outcome.",
+      "citations": [
+        {
+          "title": "INVEST in Good Stories, and SMART Tasks",
+          "author": "Bill Wake",
+          "publisher": "XP123",
+          "date": "2003-08-17",
+          "url": "https://xp123.com/invest-in-good-stories-and-smart-tasks/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Write issues not user stories",
+          "author": "Linear",
+          "publisher": "Linear Method",
+          "date": "n.d.",
+          "url": "https://linear.app/method/write-issues-not-user-stories",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article; tracker vendor's method guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "SMART tasks specific measurable; Linear method write issues clear defined outcome",
+      "trust": {
+        "score": 72,
+        "basis": "Two independent publishers agree; Linear's method page is a vendor's opinion but matches Wake's SMART."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "task-title-states-the-task",
+      "question": "best-practices",
+      "claim": "A task's title states directly, in plain language, what the task is; work that is not yet a task is broken down before it goes in the tracker.",
+      "quote": "Write short and simple issue titles that directly state what the task is. | If it's not a task, then it doesn't belong in the issue tracker. Maybe it's a project idea that needs to be fleshed out in a document or conversation or a larger feature that should be broken down into smaller, tangible pieces of work.",
+      "citations": [
+        {
+          "title": "Write issues not user stories",
+          "author": "Linear",
+          "publisher": "Linear Method",
+          "date": "n.d.",
+          "url": "https://linear.app/method/write-issues-not-user-stories",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor's method guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear method write issues short simple titles state the task",
+      "trust": {
+        "score": 60,
+        "basis": "One tracker vendor's method page; consistent with GTD's next action and Wake's SMART but not stated word for word by them."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "next-action-physical-and-visible",
+      "question": "best-practices",
+      "claim": "An actionable item names a physical, visible next step, so anyone can tell it was done; ambiguous verbs such as 'think' are avoided and the text says what is to be done and when it is done.",
+      "quote": "A Next Action is your physical, visible next step. | The Next Action should always be something \"physical and visible\", so that anyone can determine that the action has actually been performed. You should avoid the ambiguity introduced by certain verbs, such as \"think\". | The description of the action, like that of the project, should clearly indicate what needs to be done and when it is done.",
+      "citations": [
+        {
+          "title": "Some Key GTD Definitions",
+          "author": "David Allen Company",
+          "publisher": "Getting Things Done",
+          "date": "2010-10-13",
+          "url": "https://gettingthingsdone.com/2010/10/some-key-gtd-definitions/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "What is the Next Action?",
+          "author": "Francisco Sáez",
+          "publisher": "FacileThings",
+          "date": "n.d.",
+          "url": "https://facilethings.com/blog/en/what-is-the-next-action",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's definition; practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GTD next action physical visible definition verb",
+      "trust": {
+        "score": 60,
+        "basis": "GTD's owner gives the definition; the verb advice comes from a GTD app vendor's article (secondary, used because the owner's page does not cover wording); personal-productivity method applied to team tasks."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "task-has-a-done-test",
+      "question": "best-practices",
+      "claim": "Each task carries a done test the team agrees on: acceptance criteria are clear, testable conditions a piece of work must satisfy to be complete.",
+      "quote": "The key measure is, \"can we mark it as done?\" The team needs to agree on what that means. | Acceptance criteria are the conditions that a product, user story, or increment of work must satisfy to be complete. They're a set of clear, concise, and testable statements that focus on providing positive customer results.",
+      "citations": [
+        {
+          "title": "INVEST in Good Stories, and SMART Tasks",
+          "author": "Bill Wake",
+          "publisher": "XP123",
+          "date": "2003-08-17",
+          "url": "https://xp123.com/invest-in-good-stories-and-smart-tasks/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Acceptance criteria: examples and best practices",
+          "author": "Finch Grace",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/work-management/project-management/acceptance-criteria",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article; tracker vendor's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "SMART tasks measurable can we mark it as done; Atlassian acceptance criteria testable",
+      "trust": {
+        "score": 78,
+        "basis": "Independent practitioner and tracker vendor agree, and the Scrum Guide's Definition of Done (claim scrum-definition-of-done) carries the same idea at the increment level."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "scrum-definition-of-done",
+      "question": "platform-guidelines",
+      "claim": "Scrum requires work to meet the Definition of Done before it counts as part of the Increment.",
+      "quote": "Work cannot be considered part of an Increment unless it meets the Definition of Done. | The Developers are required to conform to the Definition of Done.",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide definition of done increment",
+      "trust": {
+        "score": 85,
+        "basis": "Method owners' guide, stated as a requirement."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "acceptance-criteria-measurable-not-vague",
+      "question": "experts-view",
+      "claim": "A common failure is acceptance criteria that are too vague or too detailed; criteria should be measurable pass/fail statements.",
+      "quote": "Replace vague statements like: \"The results page should look good. Instead, use measurable statements like: Each product image displays at a minimum resolution of 300×300 pixels.\" | One common challenge teams face is ambiguity in the criteria, which can lead to misinterpretation. Teams may also struggle to strike a balance between overly specific and too vague criteria.",
+      "citations": [
+        {
+          "title": "Acceptance criteria: examples and best practices",
+          "author": "Finch Grace",
+          "publisher": "Atlassian",
+          "date": "n.d.",
+          "url": "https://www.atlassian.com/work-management/project-management/acceptance-criteria",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Atlassian acceptance criteria vague measurable challenges",
+      "trust": {
+        "score": 58,
+        "basis": "One vendor's marketing-adjacent guide; plausible and consistent with SMART 'Measurable' but uncorroborated word for word."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "smart-task-time-boxed",
+      "question": "known-solutions",
+      "claim": "SMART tasks (Specific, Measurable, Achievable, Relevant, Time-boxed) complement INVEST stories: each task contributes to its story and carries a time expectation so the owner knows when to seek help.",
+      "quote": "Every task should be relevant, contributing to the story at hand. | A task should be time-boxed: limited to a specific duration. This doesn't need to be a formal estimate in hours or days, but there should be an expectation so people know when they should seek help.",
+      "citations": [
+        {
+          "title": "INVEST in Good Stories, and SMART Tasks",
+          "author": "Bill Wake",
+          "publisher": "XP123",
+          "date": "2003-08-17",
+          "url": "https://xp123.com/invest-in-good-stories-and-smart-tasks/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "originating practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "INVEST in good stories and SMART tasks Bill Wake",
+      "trust": {
+        "score": 62,
+        "basis": "The acronym's originator; widely adopted (DORA cites INVEST) but the SMART-for-tasks text itself is from this one article."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "split-vertically-not-by-layer",
+      "question": "experts-view",
+      "claim": "Splitting work by architectural layer (one item for the UI, one for the database) is a common mistake: it yields small items that are neither independent nor valuable; split into thin vertical slices instead.",
+      "quote": "Many new agile teams attempt to split stories by architectural layer: one story for the UI, another for the database, etc. This may satisfy small, but it fails at independent and valuable. | Sometimes we come across tasks or components pretending to be a story.",
+      "citations": [
+        {
+          "title": "The Humanizing Work Guide to Splitting User Stories",
+          "author": "Richard Lawrence and Peter Green",
+          "publisher": "Humanizing Work",
+          "date": "n.d.",
+          "url": "https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "humanizing work guide splitting user stories vertical slices architectural layer",
+      "trust": {
+        "score": 42,
+        "basis": "Widely referenced practitioner guide; one publisher; its INVEST basis is independently Wake's. No method owner states it. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote supports the mistake (splitting by layer \"fails at independent and valuable\") but never says to split into vertical slices instead. The page does say this elsewhere (\"User Stories Are Vertical Slices\", \"a story is a vertical slice through the system\"). The second quoted sentence does not bear on the claim; lowered 62->42."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "not-small-enough-is-the-pitfall",
+      "question": "experts-view",
+      "claim": "The most common pitfall in small-batch work is not breaking work into small enough pieces, or regrouping small pieces before release.",
+      "quote": "Not breaking up work into small enough pieces. | Working in small batches but then regrouping the batches before sending them downstream for testing or release.",
+      "citations": [
+        {
+          "title": "Working in small batches",
+          "author": "DORA (Google Cloud)",
+          "publisher": "dora.dev",
+          "date": "2025-12-08",
+          "url": "https://dora.dev/capabilities/working-in-small-batches/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "research programme guidance",
+      "generated_by": "grow-cookbook research agent",
+      "query": "DORA working in small batches common pitfalls",
+      "trust": {
+        "score": 65,
+        "basis": "Google's DORA programme, current (December 2025); the pitfall list is guidance, not a measured result."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "large-chunky-tasks-hide-design",
+      "question": "experts-view",
+      "claim": "Large, hand-wavy tasks are a mistake because the work behind them has not been thought through, so their duration cannot be known.",
+      "quote": "And when you haven't thought about what you're going to do, you just can't know how long it will take. | If you have a hand-wavy feature called \"Internet Integration\" and you schedule 3 weeks for it, you are doomed, buddy.",
+      "citations": [
+        {
+          "title": "Painless Software Schedules",
+          "author": "Joel Spolsky",
+          "publisher": "Joel on Software",
+          "date": "2000-03-29",
+          "url": "https://www.joelonsoftware.com/2000/03/29/painless-software-schedules/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "painless software schedules chunky tasks hand-wavy",
+      "trust": {
+        "score": 55,
+        "basis": "One well-known practitioner article; old but the point is stable; uncorroborated in these words."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-break-up-large-estimates",
+      "question": "known-solutions",
+      "claim": "Linear treats a large estimate as a sign of uncertainty and recommends breaking such issues into smaller ones.",
+      "quote": "Larger estimates usually mean that there is uncertainty about the issue's complexity. We find that breaking up issues into smaller ones is the best approach.",
+      "citations": [
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs estimates break up issues",
+      "trust": {
+        "score": 65,
+        "basis": "Tracker vendor's own current docs; agrees with DORA and Spolsky on size."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "single-accountable-owner",
+      "question": "best-practices",
+      "claim": "Each piece of work has one directly responsible person, which removes ambiguity about who owns it.",
+      "quote": "Issues in Linear are assigned to a single person at a time, giving teams clear ownership and responsibility. | DRIs work conceptually because they leave no room for ambiguity about who has the final say on all questions that arise within a project or team. | DRIs are most often assigned at the task-level.",
+      "citations": [
+        {
+          "title": "Assign and delegate issues",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/assigning-issues",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Directly Responsible Individuals (DRI)",
+          "author": "GitLab",
+          "publisher": "The GitLab Handbook",
+          "date": "n.d.",
+          "url": "https://handbook.gitlab.com/handbook/people-group/directly-responsible-individuals/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation; company handbook",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear assign issues single person ownership; GitLab handbook directly responsible individual",
+      "trust": {
+        "score": 70,
+        "basis": "Two independent publishers; GitHub by contrast allows up to 10 assignees (claim github-assignees), so single ownership is a practice, not a universal tool constraint."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "github-assignees",
+      "question": "known-solutions",
+      "claim": "GitHub Issues allows up to 10 assignees on an issue; assignees say who is working on it.",
+      "quote": "Assignees clarify who is working on specific issues and pull requests. | Both issues and pull requests support up to 10 assignees.",
+      "citations": [
+        {
+          "title": "Assigning issues and pull requests to other GitHub users",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/assigning-issues-and-pull-requests-to-other-github-users",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub docs assigning issues assignees limit",
+      "trust": {
+        "score": 85,
+        "basis": "The tracker's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "assign-when-work-begins",
+      "question": "experts-view",
+      "claim": "Experts advise against assigning every task up front at planning: each person claims their first task and then chooses the next as work progresses, so assignment happens close to when work begins.",
+      "quote": "I'm a big fan of delaying the decision about who will work on something until closer to when the work begins. And so I prefer not allocating all tasks during sprint planning. Members of teams I coach will usually each sign up for just their first task at the end of sprint planning. | Yet, many teams fall into the trap of pre-assigning tasks at the start of a Sprint, believing it boosts efficiency. While the intention is good, this approach contradicts Scrum's core principles and hampers performance.",
+      "citations": [
+        {
+          "title": "Should a Team Assign Work During Sprint Planning?",
+          "author": "Mike Cohn",
+          "publisher": "Mountain Goat Software",
+          "date": "2021-03-30",
+          "url": "https://www.mountaingoatsoftware.com/blog/should-a-team-assign-work-during-sprint-planning",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Why Pre-assigning Tasks in Scrum is a Bad Idea (And What to Do Instead)",
+          "author": "Paul Grew",
+          "publisher": "Scrum.org",
+          "date": "2025-03-27",
+          "url": "https://www.scrum.org/resources/blog/why-pre-assigning-tasks-scrum-bad-idea-and-what-do-instead",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner articles",
+      "generated_by": "grow-cookbook research agent",
+      "query": "should a team assign work during sprint planning; pre-assigning tasks scrum bad idea",
+      "trust": {
+        "score": 68,
+        "basis": "Two independent expert publishers agree; Cohn names exceptions (teams new to agile, teams that struggle with accountability), so it is a SHOULD, not a ban."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "backlog-is-ordered",
+      "question": "platform-guidelines",
+      "claim": "The Scrum Guide orders the Product Backlog, with the Product Owner accountable for that order, rather than assigning each item a priority label.",
+      "quote": "The Product Backlog is an emergent, ordered list of what is needed to improve the product. | Ordering Product Backlog items; and",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide product backlog ordered list product owner ordering",
+      "trust": {
+        "score": 82,
+        "basis": "Method owners' guide, quoted directly; that it replaces priority labels is the claim's reading of 'ordered', which the guide never contrasts explicitly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-priority-levels",
+      "question": "known-solutions",
+      "claim": "Linear offers a fixed five-value priority, including 'No priority', so a tracker's priority field may be left unset.",
+      "quote": "Issues can be set to No priority, Low, Medium, High, or Urgent. We don't have the option to set custom priorities or more granular priorities since it's easy to get carried away with specificity.",
+      "citations": [
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs issue priority levels",
+      "trust": {
+        "score": 80,
+        "basis": "The tracker's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-sub-issues-break-down-work",
+      "question": "known-solutions",
+      "claim": "GitHub Issues breaks larger work into tasks with sub-issues that keep their link to the parent issue.",
+      "quote": "You can add sub-issues to an issue to break down larger pieces of work into tasks. Your sub-issues show their relationship to the parent issue allowing you to track your work across GitHub.",
+      "citations": [
+        {
+          "title": "Adding sub-issues",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub docs sub-issues break down work into tasks",
+      "trust": {
+        "score": 85,
+        "basis": "The tracker's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wbs-hundred-percent-rule",
+      "question": "known-solutions",
+      "claim": "A work breakdown structure follows the 100% rule: the children of each element add up to exactly the parent's work, nothing outside scope, down to the activities in each work package.",
+      "quote": "The 100% rule states that the WBS includes 100% of the work defined by the project scope and captures all deliverables – internal, external, interim – in terms of the work to be completed, including project management. | It is important to remember that the 100% rule also applies to the activity level. The work represented by the activities in each work package must add up to 100% of the work necessary to complete the work package.",
+      "citations": [
+        {
+          "title": "Work breakdown structure",
+          "author": "Wikipedia contributors",
+          "publisher": "Wikipedia",
+          "date": "n.d.",
+          "url": "https://en.wikipedia.org/wiki/Work_breakdown_structure",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "reference (secondary, summarising the PMI Practice Standard for Work Breakdown Structures)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PMI work breakdown structure 100% rule work package",
+      "trust": {
+        "score": 35,
+        "basis": "Secondary: pmi.org refused the fetch (HTTP 403) and the practice standard is paywalled, so this cites Wikipedia's sourced summary of it; the NASA WBS Handbook (claim nasa-wbs-defines-all-work) independently says a WBS defines all work. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote covers 100% of the project scope and the activities in each work package. It does not state that each element's children equal 100% of its parent, or that out-of-scope work is excluded. The same page says both in the sentence the quote skips: \"the sum of the work at the 'child' level must equal 100% of the work represented by the 'parent', and the WBS should not include any work that falls outside the actual scope\"; lowered 55->35."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "nasa-wbs-defines-all-work",
+      "question": "known-solutions",
+      "claim": "NASA's WBS Handbook defines the WBS as a product-oriented breakdown of all the project's work, subdivided only as far as management and control need.",
+      "quote": "As previously discussed, a WBS defines all work to be performed for project completion. It is a product-oriented structure, not an organizational structure. | Each product branch within the WBS only needs to be subdivided as far as needed to allow for adequate management, insight, and control.",
+      "citations": [
+        {
+          "title": "NASA Work Breakdown Structure (WBS) Handbook (NASA/SP-20210023927)",
+          "author": "National Aeronautics and Space Administration",
+          "publisher": "NASA",
+          "date": "2021-11",
+          "url": "https://www.nasa.gov/wp-content/uploads/2023/08/nasa-work-breakdown-structure-handbook.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government handbook",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NASA Work Breakdown Structure Handbook",
+      "trust": {
+        "score": 78,
+        "basis": "Primary government handbook, current edition; written for large engineering projects, so its depth guidance generalises with care."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wbs-outcomes-not-actions",
+      "question": "known-solutions",
+      "claim": "WBS practice defines elements by outcomes or deliverables rather than actions, which keeps the breakdown at 100% of scope.",
+      "quote": "The best way to adhere to the 100% rule is to define WBS elements in terms of outcomes or results, not actions.",
+      "citations": [
+        {
+          "title": "Work breakdown structure",
+          "author": "Wikipedia contributors",
+          "publisher": "Wikipedia",
+          "date": "n.d.",
+          "url": "https://en.wikipedia.org/wiki/Work_breakdown_structure",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "reference (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "work breakdown structure plan outcomes not actions",
+      "trust": {
+        "score": 50,
+        "basis": "Secondary reference standing in for the unreachable PMI standard; NASA's 'product-oriented' (claim nasa-wbs-defines-all-work) points the same way."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "wbs-eighty-hour-heuristic",
+      "question": "known-solutions",
+      "claim": "WBS size heuristics cap a lowest-level work package at about 80 hours of effort and at one reporting period.",
+      "quote": "The first is the \"80-hour rule\" which means that no single activity or group of activities at the lowest level of detail of the WBS to produce a single deliverable should be more than 80 hours of effort. The second rule of thumb is that no activity or group of activities at the lowest level of detail of the WBS should be longer than a single reporting period.",
+      "citations": [
+        {
+          "title": "Work breakdown structure",
+          "author": "Wikipedia contributors",
+          "publisher": "Wikipedia",
+          "date": "n.d.",
+          "url": "https://en.wikipedia.org/wiki/Work_breakdown_structure",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "reference (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "work breakdown structure level of detail 80 hour rule",
+      "trust": {
+        "score": 42,
+        "basis": "Secondary reference, a rule of thumb with no study behind it; a work-package bound, much coarser than a task."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "prince2-work-package-assigns-products",
+      "question": "known-solutions",
+      "claim": "PRINCE2 hands work to a team as a work package: a formal set of instructions that assigns responsibility for products and carries a description of the work, product descriptions, tolerances and quality criteria.",
+      "quote": "A work package is a formal set of instructions used by the project manager to assign responsibility for the creation of one or more products to a team manager or team member.",
+      "citations": [
+        {
+          "title": "Work Package",
+          "author": "EMPII Group",
+          "publisher": "PRINCE2 wiki",
+          "date": "n.d.",
+          "url": "https://prince2.wiki/management-products/work-package/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "reference (secondary, PRINCE2 trade mark used under AXELOS permission)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "PRINCE2 work package definition",
+      "trust": {
+        "score": 50,
+        "basis": "Secondary: AXELOS's manual is paywalled and no owner summary could be fetched; the wiki uses the trade mark under AXELOS permission but is not AXELOS's text."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nasa-ram-assigns-responsibility",
+      "question": "known-solutions",
+      "claim": "NASA assigns responsibility for work by integrating the WBS with the organisation in a Responsibility Assignment Matrix, at whatever WBS level the work is managed.",
+      "quote": "To assign specific work responsibility to a specific organization, the WBS and organizational structure should be integrated with each other (i.e., functional responsibility is established for managing specified work to produce defined products). This integration process results in a Responsibility Assignment Matrix (RAM)",
+      "citations": [
+        {
+          "title": "NASA Work Breakdown Structure (WBS) Handbook (NASA/SP-20210023927)",
+          "author": "National Aeronautics and Space Administration",
+          "publisher": "NASA",
+          "date": "2021-11",
+          "url": "https://www.nasa.gov/wp-content/uploads/2023/08/nasa-work-breakdown-structure-handbook.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government handbook",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NASA WBS handbook responsibility assignment matrix",
+      "trust": {
+        "score": 72,
+        "basis": "Primary government handbook; it assigns organisations to WBS elements, not individuals to tasks."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nasa-tasks-and-milestones-from-wbs",
+      "question": "known-solutions",
+      "claim": "In WBS practice, tasks and milestones are both derived from the lowest-level WBS elements, so each task traces to the work and the schedule events it serves.",
+      "quote": "As WBS elements are established and work content is clearly defined in the WBS Dictionary, it is then possible for the project team to determine the tasks (activities) and events (milestones) that are required to successfully complete the project objectives and products. Tasks and events are identified for the effort contained in each lowest-level WBS element.",
+      "citations": [
+        {
+          "title": "NASA Work Breakdown Structure (WBS) Handbook (NASA/SP-20210023927)",
+          "author": "National Aeronautics and Space Administration",
+          "publisher": "NASA",
+          "date": "2021-11",
+          "url": "https://www.nasa.gov/wp-content/uploads/2023/08/nasa-work-breakdown-structure-handbook.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "government handbook",
+      "generated_by": "grow-cookbook research agent",
+      "query": "NASA WBS handbook schedule management tasks milestones",
+      "trust": {
+        "score": 70,
+        "basis": "Primary government handbook; ties tasks and milestones through the WBS rather than task-to-milestone directly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "github-milestones-group-issues",
+      "question": "known-solutions",
+      "claim": "GitHub milestones group issues to track their progress; an issue is associated with a milestone chosen from the repository's existing milestones.",
+      "quote": "You can use milestones to track progress on groups of issues or pull requests in a repository. | When you create a milestone, you can associate it with issues and pull requests.",
+      "citations": [
+        {
+          "title": "About milestones",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub docs about milestones associate issues",
+      "trust": {
+        "score": 80,
+        "basis": "The tracker's own current documentation; the 'chosen from existing milestones' part is the UI flow, not a stated rule."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "linear-issue-in-one-project",
+      "question": "known-solutions",
+      "claim": "Linear links each issue to at most one project at a time, and projects carry milestones with target dates.",
+      "quote": "Issues can only be associated with one project at a time. | You can reorder the milestones from here, set their target dates and edit their names.",
+      "citations": [
+        {
+          "title": "Projects",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/projects",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Linear docs projects milestones issues one project",
+      "trust": {
+        "score": 75,
+        "basis": "The tracker's own current documentation of its own feature."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "sprint-goal-links-the-work",
+      "question": "platform-guidelines",
+      "claim": "In Scrum, the work selected for a Sprint is tied to a single Sprint Goal, the nearest Scrum equivalent of a milestone.",
+      "quote": "The Sprint Goal is the single objective for the Sprint. Although the Sprint Goal is a commitment by the Developers, it provides flexibility in terms of the exact work needed to achieve it.",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide sprint goal single objective",
+      "trust": {
+        "score": 75,
+        "basis": "Method owners' guide, quoted directly; treating the Sprint Goal as a milestone analogue is this research's reading."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-unblock-blocked-work",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide requires items in the workflow to be managed actively, which includes unblocking blocked work, and commonly reviewing active items regularly.",
+      "quote": "Items in the workflow must be managed actively. Active management of items in a workflow can take several forms, including but not limited to the following: Controlling WIP. Ensuring work items do not age unnecessarily, using the SLE as a reference. Unblocking blocked work. A common practice is for Kanban system members to review the active items regularly.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "John Coleman and Daniel Vacanti",
+          "publisher": "kanbanguides.org",
+          "date": "2025-05-01",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide actively managing items unblocking blocked work",
+      "trust": {
+        "score": 85,
+        "basis": "The method's own current guide (May 2025); 'must' applies to active management, with unblocking one listed form."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "kanban-define-started-and-finished",
+      "question": "platform-guidelines",
+      "claim": "The Kanban Guide requires a team to define its work items and when each is started and finished.",
+      "quote": "A definition of the individual units of value that are moving through the workflow. These units of value are referred to as work items (or items). A definition for when work items are started and finished within the workflow.",
+      "citations": [
+        {
+          "title": "The Kanban Guide",
+          "author": "John Coleman and Daniel Vacanti",
+          "publisher": "kanbanguides.org",
+          "date": "2025-05-01",
+          "url": "https://kanbanguides.org/english/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Kanban Guide definition of workflow work items started finished",
+      "trust": {
+        "score": 85,
+        "basis": "The method's own current guide; listed among the elements the DoW must contain."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "daily-scrum-identifies-impediments",
+      "question": "platform-guidelines",
+      "claim": "Scrum surfaces blockers in the Daily Scrum and makes the Scrum Master accountable for causing their removal.",
+      "quote": "Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings. | Causing the removal of impediments to the Scrum Team's progress; and",
+      "citations": [
+        {
+          "title": "The Scrum Guide",
+          "author": "Ken Schwaber and Jeff Sutherland",
+          "publisher": "scrumguides.org",
+          "date": "2020-11",
+          "url": "https://scrumguides.org/scrum-guide.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's guide",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Scrum Guide impediments daily scrum scrum master",
+      "trust": {
+        "score": 85,
+        "basis": "Method owners' guide, quoted directly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "trackers-record-blocked-by-links",
+      "question": "known-solutions",
+      "claim": "GitHub, Jira and Linear each record a blocker as a 'blocked by' / 'blocks' link from the blocked item to the item it waits on, and mark blocked items visibly.",
+      "quote": "Issue dependencies let you define issues that are blocked by, or blocking, other work. | Blocked issues are marked with a \"Blocked\" icon on your project boards or repository's Issues page | If there's a dependency between two work items, one must be finished before the next can begin. | Select either blocks or is blocked by, then select the work item to link. | If other issues are blocking the current issue, they'll show up in the issue sidebar with an orange flag under Blocked by.",
+      "citations": [
+        {
+          "title": "Creating issue dependencies",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Create or remove dependencies on your timeline",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support (Jira Cloud)",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/create-or-remove-dependencies-on-your-timeline/",
+          "accessed": "2026-11-24"
+        },
+        {
+          "title": "Issue properties",
+          "author": "Linear",
+          "publisher": "Linear Docs",
+          "date": "n.d.",
+          "url": "https://linear.app/docs/issue-property",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub issue dependencies blocked by; Jira blocks is blocked by; Linear blocked by relation",
+      "trust": {
+        "score": 65,
+        "basis": "Three independent trackers' own current documentation converge on the same relation. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The quote shows the \"blocks / is blocked by\" link in all three trackers, and visible marking only in GitHub (a \"Blocked\" icon) and Linear (an orange flag). The quoted Jira timeline text shows only how to make the link, not that blocked items are marked, so the claim that \"each\" marks blocked items visibly is not supported for Jira; lowered 85->65."
+      },
+      "independence": "multi-independent"
+    },
+    {
+      "id": "jira-flag-with-reason",
+      "question": "known-solutions",
+      "claim": "Jira marks a blocked item with a flag (stored as 'Impediment') and lets the user add a comment giving the reason when flagging or unflagging it.",
+      "quote": "You can flag a work item to indicate that it's important or blocked. | You can also add a comment when you're adding a flag to or removing a flag from a work item. You may want to do this to indicate your reason for adding or removing the flag. | The flag for a work item is stored in a custom checkbox field called \"Flagged\", which has only one value: Impediment.",
+      "citations": [
+        {
+          "title": "Flag a work item",
+          "author": "Atlassian",
+          "publisher": "Atlassian Support (Jira Cloud)",
+          "date": "n.d.",
+          "url": "https://support.atlassian.com/jira-software-cloud/docs/flag-an-issue/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "tracker vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Jira Cloud flag a work item impediment",
+      "trust": {
+        "score": 78,
+        "basis": "The tracker's own current documentation; the reason comment is optional ('may want to')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "blocker-note-states-reason-and-dates",
+      "question": "experts-view",
+      "claim": "Practitioners record each blocker on the blocked item with a brief reason that names its cause, and its start and resolved dates or days blocked, then keep resolved blockers to cluster them for improvement.",
+      "quote": "A common technique used by teams is to add a red Post-it note with a brief reason to the blocked work ticket. | Make sure each blocker has enough text to remind the team of the cause of the blocker | Some teams record the start date on the bottom left of the Post-it and the resolved date on the bottom right. | After you resolve these blockers, DON'T THROW THE BLOCKER POST-ITS AWAY!",
+      "citations": [
+        {
+          "title": "Using Blocker Clustering, Defect Clustering, and Prioritization for Process Improvement",
+          "author": "Klaus Leopold and Troy Magennis",
+          "publisher": "InfoQ",
+          "date": "2015-06-08",
+          "url": "https://www.infoq.com/articles/blockers-defects-process-improvement",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "expert practitioner article",
+      "generated_by": "grow-cookbook research agent",
+      "query": "blocker clustering Klaus Leopold record blocker reason date",
+      "trust": {
+        "score": 62,
+        "basis": "Named Kanban experts in an edited outlet; the reason practice is echoed by Jira's flag comment (claim jira-flag-with-reason), but the dates practice is 'some teams'."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "waiting-for-names-whom",
+      "question": "known-solutions",
+      "claim": "GTD keeps items that wait on someone or something else on a separate Waiting For list, naming what they wait on.",
+      "quote": "Waiting For holds those items that you are waiting on from someone or something else.",
+      "citations": [
+        {
+          "title": "Some Key GTD Definitions",
+          "author": "David Allen Company",
+          "publisher": "Getting Things Done",
+          "date": "2010-10-13",
+          "url": "https://gettingthingsdone.com/2010/10/some-key-gtd-definitions/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "method owner's definition",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GTD key definitions waiting for",
+      "trust": {
+        "score": 35,
+        "basis": "Method owner's own page, but a personal-productivity method; shows a blocker can be a person or outside thing, not only a tracked item. Second check 2026-11-24: refuted (quote-found yes, supports-claim partly): The source says only that Waiting For holds items \"you are waiting on from someone or something else\" and gives examples (call backs, email replies, orders). It never says an entry should name the person or thing being waited on; lowered 55->35."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "task-has-assignee-and-priority-prior",
+      "question": "best-practices",
+      "claim": "Every todo has an assignee and priority",
+      "quote": "Every todo has an assignee and priority",
+      "citations": [
+        {
+          "title": "task-breakdown (teams/projectteam/specialities/project/todos.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/todos.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "contradicted by claims assign-when-work-begins, developers-own-the-sprint-backlog, backlog-is-ordered, linear-priority-levels"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "blocked-task-references-blocker-prior",
+      "question": "best-practices",
+      "claim": "blocked todos reference a specific blocker",
+      "quote": "blocked todos reference a specific blocker",
+      "citations": [
+        {
+          "title": "task-breakdown (teams/projectteam/specialities/project/todos.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/todos.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "task-milestone-must-exist-prior",
+      "question": "best-practices",
+      "claim": "no todo is assigned to a nonexistent milestone",
+      "quote": "no todo is assigned to a nonexistent milestone",
+      "citations": [
+        {
+          "title": "task-breakdown (teams/projectteam/specialities/project/todos.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:736232c055d56077e7e1bc03e7e1accf7173a87f:teams/projectteam/specialities/project/todos.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "research brief rule under verification",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "break-down-assign-and-prioritize-tasks",
+      "verdict": "supported",
+      "claims": [
+        "refinement-breaks-down-and-sizes",
+        "decompose-to-one-day-or-less",
+        "github-sub-issues-break-down-work",
+        "nasa-ram-assigns-responsibility",
+        "single-accountable-owner",
+        "backlog-is-ordered",
+        "prince2-work-package-assigns-products"
+      ]
+    },
+    {
+      "rule": "tasks-specific-and-actionable",
+      "verdict": "supported",
+      "claims": [
+        "task-specific-enough-to-understand",
+        "task-title-states-the-task",
+        "next-action-physical-and-visible",
+        "smart-task-time-boxed"
+      ]
+    },
+    {
+      "rule": "link-tasks-to-milestones",
+      "verdict": "supported",
+      "claims": [
+        "nasa-tasks-and-milestones-from-wbs",
+        "github-milestones-group-issues",
+        "linear-issue-in-one-project",
+        "sprint-goal-links-the-work"
+      ]
+    },
+    {
+      "rule": "identify-blocked-tasks-and-blockers",
+      "verdict": "supported",
+      "claims": [
+        "kanban-unblock-blocked-work",
+        "daily-scrum-identifies-impediments",
+        "trackers-record-blocked-by-links",
+        "jira-flag-with-reason"
+      ]
+    },
+    {
+      "rule": "task-has-assignee-and-priority",
+      "verdict": "contradicted",
+      "claims": [
+        "task-has-assignee-and-priority-prior",
+        "assign-when-work-begins",
+        "developers-own-the-sprint-backlog",
+        "backlog-is-ordered",
+        "linear-priority-levels"
+      ]
+    },
+    {
+      "rule": "blocked-task-references-blocker",
+      "verdict": "unsupported",
+      "claims": [
+        "blocked-task-references-blocker-prior",
+        "trackers-record-blocked-by-links",
+        "jira-flag-with-reason",
+        "blocker-note-states-reason-and-dates"
+      ]
+    },
+    {
+      "rule": "task-milestone-must-exist",
+      "verdict": "unsupported",
+      "claims": [
+        "task-milestone-must-exist-prior",
+        "github-milestones-group-issues"
+      ]
+    },
+    {
+      "rule": "task-text-names-action-and-done-test",
+      "verdict": "new",
+      "claims": [
+        "next-action-physical-and-visible",
+        "task-title-states-the-task",
+        "task-has-a-done-test",
+        "scrum-definition-of-done",
+        "kanban-define-started-and-finished",
+        "acceptance-criteria-measurable-not-vague"
+      ]
+    },
+    {
+      "rule": "task-sized-hours-to-a-few-days",
+      "verdict": "new",
+      "claims": [
+        "small-tasks-hours-to-days",
+        "decompose-to-one-day-or-less",
+        "linear-break-up-large-estimates",
+        "not-small-enough-is-the-pitfall",
+        "large-chunky-tasks-hide-design",
+        "stories-small-enough-for-an-iteration",
+        "wbs-eighty-hour-heuristic"
+      ]
+    },
+    {
+      "rule": "blocker-links-the-blocking-item",
+      "verdict": "new",
+      "claims": [
+        "trackers-record-blocked-by-links",
+        "waiting-for-names-whom"
+      ]
+    },
+    {
+      "rule": "blocker-states-reason-and-since",
+      "verdict": "new",
+      "claims": [
+        "blocker-note-states-reason-and-dates",
+        "jira-flag-with-reason"
+      ]
+    },
+    {
+      "rule": "started-task-has-one-owner",
+      "verdict": "new",
+      "claims": [
+        "single-accountable-owner",
+        "assign-when-work-begins",
+        "github-assignees"
+      ]
+    },
+    {
+      "rule": "backlog-is-kept-ordered",
+      "verdict": "new",
+      "claims": [
+        "backlog-is-ordered",
+        "linear-priority-levels"
+      ]
+    },
+    {
+      "rule": "split-into-vertical-slices",
+      "verdict": "new",
+      "claims": [
+        "split-vertically-not-by-layer",
+        "wbs-outcomes-not-actions"
+      ]
+    },
+    {
+      "rule": "breakdown-covers-all-scope",
+      "verdict": "new",
+      "claims": [
+        "wbs-hundred-percent-rule",
+        "nasa-wbs-defines-all-work"
+      ]
+    },
+    {
+      "rule": "doers-size-their-tasks",
+      "verdict": "new",
+      "claims": [
+        "doers-estimate-their-tasks",
+        "refinement-breaks-down-and-sizes",
+        "developers-own-the-sprint-backlog"
+      ]
+    }
+  ]
+}
