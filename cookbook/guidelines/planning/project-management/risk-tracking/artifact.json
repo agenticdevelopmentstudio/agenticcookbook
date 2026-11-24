@@ -12,7 +12,7 @@
     "author": "Mike Fullerton",
     "copyright": "2026 Mike Fullerton",
     "license": "MIT",
-    "summary": "Keeping a project risk register: identify and record risks early, give each one owner, status and response, review on a plan, escalate, hand over issues.",
+    "summary": "Keeping a project risk register: record each risk early, with one owner, a status and a response; review on a plan, escalate, and close it into an issue.",
     "platforms": [],
     "tags": [
       "risk-tracking",
@@ -21,7 +21,10 @@
       "escalation"
     ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "f77eeffe-2699-4028-9195-4bfc23c75e91",
+      "3f978ba7-c8c1-4b53-8fda-12e5a6966b75"
+    ],
     "references": [
       "https://fenix.tecnico.ulisboa.pt/downloadFile/1970943312401590/Norma_ISO_31000_EN.pdf",
       "https://www.gov.uk/government/publications/orange-book/the-orange-book-management-of-risk-principles-and-concepts",
@@ -43,7 +46,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "e00082241b7dc77d",
+  "synced": "d2ea64e195101316",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},

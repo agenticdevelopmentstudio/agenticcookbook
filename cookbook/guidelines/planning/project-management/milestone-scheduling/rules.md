@@ -1,7 +1,8 @@
 
 ### Defining milestones
 
-- **define-and-sequence-milestones**: Planning SHOULD define the project's milestones, put them in sequence, give each a target date, record the dependency chains between them and track each one's status and progress. (claims: sequence-with-logic, milestones-are-zero-duration-key-events, github-milestones-due-date-progress, github-projects-roadmap-dates, linear-milestones-optional-date, linear-project-dependencies, jira-plan-dependencies, safe-planning-board-milestones)
+- **define-and-sequence-milestones**: Planning SHOULD define the project's milestones, put them in sequence and record the dependency chains between them. (claims: sequence-with-logic, milestones-are-zero-duration-key-events, github-milestones-due-date-progress, github-projects-roadmap-dates, linear-milestones-optional-date, linear-project-dependencies, jira-plan-dependencies, safe-planning-board-milestones)
+- **track-milestone-progress**: Each milestone's progress SHOULD be tracked, for example as the completion of the work linked to it. (claims: github-milestones-due-date-progress, linear-milestones-optional-date)
 - **milestone-marks-a-key-event**: A milestone SHOULD mark a key event or stage of the project as a point in time with no duration. (claim: milestones-are-zero-duration-key-events)
 - **schedule-has-start-and-finish-milestones**: The schedule SHOULD include a milestone for the project's start and one for its finish. (claim: milestones-are-zero-duration-key-events)
 - **work-is-not-a-milestone**: Work SHOULD be scheduled as activities leading to a milestone, not represented as milestones. (claim: too-many-milestones-mask-work)
@@ -12,9 +13,9 @@
 ### Sequencing by logic
 
 - **link-milestones-by-logic-not-fixed-dates**: Milestones and the activities between them SHOULD be sequenced by logic links, each activity having at least one predecessor and one successor, rather than placed by fixed dates. (claims: sequence-with-logic, missing-logic-justified, hard-constraints-defeat-cpm, github-define-blocked-by-and-one-target-date, linear-project-dependencies, jira-plan-dependencies)
-- **justify-missing-logic**: An activity other than the start and finish milestones that has no predecessor or no successor SHOULD be justified in the schedule documentation. (claim: missing-logic-justified)
+- **justify-missing-logic**: An activity other than the start and finish milestones that has no predecessor or no successor MUST be justified in the schedule documentation. (claim: missing-logic-justified)
 - **no-hard-constraints-in-the-baseline**: The baseline schedule and the official status updates SHOULD NOT carry hard date constraints. (claims: avoid-hard-date-constraints, hard-constraints-defeat-cpm)
-- **justify-unavoidable-hard-constraints**: A hard date constraint that cannot be avoided SHOULD be justified in the schedule's basis document by the event outside the schedule that controls it. (claim: avoid-hard-date-constraints)
+- **justify-unavoidable-hard-constraints**: A hard date constraint that cannot be avoided MUST be justified in the schedule's basis document by the event outside the schedule that controls it. (claim: avoid-hard-date-constraints)
 
 ### Cycles and the critical path
 

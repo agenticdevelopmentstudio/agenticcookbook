@@ -1,5 +1,6 @@
 
-- Milestones that are not defined, sequenced, dated or tracked, or that span a stretch of work instead of marking an event.
+- Milestones that are not defined or sequenced, with no recorded dependency chains between them, or that span a stretch of work instead of marking an event.
+- A milestone whose progress is not tracked.
 - A schedule with no start or finish milestone, work represented as milestones, or so many milestones that the work driving them is hard to see.
 - A target ship date held in more than one field.
 - Milestones or activities placed by fixed dates rather than linked by logic, or an activity with no predecessor or successor and no stated reason.
