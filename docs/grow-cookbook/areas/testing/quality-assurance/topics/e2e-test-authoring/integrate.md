@@ -22,4 +22,7 @@ Routed by review R1.7. The two guidelines are outside this area, so the question
 
 - `testing/properties-of-good-tests` (`must-be-isolated`, `must-be-deterministic`) and `testing/flaky-test-prevention` (`must-not-share-mutable-state`, `must-not-depend-on-execution-order`, `must-not-ignore-flaky-tests`) state at MUST what this guideline's research supports only at SHOULD (`write-deterministic-specs`, `e2e-isolate-test-state`, `e2e-no-shared-test-data`, `e2e-fix-flaky-tests`). The owner decides whether those guidelines keep MUST or are re-researched.
 
+- from the phase 3 code review (claude-code-review/f6): `rationale-names-what-makes-assertion-correct` (MUST) restates the SHOULD `rationale-cites-assertion-source`, so the SHOULD's stated-departure escape does nothing. The review suggests merging the pair into one rule at one strength.
+- from the phase 3 code review (claude-code-review/f8): the name `no-credentials-or-real-user-data` promises a ban on real user data, but the rule covers credentials only, so a reviewer checking by name may enforce more than the text. It is a prior rule, whose name stays fixed, so the rename is the owner's; the review suggests renaming it to match its text.
+
 integrated: 2026-11-24

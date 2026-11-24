@@ -23,4 +23,7 @@ Open questions from owner-list.md:
 - Whether padding a clean session with severity-free observations stays a fail, given that session sheets and the HTSM quality story both keep notes and curios beside bugs.
 - Whether 'intermittent' requires one stated second attempt or a stated count of attempts and successes; Mozilla asks for 'at will, occasionally, or not at all' and more information when occasional, but no source fixes a number.
 
+- from the phase 3 code review (claude-code-review/f1): `session-has-hard-step-cap` (MUST, a 25-browser-step hard cap) conflicts with `charter-names-scope-cap-focus-and-exclusions`, which bounds a session by a time budget rather than a step count, and `stay-on-charter-origin` is web-only although the intro covers any team; a 90-minute manual or desktop session sized by time fails both. The review suggests dropping or rescoping both MUSTs, for example to an agent-run browser pass only.
+- from the phase 3 code review (claude-code-review/f6): `anomaly-carries-all-four-parts` (MUST) repeats the SHOULD `report-anomaly-where-what-expected-repeatable`, and `clean-pass-reports-coverage` (MUST) repeats `no-anomalies-said-plainly`, so the SHOULDs' stated-departure escape does nothing; the clean-pass MUST also fails a clean session that keeps the notes `session-sheet-keeps-bugs-issues-and-notes` asks for. The review suggests merging each pair into one rule at one strength.
+
 integrated: 2026-11-24

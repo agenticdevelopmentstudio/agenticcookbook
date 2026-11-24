@@ -22,4 +22,6 @@ Open questions from owner-list.md:
 - Which file classes a team may declare as unable to affect tests (Azure TIA's TIA_IncludePathFilters exclusions, GitHub paths-ignore), and who approves that list, since every exclusion narrows a fail-safe fallback.
 - Which shared inputs select everything in the cookbook's general rule (lockfiles, build and CI configuration, toolchains, shared test fixtures): the tools differ, with Nx defaulting a lockfile change to every task and Pants treating a lockfile change as changing all users of any dependency.
 
+- from the phase 3 code review (claude-code-review/f3): `each-selection-justified-by-diff` (MUST) requires every selected test to cite a path or hunk of the diff, while `always-select-new-changed-and-failing-tests` (SHOULD) adds recently failed or flaky tests that have no hunk to cite. The review suggests allowing history-based reasons (previously failing, new, flaky) in the MUST, or lowering it to SHOULD.
+
 integrated: 2026-11-24
