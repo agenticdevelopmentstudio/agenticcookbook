@@ -1,0 +1,1711 @@
+{
+  "topic": "test-impact-analysis",
+  "artifact": "cookbook/guidelines/testing/quality-assurance/test-impact-analysis",
+  "scope": "How a team chooses which tests (or test targets) to run for a change so the run stays fast without missing a test the change breaks: the selection methods (build-graph affected-target queries, coverage-based mapping, path filters, predictive selection), how selection fails safe when a change cannot be mapped, which changes select everything (build config, dependencies, shared inputs), the periodic full run, and what evidence a selection decision records so it can be checked. Excluding quarantined tests from the gate belongs to flaky-test-quarantine, suite shape to test-pyramid, and classifying a failed selected test to test-failure-triage; no team-specific layout, tag, selector, path or output contract is researched.",
+  "base_commit": "77a898dbc718928bbd96ef617723c83ec69cd549",
+  "research_type": "Technology / software (intent Decide; domain change-based test selection; Technical MEDIUM bar, with every figure on selection recall, missed failures or time saved held to the Statistical MED-HIGH bar: study, sample, measure and result named)",
+  "questions": [
+    {
+      "id": "best-practices",
+      "text": "Best practices: what is current best practice for this topic?"
+    },
+    {
+      "id": "known-solutions",
+      "text": "Known solutions: what solutions, patterns, libraries and tools already exist, and how do they compare?"
+    },
+    {
+      "id": "platform-guidelines",
+      "text": "Platform guidelines: what do the platform owners' own guidelines say, for each platform the topic touches (Apple, Android, Windows, web, the databases and runtimes concerned)?"
+    },
+    {
+      "id": "experts-view",
+      "text": "The expert's view: if we hired an expert consultant in this topic, what would they tell us: what to do, what to avoid, and what people usually get wrong?"
+    }
+  ],
+  "methodology": {
+    "method": "guidelines/researching/process/research-methodology-and-sources: orient (domain: change-based regression test selection in CI), go first to the build-system and CI owners' own documentation (Bazel, Nx, Turborepo, Pants, Gradle and Develocity, GitHub Actions, GitLab CI, Azure Pipelines, Android TEST_MAPPING, Xcode test plans) and to the published selection studies themselves (Meta, Google TAP, Ekstazi, RTSLinux), then to the selection tools' own READMEs and docs (bazel-diff, target-determinator, Launchable); practitioner sources (Paul Hammant on martinfowler.com, the Mill build blog) only where no primary covers the point; record provenance at generation time.",
+    "search_strategy": "WebSearch for each tool's affected / changed / impact-analysis documentation and for the published studies by title; every cited page fetched with WebFetch, PDFs (Memon et al. 2017, Celik et al. 2017, Leong et al. 2019) extracted with pdftotext and quotes checked against the extracted text, with the PDF ligatures (fi, ff) restored to the printed words.",
+    "inclusion": "Official documentation of the build systems, CI services and selection tools; peer-reviewed or archived papers reporting industrial or open-source selection results with sample and measure disclosed; vendor documentation for the vendor's own product behaviour; practitioner articles only for experience no primary source covers, flagged in trust basis.",
+    "exclusion": "Search-result snippets; tutorial and content-farm posts surfaced by search (qaskills.sh, oneuptime.com, graphite guides) whose claims were not traceable to a primary; pages that could not be read (the Google Testing Blog 'Efficacy Presubmit' body, the CloudBees Smart Tests observation page, which returned 404); any claim not backed by a fetched quote.",
+    "scoring": "guidelines/researching/evidence/verification-and-trust-scoring: Authority 30 + Independent corroboration 25 + Accuracy/verifiability 20 + Currency 10 + Transparency 15, capped by the Technical MEDIUM ceiling for tool behaviour and by the Statistical MED-HIGH bar for figures; vendor claims about their own commercial products are discounted for conflict of interest; independence counted multi-independent only when two independent publishers hold the quoted words, so claims corroborated in substance but not in wording are marked single with the corroboration named in basis."
+  },
+  "agents": [
+    "grow-cookbook research agent"
+  ],
+  "sources": [
+    "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+    "https://nx.dev/ci/features/affected",
+    "https://turborepo.dev/docs/reference/run",
+    "https://bazel.build/query/language",
+    "https://github.com/bazel-contrib/target-determinator",
+    "https://github.com/Tinder/bazel-diff",
+    "https://www.pantsbuild.org/stable/docs/using-pants/advanced-target-selection",
+    "https://docs.develocity.ai/predictive-test-selection/",
+    "https://docs.gradle.org/current/userguide/java_testing.html",
+    "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+    "https://docs.gitlab.com/ci/yaml/",
+    "https://source.android.com/docs/core/tests/development/test-mapping",
+    "https://developer.apple.com/documentation/xcode/organizing-tests-to-improve-feedback",
+    "https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/",
+    "https://arxiv.org/abs/1810.05286",
+    "https://web.eecs.umich.edu/~xwangsd/courses/w23/readings/googletest.pdf",
+    "https://mpapad.github.io/publications/pdfs/ICSE-SEIP2019.pdf",
+    "https://users.ece.utexas.edu/~gligoric/papers/abstracts/GligoricETAL15Ekstazi.txt",
+    "https://par.nsf.gov/servlets/purl/10055460",
+    "https://help.launchableinc.com/features/predictive-test-selection/use-cases-for-predictive-test-selection/",
+    "https://help.launchableinc.com/features/predictive-test-selection/how-launchable-selects-tests/",
+    "https://help.launchableinc.com/features/predictive-test-selection/observing-subset-behavior/",
+    "https://martinfowler.com/articles/rise-test-impact-analysis.html",
+    "https://mill-build.org/blog/3-selective-testing.html"
+  ],
+  "dates": {
+    "researched": "2026-11-24",
+    "accessed": "2026-11-24"
+  },
+  "summary": "Only one of the five listed rules holds at its stated strength: fail-closed-when-unsure is supported at SHOULD. Every safe-selection tool read here falls back to selecting everything when it cannot map a change: Azure TIA, bazel-diff, Turborepo on a shallow checkout, GitHub Actions when the diff times out, GitLab when there is no push event. The research literature defines a safe technique as one that selects all affected tests. The other four rules state their checks as fails, i.e. MUST. The sources support them only at SHOULD. Tools record why each test was selected (Develocity, Nx --explain, target-determinator -verbose) and treat every changed file as a correctness input (bazel-diff), but none requires a written justification per selection, a written account of every changed path, or a statement of each fallback. Tools also legitimately select tests for reasons outside the diff: previously failing, new, changed or flaky tests. No source speaks to reasoning from commit messages; tools select from the changed files and, at best, their content hashes. The research finds ten practices no listed rule covers: a change of unknown reach selects everything; shared inputs such as lockfiles and build config select everything; selection follows the dependency graph, not paths alone; diff against a known-good base; run the full suite periodically or after merge; always select new, changed and recently failing tests; validate selection against full runs; record why each test was selected; measure selection recall and savings with a named study; and path-skipped required checks must be handled. Published figures: Meta reports at least 95% of individual test failures and 99.9% of faulty changes still caught at half the testing cost; Google TAP saw 63K of 5.5 million affected test targets ever fail in a month; Ekstazi cut end-to-end test time by 32% on average across 615 revisions of 32 projects.",
+  "open_questions": [
+    "How often the periodic full run happens and where: Azure TIA leaves the periodicity configurable, Launchable names post-merge and nightly, Develocity names nightly and pre-release, and Google TAP runs all affected targets per milestone (about every 45 minutes); the owner decides whether the rule names one cadence or requires the team to set and record one.",
+    "Whether predictive (machine-learned) selection may gate a merge on its own, or only run pre-merge with a deterministic or full run behind it: Meta and Develocity accept a bounded miss rate, while the safe-selection literature does not.",
+    "Whether each-selection-justified-by-diff, every-changed-path-accounted-for, fail-closed-is-stated and reasoning-cites-diff-contents keep their fail (MUST) strength as team checks or are restated at the SHOULD strength the sources support.",
+    "Whether a test selected for a reason outside the diff (previously failing, newly added, recently flaky, as Azure TIA and Develocity do) counts as justified under each-selection-justified-by-diff.",
+    "Which file classes a team may declare as unable to affect tests (Azure TIA's TIA_IncludePathFilters exclusions, GitHub paths-ignore), and who approves that list, since every exclusion narrows a fail-safe fallback.",
+    "Which shared inputs select everything in the cookbook's general rule (lockfiles, build and CI configuration, toolchains, shared test fixtures): the tools differ, with Nx defaulting a lockfile change to every task and Pants treating a lockfile change as changing all users of any dependency."
+  ],
+  "limitations": [
+    "Google TAP has no public product documentation; its selection behaviour is taken from Memon et al. (ICSE-SEIP 2017) and Leong et al. (ICSE-SEIP 2019), read from copies hosted by a university course page and an author's site. The Google Testing Blog post 'Efficacy Presubmit' (2018-09-17) returned its title but not its body, so it is not cited.",
+    "Buck2's own documentation on changed-target selection was not fetched; Buck2 is not covered beyond what the Bazel-family tools show.",
+    "Azure DevOps Test Impact Analysis covers only managed .NET Framework code on a single machine (.NET Core and multi-machine topologies are unsupported) and its body dates from 2018 though the page was updated 2026-05-07; its behaviour is current for the product but narrow.",
+    "Launchable is now published as CloudBees Smart Tests; the CloudBees observation-mode page returned 404, so Launchable's own help site was used. Launchable, Develocity and Meta's figures are vendor- or owner-reported and not independently replicated.",
+    "The GitHub Actions page's exact wording of its changed-file limit for path filters was not captured verbatim, so no claim rests on it; the GitLab CI YAML reference was read from character 170000 on for rules:changes only.",
+    "PDF text was extracted with pdftotext, which drops fi and ff ligatures; quotes restore the printed words (e.g. 'affected', 'find').",
+    "Apple's Xcode documentation says nothing about change-based selection; Android's guidance is limited to TEST_MAPPING directory and file-pattern rules for presubmit; no Windows guidance applies beyond Azure DevOps.",
+    "No source was found that addresses selection judgments resting on commit messages or branch names, so reasoning-cites-diff-contents could be neither supported nor contradicted on that point."
+  ],
+  "license": "MIT (this research record); quoted material remains under its sources' terms and is quoted for verification.",
+  "claims": [
+    {
+      "id": "rts-safe-selects-all-affected",
+      "question": "best-practices",
+      "claim": "In regression test selection, a safe technique always selects every affected test, and a precise one selects no unaffected test; safety and precision are the two axes on which techniques are judged.",
+      "quote": "a safe technique always selects all affected tests, while a precise technique does not select any unaffected test",
+      "citations": [
+        {
+          "title": "Regression Test Selection Across JVM Boundaries (ESEC/FSE 2017)",
+          "author": "Ahmet Celik, Marko Vasic, Aleksandar Milicevic, Milos Gligoric",
+          "publisher": "ACM (author manuscript hosted by NSF Public Access Repository)",
+          "date": "2017-09-04",
+          "url": "https://par.nsf.gov/servlets/purl/10055460",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed conference paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "regression test selection safe precise dynamic file dependencies multilingual",
+      "trust": {
+        "score": 78,
+        "basis": "Peer-reviewed ESEC/FSE paper restating the standard definition it cites to Rothermel and Harrold 1997; definitional, stable, and matched in substance by the safe-fallback behaviour of Azure TIA and bazel-diff."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bazel-diff-fallback-costs-speed",
+      "question": "best-practices",
+      "claim": "When bazel-diff cannot derive an incremental result it falls back to a full computation, trading speed but never correctness, and logs which path each run took.",
+      "quote": "A fallback costs speed, never correctness, and the log says which path each run took.",
+      "citations": [
+        {
+          "title": "bazel-diff README",
+          "author": "Tinder",
+          "publisher": "GitHub",
+          "date": "n.d.",
+          "url": "https://github.com/Tinder/bazel-diff",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel-diff impacted targets generate-hashes README",
+      "trust": {
+        "score": 70,
+        "basis": "The tool owner's own README describing its behaviour (authority for the tool); a design principle rather than a measured result; corroborated in substance by Azure TIA's safe fallback and Turborepo's shallow-checkout behaviour."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bazel-diff-changed-list-is-correctness-contract",
+      "question": "best-practices",
+      "claim": "The list of changed files fed to a selection must include every file that actually changed; a changed file left off it silently drops the targets it impacts.",
+      "quote": "The list must be a superset of what actually changed: a truly-changed file left off it is content-skipped on both sides and its impacted targets are missed, so treat the list as a correctness contract.",
+      "citations": [
+        {
+          "title": "bazel-diff README (Query Service, POST /impacted_targets)",
+          "author": "Tinder",
+          "publisher": "GitHub",
+          "date": "n.d.",
+          "url": "https://github.com/Tinder/bazel-diff",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel-diff impacted targets generate-hashes README",
+      "trust": {
+        "score": 68,
+        "basis": "Tool owner's README, stated for its own query service; the principle generalises (Azure TIA likewise reasons per changed file) but no second publisher states it in these terms."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "launchable-full-suite-later-in-pipeline",
+      "question": "best-practices",
+      "claim": "A team that runs a selected subset should still run the full suite at some later point in its pipeline.",
+      "quote": "After subsetting your tests, you should make sure to run the full suite of tests at some point later in your pipeline.",
+      "citations": [
+        {
+          "title": "Use-cases for Predictive Test Selection",
+          "author": "Launchable, Inc.",
+          "publisher": "Launchable",
+          "date": "n.d.",
+          "url": "https://help.launchableinc.com/features/predictive-test-selection/use-cases-for-predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Launchable docs subset full test suite run periodically nightly recommendation predictive test selection",
+      "trust": {
+        "score": 66,
+        "basis": "Vendor's own product guidance (some commercial interest, but the advice limits rather than promotes the product); corroborated in substance by Azure TIA's recommended periodic run and Develocity's remaining-tests mode."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "launchable-full-suite-nightly",
+      "question": "best-practices",
+      "claim": "Moving a suite earlier in the pipeline as a subset does not end the full nightly run, whose results keep training the selection.",
+      "quote": "You'll also want to continue running the full test suite every night",
+      "citations": [
+        {
+          "title": "Use-cases for Predictive Test Selection",
+          "author": "Launchable, Inc.",
+          "publisher": "Launchable",
+          "date": "n.d.",
+          "url": "https://help.launchableinc.com/features/predictive-test-selection/use-cases-for-predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Launchable docs subset full test suite run periodically nightly recommendation predictive test selection",
+      "trust": {
+        "score": 64,
+        "basis": "Vendor documentation; the cadence (nightly) is one vendor's recommendation, corroborated in kind by Paul Hammant's nightly all-tests job but not as a standard."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "tap-affected-targets-reverse-dependencies",
+      "question": "best-practices",
+      "claim": "Google's TAP treats as affected every test target that directly or indirectly depends on the modified files, computed from declared build dependencies.",
+      "quote": "outputs all test targets that directly or indirectly depend on the modified files; these are called AFFECTED test targets.",
+      "citations": [
+        {
+          "title": "Taming Google-Scale Continuous Testing (ICSE-SEIP 2017)",
+          "author": "Atif Memon, Zebao Gao, Bao Nguyen, Sanjeev Dhanda, Eric Nickell, Rob Siemborski, John Micco",
+          "publisher": "IEEE/ACM ICSE 2017 Software Engineering in Practice (copy hosted by University of Michigan)",
+          "date": "2017",
+          "url": "https://web.eecs.umich.edu/~xwangsd/courses/w23/readings/googletest.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed industry paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Google TAP presubmit test selection affected targets build dependency all tests transitively depend",
+      "trust": {
+        "score": 74,
+        "basis": "Peer-reviewed paper co-authored by Google TAP engineers describing their own system (high authority, primary); 2017, so current practice may have moved; matched by Bazel's rdeps operator and Nx's input-based selection."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bazel-rdeps-operator",
+      "question": "known-solutions",
+      "claim": "Bazel's query language finds the targets that depend on a changed set through its rdeps operator over a universe set.",
+      "quote": "The `rdeps(u, x)` operator evaluates to the reverse dependencies of the argument set x within the transitive closure of the universe set u.",
+      "citations": [
+        {
+          "title": "The Bazel Query Reference",
+          "author": "The Bazel Authors",
+          "publisher": "Google (bazel.build)",
+          "date": "n.d.",
+          "url": "https://bazel.build/query/language",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel query rdeps tests operator reverse dependencies",
+      "trust": {
+        "score": 80,
+        "basis": "Bazel's own current reference documentation (authority, transparency); definitional."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bazel-tests-operator",
+      "question": "known-solutions",
+      "claim": "Bazel's tests operator narrows a target set to its test rules, so rdeps followed by tests yields the tests affected by a change.",
+      "quote": "The `tests(x)` operator returns the set of all test rules in set x, expanding any `test_suite` rules into the set of individual tests that they refer to, and applying filtering by `tag` and `size`.",
+      "citations": [
+        {
+          "title": "The Bazel Query Reference",
+          "author": "The Bazel Authors",
+          "publisher": "Google (bazel.build)",
+          "date": "n.d.",
+          "url": "https://bazel.build/query/language",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel query rdeps tests operator reverse dependencies",
+      "trust": {
+        "score": 80,
+        "basis": "Bazel's own current reference documentation; definitional."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "target-determinator-changed-targets",
+      "question": "known-solutions",
+      "claim": "Target Determinator computes which Bazel targets changed between two Git commits, so selection is anchored to an explicit before and after revision.",
+      "quote": "Target determinator is a binary (and Go API) used to determine which Bazel targets changed between two git commits.",
+      "citations": [
+        {
+          "title": "target-determinator README",
+          "author": "bazel-contrib",
+          "publisher": "GitHub",
+          "date": "n.d.",
+          "url": "https://github.com/bazel-contrib/target-determinator",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel target determinator affected targets between commits",
+      "trust": {
+        "score": 72,
+        "basis": "The tool's own README under the bazel-contrib organisation; describes its purpose only."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "target-determinator-verbose-explains",
+      "question": "known-solutions",
+      "claim": "Target Determinator can explain why each target it selects is being run.",
+      "quote": "why each target is getting run",
+      "citations": [
+        {
+          "title": "target-determinator README",
+          "author": "bazel-contrib",
+          "publisher": "GitHub",
+          "date": "n.d.",
+          "url": "https://github.com/bazel-contrib/target-determinator",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel target determinator affected targets between commits",
+      "trust": {
+        "score": 66,
+        "basis": "Tool's own README describing its -verbose flag in a fragment; the README gives no further detail of what the explanation contains."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bazel-diff-hashes-all-inputs",
+      "question": "known-solutions",
+      "claim": "bazel-diff hashes every attribute and input of a target, so any change to a target's inputs, not only its own source files, marks it impacted.",
+      "quote": "`generate-hashes` is a canonical SHA256 value representing all attributes and inputs into a target.",
+      "citations": [
+        {
+          "title": "bazel-diff README",
+          "author": "Tinder",
+          "publisher": "GitHub",
+          "date": "n.d.",
+          "url": "https://github.com/Tinder/bazel-diff",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel-diff impacted targets generate-hashes README",
+      "trust": {
+        "score": 70,
+        "basis": "Tool owner's README describing its own hashing; definitional for the tool."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "bazel-diff-content-hashes",
+      "question": "known-solutions",
+      "claim": "bazel-diff decides a source file changed from a hash of its content, not from its name or the commit metadata.",
+      "quote": "For source_file inputs the content of the file are converted into a SHA256 value.",
+      "citations": [
+        {
+          "title": "bazel-diff README",
+          "author": "Tinder",
+          "publisher": "GitHub",
+          "date": "n.d.",
+          "url": "https://github.com/Tinder/bazel-diff",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official tool documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "bazel-diff impacted targets generate-hashes README",
+      "trust": {
+        "score": 70,
+        "basis": "Tool owner's README describing its own behaviour; definitional for the tool."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pants-changed-dependents",
+      "question": "known-solutions",
+      "claim": "Pants' --changed-since runs only on the directly changed files unless --changed-dependents asks it to include the targets that depend on them.",
+      "quote": "By default, `--changed-since` will only run over files directly changed.",
+      "citations": [
+        {
+          "title": "Advanced target selection",
+          "author": "Pants project contributors",
+          "publisher": "Pants Build (pantsbuild.org)",
+          "date": "n.d.",
+          "url": "https://www.pantsbuild.org/stable/docs/using-pants/advanced-target-selection",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "pants changed-since changed-dependents transitive test selection",
+      "trust": {
+        "score": 78,
+        "basis": "Pants' own current documentation (stable docs); definitional."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "turborepo-affected",
+      "question": "known-solutions",
+      "claim": "Turborepo's --affected flag runs only the packages affected by changes on the current branch.",
+      "quote": "Filter to only packages that are affected by changes on the current branch.",
+      "citations": [
+        {
+          "title": "run (Turborepo API reference)",
+          "author": "Vercel",
+          "publisher": "Turborepo (turborepo.dev)",
+          "date": "n.d.",
+          "url": "https://turborepo.dev/docs/reference/run",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "turborepo run affected flag shallow clone all packages changed",
+      "trust": {
+        "score": 78,
+        "basis": "Turborepo's own current reference documentation; definitional."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "meta-build-deps-overselect",
+      "question": "known-solutions",
+      "claim": "Selection by build dependencies over-selects: at Meta it marked tests as impacted more often than was actually necessary.",
+      "quote": "It ends up saying \"yes, this test is impacted\" more often than is actually necessary.",
+      "citations": [
+        {
+          "title": "Predictive test selection: A more efficient way to ensure reliability of code changes",
+          "author": "Mateusz Machalica, Alex Samylkin, Meredith Porth, Satish Chandra",
+          "publisher": "Engineering at Meta",
+          "date": "2018-11-21",
+          "url": "https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "engineering blog by the system owner",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Meta Facebook predictive test selection build dependency selection",
+      "trust": {
+        "score": 68,
+        "basis": "The system owner's engineering blog, consistent with its arXiv paper; a qualitative claim from one company's monorepo, not replicated elsewhere; 2018."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "meta-predictive-selection-results",
+      "question": "known-solutions",
+      "claim": "Meta's predictive test selection, learned from historical test outcomes and deployed in production, halved testing infrastructure cost while still reporting over 95% of individual test failures and over 99.9% of faulty changes (study: Machalica et al., arXiv 1810.05286; sample: changes submitted to Facebook's monolithic repository CI; measures: share of individual test failures and of faulty changes still reported, infrastructure cost).",
+      "quote": "Deployed in production, the strategy reduces the total infrastructure cost of testing code changes by a factor of two, while guaranteeing that over 95% of individual test failures and over 99.9% of faulty changes are still reported back to developers.",
+      "citations": [
+        {
+          "title": "Predictive Test Selection (arXiv:1810.05286)",
+          "author": "Mateusz Machalica, Alex Samylkin, Meredith Porth, Satish Chandra",
+          "publisher": "arXiv",
+          "date": "2018-10-11",
+          "url": "https://arxiv.org/abs/1810.05286",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "preprint industry study (statistical)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Predictive Test Selection Machalica arXiv 1810.05286",
+      "trust": {
+        "score": 66,
+        "basis": "Statistical bar: study, sample and measures disclosed in the paper, but a preprint (not peer-reviewed), reported by the system's owners about their own deployment, and not independently replicated; the blog repeats the same figures from the same publisher, so it is not corroboration."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "tap-affected-targets-rarely-fail",
+      "question": "known-solutions",
+      "claim": "Most affected tests never fail: over 500K changes between 2016-02-11 and 2016-03-11, Google TAP saw only 63K of 5.5 million affected test targets ever fail (study: Memon et al., ICSE-SEIP 2017; measure: affected test targets that ever failed).",
+      "quote": "of the 5.5 Million affected tests that we analyzed for a time period, only 63K ever failed.",
+      "citations": [
+        {
+          "title": "Taming Google-Scale Continuous Testing (ICSE-SEIP 2017)",
+          "author": "Atif Memon, Zebao Gao, Bao Nguyen, Sanjeev Dhanda, Eric Nickell, Rob Siemborski, John Micco",
+          "publisher": "IEEE/ACM ICSE 2017 Software Engineering in Practice (copy hosted by University of Michigan)",
+          "date": "2017",
+          "url": "https://web.eecs.umich.edu/~xwangsd/courses/w23/readings/googletest.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed industry study (statistical)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Taming Google-Scale Continuous Testing Memon ICSE 2017",
+      "trust": {
+        "score": 74,
+        "basis": "Statistical bar met: peer-reviewed, sample (over 500K CLs, 2016-02-11 to 2016-03-11, 5.5 million unique test targets, over 4 billion outcomes) and measure disclosed; one company, one month, 2016 data."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "tap-milestones-batch-commits",
+      "question": "known-solutions",
+      "claim": "Because running every affected target per change was infeasible, Google TAP batches consecutive commits into milestones and runs all targets affected since the previous milestone together.",
+      "quote": "TAPs milestone strategy is to bundle a number of consecutive code commits together, and run (or cut) a milestone as frequently as possible given the available compute resources.",
+      "citations": [
+        {
+          "title": "Taming Google-Scale Continuous Testing (ICSE-SEIP 2017)",
+          "author": "Atif Memon, Zebao Gao, Bao Nguyen, Sanjeev Dhanda, Eric Nickell, Rob Siemborski, John Micco",
+          "publisher": "IEEE/ACM ICSE 2017 Software Engineering in Practice (copy hosted by University of Michigan)",
+          "date": "2017",
+          "url": "https://web.eecs.umich.edu/~xwangsd/courses/w23/readings/googletest.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed industry paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Taming Google-Scale Continuous Testing Memon ICSE 2017",
+      "trust": {
+        "score": 72,
+        "basis": "Peer-reviewed paper by the system's engineers describing their own system; 2017."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "ekstazi-time-savings",
+      "question": "known-solutions",
+      "claim": "Ekstazi, a dynamic file-dependency selector for Java, cut end-to-end testing time by 32% on average and 54% for longer-running suites (study: Gligoric, Eloussi and Marinov, ISSTA 2015; sample: 615 revisions of 32 open-source Java projects; measure: end-to-end testing time against running all tests).",
+      "quote": "Ekstazi reduced the end-to-end testing time 32% on average, and 54% for longer-running test suites.",
+      "citations": [
+        {
+          "title": "Practical Regression Test Selection with Dynamic File Dependencies (ISSTA 2015), abstract",
+          "author": "Milos Gligoric, Lamyaa Eloussi, Darko Marinov",
+          "publisher": "ACM ISSTA 2015 (abstract hosted by University of Texas at Austin)",
+          "date": "2015",
+          "url": "https://users.ece.utexas.edu/~gligoric/papers/abstracts/GligoricETAL15Ekstazi.txt",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed study (statistical)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Ekstazi regression test selection dynamic file dependencies safe non-code files ISSTA 2015",
+      "trust": {
+        "score": 72,
+        "basis": "Statistical bar met: peer-reviewed (ACM SIGSOFT Distinguished Paper), sample and measure disclosed in the abstract; read from the authors' abstract page, not the full paper; 2015, open-source Java only."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "single-language-rts-unsafe",
+      "question": "known-solutions",
+      "claim": "Dynamic selectors that trace dependencies inside one language runtime miss dependencies that cross language or process boundaries, which makes them unsafe for multilingual projects.",
+      "quote": "are all language-specific (i.e., unable to observe dependencies that span across languages), making them unsafe for multilingual projects.",
+      "citations": [
+        {
+          "title": "Regression Test Selection Across JVM Boundaries (ESEC/FSE 2017)",
+          "author": "Ahmet Celik, Marko Vasic, Aleksandar Milicevic, Milos Gligoric",
+          "publisher": "ACM (author manuscript hosted by NSF Public Access Repository)",
+          "date": "2017-09-04",
+          "url": "https://par.nsf.gov/servlets/purl/10055460",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed conference paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "regression test selection safe precise dynamic file dependencies multilingual",
+      "trust": {
+        "score": 74,
+        "basis": "Peer-reviewed ESEC/FSE paper with measured evidence; corroborated in substance by Azure TIA's restriction to managed code and Hammant's note that resource files cannot be mapped."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "rtslinux-ekstazi-misses-dependencies",
+      "question": "known-solutions",
+      "claim": "A JVM-level dynamic selector (Ekstazi) collected only 16.99% of the file dependencies an OS-level monitor (RTSLinux) found on the same projects, so it missed tests the change affected (study: Celik et al., ESEC/FSE 2017; measure: dependencies collected).",
+      "quote": "We find that Ekstazi collects only 16.99% of dependencies collected by RTSLinux",
+      "citations": [
+        {
+          "title": "Regression Test Selection Across JVM Boundaries (ESEC/FSE 2017)",
+          "author": "Ahmet Celik, Marko Vasic, Aleksandar Milicevic, Milos Gligoric",
+          "publisher": "ACM (author manuscript hosted by NSF Public Access Repository)",
+          "date": "2017-09-04",
+          "url": "https://par.nsf.gov/servlets/purl/10055460",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed study (statistical)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "regression test selection safe precise dynamic file dependencies multilingual",
+      "trust": {
+        "score": 68,
+        "basis": "Statistical bar: peer-reviewed with method disclosed, but the authors compare their own tool (RTSLinux) against an earlier one from the same group, on a selected set of open-source projects; not replicated."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "develocity-pts-always-chooses",
+      "question": "known-solutions",
+      "claim": "Develocity Predictive Test Selection always selects tests that are recently new, recently changed, recently failed or recently flaky, whatever the model predicts.",
+      "quote": "Tests will always be chosen if they're recently new, recently changed, recently failed, or recently flaky.",
+      "citations": [
+        {
+          "title": "Predictive Test Selection Guide (Develocity 2026.3)",
+          "author": "Gradle Technologies",
+          "publisher": "Develocity documentation (docs.develocity.ai)",
+          "date": "n.d.",
+          "url": "https://docs.develocity.ai/predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Develocity Gradle predictive test selection guide",
+      "trust": {
+        "score": 72,
+        "basis": "Vendor's current documentation of its own product behaviour (authority for the product, some commercial interest); corroborated in substance by Azure TIA's inclusion of previously failing and newly added tests."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "develocity-pts-trades-comprehensiveness",
+      "question": "known-solutions",
+      "claim": "Predictive selection trades comprehensiveness for speed, so it belongs where feedback speed matters most.",
+      "quote": "trades testing comprehensiveness for faster feedback",
+      "citations": [
+        {
+          "title": "Predictive Test Selection Guide (Develocity 2026.3)",
+          "author": "Gradle Technologies",
+          "publisher": "Develocity documentation (docs.develocity.ai)",
+          "date": "n.d.",
+          "url": "https://docs.develocity.ai/predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Develocity Gradle predictive test selection guide",
+      "trust": {
+        "score": 70,
+        "basis": "Vendor's own documentation, conceding a limit of its product (reduces the conflict-of-interest discount)."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "develocity-remaining-tests-mode",
+      "question": "known-solutions",
+      "claim": "Develocity pairs its selected-tests mode in early stages with a remaining-tests mode in later, less frequent stages (nightly, pre-release) so that every test is eventually run.",
+      "quote": "to ensure that all tests are ultimately executed",
+      "citations": [
+        {
+          "title": "Predictive Test Selection Guide (Develocity 2026.3)",
+          "author": "Gradle Technologies",
+          "publisher": "Develocity documentation (docs.develocity.ai)",
+          "date": "n.d.",
+          "url": "https://docs.develocity.ai/predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Develocity Gradle predictive test selection guide",
+      "trust": {
+        "score": 70,
+        "basis": "Vendor's current documentation; corroborated in substance by Launchable's and Azure TIA's full-run guidance."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "develocity-records-selection-reason",
+      "question": "known-solutions",
+      "claim": "Each Develocity build scan records which tests were selected and which were not, with the reason for each.",
+      "quote": "indicates which tests were selected and which weren't along with the reason why",
+      "citations": [
+        {
+          "title": "Predictive Test Selection Guide (Develocity 2026.3)",
+          "author": "Gradle Technologies",
+          "publisher": "Develocity documentation (docs.develocity.ai)",
+          "date": "n.d.",
+          "url": "https://docs.develocity.ai/predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Develocity Gradle predictive test selection guide",
+      "trust": {
+        "score": 72,
+        "basis": "Vendor's current documentation of its own reporting; corroborated in substance by Nx --explain and target-determinator -verbose."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "launchable-model-inputs",
+      "question": "known-solutions",
+      "claim": "Launchable's selection model learns from the historical correlation between changed files and failed tests, alongside test history and change characteristics.",
+      "quote": "The historical correlation between changed files and failed tests.",
+      "citations": [
+        {
+          "title": "How Launchable selects tests",
+          "author": "Launchable, Inc.",
+          "publisher": "Launchable",
+          "date": "n.d.",
+          "url": "https://help.launchableinc.com/features/predictive-test-selection/how-launchable-selects-tests/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Launchable how Launchable selects tests model changed files",
+      "trust": {
+        "score": 64,
+        "basis": "Vendor's own description of a proprietary model; not independently verifiable; consistent with Meta's published approach."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "launchable-observation-mode",
+      "question": "known-solutions",
+      "claim": "Launchable's observation mode runs the full suite while recording what the subset would have run, so a team can compare the subset against the full run before relying on it.",
+      "quote": "the recorded results will be presented separately so you can compare running the subset against running the full suite.",
+      "citations": [
+        {
+          "title": "Observing subset behavior",
+          "author": "Launchable, Inc.",
+          "publisher": "Launchable",
+          "date": "n.d.",
+          "url": "https://help.launchableinc.com/features/predictive-test-selection/observing-subset-behavior/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "vendor documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Launchable predictive test selection documentation confidence subset observation mode",
+      "trust": {
+        "score": 66,
+        "basis": "Vendor's documentation of its own feature; corroborated in substance by Azure TIA's T1/T2 validation and Develocity's simulator."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nx-selects-by-task-inputs",
+      "question": "platform-guidelines",
+      "claim": "Nx selects a task as affected when the change touches one of that task's declared inputs, not by its place in the task graph.",
+      "quote": "Nx selects a task when your change touches one of its inputs, not by the task hierarchy in the task graph.",
+      "citations": [
+        {
+          "title": "Run Only Tasks Affected by a PR",
+          "author": "Nx (Narwhal Technologies)",
+          "publisher": "nx.dev",
+          "date": "n.d.",
+          "url": "https://nx.dev/ci/features/affected",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "nx affected how affected projects are determined lock file base head",
+      "trust": {
+        "score": 78,
+        "basis": "Nx's own current CI documentation (authority); definitional for the tool."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nx-lockfile-affects-every-task",
+      "question": "platform-guidelines",
+      "claim": "By default Nx treats a change to the package manager's lock file as affecting every task.",
+      "quote": "By default, a change to your package manager's lock file affects every task.",
+      "citations": [
+        {
+          "title": "Run Only Tasks Affected by a PR",
+          "author": "Nx (Narwhal Technologies)",
+          "publisher": "nx.dev",
+          "date": "n.d.",
+          "url": "https://nx.dev/ci/features/affected",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "nx affected how affected projects are determined lock file base head",
+      "trust": {
+        "score": 76,
+        "basis": "Nx's own current documentation; corroborated in substance by Pants' lockfile behaviour."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nx-dependson-not-affected",
+      "question": "platform-guidelines",
+      "claim": "A task-ordering edge alone does not make a task affected in Nx; only declared inputs carry a change, so inputs must be declared accurately.",
+      "quote": "`dependsOn` alone doesn't make a task affected.",
+      "citations": [
+        {
+          "title": "Run Only Tasks Affected by a PR",
+          "author": "Nx (Narwhal Technologies)",
+          "publisher": "nx.dev",
+          "date": "n.d.",
+          "url": "https://nx.dev/ci/features/affected",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "nx affected how affected projects are determined lock file base head",
+      "trust": {
+        "score": 76,
+        "basis": "Nx's own current documentation; definitional for the tool."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nx-base-latest-successful-commit",
+      "question": "platform-guidelines",
+      "claim": "Nx recommends diffing against the latest commit on main whose CI run succeeded, rather than the plain branch tip.",
+      "quote": "The recommended approach is to set the base SHA to the latest successful commit on the `main` branch.",
+      "citations": [
+        {
+          "title": "Run Only Tasks Affected by a PR",
+          "author": "Nx (Narwhal Technologies)",
+          "publisher": "nx.dev",
+          "date": "n.d.",
+          "url": "https://nx.dev/ci/features/affected",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "nx affected how affected projects are determined lock file base head",
+      "trust": {
+        "score": 76,
+        "basis": "Nx's own current documentation, phrased as its recommendation; corroborated in kind by GitLab's compare_to guidance."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "nx-explain-why-affected",
+      "question": "platform-guidelines",
+      "claim": "Nx can show why each task was selected as affected.",
+      "quote": "Use the `--explain` flag to show why tasks are affected.",
+      "citations": [
+        {
+          "title": "Run Only Tasks Affected by a PR",
+          "author": "Nx (Narwhal Technologies)",
+          "publisher": "nx.dev",
+          "date": "n.d.",
+          "url": "https://nx.dev/ci/features/affected",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "nx affected how affected projects are determined lock file base head",
+      "trust": {
+        "score": 76,
+        "basis": "Nx's own current documentation; corroborated in substance by Develocity's per-test selection reason."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "turborepo-shallow-checkout-all-changed",
+      "question": "platform-guidelines",
+      "claim": "Turborepo needs the whole history between base and head; if the checkout is too shallow it treats every package as changed.",
+      "quote": "If the checkout is too shallow, then all packages will be considered changed.",
+      "citations": [
+        {
+          "title": "run (Turborepo API reference)",
+          "author": "Vercel",
+          "publisher": "Turborepo (turborepo.dev)",
+          "date": "n.d.",
+          "url": "https://turborepo.dev/docs/reference/run",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "turborepo run affected flag shallow clone all packages changed",
+      "trust": {
+        "score": 78,
+        "basis": "Turborepo's own current documentation; corroborated in substance by GitHub Actions' and GitLab's run-on-unknown behaviour."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "pants-lockfile-change-all-users",
+      "question": "platform-guidelines",
+      "claim": "Pants cannot trace transitive third-party dependencies for changed-file selection, so a change to any dependency in a lockfile is treated as changing all users of any dependency.",
+      "quote": "Changes to third-party dependencies (particularly, dependencies of dependencies) may not be surfaced as you expect",
+      "citations": [
+        {
+          "title": "Advanced target selection",
+          "author": "Pants project contributors",
+          "publisher": "Pants Build (pantsbuild.org)",
+          "date": "n.d.",
+          "url": "https://www.pantsbuild.org/stable/docs/using-pants/advanced-target-selection",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "pants changed-since changed-dependents transitive test selection",
+      "trust": {
+        "score": 76,
+        "basis": "Pants' own current documentation stating a limit of its tool; corroborated in substance by Nx's lockfile default."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-tia-safe-fallback",
+      "question": "platform-guidelines",
+      "claim": "Azure DevOps Test Impact Analysis runs every test for any commit or scenario it cannot understand, such as changes to HTML or CSS files.",
+      "quote": "For commits and scenarios that TIA can't understand, it falls back to running all tests.",
+      "citations": [
+        {
+          "title": "Use Test Impact Analysis - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-05-07",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's own current product documentation (authority, transparency); corroborated in substance by bazel-diff, Turborepo, GitHub Actions and GitLab fallbacks."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-tia-unknown-file-type-runs-all",
+      "question": "platform-guidelines",
+      "claim": "When Azure TIA meets a changed file of a type it cannot map, it runs all tests, which Microsoft calls good from a safety perspective.",
+      "quote": "When TIA opens a commit and sees an unknown file type, it falls back to running all tests.",
+      "citations": [
+        {
+          "title": "Use Test Impact Analysis - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-05-07",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's own current product documentation; a per-file rule stated explicitly."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-tia-periodic-full-run",
+      "question": "platform-guidelines",
+      "claim": "Microsoft recommends configuring Test Impact Analysis to run all tests at a set periodicity, as the means to regulate test selection.",
+      "quote": "TIA can be conditioned to run all tests at a configured periodicity. Setting this option is recommended, and is the means to regulate test selection.",
+      "citations": [
+        {
+          "title": "Use Test Impact Analysis - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-05-07",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's own current documentation, worded as a recommendation; corroborated in substance by Launchable, Develocity and Hammant."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-tia-includes-failing-and-new",
+      "question": "platform-guidelines",
+      "claim": "Azure TIA's selection includes, besides impacted tests, the tests that failed previously and the tests newly added.",
+      "quote": "It includes existing impacted tests, previously failing tests, and newly added tests.",
+      "citations": [
+        {
+          "title": "Use Test Impact Analysis - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-05-07",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
+      "trust": {
+        "score": 80,
+        "basis": "Microsoft's own current documentation; corroborated in substance by Develocity's always-chosen rule."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-tia-validate-against-all-tests",
+      "question": "platform-guidelines",
+      "claim": "To check that TIA selects the right tests, Microsoft has a team run the selected tests and then all tests, and confirm the full run reports the same failures.",
+      "quote": "Run TIA selected tests and then all tests in sequence.",
+      "citations": [
+        {
+          "title": "Use Test Impact Analysis - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-05-07",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
+      "trust": {
+        "score": 78,
+        "basis": "Microsoft's own current documentation; corroborated in substance by Launchable's observation mode."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "azure-tia-reports-selection",
+      "question": "platform-guidelines",
+      "claim": "Azure TIA reports its selection in the run's test summary and details, so a developer who knows the architecture can validate the selection by hand.",
+      "quote": "TIA is integrated into existing test reporting at both the summary and details levels, including notification emails.",
+      "citations": [
+        {
+          "title": "Use Test Impact Analysis - Azure Pipelines",
+          "author": "Microsoft",
+          "publisher": "Microsoft Learn",
+          "date": "2026-05-07",
+          "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/test/test-impact-analysis",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Azure DevOps Test Impact Analysis safe fallback run all tests",
+      "trust": {
+        "score": 76,
+        "basis": "Microsoft's own documentation; it does not say what fields the report carries."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "gha-paths-filter-any-match-runs",
+      "question": "platform-guidelines",
+      "claim": "A GitHub Actions paths filter runs the workflow when at least one changed path matches; it selects whole workflows by path pattern, with no knowledge of dependencies.",
+      "quote": "If at least one path matches a pattern in the `paths` filter, the workflow runs.",
+      "citations": [
+        {
+          "title": "Workflow syntax for GitHub Actions",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Actions workflow syntax on push paths paths-ignore filter",
+      "trust": {
+        "score": 80,
+        "basis": "GitHub's own current reference documentation; definitional."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "gha-diff-timeout-always-runs",
+      "question": "platform-guidelines",
+      "claim": "When GitHub cannot generate the diff in time, or a push holds more than 1,000 commits, a path-filtered workflow always runs.",
+      "quote": "If generating the diff times out, the workflow will always run.",
+      "citations": [
+        {
+          "title": "Workflow syntax for GitHub Actions",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Actions workflow syntax on push paths paths-ignore filter",
+      "trust": {
+        "score": 80,
+        "basis": "GitHub's own current documentation; corroborated in substance by Turborepo's and GitLab's run-on-unknown behaviour."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "gha-skipped-required-check-blocks",
+      "question": "platform-guidelines",
+      "claim": "A workflow skipped by a path filter does not report its checks, so a pull request that requires those checks to succeed is blocked from merging.",
+      "quote": "A pull request that requires those checks to be successful will be blocked from merging.",
+      "citations": [
+        {
+          "title": "Workflow syntax for GitHub Actions",
+          "author": "GitHub",
+          "publisher": "GitHub Docs",
+          "date": "n.d.",
+          "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitHub Actions workflow syntax on push paths paths-ignore filter",
+      "trust": {
+        "score": 78,
+        "basis": "GitHub's own current documentation; platform-specific consequence."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "gitlab-changes-true-without-push",
+      "question": "platform-guidelines",
+      "claim": "GitLab's rules:changes evaluates to true, running the job, for new-branch pipelines and for pipelines with no push event (tag, scheduled, manual), unless compare_to names a base.",
+      "quote": "For new branch pipelines or when there is no Git `push` event, `rules: changes` always evaluates to true",
+      "citations": [
+        {
+          "title": "CI/CD YAML syntax reference",
+          "author": "GitLab",
+          "publisher": "GitLab Docs",
+          "date": "n.d.",
+          "url": "https://docs.gitlab.com/ci/yaml/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitLab rules changes compare_to new branch pipelines always evaluates to true",
+      "trust": {
+        "score": 80,
+        "basis": "GitLab's own current reference documentation; corroborated in substance by GitHub Actions' and Turborepo's fallbacks."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "gitlab-compare-to-base",
+      "question": "platform-guidelines",
+      "claim": "GitLab has a team name the branch to diff against with compare_to where a pipeline has no natural base.",
+      "quote": "To cover these cases, use `rules: changes: compare_to` to specify the branch to compare against the pipeline ref.",
+      "citations": [
+        {
+          "title": "CI/CD YAML syntax reference",
+          "author": "GitLab",
+          "publisher": "GitLab Docs",
+          "date": "n.d.",
+          "url": "https://docs.gitlab.com/ci/yaml/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "GitLab rules changes compare_to new branch pipelines always evaluates to true",
+      "trust": {
+        "score": 78,
+        "basis": "GitLab's own current documentation; corroborated in kind by Nx's base-SHA recommendation."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "gradle-up-to-date-tests",
+      "question": "platform-guidelines",
+      "claim": "In a well-defined Gradle build, the test task reruns only when the tests or the production code change, with --rerun to force it.",
+      "quote": "In well-defined builds, you can rely on Gradle to only run tests if the tests themselves or the production code change.",
+      "citations": [
+        {
+          "title": "Testing in Java & JVM projects (Gradle 9.9.2 User Manual)",
+          "author": "Gradle, Inc.",
+          "publisher": "Gradle Docs",
+          "date": "n.d.",
+          "url": "https://docs.gradle.org/current/userguide/java_testing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Gradle test filtering up-to-date check incremental tests",
+      "trust": {
+        "score": 76,
+        "basis": "Gradle's own current user manual; the 'well-defined builds' condition is the same accurate-inputs requirement Nx states."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "android-test-mapping-directory-rules",
+      "question": "platform-guidelines",
+      "claim": "Android's TEST_MAPPING files map a directory (optionally narrowed by file patterns) to the tests that run in presubmit when files in it change, with separate postsubmit groups.",
+      "quote": "These rules ensure that the tests run in presubmit checks when any files are touched in that directory",
+      "citations": [
+        {
+          "title": "Test mapping",
+          "author": "Android Open Source Project",
+          "publisher": "Google (source.android.com)",
+          "date": "n.d.",
+          "url": "https://source.android.com/docs/core/tests/development/test-mapping",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Android TEST_MAPPING presubmit postsubmit file_patterns",
+      "trust": {
+        "score": 76,
+        "basis": "AOSP's own current documentation; platform-specific mechanism."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "apple-test-plans-umbrella-full-run",
+      "question": "platform-guidelines",
+      "claim": "Apple's guidance is to run the tests relevant to one target for fast feedback while working, and the complete collection of tests before integrating changes.",
+      "quote": "When they are ready to integrate their changes, developers can get better assurance that they have not introduced regressions by running the complete collection of tests in the umbrella scheme.",
+      "citations": [
+        {
+          "title": "Improving code assessment by organizing tests into test plans",
+          "author": "Apple Inc.",
+          "publisher": "Apple Developer Documentation",
+          "date": "n.d.",
+          "url": "https://developer.apple.com/documentation/xcode/organizing-tests-to-improve-feedback",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "official documentation",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Xcode test plans run subset of tests",
+      "trust": {
+        "score": 72,
+        "basis": "Apple's own documentation (read through its JSON rendition of the same page); about choosing subsets by scheme, not change-based selection."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "hammant-coverage-builds-the-map",
+      "question": "experts-view",
+      "claim": "Test impact analysis builds its map from tests to production code by recording coverage or instrumentation while each test runs.",
+      "quote": "Code coverage or instrumentation, while tests are running is the mechanism by which that intelligence is gleaned.",
+      "citations": [
+        {
+          "title": "The Rise of Test Impact Analysis",
+          "author": "Paul Hammant",
+          "publisher": "martinfowler.com",
+          "date": "2017-08-07",
+          "url": "https://martinfowler.com/articles/rise-test-impact-analysis.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Rise of Test Impact Analysis Hammant",
+      "trust": {
+        "score": 62,
+        "basis": "Secondary: a practitioner article on a respected venue, used for the expert's view no primary states; 2017; consistent with Azure TIA's dynamic dependency collection."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "hammant-resource-files-unmapped",
+      "question": "experts-view",
+      "claim": "Coverage-based mapping cannot tell which tests depend on a non-code resource file, so such changes are a blind spot of the map.",
+      "quote": "The tool cannot automatically determine which tests depend on a given resource file.",
+      "citations": [
+        {
+          "title": "The Rise of Test Impact Analysis",
+          "author": "Paul Hammant",
+          "publisher": "martinfowler.com",
+          "date": "2017-08-07",
+          "url": "https://martinfowler.com/articles/rise-test-impact-analysis.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Rise of Test Impact Analysis Hammant",
+      "trust": {
+        "score": 62,
+        "basis": "Secondary, stated of one tool (Testar); corroborated in substance by Azure TIA's fallback for HTML/CSS and Celik et al.'s missed dependencies."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "hammant-nightly-all-tests",
+      "question": "experts-view",
+      "claim": "Teams that select tests per commit keep a nightly build job that runs all tests.",
+      "quote": "a nightly build job that runs all tests",
+      "citations": [
+        {
+          "title": "The Rise of Test Impact Analysis",
+          "author": "Paul Hammant",
+          "publisher": "martinfowler.com",
+          "date": "2017-08-07",
+          "url": "https://martinfowler.com/articles/rise-test-impact-analysis.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Rise of Test Impact Analysis Hammant",
+      "trust": {
+        "score": 58,
+        "basis": "Secondary, a fragment describing common practice rather than a recommendation; corroborated in substance by Launchable and Azure TIA."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "mill-module-graph-granularity",
+      "question": "experts-view",
+      "claim": "Dependency-based selection is only as fine as the module graph it walks, so coarse modules over-test.",
+      "quote": "You are limited by the granularity of your module graph.",
+      "citations": [
+        {
+          "title": "Faster CI with Selective Testing",
+          "author": "Li Haoyi",
+          "publisher": "Mill Build Engineering Blog",
+          "date": "2024-12-24",
+          "url": "https://mill-build.org/blog/3-selective-testing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article by a build-tool author (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "engineering blog test selection monorepo CI full test suite fallback changes to dependencies run all tests",
+      "trust": {
+        "score": 60,
+        "basis": "Secondary: the Mill build tool author's blog, experienced but promoting his own tool's feature; consistent with Nx's input-accuracy caveat."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "mill-thorough-tests-after-merge",
+      "question": "experts-view",
+      "claim": "Where selection uses heuristics, a more thorough run without heuristics after merge catches what slipped through.",
+      "quote": "After merging a pull-request, run a more thorough set of tests without heuristics to catch any bugs that slipped through.",
+      "citations": [
+        {
+          "title": "Faster CI with Selective Testing",
+          "author": "Li Haoyi",
+          "publisher": "Mill Build Engineering Blog",
+          "date": "2024-12-24",
+          "url": "https://mill-build.org/blog/3-selective-testing.html",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "practitioner article by a build-tool author (secondary)",
+      "generated_by": "grow-cookbook research agent",
+      "query": "engineering blog test selection monorepo CI full test suite fallback changes to dependencies run all tests",
+      "trust": {
+        "score": 60,
+        "basis": "Secondary; corroborated in substance by Launchable's post-merge full run and Develocity's remaining-tests mode."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "meta-retrain-model",
+      "question": "experts-view",
+      "claim": "A learned selection model has to be retrained regularly on recent test results, or it drifts from the code it predicts.",
+      "quote": "we can regularly retrain the model using test results from recently submitted code changes.",
+      "citations": [
+        {
+          "title": "Predictive test selection: A more efficient way to ensure reliability of code changes",
+          "author": "Mateusz Machalica, Alex Samylkin, Meredith Porth, Satish Chandra",
+          "publisher": "Engineering at Meta",
+          "date": "2018-11-21",
+          "url": "https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "engineering blog by the system owner",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Meta Facebook predictive test selection build dependency selection",
+      "trust": {
+        "score": 64,
+        "basis": "System owner's blog; corroborated in substance by Launchable's statement that its models are regularly re-trained."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "tap-all-affected-infeasible-per-change",
+      "question": "experts-view",
+      "claim": "At high change rates, running every affected target for every change is infeasible, which pushes teams to batch or prioritise rather than drop safety outright.",
+      "quote": "Google’s code churn rate prohibits the execution of all affected targets (which may run into Millions for some CLs and take hours to run) for each individual change.",
+      "citations": [
+        {
+          "title": "Taming Google-Scale Continuous Testing (ICSE-SEIP 2017)",
+          "author": "Atif Memon, Zebao Gao, Bao Nguyen, Sanjeev Dhanda, Eric Nickell, Rob Siemborski, John Micco",
+          "publisher": "IEEE/ACM ICSE 2017 Software Engineering in Practice (copy hosted by University of Michigan)",
+          "date": "2017",
+          "url": "https://web.eecs.umich.edu/~xwangsd/courses/w23/readings/googletest.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed industry paper",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Taming Google-Scale Continuous Testing Memon ICSE 2017",
+      "trust": {
+        "score": 70,
+        "basis": "Peer-reviewed, system owner's engineers; corroborated in substance by Meta's abstract ('infeasible to run all potentially-impacted tests on each change')."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "leong-selection-remains-open",
+      "question": "experts-view",
+      "claim": "Evaluated by replaying Google's historical results, history-based selection algorithms performed worse than earlier reports suggested, and test selection remains largely an open problem.",
+      "quote": "algorithms based on the recent (transition) execution history do not perform as well as expected (given the previously reported results) and that the test selection problem remains largely open.",
+      "citations": [
+        {
+          "title": "Assessing Transition-based Test Selection Algorithms at Google (ICSE-SEIP 2019)",
+          "author": "Claire Leong, Abhayendra Singh, Mike Papadakis, Yves Le Traon, John Micco",
+          "publisher": "IEEE/ACM ICSE 2019 Software Engineering in Practice (copy hosted by co-author's site)",
+          "date": "2019",
+          "url": "https://mpapad.github.io/publications/pdfs/ICSE-SEIP2019.pdf",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "peer-reviewed industry study",
+      "generated_by": "grow-cookbook research agent",
+      "query": "Assessing Transition-based Test Selection Algorithms at Google ICSE SEIP 2019",
+      "trust": {
+        "score": 72,
+        "basis": "Peer-reviewed, Google and University of Luxembourg authors, replay framework disclosed; a caution against over-trusting reported selection results; one company's data."
+      },
+      "independence": "single"
+    },
+    {
+      "id": "each-selection-justified-by-diff-prior",
+      "question": "best-practices",
+      "claim": "Every included site is justified in the prose by a named path or hunk from the commit range. A site in the list with no stated reason is a fail.",
+      "quote": "Every included site is justified in the prose by a named path or hunk from the commit range. A site in the list with no stated reason is a fail.",
+      "citations": [
+        {
+          "title": "test-impact-analysis (teams/myagenticteams-qa-team/specialities/testing/commit-impact.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/commit-impact.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "prior rule each-selection-justified-by-diff",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "every-changed-path-accounted-for-prior",
+      "question": "best-practices",
+      "claim": "Every residue path handed to the analysis is accounted for: either attributed to sites, or named as unattributable with its candidate sites included anyway. A residue path that goes unmentioned is a fail.",
+      "quote": "Every residue path handed to the analysis is accounted for: either attributed to sites, or named as unattributable with its candidate sites included anyway. A residue path that goes unmentioned is a fail.",
+      "citations": [
+        {
+          "title": "test-impact-analysis (teams/myagenticteams-qa-team/specialities/testing/commit-impact.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/commit-impact.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "prior rule every-changed-path-accounted-for",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "fail-closed-is-stated-prior",
+      "question": "best-practices",
+      "claim": "Fail-closed is visible in the output: where the analysis was unsure, the prose says so and the sites are included. An answer that narrows the list on a judgment call it does not state is a fail.",
+      "quote": "Fail-closed is visible in the output: where the analysis was unsure, the prose says so and the sites are included. An answer that narrows the list on a judgment call it does not state is a fail.",
+      "citations": [
+        {
+          "title": "test-impact-analysis (teams/myagenticteams-qa-team/specialities/testing/commit-impact.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/commit-impact.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "prior rule fail-closed-is-stated",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    },
+    {
+      "id": "reasoning-cites-diff-contents-prior",
+      "question": "best-practices",
+      "claim": "The reasoning cites the diff. A judgment resting only on commit messages, branch names, or file names without their contents is a fail.",
+      "quote": "The reasoning cites the diff. A judgment resting only on commit messages, branch names, or file names without their contents is a fail.",
+      "citations": [
+        {
+          "title": "test-impact-analysis (teams/myagenticteams-qa-team/specialities/testing/commit-impact.md)",
+          "author": "Agentic Developer Cookbook",
+          "publisher": "agenticcookbook",
+          "date": "n.d.",
+          "url": "git:15f998560f57f3d0604c04af9acee6cc59d0d5a5:teams/myagenticteams-qa-team/specialities/testing/commit-impact.md",
+          "accessed": "2026-11-24"
+        }
+      ],
+      "source_type": "prior cookbook text",
+      "generated_by": "grow-cookbook research agent",
+      "query": "prior rule reasoning-cites-diff-contents",
+      "trust": {
+        "score": 0,
+        "basis": "no research source supports it"
+      },
+      "independence": "uncorroborated"
+    }
+  ],
+  "verdicts": [
+    {
+      "rule": "fail-closed-when-unsure",
+      "verdict": "supported",
+      "claims": [
+        "azure-tia-safe-fallback",
+        "azure-tia-unknown-file-type-runs-all",
+        "bazel-diff-fallback-costs-speed",
+        "rts-safe-selects-all-affected",
+        "turborepo-shallow-checkout-all-changed",
+        "gha-diff-timeout-always-runs",
+        "gitlab-changes-true-without-push"
+      ]
+    },
+    {
+      "rule": "each-selection-justified-by-diff",
+      "verdict": "unsupported",
+      "claims": [
+        "each-selection-justified-by-diff-prior",
+        "develocity-records-selection-reason",
+        "nx-explain-why-affected",
+        "target-determinator-verbose-explains",
+        "azure-tia-includes-failing-and-new",
+        "develocity-pts-always-chooses"
+      ]
+    },
+    {
+      "rule": "every-changed-path-accounted-for",
+      "verdict": "unsupported",
+      "claims": [
+        "every-changed-path-accounted-for-prior",
+        "bazel-diff-changed-list-is-correctness-contract",
+        "azure-tia-unknown-file-type-runs-all"
+      ]
+    },
+    {
+      "rule": "fail-closed-is-stated",
+      "verdict": "unsupported",
+      "claims": [
+        "fail-closed-is-stated-prior",
+        "bazel-diff-fallback-costs-speed",
+        "develocity-records-selection-reason"
+      ]
+    },
+    {
+      "rule": "reasoning-cites-diff-contents",
+      "verdict": "unsupported",
+      "claims": [
+        "reasoning-cites-diff-contents-prior",
+        "bazel-diff-content-hashes",
+        "nx-selects-by-task-inputs",
+        "android-test-mapping-directory-rules",
+        "gha-paths-filter-any-match-runs"
+      ]
+    },
+    {
+      "rule": "unknown-reach-selects-everything",
+      "verdict": "new",
+      "claims": [
+        "azure-tia-safe-fallback",
+        "azure-tia-unknown-file-type-runs-all",
+        "bazel-diff-fallback-costs-speed",
+        "turborepo-shallow-checkout-all-changed",
+        "gha-diff-timeout-always-runs",
+        "gitlab-changes-true-without-push",
+        "rts-safe-selects-all-affected"
+      ]
+    },
+    {
+      "rule": "shared-inputs-select-everything",
+      "verdict": "new",
+      "claims": [
+        "nx-lockfile-affects-every-task",
+        "pants-lockfile-change-all-users",
+        "bazel-diff-hashes-all-inputs",
+        "hammant-resource-files-unmapped"
+      ]
+    },
+    {
+      "rule": "select-by-dependency-graph-not-paths-alone",
+      "verdict": "new",
+      "claims": [
+        "nx-selects-by-task-inputs",
+        "nx-dependson-not-affected",
+        "bazel-rdeps-operator",
+        "bazel-tests-operator",
+        "pants-changed-dependents",
+        "turborepo-affected",
+        "tap-affected-targets-reverse-dependencies",
+        "gradle-up-to-date-tests",
+        "gha-paths-filter-any-match-runs",
+        "mill-module-graph-granularity",
+        "single-language-rts-unsafe",
+        "rtslinux-ekstazi-misses-dependencies",
+        "hammant-coverage-builds-the-map"
+      ]
+    },
+    {
+      "rule": "diff-against-a-known-good-base",
+      "verdict": "new",
+      "claims": [
+        "nx-base-latest-successful-commit",
+        "gitlab-compare-to-base",
+        "target-determinator-changed-targets",
+        "turborepo-shallow-checkout-all-changed"
+      ]
+    },
+    {
+      "rule": "run-the-full-suite-periodically",
+      "verdict": "new",
+      "claims": [
+        "azure-tia-periodic-full-run",
+        "launchable-full-suite-later-in-pipeline",
+        "launchable-full-suite-nightly",
+        "develocity-remaining-tests-mode",
+        "develocity-pts-trades-comprehensiveness",
+        "mill-thorough-tests-after-merge",
+        "hammant-nightly-all-tests",
+        "tap-milestones-batch-commits",
+        "apple-test-plans-umbrella-full-run",
+        "android-test-mapping-directory-rules"
+      ]
+    },
+    {
+      "rule": "always-select-new-changed-and-failing-tests",
+      "verdict": "new",
+      "claims": [
+        "azure-tia-includes-failing-and-new",
+        "develocity-pts-always-chooses"
+      ]
+    },
+    {
+      "rule": "validate-selection-against-full-runs",
+      "verdict": "new",
+      "claims": [
+        "azure-tia-validate-against-all-tests",
+        "launchable-observation-mode",
+        "leong-selection-remains-open",
+        "meta-retrain-model"
+      ]
+    },
+    {
+      "rule": "record-why-each-test-was-selected",
+      "verdict": "new",
+      "claims": [
+        "develocity-records-selection-reason",
+        "nx-explain-why-affected",
+        "target-determinator-verbose-explains",
+        "azure-tia-reports-selection",
+        "bazel-diff-fallback-costs-speed"
+      ]
+    },
+    {
+      "rule": "select-from-every-changed-file",
+      "verdict": "new",
+      "claims": [
+        "bazel-diff-changed-list-is-correctness-contract",
+        "bazel-diff-content-hashes",
+        "launchable-model-inputs",
+        "azure-tia-unknown-file-type-runs-all"
+      ]
+    },
+    {
+      "rule": "measure-selection-recall-and-savings",
+      "verdict": "new",
+      "claims": [
+        "meta-predictive-selection-results",
+        "meta-build-deps-overselect",
+        "tap-affected-targets-rarely-fail",
+        "tap-all-affected-infeasible-per-change",
+        "ekstazi-time-savings",
+        "rtslinux-ekstazi-misses-dependencies",
+        "leong-selection-remains-open"
+      ]
+    },
+    {
+      "rule": "path-skipped-required-checks-resolve",
+      "verdict": "new",
+      "claims": [
+        "gha-skipped-required-check-blocks",
+        "gha-paths-filter-any-match-runs"
+      ]
+    }
+  ]
+}
