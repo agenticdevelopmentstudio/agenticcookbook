@@ -9,7 +9,7 @@ The same dependency as a RAID-log entry:
 
 | Category | Description | Internal or external | Owner | Confirmed by | Need-by | Status |
 |---|---|---|---|---|---|---|
-| Dependency | Identity team delivers the token-refresh endpoint | Internal | Priya (mobile) | Sam (identity), in the identity team's log | 2026-12-15 | Blocked: waiting on security review, 4 days |
+| Dependency | Identity team delivers the token-refresh endpoint | External | Priya (mobile) | Sam (identity), in the identity team's log | 2026-12-15 | Blocked: waiting on security review, 4 days |
 
 The blocked item it holds up, in a tracker: the offline sign-in issue is "blocked by" the token-refresh issue, carries the board's Blocked icon, and is linked to the release milestone it affects.
 

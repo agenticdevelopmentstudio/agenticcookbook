@@ -15,14 +15,18 @@
     "summary": "Tracking the delivery dependencies a team waits on: found in planning, owned, dated, kept current, flagged when blocked and escalated.",
     "platforms": [],
     "tags": [
+      "dependency-tracking",
       "dependencies",
       "project-management",
       "blockers",
-      "escalation",
-      "raid-log"
+      "escalation"
     ],
     "depends-on": [],
-    "related": [],
+    "related": [
+      "a55182ef-3144-407c-b64a-6377f37f5c63",
+      "f264cc0b-45d3-4593-a437-7371610c5a8a",
+      "023d4c91-d797-4e82-880c-a4ad7906a54a"
+    ],
     "references": [
       "https://www.apm.org.uk/media/yppd2ddw/interdependencies-fusion-point-guidance.pdf",
       "https://www.essex.ac.uk/staff/strategic-project-delivery/dependency-management",
@@ -54,7 +58,7 @@
     "approved-date": "",
     "triggers": []
   },
-  "synced": "73baf2dc4bb66cb9",
+  "synced": "1a70f95a3f390468",
   "parts": [
     {"part": "intro"},
     {"part": "rules", "heading": "Rules", "role": "rules"},
