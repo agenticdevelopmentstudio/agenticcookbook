@@ -1,10 +1,9 @@
 
-- `fail-closed-when-unsure`: each changed path the selection was unsure of has every test it might affect included.
+- `fail-closed-when-unsure`: each changed path the selection was unsure of has every test it might affect included, and each change of unknown reach selected every test.
 - `each-selection-justified-by-diff`: each included site (selected test or test target) is justified in the record by a named path or hunk from the commit range (base to head).
 - `every-changed-path-accounted-for`: each residue path (changed path handed to the analysis) is attributed to selected tests or named as unattributable with the tests it might affect selected.
 - `fail-closed-is-stated`: each place the analysis was unsure is stated in the record, with the tests it might affect selected.
 - `reasoning-cites-diff-contents`: the reasoning cites the diff, not only commit messages, branch names or file names.
-- `unknown-reach-selects-everything`: each change of unknown reach selected every test.
 - `shared-inputs-select-everything`: each change to an untraceable shared input selected every test that may use it.
 - `select-by-dependency-graph-not-paths-alone`: the tests were chosen from declared dependencies and inputs or recorded coverage, not path patterns alone.
 - `diff-against-a-known-good-base`: the changes were computed between two named revisions with a known-good base.
