@@ -1,0 +1,69 @@
+{
+  "format": 2,
+  "meta": {
+    "id": "2b7a1593-48e0-4bbe-8e14-0df7a863628d",
+    "title": "Decision Records",
+    "type": "guideline",
+    "version": "1.0.0",
+    "status": "draft",
+    "language": "en",
+    "created": "2026-11-24",
+    "modified": "2026-11-24",
+    "author": "Mike Fullerton",
+    "copyright": "2026 Mike Fullerton",
+    "license": "MIT",
+    "summary": "Recording significant decisions: context, rationale, options, decider, date, status and consequences, kept findable, superseded, never silently contradicted.",
+    "platforms": [],
+    "tags": [
+      "decision-records",
+      "adr",
+      "project-management",
+      "supersession"
+    ],
+    "depends-on": [],
+    "related": [
+      "6a653107-929d-418e-865d-636373a27b02"
+    ],
+    "references": [
+      "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+      "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+      "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+      "https://docs.cloud.google.com/architecture/architecture-decision-records",
+      "https://www.gov.uk/government/publications/architectural-decision-record-framework/architectural-decision-record-framework",
+      "https://gds-way.digital.cabinet-office.gov.uk/standards/architecture-decisions.html",
+      "https://raw.githubusercontent.com/adr/madr/main/template/adr-template.md",
+      "https://raw.githubusercontent.com/adr/madr/main/template/adr-template-minimal.md",
+      "https://adr.github.io/madr/",
+      "https://github.com/npryce/adr-tools",
+      "https://github.com/thomvaill/log4brains",
+      "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html",
+      "https://ozimmer.ch/practices/2023/04/03/ADRCreation.html",
+      "https://github.com/socadk/design-practice-repository/blob/master/artifact-templates/DPR-ArchitecturalDecisionRecordYForm.md",
+      "https://engineering.atspotify.com/2020/04/when-should-i-write-an-architecture-decision-record",
+      "https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records",
+      "https://raw.githubusercontent.com/joelparkerhenderson/architecture-decision-record/main/README.md",
+      "https://peps.python.org/pep-0001/",
+      "https://www.rfc-editor.org/rfc/rfc7322.txt",
+      "https://github.com/rust-lang/rfcs/blob/master/0000-template.md",
+      "https://www.atlassian.com/software/confluence/templates/decision",
+      "https://confluence.atlassian.com/doc/decisions-blueprint-339739406.html",
+      "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue"
+    ],
+    "approved-by": "",
+    "approved-date": "",
+    "triggers": []
+  },
+  "synced": "ef6ee4ba8b6bb423",
+  "parts": [
+    {"part": "intro"},
+    {"part": "rules", "heading": "Rules", "role": "rules"},
+    {"part": "writing-a-decision-record", "heading": "Writing a decision record", "role": "how-to"},
+    {"part": "examples", "heading": "Examples", "role": "examples"},
+    {"part": "what-a-reviewer-looks-for", "heading": "What a reviewer looks for", "role": "review-focus"},
+    {"part": "a-complete-review-must-establish", "heading": "A complete review must establish", "role": "review-bar"},
+    {"part": "a-build-must-establish", "heading": "A build must establish", "role": "build-bar"},
+    {"part": "rationale", "heading": "Rationale", "role": "rationale"},
+    {"part": "references", "heading": "References", "role": "references"},
+    {"part": "history", "heading": "Change History"}
+  ]
+}
