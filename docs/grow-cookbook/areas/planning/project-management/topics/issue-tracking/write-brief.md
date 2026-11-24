@@ -138,3 +138,9 @@ For each rule below, only the rule's wording is exempt from review; everything e
 - Whether the reporter (or a named verifier) must confirm a fix before the issue is closed, or the fixer may close it.
 - Whether the rule to link issues to specialist findings stays, since no source covers specialist findings; the general linking convention is project-record-linking's.
 - Whether priority stays optional beside severity (Mozilla makes it optional) or is required.
+
+## Round 1 findings
+
+Verdict: fail. Fix each finding, or dispute it in disputes.md (`- <id>: <why, citing the claim or rule>`); a disputed finding is not obeyed.
+
+- R1.1: `rationale.md`, third paragraph, "Mozilla and Linear raise a notice beyond the assignee": wrong for Linear. The cited claim `critical-notifies-beyond-assignee` quotes Linear as "When an issue is marked as Urgent, Linear notifies the assignee and, if email notifications are enabled, also sends an urgent email notification": Linear notifies the assignee itself, not anyone beyond it. Only Mozilla (Release Management and the component's triage owner for S1 and S2) notifies beyond the assignee. This is the only instance; the rule `escalate-critical-issues` says "a notice beyond the triage queue", which both sources do support. Fix: reword to something like "Mozilla notifies Release Management beyond the assignee, and Linear sends the assignee an urgent notice", or "Mozilla and Linear raise a notice beyond the triage queue".
