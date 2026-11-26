@@ -57,6 +57,23 @@ def _sample(name: str):
     return load_folder(FIXTURES / "artifacts" / "folders" / name)
 
 
+def test_schema_requires_exactly_the_common_fields():
+    assert _schema()["properties"]["meta"]["required"] == list(COMMON_FIELDS)
+
+
+@pytest.mark.parametrize("folder", FOLDERS, ids=lambda p: p.name)
+def test_an_artifact_without_approval_fields_conforms(folder):
+    a = load_folder(folder)
+    for f in ("approved-by", "approved-date"):
+        a.meta.pop(f, None)
+    assert validate(a) == []
+    jsonschema = pytest.importorskip("jsonschema")
+    doc = json.loads((folder / "artifact.json").read_text())
+    for f in ("approved-by", "approved-date"):
+        doc["meta"].pop(f, None)
+    jsonschema.validate(doc, _schema())
+
+
 def test_missing_and_misordered_sections_are_reported():
     a = _sample("mcp-tool")
     a.parts = [p for p in a.parts if p.name != "states"]
