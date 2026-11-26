@@ -122,3 +122,22 @@ def test_unknown_type_is_reported():
     a = _sample("yagni")
     a.meta["type"] = "reference"
     assert validate(a) == ["type: not an artifact type: 'reference'"]
+
+
+@pytest.mark.parametrize("value", ["June 9", "2026-6-9"])
+def test_a_malformed_approved_date_is_reported(value):
+    a = _sample("mcp-tool")
+    a.meta["approved-date"] = value
+    assert f"approved-date: not an ISO date or \"\": {value!r}" in validate(a)
+    jsonschema = pytest.importorskip("jsonschema")
+    doc = json.loads((FIXTURES / "artifacts" / "folders" / "mcp-tool" / "artifact.json").read_text())
+    doc["meta"]["approved-date"] = value
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate(doc, _schema())
+
+
+@pytest.mark.parametrize("value", ["", "2026-06-09"])
+def test_an_empty_or_iso_approved_date_conforms(value):
+    a = _sample("mcp-tool")
+    a.meta["approved-date"] = value
+    assert validate(a) == []

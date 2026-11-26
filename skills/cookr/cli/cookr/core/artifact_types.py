@@ -84,6 +84,9 @@ def _check_meta(meta: dict, t: ArtifactType) -> list[str]:
     for f in ("created", "modified"):
         if f in meta and not _DATE.fullmatch(str(meta[f])):
             problems.append(f"{f}: not an ISO date: {meta[f]!r}")
+    # Optional, but when present an ISO date, or "" while not yet approved.
+    if meta.get("approved-date", "") != "" and not _DATE.fullmatch(str(meta["approved-date"])):
+        problems.append(f"approved-date: not an ISO date or \"\": {meta['approved-date']!r}")
     return problems
 
 
