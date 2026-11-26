@@ -20,7 +20,7 @@ from .artifact import HISTORY, HISTORY_HEADING, INTRO, Artifact
 COMMON_FIELDS = (
     "id", "title", "type", "version", "status", "language", "created",
     "modified", "author", "copyright", "license", "summary", "platforms", "tags",
-    "depends-on", "related", "references", "approved-by", "approved-date",
+    "depends-on", "related", "references",
 )
 LIST_FIELDS = frozenset({"platforms", "tags", "depends-on", "related", "references",
                          "ingredients", "triggers"})
