@@ -1,8 +1,13 @@
 """The artifact type registry: what each type's folder must hold, and in what order.
 
-Derived from `tbd/compliance/artifact-formatting/<type>-formatting.md` and
-the field table in `guide/introduction/conventions.md`; those files stay the
-authority, and tests/unit/test_artifact_types.py fails when this drifts from them.
+The field list comes from the field table in `guide/introduction/conventions.md`,
+which says which fields are required (`approved-by` and `approved-date` are
+not). The principle, guideline and ingredient formatting rules are the
+authoring guidelines in `cookbook/guidelines/cookbook/authoring/<type>-formatting/`;
+the recipe rules, and the section-order lists the tests read, are in
+`tbd/compliance/artifact-formatting/<type>-formatting.md`. Those files stay
+the authority, and tests/unit/test_artifact_types.py fails when this drifts
+from the conventions table, the section-order lists or the JSON schema.
 
 A section is `(heading, required)`. Ingredients and recipes have a closed,
 ordered section list, so their part names are fixed. Principles and guidelines
